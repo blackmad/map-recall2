@@ -188,8 +188,6 @@ export async function reverseGeocodeLocation(
 export const OVERPASS_ENDPOINTS = [
   'https://overpass-api.de/api/interpreter',
   'https://lz4.overpass-api.de/api/interpreter',
-  'https://overpass.kumi.systems/api/interpreter',
-  'https://overpass.private.coffee/api/interpreter',
 ];
 
 const ADMIN_CACHE_PREFIX = 'guess_map_admin_v1_';
@@ -426,6 +424,7 @@ export async function fetchCategorySpecificOSMFeatures(
   const categoryName = FEATURE_CATEGORIES.find((c) => c.id === category)?.label || 'Features';
   const overpassQuery = buildOverpassQuery(lat, lon, radius, category, areaId);
   const startTime = Date.now();
+  const failures: string[] = [];
   // 1. Check local persistent cache
   if (!forceRefresh) {
     const cached = getCachedOSMFeatures(lat, lon, scope, category, areaId || radius);
@@ -487,7 +486,10 @@ export async function fetchCategorySpecificOSMFeatures(
       });
       clearTimeout(timeoutId);
 
-      if (!res.ok) continue;
+      if (!res.ok) {
+        failures.push(`${new URL(endpoint).hostname}: HTTP ${res.status}`);
+        continue;
+      }
 
       const data = await res.json();
       const elements: OverpassElement[] = data.elements || [];
@@ -531,12 +533,9 @@ export async function fetchCategorySpecificOSMFeatures(
       }
     } catch (err) {
       console.warn(`Overpass attempt on ${endpoint} failed:`, err);
+      failures.push(`${new URL(endpoint).hostname}: ${err instanceof Error && err.name === 'AbortError' ? 'timed out' : 'network error'}`);
     }
   }
-
-  // If live query failed, return fallback features and cache them
-  const fallbackFeatures = generateFallbackLocalFeatures(lat, lon, locationName, scope);
-  setCachedOSMFeatures(lat, lon, scope, category, locationName, fallbackFeatures, 60 * 60 * 1000, areaId || radius, 'fallback'); // short-lived fallback
 
   addSearchHistoryEntry({
     timestamp: Date.now(),
@@ -546,14 +545,13 @@ export async function fetchCategorySpecificOSMFeatures(
     scope,
     category,
     radiusMeters: radius,
-    status: 'fallback',
-    featuresCount: fallbackFeatures.length,
+    status: 'error',
+    featuresCount: 0,
     executionTimeMs: Date.now() - startTime,
     overpassQuery,
-    errorMessage: 'Live Overpass query timed out; loaded local geometric fallbacks.',
+    errorMessage: failures.join('; ') || 'No Overpass server returned usable data.',
   });
-
-  return fallbackFeatures;
+  throw new Error(`OpenStreetMap search failed. ${failures.join('; ') || 'No Overpass server returned usable data.'}`);
 }
 
 /**
@@ -961,107 +959,4 @@ export function parseOverpassElements(
   }
 
   return parsedFeatures;
-}
-
-/**
- * Generates synthetic fallback features when offline or in case of rate limits
- */
-function generateFallbackLocalFeatures(
-  lat: number,
-  lon: number,
-  locationName: string,
-  scope: LocationScope
-): StreetFeature[] {
-  const r = scope === 'neighborhood' ? 0.008 : 0.025;
-  const place = locationName.replace(/^📍\s*/, '');
-
-  return [
-    {
-      id: 'local_feat_center',
-      name: `${place} Central Way`,
-      type: 'street',
-      cityId: 'my_location',
-      center: [lat, lon],
-      path: [
-        [lat - r * 0.4, lon - r * 0.5],
-        [lat, lon],
-        [lat + r * 0.4, lon + r * 0.5],
-      ],
-      funFact: `The primary central thoroughfare of ${place}.`,
-      clues: [
-        `Runs directly through the heart of ${place}.`,
-        'Connects the central district from southwest to northeast.',
-      ],
-      distractors: [`${place} North Way`, `${place} South Blvd`, `${place} East Ave`],
-      difficulty: 'easy',
-    },
-    {
-      id: 'local_feat_square',
-      name: `${place} Civic Plaza`,
-      type: 'square',
-      cityId: 'my_location',
-      center: [lat + r * 0.25, lon - r * 0.2],
-      radius: 90,
-      funFact: `The main gathering square and civic open space in ${place}.`,
-      clues: [
-        `Prominent public square located in north-western ${place}.`,
-        'Popular community plaza surrounded by local cafes.',
-      ],
-      distractors: [`${place} Market Square`, `${place} Station Plaza`, `${place} Town Green`],
-      difficulty: 'medium',
-    },
-    {
-      id: 'local_feat_park',
-      name: `${place} Green Park`,
-      type: 'park',
-      cityId: 'my_location',
-      center: [lat - r * 0.3, lon + r * 0.35],
-      radius: 120,
-      funFact: `The premier botanical and recreation park of ${place}.`,
-      clues: [
-        `A lush green haven situated in the south-east of ${place}.`,
-        'Features walking paths, mature trees, and community gardens.',
-      ],
-      distractors: [`${place} Botanical Gardens`, `${place} Common`, `${place} Nature Reserve`],
-      difficulty: 'medium',
-    },
-    {
-      id: 'local_feat_water',
-      name: `${place} Waterfront Canal`,
-      type: 'canal',
-      cityId: 'my_location',
-      center: [lat + r * 0.1, lon + r * 0.4],
-      path: [
-        [lat - r * 0.2, lon + r * 0.35],
-        [lat + r * 0.1, lon + r * 0.4],
-        [lat + r * 0.35, lon + r * 0.42],
-      ],
-      funFact: `The historic waterway channel flowing along the eastern edge of ${place}.`,
-      clues: [
-        `Scenic canal waterway located on the eastern side of ${place}.`,
-        'Historic water passage with tree-lined pedestrian promenades.',
-      ],
-      distractors: [`${place} River Channel`, `${place} Marina Basin`, `${place} Port Canal`],
-      difficulty: 'hard',
-    },
-    {
-      id: 'local_feat_avenue',
-      name: `${place} North Boulevard`,
-      type: 'avenue',
-      cityId: 'my_location',
-      center: [lat + r * 0.45, lon - r * 0.1],
-      path: [
-        [lat + r * 0.42, lon - r * 0.45],
-        [lat + r * 0.45, lon - r * 0.1],
-        [lat + r * 0.48, lon + r * 0.35],
-      ],
-      funFact: `Major northern thoroughfare bounding ${place}.`,
-      clues: [
-        `Broad avenue running east-west across the northern portion of ${place}.`,
-        'Main commercial road lined with shops and transport stops.',
-      ],
-      distractors: [`${place} South Highway`, `${place} Ring Road`, `${place} West Parkway`],
-      difficulty: 'hard',
-    },
-  ];
 }
