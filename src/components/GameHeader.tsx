@@ -14,6 +14,7 @@ import {
   Ruler,
   Filter,
   Database,
+  Search,
 } from 'lucide-react';
 import { sounds } from '../utils/audio';
 
@@ -49,6 +50,7 @@ interface GameHeaderProps {
   administrativeAreas?: AdministrativeArea[];
   selectedAdministrativeAreaId?: number | null;
   onSelectAdministrativeArea?: (areaId: number | null) => void;
+  onSearchLocation?: (query: string) => Promise<void>;
 }
 
 export const GameHeader: React.FC<GameHeaderProps> = ({
@@ -83,9 +85,11 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   administrativeAreas = [],
   selectedAdministrativeAreaId,
   onSelectAdministrativeArea,
+  onSearchLocation,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchAreaOpen, setIsSearchAreaOpen] = useState(false);
+  const [locationQuery, setLocationQuery] = useState('');
 
   // Compute feature counts per category for the current city
   const categoryCounts = useMemo(() => {
@@ -304,6 +308,31 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             <span className="text-sm font-bold flex items-center gap-2"><Ruler className="w-4 h-4 text-cyan-400" />Search area</span>
             <button onClick={() => setIsSearchAreaOpen(false)} className="text-slate-400 hover:text-white cursor-pointer"><X className="w-4 h-4" /></button>
           </div>
+          <form
+            onSubmit={async (event) => {
+              event.preventDefault();
+              if (!locationQuery.trim() || !onSearchLocation) return;
+              await onSearchLocation(locationQuery.trim());
+              setIsSearchAreaOpen(false);
+            }}
+            className="flex gap-1.5"
+          >
+            <input
+              value={locationQuery}
+              onChange={(event) => setLocationQuery(event.target.value)}
+              placeholder="City, address, or postcode"
+              aria-label="Search location"
+              className="min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs text-white placeholder:text-slate-500 focus:border-cyan-500 focus:outline-none"
+            />
+            <button
+              type="submit"
+              disabled={!locationQuery.trim() || isLocating}
+              className="rounded-xl bg-cyan-600 px-3 text-white hover:bg-cyan-500 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
+              title="Find this location using the selected radius"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+          </form>
           <div className="grid grid-cols-5 gap-1">
             {[1000, 2200, 4500, 8000, 15000].map((radius) => (
               <button
@@ -580,9 +609,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <div className="grid grid-cols-2 gap-1.5">
                 {(
                   [
-                    { id: 'light_nolabels', label: 'Carto Light (Clean)' },
-                    { id: 'voyager', label: 'Carto Voyager' },
-                    { id: 'dark', label: 'Carto Dark Matter' },
+                    { id: 'light_nolabels', label: 'CARTO Positron' },
+                    { id: 'voyager', label: 'CARTO Voyager' },
+                    { id: 'dark', label: 'CARTO Dark Matter' },
                     { id: 'osm', label: 'OpenStreetMap' },
                   ] as const
                 ).map((t) => (

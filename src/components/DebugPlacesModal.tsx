@@ -92,7 +92,6 @@ export const DebugPlacesModal: React.FC<DebugPlacesModalProps> = ({
   const filteredFeatures = totalAvailableInCity.filter((feat) => {
     const matchesSearch =
       feat.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      feat.funFact.toLowerCase().includes(searchQuery.toLowerCase()) ||
       feat.clues.some((c) => c.toLowerCase().includes(searchQuery.toLowerCase()));
 
     const catConfig = FEATURE_CATEGORIES.find((c) => c.id === selectedCategory);
@@ -471,7 +470,6 @@ export const DebugPlacesModal: React.FC<DebugPlacesModalProps> = ({
                             )}
                           </div>
 
-                          <p className="text-[11px] text-slate-300 mt-1 line-clamp-2">{feat.funFact}</p>
                         </div>
 
                         <div className="flex items-center justify-between text-[10px] text-slate-400 pt-2 border-t border-slate-800/60 font-mono">

@@ -8,6 +8,8 @@ import {
 } from './featureCache';
 
 interface NominatimResponse {
+  lat?: string;
+  lon?: string;
   address?: {
     city?: string;
     town?: string;
@@ -25,6 +27,46 @@ interface NominatimResponse {
     road?: string;
   };
   display_name?: string;
+}
+
+export interface GeocodedSearchResult {
+  name: string;
+  lat: number;
+  lon: number;
+  boundingBox?: [number, number, number, number];
+}
+
+export async function geocodeLocationSearch(query: string): Promise<GeocodedSearchResult | null> {
+  const normalized = query.trim();
+  if (!normalized) return null;
+  const cacheKey = `guess_map_forward_geo_v1_${normalized.toLowerCase()}`;
+  try {
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) return JSON.parse(cached);
+  } catch {
+    // Continue without storage.
+  }
+
+  const response = await fetch(
+    `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=1&q=${encodeURIComponent(normalized)}`,
+    { headers: { 'Accept-Language': 'en' } }
+  );
+  if (!response.ok) throw new Error(`Location search failed (${response.status})`);
+  const results = await response.json();
+  const first = results[0];
+  if (!first?.lat || !first?.lon) return null;
+  const result: GeocodedSearchResult = {
+    name: first.display_name || normalized,
+    lat: Number(first.lat),
+    lon: Number(first.lon),
+    boundingBox: first.boundingbox?.map(Number),
+  };
+  try {
+    localStorage.setItem(cacheKey, JSON.stringify(result));
+  } catch {
+    // Continue without storage.
+  }
+  return result;
 }
 
 export interface OverpassElement {
@@ -384,20 +426,13 @@ export async function fetchCategorySpecificOSMFeatures(
   const categoryName = FEATURE_CATEGORIES.find((c) => c.id === category)?.label || 'Features';
   const overpassQuery = buildOverpassQuery(lat, lon, radius, category, areaId);
   const startTime = Date.now();
-  const minimumUsefulCount: Record<FeatureCategory, number> = {
-    all: 25,
-    water: 20,
-    streets: 25,
-    bridges: 10,
-    squares: 8,
-    parks: 8,
-    landmarks: 10,
-  };
-
   // 1. Check local persistent cache
   if (!forceRefresh) {
     const cached = getCachedOSMFeatures(lat, lon, scope, category, areaId || radius);
-    if (cached && cached.features.length >= minimumUsefulCount[category]) {
+    // An exact completed query is authoritative even when the area genuinely
+    // contains only a few matches. Synthetic timeout fallbacks remain eligible
+    // for a live retry instead of masquerading as an Overpass result.
+    if (cached && cached.features.length > 0 && cached.entry.source !== 'fallback') {
       // Record cache hit in search history
       addSearchHistoryEntry({
         timestamp: Date.now(),
@@ -501,7 +536,7 @@ export async function fetchCategorySpecificOSMFeatures(
 
   // If live query failed, return fallback features and cache them
   const fallbackFeatures = generateFallbackLocalFeatures(lat, lon, locationName, scope);
-  setCachedOSMFeatures(lat, lon, scope, category, locationName, fallbackFeatures, 60 * 60 * 1000, areaId || radius); // short-lived fallback
+  setCachedOSMFeatures(lat, lon, scope, category, locationName, fallbackFeatures, 60 * 60 * 1000, areaId || radius, 'fallback'); // short-lived fallback
 
   addSearchHistoryEntry({
     timestamp: Date.now(),
@@ -863,11 +898,9 @@ export function parseOverpassElements(
       paths,
       radius: !path && (type === 'square' || type === 'park') ? 80 : undefined,
       funFact: `Located in ${locationName}. A prominent ${typeLabel.toLowerCase()} in the urban geography.`,
-      clues: [
-        `Key ${typeLabel} located in ${locationName}.`,
-        `Explore the local geography around ${cleanName}.`,
-        `Type: ${typeLabel} in ${locationName}.`,
-      ],
+      // Spatial hints are derived at play time from the actual geometry and
+      // active search center; OSM does not provide reliable authored trivia.
+      clues: [],
       distractors: [],
       difficulty: 'medium',
     };

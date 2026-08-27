@@ -328,9 +328,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="grid grid-cols-2 gap-2">
               {(
                 [
-                  { id: 'light_nolabels', label: 'Carto Light (Clean)' },
-                  { id: 'voyager', label: 'Carto Voyager' },
-                  { id: 'dark', label: 'Carto Dark Matter' },
+                  { id: 'light_nolabels', label: 'CARTO Positron' },
+                  { id: 'voyager', label: 'CARTO Voyager' },
+                  { id: 'dark', label: 'CARTO Dark Matter' },
                   { id: 'osm', label: 'OpenStreetMap' },
                 ] as const
               ).map((t) => (

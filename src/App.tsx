@@ -14,7 +14,7 @@ import {
 } from './types';
 import { CITIES } from './data/cities';
 import { calculateShortestDistanceToFeature, calculatePinpointScore } from './utils/geo';
-import { reverseGeocodeLocation, fetchLocalOSMFeatures, fetchCategorySpecificOSMFeatures, fetchContainingAdministrativeAreas } from './utils/osm';
+import { reverseGeocodeLocation, fetchLocalOSMFeatures, fetchCategorySpecificOSMFeatures, fetchContainingAdministrativeAreas, geocodeLocationSearch } from './utils/osm';
 import { sounds } from './utils/audio';
 import confetti from 'canvas-confetti';
 
@@ -27,20 +27,46 @@ import { SettingsModal } from './components/SettingsModal';
 import { LoadingProgressModal } from './components/LoadingProgressModal';
 import { DebugPlacesModal } from './components/DebugPlacesModal';
 
+const urlParams = new URLSearchParams(window.location.search);
+const validValue = <T extends string>(value: string | null, options: readonly T[], fallback: T): T =>
+  value && options.includes(value as T) ? (value as T) : fallback;
+const numberParam = (name: string, fallback: number, minimum: number, maximum: number) => {
+  const value = Number(urlParams.get(name));
+  return Number.isFinite(value) && value >= minimum && value <= maximum ? value : fallback;
+};
+const bookmarkedLatitude = Number(urlParams.get('lat'));
+const bookmarkedLongitude = Number(urlParams.get('lon'));
+const hasBookmarkedCoordinates = Number.isFinite(bookmarkedLatitude) && Number.isFinite(bookmarkedLongitude)
+  && bookmarkedLatitude >= -90 && bookmarkedLatitude <= 90
+  && bookmarkedLongitude >= -180 && bookmarkedLongitude <= 180;
+const bookmarkedAreaId = numberParam('area', 0, 1, Number.MAX_SAFE_INTEGER) || null;
+
 export default function App() {
   // Config state - Label-less base map by default
-  const [currentCityId, setCurrentCityId] = useState<string>('my_location');
-  const [customLocationCity, setCustomLocationCity] = useState<City | null>(null);
-  const [locationScope, setLocationScope] = useState<LocationScope>('city');
-  const [searchRadiusMeters, setSearchRadiusMeters] = useState<number>(4500);
+  const initialCityId = urlParams.get('city') || (hasBookmarkedCoordinates ? 'my_location' : 'my_location');
+  const [currentCityId, setCurrentCityId] = useState<string>(initialCityId);
+  const [customLocationCity, setCustomLocationCity] = useState<City | null>(() => hasBookmarkedCoordinates ? {
+    id: 'my_location',
+    name: urlParams.get('place') || 'Bookmarked location',
+    country: '',
+    countryCode: '',
+    center: [bookmarkedLatitude, bookmarkedLongitude],
+    defaultZoom: 12,
+    minZoom: 3,
+    maxZoom: 18,
+    description: 'Location restored from this URL.',
+    features: [],
+  } : null);
+  const [locationScope, setLocationScope] = useState<LocationScope>(() => validValue(urlParams.get('scope'), ['neighborhood', 'city', 'region'] as const, 'city'));
+  const [searchRadiusMeters, setSearchRadiusMeters] = useState<number>(() => numberParam('radius', 4500, 250, 50000));
   const [administrativeAreas, setAdministrativeAreas] = useState<AdministrativeArea[]>([]);
-  const [selectedAdministrativeAreaId, setSelectedAdministrativeAreaId] = useState<number | null>(null);
-  const [gameMode, setGameMode] = useState<GameMode>('pinpoint');
-  const [selectedCategory, setSelectedCategory] = useState<FeatureCategory>('all');
-  const [roundsPerGame, setRoundsPerGame] = useState<number>(5);
-  const [blindMapMode, setBlindMapMode] = useState<boolean>(true); // Label-less by default
-  const [tileStyle, setTileStyle] = useState<TileStyle>('light_nolabels'); // Clean label-less
-  const [unit, setUnit] = useState<DistanceUnit>('metric');
+  const [selectedAdministrativeAreaId, setSelectedAdministrativeAreaId] = useState<number | null>(bookmarkedAreaId);
+  const [gameMode, setGameMode] = useState<GameMode>(() => validValue(urlParams.get('mode'), ['pinpoint', 'guess_name'] as const, 'pinpoint'));
+  const [selectedCategory, setSelectedCategory] = useState<FeatureCategory>(() => validValue(urlParams.get('category'), FEATURE_CATEGORIES.map(({ id }) => id), 'all'));
+  const [roundsPerGame, setRoundsPerGame] = useState<number>(() => Math.round(numberParam('rounds', 5, 1, 50)));
+  const [blindMapMode, setBlindMapMode] = useState<boolean>(() => urlParams.get('labels') !== 'on'); // Label-less by default
+  const [tileStyle, setTileStyle] = useState<TileStyle>(() => validValue(urlParams.get('map'), ['voyager', 'light_nolabels', 'osm', 'dark'] as const, 'light_nolabels'));
+  const [unit, setUnit] = useState<DistanceUnit>(() => validValue(urlParams.get('unit'), ['metric', 'imperial'] as const, 'metric'));
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isDebugPlacesOpen, setIsDebugPlacesOpen] = useState<boolean>(false);
@@ -55,6 +81,30 @@ export default function App() {
   const initialLocationRequestedRef = useRef(false);
   const activeSearchRef = useRef<string | null>(null);
   const administrativeLookupRef = useRef<string | null>(null);
+
+  // Keep the complete quiz setup bookmarkable without polluting browser history
+  // for every toolbar adjustment. Coordinates make searched/device locations
+  // reproducible without requesting geolocation again.
+  useEffect(() => {
+    const params = new URLSearchParams();
+    params.set('city', currentCityId);
+    params.set('mode', gameMode);
+    params.set('category', selectedCategory);
+    params.set('rounds', String(roundsPerGame));
+    params.set('scope', locationScope);
+    params.set('radius', String(searchRadiusMeters));
+    params.set('map', tileStyle);
+    params.set('labels', blindMapMode ? 'off' : 'on');
+    params.set('unit', unit);
+    if (selectedAdministrativeAreaId) params.set('area', String(selectedAdministrativeAreaId));
+    if (currentCityId === 'my_location' && customLocationCity) {
+      params.set('lat', customLocationCity.center[0].toFixed(6));
+      params.set('lon', customLocationCity.center[1].toFixed(6));
+      params.set('place', customLocationCity.name);
+    }
+    const nextUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
+    window.history.replaceState(null, '', nextUrl);
+  }, [currentCityId, gameMode, selectedCategory, roundsPerGame, locationScope, searchRadiusMeters, tileStyle, blindMapMode, unit, selectedAdministrativeAreaId, customLocationCity]);
 
   // Combine custom location city with predefined cities, applying dynamically fetched OSM features
   const allCities: City[] = useMemo(() => {
@@ -119,7 +169,9 @@ export default function App() {
       const municipality = [8, 7, 6]
         .map((level) => areas.find((area) => area.adminLevel === level))
         .find(Boolean);
-      setSelectedAdministrativeAreaId(municipality?.id || null);
+      setSelectedAdministrativeAreaId((current) => current && areas.some((area) => area.id === current)
+        ? current
+        : municipality?.id || null);
     });
 
     return () => {
@@ -321,6 +373,7 @@ export default function App() {
   useEffect(() => {
     if (initialLocationRequestedRef.current) return;
     initialLocationRequestedRef.current = true;
+    if (hasBookmarkedCoordinates || urlParams.has('city')) return;
     detectUserLocation(false, 'city');
   }, [detectUserLocation]);
 
@@ -414,16 +467,72 @@ export default function App() {
     [userLocation, currentCity, customLocationCity, currentCityId, locationScope, searchRadiusMeters, selectedAdministrativeAreaId, gameMode, resetGame]
   );
 
+  const restoredQuizLoadedRef = useRef(false);
+  useEffect(() => {
+    if (restoredQuizLoadedRef.current || !urlParams.has('category') || currentCity.features.length > 0) return;
+    restoredQuizLoadedRef.current = true;
+    handleRefetchCategory(selectedCategory, false, searchRadiusMeters, selectedAdministrativeAreaId);
+  }, [currentCity.features.length, handleRefetchCategory, searchRadiusMeters, selectedAdministrativeAreaId, selectedCategory]);
+
   const handleChangeSearchRadius = (radiusMeters: number) => {
     if (radiusMeters === searchRadiusMeters || isLocating) return;
     setSearchRadiusMeters(radiusMeters);
     setSelectedAdministrativeAreaId(null);
-    handleRefetchCategory(selectedCategory, false, radiusMeters, null);
   };
 
   const handleSelectAdministrativeArea = (areaId: number | null) => {
     setSelectedAdministrativeAreaId(areaId);
     handleRefetchCategory(selectedCategory, false, searchRadiusMeters, areaId);
+  };
+
+  const handleSearchLocation = async (query: string) => {
+    if (isLocating) return;
+    setIsLocating(true);
+    setLoadingProgress({ percent: 15, message: 'Finding location…', subMessage: query });
+    try {
+      const result = await geocodeLocationSearch(query);
+      if (!result) throw new Error('No matching location found');
+      const coords: [number, number] = [result.lat, result.lon];
+      setUserLocation(coords);
+      setSelectedAdministrativeAreaId(null);
+      setLoadingProgress({ percent: 30, message: 'Discovering local boundaries…', subMessage: result.name });
+      const areas = await fetchContainingAdministrativeAreas(result.lat, result.lon);
+      setAdministrativeAreas(areas);
+
+      const features = await fetchCategorySpecificOSMFeatures(
+        result.lat,
+        result.lon,
+        result.name,
+        selectedCategory,
+        locationScope,
+        setLoadingProgress,
+        false,
+        searchRadiusMeters
+      );
+      const city: City = {
+        id: 'my_location',
+        name: `🔎 ${result.name.split(',')[0]}`,
+        country: result.name,
+        countryCode: '',
+        center: coords,
+        defaultZoom: searchRadiusMeters <= 2200 ? 14 : searchRadiusMeters <= 8000 ? 12 : 10,
+        minZoom: 3,
+        maxZoom: 18,
+        description: `Search results within ${(searchRadiusMeters / 1000).toFixed(1)} km of ${result.name}.`,
+        features,
+      };
+      setCustomLocationCity(city);
+      setCityOverpassFeatures((previous) => ({ ...previous, my_location: features }));
+      resetGame('my_location', gameMode, selectedCategory);
+      setLocationToast(`Loaded ${features.length} features near ${result.name.split(',')[0]}`);
+      setTimeout(() => setLocationToast(null), 4000);
+    } catch (error) {
+      setLocationToast(error instanceof Error ? error.message : 'Could not find that location');
+      setTimeout(() => setLocationToast(null), 4000);
+    } finally {
+      setIsLocating(false);
+      setLoadingProgress(null);
+    }
   };
 
   // Keyboard shortcut (Shift+D or ~) to toggle Debug Places
@@ -481,7 +590,8 @@ export default function App() {
     return calculateShortestDistanceToFeature(
       userPinnedLocation,
       currentFeature.center,
-      currentFeature.path
+      currentFeature.path,
+      currentFeature.paths
     );
   }, [currentFeature, userPinnedLocation]);
 
@@ -492,7 +602,8 @@ export default function App() {
     const distMeters = calculateShortestDistanceToFeature(
       userPinnedLocation,
       currentFeature.center,
-      currentFeature.path
+      currentFeature.path,
+      currentFeature.paths
     );
     const scoreResult = calculatePinpointScore(distMeters);
     const timeSpent = Date.now() - timeRoundStarted;
@@ -630,6 +741,7 @@ export default function App() {
         administrativeAreas={administrativeAreas}
         selectedAdministrativeAreaId={selectedAdministrativeAreaId}
         onSelectAdministrativeArea={handleSelectAdministrativeArea}
+        onSearchLocation={handleSearchLocation}
       />
 
       {/* Main Map Viewport & Overlays */}
@@ -720,6 +832,7 @@ export default function App() {
             unit={unit}
             roundNumber={currentRoundIndex + 1}
             totalRounds={featuresForGame.length}
+            searchCenter={searchBoundary?.center || currentCity.center}
           />
         )}
 
