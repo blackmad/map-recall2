@@ -5,6 +5,8 @@ import { CheckCircle2, XCircle, Info, Sparkles, ChevronUp, ChevronDown, Eye, Hel
 interface GuessNameModeOverlayProps {
   currentFeature: StreetFeature;
   onSelectGuess: (selectedName: string) => void;
+  onNoIdea: () => void;
+  wasSkipped: boolean;
   selectedGuessName: string | null;
   isRoundComplete: boolean;
   onNextRound: () => void;
@@ -39,6 +41,8 @@ function getFeatureTypeBadge(type: string) {
 export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
   currentFeature,
   onSelectGuess,
+  onNoIdea,
+  wasSkipped,
   selectedGuessName,
   isRoundComplete,
   onNextRound,
@@ -140,6 +144,12 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 </button>
               ))}
             </div>
+            <button
+              onClick={onNoIdea}
+              className="w-full py-2 text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800/80 rounded-xl border border-slate-700/70 transition cursor-pointer"
+            >
+              No idea — reveal the answer
+            </button>
           </div>
         ) : (
           /* COMPLETED ROUND FEEDBACK CARD */
@@ -167,7 +177,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                         isCorrect ? 'text-emerald-400' : 'text-rose-400'
                       }`}
                     >
-                      {isCorrect ? 'Correct!' : 'Incorrect!'}
+                      {wasSkipped ? 'Skipped' : isCorrect ? 'Correct!' : 'Incorrect!'}
                     </h2>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-200 font-bold truncate">
@@ -190,7 +200,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                   onClick={onNextRound}
                   className="px-4 sm:px-5 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-400 text-white font-black text-xs sm:text-sm rounded-xl sm:rounded-2xl shadow-lg shadow-blue-500/30 flex items-center gap-1.5 transition cursor-pointer hover:scale-105 active:scale-95"
                 >
-                  <span>{isLastRound ? 'See Final Score 🏆' : 'Next Round ➔'}</span>
+                  <span>{isLastRound ? 'See Final Score 🏆' : 'Next ➔'}</span>
                 </button>
               </div>
             </div>

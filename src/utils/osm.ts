@@ -1,4 +1,4 @@
-import { StreetFeature, LocationScope, LoadingProgress, FeatureCategory, FEATURE_CATEGORIES } from '../types';
+import { StreetFeature, LocationScope, LoadingProgress, FeatureCategory, FEATURE_CATEGORIES, AdministrativeArea } from '../types';
 import {
   getCachedOSMFeatures,
   setCachedOSMFeatures,
@@ -28,7 +28,7 @@ interface NominatimResponse {
 }
 
 export interface OverpassElement {
-  type: 'way' | 'node' | 'relation';
+  type: 'way' | 'node' | 'relation' | 'area';
   id: number;
   lat?: number;
   lon?: number;
@@ -58,6 +58,10 @@ export interface OverpassElement {
     place?: string;
     landuse?: string;
     description?: string;
+    boundary?: string;
+    admin_level?: string;
+    wikidata?: string;
+    wikipedia?: string;
   };
 }
 
@@ -104,9 +108,12 @@ export async function reverseGeocodeLocation(
     const country = addr.country || 'Local Area';
     const countryCode = (addr.country_code || 'LOC').toUpperCase();
 
-    const name = scope === 'neighborhood' ? (neighborhood !== city ? `${city} - ${neighborhood}` : neighborhood) : city;
-    const radiusMeters = scope === 'neighborhood' ? 2200 : 4500;
-    const defaultZoom = scope === 'neighborhood' ? 15 : 13;
+    const region = addr.state || addr.county || city;
+    const name = scope === 'neighborhood'
+      ? (neighborhood !== city ? `${city} - ${neighborhood}` : neighborhood)
+      : scope === 'region' ? region : city;
+    const radiusMeters = scope === 'neighborhood' ? 2200 : scope === 'region' ? 15000 : 4500;
+    const defaultZoom = scope === 'neighborhood' ? 15 : scope === 'region' ? 10 : 13;
 
     const result: GeocodedLocation = {
       name,
@@ -130,8 +137,8 @@ export async function reverseGeocodeLocation(
       country: 'Current Area',
       countryCode: 'LOC',
       scope,
-      radiusMeters: scope === 'neighborhood' ? 2200 : 4500,
-      defaultZoom: scope === 'neighborhood' ? 15 : 13,
+      radiusMeters: scope === 'neighborhood' ? 2200 : scope === 'region' ? 15000 : 4500,
+      defaultZoom: scope === 'neighborhood' ? 15 : scope === 'region' ? 10 : 13,
     };
   }
 }
@@ -143,6 +150,57 @@ export const OVERPASS_ENDPOINTS = [
   'https://overpass.private.coffee/api/interpreter',
 ];
 
+const ADMIN_CACHE_PREFIX = 'guess_map_admin_v1_';
+
+export async function fetchContainingAdministrativeAreas(lat: number, lon: number): Promise<AdministrativeArea[]> {
+  const cacheKey = `${ADMIN_CACHE_PREFIX}${lat.toFixed(3)}_${lon.toFixed(3)}`;
+  try {
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) return JSON.parse(cached);
+  } catch {
+    // Continue without persistent cache.
+  }
+
+  const query = `[out:json][timeout:20];
+is_in(${lat}, ${lon})->.containing;
+area.containing["boundary"="administrative"]["admin_level"]["name"];
+out tags bb;`;
+
+  for (const endpoint of OVERPASS_ENDPOINTS) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 20000);
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `data=${encodeURIComponent(query)}`,
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      if (!response.ok) continue;
+      const data = await response.json();
+      const areas: AdministrativeArea[] = (data.elements || [])
+        .map((element: OverpassElement) => ({
+          id: element.id,
+          name: element.tags?.name || '',
+          adminLevel: Number(element.tags?.admin_level),
+          bounds: element.bounds,
+        }))
+        .filter((area: AdministrativeArea) => area.name && Number.isFinite(area.adminLevel))
+        .sort((a: AdministrativeArea, b: AdministrativeArea) => b.adminLevel - a.adminLevel);
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify(areas));
+      } catch {
+        // Memory-only use is fine if storage is unavailable.
+      }
+      return areas;
+    } catch (error) {
+      console.warn(`Administrative area lookup failed on ${endpoint}:`, error);
+    }
+  }
+  return [];
+}
+
 /**
  * Builds Overpass QL query specifically targeting categories or all features.
  */
@@ -150,26 +208,33 @@ export function buildOverpassQuery(
   lat: number,
   lon: number,
   radius: number,
-  category: FeatureCategory
+  category: FeatureCategory,
+  areaId?: number
 ): string {
+  const applyArea = (query: string) => {
+    if (!areaId) return query;
+    return query
+      .replace('\n(', `\narea(id:${areaId})->.searchArea;\n(`)
+      .split(`around:${radius}, ${lat}, ${lon}`).join('area.searchArea');
+  };
   if (category === 'water') {
-    return `[out:json][timeout:30];
+    // Quiz features must have names. Filtering at the server avoids downloading
+    // thousands of anonymous water polygons that the parser would discard.
+    return applyArea(`[out:json][timeout:45];
 (
-  way["waterway"~"canal|river|stream|drain|dock|ditch"](around:${radius}, ${lat}, ${lon});
-  relation["waterway"~"canal|river|stream|drain|dock|ditch"](around:${radius}, ${lat}, ${lon});
-  way["natural"="water"](around:${radius}, ${lat}, ${lon});
-  relation["natural"="water"](around:${radius}, ${lat}, ${lon});
-  way["water"~"canal|river|basin|moat|pond|lake|reflecting_pool|oxbow"](around:${radius}, ${lat}, ${lon});
-  relation["water"~"canal|river|basin|moat|pond|lake|reflecting_pool|oxbow"](around:${radius}, ${lat}, ${lon});
-  way["landuse"="basin"](around:${radius}, ${lat}, ${lon});
-  way["name"~"gracht|canal|burgwal|singel|river|amstel|dock|dok|vaart|wetering|haven|kade|water|dijk|schans|rak|diep|vliet|rijn|waal|maas|ij|gouw|watergang|kolk", i](around:${radius}, ${lat}, ${lon});
-  relation["name"~"gracht|canal|burgwal|singel|river|amstel|dock|dok|vaart|wetering|haven|kade|water|dijk|schans|rak|diep|vliet|rijn|waal|maas|ij|gouw|watergang|kolk", i](around:${radius}, ${lat}, ${lon});
+  way["waterway"~"canal|river|stream|drain|dock|ditch"]["name"](around:${radius}, ${lat}, ${lon});
+  relation["waterway"~"canal|river|stream|drain|dock|ditch"]["name"](around:${radius}, ${lat}, ${lon});
+  way["natural"="water"]["name"](around:${radius}, ${lat}, ${lon});
+  relation["natural"="water"]["name"](around:${radius}, ${lat}, ${lon});
+  way["water"~"canal|river|basin|moat|pond|lake|reflecting_pool|oxbow"]["name"](around:${radius}, ${lat}, ${lon});
+  relation["water"~"canal|river|basin|moat|pond|lake|reflecting_pool|oxbow"]["name"](around:${radius}, ${lat}, ${lon});
+  way["landuse"="basin"]["name"](around:${radius}, ${lat}, ${lon});
 );
-out body geom;`;
+out body geom;`);
   }
 
   if (category === 'bridges') {
-    return `[out:json][timeout:30];
+    return applyArea(`[out:json][timeout:30];
 (
   way["bridge"="yes"](around:${radius}, ${lat}, ${lon});
   way["man_made"="bridge"](around:${radius}, ${lat}, ${lon});
@@ -177,11 +242,11 @@ out body geom;`;
   relation["bridge"](around:${radius}, ${lat}, ${lon});
   way["name"~"brug|bridge|pont|ponte|brücke|viaduct", i](around:${radius}, ${lat}, ${lon});
 );
-out body geom;`;
+out body geom;`);
   }
 
   if (category === 'squares') {
-    return `[out:json][timeout:30];
+    return applyArea(`[out:json][timeout:30];
 (
   node["place"="square"](around:${radius}, ${lat}, ${lon});
   way["place"="square"](around:${radius}, ${lat}, ${lon});
@@ -190,30 +255,30 @@ out body geom;`;
   node["name"~"plein|square|place|piazza|platz|plaza|markt", i](around:${radius}, ${lat}, ${lon});
   way["name"~"plein|square|place|piazza|platz|plaza|markt", i](around:${radius}, ${lat}, ${lon});
 );
-out body geom;`;
+out body geom;`);
   }
 
   if (category === 'parks') {
-    return `[out:json][timeout:30];
+    return applyArea(`[out:json][timeout:30];
 (
   way["leisure"~"park|garden|nature_reserve"](around:${radius}, ${lat}, ${lon});
   relation["leisure"~"park|garden"](around:${radius}, ${lat}, ${lon});
   way["landuse"~"forest|meadow|grass"](around:${radius}, ${lat}, ${lon});
   node["leisure"~"park|garden"](around:${radius}, ${lat}, ${lon});
 );
-out body geom;`;
+out body geom;`);
   }
 
   if (category === 'streets') {
-    return `[out:json][timeout:30];
+    return applyArea(`[out:json][timeout:30];
 (
   way["highway"~"primary|secondary|tertiary|pedestrian|living_street|residential"]["name"](around:${radius}, ${lat}, ${lon});
 );
-out body geom;`;
+out body geom;`);
   }
 
   if (category === 'landmarks') {
-    return `[out:json][timeout:30];
+    return applyArea(`[out:json][timeout:30];
 (
   node["tourism"~"attraction|museum|viewpoint|monument|gallery"](around:${radius}, ${lat}, ${lon});
   way["tourism"~"attraction|museum"](around:${radius}, ${lat}, ${lon});
@@ -222,11 +287,11 @@ out body geom;`;
   node["amenity"~"theatre|arts_centre|townhall"](around:${radius}, ${lat}, ${lon});
   way["amenity"~"theatre|arts_centre|townhall"](around:${radius}, ${lat}, ${lon});
 );
-out body geom;`;
+out body geom;`);
   }
 
   // All features general mix
-  return `[out:json][timeout:30];
+  return applyArea(`[out:json][timeout:30];
 (
   way["highway"~"primary|secondary|tertiary|pedestrian|living_street"]["name"](around:${radius}, ${lat}, ${lon});
   way["waterway"~"canal|river|stream|dock"](around:${radius}, ${lat}, ${lon});
@@ -240,7 +305,7 @@ out body geom;`;
   node["tourism"~"attraction|museum|viewpoint|monument"]["name"](around:${radius}, ${lat}, ${lon});
   way["name"~"gracht|canal|burgwal|singel|river|amstel|dock|dok|vaart|wetering|haven|kade", i](around:${radius}, ${lat}, ${lon});
 );
-out body geom;`;
+out body geom;`);
 }
 
 /**
@@ -311,17 +376,28 @@ export async function fetchCategorySpecificOSMFeatures(
   category: FeatureCategory,
   scope: LocationScope = 'city',
   onProgress?: (progress: LoadingProgress) => void,
-  forceRefresh = false
+  forceRefresh = false,
+  radiusOverride?: number,
+  areaId?: number
 ): Promise<StreetFeature[]> {
-  const radius = scope === 'neighborhood' ? 2200 : 4500;
+  const radius = radiusOverride ?? (scope === 'neighborhood' ? 2200 : scope === 'region' ? 15000 : 4500);
   const categoryName = FEATURE_CATEGORIES.find((c) => c.id === category)?.label || 'Features';
-  const overpassQuery = buildOverpassQuery(lat, lon, radius, category);
+  const overpassQuery = buildOverpassQuery(lat, lon, radius, category, areaId);
   const startTime = Date.now();
+  const minimumUsefulCount: Record<FeatureCategory, number> = {
+    all: 25,
+    water: 20,
+    streets: 25,
+    bridges: 10,
+    squares: 8,
+    parks: 8,
+    landmarks: 10,
+  };
 
   // 1. Check local persistent cache
   if (!forceRefresh) {
-    const cached = getCachedOSMFeatures(lat, lon, scope, category);
-    if (cached && cached.features.length > 0) {
+    const cached = getCachedOSMFeatures(lat, lon, scope, category, areaId || radius);
+    if (cached && cached.features.length >= minimumUsefulCount[category]) {
       // Record cache hit in search history
       addSearchHistoryEntry({
         timestamp: Date.now(),
@@ -362,7 +438,9 @@ export async function fetchCategorySpecificOSMFeatures(
       });
 
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 12000);
+      // The query itself allows 45s. Give a healthy server enough client-side
+      // time to answer instead of aborting it at 12s and caching a fallback.
+      const timeoutId = setTimeout(() => controller.abort(), 30000);
 
       const res = await fetch(endpoint, {
         method: 'POST',
@@ -391,7 +469,7 @@ export async function fetchCategorySpecificOSMFeatures(
 
       if (features.length > 0) {
         // Save to persistent cache
-        setCachedOSMFeatures(lat, lon, scope, category, locationName, features);
+        setCachedOSMFeatures(lat, lon, scope, category, locationName, features, undefined, areaId || radius);
 
         // Record in Search History
         addSearchHistoryEntry({
@@ -423,7 +501,7 @@ export async function fetchCategorySpecificOSMFeatures(
 
   // If live query failed, return fallback features and cache them
   const fallbackFeatures = generateFallbackLocalFeatures(lat, lon, locationName, scope);
-  setCachedOSMFeatures(lat, lon, scope, category, locationName, fallbackFeatures, 24 * 60 * 60 * 1000); // 1 day fallback
+  setCachedOSMFeatures(lat, lon, scope, category, locationName, fallbackFeatures, 60 * 60 * 1000, areaId || radius); // short-lived fallback
 
   addSearchHistoryEntry({
     timestamp: Date.now(),
@@ -452,9 +530,11 @@ export async function fetchLocalOSMFeatures(
   locationName: string,
   scope: LocationScope = 'city',
   onProgress?: (progress: LoadingProgress) => void,
-  forceRefresh = false
+  forceRefresh = false,
+  radiusOverride?: number,
+  areaId?: number
 ): Promise<StreetFeature[]> {
-  return fetchCategorySpecificOSMFeatures(lat, lon, locationName, 'all', scope, onProgress, forceRefresh);
+  return fetchCategorySpecificOSMFeatures(lat, lon, locationName, 'all', scope, onProgress, forceRefresh, radiusOverride, areaId);
 }
 
 /**
@@ -612,6 +692,16 @@ export function parseOverpassElements(
   centerLat: number,
   centerLon: number
 ): StreetFeature[] {
+  const semanticClass = (element: OverpassElement): string => {
+    const tags = element.tags || {};
+    if (tags.waterway || tags.natural === 'water' || tags.water || tags.landuse === 'basin') return 'water';
+    if (tags.bridge || tags.man_made === 'bridge') return 'bridge';
+    if (tags.highway) return 'street';
+    if (tags.leisure || tags.landuse) return 'green';
+    if (tags.place === 'square' || tags.amenity === 'marketplace') return 'square';
+    return 'place';
+  };
+
   // Group elements by normalized lowercase name
   const nameGroups = new Map<
     string,
@@ -636,7 +726,9 @@ export function parseOverpassElements(
     if (/^[A-Z]?\d+$/.test(rawName)) continue;
 
     const cleanName = rawName.replace(/[\r\n\t]+/g, ' ').replace(/\s+/g, ' ');
-    const nameKey = cleanName.toLowerCase();
+    // A canal and an adjacent street often share a name (e.g. Singel). They
+    // must never be stitched into the same geometry.
+    const nameKey = `${cleanName.toLowerCase()}::${semanticClass(el)}`;
 
     if (!nameGroups.has(nameKey)) {
       nameGroups.set(nameKey, { cleanName, elements: [] });
@@ -645,6 +737,7 @@ export function parseOverpassElements(
   }
 
   const featureMap = new Map<string, StreetFeature>();
+  const prominenceScores = new Map<string, number>();
   const allNames: string[] = [];
 
   for (const [nameKey, group] of nameGroups.entries()) {
@@ -780,10 +873,36 @@ export function parseOverpassElements(
     };
 
     featureMap.set(nameKey, feat);
+
+    // OSM has no universal importance field. Rank by stable prominence proxies:
+    // linked reference data, relation membership, waterway class, and mapped
+    // geometry length. Fetching remains complete; this only orders the results.
+    const mappedLengthMeters = segments.reduce((total, segment) => {
+      for (let index = 1; index < segment.length; index++) {
+        total += distanceMeters(segment[index - 1], segment[index]);
+      }
+      return total;
+    }, 0);
+    const hasReference = groupElements.some((element) => element.tags?.wikidata || element.tags?.wikipedia);
+    const isRelation = groupElements.some((element) => element.type === 'relation');
+    const classBonus = tags.waterway === 'river' ? 35 : tags.waterway === 'canal' ? 30 : 0;
+    prominenceScores.set(
+      nameKey,
+      (hasReference ? 100 : 0) + (isRelation ? 50 : 0) + classBonus + Math.log10(Math.max(10, mappedLengthMeters)) * 10
+    );
   }
 
   // Populate rich distractors for each feature
-  const parsedFeatures = Array.from(featureMap.values());
+  const rankedFeatures = Array.from(featureMap.entries())
+    .sort((a, b) => (prominenceScores.get(b[0]) || 0) - (prominenceScores.get(a[0]) || 0))
+    .map(([, feature]) => feature);
+  const seenNames = new Set<string>();
+  const parsedFeatures = rankedFeatures.filter((feature) => {
+    const normalizedName = feature.name.toLowerCase().trim();
+    if (seenNames.has(normalizedName)) return false;
+    seenNames.add(normalizedName);
+    return true;
+  });
   for (const feat of parsedFeatures) {
     const sameType = parsedFeatures
       .filter((f) => f.name !== feat.name && f.type === feat.type)

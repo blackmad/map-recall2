@@ -18,6 +18,8 @@ interface PinpointModeOverlayProps {
   currentFeature: StreetFeature;
   userPinnedLocation: [number, number] | null;
   onConfirmGuess: () => void;
+  onNoIdea: () => void;
+  wasSkipped: boolean;
   isRoundComplete: boolean;
   distanceErrorMeters?: number;
   onNextRound: () => void;
@@ -54,6 +56,8 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   currentFeature,
   userPinnedLocation,
   onConfirmGuess,
+  onNoIdea,
+  wasSkipped,
   isRoundComplete,
   distanceErrorMeters = 0,
   onNextRound,
@@ -191,8 +195,14 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                 </div>
               </div>
 
-              {/* Primary Action Button */}
-              <button
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <button
+                  onClick={onNoIdea}
+                  className="px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-700 transition cursor-pointer"
+                >
+                  No idea
+                </button>
+                <button
                 id="confirm-pinpoint-btn"
                 disabled={!userPinnedLocation}
                 onClick={onConfirmGuess}
@@ -204,7 +214,8 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
               >
                 <span>Confirm Location</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+                </button>
+              </div>
             </div>
           </div>
         ) : (
@@ -223,14 +234,14 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
                       <h2 className={`text-sm sm:text-base font-black tracking-tight ${scoreResult.tierColor} truncate`}>
-                        {scoreResult.tierLabel}
+                        {wasSkipped ? 'Skipped' : scoreResult.tierLabel}
                       </h2>
                       <span className="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-200 border border-slate-700 font-mono font-bold">
-                        {scoreResult.accuracyPercentage}%
+                        {wasSkipped ? '0' : scoreResult.accuracyPercentage}%
                       </span>
                     </div>
                     <p className="text-xs text-amber-300 font-mono font-bold">
-                      Off by {formatDistance(distanceErrorMeters, unit)}
+                      {wasSkipped ? 'Answer revealed' : `Off by ${formatDistance(distanceErrorMeters, unit)}`}
                     </p>
                   </div>
                 </div>
@@ -239,7 +250,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                 <div className="flex items-center gap-3 flex-shrink-0">
                   <div className="text-right">
                     <div className="text-sm sm:text-base font-black text-amber-400 tracking-tight">
-                      +{scoreResult.score.toLocaleString()}{' '}
+                      +{wasSkipped ? '0' : scoreResult.score.toLocaleString()}{' '}
                       <span className="text-[10px] font-normal text-amber-300/70">PTS</span>
                     </div>
                   </div>
@@ -249,7 +260,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                     onClick={onNextRound}
                     className="px-4 sm:px-5 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-400 text-white font-black text-xs sm:text-sm rounded-xl sm:rounded-2xl shadow-lg shadow-blue-500/30 flex items-center gap-1.5 transition cursor-pointer hover:scale-105 active:scale-95"
                   >
-                    <span>{isLastRound ? 'See Final Score 🏆' : 'Next Round ➔'}</span>
+                    <span>{isLastRound ? 'See Final Score 🏆' : 'Next ➔'}</span>
                   </button>
                 </div>
               </div>

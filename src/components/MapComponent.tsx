@@ -3,7 +3,6 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { LocateFixed, Loader2 } from 'lucide-react';
 import { GameMode, StreetFeature, TileStyle, SearchBoundary } from '../types';
-import { formatDistance } from '../utils/geo';
 
 interface MapComponentProps {
   cityCenter: [number, number];
@@ -34,6 +33,7 @@ interface MapComponentProps {
     radiusMeters: number;
     label?: string;
     scope?: string;
+    bounds?: [[number, number], [number, number]];
   } | null;
   searchBoundary?: SearchBoundary | null;
   showSearchBoundary?: boolean;
@@ -152,37 +152,25 @@ export const MapComponent: React.FC<MapComponentProps> = ({
       mapInstanceRef.current.removeLayer(tileLayerRef.current);
     }
 
-    const cartoKey = import.meta.env.VITE_CARTO_API_KEY ? `?api_key=${encodeURIComponent(import.meta.env.VITE_CARTO_API_KEY)}` : '';
-    const hasCartoKey = Boolean(import.meta.env.VITE_CARTO_API_KEY);
-
     let tileUrl = '';
     let subdomains: string[] = ['a', 'b', 'c', 'd'];
 
     if (blindMapMode) {
       // Blind mode (label-less base map)
       if (tileStyle === 'dark') {
-        tileUrl = hasCartoKey 
-          ? `https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png${cartoKey}`
-          : 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+        tileUrl = 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png';
       } else {
-        // Light label-less basemap (clean, high-resolution, no label watermarks)
-        tileUrl = hasCartoKey
-          ? `https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png${cartoKey}`
-          : 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+        tileUrl = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
       }
       subdomains = ['a', 'b', 'c', 'd'];
     } else {
       // Standard labeled mode
       switch (tileStyle) {
         case 'dark':
-          tileUrl = hasCartoKey
-            ? `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png${cartoKey}`
-            : 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+          tileUrl = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
           break;
         case 'light_nolabels':
-          tileUrl = hasCartoKey
-            ? `https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png${cartoKey}`
-            : 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+          tileUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
           break;
         case 'osm':
         default:
@@ -233,43 +221,26 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     const activeBoundary = fetchingBoundary || (showSearchBoundary && searchBoundary ? searchBoundary : null);
     if (!activeBoundary) return;
 
-    const boundaryCircle = L.circle(activeBoundary.center, {
+    const boundaryShape = activeBoundary.bounds
+      ? L.rectangle(activeBoundary.bounds, {
+          color: '#7c3aed',
+          weight: fetchingBoundary ? 2.5 : 1.5,
+          dashArray: '8, 8',
+          fillColor: '#8b5cf6',
+          fillOpacity: fetchingBoundary ? 0.08 : 0.025,
+        })
+      : L.circle(activeBoundary.center, {
       radius: activeBoundary.radiusMeters,
       color: '#0284c7',
-      weight: 2.5,
+      weight: fetchingBoundary ? 2.5 : 1.5,
       dashArray: '8, 8',
       fillColor: '#38bdf8',
-      fillOpacity: 0.12,
+      fillOpacity: fetchingBoundary ? 0.1 : 0.035,
     });
-    group.addLayer(boundaryCircle);
-
-    const innerRadar = L.circle(activeBoundary.center, {
-      radius: activeBoundary.radiusMeters * 0.4,
-      color: '#38bdf8',
-      weight: 1.5,
-      dashArray: '4, 6',
-      fillColor: '#0ea5e9',
-      fillOpacity: 0.06,
-    });
-    group.addLayer(innerRadar);
-
-    const boundaryIcon = L.divIcon({
-      className: 'custom-map-icon',
-      html: `
-        <div class="px-3 py-1.5 rounded-xl bg-slate-900/95 text-cyan-300 font-bold text-xs shadow-2xl border border-cyan-500/50 backdrop-blur-md flex items-center gap-2 transform -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">
-          <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping inline-block"></span>
-          <span>🛰️ Overpass Search Boundary: ${(activeBoundary.radiusMeters / 1000).toFixed(1)} km (${activeBoundary.label || 'Search Zone'})</span>
-        </div>
-      `,
-      iconSize: [0, 0],
-      iconAnchor: [0, 0],
-    });
-    const labelMarker = L.marker(activeBoundary.center, { icon: boundaryIcon });
-    group.addLayer(labelMarker);
+    group.addLayer(boundaryShape);
 
     if (fetchingBoundary) {
-      const circleBounds = boundaryCircle.getBounds();
-      map.fitBounds(circleBounds, { padding: [40, 40], maxZoom: 14, animate: true });
+      map.fitBounds(boundaryShape.getBounds(), { padding: [40, 40], maxZoom: 14, animate: true });
     }
   }, [fetchingBoundary, searchBoundary, showSearchBoundary]);
 
@@ -539,25 +510,6 @@ export const MapComponent: React.FC<MapComponentProps> = ({
             opacity: 0.85,
           });
           group.addLayer(connectingLine);
-
-          // Distance midpoint badge
-          if (distanceErrorMeters !== undefined) {
-            const midLat = (userPinnedLocation[0] + currentFeature.center[0]) / 2;
-            const midLng = (userPinnedLocation[1] + currentFeature.center[1]) / 2;
-
-            const distBadgeIcon = L.divIcon({
-              className: 'custom-map-icon',
-              html: `
-                <div class="px-2.5 py-1 rounded-lg bg-slate-900/90 text-amber-300 font-mono font-bold text-xs shadow-md border border-amber-500/40 transform -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">
-                  📏 ${formatDistance(distanceErrorMeters)}
-                </div>
-              `,
-              iconSize: [0, 0],
-              iconAnchor: [0, 0],
-            });
-            const distMarker = L.marker([midLat, midLng], { icon: distBadgeIcon });
-            group.addLayer(distMarker);
-          }
 
           // Smoothly fit view to show both points with comfortable padding
           const bounds = L.latLngBounds([userPinnedLocation, currentFeature.center]);
