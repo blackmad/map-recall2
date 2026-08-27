@@ -1,0 +1,6 @@
+{
+  "name": "Map Quest: Street & Landmark Quiz",
+  "description": "Interactive street and landmark map quiz featuring both name-guessing and pinpoint location modes with precise visual accuracy feedback.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
