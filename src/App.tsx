@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import {
   GameMode,
   StreetFeature,
@@ -10,10 +10,11 @@ import {
   FEATURE_CATEGORIES,
   LocationScope,
   LoadingProgress,
+  AdministrativeArea,
 } from './types';
 import { CITIES } from './data/cities';
-import { calculateShortestDistanceToFeature, calculatePinpointScore, findNearestCity } from './utils/geo';
-import { reverseGeocodeLocation, fetchLocalOSMFeatures, fetchCategorySpecificOSMFeatures } from './utils/osm';
+import { calculateShortestDistanceToFeature, calculatePinpointScore } from './utils/geo';
+import { reverseGeocodeLocation, fetchLocalOSMFeatures, fetchCategorySpecificOSMFeatures, fetchContainingAdministrativeAreas } from './utils/osm';
 import { sounds } from './utils/audio';
 import confetti from 'canvas-confetti';
 
@@ -31,6 +32,9 @@ export default function App() {
   const [currentCityId, setCurrentCityId] = useState<string>('my_location');
   const [customLocationCity, setCustomLocationCity] = useState<City | null>(null);
   const [locationScope, setLocationScope] = useState<LocationScope>('city');
+  const [searchRadiusMeters, setSearchRadiusMeters] = useState<number>(4500);
+  const [administrativeAreas, setAdministrativeAreas] = useState<AdministrativeArea[]>([]);
+  const [selectedAdministrativeAreaId, setSelectedAdministrativeAreaId] = useState<number | null>(null);
   const [gameMode, setGameMode] = useState<GameMode>('pinpoint');
   const [selectedCategory, setSelectedCategory] = useState<FeatureCategory>('all');
   const [roundsPerGame, setRoundsPerGame] = useState<number>(5);
@@ -40,7 +44,7 @@ export default function App() {
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isDebugPlacesOpen, setIsDebugPlacesOpen] = useState<boolean>(false);
-  const [showSearchBoundary, setShowSearchBoundary] = useState<boolean>(false);
+  const [showSearchBoundary, setShowSearchBoundary] = useState<boolean>(true);
 
   // User Geolocation & Loading state
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
@@ -48,6 +52,9 @@ export default function App() {
   const [loadingProgress, setLoadingProgress] = useState<LoadingProgress | null>(null);
   const [locationToast, setLocationToast] = useState<string | null>(null);
   const [cityOverpassFeatures, setCityOverpassFeatures] = useState<Record<string, StreetFeature[]>>({});
+  const initialLocationRequestedRef = useRef(false);
+  const activeSearchRef = useRef<string | null>(null);
+  const administrativeLookupRef = useRef<string | null>(null);
 
   // Combine custom location city with predefined cities, applying dynamically fetched OSM features
   const allCities: City[] = useMemo(() => {
@@ -55,12 +62,15 @@ export default function App() {
     return baseList.map((city) => {
       const dynamicFeats = cityOverpassFeatures[city.id];
       if (dynamicFeats && dynamicFeats.length > 0) {
+        const osmOnlyFeatures = dynamicFeats.filter((feature) => feature.id.startsWith('osm_'));
         return {
           ...city,
-          features: dynamicFeats,
+          features: osmOnlyFeatures,
         };
       }
-      return city;
+      // Predefined city records provide location metadata only. Quiz geometry
+      // must come from OSM/cache; the old hand-authored paths were approximate.
+      return city.id === 'my_location' ? city : { ...city, features: [] };
     });
   }, [customLocationCity, cityOverpassFeatures]);
 
@@ -73,20 +83,49 @@ export default function App() {
   const searchBoundary = useMemo(() => {
     const coords = (currentCityId === 'my_location' && userLocation) ? userLocation : currentCity.center;
     if (!coords) return null;
-    const radiusMeters = locationScope === 'neighborhood' ? 2200 : 4500;
+    const radiusMeters = searchRadiusMeters;
     const placeName = currentCityId === 'my_location' ? (customLocationCity?.name || 'My Location') : currentCity.name;
+    const selectedArea = administrativeAreas.find((area) => area.id === selectedAdministrativeAreaId);
     return {
       center: coords,
       radiusMeters,
-      label: `${placeName}`,
+      label: `${placeName} • ${locationScope === 'city' ? 'city search' : 'neighborhood search'} • ${FEATURE_CATEGORIES.find((category) => category.id === selectedCategory)?.shortLabel || 'All Types'}`,
       scope: locationScope,
+      category: selectedCategory,
+      bounds: selectedArea?.bounds
+        ? [[selectedArea.bounds.minlat, selectedArea.bounds.minlon], [selectedArea.bounds.maxlat, selectedArea.bounds.maxlon]] as [[number, number], [number, number]]
+        : undefined,
     };
-  }, [userLocation, currentCity, customLocationCity, currentCityId, locationScope]);
+  }, [userLocation, currentCity, customLocationCity, currentCityId, locationScope, selectedCategory, searchRadiusMeters, administrativeAreas, selectedAdministrativeAreaId]);
 
   const fetchingBoundary = useMemo(() => {
     if (!isLocating && !loadingProgress) return null;
     return searchBoundary;
   }, [isLocating, loadingProgress, searchBoundary]);
+
+  // Predefined cities also need political hierarchy discovery. Previously this
+  // happened only in the device-geolocation path, leaving Amsterdam on 4.5 km.
+  useEffect(() => {
+    if (currentCityId === 'my_location') return;
+    const [lat, lon] = currentCity.center;
+    const lookupKey = `${lat.toFixed(3)}:${lon.toFixed(3)}`;
+    if (administrativeLookupRef.current === lookupKey) return;
+    administrativeLookupRef.current = lookupKey;
+
+    let cancelled = false;
+    fetchContainingAdministrativeAreas(lat, lon).then((areas) => {
+      if (cancelled) return;
+      setAdministrativeAreas(areas);
+      const municipality = [8, 7, 6]
+        .map((level) => areas.find((area) => area.adminLevel === level))
+        .find(Boolean);
+      setSelectedAdministrativeAreaId(municipality?.id || null);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [currentCityId, currentCity.center]);
 
   // Round & Gameplay state
   const [gameSeed, setGameSeed] = useState<number>(1);
@@ -95,6 +134,7 @@ export default function App() {
   const [userPinnedLocation, setUserPinnedLocation] = useState<[number, number] | null>(null);
   const [selectedGuessName, setSelectedGuessName] = useState<string | null>(null);
   const [isRoundComplete, setIsRoundComplete] = useState<boolean>(false);
+  const [wasRoundSkipped, setWasRoundSkipped] = useState<boolean>(false);
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
   const [timeRoundStarted, setTimeRoundStarted] = useState<number>(() => Date.now());
 
@@ -153,10 +193,14 @@ export default function App() {
             // 1. Get user's actual town/city, neighborhood, and country name
             const geoInfo = await reverseGeocodeLocation(lat, lon, targetScope);
             let placeName = geoInfo.name;
-
-            // Check if user is near one of our handcrafted cities
-            const nearest = findNearestCity(coords, CITIES);
-            const isNearCuratedCity = nearest.distanceMeters <= (targetScope === 'neighborhood' ? 12000 : 35000);
+            const containingAreas = await fetchContainingAdministrativeAreas(lat, lon);
+            setAdministrativeAreas(containingAreas);
+            const preferredLevels = targetScope === 'neighborhood' ? [10, 9] : targetScope === 'region' ? [4, 5, 6] : [8, 7, 6];
+            const preferredArea = preferredLevels
+              .map((level) => containingAreas.find((area) => area.adminLevel === level))
+              .find(Boolean);
+            setSelectedAdministrativeAreaId(preferredArea?.id || null);
+            if (preferredArea) placeName = preferredArea.name;
 
             // 2. Fetch real local streets, canals, bridges and landmarks from OSM
             const localFeatures = await fetchLocalOSMFeatures(
@@ -164,21 +208,13 @@ export default function App() {
               lon,
               placeName,
               targetScope,
-              (progress) => setLoadingProgress(progress)
+              (progress) => setLoadingProgress(progress),
+              false,
+              targetScope === 'neighborhood' ? 2200 : targetScope === 'region' ? 15000 : searchRadiusMeters,
+              preferredArea?.id
             );
 
-            // Combine with nearest curated city if close, avoiding duplicates
-            let combinedFeatures = [...localFeatures];
-            if (isNearCuratedCity && nearest.city.features) {
-              const existingNames = new Set(combinedFeatures.map((f) => f.name.toLowerCase()));
-              const curatedToAdd = nearest.city.features.filter(
-                (f) => !existingNames.has(f.name.toLowerCase())
-              );
-              combinedFeatures = [...combinedFeatures, ...curatedToAdd.slice(0, 15)];
-              if (!placeName.toLowerCase().includes(nearest.city.name.toLowerCase())) {
-                placeName = `${nearest.city.name} (${placeName})`;
-              }
-            }
+            const combinedFeatures = [...localFeatures];
 
             const myCity: City = {
               id: 'my_location',
@@ -205,6 +241,7 @@ export default function App() {
             setUserPinnedLocation(null);
             setSelectedGuessName(null);
             setIsRoundComplete(false);
+            setWasRoundSkipped(false);
             setIsGameOver(false);
             setTimeRoundStarted(Date.now());
 
@@ -266,12 +303,14 @@ export default function App() {
         }
       );
     },
-    [locationScope]
+    [locationScope, searchRadiusMeters]
   );
 
   // Scope change handler (Neighborhood vs City)
   const handleChangeLocationScope = (newScope: LocationScope) => {
+    if (newScope === locationScope || isLocating) return;
     setLocationScope(newScope);
+    setSearchRadiusMeters(newScope === 'neighborhood' ? 2200 : newScope === 'region' ? 15000 : 4500);
     sounds.playPinDrop();
     setLocationToast(`Switched scope to: ${newScope === 'neighborhood' ? '🏘️ Neighborhood' : '🏙️ Whole City'}`);
     setTimeout(() => setLocationToast(null), 3000);
@@ -280,6 +319,8 @@ export default function App() {
 
   // Default to current location on initial app load
   useEffect(() => {
+    if (initialLocationRequestedRef.current) return;
+    initialLocationRequestedRef.current = true;
     detectUserLocation(false, 'city');
   }, [detectUserLocation]);
 
@@ -302,6 +343,7 @@ export default function App() {
       setUserPinnedLocation(null);
       setSelectedGuessName(null);
       setIsRoundComplete(false);
+      setWasRoundSkipped(false);
       setIsGameOver(false);
       setTimeRoundStarted(Date.now());
     },
@@ -310,11 +352,16 @@ export default function App() {
 
   // Handle direct category refetch from Overpass OSM API
   const handleRefetchCategory = useCallback(
-    async (targetCategory: FeatureCategory, forceRefresh = false) => {
+    async (targetCategory: FeatureCategory, forceRefresh = false, radiusOverride?: number, areaIdOverride?: number | null) => {
       const coords = (currentCityId === 'my_location' && userLocation) ? userLocation : currentCity.center;
       if (!coords) return;
       const lat = coords[0];
       const lon = coords[1];
+      const effectiveRadius = radiusOverride ?? searchRadiusMeters;
+      const effectiveAreaId = areaIdOverride === undefined ? selectedAdministrativeAreaId : areaIdOverride;
+      const searchKey = `${lat.toFixed(4)}:${lon.toFixed(4)}:${locationScope}:${targetCategory}:${effectiveRadius}:${effectiveAreaId || 'circle'}`;
+      if (activeSearchRef.current === searchKey) return;
+      activeSearchRef.current = searchKey;
 
       setIsLocating(true);
       const catInfo = FEATURE_CATEGORIES.find((c) => c.id === targetCategory) || FEATURE_CATEGORIES[0];
@@ -334,25 +381,13 @@ export default function App() {
           targetCategory,
           locationScope,
           (prog) => setLoadingProgress(prog),
-          forceRefresh
+          forceRefresh,
+          effectiveRadius,
+          effectiveAreaId || undefined
         );
 
         if (newFeatures.length > 0) {
-          const curatedCity = CITIES.find((c) => c.id === currentCityId);
           let finalFeatures = [...newFeatures];
-
-          if (curatedCity && curatedCity.features) {
-            const curatedMatching =
-              targetCategory === 'all'
-                ? curatedCity.features
-                : curatedCity.features.filter((f) => catInfo.types.includes(f.type));
-
-            const curatedNameSet = new Set(curatedMatching.map((f) => f.name.toLowerCase().trim()));
-            const nonDuplicatesFromOSM = newFeatures.filter(
-              (f) => !curatedNameSet.has(f.name.toLowerCase().trim())
-            );
-            finalFeatures = [...curatedMatching, ...nonDuplicatesFromOSM];
-          }
 
           setCityOverpassFeatures((prev) => ({
             ...prev,
@@ -371,12 +406,25 @@ export default function App() {
       } catch (err) {
         console.error('Error refetching category features:', err);
       } finally {
+        if (activeSearchRef.current === searchKey) activeSearchRef.current = null;
         setIsLocating(false);
         setLoadingProgress(null);
       }
     },
-    [userLocation, currentCity, customLocationCity, currentCityId, locationScope, gameMode, resetGame]
+    [userLocation, currentCity, customLocationCity, currentCityId, locationScope, searchRadiusMeters, selectedAdministrativeAreaId, gameMode, resetGame]
   );
+
+  const handleChangeSearchRadius = (radiusMeters: number) => {
+    if (radiusMeters === searchRadiusMeters || isLocating) return;
+    setSearchRadiusMeters(radiusMeters);
+    setSelectedAdministrativeAreaId(null);
+    handleRefetchCategory(selectedCategory, false, radiusMeters, null);
+  };
+
+  const handleSelectAdministrativeArea = (areaId: number | null) => {
+    setSelectedAdministrativeAreaId(areaId);
+    handleRefetchCategory(selectedCategory, false, searchRadiusMeters, areaId);
+  };
 
   // Keyboard shortcut (Shift+D or ~) to toggle Debug Places
   useEffect(() => {
@@ -406,6 +454,7 @@ export default function App() {
 
   // Feature category change handler
   const handleSelectCategory = (newCategory: FeatureCategory) => {
+    if (newCategory === selectedCategory) return;
     setSelectedCategory(newCategory);
     const catInfo = FEATURE_CATEGORIES.find((c) => c.id === newCategory);
     if (catInfo && newCategory !== 'all') {
@@ -476,6 +525,21 @@ export default function App() {
     setIsRoundComplete(true);
   };
 
+  const handleNoIdea = () => {
+    if (!currentFeature || isRoundComplete) return;
+    sounds.playMiss();
+    const result: RoundResult = {
+      roundNumber: currentRoundIndex + 1,
+      feature: currentFeature,
+      gameMode,
+      pointsEarned: 0,
+      timeSpentMs: Date.now() - timeRoundStarted,
+    };
+    setRoundResults((previous) => [...previous, result]);
+    setWasRoundSkipped(true);
+    setIsRoundComplete(true);
+  };
+
   // Guess Name choice selection
   const handleSelectGuessName = (name: string) => {
     if (!currentFeature || isRoundComplete) return;
@@ -520,6 +584,7 @@ export default function App() {
       setUserPinnedLocation(null);
       setSelectedGuessName(null);
       setIsRoundComplete(false);
+      setWasRoundSkipped(false);
       setTimeRoundStarted(Date.now());
     }
   };
@@ -558,6 +623,13 @@ export default function App() {
         onChangeUnit={setUnit}
         locationScope={locationScope}
         onChangeLocationScope={handleChangeLocationScope}
+        searchRadiusMeters={searchBoundary?.radiusMeters}
+        showSearchBoundary={showSearchBoundary}
+        onToggleSearchBoundary={() => setShowSearchBoundary((visible) => !visible)}
+        onChangeSearchRadius={handleChangeSearchRadius}
+        administrativeAreas={administrativeAreas}
+        selectedAdministrativeAreaId={selectedAdministrativeAreaId}
+        onSelectAdministrativeArea={handleSelectAdministrativeArea}
       />
 
       {/* Main Map Viewport & Overlays */}
@@ -596,12 +668,51 @@ export default function App() {
           </div>
         )}
 
+        {/* Empty OSM dataset: require an explicit category before starting. */}
+        {!currentFeature && !isLocating && !isGameOver && (
+          <div className="absolute inset-0 z-20 flex items-center justify-center p-4 bg-slate-950/20 backdrop-blur-[1px]">
+            <div className="w-full max-w-lg rounded-2xl border border-slate-700/80 bg-slate-900/95 p-5 shadow-2xl backdrop-blur-md">
+              <div className="text-center mb-4">
+                <div className="text-2xl mb-1">🗺️</div>
+                <h2 className="text-lg font-bold text-white">Choose a category to start</h2>
+                <p className="mt-1 text-sm text-slate-400">
+                  Select what to load from OpenStreetMap for {currentCity.name}. Cached results will start instantly when available.
+                </p>
+                <p className="mt-1 text-xs text-cyan-300">
+                  Search area: {(searchRadiusMeters / 1000).toFixed(1)} km radius
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {FEATURE_CATEGORIES.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => {
+                      if (category.id === selectedCategory) {
+                        handleRefetchCategory(category.id, false);
+                      } else {
+                        handleSelectCategory(category.id);
+                      }
+                    }}
+                    className="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/90 px-3 py-2.5 text-left text-xs font-semibold text-slate-200 transition hover:border-blue-500 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+                  >
+                    <span className="text-base">{category.icon}</span>
+                    <span>{category.shortLabel}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Pinpoint Mode Overlay (Prompt + Feedback) */}
         {!isGameOver && gameMode === 'pinpoint' && currentFeature && (
           <PinpointModeOverlay
             currentFeature={currentFeature}
             userPinnedLocation={userPinnedLocation}
             onConfirmGuess={handleConfirmPinpoint}
+            onNoIdea={handleNoIdea}
+            wasSkipped={wasRoundSkipped}
             isRoundComplete={isRoundComplete}
             distanceErrorMeters={currentDistanceError}
             onNextRound={handleNextRound}
@@ -617,6 +728,8 @@ export default function App() {
           <GuessNameModeOverlay
             currentFeature={currentFeature}
             onSelectGuess={handleSelectGuessName}
+            onNoIdea={handleNoIdea}
+            wasSkipped={wasRoundSkipped}
             selectedGuessName={selectedGuessName}
             isRoundComplete={isRoundComplete}
             onNextRound={handleNextRound}
@@ -678,6 +791,11 @@ export default function App() {
         }}
         locationScope={locationScope}
         onChangeLocationScope={handleChangeLocationScope}
+        searchRadiusMeters={searchRadiusMeters}
+        onChangeSearchRadius={handleChangeSearchRadius}
+        administrativeAreas={administrativeAreas}
+        selectedAdministrativeAreaId={selectedAdministrativeAreaId}
+        onSelectAdministrativeArea={handleSelectAdministrativeArea}
       />
 
       {/* Debug Loaded Places Modal Dialog */}

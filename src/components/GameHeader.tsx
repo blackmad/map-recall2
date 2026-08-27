@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { GameMode, City, TileStyle, DistanceUnit, FeatureCategory, FEATURE_CATEGORIES, LocationScope } from '../types';
+import { GameMode, City, TileStyle, DistanceUnit, FeatureCategory, FEATURE_CATEGORIES, LocationScope, AdministrativeArea } from '../types';
 import {
   Compass,
   MapPin,
@@ -42,6 +42,13 @@ interface GameHeaderProps {
   onChangeUnit: (unit: DistanceUnit) => void;
   locationScope: LocationScope;
   onChangeLocationScope: (scope: LocationScope) => void;
+  searchRadiusMeters?: number;
+  showSearchBoundary?: boolean;
+  onToggleSearchBoundary?: () => void;
+  onChangeSearchRadius?: (radiusMeters: number) => void;
+  administrativeAreas?: AdministrativeArea[];
+  selectedAdministrativeAreaId?: number | null;
+  onSelectAdministrativeArea?: (areaId: number | null) => void;
 }
 
 export const GameHeader: React.FC<GameHeaderProps> = ({
@@ -69,8 +76,16 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   onChangeUnit,
   locationScope,
   onChangeLocationScope,
+  searchRadiusMeters,
+  showSearchBoundary,
+  onToggleSearchBoundary,
+  onChangeSearchRadius,
+  administrativeAreas = [],
+  selectedAdministrativeAreaId,
+  onSelectAdministrativeArea,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchAreaOpen, setIsSearchAreaOpen] = useState(false);
 
   // Compute feature counts per category for the current city
   const categoryCounts = useMemo(() => {
@@ -96,6 +111,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   }, [currentCity]);
 
   const activeCategoryInfo = FEATURE_CATEGORIES.find((c) => c.id === selectedCategory) || FEATURE_CATEGORIES[0];
+  const activeAdministrativeArea = administrativeAreas.find((area) => area.id === selectedAdministrativeAreaId);
   const isCustomLocation = currentCity.id === 'my_location';
 
   return (
@@ -135,17 +151,32 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <span className="absolute right-1.5 pointer-events-none text-[9px] text-slate-400">▼</span>
             </div>
 
+            {searchRadiusMeters && (
+              <button
+                onClick={() => setIsSearchAreaOpen((open) => !open)}
+                className={`hidden sm:flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-semibold border whitespace-nowrap transition cursor-pointer ${
+                  showSearchBoundary
+                    ? 'bg-cyan-950/70 text-cyan-200 border-cyan-700/60'
+                    : 'bg-slate-800/70 text-slate-400 border-slate-700/60'
+                }`}
+                title="Adjust search radius or administrative boundary"
+              >
+                <Ruler className="w-3 h-3" />
+                <span className="max-w-28 truncate">{activeAdministrativeArea ? activeAdministrativeArea.name : `${(searchRadiusMeters / 1000).toFixed(1)} km radius`}</span>
+              </button>
+            )}
+
             {/* If on custom location, quick Hood vs City Scope Toggle button */}
             {isCustomLocation && (
               <button
                 onClick={() => {
                   sounds.playPinDrop();
-                  onChangeLocationScope(locationScope === 'neighborhood' ? 'city' : 'neighborhood');
+                  onChangeLocationScope(locationScope === 'neighborhood' ? 'city' : locationScope === 'city' ? 'region' : 'neighborhood');
                 }}
-                title={`Switch scope to ${locationScope === 'neighborhood' ? 'Whole City' : 'Neighborhood'}`}
+                title="Cycle administrative scope"
                 className="flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold bg-blue-950/80 text-blue-300 border border-blue-500/50 hover:bg-blue-900 transition flex-shrink-0 cursor-pointer"
               >
-                <span>{locationScope === 'neighborhood' ? '🏘️ Hood' : '🏙️ City'}</span>
+                <span>{locationScope === 'neighborhood' ? '🏘️ Hood' : locationScope === 'region' ? '🗺️ Region' : '🏙️ City'}</span>
               </button>
             )}
 
@@ -168,7 +199,6 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     <option
                       key={cat.id}
                       value={cat.id}
-                      disabled={cat.id !== 'all' && count === 0}
                       className="bg-slate-900 text-white"
                     >
                       {cat.icon} {cat.shortLabel} {cat.id !== 'all' ? `(${count})` : ''}
@@ -268,6 +298,42 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
         </div>
       </header>
 
+      {isSearchAreaOpen && searchRadiusMeters && (
+        <div className="fixed top-14 sm:top-16 left-2 sm:left-1/2 sm:-translate-x-1/2 z-50 w-[calc(100%-1rem)] sm:w-80 rounded-2xl border border-slate-700 bg-slate-900/98 p-3.5 text-white shadow-2xl backdrop-blur-xl space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-bold flex items-center gap-2"><Ruler className="w-4 h-4 text-cyan-400" />Search area</span>
+            <button onClick={() => setIsSearchAreaOpen(false)} className="text-slate-400 hover:text-white cursor-pointer"><X className="w-4 h-4" /></button>
+          </div>
+          <div className="grid grid-cols-5 gap-1">
+            {[1000, 2200, 4500, 8000, 15000].map((radius) => (
+              <button
+                key={radius}
+                onClick={() => onChangeSearchRadius?.(radius)}
+                className={`rounded-lg border py-2 text-[10px] font-semibold cursor-pointer ${!selectedAdministrativeAreaId && searchRadiusMeters === radius ? 'bg-cyan-600 border-cyan-400' : 'bg-slate-800 border-slate-700 hover:bg-slate-700'}`}
+              >
+                {radius / 1000} km
+              </button>
+            ))}
+          </div>
+          {administrativeAreas.length > 0 && (
+            <select
+              value={selectedAdministrativeAreaId ?? ''}
+              onChange={(event) => onSelectAdministrativeArea?.(event.target.value ? Number(event.target.value) : null)}
+              className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs text-slate-200 cursor-pointer"
+            >
+              <option value="">Custom radius circle</option>
+              {administrativeAreas.map((area) => <option key={area.id} value={area.id}>{area.name} · level {area.adminLevel}</option>)}
+            </select>
+          )}
+          <button
+            onClick={onToggleSearchBoundary}
+            className="w-full flex items-center justify-between rounded-xl bg-slate-800 px-3 py-2 text-xs text-slate-300 hover:bg-slate-700 cursor-pointer"
+          >
+            <span>Show boundary on map</span><span className={showSearchBoundary ? 'text-emerald-400' : 'text-slate-500'}>{showSearchBoundary ? 'On' : 'Off'}</span>
+          </button>
+        </div>
+      )}
+
       {/* OVERFLOW DRAWER / MODAL */}
       {isMenuOpen && (
         <div
@@ -303,10 +369,10 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   <span>Location Scope</span>
                 </label>
                 <span className="text-[11px] text-blue-400 font-semibold uppercase">
-                  {locationScope === 'neighborhood' ? 'Neighborhood' : 'Whole City'}
+                  {locationScope === 'neighborhood' ? 'Neighborhood' : locationScope === 'region' ? 'Region' : 'City'}
                 </span>
               </div>
-              <div className="grid grid-cols-2 gap-1.5">
+              <div className="grid grid-cols-3 gap-1.5">
                 <button
                   onClick={() => {
                     sounds.playPinDrop();
@@ -336,7 +402,22 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 >
                   <span className="text-sm">🏙️</span>
                   <span>Whole City</span>
-                  <span className="text-[10px] text-slate-300 font-normal">~6.5 km radius</span>
+                  <span className="text-[10px] text-slate-300 font-normal">~4.5 km radius</span>
+                </button>
+                <button
+                  onClick={() => {
+                    sounds.playPinDrop();
+                    onChangeLocationScope('region');
+                  }}
+                  className={`p-2.5 rounded-xl border text-xs font-semibold flex flex-col items-center gap-0.5 transition cursor-pointer ${
+                    locationScope === 'region'
+                      ? 'bg-blue-600 border-blue-400 text-white shadow-md'
+                      : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-700'
+                  }`}
+                >
+                  <span className="text-sm">🗺️</span>
+                  <span>Region</span>
+                  <span className="text-[10px] text-slate-300 font-normal">~15 km</span>
                 </button>
               </div>
             </div>
@@ -355,7 +436,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <div className="grid grid-cols-2 gap-1.5">
                 {FEATURE_CATEGORIES.map((cat) => {
                   const count = categoryCounts[cat.id] || 0;
-                  const isAvailable = cat.id === 'all' || count > 0;
+                  // Zero means "not loaded yet", not "unavailable". Selecting it
+                  // initiates the category-specific OSM search.
+                  const isAvailable = true;
                   const isSelected = selectedCategory === cat.id;
 
                   return (

@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { TileStyle, DistanceUnit, FeatureCategory, FEATURE_CATEGORIES, City, LocationScope } from '../types';
+import { TileStyle, DistanceUnit, FeatureCategory, FEATURE_CATEGORIES, City, LocationScope, AdministrativeArea } from '../types';
 import { X, Map, EyeOff, Ruler, Volume2, Layers, Filter, Compass, HardDrive, Trash2 } from 'lucide-react';
 import { getCacheStorageStats, clearAllFeatureCache } from '../utils/featureCache';
 
@@ -21,6 +21,11 @@ interface SettingsModalProps {
   onChangeRounds: (rounds: number) => void;
   locationScope: LocationScope;
   onChangeLocationScope: (scope: LocationScope) => void;
+  searchRadiusMeters: number;
+  onChangeSearchRadius: (radiusMeters: number) => void;
+  administrativeAreas: AdministrativeArea[];
+  selectedAdministrativeAreaId: number | null;
+  onSelectAdministrativeArea: (areaId: number | null) => void;
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({
@@ -41,6 +46,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onChangeRounds,
   locationScope,
   onChangeLocationScope,
+  searchRadiusMeters,
+  onChangeSearchRadius,
+  administrativeAreas,
+  selectedAdministrativeAreaId,
+  onSelectAdministrativeArea,
 }) => {
   const [cacheStats, setCacheStats] = useState(() => getCacheStorageStats());
 
@@ -115,14 +125,14 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 <span>Location Quiz Scope</span>
               </div>
               <span className="text-xs text-blue-300 font-semibold uppercase tracking-wider">
-                {locationScope === 'neighborhood' ? '🏘️ Neighborhood' : '🏙️ Whole City'}
+                {locationScope === 'neighborhood' ? '🏘️ Neighborhood' : locationScope === 'region' ? '🗺️ Region' : '🏙️ City'}
               </span>
             </div>
             <p className="text-xs text-slate-400">
               Choose whether "My Location" targets your immediate local neighborhood or the entire metropolitan area.
             </p>
 
-            <div className="grid grid-cols-2 gap-2 pt-1">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
               <button
                 onClick={() => onChangeLocationScope('neighborhood')}
                 className={`p-3 rounded-xl border text-left transition flex flex-col gap-1 cursor-pointer ${
@@ -141,6 +151,18 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               </button>
 
               <button
+                onClick={() => onChangeLocationScope('region')}
+                className={`p-3 rounded-xl border text-left transition flex flex-col gap-1 cursor-pointer ${
+                  locationScope === 'region'
+                    ? 'bg-blue-600/30 border-blue-500 text-white ring-1 ring-blue-400'
+                    : 'bg-slate-850 border-slate-750 text-slate-300 hover:bg-slate-700/80 hover:text-white'
+                }`}
+              >
+                <div className="font-bold text-xs flex items-center gap-1.5"><span>🗺️</span><span>Region (~15 km)</span></div>
+                <span className="text-[11px] text-slate-400">Uses the county or province returned for your position.</span>
+              </button>
+
+              <button
                 onClick={() => onChangeLocationScope('city')}
                 className={`p-3 rounded-xl border text-left transition flex flex-col gap-1 cursor-pointer ${
                   locationScope === 'city'
@@ -150,12 +172,66 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               >
                 <div className="font-bold text-xs flex items-center gap-1.5">
                   <span>🏙️</span>
-                  <span>Whole City (~6.5 km)</span>
+                  <span>Whole City (~4.5 km)</span>
                 </div>
                 <span className="text-[11px] text-slate-400">
                   Encompasses major city canals, bridges, plazas, and citywide landmarks.
                 </span>
               </button>
+            </div>
+          </div>
+
+          {administrativeAreas.length > 0 && (
+            <div className="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60 space-y-2.5">
+              <div className="font-semibold text-slate-100 flex items-center gap-2">
+                <Map className="w-4 h-4 text-violet-400" />
+                <span>Administrative Boundary</span>
+              </div>
+              <p className="text-xs text-slate-400">
+                Use an exact OpenStreetMap political boundary, or switch back to the custom radius.
+              </p>
+              <select
+                value={selectedAdministrativeAreaId ?? ''}
+                onChange={(event) => onSelectAdministrativeArea(event.target.value ? Number(event.target.value) : null)}
+                className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3 py-2.5 text-sm text-slate-200 focus:border-violet-500 focus:outline-none cursor-pointer"
+              >
+                <option value="">Custom radius circle</option>
+                {administrativeAreas.map((area) => (
+                  <option key={area.id} value={area.id}>
+                    {area.name} — admin level {area.adminLevel}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          <div className="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60 space-y-2.5">
+            <div className="flex items-center justify-between">
+              <div className="font-semibold text-slate-100 flex items-center gap-2">
+                <Ruler className="w-4 h-4 text-cyan-400" />
+                <span>Search Radius</span>
+              </div>
+              <span className="text-xs text-cyan-300 font-semibold">
+                {(searchRadiusMeters / 1000).toFixed(1)} km
+              </span>
+            </div>
+            <p className="text-xs text-slate-400">
+              Administrative scope chooses the place name; radius controls the actual circular OSM query independently.
+            </p>
+            <div className="grid grid-cols-5 gap-1.5">
+              {[1000, 2200, 4500, 8000, 15000].map((radius) => (
+                <button
+                  key={radius}
+                  onClick={() => onChangeSearchRadius(radius)}
+                  className={`py-2 rounded-lg border text-[11px] font-semibold transition cursor-pointer ${
+                    searchRadiusMeters === radius
+                      ? 'bg-cyan-600 border-cyan-400 text-white'
+                      : 'bg-slate-850 border-slate-700 text-slate-300 hover:bg-slate-700'
+                  }`}
+                >
+                  {radius < 1000 ? `${radius} m` : `${radius / 1000} km`}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -177,7 +253,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
               {FEATURE_CATEGORIES.map((cat) => {
                 const count = categoryCounts[cat.id] || 0;
-                const isAvailable = cat.id === 'all' || count > 0;
+                const isAvailable = true;
                 const isSelected = selectedCategory === cat.id;
 
                 return (

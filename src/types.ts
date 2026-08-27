@@ -1,6 +1,6 @@
 export type GameMode = 'pinpoint' | 'guess_name';
 
-export type LocationScope = 'neighborhood' | 'city';
+export type LocationScope = 'neighborhood' | 'city' | 'region';
 
 export interface LoadingProgress {
   percent: number;
@@ -108,6 +108,19 @@ export interface SearchBoundary {
   label: string;
   scope: LocationScope;
   category?: FeatureCategory;
+  bounds?: [[number, number], [number, number]];
+}
+
+export interface AdministrativeArea {
+  id: number;
+  name: string;
+  adminLevel: number;
+  bounds?: {
+    minlat: number;
+    minlon: number;
+    maxlat: number;
+    maxlon: number;
+  };
 }
 
 export interface SearchHistoryEntry {

@@ -8,6 +8,7 @@ export interface CachedFeatureEntry {
   lon: number;
   scope: LocationScope;
   category: FeatureCategory;
+  radiusMeters: number;
   features: StreetFeature[];
   timestamp: number;
   expiresAt: number;
@@ -22,7 +23,9 @@ export interface CachedGeocodeEntry {
   timestamp: number;
 }
 
-const STORAGE_PREFIX = 'guess_map_cache_';
+// Version cached results alongside the query/parser contract. This prevents a
+// previously timed-out or sparse dataset from masking improved searches.
+const STORAGE_PREFIX = 'guess_map_cache_v4_';
 const FEATURES_INDEX_KEY = `${STORAGE_PREFIX}features_index`;
 const GEOCODE_INDEX_KEY = `${STORAGE_PREFIX}geocode_index`;
 const DEFAULT_TTL_MS = 14 * 24 * 60 * 60 * 1000; // 14 days cache
@@ -34,10 +37,10 @@ const memoryGeocodeCache = new Map<string, CachedGeocodeEntry>();
 /**
  * Normalizes coordinates to ~100m grid for deterministic cache lookups
  */
-export function getCoordCacheKey(lat: number, lon: number, scope: LocationScope, category: FeatureCategory): string {
+export function getCoordCacheKey(lat: number, lon: number, scope: LocationScope, category: FeatureCategory, radiusMeters = 0): string {
   const normLat = lat.toFixed(3);
   const normLon = lon.toFixed(3);
-  return `${normLat}_${normLon}_${scope}_${category}`;
+  return `${normLat}_${normLon}_${scope}_${category}_${Math.round(radiusMeters)}`;
 }
 
 /**
@@ -61,9 +64,10 @@ export function getCachedOSMFeatures(
   lat: number,
   lon: number,
   scope: LocationScope,
-  category: FeatureCategory
+  category: FeatureCategory,
+  radiusMeters = 0
 ): { features: StreetFeature[]; entry: CachedFeatureEntry } | null {
-  const exactKey = getCoordCacheKey(lat, lon, scope, category);
+  const exactKey = getCoordCacheKey(lat, lon, scope, category, radiusMeters);
 
   // Check memory cache first
   const mem = memoryCache.get(exactKey);
@@ -98,6 +102,7 @@ export function getCachedOSMFeatures(
         entry.expiresAt > Date.now() &&
         entry.scope === scope &&
         entry.category === category &&
+        entry.radiusMeters === radiusMeters &&
         entry.features &&
         entry.features.length > 0
       ) {
@@ -126,9 +131,10 @@ export function setCachedOSMFeatures(
   category: FeatureCategory,
   placeName: string,
   features: StreetFeature[],
-  ttlMs = DEFAULT_TTL_MS
+  ttlMs = DEFAULT_TTL_MS,
+  radiusMeters = 0
 ): CachedFeatureEntry {
-  const exactKey = getCoordCacheKey(lat, lon, scope, category);
+  const exactKey = getCoordCacheKey(lat, lon, scope, category, radiusMeters);
   const now = Date.now();
   const entry: CachedFeatureEntry = {
     id: exactKey,
@@ -137,6 +143,7 @@ export function setCachedOSMFeatures(
     lon,
     scope,
     category,
+    radiusMeters,
     features,
     timestamp: now,
     expiresAt: now + ttlMs,
@@ -364,4 +371,3 @@ export function clearSearchHistory(): void {
     console.warn('Error clearing search history:', err);
   }
 }
-

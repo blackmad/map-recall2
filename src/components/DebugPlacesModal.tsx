@@ -115,7 +115,7 @@ export const DebugPlacesModal: React.FC<DebugPlacesModalProps> = ({
 
   const isCustomOSMLocation = currentCity.id === 'my_location';
   const cachedCurrent = currentCity.center
-    ? getCachedOSMFeatures(currentCity.center[0], currentCity.center[1], 'city', selectedCategory)
+    ? getCachedOSMFeatures(currentCity.center[0], currentCity.center[1], 'city', selectedCategory, 4500)
     : null;
 
   const handleClearCache = () => {
@@ -353,9 +353,6 @@ export const DebugPlacesModal: React.FC<DebugPlacesModalProps> = ({
                       key={cat.id}
                       onClick={() => {
                         onChangeCategory(cat.id);
-                        if (onRefetchCategory) {
-                          onRefetchCategory(cat.id, false);
-                        }
                       }}
                       className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer border ${
                         isSelected
