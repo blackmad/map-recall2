@@ -4,6 +4,10 @@ import 'leaflet/dist/leaflet.css';
 import { LocateFixed, Loader2 } from 'lucide-react';
 import { GameMode, StreetFeature, TileStyle, SearchBoundary } from '../types';
 
+// Bump when provider URLs or authentication change so Vite HMR replaces an
+// already-mounted Leaflet tile layer even if the user's style toggles did not.
+const BASEMAP_CONFIG_VERSION = 'carto-rastertiles-v1';
+
 interface MapComponentProps {
   cityCenter: [number, number];
   defaultZoom: number;
@@ -110,7 +114,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
       L.control
         .attribution({
           position: 'bottomleft',
-          prefix: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OSM</a> &copy; <a href="https://www.esri.com/" target="_blank">Esri</a> / <a href="https://carto.com/" target="_blank">CARTO</a>',
+          prefix: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OSM</a> &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a>',
         })
         .addTo(map);
 
@@ -152,25 +156,30 @@ export const MapComponent: React.FC<MapComponentProps> = ({
       mapInstanceRef.current.removeLayer(tileLayerRef.current);
     }
 
+    const cartoKey = import.meta.env.VITE_CARTO_API_KEY;
+    const cartoAuth = cartoKey ? `?key=${encodeURIComponent(cartoKey)}` : '';
     let tileUrl = '';
     let subdomains: string[] = ['a', 'b', 'c', 'd'];
 
     if (blindMapMode) {
       // Blind mode (label-less base map)
       if (tileStyle === 'dark') {
-        tileUrl = 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png';
+        tileUrl = `https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}{r}.png${cartoAuth}`;
       } else {
-        tileUrl = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
+        tileUrl = `https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png${cartoAuth}`;
       }
       subdomains = ['a', 'b', 'c', 'd'];
     } else {
       // Standard labeled mode
       switch (tileStyle) {
         case 'dark':
-          tileUrl = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+          tileUrl = `https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png${cartoAuth}`;
           break;
         case 'light_nolabels':
-          tileUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+          tileUrl = `https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png${cartoAuth}`;
+          break;
+        case 'voyager':
+          tileUrl = `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png${cartoAuth}`;
           break;
         case 'osm':
         default:
@@ -184,7 +193,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
       maxZoom: 19,
       subdomains: tileUrl.includes('{s}') ? subdomains : [],
     }).addTo(mapInstanceRef.current);
-  }, [tileStyle, blindMapMode]);
+  }, [tileStyle, blindMapMode, BASEMAP_CONFIG_VERSION]);
 
   // Handle map click for pinpoint mode
   useEffect(() => {
@@ -207,7 +216,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
   useEffect(() => {
     const map = mapInstanceRef.current;
     if (!map) return;
-    map.flyTo([cityCenter[0], cityCenter[1]], defaultZoom, { duration: 1.2 });
+    map.setView([cityCenter[0], cityCenter[1]], defaultZoom, { animate: false });
   }, [cityCenter[0], cityCenter[1], defaultZoom]);
 
   // Render Search Boundary Circle (both during fetching and when toggled persistently)
@@ -240,7 +249,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     group.addLayer(boundaryShape);
 
     if (fetchingBoundary) {
-      map.fitBounds(boundaryShape.getBounds(), { padding: [40, 40], maxZoom: 14, animate: true });
+      map.fitBounds(boundaryShape.getBounds(), { padding: [40, 40], maxZoom: 14, animate: false });
     }
   }, [fetchingBoundary, searchBoundary, showSearchBoundary]);
 
@@ -288,7 +297,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
           iconAnchor: [16, 16],
         });
         const marker = L.marker(feat.center, { icon: targetIcon });
-        marker.bindPopup(`<b>#${i + 1}: ${feat.name}</b><br/>${feat.funFact}`);
+        marker.bindPopup(`<b>#${i + 1}: ${feat.name}</b>`);
         group.addLayer(marker);
         bounds.extend(feat.center);
 
@@ -355,6 +364,15 @@ export const MapComponent: React.FC<MapComponentProps> = ({
 
       // Highlight the target feature prominently
       if (polylinesToRender) {
+        const casingLine = L.polyline(polylinesToRender, {
+          color: '#0f172a',
+          weight: 14,
+          opacity: 0.82,
+          lineCap: 'round',
+          lineJoin: 'round',
+        });
+        group.addLayer(casingLine);
+
         // Glowing outline
         const glowLine = L.polyline(polylinesToRender, {
           color: colors.glow,
@@ -400,16 +418,27 @@ export const MapComponent: React.FC<MapComponentProps> = ({
         const revealIcon = L.divIcon({
           className: 'custom-map-icon',
           html: `
-            <div class="px-3 py-1.5 rounded-xl bg-slate-900 text-white font-semibold text-xs shadow-2xl border border-blue-400/50 flex items-center gap-1.5 transform -translate-x-1/2 -translate-y-full whitespace-nowrap">
+            <div class="inline-flex px-3 py-1.5 rounded-lg bg-slate-950 text-white font-bold text-xs shadow-2xl border-2 border-cyan-400 items-center gap-1.5 whitespace-nowrap">
               <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
               <span>${currentFeature.name}</span>
             </div>
           `,
-          iconSize: [0, 0],
-          iconAnchor: [0, 0],
+          iconSize: [180, 32],
+          iconAnchor: [90, 42],
         });
         const marker = L.marker(currentFeature.center, { icon: revealIcon });
         group.addLayer(marker);
+
+        const revealBounds = polylinesToRender
+          ? L.polyline(polylinesToRender).getBounds()
+          : L.latLngBounds([currentFeature.center]);
+        const resultCardPadding = Math.min(440, Math.max(240, Math.round(map.getSize().y * 0.42)));
+        map.fitBounds(revealBounds, {
+          paddingTopLeft: [70, 90],
+          paddingBottomRight: [70, resultCardPadding],
+          maxZoom: 16,
+          animate: true,
+        });
       }
     }
 
@@ -462,6 +491,14 @@ export const MapComponent: React.FC<MapComponentProps> = ({
 
         // Draw street path / feature polyline (multi-polyline safe)
         if (polylinesToRender) {
+          const streetCasing = L.polyline(polylinesToRender, {
+            color: '#064e3b',
+            weight: 12,
+            opacity: 0.9,
+            lineCap: 'round',
+            lineJoin: 'round',
+          });
+          group.addLayer(streetCasing);
           const streetPath = L.polyline(polylinesToRender, {
             color: '#10b981',
             weight: 6,
@@ -502,7 +539,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
         group.addLayer(ring2);
 
         // Distance connecting ray and distance pill
-        if (userPinnedLocation) {
+        if (userPinnedLocation && (distanceErrorMeters === undefined || distanceErrorMeters > 30)) {
           const connectingLine = L.polyline([userPinnedLocation, currentFeature.center], {
             color: '#f43f5e',
             weight: 3,
@@ -511,10 +548,23 @@ export const MapComponent: React.FC<MapComponentProps> = ({
           });
           group.addLayer(connectingLine);
 
-          // Smoothly fit view to show both points with comfortable padding
-          const bounds = L.latLngBounds([userPinnedLocation, currentFeature.center]);
-          map.fitBounds(bounds, { padding: [90, 90], maxZoom: 16 });
         }
+
+        // Fit revealed geometry into the part of the map that is not covered by
+        // the result card. This also handles skipped rounds with no user pin.
+        const revealBounds = polylinesToRender
+          ? L.polyline(polylinesToRender).getBounds()
+          : L.latLngBounds([currentFeature.center]);
+        revealBounds.extend(currentFeature.center);
+        if (userPinnedLocation) revealBounds.extend(userPinnedLocation);
+        const viewportHeight = map.getSize().y;
+        const resultCardPadding = Math.min(440, Math.max(240, Math.round(viewportHeight * 0.42)));
+        map.fitBounds(revealBounds, {
+          paddingTopLeft: [70, 90],
+          paddingBottomRight: [70, resultCardPadding],
+          maxZoom: 16,
+          animate: true,
+        });
       }
     }
   }, [gameMode, currentFeature, userPinnedLocation, isRoundComplete, distanceErrorMeters, isGameOver, allRoundResults, userLocation]);

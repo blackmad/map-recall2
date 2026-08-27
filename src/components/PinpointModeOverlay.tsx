@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { StreetFeature, DistanceUnit } from '../types';
-import { calculatePinpointScore, formatDistance } from '../utils/geo';
+import { calculateHaversineDistanceMeters, calculatePinpointScore, formatDistance } from '../utils/geo';
 import {
   MapPin,
   HelpCircle,
   ArrowRight,
   Award,
   Target,
-  Info,
   Sparkles,
-  ChevronDown,
-  ChevronUp,
-  CheckCircle2,
 } from 'lucide-react';
 
 interface PinpointModeOverlayProps {
@@ -27,6 +23,7 @@ interface PinpointModeOverlayProps {
   unit: DistanceUnit;
   roundNumber: number;
   totalRounds: number;
+  searchCenter: [number, number];
 }
 
 function getFeatureTypeBadge(type: string) {
@@ -65,13 +62,36 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   unit,
   roundNumber,
   totalRounds,
+  searchCenter,
 }) => {
   const [showClues, setShowClues] = useState(false);
   const [revealedClueIndex, setRevealedClueIndex] = useState(1);
-  const [showFact, setShowFact] = useState(true);
 
   const scoreResult = isRoundComplete ? calculatePinpointScore(distanceErrorMeters) : null;
   const badge = getFeatureTypeBadge(currentFeature.type);
+  const spatialHints = useMemo(() => {
+    const [centerLat, centerLon] = searchCenter;
+    const [targetLat, targetLon] = currentFeature.center;
+    const northSouth = targetLat >= centerLat ? 'north' : 'south';
+    const eastWest = targetLon >= centerLon ? 'east' : 'west';
+    const latDeltaMeters = (targetLat - centerLat) * 111_320;
+    const lonDeltaMeters = (targetLon - centerLon) * 111_320 * Math.cos((centerLat * Math.PI) / 180);
+    const angle = (Math.atan2(lonDeltaMeters, latDeltaMeters) * 180 / Math.PI + 360) % 360;
+    const directions = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest'];
+    const direction = directions[Math.round(angle / 45) % 8];
+    const distance = calculateHaversineDistanceMeters(searchCenter, currentFeature.center);
+    const broadAxis = Math.abs(latDeltaMeters) >= Math.abs(lonDeltaMeters) ? northSouth : eastWest;
+    return [
+      `Look in the ${broadAxis}ern half of the search area.`,
+      `Narrow it down to the ${northSouth}${eastWest} quadrant.`,
+      `About ${formatDistance(distance, unit)} ${direction} of the search center.`,
+    ];
+  }, [currentFeature.center, searchCenter, unit]);
+
+  useEffect(() => {
+    setShowClues(false);
+    setRevealedClueIndex(1);
+  }, [currentFeature.id]);
 
   return (
     <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 sm:p-4 z-20">
@@ -109,7 +129,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
 
               {/* Clue button & Round Badge */}
               <div className="flex items-center gap-1.5 flex-shrink-0 pt-0.5">
-                {currentFeature.clues && currentFeature.clues.length > 0 && (
+                {(
                   <button
                     id="hint-toggle-btn"
                     onClick={() => setShowClues(!showClues)}
@@ -135,7 +155,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
               <div className="bg-slate-950/80 rounded-2xl p-3 border border-amber-500/30 text-xs shadow-inner space-y-2 animate-fadeIn">
                 <div className="text-amber-300 font-bold flex items-center justify-between">
                   <span className="flex items-center gap-1.5 text-xs">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-400" /> Clues & Geographic Context:
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400" /> Map hints
                   </span>
                   <button
                     onClick={() => setShowClues(false)}
@@ -145,7 +165,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   </button>
                 </div>
                 <ul className="space-y-1.5">
-                  {currentFeature.clues.slice(0, revealedClueIndex).map((clue, idx) => (
+                  {spatialHints.slice(0, revealedClueIndex).map((clue, idx) => (
                     <li
                       key={idx}
                       className="bg-slate-800/90 p-2 rounded-xl text-slate-200 text-xs flex items-start gap-2 border border-slate-700/60"
@@ -157,12 +177,12 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                     </li>
                   ))}
                 </ul>
-                {revealedClueIndex < currentFeature.clues.length && (
+                {revealedClueIndex < spatialHints.length && (
                   <button
                     onClick={() => setRevealedClueIndex((prev) => prev + 1)}
                     className="text-xs text-blue-400 hover:text-blue-300 font-semibold underline block pt-0.5 cursor-pointer"
                   >
-                    Reveal next clue ({revealedClueIndex}/{currentFeature.clues.length})
+                    Reveal a more precise hint ({revealedClueIndex}/{spatialHints.length})
                   </button>
                 )}
               </div>
@@ -274,24 +294,6 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   Dashed line shows distance on map
                 </span>
               </div>
-
-              {/* Fact / Lore Preview */}
-              {currentFeature.funFact && (
-                <div className="bg-blue-950/40 rounded-2xl p-3 border border-blue-900/50 text-xs text-slate-300 space-y-1">
-                  <div className="flex items-center justify-between text-blue-400 font-semibold">
-                    <span className="flex items-center gap-1.5">
-                      <Info className="w-3.5 h-3.5" /> Did you know?
-                    </span>
-                    <button
-                      onClick={() => setShowFact(!showFact)}
-                      className="text-[11px] text-slate-400 hover:text-white cursor-pointer"
-                    >
-                      {showFact ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-                    </button>
-                  </div>
-                  {showFact && <p className="leading-relaxed text-slate-200">{currentFeature.funFact}</p>}
-                </div>
-              )}
             </div>
           )
         )}

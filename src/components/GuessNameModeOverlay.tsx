@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { StreetFeature } from '../types';
-import { CheckCircle2, XCircle, Info, Sparkles, ChevronUp, ChevronDown, Eye, HelpCircle } from 'lucide-react';
+import { CheckCircle2, XCircle } from 'lucide-react';
 
 interface GuessNameModeOverlayProps {
   currentFeature: StreetFeature;
@@ -50,9 +50,6 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
   roundNumber,
   totalRounds,
 }) => {
-  const [showLore, setShowLore] = useState(true);
-  const [showClue, setShowClue] = useState(false);
-
   // Generate randomized 4 options: 1 correct + 3 distractors
   const options = useMemo(() => {
     const pool = [currentFeature.name, ...currentFeature.distractors.slice(0, 3)];
@@ -96,37 +93,13 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 </h1>
               </div>
 
-              {/* Clue hint trigger & Round counter */}
+              {/* Round counter */}
               <div className="flex items-center gap-1.5 flex-shrink-0 pt-0.5">
-                {currentFeature.clues && currentFeature.clues.length > 0 && (
-                  <button
-                    onClick={() => setShowClue(!showClue)}
-                    className={`flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-xl transition cursor-pointer border ${
-                      showClue
-                        ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20'
-                        : 'bg-amber-400/15 text-amber-300 hover:bg-amber-400/25 border-amber-400/30'
-                    }`}
-                  >
-                    <HelpCircle className="w-3.5 h-3.5" />
-                    <span>{showClue ? 'Hide Hint' : 'Hint'}</span>
-                  </button>
-                )}
-
                 <span className="px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 font-mono whitespace-nowrap">
                   {roundNumber}/{totalRounds}
                 </span>
               </div>
             </div>
-
-            {/* Expandable Clue Hint */}
-            {showClue && currentFeature.clues && (
-              <div className="bg-slate-950/80 rounded-2xl p-3 border border-amber-500/30 text-xs shadow-inner space-y-1 animate-fadeIn">
-                <div className="text-amber-300 font-bold flex items-center gap-1 text-xs">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" /> Clue:
-                </div>
-                <p className="text-slate-200 leading-relaxed">{currentFeature.clues[0]}</p>
-              </div>
-            )}
 
             {/* 2x2 Multiple Choice Option Grid */}
             <div className="grid grid-cols-2 gap-2 pt-1">
@@ -204,24 +177,6 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 </button>
               </div>
             </div>
-
-            {/* Fun Fact / Lore */}
-            {currentFeature.funFact && (
-              <div className="bg-blue-950/40 rounded-2xl p-3 border border-blue-900/50 text-xs text-slate-300 space-y-1">
-                <div className="flex items-center justify-between text-blue-400 font-semibold">
-                  <span className="flex items-center gap-1.5">
-                    <Info className="w-3.5 h-3.5" /> Did you know?
-                  </span>
-                  <button
-                    onClick={() => setShowLore(!showLore)}
-                    className="text-[11px] text-slate-400 hover:text-white cursor-pointer"
-                  >
-                    {showLore ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-                  </button>
-                </div>
-                {showLore && <p className="leading-relaxed text-slate-200">{currentFeature.funFact}</p>}
-              </div>
-            )}
           </div>
         )}
       </div>

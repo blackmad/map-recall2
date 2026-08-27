@@ -12,6 +12,7 @@ export interface CachedFeatureEntry {
   features: StreetFeature[];
   timestamp: number;
   expiresAt: number;
+  source?: 'overpass' | 'fallback';
 }
 
 export interface CachedGeocodeEntry {
@@ -132,7 +133,8 @@ export function setCachedOSMFeatures(
   placeName: string,
   features: StreetFeature[],
   ttlMs = DEFAULT_TTL_MS,
-  radiusMeters = 0
+  radiusMeters = 0,
+  source: 'overpass' | 'fallback' = 'overpass'
 ): CachedFeatureEntry {
   const exactKey = getCoordCacheKey(lat, lon, scope, category, radiusMeters);
   const now = Date.now();
@@ -147,6 +149,7 @@ export function setCachedOSMFeatures(
     features,
     timestamp: now,
     expiresAt: now + ttlMs,
+    source,
   };
 
   // Set in memory cache
