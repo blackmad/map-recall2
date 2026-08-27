@@ -77,6 +77,7 @@ export default function App() {
   const [isLocating, setIsLocating] = useState<boolean>(false);
   const [loadingProgress, setLoadingProgress] = useState<LoadingProgress | null>(null);
   const [locationToast, setLocationToast] = useState<string | null>(null);
+  const [dataError, setDataError] = useState<string | null>(null);
   const [cityOverpassFeatures, setCityOverpassFeatures] = useState<Record<string, StreetFeature[]>>({});
   const initialLocationRequestedRef = useRef(false);
   const activeSearchRef = useRef<string | null>(null);
@@ -222,6 +223,7 @@ export default function App() {
       }
 
       setIsLocating(true);
+      setDataError(null);
       setLoadingProgress({
         percent: 15,
         message: 'Requesting device geolocation...',
@@ -303,36 +305,7 @@ export default function App() {
             console.warn('Error configuring local location city:', err);
             setIsLocating(false);
             setLoadingProgress(null);
-
-            const fallbackCity: City = {
-              id: 'my_location',
-              name: '📍 My Location',
-              country: 'Current Area',
-              countryCode: 'LOC',
-              center: coords,
-              defaultZoom: targetScope === 'neighborhood' ? 15 : 13,
-              minZoom: 10,
-              maxZoom: 18,
-              description: 'Map centered on your current coordinates.',
-              features: [
-                {
-                  id: 'local_feat_1',
-                  name: 'District Center',
-                  type: 'street',
-                  cityId: 'my_location',
-                  center: coords,
-                  funFact: 'Centered directly on your geographic coordinates.',
-                  clues: ['Located right near your current position.'],
-                  distractors: ['North Road', 'West Avenue', 'South Street'],
-                  difficulty: 'easy',
-                },
-              ],
-            };
-
-            setCustomLocationCity(fallbackCity);
-            setCurrentCityId('my_location');
-            setLocationToast('📍 Centered on your exact coordinates!');
-            setTimeout(() => setLocationToast(null), 4000);
+            setDataError(err instanceof Error ? err.message : 'Could not load OpenStreetMap features.');
           }
         },
         (error) => {
@@ -417,6 +390,7 @@ export default function App() {
       activeSearchRef.current = searchKey;
 
       setIsLocating(true);
+      setDataError(null);
       const catInfo = FEATURE_CATEGORIES.find((c) => c.id === targetCategory) || FEATURE_CATEGORIES[0];
       const placeName = currentCityId === 'my_location' ? (customLocationCity?.name || 'My Location') : currentCity.name;
 
@@ -458,6 +432,7 @@ export default function App() {
         }
       } catch (err) {
         console.error('Error refetching category features:', err);
+        setDataError(err instanceof Error ? err.message : 'Could not load OpenStreetMap features.');
       } finally {
         if (activeSearchRef.current === searchKey) activeSearchRef.current = null;
         setIsLocating(false);
@@ -488,6 +463,7 @@ export default function App() {
   const handleSearchLocation = async (query: string) => {
     if (isLocating) return;
     setIsLocating(true);
+    setDataError(null);
     setLoadingProgress({ percent: 15, message: 'Finding location…', subMessage: query });
     try {
       const result = await geocodeLocationSearch(query);
@@ -527,6 +503,7 @@ export default function App() {
       setLocationToast(`Loaded ${features.length} features near ${result.name.split(',')[0]}`);
       setTimeout(() => setLocationToast(null), 4000);
     } catch (error) {
+      setDataError(error instanceof Error ? error.message : 'Could not load this location');
       setLocationToast(error instanceof Error ? error.message : 'Could not find that location');
       setTimeout(() => setLocationToast(null), 4000);
     } finally {
@@ -780,8 +757,31 @@ export default function App() {
           </div>
         )}
 
+        {dataError && !isLocating && (
+          <div className="absolute inset-x-3 top-3 z-40 mx-auto max-w-xl" role="alert">
+            <div className="rounded-2xl border border-rose-400/50 bg-slate-950/95 p-4 text-sm text-white shadow-2xl backdrop-blur-xl">
+              <div className="font-bold text-rose-300">Couldn’t load map features</div>
+              <p className="mt-1 text-xs leading-relaxed text-slate-300">{dataError}</p>
+              <div className="mt-3 flex gap-2">
+                <button
+                  onClick={() => handleRefetchCategory(selectedCategory, true)}
+                  className="rounded-xl bg-rose-500 px-4 py-2 text-xs font-bold text-white hover:bg-rose-400"
+                >
+                  Retry
+                </button>
+                <button
+                  onClick={() => setDataError(null)}
+                  className="rounded-xl border border-slate-700 px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-800"
+                >
+                  Dismiss
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Empty OSM dataset: require an explicit category before starting. */}
-        {!currentFeature && !isLocating && !isGameOver && (
+        {!currentFeature && !isLocating && !isGameOver && !dataError && (
           <div className="absolute inset-0 z-20 flex items-center justify-center p-4 bg-slate-950/20 backdrop-blur-[1px]">
             <div className="w-full max-w-lg rounded-2xl border border-slate-700/80 bg-slate-900/95 p-5 shadow-2xl backdrop-blur-md">
               <div className="text-center mb-4">
