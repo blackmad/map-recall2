@@ -75,6 +75,45 @@ function distToSegmentMeters(
   return calculateHaversineDistanceMeters(p, [projLat, projLng]);
 }
 
+function closestPointOnSegment(
+  p: [number, number],
+  v: [number, number],
+  w: [number, number]
+): [number, number] {
+  const latFactor = 111320;
+  const lngFactor = 111320 * Math.cos(((p[0] + v[0] + w[0]) / 3 / 180) * Math.PI);
+  const px = (p[1] - v[1]) * lngFactor;
+  const py = (p[0] - v[0]) * latFactor;
+  const wx = (w[1] - v[1]) * lngFactor;
+  const wy = (w[0] - v[0]) * latFactor;
+  const lengthSquared = wx * wx + wy * wy;
+  if (lengthSquared === 0) return v;
+  const t = Math.max(0, Math.min(1, (px * wx + py * wy) / lengthSquared));
+  return [v[0] + t * (w[0] - v[0]), v[1] + t * (w[1] - v[1])];
+}
+
+export function calculateClosestPointOnFeature(
+  userCoord: [number, number],
+  centerCoord: [number, number],
+  path?: [number, number][],
+  paths?: [number, number][][]
+): [number, number] {
+  const lines = paths?.length ? paths : path?.length ? [path] : [];
+  let closest = centerCoord;
+  let distance = calculateHaversineDistanceMeters(userCoord, centerCoord);
+  for (const line of lines) {
+    for (let index = 0; index < line.length - 1; index++) {
+      const candidate = closestPointOnSegment(userCoord, line[index], line[index + 1]);
+      const candidateDistance = calculateHaversineDistanceMeters(userCoord, candidate);
+      if (candidateDistance < distance) {
+        closest = candidate;
+        distance = candidateDistance;
+      }
+    }
+  }
+  return closest;
+}
+
 /**
  * Calculates shortest distance from point to a street/feature.
  * If path coordinates are provided, it finds minimum distance to any point along the street.

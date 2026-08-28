@@ -90,12 +90,48 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
     request.onProgress?.({ percent: 30, message: 'Loading Amsterdam extract…', subMessage: 'Using the locally hosted quiz dataset' });
     const extracted = await loadAmsterdamExtract(request.category);
     if (extracted) {
+      const neighborhoods = amsterdamAreas.filter(({ kind, geometry }) => kind !== 'municipality' && geometry);
+      const enriched = extracted.map((feature) => {
+        const containing = neighborhoods.filter(({ geometry }) => pointInBoundary(feature.center, geometry!)).sort((a, b) => {
+          const size = (area: AdministrativeArea) => area.bounds
+            ? (area.bounds.maxlat - area.bounds.minlat) * (area.bounds.maxlon - area.bounds.minlon)
+            : Infinity;
+          return size(a) - size(b);
+        });
+        const neighborhood = containing[0];
+        const centerOf = (area: AdministrativeArea): [number, number] => [
+          ((area.bounds?.minlat || 0) + (area.bounds?.maxlat || 0)) / 2,
+          ((area.bounds?.minlon || 0) + (area.bounds?.maxlon || 0)) / 2,
+        ];
+        const distractors = neighborhoods.filter(({ id }) => id !== neighborhood?.id)
+          .sort((a, b) => calculateHaversineDistanceMeters(feature.center, centerOf(a)) - calculateHaversineDistanceMeters(feature.center, centerOf(b)));
+        return { ...feature, neighborhood: neighborhood?.name, neighborhoodDistractors: distractors.slice(0, 6).map(({ name }) => name) };
+      });
+      const neighborhoodFeatures: StreetFeature[] = neighborhoods
+        .filter(({ kind }) => ['neighborhood', 'neighbourhood', 'quarter'].includes(kind || ''))
+        .map((area) => ({
+          id: `extract_neighborhood_${area.id}`,
+          name: area.name,
+          type: 'neighborhood',
+          cityId: 'amsterdam',
+          center: area.bounds
+            ? [(area.bounds.minlat + area.bounds.maxlat) / 2, (area.bounds.minlon + area.bounds.maxlon) / 2]
+            : request.center,
+          paths: area.geometry?.flatMap((polygon) => polygon) || [],
+          areaGeometry: area.geometry,
+          funFact: '',
+          clues: [],
+          distractors: [],
+          difficulty: 'medium',
+          prominenceScore: area.kind === 'quarter' ? 65 : 55,
+        }));
       const selectedArea = amsterdamAreas.find(({ id }) => id === request.areaId);
+      const allFeatures = [...enriched, ...neighborhoodFeatures];
       const features = selectedArea?.geometry
-        ? extracted.filter((feature) => pointInBoundary(feature.center, selectedArea.geometry!)
+        ? allFeatures.filter((feature) => pointInBoundary(feature.center, selectedArea.geometry!)
           || feature.paths?.some((path) => path.some((point) => pointInBoundary(point, selectedArea.geometry!)))
           || feature.path?.some((point) => pointInBoundary(point, selectedArea.geometry!)))
-        : extracted.filter((feature) => calculateHaversineDistanceMeters(request.center, feature.center) <= request.radiusMeters);
+        : allFeatures.filter((feature) => calculateHaversineDistanceMeters(request.center, feature.center) <= request.radiusMeters);
       request.onProgress?.({ percent: 100, message: `Loaded ${features.length} Amsterdam features`, subMessage: 'No Overpass request needed' });
       return features;
     }

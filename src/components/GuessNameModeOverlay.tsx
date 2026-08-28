@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import { WikipediaCard } from './WikipediaCard';
+import { LookAroundLink } from './LookAroundLink';
 import { StreetFeature } from '../types';
 import { CheckCircle2, XCircle } from 'lucide-react';
 
@@ -177,6 +179,8 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 </button>
               </div>
             </div>
+            <WikipediaCard feature={currentFeature} />
+            <LookAroundLink feature={currentFeature} />
           </div>
         )}
       </div>

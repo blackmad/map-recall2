@@ -1,0 +1,50 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owns(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    function validMode(mode) {
+      return mode == 'pinpoint' || mode == 'guess_name';
+    }
+
+    function validRating(rating) {
+      return rating == 'again' || rating == 'hard' || rating == 'good' || rating == 'easy';
+    }
+
+    match /users/{userId}/reviewStates/{stateId} {
+      allow read, delete: if owns(userId);
+      allow create, update: if owns(userId)
+        && request.resource.data.featureKey is string
+        && validMode(request.resource.data.mode)
+        && request.resource.data.dueAt is number
+        && request.resource.data.lastReviewedAt is number
+        && request.resource.data.lastEventId is string
+        && request.resource.data.schedulerVersion == 1;
+    }
+
+    match /users/{userId}/reviewEvents/{eventId} {
+      allow read: if owns(userId);
+      allow create: if owns(userId)
+        && !exists(/databases/$(database)/documents/users/$(userId)/reviewEvents/$(eventId))
+        && request.resource.data.id == eventId
+        && request.resource.data.featureKey is string
+        && validMode(request.resource.data.mode)
+        && validRating(request.resource.data.rating)
+        && request.resource.data.reviewedAt is number;
+      // Retrying an already-committed batch is harmless, but event contents are immutable.
+      allow update: if owns(userId) && request.resource.data == resource.data;
+      allow delete: if false;
+    }
+
+    match /users/{userId}/gameSessions/{sessionId} {
+      allow read, create, update, delete: if owns(userId);
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

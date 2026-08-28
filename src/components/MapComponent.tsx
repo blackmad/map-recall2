@@ -3,6 +3,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { LocateFixed, Loader2 } from 'lucide-react';
 import { GameMode, StreetFeature, TileStyle, SearchBoundary } from '../types';
+import { calculateClosestPointOnFeature } from '../utils/geo';
 
 // Bump when provider URLs or authentication change so Vite HMR replaces an
 // already-mounted Leaflet tile layer even if the user's style toggles did not.
@@ -442,7 +443,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     }
 
     // 3. PINPOINT LOCATION MODE
-    if (gameMode === 'pinpoint') {
+    if (gameMode === 'pinpoint' || gameMode === 'guess_neighborhood') {
       // If user has dropped a temporary pin (prior to or after round completion)
       if (userPinnedLocation) {
         const pinIcon = L.divIcon({
@@ -471,75 +472,51 @@ export const MapComponent: React.FC<MapComponentProps> = ({
 
       // REVEALED STATE (Round complete)
       if (isRoundComplete) {
-        // True target marker
+        // Label the revealed geometry. Line features do not have a meaningful
+        // single target point, so only point features receive a dot marker.
         const trueTargetIcon = L.divIcon({
           className: 'custom-true-target-icon',
           html: `
-            <div class="px-3 py-1 bg-emerald-600 text-white rounded-full text-xs font-bold shadow-xl border-2 border-white flex items-center gap-1.5 ring-4 ring-emerald-400/40 whitespace-nowrap transform -translate-x-1/2 -translate-y-1/2">
-              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-              </svg>
-              <span>${currentFeature.name}</span>
+            <div style="display:flex;align-items:center;gap:7px;transform:translate(8px,-46px);white-space:nowrap;filter:drop-shadow(0 4px 8px rgb(0 0 0 / .65));">
+              ${polylinesToRender ? '' : '<span style="display:block;width:22px;height:22px;flex:none;border-radius:999px;background:transparent;border:4px solid #10b981;box-shadow:0 0 0 3px #f8fafc;"></span>'}
+              <span style="display:block;border:2px solid #67e8f9;border-radius:8px;background:#020617;padding:5px 9px;color:#fff;font:800 13px/1.1 'Plus Jakarta Sans',sans-serif;letter-spacing:.01em;text-shadow:0 1px 2px #000;">${currentFeature.name}</span>
             </div>
           `,
-          iconSize: [0, 0],
-          iconAnchor: [0, 0],
+          iconSize: [240, 40],
+          iconAnchor: [20, 20],
         });
-        const trueMarker = L.marker(currentFeature.center, { icon: trueTargetIcon });
+        const trueMarker = L.marker(currentFeature.center, { icon: trueTargetIcon, zIndexOffset: -100 });
         group.addLayer(trueMarker);
 
         // Draw street path / feature polyline (multi-polyline safe)
         if (polylinesToRender) {
           const streetCasing = L.polyline(polylinesToRender, {
-            color: '#064e3b',
-            weight: 12,
-            opacity: 0.9,
+            color: '#020617',
+            weight: 14,
+            opacity: 0.92,
             lineCap: 'round',
             lineJoin: 'round',
           });
           group.addLayer(streetCasing);
           const streetPath = L.polyline(polylinesToRender, {
             color: '#10b981',
-            weight: 6,
-            opacity: 0.9,
+            weight: 7,
+            opacity: 1,
             lineCap: 'round',
             lineJoin: 'round',
           });
           group.addLayer(streetPath);
-        } else {
-          const radius = currentFeature.radius || 75;
-          const targetCircle = L.circle(currentFeature.center, {
-            radius: radius,
-            color: '#10b981',
-            fillColor: '#34d399',
-            fillOpacity: 0.25,
-            weight: 3,
-          });
-          group.addLayer(targetCircle);
         }
-
-        // Bullseye Rings around true target
-        const ring1 = L.circle(currentFeature.center, {
-          radius: 80,
-          color: '#10b981',
-          fillColor: '#10b981',
-          fillOpacity: 0.1,
-          weight: 1.5,
-          dashArray: '3, 6',
-        });
-        const ring2 = L.circle(currentFeature.center, {
-          radius: 300,
-          color: '#3b82f6',
-          fillOpacity: 0.05,
-          weight: 1,
-          dashArray: '4, 8',
-        });
-        group.addLayer(ring1);
-        group.addLayer(ring2);
 
         // Distance connecting ray and distance pill
         if (userPinnedLocation && (distanceErrorMeters === undefined || distanceErrorMeters > 30)) {
-          const connectingLine = L.polyline([userPinnedLocation, currentFeature.center], {
+          const nearestTargetPoint = calculateClosestPointOnFeature(
+            userPinnedLocation,
+            currentFeature.center,
+            currentFeature.path,
+            currentFeature.paths
+          );
+          const connectingLine = L.polyline([userPinnedLocation, nearestTargetPoint], {
             color: '#f43f5e',
             weight: 3,
             dashArray: '6, 8',
@@ -580,7 +557,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     <div
       id="map-viewport-container"
       className={`w-full h-full relative overflow-hidden select-none ${
-        gameMode === 'pinpoint' && !isRoundComplete && !isGameOver ? 'cursor-crosshair' : 'cursor-grab'
+        (gameMode === 'pinpoint' || gameMode === 'guess_neighborhood') && !isRoundComplete && !isGameOver ? 'cursor-crosshair' : 'cursor-grab'
       }`}
     >
       <div ref={mapContainerRef} className="w-full h-full z-0" />

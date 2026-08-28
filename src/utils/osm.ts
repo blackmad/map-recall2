@@ -326,6 +326,9 @@ out body geom;`);
   way["historic"](around:${radius}, ${lat}, ${lon});
   node["amenity"~"theatre|arts_centre|townhall"](around:${radius}, ${lat}, ${lon});
   way["amenity"~"theatre|arts_centre|townhall"](around:${radius}, ${lat}, ${lon});
+  node["amenity"="place_of_worship"]["name"](around:${radius}, ${lat}, ${lon});
+  way["amenity"="place_of_worship"]["name"](around:${radius}, ${lat}, ${lon});
+  relation["amenity"="place_of_worship"]["name"](around:${radius}, ${lat}, ${lon});
 );
 out body geom;`);
   }
@@ -931,7 +934,7 @@ export function parseOverpassElements(
       type = 'avenue';
     } else if (tags.tourism === 'museum') {
       type = 'museum';
-    } else if (tags.tourism === 'attraction' || tags.historic) {
+    } else if (tags.tourism === 'attraction' || tags.historic || tags.amenity === 'place_of_worship') {
       type = 'landmark';
     } else {
       type = 'street';
