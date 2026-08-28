@@ -32,13 +32,7 @@ interface MapComponentProps {
   userLocation?: [number, number] | null;
   onLocateUser?: () => void;
   isLocating?: boolean;
-  fetchingBoundary?: {
-    center: [number, number];
-    radiusMeters: number;
-    label?: string;
-    scope?: string;
-    bounds?: [[number, number], [number, number]];
-  } | null;
+  fetchingBoundary?: SearchBoundary | null;
   searchBoundary?: SearchBoundary | null;
   showSearchBoundary?: boolean;
 }
@@ -230,7 +224,12 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     const activeBoundary = fetchingBoundary || (showSearchBoundary && searchBoundary ? searchBoundary : null);
     if (!activeBoundary) return;
 
-    const boundaryShape = activeBoundary.bounds
+    const boundaryShape = activeBoundary.geometry
+      ? L.polygon(activeBoundary.geometry, {
+          color: '#7c3aed', weight: fetchingBoundary ? 2.5 : 1.5, dashArray: '8, 8',
+          fillColor: '#8b5cf6', fillOpacity: fetchingBoundary ? 0.08 : 0.025,
+        })
+      : activeBoundary.bounds
       ? L.rectangle(activeBoundary.bounds, {
           color: '#7c3aed',
           weight: fetchingBoundary ? 2.5 : 1.5,

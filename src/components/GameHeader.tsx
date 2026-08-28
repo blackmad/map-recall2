@@ -351,7 +351,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs text-slate-200 cursor-pointer"
             >
               <option value="">Custom radius circle</option>
-              {administrativeAreas.map((area) => <option key={area.id} value={area.id}>{area.name} · level {area.adminLevel}</option>)}
+              {administrativeAreas.map((area) => <option key={area.id} value={area.id}>{area.name} · {area.kind || `level ${area.adminLevel}`}</option>)}
             </select>
           )}
           <button

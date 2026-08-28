@@ -14,7 +14,8 @@ import {
 } from './types';
 import { CITIES } from './data/cities';
 import { calculateShortestDistanceToFeature, calculatePinpointScore } from './utils/geo';
-import { reverseGeocodeLocation, fetchLocalOSMFeatures, fetchCategorySpecificOSMFeatures, fetchContainingAdministrativeAreas, geocodeLocationSearch } from './utils/osm';
+import { reverseGeocodeLocation, fetchLocalOSMFeatures, fetchContainingAdministrativeAreas, geocodeLocationSearch } from './utils/osm';
+import { fetchQuizAreas, fetchQuizFeatures } from './dataSources/featureProvider';
 import { sounds } from './utils/audio';
 import confetti from 'canvas-confetti';
 
@@ -113,7 +114,7 @@ export default function App() {
     return baseList.map((city) => {
       const dynamicFeats = cityOverpassFeatures[city.id];
       if (dynamicFeats && dynamicFeats.length > 0) {
-        const osmOnlyFeatures = dynamicFeats.filter((feature) => feature.id.startsWith('osm_'));
+        const osmOnlyFeatures = dynamicFeats.filter((feature) => feature.id.startsWith('osm_') || feature.id.startsWith('extract_'));
         return {
           ...city,
           features: osmOnlyFeatures,
@@ -146,6 +147,7 @@ export default function App() {
       bounds: selectedArea?.bounds
         ? [[selectedArea.bounds.minlat, selectedArea.bounds.minlon], [selectedArea.bounds.maxlat, selectedArea.bounds.maxlon]] as [[number, number], [number, number]]
         : undefined,
+      geometry: selectedArea?.geometry,
     };
   }, [userLocation, currentCity, customLocationCity, currentCityId, locationScope, selectedCategory, searchRadiusMeters, administrativeAreas, selectedAdministrativeAreaId]);
 
@@ -164,7 +166,7 @@ export default function App() {
     administrativeLookupRef.current = lookupKey;
 
     let cancelled = false;
-    fetchContainingAdministrativeAreas(lat, lon).then((areas) => {
+    (async () => (await fetchQuizAreas(currentCityId)) ?? fetchContainingAdministrativeAreas(lat, lon))().then(async (areas) => {
       if (cancelled) return;
       setAdministrativeAreas(areas);
       const municipality = [8, 7, 6]
@@ -401,17 +403,17 @@ export default function App() {
       });
 
       try {
-        const newFeatures = await fetchCategorySpecificOSMFeatures(
-          lat,
-          lon,
+        const newFeatures = await fetchQuizFeatures({
+          cityId: currentCityId,
+          center: [lat, lon],
           placeName,
-          targetCategory,
-          locationScope,
-          (prog) => setLoadingProgress(prog),
+          category: targetCategory,
+          scope: locationScope,
+          onProgress: (prog) => setLoadingProgress(prog),
           forceRefresh,
-          effectiveRadius,
-          effectiveAreaId || undefined
-        );
+          radiusMeters: effectiveRadius,
+          areaId: effectiveAreaId || undefined,
+        });
 
         if (newFeatures.length > 0) {
           let finalFeatures = [...newFeatures];
@@ -475,16 +477,15 @@ export default function App() {
       const areas = await fetchContainingAdministrativeAreas(result.lat, result.lon);
       setAdministrativeAreas(areas);
 
-      const features = await fetchCategorySpecificOSMFeatures(
-        result.lat,
-        result.lon,
-        result.name,
-        selectedCategory,
-        locationScope,
-        setLoadingProgress,
-        false,
-        searchRadiusMeters
-      );
+      const features = await fetchQuizFeatures({
+        cityId: 'my_location',
+        center: coords,
+        placeName: result.name,
+        category: selectedCategory,
+        scope: locationScope,
+        onProgress: setLoadingProgress,
+        radiusMeters: searchRadiusMeters,
+      });
       const city: City = {
         id: 'my_location',
         name: `🔎 ${result.name.split(',')[0]}`,

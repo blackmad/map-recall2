@@ -348,6 +348,74 @@ out body geom;`);
 out body geom;`);
 }
 
+function buildGeometryLookupQuery(candidates: OverpassElement[]): string {
+  const idsByType = {
+    node: candidates.filter(({ type }) => type === 'node').map(({ id }) => id),
+    way: candidates.filter(({ type }) => type === 'way').map(({ id }) => id),
+    relation: candidates.filter(({ type }) => type === 'relation').map(({ id }) => id),
+  };
+  const selectors = Object.entries(idsByType)
+    .filter(([, ids]) => ids.length > 0)
+    .map(([type, ids]) => `  ${type}(id:${ids.join(',')});`)
+    .join('\n');
+  return `[out:json][timeout:30];\n(\n${selectors}\n);\nout body geom;`;
+}
+
+function selectGeometryCandidates(elements: OverpassElement[], maximumNames = 40, maximumElements = 120): OverpassElement[] {
+  const groups = new Map<string, OverpassElement[]>();
+  for (const element of elements) {
+    const name = (element.tags?.['name:en'] || element.tags?.name || '').trim().toLocaleLowerCase();
+    if (!name) continue;
+    const group = groups.get(name) || [];
+    group.push(element);
+    groups.set(name, group);
+  }
+  const rankedGroups = [...groups.values()].sort((left, right) => {
+    const score = (group: OverpassElement[]) => group.reduce((total, element) => total
+      + (element.tags?.wikidata ? 100 : 0)
+      + (element.tags?.wikipedia ? 80 : 0)
+      + (element.type === 'relation' ? 25 : 0)
+      + (element.tags?.waterway === 'river' || element.tags?.waterway === 'canal' ? 20 : 0), 0);
+    return score(right) - score(left) || right.length - left.length;
+  });
+  return rankedGroups.slice(0, maximumNames).flat().slice(0, maximumElements);
+}
+
+async function requestOverpass(endpoint: string, query: string, timeoutMs: number): Promise<OverpassElement[]> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const headers: Record<string, string> = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    if (typeof window === 'undefined') {
+      headers.Accept = 'application/json';
+      headers.Origin = 'https://blackmad.github.io';
+      headers.Referer = 'https://blackmad.github.io/map-recall2/';
+      headers['User-Agent'] = 'MapQuestExtractBuilder/1.0 (+https://github.com/blackmad/map-recall2)';
+    }
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers,
+      body: `data=${encodeURIComponent(query)}`,
+      signal: controller.signal,
+    });
+    const body = await response.text();
+    if (!response.ok) {
+      const detail = body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 240);
+      throw new Error(`HTTP ${response.status}${detail ? ` — ${detail}` : ''}`);
+    }
+    if (/runtime error|dispatcher_client|server is probably too busy/i.test(body)) {
+      throw new Error('server busy');
+    }
+    try {
+      return (JSON.parse(body).elements || []) as OverpassElement[];
+    } catch {
+      throw new Error('invalid response');
+    }
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 /**
  * Directly executes a raw Overpass QL query and returns parsed JSON (for testing and replay)
  */
@@ -471,28 +539,25 @@ export async function fetchCategorySpecificOSMFeatures(
         subMessage: `Extracting all ${categoryName.toLowerCase()}...`,
       });
 
-      const controller = new AbortController();
-      // The query itself allows 45s. Give a healthy server enough client-side
-      // time to answer instead of aborting it at 12s and caching a fallback.
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
+      // First fetch only tags and centers. Full geometry for every matching way
+      // is the expensive part of city-scale queries and commonly exhausts a
+      // public Overpass dispatcher's slot.
+      const candidateQuery = overpassQuery.replace(/out body geom;/g, 'out tags center;');
+      const candidateElements = await requestOverpass(endpoint, candidateQuery, 25000);
+      const selectedCandidates = selectGeometryCandidates(candidateElements);
+      if (selectedCandidates.length === 0) continue;
 
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `data=${encodeURIComponent(overpassQuery)}`,
-        signal: controller.signal,
+      onProgress?.({
+        percent: 70,
+        message: `Found ${candidateElements.length} candidates`,
+        subMessage: `Fetching geometry for ${selectedCandidates.length} relevant map elements…`,
       });
-      clearTimeout(timeoutId);
 
-      if (!res.ok) {
-        failures.push(`${new URL(endpoint).hostname}: HTTP ${res.status}`);
-        continue;
+      const elements: OverpassElement[] = [];
+      for (let offset = 0; offset < selectedCandidates.length; offset += 40) {
+        const batch = selectedCandidates.slice(offset, offset + 40);
+        elements.push(...await requestOverpass(endpoint, buildGeometryLookupQuery(batch), 25000));
       }
-
-      const data = await res.json();
-      const elements: OverpassElement[] = data.elements || [];
 
       if (!elements || elements.length === 0) continue;
 
@@ -533,7 +598,10 @@ export async function fetchCategorySpecificOSMFeatures(
       }
     } catch (err) {
       console.warn(`Overpass attempt on ${endpoint} failed:`, err);
-      failures.push(`${new URL(endpoint).hostname}: ${err instanceof Error && err.name === 'AbortError' ? 'timed out' : 'network error'}`);
+      const reason = err instanceof Error
+        ? err.name === 'AbortError' ? 'timed out' : err.message
+        : 'network error';
+      failures.push(`${new URL(endpoint).hostname}: ${reason}`);
     }
   }
 
@@ -901,6 +969,8 @@ export function parseOverpassElements(
       clues: [],
       distractors: [],
       difficulty: 'medium',
+      wikidata: tags.wikidata,
+      wikipedia: tags.wikipedia,
     };
 
     featureMap.set(nameKey, feat);
@@ -917,10 +987,10 @@ export function parseOverpassElements(
     const hasReference = groupElements.some((element) => element.tags?.wikidata || element.tags?.wikipedia);
     const isRelation = groupElements.some((element) => element.type === 'relation');
     const classBonus = tags.waterway === 'river' ? 35 : tags.waterway === 'canal' ? 30 : 0;
-    prominenceScores.set(
-      nameKey,
-      (hasReference ? 100 : 0) + (isRelation ? 50 : 0) + classBonus + Math.log10(Math.max(10, mappedLengthMeters)) * 10
-    );
+    const prominenceScore = (hasReference ? 100 : 0) + (isRelation ? 50 : 0) + classBonus
+      + Math.log10(Math.max(10, mappedLengthMeters)) * 10;
+    prominenceScores.set(nameKey, prominenceScore);
+    feat.prominenceScore = Math.round(prominenceScore);
   }
 
   // Populate rich distractors for each feature
