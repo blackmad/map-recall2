@@ -1,4 +1,4 @@
-export type GameMode = 'pinpoint' | 'guess_name';
+export type GameMode = 'pinpoint' | 'guess_name' | 'guess_neighborhood';
 
 export type LocationScope = 'neighborhood' | 'city' | 'region';
 
@@ -19,7 +19,8 @@ export type FeatureType =
   | 'canal'
   | 'water'
   | 'museum'
-  | 'monument';
+  | 'monument'
+  | 'neighborhood';
 
 export type FeatureCategory =
   | 'all'
@@ -159,6 +160,15 @@ export interface StreetFeature {
   wikidata?: string;
   wikipedia?: string;
   prominenceScore?: number;
+  wikipediaPageviews60d?: number;
+  wikidataSitelinks?: number;
+  encyclopediaScore?: number;
+  wikipediaExtract?: string;
+  wikipediaUrl?: string;
+  wikipediaImageUrl?: string;
+  neighborhood?: string;
+  neighborhoodDistractors?: string[];
+  areaGeometry?: [number, number][][][];
 }
 
 export interface City {

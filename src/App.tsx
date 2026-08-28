@@ -27,6 +27,10 @@ import { GameOverSummary } from './components/GameOverSummary';
 import { SettingsModal } from './components/SettingsModal';
 import { LoadingProgressModal } from './components/LoadingProgressModal';
 import { DebugPlacesModal } from './components/DebugPlacesModal';
+import { AuthModal } from './components/AuthModal';
+import { useAuth } from './AuthContext';
+import { loadLocalReviewStates, recordReview, syncProgress } from './progressRepository';
+import { ReviewState, selectReviewFeatures } from './spacedRepetition';
 
 const urlParams = new URLSearchParams(window.location.search);
 const validValue = <T extends string>(value: string | null, options: readonly T[], fallback: T): T =>
@@ -42,7 +46,29 @@ const hasBookmarkedCoordinates = Number.isFinite(bookmarkedLatitude) && Number.i
   && bookmarkedLongitude >= -180 && bookmarkedLongitude <= 180;
 const bookmarkedAreaId = numberParam('area', 0, 1, Number.MAX_SAFE_INTEGER) || null;
 
+const pointInAreaGeometry = (point: [number, number], geometry?: [number, number][][][]) => {
+  const inRing = ([lat, lon]: [number, number], ring: [number, number][]) => {
+    let inside = false;
+    for (let index = 0, previous = ring.length - 1; index < ring.length; previous = index++) {
+      const [currentLat, currentLon] = ring[index];
+      const [previousLat, previousLon] = ring[previous];
+      if ((currentLat > lat) !== (previousLat > lat)
+        && lon < ((previousLon - currentLon) * (lat - currentLat)) / (previousLat - currentLat) + currentLon) inside = !inside;
+    }
+    return inside;
+  };
+  return geometry?.some((polygon) => inRing(point, polygon[0]) && !polygon.slice(1).some((hole) => inRing(point, hole))) || false;
+};
+
+const distanceToQuizFeature = (point: [number, number], feature: StreetFeature) =>
+  pointInAreaGeometry(point, feature.areaGeometry)
+    ? 0
+    : calculateShortestDistanceToFeature(point, feature.center, feature.path, feature.paths);
+
 export default function App() {
+  const { user, configured: isCloudConfigured, signOutUser } = useAuth();
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [reviewStates, setReviewStates] = useState<ReviewState[]>(loadLocalReviewStates);
   // Config state - Label-less base map by default
   const initialCityId = urlParams.get('city') || (hasBookmarkedCoordinates ? 'my_location' : 'my_location');
   const [currentCityId, setCurrentCityId] = useState<string>(initialCityId);
@@ -62,8 +88,9 @@ export default function App() {
   const [searchRadiusMeters, setSearchRadiusMeters] = useState<number>(() => numberParam('radius', 4500, 250, 50000));
   const [administrativeAreas, setAdministrativeAreas] = useState<AdministrativeArea[]>([]);
   const [selectedAdministrativeAreaId, setSelectedAdministrativeAreaId] = useState<number | null>(bookmarkedAreaId);
-  const [gameMode, setGameMode] = useState<GameMode>(() => validValue(urlParams.get('mode'), ['pinpoint', 'guess_name'] as const, 'pinpoint'));
+  const [gameMode, setGameMode] = useState<GameMode>(() => validValue(urlParams.get('mode'), ['pinpoint', 'guess_name', 'guess_neighborhood'] as const, 'pinpoint'));
   const [selectedCategory, setSelectedCategory] = useState<FeatureCategory>(() => validValue(urlParams.get('category'), FEATURE_CATEGORIES.map(({ id }) => id), 'all'));
+  const [linkedFeaturesOnly, setLinkedFeaturesOnly] = useState<boolean>(() => urlParams.get('references') === 'wiki');
   const [roundsPerGame, setRoundsPerGame] = useState<number>(() => Math.round(numberParam('rounds', 5, 1, 50)));
   const [blindMapMode, setBlindMapMode] = useState<boolean>(() => urlParams.get('labels') !== 'on'); // Label-less by default
   const [tileStyle, setTileStyle] = useState<TileStyle>(() => validValue(urlParams.get('map'), ['voyager', 'light_nolabels', 'osm', 'dark'] as const, 'light_nolabels'));
@@ -92,6 +119,7 @@ export default function App() {
     params.set('city', currentCityId);
     params.set('mode', gameMode);
     params.set('category', selectedCategory);
+    params.set('references', linkedFeaturesOnly ? 'wiki' : 'all');
     params.set('rounds', String(roundsPerGame));
     params.set('scope', locationScope);
     params.set('radius', String(searchRadiusMeters));
@@ -106,7 +134,7 @@ export default function App() {
     }
     const nextUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
     window.history.replaceState(null, '', nextUrl);
-  }, [currentCityId, gameMode, selectedCategory, roundsPerGame, locationScope, searchRadiusMeters, tileStyle, blindMapMode, unit, selectedAdministrativeAreaId, customLocationCity]);
+  }, [currentCityId, gameMode, selectedCategory, linkedFeaturesOnly, roundsPerGame, locationScope, searchRadiusMeters, tileStyle, blindMapMode, unit, selectedAdministrativeAreaId, customLocationCity]);
 
   // Combine custom location city with predefined cities, applying dynamically fetched OSM features
   const allCities: City[] = useMemo(() => {
@@ -183,7 +211,11 @@ export default function App() {
   }, [currentCityId, currentCity.center]);
 
   // Round & Gameplay state
-  const [gameSeed, setGameSeed] = useState<number>(1);
+  const [gameSeed, setGameSeed] = useState<number>(() => {
+    const values = new Uint32Array(1);
+    crypto.getRandomValues(values);
+    return values[0];
+  });
   const [currentRoundIndex, setCurrentRoundIndex] = useState<number>(0);
   const [roundResults, setRoundResults] = useState<RoundResult[]>([]);
   const [userPinnedLocation, setUserPinnedLocation] = useState<[number, number] | null>(null);
@@ -193,22 +225,30 @@ export default function App() {
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
   const [timeRoundStarted, setTimeRoundStarted] = useState<number>(() => Date.now());
 
+  useEffect(() => {
+    if (!user) return;
+    syncProgress(user).then(setReviewStates).catch((error) => {
+      console.warn('Could not synchronize review progress:', error);
+      setLocationToast('Progress saved locally; cloud sync will retry later.');
+    });
+  }, [user]);
+
   // Filter features based on selectedCategory for current city
   const filteredCityFeatures = useMemo(() => {
-    if (selectedCategory === 'all') return currentCity.features;
+    const modeFeatures = gameMode === 'guess_neighborhood'
+      ? currentCity.features.filter((feature) => feature.type === 'neighborhood')
+      : currentCity.features.filter((feature) => feature.type !== 'neighborhood' && (!linkedFeaturesOnly || feature.wikipedia || feature.wikidata));
+    if (gameMode === 'guess_neighborhood') return modeFeatures;
+    if (selectedCategory === 'all') return modeFeatures;
     const cat = FEATURE_CATEGORIES.find((c) => c.id === selectedCategory);
-    if (!cat) return currentCity.features;
-    const matches = currentCity.features.filter((f) => cat.types.includes(f.type));
-    // If no matching items in this specific city, fallback gracefully to all features
-    return matches.length > 0 ? matches : currentCity.features;
-  }, [currentCity, selectedCategory]);
+    if (!cat) return modeFeatures;
+    return modeFeatures.filter((feature) => cat.types.includes(feature.type));
+  }, [currentCity, selectedCategory, linkedFeaturesOnly, gameMode]);
 
   // Features selected for current game session
   const featuresForGame: StreetFeature[] = useMemo(() => {
-    const pool = [...filteredCityFeatures];
-    const shuffled = [...pool].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, Math.min(roundsPerGame, shuffled.length));
-  }, [filteredCityFeatures, roundsPerGame, gameSeed]);
+    return selectReviewFeatures(filteredCityFeatures, reviewStates, gameMode, Math.min(roundsPerGame, filteredCityFeatures.length), Date.now(), gameSeed);
+  }, [filteredCityFeatures, reviewStates, gameMode, roundsPerGame, gameSeed]);
 
   const currentFeature: StreetFeature | null =
     featuresForGame[currentRoundIndex] || featuresForGame[0] || null;
@@ -367,6 +407,7 @@ export default function App() {
       if (newMode) setGameMode(newMode);
       if (newCategory) setSelectedCategory(newCategory);
       setGameSeed((prev) => prev + 1);
+      setReviewStates(loadLocalReviewStates());
       setCurrentRoundIndex(0);
       setRoundResults([]);
       setUserPinnedLocation(null);
@@ -557,7 +598,7 @@ export default function App() {
   // Map Click handler (for Pinpoint Mode)
   const handleMapClick = useCallback(
     (latlng: [number, number]) => {
-      if (gameMode !== 'pinpoint' || isRoundComplete || isGameOver) return;
+      if ((gameMode !== 'pinpoint' && gameMode !== 'guess_neighborhood') || isRoundComplete || isGameOver) return;
       sounds.playPinDrop();
       setUserPinnedLocation(latlng);
     },
@@ -567,24 +608,22 @@ export default function App() {
   // Current round distance error (for Pinpoint Mode)
   const currentDistanceError = useMemo(() => {
     if (!currentFeature || !userPinnedLocation) return undefined;
-    return calculateShortestDistanceToFeature(
-      userPinnedLocation,
-      currentFeature.center,
-      currentFeature.path,
-      currentFeature.paths
-    );
+    return distanceToQuizFeature(userPinnedLocation, currentFeature);
   }, [currentFeature, userPinnedLocation]);
+
+  const persistResult = (result: RoundResult) => {
+    // Keep the current session's selected features frozen. The latest schedule
+    // is loaded by resetGame before the next session is assembled.
+    recordReview(result, user).catch((error) => {
+      console.warn('Review cloud sync failed; local progress was retained:', error);
+    });
+  };
 
   // Confirm guess in Pinpoint Mode
   const handleConfirmPinpoint = () => {
     if (!currentFeature || !userPinnedLocation || isRoundComplete) return;
 
-    const distMeters = calculateShortestDistanceToFeature(
-      userPinnedLocation,
-      currentFeature.center,
-      currentFeature.path,
-      currentFeature.paths
-    );
+    const distMeters = distanceToQuizFeature(userPinnedLocation, currentFeature);
     const scoreResult = calculatePinpointScore(distMeters);
     const timeSpent = Date.now() - timeRoundStarted;
 
@@ -604,7 +643,7 @@ export default function App() {
     const result: RoundResult = {
       roundNumber: currentRoundIndex + 1,
       feature: currentFeature,
-      gameMode: 'pinpoint',
+      gameMode,
       userCoordinates: userPinnedLocation,
       distanceErrorMeters: distMeters,
       accuracyPercentage: scoreResult.accuracyPercentage,
@@ -613,6 +652,7 @@ export default function App() {
     };
 
     setRoundResults((prev) => [...prev, result]);
+    persistResult(result);
     setIsRoundComplete(true);
   };
 
@@ -627,6 +667,7 @@ export default function App() {
       timeSpentMs: Date.now() - timeRoundStarted,
     };
     setRoundResults((previous) => [...previous, result]);
+    persistResult(result);
     setWasRoundSkipped(true);
     setIsRoundComplete(true);
   };
@@ -662,6 +703,7 @@ export default function App() {
     };
 
     setRoundResults((prev) => [...prev, result]);
+    persistResult(result);
     setIsRoundComplete(true);
   };
 
@@ -697,6 +739,11 @@ export default function App() {
         onChangeMode={handleChangeMode}
         selectedCategory={selectedCategory}
         onChangeCategory={handleSelectCategory}
+        linkedFeaturesOnly={linkedFeaturesOnly}
+        onToggleLinkedFeaturesOnly={() => {
+          setLinkedFeaturesOnly((current) => !current);
+          resetGame();
+        }}
         currentRound={currentRoundIndex + 1}
         totalRounds={featuresForGame.length}
         totalScore={totalScore}
@@ -722,6 +769,10 @@ export default function App() {
         selectedAdministrativeAreaId={selectedAdministrativeAreaId}
         onSelectAdministrativeArea={handleSelectAdministrativeArea}
         onSearchLocation={handleSearchLocation}
+        accountEmail={user?.email || null}
+        isCloudConfigured={isCloudConfigured}
+        onOpenAuth={() => setIsAuthOpen(true)}
+        onSignOut={() => void signOutUser()}
       />
 
       {/* Main Map Viewport & Overlays */}
@@ -821,7 +872,7 @@ export default function App() {
         )}
 
         {/* Pinpoint Mode Overlay (Prompt + Feedback) */}
-        {!isGameOver && gameMode === 'pinpoint' && currentFeature && (
+        {!isGameOver && (gameMode === 'pinpoint' || gameMode === 'guess_neighborhood') && currentFeature && (
           <PinpointModeOverlay
             currentFeature={currentFeature}
             userPinnedLocation={userPinnedLocation}
@@ -928,6 +979,7 @@ export default function App() {
         showSearchBoundary={showSearchBoundary}
         onToggleSearchBoundary={() => setShowSearchBoundary((prev) => !prev)}
       />
+      {isAuthOpen && <AuthModal onClose={() => setIsAuthOpen(false)} />}
     </div>
   );
 }

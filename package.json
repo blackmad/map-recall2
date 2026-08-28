@@ -9,9 +9,11 @@
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "build:amsterdam": "tsx scripts/build-amsterdam-extract.ts",
+    "enrich:amsterdam": "tsx scripts/enrich-amsterdam-wikimedia.ts",
     "refresh:amsterdam": "bash scripts/refresh-amsterdam-extract.sh",
     "clean": "rm -rf dist server.js",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test:srs": "tsx scripts/check-spaced-repetition.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -22,6 +24,7 @@
     "canvas-confetti": "^1.9.4",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
+    "firebase": "^12.18.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",

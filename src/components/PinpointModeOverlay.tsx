@@ -9,6 +9,8 @@ import {
   Target,
   Sparkles,
 } from 'lucide-react';
+import { WikipediaCard } from './WikipediaCard';
+import { LookAroundLink } from './LookAroundLink';
 
 interface PinpointModeOverlayProps {
   currentFeature: StreetFeature;
@@ -41,6 +43,8 @@ function getFeatureTypeBadge(type: string) {
     case 'landmark':
     case 'monument':
       return { label: 'Landmark', icon: '🏰', bg: 'bg-indigo-500/20', text: 'text-indigo-400', border: 'border-indigo-500/30' };
+    case 'neighborhood':
+      return { label: 'Neighborhood', icon: '▱', bg: 'bg-violet-500/20', text: 'text-violet-300', border: 'border-violet-500/30' };
     case 'avenue':
     case 'boulevard':
     case 'street':
@@ -294,6 +298,8 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   Dashed line shows distance on map
                 </span>
               </div>
+              <WikipediaCard feature={currentFeature} />
+              <LookAroundLink feature={currentFeature} />
             </div>
           )
         )}

@@ -72,7 +72,7 @@ function classify(tags: Record<string, string | undefined>): { type: FeatureType
   if (tags.place === 'square' || tags.amenity === 'marketplace') return { type: 'square', category: 'squares' };
   if (tags.leisure || ['forest', 'meadow', 'grass'].includes(tags.landuse || '')) return { type: 'park', category: 'parks' };
   if (tags.tourism === 'museum') return { type: 'museum', category: 'landmarks' };
-  if (tags.tourism || tags.historic || ['theatre', 'arts_centre', 'townhall'].includes(tags.amenity || '')) return { type: 'landmark', category: 'landmarks' };
+  if (tags.tourism || tags.historic || ['theatre', 'arts_centre', 'townhall', 'place_of_worship'].includes(tags.amenity || '')) return { type: 'landmark', category: 'landmarks' };
   if (tags.highway) return { type: ['primary', 'secondary', 'tertiary'].includes(tags.highway) ? 'avenue' : 'street', category: 'streets' };
   return null;
 }
