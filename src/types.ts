@@ -109,6 +109,7 @@ export interface SearchBoundary {
   scope: LocationScope;
   category?: FeatureCategory;
   bounds?: [[number, number], [number, number]];
+  geometry?: [number, number][][][];
 }
 
 export interface AdministrativeArea {
@@ -121,6 +122,8 @@ export interface AdministrativeArea {
     maxlat: number;
     maxlon: number;
   };
+  kind?: string;
+  geometry?: [number, number][][][];
 }
 
 export interface SearchHistoryEntry {
@@ -153,6 +156,9 @@ export interface StreetFeature {
   clues: string[];
   distractors: string[];
   difficulty: 'easy' | 'medium' | 'hard';
+  wikidata?: string;
+  wikipedia?: string;
+  prominenceScore?: number;
 }
 
 export interface City {

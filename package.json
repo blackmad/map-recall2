@@ -8,6 +8,8 @@
     "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
+    "build:amsterdam": "tsx scripts/build-amsterdam-extract.ts",
+    "refresh:amsterdam": "bash scripts/refresh-amsterdam-extract.sh",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
   },
