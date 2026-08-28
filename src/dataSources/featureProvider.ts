@@ -65,8 +65,7 @@ function pointInBoundary(point: [number, number], polygons: [number, number][][]
   return polygons.some((polygon) => pointInRing(point, polygon[0]) && !polygon.slice(1).some((hole) => pointInRing(point, hole)));
 }
 
-export async function fetchQuizAreas(cityId: string): Promise<AdministrativeArea[] | null> {
-  if (cityId !== 'amsterdam') return null;
+async function loadAmsterdamAreas(): Promise<AdministrativeArea[] | null> {
   amsterdamManifestPromise ||= fetch(assetUrl('amsterdam/manifest.json')).then((response) => response.ok ? response.json() : null).catch(() => null);
   const manifest = await amsterdamManifestPromise;
   if (!manifest?.boundaries) return null;
@@ -77,13 +76,21 @@ export async function fetchQuizAreas(cityId: string): Promise<AdministrativeArea
   return amsterdamAreasPromise;
 }
 
+export async function fetchQuizAreas(cityId: string, center?: [number, number]): Promise<AdministrativeArea[] | null> {
+  const nearAmsterdam = center && center[0] >= 52.27 && center[0] <= 52.45 && center[1] >= 4.70 && center[1] <= 5.05;
+  if (cityId !== 'amsterdam' && !nearAmsterdam) return null;
+  const areas = await loadAmsterdamAreas();
+  const municipality = areas?.find(({ kind }) => kind === 'municipality');
+  return cityId === 'amsterdam' || (center && municipality?.geometry && pointInBoundary(center, municipality.geometry)) ? areas : null;
+}
+
 export async function fetchQuizFeatures(request: FeatureRequest): Promise<StreetFeature[]> {
-  if (request.cityId === 'amsterdam' && !request.forceRefresh) {
+  const amsterdamAreas = !request.forceRefresh ? await fetchQuizAreas(request.cityId, request.center) : null;
+  if (amsterdamAreas) {
     request.onProgress?.({ percent: 30, message: 'Loading Amsterdam extract…', subMessage: 'Using the locally hosted quiz dataset' });
     const extracted = await loadAmsterdamExtract(request.category);
     if (extracted) {
-      const areas = request.areaId ? await fetchQuizAreas(request.cityId) : null;
-      const selectedArea = areas?.find(({ id }) => id === request.areaId);
+      const selectedArea = amsterdamAreas.find(({ id }) => id === request.areaId);
       const features = selectedArea?.geometry
         ? extracted.filter((feature) => pointInBoundary(feature.center, selectedArea.geometry!)
           || feature.paths?.some((path) => path.some((point) => pointInBoundary(point, selectedArea.geometry!)))

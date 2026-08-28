@@ -166,7 +166,7 @@ export default function App() {
     administrativeLookupRef.current = lookupKey;
 
     let cancelled = false;
-    (async () => (await fetchQuizAreas(currentCityId)) ?? fetchContainingAdministrativeAreas(lat, lon))().then(async (areas) => {
+    (async () => (await fetchQuizAreas(currentCityId, [lat, lon])) ?? fetchContainingAdministrativeAreas(lat, lon))().then(async (areas) => {
       if (cancelled) return;
       setAdministrativeAreas(areas);
       const municipality = [8, 7, 6]
@@ -249,7 +249,8 @@ export default function App() {
             // 1. Get user's actual town/city, neighborhood, and country name
             const geoInfo = await reverseGeocodeLocation(lat, lon, targetScope);
             let placeName = geoInfo.name;
-            const containingAreas = await fetchContainingAdministrativeAreas(lat, lon);
+            const containingAreas = (await fetchQuizAreas('my_location', coords))
+              ?? await fetchContainingAdministrativeAreas(lat, lon);
             setAdministrativeAreas(containingAreas);
             const preferredLevels = targetScope === 'neighborhood' ? [10, 9] : targetScope === 'region' ? [4, 5, 6] : [8, 7, 6];
             const preferredArea = preferredLevels
@@ -474,7 +475,8 @@ export default function App() {
       setUserLocation(coords);
       setSelectedAdministrativeAreaId(null);
       setLoadingProgress({ percent: 30, message: 'Discovering local boundaries…', subMessage: result.name });
-      const areas = await fetchContainingAdministrativeAreas(result.lat, result.lon);
+      const areas = (await fetchQuizAreas('my_location', coords))
+        ?? await fetchContainingAdministrativeAreas(result.lat, result.lon);
       setAdministrativeAreas(areas);
 
       const features = await fetchQuizFeatures({
