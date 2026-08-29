@@ -2163,149 +2163,78 @@ class Game {
     const img = this._neighborhoodImages && this._neighborhoodImages.get(hood.name);
     const hasImage = img && img.complete && img.naturalWidth > 0;
 
-    // Slide-up entrance
-    const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.35);
+    const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.3);
     const eased = 1 - Math.pow(1 - slideT, 3);
-    const slideOffset = (1 - eased) * 40;
+    const slideOffset = (1 - eased) * 50;
 
-    const cardW = 460, cardH = 190;
+    const cardW = hasImage ? 380 : 320;
+    const cardH = hasImage ? 120 : 70;
     const cardX = CANVAS_W / 2 - cardW / 2;
-    const cardY = CANVAS_H - cardH - 24 + slideOffset;
+    const cardY = CANVAS_H - cardH - 30 + slideOffset;
 
-    // Deterministic warm hue from neighborhood name
-    let hash = 0;
-    for (let i = 0; i < hood.name.length; i++) hash = ((hash << 5) - hash + hood.name.charCodeAt(i)) | 0;
-    const hue = ((hash % 360) + 360) % 360;
+    ctx.beginPath();
+    roundRect(ctx, cardX, cardY, cardW, cardH, 8);
+    ctx.clip();
 
-    // Postcard background with warm gradient
-    const grad = ctx.createLinearGradient(cardX, cardY, cardX + cardW, cardY + cardH);
-    grad.addColorStop(0, `hsl(${hue}, 55%, 35%)`);
-    grad.addColorStop(0.5, `hsl(${(hue + 20) % 360}, 60%, 42%)`);
-    grad.addColorStop(1, `hsl(${(hue + 40) % 360}, 50%, 30%)`);
-    ctx.fillStyle = grad;
-    roundRect(ctx, cardX, cardY, cardW, cardH, 10);
-    ctx.fill();
+    if (hasImage) {
+      const aspect = img.naturalWidth / img.naturalHeight;
+      const targetAspect = cardW / cardH;
+      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
+      if (aspect > targetAspect) { sw = sh * targetAspect; sx = (img.naturalWidth - sw) / 2; }
+      else { sh = sw / targetAspect; sy = (img.naturalHeight - sh) / 2; }
+      ctx.drawImage(img, sx, sy, sw, sh, cardX, cardY, cardW, cardH);
+      const overlay = ctx.createLinearGradient(cardX, cardY, cardX, cardY + cardH);
+      overlay.addColorStop(0, 'rgba(0,0,0,0.15)');
+      overlay.addColorStop(0.5, 'rgba(0,0,0,0.45)');
+      overlay.addColorStop(1, 'rgba(0,0,0,0.75)');
+      ctx.fillStyle = overlay;
+      ctx.fillRect(cardX, cardY, cardW, cardH);
+    } else {
+      ctx.fillStyle = 'rgba(3,18,28,0.88)';
+      ctx.fillRect(cardX, cardY, cardW, cardH);
+    }
 
-    // Inner border (postcard frame)
-    ctx.strokeStyle = `hsla(${(hue + 30) % 360}, 40%, 75%, 0.6)`;
-    ctx.lineWidth = 2;
-    roundRect(ctx, cardX + 6, cardY + 6, cardW - 12, cardH - 12, 6);
+    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+    ctx.lineWidth = 1.5;
+    roundRect(ctx, cardX + 4, cardY + 4, cardW - 8, cardH - 8, 5);
     ctx.stroke();
 
-    // Outer border
-    ctx.strokeStyle = `hsla(${hue}, 30%, 20%, 0.8)`;
-    ctx.lineWidth = 3;
-    roundRect(ctx, cardX, cardY, cardW, cardH, 10);
-    ctx.stroke();
-
-    // "Greetings from" script text
-    ctx.fillStyle = `hsla(${(hue + 50) % 360}, 50%, 88%, 0.95)`;
-    ctx.font = 'italic 18px Georgia, serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('Greetings from', CANVAS_W / 2, cardY + 36);
-
-    // Large neighborhood name with photo-fill letters
     const name = hood.name.toUpperCase();
-    // Size the font to fit the card width
-    let fontSize = 52;
+    let fontSize = hasImage ? 42 : 32;
     ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
-    while (ctx.measureText(name).width > cardW - 50 && fontSize > 20) {
+    while (ctx.measureText(name).width > cardW - 40 && fontSize > 16) {
       fontSize -= 2;
       ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
     }
-    const nameY = cardY + 50 + fontSize * 0.75;
+    ctx.textAlign = 'center';
+    const nameY = hasImage ? cardY + cardH - 28 : cardY + cardH / 2 + fontSize * 0.35;
+
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    ctx.fillText(name, CANVAS_W / 2 + 1.5, nameY + 1.5);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillText(name, CANVAS_W / 2, nameY);
+    ctx.strokeStyle = 'rgba(250,204,21,0.5)';
+    ctx.lineWidth = 0.8;
+    ctx.strokeText(name, CANVAS_W / 2, nameY);
 
     if (hasImage) {
-      // Draw text with image fill using offscreen canvas compositing
-      if (!this._postcardCanvas) {
-        this._postcardCanvas = document.createElement('canvas');
-        this._postcardCanvas.width = cardW;
-        this._postcardCanvas.height = fontSize + 10;
-      }
-      const oc = this._postcardCanvas;
-      oc.width = cardW;
-      oc.height = fontSize + 10;
-      const octx = oc.getContext('2d');
-
-      // Draw text as mask
-      octx.clearRect(0, 0, oc.width, oc.height);
-      octx.font = ctx.font;
-      octx.textAlign = 'center';
-      octx.fillStyle = '#FFF';
-      octx.fillText(name, cardW / 2, fontSize);
-
-      // Fill with image (only where text pixels exist)
-      octx.globalCompositeOperation = 'source-in';
-      const aspect = img.naturalWidth / img.naturalHeight;
-      const targetAspect = oc.width / oc.height;
-      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
-      if (aspect > targetAspect) {
-        sw = sh * targetAspect;
-        sx = (img.naturalWidth - sw) / 2;
-      } else {
-        sh = sw / targetAspect;
-        sy = (img.naturalHeight - sh) / 2;
-      }
-      octx.drawImage(img, sx, sy, sw, sh, 0, 0, oc.width, oc.height);
-
-      // Add colored shadow/outline behind text for depth
-      octx.globalCompositeOperation = 'destination-over';
-      octx.fillStyle = `hsl(${hue}, 50%, 22%)`;
-      octx.font = ctx.font;
-      octx.textAlign = 'center';
-      octx.fillText(name, cardW / 2 + 2, fontSize + 2);
-
-      // Draw the composited text onto main canvas
-      ctx.drawImage(oc, cardX, nameY - fontSize);
-
-      // Add a bright outline around the image-filled letters
-      ctx.strokeStyle = `hsla(${(hue + 50) % 360}, 60%, 80%, 0.7)`;
-      ctx.lineWidth = 1.5;
-      ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
-      ctx.textAlign = 'center';
-      ctx.strokeText(name, CANVAS_W / 2, nameY);
-    } else {
-      // No image: bold colored letters with 3D shadow effect
-      ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
-      ctx.textAlign = 'center';
-      // Shadow
-      ctx.fillStyle = `hsl(${hue}, 40%, 18%)`;
-      ctx.fillText(name, CANVAS_W / 2 + 2, nameY + 2);
-      // Main text
-      ctx.fillStyle = `hsl(${(hue + 40) % 360}, 60%, 80%)`;
-      ctx.fillText(name, CANVAS_W / 2, nameY);
-      // Highlight stroke
-      ctx.strokeStyle = `hsla(${(hue + 50) % 360}, 50%, 92%, 0.5)`;
-      ctx.lineWidth = 1;
-      ctx.strokeText(name, CANVAS_W / 2, nameY);
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.font = 'italic 13px Georgia, serif';
+      ctx.fillText('Entering neighborhood', CANVAS_W / 2, cardY + 22);
     }
 
-    // Subtitle description (one line)
+    // Skip generic "X is a neighbourhood in Amsterdam" descriptions
     const extract = hood.wikipediaExtract || '';
-    if (extract) {
-      const sentence = extract.split(/(?<=[.!?])\s/)[0].slice(0, 80);
-      ctx.fillStyle = `hsla(${(hue + 50) % 360}, 40%, 88%, 0.85)`;
-      ctx.font = '11px monospace';
-      ctx.textAlign = 'center';
-      const subY = nameY + 18;
-      if (subY < cardY + cardH - 14) ctx.fillText(sentence, CANVAS_W / 2, subY);
+    const isGeneric = /^.{0,40}(is a |ist ein).{0,20}(neighbo|buurt|stadsdeel|Amsterdam)/i.test(extract);
+    if (extract && !isGeneric && hasImage) {
+      const sentence = extract.split(/(?<=[.!?])\s/).find(s => !/^.{0,30}(is a |ist ein)/i.test(s));
+      if (sentence) {
+        ctx.fillStyle = 'rgba(255,255,255,0.85)';
+        ctx.font = '10px monospace';
+        const trimmed = sentence.slice(0, 70);
+        ctx.fillText(trimmed, CANVAS_W / 2, nameY + 16);
+      }
     }
-
-    // Small decorative stamp (bottom-right corner)
-    const stampX = cardX + cardW - 38, stampY = cardY + 10, stampS = 28;
-    ctx.strokeStyle = `hsla(${(hue + 50) % 360}, 30%, 70%, 0.4)`;
-    ctx.lineWidth = 1;
-    for (let i = 0; i < 12; i++) {
-      const angle = (i / 12) * Math.PI * 2;
-      const r = stampS / 2 + (i % 2 === 0 ? 2 : 0);
-      const px = stampX + Math.cos(angle) * r;
-      const py = stampY + stampS / 2 + Math.sin(angle) * r;
-      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
-    }
-    ctx.closePath();
-    ctx.stroke();
-    ctx.fillStyle = `hsla(${(hue + 50) % 360}, 30%, 70%, 0.15)`;
-    ctx.fill();
 
     ctx.restore();
   }
