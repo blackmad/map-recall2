@@ -65,6 +65,9 @@ class Game {
     this.quizFeedback = '';
     this.routeOptions = { ...DIFFICULTY_PRESETS.medium };
     this.travelMode = 'boat';
+    this.controlMode = 'relative';
+    this.viewMode = 'north';
+    this.themeMode = 'clean';
     this.learnedNames = new Set();
     this.routeFrom = CANAL_ROUTE_POIS[1];
     this.routeTo = CANAL_ROUTE_POIS[2];
@@ -168,10 +171,12 @@ class Game {
     this._routeDifficulty = document.getElementById('route-difficulty');
     this._answerMode = document.getElementById('answer-mode');
     this._travelMode = document.getElementById('travel-mode');
+    this._controlMode = document.getElementById('control-mode');
+    this._viewMode = document.getElementById('view-mode');
+    this._themeMode = document.getElementById('theme-mode');
     this._assistLine = document.getElementById('assist-line');
     this._assistArrow = document.getElementById('assist-arrow');
     this._assistMinimap = document.getElementById('assist-minimap');
-    this._cameraNorth = document.getElementById('camera-north');
     this._routeError = document.getElementById('route-error');
     for (const poi of CANAL_ROUTE_POIS) {
       this._routeFrom.add(new Option(poi.name, poi.id));
@@ -198,20 +203,27 @@ class Game {
     this._liveLine = document.getElementById('live-line');
     this._liveArrow = document.getElementById('live-arrow');
     this._liveMinimap = document.getElementById('live-minimap');
-    this._liveNorth = document.getElementById('live-north');
+    this._liveControls = document.getElementById('live-controls');
+    this._liveView = document.getElementById('live-view');
+    this._liveTheme = document.getElementById('live-theme');
     document.getElementById('open-help').addEventListener('click', () => this._toggleUtilityPanel(this._helpPanel));
     document.getElementById('open-settings').addEventListener('click', () => this._toggleUtilityPanel(this._settingsPanel));
     document.querySelectorAll('.utility-close').forEach(button => button.addEventListener('click', () => this._closeUtilityPanels()));
-    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveNorth]) {
+    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap]) {
       control.addEventListener('change', () => this._readLiveSettings());
     }
+    this._liveControls.addEventListener('change', () => this._readLiveSettings());
+    this._liveView.addEventListener('change', () => this._readLiveSettings());
+    this._liveTheme.addEventListener('change', () => this._readLiveSettings());
   }
 
   _syncLiveSettings() {
     this._liveLine.checked = !!this.routeOptions.line;
     this._liveArrow.checked = !!this.routeOptions.arrow;
     this._liveMinimap.checked = !!this.showMiniMap;
-    this._liveNorth.checked = !!this.camera.northUp;
+    this._liveControls.value = this.controlMode;
+    this._liveView.value = this.viewMode;
+    this._liveTheme.value = this.themeMode;
   }
 
   _readLiveSettings() {
@@ -219,7 +231,13 @@ class Game {
     this.routeOptions.arrow = this._liveArrow.checked;
     this.showMiniMap = this._liveMinimap.checked;
     this.routeOptions.minimap = this.showMiniMap;
-    this.camera.northUp = this._liveNorth.checked;
+    this.controlMode = this._liveControls.value;
+    if (this.player) this.player.controlMode = this.controlMode;
+    this.viewMode = this._liveView.value;
+    this.camera.viewMode = this.viewMode;
+    this.camera.northUp = this.viewMode === 'north';
+    this.themeMode = this._liveTheme.value;
+    this.vectorMap.applyTheme(this.themeMode);
   }
 
   _toggleUtilityPanel(panel) {
@@ -263,11 +281,16 @@ class Game {
       minimap: this._assistMinimap.checked
     };
     this.travelMode = this._travelMode.value;
+    this.controlMode = this._controlMode.value;
+    this.viewMode = this._viewMode.value;
+    this.camera.viewMode = this.viewMode;
+    this.camera.northUp = this.viewMode === 'north';
+    this.themeMode = this._themeMode.value;
+    this.vectorMap.applyTheme(this.themeMode);
     try {
       this.learnedNames = new Set(JSON.parse(localStorage.getItem(`canalRecall.learned.${this.travelMode}`) || '[]'));
     } catch (_) { this.learnedNames = new Set(); }
     document.querySelector('#canal-card p').textContent = this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?';
-    this.camera.northUp = this._cameraNorth.checked;
     this.routeDifficulty = this._routeDifficulty.value;
     this.showMiniMap = this.routeOptions.minimap;
     this._routeError.textContent = '';
@@ -342,6 +365,7 @@ class Game {
 
     // Player at start
     this.player = new PlayerCar(startX, startY, startAngle);
+    this.player.controlMode = this.controlMode;
     this.cars.push(this.player);
 
     // Canal Recall intentionally starts with a quiet network: the experiment
@@ -625,7 +649,7 @@ class Game {
     if (this._utilityOpen) return;
     if (this.input.wasPressed('Tab') || this.input.wasPressed('KeyM')) this.showMiniMap = !this.showMiniMap;
     if (this.input.wasPressed('KeyL')) this.routeOptions.line = !this.routeOptions.line;
-    if (this.input.wasPressed('KeyA')) this.routeOptions.arrow = !this.routeOptions.arrow;
+    if (this.input.wasPressed('KeyF')) this.routeOptions.arrow = !this.routeOptions.arrow;
     if (this.input.wasPressed('KeyO')) this.camera.northUp = !this.camera.northUp;
     if (this.input.wasPressed('KeyN')) this.sound.toggle();
     if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) this.camera.zoomOut();
@@ -986,6 +1010,7 @@ class Game {
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
 
     this.renderer.drawTrack(this.camera, this.track);
+    this.renderer.drawQuestionFeature(this.camera, this.track, this.quizPromptName, this.raceTime);
     this.renderer.drawSkidMarks(this.particles, this.camera);
 
     const sortedCars = [...this.cars].sort((a, b) => a.y - b.y);
@@ -1003,6 +1028,12 @@ class Game {
     this.renderer.drawParticles(this.particles, this.camera);
     if (this.routeOptions.line) this.hud.drawRouteLine(ctx, this.player, this.track.finishPoint, this.camera, this.routePath);
     this.track.drawLabels(ctx, this.camera, this.learnedNames);
+
+    // Results replace the live HUD rather than competing with it.
+    if (this.state === GameState.FINISHED) {
+      this._renderFinish([]);
+      return;
+    }
 
     // HUD
     const { sorted, playerPos } = this._getPositions();
@@ -1376,78 +1407,71 @@ class Game {
     ctx.fillStyle = 'rgba(0,0,0,0.7)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
-    // Title
-    ctx.fillStyle = '#FFD700';
-    ctx.font = 'bold 48px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('DESTINATION REACHED!', CANVAS_W/2, 120);
-
-    // Stats panel
     const cx = CANVAS_W / 2;
-    ctx.fillStyle = 'rgba(0,0,0,0.5)';
-    roundRect(ctx, cx - 250, 150, 500, 200, 10);
+    const cardX = cx - 300, cardY = 90, cardW = 600, cardH = 500;
+    ctx.fillStyle = 'rgba(3,18,28,.94)';
+    roundRect(ctx, cardX, cardY, cardW, cardH, 18);
     ctx.fill();
+    ctx.strokeStyle = 'rgba(56,189,248,.65)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
 
-    // Time
-    ctx.fillStyle = '#FFF';
-    ctx.font = 'bold 16px monospace';
+    ctx.fillStyle = '#FACC15';
+    ctx.font = 'bold 38px monospace';
     ctx.textAlign = 'center';
-    ctx.fillText('TIME', cx, 185);
-    ctx.font = 'bold 36px monospace';
-    ctx.fillStyle = '#FFD700';
-    ctx.fillText(this.hud.formatTime(this.raceTime), cx, 225);
+    ctx.fillText('DESTINATION REACHED', cx, 145);
+    ctx.fillStyle = '#7DD3FC';
+    ctx.font = 'bold 15px monospace';
+    ctx.fillText(`${this.routeFrom.name}  →  ${this.routeTo.name}`, cx, 180);
 
-    // Distance and progress
-    ctx.font = '15px monospace';
-    ctx.fillStyle = '#CCC';
+    ctx.fillStyle = '#94A3B8';
+    ctx.font = 'bold 12px monospace';
+    ctx.fillText('TIME', cx, 218);
+    ctx.font = 'bold 38px monospace';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillText(this.hud.formatTime(this.raceTime), cx, 258);
+
     const meters = this.player.distancePx / PIXELS_PER_METER;
     const kilometres = meters / 1000;
-    ctx.fillText(`Distance: ${kilometres.toFixed(2)} km`, cx - 120, 270);
-    ctx.fillText('Progress: 100%', cx + 120, 270);
-
-    ctx.fillStyle = '#7DD3FC';
-    ctx.font = 'bold 14px monospace';
-    ctx.fillText(`${this.routeFrom.name} → ${this.routeTo.name}`, cx, 300);
+    ctx.font = '14px monospace';
     ctx.fillStyle = '#E0F2FE';
-    ctx.fillText(`Canal recall: ${this.quizCorrect} / ${this.quizAttempts}`, cx, 326);
-    ctx.fillText(`Difficulty: ${this.routeDifficulty}  ·  Score: ${this.quizPoints}`, cx, 348);
+    ctx.fillText(`${kilometres.toFixed(2)} km travelled`, cx, 292);
 
-    // Personal best comparison
+    const recallNoun = this.travelMode === 'car' ? 'Street recall' : 'Canal recall';
+    ctx.fillStyle = 'rgba(14,116,144,.28)';
+    roundRect(ctx, cx - 235, 320, 470, 105, 10);
+    ctx.fill();
+    ctx.fillStyle = '#E0F2FE';
+    ctx.font = 'bold 17px monospace';
+    ctx.fillText(`${recallNoun}: ${this.quizCorrect} / ${this.quizAttempts}`, cx, 352);
+    ctx.fillStyle = '#FACC15';
+    ctx.font = 'bold 22px monospace';
+    ctx.fillText(`${this.quizPoints} points`, cx, 385);
+    ctx.fillStyle = '#94A3B8';
+    ctx.font = '12px monospace';
+    ctx.fillText(`${this.routeDifficulty.toUpperCase()} · ${this.travelMode.toUpperCase()} · ${this.viewMode.replace('-', ' ').toUpperCase()}`, cx, 411);
+
+    let bestText = '';
     if (this._raceKey) {
       const stored = this._getBestTime(this._raceKey);
       if (stored && this.raceTime <= stored.time) {
-        const pulse = 0.5 + 0.5 * Math.sin(Date.now() / 300);
-        ctx.fillStyle = `rgba(76,175,80,${0.6 + pulse * 0.4})`;
-        ctx.font = 'bold 22px monospace';
-        ctx.fillText('NEW BEST!', cx, 340);
+        bestText = '★ NEW PERSONAL BEST';
       } else if (stored) {
-        ctx.fillStyle = '#90CAF9';
-        ctx.font = '14px monospace';
-        ctx.fillText(`Best: ${this.hud.formatTime(stored.time)}`, cx, 340);
+        bestText = `Personal best: ${this.hud.formatTime(stored.time)}`;
       }
     }
-
-    // Share link option
-    if (this._shareUrl) {
-      if (this._copiedTimer > 0) {
-        ctx.fillStyle = '#4CAF50';
-        ctx.font = 'bold 14px monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText('Copied!', CANVAS_W/2, CANVAS_H - 100);
-      } else {
-        ctx.fillStyle = 'rgba(255,255,255,0.5)';
-        ctx.font = '14px monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText('C — copy race link', CANVAS_W/2, CANVAS_H - 100);
-      }
-    }
-
-    // Restart prompt
-    const pulse = 0.5 + 0.5 * Math.sin(Date.now() / 400);
-    ctx.fillStyle = `rgba(255,255,255,${0.4 + pulse * 0.6})`;
+    ctx.fillStyle = bestText.startsWith('★') ? '#4ADE80' : '#7DD3FC';
     ctx.font = 'bold 16px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('ENTER - Try Again    ESC - Choose Route', CANVAS_W/2, CANVAS_H - 70);
+    ctx.fillText(bestText, cx, 458);
+
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 16px monospace';
+    ctx.fillText('ENTER  Try again     ESC  Choose route', cx, 515);
+    if (this._shareUrl) {
+      ctx.fillStyle = this._copiedTimer > 0 ? '#4ADE80' : '#94A3B8';
+      ctx.font = '13px monospace';
+      ctx.fillText(this._copiedTimer > 0 ? 'Race link copied' : 'C  Copy race link', cx, 550);
+    }
   }
 
   // ---- Nearby landmark learning cues ----

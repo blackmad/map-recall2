@@ -9,6 +9,16 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #111; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; position: relative; }
+body::after { content: ''; position: fixed; inset: 0; z-index: 3; pointer-events: none; opacity: 0; }
+.theme-8bit #vector-map { filter: saturate(1.35) contrast(1.25); }
+.theme-8bit canvas { image-rendering: pixelated; }
+.theme-8bit::after { opacity: .15; background: repeating-linear-gradient(0deg, transparent 0 5px, rgba(3,18,28,.35) 5px 7px); }
+.theme-16bit #vector-map { filter: saturate(1.55) contrast(1.15); }
+.theme-16bit::after { opacity: .1; background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(255,255,255,.12) 3px 4px); }
+.theme-psx #vector-map { filter: saturate(.75) contrast(1.35) sepia(.12); }
+.theme-psx::after { opacity: .28; background: linear-gradient(rgba(13,18,35,.05),rgba(13,18,35,.42)), repeating-linear-gradient(0deg, transparent 0 2px, rgba(0,0,0,.16) 2px 3px); }
+.theme-cyberpunk #vector-map { filter: saturate(1.9) contrast(1.25) hue-rotate(12deg) brightness(.72); }
+.theme-cyberpunk::after { opacity: .24; background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(0,255,255,.13) 3px 4px), linear-gradient(115deg, rgba(255,0,128,.12), transparent 45%, rgba(0,255,255,.12)); }
 canvas { display: block; position: relative; z-index: 2; }
 #vector-map { position: fixed; z-index: 1; pointer-events: none; }
 #map-container { border-radius: 0; }
@@ -71,12 +81,20 @@ canvas { display: block; position: relative; z-index: 2; }
       <label class="setup-field">TRAVEL MODE
         <select id="travel-mode"><option value="boat" selected>Boat — waterways</option><option value="car">Car — streets</option></select>
       </label>
+      <label class="setup-field">CONTROLS
+        <select id="control-mode"><option value="relative" selected>Relative — steer vehicle</option><option value="absolute">Absolute — compass directions</option></select>
+      </label>
+      <label class="setup-field">VIEW
+        <select id="view-mode"><option value="north" selected>2D — north up</option><option value="heading">2D — heading up</option><option value="chase">3D — chase camera</option></select>
+      </label>
+      <label class="setup-field">THEME
+        <select id="theme-mode"><option value="clean" selected>Clean map</option><option value="8bit">8-bit arcade</option><option value="16bit">16-bit</option><option value="psx">PSX</option><option value="cyberpunk">Cyberpunk</option></select>
+      </label>
     </div>
     <div class="assist-options">
       <label><input id="assist-line" type="checkbox"> Route line</label>
       <label><input id="assist-arrow" type="checkbox" checked> Destination arrow</label>
       <label><input id="assist-minimap" type="checkbox" checked> Minimap</label>
-      <label><input id="camera-north" type="checkbox" checked> North is up</label>
     </div>
     <button id="route-start" type="submit">Start route</button>
     <div id="route-error" aria-live="polite"></div>
@@ -85,12 +103,15 @@ canvas { display: block; position: relative; z-index: 2; }
 <div id="utility-buttons"><button id="open-settings" title="Settings (G)">⚙</button><button id="open-help" title="Keyboard shortcuts (?)">?</button></div>
 <div id="help-panel" class="utility-panel"><div class="utility-card">
   <h2>Keyboard shortcuts</h2>
-  <table><tr><td>Arrows</td><td>Steer and accelerate/brake</td></tr><tr><td>Space</td><td>Handbrake</td></tr><tr><td>M / Tab</td><td>Toggle minimap</td></tr><tr><td>L</td><td>Toggle route line</td></tr><tr><td>A</td><td>Toggle destination arrow</td></tr><tr><td>O</td><td>Toggle north-up / heading-up</td></tr><tr><td>G</td><td>Settings</td></tr><tr><td>N</td><td>Sound</td></tr><tr><td>P / Esc</td><td>Pause</td></tr><tr><td>− / +</td><td>Zoom</td></tr></table>
+  <table><tr><td>Arrows</td><td>Steer and accelerate/brake</td></tr><tr><td>Space</td><td>Handbrake</td></tr><tr><td>M / Tab</td><td>Toggle minimap</td></tr><tr><td>L</td><td>Toggle route line</td></tr><tr><td>F</td><td>Toggle destination arrow</td></tr><tr><td>O</td><td>Toggle north-up / heading-up</td></tr><tr><td>G</td><td>Settings</td></tr><tr><td>N</td><td>Sound</td></tr><tr><td>P / Esc</td><td>Pause</td></tr><tr><td>− / +</td><td>Zoom</td></tr></table>
   <button class="utility-close" type="button">Close</button>
 </div></div>
 <div id="settings-panel" class="utility-panel"><div class="utility-card">
   <h2>Navigation settings</h2>
-  <div class="assist-options"><label><input id="live-line" type="checkbox"> Route line</label><label><input id="live-arrow" type="checkbox"> Destination arrow</label><label><input id="live-minimap" type="checkbox"> Minimap</label><label><input id="live-north" type="checkbox"> North is up</label></div>
+  <div class="assist-options"><label><input id="live-line" type="checkbox"> Route line</label><label><input id="live-arrow" type="checkbox"> Destination arrow</label><label><input id="live-minimap" type="checkbox"> Minimap</label></div>
+  <label class="setup-field">CONTROLS<select id="live-controls"><option value="relative">Relative — steer vehicle</option><option value="absolute">Absolute — compass directions</option></select></label>
+  <label class="setup-field">VIEW<select id="live-view"><option value="north">2D — north up</option><option value="heading">2D — heading up</option><option value="chase">3D — chase camera</option></select></label>
+  <label class="setup-field">THEME<select id="live-theme"><option value="clean">Clean map</option><option value="8bit">8-bit arcade</option><option value="16bit">16-bit</option><option value="psx">PSX</option><option value="cyberpunk">Cyberpunk</option></select></label>
   <button class="utility-close" type="button">Done</button>
 </div></div>
 <div id="canal-prompt">
