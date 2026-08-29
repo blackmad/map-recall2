@@ -46,7 +46,13 @@ const car = (overrides: Partial<CarKinematics> = {}): CarKinematics => ({
   assert.ok(Math.abs(subject.vx) < 0.001, 'recovery projects velocity onto the street tangent');
 }
 
-type RoutingStreet = { name: string; path?: [number, number][]; paths?: [number, number][][] };
+type RoutingStreet = {
+  name: string;
+  highway?: string;
+  bridge?: boolean;
+  path?: [number, number][];
+  paths?: [number, number][][];
+};
 const routing = JSON.parse(await readFile('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as RoutingStreet[];
 const pointsFor = (name: string): [number, number][] => routing
   .filter(street => street.name === name)
@@ -67,5 +73,15 @@ for (const crossing of ['De Clercqstraat', 'Potgieterstraat', 'Kinkerstraat', 'J
   // centerline; their combined rendered half-widths span roughly 20 metres.
   assert.ok(closest < 22, `${crossing} has a continuous bridge approach at Da Costakade (closest ${closest.toFixed(1)}m)`);
 }
+const bridgeSegments = routing.filter(street => street.bridge);
+assert.ok(bridgeSegments.length >= 10, `routing extract retains the city's drivable bridge segments (found ${bridgeSegments.length})`);
+for (const bridgeName of ['De Clercqstraat', 'Rozengracht']) {
+  const bridge = routing.find(street => street.name === bridgeName && street.bridge);
+  assert.ok(bridge, `vehicle bridge segment ${bridgeName} is part of the routing extract`);
+}
+assert.ok(routing.some(street => !street.name), 'routing extract retains unnamed road connectors');
+for (const highway of ['primary', 'secondary', 'tertiary', 'residential', 'living_street']) {
+  assert.ok(routing.some(street => street.highway === highway), `routing extract retains ${highway} roads`);
+}
 
-process.stdout.write('Canal Recall car checks passed (5 simulations + 4 Da Costakade bridge fixtures).\n');
+process.stdout.write(`Canal Recall car checks passed (5 simulations, 4 Da Costakade approaches, ${bridgeSegments.length} bridge segments, routing-class coverage).\n`);
