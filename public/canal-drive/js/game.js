@@ -25,6 +25,7 @@ const DIFFICULTY_PRESETS = {
   expert: { answerMode: 'typing', line: false, arrow: false, minimap: false }
 };
 const DIFFICULTY_SCORE_MULTIPLIERS = { easy: 0.5, medium: 0.75, hard: 1, expert: 1.25, custom: 0.85 };
+const CANAL_PREFS_KEY = 'canalRecall.preferences.v1';
 
 class Game {
   constructor() {
@@ -185,6 +186,7 @@ class Game {
     this._routeFrom.value = this.routeFrom.id;
     this._routeTo.value = this.routeTo.id;
     this._applyDifficulty('medium');
+    this._loadPreferences();
     this._routeDifficulty.addEventListener('change', () => {
       if (this._routeDifficulty.value !== 'custom') this._applyDifficulty(this._routeDifficulty.value);
     });
@@ -195,6 +197,41 @@ class Game {
       event.preventDefault();
       this._startConfiguredRoute();
     });
+  }
+
+  _loadPreferences() {
+    try {
+      const prefs = JSON.parse(localStorage.getItem(CANAL_PREFS_KEY) || '{}');
+      const setValue = (control, value) => {
+        if (value != null && [...control.options].some(option => option.value === value && !option.disabled)) control.value = value;
+      };
+      setValue(this._routeDifficulty, prefs.difficulty);
+      if (this._routeDifficulty.value !== 'custom') this._applyDifficulty(this._routeDifficulty.value);
+      setValue(this._answerMode, prefs.answerMode);
+      setValue(this._travelMode, prefs.travelMode);
+      setValue(this._controlMode, prefs.controlMode);
+      setValue(this._viewMode, prefs.viewMode);
+      setValue(this._themeMode, prefs.themeMode);
+      if (typeof prefs.line === 'boolean') this._assistLine.checked = prefs.line;
+      if (typeof prefs.arrow === 'boolean') this._assistArrow.checked = prefs.arrow;
+      if (typeof prefs.minimap === 'boolean') this._assistMinimap.checked = prefs.minimap;
+      this.themeMode = this._themeMode.value;
+      this.vectorMap.applyTheme(this.themeMode);
+    } catch (_) {}
+  }
+
+  _savePreferences() {
+    localStorage.setItem(CANAL_PREFS_KEY, JSON.stringify({
+      difficulty: this.routeDifficulty || this._routeDifficulty.value,
+      answerMode: this.routeOptions.answerMode,
+      travelMode: this.travelMode,
+      controlMode: this.controlMode,
+      viewMode: this.viewMode,
+      themeMode: this.themeMode,
+      line: !!this.routeOptions.line,
+      arrow: !!this.routeOptions.arrow,
+      minimap: !!this.routeOptions.minimap
+    }));
   }
 
   _setupUtilityPanels() {
@@ -238,6 +275,7 @@ class Game {
     this.camera.northUp = this.viewMode === 'north';
     this.themeMode = this._liveTheme.value;
     this.vectorMap.applyTheme(this.themeMode);
+    this._savePreferences();
   }
 
   _toggleUtilityPanel(panel) {
@@ -266,12 +304,10 @@ class Game {
   }
 
   _startConfiguredRoute() {
-    const from = CANAL_ROUTE_POIS.find(poi => poi.id === this._routeFrom.value);
-    const to = CANAL_ROUTE_POIS.find(poi => poi.id === this._routeTo.value);
-    if (!from || !to || from.id === to.id) {
-      this._routeError.textContent = 'Choose two different places.';
-      return;
-    }
+    const choices = CANAL_ROUTE_POIS.filter(poi => poi.id !== this.routeFrom?.id || CANAL_ROUTE_POIS.length < 3);
+    const from = choices[Math.floor(Math.random() * choices.length)];
+    const destinations = CANAL_ROUTE_POIS.filter(poi => poi.id !== from.id);
+    const to = destinations[Math.floor(Math.random() * destinations.length)];
     this.routeFrom = from;
     this.routeTo = to;
     this.routeOptions = {
@@ -293,6 +329,7 @@ class Game {
     document.querySelector('#canal-card p').textContent = this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?';
     this.routeDifficulty = this._routeDifficulty.value;
     this.showMiniMap = this.routeOptions.minimap;
+    this._savePreferences();
     this._routeError.textContent = '';
     this._routeSetup.style.display = 'none';
     if (!this.soundStarted) { this.sound.init(); this.soundStarted = true; }
@@ -1024,7 +1061,6 @@ class Game {
         else this.renderer.drawCar(car, this.camera);
       }
     }
-    this.renderer.drawPlayerPulse(this.player, this.camera, this.raceTime);
     this.renderer.drawParticles(this.particles, this.camera);
     if (this.routeOptions.line) this.hud.drawRouteLine(ctx, this.player, this.track.finishPoint, this.camera, this.routePath);
     this.track.drawLabels(ctx, this.camera, this.learnedNames);
@@ -1490,7 +1526,15 @@ class Game {
         const point = this.osmLoader.latLngToGamePoint(center[0], center[1], centerLat, centerLng, segments, false);
         if (!point) return null;
         const detail = feature.funFact || feature.wikipediaExtract || '';
-        return { id: feature.id, name: feature.name, x: point.x, y: point.y, detail: detail.split(/(?<=[.!?])\s/)[0].slice(0, 150) };
+        const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
+        const geometryFeatures = sourcePaths.filter(path => path && path.length > 1).map(path => {
+          const coordinates = path.map(([lat, lng]) => [lng, lat]);
+          const first = coordinates[0], last = coordinates[coordinates.length - 1];
+          const closed = coordinates.length > 3 && first[0] === last[0] && first[1] === last[1];
+          return { type: 'Feature', properties: {}, geometry: closed ? { type: 'Polygon', coordinates: [coordinates] } : { type: 'LineString', coordinates } };
+        });
+        if (!geometryFeatures.length) geometryFeatures.push({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [center[1], center[0]] } });
+        return { id: feature.id, name: feature.name, x: point.x, y: point.y, detail: detail.split(/(?<=[.!?])\s/)[0].slice(0, 150), geojson: { type: 'FeatureCollection', features: geometryFeatures } };
       }).filter(Boolean);
       const metersPerDegreeLat = 111320;
       const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
@@ -1512,6 +1556,7 @@ class Game {
     if (this._landmarkNoticeTimer > 0) {
       this._landmarkNoticeTimer -= dt;
       if (this._landmarkNoticeTimer <= 0) this._landmarkNotice = null;
+      if (this._landmarkNoticeTimer <= 0) this.vectorMap.setActiveLandmark(null);
     }
     if (!this.player) return;
     this.currentNeighborhood = '';
@@ -1533,6 +1578,7 @@ class Game {
       this._seenLandmarks.add(nearest.id);
       this._landmarkNotice = nearest;
       this._landmarkNoticeTimer = 6;
+      this.vectorMap.setActiveLandmark(nearest);
     }
   }
 

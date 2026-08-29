@@ -7,6 +7,7 @@ class VectorBasemap {
     this.map = null;
     this.ready = false;
     this.theme = 'clean';
+    this._basePaint = new Map();
     if (!container || typeof maplibregl === 'undefined') return;
 
     this.map = new maplibregl.Map({
@@ -21,9 +22,49 @@ class VectorBasemap {
 
     this.map.on('load', () => {
       this._hideLabels();
+      this._captureBasePaint();
+      this._ensureLandmarkLayers();
       this._styleLandmarks();
       this.ready = true;
     });
+  }
+
+  _captureBasePaint() {
+    const properties = {
+      background: ['background-color', 'background-opacity'],
+      fill: ['fill-color', 'fill-outline-color', 'fill-opacity'],
+      line: ['line-color', 'line-opacity'],
+      'fill-extrusion': ['fill-extrusion-color', 'fill-extrusion-opacity'],
+      circle: ['circle-color', 'circle-opacity']
+    };
+    for (const layer of this.map.getStyle().layers || []) {
+      for (const property of properties[layer.type] || []) {
+        const value = this.map.getPaintProperty(layer.id, property);
+        if (value !== undefined) this._basePaint.set(`${layer.id}:${property}`, value);
+      }
+    }
+  }
+
+  _restoreBasePaint() {
+    for (const [key, value] of this._basePaint) {
+      const separator = key.lastIndexOf(':');
+      try { this.map.setPaintProperty(key.slice(0, separator), key.slice(separator + 1), value); } catch (_) {}
+    }
+  }
+
+  _ensureLandmarkLayers() {
+    if (this.map.getSource('active-landmark')) return;
+    this.map.addSource('active-landmark', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+    this.map.addLayer({ id: 'active-landmark-fill', type: 'fill', source: 'active-landmark', filter: ['==', '$type', 'Polygon'], paint: { 'fill-color': '#FACC15', 'fill-opacity': 0.48, 'fill-outline-color': '#FFFFFF' } });
+    this.map.addLayer({ id: 'active-landmark-line', type: 'line', source: 'active-landmark', filter: ['in', '$type', 'Polygon', 'LineString'], paint: { 'line-color': '#FACC15', 'line-width': 6, 'line-opacity': 0.95 } });
+    this.map.addLayer({ id: 'active-landmark-point', type: 'circle', source: 'active-landmark', filter: ['==', '$type', 'Point'], paint: { 'circle-radius': 16, 'circle-color': '#FACC15', 'circle-opacity': 0.72, 'circle-stroke-color': '#FFFFFF', 'circle-stroke-width': 3 } });
+  }
+
+  setActiveLandmark(landmark) {
+    if (!this.map) return;
+    const source = this.map.getSource('active-landmark');
+    if (!source) return;
+    source.setData(landmark && landmark.geojson ? landmark.geojson : { type: 'FeatureCollection', features: [] });
   }
 
   _styleLandmarks() {
@@ -82,11 +123,36 @@ class VectorBasemap {
     document.body.classList.remove('theme-8bit', 'theme-16bit', 'theme-psx', 'theme-cyberpunk');
     if (this.theme !== 'clean') document.body.classList.add(`theme-${this.theme}`);
     if (!this.map || !this.map.getLayer('building-3d')) return;
-    const colors = { clean: '#D8D3CA', '8bit': '#B8C68E', '16bit': '#A99BC8', psx: '#9B958E', cyberpunk: '#25114D' };
+    this._restoreBasePaint();
+    const palettes = {
+      '8bit': { ground: '#E8D878', land: '#88B058', water: '#2898D0', road: '#F8F0C8', outline: '#385078', building: '#B8A060', accent: '#F8D830' },
+      '16bit': { ground: '#C9B8D9', land: '#74B57A', water: '#4878C8', road: '#EFE7D0', outline: '#463C70', building: '#A98A9E', accent: '#FFD35A' },
+      psx: { ground: '#928C79', land: '#6D765B', water: '#526E83', road: '#B8AA91', outline: '#34333C', building: '#777169', accent: '#D5A84B' },
+      cyberpunk: { ground: '#100A24', land: '#17143A', water: '#071B3E', road: '#452160', outline: '#00E5FF', building: '#281147', accent: '#FF2DAA' }
+    };
     const names = ['Rijksmuseum', 'Koninklijk Paleis Amsterdam', 'NEMO', 'Het Scheepvaartmuseum', 'Westerkerk', 'Museum Het Rembrandthuis', 'H’ART Museum'];
+    const palette = palettes[this.theme];
     try {
+      if (palette) {
+        for (const layer of this.map.getStyle().layers || []) {
+          if (layer.id.startsWith('active-landmark')) continue;
+          const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
+          const isWater = /water|ocean|river|canal/.test(identity);
+          const isRoad = /road|street|transportation|bridge|tunnel|path/.test(identity);
+          const isBuilding = /building/.test(identity);
+          const isLand = /park|landcover|landuse|grass|wood|vegetation/.test(identity);
+          if (layer.type === 'background') this.map.setPaintProperty(layer.id, 'background-color', palette.ground);
+          if (layer.type === 'fill') {
+            this.map.setPaintProperty(layer.id, 'fill-color', isWater ? palette.water : isBuilding ? palette.building : isLand ? palette.land : palette.ground);
+            this.map.setPaintProperty(layer.id, 'fill-outline-color', isWater || isBuilding ? palette.outline : palette.land);
+          }
+          if (layer.type === 'line') {
+            this.map.setPaintProperty(layer.id, 'line-color', isWater ? palette.water : isRoad ? palette.road : palette.outline);
+          }
+        }
+      }
       this.map.setPaintProperty('building-3d', 'fill-extrusion-color', [
-        'case', ['in', ['coalesce', ['get', 'name'], ''], ['literal', names]], this.theme === 'cyberpunk' ? '#00F5FF' : '#F59E0B', colors[this.theme] || colors.clean
+        'case', ['in', ['coalesce', ['get', 'name'], ''], ['literal', names]], palette ? palette.accent : '#F59E0B', palette ? palette.building : '#D8D3CA'
       ]);
       this.map.setPaintProperty('building-3d', 'fill-extrusion-opacity', this.theme === 'cyberpunk' ? 0.98 : 0.9);
     } catch (_) {}
