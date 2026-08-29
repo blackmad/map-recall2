@@ -86,7 +86,7 @@ canvas { display: block; position: relative; z-index: 2; }
         <select id="travel-mode"><option value="boat" selected>Boat through the canals</option><option value="car" disabled>Car — road network coming soon</option></select>
       </label>
       <label class="setup-field">🗺️ VIEW
-        <select id="view-mode"><option value="north" selected>North-up map</option><option value="heading">Heading-up map</option><option value="chase">3D chase camera</option></select>
+        <select id="view-mode"><option value="north" selected>North-up map</option><option value="heading">Heading-up map</option><option value="chase">3D chase camera</option><option value="cockpit">3D near-first-person</option></select>
       </label>
       <label class="setup-field">🏠 ROUTE LOOP
         <select id="route-pattern"><option value="surprise" selected>Surprise landmark route</option><option value="home">Home-base errands</option></select>
@@ -103,7 +103,7 @@ canvas { display: block; position: relative; z-index: 2; }
         <label class="setup-field">THEME<select id="theme-mode"><option value="clean" selected>Clean map</option><option value="8bit">8-bit arcade</option><option value="16bit">16-bit</option><option value="psx">PSX</option><option value="cyberpunk">Cyberpunk</option></select></label>
         <label class="setup-field">CAMERA ZOOM<input id="camera-zoom" type="range" min="0.35" max="1.3" step="0.05" value="0.50"></label>
       </div>
-      <div class="assist-options"><label><input id="assist-line" type="checkbox"> Route line</label><label><input id="assist-arrow" type="checkbox" checked> Destination arrow</label><label><input id="assist-minimap" type="checkbox" checked> Minimap</label><label><input id="trees-enabled" type="checkbox" checked> Trees</label><label><input id="sound-enabled" type="checkbox"> Sound</label></div>
+      <div class="assist-options"><label><input id="assist-line" type="checkbox"> Route line</label><label><input id="assist-arrow" type="checkbox" checked> Destination arrow</label><label><input id="assist-minimap" type="checkbox" checked> Minimap</label><label><input id="trees-enabled" type="checkbox" checked> Trees in 3D</label><label><input id="detailed-3d" type="checkbox"> Detailed 3D beta</label><label><input id="sound-enabled" type="checkbox"> Sound</label></div>
     </details>
     <button id="route-start" type="submit">Start route</button>
     <div id="route-error" aria-live="polite"></div>
@@ -117,9 +117,9 @@ canvas { display: block; position: relative; z-index: 2; }
 </div></div>
 <div id="settings-panel" class="utility-panel"><div class="utility-card">
   <h2>Navigation settings</h2>
-  <div class="assist-options"><label><input id="live-line" type="checkbox"> Route line</label><label><input id="live-arrow" type="checkbox"> Destination arrow</label><label><input id="live-minimap" type="checkbox"> Minimap</label><label><input id="live-trees" type="checkbox"> Trees</label><label><input id="live-sound" type="checkbox"> Sound</label></div>
+  <div class="assist-options"><label><input id="live-line" type="checkbox"> Route line</label><label><input id="live-arrow" type="checkbox"> Destination arrow</label><label><input id="live-minimap" type="checkbox"> Minimap</label><label><input id="live-trees" type="checkbox"> Trees in 3D</label><label><input id="live-detailed-3d" type="checkbox"> Detailed 3D beta</label><label><input id="live-sound" type="checkbox"> Sound</label></div>
   <label class="setup-field">CONTROLS<select id="live-controls"><option value="relative">Relative — steer vehicle</option><option value="absolute">Absolute — compass directions</option></select></label>
-  <label class="setup-field">VIEW<select id="live-view"><option value="north">2D — north up</option><option value="heading">2D — heading up</option><option value="chase">3D — chase camera</option></select></label>
+  <label class="setup-field">VIEW<select id="live-view"><option value="north">2D — north up</option><option value="heading">2D — heading up</option><option value="chase">3D — chase camera</option><option value="cockpit">3D — near first person</option></select></label>
   <label class="setup-field">THEME<select id="live-theme"><option value="clean">Clean map</option><option value="8bit">8-bit arcade</option><option value="16bit">16-bit</option><option value="psx">PSX</option><option value="cyberpunk">Cyberpunk</option></select></label>
   <label class="setup-field">CAMERA ZOOM<input id="live-zoom" type="range" min="0.35" max="1.3" step="0.05" value="0.50"></label>
   <button class="utility-close" type="button">Done</button>
@@ -163,6 +163,7 @@ canvas { display: block; position: relative; z-index: 2; }
 <script src="js/road-network.js"></script>
 <script src="js/map-picker.js"></script>
 <script src="js/loading-screen.js"></script>
+<script src="js/detailed-buildings.bundle.js"></script>
 <script src="js/vector-map.js"></script>
 
 <!-- Game (depends on everything above) -->

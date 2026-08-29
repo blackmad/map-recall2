@@ -10,7 +10,10 @@ class VectorBasemap {
     this._basePaint = new Map();
     this._highlightedBuilding = null;
     this._pendingTrees = [];
+    this._pendingPlaces = { landmarks: [], boundaries: [] };
     this._treesVisible = false;
+    this._detailedBuildings = null;
+    this._detailedBuildingsVisible = false;
     if (!container || typeof maplibregl === 'undefined') return;
 
     this.map = new maplibregl.Map({
@@ -28,9 +31,15 @@ class VectorBasemap {
       this._captureBasePaint();
       this._ensureRouteLayer();
       this._ensureTreeLayers();
+      this._ensurePlaceLayers();
+      this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
       this.setTrees(this._pendingTrees);
       this._ensureLandmarkLayers();
       this._styleLandmarks();
+      if (window.CanalRecallDetailed3D && window.CanalRecallDetailed3D.DetailedBuildings) {
+        this._detailedBuildings = new window.CanalRecallDetailed3D.DetailedBuildings(this.map, maplibregl);
+        this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
+      }
       this.ready = true;
     });
   }
@@ -64,6 +73,38 @@ class VectorBasemap {
     }, before);
   }
 
+  _ensurePlaceLayers() {
+    if (this.map.getSource('amsterdam-pois')) return;
+    this.map.addSource('amsterdam-neighborhoods', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+    this.map.addSource('amsterdam-neighborhood-labels', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+    this.map.addSource('amsterdam-pois', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+    const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
+    this.map.addLayer({ id: 'neighborhood-boundaries', type: 'line', source: 'amsterdam-neighborhoods', minzoom: 13, paint: { 'line-color': '#8B5CF6', 'line-width': ['interpolate', ['linear'], ['zoom'], 13, 1, 18, 2.5], 'line-opacity': 0.48, 'line-dasharray': [3, 3] } }, before);
+    this.map.addLayer({ id: 'poi-dots', type: 'circle', source: 'amsterdam-pois', minzoom: 14.5, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 14.5, 3, 18, 6], 'circle-color': '#FACC15', 'circle-stroke-color': '#071E2B', 'circle-stroke-width': 1.5, 'circle-opacity': 0.9 } });
+    this.map.addLayer({ id: 'poi-labels', type: 'symbol', source: 'amsterdam-pois', minzoom: 16, layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': 11, 'text-offset': [0, 1.1], 'text-anchor': 'top', 'text-allow-overlap': false }, paint: { 'text-color': '#FFF7CC', 'text-halo-color': '#071E2B', 'text-halo-width': 2 } });
+    this.map.addLayer({ id: 'neighborhood-labels', type: 'symbol', source: 'amsterdam-neighborhood-labels', minzoom: 13, maxzoom: 18.5, layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 13, 11, 17, 16], 'text-letter-spacing': 0.12, 'text-allow-overlap': false }, paint: { 'text-color': '#6D28D9', 'text-halo-color': 'rgba(255,255,255,.9)', 'text-halo-width': 2 } });
+  }
+
+  setPlaces(landmarks, boundaries) {
+    this._pendingPlaces = { landmarks: landmarks || [], boundaries: boundaries || [] };
+    if (!this.map || !this.map.getSource('amsterdam-pois')) return;
+    const pois = this._pendingPlaces.landmarks.filter(item => item.center && (item.prominenceScore || 0) >= 220).map(item => ({ type: 'Feature', properties: { id: item.id, name: item.name }, geometry: { type: 'Point', coordinates: [item.center[1], item.center[0]] } }));
+    const polygons = [], labels = [];
+    for (const boundary of this._pendingPlaces.boundaries.filter(item => item.kind === 'neighbourhood' && item.geometry)) {
+      for (const polygon of boundary.geometry) {
+        const rings = polygon.map(ring => ring.map(([lat, lng]) => [lng, lat]));
+        if (!rings[0] || rings[0].length < 3) continue;
+        polygons.push({ type: 'Feature', properties: { name: boundary.name }, geometry: { type: 'Polygon', coordinates: rings } });
+        const exterior = rings[0];
+        const center = exterior.reduce((sum, point) => [sum[0] + point[0], sum[1] + point[1]], [0, 0]).map(value => value / exterior.length);
+        labels.push({ type: 'Feature', properties: { name: boundary.name }, geometry: { type: 'Point', coordinates: center } });
+      }
+    }
+    this.map.getSource('amsterdam-pois').setData({ type: 'FeatureCollection', features: pois });
+    this.map.getSource('amsterdam-neighborhoods').setData({ type: 'FeatureCollection', features: polygons });
+    this.map.getSource('amsterdam-neighborhood-labels').setData({ type: 'FeatureCollection', features: labels });
+  }
+
   setTrees(trees) {
     this._pendingTrees = trees || [];
     if (!this.map) return;
@@ -81,6 +122,27 @@ class VectorBasemap {
     for (const id of ['tree-trunks', 'tree-crowns']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');
     }
+  }
+
+  setDetailedBuildingsVisible(visible) {
+    this._detailedBuildingsVisible = !!visible;
+    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
+  }
+
+  inspectBuilding(cssX, cssY, canvasRect) {
+    if (!this.ready || !this.map || !canvasRect) return null;
+    const mapCanvas = this.map.getCanvas();
+    const pixel = {
+      x: cssX * mapCanvas.clientWidth / canvasRect.width,
+      y: cssY * mapCanvas.clientHeight / canvasRect.height
+    };
+    const layers = this.map.getStyle().layers.filter(layer => layer.type === 'fill-extrusion' && !layer.id.startsWith('active-landmark')).map(layer => layer.id);
+    const feature = this.map.queryRenderedFeatures(pixel, layers.length ? { layers } : undefined)
+      .find(candidate => candidate.layer && candidate.layer.type === 'fill-extrusion');
+    if (!feature) return null;
+    const lngLat = this.map.unproject(pixel);
+    const properties = feature.properties || {};
+    return { id: feature.id, name: properties.name || properties['name:en'] || '', lngLat: [lngLat.lng, lngLat.lat] };
   }
 
   setRoute(routePath, loader, visible) {
@@ -191,9 +253,11 @@ class VectorBasemap {
     const pixelsPerMeter = PIXELS_PER_METER * camera.zoom * displayScale;
     const zoom = Math.log2(Math.cos(lat * Math.PI / 180) * 156543.03392 * pixelsPerMeter);
     const chase = camera.viewMode === 'chase';
+    const cockpit = camera.viewMode === 'cockpit';
+    const threeDimensional = chase || cockpit;
     const bearing = camera.rotation * 180 / Math.PI;
-    this.map.jumpTo({ center: [lon, lat], zoom: chase ? zoom + 0.35 : zoom, bearing, pitch: chase ? 58 : 0 });
-    if (chase) {
+    this.map.jumpTo({ center: [lon, lat], zoom: cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom, bearing, pitch: cockpit ? 72 : chase ? 58 : 0 });
+    if (threeDimensional) {
       camera.projector = (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas);
     } else {
       camera.projector = null;
@@ -238,7 +302,7 @@ class VectorBasemap {
     try {
       if (palette) {
         for (const layer of this.map.getStyle().layers || []) {
-          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('navigation-route') || layer.id.startsWith('tree-')) continue;
+          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('navigation-route') || layer.id.startsWith('tree-') || layer.id.startsWith('poi-') || layer.id.startsWith('neighborhood-')) continue;
           const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
           const isWater = /water|ocean|river|canal/.test(identity);
           const isRoad = /road|street|transportation|bridge|tunnel|path/.test(identity);

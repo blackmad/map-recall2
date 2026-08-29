@@ -17,8 +17,9 @@ class Camera {
   }
   update(target, dt) {
     const speedRatio = clamp(target.speed / target.maxSpeed, 0, 1);
-    const tx = target.x + Math.cos(target.angle) * CAMERA_LOOKAHEAD * speedRatio + this.panX;
-    const ty = target.y + Math.sin(target.angle) * CAMERA_LOOKAHEAD * speedRatio + this.panY;
+    const lookahead = this.viewMode === 'cockpit' ? 115 + CAMERA_LOOKAHEAD * speedRatio : CAMERA_LOOKAHEAD * speedRatio;
+    const tx = target.x + Math.cos(target.angle) * lookahead + this.panX;
+    const ty = target.y + Math.sin(target.angle) * lookahead + this.panY;
     this.x += (tx - this.x) * this.smoothing;
     this.y += (ty - this.y) * this.smoothing;
     const wantedRotation = this.northUp ? 0 : target.angle + Math.PI / 2;
