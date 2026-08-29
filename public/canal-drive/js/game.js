@@ -1256,6 +1256,7 @@ class Game {
   }
 
   _updateBoundaryCollisions() {
+    if (this.travelMode === 'car') return;
     for (const car of this.cars) {
       const surface = this.track.getSurface(car.x, car.y);
       if (surface === 'grass') {
