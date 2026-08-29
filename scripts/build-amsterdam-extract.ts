@@ -86,12 +86,14 @@ if (!municipality || municipality.geometry?.type !== 'MultiPolygon') throw new E
 const municipalityPolygons = municipality.geometry.coordinates as Position[][][];
 const neighborhoodSource = JSON.parse(await readFile(neighborhoodBoundaryFile, 'utf8')) as { features: GeoJsonFeature[] };
 const grouped = new Map<string, { feature: StreetFeature; category: FeatureCategory; paths: [number, number][][]; score: number }>();
+const routingRoadCandidates: Array<{ feature: StreetFeature; category: FeatureCategory; paths: [number, number][][]; score: number }> = [];
+const drivableHighways = new Set(['primary', 'secondary', 'tertiary', 'residential', 'living_street', 'unclassified', 'service', 'busway']);
 
 for (const item of source.features) {
   const tags = item.properties || {};
   const name = (tags['name:en'] || tags.name || tags['name:nl'] || '').trim();
   const classification = classify(tags);
-  if (!name || !classification || !item.geometry) continue;
+  if (!classification || !item.geometry) continue;
   const paths = pathsFromGeometry(item).filter((line) => line.length > 1);
   let pointCenter: [number, number] | undefined;
   if (item.geometry.type === 'Point') {
@@ -102,6 +104,18 @@ for (const item of source.features) {
   if (!featureCenter) continue;
   if (!pointInMultiPolygon(featureCenter, municipalityPolygons)
     && !paths.some((line) => line.some((point) => pointInMultiPolygon(point, municipalityPolygons)))) continue;
+  if (tags.highway && drivableHighways.has(tags.highway) && paths.length) {
+    const routingFeature: StreetFeature & { bridge?: boolean } = {
+      id: `routing_${routingRoadCandidates.length}`, name, type: ['primary', 'secondary', 'tertiary'].includes(tags.highway) ? 'avenue' : 'street',
+      cityId: 'amsterdam', center: featureCenter, funFact: '', clues: [], distractors: [], difficulty: 'hard', highway: tags.highway,
+    };
+    if (tags.bridge === 'yes') routingFeature.bridge = true;
+    routingRoadCandidates.push({
+      category: 'streets', paths, score: 0,
+      feature: routingFeature,
+    });
+  }
+  if (!name) continue;
   const key = `${classification.category}:${name.toLocaleLowerCase()}`;
   const mappedLength = paths.reduce((total, line) => total + line.slice(1).reduce((sum, point, index) => sum + distance(line[index], point), 0), 0);
   const linkScore = (tags.wikidata ? 120 : 0) + (tags.wikipedia ? 80 : 0);
@@ -215,7 +229,7 @@ for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'land
   const available = [...grouped.values()].filter((entry) => entry.category === category).sort((a, b) => b.score - a.score);
   const candidates = category === 'streets' ? selectConnectedStreets(available, maximumPerCategory) : available.slice(0, maximumPerCategory);
   if (category === 'streets') {
-    const routing = selectConnectedStreets(available, available.length).map(({ feature, paths, score }) => ({
+    const routing = selectConnectedStreets(routingRoadCandidates, routingRoadCandidates.length).map(({ feature, paths, score }) => ({
       ...feature,
       path: paths[0],
       paths: paths.length > 1 ? paths : undefined,
