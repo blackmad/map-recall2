@@ -217,7 +217,7 @@ class Game {
     if (!this.player || this.quizPromptName || this._utilityOpen) return;
     const rect = this.canvas.getBoundingClientRect();
     const screen = { x: (clientX - rect.left) * CANVAS_W / rect.width, y: (clientY - rect.top) * CANVAS_H / rect.height };
-    let nearest = null, nearestDistance = 48;
+    let nearest = null, nearestDistance = 120;
     for (const landmark of this.landmarks) {
       const point = this.camera.worldToScreen(landmark.x, landmark.y);
       const distance = Math.hypot(point.x - screen.x, point.y - screen.y);
@@ -226,12 +226,18 @@ class Game {
     if (!nearest) {
       const building = this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect);
       if (!building) return;
-      nearest = {
-        id: `clicked-${building.id || building.lngLat.join('-')}`,
-        name: building.name || 'Unnamed building',
-        detail: building.name ? 'Mapped building — click nearby landmarks to learn more.' : 'This building has no name in OpenStreetMap yet.',
-        lngLat: building.lngLat,
-      };
+      const buildingName = building.name || '';
+      const matchedLandmark = buildingName && this.landmarks.find(l => l.name === buildingName);
+      if (matchedLandmark) {
+        nearest = matchedLandmark;
+      } else {
+        nearest = {
+          id: `clicked-${building.id || building.lngLat.join('-')}`,
+          name: buildingName || 'Unnamed building',
+          detail: buildingName ? 'Mapped building — click nearby landmarks to learn more.' : 'This building has no name in OpenStreetMap yet.',
+          lngLat: building.lngLat,
+        };
+      }
     }
     this._landmarkNotice = nearest;
     this._landmarkNoticeTimer = 8;
