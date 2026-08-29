@@ -18,12 +18,25 @@ below is being rushed or dropped for budget reasons.
 | `d6a4a61` | Building colour `to-color` fix, opaque extrusions, highlight no longer fights the building, bridge crossing test, no countdown |
 | `a9cb18d` | Calmer camera, grippier car, 1–4 answer keys, Reduced motion option |
 
-## Uncommitted right now
+## Car feel — measured, needs your judgement
 
-- **Sticky/fast car tune.** `PLAYER_CAR_DRIFT_FACTOR` 0.42 → 0.12,
-  `PLAYER_CAR_TURN_MULT` 1.24 → 1.45, new `PLAYER_CAR_SPEED_MULT` 1.35 and
-  `PLAYER_CAR_ACCEL_MULT` 1.4 applied in `_setupRace`. **Not yet play-tested** —
-  needs a car-mode drive to confirm it is not now twitchy at speed.
+Current tune: `PLAYER_CAR_DRIFT_FACTOR` 0.12, `PLAYER_CAR_TURN_MULT` 1.45,
+`PLAYER_CAR_SPEED_MULT` 1.35, `PLAYER_CAR_ACCEL_MULT` 1.4,
+`CAR_MIN_STEER_FACTOR` 0.7.
+
+Measured in a car-mode drive:
+
+- Stationary pivot: **72°/s**. Previously the car could not turn at all when
+  stopped — `speedFactor` floored at 0 for cars, so steering authority was
+  literally zero at a standstill.
+- Top speed works out to ~330 km/h at `PIXELS_PER_METER = 3`, reaching 209 px/s
+  within 2.5 s and still climbing. That is very fast for city streets; drop
+  `PLAYER_CAR_SPEED_MULT` if it overshoots junctions.
+- **Zero** frames outside the drivable corridor on that route, so the road guard
+  was not fighting the car. The stuck-at-bridges report did not reproduce here.
+- Distance from the road centreline still creeps up at speed (25.8 → 29.2 px
+  against a 30 px half-width over six frames), so the car wanders toward the
+  edge on long straights even with the new grip.
 
 ## Next up, in order
 
