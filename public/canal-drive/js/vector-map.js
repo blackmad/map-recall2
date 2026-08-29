@@ -8,6 +8,7 @@ class VectorBasemap {
     this.ready = false;
     this.theme = 'clean';
     this._basePaint = new Map();
+    this._highlightedBuilding = null;
     if (!container || typeof maplibregl === 'undefined') return;
 
     this.map = new maplibregl.Map({
@@ -23,10 +24,40 @@ class VectorBasemap {
     this.map.on('load', () => {
       this._hideLabels();
       this._captureBasePaint();
+      this._ensureRouteLayer();
       this._ensureLandmarkLayers();
       this._styleLandmarks();
       this.ready = true;
     });
+  }
+
+  _ensureRouteLayer() {
+    if (this.map.getSource('navigation-route')) return;
+    this.map.addSource('navigation-route', { type: 'geojson', lineMetrics: true, data: { type: 'FeatureCollection', features: [] } });
+    const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
+    this.map.addLayer({ id: 'navigation-route-casing', type: 'line', source: 'navigation-route', layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' }, paint: { 'line-color': 'rgba(3,18,28,.75)', 'line-width': 10 } }, before);
+    this.map.addLayer({ id: 'navigation-route-line', type: 'line', source: 'navigation-route', layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' }, paint: { 'line-color': '#38BDF8', 'line-width': 6, 'line-opacity': 0.9 } }, before);
+  }
+
+  setRoute(routePath, loader, visible) {
+    if (!this.map || !loader || !this.map.getSource('navigation-route')) return;
+    const visibility = visible ? 'visible' : 'none';
+    for (const id of ['navigation-route-casing', 'navigation-route-line']) {
+      if (this.map.getLayer(id) && this.map.getLayoutProperty(id, 'visibility') !== visibility) this.map.setLayoutProperty(id, 'visibility', visibility);
+    }
+    if (!visible || !routePath || routePath.length < 2 || this._routePathRef === routePath) return;
+    this._routePathRef = routePath;
+    const coordinates = routePath.map(point => this.worldToLngLat(point.x, point.y, loader));
+    this.map.getSource('navigation-route').setData({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates } });
+  }
+
+  worldToLngLat(worldX, worldY, loader) {
+    const metersPerDegreeLat = 111320;
+    const metersPerDegreeLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180);
+    return [
+      loader._lastCenterLng + (worldX - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER),
+      loader._lastCenterLat - (worldY - loader._lastOffsetY) / (metersPerDegreeLat * PIXELS_PER_METER)
+    ];
   }
 
   _captureBasePaint() {
@@ -55,7 +86,8 @@ class VectorBasemap {
   _ensureLandmarkLayers() {
     if (this.map.getSource('active-landmark')) return;
     this.map.addSource('active-landmark', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-    this.map.addLayer({ id: 'active-landmark-fill', type: 'fill', source: 'active-landmark', filter: ['==', '$type', 'Polygon'], paint: { 'fill-color': '#FACC15', 'fill-opacity': 0.48, 'fill-outline-color': '#FFFFFF' } });
+    this.map.addLayer({ id: 'active-landmark-extrusion', type: 'fill-extrusion', source: 'active-landmark', filter: ['==', '$type', 'Polygon'], paint: { 'fill-extrusion-color': '#FFD21F', 'fill-extrusion-height': 38, 'fill-extrusion-base': 1, 'fill-extrusion-opacity': 0.92 } });
+    this.map.addLayer({ id: 'active-landmark-fill', type: 'fill', source: 'active-landmark', filter: ['==', '$type', 'Polygon'], paint: { 'fill-color': '#FACC15', 'fill-opacity': 0.24, 'fill-outline-color': '#FFFFFF' } });
     this.map.addLayer({ id: 'active-landmark-line', type: 'line', source: 'active-landmark', filter: ['in', '$type', 'Polygon', 'LineString'], paint: { 'line-color': '#FACC15', 'line-width': 6, 'line-opacity': 0.95 } });
     this.map.addLayer({ id: 'active-landmark-point', type: 'circle', source: 'active-landmark', filter: ['==', '$type', 'Point'], paint: { 'circle-radius': 16, 'circle-color': '#FACC15', 'circle-opacity': 0.72, 'circle-stroke-color': '#FFFFFF', 'circle-stroke-width': 3 } });
   }
@@ -64,7 +96,23 @@ class VectorBasemap {
     if (!this.map) return;
     const source = this.map.getSource('active-landmark');
     if (!source) return;
-    source.setData(landmark && landmark.geojson ? landmark.geojson : { type: 'FeatureCollection', features: [] });
+    if (this._highlightedBuilding) {
+      try { this.map.setFeatureState(this._highlightedBuilding, { highlighted: false }); } catch (_) {}
+      this._highlightedBuilding = null;
+    }
+    let matchedBuilding = false;
+    if (landmark && landmark.lngLat && this.ready) {
+      const pixel = this.map.project(landmark.lngLat);
+      const candidates = this.map.queryRenderedFeatures([[pixel.x - 28, pixel.y - 28], [pixel.x + 28, pixel.y + 28]], { layers: ['building-3d'] });
+      const feature = candidates.find(candidate => candidate.id != null);
+      if (feature) {
+        this._highlightedBuilding = { source: feature.source, sourceLayer: feature.sourceLayer, id: feature.id };
+        try { this.map.setFeatureState(this._highlightedBuilding, { highlighted: true }); matchedBuilding = true; } catch (_) {}
+      }
+    }
+    // The extrusion is a geometry-changing fallback for tiles without stable
+    // feature IDs; it also makes non-building monuments spatially explicit.
+    source.setData(!matchedBuilding && landmark && landmark.geojson ? landmark.geojson : { type: 'FeatureCollection', features: [] });
   }
 
   _styleLandmarks() {
@@ -118,6 +166,17 @@ class VectorBasemap {
     return { x: projected.x * CANVAS_W / rect.width, y: projected.y * CANVAS_H / rect.height };
   }
 
+  isWater(worldX, worldY, loader) {
+    if (!this.ready || !loader || loader._lastCenterLat == null) return false;
+    try {
+      const pixel = this.map.project(this.worldToLngLat(worldX, worldY, loader));
+      return this.map.queryRenderedFeatures(pixel).some(feature => {
+        const identity = `${feature.layer && feature.layer.id || ''} ${feature.sourceLayer || ''}`.toLowerCase();
+        return feature.layer && feature.layer.type === 'fill' && /water|ocean|river|canal/.test(identity);
+      });
+    } catch (_) { return false; }
+  }
+
   applyTheme(theme) {
     this.theme = theme || 'clean';
     document.body.classList.remove('theme-8bit', 'theme-16bit', 'theme-psx', 'theme-cyberpunk');
@@ -135,7 +194,7 @@ class VectorBasemap {
     try {
       if (palette) {
         for (const layer of this.map.getStyle().layers || []) {
-          if (layer.id.startsWith('active-landmark')) continue;
+          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('navigation-route')) continue;
           const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
           const isWater = /water|ocean|river|canal/.test(identity);
           const isRoad = /road|street|transportation|bridge|tunnel|path/.test(identity);
@@ -152,7 +211,13 @@ class VectorBasemap {
         }
       }
       this.map.setPaintProperty('building-3d', 'fill-extrusion-color', [
-        'case', ['in', ['coalesce', ['get', 'name'], ''], ['literal', names]], palette ? palette.accent : '#F59E0B', palette ? palette.building : '#D8D3CA'
+        'case',
+        ['boolean', ['feature-state', 'highlighted'], false], '#FFE12B',
+        ['in', ['coalesce', ['get', 'name'], ''], ['literal', names]], palette ? palette.accent : '#F59E0B',
+        palette ? palette.building : '#D8D3CA'
+      ]);
+      this.map.setPaintProperty('building-3d', 'fill-extrusion-height', [
+        'case', ['boolean', ['feature-state', 'highlighted'], false], ['+', ['coalesce', ['get', 'render_height'], ['get', 'height'], 18], 12], ['coalesce', ['get', 'render_height'], ['get', 'height'], 5]
       ]);
       this.map.setPaintProperty('building-3d', 'fill-extrusion-opacity', this.theme === 'cyberpunk' ? 0.98 : 0.9);
     } catch (_) {}

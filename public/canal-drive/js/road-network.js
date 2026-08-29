@@ -114,6 +114,12 @@ class RoadNetwork {
 
   // Surface detection — is (x,y) on a road?
   getSurface(x, y) {
+    const surfaceKey = `surface:${Math.round(x / 4)},${Math.round(y / 4)}`;
+    if (this._frameCache.has(surfaceKey)) return this._frameCache.get(surfaceKey);
+    if (this.waterTest && this.waterTest(x, y)) {
+      this._frameCache.set(surfaceKey, 'asphalt');
+      return 'asphalt';
+    }
     const gx = Math.floor(x / ROAD_GRID_CELL), gy = Math.floor(y / ROAD_GRID_CELL);
     let minDist = Infinity;
     let nearestWidth = DEFAULT_ROAD_WIDTH;
@@ -133,9 +139,9 @@ class RoadNetwork {
       }
     }
 
-    if (minDist < nearestWidth - 6) return 'asphalt';
-    if (minDist < nearestWidth + 2) return 'curb';
-    return 'grass';
+    const surface = minDist < nearestWidth - 6 ? 'asphalt' : minDist < nearestWidth + 2 ? 'curb' : 'grass';
+    this._frameCache.set(surfaceKey, surface);
+    return surface;
   }
 
   // Clear per-frame result cache (call at start of each game frame)
@@ -241,7 +247,7 @@ class RoadNetwork {
   // Dijkstra. Nearby endpoints are merged so separately mapped OSM ways can
   // form one playable route through a junction.
   findRoute(startPoint, finishPoint) {
-    const mergeSize = 45; // ~15 m: bridges small mapping gaps at canal junctions
+    const mergeSize = 18; // ~6 m: join mapped endpoints without inventing cross-bank shortcuts
     const nodes = new Map();
     const nodeFor = (point) => {
       const key = `${Math.round(point.x / mergeSize)},${Math.round(point.y / mergeSize)}`;

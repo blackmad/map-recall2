@@ -116,6 +116,7 @@ class Game {
     this._setupUtilityPanels();
     this._resize();
     window.addEventListener('resize', () => this._resize());
+    this._setupCameraGestures();
 
     this.canvas.addEventListener('click', (e) => {
       if (this.state === GameState.MENU) {
@@ -164,6 +165,31 @@ class Game {
     this._checkShareLink();
   }
 
+  _setupCameraGestures() {
+    let dragging = false, lastX = 0, lastY = 0;
+    this.canvas.addEventListener('wheel', event => {
+      if (this.state === GameState.MENU) return;
+      event.preventDefault();
+      if (event.ctrlKey) {
+        this.camera.zoom = clamp(this.camera.zoom * Math.exp(-event.deltaY * 0.002), this.camera.minZoom, this.camera.maxZoom);
+      } else {
+        this.camera.pan(event.deltaX, event.deltaY);
+      }
+      this._cameraZoom.value = this._liveZoom.value = String(this.camera.zoom);
+    }, { passive: false });
+    this.canvas.addEventListener('pointerdown', event => {
+      if (event.button !== 0 || this.state === GameState.MENU) return;
+      dragging = true; lastX = event.clientX; lastY = event.clientY;
+      this.canvas.setPointerCapture(event.pointerId);
+    });
+    this.canvas.addEventListener('pointermove', event => {
+      if (!dragging) return;
+      this.camera.pan(lastX - event.clientX, lastY - event.clientY);
+      lastX = event.clientX; lastY = event.clientY;
+    });
+    this.canvas.addEventListener('pointerup', () => { dragging = false; });
+  }
+
   _setupRouteForm() {
     this._routeSetup = document.getElementById('route-setup');
     this._routeForm = document.getElementById('route-card');
@@ -178,6 +204,8 @@ class Game {
     this._assistLine = document.getElementById('assist-line');
     this._assistArrow = document.getElementById('assist-arrow');
     this._assistMinimap = document.getElementById('assist-minimap');
+    this._soundEnabled = document.getElementById('sound-enabled');
+    this._cameraZoom = document.getElementById('camera-zoom');
     this._routeError = document.getElementById('route-error');
     for (const poi of CANAL_ROUTE_POIS) {
       this._routeFrom.add(new Option(poi.name, poi.id));
@@ -215,6 +243,9 @@ class Game {
       if (typeof prefs.line === 'boolean') this._assistLine.checked = prefs.line;
       if (typeof prefs.arrow === 'boolean') this._assistArrow.checked = prefs.arrow;
       if (typeof prefs.minimap === 'boolean') this._assistMinimap.checked = prefs.minimap;
+      this._soundEnabled.checked = prefs.sound === true;
+      if (Number.isFinite(prefs.zoom)) this.camera.zoom = clamp(prefs.zoom, this.camera.minZoom, this.camera.maxZoom);
+      this._cameraZoom.value = String(this.camera.zoom);
       this.themeMode = this._themeMode.value;
       this.vectorMap.applyTheme(this.themeMode);
     } catch (_) {}
@@ -230,7 +261,9 @@ class Game {
       themeMode: this.themeMode,
       line: !!this.routeOptions.line,
       arrow: !!this.routeOptions.arrow,
-      minimap: !!this.routeOptions.minimap
+      minimap: !!this.routeOptions.minimap,
+      sound: !this.sound.muted,
+      zoom: this.camera.zoom
     }));
   }
 
@@ -240,13 +273,15 @@ class Game {
     this._liveLine = document.getElementById('live-line');
     this._liveArrow = document.getElementById('live-arrow');
     this._liveMinimap = document.getElementById('live-minimap');
+    this._liveSound = document.getElementById('live-sound');
+    this._liveZoom = document.getElementById('live-zoom');
     this._liveControls = document.getElementById('live-controls');
     this._liveView = document.getElementById('live-view');
     this._liveTheme = document.getElementById('live-theme');
     document.getElementById('open-help').addEventListener('click', () => this._toggleUtilityPanel(this._helpPanel));
     document.getElementById('open-settings').addEventListener('click', () => this._toggleUtilityPanel(this._settingsPanel));
     document.querySelectorAll('.utility-close').forEach(button => button.addEventListener('click', () => this._closeUtilityPanels()));
-    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap]) {
+    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveSound, this._liveZoom]) {
       control.addEventListener('change', () => this._readLiveSettings());
     }
     this._liveControls.addEventListener('change', () => this._readLiveSettings());
@@ -261,6 +296,8 @@ class Game {
     this._liveControls.value = this.controlMode;
     this._liveView.value = this.viewMode;
     this._liveTheme.value = this.themeMode;
+    this._liveSound.checked = !this.sound.muted;
+    this._liveZoom.value = String(this.camera.zoom);
   }
 
   _readLiveSettings() {
@@ -275,7 +312,19 @@ class Game {
     this.camera.northUp = this.viewMode === 'north';
     this.themeMode = this._liveTheme.value;
     this.vectorMap.applyTheme(this.themeMode);
+    this.camera.zoom = Number(this._liveZoom.value);
+    this._setSoundEnabled(this._liveSound.checked);
     this._savePreferences();
+  }
+
+  _setSoundEnabled(enabled) {
+    if (enabled && !this.soundStarted) {
+      this.sound.init();
+      this.soundStarted = true;
+    }
+    this.sound.setEnabled(enabled);
+    if (this._soundEnabled) this._soundEnabled.checked = enabled;
+    if (this._liveSound) this._liveSound.checked = enabled;
   }
 
   _toggleUtilityPanel(panel) {
@@ -332,7 +381,8 @@ class Game {
     this._savePreferences();
     this._routeError.textContent = '';
     this._routeSetup.style.display = 'none';
-    if (!this.soundStarted) { this.sound.init(); this.soundStarted = true; }
+    this.camera.zoom = Number(this._cameraZoom.value);
+    this._setSoundEnabled(this._soundEnabled.checked);
     this._onLocationSelected(
       (from.lat + to.lat) / 2,
       (from.lng + to.lng) / 2,
@@ -624,6 +674,7 @@ class Game {
       if (this._loadingAborted) return;
 
       this.track = new RoadNetwork(segments, start, finish, tiles);
+      if (this.travelMode === 'boat') this.track.waterTest = (x, y) => this.vectorMap.isWater(x, y, this.osmLoader);
       this.routePath = this.track.findRoute(start, finish);
       this.trackMode = TRACK_MODE_POINT_TO_POINT;
       this.renderer.preRenderTrack(this.track);
@@ -688,9 +739,14 @@ class Game {
     if (this.input.wasPressed('KeyL')) this.routeOptions.line = !this.routeOptions.line;
     if (this.input.wasPressed('KeyF')) this.routeOptions.arrow = !this.routeOptions.arrow;
     if (this.input.wasPressed('KeyO')) this.camera.northUp = !this.camera.northUp;
-    if (this.input.wasPressed('KeyN')) this.sound.toggle();
+    if (this.input.wasPressed('KeyN')) { this._setSoundEnabled(this.sound.muted); this._savePreferences(); }
     if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) this.camera.zoomOut();
     if (this.input.isDown('Equal') || this.input.isDown('NumpadAdd')) this.camera.zoomIn();
+    if (this.input.isDown('KeyI')) this.camera.pan(0, -8);
+    if (this.input.isDown('KeyK')) this.camera.pan(0, 8);
+    if (this.input.isDown('KeyJ')) this.camera.pan(-8, 0);
+    if (this.input.isDown('KeyU')) this.camera.pan(8, 0);
+    if (this.input.wasPressed('KeyR')) this.camera.resetPan();
 
     switch (this.state) {
       case GameState.MENU:
@@ -1045,6 +1101,7 @@ class Game {
     this.hud.setTime(this.raceTime);
     // Transparent game world over the live MapLibre vector basemap.
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
+    this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
 
     this.renderer.drawTrack(this.camera, this.track);
     this.renderer.drawQuestionFeature(this.camera, this.track, this.quizPromptName, this.raceTime);
@@ -1062,7 +1119,6 @@ class Game {
       }
     }
     this.renderer.drawParticles(this.particles, this.camera);
-    if (this.routeOptions.line) this.hud.drawRouteLine(ctx, this.player, this.track.finishPoint, this.camera, this.routePath);
     this.track.drawLabels(ctx, this.camera, this.learnedNames);
 
     // Results replace the live HUD rather than competing with it.
@@ -1534,7 +1590,7 @@ class Game {
           return { type: 'Feature', properties: {}, geometry: closed ? { type: 'Polygon', coordinates: [coordinates] } : { type: 'LineString', coordinates } };
         });
         if (!geometryFeatures.length) geometryFeatures.push({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [center[1], center[0]] } });
-        return { id: feature.id, name: feature.name, x: point.x, y: point.y, detail: detail.split(/(?<=[.!?])\s/)[0].slice(0, 150), geojson: { type: 'FeatureCollection', features: geometryFeatures } };
+        return { id: feature.id, name: feature.name, x: point.x, y: point.y, lngLat: [center[1], center[0]], detail: detail.split(/(?<=[.!?])\s/)[0].slice(0, 150), geojson: { type: 'FeatureCollection', features: geometryFeatures } };
       }).filter(Boolean);
       const metersPerDegreeLat = 111320;
       const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
