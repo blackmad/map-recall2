@@ -29,12 +29,15 @@ class OSMLoader {
         for (let pathIndex = 0; pathIndex < paths.length; pathIndex++) {
           const path = paths[pathIndex];
           if (!path || path.length < 2) continue;
-          // The extract intentionally retains named water polygons for map
-          // context, but their closed shore rings are not navigable routes.
-          // Feeding them into the graph creates loops around docks/islands and
-          // shortcuts across land when mixed with same-name centerlines.
+          // The extract retains named polygons for map context, but a closed
+          // ring is an area outline, not a navigable centreline. For water
+          // these are shore rings that loop around docks and islands. For
+          // streets they are bridge decks and squares mapped as areas — a
+          // bridge like Raampoort ships both its spans and a ring around the
+          // deck, and driving onto the ring traps the car in a closed loop
+          // with no through connection. 374 of 29,806 street paths (1.3%).
           const first = path[0], last = path[path.length - 1];
-          const closedAreaRing = travelMode === 'boat' && path.length > 3
+          const closedAreaRing = path.length > 3
             && first[0] === last[0] && first[1] === last[1];
           if (closedAreaRing) continue;
           const highway = travelMode === 'car'

@@ -38,6 +38,16 @@ Measured in a car-mode drive:
   against a 30 px half-width over six frames), so the car wanders toward the
   edge on long straights even with the new grip.
 
+## Fixed this session
+
+- **Car stuck at bridges.** Repro was turning onto Raampoort from Da Costakade.
+  Raampoort is mapped as both spans and an *area* — its 6 paths are 4 short
+  centrelines plus 2 closed rings around the deck. The loader only skipped
+  closed rings in boat mode, so in car mode the rings entered the drivable
+  network as a loop with no through connection and trapped the car. Rings are
+  now excluded for both modes: 374 of 29,806 street paths, mostly bridges and
+  `-plein` squares mapped as polygons. Zero closed rings remain in the network.
+
 ## Next up, in order
 
 ### 1. Firebase-backed mastery — "stop asking me what I know"
@@ -68,13 +78,15 @@ Note `scheduleReview` takes a `RoundResult` shaped for the React game
 into that shape or factor the scheduling maths out of the `RoundResult`
 signature — the latter is cleaner.
 
-### 2. Car stuck at bridges
+### 2. HUD redesign (only decluttered so far)
 
-Reported at Raampoort/Nassaukade: the car stops dead at a bridge. Suspect the
-car road guard rolls the car back because the bridge way is not in the drivable
-corridor it tests against (`getNearestRoad` + `CAR_ROAD_EDGE_TOLERANCE`), even
-though `27abbfc` preserved bridges in the routing graph. Reproduce, then check
-whether the street network used for the guard includes the bridge segments.
+`1f6bbec` removed what should not have been there — the TIME readout, the
+skeuomorphic speed dial, the permanent zoom badge, the controls hint sitting on
+the recall panel — and merged speed and distance into one readout. That was
+decluttering, not a redesign. Still open: the recall panel and the location
+panel are two stacked boxes that could be one; `WATERWAY: ???` reads oddly when
+there is no active question; the destination box, minimap, and trip readout do
+not share a visual system.
 
 ### 3. On-rails street mode
 
