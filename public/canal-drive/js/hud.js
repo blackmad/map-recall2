@@ -10,86 +10,22 @@ class HUD {
 
   setTime(t) { this._time = t; }
 
-  drawSpeedometer(ctx, speed, maxSpeed) {
-    const cx = CANVAS_W - 100, cy = CANVAS_H - 90, r = 55;
-    // background
-    ctx.fillStyle = 'rgba(0,0,0,0.6)';
-    ctx.beginPath();
-    ctx.arc(cx, cy, r + 8, 0, Math.PI*2);
+
+  // One compact trip readout instead of a 126 px skeuomorphic dial plus a
+  // separate odometer that collided with the settings buttons.
+  drawTripReadout(ctx, speed, distancePx) {
+    const kilometres = distancePx / PIXELS_PER_METER / 1000;
+    const kmh = Math.round(Math.abs(speed) / PIXELS_PER_METER * 3.6);
+    const text = `${kmh} km/h   ${kilometres < 10 ? kilometres.toFixed(2) : kilometres.toFixed(1)} km`;
+    ctx.font = 'bold 12px monospace';
+    const w = ctx.measureText(text).width + 22;
+    const x = CANVAS_W - w - 15, y = CANVAS_H - 96;
+    ctx.fillStyle = 'rgba(3,18,28,0.72)';
+    roundRect(ctx, x, y, w, 24, 6);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // arc
-    const startA = Math.PI * 0.8, endA = Math.PI * 2.2;
-    ctx.strokeStyle = '#555';
-    ctx.lineWidth = 6;
-    ctx.beginPath();
-    ctx.arc(cx, cy, r - 5, startA, endA);
-    ctx.stroke();
-
-    // colored arc
-    const speedRatio = clamp(Math.abs(speed) / maxSpeed, 0, 1);
-    const grad = ctx.createLinearGradient(cx - r, cy, cx + r, cy);
-    grad.addColorStop(0, '#4CAF50');
-    grad.addColorStop(0.6, '#FFC107');
-    grad.addColorStop(1, '#F44336');
-    ctx.strokeStyle = grad;
-    ctx.lineWidth = 6;
-    ctx.beginPath();
-    ctx.arc(cx, cy, r - 5, startA, startA + (endA - startA) * speedRatio);
-    ctx.stroke();
-
-    // needle
-    const needleAngle = startA + (endA - startA) * speedRatio;
-    ctx.strokeStyle = '#FF1744';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(cx + Math.cos(needleAngle) * (r - 12), cy + Math.sin(needleAngle) * (r - 12));
-    ctx.stroke();
-
-    // center dot
-    ctx.fillStyle = '#FF1744';
-    ctx.beginPath();
-    ctx.arc(cx, cy, 4, 0, Math.PI*2);
-    ctx.fill();
-
-    // Convert game pixels/s back through the geographic world scale.
-    const kph = Math.round(Math.abs(speed) / PIXELS_PER_METER * 3.6);
-    ctx.fillStyle = '#FFF';
-    ctx.font = 'bold 18px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText(kph + '', cx, cy + 22);
-    ctx.font = '10px monospace';
-    ctx.fillText('km/h', cx, cy + 34);
-
-    // tick marks
-    for (let i = 0; i <= 6; i++) {
-      const a = startA + (endA - startA) * (i / 6);
-      ctx.strokeStyle = 'rgba(255,255,255,0.5)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(cx + Math.cos(a) * (r - 14), cy + Math.sin(a) * (r - 14));
-      ctx.lineTo(cx + Math.cos(a) * (r - 8), cy + Math.sin(a) * (r - 8));
-      ctx.stroke();
-    }
-  }
-
-  drawOdometer(ctx, distancePx) {
-    // Convert pixels → metres → kilometres
-    const meters = distancePx / PIXELS_PER_METER;
-    const kilometres = meters / 1000;
-    const label = kilometres >= 10 ? kilometres.toFixed(1) : kilometres.toFixed(2);
-    const cx = CANVAS_W - 100, y = CANVAS_H - 22;
-    ctx.fillStyle = 'rgba(0,0,0,0.5)';
-    roundRect(ctx, cx - 45, y - 10, 90, 18, 4);
-    ctx.fill();
-    ctx.fillStyle = '#CCC';
-    ctx.font = '10px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText(label + ' km', cx, y + 2);
+    ctx.fillStyle = '#CBD5E1';
+    ctx.textAlign = 'left';
+    ctx.fillText(text, x + 11, y + 16);
   }
 
   drawFinishDirection(ctx, playerX, playerY, finishX, finishY, camera) {
@@ -315,22 +251,6 @@ class HUD {
     ctx.fillText(`/ ${total}`, CANVAS_W - 25, 90);
   }
 
-  drawTimer(ctx, raceTime, bestLap, isOpenTrack) {
-    ctx.fillStyle = 'rgba(0,0,0,0.5)';
-    roundRect(ctx, CANVAS_W/2 - 100, 10, 200, 50, 6);
-    ctx.fill();
-    ctx.fillStyle = '#FFF';
-    ctx.font = '12px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('TIME', CANVAS_W/2, 28);
-    ctx.font = 'bold 18px monospace';
-    ctx.fillText(this.formatTime(raceTime), CANVAS_W/2, 48);
-    if (!isOpenTrack && bestLap < Infinity) {
-      ctx.font = '10px monospace';
-      ctx.fillStyle = '#90CAF9';
-      ctx.fillText('BEST ' + this.formatTime(bestLap), CANVAS_W/2, 58);
-    }
-  }
 
   formatTime(t) {
     const mins = Math.floor(t / 60);

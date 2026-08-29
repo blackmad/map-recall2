@@ -57,6 +57,11 @@ const BRIDGE_QUIZ_RADIUS = 40;
 const RETARGET_ATTEMPTS = 25;
 // A stranded origin is re-rolled at most this many times before we accept it.
 const MAX_ROUTE_REROLLS = 2;
+const CONTROLS_HINT_DURATION = 12;   // seconds the keyboard hint stays on screen
+const ZOOM_BADGE_DURATION = 1.4;     // seconds the zoom percentage lingers
+const LIVE_ROUTE_REBUILD_DIST = 40;    // px of travel before the line head is redrawn
+const LIVE_ROUTE_OFF_ROUTE_DIST = 140; // px off the path before a full reroute
+const LIVE_ROUTE_REROUTE_INTERVAL = 2; // seconds between reroute attempts
 
 const CANAL_PREFS_KEY = 'canalRecall.preferences.v1';
 const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v2';
@@ -108,6 +113,12 @@ class Game {
     this.routePois = [...CANAL_ROUTE_POIS];
     this.bridges = [];
     this._routeRerolls = 0;
+    this._zoomBadgeTimer = 0;
+    this._lastZoomShown = null;
+    this._liveRoutePath = null;
+    this._liveRouteAnchor = null;
+    this._rerouteTimer = 0;
+    this._plannedRouteLengthPx = 0;
     this.quizPromptKind = 'route';
     this._quizzedBridges = new Set();
     this.routePattern = 'surprise';
@@ -730,6 +741,37 @@ class Game {
     return { poi: chosen.poi, finish: chosen.point, path: hit.path };
   }
 
+  // Draw the navigation line from the vehicle's current position rather than
+  // from the original start, and re-route outright once the player has strayed
+  // far enough that the remaining line would be misleading.
+  _updateLiveRouteLine() {
+    if (!this.routeOptions.line || !this.routePath || this.routePath.length < 2) return;
+    let bestIndex = 0, bestDistance = Infinity;
+    for (let i = 0; i < this.routePath.length; i++) {
+      const d = dist(this.routePath[i].x, this.routePath[i].y, this.player.x, this.player.y);
+      if (d < bestDistance) { bestDistance = d; bestIndex = i; }
+    }
+    if (bestDistance > LIVE_ROUTE_OFF_ROUTE_DIST && this._rerouteTimer <= 0) {
+      this._rerouteTimer = LIVE_ROUTE_REROUTE_INTERVAL;
+      const fresh = this.track.findRoute({ x: this.player.x, y: this.player.y }, this.track.finishPoint);
+      if (fresh && fresh.length >= 2) {
+        this.routePath = fresh;
+        bestIndex = 0;
+        this._liveRouteAnchor = null;
+      }
+    }
+    // Rebuilding the GeoJSON every frame would thrash the map source, so only
+    // redraw once the head has actually moved.
+    const anchor = this._liveRouteAnchor;
+    if (anchor && this._liveRoutePath
+        && dist(anchor.x, anchor.y, this.player.x, this.player.y) <= LIVE_ROUTE_REBUILD_DIST) return;
+    this._liveRouteAnchor = { x: this.player.x, y: this.player.y };
+    const ahead = this.routePath.slice(bestIndex + 1);
+    this._liveRoutePath = ahead.length >= 1
+      ? [{ x: this.player.x, y: this.player.y }, ...ahead]
+      : [{ x: this.player.x, y: this.player.y }, this.track.finishPoint];
+  }
+
   // Great-circle-ish distance in km; fine at city scale.
   static _kmBetween(a, b) {
     const latKm = (a.lat - b.lat) * 111.32;
@@ -1055,6 +1097,8 @@ class Game {
           console.warn('Route not found between start and finish — route line will not display');
         }
       }
+      this._plannedRouteLengthPx = 0;
+      this._plannedRouteLengthPx = this._idealRouteLength();
       this.trackMode = TRACK_MODE_POINT_TO_POINT;
       this.renderer.preRenderTrack(this.track);
 
@@ -1294,6 +1338,9 @@ class Game {
     } else {
       this._blockedBoatFrames = 0;
     }
+    if (this._zoomBadgeTimer > 0) this._zoomBadgeTimer -= dt;
+    if (this._rerouteTimer > 0) this._rerouteTimer -= dt;
+    this._updateLiveRouteLine();
     this._updateBridgeQuiz();
     this._updateCanalQuiz(dt);
 
@@ -1476,7 +1523,7 @@ class Game {
       }
     } else {
       this.quizStreak = 0;
-      this.quizFeedback = `That was ${correctName}`;
+      this.quizFeedback = `Not quite — this is ${correctName}`;
     }
     this._promptFeedback.textContent = this.quizFeedback;
     this._promptFeedback.style.color = correct ? '#4ade80' : '#fbbf24';
@@ -1604,9 +1651,13 @@ class Game {
 
     // game view — pass current time to HUD for animations
     this.hud.setTime(this.raceTime);
+    if (this._lastZoomShown !== this.camera.zoom) {
+      this._lastZoomShown = this.camera.zoom;
+      this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
+    }
     // Transparent game world over the live MapLibre vector basemap.
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
-    this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
+    this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
     if (this.travelMode === 'car') {
       this.vectorMap.setStreetHighlights(
         this.track, this.osmLoader, this.learnedNames,
@@ -1635,8 +1686,7 @@ class Game {
     }
 
     // HUD
-    this.hud.drawSpeedometer(ctx, this.player.speed, this.player.maxSpeed);
-    this.hud.drawOdometer(ctx, this.player.distancePx);
+    this.hud.drawTripReadout(ctx, this.player.speed, this.player.distancePx);
     this.hud.drawCanalScore(ctx, this.quizCorrect, this.quizAttempts, this.quizPoints, this.quizFeedback, this.quizStreak, this.gameyFeatures);
     // Hide a new route name from the first candidate frame, not only after
     // the delayed question opens. Otherwise the HUD reveals the answer during
@@ -1651,16 +1701,16 @@ class Game {
       this.hud.drawFinishDirection(ctx, this.player.x, this.player.y, this.track.finishPoint.x, this.track.finishPoint.y, this.camera);
     }
 
-    this.hud.drawTimer(ctx, this.raceTime, this.player.bestLap, true);
     if (this.showMiniMap) {
       this.hud.drawMiniMap(ctx, this.track, this.cars, this.cars.indexOf(this.player));
     }
     this._renderLandmarkNotice();
     this._renderNeighborhoodNotice();
 
-    // zoom indicator
+    // Zoom badge, shown briefly after a change rather than permanently: a
+    // standing "35%" reads as a mystery statistic.
     const zoomPct = Math.round(this.camera.zoom * 100);
-    if (Math.abs(this.camera.zoom - 1.0) > 0.02) {
+    if (this._zoomBadgeTimer > 0) {
       ctx.fillStyle = 'rgba(0,0,0,0.4)';
       roundRect(ctx, CANVAS_W/2 - 35, CANVAS_H - 35, 70, 22, 4);
       ctx.fill();
@@ -1696,12 +1746,17 @@ class Game {
       this._renderDebug();
     }
 
-    // controls hint
-    ctx.fillStyle = 'rgba(255,255,255,0.3)';
-    ctx.font = '10px monospace';
-    ctx.textAlign = 'left';
-    if (!this.input.isMobile) {
-      ctx.fillText('?: help  G: settings  M: map  O: north  D: labels  P: pause', 10, 20);
+    // Controls hint — only while the player is settling in. It used to sit
+    // permanently on top of the recall panel.
+    if (!this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION) {
+      const fade = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
+      ctx.globalAlpha = fade;
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.font = '10px monospace';
+      ctx.textAlign = 'left';
+      ctx.textAlign = 'center';
+      ctx.fillText('?: help  G: settings  M: map  O: north  D: labels  P: pause', CANVAS_W / 2, CANVAS_H - 24);
+      ctx.globalAlpha = 1;
     }
 
     // Touch control zones hint (mobile, first 5 seconds of race)
@@ -2661,6 +2716,9 @@ class Game {
   // Length of the graph route the game planned between start and finish, in
   // game pixels. Used as the "no wasted distance" reference for efficiency.
   _idealRouteLength() {
+    // The live line is consumed as the player advances, so the ribbon's
+    // efficiency reference is the length planned at the start.
+    if (this._plannedRouteLengthPx > 0) return this._plannedRouteLengthPx;
     const path = this.routePath;
     if (!path || path.length < 2) return 0;
     let total = 0;
