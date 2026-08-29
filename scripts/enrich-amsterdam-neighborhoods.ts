@@ -1,5 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { commonsFileTitle, resolveCommonsThumbnails } from './resolve-commons-thumbnails';
 
 interface Boundary {
   id: number;
@@ -109,7 +110,9 @@ for (const hood of neighborhoods) {
   if (match) {
     entry.wikidataId = match.qid;
     if (match.imageUrl) {
-      entry.imageUrl = match.imageUrl.replace('http://', 'https://').replace('/wiki/Special:FilePath/', '/wiki/Special:FilePath/') + '?width=400';
+      // Resolved to a direct upload.wikimedia.org thumbnail below; the
+      // Special:FilePath redirect is not CORS-safe for canvas rendering.
+      entry.imageUrl = match.imageUrl.replace('http://', 'https://');
       const filename = decodeURIComponent(match.imageUrl.split('/').pop() || '');
       entry.imageAttribution = `Wikimedia Commons: ${filename}`;
     }
@@ -200,6 +203,23 @@ if (missingExtract.length > 0) {
       }
     }
   }
+}
+
+// Wikidata gives Special:FilePath URLs, which 302-redirect to
+// upload.wikimedia.org. Only the target sends CORS headers, so the postcard
+// renderer (which draws into a canvas and therefore needs crossOrigin) cannot
+// use the redirect form. Store the resolved thumbnail instead.
+const withRedirectUrls = results.filter(entry => entry.imageUrl && commonsFileTitle(entry.imageUrl));
+if (withRedirectUrls.length > 0) {
+  const thumbnails = await resolveCommonsThumbnails(
+    withRedirectUrls.map(entry => commonsFileTitle(entry.imageUrl!)!), 400,
+  );
+  let resolvedCount = 0;
+  for (const entry of withRedirectUrls) {
+    const thumbnail = thumbnails.get(commonsFileTitle(entry.imageUrl!)!);
+    if (thumbnail) { entry.imageUrl = thumbnail; resolvedCount++; }
+  }
+  console.log(`Resolved ${resolvedCount}/${withRedirectUrls.length} Commons thumbnails`);
 }
 
 const outputPath = path.join(directory, 'neighborhoods-enriched.json');
