@@ -31,6 +31,7 @@ class VectorBasemap {
       this._hideLabels();
       this._captureBasePaint();
       this._ensureRouteLayer();
+      this._ensureStreetOverlayLayers();
       this._ensureTreeLayers();
       this._ensurePlaceLayers();
       this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
@@ -42,6 +43,9 @@ class VectorBasemap {
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
       this.ready = true;
+      // Theme setup can run before the asynchronous style load. Reapply it
+      // now so OSM building colours replace Liberty's uniform gray default.
+      this.applyTheme(this.theme);
     });
   }
 
@@ -51,6 +55,17 @@ class VectorBasemap {
     const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
     this.map.addLayer({ id: 'navigation-route-casing', type: 'line', source: 'navigation-route', layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' }, paint: { 'line-color': 'rgba(3,18,28,.75)', 'line-width': 10 } }, before);
     this.map.addLayer({ id: 'navigation-route-line', type: 'line', source: 'navigation-route', layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' }, paint: { 'line-color': '#38BDF8', 'line-width': 6, 'line-opacity': 0.9 } }, before);
+  }
+
+  _ensureStreetOverlayLayers() {
+    if (this.map.getSource('learned-streets') || !window.CanalRecallStreets) return;
+    const empty = { type: 'FeatureCollection', features: [] };
+    this.map.addSource('learned-streets', { type: 'geojson', data: empty });
+    this.map.addSource('active-street', { type: 'geojson', data: empty });
+    const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
+    for (const layer of window.CanalRecallStreets.streetOverlayLayers()) {
+      this.map.addLayer(layer, layer.type === 'symbol' ? undefined : before);
+    }
   }
 
   _ensureTreeLayers() {
@@ -174,6 +189,36 @@ class VectorBasemap {
     this._routePathRef = routePath;
     const coordinates = routePath.map(point => this.worldToLngLat(point.x, point.y, loader));
     this.map.getSource('navigation-route').setData({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates } });
+  }
+
+  setStreetHighlights(track, loader, learnedNames, activeName, activeSegmentIndex) {
+    if (!this.ready || !track || !loader || !this.map.getSource('learned-streets')) return;
+    const toFeature = segment => ({
+      type: 'Feature',
+      properties: { name: segment.name || '' },
+      geometry: { type: 'LineString', coordinates: segment.points.map(point => this.worldToLngLat(point.x, point.y, loader)) }
+    });
+    const learnedKey = [...(learnedNames || [])].sort().join('\u0000');
+    if (learnedKey !== this._learnedStreetKey) {
+      this._learnedStreetKey = learnedKey;
+      const features = learnedKey
+        ? track.segments.filter(segment => learnedNames.has(segment.name) && segment.points.length > 1).map(toFeature)
+        : [];
+      this.map.getSource('learned-streets').setData({ type: 'FeatureCollection', features });
+    }
+    const activeKey = `${activeName || ''}:${activeSegmentIndex}`;
+    if (activeKey !== this._activeStreetKey) {
+      this._activeStreetKey = activeKey;
+      const seed = track.segments[activeSegmentIndex];
+      const connected = activeName && seed && seed.name === activeName
+        ? (track.getConnectedNamedSegments ? track.getConnectedNamedSegments(activeSegmentIndex) : [seed])
+        : [];
+      // Keep every OSM fragment as its own feature. Combining disconnected
+      // paths into one LineString creates the giant diagonal chord artifact.
+      this.map.getSource('active-street').setData({
+        type: 'FeatureCollection', features: connected.filter(segment => segment.points.length > 1).map(toFeature)
+      });
+    }
   }
 
   worldToLngLat(worldX, worldY, loader) {
@@ -329,7 +374,7 @@ class VectorBasemap {
     try {
       if (palette) {
         for (const layer of this.map.getStyle().layers || []) {
-          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('navigation-route') || layer.id.startsWith('tree-') || layer.id.startsWith('poi-') || layer.id.startsWith('neighborhood-')) continue;
+          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('active-street') || layer.id.startsWith('learned-street') || layer.id.startsWith('navigation-route') || layer.id.startsWith('tree-') || layer.id.startsWith('poi-') || layer.id.startsWith('neighborhood-')) continue;
           const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
           const isWater = /water|ocean|river|canal/.test(identity);
           const isRoad = /road|street|transportation|bridge|tunnel|path/.test(identity);
