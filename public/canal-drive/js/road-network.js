@@ -287,7 +287,11 @@ class RoadNetwork {
   // Build a lightweight topology from waterway polyline points and run
   // Dijkstra. Nearby endpoints are merged so separately mapped OSM ways can
   // form one playable route through a junction.
-  findRoute(startPoint, finishPoint) {
+  // The routing graph is identical for every query against this network, so
+  // build it once. Retargeting an unreachable destination would otherwise
+  // rebuild it for each candidate it tries.
+  _routingGraph() {
+    if (this._graphCache) return this._graphCache;
     const mergeSize = 18; // ~6 m: join mapped endpoints without inventing cross-bank shortcuts
     const nodes = new Map();
     const nodeFor = (point) => {
@@ -305,13 +309,22 @@ class RoadNetwork {
         b.edges.push({ node: a, weight });
       }
     }
-    const allNodes = [...nodes.values()];
-    const nearest = (point) => allNodes.reduce((best, node) => {
+    this._graphCache = { nodes, allNodes: [...nodes.values()] };
+    return this._graphCache;
+  }
+
+  _nearestGraphNode(point) {
+    const { allNodes } = this._routingGraph();
+    return allNodes.reduce((best, node) => {
       const distance = (node.x - point.x) ** 2 + (node.y - point.y) ** 2;
       return !best || distance < best.distance ? { node, distance } : best;
     }, null).node;
-    const start = nearest(startPoint);
-    const finish = nearest(finishPoint);
+  }
+
+  // Dijkstra from `startPoint` over the whole graph. `stopAt` short-circuits
+  // once that node is settled; omit it to settle everything reachable.
+  _shortestPaths(startPoint, stopAt = null) {
+    const start = this._nearestGraphNode(startPoint);
     const distances = new Map([[start.key, 0]]);
     const previous = new Map();
     const queue = [{ node: start, cost: 0 }];
@@ -347,7 +360,7 @@ class RoadNetwork {
     while (queue.length) {
       const current = pop();
       if (current.cost !== distances.get(current.node.key)) continue;
-      if (current.node === finish) break;
+      if (stopAt && current.node === stopAt) break;
       for (const edge of current.node.edges) {
         const nextCost = current.cost + edge.weight;
         if (nextCost >= (distances.get(edge.node.key) ?? Infinity)) continue;
@@ -356,10 +369,33 @@ class RoadNetwork {
         push({ node: edge.node, cost: nextCost });
       }
     }
-    if (!distances.has(finish.key)) return [];
+    return { distances, previous };
+  }
+
+  static _reconstruct(previous, endNode) {
     const route = [];
-    for (let node = finish; node; node = previous.get(node.key)) route.push({ x: node.x, y: node.y });
+    for (let node = endNode; node; node = previous.get(node.key)) route.push({ x: node.x, y: node.y });
     return route.reverse();
+  }
+
+  findRoute(startPoint, finishPoint) {
+    const finish = this._nearestGraphNode(finishPoint);
+    const { distances, previous } = this._shortestPaths(startPoint, finish);
+    if (!distances.has(finish.key)) return [];
+    return RoadNetwork._reconstruct(previous, finish);
+  }
+
+  // One Dijkstra pass, then pick the first candidate that is actually
+  // reachable. Candidates should already be ordered by preference.
+  findRouteToFirstReachable(startPoint, candidatePoints) {
+    const { distances, previous } = this._shortestPaths(startPoint);
+    for (let index = 0; index < candidatePoints.length; index++) {
+      const node = this._nearestGraphNode(candidatePoints[index]);
+      if (!distances.has(node.key)) continue;
+      const path = RoadNetwork._reconstruct(previous, node);
+      if (path.length >= 2) return { index, path };
+    }
+    return null;
   }
 
   // ---- Internal helpers ----
