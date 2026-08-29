@@ -343,7 +343,7 @@ class Game {
     this.camera.zoom = Number(this._liveZoom.value);
     this._setSoundEnabled(this._liveSound.checked);
     this._treesEnabled.checked = this._liveTrees.checked;
-    this.vectorMap.setTreesVisible(this._liveTrees.checked);
+    this.vectorMap.setTreesVisible(this._liveTrees.checked && this.viewMode === 'chase');
     this._savePreferences();
   }
 
@@ -441,10 +441,7 @@ class Game {
     this.camera.northUp = this.viewMode === 'north';
     this.themeMode = this._themeMode.value;
     this.vectorMap.applyTheme(this.themeMode);
-    this.vectorMap.setTreesVisible(this._treesEnabled.checked);
-    try {
-      this.learnedNames = new Set(JSON.parse(localStorage.getItem(`canalRecall.learned.${this.travelMode}`) || '[]'));
-    } catch (_) { this.learnedNames = new Set(); }
+    this.vectorMap.setTreesVisible(this._treesEnabled.checked && this.viewMode === 'chase');
     document.querySelector('#canal-card p').textContent = this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?';
     this.routeDifficulty = this._routeDifficulty.value;
     this.showMiniMap = this.routeOptions.minimap;
@@ -1041,7 +1038,6 @@ class Game {
       this.quizCorrect++;
       this.quizPoints += Math.round(100 * (DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85));
       this.learnedNames.add(correctName);
-      localStorage.setItem(`canalRecall.learned.${this.travelMode}`, JSON.stringify([...this.learnedNames]));
     }
     this.quizFeedback = correct ? `Correct — ${correctName}` : `That was ${correctName}`;
     this._promptFeedback.textContent = this.quizFeedback;

@@ -10,6 +10,7 @@ class VectorBasemap {
     this._basePaint = new Map();
     this._highlightedBuilding = null;
     this._pendingTrees = [];
+    this._treesVisible = false;
     if (!container || typeof maplibregl === 'undefined') return;
 
     this.map = new maplibregl.Map({
@@ -53,10 +54,12 @@ class VectorBasemap {
     const shared = { 'circle-pitch-alignment': 'map', 'circle-pitch-scale': 'map' };
     this.map.addLayer({
       id: 'tree-trunks', type: 'circle', source: 'amsterdam-trees', minzoom: 15,
+      layout: { visibility: this._treesVisible ? 'visible' : 'none' },
       paint: { ...shared, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 15, 1, 19, 4], 'circle-color': '#775438', 'circle-opacity': 0.9 }
     }, before);
     this.map.addLayer({
       id: 'tree-crowns', type: 'circle', source: 'amsterdam-trees', minzoom: 15,
+      layout: { visibility: this._treesVisible ? 'visible' : 'none' },
       paint: { ...shared, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 15, 2.4, 19, 11], 'circle-color': '#4F8A48', 'circle-stroke-color': '#315D31', 'circle-stroke-width': 1, 'circle-opacity': 0.86 }
     }, before);
   }
@@ -73,6 +76,7 @@ class VectorBasemap {
   }
 
   setTreesVisible(visible) {
+    this._treesVisible = !!visible;
     if (!this.map) return;
     for (const id of ['tree-trunks', 'tree-crowns']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');
