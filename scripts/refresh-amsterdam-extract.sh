@@ -15,6 +15,7 @@ osmium tags-filter "$work_dir/amsterdam.osm.pbf" \
   w/bridge=yes w/man_made=bridge nwr/place=square nwr/amenity=marketplace \
   nwr/leisure=park,garden,nature_reserve nwr/tourism=attraction,museum,viewpoint,monument,gallery \
   nwr/historic nwr/amenity=theatre,arts_centre,townhall,place_of_worship \
+  n/natural=tree w/natural=tree_row \
   -o "$work_dir/features.osm.pbf"
 
 osmium export "$work_dir/features.osm.pbf" -o "$work_dir/features.geojson"
@@ -24,4 +25,5 @@ osmium tags-filter "$work_dir/amsterdam.osm.pbf" r/boundary=place -o "$work_dir/
 osmium export "$work_dir/place-boundaries.osm.pbf" -o "$work_dir/place-boundaries.geojson"
 
 npm run build:amsterdam -- "$work_dir/features.geojson" "$work_dir/boundaries.geojson" "$work_dir/place-boundaries.geojson"
+npx tsx scripts/build-osm-trees.ts "$work_dir/features.geojson" public/data/extracts/amsterdam/trees.json
 npm run enrich:amsterdam
