@@ -14,7 +14,7 @@ import {
 } from './types';
 import { CITIES } from './data/cities';
 import { calculateShortestDistanceToFeature, calculatePinpointScore } from './utils/geo';
-import { reverseGeocodeLocation, fetchLocalOSMFeatures, fetchContainingAdministrativeAreas, geocodeLocationSearch } from './utils/osm';
+import { reverseGeocodeLocation, fetchContainingAdministrativeAreas, geocodeLocationSearch } from './utils/osm';
 import { fetchQuizAreas, fetchQuizFeatures } from './dataSources/featureProvider';
 import { sounds } from './utils/audio';
 import confetti from 'canvas-confetti';
@@ -70,7 +70,7 @@ export default function App() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [reviewStates, setReviewStates] = useState<ReviewState[]>(loadLocalReviewStates);
   // Config state - Label-less base map by default
-  const initialCityId = urlParams.get('city') || (hasBookmarkedCoordinates ? 'my_location' : 'my_location');
+  const initialCityId = urlParams.get('city') || (hasBookmarkedCoordinates ? 'my_location' : 'amsterdam');
   const [currentCityId, setCurrentCityId] = useState<string>(initialCityId);
   const [customLocationCity, setCustomLocationCity] = useState<City | null>(() => hasBookmarkedCoordinates ? {
     id: 'my_location',
@@ -107,7 +107,6 @@ export default function App() {
   const [locationToast, setLocationToast] = useState<string | null>(null);
   const [dataError, setDataError] = useState<string | null>(null);
   const [cityOverpassFeatures, setCityOverpassFeatures] = useState<Record<string, StreetFeature[]>>({});
-  const initialLocationRequestedRef = useRef(false);
   const activeSearchRef = useRef<string | null>(null);
   const administrativeLookupRef = useRef<string | null>(null);
 
@@ -300,22 +299,22 @@ export default function App() {
             if (preferredArea) placeName = preferredArea.name;
 
             // 2. Fetch real local streets, canals, bridges and landmarks from OSM
-            const localFeatures = await fetchLocalOSMFeatures(
-              lat,
-              lon,
+            const localFeatures = await fetchQuizFeatures({
+              cityId: 'my_location',
+              center: coords,
               placeName,
-              targetScope,
-              (progress) => setLoadingProgress(progress),
-              false,
-              targetScope === 'neighborhood' ? 2200 : targetScope === 'region' ? 15000 : searchRadiusMeters,
-              preferredArea?.id
-            );
+              category: selectedCategory,
+              scope: targetScope,
+              onProgress: setLoadingProgress,
+              radiusMeters: targetScope === 'neighborhood' ? 2200 : targetScope === 'region' ? 15000 : searchRadiusMeters,
+              areaId: preferredArea?.id,
+            });
 
             const combinedFeatures = [...localFeatures];
 
             const myCity: City = {
               id: 'my_location',
-              name: `📍 ${placeName}`,
+              name: placeName,
               country: geoInfo.country,
               countryCode: geoInfo.countryCode,
               center: coords,
@@ -342,7 +341,7 @@ export default function App() {
             setIsGameOver(false);
             setTimeRoundStarted(Date.now());
 
-            setLocationToast(`📍 Loaded ${combinedFeatures.length} places for ${placeName}`);
+            setLocationToast(`Loaded ${combinedFeatures.length} places for ${placeName}`);
             setTimeout(() => setLocationToast(null), 4500);
           } catch (err) {
             console.warn('Error configuring local location city:', err);
@@ -371,7 +370,7 @@ export default function App() {
         }
       );
     },
-    [locationScope, searchRadiusMeters]
+    [locationScope, searchRadiusMeters, selectedCategory]
   );
 
   // Scope change handler (Neighborhood vs City)
@@ -380,18 +379,10 @@ export default function App() {
     setLocationScope(newScope);
     setSearchRadiusMeters(newScope === 'neighborhood' ? 2200 : newScope === 'region' ? 15000 : 4500);
     sounds.playPinDrop();
-    setLocationToast(`Switched scope to: ${newScope === 'neighborhood' ? '🏘️ Neighborhood' : '🏙️ Whole City'}`);
+    setLocationToast(`Search area: ${newScope === 'neighborhood' ? 'neighborhood' : newScope === 'region' ? 'region' : 'whole city'}`);
     setTimeout(() => setLocationToast(null), 3000);
     detectUserLocation(true, newScope);
   };
-
-  // Default to current location on initial app load
-  useEffect(() => {
-    if (initialLocationRequestedRef.current) return;
-    initialLocationRequestedRef.current = true;
-    if (hasBookmarkedCoordinates || urlParams.has('city')) return;
-    detectUserLocation(false, 'city');
-  }, [detectUserLocation]);
 
   // Total score
   const totalScore = useMemo(() => {
@@ -471,7 +462,7 @@ export default function App() {
 
           setSelectedCategory(targetCategory);
           resetGame(currentCityId, gameMode, targetCategory);
-          setLocationToast(`🎯 Loaded ${finalFeatures.length} ${catInfo.label} places in ${placeName}!`);
+          setLocationToast(`Loaded ${finalFeatures.length} ${catInfo.label} places in ${placeName}`);
           setTimeout(() => setLocationToast(null), 4000);
         }
       } catch (err) {
@@ -531,7 +522,7 @@ export default function App() {
       });
       const city: City = {
         id: 'my_location',
-        name: `🔎 ${result.name.split(',')[0]}`,
+        name: result.name.split(',')[0],
         country: result.name,
         countryCode: '',
         center: coords,
@@ -600,6 +591,7 @@ export default function App() {
     (latlng: [number, number]) => {
       if ((gameMode !== 'pinpoint' && gameMode !== 'guess_neighborhood') || isRoundComplete || isGameOver) return;
       sounds.playPinDrop();
+      navigator.vibrate?.(12);
       setUserPinnedLocation(latlng);
     },
     [gameMode, isRoundComplete, isGameOver]
@@ -653,6 +645,7 @@ export default function App() {
 
     setRoundResults((prev) => [...prev, result]);
     persistResult(result);
+    navigator.vibrate?.(distMeters <= 80 ? [30, 40, 30] : 20);
     setIsRoundComplete(true);
   };
 
@@ -704,6 +697,7 @@ export default function App() {
 
     setRoundResults((prev) => [...prev, result]);
     persistResult(result);
+    navigator.vibrate?.(isCorrect ? [25, 35, 25] : 35);
     setIsRoundComplete(true);
   };
 
@@ -729,7 +723,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col w-screen h-screen overflow-hidden bg-slate-950 text-slate-100 font-sans select-none">
+    <div className="flex flex-col w-screen h-screen overflow-hidden bg-stone-100 text-stone-800 font-sans select-none">
       {/* Top App Header (Strict Single Line) */}
       <GameHeader
         cities={allCities}
@@ -777,6 +771,12 @@ export default function App() {
 
       {/* Main Map Viewport & Overlays */}
       <main className="flex-1 relative w-full h-full overflow-hidden">
+        <a
+          href={`${import.meta.env.BASE_URL}canal-drive/`}
+          className="hidden sm:block absolute bottom-4 left-4 z-30 rounded-lg border border-stone-300 bg-white/90 px-3 py-2 text-xs font-semibold text-stone-700 shadow-sm backdrop-blur transition hover:bg-stone-50"
+        >
+          Canal Recall →
+        </a>
         {/* Leaflet Map Canvas */}
         <MapComponent
           cityCenter={currentCity.center}
@@ -805,7 +805,7 @@ export default function App() {
         {locationToast && (
           <div
             id="location-toast-badge"
-            className="absolute top-3 left-1/2 -translate-x-1/2 z-30 px-4 py-1.5 rounded-full bg-slate-900/95 text-slate-100 text-xs sm:text-sm font-medium border border-blue-500/40 shadow-xl shadow-blue-500/10 backdrop-blur-md flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300 pointer-events-none"
+            className="absolute top-3 left-1/2 -translate-x-1/2 z-30 px-4 py-2 rounded-lg bg-white/95 text-stone-700 text-xs sm:text-sm font-medium border border-stone-300 shadow-md backdrop-blur-md flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300 pointer-events-none"
           >
             <span>{locationToast}</span>
           </div>
@@ -813,19 +813,19 @@ export default function App() {
 
         {dataError && !isLocating && (
           <div className="absolute inset-x-3 top-3 z-40 mx-auto max-w-xl" role="alert">
-            <div className="rounded-2xl border border-rose-400/50 bg-slate-950/95 p-4 text-sm text-white shadow-2xl backdrop-blur-xl">
-              <div className="font-bold text-rose-300">Couldn’t load map features</div>
-              <p className="mt-1 text-xs leading-relaxed text-slate-300">{dataError}</p>
+            <div className="app-dialog p-4 text-sm">
+              <div className="font-bold text-rose-700">Couldn’t load map features</div>
+              <p className="mt-1 text-xs leading-relaxed text-stone-600">{dataError}</p>
               <div className="mt-3 flex gap-2">
                 <button
                   onClick={() => handleRefetchCategory(selectedCategory, true)}
-                  className="rounded-xl bg-rose-500 px-4 py-2 text-xs font-bold text-white hover:bg-rose-400"
+                  className="button-primary px-4 py-2 text-xs"
                 >
                   Retry
                 </button>
                 <button
                   onClick={() => setDataError(null)}
-                  className="rounded-xl border border-slate-700 px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-800"
+                  className="button-secondary px-4 py-2 text-xs font-semibold"
                 >
                   Dismiss
                 </button>
@@ -836,21 +836,22 @@ export default function App() {
 
         {/* Empty OSM dataset: require an explicit category before starting. */}
         {!currentFeature && !isLocating && !isGameOver && !dataError && (
-          <div className="absolute inset-0 z-20 flex items-center justify-center p-4 bg-slate-950/20 backdrop-blur-[1px]">
-            <div className="w-full max-w-lg rounded-2xl border border-slate-700/80 bg-slate-900/95 p-5 shadow-2xl backdrop-blur-md">
+          <div className="absolute inset-0 z-20 flex items-center justify-center p-4 bg-stone-900/10 backdrop-blur-[1px]">
+            <div className="app-dialog w-full max-w-lg p-5">
               <div className="text-center mb-4">
-                <div className="text-2xl mb-1">🗺️</div>
-                <h2 className="text-lg font-bold text-white">Choose a category to start</h2>
-                <p className="mt-1 text-sm text-slate-400">
-                  Select what to load from OpenStreetMap for {currentCity.name}. Cached results will start instantly when available.
+                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-900 text-lg text-white">⌖</div>
+                <h2 className="text-lg font-bold text-stone-800">What would you like to learn?</h2>
+                <p className="mt-1 text-sm text-stone-500">
+                  Pick a map layer for {currentCity.name}. We’ll build a short, shuffled quiz from it.
                 </p>
-                <p className="mt-1 text-xs text-cyan-300">
+                <p className="mt-2 text-xs font-medium text-emerald-800">
                   Search area: {(searchRadiusMeters / 1000).toFixed(1)} km radius
                 </p>
+                <p className="mt-1 text-[11px] text-stone-500">No account required · progress stays on this device</p>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {FEATURE_CATEGORIES.map((category) => (
+                {FEATURE_CATEGORIES.filter((category) => category.id !== 'all').map((category) => (
                   <button
                     key={category.id}
                     onClick={() => {
@@ -860,13 +861,19 @@ export default function App() {
                         handleSelectCategory(category.id);
                       }
                     }}
-                    className="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/90 px-3 py-2.5 text-left text-xs font-semibold text-slate-200 transition hover:border-blue-500 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+                    className="answer-detail-card flex items-center gap-2 px-3 py-3 text-left text-xs font-semibold transition hover:-translate-y-px hover:shadow-sm cursor-pointer"
                   >
                     <span className="text-base">{category.icon}</span>
                     <span>{category.shortLabel}</span>
                   </button>
                 ))}
               </div>
+              <button
+                onClick={() => selectedCategory === 'all' ? handleRefetchCategory('all', false) : handleSelectCategory('all')}
+                className="button-secondary mt-3 w-full py-2 text-xs font-semibold"
+              >
+                Or make me a mixed quiz
+              </button>
             </div>
           </div>
         )}

@@ -13,11 +13,11 @@ export const LookAroundLink: React.FC<{ feature: StreetFeature }> = ({ feature }
   useEffect(() => setIsOpen(false), [feature.id]);
 
   if (embedUrl) return (
-    <div className="overflow-hidden rounded-xl border border-sky-500/30 bg-slate-950/70">
+    <div className="answer-detail-card overflow-hidden">
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="flex w-full items-center justify-between px-3 py-2 text-xs font-bold text-sky-200 transition hover:bg-sky-500/20"
+        className="flex w-full items-center justify-between px-3 py-2 text-xs font-bold text-emerald-900 transition hover:bg-black/5"
         aria-expanded={isOpen}
       >
         <span>{isOpen ? 'Hide Street View' : 'Look around this place'}</span>
@@ -41,7 +41,7 @@ export const LookAroundLink: React.FC<{ feature: StreetFeature }> = ({ feature }
       href={streetViewUrl}
       target="_blank"
       rel="noreferrer"
-      className="flex items-center justify-between rounded-xl border border-sky-500/30 bg-sky-500/10 px-3 py-2 text-xs font-bold text-sky-200 transition hover:border-sky-300 hover:bg-sky-500/20"
+      className="answer-detail-card flex items-center justify-between px-3 py-2 text-xs font-bold text-emerald-900 transition hover:brightness-95"
     >
       <span>Open Street View</span>
       <span aria-hidden="true">360° ↗</span>

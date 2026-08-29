@@ -69,7 +69,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   // Compute feature counts per category for the current city
   const categoryCounts = useMemo(() => {
     const counts: Record<FeatureCategory, number> = {
-      all: currentCity.features.length,
+      all: currentCity.features.filter((feature) => feature.type !== 'neighborhood').length,
       water: 0,
       streets: 0,
       bridges: 0,
@@ -95,7 +95,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
       <div
         id="settings-modal-dialog"
-        className="w-full max-w-lg bg-slate-900 text-white rounded-3xl p-5 sm:p-6 shadow-2xl border border-slate-800 space-y-5 max-h-[90vh] overflow-y-auto"
+        className="app-dialog w-full max-w-lg p-5 sm:p-6 space-y-5 max-h-[90vh] overflow-y-auto"
       >
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-slate-800">

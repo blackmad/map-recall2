@@ -17,9 +17,201 @@ body {
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
-  background: #0f172a;
+  background: #f1eee6;
+  color: #24322b;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+}
+
+:root {
+  --paper: #f8f5ee;
+  --paper-raised: #fffdf8;
+  --paper-muted: #eee9df;
+  --ink: #24322b;
+  --ink-muted: #68746e;
+  --line: #d8d2c6;
+  --moss: #356653;
+  --moss-dark: #264b3d;
+  --moss-soft: #dce8e1;
+  --terracotta: #c75f43;
+  --ochre: #b78125;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgb(53 102 83 / 0.3);
+  outline-offset: 2px;
+}
+
+/* Calm, paper-like quiz surfaces. These semantic classes deliberately sit
+   after Tailwind so the game reads as one product instead of a stack of pills. */
+.quiz-card,
+.quiz-result-card,
+.app-dialog {
+  color: var(--ink) !important;
+  background: rgb(255 253 248 / 0.97) !important;
+  border: 1px solid rgb(97 89 74 / 0.2) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 35px rgb(58 50 36 / 0.16) !important;
+  backdrop-filter: blur(12px);
+}
+
+.quiz-card .text-white,
+.quiz-card .text-slate-100,
+.quiz-card .text-slate-200,
+.quiz-result-card .text-white,
+.quiz-result-card .text-slate-100,
+.quiz-result-card .text-slate-200,
+.app-dialog .text-white,
+.app-dialog .text-slate-100,
+.app-dialog .text-slate-200 { color: var(--ink) !important; }
+
+.quiz-card .text-slate-300,
+.quiz-card .text-slate-400,
+.quiz-card .text-slate-500,
+.quiz-result-card .text-slate-300,
+.quiz-result-card .text-slate-400,
+.quiz-result-card .text-slate-500,
+.app-dialog .text-slate-300,
+.app-dialog .text-slate-400,
+.app-dialog .text-slate-500 { color: var(--ink-muted) !important; }
+
+.quiz-card .border-slate-700,
+.quiz-card .border-slate-800,
+.quiz-result-card .border-slate-700,
+.quiz-result-card .border-slate-800,
+.app-dialog .border-slate-700,
+.app-dialog .border-slate-800 { border-color: var(--line) !important; }
+
+.quiz-card .bg-slate-800,
+.quiz-card .bg-slate-900,
+.quiz-card .bg-slate-950,
+.quiz-result-card .bg-slate-800,
+.quiz-result-card .bg-slate-900,
+.quiz-result-card .bg-slate-950,
+.app-dialog .bg-slate-800,
+.app-dialog .bg-slate-900,
+.app-dialog .bg-slate-950 { background: var(--paper-muted) !important; }
+
+.quiz-card [class*="bg-slate-"],
+.quiz-result-card [class*="bg-slate-"],
+.app-dialog [class*="bg-slate-"] { background: var(--paper-muted) !important; }
+.quiz-card [class*="border-slate-"],
+.quiz-result-card [class*="border-slate-"],
+.app-dialog [class*="border-slate-"] { border-color: var(--line) !important; }
+.quiz-card [class*="text-slate-"],
+.quiz-result-card [class*="text-slate-"],
+.app-dialog [class*="text-slate-"] { color: var(--ink-muted) !important; }
+.quiz-card [class*="text-white"],
+.quiz-result-card [class*="text-white"],
+.app-dialog [class*="text-white"] { color: var(--ink) !important; }
+.app-dialog [class*="bg-blue-"],
+.app-dialog [class*="bg-violet-"] {
+  color: white !important;
+  background: var(--moss) !important;
+  border-color: var(--moss-dark) !important;
+}
+
+.button-primary {
+  color: white !important;
+  background: var(--moss) !important;
+  border: 1px solid var(--moss-dark) !important;
+  border-radius: 11px !important;
+  box-shadow: 0 2px 0 var(--moss-dark) !important;
+  font-weight: 700 !important;
+  transform: none !important;
+}
+.button-primary:hover { background: var(--moss-dark) !important; }
+.button-primary:active { box-shadow: none !important; transform: translateY(1px) !important; }
+.button-primary:disabled { color: #999f9b !important; background: #e5e2da !important; border-color: #d4d0c7 !important; box-shadow: none !important; }
+
+.button-secondary {
+  color: var(--ink-muted) !important;
+  background: transparent !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 11px !important;
+  box-shadow: none !important;
+}
+.button-secondary:hover { color: var(--ink) !important; background: var(--paper-muted) !important; }
+
+.answer-detail-card {
+  color: var(--ink) !important;
+  background: #f4f0e7 !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 12px !important;
+}
+
+#app-game-header {
+  color: var(--ink) !important;
+  background: rgb(255 253 248 / 0.96) !important;
+  border-color: var(--line) !important;
+  box-shadow: 0 1px 10px rgb(58 50 36 / 0.08) !important;
+}
+#app-game-header select,
+#app-game-header button,
+#header-score-badge {
+  color: var(--ink-muted) !important;
+  background: #f4f0e8 !important;
+  border-color: var(--line) !important;
+  box-shadow: none !important;
+}
+#app-game-header [class*="bg-blue-600"],
+#app-game-header [class*="bg-violet-600"] {
+  color: white !important;
+  background: var(--moss) !important;
+  border-color: var(--moss-dark) !important;
+}
+#app-game-header [class*="text-slate-100"],
+#app-game-header [class*="text-slate-200"],
+#app-game-header [class*="text-slate-300"] { color: var(--ink) !important; }
+#app-game-header [class*="text-amber-400"] { color: var(--ochre) !important; }
+
+#game-mode-switcher {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#game-mode-switcher button {
+  color: #68746e !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+  padding-block: 6px !important;
+}
+#game-mode-switcher button:hover { color: var(--ink) !important; background: #eee9df !important; }
+#game-mode-switcher button[class*="bg-blue-600"],
+#game-mode-switcher button[class*="bg-violet-600"] {
+  color: white !important;
+  background: var(--moss) !important;
+}
+#header-score-badge {
+  background: transparent !important;
+  border-color: transparent !important;
+  padding-inline: 6px !important;
+}
+
+.leaflet-container { background-color: #e6e4dc !important; }
+.leaflet-control-zoom a {
+  color: var(--ink) !important;
+  background: var(--paper-raised) !important;
+  border-color: var(--line) !important;
+}
+.leaflet-control-attribution {
+  color: #727972 !important;
+  background: rgb(255 253 248 / 0.8) !important;
+}
+
+@media (max-width: 640px) {
+  .quiz-card,
+  .quiz-result-card { border-radius: 16px !important; }
+  .quiz-result-card { max-height: min(58dvh, 520px); overflow-y: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
 
 button,
@@ -64,7 +256,7 @@ input {
 .leaflet-container {
   width: 100%;
   height: 100%;
-  background-color: #0f172a !important;
+  background-color: #e6e4dc !important;
   font-family: inherit;
 }
 
@@ -75,13 +267,13 @@ input {
 
 /* Hide default leaflet popups border artifact */
 .leaflet-popup-content-wrapper {
-  background: #0f172a;
-  color: #f8fafc;
+  background: var(--paper-raised);
+  color: var(--ink);
   border-radius: 12px;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
-  border: 1px solid #334155;
+  border: 1px solid var(--line);
 }
 
 .leaflet-popup-tip {
-  background: #0f172a;
+  background: var(--paper-raised);
 }
