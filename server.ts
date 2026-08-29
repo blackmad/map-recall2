@@ -15,6 +15,11 @@ async function startServer() {
 
   // Vite middleware for development or static serving for production
   if (process.env.NODE_ENV !== 'production') {
+    // Vite's SPA fallback otherwise rewrites this directory URL to the React
+    // root index. Serve the standalone vanilla-JS prototype first.
+    const canalDrivePath = path.join(process.cwd(), 'public', 'canal-drive');
+    app.use('/canal-drive', express.static(canalDrivePath, { index: 'index.html' }));
+
     const vite = await createViteServer({
       server: { middlewareMode: true, host: '0.0.0.0', port: 3000 },
       appType: 'spa',
