@@ -45,6 +45,8 @@ const CAR_MAX_SPEED = 205;                     // px/s — fast arcade boat pace
 const CAR_ACCEL = 98;                          // px/s² — reach the higher cap promptly
 const CAR_BRAKE_FORCE = 75;                    // px/s² / reverse thrust
 const CAR_TURN_RATE = 1.45;                    // rad/s
+const PLAYER_CAR_TURN_MULT = 1.24;             // tighter street-mode steering
+const PLAYER_CAR_DRIFT_FACTOR = 0.68;          // shed lateral slide sooner on asphalt
 const CAR_GRIP = 1.0;                          // multiplier (1.0 = full grip)
 const CAR_DRIFT_FACTOR = 0.84;                 // lateral water slide retention
 const CAR_DRAG = 0.0024;                       // quadratic water drag
@@ -153,6 +155,7 @@ const COLLISION_PUSH_MAX = 20;                 // px — max push per frame
 const COLLISION_SPEED_DECAY = 0.93;            // speed multiplier on grass collision
 const OFF_ROAD_PUSH_SPEED = 1.5;              // px — curb correction push
 const OFF_ROAD_SPEED_DECAY = 0.98;             // speed multiplier on curb
+const CAR_ROAD_EDGE_TOLERANCE = 12;            // px beyond mapped road width before rollback
 const MIN_START_FINISH_DIST = 200;             // px — minimum distance between start and finish
 const MAX_SNAP_DIST = 800;                     // px — POIs may sit a short walk from the water
 const HOME_MAX_SNAP_DIST = 240;                // px (~80 m) — never teleport a home launch across the neighborhood

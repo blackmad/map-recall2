@@ -242,7 +242,9 @@ class Game {
       const building = this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect);
       if (!building) return;
       const buildingName = building.name || '';
-      const matchedLandmark = buildingName && this.landmarks.find(l => l.name === buildingName);
+      const matchedLandmark = this.landmarks.find(l =>
+        (building.id && l.id === building.id) || (buildingName && l.name === buildingName)
+      );
       if (matchedLandmark) {
         nearest = matchedLandmark;
       } else {
@@ -699,7 +701,12 @@ class Game {
     this.player = new PlayerCar(startX, startY, startAngle);
     this.player.controlMode = this.controlMode;
     this.player.isBoat = this.travelMode === 'boat';
-    if (this.player.isBoat) this.player.turnRate *= 1.18;
+    if (this.player.isBoat) {
+      this.player.turnRate *= 1.18;
+    } else {
+      this.player.turnRate *= PLAYER_CAR_TURN_MULT;
+      this.player.driftFactor = PLAYER_CAR_DRIFT_FACTOR;
+    }
     this.cars.push(this.player);
 
     // Canal Recall intentionally starts with a quiet network: the experiment
@@ -1116,15 +1123,39 @@ class Game {
     this.player.update(dt, this.track);
     if (this.travelMode === 'car') {
       const road = this.track.getNearestRoad(this.player.x, this.player.y);
-      const offRoadMargin = road ? road.dist - road.width : 0;
-      if (road && offRoadMargin > 80) {
-        const inwardX = road.x - this.player.x;
-        const inwardY = road.y - this.player.y;
-        const inwardDist = Math.hypot(inwardX, inwardY) || 1;
-        const pullStrength = Math.min(4, (offRoadMargin - 80) * 0.04);
-        this.player.x += (inwardX / inwardDist) * pullStrength;
-        this.player.y += (inwardY / inwardDist) * pullStrength;
-        this.player.speed *= 0.95;
+      const outsideDrivableCorridor = !road || road.dist > road.width + CAR_ROAD_EDGE_TOLERANCE;
+      if (outsideDrivableCorridor) {
+        // A soft pull lets a fast frame cross a canal before recovery catches
+        // up. Roll back first, then remove velocity pointing away from the
+        // mapped street so the next input can steer along it again.
+        this.player.x = previousPlayerPosition.x;
+        this.player.y = previousPlayerPosition.y;
+        const recoveryRoad = this.track.getNearestRoad(this.player.x, this.player.y) || road;
+        if (recoveryRoad) {
+          const tangentX = Math.cos(recoveryRoad.angle), tangentY = Math.sin(recoveryRoad.angle);
+          const tangentVelocity = this.player.vx * tangentX + this.player.vy * tangentY;
+          this.player.vx = tangentX * tangentVelocity * 0.72;
+          this.player.vy = tangentY * tangentVelocity * 0.72;
+          this.player.speed = Math.sign(this.player.speed) * Math.min(Math.abs(this.player.speed) * 0.7, Math.abs(tangentVelocity));
+          const forwardDot = Math.cos(this.player.angle) * tangentX + Math.sin(this.player.angle) * tangentY;
+          const roadHeading = recoveryRoad.angle + (forwardDot < 0 ? Math.PI : 0);
+          this.player.angle += normalizeAngle(roadHeading - this.player.angle) * 0.18;
+        } else {
+          this.player.speed *= 0.5;
+          this.player.vx *= 0.5;
+          this.player.vy *= 0.5;
+        }
+      } else {
+        const offRoadMargin = road.dist - road.width;
+        if (offRoadMargin > 0) {
+          const inwardX = road.x - this.player.x;
+          const inwardY = road.y - this.player.y;
+          const inwardDist = Math.hypot(inwardX, inwardY) || 1;
+          const pullStrength = Math.min(3, offRoadMargin * 0.18);
+          this.player.x += (inwardX / inwardDist) * pullStrength;
+          this.player.y += (inwardY / inwardDist) * pullStrength;
+          this.player.speed *= 0.97;
+        }
       }
     } else if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
       this._blockedBoatFrames++;
@@ -2094,6 +2125,7 @@ class Game {
       });
       // Preload neighborhood images (non-blocking)
       this._neighborhoodImages = new Map();
+      this._neighborhoodLetterArt = new Map();
       for (const hood of this.neighborhoods) {
         if (!hood.imageUrl) continue;
         const img = new Image();
@@ -2281,8 +2313,8 @@ class Game {
     const eased = 1 - Math.pow(1 - slideT, 3);
     const slideOffset = (1 - eased) * 50;
 
-    const cardW = hasImage ? 380 : 320;
-    const cardH = hasImage ? 120 : 70;
+    const cardW = 520;
+    const cardH = 180;
     const cardX = CANVAS_W / 2 - cardW / 2;
     const cardY = CANVAS_H - cardH - 30 + slideOffset;
 
@@ -2290,65 +2322,81 @@ class Game {
     roundRect(ctx, cardX, cardY, cardW, cardH, 8);
     ctx.clip();
 
-    if (hasImage) {
-      const aspect = img.naturalWidth / img.naturalHeight;
-      const targetAspect = cardW / cardH;
-      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
-      if (aspect > targetAspect) { sw = sh * targetAspect; sx = (img.naturalWidth - sw) / 2; }
-      else { sh = sw / targetAspect; sy = (img.naturalHeight - sh) / 2; }
-      ctx.drawImage(img, sx, sy, sw, sh, cardX, cardY, cardW, cardH);
-      const overlay = ctx.createLinearGradient(cardX, cardY, cardX, cardY + cardH);
-      overlay.addColorStop(0, 'rgba(0,0,0,0.15)');
-      overlay.addColorStop(0.5, 'rgba(0,0,0,0.45)');
-      overlay.addColorStop(1, 'rgba(0,0,0,0.75)');
-      ctx.fillStyle = overlay;
-      ctx.fillRect(cardX, cardY, cardW, cardH);
-    } else {
-      ctx.fillStyle = 'rgba(3,18,28,0.88)';
-      ctx.fillRect(cardX, cardY, cardW, cardH);
+    // Sun-faded linen stock and simple travel-poster horizon bands. The photo
+    // belongs inside the giant letters, not underneath a generic dark card.
+    const paper = ctx.createLinearGradient(cardX, cardY, cardX, cardY + cardH);
+    paper.addColorStop(0, '#F3C06B');
+    paper.addColorStop(0.57, '#EAA45F');
+    paper.addColorStop(0.58, '#70A6A2');
+    paper.addColorStop(1, '#2F7078');
+    ctx.fillStyle = paper;
+    ctx.fillRect(cardX, cardY, cardW, cardH);
+    ctx.fillStyle = 'rgba(255,244,211,.18)';
+    for (let i = 0; i < 90; i++) {
+      const seed = (i * 7919 + hood.name.length * 1049) % 9973;
+      ctx.fillRect(cardX + seed % cardW, cardY + (seed * 17) % cardH, 1, 1);
     }
 
-    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+    ctx.strokeStyle = '#F7E6B8';
+    ctx.lineWidth = 5;
+    roundRect(ctx, cardX + 4, cardY + 4, cardW - 8, cardH - 8, 7);
+    ctx.stroke();
+    ctx.strokeStyle = 'rgba(85,49,37,.55)';
     ctx.lineWidth = 1.5;
-    roundRect(ctx, cardX + 4, cardY + 4, cardW - 8, cardH - 8, 5);
+    roundRect(ctx, cardX + 9, cardY + 9, cardW - 18, cardH - 18, 4);
     ctx.stroke();
 
     const name = hood.name.toUpperCase();
-    let fontSize = hasImage ? 42 : 32;
+    let fontSize = 82;
     ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
-    while (ctx.measureText(name).width > cardW - 40 && fontSize > 16) {
+    while (ctx.measureText(name).width > cardW - 38 && fontSize > 34) {
       fontSize -= 2;
       ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
     }
     ctx.textAlign = 'center';
-    const nameY = hasImage ? cardY + cardH - 28 : cardY + cardH / 2 + fontSize * 0.35;
+    const nameY = cardY + 132;
 
-    ctx.fillStyle = 'rgba(0,0,0,0.6)';
-    ctx.fillText(name, CANVAS_W / 2 + 1.5, nameY + 1.5);
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fillText(name, CANVAS_W / 2, nameY);
-    ctx.strokeStyle = 'rgba(250,204,21,0.5)';
-    ctx.lineWidth = 0.8;
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = '#713A2C';
+    ctx.lineWidth = 12;
+    ctx.strokeText(name, CANVAS_W / 2 + 6, nameY + 7);
+    ctx.strokeStyle = '#F8EDCE';
+    ctx.lineWidth = 7;
+    ctx.strokeText(name, CANVAS_W / 2, nameY);
+    if (hasImage) {
+      if (!this._neighborhoodLetterArt) this._neighborhoodLetterArt = new Map();
+      let letters = this._neighborhoodLetterArt.get(hood.name);
+      if (!letters) {
+        letters = document.createElement('canvas');
+        letters.width = cardW; letters.height = cardH;
+        const letterCtx = letters.getContext('2d');
+        letterCtx.font = ctx.font;
+        letterCtx.textAlign = 'center';
+        letterCtx.fillStyle = '#fff';
+        letterCtx.fillText(name, cardW / 2, 132);
+        letterCtx.globalCompositeOperation = 'source-in';
+        const aspect = img.naturalWidth / img.naturalHeight;
+        let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
+        if (aspect > cardW / cardH) { sw = sh * cardW / cardH; sx = (img.naturalWidth - sw) / 2; }
+        else { sh = sw * cardH / cardW; sy = (img.naturalHeight - sh) / 2; }
+        letterCtx.drawImage(img, sx, sy, sw, sh, 0, 0, cardW, cardH);
+        this._neighborhoodLetterArt.set(hood.name, letters);
+      }
+      ctx.drawImage(letters, cardX, cardY);
+    } else {
+      ctx.fillStyle = '#F4D96B';
+      ctx.fillText(name, CANVAS_W / 2, nameY);
+    }
+    ctx.strokeStyle = '#263D45';
+    ctx.lineWidth = 2;
     ctx.strokeText(name, CANVAS_W / 2, nameY);
 
-    if (hasImage) {
-      ctx.fillStyle = 'rgba(255,255,255,0.7)';
-      ctx.font = 'italic 13px Georgia, serif';
-      ctx.fillText('Entering neighborhood', CANVAS_W / 2, cardY + 22);
-    }
-
-    // Skip generic "X is a neighbourhood in Amsterdam" descriptions
-    const extract = hood.wikipediaExtract || '';
-    const isGeneric = /^.{0,40}(is a |ist ein).{0,20}(neighbo|buurt|stadsdeel|Amsterdam)/i.test(extract);
-    if (extract && !isGeneric && hasImage) {
-      const sentence = extract.split(/(?<=[.!?])\s/).find(s => !/^.{0,30}(is a |ist ein)/i.test(s));
-      if (sentence) {
-        ctx.fillStyle = 'rgba(255,255,255,0.85)';
-        ctx.font = '10px monospace';
-        const trimmed = sentence.slice(0, 70);
-        ctx.fillText(trimmed, CANVAS_W / 2, nameY + 16);
-      }
-    }
+    ctx.fillStyle = '#5F3328';
+    ctx.font = 'italic bold 24px Georgia, serif';
+    ctx.fillText('Greetings from', CANVAS_W / 2, cardY + 39);
+    ctx.fillStyle = '#F8EDCE';
+    ctx.font = 'bold 13px Arial, sans-serif';
+    ctx.fillText('AMSTERDAM · NEDERLAND', CANVAS_W / 2, cardY + 160);
 
     ctx.restore();
   }
@@ -2611,4 +2659,6 @@ class Game {
 // ============================================================
 // INITIALIZATION
 // ============================================================
-window.addEventListener('load', () => { new Game(); });
+// Expose the running instance for the browser smoke-test/debug harness. Game
+// state remains owned here; this only avoids brittle DOM-only test hooks.
+window.addEventListener('load', () => { window.canalRecallGame = new Game(); });

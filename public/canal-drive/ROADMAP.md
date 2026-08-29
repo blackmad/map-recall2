@@ -14,7 +14,7 @@ Completed and being refined:
 - Trackpad and keyboard camera controls, remembered preferences, sound-off default, and absolute/relative vehicle controls.
 - Recall streaks and combo multipliers: consecutive correct answers build a streak (up to 2× at 10), displayed in the HUD with per-answer point feedback; best streak and accuracy percentage shown on the finish screen.
 - Landmark trivia cards: passing a notable place shows an expanded card with Wikipedia thumbnail, category badge (MUSEUM/BRIDGE/etc.), and multi-line description; the top 50 landmarks by prominence are image-preloaded at route start.
-- Vintage "Greetings from…" neighborhood postcards: entering a neighborhood shows a postcard with the name rendered in large block letters filled with a Wikimedia Commons photo, over a deterministic warm color gradient; a SPARQL-based enrichment script fetches Wikipedia extracts and images for 27 of 42 neighborhoods, with a typographic fallback for the rest.
+- Vintage "Greetings from…" neighborhood postcards: entering a neighborhood now uses the classic large-letter travel-card composition—script heading, oversized outlined neighborhood name with Wikimedia photography clipped inside the letters, sun-faded paper, and an Amsterdam location line. A SPARQL-based enrichment script supplies images for 27 of 42 neighborhoods, with a typographic fallback for the rest. Continue tuning mobile scale and long-name typography against in-game screenshots.
 - Persistent exploration collection: learned waterways, visited neighborhoods, and discovered landmarks are tracked across sessions in localStorage; cumulative "city knowledge" stats appear on the finish screen and as a returning-player badge on the menu.
 
 Active reliability work:
@@ -22,7 +22,7 @@ Active reliability work:
 - Refine boat shoreline response and bridge traversal across more route geometries; the current guard rolls the hull inward and preserves canal-tangent movement instead of leaving it stuck against a quay.
 - Continue rejecting distant or ambiguous home-address-to-waterway snaps after exact BAG address resolution.
 - Validate route topology around docks, broad water polygons, bridges, and disconnected OSM path fragments. Closed water/shore polygon rings are now excluded from the navigable graph; continue auditing named open paths and graph junctions.
-- ~~Replace the placeholder car network with correctly connected, road-snapped routes and starts.~~ ✅ The street extract now preserves OSM highway classifications (primary/secondary/residential etc.) for correct road widths, selects only from the largest connected component (3249 of 4507 streets are connected), and car mode applies an off-road pull-back constraint similar to the boat's shoreline guard. Continue testing edge cases around disconnected cul-de-sacs and dead-end streets.
+- ~~Replace the placeholder car network with correctly connected, road-snapped routes and starts.~~ ✅ The street extract preserves OSM highway classifications, selects only from the largest connected component (3249 of 4507 streets), and car mode now rolls back at the mapped road corridor instead of allowing a long soft excursion into canals/blocks. Steering is tighter with less lateral slide. Continue testing bridges, sharp junctions, cul-de-sacs, and dead-end streets.
 - Integrate optional detailed 3D building data with OSM extrusions as a dependable fallback.
 
 Next product passes:
