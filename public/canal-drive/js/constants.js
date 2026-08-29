@@ -39,8 +39,8 @@ const MAX_SKIDMARKS = 600;
 const GRID_CELL = 200;                         // px — collision grid cell size
 
 // --- Car Physics ---
-const CAR_WIDTH = 18;                          // px — boat beam
-const CAR_LENGTH = 44;                         // px — boat length
+const CAR_WIDTH = 24;                          // px — car width
+const CAR_LENGTH = 56;                         // px — car length
 const CAR_MAX_SPEED = 205;                     // px/s — fast arcade boat pace
 const CAR_ACCEL = 98;                          // px/s² — reach the higher cap promptly
 const CAR_BRAKE_FORCE = 75;                    // px/s² / reverse thrust
