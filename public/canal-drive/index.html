@@ -40,6 +40,12 @@ canvas { display: block; position: relative; z-index: 2; }
 .setup-field select { width: 100%; padding: 10px; border-radius: 8px; color: white; background: #0f3447; border: 1px solid #39738d; }
 .assist-options { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; color: #e0f2fe; font-size: 13px; }
 .assist-options label { display: flex; align-items: center; gap: 6px; }
+.route-surprise { display: flex; align-items: center; gap: 14px; margin: 14px 0 20px; padding: 14px 16px; border: 1px solid #39738d; border-radius: 12px; background: #0b2b3d; color: #dff5ff; }
+.route-surprise .route-icon { font-size: 30px; }
+.route-surprise strong { display: block; color: #7dd3fc; margin-bottom: 3px; }
+.advanced-options { margin: 16px 0; border: 1px solid #28556a; border-radius: 10px; padding: 0 14px; }
+.advanced-options summary { padding: 13px 0; cursor: pointer; color: #bae6fd; font-weight: bold; }
+.advanced-options .setup-grid { padding-bottom: 14px; }
 .utility-panel { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; background: rgba(3,18,28,.78); color: white; font-family: ui-monospace, monospace; }
 .utility-card { width: min(92vw, 520px); padding: 25px; border: 2px solid #38bdf8; border-radius: 16px; background: #071e2b; }
 .utility-card h2 { color: #7dd3fc; margin-bottom: 16px; }
@@ -63,10 +69,10 @@ canvas { display: block; position: relative; z-index: 2; }
   <form id="route-card">
     <h1>Amsterdam Canal Recall</h1>
     <p class="lede">Navigate between important places and name the waterways as you turn.</p>
+    <select id="route-from" hidden></select><select id="route-to" hidden></select>
+    <div class="route-surprise"><span class="route-icon">🎲</span><span><strong>Surprise landmark route</strong>We’ll choose two important Amsterdam places when you start.</span></div>
     <div class="setup-grid">
-      <label class="setup-field">FROM<select id="route-from"></select></label>
-      <label class="setup-field">DESTINATION<select id="route-to"></select></label>
-      <label class="setup-field">DIFFICULTY
+      <label class="setup-field">🎯 DIFFICULTY
         <select id="route-difficulty">
           <option value="easy">Easy — full navigation help</option>
           <option value="medium" selected>Medium — GPS-like</option>
@@ -75,27 +81,21 @@ canvas { display: block; position: relative; z-index: 2; }
           <option value="custom">Custom</option>
         </select>
       </label>
-      <label class="setup-field">ANSWERS
-        <select id="answer-mode"><option value="multiple" selected>Multiple choice</option><option value="typing">Type the name</option></select>
+      <label class="setup-field">⛵ TRAVEL
+        <select id="travel-mode"><option value="boat" selected>Boat through the canals</option><option value="car" disabled>Car — road network coming soon</option></select>
       </label>
-      <label class="setup-field">TRAVEL MODE
-        <select id="travel-mode"><option value="boat" selected>Boat — waterways</option><option value="car">Car — streets</option></select>
-      </label>
-      <label class="setup-field">CONTROLS
-        <select id="control-mode"><option value="relative" selected>Relative — steer vehicle</option><option value="absolute">Absolute — compass directions</option></select>
-      </label>
-      <label class="setup-field">VIEW
-        <select id="view-mode"><option value="north" selected>2D — north up</option><option value="heading">2D — heading up</option><option value="chase">3D — chase camera</option></select>
-      </label>
-      <label class="setup-field">THEME
-        <select id="theme-mode"><option value="clean" selected>Clean map</option><option value="8bit">8-bit arcade</option><option value="16bit">16-bit</option><option value="psx">PSX</option><option value="cyberpunk">Cyberpunk</option></select>
+      <label class="setup-field">🗺️ VIEW
+        <select id="view-mode"><option value="north" selected>North-up map</option><option value="heading">Heading-up map</option><option value="chase">3D chase camera</option></select>
       </label>
     </div>
-    <div class="assist-options">
-      <label><input id="assist-line" type="checkbox"> Route line</label>
-      <label><input id="assist-arrow" type="checkbox" checked> Destination arrow</label>
-      <label><input id="assist-minimap" type="checkbox" checked> Minimap</label>
-    </div>
+    <details class="advanced-options"><summary>⚙ Advanced options</summary>
+      <div class="setup-grid">
+        <label class="setup-field">ANSWERS<select id="answer-mode"><option value="multiple" selected>Multiple choice</option><option value="typing">Type the name</option></select></label>
+        <label class="setup-field">CONTROLS<select id="control-mode"><option value="relative" selected>Relative — steer vehicle</option><option value="absolute">Absolute — compass directions</option></select></label>
+        <label class="setup-field">THEME<select id="theme-mode"><option value="clean" selected>Clean map</option><option value="8bit">8-bit arcade</option><option value="16bit">16-bit</option><option value="psx">PSX</option><option value="cyberpunk">Cyberpunk</option></select></label>
+      </div>
+      <div class="assist-options"><label><input id="assist-line" type="checkbox"> Route line</label><label><input id="assist-arrow" type="checkbox" checked> Destination arrow</label><label><input id="assist-minimap" type="checkbox" checked> Minimap</label></div>
+    </details>
     <button id="route-start" type="submit">Start route</button>
     <div id="route-error" aria-live="polite"></div>
   </form>
