@@ -10,6 +10,8 @@ class Camera {
     this.maxZoom = CAMERA_ZOOM_MAX;
     this.northUp = true;
     this.rotation = 0;
+    this.viewMode = 'north';
+    this.projector = null;
   }
   update(target, dt) {
     const speedRatio = clamp(target.speed / target.maxSpeed, 0, 1);
@@ -28,6 +30,7 @@ class Camera {
     this.zoom = clamp(this.zoom - CAMERA_ZOOM_STEP, this.minZoom, this.maxZoom);
   }
   worldToScreen(wx, wy) {
+    if (this.projector) return this.projector(wx, wy);
     const dx = wx - this.x;
     const dy = wy - this.y;
     const cos = Math.cos(this.rotation);

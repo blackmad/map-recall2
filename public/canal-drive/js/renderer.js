@@ -160,13 +160,57 @@ class Renderer {
   _drawDestination(camera, track) {
     const ctx = this.ctx;
     const destination = camera.worldToScreen(track.finishPoint.x, track.finishPoint.y);
+    ctx.save();
+    ctx.translate(destination.x, destination.y);
+    ctx.fillStyle = 'rgba(3,18,28,.82)';
+    roundRect(ctx, -43, 18, 86, 20, 5);
+    ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 10px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('DESTINATION', 0, 32);
     ctx.fillStyle = '#FACC15';
     ctx.strokeStyle = '#FFFFFF';
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(destination.x, destination.y, 10, 0, Math.PI * 2);
+    ctx.moveTo(0, 16);
+    ctx.bezierCurveTo(-4, 9, -12, 1, -12, -7);
+    ctx.arc(0, -7, 12, Math.PI, 0);
+    ctx.bezierCurveTo(12, 1, 4, 9, 0, 16);
+    ctx.closePath();
     ctx.fill();
     ctx.stroke();
+    ctx.fillStyle = '#071E2B';
+    ctx.beginPath();
+    ctx.arc(0, -7, 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  drawQuestionFeature(camera, track, featureName, time) {
+    if (!featureName || !track || !track.segments) return;
+    const ctx = this.ctx;
+    const pulse = 0.5 + 0.5 * Math.sin(time * 5);
+    ctx.save();
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    for (const segment of track.segments) {
+      if (segment.name !== featureName || !segment.points || segment.points.length < 2) continue;
+      const first = camera.worldToScreen(segment.points[0].x, segment.points[0].y);
+      ctx.beginPath();
+      ctx.moveTo(first.x, first.y);
+      for (let i = 1; i < segment.points.length; i++) {
+        const point = camera.worldToScreen(segment.points[i].x, segment.points[i].y);
+        ctx.lineTo(point.x, point.y);
+      }
+      ctx.strokeStyle = `rgba(255,255,255,${0.55 + pulse * 0.35})`;
+      ctx.lineWidth = 12 + pulse * 4;
+      ctx.stroke();
+      ctx.strokeStyle = `rgba(14,165,233,${0.8 + pulse * 0.2})`;
+      ctx.lineWidth = 6 + pulse * 2;
+      ctx.stroke();
+    }
+    ctx.restore();
   }
 
   drawSkidMarks(particles, camera) {
