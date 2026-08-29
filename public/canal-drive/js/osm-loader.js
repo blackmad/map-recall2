@@ -295,8 +295,11 @@ class OSMLoader {
         }
       }
     }
-    // Reject if snapped point is too far from the clicked location
-    if (!bestPt || bestDist > maxSnapDist) return null;
+    // Reject if snapped point is too far from the clicked location. Callers
+    // pass `false` to mean "no limit" — comparing against it directly coerces
+    // to 0 and rejects every point that is not exactly on a segment.
+    if (!bestPt) return null;
+    if (Number.isFinite(maxSnapDist) && bestDist > maxSnapDist) return null;
     return { ...bestPt, snapDistance: bestDist };
   }
 

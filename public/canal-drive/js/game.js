@@ -40,6 +40,22 @@ const ROUTE_RIBBON_TIERS = [
 // Weight of each aid when scoring self-reliance. The route line removes the
 // navigation problem entirely, so it costs the most.
 const RIBBON_AID_COST = { line: 0.5, arrow: 0.25, minimap: 0.25 };
+// Route destinations start from the curated list below, then grow with the
+// prominence-ranked landmarks in the city extract. Both ends of a route must
+// sit inside the single OSM_FETCH_RADIUS window fetched around their midpoint,
+// so candidates are capped by distance from the city centre and from each
+// other — otherwise a Weesp fort could be paired with Westerpark and half the
+// route would fall outside the loaded network.
+const AMSTERDAM_CENTRE = { lat: 52.3676, lng: 4.9041 };
+const ROUTE_POI_MAX_KM_FROM_CENTRE = 4;
+const ROUTE_POI_MAX_PAIR_KM = 6;
+const ROUTE_POI_CATALOG_URL = '../data/extracts/amsterdam/landmarks.json';
+// px (~13 m). Wide enough that a boat passing under a span or a car crossing
+// one registers, tight enough not to fire from the neighbouring quay.
+const BRIDGE_QUIZ_RADIUS = 40;
+// How many nearby stand-in destinations to try before giving up on routing.
+const RETARGET_ATTEMPTS = 25;
+
 const CANAL_PREFS_KEY = 'canalRecall.preferences.v1';
 const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v2';
 
@@ -86,6 +102,11 @@ class Game {
     this.learnedNames = new Set();
     this.routeFrom = CANAL_ROUTE_POIS[1];
     this.routeTo = CANAL_ROUTE_POIS[2];
+    // Grows once the landmark extract loads; see _loadRoutePoiCatalog.
+    this.routePois = [...CANAL_ROUTE_POIS];
+    this.bridges = [];
+    this.quizPromptKind = 'route';
+    this._quizzedBridges = new Set();
     this.routePattern = 'surprise';
     this.homeBase = null;
     this.homeLeg = 'outbound';
@@ -139,11 +160,14 @@ class Game {
     this._promptInput = document.getElementById('canal-answer');
     this._promptFeedback = document.getElementById('canal-feedback');
     this._promptChoices = document.getElementById('canal-choices');
+    this._promptHeading = document.querySelector('#canal-card h2');
+    this._promptQuestion = document.querySelector('#canal-card p');
     this._promptForm.addEventListener('submit', (event) => {
       event.preventDefault();
       this._submitCanalAnswer();
     });
     this._setupRouteForm();
+    this._loadRoutePoiCatalog();
     this._setupUtilityPanels();
     this._resize();
     window.addEventListener('resize', () => this._resize());
@@ -252,9 +276,7 @@ class Game {
       const building = this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect);
       if (!building) return;
       const buildingName = building.name || '';
-      const matchedLandmark = this.landmarks.find(l =>
-        (building.id && l.id === building.id) || (buildingName && l.name === buildingName)
-      );
+      const matchedLandmark = this._matchLandmarkToBuilding(building, buildingName);
       if (matchedLandmark) {
         nearest = matchedLandmark;
       } else {
@@ -270,6 +292,42 @@ class Game {
     this._landmarkNoticeTimer = 8;
     this._landmarkNoticeDuration = 8;
     this.vectorMap.setActiveLandmark(nearest);
+  }
+
+  // Buildings were matched to landmarks by exact name equality, so anything
+  // with different punctuation, casing, or a localised OSM name fell through
+  // to the generic "Mapped building" card even when the extract had a full
+  // Wikipedia entry for it. Compare normalised names, then fall back to the
+  // nearest landmark to the clicked footprint.
+  // The extract carries a Wikipedia URL for 236 of its 300 landmarks, which
+  // the canvas card cannot make clickable — so offer it on a key instead.
+  _openLandmarkArticle() {
+    const url = this._landmarkNotice && this._landmarkNoticeTimer > 0 && this._landmarkNotice.wikipediaUrl;
+    if (!url) return;
+    window.open(url, '_blank', 'noopener');
+  }
+
+  _matchLandmarkToBuilding(building, buildingName) {
+    if (building.id) {
+      const byId = this.landmarks.find(landmark => landmark.id === building.id);
+      if (byId) return byId;
+    }
+    if (buildingName) {
+      const wanted = this._normaliseCanalName(buildingName);
+      const byName = this.landmarks.find(landmark => this._normaliseCanalName(landmark.name) === wanted);
+      if (byName) return byName;
+    }
+    if (!building.lngLat) return null;
+    // 60 m: close enough that the click almost certainly hit this landmark's
+    // building, without silently relabelling a neighbour.
+    let nearest = null, nearestKm = 0.06;
+    for (const landmark of this.landmarks) {
+      if (!landmark.lngLat) continue;
+      const km = Game._kmBetween({ lat: building.lngLat[1], lng: building.lngLat[0] },
+                                 { lat: landmark.lngLat[1], lng: landmark.lngLat[0] });
+      if (km < nearestKm) { nearest = landmark; nearestKm = km; }
+    }
+    return nearest;
   }
 
   _setupRouteForm() {
@@ -487,12 +545,22 @@ class Game {
     y += 20;
     ctx.fillStyle = '#FACC15';
     ctx.font = 'bold 12px monospace';
-    ctx.fillText(`POI DESTINATIONS (${CANAL_ROUTE_POIS.length})`, x, y); y += 14;
+    ctx.fillText(`POI DESTINATIONS (${this.routePois.length})`, x, y); y += 14;
     ctx.fillStyle = '#E0F2FE';
     ctx.font = '10px monospace';
-    for (const poi of CANAL_ROUTE_POIS) {
+    const shownPois = [...CANAL_ROUTE_POIS];
+    for (const poi of [this.routeFrom, this.routeTo]) {
+      if (poi && !shownPois.some(entry => entry.id === poi.id)) shownPois.push(poi);
+    }
+    for (const poi of shownPois) {
       const isCurrent = (this.routeFrom?.id === poi.id ? '> ' : this.routeTo?.id === poi.id ? '* ' : '  ');
       ctx.fillText(`${isCurrent}${poi.name}`, x, y); y += 12;
+    }
+    const hidden = this.routePois.length - CANAL_ROUTE_POIS.length;
+    if (hidden > 0) {
+      ctx.fillStyle = '#94A3B8';
+      ctx.fillText(`  +${hidden} more from the landmark extract`, x, y); y += 12;
+      ctx.fillStyle = '#E0F2FE';
     }
     y += 6;
     ctx.fillStyle = '#FACC15';
@@ -603,11 +671,79 @@ class Game {
         return;
       }
     }
-    const choices = CANAL_ROUTE_POIS.filter(poi => poi.id !== this.routeFrom?.id || CANAL_ROUTE_POIS.length < 3);
+    const pool = this.routePois;
+    const choices = pool.filter(poi => poi.id !== this.routeFrom?.id || pool.length < 3);
     const from = this.routePattern === 'home' ? this.homeBase : choices[Math.floor(Math.random() * choices.length)];
-    const destinations = CANAL_ROUTE_POIS.filter(poi => poi.id !== from.id);
-    const to = destinations[Math.floor(Math.random() * destinations.length)];
-    this._launchPoiRoute(from, to);
+    this._launchPoiRoute(from, this._pickDestinationNear(from));
+  }
+
+  // A destination far enough to be a journey but inside the same fetched map
+  // window as the origin. Falls back to any other POI if nothing is in range.
+  _pickDestinationNear(from, alsoExcludeId = null) {
+    const candidates = this.routePois.filter(poi => poi.id !== from.id && poi.id !== alsoExcludeId);
+    const inRange = candidates.filter(poi => Game._kmBetween(poi, from) <= ROUTE_POI_MAX_PAIR_KM);
+    const pool = inRange.length > 0 ? inRange : candidates;
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  // Closest reachable stand-in for an unroutable destination, chosen from the
+  // same POI pool and scored by how near it is to the original.
+  _retargetToReachableDestination(start, originalFinish, segments, centreLat, centreLng) {
+    const ranked = this.routePois
+      .filter(poi => poi.id !== this.routeFrom?.id && Number.isFinite(poi.lat))
+      .map(poi => {
+        const point = this.osmLoader.latLngToGamePoint(poi.lat, poi.lng, centreLat, centreLng, segments, MAX_SNAP_DIST);
+        if (!point) return null;
+        return { poi, point, gap: dist(point.x, point.y, originalFinish.x, originalFinish.y) };
+      })
+      .filter(Boolean)
+      .filter(entry => dist(entry.point.x, entry.point.y, start.x, start.y) >= MIN_START_FINISH_DIST)
+      .sort((a, b) => a.gap - b.gap);
+    for (const entry of ranked.slice(0, RETARGET_ATTEMPTS)) {
+      const path = this.track.findRoute(start, entry.point);
+      if (path && path.length >= 2) return { poi: entry.poi, finish: entry.point, path };
+    }
+    return null;
+  }
+
+  // Great-circle-ish distance in km; fine at city scale.
+  static _kmBetween(a, b) {
+    const latKm = (a.lat - b.lat) * 111.32;
+    const lngKm = (a.lng - b.lng) * 111.32 * Math.cos(a.lat * Math.PI / 180);
+    return Math.hypot(latKm, lngKm);
+  }
+
+  // Widen the destination pool from the 11 hand-written POIs to the whole
+  // prominence-ranked landmark extract. Non-blocking: the curated list stays
+  // usable if this fetch fails or is slow.
+  async _loadRoutePoiCatalog() {
+    try {
+      const response = await fetch(new URL(ROUTE_POI_CATALOG_URL, window.location.href));
+      if (!response.ok) throw new Error(`landmark catalog ${response.status}`);
+      const features = await response.json();
+      const seen = new Set(CANAL_ROUTE_POIS.map(poi => this._normaliseCanalName(poi.name)));
+      const extras = [];
+      for (const feature of features) {
+        const centre = feature.center;
+        if (!centre || !feature.name) continue;
+        const key = this._normaliseCanalName(feature.name);
+        if (seen.has(key)) continue;
+        const poi = { id: `lm-${feature.id}`, name: feature.name, lat: centre[0], lng: centre[1],
+                      prominence: feature.prominenceScore || 0, type: feature.type || 'landmark' };
+        if (Game._kmBetween(poi, AMSTERDAM_CENTRE) > ROUTE_POI_MAX_KM_FROM_CENTRE) continue;
+        seen.add(key);
+        extras.push(poi);
+      }
+      extras.sort((a, b) => b.prominence - a.prominence);
+      this.routePois = [...CANAL_ROUTE_POIS, ...extras];
+      for (const poi of extras) {
+        this._routeFrom.add(new Option(poi.name, poi.id));
+        this._routeTo.add(new Option(poi.name, poi.id));
+      }
+      console.info(`Route destinations: ${this.routePois.length} (${CANAL_ROUTE_POIS.length} curated + ${extras.length} from the extract)`);
+    } catch (error) {
+      console.warn('Landmark route catalog unavailable, using the curated list:', error);
+    }
   }
 
   _launchPoiRoute(from, to) {
@@ -653,8 +789,7 @@ class Game {
       return;
     }
     this.homeLeg = 'outbound';
-    const destinations = CANAL_ROUTE_POIS.filter(poi => poi.id !== this.routeFrom.id);
-    this._launchPoiRoute(this.homeBase, destinations[Math.floor(Math.random() * destinations.length)]);
+    this._launchPoiRoute(this.homeBase, this._pickDestinationNear(this.homeBase, this.routeFrom.id));
   }
 
   _returnToRouteSetup(message) {
@@ -735,6 +870,8 @@ class Game {
     this.quizStreak = 0;
     this.quizBestStreak = 0;
     this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';
+    this.quizPromptKind = 'route';
+    this._quizzedBridges = new Set();
 
     // Ribbon scoring: aids can be toggled mid-route, so grade on whichever
     // ones were switched on at any point rather than on the final state.
@@ -846,7 +983,24 @@ class Game {
       this.track = new RoadNetwork(segments, start, finish, tiles);
       if (this.travelMode === 'boat') this.track.waterTest = (x, y) => this.vectorMap.isWater(x, y, this.osmLoader);
       this.routePath = this.track.findRoute(start, finish);
-      if (!this.routePath || this.routePath.length < 2) console.warn('Route not found between start and finish — route line will not display');
+      if (!this.routePath || this.routePath.length < 2) {
+        // Widening the destination pool to the whole landmark extract means a
+        // pair can straddle a gap in the navigable graph — most often the IJ,
+        // which boats cannot cross because the open-water polygons are not in
+        // the routing network. Retarget to the nearest destination that is
+        // actually reachable rather than running a route with no path.
+        const retarget = this._retargetToReachableDestination(start, finish, segments, lat, lng);
+        if (retarget) {
+          finish = retarget.finish;
+          this.routeTo = retarget.poi;
+          finishLL = { lat: retarget.poi.lat, lng: retarget.poi.lng };
+          this.track.finishPoint = finish;
+          this.routePath = retarget.path;
+          console.info(`Destination retargeted to ${retarget.poi.name}: the original was unreachable from the start`);
+        } else {
+          console.warn('Route not found between start and finish — route line will not display');
+        }
+      }
       this.trackMode = TRACK_MODE_POINT_TO_POINT;
       this.renderer.preRenderTrack(this.track);
 
@@ -918,6 +1072,7 @@ class Game {
     if (this.input.wasPressed('KeyO')) this.camera.northUp = !this.camera.northUp;
     if (this.input.wasPressed('KeyN')) { this._setSoundEnabled(this.sound.muted); this._savePreferences(); }
     if (this.input.wasPressed('KeyD')) this.vectorMap.toggleLabels();
+    if (this.input.wasPressed('KeyW')) this._openLandmarkArticle();
     if (this.input.wasPressed('Backquote')) this._toggleDebug();
     if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) this.camera.zoomOut();
     if (this.input.isDown('Equal') || this.input.isDown('NumpadAdd')) this.camera.zoomIn();
@@ -1085,6 +1240,7 @@ class Game {
     } else {
       this._blockedBoatFrames = 0;
     }
+    this._updateBridgeQuiz();
     this._updateCanalQuiz(dt);
 
     this._updateLandmarks(dt);
@@ -1136,13 +1292,28 @@ class Game {
     this.quizCandidateTimer += dt;
     if (this.quizCandidateTimer < 0.65 || Math.abs(this.player.speed) < 5) return;
 
-    this.quizPromptName = name;
     const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y);
-    this.quizPromptSegmentIndex = quizRoad ? quizRoad.segIdx : -1;
-    this.quizPromptPointIndex = quizRoad ? quizRoad.ptIdx : 0;
+    this._openQuizPrompt({
+      kind: 'route',
+      name,
+      heading: 'You made a turn',
+      question: this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?',
+      segmentIndex: quizRoad ? quizRoad.segIdx : -1,
+      pointIndex: quizRoad ? quizRoad.ptIdx : 0,
+    });
+  }
+
+  // Shared prompt plumbing for every kind of recall question.
+  _openQuizPrompt({ kind, name, heading, question, choices = null, segmentIndex = -1, pointIndex = 0 }) {
+    this.quizPromptKind = kind;
+    this.quizPromptName = name;
+    this.quizPromptSegmentIndex = segmentIndex;
+    this.quizPromptPointIndex = pointIndex;
     this.player.speed = 0;
     this.player.vx = 0;
     this.player.vy = 0;
+    this._promptHeading.textContent = heading;
+    this._promptQuestion.textContent = question;
     this._prompt.style.display = 'flex';
     const playerScreen = this.camera.worldToScreen(this.player.x, this.player.y);
     this._prompt.classList.toggle('dock-left', playerScreen.x > CANVAS_W / 2);
@@ -1152,7 +1323,7 @@ class Game {
       this._promptInput.style.display = 'none';
       document.getElementById('canal-submit').style.display = 'none';
       this._promptChoices.style.display = 'grid';
-      this._renderCanalChoices(name);
+      this._renderCanalChoices(name, choices);
     } else {
       this._promptChoices.style.display = 'none';
       this._promptInput.style.display = 'block';
@@ -1161,7 +1332,43 @@ class Game {
     }
   }
 
-  _renderCanalChoices(correctName) {
+  // Ask which bridge this is when the player drives over one, or passes under
+  // one by boat. Both cases are the same test: the hull or chassis crosses the
+  // bridge's mapped centreline.
+  _updateBridgeQuiz() {
+    if (this.quizPromptName || !this.bridges.length) return;
+    if (Math.abs(this.player.speed) < 5) return;
+    let closest = null, closestDistance = BRIDGE_QUIZ_RADIUS;
+    for (const bridge of this.bridges) {
+      if (this._quizzedBridges.has(bridge.id)) continue;
+      for (const line of bridge.lines) {
+        for (let i = 1; i < line.length; i++) {
+          const hit = this.track._closestPointOnSeg(this.player.x, this.player.y, line[i - 1], line[i]);
+          if (hit.dist < closestDistance) { closestDistance = hit.dist; closest = bridge; }
+        }
+      }
+    }
+    if (!closest) return;
+    this._quizzedBridges.add(closest.id);
+    this._bridgeNotice = closest;
+    const alternatives = [...new Set(closest.distractors)]
+      .filter(candidate => candidate && candidate !== closest.name)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+    this._openQuizPrompt({
+      kind: 'bridge',
+      name: closest.name,
+      heading: this.travelMode === 'car' ? 'Crossing a bridge' : 'Passing under a bridge',
+      question: 'Which bridge is this?',
+      choices: alternatives.length >= 2 ? [closest.name, ...alternatives] : null,
+    });
+  }
+
+  _renderCanalChoices(correctName, explicitChoices = null) {
+    if (explicitChoices) {
+      this._renderChoiceButtons([...explicitChoices].sort(() => Math.random() - 0.5));
+      return;
+    }
     const nearbyNames = this.track.segments
       .filter(segment => segment.points.some(point => dist(point.x, point.y, this.player.x, this.player.y) < 1500))
       .map(segment => segment.name)
@@ -1170,7 +1377,10 @@ class Game {
       .filter(name => name !== correctName)
       .sort(() => Math.random() - 0.5)
       .slice(0, 3);
-    const choices = [correctName, ...alternatives].sort(() => Math.random() - 0.5);
+    this._renderChoiceButtons([correctName, ...alternatives].sort(() => Math.random() - 0.5));
+  }
+
+  _renderChoiceButtons(choices) {
     this._promptChoices.replaceChildren(...choices.map(name => {
       const button = document.createElement('button');
       button.type = 'button';
@@ -1216,7 +1426,11 @@ class Game {
     }
     this._promptFeedback.textContent = this.quizFeedback;
     this._promptFeedback.style.color = correct ? '#4ade80' : '#fbbf24';
-    this.quizCurrentName = correctName;
+    // A bridge is crossed, not travelled along: keep the waterway/street the
+    // player is actually on, or the route quiz re-fires the moment the prompt
+    // closes.
+    if (this.quizPromptKind !== 'bridge') this.quizCurrentName = correctName;
+    this.quizPromptKind = 'route';
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
     this.quizPromptName = '';
@@ -2001,15 +2215,17 @@ class Game {
 
   async _loadLandmarks(centerLat, centerLng, segments) {
     try {
-      const [landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse] = await Promise.all([
+      const [landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse, bridgeResponse] = await Promise.all([
         fetch(new URL('../data/extracts/amsterdam/landmarks.json', window.location.href)),
         fetch(new URL('../data/extracts/amsterdam/boundaries.json', window.location.href)),
-        fetch(new URL('../data/extracts/amsterdam/neighborhoods-enriched.json', window.location.href))
+        fetch(new URL('../data/extracts/amsterdam/neighborhoods-enriched.json', window.location.href)),
+        fetch(new URL('../data/extracts/amsterdam/bridges.json', window.location.href))
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
-      const [features, boundaries, neighborhoodEnriched] = await Promise.all([
+      const [features, boundaries, neighborhoodEnriched, bridgeFeatures] = await Promise.all([
         landmarkResponse.json(), boundaryResponse.json(),
-        neighborhoodEnrichedResponse.ok ? neighborhoodEnrichedResponse.json() : []
+        neighborhoodEnrichedResponse.ok ? neighborhoodEnrichedResponse.json() : [],
+        bridgeResponse.ok ? bridgeResponse.json() : []
       ]);
       const neighborhoodData = new Map();
       for (const entry of neighborhoodEnriched) neighborhoodData.set(entry.name, entry);
@@ -2030,7 +2246,7 @@ class Game {
         if (!geometryFeatures.length) geometryFeatures.push({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [center[1], center[0]] } });
         const shortDetail = detail.split(/(?<=[.!?])\s/)[0].slice(0, 150);
         const longDetail = detail.split(/(?<=[.!?])\s/).slice(0, 3).join(' ').slice(0, 280);
-        return { id: feature.id, name: feature.name, type: feature.type || '', imageUrl: feature.wikipediaImageUrl || '', x: point.x, y: point.y, lngLat: [center[1], center[0]], detail: shortDetail, longDetail, prominenceScore: feature.prominenceScore || 0, geojson: { type: 'FeatureCollection', features: geometryFeatures } };
+        return { id: feature.id, name: feature.name, type: feature.type || '', imageUrl: feature.wikipediaImageUrl || '', x: point.x, y: point.y, lngLat: [center[1], center[0]], detail: shortDetail, longDetail, prominenceScore: feature.prominenceScore || 0, wikipediaUrl: feature.wikipediaUrl || '', wikidata: feature.wikidata || '', geojson: { type: 'FeatureCollection', features: geometryFeatures } };
       }).filter(Boolean);
       // Preload images for top landmarks by prominence (non-blocking)
       this._landmarkImages = new Map();
@@ -2058,6 +2274,20 @@ class Game {
           imageAttribution: enriched.imageAttribution || '',
         };
       });
+      // Bridges carry their own geometry and ready-made distractors, so they
+      // can be quizzed the same way waterways and streets are.
+      this.bridges = bridgeFeatures.map(feature => {
+        const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
+        const lines = sourcePaths.map(path => (path || []).map(toWorld)).filter(line => line.length > 1);
+        if (!feature.name || lines.length === 0) return null;
+        return {
+          id: feature.id, name: feature.name, lines,
+          distractors: feature.distractors || [],
+          wikipediaUrl: feature.wikipediaUrl || '',
+          detail: (feature.wikipediaExtract || '').split(/(?<=[.!?])\s/)[0].slice(0, 150),
+        };
+      }).filter(Boolean);
+
       // Postcard images load on demand — see _warmRouteNeighborhoodImages.
       // Preloading the whole city cost ~26 fetches per route for postcards
       // most trips never reach.
@@ -2193,6 +2423,7 @@ class Game {
     // Category badge
     const textX = cardX + textPadL;
     let textY = cardY + 22;
+    let badgeRight = textX;
     if (category) {
       ctx.font = 'bold 9px monospace';
       const badgeW = ctx.measureText(category).width + 10;
@@ -2202,8 +2433,20 @@ class Game {
       ctx.fillStyle = '#FACC15';
       ctx.textAlign = 'left';
       ctx.fillText(category, textX + 5, textY);
-      textY += 17;
+      badgeRight = textX + badgeW + 6;
     }
+    if (lm.wikipediaUrl) {
+      ctx.font = 'bold 9px monospace';
+      const hint = 'W  WIKIPEDIA';
+      const hintW = ctx.measureText(hint).width + 10;
+      ctx.fillStyle = 'rgba(125,211,252,.18)';
+      roundRect(ctx, badgeRight, textY - 9, hintW, 14, 3);
+      ctx.fill();
+      ctx.fillStyle = '#7DD3FC';
+      ctx.textAlign = 'left';
+      ctx.fillText(hint, badgeRight + 5, textY);
+    }
+    if (category || lm.wikipediaUrl) textY += 17;
 
     // Name
     ctx.fillStyle = '#FACC15';
