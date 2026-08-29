@@ -187,6 +187,7 @@ class Game {
     });
     this._setupRouteForm();
     this._loadRoutePoiCatalog();
+    this._setupRecallStore();
     this._setupUtilityPanels();
     this._resize();
     window.addEventListener('resize', () => this._resize());
@@ -353,6 +354,59 @@ class Game {
     return nearest;
   }
 
+  // Spaced repetition: the bundled store shares its schedule and Firestore
+  // collections with the main Map Recall app, so progress is one body of
+  // knowledge rather than two.
+  _setupRecallStore() {
+    this.recall = window.CanalRecallStoreModule ? window.CanalRecallStoreModule.store : null;
+    const row = document.getElementById('account-row');
+    const label = document.getElementById('account-label');
+    const note = document.getElementById('account-note');
+    const button = document.getElementById('account-button');
+    this._skipMastered = document.getElementById('skip-mastered');
+    if (!this.recall || !row) return;
+    this._skipMastered.addEventListener('change', () => {
+      this.recall.enabled = this._skipMastered.checked;
+      this._savePreferences();
+    });
+    this.recall.onUserChange((user) => {
+      row.style.display = 'flex';
+      if (user) {
+        label.textContent = user.label;
+        note.textContent = `${this.recall.masteredCount} names known and syncing to this account.`;
+        button.textContent = 'Sign out';
+      } else {
+        label.textContent = 'Playing as guest';
+        note.textContent = 'Sign in to remember which streets you already know across devices.';
+        button.textContent = 'Sign in';
+      }
+    });
+    button.addEventListener('click', async () => {
+      button.disabled = true;
+      try {
+        if (this.recall.signedIn) await this.recall.signOut();
+        else await this.recall.signIn();
+      } catch (error) {
+        this._routeError.textContent = error.message || 'Could not sign in.';
+      } finally {
+        button.disabled = false;
+      }
+    });
+    this.recall.init().then(() => {
+      if (this.recall.available) row.style.display = 'flex';
+    });
+  }
+
+  // The stable identity a name is scheduled against.
+  _recallFeatureFor(name) {
+    if (!name) return null;
+    const meta = this.osmLoader && this.osmLoader.featureMeta && this.osmLoader.featureMeta.get(name);
+    if (meta) return meta;
+    const bridge = this._pendingBridge && this._pendingBridge.name === name ? this._pendingBridge : null;
+    if (bridge && bridge.labelPoint) return null;   // no stable centre for a bridge yet
+    return null;
+  }
+
   _setupRouteForm() {
     this._routeSetup = document.getElementById('route-setup');
     this._routeForm = document.getElementById('route-card');
@@ -423,6 +477,10 @@ class Game {
       this._treesEnabled.checked = prefs.trees !== false;
       this._detailed3d.checked = prefs.detailed3d === true;
       this._reducedMotion.checked = prefs.reducedMotion === true;
+      if (this._skipMastered) {
+        this._skipMastered.checked = prefs.skipMastered !== false;
+        if (this.recall) this.recall.enabled = this._skipMastered.checked;
+      }
       this.camera.reducedMotion = this._reducedMotion.checked;
       if (Number.isFinite(prefs.zoom)) {
         const migratedZoom = prefs.zoomDefaultVersion !== 2 && prefs.zoom === 0.65 ? CAMERA_ZOOM_INITIAL : prefs.zoom;
@@ -450,6 +508,7 @@ class Game {
       trees: this._treesEnabled ? this._treesEnabled.checked : true,
       detailed3d: this._detailed3d ? this._detailed3d.checked : false,
       reducedMotion: this._reducedMotion ? this._reducedMotion.checked : false,
+      skipMastered: this._skipMastered ? this._skipMastered.checked : true,
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
       zoom: this.camera.zoom,
@@ -687,8 +746,8 @@ class Game {
     return home;
   }
 
-  async _startConfiguredRoute() {
-    this._routeRerolls = 0;
+  async _startConfiguredRoute({ isReroll = false } = {}) {
+    if (!isReroll) this._routeRerolls = 0;
     this._routeError.textContent = '';
     this.routePattern = this._routePattern.value;
     if (this.routePattern === 'home') {
@@ -752,6 +811,12 @@ class Game {
     if (!hit) return null;
     const chosen = shortlist[hit.index];
     return { poi: chosen.poi, finish: chosen.point, path: hit.path };
+  }
+
+  _isRecallMastered(name) {
+    if (!this.recall || !this.recall.enabled) return false;
+    const feature = this._recallFeatureFor(name);
+    return !!feature && this.recall.isMastered(feature);
   }
 
   // A bridge named correctly keeps its label, the same way a learned waterway
@@ -1133,7 +1198,7 @@ class Game {
           // no path.
           this._routeRerolls++;
           console.info(`Re-rolling: ${this.routeFrom.name} is not connected to the rest of the network`);
-          this._startSurpriseRoute();
+          this._startConfiguredRoute({ isReroll: true });
           return;
         } else {
           console.warn('Route not found between start and finish — route line will not display');
@@ -1391,6 +1456,15 @@ class Game {
 
   _updateCanalQuiz(dt) {
     const name = this.track.getRoadName(this.player.x, this.player.y);
+    // A name the player has already proved they know is adopted silently
+    // instead of being asked again until it falls due.
+    if (name && name !== this.quizCurrentName && this._isRecallMastered(name)) {
+      this.quizCurrentName = name;
+      this.learnedNames.add(name);
+      this.quizCandidateName = '';
+      this.quizCandidateTimer = 0;
+      return;
+    }
     if (!name || name === this.quizCurrentName) {
       this.quizCandidateName = '';
       this.quizCandidateTimer = 0;
@@ -1592,6 +1666,10 @@ class Game {
       this.quizCurrentName = correctName;
     } else if (correct && this._pendingBridge) {
       this._learnedBridges.set(this._pendingBridge.id, this._pendingBridge);
+    }
+    if (this.recall) {
+      const feature = this._recallFeatureFor(correctName);
+      if (feature) this.recall.record(feature, correct);
     }
     this._pendingBridge = null;
     this.quizPromptKind = 'route';

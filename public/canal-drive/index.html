@@ -39,6 +39,8 @@ canvas { display: block; position: relative; z-index: 2; }
 .setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .setup-field { display: flex; flex-direction: column; gap: 6px; color: #bae6fd; font-size: 12px; }
 .setup-field select, .setup-field input[type="text"] { width: 100%; padding: 10px; border-radius: 8px; color: white; background: #0f3447; border: 1px solid #39738d; }
+.account-button { padding: 7px 14px; border: 1px solid #38bdf8; border-radius: 8px; background: rgba(56,189,248,.14); color: #e0f2fe; font: inherit; font-size: 12px; cursor: pointer; }
+.account-button:hover { background: rgba(56,189,248,.26); }
 .canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: rgba(255,255,255,.18); font-size: 11px; font-weight: bold; }
 .assist-options { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; color: #e0f2fe; font-size: 13px; }
 .assist-options label { display: flex; align-items: center; gap: 6px; }
@@ -100,6 +102,8 @@ canvas { display: block; position: relative; z-index: 2; }
       <input id="home-address" type="text" autocomplete="street-address" placeholder="Street and number, Amsterdam">
       <span style="font-size:11px;color:#7dd3fc">Saved on this device. Boat routes snap your address to nearby water.</span>
     </label>
+    <div id="account-row" class="master-toggle" style="display:none"><span style="flex:1"><strong id="account-label">Playing as guest</strong><small id="account-note">Sign in to remember which streets you already know across devices.</small></span><button id="account-button" type="button" class="account-button">Sign in</button></div>
+    <label class="master-toggle"><input id="skip-mastered" type="checkbox" checked><span><strong>Skip streets I know</strong><small>Names you have answered correctly stop coming up until they are due for review again.</small></span></label>
     <label class="master-toggle"><input id="gamey-features" type="checkbox" checked><span><strong>Game-y features</strong><small>Recall streaks, combo multipliers, points, and route ribbons. Turn off for a calm navigation-and-recall trip. Difficulty and navigation aids are unaffected.</small></span></label>
     <details class="advanced-options"><summary>⚙ Advanced options</summary>
       <div class="setup-grid">
@@ -168,6 +172,7 @@ canvas { display: block; position: relative; z-index: 2; }
 <script src="js/loading-screen.js"></script>
 <script src="js/car-road-guard.bundle.js"></script>
 <script src="js/building-style.bundle.js"></script>
+<script src="js/recall-store.bundle.js"></script>
 <script src="js/street-overlay-style.bundle.js"></script>
 <script src="js/detailed-buildings.bundle.js"></script>
 <script src="js/vector-map.js"></script>
