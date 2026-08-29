@@ -55,6 +55,8 @@ const ROUTE_POI_CATALOG_URL = '../data/extracts/amsterdam/landmarks.json';
 const BRIDGE_QUIZ_RADIUS = 40;
 // How many nearby stand-in destinations to try before giving up on routing.
 const RETARGET_ATTEMPTS = 25;
+// A stranded origin is re-rolled at most this many times before we accept it.
+const MAX_ROUTE_REROLLS = 2;
 
 const CANAL_PREFS_KEY = 'canalRecall.preferences.v1';
 const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v2';
@@ -105,6 +107,7 @@ class Game {
     // Grows once the landmark extract loads; see _loadRoutePoiCatalog.
     this.routePois = [...CANAL_ROUTE_POIS];
     this.bridges = [];
+    this._routeRerolls = 0;
     this.quizPromptKind = 'route';
     this._quizzedBridges = new Set();
     this.routePattern = 'surprise';
@@ -280,10 +283,14 @@ class Game {
       if (matchedLandmark) {
         nearest = matchedLandmark;
       } else {
+        // Anonymous vector-tile footprints are useful geometry, not useful
+        // content. Do not interrupt the player with an "Unnamed building"
+        // card; only show unmatched buildings that actually have a name.
+        if (!buildingName) return;
         nearest = {
           id: `clicked-${building.id || building.lngLat.join('-')}`,
-          name: buildingName || 'Unnamed building',
-          detail: buildingName ? 'Mapped building — click nearby landmarks to learn more.' : 'This building has no name in OpenStreetMap yet.',
+          name: buildingName,
+          detail: 'Mapped building — click nearby landmarks to learn more.',
           lngLat: building.lngLat,
         };
       }
@@ -657,6 +664,7 @@ class Game {
   }
 
   async _startConfiguredRoute() {
+    this._routeRerolls = 0;
     this._routeError.textContent = '';
     this.routePattern = this._routePattern.value;
     if (this.routePattern === 'home') {
@@ -686,6 +694,19 @@ class Game {
     return pool[Math.floor(Math.random() * pool.length)];
   }
 
+  // Nearest POI to `target` that actually snaps onto the mapped network.
+  _nearestSnappableDestination(target, segments, centreLat, centreLng, snapLimit, excludeId = null) {
+    const ranked = this.routePois
+      .filter(poi => poi.id !== excludeId && Number.isFinite(poi.lat))
+      .map(poi => ({ poi, km: Game._kmBetween(poi, target) }))
+      .sort((a, b) => a.km - b.km);
+    for (const entry of ranked.slice(0, RETARGET_ATTEMPTS)) {
+      const point = this.osmLoader.latLngToGamePoint(entry.poi.lat, entry.poi.lng, centreLat, centreLng, segments, snapLimit);
+      if (point) return { poi: entry.poi, point };
+    }
+    return null;
+  }
+
   // Closest reachable stand-in for an unroutable destination, chosen from the
   // same POI pool and scored by how near it is to the original.
   _retargetToReachableDestination(start, originalFinish, segments, centreLat, centreLng) {
@@ -699,11 +720,14 @@ class Game {
       .filter(Boolean)
       .filter(entry => dist(entry.point.x, entry.point.y, start.x, start.y) >= MIN_START_FINISH_DIST)
       .sort((a, b) => a.gap - b.gap);
-    for (const entry of ranked.slice(0, RETARGET_ATTEMPTS)) {
-      const path = this.track.findRoute(start, entry.point);
-      if (path && path.length >= 2) return { poi: entry.poi, finish: entry.point, path };
-    }
-    return null;
+    // One Dijkstra covers the whole graph, so there is no reason to cap how
+    // many candidates are tested for reachability — only the snap-distance
+    // search above is expensive per candidate.
+    const shortlist = ranked;
+    const hit = this.track.findRouteToFirstReachable(start, shortlist.map(entry => entry.point));
+    if (!hit) return null;
+    const chosen = shortlist[hit.index];
+    return { poi: chosen.poi, finish: chosen.point, path: hit.path };
   }
 
   // Great-circle-ish distance in km; fine at city scale.
@@ -944,6 +968,27 @@ class Game {
         const finishSnapLimit = this.routeTo && this.routeTo.id === 'home' ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
         start = this.osmLoader.latLngToGamePoint(startLL.lat, startLL.lng, lat, lng, segments, startSnapLimit);
         finish = this.osmLoader.latLngToGamePoint(finishLL.lat, finishLL.lng, lat, lng, segments, finishSnapLimit);
+        // Not every landmark in the extract sits within snapping range of a
+        // mapped waterway or street. Rather than bouncing the player back to
+        // the setup screen, swap in the nearest destination that does snap.
+        if (!start && this.routeFrom && this.routeFrom.id !== 'home') {
+          const swap = this._nearestSnappableDestination(startLL, segments, lat, lng, startSnapLimit, this.routeTo?.id);
+          if (swap) {
+            start = swap.point;
+            this.routeFrom = swap.poi;
+            startLL = { lat: swap.poi.lat, lng: swap.poi.lng };
+            console.info(`Origin swapped to ${swap.poi.name}: the original did not snap to the network`);
+          }
+        }
+        if (!finish && this.routeTo && this.routeTo.id !== 'home') {
+          const swap = this._nearestSnappableDestination(finishLL, segments, lat, lng, finishSnapLimit, this.routeFrom?.id);
+          if (swap) {
+            finish = swap.point;
+            this.routeTo = swap.poi;
+            finishLL = { lat: swap.poi.lat, lng: swap.poi.lng };
+            console.info(`Destination swapped to ${swap.poi.name}: the original did not snap to the network`);
+          }
+        }
       } else {
         const result = this.osmLoader.findStartFinish(segments);
         start = result.start;
@@ -997,6 +1042,15 @@ class Game {
           this.track.finishPoint = finish;
           this.routePath = retarget.path;
           console.info(`Destination retargeted to ${retarget.poi.name}: the original was unreachable from the start`);
+        } else if (this.routePattern === 'surprise' && this._routeRerolls < MAX_ROUTE_REROLLS) {
+          // Nothing in the pool is reachable, so the *origin* is stranded in a
+          // disconnected component — most often a Noord canal cut off from the
+          // centre by the IJ. Re-roll the pair rather than play a route with
+          // no path.
+          this._routeRerolls++;
+          console.info(`Re-rolling: ${this.routeFrom.name} is not connected to the rest of the network`);
+          this._startSurpriseRoute();
+          return;
         } else {
           console.warn('Route not found between start and finish — route line will not display');
         }
@@ -1584,8 +1638,13 @@ class Game {
     this.hud.drawSpeedometer(ctx, this.player.speed, this.player.maxSpeed);
     this.hud.drawOdometer(ctx, this.player.distancePx);
     this.hud.drawCanalScore(ctx, this.quizCorrect, this.quizAttempts, this.quizPoints, this.quizFeedback, this.quizStreak, this.gameyFeatures);
-    const visibleRouteName = this.quizPromptName ? '' : this.track.getRoadName(this.player.x, this.player.y);
-    this.hud.drawCurrentLocation(ctx, visibleRouteName, this.currentNeighborhood, this.travelMode, !!this.quizPromptName);
+    // Hide a new route name from the first candidate frame, not only after
+    // the delayed question opens. Otherwise the HUD reveals the answer during
+    // the 650 ms turn-confirmation window.
+    const routeAnswerHidden = !!this.quizPromptName
+      || (!!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName);
+    const visibleRouteName = routeAnswerHidden ? '' : this.track.getRoadName(this.player.x, this.player.y);
+    this.hud.drawCurrentLocation(ctx, visibleRouteName, this.currentNeighborhood, this.travelMode, routeAnswerHidden);
     this.hud.drawDestination(ctx, this.routeTo.name, this.track.getDistanceToFinish(this.player.x, this.player.y));
 
     if (this.routeOptions.arrow) {
