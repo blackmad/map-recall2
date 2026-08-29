@@ -29,6 +29,19 @@ test('a clean first launch stays in Amsterdam and starts from the local extract'
   expect(overpassRequests).toBe(0);
 });
 
+test('legacy zero-coordinate URLs heal back to Amsterdam without Overpass', async ({ page }) => {
+  let overpassRequests = 0;
+  await page.route(/overpass/i, (route) => {
+    overpassRequests += 1;
+    return route.abort();
+  });
+  await quietExternalRequests(page);
+  await page.goto('/?city=my_location&lat=0.000000&lon=0.000000&place=Bookmarked+location&category=water');
+  await expect(page.locator('#target-feature-name')).toBeVisible();
+  expect(new URL(page.url()).searchParams.get('city')).toBe('amsterdam');
+  expect(overpassRequests).toBe(0);
+});
+
 test('Amsterdam uses the local extract and never contacts Overpass', async ({ page }) => {
   let overpassRequests = 0;
   await page.route(/overpass/i, (route) => {

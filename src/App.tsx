@@ -48,6 +48,12 @@ const hasBookmarkedCoordinates = bookmarkedLatitudeParam !== null && bookmarkedL
   && Number.isFinite(bookmarkedLatitude) && Number.isFinite(bookmarkedLongitude)
   && bookmarkedLatitude >= -90 && bookmarkedLatitude <= 90
   && bookmarkedLongitude >= -180 && bookmarkedLongitude <= 180;
+const requestedCityId = urlParams.get('city');
+const hasUsableBookmarkedLocation = hasBookmarkedCoordinates
+  && !(requestedCityId === 'my_location'
+    && bookmarkedLatitude === 0
+    && bookmarkedLongitude === 0
+    && urlParams.get('place') === 'Bookmarked location');
 const bookmarkedAreaId = numberParam('area', 0, 1, Number.MAX_SAFE_INTEGER) || null;
 
 const pointInAreaGeometry = (point: [number, number], geometry?: [number, number][][][]) => {
@@ -74,9 +80,11 @@ export default function App() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [reviewStates, setReviewStates] = useState<ReviewState[]>(loadLocalReviewStates);
   // Config state - Label-less base map by default
-  const initialCityId = urlParams.get('city') || (hasBookmarkedCoordinates ? 'my_location' : 'amsterdam');
+  const initialCityId = requestedCityId === 'my_location' && !hasUsableBookmarkedLocation
+    ? 'amsterdam'
+    : requestedCityId || (hasUsableBookmarkedLocation ? 'my_location' : 'amsterdam');
   const [currentCityId, setCurrentCityId] = useState<string>(initialCityId);
-  const [customLocationCity, setCustomLocationCity] = useState<City | null>(() => hasBookmarkedCoordinates ? {
+  const [customLocationCity, setCustomLocationCity] = useState<City | null>(() => hasUsableBookmarkedLocation ? {
     id: 'my_location',
     name: urlParams.get('place') || 'Bookmarked location',
     country: '',
