@@ -1,7 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
-import { User, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
-import { GoogleAuthProvider } from 'firebase/auth';
-import { auth, isFirebaseConfigured } from './firebase';
+import type { User } from 'firebase/auth';
+import { isFirebaseConfigured } from './firebaseConfig';
 
 interface AuthContextValue {
   user: User | null;
@@ -20,11 +19,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(isFirebaseConfigured);
 
   useEffect(() => {
-    if (!auth) return setLoading(false);
-    return onAuthStateChanged(auth, (nextUser) => {
-      setUser(nextUser);
-      setLoading(false);
-    });
+    if (!isFirebaseConfigured) return setLoading(false);
+    let unsubscribe: (() => void) | undefined;
+    let active = true;
+    Promise.all([import('./firebase'), import('firebase/auth')]).then(([{ auth }, { onAuthStateChanged }]) => {
+      if (!active || !auth) return setLoading(false);
+      unsubscribe = onAuthStateChanged(auth, (nextUser) => {
+        setUser(nextUser);
+        setLoading(false);
+      });
+    }).catch(() => setLoading(false));
+    return () => {
+      active = false;
+      unsubscribe?.();
+    };
   }, []);
 
   const value = useMemo<AuthContextValue>(() => ({
@@ -32,18 +40,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     loading,
     configured: isFirebaseConfigured,
     signInWithGoogle: async () => {
+      const [{ auth }, { GoogleAuthProvider, signInWithPopup }] = await Promise.all([import('./firebase'), import('firebase/auth')]);
       if (!auth) throw new Error('Firebase is not configured.');
       await signInWithPopup(auth, new GoogleAuthProvider());
     },
     signInWithEmail: async (email, password) => {
+      const [{ auth }, { signInWithEmailAndPassword }] = await Promise.all([import('./firebase'), import('firebase/auth')]);
       if (!auth) throw new Error('Firebase is not configured.');
       await signInWithEmailAndPassword(auth, email, password);
     },
     createAccount: async (email, password) => {
+      const [{ auth }, { createUserWithEmailAndPassword }] = await Promise.all([import('./firebase'), import('firebase/auth')]);
       if (!auth) throw new Error('Firebase is not configured.');
       await createUserWithEmailAndPassword(auth, email, password);
     },
     signOutUser: async () => {
+      const [{ auth }, { signOut }] = await Promise.all([import('./firebase'), import('firebase/auth')]);
       if (auth) await signOut(auth);
     },
   }), [loading, user]);

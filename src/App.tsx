@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
+import { lazy, Suspense, useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import {
   GameMode,
   StreetFeature,
@@ -24,13 +24,14 @@ import { MapComponent } from './components/MapComponent';
 import { PinpointModeOverlay } from './components/PinpointModeOverlay';
 import { GuessNameModeOverlay } from './components/GuessNameModeOverlay';
 import { GameOverSummary } from './components/GameOverSummary';
-import { SettingsModal } from './components/SettingsModal';
 import { LoadingProgressModal } from './components/LoadingProgressModal';
-import { DebugPlacesModal } from './components/DebugPlacesModal';
-import { AuthModal } from './components/AuthModal';
 import { useAuth } from './AuthContext';
 import { loadLocalReviewStates, recordReview, syncProgress } from './progressRepository';
 import { ReviewState, selectReviewFeatures } from './spacedRepetition';
+
+const SettingsModal = lazy(() => import('./components/SettingsModal').then(({ SettingsModal }) => ({ default: SettingsModal })));
+const DebugPlacesModal = lazy(() => import('./components/DebugPlacesModal').then(({ DebugPlacesModal }) => ({ default: DebugPlacesModal })));
+const AuthModal = lazy(() => import('./components/AuthModal').then(({ AuthModal }) => ({ default: AuthModal })));
 
 const urlParams = new URLSearchParams(window.location.search);
 const validValue = <T extends string>(value: string | null, options: readonly T[], fallback: T): T =>
@@ -944,8 +945,9 @@ export default function App() {
       </main>
 
       {/* Settings Modal Dialog */}
-      <SettingsModal
-        isOpen={isSettingsOpen}
+      <Suspense fallback={null}>
+      {isSettingsOpen && <SettingsModal
+        isOpen
         onClose={() => setIsSettingsOpen(false)}
         currentCity={currentCity}
         selectedCategory={selectedCategory}
@@ -970,11 +972,11 @@ export default function App() {
         administrativeAreas={administrativeAreas}
         selectedAdministrativeAreaId={selectedAdministrativeAreaId}
         onSelectAdministrativeArea={handleSelectAdministrativeArea}
-      />
+      />}
 
       {/* Debug Loaded Places Modal Dialog */}
-      <DebugPlacesModal
-        isOpen={isDebugPlacesOpen}
+      {isDebugPlacesOpen && <DebugPlacesModal
+        isOpen
         onClose={() => setIsDebugPlacesOpen(false)}
         currentCity={currentCity}
         selectedCategory={selectedCategory}
@@ -985,8 +987,9 @@ export default function App() {
         isLocating={isLocating}
         showSearchBoundary={showSearchBoundary}
         onToggleSearchBoundary={() => setShowSearchBoundary((prev) => !prev)}
-      />
+      />}
       {isAuthOpen && <AuthModal onClose={() => setIsAuthOpen(false)} />}
+      </Suspense>
     </div>
   );
 }

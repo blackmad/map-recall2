@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { useAuth } from '../AuthContext';
 
@@ -9,6 +9,12 @@ export function AuthModal({ onClose }: { onClose: () => void }) {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => event.key === 'Escape' && onClose();
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [onClose]);
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
@@ -26,9 +32,9 @@ export function AuthModal({ onClose }: { onClose: () => void }) {
   };
 
   return <div className="fixed inset-0 z-[80] bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
-    <div className="app-dialog w-full max-w-sm p-5" onClick={(event) => event.stopPropagation()}>
+    <div className="app-dialog w-full max-w-sm p-5" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title" onClick={(event) => event.stopPropagation()}>
       <div className="flex items-center justify-between mb-4">
-        <div><h2 className="font-bold text-white">{creating ? 'Create account' : 'Sign in'}</h2><p className="text-xs text-slate-400">Optional: sync progress across devices. Guest play always works.</p></div>
+        <div><h2 id="auth-modal-title" className="font-bold text-white">{creating ? 'Create account' : 'Sign in'}</h2><p className="text-xs text-slate-400">Optional: sync progress across devices. Guest play always works.</p></div>
         <button onClick={onClose} className="p-1 text-slate-400 hover:text-white"><X className="w-4 h-4" /></button>
       </div>
       <button disabled={busy} onClick={async () => { setBusy(true); setError(null); try { await signInWithGoogle(); onClose(); } catch (reason) { setError(reason instanceof Error ? reason.message : 'Could not sign in.'); } finally { setBusy(false); } }} className="w-full rounded-xl bg-white py-2.5 text-sm font-bold text-slate-900 disabled:opacity-50">Continue with Google</button>

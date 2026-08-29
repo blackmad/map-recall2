@@ -95,6 +95,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
       <div
         id="settings-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="settings-modal-title"
         className="app-dialog w-full max-w-lg p-5 sm:p-6 space-y-5 max-h-[90vh] overflow-y-auto"
       >
         {/* Header */}
@@ -103,7 +106,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="w-8 h-8 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
               <Layers className="w-4 h-4" />
             </div>
-            <h3 className="text-lg font-bold text-white">Quiz & Map Configuration</h3>
+            <h3 id="settings-modal-title" className="text-lg font-bold text-white">Quiz & Map Configuration</h3>
           </div>
 
           <button

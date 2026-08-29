@@ -1,6 +1,4 @@
-import { User } from 'firebase/auth';
-import { collection, doc, getDocs, writeBatch } from 'firebase/firestore';
-import { db } from './firebase';
+import type { User } from 'firebase/auth';
 import { ReviewEvent, ReviewState, scheduleReview } from './spacedRepetition';
 import { RoundResult } from './types';
 import { getFeatureKey } from './utils/featureIdentity';
@@ -39,6 +37,7 @@ export async function recordReview(result: RoundResult, user: User | null): Prom
 const withoutUndefined = <T,>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
 
 async function uploadReview(uid: string, event: ReviewEvent, state: ReviewState) {
+  const [{ db }, { doc, writeBatch }] = await Promise.all([import('./firebase'), import('firebase/firestore')]);
   if (!db) return;
   const batch = writeBatch(db);
   batch.set(doc(db, 'users', uid, 'reviewEvents', event.id), withoutUndefined(event));
@@ -48,6 +47,7 @@ async function uploadReview(uid: string, event: ReviewEvent, state: ReviewState)
 
 /** Merge cloud state locally, then upload guest progress on first sign-in. */
 export async function syncProgress(user: User): Promise<ReviewState[]> {
+  const [{ db }, { collection, doc, getDocs, writeBatch }] = await Promise.all([import('./firebase'), import('firebase/firestore')]);
   if (!db) return loadLocalReviewStates();
   const localStates = read<Record<string, ReviewState>>(STATES_KEY, {});
   const cloudSnapshot = await getDocs(collection(db, 'users', user.uid, 'reviewStates'));
