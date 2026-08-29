@@ -63,7 +63,12 @@ class Car {
     this.speed = clamp(this.speed, CAR_REVERSE_MAX, this.maxSpeed);
 
     // steering
-    const speedFactor = clamp(Math.abs(this.speed) / SPEED_FACTOR_DIVISOR, this.isBoat ? 0.28 : 0, 1);
+    // Toy physics, not vehicle simulation: a car floored at 0 could not turn at
+    // all while stopped, so pulling away from a kerb or lining up a junction
+    // meant rolling forward first. Cars keep most of their steering authority
+    // at a standstill; boats still need way on to answer the helm.
+    const steerFloor = this.isBoat ? 0.28 : CAR_MIN_STEER_FACTOR;
+    const speedFactor = clamp(Math.abs(this.speed) / SPEED_FACTOR_DIVISOR, steerFloor, 1);
     let effectiveTurn = this.turnRate * (1 - Math.abs(this.speed) / this.maxSpeed * TURN_REDUCTION_AT_SPEED);
     if (this.isBoat && this.speed < 0) effectiveTurn *= 1.18;
     if (this.handbrake) effectiveTurn *= HANDBRAKE_TURN_MULT;
