@@ -19,9 +19,6 @@ const MATERIAL_COLORS: Record<string, string> = {
   mud: '#9d8b75', glass: '#5a81a0', masonry: '#bd8161', traditional: '#bd8161',
 };
 
-// Evidence-backed fallbacks used only when a vector tile omitted OSM colour.
-const LANDMARK_COLORS: Record<string, string> = { NEMO: '#43888b', 'NEMO Science Museum': '#43888b' };
-
 export function buildingColorExpression(theme: CanalTheme | string): MapLibreExpression | string {
   const selectedTheme = theme in THEME_DEFAULTS ? theme as CanalTheme : 'clean';
   if (selectedTheme === 'cyberpunk') return THEME_DEFAULTS.cyberpunk;
@@ -34,15 +31,11 @@ export function buildingColorExpression(theme: CanalTheme | string): MapLibreExp
   const materialMatch: unknown[] = ['match', ['downcase', ['coalesce', ['get', 'material'], '']]];
   for (const [material, color] of Object.entries(MATERIAL_COLORS)) materialMatch.push(material, color);
   materialMatch.push(heightFallback);
-  const landmarkMatch: unknown[] = ['match', ['coalesce', ['get', 'name'], '']];
-  for (const [name, color] of Object.entries(LANDMARK_COLORS)) landmarkMatch.push(name, color);
-  landmarkMatch.push(materialMatch);
-
   return [
     'case',
     ['has', 'colour'], ['get', 'colour'],
     ['has', 'color'], ['get', 'color'],
-    landmarkMatch,
+    materialMatch,
   ];
 }
 
