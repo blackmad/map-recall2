@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amsterdam Canal Recall</title>
+<link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; position: relative; }
+canvas { display: block; position: relative; z-index: 2; }
+#vector-map { position: fixed; z-index: 1; pointer-events: none; }
+#map-container { border-radius: 0; }
+#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(3,18,28,.72); z-index: 20; font-family: ui-monospace, monospace; }
+#canal-card { width: min(92vw, 520px); background: #071e2b; color: white; border: 2px solid #38bdf8; border-radius: 18px; padding: 28px; box-shadow: 0 24px 80px rgba(0,0,0,.55); }
+#canal-card h2 { color: #7dd3fc; margin-bottom: 8px; }
+#canal-card p { color: #bae6fd; margin-bottom: 18px; }
+#canal-answer { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid #38bdf8; font: 18px ui-monospace, monospace; margin-bottom: 12px; }
+#canal-submit { width: 100%; padding: 12px; border: 0; border-radius: 10px; background: #0284c7; color: white; font-weight: 800; cursor: pointer; }
+#canal-feedback { min-height: 22px; margin-top: 12px; font-weight: 700; }
+#canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.canal-choice { padding: 12px 8px; border-radius: 10px; border: 1px solid #38bdf8; color: #e0f2fe; background: #0c4a6e; cursor: pointer; font-weight: 700; }
+#route-setup { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; background: rgba(3,18,28,.9); color: white; font-family: ui-monospace, monospace; }
+#route-card { width: min(94vw, 640px); max-height: 94vh; overflow: auto; padding: 28px; border: 2px solid #38bdf8; border-radius: 18px; background: #071e2b; box-shadow: 0 24px 80px rgba(0,0,0,.6); }
+#route-card h1 { color: #7dd3fc; margin-bottom: 5px; }
+#route-card .lede { color: #bae6fd; margin-bottom: 22px; }
+.setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.setup-field { display: flex; flex-direction: column; gap: 6px; color: #bae6fd; font-size: 12px; }
+.setup-field select { width: 100%; padding: 10px; border-radius: 8px; color: white; background: #0f3447; border: 1px solid #39738d; }
+.assist-options { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; color: #e0f2fe; font-size: 13px; }
+.assist-options label { display: flex; align-items: center; gap: 6px; }
+.utility-panel { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; background: rgba(3,18,28,.78); color: white; font-family: ui-monospace, monospace; }
+.utility-card { width: min(92vw, 520px); padding: 25px; border: 2px solid #38bdf8; border-radius: 16px; background: #071e2b; }
+.utility-card h2 { color: #7dd3fc; margin-bottom: 16px; }
+.utility-card table { width: 100%; border-collapse: collapse; }
+.utility-card td { padding: 6px; border-bottom: 1px solid #164e63; }
+.utility-card td:first-child { width: 80px; color: #facc15; font-weight: bold; }
+.utility-close { width: 100%; margin-top: 18px; padding: 10px; border: 0; border-radius: 8px; background: #0284c7; color: white; font-weight: bold; }
+#utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 12; display: flex; gap: 8px; }
+#utility-buttons button { width: 38px; height: 38px; border: 1px solid #7dd3fc; border-radius: 10px; background: rgba(3,18,28,.78); color: white; font-size: 18px; cursor: pointer; }
+#route-start { width: 100%; padding: 13px; border: 0; border-radius: 10px; background: #0284c7; color: white; font-weight: 900; cursor: pointer; font-size: 16px; }
+#route-error { color: #fbbf24; min-height: 20px; margin-top: 10px; }
+#prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; color: #334155; font: 11px system-ui, sans-serif; background: rgba(255,255,255,.82); padding: 5px 8px; border-radius: 6px; }
+#prototype-links a { color: #0369a1; }
+@media (max-width: 620px) { .setup-grid { grid-template-columns: 1fr; } #route-card { padding: 20px; } #canal-choices { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div id="vector-map"></div>
+<canvas id="gameCanvas"></canvas>
+<div id="route-setup">
+  <form id="route-card">
+    <h1>Amsterdam Canal Recall</h1>
+    <p class="lede">Navigate between important places and name the waterways as you turn.</p>
+    <div class="setup-grid">
+      <label class="setup-field">FROM<select id="route-from"></select></label>
+      <label class="setup-field">DESTINATION<select id="route-to"></select></label>
+      <label class="setup-field">DIFFICULTY
+        <select id="route-difficulty">
+          <option value="easy">Easy — full navigation help</option>
+          <option value="medium" selected>Medium — GPS-like</option>
+          <option value="hard">Hard — sparse help</option>
+          <option value="expert">Expert — memory only</option>
+          <option value="custom">Custom</option>
+        </select>
+      </label>
+      <label class="setup-field">ANSWERS
+        <select id="answer-mode"><option value="multiple" selected>Multiple choice</option><option value="typing">Type the name</option></select>
+      </label>
+      <label class="setup-field">TRAVEL MODE
+        <select id="travel-mode"><option value="boat" selected>Boat — waterways</option><option value="car">Car — streets</option></select>
+      </label>
+    </div>
+    <div class="assist-options">
+      <label><input id="assist-line" type="checkbox"> Route line</label>
+      <label><input id="assist-arrow" type="checkbox" checked> Destination arrow</label>
+      <label><input id="assist-minimap" type="checkbox" checked> Minimap</label>
+      <label><input id="camera-north" type="checkbox" checked> North is up</label>
+    </div>
+    <button id="route-start" type="submit">Start route</button>
+    <div id="route-error" aria-live="polite"></div>
+  </form>
+</div>
+<div id="utility-buttons"><button id="open-settings" title="Settings (G)">⚙</button><button id="open-help" title="Keyboard shortcuts (?)">?</button></div>
+<div id="help-panel" class="utility-panel"><div class="utility-card">
+  <h2>Keyboard shortcuts</h2>
+  <table><tr><td>Arrows</td><td>Steer and accelerate/brake</td></tr><tr><td>Space</td><td>Handbrake</td></tr><tr><td>M / Tab</td><td>Toggle minimap</td></tr><tr><td>L</td><td>Toggle route line</td></tr><tr><td>A</td><td>Toggle destination arrow</td></tr><tr><td>O</td><td>Toggle north-up / heading-up</td></tr><tr><td>G</td><td>Settings</td></tr><tr><td>N</td><td>Sound</td></tr><tr><td>P / Esc</td><td>Pause</td></tr><tr><td>− / +</td><td>Zoom</td></tr></table>
+  <button class="utility-close" type="button">Close</button>
+</div></div>
+<div id="settings-panel" class="utility-panel"><div class="utility-card">
+  <h2>Navigation settings</h2>
+  <div class="assist-options"><label><input id="live-line" type="checkbox"> Route line</label><label><input id="live-arrow" type="checkbox"> Destination arrow</label><label><input id="live-minimap" type="checkbox"> Minimap</label><label><input id="live-north" type="checkbox"> North is up</label></div>
+  <button class="utility-close" type="button">Done</button>
+</div></div>
+<div id="canal-prompt">
+  <form id="canal-card">
+    <h2>You made a turn</h2>
+    <p>Which waterway are you on now?</p>
+    <input id="canal-answer" autocomplete="off" autocapitalize="words" aria-label="Waterway name">
+    <div id="canal-choices"></div>
+    <button id="canal-submit" type="submit">Submit answer</button>
+    <div id="canal-feedback" aria-live="polite"></div>
+  </form>
+</div>
+<div id="prototype-links"><a href="../">← Map Recall</a> · Adapted from <a href="https://github.com/a1anw2/smokeysandthebandit">Smokey’s</a> (GPL-3.0) · © OpenStreetMap contributors © CARTO</div>
+
+<!-- Constants & Utilities (no dependencies) -->
+<script src="js/constants.js"></script>
+<script src="js/utils.js"></script>
+
+<!-- Core Systems (depend on constants/utils) -->
+<script src="js/input.js"></script>
+<script src="js/track.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/sound.js"></script>
+
+<!-- Cars (depend on constants/utils) -->
+<script src="js/car.js"></script>
+<script src="js/player.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/police.js"></script>
+<script src="js/traffic.js"></script>
+
+<!-- Rendering (depends on constants/utils) -->
+<script src="js/renderer.js"></script>
+<script src="js/hud.js"></script>
+
+<!-- OSM / Road Network (depends on constants/utils) -->
+<script src="js/osm-loader.js"></script>
+<script src="js/road-network.js"></script>
+<script src="js/map-picker.js"></script>
+<script src="js/loading-screen.js"></script>
+<script src="js/vector-map.js"></script>
+
+<!-- Game (depends on everything above) -->
+<script src="js/game.js"></script>
+</body>
+</html>
