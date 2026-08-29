@@ -114,6 +114,8 @@ class Game {
     this._visitedNeighborhoods = new Set();
     this._seenLandmarkNames = new Set();
     this._explorationSnapshot = null;
+    this._debugMode = false;
+    this._recenterBtnBounds = null;
     this._landmarkNotice = null;
     this._landmarkNoticeTimer = 0;
     this._landmarkNoticeDuration = 6;
@@ -208,7 +210,20 @@ class Game {
       lastX = event.clientX; lastY = event.clientY;
     });
     this.canvas.addEventListener('pointerup', event => {
-      if (dragging && !moved) this._inspectBuildingAt(event.clientX, event.clientY);
+      if (dragging && !moved) {
+        const rect = this.canvas.getBoundingClientRect();
+        const sx = (event.clientX - rect.left) * CANVAS_W / rect.width;
+        const sy = (event.clientY - rect.top) * CANVAS_H / rect.height;
+        if (this._recenterBtnBounds) {
+          const b = this._recenterBtnBounds;
+          if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
+            this.camera.resetPan();
+            dragging = false;
+            return;
+          }
+        }
+        this._inspectBuildingAt(event.clientX, event.clientY);
+      }
       dragging = false;
     });
   }
@@ -407,6 +422,70 @@ class Game {
     this.sound.setEnabled(enabled);
     if (this._soundEnabled) this._soundEnabled.checked = enabled;
     if (this._liveSound) this._liveSound.checked = enabled;
+  }
+
+  _toggleDebug() {
+    this._debugMode = !this._debugMode;
+  }
+
+  _renderDebug() {
+    const ctx = this.ctx;
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,0.75)';
+    const panelW = 300, panelH = CANVAS_H - 40;
+    roundRect(ctx, CANVAS_W - panelW - 10, 20, panelW, panelH, 8);
+    ctx.fill();
+    ctx.fillStyle = '#38BDF8';
+    ctx.font = 'bold 13px monospace';
+    ctx.textAlign = 'left';
+    let y = 42;
+    const x = CANVAS_W - panelW;
+    ctx.fillText('DEBUG  (` to close)', x, y); y += 20;
+    ctx.fillStyle = '#E0F2FE';
+    ctx.font = '11px monospace';
+    if (this.player) {
+      const road = this.track.getNearestRoad(this.player.x, this.player.y);
+      ctx.fillText(`Pos: ${Math.round(this.player.x)}, ${Math.round(this.player.y)}`, x, y); y += 14;
+      ctx.fillText(`Speed: ${Math.round(this.player.speed)} px/s`, x, y); y += 14;
+      ctx.fillText(`Angle: ${(this.player.angle * 180 / Math.PI).toFixed(1)}°`, x, y); y += 14;
+      ctx.fillText(`Road dist: ${road ? road.dist.toFixed(0) : 'N/A'}`, x, y); y += 14;
+      ctx.fillText(`Road name: ${this.track.getRoadName(this.player.x, this.player.y) || '(none)'}`, x, y); y += 14;
+      ctx.fillText(`Surface: ${this.track.getSurface(this.player.x, this.player.y)}`, x, y); y += 14;
+      ctx.fillText(`Neighborhood: ${this.currentNeighborhood || '(none)'}`, x, y); y += 14;
+      ctx.fillText(`Route path: ${this.routePath ? this.routePath.length + ' pts' : 'none'}`, x, y); y += 14;
+      ctx.fillText(`Camera pan: ${Math.round(this.camera.panX)}, ${Math.round(this.camera.panY)}`, x, y); y += 14;
+    }
+    y += 6;
+    ctx.fillStyle = '#FACC15';
+    ctx.font = 'bold 12px monospace';
+    ctx.fillText('ROUTE', x, y); y += 16;
+    ctx.fillStyle = '#E0F2FE';
+    ctx.font = '11px monospace';
+    if (this.routeFrom) ctx.fillText(`From: ${this.routeFrom.name || '?'}`, x, y);
+    y += 14;
+    if (this.routeTo) ctx.fillText(`To: ${this.routeTo.name || '?'}`, x, y);
+    y += 20;
+    ctx.fillStyle = '#FACC15';
+    ctx.font = 'bold 12px monospace';
+    ctx.fillText('DESTINATIONS IN POOL', x, y); y += 16;
+    ctx.fillStyle = '#E0F2FE';
+    ctx.font = '10px monospace';
+    if (this.track && this.track.segments) {
+      const names = new Set();
+      for (const seg of this.track.segments) {
+        if (seg.name) names.add(seg.name);
+      }
+      const sorted = [...names].sort();
+      const maxShow = Math.floor((CANVAS_H - y - 30) / 12);
+      for (let i = 0; i < Math.min(sorted.length, maxShow); i++) {
+        ctx.fillText(sorted[i], x, y);
+        y += 12;
+      }
+      if (sorted.length > maxShow) {
+        ctx.fillText(`... +${sorted.length - maxShow} more`, x, y);
+      }
+    }
+    ctx.restore();
   }
 
   _toggleUtilityPanel(panel) {
@@ -914,6 +993,8 @@ class Game {
     if (this.input.wasPressed('KeyF')) this.routeOptions.arrow = !this.routeOptions.arrow;
     if (this.input.wasPressed('KeyO')) this.camera.northUp = !this.camera.northUp;
     if (this.input.wasPressed('KeyN')) { this._setSoundEnabled(this.sound.muted); this._savePreferences(); }
+    if (this.input.wasPressed('KeyD')) this.vectorMap.toggleLabels();
+    if (this.input.wasPressed('Backquote')) this._toggleDebug();
     if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) this.camera.zoomOut();
     if (this.input.isDown('Equal') || this.input.isDown('NumpadAdd')) this.camera.zoomIn();
     if (this.input.isDown('KeyI')) this.camera.pan(0, -8);
@@ -1458,12 +1539,38 @@ class Game {
       ctx.fillText(`${zoomPct}%`, CANVAS_W/2, CANVAS_H - 20);
     }
 
+    // Re-center button when camera is panned away
+    const panDist = Math.hypot(this.camera.panX, this.camera.panY);
+    if (panDist > 40) {
+      const btnW = 110, btnH = 28;
+      const btnX = CANVAS_W / 2 - btnW / 2, btnY = 70;
+      ctx.fillStyle = 'rgba(3,18,28,0.85)';
+      roundRect(ctx, btnX, btnY, btnW, btnH, 6);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(56,189,248,0.6)';
+      ctx.lineWidth = 1;
+      roundRect(ctx, btnX, btnY, btnW, btnH, 6);
+      ctx.stroke();
+      ctx.fillStyle = '#38BDF8';
+      ctx.font = 'bold 11px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('RE-CENTER (R)', CANVAS_W / 2, btnY + 18);
+      this._recenterBtnBounds = { x: btnX, y: btnY, w: btnW, h: btnH };
+    } else {
+      this._recenterBtnBounds = null;
+    }
+
+    // Debug overlay
+    if (this._debugMode) {
+      this._renderDebug();
+    }
+
     // controls hint
     ctx.fillStyle = 'rgba(255,255,255,0.3)';
     ctx.font = '10px monospace';
     ctx.textAlign = 'left';
     if (!this.input.isMobile) {
-      ctx.fillText('?: help  G: settings  M: map  O: north  P: pause', 10, 20);
+      ctx.fillText('?: help  G: settings  M: map  O: north  D: labels  P: pause', 10, 20);
     }
 
     // Touch control zones hint (mobile, first 5 seconds of race)
