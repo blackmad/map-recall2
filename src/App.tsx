@@ -40,9 +40,12 @@ const numberParam = (name: string, fallback: number, minimum: number, maximum: n
   const value = Number(urlParams.get(name));
   return Number.isFinite(value) && value >= minimum && value <= maximum ? value : fallback;
 };
-const bookmarkedLatitude = Number(urlParams.get('lat'));
-const bookmarkedLongitude = Number(urlParams.get('lon'));
-const hasBookmarkedCoordinates = Number.isFinite(bookmarkedLatitude) && Number.isFinite(bookmarkedLongitude)
+const bookmarkedLatitudeParam = urlParams.get('lat');
+const bookmarkedLongitudeParam = urlParams.get('lon');
+const bookmarkedLatitude = bookmarkedLatitudeParam === null ? Number.NaN : Number(bookmarkedLatitudeParam);
+const bookmarkedLongitude = bookmarkedLongitudeParam === null ? Number.NaN : Number(bookmarkedLongitudeParam);
+const hasBookmarkedCoordinates = bookmarkedLatitudeParam !== null && bookmarkedLongitudeParam !== null
+  && Number.isFinite(bookmarkedLatitude) && Number.isFinite(bookmarkedLongitude)
   && bookmarkedLatitude >= -90 && bookmarkedLatitude <= 90
   && bookmarkedLongitude >= -180 && bookmarkedLongitude <= 180;
 const bookmarkedAreaId = numberParam('area', 0, 1, Number.MAX_SAFE_INTEGER) || null;
