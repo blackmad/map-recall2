@@ -9,6 +9,7 @@ class VectorBasemap {
     this.theme = 'clean';
     this._basePaint = new Map();
     this._highlightedBuilding = null;
+    this._pendingTrees = [];
     if (!container || typeof maplibregl === 'undefined') return;
 
     this.map = new maplibregl.Map({
@@ -26,6 +27,7 @@ class VectorBasemap {
       this._captureBasePaint();
       this._ensureRouteLayer();
       this._ensureTreeLayers();
+      this.setTrees(this._pendingTrees);
       this._ensureLandmarkLayers();
       this._styleLandmarks();
       this.ready = true;
@@ -43,22 +45,31 @@ class VectorBasemap {
   _ensureTreeLayers() {
     if (this.map.getSource('amsterdam-trees')) return;
     this.map.addSource('amsterdam-trees', {
-      type: 'vector',
-      tiles: ['https://api.data.amsterdam.nl/v1/mvt/bomen/stamgegevens/{z}/{x}/{y}.pbf'],
-      minzoom: 10,
-      maxzoom: 20,
-      attribution: 'Trees © Gemeente Amsterdam'
+      type: 'geojson',
+      data: { type: 'FeatureCollection', features: [] },
+      attribution: 'Trees © OpenStreetMap contributors'
     });
     const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
     const shared = { 'circle-pitch-alignment': 'map', 'circle-pitch-scale': 'map' };
     this.map.addLayer({
-      id: 'tree-trunks', type: 'circle', source: 'amsterdam-trees', 'source-layer': 'stamgegevens', minzoom: 15,
+      id: 'tree-trunks', type: 'circle', source: 'amsterdam-trees', minzoom: 15,
       paint: { ...shared, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 15, 1, 19, 4], 'circle-color': '#775438', 'circle-opacity': 0.9 }
     }, before);
     this.map.addLayer({
-      id: 'tree-crowns', type: 'circle', source: 'amsterdam-trees', 'source-layer': 'stamgegevens', minzoom: 15,
+      id: 'tree-crowns', type: 'circle', source: 'amsterdam-trees', minzoom: 15,
       paint: { ...shared, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 15, 2.4, 19, 11], 'circle-color': '#4F8A48', 'circle-stroke-color': '#315D31', 'circle-stroke-width': 1, 'circle-opacity': 0.86 }
     }, before);
+  }
+
+  setTrees(trees) {
+    this._pendingTrees = trees || [];
+    if (!this.map) return;
+    const source = this.map.getSource('amsterdam-trees');
+    if (!source) return;
+    source.setData({
+      type: 'FeatureCollection',
+      features: this._pendingTrees.map(tree => ({ type: 'Feature', properties: { id: tree.id, species: tree.species || '' }, geometry: { type: 'Point', coordinates: [tree.lng, tree.lat] } }))
+    });
   }
 
   setTreesVisible(visible) {

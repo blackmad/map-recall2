@@ -1578,12 +1578,14 @@ class Game {
 
   async _loadLandmarks(centerLat, centerLng, segments) {
     try {
-      const [landmarkResponse, boundaryResponse] = await Promise.all([
+      const [landmarkResponse, boundaryResponse, treeResponse] = await Promise.all([
         fetch(new URL('../data/extracts/amsterdam/landmarks.json', window.location.href)),
-        fetch(new URL('../data/extracts/amsterdam/boundaries.json', window.location.href))
+        fetch(new URL('../data/extracts/amsterdam/boundaries.json', window.location.href)),
+        fetch(new URL('../data/extracts/amsterdam/trees.json', window.location.href))
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
-      const [features, boundaries] = await Promise.all([landmarkResponse.json(), boundaryResponse.json()]);
+      const [features, boundaries, trees] = await Promise.all([landmarkResponse.json(), boundaryResponse.json(), treeResponse.ok ? treeResponse.json() : []]);
+      this.vectorMap.setTrees(trees);
       this.landmarks = features.map(feature => {
         const center = feature.center || (feature.path && feature.path[0]);
         if (!center) return null;
