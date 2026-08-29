@@ -76,7 +76,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
   }, [isRoundComplete, onNextRound, onSelectGuess, options]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 sm:p-4 z-20">
+    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-4 sm:p-4 z-20">
       {/* UNIFIED BOTTOM CARD: QUESTION + MULTIPLE CHOICE OPTIONS */}
       <div className="pointer-events-auto w-full max-w-xl mx-auto">
         {!isRoundComplete ? (

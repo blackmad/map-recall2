@@ -108,7 +108,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   }, [isRoundComplete, onNextRound, onConfirmGuess, userPinnedLocation]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 sm:p-4 z-20">
+    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-4 sm:p-4 z-20">
       {/* UNIFIED BOTTOM CARD: QUESTION + CLUES + PIN STATUS + SUBMIT CTA */}
       <div className="pointer-events-auto w-full max-w-xl mx-auto">
         {!isRoundComplete ? (

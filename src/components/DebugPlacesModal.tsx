@@ -179,6 +179,9 @@ export const DebugPlacesModal: React.FC<DebugPlacesModalProps> = ({
     >
       <div
         id="debug-places-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="debug-places-modal-title"
         className="w-full max-w-5xl bg-slate-900 text-slate-100 rounded-2xl shadow-2xl border border-slate-700/80 flex flex-col max-h-[92vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
@@ -190,7 +193,7 @@ export const DebugPlacesModal: React.FC<DebugPlacesModalProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-base sm:text-lg font-bold text-white">Debug & Overpass Inspector</h2>
+                <h2 id="debug-places-modal-title" className="text-base sm:text-lg font-bold text-white">Debug & Overpass Inspector</h2>
                 <span className="px-2 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                   {currentCity.name}
                 </span>
