@@ -281,7 +281,8 @@ class Renderer {
 
     ctx.save();
     ctx.translate(s.x, s.y);
-    ctx.scale(z, z);
+    const boatVisualScale = 1.35;
+    ctx.scale(z * boatVisualScale, z * boatVisualScale);
     ctx.rotate(car.angle - camera.rotation);
     ctx.fillStyle = 'rgba(0,0,0,.25)';
     ctx.beginPath();

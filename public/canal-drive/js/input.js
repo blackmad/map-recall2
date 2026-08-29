@@ -12,11 +12,17 @@ class InputManager {
 
     // Keyboard input
     window.addEventListener('keydown', e => {
+      const target = e.target;
+      if (target instanceof HTMLElement && (target.matches('input, textarea, select, button') || target.isContentEditable)) return;
       if (!this.keys[e.code]) this.justPressed[e.code] = true;
       this.keys[e.code] = true;
       if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','Enter','Minus','Equal','NumpadAdd','NumpadSubtract','Tab'].includes(e.code)) e.preventDefault();
     });
-    window.addEventListener('keyup', e => { this.keys[e.code] = false; });
+    window.addEventListener('keyup', e => {
+      const target = e.target;
+      if (target instanceof HTMLElement && (target.matches('input, textarea, select, button') || target.isContentEditable)) return;
+      this.keys[e.code] = false;
+    });
 
     // Touch input (mobile)
     if (this._isMobile) {
