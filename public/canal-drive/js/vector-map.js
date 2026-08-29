@@ -25,6 +25,7 @@ class VectorBasemap {
       this._hideLabels();
       this._captureBasePaint();
       this._ensureRouteLayer();
+      this._ensureTreeLayers();
       this._ensureLandmarkLayers();
       this._styleLandmarks();
       this.ready = true;
@@ -37,6 +38,34 @@ class VectorBasemap {
     const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
     this.map.addLayer({ id: 'navigation-route-casing', type: 'line', source: 'navigation-route', layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' }, paint: { 'line-color': 'rgba(3,18,28,.75)', 'line-width': 10 } }, before);
     this.map.addLayer({ id: 'navigation-route-line', type: 'line', source: 'navigation-route', layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' }, paint: { 'line-color': '#38BDF8', 'line-width': 6, 'line-opacity': 0.9 } }, before);
+  }
+
+  _ensureTreeLayers() {
+    if (this.map.getSource('amsterdam-trees')) return;
+    this.map.addSource('amsterdam-trees', {
+      type: 'vector',
+      tiles: ['https://api.data.amsterdam.nl/v1/mvt/bomen/stamgegevens/{z}/{x}/{y}.pbf'],
+      minzoom: 10,
+      maxzoom: 20,
+      attribution: 'Trees © Gemeente Amsterdam'
+    });
+    const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
+    const shared = { 'circle-pitch-alignment': 'map', 'circle-pitch-scale': 'map' };
+    this.map.addLayer({
+      id: 'tree-trunks', type: 'circle', source: 'amsterdam-trees', 'source-layer': 'stamgegevens', minzoom: 15,
+      paint: { ...shared, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 15, 1, 19, 4], 'circle-color': '#775438', 'circle-opacity': 0.9 }
+    }, before);
+    this.map.addLayer({
+      id: 'tree-crowns', type: 'circle', source: 'amsterdam-trees', 'source-layer': 'stamgegevens', minzoom: 15,
+      paint: { ...shared, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 15, 2.4, 19, 11], 'circle-color': '#4F8A48', 'circle-stroke-color': '#315D31', 'circle-stroke-width': 1, 'circle-opacity': 0.86 }
+    }, before);
+  }
+
+  setTreesVisible(visible) {
+    if (!this.map) return;
+    for (const id of ['tree-trunks', 'tree-crowns']) {
+      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');
+    }
   }
 
   setRoute(routePath, loader, visible) {
@@ -194,7 +223,7 @@ class VectorBasemap {
     try {
       if (palette) {
         for (const layer of this.map.getStyle().layers || []) {
-          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('navigation-route')) continue;
+          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('navigation-route') || layer.id.startsWith('tree-')) continue;
           const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
           const isWater = /water|ocean|river|canal/.test(identity);
           const isRoad = /road|street|transportation|bridge|tunnel|path/.test(identity);
@@ -220,6 +249,11 @@ class VectorBasemap {
         'case', ['boolean', ['feature-state', 'highlighted'], false], ['+', ['coalesce', ['get', 'render_height'], ['get', 'height'], 18], 12], ['coalesce', ['get', 'render_height'], ['get', 'height'], 5]
       ]);
       this.map.setPaintProperty('building-3d', 'fill-extrusion-opacity', this.theme === 'cyberpunk' ? 0.98 : 0.9);
+      const treeColors = this.theme === 'cyberpunk' ? ['#6A167A', '#FF2DAA'] : this.theme === 'psx' ? ['#4A4335', '#646B45'] : ['#315D31', '#4F8A48'];
+      if (this.map.getLayer('tree-crowns')) {
+        this.map.setPaintProperty('tree-crowns', 'circle-stroke-color', treeColors[0]);
+        this.map.setPaintProperty('tree-crowns', 'circle-color', treeColors[1]);
+      }
     } catch (_) {}
   }
 }
