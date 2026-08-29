@@ -17,15 +17,15 @@ Active reliability work:
 
 - Refine boat shoreline response and bridge traversal across more route geometries; the current guard rolls the hull inward and preserves canal-tangent movement instead of leaving it stuck against a quay.
 - Continue rejecting distant or ambiguous home-address-to-waterway snaps after exact BAG address resolution.
-- Validate route topology around docks, broad water polygons, bridges, and disconnected OSM path fragments.
+- Validate route topology around docks, broad water polygons, bridges, and disconnected OSM path fragments. Closed water/shore polygon rings are now excluded from the navigable graph; continue auditing named open paths and graph junctions.
 - Replace the placeholder car network with correctly connected, road-snapped routes and starts.
 - Integrate optional detailed 3D building data with OSM extrusions as a dependable fallback.
 
 Next product passes:
 
-- Volumetric instanced OSM trees in 3D, with no trees in 2D.
+- Better 3D OSM trees: replace flat map circles with lightweight instanced trunk/canopy geometry; vary height, crown scale, color, and silhouette deterministically from reusable OSM species/leaf-type tags; add distance-based LOD and culling; keep trees out of 2D mode and avoid obscuring navigation/quiz targets.
 - Geolocated Amsterdam fact ingestion and landmark/building-linked trivia.
-- “Welcome to…” neighborhood postcards, with cached Wikimedia/Wikidata imagery where licensing and source metadata are available and a strong typographic fallback otherwise.
+- **Deferred after core navigation reliability:** “Welcome to…” neighborhood postcards, with cached Wikimedia/Wikidata imagery where licensing and source metadata are available and a strong typographic fallback otherwise.
 - Additional cities backed by cached, versioned extracts.
 - Authentic retro rendering and the optional arcade layer described below.
 

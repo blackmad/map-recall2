@@ -142,7 +142,10 @@ class VectorBasemap {
     if (!feature) return null;
     const lngLat = this.map.unproject(pixel);
     const properties = feature.properties || {};
-    return { id: feature.id, name: properties.name || properties['name:en'] || '', lngLat: [lngLat.lng, lngLat.lat] };
+    const geometry = feature.geometry && ['Polygon', 'MultiPolygon'].includes(feature.geometry.type)
+      ? { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: feature.geometry }] }
+      : { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [lngLat.lng, lngLat.lat] } }] };
+    return { id: feature.id, name: properties.name || properties['name:en'] || '', lngLat: [lngLat.lng, lngLat.lat], geojson: geometry };
   }
 
   setRoute(routePath, loader, visible) {
@@ -206,19 +209,12 @@ class VectorBasemap {
       try { this.map.setFeatureState(this._highlightedBuilding, { highlighted: false }); } catch (_) {}
       this._highlightedBuilding = null;
     }
-    let matchedBuilding = false;
-    if (landmark && landmark.lngLat && this.ready) {
-      const pixel = this.map.project(landmark.lngLat);
-      const candidates = this.map.queryRenderedFeatures([[pixel.x - 28, pixel.y - 28], [pixel.x + 28, pixel.y + 28]], { layers: ['building-3d'] });
-      const feature = candidates.find(candidate => candidate.id != null);
-      if (feature) {
-        this._highlightedBuilding = { source: feature.source, sourceLayer: feature.sourceLayer, id: feature.id };
-        try { this.map.setFeatureState(this._highlightedBuilding, { highlighted: true }); matchedBuilding = true; } catch (_) {}
-      }
-    }
-    // The extrusion is a geometry-changing fallback for tiles without stable
-    // feature IDs; it also makes non-building monuments spatially explicit.
-    source.setData(!matchedBuilding && landmark && landmark.geojson ? landmark.geojson : { type: 'FeatureCollection', features: [] });
+    // Vector-tile feature IDs can repeat between tiles, causing one state
+    // change to recolor many unrelated buildings. Always use an explicit
+    // GeoJSON footprint overlay so only the intended geometry changes.
+    source.setData(landmark && landmark.geojson
+      ? landmark.geojson
+      : { type: 'FeatureCollection', features: [] });
   }
 
   _styleLandmarks() {

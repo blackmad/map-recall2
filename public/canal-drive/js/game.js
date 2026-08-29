@@ -110,6 +110,7 @@ class Game {
     this._landmarkNotice = null;
     this._landmarkNoticeTimer = 0;
     this._landmarkNoticeDuration = 6;
+    this._blockedBoatFrames = 0;
     this._previousNeighborhood = '';
     this._neighborhoodNotice = '';
     this._neighborhoodNoticeTimer = 0;
@@ -225,7 +226,8 @@ class Game {
         name: building.name || 'Unnamed building',
         detail: building.name ? 'Mapped building — click nearby landmarks to learn more.' : 'This building has no name in OpenStreetMap yet.',
         lngLat: building.lngLat,
-        geojson: { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: building.lngLat } }] }
+        geojson: building.geojson,
+        forceGeometry: true
       };
     }
     this._landmarkNotice = nearest;
@@ -600,6 +602,8 @@ class Game {
     // Player at start
     this.player = new PlayerCar(startX, startY, startAngle);
     this.player.controlMode = this.controlMode;
+    this.player.isBoat = this.travelMode === 'boat';
+    if (this.player.isBoat) this.player.turnRate *= 1.18;
     this.cars.push(this.player);
 
     // Canal Recall intentionally starts with a quiet network: the experiment
@@ -1010,6 +1014,7 @@ class Game {
     this.player.handleInput(this.input);
     this.player.update(dt, this.track);
     if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
+      this._blockedBoatFrames++;
       // Do not let a fast frame step carry the boat across a quay. The old
       // surface correction merely nudged it back toward a centreline, which
       // could leave it visibly embedded in a block.
@@ -1020,7 +1025,8 @@ class Game {
         const inwardX = road.x - this.player.x;
         const inwardY = road.y - this.player.y;
         const inwardDistance = Math.hypot(inwardX, inwardY) || 1;
-        const correction = Math.min(3, inwardDistance);
+        const recovering = this._blockedBoatFrames > 10;
+        const correction = recovering ? inwardDistance : Math.min(3, inwardDistance);
         this.player.x += inwardX / inwardDistance * correction;
         this.player.y += inwardY / inwardDistance * correction;
         const tangentX = Math.cos(road.angle), tangentY = Math.sin(road.angle);
@@ -1031,13 +1037,26 @@ class Game {
         this.player.vx = tangentX * tangentVelocity + inwardUnitX * reflectedInward;
         this.player.vy = tangentY * tangentVelocity + inwardUnitY * reflectedInward;
         const reflectedSpeed = Math.hypot(this.player.vx, this.player.vy);
-        if (reflectedSpeed > 0.1) this.player.angle = Math.atan2(this.player.vy, this.player.vx);
+        if (recovering) {
+          const forwardDot = Math.cos(this.player.angle) * tangentX + Math.sin(this.player.angle) * tangentY;
+          this.player.angle = road.angle + (forwardDot < 0 ? Math.PI : 0);
+          this.player.vx = Math.cos(this.player.angle) * Math.min(reflectedSpeed, 35);
+          this.player.vy = Math.sin(this.player.angle) * Math.min(reflectedSpeed, 35);
+          this._blockedBoatFrames = 0;
+        } else if (reflectedSpeed > 0.1) {
+          const reflectedAngle = Math.atan2(this.player.vy, this.player.vx);
+          const angleDelta = normalizeAngle(reflectedAngle - this.player.angle);
+          const maxDeflection = Math.abs(this.player.speed) > this.player.maxSpeed * 0.6 ? 0.08 : 0.16;
+          this.player.angle += clamp(angleDelta, -maxDeflection, maxDeflection);
+        }
         this.player.speed = Math.min(this.player.maxSpeed, reflectedSpeed);
       } else {
         this.player.speed = 0;
         this.player.vx = 0;
         this.player.vy = 0;
       }
+    } else {
+      this._blockedBoatFrames = 0;
     }
     this._updateCanalQuiz(dt);
 
