@@ -130,6 +130,7 @@ for (const item of source.features) {
       funFact: '', clues: [], distractors: [],
       difficulty: score >= 140 ? 'easy' : score >= 70 ? 'medium' : 'hard',
       wikidata: tags.wikidata, wikipedia: tags.wikipedia, prominenceScore: score,
+      highway: tags.highway,
     },
   });
 }
@@ -158,11 +159,62 @@ for (const feature of neighborhoodSource.features) {
   areas.push(makeArea(feature.properties.name, feature.properties.place || 'neighborhood', polygons, feature.properties.place === 'suburb' ? 9 : 10));
 }
 await writeFile(path.join(outputDirectory, 'boundaries.json'), JSON.stringify(areas));
+// Build a connected street subgraph: keep only streets reachable from the
+// highest-scored street so car-mode routing never hits disconnected segments.
+function selectConnectedStreets(
+  available: { feature: StreetFeature; paths: [number, number][][]; score: number }[],
+  maxCount: number,
+): { feature: StreetFeature; paths: [number, number][][]; score: number }[] {
+  if (available.length === 0) return [];
+  const SNAP_THRESHOLD = 0.0003; // ~33 m in Amsterdam
+  type Endpoint = { lat: number; lon: number; featureIndex: number };
+  const endpoints: Endpoint[] = [];
+  for (let fi = 0; fi < available.length; fi++) {
+    for (const path of available[fi].paths) {
+      if (path.length < 2) continue;
+      endpoints.push({ lat: path[0][0], lon: path[0][1], featureIndex: fi });
+      endpoints.push({ lat: path[path.length - 1][0], lon: path[path.length - 1][1], featureIndex: fi });
+    }
+  }
+  // Build adjacency via endpoint proximity
+  const adjacency = new Map<number, Set<number>>();
+  for (let i = 0; i < available.length; i++) adjacency.set(i, new Set());
+  for (let i = 0; i < endpoints.length; i++) {
+    for (let j = i + 1; j < endpoints.length; j++) {
+      if (endpoints[i].featureIndex === endpoints[j].featureIndex) continue;
+      const dlat = endpoints[i].lat - endpoints[j].lat;
+      const dlon = endpoints[i].lon - endpoints[j].lon;
+      if (Math.abs(dlat) < SNAP_THRESHOLD && Math.abs(dlon) < SNAP_THRESHOLD) {
+        adjacency.get(endpoints[i].featureIndex)!.add(endpoints[j].featureIndex);
+        adjacency.get(endpoints[j].featureIndex)!.add(endpoints[i].featureIndex);
+      }
+    }
+  }
+  // BFS from highest-scored feature to find the connected component
+  const visited = new Set<number>();
+  const queue = [0]; // available is sorted by score desc, so index 0 is highest
+  visited.add(0);
+  while (queue.length > 0) {
+    const current = queue.shift()!;
+    for (const neighbor of adjacency.get(current) || []) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        queue.push(neighbor);
+      }
+    }
+  }
+  const connected = available.filter((_, i) => visited.has(i));
+  const result = connected.slice(0, maxCount);
+  process.stdout.write(`Streets: ${available.length} available, ${connected.length} connected, ${result.length} selected\n`);
+  return result;
+}
+
 const partitions: Record<string, { file: string; count: number; availableCount: number; availableLinkedCount: number; bytes: number; linkedCount: number }> = {};
 const selectedAll: StreetFeature[] = [];
 for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'landmarks'] as FeatureCategory[]) {
   const available = [...grouped.values()].filter((entry) => entry.category === category).sort((a, b) => b.score - a.score);
-  const selected = available.slice(0, maximumPerCategory).map(({ feature, paths, score }) => ({
+  const candidates = category === 'streets' ? selectConnectedStreets(available, maximumPerCategory) : available.slice(0, maximumPerCategory);
+  const selected = candidates.map(({ feature, paths, score }) => ({
     ...feature, path: paths[0], paths: paths.length > 1 ? paths : undefined, prominenceScore: score,
   }));
   for (const feature of selected) {

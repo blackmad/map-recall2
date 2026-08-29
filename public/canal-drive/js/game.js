@@ -66,6 +66,8 @@ class Game {
     this.quizCorrect = 0;
     this.quizAttempts = 0;
     this.quizPoints = 0;
+    this.quizStreak = 0;
+    this.quizBestStreak = 0;
     this.quizFeedback = '';
     this.routeOptions = { ...DIFFICULTY_PRESETS.medium };
     this.travelMode = 'boat';
@@ -104,16 +106,19 @@ class Game {
     this.neighborhoods = [];
     this.currentNeighborhood = '';
     this._previousNeighborhood = '';
-    this._neighborhoodNotice = '';
+    this._neighborhoodNotice = null;
     this._neighborhoodNoticeTimer = 0;
+    this._neighborhoodImages = new Map();
+    this._postcardCanvas = null;
     this._seenLandmarks = new Set();
+    this._visitedNeighborhoods = new Set();
+    this._seenLandmarkNames = new Set();
+    this._explorationSnapshot = null;
     this._landmarkNotice = null;
     this._landmarkNoticeTimer = 0;
     this._landmarkNoticeDuration = 6;
+    this._landmarkImages = new Map();
     this._blockedBoatFrames = 0;
-    this._previousNeighborhood = '';
-    this._neighborhoodNotice = '';
-    this._neighborhoodNoticeTimer = 0;
 
     this._alanLinkBounds = null;
     this._githubLinkBounds = null;
@@ -617,6 +622,8 @@ class Game {
     this.quizCorrect = 0;
     this.quizAttempts = 0;
     this.quizPoints = 0;
+    this.quizStreak = 0;
+    this.quizBestStreak = 0;
     this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';
 
     this.camera.x = this.player.x;
@@ -1013,7 +1020,22 @@ class Game {
     this.sound.resume();
     this.player.handleInput(this.input);
     this.player.update(dt, this.track);
-    if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
+    if (this.travelMode === 'car' && this.track.getSurface(this.player.x, this.player.y) === 'grass') {
+      const road = this.track.getNearestRoad(this.player.x, this.player.y);
+      if (road) {
+        const inwardX = road.x - this.player.x;
+        const inwardY = road.y - this.player.y;
+        const inwardDist = Math.hypot(inwardX, inwardY) || 1;
+        // Steer the car back toward the road center
+        const pullStrength = Math.min(6, inwardDist * 0.15);
+        this.player.x += (inwardX / inwardDist) * pullStrength;
+        this.player.y += (inwardY / inwardDist) * pullStrength;
+        // Heavy braking off-road
+        this.player.speed *= 0.88;
+        this.player.vx *= 0.88;
+        this.player.vy *= 0.88;
+      }
+    } else if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
       this._blockedBoatFrames++;
       // Do not let a fast frame step carry the boat across a quay. The old
       // surface correction merely nudged it back toward a centreline, which
@@ -1091,6 +1113,7 @@ class Game {
       this.state = GameState.FINISHED;
       this.sound.silence();
       this._saveBestTime();
+      this._explorationSnapshot = this._saveExploration();
     } else {
       this.player.finished = false;
     }
@@ -1169,10 +1192,22 @@ class Game {
     this.quizAttempts++;
     if (correct) {
       this.quizCorrect++;
-      this.quizPoints += Math.round(100 * (DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85));
+      this.quizStreak++;
+      if (this.quizStreak > this.quizBestStreak) this.quizBestStreak = this.quizStreak;
+      const base = Math.round(100 * (DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85));
+      const streakMultiplier = 1 + 0.1 * Math.min(this.quizStreak - 1, 9);
+      const earned = Math.round(base * streakMultiplier);
+      this.quizPoints += earned;
       this.learnedNames.add(correctName);
+      if (this.quizStreak >= 2) {
+        this.quizFeedback = `Correct — ${correctName}  (+${earned} pts, ${this.quizStreak}× streak)`;
+      } else {
+        this.quizFeedback = `Correct — ${correctName}  (+${earned} pts)`;
+      }
+    } else {
+      this.quizStreak = 0;
+      this.quizFeedback = `That was ${correctName}`;
     }
-    this.quizFeedback = correct ? `Correct — ${correctName}` : `That was ${correctName}`;
     this._promptFeedback.textContent = this.quizFeedback;
     this._promptFeedback.style.color = correct ? '#4ade80' : '#fbbf24';
     this.quizCurrentName = correctName;
@@ -1375,7 +1410,7 @@ class Game {
     const { sorted, playerPos } = this._getPositions();
     this.hud.drawSpeedometer(ctx, this.player.speed, this.player.maxSpeed);
     this.hud.drawOdometer(ctx, this.player.distancePx);
-    this.hud.drawCanalScore(ctx, this.quizCorrect, this.quizAttempts, this.quizPoints, this.quizFeedback);
+    this.hud.drawCanalScore(ctx, this.quizCorrect, this.quizAttempts, this.quizPoints, this.quizFeedback, this.quizStreak);
     const visibleRouteName = this.quizPromptName ? '' : this.track.getRoadName(this.player.x, this.player.y);
     this.hud.drawCurrentLocation(ctx, visibleRouteName, this.currentNeighborhood, this.travelMode, !!this.quizPromptName);
     this.hud.drawDestination(ctx, this.routeTo.name, this.track.getDistanceToFinish(this.player.x, this.player.y));
@@ -1554,6 +1589,25 @@ class Game {
     ctx.fillStyle = 'rgba(255,255,255,0.3)';
     ctx.font = '11px monospace';
     ctx.fillText(`— ${this._menuQuote.character}`, CANVAS_W/2, CANVAS_H/2 + 107);
+
+    // Exploration badge (if returning player)
+    try {
+      const exp = this._loadExploration();
+      const totalKnown = exp.learnedWaterways.length + exp.learnedStreets.length;
+      if (exp.totalRoutes > 0) {
+        ctx.fillStyle = 'rgba(88,28,135,.3)';
+        roundRect(ctx, cx - 200, CANVAS_H / 2 + 120, 400, 28, 6);
+        ctx.fill();
+        ctx.fillStyle = '#C4B5FD';
+        ctx.font = '11px monospace';
+        ctx.textAlign = 'center';
+        const parts = [];
+        if (totalKnown > 0) parts.push(`${totalKnown} waterways`);
+        if (exp.visitedNeighborhoods.length > 0) parts.push(`${exp.visitedNeighborhoods.length} hoods`);
+        if (exp.seenLandmarks.length > 0) parts.push(`${exp.seenLandmarks.length} landmarks`);
+        ctx.fillText(`Amsterdam: ${parts.join(' · ')} · ${exp.totalRoutes} routes`, cx, CANVAS_H / 2 + 138);
+      }
+    } catch (_) {}
 
     // Animated chase scene at bottom
     const chaseY = CANVAS_H - 130;
@@ -1746,7 +1800,8 @@ class Game {
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
     const cx = CANVAS_W / 2;
-    const cardX = cx - 300, cardY = 90, cardW = 600, cardH = 500;
+    const hasExploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0;
+    const cardX = cx - 300, cardY = hasExploration ? 60 : 90, cardW = 600, cardH = hasExploration ? 600 : 500;
     ctx.fillStyle = 'rgba(3,18,28,.94)';
     roundRect(ctx, cardX, cardY, cardW, cardH, 18);
     ctx.fill();
@@ -1781,13 +1836,16 @@ class Game {
     ctx.fill();
     ctx.fillStyle = '#E0F2FE';
     ctx.font = 'bold 17px monospace';
-    ctx.fillText(`${recallNoun}: ${this.quizCorrect} / ${this.quizAttempts}`, cx, 352);
+    ctx.fillText(`${recallNoun}: ${this.quizCorrect} / ${this.quizAttempts}`, cx, 348);
     ctx.fillStyle = '#FACC15';
     ctx.font = 'bold 22px monospace';
-    ctx.fillText(`${this.quizPoints} points`, cx, 385);
+    ctx.fillText(`${this.quizPoints} points`, cx, 380);
+    const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
     ctx.fillStyle = '#94A3B8';
     ctx.font = '12px monospace';
-    ctx.fillText(`${this.routeDifficulty.toUpperCase()} · ${this.travelMode.toUpperCase()} · ${this.viewMode.replace('-', ' ').toUpperCase()}`, cx, 411);
+    const streakText = this.quizBestStreak >= 2 ? ` · Best streak: ${this.quizBestStreak}` : '';
+    ctx.fillText(`${accuracy}% accuracy${streakText}`, cx, 400);
+    ctx.fillText(`${this.routeDifficulty.toUpperCase()} · ${this.travelMode.toUpperCase()} · ${this.viewMode.replace('-', ' ').toUpperCase()}`, cx, 418);
 
     let bestText = '';
     if (this._raceKey) {
@@ -1802,13 +1860,42 @@ class Game {
     ctx.font = 'bold 16px monospace';
     ctx.fillText(bestText, cx, 458);
 
+    // Exploration collection summary
+    if (hasExploration) {
+      const exp = this._explorationSnapshot;
+      const totalKnown = exp.learnedWaterways.length + exp.learnedStreets.length;
+      ctx.fillStyle = 'rgba(88,28,135,.25)';
+      roundRect(ctx, cx - 235, 475, 470, 58, 8);
+      ctx.fill();
+      ctx.fillStyle = '#C4B5FD';
+      ctx.font = 'bold 11px monospace';
+      ctx.fillText('CITY KNOWLEDGE', cx, 494);
+      ctx.fillStyle = '#E0E7FF';
+      ctx.font = '12px monospace';
+      const parts = [];
+      if (totalKnown > 0) parts.push(`${totalKnown} waterways`);
+      if (exp.visitedNeighborhoods.length > 0) parts.push(`${exp.visitedNeighborhoods.length} neighborhoods`);
+      if (exp.seenLandmarks.length > 0) parts.push(`${exp.seenLandmarks.length} landmarks`);
+      ctx.fillText(parts.join(' · ') || 'Start exploring!', cx, 516);
+      const newThisRoute = [];
+      if (this.learnedNames.size > 0) newThisRoute.push(`${this.learnedNames.size} names`);
+      if (this._visitedNeighborhoods.size > 0) newThisRoute.push(`${this._visitedNeighborhoods.size} neighborhoods`);
+      if (this._seenLandmarkNames.size > 0) newThisRoute.push(`${this._seenLandmarkNames.size} landmarks`);
+      if (newThisRoute.length > 0) {
+        ctx.fillStyle = '#A78BFA';
+        ctx.font = '11px monospace';
+        ctx.fillText(`+${newThisRoute.join(', +')} this route`, cx, 530);
+      }
+    }
+
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 16px monospace';
-    ctx.fillText('ENTER  Try again     ESC  Choose route', cx, 515);
+    const controlsY = hasExploration ? 570 : 515;
+    ctx.fillText('ENTER  Try again     ESC  Choose route', cx, controlsY);
     if (this._shareUrl) {
       ctx.fillStyle = this._copiedTimer > 0 ? '#4ADE80' : '#94A3B8';
       ctx.font = '13px monospace';
-      ctx.fillText(this._copiedTimer > 0 ? 'Race link copied' : 'C  Copy race link', cx, 550);
+      ctx.fillText(this._copiedTimer > 0 ? 'Race link copied' : 'C  Copy race link', cx, controlsY + 30);
     }
   }
 
@@ -1816,13 +1903,20 @@ class Game {
 
   async _loadLandmarks(centerLat, centerLng, segments) {
     try {
-      const [landmarkResponse, boundaryResponse, treeResponse] = await Promise.all([
+      const [landmarkResponse, boundaryResponse, treeResponse, neighborhoodEnrichedResponse] = await Promise.all([
         fetch(new URL('../data/extracts/amsterdam/landmarks.json', window.location.href)),
         fetch(new URL('../data/extracts/amsterdam/boundaries.json', window.location.href)),
-        fetch(new URL('../data/extracts/amsterdam/trees.json', window.location.href))
+        fetch(new URL('../data/extracts/amsterdam/trees.json', window.location.href)),
+        fetch(new URL('../data/extracts/amsterdam/neighborhoods-enriched.json', window.location.href))
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
-      const [features, boundaries, trees] = await Promise.all([landmarkResponse.json(), boundaryResponse.json(), treeResponse.ok ? treeResponse.json() : []]);
+      const [features, boundaries, trees, neighborhoodEnriched] = await Promise.all([
+        landmarkResponse.json(), boundaryResponse.json(),
+        treeResponse.ok ? treeResponse.json() : [],
+        neighborhoodEnrichedResponse.ok ? neighborhoodEnrichedResponse.json() : []
+      ]);
+      const neighborhoodData = new Map();
+      for (const entry of neighborhoodEnriched) neighborhoodData.set(entry.name, entry);
       this.vectorMap.setTrees(trees);
       this.vectorMap.setPlaces(features, boundaries);
       this.landmarks = features.map(feature => {
@@ -1839,18 +1933,45 @@ class Game {
           return { type: 'Feature', properties: {}, geometry: closed ? { type: 'Polygon', coordinates: [coordinates] } : { type: 'LineString', coordinates } };
         });
         if (!geometryFeatures.length) geometryFeatures.push({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [center[1], center[0]] } });
-        return { id: feature.id, name: feature.name, x: point.x, y: point.y, lngLat: [center[1], center[0]], detail: detail.split(/(?<=[.!?])\s/)[0].slice(0, 150), geojson: { type: 'FeatureCollection', features: geometryFeatures } };
+        const shortDetail = detail.split(/(?<=[.!?])\s/)[0].slice(0, 150);
+        const longDetail = detail.split(/(?<=[.!?])\s/).slice(0, 3).join(' ').slice(0, 280);
+        return { id: feature.id, name: feature.name, type: feature.type || '', imageUrl: feature.wikipediaImageUrl || '', x: point.x, y: point.y, lngLat: [center[1], center[0]], detail: shortDetail, longDetail, prominenceScore: feature.prominenceScore || 0, geojson: { type: 'FeatureCollection', features: geometryFeatures } };
       }).filter(Boolean);
+      // Preload images for top landmarks by prominence (non-blocking)
+      this._landmarkImages = new Map();
+      const topLandmarks = [...this.landmarks].sort((a, b) => b.prominenceScore - a.prominenceScore).slice(0, 50);
+      for (const lm of topLandmarks) {
+        if (!lm.imageUrl) continue;
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => this._landmarkImages.set(lm.id, img);
+        img.src = lm.imageUrl;
+      }
       const metersPerDegreeLat = 111320;
       const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
       const toWorld = ([lat, lng]) => ({
         x: (lng - centerLng) * metersPerDegreeLng * PIXELS_PER_METER + this.osmLoader._lastOffsetX,
         y: -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this.osmLoader._lastOffsetY
       });
-      this.neighborhoods = boundaries.filter(boundary => boundary.kind === 'neighbourhood' && boundary.geometry).map(boundary => ({
-        name: boundary.name,
-        rings: boundary.geometry.map(polygon => (polygon[0] || []).map(toWorld)).filter(ring => ring.length > 2)
-      }));
+      this.neighborhoods = boundaries.filter(boundary => boundary.kind === 'neighbourhood' && boundary.geometry).map(boundary => {
+        const enriched = neighborhoodData.get(boundary.name) || {};
+        return {
+          name: boundary.name,
+          rings: boundary.geometry.map(polygon => (polygon[0] || []).map(toWorld)).filter(ring => ring.length > 2),
+          wikipediaExtract: enriched.wikipediaExtract || '',
+          imageUrl: enriched.imageUrl || '',
+          imageAttribution: enriched.imageAttribution || '',
+        };
+      });
+      // Preload neighborhood images (non-blocking)
+      this._neighborhoodImages = new Map();
+      for (const hood of this.neighborhoods) {
+        if (!hood.imageUrl) continue;
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => this._neighborhoodImages.set(hood.name, img);
+        img.src = hood.imageUrl;
+      }
     } catch (error) {
       console.warn('Landmark notes unavailable:', error);
       this.landmarks = [];
@@ -1872,12 +1993,14 @@ class Game {
         break;
       }
     }
+    if (this.currentNeighborhood) this._visitedNeighborhoods.add(this.currentNeighborhood);
     if (!this._previousNeighborhood) {
       this._previousNeighborhood = this.currentNeighborhood;
     } else if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
       this._previousNeighborhood = this.currentNeighborhood;
-      this._neighborhoodNotice = this.currentNeighborhood;
-      this._neighborhoodNoticeTimer = 4.5;
+      const hoodData = this.neighborhoods.find(n => n.name === this.currentNeighborhood);
+      this._neighborhoodNotice = hoodData || { name: this.currentNeighborhood };
+      this._neighborhoodNoticeTimer = 5.5;
     }
     if (this._landmarkNotice) return;
     let nearest = null;
@@ -1889,6 +2012,7 @@ class Game {
     }
     if (nearest) {
       this._seenLandmarks.add(nearest.id);
+      this._seenLandmarkNames.add(nearest.name);
       this._landmarkNotice = nearest;
       this._landmarkNoticeTimer = 6;
       this._landmarkNoticeDuration = 6;
@@ -1909,43 +2033,262 @@ class Game {
     if (!this._landmarkNotice) return;
     const ctx = this.ctx;
     const alpha = Math.min(1, this._landmarkNoticeTimer, this._landmarkNoticeDuration - this._landmarkNoticeTimer);
+    if (alpha <= 0) return;
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
-    ctx.fillStyle = 'rgba(3,18,28,.88)';
-    roundRect(ctx, CANVAS_W / 2 - 245, 78, 490, this._landmarkNotice.detail ? 58 : 40, 8);
+
+    const lm = this._landmarkNotice;
+    const img = this._landmarkImages && this._landmarkImages.get(lm.id);
+    const hasImage = img && img.complete && img.naturalWidth > 0;
+    const text = lm.longDetail || lm.detail || '';
+    const category = lm.type ? lm.type.toUpperCase() : '';
+
+    // Card dimensions
+    const cardW = 480, imgW = hasImage ? 90 : 0, imgH = 110;
+    const textPadL = hasImage ? imgW + 20 : 16;
+    const cardH = hasImage ? Math.max(130, imgH + 20) : (text ? 80 : 50);
+    const cardX = CANVAS_W / 2 - cardW / 2, cardY = 70;
+
+    // Background
+    ctx.fillStyle = 'rgba(3,18,28,.92)';
+    roundRect(ctx, cardX, cardY, cardW, cardH, 10);
     ctx.fill();
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#FACC15';
-    ctx.font = 'bold 14px monospace';
-    ctx.fillText(`LANDMARK: ${this._landmarkNotice.name}`, CANVAS_W / 2, 101);
-    if (this._landmarkNotice.detail) {
-      ctx.fillStyle = '#E0F2FE';
-      ctx.font = '11px monospace';
-      const note = this._landmarkNotice.detail.length > 72 ? `${this._landmarkNotice.detail.slice(0, 69)}…` : this._landmarkNotice.detail;
-      ctx.fillText(note, CANVAS_W / 2, 122);
+    ctx.strokeStyle = 'rgba(250,204,21,.35)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Image thumbnail (left side, cover-cropped)
+    if (hasImage) {
+      const ix = cardX + 10, iy = cardY + 10, iw = imgW, ih = imgH;
+      ctx.save();
+      roundRect(ctx, ix, iy, iw, ih, 6);
+      ctx.clip();
+      const aspect = img.naturalWidth / img.naturalHeight;
+      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
+      const targetAspect = iw / ih;
+      if (aspect > targetAspect) {
+        sw = img.naturalHeight * targetAspect;
+        sx = (img.naturalWidth - sw) / 2;
+      } else {
+        sh = img.naturalWidth / targetAspect;
+        sy = (img.naturalHeight - sh) / 2;
+      }
+      ctx.drawImage(img, sx, sy, sw, sh, ix, iy, iw, ih);
+      ctx.restore();
     }
+
+    // Category badge
+    const textX = cardX + textPadL;
+    let textY = cardY + 22;
+    if (category) {
+      ctx.font = 'bold 9px monospace';
+      const badgeW = ctx.measureText(category).width + 10;
+      ctx.fillStyle = 'rgba(250,204,21,.2)';
+      roundRect(ctx, textX, textY - 9, badgeW, 14, 3);
+      ctx.fill();
+      ctx.fillStyle = '#FACC15';
+      ctx.textAlign = 'left';
+      ctx.fillText(category, textX + 5, textY);
+      textY += 17;
+    }
+
+    // Name
+    ctx.fillStyle = '#FACC15';
+    ctx.font = 'bold 15px monospace';
+    ctx.textAlign = 'left';
+    const maxNameW = cardW - textPadL - 16;
+    let displayName = lm.name;
+    if (ctx.measureText(displayName).width > maxNameW) {
+      while (ctx.measureText(displayName + '…').width > maxNameW && displayName.length > 10) displayName = displayName.slice(0, -1);
+      displayName += '…';
+    }
+    ctx.fillText(displayName, textX, textY);
+    textY += 18;
+
+    // Multi-line detail text
+    if (text) {
+      ctx.fillStyle = '#CBD5E1';
+      ctx.font = '11px monospace';
+      const maxW = cardW - textPadL - 16;
+      const words = text.split(' ');
+      let line = '';
+      let lines = 0;
+      const maxLines = hasImage ? 4 : 2;
+      for (const word of words) {
+        const test = line ? `${line} ${word}` : word;
+        if (ctx.measureText(test).width > maxW && line) {
+          ctx.fillText(line, textX, textY);
+          textY += 14;
+          lines++;
+          if (lines >= maxLines) { line = ''; break; }
+          line = word;
+        } else {
+          line = test;
+        }
+      }
+      if (line && lines < maxLines) ctx.fillText(line, textX, textY);
+    }
+
     ctx.restore();
   }
 
   _renderNeighborhoodNotice() {
     if (!this._neighborhoodNotice || this._neighborhoodNoticeTimer <= 0) return;
     const ctx = this.ctx;
-    const alpha = Math.min(1, this._neighborhoodNoticeTimer, 4.5 - this._neighborhoodNoticeTimer);
+    const duration = 5.5;
+    const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);
+    if (alpha <= 0) return;
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
-    ctx.fillStyle = 'rgba(7,30,43,.92)';
-    roundRect(ctx, CANVAS_W / 2 - 190, CANVAS_H - 132, 380, 62, 12);
+
+    const hood = this._neighborhoodNotice;
+    const img = this._neighborhoodImages && this._neighborhoodImages.get(hood.name);
+    const hasImage = img && img.complete && img.naturalWidth > 0;
+
+    // Slide-up entrance
+    const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.35);
+    const eased = 1 - Math.pow(1 - slideT, 3);
+    const slideOffset = (1 - eased) * 40;
+
+    const cardW = 460, cardH = 190;
+    const cardX = CANVAS_W / 2 - cardW / 2;
+    const cardY = CANVAS_H - cardH - 24 + slideOffset;
+
+    // Deterministic warm hue from neighborhood name
+    let hash = 0;
+    for (let i = 0; i < hood.name.length; i++) hash = ((hash << 5) - hash + hood.name.charCodeAt(i)) | 0;
+    const hue = ((hash % 360) + 360) % 360;
+
+    // Postcard background with warm gradient
+    const grad = ctx.createLinearGradient(cardX, cardY, cardX + cardW, cardY + cardH);
+    grad.addColorStop(0, `hsl(${hue}, 55%, 35%)`);
+    grad.addColorStop(0.5, `hsl(${(hue + 20) % 360}, 60%, 42%)`);
+    grad.addColorStop(1, `hsl(${(hue + 40) % 360}, 50%, 30%)`);
+    ctx.fillStyle = grad;
+    roundRect(ctx, cardX, cardY, cardW, cardH, 10);
     ctx.fill();
-    ctx.strokeStyle = '#A78BFA';
+
+    // Inner border (postcard frame)
+    ctx.strokeStyle = `hsla(${(hue + 30) % 360}, 40%, 75%, 0.6)`;
     ctx.lineWidth = 2;
+    roundRect(ctx, cardX + 6, cardY + 6, cardW - 12, cardH - 12, 6);
     ctx.stroke();
+
+    // Outer border
+    ctx.strokeStyle = `hsla(${hue}, 30%, 20%, 0.8)`;
+    ctx.lineWidth = 3;
+    roundRect(ctx, cardX, cardY, cardW, cardH, 10);
+    ctx.stroke();
+
+    // "Greetings from" script text
+    ctx.fillStyle = `hsla(${(hue + 50) % 360}, 50%, 88%, 0.95)`;
+    ctx.font = 'italic 18px Georgia, serif';
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#C4B5FD';
-    ctx.font = 'bold 11px monospace';
-    ctx.fillText('ENTERING NEIGHBORHOOD', CANVAS_W / 2, CANVAS_H - 108);
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 19px monospace';
-    ctx.fillText(this._neighborhoodNotice, CANVAS_W / 2, CANVAS_H - 84);
+    ctx.fillText('Greetings from', CANVAS_W / 2, cardY + 36);
+
+    // Large neighborhood name with photo-fill letters
+    const name = hood.name.toUpperCase();
+    // Size the font to fit the card width
+    let fontSize = 52;
+    ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
+    while (ctx.measureText(name).width > cardW - 50 && fontSize > 20) {
+      fontSize -= 2;
+      ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
+    }
+    const nameY = cardY + 50 + fontSize * 0.75;
+
+    if (hasImage) {
+      // Draw text with image fill using offscreen canvas compositing
+      if (!this._postcardCanvas) {
+        this._postcardCanvas = document.createElement('canvas');
+        this._postcardCanvas.width = cardW;
+        this._postcardCanvas.height = fontSize + 10;
+      }
+      const oc = this._postcardCanvas;
+      oc.width = cardW;
+      oc.height = fontSize + 10;
+      const octx = oc.getContext('2d');
+
+      // Draw text as mask
+      octx.clearRect(0, 0, oc.width, oc.height);
+      octx.font = ctx.font;
+      octx.textAlign = 'center';
+      octx.fillStyle = '#FFF';
+      octx.fillText(name, cardW / 2, fontSize);
+
+      // Fill with image (only where text pixels exist)
+      octx.globalCompositeOperation = 'source-in';
+      const aspect = img.naturalWidth / img.naturalHeight;
+      const targetAspect = oc.width / oc.height;
+      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
+      if (aspect > targetAspect) {
+        sw = sh * targetAspect;
+        sx = (img.naturalWidth - sw) / 2;
+      } else {
+        sh = sw / targetAspect;
+        sy = (img.naturalHeight - sh) / 2;
+      }
+      octx.drawImage(img, sx, sy, sw, sh, 0, 0, oc.width, oc.height);
+
+      // Add colored shadow/outline behind text for depth
+      octx.globalCompositeOperation = 'destination-over';
+      octx.fillStyle = `hsl(${hue}, 50%, 22%)`;
+      octx.font = ctx.font;
+      octx.textAlign = 'center';
+      octx.fillText(name, cardW / 2 + 2, fontSize + 2);
+
+      // Draw the composited text onto main canvas
+      ctx.drawImage(oc, cardX, nameY - fontSize);
+
+      // Add a bright outline around the image-filled letters
+      ctx.strokeStyle = `hsla(${(hue + 50) % 360}, 60%, 80%, 0.7)`;
+      ctx.lineWidth = 1.5;
+      ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.strokeText(name, CANVAS_W / 2, nameY);
+    } else {
+      // No image: bold colored letters with 3D shadow effect
+      ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
+      ctx.textAlign = 'center';
+      // Shadow
+      ctx.fillStyle = `hsl(${hue}, 40%, 18%)`;
+      ctx.fillText(name, CANVAS_W / 2 + 2, nameY + 2);
+      // Main text
+      ctx.fillStyle = `hsl(${(hue + 40) % 360}, 60%, 80%)`;
+      ctx.fillText(name, CANVAS_W / 2, nameY);
+      // Highlight stroke
+      ctx.strokeStyle = `hsla(${(hue + 50) % 360}, 50%, 92%, 0.5)`;
+      ctx.lineWidth = 1;
+      ctx.strokeText(name, CANVAS_W / 2, nameY);
+    }
+
+    // Subtitle description (one line)
+    const extract = hood.wikipediaExtract || '';
+    if (extract) {
+      const sentence = extract.split(/(?<=[.!?])\s/)[0].slice(0, 80);
+      ctx.fillStyle = `hsla(${(hue + 50) % 360}, 40%, 88%, 0.85)`;
+      ctx.font = '11px monospace';
+      ctx.textAlign = 'center';
+      const subY = nameY + 18;
+      if (subY < cardY + cardH - 14) ctx.fillText(sentence, CANVAS_W / 2, subY);
+    }
+
+    // Small decorative stamp (bottom-right corner)
+    const stampX = cardX + cardW - 38, stampY = cardY + 10, stampS = 28;
+    ctx.strokeStyle = `hsla(${(hue + 50) % 360}, 30%, 70%, 0.4)`;
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 12; i++) {
+      const angle = (i / 12) * Math.PI * 2;
+      const r = stampS / 2 + (i % 2 === 0 ? 2 : 0);
+      const px = stampX + Math.cos(angle) * r;
+      const py = stampY + stampS / 2 + Math.sin(angle) * r;
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fillStyle = `hsla(${(hue + 50) % 360}, 30%, 70%, 0.15)`;
+    ctx.fill();
+
     ctx.restore();
   }
 
@@ -2167,6 +2510,40 @@ class Game {
         localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(data));
       }
     } catch (e) { console.warn('Could not save best time:', e); }
+  }
+
+  // ---- Exploration collection (persistent across sessions) ----
+
+  _loadExploration() {
+    try {
+      return JSON.parse(localStorage.getItem(EXPLORATION_STORAGE_KEY) || 'null') || {
+        learnedWaterways: [], learnedStreets: [],
+        visitedNeighborhoods: [], seenLandmarks: [],
+        totalRoutes: 0, totalCorrect: 0, totalAttempts: 0,
+      };
+    } catch (_) {
+      return { learnedWaterways: [], learnedStreets: [], visitedNeighborhoods: [], seenLandmarks: [], totalRoutes: 0, totalCorrect: 0, totalAttempts: 0 };
+    }
+  }
+
+  _saveExploration() {
+    try {
+      const data = this._loadExploration();
+      const addUnique = (arr, items) => { const set = new Set(arr); for (const item of items) set.add(item); return [...set]; };
+      const isBoat = this.travelMode === 'boat';
+      if (isBoat) {
+        data.learnedWaterways = addUnique(data.learnedWaterways, this.learnedNames);
+      } else {
+        data.learnedStreets = addUnique(data.learnedStreets, this.learnedNames);
+      }
+      data.visitedNeighborhoods = addUnique(data.visitedNeighborhoods, this._visitedNeighborhoods);
+      data.seenLandmarks = addUnique(data.seenLandmarks, this._seenLandmarkNames);
+      data.totalRoutes++;
+      data.totalCorrect += this.quizCorrect;
+      data.totalAttempts += this.quizAttempts;
+      localStorage.setItem(EXPLORATION_STORAGE_KEY, JSON.stringify(data));
+      return data;
+    } catch (e) { console.warn('Could not save exploration:', e); return null; }
   }
 }
 
