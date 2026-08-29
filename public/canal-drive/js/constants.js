@@ -28,7 +28,6 @@ const CANVAS_W = 1280, CANVAS_H = 720;        // pixels
 
 // --- Legacy (circuit mode — retained for compatibility) ---
 const TOTAL_LAPS = 3;
-const NUM_AI = 4;
 const TRACK_SAMPLES = 1500;
 const TRACK_MODE_CIRCUIT = 'circuit';
 const TRACK_MODE_POINT_TO_POINT = 'point-to-point';
@@ -64,78 +63,6 @@ const CURB_DRAG = 10;                          // px/s² drag on curbs
 const GRASS_GRIP = 0.45;                       // grip multiplier on grass
 const GRASS_DRAG = 80;                         // px/s² drag on grass
 
-// --- Police ---
-const POLICE_SPEED_FACTOR = 0.92;              // fraction of player max speed
-const POLICE_ACCEL = 300;                      // px/s²
-const POLICE_BRAKE = 400;                      // px/s²
-const POLICE_TURN_RATE = 2.8;                  // rad/s
-const POLICE_LOOKAHEAD = 140;                  // px — AI look-ahead distance
-const POLICE_RADAR_RADIUS = 120;               // px — arrest detection zone
-const POLICE_CHASE_RANGE = 1100;               // px — start chasing when player is this close
-const POLICE_GIVE_UP_RANGE = 3500;             // px — stop chasing when player escapes this far
-const POLICE_CRUISE_SPEED = 70;                // px/s — patrol speed when not chasing
-const NUM_POLICE = 15;
-const MIN_POLICE_SPACING = 400;                // px — minimum gap between spawned police
-const MIN_DIST_FROM_START = 600;               // px — no police within this range of start
-const POLICE_CORRIDOR_MAX = 2000;              // px — max perpendicular distance from route line
-const MAX_WARNINGS = 3;                        // strikes before busted
-const POLICE_FREEZE_DURATION = 4;              // seconds — cop stops after issuing warning
-const WARNING_POPUP_DURATION = 2;              // seconds — HUD popup display time
-const WARNING_COOLDOWN = 1;                    // seconds — grace period between warnings
-
-// --- Traffic ---
-const NUM_TRAFFIC = 20;                          // number of civilian traffic cars
-const TRAFFIC_MIN_SPEED = 40;                    // px/s — slowest traffic
-const TRAFFIC_MAX_SPEED = 70;                    // px/s — fastest traffic
-const TRAFFIC_STEER_GAIN = 2.0;                  // steering responsiveness
-const TRAFFIC_STEER_SMOOTH = 0.25;               // exponential smoothing factor
-const MIN_TRAFFIC_SPACING = 200;                 // px — minimum gap between spawned traffic
-const TRAFFIC_COLORS = ['#9E9E9E', '#E0E0E0', '#5C6BC0', '#C62828', '#2E7D32'];
-
-// --- CB Radio ---
-const CB_COOLDOWN = 8;                           // seconds — minimum between messages
-const CB_FADE_IN = 0.3;                          // seconds
-const CB_DISPLAY = 3;                            // seconds message stays fully visible
-const CB_FADE_OUT = 0.5;                         // seconds
-const CB_HIGH_SPEED_THRESHOLD = 0.9;             // fraction of max speed
-const CB_HIGH_SPEED_DURATION = 3;                // seconds at high speed before trigger
-
-const CB_MESSAGES = {
-  race_start: [
-    "Breaker breaker, the Bandit's on the move!",
-    "10-4, good buddy, let's put the hammer down!",
-    "We got ourselves a convoy... well, just you. Go!",
-    "Eastbound and down, loaded up and truckin'!",
-  ],
-  police_approaching: [
-    "You got a Smokey on your tail!",
-    "Bear in the air! Keep your eyes peeled!",
-    "Smokey's comin' in hot, watch yourself!",
-    "We got a bear report — Smokey's on the prowl!",
-  ],
-  warning_received: [
-    "That was close! Watch your mirrors!",
-    "Whoo-ee, you nearly got nabbed there!",
-    "Skin of your teeth, good buddy!",
-    "Smokey almost had ya! Keep movin'!",
-  ],
-  halfway: [
-    "Halfway there, keep the hammer down!",
-    "We're past the halfway mark, good buddy!",
-    "Halfway home — don't let up now!",
-  ],
-  near_finish: [
-    "Almost home free, Bandit!",
-    "You can smell the finish line from here!",
-    "Just a little further, keep it floored!",
-  ],
-  high_speed: [
-    "You're runnin' hot, good buddy!",
-    "Pedal to the metal! That's the way!",
-    "10-4, you're flyin' out there!",
-    "Hot dang, you're movin'!",
-  ],
-};
 
 // --- Camera ---
 const CAMERA_SMOOTHING = 0.07;                 // exponential smoothing (0 = snap, 1 = frozen)
@@ -147,8 +74,6 @@ const CAMERA_LOOKAHEAD = 90;                   // px — camera leads player by 
 
 // --- Game ---
 const COUNTDOWN_TIME = 3.5;                    // seconds
-const AI_STUCK_TIMEOUT = 2;                    // seconds before unstick
-const AI_STUCK_RECOVERY_SPEED = 50;            // px/s
 const OFF_ROAD_CORRECTION = 0.08;              // rad — angle correction per frame
 const COLLISION_PUSH_FACTOR = 0.4;             // push strength multiplier
 const COLLISION_PUSH_MAX = 20;                 // px — max push per frame

@@ -208,58 +208,6 @@ class HUD {
     ctx.fillText(distance, CANVAS_W - 28, 49);
   }
 
-  drawPoliceWarning(ctx, policeCars, playerX, playerY) {
-    // Find nearest chasing police
-    let nearestDist = Infinity;
-    let anyChasing = false;
-    for (const cop of policeCars) {
-      if (!cop.isChasing) continue;
-      anyChasing = true;
-      const dx = cop.x - playerX, dy = cop.y - playerY;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      if (d < nearestDist) nearestDist = d;
-    }
-    if (!anyChasing) return;
-
-    // Warning level based on distance
-    const dangerDist = 300;
-    if (nearestDist > 1200) return; // too far, no warning
-
-    const danger = clamp(1 - nearestDist / dangerDist, 0, 1);
-    const pulse = 0.5 + 0.5 * Math.sin(this._time * 6.67);
-
-    // Screen edge flash when close
-    if (danger > 0.3) {
-      const flash = Math.floor(this._time * 5) % 2;
-      const edgeAlpha = danger * 0.2 * pulse;
-      ctx.fillStyle = flash === 0
-        ? `rgba(33,150,243,${edgeAlpha})`
-        : `rgba(244,67,54,${edgeAlpha})`;
-      // Top edge strip
-      ctx.fillRect(0, 0, CANVAS_W, 4);
-      ctx.fillRect(0, CANVAS_H - 4, CANVAS_W, 4);
-      ctx.fillRect(0, 0, 4, CANVAS_H);
-      ctx.fillRect(CANVAS_W - 4, 0, 4, CANVAS_H);
-    }
-
-    // Warning text
-    const warnX = CANVAS_W / 2;
-    const warnY = 75;
-    const alpha = 0.5 + pulse * 0.5;
-    ctx.font = 'bold 14px monospace';
-    ctx.textAlign = 'center';
-
-    if (nearestDist < 150) {
-      ctx.fillStyle = `rgba(244,67,54,${alpha})`;
-      ctx.fillText('⚠ POLICE ON YOUR TAIL! ⚠', warnX, warnY);
-    } else if (nearestDist < 500) {
-      ctx.fillStyle = `rgba(255,193,7,${alpha})`;
-      ctx.fillText('⚠ POLICE APPROACHING', warnX, warnY);
-    } else {
-      ctx.fillStyle = `rgba(255,255,255,${alpha * 0.5})`;
-      ctx.fillText('POLICE ALERT', warnX, warnY);
-    }
-  }
 
   drawStreetName(ctx, name) {
     if (!name) return;
@@ -435,37 +383,14 @@ class HUD {
     for (let i = 0; i < cars.length; i++) {
       const car = cars[i];
       const sx = car.x * scale + ox, sy = car.y * scale + oy;
-
-      if (car instanceof PoliceCar) {
-        // Police: flashing blue/red dot
-        const flash = Math.floor(this._time * 3.33) % 2;
-        ctx.fillStyle = flash === 0 ? '#2196F3' : '#F44336';
-        ctx.beginPath();
-        ctx.arc(sx, sy, 3.5, 0, Math.PI * 2);
-        ctx.fill();
-        // Radar range on minimap
-        const radarMini = car.radarRadius * scale;
-        ctx.beginPath();
-        ctx.arc(sx, sy, radarMini, 0, Math.PI * 2);
-        ctx.strokeStyle = flash === 0 ? 'rgba(33,150,243,0.4)' : 'rgba(244,67,54,0.4)';
+      ctx.fillStyle = car.color;
+      ctx.beginPath();
+      ctx.arc(sx, sy, i === playerIdx ? 4 : 3, 0, Math.PI * 2);
+      ctx.fill();
+      if (i === playerIdx) {
+        ctx.strokeStyle = '#FFF';
         ctx.lineWidth = 1;
         ctx.stroke();
-      } else if (car instanceof TrafficCar) {
-        // Traffic: small grey dot
-        ctx.fillStyle = '#888';
-        ctx.beginPath();
-        ctx.arc(sx, sy, 2.5, 0, Math.PI * 2);
-        ctx.fill();
-      } else {
-        ctx.fillStyle = car.color;
-        ctx.beginPath();
-        ctx.arc(sx, sy, i === playerIdx ? 4 : 3, 0, Math.PI * 2);
-        ctx.fill();
-        if (i === playerIdx) {
-          ctx.strokeStyle = '#FFF';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
       }
     }
     ctx.restore();
@@ -565,97 +490,6 @@ class HUD {
     return cache;
   }
 
-  drawWarningCounter(ctx, warnings, maxWarnings) {
-    const x = CANVAS_W - 160, y = 62, w = 145, h = 35;
-    const danger = warnings >= maxWarnings - 1 && warnings < maxWarnings;
-
-    // Pulsing red glow when one away from busted
-    if (danger) {
-      const pulse = 0.5 + 0.5 * Math.sin(this._time * 6);
-      ctx.fillStyle = `rgba(200,30,30,${0.3 + pulse * 0.3})`;
-      roundRect(ctx, x - 2, y - 2, w + 4, h + 4, 8);
-      ctx.fill();
-    }
-
-    ctx.fillStyle = 'rgba(0,0,0,0.5)';
-    roundRect(ctx, x, y, w, h, 6);
-    ctx.fill();
-
-    // Label
-    ctx.fillStyle = danger ? '#F44336' : '#AAA';
-    ctx.font = '9px monospace';
-    ctx.textAlign = 'left';
-    ctx.fillText('WARNINGS', x + 8, y + h / 2 + 3);
-
-    // Strike circles
-    const startX = x + 80;
-    const iconY = y + h / 2;
-    for (let i = 0; i < maxWarnings; i++) {
-      const ix = startX + i * 22;
-      if (i < warnings) {
-        // Filled red circle with X — warning issued
-        ctx.fillStyle = '#F44336';
-        ctx.beginPath();
-        ctx.arc(ix, iconY, 8, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.strokeStyle = '#FFF';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(ix - 4, iconY - 4);
-        ctx.lineTo(ix + 4, iconY + 4);
-        ctx.moveTo(ix + 4, iconY - 4);
-        ctx.lineTo(ix - 4, iconY + 4);
-        ctx.stroke();
-      } else {
-        // Empty outline — no warning yet
-        ctx.strokeStyle = 'rgba(255,255,255,0.3)';
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.arc(ix, iconY, 8, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-    }
-  }
-
-  drawWarningPopup(ctx, timer, maxDuration) {
-    const alpha = clamp(timer / (maxDuration * 0.5), 0, 1);
-    const flash = Math.floor(this._time * 5) % 2;
-    const scale = 1 + (1 - alpha) * 0.1;
-
-    ctx.save();
-    ctx.globalAlpha = alpha;
-    ctx.translate(CANVAS_W / 2, CANVAS_H / 2 - 50);
-    ctx.scale(scale, scale);
-
-    // Flashing red/blue background panel
-    ctx.fillStyle = flash === 0
-      ? 'rgba(33,80,200,0.6)'
-      : 'rgba(200,30,30,0.6)';
-    roundRect(ctx, -180, -35, 360, 70, 12);
-    ctx.fill();
-
-    // "WARNING!" text
-    ctx.fillStyle = '#FFF';
-    ctx.font = 'bold 42px monospace';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('WARNING!', 0, 0);
-
-    ctx.restore();
-
-    // Red vignette — screen-edge flash when a new warning fires
-    const vigAlpha = clamp(timer / maxDuration, 0, 1) * 0.4;
-    const vigGrad = ctx.createRadialGradient(
-      CANVAS_W / 2, CANVAS_H / 2, CANVAS_W * 0.3,
-      CANVAS_W / 2, CANVAS_H / 2, CANVAS_W * 0.7
-    );
-    vigGrad.addColorStop(0, 'rgba(200,30,30,0)');
-    vigGrad.addColorStop(1, `rgba(200,30,30,${vigAlpha})`);
-    ctx.fillStyle = vigGrad;
-    ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
-
-    ctx.globalAlpha = 1;
-  }
 
   drawTouchHint(ctx) {
     ctx.save();

@@ -311,20 +311,6 @@ class Renderer {
     ctx.restore();
   }
 
-  drawTrafficCar(car, camera) {
-    const ctx = this.ctx;
-    const s = camera.worldToScreen(car.x, car.y);
-    const z = camera.zoom || 1;
-
-    this._drawCarBody(ctx, car, s, z, [
-      [0, lighten(car.color, 30)],
-      [0.5, car.color],
-      [1, darken(car.color, 30)]
-    ], darken(car.color, 40), camera.rotation);
-
-    // Plain civilian car — no spoiler, no stripe
-    ctx.restore();
-  }
 
   drawPlayerCar(car, camera) {
     this._drawCarBody(this.ctx, car, camera.worldToScreen(car.x, car.y), camera.zoom || 1, [
@@ -333,109 +319,6 @@ class Renderer {
     this.ctx.restore();
   }
 
-  drawPoliceCar(car, camera, time) {
-    const ctx = this.ctx;
-    const s = camera.worldToScreen(car.x, car.y);
-    const z = camera.zoom || 1;
-
-    this._drawCarBody(ctx, car, s, z, [
-      [0, '#2A2A2A'],
-      [0.3, '#1A1A2E'],
-      [0.5, '#1A1A2E'],
-      [0.7, '#1A1A2E'],
-      [1, '#2A2A2A']
-    ], '#333', camera.rotation);
-
-    // White door panels
-    ctx.fillStyle = 'rgba(255,255,255,0.2)';
-    ctx.fillRect(-5, -car.width / 2 + 2, 14, car.width - 4);
-
-    // Roof light bar — flashing blue and red
-    const flashPhase = Math.floor(time * 8) % 2;
-    ctx.fillStyle = flashPhase === 0 ? '#2196F3' : '#0D47A1';
-    ctx.fillRect(-2, -car.width / 2 + 3, 4, car.width / 2 - 3);
-    ctx.fillStyle = flashPhase === 1 ? '#F44336' : '#B71C1C';
-    ctx.fillRect(-2, 0, 4, car.width / 2 - 3);
-
-    ctx.restore();
-
-    // --- Frozen cop: dim overlay, "STOPPED" label, no radar ---
-    if (car.isFrozen) {
-      ctx.save();
-      ctx.translate(s.x, s.y);
-      ctx.scale(z, z);
-      ctx.rotate(car.angle - camera.rotation);
-      ctx.fillStyle = 'rgba(0,0,0,0.4)';
-      roundRect(ctx, -car.length/2, -car.width/2, car.length, car.width, 4);
-      ctx.fill();
-      ctx.restore();
-
-      ctx.fillStyle = 'rgba(255,255,255,0.5)';
-      ctx.font = `bold ${Math.max(8, Math.round(10 * z))}px monospace`;
-      ctx.textAlign = 'center';
-      ctx.fillText('STOPPED', s.x, s.y - 20 * z);
-      return;
-    }
-
-    // --- Radar / detection radius (always visible) ---
-    const radarR = car.radarRadius * z;
-    const radarPulse = 0.5 + 0.5 * Math.sin(time * 3);
-
-    // Outer radar ring — pulsing red/blue
-    const flashPhase2 = Math.floor(time * 6) % 2;
-    const radarColor = flashPhase2 === 0 ? '33,150,243' : '244,67,54'; // blue / red
-    const radarAlpha = 0.12 + radarPulse * 0.10;
-
-    // Filled danger zone
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, radarR, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${radarColor},${radarAlpha})`;
-    ctx.fill();
-
-    // Radar ring border
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, radarR, 0, Math.PI * 2);
-    ctx.strokeStyle = `rgba(${radarColor},${0.35 + radarPulse * 0.3})`;
-    ctx.lineWidth = Math.max(1.5, 2 * z);
-    ctx.stroke();
-
-    // Inner pulsing sweep ring
-    const sweepR = radarR * (0.4 + radarPulse * 0.6);
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, sweepR, 0, Math.PI * 2);
-    ctx.strokeStyle = `rgba(${radarColor},${0.15 + radarPulse * 0.15})`;
-    ctx.lineWidth = Math.max(1, 1.5 * z);
-    ctx.stroke();
-
-    // Flashing light glow effect when chasing
-    if (car.sirenActive || car.isChasing) {
-      const glowRadius = (30 + Math.sin(time * 16) * 10) * z;
-      const blueAlpha = flashPhase === 0 ? 0.35 : 0.05;
-      const redAlpha = flashPhase === 1 ? 0.35 : 0.05;
-
-      // Blue glow
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, glowRadius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(33,150,243,${blueAlpha})`;
-      ctx.fill();
-
-      // Red glow
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, glowRadius * 0.8, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(244,67,54,${redAlpha})`;
-      ctx.fill();
-
-      // Chase range indicator (faint outer ring)
-      const chaseR = car.chaseRange * z;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, chaseR, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(244,67,54,0.08)`;
-      ctx.lineWidth = 1;
-      ctx.setLineDash([8 * z, 8 * z]);
-      ctx.stroke();
-      ctx.setLineDash([]);
-    }
-  }
 
   drawPlayerPulse(car, camera, time) {
     const ctx = this.ctx;

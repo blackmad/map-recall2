@@ -63,15 +63,9 @@ class Game {
     this.raceTime = 0;
     this.showMiniMap = true;
     this.cars = [];
-    this.policeCars = [];
-    this.trafficCars = [];
     this.player = null;
     this.lastTime = 0;
     this.soundStarted = false;
-    this.arrested = false;
-    this.warnings = 0;
-    this.warningPopupTimer = 0;
-    this.warningCooldown = 0;
     this.quizCurrentName = '';
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
@@ -110,13 +104,6 @@ class Game {
     this._copiedTimer = 0;
     this._menuQuote = BANDIT_QUOTES[Math.floor(Math.random() * BANDIT_QUOTES.length)];
 
-    // CB Radio state
-    this._cbMessage = null;
-    this._cbTimer = 0;
-    this._cbCooldown = 0;
-    this._cbTriggered = new Set();
-    this._cbHighSpeedTimer = 0;
-    this._cbPoliceAlerted = false;
     this.landmarks = [];
     this.neighborhoods = [];
     this.currentNeighborhood = '';
@@ -124,6 +111,7 @@ class Game {
     this._neighborhoodNotice = null;
     this._neighborhoodNoticeTimer = 0;
     this._neighborhoodImages = new Map();
+    this._neighborhoodImageRequests = new Set();
     this._postcardCanvas = null;
     this._seenLandmarks = new Set();
     this._visitedNeighborhoods = new Set();
@@ -709,20 +697,13 @@ class Game {
 
   _setupRace() {
     this.cars = [];
-    this.policeCars = [];
-    this.trafficCars = [];
     this.raceTime = 0;
-    this.arrested = false;
-    this.warnings = 0;
-    this.warningPopupTimer = 0;
-    this.warningCooldown = 0;
     this.particles = new ParticleSystem();
 
     this._seenLandmarks = new Set();
     this._landmarkNotice = null;
     this._landmarkNoticeTimer = 0;
 
-    // Point-to-point: player at start, police along the route
     const startInfo = this.track.getNearestRoad(this.track.startPoint.x, this.track.startPoint.y);
     const startAngle = startInfo ? startInfo.angle : 0;
     const startX = this.track.startPoint.x;
@@ -762,128 +743,19 @@ class Game {
 
     this.camera.x = this.player.x;
     this.camera.y = this.player.y;
+    this._warmRouteNeighborhoodImages();
   }
 
-  _spawnPolice() {
-    const numPolice = NUM_POLICE;
-    const startX = this.track.startPoint.x;
-    const startY = this.track.startPoint.y;
-    const finishX = this.track.finishPoint.x;
-    const finishY = this.track.finishPoint.y;
-
-    // Compute start→finish line for route-biased placement
-    const lineDx = finishX - startX;
-    const lineDy = finishY - startY;
-    const lineLen = Math.sqrt(lineDx * lineDx + lineDy * lineDy) || 1;
-
-    // Collect candidate positions from road segments
-    const candidates = [];
-    for (const seg of this.track.segments) {
-      if (seg.points.length < 2) continue;
-      // Sample midpoint-ish positions along each segment
-      const step = Math.max(1, Math.floor(seg.points.length / 3));
-      for (let i = step; i < seg.points.length - 1; i += step) {
-        const p = seg.points[i];
-        const dStart = Math.sqrt((p.x - startX) * (p.x - startX) + (p.y - startY) * (p.y - startY));
-        if (dStart < MIN_DIST_FROM_START) continue;
-
-        // Perpendicular distance from candidate to start→finish line
-        const apx = p.x - startX, apy = p.y - startY;
-        const perpDist = Math.abs(apx * lineDy - apy * lineDx) / lineLen;
-        if (perpDist > POLICE_CORRIDOR_MAX) continue;
-
-        // Compute angle from adjacent points
-        const prev = seg.points[i - 1], next = seg.points[Math.min(i + 1, seg.points.length - 1)];
-        const angle = Math.atan2(next.y - prev.y, next.x - prev.x);
-
-        // Add jitter for run-to-run variety
-        const routeDist = perpDist + (Math.random() - 0.5) * 300;
-        candidates.push({ x: p.x, y: p.y, angle, routeDist });
-      }
-    }
-
-    // Sort by distance to route corridor (closest first)
-    candidates.sort((a, b) => a.routeDist - b.routeDist);
-
-    // Pick up to NUM_POLICE, ensuring they're spread apart
-    const chosen = [];
-    for (const c of candidates) {
-      if (chosen.length >= numPolice) break;
-      let tooClose = false;
-      for (const p of chosen) {
-        const d = Math.sqrt((c.x - p.x) * (c.x - p.x) + (c.y - p.y) * (c.y - p.y));
-        if (d < MIN_POLICE_SPACING) { tooClose = true; break; }
-      }
-      if (!tooClose) {
-        chosen.push(c);
-      }
-    }
-
-    for (const c of chosen) {
-      const cop = new PoliceCar(c.x, c.y, c.angle);
-      this.policeCars.push(cop);
-      this.cars.push(cop);
+  // Fetch postcard images for the neighborhoods at either end of the route so
+  // the first and last cards are ready; the rest load on entry. Runs from
+  // _setupRace because _loadLandmarks resolves before the track is built.
+  _warmRouteNeighborhoodImages() {
+    if (!this.track || !this.neighborhoods.length) return;
+    for (const point of [this.track.startPoint, this.track.finishPoint]) {
+      if (point) this._ensureNeighborhoodImage(this._neighborhoodAt(point.x, point.y));
     }
   }
 
-  _spawnTraffic() {
-    const startX = this.track.startPoint.x;
-    const startY = this.track.startPoint.y;
-    const finishX = this.track.finishPoint.x;
-    const finishY = this.track.finishPoint.y;
-
-    const lineDx = finishX - startX;
-    const lineDy = finishY - startY;
-    const lineLen = Math.sqrt(lineDx * lineDx + lineDy * lineDy) || 1;
-
-    const candidates = [];
-    for (const seg of this.track.segments) {
-      if (seg.points.length < 2) continue;
-      const step = Math.max(1, Math.floor(seg.points.length / 4));
-      for (let i = step; i < seg.points.length - 1; i += step) {
-        const p = seg.points[i];
-        const dStart = Math.sqrt((p.x - startX) ** 2 + (p.y - startY) ** 2);
-        if (dStart < MIN_DIST_FROM_START * 0.5) continue;
-
-        const apx = p.x - startX, apy = p.y - startY;
-        const perpDist = Math.abs(apx * lineDy - apy * lineDx) / lineLen;
-        if (perpDist > POLICE_CORRIDOR_MAX * 1.5) continue;
-
-        const prev = seg.points[i - 1];
-        const next = seg.points[Math.min(i + 1, seg.points.length - 1)];
-        const angle = Math.atan2(next.y - prev.y, next.x - prev.x);
-        candidates.push({ x: p.x, y: p.y, angle });
-      }
-    }
-
-    // Shuffle for variety (unlike police which sort by route distance)
-    for (let i = candidates.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
-    }
-
-    const chosen = [];
-    for (const c of candidates) {
-      if (chosen.length >= NUM_TRAFFIC) break;
-      let tooClose = false;
-      for (const p of chosen) {
-        if (dist(c.x, c.y, p.x, p.y) < MIN_TRAFFIC_SPACING) { tooClose = true; break; }
-      }
-      if (!tooClose) {
-        for (const cop of this.policeCars) {
-          if (dist(c.x, c.y, cop.x, cop.y) < 80) { tooClose = true; break; }
-        }
-      }
-      if (!tooClose) chosen.push(c);
-    }
-
-    for (const c of chosen) {
-      const color = TRAFFIC_COLORS[Math.floor(Math.random() * TRAFFIC_COLORS.length)];
-      const car = new TrafficCar(c.x, c.y, c.angle, color);
-      this.trafficCars.push(car);
-      this.cars.push(car);
-    }
-  }
 
   // ---- OSM Loading Flow ----
 
@@ -1147,8 +1019,6 @@ class Game {
     if (this.routeOptions.line) this._assistUsage.line = true;
     if (this.routeOptions.arrow) this._assistUsage.arrow = true;
     if (this.showMiniMap) this._assistUsage.minimap = true;
-    if (this.warningPopupTimer > 0) this.warningPopupTimer -= dt;
-    if (this.warningCooldown > 0) this.warningCooldown -= dt;
 
     if (this.quizPromptName) {
       this.camera.update(this.player, dt);
@@ -1217,26 +1087,8 @@ class Game {
     }
     this._updateCanalQuiz(dt);
 
-    for (const car of this.cars) {
-      if (car instanceof PoliceCar) {
-        car.updatePolice(dt, this.track, this.player, this.cars);
-        car.update(dt, this.track);
-      } else if (car instanceof AICar) {
-        car.updateAI(dt, this.track, this.cars);
-        car.update(dt, this.track);
-      } else if (car instanceof TrafficCar) {
-        car.updateTraffic(dt, this.track);
-        car.update(dt, this.track);
-      }
-    }
-
-    // Warning check — 3 strikes and you're out
-    this._checkWarnings();
     this._updateLandmarks(dt);
-
-    // Physics: boundary corrections + car-to-car collisions
     this._updateBoundaryCollisions();
-    this._updateCarCollisions();
 
     // Particles + camera + sound
     this._emitCarParticles();
@@ -1376,23 +1228,6 @@ class Game {
     }, 650);
   }
 
-  _checkWarnings() {
-    if (this.warningCooldown > 0) return;
-    for (const cop of this.policeCars) {
-      if (cop.checkArrest(this.player)) {
-        this.warnings++;
-        cop.freeze();
-        this.warningPopupTimer = WARNING_POPUP_DURATION;
-        this.warningCooldown = WARNING_COOLDOWN;
-        if (this.warnings >= MAX_WARNINGS) {
-          this.arrested = true;
-          this.state = GameState.FINISHED;
-          this.sound.silence();
-        }
-        break; // only one warning per frame
-      }
-    }
-  }
 
   _updateBoundaryCollisions() {
     if (this.travelMode === 'car') return;
@@ -1454,28 +1289,6 @@ class Game {
     });
   }
 
-  _updateCarCollisions() {
-    for (let i = 0; i < this.cars.length; i++) {
-      for (let j = i + 1; j < this.cars.length; j++) {
-        const a = this.cars[i], b = this.cars[j];
-        const dx = b.x - a.x, dy = b.y - a.y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        const minDist = 28;
-        if (d < minDist && d > 0) {
-          const nx = dx / d, ny = dy / d;
-          const overlap = (minDist - d) / 2;
-          a.x -= nx * overlap; a.y -= ny * overlap;
-          b.x += nx * overlap; b.y += ny * overlap;
-          const relV = dot(b.vx - a.vx, b.vy - a.vy, nx, ny);
-          if (relV < 0) {
-            a.vx += nx * relV * 0.5; a.vy += ny * relV * 0.5;
-            b.vx -= nx * relV * 0.5; b.vy -= ny * relV * 0.5;
-            a.speed *= 0.92; b.speed *= 0.92;
-          }
-        }
-      }
-    }
-  }
 
   _emitCarParticles() {
     for (const car of this.cars) {
@@ -1500,13 +1313,6 @@ class Game {
     }
   }
 
-  _getPositions() {
-    // Exclude police and traffic from race positions
-    const racers = this.cars.filter(c => !(c instanceof PoliceCar) && !(c instanceof TrafficCar));
-    const sorted = [...racers].sort((a, b) => b.raceProgress - a.raceProgress);
-    const playerPos = sorted.indexOf(this.player) + 1;
-    return { sorted, playerPos };
-  }
 
   _render() {
     const ctx = this.ctx;
@@ -1533,36 +1339,34 @@ class Game {
     // Transparent game world over the live MapLibre vector basemap.
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
     this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
+    if (this.travelMode === 'car') {
+      this.vectorMap.setStreetHighlights(
+        this.track, this.osmLoader, this.learnedNames,
+        this.quizPromptName, this.quizPromptSegmentIndex
+      );
+    }
 
     this.renderer.drawTrack(this.camera, this.track);
-    this.renderer.drawQuestionFeature(
-      this.camera, this.track, this.quizPromptName,
-      this.quizPromptSegmentIndex, this.quizPromptPointIndex, this.raceTime
-    );
+    if (this.travelMode !== 'car') {
+      this.renderer.drawQuestionFeature(
+        this.camera, this.track, this.quizPromptName,
+        this.quizPromptSegmentIndex, this.quizPromptPointIndex, this.raceTime
+      );
+    }
     this.renderer.drawSkidMarks(this.particles, this.camera);
 
-    const sortedCars = [...this.cars].sort((a, b) => a.y - b.y);
-    for (const car of sortedCars) {
-      if (car instanceof PoliceCar) {
-        this.renderer.drawPoliceCar(car, this.camera, this.raceTime);
-      } else if (car instanceof TrafficCar) {
-        this.renderer.drawTrafficCar(car, this.camera);
-      } else {
-        if (this.travelMode === 'car') this.renderer.drawPlayerCar(car, this.camera);
-        else this.renderer.drawCar(car, this.camera);
-      }
-    }
+    if (this.travelMode === 'car') this.renderer.drawPlayerCar(this.player, this.camera);
+    else this.renderer.drawCar(this.player, this.camera);
     this.renderer.drawParticles(this.particles, this.camera);
-    this.track.drawLabels(ctx, this.camera, this.learnedNames);
+    if (this.travelMode !== 'car') this.track.drawLabels(ctx, this.camera, this.learnedNames);
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) {
-      this._renderFinish([]);
+      this._renderFinish();
       return;
     }
 
     // HUD
-    const { sorted, playerPos } = this._getPositions();
     this.hud.drawSpeedometer(ctx, this.player.speed, this.player.maxSpeed);
     this.hud.drawOdometer(ctx, this.player.distancePx);
     this.hud.drawCanalScore(ctx, this.quizCorrect, this.quizAttempts, this.quizPoints, this.quizFeedback, this.quizStreak, this.gameyFeatures);
@@ -1572,10 +1376,6 @@ class Game {
 
     if (this.routeOptions.arrow) {
       this.hud.drawFinishDirection(ctx, this.player.x, this.player.y, this.track.finishPoint.x, this.track.finishPoint.y, this.camera);
-    }
-
-    if (this.policeCars && this.policeCars.length > 0) {
-      this.hud.drawPoliceWarning(ctx, this.policeCars, this.player.x, this.player.y);
     }
 
     this.hud.drawTimer(ctx, this.raceTime, this.player.bestLap, true);
@@ -1648,7 +1448,7 @@ class Game {
 
     // finish overlay
     if (this.state === GameState.FINISHED) {
-      this._renderFinish(sorted);
+      this._renderFinish();
     }
   }
 
@@ -1969,13 +1769,8 @@ class Game {
     );
   }
 
-  _renderFinish(sorted) {
+  _renderFinish() {
     const ctx = this.ctx;
-
-    if (this.arrested) {
-      this._renderArrested();
-      return;
-    }
 
     ctx.fillStyle = 'rgba(0,0,0,0.7)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
@@ -2263,16 +2058,12 @@ class Game {
           imageAttribution: enriched.imageAttribution || '',
         };
       });
-      // Preload neighborhood images (non-blocking)
+      // Postcard images load on demand — see _warmRouteNeighborhoodImages.
+      // Preloading the whole city cost ~26 fetches per route for postcards
+      // most trips never reach.
       this._neighborhoodImages = new Map();
       this._neighborhoodLetterArt = new Map();
-      for (const hood of this.neighborhoods) {
-        if (!hood.imageUrl) continue;
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = () => this._neighborhoodImages.set(hood.name, img);
-        img.src = hood.imageUrl;
-      }
+      this._neighborhoodImageRequests = new Set();
     } catch (error) {
       console.warn('Landmark notes unavailable:', error);
       this.landmarks = [];
@@ -2301,6 +2092,7 @@ class Game {
       this._previousNeighborhood = this.currentNeighborhood;
       if (!this.quizPromptName) {
         const hoodData = this.neighborhoods.find(n => n.name === this.currentNeighborhood);
+        if (hoodData) this._ensureNeighborhoodImage(hoodData);
         this._neighborhoodNotice = hoodData || { name: this.currentNeighborhood };
         this._neighborhoodNoticeTimer = 5.5;
       }
@@ -2321,6 +2113,24 @@ class Game {
       this._landmarkNoticeDuration = 6;
       this.vectorMap.setActiveLandmark(nearest);
     }
+  }
+
+  _neighborhoodAt(x, y) {
+    return this.neighborhoods.find(hood => hood.rings.some(ring => this._pointInPolygon(x, y, ring))) || null;
+  }
+
+  // Fetch a neighborhood postcard image once, on demand. The postcard renderer
+  // already falls back to its typographic composition until the image lands.
+  _ensureNeighborhoodImage(hood) {
+    if (!hood || !hood.imageUrl) return;
+    if (!this._neighborhoodImageRequests) this._neighborhoodImageRequests = new Set();
+    if (this._neighborhoodImageRequests.has(hood.name)) return;
+    this._neighborhoodImageRequests.add(hood.name);
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => this._neighborhoodImages.set(hood.name, img);
+    img.onerror = () => console.warn('Neighborhood image unavailable:', hood.name, hood.imageUrl);
+    img.src = hood.imageUrl;
   }
 
   _pointInPolygon(x, y, ring) {
@@ -2541,189 +2351,6 @@ class Game {
     ctx.restore();
   }
 
-  // ---- Legacy CB helpers (not invoked by Canal Recall) ----
-
-  _updateCBRadio(dt) {
-    // Advance display timer for current message
-    if (this._cbMessage) {
-      this._cbTimer += dt;
-      const totalDuration = CB_FADE_IN + CB_DISPLAY + CB_FADE_OUT;
-      if (this._cbTimer >= totalDuration) {
-        this._cbMessage = null;
-        this._cbTimer = 0;
-      }
-    }
-
-    // Advance cooldown
-    if (this._cbCooldown > 0) {
-      this._cbCooldown -= dt;
-      return;
-    }
-
-    // Don't queue another while one is showing
-    if (this._cbMessage) return;
-
-    // --- Check triggers in priority order ---
-
-    // 1. Race start (one-shot)
-    if (!this._cbTriggered.has('race_start') && this.raceTime < 1.5) {
-      this._fireCB('race_start');
-      return;
-    }
-
-    // 2. Warning received (fires when popup is fresh)
-    if (this.warningPopupTimer > WARNING_POPUP_DURATION - 0.1 && this.warningPopupTimer > 0) {
-      this._fireCB('warning_received');
-      return;
-    }
-
-    // 3. Police approaching (first time any cop starts chasing)
-    if (!this._cbPoliceAlerted) {
-      for (const cop of this.policeCars) {
-        if (cop.isChasing) {
-          this._cbPoliceAlerted = true;
-          this._fireCB('police_approaching');
-          return;
-        }
-      }
-    }
-
-    // 4. Halfway point (one-shot)
-    if (!this._cbTriggered.has('halfway') && this.player.raceProgress >= 0.5) {
-      this._fireCB('halfway');
-      return;
-    }
-
-    // 5. Near finish (one-shot)
-    if (!this._cbTriggered.has('near_finish') && this.player.raceProgress >= 0.9) {
-      this._fireCB('near_finish');
-      return;
-    }
-
-    // 6. High speed (repeatable, respects cooldown)
-    if (Math.abs(this.player.speed) > this.player.maxSpeed * CB_HIGH_SPEED_THRESHOLD) {
-      this._cbHighSpeedTimer += dt;
-      if (this._cbHighSpeedTimer >= CB_HIGH_SPEED_DURATION) {
-        this._cbHighSpeedTimer = 0;
-        this._fireCB('high_speed');
-        return;
-      }
-    } else {
-      this._cbHighSpeedTimer = 0;
-    }
-  }
-
-  _fireCB(eventType) {
-    const messages = CB_MESSAGES[eventType];
-    if (!messages || messages.length === 0) return;
-    this._cbMessage = messages[Math.floor(Math.random() * messages.length)];
-    this._cbTimer = 0;
-    this._cbCooldown = CB_COOLDOWN;
-    if (eventType === 'race_start' || eventType === 'halfway' || eventType === 'near_finish') {
-      this._cbTriggered.add(eventType);
-    }
-  }
-
-  _renderCBRadio() {
-    if (!this._cbMessage) return;
-    const ctx = this.ctx;
-
-    // Compute alpha for fade in/out
-    const totalDuration = CB_FADE_IN + CB_DISPLAY + CB_FADE_OUT;
-    let alpha;
-    if (this._cbTimer < CB_FADE_IN) {
-      alpha = this._cbTimer / CB_FADE_IN;
-    } else if (this._cbTimer < CB_FADE_IN + CB_DISPLAY) {
-      alpha = 1;
-    } else {
-      alpha = 1 - (this._cbTimer - CB_FADE_IN - CB_DISPLAY) / CB_FADE_OUT;
-    }
-    alpha = clamp(alpha, 0, 1);
-    if (alpha <= 0) return;
-
-    ctx.save();
-    ctx.globalAlpha = alpha;
-
-    // Text dimensions
-    ctx.font = 'bold 13px monospace';
-    const prefix = 'CB: ';
-    const fullText = prefix + this._cbMessage;
-    const tw = ctx.measureText(fullText).width;
-    const pad = 12;
-    const boxW = tw + pad * 2;
-    const boxH = 28;
-    const boxX = 15;
-    const boxY = CANVAS_H - 185;
-
-    // Background box
-    ctx.fillStyle = 'rgba(20, 15, 0, 0.75)';
-    roundRect(ctx, boxX, boxY, boxW, boxH, 5);
-    ctx.fill();
-
-    // Amber border
-    ctx.strokeStyle = 'rgba(255, 193, 7, 0.5)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
-    // "CB:" prefix in gold
-    ctx.fillStyle = '#FFD700';
-    ctx.textAlign = 'left';
-    ctx.fillText(prefix, boxX + pad, boxY + boxH / 2 + 5);
-
-    // Message text in amber
-    const prefixWidth = ctx.measureText(prefix).width;
-    ctx.fillStyle = '#FFCA28';
-    ctx.fillText(this._cbMessage, boxX + pad + prefixWidth, boxY + boxH / 2 + 5);
-
-    ctx.restore();
-  }
-
-  _renderArrested() {
-    const ctx = this.ctx;
-
-    // Flashing red/blue overlay
-    const flash = Math.floor(Date.now() / 300) % 2;
-    ctx.fillStyle = flash === 0 ? 'rgba(33,80,200,0.4)' : 'rgba(200,30,30,0.4)';
-    ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
-
-    // Dark center panel
-    ctx.fillStyle = 'rgba(0,0,0,0.75)';
-    roundRect(ctx, CANVAS_W/2 - 300, 80, 600, 340, 16);
-    ctx.fill();
-
-    // BUSTED title
-    const pulse = 0.7 + 0.3 * Math.sin(Date.now() / 200);
-    ctx.fillStyle = `rgba(244,67,54,${pulse})`;
-    ctx.font = 'bold 72px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('BUSTED!', CANVAS_W/2, 170);
-
-    // Subtitle
-    ctx.fillStyle = '#CCC';
-    ctx.font = '18px monospace';
-    ctx.fillText('3 warnings — the police got you!', CANVAS_W/2, 220);
-
-    // Stats
-    ctx.font = '15px monospace';
-    ctx.fillStyle = '#AAA';
-    const meters = this.player.distancePx / PIXELS_PER_METER;
-    const miles = meters / 1609.344;
-    const pct = Math.round(this.player.raceProgress * 100);
-    ctx.fillText(`Distance: ${miles.toFixed(2)} mi`, CANVAS_W/2, 270);
-    ctx.fillText(`Progress: ${pct}%`, CANVAS_W/2, 295);
-    ctx.fillText(`Time: ${this.hud.formatTime(this.raceTime)}`, CANVAS_W/2, 320);
-
-    // Hint
-    ctx.fillStyle = '#F44336';
-    ctx.font = 'bold 13px monospace';
-    ctx.fillText('3 STRIKES AND YOU\'RE OUT! Avoid police radar zones.', CANVAS_W/2, 365);
-
-    // Restart prompt
-    const p2 = 0.5 + 0.5 * Math.sin(Date.now() / 400);
-    ctx.fillStyle = `rgba(255,255,255,${0.4 + p2 * 0.6})`;
-    ctx.font = 'bold 16px monospace';
-    ctx.fillText('ENTER - Race Again    ESC - Menu', CANVAS_W/2, CANVAS_H - 70);
-  }
 
   // ---- Leaderboard (localStorage) ----
 
