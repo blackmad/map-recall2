@@ -14,6 +14,7 @@ class VectorBasemap {
     this._treesVisible = false;
     this._detailedBuildings = null;
     this._detailedBuildingsVisible = false;
+    this._labelsVisible = false;
     if (!container || typeof maplibregl === 'undefined') return;
 
     this.map = new maplibregl.Map({
@@ -224,10 +225,26 @@ class VectorBasemap {
 
   _hideLabels() {
     if (!this.map || !this.map.getStyle()) return;
+    this._labelsVisible = false;
     for (const layer of this.map.getStyle().layers || []) {
       if (layer.type !== 'symbol') continue;
       try { this.map.setLayoutProperty(layer.id, 'visibility', 'none'); } catch (_) {}
     }
+  }
+
+  _showLabels() {
+    if (!this.map || !this.map.getStyle()) return;
+    this._labelsVisible = true;
+    for (const layer of this.map.getStyle().layers || []) {
+      if (layer.type !== 'symbol') continue;
+      try { this.map.setLayoutProperty(layer.id, 'visibility', 'visible'); } catch (_) {}
+    }
+  }
+
+  toggleLabels() {
+    if (this._labelsVisible) this._hideLabels();
+    else this._showLabels();
+    return this._labelsVisible;
   }
 
   resize(width, height) {
