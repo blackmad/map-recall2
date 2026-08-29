@@ -370,6 +370,7 @@ class Game {
     this._gameyFeatures = document.getElementById('gamey-features');
     this._soundEnabled = document.getElementById('sound-enabled');
     this._treesEnabled = document.getElementById('trees-enabled');
+    this._reducedMotion = document.getElementById('reduced-motion');
     this._detailed3d = document.getElementById('detailed-3d');
     this._cameraZoom = document.getElementById('camera-zoom');
     this._routePattern = document.getElementById('route-pattern');
@@ -421,6 +422,8 @@ class Game {
       this._soundEnabled.checked = prefs.sound === true;
       this._treesEnabled.checked = prefs.trees !== false;
       this._detailed3d.checked = prefs.detailed3d === true;
+      this._reducedMotion.checked = prefs.reducedMotion === true;
+      this.camera.reducedMotion = this._reducedMotion.checked;
       if (Number.isFinite(prefs.zoom)) {
         const migratedZoom = prefs.zoomDefaultVersion !== 2 && prefs.zoom === 0.65 ? CAMERA_ZOOM_INITIAL : prefs.zoom;
         this.camera.zoom = clamp(migratedZoom, this.camera.minZoom, this.camera.maxZoom);
@@ -446,6 +449,7 @@ class Game {
       minimap: !!this.routeOptions.minimap,
       trees: this._treesEnabled ? this._treesEnabled.checked : true,
       detailed3d: this._detailed3d ? this._detailed3d.checked : false,
+      reducedMotion: this._reducedMotion ? this._reducedMotion.checked : false,
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
       zoom: this.camera.zoom,
@@ -462,6 +466,7 @@ class Game {
     this._liveGamey = document.getElementById('live-gamey');
     this._liveSound = document.getElementById('live-sound');
     this._liveTrees = document.getElementById('live-trees');
+    this._liveReducedMotion = document.getElementById('live-reduced-motion');
     this._liveDetailed3d = document.getElementById('live-detailed-3d');
     this._liveZoom = document.getElementById('live-zoom');
     this._liveControls = document.getElementById('live-controls');
@@ -470,7 +475,7 @@ class Game {
     document.getElementById('open-help').addEventListener('click', () => this._toggleUtilityPanel(this._helpPanel));
     document.getElementById('open-settings').addEventListener('click', () => this._toggleUtilityPanel(this._settingsPanel));
     document.querySelectorAll('.utility-close').forEach(button => button.addEventListener('click', () => this._closeUtilityPanels()));
-    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveGamey, this._liveTrees, this._liveDetailed3d, this._liveSound, this._liveZoom]) {
+    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveGamey, this._liveReducedMotion, this._liveTrees, this._liveDetailed3d, this._liveSound, this._liveZoom]) {
       control.addEventListener('change', () => this._readLiveSettings());
     }
     this._liveControls.addEventListener('change', () => this._readLiveSettings());
@@ -488,6 +493,7 @@ class Game {
     this._liveGamey.checked = this.gameyFeatures;
     this._liveSound.checked = !this.sound.muted;
     this._liveTrees.checked = this._treesEnabled.checked;
+    this._liveReducedMotion.checked = !!this.camera.reducedMotion;
     this._liveDetailed3d.checked = this._detailed3d.checked;
     this._liveZoom.value = String(this.camera.zoom);
   }
@@ -510,6 +516,8 @@ class Game {
     this._setSoundEnabled(this._liveSound.checked);
     this._treesEnabled.checked = this._liveTrees.checked;
     this.vectorMap.setTreesVisible(this._liveTrees.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
+    this.camera.reducedMotion = this._liveReducedMotion.checked;
+    this._reducedMotion.checked = this.camera.reducedMotion;
     this._detailed3d.checked = this._liveDetailed3d.checked;
     this.vectorMap.setDetailedBuildingsVisible(this._liveDetailed3d.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this._savePreferences();
@@ -849,6 +857,7 @@ class Game {
       minimap: this._assistMinimap.checked
     };
     this.gameyFeatures = this._gameyFeatures.checked;
+    this.camera.reducedMotion = this._reducedMotion.checked;
     this.travelMode = this._travelMode.value;
     this.controlMode = this._controlMode.value;
     this.viewMode = this._viewMode.value;
@@ -1198,6 +1207,7 @@ class Game {
     if (this.input.wasPressed('KeyN')) { this._setSoundEnabled(this.sound.muted); this._savePreferences(); }
     if (this.input.wasPressed('KeyD')) this.vectorMap.toggleLabels();
     if (this.input.wasPressed('KeyW')) this._openLandmarkArticle();
+    this._handleChoiceShortcut();
     if (this.input.wasPressed('Backquote')) this._toggleDebug();
     if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) this.camera.zoomOut();
     if (this.input.isDown('Equal') || this.input.isDown('NumpadAdd')) this.camera.zoomIn();
@@ -1509,14 +1519,31 @@ class Game {
   }
 
   _renderChoiceButtons(choices) {
-    this._promptChoices.replaceChildren(...choices.map(name => {
+    this._choiceOrder = choices;
+    this._promptChoices.replaceChildren(...choices.map((name, index) => {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'canal-choice';
-      button.textContent = name;
+      // The number is the keyboard shortcut, so show it on the button.
+      const key = document.createElement('span');
+      key.className = 'canal-choice-key';
+      key.textContent = String(index + 1);
+      button.append(key, document.createTextNode(name));
       button.addEventListener('click', () => this._submitCanalAnswer(name));
       return button;
     }));
+  }
+
+  // 1-4 answer the open multiple-choice question without reaching for the mouse.
+  _handleChoiceShortcut() {
+    if (!this.quizPromptName || this.routeOptions.answerMode !== 'multiple') return;
+    if (!this._choiceOrder || this._choiceOrder.length === 0) return;
+    for (let index = 0; index < Math.min(this._choiceOrder.length, 4); index++) {
+      if (this.input.wasPressed(`Digit${index + 1}`) || this.input.wasPressed(`Numpad${index + 1}`)) {
+        this._submitCanalAnswer(this._choiceOrder[index]);
+        return;
+      }
+    }
   }
 
   _normaliseCanalName(value) {

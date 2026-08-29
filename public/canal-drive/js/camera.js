@@ -14,17 +14,24 @@ class Camera {
     this.projector = null;
     this.panX = 0;
     this.panY = 0;
+    this.reducedMotion = false;
+    this._lookahead = 0;
   }
   update(target, dt) {
     const speedRatio = clamp(target.speed / target.maxSpeed, 0, 1);
-    const lookahead = this.viewMode === 'cockpit' ? 115 + CAMERA_LOOKAHEAD * speedRatio : CAMERA_LOOKAHEAD * speedRatio;
+    // Ease the lookahead instead of binding it straight to speed, so the view
+    // no longer surges forward and back with the throttle.
+    const wantedLookahead = this.reducedMotion ? 0 : CAMERA_LOOKAHEAD * speedRatio;
+    this._lookahead += (wantedLookahead - this._lookahead) * CAMERA_LOOKAHEAD_SMOOTHING;
+    const lookahead = (this.viewMode === 'cockpit' ? 115 : 0) + this._lookahead;
     const tx = target.x + Math.cos(target.angle) * lookahead + this.panX;
     const ty = target.y + Math.sin(target.angle) * lookahead + this.panY;
     this.x += (tx - this.x) * this.smoothing;
     this.y += (ty - this.y) * this.smoothing;
     const wantedRotation = this.northUp ? 0 : target.angle + Math.PI / 2;
     const delta = Math.atan2(Math.sin(wantedRotation - this.rotation), Math.cos(wantedRotation - this.rotation));
-    this.rotation += delta * Math.min(1, this.smoothing * 1.5);
+    const rotationRate = this.reducedMotion ? CAMERA_REDUCED_ROTATION_SMOOTHING : CAMERA_ROTATION_SMOOTHING;
+    this.rotation += delta * Math.min(1, this.smoothing * rotationRate);
   }
   zoomIn() {
     this.zoom = clamp(this.zoom + CAMERA_ZOOM_STEP, this.minZoom, this.maxZoom);

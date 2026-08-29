@@ -45,7 +45,7 @@ const CAR_ACCEL = 98;                          // px/s² — reach the higher ca
 const CAR_BRAKE_FORCE = 75;                    // px/s² / reverse thrust
 const CAR_TURN_RATE = 1.45;                    // rad/s
 const PLAYER_CAR_TURN_MULT = 1.24;             // tighter street-mode steering
-const PLAYER_CAR_DRIFT_FACTOR = 0.68;          // shed lateral slide sooner on asphalt
+const PLAYER_CAR_DRIFT_FACTOR = 0.42;          // asphalt grip: little lateral slide
 const CAR_GRIP = 1.0;                          // multiplier (1.0 = full grip)
 const CAR_DRIFT_FACTOR = 0.84;                 // lateral water slide retention
 const CAR_DRAG = 0.0024;                       // quadratic water drag
@@ -70,7 +70,12 @@ const CAMERA_ZOOM_INITIAL = 0.50;
 const CAMERA_ZOOM_MIN = 0.2;
 const CAMERA_ZOOM_MAX = 1.5;
 const CAMERA_ZOOM_STEP = 0.15;                 // per key press
-const CAMERA_LOOKAHEAD = 90;                   // px — camera leads player by this much
+const CAMERA_LOOKAHEAD = 60;                   // px — camera leads player by this much
+// The lookahead used to track speed instantly, so the view surged forward on
+// every acceleration and fell back on every brake. Easing it removes the pump.
+const CAMERA_LOOKAHEAD_SMOOTHING = 0.02;
+const CAMERA_ROTATION_SMOOTHING = 0.9;         // multiple of camera smoothing
+const CAMERA_REDUCED_ROTATION_SMOOTHING = 0.45;
 
 // --- Game ---
 const COUNTDOWN_TIME = 3.5;                    // seconds
