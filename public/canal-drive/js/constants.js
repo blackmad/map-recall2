@@ -44,8 +44,10 @@ const CAR_MAX_SPEED = 205;                     // px/s — fast arcade boat pace
 const CAR_ACCEL = 98;                          // px/s² — reach the higher cap promptly
 const CAR_BRAKE_FORCE = 75;                    // px/s² / reverse thrust
 const CAR_TURN_RATE = 1.45;                    // rad/s
-const PLAYER_CAR_TURN_MULT = 1.24;             // tighter street-mode steering
-const PLAYER_CAR_DRIFT_FACTOR = 0.42;          // asphalt grip: little lateral slide
+const PLAYER_CAR_TURN_MULT = 1.45;             // tighter street-mode steering
+const PLAYER_CAR_DRIFT_FACTOR = 0.12;          // asphalt: the car holds its line
+const PLAYER_CAR_SPEED_MULT = 1.35;            // streets are quicker than canals
+const PLAYER_CAR_ACCEL_MULT = 1.4;             // and get up to speed sooner
 const CAR_GRIP = 1.0;                          // multiplier (1.0 = full grip)
 const CAR_DRIFT_FACTOR = 0.84;                 // lateral water slide retention
 const CAR_DRAG = 0.0024;                       // quadratic water drag

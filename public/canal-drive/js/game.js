@@ -955,6 +955,8 @@ class Game {
     } else {
       this.player.turnRate *= PLAYER_CAR_TURN_MULT;
       this.player.driftFactor = PLAYER_CAR_DRIFT_FACTOR;
+      this.player.maxSpeed *= PLAYER_CAR_SPEED_MULT;
+      this.player.accel *= PLAYER_CAR_ACCEL_MULT;
     }
     this.cars.push(this.player);
 
