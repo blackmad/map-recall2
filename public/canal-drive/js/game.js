@@ -914,6 +914,8 @@ class Game {
     this.player.vx = 0;
     this.player.vy = 0;
     this._prompt.style.display = 'flex';
+    const playerScreen = this.camera.worldToScreen(this.player.x, this.player.y);
+    this._prompt.classList.toggle('dock-left', playerScreen.x > CANVAS_W / 2);
     this._promptInput.value = '';
     this._promptFeedback.textContent = '';
     if (this.routeOptions.answerMode === 'multiple') {
