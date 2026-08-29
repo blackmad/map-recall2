@@ -28,11 +28,14 @@ const DIFFICULTY_SCORE_MULTIPLIERS = { easy: 0.5, medium: 0.75, hard: 1, expert:
 // Route ribbons grade the trip on what the game is trying to teach — name
 // recall, navigating without aids, and choosing an efficient route — rather
 // than on raw speed. Ordered best-first; the first tier the score clears wins.
+// `minRecall` gates each tier independently of the blended score: this is a
+// recall game, so a spotless efficient run that never named a canal correctly
+// must not out-rank a slower player who knew where they were.
 const ROUTE_RIBBON_TIERS = [
-  { id: 'gold',   label: 'GOLD RIBBON',   min: 0.85, color: '#FACC15', dim: 'rgba(250,204,21,.16)' },
-  { id: 'silver', label: 'SILVER RIBBON', min: 0.68, color: '#CBD5E1', dim: 'rgba(203,213,225,.14)' },
-  { id: 'bronze', label: 'BRONZE RIBBON', min: 0.50, color: '#D8964A', dim: 'rgba(216,150,74,.16)' },
-  { id: 'none',   label: 'ROUTE COMPLETE', min: -Infinity, color: '#7DD3FC', dim: 'rgba(56,189,248,.12)' }
+  { id: 'gold',   label: 'GOLD RIBBON',   min: 0.85, minRecall: 0.80, color: '#FACC15', dim: 'rgba(250,204,21,.16)' },
+  { id: 'silver', label: 'SILVER RIBBON', min: 0.68, minRecall: 0.55, color: '#CBD5E1', dim: 'rgba(203,213,225,.14)' },
+  { id: 'bronze', label: 'BRONZE RIBBON', min: 0.50, minRecall: 0.25, color: '#D8964A', dim: 'rgba(216,150,74,.16)' },
+  { id: 'none',   label: 'ROUTE COMPLETE', min: -Infinity, minRecall: -Infinity, color: '#7DD3FC', dim: 'rgba(56,189,248,.12)' }
 ];
 // Weight of each aid when scoring self-reliance. The route line removes the
 // navigation problem entirely, so it costs the most.
@@ -128,6 +131,11 @@ class Game {
     this._explorationSnapshot = null;
     this._assistUsage = { line: false, arrow: false, minimap: false };
     this._ribbon = null;
+    // Master switch for the arcade layer. On by default so existing players
+    // keep the game they have; off produces a calm navigation-and-recall trip
+    // with no streaks, multipliers, points, or ribbons. Difficulty and
+    // navigation aids stay independent of it.
+    this.gameyFeatures = true;
     this._debugMode = false;
     this._recenterBtnBounds = null;
     this._landmarkNotice = null;
@@ -290,6 +298,7 @@ class Game {
     this._assistLine = document.getElementById('assist-line');
     this._assistArrow = document.getElementById('assist-arrow');
     this._assistMinimap = document.getElementById('assist-minimap');
+    this._gameyFeatures = document.getElementById('gamey-features');
     this._soundEnabled = document.getElementById('sound-enabled');
     this._treesEnabled = document.getElementById('trees-enabled');
     this._detailed3d = document.getElementById('detailed-3d');
@@ -338,6 +347,8 @@ class Game {
       if (typeof prefs.line === 'boolean') this._assistLine.checked = prefs.line;
       if (typeof prefs.arrow === 'boolean') this._assistArrow.checked = prefs.arrow;
       if (typeof prefs.minimap === 'boolean') this._assistMinimap.checked = prefs.minimap;
+      this._gameyFeatures.checked = prefs.gamey !== false;
+      this.gameyFeatures = this._gameyFeatures.checked;
       this._soundEnabled.checked = prefs.sound === true;
       this._treesEnabled.checked = prefs.trees !== false;
       this._detailed3d.checked = prefs.detailed3d === true;
@@ -366,6 +377,7 @@ class Game {
       minimap: !!this.routeOptions.minimap,
       trees: this._treesEnabled ? this._treesEnabled.checked : true,
       detailed3d: this._detailed3d ? this._detailed3d.checked : false,
+      gamey: this.gameyFeatures,
       sound: !this.sound.muted,
       zoom: this.camera.zoom,
       zoomDefaultVersion: 2
@@ -378,6 +390,7 @@ class Game {
     this._liveLine = document.getElementById('live-line');
     this._liveArrow = document.getElementById('live-arrow');
     this._liveMinimap = document.getElementById('live-minimap');
+    this._liveGamey = document.getElementById('live-gamey');
     this._liveSound = document.getElementById('live-sound');
     this._liveTrees = document.getElementById('live-trees');
     this._liveDetailed3d = document.getElementById('live-detailed-3d');
@@ -388,7 +401,7 @@ class Game {
     document.getElementById('open-help').addEventListener('click', () => this._toggleUtilityPanel(this._helpPanel));
     document.getElementById('open-settings').addEventListener('click', () => this._toggleUtilityPanel(this._settingsPanel));
     document.querySelectorAll('.utility-close').forEach(button => button.addEventListener('click', () => this._closeUtilityPanels()));
-    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveTrees, this._liveDetailed3d, this._liveSound, this._liveZoom]) {
+    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveGamey, this._liveTrees, this._liveDetailed3d, this._liveSound, this._liveZoom]) {
       control.addEventListener('change', () => this._readLiveSettings());
     }
     this._liveControls.addEventListener('change', () => this._readLiveSettings());
@@ -403,6 +416,7 @@ class Game {
     this._liveControls.value = this.controlMode;
     this._liveView.value = this.viewMode;
     this._liveTheme.value = this.themeMode;
+    this._liveGamey.checked = this.gameyFeatures;
     this._liveSound.checked = !this.sound.muted;
     this._liveTrees.checked = this._treesEnabled.checked;
     this._liveDetailed3d.checked = this._detailed3d.checked;
@@ -414,6 +428,8 @@ class Game {
     this.routeOptions.arrow = this._liveArrow.checked;
     this.showMiniMap = this._liveMinimap.checked;
     this.routeOptions.minimap = this.showMiniMap;
+    this.gameyFeatures = this._liveGamey.checked;
+    this._gameyFeatures.checked = this.gameyFeatures;
     this.controlMode = this._liveControls.value;
     if (this.player) this.player.controlMode = this.controlMode;
     this.viewMode = this._liveView.value;
@@ -615,6 +631,7 @@ class Game {
       arrow: this._assistArrow.checked,
       minimap: this._assistMinimap.checked
     };
+    this.gameyFeatures = this._gameyFeatures.checked;
     this.travelMode = this._travelMode.value;
     this.controlMode = this._controlMode.value;
     this.viewMode = this._viewMode.value;
@@ -1230,7 +1247,7 @@ class Game {
     if (this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
       this.state = GameState.FINISHED;
       this.sound.silence();
-      this._ribbon = this._computeRouteRibbon();
+      this._ribbon = this.gameyFeatures ? this._computeRouteRibbon() : null;
       this._saveBestTime();
       this._explorationSnapshot = this._saveExploration();
     } else {
@@ -1328,11 +1345,15 @@ class Game {
       this.quizStreak++;
       if (this.quizStreak > this.quizBestStreak) this.quizBestStreak = this.quizStreak;
       const base = Math.round(100 * (DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85));
-      const streakMultiplier = 1 + 0.1 * Math.min(this.quizStreak - 1, 9);
+      // The combo multiplier is arcade scoring; calm mode still scores the
+      // answer so a mid-route toggle does not leave a hole in the tally.
+      const streakMultiplier = this.gameyFeatures ? 1 + 0.1 * Math.min(this.quizStreak - 1, 9) : 1;
       const earned = Math.round(base * streakMultiplier);
       this.quizPoints += earned;
       this.learnedNames.add(correctName);
-      if (this.quizStreak >= 2) {
+      if (!this.gameyFeatures) {
+        this.quizFeedback = `Correct — ${correctName}`;
+      } else if (this.quizStreak >= 2) {
         this.quizFeedback = `Correct — ${correctName}  (+${earned} pts, ${this.quizStreak}× streak)`;
       } else {
         this.quizFeedback = `Correct — ${correctName}  (+${earned} pts)`;
@@ -1544,7 +1565,7 @@ class Game {
     const { sorted, playerPos } = this._getPositions();
     this.hud.drawSpeedometer(ctx, this.player.speed, this.player.maxSpeed);
     this.hud.drawOdometer(ctx, this.player.distancePx);
-    this.hud.drawCanalScore(ctx, this.quizCorrect, this.quizAttempts, this.quizPoints, this.quizFeedback, this.quizStreak);
+    this.hud.drawCanalScore(ctx, this.quizCorrect, this.quizAttempts, this.quizPoints, this.quizFeedback, this.quizStreak, this.gameyFeatures);
     const visibleRouteName = this.quizPromptName ? '' : this.track.getRoadName(this.player.x, this.player.y);
     this.hud.drawCurrentLocation(ctx, visibleRouteName, this.currentNeighborhood, this.travelMode, !!this.quizPromptName);
     this.hud.drawDestination(ctx, this.routeTo.name, this.track.getDistanceToFinish(this.player.x, this.player.y));
@@ -1960,54 +1981,9 @@ class Game {
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
     const cx = CANVAS_W / 2;
+    const gamey = this.gameyFeatures;
     const hasExploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0;
-    const cardX = cx - 300, cardY = hasExploration ? 42 : 76, cardW = 600, cardH = hasExploration ? 652 : 570;
-    ctx.fillStyle = 'rgba(3,18,28,.94)';
-    roundRect(ctx, cardX, cardY, cardW, cardH, 18);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(56,189,248,.65)';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    ctx.fillStyle = '#FACC15';
-    ctx.font = 'bold 38px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('DESTINATION REACHED', cx, 145);
-    ctx.fillStyle = '#7DD3FC';
-    ctx.font = 'bold 15px monospace';
-    ctx.fillText(`${this.routeFrom.name}  →  ${this.routeTo.name}`, cx, 180);
-
-    ctx.fillStyle = '#94A3B8';
-    ctx.font = 'bold 12px monospace';
-    ctx.fillText('TIME', cx, 218);
-    ctx.font = 'bold 38px monospace';
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fillText(this.hud.formatTime(this.raceTime), cx, 258);
-
-    const meters = this.player.distancePx / PIXELS_PER_METER;
-    const kilometres = meters / 1000;
-    ctx.font = '14px monospace';
-    ctx.fillStyle = '#E0F2FE';
-    ctx.fillText(`${kilometres.toFixed(2)} km travelled`, cx, 292);
-
-    const recallNoun = this.travelMode === 'car' ? 'Street recall' : 'Canal recall';
-    ctx.fillStyle = 'rgba(14,116,144,.28)';
-    roundRect(ctx, cx - 235, 320, 470, 105, 10);
-    ctx.fill();
-    ctx.fillStyle = '#E0F2FE';
-    ctx.font = 'bold 17px monospace';
-    ctx.fillText(`${recallNoun}: ${this.quizCorrect} / ${this.quizAttempts}`, cx, 348);
-    ctx.fillStyle = '#FACC15';
-    ctx.font = 'bold 22px monospace';
-    ctx.fillText(`${this.quizPoints} points`, cx, 380);
-    const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
-    ctx.fillStyle = '#94A3B8';
-    ctx.font = '12px monospace';
-    const streakText = this.quizBestStreak >= 2 ? ` · Best streak: ${this.quizBestStreak}` : '';
-    ctx.fillText(`${accuracy}% accuracy${streakText}`, cx, 400);
-    ctx.fillText(`${this.routeDifficulty.toUpperCase()} · ${this.travelMode.toUpperCase()} · ${this.viewMode.replace('-', ' ').toUpperCase()}`, cx, 418);
-
-    this._renderRouteRibbon(ctx, cx - 235, 432, 470, 74);
+    const hasRibbon = gamey && !!this._ribbon;
 
     let bestText = '';
     if (this._raceKey) {
@@ -2018,28 +1994,113 @@ class Game {
         bestText = `Personal best: ${this.hud.formatTime(stored.time)}`;
       }
     }
-    ctx.fillStyle = bestText.startsWith('★') ? '#4ADE80' : '#7DD3FC';
-    ctx.font = 'bold 16px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText(bestText, cx, 528);
 
-    // Exploration collection summary
+    // The card grows and shrinks with the arcade layer, the personal-best
+    // line, and the exploration box, so lay it out from a running cursor
+    // rather than fixed offsets. Keep these increments in step with the
+    // cursor advances below.
+    const recallBoxH = gamey ? 105 : 78;
+    const ribbonBoxH = 74;
+    let cardH = 235 + recallBoxH + 40 + 34;
+    if (hasRibbon) cardH += ribbonBoxH + 12;
+    if (bestText) cardH += 36;
+    if (hasExploration) cardH += 58 + 13;
+    if (this._shareUrl) cardH += 30;
+    const cardY = clamp(Math.round((CANVAS_H - cardH) / 2), 20, CANVAS_H - cardH - 20);
+    const cardX = cx - 300, cardW = 600;
+
+    ctx.fillStyle = 'rgba(3,18,28,.94)';
+    roundRect(ctx, cardX, cardY, cardW, cardH, 18);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(56,189,248,.65)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    let y = cardY + 60;
+    ctx.fillStyle = '#FACC15';
+    ctx.font = 'bold 38px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('DESTINATION REACHED', cx, y);
+    y += 35;
+    ctx.fillStyle = '#7DD3FC';
+    ctx.font = 'bold 15px monospace';
+    ctx.fillText(`${this.routeFrom.name}  →  ${this.routeTo.name}`, cx, y);
+
+    y += 38;
+    ctx.fillStyle = '#94A3B8';
+    ctx.font = 'bold 12px monospace';
+    ctx.fillText('TIME', cx, y);
+    y += 40;
+    ctx.font = 'bold 38px monospace';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillText(this.hud.formatTime(this.raceTime), cx, y);
+
+    y += 34;
+    const kilometres = this.player.distancePx / PIXELS_PER_METER / 1000;
+    ctx.font = '14px monospace';
+    ctx.fillStyle = '#E0F2FE';
+    ctx.fillText(`${kilometres.toFixed(2)} km travelled`, cx, y);
+
+    // Recall summary. Points and the best-streak tally are arcade scoring and
+    // drop out in calm mode; the accuracy that measures learning stays.
+    y += 28;
+    const recallNoun = this.travelMode === 'car' ? 'Street recall' : 'Canal recall';
+    ctx.fillStyle = 'rgba(14,116,144,.28)';
+    roundRect(ctx, cx - 235, y, 470, recallBoxH, 10);
+    ctx.fill();
+    let inner = y + 28;
+    ctx.fillStyle = '#E0F2FE';
+    ctx.font = 'bold 17px monospace';
+    ctx.fillText(`${recallNoun}: ${this.quizCorrect} / ${this.quizAttempts}`, cx, inner);
+    if (gamey) {
+      inner += 32;
+      ctx.fillStyle = '#FACC15';
+      ctx.font = 'bold 22px monospace';
+      ctx.fillText(`${this.quizPoints} points`, cx, inner);
+    }
+    inner += 20;
+    const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
+    ctx.fillStyle = '#94A3B8';
+    ctx.font = '12px monospace';
+    const streakText = gamey && this.quizBestStreak >= 2 ? ` · Best streak: ${this.quizBestStreak}` : '';
+    ctx.fillText(`${accuracy}% accuracy${streakText}`, cx, inner);
+    inner += 18;
+    ctx.fillText(`${this.routeDifficulty.toUpperCase()} · ${this.travelMode.toUpperCase()} · ${this.viewMode.replace('-', ' ').toUpperCase()}`, cx, inner);
+    y += recallBoxH;
+
+    if (hasRibbon) {
+      y += 12;
+      this._renderRouteRibbon(ctx, cx - 235, y, 470, ribbonBoxH);
+      y += ribbonBoxH;
+    }
+
+    if (bestText) {
+      y += 36;
+      ctx.fillStyle = bestText.startsWith('★') ? '#4ADE80' : '#7DD3FC';
+      ctx.font = 'bold 16px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(bestText, cx, y);
+    }
+
+    // Exploration collection summary — learning progress, not arcade scoring,
+    // so it survives the calm mode.
     if (hasExploration) {
+      y += 13;
       const exp = this._explorationSnapshot;
       const totalKnown = exp.learnedWaterways.length + exp.learnedStreets.length;
       ctx.fillStyle = 'rgba(88,28,135,.25)';
-      roundRect(ctx, cx - 235, 541, 470, 58, 8);
+      roundRect(ctx, cx - 235, y, 470, 58, 8);
       ctx.fill();
       ctx.fillStyle = '#C4B5FD';
       ctx.font = 'bold 11px monospace';
-      ctx.fillText('CITY KNOWLEDGE', cx, 560);
+      ctx.fillText('CITY KNOWLEDGE', cx, y + 19);
       ctx.fillStyle = '#E0E7FF';
       ctx.font = '12px monospace';
       const parts = [];
       if (totalKnown > 0) parts.push(`${totalKnown} waterways`);
       if (exp.visitedNeighborhoods.length > 0) parts.push(`${exp.visitedNeighborhoods.length} neighborhoods`);
       if (exp.seenLandmarks.length > 0) parts.push(`${exp.seenLandmarks.length} landmarks`);
-      ctx.fillText(parts.join(' · ') || 'Start exploring!', cx, 582);
+      ctx.fillText(parts.join(' · ') || 'Start exploring!', cx, y + 41);
       const newThisRoute = [];
       if (this.learnedNames.size > 0) newThisRoute.push(`${this.learnedNames.size} names`);
       if (this._visitedNeighborhoods.size > 0) newThisRoute.push(`${this._visitedNeighborhoods.size} neighborhoods`);
@@ -2047,18 +2108,20 @@ class Game {
       if (newThisRoute.length > 0) {
         ctx.fillStyle = '#A78BFA';
         ctx.font = '11px monospace';
-        ctx.fillText(`+${newThisRoute.join(', +')} this route`, cx, 596);
+        ctx.fillText(`+${newThisRoute.join(', +')} this route`, cx, y + 55);
       }
+      y += 58;
     }
 
+    y += 40;
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 16px monospace';
-    const controlsY = hasExploration ? 636 : 566;
-    ctx.fillText('ENTER  Try again     ESC  Choose route', cx, controlsY);
+    ctx.fillText('ENTER  Try again     ESC  Choose route', cx, y);
     if (this._shareUrl) {
+      y += 30;
       ctx.fillStyle = this._copiedTimer > 0 ? '#4ADE80' : '#94A3B8';
       ctx.font = '13px monospace';
-      ctx.fillText(this._copiedTimer > 0 ? 'Race link copied' : 'C  Copy race link', cx, controlsY + 30);
+      ctx.fillText(this._copiedTimer > 0 ? 'Race link copied' : 'C  Copy race link', cx, y);
     }
   }
 
@@ -2684,9 +2747,10 @@ class Game {
   _computeRouteRibbon() {
     const axes = [];
 
-    if (this.quizAttempts > 0) {
-      axes.push({ id: 'recall', label: 'Recall', weight: 0.5, score: this.quizCorrect / this.quizAttempts });
-    }
+    // A route with no turns to name scores zero recall rather than being
+    // excluded, so it settles at ROUTE COMPLETE instead of a free gold.
+    const recall = this.quizAttempts > 0 ? this.quizCorrect / this.quizAttempts : 0;
+    axes.push({ id: 'recall', label: 'Recall', weight: 0.5, score: recall });
 
     const used = this._assistUsage || { line: false, arrow: false, minimap: false };
     let aidCost = 0;
@@ -2708,7 +2772,7 @@ class Game {
 
     const totalWeight = axes.reduce((sum, axis) => sum + axis.weight, 0);
     const score = totalWeight > 0 ? axes.reduce((sum, axis) => sum + axis.weight * axis.score, 0) / totalWeight : 0;
-    const tier = ROUTE_RIBBON_TIERS.find(entry => score >= entry.min);
+    const tier = ROUTE_RIBBON_TIERS.find(entry => score >= entry.min && recall >= entry.minRecall);
     return { ...tier, score, axes };
   }
 

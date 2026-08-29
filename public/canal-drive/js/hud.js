@@ -275,15 +275,16 @@ class HUD {
     ctx.fillText(name, x, y + 1);
   }
 
-  drawCanalScore(ctx, correct, attempts, points, feedback, streak = 0) {
-    const hasStreak = streak >= 2;
+  drawCanalScore(ctx, correct, attempts, points, feedback, streak = 0, gamey = true) {
+    const hasStreak = gamey && streak >= 2;
     ctx.fillStyle = 'rgba(3,18,28,0.82)';
     roundRect(ctx, 15, 15, 310, feedback ? 58 : 38, 8);
     ctx.fill();
     ctx.fillStyle = '#7DD3FC';
     ctx.font = 'bold 14px monospace';
     ctx.textAlign = 'left';
-    ctx.fillText(`CANAL RECALL   ${correct} / ${attempts}   ${points} pts`, 28, 40);
+    const tally = gamey ? `${correct} / ${attempts}   ${points} pts` : `${correct} / ${attempts}`;
+    ctx.fillText(`CANAL RECALL   ${tally}`, 28, 40);
     if (hasStreak) {
       ctx.fillStyle = '#FBBF24';
       ctx.font = 'bold 13px monospace';

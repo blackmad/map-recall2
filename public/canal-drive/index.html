@@ -44,6 +44,9 @@ canvas { display: block; position: relative; z-index: 2; }
 .route-surprise { display: flex; align-items: center; gap: 14px; margin: 14px 0 20px; padding: 14px 16px; border: 1px solid #39738d; border-radius: 12px; background: #0b2b3d; color: #dff5ff; }
 .route-surprise .route-icon { font-size: 30px; }
 .route-surprise strong { display: block; color: #7dd3fc; margin-bottom: 3px; }
+.master-toggle { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0; padding: 12px 14px; border: 1px solid #28556a; border-radius: 10px; color: #e0f2fe; font-size: 13px; cursor: pointer; }
+.master-toggle input { margin-top: 2px; }
+.master-toggle small { display: block; margin-top: 3px; color: #7dd3fc; font-size: 11px; font-weight: normal; line-height: 1.45; }
 .advanced-options { margin: 16px 0; border: 1px solid #28556a; border-radius: 10px; padding: 0 14px; }
 .advanced-options summary { padding: 13px 0; cursor: pointer; color: #bae6fd; font-weight: bold; }
 .advanced-options .setup-grid { padding-bottom: 14px; }
@@ -60,7 +63,7 @@ canvas { display: block; position: relative; z-index: 2; }
 #route-error { color: #fbbf24; min-height: 20px; margin-top: 10px; }
 #prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; color: #334155; font: 11px system-ui, sans-serif; background: rgba(255,255,255,.82); padding: 5px 8px; border-radius: 6px; }
 #prototype-links a { color: #0369a1; }
-@media (max-width: 760px) { .setup-grid { grid-template-columns: 1fr; } #route-card { padding: 20px; } #canal-prompt, #canal-prompt.dock-left { align-items: flex-end; justify-content: center; padding: 12px; background: linear-gradient(0deg, rgba(3,18,28,.68), transparent 62%); } #canal-card { width: min(96vw, 520px); padding: 18px; } #canal-choices { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) { .setup-grid { grid-template-columns: 1fr; } #route-card { padding: 20px; } #route-start { position: sticky; bottom: 0; z-index: 3; box-shadow: 0 -12px 24px #071e2b; } #canal-prompt, #canal-prompt.dock-left { align-items: flex-end; justify-content: center; padding: 12px; background: linear-gradient(0deg, rgba(3,18,28,.68), transparent 62%); } #canal-card { width: min(96vw, 520px); padding: 18px; } #canal-choices { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -96,6 +99,7 @@ canvas { display: block; position: relative; z-index: 2; }
       <input id="home-address" type="text" autocomplete="street-address" placeholder="Street and number, Amsterdam">
       <span style="font-size:11px;color:#7dd3fc">Saved on this device. Boat routes snap your address to nearby water.</span>
     </label>
+    <label class="master-toggle"><input id="gamey-features" type="checkbox" checked><span><strong>Game-y features</strong><small>Recall streaks, combo multipliers, points, and route ribbons. Turn off for a calm navigation-and-recall trip. Difficulty and navigation aids are unaffected.</small></span></label>
     <details class="advanced-options"><summary>⚙ Advanced options</summary>
       <div class="setup-grid">
         <label class="setup-field">ANSWERS<select id="answer-mode"><option value="multiple" selected>Multiple choice</option><option value="typing">Type the name</option></select></label>
@@ -117,6 +121,7 @@ canvas { display: block; position: relative; z-index: 2; }
 </div></div>
 <div id="settings-panel" class="utility-panel"><div class="utility-card">
   <h2>Navigation settings</h2>
+  <label class="master-toggle"><input id="live-gamey" type="checkbox"><span><strong>Game-y features</strong><small>Streaks, multipliers, points, and route ribbons.</small></span></label>
   <div class="assist-options"><label><input id="live-line" type="checkbox"> Route line</label><label><input id="live-arrow" type="checkbox"> Destination arrow</label><label><input id="live-minimap" type="checkbox"> Minimap</label><label style="display:none"><input id="live-trees" type="checkbox"> Trees in 3D</label><label><input id="live-detailed-3d" type="checkbox"> Detailed 3D beta</label><label><input id="live-sound" type="checkbox"> Sound</label></div>
   <label class="setup-field">CONTROLS<select id="live-controls"><option value="relative">Relative — steer vehicle</option><option value="absolute">Absolute — compass directions</option></select></label>
   <label class="setup-field">VIEW<select id="live-view"><option value="north">2D — north up</option><option value="heading">2D — heading up</option><option value="chase">3D — chase camera</option><option value="cockpit">3D — near first person</option></select></label>
@@ -164,6 +169,7 @@ canvas { display: block; position: relative; z-index: 2; }
 <script src="js/map-picker.js"></script>
 <script src="js/loading-screen.js"></script>
 <script src="js/car-road-guard.bundle.js"></script>
+<script src="js/building-style.bundle.js"></script>
 <script src="js/detailed-buildings.bundle.js"></script>
 <script src="js/vector-map.js"></script>
 
