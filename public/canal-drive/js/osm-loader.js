@@ -24,6 +24,20 @@ class OSMLoader {
       if (!response.ok) throw new Error(`Amsterdam water data: HTTP ${response.status}`);
       const features = await response.json();
       const ways = [];
+      // Stable per-name identity for the spaced-repetition store. The review
+      // key hashes the feature's centre, so it has to come from the extract
+      // rather than from wherever the player happens to be standing.
+      this.featureMeta = this.featureMeta || new Map();
+      for (const feature of features) {
+        if (feature.name && feature.center && !this.featureMeta.has(feature.name)) {
+          this.featureMeta.set(feature.name, {
+            name: feature.name,
+            type: feature.type || (travelMode === 'car' ? 'street' : 'canal'),
+            cityId: feature.cityId || 'amsterdam',
+            center: feature.center,
+          });
+        }
+      }
       for (const feature of features) {
         const paths = feature.paths || (feature.path ? [feature.path] : []);
         for (let pathIndex = 0; pathIndex < paths.length; pathIndex++) {
