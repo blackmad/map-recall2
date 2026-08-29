@@ -467,23 +467,31 @@ class Game {
     y += 20;
     ctx.fillStyle = '#FACC15';
     ctx.font = 'bold 12px monospace';
-    ctx.fillText('DESTINATIONS IN POOL', x, y); y += 16;
+    ctx.fillText(`POI DESTINATIONS (${CANAL_ROUTE_POIS.length})`, x, y); y += 14;
     ctx.fillStyle = '#E0F2FE';
     ctx.font = '10px monospace';
+    for (const poi of CANAL_ROUTE_POIS) {
+      const isCurrent = (this.routeFrom?.id === poi.id ? '> ' : this.routeTo?.id === poi.id ? '* ' : '  ');
+      ctx.fillText(`${isCurrent}${poi.name}`, x, y); y += 12;
+    }
+    y += 6;
+    ctx.fillStyle = '#FACC15';
+    ctx.font = 'bold 12px monospace';
+    const networkNames = new Set();
     if (this.track && this.track.segments) {
-      const names = new Set();
-      for (const seg of this.track.segments) {
-        if (seg.name) names.add(seg.name);
-      }
-      const sorted = [...names].sort();
-      const maxShow = Math.floor((CANVAS_H - y - 30) / 12);
-      for (let i = 0; i < Math.min(sorted.length, maxShow); i++) {
-        ctx.fillText(sorted[i], x, y);
-        y += 12;
-      }
-      if (sorted.length > maxShow) {
-        ctx.fillText(`... +${sorted.length - maxShow} more`, x, y);
-      }
+      for (const seg of this.track.segments) if (seg.name) networkNames.add(seg.name);
+    }
+    ctx.fillText(`NETWORK (${networkNames.size} named)`, x, y); y += 14;
+    ctx.fillStyle = '#E0F2FE';
+    ctx.font = '10px monospace';
+    const sorted = [...networkNames].sort();
+    const maxShow = Math.floor((CANVAS_H - y - 30) / 12);
+    for (let i = 0; i < Math.min(sorted.length, maxShow); i++) {
+      ctx.fillText(sorted[i], x, y);
+      y += 12;
+    }
+    if (sorted.length > maxShow) {
+      ctx.fillText(`... +${sorted.length - maxShow} more`, x, y);
     }
     ctx.restore();
   }
@@ -923,6 +931,7 @@ class Game {
       this.track = new RoadNetwork(segments, start, finish, tiles);
       if (this.travelMode === 'boat') this.track.waterTest = (x, y) => this.vectorMap.isWater(x, y, this.osmLoader);
       this.routePath = this.track.findRoute(start, finish);
+      if (!this.routePath || this.routePath.length < 2) console.warn('Route not found between start and finish — route line will not display');
       this.trackMode = TRACK_MODE_POINT_TO_POINT;
       this.renderer.preRenderTrack(this.track);
 
