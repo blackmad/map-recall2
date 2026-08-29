@@ -31,14 +31,23 @@ export function buildingColorExpression(theme: CanalTheme | string): MapLibreExp
   const materialMatch: unknown[] = ['match', ['downcase', ['coalesce', ['get', 'material'], '']]];
   for (const [material, color] of Object.entries(MATERIAL_COLORS)) materialMatch.push(material, color);
   materialMatch.push(heightFallback);
+  // OSM `colour` is free text: plenty of buildings carry values like "brick"
+  // or "light sandstone" that are not CSS colors. Feeding those straight to
+  // fill-extrusion-color makes MapLibre reject the whole expression with
+  // "Expected color but found null", which drops every building back to the
+  // style default. `to-color` with a fallback keeps the good values and
+  // quietly ignores the rest.
   return [
     'case',
-    ['has', 'colour'], ['get', 'colour'],
-    ['has', 'color'], ['get', 'color'],
+    ['has', 'colour'], ['to-color', ['get', 'colour'], THEME_DEFAULTS[selectedTheme]],
+    ['has', 'color'], ['to-color', ['get', 'color'], THEME_DEFAULTS[selectedTheme]],
     materialMatch,
   ];
 }
 
 export function buildingOpacity(theme: CanalTheme | string): number {
-  return theme === 'cyberpunk' ? 0.98 : 0.9;
+  // Fully opaque. Translucent fill-extrusions are not depth-sorted against
+  // each other, so overlapping footprints tore into visible streaks where
+  // one building showed through another.
+  return theme === 'cyberpunk' ? 0.98 : 1;
 }

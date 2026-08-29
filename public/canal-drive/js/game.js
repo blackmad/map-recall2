@@ -1,7 +1,7 @@
 // ============================================================
 // GAME
 // ============================================================
-const GameState = { MENU: 0, MAP_SELECT: 1, LOADING: 2, COUNTDOWN: 3, RACING: 4, FINISHED: 5, PAUSED: 6 };
+const GameState = { MENU: 0, MAP_SELECT: 1, LOADING: 2, RACING: 4, FINISHED: 5, PAUSED: 6 };
 Object.freeze(GameState);
 
 const CANAL_ROUTE_POIS = [
@@ -50,9 +50,14 @@ const AMSTERDAM_CENTRE = { lat: 52.3676, lng: 4.9041 };
 const ROUTE_POI_MAX_KM_FROM_CENTRE = 4;
 const ROUTE_POI_MAX_PAIR_KM = 6;
 const ROUTE_POI_CATALOG_URL = '../data/extracts/amsterdam/landmarks.json';
-// px (~13 m). Wide enough that a boat passing under a span or a car crossing
-// one registers, tight enough not to fire from the neighbouring quay.
-const BRIDGE_QUIZ_RADIUS = 40;
+// A bridge feature carries every way tagged bridge=yes under its name, which
+// includes long approach roads — one runs to 38 separate paths. Proximity to
+// any of them fired the question streets away from the actual span, so a boat
+// must genuinely cross the centreline and a car must be on it and aligned with
+// it. px; ~8 m.
+const BRIDGE_ALIGNED_RADIUS = 25;
+const BRIDGE_ALIGN_TOLERANCE = Math.PI / 4;
+const BRIDGE_LABEL_RANGE = 900; // px — keep named bridges labelled while nearby
 // How many nearby stand-in destinations to try before giving up on routing.
 const RETARGET_ATTEMPTS = 25;
 // A stranded origin is re-rolled at most this many times before we accept it.
@@ -81,8 +86,6 @@ class Game {
     this.particles = new ParticleSystem();
     this.sound = new SoundManager();
     this.state = GameState.MENU;
-    this.countdownTimer = 0;
-    this.countdownNum = 0;
     this.raceTime = 0;
     this.showMiniMap = true;
     this.cars = [];
@@ -121,6 +124,8 @@ class Game {
     this._plannedRouteLengthPx = 0;
     this.quizPromptKind = 'route';
     this._quizzedBridges = new Set();
+    this._learnedBridges = new Map();
+    this._pendingBridge = null;
     this.routePattern = 'surprise';
     this.homeBase = null;
     this.homeLeg = 'outbound';
@@ -741,6 +746,28 @@ class Game {
     return { poi: chosen.poi, finish: chosen.point, path: hit.path };
   }
 
+  // A bridge named correctly keeps its label, the same way a learned waterway
+  // does.
+  _renderBridgeLabels() {
+    if (!this._learnedBridges || this._learnedBridges.size === 0) return;
+    const ctx = this.ctx;
+    ctx.font = 'bold 11px monospace';
+    ctx.textAlign = 'center';
+    for (const bridge of this._learnedBridges.values()) {
+      const point = bridge.labelPoint;
+      if (!point) continue;
+      if (dist(point.x, point.y, this.player.x, this.player.y) > BRIDGE_LABEL_RANGE) continue;
+      const screen = this.camera.worldToScreen(point.x, point.y);
+      if (screen.x < 0 || screen.x > CANVAS_W || screen.y < 0 || screen.y > CANVAS_H) continue;
+      const width = ctx.measureText(bridge.name).width + 14;
+      ctx.fillStyle = 'rgba(3,18,28,0.78)';
+      roundRect(ctx, screen.x - width / 2, screen.y - 26, width, 18, 4);
+      ctx.fill();
+      ctx.fillStyle = '#FDE68A';
+      ctx.fillText(bridge.name, screen.x, screen.y - 13);
+    }
+  }
+
   // Draw the navigation line from the vehicle's current position rather than
   // from the original start, and re-route outright once the player has strayed
   // far enough that the remaining line would be misleading.
@@ -938,6 +965,8 @@ class Game {
     this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';
     this.quizPromptKind = 'route';
     this._quizzedBridges = new Set();
+    this._learnedBridges = new Map();
+    this._pendingBridge = null;
 
     // Ribbon scoring: aids can be toggled mid-route, so grade on whichever
     // ones were switched on at any point rather than on the final state.
@@ -1123,9 +1152,7 @@ class Game {
 
       await new Promise(r => setTimeout(r, 300));
 
-      this.state = GameState.COUNTDOWN;
-      this.countdownTimer = COUNTDOWN_TIME;
-      this.countdownNum = 3;
+      this.state = GameState.RACING;
 
     } catch (err) {
       console.error('OSM loading error:', err);
@@ -1200,20 +1227,6 @@ class Game {
         }
         break;
 
-      case GameState.COUNTDOWN:
-        this.countdownTimer -= dt;
-        const newNum = Math.ceil(this.countdownTimer);
-        if (newNum !== this.countdownNum && newNum >= 1) {
-          this.countdownNum = newNum;
-          this.sound.playBeep(440, 0.15);
-        }
-        if (this.countdownTimer <= 0) {
-          this.state = GameState.RACING;
-          this.sound.playBeep(880, 0.3);
-        }
-        this.camera.update(this.player, dt);
-        break;
-
       case GameState.RACING:
         if (this.input.wasPressed('KeyP') || this.input.wasPressed('Escape')) {
           this.state = GameState.PAUSED;
@@ -1247,9 +1260,7 @@ class Game {
           if (this.routePattern === 'home') { this._startNextHomeLeg(); break; }
           // Restart same track
           this._setupRace();
-          this.state = GameState.COUNTDOWN;
-          this.countdownTimer = COUNTDOWN_TIME;
-          this.countdownNum = 3;
+          this.state = GameState.RACING;
         }
         if (this.input.wasPressed('Escape')) {
           this.state = GameState.MENU;
@@ -1341,7 +1352,7 @@ class Game {
     if (this._zoomBadgeTimer > 0) this._zoomBadgeTimer -= dt;
     if (this._rerouteTimer > 0) this._rerouteTimer -= dt;
     this._updateLiveRouteLine();
-    this._updateBridgeQuiz();
+    this._updateBridgeQuiz(previousPlayerPosition);
     this._updateCanalQuiz(dt);
 
     this._updateLandmarks(dt);
@@ -1436,22 +1447,38 @@ class Game {
   // Ask which bridge this is when the player drives over one, or passes under
   // one by boat. Both cases are the same test: the hull or chassis crosses the
   // bridge's mapped centreline.
-  _updateBridgeQuiz() {
-    if (this.quizPromptName || !this.bridges.length) return;
+  _updateBridgeQuiz(previousPosition) {
+    if (this.quizPromptName || !this.bridges.length || !previousPosition) return;
     if (Math.abs(this.player.speed) < 5) return;
-    let closest = null, closestDistance = BRIDGE_QUIZ_RADIUS;
+    const movedBy = dist(previousPosition.x, previousPosition.y, this.player.x, this.player.y);
+    if (movedBy <= 0) return;
+    const byBoat = this.travelMode !== 'car';
+    let closest = null;
     for (const bridge of this.bridges) {
       if (this._quizzedBridges.has(bridge.id)) continue;
       for (const line of bridge.lines) {
-        for (let i = 1; i < line.length; i++) {
-          const hit = this.track._closestPointOnSeg(this.player.x, this.player.y, line[i - 1], line[i]);
-          if (hit.dist < closestDistance) { closestDistance = hit.dist; closest = bridge; }
+        for (let i = 1; i < line.length && !closest; i++) {
+          const a = line[i - 1], b = line[i];
+          if (byBoat) {
+            // Passing under: this step's travel actually crosses the span.
+            if (segmentsIntersect(previousPosition, this.player, a, b)) closest = bridge;
+          } else {
+            // Driving over: on the deck and heading along it, not across it.
+            const hit = this.track._closestPointOnSeg(this.player.x, this.player.y, a, b);
+            if (hit.dist > BRIDGE_ALIGNED_RADIUS) continue;
+            let delta = Math.abs(this.player.angle - Math.atan2(b.y - a.y, b.x - a.x)) % Math.PI;
+            if (delta > Math.PI / 2) delta = Math.PI - delta;
+            if (delta <= BRIDGE_ALIGN_TOLERANCE) closest = bridge;
+          }
         }
+        if (closest) break;
       }
+      if (closest) break;
     }
     if (!closest) return;
     this._quizzedBridges.add(closest.id);
-    this._bridgeNotice = closest;
+    closest.labelPoint = { x: this.player.x, y: this.player.y };
+    this._pendingBridge = closest;
     const alternatives = [...new Set(closest.distractors)]
       .filter(candidate => candidate && candidate !== closest.name)
       .sort(() => Math.random() - 0.5)
@@ -1530,7 +1557,12 @@ class Game {
     // A bridge is crossed, not travelled along: keep the waterway/street the
     // player is actually on, or the route quiz re-fires the moment the prompt
     // closes.
-    if (this.quizPromptKind !== 'bridge') this.quizCurrentName = correctName;
+    if (this.quizPromptKind !== 'bridge') {
+      this.quizCurrentName = correctName;
+    } else if (correct && this._pendingBridge) {
+      this._learnedBridges.set(this._pendingBridge.id, this._pendingBridge);
+    }
+    this._pendingBridge = null;
     this.quizPromptKind = 'route';
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
@@ -1678,6 +1710,7 @@ class Game {
     else this.renderer.drawCar(this.player, this.camera);
     this.renderer.drawParticles(this.particles, this.camera);
     if (this.travelMode !== 'car') this.track.drawLabels(ctx, this.camera, this.learnedNames);
+    this._renderBridgeLabels();
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) {
@@ -1762,11 +1795,6 @@ class Game {
     // Touch control zones hint (mobile, first 5 seconds of race)
     if (this.input.isMobile && this.input.showTouchHint && this.state === GameState.RACING) {
       this.hud.drawTouchHint(ctx);
-    }
-
-    // countdown overlay
-    if (this.state === GameState.COUNTDOWN) {
-      this._renderCountdown();
     }
 
     // pause overlay
@@ -2022,31 +2050,6 @@ class Game {
     this._githubLinkBounds = { x: ghX, y: CANVAS_H - 13, w: ghWidth, h: 16 };
   }
 
-  _renderCountdown() {
-    const ctx = this.ctx;
-    const num = Math.ceil(this.countdownTimer);
-    if (num >= 1 && num <= 3) {
-      const frac = this.countdownTimer % 1;
-      const scale = 1 + frac * 0.3;
-      ctx.save();
-      ctx.translate(CANVAS_W/2, CANVAS_H/2);
-      ctx.scale(scale, scale);
-      ctx.fillStyle = '#E53935';
-      ctx.font = 'bold 120px monospace';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.globalAlpha = 0.5 + frac * 0.5;
-      ctx.fillText(num + '', 0, 0);
-      ctx.restore();
-    } else if (num <= 0) {
-      ctx.fillStyle = '#4CAF50';
-      ctx.font = 'bold 80px monospace';
-      ctx.textAlign = 'center';
-      ctx.globalAlpha = clamp(this.countdownTimer + 1, 0, 1);
-      ctx.fillText('GO!', CANVAS_W/2, CANVAS_H/2);
-      ctx.globalAlpha = 1;
-    }
-  }
 
   _renderPaused() {
     const ctx = this.ctx;
