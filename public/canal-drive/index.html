@@ -22,8 +22,9 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 3; pointer-events
 canvas { display: block; position: relative; z-index: 2; }
 #vector-map { position: fixed; z-index: 1; pointer-events: none; }
 #map-container { border-radius: 0; }
-#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(3,18,28,.72); z-index: 20; font-family: ui-monospace, monospace; }
-#canal-card { width: min(92vw, 520px); background: #071e2b; color: white; border: 2px solid #38bdf8; border-radius: 18px; padding: 28px; box-shadow: 0 24px 80px rgba(0,0,0,.55); }
+#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: flex-end; padding: 24px 30px; background: linear-gradient(90deg, transparent 35%, rgba(3,18,28,.12) 58%, rgba(3,18,28,.62)); z-index: 20; font-family: ui-monospace, monospace; pointer-events: none; }
+#canal-prompt.dock-left { justify-content: flex-start; background: linear-gradient(270deg, transparent 35%, rgba(3,18,28,.12) 58%, rgba(3,18,28,.62)); }
+#canal-card { width: min(38vw, 440px); background: rgba(7,30,43,.96); color: white; border: 2px solid #38bdf8; border-radius: 18px; padding: 24px; box-shadow: 0 24px 80px rgba(0,0,0,.55); pointer-events: auto; }
 #canal-card h2 { color: #7dd3fc; margin-bottom: 8px; }
 #canal-card p { color: #bae6fd; margin-bottom: 18px; }
 #canal-answer { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid #38bdf8; font: 18px ui-monospace, monospace; margin-bottom: 12px; }
@@ -59,7 +60,7 @@ canvas { display: block; position: relative; z-index: 2; }
 #route-error { color: #fbbf24; min-height: 20px; margin-top: 10px; }
 #prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; color: #334155; font: 11px system-ui, sans-serif; background: rgba(255,255,255,.82); padding: 5px 8px; border-radius: 6px; }
 #prototype-links a { color: #0369a1; }
-@media (max-width: 620px) { .setup-grid { grid-template-columns: 1fr; } #route-card { padding: 20px; } #canal-choices { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .setup-grid { grid-template-columns: 1fr; } #route-card { padding: 20px; } #canal-prompt, #canal-prompt.dock-left { align-items: flex-end; justify-content: center; padding: 12px; background: linear-gradient(0deg, rgba(3,18,28,.68), transparent 62%); } #canal-card { width: min(96vw, 520px); padding: 18px; } #canal-choices { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>

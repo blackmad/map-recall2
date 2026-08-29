@@ -203,11 +203,14 @@ class Renderer {
         const point = camera.worldToScreen(segment.points[i].x, segment.points[i].y);
         ctx.lineTo(point.x, point.y);
       }
-      ctx.strokeStyle = `rgba(255,255,255,${0.55 + pulse * 0.35})`;
-      ctx.lineWidth = 12 + pulse * 4;
+      ctx.strokeStyle = `rgba(250,204,21,${0.72 + pulse * 0.25})`;
+      ctx.lineWidth = 22 + pulse * 6;
       ctx.stroke();
-      ctx.strokeStyle = `rgba(14,165,233,${0.8 + pulse * 0.2})`;
-      ctx.lineWidth = 6 + pulse * 2;
+      ctx.strokeStyle = `rgba(255,255,255,${0.9 + pulse * 0.1})`;
+      ctx.lineWidth = 11 + pulse * 2;
+      ctx.stroke();
+      ctx.strokeStyle = '#0EA5E9';
+      ctx.lineWidth = 6;
       ctx.stroke();
     }
     ctx.restore();
