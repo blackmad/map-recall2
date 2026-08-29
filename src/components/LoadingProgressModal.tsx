@@ -24,25 +24,21 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
   return (
     <div
       id="loading-progress-modal-backdrop"
-      className="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-fadeIn"
+      className="fixed inset-0 bg-stone-900/30 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
     >
       <div
         id="loading-progress-card"
-        className="w-full max-w-md bg-slate-900 border border-slate-700/80 rounded-3xl p-6 shadow-2xl space-y-5 text-white relative overflow-hidden"
+        className="app-dialog w-full max-w-md p-6 space-y-5 relative overflow-hidden"
       >
-        {/* Animated Background Glow */}
-        <div className="absolute -top-16 -right-16 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
-
         {/* Top Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/30 animate-pulse">
+            <div className="w-10 h-10 rounded-full bg-emerald-900 flex items-center justify-center">
               <Compass className="w-5 h-5 text-white" />
             </div>
             <div>
               <h3 className="font-extrabold text-base sm:text-lg text-slate-100">
-                Loading Map Features
+                Preparing your quiz
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
                 <MapPin className="w-3.5 h-3.5 text-blue-400" />
@@ -76,7 +72,7 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
           {/* Progress Bar Container */}
           <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700/60">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 transition-all duration-300 ease-out shadow-sm"
+            className="h-full rounded-full bg-emerald-700 transition-all duration-300 ease-out"
               style={{ width: `${percent}%` }}
             />
           </div>
@@ -90,8 +86,8 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
 
         {/* Explanatory Footer */}
         <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1">
-          <span>Querying Overpass OpenStreetMap API</span>
-          <span>Lightweight & fast</span>
+          <span>OpenStreetMap data</span>
+          <span>You can cancel at any time</span>
         </div>
       </div>
     </div>

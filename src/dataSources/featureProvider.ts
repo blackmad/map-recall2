@@ -85,12 +85,15 @@ export async function fetchQuizAreas(cityId: string, center?: [number, number]):
 }
 
 export async function fetchQuizFeatures(request: FeatureRequest): Promise<StreetFeature[]> {
-  const amsterdamAreas = !request.forceRefresh ? await fetchQuizAreas(request.cityId, request.center) : null;
-  if (amsterdamAreas) {
+  const inAmsterdamExtract = request.cityId === 'amsterdam'
+    || (request.center[0] >= 52.27 && request.center[0] <= 52.45 && request.center[1] >= 4.70 && request.center[1] <= 5.11);
+  if (inAmsterdamExtract) {
     request.onProgress?.({ percent: 30, message: 'Loading Amsterdam extract…', subMessage: 'Using the locally hosted quiz dataset' });
+    const amsterdamAreas = await loadAmsterdamAreas();
     const extracted = await loadAmsterdamExtract(request.category);
-    if (extracted) {
-      const neighborhoods = amsterdamAreas.filter(({ kind, geometry }) => kind !== 'municipality' && geometry);
+    if (!extracted) throw new Error(`The local Amsterdam ${request.category} dataset is unavailable. No Overpass request was made.`);
+    {
+      const neighborhoods = (amsterdamAreas || []).filter(({ kind, geometry }) => kind !== 'municipality' && geometry);
       const enriched = extracted.map((feature) => {
         const containing = neighborhoods.filter(({ geometry }) => pointInBoundary(feature.center, geometry!)).sort((a, b) => {
           const size = (area: AdministrativeArea) => area.bounds
@@ -125,7 +128,7 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
           difficulty: 'medium',
           prominenceScore: area.kind === 'quarter' ? 65 : 55,
         }));
-      const selectedArea = amsterdamAreas.find(({ id }) => id === request.areaId);
+      const selectedArea = amsterdamAreas?.find(({ id }) => id === request.areaId);
       const allFeatures = [...enriched, ...neighborhoodFeatures];
       const features = selectedArea?.geometry
         ? allFeatures.filter((feature) => pointInBoundary(feature.center, selectedArea.geometry!)

@@ -50,7 +50,9 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
 
   // Trigger celebration confetti
   useEffect(() => {
-    sounds.playBullseye();
+    if (percentage >= 70) sounds.playBullseye();
+    else sounds.playSuccess();
+    if (percentage < 70) return;
     try {
       confetti({
         particleCount: 70,
@@ -63,23 +65,23 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
   }, []);
 
   // Title / Rank
-  let rankTitle = 'Street Explorer';
-  let rankColor = 'text-blue-400';
+  let rankTitle = 'A useful first pass';
+  let rankColor = 'text-stone-600';
 
   if (percentage >= 90) {
-    rankTitle = 'Master Urban Cartographer 🗺️';
-    rankColor = 'text-amber-400';
+    rankTitle = 'You know this map';
+    rankColor = 'text-emerald-800';
   } else if (percentage >= 70) {
-    rankTitle = 'Senior City Navigator 🧭';
-    rankColor = 'text-emerald-400';
+    rankTitle = 'Strong sense of place';
+    rankColor = 'text-emerald-700';
   } else if (percentage >= 45) {
-    rankTitle = 'Urban Traveler 🚶';
-    rankColor = 'text-blue-400';
+    rankTitle = 'Getting your bearings';
+    rankColor = 'text-stone-700';
   }
 
   // Average distance off (for pinpoint mode)
   const averageDistanceError =
-    gameMode === 'pinpoint'
+    gameMode !== 'guess_name'
       ? Math.round(
           roundResults.reduce((acc, r) => acc + (r.distanceErrorMeters || 0), 0) /
             (roundResults.length || 1)
@@ -93,7 +95,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
         <button
           id="toggle-map-inspect-btn"
           onClick={() => setIsMapInspectMode(!isMapInspectMode)}
-          className="px-4 py-2 rounded-full bg-slate-900/95 text-white font-bold text-xs sm:text-sm border border-blue-500/50 shadow-2xl flex items-center gap-2 backdrop-blur-md hover:bg-slate-800 transition hover:scale-105 active:scale-95 cursor-pointer ring-2 ring-blue-500/20"
+          className="button-secondary bg-white/95 px-4 py-2 text-xs sm:text-sm font-semibold shadow-sm flex items-center gap-2 backdrop-blur-md transition cursor-pointer"
         >
           {isMapInspectMode ? (
             <>
@@ -103,7 +105,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
           ) : (
             <>
               <Map className="w-4 h-4 text-blue-400" />
-              <span>Inspect All Traces on Map 🗺️</span>
+              <span>Review guesses on map</span>
             </>
           )}
         </button>
@@ -127,14 +129,14 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
         >
           <div
             id="game-over-modal"
-            className="w-full max-w-lg bg-slate-900 text-white rounded-3xl p-4 sm:p-6 shadow-2xl border border-slate-800 my-auto space-y-4 max-h-[88vh] overflow-y-auto"
+            className="app-dialog w-full max-w-lg p-4 sm:p-6 my-auto space-y-4 max-h-[88vh] overflow-y-auto"
           >
             {/* Header Ribbon */}
             <div className="text-center space-y-1">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 shadow-lg shadow-amber-500/20 mb-0.5">
+              <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-amber-100 text-amber-800 mb-1">
                 <Trophy className="w-6 h-6" />
               </div>
-              <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white">Quiz Completed!</h2>
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-stone-800">Round complete</h2>
               <div className={`text-sm sm:text-base font-bold ${rankColor}`}>{rankTitle}</div>
               <div className="flex items-center justify-center gap-2 pt-1">
                 <span className="px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 text-xs font-semibold border border-slate-700">
@@ -169,15 +171,15 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
 
               <div className="bg-slate-800/80 p-2.5 rounded-2xl border border-slate-700/60 text-center">
                 <div className="text-[10px] text-slate-400 font-medium">
-                  {gameMode === 'pinpoint' ? 'Avg. Error' : 'City'}
+                  {gameMode !== 'guess_name' ? 'Avg. Error' : 'City'}
                 </div>
                 <div className="text-xs sm:text-sm font-black text-blue-400 tracking-tight truncate pt-1">
-                  {gameMode === 'pinpoint' && averageDistanceError !== null
+                  {gameMode !== 'guess_name' && averageDistanceError !== null
                     ? formatDistance(averageDistanceError, unit)
                     : currentCity.name}
                 </div>
                 <div className="text-[9px] text-slate-500 capitalize">
-                  {gameMode === 'pinpoint' ? 'Avg Dist' : 'Guess Mode'}
+                  {gameMode !== 'guess_name' ? 'Average distance' : 'Guess mode'}
                 </div>
               </div>
             </div>
@@ -242,7 +244,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
               <button
                 id="play-again-btn"
                 onClick={onPlayAgain}
-                className="w-full sm:flex-1 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition cursor-pointer"
+                className="button-primary w-full sm:flex-1 py-2.5 text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer"
               >
                 <RotateCcw className="w-4 h-4" />
                 <span>Play Again</span>
@@ -251,7 +253,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
               <button
                 id="switch-mode-btn"
                 onClick={() => onSwitchMode(gameMode === 'pinpoint' ? 'guess_name' : 'pinpoint')}
-                className="w-full sm:flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 flex items-center justify-center gap-1.5 transition cursor-pointer"
+                className="button-secondary w-full sm:flex-1 py-2.5 font-semibold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer"
               >
                 {gameMode === 'pinpoint' ? <Target className="w-3.5 h-3.5 text-blue-400" /> : <MapPin className="w-3.5 h-3.5 text-emerald-400" />}
                 <span>Try {gameMode === 'pinpoint' ? 'Guess Name' : 'Pinpoint'}</span>

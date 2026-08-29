@@ -42,21 +42,21 @@ function getFeatureColors(type: string) {
   switch (type) {
     case 'canal':
     case 'water':
-      return { core: '#0284c7', glow: '#38bdf8', fill: '#0ea5e9' }; // Azure/Cyan water
+      return { core: '#397080', glow: '#a8c8cf', fill: '#6f9eaa' };
     case 'bridge':
-      return { core: '#d97706', glow: '#f59e0b', fill: '#fbbf24' }; // Amber/Orange
+      return { core: '#a66d2f', glow: '#dcc6a3', fill: '#c7914f' };
     case 'park':
-      return { core: '#059669', glow: '#10b981', fill: '#34d399' }; // Emerald
+      return { core: '#47735b', glow: '#b7cdbc', fill: '#6f967d' };
     case 'square':
     case 'monument':
     case 'museum':
     case 'landmark':
-      return { core: '#7c3aed', glow: '#a855f7', fill: '#c084fc' }; // Purple
+      return { core: '#765f6f', glow: '#d5c7d1', fill: '#9c8295' };
     case 'street':
     case 'avenue':
     case 'boulevard':
     default:
-      return { core: '#2563eb', glow: '#3b82f6', fill: '#60a5fa' }; // Royal Blue
+      return { core: '#4e6c77', glow: '#c3d0d3', fill: '#78939c' };
   }
 }
 
@@ -227,23 +227,23 @@ export const MapComponent: React.FC<MapComponentProps> = ({
 
     const boundaryShape = activeBoundary.geometry
       ? L.polygon(activeBoundary.geometry, {
-          color: '#7c3aed', weight: fetchingBoundary ? 2.5 : 1.5, dashArray: '8, 8',
-          fillColor: '#8b5cf6', fillOpacity: fetchingBoundary ? 0.08 : 0.025,
+          color: '#6d796f', weight: fetchingBoundary ? 2.5 : 1.5, dashArray: '8, 8',
+          fillColor: '#7d8d81', fillOpacity: fetchingBoundary ? 0.08 : 0.025,
         })
       : activeBoundary.bounds
       ? L.rectangle(activeBoundary.bounds, {
-          color: '#7c3aed',
+          color: '#6d796f',
           weight: fetchingBoundary ? 2.5 : 1.5,
           dashArray: '8, 8',
-          fillColor: '#8b5cf6',
+          fillColor: '#7d8d81',
           fillOpacity: fetchingBoundary ? 0.08 : 0.025,
         })
       : L.circle(activeBoundary.center, {
       radius: activeBoundary.radiusMeters,
-      color: '#0284c7',
+      color: '#5d7f72',
       weight: fetchingBoundary ? 2.5 : 1.5,
       dashArray: '8, 8',
-      fillColor: '#38bdf8',
+      fillColor: '#91aa9e',
       fillOpacity: fetchingBoundary ? 0.1 : 0.035,
     });
     group.addLayer(boundaryShape);
@@ -365,7 +365,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
       // Highlight the target feature prominently
       if (polylinesToRender) {
         const casingLine = L.polyline(polylinesToRender, {
-          color: '#0f172a',
+          color: '#26372f',
           weight: 14,
           opacity: 0.82,
           lineCap: 'round',
@@ -418,8 +418,8 @@ export const MapComponent: React.FC<MapComponentProps> = ({
         const revealIcon = L.divIcon({
           className: 'custom-map-icon',
           html: `
-            <div class="inline-flex px-3 py-1.5 rounded-lg bg-slate-950 text-white font-bold text-xs shadow-2xl border-2 border-cyan-400 items-center gap-1.5 whitespace-nowrap">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <div class="inline-flex px-3 py-1.5 rounded-lg bg-[#fffdf8] text-[#24322b] font-bold text-xs shadow-lg border border-[#978f81] items-center gap-1.5 whitespace-nowrap">
+              <span class="w-2 h-2 rounded-full bg-[#c75f43]"></span>
               <span>${currentFeature.name}</span>
             </div>
           `,
@@ -454,11 +454,11 @@ export const MapComponent: React.FC<MapComponentProps> = ({
                 <!-- Drop shadow ring -->
                 <ellipse cx="16" cy="40" rx="4" ry="2" fill="rgba(15, 23, 42, 0.35)" />
                 <!-- Pin Body with Needle Tip -->
-                <path d="M16 0C7.16344 0 0 7.16344 0 16C0 26.5 14.5 39.5 15.35 40.25C15.73 40.58 16.27 40.58 16.65 40.25C17.5 39.5 32 26.5 32 16C32 7.16344 24.8366 0 16 0Z" fill="#E11D48" />
+                <path d="M16 0C7.16344 0 0 7.16344 0 16C0 26.5 14.5 39.5 15.35 40.25C15.73 40.58 16.27 40.58 16.65 40.25C17.5 39.5 32 26.5 32 16C32 7.16344 24.8366 0 16 0Z" fill="#C75F43" />
                 <path d="M16 1C7.71573 1 1 7.71573 1 16C1 25.8 14.8 38.3 16 39.35C17.2 38.3 31 25.8 31 16C31 7.71573 24.2843 1 16 1Z" stroke="#FFFFFF" stroke-width="1.5" />
                 <!-- Center Target Dot -->
                 <circle cx="16" cy="15" r="5.5" fill="#FFFFFF" />
-                <circle cx="16" cy="15" r="2.5" fill="#E11D48" />
+                <circle cx="16" cy="15" r="2.5" fill="#C75F43" />
               </svg>
             </div>
           `,
@@ -478,8 +478,8 @@ export const MapComponent: React.FC<MapComponentProps> = ({
           className: 'custom-true-target-icon',
           html: `
             <div style="display:flex;align-items:center;gap:7px;transform:translate(8px,-46px);white-space:nowrap;filter:drop-shadow(0 4px 8px rgb(0 0 0 / .65));">
-              ${polylinesToRender ? '' : '<span style="display:block;width:22px;height:22px;flex:none;border-radius:999px;background:transparent;border:4px solid #10b981;box-shadow:0 0 0 3px #f8fafc;"></span>'}
-              <span style="display:block;border:2px solid #67e8f9;border-radius:8px;background:#020617;padding:5px 9px;color:#fff;font:800 13px/1.1 'Plus Jakarta Sans',sans-serif;letter-spacing:.01em;text-shadow:0 1px 2px #000;">${currentFeature.name}</span>
+              ${polylinesToRender ? '' : '<span style="display:block;width:18px;height:18px;flex:none;border-radius:999px;background:#fffdf8;border:4px solid #356653;box-shadow:0 1px 4px rgb(0 0 0 / .25);"></span>'}
+              <span style="display:block;border:1px solid #978f81;border-radius:8px;background:#fffdf8;padding:6px 10px;color:#24322b;font:800 13px/1.1 'Plus Jakarta Sans',sans-serif;letter-spacing:.01em;box-shadow:0 4px 12px rgb(58 50 36 / .2);">${currentFeature.name}</span>
             </div>
           `,
           iconSize: [240, 40],
@@ -491,7 +491,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
         // Draw street path / feature polyline (multi-polyline safe)
         if (polylinesToRender) {
           const streetCasing = L.polyline(polylinesToRender, {
-            color: '#020617',
+            color: '#26372f',
             weight: 14,
             opacity: 0.92,
             lineCap: 'round',
@@ -499,7 +499,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
           });
           group.addLayer(streetCasing);
           const streetPath = L.polyline(polylinesToRender, {
-            color: '#10b981',
+            color: '#5a9a78',
             weight: 7,
             opacity: 1,
             lineCap: 'round',
@@ -517,7 +517,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
             currentFeature.paths
           );
           const connectingLine = L.polyline([userPinnedLocation, nearestTargetPoint], {
-            color: '#f43f5e',
+            color: '#c75f43',
             weight: 3,
             dashArray: '6, 8',
             opacity: 0.85,

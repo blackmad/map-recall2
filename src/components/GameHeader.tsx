@@ -109,7 +109,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   // Compute feature counts per category for the current city
   const categoryCounts = useMemo(() => {
     const counts: Record<FeatureCategory, number> = {
-      all: currentCity.features.length,
+      all: currentCity.features.filter((feature) => feature.type !== 'neighborhood').length,
       water: 0,
       streets: 0,
       bridges: 0,
@@ -138,13 +138,13 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       {/* STRICT SINGLE-LINE HEADER */}
       <header
         id="app-game-header"
-        className="w-full h-12 sm:h-14 bg-slate-900/95 text-white backdrop-blur-md border-b border-slate-800/80 z-30 shadow-md flex items-center px-3 sm:px-4"
+        className="w-full h-12 sm:h-14 backdrop-blur-md border-b z-30 flex items-center px-3 sm:px-4"
       >
         <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-2">
           {/* Left: Compact Logo, City Selector, Scope Toggle & Feature Type Pill */}
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
             <div className="flex items-center gap-1.5 flex-shrink-0">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-sm">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-900 flex items-center justify-center">
                 <Compass className="w-4 h-4 text-white" />
               </div>
               <span className="font-extrabold tracking-tight text-sm sm:text-base text-slate-100 hidden md:inline">
@@ -153,7 +153,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             </div>
 
             {/* Compact City Dropdown Pill */}
-            <div className="relative flex items-center min-w-0 max-w-[125px] sm:max-w-[170px]">
+            <div className="relative flex items-center min-w-0 max-w-[105px] sm:max-w-[170px]">
               <select
                 id="city-select-dropdown"
                 value={currentCity.id}
@@ -162,7 +162,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 title={`Current Location: ${currentCity.name}`}
               >
                 {cities.map((city) => (
-                  <option key={city.id} value={city.id} className="bg-slate-900 text-white">
+                  <option key={city.id} value={city.id} className="bg-stone-50 text-stone-800">
                     {city.name} {city.countryCode ? `(${city.countryCode})` : ''}
                   </option>
                 ))}
@@ -173,7 +173,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {searchRadiusMeters && (
               <button
                 onClick={() => setIsSearchAreaOpen((open) => !open)}
-                className={`hidden sm:flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-semibold border whitespace-nowrap transition cursor-pointer ${
+                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-semibold border whitespace-nowrap transition cursor-pointer ${
                   showSearchBoundary
                     ? 'bg-cyan-950/70 text-cyan-200 border-cyan-700/60'
                     : 'bg-slate-800/70 text-slate-400 border-slate-700/60'
@@ -181,7 +181,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 title="Adjust search radius or administrative boundary"
               >
                 <Ruler className="w-3 h-3" />
-                <span className="max-w-28 truncate">{activeAdministrativeArea ? activeAdministrativeArea.name : `${(searchRadiusMeters / 1000).toFixed(1)} km radius`}</span>
+                <span className="hidden sm:block max-w-28 truncate">{activeAdministrativeArea ? activeAdministrativeArea.name : `${(searchRadiusMeters / 1000).toFixed(1)} km radius`}</span>
               </button>
             )}
 
@@ -200,7 +200,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             )}
 
             {/* Feature Type Quick Filter Badge / Dropdown */}
-            <div className="relative flex items-center min-w-0 max-w-[105px] sm:max-w-[145px]">
+            {gameMode !== 'guess_neighborhood' && <div className="relative flex items-center min-w-0 max-w-[105px] sm:max-w-[145px]">
               <select
                 id="feature-category-dropdown"
                 value={selectedCategory}
@@ -218,7 +218,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     <option
                       key={cat.id}
                       value={cat.id}
-                      className="bg-slate-900 text-white"
+                      className="bg-stone-50 text-stone-800"
                     >
                       {cat.icon} {cat.shortLabel} {cat.id !== 'all' ? `(${count})` : ''}
                     </option>
@@ -226,8 +226,8 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 })}
               </select>
               <span className="absolute right-1.5 pointer-events-none text-[9px] text-slate-400">▼</span>
-            </div>
-            <button
+            </div>}
+            {gameMode !== 'guess_neighborhood' && <button
               onClick={onToggleLinkedFeaturesOnly}
               className={`hidden sm:block rounded-lg border px-2 py-1 text-[11px] font-bold transition cursor-pointer ${linkedFeaturesOnly
                 ? 'border-violet-400/70 bg-violet-600 text-white'
@@ -235,13 +235,13 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               title="Only quiz features linked to Wikipedia or Wikidata"
             >
               Wiki
-            </button>
+            </button>}
           </div>
 
           {/* Center/Right: Inline Mode (Desktop only) + Score & Round + Menu Button */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
             {/* Desktop Mode Toggle Pills */}
-            <div className="hidden lg:flex items-center bg-slate-800/90 p-0.5 rounded-lg border border-slate-700/80">
+            <div id="game-mode-switcher" className="hidden lg:flex items-center gap-1">
               <button
                 onClick={() => {
                   if (gameMode !== 'pinpoint') {
@@ -278,7 +278,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <button
                 onClick={() => gameMode !== 'guess_neighborhood' && onChangeMode('guess_neighborhood')}
                 className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold transition ${gameMode === 'guess_neighborhood' ? 'bg-violet-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'}`}
-                title="Guess which neighborhood contains the highlighted feature"
+                title="Place neighborhood boundaries on the map"
               >
                 <Compass className="w-3 h-3" />
                 <span>Neighborhood</span>
@@ -288,14 +288,11 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {/* Score & Round Badge */}
             <div
               id="header-score-badge"
-              className="flex items-center gap-1.5 bg-slate-800/90 px-2 sm:px-2.5 py-1 rounded-lg border border-slate-700/70 text-xs"
+              className="hidden sm:flex items-center gap-1.5 bg-slate-800/90 px-2 sm:px-2.5 py-1 rounded-lg border border-slate-700/70 text-xs"
+              title={`Round ${currentRound} of ${totalRounds}`}
             >
-              <span className="text-slate-300 font-medium whitespace-nowrap">
-                R<strong>{currentRound}</strong>/{totalRounds}
-              </span>
-              <span className="text-slate-600">|</span>
               <span className="text-amber-400 font-black whitespace-nowrap">
-                {totalScore.toLocaleString()} <span className="text-[9px] font-normal text-amber-300/70">PTS</span>
+                {totalScore.toLocaleString()} <span className="text-[9px] font-normal opacity-60">pts</span>
               </span>
             </div>
 
@@ -316,7 +313,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               id="header-sound-btn"
               onClick={onToggleMute}
               title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
-              className="p-1.5 rounded-lg bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700/60 transition cursor-pointer"
+              className="hidden sm:block p-1.5 rounded-lg bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700/60 transition cursor-pointer"
             >
               {isMuted ? <VolumeX className="w-3.5 h-3.5 text-rose-400" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
             </button>
@@ -335,7 +332,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       </header>
 
       {isSearchAreaOpen && searchRadiusMeters && (
-        <div className="fixed top-14 sm:top-16 left-2 sm:left-1/2 sm:-translate-x-1/2 z-50 w-[calc(100%-1rem)] sm:w-80 rounded-2xl border border-slate-700 bg-slate-900/98 p-3.5 text-white shadow-2xl backdrop-blur-xl space-y-3">
+        <div className="app-dialog fixed top-14 sm:top-16 left-2 sm:left-1/2 sm:-translate-x-1/2 z-50 w-[calc(100%-1rem)] sm:w-80 p-3.5 space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-sm font-bold flex items-center gap-2"><Ruler className="w-4 h-4 text-cyan-400" />Search area</span>
             <button onClick={() => setIsSearchAreaOpen(false)} className="text-slate-400 hover:text-white cursor-pointer"><X className="w-4 h-4" /></button>
@@ -403,7 +400,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
         >
           <div
             id="header-overflow-panel"
-            className="w-full max-w-sm bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-2xl border border-slate-800 space-y-4 max-h-[92vh] overflow-y-auto"
+            className="app-dialog w-full max-w-sm p-4 sm:p-5 space-y-4 max-h-[92vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Drawer Header */}
@@ -443,7 +440,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             </div>
 
             {/* Location Scope Selector (Neighborhood vs Whole City) */}
-            <div className="space-y-1.5">
+            <div className="hidden">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
                   <Compass className="w-3 h-3 text-blue-400" />
@@ -508,7 +505,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
                   <Filter className="w-3 h-3 text-blue-400" />
-                  <span>Feature Type Focus</span>
+                  <span>Question pool</span>
                 </label>
                 <span className="text-[11px] text-blue-400 font-medium">
                   {categoryCounts[selectedCategory] || 0} features
@@ -523,7 +520,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 <span className="font-bold">Wikipedia / Wikidata only</span>
                 <span className="mt-0.5 block text-[10px] opacity-75">Use OSM features linked to an encyclopedia record</span>
               </button>
-              <div className="grid grid-cols-2 gap-1.5">
+              <div className="hidden">
                 {FEATURE_CATEGORIES.map((cat) => {
                   const count = categoryCounts[cat.id] || 0;
                   // Zero means "not loaded yet", not "unavailable". Selecting it
@@ -565,7 +562,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   );
                 })}
               </div>
-              <p className="text-[11px] text-slate-400">
+              <p className="hidden">
                 {activeCategoryInfo.description}
               </p>
             </div>
@@ -645,7 +642,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 className="w-full p-2.5 text-xs font-semibold bg-slate-800 text-slate-100 rounded-xl border border-slate-700 hover:border-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
               >
                 {cities.map((city) => (
-                  <option key={city.id} value={city.id} className="bg-slate-900 text-white">
+                  <option key={city.id} value={city.id} className="bg-stone-50 text-stone-800">
                     {city.name} {city.countryCode ? `(${city.countryCode})` : ''}
                   </option>
                 ))}
@@ -653,7 +650,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             </div>
 
             {/* Label-less Base Map Toggle */}
-            <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/70 border border-slate-700/60">
+            <div className="hidden">
               <div className="space-y-0.5 pr-2">
                 <div className="font-semibold text-xs text-slate-100 flex items-center gap-1.5">
                   <EyeOff className="w-3.5 h-3.5 text-amber-400" />
@@ -676,7 +673,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             </div>
 
             {/* Tile Style Theme */}
-            <div className="space-y-1.5">
+            <div className="hidden">
               <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Map Style</label>
               <div className="grid grid-cols-2 gap-1.5">
                 {(
@@ -703,7 +700,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             </div>
 
             {/* Distance Unit Toggle */}
-            <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/70 border border-slate-700/60">
+            <div className="hidden">
               <div className="font-semibold text-xs text-slate-100 flex items-center gap-1.5">
                 <Ruler className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Units</span>
@@ -736,7 +733,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   setIsMenuOpen(false);
                   onOpenDebugPlaces();
                 }}
-                className="w-full py-2.5 bg-blue-950/60 hover:bg-blue-900/80 text-blue-300 hover:text-blue-100 rounded-xl text-xs font-semibold border border-blue-500/40 flex items-center justify-center gap-2 transition cursor-pointer"
+                className="hidden"
               >
                 <Database className="w-3.5 h-3.5 text-blue-400" />
                 <span>Debug Loaded Places ({categoryCounts['all'] || currentCity.features.length})</span>
@@ -749,10 +746,10 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 setIsMenuOpen(false);
                 onOpenSettings();
               }}
-              className="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-xl text-xs font-semibold border border-slate-700 flex items-center justify-center gap-2 transition cursor-pointer"
+              className="button-secondary w-full py-2.5 text-xs font-semibold flex items-center justify-center gap-2 transition cursor-pointer"
             >
               <Settings className="w-3.5 h-3.5 text-slate-400" />
-              <span>Full Quiz Settings</span>
+              <span>Quiz and map settings</span>
             </button>
           </div>
         </div>
