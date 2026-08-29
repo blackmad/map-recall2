@@ -15,6 +15,20 @@ test('first launch is playable without an account', async ({ page }) => {
   await expect(page.locator('text=Sign in').first()).toBeHidden();
 });
 
+test('a clean first launch stays in Amsterdam and starts from the local extract', async ({ page }) => {
+  let overpassRequests = 0;
+  await page.route(/overpass/i, (route) => {
+    overpassRequests += 1;
+    return route.abort();
+  });
+  await quietExternalRequests(page);
+  await page.goto('/');
+  await page.getByRole('button', { name: /Canals & Water/ }).click();
+  await expect(page.locator('#target-feature-name')).toBeVisible();
+  expect(new URL(page.url()).searchParams.get('city')).toBe('amsterdam');
+  expect(overpassRequests).toBe(0);
+});
+
 test('Amsterdam uses the local extract and never contacts Overpass', async ({ page }) => {
   let overpassRequests = 0;
   await page.route(/overpass/i, (route) => {
