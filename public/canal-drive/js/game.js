@@ -64,7 +64,6 @@ const RETARGET_ATTEMPTS = 25;
 const MAX_ROUTE_REROLLS = 2;
 const CONTROLS_HINT_DURATION = 12;   // seconds the keyboard hint stays on screen
 const ZOOM_BADGE_DURATION = 1.4;     // seconds the zoom percentage lingers
-const LIVE_ROUTE_REBUILD_DIST = 40;    // px of travel before the line head is redrawn
 const LIVE_ROUTE_OFF_ROUTE_DIST = 140; // px off the path before a full reroute
 const LIVE_ROUTE_REROUTE_INTERVAL = 2; // seconds between reroute attempts
 
@@ -119,7 +118,7 @@ class Game {
     this._zoomBadgeTimer = 0;
     this._lastZoomShown = null;
     this._liveRoutePath = null;
-    this._liveRouteAnchor = null;
+    this._liveRouteIndex = -1;
     this._rerouteTimer = 0;
     this._plannedRouteLengthPx = 0;
     this.quizPromptKind = 'route';
@@ -312,6 +311,7 @@ class Game {
         };
       }
     }
+    this._ensureLandmarkSummary(nearest);
     this._landmarkNotice = nearest;
     this._landmarkNoticeTimer = 8;
     this._landmarkNoticeDuration = 8;
@@ -325,6 +325,31 @@ class Game {
   // nearest landmark to the clicked footprint.
   // The extract carries a Wikipedia URL for 236 of its 300 landmarks, which
   // the canvas card cannot make clickable — so offer it on a key instead.
+  // Only 112 of the 300 landmarks ship an extract, so the rest showed a bare
+  // name. Wikipedia's REST summary endpoint sends CORS headers, so the missing
+  // text can be fetched on demand — no proxy, one request per landmark, cached
+  // for the session.
+  _ensureLandmarkSummary(landmark) {
+    if (!landmark || landmark.longDetail || !landmark.wikipedia) return;
+    this._summaryRequests = this._summaryRequests || new Set();
+    if (this._summaryRequests.has(landmark.id)) return;
+    this._summaryRequests.add(landmark.id);
+    const [lang, ...rest] = landmark.wikipedia.split(':');
+    const title = rest.join(':') || landmark.name;
+    if (!lang || !title) return;
+    const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, '_'))}`;
+    fetch(url, { headers: { accept: 'application/json' } })
+      .then(response => (response.ok ? response.json() : null))
+      .then(data => {
+        const extract = data && data.extract;
+        if (!extract) return;
+        const sentences = extract.split(/(?<=[.!?])\s/);
+        landmark.detail = sentences[0].slice(0, 150);
+        landmark.longDetail = sentences.slice(0, 3).join(' ').slice(0, 280);
+      })
+      .catch(() => { /* the card falls back to its name */ });
+  }
+
   _openLandmarkArticle() {
     const url = this._landmarkNotice && this._landmarkNoticeTimer > 0 && this._landmarkNotice.wikipediaUrl;
     if (!url) return;
@@ -857,19 +882,17 @@ class Game {
       if (fresh && fresh.length >= 2) {
         this.routePath = fresh;
         bestIndex = 0;
-        this._liveRouteAnchor = null;
+        this._liveRouteIndex = -1;
       }
     }
-    // Rebuilding the GeoJSON every frame would thrash the map source, so only
-    // redraw once the head has actually moved.
-    const anchor = this._liveRouteAnchor;
-    if (anchor && this._liveRoutePath
-        && dist(anchor.x, anchor.y, this.player.x, this.player.y) <= LIVE_ROUTE_REBUILD_DIST) return;
-    this._liveRouteAnchor = { x: this.player.x, y: this.player.y };
-    const ahead = this.routePath.slice(bestIndex + 1);
-    this._liveRoutePath = ahead.length >= 1
-      ? [{ x: this.player.x, y: this.player.y }, ...ahead]
-      : [{ x: this.player.x, y: this.player.y }, this.track.finishPoint];
+    // The line is anchored to route vertices rather than to the player. Giving
+    // it a head at the player's exact position meant redrawing every 40 px of
+    // travel, which read as a jerk; trimming whole vertices as they are passed
+    // only changes the geometry at junctions, where it is invisible.
+    if (this._liveRouteIndex === bestIndex && this._liveRoutePath) return;
+    this._liveRouteIndex = bestIndex;
+    const ahead = this.routePath.slice(bestIndex);
+    this._liveRoutePath = ahead.length >= 2 ? ahead : [this.routePath[this.routePath.length - 1], this.track.finishPoint];
   }
 
   // Great-circle-ish distance in km; fine at city scale.
@@ -2472,7 +2495,7 @@ class Game {
         if (!geometryFeatures.length) geometryFeatures.push({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [center[1], center[0]] } });
         const shortDetail = detail.split(/(?<=[.!?])\s/)[0].slice(0, 150);
         const longDetail = detail.split(/(?<=[.!?])\s/).slice(0, 3).join(' ').slice(0, 280);
-        return { id: feature.id, name: feature.name, type: feature.type || '', imageUrl: feature.wikipediaImageUrl || '', x: point.x, y: point.y, lngLat: [center[1], center[0]], detail: shortDetail, longDetail, prominenceScore: feature.prominenceScore || 0, wikipediaUrl: feature.wikipediaUrl || '', wikidata: feature.wikidata || '', geojson: { type: 'FeatureCollection', features: geometryFeatures } };
+        return { id: feature.id, name: feature.name, type: feature.type || '', imageUrl: feature.wikipediaImageUrl || '', x: point.x, y: point.y, lngLat: [center[1], center[0]], detail: shortDetail, longDetail, prominenceScore: feature.prominenceScore || 0, wikipediaUrl: feature.wikipediaUrl || '', wikidata: feature.wikidata || '', wikipedia: feature.wikipedia || '', geojson: { type: 'FeatureCollection', features: geometryFeatures } };
       }).filter(Boolean);
       // Preload images for top landmarks by prominence (non-blocking)
       this._landmarkImages = new Map();
@@ -2564,6 +2587,7 @@ class Game {
     if (nearest) {
       this._seenLandmarks.add(nearest.id);
       this._seenLandmarkNames.add(nearest.name);
+      this._ensureLandmarkSummary(nearest);
       this._landmarkNotice = nearest;
       this._landmarkNoticeTimer = 6;
       this._landmarkNoticeDuration = 6;
