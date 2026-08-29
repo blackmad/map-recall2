@@ -41,8 +41,8 @@ const GRID_CELL = 200;                         // px — collision grid cell siz
 // --- Car Physics ---
 const CAR_WIDTH = 18;                          // px — boat beam
 const CAR_LENGTH = 44;                         // px — boat length
-const CAR_MAX_SPEED = 105;                     // px/s (~35 m/s game scale)
-const CAR_ACCEL = 48;                          // px/s²
+const CAR_MAX_SPEED = 205;                     // px/s — fast arcade boat pace
+const CAR_ACCEL = 98;                          // px/s² — reach the higher cap promptly
 const CAR_BRAKE_FORCE = 75;                    // px/s² / reverse thrust
 const CAR_TURN_RATE = 1.45;                    // rad/s
 const CAR_GRIP = 1.0;                          // multiplier (1.0 = full grip)
@@ -155,6 +155,7 @@ const OFF_ROAD_PUSH_SPEED = 1.5;              // px — curb correction push
 const OFF_ROAD_SPEED_DECAY = 0.98;             // speed multiplier on curb
 const MIN_START_FINISH_DIST = 200;             // px — minimum distance between start and finish
 const MAX_SNAP_DIST = 800;                     // px — POIs may sit a short walk from the water
+const HOME_MAX_SNAP_DIST = 240;                // px (~80 m) — never teleport a home launch across the neighborhood
 const LEADERBOARD_MAX_ENTRIES = 50;             // max stored best times (LRU eviction)
 const LEADERBOARD_STORAGE_KEY = 'satb_bestTimes'; // localStorage key
 

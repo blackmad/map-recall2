@@ -179,6 +179,7 @@ class RoadNetwork {
               angle: Math.atan2(rdy, rdx),
               width: road.width,
               segIdx: road.segIdx,
+              ptIdx: road.ptIdx,
               nx: -rdy / len, ny: rdx / len
             };
           }
@@ -196,6 +197,46 @@ class RoadNetwork {
     if (!info || info.dist > info.width + 20) return '';
     const seg = this.segments[info.segIdx];
     return (seg && seg.name) ? seg.name : '';
+  }
+
+  // Return the connected run of same-name OSM ways containing the triggering
+  // segment. OSM commonly splits one canal at bridges and tag boundaries, so
+  // one visible feature is often several source paths.
+  getConnectedNamedSegments(seedIndex) {
+    const seed = this.segments[seedIndex];
+    if (!seed || !seed.name) return [];
+    const mergeSize = 18;
+    const endpointCells = segment => {
+      const points = segment.points || [];
+      if (!points.length) return [];
+      const cell = point => ({ x: Math.round(point.x / mergeSize), y: Math.round(point.y / mergeSize) });
+      return [cell(points[0]), cell(points[points.length - 1])];
+    };
+    const buckets = new Map();
+    this.segments.forEach((segment, index) => {
+      if (segment.name !== seed.name) return;
+      for (const cell of endpointCells(segment)) {
+        const key = `${cell.x},${cell.y}`;
+        if (!buckets.has(key)) buckets.set(key, []);
+        buckets.get(key).push(index);
+      }
+    });
+    const connected = [];
+    const seen = new Set([seedIndex]);
+    const queue = [seedIndex];
+    while (queue.length) {
+      const index = queue.shift();
+      connected.push(this.segments[index]);
+      for (const cell of endpointCells(this.segments[index])) {
+        for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+          const key = `${cell.x + dx},${cell.y + dy}`;
+          for (const neighbor of buckets.get(key) || []) {
+            if (!seen.has(neighbor)) { seen.add(neighbor); queue.push(neighbor); }
+          }
+        }
+      }
+    }
+    return connected;
   }
 
   // Distance from (x,y) to the finish point
@@ -507,13 +548,10 @@ class RoadNetwork {
     if (this.labels && this.labels.length > 0) {
       for (const lbl of this.labels) {
         if (learnedNames && !learnedNames.has(lbl.text)) continue;
-        const sx = lbl.x - camera.x;
-        const sy = lbl.y - camera.y;
-        if (sx < -halfW || sx > halfW || sy < -halfH || sy > halfH) continue;
-
         const screen = camera.worldToScreen(lbl.x, lbl.y);
         const screenX = screen.x;
         const screenY = screen.y;
+        if (screenX < -150 || screenX > CANVAS_W + 150 || screenY < -150 || screenY > CANVAS_H + 150) continue;
 
         // Estimate label bounding box in screen space for overlap check
         const tw = ctx.measureText(lbl.text).width;
@@ -563,13 +601,11 @@ class RoadNetwork {
   }
 
   _drawScreenLabel(ctx, camera, point, text, color, halfW, halfH) {
-    const sx = point.x - camera.x;
-    const sy = point.y - camera.y;
-    if (sx < -halfW || sx > halfW || sy < -halfH || sy > halfH) return;
-
     const z = camera.zoom || 1;
-    const screenX = sx * z + CANVAS_W / 2;
-    const screenY = sy * z + CANVAS_H / 2;
+    const screen = camera.worldToScreen(point.x, point.y);
+    const screenX = screen.x;
+    const screenY = screen.y;
+    if (screenX < -150 || screenX > CANVAS_W + 150 || screenY < -150 || screenY > CANVAS_H + 150) return;
 
     ctx.save();
     const fs = Math.max(9, Math.round(12 * z));

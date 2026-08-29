@@ -262,7 +262,7 @@ class OSMLoader {
   }
 
   // Convert a lat/lng to the nearest road point in game coordinates
-  latLngToGamePoint(lat, lng, centerLat, centerLng, segments) {
+  latLngToGamePoint(lat, lng, centerLat, centerLng, segments, maxSnapDist = MAX_SNAP_DIST) {
     const metersPerDegreeLat = 111320;
     const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
     // Convert to raw game coords (before centering offset)
@@ -282,8 +282,8 @@ class OSMLoader {
       }
     }
     // Reject if snapped point is too far from the clicked location
-    if (!bestPt || bestDist > MAX_SNAP_DIST) return null;
-    return bestPt;
+    if (!bestPt || bestDist > maxSnapDist) return null;
+    return { ...bestPt, snapDistance: bestDist };
   }
 
   _closestOnSeg(px, py, a, b) {

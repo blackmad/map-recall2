@@ -187,20 +187,26 @@ class Renderer {
     ctx.restore();
   }
 
-  drawQuestionFeature(camera, track, featureName, time) {
+  drawQuestionFeature(camera, track, featureName, segmentIndex, pointIndex, time) {
     if (!featureName || !track || !track.segments) return;
+    const seed = track.segments[segmentIndex];
+    if (!seed || seed.name !== featureName || !seed.points || seed.points.length < 2) return;
+    const segments = track.getConnectedNamedSegments ? track.getConnectedNamedSegments(segmentIndex) : [seed];
     const ctx = this.ctx;
     const pulse = 0.5 + 0.5 * Math.sin(time * 5);
+    // Highlight the full connected feature, including OSM fragments split at
+    // bridges, without pulling in disconnected same-name waterways elsewhere.
     ctx.save();
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    for (const segment of track.segments) {
-      if (segment.name !== featureName || !segment.points || segment.points.length < 2) continue;
-      const first = camera.worldToScreen(segment.points[0].x, segment.points[0].y);
+    for (const segment of segments) {
+      const points = segment.points;
+      if (!points || points.length < 2) continue;
+      const first = camera.worldToScreen(points[0].x, points[0].y);
       ctx.beginPath();
       ctx.moveTo(first.x, first.y);
-      for (let i = 1; i < segment.points.length; i++) {
-        const point = camera.worldToScreen(segment.points[i].x, segment.points[i].y);
+      for (let i = 1; i < points.length; i++) {
+        const point = camera.worldToScreen(points[i].x, points[i].y);
         ctx.lineTo(point.x, point.y);
       }
       ctx.strokeStyle = `rgba(250,204,21,${0.72 + pulse * 0.25})`;

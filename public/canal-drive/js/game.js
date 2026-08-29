@@ -26,7 +26,7 @@ const DIFFICULTY_PRESETS = {
 };
 const DIFFICULTY_SCORE_MULTIPLIERS = { easy: 0.5, medium: 0.75, hard: 1, expert: 1.25, custom: 0.85 };
 const CANAL_PREFS_KEY = 'canalRecall.preferences.v1';
-const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v1';
+const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v2';
 
 class Game {
   constructor() {
@@ -61,6 +61,8 @@ class Game {
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
     this.quizPromptName = '';
+    this.quizPromptSegmentIndex = -1;
+    this.quizPromptPointIndex = 0;
     this.quizCorrect = 0;
     this.quizAttempts = 0;
     this.quizPoints = 0;
@@ -107,6 +109,7 @@ class Game {
     this._seenLandmarks = new Set();
     this._landmarkNotice = null;
     this._landmarkNoticeTimer = 0;
+    this._landmarkNoticeDuration = 6;
     this._previousNeighborhood = '';
     this._neighborhoodNotice = '';
     this._neighborhoodNoticeTimer = 0;
@@ -176,7 +179,7 @@ class Game {
   }
 
   _setupCameraGestures() {
-    let dragging = false, lastX = 0, lastY = 0;
+    let dragging = false, moved = false, lastX = 0, lastY = 0, downX = 0, downY = 0;
     this.canvas.addEventListener('wheel', event => {
       if (this.state === GameState.MENU) return;
       event.preventDefault();
@@ -189,15 +192,46 @@ class Game {
     }, { passive: false });
     this.canvas.addEventListener('pointerdown', event => {
       if (event.button !== 0 || this.state === GameState.MENU) return;
-      dragging = true; lastX = event.clientX; lastY = event.clientY;
+      dragging = true; moved = false; downX = lastX = event.clientX; downY = lastY = event.clientY;
       this.canvas.setPointerCapture(event.pointerId);
     });
     this.canvas.addEventListener('pointermove', event => {
       if (!dragging) return;
+      if (Math.hypot(event.clientX - downX, event.clientY - downY) > 6) moved = true;
       this.camera.pan(lastX - event.clientX, lastY - event.clientY);
       lastX = event.clientX; lastY = event.clientY;
     });
-    this.canvas.addEventListener('pointerup', () => { dragging = false; });
+    this.canvas.addEventListener('pointerup', event => {
+      if (dragging && !moved) this._inspectBuildingAt(event.clientX, event.clientY);
+      dragging = false;
+    });
+  }
+
+  _inspectBuildingAt(clientX, clientY) {
+    if (!this.player || this.quizPromptName || this._utilityOpen) return;
+    const rect = this.canvas.getBoundingClientRect();
+    const screen = { x: (clientX - rect.left) * CANVAS_W / rect.width, y: (clientY - rect.top) * CANVAS_H / rect.height };
+    let nearest = null, nearestDistance = 48;
+    for (const landmark of this.landmarks) {
+      const point = this.camera.worldToScreen(landmark.x, landmark.y);
+      const distance = Math.hypot(point.x - screen.x, point.y - screen.y);
+      if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
+    }
+    if (!nearest) {
+      const building = this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect);
+      if (!building) return;
+      nearest = {
+        id: `clicked-${building.id || building.lngLat.join('-')}`,
+        name: building.name || 'Unnamed building',
+        detail: building.name ? 'Mapped building — click nearby landmarks to learn more.' : 'This building has no name in OpenStreetMap yet.',
+        lngLat: building.lngLat,
+        geojson: { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: building.lngLat } }] }
+      };
+    }
+    this._landmarkNotice = nearest;
+    this._landmarkNoticeTimer = 8;
+    this._landmarkNoticeDuration = 8;
+    this.vectorMap.setActiveLandmark(nearest);
   }
 
   _setupRouteForm() {
@@ -216,6 +250,7 @@ class Game {
     this._assistMinimap = document.getElementById('assist-minimap');
     this._soundEnabled = document.getElementById('sound-enabled');
     this._treesEnabled = document.getElementById('trees-enabled');
+    this._detailed3d = document.getElementById('detailed-3d');
     this._cameraZoom = document.getElementById('camera-zoom');
     this._routePattern = document.getElementById('route-pattern');
     this._homeAddressField = document.getElementById('home-address-field');
@@ -263,6 +298,7 @@ class Game {
       if (typeof prefs.minimap === 'boolean') this._assistMinimap.checked = prefs.minimap;
       this._soundEnabled.checked = prefs.sound === true;
       this._treesEnabled.checked = prefs.trees !== false;
+      this._detailed3d.checked = prefs.detailed3d === true;
       if (Number.isFinite(prefs.zoom)) {
         const migratedZoom = prefs.zoomDefaultVersion !== 2 && prefs.zoom === 0.65 ? CAMERA_ZOOM_INITIAL : prefs.zoom;
         this.camera.zoom = clamp(migratedZoom, this.camera.minZoom, this.camera.maxZoom);
@@ -287,6 +323,7 @@ class Game {
       arrow: !!this.routeOptions.arrow,
       minimap: !!this.routeOptions.minimap,
       trees: this._treesEnabled ? this._treesEnabled.checked : true,
+      detailed3d: this._detailed3d ? this._detailed3d.checked : false,
       sound: !this.sound.muted,
       zoom: this.camera.zoom,
       zoomDefaultVersion: 2
@@ -301,6 +338,7 @@ class Game {
     this._liveMinimap = document.getElementById('live-minimap');
     this._liveSound = document.getElementById('live-sound');
     this._liveTrees = document.getElementById('live-trees');
+    this._liveDetailed3d = document.getElementById('live-detailed-3d');
     this._liveZoom = document.getElementById('live-zoom');
     this._liveControls = document.getElementById('live-controls');
     this._liveView = document.getElementById('live-view');
@@ -308,7 +346,7 @@ class Game {
     document.getElementById('open-help').addEventListener('click', () => this._toggleUtilityPanel(this._helpPanel));
     document.getElementById('open-settings').addEventListener('click', () => this._toggleUtilityPanel(this._settingsPanel));
     document.querySelectorAll('.utility-close').forEach(button => button.addEventListener('click', () => this._closeUtilityPanels()));
-    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveTrees, this._liveSound, this._liveZoom]) {
+    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveTrees, this._liveDetailed3d, this._liveSound, this._liveZoom]) {
       control.addEventListener('change', () => this._readLiveSettings());
     }
     this._liveControls.addEventListener('change', () => this._readLiveSettings());
@@ -325,6 +363,7 @@ class Game {
     this._liveTheme.value = this.themeMode;
     this._liveSound.checked = !this.sound.muted;
     this._liveTrees.checked = this._treesEnabled.checked;
+    this._liveDetailed3d.checked = this._detailed3d.checked;
     this._liveZoom.value = String(this.camera.zoom);
   }
 
@@ -343,7 +382,9 @@ class Game {
     this.camera.zoom = Number(this._liveZoom.value);
     this._setSoundEnabled(this._liveSound.checked);
     this._treesEnabled.checked = this._liveTrees.checked;
-    this.vectorMap.setTreesVisible(this._liveTrees.checked && this.viewMode === 'chase');
+    this.vectorMap.setTreesVisible(this._liveTrees.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
+    this._detailed3d.checked = this._liveDetailed3d.checked;
+    this.vectorMap.setDetailedBuildingsVisible(this._liveDetailed3d.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this._savePreferences();
   }
 
@@ -387,17 +428,43 @@ class Game {
   }
 
   async _geocodeHomeAddress(address) {
-    const query = `${address.trim()}, Amsterdam, Netherlands`;
+    const rawAddress = address.trim();
+    const query = `${rawAddress}, Amsterdam`;
     const key = query.toLocaleLowerCase();
     let cache = {};
     try { cache = JSON.parse(localStorage.getItem(HOME_GEOCODE_CACHE_KEY) || '{}'); } catch (_) {}
     if (cache[key]) return cache[key];
-    const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&countrycodes=nl&limit=1&q=${encodeURIComponent(query)}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Address search is unavailable right now');
-    const results = await response.json();
-    if (!results.length) throw new Error('Could not find that Amsterdam address');
-    const home = { id: 'home', name: 'Home', address: address.trim(), lat: Number(results[0].lat), lng: Number(results[0].lon) };
+
+    // PDOK searches the Dutch BAG address registry and understands unit
+    // suffixes such as 13-3. Nominatim's free-form search can silently discard
+    // that number and return an arbitrary point along the entire street.
+    const pdokUrl = `https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=${encodeURIComponent(query)}&fq=type%3Aadres&rows=10`;
+    let resolved = null;
+    try {
+      const response = await fetch(pdokUrl);
+      if (response.ok) {
+        const payload = await response.json();
+        const docs = payload.response && payload.response.docs || [];
+        const requestedUnit = (rawAddress.match(/\b\d+[a-z]?(?:[-\s][a-z0-9]+)?\b/i) || [''])[0]
+          .replace(/\s+/g, '-').toLocaleLowerCase();
+        const result = docs.find(doc => String(doc.huis_nlt || '').toLocaleLowerCase() === requestedUnit) || docs[0];
+        const point = result && String(result.centroide_ll || '').match(/POINT\(([-\d.]+)\s+([-\d.]+)\)/);
+        if (point) resolved = { lat: Number(point[2]), lng: Number(point[1]), label: result.weergavenaam };
+      }
+    } catch (_) { /* bounded OSM fallback below */ }
+
+    if (!resolved) {
+      const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&countrycodes=nl&limit=3&bounded=1&viewbox=4.72,52.43,5.02,52.27&q=${encodeURIComponent(query)}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Address search is unavailable right now');
+      const results = await response.json();
+      const result = results.find(item => item.type === 'house') || results[0];
+      if (result) resolved = { lat: Number(result.lat), lng: Number(result.lon), label: result.display_name };
+    }
+    if (!resolved || !Number.isFinite(resolved.lat) || !Number.isFinite(resolved.lng)) {
+      throw new Error('Could not find that exact Amsterdam address');
+    }
+    const home = { id: 'home', name: 'Home', address: rawAddress, label: resolved.label, lat: resolved.lat, lng: resolved.lng };
     cache[key] = home;
     localStorage.setItem(HOME_GEOCODE_CACHE_KEY, JSON.stringify(cache));
     return home;
@@ -441,7 +508,8 @@ class Game {
     this.camera.northUp = this.viewMode === 'north';
     this.themeMode = this._themeMode.value;
     this.vectorMap.applyTheme(this.themeMode);
-    this.vectorMap.setTreesVisible(this._treesEnabled.checked && this.viewMode === 'chase');
+    this.vectorMap.setTreesVisible(this._treesEnabled.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
+    this.vectorMap.setDetailedBuildingsVisible(this._detailed3d.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     document.querySelector('#canal-card p').textContent = this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?';
     this.routeDifficulty = this._routeDifficulty.value;
     this.showMiniMap = this.routeOptions.minimap;
@@ -540,6 +608,8 @@ class Game {
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
     this.quizPromptName = '';
+    this.quizPromptSegmentIndex = -1;
+    this.quizPromptPointIndex = 0;
     this.quizCorrect = 0;
     this.quizAttempts = 0;
     this.quizPoints = 0;
@@ -716,8 +786,10 @@ class Game {
       let start, finish;
       if (startLL && finishLL) {
         // Convert user-picked lat/lng to game coordinates
-        start = this.osmLoader.latLngToGamePoint(startLL.lat, startLL.lng, lat, lng, segments);
-        finish = this.osmLoader.latLngToGamePoint(finishLL.lat, finishLL.lng, lat, lng, segments);
+        const startSnapLimit = this.routeFrom && this.routeFrom.id === 'home' ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
+        const finishSnapLimit = this.routeTo && this.routeTo.id === 'home' ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
+        start = this.osmLoader.latLngToGamePoint(startLL.lat, startLL.lng, lat, lng, segments, startSnapLimit);
+        finish = this.osmLoader.latLngToGamePoint(finishLL.lat, finishLL.lng, lat, lng, segments, finishSnapLimit);
       } else {
         const result = this.osmLoader.findStartFinish(segments);
         start = result.start;
@@ -731,7 +803,9 @@ class Game {
       }
 
       if (!start || !finish) {
-        this.loadingMessage = 'Could not place start/finish. Try different points.';
+        this.loadingMessage = this.routePattern === 'home'
+          ? 'That address is too far from a connected mapped waterway. Try a nearby bridge or canal-side address.'
+          : 'Could not place start/finish. Try different points.';
         setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 2500);
         return;
       }
@@ -815,7 +889,13 @@ class Game {
     if (this.input.wasPressed('Escape') && this._utilityOpen) { this._closeUtilityPanels(); return; }
     if (this._utilityOpen) return;
     if (this.input.wasPressed('Tab') || this.input.wasPressed('KeyM')) this.showMiniMap = !this.showMiniMap;
-    if (this.input.wasPressed('KeyL')) this.routeOptions.line = !this.routeOptions.line;
+    if (this.input.wasPressed('KeyL')) {
+      this.routeOptions.line = !this.routeOptions.line;
+      this._assistLine.checked = this.routeOptions.line;
+      this._liveLine.checked = this.routeOptions.line;
+      this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
+      this._savePreferences();
+    }
     if (this.input.wasPressed('KeyF')) this.routeOptions.arrow = !this.routeOptions.arrow;
     if (this.input.wasPressed('KeyO')) this.camera.northUp = !this.camera.northUp;
     if (this.input.wasPressed('KeyN')) { this._setSoundEnabled(this.sound.muted); this._savePreferences(); }
@@ -925,9 +1005,40 @@ class Game {
     }
 
     // Player boat update (Smokey's original vehicle controller)
+    const previousPlayerPosition = { x: this.player.x, y: this.player.y };
     this.sound.resume();
     this.player.handleInput(this.input);
     this.player.update(dt, this.track);
+    if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
+      // Do not let a fast frame step carry the boat across a quay. The old
+      // surface correction merely nudged it back toward a centreline, which
+      // could leave it visibly embedded in a block.
+      this.player.x = previousPlayerPosition.x;
+      this.player.y = previousPlayerPosition.y;
+      const road = this.track.getNearestRoad(this.player.x, this.player.y);
+      if (road) {
+        const inwardX = road.x - this.player.x;
+        const inwardY = road.y - this.player.y;
+        const inwardDistance = Math.hypot(inwardX, inwardY) || 1;
+        const correction = Math.min(3, inwardDistance);
+        this.player.x += inwardX / inwardDistance * correction;
+        this.player.y += inwardY / inwardDistance * correction;
+        const tangentX = Math.cos(road.angle), tangentY = Math.sin(road.angle);
+        const inwardUnitX = inwardX / inwardDistance, inwardUnitY = inwardY / inwardDistance;
+        const tangentVelocity = (this.player.vx * tangentX + this.player.vy * tangentY) * 0.92;
+        const inwardVelocity = this.player.vx * inwardUnitX + this.player.vy * inwardUnitY;
+        const reflectedInward = inwardVelocity < 0 ? -inwardVelocity * 0.32 : inwardVelocity;
+        this.player.vx = tangentX * tangentVelocity + inwardUnitX * reflectedInward;
+        this.player.vy = tangentY * tangentVelocity + inwardUnitY * reflectedInward;
+        const reflectedSpeed = Math.hypot(this.player.vx, this.player.vy);
+        if (reflectedSpeed > 0.1) this.player.angle = Math.atan2(this.player.vy, this.player.vx);
+        this.player.speed = Math.min(this.player.maxSpeed, reflectedSpeed);
+      } else {
+        this.player.speed = 0;
+        this.player.vx = 0;
+        this.player.vy = 0;
+      }
+    }
     this._updateCanalQuiz(dt);
 
     for (const car of this.cars) {
@@ -982,6 +1093,9 @@ class Game {
     if (this.quizCandidateTimer < 0.65 || Math.abs(this.player.speed) < 5) return;
 
     this.quizPromptName = name;
+    const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y);
+    this.quizPromptSegmentIndex = quizRoad ? quizRoad.segIdx : -1;
+    this.quizPromptPointIndex = quizRoad ? quizRoad.ptIdx : 0;
     this.player.speed = 0;
     this.player.vx = 0;
     this.player.vy = 0;
@@ -1046,6 +1160,8 @@ class Game {
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
     this.quizPromptName = '';
+    this.quizPromptSegmentIndex = -1;
+    this.quizPromptPointIndex = 0;
     setTimeout(() => {
       this._prompt.style.display = 'none';
       this.canvas.focus();
@@ -1102,6 +1218,31 @@ class Game {
         }
       }
     }
+  }
+
+  _boatFitsRenderedWater(boat) {
+    if (!this.vectorMap || !this.vectorMap.ready) return true;
+    const forwardX = Math.cos(boat.angle), forwardY = Math.sin(boat.angle);
+    const rightX = -forwardY, rightY = forwardX;
+    const halfLength = boat.length * 0.34;
+    const halfWidth = boat.width * 0.34;
+    const samples = [
+      [boat.x, boat.y],
+      [boat.x + forwardX * halfLength, boat.y + forwardY * halfLength],
+      [boat.x - forwardX * halfLength, boat.y - forwardY * halfLength],
+      [boat.x + rightX * halfWidth, boat.y + rightY * halfWidth],
+      [boat.x - rightX * halfWidth, boat.y - rightY * halfWidth]
+    ];
+    return samples.every(([x, y]) => {
+      if (this.vectorMap.isWater(x, y, this.osmLoader)) return true;
+      // Bridge decks are rendered above the water fill, so MapLibre reports
+      // the canal as dry at exactly the place a boat must pass underneath.
+      // Permit only a tight corridor around a mapped navigable centreline;
+      // unlike the old full-width fallback this cannot authorize roaming over
+      // adjacent blocks or quays.
+      const road = this.track.getNearestRoad(x, y);
+      return !!road && road.dist <= Math.min(road.width * 0.28, 13);
+    });
   }
 
   _updateCarCollisions() {
@@ -1185,7 +1326,10 @@ class Game {
     this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
 
     this.renderer.drawTrack(this.camera, this.track);
-    this.renderer.drawQuestionFeature(this.camera, this.track, this.quizPromptName, this.raceTime);
+    this.renderer.drawQuestionFeature(
+      this.camera, this.track, this.quizPromptName,
+      this.quizPromptSegmentIndex, this.quizPromptPointIndex, this.raceTime
+    );
     this.renderer.drawSkidMarks(this.particles, this.camera);
 
     const sortedCars = [...this.cars].sort((a, b) => a.y - b.y);
@@ -1213,7 +1357,8 @@ class Game {
     this.hud.drawSpeedometer(ctx, this.player.speed, this.player.maxSpeed);
     this.hud.drawOdometer(ctx, this.player.distancePx);
     this.hud.drawCanalScore(ctx, this.quizCorrect, this.quizAttempts, this.quizPoints, this.quizFeedback);
-    this.hud.drawCurrentLocation(ctx, this.track.getRoadName(this.player.x, this.player.y), this.currentNeighborhood, this.travelMode);
+    const visibleRouteName = this.quizPromptName ? '' : this.track.getRoadName(this.player.x, this.player.y);
+    this.hud.drawCurrentLocation(ctx, visibleRouteName, this.currentNeighborhood, this.travelMode, !!this.quizPromptName);
     this.hud.drawDestination(ctx, this.routeTo.name, this.track.getDistanceToFinish(this.player.x, this.player.y));
 
     if (this.routeOptions.arrow) {
@@ -1660,6 +1805,7 @@ class Game {
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
       const [features, boundaries, trees] = await Promise.all([landmarkResponse.json(), boundaryResponse.json(), treeResponse.ok ? treeResponse.json() : []]);
       this.vectorMap.setTrees(trees);
+      this.vectorMap.setPlaces(features, boundaries);
       this.landmarks = features.map(feature => {
         const center = feature.center || (feature.path && feature.path[0]);
         if (!center) return null;
@@ -1726,6 +1872,7 @@ class Game {
       this._seenLandmarks.add(nearest.id);
       this._landmarkNotice = nearest;
       this._landmarkNoticeTimer = 6;
+      this._landmarkNoticeDuration = 6;
       this.vectorMap.setActiveLandmark(nearest);
     }
   }
@@ -1742,7 +1889,7 @@ class Game {
   _renderLandmarkNotice() {
     if (!this._landmarkNotice) return;
     const ctx = this.ctx;
-    const alpha = Math.min(1, this._landmarkNoticeTimer, 6 - this._landmarkNoticeTimer);
+    const alpha = Math.min(1, this._landmarkNoticeTimer, this._landmarkNoticeDuration - this._landmarkNoticeTimer);
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
     ctx.fillStyle = 'rgba(3,18,28,.88)';

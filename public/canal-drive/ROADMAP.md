@@ -1,5 +1,34 @@
 # Canal Recall roadmap
 
+## Current implementation status
+
+Completed and being refined:
+
+- Live MapLibre vector map with north-up 2D and chase-camera 3D views.
+- Optional near-first-person 3D camera alongside the third-person chase view.
+- Boat recall routes, multiple-choice/typed answers, optional navigation aids, session-only learned labels, random POI trips, and repeatable home-base errands.
+- Connected quiz highlighting: the prompt follows all adjoining same-name OSM path fragments (including bridge/tag splits) without highlighting disconnected same-name features elsewhere.
+- Exact Dutch home-address lookup through the BAG/PDOK registry, including unit suffixes such as `13-3`; stale street-level geocoder results are versioned out.
+- OSM-derived tree cache, rendered only in 3D mode.
+- Neighborhood HUD/entry cards and landmark notices with highlighted MapLibre building extrusions.
+- Trackpad and keyboard camera controls, remembered preferences, sound-off default, and absolute/relative vehicle controls.
+
+Active reliability work:
+
+- Refine boat shoreline response and bridge traversal across more route geometries; the current guard rolls the hull inward and preserves canal-tangent movement instead of leaving it stuck against a quay.
+- Continue rejecting distant or ambiguous home-address-to-waterway snaps after exact BAG address resolution.
+- Validate route topology around docks, broad water polygons, bridges, and disconnected OSM path fragments.
+- Replace the placeholder car network with correctly connected, road-snapped routes and starts.
+- Integrate optional detailed 3D building data with OSM extrusions as a dependable fallback.
+
+Next product passes:
+
+- Volumetric instanced OSM trees in 3D, with no trees in 2D.
+- Geolocated Amsterdam fact ingestion and landmark/building-linked trivia.
+- “Welcome to…” neighborhood postcards, with cached Wikimedia/Wikidata imagery where licensing and source metadata are available and a strong typographic fallback otherwise.
+- Additional cities backed by cached, versioned extracts.
+- Authentic retro rendering and the optional arcade layer described below.
+
 ## Authentic retro rendering
 
 The selectable theme presets are currently lightweight art-direction previews. A later rendering pass should make the retro modes structurally authentic rather than relying on CSS filters.

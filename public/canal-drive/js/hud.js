@@ -290,7 +290,7 @@ class HUD {
     }
   }
 
-  drawCurrentLocation(ctx, routeName, neighborhood, travelMode) {
+  drawCurrentLocation(ctx, routeName, neighborhood, travelMode, answerHidden = false) {
     const routeLabel = travelMode === 'car' ? 'STREET' : 'WATERWAY';
     ctx.fillStyle = 'rgba(3,18,28,0.82)';
     roundRect(ctx, 15, 82, 310, neighborhood ? 51 : 33, 7);
@@ -298,7 +298,7 @@ class HUD {
     ctx.textAlign = 'left';
     ctx.font = 'bold 11px monospace';
     ctx.fillStyle = '#7DD3FC';
-    ctx.fillText(`${routeLabel}: ${routeName || '—'}`, 28, 103);
+    ctx.fillText(`${routeLabel}: ${answerHidden ? '???' : (routeName || '—')}`, 28, 103);
     if (neighborhood) {
       ctx.fillStyle = '#E0F2FE';
       ctx.fillText(`NEIGHBORHOOD: ${neighborhood}`, 28, 122);
