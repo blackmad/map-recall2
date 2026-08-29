@@ -318,6 +318,7 @@ class VectorBasemap {
         'case',
         ['boolean', ['feature-state', 'highlighted'], false], '#FFE12B',
         ['in', ['coalesce', ['get', 'name'], ''], ['literal', names]], palette ? palette.accent : '#F59E0B',
+        ['has', 'colour'], ['get', 'colour'],
         palette ? palette.building : '#D8D3CA'
       ]);
       this.map.setPaintProperty('building-3d', 'fill-extrusion-height', [
