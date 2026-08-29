@@ -190,13 +190,14 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     }).addTo(mapInstanceRef.current);
   }, [tileStyle, blindMapMode, BASEMAP_CONFIG_VERSION]);
 
-  // Handle map click for pinpoint mode
+  // Both location-based modes use a dropped pin. Keep this list in sync with
+  // the crosshair cursor below so a map that looks clickable is clickable.
   useEffect(() => {
     const map = mapInstanceRef.current;
     if (!map) return;
 
     const handleClick = (e: L.LeafletMouseEvent) => {
-      if (gameMode === 'pinpoint' && !isRoundComplete && !isGameOver) {
+      if ((gameMode === 'pinpoint' || gameMode === 'guess_neighborhood') && !isRoundComplete && !isGameOver) {
         onMapClick([e.latlng.lat, e.latlng.lng]);
       }
     };
@@ -260,23 +261,6 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     if (!map || !group) return;
 
     group.clearLayers();
-
-    // User GPS location dot
-    if (userLocation) {
-      const userGpsIcon = L.divIcon({
-        className: 'custom-map-icon',
-        html: `
-          <div class="relative flex items-center justify-center w-7 h-7 transform -translate-x-1/2 -translate-y-1/2">
-            <span class="absolute w-7 h-7 rounded-full bg-blue-500/30 animate-ping"></span>
-            <span class="relative w-4 h-4 rounded-full bg-blue-600 border-2 border-white shadow-lg shadow-blue-500/50"></span>
-          </div>
-        `,
-        iconSize: [28, 28],
-        iconAnchor: [14, 14],
-      });
-      const marker = L.marker(userLocation, { icon: userGpsIcon });
-      group.addLayer(marker);
-    }
 
     // 1. GAME OVER SUMMARY: Render all round traces
     if (isGameOver && allRoundResults && allRoundResults.length > 0) {

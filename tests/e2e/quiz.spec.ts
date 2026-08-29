@@ -72,6 +72,24 @@ test('the prompted feature remains the revealed feature', async ({ page }) => {
   await expect(page.locator('#pinpoint-feedback-card')).toContainText(prompt!);
 });
 
+test('neighborhood guessing accepts a map click and drops a pin', async ({ page }) => {
+  await quietExternalRequests(page);
+  await page.goto('/?city=amsterdam&mode=guess_neighborhood&category=all&radius=4500&map=light_nolabels&labels=off&rounds=5');
+  await expect(page.locator('#target-feature-name')).toBeVisible();
+  const map = page.locator('.leaflet-container');
+  const box = await map.boundingBox();
+  expect(box).not.toBeNull();
+  await map.click({ position: { x: box!.width * 0.5, y: box!.height * 0.3 } });
+  await expect(page.locator('.custom-pinpoint-needle-icon')).toBeVisible();
+});
+
+test('Map Quest does not render a persistent GPS blue-dot marker', async ({ page }) => {
+  await quietExternalRequests(page);
+  await page.goto(quizUrl);
+  await expect(page.locator('#target-feature-name')).toBeVisible();
+  await expect(page.locator('.custom-map-icon .bg-blue-600')).toHaveCount(0);
+});
+
 test('guest reviews persist locally across reloads', async ({ page }) => {
   await quietExternalRequests(page);
   await page.goto(quizUrl);

@@ -137,6 +137,21 @@ class VectorBasemap {
       x: cssX * mapCanvas.clientWidth / canvasRect.width,
       y: cssY * mapCanvas.clientHeight / canvasRect.height
     };
+    // Curated POIs must win over the much larger building extrusion under the
+    // pointer. The hit box is forgiving because dots are intentionally small.
+    const poiLayers = ['poi-labels', 'poi-dots'].filter(id => this.map.getLayer(id));
+    if (poiLayers.length) {
+      const hitRadius = 28;
+      const poi = this.map.queryRenderedFeatures([
+        [pixel.x - hitRadius, pixel.y - hitRadius],
+        [pixel.x + hitRadius, pixel.y + hitRadius]
+      ], { layers: poiLayers }).find(candidate => candidate.properties && candidate.properties.name);
+      if (poi) {
+        const lngLat = this.map.unproject(pixel);
+        const coordinates = poi.geometry && poi.geometry.type === 'Point' ? poi.geometry.coordinates : [lngLat.lng, lngLat.lat];
+        return { id: poi.properties.id, name: poi.properties.name, lngLat: coordinates, poi: true };
+      }
+    }
     const layers = this.map.getStyle().layers.filter(layer => layer.type === 'fill-extrusion' && !layer.id.startsWith('active-landmark')).map(layer => layer.id);
     const feature = this.map.queryRenderedFeatures(pixel, layers.length ? { layers } : undefined)
       .find(candidate => candidate.layer && candidate.layer.type === 'fill-extrusion');
