@@ -16,13 +16,15 @@ Completed and being refined:
 - Landmark trivia cards: passing a notable place shows an expanded card with Wikipedia thumbnail, category badge (MUSEUM/BRIDGE/etc.), and multi-line description; the top 50 landmarks by prominence are image-preloaded at route start.
 - Vintage "Greetings from…" neighborhood postcards: entering a neighborhood now uses the classic large-letter travel-card composition—script heading, oversized outlined neighborhood name with Wikimedia photography clipped inside the letters, sun-faded paper, and an Amsterdam location line. A SPARQL-based enrichment script supplies images for 27 of 42 neighborhoods, with a typographic fallback for the rest. Continue tuning mobile scale and long-name typography against in-game screenshots.
 - Persistent exploration collection: learned waterways, visited neighborhoods, and discovered landmarks are tracked across sessions in localStorage; cumulative "city knowledge" stats appear on the finish screen and as a returning-player badge on the menu.
+- Route ribbons on the finish card: bronze/silver/gold graded on recall, self-reliance, and route efficiency rather than speed, with a per-axis breakdown.
+- Master `Game-y features` toggle on the setup screen and live settings panel, gating streaks, multipliers, points, and ribbons; the finish card lays itself out from a cursor so it reflows for whichever sections are present.
 
 Active reliability work:
 
 - Refine boat shoreline response and bridge traversal across more route geometries; the current guard rolls the hull inward and preserves canal-tangent movement instead of leaving it stuck against a quay.
 - Continue rejecting distant or ambiguous home-address-to-waterway snaps after exact BAG address resolution.
 - Validate route topology around docks, broad water polygons, bridges, and disconnected OSM path fragments. Closed water/shore polygon rings are now excluded from the navigable graph; continue auditing named open paths and graph junctions.
-- ~~Replace the placeholder car network with correctly connected, road-snapped routes and starts.~~ ✅ The street extract preserves OSM highway classifications, selects only from the largest connected component (3249 of 4507 streets), and car mode now rolls back at the mapped road corridor instead of allowing a long soft excursion into canals/blocks. Steering is tighter with less lateral slide. The road guard is a shared TypeScript module with deterministic simulations for high-speed exits, shoulders, bridges, missing-road recovery, and sharp heading changes. Continue expanding coverage around real extracted junctions, cul-de-sacs, and dead-end streets.
+- ~~Replace the placeholder car network with correctly connected, road-snapped routes and starts.~~ ✅ The compact 300-street quiz partition is now separate from car mode's full largest-connected-component routing extract (3249 of 4507 streets), so visible approaches such as the Da Costakade crossings retain their drivable centerlines. The extract preserves OSM highway classifications; car mode rolls back at the mapped corridor instead of allowing canal/block excursions, with tighter steering and less lateral slide. The road guard is a shared TypeScript module with deterministic and live-browser simulations. Continue expanding named regression locations around cul-de-sacs and dead ends.
 - Integrate optional detailed 3D building data with OSM extrusions as a dependable fallback.
 
 Next product passes:
@@ -48,7 +50,11 @@ This can remain a MapLibre-based implementation: capture the WebGL output in a p
 
 ## Optional arcade layer
 
-All overtly game-like systems must live behind one master `Game-y features` toggle. Turning it off should produce a calm, credible navigation-and-recall experience: no pickups, power-ups, streak effects, combo audio, floating points, or arcade obstacles. Difficulty and navigation aids remain independent of this toggle.
+✅ The master `Game-y features` toggle is implemented and exposed on both the setup screen and the live settings panel, defaulting to on and persisted with the other preferences. Turning it off removes the streak multiplier, the streak badge and points from the HUD, the point and streak chatter from answer feedback, and the points, best-streak, and route ribbon from the finish card; accuracy, learned names, the exploration collection, landmark cards, and neighborhood postcards all remain. Difficulty and navigation aids are independent of it, as required. Answers are still scored internally while it is off, so toggling mid-route does not leave a hole in the tally.
+
+Every new arcade system below must be gated on this toggle. Turning it off should produce a calm, credible navigation-and-recall experience: no pickups, power-ups, streak effects, combo audio, floating points, or arcade obstacles.
+
+Note: the `PoliceCar`/`TrafficCar` classes and their `_spawnPolice`/`_spawnTraffic` helpers are inherited from the Smokey's base game and are never called, so nothing gates them. Delete them or gate them if pursuit is ever revived.
 
 Prioritize mechanics that reinforce geographic learning:
 
@@ -57,7 +63,7 @@ Prioritize mechanics that reinforce geographic learning:
 3. **Discovery tokens** — optional pickups placed at meaningful junctions, bridges, squares, locks, and ferry points rather than arbitrary coordinates.
 4. **Perfect-turn bonus** — reward identifying the new feature quickly after a turn, encouraging attention to the transition between named waterways/roads.
 5. **Local-knowledge bonus** — extra points for correctly identifying the neighborhood before it is revealed by the HUD.
-6. **Route ribbons** — award bronze/silver/gold for recall accuracy, navigation-aid level, and route efficiency, not raw vehicle speed alone.
+6. **Route ribbons** — ✅ Implemented: the finish card awards bronze/silver/gold from a weighted blend of recall accuracy (50%), self-reliance (25%, scored on whichever navigation aids were switched on at any point during the route, with typed answers buying back some of the cost), and route efficiency (25%, planned graph route length over distance actually travelled). Speed is deliberately not an input, and each tier also has a hard minimum recall so an efficient unaided run that never named a canal cannot out-rank a slower player who knew where they were. The band shows a rosette, the tier, and a per-axis breakdown so the grade explains itself.
 7. **Exploration collection** — ✅ Basic persistent tracking implemented: learned waterways, visited neighborhoods, and discovered landmarks saved to localStorage across sessions, shown on finish screen and menu. A full city album UI with per-item detail and mastery levels is a future addition.
 8. **Signature landmark models** — keep OSM height extrusions as the city-wide fallback, then replace a curated set of destination buildings with licensed glTF/3D Tiles models. Each model needs source/license metadata, geographic anchor, heading, scale, LOD, and a footprint mask so it replaces rather than overlaps the OSM extrusion.
 9. **Street trees and landmark planting** — ingest OSM `natural=tree`, tree rows, and park vegetation into a cached lightweight point layer; render instanced low-poly trees in 3D and simplified crowns in 2D. This is separate from the basemap because standard OpenMapTiles does not consistently ship individual tree nodes.
