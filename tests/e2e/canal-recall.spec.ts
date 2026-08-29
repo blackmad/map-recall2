@@ -7,7 +7,7 @@ type HarnessGame = {
   landmarks: Array<{ id: string; name: string; x: number; y: number }>;
   vectorMap: {
     ready?: boolean;
-    map?: { getPaintProperty(layer: string, property: string): unknown };
+    map?: { getLayer(layer: string): unknown; getPaintProperty(layer: string, property: string): unknown };
     inspectBuilding: (...args: unknown[]) => unknown;
     setActiveLandmark: (landmark: unknown) => void;
   };
@@ -60,8 +60,14 @@ test('live MapLibre buildings use the OSM-aware color expression', async ({ page
   expect(Array.isArray(paint)).toBe(true);
   const serialized = JSON.stringify(paint);
   expect(serialized).toContain('colour');
-  expect(serialized).toContain('#43888b');
   expect(serialized).toContain('render_height');
+  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame.vectorMap.map
+    ?.getLayer('osm-colored-building-roofs')))).toBe(true);
+  const nemo = await page.evaluate(async () => {
+    const collection = await fetch('../data/extracts/amsterdam/buildings-colored.geojson').then(response => response.json());
+    return collection.features.find((feature: { properties: { osmId: string } }) => feature.properties.osmId === 'w1390692772')?.properties;
+  });
+  expect(nemo).toMatchObject({ colour: '#43888b', roofColour: '#f5f5dc', roofShape: 'skillion', height: 21.7 });
 });
 
 test('an actual high-speed car cannot escape the mapped road corridor', async ({ page }) => {

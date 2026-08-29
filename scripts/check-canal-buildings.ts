@@ -4,7 +4,6 @@ import { buildingColorExpression, buildingOpacity } from '../src/canalRecall/bui
 const clean = JSON.stringify(buildingColorExpression('clean'));
 assert.match(clean, /colour/);
 assert.match(clean, /material/);
-assert.match(clean, /#43888b/);
 assert.match(clean, /#bd8161/);
 assert.match(clean, /render_height/);
 assert.match(clean, /#DED9D0/);

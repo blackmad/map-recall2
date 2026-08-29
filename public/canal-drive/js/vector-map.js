@@ -33,6 +33,7 @@ class VectorBasemap {
       this._ensureRouteLayer();
       this._ensureStreetOverlayLayers();
       this._ensureTreeLayers();
+      this._ensureBuildingAppearanceLayers();
       this._ensurePlaceLayers();
       this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
       this.setTrees(this._pendingTrees);
@@ -87,6 +88,32 @@ class VectorBasemap {
       layout: { visibility: this._treesVisible ? 'visible' : 'none' },
       paint: { ...shared, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 15, 2.4, 19, 11], 'circle-color': '#4F8A48', 'circle-stroke-color': '#315D31', 'circle-stroke-width': 1, 'circle-opacity': 0.86 }
     }, before);
+  }
+
+  _ensureBuildingAppearanceLayers() {
+    if (this.map.getSource('osm-building-appearance')) return;
+    this.map.addSource('osm-building-appearance', {
+      type: 'geojson', data: '../data/extracts/amsterdam/buildings-colored.geojson',
+      attribution: 'Building appearance © OpenStreetMap contributors'
+    });
+    this.map.addLayer({
+      id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
+      paint: {
+        'fill-extrusion-color': ['get', 'colour'],
+        'fill-extrusion-base': ['get', 'minHeight'],
+        'fill-extrusion-height': ['get', 'height'],
+        'fill-extrusion-opacity': 0.96
+      }
+    });
+    this.map.addLayer({
+      id: 'osm-colored-building-roofs', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
+      paint: {
+        'fill-extrusion-color': ['get', 'roofColour'],
+        'fill-extrusion-base': ['get', 'height'],
+        'fill-extrusion-height': ['+', ['get', 'height'], 0.35],
+        'fill-extrusion-opacity': 1
+      }
+    });
   }
 
   _ensurePlaceLayers() {
@@ -374,7 +401,7 @@ class VectorBasemap {
     try {
       if (palette) {
         for (const layer of this.map.getStyle().layers || []) {
-          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('active-street') || layer.id.startsWith('learned-street') || layer.id.startsWith('navigation-route') || layer.id.startsWith('tree-') || layer.id.startsWith('poi-') || layer.id.startsWith('neighborhood-')) continue;
+          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('active-street') || layer.id.startsWith('learned-street') || layer.id.startsWith('navigation-route') || layer.id.startsWith('osm-colored-building') || layer.id.startsWith('tree-') || layer.id.startsWith('poi-') || layer.id.startsWith('neighborhood-')) continue;
           const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
           const isWater = /water|ocean|river|canal/.test(identity);
           const isRoad = /road|street|transportation|bridge|tunnel|path/.test(identity);
