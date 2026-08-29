@@ -1024,20 +1024,17 @@ class Game {
     this.sound.resume();
     this.player.handleInput(this.input);
     this.player.update(dt, this.track);
-    if (this.travelMode === 'car' && this.track.getSurface(this.player.x, this.player.y) === 'grass') {
+    if (this.travelMode === 'car') {
       const road = this.track.getNearestRoad(this.player.x, this.player.y);
-      if (road) {
+      const offRoadMargin = road ? road.dist - road.width : 0;
+      if (road && offRoadMargin > 80) {
         const inwardX = road.x - this.player.x;
         const inwardY = road.y - this.player.y;
         const inwardDist = Math.hypot(inwardX, inwardY) || 1;
-        // Steer the car back toward the road center
-        const pullStrength = Math.min(6, inwardDist * 0.15);
+        const pullStrength = Math.min(4, (offRoadMargin - 80) * 0.04);
         this.player.x += (inwardX / inwardDist) * pullStrength;
         this.player.y += (inwardY / inwardDist) * pullStrength;
-        // Heavy braking off-road
-        this.player.speed *= 0.88;
-        this.player.vx *= 0.88;
-        this.player.vy *= 0.88;
+        this.player.speed *= 0.95;
       }
     } else if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
       this._blockedBoatFrames++;
