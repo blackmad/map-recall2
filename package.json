@@ -9,7 +9,7 @@
     "build:canal-streets": "esbuild src/canalRecall/streetOverlayStyle.ts --bundle --format=iife --global-name=CanalRecallStreets --outfile=public/canal-drive/js/street-overlay-style.bundle.js --minify",
     "build:canal-3d": "esbuild public/canal-drive/js/detailed-buildings-source.js --bundle --format=iife --global-name=CanalRecallDetailed3D --outfile=public/canal-drive/js/detailed-buildings.bundle.js --minify",
     "dev": "tsx server.ts",
-    "build": "npm run build:canal-car && npm run build:canal-buildings && npm run build:canal-streets && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "npm run build:canal-car && npm run build:canal-buildings && npm run build:canal-recall-store && npm run canal:firebase-config && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "build:amsterdam": "tsx scripts/build-amsterdam-extract.ts",
@@ -23,7 +23,9 @@
     "test:osm-buildings": "tsx scripts/check-osm-building-appearance.ts",
     "test:canal-streets": "tsx scripts/check-canal-street-overlays.ts",
     "test:e2e": "playwright test",
-    "test:e2e:update": "playwright test --update-snapshots"
+    "test:e2e:update": "playwright test --update-snapshots",
+    "build:canal-recall-store": "esbuild src/canalRecall/recallStore.ts --bundle --format=iife --global-name=CanalRecallStoreModule --outfile=public/canal-drive/js/recall-store.bundle.js --minify",
+    "canal:firebase-config": "tsx scripts/write-canal-firebase-config.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
