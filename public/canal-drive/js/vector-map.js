@@ -325,7 +325,6 @@ class VectorBasemap {
       psx: { ground: '#928C79', land: '#6D765B', water: '#526E83', road: '#B8AA91', outline: '#34333C', building: '#777169', accent: '#D5A84B' },
       cyberpunk: { ground: '#100A24', land: '#17143A', water: '#071B3E', road: '#452160', outline: '#00E5FF', building: '#281147', accent: '#FF2DAA' }
     };
-    const names = ['Rijksmuseum', 'Koninklijk Paleis Amsterdam', 'NEMO', 'Het Scheepvaartmuseum', 'Westerkerk', 'Museum Het Rembrandthuis', 'H’ART Museum'];
     const palette = palettes[this.theme];
     try {
       if (palette) {
@@ -346,17 +345,16 @@ class VectorBasemap {
           }
         }
       }
-      this.map.setPaintProperty('building-3d', 'fill-extrusion-color', [
-        'case',
-        ['boolean', ['feature-state', 'highlighted'], false], '#FFE12B',
-        ['in', ['coalesce', ['get', 'name'], ''], ['literal', names]], palette ? palette.accent : '#F59E0B',
-        ['has', 'colour'], ['get', 'colour'],
-        palette ? palette.building : '#D8D3CA'
-      ]);
+      const buildingColor = window.CanalRecallBuildings
+        ? window.CanalRecallBuildings.buildingColorExpression(this.theme)
+        : (palette ? palette.building : '#D8D3CA');
+      this.map.setPaintProperty('building-3d', 'fill-extrusion-color', buildingColor);
       this.map.setPaintProperty('building-3d', 'fill-extrusion-height', [
         'case', ['boolean', ['feature-state', 'highlighted'], false], ['+', ['coalesce', ['get', 'render_height'], ['get', 'height'], 18], 12], ['coalesce', ['get', 'render_height'], ['get', 'height'], 5]
       ]);
-      this.map.setPaintProperty('building-3d', 'fill-extrusion-opacity', this.theme === 'cyberpunk' ? 0.98 : 0.9);
+      this.map.setPaintProperty('building-3d', 'fill-extrusion-opacity', window.CanalRecallBuildings
+        ? window.CanalRecallBuildings.buildingOpacity(this.theme)
+        : (this.theme === 'cyberpunk' ? 0.98 : 0.9));
       const treeColors = this.theme === 'cyberpunk' ? ['#6A167A', '#FF2DAA'] : this.theme === 'psx' ? ['#4A4335', '#646B45'] : ['#315D31', '#4F8A48'];
       if (this.map.getLayer('tree-crowns')) {
         this.map.setPaintProperty('tree-crowns', 'circle-stroke-color', treeColors[0]);

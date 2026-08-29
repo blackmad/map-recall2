@@ -12,7 +12,7 @@ const inputFile = process.argv[2] || '/tmp/map-recall-amsterdam.geojson';
 const boundaryFile = process.argv[3] || '/tmp/amsterdam-named-relations.geojson';
 const neighborhoodBoundaryFile = process.argv[4] || '/tmp/amsterdam-place-boundaries.geojson';
 const curationFile = path.resolve('scripts/amsterdam-curation.json');
-const outputDirectory = path.resolve('public/data/extracts/amsterdam');
+const outputDirectory = path.resolve(process.argv[5] || 'public/data/extracts/amsterdam');
 const center: [number, number] = [52.372851, 4.8936];
 const maximumPerCategory = 300;
 
@@ -214,6 +214,16 @@ const selectedAll: StreetFeature[] = [];
 for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'landmarks'] as FeatureCategory[]) {
   const available = [...grouped.values()].filter((entry) => entry.category === category).sort((a, b) => b.score - a.score);
   const candidates = category === 'streets' ? selectConnectedStreets(available, maximumPerCategory) : available.slice(0, maximumPerCategory);
+  if (category === 'streets') {
+    const routing = selectConnectedStreets(available, available.length).map(({ feature, paths, score }) => ({
+      ...feature,
+      path: paths[0],
+      paths: paths.length > 1 ? paths : undefined,
+      prominenceScore: score,
+      distractors: [],
+    }));
+    await writeFile(path.join(outputDirectory, 'streets-routing.json'), JSON.stringify(routing));
+  }
   const selected = candidates.map(({ feature, paths, score }) => ({
     ...feature, path: paths[0], paths: paths.length > 1 ? paths : undefined, prominenceScore: score,
   }));
