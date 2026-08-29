@@ -34,11 +34,14 @@ class OSMLoader {
           const closedAreaRing = travelMode === 'boat' && path.length > 3
             && first[0] === last[0] && first[1] === last[1];
           if (closedAreaRing) continue;
+          const highway = travelMode === 'car'
+            ? (feature.highway || (feature.type === 'avenue' ? 'secondary' : 'residential'))
+            : (feature.type === 'canal' ? 'canal' : 'river');
           ways.push({
             id: `${feature.id}:${pathIndex}`,
             nodes: path.map(([pathLat, pathLon]) => ({ lat: pathLat, lon: pathLon })),
-            tags: { name: feature.name, [travelMode === 'car' ? 'highway' : 'waterway']: feature.type },
-            highway: travelMode === 'car' ? (feature.type || 'residential') : (feature.type === 'canal' ? 'canal' : 'river')
+            tags: { name: feature.name, [travelMode === 'car' ? 'highway' : 'waterway']: highway },
+            highway
           });
         }
       }

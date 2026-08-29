@@ -158,6 +158,7 @@ const MAX_SNAP_DIST = 800;                     // px — POIs may sit a short wa
 const HOME_MAX_SNAP_DIST = 240;                // px (~80 m) — never teleport a home launch across the neighborhood
 const LEADERBOARD_MAX_ENTRIES = 50;             // max stored best times (LRU eviction)
 const LEADERBOARD_STORAGE_KEY = 'satb_bestTimes'; // localStorage key
+const EXPLORATION_STORAGE_KEY = 'canalRecall.exploration.v1';
 
 // --- Particles ---
 const SKID_FADE_RATE = 0.08;                   // alpha/s

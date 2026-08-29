@@ -166,6 +166,7 @@ export interface StreetFeature {
   wikipediaExtract?: string;
   wikipediaUrl?: string;
   wikipediaImageUrl?: string;
+  highway?: string;
   neighborhood?: string;
   neighborhoodDistractors?: string[];
   areaGeometry?: [number, number][][][];

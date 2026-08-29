@@ -12,20 +12,23 @@ Completed and being refined:
 - OSM-derived tree cache, rendered only in 3D mode.
 - Neighborhood HUD/entry cards and landmark notices with highlighted MapLibre building extrusions.
 - Trackpad and keyboard camera controls, remembered preferences, sound-off default, and absolute/relative vehicle controls.
+- Recall streaks and combo multipliers: consecutive correct answers build a streak (up to 2× at 10), displayed in the HUD with per-answer point feedback; best streak and accuracy percentage shown on the finish screen.
+- Landmark trivia cards: passing a notable place shows an expanded card with Wikipedia thumbnail, category badge (MUSEUM/BRIDGE/etc.), and multi-line description; the top 50 landmarks by prominence are image-preloaded at route start.
+- Vintage "Greetings from…" neighborhood postcards: entering a neighborhood shows a postcard with the name rendered in large block letters filled with a Wikimedia Commons photo, over a deterministic warm color gradient; a SPARQL-based enrichment script fetches Wikipedia extracts and images for 27 of 42 neighborhoods, with a typographic fallback for the rest.
+- Persistent exploration collection: learned waterways, visited neighborhoods, and discovered landmarks are tracked across sessions in localStorage; cumulative "city knowledge" stats appear on the finish screen and as a returning-player badge on the menu.
 
 Active reliability work:
 
 - Refine boat shoreline response and bridge traversal across more route geometries; the current guard rolls the hull inward and preserves canal-tangent movement instead of leaving it stuck against a quay.
 - Continue rejecting distant or ambiguous home-address-to-waterway snaps after exact BAG address resolution.
 - Validate route topology around docks, broad water polygons, bridges, and disconnected OSM path fragments. Closed water/shore polygon rings are now excluded from the navigable graph; continue auditing named open paths and graph junctions.
-- Replace the placeholder car network with correctly connected, road-snapped routes and starts.
+- ~~Replace the placeholder car network with correctly connected, road-snapped routes and starts.~~ ✅ The street extract now preserves OSM highway classifications (primary/secondary/residential etc.) for correct road widths, selects only from the largest connected component (3249 of 4507 streets are connected), and car mode applies an off-road pull-back constraint similar to the boat's shoreline guard. Continue testing edge cases around disconnected cul-de-sacs and dead-end streets.
 - Integrate optional detailed 3D building data with OSM extrusions as a dependable fallback.
 
 Next product passes:
 
 - Better 3D OSM trees: replace flat map circles with lightweight instanced trunk/canopy geometry; vary height, crown scale, color, and silhouette deterministically from reusable OSM species/leaf-type tags; add distance-based LOD and culling; keep trees out of 2D mode and avoid obscuring navigation/quiz targets.
-- Geolocated Amsterdam fact ingestion and landmark/building-linked trivia.
-- **Deferred after core navigation reliability:** “Welcome to…” neighborhood postcards, with cached Wikimedia/Wikidata imagery where licensing and source metadata are available and a strong typographic fallback otherwise.
+- Geolocated Amsterdam fact pipeline: build the staged fact ingestion system described in `FACT_PIPELINE.md` to produce curated, attributed `facts.json`; the existing landmark trivia cards will prefer pipeline facts over raw Wikipedia extracts once available.
 - Additional cities backed by cached, versioned extracts.
 - Authentic retro rendering and the optional arcade layer described below.
 
@@ -49,13 +52,13 @@ All overtly game-like systems must live behind one master `Game-y features` togg
 
 Prioritize mechanics that reinforce geographic learning:
 
-1. **Landmark postcards** — collect a postcard by passing a notable place; the route summary becomes a visual travel journal with its name, image, and one fact.
-2. **Recall streaks** — consecutive correct street/canal answers build a multiplier and restrained visual trail. A mistake resets the multiplier but never blocks progress.
+1. **Landmark postcards** — ~~collect a postcard by passing a notable place~~ ✅ Landmark trivia cards with Wikipedia images and category badges are live; the route summary travel-journal view is a future addition.
+2. **Recall streaks** — ✅ Implemented: consecutive correct answers build a multiplier (up to 2× at 10-streak) with HUD display and per-answer feedback. A mistake resets the multiplier but never blocks progress.
 3. **Discovery tokens** — optional pickups placed at meaningful junctions, bridges, squares, locks, and ferry points rather than arbitrary coordinates.
 4. **Perfect-turn bonus** — reward identifying the new feature quickly after a turn, encouraging attention to the transition between named waterways/roads.
 5. **Local-knowledge bonus** — extra points for correctly identifying the neighborhood before it is revealed by the HUD.
 6. **Route ribbons** — award bronze/silver/gold for recall accuracy, navigation-aid level, and route efficiency, not raw vehicle speed alone.
-7. **Exploration collection** — a persistent city album tracks learned waterways, streets, neighborhoods, bridges, and landmarks; newly mastered map labels become the primary progression reward.
+7. **Exploration collection** — ✅ Basic persistent tracking implemented: learned waterways, visited neighborhoods, and discovered landmarks saved to localStorage across sessions, shown on finish screen and menu. A full city album UI with per-item detail and mastery levels is a future addition.
 8. **Signature landmark models** — keep OSM height extrusions as the city-wide fallback, then replace a curated set of destination buildings with licensed glTF/3D Tiles models. Each model needs source/license metadata, geographic anchor, heading, scale, LOD, and a footprint mask so it replaces rather than overlaps the OSM extrusion.
 9. **Street trees and landmark planting** — ingest OSM `natural=tree`, tree rows, and park vegetation into a cached lightweight point layer; render instanced low-poly trees in 3D and simplified crowns in 2D. This is separate from the basemap because standard OpenMapTiles does not consistently ship individual tree nodes.
 

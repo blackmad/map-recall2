@@ -275,7 +275,8 @@ class HUD {
     ctx.fillText(name, x, y + 1);
   }
 
-  drawCanalScore(ctx, correct, attempts, points, feedback) {
+  drawCanalScore(ctx, correct, attempts, points, feedback, streak = 0) {
+    const hasStreak = streak >= 2;
     ctx.fillStyle = 'rgba(3,18,28,0.82)';
     roundRect(ctx, 15, 15, 310, feedback ? 58 : 38, 8);
     ctx.fill();
@@ -283,6 +284,14 @@ class HUD {
     ctx.font = 'bold 14px monospace';
     ctx.textAlign = 'left';
     ctx.fillText(`CANAL RECALL   ${correct} / ${attempts}   ${points} pts`, 28, 40);
+    if (hasStreak) {
+      ctx.fillStyle = '#FBBF24';
+      ctx.font = 'bold 13px monospace';
+      ctx.textAlign = 'right';
+      const mult = (1 + 0.1 * Math.min(streak - 1, 9)).toFixed(1);
+      ctx.fillText(`${streak} STREAK  ${mult}×`, 318, 40);
+      ctx.textAlign = 'left';
+    }
     if (feedback) {
       ctx.fillStyle = '#E0F2FE';
       ctx.font = '12px monospace';
