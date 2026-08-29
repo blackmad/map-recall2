@@ -26,6 +26,7 @@ const DIFFICULTY_PRESETS = {
 };
 const DIFFICULTY_SCORE_MULTIPLIERS = { easy: 0.5, medium: 0.75, hard: 1, expert: 1.25, custom: 0.85 };
 const CANAL_PREFS_KEY = 'canalRecall.preferences.v1';
+const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v1';
 
 class Game {
   constructor() {
@@ -72,6 +73,9 @@ class Game {
     this.learnedNames = new Set();
     this.routeFrom = CANAL_ROUTE_POIS[1];
     this.routeTo = CANAL_ROUTE_POIS[2];
+    this.routePattern = 'surprise';
+    this.homeBase = null;
+    this.homeLeg = 'outbound';
 
     // OSM components
     this.osmLoader = new OSMLoader();
@@ -97,9 +101,15 @@ class Game {
     this.landmarks = [];
     this.neighborhoods = [];
     this.currentNeighborhood = '';
+    this._previousNeighborhood = '';
+    this._neighborhoodNotice = '';
+    this._neighborhoodNoticeTimer = 0;
     this._seenLandmarks = new Set();
     this._landmarkNotice = null;
     this._landmarkNoticeTimer = 0;
+    this._previousNeighborhood = '';
+    this._neighborhoodNotice = '';
+    this._neighborhoodNoticeTimer = 0;
 
     this._alanLinkBounds = null;
     this._githubLinkBounds = null;
@@ -207,6 +217,9 @@ class Game {
     this._soundEnabled = document.getElementById('sound-enabled');
     this._treesEnabled = document.getElementById('trees-enabled');
     this._cameraZoom = document.getElementById('camera-zoom');
+    this._routePattern = document.getElementById('route-pattern');
+    this._homeAddressField = document.getElementById('home-address-field');
+    this._homeAddress = document.getElementById('home-address');
     this._routeError = document.getElementById('route-error');
     for (const poi of CANAL_ROUTE_POIS) {
       this._routeFrom.add(new Option(poi.name, poi.id));
@@ -219,6 +232,7 @@ class Game {
     this._routeDifficulty.addEventListener('change', () => {
       if (this._routeDifficulty.value !== 'custom') this._applyDifficulty(this._routeDifficulty.value);
     });
+    this._routePattern.addEventListener('change', () => this._syncHomeAddressField());
     for (const control of [this._answerMode, this._assistLine, this._assistArrow, this._assistMinimap]) {
       control.addEventListener('change', () => { this._routeDifficulty.value = 'custom'; });
     }
@@ -241,6 +255,9 @@ class Game {
       setValue(this._controlMode, prefs.controlMode);
       setValue(this._viewMode, prefs.viewMode);
       setValue(this._themeMode, prefs.themeMode);
+      setValue(this._routePattern, prefs.routePattern);
+      this._homeAddress.value = prefs.homeAddress || '';
+      this._syncHomeAddressField();
       if (typeof prefs.line === 'boolean') this._assistLine.checked = prefs.line;
       if (typeof prefs.arrow === 'boolean') this._assistArrow.checked = prefs.arrow;
       if (typeof prefs.minimap === 'boolean') this._assistMinimap.checked = prefs.minimap;
@@ -261,6 +278,8 @@ class Game {
       controlMode: this.controlMode,
       viewMode: this.viewMode,
       themeMode: this.themeMode,
+      routePattern: this.routePattern || this._routePattern.value,
+      homeAddress: this._homeAddress ? this._homeAddress.value.trim() : '',
       line: !!this.routeOptions.line,
       arrow: !!this.routeOptions.arrow,
       minimap: !!this.routeOptions.minimap,
@@ -359,11 +378,50 @@ class Game {
     this._assistMinimap.checked = preset.minimap;
   }
 
-  _startConfiguredRoute() {
+  _syncHomeAddressField() {
+    this._homeAddressField.style.display = this._routePattern.value === 'home' ? 'flex' : 'none';
+  }
+
+  async _geocodeHomeAddress(address) {
+    const query = `${address.trim()}, Amsterdam, Netherlands`;
+    const key = query.toLocaleLowerCase();
+    let cache = {};
+    try { cache = JSON.parse(localStorage.getItem(HOME_GEOCODE_CACHE_KEY) || '{}'); } catch (_) {}
+    if (cache[key]) return cache[key];
+    const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&countrycodes=nl&limit=1&q=${encodeURIComponent(query)}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Address search is unavailable right now');
+    const results = await response.json();
+    if (!results.length) throw new Error('Could not find that Amsterdam address');
+    const home = { id: 'home', name: 'Home', address: address.trim(), lat: Number(results[0].lat), lng: Number(results[0].lon) };
+    cache[key] = home;
+    localStorage.setItem(HOME_GEOCODE_CACHE_KEY, JSON.stringify(cache));
+    return home;
+  }
+
+  async _startConfiguredRoute() {
+    this._routeError.textContent = '';
+    this.routePattern = this._routePattern.value;
+    if (this.routePattern === 'home') {
+      const address = this._homeAddress.value.trim();
+      if (!address) { this._routeError.textContent = 'Enter a home address first.'; return; }
+      try {
+        this._routeError.textContent = 'Finding your home base…';
+        this.homeBase = await this._geocodeHomeAddress(address);
+        this.homeLeg = 'outbound';
+      } catch (error) {
+        this._routeError.textContent = error.message || 'Could not find that address.';
+        return;
+      }
+    }
     const choices = CANAL_ROUTE_POIS.filter(poi => poi.id !== this.routeFrom?.id || CANAL_ROUTE_POIS.length < 3);
-    const from = choices[Math.floor(Math.random() * choices.length)];
+    const from = this.routePattern === 'home' ? this.homeBase : choices[Math.floor(Math.random() * choices.length)];
     const destinations = CANAL_ROUTE_POIS.filter(poi => poi.id !== from.id);
     const to = destinations[Math.floor(Math.random() * destinations.length)];
+    this._launchPoiRoute(from, to);
+  }
+
+  _launchPoiRoute(from, to) {
     this.routeFrom = from;
     this.routeTo = to;
     this.routeOptions = {
@@ -397,6 +455,18 @@ class Game {
       { lat: from.lat, lng: from.lng },
       { lat: to.lat, lng: to.lng }
     );
+  }
+
+  _startNextHomeLeg() {
+    if (!this.homeBase) return;
+    if (this.homeLeg === 'outbound') {
+      this.homeLeg = 'return';
+      this._launchPoiRoute(this.routeTo, this.homeBase);
+      return;
+    }
+    this.homeLeg = 'outbound';
+    const destinations = CANAL_ROUTE_POIS.filter(poi => poi.id !== this.routeFrom.id);
+    this._launchPoiRoute(this.homeBase, destinations[Math.floor(Math.random() * destinations.length)]);
   }
 
   _returnToRouteSetup(message) {
@@ -820,6 +890,7 @@ class Game {
       case GameState.FINISHED:
         if (this._copiedTimer > 0) this._copiedTimer -= dt;
         if (this.input.wasPressed('Enter') || this.input.wasPressed('Space') || this.input.wasPressed('KeyM')) {
+          if (this.routePattern === 'home') { this._startNextHomeLeg(); break; }
           // Restart same track
           this._setupRace();
           this.state = GameState.COUNTDOWN;
@@ -1158,6 +1229,7 @@ class Game {
       this.hud.drawMiniMap(ctx, this.track, this.cars, this.cars.indexOf(this.player));
     }
     this._renderLandmarkNotice();
+    this._renderNeighborhoodNotice();
 
     // zoom indicator
     const zoomPct = Math.round(this.camera.zoom * 100);
@@ -1621,6 +1693,7 @@ class Game {
   }
 
   _updateLandmarks(dt) {
+    if (this._neighborhoodNoticeTimer > 0) this._neighborhoodNoticeTimer -= dt;
     if (this._landmarkNoticeTimer > 0) {
       this._landmarkNoticeTimer -= dt;
       if (this._landmarkNoticeTimer <= 0) this._landmarkNotice = null;
@@ -1633,6 +1706,13 @@ class Game {
         this.currentNeighborhood = neighborhood.name;
         break;
       }
+    }
+    if (!this._previousNeighborhood) {
+      this._previousNeighborhood = this.currentNeighborhood;
+    } else if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
+      this._previousNeighborhood = this.currentNeighborhood;
+      this._neighborhoodNotice = this.currentNeighborhood;
+      this._neighborhoodNoticeTimer = 4.5;
     }
     if (this._landmarkNotice) return;
     let nearest = null;
@@ -1678,6 +1758,28 @@ class Game {
       const note = this._landmarkNotice.detail.length > 72 ? `${this._landmarkNotice.detail.slice(0, 69)}…` : this._landmarkNotice.detail;
       ctx.fillText(note, CANVAS_W / 2, 122);
     }
+    ctx.restore();
+  }
+
+  _renderNeighborhoodNotice() {
+    if (!this._neighborhoodNotice || this._neighborhoodNoticeTimer <= 0) return;
+    const ctx = this.ctx;
+    const alpha = Math.min(1, this._neighborhoodNoticeTimer, 4.5 - this._neighborhoodNoticeTimer);
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    ctx.fillStyle = 'rgba(7,30,43,.92)';
+    roundRect(ctx, CANVAS_W / 2 - 190, CANVAS_H - 132, 380, 62, 12);
+    ctx.fill();
+    ctx.strokeStyle = '#A78BFA';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#C4B5FD';
+    ctx.font = 'bold 11px monospace';
+    ctx.fillText('ENTERING NEIGHBORHOOD', CANVAS_W / 2, CANVAS_H - 108);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 19px monospace';
+    ctx.fillText(this._neighborhoodNotice, CANVAS_W / 2, CANVAS_H - 84);
     ctx.restore();
   }
 
