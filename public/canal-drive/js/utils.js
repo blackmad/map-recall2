@@ -47,3 +47,13 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.arcTo(x, y, x+r, y, r);
   ctx.closePath();
 }
+
+// Do segments p1→p2 and p3→p4 cross? Used to tell an actual bridge crossing
+// from merely passing near one of its approach ways.
+function segmentsIntersect(p1, p2, p3, p4) {
+  const d = (p2.x - p1.x) * (p4.y - p3.y) - (p2.y - p1.y) * (p4.x - p3.x);
+  if (Math.abs(d) < 1e-9) return false;
+  const t = ((p3.x - p1.x) * (p4.y - p3.y) - (p3.y - p1.y) * (p4.x - p3.x)) / d;
+  const u = ((p3.x - p1.x) * (p2.y - p1.y) - (p3.y - p1.y) * (p2.x - p1.x)) / d;
+  return t >= 0 && t <= 1 && u >= 0 && u <= 1;
+}

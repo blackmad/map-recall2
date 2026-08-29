@@ -283,9 +283,18 @@ class VectorBasemap {
   _ensureLandmarkLayers() {
     if (this.map.getSource('active-landmark')) return;
     this.map.addSource('active-landmark', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-    this.map.addLayer({ id: 'active-landmark-extrusion', type: 'fill-extrusion', source: 'active-landmark', filter: ['==', '$type', 'Polygon'], paint: { 'fill-extrusion-color': '#FFD21F', 'fill-extrusion-height': 38, 'fill-extrusion-base': 1, 'fill-extrusion-opacity': 0.92 } });
-    this.map.addLayer({ id: 'active-landmark-fill', type: 'fill', source: 'active-landmark', filter: ['==', '$type', 'Polygon'], paint: { 'fill-color': '#FACC15', 'fill-opacity': 0.24, 'fill-outline-color': '#FFFFFF' } });
-    this.map.addLayer({ id: 'active-landmark-line', type: 'line', source: 'active-landmark', filter: ['in', '$type', 'Polygon', 'LineString'], paint: { 'line-color': '#FACC15', 'line-width': 6, 'line-opacity': 0.95 } });
+    // Fully opaque and matched to the building's own height. A translucent
+    // fixed-height box let the building's OSM colour bleed through and stopped
+    // short of taller landmarks, so the highlight fought the building instead
+    // of replacing it. The ground fill is gone: its outline traced the whole
+    // footprint while the extrusion covered only part of it.
+    this.map.addLayer({ id: 'active-landmark-extrusion', type: 'fill-extrusion', source: 'active-landmark', filter: ['==', '$type', 'Polygon'], paint: {
+      'fill-extrusion-color': '#FFD21F',
+      'fill-extrusion-height': ['coalesce', ['get', 'renderHeight'], 38],
+      'fill-extrusion-base': 0,
+      'fill-extrusion-opacity': 1,
+    } });
+    this.map.addLayer({ id: 'active-landmark-line', type: 'line', source: 'active-landmark', filter: ['==', '$type', 'LineString'], paint: { 'line-color': '#FACC15', 'line-width': 6, 'line-opacity': 0.95 } });
     this.map.addLayer({ id: 'active-landmark-point', type: 'circle', source: 'active-landmark', filter: ['==', '$type', 'Point'], paint: { 'circle-radius': 16, 'circle-color': '#FACC15', 'circle-opacity': 0.72, 'circle-stroke-color': '#FFFFFF', 'circle-stroke-width': 3 } });
   }
 
