@@ -595,9 +595,7 @@ class RoadNetwork {
       }
     }
 
-    // START / FINISH labels (always crisp)
     this._drawScreenLabel(ctx, camera, this.startPoint, 'START', '#4CAF50', halfW, halfH);
-    this._drawScreenLabel(ctx, camera, this.finishPoint, 'FINISH', '#FFD700', halfW, halfH);
   }
 
   _drawScreenLabel(ctx, camera, point, text, color, halfW, halfH) {

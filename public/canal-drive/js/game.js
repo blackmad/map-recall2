@@ -231,8 +231,6 @@ class Game {
         name: building.name || 'Unnamed building',
         detail: building.name ? 'Mapped building — click nearby landmarks to learn more.' : 'This building has no name in OpenStreetMap yet.',
         lngLat: building.lngLat,
-        geojson: building.geojson,
-        forceGeometry: true
       };
     }
     this._landmarkNotice = nearest;
@@ -1903,21 +1901,18 @@ class Game {
 
   async _loadLandmarks(centerLat, centerLng, segments) {
     try {
-      const [landmarkResponse, boundaryResponse, treeResponse, neighborhoodEnrichedResponse] = await Promise.all([
+      const [landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse] = await Promise.all([
         fetch(new URL('../data/extracts/amsterdam/landmarks.json', window.location.href)),
         fetch(new URL('../data/extracts/amsterdam/boundaries.json', window.location.href)),
-        fetch(new URL('../data/extracts/amsterdam/trees.json', window.location.href)),
         fetch(new URL('../data/extracts/amsterdam/neighborhoods-enriched.json', window.location.href))
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
-      const [features, boundaries, trees, neighborhoodEnriched] = await Promise.all([
+      const [features, boundaries, neighborhoodEnriched] = await Promise.all([
         landmarkResponse.json(), boundaryResponse.json(),
-        treeResponse.ok ? treeResponse.json() : [],
         neighborhoodEnrichedResponse.ok ? neighborhoodEnrichedResponse.json() : []
       ]);
       const neighborhoodData = new Map();
       for (const entry of neighborhoodEnriched) neighborhoodData.set(entry.name, entry);
-      this.vectorMap.setTrees(trees);
       this.vectorMap.setPlaces(features, boundaries);
       this.landmarks = features.map(feature => {
         const center = feature.center || (feature.path && feature.path[0]);
@@ -1998,9 +1993,11 @@ class Game {
       this._previousNeighborhood = this.currentNeighborhood;
     } else if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
       this._previousNeighborhood = this.currentNeighborhood;
-      const hoodData = this.neighborhoods.find(n => n.name === this.currentNeighborhood);
-      this._neighborhoodNotice = hoodData || { name: this.currentNeighborhood };
-      this._neighborhoodNoticeTimer = 5.5;
+      if (!this.quizPromptName) {
+        const hoodData = this.neighborhoods.find(n => n.name === this.currentNeighborhood);
+        this._neighborhoodNotice = hoodData || { name: this.currentNeighborhood };
+        this._neighborhoodNoticeTimer = 5.5;
+      }
     }
     if (this._landmarkNotice) return;
     let nearest = null;
@@ -2134,6 +2131,7 @@ class Game {
 
   _renderNeighborhoodNotice() {
     if (!this._neighborhoodNotice || this._neighborhoodNoticeTimer <= 0) return;
+    if (this.quizPromptName) return;
     const ctx = this.ctx;
     const duration = 5.5;
     const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);
