@@ -25,6 +25,18 @@ const DIFFICULTY_PRESETS = {
   expert: { answerMode: 'typing', line: false, arrow: false, minimap: false }
 };
 const DIFFICULTY_SCORE_MULTIPLIERS = { easy: 0.5, medium: 0.75, hard: 1, expert: 1.25, custom: 0.85 };
+// Route ribbons grade the trip on what the game is trying to teach — name
+// recall, navigating without aids, and choosing an efficient route — rather
+// than on raw speed. Ordered best-first; the first tier the score clears wins.
+const ROUTE_RIBBON_TIERS = [
+  { id: 'gold',   label: 'GOLD RIBBON',   min: 0.85, color: '#FACC15', dim: 'rgba(250,204,21,.16)' },
+  { id: 'silver', label: 'SILVER RIBBON', min: 0.68, color: '#CBD5E1', dim: 'rgba(203,213,225,.14)' },
+  { id: 'bronze', label: 'BRONZE RIBBON', min: 0.50, color: '#D8964A', dim: 'rgba(216,150,74,.16)' },
+  { id: 'none',   label: 'ROUTE COMPLETE', min: -Infinity, color: '#7DD3FC', dim: 'rgba(56,189,248,.12)' }
+];
+// Weight of each aid when scoring self-reliance. The route line removes the
+// navigation problem entirely, so it costs the most.
+const RIBBON_AID_COST = { line: 0.5, arrow: 0.25, minimap: 0.25 };
 const CANAL_PREFS_KEY = 'canalRecall.preferences.v1';
 const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v2';
 
@@ -114,6 +126,8 @@ class Game {
     this._visitedNeighborhoods = new Set();
     this._seenLandmarkNames = new Set();
     this._explorationSnapshot = null;
+    this._assistUsage = { line: false, arrow: false, minimap: false };
+    this._ribbon = null;
     this._debugMode = false;
     this._recenterBtnBounds = null;
     this._landmarkNotice = null;
@@ -724,6 +738,11 @@ class Game {
     this.quizBestStreak = 0;
     this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';
 
+    // Ribbon scoring: aids can be toggled mid-route, so grade on whichever
+    // ones were switched on at any point rather than on the final state.
+    this._assistUsage = { line: false, arrow: false, minimap: false };
+    this._ribbon = null;
+
     this.camera.x = this.player.x;
     this.camera.y = this.player.y;
   }
@@ -1108,6 +1127,9 @@ class Game {
   _updateRacing(dt) {
     this.raceTime += dt;
     for (const car of this.cars) car.totalTime = this.raceTime;
+    if (this.routeOptions.line) this._assistUsage.line = true;
+    if (this.routeOptions.arrow) this._assistUsage.arrow = true;
+    if (this.showMiniMap) this._assistUsage.minimap = true;
     if (this.warningPopupTimer > 0) this.warningPopupTimer -= dt;
     if (this.warningCooldown > 0) this.warningCooldown -= dt;
 
@@ -1123,40 +1145,14 @@ class Game {
     this.player.update(dt, this.track);
     if (this.travelMode === 'car') {
       const road = this.track.getNearestRoad(this.player.x, this.player.y);
-      const outsideDrivableCorridor = !road || road.dist > road.width + CAR_ROAD_EDGE_TOLERANCE;
-      if (outsideDrivableCorridor) {
-        // A soft pull lets a fast frame cross a canal before recovery catches
-        // up. Roll back first, then remove velocity pointing away from the
-        // mapped street so the next input can steer along it again.
-        this.player.x = previousPlayerPosition.x;
-        this.player.y = previousPlayerPosition.y;
-        const recoveryRoad = this.track.getNearestRoad(this.player.x, this.player.y) || road;
-        if (recoveryRoad) {
-          const tangentX = Math.cos(recoveryRoad.angle), tangentY = Math.sin(recoveryRoad.angle);
-          const tangentVelocity = this.player.vx * tangentX + this.player.vy * tangentY;
-          this.player.vx = tangentX * tangentVelocity * 0.72;
-          this.player.vy = tangentY * tangentVelocity * 0.72;
-          this.player.speed = Math.sign(this.player.speed) * Math.min(Math.abs(this.player.speed) * 0.7, Math.abs(tangentVelocity));
-          const forwardDot = Math.cos(this.player.angle) * tangentX + Math.sin(this.player.angle) * tangentY;
-          const roadHeading = recoveryRoad.angle + (forwardDot < 0 ? Math.PI : 0);
-          this.player.angle += normalizeAngle(roadHeading - this.player.angle) * 0.18;
-        } else {
-          this.player.speed *= 0.5;
-          this.player.vx *= 0.5;
-          this.player.vy *= 0.5;
-        }
-      } else {
-        const offRoadMargin = road.dist - road.width;
-        if (offRoadMargin > 0) {
-          const inwardX = road.x - this.player.x;
-          const inwardY = road.y - this.player.y;
-          const inwardDist = Math.hypot(inwardX, inwardY) || 1;
-          const pullStrength = Math.min(3, offRoadMargin * 0.18);
-          this.player.x += (inwardX / inwardDist) * pullStrength;
-          this.player.y += (inwardY / inwardDist) * pullStrength;
-          this.player.speed *= 0.97;
-        }
-      }
+      const previousRoad = this.track.getNearestRoad(previousPlayerPosition.x, previousPlayerPosition.y);
+      CanalRecallCar.constrainCarToRoad(
+        this.player,
+        previousPlayerPosition,
+        road,
+        previousRoad,
+        { edgeTolerance: CAR_ROAD_EDGE_TOLERANCE }
+      );
     } else if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
       this._blockedBoatFrames++;
       // Do not let a fast frame step carry the boat across a quay. The old
@@ -1234,6 +1230,7 @@ class Game {
     if (this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
       this.state = GameState.FINISHED;
       this.sound.silence();
+      this._ribbon = this._computeRouteRibbon();
       this._saveBestTime();
       this._explorationSnapshot = this._saveExploration();
     } else {
@@ -1964,7 +1961,7 @@ class Game {
 
     const cx = CANVAS_W / 2;
     const hasExploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0;
-    const cardX = cx - 300, cardY = hasExploration ? 60 : 90, cardW = 600, cardH = hasExploration ? 600 : 500;
+    const cardX = cx - 300, cardY = hasExploration ? 42 : 76, cardW = 600, cardH = hasExploration ? 652 : 570;
     ctx.fillStyle = 'rgba(3,18,28,.94)';
     roundRect(ctx, cardX, cardY, cardW, cardH, 18);
     ctx.fill();
@@ -2010,6 +2007,8 @@ class Game {
     ctx.fillText(`${accuracy}% accuracy${streakText}`, cx, 400);
     ctx.fillText(`${this.routeDifficulty.toUpperCase()} · ${this.travelMode.toUpperCase()} · ${this.viewMode.replace('-', ' ').toUpperCase()}`, cx, 418);
 
+    this._renderRouteRibbon(ctx, cx - 235, 432, 470, 74);
+
     let bestText = '';
     if (this._raceKey) {
       const stored = this._getBestTime(this._raceKey);
@@ -2021,25 +2020,26 @@ class Game {
     }
     ctx.fillStyle = bestText.startsWith('★') ? '#4ADE80' : '#7DD3FC';
     ctx.font = 'bold 16px monospace';
-    ctx.fillText(bestText, cx, 458);
+    ctx.textAlign = 'center';
+    ctx.fillText(bestText, cx, 528);
 
     // Exploration collection summary
     if (hasExploration) {
       const exp = this._explorationSnapshot;
       const totalKnown = exp.learnedWaterways.length + exp.learnedStreets.length;
       ctx.fillStyle = 'rgba(88,28,135,.25)';
-      roundRect(ctx, cx - 235, 475, 470, 58, 8);
+      roundRect(ctx, cx - 235, 541, 470, 58, 8);
       ctx.fill();
       ctx.fillStyle = '#C4B5FD';
       ctx.font = 'bold 11px monospace';
-      ctx.fillText('CITY KNOWLEDGE', cx, 494);
+      ctx.fillText('CITY KNOWLEDGE', cx, 560);
       ctx.fillStyle = '#E0E7FF';
       ctx.font = '12px monospace';
       const parts = [];
       if (totalKnown > 0) parts.push(`${totalKnown} waterways`);
       if (exp.visitedNeighborhoods.length > 0) parts.push(`${exp.visitedNeighborhoods.length} neighborhoods`);
       if (exp.seenLandmarks.length > 0) parts.push(`${exp.seenLandmarks.length} landmarks`);
-      ctx.fillText(parts.join(' · ') || 'Start exploring!', cx, 516);
+      ctx.fillText(parts.join(' · ') || 'Start exploring!', cx, 582);
       const newThisRoute = [];
       if (this.learnedNames.size > 0) newThisRoute.push(`${this.learnedNames.size} names`);
       if (this._visitedNeighborhoods.size > 0) newThisRoute.push(`${this._visitedNeighborhoods.size} neighborhoods`);
@@ -2047,19 +2047,96 @@ class Game {
       if (newThisRoute.length > 0) {
         ctx.fillStyle = '#A78BFA';
         ctx.font = '11px monospace';
-        ctx.fillText(`+${newThisRoute.join(', +')} this route`, cx, 530);
+        ctx.fillText(`+${newThisRoute.join(', +')} this route`, cx, 596);
       }
     }
 
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 16px monospace';
-    const controlsY = hasExploration ? 570 : 515;
+    const controlsY = hasExploration ? 636 : 566;
     ctx.fillText('ENTER  Try again     ESC  Choose route', cx, controlsY);
     if (this._shareUrl) {
       ctx.fillStyle = this._copiedTimer > 0 ? '#4ADE80' : '#94A3B8';
       ctx.font = '13px monospace';
       ctx.fillText(this._copiedTimer > 0 ? 'Race link copied' : 'C  Copy race link', cx, controlsY + 30);
     }
+  }
+
+  // Ribbon band on the finish card: a medal, the tier, and the per-axis
+  // breakdown so the grade explains itself rather than reading as a black box.
+  _renderRouteRibbon(ctx, boxX, boxY, boxW, boxH) {
+    const ribbon = this._ribbon;
+    if (!ribbon) return;
+
+    ctx.fillStyle = ribbon.dim;
+    roundRect(ctx, boxX, boxY, boxW, boxH, 10);
+    ctx.fill();
+    ctx.strokeStyle = ribbon.color;
+    ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.45;
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    // Rosette: two tails under a struck medal.
+    const medalX = boxX + 42, medalY = boxY + 32, medalR = 20;
+    ctx.fillStyle = ribbon.color;
+    ctx.globalAlpha = 0.75;
+    for (const tailDx of [-9, 9]) {
+      ctx.beginPath();
+      ctx.moveTo(medalX + tailDx - 6, medalY + 10);
+      ctx.lineTo(medalX + tailDx + 6, medalY + 10);
+      ctx.lineTo(medalX + tailDx + 3, medalY + 34);
+      ctx.lineTo(medalX + tailDx, medalY + 27);
+      ctx.lineTo(medalX + tailDx - 3, medalY + 34);
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    ctx.beginPath();
+    ctx.arc(medalX, medalY, medalR, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(3,18,28,.9)';
+    ctx.fill();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = ribbon.color;
+    ctx.stroke();
+    ctx.fillStyle = ribbon.color;
+    ctx.font = 'bold 18px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ribbon.id === 'none' ? '·' : ribbon.label[0], medalX, medalY + 1);
+    ctx.textBaseline = 'alphabetic';
+
+    const textX = boxX + 76;
+    ctx.textAlign = 'left';
+    ctx.fillStyle = ribbon.color;
+    ctx.font = 'bold 19px monospace';
+    ctx.fillText(ribbon.label, textX, boxY + 26);
+    const labelWidth = ctx.measureText(ribbon.label).width;
+    ctx.fillStyle = '#94A3B8';
+    ctx.font = '11px monospace';
+    ctx.fillText(`${Math.round(ribbon.score * 100)}%`, textX + labelWidth + 12, boxY + 26);
+
+    // Per-axis meters.
+    const axes = ribbon.axes;
+    const trackW = (boxX + boxW - 18 - textX) / axes.length;
+    axes.forEach((axis, index) => {
+      const x = textX + index * trackW;
+      const w = trackW - 14;
+      ctx.fillStyle = '#94A3B8';
+      ctx.font = '10px monospace';
+      ctx.fillText(`${axis.label} ${Math.round(axis.score * 100)}%`, x, boxY + 45);
+      ctx.fillStyle = 'rgba(148,163,184,.25)';
+      roundRect(ctx, x, boxY + 52, w, 7, 3.5);
+      ctx.fill();
+      if (axis.score > 0) {
+        ctx.fillStyle = ribbon.color;
+        const fillW = Math.max(4, w * axis.score);
+        roundRect(ctx, x, boxY + 52, fillW, 7, Math.min(3.5, fillW / 2));
+        ctx.fill();
+      }
+    });
+
+    ctx.textAlign = 'center';
   }
 
   // ---- Nearby landmark learning cues ----
@@ -2586,6 +2663,54 @@ class Game {
   }
 
   // ---- Leaderboard (localStorage) ----
+
+  // ---- Route ribbons ----
+
+  // Length of the graph route the game planned between start and finish, in
+  // game pixels. Used as the "no wasted distance" reference for efficiency.
+  _idealRouteLength() {
+    const path = this.routePath;
+    if (!path || path.length < 2) return 0;
+    let total = 0;
+    for (let i = 1; i < path.length; i++) {
+      total += Math.hypot(path[i].x - path[i - 1].x, path[i].y - path[i - 1].y);
+    }
+    return total;
+  }
+
+  // Grade the finished trip on recall, self-reliance, and route efficiency.
+  // Speed is deliberately not an input: a fast lap of the wrong canals should
+  // not outrank a deliberate, correctly named route.
+  _computeRouteRibbon() {
+    const axes = [];
+
+    if (this.quizAttempts > 0) {
+      axes.push({ id: 'recall', label: 'Recall', weight: 0.5, score: this.quizCorrect / this.quizAttempts });
+    }
+
+    const used = this._assistUsage || { line: false, arrow: false, minimap: false };
+    let aidCost = 0;
+    for (const [aid, cost] of Object.entries(RIBBON_AID_COST)) if (used[aid]) aidCost += cost;
+    let selfReliance = 1 - aidCost;
+    // Typing the name back is a harder recall task than picking from four
+    // options, so it buys back some of the aid cost.
+    if (this.routeOptions.answerMode === 'typing') selfReliance += 0.15;
+    axes.push({ id: 'aids', label: 'Unaided', weight: 0.25, score: clamp(selfReliance, 0, 1) });
+
+    const ideal = this._idealRouteLength();
+    const actual = this.player ? this.player.distancePx : 0;
+    if (ideal > 0 && actual > 0) {
+      // Even a clean run overshoots the graph route slightly, so treat 90% of
+      // ideal as a full score and 55% as none.
+      const ratio = Math.min(1, ideal / actual);
+      axes.push({ id: 'efficiency', label: 'Efficiency', weight: 0.25, score: clamp((ratio - 0.55) / 0.35, 0, 1) });
+    }
+
+    const totalWeight = axes.reduce((sum, axis) => sum + axis.weight, 0);
+    const score = totalWeight > 0 ? axes.reduce((sum, axis) => sum + axis.weight * axis.score, 0) / totalWeight : 0;
+    const tier = ROUTE_RIBBON_TIERS.find(entry => score >= entry.min);
+    return { ...tier, score, axes };
+  }
 
   _getBestTime(key) {
     if (!key) return null;

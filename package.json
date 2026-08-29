@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build:canal-car": "esbuild src/canalRecall/carRoadGuard.ts --bundle --format=iife --global-name=CanalRecallCar --outfile=public/canal-drive/js/car-road-guard.bundle.js --minify",
     "build:canal-3d": "esbuild public/canal-drive/js/detailed-buildings-source.js --bundle --format=iife --global-name=CanalRecallDetailed3D --outfile=public/canal-drive/js/detailed-buildings.bundle.js --minify",
     "dev": "tsx server.ts",
-    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "npm run build:canal-car && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "build:amsterdam": "tsx scripts/build-amsterdam-extract.ts",
@@ -15,6 +16,7 @@
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
     "test:srs": "tsx scripts/check-spaced-repetition.ts",
+    "test:canal-car": "tsx scripts/check-canal-car.ts",
     "test:e2e": "playwright test",
     "test:e2e:update": "playwright test --update-snapshots"
   },
