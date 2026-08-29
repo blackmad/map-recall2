@@ -26,6 +26,14 @@ class OSMLoader {
         for (let pathIndex = 0; pathIndex < paths.length; pathIndex++) {
           const path = paths[pathIndex];
           if (!path || path.length < 2) continue;
+          // The extract intentionally retains named water polygons for map
+          // context, but their closed shore rings are not navigable routes.
+          // Feeding them into the graph creates loops around docks/islands and
+          // shortcuts across land when mixed with same-name centerlines.
+          const first = path[0], last = path[path.length - 1];
+          const closedAreaRing = travelMode === 'boat' && path.length > 3
+            && first[0] === last[0] && first[1] === last[1];
+          if (closedAreaRing) continue;
           ways.push({
             id: `${feature.id}:${pathIndex}`,
             nodes: path.map(([pathLat, pathLon]) => ({ lat: pathLat, lon: pathLon })),

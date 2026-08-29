@@ -63,8 +63,9 @@ class Car {
     this.speed = clamp(this.speed, CAR_REVERSE_MAX, this.maxSpeed);
 
     // steering
-    const speedFactor = clamp(Math.abs(this.speed) / SPEED_FACTOR_DIVISOR, 0, 1);
+    const speedFactor = clamp(Math.abs(this.speed) / SPEED_FACTOR_DIVISOR, this.isBoat ? 0.28 : 0, 1);
     let effectiveTurn = this.turnRate * (1 - Math.abs(this.speed) / this.maxSpeed * TURN_REDUCTION_AT_SPEED);
+    if (this.isBoat && this.speed < 0) effectiveTurn *= 1.18;
     if (this.handbrake) effectiveTurn *= HANDBRAKE_TURN_MULT;
     this.angularVel = this.steerInput * effectiveTurn * speedFactor;
     this.angle += this.angularVel * dt;
