@@ -34,3 +34,18 @@ Prioritize mechanics that reinforce geographic learning:
 Avoid mechanics that work against learning: random weapon systems, collisions that interrupt quizzes, opaque loot currencies, collectible spam, or rewards that encourage driving off the mapped network.
 
 The setup screen and live settings panel should expose the master toggle. Individual arcade-system controls can remain in an advanced section if later playtesting shows that they are needed.
+
+### Arcade reference: Crazy Taxi, not GTA
+
+Use Crazy Taxi as the primary reference for pace, readability, and session structure. Borrow GTA-style aids only as optional navigation vocabulary (route line, bearing arrow, minimap), not as the tone or game fantasy.
+
+- Treat important POIs as a rotating set of “fares”: select or collect a passenger/cargo request, learn the destination, navigate there, and immediately receive a nearby follow-on route.
+- Make the destination beacon exuberant and readable in arcade mode, while the calm mode keeps the restrained map pin.
+- Grade each trip on recall accuracy, route efficiency, discoveries, assist level, and optionally time. Speed alone should not dominate.
+- Award meaningful time extensions for correct canal/street answers and efficient arrivals; wrong answers should cost combo/time without preventing completion.
+- Build a route chain across neighborhoods so a session naturally teaches spatial relationships between several POIs.
+- Let “passengers” be lightweight Amsterdam-flavoured requests—museum visitor, market delivery, ferry connection, canal tour guest—without requiring character simulation.
+- Use a destination-category colour language: culture, transit, food/market, civic, park, nightlife, and hidden-history stops.
+- Reserve exaggerated arrows, voice barks, combo typography, destination gates, pickups, boosts, and celebratory arrival effects for `Game-y features: On`.
+- Add a short “quick fare” mode alongside deliberate study routes. The same map, graph, facts, and recall questions should power both.
+- Keep collisions forgiving. The fun should come from flow, turns, geographic decisions, and chaining successful trips—not punishing vehicle damage.
