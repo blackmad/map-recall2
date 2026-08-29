@@ -1124,6 +1124,20 @@ class Game {
       this.quizCandidateTimer = 0;
       return;
     }
+    // Check alignment: player heading must roughly match the road direction
+    // to avoid quizzing when merely crossing a waterway/street without turning
+    const nearestRoad = this.track.getNearestRoad(this.player.x, this.player.y);
+    if (nearestRoad) {
+      const playerAngle = this.player.angle;
+      const roadAngle = nearestRoad.angle;
+      let angleDiff = Math.abs(playerAngle - roadAngle) % Math.PI;
+      if (angleDiff > Math.PI / 2) angleDiff = Math.PI - angleDiff;
+      if (angleDiff > Math.PI / 4) {
+        this.quizCandidateName = '';
+        this.quizCandidateTimer = 0;
+        return;
+      }
+    }
     if (name !== this.quizCandidateName) {
       this.quizCandidateName = name;
       this.quizCandidateTimer = 0;
