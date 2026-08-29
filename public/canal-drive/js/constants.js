@@ -137,7 +137,7 @@ const CB_MESSAGES = {
 
 // --- Camera ---
 const CAMERA_SMOOTHING = 0.07;                 // exponential smoothing (0 = snap, 1 = frozen)
-const CAMERA_ZOOM_INITIAL = 0.65;
+const CAMERA_ZOOM_INITIAL = 0.50;
 const CAMERA_ZOOM_MIN = 0.2;
 const CAMERA_ZOOM_MAX = 1.5;
 const CAMERA_ZOOM_STEP = 0.15;                 // per key press

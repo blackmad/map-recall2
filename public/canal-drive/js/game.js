@@ -263,7 +263,10 @@ class Game {
       if (typeof prefs.minimap === 'boolean') this._assistMinimap.checked = prefs.minimap;
       this._soundEnabled.checked = prefs.sound === true;
       this._treesEnabled.checked = prefs.trees !== false;
-      if (Number.isFinite(prefs.zoom)) this.camera.zoom = clamp(prefs.zoom, this.camera.minZoom, this.camera.maxZoom);
+      if (Number.isFinite(prefs.zoom)) {
+        const migratedZoom = prefs.zoomDefaultVersion !== 2 && prefs.zoom === 0.65 ? CAMERA_ZOOM_INITIAL : prefs.zoom;
+        this.camera.zoom = clamp(migratedZoom, this.camera.minZoom, this.camera.maxZoom);
+      }
       this._cameraZoom.value = String(this.camera.zoom);
       this.themeMode = this._themeMode.value;
       this.vectorMap.applyTheme(this.themeMode);
@@ -285,7 +288,8 @@ class Game {
       minimap: !!this.routeOptions.minimap,
       trees: this._treesEnabled ? this._treesEnabled.checked : true,
       sound: !this.sound.muted,
-      zoom: this.camera.zoom
+      zoom: this.camera.zoom,
+      zoomDefaultVersion: 2
     }));
   }
 
