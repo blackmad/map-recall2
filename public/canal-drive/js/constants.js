@@ -52,7 +52,7 @@ const CAR_MIN_STEER_FACTOR = 0.7;              // steering authority at a stands
 // Stop nearly on a dime so a junction can be taken late. Toy physics: the
 // brake is stronger than the engine, and lifting off scrubs speed hard.
 const PLAYER_CAR_BRAKE_MULT = 5.5;
-const PLAYER_CAR_ENGINE_BRAKE_MULT = 7;
+const PLAYER_CAR_LIFT_OFF_BRAKING = 6.5;       // 1/s — coasting decays speed this fast
 const CAR_GRIP = 1.0;                          // multiplier (1.0 = full grip)
 const CAR_DRIFT_FACTOR = 0.84;                 // lateral water slide retention
 const CAR_DRAG = 0.0024;                       // quadratic water drag

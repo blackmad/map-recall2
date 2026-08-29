@@ -18,6 +18,7 @@ class Car {
     this.driftFactor = CAR_DRIFT_FACTOR;
     this.drag = CAR_DRAG;
     this.rollingResist = CAR_ROLLING_RESIST;
+    this.liftOffBraking = 0;   // per-second damping while coasting; cars set this
 
     this.throttle = 0; this.brake = 0;
     this.steerInput = 0; this.handbrake = false;
@@ -58,6 +59,12 @@ class Car {
     if (this.brake > 0) fwd -= this.brakeForce * this.brake;
     fwd -= this.speed * Math.abs(this.speed) * this.drag;
     fwd -= this.rollingResist * Math.sign(this.speed || 0.001);
+    // Toy physics: lifting off should stop the car almost at once. A constant
+    // rolling resistance is negligible next to a 200 px/s cruise, so coasting
+    // damps proportionally to current speed instead.
+    if (this.liftOffBraking > 0 && this.throttle === 0 && this.brake === 0) {
+      fwd -= this.speed * this.liftOffBraking;
+    }
     fwd -= surfaceDrag * Math.sign(this.speed || 0.001);
     this.speed += fwd * dt;
     this.speed = clamp(this.speed, CAR_REVERSE_MAX, this.maxSpeed);

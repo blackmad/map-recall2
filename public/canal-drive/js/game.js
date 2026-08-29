@@ -958,7 +958,7 @@ class Game {
       this.player.maxSpeed *= PLAYER_CAR_SPEED_MULT;
       this.player.accel *= PLAYER_CAR_ACCEL_MULT;
       this.player.brakeForce *= PLAYER_CAR_BRAKE_MULT;
-      this.player.rollingResist *= PLAYER_CAR_ENGINE_BRAKE_MULT;
+      this.player.liftOffBraking = PLAYER_CAR_LIFT_OFF_BRAKING;
     }
     this.cars.push(this.player);
 
