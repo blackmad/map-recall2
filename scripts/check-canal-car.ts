@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { constrainCarToRoad, type CarKinematics, type RoadContact } from '../src/canalRecall/carRoadGuard';
 
 const options = { edgeTolerance: 12 };
@@ -45,4 +46,26 @@ const car = (overrides: Partial<CarKinematics> = {}): CarKinematics => ({
   assert.ok(Math.abs(subject.vx) < 0.001, 'recovery projects velocity onto the street tangent');
 }
 
-process.stdout.write('Canal Recall car road-guard simulations passed (5 scenarios).\n');
+type RoutingStreet = { name: string; path?: [number, number][]; paths?: [number, number][][] };
+const routing = JSON.parse(await readFile('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as RoutingStreet[];
+const pointsFor = (name: string): [number, number][] => routing
+  .filter(street => street.name === name)
+  .flatMap(street => street.paths ?? (street.path ? [street.path] : []))
+  .flat();
+const metersBetween = (a: [number, number], b: [number, number]): number => {
+  const latitudeScale = 111_320;
+  const longitudeScale = latitudeScale * Math.cos((a[0] + b[0]) / 2 * Math.PI / 180);
+  return Math.hypot((a[0] - b[0]) * latitudeScale, (a[1] - b[1]) * longitudeScale);
+};
+const daCosta = pointsFor('Da Costakade');
+assert.ok(daCosta.length > 0, 'full routing data includes Da Costakade');
+for (const crossing of ['De Clercqstraat', 'Potgieterstraat', 'Kinkerstraat', 'Jacob van Lennepstraat']) {
+  const crossingPoints = pointsFor(crossing);
+  assert.ok(crossingPoints.length > 0, `full routing data includes ${crossing}`);
+  const closest = Math.min(...crossingPoints.flatMap(a => daCosta.map(b => metersBetween(a, b))));
+  // Quay centerlines stop at the bridge footprint rather than meeting its
+  // centerline; their combined rendered half-widths span roughly 20 metres.
+  assert.ok(closest < 22, `${crossing} has a continuous bridge approach at Da Costakade (closest ${closest.toFixed(1)}m)`);
+}
+
+process.stdout.write('Canal Recall car checks passed (5 simulations + 4 Da Costakade bridge fixtures).\n');

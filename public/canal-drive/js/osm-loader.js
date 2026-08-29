@@ -15,7 +15,10 @@ class OSMLoader {
   // game engine can remain unchanged.
   async fetchRoads(lat, lng, radiusMeters, travelMode = 'boat') {
     try {
-      const dataset = travelMode === 'car' ? 'streets' : 'water';
+      // Quiz partitions stay deliberately compact. Driving needs the complete
+      // connected street component or visible bridge approaches can have no
+      // underlying centerline and the road guard will correctly refuse them.
+      const dataset = travelMode === 'car' ? 'streets-routing' : 'water';
       const dataUrl = new URL(`../data/extracts/amsterdam/${dataset}.json`, window.location.href);
       const response = await fetch(dataUrl);
       if (!response.ok) throw new Error(`Amsterdam water data: HTTP ${response.status}`);

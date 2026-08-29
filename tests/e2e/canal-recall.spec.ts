@@ -1,0 +1,122 @@
+import { expect, Page, test } from '@playwright/test';
+
+type HarnessGame = {
+  state: number;
+  player: { x: number; y: number; angle: number; speed: number };
+  track: { getNearestRoad(x: number, y: number): { dist: number; width: number; angle: number } | null };
+  landmarks: Array<{ id: string; name: string; x: number; y: number }>;
+  vectorMap: { inspectBuilding: (...args: unknown[]) => unknown; setActiveLandmark: (landmark: unknown) => void };
+  _landmarkNotice: { id: string; name: string } | null;
+  _neighborhoodNotice: { name: string; wikipediaExtract?: string } | null;
+  _neighborhoodNoticeTimer: number;
+  _neighborhoodImages: Map<string, HTMLImageElement>;
+  _render: () => void;
+  _renderNeighborhoodNotice: () => void;
+  ctx: CanvasRenderingContext2D;
+};
+
+declare global {
+  interface Window {
+    canalRecallGame: HarnessGame;
+    CanalRecallCar: { constrainCarToRoad: (...args: unknown[]) => string };
+  }
+}
+
+async function openCarRoute(page: Page): Promise<void> {
+  await page.addInitScript(() => {
+    let seed = 0x5eed1234;
+    Math.random = () => {
+      seed = (seed * 1664525 + 1013904223) >>> 0;
+      return seed / 0x100000000;
+    };
+  });
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await page.goto('/canal-drive/');
+  await expect(page.locator('#route-card')).toBeVisible();
+  await page.locator('#travel-mode').selectOption('car');
+  await page.locator('#view-mode').selectOption('north');
+  // Submit through the form so the driving harness is independent of mobile
+  // scroll/zoom hit-testing; mobile setup tap targets have separate UI tests.
+  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
+  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.player?.x))).toBe(true);
+  await page.evaluate(() => { window.canalRecallGame.state = 4; });
+}
+
+test('typed road guard bundle is loaded by Canal Recall', async ({ page }) => {
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => typeof window.CanalRecallCar?.constrainCarToRoad)).toBe('function');
+});
+
+test('an actual high-speed car cannot escape the mapped road corridor', async ({ page }) => {
+  await openCarRoute(page);
+  await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const road = game.track.getNearestRoad(game.player.x, game.player.y);
+    if (!road) throw new Error('Harness route did not start on a road');
+    game.player.angle = road.angle + Math.PI / 2;
+    game.player.speed = 190;
+  });
+
+  await page.keyboard.down('ArrowUp');
+  const samples: Array<{ excess: number; speed: number }> = [];
+  for (let index = 0; index < 30; index++) {
+    await page.waitForTimeout(50);
+    samples.push(await page.evaluate(() => {
+      const game = window.canalRecallGame;
+      game.state = 4;
+      const road = game.track.getNearestRoad(game.player.x, game.player.y);
+      return { excess: road ? road.dist - road.width : Number.POSITIVE_INFINITY, speed: game.player.speed };
+    }));
+  }
+  await page.keyboard.up('ArrowUp');
+
+  expect(Math.max(...samples.map(sample => sample.excess))).toBeLessThanOrEqual(12.5);
+  expect(samples.some(sample => sample.speed < 150)).toBe(true);
+});
+
+test('curated POI identity wins over an unnamed building hit', async ({ page }) => {
+  await openCarRoute(page);
+  const selected = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const landmark = { id: 'harness-poi', name: 'Harness Museum', x: 100000, y: 100000 };
+    game.landmarks = [landmark];
+    game.vectorMap.inspectBuilding = () => ({ id: landmark.id, name: landmark.name, lngLat: [4.9, 52.37], poi: true });
+    game.vectorMap.setActiveLandmark = () => undefined;
+    const canvas = document.querySelector<HTMLCanvasElement>('#gameCanvas');
+    if (!canvas) throw new Error('Canvas missing');
+    const rect = canvas.getBoundingClientRect();
+    const inspector = game as HarnessGame & { _inspectBuildingAt(x: number, y: number): void };
+    inspector._inspectBuildingAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    return { selected: game._landmarkNotice?.id, expected: landmark.id };
+  });
+  expect(selected.selected).toBe(selected.expected);
+  await expect(page.locator('text=Unnamed building')).toHaveCount(0);
+});
+
+test('classic neighborhood postcard renders as large-letter artwork', async ({ page }, testInfo) => {
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
+  const cardMetrics = await page.evaluate(async () => {
+    const game = window.canalRecallGame;
+    const image = new Image();
+    image.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300"><rect width="800" height="300" fill="#287a8c"/><circle cx="180" cy="90" r="70" fill="#f4c95d"/><path d="M0 250L170 130 300 230 470 80 800 250V300H0Z" fill="#315d45"/></svg>')}`;
+    await image.decode();
+    game._neighborhoodImages = new Map([['Jordaan', image]]);
+    game._neighborhoodNotice = { name: 'Jordaan' };
+    game._neighborhoodNoticeTimer = 4;
+    game._render = () => undefined;
+    const canvas = document.querySelector<HTMLCanvasElement>('#gameCanvas');
+    if (!canvas) throw new Error('Canvas missing');
+    game.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    game._renderNeighborhoodNotice();
+    const pixels = game.ctx.getImageData((canvas.width - 520) / 2, canvas.height - 210, 520, 180).data;
+    let opaque = 0;
+    for (let index = 3; index < pixels.length; index += 4) if (pixels[index] > 0) opaque++;
+    return { opaqueRatio: opaque / (pixels.length / 4) };
+  });
+  expect(cardMetrics.opaqueRatio).toBeGreaterThan(0.8);
+  await testInfo.attach(`neighborhood-postcard-${testInfo.project.name}.png`, {
+    body: await page.locator('#gameCanvas').screenshot(),
+    contentType: 'image/png',
+  });
+});
