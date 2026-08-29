@@ -205,6 +205,7 @@ class Game {
     this._assistArrow = document.getElementById('assist-arrow');
     this._assistMinimap = document.getElementById('assist-minimap');
     this._soundEnabled = document.getElementById('sound-enabled');
+    this._treesEnabled = document.getElementById('trees-enabled');
     this._cameraZoom = document.getElementById('camera-zoom');
     this._routeError = document.getElementById('route-error');
     for (const poi of CANAL_ROUTE_POIS) {
@@ -244,6 +245,7 @@ class Game {
       if (typeof prefs.arrow === 'boolean') this._assistArrow.checked = prefs.arrow;
       if (typeof prefs.minimap === 'boolean') this._assistMinimap.checked = prefs.minimap;
       this._soundEnabled.checked = prefs.sound === true;
+      this._treesEnabled.checked = prefs.trees !== false;
       if (Number.isFinite(prefs.zoom)) this.camera.zoom = clamp(prefs.zoom, this.camera.minZoom, this.camera.maxZoom);
       this._cameraZoom.value = String(this.camera.zoom);
       this.themeMode = this._themeMode.value;
@@ -262,6 +264,7 @@ class Game {
       line: !!this.routeOptions.line,
       arrow: !!this.routeOptions.arrow,
       minimap: !!this.routeOptions.minimap,
+      trees: this._treesEnabled ? this._treesEnabled.checked : true,
       sound: !this.sound.muted,
       zoom: this.camera.zoom
     }));
@@ -274,6 +277,7 @@ class Game {
     this._liveArrow = document.getElementById('live-arrow');
     this._liveMinimap = document.getElementById('live-minimap');
     this._liveSound = document.getElementById('live-sound');
+    this._liveTrees = document.getElementById('live-trees');
     this._liveZoom = document.getElementById('live-zoom');
     this._liveControls = document.getElementById('live-controls');
     this._liveView = document.getElementById('live-view');
@@ -281,7 +285,7 @@ class Game {
     document.getElementById('open-help').addEventListener('click', () => this._toggleUtilityPanel(this._helpPanel));
     document.getElementById('open-settings').addEventListener('click', () => this._toggleUtilityPanel(this._settingsPanel));
     document.querySelectorAll('.utility-close').forEach(button => button.addEventListener('click', () => this._closeUtilityPanels()));
-    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveSound, this._liveZoom]) {
+    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveTrees, this._liveSound, this._liveZoom]) {
       control.addEventListener('change', () => this._readLiveSettings());
     }
     this._liveControls.addEventListener('change', () => this._readLiveSettings());
@@ -297,6 +301,7 @@ class Game {
     this._liveView.value = this.viewMode;
     this._liveTheme.value = this.themeMode;
     this._liveSound.checked = !this.sound.muted;
+    this._liveTrees.checked = this._treesEnabled.checked;
     this._liveZoom.value = String(this.camera.zoom);
   }
 
@@ -314,6 +319,8 @@ class Game {
     this.vectorMap.applyTheme(this.themeMode);
     this.camera.zoom = Number(this._liveZoom.value);
     this._setSoundEnabled(this._liveSound.checked);
+    this._treesEnabled.checked = this._liveTrees.checked;
+    this.vectorMap.setTreesVisible(this._liveTrees.checked);
     this._savePreferences();
   }
 
@@ -372,6 +379,7 @@ class Game {
     this.camera.northUp = this.viewMode === 'north';
     this.themeMode = this._themeMode.value;
     this.vectorMap.applyTheme(this.themeMode);
+    this.vectorMap.setTreesVisible(this._treesEnabled.checked);
     try {
       this.learnedNames = new Set(JSON.parse(localStorage.getItem(`canalRecall.learned.${this.travelMode}`) || '[]'));
     } catch (_) { this.learnedNames = new Set(); }
