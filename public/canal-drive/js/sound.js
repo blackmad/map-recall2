@@ -7,7 +7,7 @@ class SoundManager {
     this.engineOsc = null;
     this.engineGain = null;
     this.started = false;
-    this.muted = false;
+    this.muted = true;
   }
   init() {
     if (this.started) return;
@@ -59,5 +59,11 @@ class SoundManager {
   toggle() {
     this.muted = !this.muted;
     if (this.muted) this.silence();
+    return !this.muted;
+  }
+  setEnabled(enabled) {
+    this.muted = !enabled;
+    if (this.muted) this.silence();
+    else this.resume();
   }
 }
