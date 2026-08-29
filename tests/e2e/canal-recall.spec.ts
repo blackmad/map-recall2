@@ -5,7 +5,12 @@ type HarnessGame = {
   player: { x: number; y: number; angle: number; speed: number };
   track: { getNearestRoad(x: number, y: number): { dist: number; width: number; angle: number } | null };
   landmarks: Array<{ id: string; name: string; x: number; y: number }>;
-  vectorMap: { inspectBuilding: (...args: unknown[]) => unknown; setActiveLandmark: (landmark: unknown) => void };
+  vectorMap: {
+    ready?: boolean;
+    map?: { getPaintProperty(layer: string, property: string): unknown };
+    inspectBuilding: (...args: unknown[]) => unknown;
+    setActiveLandmark: (landmark: unknown) => void;
+  };
   _landmarkNotice: { id: string; name: string } | null;
   _neighborhoodNotice: { name: string; wikipediaExtract?: string } | null;
   _neighborhoodNoticeTimer: number;
@@ -45,6 +50,18 @@ async function openCarRoute(page: Page): Promise<void> {
 test('typed road guard bundle is loaded by Canal Recall', async ({ page }) => {
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => typeof window.CanalRecallCar?.constrainCarToRoad)).toBe('function');
+});
+
+test('live MapLibre buildings use the OSM-aware color expression', async ({ page }) => {
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.vectorMap?.ready))).toBe(true);
+  const paint = await page.evaluate(() => window.canalRecallGame.vectorMap.map
+    ?.getPaintProperty('building-3d', 'fill-extrusion-color'));
+  expect(Array.isArray(paint)).toBe(true);
+  const serialized = JSON.stringify(paint);
+  expect(serialized).toContain('colour');
+  expect(serialized).toContain('#43888b');
+  expect(serialized).toContain('render_height');
 });
 
 test('an actual high-speed car cannot escape the mapped road corridor', async ({ page }) => {
