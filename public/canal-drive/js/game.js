@@ -199,6 +199,8 @@ class Game {
     this._promptChoices = document.getElementById('canal-choices');
     this._promptHeading = document.querySelector('#canal-card h2');
     this._promptQuestion = document.querySelector('#canal-card p');
+    this._promptKind = document.getElementById('canal-kind');
+    this._promptKindLabel = document.getElementById('canal-kind-label');
     this._promptForm.addEventListener('submit', (event) => {
       event.preventDefault();
       this._submitCanalAnswer();
@@ -1676,15 +1678,22 @@ class Game {
     this._openQuizPrompt({
       kind: 'route',
       name,
-      heading: 'You made a turn',
+      subject: this.travelMode === 'car' ? 'street' : 'waterway',
       question: this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?',
+      context: 'You made a turn',
       segmentIndex: quizRoad ? quizRoad.segIdx : -1,
       pointIndex: quizRoad ? quizRoad.ptIdx : 0,
     });
   }
 
   // Shared prompt plumbing for every kind of recall question.
-  _openQuizPrompt({ kind, name, heading, question, choices = null, segmentIndex = -1, pointIndex = 0 }) {
+  //
+  // `subject` is what the answer *is* — a street, a bridge, or the water under
+  // one. It is the chip at the top of the card, because "Crossing a bridge" as
+  // the headline above "Which water are you crossing?" read as a question
+  // about the bridge. The question is the headline now and the situation is
+  // the caption under it.
+  _openQuizPrompt({ kind, name, subject, question, context, choices = null, segmentIndex = -1, pointIndex = 0 }) {
     this._pendingCrossing = null;
     this.quizPromptKind = kind;
     this.quizPromptName = name;
@@ -1693,8 +1702,14 @@ class Game {
     this.player.speed = 0;
     this.player.vx = 0;
     this.player.vy = 0;
-    this._promptHeading.textContent = heading;
-    this._promptQuestion.textContent = question;
+    const chip = QUIZ_SUBJECTS[subject] || QUIZ_SUBJECTS.water;
+    this._promptKind.dataset.kind = chip.kind;
+    this._promptKind.firstElementChild.innerHTML = chip.icon;
+    this._promptKindLabel.textContent = chip.label;
+    this._promptHeading.textContent = question;
+    this._promptQuestion.textContent = context;
+    this._promptInput.setAttribute('aria-label', `${chip.label} name`);
+    this._promptInput.placeholder = chip.placeholder;
     this._prompt.style.display = 'flex';
     const playerScreen = this.camera.worldToScreen(this.player.x, this.player.y);
     this._prompt.classList.toggle('dock-left', playerScreen.x > CANVAS_W / 2);
@@ -1800,8 +1815,11 @@ class Game {
     this._openQuizPrompt({
       kind: kind === 'water' ? 'crossing-water' : 'bridge',
       name: answer,
-      heading: byBoat ? 'Passing under a bridge' : 'Crossing a bridge',
-      question: kind === 'water' ? 'Which water are you crossing?' : 'Which bridge is this?',
+      subject: kind === 'water' ? 'water' : 'bridge',
+      question: kind === 'water'
+        ? (byBoat ? 'Which water are you on?' : 'Which water is under this bridge?')
+        : 'Which bridge is this?',
+      context: byBoat ? 'Passing under a bridge' : 'Crossing a bridge',
       choices: alternatives.length >= 2 ? [answer, ...alternatives] : null,
     });
     this._pendingCrossing = { bridge: closest, crossing, key, water };

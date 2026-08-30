@@ -86,8 +86,12 @@ async function crossBridge(page: Page, bridgeName: string, crossingIndex: number
       roadName: game.track.getRoadName(game.player.x, game.player.y),
       kind: game.quizPromptName ? game.quizPromptKind : null,
       asked: game.quizPromptName || null,
-      heading: document.querySelector('#canal-card h2')?.textContent || '',
-      question: document.querySelector('#canal-card p')?.textContent || '',
+      // The prompt leads with the question and captions it with the situation,
+      // and the chip above both says which kind of thing the answer is.
+      question: document.querySelector('#canal-card h2')?.textContent || '',
+      context: document.querySelector('#canal-card p')?.textContent || '',
+      subject: document.getElementById('canal-kind-label')?.textContent || '',
+      subjectKind: document.getElementById('canal-kind')?.dataset.kind || '',
       crossings: bridge.crossings.length,
     };
   }, { bridgeName, crossingIndex });
@@ -102,8 +106,10 @@ test('a bridge over water teaches the water first and the bridge second', async 
   expect(first.waterway).toBe('Amstel');
   expect(first.kind).toBe('crossing-water');
   expect(first.asked).toBe('Amstel');
-  expect(first.question).toBe('Which water are you crossing?');
-  expect(first.heading).toBe('Crossing a bridge');
+  expect(first.question).toBe('Which water is under this bridge?');
+  expect(first.context).toBe('Crossing a bridge');
+  expect(first.subject).toBe('Water');
+  expect(first.subjectKind).toBe('water');
 
   // Answering it right is what unlocks the bridge above it.
   await page.evaluate(() => window.canalRecallGame._submitCanalAnswer('Amstel'));
@@ -111,6 +117,8 @@ test('a bridge over water teaches the water first and the bridge second', async 
   expect(second.kind).toBe('bridge');
   expect(second.asked).toBe('Magere Brug');
   expect(second.question).toBe('Which bridge is this?');
+  expect(second.subject).toBe('Bridge');
+  expect(second.subjectKind).toBe('bridge');
 });
 
 test('a wrong answer about the water does not unlock the bridge', async ({ page }) => {

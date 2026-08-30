@@ -18,3 +18,12 @@ and sampled `natural=tree_row` ways, and cached with the city extract.
 
 Map data is © OpenStreetMap contributors and is available under ODbL. Basemap
 tiles are provided by CARTO using OpenStreetMap data.
+# Interface icons
+
+The recall prompt uses Route and Waves icons from Lucide, licensed under the
+ISC License, and the Bridge icon from Font Awesome Free, licensed under
+CC BY 4.0. See https://lucide.dev and https://fontawesome.com.
+
+The chase/cockpit player bicycle uses “Carbon Frame Bike” by Robert Schweier
+and prefrontal cortex, licensed under Creative Commons Attribution-ShareAlike
+4.0. Source: https://sketchfab.com/3d-models/398999b3360b4e6997a9aae253d6acbd

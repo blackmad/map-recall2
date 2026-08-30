@@ -10,21 +10,8 @@ design notes for the larger bets live below the board.
 - **Typed presentation/runtime split.** `game.js` remains the composition root,
   but finish, notice, and HUD drawing are moving into props-driven TypeScript
   leaves that Storybook and direct checks can render without constructing a
-  whole race. Routing is being separated in parallel behind a distance-cost
-  compatible graph API, with an injectable edge-cost seam for future novelty.
-  The graph half has landed as `src/canalRecall/routing/roadGraph.ts`; what
-  remains is making `road-network.js` route through it instead of its own
-  Dijkstra, behind the named driving and reachability regressions.
-- **Satellite roof colouring — coverage.** The sampler exists and runs
-  (`npm run build:roof-colours`, see below), but it can only colour buildings
-  the extract already ships geometry for: 10,578 of roughly 104,000 footprints
-  in the play area, because `buildings-colored.geojson` was built from OSM
-  appearance *tags*. Everything else is drawn by the basemap from a height
-  ramp, which is the grey city. Extending it means shipping footprints: the
-  4.4 × 4.2 km core is 43,398 buildings, 9.2 MB of trimmed rings, 1.9 MB
-  gzipped — affordable, but it needs a roof-only extrusion layer whose base
-  height matches what the basemap already draws, or the caps float.
-
+  whole race. The routing half is complete: the browser runtime now delegates
+  graph construction and pathfinding to the bundled typed road graph.
 ## Next
 
 - Continue the new Storybook workbench by extracting canvas card/HUD renderers
@@ -48,12 +35,37 @@ design notes for the larger bets live below the board.
 
 ## Recently done
 
-- **The typed road graph core is on `main`.** `src/canalRecall/routing/
-  roadGraph.ts` — `buildRoadGraph`, `shortestRoadPaths`, `findRoadRoute`,
-  `findRoadRouteToFirstReachable` over a grid-merged node graph, with junction
-  stitching and an injectable edge-cost seam for novelty-aware routing. Nothing
-  in the runtime calls it yet; `road-network.js` is still the live router. Its
-  check is now part of `npm run check:canal` so it cannot rot before adoption.
+- **One theme, two surfaces.** The stylesheet had the ink theme and then, below
+  it, a paper "map sheet" redesign that re-declared the *same unscoped
+  selectors* to override it — `.setup-field`, `.master-toggle`,
+  `.assist-options`, `.account-button`, `.advanced-options`, `#route-start`.
+  Every one of those is also used by the live settings panel, which is still
+  dark, so the paper colours repainted it: its selects were `#172326` on
+  `#071e2b` and could not be read at all. There is now one token set on
+  `:root` for the in-game chrome and a scoped override on `#route-setup` for
+  the paper sheet; components consume tokens, and the only rules the sheet
+  keeps of its own are the genuine differences in form (ruled underlines
+  instead of inset boxes, a three-column preference grid). The leak is
+  structurally impossible now rather than something to keep noticing.
+- **The recall prompt says what kind of answer it wants.** "Crossing a bridge"
+  as the headline over a smaller "Which water are you crossing?" read as a
+  question about the bridge. The question is the headline now, the situation is
+  its caption, and a coloured chip above both — 💧 Water, 🌉 Bridge, 🛣 Street —
+  names the kind of feature the answer is. The text input's placeholder and
+  aria-label follow the same subject. `crossing-quiz.spec.ts` pins the chip and
+  both strings for the water-then-bridge sequence.
+
+- **Street mode has a real 3D bicycle.** Chase and near-first-person views use
+  a locally shipped Carbon Frame Bike GLB in a MapLibre custom 3D layer, with
+  world-space depth, pitch and route-relative heading. A lightweight 3D rider
+  makes the vehicle readable, and the complete piece is intentionally enlarged
+  at chase altitude. The old canvas bicycle remains only as a loading fallback
+  and is no longer painted over a ready mesh.
+- **The typed road graph is now the live router.** `road-network.js` delegates
+  graph construction, shortest paths, destination routing and first-reachable
+  routing to the bundled `src/canalRecall/routing/roadGraph.ts` API. Its legacy
+  implementation remains as a load-failure fallback; the typed and live
+  reachability checks are both part of the normal verification path.
 
 - **Civic venues are POIs now, and the extract was refreshed to get them.**
   `classify()` took `tourism=*`, `historic=*` and `amenity` in {theatre,
@@ -276,6 +288,23 @@ design notes for the larger bets live below the board.
 
 ## Backlog
 
+- **Put measured roof colours onto the live vector-tile buildings.** The
+  OpenFreeMap/OpenMapTiles building layer already supplies the geometry,
+  `render_height`, `render_min_height`, and OSM `colour` for the whole city;
+  `buildings-colored.geojson` currently ships 5.5 MB to overlap 10,578 of
+  roughly 104,000 basemap buildings, largely repeating information already in
+  the tiles. Keep precomputing the genuinely new information — the PDOK roof
+  samples — but publish it as a compact OSM-id-to-colour table and join it to
+  tile features with feature state. A second fill extrusion over the same
+  building source can draw roof-only caps with their base at `render_height`,
+  avoiding shipped footprints and floating caps. The current 5,778 samples
+  encode to about 26 KB gzipped; full coverage of the 43,398-building core is
+  projected around 195 KB, versus 1.9 MB gzipped for trimmed geometry.
+  Before committing, prove tile feature ids are stable and unique across
+  tiles (including relation buildings), reapply state as tiles load, and
+  respect `hide_3d`/building parts. If those checks pass, remove the overlapping
+  GeoJSON appearance layers and make the sampler emit the join table.
+
 - **Try the extractor on a second city — Utrecht.** Everything in
   `build-amsterdam-extract.ts`, the enrichment passes, and the crossing builder
   is written against Amsterdam's Overpass query and curation file. Utrecht is
@@ -294,10 +323,28 @@ design notes for the larger bets live below the board.
   tone that stays informative rather than cute, and it must not become another
   card competing with the driving corridor.
 
+- **Street encyclopedia cards.** Streets in the routing extract currently
+  carry navigation geometry and names but are not part of the enriched
+  `streets.json` knowledge corpus — Nes, despite its English Wikipedia article,
+  is absent. Build a compact normalized-name-to-metadata extract for notable
+  streets (English lede, article URL, optional image), join it to the road name
+  at runtime, and show a compact fact card after a turn has been answered or
+  revealed. Reuse `W` to open the article, suppress the card while a quiz is
+  active, and show each street sparingly so facts support spatial recall rather
+  than interrupt every junction.
+
 - **A SimCity 2000-style isometric view of the city.** Worth a spike on its own
   branch: the detailed-buildings extrusion data and the roof-colour sampler
   already carry most of what an isometric renderer would need, and it is a very
   different feel from the top-down map without touching the routing physics.
+
+- **Public transit mode.** Teach Amsterdam as a network of tram, metro, bus,
+  and ferry lines: stops, line numbers and colours, direction/terminus, and
+  transfers. Treat it as its own routing and recall model rather than a vehicle
+  skin — a trip is a sequence of services and walking connections, questions
+  should distinguish the stop from the line and destination, and live service
+  disruption data must remain optional so the learning game still works from a
+  cached, versioned network extract.
 
 - **Bridge names that are railway lines.** "Gooilijn", "Oude Lijn" and
   "Westelijke Ringspoorbaan" are railway *lines*, and their viaducts are now
