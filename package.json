@@ -25,7 +25,8 @@
     "test:e2e": "playwright test",
     "test:e2e:update": "playwright test --update-snapshots",
     "build:canal-recall-store": "esbuild src/canalRecall/recallStore.ts --bundle --format=iife --global-name=CanalRecallStoreModule --outfile=public/canal-drive/js/recall-store.bundle.js --minify",
-    "canal:firebase-config": "tsx scripts/write-canal-firebase-config.ts"
+    "canal:firebase-config": "tsx scripts/write-canal-firebase-config.ts",
+    "enrich:amsterdam-wikipedia": "tsx scripts/enrich-amsterdam-wikipedia-extracts.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
