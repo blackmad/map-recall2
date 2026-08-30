@@ -7,18 +7,6 @@ design notes for the larger bets live below the board.
 
 ## In progress
 
-- **Knowledge model: per-crossing bridges, per-stretch streets.** *Owned by
-  another agent, on its own branch — do not edit the quiz gating or the recall
-  store from `main` while this is open.* Two changes to what the game counts as
-  "known". First, a bridge question should wait until the player reliably knows
-  the water underneath it, and should be tracked per crossing rather than per
-  bridge, so a span you cross daily and a span you have seen once are not the
-  same question. Second, a long street should not be marked learned in one
-  answer: Amsterdam streets run for kilometres and are familiar in one
-  neighborhood and unknown in another, so recall wants to be recorded against a
-  stretch of the way rather than the whole name. That agent is reading the
-  current asking/recall model first and will propose before changing anything.
-
 - **Typed presentation/runtime split.** `game.js` remains the composition root,
   but finish, notice, and HUD drawing are moving into props-driven TypeScript
   leaves that Storybook and direct checks can render without constructing a
@@ -64,6 +52,50 @@ design notes for the larger bets live below the board.
   zero and would be culled by the 300-per-category cap before it is ever seen.
 
 ## Recently done
+
+- **Knowledge is local now: per-crossing bridges, per-stretch streets.** Recall
+  used to be keyed by name alone, so one right answer retired a whole feature.
+  Two things were wrong with that. A bridge feature is a *name*, not a place:
+  OSM ships "IJburglaan" as 66 spans making five separate bridges kilometres
+  apart, and "Zuiderzeeweg" as four bridges over three different waters, all
+  answered by one question. And a street that runs for kilometres is familiar
+  in one neighborhood and unknown in another, so one junction should not mark
+  the whole name learned.
+
+  Identity is now the name *and the place it was answered*, snapped to a 300 m
+  grid in lat/lon (`src/canalRecall/recallChunks.ts`) — world pixels could not
+  be used, because the network origin is recomputed per race from the loaded
+  bounds. Reading it back is a 600 m radius query rather than a cell lookup, so
+  a grid edge never causes a second question a few metres later. Map labels
+  follow the same rule: `drawLabels` takes a per-label predicate instead of a
+  name set, because writing a known name along the whole street would hand over
+  the answer to the end that has never been asked.
+
+  Bridges are resolved offline into the physical crossings they are made of.
+  `npm run build:bridge-crossings` clusters spans within 70 m, works out the
+  waterway each crossing passes over, and picks four nearby waterways as
+  distractors; it stages, reports coverage and diffs, and publishes on
+  `--publish`. 257 named bridges become 318 crossings, 203 of them (63.8%) over
+  an identified waterway — the rest are mostly bridges over water the 300-feature
+  water extract does not name, and they fall back to today's behavior.
+
+  A crossing over known water asks which bridge it is. A crossing over water the
+  player has *not* proved they know asks for the water first, and holds the
+  bridge back until that is answered right — per crossing, because the Amstel at
+  the Magere Brug and the Amstel at the Berlagebrug are two pieces of local
+  knowledge. A wrong answer parks the question for ten minutes without ever
+  counting as knowing it, which is the distinction the gate turns on
+  (`isSuppressedNear` vs `isKnownNear`). Street mode never asked about water at
+  all before this; now the canal is what a bridge teaches first. By boat the
+  route quiz already owns the waterway, so the bridge simply waits for it.
+
+  `npm run test:bridge-crossings` pins Magere Brug/Blauwbrug/Hoge
+  Sluis/Berlagebrug over the Amstel, Torensluis over the Singel, Zuiderzeeweg's
+  four crossings and IJburglaan's five, and asserts a recomputation still equals
+  the published extract. `tests/e2e/crossing-quiz.spec.ts` drives the real span
+  geometry and checks the water-then-bridge order, that a wrong water answer
+  does not unlock the bridge, and that a long street answered at one end is
+  still asked — and still unlabelled — at the other.
 
 - **The arrival card, rebuilt.** The finish screen had six accent colours, six
   differently styled boxes, two typefaces used interchangeably, and a 38 px
@@ -209,6 +241,37 @@ design notes for the larger bets live below the board.
   minority of warm tile — where before every roof was a copy of its own wall.
 
 ## Backlog
+
+- **Try the extractor on a second city — Utrecht.** Everything in
+  `build-amsterdam-extract.ts`, the enrichment passes, and the crossing builder
+  is written against Amsterdam's Overpass query and curation file. Utrecht is
+  the honest test: canals on two levels, a different bridge vocabulary, and a
+  Wikipedia corpus with the same Dutch/English split. What breaks first is the
+  interesting output — hardcoded bounds and centre, `amsterdam-curation.json`,
+  the `cityId` baked into review keys, and the assumption of one basemap origin.
+
+- **Structured Wikidata beyond blurbs, and a SimCity-style advisor.** The
+  enrichment passes take a lede and an image and stop. Wikidata has far more
+  that is queryable and stable — the sitting mayor, opening dates, architects,
+  who a bridge is named after, what a building was before. A city-hall advisor
+  card in the SimCity 2000 register ("the mayor would like you to learn the
+  Jordaan's bridges this week") could turn that into assignments and give the
+  route generator a reason to pick a route, instead of surprise-me. Needs a
+  tone that stays informative rather than cute, and it must not become another
+  card competing with the driving corridor.
+
+- **A SimCity 2000-style isometric view of the city.** Worth a spike on its own
+  branch: the detailed-buildings extrusion data and the roof-colour sampler
+  already carry most of what an isometric renderer would need, and it is a very
+  different feel from the top-down map without touching the routing physics.
+
+- **Bridge names that are railway lines.** "Gooilijn", "Oude Lijn" and
+  "Westelijke Ringspoorbaan" are railway *lines*, and their viaducts are now
+  each asked about separately — 17 crossings for the Westelijke Ringspoorbaan.
+  Nothing in the extract distinguishes a railway bridge from a road bridge, so
+  the fix is a tag in the extract builder rather than a runtime filter. Crossing
+  under a viaduct should probably not be a bridge question at all.
+
 
 - **City knowledge review map.** Add a dedicated full-city review screen where
   every learned road/waterway is color-coded by mastery and review state. Layer

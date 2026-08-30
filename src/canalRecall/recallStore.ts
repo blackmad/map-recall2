@@ -12,6 +12,9 @@
 import { ReviewState, scheduleReview } from '../spacedRepetition';
 import { getFeatureKey } from '../utils/featureIdentity';
 import { RoundResult, StreetFeature } from '../types';
+import { LatLon, chunkCenter, isKnownNear, isSuppressedNear } from './recallChunks';
+
+export { RECALL_LOCAL_RADIUS_METERS, RECALL_CHUNK_METERS } from './recallChunks';
 
 const STATES_KEY = 'mapRecall_reviewStates_v1';
 const EVENTS_KEY = 'mapRecall_reviewEvents_v1';
@@ -21,7 +24,12 @@ export interface RecallFeature {
   name: string;
   type: string;
   cityId: string;
-  center: [number, number];
+  /**
+   * Where the rider was when the question was asked — not the feature's own
+   * centre. Knowledge of a name is local, so identity is the name plus this
+   * point snapped to a grid; see `recallChunks`.
+   */
+  center: LatLon;
 }
 
 type StateMap = Record<string, ReviewState>;
@@ -102,22 +110,64 @@ class RecallStore {
     return getFeatureKey(feature as unknown as StreetFeature);
   }
 
-  /** True when this feature has been answered well enough that it is not due. */
-  isMastered(feature: RecallFeature, now = Date.now()): boolean {
+  /**
+   * True when this name has been answered near here recently enough that asking
+   * again is noise — a wrong answer counts, because the scheduler parks it for
+   * ten minutes so a correction is not immediately re-tested.
+   */
+  isSuppressedHere(feature: RecallFeature, now = Date.now()): boolean {
     if (!this.enabled) return false;
-    const state = this.states[`${this.keyFor(feature)}_guess_name`];
-    return !!state && state.dueAt > now;
+    return isSuppressedNear(this.nearQuery(feature, now));
   }
 
-  /** How many features are currently being suppressed, for the HUD. */
+  /**
+   * True when the rider has actually got this name right near here and is still
+   * inside its review interval. The stricter bar, for places where a wrong
+   * answer must not read as knowledge — such as the water under a bridge.
+   * Deliberately independent of `enabled`: turning off "skip what I know" asks
+   * more questions, it does not claim the rider knows less.
+   */
+  isKnownHere(feature: RecallFeature, now = Date.now()): boolean {
+    return isKnownNear(this.nearQuery(feature, now));
+  }
+
+  private nearQuery(feature: RecallFeature, now: number) {
+    return {
+      states: Object.values(this.states),
+      name: feature.name,
+      cityId: feature.cityId,
+      point: feature.center,
+      now,
+    };
+  }
+
+  /** How many name-and-place answers are being held, for the HUD. */
   get masteredCount(): number {
     const now = Date.now();
     return Object.values(this.states).filter((state) => state.dueAt > now && state.repetitions > 0).length;
   }
 
+  /**
+   * Every place the player has proved a name, for seeding map labels. The game
+   * projects these into world pixels once per race rather than asking the store
+   * per label per frame.
+   */
+  knownPlaces(now = Date.now()): Array<{ name: string; center: LatLon }> {
+    return Object.values(this.states)
+      .filter((state) => state.mode === 'guess_name' && state.repetitions > 0 && state.dueAt > now)
+      .map((state) => ({ name: state.featureSnapshot.name, center: state.featureSnapshot.center as LatLon }));
+  }
+
+  /**
+   * Record an answer against the *place* it was given, so one correct answer on
+   * the Overtoom by the Vondelpark does not retire the whole street. Snapping
+   * happens here rather than at the call sites so a recorded centre and the
+   * centre a later query reads back can never drift apart.
+   */
   record(feature: RecallFeature, correct: boolean, timeSpentMs = 6000): ReviewState {
-    const key = `${this.keyFor(feature)}_guess_name`;
-    const scheduled = scheduleReview(asRoundResult(feature, correct, timeSpentMs), this.states[key]);
+    const chunked = { ...feature, center: chunkCenter(feature.center) };
+    const key = `${this.keyFor(chunked)}_guess_name`;
+    const scheduled = scheduleReview(asRoundResult(chunked, correct, timeSpentMs), this.states[key]);
     this.states[key] = scheduled.state;
     write(STATES_KEY, this.states);
     const events = read<Record<string, unknown>>(EVENTS_KEY, {});
