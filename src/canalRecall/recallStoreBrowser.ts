@@ -14,8 +14,18 @@
  */
 import { store, RECALL_LOCAL_RADIUS_METERS, RECALL_CHUNK_METERS } from './recallStore';
 
+/** Typed as exactly what this entry publishes, so the page's consumers are
+ *  checked against the real store rather than against a hand-written parallel
+ *  interface that can drift from it. Optional because the module is deferred
+ *  and, for a guest who never signs in, may never be needed at all. */
+export interface CanalRecallStoreGlobal {
+  store: typeof store;
+  RECALL_LOCAL_RADIUS_METERS: typeof RECALL_LOCAL_RADIUS_METERS;
+  RECALL_CHUNK_METERS: typeof RECALL_CHUNK_METERS;
+}
+
 declare global {
-  interface Window { CanalRecallStoreModule?: unknown }
+  interface Window { CanalRecallStoreModule?: CanalRecallStoreGlobal }
 }
 
 window.CanalRecallStoreModule = { store, RECALL_LOCAL_RADIUS_METERS, RECALL_CHUNK_METERS };

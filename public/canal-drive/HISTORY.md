@@ -6,6 +6,30 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The recall subsystem is typed, and the rules that decide what you are asked
+  are tested.** `game-recall.js` became `recallRules.ts` plus
+  `recallRuntime.ts`. The rules half now answers, in 22 assertions and without a
+  DOM, the questions that previously required driving a boat at a bridge to
+  observe: that a car crossing a deck is caught by a midpoint gate while a boat
+  is caught by the centreline, that sitting at the kerb aligned with a bridge is
+  not a crossing, that a crossing teaches the water before the deck, that
+  Raampoort is not asked twice for being both a street and a bridge, and that
+  world/lat-lon conversion round-trips — which is what keeps a recall answer
+  filed at the place it was actually given.
+
+  The mode strings became unions. `travelMode`, `answerMode`, `viewMode`,
+  `themeMode`, `controlMode`, `routeDifficulty`, `routePattern` and the two quiz
+  kinds were all bare `string`, which is how `'boat'` could be compared against a
+  typo forever without anything noticing. `modes.ts` holds the value lists, and
+  they are the same lists as the `<option value>` sets in `index.html` — if the
+  page and the unions disagree, a preference silently stops applying, so they
+  are written down once.
+
+  `recallStoreBrowser.ts` declared its own global as `unknown`. It now publishes
+  a precise type derived from what it actually exports, so consumers are checked
+  against the real store instead of a hand-written parallel interface that could
+  drift from it.
+
 - **The landmark subsystem is typed, and its rules are tested without a
   canvas.** `game-landmarks.js` became `src/canalRecall/game/`, split along the
   line that matters: `landmarkData.ts` decides *what* the player is told —

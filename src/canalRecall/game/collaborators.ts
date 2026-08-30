@@ -13,6 +13,9 @@ export interface Camera {
 
 export interface InputManager {
   readonly isMobile: boolean;
+  /** True once for the frame in which a key went down — the edge, not the
+   *  level, so holding `1` does not answer every question in a row. */
+  wasPressed(code: string): boolean;
 }
 
 /** One road segment of the loaded network, as `osm-loader.js` produces it. */
@@ -22,10 +25,21 @@ export interface RoadSegment {
   type?: string;
 }
 
+/** What the network knows about a name, beyond its geometry. */
+export interface FeatureMeta {
+  type?: string;
+  cityId?: string;
+}
+
 export interface OsmLoader {
-  /** World-space origin of the current route's projection. */
+  /** World-space origin of the current route's projection. `_lastCenterLat` is
+   *  `undefined` until a network has been loaded, which is the signal that no
+   *  world-to-lat/lon conversion is possible yet. */
   _lastOffsetX: number;
   _lastOffsetY: number;
+  _lastCenterLat?: number;
+  _lastCenterLng?: number;
+  featureMeta?: Map<string, FeatureMeta>;
   /**
    * Project a lat/lng and snap it to the nearest loaded road point. Pass
    * `false` for `maxSnapDist` to mean "no limit" — the landmark pass wants a
@@ -39,6 +53,21 @@ export interface OsmLoader {
     segments: RoadSegment[],
     maxSnapDist?: number | false,
   ): (WorldPoint & { snapDistance: number }) | null;
+}
+
+/** The nearest mapped way to a point, with enough identity to anchor a
+ *  question to the exact stretch that was driven. */
+export interface NearestRoad {
+  angle: number;
+  segIdx: number;
+  ptIdx: number;
+}
+
+export interface Track {
+  segments: RoadSegment[];
+  /** The name of the way under a point, or '' where nothing is mapped. */
+  getRoadName(x: number, y: number): string;
+  getNearestRoad(x: number, y: number): NearestRoad | null;
 }
 
 export interface Renderer {
