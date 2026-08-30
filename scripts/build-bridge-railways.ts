@@ -21,6 +21,7 @@
  *
  *   npx tsx scripts/build-bridge-railways.ts
  *   npx tsx scripts/build-bridge-railways.ts --publish
+ *   npx tsx scripts/build-bridge-railways.ts --directory=public/data/extracts/utrecht
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -29,13 +30,32 @@ import type { BridgeCrossingIndex } from '../src/canalRecall/bridgeCrossings';
 import { metresBetween } from '../src/canalRecall/bridgeDistractors';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const extractDir = resolve(root, 'public/data/extracts/amsterdam');
+const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
+const extractDir = resolve(root, directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
 const publishedPath = resolve(extractDir, 'bridges.json');
 const stagingPath = resolve(extractDir, 'staging/bridges.json');
 /** The Overpass answer is cached so a re-run is offline and reproducible. */
 const cachePath = resolve(extractDir, 'staging/osm-bridge-ways.json');
 
-const BBOX = '52.28,4.72,52.43,5.02';
+/**
+ * Ask Overpass about the city this extract actually covers, taken from its own
+ * municipality boundary rather than a second constant. The hand-written
+ * Amsterdam box stopped at longitude 5.02 while the municipality reaches 5.108,
+ * so bridges out past Zeeburg were never offered a railway tag at all and kept
+ * their question by default — the failure this pass exists to prevent.
+ */
+function boundingBox(): string {
+  const areas = JSON.parse(readFileSync(resolve(extractDir, 'boundaries.json'), 'utf8')) as
+    Array<{ kind?: string; bounds?: { minlat: number; minlon: number; maxlat: number; maxlon: number } }>;
+  const bounds = areas.find((area) => area.kind === 'municipality')?.bounds;
+  if (!bounds) throw new Error(`No municipality boundary in ${extractDir}/boundaries.json`);
+  // A span may sit just outside the administrative line it crosses.
+  const margin = 0.01;
+  return [bounds.minlat - margin, bounds.minlon - margin, bounds.maxlat + margin, bounds.maxlon + margin]
+    .map((value) => value.toFixed(4)).join(',');
+}
+
+const BBOX = boundingBox();
 /** A span and its OSM way should agree closely; this is slack, not a search. */
 const MATCH_METRES = 250;
 
@@ -64,7 +84,7 @@ async function loadOsmBridgeWays(): Promise<OsmWay[]> {
     return JSON.parse(readFileSync(cachePath, 'utf8')).elements as OsmWay[];
   }
   const query = `[out:json][timeout:120];way["bridge"]["name"](${BBOX});out tags center;`;
-  console.log('Querying Overpass for named bridge ways…');
+  console.log(`Querying Overpass for named bridge ways in ${BBOX}…`);
   // Overpass answers 406 to a client that does not identify itself.
   const response = await fetch('https://overpass-api.de/api/interpreter', {
     method: 'POST',
