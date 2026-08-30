@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+// three.js is shared across the 3D bundles — see three-runtime-source.js.
+const { THREE, GLTFLoader } = window.CanalRecallThree;
 
 const assetUrl = path => new URL(path, window.location.href).href;
 const BIKE_MODEL_URL = assetUrl('./carbon-frame-bike-runtime.glb');

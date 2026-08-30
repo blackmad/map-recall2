@@ -1,7 +1,7 @@
-import * as THREE from 'three';
 import { TilesRenderer } from '3d-tiles-renderer';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+
+// three.js is shared across the 3D bundles — see three-runtime-source.js.
+const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 
 const TILESET_URL = 'https://data.3dbag.nl/v20250903/cesium3dtiles/lod22/tileset.json';
 
