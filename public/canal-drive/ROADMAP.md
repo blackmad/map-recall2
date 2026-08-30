@@ -45,6 +45,19 @@ design notes for the larger bets live below the board.
 
 ## Recently done
 
+- **Truthful postcard imagery expansion.** Neighborhood enrichment now covers
+  OSM neighborhoods, quarters, and suburbs, deduplicates repeated boundaries,
+  and rejects substring matches that confused places such as Westindische
+  Buurt/Indische Buurt and Weesp/Weesperbuurt. The accepted extract has 85
+  unique areas, 48 encyclopedia extracts, and 46 dedicated images; finer areas
+  can still borrow a containing district's image at runtime.
+- **Deterministic Storybook builds.** Vite no longer races Storybook to copy
+  `public/` into the same output directory; `npm run build-storybook` completes
+  consistently while retaining the real map assets used by iframe stories.
+- **First `game.js` collaboration seam.** Neighborhood boundary hysteresis is
+  now a pure typed state machine in `src/canalRecall/neighborhoodState.ts`, with
+  deterministic checks and a small browser bundle. Postcard/data work can
+  evolve there without editing the central game loop's transition logic.
 - **Storybook visual workbench.** Storybook 10 with the React/Vite framework
   now serves the real Canal Recall route setup in deterministic default,
   bike-from-home, advanced, and mobile stories. `npm run storybook` is for live
@@ -56,7 +69,9 @@ design notes for the larger bets live below the board.
   the nearby tangent aligned with the bike's heading; the named junction arms
   are pinned in `npm run test:canal-car`.
 - **Calmer map and neighborhood transitions.** Nearby fragments of the same
-  learned street no longer stack duplicate labels. Neighborhood changes must
+  learned street no longer stack duplicate labels. Learned names use subtle
+  basemap-style halo text instead of black capsules and are suppressed near the
+  rider. Neighborhood changes must
   remain stable for 0.7 seconds before the HUD and entry card adopt them, which
   filters overlap jitter at shared polygon edges.
 - **Start screen and HUD redesign.** The route setup is now a clear navigation

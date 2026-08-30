@@ -315,25 +315,28 @@ class Renderer {
   drawPlayerCar(car, camera) {
     const ctx = this.ctx;
     const s = camera.worldToScreen(car.x, car.y);
-    const z = (camera.zoom || 1) * 1.15;
+    const z = clamp((camera.zoom || 1) * 1.45, 0.9, 1.5);
     ctx.save();
     ctx.translate(s.x, s.y);
     ctx.scale(z, z);
     ctx.rotate(car.angle - camera.rotation);
 
-    // A readable top-down omafiets silhouette: two wheels, diamond frame,
-    // upright bars and a warm jacket so the player remains easy to track.
-    ctx.strokeStyle = 'rgba(0,0,0,.25)'; ctx.lineWidth = 5;
-    ctx.beginPath(); ctx.moveTo(-10, 3); ctx.lineTo(11, 3); ctx.stroke();
-    ctx.strokeStyle = '#17212B'; ctx.lineWidth = 3;
-    for (const x of [-11, 11]) { ctx.beginPath(); ctx.arc(x, 0, 6, 0, Math.PI * 2); ctx.stroke(); }
-    ctx.strokeStyle = '#0F766E'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+    // Screen-legible top-down omafiets. It keeps a minimum rendered size at
+    // zoom-out; geographic scale is useful for buildings, not for a player
+    // marker that must remain recognizable while navigating.
+    ctx.strokeStyle = 'rgba(255,255,255,.95)'; ctx.lineWidth = 8;
+    ctx.beginPath(); ctx.moveTo(-14, 0); ctx.lineTo(14, 0); ctx.stroke();
+    ctx.strokeStyle = '#172326'; ctx.lineWidth = 3.5;
+    for (const x of [-14, 14]) { ctx.beginPath(); ctx.arc(x, 0, 7, 0, Math.PI * 2); ctx.stroke(); }
+    ctx.strokeStyle = '#C43D35'; ctx.lineWidth = 3.2; ctx.lineJoin = 'round';
     ctx.beginPath();
-    ctx.moveTo(-11, 0); ctx.lineTo(-1, 0); ctx.lineTo(5, -7); ctx.lineTo(11, 0);
-    ctx.lineTo(-1, 0); ctx.lineTo(2, 7); ctx.lineTo(-11, 0); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(5, -7); ctx.lineTo(8, -10); ctx.lineTo(11, -9); ctx.stroke();
-    ctx.fillStyle = '#F59E0B'; ctx.beginPath(); ctx.arc(1, 3, 4.5, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#FDE68A'; ctx.beginPath(); ctx.arc(5, 1, 2.5, 0, Math.PI * 2); ctx.fill();
+    ctx.moveTo(-14, 0); ctx.lineTo(-2, 0); ctx.lineTo(5, -9); ctx.lineTo(14, 0);
+    ctx.lineTo(-2, 0); ctx.lineTo(2, 9); ctx.lineTo(-14, 0); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(5, -9); ctx.lineTo(9, -12); ctx.lineTo(13, -11); ctx.stroke();
+    ctx.fillStyle = '#167DA0'; ctx.beginPath(); ctx.ellipse(1, 4, 5.5, 7, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = '#F2C7A5'; ctx.beginPath(); ctx.arc(7, 1, 4, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
     ctx.restore();
   }
 

@@ -22,6 +22,16 @@ working behavior, and leave it easier for the next session to continue.
   history.
 - Preserve unrelated user changes. Never reset or discard a dirty worktree to
   make integration easier.
+- For parallel agents, use a separate worktree and feature branch per agent.
+  Give each agent an exclusive lane (presentation, routing, content/data, or
+  domain logic) and a unique dev-server port.
+- The integrating agent owns `game.js`, `index.html`, `package.json`, lockfiles,
+  generated browser bundles/data, `ROADMAP.md`, merges, and pushes. Leaf agents
+  should return a commit SHA and verification results instead of editing those
+  shared integration hotspots.
+- Commit a typed source module and its generated browser bundle atomically.
+  Data generators should write to a staging path, report coverage/diffs, and
+  publish into versioned extracts only after review.
 
 ## Verification
 

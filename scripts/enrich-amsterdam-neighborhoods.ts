@@ -81,8 +81,13 @@ console.log(`Found ${wikidataIndex.size} unique Wikidata neighborhood entities`)
 
 // Step 2: Match our boundaries against the Wikidata index
 const boundaries: Boundary[] = JSON.parse(await readFile(path.join(directory, 'boundaries.json'), 'utf8'));
-const neighborhoods = boundaries.filter((b) => b.kind === 'neighbourhood');
-console.log(`Matching ${neighborhoods.length} local neighborhoods...`);
+const neighborhoodKinds = new Set(['neighbourhood', 'quarter', 'suburb']);
+const neighborhoods = [...new Map(
+  boundaries
+    .filter((boundary) => neighborhoodKinds.has(boundary.kind))
+    .map((boundary) => [boundary.name, boundary]),
+).values()];
+console.log(`Matching ${neighborhoods.length} local neighborhoods, quarters, and districts...`);
 
 const normalize = (s: string) => s.toLowerCase().replace(/-/g, ' ').replace(/buurt$/, '').replace(/eiland$/, '').trim();
 
@@ -92,9 +97,6 @@ function findMatch(name: string): WikidataNeighborhood | undefined {
   const normalized = normalize(name);
   for (const [key, value] of wikidataIndex) {
     if (normalize(key) === normalized) return value;
-  }
-  for (const [key, value] of wikidataIndex) {
-    if (key.includes(normalized) || normalized.includes(normalize(key))) return value;
   }
   return undefined;
 }
