@@ -29,13 +29,6 @@ design notes for the larger bets live below the board.
   on both. Either the steering gives up at a junction shape worth naming as a
   regression location, or the threshold was set optimistically and should be
   measured rather than asserted.
-- **The bicycle's front wheel is permanently steered.** The asset was authored
-  mid-turn and the rig held the pose; with the skins removed the fork sits at
-  its rest rotation, so from above the front wheel is visibly cocked against
-  the frame. The steer lives on node `Lenker` (index 270), a 140.8° rotation
-  about a tilted axis that mixes the head-tube angle with the steer itself.
-  Separating the two and zeroing the steer component is a small offline fix to
-  the published GLB, not a runtime one.
 - **Expand the street encyclopedia beyond the first pinned street.** The
   runtime card, Wikipedia action and normalized-name join are proven with Nes;
   what remains is generating the compact knowledge extract for notable streets
@@ -52,6 +45,24 @@ design notes for the larger bets live below the board.
   it Amsterdam.
 
 ## Recently done
+
+- **The bicycle steers and its wheels roll.** The asset was authored mid-turn,
+  so the front wheel sat visibly cocked against the frame and never moved. The
+  fix was not to zero it but to give it something to do. `Lenker` carries the
+  whole front assembly — fork, wheel, bars — so steering is that node's
+  rotation, and both wheels are discs whose thin local axis is Y, so rolling is
+  a spin about their own Y. Both axes were measured off the source GLB rather
+  than assumed. Steering eases toward the held direction so the bars settle
+  instead of snapping, and the wheels roll by distance travelled, so they stop
+  when the bike stops.
+
+  A screenshot is a bad oracle here — the bike is usually behind a building, and
+  at chase altitude it is a dozen pixels — so `bike-steering.spec.ts` measures
+  the pose off the scene graph instead: the front axle swings 23.1° each way
+  (46.2° lock to lock, a little under the nominal 24.1° because the head tube is
+  tilted), the rear wheel moves 0.0°, and 400 px of travel rolls the front wheel
+  133°. Steering that moved the whole bike, or a wheel that rolled by frame
+  count, would fail it.
 
 - **"No idea" is a real answer now.** A four-option question is guessable one
   time in four, and a lucky guess was indistinguishable from knowledge: it

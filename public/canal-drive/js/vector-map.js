@@ -177,7 +177,10 @@ class VectorBasemap {
 
   setPlayerBike(player, loader, visible) {
     if (!this._playerBike || !player || !loader) return;
-    this._playerBike.update(this.worldToLngLat(player.x, player.y, loader), player.angle, visible);
+    this._playerBike.update(
+      this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
+      player.steerInput || 0, player.distancePx || 0
+    );
   }
 
   isPlayerBikeReady() {
