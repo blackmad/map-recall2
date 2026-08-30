@@ -187,6 +187,7 @@ class Game {
     this._landmarkNoticeTimer = 0;
     this._landmarkNoticeDuration = 6;
     this._landmarkImages = new Map();
+    this.streetKnowledge = new Map();
     this._blockedBoatFrames = 0;
     this._blockedCarFrames = 0;
 
@@ -403,6 +404,23 @@ class Game {
     const url = this._landmarkNotice && this._landmarkNoticeTimer > 0 && this._landmarkNotice.wikipediaUrl;
     if (!url) return;
     window.open(url, '_blank', 'noopener');
+  }
+
+  _showStreetKnowledge(name) {
+    const entry = this.streetKnowledge.get(this._normaliseCanalName(name));
+    if (!entry) return;
+    const detail = entry.wikipediaExtract || '';
+    this._landmarkNotice = {
+      id: `street-knowledge:${this._normaliseCanalName(name)}`,
+      name: entry.name || name,
+      type: 'street',
+      detail: detail.split(/(?<=[.!?])\s/)[0].slice(0, 150),
+      longDetail: detail.split(/(?<=[.!?])\s/).slice(0, 3).join(' ').slice(0, 280),
+      wikipediaUrl: entry.wikipediaUrl || '',
+      extractLang: 'en',
+    };
+    this._landmarkNoticeTimer = 8;
+    this._landmarkNoticeDuration = 8;
   }
 
   _matchLandmarkToBuilding(building, buildingName) {
@@ -1950,9 +1968,11 @@ class Game {
     // "Not quite — this is Lijnbaansgracht" is the single most useful sentence
     // in the game, and it used to vanish in 650 ms. A correction now stays up
     // long enough to actually read the name that was missed.
+    const learnedStreet = !atCrossing && this.travelMode === 'car' ? correctName : '';
     setTimeout(() => {
       this._prompt.style.display = 'none';
       this.canvas.focus();
+      if (learnedStreet) this._showStreetKnowledge(learnedStreet);
     }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
   }
 
@@ -2070,6 +2090,9 @@ class Game {
     }
     // Transparent game world over the live MapLibre vector basemap.
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
+    const playerUses3dMesh = this.travelMode === 'car'
+      && (this.viewMode === 'chase' || this.viewMode === 'cockpit');
+    this.vectorMap.setPlayerBike(this.player, this.osmLoader, playerUses3dMesh);
     this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
     if (this.travelMode === 'car') {
       this.vectorMap.setStreetHighlights(
@@ -2088,8 +2111,13 @@ class Game {
     this.renderer.drawSkidMarks(this.particles, this.camera);
 
     this._renderBridgeLabels();
-    if (this.travelMode === 'car') this.renderer.drawPlayerCar(this.player, this.camera);
-    else this.renderer.drawCar(this.player, this.camera);
+    if (this.travelMode === 'car') {
+      if (!(playerUses3dMesh && this.vectorMap.isPlayerBikeReady())) {
+        this.renderer.drawPlayerCar(this.player, this.camera);
+      }
+    } else {
+      this.renderer.drawCar(this.player, this.camera);
+    }
     this.renderer.drawParticles(this.particles, this.camera);
     // Streets stay named on the map once you have been told the name, in the
     // car as well as the boat — that is how the name sticks while you drive
@@ -2134,13 +2162,18 @@ class Game {
     // standing "35%" reads as a mystery statistic.
     const zoomPct = Math.round(this.camera.zoom * 100);
     if (this._zoomBadgeTimer > 0) {
+      const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({
+        tripWidth: 180, zoomVisible: true,
+        controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
+      });
+      const zoomRect = bottomLayout?.zoomBadge || { x: CANVAS_W/2 - 35, y: CANVAS_H - 35, width: 70, height: 22 };
       ctx.fillStyle = 'rgba(0,0,0,0.4)';
-      roundRect(ctx, CANVAS_W/2 - 35, CANVAS_H - 35, 70, 22, 4);
+      roundRect(ctx, zoomRect.x, zoomRect.y, zoomRect.width, zoomRect.height, 4);
       ctx.fill();
       ctx.fillStyle = 'rgba(255,255,255,0.7)';
       ctx.font = 'bold 12px monospace';
       ctx.textAlign = 'center';
-      ctx.fillText(`${zoomPct}%`, CANVAS_W/2, CANVAS_H - 20);
+      ctx.fillText(`${zoomPct}%`, zoomRect.x + zoomRect.width / 2, zoomRect.y + 15);
     }
 
     // Re-center button when camera is panned away
@@ -2172,13 +2205,17 @@ class Game {
     // Controls hint — only while the player is settling in. It used to sit
     // permanently on top of the recall panel.
     if (!this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION) {
+      const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({
+        tripWidth: 180, zoomVisible: this._zoomBadgeTimer > 0, controlsVisible: true,
+      });
+      const hintRect = bottomLayout?.controlsHint || { x: CANVAS_W / 2 - 177, y: CANVAS_H - 32, width: 354, height: 12 };
       const fade = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
       ctx.globalAlpha = fade;
       ctx.fillStyle = 'rgba(255,255,255,0.45)';
       ctx.font = '10px monospace';
       ctx.textAlign = 'left';
       ctx.textAlign = 'center';
-      ctx.fillText('?: help  G: settings  M: map  O: north  D: labels  P: pause', CANVAS_W / 2, CANVAS_H - 24);
+      ctx.fillText('?: help  G: settings  M: map  O: north  D: labels  P: pause', hintRect.x + hintRect.width / 2, hintRect.y + 9);
       ctx.globalAlpha = 1;
     }
 
@@ -2771,20 +2808,23 @@ class Game {
 
   async _loadLandmarks(centerLat, centerLng, segments) {
     try {
-      const [landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse, bridgeResponse, crossingResponse] = await Promise.all([
+      const [landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse, bridgeResponse, crossingResponse, streetKnowledgeResponse] = await Promise.all([
         fetch(new URL('../data/extracts/amsterdam/landmarks.json', window.location.href)),
         fetch(new URL('../data/extracts/amsterdam/boundaries.json', window.location.href)),
         fetch(new URL('../data/extracts/amsterdam/neighborhoods-enriched.json', window.location.href)),
         fetch(new URL('../data/extracts/amsterdam/bridges.json', window.location.href)),
-        fetch(new URL('../data/extracts/amsterdam/bridge-crossings.json', window.location.href))
+        fetch(new URL('../data/extracts/amsterdam/bridge-crossings.json', window.location.href)),
+        fetch(new URL('../data/extracts/amsterdam/street-knowledge.json', window.location.href))
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
-      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex] = await Promise.all([
+      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex, streetKnowledge] = await Promise.all([
         landmarkResponse.json(), boundaryResponse.json(),
         neighborhoodEnrichedResponse.ok ? neighborhoodEnrichedResponse.json() : [],
         bridgeResponse.ok ? bridgeResponse.json() : [],
-        crossingResponse.ok ? crossingResponse.json() : { bridges: {} }
+        crossingResponse.ok ? crossingResponse.json() : { bridges: {} },
+        streetKnowledgeResponse.ok ? streetKnowledgeResponse.json() : []
       ]);
+      this.streetKnowledge = new Map(streetKnowledge.map(entry => [this._normaliseCanalName(entry.name), entry]));
       const neighborhoodData = new Map();
       for (const entry of neighborhoodEnriched) neighborhoodData.set(entry.name, entry);
       this.vectorMap.setPlaces(features, boundaries);
@@ -3026,9 +3066,15 @@ class Game {
     // Trivia belongs at the bottom of the screen. Across the top it sat
     // exactly where the player is looking to see what is coming, so a card
     // about a church you have already passed hid the junction ahead.
-    const postcardShowing = this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0;
-    const cardX = CANVAS_W / 2 - cardW / 2;
-    const cardY = CANVAS_H - cardH - 30 - (postcardShowing ? NEIGHBORHOOD_CARD_HEIGHT + 14 : 0);
+    const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
+    const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({
+      tripWidth: 180, postcardVisible: postcardShowing,
+      landmarkWidth: cardW, landmarkHeight: cardH,
+      zoomVisible: this._zoomBadgeTimer > 0,
+      controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
+    });
+    const cardX = bottomLayout ? bottomLayout.landmark.x : CANVAS_W / 2 - cardW / 2;
+    const cardY = bottomLayout ? bottomLayout.landmark.y : CANVAS_H - cardH - 30;
 
     // Background
     ctx.fillStyle = 'rgba(3,18,28,.92)';
@@ -3158,8 +3204,10 @@ class Game {
 
     const cardW = 390;
     const cardH = 104;
-    const cardX = CANVAS_W - cardW - 20;
-    const cardY = CANVAS_H - cardH - 76 + slideOffset;
+    const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({ tripWidth: 180 });
+    const cardX = bottomLayout ? bottomLayout.postcard.x : CANVAS_W - cardW - 20;
+    const baseCardY = bottomLayout ? bottomLayout.postcard.y : CANVAS_H - cardH - 76;
+    const cardY = baseCardY + slideOffset;
 
     ctx.beginPath();
     roundRect(ctx, cardX, cardY, cardW, cardH, 8);

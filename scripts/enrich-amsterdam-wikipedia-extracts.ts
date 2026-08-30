@@ -7,7 +7,9 @@
  * resolved in two steps, because either one alone leaves gaps:
  *
  *   1. the feature's Wikidata Q-id -> its `enwiki` sitelink;
- *   2. failing that, the *Dutch article's* interwiki link to English.
+ *   2. failing that, the *Dutch article's* interwiki link to English. When OSM
+ *      supplied only a Wikidata id, discover that Dutch article from the
+ *      entity's `nlwiki` sitelink first.
  *
  * Step 2 exists because OSM sometimes tags a building item (Q42175133, the
  * Stedelijk's building) that has no English article, while the Dutch article
@@ -133,22 +135,39 @@ const pendingSet = new Set<Feature>([...partitions.values()].flat().filter((feat
 const pending = [...pendingSet];
 process.stdout.write(`${pending.length} features without an extract\n`);
 
-// Step 1: Q-id -> English article title. sitefilter keeps the payload small;
-// entities with no English article come back with an empty sitelinks object.
+// Step 1: Q-id -> English and Dutch article titles. Some OSM features carry a
+// Wikidata tag but no wikipedia tag (Fatih Mosque is one); without discovering
+// nlwiki here they never acquire source text for the translation pass.
 const englishByQid = new Map<string, string>();
+const dutchByQid = new Map<string, string>();
 const qids = [...new Set(pending.flatMap((feature) => (feature.wikidata ? [feature.wikidata] : [])))];
 for (const batch of chunks(qids, 50)) {
   const url = new URL('https://www.wikidata.org/w/api.php');
   url.search = new URLSearchParams({
-    action: 'wbgetentities', format: 'json', props: 'sitelinks', sitefilter: 'enwiki', ids: batch.join('|'),
+    // `sitefilter` accepts one site here rather than a pipe-separated set;
+    // asking for all sitelinks keeps both enwiki and nlwiki available.
+    action: 'wbgetentities', format: 'json', props: 'sitelinks', ids: batch.join('|'),
   }).toString();
   const data = await fetchJson(url);
   for (const [qid, entity] of Object.entries(data.entities || {}) as [string, { sitelinks?: Record<string, { title?: string }> }][]) {
-    const title = entity.sitelinks?.enwiki?.title;
-    if (title) englishByQid.set(qid, title);
+    const englishTitle = entity.sitelinks?.enwiki?.title;
+    const dutchTitle = entity.sitelinks?.nlwiki?.title;
+    if (englishTitle) englishByQid.set(qid, englishTitle);
+    if (dutchTitle) dutchByQid.set(qid, dutchTitle);
   }
 }
 process.stdout.write(`${englishByQid.size} of ${qids.length} Q-ids have an English sitelink\n`);
+process.stdout.write(`${dutchByQid.size} of ${qids.length} Q-ids have a Dutch sitelink\n`);
+
+let discoveredDutch = 0;
+for (const feature of pending) {
+  if (feature.wikipedia || !feature.wikidata) continue;
+  const title = dutchByQid.get(feature.wikidata);
+  if (!title) continue;
+  feature.wikipedia = `nl:${title}`;
+  discoveredDutch++;
+}
+process.stdout.write(`${discoveredDutch} missing wikipedia tags recovered through Wikidata nlwiki\n`);
 
 // Step 2: read the stored (usually Dutch) articles — both for their own lede,
 // which is the fallback, and for their interwiki link to English.
@@ -208,7 +227,7 @@ for (const [file, partition] of partitions) {
       fallbackCounts.set(language, (fallbackCounts.get(language) || 0) + 1);
     } else {
       const reason = !feature.wikipedia && !feature.wikidata ? 'no wikidata or wikipedia tag'
-        : !feature.wikipedia ? 'wikidata only, no article on any wiki'
+        : !feature.wikipedia ? 'wikidata only, no English or Dutch article'
         : 'linked article is missing or has no intro text';
       unresolved.push(`${feature.name} [${file}] — ${reason}`);
       continue;
