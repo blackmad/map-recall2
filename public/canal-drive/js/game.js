@@ -206,6 +206,10 @@ class Game {
       event.preventDefault();
       this._submitCanalAnswer();
     });
+    this._promptNoIdea = document.getElementById('canal-no-idea');
+    if (this._promptNoIdea) {
+      this._promptNoIdea.addEventListener('click', () => this._submitCanalAnswer(null, true));
+    }
     this._setupRouteForm();
     this._loadRoutePoiCatalog();
     this._setupRecallStore();
@@ -1875,9 +1879,15 @@ class Game {
     }));
   }
 
-  // 1-4 answer the open multiple-choice question without reaching for the mouse.
+  // 1-4 answer the open multiple-choice question without reaching for the mouse;
+  // 0 says so when you do not know it, which is a real answer of its own.
   _handleChoiceShortcut() {
-    if (!this.quizPromptName || this.routeOptions.answerMode !== 'multiple') return;
+    if (!this.quizPromptName) return;
+    if (this.input.wasPressed('Digit0') || this.input.wasPressed('Numpad0')) {
+      this._submitCanalAnswer(null, true);
+      return;
+    }
+    if (this.routeOptions.answerMode !== 'multiple') return;
     if (!this._choiceOrder || this._choiceOrder.length === 0) return;
     for (let index = 0; index < Math.min(this._choiceOrder.length, 4); index++) {
       if (this.input.wasPressed(`Digit${index + 1}`) || this.input.wasPressed(`Numpad${index + 1}`)) {
@@ -1892,13 +1902,25 @@ class Game {
       .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
   }
 
-  _submitCanalAnswer(selectedAnswer) {
+  // `noIdea` is the player saying they do not know, which is different from
+  // answering wrong. A four-option question is guessable one time in four, and
+  // a lucky guess used to retire the street outright — it counted as knowledge,
+  // stopped being asked, and put its name on the map. So the honest answer has
+  // to be strictly better than guessing or nobody will ever press it: it costs
+  // no accuracy, because you did not answer, and it schedules the name to come
+  // back in ten minutes. Guessing wrong costs accuracy and the streak; guessing
+  // right when you did not know quietly poisons the whole review schedule.
+  _submitCanalAnswer(selectedAnswer, noIdea = false) {
     if (!this.quizPromptName) return;
     const correctName = this.quizPromptName;
     const answer = selectedAnswer == null ? this._promptInput.value : selectedAnswer;
-    const correct = this._normaliseCanalName(answer) === this._normaliseCanalName(correctName);
-    this.quizAttempts++;
-    if (correct) {
+    const correct = !noIdea && this._normaliseCanalName(answer) === this._normaliseCanalName(correctName);
+    if (!noIdea) this.quizAttempts++;
+    if (noIdea) {
+      this.quizStreak = 0;
+      this.quizFeedback = `This is ${correctName}`;
+      this._revealName(correctName);
+    } else if (correct) {
       this.quizCorrect++;
       this.quizStreak++;
       if (this.quizStreak > this.quizBestStreak) this.quizBestStreak = this.quizStreak;
@@ -1925,7 +1947,7 @@ class Game {
       this._revealName(correctName);
     }
     this._promptFeedback.textContent = this.quizFeedback;
-    this._promptFeedback.style.color = correct ? '#4ade80' : '#fbbf24';
+    this._promptFeedback.style.color = correct ? '#4ade80' : noIdea ? '#7DD3FC' : '#fbbf24';
     // Neither a bridge nor the water beneath it is what the wheels are on:
     // keep the waterway/street the player is actually travelling, or the route
     // quiz re-fires the moment the prompt closes.

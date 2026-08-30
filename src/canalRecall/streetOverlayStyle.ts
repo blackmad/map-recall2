@@ -1,26 +1,20 @@
 export const STREET_OVERLAY_LAYER_IDS = [
-  'learned-streets-casing',
-  'learned-streets-line',
   'active-street-casing',
   'active-street-glow',
   'active-street-line',
 ] as const;
 
+// Learned streets used to be painted yellow over the basemap. The Liberty
+// basemap already draws its road network in yellow, so the overlay read as a
+// second, arbitrary highlight on top of it rather than as knowledge. Mastered
+// streets still announce themselves — by staying *named* on the map, which is
+// the thing worth knowing — so only the street actively under question keeps a
+// drawn highlight.
 export function streetOverlayLayers(): Array<Record<string, unknown>> {
   const zoomWidth = (low: number, high: number): unknown[] => [
     'interpolate', ['linear'], ['zoom'], 13, low, 18, high,
   ];
   return [
-    {
-      id: 'learned-streets-casing', type: 'line', source: 'learned-streets',
-      layout: { 'line-cap': 'round', 'line-join': 'round' },
-      paint: { 'line-color': '#352D24', 'line-width': zoomWidth(2.5, 10), 'line-opacity': 0.28 },
-    },
-    {
-      id: 'learned-streets-line', type: 'line', source: 'learned-streets',
-      layout: { 'line-cap': 'round', 'line-join': 'round' },
-      paint: { 'line-color': '#F2B84B', 'line-width': zoomWidth(1.25, 6), 'line-opacity': 0.48 },
-    },
     {
       id: 'active-street-casing', type: 'line', source: 'active-street',
       layout: { 'line-cap': 'round', 'line-join': 'round' },
