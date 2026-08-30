@@ -7,11 +7,20 @@
     "wikipediaExtract": "Overhoeks is a new mixed-use neighbourhood of Amsterdam, Netherlands in the borough of Amsterdam-Noord directly across the IJ river (technically a lake) from the city's central station. It is located on the former Royal Dutch Shell Research facility grounds.  Construction of apartments and condominiums began in 2007 and the plan is for a total of 2200 units to..."
   },
   {
-    "name": "Westindische Buurt",
-    "wikidataId": "Q1661514",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Badhuis_%28voormalig%29_Javaplein.jpg/500px-Badhuis_%28voormalig%29_Javaplein.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Badhuis (voormalig) Javaplein.jpg",
-    "wikipediaExtract": "Indische Buurt (Dutch pronunciation: [ˌɪndisə ˈbyːrt]; \"Indies Neighborhood\") is a neighborhood in the borough of Oost, the eastern part of the city of Amsterdam, Netherlands. The name of the neighborhood dates from the early 20th century, and is derived from the fact that the neighborhood's streets are named after islands and other geographical concepts in the..."
+    "name": "Spaarndammerbuurt",
+    "wikidataId": "Q2015934",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Luchtfoto_Spaarndammerplantsoen_-_Amsterdam_-_20410372_-_RCE.jpg/500px-Luchtfoto_Spaarndammerplantsoen_-_Amsterdam_-_20410372_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Luchtfoto Spaarndammerplantsoen - Amsterdam - 20410372 - RCE.jpg",
+    "wikipediaExtract": "Spaarndammerbuurt is a neighborhood of Amsterdam, Netherlands."
+  },
+  {
+    "name": "Rijnbuurt"
+  },
+  {
+    "name": "Scheldebuurt"
+  },
+  {
+    "name": "Westindische Buurt"
   },
   {
     "name": "Betondorp",
@@ -47,7 +56,31 @@
     "wikipediaExtract": "Duivelseiland (Dutch pronunciation: [ˈdœyvəlsˌɛilɑnt] ; lit. 'Devil's island') is a neighborhood of Amsterdam, Netherlands."
   },
   {
+    "name": "Grachtengordel",
+    "wikidataId": "Q478707",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png/500px-Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Imagen de los canales concéntricos en Ámsterdam.png",
+    "wikipediaExtract": "The Grachtengordel (Dutch pronunciation: [ˌɣrɑxtə(ŋ)ˈɣɔrdəl] , lit. 'canal belt/girdle'), known in English as the Canal District, is a neighborhood in Amsterdam, Netherlands located in the Centrum district. The seventeenth-century canals of Amsterdam, located in the center of Amsterdam, were added to the UNESCO World Heritage List in August 2010. The Amsterdam..."
+  },
+  {
+    "name": "Helmersbuurt",
+    "wikidataId": "Q2261589",
+    "wikipediaExtract": "Overtoombuurt is a neighborhood of Amsterdam, Netherlands. Along with the Kinkerbuurt, it is part of the larger neighborhood of Oud-West in the borough of Amsterdam-West. The borough administration distinguishes several smaller areas within the Overtoombuurt: the eastern part north of the Overtoom thoroughfare is called Helmersbuurt, the western section is called...",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Map_NL_-_Amsterdam_-_Stadsdeel_Oud-West.png/500px-Map_NL_-_Amsterdam_-_Stadsdeel_Oud-West.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "imageAttribution": "Wikipedia thumbnail"
+  },
+  {
     "name": "Hoofdweg e.o."
+  },
+  {
+    "name": "IJselbuurt"
+  },
+  {
+    "name": "Rivierenbuurt",
+    "wikidataId": "Q2155656",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Amsterdam_Woonhuis_Holendrechtstraat_1-47_003.JPG/500px-Amsterdam_Woonhuis_Holendrechtstraat_1-47_003.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Amsterdam Woonhuis Holendrechtstraat 1-47 003.JPG",
+    "wikipediaExtract": "Rivierenbuurt is a neighbourhood of Amsterdam, \nNetherlands. The neighbourhood is situated in the eastern part of the Amsterdam borough of Amsterdam-Zuid, bordered by the river Amstel to the east, the Boerenwetering canal in the west, the Amstelkanaal in the north and the A10 motorway in the south. In 2013, the Rivierenbuurt had approximately 28,400 residents..."
   },
   {
     "name": "Nieuwe Pijp",
@@ -64,7 +97,42 @@
     "wikipediaExtract": "Oude Pijp (Dutch for \"Old Pipe\"), also known as Noord-Pijp (Dutch for \"North-Pipe\") is a neighbourhood of Amsterdam, Netherlands located in an urbanised part of the Zuid borough. It had a population of 14,102 in 2011 and an area of 68 hectares.  Together with Nieuwe Pijp, Oude Pijp forms De Pijp.\nOude Pijp is bordered by the Boerenwetering (west), the Singelgracht..."
   },
   {
+    "name": "De Pijp",
+    "wikidataId": "Q163319",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Gerard_Doustraat_hoekhuis1.JPG/500px-Gerard_Doustraat_hoekhuis1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Gerard Doustraat hoekhuis1.JPG",
+    "wikipediaExtract": "De Pijp (Dutch pronunciation: [də ˈpɛip]; English: The Pipe) is a neighbourhood of Amsterdam, Netherlands. It is located directly south of Amsterdam's city centre and it is part of the borough Amsterdam-Zuid, in a part of the city known as the Old South (Oud Zuid). It is served by De Pijp metro station. Most streets in De Pijp are named after Dutch painters,..."
+  },
+  {
+    "name": "Staatsliedenbuurt",
+    "wikidataId": "Q1868599",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Staatsliedenbuurt_amsterdam.jpg/500px-Staatsliedenbuurt_amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Staatsliedenbuurt amsterdam.jpg",
+    "wikipediaExtract": "The Staatsliedenbuurt (pronounced [ˈstaːtslidə(m)ˌbyːrt]; lit. 'Neighborhood of the Statesmen')\nis a neighborhood in Amsterdam borough of West. It lies south of the Haarlemmertrekvaart canal and west of the Singelgracht canal route, which includes the local portions Kattensloot and Kostverlorenvaart."
+  },
+  {
     "name": "Van Galenbuurt"
+  },
+  {
+    "name": "Apollobuurt",
+    "wikidataId": "Q64586",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Beethoven3.jpg/500px-Beethoven3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Beethoven3.jpg",
+    "wikipediaExtract": "Apollobuurt is a neighborhood of Amsterdam, Netherlands. It is part of the borough of Amsterdam-Zuid.\n\nThe neighborhood is characterized by a spacious and luxurious design. The streets are named after Greek legends, painters and composers.  The main east–west streets are Apollolaan and Stadionweg, the main shopping street is Beethovenstraat. Apollobuurt is bounded..."
+  },
+  {
+    "name": "Stadionbuurt",
+    "wikidataId": "Q2326184",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Stadionbuurt_Amsterdam.jpg/500px-Stadionbuurt_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Stadionbuurt Amsterdam.jpg",
+    "wikipediaExtract": "Stadionbuurt (Dutch pronunciation: [ˈstaːdijɔmˌbyːrt]) is a neighborhood of Amsterdam, Netherlands."
+  },
+  {
+    "name": "Willemspark",
+    "wikidataId": "Q2185534",
+    "wikipediaExtract": "Willemspark is a neighborhood of Amsterdam, Netherlands. It is one of the most expensive neighborhoods of the city.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Map_NL_-_Amsterdam_-_Willemspark.png/500px-Map_NL_-_Amsterdam_-_Willemspark.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "imageAttribution": "Wikipedia thumbnail"
   },
   {
     "name": "Tuindorp Nieuwendam",
@@ -74,9 +142,14 @@
     "wikipediaExtract": "Tuindorp Nieuwendam is a neighborhood of Amsterdam, Netherlands. The neighborhood is a 'garden village' and was developed in the 1920s."
   },
   {
-    "name": "Molenwijkpark",
-    "wikidataId": "Q508505",
-    "wikipediaExtract": "The Molenwijk (Dutch pronunciation: [ˈmoːlə(ɱ)ˌʋɛik]) district is a neighborhood in Amsterdam-Noord in the Dutch province of North Holland. It is part of the Oostzanerwerf district. \nThe Molenwijk borders the east side of the ribbons and on the South End, on the south side of Oostzanerdijk, a part of the Water Zeedijk, which forms the border with the adjacent..."
+    "name": "Landlust",
+    "wikidataId": "Q2378560",
+    "wikipediaExtract": "Landlust is a neighborhood of Amsterdam, Netherlands. The neighborhood was built before and after World War II.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Joris_van_Andringastraat_Amsterdam.jpg/500px-Joris_van_Andringastraat_Amsterdam.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "imageAttribution": "Wikipedia thumbnail"
+  },
+  {
+    "name": "Molenwijkpark"
   },
   {
     "name": "Stettineiland"
@@ -98,6 +171,16 @@
   },
   {
     "name": "Karlskrona-eiland"
+  },
+  {
+    "name": "IJburg"
+  },
+  {
+    "name": "Slotervaart",
+    "wikidataId": "Q2558755",
+    "wikipediaExtract": "Slotervaart (short for Tuinstad Slotervaart) is a neighborhood in the far western part of Amsterdam, Netherlands. The area is named after the canal Slotervaart; the first houses were built in 1955.\nJust outside the residential area there is a hospital, the Slotervaartziekenhuis (since 1976), and the Netherlands Cancer Institute (NKI) (since 1979).\nSince 1990...",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Map_-_NL_-_Amsterdam_-_Stadsdeel_Slotervaart_en_Overtoomse_Veld_-_Buurt_85_Slotervaart.svg/500px-Map_-_NL_-_Amsterdam_-_Stadsdeel_Slotervaart_en_Overtoomse_Veld_-_Buurt_85_Slotervaart.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "imageAttribution": "Wikipedia thumbnail"
   },
   {
     "name": "Uilenburg",
@@ -169,6 +252,13 @@
     "wikipediaExtract": "Czaar Peterbuurt is a neighborhood of Amsterdam, Netherlands."
   },
   {
+    "name": "Oostelijke Eilanden",
+    "wikidataId": "Q986118",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Nederlands_Scheepvaartmuseum2.jpg/500px-Nederlands_Scheepvaartmuseum2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Nederlands Scheepvaartmuseum2.jpg",
+    "wikipediaExtract": "Oostelijke Eilanden (Dutch pronunciation: [ˌoːstələkə ˈʔɛilɑndə(n)]; lit. Eastern Islands), also known as Oostelijke Eilanden en Kadijken (Eastern Islands and Quays), is a neighbourhood in the centre of Amsterdam, Netherlands, consisting of Kattenburg, Wittenburg and Oostenburg."
+  },
+  {
     "name": "Plantage",
     "wikidataId": "Q988087",
     "wikipediaExtract": "Plantage is a neighbourhood of Amsterdam, Netherlands located in its Centrum borough. It is bordered by the Entrepotdok to the north, Plantage Muidergracht to the east and south and Nieuwe Herengracht to the west. In the centre of the neighbourhood lies the Natura Artis Magistra zoo. It had a population of 1,980 in 2017.",
@@ -190,11 +280,10 @@
     "wikipediaExtract": "Oosterdokseiland (Dutch: \"Eastern Dock Island\") is an island that forms a neighborhood of Amsterdam, Netherlands just to the east of Amsterdam Centraal railway station."
   },
   {
-    "name": "Borneo-eiland",
-    "wikidataId": "Q18285760",
-    "wikipediaExtract": "Het Borneo-eiland in het Oostelijk Havengebied in Amsterdam-Oost is een schiereiland tussen het Spoorwegbassin en de Entrepothaven. Het ontleent zijn naam aan de Borneokade die over de gehele lengte aan de zuidzijde van west naar oost loopt. Deze kade werd in 1917 vernoemd naar het Oost-Indische eiland Borneo. In 1926 kwam een kolentip in gebruik om kolenwagons…",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Kaart_Oostelijk_Havengebied.svg/500px-Kaart_Oostelijk_Havengebied.svg.png?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "imageAttribution": "Wikipedia thumbnail (nl)"
+    "name": "Nieuwmarkt/Lastage"
+  },
+  {
+    "name": "Borneo-eiland"
   },
   {
     "name": "Sporenburg",
@@ -211,17 +300,64 @@
     "wikipediaExtract": "Java-eiland (literally, \"Java Island\") is a neighbourhood of Amsterdam, Netherlands. It is located on a peninsula, surrounded on three sides by water and on the east by the KNSM Island neighbourhood."
   },
   {
+    "name": "Jordaan",
+    "wikidataId": "Q1401387",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Canals_of_Amsterdam_-_Jordaan_area.jpg/500px-Canals_of_Amsterdam_-_Jordaan_area.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Canals of Amsterdam - Jordaan area.jpg",
+    "wikipediaExtract": "The Jordaan (Dutch pronunciation: [jɔrˈdaːn]) is a neighbourhood of the city of Amsterdam, Netherlands. It is part of the borough of Amsterdam-Centrum. The area is bordered by the Singelgracht canal and the neighbourhood of Frederik Hendrikbuurt to the west; the Prinsengracht to the east; the Brouwersgracht to the north and the Leidsegracht to the south. The..."
+  },
+  {
+    "name": "Kinkerbuurt",
+    "wikidataId": "Q1742210",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Kinkerstraat.jpg/500px-Kinkerstraat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Kinkerstraat.jpg",
+    "wikipediaExtract": "Kinkerbuurt (Dutch pronunciation: [ˈkɪŋkərˌbyːrt]) is a neighborhood in Amsterdam, Netherlands. Along with the Overtoombuurt, it is part of the neighborhood of Oud-West in the borough of Amsterdam-West. It was built at the beginning of the twentieth century when Amsterdam was being expanded. Kinkerstraat, the area's main shopping street, was named after Dutch..."
+  },
+  {
+    "name": "Frederik Hendrikbuurt",
+    "wikidataId": "Q2102762",
+    "wikipediaExtract": "Frederik Hendrikbuurt is a neighbourhood in the West district of Amsterdam, Netherlands and is situated between the canals Singelgracht and Kostverlorenvaart. The neighbourhood, known locally by the moniker the \"Fred\", is centred on the Frederik Hendrikplantsoen park and was planned during the last quarter of the nineteenth century as a confluence of green space...",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Droombeeld_Cephas_Stauthamer_Frederik_Hendrikplantsoen_Amsterdam.JPG/500px-Droombeeld_Cephas_Stauthamer_Frederik_Hendrikplantsoen_Amsterdam.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "imageAttribution": "Wikipedia thumbnail"
+  },
+  {
+    "name": "Da Costabuurt",
+    "wikidataId": "Q3700660",
+    "wikipediaExtract": "De Da Costabuurt is een buurt in Amsterdam-West (tussen 1990 en 2010 Stadsdeel Oud-West). De buurt is vernoemd naar de Da Costagracht en Da Costastraat, die vernoemd zijn naar Isaäc da Costa (Amsterdam, 14 januari 1798 – aldaar, 28 april 1860) een Amsterdams dichter en historicus.\nDe Da Costabuurt wordt begrensd door de Hugo de Grootgracht, Singelgracht, het…",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/P.W._Janssenhofje_Da_Costastraat_38-58.jpg/500px-P.W._Janssenhofje_Da_Costastraat_38-58.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "imageAttribution": "Wikipedia thumbnail (nl)"
+  },
+  {
+    "name": "Zuidoost"
+  },
+  {
+    "name": "Weesp"
+  },
+  {
+    "name": "Nieuw-West"
+  },
+  {
+    "name": "Prinses Irenebuurt e.o."
+  },
+  {
     "name": "VU-kwartier"
   },
   {
     "name": "Gelderlandpleinbuurt"
   },
   {
-    "name": "Chassébuurt",
-    "wikidataId": "Q2258555",
-    "wikipediaExtract": "Chassébuurt is a neighborhood of Amsterdam, Netherlands.\nThe district is named for David Hendrik Chassé, a Dutch-born general in Napoleon's army. The Westermoskee is located in the neighborhood.",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/WittedeWithstraatAmsterdamWest3.jpg/500px-WittedeWithstraatAmsterdamWest3.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "imageAttribution": "Wikipedia thumbnail"
+    "name": "Schinkelbuurt",
+    "wikidataId": "Q630351",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Zeilstraat%2C_Amsterdam.jpg/500px-Zeilstraat%2C_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Zeilstraat, Amsterdam.jpg",
+    "wikipediaExtract": "Schinkelbuurt (Dutch pronunciation: [ˈsxɪŋkəlˌbyːrt]; \"Schinkel neighbourhood\") is a little neighborhood of Amsterdam, Netherlands. It is located directly south of Amsterdam's city centre and it is part of the borough Amsterdam-Zuid, in the part of the city known as the \"Old South\" (Oud Zuid).\nSchinkelbuurt is roughly bounded by the water of the Schinkel river..."
+  },
+  {
+    "name": "De Baarsjes",
+    "wikidataId": "Q1002859",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Slatuinenweg.JPG/500px-Slatuinenweg.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Slatuinenweg.JPG",
+    "wikipediaExtract": "De Baarsjes (Dutch pronunciation: [də ˈbaːrɕəs]) is a district (Dutch: wijk) in Amsterdam-West situated west of the city center of Amsterdam, Netherlands. Named after a former hamlet, urban development started in the 1920s. It contains the neighbourhoods Admiralenbuurt, Chassébuurt, Postjesbuurt, and Trompbuurt."
   },
   {
     "name": "Vivaldi",
@@ -231,10 +367,79 @@
     "imageAttribution": "Wikipedia thumbnail (nl)"
   },
   {
-    "name": "KNSM-eiland",
-    "wikidataId": "Q993131",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/KNSM-eiland%2C_Amsterdam.jpg/500px-KNSM-eiland%2C_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: KNSM-eiland, Amsterdam.jpg",
-    "wikipediaExtract": "The KNSM Island is a man-made island in the Eastern Docklands of Amsterdam. KNSM stands for the Koninklijke Nederlandsche Stoomboot-Maatschappij, the Royal Dutch Steamboat Shipping company which used to have its headquarters and its docks on the island. It is now a large residential area containing modern architecture with a mostly well-off population."
+    "name": "Buitenveldert"
+  },
+  {
+    "name": "Zuidas",
+    "wikidataId": "Q2984693",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/ZuidasAmsterdamNederland2011.jpg/500px-ZuidasAmsterdamNederland2011.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: ZuidasAmsterdamNederland2011.jpg",
+    "wikipediaExtract": "The Zuidas (literally South Axis in Dutch) is a business district and residential neighbourhood in Amsterdam, Netherlands, in the borough of Amsterdam-Zuid. Also known as the \"Financial Mile,\" it lies along the southern sector of the A10 ring road, between Oud-Zuid and the Rivierenbuurt to the north and the garden suburb of Buitenveldert to the south.\nThe name..."
+  },
+  {
+    "name": "Buitenveldert-West"
+  },
+  {
+    "name": "Van Lennepbuurt",
+    "wikidataId": "Q21159805",
+    "wikipediaExtract": "De Van Lennepbuurt is een buurt in Amsterdam-West (tussen 1990 en 2010 stadsdeel Oud-West). De buurt is vernoemd naar de Van Lennepstraat, die vernoemd is naar de schrijver, taalkundige en politicus Jacob van Lennep (1802-1868). De Van Lennepbuurt wordt begrensd door de Kinkerstraat, Singelgracht, het Jacob van Lennepkanaal en de Kostverlorenvaart.\nDe straten…",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Map_-_NL_-_Amsterdam_-_Stadsdeel_Oud-West_-_Buurt_19_Van_Lennepbuurt.svg/500px-Map_-_NL_-_Amsterdam_-_Stadsdeel_Oud-West_-_Buurt_19_Van_Lennepbuurt.svg.png?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "imageAttribution": "Wikipedia thumbnail (nl)"
+  },
+  {
+    "name": "Hoofddorppleinbuurt",
+    "wikidataId": "Q2219157",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Gevel_-_Amsterdam_-_20017579_-_RCE.jpg/500px-Gevel_-_Amsterdam_-_20017579_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Gevel - Amsterdam - 20017579 - RCE.jpg",
+    "wikipediaExtract": "Hoofddorppleinbuurt (Dutch pronunciation: [ˌɦoːvdɔr(ə)ˈplɛimbyːrt]) is a neighborhood of Amsterdam, Netherlands, part of the borough of Amsterdam-Zuid. The district had 10,771 inhabitants as of 1 January 2005. The total area is 96.71 hectares.\nHoofddorppleinbuurt was built in the 1920s. Since 1927 the neighborhood through the Zeilbrug has been connected to Amstelveenseweg..."
+  },
+  {
+    "name": "Overtoomse Sluis"
+  },
+  {
+    "name": "Houthaven",
+    "wikidataId": "Q1886567",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Oude_houthaven_5.jpg/500px-Oude_houthaven_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Oude houthaven 5.jpg",
+    "wikipediaExtract": "Houthaven is a neighbourhood of Amsterdam, Netherlands situated in the West borough. Literally meaning \"lumber port\", Houthaven is a port situated along the IJ in Amsterdam's western port. It is bordered by a dam in the IJ river to the north and the Spaarndammerbuurt in the south. It is currently predominantly used by inland barges, however plans are in motion..."
+  },
+  {
+    "name": "Westpoort"
+  },
+  {
+    "name": "Museumkwartier",
+    "wikidataId": "Q2242438",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Concertgebouw_3.jpg/500px-Concertgebouw_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Concertgebouw 3.jpg",
+    "wikipediaExtract": "Museumkwartier (the Museum Quarter) is a neighbourhood of Amsterdam, Netherlands, located in the borough of Amsterdam-Zuid.\nIt is bordered by the Stadhouderskade, Vondelpark, Emmastraat, Reinier Vinkeleskade and the Hobbemakade.\nThe area was developed following the construction of the Rijksmuseum.The neighbourhood takes its name from the major museums at Museumplein..."
+  },
+  {
+    "name": "Vondelparkbuurt",
+    "wikidataId": "Q2975361",
+    "wikipediaExtract": "Vondelparkbuurt is een gemeenschappelijke benaming voor drie buurten in Amsterdam-West. Het hele gebied maakte tot eind 19e eeuw deel uit van de gemeente Nieuwer-Amstel, totdat in 1896 alles tot Amsterdam behorend werd verklaard. In diezelfde periode en daarvoor werd de strook getransformeerd van industriegebied met molens tot woon-/winkelwijk.\nDe drie buurten…"
+  },
+  {
+    "name": "Oud-Zuid"
+  },
+  {
+    "name": "Zuid"
+  },
+  {
+    "name": "KNSM-eiland"
+  },
+  {
+    "name": "Oostelijk Havengebied"
+  },
+  {
+    "name": "West"
+  },
+  {
+    "name": "Centrum"
+  },
+  {
+    "name": "Oost"
+  },
+  {
+    "name": "Noord"
   }
 ]

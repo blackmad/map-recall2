@@ -5,6 +5,9 @@ const config: StorybookConfig = {
   addons: ['@storybook/addon-a11y'],
   framework: { name: '@storybook/react-vite', options: {} },
   staticDirs: ['../public'],
+  // Storybook copies staticDirs itself. Disable Vite's default `public/` copy
+  // or both writers race to create large extract directories in the build.
+  viteFinal: async viteConfig => ({ ...viteConfig, publicDir: false }),
 };
 
 export default config;

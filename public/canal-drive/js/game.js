@@ -1934,7 +1934,7 @@ class Game {
     // car as well as the boat — that is how the name sticks while you drive
     // along it. The one being asked about is withheld, or the map would be
     // answering the question for you.
-    this.track.drawLabels(ctx, this.camera, this.revealedNames, this.quizPromptName || this.quizCandidateName);
+    this.track.drawLabels(ctx, this.camera, this.revealedNames, this.quizPromptName || this.quizCandidateName, this.player);
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) {
@@ -2730,24 +2730,14 @@ class Game {
     // area containing the vehicle.
     const detectedHood = this._neighborhoodAt(this.player.x, this.player.y);
     const detectedName = detectedHood ? detectedHood.name : '';
-    if (detectedName !== this.currentNeighborhood) {
-      if (detectedName !== this._neighborhoodCandidate) {
-        this._neighborhoodCandidate = detectedName;
-        this._neighborhoodCandidateTimer = 0;
-      } else {
-        this._neighborhoodCandidateTimer += dt;
-      }
-      // Overlapping OSM boundaries can alternate for a frame at their edge.
-      // Adopt an entry only after it remains stable long enough to be real.
-      if (this._neighborhoodCandidateTimer >= 0.7) {
-        this.currentNeighborhood = detectedName;
-        this._neighborhoodCandidate = '';
-        this._neighborhoodCandidateTimer = 0;
-      }
-    } else {
-      this._neighborhoodCandidate = '';
-      this._neighborhoodCandidateTimer = 0;
-    }
+    const transition = CanalRecallNeighborhood.advanceNeighborhood({
+      current: this.currentNeighborhood,
+      candidate: this._neighborhoodCandidate,
+      candidateSeconds: this._neighborhoodCandidateTimer,
+    }, detectedName, dt);
+    this.currentNeighborhood = transition.state.current;
+    this._neighborhoodCandidate = transition.state.candidate;
+    this._neighborhoodCandidateTimer = transition.state.candidateSeconds;
     const hood = this.neighborhoods.find(area => area.name === this.currentNeighborhood) || detectedHood;
     if (this.currentNeighborhood) this._visitedNeighborhoods.add(this.currentNeighborhood);
     // Arriving somewhere is worth a postcard the first time too. Previously an

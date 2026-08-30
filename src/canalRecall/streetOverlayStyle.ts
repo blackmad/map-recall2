@@ -4,7 +4,6 @@ export const STREET_OVERLAY_LAYER_IDS = [
   'active-street-casing',
   'active-street-glow',
   'active-street-line',
-  'learned-street-labels',
 ] as const;
 
 export function streetOverlayLayers(): Array<Record<string, unknown>> {
@@ -36,15 +35,6 @@ export function streetOverlayLayers(): Array<Record<string, unknown>> {
       id: 'active-street-line', type: 'line', source: 'active-street',
       layout: { 'line-cap': 'round', 'line-join': 'round' },
       paint: { 'line-color': '#38BDF8', 'line-width': zoomWidth(2, 6), 'line-opacity': 0.96 },
-    },
-    {
-      id: 'learned-street-labels', type: 'symbol', source: 'learned-streets', minzoom: 14,
-      layout: {
-        'symbol-placement': 'line', 'symbol-spacing': 450, 'text-field': ['get', 'name'],
-        'text-font': ['Noto Sans Bold'], 'text-size': zoomWidth(9, 12),
-        'text-letter-spacing': 0.04, 'text-keep-upright': true,
-      },
-      paint: { 'text-color': '#FFF7DF', 'text-halo-color': '#332A20', 'text-halo-width': 2, 'text-halo-blur': 0.5 },
     },
   ];
 }

@@ -625,7 +625,7 @@ class RoadNetwork {
   // Draw road names + endpoint labels at screen resolution (called each frame from renderer)
   // `hiddenName` is the street currently being asked about: its label would
   // otherwise sit on the map spelling out the answer.
-  drawLabels(ctx, camera, learnedNames, hiddenName = '') {
+  drawLabels(ctx, camera, learnedNames, hiddenName = '', player = null) {
     const z = camera.zoom || 1;
     const fontSize = Math.max(8, Math.round(9 * z));
     ctx.font = `bold ${fontSize}px Arial, sans-serif`;
@@ -647,6 +647,7 @@ class RoadNetwork {
         const screenX = screen.x;
         const screenY = screen.y;
         if (screenX < -150 || screenX > CANVAS_W + 150 || screenY < -150 || screenY > CANVAS_H + 150) continue;
+        if (player && Math.hypot(lbl.x - player.x, lbl.y - player.y) * z < 145) continue;
 
         // Estimate label bounding box in screen space for overlap check
         const tw = ctx.measureText(lbl.text).width;
@@ -678,13 +679,13 @@ class RoadNetwork {
         ctx.translate(screenX, screenY);
         ctx.rotate(lbl.angle - (camera.rotation || 0));
 
-        // Background pill
-        ctx.fillStyle = 'rgba(0,0,0,0.8)';
-        roundRect(ctx, -tw / 2 - pad, -fontSize / 2 - 2, tw + pad * 2, fontSize + 4, 3);
-        ctx.fill();
-
-        // White text with slight shadow for clarity
-        ctx.fillStyle = '#FFFFFF';
+        // Match the basemap rather than laying black UI capsules over roads.
+        // A quiet paper halo remains readable above route geometry and roofs.
+        ctx.strokeStyle = 'rgba(250,249,244,.92)';
+        ctx.lineWidth = 4;
+        ctx.lineJoin = 'round';
+        ctx.strokeText(lbl.text, 0, 0);
+        ctx.fillStyle = 'rgba(38,56,59,.78)';
         ctx.fillText(lbl.text, 0, 0);
         ctx.restore();
       }
