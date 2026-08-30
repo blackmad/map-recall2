@@ -149,6 +149,8 @@ class Game {
     this.neighborhoods = [];
     this.currentNeighborhood = '';
     this._previousNeighborhood = '';
+    this._neighborhoodCandidate = '';
+    this._neighborhoodCandidateTimer = 0;
     this._neighborhoodNotice = null;
     this._neighborhoodNoticeTimer = 0;
     this._neighborhoodImages = new Map();
@@ -1447,8 +1449,8 @@ class Game {
     this.player.handleInput(this.input);
     this.player.update(dt, this.track);
     if (this.travelMode === 'car') {
-      const road = this.track.getNearestRoad(this.player.x, this.player.y);
-      const previousRoad = this.track.getNearestRoad(previousPlayerPosition.x, previousPlayerPosition.y);
+      const road = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
+      const previousRoad = this.track.getNearestRoad(previousPlayerPosition.x, previousPlayerPosition.y, this.player.angle);
       const guard = CanalRecallCar.constrainCarToRoad(
         this.player,
         previousPlayerPosition,
@@ -1520,6 +1522,12 @@ class Game {
     if (this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
       this.state = GameState.FINISHED;
       this.sound.silence();
+      const arrived = this._finishLandmark();
+      if (arrived) {
+        this._landmarkNotice = arrived;
+        this._landmarkNoticeTimer = 3600;
+        this._landmarkNoticeDuration = 3600;
+      }
       this._ribbon = this.gameyFeatures ? this._computeRouteRibbon() : null;
       this._saveBestTime();
       this._explorationSnapshot = this._saveExploration();
@@ -2326,6 +2334,8 @@ class Game {
     const gamey = this.gameyFeatures;
     const hasExploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0;
     const hasRibbon = gamey && !!this._ribbon;
+    const destinationLandmark = this._finishLandmark();
+    const destinationBoxH = destinationLandmark ? 74 : 0;
 
     let bestText = '';
     if (this._raceKey) {
@@ -2343,7 +2353,7 @@ class Game {
     // cursor advances below.
     const recallBoxH = gamey ? 105 : 78;
     const ribbonBoxH = 74;
-    let cardH = 235 + recallBoxH + 40 + 34;
+    let cardH = 190 + destinationBoxH + recallBoxH + 40 + 34;
     if (hasRibbon) cardH += ribbonBoxH + 12;
     if (bestText) cardH += 36;
     if (hasExploration) cardH += 58 + 13;
@@ -2358,21 +2368,54 @@ class Game {
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    let y = cardY + 60;
+    let y = cardY + 42;
     ctx.fillStyle = '#FACC15';
-    ctx.font = 'bold 38px monospace';
+    ctx.font = 'bold 30px monospace';
     ctx.textAlign = 'center';
     ctx.fillText('DESTINATION REACHED', cx, y);
-    y += 35;
+    y += 27;
     ctx.fillStyle = '#7DD3FC';
     ctx.font = 'bold 15px monospace';
     ctx.fillText(`${this.routeFrom.name}  →  ${this.routeTo.name}`, cx, y);
 
-    y += 38;
+    if (destinationLandmark) {
+      y += 13;
+      const boxX = cx - 235;
+      ctx.fillStyle = 'rgba(8,47,64,.78)';
+      roundRect(ctx, boxX, y, 470, destinationBoxH, 10); ctx.fill();
+      const image = this._landmarkImages && this._landmarkImages.get(destinationLandmark.id);
+      let textX = boxX + 16;
+      if (image && image.complete && image.naturalWidth > 0) {
+        ctx.save(); ctx.beginPath(); roundRect(ctx, boxX + 7, y + 7, 60, 60, 7); ctx.clip();
+        const side = Math.min(image.naturalWidth, image.naturalHeight);
+        ctx.drawImage(image, (image.naturalWidth - side) / 2, (image.naturalHeight - side) / 2, side, side, boxX + 7, y + 7, 60, 60);
+        ctx.restore(); textX = boxX + 80;
+      }
+      ctx.textAlign = 'left'; ctx.fillStyle = '#7DD3FC'; ctx.font = 'bold 9px monospace';
+      ctx.fillText(`YOU ARRIVED AT · ${String(destinationLandmark.type || 'LANDMARK').toUpperCase()}`, textX, y + 18);
+      ctx.fillStyle = '#F0F9FF'; ctx.font = 'bold 14px system-ui, sans-serif';
+      ctx.fillText(destinationLandmark.name, textX, y + 37);
+      const words = (destinationLandmark.longDetail || destinationLandmark.detail || 'A place to remember on your Amsterdam map.').split(/\s+/);
+      let line = '';
+      for (const word of words) {
+        const test = `${line} ${word}`.trim();
+        if (ctx.measureText(test).width > boxX + 452 - textX) break;
+        line = test;
+      }
+      ctx.fillStyle = '#B9DCE8'; ctx.font = '11px system-ui, sans-serif';
+      ctx.fillText(line, textX, y + 56);
+      if (destinationLandmark.wikipediaUrl) {
+        ctx.textAlign = 'right'; ctx.fillStyle = '#7DD3FC'; ctx.font = 'bold 9px monospace';
+        ctx.fillText('W  WIKIPEDIA', boxX + 454, y + 68);
+      }
+      ctx.textAlign = 'center'; y += destinationBoxH;
+    }
+
+    y += 22;
     ctx.fillStyle = '#94A3B8';
     ctx.font = 'bold 12px monospace';
     ctx.fillText('TIME', cx, y);
-    y += 40;
+    y += 31;
     ctx.font = 'bold 38px monospace';
     ctx.fillStyle = '#FFFFFF';
     ctx.fillText(this.hud.formatTime(this.raceTime), cx, y);
@@ -2465,6 +2508,17 @@ class Game {
       ctx.font = '13px monospace';
       ctx.fillText(this._copiedTimer > 0 ? 'Race link copied' : 'C  Copy race link', cx, y);
     }
+  }
+
+  _finishLandmark() {
+    if (!this.routeTo || this.routeTo.id === 'home' || !this.landmarks) return null;
+    const wanted = this._normaliseCanalName(this.routeTo.name);
+    return this.landmarks.find(landmark => this._normaliseCanalName(landmark.name) === wanted)
+      || (this.track && this.landmarks.reduce((best, landmark) => {
+        const distance = Math.hypot(landmark.x - this.track.finishPoint.x, landmark.y - this.track.finishPoint.y);
+        return distance < 220 && (!best || distance < best.distance) ? { landmark, distance } : best;
+      }, null)?.landmark)
+      || null;
   }
 
   // Ribbon band on the finish card: a medal, the tier, and the per-axis
@@ -2619,6 +2673,22 @@ class Game {
         })
         .filter(hood => hood.rings.length)
         .sort((a, b) => b.rank - a.rank);
+      // Most fine-grained quarters do not have their own Wikimedia image yet.
+      // Borrow the containing district's photograph rather than showing a flat
+      // typographic card; it still depicts the part of Amsterdam being entered.
+      for (const hood of this.neighborhoods) {
+        if (hood.imageUrl) continue;
+        const sample = hood.rings[0] && hood.rings[0][0];
+        if (!sample) continue;
+        const parent = this.neighborhoods.find(candidate =>
+          candidate.rank < hood.rank && candidate.imageUrl
+          && candidate.rings.some(ring => this._pointInPolygon(sample.x, sample.y, ring)));
+        if (parent) {
+          hood.imageUrl = parent.imageUrl;
+          hood.imageAttribution = parent.imageAttribution;
+          hood.imageArea = parent.name;
+        }
+      }
       // Bridges carry their own geometry and ready-made distractors, so they
       // can be quizzed the same way waterways and streets are.
       this.bridges = bridgeFeatures.map(feature => {
@@ -2658,8 +2728,27 @@ class Game {
     if (!this.player) return;
     // The list is sorted finest-first, so the first hit is the most specific
     // area containing the vehicle.
-    const hood = this._neighborhoodAt(this.player.x, this.player.y);
-    this.currentNeighborhood = hood ? hood.name : '';
+    const detectedHood = this._neighborhoodAt(this.player.x, this.player.y);
+    const detectedName = detectedHood ? detectedHood.name : '';
+    if (detectedName !== this.currentNeighborhood) {
+      if (detectedName !== this._neighborhoodCandidate) {
+        this._neighborhoodCandidate = detectedName;
+        this._neighborhoodCandidateTimer = 0;
+      } else {
+        this._neighborhoodCandidateTimer += dt;
+      }
+      // Overlapping OSM boundaries can alternate for a frame at their edge.
+      // Adopt an entry only after it remains stable long enough to be real.
+      if (this._neighborhoodCandidateTimer >= 0.7) {
+        this.currentNeighborhood = detectedName;
+        this._neighborhoodCandidate = '';
+        this._neighborhoodCandidateTimer = 0;
+      }
+    } else {
+      this._neighborhoodCandidate = '';
+      this._neighborhoodCandidateTimer = 0;
+    }
+    const hood = this.neighborhoods.find(area => area.name === this.currentNeighborhood) || detectedHood;
     if (this.currentNeighborhood) this._visitedNeighborhoods.add(this.currentNeighborhood);
     // Arriving somewhere is worth a postcard the first time too. Previously an
     // empty `_previousNeighborhood` swallowed the opening entry, so the card
@@ -2870,90 +2959,45 @@ class Game {
     const eased = 1 - Math.pow(1 - slideT, 3);
     const slideOffset = (1 - eased) * 50;
 
-    const cardW = 520;
-    const cardH = NEIGHBORHOOD_CARD_HEIGHT;
-    const cardX = CANVAS_W / 2 - cardW / 2;
-    const cardY = CANVAS_H - cardH - 30 + slideOffset;
+    const cardW = 390;
+    const cardH = 104;
+    const cardX = CANVAS_W - cardW - 20;
+    const cardY = CANVAS_H - cardH - 76 + slideOffset;
 
     ctx.beginPath();
     roundRect(ctx, cardX, cardY, cardW, cardH, 8);
     ctx.clip();
 
-    // Sun-faded linen stock and simple travel-poster horizon bands. The photo
-    // belongs inside the giant letters, not underneath a generic dark card.
-    const paper = ctx.createLinearGradient(cardX, cardY, cardX, cardY + cardH);
-    paper.addColorStop(0, '#F3C06B');
-    paper.addColorStop(0.57, '#EAA45F');
-    paper.addColorStop(0.58, '#70A6A2');
-    paper.addColorStop(1, '#2F7078');
-    ctx.fillStyle = paper;
+    ctx.fillStyle = '#092330';
     ctx.fillRect(cardX, cardY, cardW, cardH);
-    ctx.fillStyle = 'rgba(255,244,211,.18)';
-    for (let i = 0; i < 90; i++) {
-      const seed = (i * 7919 + hood.name.length * 1049) % 9973;
-      ctx.fillRect(cardX + seed % cardW, cardY + (seed * 17) % cardH, 1, 1);
-    }
-
-    ctx.strokeStyle = '#F7E6B8';
-    ctx.lineWidth = 5;
-    roundRect(ctx, cardX + 4, cardY + 4, cardW - 8, cardH - 8, 7);
-    ctx.stroke();
-    ctx.strokeStyle = 'rgba(85,49,37,.55)';
-    ctx.lineWidth = 1.5;
-    roundRect(ctx, cardX + 9, cardY + 9, cardW - 18, cardH - 18, 4);
-    ctx.stroke();
-
-    const name = hood.name.toUpperCase();
-    let fontSize = 82;
-    ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
-    while (ctx.measureText(name).width > cardW - 38 && fontSize > 34) {
-      fontSize -= 2;
-      ctx.font = `bold ${fontSize}px "Impact", "Arial Black", sans-serif`;
-    }
-    ctx.textAlign = 'center';
-    const nameY = cardY + 132;
-
-    ctx.lineJoin = 'round';
-    ctx.strokeStyle = '#713A2C';
-    ctx.lineWidth = 12;
-    ctx.strokeText(name, CANVAS_W / 2 + 6, nameY + 7);
-    ctx.strokeStyle = '#F8EDCE';
-    ctx.lineWidth = 7;
-    ctx.strokeText(name, CANVAS_W / 2, nameY);
     if (hasImage) {
-      if (!this._neighborhoodLetterArt) this._neighborhoodLetterArt = new Map();
-      let letters = this._neighborhoodLetterArt.get(hood.name);
-      if (!letters) {
-        letters = document.createElement('canvas');
-        letters.width = cardW; letters.height = cardH;
-        const letterCtx = letters.getContext('2d');
-        letterCtx.font = ctx.font;
-        letterCtx.textAlign = 'center';
-        letterCtx.fillStyle = '#fff';
-        letterCtx.fillText(name, cardW / 2, 132);
-        letterCtx.globalCompositeOperation = 'source-in';
-        const aspect = img.naturalWidth / img.naturalHeight;
-        let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
-        if (aspect > cardW / cardH) { sw = sh * cardW / cardH; sx = (img.naturalWidth - sw) / 2; }
-        else { sh = sw * cardH / cardW; sy = (img.naturalHeight - sh) / 2; }
-        letterCtx.drawImage(img, sx, sy, sw, sh, 0, 0, cardW, cardH);
-        this._neighborhoodLetterArt.set(hood.name, letters);
-      }
-      ctx.drawImage(letters, cardX, cardY);
+      const photoW = 144;
+      const targetAspect = photoW / cardH;
+      const aspect = img.naturalWidth / img.naturalHeight;
+      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
+      if (aspect > targetAspect) { sw = sh * targetAspect; sx = (img.naturalWidth - sw) / 2; }
+      else { sh = sw / targetAspect; sy = (img.naturalHeight - sh) / 2; }
+      ctx.drawImage(img, sx, sy, sw, sh, cardX, cardY, photoW, cardH);
+      const shade = ctx.createLinearGradient(cardX + 90, 0, cardX + 170, 0);
+      shade.addColorStop(0, 'rgba(9,35,48,0)'); shade.addColorStop(1, '#092330');
+      ctx.fillStyle = shade; ctx.fillRect(cardX + 90, cardY, 80, cardH);
     } else {
-      ctx.fillStyle = '#F4D96B';
-      ctx.fillText(name, CANVAS_W / 2, nameY);
+      ctx.fillStyle = '#0E7490'; ctx.fillRect(cardX, cardY, 9, cardH);
     }
-    ctx.strokeStyle = '#263D45';
-    ctx.lineWidth = 2;
-    ctx.strokeText(name, CANVAS_W / 2, nameY);
-
-    ctx.fillStyle = '#5F3328';
-    ctx.font = 'italic bold 24px Georgia, serif';
-    ctx.fillText('Greetings from', CANVAS_W / 2, cardY + 39);
-    ctx.fillStyle = '#F8EDCE';
-    ctx.font = 'bold 13px Arial, sans-serif';
-    ctx.fillText('AMSTERDAM · NEDERLAND', CANVAS_W / 2, cardY + 160);
+    const textX = cardX + (hasImage ? 136 : 0) + 22;
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#7DD3FC'; ctx.font = 'bold 10px monospace';
+    ctx.fillText(`ENTERING ${String(hood.kind || 'NEIGHBORHOOD').toUpperCase()}`, textX, cardY + 27);
+    let nameSize = 24;
+    ctx.font = `800 ${nameSize}px system-ui, sans-serif`;
+    while (ctx.measureText(hood.name).width > cardX + cardW - textX - 18 && nameSize > 16) {
+      nameSize -= 1; ctx.font = `800 ${nameSize}px system-ui, sans-serif`;
+    }
+    ctx.fillStyle = '#F0F9FF'; ctx.fillText(hood.name, textX, cardY + 58);
+    ctx.fillStyle = '#9CCFE1'; ctx.font = '11px system-ui, sans-serif';
+    ctx.fillText(hood.imageArea ? `Photo: ${hood.imageArea} · Amsterdam` : 'Amsterdam · Noord-Holland', textX, cardY + 80);
+    ctx.strokeStyle = 'rgba(125,211,252,.55)'; ctx.lineWidth = 1.5;
+    roundRect(ctx, cardX, cardY, cardW, cardH, 8); ctx.stroke();
 
     ctx.restore();
   }

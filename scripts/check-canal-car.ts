@@ -86,4 +86,12 @@ for (const highway of ['primary', 'secondary', 'tertiary', 'residential', 'livin
   assert.ok(routing.some(street => street.highway === highway), `routing extract retains ${highway} roads`);
 }
 
-process.stdout.write(`Canal Recall car checks passed (5 simulations, 4 Da Costakade approaches, ${bridgeSegments.length} bridge segments, routing-class coverage).\n`);
+const stirumJunction: [number, number] = [52.3832952, 4.8768603];
+const junctionArms = routing.filter(street =>
+  (street.paths ?? (street.path ? [street.path] : [])).flat()
+    .some(point => metersBetween(point, stirumJunction) < 13));
+for (const name of ['Van Limburg Stirumstraat', 'De Wittenkade', 'Staatsliedenbrug']) {
+  assert.ok(junctionArms.some(street => street.name === name), `${name} remains connected at the Stirumstraat roundabout`);
+}
+
+process.stdout.write(`Canal Recall car checks passed (5 simulations, 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage).\n`);

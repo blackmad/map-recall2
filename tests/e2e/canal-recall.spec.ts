@@ -15,7 +15,7 @@ type HarnessGame = {
     setActiveLandmark: (landmark: unknown) => void;
   };
   _landmarkNotice: { id: string; name: string } | null;
-  _neighborhoodNotice: { name: string; wikipediaExtract?: string } | null;
+  _neighborhoodNotice: { name: string; kind?: string; wikipediaExtract?: string } | null;
   _neighborhoodNoticeTimer: number;
   _neighborhoodImages: Map<string, HTMLImageElement>;
   _render: () => void;
@@ -159,7 +159,7 @@ test('anonymous building footprints never open a notice', async ({ page }) => {
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
 });
 
-test('classic neighborhood postcard renders as large-letter artwork', async ({ page }, testInfo) => {
+test('neighborhood entry renders as a compact photo lower-third', async ({ page }, testInfo) => {
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
   const cardMetrics = await page.evaluate(async () => {
@@ -168,14 +168,14 @@ test('classic neighborhood postcard renders as large-letter artwork', async ({ p
     image.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300"><rect width="800" height="300" fill="#287a8c"/><circle cx="180" cy="90" r="70" fill="#f4c95d"/><path d="M0 250L170 130 300 230 470 80 800 250V300H0Z" fill="#315d45"/></svg>')}`;
     await image.decode();
     game._neighborhoodImages = new Map([['Jordaan', image]]);
-    game._neighborhoodNotice = { name: 'Jordaan' };
+    game._neighborhoodNotice = { name: 'Jordaan', kind: 'neighborhood' };
     game._neighborhoodNoticeTimer = 4;
     game._render = () => undefined;
     const canvas = document.querySelector<HTMLCanvasElement>('#gameCanvas');
     if (!canvas) throw new Error('Canvas missing');
     game.ctx.clearRect(0, 0, canvas.width, canvas.height);
     game._renderNeighborhoodNotice();
-    const pixels = game.ctx.getImageData((canvas.width - 520) / 2, canvas.height - 210, 520, 180).data;
+    const pixels = game.ctx.getImageData(canvas.width - 410, canvas.height - 180, 390, 104).data;
     let opaque = 0;
     for (let index = 3; index < pixels.length; index += 4) if (pixels[index] > 0) opaque++;
     return { opaqueRatio: opaque / (pixels.length / 4) };
@@ -219,7 +219,7 @@ test('the first neighborhood entered also gets a postcard', async ({ page }) => 
     game._previousNeighborhood = '';
     game._neighborhoodNotice = null;
     game._neighborhoodNoticeTimer = 0;
-    game._updateLandmarks(0.1);
+    for (let i = 0; i < 9; i++) game._updateLandmarks(0.1);
     return {
       name: game._neighborhoodNotice && game._neighborhoodNotice.name,
       timer: game._neighborhoodNoticeTimer,
