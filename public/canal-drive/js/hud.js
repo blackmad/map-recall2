@@ -272,60 +272,52 @@ class HUD {
     return `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}.${String(ms).padStart(3,'0')}`;
   }
 
-  drawMiniMap(ctx, track, cars, playerIdx) {
-    const mapW = 180, mapH = 140;
-    const mx = 15, my = CANVAS_H - mapH - 15;
-    const player = cars[playerIdx];
-    if (!player) return;
-    ctx.fillStyle = 'rgba(0,0,0,0.6)';
-    roundRect(ctx, mx, my, mapW, mapH, 8);
+  // A city-scale overview, not a 450 m scrap. The old minimap drew about 450 m
+  // of network centred on the vehicle, with canals and streets as the same thin
+  // white line; at that scale every part of Amsterdam looks like every other
+  // part. The framing here is fixed to the city, so the same place sits in the
+  // same spot on every trip and the map becomes something you learn rather than
+  // something you re-read. Static layers are cached per route and blitted.
+  //
+  // It draws no names: the street or canal under question must never be
+  // revealed by the map before it has been answered.
+  drawCityOverview(ctx, game) {
+    const overview = window.CanalRecallOverview;
+    if (!overview || !game.track) return;
+    const rect = { x: MINIMAP_X, y: CANVAS_H - MINIMAP_H - 15, width: MINIMAP_W, height: MINIMAP_H };
+
+    if (this._overviewTrack !== game.track || !this._overviewCache) {
+      const built = overview.buildOverview({
+        areaRings: (game.neighborhoods || []).flatMap(hood => hood.rings || []),
+        networkSegments: (game.track.segments || []).map(segment => segment.points || []),
+        route: game.routePath || [],
+        start: game.track.startPoint || null,
+        finish: game.track.finishPoint || null,
+      }, { x: 0, y: 0, width: rect.width, height: rect.height });
+      if (!built) return;
+      const cache = document.createElement('canvas');
+      cache.width = rect.width;
+      cache.height = rect.height;
+      overview.drawOverviewStatic(cache.getContext('2d'), built.layers, built.projection);
+      this._overviewCache = cache;
+      this._overviewBuilt = built;
+      this._overviewTrack = game.track;
+    }
+
+    const built = this._overviewBuilt;
+    ctx.save();
+    ctx.fillStyle = overview.OVERVIEW_COLORS.background;
+    roundRect(ctx, rect.x, rect.y, rect.width, rect.height, 8);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+    ctx.strokeStyle = overview.OVERVIEW_COLORS.border;
     ctx.lineWidth = 1;
     ctx.stroke();
-
-    // Local navigation view: about 450 m across at the current 3 px/m world
-    // scale, centered on the player instead of fitting all of Amsterdam.
-    const scale = 0.13;
-    const ox = mx + mapW / 2 - player.x * scale;
-    const oy = my + mapH / 2 - player.y * scale;
-    ctx.save();
     ctx.beginPath();
-    ctx.rect(mx + 5, my + 5, mapW - 10, mapH - 10);
+    ctx.rect(rect.x, rect.y, rect.width, rect.height);
     ctx.clip();
-    ctx.strokeStyle = 'rgba(255,255,255,0.38)';
-    ctx.lineWidth = 1.5;
-    for (const segment of track.segments || []) {
-      if (!segment.points || segment.points.length < 2) continue;
-      const b = segment.bounds;
-      const rangeX = mapW / (2 * scale), rangeY = mapH / (2 * scale);
-      if (b && (b.maxX < player.x - rangeX || b.minX > player.x + rangeX || b.maxY < player.y - rangeY || b.minY > player.y + rangeY)) continue;
-      ctx.beginPath();
-      ctx.moveTo(segment.points[0].x * scale + ox, segment.points[0].y * scale + oy);
-      for (let i = 1; i < segment.points.length; i++) ctx.lineTo(segment.points[i].x * scale + ox, segment.points[i].y * scale + oy);
-      ctx.stroke();
-    }
-    const finish = track.finishPoint;
-    const finishX = finish.x * scale + ox, finishY = finish.y * scale + oy;
-    ctx.fillStyle = '#FACC15';
-    ctx.beginPath();
-    ctx.arc(finishX, finishY, 5, 0, Math.PI * 2);
-    ctx.fill();
-
-    // car dots (dynamic — drawn every frame)
-    for (let i = 0; i < cars.length; i++) {
-      const car = cars[i];
-      const sx = car.x * scale + ox, sy = car.y * scale + oy;
-      ctx.fillStyle = car.color;
-      ctx.beginPath();
-      ctx.arc(sx, sy, i === playerIdx ? 4 : 3, 0, Math.PI * 2);
-      ctx.fill();
-      if (i === playerIdx) {
-        ctx.strokeStyle = '#FFF';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-    }
+    ctx.drawImage(this._overviewCache, rect.x, rect.y);
+    ctx.translate(rect.x, rect.y);
+    overview.drawOverviewDynamic(ctx, built.layers, game.player, built.projection);
     ctx.restore();
   }
 

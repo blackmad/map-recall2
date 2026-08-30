@@ -6,6 +6,28 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The minimap is a city overview.** It drew about 450 m of network centred on
+  the vehicle, with canals and streets as the same thin white line — and at that
+  scale every part of Amsterdam looks like every other part, which is the
+  opposite of what a geography game's map is for. It is 260×200 now and framed
+  on the whole city, drawn from the neighborhood boundaries already loaded for
+  the postcards, so recognising where you are costs no extra fetch. The loaded
+  network, the planned route, both endpoints and a heading cone sit on top.
+
+  The framing follows the city rather than the trip, so the same place lands in
+  the same spot on every route — that is what lets the map become something the
+  player knows instead of something they re-read. Scale is uniform: a stretched
+  Amsterdam is not Amsterdam, and the canal ring is only recognisable while it
+  is still round. Static layers are thinned to the drawn resolution and cached
+  per route; only the vehicle is redrawn per frame.
+
+  It draws no names, deliberately. A labelled overview would reveal the street
+  or canal under question before it had been answered.
+
+  The aid cost is unchanged at 0.25. The map got considerably more useful, but
+  re-tuning self-reliance scoring in the same change would make it impossible to
+  tell which change moved the ribbons.
+
 - **The boat could not fit through Amsterdam's locks.** Reported from play:
   stuck in the Stadionsluis. The routing graph was innocent — the lock shares
   *exact* vertices with Stadiongracht at both ends, so the router plans straight

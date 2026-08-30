@@ -96,7 +96,7 @@ class GamePresentationRuntime {
     }
 
     if (this.showMiniMap) {
-      this.hud.drawMiniMap(ctx, this.track, this.cars, this.cars.indexOf(this.player));
+      this.hud.drawCityOverview(ctx, this);
     }
     this._renderLandmarkNotice();
     this._renderNeighborhoodNotice();

@@ -35,6 +35,8 @@ type HarnessGame = {
   _previousNeighborhood: string;
   raceTime: number;
   _updateLandmarks: (dt: number) => void;
+  showMiniMap: boolean;
+  routePath: Array<{ x: number; y: number }> | null;
   _neighborhoodNoticeTimer: number;
 };
 
@@ -238,6 +240,27 @@ test('anonymous building footprints acknowledge the click without inventing a na
 // opposite of a geography game. The 3D highlight raycasts straight down and
 // finds nothing whenever the place is not its own extruded building, so the
 // locator dot has to survive detailed mode.
+// The old minimap showed ~450 m of network, where every part of Amsterdam looks
+// like every other part. This one is framed on the whole city.
+test('the city overview draws the whole city, not a local scrap', async ({ page }) => {
+  await openCarRoute(page);
+  const drawn = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    game.showMiniMap = true;
+    game._render();
+    // Sample the overview rect and count pixels bright enough to be map ink
+    // rather than the panel's own dark background.
+    const data = game.ctx.getImageData(15, 720 - 215, 260, 200).data;
+    let lit = 0;
+    for (let i = 0; i < data.length; i += 4) {
+      if (data[i] + data[i + 1] + data[i + 2] > 90) lit++;
+    }
+    return { lit, areas: game.neighborhoods?.length ?? 0 };
+  });
+  expect(drawn.areas, 'the city outline comes from the neighborhood boundaries').toBeGreaterThan(10);
+  expect(drawn.lit, 'the overview panel is not blank').toBeGreaterThan(200);
+});
+
 test('an active landmark is always marked on the map', async ({ page }) => {
   await openCarRoute(page);
   // The highlight layers are created on basemap load, not on game start.

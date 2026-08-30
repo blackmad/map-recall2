@@ -15,7 +15,8 @@ export function bottomHudLayout({
 }): BottomHudLayout {
   const trip = { x: canvasWidth - tripWidth - 16, y: canvasHeight - 98, width: tripWidth, height: 26 };
   const postcard = { x: canvasWidth - 410, y: trip.y - 118, width: 390, height: 104 };
-  const minimap = { x: 15, y: canvasHeight - 155, width: 180, height: 140 };
+  // The city overview; see hud.js drawCityOverview and constants MINIMAP_*.
+  const minimap = { x: 15, y: canvasHeight - 215, width: 260, height: 200 };
   const zoomBadge = { x: canvasWidth / 2 - 35, y: canvasHeight - 35, width: 70, height: 22 };
   const controlsHint = { x: canvasWidth / 2 - 177, y: zoomVisible ? zoomBadge.y - 26 : canvasHeight - 32, width: 354, height: 12 };
   const centeredLandmarkX = canvasWidth / 2 - landmarkWidth / 2;
