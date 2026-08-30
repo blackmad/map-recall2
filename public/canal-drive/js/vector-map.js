@@ -15,6 +15,7 @@ class VectorBasemap {
     this._detailedBuildings = null;
     this._detailedBuildingsVisible = false;
     this._playerBike = null;
+    this._playerBoat = null;
     this._labelsVisible = false;
     if (!container || typeof maplibregl === 'undefined') return;
 
@@ -44,8 +45,10 @@ class VectorBasemap {
         this._detailedBuildings = new window.CanalRecallDetailed3D.DetailedBuildings(this.map, maplibregl);
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
-      if (window.CanalRecallPlayerBike && window.CanalRecallPlayerBike.PlayerBike3D) {
-        this._playerBike = new window.CanalRecallPlayerBike.PlayerBike3D(this.map, maplibregl);
+      if (window.CanalRecallVehicles) {
+        const { PlayerBike3D, PlayerBoat3D } = window.CanalRecallVehicles;
+        if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl);
+        if (PlayerBoat3D) this._playerBoat = new PlayerBoat3D(this.map, maplibregl);
       }
       this.ready = true;
       // Theme setup can run before the asynchronous style load. Reapply it
@@ -183,8 +186,20 @@ class VectorBasemap {
     );
   }
 
+  setPlayerBoat(player, loader, visible) {
+    if (!this._playerBoat || !player || !loader) return;
+    this._playerBoat.update(
+      this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
+      player.steerInput || 0
+    );
+  }
+
   isPlayerBikeReady() {
     return !!(this._playerBike && this._playerBike.ready);
+  }
+
+  isPlayerBoatReady() {
+    return !!(this._playerBoat && this._playerBoat.ready);
   }
 
   inspectBuilding(cssX, cssY, canvasRect) {

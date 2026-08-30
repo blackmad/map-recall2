@@ -2112,9 +2112,13 @@ class Game {
     }
     // Transparent game world over the live MapLibre vector basemap.
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
-    const playerUses3dMesh = this.travelMode === 'car'
-      && (this.viewMode === 'chase' || this.viewMode === 'cockpit');
-    this.vectorMap.setPlayerBike(this.player, this.osmLoader, playerUses3dMesh);
+    // Both travel modes have a real model now; the canvas glyph stays only as
+    // the loading fallback, and is not painted over a mesh that is ready.
+    const pitched = this.viewMode === 'chase' || this.viewMode === 'cockpit';
+    const byBoat = this.travelMode !== 'car';
+    const playerUses3dMesh = pitched;
+    this.vectorMap.setPlayerBike(this.player, this.osmLoader, pitched && !byBoat);
+    this.vectorMap.setPlayerBoat(this.player, this.osmLoader, pitched && byBoat);
     this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
     if (this.travelMode === 'car') {
       this.vectorMap.setStreetHighlights(
@@ -2133,12 +2137,11 @@ class Game {
     this.renderer.drawSkidMarks(this.particles, this.camera);
 
     this._renderBridgeLabels();
-    if (this.travelMode === 'car') {
-      if (!(playerUses3dMesh && this.vectorMap.isPlayerBikeReady())) {
-        this.renderer.drawPlayerCar(this.player, this.camera);
-      }
-    } else {
-      this.renderer.drawCar(this.player, this.camera);
+    const meshReady = playerUses3dMesh
+      && (byBoat ? this.vectorMap.isPlayerBoatReady() : this.vectorMap.isPlayerBikeReady());
+    if (!meshReady) {
+      if (byBoat) this.renderer.drawCar(this.player, this.camera);
+      else this.renderer.drawPlayerCar(this.player, this.camera);
     }
     this.renderer.drawParticles(this.particles, this.camera);
     // Streets stay named on the map once you have been told the name, in the

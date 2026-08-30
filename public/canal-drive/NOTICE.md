@@ -27,3 +27,15 @@ CC BY 4.0. See https://lucide.dev and https://fontawesome.com.
 The chase/cockpit player bicycle uses “Carbon Frame Bike” by Robert Schweier
 and prefrontal cortex, licensed under Creative Commons Attribution-ShareAlike
 4.0. Source: https://sketchfab.com/3d-models/398999b3360b4e6997a9aae253d6acbd
+
+The chase/cockpit player boat uses “Motor Boat” by gogiart (@agt14032013),
+licensed under Creative Commons Attribution 4.0. Source:
+https://sketchfab.com/3d-models/motor-boat-b485860039f24a7ab2a513432767890c
+
+Both models ship here in modified form, as these licences require to be stated.
+Neither was changed artistically; both were reduced so a browser game can
+download and draw them. The bicycle had its rig, its unplayed animation and its
+tangents and UVs removed — it carries no textures — and was then welded,
+simplified and quantized, 8.57 MB to 2.01 MB. The boat was converted from OBJ,
+welded, simplified, its textures resized to 512 px, and quantized, 21.19 MB to
+1.82 MB. The unmodified originals remain at the Sketchfab links above.
