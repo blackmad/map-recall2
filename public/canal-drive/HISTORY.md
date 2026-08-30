@@ -1,0 +1,501 @@
+# Canal Recall — what is built
+
+Finished work, newest first. The work board is `TODO.md`; nothing unfinished
+belongs here.
+
+Entries keep the words they were written in, because each records *why* a thing
+is the way it is, and that is the expensive part to recover later.
+
+- **Boat mode has a real boat.** Sketchfab's "Motor Boat" by gogiart, verified
+  through the Sketchfab API as CC Attribution — commercial use allowed, credit
+  required — converted from OBJ and put through the same reduction the bicycle
+  got: welded, simplified, textures resized to 512 px, quantized. **21.19 MB →
+  1.82 MB**, 220,008 → 66,000 triangles, with its ten JPEGs intact because
+  unlike the bicycle this model is genuinely textured. `NOTICE.md` credits both
+  models and states that both ship modified, which CC BY and CC BY-SA require.
+
+  The bicycle and the boat now share one custom-layer scaffold (`Vehicle3D` in
+  `player-vehicles-source.js`): load a GLB, ground it, draw it in world space
+  with the map's pitch and bearing. They differ only in the model, which way its
+  nose points, and what moves. The bicycle's front wheel is on its native −X and
+  the boat's bow is on +X, so they carry opposite heading offsets — swap them and
+  the boat sails stern-first, which looks nearly right in a still, so
+  `boat-model.spec.ts` pins both offsets. A hull has no steering geometry to
+  turn, so its turn shows in the whole boat: it heels into a held lock and
+  rights itself slowly, and the test pins that too.
+
+- **The bicycle steers and its wheels roll.** The asset was authored mid-turn,
+  so the front wheel sat visibly cocked against the frame and never moved. The
+  fix was not to zero it but to give it something to do. `Lenker` carries the
+  whole front assembly — fork, wheel, bars — so steering is that node's
+  rotation, and both wheels are discs whose thin local axis is Y, so rolling is
+  a spin about their own Y. Both axes were measured off the source GLB rather
+  than assumed. Steering eases toward the held direction so the bars settle
+  instead of snapping, and the wheels roll by distance travelled, so they stop
+  when the bike stops.
+
+  A screenshot is a bad oracle here — the bike is usually behind a building, and
+  at chase altitude it is a dozen pixels — so `bike-steering.spec.ts` measures
+  the pose off the scene graph instead: the front axle swings 23.1° each way
+  (46.2° lock to lock, a little under the nominal 24.1° because the head tube is
+  tilted), the rear wheel moves 0.0°, and 400 px of travel rolls the front wheel
+  133°. Steering that moved the whole bike, or a wheel that rolled by frame
+  count, would fail it.
+
+- **"No idea" is a real answer now.** A four-option question is guessable one
+  time in four, and a lucky guess was indistinguishable from knowledge: it
+  recorded a correct answer, which set a one-day review interval, flipped
+  `isKnownHere` to true, stopped the street being asked about, and wrote its
+  name on the map. The player who guessed right learned nothing and lost the
+  street from their review queue.
+
+  The fix has to survive a rational player, so honesty is strictly better than
+  guessing rather than merely permitted. "No idea — tell me" (`0`) is not an
+  attempt: it costs no accuracy, because nothing was answered. It resets the
+  streak, reveals the name, and records the round as wrong so the scheduler
+  rates it `again` and brings the name back in ten minutes. Guessing wrong
+  costs accuracy *and* the streak; guessing right when you did not know
+  quietly poisons the schedule. So the button is the play whenever the honest
+  answer is that you do not know.
+
+  Not yet covered by a regression test — the behaviour is a contract worth
+  pinning (no attempt recorded, `again` scheduling) and the answer path lives
+  in untyped `game.js`, so it wants the typed extraction first.
+
+- **The learned-street highlight is gone.** Mastered streets were painted
+  yellow over the basemap, but the Liberty basemap already draws its whole road
+  network in yellow, so the overlay read as a second arbitrary highlight rather
+  than as knowledge — and with every road yellow, "highlighted" stopped meaning
+  anything. Mastered streets still announce themselves the way that actually
+  teaches: by staying *named* on the map. Only the street currently under
+  question keeps a drawn highlight.
+
+- **Bridge options are the bridges around you now.** Every bridge in the
+  extract offered the same four names. `build-amsterdam-extract.ts` filled
+  `distractors` with `alternatives.slice(0, 12)` from a list sorted by
+  prominence, so all 300 bridges — and, with the same line, every street,
+  water, square, park and landmark — drew from the twelve highest-scoring
+  features in the city. Measured: 13 distinct names across 300 bridges.
+  Crossing the Prinsengracht you were offered Zeeburgerbrug, Nesciobrug,
+  IJburglaan and the Berlagebrug, none of them within four kilometres, so the
+  answer was the only plausible option on the list. It tested which name sounds
+  central, not where you were.
+
+  Distractors are the nearest features now, and for bridges the crossings
+  extract also knows the water, so up to three of the four come from the same
+  waterway — the Magere Brug is now confusable with the Blauwbrug, the Hoge
+  Sluis and the Torontobrug, which is the actual piece of local knowledge. The
+  generator is fixed for every category; `npm run build:bridge-distractors`
+  re-derives the bridge half from the cached extracts with no Overpass round
+  trip, stages, reports the diff, and publishes on `--publish`. Bridges: 13 →
+  253 distinct options, median option distance 5,682 m → 437 m, 155 of 193
+  bridges over identified water get a same-water option.
+  `npm run test:bridge-distractors` pins the pool size, the median distance,
+  the Amstel and canal-ring cases, and that the published extract still equals
+  a recomputation.
+
+- **The bottom HUD has one layout authority.** The trip readout, neighborhood
+  postcard and landmark trivia card now use the pure typed `bottomHudLayout`
+  module instead of unrelated offsets. The postcard clears the trip readout,
+  and simultaneous trivia shifts 24 px sideways instead of being thrown 194 px
+  up the screen by the obsolete 180 px postcard allowance. Zoom and controls
+  hints are placed by the same pass, clearing their former overlap with trivia
+  and with one another. A 288-scenario check pins every supported trivia
+  height, trip width, postcard, minimap, zoom and controls combination.
+- **A landmark with no article still says something.** 124 of the 420
+  landmarks have no encyclopedia text — mostly OBA branch libraries and
+  neighborhood cinemas, which nobody has written an article about — and their
+  card was a badge, a name and a blank strip, which read as a rendering
+  failure. The body now falls back to what the game does know: "A library in
+  Bos en Lommer. No encyclopedia article yet." For a game about where things
+  are, the kind and the neighborhood are worth reading.
+
+- **One theme, two surfaces.** The stylesheet had the ink theme and then, below
+  it, a paper "map sheet" redesign that re-declared the *same unscoped
+  selectors* to override it — `.setup-field`, `.master-toggle`,
+  `.assist-options`, `.account-button`, `.advanced-options`, `#route-start`.
+  Every one of those is also used by the live settings panel, which is still
+  dark, so the paper colours repainted it: its selects were `#172326` on
+  `#071e2b` and could not be read at all. There is now one token set on
+  `:root` for the in-game chrome and a scoped override on `#route-setup` for
+  the paper sheet; components consume tokens, and the only rules the sheet
+  keeps of its own are the genuine differences in form (ruled underlines
+  instead of inset boxes, a three-column preference grid). The leak is
+  structurally impossible now rather than something to keep noticing.
+- **The recall prompt says what kind of answer it wants.** "Crossing a bridge"
+  as the headline over a smaller "Which water are you crossing?" read as a
+  question about the bridge. The question is the headline now, the situation is
+  its caption, and a coloured chip above both names the kind of feature the
+  answer is. Water and street use Lucide SVGs and bridge uses Font Awesome
+  Free, so the distinction is visual without depending on platform emoji. The
+  text input's placeholder and aria-label follow the same subject.
+
+- **Street mode has a real 3D bicycle, and the asset pays its way.** Chase and
+  near-first-person views use a locally shipped Carbon Frame Bike GLB in a
+  MapLibre custom 3D layer, with world-space depth, pitch and route-relative
+  heading. Baked shadow presentation quads are stripped on load, and the piece
+  is intentionally enlarged at chase altitude. The old canvas bicycle remains
+  only as a loading fallback and is no longer painted over a ready mesh.
+
+  The capsule-and-sphere 3D rider is gone. At game scale it read as a
+  mannequin — a sphere head on tube limbs — and it made the vehicle look worse,
+  not more readable; the bicycle's own silhouette carries the facing.
+
+  The model shipped as 8.57 MB, which is most of the way to `streets-routing.json`
+  for one bicycle. It was 100% geometry, no textures: an interleaved vertex
+  buffer carrying TANGENT and TEXCOORD_0 for a model with zero images, plus
+  four skins and a 356-channel `Holobike_Loop` animation nothing plays. Dropping
+  what the game cannot use, then welding, simplifying and quantizing, gives
+  **8.57 MB → 2.01 MB** (115,083 → 73,921 triangles) with `KHR_mesh_quantization`,
+  which three's `GLTFLoader` reads natively — no Draco or meshopt decoder is
+  needed at runtime.
+- **The first street encyclopedia card is live.** Answering or revealing Nes
+  can show a compact English fact card, and `W` opens its Wikipedia article.
+  The runtime uses a normalized street-name join and suppresses the card during
+  an active quiz; the browser regression pins both the card and article URL.
+- **Wikidata-only landmarks recover their articles.** Wikipedia enrichment now
+  discovers Dutch and English sitelinks from a Wikidata id when OSM omitted the
+  `wikipedia` tag. That recovered 34 article links, including Fatih Mosque; a
+  keyless enrichment run uses the English Wikidata description as an honest
+  floor rather than leaving the card empty.
+- **The typed road graph is now the live router.** `road-network.js` delegates
+  graph construction, shortest paths, destination routing and first-reachable
+  routing to the bundled `src/canalRecall/routing/roadGraph.ts` API. Its legacy
+  implementation remains as a load-failure fallback; the typed and live
+  reachability checks are both part of the normal verification path.
+
+- **Civic venues are POIs now, and the extract was refreshed to get them.**
+  `classify()` took `tourism=*`, `historic=*` and `amenity` in {theatre,
+  arts_centre, townhall, place_of_worship}, so the everyday places a resident
+  actually navigates by were in no extract at all — LAB111 (`amenity=cinema`,
+  Arie Biemondstraat 111) among them. Cinema, library, university, college and
+  music_venue are now their own feature types, so the card badge reads CINEMA
+  or LIBRARY rather than LANDMARK. They needed a scoring answer as well as a
+  filter: a node with no Wikidata link scores 12 against a landmark tail that
+  starts at 35, so `CIVIC_CLASS_SCORE` gives each class a floor, and the
+  landmark budget went from 300 to 420 so the new classes are additive instead
+  of evicting 126 existing landmarks. Landmarks: 300 → 420 (34 universities,
+  40 libraries, 21 cinemas, 2 music venues, 6 dropped). Markets were already
+  covered — `amenity=marketplace` classifies as a square, and all 21 named
+  Amsterdam markets are in `squares.json`. A civic venue needs a name of three
+  characters or more; OSM has a university building called "P".
+- **The routing extract was silently missing 12,500 ways.**
+  `selectConnectedStreets` BFS'd from index 0 on the comment "available is
+  sorted by score desc, so index 0 is highest" — but every routing candidate
+  scores 0, so among them there was no ordering at all, and the seed was
+  whichever way the sort happened to leave first. It landed in a component of
+  16,551 when the largest was 29,051; a refresh that reshuffled the ties
+  collapsed the whole extract to 7 ways, which is how this was found. It takes
+  the largest component now. Measured on the live stitched graph: 442 → 344
+  components, largest 75.3% → 78.2%.
+- **The server compresses responses.** Nothing did, so
+  `streets-routing.json` went over the wire as 9.7 MB of raw JSON on every
+  route. With `compression()` it is 1.32 MB — and the pre-refresh extract was
+  5.8 MB raw, so the bigger, more connected graph is a net win on the wire too.
+
+- **Knowledge is local now: per-crossing bridges, per-stretch streets.** Recall
+  used to be keyed by name alone, so one right answer retired a whole feature.
+  Two things were wrong with that. A bridge feature is a *name*, not a place:
+  OSM ships "IJburglaan" as 66 spans making five separate bridges kilometres
+  apart, and "Zuiderzeeweg" as four bridges over three different waters, all
+  answered by one question. And a street that runs for kilometres is familiar
+  in one neighborhood and unknown in another, so one junction should not mark
+  the whole name learned.
+
+  Identity is now the name *and the place it was answered*, snapped to a 300 m
+  grid in lat/lon (`src/canalRecall/recallChunks.ts`) — world pixels could not
+  be used, because the network origin is recomputed per race from the loaded
+  bounds. Reading it back is a 600 m radius query rather than a cell lookup, so
+  a grid edge never causes a second question a few metres later. Map labels
+  follow the same rule: `drawLabels` takes a per-label predicate instead of a
+  name set, because writing a known name along the whole street would hand over
+  the answer to the end that has never been asked.
+
+  Bridges are resolved offline into the physical crossings they are made of.
+  `npm run build:bridge-crossings` clusters spans within 70 m, works out the
+  waterway each crossing passes over, and picks four nearby waterways as
+  distractors; it stages, reports coverage and diffs, and publishes on
+  `--publish`. 257 named bridges become 318 crossings, 203 of them (63.8%) over
+  an identified waterway — the rest are mostly bridges over water the 300-feature
+  water extract does not name, and they fall back to today's behavior.
+
+  A crossing over known water asks which bridge it is. A crossing over water the
+  player has *not* proved they know asks for the water first, and holds the
+  bridge back until that is answered right — per crossing, because the Amstel at
+  the Magere Brug and the Amstel at the Berlagebrug are two pieces of local
+  knowledge. A wrong answer parks the question for ten minutes without ever
+  counting as knowing it, which is the distinction the gate turns on
+  (`isSuppressedNear` vs `isKnownNear`). Street mode never asked about water at
+  all before this; now the canal is what a bridge teaches first. By boat the
+  route quiz already owns the waterway, so the bridge simply waits for it.
+
+  `npm run test:bridge-crossings` pins Magere Brug/Blauwbrug/Hoge
+  Sluis/Berlagebrug over the Amstel, Torensluis over the Singel, Zuiderzeeweg's
+  four crossings and IJburglaan's five, and asserts a recomputation still equals
+  the published extract. `tests/e2e/crossing-quiz.spec.ts` drives the real span
+  geometry and checks the water-then-bridge order, that a wrong water answer
+  does not unlock the bridge, and that a long street answered at one end is
+  still asked — and still unlabelled — at the other.
+
+- **The arrival card, rebuilt.** The finish screen had six accent colours, six
+  differently styled boxes, two typefaces used interchangeably, and a 38 px
+  stopwatch as its headline — for a game that deliberately does not score
+  speed. It is now one surface: the destination and its photo as the hero, a
+  single stat row (recall, accuracy, points, time, distance) under a hairline,
+  then the ribbon, the city-knowledge line and keycap actions. The arrival
+  blurb wrapped to a single line and stopped mid-sentence with no ellipsis;
+  `wrapText` in `utils.js` now wraps to the available box and elides honestly.
+  The card measures itself from a list of self-sizing blocks, so the height and
+  the draw order cannot drift apart the way the old hand-tuned offsets did.
+  `FinishCard` and `FinishCardCalmMode` stories pin both layouts.
+- **Landmark photos, for every landmark that has one.** Images were preloaded
+  for the 50 most prominent landmarks in the city and nowhere else, so 180 of
+  the 229 landmarks with a Wikipedia photo could never show it — DeLaMar ranks
+  89th and its card came up bare. Photos are now fetched on approach, inside
+  `LANDMARK_IMAGE_PREFETCH_RADIUS` (900 px, ~300 m), which is far enough ahead
+  that the card opens with the photo already in place instead of reflowing
+  under the player. It also stops spending bandwidth on the Rijksmuseum for a
+  route that never goes near it.
+- **Mastered streets stay named on the map.** A street answered well enough
+  that the spaced-repetition store stops asking about it was only labelled once
+  the player happened to drive onto it, because the label set was filled in by
+  the quiz. `_refreshMasteredLabels` seeds the map labels from the store at
+  race start, when it finishes loading, and when the review toggle changes, so
+  a name you already know is visible across the whole visible map.
+- **Readable assist toggles on the setup card.** Route line / destination arrow
+  / minimap / reduced motion / detailed 3D / sound inherited the live settings
+  panel's pale blue on the paper setup card, which was very nearly invisible.
+
+- **The encyclopedia text is English everywhere but one blurb.**
+  `enrich-amsterdam-wikipedia-extracts.ts` takes the English article wherever
+  one exists, through the Wikidata `enwiki` sitelink and then the Dutch
+  article's interwiki link. That left 403 features English Wikipedia has never
+  written about — 121 landmarks and 282 bridges — showing a Dutch lede under an
+  NL chip. Wikidata's English descriptions were measured as a substitute and
+  rejected: 137 of the first 150 have one, and they read "bascule bridge in
+  Amsterdam, Netherlands", which is English but teaches nothing. All 403 were
+  translated instead, keeping the year built, the namesake, and what the bridge
+  replaced. `npm run enrich:english` now reads those reviewed translations from
+  `scripts/english-translations.json`, keyed by a hash of the exact source text
+  so a refreshed extract invalidates a stale entry and reports it rather than
+  silently keeping it; a run with `GEMINI_API_KEY` set translates whatever the
+  cache is missing and writes it back, so a translation is paid for once and
+  then reviewed in a diff. Wikidata's description survives only as a floor for
+  a keyless run on new text. Every blurb carries
+  `wikipediaExtractSource: "translated"` with the Dutch original and its
+  language kept alongside, so the pass stays resumable and the runtime's NL
+  chip no longer appears. After the civic-POI refresh the counts are 403
+  translated, 345 already English and 9 Wikidata descriptions; one landmark,
+  Amstel Academie, has a Dutch lede and no English Wikidata description and is
+  waiting for a keyed run.
+- **Truthful postcard imagery expansion.** Neighborhood enrichment now covers
+  OSM neighborhoods, quarters, and suburbs, deduplicates repeated boundaries,
+  and rejects substring matches that confused places such as Westindische
+  Buurt/Indische Buurt and Weesp/Weesperbuurt. The accepted extract has 85
+  unique areas, 48 encyclopedia extracts, and 46 dedicated images; finer areas
+  can still borrow a containing district's image at runtime.
+- **Deterministic Storybook builds.** Vite no longer races Storybook to copy
+  `public/` into the same output directory; `npm run build-storybook` completes
+  consistently while retaining the real map assets used by iframe stories.
+- **First `game.js` collaboration seam.** Neighborhood boundary hysteresis is
+  now a pure typed state machine in `src/canalRecall/neighborhoodState.ts`, with
+  deterministic checks and a small browser bundle. Postcard/data work can
+  evolve there without editing the central game loop's transition logic.
+- **Storybook visual workbench.** Storybook 10 with the React/Vite framework
+  now serves the real Canal Recall route setup in deterministic default,
+  bike-from-home, advanced, and mobile stories. `npm run storybook` is for live
+  review; `npm run build-storybook` pins whether the fixtures compile.
+
+- **Roundabout drivability.** At Van Limburg Stirumstraat / De Wittenkade,
+  equidistant centerline stubs could make collision recovery flip between road
+  tangents and steer away from the intended exit. Vehicle contact now prefers
+  the nearby tangent aligned with the bike's heading; the named junction arms
+  are pinned in `npm run test:canal-car`.
+- **Calmer map and neighborhood transitions.** Nearby fragments of the same
+  learned street no longer stack duplicate labels. Learned names use subtle
+  basemap-style halo text instead of black capsules and are suppressed near the
+  rider. Neighborhood changes must
+  remain stable for 0.7 seconds before the HUD and entry card adopt them, which
+  filters overlap jitter at shared polygon edges.
+- **Start screen and HUD redesign.** The route setup is now a clear navigation
+  briefing with grouped route and learning choices, quieter advanced settings,
+  and a mobile-first start action. The in-game readouts use one compact visual
+  system for recall, location, destination, speed, and distance instead of a
+  collection of unrelated dark boxes.
+- **Arrival teaches the destination.** The finish card now identifies the POI,
+  shows its image when cached, includes a concise encyclopedia detail, and
+  keeps `W` available for opening its Wikipedia article alongside route stats.
+- **Amsterdam travels by bike.** Street mode now presents itself as cycling and
+  uses a readable top-down omafiets player marker while retaining the proven
+  street-routing and shoulder-response physics.
+- **Postcard image fallback.** Fine quarters without their own enriched photo
+  borrow the containing district's Wikimedia image. The old oversized
+  travel-poster card is now a compact photo lower-third that leaves the driving
+  corridor visible while dedicated neighborhood coverage grows.
+- **Routing reachability.** OSM models a side street meeting a through street
+  as a node *inside* the through way, and both the extract builder and the
+  loader run Douglas-Peucker, which drops 9.9% of those shared junction
+  vertices — the side street then has no shared point with the street it
+  visibly joins and becomes its own island: drivable, unroutable. The routing
+  graph now stitches every way endpoint onto any centreline within 10 px (~3 m,
+  the simplifier's own tolerance). Components: 1679 → 442; largest component:
+  56.5% → 75.3% of the network. Measured by `npm run test:reachability`.
+- **Cars no longer wedge against the kerb.** The road guard undid the whole
+  step whenever a frame ended outside the corridor, so a car resting against a
+  kerb with its nose pointing off-road accelerated, left the corridor, and was
+  put back in the same spot forever. It now keeps the along-the-street part of
+  the movement, cancels outward velocity on the shoulder, eases the heading
+  back along the road, and walks the car to the centreline after repeated
+  blocks. Over the same 24 harness drives: 11 arrivals and 151 kerb wedges
+  before, 18 and 16 after (`tests/e2e/driving-harness.spec.ts`).
+- **Neighborhood postcards actually appear.** Only 42 of 91 mapped areas are
+  tagged `neighbourhood`, covering a tenth of the drivable network, and the
+  first area entered was adopted silently — so the card for the neighborhood a
+  route starts in never showed at all. Quarters and districts now count too,
+  finest area first: 78/796 sampled streets inside a named area became 793/796.
+- **HUD and info cards.** Landmark trivia moved to the bottom of the screen,
+  stacking above a postcard when both are up. Corrections hold for 3.2 s rather
+  than 650 ms. Streets stay named on the map once revealed — in the car as well
+  as the boat, and including names answered wrongly — with the street currently
+  under question withheld so the map cannot answer for the player. A name
+  already revealed re-arms after 0.3 s rather than 0.65 s, so driving back onto
+  a street you have just learned gives you a quick re-test.
+- **Bridges, quieter.** Questions are rationed to one every 90 s, only fire on
+  a genuine crossing of the span's midpoint gate, never name the street the
+  vehicle is already on, and the 43 bridges called "Brug 117" are dropped as
+  questions and as distractors. Learned-bridge labels draw beneath the vehicle
+  at background weight and fade out entirely near it.
+- **Camera.** Panning detaches the view from the vehicle and pins it to the
+  world, so the vehicle drives across a held map instead of staying nailed to
+  the centre of the screen; `R` or the re-centre button reattaches it. The 2D
+  views carry 14 degrees of tilt, enough for buildings to have sides.
+- **Wikipedia extracts for landmarks and bridges** are fetched in bulk rather
+  than one at a time on approach, with English resolved through Wikidata. The
+  runtime fallback fetch for anything the extract misses now resolves the
+  English article through the feature's Wikidata id instead of reading the
+  Dutch article OSM tags, so a card is English or it is just a name.
+- **Roofs are measured, not guessed.** `scripts/build-satellite-roof-colours.ts`
+  samples PDOK's 8 cm open aerial imagery: footprint into Web Mercator, one
+  cached 128 m tile per city block, pixels strictly inside the footprint eroded
+  by one pixel, per-channel median, and a reading is thrown away if there are
+  fewer than 12 pixels or the spread says it is not one surface. 5,778 roofs
+  measured; 3,388 kept the colour a mapper had tagged by hand; 1,412 rejected.
+  The palette that comes back is the real one — zinc and bitumen greys with a
+  minority of warm tile — where before every roof was a copy of its own wall.
+
+## Foundations
+
+The list below predates the status board and describes the systems that are
+already in place.
+
+Completed and being refined:
+
+- Live MapLibre vector map with north-up 2D and chase-camera 3D views.
+- Optional near-first-person 3D camera alongside the third-person chase view.
+- Boat recall routes, multiple-choice/typed answers, optional navigation aids, session-only learned labels, random POI trips, and repeatable home-base errands.
+- Connected quiz highlighting: the prompt follows all adjoining same-name OSM path fragments (including bridge/tag splits) without highlighting disconnected same-name features elsewhere.
+- Exact Dutch home-address lookup through the BAG/PDOK registry, including unit suffixes such as `13-3`; stale street-level geocoder results are versioned out.
+- OSM-derived tree cache, rendered only in 3D mode.
+- Neighborhood HUD/entry cards and landmark notices with highlighted MapLibre building extrusions.
+- Trackpad and keyboard camera controls, remembered preferences, sound-off default, and absolute/relative vehicle controls.
+- Recall streaks and combo multipliers: consecutive correct answers build a streak (up to 2× at 10), displayed in the HUD with per-answer point feedback; best streak and accuracy percentage shown on the finish screen.
+- Landmark trivia cards: passing a notable place shows an expanded card with Wikipedia thumbnail, category badge (MUSEUM/BRIDGE/etc.), and multi-line description; the top 50 landmarks by prominence are image-preloaded at route start.
+- Vintage "Greetings from…" neighborhood postcards: entering a neighborhood now uses the classic large-letter travel-card composition—script heading, oversized outlined neighborhood name with Wikimedia photography clipped inside the letters, sun-faded paper, and an Amsterdam location line. A SPARQL-based enrichment script supplies images for 27 of 42 neighborhoods, with a typographic fallback for the rest. Continue tuning mobile scale and long-name typography against in-game screenshots.
+- Bridge recall: driving over a bridge, or passing under one by boat, asks which bridge it is. Backed by the 300-entry `bridges.json` extract, which supplies geometry and ready-made distractors, so the multiple-choice options are real neighbouring bridges rather than nearby street names.
+- Route destinations come from the landmark extract (245 reachable POIs) rather than 11 hand-written coordinates. Candidates are capped by distance from the centre and from each other so both ends fall inside one fetch window; an unsnappable endpoint is swapped for the nearest one that snaps, an unreachable destination is retargeted using a single Dijkstra pass over the whole pool, and an origin stranded in a disconnected component (typically across the IJ) re-rolls the pair.
+- Landmark cards show a Wikipedia affordance and `W` opens the article; the extract's `wikipediaUrl` and `wikidata` are carried onto the runtime record.
+- Persistent exploration collection: learned waterways, visited neighborhoods, and discovered landmarks are tracked across sessions in localStorage; cumulative "city knowledge" stats appear on the finish screen and as a returning-player badge on the menu.
+- Route ribbons on the finish card: bronze/silver/gold graded on recall, self-reliance, and route efficiency rather than speed, with a per-axis breakdown.
+- Master `Game-y features` toggle on the setup screen and live settings panel, gating streaks, multipliers, points, and ribbons; the finish card lays itself out from a cursor so it reflows for whichever sections are present.
+- Neighborhood postcard images are fetched on demand: the two route endpoints are warmed at race setup and the rest load on entry, replacing a whole-city preload of ~26 images per route. Their URLs are now stored as direct `upload.wikimedia.org` thumbnails, because the `Special:FilePath` redirect they used before is not CORS-safe for the canvas renderer.
+
+Recently fixed:
+
+- `latLngToGamePoint` rejected every landmark. Callers pass `false` for "no snap limit", but `bestDist > false` coerces to `bestDist > 0`, so any point not exactly on a segment was dropped and `this.landmarks` was always empty. Landmark trivia cards, proximity notices, the top-50 image preload, and click-to-inspect were all inert; map labels still drew because they come from the raw extract rather than the runtime list. Now 300 landmarks load, 236 with Wikipedia URLs.
+- Clicking a building matched landmarks by exact name equality, so any punctuation or casing difference fell through to the generic "Mapped building" card. Names are compared normalised, with a 60 m nearest-landmark fallback.
+- The routing graph is built once per network and cached instead of being rebuilt on every `findRoute` call.
+
+- Integrate optional detailed 3D building data with OSM extrusions as a dependable fallback.
+
+### Superseded, but the reasoning still explains the design
+
+- Landmark images were preloaded for the 50 most prominent landmarks at route
+  start. They are fetched on approach now, inside
+  `LANDMARK_IMAGE_PREFETCH_RADIUS`.
+- Learned labels were session-only. Recall is persistent and location-scoped now.
+- Bridge distractors were described above as "real neighbouring bridges". They
+  were not: all 300 bridges drew from the same 13 names until the
+  nearest-and-same-water pass replaced them.
+- The landmark extract held 300 features, 236 with Wikipedia URLs. It holds 420
+  since civic venues were added.
+
+## Design notes for parked bets
+
+Notes for work deliberately *not* queued — see `TODO.md` P3. Kept because the
+thinking is worth more than re-deriving it.
+
+## Authentic retro rendering
+
+The selectable theme presets are currently lightweight art-direction previews. A later rendering pass should make the retro modes structurally authentic rather than relying on CSS filters.
+
+- Render the MapLibre scene and game objects into a deliberately low-resolution framebuffer.
+- Quantize the framebuffer to a deliberately limited palette, with theme-specific ordered dithering.
+- Upscale with nearest-neighbour sampling and preserve hard pixel boundaries.
+- Give 8-bit and 16-bit modes distinct native resolutions, palettes, sprite treatments, and HUD typography.
+- Add PSX-style vertex jitter, low-precision geometry, affine-looking texture warping, short draw distance, and coloured distance fog.
+- Keep collision, routing, labels, and geographic coordinates at full precision; the degradation belongs only in the presentation pipeline.
+- Ensure UI and quiz text remain readable, with an accessibility option to exclude instructional overlays from the low-resolution pass.
+
+This can remain a MapLibre-based implementation: capture the WebGL output in a post-processing framebuffer, composite the game layer, apply the selected shader, and then present the upscaled result.
+
+## Optional arcade layer
+
+✅ The master `Game-y features` toggle is implemented and exposed on both the setup screen and the live settings panel, defaulting to on and persisted with the other preferences. Turning it off removes the streak multiplier, the streak badge and points from the HUD, the point and streak chatter from answer feedback, and the points, best-streak, and route ribbon from the finish card; accuracy, learned names, the exploration collection, landmark cards, and neighborhood postcards all remain. Difficulty and navigation aids are independent of it, as required. Answers are still scored internally while it is off, so toggling mid-route does not leave a hole in the tally.
+
+Every new arcade system below must be gated on this toggle. Turning it off should produce a calm, credible navigation-and-recall experience: no pickups, power-ups, streak effects, combo audio, floating points, or arcade obstacles.
+
+Note: the inherited Smokey's pursuit/opponent layer has been deleted rather than gated — `PoliceCar`, `TrafficCar`, and `AICar` were never constructed, so the arrest/warning system, CB radio, opponent AI, and their draw calls and constants were all unreachable. If pursuit is ever revived it must be built behind this toggle.
+
+Prioritize mechanics that reinforce geographic learning:
+
+1. **Landmark postcards** — ~~collect a postcard by passing a notable place~~ ✅ Landmark trivia cards with Wikipedia images and category badges are live; the route summary travel-journal view is a future addition.
+2. **Recall streaks** — ✅ Implemented: consecutive correct answers build a multiplier (up to 2× at 10-streak) with HUD display and per-answer feedback. A mistake resets the multiplier but never blocks progress.
+3. **Discovery tokens** — optional pickups placed at meaningful junctions, bridges, squares, locks, and ferry points rather than arbitrary coordinates.
+4. **Perfect-turn bonus** — reward identifying the new feature quickly after a turn, encouraging attention to the transition between named waterways/roads.
+5. **Local-knowledge bonus** — extra points for correctly identifying the neighborhood before it is revealed by the HUD.
+6. **Route ribbons** — ✅ Implemented: the finish card awards bronze/silver/gold from a weighted blend of recall accuracy (50%), self-reliance (25%, scored on whichever navigation aids were switched on at any point during the route, with typed answers buying back some of the cost), and route efficiency (25%, planned graph route length over distance actually travelled). Speed is deliberately not an input, and each tier also has a hard minimum recall so an efficient unaided run that never named a canal cannot out-rank a slower player who knew where they were. The band shows a rosette, the tier, and a per-axis breakdown so the grade explains itself.
+7. **Exploration collection** — ✅ Basic persistent tracking implemented: learned waterways, visited neighborhoods, and discovered landmarks saved to localStorage across sessions, shown on finish screen and menu. A full city album UI with per-item detail and mastery levels is a future addition.
+8. **Signature landmark models** — keep OSM height extrusions as the city-wide fallback, then replace a curated set of destination buildings with licensed glTF/3D Tiles models. Each model needs source/license metadata, geographic anchor, heading, scale, LOD, and a footprint mask so it replaces rather than overlaps the OSM extrusion.
+9. **Street trees and landmark planting** — ingest OSM `natural=tree`, tree rows, and park vegetation into a cached lightweight point layer; render instanced low-poly trees in 3D and simplified crowns in 2D. This is separate from the basemap because standard OpenMapTiles does not consistently ship individual tree nodes.
+
+### Landmark model pipeline
+
+The gray city is not a landmark-model catalog: it is OpenMapTiles building footprints extruded from OSM height data. Signature models should be an additive, curated asset tier:
+
+1. Prefer openly licensed Amsterdam `.glb`/`.gltf` assets (city open-data/BAG/3D Basisvoorziening first); preserve author, source URL, license, and modification notes in a manifest.
+2. Normalize each mesh offline, generate at least two LODs, compress it, and record longitude/latitude, ground altitude, heading, and scale.
+3. At runtime, suppress the matching OSM footprint and place the model through a MapLibre custom 3D layer. Never draw both geometries.
+4. Begin with route destinations where visual recognition matters: Rijksmuseum, NEMO, Maritime Museum, Royal Palace, Westerkerk, and Central Station.
+5. Keep normal OSM extrusion as the no-download/failure fallback and apply the same active-landmark highlight state to both representations.
+8. **Time and focus power-ups** — limited, legible bonuses such as extra quiz time, one eliminated multiple-choice answer, a brief destination bearing, or a short route-line reveal.
+9. **Currents / tailwinds** — route-aware boost zones placed along real-world directional segments; avoid boosts near quiz transitions or tight junctions.
+10. **Daily route seed** — the same POI route and assist constraints for everyone, with separate calm and arcade leaderboards.
+
+Avoid mechanics that work against learning: random weapon systems, collisions that interrupt quizzes, opaque loot currencies, collectible spam, or rewards that encourage driving off the mapped network.
+
+The setup screen and live settings panel should expose the master toggle. Individual arcade-system controls can remain in an advanced section if later playtesting shows that they are needed.
+
+### Arcade reference: Crazy Taxi, not GTA
+
+Use Crazy Taxi as the primary reference for pace, readability, and session structure. Borrow GTA-style aids only as optional navigation vocabulary (route line, bearing arrow, minimap), not as the tone or game fantasy.
+
+- Treat important POIs as a rotating set of “fares”: select or collect a passenger/cargo request, learn the destination, navigate there, and immediately receive a nearby follow-on route.
+- Make the destination beacon exuberant and readable in arcade mode, while the calm mode keeps the restrained map pin.
+- Grade each trip on recall accuracy, route efficiency, discoveries, assist level, and optionally time. Speed alone should not dominate.
+- Award meaningful time extensions for correct canal/street answers and efficient arrivals; wrong answers should cost combo/time without preventing completion.
+- Build a route chain across neighborhoods so a session naturally teaches spatial relationships between several POIs.
+- Let “passengers” be lightweight Amsterdam-flavoured requests—museum visitor, market delivery, ferry connection, canal tour guest—without requiring character simulation.
+- Use a destination-category colour language: culture, transit, food/market, civic, park, nightlife, and hidden-history stops.
+- Reserve exaggerated arrows, voice barks, combo typography, destination gates, pickups, boosts, and celebratory arrival effects for `Game-y features: On`.
+- Add a short “quick fare” mode alongside deliberate study routes. The same map, graph, facts, and recall questions should power both.
+- Keep collisions forgiving. The fun should come from flow, turns, geographic decisions, and chaining successful trips—not punishing vehicle damage.

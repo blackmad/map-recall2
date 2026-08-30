@@ -10,10 +10,11 @@ working behavior, and leave it easier for the next session to continue.
   small browser adapter when the legacy Canal Recall page needs a global.
 - Do not expand large untyped files when a focused typed module is practical.
   Existing vanilla JavaScript is not a reason to add more untestable logic.
-- Keep `public/canal-drive/ROADMAP.md` current in the same change that moves an
-  item. It is the handoff/status board: **In progress**, **Next**, **Recently
-  done**, and **Backlog** must reflect reality, including blockers and measured
-  results.
+- Keep `public/canal-drive/TODO.md` current in the same change that moves an
+  item, and move finished work into `public/canal-drive/HISTORY.md` in that same
+  change. `TODO.md` is the handoff board and holds only unfinished work, ordered
+  P0–P3; it must reflect reality, including blockers and measured results.
+  `HISTORY.md` is append-at-the-top and records why a thing is the way it is.
 - Make periodic, coherent commits after verification. Do not accumulate an
   entire long session into one opaque commit.
 - Integrate completed branches back into `main` regularly. Before merging,
@@ -26,9 +27,9 @@ working behavior, and leave it easier for the next session to continue.
   Give each agent an exclusive lane (presentation, routing, content/data, or
   domain logic) and a unique dev-server port.
 - The integrating agent owns `game.js`, `index.html`, `package.json`, lockfiles,
-  generated browser bundles/data, `ROADMAP.md`, merges, and pushes. Leaf agents
-  should return a commit SHA and verification results instead of editing those
-  shared integration hotspots.
+  generated browser bundles/data, `TODO.md` and `HISTORY.md`, merges, and
+  pushes. Leaf agents should return a commit SHA and verification results
+  instead of editing those shared integration hotspots.
 - Commit a typed source module and its generated browser bundle atomically.
   Data generators should write to a staging path, report coverage/diffs, and
   publish into versioned extracts only after review.
@@ -77,5 +78,6 @@ working behavior, and leave it easier for the next session to continue.
   scripts.
 - Amsterdam extracts live in `public/data/extracts/amsterdam/`. Avoid runtime
   dependence on third-party APIs when a cached/versioned extract is suitable.
-- `ROADMAP.md` contains current unfinished work and design notes. Read it before
-  choosing the next task, and update it before committing status changes.
+- `TODO.md` contains the unfinished work, prioritized, plus design notes for
+  parked bets in `HISTORY.md`. Read `TODO.md` before choosing the next task, and
+  update it — and `HISTORY.md` — before committing status changes.
