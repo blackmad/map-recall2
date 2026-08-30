@@ -143,7 +143,7 @@ test('curated POI identity wins over an unnamed building hit', async ({ page }) 
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
 });
 
-test('anonymous building footprints never open a notice', async ({ page }) => {
+test('anonymous building footprints acknowledge the click without inventing a name', async ({ page }) => {
   await openCarRoute(page);
   const result = await page.evaluate(() => {
     const game = window.canalRecallGame;
@@ -157,7 +157,11 @@ test('anonymous building footprints never open a notice', async ({ page }) => {
     inspector._inspectBuildingAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
     return game._landmarkNotice;
   });
-  expect(result).toBeNull();
+  expect(result).toMatchObject({
+    id: 'clicked-anonymous-footprint',
+    name: 'No building details',
+    detail: 'This building has no name in the map data.',
+  });
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
 });
 

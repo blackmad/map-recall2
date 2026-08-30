@@ -161,7 +161,16 @@ function installHarness(): void {
       game.track.finishPoint = { ...to };
 
       let index = 1;
-      let closestApproach = Infinity;
+      // "Progress along the route" is not straight-line progress toward the
+      // destination. Amsterdam routes routinely head away from their endpoint
+      // to get around a canal, rail line, or one-way block. The old Euclidean
+      // check declared those correct detours lost after 25 seconds.
+      const distanceFrom = new Array(path.length).fill(0);
+      for (let i = path.length - 2; i >= 0; i--) {
+        distanceFrom[i] = distanceFrom[i + 1]
+          + Math.hypot(path[i + 1].x - path[i].x, path[i + 1].y - path[i].y);
+      }
+      let closestRouteApproach = Infinity;
       let lostSeconds = 0;
       let pinnedSeconds = 0;
       let reversing = 0;
@@ -214,7 +223,13 @@ function installHarness(): void {
 
         const moved = Math.hypot(player.x - before.x, player.y - before.y);
         const remaining = Math.hypot(to.x - player.x, to.y - player.y);
-        if (remaining < closestApproach - 20) { closestApproach = remaining; lostSeconds = 0; } else lostSeconds += STEP;
+        const routeRemaining = distanceFrom[index] + nearestDistance;
+        if (routeRemaining < closestRouteApproach - 20) {
+          closestRouteApproach = routeRemaining;
+          lostSeconds = 0;
+        } else {
+          lostSeconds += STEP;
+        }
         // Pinned: the car is asking to move and barely moving. A rolling stop
         // at a tight junction is fine; five seconds of it is the wedge bug.
         if (moved < 0.5 && player.throttle > 0) pinnedSeconds += STEP; else pinnedSeconds = 0;
