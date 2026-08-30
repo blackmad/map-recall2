@@ -315,28 +315,60 @@ class Renderer {
   drawPlayerCar(car, camera) {
     const ctx = this.ctx;
     const s = camera.worldToScreen(car.x, car.y);
-    const z = clamp((camera.zoom || 1) * 1.45, 0.9, 1.5);
+    // In pitched MapLibre views, a world-space heading is not the same angle
+    // on the canvas. Project a point in front of the bike so the marker follows
+    // the road's actual screen-space direction at its current position.
+    const headingSample = 24;
+    const front = camera.worldToScreen(
+      car.x + Math.cos(car.angle) * headingSample,
+      car.y + Math.sin(car.angle) * headingSample
+    );
+    const screenAngle = Math.atan2(front.y - s.y, front.x - s.x);
+    const isPitched3d = camera.viewMode === 'chase' || camera.viewMode === 'cockpit';
+    const z = isPitched3d
+      ? clamp((camera.zoom || 1) * 2.1, 1.25, 1.85)
+      : clamp((camera.zoom || 1) * 1.45, 0.9, 1.5);
     ctx.save();
     ctx.translate(s.x, s.y);
     ctx.scale(z, z);
-    ctx.rotate(car.angle - camera.rotation);
+    ctx.rotate(screenAngle);
 
-    // Screen-legible top-down omafiets. It keeps a minimum rendered size at
-    // zoom-out; geographic scale is useful for buildings, not for a player
-    // marker that must remain recognizable while navigating.
-    ctx.strokeStyle = 'rgba(255,255,255,.95)'; ctx.lineWidth = 8;
-    ctx.beginPath(); ctx.moveTo(-14, 0); ctx.lineTo(14, 0); ctx.stroke();
-    ctx.strokeStyle = '#172326'; ctx.lineWidth = 3.5;
-    for (const x of [-14, 14]) { ctx.beginPath(); ctx.arc(x, 0, 7, 0, Math.PI * 2); ctx.stroke(); }
-    ctx.strokeStyle = '#C43D35'; ctx.lineWidth = 3.2; ctx.lineJoin = 'round';
+    // A compact top-down omafiets and rider, with a deliberately distinct
+    // front (handlebars, lamp and the rider's head). It stays screen-sized so
+    // it remains navigation-readable among tall buildings.
+    ctx.fillStyle = 'rgba(9,18,20,.28)';
+    ctx.beginPath(); ctx.ellipse(2, isPitched3d ? 5 : 3, 23, isPitched3d ? 7 : 10, 0, 0, Math.PI * 2); ctx.fill();
+
+    ctx.strokeStyle = 'rgba(255,255,255,.96)'; ctx.lineWidth = 7;
+    ctx.beginPath(); ctx.moveTo(-16, 0); ctx.lineTo(16, 0); ctx.stroke();
+    ctx.strokeStyle = '#172326'; ctx.lineWidth = 3;
+    for (const x of [-16, 16]) {
+      ctx.beginPath();
+      if (isPitched3d) ctx.ellipse(x, 0, 7, 4.5, 0, 0, Math.PI * 2);
+      else ctx.arc(x, 0, 7, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.fillStyle = '#DCE5E2'; ctx.beginPath(); ctx.arc(x, 0, 1.8, 0, Math.PI * 2); ctx.fill();
+    }
+
+    ctx.strokeStyle = '#C43D35'; ctx.lineWidth = 3; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
     ctx.beginPath();
-    ctx.moveTo(-14, 0); ctx.lineTo(-2, 0); ctx.lineTo(5, -9); ctx.lineTo(14, 0);
-    ctx.lineTo(-2, 0); ctx.lineTo(2, 9); ctx.lineTo(-14, 0); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(5, -9); ctx.lineTo(9, -12); ctx.lineTo(13, -11); ctx.stroke();
-    ctx.fillStyle = '#167DA0'; ctx.beginPath(); ctx.ellipse(1, 4, 5.5, 7, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
-    ctx.fillStyle = '#F2C7A5'; ctx.beginPath(); ctx.arc(7, 1, 4, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.moveTo(-16, 0); ctx.lineTo(-4, -7); ctx.lineTo(3, 6); ctx.lineTo(-8, 5);
+    ctx.closePath(); ctx.moveTo(-4, -7); ctx.lineTo(11, -5); ctx.lineTo(16, 0); ctx.stroke();
+    // Rear carrier and unmistakable front handlebars.
+    ctx.beginPath(); ctx.moveTo(-17, -5); ctx.lineTo(-9, -5); ctx.moveTo(10, -8); ctx.lineTo(14, -3); ctx.moveTo(10, -8); ctx.lineTo(15, -10); ctx.stroke();
+
+    // In chase views the rider leans toward the front wheel; in plan views
+    // the symmetric torso remains easier to parse from any map rotation.
+    ctx.fillStyle = '#167DA0'; ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.ellipse(isPitched3d ? 3 : 1, isPitched3d ? -1 : 0, isPitched3d ? 9 : 8, isPitched3d ? 5 : 6, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    if (isPitched3d) {
+      ctx.strokeStyle = '#172326'; ctx.lineWidth = 2.4;
+      ctx.beginPath(); ctx.moveTo(-1, 1); ctx.lineTo(-7, 7); ctx.moveTo(2, 1); ctx.lineTo(8, 7); ctx.stroke();
+    }
+    ctx.fillStyle = '#F2C7A5';
+    ctx.beginPath(); ctx.arc(9, 0, 4.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#F4C542'; ctx.strokeStyle = '#553E00'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(18, 0, 2.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
     ctx.restore();
   }
 

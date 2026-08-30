@@ -14,6 +14,7 @@ class VectorBasemap {
     this._treesVisible = false;
     this._detailedBuildings = null;
     this._detailedBuildingsVisible = false;
+    this._playerBike = null;
     this._labelsVisible = false;
     if (!container || typeof maplibregl === 'undefined') return;
 
@@ -42,6 +43,9 @@ class VectorBasemap {
       if (window.CanalRecallDetailed3D && window.CanalRecallDetailed3D.DetailedBuildings) {
         this._detailedBuildings = new window.CanalRecallDetailed3D.DetailedBuildings(this.map, maplibregl);
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
+      }
+      if (window.CanalRecallPlayerBike && window.CanalRecallPlayerBike.PlayerBike3D) {
+        this._playerBike = new window.CanalRecallPlayerBike.PlayerBike3D(this.map, maplibregl);
       }
       this.ready = true;
       // Theme setup can run before the asynchronous style load. Reapply it
@@ -170,6 +174,15 @@ class VectorBasemap {
   setDetailedBuildingsVisible(visible) {
     this._detailedBuildingsVisible = !!visible;
     if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
+  }
+
+  setPlayerBike(player, loader, visible) {
+    if (!this._playerBike || !player || !loader) return;
+    this._playerBike.update(this.worldToLngLat(player.x, player.y, loader), player.angle, visible);
+  }
+
+  isPlayerBikeReady() {
+    return !!(this._playerBike && this._playerBike.ready);
   }
 
   inspectBuilding(cssX, cssY, canvasRect) {
