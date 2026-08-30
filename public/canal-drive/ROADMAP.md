@@ -31,11 +31,10 @@ design notes for the larger bets live below the board.
 
 ## Next
 
-- Add Storybook for isolated, deterministic visual states after extracting the
-  canvas card/HUD renderers behind small props-driven adapters. Start with
-  desktop/mobile fixtures for route setup, recall feedback, neighborhood entry
-  (photo and fallback), landmark trivia, stacked notices, and every finish-card
-  combination; pair them with screenshot regression tests.
+- Continue the new Storybook workbench by extracting canvas card/HUD renderers
+  behind small props-driven adapters. Add fixtures for recall feedback,
+  neighborhood entry (photo and fallback), landmark trivia, stacked notices,
+  and every finish-card combination; pair them with screenshot regressions.
 - Wider postcard coverage: 29 of the 91 mapped areas carry an enriched
   Wikipedia blurb and image; the districts and quarters that now supply most
   postcards mostly do not.
@@ -45,6 +44,11 @@ design notes for the larger bets live below the board.
   ends in `scripts/check-canal-car.ts`.
 
 ## Recently done
+
+- **Storybook visual workbench.** Storybook 10 with the React/Vite framework
+  now serves the real Canal Recall route setup in deterministic default,
+  bike-from-home, advanced, and mobile stories. `npm run storybook` is for live
+  review; `npm run build-storybook` pins whether the fixtures compile.
 
 - **Roundabout drivability.** At Van Limburg Stirumstraat / De Wittenkade,
   equidistant centerline stubs could make collision recovery flip between road

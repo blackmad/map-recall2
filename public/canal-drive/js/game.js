@@ -431,7 +431,7 @@ class Game {
       row.style.display = 'flex';
       if (user) {
         label.textContent = user.label;
-        note.textContent = `${this.recall.masteredCount} names known and syncing to this account.`;
+        note.textContent = `${this.recall.masteredCount} names synced`;
         button.textContent = 'Sign out';
       } else {
         label.textContent = 'Playing as guest';
