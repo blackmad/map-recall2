@@ -54,7 +54,11 @@ const hasUsableBookmarkedLocation = hasBookmarkedCoordinates
     && bookmarkedLatitude === 0
     && bookmarkedLongitude === 0
     && urlParams.get('place') === 'Bookmarked location');
-const bookmarkedAreaId = numberParam('area', 0, 1, Number.MAX_SAFE_INTEGER) || null;
+// OSM relation ids arrive negative (every one of the 91 Amsterdam boundaries
+// is), so a positive-only range discarded every bookmarked area. Invisible for
+// a municipality, which the lookup re-derives, but a bookmarked neighbourhood
+// silently reset to the whole city.
+const bookmarkedAreaId = numberParam('area', 0, -Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER) || null;
 
 const pointInAreaGeometry = (point: [number, number], geometry?: [number, number][][][]) => {
   const inRing = ([lat, lon]: [number, number], ring: [number, number][]) => {
@@ -69,6 +73,11 @@ const pointInAreaGeometry = (point: [number, number], geometry?: [number, number
   };
   return geometry?.some((polygon) => inRing(point, polygon[0]) && !polygon.slice(1).some((hole) => inRing(point, hole))) || false;
 };
+
+// Shared across mounts on purpose: an effect that re-runs (StrictMode, Fast
+// Refresh, a dependency identity change) must join the request already in
+// flight for the same key rather than issue — or silently skip — a new one.
+const administrativeAreaLookups = new Map<string, Promise<AdministrativeArea[]>>();
 
 const distanceToQuizFeature = (point: [number, number], feature: StreetFeature) =>
   pointInAreaGeometry(point, feature.areaGeometry)
@@ -120,7 +129,6 @@ export default function App() {
   const [dataError, setDataError] = useState<string | null>(null);
   const [cityOverpassFeatures, setCityOverpassFeatures] = useState<Record<string, StreetFeature[]>>({});
   const activeSearchRef = useRef<string | null>(null);
-  const administrativeLookupRef = useRef<string | null>(null);
 
   // Keep the complete quiz setup bookmarkable without polluting browser history
   // for every toolbar adjustment. Coordinates make searched/device locations
@@ -197,15 +205,22 @@ export default function App() {
 
   // Predefined cities also need political hierarchy discovery. Previously this
   // happened only in the device-geolocation path, leaving Amsterdam on 4.5 km.
+  // The lookup is cached by key rather than fenced by a "already started" flag:
+  // a remount (React StrictMode double-invokes effects in development, and Fast
+  // Refresh re-runs them on every edit) has to be able to re-subscribe to the
+  // in-flight request instead of skipping it and dropping the only result.
   useEffect(() => {
     if (currentCityId === 'my_location') return;
     const [lat, lon] = currentCity.center;
-    const lookupKey = `${lat.toFixed(3)}:${lon.toFixed(3)}`;
-    if (administrativeLookupRef.current === lookupKey) return;
-    administrativeLookupRef.current = lookupKey;
+    const lookupKey = `${currentCityId}:${lat.toFixed(3)}:${lon.toFixed(3)}`;
+    let lookup = administrativeAreaLookups.get(lookupKey);
+    if (!lookup) {
+      lookup = (async () => (await fetchQuizAreas(currentCityId, [lat, lon])) ?? fetchContainingAdministrativeAreas(lat, lon))();
+      administrativeAreaLookups.set(lookupKey, lookup);
+    }
 
     let cancelled = false;
-    (async () => (await fetchQuizAreas(currentCityId, [lat, lon])) ?? fetchContainingAdministrativeAreas(lat, lon))().then(async (areas) => {
+    lookup.then((areas) => {
       if (cancelled) return;
       setAdministrativeAreas(areas);
       const municipality = [8, 7, 6]
@@ -214,6 +229,10 @@ export default function App() {
       setSelectedAdministrativeAreaId((current) => current && areas.some((area) => area.id === current)
         ? current
         : municipality?.id || null);
+    }).catch((error) => {
+      // Let a later mount retry instead of caching the failure forever.
+      administrativeAreaLookups.delete(lookupKey);
+      console.warn('Could not load administrative areas:', error);
     });
 
     return () => {
@@ -236,12 +255,31 @@ export default function App() {
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
   const [timeRoundStarted, setTimeRoundStarted] = useState<number>(() => Date.now());
 
+  // syncProgress writes a Firestore batch, so it must run once per signed-in
+  // account, not once per effect invocation: a remount joins the sync already
+  // running for that uid instead of committing the same batch a second time.
+  const progressSyncRef = useRef<{ uid: string; promise: Promise<ReviewState[]> } | null>(null);
   useEffect(() => {
-    if (!user) return;
-    syncProgress(user).then(setReviewStates).catch((error) => {
+    if (!user) {
+      progressSyncRef.current = null;
+      return;
+    }
+    if (progressSyncRef.current?.uid !== user.uid) {
+      progressSyncRef.current = { uid: user.uid, promise: syncProgress(user) };
+    }
+    const sync = progressSyncRef.current;
+    let cancelled = false;
+    sync.promise.then((states) => {
+      if (!cancelled) setReviewStates(states);
+    }).catch((error) => {
+      // Drop the cached failure so a later mount can retry the sync.
+      if (progressSyncRef.current === sync) progressSyncRef.current = null;
       console.warn('Could not synchronize review progress:', error);
-      setLocationToast('Progress saved locally; cloud sync will retry later.');
+      if (!cancelled) setLocationToast('Progress saved locally; cloud sync will retry later.');
     });
+    return () => {
+      cancelled = true;
+    };
   }, [user]);
 
   // Filter features based on selectedCategory for current city
