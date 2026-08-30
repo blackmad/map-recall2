@@ -19,7 +19,9 @@ class HUD {
     const text = `${kmh} km/h   ${kilometres < 10 ? kilometres.toFixed(2) : kilometres.toFixed(1)} km`;
     ctx.font = 'bold 12px monospace';
     const w = ctx.measureText(text).width + 22;
-    const x = CANVAS_W - w - 16, y = CANVAS_H - 98;
+    const layout = window.CanalRecallBottomHud?.bottomHudLayout({ tripWidth: w });
+    const x = layout ? layout.trip.x : CANVAS_W - w - 16;
+    const y = layout ? layout.trip.y : CANVAS_H - 98;
     ctx.fillStyle = 'rgba(250,249,244,0.92)';
     roundRect(ctx, x, y, w, 26, 9);
     ctx.fill();

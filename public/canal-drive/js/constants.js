@@ -155,8 +155,6 @@ const ANSWER_HOLD_WRONG = 3200;
 const QUIZ_CANDIDATE_DELAY = 0.65;
 // Shorter for a name already revealed: coming back to it is a quick check.
 const QUIZ_RETEST_DELAY = 0.3;
-// px — the postcard's height, shared so the landmark card can stack above one.
-const NEIGHBORHOOD_CARD_HEIGHT = 180;
 // Start fetching a landmark photo while it is still ahead. The trivia card
 // opens at 300 px, which is a second or two of driving — not enough to fetch an
 // image, so the card would open text-only and then reflow taller underneath the
