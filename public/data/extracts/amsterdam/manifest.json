@@ -1,7 +1,7 @@
 {
   "cityId": "amsterdam",
   "source": "OpenStreetMap / BBBike Amsterdam extract",
-  "generatedAt": "2026-08-29T16:26:53.882Z",
+  "generatedAt": "2026-08-30T12:37:14.580Z",
   "center": [
     52.372851,
     4.8936
@@ -11,23 +11,23 @@
       "file": "water.json",
       "count": 300,
       "availableCount": 356,
-      "bytes": 649990,
+      "bytes": 649578,
       "availableLinkedCount": 117,
       "linkedCount": 117
     },
     "streets": {
       "file": "streets.json",
       "count": 300,
-      "availableCount": 4507,
-      "bytes": 424547,
-      "availableLinkedCount": 196,
-      "linkedCount": 133
+      "availableCount": 4675,
+      "bytes": 487310,
+      "availableLinkedCount": 175,
+      "linkedCount": 131
     },
     "bridges": {
       "file": "bridges.json",
       "count": 300,
-      "availableCount": 1318,
-      "bytes": 227296,
+      "availableCount": 1319,
+      "bytes": 227328,
       "availableLinkedCount": 480,
       "linkedCount": 300
     },
@@ -35,7 +35,7 @@
       "file": "squares.json",
       "count": 85,
       "availableCount": 85,
-      "bytes": 72871,
+      "bytes": 72749,
       "availableLinkedCount": 26,
       "linkedCount": 26
     },
@@ -43,24 +43,24 @@
       "file": "parks.json",
       "count": 236,
       "availableCount": 236,
-      "bytes": 412116,
+      "bytes": 412456,
       "availableLinkedCount": 78,
       "linkedCount": 78
     },
     "landmarks": {
       "file": "landmarks.json",
-      "count": 300,
-      "availableCount": 795,
-      "bytes": 218148,
-      "availableLinkedCount": 292,
-      "linkedCount": 292
+      "count": 420,
+      "availableCount": 913,
+      "bytes": 282518,
+      "availableLinkedCount": 349,
+      "linkedCount": 349
     },
     "all": {
       "file": "all.json",
       "count": 450,
-      "availableCount": 7297,
-      "bytes": 740311,
-      "availableLinkedCount": 1189,
+      "availableCount": 7584,
+      "bytes": 712804,
+      "availableLinkedCount": 1225,
       "linkedCount": 399
     }
   },

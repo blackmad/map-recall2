@@ -15,6 +15,7 @@ osmium tags-filter "$work_dir/amsterdam.osm.pbf" \
   w/bridge=yes w/man_made=bridge nwr/place=square nwr/amenity=marketplace \
   nwr/leisure=park,garden,nature_reserve nwr/tourism=attraction,museum,viewpoint,monument,gallery \
   nwr/historic nwr/amenity=theatre,arts_centre,townhall,place_of_worship \
+  nwr/amenity=cinema,library,university,college,music_venue \
   n/natural=tree w/natural=tree_row \
   -o "$work_dir/features.osm.pbf"
 

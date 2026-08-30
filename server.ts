@@ -1,3 +1,4 @@
+import compression from 'compression';
 import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
@@ -6,6 +7,10 @@ async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT) || 3000;
 
+  // The Amsterdam extracts are large JSON: streets-routing.json alone is
+  // 9.7 MB raw and 1.3 MB gzipped, and it is fetched on every route. Nothing
+  // was compressing it.
+  app.use(compression());
   app.use(express.json());
 
   // API routes
