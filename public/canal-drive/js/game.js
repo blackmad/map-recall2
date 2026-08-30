@@ -332,25 +332,53 @@ class Game {
   // name. Wikipedia's REST summary endpoint sends CORS headers, so the missing
   // text can be fetched on demand — no proxy, one request per landmark, cached
   // for the session.
+  // The article OSM tags is nearly always the Dutch one ("nl:Blauwbrug"), so
+  // fetching the summary it names filled the card with Dutch. The English
+  // article is resolved through the feature's Wikidata id instead, and if
+  // English has nothing to say about the place the card keeps its name rather
+  // than showing a language the player did not ask for.
   _ensureLandmarkSummary(landmark) {
-    if (!landmark || landmark.longDetail || landmark.detail || !landmark.wikipedia) return;
+    if (!landmark || landmark.longDetail || landmark.detail) return;
+    if (!landmark.wikidata && !this._englishTitle(landmark)) return;
     this._summaryRequests = this._summaryRequests || new Set();
     if (this._summaryRequests.has(landmark.id)) return;
     this._summaryRequests.add(landmark.id);
-    const [lang, ...rest] = landmark.wikipedia.split(':');
-    const title = rest.join(':') || landmark.name;
-    if (!lang || !title) return;
-    const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, '_'))}`;
-    fetch(url, { headers: { accept: 'application/json' } })
-      .then(response => (response.ok ? response.json() : null))
-      .then(data => {
-        const extract = data && data.extract;
-        if (!extract) return;
-        const sentences = extract.split(/(?<=[.!?])\s/);
-        landmark.detail = sentences[0].slice(0, 150);
-        landmark.longDetail = sentences.slice(0, 3).join(' ').slice(0, 280);
-      })
-      .catch(() => { /* the card falls back to its name */ });
+    this._fetchEnglishSummary(landmark).catch(() => { /* the card falls back to its name */ });
+  }
+
+  // `en:Title` on the feature itself, when the extract builder already found
+  // one; otherwise nothing, and the Wikidata lookup does the work.
+  _englishTitle(landmark) {
+    if (!landmark.wikipedia) return '';
+    const separator = landmark.wikipedia.indexOf(':');
+    if (separator < 0) return '';
+    return landmark.wikipedia.slice(0, separator) === 'en' ? landmark.wikipedia.slice(separator + 1) : '';
+  }
+
+  async _fetchEnglishSummary(landmark) {
+    let title = this._englishTitle(landmark);
+    if (!title && landmark.wikidata) {
+      const entity = new URL('https://www.wikidata.org/w/api.php');
+      entity.search = new URLSearchParams({
+        action: 'wbgetentities', format: 'json', props: 'sitelinks',
+        sitefilter: 'enwiki', ids: landmark.wikidata, origin: '*',
+      }).toString();
+      const response = await fetch(entity, { headers: { accept: 'application/json' } });
+      if (!response.ok) return;
+      const data = await response.json();
+      title = data?.entities?.[landmark.wikidata]?.sitelinks?.enwiki?.title || '';
+    }
+    if (!title) return;
+    const summary = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, '_'))}`;
+    const response = await fetch(summary, { headers: { accept: 'application/json' } });
+    if (!response.ok) return;
+    const data = await response.json();
+    const extract = data && data.extract;
+    if (!extract) return;
+    const sentences = extract.split(/(?<=[.!?])\s/);
+    landmark.detail = sentences[0].slice(0, 150);
+    landmark.longDetail = sentences.slice(0, 3).join(' ').slice(0, 280);
+    landmark.extractLang = 'en';
   }
 
   _openLandmarkArticle() {
