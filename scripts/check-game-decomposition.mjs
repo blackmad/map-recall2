@@ -11,6 +11,7 @@ import vm from 'node:vm';
 // same statement.
 const generatedBundles = {
   'js/game-landmarks.bundle.js': 'src/canalRecall/game/landmarkRuntime.ts',
+  'js/game-recall.bundle.js': 'src/canalRecall/game/recallRuntime.ts',
 };
 
 function assertBundleIsCurrent(bundle, entry) {
@@ -36,7 +37,7 @@ const root = path.resolve('public/canal-drive');
 // and must be rebuilt in the same change as its source.
 const runtimeFiles = [
   'js/game-landmarks.bundle.js',
-  'js/game-recall.js',
+  'js/game-recall.bundle.js',
   'js/game-route.js',
   'js/game-presentation.js',
 ];
