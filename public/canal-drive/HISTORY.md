@@ -6,6 +6,21 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The driving harness measures progress along the drive.** Its 25-second
+  "lost" timer claimed to measure progress along the planned route, but used
+  straight-line distance to the destination. A correct Amsterdam route often
+  has to head away from its endpoint to get around a canal, railway, or one-way
+  block, so the harness stopped twelve drives early and called the test driver
+  lost. The timer now uses the remaining length of the route polyline. The
+  arrival threshold remains 14/24; the test oracle was repaired instead of
+  lowering its expectation or changing the production router.
+
+- **Unnamed building clicks answer back.** Clicking an anonymous vector-tile
+  footprint now opens a short "No building details" acknowledgement explaining
+  that the map data has no name. It does not invent an "Unnamed building" or
+  present the footprint as encyclopedia content. The browser check that used to
+  require silence now pins the acknowledgement and its wording.
+
 - **The answer path is a typed leaf now.** `_submitCanalAnswer` still owns the
   canvas prompt and bridge-crossing handoff, but answer normalization, scoring,
   streaks, feedback, name reveal and the recall write live in

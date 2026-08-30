@@ -13,24 +13,6 @@ Within a tier, cheap-and-blocking comes before expensive-and-isolated.
 
 ## P0 — Red, or actively teaching something false
 
-**1. The driving harness is red, and has been for a while.**
-`driving-harness.spec.ts` wants 14 of 24 planned routes driven to arrival and
-gets 12: 12 lost, 0 pinned, 0 timeouts, 34 wedges against the kerb. It is not
-the typed router — running the same harness with `road-graph.bundle.js` removed,
-so the legacy implementation takes over, produces byte-identical outcomes, which
-is good evidence the delegation is faithful and bad news for the autopilot.
-Either the steering gives up at a junction shape that deserves naming as a
-regression location, or the threshold was set optimistically and should be
-measured rather than asserted. Decide which; do not just move the number.
-*This is the only failing test in the repo. Everything else is green.*
-
-**4. Clicking a building silently does nothing.**
-`_inspectBuildingAt` returns without feedback for any vector-tile building
-without a name — a deliberate choice to avoid "Unnamed building" cards, but the
-click is swallowed with no acknowledgement, so the game reads as broken rather
-than as declining. Decide what an unnamed building should say and say it.
-*Reported from live play, not inferred.*
-
 ---
 
 ## P1 — The learning model itself

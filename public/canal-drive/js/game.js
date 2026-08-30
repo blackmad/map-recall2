@@ -325,14 +325,18 @@ class Game {
       if (matchedLandmark) {
         nearest = matchedLandmark;
       } else {
-        // Anonymous vector-tile footprints are useful geometry, not useful
-        // content. Do not interrupt the player with an "Unnamed building"
-        // card; only show unmatched buildings that actually have a name.
-        if (!buildingName) return;
-        nearest = {
+        // A nameless footprint cannot teach the player anything, but swallowing
+        // the click makes the map look broken. Acknowledge it without inventing
+        // a name or presenting it as encyclopedia content.
+        nearest = buildingName ? {
           id: `clicked-${building.id || building.lngLat.join('-')}`,
           name: buildingName,
           detail: 'Mapped building — click nearby landmarks to learn more.',
+          lngLat: building.lngLat,
+        } : {
+          id: `clicked-${building.id || building.lngLat.join('-')}`,
+          name: 'No building details',
+          detail: 'This building has no name in the map data.',
           lngLat: building.lngLat,
         };
       }
