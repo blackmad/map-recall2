@@ -14,10 +14,15 @@ design notes for the larger bets live below the board.
   of 299 bridge blurbs are still Dutch, tagged `wikipediaExtractLang: "nl"`.
   Those need translating or withholding; showing Dutch to a player learning the
   city in English is not the intent.
-- **Satellite roof colouring.** A pre-pass that samples free EU imagery
-  (Sentinel-2, or the Dutch national ortho WMS, which is far higher resolution)
-  per building footprint and bakes a roof colour into the extract, so the city
-  stops being uniformly grey where OSM has no `roof:colour`.
+- **Satellite roof colouring — coverage.** The sampler exists and runs
+  (`npm run build:roof-colours`, see below), but it can only colour buildings
+  the extract already ships geometry for: 10,578 of roughly 104,000 footprints
+  in the play area, because `buildings-colored.geojson` was built from OSM
+  appearance *tags*. Everything else is drawn by the basemap from a height
+  ramp, which is the grey city. Extending it means shipping footprints: the
+  4.4 × 4.2 km core is 43,398 buildings, 9.2 MB of trimmed rings, 1.9 MB
+  gzipped — affordable, but it needs a roof-only extrusion layer whose base
+  height matches what the basemap already draws, or the caps float.
 
 ## Next
 
@@ -67,7 +72,18 @@ design notes for the larger bets live below the board.
   the centre of the screen; `R` or the re-centre button reattaches it. The 2D
   views carry 14 degrees of tilt, enough for buildings to have sides.
 - **Wikipedia extracts for landmarks and bridges** are fetched in bulk rather
-  than one at a time on approach, with English resolved through Wikidata.
+  than one at a time on approach, with English resolved through Wikidata. The
+  runtime fallback fetch for anything the extract misses now resolves the
+  English article through the feature's Wikidata id instead of reading the
+  Dutch article OSM tags, so a card is English or it is just a name.
+- **Roofs are measured, not guessed.** `scripts/build-satellite-roof-colours.ts`
+  samples PDOK's 8 cm open aerial imagery: footprint into Web Mercator, one
+  cached 128 m tile per city block, pixels strictly inside the footprint eroded
+  by one pixel, per-channel median, and a reading is thrown away if there are
+  fewer than 12 pixels or the spread says it is not one surface. 5,778 roofs
+  measured; 3,388 kept the colour a mapper had tagged by hand; 1,412 rejected.
+  The palette that comes back is the real one — zinc and bitumen greys with a
+  minority of warm tile — where before every roof was a copy of its own wall.
 
 ## Backlog
 

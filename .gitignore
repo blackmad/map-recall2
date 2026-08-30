@@ -8,3 +8,6 @@ test-results/
 
 # Generated from .env for the static Canal Recall page
 public/canal-drive/firebase-config.json
+
+# Aerial imagery tile cache for scripts/build-satellite-roof-colours.ts
+.cache/
