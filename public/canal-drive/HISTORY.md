@@ -6,6 +6,38 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The extractor takes a city now, and Utrecht proved it.** Bounds, centre,
+  curation file, the name used for the boundary lookup and the `cityId` filed
+  into every review key were all Amsterdam constants. They are arguments now,
+  the curation file is optional, and a municipality mapped as a Polygon rather
+  than a MultiPolygon no longer throws. `refresh-amsterdam-extract.sh` is one
+  `exec` into the general script, so Amsterdam cannot quietly drift onto a
+  private path.
+
+  The second city found two real bugs. Connectivity was measured by endpoint
+  proximity within ~33 m, which joined parallel roads and roads on different
+  levels for passing near each other, and missed every junction in the middle
+  of a through-way because it only looked at the two ends — the same mistake
+  the runtime graph had already been fixed for. It now joins ways sharing an
+  exact vertex, indexed over all of them. And a long way could enter the
+  municipality with its midpoint outside it, publishing a centre that pointed
+  into a neighbouring city; the centre is now the first vertex actually inside
+  the boundary.
+
+  Chain shops are extracted but kept out of the landmark competition, because
+  they are orientation cues and not quiz destinations. Identity comes from NSI
+  `brand`/`operator` and `brand:wikidata`, never `name` — unrelated
+  independents share generic names like "Supermarket". Three locations inside
+  this municipality is the bar, which is what makes the list locally
+  meaningful rather than a directory: Amsterdam 973 across 130 chains, Utrecht
+  292 across 53. On the map they are separate layers that start at zoom 15.5,
+  never overlap, and fall back to a plain dot rather than a wrong logo.
+
+  Enrichment shares one cached fetch instead of three near-identical
+  retry/throttle loops, so a re-run is free and a transient Wikimedia failure
+  stopped being expensive. Translation can run against a local Ollama model,
+  which removes the Gemini key from the path to English ledes.
+
 - **The minimap is a city overview.** It drew about 450 m of network centred on
   the vehicle, with canals and streets as the same thin white line — and at that
   scale every part of Amsterdam looks like every other part, which is the
