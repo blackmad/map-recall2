@@ -1,0 +1,30 @@
+{
+  "cityId": "utrecht",
+  "wikidata": "Q803",
+  "name": "Utrecht",
+  "description": "municipality in the Netherlands and capital city of the province of Utrecht",
+  "colors": [],
+  "population": 359370,
+  "populationAsOf": "+2021-01-01T00:00:00Z",
+  "officialWebsite": "https://www.utrecht.nl/",
+  "flag": {
+    "file": "Flag of Utrecht city.svg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Flag_of_Utrecht_city.svg/960px-Flag_of_Utrecht_city.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag%20of%20Utrecht%20city.svg"
+  },
+  "coatOfArms": {
+    "file": "Utrecht gemeente wapen.svg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Utrecht_gemeente_wapen.svg/960px-Utrecht_gemeente_wapen.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "source": "https://commons.wikimedia.org/wiki/File:Utrecht%20gemeente%20wapen.svg"
+  },
+  "headOfGovernment": {
+    "wikidata": "Q2000726",
+    "name": "Sharon Dijksma",
+    "description": "Dutch politician",
+    "image": {
+      "file": "Sharon Dijksma 2015 (1).jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Sharon_Dijksma_2015_%281%29.jpg/960px-Sharon_Dijksma_2015_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "source": "https://commons.wikimedia.org/wiki/File:Sharon%20Dijksma%202015%20(1).jpg"
+    }
+  }
+}

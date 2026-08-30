@@ -12,9 +12,17 @@ interface GeoJsonFeature {
 const inputFile = process.argv[2] || '/tmp/map-recall-amsterdam.geojson';
 const boundaryFile = process.argv[3] || '/tmp/amsterdam-named-relations.geojson';
 const neighborhoodBoundaryFile = process.argv[4] || '/tmp/amsterdam-place-boundaries.geojson';
-const curationFile = path.resolve('scripts/amsterdam-curation.json');
 const outputDirectory = path.resolve(process.argv[5] || 'public/data/extracts/amsterdam');
-const center: [number, number] = [52.372851, 4.8936];
+const cityId = process.argv[6] || 'amsterdam';
+const cityName = process.argv[7] || 'Amsterdam';
+const centerArgument = process.argv[8];
+const center: [number, number] = centerArgument
+  ? centerArgument.split(',').map(Number) as [number, number]
+  : [52.372851, 4.8936];
+if (center.length !== 2 || !center.every(Number.isFinite)) {
+  throw new Error(`Invalid city center "${centerArgument}": expected latitude,longitude`);
+}
+const curationFile = path.resolve(`scripts/${cityId}-curation.json`);
 const maximumPerCategory = 300;
 // Landmarks carries museums, monuments, places of worship and now the civic
 // venues, and it is the only category where the cap actually bites (795
@@ -119,36 +127,73 @@ function classify(tags: Record<string, string | undefined>): { type: FeatureType
 }
 
 const source = JSON.parse(await readFile(inputFile, 'utf8')) as { features: GeoJsonFeature[] };
-const curation = JSON.parse(await readFile(curationFile, 'utf8')) as { scoreBoosts: Record<string, number> };
+const curation = await readFile(curationFile, 'utf8').then((contents) => JSON.parse(contents), () => ({ scoreBoosts: {} })) as { scoreBoosts: Record<string, number> };
 const boundarySource = JSON.parse(await readFile(boundaryFile, 'utf8')) as { features: GeoJsonFeature[] };
-const municipality = boundarySource.features.find((feature) => feature.properties.name === 'Amsterdam'
+const municipality = boundarySource.features.find((feature) => feature.properties.name === cityName
   && feature.properties.boundary === 'administrative' && feature.properties.admin_level === '8');
-if (!municipality || municipality.geometry?.type !== 'MultiPolygon') throw new Error('Amsterdam municipality polygon was not found');
-const municipalityPolygons = municipality.geometry.coordinates as Position[][][];
+if (!municipality || !municipality.geometry || !['Polygon', 'MultiPolygon'].includes(municipality.geometry.type)) {
+  throw new Error(`${cityName} municipality polygon was not found`);
+}
+const municipalityPolygons = municipality.geometry.type === 'Polygon'
+  ? [municipality.geometry.coordinates as Position[][]]
+  : municipality.geometry.coordinates as Position[][][];
 const neighborhoodSource = JSON.parse(await readFile(neighborhoodBoundaryFile, 'utf8')) as { features: GeoJsonFeature[] };
 const grouped = new Map<string, { feature: StreetFeature; category: FeatureCategory; paths: [number, number][][]; score: number }>();
 const routingRoadCandidates: Array<{ feature: StreetFeature; category: FeatureCategory; paths: [number, number][][]; score: number }> = [];
-const drivableHighways = new Set(['primary', 'secondary', 'tertiary', 'residential', 'living_street', 'unclassified', 'service', 'busway']);
+const majorHighways = new Set(['motorway', 'trunk', 'primary', 'secondary', 'tertiary']);
+const drivableHighways = new Set([
+  ...majorHighways,
+  'motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link',
+  'residential', 'living_street', 'unclassified', 'service', 'busway',
+]);
+type BrandedPoi = { id: string; name: string; brand: string; brandWikidata?: string; shop?: string; center: [number, number]; icon?: string };
+const brandedCandidates: BrandedPoi[] = [];
 
 for (const item of source.features) {
   const tags = item.properties || {};
-  const name = (tags['name:en'] || tags.name || tags['name:nl'] || '').trim();
+  const roadOrPlaceName = (tags['name:en'] || tags.name || tags['name:nl'] || '').trim();
   const classification = classify(tags);
-  if (!classification || !item.geometry) continue;
+  if (!item.geometry) continue;
   const paths = pathsFromGeometry(item).filter((line) => line.length > 1);
   let pointCenter: [number, number] | undefined;
   if (item.geometry.type === 'Point') {
     const [lon, lat] = item.geometry.coordinates as Position;
     pointCenter = [lat, lon];
   }
-  const featureCenter = pointCenter || paths[0]?.[Math.floor(paths[0].length / 2)];
+  const candidateCenter = pointCenter || paths[0]?.[Math.floor(paths[0].length / 2)];
+  if (!candidateCenter) continue;
+  // A long road or waterway may enter the municipality while its midpoint is
+  // outside it. Use an interior vertex as the published centre in that case;
+  // otherwise map labels and route projections can point into another city.
+  const featureCenter = pointInMultiPolygon(candidateCenter, municipalityPolygons)
+    ? candidateCenter
+    : paths.flat().find((point) => pointInMultiPolygon(point, municipalityPolygons));
   if (!featureCenter) continue;
-  if (!pointInMultiPolygon(featureCenter, municipalityPolygons)
-    && !paths.some((line) => line.some((point) => pointInMultiPolygon(point, municipalityPolygons)))) continue;
+  // Keep shop chains outside the landmark competition. They are everyday
+  // orientation cues, not quiz destinations, and frequency within this exact
+  // municipality tells us which chains are locally useful.
+  if (tags.shop) {
+    // `name` alone is not evidence of a chain: unrelated independents often
+    // share generic names such as "Supermarket". NSI-tagged brand/operator
+    // identity is the stable signal, with brand:wikidata joining aliases.
+    const brand = (tags.brand || tags.operator || '').trim();
+    if (brand) brandedCandidates.push({
+      id: String(tags['@id'] || `brand-${brandedCandidates.length}`),
+      name: (tags.name || brand).trim(), brand, brandWikidata: tags['brand:wikidata'],
+      shop: tags.shop, center: featureCenter,
+    });
+  }
+  if (!classification) continue;
+  // OSM uses `name` for the road carried by a bridge and `bridge:name` for the
+  // structure itself. Prefer the latter on quiz cards while retaining the road
+  // name in the routing graph.
+  const name = (classification.category === 'bridges' && tags['bridge:name']
+    ? tags['bridge:name']
+    : roadOrPlaceName).trim();
   if (tags.highway && drivableHighways.has(tags.highway) && paths.length) {
     const routingFeature: StreetFeature & { bridge?: boolean } = {
-      id: `routing_${routingRoadCandidates.length}`, name, type: ['primary', 'secondary', 'tertiary'].includes(tags.highway) ? 'avenue' : 'street',
-      cityId: 'amsterdam', center: featureCenter, funFact: '', clues: [], distractors: [], difficulty: 'hard', highway: tags.highway, railway: tags.railway,
+      id: `routing_${routingRoadCandidates.length}`, name: roadOrPlaceName, type: majorHighways.has(tags.highway) ? 'avenue' : 'street',
+      cityId, center: featureCenter, funFact: '', clues: [], distractors: [], difficulty: 'hard', highway: tags.highway, railway: tags.railway,
     };
     if (tags.bridge === 'yes') routingFeature.bridge = true;
     routingRoadCandidates.push({
@@ -180,7 +225,7 @@ for (const item of source.features) {
       id: `extract_${classification.category}_${grouped.size}`,
       name,
       type: classification.type,
-      cityId: 'amsterdam',
+      cityId,
       center: featureCenter,
       radius: pointCenter ? 70 : undefined,
       funFact: '', clues: [], distractors: [],
@@ -205,7 +250,7 @@ const makeArea = (name: string, kind: string, polygons: Position[][][], adminLev
     },
   };
 };
-const areas = [makeArea('Amsterdam', 'municipality', municipalityPolygons, 8)];
+const areas = [makeArea(cityName, 'municipality', municipalityPolygons, 8)];
 for (const feature of neighborhoodSource.features) {
   if (!feature.properties.name || !feature.geometry || !['Polygon', 'MultiPolygon'].includes(feature.geometry.type)) continue;
   const polygons = feature.geometry.type === 'Polygon'
@@ -215,6 +260,29 @@ for (const feature of neighborhoodSource.features) {
   areas.push(makeArea(feature.properties.name, feature.properties.place || 'neighborhood', polygons, feature.properties.place === 'suburb' ? 9 : 10));
 }
 await writeFile(path.join(outputDirectory, 'boundaries.json'), JSON.stringify(areas));
+
+const normaliseBrand = (value: string) => value.toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+const BRAND_ICONS: Record<string, string> = {
+  'albert heijn': 'albert-heijn',
+  ah: 'albert-heijn',
+};
+const chainGroups = new Map<string, BrandedPoi[]>();
+for (const poi of brandedCandidates) {
+  const key = poi.brandWikidata || normaliseBrand(poi.brand);
+  const group = chainGroups.get(key) || [];
+  group.push(poi);
+  chainGroups.set(key, group);
+}
+const majorChains = [...chainGroups.entries()]
+  .map(([key, pois]) => ({
+    key, name: pois[0].brand, brandWikidata: pois[0].brandWikidata,
+    count: pois.length, icon: BRAND_ICONS[normaliseBrand(pois[0].brand)], pois,
+  }))
+  .filter((chain) => chain.count >= 3)
+  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+const publishedBrandedPois = majorChains.flatMap((chain) => chain.pois.map((poi) => ({ ...poi, icon: chain.icon })));
+await writeFile(path.join(outputDirectory, 'branded-pois.json'), JSON.stringify(publishedBrandedPois));
+process.stdout.write(`Major chains (3+ locations): ${majorChains.map(({ name, count }) => `${name} (${count})`).join(', ') || 'none'}\n`);
 // Build a connected street subgraph: keep only streets reachable from the
 // highest-scored street so car-mode routing never hits disconnected segments.
 function selectConnectedStreets(
@@ -222,27 +290,29 @@ function selectConnectedStreets(
   maxCount: number,
 ): { feature: StreetFeature; paths: [number, number][][]; score: number }[] {
   if (available.length === 0) return [];
-  const SNAP_THRESHOLD = 0.0003; // ~33 m in Amsterdam
-  type Endpoint = { lat: number; lon: number; featureIndex: number };
-  const endpoints: Endpoint[] = [];
+  // GeoJSON no longer carries OSM node ids, but ways which really connect do
+  // retain an identical coordinate. Index every vertex: junctions often sit
+  // inside a through-way, not at its endpoints. Proximity is deliberately not
+  // used here; it joined parallel roads and roads on different levels merely
+  // because they passed within ~33 metres of one another.
+  const featuresAtVertex = new Map<string, number[]>();
   for (let fi = 0; fi < available.length; fi++) {
     for (const path of available[fi].paths) {
-      if (path.length < 2) continue;
-      endpoints.push({ lat: path[0][0], lon: path[0][1], featureIndex: fi });
-      endpoints.push({ lat: path[path.length - 1][0], lon: path[path.length - 1][1], featureIndex: fi });
+      for (const [lat, lon] of path) {
+        const key = `${lat},${lon}`;
+        const owners = featuresAtVertex.get(key) || [];
+        if (owners[owners.length - 1] !== fi) owners.push(fi);
+        featuresAtVertex.set(key, owners);
+      }
     }
   }
-  // Build adjacency via endpoint proximity
   const adjacency = new Map<number, Set<number>>();
   for (let i = 0; i < available.length; i++) adjacency.set(i, new Set());
-  for (let i = 0; i < endpoints.length; i++) {
-    for (let j = i + 1; j < endpoints.length; j++) {
-      if (endpoints[i].featureIndex === endpoints[j].featureIndex) continue;
-      const dlat = endpoints[i].lat - endpoints[j].lat;
-      const dlon = endpoints[i].lon - endpoints[j].lon;
-      if (Math.abs(dlat) < SNAP_THRESHOLD && Math.abs(dlon) < SNAP_THRESHOLD) {
-        adjacency.get(endpoints[i].featureIndex)!.add(endpoints[j].featureIndex);
-        adjacency.get(endpoints[j].featureIndex)!.add(endpoints[i].featureIndex);
+  for (const owners of featuresAtVertex.values()) {
+    for (let i = 0; i < owners.length; i++) {
+      for (let j = i + 1; j < owners.length; j++) {
+        adjacency.get(owners[i])!.add(owners[j]);
+        adjacency.get(owners[j])!.add(owners[i]);
       }
     }
   }
@@ -331,7 +401,9 @@ partitions.all = {
   linkedCount: selectedAll.filter(({ wikidata, wikipedia }) => wikidata || wikipedia).length,
 };
 await writeFile(path.join(outputDirectory, 'manifest.json'), JSON.stringify({
-  cityId: 'amsterdam', source: 'OpenStreetMap / BBBike Amsterdam extract', generatedAt: new Date().toISOString(), center, partitions,
+  cityId, source: `OpenStreetMap / BBBike ${cityName} extract`, generatedAt: new Date().toISOString(), center, partitions,
   boundaries: { file: 'boundaries.json', count: areas.length },
+  brandedPois: { file: 'branded-pois.json', count: publishedBrandedPois.length },
+  majorChains: majorChains.map(({ name, brandWikidata, count, icon }) => ({ name, brandWikidata, count, icon })),
 }, null, 2));
 process.stdout.write(`${JSON.stringify(partitions, null, 2)}\n`);
