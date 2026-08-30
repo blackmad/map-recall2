@@ -14,6 +14,7 @@ import {
   buildLandmarks,
   buildNeighborhoods,
   englishTitle,
+  isWorthACard,
   matchLandmarkToBuilding,
   neighborhoodAt,
   splitDetail,
@@ -28,13 +29,17 @@ import type {
   NeighborhoodEnrichment,
   StreetKnowledgeEntry,
 } from './extracts';
+import {
+  advanceNotice,
+  openNotice,
+  type NoticeHold,
+} from './landmarkNotice';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
 
-/** Seconds a landmark card stays up: longer for one the player deliberately
- *  clicked than for one they merely drove past. */
+/** Seconds a clicked card stays up. A drive-by card is held by proximity
+ *  instead — see `landmarkNotice.ts`. */
 const CLICKED_NOTICE_SECONDS = 8;
-const PASSED_NOTICE_SECONDS = 6;
 /** px — how far a click may be from a landmark's marker and still select it. */
 const CLICK_SELECT_RADIUS = 120;
 /** px — how close the vehicle must come before a landmark card opens by
@@ -76,10 +81,27 @@ export class GameLandmarkRuntime {
       nearest = this._cardForClickedBuilding(building);
     }
     this._ensureLandmarkSummary(nearest);
-    this._landmarkNotice = nearest;
-    this._landmarkNoticeTimer = CLICKED_NOTICE_SECONDS;
-    this._landmarkNoticeDuration = CLICKED_NOTICE_SECONDS;
+    // A click can land on something far away, or on a footprint with no world
+    // position at all, so proximity says nothing here: hold it for a fixed read.
+    this._showLandmarkNotice(nearest, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS });
     this.vectorMap.setActiveLandmark(nearest);
+  }
+
+  /** Open a landmark card, saying why it is up — which is what decides when it
+   *  comes down. */
+  _showLandmarkNotice(notice: LandmarkNotice, hold: NoticeHold): void {
+    this._landmarkNotice = notice;
+    this._landmarkNoticeHold = hold;
+    this._landmarkNoticeState = openNotice();
+    // Start transparent so the card fades in, and so a new card never inherits
+    // the alpha the previous one happened to be at.
+    this._landmarkNoticeAlpha = 0;
+  }
+
+  _clearLandmarkNotice(): void {
+    this._landmarkNotice = null;
+    this._landmarkNoticeState = openNotice();
+    this._landmarkNoticeAlpha = 0;
   }
 
   /**
@@ -157,7 +179,7 @@ export class GameLandmarkRuntime {
    *  the canvas card cannot make clickable — so it is offered on a key. */
   _openLandmarkArticle(): void {
     const notice = this._landmarkNotice;
-    if (!notice || this._landmarkNoticeTimer <= 0 || !notice.wikipediaUrl) return;
+    if (!notice || !notice.wikipediaUrl) return;
     window.open(notice.wikipediaUrl, '_blank', 'noopener');
   }
 
@@ -166,7 +188,7 @@ export class GameLandmarkRuntime {
     const entry = this.streetKnowledge.get(key);
     if (!entry) return;
     const split = splitDetail(entry.wikipediaExtract || '');
-    this._landmarkNotice = {
+    this._showLandmarkNotice({
       id: `street-knowledge:${key}`,
       name: entry.name || name,
       type: 'street',
@@ -174,9 +196,7 @@ export class GameLandmarkRuntime {
       longDetail: split.longDetail,
       wikipediaUrl: entry.wikipediaUrl || '',
       extractLang: 'en',
-    };
-    this._landmarkNoticeTimer = CLICKED_NOTICE_SECONDS;
-    this._landmarkNoticeDuration = CLICKED_NOTICE_SECONDS;
+    }, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS });
   }
 
   // ---- Loading the extract ----
@@ -258,10 +278,13 @@ export class GameLandmarkRuntime {
 
   _updateLandmarks(dt: number): void {
     if (this._neighborhoodNoticeTimer > 0) this._neighborhoodNoticeTimer -= dt;
-    if (this._landmarkNoticeTimer > 0) {
-      this._landmarkNoticeTimer -= dt;
-      if (this._landmarkNoticeTimer <= 0) {
-        this._landmarkNotice = null;
+    if (this._landmarkNotice) {
+      const visibility = advanceNotice(
+        this._landmarkNoticeState, this._landmarkNoticeHold, this.player, dt);
+      this._landmarkNoticeState = visibility.state;
+      this._landmarkNoticeAlpha = visibility.alpha;
+      if (!visibility.visible) {
+        this._clearLandmarkNotice();
         this.vectorMap.setActiveLandmark(null);
       }
     }
@@ -297,6 +320,9 @@ export class GameLandmarkRuntime {
       const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
       if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
       if (this._seenLandmarks.has(landmark.id)) continue;
+      // A card with nothing but a name interrupts the driving corridor to teach
+      // nothing. Clicking such a building still answers; driving past it does not.
+      if (!isWorthACard(landmark)) continue;
       if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
     }
     if (this._landmarkNotice) return;
@@ -304,9 +330,9 @@ export class GameLandmarkRuntime {
       this._seenLandmarks.add(nearest.id);
       this._seenLandmarkNames.add(nearest.name);
       this._ensureLandmarkSummary(nearest);
-      this._landmarkNotice = nearest;
-      this._landmarkNoticeTimer = PASSED_NOTICE_SECONDS;
-      this._landmarkNoticeDuration = PASSED_NOTICE_SECONDS;
+      // Held while the player is still near it, rather than for a fixed six
+      // seconds that expired while they were still approaching.
+      this._showLandmarkNotice(nearest, { kind: 'proximity', anchor: { x: nearest.x, y: nearest.y } });
       this.vectorMap.setActiveLandmark(nearest);
     }
   }
@@ -354,7 +380,7 @@ export class GameLandmarkRuntime {
     const lm = this._landmarkNotice;
     if (!lm) return;
     const ctx = this.ctx;
-    const alpha = Math.min(1, this._landmarkNoticeTimer, this._landmarkNoticeDuration - this._landmarkNoticeTimer);
+    const alpha = this._landmarkNoticeAlpha;
     if (alpha <= 0) return;
 
     const img = this._landmarkImages && this._landmarkImages.get(lm.id);

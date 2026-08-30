@@ -549,8 +549,7 @@ class GameRouteRuntime {
     this.particles = new ParticleSystem();
 
     this._seenLandmarks = new Set();
-    this._landmarkNotice = null;
-    this._landmarkNoticeTimer = 0;
+    this._clearLandmarkNotice();
 
     const startInfo = this.track.getNearestRoad(this.track.startPoint.x, this.track.startPoint.y);
     const startAngle = startInfo ? startInfo.angle : 0;
