@@ -1,6 +1,7 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { FeatureCategory, FeatureType, StreetFeature } from '../src/types.ts';
+import { pickNearestDistractors } from '../src/canalRecall/bridgeDistractors.ts';
 
 type Position = [number, number];
 interface GeoJsonFeature {
@@ -295,9 +296,21 @@ for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'land
   const selected = candidates.map(({ feature, paths, score }) => ({
     ...feature, path: paths[0], paths: paths.length > 1 ? paths : undefined, prominenceScore: score,
   }));
+  // `available` is sorted by score, so slicing the first twelve alternatives
+  // handed every feature in a category the same dozen famous names: 300
+  // bridges shared a 13-name distractor pool, and the right answer was the
+  // only one anywhere near the player. Distractors are the nearest features
+  // now, so the four options are all places you could plausibly be. Bridges
+  // are refined further by `build-bridge-distractors.ts`, which can also see
+  // which water each one crosses.
+  const distractorPool = selected.map((feature) => ({
+    id: feature.id, name: feature.name, center: feature.center as [number, number],
+  }));
   for (const feature of selected) {
-    const alternatives = selected.filter((candidate) => candidate.name !== feature.name);
-    feature.distractors = alternatives.slice(0, 12).sort(() => Math.random() - 0.5).slice(0, 4).map(({ name }) => name);
+    feature.distractors = pickNearestDistractors(
+      { id: feature.id, name: feature.name, center: feature.center as [number, number] },
+      distractorPool,
+    );
   }
   const json = JSON.stringify(selected);
   const file = `${category}.json`;
