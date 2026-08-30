@@ -446,7 +446,9 @@ class Game {
       row.style.display = 'flex';
       if (user) {
         label.textContent = user.label;
-        note.textContent = `${this.recall.masteredCount} names synced`;
+        // One name can be several answers now: a long street is learned a
+        // stretch at a time, and each stretch is scheduled on its own.
+        note.textContent = `${this.recall.masteredCount} answers synced`;
         button.textContent = 'Sign out';
       } else {
         label.textContent = 'Playing as guest';
@@ -952,8 +954,8 @@ class Game {
   // Is this label close enough to somewhere the player has proved they know it?
   _isPlaceKnown(name, x, y) {
     const points = this._knownPlaces.get(name);
-    if (!points) return false;
-    const radius = CanalRecallStoreModule.RECALL_LOCAL_RADIUS_METERS * PIXELS_PER_METER;
+    if (!points || !window.CanalRecallStoreModule) return false;
+    const radius = window.CanalRecallStoreModule.RECALL_LOCAL_RADIUS_METERS * PIXELS_PER_METER;
     return points.some(point => Math.hypot(point.x - x, point.y - y) <= radius);
   }
 

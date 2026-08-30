@@ -9,7 +9,7 @@
     "build:canal-streets": "esbuild src/canalRecall/streetOverlayStyle.ts --bundle --format=iife --global-name=CanalRecallStreets --outfile=public/canal-drive/js/street-overlay-style.bundle.js --minify",
     "build:canal-3d": "esbuild public/canal-drive/js/detailed-buildings-source.js --bundle --format=iife --global-name=CanalRecallDetailed3D --outfile=public/canal-drive/js/detailed-buildings.bundle.js --minify",
     "dev": "tsx server.ts",
-    "build": "npm run build:canal-car && npm run build:canal-neighborhoods && npm run build:canal-buildings && npm run build:canal-recall-store && npm run canal:firebase-config && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "npm run build:canal-car && npm run build:canal-neighborhoods && npm run build:canal-bridges && npm run build:canal-buildings && npm run build:canal-recall-store && npm run canal:firebase-config && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -26,7 +26,7 @@
     "build:roof-colours": "tsx scripts/build-satellite-roof-colours.ts",
     "build:canal-neighborhoods": "esbuild src/canalRecall/neighborhoodState.ts --bundle --format=iife --global-name=CanalRecallNeighborhood --outfile=public/canal-drive/js/neighborhood-state.bundle.js --minify",
     "test:neighborhoods": "tsx scripts/check-neighborhood-transitions.ts",
-    "check:canal": "npm run lint && npm run test:canal-car && npm run test:canal-streets && npm run test:neighborhoods && npm run test:reachability && npm run build-storybook",
+    "check:canal": "npm run lint && npm run test:canal-car && npm run test:canal-streets && npm run test:neighborhoods && npm run test:bridge-crossings && npm run test:srs && npm run test:reachability && npm run build-storybook",
     "enrich:english": "tsx scripts/translate-extracts-to-english.ts",
     "test:canal-buildings": "tsx scripts/check-canal-buildings.ts",
     "test:osm-buildings": "tsx scripts/check-osm-building-appearance.ts",
@@ -35,7 +35,10 @@
     "test:e2e:update": "playwright test --update-snapshots",
     "build:canal-recall-store": "esbuild src/canalRecall/recallStore.ts --bundle --format=iife --global-name=CanalRecallStoreModule --outfile=public/canal-drive/js/recall-store.bundle.js --minify",
     "canal:firebase-config": "tsx scripts/write-canal-firebase-config.ts",
-    "enrich:amsterdam-wikipedia": "tsx scripts/enrich-amsterdam-wikipedia-extracts.ts"
+    "enrich:amsterdam-wikipedia": "tsx scripts/enrich-amsterdam-wikipedia-extracts.ts",
+    "build:canal-bridges": "esbuild src/canalRecall/bridgeCrossings.ts --bundle --format=iife --global-name=CanalRecallBridges --outfile=public/canal-drive/js/bridge-crossings.bundle.js --minify",
+    "test:bridge-crossings": "tsx scripts/check-bridge-crossings.ts",
+    "build:bridge-crossings": "tsx scripts/build-bridge-crossings.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
