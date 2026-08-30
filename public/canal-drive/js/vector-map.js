@@ -363,14 +363,17 @@ class VectorBasemap {
     const zoom = Math.log2(Math.cos(lat * Math.PI / 180) * 156543.03392 * pixelsPerMeter);
     const chase = camera.viewMode === 'chase';
     const cockpit = camera.viewMode === 'cockpit';
-    const threeDimensional = chase || cockpit;
     const bearing = camera.rotation * 180 / Math.PI;
-    this.map.jumpTo({ center: [lon, lat], zoom: cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom, bearing, pitch: cockpit ? 72 : chase ? 58 : 0 });
-    if (threeDimensional) {
-      camera.projector = (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas);
-    } else {
-      camera.projector = null;
-    }
+    // Even the flat map gets a few degrees of tilt. It is not enough to make
+    // the plan view hard to read, and it is enough for buildings to acquire
+    // sides, which is what makes a top-down city look like a place rather than
+    // a diagram. The canvas overlay then has to project through MapLibre so it
+    // keeps sitting exactly on the basemap.
+    const pitch = cockpit ? 72 : chase ? 58 : TOPDOWN_TILT_DEGREES;
+    this.map.jumpTo({ center: [lon, lat], zoom: cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom, bearing, pitch });
+    camera.projector = pitch > 0
+      ? (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas)
+      : null;
   }
 
   projectWorld(worldX, worldY, loader, canvas) {

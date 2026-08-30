@@ -107,6 +107,9 @@ class Game {
     this.viewMode = 'north';
     this.themeMode = 'clean';
     this.learnedNames = new Set();
+    // Every name the player has been shown, right or wrong. `learnedNames` is
+    // the score; this is what gets written on the map.
+    this.revealedNames = new Set();
     this.routeFrom = CANAL_ROUTE_POIS[1];
     this.routeTo = CANAL_ROUTE_POIS[2];
     // Grows once the landmark extract loads; see _loadRoutePoiCatalog.
@@ -123,6 +126,7 @@ class Game {
     this._quizzedBridges = new Set();
     this._learnedBridges = new Map();
     this._pendingBridge = null;
+    this._lastBridgeQuizAt = -Infinity;
     this.routePattern = 'surprise';
     this.homeBase = null;
     this.homeLeg = 'outbound';
@@ -853,25 +857,35 @@ class Game {
   }
 
   // A bridge named correctly keeps its label, the same way a learned waterway
-  // does.
+  // does. It is map annotation, not HUD: it is drawn under the vehicle, kept
+  // faint, and suppressed entirely near the vehicle, because a label sitting
+  // on top of the boat hides the one thing the player is steering.
   _renderBridgeLabels() {
     if (!this._learnedBridges || this._learnedBridges.size === 0) return;
     const ctx = this.ctx;
-    ctx.font = 'bold 11px monospace';
+    ctx.save();
+    ctx.font = '10px monospace';
     ctx.textAlign = 'center';
     for (const bridge of this._learnedBridges.values()) {
       const point = bridge.labelPoint;
       if (!point) continue;
-      if (dist(point.x, point.y, this.player.x, this.player.y) > BRIDGE_LABEL_RANGE) continue;
+      const range = dist(point.x, point.y, this.player.x, this.player.y);
+      if (range > BRIDGE_LABEL_RANGE) continue;
       const screen = this.camera.worldToScreen(point.x, point.y);
       if (screen.x < 0 || screen.x > CANVAS_W || screen.y < 0 || screen.y > CANVAS_H) continue;
-      const width = ctx.measureText(bridge.name).width + 14;
-      ctx.fillStyle = 'rgba(3,18,28,0.78)';
-      roundRect(ctx, screen.x - width / 2, screen.y - 26, width, 18, 4);
+      // Fade in with distance from the vehicle: invisible where it would
+      // overlap the boat or car, settled at a background weight beyond that.
+      const clearance = clamp((range - BRIDGE_LABEL_CLEARANCE) / BRIDGE_LABEL_CLEARANCE, 0, 1);
+      if (clearance <= 0) continue;
+      ctx.globalAlpha = 0.55 * clearance;
+      const width = ctx.measureText(bridge.name).width + 12;
+      ctx.fillStyle = 'rgba(3,18,28,0.55)';
+      roundRect(ctx, screen.x - width / 2, screen.y - 24, width, 16, 4);
       ctx.fill();
-      ctx.fillStyle = '#FDE68A';
-      ctx.fillText(bridge.name, screen.x, screen.y - 13);
+      ctx.fillStyle = '#E7D5A3';
+      ctx.fillText(bridge.name, screen.x, screen.y - 12);
     }
+    ctx.restore();
   }
 
   // Draw the navigation line from the vehicle's current position rather than
@@ -1493,6 +1507,7 @@ class Game {
     if (name && name !== this.quizCurrentName && this._isRecallMastered(name)) {
       this.quizCurrentName = name;
       this.learnedNames.add(name);
+      this.revealedNames.add(name);
       this.quizCandidateName = '';
       this.quizCandidateTimer = 0;
       return;
@@ -1570,6 +1585,10 @@ class Game {
   _updateBridgeQuiz(previousPosition) {
     if (this.quizPromptName || !this.bridges.length || !previousPosition) return;
     if (Math.abs(this.player.speed) < 5) return;
+    // Bridge questions are rationed. Crossing five bridges in a minute along a
+    // canal ring produced five prompts, each one stopping the vehicle dead,
+    // which is neither good teaching nor good driving.
+    if (this.raceTime - this._lastBridgeQuizAt < BRIDGE_QUIZ_COOLDOWN) return;
     // Raampoort is both a street and a bridge. Asking for it as a bridge and
     // then again as a street left the player answering the same name twice,
     // and every prompt zeroes the throttle — which reads as the car being
@@ -1602,6 +1621,7 @@ class Game {
     }
     if (!closest) return;
     this._quizzedBridges.add(closest.id);
+    this._lastBridgeQuizAt = this.raceTime;
     closest.labelPoint = { x: this.player.x, y: this.player.y };
     this._pendingBridge = closest;
     const alternatives = [...new Set(closest.distractors)]
@@ -1683,6 +1703,7 @@ class Game {
       const earned = Math.round(base * streakMultiplier);
       this.quizPoints += earned;
       this.learnedNames.add(correctName);
+      this.revealedNames.add(correctName);
       if (!this.gameyFeatures) {
         this.quizFeedback = `Correct — ${correctName}`;
       } else if (this.quizStreak >= 2) {
@@ -1693,6 +1714,9 @@ class Game {
     } else {
       this.quizStreak = 0;
       this.quizFeedback = `Not quite — this is ${correctName}`;
+      // A name you got wrong is exactly the one worth having written on the
+      // map while you drive along it.
+      this.revealedNames.add(correctName);
     }
     this._promptFeedback.textContent = this.quizFeedback;
     this._promptFeedback.style.color = correct ? '#4ade80' : '#fbbf24';
@@ -1721,10 +1745,13 @@ class Game {
     this.quizPromptName = '';
     this.quizPromptSegmentIndex = -1;
     this.quizPromptPointIndex = 0;
+    // "Not quite — this is Lijnbaansgracht" is the single most useful sentence
+    // in the game, and it used to vanish in 650 ms. A correction now stays up
+    // long enough to actually read the name that was missed.
     setTimeout(() => {
       this._prompt.style.display = 'none';
       this.canvas.focus();
-    }, 650);
+    }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
   }
 
 
@@ -1858,11 +1885,15 @@ class Game {
     }
     this.renderer.drawSkidMarks(this.particles, this.camera);
 
+    this._renderBridgeLabels();
     if (this.travelMode === 'car') this.renderer.drawPlayerCar(this.player, this.camera);
     else this.renderer.drawCar(this.player, this.camera);
     this.renderer.drawParticles(this.particles, this.camera);
-    if (this.travelMode !== 'car') this.track.drawLabels(ctx, this.camera, this.learnedNames);
-    this._renderBridgeLabels();
+    // Streets stay named on the map once you have been told the name, in the
+    // car as well as the boat — that is how the name sticks while you drive
+    // along it. The one being asked about is withheld, or the map would be
+    // answering the question for you.
+    this.track.drawLabels(ctx, this.camera, this.revealedNames, this.quizPromptName || this.quizCandidateName);
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) {
@@ -2533,25 +2564,40 @@ class Game {
         x: (lng - centerLng) * metersPerDegreeLng * PIXELS_PER_METER + this.osmLoader._lastOffsetX,
         y: -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this.osmLoader._lastOffsetY
       });
-      this.neighborhoods = boundaries.filter(boundary => boundary.kind === 'neighbourhood' && boundary.geometry).map(boundary => {
-        const enriched = neighborhoodData.get(boundary.name) || {};
-        return {
-          name: boundary.name,
-          rings: boundary.geometry.map(polygon => (polygon[0] || []).map(toWorld)).filter(ring => ring.length > 2),
-          wikipediaExtract: enriched.wikipediaExtract || '',
-          imageUrl: enriched.imageUrl || '',
-          imageAttribution: enriched.imageAttribution || '',
-        };
-      });
+      // Only 42 of the 91 mapped areas are tagged `neighbourhood`, and between
+      // them they cover about a tenth of the drivable network — which is why
+      // the postcards almost never appeared. Quarters (De Pijp, Grachtengordel)
+      // and districts (Centrum, Noord) are places players name too, so they all
+      // count; the finest area containing the vehicle wins, with the district
+      // as the fallback that covers the rest of the city.
+      this.neighborhoods = boundaries
+        .filter(boundary => boundary.geometry && NEIGHBORHOOD_KIND_RANK[boundary.kind])
+        .map(boundary => {
+          const enriched = neighborhoodData.get(boundary.name) || {};
+          return {
+            name: boundary.name,
+            kind: boundary.kind,
+            rank: NEIGHBORHOOD_KIND_RANK[boundary.kind],
+            rings: boundary.geometry.map(polygon => (polygon[0] || []).map(toWorld)).filter(ring => ring.length > 2),
+            wikipediaExtract: enriched.wikipediaExtract || '',
+            imageUrl: enriched.imageUrl || '',
+            imageAttribution: enriched.imageAttribution || '',
+          };
+        })
+        .filter(hood => hood.rings.length)
+        .sort((a, b) => b.rank - a.rank);
       // Bridges carry their own geometry and ready-made distractors, so they
       // can be quizzed the same way waterways and streets are.
       this.bridges = bridgeFeatures.map(feature => {
         const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
         const lines = sourcePaths.map(path => (path || []).map(toWorld)).filter(line => line.length > 1);
-        if (!feature.name || lines.length === 0) return null;
+        // 43 of the 300 mapped bridges are called "Brug 117" or similar. That
+        // is an asset register number, not a name a player can learn, so they
+        // are dropped rather than offered as questions or answers.
+        if (!feature.name || lines.length === 0 || GENERIC_BRIDGE_NAME.test(feature.name)) return null;
         return {
           id: feature.id, name: feature.name, lines,
-          distractors: feature.distractors || [],
+          distractors: (feature.distractors || []).filter(name => !GENERIC_BRIDGE_NAME.test(name)),
           wikipediaUrl: feature.wikipediaUrl || '',
           detail: (feature.wikipediaExtract || '').split(/(?<=[.!?])\s/)[0].slice(0, 150),
         };
@@ -2577,23 +2623,20 @@ class Game {
       if (this._landmarkNoticeTimer <= 0) this.vectorMap.setActiveLandmark(null);
     }
     if (!this.player) return;
-    this.currentNeighborhood = '';
-    for (const neighborhood of this.neighborhoods) {
-      if (neighborhood.rings.some(ring => this._pointInPolygon(this.player.x, this.player.y, ring))) {
-        this.currentNeighborhood = neighborhood.name;
-        break;
-      }
-    }
+    // The list is sorted finest-first, so the first hit is the most specific
+    // area containing the vehicle.
+    const hood = this._neighborhoodAt(this.player.x, this.player.y);
+    this.currentNeighborhood = hood ? hood.name : '';
     if (this.currentNeighborhood) this._visitedNeighborhoods.add(this.currentNeighborhood);
-    if (!this._previousNeighborhood) {
+    // Arriving somewhere is worth a postcard the first time too. Previously an
+    // empty `_previousNeighborhood` swallowed the opening entry, so the card
+    // for the neighborhood the route starts in never appeared at all.
+    if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
       this._previousNeighborhood = this.currentNeighborhood;
-    } else if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
-      this._previousNeighborhood = this.currentNeighborhood;
-      if (!this.quizPromptName) {
-        const hoodData = this.neighborhoods.find(n => n.name === this.currentNeighborhood);
-        if (hoodData) this._ensureNeighborhoodImage(hoodData);
-        this._neighborhoodNotice = hoodData || { name: this.currentNeighborhood };
-        this._neighborhoodNoticeTimer = 5.5;
+      if (!this.quizPromptName && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+        if (hood) this._ensureNeighborhoodImage(hood);
+        this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
+        this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
       }
     }
     if (this._landmarkNotice) return;
@@ -2615,6 +2658,7 @@ class Game {
     }
   }
 
+  // Finest first: a point inside De Pijp is in De Pijp, not in Zuid.
   _neighborhoodAt(x, y) {
     return this.neighborhoods.find(hood => hood.rings.some(ring => this._pointInPolygon(x, y, ring))) || null;
   }
@@ -2660,7 +2704,12 @@ class Game {
     const cardW = 480, imgW = hasImage ? 90 : 0, imgH = 110;
     const textPadL = hasImage ? imgW + 20 : 16;
     const cardH = hasImage ? Math.max(130, imgH + 20) : (text ? 80 : 50);
-    const cardX = CANVAS_W / 2 - cardW / 2, cardY = 70;
+    // Trivia belongs at the bottom of the screen. Across the top it sat
+    // exactly where the player is looking to see what is coming, so a card
+    // about a church you have already passed hid the junction ahead.
+    const postcardShowing = this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0;
+    const cardX = CANVAS_W / 2 - cardW / 2;
+    const cardY = CANVAS_H - cardH - 30 - (postcardShowing ? NEIGHBORHOOD_CARD_HEIGHT + 14 : 0);
 
     // Background
     ctx.fillStyle = 'rgba(3,18,28,.92)';
@@ -2774,7 +2823,7 @@ class Game {
     if (!this._neighborhoodNotice || this._neighborhoodNoticeTimer <= 0) return;
     if (this.quizPromptName) return;
     const ctx = this.ctx;
-    const duration = 5.5;
+    const duration = NEIGHBORHOOD_NOTICE_SECONDS;
     const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);
     if (alpha <= 0) return;
     ctx.save();
@@ -2789,7 +2838,7 @@ class Game {
     const slideOffset = (1 - eased) * 50;
 
     const cardW = 520;
-    const cardH = 180;
+    const cardH = NEIGHBORHOOD_CARD_HEIGHT;
     const cardX = CANVAS_W / 2 - cardW / 2;
     const cardY = CANVAS_H - cardH - 30 + slideOffset;
 

@@ -14,6 +14,12 @@ class Camera {
     this.projector = null;
     this.panX = 0;
     this.panY = 0;
+    // Dragging the map detaches the view from the vehicle and pins it to the
+    // world, so the boat drives across the map the way it does on any other
+    // map you have panned away from. `R` or the re-centre button reattaches it.
+    this.detached = false;
+    this.anchorX = 0;
+    this.anchorY = 0;
     this.reducedMotion = false;
     this._lookahead = 0;
   }
@@ -24,11 +30,17 @@ class Camera {
     const wantedLookahead = this.reducedMotion ? 0 : CAMERA_LOOKAHEAD * speedRatio;
     this._lookahead += (wantedLookahead - this._lookahead) * CAMERA_LOOKAHEAD_SMOOTHING;
     const lookahead = (this.viewMode === 'cockpit' ? 115 : 0) + this._lookahead;
-    const tx = target.x + Math.cos(target.angle) * lookahead + this.panX;
-    const ty = target.y + Math.sin(target.angle) * lookahead + this.panY;
+    const tx = this.detached ? this.anchorX : target.x + Math.cos(target.angle) * lookahead;
+    const ty = this.detached ? this.anchorY : target.y + Math.sin(target.angle) * lookahead;
     this.x += (tx - this.x) * this.smoothing;
     this.y += (ty - this.y) * this.smoothing;
-    const wantedRotation = this.northUp ? 0 : target.angle + Math.PI / 2;
+    // Reported for the re-centre affordance and the debug panel: how far the
+    // view has drifted from the vehicle, which keeps growing while detached.
+    this.panX = this.detached ? this.x - target.x : 0;
+    this.panY = this.detached ? this.y - target.y : 0;
+    // A panned map holds still: rotating it under the vehicle's heading while
+    // the player is looking somewhere else is disorienting.
+    const wantedRotation = this.detached ? this.rotation : (this.northUp ? 0 : target.angle + Math.PI / 2);
     const delta = Math.atan2(Math.sin(wantedRotation - this.rotation), Math.cos(wantedRotation - this.rotation));
     const rotationRate = this.reducedMotion ? CAMERA_REDUCED_ROTATION_SMOOTHING : CAMERA_ROTATION_SMOOTHING;
     this.rotation += delta * Math.min(1, this.smoothing * rotationRate);
@@ -41,10 +53,19 @@ class Camera {
   }
   pan(dx, dy) {
     const cos = Math.cos(this.rotation), sin = Math.sin(this.rotation);
-    this.panX += (dx * cos - dy * sin) / this.zoom;
-    this.panY += (dx * sin + dy * cos) / this.zoom;
+    if (!this.detached) {
+      this.detached = true;
+      this.anchorX = this.x;
+      this.anchorY = this.y;
+    }
+    this.anchorX += (dx * cos - dy * sin) / this.zoom;
+    this.anchorY += (dx * sin + dy * cos) / this.zoom;
   }
-  resetPan() { this.panX = 0; this.panY = 0; }
+  resetPan() {
+    this.detached = false;
+    this.panX = 0;
+    this.panY = 0;
+  }
   worldToScreen(wx, wy) {
     if (this.projector) return this.projector(wx, wy);
     const dx = wx - this.x;
