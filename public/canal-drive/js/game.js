@@ -328,7 +328,7 @@ class Game {
   // text can be fetched on demand — no proxy, one request per landmark, cached
   // for the session.
   _ensureLandmarkSummary(landmark) {
-    if (!landmark || landmark.longDetail || !landmark.wikipedia) return;
+    if (!landmark || landmark.longDetail || landmark.detail || !landmark.wikipedia) return;
     this._summaryRequests = this._summaryRequests || new Set();
     if (this._summaryRequests.has(landmark.id)) return;
     this._summaryRequests.add(landmark.id);
@@ -2513,7 +2513,7 @@ class Game {
         if (!geometryFeatures.length) geometryFeatures.push({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [center[1], center[0]] } });
         const shortDetail = detail.split(/(?<=[.!?])\s/)[0].slice(0, 150);
         const longDetail = detail.split(/(?<=[.!?])\s/).slice(0, 3).join(' ').slice(0, 280);
-        return { id: feature.id, name: feature.name, type: feature.type || '', imageUrl: feature.wikipediaImageUrl || '', x: point.x, y: point.y, lngLat: [center[1], center[0]], detail: shortDetail, longDetail, prominenceScore: feature.prominenceScore || 0, wikipediaUrl: feature.wikipediaUrl || '', wikidata: feature.wikidata || '', wikipedia: feature.wikipedia || '', geojson: { type: 'FeatureCollection', features: geometryFeatures } };
+        return { id: feature.id, name: feature.name, type: feature.type || '', imageUrl: feature.wikipediaImageUrl || '', x: point.x, y: point.y, lngLat: [center[1], center[0]], detail: shortDetail, longDetail, prominenceScore: feature.prominenceScore || 0, wikipediaUrl: feature.wikipediaUrl || '', wikidata: feature.wikidata || '', wikipedia: feature.wikipedia || '', extractLang: feature.wikipediaExtractLang || 'en', geojson: { type: 'FeatureCollection', features: geometryFeatures } };
       }).filter(Boolean);
       // Preload images for top landmarks by prominence (non-blocking)
       this._landmarkImages = new Map();
@@ -2702,6 +2702,18 @@ class Game {
       ctx.textAlign = 'left';
       ctx.fillText(category, textX + 5, textY);
       badgeRight = textX + badgeW + 6;
+    }
+    if (lm.extractLang && lm.extractLang !== 'en' && (lm.longDetail || lm.detail)) {
+      ctx.font = 'bold 9px monospace';
+      const tag = lm.extractLang.toUpperCase();
+      const tagW = ctx.measureText(tag).width + 10;
+      ctx.fillStyle = 'rgba(148,163,184,.22)';
+      roundRect(ctx, badgeRight, textY - 9, tagW, 14, 3);
+      ctx.fill();
+      ctx.fillStyle = '#CBD5E1';
+      ctx.textAlign = 'left';
+      ctx.fillText(tag, badgeRight + 5, textY);
+      badgeRight += tagW + 6;
     }
     if (lm.wikipediaUrl) {
       ctx.font = 'bold 9px monospace';
