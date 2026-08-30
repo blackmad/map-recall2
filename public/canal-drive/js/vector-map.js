@@ -351,10 +351,18 @@ class VectorBasemap {
         this._highlightedBuilding = landmark.featureTarget;
       } catch (_) {}
     }
-    // Never fabricate an extrusion from an OSM footprint. If neither renderer
-    // can identify the actual building, a point acknowledges the selection
-    // without turning a whole block into a fixed-height yellow box.
-    const point = !detailed && landmark && !this._highlightedBuilding && landmark.lngLat
+    // Never fabricate an extrusion from an OSM footprint. If no renderer can
+    // identify the actual building, a point acknowledges the selection without
+    // turning a whole block into a fixed-height yellow box.
+    //
+    // The point is drawn in detailed mode too. The 3D highlight raycasts
+    // straight down at the landmark and finds nothing whenever the place is not
+    // its own extruded building — a theatre inside a block, anything outside the
+    // loaded tiles — and suppressing the dot there left a card naming a landmark
+    // with nothing on the map pointing at it, which is the opposite of a
+    // geography game. A dot beside a highlighted mesh is redundant; a card with
+    // no locator at all is broken.
+    const point = landmark && !this._highlightedBuilding && landmark.lngLat
       ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: landmark.lngLat } }]
       : [];
     source.setData({ type: 'FeatureCollection', features: point });

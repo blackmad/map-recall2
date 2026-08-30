@@ -158,6 +158,9 @@
     }
     return bridges;
   }
+  function isWorthACard(landmark) {
+    return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
+  }
   function matchLandmarkToBuilding(landmarks, building, buildingName) {
     if (building.id) {
       const byId = landmarks.find((landmark) => landmark.id === building.id);
@@ -184,9 +187,51 @@
     return nearest;
   }
 
+  // src/canalRecall/game/landmarkNotice.ts
+  var DEFAULT_NOTICE_CONFIG = {
+    exitRadius: 480,
+    minSeconds: 6,
+    fadeSeconds: 0.8
+  };
+  function openNotice() {
+    return { elapsed: 0, fadeRemaining: null };
+  }
+  function clamp01(value) {
+    return value < 0 ? 0 : value > 1 ? 1 : value;
+  }
+  function advanceNotice(state, hold, playerPosition, dt, config = DEFAULT_NOTICE_CONFIG) {
+    const elapsed = state.elapsed + dt;
+    let held;
+    switch (hold.kind) {
+      case "sticky":
+        held = true;
+        break;
+      case "timed":
+        held = elapsed < hold.seconds;
+        break;
+      case "proximity": {
+        if (!playerPosition) {
+          held = true;
+          break;
+        }
+        const distance = Math.hypot(hold.anchor.x - playerPosition.x, hold.anchor.y - playerPosition.y);
+        held = distance <= config.exitRadius || elapsed < config.minSeconds;
+        break;
+      }
+    }
+    const fadeRemaining = held ? null : (state.fadeRemaining === null ? config.fadeSeconds : state.fadeRemaining) - dt;
+    const next = { elapsed, fadeRemaining };
+    const fadeIn = clamp01(elapsed / config.fadeSeconds);
+    const fadeOut = fadeRemaining === null ? 1 : clamp01(fadeRemaining / config.fadeSeconds);
+    return {
+      state: next,
+      alpha: Math.min(fadeIn, fadeOut),
+      visible: fadeRemaining === null || fadeRemaining > 0
+    };
+  }
+
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
-  var PASSED_NOTICE_SECONDS = 6;
   var CLICK_SELECT_RADIUS = 120;
   var DRIVE_BY_RADIUS = 300;
   async function readJson(response, fallback) {
@@ -220,10 +265,21 @@
         nearest = this._cardForClickedBuilding(building);
       }
       this._ensureLandmarkSummary(nearest);
-      this._landmarkNotice = nearest;
-      this._landmarkNoticeTimer = CLICKED_NOTICE_SECONDS;
-      this._landmarkNoticeDuration = CLICKED_NOTICE_SECONDS;
+      this._showLandmarkNotice(nearest, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
       this.vectorMap.setActiveLandmark(nearest);
+    }
+    /** Open a landmark card, saying why it is up — which is what decides when it
+     *  comes down. */
+    _showLandmarkNotice(notice, hold) {
+      this._landmarkNotice = notice;
+      this._landmarkNoticeHold = hold;
+      this._landmarkNoticeState = openNotice();
+      this._landmarkNoticeAlpha = 0;
+    }
+    _clearLandmarkNotice() {
+      this._landmarkNotice = null;
+      this._landmarkNoticeState = openNotice();
+      this._landmarkNoticeAlpha = 0;
     }
     /**
      * A nameless footprint cannot teach the player anything, but swallowing the
@@ -297,7 +353,7 @@
      *  the canvas card cannot make clickable — so it is offered on a key. */
     _openLandmarkArticle() {
       const notice = this._landmarkNotice;
-      if (!notice || this._landmarkNoticeTimer <= 0 || !notice.wikipediaUrl) return;
+      if (!notice || !notice.wikipediaUrl) return;
       window.open(notice.wikipediaUrl, "_blank", "noopener");
     }
     _showStreetKnowledge(name) {
@@ -305,7 +361,7 @@
       const entry = this.streetKnowledge.get(key);
       if (!entry) return;
       const split = splitDetail(entry.wikipediaExtract || "");
-      this._landmarkNotice = {
+      this._showLandmarkNotice({
         id: `street-knowledge:${key}`,
         name: entry.name || name,
         type: "street",
@@ -313,9 +369,7 @@
         longDetail: split.longDetail,
         wikipediaUrl: entry.wikipediaUrl || "",
         extractLang: "en"
-      };
-      this._landmarkNoticeTimer = CLICKED_NOTICE_SECONDS;
-      this._landmarkNoticeDuration = CLICKED_NOTICE_SECONDS;
+      }, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
     }
     // ---- Loading the extract ----
     async _loadLandmarks(centerLat, centerLng, segments) {
@@ -376,10 +430,17 @@
     // ---- Per-frame ----
     _updateLandmarks(dt) {
       if (this._neighborhoodNoticeTimer > 0) this._neighborhoodNoticeTimer -= dt;
-      if (this._landmarkNoticeTimer > 0) {
-        this._landmarkNoticeTimer -= dt;
-        if (this._landmarkNoticeTimer <= 0) {
-          this._landmarkNotice = null;
+      if (this._landmarkNotice) {
+        const visibility = advanceNotice(
+          this._landmarkNoticeState,
+          this._landmarkNoticeHold,
+          this.player,
+          dt
+        );
+        this._landmarkNoticeState = visibility.state;
+        this._landmarkNoticeAlpha = visibility.alpha;
+        if (!visibility.visible) {
+          this._clearLandmarkNotice();
           this.vectorMap.setActiveLandmark(null);
         }
       }
@@ -409,6 +470,7 @@
         const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
         if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
         if (this._seenLandmarks.has(landmark.id)) continue;
+        if (!isWorthACard(landmark)) continue;
         if (distance < nearestDistance) {
           nearest = landmark;
           nearestDistance = distance;
@@ -419,9 +481,7 @@
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);
         this._ensureLandmarkSummary(nearest);
-        this._landmarkNotice = nearest;
-        this._landmarkNoticeTimer = PASSED_NOTICE_SECONDS;
-        this._landmarkNoticeDuration = PASSED_NOTICE_SECONDS;
+        this._showLandmarkNotice(nearest, { kind: "proximity", anchor: { x: nearest.x, y: nearest.y } });
         this.vectorMap.setActiveLandmark(nearest);
       }
     }
@@ -463,7 +523,7 @@
       const lm = this._landmarkNotice;
       if (!lm) return;
       const ctx = this.ctx;
-      const alpha = Math.min(1, this._landmarkNoticeTimer, this._landmarkNoticeDuration - this._landmarkNoticeTimer);
+      const alpha = this._landmarkNoticeAlpha;
       if (alpha <= 0) return;
       const img = this._landmarkImages && this._landmarkImages.get(lm.id);
       const hasImage = !!(img && img.complete && img.naturalWidth > 0);

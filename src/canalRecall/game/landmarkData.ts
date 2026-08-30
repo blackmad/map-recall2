@@ -285,6 +285,28 @@ export function buildBridges(
 }
 
 /**
+ * Is there anything to say about this place beyond its name?
+ *
+ * A drive-by card that reads "A landmark in Prinses Irenebuurt e.o.. No
+ * encyclopedia article yet." interrupts the driving corridor to teach nothing.
+ * The extract carries far more landmarks than it carries writing about them, so
+ * the unenriched majority are simply not offered.
+ *
+ * A `wikipediaUrl` counts even with no text yet: the summary fetch fills the
+ * card a moment later, and there is a real article to open with `W`. A bare
+ * `wikidata` id does not — English may have nothing to say about the place, in
+ * which case the card would stay empty.
+ */
+export function isWorthACard(landmark: {
+  detail?: string;
+  longDetail?: string;
+  imageUrl?: string;
+  wikipediaUrl?: string;
+}): boolean {
+  return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
+}
+
+/**
  * Buildings used to be matched to landmarks by exact name equality, so
  * anything with different punctuation, casing, or a localised OSM name fell
  * through to the generic "Mapped building" card even when the extract had a

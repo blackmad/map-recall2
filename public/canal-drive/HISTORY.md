@@ -6,6 +6,36 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **A POI card is held by proximity, marked on the map, and only shown when it
+  has something to say.** Three reported problems with the same root: the card
+  was one countdown serving three different intentions.
+
+  It is now held by *why* it opened. A drive-by card stays while the player is
+  still within 480 px of the landmark — six seconds expired while they were
+  still approaching it — with a minimum dwell so passing at speed still leaves
+  something readable, and an exit radius wider than the 300 px that opens it so
+  driving the boundary does not flicker it. A clicked card stays timed, because
+  a click can land on something far away or on a footprint with no position at
+  all. The arrival card is `sticky` instead of `timer = 3600`.
+
+  The locator dot now survives detailed mode. The 3D highlight raycasts straight
+  down at the landmark and finds nothing whenever the place is not its own
+  extruded building — a theatre inside a block, anything outside the loaded
+  tiles — and the dot was suppressed there, so a card could name a landmark with
+  nothing on the map pointing at it. The anti-slab rule it was protecting is
+  intact and now pinned precisely: a locator *point*, never an extrusion
+  fabricated from an approximate OSM footprint.
+
+  Landmarks with nothing but a name are no longer offered while driving. The
+  extract carries far more places than it carries writing about them: 101 of 374
+  placed landmarks have no text, no photograph and no article, and a card
+  reading "A landmark in Prinses Irenebuurt e.o.. No encyclopedia article yet."
+  interrupts the driving corridor to teach nothing. This is why the reported
+  card said "Thomastheater" — a bare duplicate entry — while "Thomaskerk", the
+  same building with an English extract and a photograph, is the one now shown.
+  Clicking an unenriched building still answers; only the unprompted card is
+  suppressed.
+
 - **The recall subsystem is typed, and the rules that decide what you are asked
   are tested.** `game-recall.js` became `recallRules.ts` plus
   `recallRuntime.ts`. The rules half now answers, in 22 assertions and without a

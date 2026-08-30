@@ -184,8 +184,10 @@ class Game {
     this._debugMode = false;
     this._recenterBtnBounds = null;
     this._landmarkNotice = null;
-    this._landmarkNoticeTimer = 0;
-    this._landmarkNoticeDuration = 6;
+    // Why the card is up decides when it comes down; see game/landmarkNotice.ts.
+    this._landmarkNoticeHold = { kind: 'timed', seconds: 0 };
+    this._landmarkNoticeState = { elapsed: 0, fadeRemaining: null };
+    this._landmarkNoticeAlpha = 0;
     this._landmarkImages = new Map();
     this.streetKnowledge = new Map();
     this._blockedBoatFrames = 0;
@@ -537,9 +539,10 @@ class Game {
       this.sound.silence();
       const arrived = this._finishLandmark();
       if (arrived) {
-        this._landmarkNotice = arrived;
-        this._landmarkNoticeTimer = 3600;
-        this._landmarkNoticeDuration = 3600;
+        // The arrival card belongs to the finish screen and stays until
+        // something replaces it, rather than pretending to be an hour-long timer.
+        this._showLandmarkNotice(arrived, { kind: 'sticky' });
+        this._landmarkNoticeAlpha = 1;
       }
       this._ribbon = this.gameyFeatures ? this._computeRouteRibbon() : null;
       this._saveBestTime();

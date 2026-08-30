@@ -17,6 +17,7 @@ import type {
 } from './modes';
 import type { AnswerRecallStore } from '../answerPath';
 import type { RecallFeature } from '../recallStore';
+import type { NoticeHold, NoticeState } from './landmarkNotice';
 import type { LatLon } from './recallRules';
 
 export type { RecallFeature };
@@ -65,8 +66,12 @@ export interface LandmarkHost extends GameCoreHost {
   streetKnowledge: Map<string, StreetKnowledgeEntry>;
 
   _landmarkNotice: LandmarkNotice | null;
-  _landmarkNoticeTimer: number;
-  _landmarkNoticeDuration: number;
+  /** Why the current card is up, and how far through its life it is. */
+  _landmarkNoticeHold: NoticeHold;
+  _landmarkNoticeState: NoticeState;
+  /** Recomputed each frame by `_updateLandmarks`, so the renderer does not have
+   *  to know the fade rules. */
+  _landmarkNoticeAlpha: number;
   _landmarkImages: Map<string, HTMLImageElement>;
   _landmarkImageRequests: Set<string>;
   /** Landmarks whose English summary has already been requested this session,

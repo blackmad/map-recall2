@@ -15,6 +15,7 @@ import {
   kmBetween,
   matchLandmarkToBuilding,
   GENERIC_BRIDGE_NAME_PATTERN,
+  isWorthACard,
   neighborhoodAt,
   pointInPolygon,
   splitDetail,
@@ -135,6 +136,22 @@ check('buildLandmarks places, splits and shapes the extract', () => {
   assert.equal(landmarks[1].prominenceScore, 0, 'missing extract fields become empty, not undefined');
   assert.equal(landmarks[1].wikipediaUrl, '');
   assert.equal(landmarks[1].imageUrl, '');
+});
+
+check('a landmark with nothing to say is not offered as a card', () => {
+  // "A landmark in Prinses Irenebuurt e.o.. No encyclopedia article yet." is an
+  // interruption of the driving corridor that teaches nothing.
+  assert.equal(isWorthACard({ detail: '', longDetail: '', imageUrl: '', wikipediaUrl: '' }), false);
+  assert.equal(isWorthACard({}), false, 'a bare name is not content');
+  assert.equal(isWorthACard({ detail: 'A palace.' }), true);
+  assert.equal(isWorthACard({ imageUrl: 'https://example.invalid/x.jpg' }), true,
+    'a photograph is worth showing even with no text');
+  assert.equal(isWorthACard({ wikipediaUrl: 'https://en.wikipedia.org/wiki/X' }), true,
+    'an article exists, so the summary fetch will fill the card and W can open it');
+
+  const placedCards = buildLandmarks(landmarkFixtures, project).filter(isWorthACard);
+  assert.deepEqual(placedCards.map(l => l.id), ['closed-way', 'open-way'],
+    'the point-only fixture has a name and nothing else, so it is not offered');
 });
 
 // ---- Building clicks ----

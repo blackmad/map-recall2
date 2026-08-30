@@ -10,9 +10,15 @@ type HarnessGame = {
   landmarks: Array<{ id: string; name: string; x: number; y: number }>;
   vectorMap: {
     ready?: boolean;
-    map?: { getLayer(layer: string): unknown; getPaintProperty(layer: string, property: string): unknown };
+    map?: {
+      getLayer(layer: string): unknown;
+      getPaintProperty(layer: string, property: string): unknown;
+      getSource(source: string): { _data?: { features: unknown[] } } | undefined;
+    };
     inspectBuilding: (...args: unknown[]) => unknown;
     setActiveLandmark: (landmark: unknown) => void;
+    _detailedBuildingsVisible?: boolean;
+    _detailedBuildings?: { ready?: boolean; setActiveLandmark?: (landmark: unknown) => void } | null;
   };
   _landmarkNotice: { id: string; name: string } | null;
   streetKnowledge: Map<string, { name: string; wikipediaUrl: string; wikipediaExtract: string }>;
@@ -129,10 +135,19 @@ test('detailed mode owns building depth and selection instead of drawing an OSM 
       roofs: vectorMap.map.getLayoutProperty('osm-colored-building-roofs', 'visibility'),
       forwarded: forwarded === landmark,
       overlayFeatures: (overlay as { features?: unknown[] })?.features?.length,
+      // The anti-slab guarantee: whatever is drawn must never be an extrusion
+      // fabricated from the landmark's approximate OSM footprint.
+      overlayTypes: ((overlay as { features?: Array<{ geometry: { type: string } }> })?.features ?? [])
+        .map(feature => feature.geometry.type),
     };
   });
   expect(result).toEqual({
-    building: 'none', coloured: 'none', roofs: 'none', forwarded: true, overlayFeatures: 0,
+    building: 'none', coloured: 'none', roofs: 'none', forwarded: true,
+    // A locator point, and only a point. The detailed renderer owns depth and
+    // selection, but it raycasts straight down and finds nothing whenever the
+    // place is not its own extruded building — so the dot has to survive here
+    // or a card can name a landmark with nothing on the map pointing at it.
+    overlayFeatures: 1, overlayTypes: ['Point'],
   });
 });
 
@@ -217,6 +232,37 @@ test('anonymous building footprints acknowledge the click without inventing a na
     detail: 'This building has no name in the map data.',
   });
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
+});
+
+// A card that names a landmark with nothing on the map pointing at it is the
+// opposite of a geography game. The 3D highlight raycasts straight down and
+// finds nothing whenever the place is not its own extruded building, so the
+// locator dot has to survive detailed mode.
+test('an active landmark is always marked on the map', async ({ page }) => {
+  await openCarRoute(page);
+  // The highlight layers are created on basemap load, not on game start.
+  await expect.poll(() => page.evaluate(() =>
+    Boolean(window.canalRecallGame.vectorMap.map?.getSource('active-landmark'))
+  ), { timeout: 30_000 }).toBe(true);
+
+  const marked = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const landmark = game.landmarks[0];
+    if (!landmark) return { skipped: true, features: -1 };
+    // Force the branch that used to suppress the dot: detailed mode on, with
+    // the 3D renderer finding no mesh for this landmark.
+    game.vectorMap._detailedBuildingsVisible = true;
+    // A stand-in for the 3D renderer that accepts the landmark and finds no
+    // mesh for it — exactly what happens for a place that is not its own
+    // extruded building.
+    game.vectorMap._detailedBuildings = { ready: true, setActiveLandmark() {} };
+    game.vectorMap.setActiveLandmark(landmark);
+    const source = game.vectorMap.map?.getSource('active-landmark') as
+      { serialize?: () => { data?: { features?: unknown[] } } } | undefined;
+    return { skipped: false, features: source?.serialize?.().data?.features?.length ?? -1 };
+  });
+  if (marked.skipped) test.skip(true, 'no landmarks loaded for this route');
+  expect(marked.features, 'a landmark with no 3D mesh still gets a locator dot').toBeGreaterThan(0);
 });
 
 test('a learned street can open its encyclopedia card and article', async ({ page }) => {
