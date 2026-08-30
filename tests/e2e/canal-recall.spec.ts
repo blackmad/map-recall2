@@ -59,6 +59,16 @@ async function openCarRoute(page: Page): Promise<void> {
   await page.evaluate(() => { window.canalRecallGame.state = 4; });
 }
 
+test('boots and starts a route from the setup form', async ({ page }) => {
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
+  await expect(page.locator('#route-card')).toBeVisible();
+  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
+  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.player?.x)), {
+    timeout: 60_000,
+  }).toBe(true);
+});
+
 test('typed road guard bundle is loaded by Canal Recall', async ({ page }) => {
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => typeof window.CanalRecallCar?.constrainCarToRoad)).toBe('function');
