@@ -1565,7 +1565,12 @@ class Game {
       return;
     }
     this.quizCandidateTimer += dt;
-    if (this.quizCandidateTimer < 0.65 || Math.abs(this.player.speed) < 5) return;
+    // A street you have already been told the name of comes back sooner: the
+    // point of the label is that you read it while driving, and the re-test
+    // that follows should feel like a quick check rather than a fresh
+    // question.
+    const settleFor = this.revealedNames.has(name) ? QUIZ_RETEST_DELAY : QUIZ_CANDIDATE_DELAY;
+    if (this.quizCandidateTimer < settleFor || Math.abs(this.player.speed) < 5) return;
 
     const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y);
     this._openQuizPrompt({
