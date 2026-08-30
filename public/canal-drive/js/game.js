@@ -589,26 +589,11 @@ class Game {
 
   _boatFitsRenderedWater(boat) {
     if (!this.vectorMap || !this.vectorMap.ready) return true;
-    const forwardX = Math.cos(boat.angle), forwardY = Math.sin(boat.angle);
-    const rightX = -forwardY, rightY = forwardX;
-    const halfLength = boat.length * 0.34;
-    const halfWidth = boat.width * 0.34;
-    const samples = [
-      [boat.x, boat.y],
-      [boat.x + forwardX * halfLength, boat.y + forwardY * halfLength],
-      [boat.x - forwardX * halfLength, boat.y - forwardY * halfLength],
-      [boat.x + rightX * halfWidth, boat.y + rightY * halfWidth],
-      [boat.x - rightX * halfWidth, boat.y - rightY * halfWidth]
-    ];
-    return samples.every(([x, y]) => {
-      if (this.vectorMap.isWater(x, y, this.osmLoader)) return true;
-      // Bridge decks are rendered above the water fill, so MapLibre reports
-      // the canal as dry at exactly the place a boat must pass underneath.
-      // Permit only a tight corridor around a mapped navigable centreline;
-      // unlike the old full-width fallback this cannot authorize roaming over
-      // adjacent blocks or quays.
-      const road = this.track.getNearestRoad(x, y);
-      return !!road && road.dist <= Math.min(road.width * 0.28, 13);
+    // The rule lives in game/boatCorridor.ts, where it is driven through every
+    // named lock in the extract. It used to strand the boat in fifteen of them.
+    return CanalRecallBoat.boatFitsWater(boat, {
+      isWater: (x, y) => this.vectorMap.isWater(x, y, this.osmLoader),
+      nearestCentreline: (x, y) => this.track.getNearestRoad(x, y),
     });
   }
 
