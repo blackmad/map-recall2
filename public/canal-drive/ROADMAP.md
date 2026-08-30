@@ -18,23 +18,73 @@ design notes for the larger bets live below the board.
   behind small props-driven adapters. Add fixtures for recall feedback,
   neighborhood entry (photo and fallback), landmark trivia, stacked notices,
   and every finish-card combination; pair them with screenshot regressions.
-- Bridge distractors drawn from the same canal ring, so the four options are a
-  real test rather than four unrelated bridges.
 - Continue expanding named regression locations around cul-de-sacs and dead
   ends in `scripts/check-canal-car.ts`.
-- **The bottom band is contested and nothing arbitrates it.** In the 1280×720
-  design space the minimap holds 15–195 × 565–705, the trip readout is right
-  aligned at y 622–648, the postcard is 870–1260 × 540–644 and the trivia card
-  is centred at y 720−h−30. The postcard overlaps the trip readout outright,
-  and the trivia card is lifted by a hard-coded `NEIGHBORHOOD_CARD_HEIGHT`
-  (180) that is 76 px taller than the postcard actually is, for a 10 px
-  horizontal overlap that a small sideways nudge would clear. This wants one
-  pure `bottomHudLayout` module that places persistent readouts first and
-  routes transient cards around them, with a check for "no two bottom-band
-  rects intersect" across the scenario matrix.
+- **The driving harness is red and has been for a while.** `driving-harness`
+  wants 14 of 24 planned routes driven to arrival and gets 12 — 12 lost, 0
+  pinned, 0 timeouts, 34 wedges against the kerb. It is not the typed router:
+  running the same harness with `road-graph.bundle.js` removed, so the legacy
+  implementation takes over, produces byte-identical outcomes, which is decent
+  evidence the delegation is faithful. So the autopilot loses half its routes
+  on both. Either the steering gives up at a junction shape worth naming as a
+  regression location, or the threshold was set optimistically and should be
+  measured rather than asserted.
+- **The bicycle's front wheel is permanently steered.** The asset was authored
+  mid-turn and the rig held the pose; with the skins removed the fork sits at
+  its rest rotation, so from above the front wheel is visibly cocked against
+  the frame. The steer lives on node `Lenker` (index 270), a 140.8° rotation
+  about a tilted axis that mixes the head-tube angle with the steer itself.
+  Separating the two and zeroing the steer component is a small offline fix to
+  the published GLB, not a runtime one.
+- **Expand the street encyclopedia beyond the first pinned street.** The
+  runtime card, Wikipedia action and normalized-name join are proven with Nes;
+  what remains is generating the compact knowledge extract for notable streets
+  city-wide, with English blurbs and optional images.
+- **Replace the boat marker with a real 3D boat.** A candidate is in hand:
+  Sketchfab's "Motor Boat" by gogiart (@agt14032013), verified via the
+  Sketchfab API as **CC Attribution** — commercial use allowed, credit required,
+  so it needs a `NOTICE.md` entry alongside Font Awesome and Lucide. It arrives
+  as OBJ + MTL + ten JPEGs (220,030 faces, 110,732 vertices, ~14 MB zipped) and
+  so needs conversion to GLB plus the same optimisation pass the bicycle got —
+  the textures are real here, so texture compression matters as much as the
+  geometry. Kenney's CC0 Watercraft Kit remains the fallback if the licence or
+  the silhouette disappoints. Do not substitute an English narrowboat and call
+  it Amsterdam.
 
 ## Recently done
 
+- **Bridge options are the bridges around you now.** Every bridge in the
+  extract offered the same four names. `build-amsterdam-extract.ts` filled
+  `distractors` with `alternatives.slice(0, 12)` from a list sorted by
+  prominence, so all 300 bridges — and, with the same line, every street,
+  water, square, park and landmark — drew from the twelve highest-scoring
+  features in the city. Measured: 13 distinct names across 300 bridges.
+  Crossing the Prinsengracht you were offered Zeeburgerbrug, Nesciobrug,
+  IJburglaan and the Berlagebrug, none of them within four kilometres, so the
+  answer was the only plausible option on the list. It tested which name sounds
+  central, not where you were.
+
+  Distractors are the nearest features now, and for bridges the crossings
+  extract also knows the water, so up to three of the four come from the same
+  waterway — the Magere Brug is now confusable with the Blauwbrug, the Hoge
+  Sluis and the Torontobrug, which is the actual piece of local knowledge. The
+  generator is fixed for every category; `npm run build:bridge-distractors`
+  re-derives the bridge half from the cached extracts with no Overpass round
+  trip, stages, reports the diff, and publishes on `--publish`. Bridges: 13 →
+  253 distinct options, median option distance 5,682 m → 437 m, 155 of 193
+  bridges over identified water get a same-water option.
+  `npm run test:bridge-distractors` pins the pool size, the median distance,
+  the Amstel and canal-ring cases, and that the published extract still equals
+  a recomputation.
+
+- **The bottom HUD has one layout authority.** The trip readout, neighborhood
+  postcard and landmark trivia card now use the pure typed `bottomHudLayout`
+  module instead of unrelated offsets. The postcard clears the trip readout,
+  and simultaneous trivia shifts 24 px sideways instead of being thrown 194 px
+  up the screen by the obsolete 180 px postcard allowance. Zoom and controls
+  hints are placed by the same pass, clearing their former overlap with trivia
+  and with one another. A 288-scenario check pins every supported trivia
+  height, trip width, postcard, minimap, zoom and controls combination.
 - **A landmark with no article still says something.** 124 of the 420
   landmarks have no encyclopedia text — mostly OBA branch libraries and
   neighborhood cinemas, which nobody has written an article about — and their
@@ -58,17 +108,39 @@ design notes for the larger bets live below the board.
 - **The recall prompt says what kind of answer it wants.** "Crossing a bridge"
   as the headline over a smaller "Which water are you crossing?" read as a
   question about the bridge. The question is the headline now, the situation is
-  its caption, and a coloured chip above both — 💧 Water, 🌉 Bridge, 🛣 Street —
-  names the kind of feature the answer is. The text input's placeholder and
-  aria-label follow the same subject. `crossing-quiz.spec.ts` pins the chip and
-  both strings for the water-then-bridge sequence.
+  its caption, and a coloured chip above both names the kind of feature the
+  answer is. Water and street use Lucide SVGs and bridge uses Font Awesome
+  Free, so the distinction is visual without depending on platform emoji. The
+  text input's placeholder and aria-label follow the same subject.
 
-- **Street mode has a real 3D bicycle.** Chase and near-first-person views use
-  a locally shipped Carbon Frame Bike GLB in a MapLibre custom 3D layer, with
-  world-space depth, pitch and route-relative heading. A lightweight 3D rider
-  makes the vehicle readable, and the complete piece is intentionally enlarged
-  at chase altitude. The old canvas bicycle remains only as a loading fallback
-  and is no longer painted over a ready mesh.
+- **Street mode has a real 3D bicycle, and the asset pays its way.** Chase and
+  near-first-person views use a locally shipped Carbon Frame Bike GLB in a
+  MapLibre custom 3D layer, with world-space depth, pitch and route-relative
+  heading. Baked shadow presentation quads are stripped on load, and the piece
+  is intentionally enlarged at chase altitude. The old canvas bicycle remains
+  only as a loading fallback and is no longer painted over a ready mesh.
+
+  The capsule-and-sphere 3D rider is gone. At game scale it read as a
+  mannequin — a sphere head on tube limbs — and it made the vehicle look worse,
+  not more readable; the bicycle's own silhouette carries the facing.
+
+  The model shipped as 8.57 MB, which is most of the way to `streets-routing.json`
+  for one bicycle. It was 100% geometry, no textures: an interleaved vertex
+  buffer carrying TANGENT and TEXCOORD_0 for a model with zero images, plus
+  four skins and a 356-channel `Holobike_Loop` animation nothing plays. Dropping
+  what the game cannot use, then welding, simplifying and quantizing, gives
+  **8.57 MB → 2.01 MB** (115,083 → 73,921 triangles) with `KHR_mesh_quantization`,
+  which three's `GLTFLoader` reads natively — no Draco or meshopt decoder is
+  needed at runtime.
+- **The first street encyclopedia card is live.** Answering or revealing Nes
+  can show a compact English fact card, and `W` opens its Wikipedia article.
+  The runtime uses a normalized street-name join and suppresses the card during
+  an active quiz; the browser regression pins both the card and article URL.
+- **Wikidata-only landmarks recover their articles.** Wikipedia enrichment now
+  discovers Dutch and English sitelinks from a Wikidata id when OSM omitted the
+  `wikipedia` tag. That recovered 34 article links, including Fatih Mosque; a
+  keyless enrichment run uses the English Wikidata description as an honest
+  floor rather than leaving the card empty.
 - **The typed road graph is now the live router.** `road-network.js` delegates
   graph construction, shortest paths, destination routing and first-reachable
   routing to the bundled `src/canalRecall/routing/roadGraph.ts` API. Its legacy
@@ -330,16 +402,6 @@ design notes for the larger bets live below the board.
   route generator a reason to pick a route, instead of surprise-me. Needs a
   tone that stays informative rather than cute, and it must not become another
   card competing with the driving corridor.
-
-- **Street encyclopedia cards.** Streets in the routing extract currently
-  carry navigation geometry and names but are not part of the enriched
-  `streets.json` knowledge corpus — Nes, despite its English Wikipedia article,
-  is absent. Build a compact normalized-name-to-metadata extract for notable
-  streets (English lede, article URL, optional image), join it to the road name
-  at runtime, and show a compact fact card after a turn has been answered or
-  revealed. Reuse `W` to open the article, suppress the card while a quiz is
-  active, and show each street sparingly so facts support spatial recall rather
-  than interrupt every junction.
 
 - **A SimCity 2000-style isometric view of the city.** Worth a spike on its own
   branch: the detailed-buildings extrusion data and the roof-colour sampler

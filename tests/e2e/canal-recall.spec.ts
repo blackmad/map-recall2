@@ -15,6 +15,8 @@ type HarnessGame = {
     setActiveLandmark: (landmark: unknown) => void;
   };
   _landmarkNotice: { id: string; name: string } | null;
+  streetKnowledge: Map<string, { name: string; wikipediaUrl: string; wikipediaExtract: string }>;
+  _showStreetKnowledge: (name: string) => void;
   _neighborhoodNotice: { name: string; kind?: string; wikipediaExtract?: string } | null;
   _neighborhoodNoticeTimer: number;
   _neighborhoodImages: Map<string, HTMLImageElement>;
@@ -159,6 +161,20 @@ test('anonymous building footprints never open a notice', async ({ page }) => {
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
 });
 
+test('a learned street can open its encyclopedia card and article', async ({ page }) => {
+  await openCarRoute(page);
+  await expect.poll(() => page.evaluate(() => window.canalRecallGame.streetKnowledge?.has('nes'))).toBe(true);
+  const notice = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    game._showStreetKnowledge('Nes');
+    return game._landmarkNotice;
+  });
+  expect(notice).toMatchObject({ name: 'Nes' });
+  await expect(page.locator('#gameCanvas')).toBeVisible();
+  expect(await page.evaluate(() => window.canalRecallGame.streetKnowledge.get('nes')?.wikipediaUrl))
+    .toBe('https://en.wikipedia.org/wiki/Nes_(Amsterdam)');
+});
+
 test('neighborhood entry renders as a compact photo lower-third', async ({ page }, testInfo) => {
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
@@ -175,7 +191,17 @@ test('neighborhood entry renders as a compact photo lower-third', async ({ page 
     if (!canvas) throw new Error('Canvas missing');
     game.ctx.clearRect(0, 0, canvas.width, canvas.height);
     game._renderNeighborhoodNotice();
-    const pixels = game.ctx.getImageData(canvas.width - 410, canvas.height - 180, 390, 104).data;
+    // The game keeps a 1280×720 logical coordinate system while Retina/mobile
+    // canvases have a scaled backing store. getImageData uses backing pixels,
+    // unlike drawing APIs, so sample the logical card rectangle at that scale.
+    const backingScale = game.ctx.getTransform().a;
+    const card = window.CanalRecallBottomHud.bottomHudLayout({ tripWidth: 180 }).postcard;
+    const pixels = game.ctx.getImageData(
+      Math.round(card.x * backingScale),
+      Math.round(card.y * backingScale),
+      Math.round(card.width * backingScale),
+      Math.round(card.height * backingScale)
+    ).data;
     let opaque = 0;
     for (let index = 3; index < pixels.length; index += 4) if (pixels[index] > 0) opaque++;
     return { opaqueRatio: opaque / (pixels.length / 4) };
