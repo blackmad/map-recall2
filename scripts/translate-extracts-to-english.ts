@@ -6,11 +6,17 @@
  * never written about — 403 of them, nearly all bridges — which kept their
  * Dutch lede tagged `wikipediaExtractLang: "nl"`. This pass converts those.
  *
- * Two routes, best first:
+ * Three routes, best first:
  *
+ *   cache           a reviewed translation already committed to
+ *                   `scripts/english-translations.json`, keyed by the hash of
+ *                   the exact source text so a refreshed extract invalidates a
+ *                   stale entry instead of silently keeping it.
  *   translate       the Dutch lede, when an API key is configured. This is the
- *                   only route that keeps the actual content: the year it was
- *                   built, who it is named after, what it replaced.
+ *                   other route that keeps the actual content: the year it was
+ *                   built, who it is named after, what it replaced. Anything it
+ *                   produces is written back into the cache, so a translation
+ *                   is paid for once and then reviewed in a diff like any text.
  *   describe        Wikidata's English description. Always available, and
  *                   almost always "bascule bridge in Amsterdam, Netherlands" —
  *                   true, English, and thin. It is the floor, not the goal.
@@ -20,11 +26,12 @@
  * description without re-fetching anything.
  *
  * Configure a key with GEMINI_API_KEY (or GOOGLE_API_KEY) in .env.local, and
- * optionally TRANSLATE_MODEL. Without one the pass still runs and reports how
- * many blurbs are waiting for a translation it could not do.
+ * optionally TRANSLATE_MODEL. Without one the pass still runs on the cache and
+ * reports how many blurbs are waiting for a translation it could not do.
  *
  * Usage: npm run enrich:english [-- --dry-run] [-- --limit=50]
  */
+import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { config as loadEnv } from 'dotenv';
@@ -44,6 +51,7 @@ interface Feature {
 }
 
 const directory = path.resolve('public/data/extracts/amsterdam');
+const cacheFile = path.resolve('scripts/english-translations.json');
 const files = ['water.json', 'streets.json', 'bridges.json', 'squares.json', 'parks.json', 'landmarks.json', 'all.json'];
 const dryRun = process.argv.includes('--dry-run');
 const limit = Number(process.argv.find(value => value.startsWith('--limit='))?.split('=')[1] || Infinity);
@@ -54,6 +62,17 @@ const headers = { 'User-Agent': 'MapRecallExtractTranslator/1.0 (https://github.
 const chunks = <T>(items: T[], size: number) =>
   Array.from({ length: Math.ceil(items.length / size) }, (_, index) => items.slice(index * size, (index + 1) * size));
 const wait = (milliseconds: number) => new Promise(resolve => setTimeout(resolve, milliseconds));
+/** Pins a translation to the exact source text it was made from. */
+const sourceHash = (text: string) => createHash('sha1').update(text).digest('hex').slice(0, 12);
+
+/** One reviewed translation, committed alongside the code that applies it. */
+interface CachedTranslation {
+  /** Carried for review only; the hash is what decides a match. */
+  name: string;
+  lang: string;
+  hash: string;
+  en: string;
+}
 const groupKey = (group: Feature[]) => {
   const feature = group[0];
   return `${feature.name}\u0000${feature.wikipediaExtractOriginalLang || feature.wikipediaExtractLang}\u0000${feature.wikipediaExtractOriginal || feature.wikipediaExtract}`;
@@ -85,12 +104,37 @@ for (const feature of pending) {
 const groups = [...byKey.values()].slice(0, Number.isFinite(limit) ? limit : undefined);
 process.stdout.write(`${pending.length} non-English blurbs across ${files.length} files, ${byKey.size} distinct (${groups.length} in this run)\n`);
 
-// ---- Route 1: translate, when a key is configured ----
+// ---- Route 1: translations already reviewed and committed ----
 const translations = new Map<string, string>();
-if (apiKey && groups.length) {
+const cache: CachedTranslation[] = JSON.parse(await readFile(cacheFile, 'utf8').catch(() => '[]'));
+const cached = new Map(cache.map(entry => [entry.hash, entry]));
+let stale = 0;
+for (const group of groups) {
+  const original = group[0].wikipediaExtractOriginal || group[0].wikipediaExtract!;
+  const entry = cached.get(sourceHash(original));
+  if (entry) translations.set(groupKey(group), entry.en);
+}
+// An entry whose source text appears nowhere in the extracts is a translation
+// of a lede Wikipedia has since rewritten. Report it rather than dropping it
+// silently. This is measured against every feature, not just this run's
+// pending ones, so an already-applied translation does not read as stale.
+const live = new Set<string>();
+for (const partition of partitions.values()) {
+  for (const feature of partition) {
+    const text = feature.wikipediaExtractOriginal || feature.wikipediaExtract;
+    if (text) live.add(sourceHash(text));
+  }
+}
+for (const entry of cache) if (!live.has(entry.hash)) stale++;
+process.stdout.write(`cache: ${translations.size} of ${groups.length} already translated${stale ? `, ${stale} entries no longer match any extract` : ''}\n`);
+
+// ---- Route 2: translate the rest, when a key is configured ----
+const needsTranslation = groups.filter(group => !translations.has(groupKey(group)));
+let freshlyTranslated = 0;
+if (apiKey && needsTranslation.length) {
   const { GoogleGenAI } = await import('@google/genai');
   const client = new GoogleGenAI({ apiKey });
-  for (const batch of chunks(groups, 20)) {
+  for (const batch of chunks(needsTranslation, 20)) {
     const items = batch.map((group, index) => ({
       id: index,
       text: group[0].wikipediaExtractOriginal || group[0].wikipediaExtract,
@@ -108,19 +152,29 @@ if (apiKey && groups.length) {
       const body = (response.text || '').replace(/^```(?:json)?|```$/gm, '').trim();
       for (const entry of JSON.parse(body) as { id: number; text: string }[]) {
         const group = batch[entry.id];
-        if (group && entry.text) translations.set(groupKey(group), entry.text.trim().slice(0, 360));
+        if (!group || !entry.text) continue;
+        const english = entry.text.trim().slice(0, 360);
+        const original = group[0].wikipediaExtractOriginal || group[0].wikipediaExtract!;
+        translations.set(groupKey(group), english);
+        cache.push({
+          name: group[0].name,
+          lang: group[0].wikipediaExtractOriginalLang || group[0].wikipediaExtractLang || 'nl',
+          hash: sourceHash(original),
+          en: english,
+        });
+        freshlyTranslated++;
       }
     } catch (error) {
       process.stdout.write(`  translation batch failed (${(error as Error).message}); falling back for those\n`);
     }
     await wait(200);
   }
-  process.stdout.write(`translated: ${translations.size}\n`);
-} else if (!apiKey) {
-  process.stdout.write('no GEMINI_API_KEY / GOOGLE_API_KEY configured — falling back to Wikidata descriptions\n');
+  process.stdout.write(`newly translated: ${freshlyTranslated} of ${needsTranslation.length}\n`);
+} else if (!apiKey && needsTranslation.length) {
+  process.stdout.write(`no GEMINI_API_KEY / GOOGLE_API_KEY configured — ${needsTranslation.length} uncached blurbs fall back to Wikidata descriptions\n`);
 }
 
-// ---- Route 2: Wikidata's English description ----
+// ---- Route 3: Wikidata's English description ----
 const needsDescription = groups.filter(group => !translations.has(groupKey(group)));
 const descriptions = new Map<string, string>();
 const qids = [...new Set(needsDescription.flatMap(group => (group[0].wikidata ? [group[0].wikidata] : [])))];
@@ -161,6 +215,12 @@ for (const group of groups) {
 
 if (!dryRun) {
   for (const [file, partition] of partitions) await writeFile(path.join(directory, file), JSON.stringify(partition));
+  // Sorted so the file diffs by feature rather than by the order a run happened
+  // to translate things in.
+  if (freshlyTranslated) {
+    cache.sort((a, b) => a.name.localeCompare(b.name) || a.hash.localeCompare(b.hash));
+    await writeFile(cacheFile, `${JSON.stringify(cache, null, 1)}\n`);
+  }
 }
 process.stdout.write(`${dryRun ? 'DRY RUN — nothing written' : `wrote ${files.join(', ')}`}\n`);
 process.stdout.write(`  translated ledes: ${translated}\n`);
