@@ -8,6 +8,7 @@
  *
  *   npx tsx scripts/build-bridge-crossings.ts
  *   npx tsx scripts/build-bridge-crossings.ts --publish
+ *   npx tsx scripts/build-bridge-crossings.ts --directory=public/data/extracts/utrecht
  */
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -17,7 +18,8 @@ import {
 } from '../src/canalRecall/bridgeCrossings';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const extractDir = resolve(root, 'public/data/extracts/amsterdam');
+const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
+const extractDir = resolve(root, directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
 const publishedPath = resolve(extractDir, 'bridge-crossings.json');
 const stagingPath = resolve(extractDir, 'staging/bridge-crossings.json');
 
