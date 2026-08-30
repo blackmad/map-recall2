@@ -16,8 +16,8 @@ import { bottomHudLayout, rectsIntersect, type Rect } from '../src/canalRecall/b
 const CANVAS_W = 1280;
 const CANVAS_H = 720;
 
-// hud.js drawMiniMap: 180×140 at (15, CANVAS_H - 155).
-const MINIMAP: Rect = { x: 15, y: CANVAS_H - 140 - 15, width: 180, height: 140 };
+// hud.js drawCityOverview: 260×200 at (15, CANVAS_H - 215).
+const MINIMAP: Rect = { x: 15, y: CANVAS_H - 200 - 15, width: 260, height: 200 };
 
 // Measured from the runtime: the trip readout is monospace text plus 22 px of
 // padding, so it varies with speed and distance; the trivia card is 480 wide

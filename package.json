@@ -15,7 +15,7 @@
     "build:canal-vehicles": "node scripts/build-3d-bundles.mjs",
     "build:canal-3d": "node scripts/build-3d-bundles.mjs",
     "dev": "tsx server.ts",
-    "build": "npm run build:canal-car && npm run build:canal-three && npm run build:canal-vehicles && npm run build:canal-road-graph && npm run build:canal-bottom-hud && npm run build:canal-cards && npm run build:canal-answer-path && npm run build:canal-neighborhoods && npm run build:canal-bridges && npm run build:canal-buildings && npm run build:canal-boat-corridor && npm run build:canal-game-landmarks && npm run build:canal-game-recall && npm run build:canal-recall-store && npm run canal:firebase-config && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "npm run build:canal-car && npm run build:canal-three && npm run build:canal-vehicles && npm run build:canal-road-graph && npm run build:canal-bottom-hud && npm run build:canal-cards && npm run build:canal-answer-path && npm run build:canal-neighborhoods && npm run build:canal-bridges && npm run build:canal-buildings && npm run build:canal-boat-corridor && npm run build:canal-city-overview && npm run build:canal-game-landmarks && npm run build:canal-game-recall && npm run build:canal-recall-store && npm run canal:firebase-config && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -40,7 +40,7 @@
     "build:roof-colours": "tsx scripts/build-satellite-roof-colours.ts",
     "build:canal-neighborhoods": "esbuild src/canalRecall/neighborhoodState.ts --bundle --format=iife --global-name=CanalRecallNeighborhood --outfile=public/canal-drive/js/neighborhood-state.bundle.js --minify",
     "test:neighborhoods": "tsx scripts/check-neighborhood-transitions.ts",
-    "check:canal": "npm run lint && npm run build:canal-road-graph && npm run build:canal-bottom-hud && npm run build:canal-cards && npm run build:canal-answer-path && npm run build:canal-boat-corridor && npm run build:canal-game-landmarks && npm run build:canal-game-recall && npm run test:landmark-data && npm run test:landmark-notice && npm run test:recall-rules && npm run test:boat-navigability && npm run test:canal-game-structure && npm run test:canal-car && npm run test:canal-streets && npm run test:neighborhoods && npm run test:bridge-crossings && npm run test:bridge-distractors && npm run test:bridge-railways && npm run test:srs && npm run test:road-graph && npm run test:bottom-hud && npm run test:notice-cards && npm run test:canal-answer-path && npm run test:reachability && npm run build-storybook",
+    "check:canal": "npm run lint && npm run build:canal-road-graph && npm run build:canal-bottom-hud && npm run build:canal-cards && npm run build:canal-answer-path && npm run build:canal-boat-corridor && npm run build:canal-city-overview && npm run build:canal-game-landmarks && npm run build:canal-game-recall && npm run test:landmark-data && npm run test:landmark-notice && npm run test:recall-rules && npm run test:boat-navigability && npm run test:city-overview && npm run test:canal-game-structure && npm run test:canal-car && npm run test:canal-streets && npm run test:neighborhoods && npm run test:bridge-crossings && npm run test:bridge-distractors && npm run test:bridge-railways && npm run test:srs && npm run test:road-graph && npm run test:bottom-hud && npm run test:notice-cards && npm run test:canal-answer-path && npm run test:reachability && npm run build-storybook",
     "enrich:english": "tsx scripts/translate-extracts-to-english.ts",
     "enrich:utrecht-english": "tsx scripts/translate-extracts-to-english.ts --directory=public/data/extracts/utrecht --ollama",
     "test:canal-buildings": "tsx scripts/check-canal-buildings.ts",
@@ -68,7 +68,8 @@
     "test:landmark-notice": "tsx scripts/check-landmark-notice.ts",
     "build:canal-boat-corridor": "esbuild src/canalRecall/game/boatCorridor.ts --bundle --format=iife --global-name=CanalRecallBoat --outfile=public/canal-drive/js/boat-corridor.bundle.js --minify",
     "test:boat-navigability": "tsx scripts/check-boat-navigability.ts",
-    "test:city-overview": "tsx scripts/check-city-overview.ts"
+    "test:city-overview": "tsx scripts/check-city-overview.ts",
+    "build:canal-city-overview": "esbuild src/canalRecall/game/cityOverview.ts --bundle --format=iife --global-name=CanalRecallOverview --outfile=public/canal-drive/js/city-overview.bundle.js --minify"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

@@ -96,6 +96,9 @@ const CAR_ROAD_EDGE_TOLERANCE = 12;            // px beyond mapped road width be
 const MIN_START_FINISH_DIST = 200;             // px — minimum distance between start and finish
 const MAX_SNAP_DIST = 800;                     // px — POIs may sit a short walk from the water
 const HOME_MAX_SNAP_DIST = 240;                // px (~80 m) — never teleport a home launch across the neighborhood
+// The city overview map, bottom-left. Larger than the 180x140 local minimap it
+// replaced: the whole city has to be legible in it.
+const MINIMAP_W = 260, MINIMAP_H = 200, MINIMAP_X = 15;
 const LEADERBOARD_MAX_ENTRIES = 50;             // max stored best times (LRU eviction)
 const LEADERBOARD_STORAGE_KEY = 'satb_bestTimes'; // localStorage key
 const EXPLORATION_STORAGE_KEY = 'canalRecall.exploration.v1';
