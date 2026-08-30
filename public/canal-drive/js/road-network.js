@@ -314,6 +314,17 @@ class RoadNetwork {
   // component from 56% of the network to 75%. See scripts/check-road-reachability.ts.
   _routingGraph() {
     if (this._graphCache) return this._graphCache;
+    if (window.CanalRecallRoadGraph) {
+      this._graphCache = window.CanalRecallRoadGraph.buildRoadGraph(
+        this.segments.map((segment, segmentIndex) => ({
+          points: segment.points,
+          width: segment.width || 0,
+          metadata: { segmentIndex, name: segment.name || '', wayId: segment.wayId || '' },
+        })),
+        { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }
+      );
+      return this._graphCache;
+    }
     const mergeSize = 18; // ~6 m: join mapped endpoints without inventing cross-bank shortcuts
     const nodes = new Map();
     const keyFor = (point) => `${Math.round(point.x / mergeSize)},${Math.round(point.y / mergeSize)}`;
@@ -370,6 +381,9 @@ class RoadNetwork {
   }
 
   _nearestGraphNode(point) {
+    if (window.CanalRecallRoadGraph) {
+      return window.CanalRecallRoadGraph.nearestRoadGraphNode(this._routingGraph(), point);
+    }
     const { allNodes } = this._routingGraph();
     return allNodes.reduce((best, node) => {
       const distance = (node.x - point.x) ** 2 + (node.y - point.y) ** 2;
@@ -380,6 +394,11 @@ class RoadNetwork {
   // Dijkstra from `startPoint` over the whole graph. `stopAt` short-circuits
   // once that node is settled; omit it to settle everything reachable.
   _shortestPaths(startPoint, stopAt = null) {
+    if (window.CanalRecallRoadGraph) {
+      return window.CanalRecallRoadGraph.shortestRoadPaths(
+        this._routingGraph(), startPoint, { stopAt }
+      );
+    }
     const start = this._nearestGraphNode(startPoint);
     const distances = new Map([[start.key, 0]]);
     const previous = new Map();
@@ -435,6 +454,9 @@ class RoadNetwork {
   }
 
   findRoute(startPoint, finishPoint) {
+    if (window.CanalRecallRoadGraph) {
+      return window.CanalRecallRoadGraph.findRoadRoute(this._routingGraph(), startPoint, finishPoint);
+    }
     const finish = this._nearestGraphNode(finishPoint);
     const { distances, previous } = this._shortestPaths(startPoint, finish);
     if (!distances.has(finish.key)) return [];
@@ -444,6 +466,11 @@ class RoadNetwork {
   // One Dijkstra pass, then pick the first candidate that is actually
   // reachable. Candidates should already be ordered by preference.
   findRouteToFirstReachable(startPoint, candidatePoints) {
+    if (window.CanalRecallRoadGraph) {
+      return window.CanalRecallRoadGraph.findRoadRouteToFirstReachable(
+        this._routingGraph(), startPoint, candidatePoints
+      );
+    }
     const { distances, previous } = this._shortestPaths(startPoint);
     for (let index = 0; index < candidatePoints.length; index++) {
       const node = this._nearestGraphNode(candidatePoints[index]);
