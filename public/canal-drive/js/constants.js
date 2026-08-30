@@ -150,6 +150,11 @@ const NEIGHBORHOOD_NOTICE_GRACE = 1.5;     // seconds before the first one can f
 // that the player has just proved they do not know, so it lingers.
 const ANSWER_HOLD_CORRECT = 900;
 const ANSWER_HOLD_WRONG = 3200;
+// Seconds on a new street before its question opens — long enough that
+// clipping a corner of a side street does not count as a turn.
+const QUIZ_CANDIDATE_DELAY = 0.65;
+// Shorter for a name already revealed: coming back to it is a quick check.
+const QUIZ_RETEST_DELAY = 0.3;
 // px — the postcard's height, shared so the landmark card can stack above one.
 const NEIGHBORHOOD_CARD_HEIGHT = 180;
 // Degrees of tilt in the 2D views. Enough for buildings to show a face and for
