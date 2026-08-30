@@ -93,6 +93,9 @@ canvas { display: block; position: relative; z-index: 2; }
 #canal-submit { width: 100%; padding: 12px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
 #canal-feedback { min-height: 22px; margin-top: 12px; font-weight: 700; }
 #canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+#canal-no-idea { width: 100%; margin-top: 8px; padding: 10px 8px; border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); background: transparent; color: #9CCFE1; font-weight: 600; cursor: pointer; }
+#canal-no-idea:hover { background: rgba(125,211,252,.10); color: #E0F2FE; }
+#canal-no-idea .canal-choice-key { margin-right: 0; margin-left: 6px; }
 .canal-choice { padding: 12px 8px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: #0c4a6e; color: #e0f2fe; font-weight: 700; cursor: pointer; }
 .canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: rgba(255,255,255,.18); font-size: 11px; font-weight: bold; }
 
@@ -237,6 +240,7 @@ canvas { display: block; position: relative; z-index: 2; }
     <input id="canal-answer" autocomplete="off" autocapitalize="words" aria-label="Waterway name">
     <div id="canal-choices"></div>
     <button id="canal-submit" type="submit">Submit answer</button>
+    <button id="canal-no-idea" type="button">No idea — tell me <span class="canal-choice-key">0</span></button>
     <div id="canal-feedback" aria-live="polite"></div>
   </form>
 </div>

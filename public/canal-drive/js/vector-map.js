@@ -63,9 +63,8 @@ class VectorBasemap {
   }
 
   _ensureStreetOverlayLayers() {
-    if (this.map.getSource('learned-streets') || !window.CanalRecallStreets) return;
+    if (this.map.getSource('active-street') || !window.CanalRecallStreets) return;
     const empty = { type: 'FeatureCollection', features: [] };
-    this.map.addSource('learned-streets', { type: 'geojson', data: empty });
     this.map.addSource('active-street', { type: 'geojson', data: empty });
     const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
     for (const layer of window.CanalRecallStreets.streetOverlayLayers()) {
@@ -232,20 +231,12 @@ class VectorBasemap {
   }
 
   setStreetHighlights(track, loader, learnedNames, activeName, activeSegmentIndex) {
-    if (!this.ready || !track || !loader || !this.map.getSource('learned-streets')) return;
+    if (!this.ready || !track || !loader || !this.map.getSource('active-street')) return;
     const toFeature = segment => ({
       type: 'Feature',
       properties: { name: segment.name || '' },
       geometry: { type: 'LineString', coordinates: segment.points.map(point => this.worldToLngLat(point.x, point.y, loader)) }
     });
-    const learnedKey = [...(learnedNames || [])].sort().join('\u0000');
-    if (learnedKey !== this._learnedStreetKey) {
-      this._learnedStreetKey = learnedKey;
-      const features = learnedKey
-        ? track.segments.filter(segment => learnedNames.has(segment.name) && segment.points.length > 1).map(toFeature)
-        : [];
-      this.map.getSource('learned-streets').setData({ type: 'FeatureCollection', features });
-    }
     const activeKey = `${activeName || ''}:${activeSegmentIndex}`;
     if (activeKey !== this._activeStreetKey) {
       this._activeStreetKey = activeKey;

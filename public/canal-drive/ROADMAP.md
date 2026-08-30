@@ -53,6 +53,34 @@ design notes for the larger bets live below the board.
 
 ## Recently done
 
+- **"No idea" is a real answer now.** A four-option question is guessable one
+  time in four, and a lucky guess was indistinguishable from knowledge: it
+  recorded a correct answer, which set a one-day review interval, flipped
+  `isKnownHere` to true, stopped the street being asked about, and wrote its
+  name on the map. The player who guessed right learned nothing and lost the
+  street from their review queue.
+
+  The fix has to survive a rational player, so honesty is strictly better than
+  guessing rather than merely permitted. "No idea — tell me" (`0`) is not an
+  attempt: it costs no accuracy, because nothing was answered. It resets the
+  streak, reveals the name, and records the round as wrong so the scheduler
+  rates it `again` and brings the name back in ten minutes. Guessing wrong
+  costs accuracy *and* the streak; guessing right when you did not know
+  quietly poisons the schedule. So the button is the play whenever the honest
+  answer is that you do not know.
+
+  Not yet covered by a regression test — the behaviour is a contract worth
+  pinning (no attempt recorded, `again` scheduling) and the answer path lives
+  in untyped `game.js`, so it wants the typed extraction first.
+
+- **The learned-street highlight is gone.** Mastered streets were painted
+  yellow over the basemap, but the Liberty basemap already draws its whole road
+  network in yellow, so the overlay read as a second arbitrary highlight rather
+  than as knowledge — and with every road yellow, "highlighted" stopped meaning
+  anything. Mastered streets still announce themselves the way that actually
+  teaches: by staying *named* on the map. Only the street currently under
+  question keeps a drawn highlight.
+
 - **Bridge options are the bridges around you now.** Every bridge in the
   extract offered the same four names. `build-amsterdam-extract.ts` filled
   `distractors` with `alternatives.slice(0, 12)` from a list sorted by
