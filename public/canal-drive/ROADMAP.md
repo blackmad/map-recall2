@@ -12,18 +12,6 @@ design notes for the larger bets live below the board.
   leaves that Storybook and direct checks can render without constructing a
   whole race. Routing is being separated in parallel behind a distance-cost
   compatible graph API, with an injectable edge-cost seam for future novelty.
-- **English-only encyclopedia text.** `enrich-amsterdam-wikipedia-extracts.ts`
-  resolves an English article through the Wikidata `enwiki` sitelink and, when
-  that fails, through the Dutch article's interwiki link. What remains are the
-  features with no English article at all — 121 landmark blurbs and 282 bridge
-  blurbs are still Dutch, tagged `wikipediaExtractLang: "nl"` (403 total in
-  the current extracts).
-  `npm run enrich:english` now translates those original ledes when a
-  `GEMINI_API_KEY` / `GOOGLE_API_KEY` is configured, preserving proper names
-  and the source text. Without a key it can substitute Wikidata's English
-  description, while retaining enough metadata for a later keyed run to upgrade
-  that thin fallback. The pass still needs to be run with a translation key and
-  its generated extract changes reviewed.
 - **Satellite roof colouring — coverage.** The sampler exists and runs
   (`npm run build:roof-colours`, see below), but it can only colour buildings
   the extract already ships geometry for: 10,578 of roughly 104,000 footprints
@@ -47,6 +35,25 @@ design notes for the larger bets live below the board.
 
 ## Recently done
 
+- **The encyclopedia text is now English everywhere.**
+  `enrich-amsterdam-wikipedia-extracts.ts` takes the English article wherever
+  one exists, through the Wikidata `enwiki` sitelink and then the Dutch
+  article's interwiki link. That left 403 features English Wikipedia has never
+  written about — 121 landmarks and 282 bridges — showing a Dutch lede under an
+  NL chip. Wikidata's English descriptions were measured as a substitute and
+  rejected: 137 of the first 150 have one, and they read "bascule bridge in
+  Amsterdam, Netherlands", which is English but teaches nothing. All 403 were
+  translated instead, keeping the year built, the namesake, and what the bridge
+  replaced. `npm run enrich:english` now reads those reviewed translations from
+  `scripts/english-translations.json`, keyed by a hash of the exact source text
+  so a refreshed extract invalidates a stale entry and reports it rather than
+  silently keeping it; a run with `GEMINI_API_KEY` set translates whatever the
+  cache is missing and writes it back, so a translation is paid for once and
+  then reviewed in a diff. Wikidata's description survives only as a floor for
+  a keyless run on new text. Every blurb carries
+  `wikipediaExtractSource: "translated"` with the Dutch original and its
+  language kept alongside, so the pass stays resumable and the runtime's NL
+  chip no longer appears.
 - **Truthful postcard imagery expansion.** Neighborhood enrichment now covers
   OSM neighborhoods, quarters, and suburbs, deduplicates repeated boundaries,
   and rejects substring matches that confused places such as Westindische
