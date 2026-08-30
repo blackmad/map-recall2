@@ -123,7 +123,9 @@ design notes for the larger bets live below the board.
   stacking above a postcard when both are up. Corrections hold for 3.2 s rather
   than 650 ms. Streets stay named on the map once revealed — in the car as well
   as the boat, and including names answered wrongly — with the street currently
-  under question withheld so the map cannot answer for the player.
+  under question withheld so the map cannot answer for the player. A name
+  already revealed re-arms after 0.3 s rather than 0.65 s, so driving back onto
+  a street you have just learned gives you a quick re-test.
 - **Bridges, quieter.** Questions are rationed to one every 90 s, only fire on
   a genuine crossing of the span's midpoint gate, never name the street the
   vehicle is already on, and the 43 bridges called "Brug 117" are dropped as
