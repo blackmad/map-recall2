@@ -50,13 +50,11 @@ const AMSTERDAM_CENTRE = { lat: 52.3676, lng: 4.9041 };
 const ROUTE_POI_MAX_KM_FROM_CENTRE = 4;
 const ROUTE_POI_MAX_PAIR_KM = 6;
 const ROUTE_POI_CATALOG_URL = '../data/extracts/amsterdam/landmarks.json';
-// A bridge feature carries every way tagged bridge=yes under its name, which
-// includes long approach roads — one runs to 38 separate paths. Proximity to
-// any of them fired the question streets away from the actual span, so a boat
-// must genuinely cross the centreline and a car must be on it and aligned with
-// it. px; ~8 m.
-const BRIDGE_ALIGNED_RADIUS = 25;
-const BRIDGE_ALIGN_TOLERANCE = Math.PI / 4;
+// Both modes require an actual traversal, never proximity. A boat crosses the
+// span's centreline. A car drives along it, so it is tested against a gate
+// drawn perpendicular through the span's midpoint: sitting at the kerb aligned
+// with a bridge no longer counts, only passing its middle does.
+const BRIDGE_GATE_HALF_WIDTH = 26; // px — gate reaches this far either side
 const BRIDGE_LABEL_RANGE = 900; // px — keep named bridges labelled while nearby
 // How many nearby stand-in destinations to try before giving up on routing.
 const RETARGET_ATTEMPTS = 25;
@@ -844,6 +842,15 @@ class Game {
     return !!feature && this.recall.isMastered(feature);
   }
 
+  // A gate across the middle of a span, perpendicular to it.
+  _bridgeGate(a, b) {
+    const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const length = Math.hypot(dx, dy) || 1;
+    const nx = -dy / length * BRIDGE_GATE_HALF_WIDTH, ny = dx / length * BRIDGE_GATE_HALF_WIDTH;
+    return [{ x: mx - nx, y: my - ny }, { x: mx + nx, y: my + ny }];
+  }
+
   // A bridge named correctly keeps its label, the same way a learned waterway
   // does.
   _renderBridgeLabels() {
@@ -1561,25 +1568,30 @@ class Game {
   _updateBridgeQuiz(previousPosition) {
     if (this.quizPromptName || !this.bridges.length || !previousPosition) return;
     if (Math.abs(this.player.speed) < 5) return;
+    // Raampoort is both a street and a bridge. Asking for it as a bridge and
+    // then again as a street left the player answering the same name twice,
+    // and every prompt zeroes the throttle — which reads as the car being
+    // stuck on the bridge.
+    const currentRoadName = this.track.getRoadName(this.player.x, this.player.y);
     const movedBy = dist(previousPosition.x, previousPosition.y, this.player.x, this.player.y);
     if (movedBy <= 0) return;
     const byBoat = this.travelMode !== 'car';
     let closest = null;
     for (const bridge of this.bridges) {
       if (this._quizzedBridges.has(bridge.id)) continue;
+      // Same feature under two names: let the street quiz own it, asked once.
+      if (bridge.name === currentRoadName || bridge.name === this.quizCurrentName) continue;
       for (const line of bridge.lines) {
         for (let i = 1; i < line.length && !closest; i++) {
           const a = line[i - 1], b = line[i];
           if (byBoat) {
-            // Passing under: this step's travel actually crosses the span.
+            // Passing under: this step's travel crosses the span itself.
             if (segmentsIntersect(previousPosition, this.player, a, b)) closest = bridge;
           } else {
-            // Driving over: on the deck and heading along it, not across it.
-            const hit = this.track._closestPointOnSeg(this.player.x, this.player.y, a, b);
-            if (hit.dist > BRIDGE_ALIGNED_RADIUS) continue;
-            let delta = Math.abs(this.player.angle - Math.atan2(b.y - a.y, b.x - a.x)) % Math.PI;
-            if (delta > Math.PI / 2) delta = Math.PI - delta;
-            if (delta <= BRIDGE_ALIGN_TOLERANCE) closest = bridge;
+            // Driving over runs along the deck, so the deck line is never
+            // crossed — its midpoint gate is.
+            const gate = this._bridgeGate(a, b);
+            if (segmentsIntersect(previousPosition, this.player, gate[0], gate[1])) closest = bridge;
           }
         }
         if (closest) break;
@@ -1689,6 +1701,12 @@ class Game {
       this.quizCurrentName = correctName;
     } else if (correct && this._pendingBridge) {
       this._learnedBridges.set(this._pendingBridge.id, this._pendingBridge);
+      // If the bridge carries the name of the road under the wheels, that name
+      // is now answered — otherwise the street quiz asks for it again on the
+      // very next frame.
+      if (this.track.getRoadName(this.player.x, this.player.y) === correctName) {
+        this.quizCurrentName = correctName;
+      }
     }
     if (this.recall) {
       const feature = this._recallFeatureFor(correctName);
