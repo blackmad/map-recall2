@@ -1,0 +1,423 @@
+// Landmarks, neighborhood postcards and the encyclopedia cards.
+//
+// This file is the browser-facing half of the subsystem: clicks, timers,
+// fetches, images and canvas. Everything that decides *what* the player is
+// told lives in `landmarkData.ts`, where it is tested without a canvas. Keep
+// that split — a rule about which buildings are nameable belongs there, not in
+// a method that also measures a card.
+//
+// Methods are copied onto `Game.prototype` by `game.js`, so `this` is the Game
+// instance. The interface merged into the class below is what types it.
+
+import {
+  buildBridges,
+  buildLandmarks,
+  buildNeighborhoods,
+  englishTitle,
+  matchLandmarkToBuilding,
+  neighborhoodAt,
+  splitDetail,
+} from './landmarkData';
+import type { RoadSegment } from './collaborators';
+import type {
+  BoundaryFeature,
+  BridgeCrossingIndex,
+  BridgeFeature,
+  LandmarkFeature,
+  LatLng,
+  NeighborhoodEnrichment,
+  StreetKnowledgeEntry,
+} from './extracts';
+import type { LandmarkHost } from './host';
+import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
+
+/** Seconds a landmark card stays up: longer for one the player deliberately
+ *  clicked than for one they merely drove past. */
+const CLICKED_NOTICE_SECONDS = 8;
+const PASSED_NOTICE_SECONDS = 6;
+/** px — how far a click may be from a landmark's marker and still select it. */
+const CLICK_SELECT_RADIUS = 120;
+/** px — how close the vehicle must come before a landmark card opens by
+ *  itself. About 100 m at the current world scale. */
+const DRIVE_BY_RADIUS = 300;
+
+async function readJson<T>(response: Response, fallback: T): Promise<T> {
+  return response.ok ? (await response.json()) as T : fallback;
+}
+
+export interface GameLandmarkRuntime extends LandmarkHost {}
+
+export class GameLandmarkRuntime {
+  // ---- Clicking a building ----
+
+  _inspectBuildingAt(clientX: number, clientY: number): void {
+    if (!this.player || this.quizPromptName || this._utilityOpen) return;
+    const rect = this.canvas.getBoundingClientRect();
+    const screen = {
+      x: (clientX - rect.left) * CANVAS_W / rect.width,
+      y: (clientY - rect.top) * CANVAS_H / rect.height,
+    };
+    const building = this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect);
+
+    let nearest: LandmarkNotice | null = null;
+    let nearestDistance = CLICK_SELECT_RADIUS;
+    for (const landmark of this.landmarks) {
+      const point = this.camera.worldToScreen(landmark.x, landmark.y);
+      const distance = Math.hypot(point.x - screen.x, point.y - screen.y);
+      if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
+    }
+    if (nearest && building && building.featureTarget) {
+      // Keep the curated card identity, but highlight the actual extrusion
+      // under the click rather than rebuilding its approximate OSM footprint.
+      nearest = { ...nearest, featureTarget: building.featureTarget };
+    }
+    if (!nearest) {
+      if (!building) return;
+      nearest = this._cardForClickedBuilding(building);
+    }
+    this._ensureLandmarkSummary(nearest);
+    this._landmarkNotice = nearest;
+    this._landmarkNoticeTimer = CLICKED_NOTICE_SECONDS;
+    this._landmarkNoticeDuration = CLICKED_NOTICE_SECONDS;
+    this.vectorMap.setActiveLandmark(nearest);
+  }
+
+  /**
+   * A nameless footprint cannot teach the player anything, but swallowing the
+   * click makes the map look broken. Acknowledge it without inventing a name
+   * or presenting it as encyclopedia content.
+   */
+  _cardForClickedBuilding(building: BuildingHit): LandmarkNotice {
+    const buildingName = building.name || '';
+    const matched = matchLandmarkToBuilding(this.landmarks, building, buildingName);
+    if (matched) return { ...matched, featureTarget: building.featureTarget };
+    return {
+      id: `clicked-${building.id || building.lngLat.join('-')}`,
+      name: buildingName || 'No building details',
+      detail: buildingName
+        ? 'Mapped building — click nearby landmarks to learn more.'
+        : 'This building has no name in the map data.',
+      lngLat: building.lngLat,
+      featureTarget: building.featureTarget,
+    };
+  }
+
+  // ---- Encyclopedia text ----
+
+  /**
+   * Only 112 of the 300 landmarks ship an extract, so the rest showed a bare
+   * name. Wikipedia's REST summary endpoint sends CORS headers, so the missing
+   * text is fetched on demand — no proxy, one request per landmark, cached for
+   * the session.
+   */
+  _ensureLandmarkSummary(landmark: LandmarkNotice | null): void {
+    if (!landmark || landmark.longDetail || landmark.detail) return;
+    if (!landmark.wikidata && !englishTitle(landmark.wikipedia)) return;
+    this._summaryRequests = this._summaryRequests || new Set();
+    if (this._summaryRequests.has(landmark.id)) return;
+    this._summaryRequests.add(landmark.id);
+    this._fetchEnglishSummary(landmark).catch(() => { /* the card falls back to its name */ });
+  }
+
+  /**
+   * The `wikipedia` tag OSM carries is nearly always the Dutch article
+   * ("nl:Blauwbrug"), so fetching the summary it names filled the card with
+   * Dutch. The English article is resolved through the feature's Wikidata id
+   * instead, and if English has nothing to say about the place the card keeps
+   * its name rather than showing a language the player did not ask for.
+   */
+  async _fetchEnglishSummary(landmark: LandmarkNotice): Promise<void> {
+    let title = englishTitle(landmark.wikipedia);
+    if (!title && landmark.wikidata) {
+      const entity = new URL('https://www.wikidata.org/w/api.php');
+      entity.search = new URLSearchParams({
+        action: 'wbgetentities', format: 'json', props: 'sitelinks',
+        sitefilter: 'enwiki', ids: landmark.wikidata, origin: '*',
+      }).toString();
+      const response = await fetch(entity, { headers: { accept: 'application/json' } });
+      if (!response.ok) return;
+      const data = await response.json() as {
+        entities?: Record<string, { sitelinks?: { enwiki?: { title?: string } } }>;
+      };
+      title = data?.entities?.[landmark.wikidata]?.sitelinks?.enwiki?.title || '';
+    }
+    if (!title) return;
+    const summary = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, '_'))}`;
+    const response = await fetch(summary, { headers: { accept: 'application/json' } });
+    if (!response.ok) return;
+    const data = await response.json() as { extract?: string };
+    if (!data?.extract) return;
+    const split = splitDetail(data.extract);
+    landmark.detail = split.detail;
+    landmark.longDetail = split.longDetail;
+    landmark.extractLang = 'en';
+  }
+
+  /** The extract carries a Wikipedia URL for 236 of its 300 landmarks, which
+   *  the canvas card cannot make clickable — so it is offered on a key. */
+  _openLandmarkArticle(): void {
+    const notice = this._landmarkNotice;
+    if (!notice || this._landmarkNoticeTimer <= 0 || !notice.wikipediaUrl) return;
+    window.open(notice.wikipediaUrl, '_blank', 'noopener');
+  }
+
+  _showStreetKnowledge(name: string): void {
+    const key = this._normaliseCanalName(name);
+    const entry = this.streetKnowledge.get(key);
+    if (!entry) return;
+    const split = splitDetail(entry.wikipediaExtract || '');
+    this._landmarkNotice = {
+      id: `street-knowledge:${key}`,
+      name: entry.name || name,
+      type: 'street',
+      detail: split.detail,
+      longDetail: split.longDetail,
+      wikipediaUrl: entry.wikipediaUrl || '',
+      extractLang: 'en',
+    };
+    this._landmarkNoticeTimer = CLICKED_NOTICE_SECONDS;
+    this._landmarkNoticeDuration = CLICKED_NOTICE_SECONDS;
+  }
+
+  // ---- Loading the extract ----
+
+  async _loadLandmarks(
+    this: LandmarkHost,
+    centerLat: number,
+    centerLng: number,
+    segments: RoadSegment[],
+  ): Promise<void> {
+    try {
+      const base = window.location.href;
+      const url = (name: string) => new URL(`../data/extracts/amsterdam/${name}`, base);
+      const [
+        landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse,
+        bridgeResponse, crossingResponse, streetKnowledgeResponse, brandedPoiResponse,
+      ] = await Promise.all([
+        fetch(url('landmarks.json')),
+        fetch(url('boundaries.json')),
+        fetch(url('neighborhoods-enriched.json')),
+        fetch(url('bridges.json')),
+        fetch(url('bridge-crossings.json')),
+        fetch(url('street-knowledge.json')),
+        fetch(url('branded-pois.json')),
+      ]);
+      if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
+
+      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex, streetKnowledge, brandedPois] =
+        await Promise.all([
+          landmarkResponse.json() as Promise<LandmarkFeature[]>,
+          boundaryResponse.json() as Promise<BoundaryFeature[]>,
+          readJson<NeighborhoodEnrichment[]>(neighborhoodEnrichedResponse, []),
+          readJson<BridgeFeature[]>(bridgeResponse, []),
+          readJson<BridgeCrossingIndex>(crossingResponse, { bridges: {} }),
+          readJson<StreetKnowledgeEntry[]>(streetKnowledgeResponse, []),
+          readJson<unknown[]>(brandedPoiResponse, []),
+        ]);
+
+      this.streetKnowledge = new Map(
+        streetKnowledge.map(entry => [this._normaliseCanalName(entry.name), entry]),
+      );
+      this.vectorMap.setPlaces(features, boundaries);
+      this.vectorMap.setBrandedPois(brandedPois);
+
+      this.landmarks = buildLandmarks(features, (lat, lng) =>
+        this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false));
+
+      // Photos are fetched as the player approaches, not up front. Preloading
+      // the 50 most prominent landmarks in the city meant 229 landmarks had a
+      // Wikipedia photo and only the top 50 could ever show it: DeLaMar ranks
+      // 89th and its card came up bare. It also spent bandwidth on the
+      // Rijksmuseum for a route that never goes near it.
+      this._landmarkImages = new Map();
+      this._landmarkImageRequests = new Set();
+
+      const metersPerDegreeLat = 111320;
+      const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
+      const toWorld = ([lat, lng]: LatLng): WorldPoint => ({
+        x: (lng - centerLng) * metersPerDegreeLng * PIXELS_PER_METER + this.osmLoader._lastOffsetX,
+        y: -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this.osmLoader._lastOffsetY,
+      });
+
+      this.neighborhoods = buildNeighborhoods(boundaries, neighborhoodEnriched, toWorld);
+      this.bridges = buildBridges(bridgeFeatures, crossingIndex, toWorld);
+
+      // Postcard images load on demand — see _warmRouteNeighborhoodImages.
+      // Preloading the whole city cost ~26 fetches per route for postcards
+      // most trips never reach.
+      this._neighborhoodImages = new Map();
+      this._neighborhoodLetterArt = new Map();
+      this._neighborhoodImageRequests = new Set();
+    } catch (error) {
+      console.warn('Landmark notes unavailable:', error);
+      this.landmarks = [];
+    }
+  }
+
+  // ---- Per-frame ----
+
+  _updateLandmarks(dt: number): void {
+    if (this._neighborhoodNoticeTimer > 0) this._neighborhoodNoticeTimer -= dt;
+    if (this._landmarkNoticeTimer > 0) {
+      this._landmarkNoticeTimer -= dt;
+      if (this._landmarkNoticeTimer <= 0) {
+        this._landmarkNotice = null;
+        this.vectorMap.setActiveLandmark(null);
+      }
+    }
+    if (!this.player) return;
+
+    const detectedHood = this._neighborhoodAt(this.player.x, this.player.y);
+    const transition = CanalRecallNeighborhood.advanceNeighborhood({
+      current: this.currentNeighborhood,
+      candidate: this._neighborhoodCandidate,
+      candidateSeconds: this._neighborhoodCandidateTimer,
+    }, detectedHood ? detectedHood.name : '', dt);
+    this.currentNeighborhood = transition.state.current;
+    this._neighborhoodCandidate = transition.state.candidate;
+    this._neighborhoodCandidateTimer = transition.state.candidateSeconds;
+
+    const hood = this.neighborhoods.find(area => area.name === this.currentNeighborhood) || detectedHood;
+    if (this.currentNeighborhood) this._visitedNeighborhoods.add(this.currentNeighborhood);
+    // Arriving somewhere is worth a postcard the first time too. Previously an
+    // empty `_previousNeighborhood` swallowed the opening entry, so the card
+    // for the neighborhood the route starts in never appeared at all.
+    if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
+      this._previousNeighborhood = this.currentNeighborhood;
+      if (!this.quizPromptName && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+        if (hood) this._ensureNeighborhoodImage(hood);
+        this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
+        this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
+      }
+    }
+
+    let nearest: Landmark | null = null;
+    let nearestDistance = DRIVE_BY_RADIUS;
+    for (const landmark of this.landmarks) {
+      const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
+      if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
+      if (this._seenLandmarks.has(landmark.id)) continue;
+      if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
+    }
+    if (this._landmarkNotice) return;
+    if (nearest) {
+      this._seenLandmarks.add(nearest.id);
+      this._seenLandmarkNames.add(nearest.name);
+      this._ensureLandmarkSummary(nearest);
+      this._landmarkNotice = nearest;
+      this._landmarkNoticeTimer = PASSED_NOTICE_SECONDS;
+      this._landmarkNoticeDuration = PASSED_NOTICE_SECONDS;
+      this.vectorMap.setActiveLandmark(nearest);
+    }
+  }
+
+  _neighborhoodAt(x: number, y: number): Neighborhood | null {
+    return neighborhoodAt(this.neighborhoods, x, y);
+  }
+
+  // ---- Images ----
+
+  /**
+   * Fetch a landmark photo once, on demand. Every landmark the extract has a
+   * Wikipedia image for can show one; the card falls back to text until it
+   * arrives, and a failure is remembered so it is not retried every frame.
+   */
+  _ensureLandmarkImage(landmark: Landmark | null): void {
+    if (!landmark || !landmark.imageUrl) return;
+    if (!this._landmarkImageRequests) this._landmarkImageRequests = new Set();
+    if (this._landmarkImageRequests.has(landmark.id)) return;
+    this._landmarkImageRequests.add(landmark.id);
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => this._landmarkImages.set(landmark.id, img);
+    img.onerror = () => console.warn('Landmark image unavailable:', landmark.name, landmark.imageUrl);
+    img.src = landmark.imageUrl;
+  }
+
+  /** The postcard renderer falls back to its typographic composition until the
+   *  image lands, so this can stay lazy. */
+  _ensureNeighborhoodImage(hood: { name: string; imageUrl?: string } | null): void {
+    if (!hood || !hood.imageUrl) return;
+    if (!this._neighborhoodImageRequests) this._neighborhoodImageRequests = new Set();
+    if (this._neighborhoodImageRequests.has(hood.name)) return;
+    this._neighborhoodImageRequests.add(hood.name);
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => this._neighborhoodImages.set(hood.name, img);
+    img.onerror = () => console.warn('Neighborhood image unavailable:', hood.name, hood.imageUrl);
+    img.src = hood.imageUrl;
+  }
+
+  // ---- Cards ----
+
+  _renderLandmarkNotice(): void {
+    const lm = this._landmarkNotice;
+    if (!lm) return;
+    const ctx = this.ctx;
+    const alpha = Math.min(1, this._landmarkNoticeTimer, this._landmarkNoticeDuration - this._landmarkNoticeTimer);
+    if (alpha <= 0) return;
+
+    const img = this._landmarkImages && this._landmarkImages.get(lm.id);
+    const hasImage = !!(img && img.complete && img.naturalWidth > 0);
+    const cards = window.CanalRecallCards;
+    const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
+    const card = cards.measureLandmarkCard({
+      name: lm.name,
+      body: lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood),
+      category: lm.type ? lm.type.toUpperCase() : '',
+      extractLang: lm.extractLang,
+      hasArticle: !!lm.wikipediaUrl,
+      hasImage,
+    }, measure);
+
+    // Trivia belongs at the bottom of the screen. Across the top it sat exactly
+    // where the player is looking to see what is coming, so a card about a
+    // church already passed hid the junction ahead.
+    const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
+    const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({
+      tripWidth: 180, postcardVisible: postcardShowing,
+      landmarkWidth: card.width, landmarkHeight: card.height,
+      zoomVisible: this._zoomBadgeTimer > 0,
+      controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
+    });
+    const cardX = bottomLayout ? bottomLayout.landmark.x : CANVAS_W / 2 - card.width / 2;
+    const cardY = bottomLayout ? bottomLayout.landmark.y : CANVAS_H - card.height - 30;
+
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
+    ctx.restore();
+  }
+
+  _renderNeighborhoodNotice(): void {
+    const hood = this._neighborhoodNotice;
+    if (!hood || this._neighborhoodNoticeTimer <= 0) return;
+    if (this.quizPromptName) return;
+    const ctx = this.ctx;
+    const duration = NEIGHBORHOOD_NOTICE_SECONDS;
+    const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);
+    if (alpha <= 0) return;
+
+    const img = this._neighborhoodImages && this._neighborhoodImages.get(hood.name);
+    const hasImage = !!(img && img.complete && img.naturalWidth > 0);
+    const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
+    const card = window.CanalRecallCards.measurePostcard(
+      { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage }, measure);
+
+    const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({ tripWidth: 180 });
+    const cardX = bottomLayout ? bottomLayout.postcard.x : CANVAS_W - card.width - 20;
+    const baseCardY = bottomLayout ? bottomLayout.postcard.y : CANVAS_H - card.height - 76;
+    // Slide up into place rather than appearing; the offset is animation, not
+    // layout, so it is applied after the band has been arbitrated.
+    const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.3);
+    const cardY = baseCardY + (1 - (1 - Math.pow(1 - slideT, 3))) * 50;
+
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    this.renderer.drawPostcard(ctx, card, cardX, cardY, hasImage && img ? img : null);
+    ctx.restore();
+  }
+}
+
+window.CanalRecallGameModules = window.CanalRecallGameModules || [];
+window.CanalRecallGameModules.push(GameLandmarkRuntime);

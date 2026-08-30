@@ -15,7 +15,7 @@
     "build:canal-vehicles": "node scripts/build-3d-bundles.mjs",
     "build:canal-3d": "node scripts/build-3d-bundles.mjs",
     "dev": "tsx server.ts",
-    "build": "npm run build:canal-car && npm run build:canal-three && npm run build:canal-vehicles && npm run build:canal-road-graph && npm run build:canal-bottom-hud && npm run build:canal-cards && npm run build:canal-answer-path && npm run build:canal-neighborhoods && npm run build:canal-bridges && npm run build:canal-buildings && npm run build:canal-recall-store && npm run canal:firebase-config && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "npm run build:canal-car && npm run build:canal-three && npm run build:canal-vehicles && npm run build:canal-road-graph && npm run build:canal-bottom-hud && npm run build:canal-cards && npm run build:canal-answer-path && npm run build:canal-neighborhoods && npm run build:canal-bridges && npm run build:canal-buildings && npm run build:canal-game-landmarks && npm run build:canal-recall-store && npm run canal:firebase-config && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -39,7 +39,7 @@
     "build:roof-colours": "tsx scripts/build-satellite-roof-colours.ts",
     "build:canal-neighborhoods": "esbuild src/canalRecall/neighborhoodState.ts --bundle --format=iife --global-name=CanalRecallNeighborhood --outfile=public/canal-drive/js/neighborhood-state.bundle.js --minify",
     "test:neighborhoods": "tsx scripts/check-neighborhood-transitions.ts",
-    "check:canal": "npm run lint && npm run build:canal-road-graph && npm run build:canal-bottom-hud && npm run build:canal-cards && npm run build:canal-answer-path && npm run test:canal-game-structure && npm run test:canal-car && npm run test:canal-streets && npm run test:neighborhoods && npm run test:bridge-crossings && npm run test:bridge-distractors && npm run test:bridge-railways && npm run test:srs && npm run test:road-graph && npm run test:bottom-hud && npm run test:notice-cards && npm run test:canal-answer-path && npm run test:reachability && npm run build-storybook",
+    "check:canal": "npm run lint && npm run build:canal-road-graph && npm run build:canal-bottom-hud && npm run build:canal-cards && npm run build:canal-answer-path && npm run build:canal-game-landmarks && npm run test:landmark-data && npm run test:canal-game-structure && npm run test:canal-car && npm run test:canal-streets && npm run test:neighborhoods && npm run test:bridge-crossings && npm run test:bridge-distractors && npm run test:bridge-railways && npm run test:srs && npm run test:road-graph && npm run test:bottom-hud && npm run test:notice-cards && npm run test:canal-answer-path && npm run test:reachability && npm run build-storybook",
     "enrich:english": "tsx scripts/translate-extracts-to-english.ts",
     "test:canal-buildings": "tsx scripts/check-canal-buildings.ts",
     "test:osm-buildings": "tsx scripts/check-osm-building-appearance.ts",
@@ -55,7 +55,9 @@
     "build:bridge-distractors": "tsx scripts/build-bridge-distractors.ts",
     "build:bridge-railways": "tsx scripts/build-bridge-railways.ts",
     "test:bridge-railways": "tsx scripts/check-bridge-railways.ts",
-    "test:bridge-distractors": "tsx scripts/check-bridge-distractors.ts"
+    "test:bridge-distractors": "tsx scripts/check-bridge-distractors.ts",
+    "build:canal-game-landmarks": "esbuild src/canalRecall/game/landmarkRuntime.ts --bundle --format=iife --outfile=public/canal-drive/js/game-landmarks.bundle.js",
+    "test:landmark-data": "tsx scripts/check-landmark-data.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
