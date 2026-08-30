@@ -168,6 +168,7 @@ class Game {
     this._landmarkNoticeDuration = 6;
     this._landmarkImages = new Map();
     this._blockedBoatFrames = 0;
+    this._blockedCarFrames = 0;
 
     this._alanLinkBounds = null;
     this._githubLinkBounds = null;
@@ -1406,13 +1407,14 @@ class Game {
     if (this.travelMode === 'car') {
       const road = this.track.getNearestRoad(this.player.x, this.player.y);
       const previousRoad = this.track.getNearestRoad(previousPlayerPosition.x, previousPlayerPosition.y);
-      CanalRecallCar.constrainCarToRoad(
+      const guard = CanalRecallCar.constrainCarToRoad(
         this.player,
         previousPlayerPosition,
         road,
         previousRoad,
-        { edgeTolerance: CAR_ROAD_EDGE_TOLERANCE }
+        { edgeTolerance: CAR_ROAD_EDGE_TOLERANCE, blockedFrames: this._blockedCarFrames }
       );
+      this._blockedCarFrames = guard === 'rolled-back' ? this._blockedCarFrames + 1 : 0;
     } else if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
       this._blockedBoatFrames++;
       // Do not let a fast frame step carry the boat across a quay. The old

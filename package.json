@@ -19,6 +19,7 @@
     "lint": "tsc --noEmit",
     "test:srs": "tsx scripts/check-spaced-repetition.ts",
     "test:canal-car": "tsx scripts/check-canal-car.ts",
+    "test:reachability": "tsx scripts/check-road-reachability.ts",
     "test:canal-buildings": "tsx scripts/check-canal-buildings.ts",
     "test:osm-buildings": "tsx scripts/check-osm-building-appearance.ts",
     "test:canal-streets": "tsx scripts/check-canal-street-overlays.ts",

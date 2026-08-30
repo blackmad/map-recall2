@@ -14,7 +14,9 @@ const car = (overrides: Partial<CarKinematics> = {}): CarKinematics => ({
   const subject = car({ x: 70, y: 55, vx: 160, vy: 90 });
   const result = constrainCarToRoad(subject, { x: 38, y: 28 }, road({ dist: 55 }), road({ x: 38, y: 0, dist: 28 }), options);
   assert.equal(result, 'rolled-back');
-  assert.deepEqual({ x: subject.x, y: subject.y }, { x: 38, y: 28 });
+  // The movement across the corridor is discarded; the part along the street
+  // is kept (capped), so clipping a kerb grazes it instead of stopping dead.
+  assert.deepEqual({ x: subject.x, y: subject.y }, { x: 50, y: 28 });
   assert.equal(subject.vy, 0, 'rollback removes velocity pointing into a canal/block');
   assert.ok(subject.speed < 180, 'rollback sheds speed');
 }

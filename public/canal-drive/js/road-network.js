@@ -290,27 +290,71 @@ class RoadNetwork {
   // The routing graph is identical for every query against this network, so
   // build it once. Retargeting an unreachable destination would otherwise
   // rebuild it for each candidate it tries.
+  // Sharing a vertex is not enough on its own. OSM models a side street
+  // meeting a through street as a node *inside* the through way, and both the
+  // extract builder and the loader run Douglas-Peucker, which is free to drop
+  // exactly that vertex — 10% of shared junction vertices disappear. The
+  // through street then runs straight past the side street with no shared
+  // point, and the side street becomes its own island: drivable, but with no
+  // route in or out. Stitching every way's endpoint onto any centreline that
+  // passes within a few metres puts those T-junctions back. It cuts the
+  // Amsterdam street graph from 1679 components to 469 and lifts the largest
+  // component from 56% of the network to 75%. See scripts/check-road-reachability.ts.
   _routingGraph() {
     if (this._graphCache) return this._graphCache;
     const mergeSize = 18; // ~6 m: join mapped endpoints without inventing cross-bank shortcuts
     const nodes = new Map();
+    const keyFor = (point) => `${Math.round(point.x / mergeSize)},${Math.round(point.y / mergeSize)}`;
     const nodeFor = (point) => {
-      const key = `${Math.round(point.x / mergeSize)},${Math.round(point.y / mergeSize)}`;
+      const key = keyFor(point);
       if (!nodes.has(key)) nodes.set(key, { key, x: point.x, y: point.y, edges: [] });
       return nodes.get(key);
     };
+    const link = (a, b) => {
+      if (a === b) return;
+      if (a.edges.some(edge => edge.node === b)) return;
+      const weight = dist(a.x, a.y, b.x, b.y);
+      a.edges.push({ node: b, weight });
+      b.edges.push({ node: a, weight });
+    };
     for (const segment of this.segments) {
       for (let i = 1; i < segment.points.length; i++) {
-        const a = nodeFor(segment.points[i - 1]);
-        const b = nodeFor(segment.points[i]);
-        if (a === b) continue;
-        const weight = dist(a.x, a.y, b.x, b.y);
-        a.edges.push({ node: b, weight });
-        b.edges.push({ node: a, weight });
+        link(nodeFor(segment.points[i - 1]), nodeFor(segment.points[i]));
+      }
+    }
+    for (let segIdx = 0; segIdx < this.segments.length; segIdx++) {
+      const points = this.segments[segIdx].points;
+      if (points.length < 2) continue;
+      for (const end of [points[0], points[points.length - 1]]) {
+        const from = nodes.get(keyFor(end));
+        if (!from) continue;
+        for (const road of this._roadsNear(end.x, end.y)) {
+          if (road.segIdx === segIdx) continue;
+          const hit = this._closestPointOnSeg(end.x, end.y, road.a, road.b);
+          if (hit.dist > JUNCTION_STITCH_RADIUS) continue;
+          // Attach to whichever end of the crossed span is nearer, so the
+          // stitched edge follows the road rather than cutting a corner.
+          const nearer = dist(end.x, end.y, road.a.x, road.a.y) <= dist(end.x, end.y, road.b.x, road.b.y) ? road.a : road.b;
+          const target = nodes.get(keyFor(nearer));
+          if (target) link(from, target);
+        }
       }
     }
     this._graphCache = { nodes, allNodes: [...nodes.values()] };
     return this._graphCache;
+  }
+
+  // Centreline spans in the 3×3 grid neighbourhood around a point.
+  _roadsNear(x, y) {
+    const gx = Math.floor(x / ROAD_GRID_CELL), gy = Math.floor(y / ROAD_GRID_CELL);
+    const found = [];
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -1; dy <= 1; dy++) {
+        const cell = this.grid[`${gx + dx},${gy + dy}`];
+        if (cell) found.push(...cell.roads);
+      }
+    }
+    return found;
   }
 
   _nearestGraphNode(point) {
