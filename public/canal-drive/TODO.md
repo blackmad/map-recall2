@@ -24,26 +24,6 @@ regression location, or the threshold was set optimistically and should be
 measured rather than asserted. Decide which; do not just move the number.
 *This is the only failing test in the repo. Everything else is green.*
 
-**2. Bridge questions that cannot be answered.**
-"Gooilijn", "Oude Lijn" and "Westelijke Ringspoorbaan" are railway *lines*, and
-their viaducts are each asked about separately — 17 crossings for the Westelijke
-Ringspoorbaan alone. Nothing in the extract distinguishes a railway bridge from
-a road bridge, so this is a tag in the extract builder, not a runtime filter.
-Cycling *under* a viaduct should probably not be a bridge question at all.
-*Cheap, and every occurrence actively teaches a non-answer.*
-
-**3. Split the answer path out of `game.js`.**
-`game.js` is 3,401 lines and grew 70 lines in the session that added the "no
-idea" button, the street-knowledge card, the bottom-HUD call sites and the boat
-wiring — each small, each landing there because the file was already open. The
-concrete cost is already visible: `_submitCanalAnswer` now carries scoring,
-review scheduling and name-reveal logic, and **the "no idea" contract has no
-test** — no attempt recorded, `again` scheduling — because it cannot get one
-while it lives in untyped `game.js`.
-Extract it as a typed leaf with the recall store injected, then pin the
-contract. Do this before the next presentation change, not after.
-*This is the constraint that generates the other defects; it blocks item 4.*
-
 **4. Clicking a building silently does nothing.**
 `_inspectBuildingAt` returns without feedback for any vector-tile building
 without a name — a deliberate choice to avoid "Unnamed building" cards, but the

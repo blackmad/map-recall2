@@ -6,6 +6,19 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The answer path is a typed leaf now.** `_submitCanalAnswer` still owns the
+  canvas prompt and bridge-crossing handoff, but answer normalization, scoring,
+  streaks, feedback, name reveal and the recall write live in
+  `src/canalRecall/answerPath.ts`. The recall store is injected through a small
+  interface, so this behavior no longer requires constructing the 3,000-line
+  canvas game to exercise it.
+
+  `test:canal-answer-path` pins the reason for the extraction: "No idea" leaves
+  attempts and correct answers unchanged, resets the streak, reveals the name,
+  records a miss through the injected store, and that miss receives the real
+  scheduler's `again` rating. The module ships as a 1.6 KB IIFE beside the other
+  typed Canal Recall leaves and is built by both the main build and canal check.
+
 - **Boat mode has a real boat.** Sketchfab's "Motor Boat" by gogiart, verified
   through the Sketchfab API as CC Attribution — commercial use allowed, credit
   required — converted from OBJ and put through the same reduction the bicycle
