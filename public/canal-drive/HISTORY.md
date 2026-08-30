@@ -6,6 +6,35 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The boat could not fit through Amsterdam's locks.** Reported from play:
+  stuck in the Stadionsluis. The routing graph was innocent — the lock shares
+  *exact* vertices with Stadiongracht at both ends, so the router plans straight
+  through, and the visible gap in the water is the CARTO basemap not drawing
+  under the lock structure. What pinned the boat was the hull corridor.
+
+  Bridge decks and lock structures are rendered above the water fill, so the
+  basemap reports dry land exactly where a boat must pass, and every hull point
+  fell back to a distance-from-centreline test of `min(width * 0.28, 13)` px =
+  8.96 px on a canal. The boat's own half-beam is 8.16 px. A perfectly centred,
+  perfectly aligned boat had **0.80 px of margin**, so any real steering pinned
+  it — 180 of 270 plausible poses through the Stadionsluis were blocked.
+
+  Two things were wrong. The tolerance ignored the beam of the vessel the game
+  asks you to steer; it is now anchored to the way's own mapped half-width with
+  a floor that guarantees the hull fits. And it demanded *every* hull point sit
+  near a centreline, which is simply wrong where a lock is shorter than the
+  boat: bow and stern overhang the ends of the lock's geometry, land past the
+  last vertex, and measure a full half-length away from it. The fallback now
+  tests the boat's centre, which is the real evidence of being on the channel
+  and still cannot authorize roaming onto a quay.
+
+  `test:boat-navigability` drives a boat along real extract geometry through
+  every named lock in the city, at nine steering poses per step, with the
+  basemap reporting dry land throughout — the actual case at a lock. It found
+  fifteen more stranding locks beyond the reported one. A sentinel keeps the old
+  rule written out and asserts it still fails, so the suite cannot quietly stop
+  testing anything.
+
 - **A POI card is held by proximity, marked on the map, and only shown when it
   has something to say.** Three reported problems with the same root: the card
   was one countdown serving three different intentions.
