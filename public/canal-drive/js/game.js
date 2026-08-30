@@ -1898,8 +1898,7 @@ class Game {
   }
 
   _normaliseCanalName(value) {
-    return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    return CanalRecallAnswerPath.normaliseAnswer(value);
   }
 
   // `noIdea` is the player saying they do not know, which is different from
@@ -1914,40 +1913,44 @@ class Game {
     if (!this.quizPromptName) return;
     const correctName = this.quizPromptName;
     const answer = selectedAnswer == null ? this._promptInput.value : selectedAnswer;
-    const correct = !noIdea && this._normaliseCanalName(answer) === this._normaliseCanalName(correctName);
-    if (!noIdea) this.quizAttempts++;
-    if (noIdea) {
-      this.quizStreak = 0;
-      this.quizFeedback = `This is ${correctName}`;
-      this._revealName(correctName);
-    } else if (correct) {
-      this.quizCorrect++;
-      this.quizStreak++;
-      if (this.quizStreak > this.quizBestStreak) this.quizBestStreak = this.quizStreak;
-      const base = Math.round(100 * (DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85));
-      // The combo multiplier is arcade scoring; calm mode still scores the
-      // answer so a mid-route toggle does not leave a hole in the tally.
-      const streakMultiplier = this.gameyFeatures ? 1 + 0.1 * Math.min(this.quizStreak - 1, 9) : 1;
-      const earned = Math.round(base * streakMultiplier);
-      this.quizPoints += earned;
-      this.learnedNames.add(correctName);
-      this._revealName(correctName);
-      if (!this.gameyFeatures) {
-        this.quizFeedback = `Correct — ${correctName}`;
-      } else if (this.quizStreak >= 2) {
-        this.quizFeedback = `Correct — ${correctName}  (+${earned} pts, ${this.quizStreak}× streak)`;
-      } else {
-        this.quizFeedback = `Correct — ${correctName}  (+${earned} pts)`;
-      }
+    // A crossing answer belongs to the crossing, not to wherever the vehicle
+    // rolled to a stop; everything else belongs to where the player was.
+    let recallFeature = null;
+    if (this._pendingCrossing && this.quizPromptKind === 'crossing-water') {
+      recallFeature = this._pendingCrossing.water;
+    } else if (this._pendingCrossing && this.quizPromptKind === 'bridge') {
+      recallFeature = { name: correctName, type: 'bridge', cityId: 'amsterdam', center: this._pendingCrossing.crossing.center };
     } else {
-      this.quizStreak = 0;
-      this.quizFeedback = `Not quite — this is ${correctName}`;
-      // A name you got wrong is exactly the one worth having written on the
-      // map while you drive along it.
-      this._revealName(correctName);
+      recallFeature = this._recallFeatureAt(correctName, this.player.x, this.player.y);
     }
-    this._promptFeedback.textContent = this.quizFeedback;
-    this._promptFeedback.style.color = correct ? '#4ade80' : noIdea ? '#7DD3FC' : '#fbbf24';
+    const result = CanalRecallAnswerPath.submitAnswer({
+      correctName,
+      answer,
+      noIdea,
+      score: {
+        attempts: this.quizAttempts,
+        correct: this.quizCorrect,
+        points: this.quizPoints,
+        streak: this.quizStreak,
+        bestStreak: this.quizBestStreak,
+      },
+      difficultyMultiplier: DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85,
+      gameyFeatures: this.gameyFeatures,
+      recallFeature,
+      recallStore: this.recall,
+      revealName: name => this._revealName(name),
+      markLearned: name => this.learnedNames.add(name),
+      rememberKnownPlace: (name, center) => this._rememberKnownPlace(name, center),
+    });
+    const correct = result.wasCorrect;
+    this.quizAttempts = result.attempts;
+    this.quizCorrect = result.correct;
+    this.quizPoints = result.points;
+    this.quizStreak = result.streak;
+    this.quizBestStreak = result.bestStreak;
+    this.quizFeedback = result.feedback;
+    this._promptFeedback.textContent = result.feedback;
+    this._promptFeedback.style.color = result.feedbackColor;
     // Neither a bridge nor the water beneath it is what the wheels are on:
     // keep the waterway/street the player is actually travelling, or the route
     // quiz re-fires the moment the prompt closes.
@@ -1962,22 +1965,6 @@ class Game {
       // very next frame.
       if (this.track.getRoadName(this.player.x, this.player.y) === correctName) {
         this.quizCurrentName = correctName;
-      }
-    }
-    if (this.recall) {
-      // A crossing answer belongs to the crossing, not to wherever the vehicle
-      // rolled to a stop; everything else belongs to where the player was.
-      let feature = null;
-      if (this._pendingCrossing && this.quizPromptKind === 'crossing-water') {
-        feature = this._pendingCrossing.water;
-      } else if (this._pendingCrossing && this.quizPromptKind === 'bridge') {
-        feature = { name: correctName, type: 'bridge', cityId: 'amsterdam', center: this._pendingCrossing.crossing.center };
-      } else {
-        feature = this._recallFeatureAt(correctName, this.player.x, this.player.y);
-      }
-      if (feature) {
-        this.recall.record(feature, correct);
-        if (correct) this._rememberKnownPlace(correctName, feature.center);
       }
     }
     this._pendingCrossing = null;
@@ -2931,6 +2918,12 @@ class Game {
         // is an asset register number, not a name a player can learn, so they
         // are dropped rather than offered as questions or answers.
         if (!feature.name || lines.length === 0 || GENERIC_BRIDGE_NAME.test(feature.name)) return null;
+        // "Gooilijn" and "Westelijke Ringspoorbaan" are railway *lines*, and
+        // their viaducts were each asked about separately — 17 questions for
+        // the Westelijke Ringspoorbaan alone. Riding under a viaduct is not a
+        // bridge you can name, so a rail-only crossing asks nothing. Bridges
+        // that carry a road as well as rails keep their question.
+        if (feature.carriesRailway && !feature.carriesRoad) return null;
         // Precomputed by scripts/build-bridge-crossings.ts: the physical
         // crossings this named feature is made of, and the water under each.
         // A bridge missing from the index still asks its one question, it just

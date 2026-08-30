@@ -148,7 +148,7 @@ for (const item of source.features) {
   if (tags.highway && drivableHighways.has(tags.highway) && paths.length) {
     const routingFeature: StreetFeature & { bridge?: boolean } = {
       id: `routing_${routingRoadCandidates.length}`, name, type: ['primary', 'secondary', 'tertiary'].includes(tags.highway) ? 'avenue' : 'street',
-      cityId: 'amsterdam', center: featureCenter, funFact: '', clues: [], distractors: [], difficulty: 'hard', highway: tags.highway,
+      cityId: 'amsterdam', center: featureCenter, funFact: '', clues: [], distractors: [], difficulty: 'hard', highway: tags.highway, railway: tags.railway,
     };
     if (tags.bridge === 'yes') routingFeature.bridge = true;
     routingRoadCandidates.push({

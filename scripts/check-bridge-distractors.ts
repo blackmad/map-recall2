@@ -26,7 +26,12 @@ interface BridgeFeature {
   name: string;
   center: [number, number];
   distractors?: string[];
+  carriesRailway?: boolean;
+  carriesRoad?: boolean;
 }
+
+/** Railway lines are never asked about, so they carry no options. */
+const isRailwayOnly = (b: BridgeFeature) => !!b.carriesRailway && !b.carriesRoad;
 
 const bridges = JSON.parse(readFileSync(resolve(extractDir, 'bridges.json'), 'utf8')) as BridgeFeature[];
 const crossings = JSON.parse(
@@ -35,6 +40,7 @@ const crossings = JSON.parse(
 
 const candidates: BridgeDistractorCandidate[] = bridges
   .filter((bridge) => bridge.name && !GENERIC_BRIDGE_NAME.test(bridge.name))
+  .filter((bridge) => !isRailwayOnly(bridge))
   .map((bridge) => ({
     id: bridge.id,
     name: bridge.name,

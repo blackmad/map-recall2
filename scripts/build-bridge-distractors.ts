@@ -34,8 +34,13 @@ interface BridgeFeature {
   name: string;
   center: [number, number];
   distractors?: string[];
+  carriesRailway?: boolean;
+  carriesRoad?: boolean;
   [key: string]: unknown;
 }
+
+/** A railway line is not a bridge anyone can name, so it is never an option. */
+const isRailwayOnly = (bridge: BridgeFeature) => !!bridge.carriesRailway && !bridge.carriesRoad;
 
 const bridges = JSON.parse(readFileSync(publishedPath, 'utf8')) as BridgeFeature[];
 const crossings = JSON.parse(
@@ -44,6 +49,7 @@ const crossings = JSON.parse(
 
 const candidates: BridgeDistractorCandidate[] = bridges
   .filter((bridge) => bridge.name && !GENERIC_BRIDGE_NAME.test(bridge.name))
+  .filter((bridge) => !isRailwayOnly(bridge))
   .map((bridge) => ({
     id: bridge.id,
     name: bridge.name,
@@ -92,8 +98,12 @@ for (const sample of ['Magere Brug', 'Blauwbrug', 'Torensluis', 'Berlagebrug', '
 }
 
 for (const bridge of bridges) {
+  // Anything outside the candidate pool — a railway line, or one of the 50
+  // register-numbered "Brug 811"s — is never asked about, so whatever options
+  // it still carries are dead data. Worse, they name features the game does
+  // not ask about, which is how a railway line leaked back in as an answer.
   const next = assigned.get(bridge.id);
-  if (next) bridge.distractors = next;
+  bridge.distractors = next ?? [];
 }
 
 const target = process.argv.includes('--publish') ? publishedPath : stagingPath;
