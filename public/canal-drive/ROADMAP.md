@@ -35,6 +35,14 @@ design notes for the larger bets live below the board.
 
 ## Recently done
 
+- **A landmark with no article still says something.** 124 of the 420
+  landmarks have no encyclopedia text — mostly OBA branch libraries and
+  neighborhood cinemas, which nobody has written an article about — and their
+  card was a badge, a name and a blank strip, which read as a rendering
+  failure. The body now falls back to what the game does know: "A library in
+  Bos en Lommer. No encyclopedia article yet." For a game about where things
+  are, the kind and the neighborhood are worth reading.
+
 - **One theme, two surfaces.** The stylesheet had the ink theme and then, below
   it, a paper "map sheet" redesign that re-declared the *same unscoped
   selectors* to override it — `.setup-field`, `.master-toggle`,

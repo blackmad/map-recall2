@@ -2952,6 +2952,15 @@ class Game {
     return this.neighborhoods.find(hood => hood.rings.some(ring => this._pointInPolygon(x, y, ring))) || null;
   }
 
+  // The fallback body for a landmark with no encyclopedia text: what it is and
+  // where it is, in a sentence.
+  _placeOnlyDetail(landmark) {
+    const kind = String(landmark.type || 'landmark').replace('_', ' ');
+    const article = /^[aeiou]/i.test(kind) ? 'An' : 'A';
+    const where = this.currentNeighborhood ? ` in ${this.currentNeighborhood}` : ' in Amsterdam';
+    return `${article} ${kind}${where}. No encyclopedia article yet.`;
+  }
+
   // Fetch a landmark photo once, on demand. Every landmark the extract has a
   // Wikipedia image for can show one; the card falls back to text until it
   // arrives, and a failure is remembered so it is not retried every frame.
@@ -3001,7 +3010,13 @@ class Game {
     const lm = this._landmarkNotice;
     const img = this._landmarkImages && this._landmarkImages.get(lm.id);
     const hasImage = img && img.complete && img.naturalWidth > 0;
-    const text = lm.longDetail || lm.detail || '';
+    // 124 of the 420 landmarks have no encyclopedia text at all — mostly OBA
+    // branch libraries and neighborhood cinemas, which no one has written an
+    // article about. A card with a badge, a name and nothing else read as a
+    // rendering failure, so say the one true thing the game does know: what
+    // kind of place it is and which neighborhood it is in. For a game about
+    // where things are, that is worth reading.
+    const text = lm.longDetail || lm.detail || this._placeOnlyDetail(lm);
     const category = lm.type ? lm.type.toUpperCase() : '';
 
     // Card dimensions
