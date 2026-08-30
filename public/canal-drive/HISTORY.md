@@ -6,6 +6,21 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **`game.js` is an orchestrator instead of the application.** The partial
+  answer-path and notice-card extractions did not finish the original job: the
+  `Game` class was still 3,258 lines and owned route setup, recall, landmarks,
+  every major renderer and persistence. Those method bodies now live in four
+  explicit runtime subsystems (`game-route`, `game-recall`, `game-landmarks`
+  and `game-presentation`); `game.js` is 658 lines of construction, camera and
+  frame/movement orchestration. The split preserves one game-state boundary,
+  so it does not introduce duplicate stores or event loops merely to make the
+  files smaller.
+
+  `test:canal-game-structure` checks script order, unique method ownership,
+  installation on `Game`, one startup callback and an 800-line ceiling for the
+  core. That makes the decomposition an enforced architecture rather than a
+  one-time file shuffle.
+
 - **The driving harness measures progress along the drive.** Its 25-second
   "lost" timer claimed to measure progress along the planned route, but used
   straight-line distance to the destination. A correct Amsterdam route often
