@@ -129,6 +129,33 @@ const ROAD_GRID_CELL = 100;                    // px — spatial grid cell size 
 // still count as a junction. Matched to the 3 m Douglas-Peucker tolerance the
 // extract builder uses, which is what displaces these endpoints in the first place.
 const JUNCTION_STITCH_RADIUS = 10;
+// Seconds between bridge questions. Amsterdam has a bridge every hundred
+// metres; asking about each one buries the street recall the route is there to
+// teach, so crossings stay an occasional highlight.
+const BRIDGE_QUIZ_COOLDOWN = 90;
+// "Brug 117" is a municipal asset number rather than a name anyone learns.
+const GENERIC_BRIDGE_NAME = /^\s*(brug\s*)?\d+\s*$/i;
+// px — a learned-bridge label closer than this to the vehicle is hidden, and
+// it fades in over the same distance again.
+const BRIDGE_LABEL_CLEARANCE = 70;
+// Which mapped areas count as a neighborhood, finest first. A point inside De
+// Pijp should be reported as De Pijp rather than as Zuid, and the districts
+// exist so that the rest of the city is not simply nameless.
+const NEIGHBORHOOD_KIND_RANK = {
+  city_block: 5, neighbourhood: 4, neighborhood: 4, quarter: 3, locality: 2, suburb: 1,
+};
+const NEIGHBORHOOD_NOTICE_SECONDS = 5.5;   // how long a postcard stays up
+const NEIGHBORHOOD_NOTICE_GRACE = 1.5;     // seconds before the first one can fire
+// ms the answer card stays up after an answer. A correction has a name in it
+// that the player has just proved they do not know, so it lingers.
+const ANSWER_HOLD_CORRECT = 900;
+const ANSWER_HOLD_WRONG = 3200;
+// px — the postcard's height, shared so the landmark card can stack above one.
+const NEIGHBORHOOD_CARD_HEIGHT = 180;
+// Degrees of tilt in the 2D views. Enough for buildings to show a face and for
+// the city to read as a city; not enough to lose the plan-view legibility the
+// map quiz depends on.
+const TOPDOWN_TILT_DEGREES = 14;
 const FINISH_RADIUS = 80;                      // px — proximity to finish point to complete race
 
 // --- Road Widths (px) ---

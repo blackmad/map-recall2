@@ -611,7 +611,9 @@ class RoadNetwork {
   }
 
   // Draw road names + endpoint labels at screen resolution (called each frame from renderer)
-  drawLabels(ctx, camera, learnedNames) {
+  // `hiddenName` is the street currently being asked about: its label would
+  // otherwise sit on the map spelling out the answer.
+  drawLabels(ctx, camera, learnedNames, hiddenName = '') {
     const z = camera.zoom || 1;
     const fontSize = Math.max(8, Math.round(9 * z));
     ctx.font = `bold ${fontSize}px Arial, sans-serif`;
@@ -628,6 +630,7 @@ class RoadNetwork {
     if (this.labels && this.labels.length > 0) {
       for (const lbl of this.labels) {
         if (learnedNames && !learnedNames.has(lbl.text)) continue;
+        if (hiddenName && lbl.text === hiddenName) continue;
         const screen = camera.worldToScreen(lbl.x, lbl.y);
         const screenX = screen.x;
         const screenY = screen.y;

@@ -22,6 +22,12 @@ type HarnessGame = {
   _renderNeighborhoodNotice: () => void;
   ctx: CanvasRenderingContext2D;
   hud: { drawCurrentLocation: (...args: unknown[]) => void };
+  camera: { x: number; y: number; detached: boolean; panX: number; pan(dx: number, dy: number): void; resetPan(): void; update(target: unknown, dt: number): void };
+  neighborhoods: Array<{ name: string; kind: string; rank: number; rings: Array<Array<{ x: number; y: number }>> }>;
+  _previousNeighborhood: string;
+  raceTime: number;
+  _updateLandmarks: (dt: number) => void;
+  _neighborhoodNoticeTimer: number;
 };
 
 declare global {
@@ -179,4 +185,51 @@ test('classic neighborhood postcard renders as large-letter artwork', async ({ p
     body: await page.locator('#gameCanvas').screenshot(),
     contentType: 'image/png',
   });
+});
+
+test('panning the map leaves the vehicle to drive across it', async ({ page }) => {
+  await openCarRoute(page);
+  const result = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const camera = game.camera;
+    camera.resetPan();
+    for (let frame = 0; frame < 60; frame++) camera.update(game.player, 1 / 60);
+    const settled = { x: camera.x, y: camera.y };
+    camera.pan(150, 90);
+    // The vehicle carries on while the player is looking somewhere else.
+    for (let frame = 0; frame < 60; frame++) {
+      game.player.x += 8;
+      camera.update(game.player, 1 / 60);
+    }
+    const chasedThePlayer = Math.abs(camera.x - (settled.x + 60 * 8)) < 60;
+    return { detached: camera.detached, chasedThePlayer, panX: Math.round(camera.panX) };
+  });
+  expect(result.detached).toBe(true);
+  expect(result.chasedThePlayer).toBe(false);
+  // The re-centre affordance keys off this drift, which grows as the vehicle
+  // drives away from the held view.
+  expect(Math.abs(result.panX)).toBeGreaterThan(40);
+});
+
+test('the first neighborhood entered also gets a postcard', async ({ page }) => {
+  await openCarRoute(page);
+  const notice = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    game.raceTime = 12;
+    game._previousNeighborhood = '';
+    game._neighborhoodNotice = null;
+    game._neighborhoodNoticeTimer = 0;
+    game._updateLandmarks(0.1);
+    return {
+      name: game._neighborhoodNotice && game._neighborhoodNotice.name,
+      timer: game._neighborhoodNoticeTimer,
+      kinds: [...new Set(game.neighborhoods.map(hood => hood.kind))].sort(),
+    };
+  });
+  expect(notice.name).toBeTruthy();
+  expect(notice.timer).toBeGreaterThan(0);
+  // Districts and quarters count as places too, which is what lifted postcard
+  // coverage from a tenth of the network to nearly all of it.
+  expect(notice.kinds).toContain('quarter');
+  expect(notice.kinds).toContain('suburb');
 });
