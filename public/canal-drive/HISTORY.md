@@ -34,23 +34,28 @@ is the way it is, and that is the expensive part to recover later.
   scheduler's `again` rating. The module ships as a 1.6 KB IIFE beside the other
   typed Canal Recall leaves and is built by both the main build and canal check.
 
-- **Boat mode has a real boat.** Sketchfab's "Motor Boat" by gogiart, verified
-  through the Sketchfab API as CC Attribution — commercial use allowed, credit
-  required — converted from OBJ and put through the same reduction the bicycle
-  got: welded, simplified, textures resized to 512 px, quantized. **21.19 MB →
-  1.82 MB**, 220,008 → 66,000 triangles, with its ten JPEGs intact because
-  unlike the bicycle this model is genuinely textured. `NOTICE.md` credits both
-  models and states that both ship modified, which CC BY and CC BY-SA require.
+- **Boat mode is a canal sloop.** The first boat was a licensed Sketchfab motor
+  yacht; it is an aluminium sloop generated with Meshy AI now, which is both more
+  Amsterdam and far cheaper: **2.85 MB → 0.24 MB**, 158,256 → 23,734 triangles,
+  against the yacht's 1.82 MB. It arrives as raw geometry — no normals, no
+  materials, no textures — so glTF's flat-shading rule would have made a smooth
+  hull look faceted and every mesh default white. Normals are computed and an
+  aluminium material applied on load, which is cheaper than shipping normals:
+  they would have added about 40% to the file for something the GPU can derive.
 
-  The bicycle and the boat now share one custom-layer scaffold (`Vehicle3D` in
+  Its bow is on −X, where the motor yacht's was on +X, so the heading offset had
+  to flip. Nobody would catch that by looking — a boat sailing stern-first reads
+  as very nearly right in a still — which is exactly why `boat-model.spec.ts`
+  pins the offset. The bow was confirmed from the hull's own beam profile rather
+  than by reading an axes helper: the half-beam tapers to 0.20 at −X and holds
+  0.37 at +X, which is a bow and a transom.
+
+  The bicycle and the boat share one custom-layer scaffold (`Vehicle3D` in
   `player-vehicles-source.js`): load a GLB, ground it, draw it in world space
   with the map's pitch and bearing. They differ only in the model, which way its
-  nose points, and what moves. The bicycle's front wheel is on its native −X and
-  the boat's bow is on +X, so they carry opposite heading offsets — swap them and
-  the boat sails stern-first, which looks nearly right in a still, so
-  `boat-model.spec.ts` pins both offsets. A hull has no steering geometry to
-  turn, so its turn shows in the whole boat: it heels into a held lock and
-  rights itself slowly, and the test pins that too.
+  nose points, and what moves. A hull has no steering geometry to turn, so its
+  turn shows in the whole boat: it heels into a held lock and rights itself
+  slowly, which the same test pins.
 
 - **The bicycle steers and its wheels roll.** The asset was authored mid-turn,
   so the front wheel sat visibly cocked against the frame and never moved. The

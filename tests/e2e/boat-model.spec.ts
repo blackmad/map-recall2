@@ -41,8 +41,10 @@ test('boat mode draws the boat, facing forward', async ({ page }) => {
   expect(report.travelMode).not.toBe('car');
   expect(report.boatLayer).toBe(true);
   expect(report.bikeLayer).toBe(true);
-  // Opposite noses, opposite offsets.
-  expect(report.boatHeading).toBe(0);
+  // The canal sloop's bow is on -X, like the bicycle's front wheel. The motor
+  // boat it replaced pointed the other way, so this value is not incidental:
+  // it is the thing that changes when the model changes.
+  expect(report.boatHeading).toBeCloseTo(Math.PI, 5);
   expect(report.bikeHeading).toBeCloseTo(Math.PI, 5);
   // A held turn leans the hull; letting go brings it back upright.
   expect(Math.abs(report.heeled)).toBeGreaterThan(0.1);
