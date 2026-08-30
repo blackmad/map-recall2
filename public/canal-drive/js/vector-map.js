@@ -11,6 +11,7 @@ class VectorBasemap {
     this._highlightedBuilding = null;
     this._pendingTrees = [];
     this._pendingPlaces = { landmarks: [], boundaries: [] };
+    this._pendingBrandedPois = [];
     this._treesVisible = false;
     this._detailedBuildings = null;
     this._detailedBuildingsVisible = false;
@@ -39,6 +40,7 @@ class VectorBasemap {
       this._ensureBuildingAppearanceLayers();
       this._ensurePlaceLayers();
       this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
+      this.setBrandedPois(this._pendingBrandedPois);
       this.setTrees(this._pendingTrees);
       this._ensureLandmarkLayers();
       this._styleLandmarks();
@@ -132,11 +134,52 @@ class VectorBasemap {
     this.map.addSource('amsterdam-neighborhoods', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
     this.map.addSource('amsterdam-neighborhood-labels', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
     this.map.addSource('amsterdam-pois', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+    this.map.addSource('branded-pois', { type: 'geojson', data: { type: 'FeatureCollection', features: [] }, attribution: 'POIs © OpenStreetMap contributors' });
     const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
     this.map.addLayer({ id: 'neighborhood-boundaries', type: 'line', source: 'amsterdam-neighborhoods', minzoom: 13, paint: { 'line-color': '#8B5CF6', 'line-width': ['interpolate', ['linear'], ['zoom'], 13, 1, 18, 2.5], 'line-opacity': 0.48, 'line-dasharray': [3, 3] } }, before);
     this.map.addLayer({ id: 'poi-dots', type: 'circle', source: 'amsterdam-pois', minzoom: 14.5, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 14.5, 3, 18, 6], 'circle-color': '#FACC15', 'circle-stroke-color': '#071E2B', 'circle-stroke-width': 1.5, 'circle-opacity': 0.9 } });
     this.map.addLayer({ id: 'poi-labels', type: 'symbol', source: 'amsterdam-pois', minzoom: 16, layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': 11, 'text-offset': [0, 1.1], 'text-anchor': 'top', 'text-allow-overlap': false }, paint: { 'text-color': '#FFF7CC', 'text-halo-color': '#071E2B', 'text-halo-width': 2 } });
+    this.map.addLayer({ id: 'brand-poi-dots', type: 'circle', source: 'branded-pois', minzoom: 15.5, paint: { 'circle-radius': 5, 'circle-color': '#FFFFFF', 'circle-stroke-color': '#0F3040', 'circle-stroke-width': 2, 'circle-opacity': 0.9 } });
+    this._loadBrandIcon('albert-heijn', './brand-icons/albert-heijn.svg');
+    this.map.addLayer({ id: 'brand-poi-icons', type: 'symbol', source: 'branded-pois', minzoom: 15.5, filter: ['has', 'icon'], layout: { 'icon-image': ['get', 'icon'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 15.5, 0.62, 18, 0.9], 'icon-allow-overlap': false, 'icon-ignore-placement': false } });
+    this.map.addLayer({ id: 'brand-poi-labels', type: 'symbol', source: 'branded-pois', minzoom: 17, layout: { 'text-field': ['get', 'brand'], 'text-font': ['Noto Sans Bold'], 'text-size': 10, 'text-offset': [0, 1.7], 'text-anchor': 'top', 'text-allow-overlap': false }, paint: { 'text-color': '#E0F2FE', 'text-halo-color': '#071E2B', 'text-halo-width': 2 } });
     this.map.addLayer({ id: 'neighborhood-labels', type: 'symbol', source: 'amsterdam-neighborhood-labels', minzoom: 13, maxzoom: 18.5, layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 13, 11, 17, 16], 'text-letter-spacing': 0.12, 'text-allow-overlap': false }, paint: { 'text-color': '#6D28D9', 'text-halo-color': 'rgba(255,255,255,.9)', 'text-halo-width': 2 } });
+  }
+
+  _loadBrandIcon(id, url) {
+    if (!this.map || this.map.hasImage(id)) return;
+    const image = new Image();
+    image.crossOrigin = 'anonymous';
+    image.onload = () => {
+      if (this.map.hasImage(id)) return;
+      const canvas = document.createElement('canvas');
+      canvas.width = 48; canvas.height = 48;
+      const context = canvas.getContext('2d');
+      context.fillStyle = '#FFFFFF';
+      context.beginPath(); context.arc(24, 24, 22, 0, Math.PI * 2); context.fill();
+      context.strokeStyle = '#0F3040'; context.lineWidth = 2; context.stroke();
+      context.drawImage(image, 9, 9, 30, 30);
+      this.map.addImage(id, context.getImageData(0, 0, 48, 48), { pixelRatio: 2 });
+    };
+    image.onerror = () => console.warn('Brand icon unavailable:', id, url);
+    image.src = url;
+  }
+
+  setBrandedPois(pois) {
+    this._pendingBrandedPois = pois || [];
+    if (!this.map) return;
+    const source = this.map.getSource('branded-pois');
+    if (!source) return;
+    for (const poi of this._pendingBrandedPois) {
+      if (poi.icon && poi.iconUrl) this._loadBrandIcon(poi.icon, poi.iconUrl);
+    }
+    source.setData({
+      type: 'FeatureCollection',
+      features: this._pendingBrandedPois.map(poi => ({
+        type: 'Feature', properties: { id: poi.id, name: poi.name, brand: poi.brand, ...(poi.icon ? { icon: poi.icon } : {}) },
+        geometry: { type: 'Point', coordinates: [poi.center[1], poi.center[0]] }
+      }))
+    });
   }
 
   setPlaces(landmarks, boundaries) {
