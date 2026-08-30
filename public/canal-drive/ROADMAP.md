@@ -7,6 +7,11 @@ design notes for the larger bets live below the board.
 
 ## In progress
 
+- **Typed presentation/runtime split.** `game.js` remains the composition root,
+  but finish, notice, and HUD drawing are moving into props-driven TypeScript
+  leaves that Storybook and direct checks can render without constructing a
+  whole race. Routing is being separated in parallel behind a distance-cost
+  compatible graph API, with an injectable edge-cost seam for future novelty.
 - **English-only encyclopedia text.** `enrich-amsterdam-wikipedia-extracts.ts`
   resolves an English article through the Wikidata `enwiki` sitelink and, when
   that fails, through the Dutch article's interwiki link. What remains are the
@@ -35,9 +40,6 @@ design notes for the larger bets live below the board.
   behind small props-driven adapters. Add fixtures for recall feedback,
   neighborhood entry (photo and fallback), landmark trivia, stacked notices,
   and every finish-card combination; pair them with screenshot regressions.
-- Wider postcard coverage: 29 of the 91 mapped areas carry an enriched
-  Wikipedia blurb and image; the districts and quarters that now supply most
-  postcards mostly do not.
 - Bridge distractors drawn from the same canal ring, so the four options are a
   real test rather than four unrelated bridges.
 - Continue expanding named regression locations around cul-de-sacs and dead
