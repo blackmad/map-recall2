@@ -1,6 +1,94 @@
 # Canal Recall roadmap
 
-## Current implementation status
+This file is the status board for the game, and it is kept current in the same
+change that moves an item — not afterwards. Four sections: what is **done**,
+what is **in progress**, what is **next**, and the **backlog**. Long-form
+design notes for the larger bets live below the board.
+
+## In progress
+
+- **English-only encyclopedia text.** `enrich-amsterdam-wikipedia-extracts.ts`
+  resolves an English article through the Wikidata `enwiki` sitelink and, when
+  that fails, through the Dutch article's interwiki link. What remains are the
+  features with no English article at all — 124 of 236 landmark blurbs and 278
+  of 299 bridge blurbs are still Dutch, tagged `wikipediaExtractLang: "nl"`.
+  Those need translating or withholding; showing Dutch to a player learning the
+  city in English is not the intent.
+- **Satellite roof colouring.** A pre-pass that samples free EU imagery
+  (Sentinel-2, or the Dutch national ortho WMS, which is far higher resolution)
+  per building footprint and bakes a roof colour into the extract, so the city
+  stops being uniformly grey where OSM has no `roof:colour`.
+
+## Next
+
+- Wider postcard coverage: 29 of the 91 mapped areas carry an enriched
+  Wikipedia blurb and image; the districts and quarters that now supply most
+  postcards mostly do not.
+- Bridge distractors drawn from the same canal ring, so the four options are a
+  real test rather than four unrelated bridges.
+- Continue expanding named regression locations around cul-de-sacs and dead
+  ends in `scripts/check-canal-car.ts`.
+
+## Recently done
+
+- **Routing reachability.** OSM models a side street meeting a through street
+  as a node *inside* the through way, and both the extract builder and the
+  loader run Douglas-Peucker, which drops 9.9% of those shared junction
+  vertices — the side street then has no shared point with the street it
+  visibly joins and becomes its own island: drivable, unroutable. The routing
+  graph now stitches every way endpoint onto any centreline within 10 px (~3 m,
+  the simplifier's own tolerance). Components: 1679 → 442; largest component:
+  56.5% → 75.3% of the network. Measured by `npm run test:reachability`.
+- **Cars no longer wedge against the kerb.** The road guard undid the whole
+  step whenever a frame ended outside the corridor, so a car resting against a
+  kerb with its nose pointing off-road accelerated, left the corridor, and was
+  put back in the same spot forever. It now keeps the along-the-street part of
+  the movement, cancels outward velocity on the shoulder, eases the heading
+  back along the road, and walks the car to the centreline after repeated
+  blocks. Over the same 24 harness drives: 11 arrivals and 151 kerb wedges
+  before, 18 and 16 after (`tests/e2e/driving-harness.spec.ts`).
+- **Neighborhood postcards actually appear.** Only 42 of 91 mapped areas are
+  tagged `neighbourhood`, covering a tenth of the drivable network, and the
+  first area entered was adopted silently — so the card for the neighborhood a
+  route starts in never showed at all. Quarters and districts now count too,
+  finest area first: 78/796 sampled streets inside a named area became 793/796.
+- **HUD and info cards.** Landmark trivia moved to the bottom of the screen,
+  stacking above a postcard when both are up. Corrections hold for 3.2 s rather
+  than 650 ms. Streets stay named on the map once revealed — in the car as well
+  as the boat, and including names answered wrongly — with the street currently
+  under question withheld so the map cannot answer for the player.
+- **Bridges, quieter.** Questions are rationed to one every 90 s, only fire on
+  a genuine crossing of the span's midpoint gate, never name the street the
+  vehicle is already on, and the 43 bridges called "Brug 117" are dropped as
+  questions and as distractors. Learned-bridge labels draw beneath the vehicle
+  at background weight and fade out entirely near it.
+- **Camera.** Panning detaches the view from the vehicle and pins it to the
+  world, so the vehicle drives across a held map instead of staying nailed to
+  the centre of the screen; `R` or the re-centre button reattaches it. The 2D
+  views carry 14 degrees of tilt, enough for buildings to have sides.
+- **Wikipedia extracts for landmarks and bridges** are fetched in bulk rather
+  than one at a time on approach, with English resolved through Wikidata.
+
+## Backlog
+
+- Better 3D OSM trees: instanced trunk/canopy geometry with deterministic
+  variation from OSM species tags, distance LOD, kept out of 2D.
+- The geolocated Amsterdam fact pipeline described in `FACT_PIPELINE.md`;
+  landmark cards would prefer curated facts over raw Wikipedia ledes.
+- Additional cities behind cached, versioned extracts.
+- Authentic retro rendering (see below) and the optional arcade layer (below).
+- Signature landmark models for the handful of buildings worth recognising.
+- Extract refresh with `motorway`/`trunk`/`*_link` classes included: Weesp and
+  a few other genuine islands are unreachable without them, and the build's
+  connected-street filter uses endpoint proximity rather than shared vertices,
+  which is the same mistake the runtime graph used to make.
+
+The sections below are design notes for those bets, not queued work.
+
+## Earlier work, still true
+
+The list below predates the status board and describes the systems that are
+already in place.
 
 Completed and being refined:
 
