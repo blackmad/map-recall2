@@ -15,6 +15,14 @@ Within a tier, cheap-and-blocking comes before expensive-and-isolated.
 
 ---
 
+**The driving harness passes with no margin.** With the oracle fixed it
+arrives 14 of 24 against a threshold of exactly 14, so ordinary run-to-run
+variation flips it red — it failed once and passed once in the same session on
+unchanged code. Either raise the arrival rate or make the assertion tolerant of
+the variance it actually has, but do not simply lower the bar.
+
+---
+
 ## P1 — The learning model itself
 
 **5. Learning-aware route generation.**

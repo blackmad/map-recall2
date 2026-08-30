@@ -47,7 +47,9 @@ export class DetailedBuildings {
   _clearHighlight() {
     const mesh = this._highlightedMesh;
     if (!mesh) return;
+    const highlighted = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
     mesh.material = mesh.userData.canalRecallOriginalMaterial;
+    for (const material of highlighted) material.dispose();
     delete mesh.userData.canalRecallOriginalMaterial;
     this._highlightedMesh = null;
   }

@@ -311,19 +311,24 @@ class Game {
     if (!this.player || this.quizPromptName || this._utilityOpen) return;
     const rect = this.canvas.getBoundingClientRect();
     const screen = { x: (clientX - rect.left) * CANVAS_W / rect.width, y: (clientY - rect.top) * CANVAS_H / rect.height };
+    const building = this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect);
     let nearest = null, nearestDistance = 120;
     for (const landmark of this.landmarks) {
       const point = this.camera.worldToScreen(landmark.x, landmark.y);
       const distance = Math.hypot(point.x - screen.x, point.y - screen.y);
       if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
     }
+    if (nearest && building && building.featureTarget) {
+      // Keep the curated card identity, but highlight the actual extrusion
+      // under the click rather than rebuilding its approximate OSM footprint.
+      nearest = { ...nearest, featureTarget: building.featureTarget };
+    }
     if (!nearest) {
-      const building = this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect);
       if (!building) return;
       const buildingName = building.name || '';
       const matchedLandmark = this._matchLandmarkToBuilding(building, buildingName);
       if (matchedLandmark) {
-        nearest = matchedLandmark;
+        nearest = { ...matchedLandmark, featureTarget: building.featureTarget };
       } else {
         // A nameless footprint cannot teach the player anything, but swallowing
         // the click makes the map look broken. Acknowledge it without inventing
@@ -333,11 +338,13 @@ class Game {
           name: buildingName,
           detail: 'Mapped building — click nearby landmarks to learn more.',
           lngLat: building.lngLat,
+          featureTarget: building.featureTarget,
         } : {
           id: `clicked-${building.id || building.lngLat.join('-')}`,
           name: 'No building details',
           detail: 'This building has no name in the map data.',
           lngLat: building.lngLat,
+          featureTarget: building.featureTarget,
         };
       }
     }

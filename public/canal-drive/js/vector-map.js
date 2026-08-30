@@ -104,12 +104,13 @@ class VectorBasemap {
     if (this.map.getSource('osm-building-appearance')) return;
     this.map.addSource('osm-building-appearance', {
       type: 'geojson', data: '../data/extracts/amsterdam/buildings-colored.geojson',
+      generateId: true,
       attribution: 'Building appearance © OpenStreetMap contributors'
     });
     this.map.addLayer({
       id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
-        'fill-extrusion-color': ['get', 'colour'],
+        'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'colour']],
         'fill-extrusion-base': ['get', 'minHeight'],
         'fill-extrusion-height': ['get', 'height'],
         'fill-extrusion-opacity': 0.96
@@ -118,7 +119,7 @@ class VectorBasemap {
     this.map.addLayer({
       id: 'osm-colored-building-roofs', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
-        'fill-extrusion-color': ['get', 'roofColour'],
+        'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'roofColour']],
         'fill-extrusion-base': ['get', 'height'],
         'fill-extrusion-height': ['+', ['get', 'height'], 0.35],
         'fill-extrusion-opacity': 1
@@ -225,6 +226,7 @@ class VectorBasemap {
     };
     // Curated POIs must win over the much larger building extrusion under the
     // pointer. The hit box is forgiving because dots are intentionally small.
+    let poiResult = null;
     const poiLayers = ['poi-labels', 'poi-dots'].filter(id => this.map.getLayer(id));
     if (poiLayers.length) {
       const hitRadius = 28;
@@ -235,19 +237,28 @@ class VectorBasemap {
       if (poi) {
         const lngLat = this.map.unproject(pixel);
         const coordinates = poi.geometry && poi.geometry.type === 'Point' ? poi.geometry.coordinates : [lngLat.lng, lngLat.lat];
-        return { id: poi.properties.id, name: poi.properties.name, lngLat: coordinates, poi: true };
+        poiResult = { id: poi.properties.id, name: poi.properties.name, lngLat: coordinates, poi: true };
       }
     }
     const layers = this.map.getStyle().layers.filter(layer => layer.type === 'fill-extrusion' && !layer.id.startsWith('active-landmark')).map(layer => layer.id);
     const feature = this.map.queryRenderedFeatures(pixel, layers.length ? { layers } : undefined)
       .find(candidate => candidate.layer && candidate.layer.type === 'fill-extrusion');
-    if (!feature) return null;
+    if (!feature) return poiResult;
     const lngLat = this.map.unproject(pixel);
     const properties = feature.properties || {};
     const geometry = feature.geometry && ['Polygon', 'MultiPolygon'].includes(feature.geometry.type)
       ? { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: feature.geometry }] }
       : { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [lngLat.lng, lngLat.lat] } }] };
-    return { id: feature.id, name: properties.name || properties['name:en'] || '', lngLat: [lngLat.lng, lngLat.lat], geojson: geometry };
+    // Generated IDs on our single GeoJSON source are unique. IDs from the
+    // third-party vector basemap repeat between tiles; setting state on one of
+    // those IDs recolors dozens of unrelated buildings across the viewport.
+    const featureTarget = feature.id == null || feature.source !== 'osm-building-appearance' ? null : {
+      source: feature.source,
+      ...(feature.sourceLayer ? { sourceLayer: feature.sourceLayer } : {}),
+      id: feature.id,
+    };
+    if (poiResult) return { ...poiResult, featureTarget };
+    return { id: feature.id, name: properties.name || properties['name:en'] || '', lngLat: [lngLat.lng, lngLat.lat], geojson: geometry, featureTarget };
   }
 
   setRoute(routePath, loader, visible) {
@@ -319,17 +330,6 @@ class VectorBasemap {
   _ensureLandmarkLayers() {
     if (this.map.getSource('active-landmark')) return;
     this.map.addSource('active-landmark', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-    // Fully opaque and matched to the building's own height. A translucent
-    // fixed-height box let the building's OSM colour bleed through and stopped
-    // short of taller landmarks, so the highlight fought the building instead
-    // of replacing it. The ground fill is gone: its outline traced the whole
-    // footprint while the extrusion covered only part of it.
-    this.map.addLayer({ id: 'active-landmark-extrusion', type: 'fill-extrusion', source: 'active-landmark', filter: ['==', '$type', 'Polygon'], paint: {
-      'fill-extrusion-color': '#FFD21F',
-      'fill-extrusion-height': ['coalesce', ['get', 'renderHeight'], 38],
-      'fill-extrusion-base': 0,
-      'fill-extrusion-opacity': 1,
-    } });
     this.map.addLayer({ id: 'active-landmark-line', type: 'line', source: 'active-landmark', filter: ['==', '$type', 'LineString'], paint: { 'line-color': '#FACC15', 'line-width': 6, 'line-opacity': 0.95 } });
     this.map.addLayer({ id: 'active-landmark-point', type: 'circle', source: 'active-landmark', filter: ['==', '$type', 'Point'], paint: { 'circle-radius': 16, 'circle-color': '#FACC15', 'circle-opacity': 0.72, 'circle-stroke-color': '#FFFFFF', 'circle-stroke-width': 3 } });
   }
@@ -345,12 +345,19 @@ class VectorBasemap {
     }
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
-    // The detailed renderer highlights its own per-building mesh feature. Its
-    // OSM footprint is deliberately not drawn on top: those geometries differ
-    // around roof parts and produce the giant yellow slab and z-fighting.
-    source.setData(!detailed && landmark && landmark.geojson
-      ? landmark.geojson
-      : { type: 'FeatureCollection', features: [] });
+    if (!detailed && landmark && landmark.featureTarget) {
+      try {
+        this.map.setFeatureState(landmark.featureTarget, { highlighted: true });
+        this._highlightedBuilding = landmark.featureTarget;
+      } catch (_) {}
+    }
+    // Never fabricate an extrusion from an OSM footprint. If neither renderer
+    // can identify the actual building, a point acknowledges the selection
+    // without turning a whole block into a fixed-height yellow box.
+    const point = !detailed && landmark && !this._highlightedBuilding && landmark.lngLat
+      ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: landmark.lngLat } }]
+      : [];
+    source.setData({ type: 'FeatureCollection', features: point });
   }
 
   _styleLandmarks() {
@@ -471,7 +478,9 @@ class VectorBasemap {
       const buildingColor = window.CanalRecallBuildings
         ? window.CanalRecallBuildings.buildingColorExpression(this.theme)
         : (palette ? palette.building : '#D8D3CA');
-      this.map.setPaintProperty('building-3d', 'fill-extrusion-color', buildingColor);
+      this.map.setPaintProperty('building-3d', 'fill-extrusion-color', [
+        'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', buildingColor,
+      ]);
       this.map.setPaintProperty('building-3d', 'fill-extrusion-height', [
         'case', ['boolean', ['feature-state', 'highlighted'], false], ['+', ['coalesce', ['get', 'render_height'], ['get', 'height'], 18], 12], ['coalesce', ['get', 'render_height'], ['get', 'height'], 5]
       ]);

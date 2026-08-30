@@ -3,7 +3,7 @@ const { THREE, GLTFLoader } = window.CanalRecallThree;
 
 const assetUrl = path => new URL(path, window.location.href).href;
 const BIKE_MODEL_URL = assetUrl('./carbon-frame-bike-runtime.glb');
-const BOAT_MODEL_URL = assetUrl('./motor-boat-runtime.glb');
+const BOAT_MODEL_URL = assetUrl('./canal-boat-runtime.glb');
 
 /**
  * Chase mode sees the world from tens of metres up. A literal-size bicycle
@@ -15,15 +15,21 @@ const BIKE_GAME_SCALE = 3.6;
 const BOAT_GAME_SCALE = 1.5;
 
 /**
- * Measured off each model, not assumed: the bicycle's named front wheel is on
- * its native -X, and the motor boat's bow is on +X (its outboard motor is the
- * narrow, tall end at -X). So the two need opposite heading offsets.
+ * Measured off each model, not assumed. The bicycle's named front wheel is on
+ * its native -X. The canal sloop's bow is also on -X — its transom and motor
+ * bracket are the squared-off +X end — so unlike the motor boat it replaced,
+ * which pointed the other way, it takes the same offset as the bicycle. This is
+ * exactly the value `boat-model.spec.ts` pins, because a boat sailing
+ * stern-first looks very nearly right in a still image.
  */
 const BIKE_HEADING_OFFSET = Math.PI;
-const BOAT_HEADING_OFFSET = 0;
+const BOAT_HEADING_OFFSET = Math.PI;
 
 /** Radians of bar travel at full lock — a bicycle, not a shopping trolley. */
 const MAX_STEER = 0.42;
+// Measured by aligning the named front and rear wheel axles in model space.
+// The source steering pivot is authored mid-turn around its own local Z axis.
+const AUTHORED_STEER_OFFSET = 2.43976;
 const STEER_EASING = 0.18;
 const WHEEL_RADIUS_M = 0.35;
 /** The world scale the game uses; kept local so the bundle stays standalone. */
@@ -168,6 +174,10 @@ export class PlayerBike3D extends Vehicle3D {
     for (const part of Object.values(this.parts)) {
       if (part) part.userData.restQuaternion = part.quaternion.clone();
     }
+    if (this.parts.steer) {
+      this.parts.steer.userData.restQuaternion
+        .multiply(SCRATCH_QUAT.setFromAxisAngle(STEER_AXIS, AUTHORED_STEER_OFFSET));
+    }
   }
 
   update(lngLat, angle, visible, steerInput = 0, distancePx = 0) {
@@ -185,7 +195,7 @@ export class PlayerBike3D extends Vehicle3D {
     const { steer, frontWheel, rearWheel } = this.parts;
     if (steer) {
       steer.quaternion.copy(steer.userData.restQuaternion)
-        .premultiply(SCRATCH_QUAT.setFromAxisAngle(STEER_AXIS, this.steerAngle));
+        .multiply(SCRATCH_QUAT.setFromAxisAngle(STEER_AXIS, this.steerAngle));
     }
     for (const wheel of [frontWheel, rearWheel]) {
       if (!wheel) continue;
@@ -199,7 +209,7 @@ export class PlayerBoat3D extends Vehicle3D {
   constructor(map, maplibregl) {
     super(map, maplibregl, {
       id: 'player-boat-3d', modelUrl: BOAT_MODEL_URL, label: 'boat model',
-      gameScale: BOAT_GAME_SCALE, headingOffset: BOAT_HEADING_OFFSET, normaliseTo: 9.5,
+      gameScale: BOAT_GAME_SCALE, headingOffset: BOAT_HEADING_OFFSET, normaliseTo: 6,
     });
     this.heel = 0;
   }
@@ -211,6 +221,22 @@ export class PlayerBoat3D extends Vehicle3D {
     super.update(lngLat, angle, visible);
     const target = Math.max(-1, Math.min(1, steerInput || 0)) * MAX_HEEL;
     this.heel += (target - this.heel) * HEEL_EASING;
+  }
+
+  // The model is raw geometry: no normals, no materials, no textures. Without
+  // normals glTF requires flat shading, which makes a smooth aluminium hull
+  // look faceted, and without a material every mesh is default white. Both are
+  // cheaper to supply here than to ship — normals would add about 40% to the
+  // file for something the GPU can derive on load.
+  _bind(imported) {
+    const hull = new THREE.MeshStandardMaterial({
+      color: 0xb8c0c6, roughness: 0.55, metalness: 0.4,
+    });
+    imported.traverse((child) => {
+      if (!child.isMesh) return;
+      if (!child.geometry.getAttribute('normal')) child.geometry.computeVertexNormals();
+      child.material = hull;
+    });
   }
 
   _pose(model) {

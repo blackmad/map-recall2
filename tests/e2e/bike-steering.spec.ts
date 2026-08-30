@@ -54,6 +54,9 @@ test('the front wheel steers and the wheels roll, and the frame stays put', asyn
     const ang = (a: number[], b: number[]) =>
       (Math.acos(Math.max(-1, Math.min(1, a[0]*b[0]+a[1]*b[1]+a[2]*b[2]))) * 180 / Math.PI);
     return {
+      // Axles are undirected: the two wheel nodes use opposite local +Y, so
+      // parallel can read as either 0° or 180°.
+      straightFrontVsRear: Math.min(ang(straight.front, straight.rear), 180 - ang(straight.front, straight.rear)),
       frontLeftVsStraight: ang(left.front, straight.front),
       frontRightVsStraight: ang(right.front, straight.front),
       frontLeftVsRight: ang(left.front, right.front),
@@ -62,6 +65,7 @@ test('the front wheel steers and the wheels roll, and the frame stays put', asyn
     };
   });
   console.log(JSON.stringify(pose, null, 2));
+  expect(pose.straightFrontVsRear).toBeLessThan(1);
   expect(pose.rearLeftVsStraight).toBeLessThan(0.5);
   expect(pose.frontLeftVsStraight).toBeGreaterThan(10);
   expect(pose.frontLeftVsRight).toBeGreaterThan(20);
