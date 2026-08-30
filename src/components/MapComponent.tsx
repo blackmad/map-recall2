@@ -92,6 +92,8 @@ export const MapComponent: React.FC<MapComponentProps> = ({
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
+    let invalidateSizeTimer: ReturnType<typeof setTimeout> | undefined;
+
     if (!mapInstanceRef.current) {
       const map = L.map(mapContainerRef.current, {
         center: cityCenter,
@@ -117,8 +119,9 @@ export const MapComponent: React.FC<MapComponentProps> = ({
       boundaryGroupRef.current = L.layerGroup().addTo(map);
       layersGroupRef.current = L.layerGroup().addTo(map);
 
-      // Ensure dimensions are synced immediately
-      setTimeout(() => {
+      // Ensure dimensions are synced immediately. The timer is cleared on
+      // teardown so it can never fire against a map that has been removed.
+      invalidateSizeTimer = setTimeout(() => {
         map.invalidateSize();
       }, 100);
     }
@@ -135,11 +138,15 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     }
 
     return () => {
+      if (invalidateSizeTimer) clearTimeout(invalidateSizeTimer);
       resizeObserver.disconnect();
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
       }
+      tileLayerRef.current = null;
+      layersGroupRef.current = null;
+      boundaryGroupRef.current = null;
     };
   }, []);
 

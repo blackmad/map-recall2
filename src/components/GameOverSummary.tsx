@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { GameMode, RoundResult, City, DistanceUnit, FeatureCategory, FEATURE_CATEGORIES } from '../types';
 import { formatDistance } from '../utils/geo';
 import confetti from 'canvas-confetti';
@@ -48,8 +48,13 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
   const activeCategoryInfo =
     FEATURE_CATEGORIES.find((c) => c.id === selectedCategory) || FEATURE_CATEGORIES[0];
 
-  // Trigger celebration confetti
+  // Trigger celebration confetti. The ref keeps the fanfare to one play per
+  // summary: this effect is re-invoked on every remount, and React StrictMode
+  // remounts every component once in development.
+  const hasCelebratedRef = useRef(false);
   useEffect(() => {
+    if (hasCelebratedRef.current) return;
+    hasCelebratedRef.current = true;
     if (percentage >= 70) sounds.playBullseye();
     else sounds.playSuccess();
     if (percentage < 70) return;
