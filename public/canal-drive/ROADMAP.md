@@ -12,6 +12,9 @@ design notes for the larger bets live below the board.
   leaves that Storybook and direct checks can render without constructing a
   whole race. Routing is being separated in parallel behind a distance-cost
   compatible graph API, with an injectable edge-cost seam for future novelty.
+  The graph half has landed as `src/canalRecall/routing/roadGraph.ts`; what
+  remains is making `road-network.js` route through it instead of its own
+  Dijkstra, behind the named driving and reachability regressions.
 - **Satellite roof colouring — coverage.** The sampler exists and runs
   (`npm run build:roof-colours`, see below), but it can only colour buildings
   the extract already ships geometry for: 10,578 of roughly 104,000 footprints
@@ -44,6 +47,13 @@ design notes for the larger bets live below the board.
   rects intersect" across the scenario matrix.
 
 ## Recently done
+
+- **The typed road graph core is on `main`.** `src/canalRecall/routing/
+  roadGraph.ts` — `buildRoadGraph`, `shortestRoadPaths`, `findRoadRoute`,
+  `findRoadRouteToFirstReachable` over a grid-merged node graph, with junction
+  stitching and an injectable edge-cost seam for novelty-aware routing. Nothing
+  in the runtime calls it yet; `road-network.js` is still the live router. Its
+  check is now part of `npm run check:canal` so it cannot rot before adoption.
 
 - **Civic venues are POIs now, and the extract was refreshed to get them.**
   `classify()` took `tourism=*`, `historic=*` and `amenity` in {theatre,
