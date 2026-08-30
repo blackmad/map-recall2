@@ -7,6 +7,18 @@ design notes for the larger bets live below the board.
 
 ## In progress
 
+- **Knowledge model: per-crossing bridges, per-stretch streets.** *Owned by
+  another agent, on its own branch — do not edit the quiz gating or the recall
+  store from `main` while this is open.* Two changes to what the game counts as
+  "known". First, a bridge question should wait until the player reliably knows
+  the water underneath it, and should be tracked per crossing rather than per
+  bridge, so a span you cross daily and a span you have seen once are not the
+  same question. Second, a long street should not be marked learned in one
+  answer: Amsterdam streets run for kilometres and are familiar in one
+  neighborhood and unknown in another, so recall wants to be recorded against a
+  stretch of the way rather than the whole name. That agent is reading the
+  current asking/recall model first and will propose before changing anything.
+
 - **Typed presentation/runtime split.** `game.js` remains the composition root,
   but finish, notice, and HUD drawing are moving into props-driven TypeScript
   leaves that Storybook and direct checks can render without constructing a
