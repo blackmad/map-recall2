@@ -78,22 +78,22 @@ canvas { display: block; position: relative; z-index: 2; }
 #route-card { width: min(94vw, 680px); padding: 26px 30px 24px; border: 1px solid rgba(35,55,57,.2); border-radius: 18px; background: rgba(250,249,244,.97); color: #172326; box-shadow: 0 22px 65px rgba(25,42,43,.2); }
 .setup-eyebrow { color: #c43d35; letter-spacing: .13em; margin-bottom: 7px; }
 #route-card h1 { color: #172326; font-size: clamp(26px,4vw,34px); margin-bottom: 5px; }
-#route-card .lede { color: #52666a; margin-bottom: 17px; }
+#route-card .lede { color: #52666a; margin-bottom: 10px; }
 .route-surprise { padding: 12px 14px; border: 0; border-left: 4px solid #c43d35; border-radius: 7px; background: #e8f0ec; color: #394e52; }
 .route-surprise .route-icon { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #c43d35; font-size: 19px; }
 .route-surprise strong { color: #172326; }
 .route-chip { background: transparent; color: #597175; }
-.setup-section-title { margin: 17px 0 7px; color: #7a8d8f; }
+.setup-section-title { margin: 12px 0 5px; color: #7a8d8f; }
 .setup-grid { gap: 0 18px; }
 .setup-field { padding: 9px 0 10px; border: 0; border-bottom: 1px solid #cbd4d0; border-radius: 0; background: transparent; color: #718487; }
 .setup-field:focus-within { border-color: #167da0; background: transparent; box-shadow: none; }
 .setup-field select, .setup-field input[type="text"] { color: #172326; font-size: 14px; }
-.preference-grid { gap: 7px 18px; margin-top: 0; }
-.master-toggle { min-height: 55px; padding: 10px 0; border: 0; border-radius: 0; background: transparent; color: #24373a; }
+.preference-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 16px; margin-top: 0; }
+.master-toggle { min-height: 45px; padding: 7px 0; border: 0; border-radius: 0; background: transparent; color: #24373a; }
 .master-toggle input { accent-color: #c43d35; }
 .master-toggle small { color: #708487; }
 .account-button { border-color: #91a7a8; background: transparent; color: #33494c; }
-.advanced-options { margin: 12px 0; border: 0; border-top: 1px solid #cbd4d0; border-bottom: 1px solid #cbd4d0; border-radius: 0; }
+.advanced-options { margin: 8px 0; border: 0; border-top: 1px solid #cbd4d0; border-bottom: 1px solid #cbd4d0; border-radius: 0; }
 .advanced-options summary { color: #52686b; font-size: 12px; }
 #route-start { padding: 13px; border: 0; border-radius: 7px; background: #c43d35; box-shadow: none; font: 800 15px system-ui,sans-serif; }
 #route-start:hover { background: #a92f29; }
@@ -107,9 +107,8 @@ canvas { display: block; position: relative; z-index: 2; }
   <form id="route-card">
     <div class="setup-eyebrow">Learn Amsterdam by moving through it</div>
     <h1>Amsterdam Canal Recall</h1>
-    <p class="lede">Navigate between important places and name the waterways as you turn.</p>
+    <p class="lede">Choose a route, then learn the city by moving through it.</p>
     <select id="route-from" hidden></select><select id="route-to" hidden></select>
-    <div class="route-surprise"><span class="route-icon">↗</span><span><strong>Surprise landmark route</strong>Two memorable places, one route through the city.</span><span class="route-chip">READY TO EXPLORE</span></div>
     <div class="setup-section-title">Your route</div>
     <div class="setup-grid">
       <label class="setup-field">🎯 DIFFICULTY
@@ -133,15 +132,14 @@ canvas { display: block; position: relative; z-index: 2; }
     </div>
     <label id="home-address-field" class="setup-field" style="display:none;margin-top:14px">HOME ADDRESS
       <input id="home-address" type="text" autocomplete="street-address" placeholder="Street and number, Amsterdam">
-      <span style="font-size:11px;color:#7dd3fc">Saved on this device. Boat routes snap your address to nearby water.</span>
+      <span style="font-size:11px;color:#718487">Saved · boats start at nearby water</span>
     </label>
-    <div class="setup-section-title">Learning style</div>
-    <div class="preference-grid">
-      <div id="account-row" class="master-toggle" style="display:none"><span style="flex:1"><strong id="account-label">Playing as guest</strong><small id="account-note">Sign in to remember which streets you already know across devices.</small></span><button id="account-button" type="button" class="account-button">Sign in</button></div>
-      <label class="master-toggle"><input id="skip-mastered" type="checkbox" checked><span><strong>Space my reviews</strong><small>Known names return only when they are due.</small></span></label>
-      <label class="master-toggle"><input id="gamey-features" type="checkbox" checked><span><strong>Scores & streaks</strong><small>Points, combos, and a route ribbon. Switch off for a calm trip.</small></span></label>
-    </div>
     <details class="advanced-options"><summary>⚙ Advanced options</summary>
+      <div class="preference-grid">
+        <div id="account-row" class="master-toggle" style="display:none"><span style="flex:1"><strong id="account-label">Playing as guest</strong><small id="account-note">Sync progress</small></span><button id="account-button" type="button" class="account-button">Sign in</button></div>
+        <label class="master-toggle"><input id="skip-mastered" type="checkbox" checked><span><strong>↻ Space reviews</strong><small>Only names due</small></span></label>
+        <label class="master-toggle"><input id="gamey-features" type="checkbox" checked><span><strong>★ Scores & streaks</strong><small>Points and ribbons</small></span></label>
+      </div>
       <div class="setup-grid">
         <label class="setup-field">ANSWERS<select id="answer-mode"><option value="multiple" selected>Multiple choice</option><option value="typing">Type the name</option></select></label>
         <label class="setup-field">CONTROLS<select id="control-mode"><option value="relative" selected>Relative — steer vehicle</option><option value="absolute">Absolute — compass directions</option></select></label>
