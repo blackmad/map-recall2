@@ -82,6 +82,50 @@ test('live MapLibre buildings use the OSM-aware color expression', async ({ page
   expect(nemo).toMatchObject({ colour: '#43888b', roofColour: '#f5f5dc', roofShape: 'skillion', height: 21.7 });
 });
 
+test('detailed mode owns building depth and selection instead of drawing an OSM slab', async ({ page }) => {
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.vectorMap?.ready))).toBe(true);
+  const result = await page.evaluate(() => {
+    const vectorMap = window.canalRecallGame.vectorMap as unknown as {
+      map: {
+        getLayer(id: string): unknown;
+        getLayoutProperty(id: string, property: string): unknown;
+        getSource(id: string): { setData(data: unknown): void };
+      };
+      _detailedBuildings: { ready: boolean; setEnabled(value: boolean): void; setActiveLandmark(value: unknown): void };
+      _detailedBuildingsVisible: boolean;
+      setDetailedBuildingsVisible(value: boolean): void;
+      setActiveLandmark(value: unknown): void;
+    };
+    let forwarded: unknown = null;
+    let overlay: unknown = null;
+    const originalSource = vectorMap.map.getSource('active-landmark');
+    const originalSetData = originalSource.setData.bind(originalSource);
+    originalSource.setData = data => { overlay = data; originalSetData(data); };
+    vectorMap._detailedBuildings = {
+      ready: true,
+      setEnabled: () => undefined,
+      setActiveLandmark: value => { forwarded = value; },
+    };
+    vectorMap.setDetailedBuildingsVisible(true);
+    const landmark = {
+      name: 'Old Church', lngLat: [4.8975, 52.3743],
+      geojson: { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [] } }] },
+    };
+    vectorMap.setActiveLandmark(landmark);
+    return {
+      building: vectorMap.map.getLayoutProperty('building-3d', 'visibility'),
+      coloured: vectorMap.map.getLayoutProperty('osm-colored-buildings', 'visibility'),
+      roofs: vectorMap.map.getLayoutProperty('osm-colored-building-roofs', 'visibility'),
+      forwarded: forwarded === landmark,
+      overlayFeatures: (overlay as { features?: unknown[] })?.features?.length,
+    };
+  });
+  expect(result).toEqual({
+    building: 'none', coloured: 'none', roofs: 'none', forwarded: true, overlayFeatures: 0,
+  });
+});
+
 test('HUD hides a new street before the delayed question opens', async ({ page }) => {
   await openCarRoute(page);
   const hudCall = await page.evaluate(() => {

@@ -312,6 +312,102 @@ class Renderer {
   }
 
 
+  // The two bottom-band cards. Everything measurable about them — wrapping,
+  // elision, the shrink-to-fit name, the card's own height — is decided by
+  // src/canalRecall/noticeCards.ts and arrives here as `card`. This half only
+  // puts it on the canvas, in order.
+  drawLandmarkCard(ctx, card, x, y, image) {
+    ctx.fillStyle = 'rgba(3,18,28,.92)';
+    roundRect(ctx, x, y, card.width, card.height, 10);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(250,204,21,.35)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    if (image) {
+      const ix = x + 10, iy = y + 10;
+      ctx.save();
+      roundRect(ctx, ix, iy, card.imageWidth, card.imageHeight, 6);
+      ctx.clip();
+      const crop = window.CanalRecallCards.coverCrop(
+        image.naturalWidth, image.naturalHeight, card.imageWidth, card.imageHeight);
+      ctx.drawImage(image, crop.sx, crop.sy, crop.sw, crop.sh, ix, iy, card.imageWidth, card.imageHeight);
+      ctx.restore();
+    }
+
+    const badgeColors = {
+      category: ['rgba(250,204,21,.2)', '#FACC15'],
+      lang: ['rgba(148,163,184,.22)', '#CBD5E1'],
+      article: ['rgba(125,211,252,.18)', '#7DD3FC'],
+    };
+    let textY = y + 22;
+    ctx.font = 'bold 9px monospace';
+    ctx.textAlign = 'left';
+    for (const badge of card.badges) {
+      const [fill, ink] = badgeColors[badge.kind];
+      ctx.fillStyle = fill;
+      roundRect(ctx, x + badge.x, textY - 9, badge.width, 14, 3);
+      ctx.fill();
+      ctx.fillStyle = ink;
+      ctx.fillText(badge.label, x + badge.x + 5, textY);
+    }
+    if (card.badges.length) textY += 17;
+
+    ctx.fillStyle = '#FACC15';
+    ctx.font = 'bold 15px monospace';
+    ctx.fillText(card.displayName, x + card.textLeft, textY);
+    textY += 18;
+
+    ctx.fillStyle = '#CBD5E1';
+    ctx.font = '11px monospace';
+    for (const line of card.lines) {
+      ctx.fillText(line, x + card.textLeft, textY);
+      textY += 14;
+    }
+  }
+
+  drawPostcard(ctx, card, x, y, image) {
+    ctx.save();
+    ctx.beginPath();
+    roundRect(ctx, x, y, card.width, card.height, 8);
+    ctx.clip();
+
+    ctx.fillStyle = '#092330';
+    ctx.fillRect(x, y, card.width, card.height);
+    if (image) {
+      const crop = window.CanalRecallCards.coverCrop(
+        image.naturalWidth, image.naturalHeight, card.photoWidth, card.height);
+      ctx.drawImage(image, crop.sx, crop.sy, crop.sw, crop.sh, x, y, card.photoWidth, card.height);
+      // Fade the photo into the card rather than butting it against the text.
+      const shade = ctx.createLinearGradient(x + 90, 0, x + 170, 0);
+      shade.addColorStop(0, 'rgba(9,35,48,0)');
+      shade.addColorStop(1, '#092330');
+      ctx.fillStyle = shade;
+      ctx.fillRect(x + 90, y, 80, card.height);
+    } else {
+      ctx.fillStyle = '#0E7490';
+      ctx.fillRect(x, y, 9, card.height);
+    }
+
+    const textX = x + card.textLeft;
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#7DD3FC';
+    ctx.font = 'bold 10px monospace';
+    ctx.fillText(card.heading, textX, y + 27);
+    ctx.fillStyle = '#F0F9FF';
+    ctx.font = `800 ${card.nameFontSize}px system-ui, sans-serif`;
+    ctx.fillText(card.name, textX, y + 58);
+    ctx.fillStyle = '#9CCFE1';
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.fillText(card.caption, textX, y + 80);
+    ctx.restore();
+
+    ctx.strokeStyle = 'rgba(125,211,252,.55)';
+    ctx.lineWidth = 1.5;
+    roundRect(ctx, x, y, card.width, card.height, 8);
+    ctx.stroke();
+  }
+
   drawPlayerCar(car, camera) {
     const ctx = this.ctx;
     const s = camera.worldToScreen(car.x, car.y);

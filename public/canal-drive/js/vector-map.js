@@ -14,6 +14,7 @@ class VectorBasemap {
     this._treesVisible = false;
     this._detailedBuildings = null;
     this._detailedBuildingsVisible = false;
+    this._activeLandmark = null;
     this._playerBike = null;
     this._playerBoat = null;
     this._labelsVisible = false;
@@ -42,7 +43,10 @@ class VectorBasemap {
       this._ensureLandmarkLayers();
       this._styleLandmarks();
       if (window.CanalRecallDetailed3D && window.CanalRecallDetailed3D.DetailedBuildings) {
-        this._detailedBuildings = new window.CanalRecallDetailed3D.DetailedBuildings(this.map, maplibregl);
+        this._detailedBuildings = new window.CanalRecallDetailed3D.DetailedBuildings(this.map, maplibregl, () => {
+          this._syncDetailedBuildingLayers();
+          this.setActiveLandmark(this._activeLandmark);
+        });
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
       if (window.CanalRecallVehicles) {
@@ -176,6 +180,16 @@ class VectorBasemap {
   setDetailedBuildingsVisible(visible) {
     this._detailedBuildingsVisible = !!visible;
     if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
+    this._syncDetailedBuildingLayers();
+    this.setActiveLandmark(this._activeLandmark);
+  }
+
+  _syncDetailedBuildingLayers() {
+    if (!this.map) return;
+    const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
+    for (const id of ['building-3d', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
+      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', detailed ? 'none' : 'visible');
+    }
   }
 
   setPlayerBike(player, loader, visible) {
@@ -322,16 +336,19 @@ class VectorBasemap {
 
   setActiveLandmark(landmark) {
     if (!this.map) return;
+    this._activeLandmark = landmark || null;
     const source = this.map.getSource('active-landmark');
     if (!source) return;
     if (this._highlightedBuilding) {
       try { this.map.setFeatureState(this._highlightedBuilding, { highlighted: false }); } catch (_) {}
       this._highlightedBuilding = null;
     }
-    // Vector-tile feature IDs can repeat between tiles, causing one state
-    // change to recolor many unrelated buildings. Always use an explicit
-    // GeoJSON footprint overlay so only the intended geometry changes.
-    source.setData(landmark && landmark.geojson
+    const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
+    if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
+    // The detailed renderer highlights its own per-building mesh feature. Its
+    // OSM footprint is deliberately not drawn on top: those geometries differ
+    // around roof parts and produce the giant yellow slab and z-fighting.
+    source.setData(!detailed && landmark && landmark.geojson
       ? landmark.geojson
       : { type: 'FeatureCollection', features: [] });
   }

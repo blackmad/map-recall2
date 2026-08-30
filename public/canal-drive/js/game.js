@@ -1261,7 +1261,6 @@ class Game {
     }
   }
 
-
   // ---- OSM Loading Flow ----
 
   async _onLocationSelected(lat, lng, startLL, finishLL) {
@@ -1989,7 +1988,6 @@ class Game {
     }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
   }
 
-
   _updateBoundaryCollisions() {
     if (this.travelMode === 'car') return;
     for (const car of this.cars) {
@@ -2050,7 +2048,6 @@ class Game {
     });
   }
 
-
   _emitCarParticles() {
     for (const car of this.cars) {
       const cos = Math.cos(car.angle), sin = Math.sin(car.angle);
@@ -2073,7 +2070,6 @@ class Game {
       }
     }
   }
-
 
   _render() {
     const ctx = this.ctx;
@@ -2492,7 +2488,6 @@ class Game {
     ctx.fillRect(ghX, CANVAS_H, ghWidth, 1);
     this._githubLinkBounds = { x: ghX, y: CANVAS_H - 13, w: ghWidth, h: 16 };
   }
-
 
   _renderPaused() {
     const ctx = this.ctx;
@@ -3016,12 +3011,6 @@ class Game {
 
   // The fallback body for a landmark with no encyclopedia text: what it is and
   // where it is, in a sentence.
-  _placeOnlyDetail(landmark) {
-    const kind = String(landmark.type || 'landmark').replace('_', ' ');
-    const article = /^[aeiou]/i.test(kind) ? 'An' : 'A';
-    const where = this.currentNeighborhood ? ` in ${this.currentNeighborhood}` : ' in Amsterdam';
-    return `${article} ${kind}${where}. No encyclopedia article yet.`;
-  }
 
   // Fetch a landmark photo once, on demand. Every landmark the extract has a
   // Wikipedia image for can show one; the card falls back to text until it
@@ -3066,143 +3055,39 @@ class Game {
     const ctx = this.ctx;
     const alpha = Math.min(1, this._landmarkNoticeTimer, this._landmarkNoticeDuration - this._landmarkNoticeTimer);
     if (alpha <= 0) return;
-    ctx.save();
-    ctx.globalAlpha = Math.max(0, alpha);
 
     const lm = this._landmarkNotice;
     const img = this._landmarkImages && this._landmarkImages.get(lm.id);
-    const hasImage = img && img.complete && img.naturalWidth > 0;
-    // 124 of the 420 landmarks have no encyclopedia text at all — mostly OBA
-    // branch libraries and neighborhood cinemas, which no one has written an
-    // article about. A card with a badge, a name and nothing else read as a
-    // rendering failure, so say the one true thing the game does know: what
-    // kind of place it is and which neighborhood it is in. For a game about
-    // where things are, that is worth reading.
-    const text = lm.longDetail || lm.detail || this._placeOnlyDetail(lm);
-    const category = lm.type ? lm.type.toUpperCase() : '';
+    const hasImage = !!(img && img.complete && img.naturalWidth > 0);
+    const cards = window.CanalRecallCards;
+    const props = {
+      name: lm.name,
+      body: lm.longDetail || lm.detail
+        || cards.placeOnlyDetail(lm.type, this.currentNeighborhood),
+      category: lm.type ? lm.type.toUpperCase() : '',
+      extractLang: lm.extractLang,
+      hasArticle: !!lm.wikipediaUrl,
+      hasImage,
+    };
+    const measure = (text, font) => { ctx.font = font; return ctx.measureText(text).width; };
+    const card = cards.measureLandmarkCard(props, measure);
 
-    // Card dimensions
-    const cardW = 480, imgW = hasImage ? 90 : 0, imgH = 110;
-    const textPadL = hasImage ? imgW + 20 : 16;
-    const cardH = hasImage ? Math.max(130, imgH + 20) : (text ? 80 : 50);
-    // Trivia belongs at the bottom of the screen. Across the top it sat
-    // exactly where the player is looking to see what is coming, so a card
-    // about a church you have already passed hid the junction ahead.
+    // Trivia belongs at the bottom of the screen. Across the top it sat exactly
+    // where the player is looking to see what is coming, so a card about a
+    // church already passed hid the junction ahead.
     const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
     const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({
       tripWidth: 180, postcardVisible: postcardShowing,
-      landmarkWidth: cardW, landmarkHeight: cardH,
+      landmarkWidth: card.width, landmarkHeight: card.height,
       zoomVisible: this._zoomBadgeTimer > 0,
       controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
     });
-    const cardX = bottomLayout ? bottomLayout.landmark.x : CANVAS_W / 2 - cardW / 2;
-    const cardY = bottomLayout ? bottomLayout.landmark.y : CANVAS_H - cardH - 30;
+    const cardX = bottomLayout ? bottomLayout.landmark.x : CANVAS_W / 2 - card.width / 2;
+    const cardY = bottomLayout ? bottomLayout.landmark.y : CANVAS_H - card.height - 30;
 
-    // Background
-    ctx.fillStyle = 'rgba(3,18,28,.92)';
-    roundRect(ctx, cardX, cardY, cardW, cardH, 10);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(250,204,21,.35)';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // Image thumbnail (left side, cover-cropped)
-    if (hasImage) {
-      const ix = cardX + 10, iy = cardY + 10, iw = imgW, ih = imgH;
-      ctx.save();
-      roundRect(ctx, ix, iy, iw, ih, 6);
-      ctx.clip();
-      const aspect = img.naturalWidth / img.naturalHeight;
-      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
-      const targetAspect = iw / ih;
-      if (aspect > targetAspect) {
-        sw = img.naturalHeight * targetAspect;
-        sx = (img.naturalWidth - sw) / 2;
-      } else {
-        sh = img.naturalWidth / targetAspect;
-        sy = (img.naturalHeight - sh) / 2;
-      }
-      ctx.drawImage(img, sx, sy, sw, sh, ix, iy, iw, ih);
-      ctx.restore();
-    }
-
-    // Category badge
-    const textX = cardX + textPadL;
-    let textY = cardY + 22;
-    let badgeRight = textX;
-    if (category) {
-      ctx.font = 'bold 9px monospace';
-      const badgeW = ctx.measureText(category).width + 10;
-      ctx.fillStyle = 'rgba(250,204,21,.2)';
-      roundRect(ctx, textX, textY - 9, badgeW, 14, 3);
-      ctx.fill();
-      ctx.fillStyle = '#FACC15';
-      ctx.textAlign = 'left';
-      ctx.fillText(category, textX + 5, textY);
-      badgeRight = textX + badgeW + 6;
-    }
-    if (lm.extractLang && lm.extractLang !== 'en' && (lm.longDetail || lm.detail)) {
-      ctx.font = 'bold 9px monospace';
-      const tag = lm.extractLang.toUpperCase();
-      const tagW = ctx.measureText(tag).width + 10;
-      ctx.fillStyle = 'rgba(148,163,184,.22)';
-      roundRect(ctx, badgeRight, textY - 9, tagW, 14, 3);
-      ctx.fill();
-      ctx.fillStyle = '#CBD5E1';
-      ctx.textAlign = 'left';
-      ctx.fillText(tag, badgeRight + 5, textY);
-      badgeRight += tagW + 6;
-    }
-    if (lm.wikipediaUrl) {
-      ctx.font = 'bold 9px monospace';
-      const hint = 'W  WIKIPEDIA';
-      const hintW = ctx.measureText(hint).width + 10;
-      ctx.fillStyle = 'rgba(125,211,252,.18)';
-      roundRect(ctx, badgeRight, textY - 9, hintW, 14, 3);
-      ctx.fill();
-      ctx.fillStyle = '#7DD3FC';
-      ctx.textAlign = 'left';
-      ctx.fillText(hint, badgeRight + 5, textY);
-    }
-    if (category || lm.wikipediaUrl) textY += 17;
-
-    // Name
-    ctx.fillStyle = '#FACC15';
-    ctx.font = 'bold 15px monospace';
-    ctx.textAlign = 'left';
-    const maxNameW = cardW - textPadL - 16;
-    let displayName = lm.name;
-    if (ctx.measureText(displayName).width > maxNameW) {
-      while (ctx.measureText(displayName + '…').width > maxNameW && displayName.length > 10) displayName = displayName.slice(0, -1);
-      displayName += '…';
-    }
-    ctx.fillText(displayName, textX, textY);
-    textY += 18;
-
-    // Multi-line detail text
-    if (text) {
-      ctx.fillStyle = '#CBD5E1';
-      ctx.font = '11px monospace';
-      const maxW = cardW - textPadL - 16;
-      const words = text.split(' ');
-      let line = '';
-      let lines = 0;
-      const maxLines = hasImage ? 4 : 2;
-      for (const word of words) {
-        const test = line ? `${line} ${word}` : word;
-        if (ctx.measureText(test).width > maxW && line) {
-          ctx.fillText(line, textX, textY);
-          textY += 14;
-          lines++;
-          if (lines >= maxLines) { line = ''; break; }
-          line = word;
-        } else {
-          line = test;
-        }
-      }
-      if (line && lines < maxLines) ctx.fillText(line, textX, textY);
-    }
-
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage ? img : null);
     ctx.restore();
   }
 
@@ -3213,62 +3098,27 @@ class Game {
     const duration = NEIGHBORHOOD_NOTICE_SECONDS;
     const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);
     if (alpha <= 0) return;
-    ctx.save();
-    ctx.globalAlpha = Math.max(0, alpha);
 
     const hood = this._neighborhoodNotice;
     const img = this._neighborhoodImages && this._neighborhoodImages.get(hood.name);
-    const hasImage = img && img.complete && img.naturalWidth > 0;
+    const hasImage = !!(img && img.complete && img.naturalWidth > 0);
+    const measure = (text, font) => { ctx.font = font; return ctx.measureText(text).width; };
+    const card = window.CanalRecallCards.measurePostcard(
+      { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage }, measure);
 
-    const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.3);
-    const eased = 1 - Math.pow(1 - slideT, 3);
-    const slideOffset = (1 - eased) * 50;
-
-    const cardW = 390;
-    const cardH = 104;
     const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({ tripWidth: 180 });
-    const cardX = bottomLayout ? bottomLayout.postcard.x : CANVAS_W - cardW - 20;
-    const baseCardY = bottomLayout ? bottomLayout.postcard.y : CANVAS_H - cardH - 76;
-    const cardY = baseCardY + slideOffset;
+    const cardX = bottomLayout ? bottomLayout.postcard.x : CANVAS_W - card.width - 20;
+    const baseCardY = bottomLayout ? bottomLayout.postcard.y : CANVAS_H - card.height - 76;
+    // Slide up into place rather than appearing; the offset is animation, not
+    // layout, so it is applied after the band has been arbitrated.
+    const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.3);
+    const cardY = baseCardY + (1 - (1 - Math.pow(1 - slideT, 3))) * 50;
 
-    ctx.beginPath();
-    roundRect(ctx, cardX, cardY, cardW, cardH, 8);
-    ctx.clip();
-
-    ctx.fillStyle = '#092330';
-    ctx.fillRect(cardX, cardY, cardW, cardH);
-    if (hasImage) {
-      const photoW = 144;
-      const targetAspect = photoW / cardH;
-      const aspect = img.naturalWidth / img.naturalHeight;
-      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
-      if (aspect > targetAspect) { sw = sh * targetAspect; sx = (img.naturalWidth - sw) / 2; }
-      else { sh = sw / targetAspect; sy = (img.naturalHeight - sh) / 2; }
-      ctx.drawImage(img, sx, sy, sw, sh, cardX, cardY, photoW, cardH);
-      const shade = ctx.createLinearGradient(cardX + 90, 0, cardX + 170, 0);
-      shade.addColorStop(0, 'rgba(9,35,48,0)'); shade.addColorStop(1, '#092330');
-      ctx.fillStyle = shade; ctx.fillRect(cardX + 90, cardY, 80, cardH);
-    } else {
-      ctx.fillStyle = '#0E7490'; ctx.fillRect(cardX, cardY, 9, cardH);
-    }
-    const textX = cardX + (hasImage ? 136 : 0) + 22;
-    ctx.textAlign = 'left';
-    ctx.fillStyle = '#7DD3FC'; ctx.font = 'bold 10px monospace';
-    ctx.fillText(`ENTERING ${String(hood.kind || 'NEIGHBORHOOD').toUpperCase()}`, textX, cardY + 27);
-    let nameSize = 24;
-    ctx.font = `800 ${nameSize}px system-ui, sans-serif`;
-    while (ctx.measureText(hood.name).width > cardX + cardW - textX - 18 && nameSize > 16) {
-      nameSize -= 1; ctx.font = `800 ${nameSize}px system-ui, sans-serif`;
-    }
-    ctx.fillStyle = '#F0F9FF'; ctx.fillText(hood.name, textX, cardY + 58);
-    ctx.fillStyle = '#9CCFE1'; ctx.font = '11px system-ui, sans-serif';
-    ctx.fillText(hood.imageArea ? `Photo: ${hood.imageArea} · Amsterdam` : 'Amsterdam · Noord-Holland', textX, cardY + 80);
-    ctx.strokeStyle = 'rgba(125,211,252,.55)'; ctx.lineWidth = 1.5;
-    roundRect(ctx, cardX, cardY, cardW, cardH, 8); ctx.stroke();
-
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, alpha);
+    this.renderer.drawPostcard(ctx, card, cardX, cardY, hasImage ? img : null);
     ctx.restore();
   }
-
 
   // ---- Leaderboard (localStorage) ----
 
