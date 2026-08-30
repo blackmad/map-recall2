@@ -9,21 +9,37 @@ import vm from 'node:vm';
 // now disagree with the code under review. Rebuilding each one and comparing
 // bytes is what keeps "it typechecks" and "it is what the browser runs" the
 // same statement.
-const generatedBundles = {
-  'js/game-landmarks.bundle.js': 'src/canalRecall/game/landmarkRuntime.ts',
-  'js/game-recall.bundle.js': 'src/canalRecall/game/recallRuntime.ts',
-};
+//
+// The build command is read out of package.json rather than repeated here:
+// each bundle has its own flags (global name, minification), and a second copy
+// of them would drift and then silently compare the wrong thing.
+const generatedBundles = [
+  'js/game-landmarks.bundle.js',
+  'js/game-recall.bundle.js',
+  'js/route-selection.bundle.js',
+];
 
-function assertBundleIsCurrent(bundle, entry) {
+const packageScripts = JSON.parse(fs.readFileSync('package.json', 'utf8')).scripts;
+
+function esbuildArgsFor(bundle) {
+  const marker = `--outfile=public/canal-drive/${bundle}`;
+  const script = Object.values(packageScripts).find(
+    value => value.startsWith('esbuild ') && value.includes(marker));
+  assert(script, `no npm script builds ${bundle}; add one so it cannot be built by hand`);
+  return script.slice('esbuild '.length).split(/\s+/);
+}
+
+function assertBundleIsCurrent(bundle) {
+  const args = esbuildArgsFor(bundle);
   const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'canal-decomp-'));
   const rebuilt = path.join(scratch, path.basename(bundle));
   try {
-    execFileSync('npx', ['esbuild', entry, '--bundle', '--format=iife', `--outfile=${rebuilt}`],
-      { stdio: 'pipe' });
+    execFileSync('npx', ['esbuild', ...args].map(arg =>
+      arg.startsWith('--outfile=') ? `--outfile=${rebuilt}` : arg), { stdio: 'pipe' });
     assert.equal(
       fs.readFileSync(path.join(root, bundle), 'utf8'),
       fs.readFileSync(rebuilt, 'utf8'),
-      `${bundle} is stale; rebuild it in the same change as ${entry}`,
+      `${bundle} is stale; rebuild it in the same change as its source`,
     );
   } finally {
     fs.rmSync(scratch, { recursive: true, force: true });
@@ -42,6 +58,9 @@ const runtimeFiles = [
   'js/game-presentation.js',
 ];
 const gameFile = 'js/game.js';
+// Typed leaves the subsystems call through. They are loaded into the sandbox
+// first so that installing a subsystem exercises the same globals the page has.
+const dependencyBundles = ['js/route-selection.bundle.js'];
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 
 let previousIndex = -1;
@@ -54,7 +73,7 @@ for (const file of [...runtimeFiles, gameFile]) {
 const gameLines = fs.readFileSync(path.join(root, gameFile), 'utf8').split('\n').length;
 assert(gameLines < 800, `game.js grew back to ${gameLines} lines; keep subsystems separate`);
 
-for (const [bundle, entry] of Object.entries(generatedBundles)) assertBundleIsCurrent(bundle, entry);
+for (const bundle of generatedBundles) assertBundleIsCurrent(bundle);
 
 const loadCallbacks = [];
 const context = vm.createContext({
@@ -69,9 +88,13 @@ const context = vm.createContext({
 });
 context.window.window = context.window;
 
-for (const file of runtimeFiles) {
+for (const file of [...dependencyBundles, ...runtimeFiles]) {
   vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, { filename: file });
 }
+
+// An esbuild `--global-name` IIFE declares a top-level `var`, which in a vm
+// context lands on the sandbox global directly — the same way the page sees it.
+assert(context.CanalRecallRoute, 'route-selection bundle did not publish its global');
 
 const modules = context.window.CanalRecallGameModules;
 assert.equal(modules.length, runtimeFiles.length, 'every runtime file must register one module');
