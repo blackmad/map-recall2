@@ -42,16 +42,37 @@ design notes for the larger bets live below the board.
   pure `bottomHudLayout` module that places persistent readouts first and
   routes transient cards around them, with a check for "no two bottom-band
   rects intersect" across the scenario matrix.
-- **POI coverage beyond `tourism`/`historic`.** `classify()` in
-  `build-amsterdam-extract.ts` accepts `tourism=*`, `historic=*` and
-  `amenity` in {theatre, arts_centre, townhall, place_of_worship}. Everyday
-  civic landmarks that make a neighborhood legible are therefore missing:
-  LAB111 (`amenity=cinema`, Arie Biemondstraat 111) is not in any extract, and
-  neither are libraries, universities, markets or music venues. Adding them
-  also needs a scoring answer, because a POI with no Wikidata link scores near
-  zero and would be culled by the 300-per-category cap before it is ever seen.
 
 ## Recently done
+
+- **Civic venues are POIs now, and the extract was refreshed to get them.**
+  `classify()` took `tourism=*`, `historic=*` and `amenity` in {theatre,
+  arts_centre, townhall, place_of_worship}, so the everyday places a resident
+  actually navigates by were in no extract at all — LAB111 (`amenity=cinema`,
+  Arie Biemondstraat 111) among them. Cinema, library, university, college and
+  music_venue are now their own feature types, so the card badge reads CINEMA
+  or LIBRARY rather than LANDMARK. They needed a scoring answer as well as a
+  filter: a node with no Wikidata link scores 12 against a landmark tail that
+  starts at 35, so `CIVIC_CLASS_SCORE` gives each class a floor, and the
+  landmark budget went from 300 to 420 so the new classes are additive instead
+  of evicting 126 existing landmarks. Landmarks: 300 → 420 (34 universities,
+  40 libraries, 21 cinemas, 2 music venues, 6 dropped). Markets were already
+  covered — `amenity=marketplace` classifies as a square, and all 21 named
+  Amsterdam markets are in `squares.json`. A civic venue needs a name of three
+  characters or more; OSM has a university building called "P".
+- **The routing extract was silently missing 12,500 ways.**
+  `selectConnectedStreets` BFS'd from index 0 on the comment "available is
+  sorted by score desc, so index 0 is highest" — but every routing candidate
+  scores 0, so among them there was no ordering at all, and the seed was
+  whichever way the sort happened to leave first. It landed in a component of
+  16,551 when the largest was 29,051; a refresh that reshuffled the ties
+  collapsed the whole extract to 7 ways, which is how this was found. It takes
+  the largest component now. Measured on the live stitched graph: 442 → 344
+  components, largest 75.3% → 78.2%.
+- **The server compresses responses.** Nothing did, so
+  `streets-routing.json` went over the wire as 9.7 MB of raw JSON on every
+  route. With `compression()` it is 1.32 MB — and the pre-refresh extract was
+  5.8 MB raw, so the bigger, more connected graph is a net win on the wire too.
 
 - **Knowledge is local now: per-crossing bridges, per-stretch streets.** Recall
   used to be keyed by name alone, so one right answer retired a whole feature.
@@ -126,7 +147,7 @@ design notes for the larger bets live below the board.
   / minimap / reduced motion / detailed 3D / sound inherited the live settings
   panel's pale blue on the paper setup card, which was very nearly invisible.
 
-- **The encyclopedia text is now English everywhere.**
+- **The encyclopedia text is English everywhere but one blurb.**
   `enrich-amsterdam-wikipedia-extracts.ts` takes the English article wherever
   one exists, through the Wikidata `enwiki` sitelink and then the Dutch
   article's interwiki link. That left 403 features English Wikipedia has never
@@ -144,7 +165,10 @@ design notes for the larger bets live below the board.
   a keyless run on new text. Every blurb carries
   `wikipediaExtractSource: "translated"` with the Dutch original and its
   language kept alongside, so the pass stays resumable and the runtime's NL
-  chip no longer appears.
+  chip no longer appears. After the civic-POI refresh the counts are 403
+  translated, 345 already English and 9 Wikidata descriptions; one landmark,
+  Amstel Academie, has a Dutch lede and no English Wikidata description and is
+  waiting for a keyed run.
 - **Truthful postcard imagery expansion.** Neighborhood enrichment now covers
   OSM neighborhoods, quarters, and suburbs, deduplicates repeated boundaries,
   and rejects substring matches that confused places such as Westindische

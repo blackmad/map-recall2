@@ -15,6 +15,11 @@ const curationFile = path.resolve('scripts/amsterdam-curation.json');
 const outputDirectory = path.resolve(process.argv[5] || 'public/data/extracts/amsterdam');
 const center: [number, number] = [52.372851, 4.8936];
 const maximumPerCategory = 300;
+// Landmarks carries museums, monuments, places of worship and now the civic
+// venues, and it is the only category where the cap actually bites (795
+// available against 300 kept). The extra budget is roughly the size of the
+// civic classes, so adding them does not evict the existing tail.
+const maximumFor = (category: FeatureCategory) => (category === 'landmarks' ? 420 : maximumPerCategory);
 
 function pointInRing([lat, lon]: [number, number], ring: Position[]): boolean {
   let inside = false;
@@ -64,6 +69,29 @@ function pathsFromGeometry(feature: GeoJsonFeature): [number, number][][] {
   return [];
 }
 
+// OSM amenity value -> the type the card shows on its badge.
+const CIVIC_TYPES: Record<string, FeatureType> = {
+  cinema: 'cinema',
+  library: 'library',
+  university: 'university',
+  college: 'university',
+  music_venue: 'music venue',
+};
+
+// A prominence floor per civic class. Without it a cinema with no Wikidata
+// link scores 12 - mapped length is nil for a node - against a landmark tail
+// that starts at 35, so LAB111 was never going to be in the extract however
+// well known it is locally.
+const CIVIC_CLASS_SCORE: Record<string, number> = {
+  university: 60,
+  library: 50,
+  cinema: 45,
+  music_venue: 45,
+  theatre: 40,
+  arts_centre: 30,
+  marketplace: 35,
+};
+
 function classify(tags: Record<string, string | undefined>): { type: FeatureType; category: FeatureCategory } | null {
   if (tags.bridge === 'yes' || tags.man_made === 'bridge') return { type: 'bridge', category: 'bridges' };
   if (tags.waterway || tags.natural === 'water' || tags.water || tags.landuse === 'basin') {
@@ -72,6 +100,18 @@ function classify(tags: Record<string, string | undefined>): { type: FeatureType
   if (tags.place === 'square' || tags.amenity === 'marketplace') return { type: 'square', category: 'squares' };
   if (tags.leisure || ['forest', 'meadow', 'grass'].includes(tags.landuse || '')) return { type: 'park', category: 'parks' };
   if (tags.tourism === 'museum') return { type: 'museum', category: 'landmarks' };
+  // Everyday civic venues. A cinema, a library or a faculty building is often
+  // the thing a resident actually navigates by, and OSM rarely gives any of
+  // them a Wikidata link, so they need both a class of their own and a
+  // prominence floor (CIVIC_CLASS_SCORE) to survive the per-category cap.
+  const civic = CIVIC_TYPES[tags.amenity || ''];
+  // "P" is a real OSM name on a university building. It is not a name anyone
+  // can learn a city by, and unlike a canal or a street a civic venue has no
+  // geometry to make it recognisable, so hold them to a readable name.
+  if (civic) {
+    const civicName = (tags['name:en'] || tags.name || tags['name:nl'] || '').trim();
+    return civicName.length >= 3 ? { type: civic, category: 'landmarks' } : null;
+  }
   if (tags.tourism || tags.historic || ['theatre', 'arts_centre', 'townhall', 'place_of_worship'].includes(tags.amenity || '')) return { type: 'landmark', category: 'landmarks' };
   if (tags.highway) return { type: ['primary', 'secondary', 'tertiary'].includes(tags.highway) ? 'avenue' : 'street', category: 'streets' };
   return null;
@@ -119,7 +159,8 @@ for (const item of source.features) {
   const key = `${classification.category}:${name.toLocaleLowerCase()}`;
   const mappedLength = paths.reduce((total, line) => total + line.slice(1).reduce((sum, point, index) => sum + distance(line[index], point), 0), 0);
   const linkScore = (tags.wikidata ? 120 : 0) + (tags.wikipedia ? 80 : 0);
-  const classScore = tags.waterway === 'river' ? 45 : tags.waterway === 'canal' ? 35 : tags.highway === 'primary' ? 35 : tags.highway === 'secondary' ? 25 : 0;
+  const classScore = tags.waterway === 'river' ? 45 : tags.waterway === 'canal' ? 35 : tags.highway === 'primary' ? 35 : tags.highway === 'secondary' ? 25
+    : CIVIC_CLASS_SCORE[tags.amenity || ''] || 0;
   const score = Math.round(linkScore + classScore + Math.log10(Math.max(10, mappedLength)) * 12
     + (curation.scoreBoosts[key] || 0));
   const existing = grouped.get(key);
@@ -204,22 +245,33 @@ function selectConnectedStreets(
       }
     }
   }
-  // BFS from highest-scored feature to find the connected component
-  const visited = new Set<number>();
-  const queue = [0]; // available is sorted by score desc, so index 0 is highest
-  visited.add(0);
-  while (queue.length > 0) {
-    const current = queue.shift()!;
-    for (const neighbor of adjacency.get(current) || []) {
-      if (!visited.has(neighbor)) {
-        visited.add(neighbor);
-        queue.push(neighbor);
+  // Take the largest component, not whatever component index 0 happens to sit
+  // in. Routing candidates all score 0, so "available is sorted by score desc"
+  // gave no ordering at all among them: a refresh that reshuffled the ties
+  // could seed the search on an isolated service-road stub, and the routing
+  // extract silently collapsed from 16,551 ways to 7.
+  const componentOf = new Int32Array(available.length).fill(-1);
+  const components: number[][] = [];
+  for (let start = 0; start < available.length; start++) {
+    if (componentOf[start] >= 0) continue;
+    const id = components.length;
+    const members: number[] = [start];
+    componentOf[start] = id;
+    for (let cursor = 0; cursor < members.length; cursor++) {
+      for (const neighbor of adjacency.get(members[cursor]) || []) {
+        if (componentOf[neighbor] >= 0) continue;
+        componentOf[neighbor] = id;
+        members.push(neighbor);
       }
     }
+    components.push(members);
   }
+  const largest = components.reduce((best, group) => (group.length > best.length ? group : best), components[0] || []);
+  const visited = new Set(largest);
   const connected = available.filter((_, i) => visited.has(i));
   const result = connected.slice(0, maxCount);
-  process.stdout.write(`Streets: ${available.length} available, ${connected.length} connected, ${result.length} selected\n`);
+  process.stdout.write(`Streets: ${available.length} available, ${components.length} components, `
+    + `${connected.length} in the largest, ${result.length} selected\n`);
   return result;
 }
 
@@ -227,7 +279,9 @@ const partitions: Record<string, { file: string; count: number; availableCount: 
 const selectedAll: StreetFeature[] = [];
 for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'landmarks'] as FeatureCategory[]) {
   const available = [...grouped.values()].filter((entry) => entry.category === category).sort((a, b) => b.score - a.score);
-  const candidates = category === 'streets' ? selectConnectedStreets(available, maximumPerCategory) : available.slice(0, maximumPerCategory);
+  const candidates = category === 'streets'
+    ? selectConnectedStreets(available, maximumFor(category))
+    : available.slice(0, maximumFor(category));
   if (category === 'streets') {
     const routing = selectConnectedStreets(routingRoadCandidates, routingRoadCandidates.length).map(({ feature, paths, score }) => ({
       ...feature,

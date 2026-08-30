@@ -20,6 +20,13 @@ export type FeatureType =
   | 'water'
   | 'museum'
   | 'monument'
+  // Everyday civic venues. They are what makes a neighborhood legible even
+  // when no encyclopedia has written about them, so they are named on their
+  // own terms rather than lumped in as 'landmark'.
+  | 'cinema'
+  | 'library'
+  | 'university'
+  | 'music venue'
   | 'neighborhood';
 
 export type FeatureCategory =
@@ -29,7 +36,7 @@ export type FeatureCategory =
   | 'bridges'    // bridges ('bridge')
   | 'squares'    // squares, plazas ('square')
   | 'parks'      // parks, gardens ('park')
-  | 'landmarks';  // monuments, museums, landmarks ('landmark', 'museum', 'monument')
+  | 'landmarks';  // monuments, museums, civic venues ('landmark', 'museum', 'monument', 'cinema', 'library', 'university', 'music venue')
 
 export interface CategoryInfo {
   id: FeatureCategory;
