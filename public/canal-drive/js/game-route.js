@@ -366,45 +366,31 @@ class GameRouteRuntime {
   // A destination far enough to be a journey but inside the same fetched map
   // window as the origin. Falls back to any other POI if nothing is in range.
 
+  // The geographic rules live in game/routeSelection.ts, where they are tested
+  // without generating routes until one looks wrong.
   _pickDestinationNear(from, alsoExcludeId = null) {
-    const candidates = this.routePois.filter(poi => poi.id !== from.id && poi.id !== alsoExcludeId);
-    const inRange = candidates.filter(poi => Game._kmBetween(poi, from) <= ROUTE_POI_MAX_PAIR_KM);
-    const pool = inRange.length > 0 ? inRange : candidates;
-    return pool[Math.floor(Math.random() * pool.length)];
+    return CanalRecallRoute.pickDestinationNear(this.routePois, from, undefined, alsoExcludeId);
   }
 
   // Nearest POI to `target` that actually snaps onto the mapped network.
 
   _nearestSnappableDestination(target, segments, centreLat, centreLng, snapLimit, excludeId = null) {
-    const ranked = this.routePois
-      .filter(poi => poi.id !== excludeId && Number.isFinite(poi.lat))
-      .map(poi => ({ poi, km: Game._kmBetween(poi, target) }))
-      .sort((a, b) => a.km - b.km);
-    for (const entry of ranked.slice(0, RETARGET_ATTEMPTS)) {
-      const point = this.osmLoader.latLngToGamePoint(entry.poi.lat, entry.poi.lng, centreLat, centreLng, segments, snapLimit);
-      if (point) return { poi: entry.poi, point };
-    }
-    return null;
+    return CanalRecallRoute.nearestSnappableDestination(this.routePois, target,
+      poi => this.osmLoader.latLngToGamePoint(poi.lat, poi.lng, centreLat, centreLng, segments, snapLimit),
+      excludeId);
   }
 
   // Closest reachable stand-in for an unroutable destination, chosen from the
   // same POI pool and scored by how near it is to the original.
 
   _retargetToReachableDestination(start, originalFinish, segments, centreLat, centreLng) {
-    const ranked = this.routePois
-      .filter(poi => poi.id !== this.routeFrom?.id && Number.isFinite(poi.lat))
-      .map(poi => {
-        const point = this.osmLoader.latLngToGamePoint(poi.lat, poi.lng, centreLat, centreLng, segments, MAX_SNAP_DIST);
-        if (!point) return null;
-        return { poi, point, gap: dist(point.x, point.y, originalFinish.x, originalFinish.y) };
-      })
-      .filter(Boolean)
-      .filter(entry => dist(entry.point.x, entry.point.y, start.x, start.y) >= MIN_START_FINISH_DIST)
-      .sort((a, b) => a.gap - b.gap);
+    const shortlist = CanalRecallRoute.rankRetargetCandidates(
+      this.routePois, start, originalFinish,
+      poi => this.osmLoader.latLngToGamePoint(poi.lat, poi.lng, centreLat, centreLng, segments, MAX_SNAP_DIST),
+      MIN_START_FINISH_DIST, this.routeFrom?.id ?? null);
     // One Dijkstra covers the whole graph, so there is no reason to cap how
     // many candidates are tested for reachability — only the snap-distance
     // search above is expensive per candidate.
-    const shortlist = ranked;
     const hit = this.track.findRouteToFirstReachable(start, shortlist.map(entry => entry.point));
     if (!hit) return null;
     const chosen = shortlist[hit.index];
@@ -415,13 +401,12 @@ class GameRouteRuntime {
 
   _updateLiveRouteLine() {
     if (!this.routeOptions.line || !this.routePath || this.routePath.length < 2) return;
-    let bestIndex = 0, bestDistance = Infinity;
-    for (let i = 0; i < this.routePath.length; i++) {
-      const d = dist(this.routePath[i].x, this.routePath[i].y, this.player.x, this.player.y);
-      if (d < bestDistance) { bestDistance = d; bestIndex = i; }
-    }
-    if (bestDistance > LIVE_ROUTE_OFF_ROUTE_DIST && this._rerouteTimer <= 0) {
-      this._rerouteTimer = LIVE_ROUTE_REROUTE_INTERVAL;
+    const decision = CanalRecallRoute.advanceLiveRoute(
+      { index: this._liveRouteIndex, rerouteTimer: this._rerouteTimer },
+      this.routePath, this.player, 0);
+    this._rerouteTimer = decision.state.rerouteTimer;
+    let bestIndex = decision.nearestIndex;
+    if (decision.shouldReroute) {
       const fresh = this.track.findRoute({ x: this.player.x, y: this.player.y }, this.track.finishPoint);
       if (fresh && fresh.length >= 2) {
         this.routePath = fresh;
@@ -429,14 +414,9 @@ class GameRouteRuntime {
         this._liveRouteIndex = -1;
       }
     }
-    // The line is anchored to route vertices rather than to the player. Giving
-    // it a head at the player's exact position meant redrawing every 40 px of
-    // travel, which read as a jerk; trimming whole vertices as they are passed
-    // only changes the geometry at junctions, where it is invisible.
     if (this._liveRouteIndex === bestIndex && this._liveRoutePath) return;
     this._liveRouteIndex = bestIndex;
-    const ahead = this.routePath.slice(bestIndex);
-    this._liveRoutePath = ahead.length >= 2 ? ahead : [this.routePath[this.routePath.length - 1], this.track.finishPoint];
+    this._liveRoutePath = CanalRecallRoute.routeAhead(this.routePath, bestIndex, this.track.finishPoint);
   }
 
   // Great-circle-ish distance in km; fine at city scale.

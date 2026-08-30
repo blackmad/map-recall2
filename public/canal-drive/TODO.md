@@ -55,19 +55,37 @@ recall rather than interrupt every junction.
 ## P2 — Weight and reach
 
 **8b. Finish typing the game subsystems.**
-`game-landmarks` is done: `src/canalRecall/game/` splits the rules
-(`landmarkData.ts`, tested directly) from the browser shell
-(`landmarkRuntime.ts`), and `test:canal-game-structure` now fails on a stale
-generated bundle. Three subsystems are still untyped JavaScript —
-`game-recall.js` (528 lines), `game-route.js` (793) and `game-presentation.js`
-(872). Take them one at a time, in that order: recall is the smallest and owns
-the quiz rules most worth asserting; presentation is the largest and has prior
-art worth reusing — an abandoned `finishScreen.ts` on the merged
-`finish-renderer-ts` branch models the finish screen as a pure layout function
-driven by a typed model and tested against a recording canvas context.
+`game-landmarks` and `game-recall` are done, and `game-route`'s geographic
+rules are extracted to `routeSelection.ts`. What is left is untyped JavaScript
+in `game-route.js` (~350 lines, almost all DOM form plumbing) and
+`game-presentation.js` (872 lines of canvas).
+
+Do presentation next, not route. Presentation has prior art worth reusing — an
+abandoned `finishScreen.ts` on the merged `finish-renderer-ts` branch models
+the finish screen as a pure layout function driven by a typed model and tested
+against a recording canvas context. Route's remainder is the settings form,
+which is the part a UI framework would delete rather than type; translating it
+verbatim first would be work thrown away. See item 8c.
 *The rule to keep: what the player is told is typed and tested; what paints it
 is not. Do not translate a method verbatim if the decision inside it belongs in
 the data half.*
+
+**8c. Decide the DOM overlay's framework, then rewrite the settings form.**
+Canvas draws the game, the HUD, every card and the finish screen; that stays
+hand-written and must never go near a framework. But roughly 450 lines are
+plain DOM — the route setup form, the quiz prompt card, the account row — and
+they are the hand-rolled state work: preferences, `<select>` values and game
+state are synchronised in three directions by hand across `_loadPreferences`,
+`_savePreferences`, `_syncLiveSettings`, `_readLiveSettings` and
+`_syncHomeAddressField`.
+
+React is the recommendation, on one ground: the repo already runs React 19 for
+the main Map Recall app, and adding Svelte would mean two component idioms and
+two toolchains for 450 lines of form. Its ~45 KB gzipped is real but small
+against the ~2 MB item 9 is about, and it deletes more state code than it adds.
+Mount it only on the overlay, code-split, never in the frame loop. Do this
+after `modes.ts` covers every setting, so the form binds to a typed state
+object rather than to `getElementById`.
 
 **9. Stop shipping three.js twice, and Firestore to everyone.**
 Measured, not suspected: `detailed-buildings.bundle.js` is 698 KB and
@@ -140,11 +158,11 @@ routing ways, 380 landmarks). The runtime is not: `osm-loader.js` hardcodes
 `../data/extracts/amsterdam/${dataset}.json`, so there is no way to reach the
 second city from the game. Needs a city selector, a cityId that flows through
 to review keys, and a basemap origin that is not assumed to be Amsterdam's.
-Three data gaps behind it: Utrecht has no `bridge-crossings.json` (the
-crossing builder is still Amsterdam-only), 80 of its landmark ledes are still
-Dutch, and 275 of 380 landmarks have no text at all — under the rule from
-a9b21c7 those are correctly never offered as drive-by cards, which makes the
-city thin rather than wrong.
+One data gap behind it: 275 of Utrecht's 380 landmarks still have no text at
+all, so under the a9b21c7 rule the city is thin rather than noisy. Its bridges
+are built (300 resolved into 386 crossings) and its cards are English as far
+as Wikidata descriptions reach — 71 of 105 written-up landmarks, with 34 still
+Dutch pending a real translator.
 
 **11b. Re-run Amsterdam through the general pipeline.**
 Only the branded POIs were merged in from a staging build, deliberately — a
@@ -153,6 +171,15 @@ mid-review. So Amsterdam has not yet been rebuilt with shared-vertex
 connectivity or the `motorway`/`trunk`/`*_link` classes, and lacks the
 `cityProfile` Utrecht now has. Run it, diff the coverage counts, publish only
 after review.
+
+**11c. Give Utrecht real ledes.**
+39 blurbs across the extract are still Dutch and 103 more are Wikidata
+one-liners rather than encyclopedia ledes. Both upgrade in place — every one
+keeps `wikipediaExtractOriginal` and its language — but the pass needs a
+translator that is not currently available here: no `GEMINI_API_KEY` is
+configured, and Ollama is installed but not serving with `translategemma:12b`
+not pulled. Needs a decision about a multi-gigabyte model download or an API
+key, so it is deliberately not done unasked.
 
 **12. Clear all my data.**
 A deliberately guarded reset for test accounts and players who want a fresh
