@@ -1,7 +1,8 @@
 import { TilesRenderer } from '3d-tiles-renderer';
+import { GLTFExtensionsPlugin } from '3d-tiles-renderer/plugins';
 
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
-const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
+const { THREE, MeshoptDecoder } = window.CanalRecallThree;
 
 const TILESET_URL = 'https://data.3dbag.nl/v20250903/cesium3dtiles/lod22/tileset.json';
 
@@ -16,12 +17,15 @@ function ecefToLngLatAlt(x, y, z) {
 }
 
 export class DetailedBuildings {
-  constructor(map, maplibregl) {
+  constructor(map, maplibregl, onReady = () => {}) {
     this.map = map;
     this.maplibregl = maplibregl;
     this.enabled = false;
     this.ready = false;
     this.loading = false;
+    this.onReady = onReady;
+    this.activeLandmark = null;
+    this._highlightedMesh = null;
     this.layer = this._makeLayer();
   }
 
@@ -31,10 +35,75 @@ export class DetailedBuildings {
       this.loading = true;
       this.map.addLayer(this.layer);
     }
-    if (this.map.getLayer('building-3d')) {
-      this.map.setLayoutProperty('building-3d', 'visibility', this.enabled && this.ready ? 'none' : 'visible');
-    }
     this.map.triggerRepaint();
+  }
+
+  setActiveLandmark(landmark) {
+    this.activeLandmark = landmark && landmark.lngLat ? landmark : null;
+    this._clearHighlight();
+    this.map.triggerRepaint();
+  }
+
+  _clearHighlight() {
+    const mesh = this._highlightedMesh;
+    if (!mesh) return;
+    mesh.material = mesh.userData.canalRecallOriginalMaterial;
+    delete mesh.userData.canalRecallOriginalMaterial;
+    this._highlightedMesh = null;
+  }
+
+  _highlightLandmark(tiles, localTransform) {
+    if (!this.activeLandmark || this._highlightedMesh || !localTransform) return;
+    const [lng, lat] = this.activeLandmark.lngLat;
+    const inverse = localTransform.clone().invert();
+    const toLocal = altitude => {
+      const point = this.maplibregl.MercatorCoordinate.fromLngLat([lng, lat], altitude);
+      return new THREE.Vector3(point.x, point.y, point.z).applyMatrix4(inverse);
+    };
+    const origin = toLocal(300);
+    const direction = toLocal(-50).sub(origin).normalize();
+    const hits = new THREE.Raycaster(origin, direction, 0, 500).intersectObject(tiles.group, true);
+    const hit = hits.find(candidate => candidate.object.userData && candidate.object.userData.meshFeatures);
+    if (!hit || hit.faceIndex == null) return;
+
+    const mesh = hit.object;
+    const meshFeatures = mesh.userData.meshFeatures;
+    const infos = meshFeatures.getFeatureInfo();
+    const featureIndex = infos.findIndex(info => Number.isInteger(info.attribute));
+    if (featureIndex < 0) return;
+    const geometry = mesh.geometry;
+    const position = geometry.getAttribute('position');
+    const index = geometry.index;
+    const triangleOffset = hit.faceIndex * 3;
+    const vertexIndex = offset => index ? index.getX(triangleOffset + offset) : triangleOffset + offset;
+    const a = new THREE.Vector3().fromBufferAttribute(position, vertexIndex(0));
+    const b = new THREE.Vector3().fromBufferAttribute(position, vertexIndex(1));
+    const c = new THREE.Vector3().fromBufferAttribute(position, vertexIndex(2));
+    const localPoint = mesh.worldToLocal(hit.point.clone());
+    const barycoord = THREE.Triangle.getBarycoord(localPoint, a, b, c, new THREE.Vector3());
+    const featureId = meshFeatures.getFeatures(hit.faceIndex, barycoord)[featureIndex];
+    if (featureId == null) return;
+
+    const attributeName = `_feature_id_${infos[featureIndex].attribute}`;
+    if (!geometry.getAttribute(attributeName)) return;
+    const tint = material => {
+      const highlighted = material.clone();
+      highlighted.onBeforeCompile = shader => {
+        shader.uniforms.canalRecallFeatureId = { value: featureId };
+        shader.vertexShader = shader.vertexShader
+          .replace('#include <common>', `#include <common>\nattribute float ${attributeName};\nvarying float canalRecallFeatureIdVarying;`)
+          .replace('#include <begin_vertex>', `#include <begin_vertex>\ncanalRecallFeatureIdVarying = ${attributeName};`);
+        shader.fragmentShader = shader.fragmentShader
+          .replace('#include <common>', '#include <common>\nuniform float canalRecallFeatureId;\nvarying float canalRecallFeatureIdVarying;')
+          .replace('#include <color_fragment>', '#include <color_fragment>\nif (abs(canalRecallFeatureIdVarying - canalRecallFeatureId) < 0.5) diffuseColor.rgb = vec3(1.0, 0.824, 0.122);');
+      };
+      highlighted.customProgramCacheKey = () => `canal-recall-highlight-${attributeName}`;
+      highlighted.needsUpdate = true;
+      return highlighted;
+    };
+    mesh.userData.canalRecallOriginalMaterial = mesh.material;
+    mesh.material = Array.isArray(mesh.material) ? mesh.material.map(tint) : tint(mesh.material);
+    this._highlightedMesh = mesh;
   }
 
   _makeLayer() {
@@ -56,12 +125,11 @@ export class DetailedBuildings {
         scene.add(new THREE.AmbientLight(0xffffff, 2.4));
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
-        const gltfLoader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
         tiles = new TilesRenderer(TILESET_URL);
+        tiles.registerPlugin(new GLTFExtensionsPlugin({ meshoptDecoder: MeshoptDecoder }));
         tiles.group.name = '3DBAG LoD2.2';
         tiles.setCamera(tilesCamera);
         tiles.setResolutionFromRenderer(tilesCamera, renderer);
-        tiles.manager.addHandler(/\.(gltf|glb)$/i, gltfLoader);
         scene.add(tiles.group);
         let handled = false;
         tiles.addEventListener('load-tileset', () => {
@@ -80,6 +148,7 @@ export class DetailedBuildings {
           owner.ready = true;
           owner.loading = false;
           owner.setEnabled(owner.enabled);
+          owner.onReady();
         });
         tiles.addEventListener('load-error', event => {
           owner.loading = false;
@@ -98,6 +167,7 @@ export class DetailedBuildings {
         renderer.resetState();
         renderer.render(scene, camera);
         tiles.update();
+        owner._highlightLandmark(tiles, localTransform);
         owner.map.triggerRepaint();
       }
     };
