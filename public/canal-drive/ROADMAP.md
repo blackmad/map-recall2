@@ -159,6 +159,12 @@ design notes for the larger bets live below the board.
   be deleted, require confirmation, and leave authentication itself intact.
 - Reward cycling on OSM ways with fully separated cycle tracks; make the bonus
   reinforce safe Amsterdam route knowledge without encouraging route detours.
+- **Measured façade colors.** Pilot Amsterdam's open RGB point cloud (colors
+  are registered from municipal panorama imagery) against BAG/PDOK LoD 2.2
+  façade planes. For a few representative blocks, reject sparse, shadowed, or
+  mixed samples and compare a muted median wall color with the current OSM-tag
+  fallback before attempting a citywide pre-pass. Straight-down roof imagery
+  cannot measure building sides on its own.
 
 - Better 3D OSM trees: instanced trunk/canopy geometry with deterministic
   variation from OSM species tags, distance LOD, kept out of 2D.
