@@ -35,6 +35,7 @@ import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { config as loadEnv } from 'dotenv';
+import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
 
 for (const file of ['.env.local', '.env']) loadEnv({ path: file, override: false, quiet: true });
 
@@ -50,13 +51,18 @@ interface Feature {
   wikipediaExtractOriginalLang?: string;
 }
 
-const directory = path.resolve('public/data/extracts/amsterdam');
+const argument = (name: string) => process.argv.find((value) => value.startsWith(`--${name}=`))?.slice(name.length + 3);
+const directory = path.resolve(argument('directory') || 'public/data/extracts/amsterdam');
 const cacheFile = path.resolve('scripts/english-translations.json');
 const files = ['water.json', 'streets.json', 'bridges.json', 'squares.json', 'parks.json', 'landmarks.json', 'all.json'];
 const dryRun = process.argv.includes('--dry-run');
 const limit = Number(process.argv.find(value => value.startsWith('--limit='))?.split('=')[1] || Infinity);
 const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '';
 const model = process.env.TRANSLATE_MODEL || 'gemini-2.0-flash';
+const useOllama = process.argv.includes('--ollama') || Boolean(process.env.OLLAMA_MODEL);
+const ollamaModel = argument('model') || process.env.OLLAMA_MODEL || 'translategemma:12b';
+const ollamaUrl = process.env.OLLAMA_URL || 'http://127.0.0.1:11434/api/generate';
+const hasTranslator = useOllama || Boolean(apiKey);
 const headers = { 'User-Agent': 'MapRecallExtractTranslator/1.0 (https://github.com/blackmad/map-recall2)' };
 
 const chunks = <T>(items: T[], size: number) =>
@@ -87,7 +93,7 @@ const pending: Feature[] = [];
 for (const partition of partitions.values()) {
   for (const feature of partition) {
     const language = feature.wikipediaExtractLang;
-    const canUpgradeDescription = apiKey
+    const canUpgradeDescription = hasTranslator
       && feature.wikipediaExtractSource === 'wikidata-description'
       && feature.wikipediaExtractOriginal;
     if ((!language || language === 'en' || !feature.wikipediaExtract) && !canUpgradeDescription) continue;
@@ -128,10 +134,37 @@ for (const partition of partitions.values()) {
 for (const entry of cache) if (!live.has(entry.hash)) stale++;
 process.stdout.write(`cache: ${translations.size} of ${groups.length} already translated${stale ? `, ${stale} entries no longer match any extract` : ''}\n`);
 
-// ---- Route 2: translate the rest, when a key is configured ----
+// ---- Route 2: translate the rest with local Ollama or Gemini ----
 const needsTranslation = groups.filter(group => !translations.has(groupKey(group)));
 let freshlyTranslated = 0;
-if (apiKey && needsTranslation.length) {
+if (useOllama && needsTranslation.length) {
+  process.stdout.write(`local translation: ${needsTranslation.length} blurbs with ${ollamaModel}\n`);
+  for (const group of needsTranslation) {
+    const original = group[0].wikipediaExtractOriginal || group[0].wikipediaExtract!;
+    const sourceLanguage = group[0].wikipediaExtractOriginalLang || group[0].wikipediaExtractLang || 'nl';
+    const prompt = `You are a professional ${sourceLanguage === 'nl' ? 'Dutch (nl)' : sourceLanguage} to English (en) translator. `
+      + 'Your goal is to accurately convey the meaning and nuances of the original text while adhering to English grammar, vocabulary, and cultural sensitivities. '
+      + 'Keep proper names exactly as written. Do not add facts or commentary. Keep the result under 360 characters and end at a sentence boundary. '
+      + `Produce only the English translation, without any additional explanations or commentary. Please translate the following text into English:\n\n${original}`;
+    try {
+      const response = await fetch(ollamaUrl, {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ model: ollamaModel, prompt, stream: false, options: { temperature: 0 } }),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}: ${await response.text()}`);
+      const payload = await response.json() as { response?: string };
+      const english = (payload.response || '').trim().slice(0, 360);
+      if (!english) throw new Error('empty response');
+      translations.set(groupKey(group), english);
+      cache.push({ name: group[0].name, lang: sourceLanguage, hash: sourceHash(original), en: english });
+      freshlyTranslated++;
+      process.stdout.write(`  ${group[0].name}\n`);
+    } catch (error) {
+      process.stdout.write(`  ${group[0].name}: local translation failed (${(error as Error).message})\n`);
+    }
+  }
+  process.stdout.write(`newly translated locally: ${freshlyTranslated} of ${needsTranslation.length}\n`);
+} else if (apiKey && needsTranslation.length) {
   const { GoogleGenAI } = await import('@google/genai');
   const client = new GoogleGenAI({ apiKey });
   for (const batch of chunks(needsTranslation, 20)) {
@@ -170,8 +203,8 @@ if (apiKey && needsTranslation.length) {
     await wait(200);
   }
   process.stdout.write(`newly translated: ${freshlyTranslated} of ${needsTranslation.length}\n`);
-} else if (!apiKey && needsTranslation.length) {
-  process.stdout.write(`no GEMINI_API_KEY / GOOGLE_API_KEY configured — ${needsTranslation.length} uncached blurbs fall back to Wikidata descriptions\n`);
+} else if (needsTranslation.length) {
+  process.stdout.write(`no translator configured — ${needsTranslation.length} uncached blurbs fall back to Wikidata descriptions; use --ollama after installing ${ollamaModel}\n`);
 }
 
 // ---- Route 3: Wikidata's English description ----
@@ -184,14 +217,13 @@ for (const batch of chunks(qids, 50)) {
     action: 'wbgetentities', format: 'json', props: 'descriptions', languages: 'en',
     ids: batch.join('|'), origin: '*',
   }).toString();
-  const response = await fetch(url, { headers });
-  if (!response.ok) continue;
-  const data = await response.json() as { entities?: Record<string, { descriptions?: { en?: { value?: string } } }> };
+  const data = await cachedJsonFetch<{ entities?: Record<string, { descriptions?: { en?: { value?: string } } }> }>(url, {
+    cacheDirectory: '.cache/wikimedia', headers, pauseMs: 200,
+  });
   for (const [qid, entity] of Object.entries(data.entities || {})) {
     const value = entity.descriptions?.en?.value;
     if (value) descriptions.set(qid, value.charAt(0).toUpperCase() + value.slice(1) + '.');
   }
-  await wait(200);
 }
 
 // ---- Write back ----
@@ -226,6 +258,6 @@ process.stdout.write(`${dryRun ? 'DRY RUN — nothing written' : `wrote ${files.
 process.stdout.write(`  translated ledes: ${translated}\n`);
 process.stdout.write(`  Wikidata descriptions: ${described}\n`);
 process.stdout.write(`  still not English: ${stillForeign}\n`);
-if (!apiKey && described > 0) {
-  process.stdout.write(`  ${described} of these are one-line descriptions; set GEMINI_API_KEY and re-run to translate the real ledes\n`);
+if (!hasTranslator && described > 0) {
+  process.stdout.write(`  ${described} of these are one-line descriptions; use --ollama and re-run to translate the real ledes\n`);
 }

@@ -1,25 +1,18 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { StreetFeature } from '../src/types.ts';
+import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
 
-const directory = path.resolve('public/data/extracts/amsterdam');
+const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
+const directory = path.resolve(directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
 const files = ['water.json', 'streets.json', 'bridges.json', 'squares.json', 'parks.json', 'landmarks.json', 'all.json'];
 const partitions = new Map<string, StreetFeature[]>();
 for (const file of files) partitions.set(file, JSON.parse(await readFile(path.join(directory, file), 'utf8')));
 const features = [...partitions.values()].flat();
 const headers = { 'User-Agent': 'MapQuestExtractBuilder/1.0 (https://github.com/blackmad/map-recall2)' };
 const chunks = <T>(items: T[], size: number) => Array.from({ length: Math.ceil(items.length / size) }, (_, index) => items.slice(index * size, (index + 1) * size));
-const wait = (milliseconds: number) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 async function fetchJson(url: URL, attempts = 4): Promise<any> {
-  for (let attempt = 0; attempt < attempts; attempt++) {
-    const response = await fetch(url, { headers });
-    if (response.ok) {
-      await wait(250);
-      return response.json();
-    }
-    if (response.status !== 429 || attempt === attempts - 1) throw new Error(`${url.hostname}: HTTP ${response.status}`);
-    await wait(Number(response.headers.get('retry-after') || 2) * 1000 * (attempt + 1));
-  }
+  return cachedJsonFetch(url, { cacheDirectory: '.cache/wikimedia', headers, attempts, pauseMs: 250 });
 }
 
 const sitelinks = new Map<string, number>();

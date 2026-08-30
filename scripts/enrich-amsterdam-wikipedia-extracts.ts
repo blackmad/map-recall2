@@ -20,21 +20,24 @@
  * Only when English has nothing do we keep the Dutch lede, tagged with
  * `wikipediaExtractLang` so a later pass can find (or translate) those.
  *
- * Extracts are capped at 360 characters to match the blurbs already in these
- * files (written by scripts/enrich-amsterdam-wikimedia.ts) — the UI expects a
- * short paragraph, not a full lede.
+ * The UI-facing extract stays capped at 360 characters. A longer source copy
+ * is retained for cacheable local fact generation without another API call.
  *
  * Usage: npm run enrich:amsterdam-wikipedia [-- --dry-run] [-- --limit=20]
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
 
 interface Feature {
   name: string;
   wikidata?: string;
   wikipedia?: string;
   wikipediaExtract?: string;
+  /** Longer cached source used by the local fact generator, not rendered directly. */
+  wikipediaSourceText?: string;
   wikipediaUrl?: string;
+  wikipediaImageUrl?: string;
   /** Set only for non-English blurbs, so they can be told apart later. */
   wikipediaExtractLang?: string;
 }
@@ -42,13 +45,16 @@ interface Feature {
 interface PageDetail {
   extract?: string;
   url?: string;
+  image?: string;
   /** Title of the English article this page links to, when it is not itself English. */
   englishTitle?: string;
 }
 
-const directory = path.resolve('public/data/extracts/amsterdam');
+const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
+const directory = path.resolve(directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
 const files = ['landmarks.json', 'bridges.json'];
-const EXTRACT_CHARS = 360;
+const EXTRACT_CHARS = 2400;
+const DISPLAY_EXTRACT_CHARS = 360;
 
 const dryRun = process.argv.includes('--dry-run');
 const limitArgument = process.argv.find((argument) => argument.startsWith('--limit='));
@@ -57,22 +63,10 @@ const limit = limitArgument ? Number(limitArgument.slice('--limit='.length)) : I
 const headers = { 'User-Agent': 'map-recall2 amsterdam wikipedia extracts (https://github.com/blackmad/map-recall2)' };
 const chunks = <T>(items: T[], size: number) =>
   Array.from({ length: Math.ceil(items.length / size) }, (_, index) => items.slice(index * size, (index + 1) * size));
-const wait = (milliseconds: number) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 /** Retries the throttling responses the Wikimedia APIs use, then pauses so we stay a polite client. */
 async function fetchJson(url: URL, attempts = 4): Promise<any> {
-  for (let attempt = 0; attempt < attempts; attempt++) {
-    const response = await fetch(url, { headers });
-    if (response.ok) {
-      const data = await response.json();
-      await wait(250);
-      return data;
-    }
-    const retryable = response.status === 429 || response.status >= 500;
-    if (!retryable || attempt === attempts - 1) throw new Error(`${url.hostname}: HTTP ${response.status}`);
-    await wait(Number(response.headers.get('retry-after') || 2) * 1000 * (attempt + 1));
-  }
-  throw new Error(`${url.hostname}: exhausted retries`);
+  return cachedJsonFetch(url, { cacheDirectory: '.cache/wikimedia', headers, attempts, pauseMs: 250 });
 }
 
 const splitPage = (page: string) => {
@@ -95,8 +89,9 @@ async function fetchPages(language: string, titles: string[], withLangLinks: boo
     const url = new URL(`https://${language}.wikipedia.org/w/api.php`);
     url.search = new URLSearchParams({
       action: 'query', format: 'json', redirects: '1', titles: batch.join('|'),
-      prop: withLangLinks ? 'extracts|info|langlinks' : 'extracts|info', inprop: 'url',
+      prop: withLangLinks ? 'extracts|info|langlinks|pageimages' : 'extracts|info|pageimages', inprop: 'url',
       exintro: '1', explaintext: '1', exchars: String(EXTRACT_CHARS), exlimit: '20',
+      piprop: 'thumbnail', pithumbsize: '640',
       ...(withLangLinks ? { lllang: 'en' } : {}),
     }).toString();
     const data = await fetchJson(url);
@@ -108,12 +103,13 @@ async function fetchPages(language: string, titles: string[], withLangLinks: boo
       aliases.set(item.from, item.to);
     }
     const pages = Object.values(data.query?.pages || {}) as {
-      title: string; extract?: string; fullurl?: string; langlinks?: { lang: string; '*': string }[];
+      title: string; extract?: string; fullurl?: string; thumbnail?: { source?: string }; langlinks?: { lang: string; '*': string }[];
     }[];
     for (const page of pages) {
       const detail: PageDetail = {
         extract: page.extract,
         url: page.fullurl,
+        image: page.thumbnail?.source,
         englishTitle: page.langlinks?.find((link) => link.lang === 'en')?.['*'],
       };
       details.set(`${language}:${page.title}`, detail);
@@ -131,29 +127,39 @@ async function fetchPages(language: string, titles: string[], withLangLinks: boo
 const partitions = new Map<string, Feature[]>();
 for (const file of files) partitions.set(file, JSON.parse(await readFile(path.join(directory, file), 'utf8')));
 
-const pendingSet = new Set<Feature>([...partitions.values()].flat().filter((feature) => !feature.wikipediaExtract).slice(0, limit));
+// A prior run may have discovered the article only after the broad Wikimedia
+// enrichment pass. Treat a missing thumbnail as pending too, so rerunning the
+// pipeline repairs that ordering rather than preserving a permanently bare card.
+const pendingSet = new Set<Feature>([...partitions.values()].flat()
+  .filter((feature) => !feature.wikipediaExtract || !feature.wikipediaImageUrl || !feature.wikipediaSourceText).slice(0, limit));
 const pending = [...pendingSet];
-process.stdout.write(`${pending.length} features without an extract\n`);
+process.stdout.write(`${pending.length} features pending extract, image, or long-source enrichment\n`);
 
 // Step 1: Q-id -> English and Dutch article titles. Some OSM features carry a
 // Wikidata tag but no wikipedia tag (Fatih Mosque is one); without discovering
 // nlwiki here they never acquire source text for the translation pass.
 const englishByQid = new Map<string, string>();
 const dutchByQid = new Map<string, string>();
+const imageByQid = new Map<string, string>();
 const qids = [...new Set(pending.flatMap((feature) => (feature.wikidata ? [feature.wikidata] : [])))];
 for (const batch of chunks(qids, 50)) {
   const url = new URL('https://www.wikidata.org/w/api.php');
   url.search = new URLSearchParams({
     // `sitefilter` accepts one site here rather than a pipe-separated set;
     // asking for all sitelinks keeps both enwiki and nlwiki available.
-    action: 'wbgetentities', format: 'json', props: 'sitelinks', ids: batch.join('|'),
+    action: 'wbgetentities', format: 'json', props: 'sitelinks|claims', ids: batch.join('|'),
   }).toString();
   const data = await fetchJson(url);
-  for (const [qid, entity] of Object.entries(data.entities || {}) as [string, { sitelinks?: Record<string, { title?: string }> }][]) {
+  for (const [qid, entity] of Object.entries(data.entities || {}) as [string, {
+    sitelinks?: Record<string, { title?: string }>;
+    claims?: { P18?: { mainsnak?: { datavalue?: { value?: string } } }[] };
+  }][]) {
     const englishTitle = entity.sitelinks?.enwiki?.title;
     const dutchTitle = entity.sitelinks?.nlwiki?.title;
     if (englishTitle) englishByQid.set(qid, englishTitle);
     if (dutchTitle) dutchByQid.set(qid, dutchTitle);
+    const image = entity.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
+    if (image) imageByQid.set(qid, image);
   }
 }
 process.stdout.write(`${englishByQid.size} of ${qids.length} Q-ids have an English sitelink\n`);
@@ -202,6 +208,30 @@ const englishTitles = new Set(pending.flatMap((feature) => {
 }));
 const englishDetails = englishTitles.size ? await fetchPages('en', [...englishTitles], false) : new Map<string, PageDetail>();
 
+// Wikipedia's pageimages extension can omit a perfectly usable lead image.
+// Wikidata P18 is the authoritative fallback, but resolve it through Commons'
+// imageinfo API so cards receive a direct, canvas-safe upload.wikimedia URL.
+const commonsImages = new Map<string, string>();
+const neededCommonsFiles = [...new Set(pending.flatMap((feature) => {
+  const filename = feature.wikidata ? imageByQid.get(feature.wikidata) : undefined;
+  return filename ? [filename] : [];
+}))];
+for (const batch of chunks(neededCommonsFiles, 20)) {
+  const url = new URL('https://commons.wikimedia.org/w/api.php');
+  url.search = new URLSearchParams({
+    action: 'query', format: 'json', redirects: '1', prop: 'imageinfo', iiprop: 'url', iiurlwidth: '640',
+    titles: batch.map((filename) => `File:${filename}`).join('|'),
+  }).toString();
+  const data = await fetchJson(url);
+  for (const page of Object.values(data.query?.pages || {}) as {
+    title?: string; imageinfo?: { thumburl?: string; url?: string }[];
+  }[]) {
+    const filename = page.title?.replace(/^File:/, '');
+    const image = page.imageinfo?.[0]?.thumburl || page.imageinfo?.[0]?.url;
+    if (filename && image) commonsImages.set(filename, image);
+  }
+}
+
 // Step 4: write the blurbs back.
 const filled = new Map<string, number>();
 const viaCounts = new Map<string, number>();
@@ -214,14 +244,16 @@ for (const [file, partition] of partitions) {
     const englishExtract = english ? englishDetails.get(`en:${english.title}`) : undefined;
     const foreign = feature.wikipedia ? foreignDetails.get(feature.wikipedia) : undefined;
     if (english && englishExtract?.extract) {
-      feature.wikipediaExtract = englishExtract.extract;
+      feature.wikipediaSourceText = englishExtract.extract;
+      feature.wikipediaExtract = englishExtract.extract.slice(0, DISPLAY_EXTRACT_CHARS);
       // Existing entries all point at en.wikipedia when the blurb is English.
       if (englishExtract.url) feature.wikipediaUrl = englishExtract.url;
       delete feature.wikipediaExtractLang;
       viaCounts.set(english.via, (viaCounts.get(english.via) || 0) + 1);
     } else if (foreign?.extract && feature.wikipedia) {
       const { language } = splitPage(feature.wikipedia);
-      feature.wikipediaExtract = foreign.extract;
+      feature.wikipediaSourceText = foreign.extract;
+      feature.wikipediaExtract = foreign.extract.slice(0, DISPLAY_EXTRACT_CHARS);
       feature.wikipediaExtractLang = language;
       if (!feature.wikipediaUrl && foreign.url) feature.wikipediaUrl = foreign.url;
       fallbackCounts.set(language, (fallbackCounts.get(language) || 0) + 1);
@@ -232,6 +264,9 @@ for (const [file, partition] of partitions) {
       unresolved.push(`${feature.name} [${file}] — ${reason}`);
       continue;
     }
+    const wikidataImage = feature.wikidata ? imageByQid.get(feature.wikidata) : undefined;
+    const image = englishExtract?.image || foreign?.image || (wikidataImage ? commonsImages.get(wikidataImage) : undefined);
+    if (image) feature.wikipediaImageUrl = image;
     filled.set(file, (filled.get(file) || 0) + 1);
   }
   if (!dryRun) await writeFile(path.join(directory, file), JSON.stringify(partition));
