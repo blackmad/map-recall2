@@ -625,7 +625,10 @@ class RoadNetwork {
   // Draw road names + endpoint labels at screen resolution (called each frame from renderer)
   // `hiddenName` is the street currently being asked about: its label would
   // otherwise sit on the map spelling out the answer.
-  drawLabels(ctx, camera, learnedNames, hiddenName = '', player = null) {
+  // `isLabelled(text, worldX, worldY)` rather than a name set: a long street can
+  // be known at one end and unlearned at the other, and writing the name across
+  // the unlearned end would hand the player the answer before the question.
+  drawLabels(ctx, camera, isLabelled, hiddenName = '', player = null) {
     const z = camera.zoom || 1;
     const fontSize = Math.max(8, Math.round(9 * z));
     ctx.font = `bold ${fontSize}px Arial, sans-serif`;
@@ -641,7 +644,7 @@ class RoadNetwork {
 
     if (this.labels && this.labels.length > 0) {
       for (const lbl of this.labels) {
-        if (learnedNames && !learnedNames.has(lbl.text)) continue;
+        if (isLabelled && !isLabelled(lbl.text, lbl.x, lbl.y)) continue;
         if (hiddenName && lbl.text === hiddenName) continue;
         const screen = camera.worldToScreen(lbl.x, lbl.y);
         const screenX = screen.x;
