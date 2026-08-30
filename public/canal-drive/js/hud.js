@@ -19,13 +19,14 @@ class HUD {
     const text = `${kmh} km/h   ${kilometres < 10 ? kilometres.toFixed(2) : kilometres.toFixed(1)} km`;
     ctx.font = 'bold 12px monospace';
     const w = ctx.measureText(text).width + 22;
-    const x = CANVAS_W - w - 15, y = CANVAS_H - 96;
-    ctx.fillStyle = 'rgba(3,18,28,0.72)';
-    roundRect(ctx, x, y, w, 24, 6);
+    const x = CANVAS_W - w - 16, y = CANVAS_H - 98;
+    ctx.fillStyle = 'rgba(250,249,244,0.92)';
+    roundRect(ctx, x, y, w, 26, 9);
     ctx.fill();
-    ctx.fillStyle = '#CBD5E1';
+    ctx.strokeStyle = 'rgba(35,55,57,.28)'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.fillStyle = '#26383B';
     ctx.textAlign = 'left';
-    ctx.fillText(text, x + 11, y + 16);
+    ctx.fillText(text, x + 11, y + 17);
   }
 
   drawFinishDirection(ctx, playerX, playerY, finishX, finishY, camera) {
@@ -133,14 +134,17 @@ class HUD {
   drawDestination(ctx, name, distancePx) {
     const meters = Math.max(0, distancePx / PIXELS_PER_METER);
     const distance = meters >= 1000 ? `${(meters / 1000).toFixed(1)} km` : `${Math.round(meters)} m`;
-    ctx.fillStyle = 'rgba(3,18,28,0.82)';
-    roundRect(ctx, CANVAS_W - 350, 15, 335, 42, 8);
+    ctx.fillStyle = 'rgba(250,249,244,0.94)';
+    roundRect(ctx, CANVAS_W - 350, 15, 335, 48, 11);
     ctx.fill();
-    ctx.fillStyle = '#FACC15';
-    ctx.font = 'bold 12px monospace';
+    ctx.strokeStyle = 'rgba(35,55,57,.3)'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.fillStyle = '#167DA0';
+    ctx.font = 'bold 9px monospace';
     ctx.textAlign = 'right';
-    ctx.fillText(`DESTINATION: ${name}`, CANVAS_W - 28, 34);
-    ctx.fillStyle = '#E0F2FE';
+    ctx.fillText('DESTINATION', CANVAS_W - 28, 30);
+    ctx.fillStyle = '#172326'; ctx.font = 'bold 13px monospace';
+    ctx.fillText(name, CANVAS_W - 82, 49);
+    ctx.fillStyle = '#C43D35'; ctx.font = 'bold 11px monospace';
     ctx.fillText(distance, CANVAS_W - 28, 49);
   }
 
@@ -161,41 +165,48 @@ class HUD {
 
   drawCanalScore(ctx, correct, attempts, points, feedback, streak = 0, gamey = true) {
     const hasStreak = gamey && streak >= 2;
-    ctx.fillStyle = 'rgba(3,18,28,0.82)';
-    roundRect(ctx, 15, 15, 310, feedback ? 58 : 38, 8);
+    ctx.fillStyle = 'rgba(250,249,244,0.94)';
+    roundRect(ctx, 15, 15, 310, feedback ? 62 : 43, 11);
     ctx.fill();
-    ctx.fillStyle = '#7DD3FC';
-    ctx.font = 'bold 14px monospace';
+    ctx.strokeStyle = 'rgba(35,55,57,.3)'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.fillStyle = '#C43D35';
+    ctx.font = 'bold 10px monospace';
     ctx.textAlign = 'left';
     const tally = gamey ? `${correct} / ${attempts}   ${points} pts` : `${correct} / ${attempts}`;
-    ctx.fillText(`CANAL RECALL   ${tally}`, 28, 40);
+    ctx.fillText('RECALL', 28, 31);
+    ctx.fillStyle = '#172326'; ctx.font = 'bold 14px monospace';
+    ctx.fillText(tally, 28, 49);
     if (hasStreak) {
-      ctx.fillStyle = '#FBBF24';
+      ctx.fillStyle = '#C43D35';
       ctx.font = 'bold 13px monospace';
       ctx.textAlign = 'right';
       const mult = (1 + 0.1 * Math.min(streak - 1, 9)).toFixed(1);
-      ctx.fillText(`${streak} STREAK  ${mult}×`, 318, 40);
+      ctx.fillText(`${streak} STREAK  ${mult}×`, 312, 48);
       ctx.textAlign = 'left';
     }
     if (feedback) {
-      ctx.fillStyle = '#E0F2FE';
+      ctx.fillStyle = '#40575B';
       ctx.font = '12px monospace';
-      ctx.fillText(feedback, 28, 61);
+      ctx.fillText(feedback, 28, 69);
     }
   }
 
   drawCurrentLocation(ctx, routeName, neighborhood, travelMode, answerHidden = false) {
     const routeLabel = travelMode === 'car' ? 'STREET' : 'WATERWAY';
-    ctx.fillStyle = 'rgba(3,18,28,0.82)';
-    roundRect(ctx, 15, 82, 310, neighborhood ? 51 : 33, 7);
+    const y = 84;
+    ctx.fillStyle = 'rgba(250,249,244,0.92)';
+    roundRect(ctx, 15, y, 310, neighborhood ? 55 : 38, 10);
     ctx.fill();
+    ctx.strokeStyle = 'rgba(35,55,57,.24)'; ctx.lineWidth = 1; ctx.stroke();
     ctx.textAlign = 'left';
     ctx.font = 'bold 11px monospace';
-    ctx.fillStyle = '#7DD3FC';
-    ctx.fillText(`${routeLabel}: ${answerHidden ? '???' : (routeName || '—')}`, 28, 103);
+    ctx.fillStyle = '#167DA0';
+    ctx.fillText(routeLabel, 28, y + 17);
+    ctx.fillStyle = '#172326'; ctx.font = 'bold 13px monospace';
+    ctx.fillText(answerHidden ? '???' : (routeName || '—'), 28, y + 34);
     if (neighborhood) {
-      ctx.fillStyle = '#E0F2FE';
-      ctx.fillText(`NEIGHBORHOOD: ${neighborhood}`, 28, 122);
+      ctx.fillStyle = '#60777A'; ctx.font = '10px monospace';
+      ctx.textAlign = 'right'; ctx.fillText(neighborhood.toUpperCase(), 312, y + 18); ctx.textAlign = 'left';
     }
   }
 

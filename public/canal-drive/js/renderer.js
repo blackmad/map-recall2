@@ -313,10 +313,28 @@ class Renderer {
 
 
   drawPlayerCar(car, camera) {
-    this._drawCarBody(this.ctx, car, camera.worldToScreen(car.x, car.y), camera.zoom || 1, [
-      [0, '#FDE68A'], [0.5, '#F59E0B'], [1, '#B45309']
-    ], '#78350F', camera.rotation);
-    this.ctx.restore();
+    const ctx = this.ctx;
+    const s = camera.worldToScreen(car.x, car.y);
+    const z = (camera.zoom || 1) * 1.15;
+    ctx.save();
+    ctx.translate(s.x, s.y);
+    ctx.scale(z, z);
+    ctx.rotate(car.angle - camera.rotation);
+
+    // A readable top-down omafiets silhouette: two wheels, diamond frame,
+    // upright bars and a warm jacket so the player remains easy to track.
+    ctx.strokeStyle = 'rgba(0,0,0,.25)'; ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.moveTo(-10, 3); ctx.lineTo(11, 3); ctx.stroke();
+    ctx.strokeStyle = '#17212B'; ctx.lineWidth = 3;
+    for (const x of [-11, 11]) { ctx.beginPath(); ctx.arc(x, 0, 6, 0, Math.PI * 2); ctx.stroke(); }
+    ctx.strokeStyle = '#0F766E'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+    ctx.beginPath();
+    ctx.moveTo(-11, 0); ctx.lineTo(-1, 0); ctx.lineTo(5, -7); ctx.lineTo(11, 0);
+    ctx.lineTo(-1, 0); ctx.lineTo(2, 7); ctx.lineTo(-11, 0); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(5, -7); ctx.lineTo(8, -10); ctx.lineTo(11, -9); ctx.stroke();
+    ctx.fillStyle = '#F59E0B'; ctx.beginPath(); ctx.arc(1, 3, 4.5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#FDE68A'; ctx.beginPath(); ctx.arc(5, 1, 2.5, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
   }
 
 

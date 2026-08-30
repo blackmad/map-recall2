@@ -150,17 +150,19 @@ class RoadNetwork {
   }
 
   // Find nearest road point + tangent angle (with per-frame caching)
-  getNearestRoad(x, y) {
+  getNearestRoad(x, y, preferredAngle = null) {
     // Quantize position to nearest 5px for cache key
     const qx = Math.round(x / 5) * 5;
     const qy = Math.round(y / 5) * 5;
-    const cacheKey = `${qx},${qy}`;
+    const headingKey = preferredAngle == null ? '' : `:${Math.round(preferredAngle * 12)}`;
+    const cacheKey = `${qx},${qy}${headingKey}`;
     const cached = this._frameCache.get(cacheKey);
     if (cached !== undefined) return cached;
 
     const gx = Math.floor(x / ROAD_GRID_CELL), gy = Math.floor(y / ROAD_GRID_CELL);
     let minDist = Infinity;
     let best = null;
+    const contacts = [];
 
     for (let dx = -2; dx <= 2; dx++) {
       for (let dy = -2; dy <= 2; dy++) {
@@ -169,11 +171,9 @@ class RoadNetwork {
         if (!cell) continue;
         for (const road of cell.roads) {
           const info = this._closestPointOnSeg(x, y, road.a, road.b);
-          if (info.dist < minDist) {
-            minDist = info.dist;
-            const rdx = road.b.x - road.a.x, rdy = road.b.y - road.a.y;
-            const len = Math.sqrt(rdx * rdx + rdy * rdy) || 1;
-            best = {
+          const rdx = road.b.x - road.a.x, rdy = road.b.y - road.a.y;
+          const len = Math.sqrt(rdx * rdx + rdy * rdy) || 1;
+          const contact = {
               x: info.x, y: info.y,
               dist: info.dist,
               angle: Math.atan2(rdy, rdx),
@@ -181,10 +181,22 @@ class RoadNetwork {
               segIdx: road.segIdx,
               ptIdx: road.ptIdx,
               nx: -rdy / len, ny: rdx / len
-            };
-          }
+          };
+          contacts.push(contact);
+          if (info.dist < minDist) { minDist = info.dist; best = contact; }
         }
       }
+    }
+
+    if (preferredAngle != null && best) {
+      const angleDistance = angle => {
+        const delta = Math.abs(Math.atan2(Math.sin(angle - preferredAngle), Math.cos(angle - preferredAngle)));
+        return Math.min(delta, Math.PI - delta);
+      };
+      const aligned = contacts
+        .filter(contact => contact.dist <= minDist + 10 && contact.dist <= contact.width + 12)
+        .sort((a, b) => angleDistance(a.angle) - angleDistance(b.angle) || a.dist - b.dist)[0];
+      if (aligned) best = aligned;
     }
 
     this._frameCache.set(cacheKey, best);
@@ -644,7 +656,7 @@ class RoadNetwork {
 
         // Check overlap with any drawn label AND same-name proximity
         let skip = false;
-        const minNameDist = 250; // min screen pixels between same-name labels
+        const minNameDist = 520; // one readable label per nearby connected run
         for (const r of drawnRects) {
           const dx = Math.abs(screenX - r.x), dy = Math.abs(screenY - r.y);
           // Axis-aligned overlap

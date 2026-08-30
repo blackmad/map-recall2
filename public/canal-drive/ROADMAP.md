@@ -10,10 +10,15 @@ design notes for the larger bets live below the board.
 - **English-only encyclopedia text.** `enrich-amsterdam-wikipedia-extracts.ts`
   resolves an English article through the Wikidata `enwiki` sitelink and, when
   that fails, through the Dutch article's interwiki link. What remains are the
-  features with no English article at all — 124 of 236 landmark blurbs and 278
-  of 299 bridge blurbs are still Dutch, tagged `wikipediaExtractLang: "nl"`.
-  Those need translating or withholding; showing Dutch to a player learning the
-  city in English is not the intent.
+  features with no English article at all — 121 landmark blurbs and 282 bridge
+  blurbs are still Dutch, tagged `wikipediaExtractLang: "nl"` (403 total in
+  the current extracts).
+  `npm run enrich:english` now translates those original ledes when a
+  `GEMINI_API_KEY` / `GOOGLE_API_KEY` is configured, preserving proper names
+  and the source text. Without a key it can substitute Wikidata's English
+  description, while retaining enough metadata for a later keyed run to upgrade
+  that thin fallback. The pass still needs to be run with a translation key and
+  its generated extract changes reviewed.
 - **Satellite roof colouring — coverage.** The sampler exists and runs
   (`npm run build:roof-colours`, see below), but it can only colour buildings
   the extract already ships geometry for: 10,578 of roughly 104,000 footprints
@@ -26,6 +31,11 @@ design notes for the larger bets live below the board.
 
 ## Next
 
+- Add Storybook for isolated, deterministic visual states after extracting the
+  canvas card/HUD renderers behind small props-driven adapters. Start with
+  desktop/mobile fixtures for route setup, recall feedback, neighborhood entry
+  (photo and fallback), landmark trivia, stacked notices, and every finish-card
+  combination; pair them with screenshot regression tests.
 - Wider postcard coverage: 29 of the 91 mapped areas carry an enriched
   Wikipedia blurb and image; the districts and quarters that now supply most
   postcards mostly do not.
@@ -36,6 +46,30 @@ design notes for the larger bets live below the board.
 
 ## Recently done
 
+- **Roundabout drivability.** At Van Limburg Stirumstraat / De Wittenkade,
+  equidistant centerline stubs could make collision recovery flip between road
+  tangents and steer away from the intended exit. Vehicle contact now prefers
+  the nearby tangent aligned with the bike's heading; the named junction arms
+  are pinned in `npm run test:canal-car`.
+- **Calmer map and neighborhood transitions.** Nearby fragments of the same
+  learned street no longer stack duplicate labels. Neighborhood changes must
+  remain stable for 0.7 seconds before the HUD and entry card adopt them, which
+  filters overlap jitter at shared polygon edges.
+- **Start screen and HUD redesign.** The route setup is now a clear navigation
+  briefing with grouped route and learning choices, quieter advanced settings,
+  and a mobile-first start action. The in-game readouts use one compact visual
+  system for recall, location, destination, speed, and distance instead of a
+  collection of unrelated dark boxes.
+- **Arrival teaches the destination.** The finish card now identifies the POI,
+  shows its image when cached, includes a concise encyclopedia detail, and
+  keeps `W` available for opening its Wikipedia article alongside route stats.
+- **Amsterdam travels by bike.** Street mode now presents itself as cycling and
+  uses a readable top-down omafiets player marker while retaining the proven
+  street-routing and shoulder-response physics.
+- **Postcard image fallback.** Fine quarters without their own enriched photo
+  borrow the containing district's Wikimedia image. The old oversized
+  travel-poster card is now a compact photo lower-third that leaves the driving
+  corridor visible while dedicated neighborhood coverage grows.
 - **Routing reachability.** OSM models a side street meeting a through street
   as a node *inside* the through way, and both the extract builder and the
   loader run Douglas-Peucker, which drops 9.9% of those shared junction
@@ -86,6 +120,24 @@ design notes for the larger bets live below the board.
   minority of warm tile — where before every roof was a copy of its own wall.
 
 ## Backlog
+
+- **City knowledge review map.** Add a dedicated full-city review screen where
+  every learned road/waterway is color-coded by mastery and review state. Layer
+  a fog-of-war / heatmap over the city to show strong, fading, and unexplored
+  spatial knowledge; derive it from nearby learned features, visits, answer
+  history, and recency rather than treating one drive-through as mastery.
+- **Learning-aware route generation.** Feed spaced-repetition mastery into
+  Dijkstra as a small, bounded cost on well-known streets so equally sensible
+  routes prefer unfamiliar connections. Cap the allowed detour and never make
+  mastered roads effectively impassable. Show the route's expected novelty,
+  award a clearly explained score multiplier for newly encountered streets,
+  and let calm mode use the routing benefit without arcade point chatter.
+- **Clear all my data.** Add a deliberately guarded reset for test accounts and
+  players who want a fresh start. It must clear local preferences/recall/
+  exploration state and the signed-in Firebase copy, explain exactly what will
+  be deleted, require confirmation, and leave authentication itself intact.
+- Reward cycling on OSM ways with fully separated cycle tracks; make the bonus
+  reinforce safe Amsterdam route knowledge without encouraging route detours.
 
 - Better 3D OSM trees: instanced trunk/canopy geometry with deterministic
   variation from OSM species tags, distance LOD, kept out of 2D.

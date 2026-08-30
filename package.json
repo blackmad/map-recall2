@@ -21,6 +21,7 @@
     "test:canal-car": "tsx scripts/check-canal-car.ts",
     "test:reachability": "tsx scripts/check-road-reachability.ts",
     "build:roof-colours": "tsx scripts/build-satellite-roof-colours.ts",
+    "enrich:english": "tsx scripts/translate-extracts-to-english.ts",
     "test:canal-buildings": "tsx scripts/check-canal-buildings.ts",
     "test:osm-buildings": "tsx scripts/check-osm-building-appearance.ts",
     "test:canal-streets": "tsx scripts/check-canal-street-overlays.ts",
