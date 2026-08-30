@@ -22,85 +22,142 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 3; pointer-events
 canvas { display: block; position: relative; z-index: 2; }
 #vector-map { position: fixed; z-index: 1; pointer-events: none; }
 #map-container { border-radius: 0; }
-#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: flex-end; padding: 24px 30px; background: linear-gradient(90deg, transparent 35%, rgba(3,18,28,.12) 58%, rgba(3,18,28,.62)); z-index: 20; font-family: ui-monospace, monospace; pointer-events: none; }
+/* ------------------------------------------------------------------ *
+ * Theme tokens.
+ *
+ * Two surfaces, one component set. The in-game chrome — recall prompt,
+ * help and settings panels — is the ink theme on :root. The route
+ * briefing is a paper map sheet, and it is a *token override* scoped to
+ * #route-setup rather than a second set of rules.
+ *
+ * It used to be a second set of rules, declared unscoped after the
+ * first, which meant the paper colours also repainted the live settings
+ * panel: its selects were #172326 on #071e2b and simply could not be
+ * read. Scoping the theme to its own surface makes that leak
+ * structurally impossible rather than something to keep noticing.
+ * ------------------------------------------------------------------ */
+:root {
+  --ink: #f0f9ff;
+  --ink-dim: #bae6fd;
+  --muted: #8fbfd6;
+  --surface: #071e2b;
+  --surface-sunk: rgba(8,47,64,.54);
+  --surface-sunk-focus: rgba(10,61,82,.72);
+  --line: rgba(71,134,157,.45);
+  --line-strong: #38bdf8;
+  --accent: #38bdf8;
+  --accent-ink: #7dd3fc;
+  --accent-soft: rgba(56,189,248,.14);
+  --primary: linear-gradient(100deg, #0284c7, #0891b2);
+  --primary-ink: #ffffff;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font-ui: system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+#route-setup {
+  --ink: #172326;
+  --ink-dim: #394e52;
+  --muted: #708487;
+  --surface: rgba(250,249,244,.97);
+  --surface-sunk: transparent;
+  --surface-sunk-focus: transparent;
+  --line: #cbd4d0;
+  --line-strong: #167da0;
+  --accent: #c43d35;
+  --accent-ink: #c43d35;
+  --accent-soft: rgba(196,61,53,.09);
+  --primary: #c43d35;
+  --primary-ink: #ffffff;
+  --radius: 18px;
+  --radius-sm: 7px;
+}
+
+/* ---- Recall prompt ---- */
+#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: flex-end; padding: 24px 30px; background: linear-gradient(90deg, transparent 35%, rgba(3,18,28,.12) 58%, rgba(3,18,28,.62)); z-index: 20; font-family: var(--font-mono); pointer-events: none; }
 #canal-prompt.dock-left { justify-content: flex-start; background: linear-gradient(270deg, transparent 35%, rgba(3,18,28,.12) 58%, rgba(3,18,28,.62)); }
-#canal-card { width: min(38vw, 440px); background: rgba(7,30,43,.96); color: white; border: 2px solid #38bdf8; border-radius: 18px; padding: 24px; box-shadow: 0 24px 80px rgba(0,0,0,.55); pointer-events: auto; }
-#canal-card h2 { color: #7dd3fc; margin-bottom: 8px; }
-#canal-card p { color: #bae6fd; margin-bottom: 18px; }
-#canal-answer { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid #38bdf8; font: 18px ui-monospace, monospace; margin-bottom: 12px; }
-#canal-submit { width: 100%; padding: 12px; border: 0; border-radius: 10px; background: #0284c7; color: white; font-weight: 800; cursor: pointer; }
+#canal-card { width: min(38vw, 440px); padding: 24px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 24px 80px rgba(0,0,0,.55); pointer-events: auto; }
+/* What you are being asked to name is the largest thing on the card, and the
+   chip above it says which kind of feature the answer is. "Crossing a bridge"
+   as the headline over "Which water are you crossing?" read as a question
+   about the bridge. */
+.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 12px; padding: 5px 11px 5px 8px; border: 1px solid rgba(56,189,248,.45); border-radius: 999px; background: rgba(56,189,248,.16); color: var(--accent-ink); font: 800 11px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.prompt-kind .prompt-kind-icon { display: grid; place-items: center; width: 20px; height: 20px; line-height: 1; letter-spacing: 0; }
+.prompt-kind .prompt-kind-icon svg { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.prompt-kind .prompt-kind-icon svg.filled { fill: currentColor; stroke: none; }
+.prompt-kind[data-kind="bridge"] { border-color: rgba(250,204,21,.45); background: rgba(250,204,21,.15); color: #fde68a; }
+.prompt-kind[data-kind="street"] { border-color: rgba(134,239,172,.42); background: rgba(134,239,172,.14); color: #bbf7d0; }
+#canal-card h2 { color: var(--ink); margin-bottom: 6px; font-size: 25px; line-height: 1.15; }
+#canal-card p { color: var(--muted); margin-bottom: 18px; font-size: 13px; }
+#canal-answer { width: 100%; margin-bottom: 12px; padding: 14px 16px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); font: 18px var(--font-mono); }
+#canal-submit { width: 100%; padding: 12px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
 #canal-feedback { min-height: 22px; margin-top: 12px; font-weight: 700; }
 #canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-.canal-choice { padding: 12px 8px; border-radius: 10px; border: 1px solid #38bdf8; color: #e0f2fe; background: #0c4a6e; cursor: pointer; font-weight: 700; }
-#route-setup { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: 22px; background: radial-gradient(circle at 70% 15%, rgba(14,116,144,.28), transparent 36%), linear-gradient(145deg, rgba(2,15,23,.94), rgba(3,28,40,.9)); color: white; font-family: ui-monospace, monospace; }
-#route-card { width: min(96vw, 760px); max-height: calc(100vh - 44px); overflow: auto; padding: 34px; border: 1px solid rgba(125,211,252,.42); border-radius: 24px; background: linear-gradient(155deg, rgba(8,35,49,.97), rgba(4,23,34,.98)); box-shadow: 0 32px 100px rgba(0,0,0,.62), inset 0 1px rgba(255,255,255,.06); }
-.setup-eyebrow { color: #38bdf8; font: 800 11px/1 ui-monospace, monospace; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 10px; }
-#route-card h1 { color: #f0f9ff; margin-bottom: 8px; font: 800 clamp(27px, 5vw, 40px)/1.05 system-ui, sans-serif; letter-spacing: -.035em; }
-#route-card .lede { max-width: 580px; color: #a5d8ec; margin-bottom: 24px; font: 14px/1.5 system-ui, sans-serif; }
-.setup-section-title { margin: 24px 0 10px; color: #7dd3fc; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
-.setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.setup-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 12px 13px; border: 1px solid rgba(71,134,157,.45); border-radius: 12px; background: rgba(8,47,64,.54); color: #8fd3ec; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
-.setup-field:focus-within { border-color: #38bdf8; background: rgba(10,61,82,.72); box-shadow: 0 0 0 3px rgba(56,189,248,.1); }
-.setup-field select, .setup-field input[type="text"] { width: 100%; padding: 0 24px 0 0; border: 0; border-radius: 0; outline: 0; color: #f0f9ff; background: transparent; font: 600 14px/1.3 system-ui, sans-serif; }
-.account-button { padding: 7px 14px; border: 1px solid #38bdf8; border-radius: 8px; background: rgba(56,189,248,.14); color: #e0f2fe; font: inherit; font-size: 12px; cursor: pointer; }
-.account-button:hover { background: rgba(56,189,248,.26); }
+.canal-choice { padding: 12px 8px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: #0c4a6e; color: #e0f2fe; font-weight: 700; cursor: pointer; }
 .canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: rgba(255,255,255,.18); font-size: 11px; font-weight: bold; }
-.assist-options { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; color: #e0f2fe; font-size: 13px; }
-.assist-options label { display: flex; align-items: center; gap: 6px; }
-.route-surprise { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; align-items: center; gap: 14px; margin: 0; padding: 16px; border: 1px solid rgba(56,189,248,.5); border-radius: 15px; background: linear-gradient(110deg, rgba(12,74,110,.72), rgba(8,47,64,.42)); color: #dff5ff; font: 13px/1.4 system-ui, sans-serif; }
-.route-surprise > span { min-width: 0; overflow-wrap: anywhere; }
-.route-surprise .route-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: rgba(56,189,248,.14); font-size: 23px; }
-.route-surprise strong { display: block; color: #f0f9ff; margin-bottom: 2px; font-size: 15px; }
-.route-chip { padding: 6px 9px; border-radius: 999px; background: rgba(3,18,28,.56); color: #7dd3fc; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+
+/* ---- Shared form components (both themes) ---- */
+.setup-section-title { margin: 24px 0 10px; color: var(--accent-ink); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+.setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.setup-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 12px 13px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-sunk); color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.setup-field:focus-within { border-color: var(--line-strong); background: var(--surface-sunk-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+.setup-field select, .setup-field input[type="text"] { width: 100%; padding: 0 24px 0 0; border: 0; border-radius: 0; outline: 0; background: transparent; color: var(--ink); font: 600 14px/1.3 var(--font-ui); }
 .preference-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-.master-toggle { display: flex; align-items: flex-start; gap: 10px; margin: 0; padding: 13px 14px; border: 1px solid #28556a; border-radius: 12px; background: rgba(5,35,49,.48); color: #e0f2fe; font-size: 13px; cursor: pointer; }
-.master-toggle input { margin-top: 2px; }
-.master-toggle small { display: block; margin-top: 3px; color: #7dd3fc; font-size: 11px; font-weight: normal; line-height: 1.45; }
-.advanced-options { margin: 16px 0; border: 1px solid #28556a; border-radius: 10px; padding: 0 14px; }
-.advanced-options summary { padding: 13px 0; cursor: pointer; color: #bae6fd; font-weight: bold; }
+.master-toggle { display: flex; align-items: flex-start; gap: 10px; margin: 0; padding: 13px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-sunk); color: var(--ink); font-size: 13px; cursor: pointer; }
+.master-toggle input { margin-top: 2px; accent-color: var(--accent); }
+.master-toggle small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; font-weight: normal; line-height: 1.45; }
+.assist-options { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; color: var(--ink-dim); font-size: 13px; }
+.assist-options label { display: flex; align-items: center; gap: 6px; }
+.assist-options input { accent-color: var(--accent); }
+.account-button { padding: 7px 14px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--accent-soft); color: var(--ink); font: inherit; font-size: 12px; cursor: pointer; }
+.account-button:hover { background: var(--accent-soft); filter: brightness(1.35); }
+.advanced-options { margin: 16px 0; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.advanced-options summary { padding: 13px 0; color: var(--ink-dim); font-weight: bold; cursor: pointer; }
 .advanced-options .setup-grid { padding-bottom: 14px; }
-.utility-panel { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; background: rgba(3,18,28,.78); color: white; font-family: ui-monospace, monospace; }
-.utility-card { width: min(92vw, 520px); padding: 25px; border: 2px solid #38bdf8; border-radius: 16px; background: #071e2b; }
-.utility-card h2 { color: #7dd3fc; margin-bottom: 16px; }
-.utility-card table { width: 100%; border-collapse: collapse; }
-.utility-card td { padding: 6px; border-bottom: 1px solid #164e63; }
-.utility-card td:first-child { width: 80px; color: #facc15; font-weight: bold; }
-.utility-close { width: 100%; margin-top: 18px; padding: 10px; border: 0; border-radius: 8px; background: #0284c7; color: white; font-weight: bold; }
-#utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 12; display: flex; gap: 8px; }
-#utility-buttons button { width: 38px; height: 38px; border: 1px solid #7dd3fc; border-radius: 10px; background: rgba(3,18,28,.78); color: white; font-size: 18px; cursor: pointer; }
-#route-start { width: 100%; padding: 15px; border: 1px solid #7dd3fc; border-radius: 12px; background: linear-gradient(100deg, #0284c7, #0891b2); color: white; font-weight: 900; cursor: pointer; font-size: 16px; box-shadow: 0 10px 28px rgba(2,132,199,.22); }
-#route-start:hover { filter: brightness(1.12); transform: translateY(-1px); }
-#route-error { color: #fbbf24; min-height: 20px; margin-top: 10px; }
-#prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; color: #334155; font: 11px system-ui, sans-serif; background: rgba(255,255,255,.82); padding: 5px 8px; border-radius: 6px; }
-#prototype-links a { color: #0369a1; }
-/* Route briefing: a quiet map sheet, not another game HUD. */
-#route-setup { align-items: center; background: rgba(232,237,232,.72); backdrop-filter: blur(5px); }
-#route-card { width: min(94vw, 680px); padding: 26px 30px 24px; border: 1px solid rgba(35,55,57,.2); border-radius: 18px; background: rgba(250,249,244,.97); color: #172326; box-shadow: 0 22px 65px rgba(25,42,43,.2); }
-.setup-eyebrow { color: #c43d35; letter-spacing: .13em; margin-bottom: 7px; }
-#route-card h1 { color: #172326; font-size: clamp(26px,4vw,34px); margin-bottom: 5px; }
-#route-card .lede { color: #52666a; margin-bottom: 10px; }
-.route-surprise { padding: 12px 14px; border: 0; border-left: 4px solid #c43d35; border-radius: 7px; background: #e8f0ec; color: #394e52; }
-.route-surprise .route-icon { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #c43d35; font-size: 19px; }
-.route-surprise strong { color: #172326; }
-.route-chip { background: transparent; color: #597175; }
-.setup-section-title { margin: 12px 0 5px; color: #7a8d8f; }
-.setup-grid { gap: 0 18px; }
-.setup-field { padding: 9px 0 10px; border: 0; border-bottom: 1px solid #cbd4d0; border-radius: 0; background: transparent; color: #718487; }
-.setup-field:focus-within { border-color: #167da0; background: transparent; box-shadow: none; }
-.setup-field select, .setup-field input[type="text"] { color: #172326; font-size: 14px; }
-.preference-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 16px; margin-top: 0; }
-.master-toggle { min-height: 45px; padding: 7px 0; border: 0; border-radius: 0; background: transparent; color: #24373a; }
-.master-toggle input { accent-color: #c43d35; }
-.master-toggle small { color: #708487; }
-.account-button { border-color: #91a7a8; background: transparent; color: #33494c; }
-/* The assist toggles inherited the live settings panel's pale-blue-on-dark
-   text, which on the paper setup card was near-invisible. */
+
+/* ---- Route briefing ---- */
+#route-setup { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: 22px; background: rgba(232,237,232,.72); backdrop-filter: blur(5px); color: var(--ink); font-family: var(--font-mono); }
+#route-card { width: min(94vw, 680px); max-height: calc(100vh - 44px); overflow: auto; padding: 26px 30px 24px; border: 1px solid rgba(35,55,57,.2); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 22px 65px rgba(25,42,43,.2); }
+.setup-eyebrow { margin-bottom: 7px; color: var(--accent); font: 800 11px/1 var(--font-mono); letter-spacing: .13em; text-transform: uppercase; }
+#route-card h1 { margin-bottom: 5px; color: var(--ink); font: 800 clamp(26px,4vw,34px)/1.05 var(--font-ui); letter-spacing: -.035em; }
+#route-card .lede { max-width: 580px; margin-bottom: 10px; color: var(--ink-dim); font: 14px/1.5 var(--font-ui); }
+.route-surprise { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; align-items: center; gap: 14px; margin: 0; padding: 12px 14px; border: 0; border-left: 4px solid var(--accent); border-radius: var(--radius-sm); background: #e8f0ec; color: var(--ink-dim); font: 13px/1.4 var(--font-ui); }
+.route-surprise > span { min-width: 0; overflow-wrap: anywhere; }
+.route-surprise .route-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #fff; color: var(--accent); font-size: 19px; }
+.route-surprise strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 15px; }
+.route-chip { padding: 6px 9px; border-radius: 999px; background: transparent; color: #597175; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+/* The paper sheet's fields are ruled lines on paper, not inset boxes. That is
+   a genuine difference in form, so it stays a rule — scoped to the sheet. */
+#route-card .setup-section-title { margin: 12px 0 5px; color: #7a8d8f; }
+#route-card .setup-grid { gap: 0 18px; }
+#route-card .setup-field { padding: 9px 0 10px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+#route-card .setup-field:focus-within { border-color: var(--line-strong); box-shadow: none; }
+#route-card .setup-field select, #route-card .setup-field input[type="text"] { font-size: 14px; }
+#route-card .preference-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 16px; margin-top: 0; }
+/* The account block carries a sentence, not a two-word label; in a third of
+   the sheet it wrapped to one word per line. */
+#route-card #account-row { grid-column: 1 / -1; align-items: center; }
+#route-card .master-toggle { min-height: 45px; padding: 7px 0; border: 0; border-radius: 0; }
 #route-card .assist-options { color: #33494c; }
-#route-card .assist-options input { accent-color: #c43d35; }
-.advanced-options { margin: 8px 0; border: 0; border-top: 1px solid #cbd4d0; border-bottom: 1px solid #cbd4d0; border-radius: 0; }
-.advanced-options summary { color: #52686b; font-size: 12px; }
-#route-start { padding: 13px; border: 0; border-radius: 7px; background: #c43d35; box-shadow: none; font: 800 15px system-ui,sans-serif; }
-#route-start:hover { background: #a92f29; }
+#route-card .account-button { border-color: #91a7a8; background: transparent; color: #33494c; }
+#route-card .advanced-options { margin: 8px 0; padding: 0; border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); border-radius: 0; }
+#route-card .advanced-options summary { color: #52686b; font-size: 12px; }
+#route-start { width: 100%; padding: 13px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font: 800 15px var(--font-ui); cursor: pointer; }
+#route-start:hover { filter: brightness(1.1); }
+#route-error { min-height: 20px; margin-top: 10px; color: #b45309; }
+
+/* ---- Help and live settings panels ---- */
+.utility-panel { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; background: rgba(3,18,28,.78); color: var(--ink); font-family: var(--font-mono); }
+.utility-card { width: min(92vw, 520px); padding: 25px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,.55); }
+.utility-card h2 { margin-bottom: 16px; color: var(--accent-ink); }
+.utility-card table { width: 100%; border-collapse: collapse; }
+.utility-card td { padding: 6px; border-bottom: 1px solid var(--line); }
+.utility-card td:first-child { width: 80px; color: #facc15; font-weight: bold; }
+.utility-close { width: 100%; margin-top: 18px; padding: 12px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
+#utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 12; display: flex; gap: 8px; }
+#utility-buttons button { width: 38px; height: 38px; border: 1px solid var(--accent-ink); border-radius: var(--radius-sm); background: rgba(3,18,28,.78); color: var(--ink); font-size: 18px; cursor: pointer; }
+#prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; padding: 5px 8px; border-radius: 6px; background: rgba(255,255,255,.82); color: #334155; font: 11px var(--font-ui); }
+#prototype-links a { color: #0369a1; }
 @media (max-width: 760px) { #route-setup { padding: 0; align-items: stretch; } #route-card { flex: none; width: 100vw; min-width: 0; max-height: 100vh; overflow-x: hidden; border: 0; border-radius: 0; padding: 24px 18px 18px; } .setup-grid, .preference-grid { grid-template-columns: minmax(0,1fr); } .route-surprise { grid-template-columns: 40px minmax(0,1fr); } .route-chip { display: none; } #route-start { position: sticky; bottom: 0; z-index: 3; box-shadow: 0 -14px 28px #071e2b, 0 8px 24px rgba(2,132,199,.25); } #canal-prompt, #canal-prompt.dock-left { align-items: flex-end; justify-content: center; padding: 12px; background: linear-gradient(0deg, rgba(3,18,28,.68), transparent 62%); } #canal-card { width: min(96vw, 520px); padding: 18px; } #canal-choices { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
@@ -174,8 +231,9 @@ canvas { display: block; position: relative; z-index: 2; }
 </div></div>
 <div id="canal-prompt">
   <form id="canal-card">
-    <h2>You made a turn</h2>
-    <p>Which waterway are you on now?</p>
+    <span id="canal-kind" class="prompt-kind" data-kind="water"><span class="prompt-kind-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span><span id="canal-kind-label">Waterway</span></span>
+    <h2>Which waterway are you on now?</h2>
+    <p>You made a turn</p>
     <input id="canal-answer" autocomplete="off" autocapitalize="words" aria-label="Waterway name">
     <div id="canal-choices"></div>
     <button id="canal-submit" type="submit">Submit answer</button>
@@ -205,6 +263,7 @@ canvas { display: block; position: relative; z-index: 2; }
 
 <!-- OSM / Road Network (depends on constants/utils) -->
 <script src="js/osm-loader.js"></script>
+<script src="js/road-graph.bundle.js"></script>
 <script src="js/road-network.js"></script>
 <script src="js/map-picker.js"></script>
 <script src="js/loading-screen.js"></script>
@@ -215,6 +274,7 @@ canvas { display: block; position: relative; z-index: 2; }
 <script src="js/recall-store.bundle.js"></script>
 <script src="js/street-overlay-style.bundle.js"></script>
 <script src="js/detailed-buildings.bundle.js"></script>
+<script src="js/player-bike.bundle.js"></script>
 <script src="js/vector-map.js"></script>
 
 <!-- Game (depends on everything above) -->
