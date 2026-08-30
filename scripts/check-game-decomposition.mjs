@@ -1,11 +1,41 @@
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import vm from 'node:vm';
 
+// A typed subsystem ships as source plus a generated bundle, so the page can
+// now disagree with the code under review. Rebuilding each one and comparing
+// bytes is what keeps "it typechecks" and "it is what the browser runs" the
+// same statement.
+const generatedBundles = {
+  'js/game-landmarks.bundle.js': 'src/canalRecall/game/landmarkRuntime.ts',
+};
+
+function assertBundleIsCurrent(bundle, entry) {
+  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'canal-decomp-'));
+  const rebuilt = path.join(scratch, path.basename(bundle));
+  try {
+    execFileSync('npx', ['esbuild', entry, '--bundle', '--format=iife', `--outfile=${rebuilt}`],
+      { stdio: 'pipe' });
+    assert.equal(
+      fs.readFileSync(path.join(root, bundle), 'utf8'),
+      fs.readFileSync(rebuilt, 'utf8'),
+      `${bundle} is stale; rebuild it in the same change as ${entry}`,
+    );
+  } finally {
+    fs.rmSync(scratch, { recursive: true, force: true });
+  }
+}
+
 const root = path.resolve('public/canal-drive');
+// Subsystems migrate from hand-written JavaScript to a typed module plus its
+// generated bundle one at a time, so both spellings appear here during the
+// migration. A `.bundle.js` entry is generated from `src/canalRecall/game/`
+// and must be rebuilt in the same change as its source.
 const runtimeFiles = [
-  'js/game-landmarks.js',
+  'js/game-landmarks.bundle.js',
   'js/game-recall.js',
   'js/game-route.js',
   'js/game-presentation.js',
@@ -22,6 +52,8 @@ for (const file of [...runtimeFiles, gameFile]) {
 
 const gameLines = fs.readFileSync(path.join(root, gameFile), 'utf8').split('\n').length;
 assert(gameLines < 800, `game.js grew back to ${gameLines} lines; keep subsystems separate`);
+
+for (const [bundle, entry] of Object.entries(generatedBundles)) assertBundleIsCurrent(bundle, entry);
 
 const loadCallbacks = [];
 const context = vm.createContext({

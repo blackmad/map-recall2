@@ -60,6 +60,21 @@ already caused one silent 12,500-way loss.
 
 ## P2 — Weight and reach
 
+**8b. Finish typing the game subsystems.**
+`game-landmarks` is done: `src/canalRecall/game/` splits the rules
+(`landmarkData.ts`, tested directly) from the browser shell
+(`landmarkRuntime.ts`), and `test:canal-game-structure` now fails on a stale
+generated bundle. Three subsystems are still untyped JavaScript —
+`game-recall.js` (528 lines), `game-route.js` (793) and `game-presentation.js`
+(872). Take them one at a time, in that order: recall is the smallest and owns
+the quiz rules most worth asserting; presentation is the largest and has prior
+art worth reusing — an abandoned `finishScreen.ts` on the merged
+`finish-renderer-ts` branch models the finish screen as a pure layout function
+driven by a typed model and tested against a recording canvas context.
+*The rule to keep: what the player is told is typed and tested; what paints it
+is not. Do not translate a method verbatim if the decision inside it belongs in
+the data half.*
+
 **9. Stop shipping three.js twice, and Firestore to everyone.**
 Measured, not suspected: `detailed-buildings.bundle.js` is 698 KB and
 `player-vehicles.bundle.js` is 606 KB, and both contain their own copy of
@@ -70,18 +85,60 @@ three build across the 3D bundles and load the Firestore sync lazily, behind
 sign-in.
 *Pure win, no design decisions, and it makes every later 3D addition cheaper.*
 
-**10. Put measured roof colours onto the live vector-tile buildings.**
-`buildings-colored.geojson` ships 5.5 MB to overlap 10,578 of ~104,000 basemap
-buildings, largely repeating geometry the tiles already carry. Keep precomputing
-the genuinely new information — the PDOK roof samples — but publish it as a
-compact OSM-id-to-colour table joined to tile features with feature state, and
-draw roof caps as a second extrusion based at `render_height`. Current 5,778
-samples encode to ~26 KB gzipped; full coverage of the 43,398-building core
-projects to ~195 KB, against 1.9 MB gzipped for trimmed geometry.
-Before committing: prove tile feature ids are stable and unique across tiles
-(relation buildings included), reapply state as tiles load, and respect
-`hide_3d` and building parts. If those hold, delete the overlapping GeoJSON
-appearance layers.
+**10. Replace flat landmark boxes with an OSM2World mesh pipeline.**
+Keep MapLibre as the map, camera, labels and interaction surface. OSM Buildings
+is a useful quality reference but is a separate viewer, not a MapLibre layer;
+using its hosted service would also couple the game to non-commercial service
+terms. Use the MIT-licensed OSM2World converter offline instead, then render its
+output through a MapLibre custom 3D layer using the shared Three.js runtime.
+
+Do this as a gated progression rather than converting Amsterdam in one shot:
+
+1. **Rijksmuseum proof.** Feed a tightly clipped OSM extract around the
+   Rijksmuseum to a pinned OSM2World release and export glTF. Confirm that the
+   result preserves building parts, `min_height`, gabled/skillion roofs, roof
+   direction, the courtyard and the recognisable towers. Record the exact
+   command and source timestamp so the asset is reproducible.
+2. **Make the asset game-ready.** Transform the model origin into local metres,
+   retain one stable OSM identity per selectable building or part, remove
+   unseen/redundant geometry, generate normals, and compress the result. Apply
+   the measured PDOK roof colours after conversion without discarding the
+   material and part boundaries that make the model recognisable.
+3. **One MapLibre custom layer.** Extend the existing shared Three.js scaffold
+   rather than shipping another renderer. Load the Rijksmuseum GLB into the
+   same WebGL context and projection matrix as MapLibre; verify depth against
+   roads, water, labels, the player vehicle and landmark highlights. Hide the
+   underlying flat extrusion only for footprints whose replacement mesh has
+   loaded successfully.
+4. **Preserve game interaction.** Clicking a mesh must resolve to the same
+   landmark/building record as clicking the vector footprint. `hide_3d`, active
+   landmark highlighting, camera transitions and context-loss recovery must
+   affect generated meshes and ordinary extrusions consistently. A failed or
+   slow mesh request must leave the current building visible and clickable.
+5. **Tile the pipeline.** If the landmark proof holds, generate independently
+   cacheable spatial tiles rather than one city-sized model. Publish a compact
+   manifest containing bounds, content hashes, byte sizes and OSM source date;
+   fetch only the camera's nearby tiles, unload with hysteresis, and cap
+   concurrent decoding. Keep ordinary MapLibre extrusions outside the detailed
+   radius.
+6. **Set acceptance gates before widening coverage.** Compare a fixed
+   Rijksmuseum screenshot against both today's renderer and OSM Buildings.
+   Require the roof silhouette and courtyard to survive, no duplicate/z-fighting
+   geometry, no new navigation occlusion, and no material frame-time regression
+   on the mobile test target. Measure compressed bytes, parse/decode time, GPU
+   memory and draw calls. Stop at signature landmarks if city blocks cannot meet
+   those budgets.
+7. **Expand by visual value.** Next cover other unmistakable landmarks and only
+   then representative residential blocks. Do not promise citywide meshes
+   until tile churn and low-end mobile performance pass a real driving route.
+   Once replacement coverage is sufficient, delete the overlapping
+   `buildings-colored.geojson` geometry and retain its PDOK measurements as a
+   compact OSM-id-to-colour input to mesh generation.
+
+The first deliverable is deliberately only the reproducible Rijksmuseum asset,
+the custom-layer spike and its measurements. That result decides whether the
+production format is tiled glTF, 3D Tiles, or signature-landmark GLBs; it must
+not introduce a second map or a runtime dependency on OSM Buildings.
 
 **11. Try the extractor on a second city — Utrecht.**
 Everything in `build-amsterdam-extract.ts`, the enrichment passes and the
