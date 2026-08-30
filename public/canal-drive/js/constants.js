@@ -125,6 +125,10 @@ const OSM_FETCH_RADIUS = 5000;                 // meters — area fetched around
 const PIXELS_PER_METER = 3;                    // world scale
 const SIMPLIFICATION_TOLERANCE = 0.00003;      // degrees (~3m) — Douglas-Peucker tolerance
 const ROAD_GRID_CELL = 100;                    // px — spatial grid cell size for road queries
+// px (~3 m) — how far a way's endpoint may sit from another centreline and
+// still count as a junction. Matched to the 3 m Douglas-Peucker tolerance the
+// extract builder uses, which is what displaces these endpoints in the first place.
+const JUNCTION_STITCH_RADIUS = 10;
 const FINISH_RADIUS = 80;                      // px — proximity to finish point to complete race
 
 // --- Road Widths (px) ---
