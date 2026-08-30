@@ -2,6 +2,9 @@ import { expect, Page, test } from '@playwright/test';
 
 type HarnessGame = {
   state: number;
+  quizCurrentName: string;
+  quizCandidateName: string;
+  quizPromptName: string;
   player: { x: number; y: number; angle: number; speed: number };
   track: { getNearestRoad(x: number, y: number): { dist: number; width: number; angle: number } | null };
   landmarks: Array<{ id: string; name: string; x: number; y: number }>;
@@ -18,6 +21,7 @@ type HarnessGame = {
   _render: () => void;
   _renderNeighborhoodNotice: () => void;
   ctx: CanvasRenderingContext2D;
+  hud: { drawCurrentLocation: (...args: unknown[]) => void };
 };
 
 declare global {
@@ -70,6 +74,21 @@ test('live MapLibre buildings use the OSM-aware color expression', async ({ page
   expect(nemo).toMatchObject({ colour: '#43888b', roofColour: '#f5f5dc', roofShape: 'skillion', height: 21.7 });
 });
 
+test('HUD hides a new street before the delayed question opens', async ({ page }) => {
+  await openCarRoute(page);
+  const hudCall = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    game.quizCurrentName = 'Previous Street';
+    game.quizCandidateName = 'Secret New Street';
+    game.quizPromptName = '';
+    let captured: unknown[] = [];
+    game.hud.drawCurrentLocation = (...args: unknown[]) => { captured = args; };
+    game._render();
+    return { routeName: captured[1], answerHidden: captured[4] };
+  });
+  expect(hudCall).toEqual({ routeName: '', answerHidden: true });
+});
+
 test('an actual high-speed car cannot escape the mapped road corridor', async ({ page }) => {
   await openCarRoute(page);
   await page.evaluate(() => {
@@ -113,6 +132,24 @@ test('curated POI identity wins over an unnamed building hit', async ({ page }) 
     return { selected: game._landmarkNotice?.id, expected: landmark.id };
   });
   expect(selected.selected).toBe(selected.expected);
+  await expect(page.locator('text=Unnamed building')).toHaveCount(0);
+});
+
+test('anonymous building footprints never open a notice', async ({ page }) => {
+  await openCarRoute(page);
+  const result = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    game.landmarks = [];
+    game._landmarkNotice = null;
+    game.vectorMap.inspectBuilding = () => ({ id: 'anonymous-footprint', name: '', lngLat: [4.9, 52.37] });
+    const canvas = document.querySelector<HTMLCanvasElement>('#gameCanvas');
+    if (!canvas) throw new Error('Canvas missing');
+    const rect = canvas.getBoundingClientRect();
+    const inspector = game as HarnessGame & { _inspectBuildingAt(x: number, y: number): void };
+    inspector._inspectBuildingAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    return game._landmarkNotice;
+  });
+  expect(result).toBeNull();
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
 });
 
