@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood';
+type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood' | 'finish' | 'finish-calm';
 
 function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
   const configure = useCallback((frame: HTMLIFrameElement) => {
@@ -24,7 +24,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       const details = doc.querySelector<HTMLDetailsElement>('.advanced-options');
       if (details) details.open = true;
     }
-    if (scenario === 'hud' || scenario === 'neighborhood') {
+    if (scenario === 'hud' || scenario === 'neighborhood' || scenario.startsWith('finish')) {
       const setup = doc.getElementById('route-setup');
       if (setup) setup.style.display = 'none';
       const drawWhenReady = () => {
@@ -35,6 +35,36 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
         ctx.fillStyle = '#dfe7dd'; ctx.fillRect(0, 0, 1280, 720);
         ctx.strokeStyle = 'rgba(72,91,85,.25)'; ctx.lineWidth = 18;
         for (let x = -200; x < 1400; x += 190) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 420, 720); ctx.stroke(); }
+        if (scenario.startsWith('finish')) {
+          game.gameyFeatures = scenario === 'finish';
+          game.quizCorrect = 2; game.quizAttempts = 4; game.quizPoints = 158; game.quizBestStreak = 2;
+          game.raceTime = 98.299;
+          game.player = { distancePx: 2.36 * 1000 * (frame.contentWindow as any).PIXELS_PER_METER };
+          game.routeFrom = { id: 'home', name: 'Home' };
+          game.routeTo = { id: 'theater', name: 'Vondelpark Open Air Theater' };
+          game.learnedNames = new Set(['a', 'b', 'c', 'd', 'e', 'f']);
+          game._visitedNeighborhoods = new Set(['a', 'b', 'c']);
+          game._seenLandmarkNames = new Set(['a', 'b']);
+          game._explorationSnapshot = {
+            totalRoutes: 3, learnedWaterways: new Array(14).fill('w'), learnedStreets: [],
+            visitedNeighborhoods: new Array(8).fill('n'), seenLandmarks: new Array(8).fill('l'),
+          };
+          game._ribbon = {
+            id: 'bronze', label: 'BRONZE RIBBON', color: '#D9A05B', dim: 'rgba(217,160,91,.13)', score: 0.5,
+            axes: [{ label: 'Recall', score: 0.5 }, { label: 'Unaided', score: 0 }, { label: 'Efficiency', score: 1 }],
+          };
+          game._shareUrl = 'x'; game._copiedTimer = 0; game._raceKey = null;
+          game.landmarks = [{
+            id: 'theater', name: 'Vondelpark Open Air Theater', type: 'landmark',
+            longDetail: 'The Vondelpark Open Air Theatre in Amsterdam has staged free performances every summer since 1865, when the park itself was still new, and it remains one of the oldest open-air stages in the Netherlands.',
+            wikipediaUrl: 'https://en.wikipedia.org/wiki/Vondelpark_Open_Air_Theatre',
+          }];
+          const photo = new Image();
+          photo.onload = () => { game._landmarkImages.set('theater', photo); game._renderFinish(); };
+          photo.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#41603f"/><rect y="200" width="400" height="100" fill="#6d8a70"/><circle cx="200" cy="120" r="70" fill="#8fb08a"/></svg>')}`;
+          game._renderFinish();
+          return;
+        }
         if (scenario === 'hud') {
           game.hud.drawCanalScore(ctx, 7, 9, 640, 'Correct — Singel', 4, true);
           game.hud.drawCurrentLocation(ctx, 'Prinsengracht', 'Jordaan', 'car', false);
@@ -81,4 +111,6 @@ export const Mobile: Story = {
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 export const LiveHud: Story = { args: { scenario: 'hud' } };
+export const FinishCard: Story = { args: { scenario: 'finish' } };
+export const FinishCardCalmMode: Story = { args: { scenario: 'finish-calm' } };
 export const NeighborhoodPhotoCard: Story = { args: { scenario: 'neighborhood' } };

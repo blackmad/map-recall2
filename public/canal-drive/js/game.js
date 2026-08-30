@@ -56,6 +56,10 @@ const ROUTE_POI_CATALOG_URL = '../data/extracts/amsterdam/landmarks.json';
 // with a bridge no longer counts, only passing its middle does.
 const BRIDGE_GATE_HALF_WIDTH = 26; // px — gate reaches this far either side
 const BRIDGE_LABEL_RANGE = 900; // px — keep named bridges labelled while nearby
+// How far a traversal may be from a crossing's centroid and still be that
+// crossing. Crossings of one bridge are clustered at least 70 m apart, and a
+// wide multi-span deck puts its centroid a span-length from the wheels.
+const CROSSING_MATCH_RANGE = 900; // px — 300 m
 // How many nearby stand-in destinations to try before giving up on routing.
 const RETARGET_ATTEMPTS = 25;
 // A stranded origin is re-rolled at most this many times before we accept it.
@@ -107,9 +111,14 @@ class Game {
     this.viewMode = 'north';
     this.themeMode = 'clean';
     this.learnedNames = new Set();
-    // Every name the player has been shown, right or wrong. `learnedNames` is
-    // the score; this is what gets written on the map.
+    // Every name the player has been shown this route, right or wrong.
+    // `learnedNames` is the score; this feeds the map.
     this.revealedNames = new Set();
+    // What is actually written on the map: the names revealed this route plus
+    // every name the spaced-repetition store considers known. A street you
+    // know well enough that the game has stopped asking is exactly the one
+    // whose label you still want to see while driving past it.
+    this._mapLabelNames = new Set();
     this.routeFrom = CANAL_ROUTE_POIS[1];
     this.routeTo = CANAL_ROUTE_POIS[2];
     // Grows once the landmark extract loads; see _loadRoutePoiCatalog.
@@ -123,10 +132,15 @@ class Game {
     this._rerouteTimer = 0;
     this._plannedRouteLengthPx = 0;
     this.quizPromptKind = 'route';
-    this._quizzedBridges = new Set();
+    // Keyed per crossing, not per bridge: one OSM feature named "Zuiderzeeweg"
+    // is four separate bridges over three different waters.
+    this._quizzedCrossings = new Map();
     this._learnedBridges = new Map();
-    this._pendingBridge = null;
+    this._pendingCrossing = null;
     this._lastBridgeQuizAt = -Infinity;
+    // name -> world points where the store says this name is already known.
+    // Rebuilt per race so the label test stays a short local loop.
+    this._knownPlaces = new Map();
     this.routePattern = 'surprise';
     this.homeBase = null;
     this.homeLeg = 'outbound';
@@ -425,6 +439,7 @@ class Game {
     if (!this.recall || !row) return;
     this._skipMastered.addEventListener('change', () => {
       this.recall.enabled = this._skipMastered.checked;
+      this._refreshMasteredLabels();
       this._savePreferences();
     });
     this.recall.onUserChange((user) => {
@@ -452,17 +467,49 @@ class Game {
     });
     this.recall.init().then(() => {
       if (this.recall.available) row.style.display = 'flex';
+      this._refreshMasteredLabels();
     });
   }
 
-  // The stable identity a name is scheduled against.
-  _recallFeatureFor(name) {
+  // World pixels are route-relative: the network origin is recomputed for every
+  // race from the loaded bounds. Anything that has to survive the race — recall
+  // identity above all — is stored in lat/lon.
+  _toLatLon(x, y) {
+    const loader = this.osmLoader;
+    if (!loader || loader._lastCenterLat === undefined) return null;
+    const metersPerDegreeLat = 111320;
+    const metersPerDegreeLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180);
+    return [
+      loader._lastCenterLat - (y - loader._lastOffsetY) / (metersPerDegreeLat * PIXELS_PER_METER),
+      loader._lastCenterLng + (x - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER),
+    ];
+  }
+
+  _toWorld(lat, lon) {
+    const loader = this.osmLoader;
+    if (!loader || loader._lastCenterLat === undefined) return null;
+    const metersPerDegreeLat = 111320;
+    const metersPerDegreeLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180);
+    return {
+      x: (lon - loader._lastCenterLng) * metersPerDegreeLng * PIXELS_PER_METER + loader._lastOffsetX,
+      y: -(lat - loader._lastCenterLat) * metersPerDegreeLat * PIXELS_PER_METER + loader._lastOffsetY,
+    };
+  }
+
+  // The identity an answer is scheduled against: the name *and the place it was
+  // answered*. Knowing Overtoom by the Vondelpark is not knowing Overtoom in
+  // the Kinkerbuurt — see src/canalRecall/recallChunks.ts.
+  _recallFeatureAt(name, x, y, type = '') {
     if (!name) return null;
+    const center = this._toLatLon(x, y);
+    if (!center) return null;
     const meta = this.osmLoader && this.osmLoader.featureMeta && this.osmLoader.featureMeta.get(name);
-    if (meta) return meta;
-    const bridge = this._pendingBridge && this._pendingBridge.name === name ? this._pendingBridge : null;
-    if (bridge && bridge.labelPoint) return null;   // no stable centre for a bridge yet
-    return null;
+    return {
+      name,
+      type: type || (meta && meta.type) || (this.travelMode === 'car' ? 'street' : 'canal'),
+      cityId: (meta && meta.cityId) || 'amsterdam',
+      center,
+    };
   }
 
   _setupRouteForm() {
@@ -871,10 +918,52 @@ class Game {
     return { poi: chosen.poi, finish: chosen.point, path: hit.path };
   }
 
-  _isRecallMastered(name) {
-    if (!this.recall || !this.recall.enabled) return false;
-    const feature = this._recallFeatureFor(name);
-    return !!feature && this.recall.isMastered(feature);
+  // A name goes on the map the moment the player has seen it.
+  _revealName(name) {
+    if (!name) return;
+    this.revealedNames.add(name);
+    this._mapLabelNames.add(name);
+  }
+
+  // Seed the map labels with everywhere the store already considers known, so a
+  // learned street is named from the first frame rather than only after the
+  // player happens to drive onto it. Places, not names: labelling the whole of
+  // a long street because one junction was answered would hand the player the
+  // answer to the far end before it was ever asked.
+  _refreshMasteredLabels() {
+    this._mapLabelNames = new Set(this.revealedNames);
+    this._knownPlaces = new Map();
+    if (!this.recall || !this.recall.enabled) return;
+    for (const place of this.recall.knownPlaces()) {
+      const point = this._toWorld(place.center[0], place.center[1]);
+      if (!point) continue;
+      const points = this._knownPlaces.get(place.name);
+      if (points) points.push(point); else this._knownPlaces.set(place.name, [point]);
+    }
+  }
+
+  _rememberKnownPlace(name, center) {
+    const point = center && this._toWorld(center[0], center[1]);
+    if (!point) return;
+    const points = this._knownPlaces.get(name);
+    if (points) points.push(point); else this._knownPlaces.set(name, [point]);
+  }
+
+  // Is this label close enough to somewhere the player has proved they know it?
+  _isPlaceKnown(name, x, y) {
+    const points = this._knownPlaces.get(name);
+    if (!points) return false;
+    const radius = CanalRecallStoreModule.RECALL_LOCAL_RADIUS_METERS * PIXELS_PER_METER;
+    return points.some(point => Math.hypot(point.x - x, point.y - y) <= radius);
+  }
+
+  // True when this name was answered near the player recently enough that
+  // asking it again here would be noise — a wrong answer included, which the
+  // scheduler parks briefly so a correction is not instantly re-tested.
+  _isRecallSuppressedHere(name) {
+    if (!this.recall || !this.recall.enabled || !this.player) return false;
+    const feature = this._recallFeatureAt(name, this.player.x, this.player.y);
+    return !!feature && this.recall.isSuppressedHere(feature);
   }
 
   // A gate across the middle of a span, perpendicular to it.
@@ -1117,9 +1206,10 @@ class Game {
     this.quizBestStreak = 0;
     this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';
     this.quizPromptKind = 'route';
-    this._quizzedBridges = new Set();
+    this._quizzedCrossings = new Map();
     this._learnedBridges = new Map();
-    this._pendingBridge = null;
+    this._pendingCrossing = null;
+    this._refreshMasteredLabels();
 
     // Ribbon scoring: aids can be toggled mid-route, so grade on whichever
     // ones were switched on at any point rather than on the final state.
@@ -1540,10 +1630,10 @@ class Game {
     const name = this.track.getRoadName(this.player.x, this.player.y);
     // A name the player has already proved they know is adopted silently
     // instead of being asked again until it falls due.
-    if (name && name !== this.quizCurrentName && this._isRecallMastered(name)) {
+    if (name && name !== this.quizCurrentName && this._isRecallSuppressedHere(name)) {
       this.quizCurrentName = name;
       this.learnedNames.add(name);
-      this.revealedNames.add(name);
+      this._revealName(name);
       this.quizCandidateName = '';
       this.quizCandidateTimer = 0;
       return;
@@ -1593,6 +1683,7 @@ class Game {
 
   // Shared prompt plumbing for every kind of recall question.
   _openQuizPrompt({ kind, name, heading, question, choices = null, segmentIndex = -1, pointIndex = 0 }) {
+    this._pendingCrossing = null;
     this.quizPromptKind = kind;
     this.quizPromptName = name;
     this.quizPromptSegmentIndex = segmentIndex;
@@ -1620,9 +1711,9 @@ class Game {
     }
   }
 
-  // Ask which bridge this is when the player drives over one, or passes under
-  // one by boat. Both cases are the same test: the hull or chassis crosses the
-  // bridge's mapped centreline.
+  // Ask about the crossing the player just made — the water first, then the
+  // bridge over it. Both travel modes are the same test: the hull or chassis
+  // crosses the bridge's mapped centreline.
   _updateBridgeQuiz(previousPosition) {
     if (this.quizPromptName || !this.bridges.length || !previousPosition) return;
     if (Math.abs(this.player.speed) < 5) return;
@@ -1630,19 +1721,12 @@ class Game {
     // canal ring produced five prompts, each one stopping the vehicle dead,
     // which is neither good teaching nor good driving.
     if (this.raceTime - this._lastBridgeQuizAt < BRIDGE_QUIZ_COOLDOWN) return;
-    // Raampoort is both a street and a bridge. Asking for it as a bridge and
-    // then again as a street left the player answering the same name twice,
-    // and every prompt zeroes the throttle — which reads as the car being
-    // stuck on the bridge.
     const currentRoadName = this.track.getRoadName(this.player.x, this.player.y);
     const movedBy = dist(previousPosition.x, previousPosition.y, this.player.x, this.player.y);
     if (movedBy <= 0) return;
     const byBoat = this.travelMode !== 'car';
     let closest = null;
     for (const bridge of this.bridges) {
-      if (this._quizzedBridges.has(bridge.id)) continue;
-      // Same feature under two names: let the street quiz own it, asked once.
-      if (bridge.name === currentRoadName || bridge.name === this.quizCurrentName) continue;
       for (const line of bridge.lines) {
         for (let i = 1; i < line.length && !closest; i++) {
           const a = line[i - 1], b = line[i];
@@ -1661,21 +1745,64 @@ class Game {
       if (closest) break;
     }
     if (!closest) return;
-    this._quizzedBridges.add(closest.id);
+
+    // Which of this bridge's crossings was it? "IJburglaan" is 66 mapped ways
+    // making five separate bridges kilometres apart, and being asked for it
+    // once taught one of them.
+    const crossing = CanalRecallBridges.nearestCrossing(
+      closest.crossings, this.player.x, this.player.y, CROSSING_MATCH_RANGE);
+    if (!crossing) return;
+    const key = `${closest.id}#${crossing.index}`;
+    const asked = this._quizzedCrossings.get(key);
+
+    const water = crossing.waterway ? {
+      name: crossing.waterway,
+      type: crossing.waterwayType || 'canal',
+      cityId: 'amsterdam',
+      center: crossing.center,
+    } : null;
+    // A bridge is a landmark *on* a waterway. Naming the deck before you can
+    // name the water under it teaches the wrong half, so the crossing asks for
+    // the water first and holds the bridge back until that has actually been
+    // answered right — per crossing, because the Amstel at the Berlagebrug and
+    // the Amstel at the Magere Brug are two pieces of local knowledge.
+    const waterKnown = !!water && !!this.recall && this.recall.isKnownHere(water);
+
+    let kind = null;
+    if (water && !waterKnown) {
+      // Street mode never otherwise asks about water, so the crossing is where
+      // the canal gets taught. By boat the route quiz already owns the waterway
+      // the hull is on, so the bridge simply waits for it.
+      const suppressed = !!this.recall && this.recall.isSuppressedHere(water);
+      if (!byBoat && asked !== 'water' && !suppressed) kind = 'water';
+    } else if (asked !== 'bridge'
+      // Raampoort is both a street and a bridge. Asking for it as a bridge and
+      // then again as a street left the player answering the same name twice.
+      && closest.name !== currentRoadName && closest.name !== this.quizCurrentName
+      && !(this.recall && this.recall.isSuppressedHere(
+        { name: closest.name, type: 'bridge', cityId: 'amsterdam', center: crossing.center }))) {
+      kind = 'bridge';
+    }
+    if (!kind) return;
+
+    this._quizzedCrossings.set(key, kind);
     this._lastBridgeQuizAt = this.raceTime;
-    closest.labelPoint = { x: this.player.x, y: this.player.y };
-    this._pendingBridge = closest;
-    const alternatives = [...new Set(closest.distractors)]
-      .filter(candidate => candidate && candidate !== closest.name)
+    crossing.labelPoint = { x: this.player.x, y: this.player.y };
+
+    const answer = kind === 'water' ? water.name : closest.name;
+    const pool = kind === 'water' ? crossing.waterDistractors : closest.distractors;
+    const alternatives = [...new Set(pool)]
+      .filter(candidate => candidate && candidate !== answer)
       .sort(() => Math.random() - 0.5)
       .slice(0, 3);
     this._openQuizPrompt({
-      kind: 'bridge',
-      name: closest.name,
-      heading: this.travelMode === 'car' ? 'Crossing a bridge' : 'Passing under a bridge',
-      question: 'Which bridge is this?',
-      choices: alternatives.length >= 2 ? [closest.name, ...alternatives] : null,
+      kind: kind === 'water' ? 'crossing-water' : 'bridge',
+      name: answer,
+      heading: byBoat ? 'Passing under a bridge' : 'Crossing a bridge',
+      question: kind === 'water' ? 'Which water are you crossing?' : 'Which bridge is this?',
+      choices: alternatives.length >= 2 ? [answer, ...alternatives] : null,
     });
+    this._pendingCrossing = { bridge: closest, crossing, key, water };
   }
 
   _renderCanalChoices(correctName, explicitChoices = null) {
@@ -1744,7 +1871,7 @@ class Game {
       const earned = Math.round(base * streakMultiplier);
       this.quizPoints += earned;
       this.learnedNames.add(correctName);
-      this.revealedNames.add(correctName);
+      this._revealName(correctName);
       if (!this.gameyFeatures) {
         this.quizFeedback = `Correct — ${correctName}`;
       } else if (this.quizStreak >= 2) {
@@ -1757,17 +1884,19 @@ class Game {
       this.quizFeedback = `Not quite — this is ${correctName}`;
       // A name you got wrong is exactly the one worth having written on the
       // map while you drive along it.
-      this.revealedNames.add(correctName);
+      this._revealName(correctName);
     }
     this._promptFeedback.textContent = this.quizFeedback;
     this._promptFeedback.style.color = correct ? '#4ade80' : '#fbbf24';
-    // A bridge is crossed, not travelled along: keep the waterway/street the
-    // player is actually on, or the route quiz re-fires the moment the prompt
-    // closes.
-    if (this.quizPromptKind !== 'bridge') {
+    // Neither a bridge nor the water beneath it is what the wheels are on:
+    // keep the waterway/street the player is actually travelling, or the route
+    // quiz re-fires the moment the prompt closes.
+    const atCrossing = this.quizPromptKind === 'bridge' || this.quizPromptKind === 'crossing-water';
+    if (!atCrossing) {
       this.quizCurrentName = correctName;
-    } else if (correct && this._pendingBridge) {
-      this._learnedBridges.set(this._pendingBridge.id, this._pendingBridge);
+    } else if (this.quizPromptKind === 'bridge' && correct && this._pendingCrossing) {
+      const { key, crossing } = this._pendingCrossing;
+      this._learnedBridges.set(key, { name: correctName, labelPoint: crossing.labelPoint });
       // If the bridge carries the name of the road under the wheels, that name
       // is now answered — otherwise the street quiz asks for it again on the
       // very next frame.
@@ -1776,10 +1905,22 @@ class Game {
       }
     }
     if (this.recall) {
-      const feature = this._recallFeatureFor(correctName);
-      if (feature) this.recall.record(feature, correct);
+      // A crossing answer belongs to the crossing, not to wherever the vehicle
+      // rolled to a stop; everything else belongs to where the player was.
+      let feature = null;
+      if (this._pendingCrossing && this.quizPromptKind === 'crossing-water') {
+        feature = this._pendingCrossing.water;
+      } else if (this._pendingCrossing && this.quizPromptKind === 'bridge') {
+        feature = { name: correctName, type: 'bridge', cityId: 'amsterdam', center: this._pendingCrossing.crossing.center };
+      } else {
+        feature = this._recallFeatureAt(correctName, this.player.x, this.player.y);
+      }
+      if (feature) {
+        this.recall.record(feature, correct);
+        if (correct) this._rememberKnownPlace(correctName, feature.center);
+      }
     }
-    this._pendingBridge = null;
+    this._pendingCrossing = null;
     this.quizPromptKind = 'route';
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
@@ -1934,7 +2075,12 @@ class Game {
     // car as well as the boat — that is how the name sticks while you drive
     // along it. The one being asked about is withheld, or the map would be
     // answering the question for you.
-    this.track.drawLabels(ctx, this.camera, this.revealedNames, this.quizPromptName || this.quizCandidateName, this.player);
+    // A label is earned per place, not per name: knowing the Overtoom at the
+    // Vondelpark must not write it across the Kinkerbuurt end that has never
+    // been asked.
+    this.track.drawLabels(ctx, this.camera,
+      (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
+      this.quizPromptName || this.quizCandidateName, this.player);
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) {
@@ -2324,190 +2470,193 @@ class Game {
     );
   }
 
+  // The arrival card. One surface, one type system, and a running list of
+  // blocks that report their own height, so the card measures itself instead
+  // of keeping a stack of hand-tuned offsets in step with the layout below.
+  // Time is a stat here, not the headline: the game does not reward speed, and
+  // a 38 px stopwatch said it did.
   _renderFinish() {
     const ctx = this.ctx;
-
-    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+    ctx.fillStyle = 'rgba(2,10,16,.72)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
     const cx = CANVAS_W / 2;
+    const cardW = 600, padX = 30;
+    const cardX = cx - cardW / 2;
+    const innerW = cardW - padX * 2;
     const gamey = this.gameyFeatures;
-    const hasExploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0;
-    const hasRibbon = gamey && !!this._ribbon;
-    const destinationLandmark = this._finishLandmark();
-    const destinationBoxH = destinationLandmark ? 74 : 0;
+    const exploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0
+      ? this._explorationSnapshot : null;
+    const ribbon = gamey && this._ribbon ? this._ribbon : null;
+    const landmark = this._finishLandmark();
+    const image = landmark && this._landmarkImages ? this._landmarkImages.get(landmark.id) : null;
+    const hasImage = !!image && image.complete && image.naturalWidth > 0;
+
+    const INK = '#F1F5F9', MUTED = '#8FA3B0', BODY = '#C3D2DC', ACCENT = '#7DD3FC';
+    const rule = (y) => {
+      ctx.strokeStyle = 'rgba(143,163,176,.2)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(cardX + padX, y + 0.5); ctx.lineTo(cardX + cardW - padX, y + 0.5); ctx.stroke();
+    };
 
     let bestText = '';
     if (this._raceKey) {
       const stored = this._getBestTime(this._raceKey);
-      if (stored && this.raceTime <= stored.time) {
-        bestText = '★ NEW PERSONAL BEST';
-      } else if (stored) {
-        bestText = `Personal best: ${this.hud.formatTime(stored.time)}`;
-      }
+      if (stored && this.raceTime <= stored.time) bestText = '★  New personal best';
+      else if (stored) bestText = `Personal best  ${this.hud.formatTime(stored.time)}`;
     }
 
-    // The card grows and shrinks with the arcade layer, the personal-best
-    // line, and the exploration box, so lay it out from a running cursor
-    // rather than fixed offsets. Keep these increments in step with the
-    // cursor advances below.
-    const recallBoxH = gamey ? 105 : 78;
-    const ribbonBoxH = 74;
-    let cardH = 190 + destinationBoxH + recallBoxH + 40 + 34;
-    if (hasRibbon) cardH += ribbonBoxH + 12;
-    if (bestText) cardH += 36;
-    if (hasExploration) cardH += 58 + 13;
-    if (this._shareUrl) cardH += 30;
-    const cardY = clamp(Math.round((CANVAS_H - cardH) / 2), 20, CANVAS_H - cardH - 20);
-    const cardX = cx - 300, cardW = 600;
+    // ---- Blocks: each measures itself, then draws from a given top edge ----
+    const blocks = [];
 
-    ctx.fillStyle = 'rgba(3,18,28,.94)';
-    roundRect(ctx, cardX, cardY, cardW, cardH, 18);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(56,189,248,.65)';
-    ctx.lineWidth = 2;
-    ctx.stroke();
+    blocks.push({ height: 74, draw: (top) => {
+      ctx.textAlign = 'left';
+      ctx.fillStyle = ACCENT; ctx.font = 'bold 10px monospace';
+      ctx.fillText('ARRIVED', cardX + padX, top + 11);
+      ctx.fillStyle = INK; ctx.font = '800 26px system-ui, sans-serif';
+      ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
+      ctx.fillStyle = MUTED; ctx.font = '13px system-ui, sans-serif';
+      ctx.fillText(`${this.routeFrom.name}  →  ${this.routeTo.name}`, cardX + padX, top + 64);
+    } });
 
-    let y = cardY + 42;
-    ctx.fillStyle = '#FACC15';
-    ctx.font = 'bold 30px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('DESTINATION REACHED', cx, y);
-    y += 27;
-    ctx.fillStyle = '#7DD3FC';
-    ctx.font = 'bold 15px monospace';
-    ctx.fillText(`${this.routeFrom.name}  →  ${this.routeTo.name}`, cx, y);
-
-    if (destinationLandmark) {
-      y += 13;
-      const boxX = cx - 235;
-      ctx.fillStyle = 'rgba(8,47,64,.78)';
-      roundRect(ctx, boxX, y, 470, destinationBoxH, 10); ctx.fill();
-      const image = this._landmarkImages && this._landmarkImages.get(destinationLandmark.id);
-      let textX = boxX + 16;
-      if (image && image.complete && image.naturalWidth > 0) {
-        ctx.save(); ctx.beginPath(); roundRect(ctx, boxX + 7, y + 7, 60, 60, 7); ctx.clip();
-        const side = Math.min(image.naturalWidth, image.naturalHeight);
-        ctx.drawImage(image, (image.naturalWidth - side) / 2, (image.naturalHeight - side) / 2, side, side, boxX + 7, y + 7, 60, 60);
-        ctx.restore(); textX = boxX + 80;
-      }
-      ctx.textAlign = 'left'; ctx.fillStyle = '#7DD3FC'; ctx.font = 'bold 9px monospace';
-      ctx.fillText(`YOU ARRIVED AT · ${String(destinationLandmark.type || 'LANDMARK').toUpperCase()}`, textX, y + 18);
-      ctx.fillStyle = '#F0F9FF'; ctx.font = 'bold 14px system-ui, sans-serif';
-      ctx.fillText(destinationLandmark.name, textX, y + 37);
-      const words = (destinationLandmark.longDetail || destinationLandmark.detail || 'A place to remember on your Amsterdam map.').split(/\s+/);
-      let line = '';
-      for (const word of words) {
-        const test = `${line} ${word}`.trim();
-        if (ctx.measureText(test).width > boxX + 452 - textX) break;
-        line = test;
-      }
-      ctx.fillStyle = '#B9DCE8'; ctx.font = '11px system-ui, sans-serif';
-      ctx.fillText(line, textX, y + 56);
-      if (destinationLandmark.wikipediaUrl) {
-        ctx.textAlign = 'right'; ctx.fillStyle = '#7DD3FC'; ctx.font = 'bold 9px monospace';
-        ctx.fillText('W  WIKIPEDIA', boxX + 454, y + 68);
-      }
-      ctx.textAlign = 'center'; y += destinationBoxH;
+    if (landmark) {
+      const photo = hasImage ? 88 : 0;
+      const textX = cardX + padX + (hasImage ? photo + 16 : 0);
+      const textW = cardX + cardW - padX - textX;
+      ctx.font = '12px system-ui, sans-serif';
+      const blurb = wrapText(ctx, landmark.longDetail || landmark.detail
+        || 'A place to remember on your Amsterdam map.', textW, hasImage ? 4 : 3);
+      const height = Math.max(hasImage ? photo : 0, 20 + blurb.length * 17) + 14;
+      blocks.push({ height, draw: (top) => {
+        if (hasImage) {
+          ctx.save(); ctx.beginPath(); roundRect(ctx, cardX + padX, top, photo, photo, 8); ctx.clip();
+          const side = Math.min(image.naturalWidth, image.naturalHeight);
+          ctx.drawImage(image, (image.naturalWidth - side) / 2, (image.naturalHeight - side) / 2,
+            side, side, cardX + padX, top, photo, photo);
+          ctx.restore();
+        }
+        ctx.textAlign = 'left';
+        ctx.fillStyle = MUTED; ctx.font = 'bold 9px monospace';
+        const kind = String(landmark.type || 'landmark').toUpperCase();
+        ctx.fillText(landmark.wikipediaUrl ? `${kind}  ·  W  WIKIPEDIA` : kind, textX, top + 10);
+        ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
+        blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
+      } });
     }
 
-    y += 22;
-    ctx.fillStyle = '#94A3B8';
-    ctx.font = 'bold 12px monospace';
-    ctx.fillText('TIME', cx, y);
-    y += 31;
-    ctx.font = 'bold 38px monospace';
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fillText(this.hud.formatTime(this.raceTime), cx, y);
-
-    y += 34;
-    const kilometres = this.player.distancePx / PIXELS_PER_METER / 1000;
-    ctx.font = '14px monospace';
-    ctx.fillStyle = '#E0F2FE';
-    ctx.fillText(`${kilometres.toFixed(2)} km travelled`, cx, y);
-
-    // Recall summary. Points and the best-streak tally are arcade scoring and
-    // drop out in calm mode; the accuracy that measures learning stays.
-    y += 28;
-    const recallNoun = this.travelMode === 'car' ? 'Street recall' : 'Canal recall';
-    ctx.fillStyle = 'rgba(14,116,144,.28)';
-    roundRect(ctx, cx - 235, y, 470, recallBoxH, 10);
-    ctx.fill();
-    let inner = y + 28;
-    ctx.fillStyle = '#E0F2FE';
-    ctx.font = 'bold 17px monospace';
-    ctx.fillText(`${recallNoun}: ${this.quizCorrect} / ${this.quizAttempts}`, cx, inner);
-    if (gamey) {
-      inner += 32;
-      ctx.fillStyle = '#FACC15';
-      ctx.font = 'bold 22px monospace';
-      ctx.fillText(`${this.quizPoints} points`, cx, inner);
-    }
-    inner += 20;
+    // One stat row instead of four differently coloured boxes.
+    const recallNoun = this.travelMode === 'car' ? 'Streets' : 'Canals';
     const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
-    ctx.fillStyle = '#94A3B8';
-    ctx.font = '12px monospace';
-    const streakText = gamey && this.quizBestStreak >= 2 ? ` · Best streak: ${this.quizBestStreak}` : '';
-    ctx.fillText(`${accuracy}% accuracy${streakText}`, cx, inner);
-    inner += 18;
-    ctx.fillText(`${this.routeDifficulty.toUpperCase()} · ${this.travelMode.toUpperCase()} · ${this.viewMode.replace('-', ' ').toUpperCase()}`, cx, inner);
-    y += recallBoxH;
+    const stats = [
+      { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
+      { label: 'Recall', value: `${accuracy}%` },
+      { label: 'Time', value: this.hud.formatTime(this.raceTime).slice(0, -2) },
+      { label: 'Distance', value: `${(this.player.distancePx / PIXELS_PER_METER / 1000).toFixed(2)} km` },
+    ];
+    if (gamey) stats.splice(2, 0, { label: 'Points', value: String(this.quizPoints) });
+    const footerBits = [
+      this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
+      this.travelMode === 'car' ? 'Bike' : 'Boat',
+      this.viewMode.replace('-', ' ').replace(/^./, (c) => c.toUpperCase()),
+    ];
+    if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
+    blocks.push({ height: 78, rule: true, draw: (top) => {
+      const column = innerW / stats.length;
+      ctx.textAlign = 'center';
+      stats.forEach((stat, index) => {
+        const sx = cardX + padX + column * (index + 0.5);
+        ctx.fillStyle = INK; ctx.font = 'bold 21px monospace';
+        ctx.fillText(stat.value, sx, top + 26);
+        ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
+        ctx.fillText(stat.label, sx, top + 44);
+      });
+      ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
+      ctx.fillText(footerBits.join('  ·  '), cx, top + 66);
+    } });
 
-    if (hasRibbon) {
-      y += 12;
-      this._renderRouteRibbon(ctx, cx - 235, y, 470, ribbonBoxH);
-      y += ribbonBoxH;
+    if (ribbon) {
+      blocks.push({ height: 86, rule: true, draw: (top) => {
+        this._renderRouteRibbon(ctx, cardX + padX, top + 6, innerW, 74);
+      } });
+    }
+
+    if (exploration) {
+      const known = exploration.learnedWaterways.length + exploration.learnedStreets.length;
+      const totals = [];
+      if (known > 0) totals.push(`${known} names`);
+      if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
+      if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
+      const fresh = [];
+      if (this.learnedNames.size > 0) fresh.push(`${this.learnedNames.size} names`);
+      if (this._visitedNeighborhoods.size > 0) fresh.push(`${this._visitedNeighborhoods.size} neighborhoods`);
+      if (this._seenLandmarkNames.size > 0) fresh.push(`${this._seenLandmarkNames.size} landmarks`);
+      blocks.push({ height: fresh.length ? 52 : 36, rule: true, draw: (top) => {
+        ctx.textAlign = 'left';
+        ctx.fillStyle = MUTED; ctx.font = 'bold 9px monospace';
+        ctx.fillText('CITY KNOWLEDGE', cardX + padX, top + 12);
+        ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + cardW - padX, top + 12);
+        if (fresh.length) {
+          ctx.textAlign = 'left'; ctx.fillStyle = ACCENT; ctx.font = '11px system-ui, sans-serif';
+          ctx.fillText(`+${fresh.join(', +')} this route`, cardX + padX, top + 32);
+        }
+      } });
     }
 
     if (bestText) {
-      y += 36;
-      ctx.fillStyle = bestText.startsWith('★') ? '#4ADE80' : '#7DD3FC';
-      ctx.font = 'bold 16px monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText(bestText, cx, y);
+      blocks.push({ height: 26, draw: (top) => {
+        ctx.textAlign = 'left';
+        ctx.fillStyle = bestText.startsWith('★') ? '#5EE0A0' : MUTED;
+        ctx.font = 'bold 13px system-ui, sans-serif';
+        ctx.fillText(bestText, cardX + padX, top + 14);
+      } });
     }
 
-    // Exploration collection summary — learning progress, not arcade scoring,
-    // so it survives the calm mode.
-    if (hasExploration) {
-      y += 13;
-      const exp = this._explorationSnapshot;
-      const totalKnown = exp.learnedWaterways.length + exp.learnedStreets.length;
-      ctx.fillStyle = 'rgba(88,28,135,.25)';
-      roundRect(ctx, cx - 235, y, 470, 58, 8);
-      ctx.fill();
-      ctx.fillStyle = '#C4B5FD';
-      ctx.font = 'bold 11px monospace';
-      ctx.fillText('CITY KNOWLEDGE', cx, y + 19);
-      ctx.fillStyle = '#E0E7FF';
-      ctx.font = '12px monospace';
-      const parts = [];
-      if (totalKnown > 0) parts.push(`${totalKnown} waterways`);
-      if (exp.visitedNeighborhoods.length > 0) parts.push(`${exp.visitedNeighborhoods.length} neighborhoods`);
-      if (exp.seenLandmarks.length > 0) parts.push(`${exp.seenLandmarks.length} landmarks`);
-      ctx.fillText(parts.join(' · ') || 'Start exploring!', cx, y + 41);
-      const newThisRoute = [];
-      if (this.learnedNames.size > 0) newThisRoute.push(`${this.learnedNames.size} names`);
-      if (this._visitedNeighborhoods.size > 0) newThisRoute.push(`${this._visitedNeighborhoods.size} neighborhoods`);
-      if (this._seenLandmarkNames.size > 0) newThisRoute.push(`${this._seenLandmarkNames.size} landmarks`);
-      if (newThisRoute.length > 0) {
-        ctx.fillStyle = '#A78BFA';
-        ctx.font = '11px monospace';
-        ctx.fillText(`+${newThisRoute.join(', +')} this route`, cx, y + 55);
+    blocks.push({ height: 34, rule: true, draw: (top) => {
+      const actions = [['ENTER', 'Try again'], ['ESC', 'Choose route']];
+      if (this._shareUrl) actions.push(['C', this._copiedTimer > 0 ? 'Link copied' : 'Copy race link']);
+      ctx.textAlign = 'left';
+      let ax = cardX + padX;
+      for (const [key, caption] of actions) {
+        ctx.font = 'bold 11px monospace';
+        const keyW = ctx.measureText(key).width + 14;
+        ctx.fillStyle = 'rgba(143,163,176,.16)';
+        roundRect(ctx, ax, top + 4, keyW, 20, 5); ctx.fill();
+        ctx.fillStyle = INK; ctx.fillText(key, ax + 7, top + 18);
+        ax += keyW + 8;
+        ctx.fillStyle = caption === 'Link copied' ? '#5EE0A0' : MUTED;
+        ctx.font = '12px system-ui, sans-serif';
+        ctx.fillText(caption, ax, top + 18);
+        ax += ctx.measureText(caption).width + 22;
       }
-      y += 58;
-    }
+    } });
 
-    y += 40;
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 16px monospace';
-    ctx.fillText('ENTER  Try again     ESC  Choose route', cx, y);
-    if (this._shareUrl) {
-      y += 30;
-      ctx.fillStyle = this._copiedTimer > 0 ? '#4ADE80' : '#94A3B8';
-      ctx.font = '13px monospace';
-      ctx.fillText(this._copiedTimer > 0 ? 'Race link copied' : 'C  Copy race link', cx, y);
-    }
+    // ---- Measure, then draw ----
+    // Measurement and drawing share one formula for the space above a block,
+    // so the card cannot end up with a band of dead space at the bottom.
+    const GAP = 16, PAD_TOP = 30, PAD_BOTTOM = 26;
+    const leadFor = (block, index) => (index === 0 ? 0 : block.rule ? GAP * 2 : GAP);
+    let cardH = PAD_TOP + PAD_BOTTOM;
+    blocks.forEach((block, index) => { cardH += leadFor(block, index) + block.height; });
+    const cardY = clamp(Math.round((CANVAS_H - cardH) / 2), 16, Math.max(16, CANVAS_H - cardH - 16));
+
+    ctx.fillStyle = 'rgba(6,20,29,.96)';
+    roundRect(ctx, cardX, cardY, cardW, cardH, 16);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(125,211,252,.28)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.textBaseline = 'alphabetic';
+    let y = cardY + PAD_TOP;
+    blocks.forEach((block, index) => {
+      const lead = leadFor(block, index);
+      if (block.rule && lead) rule(y + lead / 2);
+      y += lead;
+      block.draw(y);
+      y += block.height;
+    });
+    ctx.textAlign = 'center';
   }
 
   _finishLandmark() {
@@ -2602,17 +2751,19 @@ class Game {
 
   async _loadLandmarks(centerLat, centerLng, segments) {
     try {
-      const [landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse, bridgeResponse] = await Promise.all([
+      const [landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse, bridgeResponse, crossingResponse] = await Promise.all([
         fetch(new URL('../data/extracts/amsterdam/landmarks.json', window.location.href)),
         fetch(new URL('../data/extracts/amsterdam/boundaries.json', window.location.href)),
         fetch(new URL('../data/extracts/amsterdam/neighborhoods-enriched.json', window.location.href)),
-        fetch(new URL('../data/extracts/amsterdam/bridges.json', window.location.href))
+        fetch(new URL('../data/extracts/amsterdam/bridges.json', window.location.href)),
+        fetch(new URL('../data/extracts/amsterdam/bridge-crossings.json', window.location.href))
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
-      const [features, boundaries, neighborhoodEnriched, bridgeFeatures] = await Promise.all([
+      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex] = await Promise.all([
         landmarkResponse.json(), boundaryResponse.json(),
         neighborhoodEnrichedResponse.ok ? neighborhoodEnrichedResponse.json() : [],
-        bridgeResponse.ok ? bridgeResponse.json() : []
+        bridgeResponse.ok ? bridgeResponse.json() : [],
+        crossingResponse.ok ? crossingResponse.json() : { bridges: {} }
       ]);
       const neighborhoodData = new Map();
       for (const entry of neighborhoodEnriched) neighborhoodData.set(entry.name, entry);
@@ -2635,16 +2786,13 @@ class Game {
         const longDetail = detail.split(/(?<=[.!?])\s/).slice(0, 3).join(' ').slice(0, 280);
         return { id: feature.id, name: feature.name, type: feature.type || '', imageUrl: feature.wikipediaImageUrl || '', x: point.x, y: point.y, lngLat: [center[1], center[0]], detail: shortDetail, longDetail, prominenceScore: feature.prominenceScore || 0, wikipediaUrl: feature.wikipediaUrl || '', wikidata: feature.wikidata || '', wikipedia: feature.wikipedia || '', extractLang: feature.wikipediaExtractLang || 'en', geojson: { type: 'FeatureCollection', features: geometryFeatures } };
       }).filter(Boolean);
-      // Preload images for top landmarks by prominence (non-blocking)
+      // Photos are fetched as the player approaches, not up front. Preloading
+      // the 50 most prominent landmarks in the city meant 229 landmarks had a
+      // Wikipedia photo and only the top 50 could ever show it: DeLaMar ranks
+      // 89th and its card came up bare. It also spent bandwidth on the
+      // Rijksmuseum for a route that never goes near it.
       this._landmarkImages = new Map();
-      const topLandmarks = [...this.landmarks].sort((a, b) => b.prominenceScore - a.prominenceScore).slice(0, 50);
-      for (const lm of topLandmarks) {
-        if (!lm.imageUrl) continue;
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = () => this._landmarkImages.set(lm.id, img);
-        img.src = lm.imageUrl;
-      }
+      this._landmarkImageRequests = new Set();
       const metersPerDegreeLat = 111320;
       const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
       const toWorld = ([lat, lng]) => ({
@@ -2698,8 +2846,16 @@ class Game {
         // is an asset register number, not a name a player can learn, so they
         // are dropped rather than offered as questions or answers.
         if (!feature.name || lines.length === 0 || GENERIC_BRIDGE_NAME.test(feature.name)) return null;
+        // Precomputed by scripts/build-bridge-crossings.ts: the physical
+        // crossings this named feature is made of, and the water under each.
+        // A bridge missing from the index still asks its one question, it just
+        // has no water to gate on.
+        const published = (crossingIndex.bridges || {})[feature.id];
+        const crossings = (published && published.length ? published : [{
+          index: 0, center: feature.center, waterway: null, waterwayType: null, waterDistractors: [], spans: lines.length,
+        }]).map(crossing => ({ ...crossing, ...toWorld(crossing.center) }));
         return {
-          id: feature.id, name: feature.name, lines,
+          id: feature.id, name: feature.name, lines, crossings,
           distractors: (feature.distractors || []).filter(name => !GENERIC_BRIDGE_NAME.test(name)),
           wikipediaUrl: feature.wikipediaUrl || '',
           detail: (feature.wikipediaExtract || '').split(/(?<=[.!?])\s/)[0].slice(0, 150),
@@ -2751,14 +2907,15 @@ class Game {
         this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
       }
     }
-    if (this._landmarkNotice) return;
     let nearest = null;
     let nearestDistance = 300; // 100 m at the current world scale
     for (const landmark of this.landmarks) {
-      if (this._seenLandmarks.has(landmark.id)) continue;
       const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
+      if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
+      if (this._seenLandmarks.has(landmark.id)) continue;
       if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
     }
+    if (this._landmarkNotice) return;
     if (nearest) {
       this._seenLandmarks.add(nearest.id);
       this._seenLandmarkNames.add(nearest.name);
@@ -2773,6 +2930,21 @@ class Game {
   // Finest first: a point inside De Pijp is in De Pijp, not in Zuid.
   _neighborhoodAt(x, y) {
     return this.neighborhoods.find(hood => hood.rings.some(ring => this._pointInPolygon(x, y, ring))) || null;
+  }
+
+  // Fetch a landmark photo once, on demand. Every landmark the extract has a
+  // Wikipedia image for can show one; the card falls back to text until it
+  // arrives, and a failure is remembered so it is not retried every frame.
+  _ensureLandmarkImage(landmark) {
+    if (!landmark || !landmark.imageUrl) return;
+    if (!this._landmarkImageRequests) this._landmarkImageRequests = new Set();
+    if (this._landmarkImageRequests.has(landmark.id)) return;
+    this._landmarkImageRequests.add(landmark.id);
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => this._landmarkImages.set(landmark.id, img);
+    img.onerror = () => console.warn('Landmark image unavailable:', landmark.name, landmark.imageUrl);
+    img.src = landmark.imageUrl;
   }
 
   // Fetch a neighborhood postcard image once, on demand. The postcard renderer

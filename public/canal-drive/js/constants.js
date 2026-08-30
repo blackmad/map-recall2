@@ -157,6 +157,11 @@ const QUIZ_CANDIDATE_DELAY = 0.65;
 const QUIZ_RETEST_DELAY = 0.3;
 // px — the postcard's height, shared so the landmark card can stack above one.
 const NEIGHBORHOOD_CARD_HEIGHT = 180;
+// Start fetching a landmark photo while it is still ahead. The trivia card
+// opens at 300 px, which is a second or two of driving — not enough to fetch an
+// image, so the card would open text-only and then reflow taller underneath the
+// player as the photo landed.
+const LANDMARK_IMAGE_PREFETCH_RADIUS = 900;   // ~300 m at the current world scale
 // Degrees of tilt in the 2D views. Enough for buildings to show a face and for
 // the city to read as a city; not enough to lose the plan-view legibility the
 // map quiz depends on.

@@ -44,8 +44,55 @@ design notes for the larger bets live below the board.
   real test rather than four unrelated bridges.
 - Continue expanding named regression locations around cul-de-sacs and dead
   ends in `scripts/check-canal-car.ts`.
+- **The bottom band is contested and nothing arbitrates it.** In the 1280×720
+  design space the minimap holds 15–195 × 565–705, the trip readout is right
+  aligned at y 622–648, the postcard is 870–1260 × 540–644 and the trivia card
+  is centred at y 720−h−30. The postcard overlaps the trip readout outright,
+  and the trivia card is lifted by a hard-coded `NEIGHBORHOOD_CARD_HEIGHT`
+  (180) that is 76 px taller than the postcard actually is, for a 10 px
+  horizontal overlap that a small sideways nudge would clear. This wants one
+  pure `bottomHudLayout` module that places persistent readouts first and
+  routes transient cards around them, with a check for "no two bottom-band
+  rects intersect" across the scenario matrix.
+- **POI coverage beyond `tourism`/`historic`.** `classify()` in
+  `build-amsterdam-extract.ts` accepts `tourism=*`, `historic=*` and
+  `amenity` in {theatre, arts_centre, townhall, place_of_worship}. Everyday
+  civic landmarks that make a neighborhood legible are therefore missing:
+  LAB111 (`amenity=cinema`, Arie Biemondstraat 111) is not in any extract, and
+  neither are libraries, universities, markets or music venues. Adding them
+  also needs a scoring answer, because a POI with no Wikidata link scores near
+  zero and would be culled by the 300-per-category cap before it is ever seen.
 
 ## Recently done
+
+- **The arrival card, rebuilt.** The finish screen had six accent colours, six
+  differently styled boxes, two typefaces used interchangeably, and a 38 px
+  stopwatch as its headline — for a game that deliberately does not score
+  speed. It is now one surface: the destination and its photo as the hero, a
+  single stat row (recall, accuracy, points, time, distance) under a hairline,
+  then the ribbon, the city-knowledge line and keycap actions. The arrival
+  blurb wrapped to a single line and stopped mid-sentence with no ellipsis;
+  `wrapText` in `utils.js` now wraps to the available box and elides honestly.
+  The card measures itself from a list of self-sizing blocks, so the height and
+  the draw order cannot drift apart the way the old hand-tuned offsets did.
+  `FinishCard` and `FinishCardCalmMode` stories pin both layouts.
+- **Landmark photos, for every landmark that has one.** Images were preloaded
+  for the 50 most prominent landmarks in the city and nowhere else, so 180 of
+  the 229 landmarks with a Wikipedia photo could never show it — DeLaMar ranks
+  89th and its card came up bare. Photos are now fetched on approach, inside
+  `LANDMARK_IMAGE_PREFETCH_RADIUS` (900 px, ~300 m), which is far enough ahead
+  that the card opens with the photo already in place instead of reflowing
+  under the player. It also stops spending bandwidth on the Rijksmuseum for a
+  route that never goes near it.
+- **Mastered streets stay named on the map.** A street answered well enough
+  that the spaced-repetition store stops asking about it was only labelled once
+  the player happened to drive onto it, because the label set was filled in by
+  the quiz. `_refreshMasteredLabels` seeds the map labels from the store at
+  race start, when it finishes loading, and when the review toggle changes, so
+  a name you already know is visible across the whole visible map.
+- **Readable assist toggles on the setup card.** Route line / destination arrow
+  / minimap / reduced motion / detailed 3D / sound inherited the live settings
+  panel's pale blue on the paper setup card, which was very nearly invisible.
 
 - **The encyclopedia text is now English everywhere.**
   `enrich-amsterdam-wikipedia-extracts.ts` takes the English article wherever

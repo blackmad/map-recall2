@@ -50,6 +50,28 @@ function roundRect(ctx, x, y, w, h, r) {
 
 // Do segments p1→p2 and p3→p4 cross? Used to tell an actual bridge crossing
 // from merely passing near one of its approach ways.
+// Wrap `text` to at most `maxLines` lines of `maxWidth`, ending with an
+// ellipsis when it does not fit. Cards used to stop mid-sentence with no
+// indication that there was more, which reads as a rendering bug.
+function wrapText(ctx, text, maxWidth, maxLines) {
+  const words = String(text || '').split(/\s+/).filter(Boolean);
+  const lines = [];
+  let line = '';
+  for (let i = 0; i < words.length; i++) {
+    const test = line ? `${line} ${words[i]}` : words[i];
+    if (ctx.measureText(test).width <= maxWidth || !line) { line = test; continue; }
+    if (lines.length === maxLines - 1) {
+      while (line && ctx.measureText(`${line}…`).width > maxWidth) line = line.replace(/\s*\S+$/, '');
+      lines.push(`${line}…`);
+      return lines;
+    }
+    lines.push(line);
+    line = words[i];
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
 function segmentsIntersect(p1, p2, p3, p4) {
   const d = (p2.x - p1.x) * (p4.y - p3.y) - (p2.y - p1.y) * (p4.x - p3.x);
   if (Math.abs(d) < 1e-9) return false;
