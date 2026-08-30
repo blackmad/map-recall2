@@ -50,12 +50,6 @@ knowledge extract for notable streets city-wide — English lede, article URL,
 optional image — and showing each street sparingly, so facts support spatial
 recall rather than interrupt every junction.
 
-**8. Refresh the extract with `motorway`/`trunk`/`*_link` included.**
-Weesp and a few other genuine islands are unreachable without them. The build's
-connected-street filter also uses endpoint proximity rather than shared
-vertices, which is the same mistake the runtime graph used to make and has
-already caused one silent 12,500-way loss.
-
 ---
 
 ## P2 — Weight and reach
@@ -140,13 +134,25 @@ the custom-layer spike and its measurements. That result decides whether the
 production format is tiled glTF, 3D Tiles, or signature-landmark GLBs; it must
 not introduce a second map or a runtime dependency on OSM Buildings.
 
-**11. Try the extractor on a second city — Utrecht.**
-Everything in `build-amsterdam-extract.ts`, the enrichment passes and the
-crossing builder is written against Amsterdam's Overpass query and curation
-file. Utrecht is the honest test: canals on two levels, a different bridge
-vocabulary, the same Dutch/English Wikipedia split. What breaks first is the
-interesting output — hardcoded bounds and centre, `amsterdam-curation.json`,
-the `cityId` baked into review keys, the assumption of one basemap origin.
+**11. Let the game actually play Utrecht.**
+The extractor is city-agnostic and Utrecht is built and checked (11,801
+routing ways, 380 landmarks). The runtime is not: `osm-loader.js` hardcodes
+`../data/extracts/amsterdam/${dataset}.json`, so there is no way to reach the
+second city from the game. Needs a city selector, a cityId that flows through
+to review keys, and a basemap origin that is not assumed to be Amsterdam's.
+Three data gaps behind it: Utrecht has no `bridge-crossings.json` (the
+crossing builder is still Amsterdam-only), 80 of its landmark ledes are still
+Dutch, and 275 of 380 landmarks have no text at all — under the rule from
+a9b21c7 those are correctly never offered as drive-by cards, which makes the
+city thin rather than wrong.
+
+**11b. Re-run Amsterdam through the general pipeline.**
+Only the branded POIs were merged in from a staging build, deliberately — a
+full refresh would have churned 29,051 routing ways and every landmark blurb
+mid-review. So Amsterdam has not yet been rebuilt with shared-vertex
+connectivity or the `motorway`/`trunk`/`*_link` classes, and lacks the
+`cityProfile` Utrecht now has. Run it, diff the coverage counts, publish only
+after review.
 
 **12. Clear all my data.**
 A deliberately guarded reset for test accounts and players who want a fresh
