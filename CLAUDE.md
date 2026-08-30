@@ -43,6 +43,8 @@ working behavior, and leave it easier for the next session to continue.
   commands are `npm run lint`, `npm run test:canal-car`,
   `npm run test:reachability`, `npm run test:canal-streets`, and focused
   Playwright specs.
+- `npm run check:canal` is the aggregate pre-integration gate for typed checks,
+  named driving/reachability regressions, and the production Storybook build.
 - Use Storybook for deterministic visual states that are expensive to reach by
   driving. `npm run storybook` serves the workbench and
   `npm run build-storybook` verifies it compiles. Add desktop and mobile states

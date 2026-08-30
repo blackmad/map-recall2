@@ -18,7 +18,13 @@ async function startServer() {
     // Vite's SPA fallback otherwise rewrites this directory URL to the React
     // root index. Serve the standalone vanilla-JS prototype first.
     const canalDrivePath = path.join(process.cwd(), 'public', 'canal-drive');
-    app.use('/canal-drive', express.static(canalDrivePath, { index: 'index.html' }));
+    app.use('/canal-drive', express.static(canalDrivePath, {
+      index: 'index.html',
+      // Canal Recall still uses unversioned browser bundles. Require
+      // revalidation so a normal refresh cannot keep an obsolete HUD/player
+      // renderer after a deploy or local rebuild.
+      setHeaders: (response) => response.setHeader('Cache-Control', 'no-cache'),
+    }));
 
     const vite = await createViteServer({
       server: { middlewareMode: true, host: '0.0.0.0', port: PORT },

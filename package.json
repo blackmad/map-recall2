@@ -26,6 +26,7 @@
     "build:roof-colours": "tsx scripts/build-satellite-roof-colours.ts",
     "build:canal-neighborhoods": "esbuild src/canalRecall/neighborhoodState.ts --bundle --format=iife --global-name=CanalRecallNeighborhood --outfile=public/canal-drive/js/neighborhood-state.bundle.js --minify",
     "test:neighborhoods": "tsx scripts/check-neighborhood-transitions.ts",
+    "check:canal": "npm run lint && npm run test:canal-car && npm run test:canal-streets && npm run test:neighborhoods && npm run test:reachability && npm run build-storybook",
     "enrich:english": "tsx scripts/translate-extracts-to-english.ts",
     "test:canal-buildings": "tsx scripts/check-canal-buildings.ts",
     "test:osm-buildings": "tsx scripts/check-osm-building-appearance.ts",
