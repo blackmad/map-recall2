@@ -22,7 +22,13 @@ import {
 } from '../src/canalRecall/bridgeDistractors';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const extractDir = resolve(root, 'public/data/extracts/amsterdam');
+// Same `--directory=` flag as the other two bridge builders, so a refresh can
+// point all three at the directory it is building rather than at the published
+// city. These three read `bridges.json` and key on its ids; running them
+// against a different directory than the one just built is how the crossing
+// index gets orphaned.
+const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
+const extractDir = resolve(root, directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
 const publishedPath = resolve(extractDir, 'bridges.json');
 const stagingPath = resolve(extractDir, 'staging/bridges.json');
 
