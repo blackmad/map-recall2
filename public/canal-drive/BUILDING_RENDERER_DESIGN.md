@@ -138,21 +138,41 @@ long as one rule holds: **fidelity varies per building; ownership never does.**
 Two representations of one building is the bug. Two neighbours at different
 fidelity is the design.
 
-Geometry is chosen per building from a ladder, best available wins, and the
+**Government geometry is the floor for the city, never the ceiling for a
+landmark.** BAG describes *panden*, and a pand is a legal object, not a shape a
+player recognises. The Waag is one pand and thirteen hand-mapped OSM
+`building:part` ways, whose distinct heights — 6, 15, 17, 20 and 26 m, with
+pyramidal and gabled roofs — are the entire silhouette. Extruding its BAG pand
+to a single measured height replaces that with one flat box around 14 m. Doing
+that to the buildings the game asks questions about would be a regression
+dressed as an upgrade, and it is not a rare case: 1,448 features in the current
+extract are stacked building parts and 4,868 carry a roof shape, concentrated
+exactly on the landmarks worth teaching.
+
+So geometry is chosen per building from a ladder, best available wins, and the
 choice is recorded:
 
-1. 3DBAG LoD2.2 semantic mesh, where reconstruction exists and passes quality;
-2. 3DBAG LoD1.2/1.3 extrusion, for panden without an accepted LoD2.2;
-3. OSM footprint with an OSM height, for structures BAG does not hold at all —
-   canopies, ruins, some building parts;
-4. OSM footprint with an *estimated* height, which is where nearly the whole
+1. 3DBAG LoD2.2 semantic mesh, where reconstruction exists and passes quality.
+2. Hand-mapped OSM `building:part` composition, where a mapper has modelled the
+   building in three dimensions. This is human work that no government dataset
+   replaces, and it outranks a generic extrusion however well measured.
+3. 3DBAG LoD1.2 extrusion at its measured height — the complete floor, and what
+   the overwhelming majority of the city gets.
+4. OSM footprint with a tagged `height`, for structures BAG does not hold at all
+   — canopies, ruins, some building parts.
+5. OSM footprint with an *estimated* height, which is where nearly the whole
    city sits today: `build-osm-building-appearance.ts` takes the `height` tag,
    else `levels * 3`, else a flat 9 m.
 
-That last tier is worth naming plainly, because it changes what Phase 1 is
-worth. A large part of the current skyline is not measured but guessed, and
-replacing it with AHN-derived 3DBAG heights is a fidelity upgrade in its own
-right — independent of colour, and visible from every camera angle.
+Tiers 1 and 2 are not ranked against each other by decree. Laser-derived LoD2.2
+should capture the Waag's tower masses well, but the OSM parts carry semantic
+roof shapes and colours that a point cloud does not. Which wins is settled by
+looking at the specific landmark, not by preferring the newer source.
+
+Tier 5 is worth naming plainly, because it changes what Phase 1 is worth. A
+large part of the current skyline is not measured but guessed, and replacing it
+with AHN-derived heights is a fidelity upgrade in its own right — independent of
+colour, and visible from every camera angle.
 
 Appearance is mixed too, and deliberately: the precedence function above will
 resolve one roof from a measurement and its neighbour from an age prior. Every
@@ -501,6 +521,9 @@ camera and browser with every benchmark.
   counted explicitly rather than folded into a single total.
 - A failed join cannot silently transfer one building's appearance to a
   neighbour.
+- No building loses modelled detail to a coverage upgrade. A pand that resolved
+  to several hand-mapped parts before a rebuild still does after it; the Waag is
+  the pinned case in `check-osm-building-appearance.ts`.
 - **No building identity reaches a spaced-repetition review key.** Review keys
   are the feature's name plus the place it was answered, deliberately, so that
   extract regeneration cannot churn player progress. `buildingId` is a rendering
@@ -575,10 +598,16 @@ This is the largest visible improvement in the whole plan and it needs no new
 renderer. Publish a complete BAG-keyed LoD1 building source for Amsterdam —
 every pand, its footprint, its 3DBAG height, its measured or inferred roof
 colour — on the spatial tiles that detailed geometry will later use. Render it
-with ordinary MapLibre fill-extrusions and **remove `building-3d`,
-`osm-colored-buildings` and `osm-colored-building-roofs` from the style**, along
-with the height-offset stack that currently keeps three coplanar extrusions from
-z-fighting.
+with ordinary MapLibre fill-extrusions, along with the height-offset stack that
+currently keeps three coplanar extrusions from z-fighting.
+
+**Remove `building-3d`; absorb the coloured layers, do not delete them.** The
+basemap's gray extrusion is pure redundancy once every building is described
+locally. But `osm-colored-buildings` and `osm-colored-building-roofs` carry the
+hand-mapped parts, roof shapes and colours of tier 2, and deleting them is how
+the Waag becomes a box. They stop being a competing layer by being merged into
+the single source as its top tier — one winner per building — not by being
+switched off.
 
 Two things get better here at once, and the second is easy to overlook: heights
 stop being guessed. Today's extrusions use the OSM `height` tag where it exists
@@ -595,9 +624,10 @@ place to stop for a long time.
 
 Exit: the whole city is coloured and measured rather than a small fraction of
 it; one building source, one identity; picking returns a `BuildingHit` from the
-fallback; the z-fighting workaround is deleted rather than tuned. Detailed
-geometry now has exactly one thing to replace, per building group, on known tile
-boundaries.
+fallback; the z-fighting workaround is deleted rather than tuned; and
+`test:osm-buildings` still finds the Waag standing in its hand-mapped parts at
+six distinct heights. Detailed geometry now has exactly one thing to replace,
+per building group, on known tile boundaries.
 
 ### Phase 2 — Rijksmuseum vertical slice
 
