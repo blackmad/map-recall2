@@ -1,6 +1,24 @@
 // ============================================================
 // ROAD NETWORK — replaces Track for OSM open-road mode
 // ============================================================
+//
+// This file is the adapter half. Every decision it used to make inline — the
+// surface bands, which road the player is on at a junction, which same-name
+// ways are one feature, and the whole routing graph — lives in
+// src/canalRecall/routing/, is typed, and is tested by `npm run
+// test:road-surface`, `test:road-graph` and `test:reachability`. What is left
+// here is caching, canvas work, and the shape the rest of the game calls.
+//
+// Both bundles are loaded unconditionally by index.html. Reaching this file
+// without them is a build error, not a runtime condition to fall back from:
+// the fallbacks that used to be here were dead code that could silently
+// diverge from the tested versions.
+const SURFACE = window.CanalRecallRoadSurface;
+const GRAPH = window.CanalRecallRoadGraph;
+if (!SURFACE || !GRAPH) {
+  throw new Error('road-network.js needs road-surface.bundle.js and road-graph.bundle.js');
+}
+
 class RoadNetwork {
   constructor(segments, startPoint, finishPoint, tiles) {
     this.isOpenTrack = true;
@@ -8,7 +26,7 @@ class RoadNetwork {
     this.tiles = tiles || []; // [{img, gameX, gameY, gameW, gameH}]
     this.startPoint = { ...startPoint };
     this.finishPoint = { ...finishPoint };
-    this.grid = {};
+    this.roadIndex = null;
     this.numCheckpoints = 10;
     this._frameCache = new Map();
 
@@ -59,32 +77,7 @@ class RoadNetwork {
   }
 
   _buildGrid() {
-    this.grid = {};
-    for (let si = 0; si < this.segments.length; si++) {
-      const seg = this.segments[si];
-      for (let i = 0; i < seg.points.length - 1; i++) {
-        const a = seg.points[i], b = seg.points[i + 1];
-        const w = seg.width;
-        // Add the road centerline segment to grid (for surface checks)
-        this._addToGrid(a, b, si, i, w);
-        // No boundary collision grid — roads are connected, cars can roam freely
-      }
-    }
-  }
-
-  _addToGrid(a, b, segIdx, ptIdx, width) {
-    const pad = width + 10;
-    const minX = Math.min(a.x, b.x) - pad, maxX = Math.max(a.x, b.x) + pad;
-    const minY = Math.min(a.y, b.y) - pad, maxY = Math.max(a.y, b.y) + pad;
-    const gx0 = Math.floor(minX / ROAD_GRID_CELL), gx1 = Math.floor(maxX / ROAD_GRID_CELL);
-    const gy0 = Math.floor(minY / ROAD_GRID_CELL), gy1 = Math.floor(maxY / ROAD_GRID_CELL);
-    for (let gx = gx0; gx <= gx1; gx++) {
-      for (let gy = gy0; gy <= gy1; gy++) {
-        const key = `${gx},${gy}`;
-        if (!this.grid[key]) this.grid[key] = { roads: [], boundaries: [] };
-        this.grid[key].roads.push({ a, b, segIdx, ptIdx, width });
-      }
-    }
+    this.roadIndex = SURFACE.buildRoadSpatialIndex(this.segments, ROAD_GRID_CELL);
   }
 
   _computeBounds() {
@@ -120,26 +113,13 @@ class RoadNetwork {
       this._frameCache.set(surfaceKey, 'asphalt');
       return 'asphalt';
     }
-    const gx = Math.floor(x / ROAD_GRID_CELL), gy = Math.floor(y / ROAD_GRID_CELL);
     let minDist = Infinity;
     let nearestWidth = DEFAULT_ROAD_WIDTH;
-
-    for (let dx = -1; dx <= 1; dx++) {
-      for (let dy = -1; dy <= 1; dy++) {
-        const key = `${gx + dx},${gy + dy}`;
-        const cell = this.grid[key];
-        if (!cell) continue;
-        for (const road of cell.roads) {
-          const d = this._pointToSegDist(x, y, road.a, road.b);
-          if (d < minDist) {
-            minDist = d;
-            nearestWidth = road.width;
-          }
-        }
-      }
+    for (const road of SURFACE.roadsNear(this.roadIndex, x, y)) {
+      const d = this._pointToSegDist(x, y, road.a, road.b);
+      if (d < minDist) { minDist = d; nearestWidth = road.width; }
     }
-
-    const surface = minDist < nearestWidth - 6 ? 'asphalt' : minDist < nearestWidth + 2 ? 'curb' : 'grass';
+    const surface = SURFACE.classifySurface(minDist, nearestWidth);
     this._frameCache.set(surfaceKey, surface);
     return surface;
   }
@@ -159,45 +139,11 @@ class RoadNetwork {
     const cached = this._frameCache.get(cacheKey);
     if (cached !== undefined) return cached;
 
-    const gx = Math.floor(x / ROAD_GRID_CELL), gy = Math.floor(y / ROAD_GRID_CELL);
-    let minDist = Infinity;
-    let best = null;
-    const contacts = [];
-
-    for (let dx = -2; dx <= 2; dx++) {
-      for (let dy = -2; dy <= 2; dy++) {
-        const key = `${gx + dx},${gy + dy}`;
-        const cell = this.grid[key];
-        if (!cell) continue;
-        for (const road of cell.roads) {
-          const info = this._closestPointOnSeg(x, y, road.a, road.b);
-          const rdx = road.b.x - road.a.x, rdy = road.b.y - road.a.y;
-          const len = Math.sqrt(rdx * rdx + rdy * rdy) || 1;
-          const contact = {
-              x: info.x, y: info.y,
-              dist: info.dist,
-              angle: Math.atan2(rdy, rdx),
-              width: road.width,
-              segIdx: road.segIdx,
-              ptIdx: road.ptIdx,
-              nx: -rdy / len, ny: rdx / len
-          };
-          contacts.push(contact);
-          if (info.dist < minDist) { minDist = info.dist; best = contact; }
-        }
-      }
-    }
-
-    if (preferredAngle != null && best) {
-      const angleDistance = angle => {
-        const delta = Math.abs(Math.atan2(Math.sin(angle - preferredAngle), Math.cos(angle - preferredAngle)));
-        return Math.min(delta, Math.PI - delta);
-      };
-      const aligned = contacts
-        .filter(contact => contact.dist <= minDist + 10 && contact.dist <= contact.width + 12)
-        .sort((a, b) => angleDistance(a.angle) - angleDistance(b.angle) || a.dist - b.dist)[0];
-      if (aligned) best = aligned;
-    }
+    // A 5x5 ring rather than the 3x3 the surface check uses: this one has to
+    // see the *cross* street at a junction, not only the one underfoot, so the
+    // heading rule has something to choose between.
+    const contacts = SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
+    const best = SURFACE.pickRoadContact(contacts, preferredAngle);
 
     this._frameCache.set(cacheKey, best);
     return best;
@@ -205,50 +151,14 @@ class RoadNetwork {
 
   // Get the name of the road nearest to (x,y)
   getRoadName(x, y) {
-    const info = this.getNearestRoad(x, y);
-    if (!info || info.dist > info.width + 20) return '';
-    const seg = this.segments[info.segIdx];
-    return (seg && seg.name) ? seg.name : '';
+    return SURFACE.roadNameAt(this.segments, this.getNearestRoad(x, y));
   }
 
   // Return the connected run of same-name OSM ways containing the triggering
   // segment. OSM commonly splits one canal at bridges and tag boundaries, so
   // one visible feature is often several source paths.
   getConnectedNamedSegments(seedIndex) {
-    const seed = this.segments[seedIndex];
-    if (!seed || !seed.name) return [];
-    const mergeSize = 18;
-    const endpointCells = segment => {
-      const points = segment.points || [];
-      if (!points.length) return [];
-      const cell = point => ({ x: Math.round(point.x / mergeSize), y: Math.round(point.y / mergeSize) });
-      return [cell(points[0]), cell(points[points.length - 1])];
-    };
-    const buckets = new Map();
-    this.segments.forEach((segment, index) => {
-      if (segment.name !== seed.name) return;
-      for (const cell of endpointCells(segment)) {
-        const key = `${cell.x},${cell.y}`;
-        if (!buckets.has(key)) buckets.set(key, []);
-        buckets.get(key).push(index);
-      }
-    });
-    const connected = [];
-    const seen = new Set([seedIndex]);
-    const queue = [seedIndex];
-    while (queue.length) {
-      const index = queue.shift();
-      connected.push(this.segments[index]);
-      for (const cell of endpointCells(this.segments[index])) {
-        for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
-          const key = `${cell.x + dx},${cell.y + dy}`;
-          for (const neighbor of buckets.get(key) || []) {
-            if (!seen.has(neighbor)) { seen.add(neighbor); queue.push(neighbor); }
-          }
-        }
-      }
-    }
-    return connected;
+    return SURFACE.connectedNamedSegments(this.segments, seedIndex);
   }
 
   // Distance from (x,y) to the finish point
@@ -312,173 +222,55 @@ class RoadNetwork {
   // passes within a few metres puts those T-junctions back. It cuts the
   // Amsterdam street graph from 1679 components to 469 and lifts the largest
   // component from 56% of the network to 75%. See scripts/check-road-reachability.ts.
+  // Build a lightweight topology from the polyline points and run Dijkstra.
+  // Nearby endpoints are merged so separately mapped OSM ways can form one
+  // playable route through a junction.
+  //
+  // Sharing a vertex is not enough on its own. OSM models a side street meeting
+  // a through street as a node *inside* the through way, and both the extract
+  // builder and the loader run Douglas-Peucker, which is free to drop exactly
+  // that vertex — 10% of shared junction vertices disappear. The through street
+  // then runs straight past the side street with no shared point, and the side
+  // street becomes its own island: drivable, but with no route in or out.
+  // Stitching every way's endpoint onto any centreline that passes within a few
+  // metres puts those T-junctions back. It cuts the Amsterdam street graph from
+  // 1679 components to 469 and lifts the largest component from 56% of the
+  // network to 75%. See scripts/check-road-reachability.ts.
+  //
+  // The graph is identical for every query against this network, so it is built
+  // once. Retargeting an unreachable destination would otherwise rebuild it for
+  // each candidate it tries.
   _routingGraph() {
     if (this._graphCache) return this._graphCache;
-    if (window.CanalRecallRoadGraph) {
-      this._graphCache = window.CanalRecallRoadGraph.buildRoadGraph(
-        this.segments.map((segment, segmentIndex) => ({
-          points: segment.points,
-          width: segment.width || 0,
-          metadata: { segmentIndex, name: segment.name || '', wayId: segment.wayId || '' },
-        })),
-        { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }
-      );
-      return this._graphCache;
-    }
-    const mergeSize = 18; // ~6 m: join mapped endpoints without inventing cross-bank shortcuts
-    const nodes = new Map();
-    const keyFor = (point) => `${Math.round(point.x / mergeSize)},${Math.round(point.y / mergeSize)}`;
-    const nodeFor = (point) => {
-      const key = keyFor(point);
-      if (!nodes.has(key)) nodes.set(key, { key, x: point.x, y: point.y, edges: [] });
-      return nodes.get(key);
-    };
-    const link = (a, b) => {
-      if (a === b) return;
-      if (a.edges.some(edge => edge.node === b)) return;
-      const weight = dist(a.x, a.y, b.x, b.y);
-      a.edges.push({ node: b, weight });
-      b.edges.push({ node: a, weight });
-    };
-    for (const segment of this.segments) {
-      for (let i = 1; i < segment.points.length; i++) {
-        link(nodeFor(segment.points[i - 1]), nodeFor(segment.points[i]));
-      }
-    }
-    for (let segIdx = 0; segIdx < this.segments.length; segIdx++) {
-      const points = this.segments[segIdx].points;
-      if (points.length < 2) continue;
-      for (const end of [points[0], points[points.length - 1]]) {
-        const from = nodes.get(keyFor(end));
-        if (!from) continue;
-        for (const road of this._roadsNear(end.x, end.y)) {
-          if (road.segIdx === segIdx) continue;
-          const hit = this._closestPointOnSeg(end.x, end.y, road.a, road.b);
-          if (hit.dist > JUNCTION_STITCH_RADIUS) continue;
-          // Attach to whichever end of the crossed span is nearer, so the
-          // stitched edge follows the road rather than cutting a corner.
-          const nearer = dist(end.x, end.y, road.a.x, road.a.y) <= dist(end.x, end.y, road.b.x, road.b.y) ? road.a : road.b;
-          const target = nodes.get(keyFor(nearer));
-          if (target) link(from, target);
-        }
-      }
-    }
-    this._graphCache = { nodes, allNodes: [...nodes.values()] };
+    this._graphCache = GRAPH.buildRoadGraph(
+      this.segments.map((segment, segmentIndex) => ({
+        points: segment.points,
+        width: segment.width || 0,
+        metadata: { segmentIndex, name: segment.name || '', wayId: segment.wayId || '' },
+      })),
+      { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }
+    );
     return this._graphCache;
   }
 
-  // Centreline spans in the 3×3 grid neighbourhood around a point.
-  _roadsNear(x, y) {
-    const gx = Math.floor(x / ROAD_GRID_CELL), gy = Math.floor(y / ROAD_GRID_CELL);
-    const found = [];
-    for (let dx = -1; dx <= 1; dx++) {
-      for (let dy = -1; dy <= 1; dy++) {
-        const cell = this.grid[`${gx + dx},${gy + dy}`];
-        if (cell) found.push(...cell.roads);
-      }
-    }
-    return found;
-  }
-
   _nearestGraphNode(point) {
-    if (window.CanalRecallRoadGraph) {
-      return window.CanalRecallRoadGraph.nearestRoadGraphNode(this._routingGraph(), point);
-    }
-    const { allNodes } = this._routingGraph();
-    return allNodes.reduce((best, node) => {
-      const distance = (node.x - point.x) ** 2 + (node.y - point.y) ** 2;
-      return !best || distance < best.distance ? { node, distance } : best;
-    }, null).node;
+    return GRAPH.nearestRoadGraphNode(this._routingGraph(), point);
   }
 
   // Dijkstra from `startPoint` over the whole graph. `stopAt` short-circuits
   // once that node is settled; omit it to settle everything reachable.
   _shortestPaths(startPoint, stopAt = null) {
-    if (window.CanalRecallRoadGraph) {
-      return window.CanalRecallRoadGraph.shortestRoadPaths(
-        this._routingGraph(), startPoint, { stopAt }
-      );
-    }
-    const start = this._nearestGraphNode(startPoint);
-    const distances = new Map([[start.key, 0]]);
-    const previous = new Map();
-    const queue = [{ node: start, cost: 0 }];
-    const push = (item) => {
-      queue.push(item);
-      let index = queue.length - 1;
-      while (index > 0) {
-        const parent = Math.floor((index - 1) / 2);
-        if (queue[parent].cost <= item.cost) break;
-        queue[index] = queue[parent];
-        index = parent;
-      }
-      queue[index] = item;
-    };
-    const pop = () => {
-      const first = queue[0];
-      const last = queue.pop();
-      if (queue.length && last) {
-        let index = 0;
-        while (true) {
-          const left = index * 2 + 1;
-          const right = left + 1;
-          if (left >= queue.length) break;
-          const child = right < queue.length && queue[right].cost < queue[left].cost ? right : left;
-          if (queue[child].cost >= last.cost) break;
-          queue[index] = queue[child];
-          index = child;
-        }
-        queue[index] = last;
-      }
-      return first;
-    };
-    while (queue.length) {
-      const current = pop();
-      if (current.cost !== distances.get(current.node.key)) continue;
-      if (stopAt && current.node === stopAt) break;
-      for (const edge of current.node.edges) {
-        const nextCost = current.cost + edge.weight;
-        if (nextCost >= (distances.get(edge.node.key) ?? Infinity)) continue;
-        distances.set(edge.node.key, nextCost);
-        previous.set(edge.node.key, current.node);
-        push({ node: edge.node, cost: nextCost });
-      }
-    }
-    return { distances, previous };
-  }
-
-  static _reconstruct(previous, endNode) {
-    const route = [];
-    for (let node = endNode; node; node = previous.get(node.key)) route.push({ x: node.x, y: node.y });
-    return route.reverse();
+    return GRAPH.shortestRoadPaths(this._routingGraph(), startPoint, { stopAt });
   }
 
   findRoute(startPoint, finishPoint) {
-    if (window.CanalRecallRoadGraph) {
-      return window.CanalRecallRoadGraph.findRoadRoute(this._routingGraph(), startPoint, finishPoint);
-    }
-    const finish = this._nearestGraphNode(finishPoint);
-    const { distances, previous } = this._shortestPaths(startPoint, finish);
-    if (!distances.has(finish.key)) return [];
-    return RoadNetwork._reconstruct(previous, finish);
+    return GRAPH.findRoadRoute(this._routingGraph(), startPoint, finishPoint);
   }
 
   // One Dijkstra pass, then pick the first candidate that is actually
   // reachable. Candidates should already be ordered by preference.
   findRouteToFirstReachable(startPoint, candidatePoints) {
-    if (window.CanalRecallRoadGraph) {
-      return window.CanalRecallRoadGraph.findRoadRouteToFirstReachable(
-        this._routingGraph(), startPoint, candidatePoints
-      );
-    }
-    const { distances, previous } = this._shortestPaths(startPoint);
-    for (let index = 0; index < candidatePoints.length; index++) {
-      const node = this._nearestGraphNode(candidatePoints[index]);
-      if (!distances.has(node.key)) continue;
-      const path = RoadNetwork._reconstruct(previous, node);
-      if (path.length >= 2) return { index, path };
-    }
-    return null;
+    return GRAPH.findRoadRouteToFirstReachable(this._routingGraph(), startPoint, candidatePoints);
   }
 
   // ---- Internal helpers ----
