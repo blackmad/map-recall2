@@ -6,6 +6,40 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The renderer draws the streamed city, and buildings keep their identity.**
+  The map swaps its OSM-only appearance source for the complete BAG-keyed city
+  when that city is published, hides the basemap's own `building-3d` extrusion
+  — pure redundancy once every building is described locally — and lets the
+  streamer follow the camera. Until publication the probe fails and nothing
+  changes, which is the normal state rather than an error.
+
+  Verified against the staged tiles by temporarily linking them into the served
+  path: 9 to 19 z14 tiles resident depending on viewport, 30,000 to 66,000
+  features drawn, heights from 0.7 to 79 m, on desktop and iPhone. Whole
+  residential blocks that were previously absent or flat basemap gray now stand
+  at AHN-measured heights.
+
+  **Two defects found while wiring it, both invisible in a screenshot.**
+  `generateId` numbers features by their position in the array, which is fine
+  for one file loaded once and wrong the moment the array is rebuilt — and the
+  streamer rebuilds it on every tile load and eviction, so the index that
+  identified a highlighted building comes back pointing at a different one and
+  the highlight jumps to an unrelated house as the player drives. The source is
+  recreated with `promoteId: 'id'`, so a feature's id is its BAG pand id and
+  picking has something stable to key a `BuildingHit` on.
+
+  And four buildings in 344,436 carried a height of null or zero: two 3DBAG
+  never reconstructed, two that round to zero. The tiles omit the key rather
+  than write an unmeasured number into a dataset whose whole claim is that its
+  heights are measured. The layer's `coalesce(height, 5)` takes them, which is
+  a guess that is visible as a guess.
+
+  The e2e spec skips while the city is unpublished and starts running by itself
+  once it lands. It polls `querySourceFeatures` rather than reading it once,
+  because that returns what MapLibre has re-tiled for the viewport and lags
+  `setData` by a frame or two — read immediately it was empty about one run in
+  three, which says nothing about whether the streamer worked.
+
 - **The complete LoD1 city is built, staged and measured — 336,784 buildings.**
   Phase 1's data half. The hosted 3D Tiles carry identity and attributes but no
   ground polygon, so a flat-topped city needs a footprint source they cannot

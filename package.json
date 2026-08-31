@@ -40,6 +40,7 @@
     "test:reachability": "tsx scripts/check-road-reachability.ts",
     "build:roof-colours": "tsx scripts/build-satellite-roof-colours.ts",
     "test:lod1-city": "node --max-old-space-size=6144 --import tsx scripts/check-lod1-city.ts",
+    "publish:lod1-city": "tsx scripts/publish-lod1-city.ts",
     "build:lod1-tiles": "node --max-old-space-size=6144 --import tsx scripts/build-lod1-tiles.ts",
     "build:lod1-city": "tsx scripts/build-lod1-city.ts",
     "build:bag-buildings": "tsx scripts/build-bag-buildings.ts",
