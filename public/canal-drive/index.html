@@ -157,6 +157,18 @@ canvas { display: block; position: relative; z-index: 2; }
 .utility-card td { padding: 6px; border-bottom: 1px solid var(--line); }
 .utility-card td:first-child { width: 80px; color: #facc15; font-weight: bold; }
 .utility-close { width: 100%; margin-top: 18px; padding: 12px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
+/* The landmark panel is the card's expanded form: the full extract, at length,
+   with real scrolling. The canvas card is a glance; this is the read. */
+#landmark-panel .utility-card { display: flex; flex-direction: column; width: min(94vw, 640px); max-height: min(86vh, 760px); }
+#landmark-panel-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+#landmark-panel-badges span { padding: 3px 7px; border-radius: 3px; background: rgba(250,204,21,.2); color: #facc15; font-size: 10px; font-weight: bold; letter-spacing: .04em; }
+#landmark-panel-badges span[data-kind="lang"] { background: rgba(148,163,184,.22); color: #cbd5e1; }
+#landmark-panel h2 { margin-bottom: 12px; }
+#landmark-panel-scroll { overflow-y: auto; flex: 1; min-height: 0; -webkit-overflow-scrolling: touch; }
+#landmark-panel-image { float: right; width: 168px; margin: 0 0 12px 14px; border-radius: var(--radius-sm); }
+#landmark-panel-body { font-size: 13px; line-height: 1.65; white-space: pre-wrap; }
+#landmark-panel-link { display: inline-block; margin-top: 14px; color: #7dd3fc; font-size: 12px; }
+@media (max-width: 760px) { #landmark-panel-image { float: none; width: 100%; margin: 0 0 12px; } }
 #utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 12; display: flex; gap: 8px; }
 #utility-buttons button { width: 38px; height: 38px; border: 1px solid var(--accent-ink); border-radius: var(--radius-sm); background: rgba(3,18,28,.78); color: var(--ink); font-size: 18px; cursor: pointer; }
 #prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; padding: 5px 8px; border-radius: 6px; background: rgba(255,255,255,.82); color: #334155; font: 11px var(--font-ui); }
@@ -219,7 +231,7 @@ canvas { display: block; position: relative; z-index: 2; }
 <div id="utility-buttons"><button id="open-settings" title="Settings (G)">⚙</button><button id="open-help" title="Keyboard shortcuts (?)">?</button></div>
 <div id="help-panel" class="utility-panel"><div class="utility-card">
   <h2>Keyboard shortcuts</h2>
-  <table><tr><td>Arrows</td><td>Steer and accelerate/brake</td></tr><tr><td>Space</td><td>Handbrake</td></tr><tr><td>M / Tab</td><td>Toggle minimap</td></tr><tr><td>L</td><td>Toggle route line</td></tr><tr><td>F</td><td>Toggle destination arrow</td></tr><tr><td>D</td><td>Toggle road name labels</td></tr><tr><td>W</td><td>Open Wikipedia for the landmark on screen</td></tr><tr><td>1 – 4</td><td>Pick a multiple-choice answer</td></tr><tr><td>O</td><td>Toggle north-up / heading-up</td></tr><tr><td>G</td><td>Settings</td></tr><tr><td>N</td><td>Sound</td></tr><tr><td>P / Esc</td><td>Pause</td></tr><tr><td>− / + or pinch</td><td>Zoom</td></tr><tr><td>Drag / two-finger pan</td><td>Pan camera</td></tr><tr><td>I J K U</td><td>Pan camera</td></tr><tr><td>R</td><td>Recenter camera</td></tr><tr><td>`</td><td>Debug overlay</td></tr></table>
+  <table><tr><td>Arrows</td><td>Steer and accelerate/brake</td></tr><tr><td>Space</td><td>Handbrake</td></tr><tr><td>M / Tab</td><td>Toggle minimap</td></tr><tr><td>L</td><td>Toggle route line</td></tr><tr><td>F</td><td>Toggle destination arrow</td></tr><tr><td>D</td><td>Toggle road name labels</td></tr><tr><td>W</td><td>Open Wikipedia for the landmark on screen</td></tr><tr><td>Click card</td><td>Expand the landmark card to the full article text</td></tr><tr><td>1 – 4</td><td>Pick a multiple-choice answer</td></tr><tr><td>O</td><td>Toggle north-up / heading-up</td></tr><tr><td>G</td><td>Settings</td></tr><tr><td>N</td><td>Sound</td></tr><tr><td>P / Esc</td><td>Pause</td></tr><tr><td>− / + or pinch</td><td>Zoom</td></tr><tr><td>Drag / two-finger pan</td><td>Pan camera</td></tr><tr><td>I J K U</td><td>Pan camera</td></tr><tr><td>R</td><td>Recenter camera</td></tr><tr><td>`</td><td>Debug overlay</td></tr></table>
   <button class="utility-close" type="button">Close</button>
 </div></div>
 <div id="settings-panel" class="utility-panel"><div class="utility-card">
@@ -231,6 +243,16 @@ canvas { display: block; position: relative; z-index: 2; }
   <label class="setup-field">THEME<select id="live-theme"><option value="clean">Clean map</option><option value="8bit">8-bit arcade</option><option value="16bit">16-bit</option><option value="psx">PSX</option><option value="cyberpunk">Cyberpunk</option></select></label>
   <label class="setup-field">CAMERA ZOOM<input id="live-zoom" type="range" min="0.35" max="1.3" step="0.05" value="0.50"></label>
   <button class="utility-close" type="button">Done</button>
+</div></div>
+<div id="landmark-panel" class="utility-panel"><div class="utility-card">
+  <div id="landmark-panel-badges"></div>
+  <h2 id="landmark-panel-title"></h2>
+  <div id="landmark-panel-scroll">
+    <img id="landmark-panel-image" alt="" hidden>
+    <div id="landmark-panel-body"></div>
+    <a id="landmark-panel-link" target="_blank" rel="noopener" hidden>Read the full article on Wikipedia &rarr;</a>
+  </div>
+  <button class="utility-close" type="button">Close</button>
 </div></div>
 <div id="canal-prompt">
   <form id="canal-card">
@@ -271,6 +293,7 @@ canvas { display: block; position: relative; z-index: 2; }
 <!-- OSM / Road Network (depends on constants/utils) -->
 <script src="js/osm-loader.js"></script>
 <script src="js/road-graph.bundle.js"></script>
+<script src="js/road-surface.bundle.js"></script>
 <script src="js/road-network.js"></script>
 <script src="js/map-picker.js"></script>
 <script src="js/loading-screen.js"></script>
@@ -281,6 +304,7 @@ canvas { display: block; position: relative; z-index: 2; }
 <script src="js/bridge-crossings.bundle.js"></script>
 <script type="module" src="js/recall-store/index.js"></script>
 <script src="js/street-overlay-style.bundle.js"></script>
+<script src="js/orientation-pois.bundle.js"></script>
 <script src="js/three.bundle.js"></script>
 <script src="js/detailed-buildings.bundle.js"></script>
 <script src="js/player-vehicles.bundle.js"></script>

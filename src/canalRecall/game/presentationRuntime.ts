@@ -124,7 +124,7 @@ export class GamePresentationRuntime {
     this.hud.drawCurrentLocation(ctx, visibleRouteName, this.currentNeighborhood,
       this.travelMode, routeAnswerHidden);
     this.hud.drawDestination(ctx, this.routeTo.name,
-      this.track.getDistanceToFinish(player.x, player.y));
+      this.track.getDistanceToFinish(player.x, player.y), this._routeLearningPlan?.expectedNovelty ?? null);
 
     if (this.routeOptions.arrow) {
       this.hud.drawFinishDirection(ctx, player.x, player.y,

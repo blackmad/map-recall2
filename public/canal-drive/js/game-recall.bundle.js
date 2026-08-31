@@ -507,6 +507,7 @@
           bestStreak: this.quizBestStreak
         },
         difficultyMultiplier: DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85,
+        noveltyMultiplier: (this._routeMastery[this._normaliseCanalName(correctName)] || 0) < 0.5 ? 1.15 : 1,
         gameyFeatures: this.gameyFeatures,
         recallFeature,
         recallStore: this.recall,

@@ -19,6 +19,8 @@ export interface SubmitAnswerInput {
   noIdea?: boolean;
   score: AnswerScore;
   difficultyMultiplier: number;
+  /** Bounded bonus for correctly recalling a street that was new to this route. */
+  noveltyMultiplier?: number;
   gameyFeatures: boolean;
   recallFeature?: RecallFeature | null;
   recallStore?: AnswerRecallStore | null;
@@ -61,12 +63,16 @@ export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
     bestStreak = Math.max(bestStreak, streak);
     const base = Math.round(100 * input.difficultyMultiplier);
     const streakMultiplier = input.gameyFeatures ? 1 + 0.1 * Math.min(streak - 1, 9) : 1;
-    const earned = Math.round(base * streakMultiplier);
+    const noveltyMultiplier = input.gameyFeatures
+      ? Math.max(1, Math.min(1.25, input.noveltyMultiplier ?? 1)) : 1;
+    const earned = Math.round(base * streakMultiplier * noveltyMultiplier);
     points += earned;
     input.markLearned?.(input.correctName);
     input.revealName(input.correctName);
     if (!input.gameyFeatures) {
       feedback = `Correct — ${input.correctName}`;
+    } else if (noveltyMultiplier > 1) {
+      feedback = `Correct — ${input.correctName}  (+${earned} pts, ${noveltyMultiplier.toFixed(2)}× new street)`;
     } else if (streak >= 2) {
       feedback = `Correct — ${input.correctName}  (+${earned} pts, ${streak}× streak)`;
     } else {
