@@ -137,4 +137,34 @@ const missedQuery = { states: missed, name: 'Prinsengracht', cityId: 'amsterdam'
 assert.ok(isSuppressedNear(missedQuery), 'a fresh wrong answer is not re-asked immediately');
 assert.ok(!isKnownNear(missedQuery), 'a wrong answer must never unlock the bridge above it');
 
+// `bridges.json` and `bridge-crossings.json` are a matched pair keyed on
+// bridge id, and nothing else enforces that they describe the same city.
+//
+// This is a named regression. A rebuild of `bridges.json` alone renumbered
+// every id and orphaned the crossing index: matching bridges fell from 257 of
+// 300 to 28. Nothing crashed, which is what made it dangerous — the runtime
+// falls back to a synthetic crossing with no waterway, so 229 bridges silently
+// lost the water beneath them and the water-before-bridge rule stopped
+// applying across the whole city. Rebuild the two together.
+{
+  const published = JSON.parse(
+    readFileSync(resolve(extractDir, 'bridge-crossings.json'), 'utf8'),
+  ) as { bridges?: Record<string, unknown[]> };
+  const index = published.bridges ?? {};
+  const indexedIds = Object.keys(index);
+  assert.ok(indexedIds.length > 0, 'bridge-crossings.json publishes crossings');
+
+  const bridgeIds = new Set(bridges.map(bridge => bridge.id));
+  const orphaned = indexedIds.filter(id => !bridgeIds.has(id));
+  assert.deepEqual(orphaned.slice(0, 5), [],
+    `${orphaned.length} of ${indexedIds.length} crossing-index entries name a bridge that `
+    + 'no longer exists; rebuild bridge-crossings.json in the same change as bridges.json');
+
+  // The pair is only useful if most named bridges actually resolve to their
+  // real crossings. A loose floor: this is 86% today and was 9% when broken.
+  const matched = bridges.filter(bridge => index[bridge.id]).length;
+  assert.ok(matched / bridges.length > 0.5,
+    `only ${matched} of ${bridges.length} bridges resolve to a published crossing`);
+}
+
 console.log('Bridge crossing and location-scoped recall checks passed.');
