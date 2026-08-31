@@ -123,50 +123,78 @@ equivalent government geometry. The authoritative architecture, schemas,
 fallback ownership and migration gates are in
 [`BUILDING_RENDERER_DESIGN.md`](BUILDING_RENDERER_DESIGN.md).
 
-Do this as a gated progression rather than converting Amsterdam in one shot:
+Do this as a gated progression rather than converting Amsterdam in one shot,
+ordered **completeness before fidelity** — every step that makes more of the
+city look like itself comes before any step that makes a few buildings look
+better. This is a P2 item on a board whose P1 tier is the learning model, so it
+will be interrupted; each step must be worth shipping alone.
 
-1. **Rijksmuseum proof.** Fetch a tightly clipped, pinned 3DBAG LoD2.2 source
+1. **Answer two questions first.** (a) Does the hosted 3DBAG tileset resolve a
+   feature to a BAG `pand_id` via `EXT_structural_metadata`? One afternoon, and
+   it decides whether measured colours can be joined onto government geometry at
+   runtime with no compiler at all. (b) Finish item 8a, so the appearance table
+   is BAG-keyed, quantised and trustworthy.
+2. **Ship the complete LoD1 city.** The city is gray because only 10,578
+   buildings have appearance at all, against a BAG pand count in the low
+   hundreds of thousands — coverage, not fidelity. Count it exactly in step 1.
+   Publish a complete BAG-keyed footprint + 3DBAG height + measured roof colour
+   source on the tile grid detailed geometry will later use, render it with
+   ordinary fill-extrusions, and delete `building-3d`, `osm-colored-buildings`,
+   `osm-colored-building-roofs` and the height-offset stack that keeps three
+   coplanar extrusions from z-fighting. Heights stop being guessed in the same
+   change: `build-osm-building-appearance.ts:32` currently falls back to
+   `levels * 3` or a flat 9 m, so much of the skyline is invented, and AHN-derived
+   3DBAG heights replace it everywhere. Largest visible win in the whole item,
+   no new renderer, and it is the fallback every later step needs. If step 1(a)
+   succeeded, this can ship as our LoD1 city underneath the existing hosted
+   LoD2.2 meshes, recoloured — high-quality existing geometry plus our own
+   measurements, no compiler written yet.
+3. **Rijksmuseum proof.** Fetch a tightly clipped, pinned 3DBAG LoD2.2 source
    around the Rijksmuseum and export an owned glTF. Confirm that the result
    preserves building parts, semantic roof/wall surfaces, the courtyard and the
    recognisable towers. Record exact source versions and commands so the asset
    is reproducible.
-2. **Make the asset game-ready.** Transform the model origin into local metres,
+4. **Make the asset game-ready.** Transform the model origin into local metres,
    retain one stable BAG identity plus OSM aliases per selectable building or
    part, remove unseen/redundant geometry, generate normals, and compress the
    result. Apply the measured PDOK roof colours after conversion without
    discarding the material and part boundaries that make the model recognisable.
-3. **One MapLibre custom layer.** Extend the existing shared Three.js scaffold
+5. **One MapLibre custom layer.** Extend the existing shared Three.js scaffold
    rather than shipping another renderer. Load the Rijksmuseum GLB into the
    same WebGL context and projection matrix as MapLibre; verify depth against
    roads, water, labels, the player vehicle and landmark highlights. Hide the
-   underlying flat extrusion only for footprints whose replacement mesh has
-   loaded successfully.
-4. **Preserve game interaction.** Clicking a mesh must resolve to the same
+   underlying LoD1 feature by `buildingId` only for buildings whose replacement
+   mesh has loaded successfully — never with a coverage mask over tile bounds,
+   which cannot avoid erasing the navigation corridor and cannot hide a tall
+   extrusion leaning in from the next tile.
+6. **Preserve game interaction.** Clicking a mesh must resolve to the same
    landmark/building record as clicking the vector footprint. `hide_3d`, active
    landmark highlighting, camera transitions and context-loss recovery must
    affect generated meshes and ordinary extrusions consistently. A failed or
    slow mesh request must leave the current building visible and clickable.
-5. **Tile the pipeline.** If the landmark proof holds, generate independently
+7. **Tile the pipeline.** If the landmark proof holds, generate independently
    cacheable spatial tiles rather than one city-sized model. Publish a compact
    manifest containing bounds, content hashes, byte sizes and every source date;
    fetch only the camera's nearby tiles, unload with hysteresis, and cap
    concurrent decoding. Keep ordinary MapLibre extrusions outside the detailed
    radius.
-6. **Set acceptance gates before widening coverage.** Compare a fixed
+8. **Set acceptance gates before widening coverage.** Compare a fixed
    Rijksmuseum screenshot against both today's renderer and OSM Buildings.
    Require the roof silhouette and courtyard to survive, no duplicate/z-fighting
    geometry, no new navigation occlusion, and no material frame-time regression
    on the mobile test target. Measure compressed bytes, parse/decode time, GPU
    memory and draw calls. Stop at signature landmarks if city blocks cannot meet
    those budgets.
-7. **Expand by visual value.** Next cover other unmistakable landmarks and only
+9. **Expand by visual value.** Next cover other unmistakable landmarks and only
    then representative residential blocks. Do not promise citywide meshes
    until tile churn and low-end mobile performance pass a real driving route.
-   Once replacement coverage is sufficient, delete the overlapping
-   `buildings-colored.geojson` geometry and retain its PDOK measurements as a
-   compact BAG-keyed appearance input to mesh generation.
+   Before building a texture atlas, render one block twice — quantised flat
+   colour against textured material — on a real driving route and decide whether
+   texture changes what a player recognises at a street-level chase camera. A
+   negative result is a good result and saves the subsystem.
 
-The first deliverable is deliberately only the reproducible Rijksmuseum asset,
+The first *shipped* deliverable is step 2, the complete coloured city. The
+first mesh deliverable is deliberately only the reproducible Rijksmuseum asset,
 the custom-layer spike and its measurements. That result decides whether the
 production format is tiled glTF, 3D Tiles, or signature-landmark GLBs; it must
 not introduce a second map or a runtime dependency on OSM Buildings.
