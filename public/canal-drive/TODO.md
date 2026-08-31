@@ -257,14 +257,38 @@ pass checks. Two regressions to fix before any of it reaches `main`:
   The two files are a matched pair keyed on id — rebuild them together.
   `test:bridge-crossings` now asserts that alignment.
 
-**11c. Give Utrecht real ledes.**
-39 blurbs across the extract are still Dutch and 103 more are Wikidata
-one-liners rather than encyclopedia ledes. Both upgrade in place — every one
-keeps `wikipediaExtractOriginal` and its language — but the pass needs a
-translator that is not currently available here: no `GEMINI_API_KEY` is
-configured, and Ollama is installed but not serving with `translategemma:12b`
-not pulled. Needs a decision about a multi-gigabyte model download or an API
-key, so it is deliberately not done unasked.
+**11c. Give Amsterdam and Utrecht real ledes. Blocked on a macOS upgrade.**
+Amsterdam has 448 distinct Dutch ledes left; Utrecht has 39 Dutch and 103
+Wikidata one-liners. Both upgrade in place — every feature keeps
+`wikipediaExtractOriginal` and its language — and the pass is now built and
+tested against the translator this project has chosen: `translate`
+(scriptingosx/translate-cli) or `trn` (hotchpotch/trn), auto-detected in that
+order. Both are local, free and keyless.
+
+The only thing standing in the way is that both need **macOS 26**, plus the
+Dutch language pack installed through System Settings. Once the machine is
+upgraded, the whole job is:
+
+    brew tap hotchpotch/trn https://github.com/hotchpotch/trn
+    brew install hotchpotch/trn/trn     # or install translate-cli
+    npm run enrich:english -- --dry-run --limit=20   # read the output first
+    npm run enrich:english
+    npm run enrich:utrecht-english -- --translator=trn
+
+Read the dry run before the real one. Translations are written into
+`scripts/english-translations.json` keyed by a hash of the exact source text,
+so they are reviewed in a diff like any other text and a refreshed extract
+invalidates a stale entry rather than silently keeping it.
+
+Expect some refusals: the pass rejects a translation that lost the feature's
+own name, because "The Blue Bridge is a bascule bridge over the canal" teaches
+the wrong name for the Blauwbrug. Those come back as
+`refused — translated the name itself` and are worth reading; the feature keeps
+its Dutch lede rather than getting a wrong English one.
+
+Also still open, and cheaper: 281 entries in the translation cache no longer
+match any extract, because the Dutch ledes they were made from have since been
+rewritten upstream. The pass counts them; nothing prunes them.
 
 **12. Clear all my data.**
 A deliberately guarded reset for test accounts and players who want a fresh

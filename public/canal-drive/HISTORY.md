@@ -6,6 +6,40 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The English pass prefers a local CLI translator, and refuses a translation
+  that renames the place.**
+  448 distinct Dutch ledes are still waiting, and the routes that could do them
+  were an Ollama server or a Gemini key. `translate`
+  (scriptingosx/translate-cli) and `trn` (hotchpotch/trn) are both thin
+  wrappers over Apple's on-device Translation framework: local, free, no key,
+  no running server, nothing leaving the machine. They are now auto-detected
+  first, in that order, with `--translator=` to force one and `--ollama` kept
+  working as it was so the Utrecht script is unaffected. Both need macOS 26 and
+  the Dutch language pack, so the pass falls through to Ollama, then Gemini,
+  then Wikidata descriptions, and says which it is doing.
+
+  Neither CLI takes a prompt. Everything the LLM routes asked for in words —
+  "keep proper nouns exactly as they are", "under 360 characters, ending at a
+  sentence boundary" — had to become code, which is an improvement: it is now
+  enforced on every route rather than requested on two, and it is testable
+  without a translator installed, which matters because CI cannot run one.
+
+  `trimToSentence` cuts at the last real sentence boundary that fits, with an
+  abbreviation list so a lede is not cut at "genoemd naar St." and a word-cut
+  fallback with an ellipsis when no boundary is usable. `droppedProperNames`
+  refuses a translation that lost the feature's own name: a fluent "The Blue
+  Bridge is a bascule bridge over the canal" teaches the wrong name for the
+  Blauwbrug, which is worse than leaving the Dutch in place. It matches whole
+  words, not substrings — "Kerk" appears inside "Oudekerksplein", so a
+  substring test would score a translated Kerk → Church as preserved.
+
+  The guard only fires where the feature's name appears in its own lede, which
+  is 414 of the 448 (92%), pinned as a regression. The other 34 are spelling
+  mismatches between the extract's name and the lede's — "Amsterdamschebrug"
+  written "Amsterdamsebrug", "Hoge Sluis" written "Hogesluis" — where nothing
+  is refused. That is the intended bias: a false refusal costs one translation,
+  a false accept ships a wrong name.
+
 - **The landmark card expands into a readable panel.**
   `measureLandmarkCard` cuts the body to two lines, or four with a photo, so
   the driving corridor stays visible — which is the right call for a card that
