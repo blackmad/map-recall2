@@ -59,7 +59,7 @@ import {
   type CliTranslator,
   cleanTranslatorOutput,
   droppedProperNames,
-  translatorArgs,
+  translatorInvocation,
   trimToSentence,
 } from './lib/translation.ts';
 
@@ -208,18 +208,25 @@ if (useCli && needsTranslation.length) {
     const original = feature.wikipediaExtractOriginal || feature.wikipediaExtract!;
     const sourceLanguage = feature.wikipediaExtractOriginalLang || feature.wikipediaExtractLang || 'nl';
     try {
-      // The text goes in on stdin rather than as an argument: a Dutch lede can
-      // start with a dash or contain anything, and stdin has no quoting rules
-      // to get wrong. Both tools read it the same way.
-      const child = execFile(tool, translatorArgs(tool, sourceLanguage));
-      child.stdin!.end(original);
+      // Which channel the text travels on is the tool's choice, not ours —
+      // see `translatorInvocation`. Whatever it says goes on stderr is kept,
+      // because "exited 1" on its own cost an afternoon once already.
+      const invocation = translatorInvocation(tool, sourceLanguage, original);
+      const child = execFile(tool, invocation.args);
+      if (invocation.stdin === null) child.stdin!.end();
+      else child.stdin!.end(invocation.stdin);
       const chunksOut: string[] = [];
+      const chunksErr: string[] = [];
       child.stdout!.on('data', (piece: Buffer) => chunksOut.push(piece.toString('utf8')));
+      child.stderr!.on('data', (piece: Buffer) => chunksErr.push(piece.toString('utf8')));
       const code = await new Promise<number>((resolve, reject) => {
         child.on('error', reject);
         child.on('close', resolve);
       });
-      if (code !== 0) throw new Error(`exited ${code}`);
+      if (code !== 0) {
+        const why = chunksErr.join('').trim().split('\n')[0];
+        throw new Error(`exited ${code}${why ? `: ${why}` : ''}`);
+      }
 
       const english = trimToSentence(cleanTranslatorOutput(chunksOut.join('')));
       if (!english) throw new Error('empty output');
