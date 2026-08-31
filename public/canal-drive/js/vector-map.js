@@ -173,8 +173,14 @@ class VectorBasemap {
       if (!available || !this.map.getSource('osm-building-appearance')) return;
       this._recreateBuildingSourceWithStableIds();
       this._styleCompleteCity();
-      if (this.map.getLayer('building-3d')) this.map.setLayoutProperty('building-3d', 'visibility', 'none');
-      this._completeCity.attach();
+      // The basemap's extrusion is hidden only once a tile has actually landed
+      // with buildings in it, never on the strength of the probe alone. A host
+      // that answers a missing file with its own index.html and a 200 — which
+      // both the dev server and most static hosts do — would otherwise leave
+      // the player driving through a city with nothing in it.
+      this._completeCity.attach(() => {
+        if (this.map.getLayer('building-3d')) this.map.setLayoutProperty('building-3d', 'visibility', 'none');
+      });
     }).catch(() => {});
   }
 
