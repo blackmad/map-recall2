@@ -135,21 +135,29 @@ test('a wrong answer about the water does not unlock the bridge', async ({ page 
   expect(known).toBe(false);
 });
 
-test('Zuiderzeeweg is four crossings over three different waters, not one question', async ({ page }) => {
+// The road out of the city to the north carries four separate structures over
+// different waters. They used to be published as one bridge named after the
+// road, so "which bridge is this?" was answered once, with a road name, for all
+// four. The extractor prefers OSM's `bridge:name`, so each is now itself.
+test('a road out of the city is several named bridges, not one question', async ({ page }) => {
   await openCarRoute(page);
-  const waterways = await page.evaluate(() => {
-    const bridge = window.canalRecallGame.bridges.find((candidate) => candidate.name === 'Zuiderzeeweg');
-    return bridge ? bridge.crossings.map((crossing) => crossing.waterway) : null;
+  const named = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const find = (name: string) => game.bridges.find((candidate) => candidate.name === name);
+    return {
+      roadsAsBridges: ['Zuiderzeeweg', 'IJburglaan'].filter((road) => Boolean(find(road))),
+      schellingwouder: find('Schellingwouderbrug')?.crossings.map((c) => c.waterway) ?? null,
+      heerma: find('Enneüs Heermabrug')?.crossings.map((c) => c.waterway) ?? null,
+    };
   });
-  expect(waterways).toEqual(['IJmeer', 'Buiten-IJ', 'Weersloot', null]);
+  expect(named.roadsAsBridges, 'a road is not a bridge').toEqual([]);
+  expect(named.schellingwouder).toContain('Buiten-IJ');
+  expect(named.heerma).toContain('IJmeer');
 
-  // Each crossing is asked on its own: answering the IJmeer span says nothing
-  // about the Buiten-IJ span four kilometres north.
-  const south = await crossBridge(page, 'Zuiderzeeweg', 0);
-  expect(south.asked).toBe('IJmeer');
-  await page.evaluate(() => window.canalRecallGame._submitCanalAnswer('IJmeer'));
-  const north = await crossBridge(page, 'Zuiderzeeweg', 1);
-  expect(north.asked).toBe('Buiten-IJ');
+  // And each is asked about on its own terms.
+  const crossing = await crossBridge(page, 'Schellingwouderbrug', 0);
+  expect(crossing.error).toBeUndefined();
+  expect(crossing.asked).toBe('Buiten-IJ');
 });
 
 test('a long street is learned a stretch at a time, and labelled only where it is known', async ({ page }) => {

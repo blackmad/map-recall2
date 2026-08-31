@@ -29,15 +29,17 @@ osmium tags-filter "$city_pbf" \
   r/water=canal,river,basin,moat,pond,lake,reflecting_pool,oxbow w/landuse=basin \
   w/highway=motorway,trunk,primary,secondary,tertiary,motorway_link,trunk_link,primary_link,secondary_link,tertiary_link,living_street,residential,unclassified,service,busway \
   w/bridge=yes w/man_made=bridge nwr/place=square nwr/amenity=marketplace \
-  nwr/leisure=park,garden,nature_reserve nwr/tourism=attraction,museum,viewpoint,monument,gallery \
-  nwr/historic nwr/amenity=theatre,arts_centre,townhall,place_of_worship \
+  nwr/leisure=park,garden,nature_reserve nwr/tourism=attraction,museum,viewpoint,monument,gallery,zoo \
+  nwr/historic nwr/amenity=theatre,arts_centre,community_centre,townhall,place_of_worship \
   nwr/amenity=cinema,library,university,college,music_venue \
+  nwr/amenity=restaurant,cafe,pub,bar \
   nwr/shop n/natural=tree w/natural=tree_row \
   -o "$work_dir/features.osm.pbf"
 
 osmium export "$work_dir/features.osm.pbf" -o "$work_dir/features.geojson"
 osmium tags-filter "$city_pbf" \
   wr/building:colour wr/building:color wr/building:material \
+  wr/building:facade:colour wr/building:facade:color wr/facade:colour wr/facade:color \
   wr/roof:colour wr/roof:color wr/roof:material \
   -o "$work_dir/building-appearance.osm.pbf"
 osmium export --add-unique-id=type_id "$work_dir/building-appearance.osm.pbf" -o "$work_dir/building-appearance.geojson"
@@ -55,10 +57,22 @@ node --import tsx scripts/enrich-amsterdam-wikipedia-extracts.ts "--directory=$b
 node --import tsx scripts/enrich-city-profile.ts "--directory=$build_dir" "--name=$city_name"
 node --import tsx scripts/enrich-brand-identifiers.ts "--directory=$build_dir"
 node --import tsx scripts/apply-wikimedia-image-overrides.ts "$build_dir"
+# Everything keyed on bridge ids has to be built from the bridges.json that was
+# just written, in the same run. Skipping this is how a rebuild renumbered every
+# bridge and orphaned the crossing index: nothing crashed, and 229 bridges
+# silently lost the water beneath them.
+node --import tsx scripts/build-bridge-crossings.ts "--directory=$build_dir" --publish
+node --import tsx scripts/build-bridge-railways.ts "--directory=$build_dir" --publish
+node --import tsx scripts/build-bridge-distractors.ts "--directory=$build_dir" --publish
+
 node --import tsx scripts/check-city-extract.ts "$build_dir" "$city_id"
 
 # Publish only after every build and enrichment stage succeeds. A transient
 # Wikimedia or download failure must not replace a working city with a partly
 # enriched one.
 mkdir -p "$output_dir"
-cp "$build_dir"/* "$output_dir"/
+# Regular files only. `cp "$build_dir"/*` fails on the `staging/` directory the
+# bridge builders create, which made a completely successful refresh exit 1
+# after it had already copied everything — the worst kind of failure, because
+# the data is published and the pipeline says it broke.
+find "$build_dir" -maxdepth 1 -type f -exec cp {} "$output_dir"/ \;

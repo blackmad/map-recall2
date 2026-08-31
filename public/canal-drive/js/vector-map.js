@@ -109,21 +109,34 @@ class VectorBasemap {
       generateId: true,
       attribution: 'Building appearance © OpenStreetMap contributors'
     });
+    // Three extrusions can describe one building here: the basemap's own
+    // `building-3d`, our measured-colour walls, and the roof cap. Any two
+    // horizontal faces at an identical height z-fight, which is the striping
+    // that appeared across roofs — two surfaces at the same depth, the renderer
+    // picking a different winner per pixel.
+    //
+    // So no two visible faces share a height. Walls finish 0.35 m above the
+    // basemap's estimate, which puts the basemap's roof inside ours rather than
+    // level with it. The roof cap *starts* below the wall top, so the slab's
+    // underside and the wall's top face are both buried and only the cap's own
+    // top is drawn. Opacity is 1 on both: a translucent extrusion blends with
+    // whatever it is fighting, which turns a depth tie into a visible stripe.
+    const OSM_HEIGHT = ['coalesce', ['get', 'height'], 5];
     this.map.addLayer({
       id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
-        'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'colour']],
-        'fill-extrusion-base': ['get', 'minHeight'],
-        'fill-extrusion-height': ['get', 'height'],
-        'fill-extrusion-opacity': 0.96
+        'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['coalesce', ['get', 'sideColour'], ['get', 'colour']]],
+        'fill-extrusion-base': ['coalesce', ['get', 'minHeight'], 0],
+        'fill-extrusion-height': ['+', OSM_HEIGHT, 0.35],
+        'fill-extrusion-opacity': 1
       }
     });
     this.map.addLayer({
       id: 'osm-colored-building-roofs', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'roofColour']],
-        'fill-extrusion-base': ['get', 'height'],
-        'fill-extrusion-height': ['+', ['get', 'height'], 0.35],
+        'fill-extrusion-base': ['+', OSM_HEIGHT, 0.05],
+        'fill-extrusion-height': ['+', OSM_HEIGHT, 0.7],
         'fill-extrusion-opacity': 1
       }
     });
@@ -139,10 +152,11 @@ class VectorBasemap {
     this.map.addLayer({ id: 'neighborhood-boundaries', type: 'line', source: 'amsterdam-neighborhoods', minzoom: 13, paint: { 'line-color': '#8B5CF6', 'line-width': ['interpolate', ['linear'], ['zoom'], 13, 1, 18, 2.5], 'line-opacity': 0.48, 'line-dasharray': [3, 3] } }, before);
     this.map.addLayer({ id: 'poi-dots', type: 'circle', source: 'amsterdam-pois', minzoom: 14.5, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 14.5, 3, 18, 6], 'circle-color': '#FACC15', 'circle-stroke-color': '#071E2B', 'circle-stroke-width': 1.5, 'circle-opacity': 0.9 } });
     this.map.addLayer({ id: 'poi-labels', type: 'symbol', source: 'amsterdam-pois', minzoom: 16, layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': 11, 'text-offset': [0, 1.1], 'text-anchor': 'top', 'text-allow-overlap': false }, paint: { 'text-color': '#FFF7CC', 'text-halo-color': '#071E2B', 'text-halo-width': 2 } });
-    this.map.addLayer({ id: 'brand-poi-dots', type: 'circle', source: 'branded-pois', minzoom: 15.5, paint: { 'circle-radius': 5, 'circle-color': '#FFFFFF', 'circle-stroke-color': '#0F3040', 'circle-stroke-width': 2, 'circle-opacity': 0.9 } });
+    this.map.addLayer({ id: 'brand-poi-dots', type: 'circle', source: 'branded-pois', minzoom: 15.5, filter: ['==', ['get', 'kind'], 'albert-heijn'], paint: { 'circle-radius': 5, 'circle-color': '#FFFFFF', 'circle-stroke-color': '#0F3040', 'circle-stroke-width': 2, 'circle-opacity': 0.9 } });
     this._loadBrandIcon('albert-heijn', './brand-icons/albert-heijn.svg');
-    this.map.addLayer({ id: 'brand-poi-icons', type: 'symbol', source: 'branded-pois', minzoom: 15.5, filter: ['has', 'icon'], layout: { 'icon-image': ['get', 'icon'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 15.5, 0.62, 18, 0.9], 'icon-allow-overlap': false, 'icon-ignore-placement': false } });
-    this.map.addLayer({ id: 'brand-poi-labels', type: 'symbol', source: 'branded-pois', minzoom: 17, layout: { 'text-field': ['get', 'brand'], 'text-font': ['Noto Sans Bold'], 'text-size': 10, 'text-offset': [0, 1.7], 'text-anchor': 'top', 'text-allow-overlap': false }, paint: { 'text-color': '#E0F2FE', 'text-halo-color': '#071E2B', 'text-halo-width': 2 } });
+    this.map.addLayer({ id: 'brand-poi-icons', type: 'symbol', source: 'branded-pois', minzoom: 15.5, filter: ['all', ['==', ['get', 'kind'], 'albert-heijn'], ['has', 'icon']], layout: { 'icon-image': ['get', 'icon'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 15.5, 0.62, 18, 0.9], 'icon-allow-overlap': false, 'icon-ignore-placement': false } });
+    this.map.addLayer({ id: 'brand-poi-labels', type: 'symbol', source: 'branded-pois', minzoom: 17, filter: ['==', ['get', 'kind'], 'albert-heijn'], layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': 10, 'text-offset': [0, 1.7], 'text-anchor': 'top', 'text-allow-overlap': false }, paint: { 'text-color': '#E0F2FE', 'text-halo-color': '#071E2B', 'text-halo-width': 2 } });
+    this.map.addLayer({ id: 'local-food-labels', type: 'symbol', source: 'branded-pois', minzoom: 16, filter: ['==', ['get', 'kind'], 'local-food'], layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Regular'], 'text-size': ['interpolate', ['linear'], ['zoom'], 16, 10, 18, 12], 'text-letter-spacing': 0.02, 'text-allow-overlap': false, 'symbol-sort-key': ['-', 20, ['get', 'orientationScore']] }, paint: { 'text-color': '#C9DDE5', 'text-halo-color': '#071E2B', 'text-halo-width': 2 } });
     this.map.addLayer({ id: 'neighborhood-labels', type: 'symbol', source: 'amsterdam-neighborhood-labels', minzoom: 13, maxzoom: 18.5, layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 13, 11, 17, 16], 'text-letter-spacing': 0.12, 'text-allow-overlap': false }, paint: { 'text-color': '#6D28D9', 'text-halo-color': 'rgba(255,255,255,.9)', 'text-halo-width': 2 } });
   }
 
@@ -176,7 +190,7 @@ class VectorBasemap {
     source.setData({
       type: 'FeatureCollection',
       features: this._pendingBrandedPois.map(poi => ({
-        type: 'Feature', properties: { id: poi.id, name: poi.name, brand: poi.brand, ...(poi.icon ? { icon: poi.icon } : {}) },
+        type: 'Feature', properties: { id: poi.id, name: poi.name, kind: poi.kind, brand: poi.brand || '', amenity: poi.amenity || '', orientationScore: poi.orientationScore || 0, ...(poi.icon ? { icon: poi.icon } : {}) },
         geometry: { type: 'Point', coordinates: [poi.center[1], poi.center[0]] }
       }))
     });
