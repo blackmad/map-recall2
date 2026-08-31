@@ -72,14 +72,37 @@ are in [`BUILDING_ENRICHMENT.md`](BUILDING_ENRICHMENT.md).
 appearance into detailed meshes.*
 
 **8b. Finish typing the game subsystems.**
-`game-landmarks`, `game-recall` and `game-presentation` are done, and
-`game-route`'s geographic rules are extracted to `routeSelection.ts`. What is
-left is one file: `game-route.js`, ~350 lines that are almost entirely settings
-form plumbing.
+Measured 2026-08-31: ~21,000 lines of TypeScript against ~6,100 lines of
+hand-written JavaScript in `public/canal-drive/js/` (the other ~1,300 JS lines
+there are esbuild output from `src/recall-store`, and every `*.bundle.js` is
+generated from TypeScript).
 
-That remainder is deliberately parked behind item 8c, because it is the part a
-UI framework would delete rather than type — translating it verbatim first
-would be work thrown away.
+The rule that has been working, and should decide what moves: **decisions in
+TypeScript, painting and adapters in JavaScript.** `noticeCards.ts` +
+`renderer.js`, `bottomHud.ts` + `hud.js`, `streetOverlayStyle.ts` +
+`vector-map.js` are all this shape and all have tests on the half that decides.
+
+By that rule the genuinely un-migrated work is about 1,000 lines, in two files:
+
+- `road-network.js` (774) — OSM graph construction and routing, the largest
+  untested decision surface left. `getConnectedNamedSegments` is what the canal
+  stitching fix had to work around. CLAUDE.md already names routing as
+  TypeScript-first. **Do this one first.**
+- `osm-loader.js` (404) — the Overpass client is an adapter and can stay, but
+  the parsing and normalisation half is untyped logic.
+
+Also worth settling before either: `car.js` (189) and `track.js` (186) look
+superseded by the typed physics behind `test:canal-car` and by
+`road-network.js` respectively. Confirm and **delete** rather than port.
+
+Explicitly staying JavaScript: `game.js` (the orchestrator, and the integration
+hotspot CLAUDE.md reserves), `renderer.js`, `hud.js`, `vector-map.js`,
+`map-picker.js`, the `*-source.js` 3D bundle entrypoints, and the small helpers
+(`input`, `camera`, `utils`, `sound`, `particles`, `loading-screen`).
+
+`game-route.js` (774) is parked behind item 8c: it is the part a UI framework
+would delete rather than type, so translating it verbatim would be work thrown
+away.
 *The rule to keep: what the player is told is typed and tested; what paints it
 is not. Do not translate a method verbatim if the decision inside it belongs in
 the data half.*
@@ -259,6 +282,20 @@ adapters, with fixtures for recall feedback, neighborhood entry (photo and
 fallback), landmark trivia, stacked notices and every finish-card combination;
 pair them with screenshot regressions. Follows naturally from item 3 — the same
 extraction serves both.
+
+**14b. Playwright's phone projects cannot reach fixed overlays.**
+Chromium's iPhone emulation gives `/canal-drive/` a 613×1044 layout viewport
+inside a 390×664 device viewport, even though the page's `<meta name=viewport>`
+is a correct `width=device-width, initial-scale=1.0`. Input coordinates are
+therefore unreachable below y≈664, so a tap cannot hit the lower half of any
+fixed overlay, and canvas hit targets do not map to tappable points at all.
+`tests/e2e/landmark-panel.spec.ts` works around it by resizing the desktop
+project to 390×664, which is a true narrow layout.
+
+Find the cause before writing more mobile specs against overlays — it is either
+the launch config's local-Chrome `executablePath` diverging from the bundled
+build, or something on the page forcing a layout width. Until then, treat the
+`iphone` project as unable to click fixed overlays.
 
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in

@@ -43,6 +43,32 @@ const stub = (text: string, font: string) => {
     assert.ok(line.length > 0 && !line.startsWith(' '), `bad line: ${JSON.stringify(line)}`);
   }
   assert.ok(long.startsWith(bare.lines[0]), 'wrapping preserves the text in order');
+  assert.equal(bare.truncated, true, 'a body cut to two lines says so');
+  assert.equal(photo.truncated, false,
+    'the same body fits the four-line budget a photo card gets');
+}
+
+// --- Only a cut card advertises the expanded panel --------------------------
+{
+  const fits = measureLandmarkCard({ name: 'Nes', body: 'A street in the centre.' }, stub);
+  assert.equal(fits.truncated, false, 'a body that fits is not truncated');
+  assert.equal(fits.badges.some((b) => b.kind === 'more'), false,
+    'nothing more to read means no MORE badge');
+
+  const empty = measureLandmarkCard({ name: 'Nes', body: '' }, stub);
+  assert.equal(empty.truncated, false, 'an empty body is not a cut body');
+
+  const long = measureLandmarkCard(
+    { name: 'Oude Kerk', category: 'CHURCH', hasArticle: true, hasImage: true,
+      body: 'The Oude Kerk is Amsterdam\'s oldest building and oldest parish church, '
+        + 'founded in 1213 and consecrated in 1306, standing on the Oudekerksplein in '
+        + 'De Wallen, and its long history runs well past what any four lines can hold.' },
+    stub);
+  assert.equal(long.truncated, true);
+  assert.deepEqual(long.badges.map((b) => b.kind), ['category', 'article', 'more'],
+    'MORE comes last, after the badges that describe the content');
+  const more = long.badges[long.badges.length - 1];
+  assert.ok(more.x + more.width < long.width, 'the MORE badge stays inside the card');
 }
 
 // --- A name too long to fit is elided, not overflowed -----------------------

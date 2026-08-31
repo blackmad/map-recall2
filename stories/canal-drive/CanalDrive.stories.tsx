@@ -1,7 +1,8 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood' | 'finish' | 'finish-calm';
+type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood' | 'finish' | 'finish-calm'
+  | 'landmark-card' | 'landmark-panel' | 'landmark-panel-dutch';
 
 function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
   const configure = useCallback((frame: HTMLIFrameElement) => {
@@ -24,7 +25,8 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       const details = doc.querySelector<HTMLDetailsElement>('.advanced-options');
       if (details) details.open = true;
     }
-    if (scenario === 'hud' || scenario === 'neighborhood' || scenario.startsWith('finish')) {
+    if (scenario === 'hud' || scenario === 'neighborhood' || scenario.startsWith('finish')
+      || scenario.startsWith('landmark')) {
       const setup = doc.getElementById('route-setup');
       if (setup) setup.style.display = 'none';
       const drawWhenReady = () => {
@@ -63,6 +65,38 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           photo.onload = () => { game._landmarkImages.set('theater', photo); game._renderFinish(); };
           photo.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#41603f"/><rect y="200" width="400" height="100" fill="#6d8a70"/><circle cx="200" cy="120" r="70" fill="#8fb08a"/></svg>')}`;
           game._renderFinish();
+          return;
+        }
+        if (scenario.startsWith('landmark')) {
+          const dutch = scenario === 'landmark-panel-dutch';
+          game._landmarkNotice = {
+            id: 'oude-kerk',
+            name: 'Oude Kerk',
+            type: 'church',
+            extractLang: dutch ? 'nl' : 'en',
+            imageUrl: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#9fc1c7"/><rect y="220" width="400" height="80" fill="#759bb5"/><path d="M150 220V90l50-60 50 60v130z" fill="#b95c45"/><rect x="185" y="140" width="30" height="80" fill="#3f2f28"/></svg>')}`,
+            wikipediaUrl: 'https://en.wikipedia.org/wiki/Oude_Kerk,_Amsterdam',
+            longDetail: dutch
+              ? 'De Oude Kerk is het oudste gebouw en de oudste parochiekerk van '
+                + 'Amsterdam, gesticht in 1213 en ingewijd in 1306 door de bisschop van '
+                + 'Utrecht. De kerk staat aan het Oudekerksplein midden op De Wallen, en '
+                + 'is sinds 2015 in gebruik als locatie voor hedendaagse kunst.'
+              : 'The Oude Kerk is Amsterdam\'s oldest building and oldest parish church, '
+                + 'founded in 1213 and consecrated in 1306 by the bishop of Utrecht. It '
+                + 'stands on the Oudekerksplein in the middle of De Wallen, and since 2015 '
+                + 'has doubled as a venue for contemporary art. Its wooden vaulted ceiling '
+                + 'is the largest medieval wooden vault in Europe, and Rembrandt\'s wife '
+                + 'Saskia van Uylenburgh is buried under one of its floor slabs.',
+          };
+          game._landmarkNoticeAlpha = 1;
+          game.currentNeighborhood = 'De Wallen';
+          const paint = new Image();
+          paint.onload = () => {
+            game._landmarkImages.set('oude-kerk', paint);
+            game._renderLandmarkNotice();
+            if (scenario !== 'landmark-card') game._expandLandmarkNotice();
+          };
+          paint.src = game._landmarkNotice.imageUrl;
           return;
         }
         if (scenario === 'hud') {
@@ -114,3 +148,14 @@ export const LiveHud: Story = { args: { scenario: 'hud' } };
 export const FinishCard: Story = { args: { scenario: 'finish' } };
 export const FinishCardCalmMode: Story = { args: { scenario: 'finish-calm' } };
 export const NeighborhoodPhotoCard: Story = { args: { scenario: 'neighborhood' } };
+export const LandmarkCard: Story = { args: { scenario: 'landmark-card' } };
+export const LandmarkPanel: Story = { args: { scenario: 'landmark-panel' } };
+export const LandmarkPanelUntranslated: Story = { args: { scenario: 'landmark-panel-dutch' } };
+export const LandmarkPanelMobile: Story = {
+  args: { scenario: 'landmark-panel' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
+export const LandmarkCardMobile: Story = {
+  args: { scenario: 'landmark-card' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
