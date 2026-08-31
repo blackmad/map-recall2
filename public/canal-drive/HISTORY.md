@@ -6,6 +6,53 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The landmark card expands into a readable panel.**
+  `measureLandmarkCard` cuts the body to two lines, or four with a photo, so
+  the driving corridor stays visible — which is the right call for a card that
+  appears while you are moving, and the wrong one when you actually want to
+  read it. Clicking the card did nothing useful before: the click fell through
+  the card to `_inspectBuildingAt`, which usually found nothing under it and so
+  read as the card being dismissed.
+
+  The card now records where it was drawn (`_landmarkCardBounds`, recomputed
+  every frame and nulled the moment the card is not on screen, so a stale
+  rectangle never swallows clicks over open map), the canvas `pointerup`
+  handler claims a click inside it, and `_expandLandmarkNotice` fills a new
+  `#landmark-panel` with the whole extract. It is a `.utility-panel` like help
+  and settings, which is what makes it pause the controls and close on Esc for
+  free, and it gives the Wikipedia link a real anchor rather than the `W` key
+  that only a keyboard player could find.
+
+  Two smaller decisions worth keeping. The card grows a green `+ MORE` badge,
+  but only when the body was actually cut — a canvas card has no other way to
+  say it can be clicked, and advertising a panel that holds nothing new would
+  be a lie; `measureLandmarkCard` now returns `truncated` so that stays a
+  measured fact rather than a guess. And the panel spells out `NL — NOT
+  TRANSLATED YET` where the card shows a bare `NL` chip, because in the
+  expanded view there is room to say why the text is Dutch.
+
+  On testing: Chromium's iPhone emulation gives this page a 613×1044 layout
+  viewport inside a 390×664 device viewport, so Playwright's input cannot reach
+  a fixed overlay's lower half and canvas coordinates do not map to tappable
+  points. Narrow-viewport coverage is done by resizing the desktop project
+  instead, which is a true 390-wide layout. Worth knowing before writing
+  another mobile spec against an overlay.
+
+- **One canal is drawn as one line again, and the café directory is thinned.**
+  A named waterway is stored as several OSM ways — Grimburgwal is one feature
+  carrying three, laid exactly end to end — and each was handed to MapLibre as
+  its own round-capped LineString, so the highlight showed seams and read as
+  three canals. The old comment was right that concatenating fragments draws a
+  giant diagonal chord across the map, so `stitchOverlayPaths` joins only
+  fragments whose endpoints actually meet, within a metre of slack for the
+  rounding two ways store the same node with; fragments that genuinely do not
+  touch still come back as separate lines. Separately, the extract carries 1944
+  named food venues and handed all of them to the map, so 78 competed for the
+  Grimburgwal viewport and MapLibre drew whichever dozen won its collision
+  pass — an arbitrary set the rider cannot orient by. `thinOrientationPois`
+  keeps the best-scoring cue per 260 m of ground, which leaves eight on that
+  screen. Albert Heijn is exempt: it is wayfinding, not decoration.
+
 - **The two games are two sites now, not two entry points on one.** Canal
   Recall and Map Quest were one GitHub Pages deploy under `/map-recall2/`, which
   caps at a single custom domain and cannot tell hosts apart. They are now two
