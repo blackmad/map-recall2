@@ -186,6 +186,14 @@ person accepts or corrects it. Panorama roof labels are accepted only when the
 covering is visible; flat or hidden roofs remain unknown and use aerial/3DBAG
 evidence instead.
 
+Production ordering is inside-out. The current priority tier is the area inside
+the A10, derived reproducibly from OSM route relation 165334; candidates within
+that polygon are ordered by distance from Dam and then stable building ID.
+Large BAG, panorama and image assets remain in the local cache. Lightweight
+summaries, the boundary and accepted-for-now machine annotations are published
+periodically under `public/data/building-enrichment/amsterdam` so progress is
+reviewable without committing hundreds of megabytes of source imagery.
+
 ## Recommended next run
 
 Before training anything, repair the sampler and review 200 stratified roofs.

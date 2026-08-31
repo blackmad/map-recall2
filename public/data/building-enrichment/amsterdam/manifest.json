@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "publishedAt": "2026-08-31T14:20:50.818Z",
+  "publishedAt": "2026-08-31T14:29:01.853Z",
   "status": "machine-annotations-accepted-for-now",
   "priorityRegion": "inside-a10",
   "artifacts": [
@@ -12,8 +12,8 @@
   "counts": {
     "buildings": 198271,
     "insideA10Buildings": 113722,
-    "observations": 152,
-    "modelLabels": 152,
+    "observations": 190,
+    "modelLabels": 190,
     "humanLabels": 0
   }
 }
