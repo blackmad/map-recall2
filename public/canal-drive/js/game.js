@@ -131,6 +131,8 @@ class Game {
     this._liveRouteIndex = -1;
     this._rerouteTimer = 0;
     this._plannedRouteLengthPx = 0;
+    this._routeLearningPlan = null;
+    this._routeMastery = {};
     this.quizPromptKind = 'route';
     // Keyed per crossing, not per bridge: one OSM feature named "Zuiderzeeweg"
     // is four separate bridges over three different waters.

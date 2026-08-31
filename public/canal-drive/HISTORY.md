@@ -6,6 +6,23 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Routes now prefer useful unfamiliar streets, within a hard detour cap.**
+  The spaced-repetition store collapses its place-local street/canal reviews
+  into a conservative per-city, per-name mastery prior: one success is still
+  mostly new, three current successes are mastered, overdue knowledge is
+  weakened rather than forgotten, and landmarks or another city never affect
+  the route. Dijkstra adds at most 18% to a fully mastered edge. The ordinary
+  shortest route is always computed too, and the learning route is discarded
+  if its actual geometric length is more than 12% longer, so known streets can
+  never become walls or send the player on an unbounded lesson.
+
+  The destination HUD shows the expected percentage of physical, named-road
+  distance below 50% mastery. A correct answer on one of those new streets gets
+  a bounded 1.15× bonus whose feedback says exactly why; calm mode receives the
+  same routing benefit and novelty readout without multiplier chatter. The
+  policy is typed and tested independently of the browser, including the
+  accept/reject boundary, city filtering, overdue reviews, and calm scoring.
+
 - **Road-network decisions live in typed, tested modules.**
   `road-network.js` had accumulated three versions of routing: its original
   inline graph and Dijkstra, an optional typed implementation, and fallback
