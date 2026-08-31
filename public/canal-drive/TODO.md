@@ -134,29 +134,36 @@ will be interrupted; each step must be worth shipping alone.
    be joined to government geometry by identity (see `HISTORY.md`). What is
    left of this step is item 8a: the appearance table itself, BAG-keyed,
    quantised and trustworthy. Roof colour extraction is not in this lane.
-2. **Wire the renderer to the staged city, then publish it.** The data is
-   built and measured: 336,784 panden at AHN heights, merged with the
-   hand-mapped OSM parts one winner per building, cut into 382 z14 tiles at
-   15 MB gzipped for the whole city and a 2.4 MB worst-case 3x3 block. It sits
-   in `public/data/extracts/amsterdam/staging/` and **nothing renders it yet**.
-   Remaining, in order:
-   - a viewport-driven loader for `building-tiles/14/{x}/{y}.geojson`, loading
-     `tilesCovering(bounds, 14, 1)` — the one-tile margin is not optional,
-     because features are placed by centroid and a building near an edge has
-     geometry outside its own tile;
-   - point `osm-colored-buildings` and `osm-colored-building-roofs` at the
-     merged source and delete `building-3d` and the height-offset stack. The
-     offsets exist only because three layers describe one building; with one
-     source they are dead weight, and `fill-extrusion-base`/`minHeight` carries
-     the stacked parts properly;
-   - picking returns a `BuildingHit` keyed on `id` (BAG id, or OSM id at tier
-     4) for both tiers;
-   - check desktop and phone, and add Storybook states for the new layer;
-   - then publish staging into the versioned extract, which is 15 MB of
-     generated data and wants a deliberate decision, not a side effect.
-   `test:lod1-city` already pins completeness, uniqueness, measured heights and
-   the Waag standing in its hand-mapped parts; `test:osm-buildings` still pins
-   the source extract. Both must stay green through the runtime change.
+2. **Publish the complete city — one decision, then it is live.** The data and
+   the renderer are both done and verified against the staged tiles: 336,784
+   BAG-keyed buildings at AHN-measured heights, merged with the hand-mapped OSM
+   parts one winner per building, streamed as 382 z14 tiles. The map already
+   swaps to it, hides the basemap's `building-3d`, keys picking on the BAG id,
+   and falls back to today's source when the tiles are absent — which is the
+   current state. `npm run publish:lod1-city` reports what it would write and
+   refuses to write without `--confirm`.
+
+   **The open question is where the bytes live, and it is yours to answer.**
+   111 MB raw across 382 files, 15 MB gzipped over the wire. The largest file
+   tracked today is `streets-routing.json` at 10 MB, so committing this is
+   roughly 5x the repository's entire tracked data. Options, best first:
+   - commit gzipped tiles and serve them with `Content-Encoding: gzip` — 15 MB
+     in git rather than 111 MB, but needs a header from `server.ts` and from
+     Firebase Hosting, so it is a deploy change as well as a data one;
+   - commit the raw tiles, which is simplest and matches how every other
+     extract is stored;
+   - build tiles at deploy time from the 374 MB CityJSON cache, which keeps the
+     repository small and makes CI slow and dependent on data.3dbag.nl.
+
+   Once published, `tests/e2e/complete-city.spec.ts` stops skipping and starts
+   exercising the whole path on desktop and iPhone.
+
+   Still open after that, and none of it blocking: roof colour is codex's lane,
+   so most of the city currently takes the theme's height ramp rather than a
+   measured colour; tier-4 OSM structures outside the fetched area carry
+   `bagConsulted: false` and could be dropped; and the working set reaches 19
+   tiles and ~66,000 features on a wide desktop viewport, which is worth
+   watching on a real phone before calling the budget settled.
 3. **Rijksmuseum proof.** Fetch a tightly clipped, pinned 3DBAG LoD2.2 source
    around the Rijksmuseum and export an owned glTF. Confirm that the result
    preserves building parts, semantic roof/wall surfaces, the courtyard and the
