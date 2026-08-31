@@ -14,11 +14,16 @@ observations become a coherent, performant city renderer.
 
 ## Decision
 
-Build an offline Amsterdam building compiler that joins BAG/3DBAG geometry,
-OSM semantics, measured PDOK roof appearance and reviewed panorama façade
-appearance into independently cacheable 3D tiles. Render those tiles through
-one MapLibre custom 3D layer, with ordinary MapLibre extrusions as a loading and
-failure fallback.
+Converge on **one building representation per building, and one identity for
+it**: BAG `pand_id`, carrying appearance resolved from OSM tags, measured PDOK
+imagery and review, rendered as a complete LoD1 extrusion city that detailed
+geometry replaces building-by-building where it exists.
+
+The end state is an offline compiler joining BAG/3DBAG geometry, OSM semantics
+and measured appearance into independently cacheable 3D tiles, rendered through
+one MapLibre custom 3D layer. The compiler is the *last* step, not the first:
+the complete LoD1 city with measured colours is most of the visible win, needs
+no custom renderer, and is also the fallback the detailed path requires.
 
 Do not continue with the current arrangement of three overlapping geometries:
 
@@ -48,12 +53,13 @@ measured appearance, while the appearance path uses the least capable geometry.
 The replacement makes geometry and appearance one asset instead of two
 competing layers.
 
-**The dominant cause is coverage, not fidelity.** Amsterdam has on the order of
-200,000 BAG panden; the appearance extract describes 10,578 of them, and 5,778
-of those carry a measurement. Even a perfect mesh pipeline applied to today's
-input would leave most of the city neutral. So completeness is worth more than
-per-surface realism, it is far cheaper, and the migration plan below buys it
-first.
+**The dominant cause is coverage, not fidelity.** The appearance extract
+describes 10,578 buildings and 5,778 of those carry a measurement, against a
+municipality holding BAG panden in the low hundreds of thousands — count it
+exactly in Phase 0b, because the ratio is what justifies the ordering below.
+Even a perfect mesh pipeline applied to today's input would leave most of the
+city neutral. So completeness is worth more than per-surface realism, it is far
+cheaper, and the migration plan buys it first.
 
 ## Goals
 
@@ -125,6 +131,50 @@ where a building genuinely needs them, but they must record the geometry
 version they were made against and be re-reviewed, not carried forward blindly,
 when that version changes.
 
+### Mixed fidelity is the normal state, not a transitional one
+
+The city will always render at several fidelities at once, and that is fine as
+long as one rule holds: **fidelity varies per building; ownership never does.**
+Two representations of one building is the bug. Two neighbours at different
+fidelity is the design.
+
+Geometry is chosen per building from a ladder, best available wins, and the
+choice is recorded:
+
+1. 3DBAG LoD2.2 semantic mesh, where reconstruction exists and passes quality;
+2. 3DBAG LoD1.2/1.3 extrusion, for panden without an accepted LoD2.2;
+3. OSM footprint with an OSM height, for structures BAG does not hold at all —
+   canopies, ruins, some building parts;
+4. OSM footprint with an *estimated* height, which is where nearly the whole
+   city sits today: `build-osm-building-appearance.ts` takes the `height` tag,
+   else `levels * 3`, else a flat 9 m.
+
+That last tier is worth naming plainly, because it changes what Phase 1 is
+worth. A large part of the current skyline is not measured but guessed, and
+replacing it with AHN-derived 3DBAG heights is a fidelity upgrade in its own
+right — independent of colour, and visible from every camera angle.
+
+Appearance is mixed too, and deliberately: the precedence function above will
+resolve one roof from a measurement and its neighbour from an age prior. Every
+surface records which tier it got, so a screenshot can always be traced back to
+whether the game measured something or guessed it.
+
+#### Two rules that keep the seams from showing
+
+**Promote terraced rows as a unit.** Amsterdam's canal houses share party walls.
+A LoD2.2 house standing next to a LoD1 neighbour will show a step or a gap along
+the shared wall, because the mesh's eave height and the extrusion's flat height
+will not agree. Detailed geometry must therefore be selected by connected
+building group, not by individual pand — a whole row is promoted or none of it
+is. This is the strongest constraint the Dutch building typology puts on tile
+design, and it is easier to honour in the compiler than to repair in the shader.
+
+**Match colour across the seam before matching geometry.** A LoD1 neighbour with
+the same measured roof colour reads as part of the row; the same neighbour in
+neutral gray reads as missing. Colour continuity does more for coherence than
+geometric continuity does, which is another reason complete appearance coverage
+comes before mesh fidelity.
+
 ### Geometry outside the Netherlands
 
 Use OSM building parts and OSM2World or another pinned procedural converter as
@@ -182,7 +232,7 @@ build artifact for audits and future regeneration.
 game's camera is a chase camera at street level moving at cycling speed. Brick
 course scale is legible for perhaps 10–30 m and invisible past that, while
 silhouette, height and roof colour carry recognition at every distance — and the
-product principle is that geographic learning outranks spectacle. So Phase 2's
+product principle is that geographic learning outranks spectacle. So Phase 3's
 first output is the same block rendered twice, quantized flat colour against
 textured material, judged on a real driving route. The taxonomy and atlas below
 are the plan *if* that comparison justifies them; a negative result is a good
@@ -295,6 +345,26 @@ The root manifest records:
 Never overwrite an existing version in place. A release switches one small
 city manifest after all tiles have uploaded successfully.
 
+## Where the compiler runs
+
+It is **not** a stage of `refresh-city-extract.sh`. That script builds
+everything into a temporary directory and publishes only after every stage
+succeeds, which is right for a pipeline measured in minutes and wrong for one
+that compiles, LODs and compresses ~200,000 buildings. Coupling them would make
+a routine street refresh wait on a texture-compression run, and make a mesh
+failure block a bridge fix.
+
+The building compiler is a separate versioned asset pipeline, run deliberately,
+keyed on pinned source vintages, publishing into its own versioned directory
+that a small manifest switch points at. It shares the extract pipeline's rules —
+raw geometry until publication, staging then publish, never overwrite a version
+in place — and consumes the extract's outputs, but has its own cadence. See
+[`EXTRACT_PIPELINE.md`](EXTRACT_PIPELINE.md) for the rules it inherits.
+
+Cache aggressively at every stage. A full rebuild should be measured and stated
+in the manifest; if it cannot be resumed after a failure, it is not yet a build
+system.
+
 ## Runtime architecture
 
 ### One custom layer
@@ -320,13 +390,15 @@ logic. Those are compiler concerns.
 
 ### Fallback ownership
 
-Fallback is complete OpenFreeMap/OSM extrusion coverage, not a second permanent
-visual layer. Ownership changes at tile granularity initially:
+Fallback is our own complete LoD1 extrusion coverage, not a second permanent
+visual layer and not the basemap's. Ownership moves per building, driven by tile
+state:
 
 ```text
 manifest unavailable       → fallback visible
 tile requested/loading     → fallback visible
-tile decoded and committed → detailed tile visible, matching fallback hidden
+tile decoded and committed → detailed tile visible, its buildings hidden in the
+                             fallback source by `buildingId`
 tile failed                → fallback remains visible
 tile evicted               → fallback restored before detailed tile removal
 ```
@@ -367,7 +439,7 @@ certain input here: it needs an imagery licence review, a spatial join to
 visible wall planes, a classifier and human review, to answer a question whose
 answer in central Amsterdam is "brick" with high prior probability. A BAG
 construction-year and use prior gets most of that for free with no licensing
-exposure, and belongs in Phase 1 as an `inferred` value. Do not start the
+exposure, and belongs in Phase 0b as an `inferred` value. Do not start the
 panorama pipeline until flat/textured comparison has shown that wall material
 changes what a player recognises.
 
@@ -390,12 +462,24 @@ Initial gates for the Rijksmuseum and one residential-block pilots:
 - at most four concurrent tile downloads and two decode jobs;
 - no more than 50 MB detailed-building GPU memory inside the active radius on
   the mobile test target;
-- median custom-layer CPU update below 2 ms and GPU contribution below 4 ms at
-  the standard chase camera;
-- no sustained frame-rate loss greater than 10% versus fallback extrusions;
+- median custom-layer CPU update below 2 ms at the standard chase camera;
+- no sustained frame-rate loss greater than 10% versus fallback extrusions,
+  measured as frame-time delta over a fixed driving route on the mobile target;
 - no single ordinary spatial tile above 2 MB compressed; exceptional landmark
   tiles must be identified and independently cacheable;
 - visible fallback within the same frame after tile failure or context loss.
+
+GPU cost is deliberately expressed only as that frame-time delta. A separate
+"GPU contribution under N ms" gate needs `EXT_disjoint_timer_query_webgl2`,
+which is missing or clamped on much of the mobile browser matrix; a gate that
+cannot be measured on the device it protects is worse than the one gate that
+can.
+
+One existing defect belongs in the same budget: `detailed-buildings-source.js`
+calls `map.triggerRepaint()` unconditionally at the end of every `render`, which
+pins the map at continuous repaint whenever detailed buildings are enabled, idle
+or not. The custom layer must request repaint only while tiles are loading,
+animating or the camera is moving.
 
 These are starting constraints, not promises. Record device, viewport, route,
 camera and browser with every benchmark.
@@ -406,13 +490,25 @@ camera and browser with every benchmark.
 
 - Every published Dutch feature has one canonical BAG ID.
 - No duplicate surface ownership or duplicate building geometry within a LOD.
+- No connected building group is split across geometry sources: every pand
+  sharing a party wall with a promoted building is promoted with it.
 - Geometry is valid and semantic roof/wall counts are plausible.
 - Every material/texture has complete source and license metadata.
 - Every non-fallback appearance has source, confidence and observation/model
   version.
-- Coverage totals reconcile from source input through published tiles.
+- Coverage totals reconcile from source input through published tiles, with
+  BAG-only panden and OSM-only structures (canopies, ruins, unmatched parts)
+  counted explicitly rather than folded into a single total.
 - A failed join cannot silently transfer one building's appearance to a
   neighbour.
+- **No building identity reaches a spaced-repetition review key.** Review keys
+  are the feature's name plus the place it was answered, deliberately, so that
+  extract regeneration cannot churn player progress. `buildingId` is a rendering
+  and picking key only; a 3DBAG vintage bump must be invisible to recall state.
+- Every source whose licence requires it is named in the map's visible
+  attribution control — 3DBAG and PDOK (CC BY), the panorama API if used, and
+  each texture asset's required credit. The manifest recording attribution is
+  not the same as a player seeing it.
 
 ### Visual checks
 
@@ -420,6 +516,8 @@ Maintain fixed desktop and mobile camera fixtures for:
 
 - Rijksmuseum courtyard and towers;
 - canal-house rows with sloped roofs;
+- a terraced row deliberately split across the fidelity boundary, to prove the
+  party-wall seam is absent because the row was promoted as a unit;
 - mixed modern glass/concrete blocks;
 - large flat industrial roofs;
 - green and solar-covered roofs;
@@ -440,30 +538,79 @@ Do not use renderer screenshots as the sole truth oracle.
 
 ## Migration plan
 
-### Phase 0 — make existing observations trustworthy
+The ordering rule is **completeness before fidelity**: every phase that makes
+more of the city look like itself comes before any phase that makes a few
+buildings look better. Each phase must be shippable and worth shipping alone,
+because this is item 10 on a board whose P1 tier is the learning model — the
+work will be interrupted, and it must be interrupted at a good state.
+
+### Phase 0 — answer the two questions that change the plan
+
+**0a. Does the hosted 3DBAG tileset carry BAG IDs per feature?** One afternoon,
+and it reshapes everything after it. `detailed-buildings-source.js` already
+reads `EXT_mesh_features` for highlighting; the question is whether
+`EXT_structural_metadata` on the same tiles resolves a feature to a `pand_id`.
+If it does, measured appearance can be joined onto government geometry at
+runtime with no compiler at all, and that becomes the shipping configuration
+for as long as it holds up — the owned-tile compiler is then an optimisation to
+be justified by measurement, not a prerequisite. If it does not, the compiler
+must consume CityJSON and Phase 2 gets materially larger. Do not plan past this.
+
+**0b. Make existing observations trustworthy.**
 
 - Expand the roof input from appearance-tagged OSM buildings to complete BAG/
   3DBAG coverage.
 - Sample actual roof planes from a pinned PDOK vintage.
 - Fix provenance, multipolygons, holes and tile-boundary sampling.
 - Quantize renderer colours while preserving raw observations.
+- Add the BAG construction-year/use prior as an explicit `inferred` value.
 - Produce a reviewed 200-roof accuracy set.
 
 Exit: a versioned BAG-keyed appearance table, independent of the current
 GeoJSON renderer.
 
-### Phase 1 — Rijksmuseum vertical slice
+### Phase 1 — the complete LoD1 city, and one fallback
+
+This is the largest visible improvement in the whole plan and it needs no new
+renderer. Publish a complete BAG-keyed LoD1 building source for Amsterdam —
+every pand, its footprint, its 3DBAG height, its measured or inferred roof
+colour — on the spatial tiles that detailed geometry will later use. Render it
+with ordinary MapLibre fill-extrusions and **remove `building-3d`,
+`osm-colored-buildings` and `osm-colored-building-roofs` from the style**, along
+with the height-offset stack that currently keeps three coplanar extrusions from
+z-fighting.
+
+Two things get better here at once, and the second is easy to overlook: heights
+stop being guessed. Today's extrusions use the OSM `height` tag where it exists
+and `levels * 3` or a flat 9 m where it does not, so much of the skyline is
+invented. AHN-derived 3DBAG heights replace that everywhere, which is visible
+from every camera angle and does not depend on the colour work landing.
+
+If Phase 0a succeeded, the *shipping* configuration at the end of this phase can
+already be a mix: our complete LoD1 city underneath, the existing hosted 3DBAG
+LoD2.2 meshes on top wherever they have loaded, recoloured from our appearance
+table and handing off per building. That is high-quality existing geometry plus
+our own measurements, with no compiler written yet — and it is a legitimate
+place to stop for a long time.
+
+Exit: the whole city is coloured and measured rather than a small fraction of
+it; one building source, one identity; picking returns a `BuildingHit` from the
+fallback; the z-fighting workaround is deleted rather than tuned. Detailed
+geometry now has exactly one thing to replace, per building group, on known tile
+boundaries.
+
+### Phase 2 — Rijksmuseum vertical slice
 
 - Fetch one pinned 3DBAG LoD2.2 building/part set.
 - Compile roof and wall semantics into a local GLB with feature metadata.
 - Apply measured roof colours and conservative wall materials.
-- Render it in MapLibre, suppress only its fallback footprint and preserve
-  picking/highlighting.
+- Render it in MapLibre, hide only that building's Phase 1 LoD1 feature by
+  `buildingId`, and preserve picking/highlighting.
 
 Exit: recognizable silhouette/courtyard, no duplicate geometry, recorded bytes,
 decode time, GPU memory and frame cost.
 
-### Phase 2 — representative residential tile
+### Phase 3 — representative residential tile
 
 - Compile one canal-house block with shared texture atlas and metre-scaled UVs.
 - Add panorama-derived reviewed façade classifications.
@@ -472,7 +619,7 @@ decode time, GPU memory and frame cost.
 Exit: the block looks materially richer than flat extrusion without navigation
 occlusion, shimmer or unacceptable frame cost.
 
-### Phase 3 — spatial streaming pilot
+### Phase 4 — spatial streaming pilot
 
 - Generate a multi-tile central Amsterdam corridor.
 - Add deterministic LODs, manifest, content hashes and cache policy.
@@ -481,17 +628,18 @@ occlusion, shimmer or unacceptable frame cost.
 Exit: no tile-edge artifacts or sustained performance regression on the mobile
 target.
 
-### Phase 4 — Amsterdam rollout
+### Phase 5 — Amsterdam rollout
 
 - Generate full city coverage with geometry/appearance audit reports.
 - Publish versioned assets and switch the runtime manifest.
 - Remove the hosted uniform 3DBAG path.
-- Retain the current GeoJSON colour overlay only until the new complete LoD1
-  fallback carries the same information; then delete its duplicate geometry.
 
-Exit: one renderer, one identity system and one fallback system.
+Exit: one renderer, one identity system and one fallback system. The
+`buildings-colored.geojson` overlay and its duplicate geometry are already gone
+at the end of Phase 1; what survives from it is the PDOK measurement, re-keyed
+to BAG, as a compiler input.
 
-### Phase 5 — second-city contract test
+### Phase 6 — second-city contract test
 
 - Run Utrecht through the same Dutch compiler.
 - Implement the OSM/procedural geometry adapter on a city without 3DBAG-quality
@@ -507,11 +655,19 @@ slabs and overlapping faces require fragile offsets to avoid z-fighting.
 
 ### Stream hosted 3DBAG and recolour it only at runtime
 
-Useful for the Phase 1 spike, but insufficient as the final pipeline. Hosted
-tiles are uniformly materialled, version control is external, texture UVs are
-not tailored to our atlas and joining large per-building appearance tables in
-the browser adds complexity and bandwidth. Own compiled tiles provide
-reproducibility and offline availability.
+**Not rejected — deferred to measurement, and possibly the answer.** If Phase 0a
+shows the hosted tiles resolve features to `pand_id`, this gets real government
+geometry wearing measured colours for a fraction of the compiler's cost, and
+should ship while the rest of the plan is argued about.
+
+Its real limits are worth stating honestly rather than assuming: version control
+is external, so a 3DBAG republish can change what players see without a release;
+the tiles are uniformly materialled, so textures are impossible; UVs are not
+ours; and the appearance join costs browser bandwidth and memory that grow with
+the city. Own compiled tiles buy reproducibility, offline availability and
+textures. Promote to the compiler when one of those limits actually bites —
+external version drift and the texture comparison in Phase 3 are the likely
+triggers — not on principle.
 
 ### OSM2World as Amsterdam's primary geometry
 
@@ -532,17 +688,28 @@ fallback, useful LOD selection and manageable regeneration.
 
 ## Open questions
 
-- Does current 3DBAG feature metadata expose BAG IDs at the exact roof/wall
-  granularity needed, or should the compiler consume CityJSON instead of hosted
-  3D Tiles?
+Blocking, and answered in Phase 0a:
+
+- Does current 3DBAG feature metadata expose BAG IDs at the granularity needed,
+  or should the compiler consume CityJSON instead of hosted 3D Tiles?
+
+Answerable later, and none of them block Phase 1:
+
 - Which tile grid and geometric-error schedule best match the game's camera?
-- Can a MapLibre coverage mask hide fallback buildings cleanly enough for the
-  pilot, or should the complete custom LoD1 fallback be built immediately?
-- How stable can `surfaceId` remain across 3DBAG releases when roof plane
-  reconstruction changes?
 - Which compressed texture format is supported across the actual browser/device
-  matrix without an expensive fallback atlas?
+  matrix without an expensive fallback atlas — and does Phase 3's comparison
+  even justify textures?
 - Should distinctive landmarks use bespoke authored materials while retaining
   the same geometry/identity contract?
+- How many BAG panden have no usable 3DBAG reconstruction, and does the LoD1
+  fallback height look wrong anywhere it matters?
 
-Resolve these through the two bounded pilots, not by widening the first build.
+Resolved above rather than left open:
+
+- *Coverage mask versus an owned LoD1 fallback.* The mask is rejected; the owned
+  fallback is Phase 1.
+- *`surfaceId` stability across 3DBAG releases.* Assumed unstable. Reviewed
+  overrides key on building plus surface kind so that a vintage bump cannot
+  orphan human work.
+
+Resolve the rest through the bounded pilots, not by widening the first build.
