@@ -29,6 +29,7 @@ class RoadNetwork {
     this.roadIndex = null;
     this.numCheckpoints = 10;
     this._frameCache = new Map();
+    this._routeMastery = {};
 
     this._computeSegmentGeometry();
     this._buildGrid();
@@ -260,17 +261,52 @@ class RoadNetwork {
   // Dijkstra from `startPoint` over the whole graph. `stopAt` short-circuits
   // once that node is settled; omit it to settle everything reachable.
   _shortestPaths(startPoint, stopAt = null) {
-    return GRAPH.shortestRoadPaths(this._routingGraph(), startPoint, { stopAt });
+    return GRAPH.shortestRoadPaths(this._routingGraph(), startPoint, {
+      stopAt, edgeCost: this._learningEdgeCost()
+    });
   }
 
   findRoute(startPoint, finishPoint) {
-    return GRAPH.findRoadRoute(this._routingGraph(), startPoint, finishPoint);
+    return this.planRoute(startPoint, finishPoint)?.path || [];
+  }
+
+  setRouteMastery(mastery) {
+    this._routeMastery = mastery || {};
+  }
+
+  _edgeNames(edge) {
+    return edge.segmentMetadata.map(metadata => metadata && metadata.name).filter(Boolean);
+  }
+
+  _masteryForName(name) {
+    const key = String(name).normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    return this._routeMastery[key] || 0;
+  }
+
+  _learningEdgeCost() {
+    if (!Object.keys(this._routeMastery).length) return undefined;
+    return ({ edge, distance }) => {
+      const familiarity = Math.max(0, ...this._edgeNames(edge).map(name => this._masteryForName(name)));
+      return distance * (1 + 0.18 * familiarity);
+    };
+  }
+
+  planRoute(startPoint, finishPoint) {
+    return GRAPH.planLearningRoadRoute(this._routingGraph(), startPoint, finishPoint, {
+      masteryForName: name => this._masteryForName(name),
+      namesForEdge: edge => this._edgeNames(edge),
+      familiarityPenalty: 0.18,
+      maxDetourRatio: 0.12,
+    });
   }
 
   // One Dijkstra pass, then pick the first candidate that is actually
   // reachable. Candidates should already be ordered by preference.
   findRouteToFirstReachable(startPoint, candidatePoints) {
-    return GRAPH.findRoadRouteToFirstReachable(this._routingGraph(), startPoint, candidatePoints);
+    return GRAPH.findRoadRouteToFirstReachable(
+      this._routingGraph(), startPoint, candidatePoints, this._learningEdgeCost()
+    );
   }
 
   // ---- Internal helpers ----

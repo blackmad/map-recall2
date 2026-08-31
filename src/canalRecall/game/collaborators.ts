@@ -111,7 +111,7 @@ export interface Hud {
     ctx: CanvasRenderingContext2D, routeName: string, neighborhood: string,
     travelMode: string, answerHidden?: boolean,
   ): void;
-  drawDestination(ctx: CanvasRenderingContext2D, name: string, distancePx: number): void;
+  drawDestination(ctx: CanvasRenderingContext2D, name: string, distancePx: number, expectedNovelty?: number | null): void;
   drawFinishDirection(
     ctx: CanvasRenderingContext2D, playerX: number, playerY: number,
     finishX: number, finishY: number, camera: Camera,

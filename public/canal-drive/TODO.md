@@ -20,17 +20,6 @@ belongs here before anything below it.*
 
 ## P1 — The learning model itself
 
-**5. Learning-aware route generation.**
-Feed spaced-repetition mastery into Dijkstra as a small bounded cost on
-well-known streets, so equally sensible routes prefer unfamiliar connections.
-Cap the allowed detour; never make mastered roads effectively impassable. Show
-the route's expected novelty, award a clearly explained multiplier for newly
-encountered streets, and let calm mode take the routing benefit without the
-arcade chatter. `roadGraph.ts` already accepts an injectable novelty cost, so
-the routing half is waiting for a caller.
-*The stated product principle — bounded, explainable learning mechanics — with
-the hard part already built.*
-
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by
 mastery and review state, with a fog-of-war layer over the rest. Derive it from
