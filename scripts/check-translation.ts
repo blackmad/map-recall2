@@ -9,19 +9,42 @@ import {
   cleanTranslatorOutput,
   droppedProperNames,
   MAX_EXTRACT_CHARS,
-  translatorArgs,
+  translatorInvocation,
   trimToSentence,
 } from './lib/translation.ts';
 
 let checks = 0;
 const check = (label: string, run: () => void) => { run(); checks++; void label; };
 
-// --- Both tools are driven the same way ------------------------------------
+// --- Each tool is driven the way that tool actually works -------------------
 check('the language pair is passed the same way to either tool', () => {
-  assert.deepEqual(translatorArgs('translate', 'nl'), ['--from', 'nl', '--to', 'en']);
-  assert.deepEqual(translatorArgs('trn', 'nl'), ['--from', 'nl', '--to', 'en', '--quality', 'high']);
+  assert.deepEqual(translatorInvocation('translate', 'nl', 'Een brug.').args,
+    ['--from', 'nl', '--to', 'en']);
   // A source language other than Dutch is passed through, not assumed away.
-  assert.deepEqual(translatorArgs('translate', 'de'), ['--from', 'de', '--to', 'en']);
+  assert.deepEqual(translatorInvocation('translate', 'de', 'Eine Brücke.').args,
+    ['--from', 'de', '--to', 'en']);
+});
+
+check('translate reads stdin; trn is given the text as an argument', () => {
+  // `translate` reads stdin normally. `trn` 0.2.0 decides whether it has stdin
+  // before a pipe from child_process has anything in it, so under Node the
+  // text has to ride in the argv or the run exits 1.
+  assert.equal(translatorInvocation('translate', 'nl', 'Een brug.').stdin, 'Een brug.');
+  const trn = translatorInvocation('trn', 'nl', 'Een brug.');
+  assert.equal(trn.stdin, null, 'trn must not be handed the text on stdin');
+  assert.deepEqual(trn.args, ['--from', 'nl', '--to', 'en', '--quality', 'high', 'Een brug.']);
+});
+
+check('a lede starting with a dash is not read as an option', () => {
+  // trn 0.2.0 has no `--` end-of-options separator, so the text itself has to
+  // stop the parse. A single leading space does it, and the translator's
+  // output is unaffected.
+  const dashed = translatorInvocation('trn', 'nl', '- een brug uit 1957.');
+  assert.equal(dashed.args[dashed.args.length - 1], ' - een brug uit 1957.');
+  // Text that cannot be mistaken for a flag is passed through untouched.
+  assert.equal(translatorInvocation('trn', 'nl', 'Een brug.').args.at(-1), 'Een brug.');
+  // stdin-driven tools need no such guard.
+  assert.equal(translatorInvocation('translate', 'nl', '- een brug.').stdin, '- een brug.');
 });
 
 // --- stdout is prose, not a transcript -------------------------------------

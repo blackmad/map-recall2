@@ -19,20 +19,42 @@ export type CliTranslator = typeof CLI_TRANSLATORS[number];
  *  lede longer than this is not more information, it is a scroll. */
 export const MAX_EXTRACT_CHARS = 360;
 
+/** How to run a CLI translator: its argv, and the text to write on stdin if
+ *  it is not already carried in the argv. */
+export interface TranslatorInvocation {
+  args: string[];
+  /** Text to write to stdin, or null when the tool takes it as an argument. */
+  stdin: string | null;
+}
+
 /**
- * The argv a CLI translator needs. Both tools read the text on stdin and write
- * the translation to stdout, which is what lets one adapter drive either.
+ * How to hand one lede to one translator.
  *
  * `trn --quality high` routes through Apple Intelligence rather than the fast
  * on-device model. These are encyclopedia ledes about real places, produced
  * once and then committed, so the slower and better setting is the right one.
+ *
+ * The two tools want the text delivered differently, and this is measured, not
+ * assumed. `trn` 0.2.0 decides whether it has stdin at startup, before a pipe
+ * opened by `child_process` has anything in it, and exits 1 with
+ * "missing text: provide stdin or a positional text argument" — so under Node
+ * it only ever works with the text as an argument. `translate` reads stdin
+ * normally, and stdin is the safer channel when it is available, so it keeps it.
+ *
+ * Passing the text as an argument is safe against quoting — `execFile` takes an
+ * argv array and never involves a shell — but not against option parsing: a
+ * lede starting with a dash is read as a flag, and `trn` 0.2.0 does not
+ * understand a `--` end-of-options separator. A single leading space is enough
+ * to stop the parse, and Apple's translator ignores it.
  */
-export function translatorArgs(
+export function translatorInvocation(
   tool: CliTranslator,
   sourceLanguage: string,
-): string[] {
+  text: string,
+): TranslatorInvocation {
   const pair = ['--from', sourceLanguage, '--to', 'en'];
-  return tool === 'trn' ? [...pair, '--quality', 'high'] : pair;
+  if (tool !== 'trn') return { args: pair, stdin: text };
+  return { args: [...pair, '--quality', 'high', text.startsWith('-') ? ` ${text}` : text], stdin: null };
 }
 
 /**
