@@ -49,6 +49,28 @@ recall rather than interrupt every junction.
 
 ## P2 — Weight and reach
 
+**8a. Productionise government-data building appearance enrichment.**
+The current worktree has a working PDOK proof: 5,778 of 10,578 Amsterdam
+appearance-backed buildings have sampled aerial roof colours, backed by 1,316
+cached tiles (78 MB), and the renderer has separate wall and roof surfaces.
+It is not yet reproducible or safe to publish from the refresh pipeline, and
+the remaining source counts are not trustworthy enough to call coverage done.
+
+Make the sampler city-parameterised and staging-only; pin imagery vintages;
+sample BAG/3DBAG LoD2.2 roof planes across all intersecting tiles; record source,
+date, method, confidence and rejection reason; generate a stratified 200-roof
+review sheet; then gate publication on coverage and labelled colour accuracy.
+After that, spike a semantic roof-material classifier with an abstaining
+`unknown` class and map its predictions to individually licensed OSM Texture
+Library assets. Treat façade texture as a separate oblique/street-imagery task:
+nadir satellite images do not observe walls. Use Satellietdataportaal's repeated
+30/50 cm RGB/NIR acquisitions for agreement, vegetation rejection and change
+detection only after its supplier-specific training/derivative terms have been
+recorded. Full status, government source hierarchy, phases and acceptance gates
+are in [`BUILDING_ENRICHMENT.md`](BUILDING_ENRICHMENT.md).
+*This is the measured-material foundation for item 10; finish it before baking
+appearance into detailed meshes.*
+
 **8b. Finish typing the game subsystems.**
 `game-landmarks`, `game-recall` and `game-presentation` are done, and
 `game-route`'s geographic rules are extracted to `routeSelection.ts`. What is

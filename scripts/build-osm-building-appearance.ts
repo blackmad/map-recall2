@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { extractSurfaceColors, materialColors } from './lib/building-colors.ts';
 
 type Geometry = { type: 'Polygon' | 'MultiPolygon'; coordinates: unknown };
 type SourceFeature = { id?: string | number; properties?: Record<string, string | undefined>; geometry?: Geometry | { type: string } };
@@ -9,21 +10,6 @@ const inputFile = process.argv[2];
 const outputFile = process.argv[3] || 'public/data/extracts/amsterdam/buildings-colored.geojson';
 assert.ok(inputFile, 'usage: tsx scripts/build-osm-building-appearance.ts INPUT.geojson [OUTPUT.geojson]');
 
-const namedColors: Record<string, string> = {
-  beige: '#f5f5dc', black: '#222222', blue: '#5a81a0', brown: '#8b5a3c', gray: '#888888', grey: '#888888',
-  green: '#4f7f52', orange: '#d48741', red: '#bd5b52', silver: '#b7b1a6', white: '#eeeeea', yellow: '#d8bd64',
-};
-const materialColors: Record<string, string> = {
-  brick: '#bd8161', glass: '#5a81a0', wood: '#d48741', concrete: '#d3c2b0', stone: '#b4a995',
-  metal: '#b7b1a6', steel: '#b7b1a6', plaster: '#dadbdb', masonry: '#bd8161',
-};
-const normalizeColor = (value?: string): string | undefined => {
-  if (!value) return undefined;
-  const clean = value.trim().toLowerCase();
-  if (/^#[0-9a-f]{6}$/i.test(clean)) return clean;
-  if (/^[0-9a-f]{6}$/i.test(clean)) return `#${clean}`;
-  return namedColors[clean];
-};
 const numeric = (value?: string): number | undefined => {
   const parsed = Number.parseFloat(value || '');
   return Number.isFinite(parsed) ? parsed : undefined;
@@ -40,18 +26,22 @@ const source = JSON.parse(await readFile(inputFile, 'utf8')) as { features: Sour
 const features = source.features.flatMap(feature => {
   if (!feature.geometry || !['Polygon', 'MultiPolygon'].includes(feature.geometry.type)) return [];
   const tags = feature.properties || {};
-  const material = (tags['building:material'] || '').toLowerCase();
-  const roofMaterial = (tags['roof:material'] || '').toLowerCase();
-  const colour = normalizeColor(tags['building:colour'] || tags['building:color']) || materialColors[material];
-  const roofColour = normalizeColor(tags['roof:colour'] || tags['roof:color']) || materialColors[roofMaterial];
-  if (!colour && !roofColour) return [];
+  const { material, roofMaterial, taggedSideColour, taggedRoofColour, sideColour, roofColour } = extractSurfaceColors(tags);
+  if (!sideColour && !roofColour) return [];
   const levels = numeric(tags['building:levels']);
   const height = numeric(tags.height) ?? (levels ? levels * 3 : 9);
   const minHeight = numeric(tags.min_height) ?? 0;
   return [{
     type: 'Feature', id: canonicalOsmId(feature.id),
     properties: {
-      osmId: canonicalOsmId(feature.id), name: tags.name || '', colour: colour || '#d2c9bc', roofColour: roofColour || colour || '#d2c9bc',
+      osmId: canonicalOsmId(feature.id), name: tags.name || '',
+      // `colour` remains as a compatibility alias for the existing renderer
+      // and previously generated extracts. New consumers should use the
+      // surface-specific fields so roofs can never silently become walls.
+      sideColour: sideColour || '#d2c9bc', colour: sideColour || '#d2c9bc',
+      roofColour: roofColour || sideColour || '#d2c9bc',
+      sideColourSource: taggedSideColour ? 'osm' : materialColors[material] ? 'material' : 'fallback',
+      roofColourSource: taggedRoofColour ? 'osm' : materialColors[roofMaterial] ? 'material' : sideColour ? 'side' : 'fallback',
       material, roofMaterial, roofShape: tags['roof:shape'] || '', height, minHeight,
     },
     geometry: feature.geometry,
