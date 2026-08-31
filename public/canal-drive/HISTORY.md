@@ -6,6 +6,21 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **One canal is drawn as one line again, and the café directory is thinned.**
+  A named waterway is stored as several OSM ways — Grimburgwal is one feature
+  carrying three, laid exactly end to end — and each was handed to MapLibre as
+  its own round-capped LineString, so the highlight showed seams and read as
+  three canals. The old comment was right that concatenating fragments draws a
+  giant diagonal chord across the map, so `stitchOverlayPaths` joins only
+  fragments whose endpoints actually meet, within a metre of slack for the
+  rounding two ways store the same node with; fragments that genuinely do not
+  touch still come back as separate lines. Separately, the extract carries 1944
+  named food venues and handed all of them to the map, so 78 competed for the
+  Grimburgwal viewport and MapLibre drew whichever dozen won its collision
+  pass — an arbitrary set the rider cannot orient by. `thinOrientationPois`
+  keeps the best-scoring cue per 260 m of ground, which leaves eight on that
+  screen. Albert Heijn is exempt: it is wayfinding, not decoration.
+
 - **The two games are two sites now, not two entry points on one.** Canal
   Recall and Map Quest were one GitHub Pages deploy under `/map-recall2/`, which
   caps at a single custom domain and cannot tell hosts apart. They are now two
