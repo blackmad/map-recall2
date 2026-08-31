@@ -36,6 +36,7 @@ type HarnessGame = {
   raceTime: number;
   _updateLandmarks: (dt: number) => void;
   showMiniMap: boolean;
+  _renderMenu: () => void;
   routePath: Array<{ x: number; y: number }> | null;
   _neighborhoodNoticeTimer: number;
 };
@@ -242,6 +243,42 @@ test('anonymous building footprints acknowledge the click without inventing a na
 // locator dot has to survive detailed mode.
 // The old minimap showed ~450 m of network, where every part of Amsterdam looks
 // like every other part. This one is framed on the whole city.
+// The returning-player badge referenced an undefined `cx` inside a try/catch,
+// so it threw on every menu frame and silently never drew.
+test('a returning player sees what they have collected', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('canalRecall.exploration.v1', JSON.stringify({
+      learnedWaterways: ['Singel', 'Amstel'], learnedStreets: ['Nes'],
+      visitedNeighborhoods: ['Centrum'], seenLandmarks: ['Dam', 'Beurs'],
+      totalRoutes: 7, totalCorrect: 12, totalAttempts: 20,
+    }));
+  });
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
+
+  const badge = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    game.state = 0; // MENU
+    const drawn: Array<{ text: string; x: number }> = [];
+    const original = game.ctx.fillText.bind(game.ctx);
+    game.ctx.fillText = ((text: string, x: number, y: number) => {
+      drawn.push({ text, x });
+      return original(text, x, y);
+    }) as typeof game.ctx.fillText;
+    try {
+      game._render();
+    } finally {
+      game.ctx.fillText = original;
+    }
+    return drawn.find(entry => entry.text.startsWith('Amsterdam:')) ?? null;
+  });
+  expect(badge?.text, 'the menu tells a returning player what they already know')
+    .toBe('Amsterdam: 3 waterways · 1 hoods · 2 landmarks · 7 routes');
+  // Not just that the call happened: the badge is centred. An undefined x here
+  // is how the original bug looked once its ReferenceError was swallowed.
+  expect(badge?.x).toBe(640);
+});
+
 test('the city overview draws the whole city, not a local scrap', async ({ page }) => {
   await openCarRoute(page);
   const drawn = await page.evaluate(() => {
