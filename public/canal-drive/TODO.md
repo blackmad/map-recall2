@@ -164,6 +164,21 @@ connectivity or the `motorway`/`trunk`/`*_link` classes, and lacks the
 `cityProfile` Utrecht now has. Run it, diff the coverage counts, publish only
 after review.
 
+An attempt is preserved on the **`wip/extract-rebuild`** branch. Its script and
+building-colour work looks sound; its regenerated data is not, and it does not
+pass checks. Two regressions to fix before any of it reaches `main`:
+
+- `streets-routing.json` fell from 29,051 to 15,363 ways and lost
+  Potgieterstraat, so `test:canal-car` fails. Find out why the shared-vertex
+  connectivity filter halves the network — most likely it runs before the
+  vertices are deduplicated, so ways that genuinely meet no longer share a node.
+- `bridges.json` renumbered every bridge id without rebuilding
+  `bridge-crossings.json`, dropping matched bridges from 257/300 to 28/300.
+  Nothing crashed, which is what made it dangerous: 229 bridges silently lost
+  the water beneath them and the water-before-bridge rule stopped applying.
+  The two files are a matched pair keyed on id — rebuild them together.
+  `test:bridge-crossings` now asserts that alignment.
+
 **11c. Give Utrecht real ledes.**
 39 blurbs across the extract are still Dutch and 103 more are Wikidata
 one-liners rather than encyclopedia ledes. Both upgrade in place — every one
