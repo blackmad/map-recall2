@@ -53,16 +53,36 @@ if (!(await stat(sourceFile).catch(() => null))) {
 type Geometry = { type: 'Polygon'; coordinates: Ring[] } | { type: 'MultiPolygon'; coordinates: Ring[][] };
 type Feature = { properties: Record<string, unknown>; geometry: Geometry };
 
-/** What a fill-extrusion actually reads, plus the identity picking needs. */
-const renderProperties = (properties: Record<string, unknown>): Record<string, unknown> => ({
-  id: properties.bagId ?? properties.osmId,
-  tier: properties.tier,
-  height: properties.height,
-  minHeight: properties.minHeight ?? 0,
-  colour: properties.colour ?? null,
-  roofColour: properties.roofColour ?? null,
-  roofShape: properties.roofShape ?? null
-});
+/**
+ * What a fill-extrusion actually reads, plus the identity picking needs.
+ *
+ * Absent values are left out rather than written as null. A paint expression
+ * that reads a missing property falls through to its fallback, while one that
+ * reads an explicit null fails the whole expression and drops every building in
+ * the layer back to the style default — so `['has', 'roofColour']` has to mean
+ * "this building has a roof colour", not "this key exists and is empty". It
+ * also keeps the tiles smaller, since most panden carry no OSM appearance.
+ */
+const renderProperties = (properties: Record<string, unknown>): Record<string, unknown> => {
+  const rendered: Record<string, unknown> = {
+    id: properties.bagId ?? properties.osmId,
+    tier: properties.tier,
+    minHeight: properties.minHeight ?? 0
+  };
+  // A height is written only when it was actually measured as positive. Four
+  // buildings in 344,436 fail that: two 3DBAG never reconstructed, and two
+  // whose reconstructed height rounds to zero. Writing 0 or null for them would
+  // put an unmeasured number in a dataset whose whole claim is that its heights
+  // are measured, and a zero-height extrusion draws nothing anyway. Leaving the
+  // key out lets the layer's documented `coalesce(height, 5)` fallback take
+  // them, which is a guess that is visible as a guess.
+  const height = properties.height;
+  if (typeof height === 'number' && height > 0) rendered.height = height;
+  for (const key of ['colour', 'roofColour', 'roofShape'] as const) {
+    if (properties[key] !== null && properties[key] !== undefined && properties[key] !== '') rendered[key] = properties[key];
+  }
+  return rendered;
+};
 
 await rm(tilesDir, { recursive: true, force: true });
 await mkdir(tilesDir, { recursive: true });
