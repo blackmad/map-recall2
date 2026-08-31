@@ -6,6 +6,74 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The complete LoD1 city is built, staged and measured — 336,784 buildings.**
+  Phase 1's data half. The hosted 3D Tiles carry identity and attributes but no
+  ground polygon, so a flat-topped city needs a footprint source they cannot
+  give. It is 3DBAG's CityJSON, where the footprint is the LoD0 MultiSurface on
+  each `Building`, and the bulk path to it is `tile_index.fgb` — the only
+  published list of the per-tile downloads, with a SHA-256 for each.
+
+  That index turned out to be an adaptive quadtree of *leaves only*: 500 m
+  tiles over the centre, 64 km over open water, levels 3 to 10, and across all
+  8,941 no two overlapping by more than a metre. That property is what makes
+  "take every tile intersecting the box" correct, so `fetch-3dbag-tiles.ts`
+  asserts it instead of assuming it — a future vintage publishing a full tree
+  would duplicate every building rather than fail. 290 tiles, 374 MB, cover
+  drivable Amsterdam; the area comes from `streets-routing.json` so widening
+  where the game can drive cannot leave a rim without buildings.
+
+  **The extrusion height is settled from both ends.** CityJSON publishes
+  `b3_h_dak_70p`, and 3DBAG builds its own LoD1.2 by extruding to exactly that
+  percentile, so it is not an estimate of the official geometry — it is the
+  official geometry's height. The `b3_volume_lod12 / b3_opp_grond` figure
+  recovered earlier from the 3D Tiles metadata, where no percentile is
+  published, differs from it by a median of 4 mm (p05 -0.10 m, p95 +0.04 m).
+  Two independent derivations agreeing that closely is what makes the
+  tiles-only path trustworthy. The ridge is *not* the height: it is missing for
+  every flat roof by definition, and standing a flat top at the ridge of a
+  steep canal house overstates the whole row.
+
+  Result: 336,784 panden, 336,431 at an AHN-measured height, two in the whole
+  city with none. Against 10,578 buildings shipping today whose heights are the
+  OSM tag where it exists and `levels * 3` or a flat 9 m where it does not.
+
+  **The merge keeps one winner per building.** 336,620 measured extrusions,
+  1,163 hand-mapped OSM parts standing in for 164 panden, 6,653 OSM features
+  with no pand under them. That last number was split apart because it was
+  measuring two different things: 2,664 lie outside the area the tiles were
+  fetched for, where BAG was never consulted, and only 3,989 are gaps in the
+  register inside it. Features carry `bagConsulted` so the distinction survives.
+  Unmatched OSM features are 0.1% of features in the centre, 0.5% in the canal
+  ring, 1.5% at the eastern periphery.
+
+  The join is centroid containment either way round, not area intersection: the
+  two sources digitise the same wall from different surveys and disagree by
+  about a metre everywhere, so an intersection test spends its time on slivers.
+  Containment in both directions also handles one OSM outline over several
+  panden and one pand under several parts.
+
+  **What BAG says about the Waag, corrected.** The design doc had it as three
+  panden; it is one — 385 m2, built 1700, extruding to 16.0 m — against
+  fourteen hand-mapped parts at 6 to 26 m. The other two panden a radius search
+  finds are neighbours on the Nieuwmarkt whose footprints do not overlap any
+  Waag part. The trade tier 2 refuses was never fourteen parts for three boxes;
+  it was fourteen for one. The merge suppresses that pand, its composition
+  stands in with its pyramidal roofs intact, and the two neighbours correctly
+  stay measured extrusions.
+
+  **Delivery.** 192 MB cannot be fetched whole the way today's source is. The
+  city is cut into z14 tiles, placed by centroid so no building is drawn twice
+  along a boundary, with properties trimmed to what draws — attributes were 55%
+  of the bytes and footprints only 45%, at 7.8 vertices per building, so the
+  compression worth having was dropping year, party-wall area and RMSE from the
+  wire rather than simplifying outlines. The whole city is 15 MB gzipped;
+  median tile 6 KB, worst 3x3 block 2.4 MB, against the 5.5 MB the game already
+  fetches for a tenth of the city. Zoom was measured, not assumed: z13's worst
+  block is 6.0 MB, z15's is 0.9 MB but needs 25 requests for the same ground.
+
+  Everything is in `public/data/extracts/amsterdam/staging/` and deliberately
+  not published into the versioned extract. The renderer is not wired to it yet.
+
 - **The hosted 3DBAG tiles carry a BAG id, so the join needs no compiler.**
   This was the blocking question in `BUILDING_RENDERER_DESIGN.md`: if the tiles
   the game already streams resolve each feature to a `pand_id`, measured roof

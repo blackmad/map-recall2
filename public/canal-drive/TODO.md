@@ -129,32 +129,34 @@ city look like itself comes before any step that makes a few buildings look
 better. This is a P2 item on a board whose P1 tier is the learning model, so it
 will be interrupted; each step must be worth shipping alone.
 
-1. **Answer two questions first.** (a) Does the hosted 3DBAG tileset resolve a
-   feature to a BAG `pand_id` via `EXT_structural_metadata`? One afternoon, and
-   it decides whether measured colours can be joined onto government geometry at
-   runtime with no compiler at all. (b) Finish item 8a, so the appearance table
-   is BAG-keyed, quantised and trustworthy.
-2. **Ship the complete LoD1 city.** The city is gray because only 10,578
-   buildings have appearance at all, against a BAG pand count in the low
-   hundreds of thousands — coverage, not fidelity. Count it exactly in step 1.
-   Publish a complete BAG-keyed footprint + 3DBAG height + measured roof colour
-   source on the tile grid detailed geometry will later use, render it with
-   ordinary fill-extrusions. Delete `building-3d` and the height-offset stack
-   that keeps three coplanar extrusions from z-fighting, but **absorb**
-   `osm-colored-buildings` and `osm-colored-building-roofs` rather than deleting
-   them: they carry hand-mapped `building:part` geometry that outranks a generic
-   extrusion. BAG holds the Waag as one pand against thirteen mapped parts at
-   6/15/17/20/26 m, so keying geometry on BAG alone flattens it to one ~14 m
-   box. 1,448 features city-wide are stacked parts and 4,868 carry a roof shape,
-   concentrated on exactly the landmarks the game quizzes. `test:osm-buildings`
-   pins the Waag against this. Heights stop being guessed in the same
-   change: `build-osm-building-appearance.ts:32` currently falls back to
-   `levels * 3` or a flat 9 m, so much of the skyline is invented, and AHN-derived
-   3DBAG heights replace it everywhere. Largest visible win in the whole item,
-   no new renderer, and it is the fallback every later step needs. If step 1(a)
-   succeeded, this can ship as our LoD1 city underneath the existing hosted
-   LoD2.2 meshes, recoloured — high-quality existing geometry plus our own
-   measurements, no compiler written yet.
+1. **Finish the BAG-keyed appearance table.** Question 1(a) is answered — the
+   hosted tiles carry a unique `NL.IMBAG.Pand.*` per feature, so appearance can
+   be joined to government geometry by identity (see `HISTORY.md`). What is
+   left of this step is item 8a: the appearance table itself, BAG-keyed,
+   quantised and trustworthy. Roof colour extraction is not in this lane.
+2. **Wire the renderer to the staged city, then publish it.** The data is
+   built and measured: 336,784 panden at AHN heights, merged with the
+   hand-mapped OSM parts one winner per building, cut into 382 z14 tiles at
+   15 MB gzipped for the whole city and a 2.4 MB worst-case 3x3 block. It sits
+   in `public/data/extracts/amsterdam/staging/` and **nothing renders it yet**.
+   Remaining, in order:
+   - a viewport-driven loader for `building-tiles/14/{x}/{y}.geojson`, loading
+     `tilesCovering(bounds, 14, 1)` — the one-tile margin is not optional,
+     because features are placed by centroid and a building near an edge has
+     geometry outside its own tile;
+   - point `osm-colored-buildings` and `osm-colored-building-roofs` at the
+     merged source and delete `building-3d` and the height-offset stack. The
+     offsets exist only because three layers describe one building; with one
+     source they are dead weight, and `fill-extrusion-base`/`minHeight` carries
+     the stacked parts properly;
+   - picking returns a `BuildingHit` keyed on `id` (BAG id, or OSM id at tier
+     4) for both tiers;
+   - check desktop and phone, and add Storybook states for the new layer;
+   - then publish staging into the versioned extract, which is 15 MB of
+     generated data and wants a deliberate decision, not a side effect.
+   `test:lod1-city` already pins completeness, uniqueness, measured heights and
+   the Waag standing in its hand-mapped parts; `test:osm-buildings` still pins
+   the source extract. Both must stay green through the runtime change.
 3. **Rijksmuseum proof.** Fetch a tightly clipped, pinned 3DBAG LoD2.2 source
    around the Rijksmuseum and export an owned glTF. Confirm that the result
    preserves building parts, semantic roof/wall surfaces, the courtyard and the
