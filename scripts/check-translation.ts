@@ -168,7 +168,6 @@ check('the check is case-insensitive, so casing alone is not a failure', () => {
   const files = ['water.json', 'streets.json', 'bridges.json', 'squares.json', 'parks.json', 'landmarks.json', 'all.json'];
   const seen = new Set<string>();
   let pending = 0;
-  let guarded = 0;
   for (const file of files) {
     const rows = JSON.parse(await readFile(`public/data/extracts/amsterdam/${file}`, 'utf8')) as
       { name: string; wikipediaExtract?: string; wikipediaExtractLang?: string; wikipediaExtractOriginal?: string }[];
@@ -180,18 +179,35 @@ check('the check is case-insensitive, so casing alone is not a failure', () => {
       if (seen.has(key)) continue;
       seen.add(key);
       pending++;
-      // An empty translation drops every name the source had, so this reports
-      // whether the guard has anything to check for this feature at all.
-      if (droppedProperNames(source, '', [feature.name]).length) guarded++;
     }
   }
   checks++;
-  assert.ok(pending > 400, `expected the Dutch backlog to still be there, found ${pending}`);
-  assert.ok(guarded / pending > 0.85,
-    `the rename guard covers only ${guarded} of ${pending} pending ledes`);
+  // The backlog this pass existed to clear is gone: 448 non-English ledes went
+  // to 4 on 2026-09-01. What is left is held here so a regression in the
+  // enrichment pipeline — a refetch that reintroduces Dutch ledes wholesale —
+  // fails loudly instead of quietly shipping a Dutch game.
+  assert.ok(pending <= 25,
+    `${pending} non-English ledes are shipping; the pass had cleared this to 4`);
+  process.stdout.write(`  non-English ledes still shipping: ${pending}\n`);
+
+  // The rename guard is what stands between a fluent translation and a card
+  // that teaches the wrong name, so its coverage is measured over the texts it
+  // actually judged — the cache — not over the handful that are left.
+  const cache = JSON.parse(await readFile('scripts/english-translations.json', 'utf8')) as
+    { name: string; en: string }[];
+  let checkable = 0;
+  for (const entry of cache) {
+    // An empty translation drops every name the source had, so this asks
+    // whether the guard has anything to check for this feature at all.
+    if (droppedProperNames(entry.name, '', [entry.name]).length) checkable++;
+  }
+  checks++;
+  assert.ok(cache.length > 300, `expected a populated translation cache, found ${cache.length}`);
+  assert.ok(checkable / cache.length > 0.85,
+    `the rename guard can only judge ${checkable} of ${cache.length} cached translations`);
   process.stdout.write(
-    `  rename guard covers ${guarded} of ${pending} pending Dutch ledes `
-    + `(${Math.round((guarded / pending) * 100)}%)\n`);
+    `  rename guard can judge ${checkable} of ${cache.length} cached translations `
+    + `(${Math.round((checkable / cache.length) * 100)}%)\n`);
 }
 
 process.stdout.write(`Translation pass checks passed (${checks} checks).\n`);

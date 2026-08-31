@@ -6,6 +6,35 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The game speaks English: 448 Dutch ledes down to 4.**
+  `trn` (hotchpotch/trn, Apple Intelligence via `--quality high`) is installed
+  and the pass finally ran end to end. 314 features carry a translated lede,
+  130 fall back to a Wikidata description, 4 are still Dutch.
+
+  The pass had never actually worked under Node. `trn` 0.2.0 decides whether it
+  has stdin at startup, before a pipe opened by `child_process` has anything in
+  it, so all 448 came back `exited 1` — and the code threw the reason away, so
+  the message that says exactly this was never seen. It takes the text as an
+  argument instead; `translate` keeps stdin, which it reads normally. `execFile`
+  passes an argv array and never involves a shell, so an argument is safe
+  against quoting, but not against option parsing, and `trn` has no `--`
+  separator: a lede starting with a dash gets one leading space, which stops
+  the parse and which the translator ignores.
+
+  **134 translations were refused for renaming the place**, which is the guard
+  working rather than failing: "Oude Lutherse Kerk" came back as "Old Lutheran
+  Church", and a card whose body renames the thing the player is being asked to
+  learn teaches the wrong name. Those features took the Wikidata description
+  instead — true, English, and thin. The refusals cluster on names built from
+  Dutch common nouns (kerk, kapel, synagoge, museum), which is the obvious
+  place to improve next; see TODO 7.
+
+  `check-translation.ts` used to assert the backlog was still there, because it
+  measured the guard's coverage across the untranslated pile. It now asserts the
+  opposite — that no more than 25 non-English ledes ship — so a refetch that
+  reintroduces Dutch fails loudly, and it measures the guard over the cache it
+  actually judged.
+
 - **The pre-OSM track is deleted, and the suspicion about the car is retired.**
   `track.js` had been superseded by `road-network.js` since open-road mode
   landed, but the file kept loading on every page view. `this.track` is only
