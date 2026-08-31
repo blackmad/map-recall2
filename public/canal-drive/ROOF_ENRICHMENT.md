@@ -32,3 +32,24 @@ tile keys and review status.
   mixed roofs before scaling across the A10.
 - Roof material is a separate future observation. It must not be inferred from
   the quantized colour alone.
+
+## Feasibility conclusion
+
+The 140-building pilot spans central Amsterdam, De Pijp, Oud-West and
+Houthaven. It proved that the imagery cache, complete masks, observation schema
+and human-review workflow work, but it also showed that exhaustive roof-colour
+measurement is currently low leverage for the rendered city:
+
+- much of the visible distribution is genuinely dark grey, weathered and low
+  saturation;
+- a single colour per BAG footprint blends roof planes, extensions, glass,
+  dormers, plant cover and solar installations;
+- conservative quantization suppresses what little variation remains; and
+- at the intended oblique street/canal viewpoints, correct roof shape and a
+  few distinctive materials matter more than small per-building colour shifts.
+
+Pause the citywide run. Preserve this branch and cache as a reproducible pilot.
+Later, use aerial evidence selectively for distinctive classes such as orange
+clay tile, slate, green copper, glass, vegetation, solar-dominant roofs and
+landmarks. Ordinary roofs should use shape/material/age priors until 3DBAG roof
+planes can support separate observations rather than one blended footprint.
