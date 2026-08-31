@@ -99,6 +99,17 @@ const represented = new Set<string>();
 const heightChange: number[] = [];
 let pands = 0;
 let colouredFromOsm = 0;
+/**
+ * How far the BAG table actually reaches.
+ *
+ * Tier 4 means "BAG does not hold this structure", which is only a claim worth
+ * making where BAG was consulted. The cached tiles cover the drivable area and
+ * stop, while the OSM extract runs to the edges of the BBBike region, so an
+ * OSM feature out in Zaandam is not evidence of a gap in the register — it is
+ * a place nobody looked. Counting the two together would quietly overstate how
+ * much of the city OSM still owns.
+ */
+const coverage = { west: Infinity, south: Infinity, east: -Infinity, north: -Infinity };
 
 await output.write('{"type":"FeatureCollection","features":[\n');
 
@@ -110,6 +121,14 @@ for await (const rawLine of reader) {
   const rings = ringsOf(feature.geometry);
   if (rings.length === 0) continue;
   pands++;
+  for (const ring of rings) {
+    for (const [lng, lat] of ring) {
+      coverage.west = Math.min(coverage.west, lng);
+      coverage.east = Math.max(coverage.east, lng);
+      coverage.south = Math.min(coverage.south, lat);
+      coverage.north = Math.max(coverage.north, lat);
+    }
+  }
 
   const bagId = String(feature.properties.bagId ?? '');
   const decision = decideTier({ bagId, rings }, grid.near(rings));
@@ -149,16 +168,31 @@ for await (const rawLine of reader) {
 }
 
 // --- pass two: OSM features that stand in for a pand, or that BAG lacks -------
+const insideCoverage = (rings: Ring[]): boolean => {
+  const [lng, lat] = rings[0][0];
+  return lng >= coverage.west && lng <= coverage.east && lat >= coverage.south && lat <= coverage.north;
+};
+let outsideCoverage = 0;
 for (const building of osmById.values()) {
   const isStandIn = standIns.has(building.osmId);
   // Anything else overlapping a pand is already out at tier 3. What remains is
   // a structure with no pand under it at all.
   if (!isStandIn && represented.has(building.osmId)) continue;
+  const covered = isStandIn || insideCoverage(building.rings);
+  if (!covered) outsideCoverage++;
   const tier: LadderTier = isStandIn ? 2 : 4;
   bump(tier === 2 ? 2 : 4);
   await write(JSON.stringify({
     type: 'Feature',
-    properties: { ...building.properties, tier, bagId: null, heightSource: 'osm' },
+    properties: {
+      ...building.properties,
+      tier,
+      bagId: null,
+      heightSource: 'osm',
+      // Distinguishes "BAG has no such building" from "BAG was never asked
+      // here". Only the first is a statement about the register.
+      bagConsulted: covered
+    },
     geometry: asGeometry(building.rings)
   }));
 }
@@ -188,6 +222,8 @@ const report = {
     '4-osm-only': tiers.get(4) ?? 0
   },
   pandsSuppressedByOsmParts: suppressedPands,
+  bagCoverage: coverage,
+  osmOutsideBagCoverage: outsideCoverage,
   pandsWithOsmAppearance: colouredFromOsm,
   osmFeatures: osmById.size,
   heightChangeVsOsm: {
@@ -206,7 +242,8 @@ process.stdout.write(`  panden in       ${pands}\n`);
 process.stdout.write(`  features out    ${written}\n`);
 process.stdout.write(`  tier 2 osm      ${share(standInFeatures)} parts standing in for ${suppressedPands} panden\n`);
 process.stdout.write(`  tier 3 bag      ${share(tiers.get(3) ?? 0)} measured extrusions\n`);
-process.stdout.write(`  tier 4 osm only ${share(tiers.get(4) ?? 0)} structures BAG does not hold\n`);
+process.stdout.write(`  tier 4 osm only ${share(tiers.get(4) ?? 0)}, of which ${outsideCoverage} lie outside the area BAG was fetched for\n`);
+process.stdout.write(`                  ${(tiers.get(4) ?? 0) - outsideCoverage} are genuine gaps in the register inside it\n`);
 process.stdout.write(`  appearance      ${colouredFromOsm} panden inherit an OSM colour\n`);
 process.stdout.write(`  height vs osm   median ${report.heightChangeVsOsm.medianM} m (p05 ${report.heightChangeVsOsm.p05M}, p95 ${report.heightChangeVsOsm.p95M}) over ${heightChange.length} buildings\n`);
 process.stdout.write(`  output          ${(report.outputBytes / 1e6).toFixed(1)} MB\n`);

@@ -148,15 +148,21 @@ fidelity is the design.
 
 **Government geometry is the floor for the city, never the ceiling for a
 landmark.** BAG describes *panden*, and a pand is a legal object, not a shape a
-player recognises. Measured against v20250903 CityJSON, the Waag is three
-panden — 385, 72 and 41 m of ground area, extruding to 16.0, 13.0 and 12.9 m —
-against fourteen hand-mapped OSM `building:part` ways at 6, 9, 15, 17, 20 and
-26 m with pyramidal and gabled roofs. The turrets that make it recognisable are
-not separate legal objects, so no amount of LoD1 quality will recover them:
-what the ladder must not do is trade fourteen stepped parts for three flat
-boxes. The AHN ridge on the main pand is 20.4 m, which reaches the OSM 20 m
-mass and not the 26 m turret — the point cloud sees the building, the legal
-register does not see its shape.
+player recognises. Measured against v20250903 CityJSON, the whole Waag is a
+single pand: 385 m of ground area, built 1700, extruding to 16.0 m. OSM holds
+the same building as fourteen hand-mapped `building:part` ways at 6, 9, 15, 17,
+20 and 26 m with pyramidal and gabled roofs. The turrets that make it
+recognisable are not separate legal objects, so no amount of LoD1 quality will
+ever recover them: the trade on offer is fourteen stepped parts for one flat
+box. The AHN ridge on that pand is 20.4 m, which reaches the OSM 20 m mass and
+not the 26 m turret — the point cloud sees the building, the legal register
+does not see its shape.
+
+(Two further panden sit within 45 m — 72 m built 1692 and 41 m built 1905, at
+13.0 and 12.9 m — and they are neighbours on the Nieuwmarkt, not part of the
+Waag. Their footprints do not overlap any Waag part at all. They are worth
+naming because a radius search around a landmark picks them up and makes the
+pand count look larger than it is.)
 
 Doing that to the buildings the game asks questions about would be a regression
 dressed as an upgrade, and it is not a rare case: 1,448 features in the current
