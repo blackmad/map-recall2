@@ -20,17 +20,6 @@ belongs here before anything below it.*
 
 ## P1 — The learning model itself
 
-**5. Learning-aware route generation.**
-Feed spaced-repetition mastery into Dijkstra as a small bounded cost on
-well-known streets, so equally sensible routes prefer unfamiliar connections.
-Cap the allowed detour; never make mastered roads effectively impassable. Show
-the route's expected novelty, award a clearly explained multiplier for newly
-encountered streets, and let calm mode take the routing benefit without the
-arcade chatter. `roadGraph.ts` already accepts an injectable novelty cost, so
-the routing half is waiting for a caller.
-*The stated product principle — bounded, explainable learning mechanics — with
-the hard part already built.*
-
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by
 mastery and review state, with a fog-of-war layer over the rest. Derive it from
@@ -82,12 +71,10 @@ TypeScript, painting and adapters in JavaScript.** `noticeCards.ts` +
 `renderer.js`, `bottomHud.ts` + `hud.js`, `streetOverlayStyle.ts` +
 `vector-map.js` are all this shape and all have tests on the half that decides.
 
-By that rule the genuinely un-migrated work is about 1,000 lines, in two files:
+`road-network.js` is now an adapter: surface bands, junction-aware road-name
+selection, same-name feature stitching, graph construction and Dijkstra all
+live in tested typed modules. The genuinely un-migrated decision work is now:
 
-- `road-network.js` (774) — OSM graph construction and routing, the largest
-  untested decision surface left. `getConnectedNamedSegments` is what the canal
-  stitching fix had to work around. CLAUDE.md already names routing as
-  TypeScript-first. **Do this one first.**
 - `osm-loader.js` (404) — the Overpass client is an adapter and can stay, but
   the parsing and normalisation half is untyped logic.
 
