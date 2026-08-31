@@ -184,6 +184,7 @@ class Game {
     this._debugMode = false;
     this._recenterBtnBounds = null;
     this._landmarkNotice = null;
+    this._landmarkCardBounds = null;
     // Why the card is up decides when it comes down; see game/landmarkNotice.ts.
     this._landmarkNoticeHold = { kind: 'timed', seconds: 0 };
     this._landmarkNoticeState = { elapsed: 0, fadeRemaining: null };
@@ -258,6 +259,13 @@ class Game {
           if (x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h) hovering = true;
         }
         this.canvas.style.cursor = hovering ? 'pointer' : 'default';
+      } else if (this._landmarkCardBounds) {
+        const rect = this.canvas.getBoundingClientRect();
+        const b = this._landmarkCardBounds;
+        const x = (e.clientX - rect.left) * CANVAS_W / rect.width;
+        const y = (e.clientY - rect.top) * CANVAS_H / rect.height;
+        const over = x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h;
+        this.canvas.style.cursor = over ? 'pointer' : 'default';
       } else {
         this.canvas.style.cursor = 'default';
       }
@@ -299,6 +307,16 @@ class Game {
           const b = this._recenterBtnBounds;
           if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
             this.camera.resetPan();
+            dragging = false;
+            return;
+          }
+        }
+        // The landmark card sits over the map, so it has to claim the click
+        // before it reaches the buildings underneath it.
+        if (this._landmarkCardBounds) {
+          const b = this._landmarkCardBounds;
+          if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
+            this._expandLandmarkNotice();
             dragging = false;
             return;
           }
