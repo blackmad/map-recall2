@@ -38,11 +38,14 @@ export interface LandmarkCardLayout {
   imageHeight: number;
   textLeft: number;
   /** Badges in draw order, already positioned relative to the card. */
-  badges: Array<{ label: string; x: number; width: number; kind: 'category' | 'lang' | 'article' }>;
+  badges: Array<{ label: string; x: number; width: number; kind: 'category' | 'lang' | 'article' | 'more' }>;
   /** Body text already wrapped and elided to the lines that will be drawn. */
   lines: string[];
   /** The name, elided with an ellipsis if it would not fit. */
   displayName: string;
+  /** True when `lines` dropped part of the body, so an expanded view has
+   *  something the card does not already show. */
+  truncated: boolean;
 }
 
 const CARD_WIDTH = 480;
@@ -67,9 +70,17 @@ export function measureLandmarkCard(
     ? Math.max(130, IMAGE_HEIGHT + 20)
     : (props.body ? 80 : 50);
 
+  const maxTextWidth = CARD_WIDTH - textLeft - 16;
+  const body = props.body || '';
+  const lines = wrapToLines(body, maxTextWidth, hasImage ? 4 : 2, measure, BODY_FONT);
+  // The card shows a prefix of the body; whether anything was left behind is
+  // what decides if there is a bigger version worth opening.
+  const shownWords = lines.reduce((total, line) => total + line.split(' ').length, 0);
+  const truncated = body ? shownWords < body.split(' ').length : false;
+
   const badges: LandmarkCardLayout['badges'] = [];
   let cursor = textLeft;
-  const pushBadge = (label: string, kind: 'category' | 'lang' | 'article') => {
+  const pushBadge = (label: string, kind: 'category' | 'lang' | 'article' | 'more') => {
     const width = measure(label, BADGE_FONT) + 10;
     badges.push({ label, x: cursor, width, kind });
     cursor += width + 6;
@@ -81,8 +92,9 @@ export function measureLandmarkCard(
     pushBadge(props.extractLang.toUpperCase(), 'lang');
   }
   if (props.hasArticle) pushBadge('W  WIKIPEDIA', 'article');
-
-  const maxTextWidth = CARD_WIDTH - textLeft - 16;
+  // Nothing else on a canvas card says it can be clicked, so the cut body has
+  // to advertise the panel that holds the rest of it.
+  if (truncated) pushBadge('+  MORE', 'more');
 
   let displayName = props.name || '';
   if (measure(displayName, NAME_FONT) > maxTextWidth) {
@@ -100,7 +112,8 @@ export function measureLandmarkCard(
     textLeft,
     badges,
     displayName,
-    lines: wrapToLines(props.body || '', maxTextWidth, hasImage ? 4 : 2, measure, BODY_FONT),
+    lines,
+    truncated,
   };
 }
 

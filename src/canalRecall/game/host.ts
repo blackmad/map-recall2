@@ -55,6 +55,10 @@ export interface GameCoreHost {
   quizPromptName: string;
   /** True while a settings or debug panel is open over the canvas. */
   _utilityOpen: boolean;
+  /** The expanded landmark card. Owned by the route/DOM half of the game. */
+  _landmarkPanel: HTMLElement | null;
+  _toggleUtilityPanel(panel: HTMLElement): void;
+  _closeUtilityPanels(): void;
   _zoomBadgeTimer: number;
 
   /** Owned by the recall subsystem; landmarks needs it to join street names to
@@ -76,6 +80,9 @@ export interface LandmarkHost extends GameCoreHost {
   /** Recomputed each frame by `_updateLandmarks`, so the renderer does not have
    *  to know the fade rules. */
   _landmarkNoticeAlpha: number;
+  /** Where the card was last drawn, so a click on it can open the expanded
+   *  panel. Null whenever no card is on screen. */
+  _landmarkCardBounds: LinkBounds | null;
   _landmarkImages: Map<string, HTMLImageElement>;
   _landmarkImageRequests: Set<string>;
   /** Landmarks whose English summary has already been requested this session,

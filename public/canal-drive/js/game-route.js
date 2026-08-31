@@ -114,6 +114,7 @@ class GameRouteRuntime {
   _setupUtilityPanels() {
     this._helpPanel = document.getElementById('help-panel');
     this._settingsPanel = document.getElementById('settings-panel');
+    this._landmarkPanel = document.getElementById('landmark-panel');
     this._liveLine = document.getElementById('live-line');
     this._liveArrow = document.getElementById('live-arrow');
     this._liveMinimap = document.getElementById('live-minimap');
@@ -273,7 +274,7 @@ class GameRouteRuntime {
     const opening = panel.style.display !== 'flex';
     this._closeUtilityPanels();
     if (opening) {
-      this._syncLiveSettings();
+      if (panel === this._settingsPanel) this._syncLiveSettings();
       panel.style.display = 'flex';
       this._utilityOpen = true;
     }
@@ -282,6 +283,7 @@ class GameRouteRuntime {
   _closeUtilityPanels() {
     this._helpPanel.style.display = 'none';
     this._settingsPanel.style.display = 'none';
+    this._landmarkPanel.style.display = 'none';
     this._utilityOpen = false;
   }
 
