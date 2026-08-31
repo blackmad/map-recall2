@@ -133,7 +133,7 @@ class HUD {
     ctx.restore();
   }
 
-  drawDestination(ctx, name, distancePx) {
+  drawDestination(ctx, name, distancePx, expectedNovelty = null) {
     const meters = Math.max(0, distancePx / PIXELS_PER_METER);
     const distance = meters >= 1000 ? `${(meters / 1000).toFixed(1)} km` : `${Math.round(meters)} m`;
     ctx.fillStyle = 'rgba(250,249,244,0.94)';
@@ -143,7 +143,9 @@ class HUD {
     ctx.fillStyle = '#167DA0';
     ctx.font = 'bold 9px monospace';
     ctx.textAlign = 'right';
-    ctx.fillText('DESTINATION', CANVAS_W - 28, 30);
+    const novelty = Number.isFinite(expectedNovelty)
+      ? ` · ${Math.round(expectedNovelty * 100)}% NEW` : '';
+    ctx.fillText(`DESTINATION${novelty}`, CANVAS_W - 28, 30);
     ctx.fillStyle = '#172326'; ctx.font = 'bold 13px monospace';
     ctx.fillText(name, CANVAS_W - 82, 49);
     ctx.fillStyle = '#C43D35'; ctx.font = 'bold 11px monospace';

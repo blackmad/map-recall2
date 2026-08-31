@@ -116,6 +116,7 @@ export interface RecallStore extends AnswerRecallStore {
   signOut(): Promise<unknown>;
   onUserChange(listener: (user: { label: string } | null) => void): void;
   knownPlaces(): Array<{ name: string; center: LatLon }>;
+  routeMastery(cityId: string): Record<string, number>;
   isKnownHere(feature: RecallFeature): boolean;
   isSuppressedHere(feature: RecallFeature): boolean;
 }
@@ -138,6 +139,7 @@ export interface RecallHost extends GameCoreHost {
   routeOptions: { answerMode: AnswerMode };
   routeDifficulty: RouteDifficulty;
   gameyFeatures: boolean;
+  _routeMastery: Record<string, number>;
 
   quizCurrentName: string;
   quizCandidateName: string;
@@ -185,6 +187,7 @@ export interface RecallHost extends GameCoreHost {
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
 export interface PresentationHost extends GameCoreHost {
+  _routeLearningPlan: { expectedNovelty: number } | null;
   state: number;
   track: Track;
   hud: Hud;
