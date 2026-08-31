@@ -38,6 +38,27 @@ is the way it is, and that is the expensive part to recover later.
   stopped being expensive. Translation can run against a local Ollama model,
   which removes the Gemini key from the path to English ledes.
 
+- **The driving harness measures rates, not counts.** It was recorded as flaky
+  — "14 of 24 against a threshold of exactly 14, run-to-run variation flips it
+  red". That diagnosis was wrong. Pinning the routing extract and running it
+  three times gives byte-identical reports: same arrivals, same wedge count,
+  same component share. The harness is deterministic; it seeds its own
+  generator and stubs `Math.random` at page load.
+
+  What was actually brittle is that both bounds were absolute counts calibrated
+  against a 24-drive sample and then sat at the measured value with no room.
+  They are rates now, and the sample is 120 drives, which costs about seven
+  seconds. Measured on the 29,051-way extract: 71 of 120 arrive (59%), 1.6
+  wedges per drive, against 6.3 per drive before the kerb guard learned to
+  slide. The floors are 45% and 3.0.
+
+  One thing worth knowing before trusting this harness with coverage: a
+  *sparser* network scores **higher**. Run against a half-sized extract it
+  reported 71% arrivals rather than 59%, because short simple routes are easier
+  to drive. It measures whether the city is drivable and says nothing about
+  whether it is still fully mapped — `test:canal-car`'s named streets are what
+  pin coverage, and they are what caught the halving.
+
 - **The presentation subsystem is typed, and what the game rewards is tested.**
   `game-presentation.js` was the last big untyped file: 872 lines that both
   decided the grade and painted it. The grading is now `routeRibbon.ts` and the

@@ -261,7 +261,7 @@ test('driving harness: planned routes can actually be driven', async ({ page }) 
   test.setTimeout(300_000);
   await openCarRoute(page);
   await page.evaluate(installHarness);
-  const report = await page.evaluate(() => window.canalRecallGame.driveHarness!(24, 0x51ce7));
+  const report = await page.evaluate(() => window.canalRecallGame.driveHarness!(120, 0x51ce7));
 
   console.log(`largest routing component: ${(report.componentShare * 100).toFixed(1)}% of graph nodes`);
   console.log(`routable ${report.routable}/${report.pairs} — ${JSON.stringify(report.outcomes)}, ${report.wedges} wedges against the kerb`);
@@ -272,14 +272,31 @@ test('driving harness: planned routes can actually be driven', async ({ page }) 
   // Inside one component every pair is routable by definition; this catches a
   // regression in the graph builder rather than in the extract.
   expect(report.routable).toBe(report.pairs);
+
   // No drive may end with the car pinned against the edge of the corridor.
-  // Wedging at all was epidemic before the guard learned to slide along a kerb
-  // rather than stop against it: the same 24 drives logged 151 wedges and 11
-  // arrivals, against 16 and 18 now. The bound is deliberately loose — it is
-  // there to catch a return to that behaviour, not to pin an exact number.
   expect(report.outcomes.pinned).toBe(0);
-  expect(report.wedges).toBeLessThanOrEqual(40);
-  expect(report.outcomes.arrived).toBeGreaterThanOrEqual(14);
+
+  // Wedges are counted per drive, not in total, so the bound does not have to
+  // be re-tuned every time the sample size changes — which is exactly how the
+  // old absolute `<= 40` was calibrated against 24 drives and then meant
+  // nothing at 120. Wedging at all was epidemic before the guard learned to
+  // slide along a kerb rather than stop against it: 151 wedges in 24 drives,
+  // or 6.3 each. It measures 1.6 each now. The bound is deliberately loose —
+  // it is here to catch a return to that behaviour, not to pin a number.
+  const wedgesPerDrive = report.wedges / report.pairs;
+  expect(wedgesPerDrive,
+    `${report.wedges} wedges across ${report.pairs} drives`).toBeLessThanOrEqual(3);
+
+  // Arrival is a rate, for the same reason. Measured 2026-08-31 on the
+  // 29,051-way extract: 71 of 120, 59%. The floor sits well below that because
+  // a legitimate extract change moves this number in either direction — a
+  // *sparser* network scores higher, since a half-sized one measured 71%. So
+  // this asserts that the city stays drivable, and says nothing about whether
+  // it is still fully mapped; `test:canal-car` is what pins coverage.
+  const arrivalRate = report.outcomes.arrived / report.pairs;
+  expect(arrivalRate,
+    `${report.outcomes.arrived} of ${report.pairs} drives arrived`).toBeGreaterThanOrEqual(0.45);
+
   // And the network must not fragment back into islands.
   expect(report.componentShare).toBeGreaterThan(0.7);
 });

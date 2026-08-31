@@ -13,13 +13,8 @@ Within a tier, cheap-and-blocking comes before expensive-and-isolated.
 
 ## P0 — Red, or actively teaching something false
 
----
-
-**The driving harness passes with no margin.** With the oracle fixed it
-arrives 14 of 24 against a threshold of exactly 14, so ordinary run-to-run
-variation flips it red — it failed once and passed once in the same session on
-unchanged code. Either raise the arrival rate or make the assertion tolerant of
-the variance it actually has, but do not simply lower the bar.
+*Empty. Keep it that way: anything that makes the game teach something false
+belongs here before anything below it.*
 
 ---
 
