@@ -38,6 +38,8 @@
     "test:canal-car": "tsx scripts/check-canal-car.ts",
     "test:reachability": "tsx scripts/check-road-reachability.ts",
     "build:roof-colours": "tsx scripts/build-satellite-roof-colours.ts",
+    "build:bag-buildings": "tsx scripts/build-bag-buildings.ts",
+    "fetch:3dbag": "tsx scripts/fetch-3dbag-tiles.ts",
     "probe:3dbag": "tsx scripts/probe-3dbag-metadata.ts",
     "test:rd-coordinates": "tsx scripts/check-rd-coordinates.ts",
     "build:facade-review": "node --import tsx scripts/build-panorama-facade-review.ts",
