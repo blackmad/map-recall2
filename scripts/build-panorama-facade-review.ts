@@ -130,7 +130,8 @@ if (!fresh) {
     priorRejections = prior.rejections || [];
   } catch { /* first run */ }
 }
-const processed = new Set([...priorItems.map(item => String(item.buildingId)), ...priorRejections.map(item => item.buildingId)]);
+const terminalRejections = priorRejections.filter(item => item.reason === 'no-panorama-in-radius');
+const processed = new Set([...priorItems.map(item => String(item.buildingId)), ...terminalRejections.map(item => item.buildingId)]);
 let candidates = collection.features.filter(feature => feature.geometry && buildingId(feature));
 if (a10Ring) candidates = candidates.filter(feature => ringContains(centre(feature.geometry), a10Ring!));
 if (onlyOsmId) candidates = candidates.filter(feature => String(feature.properties.osmId) === onlyOsmId);
@@ -175,6 +176,7 @@ for (let index = 0; index < candidates.length; index++) {
     }
     let proposal: Proposal | undefined;
     try { proposal = await propose(imageFile); } catch (error) { process.stderr.write(`model skipped for ${id}: ${String(error)}\n`); }
+    for (let rejectionIndex = rejections.length - 1; rejectionIndex >= 0; rejectionIndex--) if (rejections[rejectionIndex].buildingId === id) rejections.splice(rejectionIndex, 1);
     items.push({ buildingId: id, bagId: building.properties.identificatie || null, osmId: building.properties.osmId || null, name: building.properties.name || '', centre: [lon, lat], buildingProperties: building.properties, panoId: thumbnail.pano_id, heading: thumbnail.heading, observedAt: pano.timestamp, image: `images/${imageName}`, panoramaImage, sourceUrl: (pano._links as { self?: { href?: string } } | undefined)?.self?.href, thumbnailUrl: thumbnail.url, panoramaMetadata: pano, proposal });
     await checkpoint();
     process.stdout.write(`${index + 1}/${candidates.length} ${id} → ${thumbnail.pano_id} (${items.length - initialUsable}/${limit} new usable)\n`);

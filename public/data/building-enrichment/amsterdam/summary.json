@@ -1,40 +1,40 @@
 {
-  "generatedAt": "2026-08-31T14:20:50.598Z",
-  "cacheBytes": 976126797,
+  "generatedAt": "2026-08-31T14:29:01.643Z",
+  "cacheBytes": 1001483901,
   "buildings": 198271,
   "insideA10Buildings": 113722,
-  "observations": 152,
-  "modelLabels": 152,
+  "observations": 190,
+  "modelLabels": 190,
   "humanLabels": 0,
-  "rejections": 5,
+  "rejections": 17,
   "model": "qwen2.5vl:7b",
   "selection": {
     "region": "inside-a10",
     "ordering": "distance-from-Dam-then-stable-id",
-    "candidateBuildings": 500,
-    "requestedNewUsable": 100,
-    "totalAttempted": 157,
-    "totalUsable": 152,
-    "totalRejected": 5,
+    "candidateBuildings": 10,
+    "requestedNewUsable": 1,
+    "totalAttempted": 207,
+    "totalUsable": 190,
+    "totalRejected": 17,
     "radiusMetres": 45,
     "panoramaSize": "medium"
   },
   "facadeMaterials": [
     {
       "label": "brick",
-      "count": 124
+      "count": 158
     },
     {
       "label": "plaster-stucco",
-      "count": 13
+      "count": 15
+    },
+    {
+      "label": "stone",
+      "count": 7
     },
     {
       "label": "glass-curtain-wall",
       "count": 6
-    },
-    {
-      "label": "stone",
-      "count": 5
     },
     {
       "label": "ceramic-cladding",
@@ -56,11 +56,11 @@
   "roofMaterials": [
     {
       "label": "flat-roof-not-visible",
-      "count": 100
+      "count": 130
     },
     {
       "label": "not-visible",
-      "count": 37
+      "count": 45
     },
     {
       "label": "clay-tile",
@@ -78,7 +78,7 @@
   "typologies": [
     {
       "label": "canal-house",
-      "count": 90
+      "count": 123
     },
     {
       "label": "modern-row-house",
@@ -86,19 +86,19 @@
     },
     {
       "label": "amsterdam-school",
-      "count": 10
+      "count": 11
+    },
+    {
+      "label": "modern-mixed-use",
+      "count": 11
     },
     {
       "label": "apartment-block",
       "count": 8
     },
     {
-      "label": "modern-mixed-use",
-      "count": 8
-    },
-    {
       "label": "office-commercial",
-      "count": 6
+      "count": 7
     },
     {
       "label": "warehouse-industrial",
