@@ -1,0 +1,31 @@
+{
+  "cityId": "amsterdam",
+  "wikidata": "Q727",
+  "name": "Amsterdam",
+  "description": "capital and most populous city of the Netherlands",
+  "colors": [],
+  "population": 921468,
+  "populationAsOf": "+2023-01-00T00:00:00Z",
+  "inception": "+1300-00-00T00:00:00Z",
+  "officialWebsite": "https://amsterdam.nl",
+  "flag": {
+    "file": "Flag of Amsterdam.svg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Flag_of_Amsterdam.svg/960px-Flag_of_Amsterdam.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag%20of%20Amsterdam.svg"
+  },
+  "coatOfArms": {
+    "file": "Wapen van Amsterdam.svg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Wapen_van_Amsterdam.svg/960px-Wapen_van_Amsterdam.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "source": "https://commons.wikimedia.org/wiki/File:Wapen%20van%20Amsterdam.svg"
+  },
+  "headOfGovernment": {
+    "wikidata": "Q288283",
+    "name": "Femke Halsema",
+    "description": "Dutch mayor of Amsterdam and former political leader of GroenLinks",
+    "image": {
+      "file": "Femke Halsema 2.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Femke_Halsema_2.jpg/960px-Femke_Halsema_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "source": "https://commons.wikimedia.org/wiki/File:Femke%20Halsema%202.jpg"
+    }
+  }
+}

@@ -49,11 +49,27 @@ assert.ok(images.length >= 25, `too few landmark images (${images.length})`);
 
 const brandedPois = await readJson('branded-pois.json');
 assert.equal(brandedPois.length, manifest.brandedPois?.count, 'branded POI count matches manifest');
-assert.ok((manifest.majorChains || []).every((chain: { count: number }) => chain.count >= 3), 'every published chain meets the frequency floor');
-assert.equal((manifest.majorChains || []).reduce((total: number, chain: { count: number }) => total + chain.count, 0),
-  brandedPois.length, 'major-chain counts account for every branded POI');
+assert.ok((manifest.majorChains || []).every((chain: { name: string }) => /^(albert heijn|ah)( to go)?$/i.test(chain.name)),
+  'Albert Heijn is the only published retail chain');
+assert.equal(brandedPois.filter((poi: { kind?: string }) => poi.kind === 'local-food').length,
+  manifest.localFoodPois?.count || 0, 'local food POI count matches manifest');
+const localFoodNameCounts = new Map<string, number>();
+for (const poi of brandedPois.filter((item: { kind?: string }) => item.kind === 'local-food')) {
+  const key = String(poi.name || '').trim().toLocaleLowerCase();
+  localFoodNameCounts.set(key, (localFoodNameCounts.get(key) || 0) + 1);
+}
+assert.ok([...localFoodNameCounts.values()].every((count) => count <= 2),
+  'repeated hospitality chains are excluded from local food labels');
+const localFoodCellCounts = new Map<string, number>();
+for (const poi of brandedPois.filter((item: { kind?: string }) => item.kind === 'local-food')) {
+  const [lat, lon] = poi.center as [number, number];
+  const cell = `${Math.floor(lon * 111_320 * Math.cos(lat * Math.PI / 180) / 100)}:${Math.floor(lat * 111_320 / 100)}`;
+  localFoodCellCounts.set(cell, (localFoodCellCounts.get(cell) || 0) + 1);
+}
+assert.ok([...localFoodCellCounts.values()].every((count) => count <= 2),
+  'local food labels are capped at two candidates per block-scale cell');
 assert.ok(brandedPois.every((poi: { id?: string; brand?: string; center?: number[] }) =>
-  poi.id && poi.brand && poi.center?.length === 2 && poi.center.every(Number.isFinite)),
+  poi.id && poi.center?.length === 2 && poi.center.every(Number.isFinite)),
   'every branded POI has identity and a finite center');
 if (manifest.brandIdentifiers?.file) {
   const identifiers = await readJson(manifest.brandIdentifiers.file);
@@ -68,7 +84,11 @@ if (manifest.brandIdentifiers?.file) {
 
 if (expectedCityId === 'amsterdam') {
   assert.ok(landmarks.length >= 300, `Amsterdam landmark coverage regressed (${landmarks.length})`);
-  const ah = brandedPois.filter((poi: { icon?: string }) => poi.icon === 'albert-heijn');
+  const landmarkNames = new Set(landmarks.map((feature: { name?: string }) => feature.name?.toLocaleLowerCase()));
+  for (const name of ['OT301', 'Melkweg', 'Artis', 'Framer Framed']) {
+    assert.ok(landmarkNames.has(name.toLocaleLowerCase()), `${name} is missing from Amsterdam landmarks`);
+  }
+  const ah = brandedPois.filter((poi: { kind?: string }) => poi.kind === 'albert-heijn');
   assert.ok(ah.length >= 20, `Albert Heijn coverage regressed (${ah.length})`);
   const warehouse = landmarks.find((feature: { wikidata?: string }) => feature.wikidata === 'Q14518704');
   assert.ok(warehouse?.wikipediaImageUrl, 'West-Indisch Pakhuis has a Wikipedia image');

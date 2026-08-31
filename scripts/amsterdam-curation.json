@@ -12,6 +12,26 @@
     "squares:ten katemarkt": 60,
     "parks:de oeverlanden": 80,
     "landmarks:ndsm-loods": 100,
-    "landmarks:cuypersgebouw": 80
-  }
+    "landmarks:cuypersgebouw": 80,
+    "landmarks:ot301": 100,
+    "landmarks:framer framed": 70
+  },
+  "landmarks": [
+    {
+      "name": "OT301",
+      "center": [52.360158, 4.865692],
+      "type": "landmark",
+      "wikidata": "Q7073074",
+      "wikipedia": "en:OT301",
+      "prominenceScore": 100
+    },
+    {
+      "name": "Artis",
+      "center": [52.366111, 4.916667],
+      "type": "landmark",
+      "wikidata": "Q713124",
+      "wikipedia": "en:Artis (zoo)",
+      "prominenceScore": 160
+    }
+  ]
 }

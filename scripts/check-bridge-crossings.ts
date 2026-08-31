@@ -54,35 +54,53 @@ for (const [name, waterway] of [
   assert.equal(crossing.waterwayType, 'water', 'the Amstel is a river, and its type is part of its review key');
 }
 
-// Zuiderzeeweg carries four separate bridges over three different waters on its
-// way north out of the city. Asking about "Zuiderzeeweg" once taught one of them.
+// A road is not a bridge.
+//
+// Zuiderzeeweg and IJburglaan each carry several separate bridges over
+// different waters on their way out of the city, and both used to be published
+// as a single bridge feature — so "which bridge is this?" was answered with the
+// name of the road, once, for four different structures. The extractor prefers
+// OSM's `bridge:name` over the carried road's `name`, which splits them into
+// the structures they actually are.
+//
+// This is the same principle the crossing clustering exists for, one level up:
+// identity first, then per-crossing geometry.
 {
-  const crossings = published.bridges[bridgeNamed('Zuiderzeeweg').id];
-  assert.equal(crossings.length, 4, 'Zuiderzeeweg should resolve to four crossings');
-  assert.deepEqual(
-    crossings.map((crossing) => crossing.waterway),
-    ['IJmeer', 'Buiten-IJ', 'Weersloot', null],
-    'Zuiderzeeweg crossings should be ordered south to north with their own waters',
-  );
-  // Crossings must be far enough apart that nearest-centre lookup is unambiguous.
-  for (let i = 1; i < crossings.length; i++) {
-    assert.ok(
-      metersBetween(crossings[i - 1].center, crossings[i].center) > 200,
-      'Zuiderzeeweg crossings should be hundreds of metres apart',
-    );
+  for (const road of ['Zuiderzeeweg', 'IJburglaan']) {
+    assert.ok(!bridges.some((bridge) => bridge.name === road),
+      `${road} is a road; its bridges belong under their own names`);
+  }
+  // The structures that road carries, each over its own water.
+  const structures: Array<[string, string]> = [
+    ['Schellingwouderbrug', 'Buiten-IJ'],
+    ['Amsterdamschebrug', 'IJmeer'],
+    ['Zeeburgerbrug', 'IJmeer'],
+    ['Enneüs Heermabrug', 'IJmeer'],
+  ];
+  const centres: Array<[number, number]> = [];
+  for (const [name, water] of structures) {
+    const bridge = bridges.find((candidate) => candidate.name === name);
+    assert.ok(bridge, `${name} should be published as its own bridge`);
+    const crossings = published.bridges[bridge.id];
+    assert.ok(crossings?.length, `${name} should resolve to at least one crossing`);
+    assert.ok(crossings.some((crossing) => crossing.waterway === water),
+      `${name} should cross the ${water}`);
+    centres.push(crossings[0].center);
+  }
+  // And they must be far enough apart that the nearest-centre lookup which
+  // picks one at runtime is unambiguous.
+  for (let i = 0; i < centres.length; i++) {
+    for (let j = i + 1; j < centres.length; j++) {
+      assert.ok(metersBetween(centres[i], centres[j]) > 200,
+        `${structures[i][0]} and ${structures[j][0]} must be distinguishable by position`);
+    }
   }
 }
 
-// IJburglaan ships 66 mapped ways. They are five bridges, not 66 and not one.
-{
-  const crossings = published.bridges[bridgeNamed('IJburglaan').id];
-  assert.equal(crossings.length, 5, 'IJburglaan should resolve to five crossings');
-  assert.equal(crossings.at(-1)!.waterway, 'IJmeer', 'the northern IJburglaan crossing spans the IJmeer');
-}
 
 // Recomputing from the extracts must reproduce the published file exactly, or
 // the game is gating on crossings the generator no longer agrees with.
-for (const name of ['Magere Brug', 'Zuiderzeeweg', 'IJburglaan', 'Westelijke Ringspoorbaan']) {
+for (const name of ['Magere Brug', 'Schellingwouderbrug', 'Enneüs Heermabrug', 'Westelijke Ringspoorbaan']) {
   const bridge = bridgeNamed(name);
   assert.deepEqual(
     findBridgeCrossings(bridge, waters), published.bridges[bridge.id],
