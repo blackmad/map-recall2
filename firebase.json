@@ -11,8 +11,10 @@
         "firebase.json",
         "**/.*",
         "**/node_modules/**",
+        "**/*.md",
         "server.cjs",
-        "server.cjs.map"
+        "server.cjs.map",
+        "canal-drive/**"
       ],
       "headers": [
         {
@@ -32,15 +34,6 @@
               "value": "public, max-age=3600"
             }
           ]
-        },
-        {
-          "source": "/canal-drive/**",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "no-cache"
-            }
-          ]
         }
       ],
       "rewrites": [
@@ -52,15 +45,14 @@
     },
     {
       "target": "canalrecall",
-      "public": "dist",
+      "public": "dist-canalrecall",
       "ignore": [
         "firebase.json",
         "**/.*",
         "**/node_modules/**",
+        "**/*.md",
         "server.cjs",
-        "server.cjs.map",
-        "index.html",
-        "assets/**"
+        "server.cjs.map"
       ],
       "headers": [
         {
@@ -73,19 +65,13 @@
           ]
         },
         {
-          "source": "/canal-drive/**",
+          "source": "/js/**",
           "headers": [
             {
               "key": "Cache-Control",
               "value": "no-cache"
             }
           ]
-        }
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/canal-drive/index.html"
         }
       ]
     }

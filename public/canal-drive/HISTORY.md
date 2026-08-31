@@ -6,6 +6,23 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The two games are two sites now, not two entry points on one.** Canal
+  Recall and Map Quest were one GitHub Pages deploy under `/map-recall2/`, which
+  caps at a single custom domain and cannot tell hosts apart. They are now two
+  Firebase Hosting sites in `map-recall2-blackmad`: `edumap-blackmad` serves the
+  Map Quest build, `canalrecall-blackmad` serves Canal Recall at its own root.
+  Serving Canal Recall from a root could not be done with a Hosting rewrite —
+  its `index.html` loads `js/game.js` relatively, and a `**` rewrite answered
+  `/js/game.js` with HTML at status 200, which the browser refuses to execute.
+  So `scripts/assemble-canalrecall-site.mjs` hoists `dist/canal-drive` to a
+  root with `data/` beside it, which is what its `../data/extracts/...` fetches
+  already expect. Hosting `ignore` globs turned out to be relative to `public`,
+  not the project root, and Hosting serves a matching static file before it
+  consults a rewrite — together those two facts had the Map Quest `index.html`
+  winning `/` on the Canal Recall site. `**/*.md` is ignored on both sites
+  because `TODO.md`, `WIP.md` and `HISTORY.md` live inside `public/canal-drive`
+  and were being served as public pages.
+
 - **The extractor takes a city now, and Utrecht proved it.** Bounds, centre,
   curation file, the name used for the boundary lookup and the `cityId` filed
   into every review key were all Amsterdam constants. They are arguments now,

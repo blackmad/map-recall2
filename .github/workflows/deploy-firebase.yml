@@ -23,6 +23,7 @@ jobs:
       # root, so the build keeps Vite's default '/' base.
       - run: npm run build
         env:
+          VITE_CANAL_RECALL_URL: https://canalrecall.blackmad.com/
           VITE_CARTO_API_KEY: ${{ secrets.VITE_CARTO_API_KEY }}
           VITE_GOOGLE_MAPS_EMBED_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_EMBED_API_KEY }}
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
@@ -31,6 +32,7 @@ jobs:
           VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
           VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+      - run: node scripts/assemble-canalrecall-site.mjs
       - name: Write deploy credentials
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
