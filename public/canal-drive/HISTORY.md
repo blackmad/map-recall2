@@ -6,6 +6,23 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Road-network decisions live in typed, tested modules.**
+  `road-network.js` had accumulated three versions of routing: its original
+  inline graph and Dijkstra, an optional typed implementation, and fallback
+  branches that could silently put production on the untested one. It is now
+  only the browser/canvas adapter. `roadSurface.ts` owns the spatial index,
+  asphalt/curb bands, heading-aware road choice at crossings and connected
+  same-name runs; `roadGraph.ts` owns topology, junction restoration and
+  shortest paths. Both bundles are required at startup, so a missing build is
+  loud rather than a behavioural downgrade.
+
+  The heading rule matters pedagogically: just past a crossing, the nearest
+  centreline is often the side street, even though the player drove straight
+  through. Among geometrically plausible roads the aligned one now wins, with
+  distance as the tie-breaker. Real-extract coverage pins split Grimburgwal and
+  the most fragmented Amsterdam waterway, while the reachability audit still
+  measures the junction-stitch improvement over vertex sharing alone.
+
 - **The English pass prefers a local CLI translator, and refuses a translation
   that renames the place.**
   448 distinct Dutch ledes are still waiting, and the routes that could do them

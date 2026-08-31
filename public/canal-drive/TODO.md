@@ -82,12 +82,10 @@ TypeScript, painting and adapters in JavaScript.** `noticeCards.ts` +
 `renderer.js`, `bottomHud.ts` + `hud.js`, `streetOverlayStyle.ts` +
 `vector-map.js` are all this shape and all have tests on the half that decides.
 
-By that rule the genuinely un-migrated work is about 1,000 lines, in two files:
+`road-network.js` is now an adapter: surface bands, junction-aware road-name
+selection, same-name feature stitching, graph construction and Dijkstra all
+live in tested typed modules. The genuinely un-migrated decision work is now:
 
-- `road-network.js` (774) — OSM graph construction and routing, the largest
-  untested decision surface left. `getConnectedNamedSegments` is what the canal
-  stitching fix had to work around. CLAUDE.md already names routing as
-  TypeScript-first. **Do this one first.**
 - `osm-loader.js` (404) — the Overpass client is an adapter and can stay, but
   the parsing and normalisation half is untyped logic.
 
