@@ -46,6 +46,26 @@ export type RoadGraphEdgeCost<TMetadata = unknown> = (context: Readonly<{
   distance: number;
 }>) => number;
 
+export type LearningRouteOptions<TMetadata = unknown> = Readonly<{
+  /** 0..1 familiarity for a named feature; absent names are new. */
+  masteryForName(name: string): number;
+  namesForEdge(edge: RoadGraphEdge<TMetadata>): readonly string[];
+  /** Maximum cost added to a fully mastered edge. Defaults to 18%. */
+  familiarityPenalty?: number;
+  /** Maximum extra physical distance accepted. Defaults to 12%. */
+  maxDetourRatio?: number;
+}>;
+
+export type LearningRoutePlan = Readonly<{
+  path: readonly RoadGraphPoint[];
+  /** Fraction of physical route distance on names below 50% mastery. */
+  expectedNovelty: number;
+  physicalDistance: number;
+  shortestDistance: number;
+  detourRatio: number;
+  usedLearningBias: boolean;
+}>;
+
 export type ShortestPathOptions<TMetadata = unknown> = Readonly<{
   stopAt?: RoadGraphNode<TMetadata> | null;
   /**
@@ -324,4 +344,75 @@ export function findRoadRouteToFirstReachable<TMetadata>(
     if (path.length >= 2) return { index, path };
   }
   return null;
+}
+
+function nodePath<TMetadata>(
+  previous: ReadonlyMap<string, RoadGraphNode<TMetadata>>,
+  endNode: RoadGraphNode<TMetadata>,
+): RoadGraphNode<TMetadata>[] {
+  const route: RoadGraphNode<TMetadata>[] = [];
+  for (let node: RoadGraphNode<TMetadata> | undefined = endNode; node; node = previous.get(node.key)) {
+    route.push(node);
+  }
+  return route.reverse();
+}
+
+function edgeBetween<TMetadata>(from: RoadGraphNode<TMetadata>, to: RoadGraphNode<TMetadata>) {
+  return from.edges.find((edge) => edge.node === to);
+}
+
+/**
+ * Prefer unfamiliar named roads without turning them into a maze.
+ *
+ * The ordinary shortest route is always computed first. Familiarity is then a
+ * small, non-negative edge penalty (so Dijkstra remains valid), and the result
+ * is rejected if its real geometric length exceeds the explicit detour cap.
+ */
+export function planLearningRoadRoute<TMetadata>(
+  graph: RoadGraph<TMetadata>,
+  startPoint: RoadGraphPoint,
+  finishPoint: RoadGraphPoint,
+  options: LearningRouteOptions<TMetadata>,
+): LearningRoutePlan | null {
+  const familiarityPenalty = options.familiarityPenalty ?? 0.18;
+  const maxDetourRatio = options.maxDetourRatio ?? 0.12;
+  if (!(familiarityPenalty >= 0) || !(maxDetourRatio >= 0)) {
+    throw new RangeError('Learning-route bounds must be non-negative');
+  }
+  const finish = nearestRoadGraphNode(graph, finishPoint);
+  if (!finish) return null;
+  const shortest = shortestRoadPaths(graph, startPoint, { stopAt: finish });
+  if (!shortest?.distances.has(finish.key)) return null;
+
+  const mastery = (edge: RoadGraphEdge<TMetadata>): number => {
+    const names = [...new Set(options.namesForEdge(edge).filter(Boolean))];
+    if (!names.length) return 0;
+    return Math.max(...names.map((name) => Math.max(0, Math.min(1, options.masteryForName(name) || 0))));
+  };
+  const preferred = shortestRoadPaths(graph, startPoint, {
+    stopAt: finish,
+    edgeCost: ({ edge, distance }) => distance * (1 + familiarityPenalty * mastery(edge)),
+  });
+  const shortestNodes = nodePath(shortest.previous, finish);
+  const preferredNodes = preferred?.distances.has(finish.key) ? nodePath(preferred.previous, finish) : shortestNodes;
+  const physicalLength = (nodes: readonly RoadGraphNode<TMetadata>[]) => nodes.slice(1).reduce((sum, node, index) =>
+    sum + (edgeBetween(nodes[index], node)?.distance ?? distanceBetween(nodes[index], node)), 0);
+  const shortestDistance = physicalLength(shortestNodes);
+  const preferredDistance = physicalLength(preferredNodes);
+  const withinCap = shortestDistance === 0 || preferredDistance <= shortestDistance * (1 + maxDetourRatio + 1e-9);
+  const selected = withinCap ? preferredNodes : shortestNodes;
+  const physicalDistance = withinCap ? preferredDistance : shortestDistance;
+  let newDistance = 0;
+  for (let index = 1; index < selected.length; index++) {
+    const edge = edgeBetween(selected[index - 1], selected[index]);
+    if (edge && options.namesForEdge(edge).some(Boolean) && mastery(edge) < 0.5) newDistance += edge.distance;
+  }
+  return {
+    path: selected.map(({ x, y }) => ({ x, y })),
+    expectedNovelty: physicalDistance > 0 ? newDistance / physicalDistance : 0,
+    physicalDistance,
+    shortestDistance,
+    detourRatio: shortestDistance > 0 ? physicalDistance / shortestDistance - 1 : 0,
+    usedLearningBias: withinCap && selected.some((node, index) => node !== shortestNodes[index]),
+  };
 }

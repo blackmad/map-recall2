@@ -280,6 +280,7 @@
       this._landmarkNotice = null;
       this._landmarkNoticeState = openNotice();
       this._landmarkNoticeAlpha = 0;
+      this._landmarkCardBounds = null;
     }
     /**
      * A nameless footprint cannot teach the player anything, but swallowing the
@@ -521,6 +522,7 @@
     // ---- Cards ----
     _renderLandmarkNotice() {
       const lm = this._landmarkNotice;
+      this._landmarkCardBounds = null;
       if (!lm) return;
       const ctx = this.ctx;
       const alpha = this._landmarkNoticeAlpha;
@@ -555,6 +557,56 @@
       ctx.globalAlpha = Math.max(0, alpha);
       this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
       ctx.restore();
+      this._landmarkCardBounds = { x: cardX, y: cardY, w: card.width, h: card.height };
+    }
+    /**
+     * The expanded card. `measureLandmarkCard` cuts the body to two or four
+     * lines so the driving corridor stays visible; this is where the rest of the
+     * extract lives, in HTML, where it can scroll and carry a real link.
+     *
+     * Opening it goes through the utility-panel machinery, so it pauses the
+     * controls and closes on Esc like the help and settings panels do.
+     */
+    _expandLandmarkNotice() {
+      const lm = this._landmarkNotice;
+      const panel = this._landmarkPanel;
+      if (!lm || !panel) return false;
+      const cards = window.CanalRecallCards;
+      const body = lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood);
+      const badges = panel.querySelector("#landmark-panel-badges");
+      badges.textContent = "";
+      const pushBadge = (label, kind) => {
+        const chip = document.createElement("span");
+        chip.dataset.kind = kind;
+        chip.textContent = label;
+        badges.appendChild(chip);
+      };
+      if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, " "), "category");
+      if (lm.extractLang && lm.extractLang !== "en") {
+        pushBadge(`${lm.extractLang.toUpperCase()} \u2014 NOT TRANSLATED YET`, "lang");
+      }
+      panel.querySelector("#landmark-panel-title").textContent = lm.name || "";
+      panel.querySelector("#landmark-panel-body").textContent = body;
+      const image = panel.querySelector("#landmark-panel-image");
+      if (lm.imageUrl) {
+        image.src = lm.imageUrl;
+        image.alt = lm.name || "";
+        image.hidden = false;
+      } else {
+        image.removeAttribute("src");
+        image.hidden = true;
+      }
+      const link = panel.querySelector("#landmark-panel-link");
+      if (lm.wikipediaUrl) {
+        link.href = lm.wikipediaUrl;
+        link.hidden = false;
+      } else {
+        link.removeAttribute("href");
+        link.hidden = true;
+      }
+      panel.querySelector("#landmark-panel-scroll").scrollTop = 0;
+      this._toggleUtilityPanel(panel);
+      return true;
     }
     _renderNeighborhoodNotice() {
       const hood = this._neighborhoodNotice;

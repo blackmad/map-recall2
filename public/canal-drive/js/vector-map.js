@@ -276,7 +276,12 @@ class VectorBasemap {
   }
 
   setBrandedPois(pois) {
-    this._pendingBrandedPois = pois || [];
+    // The extract carries every named food venue in the city. Drawn all at
+    // once they bury the driving corridor, so only the best cue on each patch
+    // of ground is handed to the map.
+    const thin = window.CanalRecallOrientationPois
+      && window.CanalRecallOrientationPois.thinOrientationPois;
+    this._pendingBrandedPois = thin ? thin(pois || []) : (pois || []);
     if (!this.map) return;
     const source = this.map.getSource('branded-pois');
     if (!source) return;
@@ -428,11 +433,6 @@ class VectorBasemap {
 
   setStreetHighlights(track, loader, learnedNames, activeName, activeSegmentIndex) {
     if (!this.ready || !track || !loader || !this.map.getSource('active-street')) return;
-    const toFeature = segment => ({
-      type: 'Feature',
-      properties: { name: segment.name || '' },
-      geometry: { type: 'LineString', coordinates: segment.points.map(point => this.worldToLngLat(point.x, point.y, loader)) }
-    });
     const activeKey = `${activeName || ''}:${activeSegmentIndex}`;
     if (activeKey !== this._activeStreetKey) {
       this._activeStreetKey = activeKey;
@@ -440,10 +440,26 @@ class VectorBasemap {
       const connected = activeName && seed && seed.name === activeName
         ? (track.getConnectedNamedSegments ? track.getConnectedNamedSegments(activeSegmentIndex) : [seed])
         : [];
-      // Keep every OSM fragment as its own feature. Combining disconnected
-      // paths into one LineString creates the giant diagonal chord artifact.
+      // A named waterway or street is stored as several OSM ways — Grimburgwal
+      // is three, laid end to end — and drawing each as its own round-capped
+      // line leaves a seam at every join, so one canal reads as several. Join
+      // only the fragments whose endpoints actually meet: concatenating blindly
+      // is what draws the giant diagonal chord across the map.
+      const paths = connected
+        .map(segment => segment.points)
+        .filter(points => points && points.length > 1);
+      const stitch = window.CanalRecallStreets && window.CanalRecallStreets.stitchOverlayPaths;
+      const chains = stitch ? stitch(paths) : paths;
       this.map.getSource('active-street').setData({
-        type: 'FeatureCollection', features: connected.filter(segment => segment.points.length > 1).map(toFeature)
+        type: 'FeatureCollection',
+        features: chains.map(points => ({
+          type: 'Feature',
+          properties: { name: activeName || '' },
+          geometry: {
+            type: 'LineString',
+            coordinates: points.map(point => this.worldToLngLat(point.x, point.y, loader)),
+          },
+        })),
       });
     }
   }

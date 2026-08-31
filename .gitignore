@@ -14,3 +14,5 @@ public/canal-drive/firebase-config.json
 .cache/
 public/data/extracts/*/staging/
 firebase-debug.log
+dist-canalrecall/
+.firebase/

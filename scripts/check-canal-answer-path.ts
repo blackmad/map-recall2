@@ -49,4 +49,22 @@ assert.deepEqual(revealed, ['Prinsengracht'], 'no idea reveals the answer');
 assert.equal(recordedCorrect, false, 'no idea records a miss in the recall store');
 assert.equal(rating, 'again', 'the injected recall store schedules no idea as again');
 
+const novel = submitAnswer({
+  correctName: 'Nes', answer: 'Nes',
+  score: { attempts: 0, correct: 0, points: 0, streak: 0, bestStreak: 0 },
+  difficultyMultiplier: 1, noveltyMultiplier: 1.15, gameyFeatures: true,
+  revealName() {},
+});
+assert.equal(novel.points, 115, 'a new-street answer earns the stated bounded multiplier');
+assert.match(novel.feedback, /1\.15× new street/, 'the bonus is explained where points are awarded');
+
+const calmNovel = submitAnswer({
+  correctName: 'Nes', answer: 'Nes',
+  score: { attempts: 0, correct: 0, points: 0, streak: 0, bestStreak: 0 },
+  difficultyMultiplier: 1, noveltyMultiplier: 1.15, gameyFeatures: false,
+  revealName() {},
+});
+assert.equal(calmNovel.points, 100, 'calm mode does not add arcade multipliers');
+assert.equal(calmNovel.feedback, 'Correct — Nes');
+
 process.stdout.write('Canal answer-path checks passed.\n');

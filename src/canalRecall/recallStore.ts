@@ -41,6 +41,26 @@ const write = (key: string, value: unknown) => {
   try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* private mode */ }
 };
 const stateId = (state: Pick<ReviewState, 'featureKey' | 'mode'>) => `${state.featureKey}_${state.mode}`;
+const routeNameKey = (name: string): string => name.normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+/** Collapse place-local review chunks into a conservative per-name routing prior. */
+export function routeMasteryFromStates(
+  states: readonly ReviewState[], cityId: string, now = Date.now(),
+): Record<string, number> {
+  const result: Record<string, number> = {};
+  for (const state of states) {
+    const feature = state.featureSnapshot;
+    if (state.mode !== 'guess_name' || feature.cityId !== cityId
+      || !['street', 'canal'].includes(feature.type)) continue;
+    const key = routeNameKey(feature.name);
+    if (!key || state.repetitions <= 0) continue;
+    const practiced = Math.min(1, state.repetitions / 3);
+    const current = state.dueAt > now ? practiced : practiced * 0.5;
+    result[key] = Math.max(result[key] ?? 0, current);
+  }
+  return result;
+}
 
 /** The scheduler is written against the React game's round shape. */
 function asRoundResult(feature: RecallFeature, correct: boolean, timeSpentMs: number): RoundResult {
@@ -156,6 +176,11 @@ class RecallStore {
     return Object.values(this.states)
       .filter((state) => state.mode === 'guess_name' && state.repetitions > 0 && state.dueAt > now)
       .map((state) => ({ name: state.featureSnapshot.name, center: state.featureSnapshot.center as LatLon }));
+  }
+
+  /** Per-name familiarity used only as a small route preference. */
+  routeMastery(cityId: string, now = Date.now()): Record<string, number> {
+    return routeMasteryFromStates(Object.values(this.states), cityId, now);
   }
 
   /**
