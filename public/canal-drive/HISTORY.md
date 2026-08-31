@@ -6,6 +6,22 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The pre-OSM track is deleted, and the suspicion about the car is retired.**
+  `track.js` had been superseded by `road-network.js` since open-road mode
+  landed, but the file kept loading on every page view. `this.track` is only
+  ever assigned a `RoadNetwork`; the `Track` class was constructed nowhere and
+  its name referenced nowhere; it defined nothing else. 186 lines and one
+  `<script>` tag gone.
+
+  `car.js` was on the same list of suspects and is **not** dead: `PlayerCar
+  extends Car`, so it is the live base physics. Recorded because "looks
+  superseded" was wrong once here and the next reader deserves the answer
+  rather than the suspicion. The `Track` interface in `collaborators.ts` stays
+  — it is structural, and what it now describes is `RoadNetwork`.
+
+  Verified with the driving harness and the full Canal Recall e2e spec on
+  desktop and iPhone.
+
 - **Routes now prefer useful unfamiliar streets, within a hard detour cap.**
   The spaced-repetition store collapses its place-local street/canal reviews
   into a conservative per-city, per-name mastery prior: one success is still
