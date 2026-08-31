@@ -30,6 +30,7 @@ export class BuildingTileStreamer {
   /** Tiles that returned nothing. Remembered so a gap is not refetched forever. */
   private readonly empty = new Set<string>();
   private inFlight = 0;
+  private onFirstBuildings?: () => void;
   private available = false;
   private disposed = false;
 
@@ -43,20 +44,42 @@ export class BuildingTileStreamer {
   /**
    * Is the complete city published? Resolves false when it is not, and the
    * caller should leave its existing source alone.
+   *
+   * This reads the index and checks that it *is* the index, rather than
+   * trusting the status code. Both this project's dev server and most static
+   * hosts answer an unknown path with the app's own `index.html` and a 200, so
+   * `response.ok` on a HEAD request is true whether or not the city exists.
+   * Believing it is not a cosmetic mistake: the caller would hide the basemap's
+   * extrusion, every tile fetch would return HTML, every parse would fail, and
+   * the player would drive through a city with no buildings in it at all.
    */
   async probe(): Promise<boolean> {
+    this.available = false;
     try {
-      const response = await fetch(`${this.baseUrl.replace(/\/$/, '')}/building-tiles/index-z${this.zoom}.json`, { method: 'HEAD' });
-      this.available = response.ok;
+      const response = await fetch(`${this.baseUrl.replace(/\/$/, '')}/building-tiles/index-z${this.zoom}.json`);
+      if (!response.ok) return false;
+      const index = (await response.json()) as { zoom?: number; tileList?: unknown };
+      this.available = index.zoom === this.zoom && Array.isArray(index.tileList) && index.tileList.length > 0;
     } catch {
+      // A JSON parse error here is the expected shape of "not published":
+      // the host handed back a page instead of the index.
       this.available = false;
     }
     return this.available;
   }
 
-  /** Follow the camera. Safe to call on every `moveend`. */
-  attach(): void {
+  /**
+   * Follow the camera. Safe to call on every `moveend`.
+   *
+   * `onFirstBuildings` fires once, when a tile has actually been parsed and
+   * carried buildings. The caller uses it to hide the basemap's own extrusion,
+   * which must not happen a moment earlier: hiding it on the strength of a
+   * successful probe alone would leave an empty map if the tiles turned out to
+   * be unreadable.
+   */
+  attach(onFirstBuildings?: () => void): void {
     if (!this.available) return;
+    this.onFirstBuildings = onFirstBuildings;
     this.map.on('moveend', () => { void this.update(); });
     void this.update();
   }
@@ -105,7 +128,13 @@ export class BuildingTileStreamer {
   }
 
   private flush(): void {
-    this.map.getSource(this.sourceId)?.setData(this.cache.collection());
+    const collection = this.cache.collection();
+    this.map.getSource(this.sourceId)?.setData(collection);
+    if (collection.features.length > 0 && this.onFirstBuildings) {
+      const announce = this.onFirstBuildings;
+      this.onFirstBuildings = undefined;
+      announce();
+    }
   }
 
   /** For diagnostics: how much of the city is resident right now. */
