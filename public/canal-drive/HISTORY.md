@@ -6,6 +6,35 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The OSM loader is an adapter: its arithmetic is typed and tested.**
+  Projection about a chosen centre, Douglas-Peucker, recentring the network on
+  the world origin, snapping a lat/lng onto the nearest carriageway,
+  start/finish selection, haversine and the slippy-tile grid all moved to
+  `src/canalRecall/osm/roadProjection.ts`. `osm-loader.js` went from 404 lines
+  to 268, and what remains is Overpass mirrors, failover and `Image` loading —
+  I/O that can only be tested by going to the network.
+
+  Two things worth keeping. The world is **centred twice**: ways are projected
+  about the geographic centre, then the whole network is translated so its
+  bounding box lands on `WORLD_ORIGIN` (1300, 1000). Anything projected later —
+  a POI, a home address, a basemap tile — must be given that same offset, which
+  is why `buildRoadSegments` returns it rather than hiding it. And
+  `WORLD_ORIGIN` is not decorative: `findStartFinish` measures "near the city
+  centre" as distance from it, so moving it moves every route's start.
+
+  The one deliberate behaviour change is the simplifier: recursive with a
+  `depth > 50` cap became an explicit stack. That cap returned the unsimplified
+  remainder without saying so. Measured, it never fires — the two agree exactly
+  on all 6,542 paths in the shipped extract, longest 1,665 points, and
+  `check-road-projection.ts` re-runs that comparison against the old algorithm
+  on every run. A latent hazard removed rather than a bug fixed.
+
+  The typed tile helpers are fractional so they round-trip; a tile *index* is
+  the floor of that, which is the caller's need and stays in the adapter.
+
+  Verified with the driving harness, the reachability audit, the car
+  regressions and the full Canal Recall e2e spec.
+
 - **The game speaks English: 448 Dutch ledes down to 4.**
   `trn` (hotchpotch/trn, Apple Intelligence via `--quality high`) is installed
   and the pass finally ran end to end. 314 features carry a translated lede,

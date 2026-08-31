@@ -84,12 +84,18 @@ TypeScript, painting and adapters in JavaScript.** `noticeCards.ts` +
 `renderer.js`, `bottomHud.ts` + `hud.js`, `streetOverlayStyle.ts` +
 `vector-map.js` are all this shape and all have tests on the half that decides.
 
-`road-network.js` is now an adapter: surface bands, junction-aware road-name
-selection, same-name feature stitching, graph construction and Dijkstra all
-live in tested typed modules. The genuinely un-migrated decision work is now:
+`road-network.js` and `osm-loader.js` are both adapters now. Surface bands,
+junction-aware road-name selection, same-name feature stitching, graph
+construction and Dijkstra live in typed modules; so do the projection,
+Douglas-Peucker simplification, network recentring, snapping, start/finish
+selection and the slippy-tile grid (`osm/roadProjection.ts`, 6,542 real
+Amsterdam paths asserted against the algorithm it replaced).
 
-- `osm-loader.js` (404) — the Overpass client is an adapter and can stay, but
-  the parsing and normalisation half is untyped logic.
+What is left in `osm-loader.js` is Overpass mirrors, failover and `Image`
+loading — network I/O that can only be tested by going to the network.
+
+**No un-migrated decision logic remains under this item.** What is left is
+item 8c's DOM work.
 
 Settled 2026-09-01: `track.js` was dead — `this.track` is only ever a
 `RoadNetwork`, and the `Track` class was constructed nowhere — so it is gone.
