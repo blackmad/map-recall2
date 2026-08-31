@@ -91,6 +91,14 @@ cheaper, and the migration plan buys it first.
 
 ### Identity and footprint
 
+**The hosted 3D Tiles carry identity but no 2D footprint.** Measured: the tiles
+give a `pand_id`, heights, year and quality per building, but their geometry is
+meshopt-compressed 3D mesh, with no ground polygon to extrude. A complete LoD1
+city therefore needs a footprint source those tiles do not provide. 3DBAG's API
+returns full CityJSON per pand — LoD1.2, LoD1.3 and LoD2.2 geometry with 62
+attributes — which is correct per building and hopeless for a few hundred
+thousand of them, so the bulk download is what Phase 1 has to settle first.
+
 **BAG `pand_id` is the canonical Dutch building identity.** It is stable across
 the government geometry and is the key used by the compiled appearance table.
 Retain OSM way/relation IDs as aliases for game landmarks, tags and editing
@@ -384,6 +392,56 @@ in place — and consumes the extract's outputs, but has its own cadence. See
 Cache aggressively at every stage. A full rebuild should be measured and stated
 in the manifest; if it cannot be resumed after a failure, it is not yet a build
 system.
+
+## When a renderer gets written
+
+Never, is the short answer, and it is worth stating plainly because "our own 3D
+buildings" sounds like it implies one.
+
+MapLibre stays: basemap, camera, labels, interaction, the game coordinate
+system. And the custom 3D layer already exists —
+`detailed-buildings-source.js` is a MapLibre custom layer sharing MapLibre's
+WebGL context, running the shared Three.js runtime and streaming 3D Tiles
+today. So the question is never "which renderer", only "what do we feed the
+layer we already have".
+
+That splits the cost into three honest stages:
+
+- **Phase 1 — no renderer work at all.** MapLibre `fill-extrusion`, flat tops,
+  complete city. The largest visible win costs nothing in renderer engineering.
+- **Phase 2 — still no new renderer.** Our own GLB goes into the existing custom
+  layer. This is where a sloped roof first appears on screen.
+- **Phase 3 onward — the real engineering, which is hardening, not authoring.**
+  The current layer is a spike: it clones a material per highlighted building,
+  has no memory budget, no tile eviction, no context-loss recovery, and calls
+  `map.triggerRepaint()` unconditionally every frame so the map never idles.
+  That list, not a renderer, is the work.
+
+### Roof shape, and why Phase 1 keeps flat tops
+
+A `fill-extrusion` is a prism with a flat top. It cannot slope a roof, at all,
+so the flat cap is the ceiling of that technology rather than a shortcut taken
+inside it. Sloped roofs arrive with the mesh layer in Phase 2 and not before.
+
+Measured over the current extract, the roof shapes waiting for that:
+
+| shape | count | what it needs |
+| --- | --- | --- |
+| flat | 1,939 | nothing; already correct |
+| gabled, skillion, hipped and friends | 2,824 | a ridge direction |
+| pyramidal, dome | 84 | an apex over the centroid |
+| other | 21 | case by case |
+
+The ridge direction is a real data gap: `build-osm-building-appearance.ts`
+extracts `roof:shape` and neither `roof:direction` nor `roof:orientation`, so
+2,824 of those roofs know their shape and not their orientation.
+
+That gap is probably not worth closing for Amsterdam. 3DBAG LoD2.2 already
+carries roof planes measured from AHN, so where reconstruction passes there is
+nothing to infer — the roof is observed. A procedural roof generator driven by
+OSM tags earns its place only where LoD2.2 is missing or rejected, and outside
+the Netherlands where there is no equivalent. Build it there, if at all, rather
+than reconstructing what has already been measured.
 
 ## Runtime architecture
 
