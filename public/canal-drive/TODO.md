@@ -78,9 +78,11 @@ live in tested typed modules. The genuinely un-migrated decision work is now:
 - `osm-loader.js` (404) — the Overpass client is an adapter and can stay, but
   the parsing and normalisation half is untyped logic.
 
-Also worth settling before either: `car.js` (189) and `track.js` (186) look
-superseded by the typed physics behind `test:canal-car` and by
-`road-network.js` respectively. Confirm and **delete** rather than port.
+Settled 2026-09-01: `track.js` was dead — `this.track` is only ever a
+`RoadNetwork`, and the `Track` class was constructed nowhere — so it is gone.
+`car.js` is **not** dead despite the same suspicion: `PlayerCar extends Car`,
+so it is live base physics and stays. The `Track` interface in
+`collaborators.ts` is structural and still describes `RoadNetwork`.
 
 Explicitly staying JavaScript: `game.js` (the orchestrator, and the integration
 hotspot CLAUDE.md reserves), `renderer.js`, `hud.js`, `vector-map.js`,
