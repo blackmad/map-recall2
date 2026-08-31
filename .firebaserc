@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "map-recall2-blackmad"
+  },
+  "targets": {
+    "map-recall2-blackmad": {
+      "hosting": {
+        "edumap": [
+          "edumap-blackmad"
+        ],
+        "canalrecall": [
+          "canalrecall-blackmad"
+        ]
+      }
+    }
   }
 }

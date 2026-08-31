@@ -1,5 +1,8 @@
 # Building appearance enrichment
 
+The runtime and mesh architecture consuming these observations is specified in
+[`BUILDING_RENDERER_DESIGN.md`](BUILDING_RENDERER_DESIGN.md).
+
 Status and implementation plan for turning government geometry and imagery into
 honest, reproducible building appearance data. This document distinguishes a
 measurement from a model guess: the renderer may use both, but the extract must

@@ -71,4 +71,8 @@ node --import tsx scripts/check-city-extract.ts "$build_dir" "$city_id"
 # Wikimedia or download failure must not replace a working city with a partly
 # enriched one.
 mkdir -p "$output_dir"
-cp "$build_dir"/* "$output_dir"/
+# Regular files only. `cp "$build_dir"/*` fails on the `staging/` directory the
+# bridge builders create, which made a completely successful refresh exit 1
+# after it had already copied everything — the worst kind of failure, because
+# the data is published and the pipeline says it broke.
+find "$build_dir" -maxdepth 1 -type f -exec cp {} "$output_dir"/ \;

@@ -1,7 +1,7 @@
 {
   "cityId": "utrecht",
   "source": "OpenStreetMap / BBBike Utrecht extract",
-  "generatedAt": "2026-08-30T21:50:46.371Z",
+  "generatedAt": "2026-08-31T12:33:02.851Z",
   "center": [
     52.0907374,
     5.1214201
@@ -11,23 +11,23 @@
       "file": "water.json",
       "count": 80,
       "availableCount": 80,
-      "bytes": 110289,
+      "bytes": 103692,
       "availableLinkedCount": 21,
       "linkedCount": 21
     },
     "streets": {
       "file": "streets.json",
       "count": 300,
-      "availableCount": 3237,
-      "bytes": 355886,
+      "availableCount": 3236,
+      "bytes": 591271,
       "availableLinkedCount": 39,
-      "linkedCount": 26
+      "linkedCount": 27
     },
     "bridges": {
       "file": "bridges.json",
       "count": 300,
       "availableCount": 405,
-      "bytes": 171073,
+      "bytes": 177651,
       "availableLinkedCount": 67,
       "linkedCount": 67
     },
@@ -35,33 +35,33 @@
       "file": "squares.json",
       "count": 16,
       "availableCount": 16,
-      "bytes": 15484,
+      "bytes": 14675,
       "availableLinkedCount": 7,
       "linkedCount": 7
     },
     "parks": {
       "file": "parks.json",
-      "count": 151,
-      "availableCount": 151,
-      "bytes": 270986,
-      "availableLinkedCount": 25,
-      "linkedCount": 25
+      "count": 154,
+      "availableCount": 154,
+      "bytes": 256514,
+      "availableLinkedCount": 26,
+      "linkedCount": 26
     },
     "landmarks": {
       "file": "landmarks.json",
-      "count": 380,
-      "availableCount": 380,
-      "bytes": 238384,
-      "availableLinkedCount": 122,
-      "linkedCount": 122
+      "count": 420,
+      "availableCount": 469,
+      "bytes": 251831,
+      "availableLinkedCount": 130,
+      "linkedCount": 130
     },
     "all": {
       "file": "all.json",
       "count": 391,
-      "availableCount": 4269,
-      "bytes": 586813,
-      "availableLinkedCount": 281,
-      "linkedCount": 221
+      "availableCount": 4360,
+      "bytes": 629751,
+      "availableLinkedCount": 290,
+      "linkedCount": 223
     }
   },
   "boundaries": {
@@ -70,7 +70,10 @@
   },
   "brandedPois": {
     "file": "branded-pois.json",
-    "count": 292
+    "count": 528
+  },
+  "localFoodPois": {
+    "count": 499
   },
   "majorChains": [
     {
@@ -81,330 +84,10 @@
       "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Albert_Heijn_Logo.svg/330px-Albert_Heijn_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     },
     {
-      "name": "Kruidvat",
-      "brandWikidata": "Q2226366",
-      "count": 23,
-      "icon": "brand-q2226366",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Kruidvat_logo.svg/330px-Kruidvat_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Etos",
-      "brandWikidata": "Q2609459",
-      "count": 15,
-      "icon": "brand-q2609459",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Etos_logo.svg/330px-Etos_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "HEMA",
-      "brandWikidata": "Q903805",
-      "count": 12,
-      "icon": "brand-q903805",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/HEMA_Logo.svg/330px-HEMA_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Jumbo",
-      "brandWikidata": "Q2262314",
-      "count": 10,
-      "icon": "brand-q2262314",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Jumbo_Logo.svg/330px-Jumbo_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Kiosk",
-      "brandWikidata": "Q109186217",
-      "count": 10
-    },
-    {
-      "name": "Gall & Gall",
-      "brandWikidata": "Q13639185",
-      "count": 9,
-      "icon": "brand-q13639185",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Gall_logo.svg/330px-Gall_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Primera",
-      "brandWikidata": "Q2176149",
-      "count": 8
-    },
-    {
-      "name": "Zeeman",
-      "brandWikidata": "Q184399",
-      "count": 8,
-      "icon": "brand-q184399",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Zeeman_logo.svg/330px-Zeeman_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Bruna",
-      "brandWikidata": "Q3317555",
-      "count": 7,
-      "icon": "brand-q3317555",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Bruna_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
-    },
-    {
-      "name": "Holland & Barrett",
-      "brandWikidata": "Q5880870",
-      "count": 7
-    },
-    {
-      "name": "Pearle",
-      "brandWikidata": "Q2231148",
-      "count": 7
-    },
-    {
-      "name": "Kwik Fit",
-      "brandWikidata": "Q958053",
-      "count": 6,
-      "icon": "brand-q958053",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Kwik-Fit_Autoservice_logo.JPG/330px-Kwik-Fit_Autoservice_logo.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Lidl",
-      "brandWikidata": "Q151954",
-      "count": 6,
-      "icon": "brand-q151954",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Lidl-Logo.svg/330px-Lidl-Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Rituals",
-      "brandWikidata": "Q62874140",
-      "count": 6,
-      "icon": "brand-q62874140",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Rituals_Cosmetics_logo.png/330px-Rituals_Cosmetics_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Wibra",
-      "brandWikidata": "Q943405",
-      "count": 6,
-      "icon": "brand-q943405",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Wibra_Wallonie_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
-    },
-    {
-      "name": "Action",
-      "brandWikidata": "Q2634111",
-      "count": 5,
-      "icon": "brand-q2634111",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Action_Nederland_Logo_2020.svg/330px-Action_Nederland_Logo_2020.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
       "name": "Albert Heijn to go",
       "brandWikidata": "Q77971185",
-      "count": 5
-    },
-    {
-      "name": "Eye Wish",
-      "brandWikidata": "Q62391641",
       "count": 5,
-      "icon": "brand-q62391641",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Eye_Wish_Opticiens_Logo.png/330px-Eye_Wish_Opticiens_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "PLUS",
-      "brandWikidata": "Q1978981",
-      "count": 5,
-      "icon": "brand-q1978981",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/PLUS_supermarket_logo.svg/330px-PLUS_supermarket_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Sissy-Boy",
-      "brandWikidata": "Q17125357",
-      "count": 5,
-      "icon": "brand-q17125357",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Sissy-Boy_logo.svg/330px-Sissy-Boy_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Bakker Bart",
-      "brandWikidata": "Q2177445",
-      "count": 4
-    },
-    {
-      "name": "Dirk",
-      "brandWikidata": "Q17502722",
-      "count": 4,
-      "icon": "brand-q17502722",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Dirk_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
-    },
-    {
-      "name": "Hizi Hair",
-      "brandWikidata": "Q122903761",
-      "count": 4
-    },
-    {
-      "name": "Hunkemöller",
-      "brandWikidata": "Q2604175",
-      "count": 4,
-      "icon": "brand-q2604175",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Hunkemoeller_Logo.svg/330px-Hunkemoeller_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Lucardi",
-      "brandWikidata": "Q13774940",
-      "count": 4,
-      "icon": "brand-q13774940",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Lucardi_Logo_2023.svg/330px-Lucardi_Logo_2023.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "SPAR university",
-      "brandWikidata": "Q124630660",
-      "count": 4
-    },
-    {
-      "name": "Xenos",
-      "brandWikidata": "Q16547960",
-      "count": 4,
-      "icon": "brand-q16547960",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Logo-Xenos-Rubin-Red.png/330px-Logo-Xenos-Rubin-Red.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "ALDI",
-      "brandWikidata": "Q41171373",
-      "count": 3,
-      "icon": "brand-q41171373",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/AldiNord-WorldwideLogo.svg/330px-AldiNord-WorldwideLogo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Bakker van Maanen",
-      "brandWikidata": "Q123435188",
-      "count": 3,
-      "icon": "brand-q123435188",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Bakker_van_Maanen_Logo.png/330px-Bakker_van_Maanen_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "C&A",
-      "brandWikidata": "Q701338",
-      "count": 3,
-      "icon": "brand-q701338",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/C%26A_logo.svg/330px-C%26A_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Douglas",
-      "brandWikidata": "Q2052213",
-      "count": 3,
-      "icon": "brand-q2052213",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Douglas_Logo_06.2018.svg/330px-Douglas_Logo_06.2018.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Foot Locker",
-      "brandWikidata": "Q63335",
-      "count": 3,
-      "icon": "brand-q63335",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Foot_Locker_wordmark_1988.svg/330px-Foot_Locker_wordmark_1988.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Gamma",
-      "brandWikidata": "Q2294120",
-      "count": 3,
-      "icon": "brand-q2294120",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Gamma_logo_2010.png/330px-Gamma_logo_2010.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Hans Anders",
-      "brandWikidata": "Q1884976",
-      "count": 3,
-      "icon": "brand-q1884976",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Logo_of_Hans_Anders.svg/330px-Logo_of_Hans_Anders.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "ICI PARIS XL",
-      "brandWikidata": "Q769749",
-      "count": 3,
-      "icon": "brand-q769749",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/ICI_Paris_XL_logo.svg/330px-ICI_Paris_XL_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Intertoys",
-      "brandWikidata": "Q1891407",
-      "count": 3
-    },
-    {
-      "name": "Intratuin",
-      "brandWikidata": "Q2927176",
-      "count": 3
-    },
-    {
-      "name": "Kinki Kappers",
-      "brandWikidata": "Q124152910",
-      "count": 3
-    },
-    {
-      "name": "Leonidas",
-      "brandWikidata": "Q80335",
-      "count": 3
-    },
-    {
-      "name": "Livera",
-      "brandWikidata": "Q122903959",
-      "count": 3
-    },
-    {
-      "name": "Manfield",
-      "brandWikidata": "Q58328872",
-      "count": 3
-    },
-    {
-      "name": "Mango",
-      "brandWikidata": "Q136503",
-      "count": 3,
-      "icon": "brand-q136503",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Logo_of_Mango_%28new%29.svg/330px-Logo_of_Mango_%28new%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Nelson Schoenen",
-      "brandWikidata": "Q114905305",
-      "count": 3
-    },
-    {
-      "name": "Normal",
-      "brandWikidata": "Q19562429",
-      "count": 3,
-      "icon": "brand-q19562429",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Normal_logo.svg/330px-Normal_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Odido",
-      "brandWikidata": "Q28406140",
-      "count": 3,
-      "icon": "brand-q28406140",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Odido_2023_Logo.png/330px-Odido_2023_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Rejoes",
-      "brandWikidata": "Q134722154",
-      "count": 3
-    },
-    {
-      "name": "Shoeby",
-      "brandWikidata": "Q109186138",
-      "count": 3,
-      "icon": "brand-q109186138",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Shoeby-logo.svg/330px-Shoeby-logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "Shurgard",
-      "brandWikidata": "Q3482670",
-      "count": 3,
-      "icon": "brand-q3482670",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/5/52/Shurgard_Logo_2012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
-    },
-    {
-      "name": "SoLow",
-      "brandWikidata": "Q114243473",
-      "count": 3
-    },
-    {
-      "name": "Trekpleister",
-      "brandWikidata": "Q2551576",
-      "count": 3,
-      "icon": "brand-q2551576",
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Trekpleister.svg/330px-Trekpleister.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "name": "vanHaren",
-      "brandWikidata": "Q62390668",
-      "count": 3
-    },
-    {
-      "name": "Zuivelhoeve",
-      "brandWikidata": "Q106581549",
-      "count": 3
+      "icon": "albert-heijn"
     }
   ],
   "cityProfile": {
@@ -413,7 +96,7 @@
   },
   "brandIdentifiers": {
     "file": "brand-identifiers.json",
-    "count": 53,
-    "logoCount": 34
+    "count": 2,
+    "logoCount": 1
   }
 }
