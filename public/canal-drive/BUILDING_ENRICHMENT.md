@@ -174,6 +174,18 @@ a manually reviewed landmark or one-block pilot. If licensing or reliable
 geometry is unavailable, retain OSM material plus an age/use prior and abstain
 from texture assignment.
 
+The first ingestion/review tool is `scripts/build-panorama-facade-review.ts`.
+It deterministically selects buildings, asks the municipal API for the newest
+nearby panorama and an automatically aimed crop, caches images and provenance
+under `.cache/facade-review`, and emits a browser review sheet with controlled
+façade material/colour, visible roof material and Dutch building-typology
+labels. Typology is orthogonal to appearance: a `canal-house` may be brick,
+stone or plaster and any measured colour. Passing `--model=...` asks a locally
+running Ollama vision model for proposals; model output remains a hint until a
+person accepts or corrects it. Panorama roof labels are accepted only when the
+covering is visible; flat or hidden roofs remain unknown and use aerial/3DBAG
+evidence instead.
+
 ## Recommended next run
 
 Before training anything, repair the sampler and review 200 stratified roofs.
