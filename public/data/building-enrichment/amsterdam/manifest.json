@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "publishedAt": "2026-08-31T14:20:50.818Z",
+  "status": "machine-annotations-accepted-for-now",
+  "priorityRegion": "inside-a10",
+  "artifacts": [
+    "summary.json",
+    "a10-boundary.geojson",
+    "machine-panorama-labels.json"
+  ],
+  "sourceCache": ".cache/building-enrichment (not committed; regenerate with npm scripts)",
+  "counts": {
+    "buildings": 198271,
+    "insideA10Buildings": 113722,
+    "observations": 152,
+    "modelLabels": 152,
+    "humanLabels": 0
+  }
+}
