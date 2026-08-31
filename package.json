@@ -38,6 +38,7 @@
     "test:canal-car": "tsx scripts/check-canal-car.ts",
     "test:reachability": "tsx scripts/check-road-reachability.ts",
     "build:roof-colours": "tsx scripts/build-satellite-roof-colours.ts",
+    "build:facade-review": "node --import tsx scripts/build-panorama-facade-review.ts",
     "build:canal-neighborhoods": "esbuild src/canalRecall/neighborhoodState.ts --bundle --format=iife --global-name=CanalRecallNeighborhood --outfile=public/canal-drive/js/neighborhood-state.bundle.js --minify",
     "test:neighborhoods": "tsx scripts/check-neighborhood-transitions.ts",
     "check:canal": "npm run lint && npm run build:canal-road-graph && npm run build:canal-bottom-hud && npm run build:canal-cards && npm run build:canal-answer-path && npm run build:canal-route-selection && npm run build:canal-boat-corridor && npm run build:canal-city-overview && npm run build:canal-game-landmarks && npm run build:canal-game-recall && npm run build:canal-game-presentation && npm run test:landmark-data && npm run test:landmark-notice && npm run test:recall-rules && npm run test:boat-navigability && npm run test:city-overview && npm run test:route-selection && npm run test:route-ribbon && npm run test:canal-game-structure && npm run test:canal-car && npm run test:canal-streets && npm run test:neighborhoods && npm run test:bridge-crossings && npm run test:bridge-distractors && npm run test:bridge-railways && npm run test:srs && npm run test:road-graph && npm run test:bottom-hud && npm run test:notice-cards && npm run test:canal-answer-path && npm run test:reachability && npm run build-storybook",
@@ -74,7 +75,10 @@
     "build:canal-route-selection": "esbuild src/canalRecall/game/routeSelection.ts --bundle --format=iife --global-name=CanalRecallRoute --outfile=public/canal-drive/js/route-selection.bundle.js --minify",
     "test:route-selection": "tsx scripts/check-route-selection.ts",
     "build:canal-game-presentation": "esbuild src/canalRecall/game/presentationRuntime.ts --bundle --format=iife --outfile=public/canal-drive/js/game-presentation.bundle.js",
-    "test:route-ribbon": "tsx scripts/check-route-ribbon.ts"
+    "test:route-ribbon": "tsx scripts/check-route-ribbon.ts",
+    "refresh:rotterdam": "bash scripts/refresh-city-extract.sh rotterdam Rotterdam 51.9225,4.47917 Rotterdam",
+    "refresh:den-haag": "bash scripts/refresh-city-extract.sh den-haag \"'s-Gravenhage\" 52.0705,4.3007 DenHaag",
+    "refresh:randstad": "bash scripts/refresh-randstad.sh"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

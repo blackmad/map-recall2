@@ -13,3 +13,4 @@ public/canal-drive/firebase-config.json
 # Aerial imagery tile cache for scripts/build-satellite-roof-colours.ts
 .cache/
 public/data/extracts/*/staging/
+firebase-debug.log

@@ -173,8 +173,17 @@ const curation = await readFile(curationFile, 'utf8').then((contents) => JSON.pa
   landmarks?: CuratedLandmark[];
 };
 const boundarySource = JSON.parse(await readFile(boundaryFile, 'utf8')) as { features: GeoJsonFeature[] };
-const municipality = boundarySource.features.find((feature) => feature.properties.name === cityName
-  && feature.properties.boundary === 'administrative' && feature.properties.admin_level === '8');
+// A municipality is not always mapped under the name people call it: The Hague
+// is `'s-Gravenhage` in OSM, with `Den Haag` on `name:nl` or `alt_name`. Match
+// any of the names the relation carries so a city does not need a special case
+// in the caller.
+const municipalityNames = (feature: GeoJsonFeature): string[] => [
+  feature.properties.name, feature.properties['name:nl'], feature.properties['name:en'],
+  feature.properties.official_name, feature.properties.alt_name,
+].filter((value): value is string => typeof value === 'string');
+const municipality = boundarySource.features.find((feature) =>
+  feature.properties.boundary === 'administrative' && feature.properties.admin_level === '8'
+  && municipalityNames(feature).some((value) => value.toLocaleLowerCase() === cityName.toLocaleLowerCase()));
 if (!municipality || !municipality.geometry || !['Polygon', 'MultiPolygon'].includes(municipality.geometry.type)) {
   throw new Error(`${cityName} municipality polygon was not found`);
 }
