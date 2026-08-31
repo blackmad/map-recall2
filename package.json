@@ -38,6 +38,7 @@
     "test:canal-car": "tsx scripts/check-canal-car.ts",
     "test:reachability": "tsx scripts/check-road-reachability.ts",
     "build:roof-colours": "tsx scripts/build-satellite-roof-colours.ts",
+    "test:lod1-city": "node --max-old-space-size=6144 --import tsx scripts/check-lod1-city.ts",
     "build:lod1-city": "tsx scripts/build-lod1-city.ts",
     "build:bag-buildings": "tsx scripts/build-bag-buildings.ts",
     "fetch:3dbag": "tsx scripts/fetch-3dbag-tiles.ts",
