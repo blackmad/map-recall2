@@ -10,11 +10,15 @@
 // declares the state it actually touches and the compiler can say when a
 // subsystem starts reaching into a neighbour's state.
 
-import type { Camera, InputManager, OsmLoader, Renderer, Track, VectorMap } from './collaborators';
+import type {
+  Camera, Hud, InputManager, LoadingScreen, OsmLoader, ParticleSystem, Renderer, Track, VectorMap,
+} from './collaborators';
 import type { StreetKnowledgeEntry } from './extracts';
 import type {
-  AnswerMode, QuizPromptKind, RouteDifficulty, TravelMode,
+  AnswerMode, QuizPromptKind, RouteDifficulty, TravelMode, ViewMode,
 } from './modes';
+import type { Exploration } from './progressStore';
+import type { RibbonAid, RouteRibbon } from './routeRibbon';
 import type { AnswerRecallStore } from '../answerPath';
 import type { RecallFeature } from '../recallStore';
 import type { NoticeHold, NoticeState } from './landmarkNotice';
@@ -170,4 +174,78 @@ export interface RecallHost extends GameCoreHost {
   /** Owned by other subsystems. */
   _savePreferences(): void;
   _showStreetKnowledge(name: string): void;
+}
+
+/** Frame composition, the menu, the pause overlay and the finish card. */
+export interface PresentationHost extends GameCoreHost {
+  state: number;
+  track: Track;
+  hud: Hud;
+  particles: ParticleSystem;
+  loadingScreen: LoadingScreen;
+
+  loadingMessage: string;
+  loadingProgress: number;
+  showMiniMap: boolean;
+  gameyFeatures: boolean;
+  viewMode: ViewMode;
+  routeDifficulty: RouteDifficulty;
+  routeOptions: { answerMode: AnswerMode; line: boolean; arrow: boolean; minimap: boolean };
+
+  routeFrom: { id: string; name: string };
+  routeTo: { id: string; name: string };
+  routePath: WorldPoint[] | null;
+  _liveRoutePath: WorldPoint[] | null;
+  /** Length of the route planned at the start — the efficiency reference,
+   *  because the live line is consumed as the player advances. */
+  _plannedRouteLengthPx: number;
+
+  landmarks: Landmark[];
+  _landmarkImages: Map<string, HTMLImageElement>;
+
+  quizCorrect: number;
+  quizAttempts: number;
+  quizPoints: number;
+  quizStreak: number;
+  quizBestStreak: number;
+  quizFeedback: string;
+  quizCurrentName: string;
+  quizCandidateName: string;
+  quizPromptSegmentIndex: number;
+  quizPromptPointIndex: number;
+
+  learnedNames: Set<string>;
+  _mapLabelNames: Set<string>;
+  _visitedNeighborhoods: Set<string>;
+  _seenLandmarkNames: Set<string>;
+
+  _ribbon: RouteRibbon | null;
+  _explorationSnapshot: Exploration | null;
+  _assistUsage: Partial<Record<RibbonAid, boolean>>;
+
+  _raceKey: string | null;
+  _shareUrl: string | null;
+  _copiedTimer: number;
+  _menuQuote: { text: string; character: string } | null;
+  _debugMode: boolean;
+  _lastZoomShown: number | null;
+
+  /** Canvas hit targets, recomputed as they are drawn. */
+  _alanLinkBounds: LinkBounds | null;
+  _githubLinkBounds: LinkBounds | null;
+  _recenterBtnBounds: LinkBounds | null;
+
+  /** Owned by other subsystems. */
+  _renderBridgeLabels(): void;
+  _renderLandmarkNotice(): void;
+  _renderNeighborhoodNotice(): void;
+  _renderDebug(): void;
+  _isPlaceKnown(name: string, x: number, y: number): boolean;
+}
+
+export interface LinkBounds {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
 }

@@ -9,6 +9,10 @@ import type { BuildingHit, LandmarkNotice, WorldPoint } from './worldTypes';
 
 export interface Camera {
   worldToScreen(worldX: number, worldY: number): WorldPoint;
+  zoom: number;
+  /** How far the player has dragged the view off the vehicle. */
+  panX: number;
+  panY: number;
 }
 
 export interface InputManager {
@@ -65,9 +69,55 @@ export interface NearestRoad {
 
 export interface Track {
   segments: RoadSegment[];
+  startPoint: WorldPoint;
+  finishPoint: WorldPoint;
   /** The name of the way under a point, or '' where nothing is mapped. */
   getRoadName(x: number, y: number): string;
   getNearestRoad(x: number, y: number): NearestRoad | null;
+  getDistanceToFinish(x: number, y: number): number;
+  /**
+   * `isKnown` decides per label *and per place*, not per name: knowing the
+   * Overtoom at the Vondelpark must not write it across the Kinkerbuurt end
+   * that has never been asked. `withheld` is the name currently under question,
+   * which the map must never answer.
+   */
+  drawLabels(
+    ctx: CanvasRenderingContext2D,
+    camera: Camera,
+    isKnown: (text: string, x: number, y: number) => boolean,
+    withheld: string,
+    player: WorldPoint | null,
+  ): void;
+}
+
+export interface ParticleSystem {
+  update(dt: number): void;
+}
+
+export interface LoadingScreen {
+  draw(ctx: CanvasRenderingContext2D, message: string, progress: number): void;
+}
+
+/** The canvas HUD. Everything here draws; nothing here decides. */
+export interface Hud {
+  setTime(seconds: number): void;
+  formatTime(seconds: number): string;
+  drawTripReadout(ctx: CanvasRenderingContext2D, speed: number, distancePx: number): void;
+  drawCanalScore(
+    ctx: CanvasRenderingContext2D, correct: number, attempts: number, points: number,
+    feedback: string, streak?: number, gamey?: boolean,
+  ): void;
+  drawCurrentLocation(
+    ctx: CanvasRenderingContext2D, routeName: string, neighborhood: string,
+    travelMode: string, answerHidden?: boolean,
+  ): void;
+  drawDestination(ctx: CanvasRenderingContext2D, name: string, distancePx: number): void;
+  drawFinishDirection(
+    ctx: CanvasRenderingContext2D, playerX: number, playerY: number,
+    finishX: number, finishY: number, camera: Camera,
+  ): void;
+  drawCityOverview(ctx: CanvasRenderingContext2D, game: unknown): void;
+  drawTouchHint(ctx: CanvasRenderingContext2D): void;
 }
 
 export interface Renderer {
@@ -85,9 +135,32 @@ export interface Renderer {
     y: number,
     image: CanvasImageSource | null,
   ): void;
+  drawTrack(camera: Camera, track: Track): void;
+  drawQuestionFeature(
+    camera: Camera, track: Track, featureName: string,
+    segmentIndex: number, pointIndex: number, time: number,
+  ): void;
+  drawSkidMarks(particles: ParticleSystem, camera: Camera): void;
+  drawParticles(particles: ParticleSystem, camera: Camera): void;
+  /** The boat glyph. */
+  drawCar(car: unknown, camera: Camera): void;
+  /** The bike/car glyph. */
+  drawPlayerCar(car: unknown, camera: Camera): void;
 }
 
 export interface VectorMap {
+  ready?: boolean;
+  sync(camera: Camera, loader: OsmLoader, canvas: HTMLCanvasElement): void;
+  setPlayerBike(player: unknown, loader: OsmLoader, visible: boolean): void;
+  setPlayerBoat(player: unknown, loader: OsmLoader, visible: boolean): void;
+  isPlayerBikeReady(): boolean;
+  isPlayerBoatReady(): boolean;
+  setRoute(routePath: readonly WorldPoint[] | null, loader: OsmLoader, visible: boolean): void;
+  setStreetHighlights(
+    track: Track, loader: OsmLoader, learnedNames: Set<string>,
+    activeName: string, activeSegmentIndex: number,
+  ): void;
+  isWater(x: number, y: number, loader: OsmLoader): boolean;
   inspectBuilding(cssX: number, cssY: number, canvasRect: DOMRect): BuildingHit | null;
   setActiveLandmark(landmark: LandmarkNotice | null): void;
   setPlaces(landmarks: unknown, boundaries: unknown): void;

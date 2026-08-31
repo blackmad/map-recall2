@@ -51,6 +51,22 @@ declare const QUIZ_SUBJECTS: Record<import('./modes').QuizSubject, {
 declare const DIFFICULTY_SCORE_MULTIPLIERS:
   Record<import('./modes').RouteDifficulty, number>;
 
+declare const GAME_VERSION: string;
+/** Frozen enum from `game.js`. */
+declare const GameState: {
+  MENU: number; MAP_SELECT: number; LOADING: number;
+  RACING: number; FINISHED: number; PAUSED: number;
+};
+/** Seconds the zoom percentage lingers after a change. */
+declare const ZOOM_BADGE_DURATION: number;
+declare const BANDIT_QUOTES: Array<{ text: string; character: string }>;
+
+/** Wraps `text` to `maxWidth` using the context's current font, at most
+ *  `maxLines` lines. From `utils.js`. */
+declare function wrapText(
+  ctx: CanvasRenderingContext2D, text: string, maxWidth: number, maxLines: number,
+): string[];
+
 /** Canvas helper from `utils.js`; traces the path without filling it. */
 declare function roundRect(
   ctx: CanvasRenderingContext2D,

@@ -38,6 +38,28 @@ is the way it is, and that is the expensive part to recover later.
   stopped being expensive. Translation can run against a local Ollama model,
   which removes the Gemini key from the path to English ledes.
 
+- **The presentation subsystem is typed, and what the game rewards is tested.**
+  `game-presentation.js` was the last big untyped file: 872 lines that both
+  decided the grade and painted it. The grading is now `routeRibbon.ts` and the
+  collection is `progressStore.ts`, together under 21 assertions that state the
+  product position outright — speed is not an input, the recall gate sits above
+  the blended score so a spotless silent run cannot buy a ribbon, every aid you
+  leaned on costs self-reliance, typing buys some of it back, and an axis that
+  cannot be measured is dropped rather than scored zero.
+
+  Persistence stopped reaching for `localStorage` and takes an injected store,
+  so eviction and merging are testable: personal bests evict oldest-first,
+  waterways and streets are collected apart, driving the same street twice
+  counts once, and a stored collection missing a newer field is topped up
+  rather than blanked.
+
+  Typing it immediately found a live bug. The menu's returning-player badge
+  referenced an undefined `cx` inside a `try/catch` that swallowed the
+  `ReferenceError`, so it threw on every menu frame and the badge has never
+  drawn for anyone. It draws now, and the Playwright check asserts *where* it
+  lands rather than merely that the call happened — passing an undefined
+  coordinate is what the bug looked like once its error was caught.
+
 - **The minimap is a city overview.** It drew about 450 m of network centred on
   the vehicle, with canals and streets as the same thin white line — and at that
   scale every part of Amsterdam looks like every other part, which is the

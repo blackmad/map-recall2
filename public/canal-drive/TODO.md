@@ -55,17 +55,14 @@ recall rather than interrupt every junction.
 ## P2 — Weight and reach
 
 **8b. Finish typing the game subsystems.**
-`game-landmarks` and `game-recall` are done, and `game-route`'s geographic
-rules are extracted to `routeSelection.ts`. What is left is untyped JavaScript
-in `game-route.js` (~350 lines, almost all DOM form plumbing) and
-`game-presentation.js` (872 lines of canvas).
+`game-landmarks`, `game-recall` and `game-presentation` are done, and
+`game-route`'s geographic rules are extracted to `routeSelection.ts`. What is
+left is one file: `game-route.js`, ~350 lines that are almost entirely settings
+form plumbing.
 
-Do presentation next, not route. Presentation has prior art worth reusing — an
-abandoned `finishScreen.ts` on the merged `finish-renderer-ts` branch models
-the finish screen as a pure layout function driven by a typed model and tested
-against a recording canvas context. Route's remainder is the settings form,
-which is the part a UI framework would delete rather than type; translating it
-verbatim first would be work thrown away. See item 8c.
+That remainder is deliberately parked behind item 8c, because it is the part a
+UI framework would delete rather than type — translating it verbatim first
+would be work thrown away.
 *The rule to keep: what the player is told is typed and tested; what paints it
 is not. Do not translate a method verbatim if the decision inside it belongs in
 the data half.*

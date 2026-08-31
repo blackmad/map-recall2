@@ -17,6 +17,7 @@ const generatedBundles = [
   'js/game-landmarks.bundle.js',
   'js/game-recall.bundle.js',
   'js/route-selection.bundle.js',
+  'js/game-presentation.bundle.js',
 ];
 
 const packageScripts = JSON.parse(fs.readFileSync('package.json', 'utf8')).scripts;
@@ -55,7 +56,7 @@ const runtimeFiles = [
   'js/game-landmarks.bundle.js',
   'js/game-recall.bundle.js',
   'js/game-route.js',
-  'js/game-presentation.js',
+  'js/game-presentation.bundle.js',
 ];
 const gameFile = 'js/game.js';
 // Typed leaves the subsystems call through. They are loaded into the sandbox
