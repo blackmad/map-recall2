@@ -1,0 +1,213 @@
+/**
+ * Merge 3DBAG and OSM into one building source, one winner per building.
+ *
+ * This is Phase 1's deliverable. Today the game draws buildings from three
+ * layers that each describe the same city — the basemap's gray extrusion, an
+ * OSM colour layer and an OSM roof cap — and keeps them from z-fighting by
+ * offsetting their heights by centimetres. Only a tenth of the city is
+ * described at all, and most of its heights are `levels * 3` or a flat 9 m.
+ *
+ * The output is a single source in which every building appears exactly once,
+ * at the best tier available for it, carrying that tier so a screenshot can be
+ * traced back to whether the game measured something or inherited it:
+ *
+ *   tier 2  hand-mapped OSM parts — the Waag keeps its fourteen stepped parts
+ *   tier 3  the 3DBAG extrusion at its AHN-measured height — most of the city
+ *   tier 4  an OSM footprint BAG does not hold — canopies, ruins, some parts
+ *
+ * The BAG table is streamed a line at a time rather than parsed whole. It is
+ * one feature per line by construction, and a complete city does not want to
+ * be a single JSON value in memory.
+ *
+ * Staging only. It reports what changed and does not publish into the
+ * versioned extract; promotion stays a decision someone makes.
+ *
+ * Usage:
+ *   npm run build:lod1-city                 # amsterdam, from staging + extract
+ *   npm run build:lod1-city -- --city=utrecht
+ */
+
+import { createReadStream, createWriteStream } from 'node:fs';
+import { once } from 'node:events';
+import { createInterface } from 'node:readline';
+import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { BAG3D_VERSION } from '../src/canalRecall/bag3dTiles.js';
+import { decideTier, FootprintGrid, type LadderTier, type OsmFootprint, type Ring } from '../src/canalRecall/buildingLadder.js';
+
+const flag = (name: string): string | undefined =>
+  process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
+
+const city = flag('city') ?? 'amsterdam';
+const extractDir = path.join('public', 'data', 'extracts', city);
+const stagingDir = path.join(extractDir, 'staging');
+const bagFile = path.join(stagingDir, 'bag-buildings.geojson');
+const osmFile = path.join(extractDir, 'buildings-colored.geojson');
+const outputFile = path.join(stagingDir, 'lod1-city.geojson');
+const reportFile = path.join(stagingDir, 'lod1-city.report.json');
+
+type Geometry = { type: 'Polygon'; coordinates: Ring[] } | { type: 'MultiPolygon'; coordinates: Ring[][] };
+type Feature = { properties: Record<string, unknown>; geometry: Geometry };
+
+const ringsOf = (geometry: Geometry): Ring[] =>
+  geometry.type === 'Polygon' ? geometry.coordinates : geometry.coordinates.flat();
+
+const asGeometry = (rings: Ring[]): Geometry =>
+  rings.length === 1 ? { type: 'Polygon', coordinates: rings } : { type: 'MultiPolygon', coordinates: rings.map(ring => [ring]) };
+
+if (!(await stat(bagFile).catch(() => null))) {
+  process.stderr.write(`${bagFile} is missing — run \`npm run build:bag-buildings\` first\n`);
+  process.exit(1);
+}
+
+// --- the OSM side, indexed ---------------------------------------------------
+type OsmBuilding = OsmFootprint & { properties: Record<string, unknown> };
+const osm = JSON.parse(await readFile(osmFile, 'utf8')) as { features: Feature[] };
+const grid = new FootprintGrid<OsmBuilding>();
+const osmById = new Map<string, OsmBuilding>();
+for (const feature of osm.features) {
+  const rings = ringsOf(feature.geometry);
+  if (rings.length === 0) continue;
+  const building: OsmBuilding = {
+    osmId: String(feature.properties.osmId ?? ''),
+    rings,
+    minHeightM: Number(feature.properties.minHeight ?? 0),
+    heightM: Number(feature.properties.height ?? 0),
+    roofShape: (feature.properties.roofShape as string) || undefined,
+    properties: feature.properties
+  };
+  grid.add(building);
+  osmById.set(building.osmId, building);
+}
+
+// --- pass one: every pand, decided against the OSM features overlapping it ----
+await mkdir(stagingDir, { recursive: true });
+const output = createWriteStream(outputFile);
+let written = 0;
+const write = async (line: string): Promise<void> => {
+  const chunk = `${written === 0 ? '' : ',\n'}${line}`;
+  written++;
+  if (!output.write(chunk)) await once(output, 'drain');
+};
+
+const tiers = new Map<LadderTier, number>();
+const bump = (tier: LadderTier): void => { tiers.set(tier, (tiers.get(tier) ?? 0) + 1); };
+/** OSM features standing in for a pand — emitted at tier 2. */
+const standIns = new Set<string>();
+/** OSM features overlapping any pand — already represented, never tier 4. */
+const represented = new Set<string>();
+const heightChange: number[] = [];
+let pands = 0;
+let colouredFromOsm = 0;
+
+await output.write('{"type":"FeatureCollection","features":[\n');
+
+const reader = createInterface({ input: createReadStream(bagFile), crlfDelay: Infinity });
+for await (const rawLine of reader) {
+  const line = rawLine.replace(/,\s*$/, '');
+  if (!line.startsWith('{"type":"Feature"')) continue;
+  const feature = JSON.parse(line) as Feature;
+  const rings = ringsOf(feature.geometry);
+  if (rings.length === 0) continue;
+  pands++;
+
+  const bagId = String(feature.properties.bagId ?? '');
+  const decision = decideTier({ bagId, rings }, grid.near(rings));
+  for (const osmId of decision.matchedOsmIds) represented.add(osmId);
+
+  if (decision.tier === 2) {
+    bump(2);
+    for (const osmId of decision.osmIds) standIns.add(osmId);
+    continue; // its OSM parts are emitted below, standing in for this pand
+  }
+
+  bump(3);
+  const matched = decision.matchedOsmIds.length > 0 ? osmById.get(decision.matchedOsmIds[0]) : undefined;
+  if (matched) {
+    colouredFromOsm++;
+    const bagHeight = Number(feature.properties.height ?? 0);
+    // What the measured height actually changes, building by building. This is
+    // the number that says whether Phase 1 is a visible upgrade or a rounding
+    // difference, and it is worth reporting rather than asserting.
+    if (matched.heightM > 0 && bagHeight > 0) heightChange.push(bagHeight - matched.heightM);
+  }
+
+  await write(JSON.stringify({
+    type: 'Feature',
+    properties: {
+      ...feature.properties,
+      tier: 3,
+      // Appearance rides along where an OSM footprint matched; the colour
+      // pipeline replaces this with a measured value later.
+      osmId: matched?.osmId ?? null,
+      colour: matched?.properties.colour ?? null,
+      roofColour: matched?.properties.roofColour ?? null,
+      roofShape: matched?.properties.roofShape ?? null
+    },
+    geometry: feature.geometry
+  }));
+}
+
+// --- pass two: OSM features that stand in for a pand, or that BAG lacks -------
+for (const building of osmById.values()) {
+  const isStandIn = standIns.has(building.osmId);
+  // Anything else overlapping a pand is already out at tier 3. What remains is
+  // a structure with no pand under it at all.
+  if (!isStandIn && represented.has(building.osmId)) continue;
+  const tier: LadderTier = isStandIn ? 2 : 4;
+  bump(tier === 2 ? 2 : 4);
+  await write(JSON.stringify({
+    type: 'Feature',
+    properties: { ...building.properties, tier, bagId: null, heightSource: 'osm' },
+    geometry: asGeometry(building.rings)
+  }));
+}
+
+output.write('\n]}\n');
+output.end();
+await once(output, 'finish');
+
+// --- report ------------------------------------------------------------------
+// Tier 2 is counted twice above on purpose — once as panden suppressed, once
+// as the OSM features emitted in their place — so separate the two.
+const standInFeatures = standIns.size;
+const suppressedPands = (tiers.get(2) ?? 0) - standInFeatures;
+const median = (values: number[]): number => (values.length === 0 ? 0 : [...values].sort((a, b) => a - b)[values.length >> 1]);
+const quantile = (values: number[], q: number): number =>
+  values.length === 0 ? 0 : [...values].sort((a, b) => a - b)[Math.min(values.length - 1, Math.floor(values.length * q))];
+
+const report = {
+  version: BAG3D_VERSION,
+  city,
+  generatedAt: new Date().toISOString(),
+  pands,
+  features: written,
+  tiers: {
+    '2-osm-parts': standInFeatures,
+    '3-bag-extrusion': tiers.get(3) ?? 0,
+    '4-osm-only': tiers.get(4) ?? 0
+  },
+  pandsSuppressedByOsmParts: suppressedPands,
+  pandsWithOsmAppearance: colouredFromOsm,
+  osmFeatures: osmById.size,
+  heightChangeVsOsm: {
+    compared: heightChange.length,
+    medianM: Math.round(median(heightChange) * 100) / 100,
+    p05M: Math.round(quantile(heightChange, 0.05) * 100) / 100,
+    p95M: Math.round(quantile(heightChange, 0.95) * 100) / 100
+  },
+  outputBytes: (await stat(outputFile)).size
+};
+await writeFile(reportFile, `${JSON.stringify(report, null, 2)}\n`);
+
+const share = (count: number): string => `${count} (${Math.round((count / written) * 100)}%)`;
+process.stdout.write(`\nlod1 city -> ${outputFile}\n`);
+process.stdout.write(`  panden in       ${pands}\n`);
+process.stdout.write(`  features out    ${written}\n`);
+process.stdout.write(`  tier 2 osm      ${share(standInFeatures)} parts standing in for ${suppressedPands} panden\n`);
+process.stdout.write(`  tier 3 bag      ${share(tiers.get(3) ?? 0)} measured extrusions\n`);
+process.stdout.write(`  tier 4 osm only ${share(tiers.get(4) ?? 0)} structures BAG does not hold\n`);
+process.stdout.write(`  appearance      ${colouredFromOsm} panden inherit an OSM colour\n`);
+process.stdout.write(`  height vs osm   median ${report.heightChangeVsOsm.medianM} m (p05 ${report.heightChangeVsOsm.p05M}, p95 ${report.heightChangeVsOsm.p95M}) over ${heightChange.length} buildings\n`);
+process.stdout.write(`  output          ${(report.outputBytes / 1e6).toFixed(1)} MB\n`);
+process.stdout.write('\nStaging only. Review the report before publishing into the versioned extract.\n');
