@@ -182,6 +182,7 @@ for (let index = 0; index < tiles.length; index++) {
     }
     building.properties.roofColour = toHex(median(reds), median(greens), median(blues));
     building.properties.roofSource = 'aerial';
+    building.properties.roofColourSource = 'aerial';
     sampled++;
   }
   if ((index + 1) % 50 === 0) {

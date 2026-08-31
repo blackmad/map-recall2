@@ -49,6 +49,28 @@ recall rather than interrupt every junction.
 
 ## P2 — Weight and reach
 
+**8a. Productionise government-data building appearance enrichment.**
+The current worktree has a working PDOK proof: 5,778 of 10,578 Amsterdam
+appearance-backed buildings have sampled aerial roof colours, backed by 1,316
+cached tiles (78 MB), and the renderer has separate wall and roof surfaces.
+It is not yet reproducible or safe to publish from the refresh pipeline, and
+the remaining source counts are not trustworthy enough to call coverage done.
+
+Make the sampler city-parameterised and staging-only; pin imagery vintages;
+sample BAG/3DBAG LoD2.2 roof planes across all intersecting tiles; record source,
+date, method, confidence and rejection reason; generate a stratified 200-roof
+review sheet; then gate publication on coverage and labelled colour accuracy.
+After that, spike a semantic roof-material classifier with an abstaining
+`unknown` class and map its predictions to individually licensed OSM Texture
+Library assets. Treat façade texture as a separate oblique/street-imagery task:
+nadir satellite images do not observe walls. Use Satellietdataportaal's repeated
+30/50 cm RGB/NIR acquisitions for agreement, vegetation rejection and change
+detection only after its supplier-specific training/derivative terms have been
+recorded. Full status, government source hierarchy, phases and acceptance gates
+are in [`BUILDING_ENRICHMENT.md`](BUILDING_ENRICHMENT.md).
+*This is the measured-material foundation for item 10; finish it before baking
+appearance into detailed meshes.*
+
 **8b. Finish typing the game subsystems.**
 `game-landmarks`, `game-recall` and `game-presentation` are done, and
 `game-route`'s geographic rules are extracted to `routeSelection.ts`. What is
@@ -89,25 +111,30 @@ three build across the 3D bundles and load the Firestore sync lazily, behind
 sign-in.
 *Pure win, no design decisions, and it makes every later 3D addition cheaper.*
 
-**10. Replace flat landmark boxes with an OSM2World mesh pipeline.**
+**10. Replace flat landmark boxes with an appearance-aware building pipeline.**
 Keep MapLibre as the map, camera, labels and interaction surface. OSM Buildings
 is a useful quality reference but is a separate viewer, not a MapLibre layer;
 using its hosted service would also couple the game to non-commercial service
-terms. Use the MIT-licensed OSM2World converter offline instead, then render its
-output through a MapLibre custom 3D layer using the shared Three.js runtime.
+terms. For Dutch cities, use BAG identity and 3DBAG LoD2.2 semantic geometry as
+the canonical source, compile measured roof and façade appearance into owned
+spatial tiles, then render through a MapLibre custom 3D layer using the shared
+Three.js runtime. OSM2World remains the procedural adapter for cities without
+equivalent government geometry. The authoritative architecture, schemas,
+fallback ownership and migration gates are in
+[`BUILDING_RENDERER_DESIGN.md`](BUILDING_RENDERER_DESIGN.md).
 
 Do this as a gated progression rather than converting Amsterdam in one shot:
 
-1. **Rijksmuseum proof.** Feed a tightly clipped OSM extract around the
-   Rijksmuseum to a pinned OSM2World release and export glTF. Confirm that the
-   result preserves building parts, `min_height`, gabled/skillion roofs, roof
-   direction, the courtyard and the recognisable towers. Record the exact
-   command and source timestamp so the asset is reproducible.
+1. **Rijksmuseum proof.** Fetch a tightly clipped, pinned 3DBAG LoD2.2 source
+   around the Rijksmuseum and export an owned glTF. Confirm that the result
+   preserves building parts, semantic roof/wall surfaces, the courtyard and the
+   recognisable towers. Record exact source versions and commands so the asset
+   is reproducible.
 2. **Make the asset game-ready.** Transform the model origin into local metres,
-   retain one stable OSM identity per selectable building or part, remove
-   unseen/redundant geometry, generate normals, and compress the result. Apply
-   the measured PDOK roof colours after conversion without discarding the
-   material and part boundaries that make the model recognisable.
+   retain one stable BAG identity plus OSM aliases per selectable building or
+   part, remove unseen/redundant geometry, generate normals, and compress the
+   result. Apply the measured PDOK roof colours after conversion without
+   discarding the material and part boundaries that make the model recognisable.
 3. **One MapLibre custom layer.** Extend the existing shared Three.js scaffold
    rather than shipping another renderer. Load the Rijksmuseum GLB into the
    same WebGL context and projection matrix as MapLibre; verify depth against
@@ -121,7 +148,7 @@ Do this as a gated progression rather than converting Amsterdam in one shot:
    slow mesh request must leave the current building visible and clickable.
 5. **Tile the pipeline.** If the landmark proof holds, generate independently
    cacheable spatial tiles rather than one city-sized model. Publish a compact
-   manifest containing bounds, content hashes, byte sizes and OSM source date;
+   manifest containing bounds, content hashes, byte sizes and every source date;
    fetch only the camera's nearby tiles, unload with hysteresis, and cap
    concurrent decoding. Keep ordinary MapLibre extrusions outside the detailed
    radius.
@@ -137,7 +164,7 @@ Do this as a gated progression rather than converting Amsterdam in one shot:
    until tile churn and low-end mobile performance pass a real driving route.
    Once replacement coverage is sufficient, delete the overlapping
    `buildings-colored.geojson` geometry and retain its PDOK measurements as a
-   compact OSM-id-to-colour input to mesh generation.
+   compact BAG-keyed appearance input to mesh generation.
 
 The first deliverable is deliberately only the reproducible Rijksmuseum asset,
 the custom-layer spike and its measurements. That result decides whether the

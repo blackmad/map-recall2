@@ -68,10 +68,40 @@ function simplify(points: [number, number][], tolerance = 3): [number, number][]
   return [...simplify(points.slice(0, furthestIndex + 1), tolerance).slice(0, -1), ...simplify(points.slice(furthestIndex), tolerance)];
 }
 
+/**
+ * Snap a coordinate to ~11 cm.
+ *
+ * Two jobs at once. It removes about a fifth of the bytes from the routing
+ * partition, which is the largest file the game fetches. And because
+ * connectivity is decided by exact coordinate equality, quantising first makes
+ * that test robust: two ways meeting at one OSM node can otherwise differ in
+ * the last float digit after reprojection and silently fail to join.
+ *
+ * 11 cm is far below the ~33 cm a single game pixel covers, so nothing the
+ * player can see moves.
+ */
+const COORD_DECIMALS = 6;
+function quantise([lat, lon]: [number, number]): [number, number] {
+  const factor = 10 ** COORD_DECIMALS;
+  return [Math.round(lat * factor) / factor, Math.round(lon * factor) / factor];
+}
+
+/**
+ * Raw `[lat, lon]` paths, deliberately *not* simplified.
+ *
+ * Connectivity is decided by ways sharing an identical vertex, and Douglas-
+ * Peucker deletes exactly the vertices that carry that meaning: a junction node
+ * lying within the tolerance of the line between its neighbours is dropped, and
+ * two ways that genuinely met there stop sharing a coordinate. Measured on the
+ * Amsterdam source: simplifying first destroyed 17,222 of 62,229 junction
+ * vertices, fragmented the drivable network from 3,209 components into 11,132,
+ * and cut the largest from 57,619 ways to 43,097. Simplify at output instead,
+ * and keep the junctions — see `simplifyPreservingJunctions`.
+ */
 function pathsFromGeometry(feature: GeoJsonFeature): [number, number][][] {
   const geometry = feature.geometry;
   if (!geometry || geometry.type === 'Point') return [];
-  const convert = (positions: Position[]) => simplify(positions.map(([lon, lat]) => [lat, lon]));
+  const convert = (positions: Position[]) => positions.map(([lon, lat]) => quantise([lat, lon]));
   if (geometry.type === 'LineString') return [convert(geometry.coordinates as Position[])];
   if (geometry.type === 'MultiLineString' || geometry.type === 'Polygon') return (geometry.coordinates as Position[][]).map(convert);
   if (geometry.type === 'MultiPolygon') return (geometry.coordinates as Position[][][]).flatMap((polygon) => polygon.slice(0, 1).map(convert));
@@ -85,6 +115,7 @@ const CIVIC_TYPES: Record<string, FeatureType> = {
   university: 'university',
   college: 'university',
   music_venue: 'music venue',
+  community_centre: 'landmark',
 };
 
 // A prominence floor per civic class. Without it a cinema with no Wikidata
@@ -98,6 +129,7 @@ const CIVIC_CLASS_SCORE: Record<string, number> = {
   music_venue: 45,
   theatre: 40,
   arts_centre: 30,
+  community_centre: 25,
   marketplace: 35,
 };
 
@@ -109,6 +141,7 @@ function classify(tags: Record<string, string | undefined>): { type: FeatureType
   if (tags.place === 'square' || tags.amenity === 'marketplace') return { type: 'square', category: 'squares' };
   if (tags.leisure || ['forest', 'meadow', 'grass'].includes(tags.landuse || '')) return { type: 'park', category: 'parks' };
   if (tags.tourism === 'museum') return { type: 'museum', category: 'landmarks' };
+  if (tags.tourism === 'zoo') return { type: 'landmark', category: 'landmarks' };
   // Everyday civic venues. A cinema, a library or a faculty building is often
   // the thing a resident actually navigates by, and OSM rarely gives any of
   // them a Wikidata link, so they need both a class of their own and a
@@ -127,10 +160,30 @@ function classify(tags: Record<string, string | undefined>): { type: FeatureType
 }
 
 const source = JSON.parse(await readFile(inputFile, 'utf8')) as { features: GeoJsonFeature[] };
-const curation = await readFile(curationFile, 'utf8').then((contents) => JSON.parse(contents), () => ({ scoreBoosts: {} })) as { scoreBoosts: Record<string, number> };
+type CuratedLandmark = {
+  name: string;
+  center: [number, number];
+  type?: FeatureType;
+  wikidata?: string;
+  wikipedia?: string;
+  prominenceScore: number;
+};
+const curation = await readFile(curationFile, 'utf8').then((contents) => JSON.parse(contents), () => ({ scoreBoosts: {}, landmarks: [] })) as {
+  scoreBoosts: Record<string, number>;
+  landmarks?: CuratedLandmark[];
+};
 const boundarySource = JSON.parse(await readFile(boundaryFile, 'utf8')) as { features: GeoJsonFeature[] };
-const municipality = boundarySource.features.find((feature) => feature.properties.name === cityName
-  && feature.properties.boundary === 'administrative' && feature.properties.admin_level === '8');
+// A municipality is not always mapped under the name people call it: The Hague
+// is `'s-Gravenhage` in OSM, with `Den Haag` on `name:nl` or `alt_name`. Match
+// any of the names the relation carries so a city does not need a special case
+// in the caller.
+const municipalityNames = (feature: GeoJsonFeature): string[] => [
+  feature.properties.name, feature.properties['name:nl'], feature.properties['name:en'],
+  feature.properties.official_name, feature.properties.alt_name,
+].filter((value): value is string => typeof value === 'string');
+const municipality = boundarySource.features.find((feature) =>
+  feature.properties.boundary === 'administrative' && feature.properties.admin_level === '8'
+  && municipalityNames(feature).some((value) => value.toLocaleLowerCase() === cityName.toLocaleLowerCase()));
 if (!municipality || !municipality.geometry || !['Polygon', 'MultiPolygon'].includes(municipality.geometry.type)) {
   throw new Error(`${cityName} municipality polygon was not found`);
 }
@@ -138,6 +191,54 @@ const municipalityPolygons = municipality.geometry.type === 'Polygon'
   ? [municipality.geometry.coordinates as Position[][]]
   : municipality.geometry.coordinates as Position[][][];
 const neighborhoodSource = JSON.parse(await readFile(neighborhoodBoundaryFile, 'utf8')) as { features: GeoJsonFeature[] };
+const vertexKey = ([lat, lon]: [number, number]) => `${lat},${lon}`;
+
+/** Coordinates touched by more than one way: the junctions. */
+function junctionVertices(pathGroups: Iterable<[number, number][][]>): Set<string> {
+  const owners = new Map<string, number>();
+  const junctions = new Set<string>();
+  let index = 0;
+  for (const paths of pathGroups) {
+    index++;
+    const seenHere = new Set<string>();
+    for (const path of paths) {
+      for (const point of path) {
+        const key = vertexKey(point);
+        if (seenHere.has(key)) continue;
+        seenHere.add(key);
+        const first = owners.get(key);
+        if (first === undefined) owners.set(key, index);
+        else if (first !== index) junctions.add(key);
+      }
+    }
+  }
+  return junctions;
+}
+
+/**
+ * Douglas-Peucker, except that a junction is never dropped. Keeps the published
+ * geometry small without silently disconnecting the network it describes — the
+ * runtime road graph stitches on shared vertices too, so a junction deleted
+ * here is a turn the player cannot make.
+ */
+function simplifyPreservingJunctions(
+  points: [number, number][],
+  junctions: Set<string>,
+  tolerance = 3,
+): [number, number][] {
+  if (points.length <= 2) return points;
+  const kept: [number, number][] = [];
+  let segmentStart = 0;
+  for (let index = 1; index <= points.length - 1; index++) {
+    const isJunction = index < points.length - 1 && junctions.has(vertexKey(points[index]));
+    if (!isJunction && index !== points.length - 1) continue;
+    const run = simplify(points.slice(segmentStart, index + 1), tolerance);
+    kept.push(...(kept.length ? run.slice(1) : run));
+    segmentStart = index;
+  }
+  return kept;
+}
+
 const grouped = new Map<string, { feature: StreetFeature; category: FeatureCategory; paths: [number, number][][]; score: number }>();
 const routingRoadCandidates: Array<{ feature: StreetFeature; category: FeatureCategory; paths: [number, number][][]; score: number }> = [];
 const majorHighways = new Set(['motorway', 'trunk', 'primary', 'secondary', 'tertiary']);
@@ -146,8 +247,13 @@ const drivableHighways = new Set([
   'motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link',
   'residential', 'living_street', 'unclassified', 'service', 'busway',
 ]);
-type BrandedPoi = { id: string; name: string; brand: string; brandWikidata?: string; shop?: string; center: [number, number]; icon?: string };
-const brandedCandidates: BrandedPoi[] = [];
+type OrientationPoi = {
+  id: string; name: string; kind: 'albert-heijn' | 'local-food'; center: [number, number];
+  brand?: string; brandWikidata?: string; shop?: string; amenity?: string; icon?: string;
+  orientationScore?: number;
+};
+const brandedCandidates: Array<Omit<OrientationPoi, 'kind'> & { brand: string }> = [];
+const localFoodCandidates: OrientationPoi[] = [];
 
 for (const item of source.features) {
   const tags = item.properties || {};
@@ -182,6 +288,28 @@ for (const item of source.features) {
       name: (tags.name || brand).trim(), brand, brandWikidata: tags['brand:wikidata'],
       shop: tags.shop, center: featureCenter,
     });
+  }
+  // Named local food venues are far better block-level cues than a directory
+  // of interchangeable retail chains. A brand tag is the useful OSM/NSI
+  // signal that a venue is a chain; leave those out even when the individual
+  // branch has a name. Operator alone is not enough evidence here because it
+  // is also commonly the name of a one-site hospitality business.
+  if (['restaurant', 'cafe', 'pub', 'bar'].includes(tags.amenity || '')) {
+    const name = (tags['name:en'] || tags.name || tags['name:nl'] || '').trim();
+    if (name.length >= 3 && !tags.brand && !tags['brand:wikidata']) {
+      localFoodCandidates.push({
+        id: String(tags['@id'] || `local-food-${localFoodCandidates.length}`),
+        name, kind: 'local-food', amenity: tags.amenity, center: featureCenter,
+        // Completeness is a decent source-independent proxy for whether a
+        // venue is established and recognizable. Restaurant names lead, then
+        // useful identity/details break ties within a crowded block.
+        orientationScore: (tags.amenity === 'restaurant' ? 4 : tags.amenity === 'pub' ? 3 : 2)
+          + (tags.wikidata || tags.wikipedia ? 4 : 0)
+          + (tags.website || tags['contact:website'] ? 2 : 0)
+          + (tags.cuisine ? 1 : 0)
+          + (tags.opening_hours ? 1 : 0),
+      });
+    }
   }
   if (!classification) continue;
   // OSM uses `name` for the road carried by a bridge and `bridge:name` for the
@@ -222,7 +350,13 @@ for (const item of source.features) {
     paths,
     score,
     feature: {
-      id: `extract_${classification.category}_${grouped.size}`,
+      // Derived from the feature's identity, never from insertion order.
+      // `grouped.size` meant the id depended on how many features of *any*
+      // category happened to be inserted first, so adding one classification
+      // renumbered every bridge in the city — which silently orphaned
+      // `bridge-crossings.json`, keyed on those ids, and cost 229 bridges the
+      // water beneath them without anything failing.
+      id: `extract_${classification.category}_${Math.abs(stableStringHash(key))}`,
       name,
       type: classification.type,
       cityId,
@@ -236,8 +370,31 @@ for (const item of source.features) {
   });
 }
 
+// Some relation-level POIs disappear in the GeoJSON conversion even though
+// they are present in OSM (Artis), while an occasional node is absent from a
+// particular source snapshot (OT301). Keep a small, reviewable fallback list
+// for essential anchors. A source feature with the same name always wins.
+for (const landmark of curation.landmarks || []) {
+  const key = `landmarks:${landmark.name.toLocaleLowerCase()}`;
+  if (grouped.has(key)) continue;
+  const score = landmark.prominenceScore + (curation.scoreBoosts[key] || 0);
+  grouped.set(key, {
+    category: 'landmarks', paths: [], score,
+    feature: {
+      id: `curated_landmarks_${Math.abs(stableStringHash(key))}`,
+      name: landmark.name, type: landmark.type || 'landmark', cityId,
+      center: landmark.center, radius: 70, funFact: '', clues: [], distractors: [],
+      difficulty: score >= 140 ? 'easy' : score >= 70 ? 'medium' : 'hard',
+      wikidata: landmark.wikidata, wikipedia: landmark.wikipedia, prominenceScore: score,
+    },
+  });
+}
+
 await mkdir(outputDirectory, { recursive: true });
-const stableId = (value: string) => -Math.abs([...value].reduce((hash, char) => ((hash * 31) + char.charCodeAt(0)) | 0, 17));
+function stableStringHash(value: string): number {
+  return [...value].reduce((hash, char) => ((hash * 31) + char.charCodeAt(0)) | 0, 17);
+}
+const stableId = (value: string) => -Math.abs(stableStringHash(value));
 const toLatLonPolygons = (coordinates: Position[][][]) => coordinates.map((polygon) => polygon.map((ring) => simplify(ring.map(([lon, lat]) => [lat, lon]), 5)));
 const makeArea = (name: string, kind: string, polygons: Position[][][], adminLevel: number) => {
   const geometry = toLatLonPolygons(polygons);
@@ -264,25 +421,70 @@ await writeFile(path.join(outputDirectory, 'boundaries.json'), JSON.stringify(ar
 const normaliseBrand = (value: string) => value.toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
 const BRAND_ICONS: Record<string, string> = {
   'albert heijn': 'albert-heijn',
+  'albert heijn to go': 'albert-heijn',
   ah: 'albert-heijn',
+  'ah to go': 'albert-heijn',
 };
-const chainGroups = new Map<string, BrandedPoi[]>();
+const chainGroups = new Map<string, Array<Omit<OrientationPoi, 'kind'> & { brand: string }>>();
 for (const poi of brandedCandidates) {
   const key = poi.brandWikidata || normaliseBrand(poi.brand);
   const group = chainGroups.get(key) || [];
   group.push(poi);
   chainGroups.set(key, group);
 }
+const albertHeijnIdentities = new Set(['Q1653985', 'Q77971185']);
 const majorChains = [...chainGroups.entries()]
   .map(([key, pois]) => ({
     key, name: pois[0].brand, brandWikidata: pois[0].brandWikidata,
     count: pois.length, icon: BRAND_ICONS[normaliseBrand(pois[0].brand)], pois,
   }))
-  .filter((chain) => chain.count >= 3)
+  .filter((chain) => albertHeijnIdentities.has(chain.key)
+    || ['albert heijn', 'albert heijn to go', 'ah', 'ah to go'].includes(normaliseBrand(chain.name)))
   .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
-const publishedBrandedPois = majorChains.flatMap((chain) => chain.pois.map((poi) => ({ ...poi, icon: chain.icon })));
+const seenLocalFood = new Set<string>();
+const localFoodNameCounts = new Map<string, number>();
+for (const poi of localFoodCandidates) {
+  const name = normaliseBrand(poi.name);
+  localFoodNameCounts.set(name, (localFoodNameCounts.get(name) || 0) + 1);
+}
+const deduplicatedLocalFood = localFoodCandidates.filter((poi) => {
+  // A missing brand tag is common for small hospitality chains. Repeated
+  // names are a useful conservative backstop: two sites can still be a local
+  // venue represented twice or a tiny neighbourhood sibling, while three or
+  // more reads as chain coverage—the exact catalogue effect we are avoiding.
+  if ((localFoodNameCounts.get(normaliseBrand(poi.name)) || 0) >= 3) return false;
+  // Nodes and building outlines sometimes map the same venue twice. Collapse
+  // only near-identical copies; same-name venues elsewhere may be meaningful.
+  const key = `${normaliseBrand(poi.name)}:${poi.center[0].toFixed(4)}:${poi.center[1].toFixed(4)}`;
+  if (seenLocalFood.has(key)) return false;
+  seenLocalFood.add(key);
+  return true;
+});
+// At gameplay zoom, a 100 m cell is approximately a city block. Two labels
+// per cell retains useful "restaurant X is on this block" anchors without
+// turning the basemap into a hospitality directory. Stable tie-breakers keep
+// rebuilds reproducible when OSM happens to change feature order.
+const localFoodCellCounts = new Map<string, number>();
+const LOCAL_FOOD_CELL_METERS = 100;
+const LOCAL_FOOD_PER_CELL = 2;
+const localFoodPois = deduplicatedLocalFood
+  .sort((a, b) => (b.orientationScore || 0) - (a.orientationScore || 0)
+    || a.name.localeCompare(b.name) || a.id.localeCompare(b.id))
+  .filter((poi) => {
+    const x = poi.center[1] * 111_320 * Math.cos(poi.center[0] * Math.PI / 180);
+    const y = poi.center[0] * 111_320;
+    const cell = `${Math.floor(x / LOCAL_FOOD_CELL_METERS)}:${Math.floor(y / LOCAL_FOOD_CELL_METERS)}`;
+    const count = localFoodCellCounts.get(cell) || 0;
+    if (count >= LOCAL_FOOD_PER_CELL) return false;
+    localFoodCellCounts.set(cell, count + 1);
+    return true;
+  });
+const publishedBrandedPois = [
+  ...majorChains.flatMap((chain) => chain.pois.map((poi) => ({ ...poi, kind: 'albert-heijn' as const, icon: chain.icon }))),
+  ...localFoodPois,
+];
 await writeFile(path.join(outputDirectory, 'branded-pois.json'), JSON.stringify(publishedBrandedPois));
-process.stdout.write(`Major chains (3+ locations): ${majorChains.map(({ name, count }) => `${name} (${count})`).join(', ') || 'none'}\n`);
+process.stdout.write(`Orientation POIs: ${majorChains.map(({ name, count }) => `${name} (${count})`).join(', ') || 'no Albert Heijn'}; ${localFoodPois.length} local food venues\n`);
 // Build a connected street subgraph: keep only streets reachable from the
 // highest-scored street so car-mode routing never hits disconnected segments.
 function selectConnectedStreets(
@@ -346,6 +548,21 @@ function selectConnectedStreets(
   return result;
 }
 
+// Geometry is carried raw up to this point so that connectivity is decided on
+// the vertices OSM actually shares. Everything published from here is
+// simplified, keeping the junctions, so the files stay small without the
+// network quietly coming apart at the seams.
+const routableJunctions = junctionVertices([
+  ...routingRoadCandidates.map((entry) => entry.paths),
+  ...[...grouped.values()].filter((entry) => entry.category === 'water' || entry.category === 'streets')
+    .map((entry) => entry.paths),
+]);
+const publish = (paths: [number, number][][], keepJunctions: boolean) => paths
+  .map((line) => (keepJunctions
+    ? simplifyPreservingJunctions(line, routableJunctions)
+    : simplify(line)))
+  .filter((line) => line.length > 1);
+
 const partitions: Record<string, { file: string; count: number; availableCount: number; availableLinkedCount: number; bytes: number; linkedCount: number }> = {};
 const selectedAll: StreetFeature[] = [];
 for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'landmarks'] as FeatureCategory[]) {
@@ -353,19 +570,37 @@ for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'land
   const candidates = category === 'streets'
     ? selectConnectedStreets(available, maximumFor(category))
     : available.slice(0, maximumFor(category));
+  // Water and streets are navigated; a junction dropped from either is a turn
+  // the player cannot make. Bridges are gated on being crossed, so their spans
+  // keep their junctions too.
+  const navigable = category === 'water' || category === 'streets' || category === 'bridges';
   if (category === 'streets') {
-    const routing = selectConnectedStreets(routingRoadCandidates, routingRoadCandidates.length).map(({ feature, paths, score }) => ({
-      ...feature,
-      path: paths[0],
-      paths: paths.length > 1 ? paths : undefined,
-      prominenceScore: score,
-      distractors: [],
-    }));
+    // The routing partition is the largest file the game fetches, and it is
+    // read by exactly one consumer. Ship what that consumer uses — identity,
+    // geometry, and the tags routing and the bridge checks depend on — rather
+    // than the quiz-shaped fields, which are empty here anyway. Dropping
+    // funFact/clues/distractors/difficulty/prominenceScore saves about 80
+    // bytes on each of 35,000 ways.
+    const routing = selectConnectedStreets(routingRoadCandidates, routingRoadCandidates.length).map(({ feature, paths }) => {
+      const lines = publish(paths, true);
+      const entry: Record<string, unknown> = {
+        id: feature.id, name: feature.name, type: feature.type, cityId: feature.cityId,
+        center: feature.center, highway: feature.highway,
+        path: lines[0],
+      };
+      if (lines.length > 1) entry.paths = lines;
+      if ((feature as { bridge?: boolean }).bridge) entry.bridge = true;
+      if (feature.railway) entry.railway = feature.railway;
+      return entry;
+    });
     await writeFile(path.join(outputDirectory, 'streets-routing.json'), JSON.stringify(routing));
   }
-  const selected = candidates.map(({ feature, paths, score }) => ({
-    ...feature, path: paths[0], paths: paths.length > 1 ? paths : undefined, prominenceScore: score,
-  }));
+  const selected = candidates.map(({ feature, paths, score }) => {
+    const lines = publish(paths, navigable);
+    return {
+      ...feature, path: lines[0], paths: lines.length > 1 ? lines : undefined, prominenceScore: score,
+    };
+  });
   // `available` is sorted by score, so slicing the first twelve alternatives
   // handed every feature in a category the same dozen famous names: 300
   // bridges shared a 13-name distractor pool, and the right answer was the
@@ -404,6 +639,7 @@ await writeFile(path.join(outputDirectory, 'manifest.json'), JSON.stringify({
   cityId, source: `OpenStreetMap / BBBike ${cityName} extract`, generatedAt: new Date().toISOString(), center, partitions,
   boundaries: { file: 'boundaries.json', count: areas.length },
   brandedPois: { file: 'branded-pois.json', count: publishedBrandedPois.length },
+  localFoodPois: { count: localFoodPois.length },
   majorChains: majorChains.map(({ name, brandWikidata, count, icon }) => ({ name, brandWikidata, count, icon })),
 }, null, 2));
 process.stdout.write(`${JSON.stringify(partitions, null, 2)}\n`);
