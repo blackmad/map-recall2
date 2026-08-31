@@ -139,9 +139,15 @@ will be interrupted; each step must be worth shipping alone.
    hundreds of thousands — coverage, not fidelity. Count it exactly in step 1.
    Publish a complete BAG-keyed footprint + 3DBAG height + measured roof colour
    source on the tile grid detailed geometry will later use, render it with
-   ordinary fill-extrusions, and delete `building-3d`, `osm-colored-buildings`,
-   `osm-colored-building-roofs` and the height-offset stack that keeps three
-   coplanar extrusions from z-fighting. Heights stop being guessed in the same
+   ordinary fill-extrusions. Delete `building-3d` and the height-offset stack
+   that keeps three coplanar extrusions from z-fighting, but **absorb**
+   `osm-colored-buildings` and `osm-colored-building-roofs` rather than deleting
+   them: they carry hand-mapped `building:part` geometry that outranks a generic
+   extrusion. BAG holds the Waag as one pand against thirteen mapped parts at
+   6/15/17/20/26 m, so keying geometry on BAG alone flattens it to one ~14 m
+   box. 1,448 features city-wide are stacked parts and 4,868 carry a roof shape,
+   concentrated on exactly the landmarks the game quizzes. `test:osm-buildings`
+   pins the Waag against this. Heights stop being guessed in the same
    change: `build-osm-building-appearance.ts:32` currently falls back to
    `levels * 3` or a flat 9 m, so much of the skyline is invented, and AHN-derived
    3DBAG heights replace it everywhere. Largest visible win in the whole item,

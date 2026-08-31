@@ -6,6 +6,37 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The hosted 3DBAG tiles carry a BAG id, so the join needs no compiler.**
+  This was the blocking question in `BUILDING_RENDERER_DESIGN.md`: if the tiles
+  the game already streams resolve each feature to a `pand_id`, measured roof
+  colour can be attached to government geometry at runtime, and an offline mesh
+  compiler is an optimisation rather than a prerequisite. They do.
+  `scripts/probe-3dbag-metadata.ts` reads `EXT_structural_metadata` out of a
+  pinned v20250903 tile; over the Rijksmuseum, 667/667 features carry a unique
+  `NL.IMBAG.Pand.*`. The property tables are uncompressed — only the geometry
+  bufferViews are meshopt — so identity, heights, construction year and
+  reconstruction quality all read without touching a triangle.
+
+  Three things came back that were not being asked for. Construction year is
+  present for every building, which is the age prior of the façade work
+  available for free and with no imagery licence. `b3_rmse_lod22` is a
+  per-building reconstruction error, which is the gate for deciding whether a
+  detailed mesh can be trusted. And `b3_opp_scheidingsmuur` is shared-wall
+  area, so "promote a terraced row as a unit" is computable rather than
+  inferred from geometry — 92% of the Rijksmuseum tile and 91% of a Noord tile
+  share a party wall, which is why stepping at one is not a rare edge case.
+
+  The height field is the trap. The obvious choice, `b3_h_nok - b3_h_maaiveld`,
+  is wrong twice: flat roofs have no ridge by definition (0/41 at the
+  Rijksmuseum, and only 50% of the Noord tile has one at all), and a flat-topped
+  box standing at the ridge of a pitched canal house overstates the whole row.
+  `b3_volume_lod12 / b3_opp_grond` — 3DBAG's own LoD1.2 height, the box that
+  displaces the reconstructed volume — covers 667/667 and 3,474/3,475 at a
+  median 0.94x the ridge. That is the extrusion height; the ridge is kept as
+  roof geometry for later LoD2.2 work. The one building in 3,475 with neither
+  is why `lod1HeightM` returns a source of `'none'` rather than inventing a
+  number, and why an OSM fallback tier still exists.
+
 - **The extractor takes a city now, and Utrecht proved it.** Bounds, centre,
   curation file, the name used for the boundary lookup and the `cityId` filed
   into every review key were all Amsterdam constants. They are arguments now,
