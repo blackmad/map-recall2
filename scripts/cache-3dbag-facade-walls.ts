@@ -6,8 +6,11 @@ import { extractFacadeWallPlanes, extractRoofPlanes } from '../src/canalRecall/b
 const arg = (name: string) => process.argv.find((value) => value.startsWith(`--${name}=`))?.slice(name.length + 3);
 const root = path.resolve(arg('root') || '.cache/building-enrichment/panorama');
 const limit = Number(arg('limit') || 30);
-const cropManifest = JSON.parse(await readFile(path.join(root, 'wide-crop-manifest.json'), 'utf8')) as { crops: Array<{ buildingId: string }> };
-const buildingIds = [...new Set(cropManifest.crops.map((crop) => crop.buildingId))].slice(0, limit);
+const buildingIdsFile = arg('building-ids');
+const buildingIds = buildingIdsFile
+  ? (JSON.parse(await readFile(path.resolve(buildingIdsFile), 'utf8')) as string[]).slice(0, limit)
+  : [...new Set((JSON.parse(await readFile(path.join(root, 'wide-crop-manifest.json'), 'utf8')) as { crops: Array<{ buildingId: string }> })
+    .crops.map((crop) => crop.buildingId))].slice(0, limit);
 const output = path.join(root, 'facade-wall-planes.json');
 type CachedBuilding = { buildingId: string; endpoint: string; attributes: Record<string, unknown>; walls: ReturnType<typeof extractFacadeWallPlanes>; roofs: ReturnType<typeof extractRoofPlanes> };
 type Rejection = { buildingId: string; reason: string; endpoint: string };

@@ -71,6 +71,14 @@ are in [`BUILDING_ENRICHMENT.md`](BUILDING_ENRICHMENT.md).
 *This is the measured-material foundation for item 10; finish it before baking
 appearance into detailed meshes.*
 
+The RGB DSM demo now proves the distributed roof path rather than one lucky
+block: 71/143 semantic planes across 18/20 grid-selected buildings agree with
+independent orthophoto colours, backed by 23 pinned LAZ tiles. The interactive
+research page is `rgb-city-demo.html`; full measurements and abstention counts
+are in `RGB_CITY_DEMO.md`. What remains before production is a labelled human
+review, a city-scale cost/size plan, a stable join into the refresh pipeline,
+and a separate façade source. Do not call the DSM a façade point cloud.
+
 **8b. Finish typing the game subsystems.**
 Measured 2026-08-31: ~21,000 lines of TypeScript against ~6,100 lines of
 hand-written JavaScript in `public/canal-drive/js/` (the other ~1,300 JS lines

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amsterdam RGB point-cloud roofs</title>
+<link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+<style>
+html,body,#map{height:100%;margin:0} body{background:#071821;color:#edf7f8;font:14px/1.4 ui-monospace,SFMono-Regular,monospace}
+#panel{position:absolute;z-index:100;isolation:isolate;transform:translateZ(0);left:18px;top:18px;width:min(390px,calc(100vw - 60px));padding:17px 18px;background:rgba(5,22,30,.94);border:1px solid #315467;border-radius:8px;box-shadow:0 14px 40px #0008}
+h1{font-size:18px;margin:0 0 5px;color:#8fe7ff} p{margin:7px 0;color:#b9cbd2}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:13px 0}.stat{min-width:0;background:#102d39;padding:8px;border-radius:5px}.stat b{display:block;white-space:nowrap;font-size:19px;color:#fff}.stat small{color:#8facb7}
+button{font:inherit;color:#071821;background:#8fe7ff;border:0;border-radius:4px;padding:7px 10px;margin:3px 4px 3px 0;cursor:pointer}button.off{background:#34515d;color:#c3d3d9}.legend i{display:inline-block;width:11px;height:11px;margin-right:5px;border-radius:2px}.fine{font-size:11px;color:#78949f}.maplibregl-popup-content{background:#09232e;color:#eaf7fa;border:1px solid #477080}.maplibregl-popup-tip{border-top-color:#477080!important}
+</style>
+</head><body><div id="map"></div><section id="panel"><h1>RGB point-cloud roofs</h1><p>42,534 real 3DBAG buildings form the city. Bright roof planes are colors measured from pinned 2025 PDOK RGB DSM points and independently cross-checked against orthophotos.</p><div class="stats"><div class="stat"><b id="buildings">–</b><small>buildings agree</small></div><div class="stat"><b id="planes">–</b><small>roof planes agree</small></div><div class="stat"><b id="tiles">–</b><small>RGB LAZ tiles</small></div></div><div><button id="next">Fly to RGB roof</button><button id="rejected" class="off">Show rejections</button><button id="city">Toggle city</button></div><p class="legend"><i style="background:#67e8f9"></i>measured RGB plane &nbsp; <i style="background:#ef4444"></i>abstained/rejected</p><p class="fine">Research demo only: RGB DSM sees top surfaces, not vertical façades. Click a roof for sample count, offset and cross-source distance. No proposal is production evidence.</p></section>
+<script>
+const map=new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/liberty',center:[4.895,52.372],zoom:12.2,pitch:48,bearing:-18,antialias:true});
+let measured=[],cursor=0,rejections=false,city=true;
+Promise.all([fetch('../data/rgb-city-demo/summary.json').then(r=>r.json()),fetch('../data/rgb-city-demo/roof-planes.geojson').then(r=>r.json())]).then(([s,g])=>{document.querySelector('#buildings').textContent=`${s.buildingsWithAgreedRgb}/${s.sampledBuildings}`;document.querySelector('#planes').textContent=`${s.independentlyAgreedPlanes}/${s.semanticRoofPlanes}`;document.querySelector('#tiles').textContent=s.pointCloudTiles;measured=g.features.filter(f=>f.properties.status==='proposed');});
+map.on('load',()=>{
+  map.addSource('city',{type:'geojson',data:'../data/extracts/amsterdam/buildings-colored.geojson'});
+  map.addLayer({id:'city-walls',type:'fill-extrusion',source:'city',minzoom:11,paint:{'fill-extrusion-color':['coalesce',['get','sideColour'],['get','colour'],'#9b8d80'],'fill-extrusion-height':['coalesce',['get','height'],6],'fill-extrusion-opacity':.78}});
+  map.addSource('rgb',{type:'geojson',data:'../data/rgb-city-demo/roof-planes.geojson'});
+  map.addLayer({id:'rgb-roofs',type:'fill-extrusion',source:'rgb',filter:['==',['get','status'],'proposed'],paint:{'fill-extrusion-color':['get','pointColour'],'fill-extrusion-base':['-', ['get','roofHeight'],.35],'fill-extrusion-height':['+', ['get','roofHeight'],.35],'fill-extrusion-opacity':1}});
+  map.addLayer({id:'rgb-halo',type:'line',source:'rgb',filter:['==',['get','status'],'proposed'],paint:{'line-color':'#67e8f9','line-width':3,'line-opacity':.95}});
+  map.addLayer({id:'rgb-rejected',type:'line',source:'rgb',filter:['!=',['get','status'],'proposed'],layout:{visibility:'none'},paint:{'line-color':'#ef4444','line-width':2,'line-dasharray':[2,2]}});
+  map.on('click','rgb-roofs',e=>{const p=e.features[0].properties;new maplibregl.Popup().setLngLat(e.lngLat).setHTML(`<b>${p.pointColour}</b> RGB DSM<br>${p.sampleCount} points · coverage ${p.coverage}<br>orthophoto ${p.orthophotoColour} · ΔRGB ${p.rgbDistance}<br>plane offset ${p.planeOffsetMetres} m<br><small>${p.buildingId}<br>machine proposal — not accepted</small>`).addTo(map)});
+  map.on('mouseenter','rgb-roofs',()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave','rgb-roofs',()=>map.getCanvas().style.cursor='');
+});
+document.querySelector('#next').onclick=()=>{if(!measured.length)return;const ring=measured[cursor++%measured.length].geometry.coordinates[0];const c=ring.reduce((a,p)=>[a[0]+p[0]/ring.length,a[1]+p[1]/ring.length],[0,0]);map.flyTo({center:c,zoom:18,pitch:62,bearing:(cursor*47)%360,duration:1600})};
+document.querySelector('#rejected').onclick=e=>{rejections=!rejections;map.setLayoutProperty('rgb-rejected','visibility',rejections?'visible':'none');e.target.classList.toggle('off',!rejections)};
+document.querySelector('#city').onclick=()=>{city=!city;map.setLayoutProperty('city-walls','visibility',city?'visible':'none')};
+</script></body></html>
