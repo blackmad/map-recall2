@@ -7,8 +7,15 @@ class InputManager {
     this.justPressed = {};
     this._isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     this._touchActive = false;
+    this._viewport = null;
+    this._dpad = null;
+    this._padActive = false;
+    this._touches = new Map();
+    // The hint is a one-line "steer with the pad" nudge now, not a diagram of
+    // an invisible scheme; the pad itself is the documentation.
     this._showTouchHint = this._isMobile;
-    this._touchHintTimer = 5; // seconds to show hint
+    this._touchHintTimer = 6; // seconds to show hint
+    this._suppressTapEnter = false;
 
     // Keyboard input
     window.addEventListener('keydown', e => {
@@ -30,94 +37,111 @@ class InputManager {
     }
   }
 
+  /** Called by Game._resize: the pad's geometry follows the logical canvas. */
+  setViewport(viewport) {
+    this._viewport = viewport;
+    this._dpad = window.CanalRecallUi.dpadLayout(viewport);
+  }
+
+  /** The pad rectangle, for the renderer and for the camera-pan gesture, which
+   *  must not steal touches that belong to the controls. */
+  get dpad() { return this._dpad || null; }
+
+  /** Logical canvas coordinates for a touch. The canvas is CSS-scaled, so
+   *  client coordinates are not canvas coordinates. */
+  _canvasPoint(touch, canvas) {
+    const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return { x: 0, y: 0 };
+    return {
+      x: (touch.clientX - rect.left) * CANVAS_W / rect.width,
+      y: (touch.clientY - rect.top) * CANVAS_H / rect.height,
+    };
+  }
+
+  // Driving used to be an invisible gesture: the left half of the screen
+  // steered and applied throttle, the right half was gas above and brake
+  // below. It could not be discovered, it forced the throttle on whenever you
+  // steered, and it covered the same pixels as the camera-pan drag, so panning
+  // the map also drove the boat.
+  //
+  // Now a drawn d-pad owns its own rectangle and nothing else. Touches outside
+  // it are left alone for the pan gesture.
   _setupTouch() {
     const canvas = document.getElementById('gameCanvas');
     if (!canvas) return;
 
-    this._touches = {};
-    this._lastDoubleTap = 0;
-
-    const getPos = (touch) => {
-      const rect = canvas.getBoundingClientRect();
-      return {
-        x: (touch.clientX - rect.left) / rect.width,   // 0..1 normalized
-        y: (touch.clientY - rect.top) / rect.height     // 0..1 normalized
-      };
-    };
+    this._touches = new Map();
 
     const processTouches = () => {
-      // Reset touch-driven keys before recomputing
-      this.keys['ArrowUp'] = false;
-      this.keys['ArrowDown'] = false;
-      this.keys['ArrowLeft'] = false;
-      this.keys['ArrowRight'] = false;
-      this.keys['Space'] = false;
-
-      const ids = Object.keys(this._touches);
-      for (const id of ids) {
-        const pos = this._touches[id];
-        if (pos.x < 0.5) {
-          // LEFT HALF: Steering + throttle
-          const steerX = pos.x / 0.5; // 0..1 within left half
-          if (steerX < 0.35) this.keys['ArrowLeft'] = true;
-          else if (steerX > 0.65) this.keys['ArrowRight'] = true;
-          this.keys['ArrowUp'] = true; // always throttle when steering
-        } else {
-          // RIGHT HALF: bottom = gas, top = brake
-          if (pos.y > 0.5) {
-            this.keys['ArrowUp'] = true;
-          } else {
-            this.keys['ArrowDown'] = true;
-          }
-        }
-      }
+      const ui = window.CanalRecallUi;
+      const points = [...this._touches.values()];
+      const pressed = ui.dpadKeysAt(points, this._dpad);
+      // Auto-throttle: the vehicle rolls forward unless the player brakes, so
+      // a learner spends their attention on the city rather than on a pedal.
+      const keys = this._padHasFocus(points) ? ui.applyAutoThrottle(pressed) : ui.noKeys();
+      this.keys['ArrowUp'] = keys.ArrowUp;
+      this.keys['ArrowDown'] = keys.ArrowDown;
+      this.keys['ArrowLeft'] = keys.ArrowLeft;
+      this.keys['ArrowRight'] = keys.ArrowRight;
+      this._padActive = ui.isInsideDpad(points[0] || { x: -1, y: -1 }, this._dpad)
+        || points.some(point => ui.isInsideDpad(point, this._dpad));
     };
 
     canvas.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      this._touchActive = true;
-      const now = Date.now();
+      let claimed = false;
       for (const touch of e.changedTouches) {
-        const pos = getPos(touch);
-        this._touches[touch.identifier] = pos;
-        // Double-tap right side = handbrake
-        if (pos.x >= 0.5 && now - this._lastDoubleTap < 350) {
-          this.keys['Space'] = true;
+        const point = this._canvasPoint(touch, canvas);
+        if (window.CanalRecallUi.isInsideDpad(point, this._dpad)) {
+          this._touches.set(touch.identifier, point);
+          claimed = true;
         }
-        if (pos.x >= 0.5) this._lastDoubleTap = now;
-        // Tap = Enter for menu navigation
-        if (!this.justPressed['Enter']) {
-          this.justPressed['Enter'] = true;
-          this.keys['Enter'] = true;
-        }
+      }
+      // Only swallow the gesture when it is ours; otherwise the map keeps its
+      // pan and pinch.
+      if (claimed) e.preventDefault();
+      this._touchActive = true;
+      this._showTouchHint = false;
+      // A tap restarts the finished screen. It must not fire while driving,
+      // where it used to press Enter on every single touch.
+      if (!claimed && !this._suppressTapEnter) {
+        this.justPressed['Enter'] = true;
+        this.keys['Enter'] = true;
       }
       processTouches();
     }, { passive: false });
 
     canvas.addEventListener('touchmove', (e) => {
-      e.preventDefault();
+      let claimed = false;
       for (const touch of e.changedTouches) {
-        this._touches[touch.identifier] = getPos(touch);
+        if (!this._touches.has(touch.identifier)) continue;
+        this._touches.set(touch.identifier, this._canvasPoint(touch, canvas));
+        claimed = true;
       }
+      if (claimed) e.preventDefault();
       processTouches();
     }, { passive: false });
 
-    canvas.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      for (const touch of e.changedTouches) {
-        delete this._touches[touch.identifier];
-      }
-      if (Object.keys(this._touches).length === 0) this._touchActive = false;
+    const release = (e) => {
+      for (const touch of e.changedTouches) this._touches.delete(touch.identifier);
+      if (this._touches.size === 0) this._touchActive = false;
       processTouches();
       this.keys['Enter'] = false;
-    }, { passive: false });
+    };
+    canvas.addEventListener('touchend', release, { passive: false });
+    canvas.addEventListener('touchcancel', release, { passive: false });
+  }
 
-    canvas.addEventListener('touchcancel', (e) => {
-      for (const touch of e.changedTouches) {
-        delete this._touches[touch.identifier];
-      }
-      processTouches();
-    }, { passive: false });
+  /** A tap on the map restarts a finished route; while driving it must not. */
+  setTapRestartEnabled(enabled) { this._suppressTapEnter = !enabled; }
+
+  /** True while at least one touch is on the pad. */
+  _padHasFocus(points) {
+    return points.some(point => window.CanalRecallUi.isInsideDpad(point, this._dpad));
+  }
+
+  /** Which directions are lit, for drawing the pad. */
+  get padKeys() {
+    return window.CanalRecallUi.dpadKeysAt([...(this._touches?.values() ?? [])], this._dpad);
   }
 
   isDown(code) { return !!this.keys[code]; }

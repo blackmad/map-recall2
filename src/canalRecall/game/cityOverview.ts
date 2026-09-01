@@ -193,16 +193,20 @@ export interface OverviewColors {
   playerRing: string;
 }
 
+// A paper map sheet, like every other card. This was a dark navy panel with
+// sky-blue canals and a gold route, which read as a different product sitting
+// in the corner of the one you were playing. The route stays the strongest mark
+// on it, because "where am I going" is what the overview is for.
 export const OVERVIEW_COLORS: OverviewColors = {
-  background: 'rgba(4,20,30,0.72)',
-  border: 'rgba(255,255,255,0.22)',
-  area: 'rgba(148,163,184,0.30)',
-  network: 'rgba(125,211,252,0.22)',
-  route: '#FACC15',
-  start: '#7DD3FC',
-  finish: '#FACC15',
-  player: '#F8FAFC',
-  playerRing: 'rgba(15,23,42,0.85)',
+  background: 'rgba(255,253,248,0.94)',
+  border: 'rgba(97,89,74,0.30)',
+  area: 'rgba(53,102,83,0.13)',
+  network: 'rgba(36,50,43,0.16)',
+  route: '#c75f43',
+  start: '#356653',
+  finish: '#c75f43',
+  player: '#24322b',
+  playerRing: 'rgba(255,253,248,0.92)',
 };
 
 function strokePath(

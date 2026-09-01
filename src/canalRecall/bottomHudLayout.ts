@@ -1,36 +1,5 @@
-export type Rect = { x: number; y: number; width: number; height: number };
-export type BottomHudLayout = {
-  trip: Rect; postcard: Rect; landmark: Rect;
-  minimap: Rect; zoomBadge: Rect; controlsHint: Rect;
-};
-
-export function bottomHudLayout({
-  canvasWidth = 1280, canvasHeight = 720, tripWidth,
-  postcardVisible = false, landmarkWidth = 480, landmarkHeight = 130,
-  zoomVisible = false, controlsVisible = false,
-}: {
-  canvasWidth?: number; canvasHeight?: number; tripWidth: number;
-  postcardVisible?: boolean; landmarkWidth?: number; landmarkHeight?: number;
-  zoomVisible?: boolean; controlsVisible?: boolean;
-}): BottomHudLayout {
-  const trip = { x: canvasWidth - tripWidth - 16, y: canvasHeight - 98, width: tripWidth, height: 26 };
-  const postcard = { x: canvasWidth - 410, y: trip.y - 118, width: 390, height: 104 };
-  // The city overview; see hud.js drawCityOverview and constants MINIMAP_*.
-  const minimap = { x: 15, y: canvasHeight - 215, width: 260, height: 200 };
-  const zoomBadge = { x: canvasWidth / 2 - 35, y: canvasHeight - 35, width: 70, height: 22 };
-  const controlsHint = { x: canvasWidth / 2 - 177, y: zoomVisible ? zoomBadge.y - 26 : canvasHeight - 32, width: 354, height: 12 };
-  const centeredLandmarkX = canvasWidth / 2 - landmarkWidth / 2;
-  const footerTop = controlsVisible ? controlsHint.y : zoomVisible ? zoomBadge.y : canvasHeight;
-  const landmark = {
-    x: postcardVisible ? Math.min(centeredLandmarkX, postcard.x - 14 - landmarkWidth) : centeredLandmarkX,
-    y: Math.min(canvasHeight - landmarkHeight - 30, footerTop - 14 - landmarkHeight),
-    width: landmarkWidth,
-    height: landmarkHeight,
-  };
-  return { trip, postcard, landmark, minimap, zoomBadge, controlsHint };
-}
-
-export function rectsIntersect(a: Rect, b: Rect): boolean {
-  return a.x < b.x + b.width && a.x + a.width > b.x
-    && a.y < b.y + b.height && a.y + a.height > b.y;
-}
+// The bottom band now comes from `hudLayout`, which places the whole HUD for
+// both the desktop 16:9 space and a phone. This module stays as the desktop
+// entry point so the regression suite that pins these rectangles keeps proving
+// the desktop arrangement has not moved while the portrait layout was added.
+export { bottomHudLayout, rectsIntersect, type Rect, type BottomHudLayout } from './hudLayout.ts';

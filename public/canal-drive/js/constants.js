@@ -24,7 +24,11 @@ const BANDIT_QUOTES = [
 ];
 
 // --- Display ---
-const CANVAS_W = 1280, CANVAS_H = 720;        // pixels
+// The logical drawing space. Fixed 16:9 on desktop; on a phone it becomes the
+// CSS viewport so the canvas fills the screen and type keeps its intended size.
+// Reassigned by Game._resize via the typed viewport module — never read this
+// at module load, only at draw time.
+let CANVAS_W = 1280, CANVAS_H = 720;          // logical units
 
 // --- Legacy (circuit mode — retained for compatibility) ---
 const TOTAL_LAPS = 3;

@@ -8,7 +8,18 @@
 <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #111; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; position: relative; }
+/* 100dvh, not 100vh: on mobile Safari the URL bar makes 100vh taller than the
+   screen, which pushed the d-pad under the browser chrome. */
+html { height: 100%; }
+body { background: var(--paper); display: flex; justify-content: center; align-items: center; height: 100vh; height: 100dvh; overflow: hidden; position: relative; overscroll-behavior: none; -webkit-tap-highlight-color: transparent; }
+/* The canvas is the control surface; the browser must not treat a drag on it
+   as a scroll or a double-tap on it as a zoom. */
+canvas#gameCanvas { touch-action: none; }
+/* Phone: the canvas and the map are the screen. Pinned, so neither can widen
+   the document and trigger the browser's shrink-to-fit. */
+body.compact-layout { display: block; }
+body.compact-layout canvas#gameCanvas,
+body.compact-layout #vector-map { position: fixed; inset: 0; width: 100%; height: 100%; max-width: 100%; }
 body::after { content: ''; position: fixed; inset: 0; z-index: 3; pointer-events: none; opacity: 0; }
 .theme-8bit #vector-map { filter: saturate(1.35) contrast(1.25); }
 .theme-8bit canvas { image-rendering: pixelated; }
@@ -23,81 +34,76 @@ canvas { display: block; position: relative; z-index: 2; }
 #vector-map { position: fixed; z-index: 1; pointer-events: none; }
 #map-container { border-radius: 0; }
 /* ------------------------------------------------------------------ *
- * Theme tokens.
+ * Theme tokens — one language, shared with the root map-quest app.
  *
- * Two surfaces, one component set. The in-game chrome — recall prompt,
- * help and settings panels — is the ink theme on :root. The route
- * briefing is a paper map sheet, and it is a *token override* scoped to
- * #route-setup rather than a second set of rules.
+ * There used to be three: a warm paper map sheet scoped to #route-setup, a
+ * dark navy/sky theme on :root for the in-game chrome, and a dark-and-gold
+ * trivia card drawn on the canvas — plus a fourth set of cream hexes
+ * hand-coded into hud.js that were almost, but not quite, the paper sheet.
+ * Moving between the briefing and the game felt like moving between two
+ * products, and the canvas HUD matched neither stylesheet.
  *
- * It used to be a second set of rules, declared unscoped after the
- * first, which meant the paper colours also repainted the live settings
- * panel: its selects were #172326 on #071e2b and simply could not be
- * read. Scoping the theme to its own surface makes that leak
- * structurally impossible rather than something to keep noticing.
+ * These are the root app's own tokens (src/index.css), so Canal Recall and
+ * map-quest are now the same product visually, and `src/canalRecall/hudTheme.ts`
+ * carries the identical values for the canvas HUD to paint with.
  * ------------------------------------------------------------------ */
 :root {
-  --ink: #f0f9ff;
-  --ink-dim: #bae6fd;
-  --muted: #8fbfd6;
-  --surface: #071e2b;
-  --surface-sunk: rgba(8,47,64,.54);
-  --surface-sunk-focus: rgba(10,61,82,.72);
-  --line: rgba(71,134,157,.45);
-  --line-strong: #38bdf8;
-  --accent: #38bdf8;
-  --accent-ink: #7dd3fc;
-  --accent-soft: rgba(56,189,248,.14);
-  --primary: linear-gradient(100deg, #0284c7, #0891b2);
+  --paper: #f8f5ee;
+  --paper-raised: #fffdf8;
+  --paper-muted: #eee9df;
+  --ink: #24322b;
+  --ink-dim: #3d4a43;
+  --muted: #68746e;
+  --surface: rgba(255,253,248,.97);
+  --surface-sunk: rgba(238,233,223,.62);
+  --surface-sunk-focus: rgba(238,233,223,.92);
+  --line: #d8d2c6;
+  --line-strong: rgba(97,89,74,.34);
+  --accent: #c75f43;
+  --accent-ink: #a24b33;
+  --accent-soft: rgba(199,95,67,.10);
+  --moss: #356653;
+  --moss-dark: #264b3d;
+  --moss-soft: #dce8e1;
+  --ochre: #b78125;
+  --primary: #356653;
   --primary-ink: #ffffff;
   --radius: 16px;
   --radius-sm: 10px;
-  --font-ui: system-ui, sans-serif;
-  --font-mono: ui-monospace, monospace;
-}
-#route-setup {
-  --ink: #172326;
-  --ink-dim: #394e52;
-  --muted: #708487;
-  --surface: rgba(250,249,244,.97);
-  --surface-sunk: transparent;
-  --surface-sunk-focus: transparent;
-  --line: #cbd4d0;
-  --line-strong: #167da0;
-  --accent: #c43d35;
-  --accent-ink: #c43d35;
-  --accent-soft: rgba(196,61,53,.09);
-  --primary: #c43d35;
-  --primary-ink: #ffffff;
-  --radius: 18px;
-  --radius-sm: 7px;
+  --font-ui: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Read back by the typed viewport module so the HUD can keep clear of the
+     notch and the home indicator. */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* ---- Recall prompt ---- */
-#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: flex-end; padding: 24px 30px; background: linear-gradient(90deg, transparent 35%, rgba(3,18,28,.12) 58%, rgba(3,18,28,.62)); z-index: 20; font-family: var(--font-mono); pointer-events: none; }
-#canal-prompt.dock-left { justify-content: flex-start; background: linear-gradient(270deg, transparent 35%, rgba(3,18,28,.12) 58%, rgba(3,18,28,.62)); }
-#canal-card { width: min(38vw, 440px); padding: 24px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 24px 80px rgba(0,0,0,.55); pointer-events: auto; }
+#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: flex-end; padding: 24px 30px; background: linear-gradient(90deg, transparent 35%, rgba(36,50,43,.10) 58%, rgba(36,50,43,.34)); z-index: 20; font-family: var(--font-mono); pointer-events: none; }
+#canal-prompt.dock-left { justify-content: flex-start; background: linear-gradient(270deg, transparent 35%, rgba(36,50,43,.10) 58%, rgba(36,50,43,.34)); }
+#canal-card { width: min(100%, 440px); padding: 24px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 18px 50px rgba(58,50,36,.22); pointer-events: auto; }
 /* What you are being asked to name is the largest thing on the card, and the
    chip above it says which kind of feature the answer is. "Crossing a bridge"
    as the headline over "Which water are you crossing?" read as a question
    about the bridge. */
-.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 12px; padding: 5px 11px 5px 8px; border: 1px solid rgba(56,189,248,.45); border-radius: 999px; background: rgba(56,189,248,.16); color: var(--accent-ink); font: 800 11px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 12px; padding: 5px 11px 5px 8px; border: 1px solid rgba(53,102,83,.35); border-radius: 999px; background: var(--moss-soft); color: var(--moss-dark); font: 800 11px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
 .prompt-kind .prompt-kind-icon { display: grid; place-items: center; width: 20px; height: 20px; line-height: 1; letter-spacing: 0; }
 .prompt-kind .prompt-kind-icon svg { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .prompt-kind .prompt-kind-icon svg.filled { fill: currentColor; stroke: none; }
-.prompt-kind[data-kind="bridge"] { border-color: rgba(250,204,21,.45); background: rgba(250,204,21,.15); color: #fde68a; }
-.prompt-kind[data-kind="street"] { border-color: rgba(134,239,172,.42); background: rgba(134,239,172,.14); color: #bbf7d0; }
+.prompt-kind[data-kind="bridge"] { border-color: rgba(183,129,37,.42); background: rgba(183,129,37,.14); color: #7a5514; }
+.prompt-kind[data-kind="street"] { border-color: rgba(53,102,83,.38); background: rgba(53,102,83,.12); color: var(--moss-dark); }
 #canal-card h2 { color: var(--ink); margin-bottom: 6px; font-size: 25px; line-height: 1.15; }
 #canal-card p { color: var(--muted); margin-bottom: 18px; font-size: 13px; }
 #canal-answer { width: 100%; margin-bottom: 12px; padding: 14px 16px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); font: 18px var(--font-mono); }
 #canal-submit { width: 100%; padding: 12px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
 #canal-feedback { min-height: 22px; margin-top: 12px; font-weight: 700; }
 #canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-#canal-no-idea { width: 100%; margin-top: 8px; padding: 10px 8px; border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); background: transparent; color: #9CCFE1; font-weight: 600; cursor: pointer; }
-#canal-no-idea:hover { background: rgba(125,211,252,.10); color: #E0F2FE; }
+#canal-no-idea { width: 100%; margin-top: 8px; padding: 10px 8px; border: 1px dashed var(--line); border-radius: var(--radius-sm); background: transparent; color: var(--muted); font-weight: 600; cursor: pointer; }
+#canal-no-idea:hover { background: var(--paper-muted); color: var(--ink); }
 #canal-no-idea .canal-choice-key { margin-right: 0; margin-left: 6px; }
-.canal-choice { padding: 12px 8px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: #0c4a6e; color: #e0f2fe; font-weight: 700; cursor: pointer; }
-.canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: rgba(255,255,255,.18); font-size: 11px; font-weight: bold; }
+.canal-choice { padding: 12px 8px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper-muted); color: var(--ink); font-weight: 700; cursor: pointer; }
+.canal-choice:hover { border-color: var(--moss); background: var(--moss-soft); }
+.canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: rgba(36,50,43,.12); color: var(--muted); font-size: 11px; font-weight: bold; }
 
 /* ---- Shared form components (both themes) ---- */
 .setup-section-title { margin: 24px 0 10px; color: var(--accent-ink); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
@@ -119,14 +125,14 @@ canvas { display: block; position: relative; z-index: 2; }
 .advanced-options .setup-grid { padding-bottom: 14px; }
 
 /* ---- Route briefing ---- */
-#route-setup { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: 22px; background: rgba(232,237,232,.72); backdrop-filter: blur(5px); color: var(--ink); font-family: var(--font-mono); }
-#route-card { width: min(94vw, 680px); max-height: calc(100vh - 44px); overflow: auto; padding: 26px 30px 24px; border: 1px solid rgba(35,55,57,.2); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 22px 65px rgba(25,42,43,.2); }
+#route-setup { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: 22px; background: rgba(241,238,230,.80); backdrop-filter: blur(5px); color: var(--ink); font-family: var(--font-mono); }
+#route-card { width: min(100%, 680px); max-height: calc(100dvh - 44px); overflow-y: auto; overflow-x: hidden; padding: 26px 30px 24px; border: 1px solid rgba(35,55,57,.2); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 22px 65px rgba(25,42,43,.2); }
 .setup-eyebrow { margin-bottom: 7px; color: var(--accent); font: 800 11px/1 var(--font-mono); letter-spacing: .13em; text-transform: uppercase; }
 #route-card h1 { margin-bottom: 5px; color: var(--ink); font: 800 clamp(26px,4vw,34px)/1.05 var(--font-ui); letter-spacing: -.035em; }
 #route-card .lede { max-width: 580px; margin-bottom: 10px; color: var(--ink-dim); font: 14px/1.5 var(--font-ui); }
-.route-surprise { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; align-items: center; gap: 14px; margin: 0; padding: 12px 14px; border: 0; border-left: 4px solid var(--accent); border-radius: var(--radius-sm); background: #e8f0ec; color: var(--ink-dim); font: 13px/1.4 var(--font-ui); }
+.route-surprise { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; align-items: center; gap: 14px; margin: 0; padding: 12px 14px; border: 0; border-left: 4px solid var(--moss); border-radius: var(--radius-sm); background: var(--moss-soft); color: var(--ink-dim); font: 13px/1.4 var(--font-ui); }
 .route-surprise > span { min-width: 0; overflow-wrap: anywhere; }
-.route-surprise .route-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #fff; color: var(--accent); font-size: 19px; }
+.route-surprise .route-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--paper-raised); color: var(--moss); font-size: 19px; }
 .route-surprise strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 15px; }
 .route-chip { padding: 6px 9px; border-radius: 999px; background: transparent; color: #597175; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
 /* The paper sheet's fields are ruled lines on paper, not inset boxes. That is
@@ -150,16 +156,16 @@ canvas { display: block; position: relative; z-index: 2; }
 #route-error { min-height: 20px; margin-top: 10px; color: #b45309; }
 
 /* ---- Help and live settings panels ---- */
-.utility-panel { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; background: rgba(3,18,28,.78); color: var(--ink); font-family: var(--font-mono); }
-.utility-card { width: min(92vw, 520px); padding: 25px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,.55); }
+.utility-panel { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; background: rgba(36,50,43,.45); backdrop-filter: blur(4px); color: var(--ink); font-family: var(--font-mono); }
+.utility-card { width: min(100%, 520px); padding: 25px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,.55); }
 .utility-card h2 { margin-bottom: 16px; color: var(--accent-ink); }
 .utility-card table { width: 100%; border-collapse: collapse; }
 .utility-card td { padding: 6px; border-bottom: 1px solid var(--line); }
-.utility-card td:first-child { width: 80px; color: #facc15; font-weight: bold; }
+.utility-card td:first-child { width: 80px; color: var(--accent-ink); font-weight: bold; }
 .utility-close { width: 100%; margin-top: 18px; padding: 12px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
 /* The landmark panel is the card's expanded form: the full extract, at length,
    with real scrolling. The canvas card is a glance; this is the read. */
-#landmark-panel .utility-card { display: flex; flex-direction: column; width: min(94vw, 640px); max-height: min(86vh, 760px); }
+#landmark-panel .utility-card { display: flex; flex-direction: column; width: min(100%, 640px); max-height: min(86dvh, 760px); }
 #landmark-panel-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 #landmark-panel-badges span { padding: 3px 7px; border-radius: 3px; background: rgba(250,204,21,.2); color: #facc15; font-size: 10px; font-weight: bold; letter-spacing: .04em; }
 #landmark-panel-badges span[data-kind="lang"] { background: rgba(148,163,184,.22); color: #cbd5e1; }
@@ -171,10 +177,52 @@ canvas { display: block; position: relative; z-index: 2; }
 #landmark-panel-link { display: inline-block; margin-top: 14px; color: #7dd3fc; font-size: 12px; }
 @media (max-width: 760px) { #landmark-panel-image { float: none; width: 100%; margin: 0 0 12px; } }
 #utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 12; display: flex; gap: 8px; }
-#utility-buttons button { width: 38px; height: 38px; border: 1px solid var(--accent-ink); border-radius: var(--radius-sm); background: rgba(3,18,28,.78); color: var(--ink); font-size: 18px; cursor: pointer; }
-#prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; padding: 5px 8px; border-radius: 6px; background: rgba(255,255,255,.82); color: #334155; font: 11px var(--font-ui); }
-#prototype-links a { color: #0369a1; }
-@media (max-width: 760px) { #route-setup { padding: 0; align-items: stretch; } #route-card { flex: none; width: 100vw; min-width: 0; max-height: 100vh; overflow-x: hidden; border: 0; border-radius: 0; padding: 24px 18px 18px; } .setup-grid, .preference-grid { grid-template-columns: minmax(0,1fr); } .route-surprise { grid-template-columns: 40px minmax(0,1fr); } .route-chip { display: none; } #route-start { position: sticky; bottom: 0; z-index: 3; box-shadow: 0 -14px 28px #071e2b, 0 8px 24px rgba(2,132,199,.25); } #canal-prompt, #canal-prompt.dock-left { align-items: flex-end; justify-content: center; padding: 12px; background: linear-gradient(0deg, rgba(3,18,28,.68), transparent 62%); } #canal-card { width: min(96vw, 520px); padding: 18px; } #canal-choices { grid-template-columns: 1fr 1fr; } }
+#utility-buttons button { width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); font-size: 18px; cursor: pointer; box-shadow: 0 6px 18px rgba(58,50,36,.16); }
+#prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; padding: 5px 8px; border-radius: 6px; background: var(--surface); color: var(--muted); font: 11px var(--font-ui); }
+#prototype-links a { color: var(--moss); }
+/* ---- Phone ----------------------------------------------------------- *
+ * The briefing becomes a full-bleed sheet, the recall prompt docks to the
+ * bottom where a thumb is, and the in-game chrome keeps clear of both the
+ * safe areas and the d-pad, which owns the bottom-centre of the screen.
+ *
+ * Keyed on either axis. `max-width: 760px` alone missed a phone in landscape
+ * entirely — 844x390 is not a narrow screen — so a rotated phone kept the
+ * desktop tap targets, the attribution strip over the controls, and no
+ * safe-area padding at all.
+ * ---------------------------------------------------------------------- */
+@media (max-width: 760px), (max-height: 500px) {
+  #route-setup { padding: 0; align-items: stretch; }
+  #route-card { flex: none; width: 100%; min-width: 0; max-height: 100dvh; overflow-x: hidden; border: 0; border-radius: 0; padding: calc(20px + var(--safe-top)) 18px calc(18px + var(--safe-bottom)); }
+  .setup-grid, .preference-grid { grid-template-columns: minmax(0,1fr); }
+  .route-surprise { grid-template-columns: 40px minmax(0,1fr); }
+  .route-chip { display: none; }
+  /* Tap targets: 44px is the smallest reliably hittable control. */
+  .setup-field select, .setup-field input[type="text"] { min-height: 30px; font-size: 16px; }
+  #route-start { position: sticky; bottom: 0; z-index: 3; min-height: 50px; box-shadow: 0 -14px 28px var(--paper-raised), 0 8px 24px rgba(53,102,83,.25); }
+  #canal-prompt, #canal-prompt.dock-left { align-items: flex-end; justify-content: center; padding: 12px calc(12px + env(safe-area-inset-right, 0px)) calc(12px + var(--safe-bottom)) calc(12px + env(safe-area-inset-left, 0px)); background: linear-gradient(0deg, rgba(36,50,43,.42), transparent 62%); }
+  #canal-card { width: 100%; max-height: 72dvh; overflow-y: auto; padding: 18px; }
+  #canal-card h2 { font-size: 21px; }
+  #canal-choices { grid-template-columns: 1fr 1fr; }
+  .canal-choice { min-height: 46px; }
+  #canal-answer { font-size: 16px; }
+  #canal-submit, #canal-no-idea { min-height: 46px; }
+  /* The d-pad owns the bottom centre, so these sit beside it on the right and
+     the attribution strip stands down rather than crowding the controls. */
+  #utility-buttons { right: calc(10px + env(safe-area-inset-right, 0px)); bottom: calc(12px + var(--safe-bottom)); }
+  #utility-buttons button { width: 46px; height: 46px; }
+  #prototype-links { display: none; }
+  .utility-panel { padding: 12px; }
+  .utility-card { padding: 18px; max-height: 86dvh; overflow-y: auto; }
+  .utility-close { min-height: 46px; }
+}
+
+/* A landscape phone: the bottom edge belongs to the d-pad and the trivia card,
+   so the utility buttons take the gap between the score and destination rows
+   instead of sitting on top of the card. */
+@media (max-height: 460px) and (orientation: landscape) {
+  #utility-buttons { top: calc(10px + var(--safe-top)); bottom: auto; left: 50%; right: auto; transform: translateX(-50%); }
+  #utility-buttons button { width: 40px; height: 40px; }
+}
 </style>
 </head>
 <body>
@@ -285,7 +333,7 @@ canvas { display: block; position: relative; z-index: 2; }
 
 <!-- Rendering (depends on constants/utils) -->
 <script src="js/renderer.js"></script>
-<script src="js/bottom-hud-layout.bundle.js"></script>
+<script src="js/game-ui.bundle.js"></script>
 <script src="js/notice-cards.bundle.js"></script>
 <script src="js/answer-path.bundle.js"></script>
 <script src="js/hud.js"></script>

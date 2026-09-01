@@ -31,6 +31,7 @@ type HarnessGame = {
   ctx: CanvasRenderingContext2D;
   hud: { drawCurrentLocation: (...args: unknown[]) => void };
   camera: { x: number; y: number; detached: boolean; panX: number; pan(dx: number, dy: number): void; resetPan(): void; update(target: unknown, dt: number): void };
+  viewport: import('../../src/canalRecall/viewport').Viewport;
   neighborhoods: Array<{ name: string; kind: string; rank: number; rings: Array<Array<{ x: number; y: number }>> }>;
   _previousNeighborhood: string;
   raceTime: number;
@@ -45,6 +46,7 @@ declare global {
   interface Window {
     canalRecallGame: HarnessGame;
     CanalRecallCar: { constrainCarToRoad: (...args: unknown[]) => string };
+    CanalRecallUi: typeof import('../../src/canalRecall/gameUi');
   }
 }
 
@@ -275,8 +277,11 @@ test('a returning player sees what they have collected', async ({ page }) => {
   expect(badge?.text, 'the menu tells a returning player what they already know')
     .toBe('Amsterdam: 3 waterways · 1 hoods · 2 landmarks · 7 routes');
   // Not just that the call happened: the badge is centred. An undefined x here
-  // is how the original bug looked once its ReferenceError was swallowed.
-  expect(badge?.x).toBe(640);
+  // is how the original bug looked once its ReferenceError was swallowed. The
+  // centre is the logical canvas centre, which is 640 on desktop and half the
+  // screen width on a phone — the assertion is "centred", not "640".
+  const centre = await page.evaluate(() => window.canalRecallGame.viewport.width / 2);
+  expect(badge?.x).toBe(centre);
 });
 
 test('the city overview draws the whole city, not a local scrap', async ({ page }) => {
@@ -285,12 +290,22 @@ test('the city overview draws the whole city, not a local scrap', async ({ page 
     const game = window.canalRecallGame;
     game.showMiniMap = true;
     game._render();
-    // Sample the overview rect and count pixels bright enough to be map ink
-    // rather than the panel's own dark background.
-    const data = game.ctx.getImageData(15, 720 - 215, 260, 200).data;
+    // Ask the layout where the overview is: it is 260x200 bottom-left on
+    // desktop and 124x96 on a phone. Count *ink* — pixels that differ from the
+    // panel's own background — rather than bright pixels, which stopped
+    // meaning anything when the panel became paper instead of dark navy.
+    const scale = game.ctx.getTransform().a;
+    const rect = window.CanalRecallUi.hudLayout({
+      viewport: game.viewport, tripWidth: 180,
+    }).minimap;
+    const data = game.ctx.getImageData(
+      Math.round(rect.x * scale), Math.round(rect.y * scale),
+      Math.round(rect.width * scale), Math.round(rect.height * scale),
+    ).data;
     let lit = 0;
     for (let i = 0; i < data.length; i += 4) {
-      if (data[i] + data[i + 1] + data[i + 2] > 90) lit++;
+      // The paper panel sits around 250,253,248; ink is anything clearly darker.
+      if (data[i] + data[i + 1] + data[i + 2] < 690) lit++;
     }
     return { lit, areas: game.neighborhoods?.length ?? 0 };
   });
@@ -355,11 +370,15 @@ test('neighborhood entry renders as a compact photo lower-third', async ({ page 
     if (!canvas) throw new Error('Canvas missing');
     game.ctx.clearRect(0, 0, canvas.width, canvas.height);
     game._renderNeighborhoodNotice();
-    // The game keeps a 1280×720 logical coordinate system while Retina/mobile
-    // canvases have a scaled backing store. getImageData uses backing pixels,
-    // unlike drawing APIs, so sample the logical card rectangle at that scale.
+    // The logical coordinate system is 1280×720 on desktop and the CSS viewport
+    // on a phone, and either way the backing store is scaled. getImageData uses
+    // backing pixels, unlike drawing APIs, so sample the logical card rectangle
+    // at that scale — and ask the live viewport where the card actually is,
+    // rather than assuming the desktop arrangement.
     const backingScale = game.ctx.getTransform().a;
-    const card = window.CanalRecallBottomHud.bottomHudLayout({ tripWidth: 180 }).postcard;
+    const card = window.CanalRecallUi.hudLayout({
+      viewport: game.viewport, tripWidth: 180,
+    }).postcard;
     const pixels = game.ctx.getImageData(
       Math.round(card.x * backingScale),
       Math.round(card.y * backingScale),

@@ -751,18 +751,22 @@
         extractLang: lm.extractLang,
         hasArticle: !!lm.wikipediaUrl,
         hasImage
-      }, measure);
+      }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
       const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
-      const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({
+      const bottomLayout = window.CanalRecallUi.hudLayout({
+        viewport: this.viewport,
         tripWidth: 180,
         postcardVisible: postcardShowing,
         landmarkWidth: card.width,
         landmarkHeight: card.height,
+        feedbackVisible: !!this.quizFeedback,
+        neighborhoodVisible: !!this.currentNeighborhood,
+        minimapVisible: this.showMiniMap,
         zoomVisible: this._zoomBadgeTimer > 0,
         controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
       });
-      const cardX = bottomLayout ? bottomLayout.landmark.x : CANVAS_W / 2 - card.width / 2;
-      const cardY = bottomLayout ? bottomLayout.landmark.y : CANVAS_H - card.height - 30;
+      const cardX = bottomLayout.landmark.x;
+      const cardY = bottomLayout.landmark.y;
       ctx.save();
       ctx.globalAlpha = Math.max(0, alpha);
       this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
@@ -835,11 +839,18 @@
       };
       const card = window.CanalRecallCards.measurePostcard(
         { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage },
-        measure
+        measure,
+        window.CanalRecallUi.postcardWidth(this.viewport)
       );
-      const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({ tripWidth: 180 });
-      const cardX = bottomLayout ? bottomLayout.postcard.x : CANVAS_W - card.width - 20;
-      const baseCardY = bottomLayout ? bottomLayout.postcard.y : CANVAS_H - card.height - 76;
+      const bottomLayout = window.CanalRecallUi.hudLayout({
+        viewport: this.viewport,
+        tripWidth: 180,
+        postcardHeight: card.height,
+        neighborhoodVisible: !!this.currentNeighborhood,
+        minimapVisible: this.showMiniMap
+      });
+      const cardX = bottomLayout.postcard.x;
+      const baseCardY = bottomLayout.postcard.y;
       const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.3);
       const cardY = baseCardY + (1 - (1 - Math.pow(1 - slideT, 3))) * 50;
       ctx.save();

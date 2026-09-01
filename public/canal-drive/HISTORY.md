@@ -6,6 +6,60 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Canal Recall became playable on a phone, and the product became one design
+  system.** The canvas was a fixed 1280×720 logical surface letterboxed into
+  whatever window it was given, so a 390×844 phone got a 390×219 canvas floating
+  in the middle of the screen while the MapLibre layer underneath kept its own
+  size: the HUD and the map showed different parts of Amsterdam, and most of the
+  HUD — placed by constants like `roundRect(ctx, 15, 15, 310, …)` — was off
+  screen. `viewport.ts` now decides the logical space (desktop keeps the proven
+  16:9 letterbox; a touch viewport *becomes* the CSS viewport, so the canvas
+  fills the screen and 13 px type renders at 13 px), and `hudLayout.ts` places
+  every card for desktop, compact portrait and compact landscape.
+
+  This also explains and closes the old item 14b, "Playwright's phone projects
+  cannot reach fixed overlays". The 613×1044 layout viewport inside a 390×664
+  device viewport was not the launch config: it was the page. `#route-card` was
+  `min(94vw, 680px)` inside a 22 px-padded flex container — wider than its
+  container on any screen under ~733 px — and `#vector-map` was centred with
+  `left = (innerWidth - width) / 2`, so a stale width left it hanging off the
+  right edge. The page overflowed, Chrome shrank to fit, `innerWidth` grew, and
+  the next resize overflowed further. Worse, the inflated width read as a
+  desktop and latched the 16:9 layout onto the phone for the rest of the
+  session. The canvas and map are now pinned to the viewport and cannot widen
+  the document; measured after the fix, `innerWidth` is a true 390 with zero
+  overflowing elements. Portrait plus touch also reads as a phone whatever width
+  the layout viewport claims, and `orientationchange`/`visualViewport` are
+  listened to, not just `resize`.
+
+  Driving on touch was an invisible gesture — the left half of the screen
+  steered *and* forced the throttle, the right half was gas above and brake
+  below, a double-tap was the handbrake — and it shared its pixels with the
+  camera-pan drag, so panning the map also drove the boat. It is one drawn
+  d-pad with auto-throttle now: the vehicle rolls forward unless you brake, so a
+  learner spends their attention on the city rather than on holding a pedal. The
+  pad is a 3×3 grid, so the corners give diagonals and a thumb that lands
+  slightly off still reads as the direction the player meant. The pad owns its
+  rectangle and nothing else; touches outside it pan the camera. Tapping the map
+  no longer presses Enter on every touch while driving.
+
+  On the design: there were three visual languages plus a fourth set of cream
+  hexes hand-coded in `hud.js` — a warm paper map sheet for the briefing, dark
+  navy with a sky accent for the in-game chrome, and dark-and-gold for the
+  trivia card. Moving between the briefing and the game felt like moving between
+  two products. All of it is now the root map-quest app's own paper tokens, held
+  in `hudTheme.ts` and mirrored as CSS custom properties so the two surfaces
+  cannot drift, and the same tokens are what a future map-quest/Canal Recall
+  merge would start from. The trivia card is measured at the width it will be
+  drawn at, so a phone card rewraps instead of clipping.
+
+  Verified by 576 portrait/landscape layout scenarios across six device
+  profiles asserting every HUD rectangle is on screen and disjoint, by the
+  existing 288-scenario desktop suite passing unchanged (the proof the desktop
+  layout did not move), and by six new Storybook phone states. `storybook dev`
+  served `/canal-drive/` as a 404, so every game-frame story rendered the dev
+  server's "Not Found" page; the stories name `index.html` explicitly now.
+
 - **Reviewed trivia and civic POIs reached the original Map Recall game.** Its
   Amsterdam extract loader now joins the shared reviewed `facts.json` only by
   exact feature id. Answer cards prefer a provenance-bearing quotation and
