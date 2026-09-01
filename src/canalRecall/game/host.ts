@@ -62,6 +62,10 @@ export interface GameCoreHost {
   _toggleUtilityPanel(panel: HTMLElement): void;
   _closeUtilityPanels(): void;
   _zoomBadgeTimer: number;
+  /** The live logical drawing space; see `src/canalRecall/viewport.ts`. */
+  viewport: import('../viewport.ts').Viewport;
+  /** This frame's HUD geometry, computed once by the presentation runtime. */
+  _hudLayoutCache?: import('../hudLayout.ts').HudLayout | null;
 
   /** Owned by the recall subsystem; landmarks needs it to join street names to
    *  the knowledge extract by the same normalisation the quiz uses. */
@@ -70,6 +74,10 @@ export interface GameCoreHost {
 
 /** Landmarks, neighborhood postcards and the encyclopedia cards. */
 export interface LandmarkHost extends GameCoreHost {
+  /** The trivia card shares the bottom band with these, so placing it needs to
+   *  know which of them are on screen. */
+  quizFeedback: string;
+  showMiniMap: boolean;
   landmarks: Landmark[];
   neighborhoods: Neighborhood[];
   bridges: Bridge[];

@@ -2,12 +2,23 @@ import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood' | 'finish' | 'finish-calm'
-  | 'landmark-card' | 'landmark-panel' | 'landmark-panel-dutch';
+  | 'landmark-card' | 'landmark-panel' | 'landmark-panel-dutch'
+  // Phone states. `touch-*` force the compact layout on a pointer device,
+  // which is the only way to see the d-pad and the portrait card stack in the
+  // workbench; the viewport addon alone just makes a small desktop window.
+  | 'touch-hud' | 'touch-hud-steering' | 'touch-hud-question' | 'touch-setup';
 
 function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
   const configure = useCallback((frame: HTMLIFrameElement) => {
     const doc = frame.contentDocument;
     if (!doc) return;
+    const win = frame.contentWindow as (Window & {
+      canalRecallForceTouch?: boolean;
+      canalRecallGame?: any;
+    }) | null;
+    // Must be set before the game's first _resize, and re-applied because the
+    // Storybook viewport addon resizes the iframe after load.
+    if (win && scenario.startsWith('touch-')) win.canalRecallForceTouch = true;
     const select = (id: string, value: string) => {
       const element = doc.getElementById(id) as HTMLSelectElement | null;
       if (!element) return;
@@ -26,7 +37,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       if (details) details.open = true;
     }
     if (scenario === 'hud' || scenario === 'neighborhood' || scenario.startsWith('finish')
-      || scenario.startsWith('landmark')) {
+      || scenario.startsWith('landmark') || scenario.startsWith('touch-hud')) {
       const setup = doc.getElementById('route-setup');
       if (setup) setup.style.display = 'none';
       const drawWhenReady = () => {
@@ -34,9 +45,15 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
         if (!game?.ctx || !game?.hud) { window.setTimeout(drawWhenReady, 50); return; }
         game._render = () => undefined;
         const ctx = game.ctx as CanvasRenderingContext2D;
-        ctx.fillStyle = '#dfe7dd'; ctx.fillRect(0, 0, 1280, 720);
+        // The stand-in map fills the live canvas, which on a phone is the
+        // screen rather than a fixed 1280x720 box.
+        const canvasW = (frame.contentWindow as any).CANVAS_W ?? 1280;
+        const canvasH = (frame.contentWindow as any).CANVAS_H ?? 720;
+        ctx.fillStyle = '#dfe7dd'; ctx.fillRect(0, 0, canvasW, canvasH);
         ctx.strokeStyle = 'rgba(72,91,85,.25)'; ctx.lineWidth = 18;
-        for (let x = -200; x < 1400; x += 190) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 420, 720); ctx.stroke(); }
+        for (let x = -canvasH; x < canvasW + canvasH; x += 190) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + canvasH * 0.58, canvasH); ctx.stroke();
+        }
         if (scenario.startsWith('finish')) {
           game.gameyFeatures = scenario === 'finish';
           game.quizCorrect = 2; game.quizAttempts = 4; game.quizPoints = 158; game.quizBestStreak = 2;
@@ -99,11 +116,28 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           paint.src = game._landmarkNotice.imageUrl;
           return;
         }
-        if (scenario === 'hud') {
-          game.hud.drawCanalScore(ctx, 7, 9, 640, 'Correct — Singel', 4, true);
-          game.hud.drawCurrentLocation(ctx, 'Prinsengracht', 'Jordaan', 'car', false);
-          game.hud.drawDestination(ctx, 'Westerkerk', 1860);
+        if (scenario === 'hud' || scenario.startsWith('touch-hud')) {
+          const asking = scenario === 'touch-hud-question';
+          game.currentNeighborhood = 'Jordaan';
+          game.quizFeedback = asking ? '' : 'Correct — Singel';
+          game.showMiniMap = true;
+          game.routeTo = { id: 'westerkerk', name: 'Westerkerk' };
+          // Place the whole HUD from the live viewport, exactly as a frame
+          // would, so the story shows the real arrangement and not a guess.
+          game._resize();
+          game._syncHudLayout();
+          game.hud.drawCanalScore(ctx, 7, 9, 640, game.quizFeedback, 4, true,
+            game.hud.tripText(42, 6240));
+          // The street under question is withheld: the HUD must never answer it.
+          game.hud.drawCurrentLocation(ctx, 'Prinsengracht', 'Jordaan', 'car', asking);
+          game.hud.drawDestination(ctx, 'Westerkerk', 1860, 0.42);
           game.hud.drawTripReadout(ctx, 42, 6240);
+          game.hud.drawCityOverview(ctx, game);
+          const steering = scenario === 'touch-hud-steering';
+          game.hud.drawDpad(ctx, {
+            ArrowUp: false, ArrowDown: false, ArrowLeft: steering, ArrowRight: false,
+          });
+          if (scenario === 'touch-hud') game.hud.drawTouchHint(ctx);
           return;
         }
         const image = new Image();
@@ -116,6 +150,10 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
         };
       };
       drawWhenReady();
+      if (scenario.startsWith('touch-hud')) {
+        // The addon resizes the iframe after onLoad; redraw at the new size.
+        win?.addEventListener('resize', () => drawWhenReady());
+      }
     }
   }, [scenario]);
 
@@ -123,7 +161,10 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     key={scenario}
     onLoad={(event) => configure(event.currentTarget)}
     title={`Canal Recall — ${scenario}`}
-    src={`/canal-drive/?storybook=${scenario}`}
+    // `/canal-drive/` (no filename) 404s under `storybook dev`, which made
+    // every game-frame story render the dev server's "Not Found" page. Naming
+    // index.html explicitly works in both the dev server and the static build.
+    src={`/canal-drive/index.html?storybook=${scenario}`}
     style={{ display: 'block', width: '100vw', height: '100vh', border: 0 }}
   />;
 }
@@ -158,4 +199,47 @@ export const LandmarkPanelMobile: Story = {
 export const LandmarkCardMobile: Story = {
   args: { scenario: 'landmark-card' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
+
+// ---- Phone -----------------------------------------------------------------
+// The states that were impossible to reach by driving and are the whole point
+// of the portrait work: a full-width card stack over a map that actually lines
+// up with it, and a d-pad that is the only way to steer.
+
+export const PortraitHud: Story = {
+  args: { scenario: 'touch-hud' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** The pad lit while steering left, so the pressed state is reviewable. */
+export const PortraitHudSteering: Story = {
+  args: { scenario: 'touch-hud-steering' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** Mid-question: the street name is withheld and the feedback line is gone,
+ *  which is the taller/shorter pair the card stack has to absorb. */
+export const PortraitHudAsking: Story = {
+  args: { scenario: 'touch-hud-question' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** A small phone: the tightest the portrait stack ever gets. */
+export const PortraitHudSmallPhone: Story = {
+  args: { scenario: 'touch-hud' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
+
+/** Landscape: the rows go back to the corners and the pad moves to the left,
+ *  where a hand holding the phone already is. */
+export const LandscapeHud: Story = {
+  args: { scenario: 'touch-hud' },
+  parameters: { viewport: { defaultViewport: 'mobile2', defaultOrientation: 'landscape' } },
+};
+
+/** The briefing as a full-bleed sheet. This is the screen whose `min(94vw,…)`
+ *  width overflowed the viewport and latched the desktop layout onto phones. */
+export const PortraitRouteSetup: Story = {
+  args: { scenario: 'touch-setup' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
 };

@@ -222,6 +222,7 @@
         this._renderFinish();
         return;
       }
+      this._syncHudLayout();
       this.hud.drawTripReadout(ctx, player.speed, this._playerDistancePx());
       this.hud.drawCanalScore(
         ctx,
@@ -230,7 +231,8 @@
         this.quizPoints,
         this.quizFeedback,
         this.quizStreak,
-        this.gameyFeatures
+        this.gameyFeatures,
+        this.hud.tripText(player.speed, this._playerDistancePx())
       );
       const routeAnswerHidden = !!this.quizPromptName || !!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName;
       const visibleRouteName = routeAnswerHidden ? "" : this.track.getRoadName(player.x, player.y);
@@ -264,9 +266,33 @@
       this._renderRecenterButton();
       if (this._debugMode) this._renderDebug();
       this._renderControlsHint();
-      if (this.input.isMobile && this.state === GameState.RACING) this.hud.drawTouchHint(ctx);
+      if (this.state === GameState.RACING) {
+        this.hud.drawDpad(ctx, this.input.padKeys);
+        if (this.input.showTouchHint) this.hud.drawTouchHint(ctx);
+      }
       if (this.state === GameState.PAUSED) this._renderPaused();
       if (this.state === GameState.FINISHED) this._renderFinish();
+    }
+    /** Place the whole HUD for this frame. One call, so every card agrees about
+     *  where the others are and the phone layout stays collision-free. */
+    _syncHudLayout() {
+      const ui = window.CanalRecallUi;
+      this._hudLayoutCache = ui.hudLayout({
+        viewport: this.viewport,
+        tripWidth: 180,
+        landmarkHeight: 130,
+        feedbackVisible: !!this.quizFeedback,
+        neighborhoodVisible: !!this.currentNeighborhood,
+        minimapVisible: this.showMiniMap,
+        zoomVisible: this._zoomBadgeTimer > 0,
+        controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
+      });
+      this.hud.setLayout(this._hudLayoutCache);
+    }
+    /** The frame's layout, computing it if a caller runs before _syncHudLayout. */
+    _hudRects() {
+      if (!this._hudLayoutCache) this._syncHudLayout();
+      return this._hudLayoutCache;
     }
     /** The player's odometer, in world px. Not on the shared vehicle type
      *  because only the presentation layer reads it. */
@@ -278,16 +304,9 @@
     _renderZoomBadge() {
       if (this._zoomBadgeTimer <= 0) return;
       const ctx = this.ctx;
-      const layout = window.CanalRecallBottomHud?.bottomHudLayout({
-        tripWidth: 180,
-        zoomVisible: true,
-        controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
-      });
-      const rect = layout?.zoomBadge ?? { x: CANVAS_W / 2 - 35, y: CANVAS_H - 35, width: 70, height: 22 };
-      ctx.fillStyle = "rgba(0,0,0,0.4)";
-      roundRect(ctx, rect.x, rect.y, rect.width, rect.height, 4);
-      ctx.fill();
-      ctx.fillStyle = "rgba(255,255,255,0.7)";
+      const rect = this._hudRects().zoomBadge;
+      this.hud.paperCard(ctx, rect, { radius: 9 });
+      ctx.fillStyle = window.CanalRecallUi.paperTheme.inkMuted;
       ctx.font = "bold 12px monospace";
       ctx.textAlign = "center";
       ctx.fillText(`${Math.round(this.camera.zoom * 100)}%`, rect.x + rect.width / 2, rect.y + 15);
@@ -298,19 +317,16 @@
         return;
       }
       const ctx = this.ctx;
-      const width = 110, height = 28;
-      const x = CANVAS_W / 2 - width / 2, y = 70;
-      ctx.fillStyle = "rgba(3,18,28,0.85)";
-      roundRect(ctx, x, y, width, height, 6);
-      ctx.fill();
-      ctx.strokeStyle = "rgba(56,189,248,0.6)";
-      ctx.lineWidth = 1;
-      roundRect(ctx, x, y, width, height, 6);
-      ctx.stroke();
-      ctx.fillStyle = "#38BDF8";
+      const layout = this._hudRects();
+      const compact = layout.mode === "compact";
+      const width = compact ? 132 : 110, height = compact ? 44 : 28;
+      const x = Math.round(CANVAS_W / 2 - width / 2);
+      const y = Math.round(compact ? layout.destination.y + layout.destination.height + 10 : 70);
+      this.hud.paperCard(ctx, { x, y, width, height }, { solid: true, radius: compact ? 14 : 8 });
+      ctx.fillStyle = window.CanalRecallUi.paperTheme.moss;
       ctx.font = "bold 11px monospace";
       ctx.textAlign = "center";
-      ctx.fillText("RE-CENTER (R)", CANVAS_W / 2, y + 18);
+      ctx.fillText(compact ? "RE-CENTER" : "RE-CENTER (R)", CANVAS_W / 2, y + height / 2 + 4);
       this._recenterBtnBounds = { x, y, w: width, h: height };
     }
     /** Only while the player is settling in. It used to sit permanently on top
@@ -318,14 +334,9 @@
     _renderControlsHint() {
       if (this.input.isMobile || this.raceTime >= CONTROLS_HINT_DURATION) return;
       const ctx = this.ctx;
-      const layout = window.CanalRecallBottomHud?.bottomHudLayout({
-        tripWidth: 180,
-        zoomVisible: this._zoomBadgeTimer > 0,
-        controlsVisible: true
-      });
-      const rect = layout?.controlsHint ?? { x: CANVAS_W / 2 - 177, y: CANVAS_H - 32, width: 354, height: 12 };
+      const rect = this._hudRects().controlsHint;
       ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
-      ctx.fillStyle = "rgba(255,255,255,0.45)";
+      ctx.fillStyle = window.CanalRecallUi.paperTheme.inkMuted;
       ctx.font = "10px monospace";
       ctx.textAlign = "center";
       ctx.fillText(
