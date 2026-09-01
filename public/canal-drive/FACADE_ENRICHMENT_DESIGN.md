@@ -176,3 +176,13 @@ points and 18% grid coverage, rejects shadowed and mixed-colour walls, and uses
 equal-weight 75 cm cell medians so a dense window or scan strip cannot dominate
 the wall field. Every result remains an unaccepted `machine-proposal`; source
 file hash, sampling policy, point counts and rejection reasons are retained.
+
+PDOK's 3D Basisvoorziening also exposes documented 2025 RGB LAZ tiles for its
+20 cm and 8 cm photogrammetric digital surface models. Those downloads solve
+the roof-plane input problem, but a DSM represents the top visible surface and
+is not substituted for street-level façade evidence. Netherlands3D's public
+repositories provide Unity digital-twin loaders and geometry utilities, not an
+RGB point-cloud catalog. Amsterdam AI Team's `Urban_PointCloud_Processing` is
+the relevant reusable façade method: it fuses street-level LAS with AHN/BGT and
+region-grows building façades, but it still requires the municipal street-level
+cloud whose current Amsterdam catalog is empty.
