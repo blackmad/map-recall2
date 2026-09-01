@@ -6,6 +6,16 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Reviewed trivia and civic POIs reached the original Map Recall game.** Its
+  Amsterdam extract loader now joins the shared reviewed `facts.json` only by
+  exact feature id. Answer cards prefer a provenance-bearing quotation and
+  rotate deterministically by game seed and round; a missing catalog or an
+  unmatched feature keeps the existing Wikipedia card. The join is typed and
+  tested independently of React. The same audit found that cinema, library,
+  university and music-venue features were extracted but absent from both the
+  All and Landmarks category type lists, so the UI filtered them out; both
+  lists and the regression check now include every civic POI type.
+
 - **Local facts now have an editorial boundary and a memory.** The old Ollama
   script read the same lede already shown on the card, asked for exactly three
   facts, and wrote its first answer directly into the public extract. Its

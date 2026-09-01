@@ -31,6 +31,12 @@ city sample, and design a separately proven translation gate before admitting
 Dutch-only articles. Do not restore abstractive rewriting: the earlier pilot
 combined true source numbers into false relationships.
 
+The original Map Recall app now consumes the same reviewed `facts.json` by
+exact extract feature id and shows the selected quotation after an answer;
+unmatched POIs keep their existing Wikipedia card. Civic POI types are no
+longer silently omitted from its All/Landmarks filters. Expansion work belongs
+in the shared catalog above, not in a second app-specific generator.
+
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by
 mastery and review state, with a fog-of-war layer over the rest. Derive it from
