@@ -42,6 +42,7 @@ export type FactRejectionReason =
   | 'human-rejected'
   | 'invalid-verdict'
   | 'review-predates-this-generator'
+  | 'invalid-provenance'
   | 'struck-by-reviewer';
 
 export interface FactRejection {
@@ -97,6 +98,12 @@ export function selectReviewedFacts(
     for (const fact of feature.facts) {
       if (struck.has(fact.text.trim())) {
         rejected.push({ id: feature.id, reason: 'struck-by-reviewer', text: fact.text });
+        continue;
+      }
+      if (!fact.text || fact.sourceQuote !== fact.text
+        || !/^https:\/\/[^/]+\.wikipedia\.org\//.test(fact.sourceUrl)
+        || !fact.license || !fact.retrievedAt || !fact.model) {
+        rejected.push({ id: feature.id, reason: 'invalid-provenance', text: fact.text });
         continue;
       }
       facts.push(fact);

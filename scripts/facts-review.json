@@ -1,5 +1,50 @@
 {
-  "reviewedAt": null,
-  "generatorVersion": null,
-  "features": {}
+  "reviewedAt": "2026-09-01",
+  "generatorVersion": "facts-v5-extractive-standalone-en",
+  "features": {
+    "extract_landmarks_1104215352": {
+      "verdict": "approved",
+      "drop": ["Berlage himself had already carried out major interventions in 1907 to address this issue."],
+      "note": "Two standalone architectural/restoration facts retained; contextual 'this issue' struck."
+    },
+    "extract_landmarks_11127803": {
+      "verdict": "approved",
+      "note": "Four verbatim historical statements retained."
+    },
+    "extract_landmarks_1617200654": {
+      "verdict": "approved",
+      "note": "One self-contained institutional fact retained."
+    },
+    "extract_landmarks_2001162595": {
+      "verdict": "approved",
+      "note": "One self-contained historic-building fact retained."
+    },
+    "extract_landmarks_2127899711": {
+      "verdict": "approved",
+      "drop": ["The UvA regularly ranks among the best 100 universities in the world (2024/25 QS World University Rankings: 55)."],
+      "note": "The UvA ranking is not about AUC and was struck."
+    },
+    "extract_landmarks_614625734": {
+      "verdict": "approved",
+      "drop": ["Miep Gies, Bep Voskuijl (known in the early version of The Diary of a Young Girl as Elli Vossen) and Johannes Kleiman occupying the front office while Victor Kugler worked in the middle office."],
+      "note": "The grammatical fragment was struck; the Secret Annex description retained."
+    },
+    "extract_landmarks_7630368": {
+      "verdict": "approved",
+      "note": "One self-contained construction/location fact retained."
+    },
+    "extract_landmarks_799279783": {
+      "verdict": "approved",
+      "drop": [
+        "With the construction of the metro tunnel in the late 1970s, both the pedestrian tunnel and the road in front of the station disappeared.",
+        "In the early 1980s, the central hall and middle tunnel were considerably widened and modernized.",
+        "In the 1990s, a new signaling post was built on the western side of the station."
+      ],
+      "note": "Only the sentence explicitly naming Amsterdam Centraal retained."
+    },
+    "extract_landmarks_855923099": {
+      "verdict": "approved",
+      "note": "Six exact, standalone history/alumni sentences retained."
+    }
+  }
 }

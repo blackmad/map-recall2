@@ -28,6 +28,8 @@ export type RejectionReason =
   | 'restates-the-lede'
   | 'temporally-fragile'
   | 'talks-about-the-source'
+  | 'unbalanced-quotation'
+  | 'not-a-source-quotation'
   | 'markup'
   | 'ungrounded-number'
   | 'duplicate';
@@ -45,7 +47,7 @@ const MAX_CHARS = 200;
 const DANGLING_OPENING = /^(it|its|it's|this|that|these|those|they|their|he|she|his|her|the (building|bridge|street|park|square|church|museum|structure|site|area|place))\b/i;
 
 /** True today, wrong in a file that ships for years. */
-const TEMPORALLY_FRAGILE = /\b(currently|at present|nowadays|as of \d{4}|in recent years|recently|today the|today it|is (being|to be|due to be|set to be|expected to be|scheduled to be) \w+|is (planned|proposed|expected|scheduled|due|under construction)|are (planned|proposed|expected|scheduled)|will (open|be built|be completed|be replaced|reopen))\b/i;
+const TEMPORALLY_FRAGILE = /\b(currently|at present|nowadays|as of(?: \w+)? \d{4}|in recent years|recently|today the|today it|is (being|to be|due to be|set to be|expected to be|scheduled to be) \w+|is (planned|proposed|expected|scheduled|due|under construction)|are (planned|proposed|expected|scheduled)|will (open|be built|be completed|be replaced|reopen))\b/i;
 
 /** The model describing its own input instead of the place. */
 const META_LANGUAGE = /\b(the (source|text|passage|article|extract|document)|according to the (text|source|passage|article)|the provided|mentioned above|this (text|passage|article))\b/i;
@@ -222,6 +224,8 @@ export interface QualityOptions {
   source: string;
   /** Facts already accepted for this feature, to reject near-duplicates. */
   accepted?: readonly string[];
+  /** Require the displayed sentence to occur verbatim in `source`. */
+  extractive?: boolean;
 }
 
 /** Word overlap, ignoring order. Two sentences about the same date and person
@@ -247,6 +251,20 @@ export function tidyFact(text: string): string {
     .trim());
 }
 
+/** A clipped quotation is not merely ugly: it can reverse or obscure a claim. */
+export function hasUnbalancedQuotation(text: string): boolean {
+  const straight = (text.match(/["']/g) || []).length;
+  const curlyDouble = (text.match(/[“”]/g) || []).length;
+  const curlySingle = (text.match(/[‘’]/g) || []).length;
+  return straight % 2 !== 0 || curlyDouble % 2 !== 0 || curlySingle % 2 !== 0;
+}
+
+/** The model may select a source sentence, but it may not rewrite one. */
+export function isSourceQuotation(text: string, source: string): boolean {
+  const normalise = (value: string) => value.normalize('NFKC').replace(/\s+/g, ' ').trim();
+  return normalise(source).includes(normalise(text));
+}
+
 /**
  * Decide whether one generated sentence may be shown, and say why not when it
  * may not. Ordered cheapest-first so the rejection reason reported is the most
@@ -257,7 +275,17 @@ export function judgeFact(raw: string, options: QualityOptions): FactVerdict {
   if (MARKUP.test(text)) return { ok: false, reason: 'markup' };
   if (text.length < MIN_CHARS) return { ok: false, reason: 'too-short' };
   if (text.length > MAX_CHARS) return { ok: false, reason: 'too-long' };
+  // `countSentences` deliberately treats unpunctuated text as one unit, which
+  // is useful generally but admits Wikipedia list rows as trivia. Extractive
+  // cards must be complete source sentences, not headings or table cells.
+  if (options.extractive && !/[.!?]["'”’)]?$/.test(text)) {
+    return { ok: false, reason: 'not-one-sentence' };
+  }
   if (countSentences(text) !== 1) return { ok: false, reason: 'not-one-sentence' };
+  if (hasUnbalancedQuotation(text)) return { ok: false, reason: 'unbalanced-quotation' };
+  if (options.extractive && !isSourceQuotation(text, options.source)) {
+    return { ok: false, reason: 'not-a-source-quotation' };
+  }
   if (META_LANGUAGE.test(text)) return { ok: false, reason: 'talks-about-the-source' };
   if (TEMPORALLY_FRAGILE.test(text)) return { ok: false, reason: 'temporally-fragile' };
   if (DANGLING_OPENING.test(text)) return { ok: false, reason: 'dangling-reference' };
@@ -271,7 +299,8 @@ export function judgeFact(raw: string, options: QualityOptions): FactVerdict {
   // always translated it away, which is item 11c's rule: "The Lean Bridge is
   // named for its narrowness" teaches the wrong name for the Magere Brug. So
   // the guard is kept exactly where the failure lives.
-  if (options.kind === 'naming' && !namesSubject(text, options.name, options.aliases)) {
+  if ((options.kind === 'naming' || options.extractive)
+    && !namesSubject(text, options.name, options.aliases)) {
     return { ok: false, reason: 'does-not-name-subject' };
   }
   if (LEDE_RESTATEMENT.test(text) || LOCATION_ONLY.test(text)) {

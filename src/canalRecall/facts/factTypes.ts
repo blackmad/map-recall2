@@ -46,6 +46,8 @@ export interface Fact {
   kind: FactKind;
   /** Article heading the source passage came from; `''` for the lede. */
   section: string;
+  /** Exact article sentence selected by the local summarizer. */
+  sourceQuote: string;
   /** Article URL, so the card's "read more" points at the actual claim. */
   sourceUrl: string;
   /** Licence of the source text, carried per statement and never merged away. */

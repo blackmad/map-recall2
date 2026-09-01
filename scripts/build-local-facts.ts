@@ -68,7 +68,10 @@ const stagingDirectory = path.join(directory, 'staging');
  * sentences written under the old rules — and it is written into the output,
  * so a review sheet can be traced to the rules that produced it.
  */
-const GENERATOR_VERSION = 'facts-v2';
+const GENERATOR_VERSION = 'facts-v5-extractive-standalone-en';
+/** Prompt/cache version stays stable when only deterministic publication gates
+ * change, so a stricter rerun does not spend another local model inference. */
+const PROMPT_VERSION = 'facts-v4-extractive-en';
 
 /** Licence of every source this generator reads. Carried per statement. */
 const WIKIPEDIA_LICENSE = 'CC BY-SA 4.0';
@@ -101,22 +104,21 @@ surprise — something genuinely unexpected`;
  * editorial gate would catch most of those, but not asking for them is
  * cheaper and produces better first choices.
  */
-function buildPrompt(name: string, passage: SourcePassage, lang: string): string {
-  return `You write one-sentence trivia for a geography game played while cycling around Amsterdam.
+function buildPrompt(name: string, passage: SourcePassage): string {
+  return `You select one-sentence trivia for a geography game played while cycling around Amsterdam.
 
 SUBJECT: ${name}
-SOURCE (the "${passage.section || 'introduction'}" section of its Wikipedia article${lang === 'en' ? '' : `, in ${lang === 'nl' ? 'Dutch' : lang}`}):
+SOURCE (the "${passage.section || 'introduction'}" section of its English Wikipedia article):
 """
 ${passage.text}
 """
 
-Write up to 4 facts about ${name} that a player would enjoy learning, drawn ONLY from the source above.
+Select up to 4 sentences about ${name} that a player would enjoy learning.
 
 Rules:
-- Write in English${lang === 'en' ? '' : `, translating from the source`}. Keep Dutch proper names spelled exactly as the source spells them, and never translate the name "${name}" itself.
-- Each fact is ONE complete English sentence of 50 to 180 characters.
-- Begin each fact by naming ${name}. Never begin with "It", "This", "The bridge" or "The building".
-- Every date, year and number must appear in the source. Invent nothing, and infer nothing the source does not state.
+- Copy each sentence EXACTLY from SOURCE. Do not rewrite, combine, calculate, translate, shorten or improve it.
+- Each quote must be ONE complete English sentence of 50 to 180 characters.
+- Never select a sentence beginning with "It", "This", "The bridge" or "The building".
 - Do not restate what ${name} is and where it is. The player's card already says that.
 - Prefer the concrete and the surprising over the general.
 - Say nothing about what is planned, proposed or under way; this text is read years from now.
@@ -126,10 +128,10 @@ Rules:
 Classify each fact as exactly one of:
 ${KIND_GUIDE}
 
-Return JSON: {"facts":[{"kind":"...","fact":"..."}]}`;
+Return JSON: {"facts":[{"kind":"...","quote":"exact sentence copied from SOURCE"}]}`;
 }
 
-interface GeneratedFact { kind: string; fact: string }
+interface GeneratedFact { kind: string; quote: string }
 
 /** One cached model response, keyed by prompt content so a prompt change
  *  regenerates and a rerun costs nothing. */
@@ -141,7 +143,7 @@ async function hashKey(text: string): Promise<string> {
 }
 
 async function generate(prompt: string): Promise<GeneratedFact[]> {
-  const key = await hashKey(`${GENERATOR_VERSION}\0${model}\0${prompt}`);
+  const key = await hashKey(`${PROMPT_VERSION}\0${model}\0${prompt}`);
   const cacheFile = path.join(cacheDirectory, `${key}.json`);
   try {
     const cached = JSON.parse(await readFile(cacheFile, 'utf8')) as CachedGeneration;
@@ -163,13 +165,14 @@ async function generate(prompt: string): Promise<GeneratedFact[]> {
   try {
     const parsed = JSON.parse(payload.response || '{}');
     const list = Array.isArray(parsed) ? parsed : parsed.facts;
-    // Accept the shapes a small model actually returns: the object asked for,
-    // a bare array of strings, and an array of {kind, fact}.
+    // Only the requested shape is accepted. Older abstractive cache shapes
+    // must never become eligible for publication.
     generated = (Array.isArray(list) ? list : [])
-      .map((entry: unknown) => typeof entry === 'string'
-        ? { kind: 'surprise', fact: entry }
-        : { kind: String((entry as GeneratedFact)?.kind || ''), fact: String((entry as GeneratedFact)?.fact || '') })
-      .filter((entry) => entry.fact);
+      .map((entry: unknown) => ({
+        kind: String((entry as GeneratedFact)?.kind || ''),
+        quote: String((entry as GeneratedFact)?.quote || ''),
+      }))
+      .filter((entry) => entry.quote);
   } catch {
     generated = [];
   }
@@ -214,6 +217,9 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
   if (!reference) return null;
   const article = await readCachedArticle(reference);
   if (!article) return null;
+  // Translating is generation, not extraction. Dutch articles remain cached
+  // for a future proven translation gate but cannot enter this safe slice.
+  if (article.lang !== 'en') return null;
   const passages = selectSourcePassages(splitArticleSections(article.text))
     .slice(0, MAX_PASSAGES_PER_FEATURE);
   if (!passages.length) return null;
@@ -221,21 +227,23 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
   const accepted: Fact[] = [];
   for (const passage of passages) {
     if (accepted.length >= MAX_FACTS_PER_FEATURE) break;
-    const generated = await generate(buildPrompt(feature.name, passage, article.lang));
+    const generated = await generate(buildPrompt(feature.name, passage));
     for (const entry of generated) {
       const kind = normaliseKind(entry.kind);
-      const verdict = judgeFact(entry.fact, {
+      const verdict = judgeFact(entry.quote, {
         name: feature.name,
         kind,
         aliases: [article.title],
         source: passage.text,
         accepted: accepted.map((fact) => fact.text),
+        extractive: true,
       });
-      if (!verdict.ok) { recordRejection(verdict.reason, entry.fact); continue; }
+      if (!verdict.ok) { recordRejection(verdict.reason, entry.quote); continue; }
       accepted.push({
         text: verdict.text,
         kind,
         section: passage.section,
+        sourceQuote: verdict.text,
         sourceUrl: article.url,
         license: WIKIPEDIA_LICENSE,
         retrievedAt: article.retrievedAt,
@@ -326,10 +334,9 @@ const review = [
   `Generator \`${GENERATOR_VERSION}\`, model \`${model}\`, ${output.generatedAt}.`,
   `${features.length} features, ${totalFacts} facts, ${rejected} rejected before this sheet.`,
   '',
-  'Every sentence below was written by a small local model from the Wikipedia',
-  'section named beside it, and passed a grounding check that every year and',
-  'large number occurs in that section. That check cannot see a wrong *relation*',
-  'between two true numbers, which is what a 4B model gets wrong. Read for that.',
+  'Every sentence below was selected by a small local model from the Wikipedia',
+  'section named beside it. The displayed text is an exact source quotation,',
+  'not a model rewrite, and it passed the standalone-card editorial gate.',
   '',
   'Mark a feature by adding its id to `scripts/facts-review.json`.',
   '',

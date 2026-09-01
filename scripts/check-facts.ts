@@ -9,6 +9,8 @@ import assert from 'node:assert/strict';
 
 import {
   countSentences,
+  hasUnbalancedQuotation,
+  isSourceQuotation,
   judgeFact,
   namesSubject,
   normaliseDigitGroups,
@@ -156,6 +158,41 @@ check('a fact that goes stale is rejected', () => {
     { ok: false, reason: 'temporally-fragile' });
   assert.deepEqual(accept('The Magere Brug is planned to be replaced by a wider crossing for cyclists.'),
     { ok: false, reason: 'temporally-fragile' });
+  assert.deepEqual(accept('As of summer 2016, the Magere Brug had 2,100 daily visitors.'),
+    { ok: false, reason: 'temporally-fragile' });
+});
+
+check('a clipped quotation is rejected before it can change a claim', () => {
+  assert.equal(hasUnbalancedQuotation('A campaign promised to ‘build something else.'), true);
+  assert.equal(hasUnbalancedQuotation('The name means ‘thin bridge’ in English.'), false);
+  assert.deepEqual(
+    accept('The Magere Brug campaign promised to ‘build something else.'),
+    { ok: false, reason: 'unbalanced-quotation' },
+  );
+});
+
+check('extractive summarisation rejects even a plausible rewrite', () => {
+  const source = 'The first students arrived in 2009. The first class graduated in 2012.';
+  assert.equal(isSourceQuotation('The first students arrived in 2009.', source), true);
+  assert.deepEqual(
+    judgeFact('The first class graduated in 2012 after six years of study.', {
+      name: 'Example College', source, extractive: true,
+    }),
+    { ok: false, reason: 'not-a-source-quotation' },
+  );
+});
+
+check('extractive trivia must be a complete standalone sentence about its subject', () => {
+  assert.deepEqual(judgeFact('Chantal Janzen – Dutch actress, singer and presenter', {
+    name: 'Amsterdamse Hogeschool voor de Kunsten',
+    source: 'Chantal Janzen – Dutch actress, singer and presenter',
+    extractive: true,
+  }), { ok: false, reason: 'not-one-sentence' });
+  assert.deepEqual(judgeFact('The first two professors were Gerardus Vossius and Caspar Barlaeus.', {
+    name: 'University of Amsterdam',
+    source: 'The first two professors were Gerardus Vossius and Caspar Barlaeus.',
+    extractive: true,
+  }), { ok: false, reason: 'does-not-name-subject' });
 });
 
 check('a model describing its own prompt is rejected', () => {
@@ -331,7 +368,7 @@ check('a long passage is cut at a sentence end', () => {
 // ---- Rotation ----
 
 const fact = (text: string, kind: FactKind): Fact => ({
-  text, kind, section: 'History', sourceUrl: 'https://en.wikipedia.org/wiki/Test',
+  text, kind, section: 'History', sourceQuote: text, sourceUrl: 'https://en.wikipedia.org/wiki/Test',
   license: 'CC BY-SA 4.0', retrievedAt: '2026-09-01', model: 'ollama:test',
 });
 
@@ -495,6 +532,15 @@ check('a malformed verdict is not approval', () => {
     { generatorVersion: 'facts-v2', features: { a: { verdict: 'looks fine' } as never } }, 'facts-v2');
   assert.equal(result.published.length, 0);
   assert.equal(result.rejected[0].reason, 'invalid-verdict');
+});
+
+check('an approved sentence without exact provenance still cannot ship', () => {
+  const broken = [{ ...STAGED[0], facts: [{ ...FACTS[0], sourceQuote: 'different source words' }] }];
+  const result = selectReviewedFacts(broken, {
+    generatorVersion: 'facts-v2', features: { a: { verdict: 'approved' } },
+  }, 'facts-v2');
+  assert.equal(result.published.length, 0);
+  assert.equal(result.rejected[0].reason, 'invalid-provenance');
 });
 
 console.log(`Facts OK: ${checks.length} checks.`);
