@@ -1,0 +1,30 @@
+{
+  "cityId": "rotterdam",
+  "wikidata": "Q34370",
+  "name": "Rotterdam",
+  "description": "city in South Holland, the Netherlands",
+  "colors": [],
+  "population": 664311,
+  "populationAsOf": "+2023-01-01T00:00:00Z",
+  "officialWebsite": "https://www.rotterdam.nl/",
+  "flag": {
+    "file": "Flag of Rotterdam.svg",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Flag_of_Rotterdam.svg/960px-Flag_of_Rotterdam.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag%20of%20Rotterdam.svg"
+  },
+  "coatOfArms": {
+    "file": "Rotterdam wapen.svg",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Rotterdam_wapen.svg/960px-Rotterdam_wapen.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "source": "https://commons.wikimedia.org/wiki/File:Rotterdam%20wapen.svg"
+  },
+  "headOfGovernment": {
+    "wikidata": "Q2625041",
+    "name": "Carola Schouten",
+    "description": "Dutch politician",
+    "image": {
+      "file": "Carola Schouten B (2026).png",
+      "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Carola_Schouten_B_%282026%29.png/960px-Carola_Schouten_B_%282026%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "source": "https://commons.wikimedia.org/wiki/File:Carola%20Schouten%20B%20(2026).png"
+    }
+  }
+}
