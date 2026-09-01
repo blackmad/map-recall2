@@ -246,6 +246,15 @@ check('only a naming fact has to contain the name', () => {
   );
 });
 
+check('a naming fact can teach the native name and its English meaning together', () => {
+  const source = 'Because the bridge was very narrow, locals called it magere brug, literally "skinny bridge".';
+  const verdict = judgeFact(
+    'Magere Brug means “Skinny Bridge,” a name inspired by the original narrow crossing.',
+    { name: 'Magere Brug', aliases: ['Magere Brug'], source, kind: 'naming' },
+  );
+  assert.equal(verdict.ok, true, JSON.stringify(verdict));
+});
+
 check('digits inside the feature\u2019s own name are grounded', () => {
   // "OT301 was originally the Dutch film academy" was rejected for the 301 in
   // the building's name.
