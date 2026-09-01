@@ -27,11 +27,20 @@ export interface ArticleSection {
  * Sections that never contain a fact a player could learn: citation
  * apparatus, navigation, and image dumps. Matched case-insensitively against
  * the whole heading, so "See also" is dropped and "Seealso Bridge" is not.
+ *
+ * Dutch headings are listed beside the English ones rather than in a separate
+ * table: only 18 of Amsterdam's 300 mapped bridges have an English article, so
+ * nl.wikipedia is a first-class source here, and an unrecognised
+ * "Externe links" would be mined as ordinary prose.
  */
 const APPARATUS_HEADINGS = new Set([
   'references', 'reference', 'notes', 'notes and references', 'footnotes',
   'citations', 'sources', 'bibliography', 'further reading', 'external links',
   'see also', 'gallery', 'literature', 'publications', 'works cited',
+  // Dutch
+  'externe links', 'externe link', 'zie ook', 'bronnen', 'bronvermelding',
+  'referenties', 'noten', 'voetnoten', 'literatuur', 'geraadpleegde literatuur',
+  'afbeeldingen', 'galerij', 'bronnen, noten en/of referenties',
 ]);
 
 /**
@@ -43,6 +52,9 @@ const LIST_HEADINGS = new Set([
   'transport', 'transportation', 'public transport', 'access', 'getting there',
   'awards', 'honours', 'honors', 'statistics', 'demographics', 'climate',
   'population', 'subdivisions', 'neighbourhoods', 'neighborhoods',
+  // Dutch
+  'vervoer', 'openbaar vervoer', 'bereikbaarheid', 'cijfers', 'statistieken',
+  'bevolking', 'wijken', 'buurten', 'onderscheidingen',
 ]);
 
 /**
@@ -52,14 +64,14 @@ const LIST_HEADINGS = new Set([
  * an == Etymology == section to draw on.
  */
 const PREFERRED_HEADINGS: readonly (readonly [RegExp, number])[] = [
-  [/^(etymology|name|naming|toponym)/i, 5],
-  [/(popular culture|fiction|film|literature and)/i, 5],
-  [/^(trivia|anecdote|folklore|legend)/i, 5],
-  [/^(history|origins?|early|founding|background)/i, 4],
-  [/(incident|disaster|fire|flood|collapse|war|occupation|siege)/i, 4],
-  [/^(construction|design|architecture|renovation|restoration)/i, 3],
-  [/(notable|residents|inhabitants|people)/i, 3],
-  [/^(description|layout|location|setting)/i, 2],
+  [/^(etymology|name|naming|toponym|naam|naamgeving|herkomst)/i, 5],
+  [/(popular culture|fiction|film|literature and|populaire cultuur|in de kunst)/i, 5],
+  [/^(trivia|anecdote|folklore|legend|wetenswaardig|bijzonderhe|anekdote|legende)/i, 5],
+  [/^(history|origins?|early|founding|background|geschiedenis|ontstaan|verleden|achtergrond)/i, 4],
+  [/(incident|disaster|fire|flood|collapse|war|occupation|siege|ramp|brand|ongeval|oorlog|bezetting)/i, 4],
+  [/^(construction|design|architecture|renovation|restoration|bouw|ontwerp|architectuur|renovatie|restauratie|constructie)/i, 3],
+  [/(notable|residents|inhabitants|people|bewoners|bekende|personen)/i, 3],
+  [/^(description|layout|location|setting|beschrijving|ligging|indeling|omgeving)/i, 2],
 ];
 
 /** The lede is worth mining, but it is the paragraph the card already shows,
