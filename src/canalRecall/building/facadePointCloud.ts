@@ -18,10 +18,21 @@ export interface FacadeWallPlane {
   areaSquareMetres: number;
 }
 
+export interface RoofPlane {
+  buildingId: string;
+  surfaceId: string;
+  vertices: Point3[];
+  normal: Point3;
+  areaSquareMetres: number;
+  slopeDegrees: number | null;
+  azimuthDegrees: number | null;
+}
+
+type SemanticSurface = { type?: string; on_footprint_edge?: boolean; b3_hellingshoek?: number; b3_azimut?: number };
 type CityGeometry = {
   lod?: string | number;
   boundaries?: number[][][][];
-  semantics?: { surfaces?: Array<{ type?: string; on_footprint_edge?: boolean }>; values?: number[][] };
+  semantics?: { surfaces?: SemanticSurface[]; values?: number[][] };
 };
 
 type CityJsonFeature = {
@@ -102,6 +113,36 @@ export function extractFacadeWallPlanes(response: CityJsonResponse): FacadeWallP
   return walls;
 }
 
+/** Extract semantic LoD2.2 roof planes without collapsing them to a BAG footprint. */
+export function extractRoofPlanes(response: CityJsonResponse): RoofPlane[] {
+  const feature = response.feature;
+  const transform = response.metadata?.transform;
+  if (!feature?.vertices || !feature.CityObjects || !transform?.scale || !transform.translate) return [];
+  const vertices = feature.vertices.map((vertex): Point3 => [
+    vertex[0] * transform.scale![0] + transform.translate![0],
+    vertex[1] * transform.scale![1] + transform.translate![1],
+    vertex[2] * transform.scale![2] + transform.translate![2],
+  ]);
+  const buildingId = (feature.id || Object.keys(feature.CityObjects).find((key) => feature.CityObjects![key].type === 'Building') || '').replace('NL.IMBAG.Pand.', 'bag:');
+  const roofs: RoofPlane[] = [];
+  for (const [objectId, object] of Object.entries(feature.CityObjects)) {
+    for (const geometry of object.geometry || []) {
+      if (String(geometry.lod) !== '2.2' || !geometry.boundaries || !geometry.semantics) continue;
+      const shell = geometry.boundaries[0] || [];
+      const values = geometry.semantics.values?.[0] || [];
+      shell.forEach((surface, surfaceIndex) => {
+        const semantic = geometry.semantics!.surfaces?.[values[surfaceIndex]];
+        if (semantic?.type !== 'RoofSurface') return;
+        const polygon = (surface[0] || []).map((index) => vertices[index]).filter(Boolean);
+        if (polygon.length < 3) return;
+        const normal = polygonNormal(polygon);
+        roofs.push({ buildingId, surfaceId: `${objectId}:lod22:roof:${surfaceIndex}`, vertices: polygon, normal, areaSquareMetres: polygonArea(polygon, normal), slopeDegrees: semantic.b3_hellingshoek ?? null, azimuthDegrees: semantic.b3_azimut ?? null });
+      });
+    }
+  }
+  return roofs;
+}
+
 const dominantAxis = (normal: Point3) => {
   const absolute = normal.map(Math.abs);
   return absolute[0] >= absolute[1] && absolute[0] >= absolute[2] ? 0 : absolute[1] >= absolute[2] ? 1 : 2;
@@ -136,13 +177,14 @@ export type FacadeColourResult = {
   rgb?: readonly [number, number, number];
   hex?: string;
   dispersion?: number;
+  planeOffsetMetres?: number;
 };
 
 /** Robustly measure a wall colour, abstaining on sparse, shadowed or mixed evidence. */
-export function measureFacadeColour(
-  wall: FacadeWallPlane,
+export function measureSurfaceColour(
+  wall: Pick<FacadeWallPlane, 'vertices' | 'normal'>,
   points: readonly RgbPoint[],
-  options: { maximumPlaneDistance?: number; minimumPoints?: number; gridSize?: number } = {},
+  options: { maximumPlaneDistance?: number; maximumOffsetSearch?: number; minimumPoints?: number; gridSize?: number } = {},
 ): FacadeColourResult {
   const maximumPlaneDistance = options.maximumPlaneDistance ?? 0.12;
   const minimumPoints = options.minimumPoints ?? 80;
@@ -150,13 +192,22 @@ export function measureFacadeColour(
   const origin = wall.vertices[0];
   const axis = dominantAxis(wall.normal);
   const polygon = wall.vertices.map((vertex) => project2d(vertex, axis));
-  const selected = points.filter((point) => {
+  const candidates = points.map((point) => {
     const offset = subtract([point.x, point.y, point.z], origin);
-    const distance = Math.abs(offset[0] * wall.normal[0] + offset[1] * wall.normal[1] + offset[2] * wall.normal[2]);
-    return distance <= maximumPlaneDistance && insidePolygon(project2d([point.x, point.y, point.z], axis), polygon);
-  }).map((point) => ({ point, rgb: [normalizeRgb(point.red), normalizeRgb(point.green), normalizeRgb(point.blue)] as const }))
+    const distance = offset[0] * wall.normal[0] + offset[1] * wall.normal[1] + offset[2] * wall.normal[2];
+    return { point, distance };
+  }).filter(({ point, distance }) => insidePolygon(project2d([point.x, point.y, point.z], axis), polygon) && Math.abs(distance) <= (options.maximumOffsetSearch ?? maximumPlaneDistance));
+  let planeOffsetMetres = 0;
+  if (options.maximumOffsetSearch && candidates.length) {
+    const binWidth = 0.05; const bins = new Map<number, number>();
+    for (const candidate of candidates) { const bin = Math.round(candidate.distance / binWidth); bins.set(bin, (bins.get(bin) || 0) + 1); }
+    const modalBin = [...bins].sort((a, b) => b[1] - a[1] || Math.abs(a[0]) - Math.abs(b[0]))[0]?.[0] || 0;
+    planeOffsetMetres = modalBin * binWidth;
+  }
+  const selected = candidates.filter(({ distance }) => Math.abs(distance - planeOffsetMetres) <= maximumPlaneDistance)
+    .map(({ point }) => ({ point, rgb: [normalizeRgb(point.red), normalizeRgb(point.green), normalizeRgb(point.blue)] as const }))
     .filter(({ rgb }) => luminance(rgb) > 0.025 && luminance(rgb) < 0.98);
-  if (selected.length < minimumPoints) return { status: 'rejected', reason: 'too-few-points', sampleCount: selected.length, coverage: 0 };
+  if (selected.length < minimumPoints) return { status: 'rejected', reason: 'too-few-points', sampleCount: selected.length, coverage: 0, planeOffsetMetres };
   const projected = wall.vertices.map((point) => project2d(point, axis));
   const minA = Math.min(...projected.map((point) => point[0])); const maxA = Math.max(...projected.map((point) => point[0]));
   const minB = Math.min(...projected.map((point) => point[1])); const maxB = Math.max(...projected.map((point) => point[1]));
@@ -170,15 +221,18 @@ export function measureFacadeColour(
   }
   const possibleCells = Math.max(1, Math.ceil((maxA - minA) / gridSize) * Math.ceil((maxB - minB) / gridSize));
   const coverage = Math.min(1, cells.size / possibleCells);
-  if (coverage < 0.18) return { status: 'rejected', reason: 'sparse-coverage', sampleCount: selected.length, coverage };
+  if (coverage < 0.18) return { status: 'rejected', reason: 'sparse-coverage', sampleCount: selected.length, coverage, planeOffsetMetres };
   // Equal-weight grid-cell medians prevent a dense window, sign or scan strip
   // from overwhelming the actual wall field merely because it has more points.
   const cellColours = [...cells.values()].map((values) => [median(values.map((value) => value[0])), median(values.map((value) => value[1])), median(values.map((value) => value[2]))] as const);
   const rgb = [median(cellColours.map((value) => value[0])), median(cellColours.map((value) => value[1])), median(cellColours.map((value) => value[2]))].map(Math.round) as [number, number, number];
   const wallLuminance = luminance(rgb);
-  if (wallLuminance < 0.11) return { status: 'rejected', reason: 'shadowed', sampleCount: selected.length, coverage, rgb };
+  if (wallLuminance < 0.11) return { status: 'rejected', reason: 'shadowed', sampleCount: selected.length, coverage, rgb, planeOffsetMetres };
   const distances = cellColours.map((value) => colourDistance(value, rgb)).sort((a, b) => a - b);
   const dispersion = distances[Math.floor(distances.length * 0.8)];
-  if (dispersion > 92) return { status: 'rejected', reason: 'mixed-colours', sampleCount: selected.length, coverage, rgb, dispersion };
-  return { status: 'accepted', sampleCount: selected.length, coverage, rgb, hex: `#${rgb.map((value) => value.toString(16).padStart(2, '0')).join('')}`, dispersion };
+  if (dispersion > 92) return { status: 'rejected', reason: 'mixed-colours', sampleCount: selected.length, coverage, rgb, dispersion, planeOffsetMetres };
+  return { status: 'accepted', sampleCount: selected.length, coverage, rgb, hex: `#${rgb.map((value) => value.toString(16).padStart(2, '0')).join('')}`, dispersion, planeOffsetMetres };
 }
+
+/** Backwards-compatible façade-specific name. */
+export const measureFacadeColour = measureSurfaceColour;

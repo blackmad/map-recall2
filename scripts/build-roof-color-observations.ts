@@ -1,5 +1,5 @@
 /** Measure roof colours from cached PDOK orthophotos without mutating BAG data. */
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import jpeg from 'jpeg-js';
 type Point = [number, number];
@@ -12,7 +12,9 @@ const outputFile = path.resolve(arg('output') || path.join(root, 'roof-color-obs
 const limit = Math.max(1, Number(arg('limit') || 500)), fresh = process.argv.includes('--fresh');
 const bbox = arg('bbox')?.split(',').map(Number), area = arg('area') || 'inside-a10';
 if (bbox && (bbox.length !== 4 || bbox.some(Number.isNaN))) throw new Error('--bbox=minlon,minlat,maxlon,maxlat');
-const tileDirectory = path.join(root, 'pdok-ortho-tiles'); await mkdir(tileDirectory, { recursive: true });
+const imageryLayer = arg('imagery-layer') || '2025_orthoHR';
+if (!/^20\d{2}_orthoHR$/.test(imageryLayer)) throw new Error('--imagery-layer must pin a finalized year, for example 2025_orthoHR');
+const tileDirectory = path.join(root, `pdok-ortho-tiles/${imageryLayer}`); await mkdir(tileDirectory, { recursive: true });
 const EARTH_RADIUS = 6378137, TILE_METRES = 128, TILE_PIXELS = 1024, METRES_PER_PIXEL = TILE_METRES / TILE_PIXELS;
 const toMercator = ([lon, lat]: Point): Point => [(lon * Math.PI / 180) * EARTH_RADIUS, Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI / 180) / 2)) * EARTH_RADIUS];
 const polygons = (geometry: Geometry): Point[][][] => geometry.type === 'Polygon' ? [geometry.coordinates] : geometry.coordinates;
@@ -23,7 +25,7 @@ async function tile(tileX: number, tileY: number) {
   const file = path.join(tileDirectory, `${tileX}_${tileY}.jpg`); let bytes: Buffer;
   try { bytes = await readFile(file); } catch {
     const minX = tileX * TILE_METRES, minY = tileY * TILE_METRES, url = new URL('https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0');
-    url.search = new URLSearchParams({ SERVICE: 'WMS', VERSION: '1.3.0', REQUEST: 'GetMap', LAYERS: 'Actueel_orthoHR', STYLES: '', CRS: 'EPSG:3857', BBOX: `${minX},${minY},${minX + TILE_METRES},${minY + TILE_METRES}`, WIDTH: String(TILE_PIXELS), HEIGHT: String(TILE_PIXELS), FORMAT: 'image/jpeg' }).toString();
+    url.search = new URLSearchParams({ SERVICE: 'WMS', VERSION: '1.3.0', REQUEST: 'GetMap', LAYERS: imageryLayer, STYLES: '', CRS: 'EPSG:3857', BBOX: `${minX},${minY},${minX + TILE_METRES},${minY + TILE_METRES}`, WIDTH: String(TILE_PIXELS), HEIGHT: String(TILE_PIXELS), FORMAT: 'image/jpeg' }).toString();
     let error: unknown;
     for (let attempt = 0; attempt < 5; attempt++) { try { const response = await fetch(url, { headers: { 'User-Agent': 'MapRecallRoofEnrichment/1.0' } }); if (response.ok) { bytes = Buffer.from(await response.arrayBuffer()); await writeFile(file, bytes); return jpeg.decode(bytes, { useTArray: true }); } error = new Error(`HTTP ${response.status}`); } catch (caught) { error = caught; } await wait(400 * 2 ** attempt); }
     throw error;
@@ -31,8 +33,9 @@ async function tile(tileX: number, tileY: number) {
   return jpeg.decode(bytes, { useTArray: true });
 }
 const source = JSON.parse(await readFile(inputFile, 'utf8')) as { metadata?: unknown; features: Building[] };
-let old: { observations?: Array<Record<string, unknown>>; rejections?: Array<Record<string, unknown>> } = {};
+let old: { imagery?: { layer?: string }; observations?: Array<Record<string, unknown>>; rejections?: Array<Record<string, unknown>> } = {};
 if (!fresh) { try { old = JSON.parse(await readFile(outputFile, 'utf8')); } catch { /* first run */ } }
+if (old.imagery?.layer && old.imagery.layer !== imageryLayer) old = {};
 const observations = old.observations || [], rejections = old.rejections || [], processed = new Set([...observations, ...rejections].map(x => String(x.buildingId)));
 const dam: Point = [4.8936, 52.3728];
 const centre = (b: Building) => { const p = polygons(b.geometry)[0][0]; return [p.reduce((s, x) => s + x[0], 0) / p.length, p.reduce((s, x) => s + x[1], 0) / p.length] as Point; };
@@ -70,8 +73,8 @@ for (let i = 0; i < candidates.length; i++) {
   if (s.footprintPixels < 20 || accepted < 12) { rejections.push({ buildingId: id, reason: 'too-few-valid-pixels', footprintPixels: s.footprintPixels, acceptedPixels: accepted }); continue; }
   const measured = [percentile(s.r, .5), percentile(s.g, .5), percentile(s.b, .5)], iqr = Math.max(percentile(s.r, .75) - percentile(s.r, .25), percentile(s.g, .75) - percentile(s.g, .25), percentile(s.b, .75) - percentile(s.b, .25));
   const validRatio = accepted / Math.max(1, accepted + rejected), confidence = Math.max(.05, Math.min(.99, validRatio * (1 - Math.min(iqr, 100) / 125) * Math.min(1, accepted / 150)));
-  observations.push({ schemaVersion: 1, buildingId: id, bagId: building.properties.identificatie, surface: 'roof', attribute: 'colour', measuredColour: hex(measured), quantizedColour: nearest(measured), confidence: Number(confidence.toFixed(3)), source: 'pdok-orthophoto', imageryProduct: 'Actueel_orthoHR', observedAt: null, method: 'eroded-bag-footprint-rgb-median-v1', selectionArea: area, diagnostics: { footprintPixels: s.footprintPixels, acceptedPixels: accepted, rejectedShadow: s.shadow, rejectedVegetation: s.vegetation, rejectedGlare: s.glare, channelIqr: iqr, tileKeys: [...s.tiles] }, reviewStatus: 'machine-accepted-for-now' });
+  observations.push({ schemaVersion: 1, buildingId: id, bagId: building.properties.identificatie, surface: 'roof', attribute: 'colour', measuredColour: hex(measured), quantizedColour: nearest(measured), confidence: Number(confidence.toFixed(3)), source: 'pdok-orthophoto', imageryProduct: imageryLayer, observedAt: imageryLayer.slice(0, 4), method: 'eroded-bag-footprint-rgb-median-v1', selectionArea: area, diagnostics: { footprintPixels: s.footprintPixels, acceptedPixels: accepted, rejectedShadow: s.shadow, rejectedVegetation: s.vegetation, rejectedGlare: s.glare, channelIqr: iqr, tileKeys: [...s.tiles] }, reviewStatus: 'machine-proposal', acceptedForNow: false });
 }
-const output = { schemaVersion: 1, generatedAt: new Date().toISOString(), input: path.relative(process.cwd(), inputFile), imagery: { service: 'PDOK luchtfoto RGB WMS', layer: 'Actueel_orthoHR', requestedResolutionMetres: METRES_PER_PIXEL }, selection: { region: 'inside-a10', area, bbox: bbox || null, ordering: bbox ? 'distance-from-area-centre' : 'distance-from-Dam', attemptedThisRun: candidates.length }, observations, rejections };
-await writeFile(outputFile, JSON.stringify(output, null, 2));
+const output = { schemaVersion: 1, generatedAt: new Date().toISOString(), input: path.relative(process.cwd(), inputFile), imagery: { service: 'PDOK luchtfoto RGB WMS', layer: imageryLayer, vintage: imageryLayer.slice(0, 4), requestedResolutionMetres: METRES_PER_PIXEL }, selection: { region: 'inside-a10', area, bbox: bbox || null, ordering: bbox ? 'distance-from-area-centre' : 'distance-from-Dam', attemptedThisRun: candidates.length }, observations, rejections };
+await writeFile(`${outputFile}.tmp`, JSON.stringify(output, null, 2)); await rename(`${outputFile}.tmp`, outputFile);
 process.stdout.write(`Wrote ${observations.length} observations; ${rejections.length} rejections; ${byTile.size} tiles used\n`);
