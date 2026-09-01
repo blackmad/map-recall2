@@ -196,6 +196,17 @@ check('citation apparatus is never mined for facts', () => {
   assert.ok(sectionInterest('History') > sectionInterest('Description'));
 });
 
+check('Dutch headings rank the same as their English equivalents', () => {
+  // Only 18 of Amsterdam's 300 mapped bridges have an English article, so an
+  // unrecognised "Externe links" would be mined as ordinary prose.
+  assert.equal(sectionInterest('Externe links'), 0);
+  assert.equal(sectionInterest('Zie ook'), 0);
+  assert.equal(sectionInterest('Bronnen, noten en/of referenties'), 0);
+  assert.equal(sectionInterest('Geschiedenis'), sectionInterest('History'));
+  assert.equal(sectionInterest('Naamgeving'), sectionInterest('Etymology'));
+  assert.equal(sectionInterest('Beschrijving'), sectionInterest('Description'));
+});
+
 check('the memorable sections are offered to the model first', () => {
   const passages = selectSourcePassages(splitArticleSections(ARTICLE));
   assert.deepEqual(passages.map((passage) => passage.section), ['Etymology', 'History'],
