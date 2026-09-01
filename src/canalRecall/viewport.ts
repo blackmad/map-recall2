@@ -150,9 +150,13 @@ export function readWindowViewport(win: Window = window): Viewport {
   // the pad and the layout from disagreeing about whether this is a phone.
   const coarse = typeof win.matchMedia === 'function'
     && win.matchMedia('(pointer: coarse)').matches;
-  const touch = coarse
-    || 'ontouchstart' in win
-    || (win.navigator?.maxTouchPoints ?? 0) > 0;
+  // Storybook and Playwright drive a pointer device but need the phone layout
+  // deterministically. An explicit override beats sniffing, and it is the only
+  // way to get a d-pad on screen in the workbench.
+  const override = (win as Window & { canalRecallForceTouch?: boolean }).canalRecallForceTouch;
+  const touch = typeof override === 'boolean'
+    ? override
+    : coarse || 'ontouchstart' in win || (win.navigator?.maxTouchPoints ?? 0) > 0;
   return resolveViewport({
     windowWidth: win.innerWidth,
     windowHeight: win.innerHeight,

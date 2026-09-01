@@ -343,25 +343,29 @@ A bonus on OSM ways with separated cycle infrastructure, tuned so it reinforces
 safe Amsterdam route knowledge without encouraging detours.
 
 **14. Finish the Storybook workbench.**
-Extract the remaining canvas card/HUD renderers behind small props-driven
-adapters, with fixtures for recall feedback, neighborhood entry (photo and
-fallback), landmark trivia, stacked notices and every finish-card combination;
-pair them with screenshot regressions. Follows naturally from item 3 — the same
+Phone states exist now: `PortraitHud`, `PortraitHudSteering` (the d-pad's
+pressed state), `PortraitHudAsking`, `PortraitHudSmallPhone`, `LandscapeHud`
+and `PortraitRouteSetup`, driven by a `canalRecallForceTouch` override because
+the viewport addon alone only makes a small desktop window. What is left is the
+rest of item 14's original scope: props-driven adapters for neighborhood entry
+(photo and fallback), stacked notices and every finish-card combination, paired
+with screenshot regressions. Follows naturally from item 3 — the same
 extraction serves both.
 
-**14b. Playwright's phone projects cannot reach fixed overlays.**
-Chromium's iPhone emulation gives `/canal-drive/` a 613×1044 layout viewport
-inside a 390×664 device viewport, even though the page's `<meta name=viewport>`
-is a correct `width=device-width, initial-scale=1.0`. Input coordinates are
-therefore unreachable below y≈664, so a tap cannot hit the lower half of any
-fixed overlay, and canvas hit targets do not map to tappable points at all.
-`tests/e2e/landmark-panel.spec.ts` works around it by resizing the desktop
-project to 390×664, which is a true narrow layout.
+**14c. Finish the phone pass beyond the driving screen.**
+Portrait, the d-pad and the paper design system are done and measured (see
+`HISTORY.md`). Not yet exercised on a phone: the recall prompt with four
+multiple-choice answers over a d-pad, the finish/ribbon card, the settings and
+help panels, and the expanded landmark article panel. The layout suite covers
+the HUD rectangles only; these are DOM overlays and need their own portrait
+states in Storybook plus at least one Playwright pass now that the `iphone`
+project can reach fixed overlays again.
 
-Find the cause before writing more mobile specs against overlays — it is either
-the launch config's local-Chrome `executablePath` diverging from the bundled
-build, or something on the page forcing a layout width. Until then, treat the
-`iphone` project as unable to click fixed overlays.
+Also unresolved: a phone's camera still uses the desktop pinch/pan model. The
+d-pad claims its own rectangle and everything outside it pans, but there is no
+two-finger pinch-to-zoom on touch — only the `-`/`+` keys and the wheel. Add
+pinch on the map area, and decide whether panning away from the vehicle is
+worth keeping on a phone at all given how easily a thumb triggers it.
 
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in

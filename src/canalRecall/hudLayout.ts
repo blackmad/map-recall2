@@ -50,6 +50,10 @@ export type HudLayoutInput = {
   controlsVisible?: boolean;
   /** The recall card grows to fit a feedback line. */
   feedbackVisible?: boolean;
+  /** The postcard's own height. It shares the trivia card's slot on a phone
+   *  but is a different card, and sizing its rectangle from `landmarkHeight`
+   *  made the rectangle taller than the card actually drawn in it. */
+  postcardHeight?: number;
   neighborhoodVisible?: boolean;
   minimapVisible?: boolean;
 };
@@ -87,6 +91,13 @@ export function landmarkCardWidth(viewport: Viewport, desired = 480): number {
   return Math.min(desired, compactLandscapeCardWidth(viewport, dpadLayout(viewport)));
 }
 
+/** The width the neighbourhood postcard must be measured at. */
+export function postcardWidth(viewport: Viewport, desired = 390): number {
+  if (viewport.mode !== 'compact') return desired;
+  if (viewport.orientation === 'portrait') return Math.min(desired, viewport.width - MARGIN * 2);
+  return Math.min(desired, compactLandscapeCardWidth(viewport, dpadLayout(viewport)));
+}
+
 /** Cards shrink to the room they have rather than overlapping the controls. */
 function clampHeight(wanted: number, available: number): number {
   return Math.max(0, Math.min(wanted, Math.floor(available)));
@@ -101,6 +112,7 @@ export function hudLayout({
   zoomVisible = false,
   controlsVisible = false,
   feedbackVisible = false,
+  postcardHeight = 104,
   neighborhoodVisible = false,
   minimapVisible = true,
 }: HudLayoutInput): HudLayout {
@@ -140,7 +152,11 @@ export function hudLayout({
         x: MARGIN, y: landmark.y - GAP - COMPACT_MINIMAP_H,
         width: COMPACT_MINIMAP_W, height: COMPACT_MINIMAP_H,
       };
-      const postcard = { x: MARGIN, y: landmark.y, width: cardWidth, height: cardHeight };
+      const postcardH = clampHeight(postcardHeight, controlsTop - GAP - (topBottom + GAP));
+      const postcard = {
+        x: MARGIN, y: controlsTop - GAP - postcardH,
+        width: Math.min(postcardWidth(viewport), rowWidth), height: postcardH,
+      };
       const zoomBadge = {
         x: Math.round(width / 2 - 35),
         y: (minimapVisible ? minimap.y : landmark.y) - GAP - COMPACT_ZOOM_H,
@@ -181,7 +197,13 @@ export function hudLayout({
       x: width - MARGIN - COMPACT_MINIMAP_W, y: landmark.y - GAP - COMPACT_MINIMAP_H,
       width: COMPACT_MINIMAP_W, height: COMPACT_MINIMAP_H,
     };
-    const postcard = { x: landmark.x, y: landmark.y, width: cardWidth, height: cardHeight };
+    const postcardH = clampHeight(postcardHeight, height - viewport.safeBottom - MARGIN - cardTop);
+    const postcardW = Math.min(postcardWidth(viewport), cardWidth);
+    const postcard = {
+      x: width - MARGIN - postcardW,
+      y: height - viewport.safeBottom - MARGIN - postcardH,
+      width: postcardW, height: postcardH,
+    };
     const zoomBadge = {
       x: Math.round(width / 2 - 35), y: landmark.y - GAP - COMPACT_ZOOM_H,
       width: 70, height: COMPACT_ZOOM_H,

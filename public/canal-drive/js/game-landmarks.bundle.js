@@ -839,12 +839,13 @@
       };
       const card = window.CanalRecallCards.measurePostcard(
         { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage },
-        measure
+        measure,
+        window.CanalRecallUi.postcardWidth(this.viewport)
       );
       const bottomLayout = window.CanalRecallUi.hudLayout({
         viewport: this.viewport,
         tripWidth: 180,
-        landmarkHeight: card.height,
+        postcardHeight: card.height,
         neighborhoodVisible: !!this.currentNeighborhood,
         minimapVisible: this.showMiniMap
       });
