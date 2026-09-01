@@ -9,7 +9,7 @@ type Point = [number, number];
 type Geometry = { type: 'Polygon'; coordinates: Point[][] } | { type: 'MultiPolygon'; coordinates: Point[][][] };
 type Building = { id?: string | number; properties: Record<string, string | number | undefined>; geometry: Geometry };
 type Thumbnail = { url: string; heading: number; pano_id: string };
-type Proposal = { facadeMaterial: string; facadeColour: string; roofMaterial: string; typology: string; facadeVisible: boolean; roofVisible: boolean; confidence: number; rationale: string };
+type Proposal = { facadeMaterial: string; facadeColour: string; roofMaterial: string; typology: string; confidence: number; rationale: string };
 
 const arg = (name: string) => process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
 const inputFile = path.resolve(arg('input') || '.cache/building-enrichment/bag-buildings.geojson');
@@ -84,7 +84,7 @@ async function downloadImage(url: string, file: string) {
 
 async function propose(imageFile: string): Promise<Proposal | undefined> {
   if (!model) return undefined;
-  const prompt = `Classify the intended Amsterdam building, not the street, vegetation or vehicles. Treat facade material, facade colour, visible roof material and architectural typology as independent fields. "canal-house" is a narrow/deep historic canal-side typology and can have any material or colour. Only classify roof covering when it is genuinely visible; use flat-roof-not-visible when a flat roof is hidden by the viewpoint. Facade material: ${materials.join(', ')}. Facade colour: ${colours.join(', ')}. Roof material: ${roofMaterials.join(', ')}. Typology: ${typologies.join(', ')}. Return JSON with facadeMaterial, facadeColour, roofMaterial, typology, facadeVisible boolean, roofVisible boolean, confidence 0..1, rationale.`;
+  const prompt = `Classify the intended Amsterdam building, not the street, vegetation or vehicles. Treat facade material, facade colour, visible roof material and architectural typology as independent fields. "canal-house" is a narrow/deep historic canal-side typology and can have any material or colour. Only classify roof covering when it is genuinely visible; use flat-roof-not-visible when a flat roof is hidden by the viewpoint. Facade material: ${materials.join(', ')}. Facade colour: ${colours.join(', ')}. Roof material: ${roofMaterials.join(', ')}. Typology: ${typologies.join(', ')}. Return JSON with facadeMaterial, facadeColour, roofMaterial, typology, confidence 0..1 and rationale. Controlled not-visible and uncertain labels carry the evidence state; do not add separate visibility fields.`;
   const response = await fetchWithRetry('http://127.0.0.1:11434/api/chat', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ model, stream: false, format: 'json', messages: [{ role: 'user', content: prompt, images: [(await readFile(imageFile)).toString('base64')] }], options: { temperature: 0 } }),

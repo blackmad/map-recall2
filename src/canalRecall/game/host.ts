@@ -55,6 +55,10 @@ export interface GameCoreHost {
   quizPromptName: string;
   /** True while a settings or debug panel is open over the canvas. */
   _utilityOpen: boolean;
+  /** The expanded landmark card. Owned by the route/DOM half of the game. */
+  _landmarkPanel: HTMLElement | null;
+  _toggleUtilityPanel(panel: HTMLElement): void;
+  _closeUtilityPanels(): void;
   _zoomBadgeTimer: number;
 
   /** Owned by the recall subsystem; landmarks needs it to join street names to
@@ -76,6 +80,9 @@ export interface LandmarkHost extends GameCoreHost {
   /** Recomputed each frame by `_updateLandmarks`, so the renderer does not have
    *  to know the fade rules. */
   _landmarkNoticeAlpha: number;
+  /** Where the card was last drawn, so a click on it can open the expanded
+   *  panel. Null whenever no card is on screen. */
+  _landmarkCardBounds: LinkBounds | null;
   _landmarkImages: Map<string, HTMLImageElement>;
   _landmarkImageRequests: Set<string>;
   /** Landmarks whose English summary has already been requested this session,
@@ -109,6 +116,7 @@ export interface RecallStore extends AnswerRecallStore {
   signOut(): Promise<unknown>;
   onUserChange(listener: (user: { label: string } | null) => void): void;
   knownPlaces(): Array<{ name: string; center: LatLon }>;
+  routeMastery(cityId: string): Record<string, number>;
   isKnownHere(feature: RecallFeature): boolean;
   isSuppressedHere(feature: RecallFeature): boolean;
 }
@@ -131,6 +139,7 @@ export interface RecallHost extends GameCoreHost {
   routeOptions: { answerMode: AnswerMode };
   routeDifficulty: RouteDifficulty;
   gameyFeatures: boolean;
+  _routeMastery: Record<string, number>;
 
   quizCurrentName: string;
   quizCandidateName: string;
@@ -178,6 +187,7 @@ export interface RecallHost extends GameCoreHost {
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
 export interface PresentationHost extends GameCoreHost {
+  _routeLearningPlan: { expectedNovelty: number } | null;
   state: number;
   track: Track;
   hud: Hud;
