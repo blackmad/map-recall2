@@ -6,6 +6,34 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The refused ledes are rescued by protecting the name, not weakening the
+  guard.** The English pass refuses a translation that drops the feature's own
+  name, because a card calling the Aluminiumbrug the "Aluminum Bridge" teaches
+  the wrong name. That fired on every name built from a Dutch common noun —
+  brug, kerk, kapel, synagoge — and left 130 Amsterdam features showing a
+  Wikidata one-liner ("Bridge in Amsterdam, Netherlands.") instead of a lede
+  naming the canal it spans and the year it was built.
+
+  Neither CLI translator takes a prompt, so the name is protected *around* the
+  translator: `protectNames` substitutes an invented capitalised placeholder
+  for the feature's own name, the translator works on that, and the name is put
+  back before the guard runs. Amsterdam went from 130 descriptions to 126 real
+  ledes — 440 translated / 8 descriptions / 0 non-English. The Aluminiumbrug
+  now says it spans the Kloveniersburgwal and that Pieter Bast drew a bridge
+  there on his 1599 city plan.
+
+  Three measured choices. The placeholder has to be *name-shaped*: a
+  noun-shaped one ("Qplaats") pulled "ophaalbrug" from "lift bridge" to
+  "pick-up bridge" in the same sentence, while name-shaped tokens came back
+  byte-identical in every position tried — subject, possessive, after a
+  preposition. Protection is **case-sensitive**, because a Dutch lede writes
+  "De Oude Lutherse Kerk … de kerk werd gebouwd", and protecting that second,
+  lowercase "kerk" would restore "Kerk was built" into the English; restoring
+  the capitalised occurrence alone satisfies the guard for every token of the
+  name. And the guard still runs afterwards on the restored text, which is how
+  8 refusals survived protection and kept their description — including
+  "Brug 361", whose Dutch lede is actually about brug 244.
+
 - **The OSM loader is an adapter: its arithmetic is typed and tested.**
   Projection about a chosen centre, Douglas-Peucker, recentring the network on
   the world origin, snapping a lat/lng onto the nearest carriageway,

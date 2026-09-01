@@ -60,19 +60,6 @@ are in [`BUILDING_ENRICHMENT.md`](BUILDING_ENRICHMENT.md).
 *This is the measured-material foundation for item 10; finish it before baking
 appearance into detailed meshes.*
 
-**7b. Rescue the 134 ledes refused for renaming the place.**
-The English pass refuses a translation that drops the feature's own name from
-its body, because a card that calls "Oude Lutherse Kerk" the "Old Lutheran
-Church" teaches the wrong name. That is the right default and it fired 134
-times, all on names built from Dutch common nouns — kerk, kapel, synagoge,
-museum, monument. Those features now show a thin Wikidata description.
-
-The fix is not to weaken the guard. It is to protect the name before
-translating: substitute a placeholder for each occurrence of the feature name
-in the source, translate, then put the name back. `trn` has no prompt to ask
-this of, so it has to be done around it. Measured baseline: 314 translated /
-130 descriptions / 4 Dutch, from `npm run enrich:english -- --translator=trn`.
-
 **8b. Finish typing the game subsystems.**
 Measured 2026-08-31: ~21,000 lines of TypeScript against ~6,100 lines of
 hand-written JavaScript in `public/canal-drive/js/` (the other ~1,300 JS lines
