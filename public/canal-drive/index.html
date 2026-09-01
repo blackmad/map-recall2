@@ -180,20 +180,17 @@ canvas { display: block; position: relative; z-index: 2; }
 #utility-buttons button { width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); font-size: 18px; cursor: pointer; box-shadow: 0 6px 18px rgba(58,50,36,.16); }
 #prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; padding: 5px 8px; border-radius: 6px; background: var(--surface); color: var(--muted); font: 11px var(--font-ui); }
 #prototype-links a { color: var(--moss); }
-/* A landscape phone: the bottom edge belongs to the d-pad and the trivia card,
-   so the utility buttons take the gap between the score and destination rows
-   instead of sitting on top of the card. */
-@media (max-height: 460px) and (orientation: landscape) and (pointer: coarse) {
-  #utility-buttons { top: calc(10px + var(--safe-top)); bottom: auto; left: 50%; right: auto; transform: translateX(-50%); }
-  #utility-buttons button { width: 40px; height: 40px; }
-}
-
 /* ---- Phone ----------------------------------------------------------- *
  * The briefing becomes a full-bleed sheet, the recall prompt docks to the
  * bottom where a thumb is, and the in-game chrome keeps clear of both the
  * safe areas and the d-pad, which owns the bottom-centre of the screen.
+ *
+ * Keyed on either axis. `max-width: 760px` alone missed a phone in landscape
+ * entirely — 844x390 is not a narrow screen — so a rotated phone kept the
+ * desktop tap targets, the attribution strip over the controls, and no
+ * safe-area padding at all.
  * ---------------------------------------------------------------------- */
-@media (max-width: 760px) {
+@media (max-width: 760px), (max-height: 500px) {
   #route-setup { padding: 0; align-items: stretch; }
   #route-card { flex: none; width: 100%; min-width: 0; max-height: 100dvh; overflow-x: hidden; border: 0; border-radius: 0; padding: calc(20px + var(--safe-top)) 18px calc(18px + var(--safe-bottom)); }
   .setup-grid, .preference-grid { grid-template-columns: minmax(0,1fr); }
@@ -217,6 +214,14 @@ canvas { display: block; position: relative; z-index: 2; }
   .utility-panel { padding: 12px; }
   .utility-card { padding: 18px; max-height: 86dvh; overflow-y: auto; }
   .utility-close { min-height: 46px; }
+}
+
+/* A landscape phone: the bottom edge belongs to the d-pad and the trivia card,
+   so the utility buttons take the gap between the score and destination rows
+   instead of sitting on top of the card. */
+@media (max-height: 460px) and (orientation: landscape) {
+  #utility-buttons { top: calc(10px + var(--safe-top)); bottom: auto; left: 50%; right: auto; transform: translateX(-50%); }
+  #utility-buttons button { width: 40px; height: 40px; }
 }
 </style>
 </head>

@@ -196,16 +196,21 @@ const POSTCARD_PHOTO_WIDTH = 144;
 const NAME_MAX = 24;
 const NAME_MIN = 16;
 
-export function measurePostcard(props: PostcardProps, measure: TextMeasurer): PostcardLayout {
+export function measurePostcard(
+  props: PostcardProps,
+  measure: TextMeasurer,
+  /** The width the postcard has to fit in; a phone gives it less than 390. */
+  cardWidth: number = POSTCARD_WIDTH,
+): PostcardLayout {
   const textLeft = (props.hasImage ? 136 : 0) + 22;
-  const available = POSTCARD_WIDTH - textLeft - 18;
+  const available = Math.max(60, cardWidth - textLeft - 18);
   let nameFontSize = NAME_MAX;
   const fontAt = (size: number) => `800 ${size}px system-ui, sans-serif`;
   while (nameFontSize > NAME_MIN && measure(props.name || '', fontAt(nameFontSize)) > available) {
     nameFontSize -= 1;
   }
   return {
-    width: POSTCARD_WIDTH,
+    width: cardWidth,
     height: POSTCARD_HEIGHT,
     photoWidth: POSTCARD_PHOTO_WIDTH,
     textLeft,
