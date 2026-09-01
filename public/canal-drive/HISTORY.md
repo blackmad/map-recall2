@@ -15,6 +15,23 @@ is the way it is, and that is the expensive part to recover later.
   be reviewed. Output is staged; a version-matched human label is required for
   `facts:publish`, and the committed review starts empty so silence can never
   mean approval.
+- **Measured façade colour now has a fail-closed point-cloud path.**  The
+  3DBAG API produced 255 semantic exterior LoD2.2 walls for 28 of the 30 BAG
+  panorama targets; all returned models passed its quality flag, while two
+  persistent HTTP 502s remain explicit rejections. A typed sampler joins RGB
+  points to exact wall polygons, balances colour by spatial cell, rejects
+  sparse, shadowed and mixed samples, hashes its LAZ input and never accepts its
+  own output. Amsterdam's advertised public 2024/2025 LAZ catalog was empty
+  during the run, so the measured colour stage awaits one documented source
+  tile instead of inventing a download URL.
+
+- **Façade grammar now starts from reviewed evidence, not one lucky camera.**
+  A live pilot fetched three spatially distinct 2025 municipal panorama crops
+  for each of 30 BAG buildings: 90/90 requests succeeded. The first five made
+  the selection problem visible — one centroid-aimed crop looked down a canal
+  and another was foliage — so the manifest now pins its camera-distance and
+  mission policy, stores alternatives and rejection reasons, and a grouped
+  review sheet selects one exact panorama or records that none is usable.
 
   The runtime loads the resulting `facts.json` as optional enrichment. It shows
   every reviewed sentence once before repeating the oldest, varies naming,
