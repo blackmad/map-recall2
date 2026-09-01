@@ -1,15 +1,15 @@
 # Roof enrichment
 
 Roof enrichment is an independent, observation-producing pipeline on branch
-`feat/roof-enrichment`. It does not mutate BAG geometry, OSM appearance tags or
+`feat/building-enrichment`. It does not mutate BAG geometry, OSM appearance tags or
 renderer inputs.
 
 ## Stages
 
 1. `npm run cache:roof-buildings` caches active BAG buildings whose centroids
    fall inside the polygon derived from OSM A10 relation 165334.
-2. `npm run build:roof-observations -- --limit=500` caches shared PDOK
-   `Actueel_orthoHR` tiles and measures roofs in inside-out order from Dam.
+2. `npm run build:roof-observations -- --limit=500` caches shared, finalized
+   PDOK `2025_orthoHR` tiles and measures roofs in inside-out order from Dam.
 3. `npm run build:roof-review` generates the low-confidence-first human review
    interface at `.cache/roof-enrichment/review/index.html`.
 
@@ -22,8 +22,8 @@ tile keys and review status.
 
 ## Current limitations
 
-- `Actueel_orthoHR` does not expose acquisition date in the WMS response used by
-  the sampler; `observedAt` remains null rather than inventing one.
+- The legacy footprint sampler now requires a finalized year layer. Older
+  `Actueel_orthoHR` caches must not be mixed with pinned observations.
 - BAG footprints describe buildings, not individual roof planes. Mixed glass,
   tile, solar and extension roofs therefore receive low confidence. 3DBAG roof
   surfaces are the next geometry source to integrate.
@@ -53,3 +53,29 @@ Later, use aerial evidence selectively for distinctive classes such as orange
 clay tile, slate, green copper, glass, vegetation, solar-dominant roofs and
 landmarks. Ordinary roofs should use shape/material/age priors until 3DBAG roof
 planes can support separate observations rather than one blended footprint.
+
+## LoD2.2 roof-plane and RGB DSM pilot — 2026-09-01
+
+The 3DBAG geometry cache now retains semantic LoD2.2 `RoofSurface` polygons as
+well as walls. The 28 successful buildings in the façade sample contain 65
+distinct roof planes (1–11 per building, median 2), confirming that one BAG
+footprint colour discards real structure.
+
+Two independent pinned-2025 measurements now target those exact planes:
+
+- `npm run measure:roof-planes` samples PDOK `2025_orthoHR` WMS pixels with a
+  0.375 m edge inset. The pilot measured all 65 planes from 38 cached tiles.
+- `npm run cache:roof-point-cloud -- --limit=5` discovers direct 2025 RGB LAZ
+  downloads from PDOK's CC BY 4.0 `digitaaloppervlaktemodel_20cm` OGC API,
+  verifies LAS signatures and hashes every tile. `npm run
+  measure:roof-point-cloud` joins those photogrammetric points to 3DBAG planes.
+
+The first five-building cross-check covered 12 planes. Eleven had enough DSM
+points. Because the 3DBAG and photogrammetric surfaces are independent, their
+modal plane offset was 0.35 m median (up to 0.95 m); sampling therefore finds a
+per-plane offset within ±1 m, then retains only a narrow ±0.12 m band. Nine of
+12 planes agreed with the orthophoto within RGB distance 20 and remain review
+proposals. Two were rejected for cross-source colour disagreement and one for
+too few points. Median RGB distance among comparable planes was 2.83. Nothing
+is accepted without human review; `npm run build:roof-plane-review` provides a
+fail-closed plane overlay sheet.

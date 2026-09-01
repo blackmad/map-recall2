@@ -6,15 +6,26 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Roof colour is now measured twice on exact LoD2.2 planes.**  PDOK's live
+  3D Basisvoorziening OGC API exposed the missing source: pinned 2025 CC BY 4.0
+  RGB DSM tiles as direct LAZ downloads. Five buildings required five 20 cm
+  tiles and contained 12 roof planes. Eleven planes had enough points; nine
+  agreed with independent `2025_orthoHR` measurements within RGB distance 20,
+  two disagreed and one was sparse. The median comparable distance was 2.83.
+  A modal height-offset join handles the 0.35 m median difference between the
+  independent surfaces while retaining a narrow 12 cm sample band. Every file
+  is hashed, every output remains a proposal, and the review sheet starts
+  unreviewed.
+
 - **Measured façade colour now has a fail-closed point-cloud path.**  The
   3DBAG API produced 255 semantic exterior LoD2.2 walls for 28 of the 30 BAG
   panorama targets; all returned models passed its quality flag, while two
   persistent HTTP 502s remain explicit rejections. A typed sampler joins RGB
   points to exact wall polygons, balances colour by spatial cell, rejects
   sparse, shadowed and mixed samples, hashes its LAZ input and never accepts its
-  own output. Amsterdam's advertised public 2024/2025 LAZ catalog was empty
-  during the run, so the measured colour stage awaits one documented source
-  tile instead of inventing a download URL.
+  own output. Amsterdam's advertised street-level 2024/2025 LAZ catalog was
+  empty during the run. PDOK's newly located RGB DSM is useful for roofs but,
+  as a top-surface product, does not replace oblique façade evidence.
 
 - **Façade grammar now starts from reviewed evidence, not one lucky camera.**
   A live pilot fetched three spatially distinct 2025 municipal panorama crops
