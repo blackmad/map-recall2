@@ -498,6 +498,43 @@ let withoutPassages = 0;
 let withoutSurvivors = 0;
 const started = Date.now();
 
+type RunStatus = 'running' | 'complete';
+
+async function writeStagingSnapshot(status: RunStatus): Promise<FactsFile> {
+  const generatedAt = new Date().toISOString().slice(0, 10);
+  const output: FactsFile = {
+    cityId,
+    generatorVersion: runVersion,
+    generatedAt,
+    features: [...features].sort((a, b) => a.id.localeCompare(b.id)),
+  };
+  const totalFacts = features.reduce((sum, feature) => sum + feature.facts.length, 0);
+  const rejected = [...rejections.values()].reduce((sum, count) => sum + count, 0);
+  await Promise.all([
+    writeFile(path.join(stagingDirectory, 'facts.json'), `${JSON.stringify(output, null, 2)}\n`),
+    writeFile(path.join(stagingDirectory, 'fact-rejections.json'), `${JSON.stringify({
+      cityId, generatorVersion: runVersion, generatedAt, rejections: rejectionLog,
+    }, null, 2)}\n`),
+    writeFile(path.join(stagingDirectory, 'fact-progress.json'), `${JSON.stringify({
+      cityId,
+      generatorVersion: runVersion,
+      status,
+      updatedAt: new Date().toISOString(),
+      considered,
+      featuresWithFacts: features.length,
+      totalFacts,
+      rejected,
+      withoutArticle,
+      withoutPassages,
+      withoutSurvivors,
+      openRouterSpentUsd: Number(openRouterSpentUsd.toFixed(6)),
+    }, null, 2)}\n`),
+  ]);
+  return output;
+}
+
+await writeStagingSnapshot('running');
+
 for (const collection of COLLECTIONS) {
   if (onlyCollection && collection !== onlyCollection) continue;
   let entries: Feature[];
@@ -515,8 +552,10 @@ for (const collection of COLLECTIONS) {
       process.stdout.write(`  ! ${feature.name}: ${(error as Error).message}\n`);
       return null;
     });
-    if (!result) { withoutSurvivors++; continue; }
-    features.push(result);
+    if (!result) withoutSurvivors++;
+    else features.push(result);
+    if (considered % 10 === 0) await writeStagingSnapshot('running');
+    if (!result) continue;
     if (features.length % 25 === 0) {
       const rate = (Date.now() - started) / 1000 / considered;
       process.stdout.write(`  ${features.length} features, ${considered} tried, ${rate.toFixed(1)}s each\n`);
@@ -524,16 +563,7 @@ for (const collection of COLLECTIONS) {
   }
 }
 
-const output: FactsFile = {
-  cityId,
-  generatorVersion: runVersion,
-  generatedAt: new Date().toISOString().slice(0, 10),
-  features: features.sort((a, b) => a.id.localeCompare(b.id)),
-};
-await writeFile(path.join(stagingDirectory, 'facts.json'), `${JSON.stringify(output, null, 2)}\n`);
-await writeFile(path.join(stagingDirectory, 'fact-rejections.json'), `${JSON.stringify({
-  cityId, generatorVersion: runVersion, generatedAt: output.generatedAt, rejections: rejectionLog,
-}, null, 2)}\n`);
+const output = await writeStagingSnapshot('complete');
 
 const totalFacts = features.reduce((sum, feature) => sum + feature.facts.length, 0);
 const rejected = [...rejections.values()].reduce((sum, count) => sum + count, 0);
