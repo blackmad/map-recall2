@@ -6,6 +6,38 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The Randstad pipeline claimed four cities and built two.** `refresh-randstad.sh`
+  had been wired for Amsterdam, Rotterdam, Den Haag and Utrecht since 4758e46,
+  but Rotterdam and Den Haag had never been built, and both failed at the same
+  line — `municipality polygon was not found` — for two different reasons.
+
+  **Den Haag was a name.** The pipeline asked osmium for `r/name='s-Gravenhage'`.
+  OSM now carries that relation as `name=Den Haag` with `'s-Gravenhage` demoted
+  to `official_name`, so the filter matched nothing and the boundary file came
+  back empty. The builder already tolerated several name fields; the osmium step
+  in front of it did not, and it is the one that decides what reaches the
+  builder at all.
+
+  **Rotterdam was a bbox.** Measured against Overpass: the municipality spans
+  lon 3.94–4.60 because it reaches Hoek van Holland, while BBBike's Rotterdam
+  extract starts at lon 4.18. The boundary relation therefore arrived with its
+  western ways missing, and an unclosable relation assembles into no polygon at
+  all. Amsterdam and Utrecht are both comfortably inside their BBBike boxes,
+  which is the only reason this had never been seen.
+
+  The fix is ordering: the fourth argument now takes any PBF URL, Rotterdam and
+  Den Haag are cut from a cached Zuid-Holland province file, and the cut is
+  derived from the municipality *after* its boundary has been read
+  (`select-municipality-bbox.ts`) rather than guessed before. Which relation is
+  "the city" moved into `lib/municipality.ts` so the shell step and the builder
+  cannot disagree — clipping features to one boundary and naming them after
+  another would be silent.
+
+  Both cities now build: Rotterdam 31,810 routing ways / 227 waters / 22,559
+  appearance-backed buildings, Den Haag 17,920 / 90 / 27,576. The runtime still
+  cannot reach any of them — `osm-loader.js` hardcodes Amsterdam — so this is
+  data, not a playable city. `test:municipality` pins both failures.
+
 - **The refused ledes are rescued by protecting the name, not weakening the
   guard.** The English pass refuses a translation that drops the feature's own
   name, because a card calling the Aluminiumbrug the "Aluminum Bridge" teaches

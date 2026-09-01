@@ -217,12 +217,15 @@ the custom-layer spike and its measurements. That result decides whether the
 production format is tiled glTF, 3D Tiles, or signature-landmark GLBs; it must
 not introduce a second map or a runtime dependency on OSM Buildings.
 
-**11. Let the game actually play Utrecht.**
-The extractor is city-agnostic and Utrecht is built and checked (11,801
-routing ways, 380 landmarks). The runtime is not: `osm-loader.js` hardcodes
-`../data/extracts/amsterdam/${dataset}.json`, so there is no way to reach the
-second city from the game. Needs a city selector, a cityId that flows through
+**11. Let the game actually play a second city.**
+The extractor is city-agnostic and four cities are now built and checked:
+Amsterdam, Utrecht (11,801 routing ways, 380 landmarks), Rotterdam (31,810
+routing ways, 22,559 appearance-backed buildings) and Den Haag (17,920 /
+27,576). The runtime is not: `osm-loader.js` hardcodes
+`../data/extracts/amsterdam/${dataset}.json`, so there is no way to reach any
+of them from the game. Needs a city selector, a cityId that flows through
 to review keys, and a basemap origin that is not assumed to be Amsterdam's.
+Rotterdam and Den Haag have had no landmark-text pass at all yet.
 One data gap behind it: 275 of Utrecht's 380 landmarks still have no text at
 all, so under the a9b21c7 rule the city is thin rather than noisy. Its bridges
 are built (300 resolved into 386 crossings) and its cards are English as far
