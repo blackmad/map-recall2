@@ -1,16 +1,22 @@
 /** Add renderer-useful façade grammar labels to cached panorama observations. */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { selectReviewedFacadeInputs, type FacadeViewLabel } from '../src/canalRecall/building/facadeEvidence.ts';
 type Proposal = { visibleStoreys: number | null; bayCount: number | null; windowPattern: string; windowToWall: string; windowFrameColour: string; windowRecess: string; groundFloorType: string; entranceType: string; groundFloorDistinct: boolean | null; balconyType: string; facadeComposition: string; roofline: string; ornament: string; confidence: number; rationale: string };
-type Item = { buildingId: string; bagId?: string; panoId: string; observedAt?: string; image: string; proposal?: Record<string, unknown> };
+type Item = { buildingId: string; bagId?: string };
 const arg = (name: string) => process.argv.find(x => x.startsWith(`--${name}=`))?.slice(name.length + 3);
 const root = path.resolve(arg('root') || '.cache/building-enrichment/panorama'), model = arg('model') || 'qwen2.5vl:7b', limit = Math.max(1, Number(arg('limit') || 25));
+const viewLabelsFile = arg('view-labels');
+if (!viewLabelsFile) throw new Error('Pass --view-labels=<facade-view-human-labels.json>; unreviewed crops are not classifier input');
 const manifest = JSON.parse(await readFile(path.join(root, 'manifest.json'), 'utf8')) as { items: Item[] };
-const outputFile = path.join(root, 'facade-grammar-machine-labels.json');
+const wideManifest = JSON.parse(await readFile(path.join(root, 'wide-crop-manifest.json'), 'utf8')) as { crops: Array<{ buildingId: string; panoId: string | null; observedAt: string | null; image: string }> };
+const viewLabels = JSON.parse(await readFile(path.resolve(viewLabelsFile), 'utf8')) as { labels: FacadeViewLabel[] };
+const selection = selectReviewedFacadeInputs(manifest.items, wideManifest.crops, viewLabels.labels || []);
+const outputFile = path.resolve(arg('output') || path.join(root, 'facade-grammar-machine-proposals-v2.json'));
 let labels: Array<Record<string, unknown>> = [];
 try { labels = (JSON.parse(await readFile(outputFile, 'utf8')) as { labels: Array<Record<string, unknown>> }).labels || []; } catch { /* first run */ }
 const processed = new Set(labels.map(x => String(x.buildingId)));
-const candidates = manifest.items.filter(x => !processed.has(x.buildingId)).slice(0, limit);
+const candidates = selection.inputs.filter(x => !processed.has(x.buildingId)).slice(0, limit);
 const enums = {
   windowPattern: ['narrow-vertical','regular-grid','wide-horizontal','curtain-wall','irregular','mostly-blank','unknown'], windowToWall: ['low','medium','high','unknown'],
   windowFrameColour: ['white','cream','grey','black','brown','green','blue','red','metal','mixed','unknown'], windowRecess: ['flush','shallow','deep','unknown'],
@@ -30,9 +36,9 @@ for (let index = 0; index < candidates.length; index++) {
     proposal.visibleStoreys = Number.isInteger(proposal.visibleStoreys) && proposal.visibleStoreys! > 0 && proposal.visibleStoreys! <= 80 ? proposal.visibleStoreys : null;
     proposal.bayCount = Number.isInteger(proposal.bayCount) && proposal.bayCount! > 0 && proposal.bayCount! <= 100 ? proposal.bayCount : null;
     proposal.confidence = Math.max(0, Math.min(1, Number(proposal.confidence) || 0));
-    labels.push({ schemaVersion: 1, buildingId: item.buildingId, bagId: item.bagId || null, panoId: item.panoId, observedAt: item.observedAt || null, source: 'model-panorama-facade-grammar', model, reviewStatus: 'machine-proposal', acceptedForNow: false, ...proposal });
-    await writeFile(outputFile, JSON.stringify({ schemaVersion: 1, generatedAt: new Date().toISOString(), model, labels }, null, 2));
+    labels.push({ schemaVersion: 2, buildingId: item.buildingId, bagId: item.bagId || null, panoId: item.panoId, observedAt: item.observedAt || null, image: item.image, viewQuality: item.viewQuality, viewReviewedAt: item.viewReviewedAt, source: 'model-panorama-facade-grammar', model, reviewStatus: 'machine-proposal', acceptedForNow: false, ...proposal });
+    await writeFile(outputFile, JSON.stringify({ schemaVersion: 2, generatedAt: new Date().toISOString(), model, viewLabels: path.relative(process.cwd(), path.resolve(viewLabelsFile)), selectionRejected: selection.rejected, labels }, null, 2));
     process.stdout.write(`${index + 1}/${candidates.length} ${item.buildingId} → ${proposal.visibleStoreys ?? '?'} storeys, ${proposal.bayCount ?? '?'} bays\n`);
   } catch (caught) { process.stderr.write(`${item.buildingId}: invalid proposal ${String(caught)}\n`); }
 }
-process.stdout.write(`Wrote ${labels.length} façade grammar labels\n`);
+process.stdout.write(`Wrote ${labels.length} façade grammar proposals from ${selection.inputs.length} reviewed views; ${selection.rejected.length} view labels rejected\n`);
