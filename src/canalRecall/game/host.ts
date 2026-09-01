@@ -22,6 +22,8 @@ import type { RibbonAid, RouteRibbon } from './routeRibbon';
 import type { AnswerRecallStore } from '../answerPath';
 import type { RecallFeature } from '../recallStore';
 import type { NoticeHold, NoticeState } from './landmarkNotice';
+import type { FactIndex } from '../facts/factStore';
+import type { RotationState } from '../facts/factRotation';
 import type { LatLon } from './recallRules';
 
 export type { RecallFeature };
@@ -90,6 +92,12 @@ export interface LandmarkHost extends GameCoreHost {
   _summaryRequests?: Set<string>;
   _seenLandmarks: Set<string>;
   _seenLandmarkNames: Set<string>;
+
+  /** Generated trivia by feature id, from the published `facts.json`. Empty
+   *  when the file is absent, in which case cards fall back to the lede. */
+  _facts: FactIndex;
+  /** What the player has already been told, carried between sessions. */
+  _factRotation: RotationState;
 
   _neighborhoodNotice: { name: string; kind?: string; imageArea?: string } | null;
   _neighborhoodNoticeTimer: number;

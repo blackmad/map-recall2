@@ -324,9 +324,6 @@ Continue expanding named cul-de-sac and dead-end cases in
 `scripts/check-canal-car.ts`. Ongoing, not a milestone: every geographic failure
 reported from play should land here before it is called fixed.
 
-**16. The geolocated fact pipeline** described in `FACT_PIPELINE.md`. Landmark
-cards would prefer curated, attributed facts over raw Wikipedia ledes.
-
 ---
 
 ## P3 — Bets worth a spike, on their own branch

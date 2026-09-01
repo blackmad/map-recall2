@@ -45,7 +45,7 @@ const MAX_CHARS = 200;
 const DANGLING_OPENING = /^(it|its|it's|this|that|these|those|they|their|he|she|his|her|the (building|bridge|street|park|square|church|museum|structure|site|area|place))\b/i;
 
 /** True today, wrong in a file that ships for years. */
-const TEMPORALLY_FRAGILE = /\b(currently|at present|nowadays|as of \d{4}|in recent years|recently|today the|today it|is being (built|renovated|restored|demolished)|will (open|be completed|reopen))\b/i;
+const TEMPORALLY_FRAGILE = /\b(currently|at present|nowadays|as of \d{4}|in recent years|recently|today the|today it|is (being|to be|due to be|set to be|expected to be|scheduled to be) \w+|is (planned|proposed|expected|scheduled|due|under construction)|are (planned|proposed|expected|scheduled)|will (open|be built|be completed|be replaced|reopen))\b/i;
 
 /** The model describing its own input instead of the place. */
 const META_LANGUAGE = /\b(the (source|text|passage|article|extract|document)|according to the (text|source|passage|article)|the provided|mentioned above|this (text|passage|article))\b/i;
@@ -58,14 +58,55 @@ const MARKUP = /(^\s*[-*•\d]+[.)]\s)|[*_#`]{1,}|\[\d+\]|<[^>]+>|\|\||\n/;
  * the card's own lede already says, so spending a rotation slot on it is a
  * loss even though the sentence is perfectly true.
  */
-const CATEGORY_WORDS = 'bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice';
+const CATEGORY_WORDS = 'bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue';
 const LEDE_RESTATEMENT = new RegExp(
-  `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+\\s+){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}(in|of|on|near)\\s+(the\\s+)?[A-Z][^.]{0,30}\\.?\\s*$`,
+  `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
   'i',
 );
 
-/** Sentence enders, ignoring the abbreviations that are not sentence ends. */
-const ABBREVIATIONS = /\b(mr|mrs|ms|dr|prof|st|jr|sr|no|vs|etc|e\.g|i\.e|c|ca|approx)\.$/i;
+/**
+ * A sentence whose entire content is where the thing is. "…is located in
+ * Amsterdam's Old Centre district, very close to the main railway station" is
+ * the lede restatement in its other common form, and the card is already
+ * anchored to a point on a map the player is looking at.
+ */
+const LOCATION_ONLY = /^\s*(the\s+)?[^.]{2,60}?\s+(is|was|stands|sits|lies)\s+(located|situated|found|positioned)?\s*(in|at|on|near|next to|beside|along)\b[^.]{0,90}\.?\s*$/i;
+
+/**
+ * The evaluative clause a model tacks onto a finished sentence: "…, a striking
+ * architectural feature", "…, marking a significant milestone in its history".
+ * It carries no information, it is the tell that the sentence was generated,
+ * and it eats the character budget a card actually has.
+ *
+ * These are trimmed rather than rejected. The clause is always a trailing
+ * comma phrase, so removing it leaves a grammatical sentence, and the fact in
+ * front of it is usually worth keeping. Deliberately narrow: ", which he never
+ * used" is informative and must survive.
+ */
+const FILLER_CLAUSE = new RegExp(
+  '\\s*,\\s+(?:'
+  + '(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring'
+  + '|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*'
+  + '|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}'
+  + '(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)'
+  + '\\s+(?:\\w+\\s+){0,2}'
+  + '(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)'
+  + '[^,]*'
+  + ')\\s*\\.?\\s*$',
+  'i',
+);
+
+/** Drop a trailing evaluative clause, restoring the full stop. */
+export function trimFillerClause(text: string): string {
+  const trimmed = text.replace(FILLER_CLAUSE, '');
+  if (trimmed === text) return text;
+  return /[.!?]$/.test(trimmed) ? trimmed : `${trimmed}.`;
+}
+
+/** Sentence enders, ignoring the abbreviations that are not sentence ends.
+ *  The single-letter case is for initials: "Andrew S. Tanenbaum" was being
+ *  counted as two sentences and rejected as a paragraph. */
+const ABBREVIATIONS = /(\b(mr|mrs|ms|dr|prof|st|jr|sr|no|vs|etc|e\.g|i\.e|ca|approx)|(^|\s)\p{Lu})\.$/iu;
 
 /** Counts sentence-final punctuation, so a "fact" that is really a paragraph
  *  is rejected rather than truncated into a half-claim. */
@@ -101,14 +142,20 @@ const WEAK_NAME_WORDS = new Set([
  * opening check. Falls back to accepting when the name is nothing but weak
  * words, since "Het Nieuwe Westen" cannot prove itself this way.
  */
-export function namesSubject(text: string, name: string): boolean {
-  const distinctive = words(name).filter((word) => word.length > 2 && !WEAK_NAME_WORDS.has(word));
-  if (!distinctive.length) return true;
+export function namesSubject(text: string, name: string, aliases: readonly string[] = []): boolean {
   const haystack = text.toLowerCase();
-  // Substring rather than word match: Dutch inflects and compounds names
-  // ("Amstel" inside "Amstelsluizen"), and a fact using the compound is still
-  // plainly about the subject.
-  return distinctive.some((word) => haystack.includes(word));
+  // Any one spelling is enough. OSM and Wikipedia disagree constantly about
+  // Dutch orthography — OSM's "Amsterdamschebrug" is nl.wikipedia's
+  // "Amsterdamsebrug" — and a fact that used the article's spelling was being
+  // rejected for naming the wrong subject when it had named the right one.
+  return [name, ...aliases].some((candidate) => {
+    const distinctive = words(candidate).filter((word) => word.length > 2 && !WEAK_NAME_WORDS.has(word));
+    if (!distinctive.length) return true;
+    // Substring rather than word match: Dutch inflects and compounds names
+    // ("Amstel" inside "Amstelsluizen"), and a fact using the compound is
+    // still plainly about the subject.
+    return distinctive.some((word) => haystack.includes(word));
+  });
 }
 
 /**
@@ -126,18 +173,33 @@ export function namesSubject(text: string, name: string): boolean {
  * arches", "17th") are usually restatements of spelled-out source text and
  * would reject far more true facts than false ones.
  */
-export function ungroundedNumbers(text: string, source: string): string[] {
-  const sourceDigits = source.replace(/[.,  ]/g, '');
+/**
+ * Digit-group separators, removed only where they actually separate digits.
+ *
+ * A source writes "1,200 lights" and a fact writes "1200"; they are the same
+ * number and must compare equal. Stripping those characters everywhere is the
+ * obvious way to do it and is wrong: it also removes the ordinary spaces that
+ * `\\b` needs, after which "built in 1691." no longer contains a word-bounded
+ * 1691 and every century check fails.
+ */
+export function normaliseDigitGroups(text: string): string {
+  return (text || '').replace(/(\d)[.,\u2009\u202f\u00a0 ](?=\d{3}(\D|$))/g, '$1');
+}
+
+export function ungroundedNumbers(text: string, source: string, name = ''): string[] {
+  // The name counts as source. "OT301 was originally the Dutch film academy"
+  // was rejected for the 301 in the building's own name.
+  const haystack = normaliseDigitGroups(`${source} ${name}`);
   const ungrounded: string[] = [];
-  for (const match of text.replace(/[.,  ]/g, '').matchAll(/\d{3,}/g)) {
-    if (!sourceDigits.includes(match[0])) ungrounded.push(match[0]);
+  for (const match of normaliseDigitGroups(text).matchAll(/\d{3,}/g)) {
+    if (!haystack.includes(match[0])) ungrounded.push(match[0]);
   }
   // "the 17th century" is a claim about a range, so accept it when the source
   // states that century either by name or by containing a year inside it.
   for (const match of text.matchAll(/\b(\d{1,2})(?:st|nd|rd|th)[- ]century\b/gi)) {
     const century = Number(match[1]);
     const named = new RegExp(`\\b${century}(st|nd|rd|th)[- ]century\\b`, 'i').test(source);
-    const years = [...sourceDigits.matchAll(/\b(\d{4})\b/g)]
+    const years = [...haystack.matchAll(/\b(\d{4})\b/g)]
       .some((year) => Math.floor((Number(year[1]) - 1) / 100) + 1 === century);
     if (!named && !years) ungrounded.push(`${century}th century`);
   }
@@ -147,6 +209,15 @@ export function ungroundedNumbers(text: string, source: string): string[] {
 export interface QualityOptions {
   /** The feature's display name, so a fact can be checked for naming it. */
   name: string;
+  /**
+   * What the fact claims to be about. Only `naming` is gated on containing the
+   * name — see `judgeFact`. Omitted, nothing is gated on it.
+   */
+  kind?: string;
+  /** Other spellings that count as naming the subject — chiefly the title of
+   *  the article the fact was drawn from, which often differs from the OSM
+   *  name by an inflection. */
+  aliases?: readonly string[];
   /** The passage the fact was generated from, for the grounding check. */
   source: string;
   /** Facts already accepted for this feature, to reject near-duplicates. */
@@ -170,10 +241,10 @@ const DUPLICATE_SIMILARITY = 0.7;
 
 /** Trim the wrappers models put around a sentence without changing its claim. */
 export function tidyFact(text: string): string {
-  return (text || '')
+  return trimFillerClause((text || '')
     .replace(/\s+/g, ' ')
     .replace(/^\s*["'“‘]|["'”’]\s*$/g, '')
-    .trim();
+    .trim());
 }
 
 /**
@@ -190,9 +261,25 @@ export function judgeFact(raw: string, options: QualityOptions): FactVerdict {
   if (META_LANGUAGE.test(text)) return { ok: false, reason: 'talks-about-the-source' };
   if (TEMPORALLY_FRAGILE.test(text)) return { ok: false, reason: 'temporally-fragile' };
   if (DANGLING_OPENING.test(text)) return { ok: false, reason: 'dangling-reference' };
-  if (!namesSubject(text, options.name)) return { ok: false, reason: 'does-not-name-subject' };
-  if (LEDE_RESTATEMENT.test(text)) return { ok: false, reason: 'restates-the-lede' };
-  if (ungroundedNumbers(text, options.source).length) return { ok: false, reason: 'ungrounded-number' };
+  // Whether a fact must contain the feature's name depends on what kind of
+  // fact it is, because the card shows that name as its heading.
+  //
+  // Requiring it everywhere threw away 18% of an otherwise good run — "The
+  // inaugural concert on 11 April 1888 featured 120 musicians and 500 singers"
+  // reads perfectly under a card titled Concertgebouw, and rejecting it bought
+  // nothing. But a *naming* fact that does not contain the name has almost
+  // always translated it away, which is item 11c's rule: "The Lean Bridge is
+  // named for its narrowness" teaches the wrong name for the Magere Brug. So
+  // the guard is kept exactly where the failure lives.
+  if (options.kind === 'naming' && !namesSubject(text, options.name, options.aliases)) {
+    return { ok: false, reason: 'does-not-name-subject' };
+  }
+  if (LEDE_RESTATEMENT.test(text) || LOCATION_ONLY.test(text)) {
+    return { ok: false, reason: 'restates-the-lede' };
+  }
+  if (ungroundedNumbers(text, options.source, options.name).length) {
+    return { ok: false, reason: 'ungrounded-number' };
+  }
   for (const existing of options.accepted || []) {
     if (similarity(text, existing) >= DUPLICATE_SIMILARITY) return { ok: false, reason: 'duplicate' };
   }

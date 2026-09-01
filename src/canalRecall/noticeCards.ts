@@ -27,6 +27,11 @@ export interface LandmarkCardProps {
   category?: string;
   /** Language chip, shown only when the blurb is not English. */
   extractLang?: string;
+  /** What kind of fact the body is — `Name`, `History`, `Curiosity`. Set only
+   *  when the body is generated trivia rather than the article lede, and shown
+   *  so that a player passing the same bridge twice can see that the game is
+   *  telling them something new rather than repeating itself. */
+  factKind?: string;
   hasArticle?: boolean;
   hasImage?: boolean;
 }
@@ -38,7 +43,7 @@ export interface LandmarkCardLayout {
   imageHeight: number;
   textLeft: number;
   /** Badges in draw order, already positioned relative to the card. */
-  badges: Array<{ label: string; x: number; width: number; kind: 'category' | 'lang' | 'article' | 'more' }>;
+  badges: Array<{ label: string; x: number; width: number; kind: 'category' | 'lang' | 'article' | 'more' | 'fact' }>;
   /** Body text already wrapped and elided to the lines that will be drawn. */
   lines: string[];
   /** The name, elided with an ellipsis if it would not fit. */
@@ -80,12 +85,15 @@ export function measureLandmarkCard(
 
   const badges: LandmarkCardLayout['badges'] = [];
   let cursor = textLeft;
-  const pushBadge = (label: string, kind: 'category' | 'lang' | 'article' | 'more') => {
+  const pushBadge = (label: string, kind: LandmarkCardLayout['badges'][number]['kind']) => {
     const width = measure(label, BADGE_FONT) + 10;
     badges.push({ label, x: cursor, width, kind });
     cursor += width + 6;
   };
   if (props.category) pushBadge(props.category, 'category');
+  // Directly after the category, because it qualifies the same thing: what
+  // this card is about is the category, what it says about it is the kind.
+  if (props.factKind && props.body) pushBadge(props.factKind.toUpperCase(), 'fact');
   // The language chip is a claim about the body text, so it only makes sense
   // when there is body text to be in that language.
   if (props.extractLang && props.extractLang !== 'en' && props.body) {

@@ -6,6 +6,24 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Local facts now have an editorial boundary and a memory.** The old Ollama
+  script read the same lede already shown on the card, asked for exactly three
+  facts, and wrote its first answer directly into the public extract. Its
+  replacement caches whole Wikipedia articles, mines useful sections, records
+  statement-level source/licence/model provenance, and rejects ungrounded
+  numbers, stale wording, lede restatements and duplicates before anything can
+  be reviewed. Output is staged; a version-matched human label is required for
+  `facts:publish`, and the committed review starts empty so silence can never
+  mean approval.
+
+  The runtime loads the resulting `facts.json` as optional enrichment. It shows
+  every reviewed sentence once before repeating the oldest, varies naming,
+  history, design and curiosity across cards, and remembers the rotation in
+  local storage. Missing files—including a development server returning its
+  HTML fallback with status 200—leave the Wikipedia lede intact instead of
+  blanking all landmarks. The decision modules and their staging/publication
+  gate are covered by `test:facts`.
+
 - **The Randstad pipeline claimed four cities and built two.** `refresh-randstad.sh`
   had been wired for Amsterdam, Rotterdam, Den Haag and Utrecht since 4758e46,
   but Rotterdam and Den Haag had never been built, and both failed at the same
