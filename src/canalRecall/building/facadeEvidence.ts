@@ -12,7 +12,7 @@ export interface FacadeCropEvidence {
 
 export interface FacadeViewLabel {
   buildingId: string;
-  quality: 'full' | 'partial' | 'unusable';
+  quality: 'full' | 'partial' | 'unusable' | 'unreviewed';
   selectedPanoId: string | null;
   selectedImage?: string | null;
   reviewedAt?: string;
@@ -46,6 +46,10 @@ export function selectReviewedFacadeInputs(
       continue;
     }
     seen.add(label.buildingId);
+    if (label.quality !== 'full' && label.quality !== 'partial' && label.quality !== 'unusable') {
+      rejected.push({ buildingId: label.buildingId, reason: 'invalid-or-unreviewed-quality' });
+      continue;
+    }
     if (label.quality === 'unusable') {
       rejected.push({ buildingId: label.buildingId, reason: 'human-marked-no-usable-view' });
       continue;

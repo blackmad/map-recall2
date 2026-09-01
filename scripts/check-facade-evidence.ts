@@ -25,4 +25,16 @@ const mismatch = selectReviewedFacadeInputs(source, crops, [{
 assert.equal(mismatch.inputs.length, 0);
 assert.equal(mismatch.rejected[0].reason, 'selected-image-does-not-match-panorama');
 
+const unreviewed = selectReviewedFacadeInputs(source, crops, [{
+  buildingId: 'bag:1', quality: 'unreviewed', selectedPanoId: 'p1', selectedImage: 'wide-images/1.jpg',
+}]);
+assert.equal(unreviewed.inputs.length, 0);
+assert.equal(unreviewed.rejected[0].reason, 'invalid-or-unreviewed-quality');
+
+const malformed = selectReviewedFacadeInputs(source, crops, [{
+  buildingId: 'bag:1', quality: 'looks-good', selectedPanoId: 'p1',
+} as never]);
+assert.equal(malformed.inputs.length, 0);
+assert.equal(malformed.rejected[0].reason, 'invalid-or-unreviewed-quality');
+
 process.stdout.write('Reviewed façade evidence checks passed.\n');
