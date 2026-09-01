@@ -98,8 +98,10 @@ for city in amsterdam rotterdam den-haag utrecht; do
 done
 ```
 
-The writer and verifier caches are content-addressed, shared across reruns, and
-ignored by Git. Publication remains a separate per-city review operation.
+The writer, translator and verifier caches are content-addressed, shared across
+reruns, and ignored by Git. Publication remains a separate per-city review
+operation: Amsterdam uses `scripts/facts-review.json`; the other cities use
+`scripts/facts-review-<city>.json` by default.
 
 Every published sentence retains its supporting exact source quotation,
 article URL, section, retrieval date, licence, writer and verifier model.
