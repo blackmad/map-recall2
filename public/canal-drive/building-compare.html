@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buildings: today vs the complete city</title>
+<link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+<script src="js/building-style.bundle.js"></script>
+<script src="js/building-tiles.bundle.js"></script>
+<style>
+  :root {
+    --ink: #0B1F2A; --panel: rgba(10,26,36,.92); --edge: rgba(255,255,255,.14);
+    --text: #E8F1F5; --dim: #90AEBC; --accent: #FFD21F;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--ink); color: var(--text);
+    font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  #wrap { display: flex; flex-direction: column; height: 100%; }
+  header { padding: 10px 14px; border-bottom: 1px solid var(--edge); display: flex;
+    flex-wrap: wrap; gap: 10px 18px; align-items: baseline; }
+  h1 { font-size: 14px; margin: 0; letter-spacing: .02em; font-weight: 600; }
+  .hint { color: var(--dim); }
+  .places { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+  button { font: inherit; color: var(--text); background: rgba(255,255,255,.07);
+    border: 1px solid var(--edge); border-radius: 5px; padding: 3px 9px; cursor: pointer; }
+  button:hover { background: rgba(255,255,255,.14); }
+  button[aria-pressed="true"] { background: var(--accent); color: #21200A; border-color: var(--accent); }
+  #maps { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--edge); min-height: 0; }
+  .pane { position: relative; min-height: 0; }
+  .map { position: absolute; inset: 0; }
+  .tag { position: absolute; top: 10px; left: 10px; z-index: 2; background: var(--panel);
+    border: 1px solid var(--edge); border-radius: 6px; padding: 7px 10px; max-width: 62%; }
+  .tag b { display: block; font-size: 13px; }
+  .tag span { color: var(--dim); font-size: 11.5px; }
+  #scale { display: flex; align-items: center; gap: 8px; padding: 6px 14px;
+    border-bottom: 1px solid var(--edge); color: var(--dim); font-size: 11.5px; }
+  #scale i { display: block; width: 220px; height: 9px; border-radius: 5px; }
+  #scale em { font-style: normal; }
+  @media (max-width: 900px) { #maps { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <header>
+    <h1>Buildings — today vs the complete city</h1>
+    <span class="hint">drag to pan · scroll to zoom · right-drag to tilt · the two views stay locked together</span>
+    <div class="places" id="places"></div>
+    <button id="by-height" aria-pressed="false" title="Colour both panes by height on one scale">Colour by height</button>
+  </header>
+  <div id="scale" hidden>
+    <span>3 m</span>
+    <i style="background:linear-gradient(90deg,#2C7BB6,#5BA7C4,#A6D96A,#FEE08B,#F8A055,#E0562F,#9E1B32)"></i>
+    <span>45 m</span>
+    <em>same scale on both sides — flat plateaus on the left are guessed heights repeating</em>
+  </div>
+  <div id="maps">
+    <div class="pane">
+      <div class="map" id="left"></div>
+      <div class="tag">
+        <b>Today</b>
+        <span id="left-note">OpenFreeMap's extrusion at OSM or guessed heights, plus 10,578 buildings with appearance tags</span>
+      </div>
+    </div>
+    <div class="pane">
+      <div class="map" id="right"></div>
+      <div class="tag">
+        <b>Complete city</b>
+        <span id="right-note">loading…</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+// A side-by-side of what the game draws now against the staged LoD1 city.
+//
+// It reads the tiles straight out of `staging/`, so it works before anything is
+// published — which is the point: this is the page you look at to decide
+// whether publishing is worth 111 MB.
+const STYLE = 'https://tiles.openfreemap.org/styles/liberty';
+const STAGING = '../data/extracts/amsterdam/staging';
+
+const PLACES = [
+  { name: 'Waag',          center: [4.90034, 52.37262], zoom: 17.6, pitch: 62, bearing: -20 },
+  { name: 'Canal ring',    center: [4.88600, 52.37200], zoom: 16.2, pitch: 58, bearing: 15 },
+  { name: 'Rijksmuseum',   center: [4.88520, 52.36000], zoom: 16.4, pitch: 60, bearing: 0 },
+  { name: 'Jordaan',       center: [4.88100, 52.37600], zoom: 16.6, pitch: 58, bearing: -35 },
+  { name: 'Noord',         center: [4.92700, 52.39500], zoom: 15.6, pitch: 55, bearing: 0 },
+  { name: 'Watergraafsm.', center: [4.93400, 52.35200], zoom: 15.8, pitch: 55, bearing: 25 },
+  { name: 'Zuidas',        center: [4.87300, 52.33800], zoom: 15.6, pitch: 58, bearing: 10 },
+];
+const START = PLACES[0];
+
+const make = (container) => new maplibregl.Map({
+  container, style: STYLE, center: START.center, zoom: START.zoom,
+  pitch: START.pitch, bearing: START.bearing, attributionControl: false, fadeDuration: 0
+});
+const left = make('left');
+const right = make('right');
+
+// Keep the two cameras identical without letting each one's move event drive
+// the other back — a two-way sync with no guard oscillates and jitters.
+let syncing = false;
+const bind = (from, to) => from.on('move', () => {
+  if (syncing) return;
+  syncing = true;
+  to.jumpTo({ center: from.getCenter(), zoom: from.getZoom(), pitch: from.getPitch(), bearing: from.getBearing() });
+  syncing = false;
+});
+bind(left, right);
+bind(right, left);
+
+// One ramp applied to both panes, so identical colour means identical height.
+// This is the toggle that makes the comparison worth looking at: the two sides
+// draw nearly the same massing, because OpenFreeMap already extrudes OSM
+// footprints. What differs is where the heights come from. Under the ramp the
+// left pane bands into flat plateaus — whole streets sharing one colour,
+// because `levels * 3` and a flat 9 m fallback produce the same number over and
+// over — while the right varies building by building, because every value was
+// measured off the AHN point cloud.
+const RAMP_STOPS = [
+  3, '#2C7BB6', 6, '#5BA7C4', 9, '#A6D96A', 12, '#FEE08B',
+  18, '#F8A055', 27, '#E0562F', 45, '#9E1B32'
+];
+const ramp = (heightExpression) => ['interpolate', ['linear'], heightExpression, ...RAMP_STOPS];
+const BASEMAP_HEIGHT = ['coalesce', ['get', 'render_height'], ['get', 'height'], 9];
+const OURS_HEIGHT = ['coalesce', ['get', 'height'], 5];
+
+const themeColor = window.CanalRecallBuildings
+  ? window.CanalRecallBuildings.buildingColorExpression('clean')
+  : '#D8D3CA';
+
+/** The appearance overlay the game ships today: 10,578 tagged buildings. */
+function addTodayLayers(map) {
+  map.addSource('osm-appearance', {
+    type: 'geojson', data: '../data/extracts/amsterdam/buildings-colored.geojson', generateId: true
+  });
+  const height = ['coalesce', ['get', 'height'], 5];
+  map.addLayer({
+    id: 'today-walls', type: 'fill-extrusion', source: 'osm-appearance', minzoom: 14,
+    paint: {
+      'fill-extrusion-color': ['coalesce', ['get', 'sideColour'], ['get', 'colour']],
+      'fill-extrusion-base': ['coalesce', ['get', 'minHeight'], 0],
+      'fill-extrusion-height': ['+', height, 0.35],
+      'fill-extrusion-opacity': 1
+    }
+  });
+  map.addLayer({
+    id: 'today-roofs', type: 'fill-extrusion', source: 'osm-appearance', minzoom: 14,
+    paint: {
+      'fill-extrusion-color': ['get', 'roofColour'],
+      'fill-extrusion-base': ['+', height, 0.05],
+      'fill-extrusion-height': ['+', height, 0.7],
+      'fill-extrusion-opacity': 1
+    }
+  });
+}
+
+/** The staged city: one source, one winner per building, measured heights. */
+function addCompleteLayers(map) {
+  map.addSource('complete-city', {
+    type: 'geojson', data: { type: 'FeatureCollection', features: [] }, promoteId: 'id'
+  });
+  map.addLayer({
+    id: 'complete-walls', type: 'fill-extrusion', source: 'complete-city', minzoom: 13,
+    paint: {
+      'fill-extrusion-color': ['case', ['has', 'colour'], ['to-color', ['get', 'colour'], '#D8D3CA'], themeColor],
+      'fill-extrusion-base': ['coalesce', ['get', 'minHeight'], 0],
+      'fill-extrusion-height': ['coalesce', ['get', 'height'], 5],
+      'fill-extrusion-opacity': 1
+    }
+  });
+  map.addLayer({
+    id: 'complete-roofs', type: 'fill-extrusion', source: 'complete-city', minzoom: 13,
+    filter: ['has', 'roofColour'],
+    paint: {
+      'fill-extrusion-color': ['to-color', ['get', 'roofColour'], '#B09999'],
+      'fill-extrusion-base': ['+', ['coalesce', ['get', 'height'], 5], 0.05],
+      'fill-extrusion-height': ['+', ['coalesce', ['get', 'height'], 5], 0.35],
+      'fill-extrusion-opacity': 1
+    }
+  });
+}
+
+/** Paint the basemap's own extrusion the way the game does, so the left pane is honest. */
+function styleBasemap(map) {
+  if (!map.getLayer('building-3d')) return;
+  map.setPaintProperty('building-3d', 'fill-extrusion-color', themeColor);
+  map.setPaintProperty('building-3d', 'fill-extrusion-opacity', 1);
+}
+
+let byHeight = false;
+function applyColouring() {
+  if (left.getLayer('building-3d')) {
+    left.setPaintProperty('building-3d', 'fill-extrusion-color', byHeight ? ramp(BASEMAP_HEIGHT) : themeColor);
+  }
+  for (const [id, visible] of [['today-walls', !byHeight], ['today-roofs', !byHeight]]) {
+    if (left.getLayer(id)) left.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');
+  }
+  if (right.getLayer('complete-walls')) {
+    right.setPaintProperty('complete-walls', 'fill-extrusion-color', byHeight
+      ? ramp(OURS_HEIGHT)
+      : ['case', ['has', 'colour'], ['to-color', ['get', 'colour'], '#D8D3CA'], themeColor]);
+  }
+  if (right.getLayer('complete-roofs')) {
+    right.setLayoutProperty('complete-roofs', 'visibility', byHeight ? 'none' : 'visible');
+  }
+}
+
+left.on('load', () => { styleBasemap(left); addTodayLayers(left); });
+
+let streamer = null;
+right.on('load', async () => {
+  styleBasemap(right);
+  addCompleteLayers(right);
+  const note = document.getElementById('right-note');
+  const runtime = window.CanalRecallBuildingTiles;
+  if (!runtime) { note.textContent = 'building-tiles.bundle.js did not load'; return; }
+  streamer = new runtime.BuildingTileStreamer(right, 'complete-city', STAGING);
+  if (!(await streamer.probe())) {
+    note.textContent = 'no staged tiles — run `npm run build:lod1-tiles` first';
+    return;
+  }
+  // The basemap extrusion is the thing being replaced, so it goes only once
+  // real buildings have arrived to replace it.
+  streamer.attach(() => right.setLayoutProperty('building-3d', 'visibility', 'none'));
+  const tick = () => {
+    const s = streamer.status();
+    note.textContent = `3DBAG footprints at AHN-measured heights · ${s.tiles} tiles, ${s.features.toLocaleString()} buildings resident`;
+  };
+  tick();
+  // Tiles are still in flight when `attach` returns, so poll briefly rather
+  // than reporting the zero that is true only for the first moment.
+  const settle = setInterval(tick, 700);
+  setTimeout(() => clearInterval(settle), 15000);
+  right.on('moveend', () => setTimeout(tick, 600));
+});
+
+const heightButton = document.getElementById('by-height');
+heightButton.addEventListener('click', () => {
+  byHeight = !byHeight;
+  heightButton.setAttribute('aria-pressed', String(byHeight));
+  document.getElementById('scale').hidden = !byHeight;
+  applyColouring();
+});
+
+const places = document.getElementById('places');
+for (const place of PLACES) {
+  const button = document.createElement('button');
+  button.textContent = place.name;
+  button.setAttribute('aria-pressed', String(place === START));
+  button.addEventListener('click', () => {
+    for (const other of places.children) other.setAttribute('aria-pressed', 'false');
+    button.setAttribute('aria-pressed', 'true');
+    left.jumpTo({ center: place.center, zoom: place.zoom, pitch: place.pitch, bearing: place.bearing });
+  });
+  places.append(button);
+}
+</script>
+</body>
+</html>

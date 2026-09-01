@@ -168,6 +168,17 @@ will be interrupted; each step must be worth shipping alone.
    Once published, `tests/e2e/complete-city.spec.ts` stops skipping and starts
    exercising the whole path on desktop and iPhone.
 
+   To look at it before deciding: `npm run dev`, then
+   `/canal-drive/building-compare.html`. Two synced maps, today on the left and
+   the staged city on the right, reading straight out of `staging/` so it works
+   unpublished. Use **Colour by height** — side by side the two draw nearly the
+   same massing, because OpenFreeMap already extrudes OSM footprints, and the
+   coverage figure is against our own 10,578-building source rather than
+   against what is on screen. Under one shared height ramp the difference is
+   plain: the left bands into flat plateaus where `levels * 3` and the 9 m
+   fallback repeat down a whole terrace, and it guesses several blocks too
+   tall.
+
    Still open after that, and none of it blocking: roof colour is codex's lane,
    so most of the city currently takes the theme's height ramp rather than a
    measured colour; tier-4 OSM structures outside the fetched area carry
