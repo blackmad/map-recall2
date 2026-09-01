@@ -24,6 +24,18 @@ is the way it is, and that is the expensive part to recover later.
   blanking all landmarks. The decision modules and their staging/publication
   gate are covered by `test:facts`.
 
+  The first real run changed the safety boundary again. Merely checking that
+  every generated number occurred in the source admitted false relationships:
+  2009 to 2012 became “six years”, 1988 became “80 years prior to 2013”, and an
+  event borrowed the date from the next sentence. Ollama now performs
+  **extractive summarisation** over cached English Wikipedia: it selects and
+  classifies, while the displayed sentence must occur verbatim in the selected
+  passage. Dutch-to-English generation cannot publish yet. Complete-sentence,
+  explicit-subject and exact-provenance gates reduced a 30-feature pilot from
+  141 rewrites to 27 eligible quotations; review struck 6, left 2 features
+  unreviewed, and published 19 statements for 9 features. This lower yield is
+  the intended cost of making a fact catalog safe to learn from.
+
 - **The Randstad pipeline claimed four cities and built two.** `refresh-randstad.sh`
   had been wired for Amsterdam, Rotterdam, Den Haag and Utrecht since 4758e46,
   but Rotterdam and Den Haag had never been built, and both failed at the same

@@ -67,10 +67,13 @@ city extract instead of attempting a second entity-resolution system:
 
 1. `npm run facts:articles` caches complete English or Dutch Wikipedia articles
    for landmarks, bridges, squares and parks. The cache is local and ignored.
-2. `npm run facts:build` selects useful article sections, asks a local Ollama
-   model for short English facts, and rejects ungrounded numbers, stale claims,
-   lede restatements, fragments, markup and near-duplicates. It writes only to
-   the ignored `public/data/extracts/<city>/staging/` directory.
+2. `npm run facts:build` selects useful article sections and asks local Ollama
+   to choose and classify exact English source sentences. The model is a
+   summarizing selector, not an author: any altered word or punctuation mark is
+   rejected, as are stale claims, lede restatements, fragments, markup and
+   near-duplicates. It writes only to the ignored
+   `public/data/extracts/<city>/staging/` directory. Dutch articles are cached
+   but excluded until translation has its own proven entailment gate.
 3. A person reviews `facts-review.md` and records feature-level approval and
    struck sentences in `scripts/facts-review.json`. Reviews are tied to the
    generator version and therefore fail closed after prompt or gate changes.
@@ -81,10 +84,11 @@ city extract instead of attempting a second entity-resolution system:
    varies their kinds, and persists the rotation locally. A missing, malformed,
    or wholly unreviewed catalog leaves the existing Wikipedia lede unchanged.
 
-Every published sentence retains its article URL, section, retrieval date,
-licence and model. `npm run test:facts` pins the editorial, review and runtime
-selection rules. No generated fact is currently published: the committed
-review file begins empty on purpose.
+Every published sentence retains its exact source quotation, article URL,
+section, retrieval date, licence and selector model. `npm run test:facts` pins
+the editorial, review and runtime selection rules. The first reviewed catalog
+contains 19 exact quotations for 9 Amsterdam features; unreviewed features
+continue to show their Wikipedia lede.
 
 ### Longer-term catalog
 

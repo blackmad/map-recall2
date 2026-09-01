@@ -20,6 +20,17 @@ belongs here before anything below it.*
 
 ## P1 — The learning model itself
 
+**16. Expand the reviewed local-fact catalog.** The safe first slice uses local
+Ollama only to select and classify verbatim sentences from cached English
+Wikipedia articles; model rewrites and Dutch-to-English output cannot publish.
+The first measured pilot published 19 reviewed quotations for 9 features from
+30 candidates; 107 model selections failed deterministic gates, 6 more were
+struck in review and 2 features remained unreviewed. Next, improve standalone
+sentence yield without weakening exact-source matching, review a stratified
+city sample, and design a separately proven translation gate before admitting
+Dutch-only articles. Do not restore abstractive rewriting: the earlier pilot
+combined true source numbers into false relationships.
+
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by
 mastery and review state, with a fog-of-war layer over the rest. Derive it from
