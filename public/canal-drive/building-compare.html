@@ -97,6 +97,7 @@ const make = (container) => new maplibregl.Map({
 });
 const left = make('left');
 const right = make('right');
+window.left = left; window.right = right; // diagnostics reach in from tests
 
 // Keep the two cameras identical without letting each one's move event drive
 // the other back — a two-way sync with no guard oscillates and jitters.
@@ -207,12 +208,21 @@ function applyColouring() {
   }
 }
 
-left.on('load', () => { styleBasemap(left); addTodayLayers(left); });
+left.on('load', () => {
+  styleBasemap(left);
+  addTodayLayers(left);
+  // Re-apply, because the toggle can be clicked before a pane has finished
+  // loading. `applyColouring` skips layers that do not exist yet, so without
+  // this that pane stays on its default colours for the rest of the session
+  // while the button claims otherwise.
+  applyColouring();
+});
 
 let streamer = null;
 right.on('load', async () => {
   styleBasemap(right);
   addCompleteLayers(right);
+  applyColouring();
   const note = document.getElementById('right-note');
   const runtime = window.CanalRecallBuildingTiles;
   if (!runtime) { note.textContent = 'building-tiles.bundle.js did not load'; return; }
@@ -234,6 +244,7 @@ right.on('load', async () => {
   const settle = setInterval(tick, 700);
   setTimeout(() => clearInterval(settle), 15000);
   right.on('moveend', () => setTimeout(tick, 600));
+  applyColouring();
 });
 
 const heightButton = document.getElementById('by-height');

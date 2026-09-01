@@ -179,6 +179,34 @@ will be interrupted; each step must be worth shipping alone.
    fallback repeat down a whole terrace, and it guesses several blocks too
    tall.
 
+   **Two losses found by looking at the comparison page, and the first one
+   blocks publishing.**
+
+   *Hand-mapped 3D massing disappears outside the appearance extract.* The
+   ladder's OSM side is `buildings-colored.geojson`, and
+   `build-osm-building-appearance.ts` drops every building without a colour
+   tag — so it holds 10,578 of Amsterdam's buildings, not all of them. Every
+   `building:part` composition on a building with no appearance tag is
+   therefore invisible to the merge and collapses into flat BAG boxes. The
+   basemap does *not* lose them: OpenFreeMap carries `render_min_height`, so
+   `building-3d` draws raised parts city-wide (7 in a canal-ring viewport, 4 in
+   the Jordaan, values like 24→29 m and 72→82 m). Magna Plaza is the clearest
+   case — zero appearance-tagged OSM features within 60 m of it, so it becomes
+   48 plain boxes where today it is a stepped composition. The "1,448 stacked
+   parts" figure in `BUILDING_RENDERER_DESIGN.md` counts parts *within the
+   filtered file*, not in OSM. Fix: feed the ladder all OSM buildings and
+   `building:part`s, not the appearance-filtered extract.
+
+   *Towers on podiums are drawn at podium height.* `b3_h_dak_70p` is the 70th
+   percentile of roof points over the whole footprint, so a slim tower on a
+   large podium is measured at the podium. 201 panden are drawn more than 10 m
+   below their own AHN ridge, 66 by more than 20 m and 21 by more than 40 m;
+   the worst is drawn at 20.4 m against a 110.8 m ridge. That is 0.06% of the
+   city and close to 100% of its skyline — the Zuidas view shows a tower
+   cluster flattened into one orange slab. `b3_h_dak_max` and `b3_h_nok` are
+   both already in the CityJSON, so the fix is a rule, not more data: prefer
+   the ridge where it stands far above the percentile, or split the pand.
+
    Still open after that, and none of it blocking: roof colour is codex's lane,
    so most of the city currently takes the theme's height ramp rather than a
    measured colour; tier-4 OSM structures outside the fetched area carry
