@@ -20,16 +20,18 @@ belongs here before anything below it.*
 
 ## P1 — The learning model itself
 
-**16. Expand the reviewed local-fact catalog.** The safe first slice uses local
-Ollama only to select and classify verbatim sentences from cached English
-Wikipedia articles; model rewrites and Dutch-to-English output cannot publish.
-The first measured pilot published 19 reviewed quotations for 9 features from
-30 candidates; 107 model selections failed deterministic gates, 6 more were
-struck in review and 2 features remained unreviewed. Next, improve standalone
-sentence yield without weakening exact-source matching, review a stratified
-city sample, and design a separately proven translation gate before admitting
-Dutch-only articles. Do not restore abstractive rewriting: the earlier pilot
-combined true source numbers into false relationships.
+**16. Expand the reviewed local-fact catalog.** Version 6 now does real local
+summarization over cached Wikipedia sections: a writer produces a concise fact
+and cites numbered source sentences, code copies the exact evidence, and a
+separate temperature-zero local pass checks full entailment. Deterministic
+number/date, standalone-card, staleness and provenance gates remain, followed
+by human review. The corrected v6 smoke run produced 18 grounded summaries for
+all 3 sampled Amsterdam features, rejected three dangling references, and had
+the verifier catch one unsupported embellishment. Citation-marker noise and
+possessive apostrophes are cleaned deterministically. Regenerate all four
+Randstad staging catalogs, measure yield and verifier
+rejections, then review a stratified sample before publishing. Dutch-to-English
+facts still need a separately tested translation/entailment path.
 
 The original Map Recall app now consumes the same reviewed `facts.json` by
 exact extract feature id and shows the selected quotation after an answer;

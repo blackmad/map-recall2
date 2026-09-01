@@ -30,8 +30,12 @@ import {
   splitArticleSections,
   type SourcePassage,
 } from '../src/canalRecall/facts/articleSections.ts';
-import { judgeFact, type RejectionReason } from '../src/canalRecall/facts/factQuality.ts';
-import { similarity } from '../src/canalRecall/facts/factQuality.ts';
+import {
+  isSourceQuotation,
+  judgeFact,
+  similarity,
+  type RejectionReason,
+} from '../src/canalRecall/facts/factQuality.ts';
 import {
   FACT_KINDS,
   type Fact,
@@ -40,6 +44,11 @@ import {
   type FeatureFacts,
 } from '../src/canalRecall/facts/factTypes.ts';
 import { articleReference, readCachedArticle } from './fetch-article-bodies.ts';
+import {
+  evidenceFor,
+  sourceSentences,
+  stripEvidenceMarkers,
+} from '../src/canalRecall/facts/groundedSummary.ts';
 
 interface Feature {
   id: string;
@@ -68,10 +77,11 @@ const stagingDirectory = path.join(directory, 'staging');
  * sentences written under the old rules — and it is written into the output,
  * so a review sheet can be traced to the rules that produced it.
  */
-const GENERATOR_VERSION = 'facts-v5-extractive-standalone-en';
+const GENERATOR_VERSION = 'facts-v6-grounded-local-summary-en-r6';
 /** Prompt/cache version stays stable when only deterministic publication gates
  * change, so a stricter rerun does not spend another local model inference. */
-const PROMPT_VERSION = 'facts-v4-extractive-en';
+const PROMPT_VERSION = 'facts-v6-grounded-local-summary-en-r3';
+const VERIFIER_VERSION = 'entailment-batch-v1';
 
 /** Licence of every source this generator reads. Carried per statement. */
 const WIKIPEDIA_LICENSE = 'CC BY-SA 4.0';
@@ -84,7 +94,7 @@ const COLLECTIONS = ['landmarks', 'bridges', 'squares', 'parks'];
 const MAX_FACTS_PER_FEATURE = 6;
 /** Passages to prompt per feature. Each is one model call, so this is also the
  *  run's cost knob. */
-const MAX_PASSAGES_PER_FEATURE = 3;
+const MAX_PASSAGES_PER_FEATURE = 2;
 
 const KIND_GUIDE = `naming — where the name comes from and what it means
 history — an event, a date, a change of use
@@ -105,19 +115,23 @@ surprise — something genuinely unexpected`;
  * cheaper and produces better first choices.
  */
 function buildPrompt(name: string, passage: SourcePassage): string {
-  return `You select one-sentence trivia for a geography game played while cycling around Amsterdam.
+  const numberedSource = sourceSentences(passage.text)
+    .map((sentence, index) => `[${index + 1}] ${sentence}`)
+    .join('\n');
+  return `You write concise trivia for a geography game played while exploring ${cityId}.
 
 SUBJECT: ${name}
 SOURCE (the "${passage.section || 'introduction'}" section of its English Wikipedia article):
-"""
-${passage.text}
-"""
+${numberedSource}
 
-Select up to 4 sentences about ${name} that a player would enjoy learning.
+Write up to 4 standalone facts about ${name} that a player would enjoy learning.
 
 Rules:
-- Copy each sentence EXACTLY from SOURCE. Do not rewrite, combine, calculate, translate, shorten or improve it.
-- Each quote must be ONE complete English sentence of 50 to 180 characters.
+- Paraphrase and compress the source into clear natural English; do not merely copy a source sentence.
+- Each fact must be ONE complete English sentence of 45 to 180 characters.
+- For each fact, cite the IDs of the shortest consecutive source sentences that fully support it.
+- Put sentence IDs only in evidenceIds; never add [1], [2], or any citation marker to text.
+- Never combine details unless the evidence explicitly states their relationship.
 - Never select a sentence beginning with "It", "This", "The bridge" or "The building".
 - Do not restate what ${name} is and where it is. The player's card already says that.
 - Prefer the concrete and the surprising over the general.
@@ -128,10 +142,12 @@ Rules:
 Classify each fact as exactly one of:
 ${KIND_GUIDE}
 
-Return JSON: {"facts":[{"kind":"...","quote":"exact sentence copied from SOURCE"}]}`;
+Return JSON: {"facts":[{"kind":"...","text":"concise paraphrase","evidenceIds":[2]}]}`;
 }
 
-interface GeneratedFact { kind: string; quote: string }
+interface GeneratedFact { kind: string; text: string; evidenceIds: number[] }
+interface Verification { supported: boolean; reason: string }
+interface VerificationCandidate { id: number; fact: string; evidence: string }
 
 /** One cached model response, keyed by prompt content so a prompt change
  *  regenerates and a rerun costs nothing. */
@@ -170,15 +186,112 @@ async function generate(prompt: string): Promise<GeneratedFact[]> {
     generated = (Array.isArray(list) ? list : [])
       .map((entry: unknown) => ({
         kind: String((entry as GeneratedFact)?.kind || ''),
-        quote: String((entry as GeneratedFact)?.quote || ''),
+        text: stripEvidenceMarkers(String((entry as GeneratedFact)?.text || '')),
+        evidenceIds: Array.isArray((entry as GeneratedFact)?.evidenceIds)
+          ? (entry as GeneratedFact).evidenceIds.map(Number)
+          : [],
       }))
-      .filter((entry) => entry.quote);
+      .filter((entry) => entry.text && entry.evidenceIds.length);
   } catch {
     generated = [];
   }
   await mkdir(cacheDirectory, { recursive: true });
   await writeFile(cacheFile, JSON.stringify({ key, model, generated } satisfies CachedGeneration));
   return generated;
+}
+
+async function verifyEntailments(
+  name: string,
+  candidates: readonly VerificationCandidate[],
+): Promise<Map<number, Verification>> {
+  if (!candidates.length) return new Map();
+  const prompt = `Act as a strict fact checker. For each numbered candidate, decide independently
+whether its EVIDENCE alone entails every claim in its FACT.
+
+SUBJECT: ${name}
+CANDIDATES:
+${candidates.map((candidate) => `[${candidate.id}] EVIDENCE: """${candidate.evidence}"""\n[${candidate.id}] FACT: """${candidate.fact}"""`).join('\n')}
+
+Reject changed relationships, swapped subjects or objects, added causes, dates, quantities,
+superlatives, implications, or outside knowledge. Paraphrasing and compression are allowed.
+Return exactly one result per candidate as JSON only:
+{"results":[{"id":1,"supported":true|false,"reason":"brief explanation"}]}`;
+  const key = await hashKey(`${VERIFIER_VERSION}\0${model}\0${prompt}`);
+  const cacheFile = path.join(cacheDirectory, `${key}.json`);
+  let results: Array<Verification & { id: number }> | null = null;
+  try {
+    const cached = JSON.parse(await readFile(cacheFile, 'utf8')) as {
+      key?: string; results?: Array<Verification & { id: number }>;
+    };
+    if (cached.key === key) results = (cached.results || []).map((item) => ({
+      id: Number(item.id), supported: item.supported === true, reason: String(item.reason || ''),
+    }));
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+  }
+  if (!results) {
+    const response = await fetch(endpoint, {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ model, prompt, stream: false, format: 'json', options: { temperature: 0, num_predict: 500 } }),
+    });
+    if (!response.ok) throw new Error(`Ollama verifier HTTP ${response.status}: ${await response.text()}`);
+    const payload = await response.json() as { response?: string };
+    results = [];
+    try {
+      const parsed = JSON.parse(payload.response || '{}') as { results?: Array<Partial<Verification> & { id?: number }> };
+      results = (Array.isArray(parsed.results) ? parsed.results : []).map((item) => ({
+        id: Number(item.id), supported: item.supported === true, reason: String(item.reason || ''),
+      })).filter((item) => Number.isInteger(item.id));
+    } catch { /* fail closed */ }
+    await mkdir(cacheDirectory, { recursive: true });
+    await writeFile(cacheFile, JSON.stringify({ key, results }));
+  }
+  const verdicts = new Map(results.map((item) => [item.id, {
+    supported: item.supported, reason: item.reason,
+  }]));
+  // Small models sometimes omit an item from an otherwise valid JSON list.
+  // Retry only those items alone; omission must never turn into approval.
+  for (const candidate of candidates) {
+    if (!verdicts.has(candidate.id)) {
+      verdicts.set(candidate.id, await verifyOneEntailment(name, candidate.fact, candidate.evidence));
+    }
+  }
+  return verdicts;
+}
+
+async function verifyOneEntailment(name: string, fact: string, evidence: string): Promise<Verification> {
+  const prompt = `Act as a strict fact checker. Decide whether EVIDENCE alone entails every claim in FACT.
+
+SUBJECT: ${name}
+EVIDENCE: """${evidence}"""
+FACT: """${fact}"""
+
+Reject changed relationships, swapped subjects or objects, added causes, dates, quantities,
+superlatives, implications, or outside knowledge. Paraphrasing and compression are allowed.
+Return JSON only: {"supported":true|false,"reason":"brief explanation"}`;
+  // This key deliberately matches v3's isolated verifier cache.
+  const key = await hashKey(`${PROMPT_VERSION}\0verify\0${model}\0${prompt}`);
+  const cacheFile = path.join(cacheDirectory, `${key}.json`);
+  try {
+    const cached = JSON.parse(await readFile(cacheFile, 'utf8')) as Verification & { key?: string };
+    if (cached.key === key) return { supported: cached.supported === true, reason: String(cached.reason || '') };
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+  }
+  const response = await fetch(endpoint, {
+    method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ model, prompt, stream: false, format: 'json', options: { temperature: 0, num_predict: 180 } }),
+  });
+  if (!response.ok) throw new Error(`Ollama verifier HTTP ${response.status}: ${await response.text()}`);
+  const payload = await response.json() as { response?: string };
+  let verdict: Verification = { supported: false, reason: 'invalid verifier response' };
+  try {
+    const parsed = JSON.parse(payload.response || '{}') as Partial<Verification>;
+    verdict = { supported: parsed.supported === true, reason: String(parsed.reason || '') };
+  } catch { /* fail closed */ }
+  await mkdir(cacheDirectory, { recursive: true });
+  await writeFile(cacheFile, JSON.stringify({ key, ...verdict }));
+  return verdict;
 }
 
 /** A model classifies loosely; anything unrecognised becomes `surprise`
@@ -228,26 +341,43 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
   for (const passage of passages) {
     if (accepted.length >= MAX_FACTS_PER_FEATURE) break;
     const generated = await generate(buildPrompt(feature.name, passage));
-    for (const entry of generated) {
+    const candidates: Array<VerificationCandidate & { kind: FactKind }> = [];
+    for (const [index, entry] of generated.entries()) {
       const kind = normaliseKind(entry.kind);
-      const verdict = judgeFact(entry.quote, {
+      const evidence = evidenceFor(entry.evidenceIds, passage.text);
+      if (!evidence || !isSourceQuotation(evidence, passage.text)) {
+        recordRejection('not-a-source-quotation', entry.text);
+        continue;
+      }
+      const verdict = judgeFact(entry.text, {
         name: feature.name,
         kind,
         aliases: [article.title],
         source: passage.text,
         accepted: accepted.map((fact) => fact.text),
-        extractive: true,
       });
-      if (!verdict.ok) { recordRejection(verdict.reason, entry.quote); continue; }
+      if (!verdict.ok) { recordRejection(verdict.reason, entry.text); continue; }
+      candidates.push({ id: index + 1, fact: verdict.text, evidence, kind });
+    }
+    const verifications = await verifyEntailments(feature.name, candidates);
+    for (const candidate of candidates) {
+      const verification = verifications.get(candidate.id)
+        || { supported: false, reason: 'verifier omitted candidate' };
+      if (!verification.supported) {
+        recordRejection('not-entailed', `${candidate.fact} (${verification.reason})`);
+        continue;
+      }
       accepted.push({
-        text: verdict.text,
-        kind,
+        text: candidate.fact,
+        kind: candidate.kind,
         section: passage.section,
-        sourceQuote: verdict.text,
+        sourceQuote: candidate.evidence,
         sourceUrl: article.url,
         license: WIKIPEDIA_LICENSE,
         retrievedAt: article.retrievedAt,
         model: `ollama:${model}`,
+        verifierModel: `ollama:${model}`,
+        verification: 'grounded',
       });
     }
   }
@@ -334,9 +464,9 @@ const review = [
   `Generator \`${GENERATOR_VERSION}\`, model \`${model}\`, ${output.generatedAt}.`,
   `${features.length} features, ${totalFacts} facts, ${rejected} rejected before this sheet.`,
   '',
-  'Every sentence below was selected by a small local model from the Wikipedia',
-  'section named beside it. The displayed text is an exact source quotation,',
-  'not a model rewrite, and it passed the standalone-card editorial gate.',
+  'Every sentence below was locally summarized from the Wikipedia evidence',
+  'shown beneath it, then checked by a separate local entailment pass and the',
+  'deterministic editorial gate. Human approval is still required.',
   '',
   'Mark a feature by adding its id to `scripts/facts-review.json`.',
   '',
@@ -344,7 +474,10 @@ const review = [
     `## ${feature.name}`,
     `\`${feature.id}\` · ${feature.collection} · [source](${feature.facts[0].sourceUrl})`,
     '',
-    ...feature.facts.map((fact) => `- **${fact.kind}** *(${fact.section || 'lede'})* — ${fact.text}`),
+    ...feature.facts.flatMap((fact) => [
+      `- **${fact.kind}** *(${fact.section || 'lede'})* — ${fact.text}`,
+      `  - Evidence: “${fact.sourceQuote}”`,
+    ]),
     '',
   ]),
 ].join('\n');

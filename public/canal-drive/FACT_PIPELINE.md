@@ -68,10 +68,11 @@ city extract instead of attempting a second entity-resolution system:
 1. `npm run facts:articles` caches complete English or Dutch Wikipedia articles
    for landmarks, bridges, squares and parks. The cache is local and ignored.
 2. `npm run facts:build` selects useful article sections and asks local Ollama
-   to choose and classify exact English source sentences. The model is a
-   summarizing selector, not an author: any altered word or punctuation mark is
-   rejected, as are stale claims, lede restatements, fragments, markup and
-   near-duplicates. It writes only to the ignored
+   to write short English summaries. The writer cites numbered source
+   sentences; code retrieves those exact Wikipedia sentences, and a separate
+   temperature-zero local pass must confirm that the evidence entails every
+   claim. Deterministic gates separately reject altered numbers, stale claims,
+   lede restatements, fragments, markup and near-duplicates. It writes only to the ignored
    `public/data/extracts/<city>/staging/` directory. Dutch articles are cached
    but excluded until translation has its own proven entailment gate.
 3. A person reviews `facts-review.md` and records feature-level approval and
@@ -84,11 +85,23 @@ city extract instead of attempting a second entity-resolution system:
    varies their kinds, and persists the rotation locally. A missing, malformed,
    or wholly unreviewed catalog leaves the existing Wikipedia lede unchanged.
 
-Every published sentence retains its exact source quotation, article URL,
-section, retrieval date, licence and selector model. `npm run test:facts` pins
-the editorial, review and runtime selection rules. The first reviewed catalog
-contains 19 exact quotations for 9 Amsterdam features; unreviewed features
-continue to show their Wikipedia lede.
+Regenerate the four Randstad staging catalogs after caching their articles:
+
+```sh
+for city in amsterdam rotterdam den-haag utrecht; do
+  npm run facts:articles -- --directory=public/data/extracts/$city
+  npm run facts:build -- --directory=public/data/extracts/$city --city=$city
+done
+```
+
+The writer and verifier caches are content-addressed, shared across reruns, and
+ignored by Git. Publication remains a separate per-city review operation.
+
+Every published sentence retains its supporting exact source quotation,
+article URL, section, retrieval date, licence, writer and verifier model.
+`npm run test:facts` pins the editorial, review and runtime selection rules.
+The older first reviewed catalog contains 19 quotations for 9 Amsterdam
+features; regenerated summaries remain staged until they receive fresh review.
 
 ### Longer-term catalog
 

@@ -42,6 +42,11 @@ import {
   splitArticleSections,
   truncateAtSentence,
 } from '../src/canalRecall/facts/articleSections';
+import {
+  evidenceFor,
+  sourceSentences,
+  stripEvidenceMarkers,
+} from '../src/canalRecall/facts/groundedSummary';
 
 const checks: string[] = [];
 function check(name: string, run: () => void): void {
@@ -169,6 +174,11 @@ check('a clipped quotation is rejected before it can change a claim', () => {
     accept('The Magere Brug campaign promised to ‘build something else.'),
     { ok: false, reason: 'unbalanced-quotation' },
   );
+});
+
+check('apostrophes in names and possessives are not mistaken for quotations', () => {
+  assert.equal(hasUnbalancedQuotation("Amsterdam’s oldest bridge wasn't made of stone."), false);
+  assert.equal(hasUnbalancedQuotation("The venue was called ‘Amsterdam's room’."), false);
 });
 
 check('extractive summarisation rejects even a plausible rewrite', () => {
@@ -303,6 +313,21 @@ check('a fragment and a paragraph-length fact are both rejected', () => {
 
 // ---- Choosing the source passage ----
 
+check('sentence IDs resolve to exact consecutive source evidence', () => {
+  const source = 'First claim. Second claim has 1883 in it. Third claim!';
+  assert.deepEqual(sourceSentences(source), [
+    'First claim.', 'Second claim has 1883 in it.', 'Third claim!',
+  ]);
+  assert.equal(evidenceFor([2, 3], source), 'Second claim has 1883 in it. Third claim!');
+  assert.equal(evidenceFor([1, 3], source), null, 'disconnected evidence cannot be stitched together');
+  assert.equal(evidenceFor([4], source), null, 'an invented sentence ID fails closed');
+});
+
+check('echoed evidence markers are removed without rewriting the claim', () => {
+  assert.equal(stripEvidenceMarkers('The bridge opened in 1883 [2, 3].'), 'The bridge opened in 1883.');
+  assert.equal(stripEvidenceMarkers('The bridge opened in 1883.'), 'The bridge opened in 1883.');
+});
+
 const ARTICLE = [
   'Vondelpark is a public urban park in Amsterdam.',
   '',
@@ -369,7 +394,8 @@ check('a long passage is cut at a sentence end', () => {
 
 const fact = (text: string, kind: FactKind): Fact => ({
   text, kind, section: 'History', sourceQuote: text, sourceUrl: 'https://en.wikipedia.org/wiki/Test',
-  license: 'CC BY-SA 4.0', retrievedAt: '2026-09-01', model: 'ollama:test',
+  license: 'CC BY-SA 4.0', retrievedAt: '2026-09-01', model: 'ollama:writer',
+  verifierModel: 'ollama:verifier', verification: 'grounded',
 });
 
 const FACTS: Fact[] = [
@@ -534,8 +560,19 @@ check('a malformed verdict is not approval', () => {
   assert.equal(result.rejected[0].reason, 'invalid-verdict');
 });
 
-check('an approved sentence without exact provenance still cannot ship', () => {
-  const broken = [{ ...STAGED[0], facts: [{ ...FACTS[0], sourceQuote: 'different source words' }] }];
+check('a grounded paraphrase with separate verbatim evidence can ship', () => {
+  const paraphrased = [{ ...STAGED[0], facts: [{ ...FACTS[0],
+    text: 'A concise locally written version of the supported historical fact.',
+    sourceQuote: 'A longer exact quotation from the Wikipedia article supporting that historical fact.',
+  }] }];
+  const result = selectReviewedFacts(paraphrased, {
+    generatorVersion: 'facts-v2', features: { a: { verdict: 'approved' } },
+  }, 'facts-v2');
+  assert.equal(result.published.length, 1);
+});
+
+check('an approved sentence without verifier provenance still cannot ship', () => {
+  const broken = [{ ...STAGED[0], facts: [{ ...FACTS[0], verification: undefined }] }];
   const result = selectReviewedFacts(broken, {
     generatorVersion: 'facts-v2', features: { a: { verdict: 'approved' } },
   }, 'facts-v2');
