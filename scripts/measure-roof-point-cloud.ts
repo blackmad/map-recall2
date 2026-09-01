@@ -4,7 +4,11 @@ import path from 'node:path';
 import { LASLoader } from '@loaders.gl/las';
 import { measureSurfaceColour, type RgbPoint, type RoofPlane } from '../src/canalRecall/building/facadePointCloud.ts';
 
-const root = path.resolve('.cache/building-enrichment'); const dsmRoot = path.join(root, 'pdok-dsm-point-cloud/2025-20cm');
+const arg = (name: string) => process.argv.find((value) => value.startsWith(`--${name}=`))?.slice(name.length + 3);
+const root = path.resolve(arg('root') || '.cache/building-enrichment');
+const resolution = arg('resolution') || '20cm';
+if (!['8cm', '20cm'].includes(resolution)) throw new Error('--resolution must be 8cm or 20cm.');
+const dsmRoot = path.join(root, `pdok-dsm-point-cloud/2025-${resolution}`);
 const manifest = JSON.parse(await readFile(path.join(dsmRoot, 'manifest.json'), 'utf8')) as { source: Record<string, unknown>; tiles: Array<{ file: string; sha256: string; buildingIds: string[]; bladnr: string }> };
 const surfaces = JSON.parse(await readFile(path.join(root, 'panorama/facade-wall-planes.json'), 'utf8')) as { buildings: Array<{ buildingId: string; roofs: RoofPlane[] }> };
 const orthophoto = JSON.parse(await readFile(path.join(root, 'roof-plane-colour-proposals.json'), 'utf8')) as { proposals: Array<{ surfaceId: string; measuredColour?: string }> };
