@@ -136,6 +136,13 @@ explicit `unusable` result) with evidence quality, occlusion reason and notes.
 That exported selection is the only panorama input the grammar classifier
 should consume for a building.
 
+A 10-view `qwen2.5vl:7b` visibility-triage pilot did not discriminate the
+candidate views: all outputs were 50% confidence and almost all were
+`partial/vegetation`, including visibly different clear, wrong-angle and dense
+foliage cases. The run stopped there. Machine triage remains an unaccepted audit
+hint and can only influence the review sheet's default selection at 70% or
+higher; this model/version currently influences none.
+
 `npm run reclassify:facades` now refuses to start without
 `--view-labels=<facade-view-human-labels.json>`. The join verifies BAG/building
 identity, selected panorama and selected image against the crop manifest,
