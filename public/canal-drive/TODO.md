@@ -47,9 +47,9 @@ standalone-card rewrites from genuine entailment failures; never weaken a gate
 based only on aggregate rejection counts.
 
 The Trivia Lab at `/canal-drive/trivia-review.html` now makes the full review
-queue browsable by city, status, collection, rejection reason and evidence. It
-also displays ten-feature build checkpoints and OpenRouter spend while a run is
-active. Use it to review the completed Randstad batch and record approvals;
+queue browsable by city, status, collection, rejection reason and evidence. Its
+manual Refresh button displays the latest ten-feature checkpoint and OpenRouter
+spend without moving the page while somebody is reading. Use it to review the completed Randstad batch and record approvals;
 automatically passed candidates remain visibly separate from published facts.
 
 Naming facts now preserve both useful forms: the native map name remains the

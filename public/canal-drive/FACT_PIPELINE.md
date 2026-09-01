@@ -116,8 +116,8 @@ rejections, and human-published facts in separate views, and exposes original
 evidence, local Dutch translations, verifier explanations, provenance, search,
 and filters. During a build, the generator checkpoints the accepted and
 rejected JSON plus `staging/fact-progress.json` every ten attempted features;
-the lab refreshes a running city every ten seconds. “Passed gates” always means
-awaiting human review—not published.
+use the lab's Refresh button to load a newer checkpoint without interrupting
+reading. “Passed gates” always means awaiting human review—not published.
 
 Ollama remains the offline default. For faster bulk regeneration, the same
 prompts and fail-closed gates can use OpenRouter without changing catalog

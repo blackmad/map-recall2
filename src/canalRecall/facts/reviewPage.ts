@@ -6,13 +6,15 @@ type View = 'staged' | 'rejected' | 'published';
 let city = location.hash.slice(1).split('/')[0] || 'amsterdam';
 if (!cities.includes(city as typeof cities[number])) city = 'amsterdam';
 let view: View = 'staged';
-let refreshTimer = 0;
 
 const app = document.querySelector<HTMLElement>('#app')!;
 const escapeHtml = (value: unknown) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 }[char]!));
 const cityName = (id: string) => id === 'den-haag' ? 'Den Haag' : id[0].toUpperCase() + id.slice(1);
+const reasonLabel = (reason: string) => reason === 'not-entailed'
+  ? 'wording not supported'
+  : reason.replaceAll('-', ' ');
 
 async function json<T>(url: string): Promise<T | null> {
   try {
@@ -29,7 +31,7 @@ function evidence(item: ReviewFact | RejectedFact): string {
 }
 
 function card(item: ReviewFact | RejectedFact, rejected: boolean): string {
-  const tag = rejected ? (item as RejectedFact).reason : (item as ReviewFact).kind;
+  const tag = rejected ? reasonLabel((item as RejectedFact).reason) : (item as ReviewFact).kind;
   const why = rejected && (item as RejectedFact).detail
     ? `<p class="why"><b>Verifier:</b> ${escapeHtml((item as RejectedFact).detail)}</p>` : '';
   return `<article class="card ${rejected ? 'nope' : 'yep'}">
@@ -40,7 +42,6 @@ function card(item: ReviewFact | RejectedFact, rejected: boolean): string {
 }
 
 async function render(): Promise<void> {
-  clearTimeout(refreshTimer);
   app.innerHTML = '<div class="loading">Opening the trivia lab…</div>';
   const root = `../data/extracts/${city}`;
   const [progress, stagedFile, rejectedFile, publishedFile] = await Promise.all([
@@ -62,15 +63,16 @@ async function render(): Promise<void> {
     <nav class="cities">${cities.map((id) => `<button data-city="${id}" class="${city === id ? 'active' : ''}">${cityName(id)}</button>`).join('')}</nav>
   </header>
   <section class="meter ${live ? 'live' : ''}">
-    <div><span class="dot"></span><b>${live ? 'Extraction running' : progress ? 'Extraction complete' : 'No active run'}</b><small>${progress ? `Updated ${new Date(progress.updatedAt).toLocaleTimeString()}` : 'Start a build to see live progress'}</small></div>
+    <div><span class="dot"></span><b>${live ? 'Extraction running' : progress ? 'Extraction complete' : 'No active run'}</b><small>${progress ? `Updated ${new Date(progress.updatedAt).toLocaleTimeString()}` : 'Start a build to see progress'}</small></div>
     <strong>${progress?.considered || 0}<small>features tried</small></strong><strong>${staged.length}<small>passed gates</small></strong><strong>${rejected.length}<small>rejected</small></strong><strong>$${(progress?.openRouterSpentUsd || 0).toFixed(4)}<small>this run</small></strong>
+    <button id="refresh" title="Load the latest checkpoint">Refresh data</button>
   </section>
   <nav class="views">
     <button data-view="staged" class="${view === 'staged' ? 'active' : ''}">✨ Passed gates <span>${staged.length}</span></button>
     <button data-view="rejected" class="${view === 'rejected' ? 'active' : ''}">🧯 Rejected <span>${rejected.length}</span></button>
     <button data-view="published" class="${view === 'published' ? 'active' : ''}">🏛 Published <span>${published.length}</span></button>
   </nav>
-  <p class="meaning">${view === 'staged' ? 'Passed automatic grounding and editorial checks; awaiting human review.' : view === 'rejected' ? 'Kept for audit: proposed facts that failed a deterministic or model verification gate.' : 'Human-reviewed facts currently available to the game.'}</p>
+  <p class="meaning">${view === 'staged' ? 'Passed automatic grounding and editorial checks; awaiting human review.' : view === 'rejected' ? 'Kept for audit: proposed facts whose wording was not sufficiently supported by its cited evidence, or that failed another editorial rule.' : 'Human-reviewed facts currently available to the game.'}</p>
   <section class="filters"><input id="search" type="search" placeholder="Search names, facts, or evidence…"><select id="collection"><option value="">All collections</option>${collections.map((x) => `<option>${escapeHtml(x)}</option>`).join('')}</select>${view === 'rejected' ? `<select id="reason"><option value="">All rejection reasons</option>${reasons.map((x) => `<option>${escapeHtml(x)}</option>`).join('')}</select>` : ''}<span id="shown"></span></section>
   <main id="cards"></main>`;
   const updateCards = () => {
@@ -90,8 +92,8 @@ async function render(): Promise<void> {
     view = button.dataset.view as View; void render();
   });
   document.querySelectorAll<HTMLInputElement | HTMLSelectElement>('.filters input,.filters select').forEach((input) => input.oninput = updateCards);
+  document.querySelector<HTMLButtonElement>('#refresh')!.onclick = () => void render();
   updateCards();
-  if (live) refreshTimer = window.setTimeout(() => void render(), 10_000);
 }
 
 window.addEventListener('hashchange', () => { city = location.hash.slice(1).split('/')[0] || 'amsterdam'; void render(); });
