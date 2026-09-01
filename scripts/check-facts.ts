@@ -393,8 +393,10 @@ check('a long passage is cut at a sentence end', () => {
 // ---- Rotation ----
 
 const fact = (text: string, kind: FactKind): Fact => ({
-  text, kind, section: 'History', sourceQuote: text, sourceUrl: 'https://en.wikipedia.org/wiki/Test',
+  text, kind, section: 'History', sourceQuote: text, sourceQuoteEnglish: text,
+  sourceUrl: 'https://en.wikipedia.org/wiki/Test',
   license: 'CC BY-SA 4.0', retrievedAt: '2026-09-01', model: 'ollama:writer',
+  sourceLanguage: 'en',
   verifierModel: 'ollama:verifier', verification: 'grounded',
 });
 

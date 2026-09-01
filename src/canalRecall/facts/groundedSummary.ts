@@ -8,7 +8,11 @@ export function sourceSentences(source: string): string[] {
 
 /** Resolve consecutive one-based sentence IDs back to exact source text. */
 export function evidenceFor(ids: readonly number[], source: string): string | null {
-  const sentences = sourceSentences(source);
+  return evidenceFromSentences(ids, sourceSentences(source));
+}
+
+/** Resolve IDs against a pre-aligned bilingual sentence array. */
+export function evidenceFromSentences(ids: readonly number[], sentences: readonly string[]): string | null {
   const unique = [...new Set(ids)].filter(Number.isInteger).sort((a, b) => a - b);
   if (!unique.length || unique.length > 3) return null;
   if (unique.some((id) => id < 1 || id > sentences.length)) return null;

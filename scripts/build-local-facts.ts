@@ -45,10 +45,11 @@ import {
 } from '../src/canalRecall/facts/factTypes.ts';
 import { articleReference, readCachedArticle } from './fetch-article-bodies.ts';
 import {
-  evidenceFor,
+  evidenceFromSentences,
   sourceSentences,
   stripEvidenceMarkers,
 } from '../src/canalRecall/facts/groundedSummary.ts';
+import { translateDutchPassage } from './lib/factTranslation.ts';
 
 interface Feature {
   id: string;
@@ -77,11 +78,11 @@ const stagingDirectory = path.join(directory, 'staging');
  * sentences written under the old rules — and it is written into the output,
  * so a review sheet can be traced to the rules that produced it.
  */
-const GENERATOR_VERSION = 'facts-v6-grounded-local-summary-en-r6';
+const GENERATOR_VERSION = 'facts-v8-trn-then-grounded-summary';
 /** Prompt/cache version stays stable when only deterministic publication gates
  * change, so a stricter rerun does not spend another local model inference. */
-const PROMPT_VERSION = 'facts-v6-grounded-local-summary-en-r3';
-const VERIFIER_VERSION = 'entailment-batch-v1';
+const PROMPT_VERSION = 'facts-v8-english-grounded-summary';
+const VERIFIER_VERSION = 'english-entailment-batch-v2';
 
 /** Licence of every source this generator reads. Carried per statement. */
 const WIKIPEDIA_LICENSE = 'CC BY-SA 4.0';
@@ -114,20 +115,20 @@ surprise — something genuinely unexpected`;
  * editorial gate would catch most of those, but not asking for them is
  * cheaper and produces better first choices.
  */
-function buildPrompt(name: string, passage: SourcePassage): string {
-  const numberedSource = sourceSentences(passage.text)
+function buildPrompt(name: string, passage: SourcePassage, sourceLines: readonly string[]): string {
+  const numberedSource = sourceLines
     .map((sentence, index) => `[${index + 1}] ${sentence}`)
     .join('\n');
   return `You write concise trivia for a geography game played while exploring ${cityId}.
 
 SUBJECT: ${name}
-SOURCE (the "${passage.section || 'introduction'}" section of its English Wikipedia article):
+SOURCE (the "${passage.section || 'introduction'}" section of its Wikipedia article):
 ${numberedSource}
 
 Write up to 4 standalone facts about ${name} that a player would enjoy learning.
 
 Rules:
-- Paraphrase and compress the source into clear natural English; do not merely copy a source sentence.
+- Paraphrase and compress the source into clear natural English.
 - Each fact must be ONE complete English sentence of 45 to 180 characters.
 - For each fact, cite the IDs of the shortest consecutive source sentences that fully support it.
 - Put sentence IDs only in evidenceIds; never add [1], [2], or any citation marker to text.
@@ -147,7 +148,7 @@ Return JSON: {"facts":[{"kind":"...","text":"concise paraphrase","evidenceIds":[
 
 interface GeneratedFact { kind: string; text: string; evidenceIds: number[] }
 interface Verification { supported: boolean; reason: string }
-interface VerificationCandidate { id: number; fact: string; evidence: string }
+interface VerificationCandidate { id: number; fact: string; evidence: string; sourceEvidence: string }
 
 /** One cached model response, keyed by prompt content so a prompt change
  *  regenerates and a rerun costs nothing. */
@@ -253,13 +254,17 @@ Return exactly one result per candidate as JSON only:
   // Retry only those items alone; omission must never turn into approval.
   for (const candidate of candidates) {
     if (!verdicts.has(candidate.id)) {
-      verdicts.set(candidate.id, await verifyOneEntailment(name, candidate.fact, candidate.evidence));
+      verdicts.set(candidate.id, await verifyOneEntailment(
+        name, candidate.fact, candidate.evidence,
+      ));
     }
   }
   return verdicts;
 }
 
-async function verifyOneEntailment(name: string, fact: string, evidence: string): Promise<Verification> {
+async function verifyOneEntailment(
+  name: string, fact: string, evidence: string,
+): Promise<Verification> {
   const prompt = `Act as a strict fact checker. Decide whether EVIDENCE alone entails every claim in FACT.
 
 SUBJECT: ${name}
@@ -269,8 +274,7 @@ FACT: """${fact}"""
 Reject changed relationships, swapped subjects or objects, added causes, dates, quantities,
 superlatives, implications, or outside knowledge. Paraphrasing and compression are allowed.
 Return JSON only: {"supported":true|false,"reason":"brief explanation"}`;
-  // This key deliberately matches v3's isolated verifier cache.
-  const key = await hashKey(`${PROMPT_VERSION}\0verify\0${model}\0${prompt}`);
+  const key = await hashKey(`${VERIFIER_VERSION}\0single\0${model}\0${prompt}`);
   const cacheFile = path.join(cacheDirectory, `${key}.json`);
   try {
     const cached = JSON.parse(await readFile(cacheFile, 'utf8')) as Verification & { key?: string };
@@ -330,9 +334,6 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
   if (!reference) return null;
   const article = await readCachedArticle(reference);
   if (!article) return null;
-  // Translating is generation, not extraction. Dutch articles remain cached
-  // for a future proven translation gate but cannot enter this safe slice.
-  if (article.lang !== 'en') return null;
   const passages = selectSourcePassages(splitArticleSections(article.text))
     .slice(0, MAX_PASSAGES_PER_FEATURE);
   if (!passages.length) return null;
@@ -340,12 +341,17 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
   const accepted: Fact[] = [];
   for (const passage of passages) {
     if (accepted.length >= MAX_FACTS_PER_FEATURE) break;
-    const generated = await generate(buildPrompt(feature.name, passage));
+    const originalLines = sourceSentences(passage.text);
+    const sourceLines = article.lang === 'nl'
+      ? (await translateDutchPassage(passage.text, [feature.name, article.title])).english
+      : originalLines;
+    const generated = await generate(buildPrompt(feature.name, passage, sourceLines));
     const candidates: Array<VerificationCandidate & { kind: FactKind }> = [];
     for (const [index, entry] of generated.entries()) {
       const kind = normaliseKind(entry.kind);
-      const evidence = evidenceFor(entry.evidenceIds, passage.text);
-      if (!evidence || !isSourceQuotation(evidence, passage.text)) {
+      const evidence = evidenceFromSentences(entry.evidenceIds, sourceLines);
+      const sourceEvidence = evidenceFromSentences(entry.evidenceIds, originalLines);
+      if (!evidence || !sourceEvidence || !isSourceQuotation(sourceEvidence, passage.text)) {
         recordRejection('not-a-source-quotation', entry.text);
         continue;
       }
@@ -353,11 +359,11 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
         name: feature.name,
         kind,
         aliases: [article.title],
-        source: passage.text,
+        source: evidence,
         accepted: accepted.map((fact) => fact.text),
       });
       if (!verdict.ok) { recordRejection(verdict.reason, entry.text); continue; }
-      candidates.push({ id: index + 1, fact: verdict.text, evidence, kind });
+      candidates.push({ id: index + 1, fact: verdict.text, evidence, sourceEvidence, kind });
     }
     const verifications = await verifyEntailments(feature.name, candidates);
     for (const candidate of candidates) {
@@ -371,10 +377,13 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
         text: candidate.fact,
         kind: candidate.kind,
         section: passage.section,
-        sourceQuote: candidate.evidence,
+        sourceQuote: candidate.sourceEvidence,
+        sourceQuoteEnglish: candidate.evidence,
         sourceUrl: article.url,
         license: WIKIPEDIA_LICENSE,
         retrievedAt: article.retrievedAt,
+        sourceLanguage: article.lang === 'nl' ? 'nl' : 'en',
+        translator: article.lang === 'nl' ? 'trn:0.2.0:quality-high' : undefined,
         model: `ollama:${model}`,
         verifierModel: `ollama:${model}`,
         verification: 'grounded',
@@ -476,7 +485,10 @@ const review = [
     '',
     ...feature.facts.flatMap((fact) => [
       `- **${fact.kind}** *(${fact.section || 'lede'})* — ${fact.text}`,
-      `  - Evidence: “${fact.sourceQuote}”`,
+      `  - Evidence (${fact.sourceLanguage}): “${fact.sourceQuote}”`,
+      ...(fact.sourceLanguage === 'nl'
+        ? [`  - Local trn translation: “${fact.sourceQuoteEnglish}”`]
+        : []),
     ]),
     '',
   ]),

@@ -29,9 +29,11 @@ by human review. The corrected v6 smoke run produced 18 grounded summaries for
 all 3 sampled Amsterdam features, rejected three dangling references, and had
 the verifier catch one unsupported embellishment. Citation-marker noise and
 possessive apostrophes are cleaned deterministically. Regenerate all four
-Randstad staging catalogs, measure yield and verifier
-rejections, then review a stratified sample before publishing. Dutch-to-English
-facts still need a separately tested translation/entailment path.
+Randstad staging catalogs, measure yield and verifier rejections, then review a
+stratified sample before publishing. Dutch articles now go through local
+`trn --quality high` sentence translation before English summarization and
+entailment; they retain aligned Dutch and English evidence and must be measured
+separately in that review.
 
 The original Map Recall app now consumes the same reviewed `facts.json` by
 exact extract feature id and shows the selected quotation after an answer;
