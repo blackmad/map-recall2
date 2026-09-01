@@ -102,6 +102,7 @@ export class GameLandmarkRuntime {
     this._landmarkNotice = null;
     this._landmarkNoticeState = openNotice();
     this._landmarkNoticeAlpha = 0;
+    this._landmarkCardBounds = null;
   }
 
   /**
@@ -378,6 +379,10 @@ export class GameLandmarkRuntime {
 
   _renderLandmarkNotice(): void {
     const lm = this._landmarkNotice;
+    // The card is its own hit target, so the bounds only exist for as long as
+    // it is actually on screen. A stale rectangle would keep swallowing clicks
+    // over open map after the card faded out.
+    this._landmarkCardBounds = null;
     if (!lm) return;
     const ctx = this.ctx;
     const alpha = this._landmarkNoticeAlpha;
@@ -413,6 +418,66 @@ export class GameLandmarkRuntime {
     ctx.globalAlpha = Math.max(0, alpha);
     this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
     ctx.restore();
+    this._landmarkCardBounds = { x: cardX, y: cardY, w: card.width, h: card.height };
+  }
+
+  /**
+   * The expanded card. `measureLandmarkCard` cuts the body to two or four
+   * lines so the driving corridor stays visible; this is where the rest of the
+   * extract lives, in HTML, where it can scroll and carry a real link.
+   *
+   * Opening it goes through the utility-panel machinery, so it pauses the
+   * controls and closes on Esc like the help and settings panels do.
+   */
+  _expandLandmarkNotice(): boolean {
+    const lm = this._landmarkNotice;
+    const panel = this._landmarkPanel;
+    if (!lm || !panel) return false;
+
+    const cards = window.CanalRecallCards;
+    const body = lm.longDetail || lm.detail
+      || cards.placeOnlyDetail(lm.type, this.currentNeighborhood);
+
+    const badges = panel.querySelector('#landmark-panel-badges') as HTMLElement;
+    badges.textContent = '';
+    const pushBadge = (label: string, kind: string) => {
+      const chip = document.createElement('span');
+      chip.dataset.kind = kind;
+      chip.textContent = label;
+      badges.appendChild(chip);
+    };
+    if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, ' '), 'category');
+    if (lm.extractLang && lm.extractLang !== 'en') {
+      // Say plainly that this is not the English article rather than leaving
+      // the reader to work out why the text is Dutch.
+      pushBadge(`${lm.extractLang.toUpperCase()} — NOT TRANSLATED YET`, 'lang');
+    }
+
+    (panel.querySelector('#landmark-panel-title') as HTMLElement).textContent = lm.name || '';
+    (panel.querySelector('#landmark-panel-body') as HTMLElement).textContent = body;
+
+    const image = panel.querySelector('#landmark-panel-image') as HTMLImageElement;
+    if (lm.imageUrl) {
+      image.src = lm.imageUrl;
+      image.alt = lm.name || '';
+      image.hidden = false;
+    } else {
+      image.removeAttribute('src');
+      image.hidden = true;
+    }
+
+    const link = panel.querySelector('#landmark-panel-link') as HTMLAnchorElement;
+    if (lm.wikipediaUrl) {
+      link.href = lm.wikipediaUrl;
+      link.hidden = false;
+    } else {
+      link.removeAttribute('href');
+      link.hidden = true;
+    }
+
+    (panel.querySelector('#landmark-panel-scroll') as HTMLElement).scrollTop = 0;
+    this._toggleUtilityPanel(panel);
+    return true;
   }
 
   _renderNeighborhoodNotice(): void {

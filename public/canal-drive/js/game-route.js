@@ -114,6 +114,7 @@ class GameRouteRuntime {
   _setupUtilityPanels() {
     this._helpPanel = document.getElementById('help-panel');
     this._settingsPanel = document.getElementById('settings-panel');
+    this._landmarkPanel = document.getElementById('landmark-panel');
     this._liveLine = document.getElementById('live-line');
     this._liveArrow = document.getElementById('live-arrow');
     this._liveMinimap = document.getElementById('live-minimap');
@@ -273,7 +274,7 @@ class GameRouteRuntime {
     const opening = panel.style.display !== 'flex';
     this._closeUtilityPanels();
     if (opening) {
-      this._syncLiveSettings();
+      if (panel === this._settingsPanel) this._syncLiveSettings();
       panel.style.display = 'flex';
       this._utilityOpen = true;
     }
@@ -282,6 +283,7 @@ class GameRouteRuntime {
   _closeUtilityPanels() {
     this._helpPanel.style.display = 'none';
     this._settingsPanel.style.display = 'none';
+    this._landmarkPanel.style.display = 'none';
     this._utilityOpen = false;
   }
 
@@ -701,8 +703,11 @@ class GameRouteRuntime {
       if (this._loadingAborted) return;
 
       this.track = new RoadNetwork(segments, start, finish, tiles);
+      this._routeMastery = this.recall ? this.recall.routeMastery('amsterdam') : {};
+      this.track.setRouteMastery(this._routeMastery);
       if (this.travelMode === 'boat') this.track.waterTest = (x, y) => this.vectorMap.isWater(x, y, this.osmLoader);
-      this.routePath = this.track.findRoute(start, finish);
+      this._routeLearningPlan = this.track.planRoute(start, finish);
+      this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : [];
       if (!this.routePath || this.routePath.length < 2) {
         // Widening the destination pool to the whole landmark extract means a
         // pair can straddle a gap in the navigable graph — most often the IJ,
@@ -716,6 +721,8 @@ class GameRouteRuntime {
           finishLL = { lat: retarget.poi.lat, lng: retarget.poi.lng };
           this.track.finishPoint = finish;
           this.routePath = retarget.path;
+          this._routeLearningPlan = this.track.planRoute(start, finish);
+          if (this._routeLearningPlan) this.routePath = this._routeLearningPlan.path;
           console.info(`Destination retargeted to ${retarget.poi.name}: the original was unreachable from the start`);
         } else if (this.routePattern === 'surprise' && this._routeRerolls < MAX_ROUTE_REROLLS) {
           // Nothing in the pool is reachable, so the *origin* is stranded in a

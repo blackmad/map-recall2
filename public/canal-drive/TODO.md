@@ -20,17 +20,6 @@ belongs here before anything below it.*
 
 ## P1 — The learning model itself
 
-**5. Learning-aware route generation.**
-Feed spaced-repetition mastery into Dijkstra as a small bounded cost on
-well-known streets, so equally sensible routes prefer unfamiliar connections.
-Cap the allowed detour; never make mastered roads effectively impassable. Show
-the route's expected novelty, award a clearly explained multiplier for newly
-encountered streets, and let calm mode take the routing benefit without the
-arcade chatter. `roadGraph.ts` already accepts an injectable novelty cost, so
-the routing half is waiting for a caller.
-*The stated product principle — bounded, explainable learning mechanics — with
-the hard part already built.*
-
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by
 mastery and review state, with a fog-of-war layer over the rest. Derive it from
@@ -71,15 +60,57 @@ are in [`BUILDING_ENRICHMENT.md`](BUILDING_ENRICHMENT.md).
 *This is the measured-material foundation for item 10; finish it before baking
 appearance into detailed meshes.*
 
-**8b. Finish typing the game subsystems.**
-`game-landmarks`, `game-recall` and `game-presentation` are done, and
-`game-route`'s geographic rules are extracted to `routeSelection.ts`. What is
-left is one file: `game-route.js`, ~350 lines that are almost entirely settings
-form plumbing.
+**7b. Rescue the 134 ledes refused for renaming the place.**
+The English pass refuses a translation that drops the feature's own name from
+its body, because a card that calls "Oude Lutherse Kerk" the "Old Lutheran
+Church" teaches the wrong name. That is the right default and it fired 134
+times, all on names built from Dutch common nouns — kerk, kapel, synagoge,
+museum, monument. Those features now show a thin Wikidata description.
 
-That remainder is deliberately parked behind item 8c, because it is the part a
-UI framework would delete rather than type — translating it verbatim first
-would be work thrown away.
+The fix is not to weaken the guard. It is to protect the name before
+translating: substitute a placeholder for each occurrence of the feature name
+in the source, translate, then put the name back. `trn` has no prompt to ask
+this of, so it has to be done around it. Measured baseline: 314 translated /
+130 descriptions / 4 Dutch, from `npm run enrich:english -- --translator=trn`.
+
+**8b. Finish typing the game subsystems.**
+Measured 2026-08-31: ~21,000 lines of TypeScript against ~6,100 lines of
+hand-written JavaScript in `public/canal-drive/js/` (the other ~1,300 JS lines
+there are esbuild output from `src/recall-store`, and every `*.bundle.js` is
+generated from TypeScript).
+
+The rule that has been working, and should decide what moves: **decisions in
+TypeScript, painting and adapters in JavaScript.** `noticeCards.ts` +
+`renderer.js`, `bottomHud.ts` + `hud.js`, `streetOverlayStyle.ts` +
+`vector-map.js` are all this shape and all have tests on the half that decides.
+
+`road-network.js` and `osm-loader.js` are both adapters now. Surface bands,
+junction-aware road-name selection, same-name feature stitching, graph
+construction and Dijkstra live in typed modules; so do the projection,
+Douglas-Peucker simplification, network recentring, snapping, start/finish
+selection and the slippy-tile grid (`osm/roadProjection.ts`, 6,542 real
+Amsterdam paths asserted against the algorithm it replaced).
+
+What is left in `osm-loader.js` is Overpass mirrors, failover and `Image`
+loading — network I/O that can only be tested by going to the network.
+
+**No un-migrated decision logic remains under this item.** What is left is
+item 8c's DOM work.
+
+Settled 2026-09-01: `track.js` was dead — `this.track` is only ever a
+`RoadNetwork`, and the `Track` class was constructed nowhere — so it is gone.
+`car.js` is **not** dead despite the same suspicion: `PlayerCar extends Car`,
+so it is live base physics and stays. The `Track` interface in
+`collaborators.ts` is structural and still describes `RoadNetwork`.
+
+Explicitly staying JavaScript: `game.js` (the orchestrator, and the integration
+hotspot CLAUDE.md reserves), `renderer.js`, `hud.js`, `vector-map.js`,
+`map-picker.js`, the `*-source.js` 3D bundle entrypoints, and the small helpers
+(`input`, `camera`, `utils`, `sound`, `particles`, `loading-screen`).
+
+`game-route.js` (774) is parked behind item 8c: it is the part a UI framework
+would delete rather than type, so translating it verbatim would be work thrown
+away.
 *The rule to keep: what the player is told is typed and tested; what paints it
 is not. Do not translate a method verbatim if the decision inside it belongs in
 the data half.*
@@ -234,14 +265,38 @@ pass checks. Two regressions to fix before any of it reaches `main`:
   The two files are a matched pair keyed on id — rebuild them together.
   `test:bridge-crossings` now asserts that alignment.
 
-**11c. Give Utrecht real ledes.**
-39 blurbs across the extract are still Dutch and 103 more are Wikidata
-one-liners rather than encyclopedia ledes. Both upgrade in place — every one
-keeps `wikipediaExtractOriginal` and its language — but the pass needs a
-translator that is not currently available here: no `GEMINI_API_KEY` is
-configured, and Ollama is installed but not serving with `translategemma:12b`
-not pulled. Needs a decision about a multi-gigabyte model download or an API
-key, so it is deliberately not done unasked.
+**11c. Give Amsterdam and Utrecht real ledes. Blocked on a macOS upgrade.**
+Amsterdam has 448 distinct Dutch ledes left; Utrecht has 39 Dutch and 103
+Wikidata one-liners. Both upgrade in place — every feature keeps
+`wikipediaExtractOriginal` and its language — and the pass is now built and
+tested against the translator this project has chosen: `translate`
+(scriptingosx/translate-cli) or `trn` (hotchpotch/trn), auto-detected in that
+order. Both are local, free and keyless.
+
+The only thing standing in the way is that both need **macOS 26**, plus the
+Dutch language pack installed through System Settings. Once the machine is
+upgraded, the whole job is:
+
+    brew tap hotchpotch/trn https://github.com/hotchpotch/trn
+    brew install hotchpotch/trn/trn     # or install translate-cli
+    npm run enrich:english -- --dry-run --limit=20   # read the output first
+    npm run enrich:english
+    npm run enrich:utrecht-english -- --translator=trn
+
+Read the dry run before the real one. Translations are written into
+`scripts/english-translations.json` keyed by a hash of the exact source text,
+so they are reviewed in a diff like any other text and a refreshed extract
+invalidates a stale entry rather than silently keeping it.
+
+Expect some refusals: the pass rejects a translation that lost the feature's
+own name, because "The Blue Bridge is a bascule bridge over the canal" teaches
+the wrong name for the Blauwbrug. Those come back as
+`refused — translated the name itself` and are worth reading; the feature keeps
+its Dutch lede rather than getting a wrong English one.
+
+Also still open, and cheaper: 281 entries in the translation cache no longer
+match any extract, because the Dutch ledes they were made from have since been
+rewritten upstream. The pass counts them; nothing prunes them.
 
 **12. Clear all my data.**
 A deliberately guarded reset for test accounts and players who want a fresh
@@ -259,6 +314,20 @@ adapters, with fixtures for recall feedback, neighborhood entry (photo and
 fallback), landmark trivia, stacked notices and every finish-card combination;
 pair them with screenshot regressions. Follows naturally from item 3 — the same
 extraction serves both.
+
+**14b. Playwright's phone projects cannot reach fixed overlays.**
+Chromium's iPhone emulation gives `/canal-drive/` a 613×1044 layout viewport
+inside a 390×664 device viewport, even though the page's `<meta name=viewport>`
+is a correct `width=device-width, initial-scale=1.0`. Input coordinates are
+therefore unreachable below y≈664, so a tap cannot hit the lower half of any
+fixed overlay, and canvas hit targets do not map to tappable points at all.
+`tests/e2e/landmark-panel.spec.ts` works around it by resizing the desktop
+project to 390×664, which is a true narrow layout.
+
+Find the cause before writing more mobile specs against overlays — it is either
+the launch config's local-Chrome `executablePath` diverging from the bundled
+build, or something on the page forcing a layout width. Until then, treat the
+`iphone` project as unable to click fixed overlays.
 
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in

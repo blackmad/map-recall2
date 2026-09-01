@@ -6,6 +6,195 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The OSM loader is an adapter: its arithmetic is typed and tested.**
+  Projection about a chosen centre, Douglas-Peucker, recentring the network on
+  the world origin, snapping a lat/lng onto the nearest carriageway,
+  start/finish selection, haversine and the slippy-tile grid all moved to
+  `src/canalRecall/osm/roadProjection.ts`. `osm-loader.js` went from 404 lines
+  to 268, and what remains is Overpass mirrors, failover and `Image` loading —
+  I/O that can only be tested by going to the network.
+
+  Two things worth keeping. The world is **centred twice**: ways are projected
+  about the geographic centre, then the whole network is translated so its
+  bounding box lands on `WORLD_ORIGIN` (1300, 1000). Anything projected later —
+  a POI, a home address, a basemap tile — must be given that same offset, which
+  is why `buildRoadSegments` returns it rather than hiding it. And
+  `WORLD_ORIGIN` is not decorative: `findStartFinish` measures "near the city
+  centre" as distance from it, so moving it moves every route's start.
+
+  The one deliberate behaviour change is the simplifier: recursive with a
+  `depth > 50` cap became an explicit stack. That cap returned the unsimplified
+  remainder without saying so. Measured, it never fires — the two agree exactly
+  on all 6,542 paths in the shipped extract, longest 1,665 points, and
+  `check-road-projection.ts` re-runs that comparison against the old algorithm
+  on every run. A latent hazard removed rather than a bug fixed.
+
+  The typed tile helpers are fractional so they round-trip; a tile *index* is
+  the floor of that, which is the caller's need and stays in the adapter.
+
+  Verified with the driving harness, the reachability audit, the car
+  regressions and the full Canal Recall e2e spec.
+
+- **The game speaks English: 448 Dutch ledes down to 4.**
+  `trn` (hotchpotch/trn, Apple Intelligence via `--quality high`) is installed
+  and the pass finally ran end to end. 314 features carry a translated lede,
+  130 fall back to a Wikidata description, 4 are still Dutch.
+
+  The pass had never actually worked under Node. `trn` 0.2.0 decides whether it
+  has stdin at startup, before a pipe opened by `child_process` has anything in
+  it, so all 448 came back `exited 1` — and the code threw the reason away, so
+  the message that says exactly this was never seen. It takes the text as an
+  argument instead; `translate` keeps stdin, which it reads normally. `execFile`
+  passes an argv array and never involves a shell, so an argument is safe
+  against quoting, but not against option parsing, and `trn` has no `--`
+  separator: a lede starting with a dash gets one leading space, which stops
+  the parse and which the translator ignores.
+
+  **134 translations were refused for renaming the place**, which is the guard
+  working rather than failing: "Oude Lutherse Kerk" came back as "Old Lutheran
+  Church", and a card whose body renames the thing the player is being asked to
+  learn teaches the wrong name. Those features took the Wikidata description
+  instead — true, English, and thin. The refusals cluster on names built from
+  Dutch common nouns (kerk, kapel, synagoge, museum), which is the obvious
+  place to improve next; see TODO 7.
+
+  `check-translation.ts` used to assert the backlog was still there, because it
+  measured the guard's coverage across the untranslated pile. It now asserts the
+  opposite — that no more than 25 non-English ledes ship — so a refetch that
+  reintroduces Dutch fails loudly, and it measures the guard over the cache it
+  actually judged.
+
+- **The pre-OSM track is deleted, and the suspicion about the car is retired.**
+  `track.js` had been superseded by `road-network.js` since open-road mode
+  landed, but the file kept loading on every page view. `this.track` is only
+  ever assigned a `RoadNetwork`; the `Track` class was constructed nowhere and
+  its name referenced nowhere; it defined nothing else. 186 lines and one
+  `<script>` tag gone.
+
+  `car.js` was on the same list of suspects and is **not** dead: `PlayerCar
+  extends Car`, so it is the live base physics. Recorded because "looks
+  superseded" was wrong once here and the next reader deserves the answer
+  rather than the suspicion. The `Track` interface in `collaborators.ts` stays
+  — it is structural, and what it now describes is `RoadNetwork`.
+
+  Verified with the driving harness and the full Canal Recall e2e spec on
+  desktop and iPhone.
+
+- **Routes now prefer useful unfamiliar streets, within a hard detour cap.**
+  The spaced-repetition store collapses its place-local street/canal reviews
+  into a conservative per-city, per-name mastery prior: one success is still
+  mostly new, three current successes are mastered, overdue knowledge is
+  weakened rather than forgotten, and landmarks or another city never affect
+  the route. Dijkstra adds at most 18% to a fully mastered edge. The ordinary
+  shortest route is always computed too, and the learning route is discarded
+  if its actual geometric length is more than 12% longer, so known streets can
+  never become walls or send the player on an unbounded lesson.
+
+  The destination HUD shows the expected percentage of physical, named-road
+  distance below 50% mastery. A correct answer on one of those new streets gets
+  a bounded 1.15× bonus whose feedback says exactly why; calm mode receives the
+  same routing benefit and novelty readout without multiplier chatter. The
+  policy is typed and tested independently of the browser, including the
+  accept/reject boundary, city filtering, overdue reviews, and calm scoring.
+
+- **Road-network decisions live in typed, tested modules.**
+  `road-network.js` had accumulated three versions of routing: its original
+  inline graph and Dijkstra, an optional typed implementation, and fallback
+  branches that could silently put production on the untested one. It is now
+  only the browser/canvas adapter. `roadSurface.ts` owns the spatial index,
+  asphalt/curb bands, heading-aware road choice at crossings and connected
+  same-name runs; `roadGraph.ts` owns topology, junction restoration and
+  shortest paths. Both bundles are required at startup, so a missing build is
+  loud rather than a behavioural downgrade.
+
+  The heading rule matters pedagogically: just past a crossing, the nearest
+  centreline is often the side street, even though the player drove straight
+  through. Among geometrically plausible roads the aligned one now wins, with
+  distance as the tie-breaker. Real-extract coverage pins split Grimburgwal and
+  the most fragmented Amsterdam waterway, while the reachability audit still
+  measures the junction-stitch improvement over vertex sharing alone.
+
+- **The English pass prefers a local CLI translator, and refuses a translation
+  that renames the place.**
+  448 distinct Dutch ledes are still waiting, and the routes that could do them
+  were an Ollama server or a Gemini key. `translate`
+  (scriptingosx/translate-cli) and `trn` (hotchpotch/trn) are both thin
+  wrappers over Apple's on-device Translation framework: local, free, no key,
+  no running server, nothing leaving the machine. They are now auto-detected
+  first, in that order, with `--translator=` to force one and `--ollama` kept
+  working as it was so the Utrecht script is unaffected. Both need macOS 26 and
+  the Dutch language pack, so the pass falls through to Ollama, then Gemini,
+  then Wikidata descriptions, and says which it is doing.
+
+  Neither CLI takes a prompt. Everything the LLM routes asked for in words —
+  "keep proper nouns exactly as they are", "under 360 characters, ending at a
+  sentence boundary" — had to become code, which is an improvement: it is now
+  enforced on every route rather than requested on two, and it is testable
+  without a translator installed, which matters because CI cannot run one.
+
+  `trimToSentence` cuts at the last real sentence boundary that fits, with an
+  abbreviation list so a lede is not cut at "genoemd naar St." and a word-cut
+  fallback with an ellipsis when no boundary is usable. `droppedProperNames`
+  refuses a translation that lost the feature's own name: a fluent "The Blue
+  Bridge is a bascule bridge over the canal" teaches the wrong name for the
+  Blauwbrug, which is worse than leaving the Dutch in place. It matches whole
+  words, not substrings — "Kerk" appears inside "Oudekerksplein", so a
+  substring test would score a translated Kerk → Church as preserved.
+
+  The guard only fires where the feature's name appears in its own lede, which
+  is 414 of the 448 (92%), pinned as a regression. The other 34 are spelling
+  mismatches between the extract's name and the lede's — "Amsterdamschebrug"
+  written "Amsterdamsebrug", "Hoge Sluis" written "Hogesluis" — where nothing
+  is refused. That is the intended bias: a false refusal costs one translation,
+  a false accept ships a wrong name.
+
+- **The landmark card expands into a readable panel.**
+  `measureLandmarkCard` cuts the body to two lines, or four with a photo, so
+  the driving corridor stays visible — which is the right call for a card that
+  appears while you are moving, and the wrong one when you actually want to
+  read it. Clicking the card did nothing useful before: the click fell through
+  the card to `_inspectBuildingAt`, which usually found nothing under it and so
+  read as the card being dismissed.
+
+  The card now records where it was drawn (`_landmarkCardBounds`, recomputed
+  every frame and nulled the moment the card is not on screen, so a stale
+  rectangle never swallows clicks over open map), the canvas `pointerup`
+  handler claims a click inside it, and `_expandLandmarkNotice` fills a new
+  `#landmark-panel` with the whole extract. It is a `.utility-panel` like help
+  and settings, which is what makes it pause the controls and close on Esc for
+  free, and it gives the Wikipedia link a real anchor rather than the `W` key
+  that only a keyboard player could find.
+
+  Two smaller decisions worth keeping. The card grows a green `+ MORE` badge,
+  but only when the body was actually cut — a canvas card has no other way to
+  say it can be clicked, and advertising a panel that holds nothing new would
+  be a lie; `measureLandmarkCard` now returns `truncated` so that stays a
+  measured fact rather than a guess. And the panel spells out `NL — NOT
+  TRANSLATED YET` where the card shows a bare `NL` chip, because in the
+  expanded view there is room to say why the text is Dutch.
+
+  On testing: Chromium's iPhone emulation gives this page a 613×1044 layout
+  viewport inside a 390×664 device viewport, so Playwright's input cannot reach
+  a fixed overlay's lower half and canvas coordinates do not map to tappable
+  points. Narrow-viewport coverage is done by resizing the desktop project
+  instead, which is a true 390-wide layout. Worth knowing before writing
+  another mobile spec against an overlay.
+
+- **One canal is drawn as one line again, and the café directory is thinned.**
+  A named waterway is stored as several OSM ways — Grimburgwal is one feature
+  carrying three, laid exactly end to end — and each was handed to MapLibre as
+  its own round-capped LineString, so the highlight showed seams and read as
+  three canals. The old comment was right that concatenating fragments draws a
+  giant diagonal chord across the map, so `stitchOverlayPaths` joins only
+  fragments whose endpoints actually meet, within a metre of slack for the
+  rounding two ways store the same node with; fragments that genuinely do not
+  touch still come back as separate lines. Separately, the extract carries 1944
+  named food venues and handed all of them to the map, so 78 competed for the
+  Grimburgwal viewport and MapLibre drew whichever dozen won its collision
+  pass — an arbitrary set the rider cannot orient by. `thinOrientationPois`
+  keeps the best-scoring cue per 260 m of ground, which leaves eight on that
+  screen. Albert Heijn is exempt: it is wayfinding, not decoration.
+
 - **The two games are two sites now, not two entry points on one.** Canal
   Recall and Map Quest were one GitHub Pages deploy under `/map-recall2/`, which
   caps at a single custom domain and cannot tell hosts apart. They are now two

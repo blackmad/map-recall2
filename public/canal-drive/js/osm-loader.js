@@ -1,6 +1,10 @@
 // ============================================================
 // OSM LOADER — Overpass API client + data processing
 // ============================================================
+// Projection, simplification, recentring, snapping and the tile grid all live
+// in src/canalRecall/osm/roadProjection.ts, bundled as road-projection.bundle.js.
+const PROJECT = window.CanalRecallRoadProjection;
+
 class OSMLoader {
 
   // Overpass API endpoints to try (multiple mirrors for reliability)
@@ -213,192 +217,52 @@ class OSMLoader {
     });
   }
 
-  // Slippy map tile math helpers
-  _lngToTileX(lng, z) {
-    return Math.floor((lng + 180) / 360 * Math.pow(2, z));
-  }
+  // Slippy map tile math. The typed helpers are fractional so they round-trip;
+  // a tile *index* is the floor of that, which is this caller's need, not the
+  // projection's.
+  _lngToTileX(lng, z) { return Math.floor(PROJECT.lngToTileX(lng, z)); }
+  _latToTileY(lat, z) { return Math.floor(PROJECT.latToTileY(lat, z)); }
+  _tileXToLng(x, z) { return PROJECT.tileXToLng(x, z); }
+  _tileYToLat(y, z) { return PROJECT.tileYToLat(y, z); }
 
-  _latToTileY(lat, z) {
-    const latRad = lat * Math.PI / 180;
-    return Math.floor((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2 * Math.pow(2, z));
-  }
-
-  _tileXToLng(x, z) {
-    return x / Math.pow(2, z) * 360 - 180;
-  }
-
-  _tileYToLat(y, z) {
-    const n = Math.PI - 2 * Math.PI * y / Math.pow(2, z);
-    return 180 / Math.PI * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
-  }
-
-  // Convert ways to game-coordinate road segments
+  // Convert ways to game-coordinate road segments. The arithmetic — projection,
+  // simplification, widths, recentring — lives in `roadProjection.ts`; what
+  // stays here is remembering the transform, because every later projection has
+  // to be given the same one.
   buildRoadSegments(ways, centerLat, centerLng) {
     this._lastCenterLat = centerLat;
     this._lastCenterLng = centerLng;
-    const metersPerDegreeLat = 111320;
-    const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
-
-    const segments = [];
-    for (const way of ways) {
-      const points = [];
-      for (const node of way.nodes) {
-        const x = (node.lon - centerLng) * metersPerDegreeLng * PIXELS_PER_METER;
-        const y = -(node.lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER;
-        points.push({ x, y });
-      }
-      if (points.length < 2) continue;
-
-      // Simplify
-      const simplified = this.simplify(points, SIMPLIFICATION_TOLERANCE * metersPerDegreeLat * PIXELS_PER_METER);
-      if (simplified.length < 2) continue;
-
-      // Approximate half-width. The curated quiz extract does not currently
-      // retain OSM width tags, so canals are deliberately forgiving.
-      const width = ROAD_WIDTHS[way.highway] || DEFAULT_ROAD_WIDTH;
-
-      segments.push({
-        points: simplified,
-        width: width,
-        type: way.highway,
-        oneway: way.tags.oneway === 'yes',
-        name: way.tags.name || ''
-      });
-    }
-
-    // Center the whole network around a reasonable world origin
-    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-    for (const seg of segments) {
-      for (const p of seg.points) {
-        if (p.x < minX) minX = p.x;
-        if (p.y < minY) minY = p.y;
-        if (p.x > maxX) maxX = p.x;
-        if (p.y > maxY) maxY = p.y;
-      }
-    }
-    const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
-    const offsetX = 1300 - cx, offsetY = 1000 - cy;
-    for (const seg of segments) {
-      for (const p of seg.points) {
-        p.x += offsetX;
-        p.y += offsetY;
-      }
-    }
-
-    // Store centering offsets so tiles can use the same transform
-    this._lastOffsetX = offsetX;
-    this._lastOffsetY = offsetY;
-
-    return segments;
+    const built = PROJECT.buildRoadSegments(ways, { lat: centerLat, lon: centerLng }, {
+      simplificationToleranceDegrees: SIMPLIFICATION_TOLERANCE,
+      roadWidths: ROAD_WIDTHS,
+      defaultRoadWidth: DEFAULT_ROAD_WIDTH,
+    });
+    this._lastOffsetX = built.offset.x;
+    this._lastOffsetY = built.offset.y;
+    return built.segments;
   }
 
   // Convert a lat/lng to the nearest road point in game coordinates
   latLngToGamePoint(lat, lng, centerLat, centerLng, segments, maxSnapDist = MAX_SNAP_DIST) {
-    const metersPerDegreeLat = 111320;
-    const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
-    // Convert to raw game coords (before centering offset)
-    const rawX = (lng - centerLng) * metersPerDegreeLng * PIXELS_PER_METER + this._lastOffsetX;
-    const rawY = -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this._lastOffsetY;
-
-    // Find nearest road point to snap to
-    let bestDist = Infinity, bestPt = null;
-    for (const seg of segments) {
-      for (let i = 0; i < seg.points.length - 1; i++) {
-        const a = seg.points[i], b = seg.points[i + 1];
-        const pt = this._closestOnSeg(rawX, rawY, a, b);
-        if (pt.dist < bestDist) {
-          bestDist = pt.dist;
-          bestPt = { x: pt.x, y: pt.y };
-        }
-      }
-    }
-    // Reject if snapped point is too far from the clicked location. Callers
-    // pass `false` to mean "no limit" — comparing against it directly coerces
-    // to 0 and rejects every point that is not exactly on a segment.
-    if (!bestPt) return null;
-    if (Number.isFinite(maxSnapDist) && bestDist > maxSnapDist) return null;
-    return { ...bestPt, snapDistance: bestDist };
+    return PROJECT.snapToRoad(
+      { lat, lon: lng }, { lat: centerLat, lon: centerLng },
+      { x: this._lastOffsetX, y: this._lastOffsetY }, segments, maxSnapDist);
   }
 
   _closestOnSeg(px, py, a, b) {
-    const abx = b.x - a.x, aby = b.y - a.y;
-    const apx = px - a.x, apy = py - a.y;
-    const lenSq = abx * abx + aby * aby;
-    if (lenSq === 0) return { x: a.x, y: a.y, dist: Math.sqrt((px-a.x)**2 + (py-a.y)**2) };
-    const t = Math.max(0, Math.min(1, (apx * abx + apy * aby) / lenSq));
-    const cx = a.x + abx * t, cy = a.y + aby * t;
-    return { x: cx, y: cy, dist: Math.sqrt((px-cx)**2 + (py-cy)**2) };
+    const closest = PROJECT.closestPointOnSegment({ x: px, y: py }, a, b);
+    return { x: closest.x, y: closest.y, dist: closest.distance };
   }
 
-  // Find start and finish as the two most distant road endpoints
   findStartFinish(segments) {
-    // Start near the selected city centre (which maps to the fixed world
-    // centre below), then use a distant endpoint only as an orientation aid.
-    const endpoints = [];
-    for (const seg of segments) {
-      endpoints.push(seg.points[0]);
-      endpoints.push(seg.points[seg.points.length - 1]);
-    }
-
-    let startPt = null;
-    let startDistance = Infinity;
-    for (const point of endpoints) {
-      const d = (point.x - 1300) ** 2 + (point.y - 1000) ** 2;
-      if (d < startDistance) { startDistance = d; startPt = point; }
-    }
-
-    let bestDist = 0, finishPt = null;
-    // Sample to keep it fast — check up to 500 random pairs if too many endpoints
-    const pts = endpoints.length > 200
-      ? endpoints.filter((_, i) => i % Math.ceil(endpoints.length / 200) === 0)
-      : endpoints;
-
-    for (const point of pts) {
-      const d = (point.x - startPt.x) ** 2 + (point.y - startPt.y) ** 2;
-      if (d > bestDist) { bestDist = d; finishPt = point; }
-    }
-
-    return { start: startPt, finish: finishPt, distance: Math.sqrt(bestDist) };
+    return PROJECT.findStartFinish(segments) || { start: null, finish: null, distance: 0 };
   }
 
-  // Douglas-Peucker line simplification (operates in pixel space)
-  simplify(points, tolerance, depth = 0) {
-    if (points.length <= 2 || depth > 50) return points;
-
-    let maxDist = 0, maxIdx = 0;
-    const first = points[0], last = points[points.length - 1];
-
-    for (let i = 1; i < points.length - 1; i++) {
-      const d = this._perpendicularDist(points[i], first, last);
-      if (d > maxDist) { maxDist = d; maxIdx = i; }
-    }
-
-    if (maxDist > tolerance) {
-      const left = this.simplify(points.slice(0, maxIdx + 1), tolerance, depth + 1);
-      const right = this.simplify(points.slice(maxIdx), tolerance, depth + 1);
-      return left.slice(0, -1).concat(right);
-    }
-    return [first, last];
-  }
-
-  _perpendicularDist(pt, lineStart, lineEnd) {
-    const dx = lineEnd.x - lineStart.x;
-    const dy = lineEnd.y - lineStart.y;
-    const lenSq = dx * dx + dy * dy;
-    if (lenSq === 0) return dist(pt.x, pt.y, lineStart.x, lineStart.y);
-    const t = clamp(((pt.x - lineStart.x) * dx + (pt.y - lineStart.y) * dy) / lenSq, 0, 1);
-    const projX = lineStart.x + t * dx;
-    const projY = lineStart.y + t * dy;
-    return dist(pt.x, pt.y, projX, projY);
+  simplify(points, tolerance) {
+    return PROJECT.simplifyPath(points, tolerance);
   }
 
   haversine(lat1, lon1, lat2, lon2) {
-    const R = 6371000;
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-    const a = Math.sin(dLat / 2) ** 2 +
-      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-      Math.sin(dLon / 2) ** 2;
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return PROJECT.haversineMetres({ lat: lat1, lon: lon1 }, { lat: lat2, lon: lon2 });
   }
 }

@@ -12,7 +12,7 @@
  *                   `scripts/english-translations.json`, keyed by the hash of
  *                   the exact source text so a refreshed extract invalidates a
  *                   stale entry instead of silently keeping it.
- *   translate       the Dutch lede, when an API key is configured. This is the
+ *   translate       the Dutch lede, when a translator is available. This is the
  *                   other route that keeps the actual content: the year it was
  *                   built, who it is named after, what it replaced. Anything it
  *                   produces is written back into the cache, so a translation
@@ -22,20 +22,48 @@
  *                   true, English, and thin. It is the floor, not the goal.
  *
  * The original text is never thrown away: it moves to `wikipediaExtractSource`
- * / `wikipediaExtractOriginal` so a later run with a key can improve on a
- * description without re-fetching anything.
+ * / `wikipediaExtractOriginal` so a later run with a better translator can
+ * improve on a description without re-fetching anything.
  *
- * Configure a key with GEMINI_API_KEY (or GOOGLE_API_KEY) in .env.local, and
- * optionally TRANSLATE_MODEL. Without one the pass still runs on the cache and
- * reports how many blurbs are waiting for a translation it could not do.
+ * Translators, in the order they are auto-detected:
+ *
+ *   translate       scriptingosx/translate-cli — Apple's on-device Translation
+ *                   framework. Local, free, no key, nothing leaves the machine.
+ *   trn             hotchpotch/trn — the same framework, with `--quality high`
+ *                   routing through Apple Intelligence.
+ *   ollama          a local model, default `translategemma:12b`.
+ *   gemini          GEMINI_API_KEY / GOOGLE_API_KEY, model TRANSLATE_MODEL.
+ *
+ * The two CLI tools come first because they are local, need no key and no
+ * running server, and are the ones this project has settled on. Both need
+ * macOS 26 and the Dutch language pack installed via System Settings, so the
+ * pass falls through to the others wherever they are not on PATH.
+ *
+ * Neither CLI takes a prompt — no "keep proper nouns", no length limit — so
+ * the rules the LLM routes asked for in words are enforced afterwards by
+ * `scripts/lib/translation.ts`, and a translation that renamed the very place
+ * the player is learning is refused rather than written.
  *
  * Usage: npm run enrich:english [-- --dry-run] [-- --limit=50]
+ *                               [-- --translator=translate|trn|ollama|gemini|none]
  */
+import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { promisify } from 'node:util';
 import { config as loadEnv } from 'dotenv';
 import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
+import {
+  CLI_TRANSLATORS,
+  type CliTranslator,
+  cleanTranslatorOutput,
+  droppedProperNames,
+  translatorInvocation,
+  trimToSentence,
+} from './lib/translation.ts';
+
+const run = promisify(execFile);
 
 for (const file of ['.env.local', '.env']) loadEnv({ path: file, override: false, quiet: true });
 
@@ -59,11 +87,45 @@ const dryRun = process.argv.includes('--dry-run');
 const limit = Number(process.argv.find(value => value.startsWith('--limit='))?.split('=')[1] || Infinity);
 const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '';
 const model = process.env.TRANSLATE_MODEL || 'gemini-2.0-flash';
-const useOllama = process.argv.includes('--ollama') || Boolean(process.env.OLLAMA_MODEL);
 const ollamaModel = argument('model') || process.env.OLLAMA_MODEL || 'translategemma:12b';
 const ollamaUrl = process.env.OLLAMA_URL || 'http://127.0.0.1:11434/api/generate';
-const hasTranslator = useOllama || Boolean(apiKey);
 const headers = { 'User-Agent': 'MapRecallExtractTranslator/1.0 (https://github.com/blackmad/map-recall2)' };
+
+/** Which of the four routes will do the work this run. */
+type Translator = CliTranslator | 'ollama' | 'gemini' | 'none';
+
+const onPath = async (binary: string) =>
+  run('/usr/bin/which', [binary]).then(() => true, () => false);
+
+/**
+ * The requested translator, or the best one actually available.
+ *
+ * `--ollama` is kept as an alias for `--translator=ollama` so the Utrecht
+ * script and anything else that already passes it keeps its exact behaviour.
+ * An explicitly requested translator is never silently downgraded: being told
+ * the CLI is missing is more useful than quietly getting a Wikidata one-liner.
+ */
+async function chooseTranslator(): Promise<Translator> {
+  const requested = argument('translator') as Translator | undefined;
+  if (process.argv.includes('--ollama')) return 'ollama';
+  if (requested) {
+    if ((CLI_TRANSLATORS as readonly string[]).includes(requested) && !await onPath(requested)) {
+      process.stdout.write(`--translator=${requested} was asked for but it is not on PATH
+`);
+      return 'none';
+    }
+    return requested;
+  }
+  for (const tool of CLI_TRANSLATORS) if (await onPath(tool)) return tool;
+  if (process.env.OLLAMA_MODEL) return 'ollama';
+  if (apiKey) return 'gemini';
+  return 'none';
+}
+
+const translator = await chooseTranslator();
+const useOllama = translator === 'ollama';
+const useCli = (CLI_TRANSLATORS as readonly string[]).includes(translator);
+const hasTranslator = translator !== 'none';
 
 const chunks = <T>(items: T[], size: number) =>
   Array.from({ length: Math.ceil(items.length / size) }, (_, index) => items.slice(index * size, (index + 1) * size));
@@ -137,7 +199,58 @@ process.stdout.write(`cache: ${translations.size} of ${groups.length} already tr
 // ---- Route 2: translate the rest with local Ollama or Gemini ----
 const needsTranslation = groups.filter(group => !translations.has(groupKey(group)));
 let freshlyTranslated = 0;
-if (useOllama && needsTranslation.length) {
+let renamed = 0;
+if (useCli && needsTranslation.length) {
+  const tool = translator as CliTranslator;
+  process.stdout.write(`local translation: ${needsTranslation.length} blurbs with ${tool}\n`);
+  for (const group of needsTranslation) {
+    const feature = group[0];
+    const original = feature.wikipediaExtractOriginal || feature.wikipediaExtract!;
+    const sourceLanguage = feature.wikipediaExtractOriginalLang || feature.wikipediaExtractLang || 'nl';
+    try {
+      // Which channel the text travels on is the tool's choice, not ours —
+      // see `translatorInvocation`. Whatever it says goes on stderr is kept,
+      // because "exited 1" on its own cost an afternoon once already.
+      const invocation = translatorInvocation(tool, sourceLanguage, original);
+      const child = execFile(tool, invocation.args);
+      if (invocation.stdin === null) child.stdin!.end();
+      else child.stdin!.end(invocation.stdin);
+      const chunksOut: string[] = [];
+      const chunksErr: string[] = [];
+      child.stdout!.on('data', (piece: Buffer) => chunksOut.push(piece.toString('utf8')));
+      child.stderr!.on('data', (piece: Buffer) => chunksErr.push(piece.toString('utf8')));
+      const code = await new Promise<number>((resolve, reject) => {
+        child.on('error', reject);
+        child.on('close', resolve);
+      });
+      if (code !== 0) {
+        const why = chunksErr.join('').trim().split('\n')[0];
+        throw new Error(`exited ${code}${why ? `: ${why}` : ''}`);
+      }
+
+      const english = trimToSentence(cleanTranslatorOutput(chunksOut.join('')));
+      if (!english) throw new Error('empty output');
+
+      // A fluent translation that renamed the place teaches the wrong name,
+      // which is worse than leaving the Dutch lede alone. Refuse it and say so.
+      const dropped = droppedProperNames(original, english, [feature.name]);
+      if (dropped.length) {
+        renamed++;
+        process.stdout.write(`  ${feature.name}: refused — translated the name itself (${dropped.join(', ')})\n`);
+        continue;
+      }
+
+      translations.set(groupKey(group), english);
+      cache.push({ name: feature.name, lang: sourceLanguage, hash: sourceHash(original), en: english });
+      freshlyTranslated++;
+      process.stdout.write(`  ${feature.name}\n`);
+    } catch (error) {
+      process.stdout.write(`  ${feature.name}: ${tool} failed (${(error as Error).message})\n`);
+    }
+  }
+  process.stdout.write(`newly translated with ${tool}: ${freshlyTranslated} of ${needsTranslation.length}`
+    + `${renamed ? `, ${renamed} refused for renaming the place` : ''}\n`);
+} else if (useOllama && needsTranslation.length) {
   process.stdout.write(`local translation: ${needsTranslation.length} blurbs with ${ollamaModel}\n`);
   for (const group of needsTranslation) {
     const original = group[0].wikipediaExtractOriginal || group[0].wikipediaExtract!;
@@ -153,8 +266,14 @@ if (useOllama && needsTranslation.length) {
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}: ${await response.text()}`);
       const payload = await response.json() as { response?: string };
-      const english = (payload.response || '').trim().slice(0, 360);
+      const english = trimToSentence(cleanTranslatorOutput(payload.response || ''));
       if (!english) throw new Error('empty response');
+      const dropped = droppedProperNames(original, english, [group[0].name]);
+      if (dropped.length) {
+        renamed++;
+        process.stdout.write(`  ${group[0].name}: refused — translated the name itself (${dropped.join(', ')})\n`);
+        continue;
+      }
       translations.set(groupKey(group), english);
       cache.push({ name: group[0].name, lang: sourceLanguage, hash: sourceHash(original), en: english });
       freshlyTranslated++;
@@ -163,8 +282,9 @@ if (useOllama && needsTranslation.length) {
       process.stdout.write(`  ${group[0].name}: local translation failed (${(error as Error).message})\n`);
     }
   }
-  process.stdout.write(`newly translated locally: ${freshlyTranslated} of ${needsTranslation.length}\n`);
-} else if (apiKey && needsTranslation.length) {
+  process.stdout.write(`newly translated locally: ${freshlyTranslated} of ${needsTranslation.length}`
+    + `${renamed ? `, ${renamed} refused for renaming the place` : ''}\n`);
+} else if (translator === 'gemini' && apiKey && needsTranslation.length) {
   const { GoogleGenAI } = await import('@google/genai');
   const client = new GoogleGenAI({ apiKey });
   for (const batch of chunks(needsTranslation, 20)) {
@@ -186,8 +306,14 @@ if (useOllama && needsTranslation.length) {
       for (const entry of JSON.parse(body) as { id: number; text: string }[]) {
         const group = batch[entry.id];
         if (!group || !entry.text) continue;
-        const english = entry.text.trim().slice(0, 360);
+        const english = trimToSentence(cleanTranslatorOutput(entry.text));
         const original = group[0].wikipediaExtractOriginal || group[0].wikipediaExtract!;
+        const dropped = droppedProperNames(original, english, [group[0].name]);
+        if (dropped.length) {
+          renamed++;
+          process.stdout.write(`  ${group[0].name}: refused — translated the name itself (${dropped.join(', ')})\n`);
+          continue;
+        }
         translations.set(groupKey(group), english);
         cache.push({
           name: group[0].name,
@@ -202,9 +328,12 @@ if (useOllama && needsTranslation.length) {
     }
     await wait(200);
   }
-  process.stdout.write(`newly translated: ${freshlyTranslated} of ${needsTranslation.length}\n`);
+  process.stdout.write(`newly translated: ${freshlyTranslated} of ${needsTranslation.length}`
+    + `${renamed ? `, ${renamed} refused for renaming the place` : ''}\n`);
 } else if (needsTranslation.length) {
-  process.stdout.write(`no translator configured — ${needsTranslation.length} uncached blurbs fall back to Wikidata descriptions; use --ollama after installing ${ollamaModel}\n`);
+  process.stdout.write(`no translator available — ${needsTranslation.length} uncached blurbs fall back to Wikidata descriptions.\n`
+    + `  Install ${CLI_TRANSLATORS.join(' or ')} (macOS 26, plus the Dutch language pack in System Settings),\n`
+    + `  or run ollama with ${ollamaModel} and pass --ollama, or set GEMINI_API_KEY.\n`);
 }
 
 // ---- Route 3: Wikidata's English description ----
@@ -258,6 +387,9 @@ process.stdout.write(`${dryRun ? 'DRY RUN — nothing written' : `wrote ${files.
 process.stdout.write(`  translated ledes: ${translated}\n`);
 process.stdout.write(`  Wikidata descriptions: ${described}\n`);
 process.stdout.write(`  still not English: ${stillForeign}\n`);
+if (renamed) {
+  process.stdout.write(`  refused for renaming the place: ${renamed}\n`);
+}
 if (!hasTranslator && described > 0) {
-  process.stdout.write(`  ${described} of these are one-line descriptions; use --ollama and re-run to translate the real ledes\n`);
+  process.stdout.write(`  ${described} of these are one-line descriptions; install ${CLI_TRANSLATORS.join(' or ')} and re-run to translate the real ledes\n`);
 }
