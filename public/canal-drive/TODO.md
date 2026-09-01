@@ -46,6 +46,11 @@ samples. Use `fact-rejections.md` during the Randstad review to separate useful
 standalone-card rewrites from genuine entailment failures; never weaken a gate
 based only on aggregate rejection counts.
 
+Naming facts now preserve both useful forms: the native map name remains the
+identity and an evidence-backed English meaning may appear beside it as a
+gloss. Review these especially closely; an English gloss must never replace
+the name the player needs to recognise on signs and maps.
+
 Street and waterway records with linked Wikipedia pages now enter the same
 catalog. Canal Recall indexes their exact extract IDs, keeps street/water
 homonyms separate, and shows reviewed trivia after both driving and boating

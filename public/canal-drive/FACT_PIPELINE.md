@@ -131,6 +131,10 @@ article URL, section, retrieval date, licence, writer and verifier model.
 The older first reviewed catalog contains 19 quotations for 9 Amsterdam
 features; regenerated summaries remain staged until they receive fresh review.
 
+Names remain native map identities. When Wikipedia explicitly explains a
+name, the writer may add its English meaning only as a gloss alongside the
+native form—`Magere Brug (“Skinny Bridge”)`—never as a replacement heading.
+
 ### Longer-term catalog
 
 1. **Seed:** load the city boundary plus OSM landmarks, monuments, bridges, squares, museums, historic objects, and buildings with knowledge identifiers.

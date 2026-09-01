@@ -92,10 +92,10 @@ if (provider === 'openrouter' && !process.env.OPENROUTER_API_KEY) {
  * sentences written under the old rules — and it is written into the output,
  * so a review sheet can be traced to the rules that produced it.
  */
-const GENERATOR_VERSION = 'facts-v8-trn-then-grounded-summary';
+const GENERATOR_VERSION = 'facts-v9-native-name-with-english-gloss';
 /** Prompt/cache version stays stable when only deterministic publication gates
  * change, so a stricter rerun does not spend another local model inference. */
-const PROMPT_VERSION = 'facts-v8-english-grounded-summary';
+const PROMPT_VERSION = 'facts-v9-native-name-with-english-gloss';
 const VERIFIER_VERSION = 'english-entailment-batch-v2';
 const OPENROUTER_ADAPTER_VERSION = 'openrouter-json-nonthinking-v2';
 const runVersion = `${GENERATOR_VERSION}:${provider}:${model}`;
@@ -146,6 +146,8 @@ Write up to 4 standalone facts about ${name} that a player would enjoy learning.
 
 Rules:
 - Paraphrase and compress the source into clear natural English.
+- Preserve the native proper name ${name}. If its meaning is interesting and explicitly supported,
+  give both forms together, for example: ${name} ("English meaning") ... Never replace the native name.
 - Each fact must be ONE complete English sentence of 45 to 180 characters.
 - For each fact, cite the IDs of the shortest consecutive source sentences that fully support it.
 - Put sentence IDs only in evidenceIds; never add [1], [2], or any citation marker to text.
