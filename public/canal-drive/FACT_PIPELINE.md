@@ -66,7 +66,8 @@ The current pipeline deliberately starts from features already resolved by the
 city extract instead of attempting a second entity-resolution system:
 
 1. `npm run facts:articles` caches complete English or Dutch Wikipedia articles
-   for landmarks, bridges, squares and parks. The cache is local and ignored.
+   for landmarks, bridges, squares, parks, streets and waterways. The cache is
+   local and ignored.
 2. `npm run facts:build` selects useful article sections and asks local Ollama
    to write short English summaries. Dutch source sentences are first
    translated one-to-one by local `trn --quality high`, with place names held
