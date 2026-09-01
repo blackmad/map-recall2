@@ -15,7 +15,7 @@ const summary = JSON.parse(await readFile(path.join(cacheRoot, 'summary.json'), 
 await writeFile(path.join(outputRoot, 'manifest.json'), JSON.stringify({
   schemaVersion: 1,
   publishedAt: new Date().toISOString(),
-  status: 'machine-annotations-accepted-for-now',
+  status: 'research-machine-proposals-not-production-evidence',
   priorityRegion: 'inside-a10',
   artifacts: files.map(([, destination]) => destination),
   sourceCache: '.cache/building-enrichment (not committed; regenerate with npm scripts)',
