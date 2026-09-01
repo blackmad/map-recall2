@@ -10,6 +10,7 @@ const manifest = JSON.parse(await readFile(
 const generators = await Promise.all([
   readFile('scripts/build-panorama-facade-review.ts', 'utf8'),
   readFile('scripts/reclassify-facade-grammar.ts', 'utf8'),
+  readFile('scripts/classify-facade-view-visibility.ts', 'utf8'),
 ]);
 
 assert.ok(published.labels.length > 0, 'the check covers the published research proposals');

@@ -59,6 +59,7 @@
     "build:facade-grammar-review": "node --import tsx scripts/build-facade-grammar-review.ts",
     "build:wide-facade-crops": "node --import tsx scripts/build-wide-facade-crops.ts",
     "build:facade-view-review": "node --import tsx scripts/build-facade-view-review.ts",
+    "classify:facade-views": "node --import tsx scripts/classify-facade-view-visibility.ts",
     "test:facade-view-selection": "tsx scripts/check-facade-view-selection.ts",
     "test:facade-provenance": "tsx scripts/check-facade-provenance.ts",
     "test:facade-evidence": "tsx scripts/check-facade-evidence.ts",
