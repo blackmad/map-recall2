@@ -47,6 +47,7 @@
     "reclassify:facades": "node --import tsx scripts/reclassify-facade-grammar.ts",
     "build:facade-grammar-review": "node --import tsx scripts/build-facade-grammar-review.ts",
     "build:wide-facade-crops": "node --import tsx scripts/build-wide-facade-crops.ts",
+    "build:facade-view-review": "node --import tsx scripts/build-facade-view-review.ts",
     "test:facade-view-selection": "tsx scripts/check-facade-view-selection.ts",
     "build:canal-neighborhoods": "esbuild src/canalRecall/neighborhoodState.ts --bundle --format=iife --global-name=CanalRecallNeighborhood --outfile=public/canal-drive/js/neighborhood-state.bundle.js --minify",
     "test:neighborhoods": "tsx scripts/check-neighborhood-transitions.ts",

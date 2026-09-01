@@ -124,3 +124,9 @@ but the foliage-obscured target remained unusable in all three. The next gate is
 therefore an explicit human/model `usable-target-visible` choice across the
 candidate group. Do not feed all alternatives to grammar extraction as if each
 were independent evidence.
+
+Run `npm run build:facade-view-review` after crop generation. Its local review
+sheet groups alternatives by BAG ID and exports one selected panorama (or an
+explicit `unusable` result) with evidence quality, occlusion reason and notes.
+That exported selection is the only panorama input the grammar classifier
+should consume for a building.
