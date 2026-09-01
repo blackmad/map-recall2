@@ -3,9 +3,11 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 const root = path.resolve('.cache/building-enrichment/panorama'), output = path.join(root, 'grammar-review'); await mkdir(output, { recursive: true });
 const manifest = JSON.parse(await readFile(path.join(root, 'manifest.json'), 'utf8')) as { items: Array<Record<string, unknown>> };
-const grammar = JSON.parse(await readFile(path.join(root, 'facade-grammar-machine-labels.json'), 'utf8')) as { labels: Array<Record<string, unknown>> };
+const grammarFile = path.resolve(process.argv.find(value => value.startsWith('--input='))?.slice(8)
+  || path.join(root, 'facade-grammar-machine-proposals-v2.json'));
+const grammar = JSON.parse(await readFile(grammarFile, 'utf8')) as { labels: Array<Record<string, unknown>> };
 const itemById = new Map(manifest.items.map(x => [String(x.buildingId), x]));
-const items = grammar.labels.map(label => ({ ...itemById.get(String(label.buildingId)), grammar: label })).sort((a, b) => Number((a.grammar as Record<string, unknown>).confidence) - Number((b.grammar as Record<string, unknown>).confidence));
+const items = grammar.labels.map(label => ({ ...itemById.get(String(label.buildingId)), ...label, grammar: label })).sort((a, b) => Number((a.grammar as Record<string, unknown>).confidence) - Number((b.grammar as Record<string, unknown>).confidence));
 const enums = {
   windowPattern: ['narrow-vertical','regular-grid','wide-horizontal','curtain-wall','irregular','mostly-blank','unknown'], windowToWall: ['low','medium','high','unknown'], windowFrameColour: ['white','cream','grey','black','brown','green','blue','red','metal','mixed','unknown'], windowRecess: ['flush','shallow','deep','unknown'], groundFloorType: ['same-as-upper','residential-base','shopfront','commercial-glazing','arcade','garage-loading','mostly-blank','unknown'], entranceType: ['single-residential','shared-residential','multiple-doors','commercial','garage-loading','mixed','none-visible','unknown'], balconyType: ['none','projecting','recessed','gallery','mixed','not-visible','unknown'], facadeComposition: ['single-field','base-body','ground-floor-distinct','vertical-zones','mixed','unknown'], roofline: ['flat-parapet','stepped-gable','bell-gable','neck-gable','spout-gable','triangular-gable','mansard-eave','other','not-visible','unknown'], ornament: ['minimal','moderate','elaborate','unknown'],
 };

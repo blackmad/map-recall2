@@ -135,3 +135,10 @@ sheet groups alternatives by BAG ID and exports one selected panorama (or an
 explicit `unusable` result) with evidence quality, occlusion reason and notes.
 That exported selection is the only panorama input the grammar classifier
 should consume for a building.
+
+`npm run reclassify:facades` now refuses to start without
+`--view-labels=<facade-view-human-labels.json>`. The join verifies BAG/building
+identity, selected panorama and selected image against the crop manifest,
+records unusable and mismatched labels as rejection reasons, and emits a fresh
+v2 machine-proposal file. The grammar review sheet consumes that selected crop,
+not the earlier nearest-panorama image.
