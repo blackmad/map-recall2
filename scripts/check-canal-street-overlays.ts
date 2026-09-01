@@ -58,6 +58,23 @@ const slack = stitchOverlayPaths([
 ]);
 assert.equal(slack.length, 1, 'a metre of rounding slack still joins');
 
+// The routing extract stores Singel pieces both on a grouped feature and as
+// their original features. A duplicate must not consume the shared endpoint,
+// make the chain double back, and strand the real continuation as a separate
+// round-capped line. Reversed duplicates are the same geometry too.
+const duplicatedExtractPaths = stitchOverlayPaths([
+  [{ x: 0, y: 0 }, { x: 10, y: 0 }],
+  [{ x: 0, y: 0 }, { x: 10, y: 0 }],
+  [{ x: 20, y: 0 }, { x: 10, y: 0 }],
+  [{ x: 20, y: 0 }, { x: 30, y: 0 }],
+  [{ x: 30, y: 0 }, { x: 20, y: 0 }],
+]);
+assert.equal(duplicatedExtractPaths.length, 1,
+  'duplicate extract paths do not split one visible street into capped pieces');
+assert.deepEqual(duplicatedExtractPaths[0], [
+  { x: 0, y: 0 }, { x: 10, y: 0 }, { x: 20, y: 0 }, { x: 30, y: 0 },
+]);
+
 assert.deepEqual(stitchOverlayPaths([]), []);
 assert.equal(stitchOverlayPaths([[{ x: 0, y: 0 }]]).length, 0, 'a single point is not a line');
 
