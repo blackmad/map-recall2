@@ -11,8 +11,10 @@ import {
   countSentences,
   judgeFact,
   namesSubject,
+  normaliseDigitGroups,
   similarity,
   tidyFact,
+  trimFillerClause,
   ungroundedNumbers,
 } from '../src/canalRecall/facts/factQuality';
 import {
@@ -23,7 +25,15 @@ import {
   pruneHistory,
   recordShown,
 } from '../src/canalRecall/facts/factRotation';
-import type { Fact, FactKind } from '../src/canalRecall/facts/factTypes';
+import { selectReviewedFacts, summariseRejections } from '../src/canalRecall/facts/factReview';
+import {
+  buildFactIndex,
+  commitShownFact,
+  factCardText,
+  loadRotationState,
+  ROTATION_STORAGE_KEY,
+} from '../src/canalRecall/facts/factStore';
+import type { Fact, FactKind, FeatureFacts } from '../src/canalRecall/facts/factTypes';
 import {
   selectSourcePassages,
   sectionInterest,
@@ -56,6 +66,14 @@ check('a year the source never states is rejected', () => {
   // indistinguishable from a real one on a card.
   const verdict = accept('The Magere Brug was rebuilt in stone in 1871 after a fire destroyed the wooden span.');
   assert.deepEqual(verdict, { ok: false, reason: 'ungrounded-number' });
+});
+
+check('a digit-group separator is removed, an ordinary space is not', () => {
+  // Stripping separators everywhere is the obvious implementation and breaks
+  // every word boundary the century check depends on.
+  assert.equal(normaliseDigitGroups('lit by 1,200 lights in 1934'), 'lit by 1200 lights in 1934');
+  assert.equal(normaliseDigitGroups('built in 1691. It is'), 'built in 1691. It is');
+  assert.equal(normaliseDigitGroups('a span of 1 200 metres'), 'a span of 1200 metres');
 });
 
 check('a year the source does state survives grouping and punctuation', () => {
@@ -91,6 +109,18 @@ check('the lede in different words is rejected', () => {
       { name: 'Vondelpark', source: 'Vondelpark is a public urban park in Amsterdam.' }),
     { ok: false, reason: 'restates-the-lede' },
   );
+  assert.deepEqual(
+    judgeFact('Artis Bibliotheek is a nineteenth-century library situated at Plantage Middenlaan 45.',
+      { name: 'Artis Bibliotheek', source: 'Artis Bibliotheek is a nineteenth-century library at Plantage Middenlaan 45.' }),
+    { ok: false, reason: 'restates-the-lede' },
+  );
+  // The same restatement in its other common form. The card is already pinned
+  // to a point on the map the player is looking at.
+  assert.deepEqual(
+    judgeFact('The Basiliek van Sint Nicolaas is located in the Old Centre, close to the main station.',
+      { name: 'Basiliek van Sint Nicolaas', source: 'The basilica is in the Old Centre near the main station.' }),
+    { ok: false, reason: 'restates-the-lede' },
+  );
 });
 
 check('a fact that adds something to the category sentence survives', () => {
@@ -101,10 +131,30 @@ check('a fact that adds something to the category sentence survives', () => {
   assert.equal(verdict.ok, true, JSON.stringify(verdict));
 });
 
+check('a section about what has not happened yet is never mined', () => {
+  // An article's == Toekomst == describes a bridge planned for 2032; the
+  // extract it would land in ships for years.
+  assert.equal(sectionInterest('Toekomst'), 0);
+  assert.equal(sectionInterest('Future'), 0);
+  assert.equal(sectionInterest('Plannen'), 0);
+});
+
+check('a spelling the article uses still names the subject', () => {
+  // OSM calls it Amsterdamschebrug; nl.wikipedia calls it Amsterdamsebrug.
+  assert.equal(namesSubject('The Amsterdamsebrug carries the Zuiderzeeweg.', 'Amsterdamschebrug'), false);
+  assert.equal(
+    namesSubject('The Amsterdamsebrug carries the Zuiderzeeweg.', 'Amsterdamschebrug', ['Amsterdamsebrug']),
+    true,
+    'the title of the article the fact was drawn from counts as naming it',
+  );
+});
+
 check('a fact that goes stale is rejected', () => {
   assert.deepEqual(accept('The Magere Brug is currently undergoing a full restoration by the city.'),
     { ok: false, reason: 'temporally-fragile' });
   assert.deepEqual(accept('The Magere Brug will reopen to cyclists once the works beside it finish.'),
+    { ok: false, reason: 'temporally-fragile' });
+  assert.deepEqual(accept('The Magere Brug is planned to be replaced by a wider crossing for cyclists.'),
     { ok: false, reason: 'temporally-fragile' });
 });
 
@@ -134,6 +184,32 @@ check('an abbreviation is not a sentence end', () => {
   assert.equal(countSentences('Built in 1934. Rebuilt later.'), 2);
 });
 
+check('only a naming fact has to contain the name', () => {
+  // The card shows the name as its heading, so a fact that does not repeat it
+  // still reads. Requiring it everywhere threw away 18% of a good run.
+  const concert = 'The inaugural concert on 11 April 1888 featured 120 musicians and 500 singers.';
+  const source = 'The inaugural concert on 11 April 1888 featured 120 musicians and 500 singers.';
+  assert.equal(judgeFact(concert, { name: 'Concertgebouw', source, kind: 'history' }).ok, true);
+  // A naming fact without the name has translated the name away, which is the
+  // failure item 11c's translator guard exists for.
+  assert.deepEqual(
+    judgeFact('The Lean Bridge takes its name from how narrow the original crossing was.',
+      { name: 'Magere Brug', source: 'De Magere Brug dankt zijn naam aan de smalle oorspronkelijke overspanning.', kind: 'naming' }),
+    { ok: false, reason: 'does-not-name-subject' },
+  );
+});
+
+check('digits inside the feature\u2019s own name are grounded', () => {
+  // "OT301 was originally the Dutch film academy" was rejected for the 301 in
+  // the building's name.
+  assert.deepEqual(ungroundedNumbers('OT301 was originally the Dutch film academy.', 'a former film academy'), ['301']);
+  assert.deepEqual(ungroundedNumbers('OT301 was originally the Dutch film academy.', 'a former film academy', 'OT301'), []);
+});
+
+check('an initial is not a sentence end', () => {
+  assert.equal(countSentences('Andrew S. Tanenbaum created MINIX at the Vrije Universiteit.'), 1);
+});
+
 check('a fact about something else is rejected', () => {
   assert.equal(namesSubject('The Amstel freezes over in hard winters.', 'Magere Brug'), false);
   assert.equal(namesSubject('The Amstelsluizen were built to flush the canals.', 'Amstel'), true,
@@ -148,6 +224,33 @@ check('the same fact rephrased is rejected as a duplicate', () => {
   assert.ok(similarity(first, second) >= 0.7, `similarity was ${similarity(first, second)}`);
   assert.deepEqual(judgeFact(second, { name: 'Magere Brug', source: MAGERE_SOURCE, accepted: [first] }),
     { ok: false, reason: 'duplicate' });
+});
+
+check('an evaluative clause is trimmed, an informative one is kept', () => {
+  // The tell that a sentence was generated, and it eats the card's character
+  // budget. The clause is always trailing, so removing it leaves a sentence.
+  assert.equal(
+    trimFillerClause('The roof rises 130 feet above the Damrak, a striking architectural feature.'),
+    'The roof rises 130 feet above the Damrak.');
+  assert.equal(
+    trimFillerClause('Amsterdam celebrated its 400th birthday in 2013, marking a significant milestone.'),
+    'Amsterdam celebrated its 400th birthday in 2013.');
+  assert.equal(
+    trimFillerClause('Kanye West ordered a €10,000 all-white carpet, which he never used.'),
+    'Kanye West ordered a €10,000 all-white carpet, which he never used.',
+    'a clause that says something is not filler');
+  assert.equal(
+    trimFillerClause('The bridge was built in 1883, replacing a 17th-century crossing.'),
+    'The bridge was built in 1883, replacing a 17th-century crossing.');
+});
+
+check('a padded fact is judged on what is left after the padding', () => {
+  const verdict = judgeFact(
+    'The Magere Brug is opened by hand by its keeper each evening, a beloved local sight.',
+    { name: 'Magere Brug', source: MAGERE_SOURCE });
+  assert.equal(verdict.ok, true, JSON.stringify(verdict));
+  assert.equal((verdict as { ok: true; text: string }).text,
+    'The Magere Brug is opened by hand by its keeper each evening.');
 });
 
 check('quotes the model wrapped around a sentence are trimmed, not rejected', () => {
@@ -308,6 +411,90 @@ check('saved rotation state cannot grow without bound', () => {
   assert.equal(Object.keys(pruned.history).length, 100);
   assert.ok(pruned.history['f:4999'] !== undefined, 'the most recent entries are the ones kept');
   assert.equal(pruned.history['f:0'], undefined);
+});
+
+// ---- Runtime seam ----
+
+check('a published fact replaces the lede and carries its kind to the card', () => {
+  const index = buildFactIndex({
+    cityId: 'amsterdam', generatorVersion: 'facts-v2', generatedAt: '2026-09-01',
+    features: [{ id: 'bridge:a', name: 'Alpha', collection: 'bridges', facts: FACTS }],
+  });
+  const chosen = factCardText('bridge:a', index, emptyRotationState());
+  assert.ok(chosen);
+  assert.equal(chosen.text.detail, chosen.choice.fact.text);
+  assert.equal(chosen.text.factKind.length > 0, true);
+  assert.equal(chosen.text.factTexts[0], chosen.text.detail);
+});
+
+check('a feature absent from the reviewed catalog keeps its lede', () => {
+  assert.equal(factCardText('bridge:unreviewed', new Map(), emptyRotationState()), null);
+});
+
+check('showing a fact persists its rotation and corrupt storage fails open', () => {
+  const values = new Map<string, string>();
+  const storage = {
+    getItem: (key: string) => values.get(key) || null,
+    setItem: (key: string, value: string) => { values.set(key, value); },
+  };
+  const choice = chooseFact('bridge:a', FACTS, emptyRotationState());
+  assert.ok(choice);
+  const committed = commitShownFact(storage, emptyRotationState(), choice);
+  assert.deepEqual(loadRotationState(storage), committed);
+  values.set(ROTATION_STORAGE_KEY, '{broken');
+  assert.deepEqual(loadRotationState(storage), emptyRotationState());
+});
+
+// ---- What may ship ----
+
+const STAGED: FeatureFacts[] = [
+  { id: 'a', name: 'Alpha', collection: 'bridges', facts: [FACTS[0], FACTS[1]] },
+  { id: 'b', name: 'Beta', collection: 'bridges', facts: [FACTS[2]] },
+];
+
+check('an unreviewed feature does not ship', () => {
+  // Silence is not approval. An unreviewed batch publishing itself is how a
+  // learning game starts teaching things nobody checked.
+  const result = selectReviewedFacts(STAGED, { features: { a: { verdict: 'approved' } } }, 'facts-v2');
+  assert.deepEqual(result.published.map((feature) => feature.id), ['a']);
+  assert.deepEqual(result.rejected, [{ id: 'b', reason: 'unreviewed' }]);
+});
+
+check('a review written about an older generator ships nothing', () => {
+  const result = selectReviewedFacts(STAGED, {
+    generatorVersion: 'facts-v1',
+    features: { a: { verdict: 'approved' }, b: { verdict: 'approved' } },
+  }, 'facts-v2');
+  assert.deepEqual(result.published, []);
+  assert.equal(summariseRejections(result.rejected).get('review-predates-this-generator'), 2);
+});
+
+check('a struck sentence is dropped from an approved feature', () => {
+  const result = selectReviewedFacts(STAGED, {
+    generatorVersion: 'facts-v2',
+    features: { a: { verdict: 'approved', drop: [FACTS[1].text] }, b: { verdict: 'approved' } },
+  }, 'facts-v2');
+  assert.deepEqual(result.published.find((feature) => feature.id === 'a')!.facts.map((f) => f.text),
+    [FACTS[0].text]);
+  assert.equal(result.rejected[0].reason, 'struck-by-reviewer');
+});
+
+check('approving a feature and striking all of it publishes nothing for it', () => {
+  // Publishing an empty entry would leave the runtime a feature that opens a
+  // card with nothing in it.
+  const result = selectReviewedFacts(STAGED, {
+    generatorVersion: 'facts-v2',
+    features: { a: { verdict: 'approved', drop: [FACTS[0].text, FACTS[1].text] } },
+  }, 'facts-v2');
+  assert.equal(result.published.length, 0);
+  assert.ok(result.rejected.some((entry) => entry.id === 'a' && entry.reason === 'human-rejected'));
+});
+
+check('a malformed verdict is not approval', () => {
+  const result = selectReviewedFacts(STAGED,
+    { generatorVersion: 'facts-v2', features: { a: { verdict: 'looks fine' } as never } }, 'facts-v2');
+  assert.equal(result.published.length, 0);
+  assert.equal(result.rejected[0].reason, 'invalid-verdict');
 });
 
 console.log(`Facts OK: ${checks.length} checks.`);

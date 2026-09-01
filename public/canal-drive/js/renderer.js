@@ -340,6 +340,9 @@ class Renderer {
       lang: ['rgba(148,163,184,.22)', '#CBD5E1'],
       article: ['rgba(125,211,252,.18)', '#7DD3FC'],
       more: ['rgba(74,222,128,.18)', '#4ADE80'],
+      // Violet, so the kind of fact reads as a different axis from the yellow
+      // category beside it rather than as a second name for the same thing.
+      fact: ['rgba(196,181,253,.2)', '#C4B5FD'],
     };
     let textY = y + 22;
     ctx.font = 'bold 9px monospace';

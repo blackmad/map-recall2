@@ -175,6 +175,11 @@ class Game {
     this._seenLandmarks = new Set();
     this._visitedNeighborhoods = new Set();
     this._seenLandmarkNames = new Set();
+    // Generated trivia, filled by _loadLandmarks from facts.json. Empty until
+    // then, and empty for good if no batch has been published, in which case
+    // every card falls back to its Wikipedia lede.
+    this._facts = new Map();
+    this._factRotation = { history: {}, shown: 0, recentKinds: [] };
     this._explorationSnapshot = null;
     this._assistUsage = { line: false, arrow: false, minimap: false };
     this._ribbon = null;

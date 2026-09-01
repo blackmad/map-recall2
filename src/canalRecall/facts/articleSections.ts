@@ -58,6 +58,20 @@ const LIST_HEADINGS = new Set([
 ]);
 
 /**
+ * Sections about what has not happened yet. Every sentence in them expires:
+ * an article's == Toekomst == describes a bridge "planned to open in 2032",
+ * and the extract it ends up in ships for years. The editorial gate catches
+ * most of these one sentence at a time; dropping the section is cheaper and
+ * catches the ones phrased without a tell.
+ */
+const FUTURE_HEADINGS = new Set([
+  'future', 'plans', 'planned', 'proposals', 'proposed', 'development',
+  'redevelopment', 'upcoming',
+  // Dutch
+  'toekomst', 'toekomstplannen', 'plannen', 'nieuwbouw', 'herontwikkeling',
+]);
+
+/**
  * Headings whose content is where the memorable material actually is, highest
  * first. This is a preference, not a filter: an article with none of these
  * still gets its ordinary prose mined, just ranked below an article that has
@@ -88,6 +102,7 @@ export function sectionInterest(title: string): number {
   if (!normalised) return LEDE_INTEREST;
   if (APPARATUS_HEADINGS.has(normalised)) return 0;
   if (LIST_HEADINGS.has(normalised)) return 0;
+  if (FUTURE_HEADINGS.has(normalised)) return 0;
   for (const [pattern, interest] of PREFERRED_HEADINGS) {
     if (pattern.test(normalised)) return interest;
   }

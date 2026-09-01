@@ -43,6 +43,13 @@ export interface LandmarkNotice {
   type?: string;
   detail?: string;
   longDetail?: string;
+  /** Set when `detail` is a generated fact rather than the article lede, so
+   *  the card can badge which kind of thing the player is being told. */
+  factKind?: string;
+  /** Every fact known for this feature, chosen one first. The canvas card
+   *  wraps `longDetail` on spaces and cannot show a list; the expanded panel
+   *  is `pre-wrap` HTML and reads far better as one fact per paragraph. */
+  factTexts?: string[];
   imageUrl?: string;
   wikipediaUrl?: string;
   wikidata?: string;

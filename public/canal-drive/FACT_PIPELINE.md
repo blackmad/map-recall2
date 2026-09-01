@@ -60,6 +60,34 @@ Every displayed statement must retain statement-level provenance. Do not merge c
 
 ## Build stages
 
+### Implemented first slice
+
+The current pipeline deliberately starts from features already resolved by the
+city extract instead of attempting a second entity-resolution system:
+
+1. `npm run facts:articles` caches complete English or Dutch Wikipedia articles
+   for landmarks, bridges, squares and parks. The cache is local and ignored.
+2. `npm run facts:build` selects useful article sections, asks a local Ollama
+   model for short English facts, and rejects ungrounded numbers, stale claims,
+   lede restatements, fragments, markup and near-duplicates. It writes only to
+   the ignored `public/data/extracts/<city>/staging/` directory.
+3. A person reviews `facts-review.md` and records feature-level approval and
+   struck sentences in `scripts/facts-review.json`. Reviews are tied to the
+   generator version and therefore fail closed after prompt or gate changes.
+4. `npm run facts:publish -- --dry-run` reports exactly what is eligible.
+   Running it without `--dry-run` is the only path that writes the shipped
+   `facts.json`.
+5. The runtime loads that optional file, rotates unseen facts before repeats,
+   varies their kinds, and persists the rotation locally. A missing, malformed,
+   or wholly unreviewed catalog leaves the existing Wikipedia lede unchanged.
+
+Every published sentence retains its article URL, section, retrieval date,
+licence and model. `npm run test:facts` pins the editorial, review and runtime
+selection rules. No generated fact is currently published: the committed
+review file begins empty on purpose.
+
+### Longer-term catalog
+
 1. **Seed:** load the city boundary plus OSM landmarks, monuments, bridges, squares, museums, historic objects, and buildings with knowledge identifiers.
 2. **Authority ingest:** add Amsterdam monument records, Adamlink entities, and national heritage records.
 3. **Entity resolution:** merge first by Wikidata/RCE/Amsterdam identifiers, then OSM identity, then conservative name-and-distance matching. Keep ambiguous candidates separate for review.
@@ -82,7 +110,7 @@ Every displayed statement must retain statement-level provenance. Do not merge c
 - Keep the compact popup to one sentence; put images, longer context, source, and attribution in the collected postcard/detail view.
 - Suppress all fact popups independently from the master game-y toggle: facts are a learning layer, not an arcade mechanic.
 
-## Proposed scripts
+## Longer-term scripts
 
 - `scripts/facts/seed-city.ts`
 - `scripts/facts/ingest-amsterdam-heritage.ts`
@@ -92,4 +120,7 @@ Every displayed statement must retain statement-level provenance. Do not merge c
 - `scripts/facts/audit-licenses.ts`
 - `scripts/facts/validate-facts.ts`
 
-The existing `public/data/extracts/amsterdam/landmarks.json` can be the initial seed. The compiled output should eventually live beside it as `facts.json` and be generated—not hand-edited.
+The implemented first slice uses `public/data/extracts/amsterdam/landmarks.json`
+and its sibling collections as the seed. The broader multi-source catalog above
+remains future work; it should extend the same staged, reviewed publication
+boundary rather than bypass it.
