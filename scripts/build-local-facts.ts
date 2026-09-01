@@ -477,7 +477,9 @@ const review = [
   'shown beneath it, then checked by a separate local entailment pass and the',
   'deterministic editorial gate. Human approval is still required.',
   '',
-  'Mark a feature by adding its id to `scripts/facts-review.json`.',
+  `Mark a feature in \`${cityId === 'amsterdam'
+    ? 'scripts/facts-review.json'
+    : `scripts/facts-review-${cityId}.json`}\`.`,
   '',
   ...features.flatMap((feature) => [
     `## ${feature.name}`,
