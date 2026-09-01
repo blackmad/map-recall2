@@ -67,6 +67,9 @@ const BODY_FONT = '11px monospace';
 export function measureLandmarkCard(
   props: LandmarkCardProps,
   measure: TextMeasurer,
+  /** The width the card has to fit in. A phone gives it the screen width less
+   *  margins; setting the width after measuring only clipped the text. */
+  cardWidth: number = CARD_WIDTH,
 ): LandmarkCardLayout {
   const hasImage = !!props.hasImage;
   const imageWidth = hasImage ? IMAGE_WIDTH : 0;
@@ -75,7 +78,7 @@ export function measureLandmarkCard(
     ? Math.max(130, IMAGE_HEIGHT + 20)
     : (props.body ? 80 : 50);
 
-  const maxTextWidth = CARD_WIDTH - textLeft - 16;
+  const maxTextWidth = Math.max(60, cardWidth - textLeft - 16);
   const body = props.body || '';
   const lines = wrapToLines(body, maxTextWidth, hasImage ? 4 : 2, measure, BODY_FONT);
   // The card shows a prefix of the body; whether anything was left behind is
@@ -113,7 +116,7 @@ export function measureLandmarkCard(
   }
 
   return {
-    width: CARD_WIDTH,
+    width: cardWidth,
     height,
     imageWidth,
     imageHeight: IMAGE_HEIGHT,
