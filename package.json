@@ -69,6 +69,7 @@
     "facts:articles": "tsx scripts/fetch-article-bodies.ts",
     "facts:build": "tsx scripts/build-local-facts.ts",
     "facts:publish": "tsx scripts/publish-local-facts.ts",
+    "build:trivia-review": "esbuild src/canalRecall/facts/reviewPage.ts --bundle --format=iife --outfile=public/canal-drive/js/trivia-review.bundle.js --minify",
     "enrich:city-profile": "tsx scripts/enrich-city-profile.ts",
     "enrich:brand-identifiers": "tsx scripts/enrich-brand-identifiers.ts",
     "build:canal-bridges": "esbuild src/canalRecall/bridgeCrossings.ts --bundle --format=iife --global-name=CanalRecallBridges --outfile=public/canal-drive/js/bridge-crossings.bundle.js --minify",
