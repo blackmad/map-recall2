@@ -30,7 +30,7 @@ for (let index = 0; index < candidates.length; index++) {
     proposal.visibleStoreys = Number.isInteger(proposal.visibleStoreys) && proposal.visibleStoreys! > 0 && proposal.visibleStoreys! <= 80 ? proposal.visibleStoreys : null;
     proposal.bayCount = Number.isInteger(proposal.bayCount) && proposal.bayCount! > 0 && proposal.bayCount! <= 100 ? proposal.bayCount : null;
     proposal.confidence = Math.max(0, Math.min(1, Number(proposal.confidence) || 0));
-    labels.push({ schemaVersion: 1, buildingId: item.buildingId, bagId: item.bagId || null, panoId: item.panoId, observedAt: item.observedAt || null, source: 'model-panorama-facade-grammar', model, acceptedForNow: true, ...proposal });
+    labels.push({ schemaVersion: 1, buildingId: item.buildingId, bagId: item.bagId || null, panoId: item.panoId, observedAt: item.observedAt || null, source: 'model-panorama-facade-grammar', model, reviewStatus: 'machine-proposal', acceptedForNow: false, ...proposal });
     await writeFile(outputFile, JSON.stringify({ schemaVersion: 1, generatedAt: new Date().toISOString(), model, labels }, null, 2));
     process.stdout.write(`${index + 1}/${candidates.length} ${item.buildingId} → ${proposal.visibleStoreys ?? '?'} storeys, ${proposal.bayCount ?? '?'} bays\n`);
   } catch (caught) { process.stderr.write(`${item.buildingId}: invalid proposal ${String(caught)}\n`); }

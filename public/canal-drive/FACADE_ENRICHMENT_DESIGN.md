@@ -13,6 +13,11 @@ Every field is an independent observation with source, confidence and
 visibility. Unknown is valid. Human corrections override but never delete the
 machine proposal.
 
+Raw vision output always has `reviewStatus=machine-proposal` and
+`acceptedForNow=false`. The published files are research/audit artifacts, not
+production evidence; only a human-reviewed label or a later calibrated and
+explicitly gated model release may change that status.
+
 ### Geometry and rhythm
 
 - `visibleStoreys`: integer visible above ground, or null.
