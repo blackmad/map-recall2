@@ -532,11 +532,12 @@ export class GameRecallRuntime {
     // "Not quite — this is Lijnbaansgracht" is the single most useful sentence
     // in the game, and it used to vanish in 650 ms. A correction now stays up
     // long enough to actually read the name that was missed.
-    const learnedStreet = !atCrossing && isCar(this.travelMode) ? correctName : '';
+    const learnedRoute = !atCrossing ? correctName : '';
+    const learnedRouteType = isCar(this.travelMode) ? 'street' : 'water';
     setTimeout(() => {
       this._prompt.style.display = 'none';
       this.canvas.focus();
-      if (learnedStreet) this._showStreetKnowledge(learnedStreet);
+      if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType);
     }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
   }
 }

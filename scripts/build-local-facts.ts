@@ -88,7 +88,7 @@ const VERIFIER_VERSION = 'english-entailment-batch-v2';
 const WIKIPEDIA_LICENSE = 'CC BY-SA 4.0';
 
 /** Extract files worth mining, and the collection name facts are keyed under. */
-const COLLECTIONS = ['landmarks', 'bridges', 'squares', 'parks'];
+const COLLECTIONS = ['landmarks', 'bridges', 'squares', 'parks', 'streets', 'water'];
 
 /** Facts per feature. Beyond this the tail is padding, and a player who sees
  *  a feature six times has learned it. */

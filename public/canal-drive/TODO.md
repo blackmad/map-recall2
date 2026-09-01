@@ -35,6 +35,13 @@ stratified sample before publishing. Dutch articles now go through local
 entailment; they retain aligned Dutch and English evidence and must be measured
 separately in that review.
 
+Street and waterway records with linked Wikipedia pages now enter the same
+catalog. Canal Recall indexes their exact extract IDs, keeps street/water
+homonyms separate, and shows reviewed trivia after both driving and boating
+route answers. The original Map Recall category loader already joins reviewed
+facts generically by exact ID. The pending Randstad regeneration must include
+these two new collections before item 16 can move to history.
+
 The original Map Recall app now consumes the same reviewed `facts.json` by
 exact extract feature id and shows the selected quotation after an answer;
 unmatched POIs keep their existing Wikipedia card. Civic POI types are no

@@ -355,6 +355,23 @@
     return next;
   }
 
+  // src/canalRecall/game/routeKnowledge.ts
+  var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract;
+  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise) {
+    const index = /* @__PURE__ */ new Map();
+    const add = (entry, type) => {
+      index.set(`${type}:${normalise(entry.name)}`, { ...entry, type });
+    };
+    for (const entry of legacy) add(entry, entry.type === "water" ? "water" : "street");
+    for (const entry of streets) if (eligible(entry)) add(entry, "street");
+    for (const entry of waters) if (eligible(entry)) add(entry, "water");
+    return index;
+  }
+  function routeKnowledgeFor(index, name, type, normalise) {
+    const key = normalise(name);
+    return index.get(`${type}:${key}`) || index.get(`${type === "street" ? "water" : "street"}:${key}`);
+  }
+
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
   var CLICK_SELECT_RADIUS = 120;
@@ -515,13 +532,18 @@
       if (!notice || !notice.wikipediaUrl) return;
       window.open(notice.wikipediaUrl, "_blank", "noopener");
     }
-    _showStreetKnowledge(name) {
+    _showStreetKnowledge(name, type = "street") {
       const key = this._normaliseCanalName(name);
-      const entry = this.streetKnowledge.get(key);
+      const entry = routeKnowledgeFor(
+        this.streetKnowledge,
+        name,
+        type,
+        (value) => this._normaliseCanalName(value)
+      );
       if (!entry) return;
       const split = splitDetail(entry.wikipediaExtract || "");
       this._showLandmarkNotice({
-        id: `street-knowledge:${key}`,
+        id: entry.id || `${type}-knowledge:${key}`,
         name: entry.name || name,
         type: "street",
         detail: split.detail,
@@ -542,6 +564,8 @@
           bridgeResponse,
           crossingResponse,
           streetKnowledgeResponse,
+          streetResponse,
+          waterResponse,
           brandedPoiResponse,
           factResponse
         ] = await Promise.all([
@@ -551,19 +575,34 @@
           fetch(url("bridges.json")),
           fetch(url("bridge-crossings.json")),
           fetch(url("street-knowledge.json")),
+          fetch(url("streets.json")),
+          fetch(url("water.json")),
           fetch(url("branded-pois.json")),
           // Generated trivia. Absent until a batch has been reviewed and
           // published, and the cards fall back to the Wikipedia lede when it is.
           fetch(url("facts.json")).catch(() => new Response("null", { status: 404 }))
         ]);
         if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error("Cached place data unavailable");
-        const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex, streetKnowledge, brandedPois, factsFile] = await Promise.all([
+        const [
+          features,
+          boundaries,
+          neighborhoodEnriched,
+          bridgeFeatures,
+          crossingIndex,
+          streetKnowledge,
+          streetFeatures,
+          waterFeatures,
+          brandedPois,
+          factsFile
+        ] = await Promise.all([
           landmarkResponse.json(),
           boundaryResponse.json(),
           readJson(neighborhoodEnrichedResponse, []),
           readJson(bridgeResponse, []),
           readJson(crossingResponse, { bridges: {} }),
           readJson(streetKnowledgeResponse, []),
+          readJson(streetResponse, []),
+          readJson(waterResponse, []),
           readJson(brandedPoiResponse, []),
           readJson(factResponse, null)
         ]);
@@ -571,8 +610,11 @@
         this._factRotation = loadRotationState(
           typeof localStorage === "undefined" ? null : localStorage
         );
-        this.streetKnowledge = new Map(
-          streetKnowledge.map((entry) => [this._normaliseCanalName(entry.name), entry])
+        this.streetKnowledge = buildRouteKnowledgeIndex(
+          streetKnowledge,
+          streetFeatures,
+          waterFeatures,
+          (name) => this._normaliseCanalName(name)
         );
         this.vectorMap.setPlaces(features, boundaries);
         this.vectorMap.setBrandedPois(brandedPois);

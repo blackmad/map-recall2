@@ -44,6 +44,7 @@ import type { FactsFile } from '../facts/factTypes';
 import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
+import { buildRouteKnowledgeIndex, routeKnowledgeFor } from './routeKnowledge';
 
 /** Seconds a clicked card stays up. A drive-by card is held by proximity
  *  instead — see `landmarkNotice.ts`. */
@@ -230,13 +231,14 @@ export class GameLandmarkRuntime {
     window.open(notice.wikipediaUrl, '_blank', 'noopener');
   }
 
-  _showStreetKnowledge(name: string): void {
+  _showStreetKnowledge(name: string, type: 'street' | 'water' = 'street'): void {
     const key = this._normaliseCanalName(name);
-    const entry = this.streetKnowledge.get(key);
+    const entry = routeKnowledgeFor(this.streetKnowledge, name, type,
+      (value) => this._normaliseCanalName(value));
     if (!entry) return;
     const split = splitDetail(entry.wikipediaExtract || '');
     this._showLandmarkNotice({
-      id: `street-knowledge:${key}`,
+      id: entry.id || `${type}-knowledge:${key}`,
       name: entry.name || name,
       type: 'street',
       detail: split.detail,
@@ -259,7 +261,8 @@ export class GameLandmarkRuntime {
       const url = (name: string) => new URL(`../data/extracts/amsterdam/${name}`, base);
       const [
         landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse,
-        bridgeResponse, crossingResponse, streetKnowledgeResponse, brandedPoiResponse,
+        bridgeResponse, crossingResponse, streetKnowledgeResponse, streetResponse,
+        waterResponse, brandedPoiResponse,
         factResponse,
       ] = await Promise.all([
         fetch(url('landmarks.json')),
@@ -268,6 +271,8 @@ export class GameLandmarkRuntime {
         fetch(url('bridges.json')),
         fetch(url('bridge-crossings.json')),
         fetch(url('street-knowledge.json')),
+        fetch(url('streets.json')),
+        fetch(url('water.json')),
         fetch(url('branded-pois.json')),
         // Generated trivia. Absent until a batch has been reviewed and
         // published, and the cards fall back to the Wikipedia lede when it is.
@@ -275,7 +280,8 @@ export class GameLandmarkRuntime {
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
 
-      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex, streetKnowledge, brandedPois, factsFile] =
+      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex,
+        streetKnowledge, streetFeatures, waterFeatures, brandedPois, factsFile] =
         await Promise.all([
           landmarkResponse.json() as Promise<LandmarkFeature[]>,
           boundaryResponse.json() as Promise<BoundaryFeature[]>,
@@ -283,6 +289,8 @@ export class GameLandmarkRuntime {
           readJson<BridgeFeature[]>(bridgeResponse, []),
           readJson<BridgeCrossingIndex>(crossingResponse, { bridges: {} }),
           readJson<StreetKnowledgeEntry[]>(streetKnowledgeResponse, []),
+          readJson<StreetKnowledgeEntry[]>(streetResponse, []),
+          readJson<StreetKnowledgeEntry[]>(waterResponse, []),
           readJson<unknown[]>(brandedPoiResponse, []),
           readJson<FactsFile | null>(factResponse, null),
         ]);
@@ -291,8 +299,9 @@ export class GameLandmarkRuntime {
       this._factRotation = loadRotationState(
         typeof localStorage === 'undefined' ? null : localStorage);
 
-      this.streetKnowledge = new Map(
-        streetKnowledge.map(entry => [this._normaliseCanalName(entry.name), entry]),
+      this.streetKnowledge = buildRouteKnowledgeIndex(
+        streetKnowledge, streetFeatures, waterFeatures,
+        (name) => this._normaliseCanalName(name),
       );
       this.vectorMap.setPlaces(features, boundaries);
       this.vectorMap.setBrandedPois(brandedPois);

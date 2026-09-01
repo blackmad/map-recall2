@@ -46,7 +46,11 @@ async function translateSentence(sentence: string, names: readonly string[]): Pr
     else child.stdin!.end(invocation.stdin);
   });
   if (!english) throw new Error('trn returned an empty translation');
-  const dropped = droppedProperNames(sentence, english, names);
+  // Judge only names that appeared as proper names and were actually held
+  // out. A sentence-initial/common Dutch noun such as "bibliotheek" is not
+  // the feature name "Centrale Bibliotheek" and may correctly translate to
+  // "library".
+  const dropped = droppedProperNames(sentence, english, held.protectedNames);
   if (dropped.length) throw new Error(`trn dropped proper names: ${dropped.join(', ')}`);
   await mkdir(cacheDirectory, { recursive: true });
   await writeFile(cacheFile, JSON.stringify({ key, sentence, english }));

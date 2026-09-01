@@ -190,7 +190,7 @@ export interface RecallHost extends GameCoreHost {
 
   /** Owned by other subsystems. */
   _savePreferences(): void;
-  _showStreetKnowledge(name: string): void;
+  _showStreetKnowledge(name: string, type?: 'street' | 'water'): void;
 }
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
