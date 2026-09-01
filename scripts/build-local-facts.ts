@@ -24,6 +24,7 @@
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { config as loadEnv } from 'dotenv';
 
 import {
   selectSourcePassages,
@@ -60,17 +61,30 @@ interface Feature {
   wikipediaExtractLang?: string;
 }
 
+loadEnv({ path: process.env.FACT_ENV_FILE || '.env.local', override: false, quiet: true });
+
 const argument = (name: string) =>
   process.argv.find((value) => value.startsWith(`--${name}=`))?.slice(name.length + 3);
 
 const directory = path.resolve(argument('directory') || 'public/data/extracts/amsterdam');
 const cityId = argument('city') || path.basename(directory);
-const model = argument('model') || process.env.OLLAMA_MODEL || 'gemma3:4b';
+const provider = argument('provider') || process.env.FACT_PROVIDER || 'ollama';
+const model = argument('model') || (provider === 'openrouter'
+  ? process.env.OPENROUTER_MODEL || 'qwen/qwen3.5-flash-02-23'
+  : process.env.OLLAMA_MODEL || 'gemma3:4b');
 const endpoint = process.env.OLLAMA_URL || 'http://127.0.0.1:11434/api/generate';
+const openRouterEndpoint = 'https://openrouter.ai/api/v1/chat/completions';
 const limit = Number(argument('limit') || Infinity);
 const onlyCollection = argument('collection');
 const cacheDirectory = path.resolve('.cache/local-facts');
 const stagingDirectory = path.join(directory, 'staging');
+
+if (!['ollama', 'openrouter'].includes(provider)) {
+  throw new Error(`Unknown fact provider: ${provider}`);
+}
+if (provider === 'openrouter' && !process.env.OPENROUTER_API_KEY) {
+  throw new Error('OPENROUTER_API_KEY is required for --provider=openrouter');
+}
 
 /**
  * Bump when the prompt or the editorial gate changes what comes out. It is
@@ -83,6 +97,9 @@ const GENERATOR_VERSION = 'facts-v8-trn-then-grounded-summary';
  * change, so a stricter rerun does not spend another local model inference. */
 const PROMPT_VERSION = 'facts-v8-english-grounded-summary';
 const VERIFIER_VERSION = 'english-entailment-batch-v2';
+const OPENROUTER_ADAPTER_VERSION = 'openrouter-json-nonthinking-v2';
+const runVersion = `${GENERATOR_VERSION}:${provider}:${model}`;
+let openRouterSpentUsd = 0;
 
 /** Licence of every source this generator reads. Carried per statement. */
 const WIKIPEDIA_LICENSE = 'CC BY-SA 4.0';
@@ -159,8 +176,65 @@ async function hashKey(text: string): Promise<string> {
   return createHash('sha256').update(text).digest('hex');
 }
 
+const wait = (milliseconds: number) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+async function modelResponse(prompt: string, numPredict: number, label: string): Promise<string> {
+  let lastError: Error | null = null;
+  for (let attempt = 0; attempt < 4; attempt++) {
+    try {
+      const response = await fetch(provider === 'openrouter' ? openRouterEndpoint : endpoint, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          ...(provider === 'openrouter' ? {
+            authorization: `Bearer ${process.env.OPENROUTER_API_KEY || ''}`,
+            'HTTP-Referer': 'https://github.com/blackmad/map-recall2',
+            'X-Title': 'Map Recall local fact pipeline',
+          } : {}),
+        },
+        body: JSON.stringify(provider === 'openrouter' ? {
+          model,
+          messages: [{ role: 'user', content: prompt }],
+          reasoning: { enabled: false },
+          response_format: { type: 'json_object' },
+          temperature: attempt ? 0 : 0.3,
+          max_tokens: numPredict,
+        } : {
+          model, prompt, stream: false, format: 'json',
+          options: { temperature: attempt ? 0 : 0.3, num_predict: numPredict },
+        }),
+      });
+      if (response.ok) {
+        const payload = await response.json() as {
+          response?: string;
+          choices?: Array<{ message?: { content?: string } }>;
+          usage?: { cost?: number };
+        };
+        if (provider === 'openrouter') openRouterSpentUsd += Number(payload.usage?.cost || 0);
+        return provider === 'openrouter'
+          ? payload.choices?.[0]?.message?.content || ''
+          : payload.response || '';
+      }
+      const detail = await response.text();
+      lastError = new Error(`${label} HTTP ${response.status}: ${detail}`);
+      if (response.status < 500 && response.status !== 429) throw lastError;
+    } catch (error) {
+      lastError = error as Error;
+    }
+    await wait(750 * (attempt + 1));
+  }
+  throw lastError || new Error(`${label} failed without a response`);
+}
+
+function parseJsonResponse(text: string): unknown {
+  const cleaned = text.trim()
+    .replace(/^```(?:json)?\s*/i, '')
+    .replace(/\s*```$/, '');
+  return JSON.parse(cleaned || '{}');
+}
+
 async function generate(prompt: string): Promise<GeneratedFact[]> {
-  const key = await hashKey(`${PROMPT_VERSION}\0${model}\0${prompt}`);
+  const key = await hashKey(`${PROMPT_VERSION}\0${provider}\0${model}\0${provider === 'openrouter' ? OPENROUTER_ADAPTER_VERSION : ''}\0${prompt}`);
   const cacheFile = path.join(cacheDirectory, `${key}.json`);
   try {
     const cached = JSON.parse(await readFile(cacheFile, 'utf8')) as CachedGeneration;
@@ -168,19 +242,10 @@ async function generate(prompt: string): Promise<GeneratedFact[]> {
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({
-      model, prompt, stream: false, format: 'json',
-      options: { temperature: 0.3, num_predict: 700 },
-    }),
-  });
-  if (!response.ok) throw new Error(`Ollama HTTP ${response.status}: ${await response.text()}`);
-  const payload = await response.json() as { response?: string };
+  const responseText = await modelResponse(prompt, 700, `${provider} writer`);
   let generated: GeneratedFact[] = [];
   try {
-    const parsed = JSON.parse(payload.response || '{}');
+    const parsed = parseJsonResponse(responseText);
     const list = Array.isArray(parsed) ? parsed : parsed.facts;
     // Only the requested shape is accepted. Older abstractive cache shapes
     // must never become eligible for publication.
@@ -217,7 +282,7 @@ Reject changed relationships, swapped subjects or objects, added causes, dates, 
 superlatives, implications, or outside knowledge. Paraphrasing and compression are allowed.
 Return exactly one result per candidate as JSON only:
 {"results":[{"id":1,"supported":true|false,"reason":"brief explanation"}]}`;
-  const key = await hashKey(`${VERIFIER_VERSION}\0${model}\0${prompt}`);
+  const key = await hashKey(`${VERIFIER_VERSION}\0${provider}\0${model}\0${provider === 'openrouter' ? OPENROUTER_ADAPTER_VERSION : ''}\0${prompt}`);
   const cacheFile = path.join(cacheDirectory, `${key}.json`);
   let results: Array<Verification & { id: number }> | null = null;
   try {
@@ -231,15 +296,10 @@ Return exactly one result per candidate as JSON only:
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }
   if (!results) {
-    const response = await fetch(endpoint, {
-      method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ model, prompt, stream: false, format: 'json', options: { temperature: 0, num_predict: 500 } }),
-    });
-    if (!response.ok) throw new Error(`Ollama verifier HTTP ${response.status}: ${await response.text()}`);
-    const payload = await response.json() as { response?: string };
+    const responseText = await modelResponse(prompt, 500, `${provider} batch verifier`);
     results = [];
     try {
-      const parsed = JSON.parse(payload.response || '{}') as { results?: Array<Partial<Verification> & { id?: number }> };
+      const parsed = parseJsonResponse(responseText) as { results?: Array<Partial<Verification> & { id?: number }> };
       results = (Array.isArray(parsed.results) ? parsed.results : []).map((item) => ({
         id: Number(item.id), supported: item.supported === true, reason: String(item.reason || ''),
       })).filter((item) => Number.isInteger(item.id));
@@ -274,7 +334,7 @@ FACT: """${fact}"""
 Reject changed relationships, swapped subjects or objects, added causes, dates, quantities,
 superlatives, implications, or outside knowledge. Paraphrasing and compression are allowed.
 Return JSON only: {"supported":true|false,"reason":"brief explanation"}`;
-  const key = await hashKey(`${VERIFIER_VERSION}\0single\0${model}\0${prompt}`);
+  const key = await hashKey(`${VERIFIER_VERSION}\0single\0${provider}\0${model}\0${provider === 'openrouter' ? OPENROUTER_ADAPTER_VERSION : ''}\0${prompt}`);
   const cacheFile = path.join(cacheDirectory, `${key}.json`);
   try {
     const cached = JSON.parse(await readFile(cacheFile, 'utf8')) as Verification & { key?: string };
@@ -282,15 +342,10 @@ Return JSON only: {"supported":true|false,"reason":"brief explanation"}`;
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }
-  const response = await fetch(endpoint, {
-    method: 'POST', headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ model, prompt, stream: false, format: 'json', options: { temperature: 0, num_predict: 180 } }),
-  });
-  if (!response.ok) throw new Error(`Ollama verifier HTTP ${response.status}: ${await response.text()}`);
-  const payload = await response.json() as { response?: string };
+  const responseText = await modelResponse(prompt, 180, `${provider} verifier`);
   let verdict: Verification = { supported: false, reason: 'invalid verifier response' };
   try {
-    const parsed = JSON.parse(payload.response || '{}') as Partial<Verification>;
+    const parsed = parseJsonResponse(responseText) as Partial<Verification>;
     verdict = { supported: parsed.supported === true, reason: String(parsed.reason || '') };
   } catch { /* fail closed */ }
   await mkdir(cacheDirectory, { recursive: true });
@@ -384,8 +439,8 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
         retrievedAt: article.retrievedAt,
         sourceLanguage: article.lang === 'nl' ? 'nl' : 'en',
         translator: article.lang === 'nl' ? 'trn:0.2.0:quality-high' : undefined,
-        model: `ollama:${model}`,
-        verifierModel: `ollama:${model}`,
+        model: `${provider}:${model}`,
+        verifierModel: `${provider}:${model}`,
         verification: 'grounded',
       });
     }
@@ -432,7 +487,7 @@ for (const collection of COLLECTIONS) {
 
 const output: FactsFile = {
   cityId,
-  generatorVersion: GENERATOR_VERSION,
+  generatorVersion: runVersion,
   generatedAt: new Date().toISOString().slice(0, 10),
   features: features.sort((a, b) => a.id.localeCompare(b.id)),
 };
@@ -457,6 +512,9 @@ process.stdout.write(`  kinds: ${[...kindCounts].sort((a, b) => b[1] - a[1])
   .map(([kind, count]) => `${kind} ${count}`).join(', ')}\n`);
 process.stdout.write(`  source language: ${[...langCounts].map(([lang, count]) => `${lang} ${count}`).join(', ')}\n`);
 process.stdout.write(`  ${rejected} sentences rejected by the editorial gate:\n`);
+if (provider === 'openrouter') {
+  process.stdout.write(`  OpenRouter cost this run: $${openRouterSpentUsd.toFixed(4)}\n`);
+}
 for (const [reason, count] of [...rejections].sort((a, b) => b[1] - a[1])) {
   process.stdout.write(`    ${String(count).padStart(5)}  ${reason}\n`);
   for (const sample of rejectionSamples.get(reason) || []) {
@@ -470,7 +528,7 @@ for (const [reason, count] of [...rejections].sort((a, b) => b[1] - a[1])) {
 const review = [
   `# Generated facts for ${cityId} — review sheet`,
   '',
-  `Generator \`${GENERATOR_VERSION}\`, model \`${model}\`, ${output.generatedAt}.`,
+  `Generator \`${runVersion}\`, ${output.generatedAt}.`,
   `${features.length} features, ${totalFacts} facts, ${rejected} rejected before this sheet.`,
   '',
   'Every sentence below was locally summarized from the Wikipedia evidence',
