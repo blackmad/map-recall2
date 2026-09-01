@@ -41,6 +41,11 @@ rejected 7 unsupported/context-dependent candidates, and cost $0.0005. Run the
 full Randstad batch with provider/model recorded in the generator version; do
 not reuse the old human approvals across that provider change.
 
+Rejections are now durable staging artifacts rather than truncated console
+samples. Use `fact-rejections.md` during the Randstad review to separate useful
+standalone-card rewrites from genuine entailment failures; never weaken a gate
+based only on aggregate rejection counts.
+
 Street and waterway records with linked Wikipedia pages now enter the same
 catalog. Canal Recall indexes their exact extract IDs, keeps street/water
 homonyms separate, and shows reviewed trivia after both driving and boating
