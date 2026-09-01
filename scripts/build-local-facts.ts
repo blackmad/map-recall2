@@ -92,11 +92,11 @@ if (provider === 'openrouter' && !process.env.OPENROUTER_API_KEY) {
  * sentences written under the old rules — and it is written into the output,
  * so a review sheet can be traced to the rules that produced it.
  */
-const GENERATOR_VERSION = 'facts-v9-native-name-with-english-gloss';
+const GENERATOR_VERSION = 'facts-v10-faithful-paraphrase-verifier';
 /** Prompt/cache version stays stable when only deterministic publication gates
  * change, so a stricter rerun does not spend another local model inference. */
 const PROMPT_VERSION = 'facts-v9-native-name-with-english-gloss';
-const VERIFIER_VERSION = 'english-entailment-batch-v2';
+const VERIFIER_VERSION = 'english-entailment-batch-v3';
 const OPENROUTER_ADAPTER_VERSION = 'openrouter-json-nonthinking-v2';
 const runVersion = `${GENERATOR_VERSION}:${provider}:${model}`;
 let openRouterSpentUsd = 0;
@@ -168,6 +168,14 @@ Return JSON: {"facts":[{"kind":"...","text":"concise paraphrase","evidenceIds":[
 interface GeneratedFact { kind: string; text: string; evidenceIds: number[] }
 interface Verification { supported: boolean; reason: string }
 interface VerificationCandidate { id: number; fact: string; evidence: string; sourceEvidence: string }
+
+const VERIFIER_RULES = `Judge whether the fact is a faithful plain-language restatement of the evidence.
+Accept compression, ordinary emphasis, number words in place of digits, and direct common-sense
+implications that do not change the proposition. For example, "newly formed" may be summarized as
+"early", and an audience of 40 may be described as "only forty". A number explicitly stated in the
+evidence is supported; do not invent uncertainty about it.
+Reject only a materially changed relationship, subject, object, cause, date, quantity, superlative,
+or a conclusion that needs outside knowledge. Check correspondence, not whether Wikipedia is trustworthy.`;
 
 /** One cached model response, keyed by prompt content so a prompt change
  *  regenerates and a rerun costs nothing. */
@@ -280,8 +288,7 @@ SUBJECT: ${name}
 CANDIDATES:
 ${candidates.map((candidate) => `[${candidate.id}] EVIDENCE: """${candidate.evidence}"""\n[${candidate.id}] FACT: """${candidate.fact}"""`).join('\n')}
 
-Reject changed relationships, swapped subjects or objects, added causes, dates, quantities,
-superlatives, implications, or outside knowledge. Paraphrasing and compression are allowed.
+${VERIFIER_RULES}
 Return exactly one result per candidate as JSON only:
 {"results":[{"id":1,"supported":true|false,"reason":"brief explanation"}]}`;
   const key = await hashKey(`${VERIFIER_VERSION}\0${provider}\0${model}\0${provider === 'openrouter' ? OPENROUTER_ADAPTER_VERSION : ''}\0${prompt}`);
@@ -333,8 +340,7 @@ SUBJECT: ${name}
 EVIDENCE: """${evidence}"""
 FACT: """${fact}"""
 
-Reject changed relationships, swapped subjects or objects, added causes, dates, quantities,
-superlatives, implications, or outside knowledge. Paraphrasing and compression are allowed.
+${VERIFIER_RULES}
 Return JSON only: {"supported":true|false,"reason":"brief explanation"}`;
   const key = await hashKey(`${VERIFIER_VERSION}\0single\0${provider}\0${model}\0${provider === 'openrouter' ? OPENROUTER_ADAPTER_VERSION : ''}\0${prompt}`);
   const cacheFile = path.join(cacheDirectory, `${key}.json`);
@@ -498,6 +504,43 @@ let withoutPassages = 0;
 let withoutSurvivors = 0;
 const started = Date.now();
 
+type RunStatus = 'running' | 'complete';
+
+async function writeStagingSnapshot(status: RunStatus): Promise<FactsFile> {
+  const generatedAt = new Date().toISOString().slice(0, 10);
+  const output: FactsFile = {
+    cityId,
+    generatorVersion: runVersion,
+    generatedAt,
+    features: [...features].sort((a, b) => a.id.localeCompare(b.id)),
+  };
+  const totalFacts = features.reduce((sum, feature) => sum + feature.facts.length, 0);
+  const rejected = [...rejections.values()].reduce((sum, count) => sum + count, 0);
+  await Promise.all([
+    writeFile(path.join(stagingDirectory, 'facts.json'), `${JSON.stringify(output, null, 2)}\n`),
+    writeFile(path.join(stagingDirectory, 'fact-rejections.json'), `${JSON.stringify({
+      cityId, generatorVersion: runVersion, generatedAt, rejections: rejectionLog,
+    }, null, 2)}\n`),
+    writeFile(path.join(stagingDirectory, 'fact-progress.json'), `${JSON.stringify({
+      cityId,
+      generatorVersion: runVersion,
+      status,
+      updatedAt: new Date().toISOString(),
+      considered,
+      featuresWithFacts: features.length,
+      totalFacts,
+      rejected,
+      withoutArticle,
+      withoutPassages,
+      withoutSurvivors,
+      openRouterSpentUsd: Number(openRouterSpentUsd.toFixed(6)),
+    }, null, 2)}\n`),
+  ]);
+  return output;
+}
+
+await writeStagingSnapshot('running');
+
 for (const collection of COLLECTIONS) {
   if (onlyCollection && collection !== onlyCollection) continue;
   let entries: Feature[];
@@ -515,8 +558,10 @@ for (const collection of COLLECTIONS) {
       process.stdout.write(`  ! ${feature.name}: ${(error as Error).message}\n`);
       return null;
     });
-    if (!result) { withoutSurvivors++; continue; }
-    features.push(result);
+    if (!result) withoutSurvivors++;
+    else features.push(result);
+    if (considered % 10 === 0) await writeStagingSnapshot('running');
+    if (!result) continue;
     if (features.length % 25 === 0) {
       const rate = (Date.now() - started) / 1000 / considered;
       process.stdout.write(`  ${features.length} features, ${considered} tried, ${rate.toFixed(1)}s each\n`);
@@ -524,16 +569,7 @@ for (const collection of COLLECTIONS) {
   }
 }
 
-const output: FactsFile = {
-  cityId,
-  generatorVersion: runVersion,
-  generatedAt: new Date().toISOString().slice(0, 10),
-  features: features.sort((a, b) => a.id.localeCompare(b.id)),
-};
-await writeFile(path.join(stagingDirectory, 'facts.json'), `${JSON.stringify(output, null, 2)}\n`);
-await writeFile(path.join(stagingDirectory, 'fact-rejections.json'), `${JSON.stringify({
-  cityId, generatorVersion: runVersion, generatedAt: output.generatedAt, rejections: rejectionLog,
-}, null, 2)}\n`);
+const output = await writeStagingSnapshot('complete');
 
 const totalFacts = features.reduce((sum, feature) => sum + feature.facts.length, 0);
 const rejected = [...rejections.values()].reduce((sum, count) => sum + count, 0);

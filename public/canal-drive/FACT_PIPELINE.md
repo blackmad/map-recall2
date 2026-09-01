@@ -110,6 +110,15 @@ rejection code, verifier explanation, feature identity, section, source URL,
 original evidence and local translation. Console samples are only a summary;
 the staging logs are the audit record used to improve prompts and gates.
 
+Open `/canal-drive/trivia-review.html` while the development server is running
+for the visual Trivia Lab. It keeps automatically grounded candidates,
+rejections, and human-published facts in separate views, and exposes original
+evidence, local Dutch translations, verifier explanations, provenance, search,
+and filters. During a build, the generator checkpoints the accepted and
+rejected JSON plus `staging/fact-progress.json` every ten attempted features;
+use the lab's Refresh button to load a newer checkpoint without interrupting
+reading. “Passed gates” always means awaiting human review—not published.
+
 Ollama remains the offline default. For faster bulk regeneration, the same
 prompts and fail-closed gates can use OpenRouter without changing catalog
 semantics:
