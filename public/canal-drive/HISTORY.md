@@ -6,6 +6,25 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Façade grammar now starts from reviewed evidence, not one lucky camera.**
+  A live pilot fetched three spatially distinct 2025 municipal panorama crops
+  for each of 30 BAG buildings: 90/90 requests succeeded. The first five made
+  the selection problem visible — one centroid-aimed crop looked down a canal
+  and another was foliage — so the manifest now pins its camera-distance and
+  mission policy, stores alternatives and rejection reasons, and a grouped
+  review sheet selects one exact panorama or records that none is usable.
+
+  The grammar classifier refuses to run without that exported human view
+  selection and verifies building, panorama and image identity before reading
+  pixels. Raw vision output is always `machine-proposal`, never accepted
+  production evidence; the 190 earlier published proposals were corrected and
+  the rule is regression-tested. A `qwen2.5vl:7b` visibility-triage spike was
+  stopped after ten views because it returned the same 50% partial/vegetation
+  answer almost everywhere. Those hints cannot influence review below 70%.
+  The sheet also starts every untouched building as `unreviewed` and refuses to
+  save it without an explicit quality choice; malformed or unreviewed imports
+  are rejected again at the classifier boundary.
+
 - **The OSM loader is an adapter: its arithmetic is typed and tested.**
   Projection about a chosen centre, Douglas-Peucker, recentring the network on
   the world origin, snapping a lat/lng onto the nearest carriageway,

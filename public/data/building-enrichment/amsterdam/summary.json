@@ -1,0 +1,120 @@
+{
+  "generatedAt": "2026-08-31T14:29:01.643Z",
+  "cacheBytes": 1001483901,
+  "buildings": 198271,
+  "insideA10Buildings": 113722,
+  "observations": 190,
+  "modelLabels": 190,
+  "humanLabels": 0,
+  "rejections": 17,
+  "model": "qwen2.5vl:7b",
+  "selection": {
+    "region": "inside-a10",
+    "ordering": "distance-from-Dam-then-stable-id",
+    "candidateBuildings": 10,
+    "requestedNewUsable": 1,
+    "totalAttempted": 207,
+    "totalUsable": 190,
+    "totalRejected": 17,
+    "radiusMetres": 45,
+    "panoramaSize": "medium"
+  },
+  "facadeMaterials": [
+    {
+      "label": "brick",
+      "count": 158
+    },
+    {
+      "label": "plaster-stucco",
+      "count": 15
+    },
+    {
+      "label": "stone",
+      "count": 7
+    },
+    {
+      "label": "glass-curtain-wall",
+      "count": 6
+    },
+    {
+      "label": "ceramic-cladding",
+      "count": 1
+    },
+    {
+      "label": "composite-panel",
+      "count": 1
+    },
+    {
+      "label": "concrete",
+      "count": 1
+    },
+    {
+      "label": "wood-cladding",
+      "count": 1
+    }
+  ],
+  "roofMaterials": [
+    {
+      "label": "flat-roof-not-visible",
+      "count": 130
+    },
+    {
+      "label": "not-visible",
+      "count": 45
+    },
+    {
+      "label": "clay-tile",
+      "count": 13
+    },
+    {
+      "label": "green-vegetated",
+      "count": 1
+    },
+    {
+      "label": "bitumen",
+      "count": 1
+    }
+  ],
+  "typologies": [
+    {
+      "label": "canal-house",
+      "count": 123
+    },
+    {
+      "label": "modern-row-house",
+      "count": 18
+    },
+    {
+      "label": "amsterdam-school",
+      "count": 11
+    },
+    {
+      "label": "modern-mixed-use",
+      "count": 11
+    },
+    {
+      "label": "apartment-block",
+      "count": 8
+    },
+    {
+      "label": "office-commercial",
+      "count": 7
+    },
+    {
+      "label": "warehouse-industrial",
+      "count": 5
+    },
+    {
+      "label": "historic-row-house",
+      "count": 4
+    },
+    {
+      "label": "civic-monumental",
+      "count": 2
+    },
+    {
+      "label": "gallery-apartment",
+      "count": 1
+    }
+  ]
+}
