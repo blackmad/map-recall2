@@ -60,6 +60,10 @@
     "build:wide-facade-crops": "node --import tsx scripts/build-wide-facade-crops.ts",
     "build:facade-view-review": "node --import tsx scripts/build-facade-view-review.ts",
     "classify:facade-views": "node --import tsx scripts/classify-facade-view-visibility.ts",
+    "cache:facade-walls": "node --import tsx scripts/cache-3dbag-facade-walls.ts",
+    "audit:facade-point-cloud-catalog": "node --import tsx scripts/audit-amsterdam-point-cloud-catalog.ts",
+    "test:facade-point-cloud": "tsx scripts/check-facade-point-cloud.ts",
+    "measure:facade-point-cloud": "node --import tsx scripts/measure-facade-point-cloud.ts",
     "test:facade-view-selection": "tsx scripts/check-facade-view-selection.ts",
     "test:facade-provenance": "tsx scripts/check-facade-provenance.ts",
     "test:facade-evidence": "tsx scripts/check-facade-evidence.ts",
@@ -106,6 +110,7 @@
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
+    "@loaders.gl/las": "^4.4.5",
     "@tailwindcss/vite": "^4.1.14",
     "@types/canvas-confetti": "^1.9.0",
     "@types/compression": "^1.8.1",

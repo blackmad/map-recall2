@@ -6,6 +6,16 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Measured façade colour now has a fail-closed point-cloud path.**  The
+  3DBAG API produced 255 semantic exterior LoD2.2 walls for 28 of the 30 BAG
+  panorama targets; all returned models passed its quality flag, while two
+  persistent HTTP 502s remain explicit rejections. A typed sampler joins RGB
+  points to exact wall polygons, balances colour by spatial cell, rejects
+  sparse, shadowed and mixed samples, hashes its LAZ input and never accepts its
+  own output. Amsterdam's advertised public 2024/2025 LAZ catalog was empty
+  during the run, so the measured colour stage awaits one documented source
+  tile instead of inventing a download URL.
+
 - **Façade grammar now starts from reviewed evidence, not one lucky camera.**
   A live pilot fetched three spatially distinct 2025 municipal panorama crops
   for each of 30 BAG buildings: 90/90 requests succeeded. The first five made

@@ -152,3 +152,27 @@ identity, selected panorama and selected image against the crop manifest,
 records unusable and mismatched labels as rejection reasons, and emits a fresh
 v2 machine-proposal file. The grammar review sheet consumes that selected crop,
 not the earlier nearest-panorama image.
+
+## RGB point-cloud pilot — 2026-09-01
+
+Amsterdam's official Puntenwolk v2 schema advertises public 2024 and 2025 RGB
+LAZ metadata with download URL, acquisition date, point count and RD bounds.
+The RGB values are added from panorama imagery in post-processing, so this is
+an appearance observation rather than a direct material registry. At the time
+of the pilot, both live metadata tables and their MVT layers returned empty
+collections despite the published schema. No undocumented file URL is pinned.
+
+The geometry half is independently reproducible. `npm run cache:facade-walls`
+requests BAG-keyed CityJSONFeatures from the 3DBAG API and extracts only
+semantic exterior LoD2.2 `WallSurface` polygons in EPSG:7415. Across the 30
+panorama-pilot buildings, 28 returned 255 walls (4–43 per building, median 6),
+all with a positive 3DBAG quality indicator. Two BAG objects consistently
+returned HTTP 502 after bounded retries and remain structured rejections.
+
+`npm run measure:facade-point-cloud -- --laz=<tile.laz>` decodes an RGB tile,
+verifies spatial overlap with the RD+NAP walls, and samples points no more than
+12 cm from each wall plane and inside its polygon. It requires at least 80
+points and 18% grid coverage, rejects shadowed and mixed-colour walls, and uses
+equal-weight 75 cm cell medians so a dense window or scan strip cannot dominate
+the wall field. Every result remains an unaccepted `machine-proposal`; source
+file hash, sampling policy, point counts and rejection reasons are retained.
