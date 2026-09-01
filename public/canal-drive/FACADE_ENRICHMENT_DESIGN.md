@@ -134,7 +134,10 @@ Run `npm run build:facade-view-review` after crop generation. Its local review
 sheet groups alternatives by BAG ID and exports one selected panorama (or an
 explicit `unusable` result) with evidence quality, occlusion reason and notes.
 That exported selection is the only panorama input the grammar classifier
-should consume for a building.
+should consume for a building. New buildings start as `unreviewed`: navigation
+cannot save them until the reviewer explicitly chooses a quality, exports omit
+untouched buildings, and the typed evidence join rejects both `unreviewed` and
+unknown runtime values.
 
 A 10-view `qwen2.5vl:7b` visibility-triage pilot did not discriminate the
 candidate views: all outputs were 50% confidence and almost all were

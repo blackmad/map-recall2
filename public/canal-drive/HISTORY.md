@@ -21,6 +21,9 @@ is the way it is, and that is the expensive part to recover later.
   the rule is regression-tested. A `qwen2.5vl:7b` visibility-triage spike was
   stopped after ten views because it returned the same 50% partial/vegetation
   answer almost everywhere. Those hints cannot influence review below 70%.
+  The sheet also starts every untouched building as `unreviewed` and refuses to
+  save it without an explicit quality choice; malformed or unreviewed imports
+  are rejected again at the classifier boundary.
 
 - **The OSM loader is an adapter: its arithmetic is typed and tested.**
   Projection about a chosen centre, Douglas-Peucker, recentring the network on
