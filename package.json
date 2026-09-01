@@ -80,6 +80,7 @@
     "build:canal-game-recall": "esbuild src/canalRecall/game/recallRuntime.ts --bundle --format=iife --outfile=public/canal-drive/js/game-recall.bundle.js",
     "test:recall-rules": "tsx scripts/check-recall-rules.ts",
     "test:landmark-notice": "tsx scripts/check-landmark-notice.ts",
+    "test:facts": "tsx scripts/check-facts.ts",
     "build:canal-boat-corridor": "esbuild src/canalRecall/game/boatCorridor.ts --bundle --format=iife --global-name=CanalRecallBoat --outfile=public/canal-drive/js/boat-corridor.bundle.js --minify",
     "test:boat-navigability": "tsx scripts/check-boat-navigability.ts",
     "test:city-overview": "tsx scripts/check-city-overview.ts",
