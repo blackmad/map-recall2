@@ -104,3 +104,23 @@ their layout, proportions, colour and depth are building-specific.
   façades leaking into both sets.
 - Review the lowest-confidence, most unusual and most common archetypes.
 - No model field becomes “measured”; source and model version remain attached.
+
+## Wide-view pilot — 2026-09-01
+
+The first five BAG targets were fetched from the pinned 2025 mission at a
+preferred camera distance of 22 m. One crop per target was not reliable: visual
+review found three useful façades, one view aimed along a canal with the target
+at the edge, and one view dominated by foliage. Centroid bearing and nominal
+camera distance are therefore necessary selection inputs, not evidence that the
+intended façade is visible.
+
+The crop manifest now retains up to three candidate views per building from
+camera positions at least 5 m apart. The selection order is deterministic
+(distance from 22 m, newest capture, panorama ID), records the mission, policy,
+camera, bearing, field of view and structured rejection reason, and writes the
+manifest atomically. The five-building rerun produced 15 crops with no request
+rejections; the alternatives rescued useful views for some obstructed targets,
+but the foliage-obscured target remained unusable in all three. The next gate is
+therefore an explicit human/model `usable-target-visible` choice across the
+candidate group. Do not feed all alternatives to grammar extraction as if each
+were independent evidence.
