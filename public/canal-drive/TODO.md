@@ -35,6 +35,12 @@ stratified sample before publishing. Dutch articles now go through local
 entailment; they retain aligned Dutch and English evidence and must be measured
 separately in that review.
 
+Bulk inference can now use OpenRouter while `trn` remains local. A measured
+three-bridge Qwen 3.5 Flash smoke run produced 5 grounded facts in 5.6 seconds,
+rejected 7 unsupported/context-dependent candidates, and cost $0.0005. Run the
+full Randstad batch with provider/model recorded in the generator version; do
+not reuse the old human approvals across that provider change.
+
 Street and waterway records with linked Wikipedia pages now enter the same
 catalog. Canal Recall indexes their exact extract IDs, keeps street/water
 homonyms separate, and shows reviewed trivia after both driving and boating

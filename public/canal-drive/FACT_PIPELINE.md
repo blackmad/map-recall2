@@ -104,6 +104,21 @@ reruns, and ignored by Git. Publication remains a separate per-city review
 operation: Amsterdam uses `scripts/facts-review.json`; the other cities use
 `scripts/facts-review-<city>.json` by default.
 
+Ollama remains the offline default. For faster bulk regeneration, the same
+prompts and fail-closed gates can use OpenRouter without changing catalog
+semantics:
+
+```sh
+FACT_ENV_FILE=/absolute/path/to/private/.env.local \
+  npm run facts:build -- --provider=openrouter \
+  --model=qwen/qwen3.5-flash-02-23 \
+  --directory=public/data/extracts/amsterdam --city=amsterdam
+```
+
+The environment file must define `OPENROUTER_API_KEY`; it is read at runtime
+and is never copied into the cache or generated facts. Facts record the exact
+provider/model used, so switching providers invalidates review and cache keys.
+
 Every published sentence retains its supporting exact source quotation,
 article URL, section, retrieval date, licence, writer and verifier model.
 `npm run test:facts` pins the editorial, review and runtime selection rules.
