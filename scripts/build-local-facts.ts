@@ -362,10 +362,29 @@ function normaliseKind(kind: string): FactKind {
 
 const rejections = new Map<RejectionReason, number>();
 const rejectionSamples = new Map<RejectionReason, string[]>();
-function recordRejection(reason: RejectionReason, text: string): void {
+interface LoggedRejection {
+  featureId: string;
+  featureName: string;
+  collection: string;
+  section: string;
+  reason: RejectionReason;
+  text: string;
+  detail?: string;
+  sourceUrl: string;
+  sourceLanguage: string;
+  sourceQuote?: string;
+  sourceQuoteEnglish?: string;
+}
+const rejectionLog: LoggedRejection[] = [];
+function recordRejection(
+  reason: RejectionReason,
+  text: string,
+  context?: Omit<LoggedRejection, 'reason' | 'text'>,
+): void {
   rejections.set(reason, (rejections.get(reason) || 0) + 1);
   const samples = rejectionSamples.get(reason) || [];
   if (samples.length < 3) { samples.push(text); rejectionSamples.set(reason, samples); }
+  if (context) rejectionLog.push({ ...context, reason, text });
 }
 
 /**
@@ -401,13 +420,21 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
       ? (await translateDutchPassage(passage.text, [feature.name, article.title])).english
       : originalLines;
     const generated = await generate(buildPrompt(feature.name, passage, sourceLines));
+    const rejectionContext = {
+      featureId: feature.id,
+      featureName: feature.name,
+      collection,
+      section: passage.section,
+      sourceUrl: article.url,
+      sourceLanguage: article.lang,
+    };
     const candidates: Array<VerificationCandidate & { kind: FactKind }> = [];
     for (const [index, entry] of generated.entries()) {
       const kind = normaliseKind(entry.kind);
       const evidence = evidenceFromSentences(entry.evidenceIds, sourceLines);
       const sourceEvidence = evidenceFromSentences(entry.evidenceIds, originalLines);
       if (!evidence || !sourceEvidence || !isSourceQuotation(sourceEvidence, passage.text)) {
-        recordRejection('not-a-source-quotation', entry.text);
+        recordRejection('not-a-source-quotation', entry.text, rejectionContext);
         continue;
       }
       const verdict = judgeFact(entry.text, {
@@ -417,7 +444,12 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
         source: evidence,
         accepted: accepted.map((fact) => fact.text),
       });
-      if (!verdict.ok) { recordRejection(verdict.reason, entry.text); continue; }
+      if (!verdict.ok) {
+        recordRejection(verdict.reason, entry.text, {
+          ...rejectionContext, sourceQuote: sourceEvidence, sourceQuoteEnglish: evidence,
+        });
+        continue;
+      }
       candidates.push({ id: index + 1, fact: verdict.text, evidence, sourceEvidence, kind });
     }
     const verifications = await verifyEntailments(feature.name, candidates);
@@ -425,7 +457,12 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
       const verification = verifications.get(candidate.id)
         || { supported: false, reason: 'verifier omitted candidate' };
       if (!verification.supported) {
-        recordRejection('not-entailed', `${candidate.fact} (${verification.reason})`);
+        recordRejection('not-entailed', candidate.fact, {
+          ...rejectionContext,
+          detail: verification.reason,
+          sourceQuote: candidate.sourceEvidence,
+          sourceQuoteEnglish: candidate.evidence,
+        });
         continue;
       }
       accepted.push({
@@ -492,6 +529,9 @@ const output: FactsFile = {
   features: features.sort((a, b) => a.id.localeCompare(b.id)),
 };
 await writeFile(path.join(stagingDirectory, 'facts.json'), `${JSON.stringify(output, null, 2)}\n`);
+await writeFile(path.join(stagingDirectory, 'fact-rejections.json'), `${JSON.stringify({
+  cityId, generatorVersion: runVersion, generatedAt: output.generatedAt, rejections: rejectionLog,
+}, null, 2)}\n`);
 
 const totalFacts = features.reduce((sum, feature) => sum + feature.facts.length, 0);
 const rejected = [...rejections.values()].reduce((sum, count) => sum + count, 0);
@@ -555,5 +595,25 @@ const review = [
 ].join('\n');
 await writeFile(path.join(stagingDirectory, 'facts-review.md'), `${review}\n`);
 
-process.stdout.write(`\nStaged ${path.relative(process.cwd(), path.join(stagingDirectory, 'facts.json'))}`
-  + ` and facts-review.md. Nothing published.\n`);
+const rejectionReview = [
+  `# Rejected facts for ${cityId}`,
+  '',
+  `Generator \`${runVersion}\`, ${output.generatedAt}. ${rejectionLog.length} rejected candidates.`,
+  '',
+  ...rejectionLog.flatMap((entry) => [
+    `## ${entry.featureName}`,
+    `\`${entry.featureId}\` · ${entry.collection} · ${entry.section || 'lede'} · **${entry.reason}** · [source](${entry.sourceUrl})`,
+    '',
+    `- Proposed: ${entry.text}`,
+    ...(entry.detail ? [`- Why: ${entry.detail}`] : []),
+    ...(entry.sourceQuote ? [`- Evidence (${entry.sourceLanguage}): “${entry.sourceQuote}”`] : []),
+    ...(entry.sourceLanguage === 'nl' && entry.sourceQuoteEnglish
+      ? [`- Local trn translation: “${entry.sourceQuoteEnglish}”`]
+      : []),
+    '',
+  ]),
+].join('\n');
+await writeFile(path.join(stagingDirectory, 'fact-rejections.md'), `${rejectionReview}\n`);
+
+process.stdout.write(`\nStaged ${path.relative(process.cwd(), path.join(stagingDirectory, 'facts.json'))}, `
+  + 'facts-review.md and full rejection logs. Nothing published.\n');

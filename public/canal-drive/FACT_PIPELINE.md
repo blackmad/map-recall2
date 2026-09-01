@@ -104,6 +104,12 @@ reruns, and ignored by Git. Publication remains a separate per-city review
 operation: Amsterdam uses `scripts/facts-review.json`; the other cities use
 `scripts/facts-review-<city>.json` by default.
 
+Every build also writes `staging/fact-rejections.json` and
+`staging/fact-rejections.md`. They retain the complete rejected proposal,
+rejection code, verifier explanation, feature identity, section, source URL,
+original evidence and local translation. Console samples are only a summary;
+the staging logs are the audit record used to improve prompts and gates.
+
 Ollama remains the offline default. For faster bulk regeneration, the same
 prompts and fail-closed gates can use OpenRouter without changing catalog
 semantics:
