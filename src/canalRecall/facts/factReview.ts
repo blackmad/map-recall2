@@ -101,6 +101,8 @@ export function selectReviewedFacts(
       if (!fact.text || !fact.sourceQuote
         || !/^https:\/\/[^/]+\.wikipedia\.org\//.test(fact.sourceUrl)
         || !fact.license || !fact.retrievedAt || !fact.model
+        || !fact.sourceLanguage || !fact.sourceQuoteEnglish
+        || (fact.sourceLanguage === 'nl' && !fact.translator)
         || fact.verification !== 'grounded' || !fact.verifierModel) {
         rejected.push({ id: feature.id, reason: 'invalid-provenance', text: fact.text });
         continue;

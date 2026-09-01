@@ -68,13 +68,17 @@ city extract instead of attempting a second entity-resolution system:
 1. `npm run facts:articles` caches complete English or Dutch Wikipedia articles
    for landmarks, bridges, squares and parks. The cache is local and ignored.
 2. `npm run facts:build` selects useful article sections and asks local Ollama
-   to write short English summaries. The writer cites numbered source
-   sentences; code retrieves those exact Wikipedia sentences, and a separate
+   to write short English summaries. Dutch source sentences are first
+   translated one-to-one by local `trn --quality high`, with place names held
+   out of the translator and the exact Dutch/English pair cached. The writer
+   cites numbered English source sentences; code retrieves the aligned exact
+   Wikipedia sentences, and a separate
    temperature-zero local pass must confirm that the evidence entails every
    claim. Deterministic gates separately reject altered numbers, stale claims,
    lede restatements, fragments, markup and near-duplicates. It writes only to the ignored
-   `public/data/extracts/<city>/staging/` directory. Dutch articles are cached
-   but excluded until translation has its own proven entailment gate.
+   `public/data/extracts/<city>/staging/` directory. Dutch facts retain the
+   exact Dutch evidence, the local `trn` translation, and translator version
+   alongside writer and verifier provenance before human review.
 3. A person reviews `facts-review.md` and records feature-level approval and
    struck sentences in `scripts/facts-review.json`. Reviews are tied to the
    generator version and therefore fail closed after prompt or gate changes.
