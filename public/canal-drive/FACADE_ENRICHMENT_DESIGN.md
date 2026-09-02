@@ -342,3 +342,30 @@ small-structure majority and keeps a usable pool. It currently keeps **3,694 of
 The order of work is now clear: gate targets, restore view selection, *then* buy
 a stratified sample. Re-running the grammar pilot before those two would measure
 camera aim and footprint noise again rather than façades.
+
+### The gate, run against the live panorama API
+
+`npm run build:facade-review -- --output=.cache/facade-review-gated --limit=8`
+rejected **6,884 targets before making a single request** — 6,358
+`footprint-too-small-for-a-facade`, 265 `no-edge-wide-enough-to-photograph`, 261
+`too-short-for-a-facade` — and then needed 16 attempts to find 8 usable crops,
+the other 8 failing on `no-panorama-in-radius` at 45 m.
+
+Every one of the eight is a building:
+
+| Target | Footprint | Height | Longest edge |
+|---|---|---|---|
+| `w269088173` | 670 m² | 18.0 m | 28.7 m |
+| `w267107855` | 193 m² | 20.3 m | 34.7 m |
+| `w1421415127` | 152 m² | 9.0 m | 16.2 m |
+| `w274039950` | 134 m² | 17.7 m | 10.5 m |
+| `w1424410003` | 112 m² | 12.7 m | 34.4 m |
+| `w1422806621` | 54 m² | 6.0 m | 7.5 m |
+| `w461751590` | 51 m² | 9.0 m | 9.4 m |
+| `w1312162783` | 49 m² | 9.0 m | 10.4 m |
+
+Against the original pilot's 1 m², 7 m² and 18 m² targets, this is the set the
+grammar questions were always meant to be asked about. It is a crop set, not a
+sample: the selection is still a deterministic hash order rather than a
+stratification by typology and era, and view selection is still unreviewed. Both
+remain prerequisites before spending on another extraction run.
