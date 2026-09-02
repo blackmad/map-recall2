@@ -106,7 +106,8 @@
     "test:route-ribbon": "tsx scripts/check-route-ribbon.ts",
     "refresh:rotterdam": "bash scripts/refresh-city-extract.sh rotterdam Rotterdam 51.9225,4.47917 https://download.geofabrik.de/europe/netherlands/zuid-holland-latest.osm.pbf",
     "refresh:den-haag": "bash scripts/refresh-city-extract.sh den-haag \"Den Haag\" 52.0705,4.3007 https://download.geofabrik.de/europe/netherlands/zuid-holland-latest.osm.pbf",
-    "refresh:randstad": "bash scripts/refresh-randstad.sh"
+    "refresh:randstad": "bash scripts/refresh-randstad.sh",
+    "build:google-tiles-spike": "node scripts/build-google-tiles-spike.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
