@@ -159,14 +159,21 @@ const STONE_ROUGHNESS = 0.85;
  * What to paint the surfaces SketchUp left unpainted.
  *
  * `default_face_material` is not a colour anyone chose — it is SketchUp's "no
- * material assigned", exported as near-white. On the Palace those surfaces are
- * the insides of its two internal courtyards, and at 0.98 white they read from
- * above as two glowing rectangles punched through the roof. A dark neutral
- * reads as what they actually are: shaded interior wall the player is seeing
- * down into. This is the one place this script assigns an appearance rather
- * than correcting one, so it is deliberately joyless — no hue, just shadow.
+ * material assigned", exported as near-white, and at 0.98 it reads from above
+ * as glowing holes punched through a roof.
+ *
+ * The value is a mid grey rather than the near-black tried first, because this
+ * material is not what it looks like. On the Palace it is the single largest
+ * material in the model — 3,131 triangles against the main stone's 2,049 —
+ * covering back faces all over the building, not just the two internal
+ * courtyards it appeared to be. Painting it 0.16 turned every parapet and roof
+ * edge into a black band. A mid grey passes for shaded stone wherever it turns
+ * up, which is the only safe assumption for a surface with no stated colour.
+ *
+ * This is the one place this script assigns an appearance rather than
+ * correcting one, so it stays deliberately joyless: no hue, just grey.
  */
-const UNPAINTED_FACE_COLOUR: [number, number, number, number] = [0.16, 0.16, 0.17, 1];
+const UNPAINTED_FACE_COLOUR: [number, number, number, number] = [0.42, 0.42, 0.43, 1];
 const UNPAINTED_MATERIAL_PATTERN = /^default_face_material/i;
 
 /**
@@ -254,7 +261,7 @@ function primitiveWorldBounds(
   return bounds;
 }
 
-function cleanSketchUpExport(document: Document): {
+function cleanSketchUpExport(document: Document, unpaintedColour: [number, number, number, number]): {
   droppedPrimitives: number;
   droppedGround: number;
   doubleSided: number;
@@ -301,7 +308,7 @@ function cleanSketchUpExport(document: Document): {
       demetallised += 1;
     }
     if (UNPAINTED_MATERIAL_PATTERN.test(material.getName()) && !material.getBaseColorTexture()) {
-      material.setBaseColorFactor(UNPAINTED_FACE_COLOUR);
+      material.setBaseColorFactor(unpaintedColour);
       unpainted += 1;
     }
   }
@@ -366,7 +373,16 @@ async function main(): Promise<void> {
   await MeshoptSimplifier.ready;
   await MeshoptEncoder.ready;
 
-  const cleaned = argument('profile') === 'sketchup' ? cleanSketchUpExport(document) : null;
+    const unpaintedColour = (argument('unpainted') ?? '')
+    .split(',').map(Number).filter(n => Number.isFinite(n));
+  const cleaned = argument('profile') === 'sketchup'
+    ? cleanSketchUpExport(
+        document,
+        unpaintedColour.length === 3
+          ? [unpaintedColour[0], unpaintedColour[1], unpaintedColour[2], 1]
+          : UNPAINTED_FACE_COLOUR,
+      )
+    : null;
   if (cleaned) {
     console.log(
       `sketchup cleanup: dropped ${cleaned.droppedPrimitives} non-triangle primitives, `

@@ -157,13 +157,28 @@ export class SignatureLandmarks {
       onAdd(map, gl) {
         camera = new THREE.Camera();
         scene = new THREE.Scene();
-        // Flat daylight. A directional key from the south-west matches the
-        // basemap's own baked shading closely enough that a model does not
-        // read as lit from a different sun than the street it stands on.
-        scene.add(new THREE.HemisphereLight(0xffffff, 0x59636a, 2.6));
-        const sun = new THREE.DirectionalLight(0xffffff, 2.6);
-        sun.position.set(-0.6, -1, 1.4);
+        // Daylight, and note the sign of the sun's Y.
+        //
+        // These models are Y-up in their own scene, and the first version of
+        // this put the sun at y = -1: underneath the building, lighting its
+        // undersides. Roofs then took their entire illumination from the
+        // hemisphere light's white sky at full strength and blew out to flat
+        // white, which read as broken normals and is why the Palace's roof
+        // looked like a sheet of paper.
+        //
+        // So: a key from above and to the south-west, and a hemisphere dialled
+        // back to fill rather than to light. The ground colour is the muted
+        // grey-blue the basemap uses, so a model bounces the same light back as
+        // the street it stands on.
+        scene.add(new THREE.HemisphereLight(0xdfeaf2, 0x6b7480, 1.15));
+        const sun = new THREE.DirectionalLight(0xfff6e8, 2.2);
+        sun.position.set(-0.5, 1.6, 0.9);
         scene.add(sun);
+        // A weak opposite fill so north-facing walls are readable rather than
+        // silhouettes; buildings here are seen from every side while riding.
+        const fill = new THREE.DirectionalLight(0xc9dcea, 0.55);
+        fill.position.set(0.8, 0.4, -1.1);
+        scene.add(fill);
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
 

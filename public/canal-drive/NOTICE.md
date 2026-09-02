@@ -93,9 +93,11 @@ export rather than restyle a building:
 - All materials set non-metallic. Every one arrives at `metallicFactor 1.0`,
   glTF's default when an exporter omits the field rather than anyone's choice,
   and a fully metallic surface with no environment map renders black.
-- `default_face_material` — SketchUp's "unpainted", exported near-white —
-  darkened to a neutral, so the Palace's internal courtyards read as shaded
-  interior rather than as holes punched through the roof.
+- `default_face_material` — SketchUp's "unpainted", exported near-white — set
+  to a mid grey, so it reads as shaded stone rather than as holes punched
+  through a roof. Mid rather than dark: on the Palace this is the single
+  largest material in the model, covering back faces all over the building
+  rather than only the internal courtyards it first appeared to be.
 - Spare UV sets and tangents dropped, textures re-encoded as WebP at 512 px,
   geometry quantized and meshopt-compressed.
 
