@@ -66,6 +66,11 @@ export interface GameCoreHost {
   viewport: import('../viewport.ts').Viewport;
   /** This frame's HUD geometry, computed once by the presentation runtime. */
   _hudLayoutCache?: import('../hudLayout.ts').HudLayout | null;
+  /** True while a DOM overlay owns the screen — the recall question, a utility
+   *  panel, or the expanded article. The d-pad is not drawn under any of them. */
+  _overlayOpen(): boolean;
+  /** Tap targets for the arrival card's actions, on touch. */
+  _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' }>;
 
   /** Owned by the recall subsystem; landmarks needs it to join street names to
    *  the knowledge extract by the same normalisation the quiz uses. */

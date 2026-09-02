@@ -6,6 +6,45 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The phone pass reached past the driving screen.** Portrait, the d-pad and
+  the paper system had covered the map and the HUD; the overlays over them had
+  never been opened at a phone's size, because the `iphone` Playwright project
+  could not reach them until the horizontal-overflow bug below was fixed.
+  Opening them found real faults, not polish.
+
+  The recall question docked to the bottom of a portrait screen at 72dvh, which
+  put its top edge above the vehicle — so the game asked which canal you were
+  on while the card covered the canal you were on. It is capped at 46dvh and
+  scrolls. The d-pad was still being drawn underneath every overlay: the
+  vehicle is stopped behind a question, so those were dead controls under an
+  opaque card, and the pad is now suppressed whenever a question, panel or
+  article owns the screen.
+
+  The arrival card was the last dark surface in the game — navy with a sky
+  accent at the end of a route played on paper — and its actions were ENTER,
+  ESC and C, three keys a phone does not have. It is paper now, with real
+  buttons hit-tested against `_finishButtonBounds`; the keyboard paths run the
+  same actions rather than a second copy of them. Its five stats were laid out
+  in five columns sized for a 600 px card and ran "420", "03:33" and "0.00 km"
+  into each other at 366 px; they wrap into rows of three. The card itself was
+  600 px wide, which put its left edge at x = -105 on a phone. The settings
+  panel clipped its own Done button off the bottom of an over-tall centred
+  card, and its checkboxes were 13 px targets.
+
+  Touch had no zoom at all — only the `-`/`+` keys and a trackpad wheel — so
+  two-finger pinch now works anywhere outside the pad, and a pinch no longer
+  also pans.
+
+  Storybook earned its place here: three of these were found by building the
+  states rather than by reading the code. It also exposed two bugs of the same
+  class in the existing fixtures. `CANVAS_W`, `CANVAS_H` and `PIXELS_PER_METER`
+  are top-level `let`/`const` in classic scripts, which makes them global
+  *lexical* bindings and never properties of `window`; the stories read them
+  off `contentWindow`, got `undefined`, and silently fell back to 1280×720 and
+  to a NaN distance. And every finish story had been throwing on
+  `routeDifficulty.charAt` — invisible for as long as the frame itself was
+  404ing.
+
 - **The grounded trivia catalog now covers the Randstad.** OpenRouter Qwen 3.5
   Flash summarized cached real Wikipedia sections while local `trn` translated
   Dutch evidence sentence-for-sentence. A separately versioned verifier plus

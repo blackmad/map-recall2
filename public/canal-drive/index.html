@@ -167,15 +167,16 @@ canvas { display: block; position: relative; z-index: 2; }
    with real scrolling. The canvas card is a glance; this is the read. */
 #landmark-panel .utility-card { display: flex; flex-direction: column; width: min(100%, 640px); max-height: min(86dvh, 760px); }
 #landmark-panel-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-#landmark-panel-badges span { padding: 3px 7px; border-radius: 3px; background: rgba(250,204,21,.2); color: #facc15; font-size: 10px; font-weight: bold; letter-spacing: .04em; }
-#landmark-panel-badges span[data-kind="lang"] { background: rgba(148,163,184,.22); color: #cbd5e1; }
-#landmark-panel-badges span[data-kind="fact"] { background: rgba(196,181,253,.2); color: #c4b5fd; }
+#landmark-panel-badges span { padding: 3px 7px; border-radius: 3px; background: rgba(183,129,37,.18); color: #7a5514; font-size: 10px; font-weight: bold; letter-spacing: .04em; }
+#landmark-panel-badges span[data-kind="lang"] { background: rgba(104,116,110,.16); color: #54605a; }
+#landmark-panel-badges span[data-kind="fact"] { background: rgba(94,74,124,.15); color: #5b4a7c; }
 #landmark-panel h2 { margin-bottom: 12px; }
 #landmark-panel-scroll { overflow-y: auto; flex: 1; min-height: 0; -webkit-overflow-scrolling: touch; }
 #landmark-panel-image { float: right; width: 168px; margin: 0 0 12px 14px; border-radius: var(--radius-sm); }
 #landmark-panel-body { font-size: 13px; line-height: 1.65; white-space: pre-wrap; }
-#landmark-panel-link { display: inline-block; margin-top: 14px; color: #7dd3fc; font-size: 12px; }
+#landmark-panel-link { display: inline-block; margin-top: 14px; color: var(--moss); font-size: 12px; }
 @media (max-width: 760px) { #landmark-panel-image { float: none; width: 100%; margin: 0 0 12px; } }
+input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); background: transparent; }
 #utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 12; display: flex; gap: 8px; }
 #utility-buttons button { width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); font-size: 18px; cursor: pointer; box-shadow: 0 6px 18px rgba(58,50,36,.16); }
 #prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; padding: 5px 8px; border-radius: 6px; background: var(--surface); color: var(--muted); font: 11px var(--font-ui); }
@@ -200,8 +201,14 @@ canvas { display: block; position: relative; z-index: 2; }
   .setup-field select, .setup-field input[type="text"] { min-height: 30px; font-size: 16px; }
   #route-start { position: sticky; bottom: 0; z-index: 3; min-height: 50px; box-shadow: 0 -14px 28px var(--paper-raised), 0 8px 24px rgba(53,102,83,.25); }
   #canal-prompt, #canal-prompt.dock-left { align-items: flex-end; justify-content: center; padding: 12px calc(12px + env(safe-area-inset-right, 0px)) calc(12px + var(--safe-bottom)) calc(12px + env(safe-area-inset-left, 0px)); background: linear-gradient(0deg, rgba(36,50,43,.42), transparent 62%); }
-  #canal-card { width: 100%; max-height: 72dvh; overflow-y: auto; padding: 18px; }
-  #canal-card h2 { font-size: 21px; }
+  /* Capped so the vehicle, which sits at the centre of the screen, stays above
+     the card. At 72dvh the card covered it — and being asked which canal you
+     are on while the card hides the canal you are on is the one thing this
+     screen must not do. It scrolls instead of growing. */
+  #canal-card { width: 100%; max-height: 46dvh; overflow-y: auto; padding: 16px 18px; }
+  #canal-card h2 { font-size: 20px; margin-bottom: 4px; }
+  #canal-card p { margin-bottom: 12px; font-size: 12px; }
+  .prompt-kind { margin-bottom: 8px; }
   #canal-choices { grid-template-columns: 1fr 1fr; }
   .canal-choice { min-height: 46px; }
   #canal-answer { font-size: 16px; }
@@ -211,9 +218,16 @@ canvas { display: block; position: relative; z-index: 2; }
   #utility-buttons { right: calc(10px + env(safe-area-inset-right, 0px)); bottom: calc(12px + var(--safe-bottom)); }
   #utility-buttons button { width: 46px; height: 46px; }
   #prototype-links { display: none; }
-  .utility-panel { padding: 12px; }
-  .utility-card { padding: 18px; max-height: 86dvh; overflow-y: auto; }
-  .utility-close { min-height: 46px; }
+  .utility-panel { padding: 12px; align-items: flex-end; }
+  /* `align-items: flex-end` plus a hard cap: centred, the card grew past both
+     edges and clipped its own Done button off the bottom of the screen. */
+  .utility-card { padding: 18px; max-height: calc(100dvh - 24px - var(--safe-bottom)); overflow-y: auto; margin-bottom: calc(6px + var(--safe-bottom)); }
+  .utility-close { min-height: 46px; position: sticky; bottom: 0; }
+  /* Checkboxes were 13px targets in a two-up grid. */
+  .assist-options { gap: 4px 14px; }
+  .assist-options label { min-height: 44px; font-size: 14px; }
+  .assist-options input, .master-toggle input { width: 20px; height: 20px; }
+  .utility-card table td { padding: 7px 0; }
 }
 
 /* A landscape phone: the bottom edge belongs to the d-pad and the trivia card,
