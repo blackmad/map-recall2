@@ -100,7 +100,8 @@
     "refresh:randstad": "bash scripts/refresh-randstad.sh",
     "build:canal-ui": "esbuild src/canalRecall/gameUi.ts --bundle --format=iife --global-name=CanalRecallUi --outfile=public/canal-drive/js/game-ui.bundle.js --minify",
     "test:mobile-hud": "node --experimental-strip-types scripts/check-mobile-hud.ts",
-    "build:signature-landmark-model": "tsx scripts/build-signature-landmark.ts"
+    "build:signature-landmark-model": "tsx scripts/build-signature-landmark.ts",
+    "build:vehicle-models": "tsx scripts/build-vehicle-model.ts --source=public/canal-drive/carbon-frame-bike-runtime.glb --out=public/canal-drive/carbon-frame-bike-runtime.glb --triangles=20000 --error=0.02 --keep=Lenker,RadVorn,RadHinten"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

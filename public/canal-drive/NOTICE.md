@@ -38,47 +38,15 @@ The bicycle ships here in modified form, which its CC BY-SA licence requires to
 be stated. It was not changed artistically, only reduced so a browser game can
 download and draw it: its rig, its unplayed animation and its tangents and UVs
 were removed — it carries no textures — and it was then welded, simplified and
-quantized, 8.57 MB to 2.01 MB. The unmodified original remains at the Sketchfab
-link above. The boat was reduced the same way, 2.85 MB to 0.24 MB; it arrives as
-raw geometry with no normals, materials or textures, so its shading and its
-aluminium colour are applied at runtime.
+quantized, 8.57 MB to 2.01 MB. It has since been reduced again, from 1.92 MB to
+0.65 MB: the meshes the game does not animate were lifted to the scene root and
+merged, the whole was decimated from 73,921 to 48,235 triangles and 280 draw
+calls to 200, and the result compressed with EXT_meshopt_compression, which the
+earlier pass had never applied. `Lenker`, `RadVorn` and `RadHinten` are
+untouched, because the game steers and rolls them by name. The unmodified
+original remains at the Sketchfab link above.
 
-# Signature landmark models
+The boat was reduced the same way, 2.85 MB to 0.24 MB and then to 0.03 MB at
+7,994 triangles; it arrives as raw geometry with no normals, materials or
+textures, so its shading and its aluminium colour are applied at runtime.
 
-A small curated set of buildings is drawn from real models instead of extruded
-OSM footprints. Each is credited here and in `models/signature-landmarks.json`,
-and the credit is also shown in the game beside the model.
-
-The Royal Palace of Amsterdam (Paleis op de Dam) uses "Palace on the Dam" by
-the City of Amsterdam, Geo- en Vastgoedinformatie, from 3D Warehouse:
-https://3dwarehouse.sketchup.com/model/d1ad512d8df5fc6745407e0587dff10e
-
-It is used under the 3D Warehouse General Model License
-(https://3dwarehouse.sketchup.com/tos/). That licence permits incorporating a
-model into a Combined Work carrying substantial additional content and
-distributing that work, including commercially; it does not permit aggregating
-models from the site for redistribution as an asset library. **Anyone forking
-this repository should satisfy themselves on that point for their own use**,
-because a `models/` directory in a public repository is closer to the second
-case than the game around it is. Trimble takes written requests at
-3dwarehouse-tou@sketchup.com.
-
-The model ships here in cleaned-up form. It was not changed artistically; the
-changes correct an export rather than restyle a building:
-
-- SketchUp construction edges (LINE primitives) removed. They drew as stray
-  hairlines across the city and made the model measure 136 m wide when the
-  building is 85 m.
-- All faces made double-sided, so inward-wound faces stop rendering black.
-- All materials set non-metallic. Every one arrived at `metallicFactor 1.0`,
-  which is glTF's default when an exporter omits the field rather than anyone's
-  choice, and a fully metallic surface with no environment map renders black.
-- The two `default_face_material` surfaces — SketchUp's "unpainted", exported
-  as near-white, and in this model the insides of the Palace's two internal
-  courtyards — darkened to a neutral so they read as shaded interior rather
-  than as holes punched through the roof.
-- Spare UV sets and tangents dropped, textures re-encoded as WebP at 512 px,
-  geometry quantized and meshopt-compressed. 1.72 MB to 0.64 MB.
-
-It is placed at the city's own published coordinate, at its surveyed size,
-unscaled and unrotated.
