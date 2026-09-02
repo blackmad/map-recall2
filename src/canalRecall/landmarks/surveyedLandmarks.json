@@ -2,6 +2,7 @@
   {
     "id": "westerkerk",
     "name": "Westerkerk",
+    "author": "City of Amsterdam, Geo en Vastgoedinformatie",
     "warehouseId": "11e419e09f0c9a7e270fcd68188626b2",
     "landmarkId": "extract_landmarks_1692085215",
     "landmarkName": "Westerkerk",
@@ -10,7 +11,6 @@
       4.88396309426941,
       52.374553951618516
     ],
-    "anchorToLandmarkMetres": 29.8,
     "footprint": {
       "centre": [
         4.8839111908456285,
@@ -19,11 +19,13 @@
       "headingDegrees": 92.95334409606835,
       "lengthMetres": 60.46473582847,
       "widthMetres": 43.35976262783471
-    }
+    },
+    "anchorToLandmarkMetres": 29.8
   },
   {
     "id": "stadhuis",
     "name": "Stadhuis (City hall)",
+    "author": "City of Amsterdam, Geo en Vastgoedinformatie",
     "warehouseId": "5995fd7a0e7fa47d99c802e874695f6b",
     "landmarkId": "extract_landmarks_1919682395",
     "landmarkName": "Dutch National Opera & Ballet",
@@ -32,12 +34,13 @@
       4.900961341213284,
       52.367703988914265
     ],
-    "anchorToLandmarkMetres": 35.1,
-    "footprint": null
+    "footprint": null,
+    "anchorToLandmarkMetres": 35.1
   },
   {
     "id": "oude-kerk",
     "name": "Oude Kerk (Old Church)",
+    "author": "City of Amsterdam, Geo en Vastgoedinformatie",
     "warehouseId": "5ec8bf3fa426e5d622fc8389905f949e",
     "landmarkId": "extract_landmarks_1522513904",
     "landmarkName": "Old Church",
@@ -46,7 +49,6 @@
       4.898107149173812,
       52.37429820721874
     ],
-    "anchorToLandmarkMetres": 25.3,
     "footprint": {
       "centre": [
         4.898073280113648,
@@ -55,11 +57,13 @@
       "headingDegrees": 86.59811535561408,
       "lengthMetres": 81.88802279426366,
       "widthMetres": 64.00195512396668
-    }
+    },
+    "anchorToLandmarkMetres": 25.3
   },
   {
     "id": "centraal-station",
     "name": "Centraal station",
+    "author": "City of Amsterdam, Geo en Vastgoedinformatie",
     "warehouseId": "6e8629eaefa7ab9f4e5ba763a187284e",
     "landmarkId": "extract_landmarks_332626598",
     "landmarkName": "Cuypersgebouw",
@@ -68,7 +72,6 @@
       4.9000903650085235,
       52.378838075868146
     ],
-    "anchorToLandmarkMetres": 44.1,
     "footprint": {
       "centre": [
         4.899750668752946,
@@ -77,11 +80,13 @@
       "headingDegrees": 120.65330083236796,
       "lengthMetres": 244.34798071019168,
       "widthMetres": 30.916412054875813
-    }
+    },
+    "anchorToLandmarkMetres": 44.1
   },
   {
     "id": "national-monument-on-the-dam",
     "name": "National Monument on the Dam",
+    "author": "City of Amsterdam, Geo en Vastgoedinformatie",
     "warehouseId": "80385c387986217491e131c17526634a",
     "landmarkId": "extract_landmarks_720777797",
     "landmarkName": "National Monument",
@@ -90,7 +95,6 @@
       4.8936960138168075,
       52.37278222735422
     ],
-    "anchorToLandmarkMetres": 20.6,
     "footprint": {
       "centre": [
         4.8936883137407685,
@@ -99,11 +103,13 @@
       "headingDegrees": 176.47702002174162,
       "lengthMetres": 34.53751303400255,
       "widthMetres": 34.522229825201435
-    }
+    },
+    "anchorToLandmarkMetres": 20.6
   },
   {
     "id": "nemo",
     "name": "NEMO",
+    "author": "City of Amsterdam, Geo en Vastgoedinformatie",
     "warehouseId": "a2a1d7c7726cb7e065a54e9dd3ee74f",
     "landmarkId": "extract_landmarks_1875483593",
     "landmarkName": "Nemo",
@@ -112,12 +118,13 @@
       4.912047425587275,
       52.37396981022394
     ],
-    "anchorToLandmarkMetres": 13.7,
-    "footprint": null
+    "footprint": null,
+    "anchorToLandmarkMetres": 13.7
   },
   {
     "id": "rijksmuseum",
     "name": "Rijksmuseum",
+    "author": "City of Amsterdam, Geo en Vastgoedinformatie",
     "warehouseId": "a57b8c559152b7851aeb638739e9b807",
     "landmarkId": "extract_landmarks_512243549",
     "landmarkName": "Rijksmuseum",
@@ -126,7 +133,6 @@
       4.885146056364321,
       52.35975292731005
     ],
-    "anchorToLandmarkMetres": 103.2,
     "footprint": {
       "centre": [
         4.884979214003914,
@@ -135,11 +141,13 @@
       "headingDegrees": 102.66684543249102,
       "lengthMetres": 216.0340626582873,
       "widthMetres": 191.08233490964875
-    }
+    },
+    "anchorToLandmarkMetres": 103.2
   },
   {
     "id": "de-beurs-van-berlage",
     "name": "De Beurs van Berlage (Stock Exchange)",
+    "author": "City of Amsterdam, Geo en Vastgoedinformatie",
     "warehouseId": "c5a0708f3e4b36fe622758e070290bc2",
     "landmarkId": "extract_landmarks_1104215352",
     "landmarkName": "Berlage's Stock Market",
@@ -148,7 +156,6 @@
       4.896348334822169,
       52.37503529982596
     ],
-    "anchorToLandmarkMetres": 30.5,
     "footprint": {
       "centre": [
         4.896282358992785,
@@ -157,11 +164,13 @@
       "headingDegrees": 37.10231784305506,
       "lengthMetres": 143.68034104351068,
       "widthMetres": 54.265141530449334
-    }
+    },
+    "anchorToLandmarkMetres": 30.5
   },
   {
     "id": "palace-on-the-dam",
     "name": "Palace on the Dam",
+    "author": "City of Amsterdam, Geo en Vastgoedinformatie",
     "warehouseId": "d1ad512d8df5fc6745407e0587dff10e",
     "landmarkId": "extract_landmarks_342809743",
     "landmarkName": "Royal Palace",
@@ -170,7 +179,6 @@
       4.891409500306835,
       52.373196352182916
     ],
-    "anchorToLandmarkMetres": 28.9,
     "footprint": {
       "centre": [
         4.891336694593322,
@@ -179,6 +187,91 @@
       "headingDegrees": 1.4350192765089105,
       "lengthMetres": 80.97600419214265,
       "widthMetres": 65.49286921449004
-    }
+    },
+    "anchorToLandmarkMetres": 28.9
+  },
+  {
+    "id": "munttoren-amsterdam",
+    "name": "Munttoren Amsterdam",
+    "author": "OnO",
+    "warehouseId": "289437190bd7efc1c0de3c0357f9a9da",
+    "landmarkId": "extract_landmarks_1375175685",
+    "landmarkName": "Mint Tower",
+    "address": "Muntplein Amsterdam",
+    "anchor": [
+      4.893198211404391,
+      52.3670118642164
+    ],
+    "footprint": {
+      "centre": [
+        4.893206481413279,
+        52.367049898093235
+      ],
+      "headingDegrees": 125.79927526445167,
+      "lengthMetres": 9.13476982005432,
+      "widthMetres": 4.419992279890443
+    },
+    "anchorToLandmarkMetres": 2
+  },
+  {
+    "id": "montelbaanstoren-amsterdam",
+    "name": "Montelbaanstoren, Amsterdam.",
+    "author": "OnO",
+    "warehouseId": "917a5cc60a9c5469c0de3c0357f9a9da",
+    "landmarkId": "extract_landmarks_1027016792",
+    "landmarkName": "Montelbaanstoren",
+    "address": "Oudeschans 2.. Amsterdam, The Netherlands",
+    "anchor": [
+      4.905658,
+      52.372047
+    ],
+    "footprint": {
+      "centre": [
+        4.905666212830665,
+        52.37204293900936
+      ],
+      "headingDegrees": 14.7477799747804,
+      "lengthMetres": 11.178574490070794,
+      "widthMetres": 10.278398345692779
+    },
+    "anchorToLandmarkMetres": 7.4
+  },
+  {
+    "id": "heineken-experience-amsterdam",
+    "name": "Heineken Experience, Amsterdam.",
+    "author": "marcinplymouth",
+    "warehouseId": "4e77b7d365245b8239a65e5e29a6306",
+    "landmarkId": "extract_landmarks_914627337",
+    "landmarkName": "Heineken Experience",
+    "address": null,
+    "anchor": [
+      4.89184165895771,
+      52.35768328228659
+    ],
+    "footprint": null,
+    "anchorToLandmarkMetres": 17.9
+  },
+  {
+    "id": "concertgebouw",
+    "name": "Concertgebouw (ALMOST FINISHED)",
+    "author": "Gijs",
+    "warehouseId": "702e13dbca79c53796fa299c99288367",
+    "landmarkId": "extract_landmarks_626684803",
+    "landmarkName": "Concertgebouw",
+    "address": "Amsterdam, the Netherlands, Europe",
+    "anchor": [
+      4.879062953458586,
+      52.35618133090705
+    ],
+    "footprint": {
+      "centre": [
+        4.878993599624139,
+        52.3562349750812
+      ],
+      "headingDegrees": 57.53032726644909,
+      "lengthMetres": 88.76752438404172,
+      "widthMetres": 64.43221798070718
+    },
+    "anchorToLandmarkMetres": 36.5
   }
 ]
