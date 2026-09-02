@@ -32,7 +32,10 @@ const selectedBuildings = new Set(manifest.tiles.flatMap((tile) => tile.building
   const crossSourceRgbDistance = aerialColour && pointColour ? Math.hypot(...parseHex(aerialColour).map((value, index) => value - parseHex(pointColour)[index])) : null;
   const crossSourceAgrees = crossSourceRgbDistance !== null && crossSourceRgbDistance <= 20;
   const reason = measurement.status !== 'accepted' ? measurement.reason : !aerialColour ? 'missing-independent-orthophoto-observation' : !crossSourceAgrees ? 'cross-source-colour-disagreement' : null;
-  return { schemaVersion: 1, buildingId: roof.buildingId, surfaceId: roof.surfaceId, status: reason ? 'rejected' : 'proposed', reason, pointCloudMeasurement: measurement, orthophotoColour: aerialColour || null, crossSourceRgbDistance: crossSourceRgbDistance === null ? null : Number(crossSourceRgbDistance.toFixed(2)), reviewStatus: 'machine-proposal', acceptedForNow: false };
+  const nearbyPoints = pointsBySurface.get(roof.surfaceId) || [];
+  const previewStride = Math.max(1, Math.ceil(nearbyPoints.length / 240));
+  const previewPoints = nearbyPoints.filter((_, index) => index % previewStride === 0).slice(0, 240);
+  return { schemaVersion: 1, buildingId: roof.buildingId, surfaceId: roof.surfaceId, status: reason ? 'rejected' : 'proposed', reason, pointCloudMeasurement: measurement, orthophotoColour: aerialColour || null, crossSourceRgbDistance: crossSourceRgbDistance === null ? null : Number(crossSourceRgbDistance.toFixed(2)), previewPoints, reviewStatus: 'machine-proposal', acceptedForNow: false };
 }));
 const result = { schemaVersion: 1, generatedAt: new Date().toISOString(), source: manifest.source, tileHashes: manifest.tiles.map(({ bladnr, sha256 }) => ({ bladnr, sha256 })), policy: { planeBandMetres: 0.12, maximumModalOffsetSearchMetres: 1, minimumPoints: 30, minimumGridCoverage: 0.18, cellSizeMetres: 0.5, maximumCrossSourceRgbDistance: 20, allOutputsRequireHumanReview: true }, proposals };
 const output = path.join(root, 'roof-point-cloud-colour-proposals.json'); await writeFile(`${output}.tmp`, `${JSON.stringify(result, null, 2)}\n`); await rename(`${output}.tmp`, output);
