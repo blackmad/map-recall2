@@ -12,6 +12,12 @@ The companion [`BUILDING_ENRICHMENT.md`](BUILDING_ENRICHMENT.md) describes how
 roof and façade observations are obtained. This document describes how those
 observations become a coherent, performant city renderer.
 
+[`LOD.md`](LOD.md) is the operational fidelity plan and current implementation
+status. It supersedes any reading of this design that would treat automated
+3DBAG geometry as categorically higher quality than complete manual OSM
+`building:part` topology; all sources are resolved per building before a tier
+is selected.
+
 ## Decision
 
 Converge on **one building representation per building, and one identity for
