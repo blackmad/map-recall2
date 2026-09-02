@@ -88,7 +88,7 @@
       "maxTextureSize": 512,
       "attribution": {
         "title": "Centraal station",
-        "author": "City of Amsterdam, Geo- en Vastgoedinformatie",
+        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
         "sourceUrl": "https://3dwarehouse.sketchup.com/model/6e8629eaefa7ab9f4e5ba763a187284e",
         "licence": "3D Warehouse General Model License",
         "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
@@ -135,7 +135,7 @@
       "maxTextureSize": 512,
       "attribution": {
         "title": "De Beurs van Berlage (Stock Exchange)",
-        "author": "City of Amsterdam, Geo- en Vastgoedinformatie",
+        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
         "sourceUrl": "https://3dwarehouse.sketchup.com/model/c5a0708f3e4b36fe622758e070290bc2",
         "licence": "3D Warehouse General Model License",
         "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
@@ -182,7 +182,7 @@
       "maxTextureSize": 512,
       "attribution": {
         "title": "National Monument on the Dam",
-        "author": "City of Amsterdam, Geo- en Vastgoedinformatie",
+        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
         "sourceUrl": "https://3dwarehouse.sketchup.com/model/80385c387986217491e131c17526634a",
         "licence": "3D Warehouse General Model License",
         "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
@@ -224,7 +224,7 @@
       "maxTextureSize": 512,
       "attribution": {
         "title": "NEMO",
-        "author": "City of Amsterdam, Geo- en Vastgoedinformatie",
+        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
         "sourceUrl": "https://3dwarehouse.sketchup.com/model/a2a1d7c7726cb7e065a54e9dd3ee74f",
         "licence": "3D Warehouse General Model License",
         "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
@@ -271,7 +271,7 @@
       "maxTextureSize": 512,
       "attribution": {
         "title": "Oude Kerk (Old Church)",
-        "author": "City of Amsterdam, Geo- en Vastgoedinformatie",
+        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
         "sourceUrl": "https://3dwarehouse.sketchup.com/model/5ec8bf3fa426e5d622fc8389905f949e",
         "licence": "3D Warehouse General Model License",
         "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
@@ -318,7 +318,7 @@
       "maxTextureSize": 512,
       "attribution": {
         "title": "Palace on the Dam",
-        "author": "City of Amsterdam, Geo- en Vastgoedinformatie",
+        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
         "sourceUrl": "https://3dwarehouse.sketchup.com/model/d1ad512d8df5fc6745407e0587dff10e",
         "licence": "3D Warehouse General Model License",
         "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
@@ -365,7 +365,7 @@
       "maxTextureSize": 512,
       "attribution": {
         "title": "Rijksmuseum",
-        "author": "City of Amsterdam, Geo- en Vastgoedinformatie",
+        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
         "sourceUrl": "https://3dwarehouse.sketchup.com/model/a57b8c559152b7851aeb638739e9b807",
         "licence": "3D Warehouse General Model License",
         "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
@@ -407,7 +407,7 @@
       "maxTextureSize": 512,
       "attribution": {
         "title": "Stadhuis (City hall)",
-        "author": "City of Amsterdam, Geo- en Vastgoedinformatie",
+        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
         "sourceUrl": "https://3dwarehouse.sketchup.com/model/5995fd7a0e7fa47d99c802e874695f6b",
         "licence": "3D Warehouse General Model License",
         "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
@@ -454,8 +454,275 @@
       "maxTextureSize": 512,
       "attribution": {
         "title": "Westerkerk",
-        "author": "City of Amsterdam, Geo- en Vastgoedinformatie",
+        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
         "sourceUrl": "https://3dwarehouse.sketchup.com/model/11e419e09f0c9a7e270fcd68188626b2",
+        "licence": "3D Warehouse General Model License",
+        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
+        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
+      }
+    },
+    "bimhuis-in-amsterdam-the-netherlands": {
+      "name": "bimhuis in Amsterdam, The Netherlands",
+      "landmarkId": "extract_landmarks_1651446989",
+      "modelUrl": "./models/bimhuis-in-amsterdam-the-netherlands.glb",
+      "bounds": {
+        "min": [
+          -21.408067562881374,
+          0.0004238064325550184,
+          -31.089100438469956
+        ],
+        "max": [
+          6.910557297100095,
+          9.99785571414941,
+          3.552713678800501e-15
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9129932146,
+          52.3778401141
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 200,
+        "scale": 1
+      },
+      "extent": null,
+      "triangles": 12,
+      "bytes": 9144,
+      "sourceBytes": 101488,
+      "sourceTriangles": 12,
+      "droppedAttributes": [],
+      "maxTextureSize": 512,
+      "attribution": {
+        "title": "bimhuis in Amsterdam, The Netherlands",
+        "author": "Gouke G.",
+        "sourceUrl": "https://3dwarehouse.sketchup.com/model/6c3d975edabcf9ded78fe8f76f31c4fd",
+        "licence": "3D Warehouse General Model License",
+        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
+        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
+      }
+    },
+    "concertgebouw": {
+      "name": "Concertgebouw (ALMOST FINISHED)",
+      "landmarkId": "extract_landmarks_626684803",
+      "modelUrl": "./models/concertgebouw.glb",
+      "bounds": {
+        "min": [
+          -26.73374374706743,
+          -1.199040866595169e-14,
+          -46.496874259187834
+        ],
+        "max": [
+          43.4937654973566,
+          28.778329141804885,
+          44.320918983360514
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.879062953458586,
+          52.35618133090705
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 69.53032726644909,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 90.81779324254835,
+        "heightMetres": 28.778329141804896,
+        "depthMetres": 70.22750924442403,
+        "depthCoverage": 1.0899439976666971
+      },
+      "triangles": 634,
+      "bytes": 129288,
+      "sourceBytes": 908132,
+      "sourceTriangles": 673,
+      "droppedAttributes": [],
+      "maxTextureSize": 512,
+      "attribution": {
+        "title": "Concertgebouw (ALMOST FINISHED)",
+        "author": "Gijs",
+        "sourceUrl": "https://3dwarehouse.sketchup.com/model/702e13dbca79c53796fa299c99288367",
+        "licence": "3D Warehouse General Model License",
+        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
+        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
+      }
+    },
+    "heineken-experience-amsterdam": {
+      "name": "Heineken Experience, Amsterdam.",
+      "landmarkId": "extract_landmarks_914627337",
+      "modelUrl": "./models/heineken-experience-amsterdam.glb",
+      "bounds": {
+        "min": [
+          -65.43220826907489,
+          -0.02119105428034196,
+          -20.369304734001474
+        ],
+        "max": [
+          35.52333326348991,
+          32.69677976216954,
+          14.601147550549097
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89184165895771,
+          52.35768328228659
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 100,
+        "scale": 1
+      },
+      "extent": null,
+      "triangles": 46143,
+      "bytes": 628644,
+      "sourceBytes": 2266368,
+      "sourceTriangles": 46176,
+      "droppedAttributes": [],
+      "maxTextureSize": 512,
+      "attribution": {
+        "title": "Heineken Experience, Amsterdam.",
+        "author": "marcinplymouth",
+        "sourceUrl": "https://3dwarehouse.sketchup.com/model/4e77b7d365245b8239a65e5e29a6306",
+        "licence": "3D Warehouse General Model License",
+        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
+        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
+      }
+    },
+    "montelbaanstoren-amsterdam": {
+      "name": "Montelbaanstoren, Amsterdam.",
+      "landmarkId": "extract_landmarks_1027016792",
+      "modelUrl": "./models/montelbaanstoren-amsterdam.glb",
+      "bounds": {
+        "min": [
+          -5.708615065988809,
+          0.13808235109007505,
+          -6.832617608014716
+        ],
+        "max": [
+          7.055139933143402,
+          45.62152875585482,
+          7.153849234065009
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.905658,
+          52.372047
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 264.7477799747804,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 13.986466842079725,
+        "heightMetres": 45.48344640476474,
+        "depthMetres": 12.76375499913221,
+        "depthCoverage": 1.2418038851822604
+      },
+      "triangles": 4131,
+      "bytes": 366492,
+      "sourceBytes": 1146144,
+      "sourceTriangles": 4811,
+      "droppedAttributes": [],
+      "maxTextureSize": 512,
+      "attribution": {
+        "title": "Montelbaanstoren, Amsterdam.",
+        "author": "OnO",
+        "sourceUrl": "https://3dwarehouse.sketchup.com/model/917a5cc60a9c5469c0de3c0357f9a9da",
+        "licence": "3D Warehouse General Model License",
+        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
+        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
+      }
+    },
+    "munttoren-amsterdam": {
+      "name": "Munttoren Amsterdam",
+      "landmarkId": "extract_landmarks_1375175685",
+      "modelUrl": "./models/munttoren-amsterdam.glb",
+      "bounds": {
+        "min": [
+          -2.4228063606143015,
+          -0.7490584260542539,
+          -10.097076347968482
+        ],
+        "max": [
+          7.18889932681151,
+          34.102401405731385,
+          -2.3409351307538637
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.893198211404391,
+          52.3670118642164
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 325.7992752644517,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 9.611705687425811,
+        "heightMetres": 34.85145983178564,
+        "depthMetres": 7.756141217214618,
+        "depthCoverage": 1.7547861457818807
+      },
+      "triangles": 3537,
+      "bytes": 244996,
+      "sourceBytes": 656488,
+      "sourceTriangles": 3756,
+      "droppedAttributes": [],
+      "maxTextureSize": 512,
+      "attribution": {
+        "title": "Munttoren Amsterdam",
+        "author": "OnO",
+        "sourceUrl": "https://3dwarehouse.sketchup.com/model/289437190bd7efc1c0de3c0357f9a9da",
+        "licence": "3D Warehouse General Model License",
+        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
+        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
+      }
+    },
+    "netherlands-film-and-television-academy-the-netherlands": {
+      "name": "Netherlands Film and Television Academy, The Netherlands",
+      "landmarkId": "extract_landmarks_1149389771",
+      "modelUrl": "./models/netherlands-film-and-television-academy-the-netherlands.glb",
+      "bounds": {
+        "min": [
+          -32.36089876329246,
+          -0.0016361991552962252,
+          -0.0004422055573947148
+        ],
+        "max": [
+          54.90309774021008,
+          19.24773563004227,
+          51.7342419607392
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9049302897,
+          52.3686332376
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 180,
+        "scale": 1
+      },
+      "extent": null,
+      "triangles": 60,
+      "bytes": 46048,
+      "sourceBytes": 499260,
+      "sourceTriangles": 60,
+      "droppedAttributes": [],
+      "maxTextureSize": 512,
+      "attribution": {
+        "title": "Netherlands Film and Television Academy, The Netherlands",
+        "author": "stewy",
+        "sourceUrl": "https://3dwarehouse.sketchup.com/model/e48506bc92b154c92a6e7c894efc8f75",
         "licence": "3D Warehouse General Model License",
         "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
         "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."

@@ -43,6 +43,18 @@ const REPOSITORY_ROOT = path.resolve(import.meta.dirname, '..');
 const OUTPUT_DIRECTORY = path.join(REPOSITORY_ROOT, 'public', 'canal-drive', 'models');
 const MANIFEST_PATH = path.join(OUTPUT_DIRECTORY, 'signature-landmarks.json');
 
+/**
+ * Below this, whatever was downloaded is not a model of a building.
+ *
+ * Community uploads vary enormously and some are placeholders: the "Bimhuis"
+ * on 3D Warehouse cleans up to 12 triangles and the Film Academy to 60, which
+ * on the map is a bare grey slab lying over the street — strictly worse than
+ * the extrusion it would replace, because at least the extrusion is
+ * building-shaped. A signature model exists to be recognised on sight, so
+ * failing loudly here is right: there is no salvaging a 12-triangle landmark.
+ */
+const MINIMUM_TRIANGLES = 250;
+
 /** Triangles we are willing to spend on one building. The whole city-wide
  *  3D BAG tileset streams at a comparable budget, so a single landmark that
  *  costs more than this would be the most expensive thing on screen. */
@@ -426,6 +438,13 @@ async function main(): Promise<void> {
   const outputPath = path.join(OUTPUT_DIRECTORY, `${outputName}.glb`);
   await io.write(outputPath, document);
   const outputBytes = fs.statSync(outputPath).size;
+
+  if (triangles < MINIMUM_TRIANGLES) {
+    throw new Error(
+      `${spec.id}: only ${triangles} triangles after cleanup, below the ${MINIMUM_TRIANGLES} `
+      + 'a building needs to be worth drawing. This is a placeholder upload, not a model.',
+    );
+  }
 
   const placement = placementFor(spec, bounds);
   const extent = spec.footprint ? scaledExtent(bounds, placement.scale, spec.footprint) : null;

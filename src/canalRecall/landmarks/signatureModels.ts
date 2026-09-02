@@ -1,11 +1,16 @@
 // The curated list. One entry per building worth recognising on sight.
 //
-// Nine of these are the City of Amsterdam's own survey models, so the bulk of
-// each entry — where the building is, which landmark it answers to, what its
-// OSM footprint measures — is generated into `surveyedLandmarks.json` by
-// `fetch-3dwarehouse-landmarks.ts` rather than typed out. What stays here is
-// what no fetch can decide: which way a facade points, how tall a building is
-// where the number is worth asserting, and the licence it ships under.
+// Nine of these are the City of Amsterdam's own survey models, uploaded in a
+// single batch on 2007-05-08 for Google's Earth 3D-buildings programme back
+// when Google owned SketchUp. The other six are community models of landmarks
+// the city never made, found by `search-3dwarehouse-landmarks.ts` and credited
+// to their own authors.
+//
+// The bulk of each entry — where the building is, which landmark it answers
+// to, what its OSM footprint measures — is generated into
+// `surveyedLandmarks.json` rather than typed out. What stays here is what no
+// fetch can decide: which way a facade points, and how tall a building is
+// where the number is worth asserting.
 //
 // PROTOTYPE: these are used under the 3D Warehouse General Model License,
 // which covers a Combined Work but not redistributing an asset library. That
@@ -18,6 +23,7 @@ import type { LngLat, OrientedFootprint, SignatureModelSpec } from './signatureP
 interface SurveyedCatalogueEntry {
   id: string;
   name: string;
+  author: string;
   warehouseId: string;
   landmarkId: string;
   landmarkName: string | null;
@@ -62,10 +68,15 @@ const FACADE_BEARINGS: Readonly<Record<string, number>> = {
   'nemo': 250,
   'stadhuis': 270,
   'national-monument-on-the-dam': 271,
+  'munttoren-amsterdam': 200,
+  'montelbaanstoren-amsterdam': 250,
+  'concertgebouw': 12,
+  'bimhuis-in-amsterdam-the-netherlands': 200,
+  'heineken-experience-amsterdam': 100,
+  'netherlands-film-and-television-academy-the-netherlands': 180,
 };
 
 const WAREHOUSE_LICENCE = {
-  author: 'City of Amsterdam, Geo- en Vastgoedinformatie',
   licence: '3D Warehouse General Model License',
   licenceUrl: 'https://3dwarehouse.sketchup.com/tos/',
   modifications:
@@ -101,7 +112,7 @@ function specFromCatalogue(entry: SurveyedCatalogueEntry): SignatureModelSpec {
     },
     attribution: {
       title: entry.name,
-      author: WAREHOUSE_LICENCE.author,
+      author: entry.author,
       sourceUrl: `https://3dwarehouse.sketchup.com/model/${entry.warehouseId}`,
       licence: WAREHOUSE_LICENCE.licence,
       licenceUrl: WAREHOUSE_LICENCE.licenceUrl,

@@ -39,6 +39,7 @@ const API = 'https://3dwarehouse.sketchup.com/warehouse/v1.0';
 interface WarehouseEntity {
   id: string;
   title: string;
+  creator?: { displayName?: string };
   description?: string;
   location?: { latitude: number; longitude: number; altitude: number };
   binaryNames?: string[];
@@ -64,7 +65,11 @@ async function listEntities(): Promise<WarehouseEntity[]> {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`3D Warehouse listing failed: ${response.status}`);
   const body = (await response.json()) as { entries: WarehouseEntity[] };
-  return body.entries;
+  // Extra ids named on the command line, for landmarks the city never modelled.
+  // `search-3dwarehouse-landmarks.ts` is what finds them.
+  const extra = (argument('ids') ?? '').split(',').map(id => id.trim()).filter(Boolean);
+  const extras = await Promise.all(extra.map(id => entityDetail(id)));
+  return [...body.entries, ...extras];
 }
 
 async function entityDetail(id: string): Promise<WarehouseEntity> {
@@ -147,6 +152,7 @@ async function main(): Promise<void> {
     console.log(`  slug        ${slug}`);
     console.log(`  glb         ${hasGlb ? `${(bytes / 1e6).toFixed(2)} MB` : 'MISSING'}`);
     console.log(`  anchor      ${entity.location ? `${entity.location.latitude.toFixed(6)}, ${entity.location.longitude.toFixed(6)}` : 'MISSING'}`);
+    console.log(`  author      ${entity.creator?.displayName ?? 'unknown'}`);
     console.log(`  matched     ${match ? `${match.landmark.name} (${match.metres.toFixed(0)} m, ${match.landmark.id})` : 'no landmark within 120 m'}`);
     console.log(`  footprint   ${footprint ? `${footprint.lengthMetres.toFixed(1)} × ${footprint.widthMetres.toFixed(1)} m, heading ${footprint.headingDegrees.toFixed(1)}°` : 'no ring in the extract'}`);
     console.log();
@@ -154,6 +160,7 @@ async function main(): Promise<void> {
     catalogue.push({
       id: slug,
       name: entity.title,
+      author: entity.creator?.displayName ?? 'unknown',
       warehouseId: entity.id,
       address: entity.attributes?.geo?.address?.value ?? null,
       description: entity.description ?? null,
