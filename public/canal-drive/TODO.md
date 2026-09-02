@@ -377,18 +377,6 @@ imagery cannot measure building sides.
 **22. Signature landmark models** for the handful of buildings worth
 recognising on sight.
 
-**25. Google's photorealistic mesh for the distant skyline only.** The spike in
-`google-tiles-spike.html` settled the main question — Google's tiles are
-unusable at 1.7 m and lose the building semantics the game teaches with, so the
-near corridor stays 3DBAG (see `HISTORY.md`). What it did not settle is whether
-the mesh earns its place *above* the corridor: city overview, route preview and
-the far skyline, where it looked excellent and where nothing needs to be
-clickable. That would keep highlightable geometry where the player interacts and
-buy free realism where they only look. Blocked on wanting it: it makes the core
-view a metered, online-only dependency that Google's terms forbid caching,
-against the standing preference for versioned local extracts. Re-run the spike
-with `npm run build:google-tiles-spike` before costing it.
-
 **23. Authentic retro rendering**, and **24. the optional arcade layer.**
 Both are large presentation bets with long-form design notes preserved at the
 end of `HISTORY.md`. Neither is queued; both are deliberately parked.
