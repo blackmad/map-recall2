@@ -6,6 +6,68 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Google's mesh now has a switch, and it only reaches the overview camera.**
+  The measurement below settled where it is usable; this is the option built on
+  top of it. "Google photoreal (overview)" appears in both settings panels and
+  is off by default. Altitude, not the preference alone, decides: the mesh
+  appears at 25 m and up, and 3DBAG comes back on the way down, so the corridor
+  the player actually rides keeps geometry that can be highlighted as a correct
+  answer. The rule lives in `src/canalRecall/building/photorealGate.ts` rather
+  than as a branch buried in `vector-map.js`, with a release height of 22 m
+  against an activation height of 25 m — riding a canal holds a near-constant
+  altitude, which parks the camera on a single threshold and flips the whole
+  city between two renderers every few frames. `npm run test:photoreal-gate`
+  covers the band from both directions; `tests/e2e/google-tiles-option.spec.ts`
+  covers the wiring, and asserts that switching the option on at cycling height
+  issues no request to `tile.googleapis.com` at all, because a billable request
+  from a height whose output is unusable is the specific waste worth a guard.
+
+  The browser key is committed. It is restricted at Google's end to the Map
+  Tiles API and to this game's own origins, so it grants nothing off-origin;
+  rotate it in the Cloud console rather than editing a copy somewhere. Two
+  smaller things are load-bearing: the tiles bundle is ESM where its siblings
+  are IIFE, because three's `DRACOLoader` resolves decoder paths at module top
+  level through `import.meta.url` and esbuild stubs that out of an IIFE; and the
+  layer is built on first use, so a player who never switches it on never opens
+  a tileset session. Google's terms require its attribution to be visible
+  whenever its imagery is, which `#google-tiles-attribution` carries.
+
+- **Google's photorealistic mesh was measured at cycling height, and rejected
+  for the driving corridor.** The question was whether to replace the view layer
+  with Google Earth's imagery, since `3d-tiles-renderer` already ships here for
+  3DBAG LoD2.2 and Google Photorealistic 3D Tiles is the same OGC format behind
+  a `GoogleCloudAuthPlugin` — no Cesium and no Unity required. It is roughly a
+  tileset-URL swap, so it was cheap to answer with pictures instead of argument.
+  `google-tiles-spike.html` renders Google's tiles at pinned Amsterdam canal
+  locations with a one-click 1.7 m / 150 m toggle. At Prinsengracht
+  (52.37511, 4.88347), fully converged at Google's best LOD — 412 tiles loaded,
+  nothing queued or parsing — the 192 m view is excellent and the 1.7 m view is
+  unusable: trees collapse to faceted green blobs, the canal is a flat grey
+  smear, facades are illegible, and moored boats are fused into the quay. The
+  decisive point is not the blur but what it costs: Google returns anonymous
+  triangle soup, so a correct-answer building cannot be highlighted and a fact
+  card cannot be attached to it. 3DBAG geometry carries a building id; that
+  semantics is the product, and photogrammetry trades it for pixels that only
+  hold up from altitudes the game never uses. Kept as an evaluation harness,
+  not shipped surface: it is excluded from `npm run build`, bundles its own
+  three.js rather than the shared `three.bundle.js` global, and takes its API
+  key from `localStorage` or `?key=`, never the repo.
+
+  Three things cost real time and will cost it again. **Ellipsoid height is not
+  eye height:** the Netherlands sits about 43 m above the WGS84 ellipsoid, so a
+  camera at "1.7 m" is ~41 m underground; ground truth comes from raycasting the
+  loaded mesh, taking the *deepest* hit, since the first is a roof or tree
+  canopy. **Both the render loop and the library's own download and parse queues
+  schedule through `requestAnimationFrame`**, which a background or headless tab
+  throttles to a standstill — traversal marks tiles `queued` and nothing ever
+  downloads. The exported `Scheduler.flushPending()` plus a hand-pumped `frame()`
+  is what makes screenshot regressions possible at all. **The bundle must be
+  ESM:** three's `DRACOLoader` resolves decoder paths at module top level via
+  `new URL(..., import.meta.url)`, which esbuild stubs out of an IIFE, throwing
+  "Invalid URL" before any of our code runs. Also note Google's browser-key
+  referrer patterns need a path component — `http://localhost:*` never matches,
+  `http://localhost:3000/*` does.
+
 - **The phone pass reached past the driving screen.** Portrait, the d-pad and
   the paper system had covered the map and the HUD; the overlays over them had
   never been opened at a phone's size, because the `iphone` Playwright project
