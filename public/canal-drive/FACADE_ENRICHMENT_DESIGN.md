@@ -272,3 +272,73 @@ crops is still useful for measuring the gate; recording them as though a reviewe
 had chosen them would not be. Restoring view selection is a precondition for any
 stratified sample, because otherwise the sample measures camera aim as much as it
 measures façades.
+
+## The pilot was mostly photographing sheds — 2026-09-02
+
+Measuring the agreement above raised an obvious question that the agreement
+numbers could not answer: *were the two models even looking at the same
+building?* They were not, because for five of the six targets there was no
+target building to look at.
+
+Footprint area and height for the six pilot targets, from the same extract the
+crops were selected from:
+
+| Target | Footprint | Height | Longest edge |
+|---|---|---|---|
+| `w274039950` | 134 m² | 17.7 m | 10.5 m |
+| `w1388560103` | 112 m² | **3.7 m** | 34.4 m |
+| `w1412702187` | 18 m² | 3.0 m | 6.3 m |
+| `w282294826` | **7 m²** | 2.5 m | 2.9 m |
+| `w282294463` | 7 m² | 3.0 m | 3.3 m |
+| `w1475011497` | **1 m²** | 3.0 m | 7.1 m |
+
+One of the six is a building. `w282294826`, a 7 m² box 2.5 m tall, was the
+anchor the procedural block demo was built around. `w1475011497` covers one
+square metre.
+
+This is not a sampling accident. `buildings-colored.geojson` is filtered by
+appearance, not by building-ness: across its 10,578 features the **median
+footprint is 18 m² and the 10th percentile is 6 m²**, and 62.6% are under 40 m²
+or under 4 m tall. Sheds, kiosks, canopies, dormers and fragments are the
+typical member. `LOD.md` already records that this file must never be treated as
+the complete set of mapped OSM buildings; this is the measurement of how far it
+is from being one.
+
+It also explains the labels. Both models returned `targetVisible: true` at
+0.8–0.9 confidence on every one of the six, and they were not lying: a panorama
+aimed at a 1 m² object does show a façade — the façade of whatever stands
+behind it. Two models have no reason to pick the same neighbour, which is
+exactly the disagreement pattern the agreement table found. **A `targetVisible`
+field cannot catch this**, because the failure is that the target has no façade,
+not that the camera missed it.
+
+### What this corrects
+
+The earlier section concluded that `bayCount` is unreliable because the models
+read different façade rhythms. That conclusion is now only partly supported: the
+models were substantially reading *different buildings*. What survives is the
+narrower and better-evidenced claim — a street-level crop cannot see a roofline
+(3 of 6 mutual `not-visible`), and gating on the fields a photograph does supply
+is better than gating on counts. What does **not** survive is any estimate of how
+well two models agree about one façade. That number has not been measured yet,
+because it has not yet been asked on a set of real buildings.
+
+### The gate
+
+`judgeFacadeTarget` in `facadeTarget.ts` decides whether a footprint can show a
+façade before a panorama is requested: at least 40 m², at least 4 m tall, and at
+least one edge 5 m wide, with structured reasons (`footprint-too-small-for-a-facade`,
+`too-short-for-a-facade`, `no-measured-height`, `no-edge-wide-enough-to-photograph`,
+`degenerate-footprint`). A missing height rejects rather than passing silently: an
+unmeasured building is not a small one.
+
+`npm run test:facade-target` pins all six pilot targets as named regressions with
+their expected verdict and reason, and asserts the gate both rejects the
+small-structure majority and keeps a usable pool. It currently keeps **3,694 of
+10,578 targets (34.9%)**, which is large enough to draw a stratified sample from.
+`build:facade-review` applies the gate before spending any request and records
+`selection.facadeTargetPolicy` and the rejected targets in its manifest.
+
+The order of work is now clear: gate targets, restore view selection, *then* buy
+a stratified sample. Re-running the grammar pilot before those two would measure
+camera aim and footprint noise again rather than façades.

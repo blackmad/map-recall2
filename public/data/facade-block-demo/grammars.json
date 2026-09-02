@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-02T16:43:48.947Z",
+  "generatedAt": "2026-09-02T16:52:25.018Z",
   "title": "Procedural façade study block",
-  "anchor": "w282294826",
+  "anchor": "w274039950",
   "policy": {
     "consensusPreferred": true,
     "disputedCategoricalFallback": "highest-visibility-confidence-model",
-    "disputedCountFallback": "rounded-mean",
+    "disputedCountFallback": "mean-within-one-storey-else-abstain",
+    "abstainedCountSource": "measured-height-and-facade-width",
     "status": "machine-proposal"
   },
   "models": [
@@ -15,20 +16,25 @@
   ],
   "buildings": [
     {
-      "id": "w282294826",
+      "id": "w274039950",
       "order": 0,
+      "geometrySource": {
+        "storeySource": "measured-height",
+        "baySource": "model-grammar",
+        "facadeWidthMetres": 10.5
+      },
       "distanceFromAnchorMetres": 0,
       "grammar": {
-        "visibleStoreys": 3,
-        "bayCount": 5,
+        "visibleStoreys": 4,
+        "bayCount": 2,
         "windowPattern": "regular-grid",
-        "windowToWall": "low",
+        "windowToWall": "medium",
         "windowRecess": "shallow",
         "groundFloorType": "residential-base",
-        "entranceType": "multiple-doors",
+        "entranceType": "shared-residential",
         "balconyType": "none",
         "facadeComposition": "single-field",
-        "roofline": "mansard-eave",
+        "roofline": "not-visible",
         "ornament": "minimal",
         "facadeMaterial": "brick",
         "facadeColour": "brown",
@@ -36,16 +42,16 @@
         "windowFrameColour": "white"
       },
       "provenance": {
-        "visibleStoreys": "model-disputed",
-        "bayCount": "model-disputed",
+        "visibleStoreys": "model-disputed-within-one",
+        "bayCount": "model-consensus",
         "windowPattern": "model-consensus",
-        "windowToWall": "model-disputed",
+        "windowToWall": "model-consensus",
         "windowRecess": "model-consensus",
         "groundFloorType": "model-consensus",
         "entranceType": "model-consensus",
-        "balconyType": "model-consensus",
+        "balconyType": "model-disputed",
         "facadeComposition": "model-disputed",
-        "roofline": "model-disputed",
+        "roofline": "model-consensus",
         "ornament": "model-consensus",
         "facadeMaterial": "model-consensus",
         "facadeColour": "model-consensus",
@@ -58,38 +64,38 @@
           "label": {
             "targetVisible": true,
             "visibilityConfidence": 0.9,
-            "visibleStoreys": 2,
-            "bayCount": 6,
+            "visibleStoreys": 3,
+            "bayCount": 2,
             "windowPattern": "regular-grid",
-            "windowToWall": "low",
+            "windowToWall": "medium",
             "windowRecess": "shallow",
             "groundFloorType": "residential-base",
-            "entranceType": "multiple-doors",
+            "entranceType": "shared-residential",
             "balconyType": "none",
             "facadeComposition": "single-field",
-            "roofline": "mansard-eave",
+            "roofline": "not-visible",
             "ornament": "minimal",
             "facadeMaterial": "brick",
             "facadeColour": "brown",
             "groundFloorDistinct": false,
             "windowFrameColour": "white",
-            "rationale": "The image shows a two-storey residential building with a brown brick facade. The ground floor has multiple residential entrances. The windows are arranged in a regular grid with a low window-to-wall ratio and shallow recesses. The roofline is a mansard eave. The facade composition is a single field with minimal ornamentation."
+            "rationale": "The central building is a brown brick facade with 3 visible storeys and 2 bays. The ground floor has arched windows and a shared residential entrance. The upper floors have a regular grid of windows with white frames. The roofline is not visible."
           },
-          "cost": 0.00749628
+          "cost": 0.0073062
         },
         {
           "model": "anthropic/claude-sonnet-4.6",
           "label": {
             "targetVisible": true,
             "visibilityConfidence": 0.85,
-            "visibleStoreys": 3,
-            "bayCount": 4,
+            "visibleStoreys": 4,
+            "bayCount": 2,
             "windowPattern": "regular-grid",
             "windowToWall": "medium",
             "windowRecess": "shallow",
             "groundFloorType": "residential-base",
-            "entranceType": "multiple-doors",
-            "balconyType": "none",
+            "entranceType": "shared-residential",
+            "balconyType": "projecting",
             "facadeComposition": "base-body",
             "roofline": "not-visible",
             "ornament": "minimal",
@@ -97,105 +103,21 @@
             "facadeColour": "brown",
             "groundFloorDistinct": true,
             "windowFrameColour": "white",
-            "rationale": "Curved corner residential block in dark brown brick with horizontal concrete band courses separating storeys. Ground floor has individual entrance doors and garage/storage panels. Upper floors have regular grid of white-framed windows. Minimal ornament beyond brick banding. Roofline obscured by crop."
+            "rationale": "Corner residential block, brown brick, 4 storeys visible. Ground floor has arched openings with brick surrounds forming a distinct base. Upper floors have regular grid sash-style windows with white frames in shallow recesses. Two bays on the front facade. Projecting metal balconies on the side elevation. Minimal ornament beyond brick arches at ground floor."
           },
-          "cost": 0.01179387
-        }
-      ]
-    },
-    {
-      "id": "w1412702187",
-      "order": 1,
-      "distanceFromAnchorMetres": 102,
-      "grammar": {
-        "visibleStoreys": 3,
-        "bayCount": 1,
-        "windowPattern": "irregular",
-        "windowToWall": "low",
-        "windowRecess": "shallow",
-        "groundFloorType": "mostly-blank",
-        "entranceType": "none-visible",
-        "balconyType": "none",
-        "facadeComposition": "ground-floor-distinct",
-        "roofline": "flat-parapet",
-        "ornament": "minimal",
-        "facadeMaterial": "mixed",
-        "facadeColour": "mixed",
-        "groundFloorDistinct": true,
-        "windowFrameColour": "black"
-      },
-      "provenance": {
-        "visibleStoreys": "model-consensus",
-        "bayCount": "model-disputed",
-        "windowPattern": "model-disputed",
-        "windowToWall": "model-disputed",
-        "windowRecess": "model-consensus",
-        "groundFloorType": "model-disputed",
-        "entranceType": "model-disputed",
-        "balconyType": "model-disputed",
-        "facadeComposition": "model-disputed",
-        "roofline": "model-disputed",
-        "ornament": "model-consensus",
-        "facadeMaterial": "model-consensus",
-        "facadeColour": "model-disputed",
-        "groundFloorDistinct": "model-consensus",
-        "windowFrameColour": "model-consensus"
-      },
-      "proposals": [
-        {
-          "model": "google/gemini-3.1-pro-preview",
-          "label": {
-            "targetVisible": true,
-            "visibilityConfidence": 0.8,
-            "visibleStoreys": 3,
-            "bayCount": "unknown",
-            "windowPattern": "irregular",
-            "windowToWall": "low",
-            "windowRecess": "shallow",
-            "groundFloorType": "mostly-blank",
-            "entranceType": "none-visible",
-            "balconyType": "none",
-            "facadeComposition": "ground-floor-distinct",
-            "roofline": "flat-parapet",
-            "ornament": "minimal",
-            "facadeMaterial": "mixed",
-            "facadeColour": "mixed",
-            "groundFloorDistinct": true,
-            "windowFrameColour": "black",
-            "rationale": "The target building is the modern structure on the left. It has a distinct ground floor clad in vertical wood or composite panels, while the upper floors are clad in light-coloured panels. The window pattern is irregular, and the roofline is flat. The entrance is not visible from this angle."
-          },
-          "cost": 0.00741312
-        },
-        {
-          "model": "anthropic/claude-sonnet-4.6",
-          "label": {
-            "targetVisible": true,
-            "visibilityConfidence": 0.55,
-            "visibleStoreys": 3,
-            "bayCount": 1,
-            "windowPattern": "narrow-vertical",
-            "windowToWall": "medium",
-            "windowRecess": "shallow",
-            "groundFloorType": "same-as-upper",
-            "entranceType": "unknown",
-            "balconyType": "unknown",
-            "facadeComposition": "base-body",
-            "roofline": "not-visible",
-            "ornament": "minimal",
-            "facadeMaterial": "mixed",
-            "facadeColour": "grey",
-            "groundFloorDistinct": true,
-            "windowFrameColour": "black",
-            "rationale": "Central building shows composite facade: upper storeys clad in light grey composite/fiber-cement panels with tall narrow windows; lower base volume clad in vertical timber boarding weathered to grey-green. Two distinct material zones creating base-body composition. Windows are narrow-vertical format with dark frames. Partial view due to cropping; roofline not visible."
-          },
-          "cost": 0.01200177
+          "cost": 0.01209087
         }
       ]
     },
     {
       "id": "w1388560103",
-      "order": 2,
-      "distanceFromAnchorMetres": 349,
+      "order": 1,
+      "geometrySource": {
+        "storeySource": "measured-height",
+        "baySource": "model-grammar",
+        "facadeWidthMetres": 34.4
+      },
+      "distanceFromAnchorMetres": 9520,
       "grammar": {
         "visibleStoreys": 3,
         "bayCount": 5,
@@ -215,7 +137,7 @@
       },
       "provenance": {
         "visibleStoreys": "model-consensus",
-        "bayCount": "model-disputed",
+        "bayCount": "model-disputed-within-one",
         "windowPattern": "model-consensus",
         "windowToWall": "model-consensus",
         "windowRecess": "model-disputed",
@@ -282,41 +204,140 @@
       ]
     },
     {
-      "id": "w282294463",
-      "order": 3,
-      "distanceFromAnchorMetres": 355,
+      "id": "w1412702187",
+      "order": 2,
+      "geometrySource": {
+        "storeySource": "measured-height",
+        "baySource": "model-grammar",
+        "facadeWidthMetres": 6.3
+      },
+      "distanceFromAnchorMetres": 9604,
       "grammar": {
-        "visibleStoreys": 2,
-        "bayCount": 4,
-        "windowPattern": "wide-horizontal",
-        "windowToWall": "medium",
+        "visibleStoreys": 3,
+        "bayCount": 1,
+        "windowPattern": "irregular",
+        "windowToWall": "low",
+        "windowRecess": "shallow",
+        "groundFloorType": "mostly-blank",
+        "entranceType": "none-visible",
+        "balconyType": "none",
+        "facadeComposition": "ground-floor-distinct",
+        "roofline": "flat-parapet",
+        "ornament": "minimal",
+        "facadeMaterial": "mixed",
+        "facadeColour": "mixed",
+        "groundFloorDistinct": true,
+        "windowFrameColour": "black"
+      },
+      "provenance": {
+        "visibleStoreys": "model-consensus",
+        "bayCount": "model-disputed-within-one",
+        "windowPattern": "model-disputed",
+        "windowToWall": "model-disputed",
+        "windowRecess": "model-consensus",
+        "groundFloorType": "model-disputed",
+        "entranceType": "model-disputed",
+        "balconyType": "model-disputed",
+        "facadeComposition": "model-disputed",
+        "roofline": "model-disputed",
+        "ornament": "model-consensus",
+        "facadeMaterial": "model-consensus",
+        "facadeColour": "model-disputed",
+        "groundFloorDistinct": "model-consensus",
+        "windowFrameColour": "model-consensus"
+      },
+      "proposals": [
+        {
+          "model": "google/gemini-3.1-pro-preview",
+          "label": {
+            "targetVisible": true,
+            "visibilityConfidence": 0.8,
+            "visibleStoreys": 3,
+            "bayCount": "unknown",
+            "windowPattern": "irregular",
+            "windowToWall": "low",
+            "windowRecess": "shallow",
+            "groundFloorType": "mostly-blank",
+            "entranceType": "none-visible",
+            "balconyType": "none",
+            "facadeComposition": "ground-floor-distinct",
+            "roofline": "flat-parapet",
+            "ornament": "minimal",
+            "facadeMaterial": "mixed",
+            "facadeColour": "mixed",
+            "groundFloorDistinct": true,
+            "windowFrameColour": "black",
+            "rationale": "The target building is the modern structure on the left. It has a distinct ground floor clad in vertical wood or composite panels, while the upper floors are clad in light-coloured panels. The window pattern is irregular, and the roofline is flat. The entrance is not visible from this angle."
+          },
+          "cost": 0.00741312
+        },
+        {
+          "model": "anthropic/claude-sonnet-4.6",
+          "label": {
+            "targetVisible": true,
+            "visibilityConfidence": 0.55,
+            "visibleStoreys": 3,
+            "bayCount": 1,
+            "windowPattern": "narrow-vertical",
+            "windowToWall": "medium",
+            "windowRecess": "shallow",
+            "groundFloorType": "same-as-upper",
+            "entranceType": "unknown",
+            "balconyType": "unknown",
+            "facadeComposition": "base-body",
+            "roofline": "not-visible",
+            "ornament": "minimal",
+            "facadeMaterial": "mixed",
+            "facadeColour": "grey",
+            "groundFloorDistinct": true,
+            "windowFrameColour": "black",
+            "rationale": "Central building shows composite facade: upper storeys clad in light grey composite/fiber-cement panels with tall narrow windows; lower base volume clad in vertical timber boarding weathered to grey-green. Two distinct material zones creating base-body composition. Windows are narrow-vertical format with dark frames. Partial view due to cropping; roofline not visible."
+          },
+          "cost": 0.01200177
+        }
+      ]
+    },
+    {
+      "id": "w282294826",
+      "order": 3,
+      "geometrySource": {
+        "storeySource": "model-grammar",
+        "baySource": "derived-from-facade-width",
+        "facadeWidthMetres": 2.9
+      },
+      "distanceFromAnchorMetres": 9677,
+      "grammar": {
+        "visibleStoreys": 3,
+        "bayCount": null,
+        "windowPattern": "regular-grid",
+        "windowToWall": "low",
         "windowRecess": "shallow",
         "groundFloorType": "residential-base",
         "entranceType": "multiple-doors",
         "balconyType": "none",
         "facadeComposition": "single-field",
-        "roofline": "flat-parapet",
+        "roofline": "mansard-eave",
         "ornament": "minimal",
         "facadeMaterial": "brick",
         "facadeColour": "brown",
         "groundFloorDistinct": false,
-        "windowFrameColour": "brown"
+        "windowFrameColour": "white"
       },
       "provenance": {
-        "visibleStoreys": "model-consensus",
-        "bayCount": "model-disputed",
+        "visibleStoreys": "model-disputed-within-one",
+        "bayCount": "model-disputed-abstained",
         "windowPattern": "model-consensus",
-        "windowToWall": "model-consensus",
+        "windowToWall": "model-disputed",
         "windowRecess": "model-consensus",
         "groundFloorType": "model-consensus",
         "entranceType": "model-consensus",
         "balconyType": "model-consensus",
-        "facadeComposition": "model-consensus",
-        "roofline": "model-consensus",
+        "facadeComposition": "model-disputed",
+        "roofline": "model-disputed",
         "ornament": "model-consensus",
         "facadeMaterial": "model-consensus",
         "facadeColour": "model-consensus",
-        "groundFloorDistinct": "model-consensus",
+        "groundFloorDistinct": "model-disputed",
         "windowFrameColour": "model-consensus"
       },
       "proposals": [
@@ -326,47 +347,47 @@
             "targetVisible": true,
             "visibilityConfidence": 0.9,
             "visibleStoreys": 2,
-            "bayCount": "unknown",
-            "windowPattern": "wide-horizontal",
-            "windowToWall": "medium",
+            "bayCount": 6,
+            "windowPattern": "regular-grid",
+            "windowToWall": "low",
             "windowRecess": "shallow",
             "groundFloorType": "residential-base",
             "entranceType": "multiple-doors",
             "balconyType": "none",
             "facadeComposition": "single-field",
-            "roofline": "flat-parapet",
+            "roofline": "mansard-eave",
             "ornament": "minimal",
             "facadeMaterial": "brick",
             "facadeColour": "brown",
             "groundFloorDistinct": false,
-            "windowFrameColour": "brown",
-            "rationale": "The image shows a two-storey brick building with a curved facade. The ground floor features multiple residential entrances with adjacent glazing. The upper floor has wide, horizontal windows. The facade is composed of a single field of brown brick with minimal ornamentation and a flat parapet roofline. The window frames are brown."
+            "windowFrameColour": "white",
+            "rationale": "The image shows a two-storey residential building with a brown brick facade. The ground floor has multiple residential entrances. The windows are arranged in a regular grid with a low window-to-wall ratio and shallow recesses. The roofline is a mansard eave. The facade composition is a single field with minimal ornamentation."
           },
-          "cost": 0.00743688
+          "cost": 0.00749628
         },
         {
           "model": "anthropic/claude-sonnet-4.6",
           "label": {
             "targetVisible": true,
             "visibilityConfidence": 0.85,
-            "visibleStoreys": 2,
+            "visibleStoreys": 3,
             "bayCount": 4,
-            "windowPattern": "wide-horizontal",
+            "windowPattern": "regular-grid",
             "windowToWall": "medium",
             "windowRecess": "shallow",
             "groundFloorType": "residential-base",
             "entranceType": "multiple-doors",
             "balconyType": "none",
-            "facadeComposition": "single-field",
-            "roofline": "flat-parapet",
+            "facadeComposition": "base-body",
+            "roofline": "not-visible",
             "ornament": "minimal",
             "facadeMaterial": "brick",
             "facadeColour": "brown",
-            "groundFloorDistinct": false,
-            "windowFrameColour": "brown",
-            "rationale": "Two-storey curved brick residential block with repeated bays each containing a wide horizontal window band at upper floor and door-plus-sidelight unit at ground floor. Red-brown brick, brown timber window frames, flat parapet roofline with thin cornice. Ground floor treatment matches upper in material. Minimal ornament. Tree partially obscures centre."
+            "groundFloorDistinct": true,
+            "windowFrameColour": "white",
+            "rationale": "Curved corner residential block in dark brown brick with horizontal concrete band courses separating storeys. Ground floor has individual entrance doors and garage/storage panels. Upper floors have regular grid of white-framed windows. Minimal ornament beyond brick banding. Roofline obscured by crop."
           },
-          "cost": 0.01201662
+          "cost": 0.01179387
         }
       ]
     }

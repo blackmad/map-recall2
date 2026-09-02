@@ -6,6 +6,35 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Five of the six façade pilot targets were not buildings.** Measuring
+  cross-model agreement raised the question the agreement numbers could not
+  answer — were the two models looking at the same building? For five of six
+  targets there was no target building to look at. `w1475011497` covers **one
+  square metre**; `w282294826`, the anchor the procedural block demo was built
+  around, is a 7 m² box 2.5 m tall; `w1388560103` is 112 m² but only 3.7 m
+  high. One target, `w274039950` at 134 m² and 17.7 m, is a building. This is
+  not a sampling accident: `buildings-colored.geojson` is filtered by appearance
+  rather than building-ness, and across its 10,578 features the **median
+  footprint is 18 m²**, the 10th percentile is 6 m², and 62.6% are under 40 m²
+  or under 4 m tall — sheds, kiosks, canopies and dormers are its typical
+  member, which is the measurement behind `LOD.md`'s warning never to treat that
+  file as the mapped building set. It also explains the labels: both models
+  reported `targetVisible` true at 0.8–0.9 confidence on all six and were not
+  wrong, because a panorama aimed at a 1 m² object does show a façade — the one
+  behind it. Two models have no reason to choose the same neighbour, which is
+  precisely the disagreement the agreement table found. A `targetVisible` field
+  cannot catch this, since the failure is that the target has no façade rather
+  than that the camera missed it. So `judgeFacadeTarget` now decides before a
+  panorama is ever requested — 40 m², 4 m tall, one 5 m edge, structured
+  reasons, and a missing height rejects rather than passing silently — keeping
+  3,694 of 10,578 targets (34.9%), and `test:facade-target` pins all six as
+  named regressions. **This corrects the entry below**: `bayCount` was called
+  unreliable because the models read different façade rhythms, but they were
+  substantially reading different buildings. What survives is that a street-level
+  crop cannot see a roofline and that gating on what a photograph supplies beats
+  gating on counts; what does not survive is any estimate of how well two models
+  agree about one façade. That has still not been measured.
+
 - **The façade grammar gate was failing on the two fields a photograph cannot
   supply.** A two-model pilot (`gemini-3.1-pro-preview`, `claude-sonnet-4.6`) put
   the full enum grammar to 6 cached Amsterdam panorama crops for $0.117 and

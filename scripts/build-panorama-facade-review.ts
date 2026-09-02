@@ -4,6 +4,7 @@
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { DEFAULT_FACADE_TARGET_POLICY, footprintMetrics, judgeFacadeTarget, outerRing } from '../src/canalRecall/building/facadeTarget.ts';
 
 type Point = [number, number];
 type Geometry = { type: 'Polygon'; coordinates: Point[][] } | { type: 'MultiPolygon'; coordinates: Point[][][] };
@@ -92,11 +93,25 @@ window.quick=v=>{material.value=v;if(v==='not-visible')colour.value='unknown';sa
 const collection = JSON.parse(await readFile(inputFile, 'utf8')) as { features: Building[] };
 let candidates = collection.features.filter(feature => feature.geometry && feature.properties.osmId);
 if (onlyOsmId) candidates = candidates.filter(feature => String(feature.properties.osmId) === onlyOsmId);
-else candidates = candidates.sort((a, b) => score(a).localeCompare(score(b))).slice(0, maxAttempts);
-await mkdir(path.join(outputDirectory, 'images'), { recursive: true });
 
 const items: Record<string, unknown>[] = [];
 const rejections: Array<{ osmId: string; reason: string }> = [];
+
+// Reject targets that cannot show a façade before a panorama is ever requested. The
+// appearance extract is filtered by colour, not by building-ness: its median footprint
+// is 18 m², so an unfiltered sample spends most of its requests on sheds and canopies.
+const unusableTargets: Array<{ osmId: string; reason: string }> = [];
+if (!onlyOsmId) {
+  candidates = candidates.filter(feature => {
+    const ring = outerRing(feature.geometry as { type: string; coordinates: unknown });
+    const verdict = ring ? judgeFacadeTarget(footprintMetrics(ring), feature.properties.height) : { usable: false, reason: 'unsupported-geometry' };
+    if (!verdict.usable) unusableTargets.push({ osmId: String(feature.properties.osmId), reason: String(verdict.reason) });
+    return verdict.usable;
+  });
+  process.stdout.write(`${candidates.length} of ${candidates.length + unusableTargets.length} appearance features can show a façade; ${unusableTargets.length} rejected before any request.\n`);
+  candidates = candidates.sort((a, b) => score(a).localeCompare(score(b))).slice(0, maxAttempts);
+}
+await mkdir(path.join(outputDirectory, 'images'), { recursive: true });
 for (let index = 0; index < candidates.length; index++) {
   if (items.length >= limit) break;
   const building = candidates[index], [lon, lat] = centre(building.geometry), osmId = String(building.properties.osmId);
@@ -121,7 +136,7 @@ for (let index = 0; index < candidates.length; index++) {
     process.stderr.write(`skipped ${osmId}: ${String(error)}\n`);
   }
 }
-const manifest = { schemaVersion: 2, generatedAt: new Date().toISOString(), input: path.relative(process.cwd(), inputFile), source: { name: 'Kernregistratie Panoramabeelden Gemeente Amsterdam', license: 'CC BY 4.0', api: 'https://api.data.amsterdam.nl/panorama/' }, selection: { requestedUsable: limit, attempted: items.length + rejections.length, usable: items.length, rejected: rejections.length, radiusMetres: radius }, model: model || null, rejections, items };
+const manifest = { schemaVersion: 2, generatedAt: new Date().toISOString(), input: path.relative(process.cwd(), inputFile), source: { name: 'Kernregistratie Panoramabeelden Gemeente Amsterdam', license: 'CC BY 4.0', api: 'https://api.data.amsterdam.nl/panorama/' }, selection: { requestedUsable: limit, attempted: items.length + rejections.length, usable: items.length, rejected: rejections.length, radiusMetres: radius, facadeTargetPolicy: DEFAULT_FACADE_TARGET_POLICY, rejectedBeforeRequest: unusableTargets.length }, model: model || null, rejections, unusableTargets, items };
 await writeFile(path.join(outputDirectory, 'manifest.json'), JSON.stringify(manifest, null, 2));
 await writeFile(path.join(outputDirectory, 'index.html'), html(items));
 process.stdout.write(`Wrote ${items.length} review items to ${path.relative(process.cwd(), outputDirectory)}/index.html\n`);
