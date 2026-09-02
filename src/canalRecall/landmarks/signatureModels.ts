@@ -1,85 +1,117 @@
 // The curated list. One entry per building worth recognising on sight.
 //
-// This is deliberately a hand-written file and not a generated one. Every field
-// below is either a licence obligation or a judgement about a specific building
-// that no automated pass can make: which way the facade faces, how tall the
-// thing actually is when its own encyclopedia entry is wrong, and which OSM
-// footprints the model stands in for. Generated numbers — mesh bounds, byte
-// counts, triangle counts — live in `signature-landmarks.json` beside the GLB.
+// Nine of these are the City of Amsterdam's own survey models, so the bulk of
+// each entry — where the building is, which landmark it answers to, what its
+// OSM footprint measures — is generated into `surveyedLandmarks.json` by
+// `fetch-3dwarehouse-landmarks.ts` rather than typed out. What stays here is
+// what no fetch can decide: which way a facade points, how tall a building is
+// where the number is worth asserting, and the licence it ships under.
 //
-// The footprint values are pinned rather than computed at runtime so that a
-// change to the Amsterdam extract cannot silently move a building. The check
-// script re-derives them from the extract and fails if they drift.
+// PROTOTYPE: these are used under the 3D Warehouse General Model License,
+// which covers a Combined Work but not redistributing an asset library. That
+// question is parked, not answered — see TODO.md before this goes anywhere
+// public.
 
-import type { SignatureModelSpec } from './signaturePlacement';
+import surveyedCatalogue from './surveyedLandmarks.json';
+import type { LngLat, OrientedFootprint, SignatureModelSpec } from './signaturePlacement';
+
+interface SurveyedCatalogueEntry {
+  id: string;
+  name: string;
+  warehouseId: string;
+  landmarkId: string;
+  landmarkName: string | null;
+  address: string | null;
+  anchor: [number, number];
+  anchorToLandmarkMetres: number | null;
+  footprint: OrientedFootprint | null;
+}
 
 /**
- * Height of the Royal Palace, in metres, to the tip of the weathervane.
+ * Height assertions, in metres to the highest point, for the buildings where
+ * the number is worth pinning.
  *
- * This is now measured rather than argued. The City of Amsterdam's own survey
- * model names its parts: `PD-natsteen`, the main stone mass, tops out at
- * 51.9 m, and `PD-haantje` — the rooster on the vane — reaches 60.9 m. So the
- * building is a little under 52 m and the thing on top of it adds nine more.
- *
- * Dutch Wikipedia and Wikidata (Q1056152) both say 90 m, and both are wrong in
- * the same way: almost certainly the 80 m facade width mis-entered as a height
- * and then copied between them. The tolerance below is tight because the
- * number no longer rests on inference.
+ * Only filled in where there is something to check against. The Palace is the
+ * case that earned it: Dutch Wikipedia and Wikidata both claim 90 m for a
+ * building whose own survey puts the main stone mass at 51.9 m and the rooster
+ * on the weathervane at 60.9 m. A surveyed model is placed at scale 1, so a
+ * height that disagrees with the survey means the wrong file rather than a bad
+ * fit — which is exactly the failure worth catching.
  */
-const ROYAL_PALACE_HEIGHT_METRES = 60.9;
-const ROYAL_PALACE_HEIGHT_TOLERANCE_METRES = 1.5;
+const EXPECTED_HEIGHTS: Readonly<Record<string, { metres: number; tolerance: number }>> = {
+  'palace-on-the-dam': { metres: 60.9, tolerance: 1.5 },
+};
 
-export const SIGNATURE_MODELS: readonly SignatureModelSpec[] = [
-  {
-    id: 'royal-palace',
-    name: 'Royal Palace of Amsterdam',
-    landmarkId: 'extract_landmarks_342809743',
-    modelUrl: './models/royal-palace.glb',
-    // Published by the city with the model, and independently within 15 m of
-    // the rectangle fitted to the OSM ring — two sources that never consulted
-    // each other agreeing on where the Palace is.
-    surveyed: {
-      anchor: [4.891409500306835, 52.373196352182916],
-      northOffsetDegrees: 0,
-      source: '3D Warehouse entity d1ad512d8df5fc6745407e0587dff10e, geo attribute',
-    },
-    // The Palace is OSM relation 3580875, a multipolygon; its outer ring is
-    // way 342809743, which is the id the Amsterdam extract carries and the id
-    // the vector tiles expose. Both are listed so that suppression works
-    // whichever the basemap happens to hand us.
-    suppressOsmIds: [342809743, 3580875],
-    footprint: {
-      centre: [4.891336694593322, 52.37314491172975],
-      headingDegrees: 1.4350192765089105,
-      lengthMetres: 80.97600419214265,
-      widthMetres: 65.49286921449004,
-    },
-    heightMetres: ROYAL_PALACE_HEIGHT_METRES,
-    heightToleranceMetres: ROYAL_PALACE_HEIGHT_TOLERANCE_METRES,
-    // Dam square is reclaimed ground a little above NAP; the surrounding
-    // basemap sits at zero and the model is drawn against it, so the anchor
-    // altitude is zero rather than a true ellipsoidal height.
+/**
+ * Which way each building's front faces, as a compass bearing.
+ *
+ * Not used to place a surveyed model — it arrives already turned correctly —
+ * but it is the human-checkable fact about each one, and the thing a reviewer
+ * can disagree with. "The Palace faces east onto the Dam" is verifiable; "the
+ * mesh is north-up" is not. Values are approximate to the nearest degree and
+ * several are unverified guesses; the check script is where they should
+ * eventually be pinned against the OSM footprint's long axis.
+ */
+const FACADE_BEARINGS: Readonly<Record<string, number>> = {
+  'palace-on-the-dam': 91, // east, onto the Dam
+  'centraal-station': 187, // south, down the Damrak
+  'rijksmuseum': 13, // north, towards the city
+  'westerkerk': 93, // east, onto the Prinsengracht
+  'oude-kerk': 93, // east, onto the Oudekerksplein
+  'de-beurs-van-berlage': 97,
+  'nemo': 250,
+  'stadhuis': 270,
+  'national-monument-on-the-dam': 271,
+};
+
+const WAREHOUSE_LICENCE = {
+  author: 'City of Amsterdam, Geo- en Vastgoedinformatie',
+  licence: '3D Warehouse General Model License',
+  licenceUrl: 'https://3dwarehouse.sketchup.com/tos/',
+  modifications:
+    'Cleaned up for the web, not changed artistically: SketchUp construction edges removed, '
+    + 'faces made double-sided so inward-facing normals stop rendering black, all materials set '
+    + "non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with "
+    + "no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets "
+    + 'and tangents dropped, textures re-encoded as WebP, geometry quantized and '
+    + "meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, "
+    + 'unscaled and unrotated.',
+} as const;
+
+function specFromCatalogue(entry: SurveyedCatalogueEntry): SignatureModelSpec {
+  const height = EXPECTED_HEIGHTS[entry.id];
+  return {
+    id: entry.id,
+    name: entry.name,
+    landmarkId: entry.landmarkId,
+    modelUrl: `./models/${entry.id}.glb`,
+    // Nothing to list: suppression works by biasing the model towards the
+    // camera, because this basemap batches its building features and they
+    // cannot be filtered. See `signature-landmarks-source.js`.
+    suppressOsmIds: [],
+    footprint: entry.footprint ?? undefined,
+    heightMetres: height?.metres,
+    heightToleranceMetres: height?.tolerance,
     groundAltitudeMetres: 0,
-    // The fitted rectangle's long axis runs almost due north (1.4°). The
-    // Palace's front — pediment, balcony, the entrance onto the Dam — faces
-    // east across the square, so the facade is a quarter turn clockwise of the
-    // long axis. Use −90 instead if a model turns out to be back-to-front.
-    facingOffsetDegrees: 90,
-    attribution: {
-      title: 'Palace on the Dam',
-      author: 'City of Amsterdam, Geo- en Vastgoedinformatie',
-      sourceUrl: 'https://3dwarehouse.sketchup.com/model/d1ad512d8df5fc6745407e0587dff10e',
-      licence: '3D Warehouse General Model License',
-      licenceUrl: 'https://3dwarehouse.sketchup.com/tos/',
-      modifications:
-        'Cleaned up for the web, not changed artistically: SketchUp construction edges removed, '
-        + 'faces made double-sided so inward-facing normals stop rendering black, spare UV sets '
-        + 'and tangents dropped, textures re-encoded as WebP, geometry quantized and '
-        + 'meshopt-compressed. Placed at the city\'s own published coordinate at its surveyed '
-        + 'size, unscaled and unrotated.',
+    facingOffsetDegrees: FACADE_BEARINGS[entry.id] ?? 0,
+    surveyed: {
+      anchor: entry.anchor as unknown as LngLat,
+      northOffsetDegrees: 0,
+      source: `3D Warehouse entity ${entry.warehouseId}, geo attribute`,
     },
-  },
-];
+    attribution: {
+      title: entry.name,
+      author: WAREHOUSE_LICENCE.author,
+      sourceUrl: `https://3dwarehouse.sketchup.com/model/${entry.warehouseId}`,
+      licence: WAREHOUSE_LICENCE.licence,
+      licenceUrl: WAREHOUSE_LICENCE.licenceUrl,
+      modifications: WAREHOUSE_LICENCE.modifications,
+    },
+  };
+}
+
+export const SIGNATURE_MODELS: readonly SignatureModelSpec[] =
+  (surveyedCatalogue as SurveyedCatalogueEntry[]).map(specFromCatalogue);
 
 /** Looks up a spec by id. */
 export function signatureModel(id: string): SignatureModelSpec | undefined {
