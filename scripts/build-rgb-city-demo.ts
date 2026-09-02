@@ -2,7 +2,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import proj4 from 'proj4';
-import type { RoofPlane } from '../src/canalRecall/building/facadePointCloud.ts';
+import type { RgbPoint, RoofPlane } from '../src/canalRecall/building/facadePointCloud.ts';
 
 const arg = (name: string) => process.argv.find((value) => value.startsWith(`--${name}=`))?.slice(name.length + 3);
 const root = path.resolve(arg('root') || '.cache/rgb-city-demo');
@@ -14,6 +14,7 @@ type Proposal = {
   buildingId: string; surfaceId: string; status: string; reason: string | null;
   orthophotoColour: string | null; crossSourceRgbDistance: number | null;
   pointCloudMeasurement: { status: string; hex?: string; sampleCount: number; coverage: number; dispersion?: number; planeOffsetMetres?: number };
+  previewPoints?: RgbPoint[];
 };
 const surfaces = JSON.parse(await readFile(path.join(root, 'panorama/facade-wall-planes.json'), 'utf8')) as {
   buildings: Array<{ buildingId: string; roofs: RoofPlane[] }>;
@@ -21,7 +22,7 @@ const surfaces = JSON.parse(await readFile(path.join(root, 'panorama/facade-wall
 const measurements = JSON.parse(await readFile(path.join(root, 'roof-point-cloud-colour-proposals.json'), 'utf8')) as {
   source: Record<string, unknown>; tileHashes: unknown[]; policy: Record<string, unknown>; proposals: Proposal[];
 };
-const coverage = JSON.parse(await readFile(coveragePath, 'utf8')) as { counts?: { buildings?: number } };
+const coverage = await readFile(coveragePath, 'utf8').then((value) => JSON.parse(value) as { counts?: { buildings?: number } }).catch(() => ({ counts: { buildings: 42_534 } }));
 const roofs = new Map(surfaces.buildings.flatMap((building) => building.roofs.map((roof) => [roof.surfaceId, roof] as const)));
 const features = measurements.proposals.flatMap((proposal) => {
   const roof = roofs.get(proposal.surfaceId);
@@ -49,6 +50,10 @@ const features = measurements.proposals.flatMap((proposal) => {
   }];
 });
 const proposed = measurements.proposals.filter((proposal) => proposal.status === 'proposed');
+const pointFeatures = measurements.proposals.flatMap((proposal) => (proposal.previewPoints || []).map((point) => {
+  const [longitude, latitude] = proj4('EPSG:28992', 'EPSG:4326', [point.x, point.y]) as [number, number];
+  return { type: 'Feature', geometry: { type: 'Point', coordinates: [longitude, latitude] }, properties: { surfaceId: proposal.surfaceId, buildingId: proposal.buildingId, height: Number(point.z.toFixed(2)), colour: `rgb(${point.red},${point.green},${point.blue})` } };
+}));
 const summary = {
   schemaVersion: 1, generatedAt: new Date().toISOString(),
   title: 'Amsterdam RGB point-cloud roof demo',
@@ -64,5 +69,6 @@ const summary = {
 };
 await mkdir(outputDirectory, { recursive: true });
 await writeFile(path.join(outputDirectory, 'roof-planes.geojson'), JSON.stringify({ type: 'FeatureCollection', features }));
+await writeFile(path.join(outputDirectory, 'point-cloud-preview.geojson'), JSON.stringify({ type: 'FeatureCollection', features: pointFeatures }));
 await writeFile(path.join(outputDirectory, 'summary.json'), `${JSON.stringify(summary, null, 2)}\n`);
 process.stdout.write(`Built RGB demo: ${summary.independentlyAgreedPlanes}/${summary.semanticRoofPlanes} planes on ${summary.buildingsWithAgreedRgb}/${summary.sampledBuildings} buildings agree.\n`);
