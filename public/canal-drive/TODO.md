@@ -20,55 +20,13 @@ belongs here before anything below it.*
 
 ## P1 — The learning model itself
 
-**16. Expand the reviewed local-fact catalog.** Version 6 now does real local
-summarization over cached Wikipedia sections: a writer produces a concise fact
-and cites numbered source sentences, code copies the exact evidence, and a
-separate temperature-zero local pass checks full entailment. Deterministic
-number/date, standalone-card, staleness and provenance gates remain, followed
-by human review. The corrected v6 smoke run produced 18 grounded summaries for
-all 3 sampled Amsterdam features, rejected three dangling references, and had
-the verifier catch one unsupported embellishment. Citation-marker noise and
-possessive apostrophes are cleaned deterministically. Regenerate all four
-Randstad staging catalogs, measure yield and verifier rejections, then review a
-stratified sample before publishing. Dutch articles now go through local
-`trn --quality high` sentence translation before English summarization and
-entailment; they retain aligned Dutch and English evidence and must be measured
-separately in that review.
-
-Bulk inference can now use OpenRouter while `trn` remains local. A measured
-three-bridge Qwen 3.5 Flash smoke run produced 5 grounded facts in 5.6 seconds,
-rejected 7 unsupported/context-dependent candidates, and cost $0.0005. Run the
-full Randstad batch with provider/model recorded in the generator version; do
-not reuse the old human approvals across that provider change.
-
-Rejections are now durable staging artifacts rather than truncated console
-samples. Use `fact-rejections.md` during the Randstad review to separate useful
-standalone-card rewrites from genuine entailment failures; never weaken a gate
-based only on aggregate rejection counts.
-
-The Trivia Lab at `/canal-drive/trivia-review.html` now makes the full review
-queue browsable by city, status, collection, rejection reason and evidence. Its
-manual Refresh button displays the latest ten-feature checkpoint and OpenRouter
-spend without moving the page while somebody is reading. Use it to review the completed Randstad batch and record approvals;
-automatically passed candidates remain visibly separate from published facts.
-
-Naming facts now preserve both useful forms: the native map name remains the
-identity and an evidence-backed English meaning may appear beside it as a
-gloss. Review these especially closely; an English gloss must never replace
-the name the player needs to recognise on signs and maps.
-
-Street and waterway records with linked Wikipedia pages now enter the same
-catalog. Canal Recall indexes their exact extract IDs, keeps street/water
-homonyms separate, and shows reviewed trivia after both driving and boating
-route answers. The original Map Recall category loader already joins reviewed
-facts generically by exact ID. The pending Randstad regeneration must include
-these two new collections before item 16 can move to history.
-
-The original Map Recall app now consumes the same reviewed `facts.json` by
-exact extract feature id and shows the selected quotation after an answer;
-unmatched POIs keep their existing Wikipedia card. Civic POI types are no
-longer silently omitted from its All/Landmarks filters. Expansion work belongs
-in the shared catalog above, not in a second app-specific generator.
+**16. Review and refine the published Randstad trivia.** The owner approved the
+complete v10 automatically grounded batch, publishing 4,263 facts across 1,456
+features in Amsterdam, Rotterdam, Den Haag and Utrecht. Add per-fact
+approve/reject/edit controls to the Trivia Lab and export version-matched review
+files, then work through a stratified audit prioritising dates, quantities,
+Dutch translations and model-verifier disagreements. Corrections must retain
+exact Wikipedia evidence and must go back through the normal publication gate.
 
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by

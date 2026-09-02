@@ -6,6 +6,20 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The grounded trivia catalog now covers the Randstad.** OpenRouter Qwen 3.5
+  Flash summarized cached real Wikipedia sections while local `trn` translated
+  Dutch evidence sentence-for-sentence. A separately versioned verifier plus
+  deterministic gates rejected 3,735 candidates and retained full rejection
+  reasons and evidence for audit. The owner approved the 4,263 survivors: 2,239
+  Amsterdam facts, 760 Rotterdam facts, 663 Den Haag facts and 601 Utrecht
+  facts across 1,456 features. Each shipped statement retains its exact source,
+  translation where applicable, licence, retrieval date, writer and verifier.
+  The entire four-city OpenRouter generation cost $0.3102.
+
+  `/canal-drive/trivia-review.html` exposes staged, rejected and published
+  catalogs separately, with city tabs, search, filters, evidence drill-down and
+  manual checkpoint refresh. Rejected text never enters the shipped catalogs.
+
 - **Reviewed trivia and civic POIs reached the original Map Recall game.** Its
   Amsterdam extract loader now joins the shared reviewed `facts.json` only by
   exact feature id. Answer cards prefer a provenance-bearing quotation and
