@@ -15,6 +15,9 @@ class VectorBasemap {
     this._treesVisible = false;
     this._detailedBuildings = null;
     this._detailedBuildingsVisible = false;
+    this._googleTiles = null;
+    this._googleTilesEnabled = false;
+    this._googleTilesActive = false;
     this._activeLandmark = null;
     this._playerBike = null;
     this._playerBoat = null;
@@ -247,11 +250,69 @@ class VectorBasemap {
     this.setActiveLandmark(this._activeLandmark);
   }
 
+  setGoogleTilesEnabled(enabled) {
+    this._googleTilesEnabled = !!enabled;
+    if (!this._googleTilesEnabled && this._googleTiles) this._googleTiles.setEnabled(false);
+    this._updateGoogleTiles();
+  }
+
+  /**
+   * Google's mesh earns its place only from the overview camera: measured, it is
+   * excellent from ~25 m up and a smear at cycling height, and it carries no
+   * building identity to highlight an answer with. So altitude, not preference
+   * alone, decides — and it swaps back to 3DBAG on the way down.
+   *
+   * The altitude rule itself, including its hysteresis band, is
+   * `src/canalRecall/building/photorealGate.ts` and is covered by
+   * `npm run test:photoreal-gate`.
+   */
+  _updateGoogleTiles() {
+    if (!this.map || typeof this.map.getFreeCameraOptions !== 'function') return;
+    let altitude = null;
+    try {
+      altitude = this.map.getFreeCameraOptions().position.toAltitude();
+    } catch (err) {
+      altitude = null;
+    }
+    const api = window.CanalRecallGoogleTiles;
+    const gate = window.CanalRecallPhotorealGate;
+    if (!gate) return;
+    const want = gate.shouldShowPhotoreal({
+      enabled: this._googleTilesEnabled,
+      altitudeMeters: altitude,
+      active: this._googleTilesActive,
+    });
+
+    if (want && !this._googleTiles && api && api.GooglePhotorealTiles) {
+      // Built on first use, so a player who never turns it on never pays for
+      // the tileset session, and never sends a request Google would bill.
+      this._googleTiles = new api.GooglePhotorealTiles(this.map, maplibregl, text => this.setGoogleAttribution(text));
+    }
+    if (this._googleTiles) this._googleTiles.setEnabled(want);
+
+    const active = !!(want && this._googleTiles && this._googleTiles.ready);
+    if (active === this._googleTilesActive) return;
+    this._googleTilesActive = active;
+    if (!active) this.setGoogleAttribution('');
+    this._syncDetailedBuildingLayers();
+  }
+
+  setGoogleAttribution(text) {
+    const el = document.getElementById('google-tiles-attribution');
+    if (!el) return;
+    el.textContent = text || '';
+    el.style.display = text ? 'block' : 'none';
+  }
+
   _syncDetailedBuildingLayers() {
     if (!this.map) return;
-    const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
+    const google = this._googleTilesActive;
+    // 3DBAG and Google must never draw together: they are the same buildings
+    // twice, z-fighting into a shimmer.
+    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google);
+    const detailed = !google && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     for (const id of ['building-3d', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
-      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', detailed ? 'none' : 'visible');
+      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google) ? 'none' : 'visible');
     }
   }
 
@@ -515,6 +576,7 @@ class VectorBasemap {
     // keeps sitting exactly on the basemap.
     const pitch = cockpit ? 72 : chase ? 58 : TOPDOWN_TILT_DEGREES;
     this.map.jumpTo({ center: [lon, lat], zoom: cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom, bearing, pitch });
+    this._updateGoogleTiles();
     camera.projector = pitch > 0
       ? (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas)
       : null;

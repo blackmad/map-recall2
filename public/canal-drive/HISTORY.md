@@ -6,6 +6,32 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **Google's mesh now has a switch, and it only reaches the overview camera.**
+  The measurement below settled where it is usable; this is the option built on
+  top of it. "Google photoreal (overview)" appears in both settings panels and
+  is off by default. Altitude, not the preference alone, decides: the mesh
+  appears at 25 m and up, and 3DBAG comes back on the way down, so the corridor
+  the player actually rides keeps geometry that can be highlighted as a correct
+  answer. The rule lives in `src/canalRecall/building/photorealGate.ts` rather
+  than as a branch buried in `vector-map.js`, with a release height of 22 m
+  against an activation height of 25 m — riding a canal holds a near-constant
+  altitude, which parks the camera on a single threshold and flips the whole
+  city between two renderers every few frames. `npm run test:photoreal-gate`
+  covers the band from both directions; `tests/e2e/google-tiles-option.spec.ts`
+  covers the wiring, and asserts that switching the option on at cycling height
+  issues no request to `tile.googleapis.com` at all, because a billable request
+  from a height whose output is unusable is the specific waste worth a guard.
+
+  The browser key is committed. It is restricted at Google's end to the Map
+  Tiles API and to this game's own origins, so it grants nothing off-origin;
+  rotate it in the Cloud console rather than editing a copy somewhere. Two
+  smaller things are load-bearing: the tiles bundle is ESM where its siblings
+  are IIFE, because three's `DRACOLoader` resolves decoder paths at module top
+  level through `import.meta.url` and esbuild stubs that out of an IIFE; and the
+  layer is built on first use, so a player who never switches it on never opens
+  a tileset session. Google's terms require its attribution to be visible
+  whenever its imagery is, which `#google-tiles-attribution` carries.
+
 - **Google's photorealistic mesh was measured at cycling height, and rejected
   for the driving corridor.** The question was whether to replace the view layer
   with Google Earth's imagery, since `3d-tiles-renderer` already ships here for
