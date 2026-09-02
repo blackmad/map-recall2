@@ -32,6 +32,7 @@ import sharp from 'sharp';
 
 import { SIGNATURE_MODELS } from '../src/canalRecall/landmarks/signatureModels';
 import {
+  modelExtent,
   placementFor,
   scaledExtent,
   type ModelBounds,
@@ -168,20 +169,122 @@ const STONE_ROUGHNESS = 0.85;
 const UNPAINTED_FACE_COLOUR: [number, number, number, number] = [0.16, 0.16, 0.17, 1];
 const UNPAINTED_MATERIAL_PATTERN = /^default_face_material/i;
 
+/**
+ * The aerial photograph these models are traced over, and its backing.
+ *
+ * Every one of these was modelled on top of a Google Earth snapshot, and the
+ * snapshot ships inside the export: a flat photo-textured plane, 700 m across
+ * on Centraal, lying at ground level. It is why Centraal measured 751 m wide
+ * and NEMO 296 m, and on the map it draws as a huge grey rectangle of someone
+ * else's satellite imagery pasted over the basemap.
+ *
+ * Two rules, because it arrives as two surfaces. The material name catches the
+ * photo itself. The size test catches its unpainted back face, which has no
+ * distinguishing name — anything essentially flat and larger across than any
+ * real building here is ground, not architecture.
+ */
+const SNAPSHOT_MATERIAL_PATTERN = /google earth|snapshot/i;
+/**
+ * Ground is enormous and almost empty; architecture is not.
+ *
+ * Flatness was the wrong test. The site under the Rijksmuseum is not flat — it
+ * is a terrain patch 239 x 201 m with 11.5 m of relief, sloping below the
+ * building — and Centraal's is a photo plane. What they have in common, and
+ * what no real roof shares, is that they cover a couple of hundred metres with
+ * eight triangles. The Rijksmuseum's own roof covers a comparable area with
+ * 1,702.
+ *
+ * So the test is density: bigger across than any single building here, and
+ * simpler than any real surface that size would be.
+ */
+const GROUND_PLANE_MIN_SPAN_METRES = 60;
+const GROUND_PLANE_MAX_TRIANGLES = 64;
+
+/**
+ * World-space bounds for every primitive, keyed by primitive.
+ *
+ * Measuring a primitive's own POSITION accessor is not the same thing and was
+ * actively wrong here: a roof plane sits at y≈0 *within its own node* and is
+ * lifted 20 m by that node's transform. Judged locally it looks exactly like a
+ * ground slab, which is how a first attempt at this deleted the Palace's roof
+ * and shortened the building from 60.9 m to 56.6 m.
+ */
+function primitiveWorldBounds(
+  document: Document,
+): Map<ReturnType<Document['createPrimitive']>, { width: number; height: number; depth: number; baseY: number }> {
+  const bounds = new Map<
+    ReturnType<Document['createPrimitive']>,
+    { width: number; height: number; depth: number; baseY: number }
+  >();
+  const scene = document.getRoot().getDefaultScene() ?? document.getRoot().listScenes()[0];
+  const visit = (node: GltfNode, parentMatrix: number[]): void => {
+    const matrix = multiply(parentMatrix, node.getMatrix() as number[]);
+    const mesh = node.getMesh();
+    if (mesh) {
+      for (const primitive of mesh.listPrimitives()) {
+        const position = primitive.getAttribute('POSITION');
+        if (!position) continue;
+        const min = [Infinity, Infinity, Infinity];
+        const max = [-Infinity, -Infinity, -Infinity];
+        const element: [number, number, number] = [0, 0, 0];
+        for (let index = 0; index < position.getCount(); index += 1) {
+          position.getElement(index, element);
+          const [x, y, z] = element;
+          const world = [
+            matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12],
+            matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13],
+            matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14],
+          ];
+          for (let axis = 0; axis < 3; axis += 1) {
+            if (world[axis] < min[axis]) min[axis] = world[axis];
+            if (world[axis] > max[axis]) max[axis] = world[axis];
+          }
+        }
+        bounds.set(primitive, {
+          width: max[0] - min[0],
+          height: max[1] - min[1],
+          depth: max[2] - min[2],
+          baseY: min[1],
+        });
+      }
+    }
+    for (const child of node.listChildren()) visit(child, matrix);
+  };
+  for (const node of scene.listChildren()) visit(node, IDENTITY);
+  return bounds;
+}
+
 function cleanSketchUpExport(document: Document): {
   droppedPrimitives: number;
+  droppedGround: number;
   doubleSided: number;
   demetallised: number;
   unpainted: number;
 } {
   let droppedPrimitives = 0;
+  let droppedGround = 0;
+  const worldBounds = primitiveWorldBounds(document);
   for (const mesh of document.getRoot().listMeshes()) {
     for (const primitive of mesh.listPrimitives()) {
       // 4 is TRIANGLES. Points and lines are construction leftovers.
-      if (primitive.getMode() === 4) continue;
+      if (primitive.getMode() !== 4) {
+        mesh.removePrimitive(primitive);
+        primitive.dispose();
+        droppedPrimitives += 1;
+        continue;
+      }
+      const materialName = primitive.getMaterial()?.getName() ?? '';
+      const span = worldBounds.get(primitive) ?? null;
+      const isSnapshot = SNAPSHOT_MATERIAL_PATTERN.test(materialName);
+      const indices = primitive.getIndices();
+      const triangles = (indices ? indices.getCount() : (primitive.getAttribute('POSITION')?.getCount() ?? 0)) / 3;
+      const isGroundPlane = span !== null
+        && Math.min(span.width, span.depth) >= GROUND_PLANE_MIN_SPAN_METRES
+        && triangles <= GROUND_PLANE_MAX_TRIANGLES;
+      if (!isSnapshot && !isGroundPlane) continue;
       mesh.removePrimitive(primitive);
       primitive.dispose();
-      droppedPrimitives += 1;
+      droppedGround += 1;
     }
   }
   let doubleSided = 0;
@@ -202,7 +305,7 @@ function cleanSketchUpExport(document: Document): {
       unpainted += 1;
     }
   }
-  return { droppedPrimitives, doubleSided, demetallised, unpainted };
+  return { droppedPrimitives, droppedGround, doubleSided, demetallised, unpainted };
 }
 
 /** Attribute sets a downloaded mesh carries that this renderer never samples.
@@ -267,6 +370,7 @@ async function main(): Promise<void> {
   if (cleaned) {
     console.log(
       `sketchup cleanup: dropped ${cleaned.droppedPrimitives} non-triangle primitives, `
+      + `${cleaned.droppedGround} ground/snapshot planes, `
       + `made ${cleaned.doubleSided} materials double-sided, `
       + `de-metallised ${cleaned.demetallised}, darkened ${cleaned.unpainted} unpainted`,
     );
@@ -308,23 +412,56 @@ async function main(): Promise<void> {
   const outputBytes = fs.statSync(outputPath).size;
 
   const placement = placementFor(spec, bounds);
-  const extent = scaledExtent(bounds, placement.scale, spec.footprint);
+  const extent = spec.footprint ? scaledExtent(bounds, placement.scale, spec.footprint) : null;
   console.log(`runtime: ${(outputBytes / 1e6).toFixed(2)} MB, ${triangles.toLocaleString()} triangles`);
   console.log(
     `reduction: ${(sourceBytes / outputBytes).toFixed(1)}× smaller, `
     + `${(sourceTriangles / triangles).toFixed(1)}× fewer triangles`,
   );
-  console.log(
-    `fitted to ${spec.footprint.lengthMetres.toFixed(2)} m footprint width: scale ${placement.scale.toFixed(5)}, `
-    + `facade bearing ${placement.facadeBearingDegrees.toFixed(1)}°`,
-  );
-  console.log(
-    `  height ${extent.heightMetres.toFixed(1)} m (expected ${spec.heightMetres} ± ${spec.heightToleranceMetres})`,
-  );
-  console.log(
-    `  depth  ${extent.depthMetres.toFixed(1)} m of ${spec.footprint.widthMetres.toFixed(1)} m footprint `
-    + `(${(extent.depthCoverage * 100).toFixed(0)}% coverage)`,
-  );
+  const measured = modelExtent(bounds);
+  if (spec.surveyed) {
+    console.log(
+      `surveyed placement at ${spec.surveyed.anchor[1].toFixed(6)}, ${spec.surveyed.anchor[0].toFixed(6)}, `
+      + `scale 1, north-up`,
+    );
+    console.log(
+      `  measured ${(measured.width * placement.scale).toFixed(1)} × `
+      + `${(measured.depth * placement.scale).toFixed(1)} m, `
+      + `${(measured.height * placement.scale).toFixed(1)} m tall`,
+    );
+  } else if (spec.footprint && extent) {
+    console.log(
+      `fitted to ${spec.footprint.lengthMetres.toFixed(2)} m footprint width: scale ${placement.scale.toFixed(5)}, `
+      + `facade bearing ${placement.facadeBearingDegrees.toFixed(1)}°`,
+    );
+    console.log(
+      `  depth  ${extent.depthMetres.toFixed(1)} m of ${spec.footprint.widthMetres.toFixed(1)} m footprint `
+      + `(${(extent.depthCoverage * 100).toFixed(0)}% coverage)`,
+    );
+  }
+  if (extent && spec.heightMetres !== undefined) {
+    const tolerance = spec.heightToleranceMetres ?? 2;
+    const off = Math.abs(extent.heightMetres - spec.heightMetres);
+    console.log(`  height ${extent.heightMetres.toFixed(1)} m (expected ${spec.heightMetres} ± ${tolerance})`);
+    // Hard failure, not a warning. A surveyed model is placed at scale 1, so a
+    // height that disagrees with the survey means geometry was lost or the
+    // wrong file was built — both of which a warning in a 9-model loop scrolls
+    // straight past. The over-eager ground-plane rule that ate the Palace's
+    // roof got through exactly that way.
+    if (off > tolerance) {
+      throw new Error(
+        `${spec.id}: built model is ${extent.heightMetres.toFixed(1)} m, expected `
+        + `${spec.heightMetres} ± ${tolerance}. Cleanup probably removed real geometry.`,
+      );
+    }
+  }
+  if (spec.footprint && spec.surveyed) {
+    const coverage = (measured.depth * placement.scale) / spec.footprint.widthMetres;
+    console.log(
+      `  footprint ${spec.footprint.lengthMetres.toFixed(1)} × ${spec.footprint.widthMetres.toFixed(1)} m `
+      + `from OSM; survey covers ${(coverage * 100).toFixed(0)}% of its depth`,
+    );
+  }
 
   const manifest = {
     generatedBy: 'scripts/build-signature-landmark.ts',

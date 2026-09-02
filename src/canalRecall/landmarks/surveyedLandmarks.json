@@ -1,0 +1,184 @@
+[
+  {
+    "id": "westerkerk",
+    "name": "Westerkerk",
+    "warehouseId": "11e419e09f0c9a7e270fcd68188626b2",
+    "landmarkId": "extract_landmarks_1692085215",
+    "landmarkName": "Westerkerk",
+    "address": "Prinsengracht 277, Amsterdam",
+    "anchor": [
+      4.88396309426941,
+      52.374553951618516
+    ],
+    "anchorToLandmarkMetres": 29.8,
+    "footprint": {
+      "centre": [
+        4.8839111908456285,
+        52.37456267500661
+      ],
+      "headingDegrees": 92.95334409606835,
+      "lengthMetres": 60.46473582847,
+      "widthMetres": 43.35976262783471
+    }
+  },
+  {
+    "id": "stadhuis",
+    "name": "Stadhuis (City hall)",
+    "warehouseId": "5995fd7a0e7fa47d99c802e874695f6b",
+    "landmarkId": "extract_landmarks_1919682395",
+    "landmarkName": "Dutch National Opera & Ballet",
+    "address": "Waterlooplein 28, Amsterdam",
+    "anchor": [
+      4.900961341213284,
+      52.367703988914265
+    ],
+    "anchorToLandmarkMetres": 35.1,
+    "footprint": null
+  },
+  {
+    "id": "oude-kerk",
+    "name": "Oude Kerk (Old Church)",
+    "warehouseId": "5ec8bf3fa426e5d622fc8389905f949e",
+    "landmarkId": "extract_landmarks_1522513904",
+    "landmarkName": "Old Church",
+    "address": "Oudekerksplein 23, Amsterdam",
+    "anchor": [
+      4.898107149173812,
+      52.37429820721874
+    ],
+    "anchorToLandmarkMetres": 25.3,
+    "footprint": {
+      "centre": [
+        4.898073280113648,
+        52.37435793355251
+      ],
+      "headingDegrees": 86.59811535561408,
+      "lengthMetres": 81.88802279426366,
+      "widthMetres": 64.00195512396668
+    }
+  },
+  {
+    "id": "centraal-station",
+    "name": "Centraal station",
+    "warehouseId": "6e8629eaefa7ab9f4e5ba763a187284e",
+    "landmarkId": "extract_landmarks_332626598",
+    "landmarkName": "Cuypersgebouw",
+    "address": "Stationsplein",
+    "anchor": [
+      4.9000903650085235,
+      52.378838075868146
+    ],
+    "anchorToLandmarkMetres": 44.1,
+    "footprint": {
+      "centre": [
+        4.899750668752946,
+        52.37855998792934
+      ],
+      "headingDegrees": 120.65330083236796,
+      "lengthMetres": 244.34798071019168,
+      "widthMetres": 30.916412054875813
+    }
+  },
+  {
+    "id": "national-monument-on-the-dam",
+    "name": "National Monument on the Dam",
+    "warehouseId": "80385c387986217491e131c17526634a",
+    "landmarkId": "extract_landmarks_720777797",
+    "landmarkName": "National Monument",
+    "address": "Dam, Amsterdam",
+    "anchor": [
+      4.8936960138168075,
+      52.37278222735422
+    ],
+    "anchorToLandmarkMetres": 20.6,
+    "footprint": {
+      "centre": [
+        4.8936883137407685,
+        52.37282184707071
+      ],
+      "headingDegrees": 176.47702002174162,
+      "lengthMetres": 34.53751303400255,
+      "widthMetres": 34.522229825201435
+    }
+  },
+  {
+    "id": "nemo",
+    "name": "NEMO",
+    "warehouseId": "a2a1d7c7726cb7e065a54e9dd3ee74f",
+    "landmarkId": "extract_landmarks_1875483593",
+    "landmarkName": "Nemo",
+    "address": "Oosterdok 2, Amsterdam",
+    "anchor": [
+      4.912047425587275,
+      52.37396981022394
+    ],
+    "anchorToLandmarkMetres": 13.7,
+    "footprint": null
+  },
+  {
+    "id": "rijksmuseum",
+    "name": "Rijksmuseum",
+    "warehouseId": "a57b8c559152b7851aeb638739e9b807",
+    "landmarkId": "extract_landmarks_512243549",
+    "landmarkName": "Rijksmuseum",
+    "address": "Jan Luijkenstraat 1, Amsterdam",
+    "anchor": [
+      4.885146056364321,
+      52.35975292731005
+    ],
+    "anchorToLandmarkMetres": 103.2,
+    "footprint": {
+      "centre": [
+        4.884979214003914,
+        52.35995618631319
+      ],
+      "headingDegrees": 102.66684543249102,
+      "lengthMetres": 216.0340626582873,
+      "widthMetres": 191.08233490964875
+    }
+  },
+  {
+    "id": "de-beurs-van-berlage",
+    "name": "De Beurs van Berlage (Stock Exchange)",
+    "warehouseId": "c5a0708f3e4b36fe622758e070290bc2",
+    "landmarkId": "extract_landmarks_1104215352",
+    "landmarkName": "Berlage's Stock Market",
+    "address": "Damrak 277, Amsterdam",
+    "anchor": [
+      4.896348334822169,
+      52.37503529982596
+    ],
+    "anchorToLandmarkMetres": 30.5,
+    "footprint": {
+      "centre": [
+        4.896282358992785,
+        52.37500164690132
+      ],
+      "headingDegrees": 37.10231784305506,
+      "lengthMetres": 143.68034104351068,
+      "widthMetres": 54.265141530449334
+    }
+  },
+  {
+    "id": "palace-on-the-dam",
+    "name": "Palace on the Dam",
+    "warehouseId": "d1ad512d8df5fc6745407e0587dff10e",
+    "landmarkId": "extract_landmarks_342809743",
+    "landmarkName": "Royal Palace",
+    "address": "Nieuwezijds Voorburgwal 147, Amsterdam",
+    "anchor": [
+      4.891409500306835,
+      52.373196352182916
+    ],
+    "anchorToLandmarkMetres": 28.9,
+    "footprint": {
+      "centre": [
+        4.891336694593322,
+        52.37314491172975
+      ],
+      "headingDegrees": 1.4350192765089105,
+      "lengthMetres": 80.97600419214265,
+      "widthMetres": 65.49286921449004
+    }
+  }
+]

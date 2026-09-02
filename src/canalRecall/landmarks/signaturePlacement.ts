@@ -75,16 +75,18 @@ export interface SignatureModelSpec {
    *  is keyed on the way id rather than on a spatial test so that a partly
    *  loaded tile can never leave both geometries visible. */
   readonly suppressOsmIds: readonly number[];
-  /** The footprint the model is fitted to. */
-  readonly footprint: OrientedFootprint;
+  /** The footprint the model is fitted to. Required for a fitted model; for a
+   *  surveyed one it is only ever reported, and several municipal models cover
+   *  landmarks the extract holds as a point with no ring. */
+  readonly footprint?: OrientedFootprint;
   /** Real-world height in metres of the highest point of the building — for
    *  the Palace, the tip of the cupola weathervane, not the roof ridge. The
    *  model is fitted to its footprint width, so this is the cross-check on
    *  that fit rather than an input to it. */
-  readonly heightMetres: number;
+  readonly heightMetres?: number;
   /** How far the fitted height may fall from `heightMetres` before the model
    *  is treated as the wrong shape for this footprint. */
-  readonly heightToleranceMetres: number;
+  readonly heightToleranceMetres?: number;
   /** Ground elevation in metres above the ellipsoid at the anchor. Amsterdam
    *  is flat and close to NAP zero, but MapLibre wants an altitude and the
    *  wrong one sinks or floats the model visibly at low camera angles. */
@@ -347,6 +349,9 @@ export function scaledExtent(
 export function placementFor(spec: SignatureModelSpec, bounds: ModelBounds): SignaturePlacement {
   // A surveyed model is not fitted to anything: it already knows where it is.
   if (spec.surveyed) return surveyedPlacement(spec, spec.surveyed);
+  if (!spec.footprint) {
+    throw new Error(`"${spec.id}" is neither surveyed nor given a footprint to fit to.`);
+  }
   const scale = scaleToFootprintWidth(bounds, spec.footprint);
   const extent = scaledExtent(bounds, scale, spec.footprint);
   // Which way the front ends up pointing: a quarter turn off the long axis,
@@ -396,9 +401,9 @@ function surveyedPlacement(
     anchor: surveyed.anchor,
     altitudeMetres: spec.groundAltitudeMetres,
     modelRotationDegrees: normaliseBearing(90 + surveyed.northOffsetDegrees),
-    facadeBearingDegrees: normaliseBearing(
-      spec.footprint.headingDegrees + spec.facingOffsetDegrees,
-    ),
+    facadeBearingDegrees: spec.footprint
+      ? normaliseBearing(spec.footprint.headingDegrees + spec.facingOffsetDegrees)
+      : normaliseBearing(spec.facingOffsetDegrees),
     scale: 1,
   };
 }
