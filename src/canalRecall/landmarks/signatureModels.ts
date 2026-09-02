@@ -14,22 +14,20 @@
 import type { SignatureModelSpec } from './signaturePlacement';
 
 /**
- * Expected height of the Royal Palace, in metres, to the tip of the
- * weathervane. This is an assertion, not an input: the model is scaled to its
- * surveyed footprint width and this is what the check script requires the
- * result to land near.
+ * Height of the Royal Palace, in metres, to the tip of the weathervane.
  *
- * Dutch Wikipedia and Wikidata (Q1056152) both state 90 m, and both are wrong
- * in the same way — almost certainly the facade's 80 m width mis-entered as a
- * height and then copied between them. Scaling the mesh to the 80.98 m
- * surveyed footprint puts the cupola at 53.6 m, neighbouring Dam buildings
- * carry surveyed OSM heights of 27–32 m, and the Palace's cornice reads as a
- * little above those with the tower rising well past. Roughly 51 m is the
- * figure those agree on; the tolerance below is wide enough to cover the
- * difference between the ridge, the cupola and the vane on top of it.
+ * This is now measured rather than argued. The City of Amsterdam's own survey
+ * model names its parts: `PD-natsteen`, the main stone mass, tops out at
+ * 51.9 m, and `PD-haantje` — the rooster on the vane — reaches 60.9 m. So the
+ * building is a little under 52 m and the thing on top of it adds nine more.
+ *
+ * Dutch Wikipedia and Wikidata (Q1056152) both say 90 m, and both are wrong in
+ * the same way: almost certainly the 80 m facade width mis-entered as a height
+ * and then copied between them. The tolerance below is tight because the
+ * number no longer rests on inference.
  */
-const ROYAL_PALACE_HEIGHT_METRES = 51;
-const ROYAL_PALACE_HEIGHT_TOLERANCE_METRES = 4;
+const ROYAL_PALACE_HEIGHT_METRES = 60.9;
+const ROYAL_PALACE_HEIGHT_TOLERANCE_METRES = 1.5;
 
 export const SIGNATURE_MODELS: readonly SignatureModelSpec[] = [
   {
@@ -37,6 +35,14 @@ export const SIGNATURE_MODELS: readonly SignatureModelSpec[] = [
     name: 'Royal Palace of Amsterdam',
     landmarkId: 'extract_landmarks_342809743',
     modelUrl: './models/royal-palace.glb',
+    // Published by the city with the model, and independently within 15 m of
+    // the rectangle fitted to the OSM ring — two sources that never consulted
+    // each other agreeing on where the Palace is.
+    surveyed: {
+      anchor: [4.891409500306835, 52.373196352182916],
+      northOffsetDegrees: 0,
+      source: '3D Warehouse entity d1ad512d8df5fc6745407e0587dff10e, geo attribute',
+    },
     // The Palace is OSM relation 3580875, a multipolygon; its outer ring is
     // way 342809743, which is the id the Amsterdam extract carries and the id
     // the vector tiles expose. Both are listed so that suppression works
@@ -60,17 +66,17 @@ export const SIGNATURE_MODELS: readonly SignatureModelSpec[] = [
     // long axis. Use −90 instead if a model turns out to be back-to-front.
     facingOffsetDegrees: 90,
     attribution: {
-      title: 'Amsterdam Monument Het Paleis op de Dam 4k A.I.',
-      author: 'Jungle Jim (sketchfab.com/jungle_jim)',
-      sourceUrl:
-        'https://sketchfab.com/3d-models/amsterdam-monument-het-paleis-op-de-dam-4k-ai-d6553e1a6e6f4859a6da4debb5d5a485',
-      licence: 'CC BY 4.0',
-      licenceUrl: 'https://creativecommons.org/licenses/by/4.0/',
+      title: 'Palace on the Dam',
+      author: 'City of Amsterdam, Geo- en Vastgoedinformatie',
+      sourceUrl: 'https://3dwarehouse.sketchup.com/model/d1ad512d8df5fc6745407e0587dff10e',
+      licence: '3D Warehouse General Model License',
+      licenceUrl: 'https://3dwarehouse.sketchup.com/tos/',
       modifications:
-        'Reduced for the web, not changed artistically: two spare UV sets and tangents removed, '
-        + 'vertices welded and decimated from 499,667 to 59,989 triangles, textures resized to '
-        + '1024 px and re-encoded as WebP, geometry quantized and meshopt-compressed, 30.99 MB to '
-        + '1.08 MB. Placed, scaled and rotated to its surveyed OpenStreetMap footprint.',
+        'Cleaned up for the web, not changed artistically: SketchUp construction edges removed, '
+        + 'faces made double-sided so inward-facing normals stop rendering black, spare UV sets '
+        + 'and tangents dropped, textures re-encoded as WebP, geometry quantized and '
+        + 'meshopt-compressed. Placed at the city\'s own published coordinate at its surveyed '
+        + 'size, unscaled and unrotated.',
     },
   },
 ];

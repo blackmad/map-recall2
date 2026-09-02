@@ -48,6 +48,9 @@ export class SignatureLandmarks {
     this.map = map;
     this.maplibregl = maplibregl;
     this.onModelShown = options.onModelShown || (() => {});
+    /** Which specs to draw. Defaults to the whole curated list; the demo passes
+     *  a single candidate so an asset can be judged before it is committed. */
+    this.models = options.models || SIGNATURE_MODELS;
     this.enabled = true;
     this.suppressing = true;
     /** Specs whose model has loaded and is in the scene. */
@@ -169,7 +172,7 @@ export class SignatureLandmarks {
         // fails and every landmark silently falls back to its grey box.
         if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
 
-        for (const spec of SIGNATURE_MODELS) {
+        for (const spec of owner.models) {
           loader.load(
             assetUrl(spec.modelUrl),
             gltf => owner._add(scene, spec, gltf.scene, map),
@@ -204,9 +207,16 @@ export class SignatureLandmarks {
       max: [max.x, max.y, max.z],
     });
 
-    const centre = bounds.getCenter(new THREE.Vector3());
-    // Centre on the anchor horizontally and stand it on the ground plane.
-    imported.position.set(-centre.x, -min.y, -centre.z);
+    if (spec.surveyed) {
+      // A surveyed model's own origin *is* the anchor, so moving it sideways is
+      // the one thing that would break it. Only the vertical is touched, and
+      // only to sit it on the basemap's flat ground rather than its own datum.
+      imported.position.set(0, -min.y, 0);
+    } else {
+      const centre = bounds.getCenter(new THREE.Vector3());
+      // Centre on the anchor horizontally and stand it on the ground plane.
+      imported.position.set(-centre.x, -min.y, -centre.z);
+    }
     const group = new THREE.Group();
     group.add(imported);
     group.scale.setScalar(placement.scale);

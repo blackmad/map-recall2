@@ -7,49 +7,45 @@
       "modelUrl": "./models/royal-palace.glb",
       "bounds": {
         "min": [
-          -4.347650541349001,
-          -0.12245385645245266,
-          -1.3163851687013548
+          -39.17484928517042,
+          0.0027659888043096714,
+          -35.901868865030316
         ],
         "max": [
-          4.347172759163986,
-          5.6308788000849646,
-          1.3169854044808964
+          33.932860546722885,
+          60.931806350159036,
+          49.20291987230433
         ]
       },
       "placement": {
         "anchor": [
-          4.891638000367689,
-          52.373140303535784
+          4.891409500306835,
+          52.373196352182916
         ],
         "altitudeMetres": 0,
-        "modelRotationDegrees": 1.4350192765089105,
+        "modelRotationDegrees": 90,
         "facadeBearingDegrees": 91.43501927650891,
-        "scale": 9.313128213584875
+        "scale": 1
       },
       "extent": {
-        "widthMetres": 80.97600419214265,
-        "heightMetres": 53.58152468573783,
-        "depthMetres": 24.524917781927797,
-        "depthCoverage": 0.37446699275929346
+        "widthMetres": 85.10478873733464,
+        "heightMetres": 60.92904036135472,
+        "depthMetres": 73.1077098318933,
+        "depthCoverage": 1.1162697665980177
       },
-      "triangles": 59989,
-      "bytes": 1080252,
-      "sourceBytes": 30994252,
-      "sourceTriangles": 499667,
-      "droppedAttributes": [
-        "TEXCOORD_1",
-        "TEXCOORD_2",
-        "TANGENT"
-      ],
-      "maxTextureSize": 1024,
+      "triangles": 12344,
+      "bytes": 637384,
+      "sourceBytes": 1723564,
+      "sourceTriangles": 12357,
+      "droppedAttributes": [],
+      "maxTextureSize": 512,
       "attribution": {
-        "title": "Amsterdam Monument Het Paleis op de Dam 4k A.I.",
-        "author": "Jungle Jim (sketchfab.com/jungle_jim)",
-        "sourceUrl": "https://sketchfab.com/3d-models/amsterdam-monument-het-paleis-op-de-dam-4k-ai-d6553e1a6e6f4859a6da4debb5d5a485",
-        "licence": "CC BY 4.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Reduced for the web, not changed artistically: two spare UV sets and tangents removed, vertices welded and decimated from 499,667 to 59,989 triangles, textures resized to 1024 px and re-encoded as WebP, geometry quantized and meshopt-compressed, 30.99 MB to 1.08 MB. Placed, scaled and rotated to its surveyed OpenStreetMap footprint."
+        "title": "Palace on the Dam",
+        "author": "City of Amsterdam, Geo- en Vastgoedinformatie",
+        "sourceUrl": "https://3dwarehouse.sketchup.com/model/d1ad512d8df5fc6745407e0587dff10e",
+        "licence": "3D Warehouse General Model License",
+        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
+        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
       }
     }
   }

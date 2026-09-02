@@ -49,21 +49,36 @@ A small curated set of buildings is drawn from real models instead of extruded
 OSM footprints. Each is credited here and in `models/signature-landmarks.json`,
 and the credit is also shown in the game beside the model.
 
-The Royal Palace of Amsterdam (Paleis op de Dam) uses “Amsterdam Monument Het
-Paleis op de Dam 4k A.I.” by Jungle Jim (sketchfab.com/jungle_jim), licensed
-under Creative Commons Attribution 4.0. Source:
-https://sketchfab.com/3d-models/amsterdam-monument-het-paleis-op-de-dam-4k-ai-d6553e1a6e6f4859a6da4debb5d5a485
+The Royal Palace of Amsterdam (Paleis op de Dam) uses "Palace on the Dam" by
+the City of Amsterdam, Geo- en Vastgoedinformatie, from 3D Warehouse:
+https://3dwarehouse.sketchup.com/model/d1ad512d8df5fc6745407e0587dff10e
 
-It ships here in modified form, which CC BY requires to be stated. It was not
-changed artistically, only reduced so a browser game can download and draw it:
-two spare UV sets and its tangents were removed, its vertices were welded and
-decimated from 499,667 to 59,989 triangles, its three textures were resized to
-1024 px and re-encoded as WebP, and its geometry was quantized and
-meshopt-compressed — 30.99 MB to 1.08 MB. It was then placed, scaled and
-rotated onto its surveyed OpenStreetMap footprint. The unmodified original
-remains at the Sketchfab link above.
+It is used under the 3D Warehouse General Model License
+(https://3dwarehouse.sketchup.com/tos/). That licence permits incorporating a
+model into a Combined Work carrying substantial additional content and
+distributing that work, including commercially; it does not permit aggregating
+models from the site for redistribution as an asset library. **Anyone forking
+this repository should satisfy themselves on that point for their own use**,
+because a `models/` directory in a public repository is closer to the second
+case than the game around it is. Trimble takes written requests at
+3dwarehouse-tou@sketchup.com.
 
-Note that this model is described by its author as AI-assisted. Its street
-frontage is faithful — scaled to the surveyed 80.98 m footprint its cupola
-lands at 53.6 m, which agrees with the real building — but its depth is not:
-it is 24.5 m deep where the real Palace is around 56 m. See `TODO.md`.
+The model ships here in cleaned-up form. It was not changed artistically; the
+changes correct an export rather than restyle a building:
+
+- SketchUp construction edges (LINE primitives) removed. They drew as stray
+  hairlines across the city and made the model measure 136 m wide when the
+  building is 85 m.
+- All faces made double-sided, so inward-wound faces stop rendering black.
+- All materials set non-metallic. Every one arrived at `metallicFactor 1.0`,
+  which is glTF's default when an exporter omits the field rather than anyone's
+  choice, and a fully metallic surface with no environment map renders black.
+- The two `default_face_material` surfaces — SketchUp's "unpainted", exported
+  as near-white, and in this model the insides of the Palace's two internal
+  courtyards — darkened to a neutral so they read as shaded interior rather
+  than as holes punched through the roof.
+- Spare UV sets and tangents dropped, textures re-encoded as WebP at 512 px,
+  geometry quantized and meshopt-compressed. 1.72 MB to 0.64 MB.
+
+It is placed at the city's own published coordinate, at its surveyed size,
+unscaled and unrotated.
