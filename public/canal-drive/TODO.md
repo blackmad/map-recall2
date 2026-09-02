@@ -46,6 +46,23 @@ recall rather than interrupt every junction.
 
 ## P2 — Weight and reach
 
+**8c. Decide what the photoreal gate should actually measure.**
+The mesh works now, but its 25 m activation height never binds. MapLibre's
+camera altitude is a function of zoom and viewport height, not a simulated eye
+height: measured across the view modes and the whole camera-zoom slider, the
+game's camera sits between roughly 95 m and 520 m up, so `shouldShowPhotoreal`
+answers "yes" every time the option is ticked and the promised hand-back to
+3DBAG at cycling height never happens. The 25 m in `photorealGate.ts` came from
+the spike, where it was a real eye height above the quay in a free-flying
+camera, and it did not survive the move to a map camera.
+
+Either re-measure the smear threshold against something the game's camera
+actually varies — ground sample distance at the map centre, or map zoom — and
+restate the gate in those terms, or accept that the option is simply "photoreal
+on/off" at every height the game can reach and delete the altitude band along
+with its hysteresis. Do not leave it as-is: the code and `HISTORY.md` both
+describe a behaviour that never fires.
+
 **8a. Productionise government-data building appearance enrichment.**
 The current worktree has a working PDOK proof: 5,778 of 10,578 Amsterdam
 appearance-backed buildings have sampled aerial roof colours, backed by 1,316
