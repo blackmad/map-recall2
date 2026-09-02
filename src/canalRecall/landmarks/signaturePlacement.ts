@@ -41,9 +41,27 @@ export interface ModelBounds {
   readonly max: readonly [number, number, number];
 }
 
+/**
+ * A model that arrives already georeferenced and life-size, so it is placed by
+ * its own published anchor rather than fitted to a footprint.
+ */
+export interface SurveyedAnchor {
+  /** The publisher's own `[lng, lat]` for the model's origin. */
+  readonly anchor: LngLat;
+  /** Correction, in degrees clockwise, if a model is not actually north-up.
+   *  Normally zero — geo-located SketchUp models are north-up by construction. */
+  readonly northOffsetDegrees: number;
+  /** Where the anchor came from, so a wrong building can be traced back. */
+  readonly source: string;
+}
+
 /** A curated model, everything needed to fetch it, place it, credit it, and
  *  know which extruded footprint it is standing in for. */
 export interface SignatureModelSpec {
+  /** Set when the model is life-size and georeferenced. Its presence switches
+   *  placement from "fit to the footprint" to "trust the survey", and tells
+   *  the renderer to leave the mesh on its own origin instead of centring it. */
+  readonly surveyed?: SurveyedAnchor;
   /** Stable id for this placement, used in the manifest and in tests. */
   readonly id: string;
   /** Human name, shown in the attribution panel. */
@@ -327,6 +345,8 @@ export function scaledExtent(
  * where it faces a side street.
  */
 export function placementFor(spec: SignatureModelSpec, bounds: ModelBounds): SignaturePlacement {
+  // A surveyed model is not fitted to anything: it already knows where it is.
+  if (spec.surveyed) return surveyedPlacement(spec, spec.surveyed);
   const scale = scaleToFootprintWidth(bounds, spec.footprint);
   const extent = scaledExtent(bounds, scale, spec.footprint);
   // Which way the front ends up pointing: a quarter turn off the long axis,
@@ -347,6 +367,39 @@ export function placementFor(spec: SignatureModelSpec, bounds: ModelBounds): Sig
     modelRotationDegrees,
     facadeBearingDegrees,
     scale,
+  };
+}
+
+/**
+ * Placement for a model that was surveyed rather than sculpted.
+ *
+ * The City of Amsterdam's models arrive already solved: life-size in metres,
+ * with their own origin at a published latitude and longitude, and — like
+ * every geo-located SketchUp model — with the model's +Y axis on true north.
+ * Fitting one to a footprint would be throwing away better information than
+ * the fit could ever recover, and would actively make it worse: the Palace's
+ * bounding box is 85.1 × 73.1 m against a 80.98 × 65.49 m OSM ring, because
+ * the survey includes the entrance steps and the roof overhang that the wall
+ * line does not. Fitting the box to the ring would shrink the whole building
+ * by about 6% to make its overhangs fit inside its walls.
+ *
+ * So scale is exactly 1 and the anchor is the published point. The rotation is
+ * 90° because that is this codebase's way of saying "the mesh's +X axis points
+ * east": SketchUp's north-up +Y becomes glTF's −Z, which leaves +X on east
+ * with no turn applied at all.
+ */
+function surveyedPlacement(
+  spec: SignatureModelSpec,
+  surveyed: SurveyedAnchor,
+): SignaturePlacement {
+  return {
+    anchor: surveyed.anchor,
+    altitudeMetres: spec.groundAltitudeMetres,
+    modelRotationDegrees: normaliseBearing(90 + surveyed.northOffsetDegrees),
+    facadeBearingDegrees: normaliseBearing(
+      spec.footprint.headingDegrees + spec.facingOffsetDegrees,
+    ),
+    scale: 1,
   };
 }
 

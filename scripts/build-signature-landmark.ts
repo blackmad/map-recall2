@@ -45,11 +45,11 @@ const MANIFEST_PATH = path.join(OUTPUT_DIRECTORY, 'signature-landmarks.json');
 /** Triangles we are willing to spend on one building. The whole city-wide
  *  3D BAG tileset streams at a comparable budget, so a single landmark that
  *  costs more than this would be the most expensive thing on screen. */
-const TRIANGLE_BUDGET = 60_000;
+const DEFAULT_TRIANGLE_BUDGET = 60_000;
 
 /** Longest texture edge. The player never gets closer than the pavement, and
  *  4K on a 80 m facade is roughly 50 px per metre of stonework. */
-const MAX_TEXTURE_SIZE = 1024;
+const DEFAULT_MAX_TEXTURE_SIZE = 1024;
 
 function argument(name: string): string | undefined {
   const prefix = `--${name}=`;
@@ -122,6 +122,89 @@ function countTriangles(document: Document): number {
   return Math.round(triangles);
 }
 
+/**
+ * Cleans up what a SketchUp export brings with it.
+ *
+ * The City of Amsterdam's survey models are geometrically excellent and
+ * presentationally hostile, in two specific ways that both read as "the model
+ * is broken" on screen.
+ *
+ * The first is edge geometry. SketchUp exports its construction edges as LINE
+ * primitives in a sibling node — on the Palace an `Edge` node with no triangles
+ * at all, spanning 3.3 km. It draws as stray hairlines across the city and it
+ * silently wrecks every measurement taken from the scene bounding box: it is
+ * the entire reason that model appeared to be 136 m wide when the building is
+ * 85 m.
+ *
+ * The second is face winding. SketchUp has a front and a back face and its
+ * exporter honours that, so a model authored without care for winding arrives
+ * with inward-facing normals over much of its surface. Forcing every material
+ * double-sided fixes it outright, because three.js flips the normal for
+ * back-facing fragments. A building is only ever seen from outside, so nothing
+ * is lost.
+ *
+ * The third is why the Palace rendered as a black cut-out. Every material came
+ * back `metallicFactor 1.0` — not because anyone chose it, but because that is
+ * glTF's *default* when an exporter omits the field, and SketchUp omits it. A
+ * fully metallic surface has no diffuse response at all: it shows only what it
+ * reflects, and with no environment map to reflect it reflects nothing and
+ * renders black. Stone is not metal, so this sets what the exporter should
+ * have.
+ */
+const STONE_METALLIC = 0;
+const STONE_ROUGHNESS = 0.85;
+
+/**
+ * What to paint the surfaces SketchUp left unpainted.
+ *
+ * `default_face_material` is not a colour anyone chose — it is SketchUp's "no
+ * material assigned", exported as near-white. On the Palace those surfaces are
+ * the insides of its two internal courtyards, and at 0.98 white they read from
+ * above as two glowing rectangles punched through the roof. A dark neutral
+ * reads as what they actually are: shaded interior wall the player is seeing
+ * down into. This is the one place this script assigns an appearance rather
+ * than correcting one, so it is deliberately joyless — no hue, just shadow.
+ */
+const UNPAINTED_FACE_COLOUR: [number, number, number, number] = [0.16, 0.16, 0.17, 1];
+const UNPAINTED_MATERIAL_PATTERN = /^default_face_material/i;
+
+function cleanSketchUpExport(document: Document): {
+  droppedPrimitives: number;
+  doubleSided: number;
+  demetallised: number;
+  unpainted: number;
+} {
+  let droppedPrimitives = 0;
+  for (const mesh of document.getRoot().listMeshes()) {
+    for (const primitive of mesh.listPrimitives()) {
+      // 4 is TRIANGLES. Points and lines are construction leftovers.
+      if (primitive.getMode() === 4) continue;
+      mesh.removePrimitive(primitive);
+      primitive.dispose();
+      droppedPrimitives += 1;
+    }
+  }
+  let doubleSided = 0;
+  let demetallised = 0;
+  let unpainted = 0;
+  for (const material of document.getRoot().listMaterials()) {
+    if (!material.getDoubleSided()) {
+      material.setDoubleSided(true);
+      doubleSided += 1;
+    }
+    if (material.getMetallicFactor() !== STONE_METALLIC) {
+      material.setMetallicFactor(STONE_METALLIC);
+      material.setRoughnessFactor(STONE_ROUGHNESS);
+      demetallised += 1;
+    }
+    if (UNPAINTED_MATERIAL_PATTERN.test(material.getName()) && !material.getBaseColorTexture()) {
+      material.setBaseColorFactor(UNPAINTED_FACE_COLOUR);
+      unpainted += 1;
+    }
+  }
+  return { droppedPrimitives, doubleSided, demetallised, unpainted };
+}
+
 /** Attribute sets a downloaded mesh carries that this renderer never samples.
  *  The Palace ships three UV sets; the material reads one. */
 const UNUSED_ATTRIBUTES = ['TEXCOORD_1', 'TEXCOORD_2', 'TEXCOORD_3', 'COLOR_0', 'TANGENT'];
@@ -143,6 +226,10 @@ function dropUnusedAttributes(document: Document): string[] {
 async function main(): Promise<void> {
   const id = argument('id');
   const source = argument('source');
+  const TRIANGLE_BUDGET = Number(argument('triangles') ?? DEFAULT_TRIANGLE_BUDGET);
+  const MAX_TEXTURE_SIZE = Number(argument('texture') ?? DEFAULT_MAX_TEXTURE_SIZE);
+  const outputName = argument('out') ?? id;
+  const SIMPLIFY_ERROR = Number(argument('error') ?? 0.002);
   if (!id || !source) {
     throw new Error('Usage: build-signature-landmark.ts --id=<model id> --source=<downloaded .glb>');
   }
@@ -176,11 +263,31 @@ async function main(): Promise<void> {
   await MeshoptSimplifier.ready;
   await MeshoptEncoder.ready;
 
+  const cleaned = argument('profile') === 'sketchup' ? cleanSketchUpExport(document) : null;
+  if (cleaned) {
+    console.log(
+      `sketchup cleanup: dropped ${cleaned.droppedPrimitives} non-triangle primitives, `
+      + `made ${cleaned.doubleSided} materials double-sided, `
+      + `de-metallised ${cleaned.demetallised}, darkened ${cleaned.unpainted} unpainted`,
+    );
+    const cleanedBounds = measureBounds(document);
+    console.log(
+      `extent after cleanup: ${cleanedBounds.max
+        .map((value, axis) => (value - cleanedBounds.min[axis]).toFixed(2))
+        .join(' × ')} m`,
+    );
+  }
+
   const droppedAttributes = dropUnusedAttributes(document);
   await document.transform(
     dedup(),
     weld(),
-    simplify({ simplifier: MeshoptSimplifier, ratio: TRIANGLE_BUDGET / sourceTriangles, error: 0.002 }),
+    // A ratio at or above 1 is not "leave it alone", it trips an assertion
+    // inside the simplifier. Survey models arrive well under budget already —
+    // the Palace is 12,357 triangles — so decimation is simply skipped.
+    ...(sourceTriangles > TRIANGLE_BUDGET
+      ? [simplify({ simplifier: MeshoptSimplifier, ratio: TRIANGLE_BUDGET / sourceTriangles, error: SIMPLIFY_ERROR })]
+      : []),
     textureCompress({
       encoder: sharp,
       targetFormat: 'webp',
@@ -196,7 +303,7 @@ async function main(): Promise<void> {
   const bounds = measureBounds(document);
   const triangles = countTriangles(document);
   fs.mkdirSync(OUTPUT_DIRECTORY, { recursive: true });
-  const outputPath = path.join(OUTPUT_DIRECTORY, `${id}.glb`);
+  const outputPath = path.join(OUTPUT_DIRECTORY, `${outputName}.glb`);
   await io.write(outputPath, document);
   const outputBytes = fs.statSync(outputPath).size;
 

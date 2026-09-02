@@ -61,7 +61,12 @@
 // height, footprint coverage — is read back from the layer rather than
 // restated here, so a wrong number on screen means a wrong number in the game.
 const { SIGNATURE_MODELS, footprintPolygon } = window.CanalRecallSignatureLandmarks;
-const spec = SIGNATURE_MODELS[0];
+// `?model=<url>` swaps in a candidate asset against the same footprint, which
+// is how a downloaded model is judged before it earns a manifest entry.
+const params = new URLSearchParams(location.search);
+const spec = params.get('model')
+  ? { ...SIGNATURE_MODELS[0], modelUrl: params.get('model') }
+  : SIGNATURE_MODELS[0];
 const [lng, lat] = spec.footprint.centre;
 
 const VIEWS = {
@@ -95,6 +100,7 @@ map.on('load', () => {
     paint: { 'line-color': '#38BDF8', 'line-width': 2, 'line-dasharray': [2, 2], 'line-opacity': 0.85 } });
 
   landmarks = new window.CanalRecallSignature3D.SignatureLandmarks(map, maplibregl, {
+    models: [spec],
     // The layer suppresses the extrusions itself, once the model is drawn.
     onModelShown: (shownSpec, placement) => report(shownSpec, placement),
   });
