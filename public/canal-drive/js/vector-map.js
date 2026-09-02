@@ -308,16 +308,6 @@ class VectorBasemap {
   }
 
   /**
-   * Google's mesh earns its place only from the overview camera: measured, it is
-   * excellent from ~25 m up and a smear at cycling height, and it carries no
-   * building identity to highlight an answer with. So altitude, not preference
-   * alone, decides — and it swaps back to 3DBAG on the way down.
-   *
-   * The altitude rule itself, including its hysteresis band, is
-   * `src/canalRecall/building/photorealGate.ts` and is covered by
-   * `npm run test:photoreal-gate`.
-   */
-  /**
    * Camera height above the ground, in metres.
    *
    * MapLibre has no `getFreeCameraOptions()` — that is Mapbox GL JS 2.x, added
@@ -335,6 +325,17 @@ class VectorBasemap {
     }
   }
 
+  /**
+   * Google's mesh earns its place only from the overview camera: measured, it is
+   * excellent from ~25 m up and a smear at cycling height, and it carries no
+   * building identity to highlight an answer with. So altitude, not preference
+   * alone, decides — and it swaps back to 3DBAG on the way down.
+   *
+   * The altitude rule itself, including its hysteresis band, is
+   * `src/canalRecall/building/photorealGate.ts` and is covered by
+   * `npm run test:photoreal-gate`. Note that at the heights this camera
+   * actually reaches the rule never says no — see TODO item 8c.
+   */
   _updateGoogleTiles() {
     if (!this.map) return;
     const altitude = this._cameraAltitudeMeters();
