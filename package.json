@@ -58,6 +58,7 @@
     "build:facade-distillation-data": "node --import tsx scripts/build-facade-distillation-dataset.ts",
     "test:facade-grammar": "tsx scripts/check-facade-grammar-inference.ts",
     "measure:facade-grammar-agreement": "node --import tsx scripts/measure-facade-grammar-agreement.ts",
+    "test:facade-target": "tsx scripts/check-facade-target-selection.ts",
     "cache:facade-walls": "node --import tsx scripts/cache-3dbag-facade-walls.ts",
     "cache:building-surfaces": "node --import tsx scripts/cache-3dbag-facade-walls.ts",
     "audit:facade-point-cloud-catalog": "node --import tsx scripts/audit-amsterdam-point-cloud-catalog.ts",

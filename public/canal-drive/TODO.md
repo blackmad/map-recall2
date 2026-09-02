@@ -86,11 +86,19 @@ agreement in 6, and none of its disagreements within ±1). `roofline` agrees 4/6
 only because 3 of those are both models answering `not-visible`. Re-gating on the
 appearance fields passes 4/6 where the original gate passed 0/6; see
 [`FACADE_ENRICHMENT_DESIGN.md`](FACADE_ENRICHMENT_DESIGN.md). What remains, in
-order: **restore the human view-selection gate** that `24c8beb` reverted — the
-extractor currently classifies unreviewed nearest-camera crops and records
-`panoramaSelection: nearest-camera-unreviewed` to say so — then buy a stratified
-sample across typology and era, since n=6 supports no coverage claim and
-cross-model agreement is not accuracy.
+order:
+
+1. **Targets are gated now** — `judgeFacadeTarget` rejects anything under 40 m²,
+   4 m or a 5 m edge before a panorama is requested, because five of the six
+   pilot targets were sheds (one covered 1 m²) and the appearance extract's
+   median footprint is 18 m². `npm run test:facade-target` pins all six.
+2. **Restore the human view-selection gate** that `24c8beb` reverted. The
+   extractor classifies unreviewed nearest-camera crops and records
+   `panoramaSelection: nearest-camera-unreviewed` to say so.
+3. **Then** buy a stratified sample across typology and era. Not before 1 and 2:
+   the existing agreement numbers measure footprint noise and camera aim as much
+   as façades, so how well two models agree about one real façade is still
+   unmeasured. n=6 supports no coverage claim, and agreement is not accuracy.
 
 **8b. Finish typing the game subsystems.**
 Measured 2026-08-31: ~21,000 lines of TypeScript against ~6,100 lines of
