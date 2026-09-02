@@ -33,6 +33,11 @@ const targets = [
     out: 'public/canal-drive/js/player-vehicles.bundle.js',
     globalName: 'CanalRecallVehicles',
   },
+  {
+    entry: 'public/canal-drive/js/signature-landmarks-source.js',
+    out: 'public/canal-drive/js/signature-landmarks.bundle.js',
+    globalName: 'CanalRecallSignature3D',
+  },
 ];
 
 for (const target of targets) {
