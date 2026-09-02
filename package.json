@@ -97,7 +97,8 @@
     "refresh:den-haag": "bash scripts/refresh-city-extract.sh den-haag \"Den Haag\" 52.0705,4.3007 https://download.geofabrik.de/europe/netherlands/zuid-holland-latest.osm.pbf",
     "refresh:randstad": "bash scripts/refresh-randstad.sh",
     "build:canal-ui": "esbuild src/canalRecall/gameUi.ts --bundle --format=iife --global-name=CanalRecallUi --outfile=public/canal-drive/js/game-ui.bundle.js --minify",
-    "test:mobile-hud": "node --experimental-strip-types scripts/check-mobile-hud.ts"
+    "test:mobile-hud": "node --experimental-strip-types scripts/check-mobile-hud.ts",
+    "build:google-tiles-spike": "node scripts/build-google-tiles-spike.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
