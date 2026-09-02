@@ -79,6 +79,19 @@ are in `RGB_CITY_DEMO.md`. What remains before production is a labelled human
 review, a city-scale cost/size plan, a stable join into the refresh pipeline,
 and a separate façade source. Do not call the DSM a façade point cloud.
 
+The façade half now has a measured gate rather than a guessed one. Two vision
+models agree on the appearance fields (material, colour, window pattern, ground
+floor: 5/6 buildings each) and not on the count fields (`bayCount`: 1 informative
+agreement in 6, and none of its disagreements within ±1). `roofline` agrees 4/6
+only because 3 of those are both models answering `not-visible`. Re-gating on the
+appearance fields passes 4/6 where the original gate passed 0/6; see
+[`FACADE_ENRICHMENT_DESIGN.md`](FACADE_ENRICHMENT_DESIGN.md). What remains, in
+order: **restore the human view-selection gate** that `24c8beb` reverted — the
+extractor currently classifies unreviewed nearest-camera crops and records
+`panoramaSelection: nearest-camera-unreviewed` to say so — then buy a stratified
+sample across typology and era, since n=6 supports no coverage claim and
+cross-model agreement is not accuracy.
+
 **8b. Finish typing the game subsystems.**
 Measured 2026-08-31: ~21,000 lines of TypeScript against ~6,100 lines of
 hand-written JavaScript in `public/canal-drive/js/` (the other ~1,300 JS lines

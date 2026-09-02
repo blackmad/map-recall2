@@ -186,3 +186,89 @@ RGB point-cloud catalog. Amsterdam AI Team's `Urban_PointCloud_Processing` is
 the relevant reusable façade method: it fuses street-level LAS with AHN/BGT and
 region-grows building façades, but it still requires the municipal street-level
 cloud whose current Amsterdam catalog is empty.
+
+## Cross-model grammar agreement — 2026-09-02
+
+The first multi-model grammar run asked two vision models
+(`google/gemini-3.1-pro-preview`, `anthropic/claude-sonnet-4.6`) for the full
+enum grammar on 6 cached Amsterdam panorama crops, at a strict JSON schema,
+temperature 0, for $0.117. It reported **0 of 6 buildings auto-eligible**, and
+stopped there.
+
+That number carried no information. It does not distinguish models disagreeing
+about brick versus stone from models disagreeing about whether a façade has four
+bays or five. `npm run measure:facade-grammar-agreement` re-derives consensus
+from the stored labels through the current normalizer and reports agreement per
+field. It spends nothing — every label is read from the cached proposal file —
+and it re-normalizes first, because the stored labels predate the fix that maps a
+provider's `"unknown"` count onto `null` and so understate agreement.
+
+Exact agreement across the 6 comparable buildings:
+
+| Field | Agree | Informative | Both abstained | Within ±1 |
+|---|---|---|---|---|
+| `targetVisible`, `ornament`, `windowFrameColour` | 6/6 | 6 | 0 | — |
+| `windowPattern`, `groundFloorType`, `facadeMaterial`, `facadeColour` | 5/6 | 5 | 0 | — |
+| `visibleStoreys` | 4/6 | 4 | 0 | 2 of 2 disagreements |
+| `windowRecess`, `entranceType` | 4/6 | 4 | 0 | — |
+| `windowToWall`, `balconyType`, `groundFloorDistinct` | 3/6 | 3 | 0 | — |
+| `facadeComposition` | 2/6 | 2 | 0 | — |
+| `bayCount` | 2/6 | **1** | 1 | **0 of 4 disagreements** |
+| `roofline` | 4/6 | **1** | 3 | — |
+
+Two findings change the gate.
+
+**`roofline` looks reliable and is not.** Its 4/6 exact agreement is three cases
+of both models answering `not-visible`. A street-level crop taken 22 m from a
+canal house usually cannot see the roof at all. Counting mutual abstention as
+agreement makes the blindest field in the grammar look like one of the strongest,
+which is why the measurement reports informative agreement separately. Roofline
+belongs to the nadir/DSM lane this branch already built, not to a street-level
+gate.
+
+**`bayCount` is genuinely unreliable, not nearly right.** It has one informative
+agreement in six, and *zero* of its four disagreements fall within ±1: the models
+read different façade rhythms rather than miscounting the same one. `visibleStoreys`
+is the opposite — it disagrees twice, and both disagreements are ±1.
+
+So the original 5-field gate required `bayCount` and `roofline`, the two fields
+street-level evidence least supports, and therefore passed nothing. Measured
+alternatives on the same cached run:
+
+| Gate | Auto-eligible |
+|---|---|
+| `visibleStoreys, bayCount, windowPattern, groundFloorType, roofline` (original) | 0/6 |
+| `facadeMaterial, facadeColour, windowPattern, groundFloorType` | 4/6 |
+| …plus `visibleStoreys` exact | 2/6 |
+| …plus `visibleStoreys` within ±1 | 4/6 |
+
+The fields that survive are the appearance fields — material, colour, window
+pattern, ground-floor treatment — which is what building enrichment actually
+needs from a façade. Counts and roofline should abstain by default and be filled
+from 3DBAG height and the roof lane instead of from a photograph.
+
+Two limits on this result. **n = 6 is a pilot, not coverage**: no cell in that
+table is worth more than one significant figure, and a stratified sample across
+typology and era is the next thing to buy. **Agreement is not accuracy**: two
+models trained on overlapping data can be confidently wrong together, so a
+labelled human review remains the only thing that can promote any of these
+fields past `machine-proposal`. Nothing here is accepted evidence.
+
+### The view-selection gate is still missing
+
+This document specifies that grammar extraction consumes one *human-selected*
+panorama per building, and that `reclassify:facades` refuses to run without the
+view-label export. That machinery — `build-facade-view-review.ts`,
+`check-facade-view-selection.ts`, `facadeView.ts`, `facadeEvidence.ts` — was
+removed by the revert in `24c8beb` and has not been restored. The crop manifest
+this branch regenerates is one nearest-camera view per building with no review
+fields, and the earlier wide-view pilot already measured why that is not enough:
+of five targets, one aimed along a canal and one was lost to foliage.
+
+`extract:facade-grammar` therefore now records `policy.panoramaSelection` as
+`nearest-camera-unreviewed` unless every manifest item carries a reviewer's
+`evidenceQuality` and `reviewedAt`, and says so on stdout. Classifying unreviewed
+crops is still useful for measuring the gate; recording them as though a reviewer
+had chosen them would not be. Restoring view selection is a precondition for any
+stratified sample, because otherwise the sample measures camera aim as much as it
+measures façades.
