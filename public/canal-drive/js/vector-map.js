@@ -107,23 +107,30 @@ class VectorBasemap {
 
   _ensureBuildingAppearanceLayers() {
     if (this.map.getSource('osm-building-appearance')) return;
+    // The source starts empty and is filled by `_loadBuildingAppearance` so that
+    // these two layers still land in their place in the stack: everything added
+    // after them expects to sit above the building extrusions.
     this.map.addSource('osm-building-appearance', {
-      type: 'geojson', data: '../data/extracts/amsterdam/buildings-colored.geojson',
+      type: 'geojson', data: { type: 'FeatureCollection', features: [] },
       generateId: true,
       attribution: 'Building appearance © OpenStreetMap contributors'
     });
     // Three extrusions can describe one building here: the basemap's own
-    // `building-3d`, our measured-colour walls, and the roof cap. Any two
-    // horizontal faces at an identical height z-fight, which is the striping
-    // that appeared across roofs — two surfaces at the same depth, the renderer
+    // `building-3d`, our measured-colour walls, and the roof cap. Any two faces
+    // that occupy the same plane z-fight, which is the striping that appeared
+    // across roofs and facades — two surfaces at the same depth, the renderer
     // picking a different winner per pixel.
     //
-    // So no two visible faces share a height. Walls finish 0.35 m above the
-    // basemap's estimate, which puts the basemap's roof inside ours rather than
-    // level with it. The roof cap *starts* below the wall top, so the slab's
-    // underside and the wall's top face are both buried and only the cap's own
-    // top is drawn. Opacity is 1 on both: a translucent extrusion blends with
-    // whatever it is fighting, which turns a depth tie into a visible stripe.
+    // Height offsets only ever separate *horizontal* faces. A wall is coplanar
+    // with itself no matter how tall either box is, so the basemap's copy of a
+    // building has to go entirely — see `_hideDuplicatedBasemapBuildings`.
+    //
+    // Between the two layers that remain, the roof cap starts exactly where the
+    // walls stop, so their side faces meet along an edge instead of overlapping
+    // in a 0.30 m band. MapLibre draws no underside on an extrusion, so there is
+    // nothing beneath the cap to leave exposed. Opacity is 1 on both: a
+    // translucent extrusion blends with whatever it overlaps, which turns a
+    // depth tie into a visible stripe.
     const OSM_HEIGHT = ['coalesce', ['get', 'height'], 5];
     this.map.addLayer({
       id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
@@ -138,11 +145,55 @@ class VectorBasemap {
       id: 'osm-colored-building-roofs', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'roofColour']],
-        'fill-extrusion-base': ['+', OSM_HEIGHT, 0.05],
+        'fill-extrusion-base': ['+', OSM_HEIGHT, 0.35],
         'fill-extrusion-height': ['+', OSM_HEIGHT, 0.7],
         'fill-extrusion-opacity': 1
       }
     });
+    this._loadBuildingAppearance();
+  }
+
+  // Fetched here rather than handed to MapLibre as a source URL because the
+  // same features are needed twice: once as the extrusion geometry, and once to
+  // name the basemap buildings this layer replaces.
+  async _loadBuildingAppearance() {
+    let data;
+    try {
+      const response = await fetch('../data/extracts/amsterdam/buildings-colored.geojson');
+      if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+      data = await response.json();
+    } catch (error) {
+      console.warn('Building appearance extract unavailable; keeping basemap extrusions.', error);
+      return;
+    }
+    const source = this.map && this.map.getStyle() && this.map.getSource('osm-building-appearance');
+    if (!source) return;
+    source.setData(data);
+    this._hideDuplicatedBasemapBuildings(data);
+  }
+
+  // The basemap keeps only the buildings the extract does not carry. Its ids
+  // arrive encoded in the vector-tile feature id, so `basemapBuildingFilter`
+  // does the decoding and documents which id types are safe to match.
+  //
+  // OpenFreeMap's z14 building layer is sparse — 113 features in the tile over
+  // the centre against 10,578 in the extract — so this removes the double-drawn
+  // minority and leaves the rest of the city standing. Measured over central
+  // Amsterdam it drops 136 of 1,189 basemap buildings and cuts the pairs
+  // sitting within 3 m of an extract building from 145 to 47. The remainder are
+  // buildings the two pipelines hold under different OSM ids, which no id
+  // filter can pair up.
+  _hideDuplicatedBasemapBuildings(data) {
+    if (!this.map.getLayer('building-3d') || !window.CanalRecallBuildings) return;
+    const { basemapBuildingFilter } = window.CanalRecallBuildings;
+    if (!basemapBuildingFilter) return;
+    if (this._baseBuildingFilter === undefined) this._baseBuildingFilter = this.map.getFilter('building-3d') || null;
+    const osmIds = ((data && data.features) || []).map(feature => feature.properties && feature.properties.osmId);
+    try {
+      this.map.setFilter('building-3d', basemapBuildingFilter(osmIds, this._baseBuildingFilter));
+    } catch (error) {
+      console.warn('Could not de-duplicate basemap buildings; extrusions may z-fight.', error);
+    }
   }
 
   _ensurePlaceLayers() {
@@ -266,14 +317,27 @@ class VectorBasemap {
    * `src/canalRecall/building/photorealGate.ts` and is covered by
    * `npm run test:photoreal-gate`.
    */
-  _updateGoogleTiles() {
-    if (!this.map || typeof this.map.getFreeCameraOptions !== 'function') return;
-    let altitude = null;
+  /**
+   * Camera height above the ground, in metres.
+   *
+   * MapLibre has no `getFreeCameraOptions()` — that is Mapbox GL JS 2.x, added
+   * after the fork — so asking for it silently disabled this whole feature.
+   * The transform is where MapLibre keeps the real camera height.
+   */
+  _cameraAltitudeMeters() {
+    const transform = this.map && this.map.transform;
+    if (!transform || typeof transform.getCameraAltitude !== 'function') return null;
     try {
-      altitude = this.map.getFreeCameraOptions().position.toAltitude();
+      const altitude = transform.getCameraAltitude();
+      return Number.isFinite(altitude) ? altitude : null;
     } catch (err) {
-      altitude = null;
+      return null;
     }
+  }
+
+  _updateGoogleTiles() {
+    if (!this.map) return;
+    const altitude = this._cameraAltitudeMeters();
     const api = window.CanalRecallGoogleTiles;
     const gate = window.CanalRecallPhotorealGate;
     if (!gate) return;
