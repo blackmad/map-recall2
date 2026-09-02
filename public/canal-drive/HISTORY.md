@@ -6,6 +6,30 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The façade grammar gate was failing on the two fields a photograph cannot
+  supply.** A two-model pilot (`gemini-3.1-pro-preview`, `claude-sonnet-4.6`) put
+  the full enum grammar to 6 cached Amsterdam panorama crops for $0.117 and
+  reported 0 of 6 buildings auto-eligible. That number said nothing about *what*
+  the models disagreed on, so `measure:facade-grammar-agreement` re-derives
+  consensus from the cached labels — free, and re-normalized first, because the
+  stored labels predate the fix mapping a provider's `"unknown"` count onto
+  `null`. Measured per field, the appearance half of the grammar holds: material,
+  colour, window pattern and ground-floor treatment each agree on 5 of 6
+  buildings, ornament and window-frame colour on 6 of 6. The count half does not.
+  `bayCount` has **one** informative agreement in six and *zero* of its four
+  disagreements fall within ±1 — the models read different façade rhythms, they
+  do not miscount the same one. `roofline` is the trap: its 4/6 agreement is
+  three cases of both models answering `not-visible`, because a crop taken 22 m
+  away down a canal cannot see a roof. Counting mutual abstention as agreement
+  made the blindest field look like one of the strongest, so the measurement now
+  reports informative agreement separately from bare agreement. The original gate
+  required exactly `bayCount` and `roofline` and so could never pass; gating
+  instead on material, colour, window pattern and ground floor passes 4 of 6, and
+  adding storeys within ±1 keeps 4 of 6. The lesson kept: ask a street-level
+  photograph for appearance, and take counts and roofline from 3DBAG height and
+  the nadir roof lane that already exists. n=6 is a pilot and agreement is not
+  accuracy, so nothing was promoted past `machine-proposal`.
+
 - **Google's photorealistic mesh was measured at cycling height, and rejected
   for the driving corridor.** The question was whether to replace the view layer
   with Google Earth's imagery, since `3d-tiles-renderer` already ships here for
