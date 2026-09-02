@@ -14,9 +14,7 @@ const escapeHtml = (value: unknown) => String(value ?? '').replace(/[&<>"']/g, (
 const cityName = (id: string) => id === 'den-haag' ? 'Den Haag' : id[0].toUpperCase() + id.slice(1);
 const reasonLabel = (reason: string) => reason === 'not-entailed'
   ? 'wording not supported'
-  // `replaceAll` needs lib ES2021; this file targets ES2020 and already uses
-  // a global regex two lines up, so match that rather than move the target.
-  : reason.replace(/-/g, ' ');
+  : reason.replaceAll('-', ' ');
 
 async function json<T>(url: string): Promise<T | null> {
   try {

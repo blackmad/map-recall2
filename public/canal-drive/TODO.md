@@ -349,29 +349,15 @@ A bonus on OSM ways with separated cycle infrastructure, tuned so it reinforces
 safe Amsterdam route knowledge without encouraging detours.
 
 **14. Finish the Storybook workbench.**
-Phone states exist now: `PortraitHud`, `PortraitHudSteering` (the d-pad's
-pressed state), `PortraitHudAsking`, `PortraitHudSmallPhone`, `LandscapeHud`
-and `PortraitRouteSetup`, driven by a `canalRecallForceTouch` override because
-the viewport addon alone only makes a small desktop window. What is left is the
-rest of item 14's original scope: props-driven adapters for neighborhood entry
-(photo and fallback), stacked notices and every finish-card combination, paired
-with screenshot regressions. Follows naturally from item 3 — the same
-extraction serves both.
-
-**14c. Finish the phone pass beyond the driving screen.**
-Portrait, the d-pad and the paper design system are done and measured (see
-`HISTORY.md`). Not yet exercised on a phone: the recall prompt with four
-multiple-choice answers over a d-pad, the finish/ribbon card, the settings and
-help panels, and the expanded landmark article panel. The layout suite covers
-the HUD rectangles only; these are DOM overlays and need their own portrait
-states in Storybook plus at least one Playwright pass now that the `iphone`
-project can reach fixed overlays again.
-
-Also unresolved: a phone's camera still uses the desktop pinch/pan model. The
-d-pad claims its own rectangle and everything outside it pans, but there is no
-two-finger pinch-to-zoom on touch — only the `-`/`+` keys and the wheel. Add
-pinch on the map area, and decide whether panning away from the vehicle is
-worth keeping on a phone at all given how easily a thumb triggers it.
+Ten phone states exist now — the driving HUD (idle, steering, mid-question,
+small phone, landscape), the route briefing, the recall prompt, the arrival
+card, the settings panel and the expanded article — driven by a
+`canalRecallForceTouch` override, because the viewport addon alone only makes a
+small desktop window and never produces a d-pad. What is left is the rest of
+item 14's original scope: props-driven adapters for neighborhood entry (photo
+and fallback), stacked notices and every finish-card combination, paired with
+screenshot regressions. Follows naturally from item 3 — the same extraction
+serves both.
 
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in
