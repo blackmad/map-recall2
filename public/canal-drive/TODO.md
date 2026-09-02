@@ -184,7 +184,12 @@ will be interrupted; each step must be worth shipping alone.
    source on the tile grid detailed geometry will later use, render it with
    ordinary fill-extrusions, and delete `building-3d`, `osm-colored-buildings`,
    `osm-colored-building-roofs` and the height-offset stack that keeps three
-   coplanar extrusions from z-fighting. Heights stop being guessed in the same
+   coplanar extrusions from z-fighting. That stack is now partly defused rather
+   than fixed: `basemapBuildingFilter` hides the basemap copy of any building
+   the extract carries, which drops 136 of 1,189 basemap buildings in the centre
+   and cuts co-located pairs from 145 to 47. The remaining 47 are held under
+   different OSM ids by the two pipelines and still z-fight; one owner per
+   building is the only real fix. Heights stop being guessed in the same
    change: `build-osm-building-appearance.ts:32` currently falls back to
    `levels * 3` or a flat 9 m, so much of the skyline is invented, and AHN-derived
    3DBAG heights replace it everywhere. Largest visible win in the whole item,

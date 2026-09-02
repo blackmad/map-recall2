@@ -6,6 +6,46 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The basemap stopped drawing the buildings we draw ourselves.** Facades in
+  the centre broke into vertical stripes and dithered patches, and pale grey
+  slabs floated inside coloured buildings. Two layers were extruding the same
+  OSM buildings from different pipelines: Liberty's `building-3d` off
+  OpenFreeMap's vector tiles, and `osm-colored-buildings` off
+  `buildings-colored.geojson`. An earlier pass had tried to separate them with
+  height offsets, which cannot work — a height offset separates *horizontal*
+  faces, and a wall is coplanar with itself whatever the box above it does. The
+  two pipelines also disagree on height (7 m against 14 m, 10 m against 19 m on
+  the Singel), which is what pushed the grey box out through the coloured one.
+
+  So the basemap now keeps only the buildings the extract does not carry.
+  Planetiler drops the OSM id from the building layer's properties and folds it
+  into the vector-tile feature id as `osmId * 10 + type`, so
+  `basemapBuildingFilter` re-encodes every extract id and filters `building-3d`
+  on it. Only types 2 (way) and 3 (relation) are matched: type 0 shares the way
+  numbering, and 90 of its ids decode to a real extract way sitting a median
+  27 m and up to 1.3 km away, so matching it would have erased ~90 buildings
+  that were never duplicated. The filter is a `match`, not an `in`, because `in`
+  rescans ten thousand ids for every building in every tile; it evaluates 1,189
+  real tile features in 0.8 ms.
+
+  Measured over central Amsterdam it drops 136 of 1,189 basemap buildings and
+  cuts the pairs standing within 3 m of an extract building from 145 to 47. The
+  47 that remain are buildings the two pipelines hold under different OSM ids,
+  which no id filter can pair up; TODO item 10 step 2 deletes this whole
+  three-extrusion stack and is the real fix. Nothing is lost outside the
+  extract: OpenFreeMap's z14 building layer is sparse — 113 features in the tile
+  over the centre against 10,578 in the extract — so this only removes the
+  double-drawn minority.
+
+  Two smaller things went with it. The roof cap used to start 0.30 m *below* the
+  wall top so its underside would be buried, but MapLibre draws no underside on
+  an extrusion, and the overlap put the cap's side faces in the same plane as
+  the walls' — a speckled dashed line along every roof edge. The cap now starts
+  exactly where the walls stop. And `check-canal-buildings.ts` still asserted the
+  old translucent `buildingOpacity('clean') === 0.9`, so it had been failing
+  since opacity went to 1; it is not in `check:canal`, which is why nobody
+  noticed.
+
 - **Google's mesh now has a switch, and it only reaches the overview camera.**
   The measurement below settled where it is usable; this is the option built on
   top of it. "Google photoreal (overview)" appears in both settings panels and
