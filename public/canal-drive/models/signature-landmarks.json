@@ -1,0 +1,56 @@
+{
+  "generatedBy": "scripts/build-signature-landmark.ts",
+  "models": {
+    "royal-palace": {
+      "name": "Royal Palace of Amsterdam",
+      "landmarkId": "extract_landmarks_342809743",
+      "modelUrl": "./models/royal-palace.glb",
+      "bounds": {
+        "min": [
+          -4.347650541349001,
+          -0.12245385645245266,
+          -1.3163851687013548
+        ],
+        "max": [
+          4.347172759163986,
+          5.6308788000849646,
+          1.3169854044808964
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.891638000367689,
+          52.373140303535784
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 1.4350192765089105,
+        "facadeBearingDegrees": 91.43501927650891,
+        "scale": 9.313128213584875
+      },
+      "extent": {
+        "widthMetres": 80.97600419214265,
+        "heightMetres": 53.58152468573783,
+        "depthMetres": 24.524917781927797,
+        "depthCoverage": 0.37446699275929346
+      },
+      "triangles": 59989,
+      "bytes": 1080252,
+      "sourceBytes": 30994252,
+      "sourceTriangles": 499667,
+      "droppedAttributes": [
+        "TEXCOORD_1",
+        "TEXCOORD_2",
+        "TANGENT"
+      ],
+      "maxTextureSize": 1024,
+      "attribution": {
+        "title": "Amsterdam Monument Het Paleis op de Dam 4k A.I.",
+        "author": "Jungle Jim (sketchfab.com/jungle_jim)",
+        "sourceUrl": "https://sketchfab.com/3d-models/amsterdam-monument-het-paleis-op-de-dam-4k-ai-d6553e1a6e6f4859a6da4debb5d5a485",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Reduced for the web, not changed artistically: two spare UV sets and tangents removed, vertices welded and decimated from 499,667 to 59,989 triangles, textures resized to 1024 px and re-encoded as WebP, geometry quantized and meshopt-compressed, 30.99 MB to 1.08 MB. Placed, scaled and rotated to its surveyed OpenStreetMap footprint."
+      }
+    }
+  }
+}
