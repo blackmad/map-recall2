@@ -149,20 +149,37 @@ equivalent government geometry. The authoritative architecture, schemas,
 fallback ownership and migration gates are in
 [`BUILDING_RENDERER_DESIGN.md`](BUILDING_RENDERER_DESIGN.md).
 
+The fidelity ladder, source-resolution rules and measured implementation status
+are now kept in [`LOD.md`](LOD.md). The non-negotiable correction is that
+**manual OSM `building` and `building:part` geometry participates at every LoD
+tier**. BAG/3DBAG is the measured Dutch foundation, not permission to flatten a
+carefully mapped tower, wing, passage, courtyard or stacked part. Resolve the
+sources into one owner per building; never draw overlapping representations.
+
+Status: `main` has the complete OpenFreeMap/OSM extrusion fallback, a partial
+10,578-building measured-colour overlay, and optional hosted 3DBAG LoD2.2 roof
+geometry. `feat/lod1-building-city` has the unmerged complete 336,784-building
+BAG-keyed LoD1 city, measured AHN heights and z14 streaming tiles (15 MB
+gzipped). It is blocked by two comparison failures: its resolver sees only
+colour-tagged OSM parts, flattening uncoloured manual compositions such as Magna
+Plaza, and a roof percentile draws 201 tower-on-podium panden too low. Fix both,
+rerun the comparison/e2e gates, then merge the LoD1 foundation. No signature
+landmark GLB is integrated yet; `feat/signature-landmarks` is empty.
+
 Do this as a gated progression rather than converting Amsterdam in one shot,
 ordered **completeness before fidelity** — every step that makes more of the
 city look like itself comes before any step that makes a few buildings look
 better. This is a P2 item on a board whose P1 tier is the learning model, so it
 will be interrupted; each step must be worth shipping alone.
 
-1. **Answer two questions first.** (a) Does the hosted 3DBAG tileset resolve a
-   feature to a BAG `pand_id` via `EXT_structural_metadata`? One afternoon, and
-   it decides whether measured colours can be joined onto government geometry at
-   runtime with no compiler at all. (b) Finish item 8a, so the appearance table
-   is BAG-keyed, quantised and trustworthy.
+1. **Fix the two measured LoD1 regressions.** Feed the resolver every OSM
+   building and `building:part`, independently of appearance tags, and preserve
+   manual compositions such as Magna Plaza. Then detect tower-on-podium panden
+   instead of flattening them to the ordinary roof percentile. Pin both with
+   named comparison fixtures.
 2. **Ship the complete LoD1 city.** The city is gray because only 10,578
-   buildings have appearance at all, against a BAG pand count in the low
-   hundreds of thousands — coverage, not fidelity. Count it exactly in step 1.
+   buildings have appearance at all, against 336,784 BAG/3DBAG buildings in the
+   staged drivable-area city — coverage, not fidelity.
    Publish a complete BAG-keyed footprint + 3DBAG height + measured roof colour
    source on the tile grid detailed geometry will later use, render it with
    ordinary fill-extrusions, and delete `building-3d`, `osm-colored-buildings`,
