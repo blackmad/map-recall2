@@ -6,29 +6,58 @@ class HUD {
     this._minimapCache = null;
     this._minimapTrack = null;
     this._time = 0; // game time in seconds, updated each frame
+    // Placed by hudLayout once per frame; see setLayout. Every card reads its
+    // rectangle from here rather than carrying constants written for 1280x720.
+    this.layout = null;
   }
 
   setTime(t) { this._time = t; }
 
+  /** The frame's HUD geometry, from the typed layout module. */
+  setLayout(layout) { this.layout = layout; }
 
-  // One compact trip readout instead of a 126 px skeuomorphic dial plus a
-  // separate odometer that collided with the settings buttons.
-  drawTripReadout(ctx, speed, distancePx) {
+  _rect(name, fallback) { return this.layout?.[name] ?? fallback; }
+
+  // One paper card, drawn the same way everywhere. The HUD used to hand-roll a
+  // fill, a stroke and a radius per card, which is how it ended up with four
+  // slightly different creams and three different corner radii.
+  paperCard(ctx, rect, { solid = false, radius = 12 } = {}) {
+    const theme = window.CanalRecallUi.hudSurface;
+    ctx.save();
+    ctx.shadowColor = theme.shadow;
+    ctx.shadowBlur = 14;
+    ctx.shadowOffsetY = 3;
+    ctx.fillStyle = solid ? theme.cardSolid : theme.card;
+    roundRect(ctx, rect.x, rect.y, rect.width, rect.height, radius);
+    ctx.fill();
+    ctx.restore();
+    ctx.strokeStyle = theme.border;
+    ctx.lineWidth = 1;
+    roundRect(ctx, rect.x, rect.y, rect.width, rect.height, radius);
+    ctx.stroke();
+  }
+
+
+  /** Speed and odometer. On a phone this is folded into the score row, where
+   *  there is width going spare, rather than taking a card of its own. */
+  tripText(speed, distancePx) {
     const kilometres = distancePx / PIXELS_PER_METER / 1000;
     const kmh = Math.round(Math.abs(speed) / PIXELS_PER_METER * 3.6);
-    const text = `${kmh} km/h   ${kilometres < 10 ? kilometres.toFixed(2) : kilometres.toFixed(1)} km`;
+    return `${kmh} km/h   ${kilometres < 10 ? kilometres.toFixed(2) : kilometres.toFixed(1)} km`;
+  }
+
+  drawTripReadout(ctx, speed, distancePx) {
+    if (this.layout?.tripInRecall) return; // drawn inside the score row instead
+    const theme = window.CanalRecallUi.paperTheme;
+    const text = this.tripText(speed, distancePx);
     ctx.font = 'bold 12px monospace';
     const w = ctx.measureText(text).width + 22;
-    const layout = window.CanalRecallBottomHud?.bottomHudLayout({ tripWidth: w });
-    const x = layout ? layout.trip.x : CANVAS_W - w - 16;
-    const y = layout ? layout.trip.y : CANVAS_H - 98;
-    ctx.fillStyle = 'rgba(250,249,244,0.92)';
-    roundRect(ctx, x, y, w, 26, 9);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(35,55,57,.28)'; ctx.lineWidth = 1; ctx.stroke();
-    ctx.fillStyle = '#26383B';
+    const fallback = { x: CANVAS_W - w - 16, y: CANVAS_H - 98, width: w, height: 26 };
+    const rect = { ...this._rect('trip', fallback), width: w };
+    this.paperCard(ctx, rect, { radius: 9 });
+    ctx.fillStyle = theme.ink;
     ctx.textAlign = 'left';
-    ctx.fillText(text, x + 11, y + 17);
+    ctx.fillText(text, rect.x + 11, rect.y + 17);
   }
 
   drawFinishDirection(ctx, playerX, playerY, finishX, finishY, camera) {
@@ -39,16 +68,20 @@ class HUD {
 
     const angle = Math.atan2(dy, dx) - (camera.rotation || 0);
 
-    // Position: to the left of the timer (timer is at CANVAS_W/2, y=10..60)
-    const boxX = CANVAS_W / 2 - 170;
-    const boxY = 10;
+    // The arrow used to sit at a hardcoded (CANVAS_W/2 - 170, 10), which on a
+    // phone put it straight on top of the recall card. It follows the layout
+    // now: beside the destination on desktop, below the top stack on a phone.
     const boxW = 60;
     const boxH = 50;
-
-    // Background panel
-    ctx.fillStyle = 'rgba(0,0,0,0.5)';
-    roundRect(ctx, boxX, boxY, boxW, boxH, 6);
-    ctx.fill();
+    const destination = this.layout?.destination;
+    const compact = this.layout?.mode === 'compact';
+    const boxX = compact
+      ? CANVAS_W - boxW - 12
+      : (destination ? destination.x - boxW - 12 : CANVAS_W / 2 - 170);
+    const boxY = compact
+      ? (destination ? destination.y + destination.height + 10 : 10)
+      : 10;
+    this.paperCard(ctx, { x: boxX, y: boxY, width: boxW, height: boxH }, { radius: 10 });
 
     // Arrow in center of panel
     const acx = boxX + boxW / 2;
@@ -66,7 +99,7 @@ class HUD {
     const alpha = 0.6 + pulse * 0.4;
 
     // Outer glow
-    ctx.fillStyle = `rgba(255,215,0,${alpha * 0.3})`;
+    ctx.fillStyle = `rgba(199,95,67,${alpha * 0.28})`;
     ctx.beginPath();
     ctx.moveTo(arrowLen + 3, 0);
     ctx.lineTo(-arrowLen / 2 - 1, -arrowW - 3);
@@ -76,7 +109,7 @@ class HUD {
     ctx.fill();
 
     // Main arrow
-    ctx.fillStyle = `rgba(255,215,0,${alpha})`;
+    ctx.fillStyle = `rgba(199,95,67,${alpha})`;
     ctx.beginPath();
     ctx.moveTo(arrowLen, 0);
     ctx.lineTo(-arrowLen / 2, -arrowW);
@@ -85,7 +118,7 @@ class HUD {
     ctx.closePath();
     ctx.fill();
 
-    ctx.strokeStyle = `rgba(255,255,255,${alpha * 0.7})`;
+    ctx.strokeStyle = `rgba(255,253,248,${alpha * 0.8})`;
     ctx.lineWidth = 1;
     ctx.stroke();
 
@@ -101,7 +134,7 @@ class HUD {
     }
     ctx.font = 'bold 9px monospace';
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#FFD700';
+    ctx.fillStyle = window.CanalRecallUi.paperTheme.ink;
     ctx.fillText(distLabel, acx, boxY + 43);
   }
 
@@ -134,24 +167,47 @@ class HUD {
   }
 
   drawDestination(ctx, name, distancePx, expectedNovelty = null) {
+    const theme = window.CanalRecallUi.paperTheme;
     const meters = Math.max(0, distancePx / PIXELS_PER_METER);
     const distance = meters >= 1000 ? `${(meters / 1000).toFixed(1)} km` : `${Math.round(meters)} m`;
-    ctx.fillStyle = 'rgba(250,249,244,0.94)';
-    roundRect(ctx, CANVAS_W - 350, 15, 335, 48, 11);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(35,55,57,.3)'; ctx.lineWidth = 1; ctx.stroke();
-    ctx.fillStyle = '#167DA0';
-    ctx.font = 'bold 9px monospace';
-    ctx.textAlign = 'right';
+    const rect = this._rect('destination', { x: CANVAS_W - 350, y: 15, width: 335, height: 48 });
+    this.paperCard(ctx, rect);
+    const left = rect.x + 13;
+    const right = rect.x + rect.width - 13;
+    const compact = rect.height < 44;
     const novelty = Number.isFinite(expectedNovelty)
       ? ` · ${Math.round(expectedNovelty * 100)}% NEW` : '';
-    ctx.fillText(`DESTINATION${novelty}`, CANVAS_W - 28, 30);
-    ctx.fillStyle = '#172326'; ctx.font = 'bold 13px monospace';
-    ctx.fillText(name, CANVAS_W - 82, 49);
-    ctx.fillStyle = '#C43D35'; ctx.font = 'bold 11px monospace';
-    ctx.fillText(distance, CANVAS_W - 28, 49);
+    ctx.save();
+    roundRect(ctx, rect.x, rect.y, rect.width, rect.height, 12);
+    ctx.clip();
+    if (compact) {
+      // Phone: one row — label, name, distance — instead of a stacked card.
+      ctx.textAlign = 'left';
+      ctx.font = 'bold 9px monospace';
+      ctx.fillStyle = theme.moss;
+      ctx.fillText(`TO${novelty}`, left, rect.y + 14);
+      ctx.fillStyle = theme.ink;
+      ctx.font = 'bold 13px monospace';
+      ctx.fillText(name, left, rect.y + 29);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = theme.terracotta;
+      ctx.font = 'bold 12px monospace';
+      ctx.fillText(distance, right, rect.y + 29);
+    } else {
+      ctx.textAlign = 'right';
+      ctx.fillStyle = theme.moss;
+      ctx.font = 'bold 9px monospace';
+      ctx.fillText(`DESTINATION${novelty}`, right, rect.y + 15);
+      ctx.fillStyle = theme.ink;
+      ctx.font = 'bold 13px monospace';
+      ctx.fillText(name, right - 54, rect.y + 34);
+      ctx.fillStyle = theme.terracotta;
+      ctx.font = 'bold 11px monospace';
+      ctx.fillText(distance, right, rect.y + 34);
+    }
+    ctx.restore();
+    ctx.textAlign = 'left';
   }
-
 
   drawStreetName(ctx, name) {
     if (!name) return;
@@ -167,50 +223,67 @@ class HUD {
     ctx.fillText(name, x, y + 1);
   }
 
-  drawCanalScore(ctx, correct, attempts, points, feedback, streak = 0, gamey = true) {
+  drawCanalScore(ctx, correct, attempts, points, feedback, streak = 0, gamey = true, trip = '') {
+    const theme = window.CanalRecallUi.paperTheme;
     const hasStreak = gamey && streak >= 2;
-    ctx.fillStyle = 'rgba(250,249,244,0.94)';
-    roundRect(ctx, 15, 15, 310, feedback ? 62 : 43, 11);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(35,55,57,.3)'; ctx.lineWidth = 1; ctx.stroke();
-    ctx.fillStyle = '#C43D35';
+    const rect = this._rect('recall', { x: 15, y: 15, width: 310, height: feedback ? 62 : 43 });
+    this.paperCard(ctx, rect);
+    const left = rect.x + 13;
+    const right = rect.x + rect.width - 13;
+    ctx.fillStyle = theme.terracotta;
     ctx.font = 'bold 10px monospace';
     ctx.textAlign = 'left';
+    ctx.fillText('RECALL', left, rect.y + 16);
+    ctx.fillStyle = theme.ink;
+    ctx.font = 'bold 14px monospace';
     const tally = gamey ? `${correct} / ${attempts}   ${points} pts` : `${correct} / ${attempts}`;
-    ctx.fillText('RECALL', 28, 31);
-    ctx.fillStyle = '#172326'; ctx.font = 'bold 14px monospace';
-    ctx.fillText(tally, 28, 49);
+    ctx.fillText(tally, left, rect.y + 34);
+    ctx.textAlign = 'right';
+    // The phone folds speed and distance in here; a streak, when there is one,
+    // is the more interesting number and takes the slot.
     if (hasStreak) {
-      ctx.fillStyle = '#C43D35';
+      ctx.fillStyle = theme.terracotta;
       ctx.font = 'bold 13px monospace';
-      ctx.textAlign = 'right';
       const mult = (1 + 0.1 * Math.min(streak - 1, 9)).toFixed(1);
-      ctx.fillText(`${streak} STREAK  ${mult}×`, 312, 48);
-      ctx.textAlign = 'left';
+      ctx.fillText(`${streak} STREAK  ${mult}x`, right, rect.y + 33);
+    } else if (trip) {
+      ctx.fillStyle = theme.inkMuted;
+      ctx.font = 'bold 11px monospace';
+      ctx.fillText(trip, right, rect.y + 33);
     }
+    ctx.textAlign = 'left';
     if (feedback) {
-      ctx.fillStyle = '#40575B';
+      ctx.fillStyle = theme.inkMuted;
       ctx.font = '12px monospace';
-      ctx.fillText(feedback, 28, 69);
+      ctx.fillText(feedback, left, rect.y + rect.height - 8);
     }
   }
 
   drawCurrentLocation(ctx, routeName, neighborhood, travelMode, answerHidden = false) {
+    const theme = window.CanalRecallUi.paperTheme;
     const routeLabel = travelMode === 'car' ? 'STREET' : 'WATERWAY';
-    const y = 84;
-    ctx.fillStyle = 'rgba(250,249,244,0.92)';
-    roundRect(ctx, 15, y, 310, neighborhood ? 55 : 38, 10);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(35,55,57,.24)'; ctx.lineWidth = 1; ctx.stroke();
+    const rect = this._rect('location', { x: 15, y: 84, width: 310, height: neighborhood ? 55 : 38 });
+    this.paperCard(ctx, rect);
+    const left = rect.x + 13;
     ctx.textAlign = 'left';
     ctx.font = 'bold 11px monospace';
-    ctx.fillStyle = '#167DA0';
-    ctx.fillText(routeLabel, 28, y + 17);
-    ctx.fillStyle = '#172326'; ctx.font = 'bold 13px monospace';
-    ctx.fillText(answerHidden ? '???' : (routeName || '—'), 28, y + 34);
+    ctx.fillStyle = theme.moss;
+    ctx.fillText(routeLabel, left, rect.y + 16);
+    ctx.fillStyle = theme.ink;
+    ctx.font = 'bold 13px monospace';
+    // The name is withheld while it is the question; the HUD must never answer
+    // it. Clipped to the card so a long street cannot run off a phone screen.
+    ctx.save();
+    roundRect(ctx, rect.x, rect.y, rect.width, rect.height, 12);
+    ctx.clip();
+    ctx.fillText(answerHidden ? '???' : (routeName || '-'), left, rect.y + 33);
+    ctx.restore();
     if (neighborhood) {
-      ctx.fillStyle = '#60777A'; ctx.font = '10px monospace';
-      ctx.textAlign = 'right'; ctx.fillText(neighborhood.toUpperCase(), 312, y + 18); ctx.textAlign = 'left';
+      ctx.fillStyle = theme.inkMuted;
+      ctx.font = '10px monospace';
+      ctx.textAlign = 'right';
+      ctx.fillText(neighborhood.toUpperCase(), rect.x + rect.width - 13, rect.y + 16);
+      ctx.textAlign = 'left';
     }
   }
 
@@ -286,9 +359,13 @@ class HUD {
   drawCityOverview(ctx, game) {
     const overview = window.CanalRecallOverview;
     if (!overview || !game.track) return;
-    const rect = { x: MINIMAP_X, y: CANVAS_H - MINIMAP_H - 15, width: MINIMAP_W, height: MINIMAP_H };
+    const rect = this._rect('minimap', { x: MINIMAP_X, y: CANVAS_H - MINIMAP_H - 15, width: MINIMAP_W, height: MINIMAP_H });
 
-    if (this._overviewTrack !== game.track || !this._overviewCache) {
+    // The cache is keyed on the rectangle as well as the track: rotating a
+    // phone changes the overview from 260x200 to 124x96, and a cache keyed on
+    // the track alone would blit the old size into the new box.
+    const cacheKey = `${rect.width}x${rect.height}`;
+    if (this._overviewTrack !== game.track || this._overviewKey !== cacheKey || !this._overviewCache) {
       const built = overview.buildOverview({
         areaRings: (game.neighborhoods || []).flatMap(hood => hood.rings || []),
         networkSegments: (game.track.segments || []).map(segment => segment.points || []),
@@ -304,6 +381,7 @@ class HUD {
       this._overviewCache = cache;
       this._overviewBuilt = built;
       this._overviewTrack = game.track;
+      this._overviewKey = cacheKey;
     }
 
     const built = this._overviewBuilt;
@@ -418,36 +496,89 @@ class HUD {
   }
 
 
+  // The hint used to paint the whole screen in three translucent slabs
+  // labelled STEER / BRAKE / GAS, because the controls were invisible and had
+  // to be explained. The pad is visible now, so this is one line that fades.
   drawTouchHint(ctx) {
+    const layout = this.layout;
+    if (!layout?.dpad) return;
+    const theme = window.CanalRecallUi.paperTheme;
+    const pad = layout.dpad;
+    const text = 'steer with the pad — it drives itself';
     ctx.save();
-    ctx.globalAlpha = 0.25;
-
-    // Left half — steer zone
-    ctx.fillStyle = '#2196F3';
-    ctx.fillRect(0, 0, CANVAS_W / 2, CANVAS_H);
-    ctx.fillStyle = '#FFF';
-    ctx.font = 'bold 16px monospace';
+    ctx.font = 'bold 11px monospace';
     ctx.textAlign = 'center';
-    ctx.fillText('STEER', CANVAS_W / 4, CANVAS_H / 2);
-    ctx.font = '11px monospace';
-    ctx.fillText('< left | right >', CANVAS_W / 4, CANVAS_H / 2 + 20);
-
-    // Right half top — brake zone
-    ctx.fillStyle = '#F44336';
-    ctx.fillRect(CANVAS_W / 2, 0, CANVAS_W / 2, CANVAS_H / 2);
-    ctx.fillStyle = '#FFF';
-    ctx.font = 'bold 16px monospace';
-    ctx.fillText('BRAKE', CANVAS_W * 3 / 4, CANVAS_H / 4);
-
-    // Right half bottom — gas zone
-    ctx.fillStyle = '#4CAF50';
-    ctx.fillRect(CANVAS_W / 2, CANVAS_H / 2, CANVAS_W / 2, CANVAS_H / 2);
-    ctx.fillStyle = '#FFF';
-    ctx.font = 'bold 16px monospace';
-    ctx.fillText('GAS', CANVAS_W * 3 / 4, CANVAS_H * 3 / 4);
-    ctx.font = '11px monospace';
-    ctx.fillText('double-tap: drift', CANVAS_W * 3 / 4, CANVAS_H * 3 / 4 + 20);
-
+    const width = Math.min(ctx.measureText(text).width + 22, CANVAS_W - 16);
+    // Clamped on screen: in landscape the pad sits at the left edge, and a hint
+    // centred on it started at x = -62.
+    const x = Math.max(8, Math.min(pad.cx - width / 2, CANVAS_W - width - 8));
+    const rect = { x, y: pad.bounds.y - 30, width, height: 22 };
+    this.paperCard(ctx, rect, { radius: 9 });
+    ctx.fillStyle = theme.inkMuted;
+    ctx.fillText(text, x + width / 2, rect.y + 15);
     ctx.restore();
+  }
+
+  // The d-pad. Drawn as one ring with four arrows so it reads as a control
+  // rather than four loose buttons, and kept translucent so the corridor it
+  // sits over stays visible.
+  drawDpad(ctx, pressed) {
+    const layout = this.layout;
+    if (!layout?.dpad) return;
+    const surface = window.CanalRecallUi.hudSurface;
+    const pad = layout.dpad;
+    const { cx, cy, cell } = pad;
+    const radius = pad.bounds.width / 2;
+
+    ctx.save();
+    ctx.shadowColor = surface.shadow;
+    ctx.shadowBlur = 16;
+    ctx.shadowOffsetY = 4;
+    ctx.fillStyle = surface.control;
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+    ctx.strokeStyle = surface.border;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.stroke();
+
+    const arrows = [
+      { key: 'ArrowUp', dx: 0, dy: -1, rotation: -Math.PI / 2 },
+      { key: 'ArrowDown', dx: 0, dy: 1, rotation: Math.PI / 2 },
+      { key: 'ArrowLeft', dx: -1, dy: 0, rotation: Math.PI },
+      { key: 'ArrowRight', dx: 1, dy: 0, rotation: 0 },
+    ];
+    for (const arrow of arrows) {
+      const active = !!pressed?.[arrow.key];
+      const ax = cx + arrow.dx * cell;
+      const ay = cy + arrow.dy * cell;
+      if (active) {
+        ctx.fillStyle = surface.controlPressed;
+        ctx.beginPath();
+        ctx.arc(ax, ay, cell * 0.46, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.save();
+      ctx.translate(ax, ay);
+      ctx.rotate(arrow.rotation);
+      ctx.fillStyle = active ? '#fffdf8' : surface.controlInk;
+      const size = cell * 0.26;
+      ctx.beginPath();
+      ctx.moveTo(size, 0);
+      ctx.lineTo(-size * 0.72, -size * 0.86);
+      ctx.lineTo(-size * 0.72, size * 0.86);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // A hub, so the dead centre reads as deliberately dead.
+    ctx.fillStyle = surface.border;
+    ctx.beginPath();
+    ctx.arc(cx, cy, cell * 0.13, 0, Math.PI * 2);
+    ctx.fill();
   }
 }

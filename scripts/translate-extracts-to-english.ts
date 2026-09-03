@@ -44,6 +44,12 @@
  * `scripts/lib/translation.ts`, and a translation that renamed the very place
  * the player is learning is refused rather than written.
  *
+ * Because there is no prompt to ask, the name is protected around the
+ * translator instead of through it: `protectNames` substitutes a placeholder
+ * for the feature's own name, the translator works on that, and the name is
+ * put back before the guard runs. Every route does this, including the two
+ * that can be asked in words — a prompt is a request, and this is not.
+ *
  * Usage: npm run enrich:english [-- --dry-run] [-- --limit=50]
  *                               [-- --translator=translate|trn|ollama|gemini|none]
  */
@@ -59,6 +65,7 @@ import {
   type CliTranslator,
   cleanTranslatorOutput,
   droppedProperNames,
+  protectNames,
   translatorInvocation,
   trimToSentence,
 } from './lib/translation.ts';
@@ -200,6 +207,8 @@ process.stdout.write(`cache: ${translations.size} of ${groups.length} already tr
 const needsTranslation = groups.filter(group => !translations.has(groupKey(group)));
 let freshlyTranslated = 0;
 let renamed = 0;
+/** Ledes whose own name was held out of the translator's reach. */
+let protectedRuns = 0;
 if (useCli && needsTranslation.length) {
   const tool = translator as CliTranslator;
   process.stdout.write(`local translation: ${needsTranslation.length} blurbs with ${tool}\n`);
@@ -211,7 +220,9 @@ if (useCli && needsTranslation.length) {
       // Which channel the text travels on is the tool's choice, not ours —
       // see `translatorInvocation`. Whatever it says goes on stderr is kept,
       // because "exited 1" on its own cost an afternoon once already.
-      const invocation = translatorInvocation(tool, sourceLanguage, original);
+      const held = protectNames(original, [feature.name]);
+      if (held.protectedNames.length) protectedRuns++;
+      const invocation = translatorInvocation(tool, sourceLanguage, held.text);
       const child = execFile(tool, invocation.args);
       if (invocation.stdin === null) child.stdin!.end();
       else child.stdin!.end(invocation.stdin);
@@ -228,7 +239,7 @@ if (useCli && needsTranslation.length) {
         throw new Error(`exited ${code}${why ? `: ${why}` : ''}`);
       }
 
-      const english = trimToSentence(cleanTranslatorOutput(chunksOut.join('')));
+      const english = trimToSentence(held.restore(cleanTranslatorOutput(chunksOut.join(''))));
       if (!english) throw new Error('empty output');
 
       // A fluent translation that renamed the place teaches the wrong name,
@@ -255,10 +266,12 @@ if (useCli && needsTranslation.length) {
   for (const group of needsTranslation) {
     const original = group[0].wikipediaExtractOriginal || group[0].wikipediaExtract!;
     const sourceLanguage = group[0].wikipediaExtractOriginalLang || group[0].wikipediaExtractLang || 'nl';
+    const held = protectNames(original, [group[0].name]);
+    if (held.protectedNames.length) protectedRuns++;
     const prompt = `You are a professional ${sourceLanguage === 'nl' ? 'Dutch (nl)' : sourceLanguage} to English (en) translator. `
       + 'Your goal is to accurately convey the meaning and nuances of the original text while adhering to English grammar, vocabulary, and cultural sensitivities. '
       + 'Keep proper names exactly as written. Do not add facts or commentary. Keep the result under 360 characters and end at a sentence boundary. '
-      + `Produce only the English translation, without any additional explanations or commentary. Please translate the following text into English:\n\n${original}`;
+      + `Produce only the English translation, without any additional explanations or commentary. Please translate the following text into English:\n\n${held.text}`;
     try {
       const response = await fetch(ollamaUrl, {
         method: 'POST', headers: { 'content-type': 'application/json' },
@@ -266,7 +279,7 @@ if (useCli && needsTranslation.length) {
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}: ${await response.text()}`);
       const payload = await response.json() as { response?: string };
-      const english = trimToSentence(cleanTranslatorOutput(payload.response || ''));
+      const english = trimToSentence(held.restore(cleanTranslatorOutput(payload.response || '')));
       if (!english) throw new Error('empty response');
       const dropped = droppedProperNames(original, english, [group[0].name]);
       if (dropped.length) {
@@ -288,10 +301,11 @@ if (useCli && needsTranslation.length) {
   const { GoogleGenAI } = await import('@google/genai');
   const client = new GoogleGenAI({ apiKey });
   for (const batch of chunks(needsTranslation, 20)) {
-    const items = batch.map((group, index) => ({
-      id: index,
-      text: group[0].wikipediaExtractOriginal || group[0].wikipediaExtract,
-    }));
+    // Protection is per lede, so the batch carries its restorers alongside it.
+    const heldByIndex = batch.map((group) => protectNames(
+      group[0].wikipediaExtractOriginal || group[0].wikipediaExtract!, [group[0].name]));
+    for (const held of heldByIndex) if (held.protectedNames.length) protectedRuns++;
+    const items = batch.map((_, index) => ({ id: index, text: heldByIndex[index].text }));
     const prompt = [
       'Translate each Dutch encyclopedia opening into plain English.',
       'Keep proper nouns (street, bridge, canal and building names) exactly as they are — they are what the player is learning.',
@@ -306,7 +320,7 @@ if (useCli && needsTranslation.length) {
       for (const entry of JSON.parse(body) as { id: number; text: string }[]) {
         const group = batch[entry.id];
         if (!group || !entry.text) continue;
-        const english = trimToSentence(cleanTranslatorOutput(entry.text));
+        const english = trimToSentence(heldByIndex[entry.id].restore(cleanTranslatorOutput(entry.text)));
         const original = group[0].wikipediaExtractOriginal || group[0].wikipediaExtract!;
         const dropped = droppedProperNames(original, english, [group[0].name]);
         if (dropped.length) {
@@ -389,6 +403,9 @@ process.stdout.write(`  Wikidata descriptions: ${described}\n`);
 process.stdout.write(`  still not English: ${stillForeign}\n`);
 if (renamed) {
   process.stdout.write(`  refused for renaming the place: ${renamed}\n`);
+}
+if (protectedRuns) {
+  process.stdout.write(`  ledes translated with their own name held out: ${protectedRuns}\n`);
 }
 if (!hasTranslator && described > 0) {
   process.stdout.write(`  ${described} of these are one-line descriptions; install ${CLI_TRANSLATORS.join(' or ')} and re-run to translate the real ledes\n`);

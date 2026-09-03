@@ -80,7 +80,7 @@ declare const CanalRecallBridges: typeof import('../bridgeCrossings');
 
 interface Window {
   CanalRecallCards: typeof import('../noticeCards');
-  CanalRecallBottomHud: typeof import('../bottomHudLayout');
+  CanalRecallUi: typeof import('../gameUi');
   /** Subsystem classes queued for installation onto `Game.prototype`. */
   CanalRecallGameModules?: Array<new () => unknown>;
 }

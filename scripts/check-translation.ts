@@ -9,6 +9,7 @@ import {
   cleanTranslatorOutput,
   droppedProperNames,
   MAX_EXTRACT_CHARS,
+  protectNames,
   translatorInvocation,
   trimToSentence,
 } from './lib/translation.ts';
@@ -156,6 +157,96 @@ check('the check is case-insensitive, so casing alone is not a failure', () => {
     []);
 });
 
+// --- The name is held out of the translator's reach ------------------------
+check('the feature name is substituted and comes back', () => {
+  const source = 'De Aluminiumbrug (brug 222) is een ophaalbrug in Amsterdam-Centrum.';
+  const held = protectNames(source, ['Aluminiumbrug']);
+  assert.deepEqual(held.protectedNames, ['Aluminiumbrug']);
+  assert.ok(!held.text.includes('Aluminiumbrug'), 'the translator never sees the name');
+  // What a translator does to the placeholder text, measured with trn: the
+  // placeholder is carried through untouched and everything else is English.
+  assert.equal(
+    held.restore('The Zarvix (bridge 222) is a lift bridge in Amsterdam-Centrum.'),
+    'The Aluminiumbrug (bridge 222) is a lift bridge in Amsterdam-Centrum.');
+});
+
+check('protection is what turns a refusal into a lede', () => {
+  // This is the whole point of the pass, stated as one assertion: the same
+  // translator behaviour that gets refused unprotected is accepted protected.
+  const source = 'De Aluminiumbrug is een ophaalbrug over de Kloveniersburgwal.';
+  const renamed = 'The Aluminum Bridge is a lift bridge over the Kloveniersburgwal.';
+  assert.deepEqual(droppedProperNames(source, renamed, ['Aluminiumbrug']), ['Aluminiumbrug']);
+
+  const held = protectNames(source, ['Aluminiumbrug']);
+  const restored = held.restore('The Zarvix is a lift bridge over the Kloveniersburgwal.');
+  assert.deepEqual(droppedProperNames(source, restored, ['Aluminiumbrug']), []);
+  assert.ok(restored.includes('lift bridge'), 'and it keeps what the lede actually says');
+});
+
+check('only whole words are held, so a name inside a compound is left alone', () => {
+  // "brug" is a word of the name "Brug 117" and also the tail of every bridge
+  // name in Amsterdam; substituting it inside a compound would corrupt the text
+  // the translator reads.
+  const held = protectNames('De Aluminiumbrug staat naast brug 222.', ['Brug']);
+  assert.ok(held.text.includes('Aluminiumbrug'), `compound was broken: ${held.text}`);
+});
+
+check('a lowercase common noun is not held, only the capitalised name', () => {
+  // "De Oude Lutherse Kerk ... de kerk werd gebouwd": protecting the second
+  // occurrence would restore "Kerk was built" into the English.
+  const source = 'De Oude Lutherse Kerk staat aan het Spui. De kerk werd in 1633 gebouwd.';
+  const held = protectNames(source, ['Oude Lutherse Kerk']);
+  assert.deepEqual(held.protectedNames, ['Oude Lutherse Kerk']);
+  assert.ok(held.text.includes('De kerk werd'), `lowercase noun was held: ${held.text}`);
+  // And the capitalised occurrence alone satisfies the guard for every token.
+  const restored = held.restore('The Zarvix stands on the Spui. The church was built in 1633.');
+  assert.deepEqual(droppedProperNames(source, restored, ['Oude Lutherse Kerk']), []);
+});
+
+check('a name absent from its own lede protects nothing', () => {
+  const held = protectNames('Een vaste brug in Amsterdam-Centrum.', ['Blauwbrug']);
+  assert.deepEqual(held.protectedNames, []);
+  assert.equal(held.text, 'Een vaste brug in Amsterdam-Centrum.');
+  assert.equal(held.restore('A fixed bridge in Amsterdam-Centrum.'),
+    'A fixed bridge in Amsterdam-Centrum.');
+});
+
+check('a name written only in parts falls back to those parts', () => {
+  const source = 'De Heilige Familie is een kerk in Amsterdam-Oost.';
+  const held = protectNames(source, ['Kerk van de Heilige Familie']);
+  assert.deepEqual(held.protectedNames.sort(), ['Familie', 'Heilige']);
+  assert.ok(!held.text.includes('Heilige'), `part was not held: ${held.text}`);
+  assert.ok(!held.text.includes('Familie'), `part was not held: ${held.text}`);
+  assert.ok(held.text.includes('kerk'), 'the common noun is still there to translate');
+});
+
+check('a longer name wins over a name nested inside it', () => {
+  const source = 'De Nieuwe Herengracht loopt naast de Herengracht.';
+  const held = protectNames(source, ['Nieuwe Herengracht', 'Herengracht']);
+  assert.deepEqual(held.protectedNames, ['Nieuwe Herengracht', 'Herengracht']);
+  const restored = held.restore('The Zarvix runs beside the Qivron.');
+  assert.equal(restored, 'The Nieuwe Herengracht runs beside the Herengracht.');
+});
+
+check('a placeholder the translator lowercased still restores', () => {
+  const held = protectNames('De Beltbrug is een brug.', ['Beltbrug']);
+  assert.equal(held.restore('The zarvix is a bridge.'), 'The Beltbrug is a bridge.');
+});
+
+check('a source that already contains a placeholder gets a different one', () => {
+  const held = protectNames('De Zarvix ligt naast de Beltbrug.', ['Beltbrug']);
+  assert.ok(!held.text.includes('Zarvix is'), 'the real Zarvix is untouched');
+  assert.equal(held.restore(held.text), 'De Zarvix ligt naast de Beltbrug.');
+});
+
+check('restoring text the translator dropped the placeholder from changes nothing', () => {
+  // Then the guard refuses it, exactly as it did before protection existed.
+  const source = 'De Beltbrug is een brug in Amsterdam-West.';
+  const held = protectNames(source, ['Beltbrug']);
+  const restored = held.restore('It is a bridge in Amsterdam-West.');
+  assert.deepEqual(droppedProperNames(source, restored, ['Beltbrug']), ['Beltbrug']);
+});
+
 // --- What the guard actually covers, measured on the real extract ----------
 // The guard only fires when the feature's own name appears in its own lede, so
 // it is worth knowing how often that is true rather than assuming. Where it is
@@ -168,7 +259,6 @@ check('the check is case-insensitive, so casing alone is not a failure', () => {
   const files = ['water.json', 'streets.json', 'bridges.json', 'squares.json', 'parks.json', 'landmarks.json', 'all.json'];
   const seen = new Set<string>();
   let pending = 0;
-  let guarded = 0;
   for (const file of files) {
     const rows = JSON.parse(await readFile(`public/data/extracts/amsterdam/${file}`, 'utf8')) as
       { name: string; wikipediaExtract?: string; wikipediaExtractLang?: string; wikipediaExtractOriginal?: string }[];
@@ -180,18 +270,35 @@ check('the check is case-insensitive, so casing alone is not a failure', () => {
       if (seen.has(key)) continue;
       seen.add(key);
       pending++;
-      // An empty translation drops every name the source had, so this reports
-      // whether the guard has anything to check for this feature at all.
-      if (droppedProperNames(source, '', [feature.name]).length) guarded++;
     }
   }
   checks++;
-  assert.ok(pending > 400, `expected the Dutch backlog to still be there, found ${pending}`);
-  assert.ok(guarded / pending > 0.85,
-    `the rename guard covers only ${guarded} of ${pending} pending ledes`);
+  // The backlog this pass existed to clear is gone: 448 non-English ledes went
+  // to 4 on 2026-09-01. What is left is held here so a regression in the
+  // enrichment pipeline — a refetch that reintroduces Dutch ledes wholesale —
+  // fails loudly instead of quietly shipping a Dutch game.
+  assert.ok(pending <= 25,
+    `${pending} non-English ledes are shipping; the pass had cleared this to 4`);
+  process.stdout.write(`  non-English ledes still shipping: ${pending}\n`);
+
+  // The rename guard is what stands between a fluent translation and a card
+  // that teaches the wrong name, so its coverage is measured over the texts it
+  // actually judged — the cache — not over the handful that are left.
+  const cache = JSON.parse(await readFile('scripts/english-translations.json', 'utf8')) as
+    { name: string; en: string }[];
+  let checkable = 0;
+  for (const entry of cache) {
+    // An empty translation drops every name the source had, so this asks
+    // whether the guard has anything to check for this feature at all.
+    if (droppedProperNames(entry.name, '', [entry.name]).length) checkable++;
+  }
+  checks++;
+  assert.ok(cache.length > 300, `expected a populated translation cache, found ${cache.length}`);
+  assert.ok(checkable / cache.length > 0.85,
+    `the rename guard can only judge ${checkable} of ${cache.length} cached translations`);
   process.stdout.write(
-    `  rename guard covers ${guarded} of ${pending} pending Dutch ledes `
-    + `(${Math.round((guarded / pending) * 100)}%)\n`);
+    `  rename guard can judge ${checkable} of ${cache.length} cached translations `
+    + `(${Math.round((checkable / cache.length) * 100)}%)\n`);
 }
 
 process.stdout.write(`Translation pass checks passed (${checks} checks).\n`);

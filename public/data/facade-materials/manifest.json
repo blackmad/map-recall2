@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "license": "CC0 1.0",
+  "assets": [
+    {
+      "id": "polyhaven-brick-wall-003",
+      "source": "Poly Haven",
+      "sourceUrl": "https://polyhaven.com/a/brick_wall_003",
+      "file": "polyhaven-brick-wall-003.jpg",
+      "map": "diffuse",
+      "resolution": "1k",
+      "use": ["cream", "yellow", "light-brown"]
+    },
+    {
+      "id": "ambientcg-bricks104",
+      "source": "ambientCG",
+      "sourceUrl": "https://ambientcg.com/a/Bricks104",
+      "file": "Bricks104_1K-JPG_Color.jpg",
+      "map": "color",
+      "resolution": "1k",
+      "use": ["red", "brown", "orange"]
+    }
+  ]
+}

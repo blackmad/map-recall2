@@ -543,11 +543,12 @@
       this.quizPromptName = "";
       this.quizPromptSegmentIndex = -1;
       this.quizPromptPointIndex = 0;
-      const learnedStreet = !atCrossing && isCar(this.travelMode) ? correctName : "";
+      const learnedRoute = !atCrossing ? correctName : "";
+      const learnedRouteType = isCar(this.travelMode) ? "street" : "water";
       setTimeout(() => {
         this._prompt.style.display = "none";
         this.canvas.focus();
-        if (learnedStreet) this._showStreetKnowledge(learnedStreet);
+        if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType);
       }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
     }
   };

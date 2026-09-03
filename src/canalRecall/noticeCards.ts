@@ -27,6 +27,11 @@ export interface LandmarkCardProps {
   category?: string;
   /** Language chip, shown only when the blurb is not English. */
   extractLang?: string;
+  /** What kind of fact the body is — `Name`, `History`, `Curiosity`. Set only
+   *  when the body is generated trivia rather than the article lede, and shown
+   *  so that a player passing the same bridge twice can see that the game is
+   *  telling them something new rather than repeating itself. */
+  factKind?: string;
   hasArticle?: boolean;
   hasImage?: boolean;
 }
@@ -38,7 +43,7 @@ export interface LandmarkCardLayout {
   imageHeight: number;
   textLeft: number;
   /** Badges in draw order, already positioned relative to the card. */
-  badges: Array<{ label: string; x: number; width: number; kind: 'category' | 'lang' | 'article' | 'more' }>;
+  badges: Array<{ label: string; x: number; width: number; kind: 'category' | 'lang' | 'article' | 'more' | 'fact' }>;
   /** Body text already wrapped and elided to the lines that will be drawn. */
   lines: string[];
   /** The name, elided with an ellipsis if it would not fit. */
@@ -62,6 +67,9 @@ const BODY_FONT = '11px monospace';
 export function measureLandmarkCard(
   props: LandmarkCardProps,
   measure: TextMeasurer,
+  /** The width the card has to fit in. A phone gives it the screen width less
+   *  margins; setting the width after measuring only clipped the text. */
+  cardWidth: number = CARD_WIDTH,
 ): LandmarkCardLayout {
   const hasImage = !!props.hasImage;
   const imageWidth = hasImage ? IMAGE_WIDTH : 0;
@@ -70,7 +78,7 @@ export function measureLandmarkCard(
     ? Math.max(130, IMAGE_HEIGHT + 20)
     : (props.body ? 80 : 50);
 
-  const maxTextWidth = CARD_WIDTH - textLeft - 16;
+  const maxTextWidth = Math.max(60, cardWidth - textLeft - 16);
   const body = props.body || '';
   const lines = wrapToLines(body, maxTextWidth, hasImage ? 4 : 2, measure, BODY_FONT);
   // The card shows a prefix of the body; whether anything was left behind is
@@ -80,12 +88,15 @@ export function measureLandmarkCard(
 
   const badges: LandmarkCardLayout['badges'] = [];
   let cursor = textLeft;
-  const pushBadge = (label: string, kind: 'category' | 'lang' | 'article' | 'more') => {
+  const pushBadge = (label: string, kind: LandmarkCardLayout['badges'][number]['kind']) => {
     const width = measure(label, BADGE_FONT) + 10;
     badges.push({ label, x: cursor, width, kind });
     cursor += width + 6;
   };
   if (props.category) pushBadge(props.category, 'category');
+  // Directly after the category, because it qualifies the same thing: what
+  // this card is about is the category, what it says about it is the kind.
+  if (props.factKind && props.body) pushBadge(props.factKind.toUpperCase(), 'fact');
   // The language chip is a claim about the body text, so it only makes sense
   // when there is body text to be in that language.
   if (props.extractLang && props.extractLang !== 'en' && props.body) {
@@ -105,7 +116,7 @@ export function measureLandmarkCard(
   }
 
   return {
-    width: CARD_WIDTH,
+    width: cardWidth,
     height,
     imageWidth,
     imageHeight: IMAGE_HEIGHT,
@@ -185,16 +196,21 @@ const POSTCARD_PHOTO_WIDTH = 144;
 const NAME_MAX = 24;
 const NAME_MIN = 16;
 
-export function measurePostcard(props: PostcardProps, measure: TextMeasurer): PostcardLayout {
+export function measurePostcard(
+  props: PostcardProps,
+  measure: TextMeasurer,
+  /** The width the postcard has to fit in; a phone gives it less than 390. */
+  cardWidth: number = POSTCARD_WIDTH,
+): PostcardLayout {
   const textLeft = (props.hasImage ? 136 : 0) + 22;
-  const available = POSTCARD_WIDTH - textLeft - 18;
+  const available = Math.max(60, cardWidth - textLeft - 18);
   let nameFontSize = NAME_MAX;
   const fontAt = (size: number) => `800 ${size}px system-ui, sans-serif`;
   while (nameFontSize > NAME_MIN && measure(props.name || '', fontAt(nameFontSize)) > available) {
     nameFontSize -= 1;
   }
   return {
-    width: POSTCARD_WIDTH,
+    width: cardWidth,
     height: POSTCARD_HEIGHT,
     photoWidth: POSTCARD_PHOTO_WIDTH,
     textLeft,

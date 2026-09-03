@@ -230,14 +230,162 @@
     };
   }
 
+  // src/canalRecall/facts/factRotation.ts
+  function emptyRotationState() {
+    return { history: {}, shown: 0, recentKinds: [] };
+  }
+  var RECENT_KIND_MEMORY = 3;
+  function factKey(featureId, fact) {
+    const normalised = fact.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+    let hash = 2166136261;
+    for (let index = 0; index < normalised.length; index++) {
+      hash ^= normalised.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return `${featureId}:${(hash >>> 0).toString(36)}`;
+  }
+  var KIND_APPEAL = {
+    surprise: 5,
+    naming: 4,
+    culture: 3,
+    people: 3,
+    history: 2,
+    design: 1
+  };
+  function chooseFact(featureId, facts, state) {
+    if (!facts.length) return null;
+    const scored = facts.map((fact) => {
+      const key = factKey(featureId, fact);
+      const lastShown = state.history[key];
+      const seen = lastShown !== void 0;
+      const recency = state.recentKinds.indexOf(fact.kind);
+      const kindPenalty = recency < 0 ? 0 : (RECENT_KIND_MEMORY - recency) * 2;
+      return {
+        fact,
+        key,
+        seen,
+        lastShown: lastShown ?? -1,
+        score: (seen ? 0 : 100) + KIND_APPEAL[fact.kind] - kindPenalty
+      };
+    });
+    scored.sort((a, b) => (
+      // Unseen first; then among seen, the one shown longest ago; then appeal.
+      Number(b.score > 0 && !b.seen) - Number(a.score > 0 && !a.seen) || (a.seen && b.seen ? a.lastShown - b.lastShown : 0) || b.score - a.score
+    ));
+    const best = scored[0];
+    return { fact: best.fact, key: best.key, repeat: best.seen };
+  }
+  function recordShown(state, choice) {
+    const shown = state.shown + 1;
+    return {
+      history: { ...state.history, [choice.key]: shown },
+      shown,
+      recentKinds: [choice.fact.kind, ...state.recentKinds].slice(0, RECENT_KIND_MEMORY)
+    };
+  }
+  function expandedFacts(facts, shownText, limit = 3) {
+    return facts.filter((fact) => fact.text !== shownText).slice().sort((a, b) => KIND_APPEAL[b.kind] - KIND_APPEAL[a.kind]).slice(0, limit);
+  }
+  function pruneHistory(state, maxEntries = 4e3) {
+    const entries = Object.entries(state.history);
+    if (entries.length <= maxEntries) return state;
+    const kept = entries.sort((a, b) => b[1] - a[1]).slice(0, maxEntries);
+    return { ...state, history: Object.fromEntries(kept) };
+  }
+
+  // src/canalRecall/facts/factTypes.ts
+  var FACT_KIND_LABELS = {
+    naming: "Name",
+    history: "History",
+    people: "People",
+    design: "Design",
+    culture: "Culture",
+    surprise: "Curiosity"
+  };
+
+  // src/canalRecall/facts/factStore.ts
+  function buildFactIndex(file) {
+    const index = /* @__PURE__ */ new Map();
+    for (const feature of file?.features || []) {
+      if (feature?.id && feature.facts?.length) index.set(feature.id, feature.facts);
+    }
+    return index;
+  }
+  var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
+  function loadRotationState(storage) {
+    try {
+      const raw = storage?.getItem(ROTATION_STORAGE_KEY);
+      if (!raw) return emptyRotationState();
+      const parsed = JSON.parse(raw);
+      return {
+        history: parsed.history && typeof parsed.history === "object" ? parsed.history : {},
+        shown: Number.isFinite(parsed.shown) ? Number(parsed.shown) : 0,
+        recentKinds: Array.isArray(parsed.recentKinds) ? parsed.recentKinds.slice(0, 3) : []
+      };
+    } catch {
+      return emptyRotationState();
+    }
+  }
+  function saveRotationState(storage, state) {
+    try {
+      storage?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
+    } catch {
+    }
+  }
+  function factCardText(featureId, index, state) {
+    const facts = index.get(featureId);
+    if (!facts?.length) return null;
+    const choice = chooseFact(featureId, facts, state);
+    if (!choice) return null;
+    const others = expandedFacts(facts, choice.fact.text);
+    const all = [choice.fact.text, ...others.map((fact) => fact.text)];
+    return {
+      choice,
+      text: {
+        detail: choice.fact.text,
+        longDetail: all.join(" "),
+        factTexts: all,
+        factKind: FACT_KIND_LABELS[choice.fact.kind]
+      }
+    };
+  }
+  function commitShownFact(storage, state, choice) {
+    const next = recordShown(state, choice);
+    saveRotationState(storage, next);
+    return next;
+  }
+
+  // src/canalRecall/game/routeKnowledge.ts
+  var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract;
+  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise) {
+    const index = /* @__PURE__ */ new Map();
+    const add = (entry, type) => {
+      index.set(`${type}:${normalise(entry.name)}`, { ...entry, type });
+    };
+    for (const entry of legacy) add(entry, entry.type === "water" ? "water" : "street");
+    for (const entry of streets) if (eligible(entry)) add(entry, "street");
+    for (const entry of waters) if (eligible(entry)) add(entry, "water");
+    return index;
+  }
+  function routeKnowledgeFor(index, name, type, normalise) {
+    const key = normalise(name);
+    return index.get(`${type}:${key}`) || index.get(`${type === "street" ? "water" : "street"}:${key}`);
+  }
+
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
   var CLICK_SELECT_RADIUS = 120;
   var DRIVE_BY_RADIUS = 300;
   async function readJson(response, fallback) {
-    return response.ok ? await response.json() : fallback;
+    if (!response.ok) return fallback;
+    try {
+      return await response.json();
+    } catch {
+      return fallback;
+    }
   }
   var GameLandmarkRuntime = class {
+    _streetSummaryRequests;
     // ---- Clicking a building ----
     _inspectBuildingAt(clientX, clientY) {
       if (!this.player || this.quizPromptName || this._utilityOpen) return;
@@ -269,12 +417,40 @@
       this.vectorMap.setActiveLandmark(nearest);
     }
     /** Open a landmark card, saying why it is up — which is what decides when it
-     *  comes down. */
+     *  comes down.
+     *
+     *  Both ways a card can open — clicking a building and driving past one —
+     *  come through here, which is why the fact rotation is applied at this seam
+     *  rather than at either caller. It is also the first moment the card is
+     *  certain to be shown, and a fact must not be spent on a card that never
+     *  appears: `factCardText` chooses, and `commitShownFact` is what marks the
+     *  sentence as told. */
     _showLandmarkNotice(notice, hold) {
-      this._landmarkNotice = notice;
+      this._landmarkNotice = this._withRotatedFact(notice);
       this._landmarkNoticeHold = hold;
       this._landmarkNoticeState = openNotice();
       this._landmarkNoticeAlpha = 0;
+    }
+    /**
+     * Replace the card's lede with the next fact in this feature's rotation.
+     *
+     * Returns the card unchanged when the feature has no generated facts, which
+     * is the normal case until a batch has been reviewed and published — the
+     * Wikipedia lede is the fallback, not an error.
+     */
+    _withRotatedFact(notice) {
+      if (!this._facts || !this._facts.size) return notice;
+      const chosen = factCardText(notice.id, this._facts, this._factRotation);
+      if (!chosen) return notice;
+      this._commitFact(chosen.choice);
+      return { ...notice, ...chosen.text };
+    }
+    _commitFact(choice) {
+      this._factRotation = commitShownFact(
+        typeof localStorage === "undefined" ? null : localStorage,
+        this._factRotation,
+        choice
+      );
     }
     _clearLandmarkNotice() {
       this._landmarkNotice = null;
@@ -350,6 +526,32 @@
       landmark.longDetail = split.longDetail;
       landmark.extractLang = "en";
     }
+    async _fetchEnglishStreetSummary(entry) {
+      const wikidata = entry.wikidata;
+      if (!wikidata) return null;
+      const entity = new URL("https://www.wikidata.org/w/api.php");
+      entity.search = new URLSearchParams({
+        action: "wbgetentities",
+        format: "json",
+        props: "sitelinks",
+        sitefilter: "enwiki",
+        ids: wikidata,
+        origin: "*"
+      }).toString();
+      const entityResponse = await fetch(entity, { headers: { accept: "application/json" } });
+      if (!entityResponse.ok) return null;
+      const data = await entityResponse.json();
+      const title = data?.entities?.[wikidata]?.sitelinks?.enwiki?.title || "";
+      if (!title) return null;
+      const summary = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, "_"))}`;
+      const response = await fetch(summary, { headers: { accept: "application/json" } });
+      if (!response.ok) return null;
+      const summaryData = await response.json();
+      if (!summaryData?.extract) return null;
+      entry.wikipediaExtract = summaryData.extract;
+      const split = splitDetail(summaryData.extract);
+      return { detail: split.detail, longDetail: split.longDetail };
+    }
     /** The extract carries a Wikipedia URL for 236 of its 300 landmarks, which
      *  the canvas card cannot make clickable — so it is offered on a key. */
     _openLandmarkArticle() {
@@ -357,20 +559,43 @@
       if (!notice || !notice.wikipediaUrl) return;
       window.open(notice.wikipediaUrl, "_blank", "noopener");
     }
-    _showStreetKnowledge(name) {
+    _showStreetKnowledge(name, type = "street") {
       const key = this._normaliseCanalName(name);
-      const entry = this.streetKnowledge.get(key);
+      const entry = routeKnowledgeFor(
+        this.streetKnowledge,
+        name,
+        type,
+        (value) => this._normaliseCanalName(value)
+      );
       if (!entry) return;
+      const noticeId = entry.id || `${type}-knowledge:${key}`;
       const split = splitDetail(entry.wikipediaExtract || "");
       this._showLandmarkNotice({
-        id: `street-knowledge:${key}`,
+        id: noticeId,
         name: entry.name || name,
         type: "street",
         detail: split.detail,
         longDetail: split.longDetail,
         wikipediaUrl: entry.wikipediaUrl || "",
-        extractLang: "en"
+        extractLang: entry.wikipediaExtractLang || "en"
       }, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
+      if (!entry.wikipediaExtract && entry.wikidata && entry.wikipediaUrl) {
+        this._streetSummaryRequests = this._streetSummaryRequests || /* @__PURE__ */ new Set();
+        if (this._streetSummaryRequests.has(noticeId)) return;
+        this._streetSummaryRequests.add(noticeId);
+        this._fetchEnglishStreetSummary(entry).then((split2) => {
+          if (!split2) return;
+          if (!this._landmarkNotice || this._landmarkNotice.id !== noticeId) return;
+          if (this._landmarkNotice.detail || this._landmarkNotice.longDetail) return;
+          this._landmarkNotice = {
+            ...this._landmarkNotice,
+            detail: split2.detail,
+            longDetail: split2.longDetail,
+            extractLang: "en"
+          };
+        }).catch(() => {
+        });
+      }
     }
     // ---- Loading the extract ----
     async _loadLandmarks(centerLat, centerLng, segments) {
@@ -384,7 +609,10 @@
           bridgeResponse,
           crossingResponse,
           streetKnowledgeResponse,
-          brandedPoiResponse
+          streetResponse,
+          waterResponse,
+          brandedPoiResponse,
+          factResponse
         ] = await Promise.all([
           fetch(url("landmarks.json")),
           fetch(url("boundaries.json")),
@@ -392,20 +620,46 @@
           fetch(url("bridges.json")),
           fetch(url("bridge-crossings.json")),
           fetch(url("street-knowledge.json")),
-          fetch(url("branded-pois.json"))
+          fetch(url("streets.json")),
+          fetch(url("water.json")),
+          fetch(url("branded-pois.json")),
+          // Generated trivia. Absent until a batch has been reviewed and
+          // published, and the cards fall back to the Wikipedia lede when it is.
+          fetch(url("facts.json")).catch(() => new Response("null", { status: 404 }))
         ]);
         if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error("Cached place data unavailable");
-        const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex, streetKnowledge, brandedPois] = await Promise.all([
+        const [
+          features,
+          boundaries,
+          neighborhoodEnriched,
+          bridgeFeatures,
+          crossingIndex,
+          streetKnowledge,
+          streetFeatures,
+          waterFeatures,
+          brandedPois,
+          factsFile
+        ] = await Promise.all([
           landmarkResponse.json(),
           boundaryResponse.json(),
           readJson(neighborhoodEnrichedResponse, []),
           readJson(bridgeResponse, []),
           readJson(crossingResponse, { bridges: {} }),
           readJson(streetKnowledgeResponse, []),
-          readJson(brandedPoiResponse, [])
+          readJson(streetResponse, []),
+          readJson(waterResponse, []),
+          readJson(brandedPoiResponse, []),
+          readJson(factResponse, null)
         ]);
-        this.streetKnowledge = new Map(
-          streetKnowledge.map((entry) => [this._normaliseCanalName(entry.name), entry])
+        this._facts = buildFactIndex(factsFile);
+        this._factRotation = loadRotationState(
+          typeof localStorage === "undefined" ? null : localStorage
+        );
+        this.streetKnowledge = buildRouteKnowledgeIndex(
+          streetKnowledge,
+          streetFeatures,
+          waterFeatures,
+          (name) => this._normaliseCanalName(name)
         );
         this.vectorMap.setPlaces(features, boundaries);
         this.vectorMap.setBrandedPois(brandedPois);
@@ -538,21 +792,26 @@
         name: lm.name,
         body: lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood),
         category: lm.type ? lm.type.toUpperCase() : "",
+        factKind: lm.factKind,
         extractLang: lm.extractLang,
         hasArticle: !!lm.wikipediaUrl,
         hasImage
-      }, measure);
+      }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
       const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
-      const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({
+      const bottomLayout = window.CanalRecallUi.hudLayout({
+        viewport: this.viewport,
         tripWidth: 180,
         postcardVisible: postcardShowing,
         landmarkWidth: card.width,
         landmarkHeight: card.height,
+        feedbackVisible: !!this.quizFeedback,
+        neighborhoodVisible: !!this.currentNeighborhood,
+        minimapVisible: this.showMiniMap,
         zoomVisible: this._zoomBadgeTimer > 0,
         controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
       });
-      const cardX = bottomLayout ? bottomLayout.landmark.x : CANVAS_W / 2 - card.width / 2;
-      const cardY = bottomLayout ? bottomLayout.landmark.y : CANVAS_H - card.height - 30;
+      const cardX = bottomLayout.landmark.x;
+      const cardY = bottomLayout.landmark.y;
       ctx.save();
       ctx.globalAlpha = Math.max(0, alpha);
       this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
@@ -572,7 +831,7 @@
       const panel = this._landmarkPanel;
       if (!lm || !panel) return false;
       const cards = window.CanalRecallCards;
-      const body = lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood);
+      const body = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join("\n\n") : "") || lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood);
       const badges = panel.querySelector("#landmark-panel-badges");
       badges.textContent = "";
       const pushBadge = (label, kind) => {
@@ -582,6 +841,7 @@
         badges.appendChild(chip);
       };
       if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, " "), "category");
+      if (lm.factKind) pushBadge(lm.factKind.toUpperCase(), "fact");
       if (lm.extractLang && lm.extractLang !== "en") {
         pushBadge(`${lm.extractLang.toUpperCase()} \u2014 NOT TRANSLATED YET`, "lang");
       }
@@ -624,11 +884,18 @@
       };
       const card = window.CanalRecallCards.measurePostcard(
         { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage },
-        measure
+        measure,
+        window.CanalRecallUi.postcardWidth(this.viewport)
       );
-      const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({ tripWidth: 180 });
-      const cardX = bottomLayout ? bottomLayout.postcard.x : CANVAS_W - card.width - 20;
-      const baseCardY = bottomLayout ? bottomLayout.postcard.y : CANVAS_H - card.height - 76;
+      const bottomLayout = window.CanalRecallUi.hudLayout({
+        viewport: this.viewport,
+        tripWidth: 180,
+        postcardHeight: card.height,
+        neighborhoodVisible: !!this.currentNeighborhood,
+        minimapVisible: this.showMiniMap
+      });
+      const cardX = bottomLayout.postcard.x;
+      const baseCardY = bottomLayout.postcard.y;
       const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.3);
       const cardY = baseCardY + (1 - (1 - Math.pow(1 - slideT, 3))) * 50;
       ctx.save();

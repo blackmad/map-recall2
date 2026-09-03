@@ -126,6 +126,10 @@ class Game {
     this.bridges = [];
     this._routeRerolls = 0;
     this._zoomBadgeTimer = 0;
+    // Once the player picks a zoom, a rotation or resize must not overrule it.
+    this._zoomTouchedByPlayer = false;
+    // Filled by _resize before the first frame; the design space until then.
+    this.viewport = window.CanalRecallUi.resolveViewport({ windowWidth: CANVAS_W, windowHeight: CANVAS_H });
     this._lastZoomShown = null;
     this._liveRoutePath = null;
     this._liveRouteIndex = -1;
@@ -175,6 +179,11 @@ class Game {
     this._seenLandmarks = new Set();
     this._visitedNeighborhoods = new Set();
     this._seenLandmarkNames = new Set();
+    // Generated trivia, filled by _loadLandmarks from facts.json. Empty until
+    // then, and empty for good if no batch has been published, in which case
+    // every card falls back to its Wikipedia lede.
+    this._facts = new Map();
+    this._factRotation = { history: {}, shown: 0, recentKinds: [] };
     this._explorationSnapshot = null;
     this._assistUsage = { line: false, arrow: false, minimap: false };
     this._ribbon = null;
@@ -220,7 +229,20 @@ class Game {
     this._setupRecallStore();
     this._setupUtilityPanels();
     this._resize();
-    window.addEventListener('resize', () => this._resize());
+    // `resize` alone is not enough on a phone. Rotating fires `orientationchange`
+    // before the new dimensions settle, and mobile Safari's URL bar collapsing
+    // only moves `visualViewport`. Missing any of these leaves the game drawing
+    // into a stale coordinate space — which is how a phone latched the desktop
+    // layout at load and kept it.
+    const onViewportChange = () => this._resize();
+    window.addEventListener('resize', onViewportChange);
+    window.addEventListener('orientationchange', () => {
+      onViewportChange();
+      // The post-rotation dimensions are not final on the event itself.
+      setTimeout(onViewportChange, 120);
+      setTimeout(onViewportChange, 400);
+    });
+    window.visualViewport?.addEventListener('resize', onViewportChange);
     this._setupCameraGestures();
 
     this.canvas.addEventListener('click', (e) => {
@@ -277,6 +299,43 @@ class Game {
     this._checkShareLink();
   }
 
+  /** True while a DOM overlay owns the screen: the recall question, the
+   *  settings/help panels, or the expanded article. The vehicle is stopped
+   *  behind all of them, so the d-pad is dead controls and the map gestures
+   *  belong to the overlay. */
+  _overlayOpen() {
+    if (this._utilityOpen) return true;
+    if (this._prompt && this._prompt.style.display !== 'none' && this._prompt.style.display !== '') return true;
+    const panel = document.getElementById('landmark-panel');
+    return !!panel && getComputedStyle(panel).display !== 'none';
+  }
+
+  /** The finish card's tappable actions, for touch. Keyboard keeps ENTER/ESC/C. */
+  _runFinishAction(id) {
+    if (id === 'again') {
+      if (this.routePattern === 'home') { this._startNextHomeLeg(); return; }
+      this._setupRace();
+      this.state = GameState.RACING;
+    } else if (id === 'route') {
+      this.state = GameState.MENU;
+      this._routeSetup.style.display = 'flex';
+      history.replaceState(null, '', window.location.pathname);
+    } else if (id === 'copy' && this._shareUrl) {
+      navigator.clipboard.writeText(this._shareUrl).catch(() => {});
+      this._copiedTimer = 2;
+    }
+  }
+
+  /** Logical canvas coordinates for a pointer/mouse event. */
+  _eventPoint(event) {
+    const rect = this.canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return { x: 0, y: 0 };
+    return {
+      x: (event.clientX - rect.left) * CANVAS_W / rect.width,
+      y: (event.clientY - rect.top) * CANVAS_H / rect.height,
+    };
+  }
+
   _setupCameraGestures() {
     let dragging = false, moved = false, lastX = 0, lastY = 0, downX = 0, downY = 0;
     this.canvas.addEventListener('wheel', event => {
@@ -284,13 +343,60 @@ class Game {
       event.preventDefault();
       if (event.ctrlKey) {
         this.camera.zoom = clamp(this.camera.zoom * Math.exp(-event.deltaY * 0.002), this.camera.minZoom, this.camera.maxZoom);
+        this._zoomTouchedByPlayer = true;
       } else {
         this.camera.pan(event.deltaX, event.deltaY);
       }
       this._cameraZoom.value = this._liveZoom.value = String(this.camera.zoom);
     }, { passive: false });
+    // Two-finger pinch, anywhere outside the d-pad. Touch had no zoom at all:
+    // the only ways in were the -/+ keys and a trackpad wheel.
+    let pinchDistance = 0;
+    const livePinch = new Map();
+    const pinchPoints = () => [...livePinch.values()];
+    this.canvas.addEventListener('touchstart', event => {
+      for (const touch of event.changedTouches) {
+        const point = this._eventPoint(touch);
+        if (window.CanalRecallUi.isInsideDpad(point, this.input.dpad)) continue;
+        livePinch.set(touch.identifier, point);
+      }
+      const points = pinchPoints();
+      if (points.length === 2) {
+        pinchDistance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+      }
+    }, { passive: true });
+    this.canvas.addEventListener('touchmove', event => {
+      let changed = false;
+      for (const touch of event.changedTouches) {
+        if (!livePinch.has(touch.identifier)) continue;
+        livePinch.set(touch.identifier, this._eventPoint(touch));
+        changed = true;
+      }
+      if (!changed) return;
+      const points = pinchPoints();
+      if (points.length !== 2) return;
+      event.preventDefault();
+      const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+      if (pinchDistance > 0 && distance > 0) {
+        this.camera.zoom = clamp(this.camera.zoom * (distance / pinchDistance),
+          this.camera.minZoom, this.camera.maxZoom);
+        this._zoomTouchedByPlayer = true;
+        this._cameraZoom.value = this._liveZoom.value = String(this.camera.zoom);
+      }
+      pinchDistance = distance;
+    }, { passive: false });
+    const endPinch = event => {
+      for (const touch of event.changedTouches) livePinch.delete(touch.identifier);
+      if (livePinch.size < 2) pinchDistance = 0;
+    };
+    this.canvas.addEventListener('touchend', endPinch, { passive: true });
+    this.canvas.addEventListener('touchcancel', endPinch, { passive: true });
+
     this.canvas.addEventListener('pointerdown', event => {
       if (event.button !== 0 || this.state === GameState.MENU) return;
+      if (window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) return;
+      // A pinch is not a pan: two fingers must not drag the map as well.
+      if (livePinch.size >= 2) return;
       dragging = true; moved = false; downX = lastX = event.clientX; downY = lastY = event.clientY;
       this.canvas.setPointerCapture(event.pointerId);
     });
@@ -305,6 +411,15 @@ class Game {
         const rect = this.canvas.getBoundingClientRect();
         const sx = (event.clientX - rect.left) * CANVAS_W / rect.width;
         const sy = (event.clientY - rect.top) * CANVAS_H / rect.height;
+        if (this.state === GameState.FINISHED && this._finishButtonBounds) {
+          for (const b of this._finishButtonBounds) {
+            if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
+              this._runFinishAction(b.id);
+              dragging = false;
+              return;
+            }
+          }
+        }
         if (this._recenterBtnBounds) {
           const b = this._recenterBtnBounds;
           if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
@@ -329,26 +444,50 @@ class Game {
     });
   }
 
+  // The logical drawing space fills the window. It used to be fixed at 1280×720
+  // and letterboxed into whatever was given, so a tall desktop window and a
+  // portrait phone both got a landscape strip floating in white paper while
+  // the MapLibre layer underneath kept its own size.
   _resize() {
-    const ratio = CANVAS_W / CANVAS_H;
-    let w = window.innerWidth, h = window.innerHeight;
-    if (w / h > ratio) { w = h * ratio; } else { h = w / ratio; }
-    this.canvas.style.width = w + 'px';
-    this.canvas.style.height = h + 'px';
-    // Keep the game's logical 1280×720 coordinate system, but allocate enough
-    // backing pixels for large and Retina displays. CSS scaling a fixed 720p
-    // canvas was the source of the visibly blocky waterway overlay.
-    const backingScale = Math.min(3, Math.max(1, (window.devicePixelRatio || 1) * w / CANVAS_W));
-    const backingWidth = Math.round(CANVAS_W * backingScale);
-    const backingHeight = Math.round(CANVAS_H * backingScale);
+    const viewport = window.CanalRecallUi.readWindowViewport(window);
+    this.viewport = viewport;
+    // Everything that draws reads these at call time, so reassigning them here
+    // moves the whole HUD into the new coordinate space.
+    CANVAS_W = viewport.width;
+    CANVAS_H = viewport.height;
+    // Pin the canvas to the viewport by CSS rather than sizing it in pixels, so
+    // it always fills the window and cannot start the overflow -> shrink-to-fit
+    // -> wider-innerWidth loop that used to latch the desktop layout onto a
+    // phone. `compact-layout` still marks the phone HUD path for CSS that
+    // needs to know; `fill-viewport` is what actually kills the letterbox.
+    const compact = viewport.mode === 'compact';
+    document.body.classList.toggle('compact-layout', compact);
+    document.body.classList.add('fill-viewport');
+    this.canvas.style.width = '100%';
+    this.canvas.style.height = '100%';
+    // Allocate enough backing pixels for large and Retina displays. CSS scaling
+    // a fixed 720p canvas was the source of the blocky waterway overlay.
+    const backingWidth = Math.round(viewport.width * viewport.backingScale);
+    const backingHeight = Math.round(viewport.height * viewport.backingScale);
     if (this.canvas.width !== backingWidth || this.canvas.height !== backingHeight) {
       this.canvas.width = backingWidth;
       this.canvas.height = backingHeight;
-      this.ctx.setTransform(backingScale, 0, 0, backingScale, 0, 0);
       this.ctx.imageSmoothingEnabled = true;
       this.ctx.imageSmoothingQuality = 'high';
     }
-    if (this.vectorMap) this.vectorMap.resize(w, h);
+    // Set unconditionally: a resize that leaves the backing store the same size
+    // but changes the logical space still needs the transform rebuilt.
+    this.ctx.setTransform(viewport.backingScale, 0, 0, viewport.backingScale, 0, 0);
+    this.input.setViewport(viewport);
+    if (this.vectorMap) this.vectorMap.resizeToViewport(viewport);
+    // A phone shows a narrower strip of city than a 1280 px window, so the
+    // default zoom would frame far less of the route. Scale it to keep roughly
+    // the same span of Amsterdam on screen.
+    if (!this._zoomTouchedByPlayer) {
+      this.camera.zoom = clamp(
+        CAMERA_ZOOM_INITIAL * (viewport.width / 1280),
+        this.camera.minZoom, this.camera.maxZoom);
+    }
   }
 
   _loop(timestamp) {
@@ -369,6 +508,9 @@ class Game {
   }
 
   _update(dt) {
+    // A tap outside the d-pad means "restart" on the finish screen, but while
+    // driving it used to press Enter on every touch of the map.
+    this.input.setTapRestartEnabled(this.state !== GameState.RACING);
     if (this.input.wasPressed('Slash') && (this.input.isDown('ShiftLeft') || this.input.isDown('ShiftRight'))) this._toggleUtilityPanel(this._helpPanel);
     if (this.input.wasPressed('KeyG')) this._toggleUtilityPanel(this._settingsPanel);
     if (this.input.wasPressed('Escape') && this._utilityOpen) { this._closeUtilityPanels(); return; }
@@ -388,8 +530,8 @@ class Game {
     if (this.input.wasPressed('KeyW')) this._openLandmarkArticle();
     this._handleChoiceShortcut();
     if (this.input.wasPressed('Backquote')) this._toggleDebug();
-    if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) this.camera.zoomOut();
-    if (this.input.isDown('Equal') || this.input.isDown('NumpadAdd')) this.camera.zoomIn();
+    if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) { this.camera.zoomOut(); this._zoomTouchedByPlayer = true; }
+    if (this.input.isDown('Equal') || this.input.isDown('NumpadAdd')) { this.camera.zoomIn(); this._zoomTouchedByPlayer = true; }
     if (this.input.isDown('KeyI')) this.camera.pan(0, -8);
     if (this.input.isDown('KeyK')) this.camera.pan(0, 8);
     if (this.input.isDown('KeyJ')) this.camera.pan(-8, 0);
@@ -446,20 +588,10 @@ class Game {
       case GameState.FINISHED:
         if (this._copiedTimer > 0) this._copiedTimer -= dt;
         if (this.input.wasPressed('Enter') || this.input.wasPressed('Space') || this.input.wasPressed('KeyM')) {
-          if (this.routePattern === 'home') { this._startNextHomeLeg(); break; }
-          // Restart same track
-          this._setupRace();
-          this.state = GameState.RACING;
+          this._runFinishAction('again');
         }
-        if (this.input.wasPressed('Escape')) {
-          this.state = GameState.MENU;
-          this._routeSetup.style.display = 'flex';
-          history.replaceState(null, '', window.location.pathname);
-        }
-        if (this.input.wasPressed('KeyC') && this._shareUrl) {
-          navigator.clipboard.writeText(this._shareUrl).catch(() => {});
-          this._copiedTimer = 2;
-        }
+        if (this.input.wasPressed('Escape')) this._runFinishAction('route');
+        if (this.input.wasPressed('KeyC')) this._runFinishAction('copy');
         break;
     }
   }

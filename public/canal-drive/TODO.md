@@ -20,6 +20,14 @@ belongs here before anything below it.*
 
 ## P1 — The learning model itself
 
+**16. Review and refine the published Randstad trivia.** The owner approved the
+complete v10 automatically grounded batch, publishing 4,263 facts across 1,456
+features in Amsterdam, Rotterdam, Den Haag and Utrecht. Add per-fact
+approve/reject/edit controls to the Trivia Lab and export version-matched review
+files, then work through a stratified audit prioritising dates, quantities,
+Dutch translations and model-verifier disagreements. Corrections must retain
+exact Wikipedia evidence and must go back through the normal publication gate.
+
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by
 mastery and review state, with a fog-of-war layer over the rest. Derive it from
@@ -27,16 +35,33 @@ nearby learned features, visits, answer history and recency rather than treating
 one drive-through as mastery. Pairs naturally with item 5: the same data answers
 "what do I know" and "where should I be sent next".
 
-**7. Expand the street encyclopedia beyond Nes.**
-The runtime card, the `W` article action and the normalized-name join are proven
-end to end with one street. What remains is generating the compact
-knowledge extract for notable streets city-wide — English lede, article URL,
-optional image — and showing each street sparingly, so facts support spatial
-recall rather than interrupt every junction.
+**7. Show street encyclopedia sparingly on new streets.**
+The compact extract is now city-wide for Wikipedia-linked streets and
+waterways (48 streets, 98 waters with English ledes). Cards still only open
+after a quiz answer, so turning onto an unasked street stays silent. Gate the
+card on entering a named street that is novel or due, keep it bottom-compact,
+and do not interrupt every junction.
 
 ---
 
 ## P2 — Weight and reach
+
+**8c. Decide what the photoreal gate should actually measure.**
+The mesh works now, but its 25 m activation height never binds. MapLibre's
+camera altitude is a function of zoom and viewport height, not a simulated eye
+height: measured across the view modes and the whole camera-zoom slider, the
+game's camera sits between roughly 95 m and 520 m up, so `shouldShowPhotoreal`
+answers "yes" every time the option is ticked and the promised hand-back to
+3DBAG at cycling height never happens. The 25 m in `photorealGate.ts` came from
+the spike, where it was a real eye height above the quay in a free-flying
+camera, and it did not survive the move to a map camera.
+
+Either re-measure the smear threshold against something the game's camera
+actually varies — ground sample distance at the map centre, or map zoom — and
+restate the gate in those terms, or accept that the option is simply "photoreal
+on/off" at every height the game can reach and delete the altitude band along
+with its hysteresis. Do not leave it as-is: the code and `HISTORY.md` both
+describe a behaviour that never fires.
 
 **8a. Productionise government-data building appearance enrichment.**
 The current worktree has a working PDOK proof: 5,778 of 10,578 Amsterdam
@@ -60,6 +85,45 @@ are in [`BUILDING_ENRICHMENT.md`](BUILDING_ENRICHMENT.md).
 *This is the measured-material foundation for item 10; finish it before baking
 appearance into detailed meshes.*
 
+The RGB DSM demo now proves the distributed roof path rather than one lucky
+block: 71/143 semantic planes across 18/20 grid-selected buildings agree with
+independent orthophoto colours, backed by 23 pinned LAZ tiles. The interactive
+research page is `rgb-city-demo.html`; full measurements and abstention counts
+are in `RGB_CITY_DEMO.md`. What remains before production is a labelled human
+review, a city-scale cost/size plan, a stable join into the refresh pipeline,
+and a separate façade source. Do not call the DSM a façade point cloud.
+
+The façade half now has a measured gate rather than a guessed one. Two vision
+models agree on the appearance fields (material, colour, window pattern, ground
+floor: 5/6 buildings each) and not on the count fields (`bayCount`: 1 informative
+agreement in 6, and none of its disagreements within ±1). `roofline` agrees 4/6
+only because 3 of those are both models answering `not-visible`. Re-gating on the
+appearance fields passes 4/6 where the original gate passed 0/6; see
+[`FACADE_ENRICHMENT_DESIGN.md`](FACADE_ENRICHMENT_DESIGN.md). What remains, in
+order:
+
+1. **Targets are gated now** — `judgeFacadeTarget` rejects anything under 40 m²,
+   4 m or a 5 m edge before a panorama is requested, because five of the six
+   pilot targets were sheds (one covered 1 m²) and the appearance extract's
+   median footprint is 18 m². `npm run test:facade-target` pins all six.
+2. **Crops are aimed now** — `planFacadeCrop` derives `fov` and `horizon` per
+   target from its measured height and its measured distance to the *nearest
+   footprint point*, instead of the pilot's fixed `fov=70, horizon=0.34`. Two
+   facts made the fixed crop point at the road: `horizon` is measured from the
+   bottom of the frame, so it aims *down* as it grows, and a deep block's
+   centroid sits far behind the façade the camera sees. Framing that cannot fit
+   is reported as `fullFacadeVisible: false` rather than silently truncated.
+   Still unmeasured: `aspect` is fixed at 1.6, so a tall façade close to the
+   camera spends its lens budget sideways and clamps at `fov=100`. Measure
+   whether a per-target aspect recovers those before buying a larger sample.
+3. **Restore the human view-selection gate** that `24c8beb` reverted. The
+   extractor classifies unreviewed nearest-camera crops and records
+   `panoramaSelection: nearest-camera-unreviewed` to say so.
+4. **Then** buy a stratified sample across typology and era. Not before 1–3:
+   the existing agreement numbers measure footprint noise and camera aim as much
+   as façades, so how well two models agree about one real façade is still
+   unmeasured. n=6 supports no coverage claim, and agreement is not accuracy.
+
 **8b. Finish typing the game subsystems.**
 Measured 2026-08-31: ~21,000 lines of TypeScript against ~6,100 lines of
 hand-written JavaScript in `public/canal-drive/js/` (the other ~1,300 JS lines
@@ -71,16 +135,24 @@ TypeScript, painting and adapters in JavaScript.** `noticeCards.ts` +
 `renderer.js`, `bottomHud.ts` + `hud.js`, `streetOverlayStyle.ts` +
 `vector-map.js` are all this shape and all have tests on the half that decides.
 
-`road-network.js` is now an adapter: surface bands, junction-aware road-name
-selection, same-name feature stitching, graph construction and Dijkstra all
-live in tested typed modules. The genuinely un-migrated decision work is now:
+`road-network.js` and `osm-loader.js` are both adapters now. Surface bands,
+junction-aware road-name selection, same-name feature stitching, graph
+construction and Dijkstra live in typed modules; so do the projection,
+Douglas-Peucker simplification, network recentring, snapping, start/finish
+selection and the slippy-tile grid (`osm/roadProjection.ts`, 6,542 real
+Amsterdam paths asserted against the algorithm it replaced).
 
-- `osm-loader.js` (404) — the Overpass client is an adapter and can stay, but
-  the parsing and normalisation half is untyped logic.
+What is left in `osm-loader.js` is Overpass mirrors, failover and `Image`
+loading — network I/O that can only be tested by going to the network.
 
-Also worth settling before either: `car.js` (189) and `track.js` (186) look
-superseded by the typed physics behind `test:canal-car` and by
-`road-network.js` respectively. Confirm and **delete** rather than port.
+**No un-migrated decision logic remains under this item.** What is left is
+item 8c's DOM work.
+
+Settled 2026-09-01: `track.js` was dead — `this.track` is only ever a
+`RoadNetwork`, and the `Track` class was constructed nowhere — so it is gone.
+`car.js` is **not** dead despite the same suspicion: `PlayerCar extends Car`,
+so it is live base physics and stays. The `Track` interface in
+`collaborators.ts` is structural and still describes `RoadNetwork`.
 
 Explicitly staying JavaScript: `game.js` (the orchestrator, and the integration
 hotspot CLAUDE.md reserves), `renderer.js`, `hud.js`, `vector-map.js`,
@@ -133,86 +205,51 @@ equivalent government geometry. The authoritative architecture, schemas,
 fallback ownership and migration gates are in
 [`BUILDING_RENDERER_DESIGN.md`](BUILDING_RENDERER_DESIGN.md).
 
+The fidelity ladder, source-resolution rules and measured implementation status
+are now kept in [`LOD.md`](LOD.md). The non-negotiable correction is that
+**manual OSM `building` and `building:part` geometry participates at every LoD
+tier**. BAG/3DBAG is the measured Dutch foundation, not permission to flatten a
+carefully mapped tower, wing, passage, courtyard or stacked part. Resolve the
+sources into one owner per building; never draw overlapping representations.
+
+Status: `feat/building-one-owner` continues the LoD1 city from
+`feat/lod1-building-city` on current `main`. Staged: 336,784 BAG-keyed buildings,
+AHN heights, z14 tiles. Actively fixing the two blockers before publish: (1)
+feed every OSM `building`/`building:part` so Magna Plaza, Waag and Oude Kerk keep
+hand-mapped massing; (2) raise tower-on-podium panden off the 70p roof percentile.
+Until then the live game still uses the three-extrusion overlay and still z-fights
+on complex parts.
+
 Do this as a gated progression rather than converting Amsterdam in one shot,
 ordered **completeness before fidelity** — every step that makes more of the
 city look like itself comes before any step that makes a few buildings look
 better. This is a P2 item on a board whose P1 tier is the learning model, so it
 will be interrupted; each step must be worth shipping alone.
 
-1. **Finish the BAG-keyed appearance table.** Question 1(a) is answered — the
-   hosted tiles carry a unique `NL.IMBAG.Pand.*` per feature, so appearance can
-   be joined to government geometry by identity (see `HISTORY.md`). What is
-   left of this step is item 8a: the appearance table itself, BAG-keyed,
-   quantised and trustworthy. Roof colour extraction is not in this lane.
-2. **Publish the complete city — one decision, then it is live.** The data and
-   the renderer are both done and verified against the staged tiles: 336,784
-   BAG-keyed buildings at AHN-measured heights, merged with the hand-mapped OSM
-   parts one winner per building, streamed as 382 z14 tiles. The map already
-   swaps to it, hides the basemap's `building-3d`, keys picking on the BAG id,
-   and falls back to today's source when the tiles are absent — which is the
-   current state. `npm run publish:lod1-city` reports what it would write and
-   refuses to write without `--confirm`.
-
-   **The open question is where the bytes live, and it is yours to answer.**
-   111 MB raw across 382 files, 15 MB gzipped over the wire. The largest file
-   tracked today is `streets-routing.json` at 10 MB, so committing this is
-   roughly 5x the repository's entire tracked data. Options, best first:
-   - commit gzipped tiles and serve them with `Content-Encoding: gzip` — 15 MB
-     in git rather than 111 MB, but needs a header from `server.ts` and from
-     Firebase Hosting, so it is a deploy change as well as a data one;
-   - commit the raw tiles, which is simplest and matches how every other
-     extract is stored;
-   - build tiles at deploy time from the 374 MB CityJSON cache, which keeps the
-     repository small and makes CI slow and dependent on data.3dbag.nl.
-
-   Once published, `tests/e2e/complete-city.spec.ts` stops skipping and starts
-   exercising the whole path on desktop and iPhone.
-
-   To look at it before deciding: `npm run dev`, then
-   `/canal-drive/building-compare.html`. Two synced maps, today on the left and
-   the staged city on the right, reading straight out of `staging/` so it works
-   unpublished. Use **Colour by height** — side by side the two draw nearly the
-   same massing, because OpenFreeMap already extrudes OSM footprints, and the
-   coverage figure is against our own 10,578-building source rather than
-   against what is on screen. Under one shared height ramp the difference is
-   plain: the left bands into flat plateaus where `levels * 3` and the 9 m
-   fallback repeat down a whole terrace, and it guesses several blocks too
-   tall.
-
-   **Two losses found by looking at the comparison page, and the first one
-   blocks publishing.**
-
-   *Hand-mapped 3D massing disappears outside the appearance extract.* The
-   ladder's OSM side is `buildings-colored.geojson`, and
-   `build-osm-building-appearance.ts` drops every building without a colour
-   tag — so it holds 10,578 of Amsterdam's buildings, not all of them. Every
-   `building:part` composition on a building with no appearance tag is
-   therefore invisible to the merge and collapses into flat BAG boxes. The
-   basemap does *not* lose them: OpenFreeMap carries `render_min_height`, so
-   `building-3d` draws raised parts city-wide (7 in a canal-ring viewport, 4 in
-   the Jordaan, values like 24→29 m and 72→82 m). Magna Plaza is the clearest
-   case — zero appearance-tagged OSM features within 60 m of it, so it becomes
-   48 plain boxes where today it is a stepped composition. The "1,448 stacked
-   parts" figure in `BUILDING_RENDERER_DESIGN.md` counts parts *within the
-   filtered file*, not in OSM. Fix: feed the ladder all OSM buildings and
-   `building:part`s, not the appearance-filtered extract.
-
-   *Towers on podiums are drawn at podium height.* `b3_h_dak_70p` is the 70th
-   percentile of roof points over the whole footprint, so a slim tower on a
-   large podium is measured at the podium. 201 panden are drawn more than 10 m
-   below their own AHN ridge, 66 by more than 20 m and 21 by more than 40 m;
-   the worst is drawn at 20.4 m against a 110.8 m ridge. That is 0.06% of the
-   city and close to 100% of its skyline — the Zuidas view shows a tower
-   cluster flattened into one orange slab. `b3_h_dak_max` and `b3_h_nok` are
-   both already in the CityJSON, so the fix is a rule, not more data: prefer
-   the ridge where it stands far above the percentile, or split the pand.
-
-   Still open after that, and none of it blocking: roof colour is codex's lane,
-   so most of the city currently takes the theme's height ramp rather than a
-   measured colour; tier-4 OSM structures outside the fetched area carry
-   `bagConsulted: false` and could be dropped; and the working set reaches 19
-   tiles and ~66,000 features on a wide desktop viewport, which is worth
-   watching on a real phone before calling the budget settled.
+1. **Fix the two measured LoD1 regressions.** Feed the resolver every OSM
+   building and `building:part`, independently of appearance tags, and preserve
+   manual compositions such as Magna Plaza. Then detect tower-on-podium panden
+   instead of flattening them to the ordinary roof percentile. Pin both with
+   named comparison fixtures.
+2. **Ship the complete LoD1 city.** The city is gray because only 10,578
+   buildings have appearance at all, against 336,784 BAG/3DBAG buildings in the
+   staged drivable-area city — coverage, not fidelity.
+   Publish a complete BAG-keyed footprint + 3DBAG height + measured roof colour
+   source on the tile grid detailed geometry will later use, render it with
+   ordinary fill-extrusions, and delete `building-3d`, `osm-colored-buildings`,
+   `osm-colored-building-roofs` and the height-offset stack that keeps three
+   coplanar extrusions from z-fighting. That stack is now partly defused rather
+   than fixed: `basemapBuildingFilter` hides the basemap copy of any building
+   the extract carries (by OSM id), and a runtime proximity scan hides the
+   residual pairs the two pipelines hold under different ids (centroid within
+   3 m). One owner per building is still the real fix. Heights stop being
+   guessed in the same change: `build-osm-building-appearance.ts:32` currently falls back to
+   `levels * 3` or a flat 9 m, so much of the skyline is invented, and AHN-derived
+   3DBAG heights replace it everywhere. Largest visible win in the whole item,
+   no new renderer, and it is the fallback every later step needs. If step 1(a)
+   succeeded, this can ship as our LoD1 city underneath the existing hosted
+   LoD2.2 meshes, recoloured — high-quality existing geometry plus our own
+   measurements, no compiler written yet.
 3. **Rijksmuseum proof.** Fetch a tightly clipped, pinned 3DBAG LoD2.2 source
    around the Rijksmuseum and export an owned glTF. Confirm that the result
    preserves building parts, semantic roof/wall surfaces, the courtyard and the
@@ -263,12 +300,15 @@ the custom-layer spike and its measurements. That result decides whether the
 production format is tiled glTF, 3D Tiles, or signature-landmark GLBs; it must
 not introduce a second map or a runtime dependency on OSM Buildings.
 
-**11. Let the game actually play Utrecht.**
-The extractor is city-agnostic and Utrecht is built and checked (11,801
-routing ways, 380 landmarks). The runtime is not: `osm-loader.js` hardcodes
-`../data/extracts/amsterdam/${dataset}.json`, so there is no way to reach the
-second city from the game. Needs a city selector, a cityId that flows through
+**11. Let the game actually play a second city.**
+The extractor is city-agnostic and four cities are now built and checked:
+Amsterdam, Utrecht (11,801 routing ways, 380 landmarks), Rotterdam (31,810
+routing ways, 22,559 appearance-backed buildings) and Den Haag (17,920 /
+27,576). The runtime is not: `osm-loader.js` hardcodes
+`../data/extracts/amsterdam/${dataset}.json`, so there is no way to reach any
+of them from the game. Needs a city selector, a cityId that flows through
 to review keys, and a basemap origin that is not assumed to be Amsterdam's.
+Rotterdam and Den Haag have had no landmark-text pass at all yet.
 One data gap behind it: 275 of Utrecht's 380 landmarks still have no text at
 all, so under the a9b21c7 rule the city is thin rather than noisy. Its bridges
 are built (300 resolved into 386 crossings) and its cards are English as far
@@ -342,33 +382,20 @@ A bonus on OSM ways with separated cycle infrastructure, tuned so it reinforces
 safe Amsterdam route knowledge without encouraging detours.
 
 **14. Finish the Storybook workbench.**
-Extract the remaining canvas card/HUD renderers behind small props-driven
-adapters, with fixtures for recall feedback, neighborhood entry (photo and
-fallback), landmark trivia, stacked notices and every finish-card combination;
-pair them with screenshot regressions. Follows naturally from item 3 — the same
-extraction serves both.
-
-**14b. Playwright's phone projects cannot reach fixed overlays.**
-Chromium's iPhone emulation gives `/canal-drive/` a 613×1044 layout viewport
-inside a 390×664 device viewport, even though the page's `<meta name=viewport>`
-is a correct `width=device-width, initial-scale=1.0`. Input coordinates are
-therefore unreachable below y≈664, so a tap cannot hit the lower half of any
-fixed overlay, and canvas hit targets do not map to tappable points at all.
-`tests/e2e/landmark-panel.spec.ts` works around it by resizing the desktop
-project to 390×664, which is a true narrow layout.
-
-Find the cause before writing more mobile specs against overlays — it is either
-the launch config's local-Chrome `executablePath` diverging from the bundled
-build, or something on the page forcing a layout width. Until then, treat the
-`iphone` project as unable to click fixed overlays.
+Ten phone states exist now — the driving HUD (idle, steering, mid-question,
+small phone, landscape), the route briefing, the recall prompt, the arrival
+card, the settings panel and the expanded article — driven by a
+`canalRecallForceTouch` override, because the viewport addon alone only makes a
+small desktop window and never produces a d-pad. What is left is the rest of
+item 14's original scope: props-driven adapters for neighborhood entry (photo
+and fallback), stacked notices and every finish-card combination, paired with
+screenshot regressions. Follows naturally from item 3 — the same extraction
+serves both.
 
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in
 `scripts/check-canal-car.ts`. Ongoing, not a milestone: every geographic failure
 reported from play should land here before it is called fixed.
-
-**16. The geolocated fact pipeline** described in `FACT_PIPELINE.md`. Landmark
-cards would prefer curated, attributed facts over raw Wikipedia ledes.
 
 ---
 
@@ -405,8 +432,38 @@ shadowed or mixed samples and compare a muted median wall colour against the
 current OSM-tag fallback before attempting a citywide pass. Straight-down roof
 imagery cannot measure building sides.
 
-**22. Signature landmark models** for the handful of buildings worth
-recognising on sight.
+**22. Signature landmark models — re-enable once cheap enough, then finish the set.**
+Thirteen buildings are built and placed; the demo page still draws them. They are
+**disabled in the live game** after a playtest: thirteen meshopt GLBs on the
+shared MapLibre/Three canvas were too slow, and Centraal arrived with its
+SketchUp ground plane still attached. Licence follow-up stays parked by owner
+decision. Remaining work:
+
+*Re-enable behind a measured gate.* Load one model (Palace or Centraal) first,
+strip residual ground planes in the build, measure desktop and mobile frame
+time, then widen.
+
+*Facade bearings are unverified.* `FACADE_BEARINGS` records which way each
+building faces and only the Palace's was checked. They do not affect placement —
+a surveyed model arrives correctly turned — but they are reported in the UI as
+fact. Pin them against each footprint's long axis in a check script.
+
+*Widen the set.* `search-3dwarehouse-landmarks.ts` lists 46 further landmarks
+with published coordinates across the four cities — Euromast, Dom Tower,
+Rietveld Schröder House, Binnenhof — so finishing the set is mostly mechanical
+once cost is acceptable.
+
+**25. Google's photorealistic mesh for the distant skyline only.** The spike in
+`google-tiles-spike.html` settled the main question — Google's tiles are
+unusable at 1.7 m and lose the building semantics the game teaches with, so the
+near corridor stays 3DBAG (see `HISTORY.md`). What it did not settle is whether
+the mesh earns its place *above* the corridor: city overview, route preview and
+the far skyline, where it looked excellent and where nothing needs to be
+clickable. That would keep highlightable geometry where the player interacts and
+buy free realism where they only look. Blocked on wanting it: it makes the core
+view a metered, online-only dependency that Google's terms forbid caching,
+against the standing preference for versioned local extracts. Re-run the spike
+with `npm run build:google-tiles-spike` before costing it.
 
 **23. Authentic retro rendering**, and **24. the optional arcade layer.**
 Both are large presentation bets with long-form design notes preserved at the

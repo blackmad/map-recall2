@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-01T15:49:53.306Z",
+  "title": "Amsterdam RGB point-cloud roof demo",
+  "candidateCityBuildings": 42534,
+  "sampledBuildings": 20,
+  "buildingsWithAgreedRgb": 18,
+  "semanticRoofPlanes": 143,
+  "independentlyAgreedPlanes": 71,
+  "rejectedPlanes": 72,
+  "pointCloudTiles": 23,
+  "source": {
+    "name": "PDOK 3D Basisvoorziening",
+    "collection": "digitaaloppervlaktemodel_20cm",
+    "license": "CC BY 4.0",
+    "imageryYear": 2025,
+    "crs": "EPSG:7415",
+    "catalog": "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1/collections/digitaaloppervlaktemodel_20cm"
+  },
+  "policy": {
+    "planeBandMetres": 0.12,
+    "maximumModalOffsetSearchMetres": 1,
+    "minimumPoints": 30,
+    "minimumGridCoverage": 0.18,
+    "cellSizeMetres": 0.5,
+    "maximumCrossSourceRgbDistance": 20,
+    "allOutputsRequireHumanReview": true
+  },
+  "caveat": "RGB DSM observes roofs/top surfaces, not vertical façades. All highlighted planes remain machine proposals."
+}

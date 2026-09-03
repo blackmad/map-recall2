@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Albert Heijn",
+    "wikidata": "Q1653985",
+    "description": "Dutch supermarket chain founded in 1887",
+    "officialWebsite": "https://www.ah.nl/",
+    "logo": {
+      "id": "brand-q1653985",
+      "file": "Albert Heijn Logo.svg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Albert_Heijn_Logo.svg/330px-Albert_Heijn_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "source": "https://commons.wikimedia.org/wiki/File:Albert%20Heijn%20Logo.svg"
+    }
+  },
+  {
+    "name": "Albert Heijn to go",
+    "wikidata": "Q77971185",
+    "description": "supermarket chain of Ahold Delhaize",
+    "officialWebsite": "https://www.ah.nl/informatie/app/ah-to-go"
+  }
+]

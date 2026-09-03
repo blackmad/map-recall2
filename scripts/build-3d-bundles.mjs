@@ -33,6 +33,20 @@ const targets = [
     out: 'public/canal-drive/js/player-vehicles.bundle.js',
     globalName: 'CanalRecallVehicles',
   },
+  {
+    entry: 'public/canal-drive/js/signature-landmarks-source.js',
+    out: 'public/canal-drive/js/signature-landmarks.bundle.js',
+    globalName: 'CanalRecallSignature3D',
+  },
+  {
+    // ESM, and so no globalName: three's DRACOLoader resolves its decoder paths
+    // at module top level via `new URL(..., import.meta.url)`, which esbuild
+    // stubs out of an IIFE and throws "Invalid URL" before any code runs. The
+    // module publishes its own global on the way out instead.
+    entry: 'public/canal-drive/js/google-tiles-source.js',
+    out: 'public/canal-drive/js/google-tiles.bundle.js',
+    format: 'esm',
+  },
 ];
 
 for (const target of targets) {
@@ -40,8 +54,8 @@ for (const target of targets) {
     entryPoints: [target.entry],
     outfile: target.out,
     bundle: true,
-    format: 'iife',
-    globalName: target.globalName,
+    format: target.format || 'iife',
+    ...(target.globalName ? { globalName: target.globalName } : {}),
     minify: true,
     plugins: [shareThree],
     logLevel: 'warning',

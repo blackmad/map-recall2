@@ -60,7 +60,26 @@ export function stitchOverlayPaths(
   paths: OverlayPoint[][],
   tolerance: number = STITCH_TOLERANCE,
 ): OverlayPoint[][] {
-  const usable = paths.filter(path => path && path.length > 1);
+  // The routing extract can contain a way twice: once as a path on the
+  // grouped named feature and once as its original feature. If both copies
+  // reach the endpoint walk, the second one looks like a continuation in the
+  // opposite direction. The chain doubles back over itself and the actual
+  // next fragment is left as another round-capped feature — the row of
+  // blue/yellow "pills" seen on Singel.
+  //
+  // Remove only exact duplicates (also when digitised in reverse). Nearby
+  // parallel carriageways and genuinely different paths sharing endpoints
+  // must remain distinct.
+  const seenPaths = new Set<string>();
+  const usable = paths.filter(path => {
+    if (!path || path.length < 2) return false;
+    const forward = path.map(point => `${point.x},${point.y}`).join(';');
+    const reverse = path.slice().reverse().map(point => `${point.x},${point.y}`).join(';');
+    const key = forward < reverse ? forward : reverse;
+    if (seenPaths.has(key)) return false;
+    seenPaths.add(key);
+    return true;
+  });
   if (usable.length < 2) return usable.map(path => path.slice());
 
   const cell = (point: OverlayPoint) => `${Math.round(point.x / tolerance)},${Math.round(point.y / tolerance)}`;

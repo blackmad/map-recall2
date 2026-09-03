@@ -34,8 +34,17 @@ import {
   openNotice,
   type NoticeHold,
 } from './landmarkNotice';
+import {
+  buildFactIndex,
+  commitShownFact,
+  factCardText,
+  loadRotationState,
+} from '../facts/factStore';
+import type { FactsFile } from '../facts/factTypes';
+import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
+import { buildRouteKnowledgeIndex, routeKnowledgeFor } from './routeKnowledge';
 
 /** Seconds a clicked card stays up. A drive-by card is held by proximity
  *  instead — see `landmarkNotice.ts`. */
@@ -47,12 +56,22 @@ const CLICK_SELECT_RADIUS = 120;
 const DRIVE_BY_RADIUS = 300;
 
 async function readJson<T>(response: Response, fallback: T): Promise<T> {
-  return response.ok ? (await response.json()) as T : fallback;
+  if (!response.ok) return fallback;
+  try {
+    return (await response.json()) as T;
+  } catch {
+    // Vite/Express history fallbacks can answer a missing optional JSON file
+    // with index.html and HTTP 200. Optional enrichment must never take the
+    // required landmark and boundary data down with it.
+    return fallback;
+  }
 }
 
 export interface GameLandmarkRuntime extends LandmarkHost {}
 
 export class GameLandmarkRuntime {
+  _streetSummaryRequests?: Set<string>;
+
   // ---- Clicking a building ----
 
   _inspectBuildingAt(clientX: number, clientY: number): void {
@@ -88,14 +107,44 @@ export class GameLandmarkRuntime {
   }
 
   /** Open a landmark card, saying why it is up — which is what decides when it
-   *  comes down. */
+   *  comes down.
+   *
+   *  Both ways a card can open — clicking a building and driving past one —
+   *  come through here, which is why the fact rotation is applied at this seam
+   *  rather than at either caller. It is also the first moment the card is
+   *  certain to be shown, and a fact must not be spent on a card that never
+   *  appears: `factCardText` chooses, and `commitShownFact` is what marks the
+   *  sentence as told. */
   _showLandmarkNotice(notice: LandmarkNotice, hold: NoticeHold): void {
-    this._landmarkNotice = notice;
+    this._landmarkNotice = this._withRotatedFact(notice);
     this._landmarkNoticeHold = hold;
     this._landmarkNoticeState = openNotice();
     // Start transparent so the card fades in, and so a new card never inherits
     // the alpha the previous one happened to be at.
     this._landmarkNoticeAlpha = 0;
+  }
+
+  /**
+   * Replace the card's lede with the next fact in this feature's rotation.
+   *
+   * Returns the card unchanged when the feature has no generated facts, which
+   * is the normal case until a batch has been reviewed and published — the
+   * Wikipedia lede is the fallback, not an error.
+   */
+  _withRotatedFact(notice: LandmarkNotice): LandmarkNotice {
+    if (!this._facts || !this._facts.size) return notice;
+    const chosen = factCardText(notice.id, this._facts, this._factRotation);
+    if (!chosen) return notice;
+    this._commitFact(chosen.choice);
+    return { ...notice, ...chosen.text };
+  }
+
+  _commitFact(choice: FactChoice): void {
+    this._factRotation = commitShownFact(
+      typeof localStorage === 'undefined' ? null : localStorage,
+      this._factRotation,
+      choice,
+    );
   }
 
   _clearLandmarkNotice(): void {
@@ -176,6 +225,46 @@ export class GameLandmarkRuntime {
     landmark.extractLang = 'en';
   }
 
+  async _fetchEnglishStreetSummary(entry: StreetKnowledgeEntry): Promise<{ detail: string; longDetail: string } | null> {
+    const wikidata = entry.wikidata;
+    if (!wikidata) return null;
+
+    // Resolve the English article title through Wikidata, then fetch the
+    // English intro summary.
+    const entity = new URL('https://www.wikidata.org/w/api.php');
+    entity.search = new URLSearchParams({
+      action: 'wbgetentities',
+      format: 'json',
+      props: 'sitelinks',
+      sitefilter: 'enwiki',
+      ids: wikidata,
+      origin: '*',
+    }).toString();
+
+    const entityResponse = await fetch(entity, { headers: { accept: 'application/json' } });
+    if (!entityResponse.ok) return null;
+
+    const data = await entityResponse.json() as {
+      entities?: Record<string, { sitelinks?: { enwiki?: { title?: string } } }>;
+    };
+    const title = data?.entities?.[wikidata]?.sitelinks?.enwiki?.title || '';
+    if (!title) return null;
+
+    const summary = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, '_'))}`;
+    const response = await fetch(summary, { headers: { accept: 'application/json' } });
+    if (!response.ok) return null;
+
+    const summaryData = await response.json() as { extract?: string };
+    if (!summaryData?.extract) return null;
+
+    // Update the entry so the next render uses the cached extract without
+    // another request.
+    entry.wikipediaExtract = summaryData.extract;
+
+    const split = splitDetail(summaryData.extract);
+    return { detail: split.detail, longDetail: split.longDetail };
+  }
+
   /** The extract carries a Wikipedia URL for 236 of its 300 landmarks, which
    *  the canvas card cannot make clickable — so it is offered on a key. */
   _openLandmarkArticle(): void {
@@ -184,20 +273,46 @@ export class GameLandmarkRuntime {
     window.open(notice.wikipediaUrl, '_blank', 'noopener');
   }
 
-  _showStreetKnowledge(name: string): void {
+  _showStreetKnowledge(name: string, type: 'street' | 'water' = 'street'): void {
     const key = this._normaliseCanalName(name);
-    const entry = this.streetKnowledge.get(key);
+    const entry = routeKnowledgeFor(this.streetKnowledge, name, type,
+      (value) => this._normaliseCanalName(value));
     if (!entry) return;
+    const noticeId = entry.id || `${type}-knowledge:${key}`;
     const split = splitDetail(entry.wikipediaExtract || '');
     this._showLandmarkNotice({
-      id: `street-knowledge:${key}`,
+      id: noticeId,
       name: entry.name || name,
       type: 'street',
       detail: split.detail,
       longDetail: split.longDetail,
       wikipediaUrl: entry.wikipediaUrl || '',
-      extractLang: 'en',
+      extractLang: entry.wikipediaExtractLang || 'en',
     }, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS });
+
+    // Many streets already have `wikipediaUrl` but not `wikipediaExtract`.
+    // If we have a wikidata id, fetch an English intro summary on demand and
+    // patch the open card.
+    if (!entry.wikipediaExtract && entry.wikidata && entry.wikipediaUrl) {
+      this._streetSummaryRequests = this._streetSummaryRequests || new Set();
+      if (this._streetSummaryRequests.has(noticeId)) return;
+      this._streetSummaryRequests.add(noticeId);
+      this._fetchEnglishStreetSummary(entry)
+        .then((split2) => {
+          if (!split2) return;
+          if (!this._landmarkNotice || this._landmarkNotice.id !== noticeId) return;
+          // If trivia facts have already replaced the card body, do not
+          // overwrite them with the Wikipedia intro.
+          if (this._landmarkNotice.detail || this._landmarkNotice.longDetail) return;
+          this._landmarkNotice = {
+            ...this._landmarkNotice,
+            detail: split2.detail,
+            longDetail: split2.longDetail,
+            extractLang: 'en',
+          };
+        })
+        .catch(() => { /* keep link-only card on failure */ });
+    }
   }
 
   // ---- Loading the extract ----
@@ -213,7 +328,9 @@ export class GameLandmarkRuntime {
       const url = (name: string) => new URL(`../data/extracts/amsterdam/${name}`, base);
       const [
         landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse,
-        bridgeResponse, crossingResponse, streetKnowledgeResponse, brandedPoiResponse,
+        bridgeResponse, crossingResponse, streetKnowledgeResponse, streetResponse,
+        waterResponse, brandedPoiResponse,
+        factResponse,
       ] = await Promise.all([
         fetch(url('landmarks.json')),
         fetch(url('boundaries.json')),
@@ -221,11 +338,17 @@ export class GameLandmarkRuntime {
         fetch(url('bridges.json')),
         fetch(url('bridge-crossings.json')),
         fetch(url('street-knowledge.json')),
+        fetch(url('streets.json')),
+        fetch(url('water.json')),
         fetch(url('branded-pois.json')),
+        // Generated trivia. Absent until a batch has been reviewed and
+        // published, and the cards fall back to the Wikipedia lede when it is.
+        fetch(url('facts.json')).catch(() => new Response('null', { status: 404 })),
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
 
-      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex, streetKnowledge, brandedPois] =
+      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex,
+        streetKnowledge, streetFeatures, waterFeatures, brandedPois, factsFile] =
         await Promise.all([
           landmarkResponse.json() as Promise<LandmarkFeature[]>,
           boundaryResponse.json() as Promise<BoundaryFeature[]>,
@@ -233,11 +356,19 @@ export class GameLandmarkRuntime {
           readJson<BridgeFeature[]>(bridgeResponse, []),
           readJson<BridgeCrossingIndex>(crossingResponse, { bridges: {} }),
           readJson<StreetKnowledgeEntry[]>(streetKnowledgeResponse, []),
+          readJson<StreetKnowledgeEntry[]>(streetResponse, []),
+          readJson<StreetKnowledgeEntry[]>(waterResponse, []),
           readJson<unknown[]>(brandedPoiResponse, []),
+          readJson<FactsFile | null>(factResponse, null),
         ]);
 
-      this.streetKnowledge = new Map(
-        streetKnowledge.map(entry => [this._normaliseCanalName(entry.name), entry]),
+      this._facts = buildFactIndex(factsFile);
+      this._factRotation = loadRotationState(
+        typeof localStorage === 'undefined' ? null : localStorage);
+
+      this.streetKnowledge = buildRouteKnowledgeIndex(
+        streetKnowledge, streetFeatures, waterFeatures,
+        (name) => this._normaliseCanalName(name),
       );
       this.vectorMap.setPlaces(features, boundaries);
       this.vectorMap.setBrandedPois(brandedPois);
@@ -396,23 +527,30 @@ export class GameLandmarkRuntime {
       name: lm.name,
       body: lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood),
       category: lm.type ? lm.type.toUpperCase() : '',
+      factKind: lm.factKind,
       extractLang: lm.extractLang,
       hasArticle: !!lm.wikipediaUrl,
       hasImage,
-    }, measure);
+    }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
 
     // Trivia belongs at the bottom of the screen. Across the top it sat exactly
     // where the player is looking to see what is coming, so a card about a
     // church already passed hid the junction ahead.
     const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
-    const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({
+    const bottomLayout = window.CanalRecallUi.hudLayout({
+      viewport: this.viewport,
       tripWidth: 180, postcardVisible: postcardShowing,
       landmarkWidth: card.width, landmarkHeight: card.height,
+      feedbackVisible: !!this.quizFeedback,
+      neighborhoodVisible: !!this.currentNeighborhood,
+      minimapVisible: this.showMiniMap,
       zoomVisible: this._zoomBadgeTimer > 0,
       controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
     });
-    const cardX = bottomLayout ? bottomLayout.landmark.x : CANVAS_W / 2 - card.width / 2;
-    const cardY = bottomLayout ? bottomLayout.landmark.y : CANVAS_H - card.height - 30;
+    // On a phone the card spans the width it is given rather than its measured
+    // desktop width, so a 480 px card cannot hang off a 390 px screen.
+    const cardX = bottomLayout.landmark.x;
+    const cardY = bottomLayout.landmark.y;
 
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
@@ -435,7 +573,11 @@ export class GameLandmarkRuntime {
     if (!lm || !panel) return false;
 
     const cards = window.CanalRecallCards;
-    const body = lm.longDetail || lm.detail
+    // One fact per paragraph when these are generated facts: the panel is
+    // `pre-wrap`, and four unrelated sentences run together read as one
+    // rambling one.
+    const body = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join('\n\n') : '')
+      || lm.longDetail || lm.detail
       || cards.placeOnlyDetail(lm.type, this.currentNeighborhood);
 
     const badges = panel.querySelector('#landmark-panel-badges') as HTMLElement;
@@ -447,6 +589,7 @@ export class GameLandmarkRuntime {
       badges.appendChild(chip);
     };
     if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, ' '), 'category');
+    if (lm.factKind) pushBadge(lm.factKind.toUpperCase(), 'fact');
     if (lm.extractLang && lm.extractLang !== 'en') {
       // Say plainly that this is not the English article rather than leaving
       // the reader to work out why the text is Dutch.
@@ -493,11 +636,17 @@ export class GameLandmarkRuntime {
     const hasImage = !!(img && img.complete && img.naturalWidth > 0);
     const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
     const card = window.CanalRecallCards.measurePostcard(
-      { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage }, measure);
+      { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage }, measure,
+      window.CanalRecallUi.postcardWidth(this.viewport));
 
-    const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({ tripWidth: 180 });
-    const cardX = bottomLayout ? bottomLayout.postcard.x : CANVAS_W - card.width - 20;
-    const baseCardY = bottomLayout ? bottomLayout.postcard.y : CANVAS_H - card.height - 76;
+    const bottomLayout = window.CanalRecallUi.hudLayout({
+      viewport: this.viewport, tripWidth: 180,
+      postcardHeight: card.height,
+      neighborhoodVisible: !!this.currentNeighborhood,
+      minimapVisible: this.showMiniMap,
+    });
+    const cardX = bottomLayout.postcard.x;
+    const baseCardY = bottomLayout.postcard.y;
     // Slide up into place rather than appearing; the offset is animation, not
     // layout, so it is applied after the band has been arbitrated.
     const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.3);

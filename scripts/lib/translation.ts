@@ -156,3 +156,106 @@ export function droppedProperNames(
   }
   return [...candidates].filter((name) => inSource(name) && !inTranslation(name)).sort();
 }
+
+/**
+ * Invented capitalised tokens used to hold a place's name through a
+ * translation.
+ *
+ * They have to look like proper nouns, because the translator uses the shape
+ * of a word to parse the sentence around it: a token that does not read as a
+ * name degrades the rest of the sentence. Measured with `trn --quality high`,
+ * where a name-shaped placeholder came back byte-identical and correctly cased
+ * in every position tried — subject, possessive, after a preposition — while a
+ * noun-shaped one ("Qplaats") pulled "ophaalbrug" from "lift bridge" to
+ * "pick-up bridge" in the same sentence.
+ *
+ * They also have to be absent from Dutch and English, or protection would
+ * capture real words. Nothing here is a word in either language.
+ */
+const NAME_PLACEHOLDERS = [
+  'Zarvix', 'Qivron', 'Trelvo', 'Ondrek', 'Yspara', 'Duvarn', 'Feltrix', 'Malbeth',
+] as const;
+
+/** A whole-word matcher for `name`, Unicode-aware on both sides. */
+function wholeWord(name: string, flags: string): RegExp {
+  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, flags);
+}
+
+/** A source text with its place names held out of the translator's reach. */
+export interface ProtectedSource {
+  /** The source with every protected name replaced by a placeholder. */
+  text: string;
+  /** The names actually substituted, longest first. Empty means nothing was
+   *  found to protect, and the translation is exactly as exposed as before. */
+  protectedNames: string[];
+  /** Put the real names back into a translation of `text`. */
+  restore(translated: string): string;
+}
+
+/**
+ * Hold a feature's own name out of the translation, then put it back.
+ *
+ * `droppedProperNames` refuses a translation that renamed the place, which is
+ * the right default and fires on every name built from a Dutch common noun —
+ * Aluminiumbrug, Oude Lutherse Kerk, Beltbrug. Refusing them costs the lede:
+ * the feature falls back to a Wikidata one-liner that names no canal, no
+ * street and no year. The fix is not to weaken the guard but to make it
+ * unnecessary, by substituting a placeholder for the name before translating
+ * and restoring it after. The guard still runs afterwards, on the restored
+ * text, as the check that this worked.
+ *
+ * Only case-sensitive whole-word occurrences are protected, and that is
+ * deliberate on both counts. Whole-word, because "brug" inside
+ * "Aluminiumbrug" is not a separate name. Case-sensitive, because a Dutch lede
+ * spells the place's name with its capital and uses the bare common noun
+ * afterwards — "De Oude Lutherse Kerk … de kerk werd gebouwd" — and protecting
+ * that second, lowercase "kerk" would leave "Kerk was built" in the English.
+ * Restoring the capitalised occurrence is enough to satisfy the guard for
+ * every token of the name.
+ *
+ * A name that never appears in its own lede protects nothing and is left to
+ * the guard, which is the honest outcome: there was no name in the source to
+ * keep.
+ */
+export function protectNames(source: string, names: string[]): ProtectedSource {
+  const candidates: string[] = [];
+  for (const name of names) {
+    if (name.length > 3 && wholeWord(name, 'u').test(source)) {
+      candidates.push(name);
+      continue;
+    }
+    // The whole name is not in the lede — "Kerk van de Heilige Familie" written
+    // as "de Heilige Familie". Fall back to the significant parts, which are
+    // the same tokens the guard judges.
+    for (const token of name.split(/[\s-]+/)) {
+      if (token.length > 3 && token[0] === token[0].toLocaleUpperCase()
+        && wholeWord(token, 'u').test(source)) candidates.push(token);
+    }
+  }
+
+  // Longest first, so a name is substituted before a token nested inside it.
+  const ordered = [...new Set(candidates)].sort((a, b) => b.length - a.length);
+  const substitutions: { placeholder: string; name: string }[] = [];
+  let text = source;
+  for (const name of ordered) {
+    const placeholder = NAME_PLACEHOLDERS
+      .filter((token) => !source.includes(token))
+      .at(substitutions.length);
+    if (!placeholder) break; // More names than placeholders: protect what we can.
+    const next = text.replace(wholeWord(name, 'gu'), placeholder);
+    if (next === text) continue; // Already consumed by a longer name.
+    text = next;
+    substitutions.push({ placeholder, name });
+  }
+
+  return {
+    text,
+    protectedNames: substitutions.map((entry) => entry.name),
+    // Case-insensitive on the way back: the translator is free to lowercase a
+    // placeholder it read as a common noun, and the name still belongs there.
+    restore: (translated: string) => substitutions.reduce(
+      (result, entry) => result.replace(wholeWord(entry.placeholder, 'giu'), entry.name),
+      translated),
+  };
+}

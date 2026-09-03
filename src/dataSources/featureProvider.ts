@@ -1,6 +1,8 @@
 import { AdministrativeArea, FeatureCategory, LoadingProgress, LocationScope, StreetFeature } from '../types';
 import { calculateHaversineDistanceMeters } from '../utils/geo';
 import { fetchCategorySpecificOSMFeatures } from '../utils/osm';
+import { attachLocalFacts } from '../mapRecall/localFacts';
+import type { FactsFile } from '../canalRecall/facts/factTypes';
 
 interface FeatureRequest {
   cityId: string;
@@ -31,6 +33,7 @@ interface ExtractManifest {
 let amsterdamManifestPromise: Promise<ExtractManifest | null> | null = null;
 const partitionPromises = new Map<string, Promise<StreetFeature[]>>();
 let amsterdamAreasPromise: Promise<AdministrativeArea[]> | null = null;
+let amsterdamFactsPromise: Promise<FactsFile | null> | null = null;
 
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}data/extracts/${path}`;
 
@@ -48,7 +51,11 @@ async function loadAmsterdamExtract(category: FeatureCategory): Promise<StreetFe
       return response.json();
     }));
   }
-  return partitionPromises.get(key)!;
+  const features = await partitionPromises.get(key)!;
+  amsterdamFactsPromise ||= fetch(assetUrl('amsterdam/facts.json'))
+    .then(async (response) => response.ok ? response.json() as Promise<FactsFile> : null)
+    .catch(() => null);
+  return attachLocalFacts(features, await amsterdamFactsPromise, 'amsterdam');
 }
 
 function pointInRing([lat, lon]: [number, number], ring: [number, number][]): boolean {
