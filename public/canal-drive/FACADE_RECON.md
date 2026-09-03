@@ -12,14 +12,59 @@ that document says so itself.
 Regenerate with:
 
 ```bash
-npx tsx scripts/facade-twin/build-pilot-boundary.ts   # boundary + staging geojson
-npx tsx scripts/facade-twin/build-pand-inventory.ts   # RECON-1
-npx tsx scripts/facade-twin/build-massing-join.ts     # RECON-2
-npx tsx scripts/facade-twin/build-monument-join.ts    # RECON-3
+npm run recon:facade                                        # every declared area
+npx tsx scripts/facade-twin/recon.ts --area=amsterdam-grachtengordel-west
+npx tsx scripts/facade-twin/recon.ts --area=... --refresh   # bypass caches
 ```
 
-Outputs land in `public/data/extracts/amsterdam/staging/facade-twin/`. Nothing
-is published to a versioned extract yet, by design.
+Outputs land in
+`public/data/extracts/amsterdam/staging/facade-twin/<areaId>/{recon.json,boundary.geojson}`.
+Nothing is published to a versioned extract yet, by design.
+
+## The pipeline is source-adapter driven, not Amsterdam-shaped
+
+The first cut of this welded the BAG endpoint, the 3DBAG endpoint, the RCE
+register and a ring of five named canals straight into four scripts. That was
+the wrong shape, and not merely untidy: **BAG, 3DBAG and the Rijksmonumenten
+register are national registers.** A pipeline welded to one city throws away the
+fact that Utrecht, Rotterdam and Den Haag are already covered by exactly the
+same sources, and it has no way to express what a city outside the Netherlands
+would need instead.
+
+So reconnaissance is now written against three narrow interfaces in
+`src/canalRecall/facade/sources.ts`, each answering one question a façade
+reconstruction has to ask of the world:
+
+| interface | question |
+|---|---|
+| `BuildingRegistry` | which buildings are here, and what is each one called? |
+| `MassingSource` | how tall is it, what shape is its roof, and how much do you trust your own answer? |
+| `HeritageSource` | has anyone described this building's façade in words? |
+
+plus `ProjectedCrs`, because façade measurement is metric work and every city
+declares the metre-based CRS its own registers are published in. The Dutch
+implementations live in `sources/netherlands.ts`; adding a Dutch city is an
+entry in `areas.ts` and nothing else.
+
+A survey area is likewise declared data, in one of two shapes — a **corridor**
+ring that follows named linear features with a per-leg outward offset (what the
+canal ring needs), or an explicit **polygon** (for areas whose edges are not
+linear features). Both resolve to a ring in the city's CRS with membership by
+footprint intersection.
+
+**Verified by running it elsewhere.** `utrecht-binnenstad-north` — the
+Oudegracht wharf-canal fabric, declared as a polygon — runs through identical
+code: 2,378 buildings, 2,171 matched to 3DBAG, 617 heritage listings, median
+plot width 6.6 m. No Amsterdam-specific code was involved, and the Amsterdam
+numbers reproduced exactly across the refactor.
+
+One Utrecht number corroborates the central Amsterdam finding below: pitched-roof
+reconstruction error there is **0.38 m** median against Amsterdam's **0.60 m**.
+The canal ring's roofs really are unusually complex, rather than 3DBAG being
+uniformly weak on pitched roofs.
+
+Amsterdam is the focus; the other area exists to keep the pipeline honest about
+what is city-specific and what is not.
 
 ---
 
