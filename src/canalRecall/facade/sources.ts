@@ -189,6 +189,41 @@ export interface SemanticsSource {
   fetchSemantics(bbox: BboxLngLat): Promise<SemanticsRecord[]>;
 }
 
+/**
+ * A posed street-level image that may show a façade.
+ *
+ * Position and orientation matter more than the pixels here: whether an image
+ * can be *measured* is decided by where the camera stood relative to the wall,
+ * and that can be worked out before a single byte of image is downloaded. So
+ * coverage is computed from geometry, and imagery is fetched only for the
+ * elevations that geometry says are worth fetching.
+ */
+export interface PanoramaView {
+  panoramaId: string;
+  lngLat: LngLat;
+  /** Camera height in the source's own vertical datum. */
+  cameraHeight: number;
+  /** Degrees clockwise from north that image column zero faces. */
+  headingDeg: number;
+  pitchDeg: number;
+  rollDeg: number;
+  capturedAt: string;
+  /** Full equirectangular image, highest resolution offered. */
+  imageUrl: string;
+  /** Lower-resolution equirectangular, for cheap checks. */
+  previewUrl: string | null;
+  missionYear: string | null;
+}
+
+export interface ImagerySource {
+  readonly id: string;
+  readonly name: string;
+  readonly license: string;
+  /** Attribution string that must accompany any derived measurement. */
+  readonly attribution: string;
+  fetchViews(bbox: BboxLngLat, options?: { capturedAfter?: string }): Promise<PanoramaView[]>;
+}
+
 /** Everything reconnaissance needs to know about where it is working. */
 export interface CitySources {
   readonly cityId: string;
@@ -197,4 +232,5 @@ export interface CitySources {
   readonly massing: MassingSource | null;
   readonly heritage: HeritageSource | null;
   readonly semantics: SemanticsSource | null;
+  readonly imagery: ImagerySource | null;
 }

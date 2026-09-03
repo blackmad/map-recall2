@@ -9,6 +9,7 @@
  * second pipeline.
  */
 import { lngLatToRd, rdToLngLat } from '../rdNew.ts';
+import { amsterdamPanoramas } from './amsterdamPanorama.ts';
 import { openStreetMapSemantics } from './openStreetMap.ts';
 import type {
   BboxLngLat, BuildingRegistry, CitySources, HeritageRecord, HeritageSource,
@@ -255,4 +256,7 @@ export const dutchSources = (cityId: string): CitySources => ({
   massing: bag3dMassing,
   heritage: rijksmonumentenHeritage,
   semantics: openStreetMapSemantics,
+  // Street-level imagery is municipal, not national: Amsterdam publishes its
+  // own panoramas openly, and another city needs its own adapter or none.
+  imagery: cityId === 'amsterdam' ? amsterdamPanoramas : null,
 });
