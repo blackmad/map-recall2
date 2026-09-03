@@ -301,6 +301,9 @@ export class GameLandmarkRuntime {
         .then((split2) => {
           if (!split2) return;
           if (!this._landmarkNotice || this._landmarkNotice.id !== noticeId) return;
+          // If trivia facts have already replaced the card body, do not
+          // overwrite them with the Wikipedia intro.
+          if (this._landmarkNotice.detail || this._landmarkNotice.longDetail) return;
           this._landmarkNotice = {
             ...this._landmarkNotice,
             detail: split2.detail,
