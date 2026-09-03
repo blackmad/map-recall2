@@ -44,15 +44,39 @@ const ok = (condition: boolean, message: string): void => { assert.ok(condition,
   checks += 3;
 }
 
-// Desktop is untouched: the fixed 16:9 space, letterboxed as before.
+// Desktop fills the window. A near-16:9 landscape keeps design density and
+// grows the short axis instead of letterboxing into a 810 px strip.
 {
   const viewport = resolveViewport({ windowWidth: 1440, windowHeight: 900, devicePixelRatio: 1 });
   assert.equal(viewport.mode, 'desktop');
   assert.equal(viewport.width, DESIGN_WIDTH);
-  assert.equal(viewport.height, DESIGN_HEIGHT);
-  assert.equal(Math.round(viewport.cssWidth), 1440);
-  assert.equal(Math.round(viewport.cssHeight), 810, '16:9 letterbox retained on desktop');
+  assert.equal(viewport.height, 800, 'logical height expands to the window aspect');
+  assert.equal(viewport.cssWidth, 1440, 'the canvas fills the window width');
+  assert.equal(viewport.cssHeight, 900, 'and the window height — no letterbox');
   checks += 5;
+}
+
+// A true 16:9 desktop still lands on the historic 1280×720 logical space.
+{
+  const viewport = resolveViewport({ windowWidth: 1920, windowHeight: 1080, devicePixelRatio: 1 });
+  assert.equal(viewport.width, DESIGN_WIDTH);
+  assert.equal(viewport.height, DESIGN_HEIGHT);
+  assert.equal(viewport.cssWidth, 1920);
+  assert.equal(viewport.cssHeight, 1080);
+  checks += 4;
+}
+
+// Named regression: a tall desktop browser used to get a landscape strip in
+// white paper (the screenshot that reopened this). Fill, don't letterbox.
+{
+  const viewport = resolveViewport({ windowWidth: 900, windowHeight: 1200, devicePixelRatio: 1 });
+  assert.equal(viewport.mode, 'desktop');
+  assert.equal(viewport.cssWidth, 900);
+  assert.equal(viewport.cssHeight, 1200, 'tall desktop fills the window');
+  assert.equal(viewport.width, DESIGN_WIDTH);
+  assert.equal(viewport.height, Math.round(DESIGN_WIDTH * 1200 / 900));
+  assert.ok(viewport.height > DESIGN_HEIGHT, 'logical space grows taller, not letterboxed');
+  checks += 6;
 }
 
 // A touch laptop and a big landscape tablet have the room for the desktop

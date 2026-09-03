@@ -18,9 +18,13 @@ body { background: var(--paper); display: flex; justify-content: center; align-i
 /* The canvas is the control surface; the browser must not treat a drag on it
    as a scroll or a double-tap on it as a zoom. */
 canvas#gameCanvas { touch-action: none; }
-/* Phone: the canvas and the map are the screen. Pinned, so neither can widen
-   the document and trigger the browser's shrink-to-fit. */
+/* Fill the window on desktop and phone. Pinned, so neither canvas nor map can
+   letterbox into a 16:9 strip or widen the document and trigger shrink-to-fit.
+   `compact-layout` still marks the phone HUD path for callers that need it. */
+body.fill-viewport,
 body.compact-layout { display: block; }
+body.fill-viewport canvas#gameCanvas,
+body.fill-viewport #vector-map,
 body.compact-layout canvas#gameCanvas,
 body.compact-layout #vector-map { position: fixed; inset: 0; width: 100%; height: 100%; max-width: 100%; }
 body::after { content: ''; position: fixed; inset: 0; z-index: 3; pointer-events: none; opacity: 0; }
@@ -375,6 +379,8 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
 <script src="js/detailed-buildings.bundle.js"></script>
 <script type="module" src="js/google-tiles.bundle.js"></script>
 <script src="js/player-vehicles.bundle.js"></script>
+<script src="js/signature-placement.bundle.js"></script>
+<script src="js/signature-landmarks.bundle.js"></script>
 <script src="js/vector-map.js"></script>
 
 <!-- Game (depends on everything above) -->

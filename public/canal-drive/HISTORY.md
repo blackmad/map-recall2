@@ -3,6 +3,17 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## Desktop fills the window instead of letterboxing 16:9
+
+The phone portrait work correctly filled touch screens, but left desktop on the
+historic fixed 1280×720 letterbox. A tall browser window therefore still showed
+a landscape strip floating in paper white — the same failure mode phones used
+to have, just without the compact HUD. `viewport.ts` now expands the desktop
+logical space to the window aspect (keeping 1280×720 density on the constrained
+axis, so a true 16:9 window is unchanged), and both the canvas and MapLibre
+layer pin to the viewport on every layout mode. Named regression: a 900×1200
+desktop window fills 900×1200 CSS with a 1280×1707 logical space.
+
 ## Thirteen landmarks are real buildings now
 
 The city was OSM footprints extruded to an OSM height: honest about where every

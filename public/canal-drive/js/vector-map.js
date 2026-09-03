@@ -596,21 +596,18 @@ class VectorBasemap {
     return this._labelsVisible;
   }
 
-  // On a phone the map is simply the screen. It used to be centred with
-  // `left = (innerWidth - width) / 2`, which fed a loop: a stale width left the
-  // container hanging off the right edge, the document grew, the browser shrank
-  // the page to fit, `innerWidth` grew with it, and the next resize made the
-  // container wider still. Pinning it to the viewport breaks the loop.
-  resizeToViewport(viewport) {
-    if (viewport.mode === 'compact') {
-      this.container.style.width = '100%';
-      this.container.style.height = '100%';
-      this.container.style.left = '0px';
-      this.container.style.top = '0px';
-      if (this.map) this.map.resize();
-      return;
-    }
-    this.resize(viewport.cssWidth, viewport.cssHeight);
+  // The map is simply the screen. It used to be centred with
+  // `left = (innerWidth - width) / 2`, which letterboxed a tall desktop window
+  // and fed a phone loop: a stale width left the container hanging off the
+  // right edge, the document grew, the browser shrank the page to fit,
+  // `innerWidth` grew with it, and the next resize made the container wider
+  // still. Pinning it to the viewport breaks both.
+  resizeToViewport(_viewport) {
+    this.container.style.width = '100%';
+    this.container.style.height = '100%';
+    this.container.style.left = '0px';
+    this.container.style.top = '0px';
+    if (this.map) this.map.resize();
   }
 
   resize(width, height) {
