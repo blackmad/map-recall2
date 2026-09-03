@@ -51,6 +51,10 @@ export class SignatureLandmarks {
     /** Which specs to draw. Defaults to the whole curated list; the demo passes
      *  a single candidate so an asset can be judged before it is committed. */
     this.models = options.models || SIGNATURE_MODELS;
+    // The demo owns `building-3d` alone. The game already filters that layer for
+    // the coloured extract, so it opts out and composes suppression itself.
+    this.manageBasemapFilter = options.manageBasemapFilter !== false;
+    this.getBasemapBaseFilter = options.getBasemapBaseFilter || null;
     this.enabled = true;
     this.suppressing = true;
     /** Specs whose model has loaded and is in the scene. */
@@ -138,19 +142,41 @@ export class SignatureLandmarks {
     }
   }
 
+  /** OSM ids of every footprint a currently drawn model replaces. */
+  shownSuppressOsmIds() {
+    if (!this.enabled || !this.suppressing) return [];
+    return (this._entries || []).flatMap(entry => [...entry.spec.suppressOsmIds]);
+  }
+
+  /** Footprints of every currently drawn model, for spatial suppression of the
+   *  coloured extract (which names buildings the landmark id does not). */
+  shownFootprints() {
+    if (!this.enabled || !this.suppressing) return [];
+    return (this._entries || [])
+      .map(entry => entry.spec.footprint)
+      .filter(Boolean);
+  }
+
   /** Hides the basemap's own copy of every building a shown model replaces. */
   _applyBasemapFilter() {
+    if (!this.manageBasemapFilter) return;
     if (!basemapBuildingFilter || !this.map.getLayer('building-3d')) return;
     const active = this.enabled && this.suppressing;
-    // Capture whatever filter the style (or `vector-map.js`) already set, so
-    // this composes with it rather than replacing it.
-    if (this._baseBuildingFilter === undefined) {
-      this._baseBuildingFilter = this.map.getFilter('building-3d') || null;
+    // Prefer a live base filter from the host (the game's extract-wide hide)
+    // so we compose with it. Fall back to capturing whatever the style had.
+    let base;
+    if (this.getBasemapBaseFilter) {
+      base = this.getBasemapBaseFilter();
+    } else {
+      if (this._baseBuildingFilter === undefined) {
+        this._baseBuildingFilter = this.map.getFilter('building-3d') || null;
+      }
+      base = this._baseBuildingFilter;
     }
     const osmIds = active
       ? (this._entries || []).flatMap(entry => [...entry.spec.suppressOsmIds])
       : [];
-    this.map.setFilter('building-3d', basemapBuildingFilter(osmIds, this._baseBuildingFilter));
+    this.map.setFilter('building-3d', basemapBuildingFilter(osmIds, base));
   }
 
   _makeLayer() {

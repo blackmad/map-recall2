@@ -50,4 +50,13 @@ assert.deepEqual(JSON.parse(wrapped)[1], ['==', ['get', 'class'], 'building']);
 const empty = basemapBuildingFilter([]);
 assert.equal(JSON.stringify(empty).includes('match'), false, 'an empty id list produces no match clause');
 
+const withExtra = basemapBuildingFilter(['w751683818'], null, [42, 7516838182, 42]);
+const withExtraJson = JSON.stringify(withExtra);
+assert.match(withExtraJson, /42/, 'raw encoded basemap ids from proximity scans are accepted');
+assert.equal(
+  JSON.parse(withExtraJson).filter((clause: unknown) => JSON.stringify(clause).includes('7516838182')).length,
+  1,
+  'an id already encoded from an osmId is not duplicated by the proximity list',
+);
+
 process.stdout.write('Canal Recall building-style checks passed.\n');

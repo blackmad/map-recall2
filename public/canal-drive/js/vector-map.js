@@ -15,6 +15,12 @@ class VectorBasemap {
     this._treesVisible = false;
     this._detailedBuildings = null;
     this._detailedBuildingsVisible = false;
+    this._signatureLandmarks = null;
+    this._appearanceOsmIds = [];
+    this._appearanceFeatures = [];
+    this._appearanceCentroidGrid = null;
+    this._basemapProximityHideIds = [];
+    this._basemapDuplicateScanQueued = false;
     this._googleTiles = null;
     this._googleTilesEnabled = false;
     this._googleTilesActive = false;
@@ -54,6 +60,9 @@ class VectorBasemap {
         });
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
+      // Signature landmark GLBs are built and demoable, but disabled in the
+      // live game: thirteen meshopt models were too expensive on the shared
+      // MapLibre/Three canvas (see TODO item 22).
       if (window.CanalRecallVehicles) {
         const { PlayerBike3D, PlayerBoat3D } = window.CanalRecallVehicles;
         if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl);
@@ -178,21 +187,204 @@ class VectorBasemap {
   //
   // OpenFreeMap's z14 building layer is sparse — 113 features in the tile over
   // the centre against 10,578 in the extract — so this removes the double-drawn
-  // minority and leaves the rest of the city standing. Measured over central
-  // Amsterdam it drops 136 of 1,189 basemap buildings and cuts the pairs
-  // sitting within 3 m of an extract building from 145 to 47. The remainder are
-  // buildings the two pipelines hold under different OSM ids, which no id
-  // filter can pair up.
+  // minority and leaves the rest of the city standing. An id match alone cut
+  // co-located pairs from 145 to 47; the remainder are held under different
+  // OSM ids by the two pipelines, so `_scanBasemapDuplicates` measures
+  // proximity against the extract and feeds those feature ids in too.
   _hideDuplicatedBasemapBuildings(data) {
-    if (!this.map.getLayer('building-3d') || !window.CanalRecallBuildings) return;
-    const { basemapBuildingFilter } = window.CanalRecallBuildings;
-    if (!basemapBuildingFilter) return;
-    if (this._baseBuildingFilter === undefined) this._baseBuildingFilter = this.map.getFilter('building-3d') || null;
-    const osmIds = ((data && data.features) || []).map(feature => feature.properties && feature.properties.osmId);
+    this._appearanceFeatures = (data && data.features) || [];
+    this._appearanceOsmIds = this._appearanceFeatures
+      .map(feature => feature.properties && feature.properties.osmId)
+      .filter(Boolean);
+    this._appearanceCentroidGrid = this._buildAppearanceCentroidGrid(this._appearanceFeatures);
+    this._basemapProximityHideIds = [];
+    this._refreshBuildingSuppression();
+    this._queueBasemapDuplicateScan();
+    if (!this._basemapDuplicateScanBound) {
+      this._basemapDuplicateScanBound = true;
+      // Tiles stream in after the extract; rescan whenever more buildings
+      // arrive so a late basemap copy cannot reappear under a coloured roof.
+      this.map.on('sourcedata', (event) => {
+        if (event.sourceId !== 'openmaptiles' || !event.isSourceLoaded) return;
+        this._queueBasemapDuplicateScan();
+      });
+      this.map.on('moveend', () => this._queueBasemapDuplicateScan());
+    }
+  }
+
+  // One owner per building: hide the basemap copy of every coloured-extract
+  // building (by id and by measured proximity), and hide coloured extrusions
+  // under any signature model that has loaded.
+  _refreshBuildingSuppression() {
+    if (!this.map || !this.map.getStyle()) return;
+    if (this.map.getLayer('building-3d') && window.CanalRecallBuildings) {
+      const { basemapBuildingFilter } = window.CanalRecallBuildings;
+      if (basemapBuildingFilter) {
+        if (this._baseBuildingFilter === undefined) {
+          this._baseBuildingFilter = this.map.getFilter('building-3d') || null;
+        }
+        const osmIds = [...this._appearanceOsmIds, ...this._signatureSuppressOsmIds()];
+        try {
+          this.map.setFilter(
+            'building-3d',
+            basemapBuildingFilter(osmIds, this._baseBuildingFilter, this._basemapProximityHideIds),
+          );
+        } catch (error) {
+          console.warn('Could not de-duplicate basemap buildings; extrusions may z-fight.', error);
+        }
+      }
+    }
+    this._refreshColoredBuildingFilter();
+  }
+
+  _queueBasemapDuplicateScan() {
+    if (this._basemapDuplicateScanQueued || !this._appearanceCentroidGrid) return;
+    this._basemapDuplicateScanQueued = true;
+    requestAnimationFrame(() => {
+      this._basemapDuplicateScanQueued = false;
+      this._scanBasemapDuplicates();
+    });
+  }
+
+  // The id filter cannot see buildings the two pipelines hold under different
+  // OSM ids. For every loaded basemap building, if any of its ring centroids
+  // sits within 3 m of an extract building, hide it — same tolerance the
+  // earlier audit used when it counted the residual 47 pairs. Ring-by-ring
+  // matters because OpenFreeMap sometimes batches many footprints into one
+  // multipolygon feature; a single feature centroid would miss the overlap.
+  _scanBasemapDuplicates() {
+    if (!this.map || !this._appearanceCentroidGrid) return;
+    let features;
     try {
-      this.map.setFilter('building-3d', basemapBuildingFilter(osmIds, this._baseBuildingFilter));
-    } catch (error) {
-      console.warn('Could not de-duplicate basemap buildings; extrusions may z-fight.', error);
+      features = this.map.querySourceFeatures('openmaptiles', { sourceLayer: 'building' });
+    } catch (_) {
+      return;
+    }
+    if (!features || !features.length) return;
+    const { encodeBasemapBuildingId } = window.CanalRecallBuildings || {};
+    const known = new Set();
+    if (encodeBasemapBuildingId) {
+      for (const osmId of this._appearanceOsmIds) {
+        const encoded = encodeBasemapBuildingId(osmId);
+        if (encoded !== null) known.add(encoded);
+      }
+    }
+    for (const id of this._basemapProximityHideIds) known.add(id);
+    const found = [];
+    for (const feature of features) {
+      const id = feature.id;
+      if (typeof id !== 'number' || !Number.isSafeInteger(id) || id <= 0 || known.has(id)) continue;
+      const centres = this._featureRingCentres(feature);
+      if (!centres.some(centre => this._appearanceNear(centre, 3))) continue;
+      known.add(id);
+      found.push(id);
+    }
+    if (!found.length) return;
+    this._basemapProximityHideIds = this._basemapProximityHideIds.concat(found);
+    this._refreshBuildingSuppression();
+  }
+
+  _buildAppearanceCentroidGrid(features) {
+    // ~25 m cells at Amsterdam latitude — large enough that a 3 m search only
+    // touches the home cell and its neighbours.
+    const cellDeg = 0.00025;
+    const grid = new Map();
+    for (const feature of features) {
+      const centre = this._featureCentreLngLat(feature);
+      if (!centre) continue;
+      const key = `${Math.floor(centre[0] / cellDeg)}:${Math.floor(centre[1] / cellDeg)}`;
+      let bucket = grid.get(key);
+      if (!bucket) { bucket = []; grid.set(key, bucket); }
+      bucket.push(centre);
+    }
+    return { cellDeg, grid };
+  }
+
+  _appearanceNear(lngLat, metres) {
+    const index = this._appearanceCentroidGrid;
+    if (!index) return false;
+    const [lng, lat] = lngLat;
+    const metresPerDegLat = 110540;
+    const metresPerDegLng = 111320 * Math.cos(lat * Math.PI / 180);
+    const cellLng = Math.floor(lng / index.cellDeg);
+    const cellLat = Math.floor(lat / index.cellDeg);
+    const limit2 = metres * metres;
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -1; dy <= 1; dy++) {
+        const bucket = index.grid.get(`${cellLng + dx}:${cellLat + dy}`);
+        if (!bucket) continue;
+        for (const [olng, olat] of bucket) {
+          const east = (olng - lng) * metresPerDegLng;
+          const north = (olat - lat) * metresPerDegLat;
+          if (east * east + north * north <= limit2) return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  _signatureSuppressOsmIds() {
+    if (!this._signatureLandmarks) return [];
+    const ids = new Set(this._signatureLandmarks.shownSuppressOsmIds());
+    const helpers = window.CanalRecallSignatureLandmarks;
+    if (!helpers || !helpers.footprintPolygon || !helpers.pointInRing) return [...ids];
+    for (const footprint of this._signatureLandmarks.shownFootprints()) {
+      const ring = helpers.footprintPolygon(footprint, 4);
+      for (const feature of this._appearanceFeatures) {
+        const osmId = feature.properties && feature.properties.osmId;
+        if (!osmId || ids.has(osmId)) continue;
+        const centre = this._featureCentreLngLat(feature);
+        if (centre && helpers.pointInRing(centre, ring)) ids.add(osmId);
+      }
+    }
+    return [...ids];
+  }
+
+  _featureCentreLngLat(feature) {
+    const centres = this._featureRingCentres(feature);
+    if (!centres.length) return null;
+    let sumLng = 0;
+    let sumLat = 0;
+    for (const point of centres) { sumLng += point[0]; sumLat += point[1]; }
+    return [sumLng / centres.length, sumLat / centres.length];
+  }
+
+  _featureRingCentres(feature) {
+    const geometry = feature && feature.geometry;
+    if (!geometry || !geometry.coordinates) return [];
+    const rings = geometry.type === 'Polygon'
+      ? [geometry.coordinates[0]]
+      : geometry.type === 'MultiPolygon'
+        ? geometry.coordinates.map(polygon => polygon[0])
+        : [];
+    const centres = [];
+    for (const ring of rings) {
+      if (!Array.isArray(ring) || !ring.length) continue;
+      let sumLng = 0;
+      let sumLat = 0;
+      let count = 0;
+      for (const point of ring) {
+        if (!Array.isArray(point) || typeof point[0] !== 'number') continue;
+        sumLng += point[0];
+        sumLat += point[1];
+        count += 1;
+      }
+      if (count) centres.push([sumLng / count, sumLat / count]);
+    }
+    return centres;
+  }
+
+  _refreshColoredBuildingFilter() {
+    if (!this.map) return;
+    const hide = this._signatureSuppressOsmIds();
+    const filter = hide.length
+      ? ['!', ['in', ['get', 'osmId'], ['literal', hide]]]
+      : null;
+    for (const id of ['osm-colored-buildings', 'osm-colored-building-roofs']) {
+      if (!this.map.getLayer(id)) continue;
+      try { this.map.setFilter(id, filter); } catch (error) {
+        console.warn(`Could not filter ${id} under signature models.`, error);
+      }
     }
   }
 
@@ -379,6 +571,13 @@ class VectorBasemap {
     for (const id of ['building-3d', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google) ? 'none' : 'visible');
     }
+    // Signature models are the LoD1 replacement for a handful of landmarks.
+    // Hide them under photoreal/3DBAG the same way the extrusions hide, so two
+    // representations of Centraal never occupy the same air.
+    if (this._signatureLandmarks) {
+      this._signatureLandmarks.setEnabled(!detailed && !google);
+      this._refreshBuildingSuppression();
+    }
   }
 
   setPlayerBike(player, loader, visible) {
@@ -544,6 +743,7 @@ class VectorBasemap {
     }
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
+    if (this._signatureLandmarks) this._signatureLandmarks.setActiveLandmark(detailed ? null : landmark);
     if (!detailed && landmark && landmark.featureTarget) {
       try {
         this.map.setFeatureState(landmark.featureTarget, { highlighted: true });
