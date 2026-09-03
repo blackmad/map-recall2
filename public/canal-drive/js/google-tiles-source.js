@@ -16,6 +16,7 @@
 import { TilesRenderer } from '3d-tiles-renderer';
 import { GLTFExtensionsPlugin } from '3d-tiles-renderer/plugins';
 import { GoogleCloudAuthPlugin } from '3d-tiles-renderer/plugins';
+import { WGS84_ELLIPSOID } from '3d-tiles-renderer/three';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 const { THREE, MeshoptDecoder } = window.CanalRecallThree;
@@ -31,14 +32,57 @@ export const ACTIVATION_METERS = 25;
 
 const DRACO_DECODER_PATH = 'https://www.gstatic.com/draco/versioned/decoders/1.5.6/';
 
-function ecefToLngLatAlt(x, y, z) {
-  const a = 6378137.0, e2 = 6.69437999014e-3;
-  const b = a * Math.sqrt(1 - e2), ep2 = (a * a - b * b) / (b * b);
-  const p = Math.sqrt(x * x + y * y), th = Math.atan2(a * z, b * p);
-  const lon = Math.atan2(y, x);
-  const lat = Math.atan2(z + ep2 * b * Math.sin(th) ** 3, p - e2 * a * Math.cos(th) ** 3);
-  const n = a / Math.sqrt(1 - e2 * Math.sin(lat) ** 2);
-  return { lng: lon * 180 / Math.PI, lat: lat * 180 / Math.PI, alt: p / Math.cos(lat) - n };
+const DEG = Math.PI / 180;
+
+/**
+ * Amsterdam's height above the WGS84 ellipsoid, in metres. Google's mesh is
+ * referenced to the ellipsoid; MapLibre's altitude 0 is sea level (NAP here).
+ * Skipping this drops the whole city ~43 m through the basemap — the same
+ * separation the eye-height spike had to correct for.
+ */
+const GEOID_SEPARATION_M = 43;
+
+/**
+ * How far the camera may wander from the anchor before the flat local frame is
+ * rebuilt under it. MapLibre's mercator metres and a tangent-plane ENU frame
+ * only agree near the anchor: by 10 km apart, earth curvature and the mercator
+ * scale gradient have each pulled the mesh metres off the basemap. Re-anchoring
+ * inside a kilometre keeps that under the width of a canal.
+ */
+const REANCHOR_METERS = 500;
+
+/**
+ * The pair of matrices that put Google's ECEF mesh onto MapLibre's basemap at
+ * one place, exported so the placement can be checked without the network.
+ *
+ * `ecefToLocal` brings ECEF into an east/north/up frame at the anchor, and
+ * `localTransform` takes that frame into mercator units at the anchor itself.
+ * The anchor is lifted by the geoid separation so ground meets ground; a point
+ * at Amsterdam's street level should come out at MapLibre altitude 0.
+ */
+export function localFrameAt(maplibregl, lng, lat) {
+  const enuToEcef = new THREE.Matrix4();
+  WGS84_ELLIPSOID.getEastNorthUpFrame(lat * DEG, lng * DEG, GEOID_SEPARATION_M, enuToEcef);
+  const ecefToLocal = enuToEcef.invert();
+
+  // East, north and up go straight into mercator: x is east, z is altitude, and
+  // the negative y is the whole north-to-south flip, because mercator y grows
+  // downward. No extra rotation belongs here — one costs a north/up swap that
+  // stands the city on edge.
+  const coordinate = maplibregl.MercatorCoordinate.fromLngLat([lng, lat], 0);
+  const scale = coordinate.meterInMercatorCoordinateUnits();
+  const localTransform = new THREE.Matrix4()
+    .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
+    .scale(new THREE.Vector3(scale, -scale, scale));
+
+  return { ecefToLocal, localTransform };
+}
+
+/** An ECEF position for a geodetic coordinate, exported for the same reason. */
+export function ellipsoidPosition(lng, lat, ellipsoidHeight) {
+  const position = new THREE.Vector3();
+  WGS84_ELLIPSOID.getCartographicToPosition(lat * DEG, lng * DEG, ellipsoidHeight, position);
+  return position;
 }
 
 export class GooglePhotorealTiles {
@@ -60,9 +104,29 @@ export class GooglePhotorealTiles {
     this.enabled = next;
     if (this.enabled && !this.map.getLayer(this.layer.id) && !this.loading) {
       this.loading = true;
-      this.map.addLayer(this.layer);
+      this._addLayerWhenStyleReady();
     }
     this.map.triggerRepaint();
+  }
+
+  /**
+   * `addLayer` throws outright while the style is still settling, and the option
+   * is reachable from the settings panel long before the basemap has settled.
+   *
+   * Asking `isStyleLoaded()` first is not enough: it reports every source, so it
+   * drops back to false whenever new basemap tiles are in flight, which is most
+   * of the time while the player is moving. Attempting the add and retrying on
+   * the next map event is what actually gets the layer in.
+   */
+  _addLayerWhenStyleReady() {
+    if (!this.enabled || this.map.getLayer(this.layer.id)) return;
+    try {
+      this.map.addLayer(this.layer);
+    } catch (err) {
+      const retry = () => this._addLayerWhenStyleReady();
+      this.map.once('styledata', retry);
+      this.map.once('idle', retry);
+    }
   }
 
   /** Google's terms require visible attribution whenever its imagery is shown. */
@@ -77,13 +141,34 @@ export class GooglePhotorealTiles {
 
   _makeLayer() {
     const owner = this;
-    let scene, camera, tilesCamera, renderer, tiles, localTransform;
-    const updateLocalTransform = ([lng, lat, altitude]) => {
-      const coordinate = owner.maplibregl.MercatorCoordinate.fromLngLat([lng, lat], altitude);
-      localTransform = new THREE.Matrix4()
-        .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
-        .scale(new THREE.Vector3(coordinate.meterInMercatorCoordinateUnits(), -coordinate.meterInMercatorCoordinateUnits(), coordinate.meterInMercatorCoordinateUnits()))
-        .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
+    let scene, camera, tilesCamera, renderer, tiles, localTransform, anchor;
+
+    /**
+     * Place the tileset in MapLibre's world.
+     *
+     * Google serves one global tileset in ECEF, so there is no regional root
+     * transform to borrow a local frame from: reading one off the root's
+     * bounding sphere aims at the centre of the Earth and yields a latitude of
+     * several thousand degrees. The frame has to be built from a place we
+     * choose instead, and the only sensible place is wherever the player is.
+     *
+     * The two matrices themselves are `localFrameAt` above, which is where the
+     * convention and the geoid correction are explained.
+     */
+    const anchorAt = (lng, lat) => {
+      const frame = localFrameAt(owner.maplibregl, lng, lat);
+      localTransform = frame.localTransform;
+      tiles.group.matrix.copy(frame.ecefToLocal);
+      tiles.group.matrixAutoUpdate = false;
+      tiles.group.updateMatrixWorld(true);
+      anchor = { lng, lat };
+    };
+
+    /** Metres from the anchor, flat-earth — only ever compared against a threshold. */
+    const metersFromAnchor = (lng, lat) => {
+      const dLat = (lat - anchor.lat) * 111320;
+      const dLng = (lng - anchor.lng) * 111320 * Math.cos(lat * DEG);
+      return Math.hypot(dLat, dLng);
     };
     return {
       id: 'google-photoreal-tiles', type: 'custom', renderingMode: '3d',
@@ -108,16 +193,8 @@ export class GooglePhotorealTiles {
         tiles.addEventListener('load-tileset', () => {
           if (handled) return;
           handled = true;
-          const sphere = new THREE.Sphere();
-          tiles.getBoundingSphere(sphere);
-          const center = sphere.center.clone();
-          const rootTransform = tiles.root && tiles.root.transform || [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
-          const origin = ecefToLngLatAlt(center.x, center.y, center.z);
-          updateLocalTransform([origin.lng, origin.lat, origin.alt]);
-          const rotation = new THREE.Matrix3().set(rootTransform[0], rootTransform[1], rootTransform[2], rootTransform[8], rootTransform[9], rootTransform[10], -rootTransform[4], -rootTransform[5], -rootTransform[6]);
-          tiles.group.matrix.copy(new THREE.Matrix4().setFromMatrix3(rotation).multiply(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z)));
-          tiles.group.matrixAutoUpdate = false;
-          tiles.group.updateMatrixWorld(true);
+          const center = map.getCenter();
+          anchorAt(center.lng, center.lat);
           owner.ready = true;
           owner.loading = false;
         });
@@ -132,15 +209,24 @@ export class GooglePhotorealTiles {
         });
       },
       render(_gl, args) {
-        if (!owner.enabled || !owner.ready || !localTransform) return;
-        camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(localTransform);
-        const projection = new THREE.Matrix4().fromArray(args.projectionMatrix);
-        const view = projection.clone().invert().multiply(camera.projectionMatrix);
-        tilesCamera.projectionMatrix.copy(projection);
-        tilesCamera.matrixWorldInverse.copy(view);
-        tilesCamera.matrixWorld.copy(view).invert();
-        renderer.resetState();
-        renderer.render(scene, camera);
+        if (!owner.enabled) return;
+        // Only draw once the tileset has placed itself, but never gate the
+        // traversal below on `ready`: `tiles.update()` is what discovers and
+        // fetches the root tileset in the first place, so waiting for `ready`
+        // before calling it deadlocks the layer — no request is ever made,
+        // `load-tileset` never fires, and `ready` stays false forever.
+        if (owner.ready && localTransform) {
+          const center = owner.map.getCenter();
+          if (metersFromAnchor(center.lng, center.lat) > REANCHOR_METERS) anchorAt(center.lng, center.lat);
+          camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(localTransform);
+          const projection = new THREE.Matrix4().fromArray(args.projectionMatrix);
+          const view = projection.clone().invert().multiply(camera.projectionMatrix);
+          tilesCamera.projectionMatrix.copy(projection);
+          tilesCamera.matrixWorldInverse.copy(view);
+          tilesCamera.matrixWorld.copy(view).invert();
+          renderer.resetState();
+          renderer.render(scene, camera);
+        }
         tiles.update();
         owner._publishAttribution(tiles);
         owner.map.triggerRepaint();
@@ -149,4 +235,4 @@ export class GooglePhotorealTiles {
   }
 }
 
-window.CanalRecallGoogleTiles = { GooglePhotorealTiles, ACTIVATION_METERS };
+window.CanalRecallGoogleTiles = { GooglePhotorealTiles, ACTIVATION_METERS, localFrameAt, ellipsoidPosition };
