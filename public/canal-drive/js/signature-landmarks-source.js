@@ -12,7 +12,7 @@
 //
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
-const { SIGNATURE_MODELS, placementFor } = window.CanalRecallSignatureLandmarks;
+const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
 
 const assetUrl = path => new URL(path, window.location.href).href;
 
@@ -100,35 +100,27 @@ export class SignatureLandmarks {
   }
 
   /**
-   * Makes the model win against the extrusion it replaces, rather than
-   * deleting that extrusion.
+   * Removes the extrusion a model replaces, and biases the model forward for
+   * whatever the removal cannot catch.
    *
-   * Removing the grey box is what this should do, and it cannot be done. The
-   * three obvious routes are all closed on this basemap:
+   * Two mechanisms, because neither is sufficient alone.
    *
-   *  - Filtering by feature id. OpenMapTiles batches buildings by height: one
-   *    feature on the Dam carries 498 separate rings and shares its id with
-   *    buildings a kilometre away. Excluding that id deletes half the centre.
-   *  - Filtering by geometry with `within`. That expression only evaluates
-   *    point and line features, so against building polygons it matches
-   *    nothing and silently suppresses nothing — it fails green.
-   *  - A `clip` layer. MapLibre GL JS 5.24 has no such layer type; it is a
-   *    Mapbox GL feature. `addLayer` accepts it and then reports the error
-   *    asynchronously, which is why it looked like it worked.
+   * The id filter is `basemapBuildingFilter`, the same one `vector-map.js`
+   * uses to stop the basemap redrawing buildings the game draws itself. I had
+   * concluded this was impossible — the tiles batch buildings and expose no
+   * OSM id in their properties — and was wrong: the vector-tile *feature id*
+   * encodes it as `osmId * 10 + type`, which `encodeBasemapBuildingId` undoes.
+   * It does not catch everything, and main's own note records why: pairing the
+   * extract against the basemap leaves a remainder no id can match.
    *
-   * So the model is biased towards the camera instead. The extrusion's front
-   * wall and the model's facade are very nearly coplanar — the model is
-   * deliberately pushed forward onto the same footprint edge — and a depth tie
-   * is what put the grey in front. A polygon offset settles the tie in the
-   * model's favour without disabling the depth test, so a building genuinely
-   * between the player and the Palace still occludes it properly.
-   *
-   * This turns out to suit this particular asset. The model is only 24.5 m
-   * deep against a 65.5 m footprint, so a real suppression would leave a 41 m
-   * notch in the block behind it. Leaving the extrusion standing fills that in
-   * with the grey mass the rest of the city already uses.
+   * So the depth bias stays for that remainder. The extrusion's front wall and
+   * the model's facade are near-coplanar, and a depth tie is what put the grey
+   * in front; a polygon offset settles it in the model's favour without
+   * disabling the depth test, so a building genuinely between the player and
+   * the Palace still occludes it properly.
    */
   _applySuppression() {
+    this._applyBasemapFilter();
     const bias = this.enabled && this.suppressing ? -1 : 0;
     for (const entry of this._entries || []) {
       if (entry.depthBias === bias) continue;
@@ -144,6 +136,21 @@ export class SignatureLandmarks {
         }
       });
     }
+  }
+
+  /** Hides the basemap's own copy of every building a shown model replaces. */
+  _applyBasemapFilter() {
+    if (!basemapBuildingFilter || !this.map.getLayer('building-3d')) return;
+    const active = this.enabled && this.suppressing;
+    // Capture whatever filter the style (or `vector-map.js`) already set, so
+    // this composes with it rather than replacing it.
+    if (this._baseBuildingFilter === undefined) {
+      this._baseBuildingFilter = this.map.getFilter('building-3d') || null;
+    }
+    const osmIds = active
+      ? (this._entries || []).flatMap(entry => [...entry.spec.suppressOsmIds])
+      : [];
+    this.map.setFilter('building-3d', basemapBuildingFilter(osmIds, this._baseBuildingFilter));
   }
 
   _makeLayer() {
