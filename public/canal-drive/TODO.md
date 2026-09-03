@@ -381,70 +381,39 @@ Two measured findings change the plan and should be read before M1 starts:
   pilot — but bay count for 3% and storey count for 1%. Median description is 88
   characters. Bays, storeys and window arrangement must come from imagery.
 
-Next, in order: RECON-5 (point the existing roof-colour pipeline at the boundary
-rather than the A10 cache), RECON-4 (OSM semantics and `building:part` topology,
-needed before anything can overwrite manual OSM structure), then RECON-6…10, the
-per-building façade survey, which is the gating resource for every tier above
-LoD2.2 and has not started. Also outstanding: the 131 panden with no 3DBAG
-match, and reconciling the 3DBAG API's `v2023.10.08` collection against the
+Since then: the pipeline is source-adapter driven and runs unchanged over a
+second city, RECON-4 is done, observation coverage is measured (139,937 panorama
+poses; **88.6% of buildings have a frontal view**), and façades rectify and
+measure end to end from Amsterdam's CC BY panoramas.
+
+**What actually blocks progress now, in order.**
+
+1. **Nothing is drawn in the game.** Fourteen commits, zero pixels. The brief
+   gates M1 — massing in-game, recognisable in overlay against reference —
+   before measurement work, and every measurement bug found so far took
+   paragraphs of prose to discover from JSON when it would have been obvious in
+   five seconds of overlay. Next slice: the MapLibre custom layer drawing the
+   3,025 records at LoD2.2 keyed by `pand_id`, `resolveFidelityTier` suppressing
+   `detailed-buildings` inside the boundary so one representation owns each
+   building, and the photo/render opacity overlay at two reference viewpoints.
+2. **No detector output has been validated.** `check-facade-registration.ts` is
+   red at its own 0.5 m bar, and street-level fields are capped at confidence
+   0.4 because of it. The storey ladder returns 6 storeys for 32 of 56
+   Keizersgracht buildings where 3DBAG's pilot median is 4–5. `calibration.ts`
+   was written for this and has never been fed a real `ReviewOutcome`. Fix:
+   hand-label ~20 of the Keizersgracht 100–180 rectified strips for storeys,
+   bays, gable and wall family, run `fieldAccuracy` → `fieldVerdict`, and let
+   the verdict decide accept / needs-review / demote per field.
+3. **RECON-5 blocks a field.** Roof material is `default` on every record
+   because inferring it from bouwjaar would be a prior supplying a value. The
+   pipeline exists (`scripts/build-roof-color-observations.ts`); it needs
+   pointing at the boundary rather than the A10 cache, and `nearestRoof` in
+   `materials.ts` is already waiting for it.
+4. **BUILD-1…5 can run in parallel now.** The Blender gable, window, cornice and
+   pui libraries depend on the vocabulary, not on any measurement.
+   `materials.ts` is a start on BUILD-5, but `wallFamily`'s thresholds are
+   constants with no labelled case behind them.
+
+Also outstanding: RECON-10 (quay, water level, bridges), the 131 panden with no
+3DBAG match, and reconciling the 3DBAG API's `v2023.10.08` collection against the
 `v20250903` tileset the runtime actually streams.
-
----
-
-## P3 — Bets worth a spike, on their own branch
-
-**17. Public transit mode.** Amsterdam as a network of tram, metro, bus and
-ferry lines: stops, line numbers and colours, direction and terminus, transfers.
-Its own routing and recall model rather than a vehicle skin — a trip is a
-sequence of services and walking connections, and questions must distinguish the
-stop from the line from the destination. Live disruption data stays optional so
-the learning game still works from a cached, versioned extract. *Large.*
-
-**18. A SimCity 2000-style isometric view.** The detailed-buildings extrusion
-data and the roof-colour sampler already carry most of what an isometric
-renderer needs, and it is a very different feel from the top-down map without
-touching routing physics.
-
-**19. Structured Wikidata, and a city-hall advisor.** The enrichment passes take
-a lede and an image and stop. Wikidata also has the sitting mayor, opening
-dates, architects, who a bridge is named after, what a building used to be. An
-advisor card in the SimCity 2000 register — "the mayor would like you to learn
-the Jordaan's bridges this week" — could turn that into assignments and give the
-route generator a *reason* to pick a route instead of surprise-me. Needs a tone
-that stays informative rather than cute, and it must not become another card
-competing with the driving corridor.
-
-**20. Better 3D trees.** Instanced trunk/canopy geometry with deterministic
-variation from OSM species tags, distance LOD, kept out of 2D, never obscuring
-navigation or quiz targets.
-
-**21. Measured façade colours.** Pilot Amsterdam's open RGB point cloud against
-BAG/PDOK LoD 2.2 façade planes on a few representative blocks; reject sparse,
-shadowed or mixed samples and compare a muted median wall colour against the
-current OSM-tag fallback before attempting a citywide pass. Straight-down roof
-imagery cannot measure building sides.
-
-**22. Signature landmark models** for the handful of buildings worth
-recognising on sight.
-
-**23. Authentic retro rendering**, and **24. the optional arcade layer.**
-Both are large presentation bets with long-form design notes preserved at the
-end of `HISTORY.md`. Neither is queued; both are deliberately parked.
-
----
-
-## Ongoing reliability work
-
-Not milestones — standing obligations, each with a live guard already in place.
-
-- Refine boat shoreline response and bridge traversal across more route
-  geometries. The current guard rolls the hull inward and preserves
-  canal-tangent movement instead of leaving it stuck against a quay.
-- Keep rejecting distant or ambiguous home-address-to-waterway snaps after exact
-  BAG address resolution.
-- Keep auditing route topology around docks, broad water polygons, bridges and
-  disconnected OSM path fragments. Closed water/shore rings are already excluded
-  from the navigable graph; named open paths and graph junctions still want
-  checking.
-- Keep tuning neighborhood postcard scale and long-name typography on mobile
-  against real in-game screenshots.

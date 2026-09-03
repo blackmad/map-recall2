@@ -6,6 +6,102 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Amsterdam façade twin: reading façades out of the city's own panoramas
+
+Amsterdam publishes its street-level panoramas under CC BY 4.0, which is what
+makes measurement possible at all — the brief forbids shipping third-party
+imagery, and an openly licensed municipal source is one a derived measurement
+can cite. Coverage was computed first, from published camera poses and before
+downloading a single image, because whether a wall can be measured is decided by
+where the camera stood rather than by what the pixels contain: 139,937 poses,
+17,251 elevations, 26.5% of elevations frontal, **88.6% of buildings with a
+frontal view of at least one elevation**, and 86.7% of those leaf-off. The 70%
+of elevations never seen are party walls and courtyard returns no street camera
+can reach, which is the shape the brief predicted.
+
+**The heading convention nearly took me, and the way it nearly took me is the
+lesson.** Publishers differ over whether a panorama's `heading` sits at the
+image centre or at column zero, and the two differ by exactly 180°. I rendered
+one, saw an upright and wholly convincing canal frontage, and accepted it — it
+was the building behind the camera. In a city where every direction looks like a
+canal, "the output looks right" is not a calibration. Settling it took a
+prediction checked against geometry known independently: slice one panorama into
+eight 45° bands, ask which band holds a wall already measured at 4.2 m, and
+compare against what each convention predicts. It fell at u≈0.3; `centre`
+predicts 0.305 and `edge` 0.805.
+
+**Registration has no systematic error, and that is a different claim from
+verified.** The first check correlated several views of one wall against each
+other and failed at 2.9 m — wrong instrument, because views 20 and 80 m from a
+façade differ in resolution, exposure, season and which parked cars obscure
+what. The second correlated vertical-edge density against BAG's plot boundaries
+and also failed, for a subtler reason: a canal façade's strongest vertical edges
+are window jambs repeating every metre or two, and a quasi-periodic signal
+correlates almost equally at many shifts, so the peak lands at random. The
+roofline is the right signal because it is *aperiodic* — an Amsterdam terrace is
+narrow plots built to different heights, so its skyline is a staircase stepping
+at every party wall. Two sky-detector bugs came out of that, both producing
+confident nonsense: testing "close to median sky brightness" makes a white cloud
+read as building and plants a roofline halfway up the sky, and taking the median
+of the top band fails when a taller building behind fills part of it. Median
+disagreement fell 2.92 → 1.04 m, and the number that matters is the signed mean:
+**−0.13 m**. A constant misregistration biases every building the same way.
+Nothing like that is present. The check nonetheless stays red at its 0.5 m bar,
+because "no detectable bias" is not "verified to half a metre" and measurement
+should not start on the weaker claim.
+
+**Every time I reached for a heuristic about building geometry, the register
+already held the answer.** Three in a row picked the wrong wall as a building's
+front — longest, most-viewed, best-quality — each landing on a party wall
+running back into the block or a corner return. A canal house's front is the
+*short* side of its plot, and BAG gives that exactly as the short side of the
+footprint's minimum-area rectangle. Constraining candidates to within 35% of it
+fixed the selection outright.
+
+**But the grammar is real, and refusing to use it was its own mistake.** After
+those three failures I had talked myself out of heuristics entirely, and the
+opening detector stalled at nought to three windows on houses with ten. The
+brief draws the line precisely: the canal ring's grammar is useful as a
+*rendering vocabulary*, never as a source of facts — it tells you how to draw a
+klokgevel once you know this house has one, and must never tell you that it has
+one. Using "windows line up in bays and storeys" to decide where in this image to
+look is still measuring this building's own photograph. Two changes followed. An
+opening is not *dark*, it is *not the wall*: on these façades a window is as
+often brighter than its brick as darker, because white frames, net curtains and
+sky reflections all read lighter while an unlit room reads darker. And storeys
+are a *ladder* rather than independent bands, because a shadowed band otherwise
+goes missing and nothing notices — bands found separately came out eleven metres
+apart.
+
+**The demo script was where the discipline quietly stopped applying.** Its first
+version wrote its own `{ value, source }` shape instead of the record schema,
+with source names not in `FacadeSource` and no confidence, observation or date,
+so none of the evidence machinery could run on it — and it carried a fourth copy
+of the gable regex, throwing away the rear-clause handling `heritageText.ts`
+already does. Routed properly through `buildRecordFromRecon` →
+`applyHeritageEvidence` → `applyStreetLevelEvidence` → `auditHouse`, the audit
+immediately found 281 violations in data the forked shape had reported as clean.
+Two were real: street-level fields carried a full ISO timestamp where the ledger
+dates observations by day, and `storeyHeights` was being set to the *gaps
+between* window bands, so n bands gave n−1 values where the record wants one per
+storey. Padding to length would have invented the top storey's height, which is
+what the length check exists to catch.
+
+Two guesses were removed in the same pass. Roof material had been
+`bouwjaar < 1850 ? pantile : slate` under a source label that made it look
+measured — a prior supplying a value, and its fallback read the 215 unknown-year
+buildings as medieval. It is `default` now until RECON-5 measures it. Heights
+were being invented with `?? 1` and `?? ground + 12`; `resolveHeights` decides
+instead, and caught the eight buildings whose modelled ridge sits below their own
+measured roof height.
+
+Everything the opening detector produces is capped at confidence 0.4, below any
+auto-accept. That is the measured position rather than modesty: the storey
+ladder returns six storeys for 32 of 56 buildings on a street that is mostly
+three or four plus an attic, and the wall-colour sampler's percentile was tuned
+by moving it until fewer buildings came out black — which is fitting to an
+expectation about the answer, not validating against one.
+
 ## Amsterdam façade twin, M0: measure first, and let the measurements argue back
 
 The build prompt in `AMSTERDAM_FACADE_TWIN.md` is emphatic that ground truth is

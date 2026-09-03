@@ -1,8 +1,14 @@
 # M0 reconnaissance — Amsterdam façade twin, pilot boundary
 
-Status: **M0 complete for RECON-1 through RECON-4.** RECON-5 (PDOK ortho roof
-colour) and RECON-6…10 (per-building façade survey, quay/water) are not
-started.
+Status: **M0 complete for RECON-1 through RECON-4, and for the observation
+survey behind RECON-6…9.** RECON-5 (PDOK ortho roof colour) and RECON-10
+(quay, water level, bridges) are not started — and RECON-5 now blocks a field:
+roof material is `default` on every record until it runs.
+
+Coverage measured for the whole boundary: 17,251 elevations, 139,937 panorama
+poses, **26.5% of elevations frontal and 88.6% of buildings with a frontal view
+of at least one elevation**, 86.7% of those leaf-off. Façade *measurement* on
+top of that coverage is not validated — see the caveat under RECON-6…9.
 
 Every number here is measured from the sources named beside it. Where this
 document contradicts an estimate in
@@ -110,7 +116,7 @@ level across a kilometre is wrong.
 
 ## The boundary — fixed
 
-`src/canalRecall/facade/pilotBoundary.ts`, published to
+`src/canalRecall/facade/surveyArea.ts` and `areas.ts`, published to
 `staging/facade-twin/pilot-boundary.geojson`.
 
 The boundary follows **canal centrelines**, not a bounding box and not chords
@@ -427,9 +433,16 @@ the mechanism, not the rate.
 - **RECON-5** PDOK ortho roof colour across the boundary. The pipeline already
   exists (`scripts/build-roof-color-observations.ts`, `ROOF_ENRICHMENT.md`) and
   needs pointing at the boundary rather than the A10 cache.
-- **RECON-6…9** the per-building façade survey, canal by canal. This is the
-  gating resource for everything above LoD2.2 and nothing has been observed yet.
 - **RECON-10** quay, water level, bridge and *kademuur* geometry.
+- **RECON-5** — the roof-colour pipeline pointed at the boundary. It is the one
+  unstarted recon whose pipeline already exists, and it is now load-bearing:
+  every record ships `roofMaterial: default` because inferring it from bouwjaar
+  would be a prior supplying a value.
+- **Validation of the façade detector.** `check-facade-registration.ts` is red
+  at its own 0.5 m bar, and no detector output has been checked against a
+  hand-labelled building. Street-level fields are therefore capped at confidence
+  0.4. `calibration.ts` exists for exactly this and has never been fed a real
+  `ReviewOutcome`.
 - The **131 panden with no 3DBAG match**, individually.
 - Reconciling the 3DBAG API's `v2023.10.08` collection against the
   `v20250903` tileset the runtime streams in `js/detailed-buildings-source.js`.
