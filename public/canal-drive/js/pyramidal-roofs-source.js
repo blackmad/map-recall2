@@ -25,7 +25,10 @@ function parseColour(hex, fallback = 0x708090) {
   return Number.parseInt(hex.replace('#', ''), 16);
 }
 
-/** Mercator transform: local ENU metres → MapLibre world. */
+/**
+ * Local metres (east, up, north) → MapLibre mercator.
+ * Same transform as bikes / boats / signature GLBs.
+ */
 function mercatorTransform(maplibregl, lng, lat) {
   const coordinate = maplibregl.MercatorCoordinate.fromLngLat([lng, lat], 0);
   const units = coordinate.meterInMercatorCoordinateUnits();
@@ -65,7 +68,9 @@ export class PyramidalRoofs {
       const meshData = pyramidalRoofMesh({
         ring,
         apexHeightM: height,
-        eavesHeightM: eaves,
+        // Sit just above the fill-extrusion eaves so the shared edge does not
+        // shimmer against the wall top.
+        eavesHeightM: eaves + 0.05,
         colour: props.roofColour || props.colour || '#708090',
       });
       if (!meshData) continue;
@@ -76,6 +81,9 @@ export class PyramidalRoofs {
       const material = new THREE.MeshLambertMaterial({
         color: parseColour(meshData.colour),
         side: THREE.DoubleSide,
+        polygonOffset: true,
+        polygonOffsetFactor: -1,
+        polygonOffsetUnits: -1,
       });
       const mesh = new THREE.Mesh(geometry, material);
       mesh.frustumCulled = false;
