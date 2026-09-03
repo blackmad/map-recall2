@@ -7,7 +7,7 @@
  * frontages and any of them looks like the right answer.
  *
  * The check compares the image against ground truth BAG already holds: plot
- * boundaries. In a terrace, a plot boundary is a party wall, and a party wall
+ * boundaries, matched against where the *roofline steps*. In a terrace, a plot boundary is a party wall, and a party wall
  * is a vertical break in the photograph — a change of brick, of paint, of
  * storey height, or a downpipe. So a registered projection puts BAG's
  * boundaries on top of the image's strongest vertical edges, and a shifted one
@@ -32,6 +32,7 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/area
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { rectifyFacade, type CameraPose, type EquirectangularImage, type YawConvention } from '../../src/canalRecall/facade/rectify.ts';
 import { GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { normalise, skyline, skylineSteps } from '../../src/canalRecall/facade/skyline.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -145,7 +146,7 @@ const poseOf = (view: PanoramaView, point: ProjectedPoint, headingSign = 1, yawO
 /** The wall with the most well-conditioned leaf-off views — the street frontage. */
 function frontage(buildingId: string) {
   const walls = buildElevations(footprints.get(buildingId)!);
-  let best: { wall: typeof walls[number]; views: typeof posed } | null = null;
+  let best: { wall: typeof walls[number]; views: typeof posed; obliquity: number } | null = null;
   for (const wall of walls) {
     const usable = posed.filter(pose => {
       if (Math.abs(pose.point.x - wall.midpoint.x) > 60 || Math.abs(pose.point.y - wall.midpoint.y) > 60) return false;
@@ -156,7 +157,13 @@ function frontage(buildingId: string) {
       return so >= Math.max(12, wall.lengthM * 2.5) && so <= 45
         && obliquityDeg(wall, pose.point) <= 10 && isLeafOff(pose.view.capturedAt);
     });
-    if (!best || usable.length > best.views.length) best = { wall, views: usable };
+    if (!usable.length) continue;
+    // Squarest available view decides, not the busiest wall. Counting views
+    // favours long rear walls that happen to face an open yard, and those are
+    // exactly the walls with a taller building behind them and no sky.
+    const squarest = usable.reduce((a, b) => (obliquityDeg(wall, b.point) < obliquityDeg(wall, a.point) ? b : a));
+    const obliquity = obliquityDeg(wall, squarest.point);
+    if (!best || obliquity < best.obliquity) best = { wall, views: usable, obliquity };
   }
   return best;
 }
@@ -168,7 +175,7 @@ function frontage(buildingId: string) {
  */
 async function offsetFor(buildingId: string, headingSign: number, yawOffsetDeg: number, yaw: YawConvention) {
   const front = frontage(buildingId);
-  if (!front || !front.views.length) return null;
+  if (!front || !front.views.length) { reason = 'no view meeting standoff/obliquity/leaf-off'; return null; }
   const wall = front.wall;
   const length = Math.hypot(wall.end.x - wall.start.x, wall.end.y - wall.start.y);
   const ux = (wall.end.x - wall.start.x) / length, uy = (wall.end.y - wall.start.y) / length;
@@ -176,33 +183,51 @@ async function offsetFor(buildingId: string, headingSign: number, yawOffsetDeg: 
   const along = (p: ProjectedPoint) => (p.x - centre.x) * ux + (p.y - centre.y) * uy;
   const offLine = (p: ProjectedPoint) => Math.abs((p.x - centre.x) * wall.normal.x + (p.y - centre.y) * wall.normal.y);
 
-  // Plot boundaries of every building whose front sits on this same line.
+  // Plot boundaries of every building whose front sits on this same line, and
+  // the tallest ridge among them — the strip has to clear the tallest
+  // neighbour, not the target, or the columns in front of a taller house
+  // contain no sky and report no roofline.
   const positions: number[] = [];
-  for (const footprint of footprints.values()) {
+  let tallestRidge = massing.get(buildingId)?.ridgeHeight ?? 16;
+  for (const [neighbourId, footprint] of footprints) {
+    let touches = false;
     for (const vertex of footprint) {
       const a = along(vertex);
       if (Math.abs(a) > SPAN_M / 2 - 1 || offLine(vertex) > 1.2) continue;
+      touches = true;
       if (positions.some(existing => Math.abs(existing - a) < 0.4)) continue;
       positions.push(a);
     }
+    if (touches) tallestRidge = Math.max(tallestRidge, massing.get(neighbourId)?.ridgeHeight ?? 0);
   }
-  if (positions.length < 3) return null;
+  if (positions.length < 3) { reason = `only ${positions.length} plot boundaries on the wall line`; return null; }
 
   // Squarest view available.
   const pose = front.views.reduce((a, b) => (obliquityDeg(wall, b.point) < obliquityDeg(wall, a.point) ? b : a));
   const image = await panorama(pose.view);
-  if (!image) return null;
+  if (!image) { reason = 'panorama image unavailable'; return null; }
 
   const rect = rectifyFacade(image, poseOf(pose.view, pose.point, headingSign, yawOffsetDeg), {
     start: { x: centre.x - ux * (SPAN_M / 2), y: centre.y - uy * (SPAN_M / 2) },
     end: { x: centre.x + ux * (SPAN_M / 2), y: centre.y + uy * (SPAN_M / 2) },
-    baseZ: (massing.get(buildingId)?.groundLevel ?? 1) + 2,   // above parked cars and bikes
-    topZ: (massing.get(buildingId)?.ridgeHeight ?? 16) - 0.5, // below the roofline, which is not vertical
+    // The strip must reach well above the tallest ridge in it: the signal is
+    // the sky boundary, so there has to be sky.
+    baseZ: (massing.get(buildingId)?.groundLevel ?? 1) + 4,
+    topZ: tallestRidge + 14,
   }, { pixelsPerMetre: PX_PER_M, yaw });
 
   const toPx = (a: number) => ((a + SPAN_M / 2) / SPAN_M) * rect.width;
-  const expected = boundaryProfile(rect.width, positions.map(toPx), 0.35 * PX_PER_M);
-  const observed = edgeProfile(rect);
+  const heights = skyline(rect);
+  const found = heights.filter(h => h !== null).length;
+  // Too little sky, or too little building, and there is no staircase to read.
+  if (found < rect.width * 0.45) {
+    reason = `sky found in only ${Math.round((100 * found) / rect.width)}% of columns`
+      + ` (strip ${((massing.get(buildingId)?.groundLevel ?? 1) + 4).toFixed(1)}–${(tallestRidge + 14).toFixed(1)} m NAP)`;
+    return null;
+  }
+
+  const expected = boundaryProfile(rect.width, positions.map(toPx), 0.3 * PX_PER_M);
+  const observed = normalise(skylineSteps(heights, Math.round(0.9 * PX_PER_M)));
   const { shift } = bestShift(expected, observed, Math.round(MAX_SHIFT_M * PX_PER_M));
   return { offsetM: shift / PX_PER_M, boundaries: positions.length, standoff: standoffM(wall, pose.point), obliquity: obliquityDeg(wall, pose.point), wallLength: wall.lengthM };
 }
@@ -213,15 +238,19 @@ const targets = (arg('ids') ?? [
   '0363100012176355', '0363100012168556', '0363100012176537', '0363100012169510',
 ].join(',')).split(',');
 
+let reason = '';
 const yaw = (arg('yaw') as YawConvention) ?? 'centre';
 console.log(`Registration against BAG plot boundaries — yaw=${yaw}\n`);
 
 const offsets: number[] = [];
+const signed: number[] = [];
 for (const buildingId of targets) {
   if (!footprints.has(buildingId)) { console.log(`${buildingId}  not in area`); continue; }
+  reason = 'unknown';
   const result = await offsetFor(buildingId, 1, 0, yaw);
-  if (!result) { console.log(`${buildingId}  no well-conditioned leaf-off view, or too few boundaries`); continue; }
+  if (!result) { console.log(`${buildingId}  skipped — ${reason}`); continue; }
   offsets.push(Math.abs(result.offsetM));
+  signed.push(result.offsetM);
   console.log(`${buildingId}  wall ${result.wallLength.toFixed(1)}m, view ${result.standoff.toFixed(0)}m at ${result.obliquity.toFixed(1)}°,`
     + ` ${result.boundaries} boundaries  →  offset ${result.offsetM >= 0 ? '+' : ''}${result.offsetM.toFixed(2)} m`);
 }
@@ -229,7 +258,16 @@ for (const buildingId of targets) {
 if (offsets.length < 3) { console.error('\ntoo few buildings measured to conclude anything'); process.exit(1); }
 const sorted = [...offsets].sort((a, b) => a - b);
 const median = sorted[Math.floor(sorted.length / 2)];
+/**
+ * Signed mean and unsigned median say different things, and the difference is
+ * the whole diagnosis. A *bias* — every building offset the same way — is a
+ * misregistered projection and is correctable. A *scatter* around zero is the
+ * check's own resolution: BAG plot boundaries and visual roofline steps are
+ * related but not identical, since one pand can span two visual houses.
+ */
+const bias = signed.reduce((sum, v) => sum + v, 0) / signed.length;
 console.log(`\n${offsets.length} buildings — median |offset| ${median.toFixed(2)} m, worst ${sorted[sorted.length - 1].toFixed(2)} m`);
+console.log(`signed mean (bias) ${bias >= 0 ? '+' : ''}${bias.toFixed(2)} m — a bias is a misregistration, scatter about zero is this check's resolution`);
 
 /**
  * A canal house is 5.7 m wide at the median and its bays are about a metre, so
