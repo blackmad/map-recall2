@@ -21,6 +21,7 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/area
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { rectifyFacade, type CameraPose, type EquirectangularImage, type YawConvention } from '../../src/canalRecall/facade/rectify.ts';
 import { GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { skyline, skylineSteps } from '../../src/canalRecall/facade/skyline.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -124,7 +125,7 @@ const ridge = massing.get(targetId)?.ridgeHeight ?? 16;
 const rect = rectifyFacade(image, cameraPose, {
   start: { x: centre.x - ux * (SPAN_M / 2), y: centre.y - uy * (SPAN_M / 2) },
   end: { x: centre.x + ux * (SPAN_M / 2), y: centre.y + uy * (SPAN_M / 2) },
-  baseZ: ground - 1, topZ: ridge + 2,
+  baseZ: ground + 4, topZ: ridge + 7,
 }, { pixelsPerMetre: PX_PER_M, yaw });
 
 // Draw the register's boundaries over the photograph.
@@ -142,6 +143,31 @@ const paint = (x: number, colour: [number, number, number], width: number) => {
 };
 const toPx = (a: number) => ((a + SPAN_M / 2) / SPAN_M) * rect.width;
 for (const tick of merged) paint(toPx(tick.at), tick.buildingId === targetId ? [255, 60, 40] : [40, 180, 255], 3);
+
+// Draw the detected roofline, and mark where it steps. If the detector works,
+// the green line traces the actual rooftops and the yellow marks land on the
+// same columns as the blue plot boundaries.
+const heights = skyline(rect);
+const steps = skylineSteps(heights, Math.round(0.9 * PX_PER_M));
+const maxStep = Math.max(...steps, 1);
+for (let x = 0; x < rect.width; x++) {
+  const y = heights[x];
+  if (y !== null) {
+    for (let dy = -2; dy <= 2; dy++) {
+      const yy = y + dy;
+      if (yy < 0 || yy >= rect.height) continue;
+      const offset = (yy * rect.width + x) * 4;
+      rect.data[offset] = 40; rect.data[offset + 1] = 255; rect.data[offset + 2] = 90;
+    }
+  }
+  if (steps[x] > maxStep * 0.45) {
+    for (let yy = 0; yy < 26; yy++) {
+      const offset = (yy * rect.width + x) * 4;
+      rect.data[offset] = 255; rect.data[offset + 1] = 220; rect.data[offset + 2] = 0;
+    }
+  }
+}
+console.log(`skyline found in ${heights.filter(h => h !== null).length}/${rect.width} columns`);
 
 const encoded = jpeg.encode({ width: rect.width, height: rect.height, data: Buffer.from(rect.data) }, 90);
 await mkdir(OUT, { recursive: true });
