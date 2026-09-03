@@ -58,3 +58,35 @@ export function pointInRing([lng, lat]: [number, number], ring: Ring): boolean {
   }
   return inside;
 }
+
+/** One polygon: outer ring first, then zero or more hole rings. */
+export type PolygonRings = Ring[];
+
+export type FootprintGeometry =
+  | { type: 'Polygon'; coordinates: PolygonRings }
+  | { type: 'MultiPolygon'; coordinates: PolygonRings[] };
+
+/**
+ * Split GeoJSON into polygons without flattening holes into extra outers.
+ *
+ * `coordinates.flat()` on a MultiPolygon is correct for outers-only footprints,
+ * but on a Polygon with inner rings it turns courtyards into solid slabs — the
+ * Droogbak H-cutout (`r3606840`) became five positive extrusions.
+ */
+export function polygonsOf(geometry: FootprintGeometry): PolygonRings[] {
+  return geometry.type === 'Polygon' ? [geometry.coordinates] : geometry.coordinates;
+}
+
+/** Outer ring of each polygon — what the ladder/grid use for containment. */
+export function outerRingsOf(polygons: readonly PolygonRings[]): Ring[] {
+  return polygons.map(polygon => polygon[0]).filter(ring => ring && ring.length > 0);
+}
+
+export function geometryHasHoles(polygons: readonly PolygonRings[]): boolean {
+  return polygons.some(polygon => polygon.length > 1);
+}
+
+export function asGeometry(polygons: PolygonRings[]): FootprintGeometry {
+  if (polygons.length === 1) return { type: 'Polygon', coordinates: polygons[0] };
+  return { type: 'MultiPolygon', coordinates: polygons };
+}

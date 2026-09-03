@@ -185,39 +185,79 @@ export function dedupeAppearanceFeatures(features: AppearanceFeature[]): Appeara
 }
 
 /**
- * Wall top for a fill-extrusion: below the roof when OSM tagged a thickness.
+ * Wall top for a fill-extrusion.
  *
- * Tagged `roofHeight` always wins. Untagged pyramidal parts (Oude Kerk's 58 m
- * spire) get the same invented tip the mesh layer uses, otherwise walls fill
- * the cone and leave a flat grey cylinder.
+ * Cut to the eaves only when something else owns the volume above:
+ *   - pyramidal → Three.js cone (tagged tip, else invented tip)
+ *   - flat / untagged shape with a distinct roof colour → thin colour lid
+ *
+ * Gabled / skillion / hipped / dome etc. keep full `height`. Cutting them for
+ * a flat lid just stacked coplanar brown tops and blue lids on Oude Kerk
+ * (22 overlapping parts at 23 m) and made same-colour nave sections look
+ * missing where the lid was filtered out.
  */
 export function wallTopHeightExpression(): MapLibreExpression {
+  const height = ['coalesce', ['get', 'height'], 5];
+  const minHeight = ['coalesce', ['get', 'minHeight'], 0];
   // inventedTip = clamp(0.35 * (height − minHeight), 3, 12)
-  const exposed = ['-', ['coalesce', ['get', 'height'], 5], ['coalesce', ['get', 'minHeight'], 0]];
+  const exposed = ['-', height, minHeight];
   const inventedTip = ['max', 3, ['min', 12, ['*', 0.35, exposed]]];
+  const taggedTip = ['get', 'roofHeight'];
+  const pyramidalTip = [
+    'case',
+    ['>', ['coalesce', taggedTip, 0], 0], taggedTip,
+    inventedTip,
+  ];
+  const eaves = (tip: MapLibreExpression): MapLibreExpression => [
+    'max', minHeight, ['-', height, tip],
+  ];
+  const flatOrUntagged: MapLibreExpression = [
+    'any',
+    ['!', ['has', 'roofShape']],
+    ['==', ['get', 'roofShape'], ''],
+    ['==', ['get', 'roofShape'], 'flat'],
+  ];
+  const distinctRoofColour: MapLibreExpression = [
+    'all',
+    ['has', 'roofColour'],
+    ['!',
+      ['all',
+        ['has', 'colour'],
+        ['==', ['get', 'roofColour'], ['get', 'colour']],
+      ],
+    ],
+  ];
   return [
     'case',
-    ['>', ['coalesce', ['get', 'roofHeight'], 0], 0],
-    ['-', ['coalesce', ['get', 'height'], 5], ['get', 'roofHeight']],
     ['==', ['get', 'roofShape'], 'pyramidal'],
-    ['-', ['coalesce', ['get', 'height'], 5], inventedTip],
-    ['coalesce', ['get', 'height'], 5],
+    eaves(pyramidalTip),
+    ['all',
+      ['>', ['coalesce', taggedTip, 0], 0],
+      flatOrUntagged,
+      distinctRoofColour,
+    ],
+    eaves(taggedTip),
+    height,
   ];
 }
 
 /**
- * Flat roof caps: colour lids for parts we are not meshing yet.
+ * Flat roof caps: colour lids only for true flat tops we are not meshing.
  *
  * Skip:
- *   - every pyramidal part (meshed, with tagged or invented tip)
- *   - lids whose colour equals the wall (OSM often copies building:colour into
- *     roof:colour; a same-colour lid only fights the wall top)
+ *   - every shaped roof (gabled/skillion/… fight as coplanar lids; pyramidal
+ *     is meshed)
+ *   - lids whose colour equals the wall (same-colour lid only fights the top)
  */
 export function flatRoofFilter(): MapLibreExpression {
   return [
     'all',
     ['has', 'roofColour'],
-    ['!=', ['get', 'roofShape'], 'pyramidal'],
+    ['any',
+      ['!', ['has', 'roofShape']],
+      ['==', ['get', 'roofShape'], ''],
+      ['==', ['get', 'roofShape'], 'flat'],
+    ],
     ['!',
       ['all',
         ['has', 'colour'],
