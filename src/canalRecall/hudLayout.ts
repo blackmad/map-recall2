@@ -215,7 +215,9 @@ export function hudLayout({
     };
   }
 
-  // ---- Desktop: the proven 16:9 arrangement, unchanged. --------------------
+  // ---- Desktop: corner cards, bottom trip/minimap. Width/height follow the
+  // window aspect (see viewport.ts), so a tall desktop grows this space instead
+  // of letterboxing a fixed 16:9 strip. ------------------------------------
   const recall = { x: 15, y: 15, width: 310, height: feedbackVisible ? 62 : 43 };
   const location = { x: 15, y: 84, width: 310, height: neighborhoodVisible ? 55 : 38 };
   const destination = { x: width - 350, y: 15, width: 335, height: 48 };

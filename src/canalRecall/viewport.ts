@@ -1,21 +1,23 @@
 // The canvas used to be a fixed 1280×720 logical surface, letterboxed into
-// whatever window it was given. On a landscape desktop that is invisible. On a
-// portrait phone it is the whole bug: a 390×844 window gets a 390×219 canvas
-// pinned to the middle of the screen, the 2D HUD draws into that strip, and the
-// MapLibre container underneath keeps its own size — so the two layers show
-// different parts of Amsterdam and most of the HUD lands off screen.
+// whatever window it was given. On a landscape desktop near 16:9 that was
+// almost invisible. On a tall desktop window or a portrait phone it was the
+// whole bug: a 390×844 phone got a 390×219 strip floating in white space, and
+// a tall browser window got the same landscape band with empty paper above
+// and below — the MapLibre layer underneath kept its own size, so the HUD and
+// the map showed different parts of Amsterdam.
 //
 // This module decides one thing: given a physical window, what logical
-// coordinate space should the canvas use. Desktop keeps the proven 16:9 space
-// so no existing layout moves. Touch-sized viewports switch to a logical space
-// that *is* the CSS viewport, which makes the canvas fill the screen, keeps the
-// map and the HUD in the same coordinate system, and renders a 13 px label at
-// 13 CSS px instead of 4.
+// coordinate space should the canvas use. Both desktop and compact now fill
+// the CSS viewport. Compact uses CSS pixels as logical units (so 13 px type
+// stays 13 CSS px on a phone). Desktop keeps the proven 1280×720 density on
+// the constrained axis and *expands* the other axis to match the window
+// aspect, so a tall window grows logical height instead of letterboxing, and
+// a true 16:9 window still lands on the historic 1280×720 space.
 //
 // Everything downstream reads `width`/`height` rather than a constant, so the
 // HUD layout, the camera centre and the touch controls all follow from here.
 
-/** `desktop` keeps the fixed 16:9 space; `compact` fills a phone-sized screen. */
+/** `desktop` uses design-density logical units; `compact` uses CSS pixels. */
 export type LayoutMode = 'desktop' | 'compact';
 export type Orientation = 'landscape' | 'portrait';
 
@@ -38,7 +40,7 @@ export type Viewport = {
   safeBottom: number;
 };
 
-/** The proven desktop coordinate space. Portrait/compact no longer uses it. */
+/** The proven desktop density. Exact 16:9 windows still resolve to this size. */
 export const DESIGN_WIDTH = 1280;
 export const DESIGN_HEIGHT = 720;
 
@@ -111,19 +113,30 @@ export function resolveViewport({
     };
   }
 
-  // Desktop: the historic letterbox, unchanged.
-  const ratio = DESIGN_WIDTH / DESIGN_HEIGHT;
-  let cssWidth = winW;
-  let cssHeight = winH;
-  if (cssWidth / cssHeight > ratio) cssWidth = cssHeight * ratio;
-  else cssHeight = cssWidth / ratio;
+  // Desktop: fill the window. Keep the historic density on the constrained
+  // axis and grow the other so the logical aspect matches the CSS box —
+  // letterboxing used to leave a tall browser as a 16:9 strip in white paper.
+  const designRatio = DESIGN_WIDTH / DESIGN_HEIGHT;
+  const windowRatio = winW / winH;
+  let width: number;
+  let height: number;
+  if (windowRatio >= designRatio) {
+    // Wider than 16:9 (ultrawide): keep design height, expand width.
+    height = DESIGN_HEIGHT;
+    width = Math.max(DESIGN_WIDTH, Math.round(DESIGN_HEIGHT * windowRatio));
+  } else {
+    // Taller than 16:9 (including a maximised tall window): keep design
+    // width, expand height. A true 16:9 window lands exactly on 1280×720.
+    width = DESIGN_WIDTH;
+    height = Math.max(DESIGN_HEIGHT, Math.round(DESIGN_WIDTH / windowRatio));
+  }
   return {
-    width: DESIGN_WIDTH,
-    height: DESIGN_HEIGHT,
-    cssWidth,
-    cssHeight,
-    scale: cssWidth / DESIGN_WIDTH,
-    backingScale: clamp(devicePixelRatio * (cssWidth / DESIGN_WIDTH), 1, MAX_BACKING_SCALE),
+    width,
+    height,
+    cssWidth: winW,
+    cssHeight: winH,
+    scale: winW / width,
+    backingScale: clamp(devicePixelRatio * (winW / width), 1, MAX_BACKING_SCALE),
     mode,
     orientation,
     touch,

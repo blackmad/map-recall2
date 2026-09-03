@@ -444,11 +444,10 @@ class Game {
     });
   }
 
-  // The logical drawing space follows the window rather than being fixed at
-  // 1280×720 and letterboxed into it. On a phone that letterbox was the whole
-  // portrait bug: a 390×844 window produced a 390×219 canvas floating in the
-  // middle of the screen, while the MapLibre layer underneath kept its own
-  // size — so the HUD and the map showed different parts of the city.
+  // The logical drawing space fills the window. It used to be fixed at 1280×720
+  // and letterboxed into whatever was given, so a tall desktop window and a
+  // portrait phone both got a landscape strip floating in white paper while
+  // the MapLibre layer underneath kept its own size.
   _resize() {
     const viewport = window.CanalRecallUi.readWindowViewport(window);
     this.viewport = viewport;
@@ -456,14 +455,16 @@ class Game {
     // moves the whole HUD into the new coordinate space.
     CANVAS_W = viewport.width;
     CANVAS_H = viewport.height;
-    // In compact mode the canvas is pinned to the viewport by CSS rather than
-    // sized in pixels, so it can never be wider than the screen and cannot
-    // start the overflow -> shrink-to-fit -> wider-innerWidth loop that used to
-    // latch the desktop layout onto a phone.
+    // Pin the canvas to the viewport by CSS rather than sizing it in pixels, so
+    // it always fills the window and cannot start the overflow -> shrink-to-fit
+    // -> wider-innerWidth loop that used to latch the desktop layout onto a
+    // phone. `compact-layout` still marks the phone HUD path for CSS that
+    // needs to know; `fill-viewport` is what actually kills the letterbox.
     const compact = viewport.mode === 'compact';
     document.body.classList.toggle('compact-layout', compact);
-    this.canvas.style.width = compact ? '100%' : viewport.cssWidth + 'px';
-    this.canvas.style.height = compact ? '100%' : viewport.cssHeight + 'px';
+    document.body.classList.add('fill-viewport');
+    this.canvas.style.width = '100%';
+    this.canvas.style.height = '100%';
     // Allocate enough backing pixels for large and Retina displays. CSS scaling
     // a fixed 720p canvas was the source of the blocky waterway overlay.
     const backingWidth = Math.round(viewport.width * viewport.backingScale);
