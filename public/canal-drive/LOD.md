@@ -298,12 +298,8 @@ decode and frame-time budgets stops at signature landmarks.
 
 ## Immediate next actions
 
-1. Rebase `feat/lod1-building-city` onto current `main` without publishing its
-   staged data.
-2. Build the complete OSM building/part input and fix the Magna Plaza class of
-   regression.
-3. Implement and test the tower/podium resolver.
-4. Rebuild the comparison city and decide whether LoD1 is now a strict visual
-   improvement.
-5. In parallel only after the foundation is stable, acquire and inventory the
-   Paleis op de Dam GLB for the signature-model proof.
+1. Drive `/canal-drive/` on `feat/building-one-owner` with published tiles
+   (Waag cones, Magna Plaza steps, Oude Kerk massing, Zuidas ridge-towers).
+2. Start step 3 — Rijksmuseum / Paleis LoD2.2 or signature-model proof.
+3. Keep the coloured overlay path as the no-tiles fallback; do not delete it
+   until a clean checkout without `building-tiles/` still plays.

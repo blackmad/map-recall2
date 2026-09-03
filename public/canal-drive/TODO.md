@@ -164,16 +164,14 @@ tier**. BAG/3DBAG is the measured Dutch foundation, not permission to flatten a
 carefully mapped tower, wing, passage, courtyard or stacked part. Resolve the
 sources into one owner per building; never draw overlapping representations.
 
-Status: `main` has the complete OpenFreeMap/OSM extrusion fallback, a partial
-10,578-building measured-colour overlay, optional hosted 3DBAG LoD2.2 roof
-geometry, and thirteen signature landmark GLBs available in the demo (disabled
-in the live game for cost). The older `feat/signature-landmarks` lane is
-superseded. `feat/lod1-building-city` has the unmerged complete 336,784-building
-BAG-keyed LoD1 city, measured AHN heights and z14 streaming tiles (15 MB
-gzipped). It is blocked by two comparison failures: its resolver sees only
-colour-tagged OSM parts, flattening uncoloured manual compositions such as Magna
-Plaza, and a roof percentile draws 201 tower-on-podium panden too low. Fix both,
-rerun the comparison/e2e gates, then merge the LoD1 foundation.
+Status: `feat/building-one-owner` — LoD1 step 2 republished from pipeline
+(2026-09-03). 342,993 features in 295 z14 `.geojson.gz` tiles (~15.4 MB).
+Checks green: Waag 15, Magna Plaza 18 OSM, Oude Kerk 43 OSM, 145 ridge-tower,
+574 courtyard footprints keep OSM holes under BAG heights. Tier-2 stand-ins are
+6,624 (was 20k on the first publish — same OSM extract, fewer panden win as
+compositions; Magna Plaza itself is intact). Gable mesh remains step 3.
+
+Compare: `/canal-drive/building-compare.html`.
 
 Do this as a gated progression rather than converting Amsterdam in one shot,
 ordered **completeness before fidelity** — every step that makes more of the
@@ -181,30 +179,15 @@ city look like itself comes before any step that makes a few buildings look
 better. This is a P2 item on a board whose P1 tier is the learning model, so it
 will be interrupted; each step must be worth shipping alone.
 
-1. **Fix the two measured LoD1 regressions.** Feed the resolver every OSM
-   building and `building:part`, independently of appearance tags, and preserve
-   manual compositions such as Magna Plaza. Then detect tower-on-podium panden
-   instead of flattening them to the ordinary roof percentile. Pin both with
-   named comparison fixtures.
-2. **Ship the complete LoD1 city.** The city is gray because only 10,578
-   buildings have appearance at all, against 336,784 BAG/3DBAG buildings in the
-   staged drivable-area city — coverage, not fidelity.
-   Publish a complete BAG-keyed footprint + 3DBAG height + measured roof colour
-   source on the tile grid detailed geometry will later use, render it with
-   ordinary fill-extrusions, and delete `building-3d`, `osm-colored-buildings`,
-   `osm-colored-building-roofs` and the height-offset stack that keeps three
-   coplanar extrusions from z-fighting. That stack is now partly defused rather
-   than fixed: `basemapBuildingFilter` hides the basemap copy of any building
-   the extract carries (by OSM id), and a runtime proximity scan hides the
-   residual pairs the two pipelines hold under different ids (centroid within
-   3 m). One owner per building is still the real fix. Heights stop being
-   guessed in the same change: `build-osm-building-appearance.ts:32` currently falls back to
-   `levels * 3` or a flat 9 m, so much of the skyline is invented, and AHN-derived
-   3DBAG heights replace it everywhere. Largest visible win in the whole item,
-   no new renderer, and it is the fallback every later step needs. If step 1(a)
-   succeeded, this can ship as our LoD1 city underneath the existing hosted
-   LoD2.2 meshes, recoloured — high-quality existing geometry plus our own
-   measurements, no compiler written yet.
+1. **Fix the two measured LoD1 regressions.** ✅ Done on `feat/building-one-owner`:
+   complete `buildings-osm.geojson` (422,570 buildings / 5,485 parts) feeds the
+   ladder; compositions without `min_height` still win; parent outlines are
+   dropped; tower-on-podium uses `ridge-tower` when the ridge sits ≥10 m above
+   LoD1.2. Named checks: Waag, Magna Plaza, Oude Kerk, ≥50 ridge-tower.
+2. **Ship the complete LoD1 city.** ✅ Republished on `feat/building-one-owner`:
+   295 z14 `.geojson.gz` tiles (~15.4 MB), 342,993 features, courtyard holes
+   and paint-inherit in the pipeline. Overlay dedupe remains the fallback when
+   the index is absent.
 3. **Rijksmuseum proof.** Fetch a tightly clipped, pinned 3DBAG LoD2.2 source
    around the Rijksmuseum and export an owned glTF. Confirm that the result
    preserves building parts, semantic roof/wall surfaces, the courtyard and the

@@ -79,6 +79,11 @@ osmium tags-filter "$city_pbf" \
   wr/roof:colour wr/roof:color wr/roof:material \
   -o "$work_dir/building-appearance.osm.pbf"
 osmium export --add-unique-id=type_id "$work_dir/building-appearance.osm.pbf" -o "$work_dir/building-appearance.geojson"
+# Complete building / building:part geometry for the LoD1 ladder — independent
+# of colour tags, so Magna Plaza and similar compositions survive the merge.
+osmium tags-filter "$city_pbf" wr/building wr/building:part \
+  -o "$work_dir/buildings-osm.osm.pbf"
+osmium export --add-unique-id=type_id "$work_dir/buildings-osm.osm.pbf" -o "$work_dir/buildings-osm.geojson"
 osmium tags-filter "$city_pbf" "r/name=$city_name" -o "$work_dir/boundaries.osm.pbf"
 osmium export "$work_dir/boundaries.osm.pbf" -o "$work_dir/boundaries.geojson"
 osmium tags-filter "$city_pbf" r/boundary=place -o "$work_dir/place-boundaries.osm.pbf"
@@ -87,6 +92,7 @@ osmium export "$work_dir/place-boundaries.osm.pbf" -o "$work_dir/place-boundarie
 node --import tsx scripts/build-amsterdam-extract.ts "$work_dir/features.geojson" "$work_dir/boundaries.geojson" \
   "$work_dir/place-boundaries.geojson" "$build_dir" "$city_id" "$city_name" "$city_center"
 node --import tsx scripts/build-osm-building-appearance.ts "$work_dir/building-appearance.geojson" "$build_dir/buildings-colored.geojson"
+node --import tsx scripts/build-osm-buildings.ts "$work_dir/buildings-osm.geojson" "$build_dir/buildings-osm.geojson"
 node --import tsx scripts/build-osm-trees.ts "$work_dir/features.geojson" "$build_dir/trees.json"
 node --import tsx scripts/enrich-amsterdam-wikimedia.ts "--directory=$build_dir"
 node --import tsx scripts/enrich-amsterdam-wikipedia-extracts.ts "--directory=$build_dir"
