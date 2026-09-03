@@ -97,6 +97,14 @@ cheaper, and the migration plan buys it first.
 
 ### Identity and footprint
 
+**The hosted 3D Tiles carry identity but no 2D footprint.** Measured: the tiles
+give a `pand_id`, heights, year and quality per building, but their geometry is
+meshopt-compressed 3D mesh, with no ground polygon to extrude. A complete LoD1
+city therefore needs a footprint source those tiles do not provide. 3DBAG's API
+returns full CityJSON per pand — LoD1.2, LoD1.3 and LoD2.2 geometry with 62
+attributes — which is correct per building and hopeless for a few hundred
+thousand of them, so the bulk download is what Phase 1 has to settle first.
+
 **BAG `pand_id` is the canonical Dutch building identity.** It is stable across
 the government geometry and is the key used by the compiled appearance table.
 Retain OSM way/relation IDs as aliases for game landmarks, tags and editing
@@ -144,21 +152,53 @@ long as one rule holds: **fidelity varies per building; ownership never does.**
 Two representations of one building is the bug. Two neighbours at different
 fidelity is the design.
 
-Geometry is chosen per building from a ladder, best available wins, and the
+**Government geometry is the floor for the city, never the ceiling for a
+landmark.** BAG describes *panden*, and a pand is a legal object, not a shape a
+player recognises. Measured against v20250903 CityJSON, the whole Waag is a
+single pand: 385 m of ground area, built 1700, extruding to 16.0 m. OSM holds
+the same building as fourteen hand-mapped `building:part` ways at 6, 9, 15, 17,
+20 and 26 m with pyramidal and gabled roofs. The turrets that make it
+recognisable are not separate legal objects, so no amount of LoD1 quality will
+ever recover them: the trade on offer is fourteen stepped parts for one flat
+box. The AHN ridge on that pand is 20.4 m, which reaches the OSM 20 m mass and
+not the 26 m turret — the point cloud sees the building, the legal register
+does not see its shape.
+
+(Two further panden sit within 45 m — 72 m built 1692 and 41 m built 1905, at
+13.0 and 12.9 m — and they are neighbours on the Nieuwmarkt, not part of the
+Waag. Their footprints do not overlap any Waag part at all. They are worth
+naming because a radius search around a landmark picks them up and makes the
+pand count look larger than it is.)
+
+Doing that to the buildings the game asks questions about would be a regression
+dressed as an upgrade, and it is not a rare case: 1,448 features in the current
+extract are stacked building parts and 4,868 carry a roof shape, concentrated
+exactly on the landmarks worth teaching.
+
+So geometry is chosen per building from a ladder, best available wins, and the
 choice is recorded:
 
-1. 3DBAG LoD2.2 semantic mesh, where reconstruction exists and passes quality;
-2. 3DBAG LoD1.2/1.3 extrusion, for panden without an accepted LoD2.2;
-3. OSM footprint with an OSM height, for structures BAG does not hold at all —
-   canopies, ruins, some building parts;
-4. OSM footprint with an *estimated* height, which is where nearly the whole
+1. 3DBAG LoD2.2 semantic mesh, where reconstruction exists and passes quality.
+2. Hand-mapped OSM `building:part` composition, where a mapper has modelled the
+   building in three dimensions. This is human work that no government dataset
+   replaces, and it outranks a generic extrusion however well measured.
+3. 3DBAG LoD1.2 extrusion at its measured height — the complete floor, and what
+   the overwhelming majority of the city gets.
+4. OSM footprint with a tagged `height`, for structures BAG does not hold at all
+   — canopies, ruins, some building parts.
+5. OSM footprint with an *estimated* height, which is where nearly the whole
    city sits today: `build-osm-building-appearance.ts` takes the `height` tag,
    else `levels * 3`, else a flat 9 m.
 
-That last tier is worth naming plainly, because it changes what Phase 1 is
-worth. A large part of the current skyline is not measured but guessed, and
-replacing it with AHN-derived 3DBAG heights is a fidelity upgrade in its own
-right — independent of colour, and visible from every camera angle.
+Tiers 1 and 2 are not ranked against each other by decree. Laser-derived LoD2.2
+should capture the Waag's tower masses well, but the OSM parts carry semantic
+roof shapes and colours that a point cloud does not. Which wins is settled by
+looking at the specific landmark, not by preferring the newer source.
+
+Tier 5 is worth naming plainly, because it changes what Phase 1 is worth. A
+large part of the current skyline is not measured but guessed, and replacing it
+with AHN-derived heights is a fidelity upgrade in its own right — independent of
+colour, and visible from every camera angle.
 
 Appearance is mixed too, and deliberately: the precedence function above will
 resolve one roof from a measurement and its neighbour from an age prior. Every
@@ -371,6 +411,56 @@ Cache aggressively at every stage. A full rebuild should be measured and stated
 in the manifest; if it cannot be resumed after a failure, it is not yet a build
 system.
 
+## When a renderer gets written
+
+Never, is the short answer, and it is worth stating plainly because "our own 3D
+buildings" sounds like it implies one.
+
+MapLibre stays: basemap, camera, labels, interaction, the game coordinate
+system. And the custom 3D layer already exists —
+`detailed-buildings-source.js` is a MapLibre custom layer sharing MapLibre's
+WebGL context, running the shared Three.js runtime and streaming 3D Tiles
+today. So the question is never "which renderer", only "what do we feed the
+layer we already have".
+
+That splits the cost into three honest stages:
+
+- **Phase 1 — no renderer work at all.** MapLibre `fill-extrusion`, flat tops,
+  complete city. The largest visible win costs nothing in renderer engineering.
+- **Phase 2 — still no new renderer.** Our own GLB goes into the existing custom
+  layer. This is where a sloped roof first appears on screen.
+- **Phase 3 onward — the real engineering, which is hardening, not authoring.**
+  The current layer is a spike: it clones a material per highlighted building,
+  has no memory budget, no tile eviction, no context-loss recovery, and calls
+  `map.triggerRepaint()` unconditionally every frame so the map never idles.
+  That list, not a renderer, is the work.
+
+### Roof shape, and why Phase 1 keeps flat tops
+
+A `fill-extrusion` is a prism with a flat top. It cannot slope a roof, at all,
+so the flat cap is the ceiling of that technology rather than a shortcut taken
+inside it. Sloped roofs arrive with the mesh layer in Phase 2 and not before.
+
+Measured over the current extract, the roof shapes waiting for that:
+
+| shape | count | what it needs |
+| --- | --- | --- |
+| flat | 1,939 | nothing; already correct |
+| gabled, skillion, hipped and friends | 2,824 | a ridge direction |
+| pyramidal, dome | 84 | an apex over the centroid |
+| other | 21 | case by case |
+
+The ridge direction is a real data gap: `build-osm-building-appearance.ts`
+extracts `roof:shape` and neither `roof:direction` nor `roof:orientation`, so
+2,824 of those roofs know their shape and not their orientation.
+
+That gap is probably not worth closing for Amsterdam. 3DBAG LoD2.2 already
+carries roof planes measured from AHN, so where reconstruction passes there is
+nothing to infer — the roof is observed. A procedural roof generator driven by
+OSM tags earns its place only where LoD2.2 is missing or rejected, and outside
+the Netherlands where there is no equivalent. Build it there, if at all, rather
+than reconstructing what has already been measured.
+
 ## Runtime architecture
 
 ### One custom layer
@@ -507,6 +597,9 @@ camera and browser with every benchmark.
   counted explicitly rather than folded into a single total.
 - A failed join cannot silently transfer one building's appearance to a
   neighbour.
+- No building loses modelled detail to a coverage upgrade. A pand that resolved
+  to several hand-mapped parts before a rebuild still does after it; the Waag is
+  the pinned case in `check-osm-building-appearance.ts`.
 - **No building identity reaches a spaced-repetition review key.** Review keys
   are the feature's name plus the place it was answered, deliberately, so that
   extract regeneration cannot churn player progress. `buildingId` is a rendering
@@ -581,10 +674,16 @@ This is the largest visible improvement in the whole plan and it needs no new
 renderer. Publish a complete BAG-keyed LoD1 building source for Amsterdam —
 every pand, its footprint, its 3DBAG height, its measured or inferred roof
 colour — on the spatial tiles that detailed geometry will later use. Render it
-with ordinary MapLibre fill-extrusions and **remove `building-3d`,
-`osm-colored-buildings` and `osm-colored-building-roofs` from the style**, along
-with the height-offset stack that currently keeps three coplanar extrusions from
-z-fighting.
+with ordinary MapLibre fill-extrusions, along with the height-offset stack that
+currently keeps three coplanar extrusions from z-fighting.
+
+**Remove `building-3d`; absorb the coloured layers, do not delete them.** The
+basemap's gray extrusion is pure redundancy once every building is described
+locally. But `osm-colored-buildings` and `osm-colored-building-roofs` carry the
+hand-mapped parts, roof shapes and colours of tier 2, and deleting them is how
+the Waag becomes a box. They stop being a competing layer by being merged into
+the single source as its top tier — one winner per building — not by being
+switched off.
 
 Two things get better here at once, and the second is easy to overlook: heights
 stop being guessed. Today's extrusions use the OSM `height` tag where it exists
@@ -601,9 +700,10 @@ place to stop for a long time.
 
 Exit: the whole city is coloured and measured rather than a small fraction of
 it; one building source, one identity; picking returns a `BuildingHit` from the
-fallback; the z-fighting workaround is deleted rather than tuned. Detailed
-geometry now has exactly one thing to replace, per building group, on known tile
-boundaries.
+fallback; the z-fighting workaround is deleted rather than tuned; and
+`test:osm-buildings` still finds the Waag standing in its hand-mapped parts at
+six distinct heights. Detailed geometry now has exactly one thing to replace,
+per building group, on known tile boundaries.
 
 ### Phase 2 — Rijksmuseum vertical slice
 

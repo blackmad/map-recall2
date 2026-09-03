@@ -3,6 +3,86 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## LoD1 city republished from the polished pipeline
+
+`build:lod1-city` → `build:lod1-tiles` → `publish:lod1-city --confirm` after
+the post-publish polish. Versioned extract is now 342,993 features / 295 z14
+gzipped tiles (~15.4 MB). Named checks green (Waag 15, Magna Plaza 18, Oude
+Kerk 43, 145 ridge-tower). 574 measured BAG extrusions keep OSM courtyard
+holes (Droogbak is a real Polygon with four inner rings, not a stopgap tile
+edit). Magna Plaza check pin moved to the part-cluster centre so the 18
+stand-ins fall inside the 60 m radius. Stopgap Centraal/Droogbak tile edits
+are replaced by pipeline output.
+
+## Post-publish LoD1 polish (review batch)
+
+Systemic pipeline/runtime fixes after the first city publish (now folded into
+the republished extract above):
+
+- **Oude Kerk lids** — walls full-height for shaped roofs; flat colour lids only
+  for flat/untagged shapes (`buildingStyle`).
+- **Paint drift** — `buildingPaintInherit` copies colour from the smallest
+  containing coloured footprint when part ids are missing from
+  `buildings-colored.geojson`; wired into `build-lod1-city`.
+- **Centraal orphans** — builder marks nearby same-height `building:part`s
+  represented so they are not re-emitted as tier 4.
+- **Droogbak courtyard** — `polygonsOf` / hole-aware `asGeometry`; tier 3 uses
+  OSM footprint when it still has holes.
+
+## Complete LoD1 city published as gzipped z14 tiles
+
+Byte strategy decided: ship `.geojson.gz` (~16 MB, 298 tiles) in the versioned
+Amsterdam extract, not 113 MB of raw GeoJSON. The streamer decompresses with
+`DecompressionStream` (and still works if the host already decoded Content-Encoding),
+feeds the same working set to procedural pyramidal roofs, and hides Liberty
+`building-3d` once the first tile lands. Tiles keep `roofHeight` so Waag eaves
+still stop under the cones. The compare page at `/canal-drive/building-compare.html`
+now reads the published extract and draws the same cones. Publish is
+`npm run publish:lod1-city -- --confirm` from staging.
+
+## One owner per building composition — LoD1 blockers cleared
+
+The comparison page's two real losses are fixed on `feat/building-one-owner`.
+
+**Hand-mapped massing survives without colour tags.** The ladder no longer reads
+only `buildings-colored.geojson`. A complete OSM extract
+(`staging/buildings-osm.geojson`, 422,570 buildings / 5,485 parts) feeds
+geometry; appearance joins by id afterward. Tier 2 now fires for stacked parts
+*or* multi-height compositions (Magna Plaza / Oude Kerk), and
+`compositionDrawIds` drops the parent outline so parts own the pixels alone.
+Named checks: Waag keeps its turrets, Magna Plaza keeps ≥8 OSM parts, Oude Kerk
+keeps a multi-height massing. Staged merge: 20,039 OSM parts standing in for
+8,703 panden (was 1,163 / 164).
+
+**Towers stop measuring as their podiums.** When the AHN ridge sits ≥10 m above
+the LoD1.2 height, extrusion uses `ridge-tower` instead of `roof-70p` /
+volume. Rebuild reports 201 such panden in the BAG table; 130 remain as BAG
+extrusions after OSM compositions claim the rest. Zuidas is the visual fixture.
+
+**Live overlay stops fighting before publish.** `dedupeAppearanceFeatures` runs
+when the coloured extract loads, so Oude Kerk / Waag no longer draw shell and
+parts together on today's three-extrusion stack. Publishing the staged z14
+tiles (16 MB gzipped) remains the step-2 decision.
+
+**Waag's pyramidal roofs actually draw.** osmbuildings.org's Waag is seven
+`roof:shape=pyramidal` parts with `roof:height`. A fill-extrusion cannot slope,
+so walls now stop at the eaves and a small Three.js custom layer draws the
+cones. `roof:height` is kept in the appearance extract (1,035 features). Flat
+roof caps skip those parts so the grey lid does not fight the mesh. The first
+mesh pass packed height on Z, the second on Three Y-up with `rotateX(π/2)`.
+Both sheared the fan toward the mercator origin, then `rotateX(π/2)` (the GLTF
+convention) stood the remaining cones on edge through the turrets. Vertices are
+east/north/up metres, placed with translate × scale(s,-s,s) like the photoreal
+layer — no extra rotation. A third bug put the apex ~5 m off-centre: shoelace
+on raw Amsterdam lng/lat (area ~1e-8) is numerically unstable, so a regular
+11 m turret got radii of 1–10 m and the fan looked like a shard. `ringCentroid`
+now translates to the first vertex before the area sum; Waag radii stay ~5.5 m.
+
+**Oude Kerk stops fighting its own roof lids.** Gabled parts carry `roof:height`
+too; walls used to extrude to the ridge while a blue cap sat in the same plane —
+brown/blue shimmer. Walls now stop at the eaves for any tagged roof thickness,
+same-colour lids are skipped, and untagged `roof:shape=pyramidal` (the 58 m
+spire) invents a tip so OSM Buildings' cone is not a grey cylinder.
 ## Street-mode routing includes bikeable ways
 
 Street mode presents as cycling but `streets-routing.json` was built from a
@@ -822,6 +902,138 @@ is the way it is, and that is the expensive part to recover later.
   Verified with the driving harness and the full Canal Recall e2e spec on
   desktop and iPhone.
 
+- **The renderer draws the streamed city, and buildings keep their identity.**
+  The map swaps its OSM-only appearance source for the complete BAG-keyed city
+  when that city is published, hides the basemap's own `building-3d` extrusion
+  — pure redundancy once every building is described locally — and lets the
+  streamer follow the camera. Until publication the probe fails and nothing
+  changes, which is the normal state rather than an error.
+
+  Verified against the staged tiles by temporarily linking them into the served
+  path: 9 to 19 z14 tiles resident depending on viewport, 30,000 to 66,000
+  features drawn, heights from 0.7 to 79 m, on desktop and iPhone. Whole
+  residential blocks that were previously absent or flat basemap gray now stand
+  at AHN-measured heights.
+
+  **Two defects found while wiring it, both invisible in a screenshot.**
+  `generateId` numbers features by their position in the array, which is fine
+  for one file loaded once and wrong the moment the array is rebuilt — and the
+  streamer rebuilds it on every tile load and eviction, so the index that
+  identified a highlighted building comes back pointing at a different one and
+  the highlight jumps to an unrelated house as the player drives. The source is
+  recreated with `promoteId: 'id'`, so a feature's id is its BAG pand id and
+  picking has something stable to key a `BuildingHit` on.
+
+  And four buildings in 344,436 carried a height of null or zero: two 3DBAG
+  never reconstructed, two that round to zero. The tiles omit the key rather
+  than write an unmeasured number into a dataset whose whole claim is that its
+  heights are measured. The layer's `coalesce(height, 5)` takes them, which is
+  a guess that is visible as a guess.
+
+  The e2e spec skips while the city is unpublished and starts running by itself
+  once it lands. It polls `querySourceFeatures` rather than reading it once,
+  because that returns what MapLibre has re-tiled for the viewport and lags
+  `setData` by a frame or two — read immediately it was empty about one run in
+  three, which says nothing about whether the streamer worked.
+
+- **The complete LoD1 city is built, staged and measured — 336,784 buildings.**
+  Phase 1's data half. The hosted 3D Tiles carry identity and attributes but no
+  ground polygon, so a flat-topped city needs a footprint source they cannot
+  give. It is 3DBAG's CityJSON, where the footprint is the LoD0 MultiSurface on
+  each `Building`, and the bulk path to it is `tile_index.fgb` — the only
+  published list of the per-tile downloads, with a SHA-256 for each.
+
+  That index turned out to be an adaptive quadtree of *leaves only*: 500 m
+  tiles over the centre, 64 km over open water, levels 3 to 10, and across all
+  8,941 no two overlapping by more than a metre. That property is what makes
+  "take every tile intersecting the box" correct, so `fetch-3dbag-tiles.ts`
+  asserts it instead of assuming it — a future vintage publishing a full tree
+  would duplicate every building rather than fail. 290 tiles, 374 MB, cover
+  drivable Amsterdam; the area comes from `streets-routing.json` so widening
+  where the game can drive cannot leave a rim without buildings.
+
+  **The extrusion height is settled from both ends.** CityJSON publishes
+  `b3_h_dak_70p`, and 3DBAG builds its own LoD1.2 by extruding to exactly that
+  percentile, so it is not an estimate of the official geometry — it is the
+  official geometry's height. The `b3_volume_lod12 / b3_opp_grond` figure
+  recovered earlier from the 3D Tiles metadata, where no percentile is
+  published, differs from it by a median of 4 mm (p05 -0.10 m, p95 +0.04 m).
+  Two independent derivations agreeing that closely is what makes the
+  tiles-only path trustworthy. The ridge is *not* the height: it is missing for
+  every flat roof by definition, and standing a flat top at the ridge of a
+  steep canal house overstates the whole row.
+
+  Result: 336,784 panden, 336,431 at an AHN-measured height, two in the whole
+  city with none. Against 10,578 buildings shipping today whose heights are the
+  OSM tag where it exists and `levels * 3` or a flat 9 m where it does not.
+
+  **The merge keeps one winner per building.** 336,620 measured extrusions,
+  1,163 hand-mapped OSM parts standing in for 164 panden, 6,653 OSM features
+  with no pand under them. That last number was split apart because it was
+  measuring two different things: 2,664 lie outside the area the tiles were
+  fetched for, where BAG was never consulted, and only 3,989 are gaps in the
+  register inside it. Features carry `bagConsulted` so the distinction survives.
+  Unmatched OSM features are 0.1% of features in the centre, 0.5% in the canal
+  ring, 1.5% at the eastern periphery.
+
+  The join is centroid containment either way round, not area intersection: the
+  two sources digitise the same wall from different surveys and disagree by
+  about a metre everywhere, so an intersection test spends its time on slivers.
+  Containment in both directions also handles one OSM outline over several
+  panden and one pand under several parts.
+
+  **What BAG says about the Waag, corrected.** The design doc had it as three
+  panden; it is one — 385 m2, built 1700, extruding to 16.0 m — against
+  fourteen hand-mapped parts at 6 to 26 m. The other two panden a radius search
+  finds are neighbours on the Nieuwmarkt whose footprints do not overlap any
+  Waag part. The trade tier 2 refuses was never fourteen parts for three boxes;
+  it was fourteen for one. The merge suppresses that pand, its composition
+  stands in with its pyramidal roofs intact, and the two neighbours correctly
+  stay measured extrusions.
+
+  **Delivery.** 192 MB cannot be fetched whole the way today's source is. The
+  city is cut into z14 tiles, placed by centroid so no building is drawn twice
+  along a boundary, with properties trimmed to what draws — attributes were 55%
+  of the bytes and footprints only 45%, at 7.8 vertices per building, so the
+  compression worth having was dropping year, party-wall area and RMSE from the
+  wire rather than simplifying outlines. The whole city is 15 MB gzipped;
+  median tile 6 KB, worst 3x3 block 2.4 MB, against the 5.5 MB the game already
+  fetches for a tenth of the city. Zoom was measured, not assumed: z13's worst
+  block is 6.0 MB, z15's is 0.9 MB but needs 25 requests for the same ground.
+
+  Everything is in `public/data/extracts/amsterdam/staging/` and deliberately
+  not published into the versioned extract. The renderer is not wired to it yet.
+
+- **The hosted 3DBAG tiles carry a BAG id, so the join needs no compiler.**
+  This was the blocking question in `BUILDING_RENDERER_DESIGN.md`: if the tiles
+  the game already streams resolve each feature to a `pand_id`, measured roof
+  colour can be attached to government geometry at runtime, and an offline mesh
+  compiler is an optimisation rather than a prerequisite. They do.
+  `scripts/probe-3dbag-metadata.ts` reads `EXT_structural_metadata` out of a
+  pinned v20250903 tile; over the Rijksmuseum, 667/667 features carry a unique
+  `NL.IMBAG.Pand.*`. The property tables are uncompressed — only the geometry
+  bufferViews are meshopt — so identity, heights, construction year and
+  reconstruction quality all read without touching a triangle.
+
+  Three things came back that were not being asked for. Construction year is
+  present for every building, which is the age prior of the façade work
+  available for free and with no imagery licence. `b3_rmse_lod22` is a
+  per-building reconstruction error, which is the gate for deciding whether a
+  detailed mesh can be trusted. And `b3_opp_scheidingsmuur` is shared-wall
+  area, so "promote a terraced row as a unit" is computable rather than
+  inferred from geometry — 92% of the Rijksmuseum tile and 91% of a Noord tile
+  share a party wall, which is why stepping at one is not a rare edge case.
+
+  The height field is the trap. The obvious choice, `b3_h_nok - b3_h_maaiveld`,
+  is wrong twice: flat roofs have no ridge by definition (0/41 at the
+  Rijksmuseum, and only 50% of the Noord tile has one at all), and a flat-topped
+  box standing at the ridge of a pitched canal house overstates the whole row.
+  `b3_volume_lod12 / b3_opp_grond` — 3DBAG's own LoD1.2 height, the box that
+  displaces the reconstructed volume — covers 667/667 and 3,474/3,475 at a
+  median 0.94x the ridge. That is the extrusion height; the ridge is kept as
+  roof geometry for later LoD2.2 work. The one building in 3,475 with neither
+  is why `lod1HeightM` returns a source of `'none'` rather than inventing a
+  number, and why an OSM fallback tier still exists.
 - **Routes now prefer useful unfamiliar streets, within a hard detour cap.**
   The spaced-repetition store collapses its place-local street/canal reviews
   into a conservative per-city, per-name mastery prior: one success is still

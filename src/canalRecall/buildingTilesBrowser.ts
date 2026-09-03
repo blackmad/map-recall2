@@ -1,0 +1,178 @@
+/**
+ * Stream the complete LoD1 city into a MapLibre GeoJSON source.
+ *
+ * The decision logic — which tiles a viewport needs, what to evict — is in
+ * `buildingTileSource.ts` and is tested without a browser. This is the part
+ * that talks to the network and to MapLibre, kept thin on purpose.
+ *
+ * It is deliberately safe to run before the tiles exist. The complete city is
+ * ~16 MB of gzipped tiles published into the versioned extract as a reviewed
+ * decision, so until that happens the index is absent, `available` stays false,
+ * and the caller keeps whatever source it already had. That is why the probe is
+ * a single request for the index rather than an assumption.
+ */
+
+import {
+  BuildingTileCache, BUILDING_TILE_ZOOM, planTiles, tileUrl,
+  type BuildingFeature, type Bounds
+} from './buildingTileSource.js';
+import { tileKey } from './slippyTiles.js';
+
+type GeoJsonSource = { setData(data: unknown): void };
+type MapLike = {
+  getSource(id: string): GeoJsonSource | undefined;
+  getBounds(): { getWest(): number; getSouth(): number; getEast(): number; getNorth(): number };
+  on(event: string, handler: () => void): void;
+};
+
+/** Decompress a published `.geojson.gz` tile into a FeatureCollection. */
+async function readGzippedGeoJson(response: Response): Promise<{ features?: BuildingFeature[] }> {
+  const bytes = new Uint8Array(await response.arrayBuffer());
+  const gzipped = bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b;
+  if (!gzipped) {
+    return JSON.parse(new TextDecoder().decode(bytes)) as { features?: BuildingFeature[] };
+  }
+  if (typeof DecompressionStream === 'undefined') {
+    throw new Error('gzip building tiles need DecompressionStream');
+  }
+  const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+  const text = await new Response(stream).text();
+  return JSON.parse(text) as { features?: BuildingFeature[] };
+}
+
+export class BuildingTileStreamer {
+  private readonly cache = new BuildingTileCache();
+  /** Tiles that returned nothing. Remembered so a gap is not refetched forever. */
+  private readonly empty = new Set<string>();
+  private inFlight = 0;
+  private onFirstBuildings?: () => void;
+  private onFeatures?: (features: BuildingFeature[]) => void;
+  private available = false;
+  private disposed = false;
+
+  constructor(
+    private readonly map: MapLike,
+    private readonly sourceId: string,
+    private readonly baseUrl: string,
+    private readonly zoom = BUILDING_TILE_ZOOM
+  ) {}
+
+  /**
+   * Is the complete city published? Resolves false when it is not, and the
+   * caller should leave its existing source alone.
+   *
+   * This reads the index and checks that it *is* the index, rather than
+   * trusting the status code. Both this project's dev server and most static
+   * hosts answer an unknown path with the app's own `index.html` and a 200, so
+   * `response.ok` on a HEAD request is true whether or not the city exists.
+   * Believing it is not a cosmetic mistake: the caller would hide the basemap's
+   * extrusion, every tile fetch would return HTML, every parse would fail, and
+   * the player would drive through a city with no buildings in it at all.
+   */
+  async probe(): Promise<boolean> {
+    this.available = false;
+    try {
+      const response = await fetch(`${this.baseUrl.replace(/\/$/, '')}/building-tiles/index-z${this.zoom}.json`);
+      if (!response.ok) return false;
+      const index = (await response.json()) as { zoom?: number; tileList?: unknown };
+      this.available = index.zoom === this.zoom && Array.isArray(index.tileList) && index.tileList.length > 0;
+    } catch {
+      // A JSON parse error here is the expected shape of "not published":
+      // the host handed back a page instead of the index.
+      this.available = false;
+    }
+    return this.available;
+  }
+
+  /**
+   * Follow the camera. Safe to call on every `moveend`.
+   *
+   * `onFirstBuildings` fires once, when a tile has actually been parsed and
+   * carried buildings. The caller uses it to hide the basemap's own extrusion,
+   * which must not happen a moment earlier: hiding it on the strength of a
+   * successful probe alone would leave an empty map if the tiles turned out to
+   * be unreadable.
+   *
+   * `onFeatures` fires whenever the resident set changes, so procedural roofs
+   * can track the same working set as the extrusions.
+   */
+  attach(onFirstBuildings?: () => void, onFeatures?: (features: BuildingFeature[]) => void): void {
+    if (!this.available) return;
+    this.onFirstBuildings = onFirstBuildings;
+    this.onFeatures = onFeatures;
+    this.map.on('moveend', () => { void this.update(); });
+    void this.update();
+  }
+
+  dispose(): void { this.disposed = true; }
+
+  private bounds(): Bounds {
+    const bounds = this.map.getBounds();
+    return { west: bounds.getWest(), south: bounds.getSouth(), east: bounds.getEast(), north: bounds.getNorth() };
+  }
+
+  async update(): Promise<void> {
+    if (!this.available || this.disposed) return;
+    const plan = planTiles(this.bounds(), this.cache.heldKeys, { zoom: this.zoom });
+
+    let changed = false;
+    for (const key of plan.evict) { this.cache.drop(key); changed = true; }
+
+    // Nearest tile first, so the ground under the camera fills in before its
+    // corners. Requests run in parallel but the source is only rewritten when
+    // one lands, which keeps a slow corner tile from holding up the centre.
+    const wanted = plan.load.filter(tile => !this.empty.has(tileKey(tile)));
+    await Promise.all(wanted.map(async tile => {
+      const key = tileKey(tile);
+      if (this.cache.has(key)) return;
+      this.inFlight++;
+      try {
+        const response = await fetch(tileUrl(tile, this.baseUrl));
+        if (!response.ok) {
+          // Most of the 382 tiles cover water, parks or the edge of the
+          // region. A missing one is ordinary, not an error worth retrying.
+          this.empty.add(key);
+          return;
+        }
+        const collection = await readGzippedGeoJson(response);
+        // MapLibre's GeoJSON source tiles and may rewrite rings in place.
+        // Pyramidal roofs need the original closed footprint, so keep our own
+        // copy of coordinates before `setData`.
+        const features: BuildingFeature[] = (collection.features ?? []).map(feature => ({
+          type: 'Feature',
+          properties: { ...(feature.properties || {}) },
+          geometry: feature.geometry && JSON.parse(JSON.stringify(feature.geometry)),
+        }));
+        this.cache.adopt(key, features);
+        if (!this.disposed) this.flush();
+      } catch {
+        this.empty.add(key);
+      } finally {
+        this.inFlight--;
+      }
+    }));
+
+    if (changed && !this.disposed) this.flush();
+  }
+
+  private flush(): void {
+    const collection = this.cache.collection();
+    this.onFeatures?.(collection.features);
+    this.map.getSource(this.sourceId)?.setData(JSON.parse(JSON.stringify(collection)));
+    if (collection.features.length > 0 && this.onFirstBuildings) {
+      const announce = this.onFirstBuildings;
+      this.onFirstBuildings = undefined;
+      announce();
+    }
+  }
+
+  /** For diagnostics: how much of the city is resident right now. */
+  status(): { tiles: number; features: number; inFlight: number; available: boolean } {
+    return {
+      tiles: this.cache.size,
+      features: this.cache.collection().features.length,
+      inFlight: this.inFlight,
+      available: this.available
+    };
+  }
+}

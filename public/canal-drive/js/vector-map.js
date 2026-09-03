@@ -14,8 +14,10 @@ class VectorBasemap {
     this._pendingBrandedPois = [];
     this._treesVisible = false;
     this._detailedBuildings = null;
+    this._completeCity = null;
     this._detailedBuildingsVisible = false;
     this._signatureLandmarks = null;
+    this._pyramidalRoofs = null;
     this._appearanceOsmIds = [];
     this._appearanceFeatures = [];
     this._appearanceCentroidGrid = null;
@@ -49,6 +51,7 @@ class VectorBasemap {
       this._ensureStreetOverlayLayers();
       this._ensureTreeLayers();
       this._ensureBuildingAppearanceLayers();
+      this._ensureCompleteCity();
       this._ensurePlaceLayers();
       this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
       this.setBrandedPois(this._pendingBrandedPois);
@@ -142,22 +145,31 @@ class VectorBasemap {
     // nothing beneath the cap to leave exposed. Opacity is 1 on both: a
     // translucent extrusion blends with whatever it overlaps, which turns a
     // depth tie into a visible stripe.
-    const OSM_HEIGHT = ['coalesce', ['get', 'height'], 5];
+    // Walls stop at the eaves when a procedural pyramidal roof will take over
+    // above — otherwise the flat prism fights the cone on the Waag's turrets.
+    const helpers = window.CanalRecallBuildings;
+    const WALL_TOP = helpers && helpers.wallTopHeightExpression
+      ? helpers.wallTopHeightExpression()
+      : ['coalesce', ['get', 'height'], 5];
+    const flatRoofFilter = helpers && helpers.flatRoofFilter
+      ? helpers.flatRoofFilter()
+      : ['has', 'roofColour'];
     this.map.addLayer({
       id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['coalesce', ['get', 'sideColour'], ['get', 'colour']]],
         'fill-extrusion-base': ['coalesce', ['get', 'minHeight'], 0],
-        'fill-extrusion-height': ['+', OSM_HEIGHT, 0.35],
+        'fill-extrusion-height': WALL_TOP,
         'fill-extrusion-opacity': 1
       }
     });
     this.map.addLayer({
       id: 'osm-colored-building-roofs', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
+      filter: flatRoofFilter,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'roofColour']],
-        'fill-extrusion-base': ['+', OSM_HEIGHT, 0.35],
-        'fill-extrusion-height': ['+', OSM_HEIGHT, 0.7],
+        'fill-extrusion-base': ['+', WALL_TOP, 0.15],
+        'fill-extrusion-height': ['+', WALL_TOP, 0.55],
         'fill-extrusion-opacity': 1
       }
     });
@@ -179,8 +191,27 @@ class VectorBasemap {
     }
     const source = this.map && this.map.getStyle() && this.map.getSource('osm-building-appearance');
     if (!source) return;
-    source.setData(data);
-    this._hideDuplicatedBasemapBuildings(data);
+    // Drop parent outlines from hand-mapped compositions so Oude Kerk / Waag
+    // stop z-fighting their own parts. Falls back to the raw extract when the
+    // typed helper is not on the page yet.
+    const dedupe = window.CanalRecallBuildings && window.CanalRecallBuildings.dedupeAppearanceFeatures;
+    const features = (data && data.features) || [];
+    const cleaned = {
+      type: 'FeatureCollection',
+      features: dedupe ? dedupe(features) : features,
+    };
+    source.setData(cleaned);
+    this._hideDuplicatedBasemapBuildings(cleaned);
+    this._syncPyramidalRoofs(cleaned.features);
+  }
+
+  _syncPyramidalRoofs(features) {
+    const api = window.CanalRecallPyramidalRoofs;
+    if (!api || !api.PyramidalRoofs || !this.map) return;
+    if (!this._pyramidalRoofs) {
+      this._pyramidalRoofs = new api.PyramidalRoofs(this.map, maplibregl);
+    }
+    this._pyramidalRoofs.setFeatures(features || []);
   }
 
   // The basemap keeps only the buildings the extract does not carry. Its ids
@@ -390,6 +421,114 @@ class VectorBasemap {
     }
   }
 
+  /**
+   * Swap the OSM-only appearance source for the complete BAG-keyed city, when
+   * that city has been published.
+   *
+   * Until it is, this does nothing at all and the map keeps the source it
+   * already had. The complete city is 15 MB of generated data that lands in the
+   * versioned extract as a reviewed decision, so "the tiles are not there" is
+   * the normal state, not a failure — `probe()` is one HEAD request for the
+   * index and everything else is gated on it.
+   *
+   * When it is present, three things change together, and they have to change
+   * together. The source stops being one 5.5 MB file describing a tenth of the
+   * city and becomes a streamed working set describing all of it. The basemap's
+   * own `building-3d` extrusion is hidden, because it is pure redundancy once
+   * every building is described locally. And the height offsets that keep three
+   * coplanar extrusions from z-fighting stop being needed for the walls, since
+   * there is now exactly one description per building — the roof cap still sits
+   * inside the wall, because two horizontal faces at one height still fight.
+   */
+  _ensureCompleteCity() {
+    const runtime = window.CanalRecallBuildingTiles;
+    if (!runtime || !runtime.BuildingTileStreamer) return;
+    this._completeCity = new runtime.BuildingTileStreamer(
+      this.map, 'osm-building-appearance', '../data/extracts/amsterdam'
+    );
+    this._completeCity.probe().then((available) => {
+      if (!available || !this.map.getSource('osm-building-appearance')) return;
+      this._recreateBuildingSourceWithStableIds();
+      this._styleCompleteCity();
+      // The basemap's extrusion is hidden only once a tile has actually landed
+      // with buildings in it, never on the strength of the probe alone. A host
+      // that answers a missing file with its own index.html and a 200 — which
+      // both the dev server and most static hosts do — would otherwise leave
+      // the player driving through a city with nothing in it.
+      this._completeCity.attach(() => {
+        if (this.map.getLayer('building-3d')) this.map.setLayoutProperty('building-3d', 'visibility', 'none');
+      }, (features) => {
+        if (this._pyramidalRoofs) this._pyramidalRoofs.setFeatures(features);
+      });
+    }).catch(() => {});
+  }
+
+  /**
+   * Rebuild the source so feature ids are the building's own identity.
+   *
+   * The static source uses `generateId`, which numbers features by their index
+   * in the array. That is fine for one file loaded once, and wrong the moment
+   * the array is rebuilt: the streamer rewrites it every time a tile lands or
+   * is evicted, so the index that identified a highlighted building comes back
+   * pointing at a different one, and the yellow highlight jumps to an unrelated
+   * house as the player drives.
+   *
+   * `promoteId` takes the id out of the feature instead — the BAG pand id, or
+   * the OSM id at tier 4 — so feature state survives a reload and picking
+   * returns something stable enough to key a `BuildingHit` on. It can only be
+   * set when the source is created, hence the teardown. This runs during load,
+   * before anything has been highlighted, so nothing is lost with it.
+   */
+  _recreateBuildingSourceWithStableIds() {
+    const layers = ['osm-colored-buildings', 'osm-colored-building-roofs']
+      .map(id => this.map.getLayer(id) && this.map.getStyle().layers.find(layer => layer.id === id))
+      .filter(Boolean)
+      .map(layer => JSON.parse(JSON.stringify(layer)));
+    for (const layer of layers) if (this.map.getLayer(layer.id)) this.map.removeLayer(layer.id);
+    if (this.map.getSource('osm-building-appearance')) this.map.removeSource('osm-building-appearance');
+    this.map.addSource('osm-building-appearance', {
+      type: 'geojson',
+      data: { type: 'FeatureCollection', features: [] },
+      promoteId: 'id',
+      attribution: 'Buildings © 3DBAG (CC BY 4.0) / © OpenStreetMap contributors'
+    });
+    for (const layer of layers) this.map.addLayer(layer);
+  }
+
+  /**
+   * Repaint the two extrusion layers for the merged schema.
+   *
+   * Most of the city is a measured pand with no OSM appearance at all, so
+   * `colour` is absent for it and the theme's own height ramp fills in — that
+   * is the controlled neutral fallback, not a bug. The roof cap is filtered to
+   * buildings that actually have a roof colour, because a `fill-extrusion-color`
+   * that resolves to nothing drops every building in the layer back to the
+   * style default rather than skipping the one feature.
+   */
+  _styleCompleteCity() {
+    const themeColor = window.CanalRecallBuildings
+      ? window.CanalRecallBuildings.buildingColorExpression(this.theme)
+      : '#D8D3CA';
+    const helpers = window.CanalRecallBuildings;
+    const height = helpers && helpers.wallTopHeightExpression
+      ? helpers.wallTopHeightExpression()
+      : ['coalesce', ['get', 'height'], 5];
+    this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-color', [
+      'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', themeColor
+    ]);
+    this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-height', height);
+    this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', ['coalesce', ['get', 'minHeight'], 0]);
+    this.map.setFilter(
+      'osm-colored-building-roofs',
+      helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'],
+    );
+    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-color', [
+      'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['to-color', ['get', 'roofColour'], '#B09999']
+    ]);
+    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-base', ['+', height, 0.15]);
+    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-height', ['+', height, 0.55]);
+  }
+
   _ensurePlaceLayers() {
     if (this.map.getSource('amsterdam-pois')) return;
     this.map.addSource('amsterdam-neighborhoods', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
@@ -578,6 +717,7 @@ class VectorBasemap {
       this._signatureLandmarks.setEnabled(!detailed && !google);
       this._refreshBuildingSuppression();
     }
+    if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !google);
   }
 
   setPlayerBike(player, loader, visible) {
@@ -916,6 +1056,7 @@ class VectorBasemap {
           }
         }
       }
+      if (this._completeCity && this._completeCity.status().available) this._styleCompleteCity();
       const buildingColor = window.CanalRecallBuildings
         ? window.CanalRecallBuildings.buildingColorExpression(this.theme)
         : (palette ? palette.building : '#D8D3CA');

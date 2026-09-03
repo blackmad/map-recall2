@@ -3,6 +3,7 @@ import {
   basemapBuildingFilter,
   buildingColorExpression,
   buildingOpacity,
+  dedupeAppearanceFeatures,
   encodeBasemapBuildingId,
 } from '../src/canalRecall/buildingStyle';
 
@@ -57,6 +58,29 @@ assert.equal(
   JSON.parse(withExtraJson).filter((clause: unknown) => JSON.stringify(clause).includes('7516838182')).length,
   1,
   'an id already encoded from an osmId is not duplicated by the proximity list',
+);
+
+// Parent outline inside a multi-height composition must not be drawn.
+const shell = {
+  type: 'Feature',
+  properties: { osmId: 'w-shell', height: 9, minHeight: 0 },
+  geometry: { type: 'Polygon', coordinates: [[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]]] },
+};
+const nave = {
+  type: 'Feature',
+  properties: { osmId: 'w-nave', height: 20, minHeight: 0, isPart: true },
+  geometry: { type: 'Polygon', coordinates: [[[0.1, 0.1], [0.6, 0.1], [0.6, 0.6], [0.1, 0.6], [0.1, 0.1]]] },
+};
+const tower = {
+  type: 'Feature',
+  properties: { osmId: 'w-tower', height: 40, minHeight: 0, isPart: true },
+  geometry: { type: 'Polygon', coordinates: [[[0.7, 0.7], [0.9, 0.7], [0.9, 0.9], [0.7, 0.9], [0.7, 0.7]]] },
+};
+const deduped = dedupeAppearanceFeatures([shell, nave, tower]);
+assert.deepEqual(
+  deduped.map(feature => feature.properties?.osmId).sort(),
+  ['w-nave', 'w-tower'],
+  'dedupeAppearanceFeatures drops the parent outline',
 );
 
 process.stdout.write('Canal Recall building-style checks passed.\n');

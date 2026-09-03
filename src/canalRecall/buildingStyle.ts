@@ -1,3 +1,11 @@
+import {
+  compositionDrawIds,
+  isHandMappedComposition,
+  selectRenderableBuildings,
+} from './buildingComposition.js';
+import { FootprintGrid } from './buildingLadder.js';
+import { ringCentroid, type Ring } from './buildingGeometry.js';
+
 export type CanalTheme = 'clean' | '8bit' | '16bit' | 'psx' | 'cyberpunk';
 
 type MapLibreExpression = unknown[];
@@ -117,4 +125,144 @@ export function basemapBuildingFilter(
   if (encoded.length) clauses.push(['!', ['match', ['id'], encoded, true, false]]);
   if (existingFilter) clauses.unshift(existingFilter);
   return ['all', ...clauses];
+}
+
+export {
+  compositionDrawIds,
+  isHandMappedComposition,
+  selectRenderableBuildings,
+  FootprintGrid,
+};
+export type { Ring };
+
+type AppearanceFeature = {
+  type: string;
+  properties?: Record<string, unknown>;
+  geometry?: { type: string; coordinates: unknown };
+};
+
+/**
+ * Drop parent outlines from coloured-extract compositions before they reach
+ * MapLibre. Without this, Oude Kerk and Waag draw their shell and their parts
+ * in the same air and z-fight.
+ */
+export function dedupeAppearanceFeatures(features: AppearanceFeature[]): AppearanceFeature[] {
+  type Item = {
+    osmId: string;
+    rings: Ring[];
+    minHeightM: number;
+    heightM: number;
+    isPart?: boolean;
+    feature: AppearanceFeature;
+  };
+
+  const items: Item[] = [];
+  for (const feature of features) {
+    const props = feature.properties || {};
+    const osmId = String(props.osmId || '');
+    if (!osmId || !feature.geometry) continue;
+    const geometry = feature.geometry;
+    const rings: Ring[] = geometry.type === 'Polygon'
+      ? [(geometry.coordinates as Ring[])[0]]
+      : geometry.type === 'MultiPolygon'
+        ? (geometry.coordinates as Ring[][]).map(polygon => polygon[0])
+        : [];
+    if (!rings.length || !rings[0]?.length) continue;
+    if (!Number.isFinite(ringCentroid(rings[0])[0])) continue;
+    items.push({
+      osmId,
+      rings,
+      minHeightM: Number(props.minHeight ?? 0),
+      heightM: Number(props.height ?? 0),
+      isPart: Boolean(props.isPart),
+      feature,
+    });
+  }
+
+  const grid = new FootprintGrid<Item>();
+  for (const item of items) grid.add(item);
+  return selectRenderableBuildings(items, item => grid.near(item.rings)).map(item => item.feature);
+}
+
+/**
+ * Wall top for a fill-extrusion.
+ *
+ * Cut to the eaves only when something else owns the volume above:
+ *   - pyramidal → Three.js cone (tagged tip, else invented tip)
+ *   - flat / untagged shape with a distinct roof colour → thin colour lid
+ *
+ * Gabled / skillion / hipped / dome etc. keep full `height`. Cutting them for
+ * a flat lid just stacked coplanar brown tops and blue lids on Oude Kerk
+ * (22 overlapping parts at 23 m) and made same-colour nave sections look
+ * missing where the lid was filtered out.
+ */
+export function wallTopHeightExpression(): MapLibreExpression {
+  const height = ['coalesce', ['get', 'height'], 5];
+  const minHeight = ['coalesce', ['get', 'minHeight'], 0];
+  // inventedTip = clamp(0.35 * (height − minHeight), 3, 12)
+  const exposed = ['-', height, minHeight];
+  const inventedTip = ['max', 3, ['min', 12, ['*', 0.35, exposed]]];
+  const taggedTip = ['get', 'roofHeight'];
+  const pyramidalTip = [
+    'case',
+    ['>', ['coalesce', taggedTip, 0], 0], taggedTip,
+    inventedTip,
+  ];
+  const eaves = (tip: MapLibreExpression): MapLibreExpression => [
+    'max', minHeight, ['-', height, tip],
+  ];
+  const flatOrUntagged: MapLibreExpression = [
+    'any',
+    ['!', ['has', 'roofShape']],
+    ['==', ['get', 'roofShape'], ''],
+    ['==', ['get', 'roofShape'], 'flat'],
+  ];
+  const distinctRoofColour: MapLibreExpression = [
+    'all',
+    ['has', 'roofColour'],
+    ['!',
+      ['all',
+        ['has', 'colour'],
+        ['==', ['get', 'roofColour'], ['get', 'colour']],
+      ],
+    ],
+  ];
+  return [
+    'case',
+    ['==', ['get', 'roofShape'], 'pyramidal'],
+    eaves(pyramidalTip),
+    ['all',
+      ['>', ['coalesce', taggedTip, 0], 0],
+      flatOrUntagged,
+      distinctRoofColour,
+    ],
+    eaves(taggedTip),
+    height,
+  ];
+}
+
+/**
+ * Flat roof caps: colour lids only for true flat tops we are not meshing.
+ *
+ * Skip:
+ *   - every shaped roof (gabled/skillion/… fight as coplanar lids; pyramidal
+ *     is meshed)
+ *   - lids whose colour equals the wall (same-colour lid only fights the top)
+ */
+export function flatRoofFilter(): MapLibreExpression {
+  return [
+    'all',
+    ['has', 'roofColour'],
+    ['any',
+      ['!', ['has', 'roofShape']],
+      ['==', ['get', 'roofShape'], ''],
+      ['==', ['get', 'roofShape'], 'flat'],
+    ],
+    ['!',
+      ['all',
+        ['has', 'colour'],
+        ['==', ['get', 'roofColour'], ['get', 'colour']],
+      ],
+    ],
+  ];
 }
