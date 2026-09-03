@@ -6,6 +6,27 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The façade pilot was aimed at the road, and the API's own conventions say
+  why.** With a gate keeping only real buildings, `w274039950` — 134 m² and
+  17.7 m, the one genuine building in the pilot — still came back as a parked
+  car and one storey of windows, and `roofline` abstained because the roof was
+  out of frame. The fixed request was `fov=70, horizon=0.34`, and two measured
+  facts break it. `horizon` is the horizon line's height as a fraction from the
+  *bottom* of the frame, so it aims **down** as it grows and `0.34` spent a
+  third of the crop on tarmac; at `horizon=0` the API returns pure sky. And the
+  distance that decides framing is the distance to the nearest façade, not to
+  the footprint centroid — a 670 m² block's centroid is 22 m from the camera
+  while its wall is 6 m away, so a centroid-derived field of view is far too
+  narrow. `planFacadeCrop` now derives `fov` and `horizon` from the target's
+  measured height and `metresToNearestFootprintPoint`, keeps the ground edge
+  fixed and spends the rest of the lens going up, and gives short buildings a
+  tighter crop so their pixels land on the façade instead of on the street.
+  Framing that physically cannot fit — an 18 m façade seen from 6 m — is
+  reported as `fullFacadeVisible: false` rather than silently truncated, because
+  a truncated crop is exactly what made `roofline` abstain without saying so.
+  `aspect` stays fixed at 1.6 and is the next thing to measure: it is why a tall
+  near façade still clamps at `fov=100`.
+
 - **Five of the six façade pilot targets were not buildings.** Measuring
   cross-model agreement raised the question the agreement numbers could not
   answer — were the two models looking at the same building? For five of six

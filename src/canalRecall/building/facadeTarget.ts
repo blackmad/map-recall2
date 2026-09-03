@@ -60,3 +60,67 @@ export function outerRing(geometry: { type: string; coordinates: unknown }): rea
   }
   return null;
 }
+
+/**
+ * Aim a panorama crop at a façade instead of at the road in front of it.
+ *
+ * Two measured facts drive this. `horizon` is the horizon line's height in the
+ * frame as a fraction from the bottom, so it aims *down* as it grows: at
+ * `horizon=0` the API returns pure sky. And the distance that decides framing is
+ * the distance to the nearest façade, not to the footprint centroid — a 670 m²
+ * block's centroid sits 22 m away while its wall is 6 m away, which is why the
+ * pilot's fixed `fov=70, horizon=0.34` returned a doorway and one row of windows
+ * for an 18 m building and `roofline` abstained with the roof out of frame.
+ *
+ * A building that fills the frame also spends its pixels on the façade rather
+ * than on tarmac, so short buildings get a tighter crop and more detail.
+ */
+export type CropFraming = {
+  fov: number; horizon: number; aspect: number;
+  visibleTopMetres: number; fullFacadeVisible: boolean; cameraDistanceMetres: number;
+};
+export const PANORAMA_CAMERA_HEIGHT_METRES = 2;
+/** Headroom above the ridge so a gable reads as a shape, and a little ground for entrance context. */
+const TOP_MARGIN_METRES = 1.5, BOTTOM_MARGIN_METRES = 0.5;
+const MINIMUM_FOV = 20, MAXIMUM_FOV = 100;
+
+const degrees = (radians: number) => radians * 180 / Math.PI;
+const radians = (value: number) => value * Math.PI / 180;
+
+export function planFacadeCrop(
+  buildingHeightMetres: number,
+  cameraDistanceMetres: number,
+  aspect = 1.6,
+  cameraHeightMetres = PANORAMA_CAMERA_HEIGHT_METRES,
+): CropFraming {
+  const distance = Math.max(1, cameraDistanceMetres);
+  const upDegrees = degrees(Math.atan((buildingHeightMetres + TOP_MARGIN_METRES - cameraHeightMetres) / distance));
+  const downDegrees = degrees(Math.atan((cameraHeightMetres + BOTTOM_MARGIN_METRES) / distance));
+  const verticalFov = Math.max(1, upDegrees + downDegrees);
+  const wantedFov = degrees(2 * Math.atan(Math.tan(radians(verticalFov / 2)) * aspect));
+  const fov = Math.min(MAXIMUM_FOV, Math.max(MINIMUM_FOV, wantedFov));
+  // Clamping the lens changes what fits, so recompute the achievable field before aiming.
+  const actualVertical = degrees(2 * Math.atan(Math.tan(radians(fov / 2)) / aspect));
+  // `horizon` is measured from the bottom of the frame and therefore aims down as it
+  // grows, so the share below the horizon line is what to ask for. Keep the ground edge
+  // fixed and spend everything the lens has left going up.
+  const horizon = Math.min(0.95, Math.max(0.05, downDegrees / actualVertical));
+  const visibleTopMetres = cameraHeightMetres + distance * Math.tan(radians(actualVertical * (1 - horizon)));
+  return {
+    fov: Number(fov.toFixed(1)), horizon: Number(horizon.toFixed(3)), aspect,
+    visibleTopMetres: Number(visibleTopMetres.toFixed(1)),
+    fullFacadeVisible: visibleTopMetres >= buildingHeightMetres,
+    cameraDistanceMetres: Number(distance.toFixed(1)),
+  };
+}
+
+/** Metres between two WGS84 points, good enough at Amsterdam's latitude. */
+export function metresBetween(a: readonly number[], b: readonly number[]): number {
+  const latitude = (a[1] + b[1]) / 2;
+  return Math.hypot((b[0] - a[0]) * 111_320 * Math.cos(latitude * Math.PI / 180), (b[1] - a[1]) * 111_320);
+}
+
+/** Framing follows the wall, not the centroid: a deep block's centroid is far behind its façade. */
+export function metresToNearestFootprintPoint(camera: readonly number[], ring: readonly (readonly number[])[]): number {
+  return Math.min(...ring.map(point => metresBetween(camera, point)));
+}

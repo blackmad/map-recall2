@@ -4,7 +4,7 @@
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { DEFAULT_FACADE_TARGET_POLICY, footprintMetrics, judgeFacadeTarget, outerRing } from '../src/canalRecall/building/facadeTarget.ts';
+import { DEFAULT_FACADE_TARGET_POLICY, footprintMetrics, judgeFacadeTarget, metresBetween, metresToNearestFootprintPoint, outerRing, planFacadeCrop } from '../src/canalRecall/building/facadeTarget.ts';
 
 type Point = [number, number];
 type Geometry = { type: 'Polygon'; coordinates: Point[][] } | { type: 'MultiPolygon'; coordinates: Point[][][] };
@@ -125,12 +125,21 @@ for (let index = 0; index < candidates.length; index++) {
       continue;
     }
     const pano = await fetchJson<Record<string, unknown>>(`https://api.data.amsterdam.nl/panorama/panoramas/${encodeURIComponent(thumbnail.pano_id)}/`);
+    // The first request only chooses the camera. Now that the camera is known, aim the crop
+    // at this building's measured height from this camera's measured distance, and re-request.
+    const camera = (pano.geometry as { coordinates?: number[] } | undefined)?.coordinates;
+    const facadeRing = outerRing(building.geometry as { type: string; coordinates: unknown });
+    const distance = camera && facadeRing ? metresToNearestFootprintPoint(camera, facadeRing)
+      : camera ? metresBetween([lon, lat], camera) : 22;
+    const framing = planFacadeCrop(Number(building.properties.height), distance);
+    const aimed = new URL(`https://api.data.amsterdam.nl/panorama/thumbnail/${encodeURIComponent(thumbnail.pano_id)}/`);
+    aimed.search = new URLSearchParams({ width: '1400', fov: String(framing.fov), horizon: String(framing.horizon), aspect: String(framing.aspect), heading: String(thumbnail.heading) }).toString();
     const imageName = `${osmId.replaceAll(/[^a-zA-Z0-9_-]/g, '_')}.jpg`, imageFile = path.join(outputDirectory, 'images', imageName);
-    await downloadImage(thumbnail.url, imageFile);
+    await downloadImage(aimed.href, imageFile);
     let proposal: Proposal | undefined;
     try { proposal = await propose(imageFile); } catch (error) { process.stderr.write(`model skipped for ${osmId}: ${String(error)}\n`); }
-    items.push({ osmId, name: building.properties.name || '', centre: [lon, lat], panoId: thumbnail.pano_id, heading: thumbnail.heading, observedAt: pano.timestamp, image: `images/${imageName}`, sourceUrl: (pano._links as { self?: { href?: string } } | undefined)?.self?.href, thumbnailUrl: thumbnail.url, proposal });
-    process.stdout.write(`${index + 1}/${candidates.length} ${osmId} → ${thumbnail.pano_id} (${items.length}/${limit} usable)\n`);
+    items.push({ osmId, name: building.properties.name || '', centre: [lon, lat], panoId: thumbnail.pano_id, heading: thumbnail.heading, observedAt: pano.timestamp, image: `images/${imageName}`, sourceUrl: (pano._links as { self?: { href?: string } } | undefined)?.self?.href, thumbnailUrl: aimed.href, framing, proposal });
+    process.stdout.write(`${index + 1}/${candidates.length} ${osmId} → ${thumbnail.pano_id} at ${framing.cameraDistanceMetres} m, fov ${framing.fov} horizon ${framing.horizon}${framing.fullFacadeVisible ? '' : ' (TRUNCATED)'} (${items.length}/${limit} usable)\n`);
   } catch (error) {
     rejections.push({ osmId, reason: String(error) });
     process.stderr.write(`skipped ${osmId}: ${String(error)}\n`);

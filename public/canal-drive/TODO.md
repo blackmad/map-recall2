@@ -92,10 +92,20 @@ order:
    4 m or a 5 m edge before a panorama is requested, because five of the six
    pilot targets were sheds (one covered 1 m²) and the appearance extract's
    median footprint is 18 m². `npm run test:facade-target` pins all six.
-2. **Restore the human view-selection gate** that `24c8beb` reverted. The
+2. **Crops are aimed now** — `planFacadeCrop` derives `fov` and `horizon` per
+   target from its measured height and its measured distance to the *nearest
+   footprint point*, instead of the pilot's fixed `fov=70, horizon=0.34`. Two
+   facts made the fixed crop point at the road: `horizon` is measured from the
+   bottom of the frame, so it aims *down* as it grows, and a deep block's
+   centroid sits far behind the façade the camera sees. Framing that cannot fit
+   is reported as `fullFacadeVisible: false` rather than silently truncated.
+   Still unmeasured: `aspect` is fixed at 1.6, so a tall façade close to the
+   camera spends its lens budget sideways and clamps at `fov=100`. Measure
+   whether a per-target aspect recovers those before buying a larger sample.
+3. **Restore the human view-selection gate** that `24c8beb` reverted. The
    extractor classifies unreviewed nearest-camera crops and records
    `panoramaSelection: nearest-camera-unreviewed` to say so.
-3. **Then** buy a stratified sample across typology and era. Not before 1 and 2:
+4. **Then** buy a stratified sample across typology and era. Not before 1 and 2:
    the existing agreement numbers measure footprint noise and camera aim as much
    as façades, so how well two models agree about one real façade is still
    unmeasured. n=6 supports no coverage claim, and agreement is not accuracy.
