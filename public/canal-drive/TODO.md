@@ -361,6 +361,34 @@ Continue expanding named cul-de-sac and dead-end cases in
 `scripts/check-canal-car.ts`. Ongoing, not a milestone: every geographic failure
 reported from play should land here before it is called fixed.
 
+**10b. Amsterdam façade twin — pilot boundary reconnaissance (M0).**
+The build prompt is [`AMSTERDAM_FACADE_TWIN.md`](AMSTERDAM_FACADE_TWIN.md);
+measured findings are in [`FACADE_RECON.md`](FACADE_RECON.md). M0 is done for
+RECON-1/2/3 on branch `feat/amsterdam-building-twin`: coordinate system pinned
+to 1.4 mm in the pilot, boundary fixed as geometry with 36 named locations,
+**3,025 panden** counted (not the brief's ~2,000), 3DBAG massing joined at 95.7%,
+and the Rijksmonumenten register located and mined.
+
+Two measured findings change the plan and should be read before M1 starts:
+
+- **3DBAG's roof is not a gable source.** `b3_rmse_lod22` is 0.60 m median on
+  pitched roofs against 0.11 m on flat, and flat across plot width and century.
+  It tracks roof *complexity*, not reconstruction failure, so a naive 0.5 m gate
+  would reject 61% of the pilot for being interesting. Massing, storeys and
+  eaves are trustworthy; the gable top must come from façade observation.
+- **The monument register is a gable-type source and little else.** It names a
+  specific gable for 70% of described monuments — 695 panden, 23% of the
+  pilot — but bay count for 3% and storey count for 1%. Median description is 88
+  characters. Bays, storeys and window arrangement must come from imagery.
+
+Next, in order: RECON-5 (point the existing roof-colour pipeline at the boundary
+rather than the A10 cache), RECON-4 (OSM semantics and `building:part` topology,
+needed before anything can overwrite manual OSM structure), then RECON-6…10, the
+per-building façade survey, which is the gating resource for every tier above
+LoD2.2 and has not started. Also outstanding: the 131 panden with no 3DBAG
+match, and reconciling the 3DBAG API's `v2023.10.08` collection against the
+`v20250903` tileset the runtime actually streams.
+
 ---
 
 ## P3 — Bets worth a spike, on their own branch

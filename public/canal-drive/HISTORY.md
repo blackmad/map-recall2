@@ -6,6 +6,86 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Amsterdam façade twin, M0: measure first, and let the measurements argue back
+
+The build prompt in `AMSTERDAM_FACADE_TWIN.md` is emphatic that ground truth is
+measured rather than guessed, and that its own estimates are not to be carried
+into a schedule. Taking that literally turned out to be the whole value of M0:
+three of the brief's working assumptions did not survive contact with the data,
+and each one would have been expensive to discover later.
+
+**The coordinate system had a constant lie in it.** The standard
+Schreutelkamp / Strang van Hees polynomials sit 0.183 m east and 0.234 m north
+off PDOK's own published WGS84 — measured over 24 Locatieserver RD/LL pairs from
+Kerkrade to Groningen, and constant to within a centimetre nationally. A
+constant that stable over 300 km is a datum offset, not approximation noise, so
+it is subtracted as a measured constant rather than absorbed into a tolerance. A
+second session measured the same offset independently, against a different
+endpoint and a different point set, and got 0.184 / 0.233 — one millimetre
+apart. Residual after correction is 1.4 mm worst inside the pilot, which is a
+hundredth of the 12.5 cm orthophoto pixel everything downstream measures from.
+Two tolerances are pinned rather than one, because once the datum offset is
+removed the remaining residual is a polynomial fit centred near Amersfoort:
+small mid-country, larger at the coasts. Demanding pilot precision in Vlissingen
+would be pinning noise.
+
+**The boundary is not a box, and it is not the shape the brief describes.** It
+follows canal centrelines, because the ring curves continuously and a chord
+between corner junctions cuts off the outside of every bend. Each leg is pushed
+outward by its own documented distance to reach the far bank — 42 m on
+Brouwersgracht, 45 m on the main grachten, 95 m on Prinsengracht to take the
+first Jordaan row, that last figure set from measured perpendiculars rather than
+chosen. Two facts the four-canal description does not cover: Singel never
+reaches Leidsegracht, so Herengracht carries the south-east corner; and the
+district is 0.95 km × 1.77 km, not the estimated 1.1 × 0.7 — the brief's
+north–south run was roughly half the real one.
+
+**Membership is footprint intersection, and it matters which rule you test.**
+Singel 411's BAG address point sits 79 m from the Singel centreline, outside any
+sane offset, while its footprint plainly crosses the boundary. Address points
+sit deep inside blocks. A check written against them would have passed 35 of 36
+named locations while quietly dropping far-bank buildings — so that exact case
+is pinned as the one that distinguishes the two rules. An offset ring also
+self-intersects wherever the offset exceeds the local radius of curvature; one
+such loop at a kink in Singel is excised, because left in it inverts
+inside/outside for every building near it.
+
+**The pilot is 3,025 buildings, not "roughly two thousand".** Median plot width
+is 5.66 m, which is the canal-house grammar showing up in the data unprompted.
+215 of them carry BAG's `1005` sentinel and have no known construction year, so
+they must not be routed as though they were medieval.
+
+**3DBAG gives good massing and an untrustworthy gable.** Its own reconstruction
+error is 0.59 m median across the pilot, and the tempting move — threshold at
+0.5 m, promote what passes — keeps only 39% of the boundary. But the same number
+split by roof type is 0.11 m on flat roofs against 0.60 m on pitched, and it is
+flat across plot width and across century. So it measures roof *complexity*, not
+reconstruction failure: dormers, chimneys, ridges and stepped gables are real
+geometry that LoD2.2 planes do not represent, and the point cloud reports the
+difference honestly. A global gate would reject buildings for being interesting,
+which is exactly backwards for a project about gables. Footprints, walls,
+storeys and eaves heights stand; the gable top has to be observed.
+
+**The monument register is real, hidden, and narrower than hoped.** Every
+endpoint one would reach for is a 404 — `api.pdok.nl/rce/rijksmonumenten/*`, the
+PDOK WFS, the atom index. It actually lives in two places that must be joined:
+geometry at `services.rce.geovoorziening.nl/rce/wfs`
+(`rce:NationalListedMonumentPoints`) and the *redengevende omschrijving* text at
+the RCE linked-data SPARQL endpoint under `ceo:heeftOmschrijving`. Inside the
+boundary that is 1,764 monuments, 1,568 with text — but only 989 distinct panden,
+because one house can carry several records and 15% of monument points miss every
+footprint. The text names a specific gable type for 70% of described monuments,
+and that is close to all it reliably gives: bay count 3%, storey count 1%,
+median length 88 characters. So it is a 23%-coverage gable-type source — a real
+head start on the hardest field — and not the general façade-attribute source
+the brief hoped for. Bays, storeys and window arrangement must come from imagery.
+
+Two API behaviours are written down so nobody rediscovers them: the 3DBAG API
+takes an RD bbox and returns zero features rather than an error for a WGS84 one,
+and its offsets are 1-based, so `offset=0` is an HTTP 500 and paging must follow
+the server's own `next` link.
+
+
 - **The basemap stopped drawing the buildings we draw ourselves.** Facades in
   the centre broke into vertical stripes and dithered patches, and pale grey
   slabs floated inside coloured buildings. Two layers were extruding the same
