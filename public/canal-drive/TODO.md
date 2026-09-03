@@ -212,23 +212,14 @@ tier**. BAG/3DBAG is the measured Dutch foundation, not permission to flatten a
 carefully mapped tower, wing, passage, courtyard or stacked part. Resolve the
 sources into one owner per building; never draw overlapping representations.
 
-Status: `feat/building-one-owner` — ready for review. LoD1 step 2 is in the
-versioned extract (298 z14 `.geojson.gz` tiles, ~16 MB). Post-publish visual
-fixes are systemic in the builder/runtime; two published tiles
-(`14/8414/5383` Droogbak, `14/8415/5383` Centraal) carry stopgap patches so
-compare works before the next full publish.
+Status: `feat/building-one-owner` — LoD1 step 2 republished from pipeline
+(2026-09-03). 342,993 features in 295 z14 `.geojson.gz` tiles (~15.4 MB).
+Checks green: Waag 15, Magna Plaza 18 OSM, Oude Kerk 43 OSM, 145 ridge-tower,
+574 courtyard footprints keep OSM holes under BAG heights. Tier-2 stand-ins are
+6,624 (was 20k on the first publish — same OSM extract, fewer panden win as
+compositions; Magna Plaza itself is intact). Gable mesh remains step 3.
 
-**Before merge / next publish:** refresh staging OSM so `test:lod1-city` Magna
-Plaza passes again (current staging rebuild drops to ~6.6k tier-2 parts vs
-20k published), then `build:lod1-city` → `build:lod1-tiles` →
-`publish:lod1-city --confirm` so the stopgap tile edits are replaced by
-pipeline output. Gable mesh remains step 3.
-
-Published city: 351,202 features, 20,039 OSM parts standing in for 8,703
-panden, 130 ridge-tower heights, named fixtures Waag / Magna Plaza / Oude Kerk
-green. Tiles keep `roofHeight` for pyramidal cones. Byte strategy: gzip only;
-streamer uses `DecompressionStream`. Compare:
-`/canal-drive/building-compare.html`.
+Compare: `/canal-drive/building-compare.html`.
 
 Do this as a gated progression rather than converting Amsterdam in one shot,
 ordered **completeness before fidelity** — every step that makes more of the

@@ -3,11 +3,21 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## LoD1 city republished from the polished pipeline
+
+`build:lod1-city` → `build:lod1-tiles` → `publish:lod1-city --confirm` after
+the post-publish polish. Versioned extract is now 342,993 features / 295 z14
+gzipped tiles (~15.4 MB). Named checks green (Waag 15, Magna Plaza 18, Oude
+Kerk 43, 145 ridge-tower). 574 measured BAG extrusions keep OSM courtyard
+holes (Droogbak is a real Polygon with four inner rings, not a stopgap tile
+edit). Magna Plaza check pin moved to the part-cluster centre so the 18
+stand-ins fall inside the 60 m radius. Stopgap Centraal/Droogbak tile edits
+are replaced by pipeline output.
+
 ## Post-publish LoD1 polish (review batch)
 
-Systemic pipeline/runtime fixes after the first city publish, plus two
-**stopgap** published-tile edits so `/canal-drive/building-compare.html` shows
-the intended result before the next full republish:
+Systemic pipeline/runtime fixes after the first city publish (now folded into
+the republished extract above):
 
 - **Oude Kerk lids** — walls full-height for shaped roofs; flat colour lids only
   for flat/untagged shapes (`buildingStyle`).
@@ -15,13 +25,9 @@ the intended result before the next full republish:
   containing coloured footprint when part ids are missing from
   `buildings-colored.geojson`; wired into `build-lod1-city`.
 - **Centraal orphans** — builder marks nearby same-height `building:part`s
-  represented so they are not re-emitted as tier 4; tile `14/8415/5383`
-  patched in place.
+  represented so they are not re-emitted as tier 4.
 - **Droogbak courtyard** — `polygonsOf` / hole-aware `asGeometry`; tier 3 uses
-  OSM footprint when it still has holes. Tile `14/8414/5383` patched in place.
-
-Follow-up before treating the extract as fully pipeline-sourced: staging OSM
-must recover Magna Plaza part coverage, then rebuild + publish.
+  OSM footprint when it still has holes.
 
 ## Complete LoD1 city published as gzipped z14 tiles
 
