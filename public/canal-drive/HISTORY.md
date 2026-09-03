@@ -14,6 +14,12 @@ axis, so a true 16:9 window is unchanged), and both the canvas and MapLibre
 layer pin to the viewport on every layout mode. Named regression: a 900×1200
 desktop window fills 900×1200 CSS with a 1280×1707 logical space.
 
+The follow-up: filling the window then pinned every HUD card to the far edges
+of an ultrawide, and compact mode had been clamping logical width to 900 while
+CSS-stretching the canvas to `100%`, so cards also blew sideways. `hudBand`
+now caps chrome at the design width (1280 desktop / 900 compact) and centres
+that band; the map stays full-bleed, the cards stay dense beside the corridor.
+
 ## Thirteen landmarks are real buildings now
 
 The city was OSM footprints extruded to an OSM height: honest about where every

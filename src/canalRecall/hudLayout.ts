@@ -12,14 +12,31 @@
 // the trip readout merges into the score row, and the bottom of the screen is
 // reserved for the d-pad instead of being fought over.
 //
+// The map fills the window; the chrome does not. On an ultrawide (or a wide
+// compact landscape) cards used to pin to the far edges with a dead sea of
+// map between them. `hudBand` caps the chrome at the proven design width and
+// centres that band, so the layout stays dense while the city stays full-bleed.
+//
 // `bottomHudLayout` still exists, delegating here, so the regression suite that
 // pins the desktop bottom band keeps proving the desktop layout has not moved.
 
 import type { Viewport } from './viewport.ts';
-import { DESIGN_HEIGHT, DESIGN_WIDTH } from './viewport.ts';
+import {
+  DESIGN_HEIGHT,
+  DESIGN_WIDTH,
+  HUD_MAX_WIDTH_COMPACT,
+  HUD_MAX_WIDTH_DESKTOP,
+} from './viewport.ts';
 import { dpadLayout, type DpadLayout } from './touchControls.ts';
 
 export type Rect = { x: number; y: number; width: number; height: number };
+
+export type HudBand = {
+  /** Left edge of the chrome band in canvas coordinates. */
+  x: number;
+  width: number;
+  height: number;
+};
 
 export type HudLayout = {
   /** Score / streak, and on a phone the speed and odometer too. */
@@ -38,6 +55,8 @@ export type HudLayout = {
   /** True when the trip readout is drawn inside the recall row, not separately. */
   tripInRecall: boolean;
   mode: Viewport['mode'];
+  /** The centred band the chrome was laid into. */
+  band: HudBand;
 };
 
 export type HudLayoutInput = {
@@ -71,13 +90,29 @@ const COMPACT_MINIMAP_W = 124;
 const COMPACT_MINIMAP_H = 96;
 const COMPACT_ZOOM_H = 22;
 
+/** The centred strip the chrome occupies. Narrower than the canvas on wide
+ *  windows so cards stay next to the driving corridor instead of the bezels. */
+export function hudBand(viewport: Viewport): HudBand {
+  const maxWidth = viewport.mode === 'compact' ? HUD_MAX_WIDTH_COMPACT : HUD_MAX_WIDTH_DESKTOP;
+  const width = Math.min(viewport.width, maxWidth);
+  return {
+    x: Math.round((viewport.width - width) / 2),
+    width,
+    height: viewport.height,
+  };
+}
+
+function offsetRect(rect: Rect, dx: number): Rect {
+  return dx === 0 ? rect : { ...rect, x: rect.x + dx };
+}
+
 /** The room a landscape phone leaves the trivia card, right of the d-pad. */
 function compactLandscapeCardWidth(
-  viewport: Viewport,
+  band: HudBand,
   dpad: DpadLayout | null,
 ): number {
-  const padRight = dpad ? dpad.bounds.x + dpad.bounds.width + GAP : 0;
-  return Math.max(160, viewport.width - MARGIN * 2 - padRight);
+  const padRight = dpad ? (dpad.bounds.x - band.x) + dpad.bounds.width + GAP : 0;
+  return Math.max(160, band.width - MARGIN * 2 - padRight);
 }
 
 /** The width the trivia card must be measured at. Callers measure with this,
@@ -85,17 +120,19 @@ function compactLandscapeCardWidth(
  *  rectangle afterwards clipped the text instead of rewrapping it. */
 export function landmarkCardWidth(viewport: Viewport, desired = 480): number {
   if (viewport.mode !== 'compact') return desired;
+  const band = hudBand(viewport);
   if (viewport.orientation === 'portrait') {
-    return Math.min(desired, viewport.width - MARGIN * 2);
+    return Math.min(desired, band.width - MARGIN * 2);
   }
-  return Math.min(desired, compactLandscapeCardWidth(viewport, dpadLayout(viewport)));
+  return Math.min(desired, compactLandscapeCardWidth(band, dpadLayout(viewport, band)));
 }
 
 /** The width the neighbourhood postcard must be measured at. */
 export function postcardWidth(viewport: Viewport, desired = 390): number {
   if (viewport.mode !== 'compact') return desired;
-  if (viewport.orientation === 'portrait') return Math.min(desired, viewport.width - MARGIN * 2);
-  return Math.min(desired, compactLandscapeCardWidth(viewport, dpadLayout(viewport)));
+  const band = hudBand(viewport);
+  if (viewport.orientation === 'portrait') return Math.min(desired, band.width - MARGIN * 2);
+  return Math.min(desired, compactLandscapeCardWidth(band, dpadLayout(viewport, band)));
 }
 
 /** Cards shrink to the room they have rather than overlapping the controls. */
@@ -116,11 +153,13 @@ export function hudLayout({
   neighborhoodVisible = false,
   minimapVisible = true,
 }: HudLayoutInput): HudLayout {
-  const width = viewport.width;
-  const height = viewport.height;
+  const band = hudBand(viewport);
+  const width = band.width;
+  const height = band.height;
+  const left = band.x;
 
   if (viewport.mode === 'compact') {
-    const dpad = dpadLayout(viewport);
+    const dpad = dpadLayout(viewport, band);
     const controlsTop = dpad ? dpad.bounds.y : height - viewport.safeBottom;
 
     if (viewport.orientation === 'portrait') {
@@ -129,17 +168,20 @@ export function hudLayout({
       // 310 px card is most of the width anyway, so the corner buys nothing and
       // costs a column of unusable space beside it.
       let cursor = viewport.safeTop + MARGIN;
-      const recall = {
+      const recall = offsetRect({
         x: MARGIN, y: cursor, width: rowWidth,
         height: feedbackVisible ? COMPACT_RECALL_FEEDBACK_H : COMPACT_RECALL_H,
-      };
+      }, left);
       cursor += recall.height + GAP;
-      const location = {
+      const location = offsetRect({
         x: MARGIN, y: cursor, width: rowWidth,
         height: neighborhoodVisible ? COMPACT_LOCATION_H : COMPACT_LOCATION_PLAIN_H,
-      };
+      }, left);
       cursor += location.height + GAP;
-      const destination = { x: MARGIN, y: cursor, width: rowWidth, height: COMPACT_DESTINATION_H };
+      const destination = offsetRect(
+        { x: MARGIN, y: cursor, width: rowWidth, height: COMPACT_DESTINATION_H },
+        left,
+      );
       const topBottom = destination.y + destination.height;
 
       // The bottom stack is built upwards from the d-pad, so the controls are
@@ -147,91 +189,113 @@ export function hudLayout({
       const minimapBudget = minimapVisible ? COMPACT_MINIMAP_H + GAP : 0;
       const cardHeight = clampHeight(landmarkHeight, controlsTop - GAP - (topBottom + GAP) - minimapBudget);
       const cardWidth = Math.min(landmarkWidth, rowWidth);
-      const landmark = { x: MARGIN, y: controlsTop - GAP - cardHeight, width: cardWidth, height: cardHeight };
-      const minimap = {
+      const landmark = offsetRect(
+        { x: MARGIN, y: controlsTop - GAP - cardHeight, width: cardWidth, height: cardHeight },
+        left,
+      );
+      const minimap = offsetRect({
         x: MARGIN, y: landmark.y - GAP - COMPACT_MINIMAP_H,
         width: COMPACT_MINIMAP_W, height: COMPACT_MINIMAP_H,
-      };
+      }, left);
       const postcardH = clampHeight(postcardHeight, controlsTop - GAP - (topBottom + GAP));
-      const postcard = {
+      const postcard = offsetRect({
         x: MARGIN, y: controlsTop - GAP - postcardH,
         width: Math.min(postcardWidth(viewport), rowWidth), height: postcardH,
-      };
+      }, left);
       const zoomBadge = {
-        x: Math.round(width / 2 - 35),
+        x: Math.round(left + width / 2 - 35),
         y: (minimapVisible ? minimap.y : landmark.y) - GAP - COMPACT_ZOOM_H,
         width: 70, height: COMPACT_ZOOM_H,
       };
       return {
         recall, location, destination, trip: recall, postcard, landmark, minimap, zoomBadge,
-        controlsHint: { x: Math.round(width / 2 - 177), y: zoomBadge.y, width: 354, height: 12 },
-        dpad, tripInRecall: true, mode: viewport.mode,
+        controlsHint: { x: Math.round(left + width / 2 - 177), y: zoomBadge.y, width: 354, height: 12 },
+        dpad, tripInRecall: true, mode: viewport.mode, band,
       };
     }
 
     // Compact landscape: 844×390 has width to spare and almost no height, so
     // the rows go back into the corners and the d-pad takes the bottom-left,
-    // where a hand holding the phone already is.
+    // where a hand holding the phone already is. On a wider window the band is
+    // capped, so "corners" means the band's corners — not the monitor bezels.
     const columnWidth = Math.min(300, Math.round((width - MARGIN * 3) / 2));
-    const recall = {
+    const recall = offsetRect({
       x: MARGIN, y: viewport.safeTop + MARGIN, width: columnWidth,
       height: feedbackVisible ? COMPACT_RECALL_FEEDBACK_H : COMPACT_RECALL_H,
-    };
-    const location = {
+    }, left);
+    const location = offsetRect({
       x: MARGIN, y: recall.y + recall.height + GAP, width: columnWidth,
       height: neighborhoodVisible ? COMPACT_LOCATION_H : COMPACT_LOCATION_PLAIN_H,
-    };
-    const destination = {
+    }, left);
+    const destination = offsetRect({
       x: width - MARGIN - columnWidth, y: viewport.safeTop + MARGIN,
       width: columnWidth, height: COMPACT_DESTINATION_H,
-    };
-    const cardWidth = Math.min(landmarkWidth, compactLandscapeCardWidth(viewport, dpad));
+    }, left);
+    const cardWidth = Math.min(landmarkWidth, compactLandscapeCardWidth(band, dpad));
     const cardTop = destination.y + destination.height + GAP + (minimapVisible ? COMPACT_MINIMAP_H + GAP : 0);
     const cardHeight = clampHeight(landmarkHeight, height - viewport.safeBottom - MARGIN - cardTop);
-    const landmark = {
+    const landmark = offsetRect({
       x: width - MARGIN - cardWidth,
       y: height - viewport.safeBottom - MARGIN - cardHeight,
       width: cardWidth, height: cardHeight,
-    };
-    const minimap = {
+    }, left);
+    const minimap = offsetRect({
       x: width - MARGIN - COMPACT_MINIMAP_W, y: landmark.y - GAP - COMPACT_MINIMAP_H,
       width: COMPACT_MINIMAP_W, height: COMPACT_MINIMAP_H,
-    };
+    }, left);
     const postcardH = clampHeight(postcardHeight, height - viewport.safeBottom - MARGIN - cardTop);
     const postcardW = Math.min(postcardWidth(viewport), cardWidth);
-    const postcard = {
+    const postcard = offsetRect({
       x: width - MARGIN - postcardW,
       y: height - viewport.safeBottom - MARGIN - postcardH,
       width: postcardW, height: postcardH,
-    };
+    }, left);
     const zoomBadge = {
-      x: Math.round(width / 2 - 35), y: landmark.y - GAP - COMPACT_ZOOM_H,
+      x: Math.round(left + width / 2 - 35), y: landmark.y - GAP - COMPACT_ZOOM_H,
       width: 70, height: COMPACT_ZOOM_H,
     };
     return {
       recall, location, destination, trip: recall, postcard, landmark, minimap, zoomBadge,
-      controlsHint: { x: Math.round(width / 2 - 177), y: zoomBadge.y, width: 354, height: 12 },
-      dpad, tripInRecall: true, mode: viewport.mode,
+      controlsHint: { x: Math.round(left + width / 2 - 177), y: zoomBadge.y, width: 354, height: 12 },
+      dpad, tripInRecall: true, mode: viewport.mode, band,
     };
   }
 
-  // ---- Desktop: corner cards, bottom trip/minimap. Width/height follow the
-  // window aspect (see viewport.ts), so a tall desktop grows this space instead
-  // of letterboxing a fixed 16:9 strip. ------------------------------------
-  const recall = { x: 15, y: 15, width: 310, height: feedbackVisible ? 62 : 43 };
-  const location = { x: 15, y: 84, width: 310, height: neighborhoodVisible ? 55 : 38 };
-  const destination = { x: width - 350, y: 15, width: 335, height: 48 };
-  const trip = { x: width - tripWidth - 16, y: height - 98, width: tripWidth, height: 26 };
-  const postcard = { x: width - 410, y: trip.y - 118, width: 390, height: 104 };
-  const minimap = { x: 15, y: height - 215, width: 260, height: 200 };
-  const zoomBadge = { x: width / 2 - 35, y: height - 35, width: 70, height: 22 };
+  // ---- Desktop: corner cards inside the centred design-width band. --------
+  const recall = offsetRect(
+    { x: 15, y: 15, width: 310, height: feedbackVisible ? 62 : 43 },
+    left,
+  );
+  const location = offsetRect(
+    { x: 15, y: 84, width: 310, height: neighborhoodVisible ? 55 : 38 },
+    left,
+  );
+  const destination = offsetRect(
+    { x: width - 350, y: 15, width: 335, height: 48 },
+    left,
+  );
+  const trip = offsetRect(
+    { x: width - tripWidth - 16, y: height - 98, width: tripWidth, height: 26 },
+    left,
+  );
+  const postcard = offsetRect(
+    { x: width - 410, y: trip.y - 118, width: 390, height: 104 },
+    left,
+  );
+  const minimap = offsetRect(
+    { x: 15, y: height - 215, width: 260, height: 200 },
+    left,
+  );
+  const zoomBadge = {
+    x: left + width / 2 - 35, y: height - 35, width: 70, height: 22,
+  };
   const controlsHint = {
-    x: width / 2 - 177,
+    x: left + width / 2 - 177,
     y: zoomVisible ? zoomBadge.y - 26 : height - 32,
     width: 354,
     height: 12,
   };
-  const centeredLandmarkX = width / 2 - landmarkWidth / 2;
+  const centeredLandmarkX = left + width / 2 - landmarkWidth / 2;
   const footerTop = controlsVisible ? controlsHint.y : zoomVisible ? zoomBadge.y : height;
   const landmark = {
     x: postcardVisible ? Math.min(centeredLandmarkX, postcard.x - 14 - landmarkWidth) : centeredLandmarkX,
@@ -241,7 +305,7 @@ export function hudLayout({
   };
   return {
     recall, location, destination, trip, postcard, landmark, minimap,
-    zoomBadge, controlsHint, dpad: null, tripInRecall: false, mode: viewport.mode,
+    zoomBadge, controlsHint, dpad: null, tripInRecall: false, mode: viewport.mode, band,
   };
 }
 
