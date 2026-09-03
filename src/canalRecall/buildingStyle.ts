@@ -168,8 +168,6 @@ export function dedupeAppearanceFeatures(features: AppearanceFeature[]): Appeara
         ? (geometry.coordinates as Ring[][]).map(polygon => polygon[0])
         : [];
     if (!rings.length || !rings[0]?.length) continue;
-    // Prove the ring is well-formed enough for centroid math (and keep the
-    // helper referenced so esbuild does not drop the geometry module).
     if (!Number.isFinite(ringCentroid(rings[0])[0])) continue;
     items.push({
       osmId,
@@ -184,4 +182,36 @@ export function dedupeAppearanceFeatures(features: AppearanceFeature[]): Appeara
   const grid = new FootprintGrid<Item>();
   for (const item of items) grid.add(item);
   return selectRenderableBuildings(items, item => grid.near(item.rings)).map(item => item.feature);
+}
+
+/**
+ * Wall top for a fill-extrusion: below a procedural roof when OSM tagged one.
+ *
+ * Pyramidal parts carry `height` at the apex and `roofHeight` for the cone.
+ * Walls must stop at the eaves or the flat cap fights the mesh roof.
+ */
+export function wallTopHeightExpression(): MapLibreExpression {
+  return [
+    'case',
+    ['all',
+      ['==', ['get', 'roofShape'], 'pyramidal'],
+      ['>', ['coalesce', ['get', 'roofHeight'], 0], 0],
+    ],
+    ['-', ['coalesce', ['get', 'height'], 5], ['get', 'roofHeight']],
+    ['coalesce', ['get', 'height'], 5],
+  ];
+}
+
+/** Flat roof caps skip features that get a procedural pyramidal mesh. */
+export function flatRoofFilter(): MapLibreExpression {
+  return [
+    'all',
+    ['has', 'roofColour'],
+    ['!',
+      ['all',
+        ['==', ['get', 'roofShape'], 'pyramidal'],
+        ['>', ['coalesce', ['get', 'roofHeight'], 0], 0],
+      ],
+    ],
+  ];
 }
