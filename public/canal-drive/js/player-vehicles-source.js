@@ -1,5 +1,5 @@
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
-const { THREE, GLTFLoader } = window.CanalRecallThree;
+const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 
 const assetUrl = path => new URL(path, window.location.href).href;
 const BIKE_MODEL_URL = assetUrl('./carbon-frame-bike-runtime.glb');
@@ -94,7 +94,12 @@ class Vehicle3D {
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
 
-        new GLTFLoader().load(modelUrl, (gltf) => {
+        const loader = new GLTFLoader();
+        // The vehicle GLBs are EXT_meshopt_compression. Without the decoder the
+        // load fails outright and the 3D vehicle silently never appears — the
+        // failure the steering and boat specs catch.
+        if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
+        loader.load(modelUrl, (gltf) => {
           const imported = gltf.scene;
           const bounds = new THREE.Box3().setFromObject(imported);
           const size = bounds.getSize(new THREE.Vector3());

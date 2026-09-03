@@ -1,0 +1,102 @@
+{
+  "cityId": "rotterdam",
+  "source": "OpenStreetMap / BBBike Rotterdam extract",
+  "generatedAt": "2026-09-01T06:39:41.671Z",
+  "center": [
+    51.9225,
+    4.47917
+  ],
+  "partitions": {
+    "water": {
+      "file": "water.json",
+      "count": 227,
+      "availableCount": 227,
+      "bytes": 261918,
+      "availableLinkedCount": 136,
+      "linkedCount": 136
+    },
+    "streets": {
+      "file": "streets.json",
+      "count": 300,
+      "availableCount": 5458,
+      "bytes": 769501,
+      "availableLinkedCount": 115,
+      "linkedCount": 99
+    },
+    "bridges": {
+      "file": "bridges.json",
+      "count": 300,
+      "availableCount": 599,
+      "bytes": 246936,
+      "availableLinkedCount": 234,
+      "linkedCount": 234
+    },
+    "squares": {
+      "file": "squares.json",
+      "count": 21,
+      "availableCount": 21,
+      "bytes": 15907,
+      "availableLinkedCount": 3,
+      "linkedCount": 3
+    },
+    "parks": {
+      "file": "parks.json",
+      "count": 126,
+      "availableCount": 126,
+      "bytes": 260297,
+      "availableLinkedCount": 34,
+      "linkedCount": 34
+    },
+    "landmarks": {
+      "file": "landmarks.json",
+      "count": 420,
+      "availableCount": 590,
+      "bytes": 273555,
+      "availableLinkedCount": 192,
+      "linkedCount": 192
+    },
+    "all": {
+      "file": "all.json",
+      "count": 396,
+      "availableCount": 7021,
+      "bytes": 580025,
+      "availableLinkedCount": 714,
+      "linkedCount": 337
+    }
+  },
+  "boundaries": {
+    "file": "boundaries.json",
+    "count": 129
+  },
+  "brandedPois": {
+    "file": "branded-pois.json",
+    "count": 961
+  },
+  "localFoodPois": {
+    "count": 911
+  },
+  "majorChains": [
+    {
+      "name": "Albert Heijn",
+      "brandWikidata": "Q1653985",
+      "count": 43,
+      "icon": "brand-q1653985",
+      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Albert_Heijn_Logo.svg/330px-Albert_Heijn_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "name": "Albert Heijn to go",
+      "brandWikidata": "Q77971185",
+      "count": 7,
+      "icon": "albert-heijn"
+    }
+  ],
+  "cityProfile": {
+    "file": "city-profile.json",
+    "wikidata": "Q34370"
+  },
+  "brandIdentifiers": {
+    "file": "brand-identifiers.json",
+    "count": 2,
+    "logoCount": 1
+  }
+}

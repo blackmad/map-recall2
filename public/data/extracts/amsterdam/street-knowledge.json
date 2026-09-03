@@ -1,9 +1,1313 @@
 [
   {
-    "name": "Nes",
+    "id": "extract_streets_2083054968",
+    "name": "Coen Tunnel",
     "type": "street",
-    "wikipedia": "en:Nes_(Amsterdam)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nes_(Amsterdam)",
-    "wikipediaExtract": "Nes is a narrow old street running parallel to Rokin between Dam Square and Grimburgwal. Its name refers to a headland or spit, recalling the street's original setting among Amsterdam's waterways. It later became known for monasteries, entertainment, the tobacco trade, and theatres."
+    "wikidata": "Q1106704",
+    "wikipedia": "nl:Coentunnel",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Coentunnel",
+    "wikipediaExtract": "The Coentunnel (1966) is a tunnel in the A10 motorway under the North Sea Canal in western Amsterdam. The tunnel is named for the 17th-century colonizer Jan Pieterszoon Coen. The tunnel itself is 1283 metres long of which 587 metres are fully covered. The tunnel connects the Zaan district with the western part of Amsterdam. The tunnel reaches a maximum depth"
+  },
+  {
+    "id": "extract_streets_525490560",
+    "name": "Blauwbrug",
+    "type": "street",
+    "wikidata": "Q883126",
+    "wikipedia": "nl:Blauwbrug",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Blauwbrug",
+    "wikipediaExtract": "The Blauwbrug (English: Blue bridge) is a historic bridge in Amsterdam, Netherlands over the river Amstel. It connects the Rembrandtplein area with the Waterlooplein area, and lies south to the Stopera.\nThe bridge owes its name to a wooden \"blue bridge\" that was there from around 1600 but no longer exists and which was painted the characteristic blue of the "
+  },
+  {
+    "id": "extract_streets_1008250190",
+    "name": "Entrepotdok",
+    "type": "street",
+    "wikidata": "Q2452724",
+    "wikipedia": "nl:Entrepotdok",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Entrepotdok",
+    "wikipediaExtract": "The Entrepotdok (Warehouse Dock), formerly Nieuwe Rapenburgergracht, is a canal in Amsterdam, and a street and row of former warehouses with the same name along the northeast side of the canal. They were constructed between 1708 and 1829, used for storage, squatted in the 1990s and are now converted into apartments. Entrepotdok is the largest inhabited wareh"
+  },
+  {
+    "id": "extract_streets_2116836170",
+    "name": "Diepenbrockstraat",
+    "type": "street",
+    "wikidata": "Q2252791",
+    "wikipedia": "nl:Diepenbrockstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Diepenbrockstraat",
+    "wikipediaExtract": "The Diepenbrockstraat is a street in Amsterdam - Zuid. The street runs along the Wielingenstraat, which runs along the RAI exhibition center. The street begins on Bridge 422 over the Boerenwetering, from there the street runs in a circular shape over a bridge over the Zuider Amstel Canal. The street ends on the Stadionweg. The street was on September 30"
+  },
+  {
+    "id": "extract_streets_188747892",
+    "name": "Dijkgraafplein",
+    "type": "street",
+    "wikidata": "Q5276492",
+    "wikipedia": "nl:Dijkgraafplein",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dijkgraafplein",
+    "wikipediaExtract": "The Dijkgraafplein is a square in Amsterdam-Osdorp in the Netherlands, lying  at the end of Tussen Meer.  The square is named after the office of dijkgraaf (the chairman of a water board) in 1962.  The Dijkgraafplein lies in the neighborhood that is now known as 'De Punt' and where many streets are named after waterways.\nSince 1962 tram line 17 terminates on"
+  },
+  {
+    "id": "extract_streets_438093062",
+    "name": "IJburglaan",
+    "type": "street",
+    "wikidata": "Q2271786",
+    "wikipedia": "nl:Enneüs Heermabrug",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Enne%C3%BCs_Heerma_Bridge",
+    "wikipediaExtract": "The Enneüs Heerma Bridge (Dutch: Enneüs Heermabrug) is a bridge in Amsterdam, Netherlands located in the new neighbourhood of IJburg, built on seven artificial islands in the IJmeer. It connects the district of Zeeburgereiland, on the eastern edge of the city, with Steigereiland, to the south.\nThe bridge is named after Enneüs Heerma, who served as Leader of "
+  },
+  {
+    "id": "extract_streets_1536393221",
+    "name": "Stadionplein",
+    "type": "street",
+    "wikidata": "Q2834612",
+    "wikipedia": "nl:Stadionplein",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Stadionplein",
+    "wikipediaExtract": "The Stadionplein is a square in Amsterdam-Zuid, which was built in the 1920s at the intersection of Stadionweg and Amstelveenseweg to better control car traffic to the site of the 1928 Summer Olympic Games in Amsterdam. It is located on the border of H.P. Berlage's Plan Zuid and the more modernist"
+  },
+  {
+    "id": "extract_streets_1598433313",
+    "name": "Frederiksstraat",
+    "type": "street",
+    "wikidata": "Q19159678",
+    "wikipedia": "nl:Frederiksstraat (Amsterdam)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Frederiksstraat_(Amsterdam)",
+    "wikipediaExtract": "The Frederiksstraat is a relatively short street in Amsterdam Oud-West."
+  },
+  {
+    "id": "extract_streets_594796006",
+    "name": "Purmerplein",
+    "type": "street",
+    "wikidata": "Q2798255",
+    "wikipedia": "nl:Purmerplein",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Purmerplein",
+    "wikipediaExtract": "The Purmerplein in Amsterdam-North is a square in the village of Nieuwendam, which has belonged to the municipality of Amsterdam since 1921. The Purmerplein forms the center of Tuindorp Nieuwendam, an expansion district with mainly worker housing that was built between 1924 and 1934 under the direction of the Municipal Housing Service Amsterdam."
+  },
+  {
+    "id": "extract_streets_1950136997",
+    "name": "Vrijheidslaan",
+    "type": "street",
+    "wikidata": "Q1909501",
+    "wikipedia": "nl:Vrijheidslaan",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Vrijheidslaan",
+    "wikipediaExtract": "The Vrijheidslaan (formerly Amstellaan and Stalinlaan) is a main street in Amsterdam-Zuid, which together with the Berlagebrug forms the eastern entrance to the Rivierenbuurt. The avenue is an important main axis within the monumental urban planning Plan Zuid by architect Berlage and splits into two equal parts west of the Rijnstraat, on the Victorieplein."
+  },
+  {
+    "id": "extract_streets_1762198121",
+    "name": "Binnen Dommersstraat",
+    "type": "street",
+    "wikidata": "Q42299729",
+    "wikipedia": "nl:Brug 148",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Brug_148",
+    "wikipediaExtract": "Bridge 148 is a lift bridge in Amsterdam-Centrum."
+  },
+  {
+    "id": "extract_streets_1311921497",
+    "name": "Jaargetijden",
+    "type": "street",
+    "wikidata": "Q13492664",
+    "wikipedia": "nl:Brug Driemond",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Brug_Driemond",
+    "wikipediaExtract": "Brug Driemond is a lift bridge over the Weespertrekvaart in the North Holland village of Driemond. Until 1966, the bridge and village were in the municipality of Weesperkarspel."
+  },
+  {
+    "id": "extract_streets_2004781631",
+    "name": "Spaarndammerstraat",
+    "type": "street",
+    "wikidata": "Q19526996",
+    "wikipedia": "nl:Spaarndammerstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Spaarndammerstraat",
+    "wikipediaExtract": "The Spaarndammerstraat is a residential and shopping street in the Spaarndammerbuurt in Amsterdam Oud-West."
+  },
+  {
+    "id": "extract_streets_173765776",
+    "name": "IJsbaanpad",
+    "type": "street",
+    "wikidata": "Q1976124",
+    "wikipedia": "nl:IJsbaanpad",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/IJsbaanpad",
+    "wikipediaExtract": "The IJsbaanpad is a street in Amsterdam-Zuid, between the Amstelveenseweg and the Schinkel. The Amsterdamsche IJsclub (AIJC) had a field near the Schinkel in use, which was submerged in winter to create an ice surface. The road to it was therefore named IJsbaanpad in 1949. On the former ice club grounds are now tennis courts."
+  },
+  {
+    "id": "extract_streets_1327344601",
+    "name": "Haparandadam",
+    "type": "street",
+    "wikidata": "Q16069578",
+    "wikipedia": "nl:Haparandadam",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Haparandadam",
+    "wikipediaExtract": "The Haparandadam is a dam in Amsterdam-West. The dam forms the border between the Houthaven district and the Western Port Area. The dam is named after the Swedish port city of Haparanda on the Gulf of Bothnia, on the border with Finland, where much wood came from to Amsterdam."
+  },
+  {
+    "id": "extract_streets_359831611",
+    "name": "Zocherstraat",
+    "type": "street",
+    "wikidata": "Q18955233",
+    "wikipedia": "nl:Zocherstraat (Amsterdam)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Zocherstraat_(Amsterdam)",
+    "wikipediaExtract": "The Zocherstraat is a street in Amsterdam-West. The street was named on October 10, 1915, after the landscape architect Louis Paul Zocher, who died on September 7, 1915, and together with his father Jan David Zocher designed the Vondelpark. The naming of the street took place when construction was already underway. Also Leiden, Rotterdam e"
+  },
+  {
+    "id": "extract_streets_1797654092",
+    "name": "Zeilstraat",
+    "type": "street",
+    "wikidata": "Q4686152",
+    "wikipedia": "nl:Zeilstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Zeilstraat",
+    "wikipediaExtract": "The Zeilstraat is a street in Amsterdam-Zuid, between the Amstelveenseweg and the Schinkel. The Zeilstraat is known as a busy, main shopping street. It extends along the Koninginneweg."
+  },
+  {
+    "id": "extract_streets_1700434609",
+    "name": "Plantage Doklaan",
+    "type": "street",
+    "wikidata": "Q2246546",
+    "wikipedia": "nl:Plantage Doklaan",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Plantage_Doklaan",
+    "wikipediaExtract": "The Plantage Doklaan is a street in the Plantagebuurt of Amsterdam. The street runs along the Entrepotdok, which was built in 1857, and is named after it. Originally, the street ran from Plantage Parklaan to Plantage Muidergracht and was crossed halfway by Plantage Kerklaan. Between Plantage Kerklaan and Plantage Muidergracht is the street"
+  },
+  {
+    "id": "extract_streets_1453440174",
+    "name": "Havenstraat",
+    "type": "street",
+    "wikidata": "Q2274921",
+    "wikipedia": "nl:Havenstraat (Amsterdam)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Havenstraat_(Amsterdam)",
+    "wikipediaExtract": "The Havenstraat is a street in the Schinkel neighborhood, Amsterdam-Zuid."
+  },
+  {
+    "id": "extract_streets_2021536949",
+    "name": "Lies Bakhuyzenlaan",
+    "type": "street",
+    "wikidata": "Q19326590",
+    "wikipedia": "nl:Lies Bakhuyzenlaan",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Lies_Bakhuyzenlaan",
+    "wikipediaExtract": "Lies Bakhuyzenlaan is a street in Amsterdam Nieuw-West."
+  },
+  {
+    "id": "extract_streets_1605678642",
+    "name": "Ringweg-West",
+    "type": "street",
+    "wikidata": "Q1974151",
+    "wikipedia": "nl:Tweede Coentunnel",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Coen_Tunnel",
+    "wikipediaExtract": "The Second Coen Tunnel is a tunnel under the North Sea Canal, next to the Coen Tunnel in Amsterdam. The tunnel was built in combination with a new highway connection, the Westrandweg, to the A5 motorway. The tunnel consists of three fixed lanes and two reversible lanes, which are opened in the direction where traffic is the heaviest. The goal of the Second C"
+  },
+  {
+    "id": "extract_streets_1469031653",
+    "name": "Hoofddorpweg",
+    "type": "street",
+    "wikidata": "Q1965836",
+    "wikipedia": "nl:Hoofddorpweg",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Hoofddorpweg",
+    "wikipediaExtract": "The Hoofddorpweg in the Hoofddorpplein neighborhood of Amsterdam-Zuid was built in the 1920s on the territory of the municipality of Sloten, which was annexed by Amsterdam in 1921."
+  },
+  {
+    "id": "extract_streets_1356272721",
+    "name": "Petemayenbrug",
+    "type": "street",
+    "wikidata": "Q47499138",
+    "wikipedia": "nl:Petemayenbrug",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Petemayenbrug",
+    "wikipediaExtract": "The Petemayenbrug is a double pickup bridge in Amsterdam-Centrum. The name is said to be derived from petemoeien (stepmother), also an indication of old women. It connects Bokkinghangen with Zandhoek, both western docks of the Westerdok. Bokkinghangen is located on the former Bolwerk Blauwhoofd (Zeeheldenbuurt), Zandhoek on the Realeneiland. It spans"
+  },
+  {
+    "id": "extract_streets_61188555",
+    "name": "Prinses Irenestraat",
+    "type": "street",
+    "wikidata": "Q2666763",
+    "wikipedia": "nl:Prinses Irenestraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Prinses_Irenestraat",
+    "wikipediaExtract": "The Prinses Irenestraat is a street in the Amsterdam district of Zuid, on the edge of the Zuidas. The street was named in 1953 and was named after Princess Irene, daughter of the then queen Juliana. The western part of the street changed its name after the renaming of Parnassusweg in 1977. This is now called Fred. Roeskestraat. With this, the"
+  },
+  {
+    "id": "extract_streets_1966764676",
+    "name": "Westergasbrug",
+    "type": "street",
+    "wikidata": "Q42315883",
+    "wikipedia": "nl:Westergasbrug",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Westergasbrug",
+    "wikipediaExtract": "The Westergasbrug (bridge 193) is an iron lifting bridge in Amsterdam-West. The bridge is not exactly along the extension of Van Limburg Stirumstraat, on the other side of its intersection with the Haarlemmerweg. It spans the Haarlemmervaart and provides access to the grounds of the former Westergasfabriek, its namesake."
+  },
+  {
+    "id": "extract_streets_1863661439",
+    "name": "Kattenburgerplein",
+    "type": "street",
+    "wikidata": "Q19292742",
+    "wikipedia": "nl:Kattenburgerplein",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Kattenburgerplein",
+    "wikipediaExtract": "The Kattenburgerplein is a square in Kattenburg in Amsterdam-Centrum. It lies along the Prins Hendrikkade, opposite Kadijksplein, across the Kattenburgerbrug over the Nieuwe Vaart. From the square, traffic can continue onto the island of Kattenburg via Kattenburgerstraat, or via Kattenburgergracht to the other Eastern"
+  },
+  {
+    "id": "extract_streets_660718071",
+    "name": "Prins Hendrikkade",
+    "type": "street",
+    "wikidata": "Q19292742",
+    "wikipedia": "nl:Kattenburgerplein",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Kattenburgerplein",
+    "wikipediaExtract": "The Kattenburgerplein is a square in Kattenburg in Amsterdam-Centrum. It lies along the Prins Hendrikkade, opposite Kadijksplein, across the Kattenburgerbrug over the Nieuwe Vaart. From the square, traffic can continue to the island of Kattenburg via Kattenburgerstraat, or via Kattenburgergracht to the other Eastern"
+  },
+  {
+    "id": "extract_streets_340125248",
+    "name": "Jodenbreestraat",
+    "type": "street",
+    "wikidata": "Q2689416",
+    "wikipedia": "nl:Jodenbreestraat (Amsterdam)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jodenbreestraat",
+    "wikipediaExtract": "The Jodenbreestraat (\"Jewish Broad Street\") is a street in the centre of Amsterdam, which connects the Sint Antoniesluis sluice gates to the Mr. Visserplein traffic circle. North of the sluice gates, the street continues on to Nieuwmarkt square as the Sint Antoniesbreestraat. The Mozes en Aäronkerk church stands at the southern end of the street. Directly be"
+  },
+  {
+    "id": "extract_streets_183120056",
+    "name": "Ferdinand Bolstraat",
+    "type": "street",
+    "wikidata": "Q2244273",
+    "wikipedia": "nl:Ferdinand Bolstraat",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ferdinand_Bolstraat",
+    "wikipediaExtract": "The Ferdinand Bolstraat is a street south of the city centre of Amsterdam, named after the artist Ferdinand Bol in 1872."
+  },
+  {
+    "id": "extract_streets_1370781946",
+    "name": "Texelweg",
+    "type": "street",
+    "wikidata": "Q47009672",
+    "wikipedia": "nl:Texel (eiland)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Texel",
+    "wikipediaExtract": "Texel (Dutch pronunciation: [ˈtɛsəl] ; Texels dialect: Tessel) is a municipality and an island with a population of 13,846 in North Holland, Netherlands. It is the largest and most populated island of the West Frisian Islands in the Wadden Sea. The island is situated north of Den Helder, northeast of Noorderhaaks, and southwest of Vlieland."
+  },
+  {
+    "id": "extract_streets_159207315",
+    "name": "Sint Antoniesbreestraat",
+    "type": "street",
+    "wikidata": "Q2830123",
+    "wikipedia": "nl:Sint Antoniesbreestraat",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sint_Antoniesbreestraat",
+    "wikipediaExtract": "The Sint Antoniesbreestraat (\"St. Anthony's Broad Street\") is a street in the centre of Amsterdam in the Netherlands. The street runs south from Nieuwmarkt square to the Sint Antoniesluis sluice gates, where it continues as the Jodenbreestraat. The Sint Antoniesbreestraat is primarily a shopping street with a variety of specialty shops. At the corner of Sint"
+  },
+  {
+    "id": "extract_streets_145386149",
+    "name": "Burgemeester Fockstraat",
+    "type": "street",
+    "wikidata": "Q13446623",
+    "wikipedia": "nl:Burgemeester Fockstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Burgemeester_Fockstraat",
+    "wikipediaExtract": "The Burgemeester Fockstraat is a street in Slotermeer, Amsterdam Nieuw-West. The street was named on July 9, 1952 and was named after Cornelis Fock (1828-1910), mayor of Amsterdam from 1866 to 1868, then Commissioner of the King for South Holland. Several streets in the district were named after Amsterdam mayors."
+  },
+  {
+    "id": "extract_streets_940905339",
+    "name": "Burgemeester Vening Meineszlaan",
+    "type": "street",
+    "wikidata": "Q2193892",
+    "wikipedia": "nl:Burgemeester Vening Meineszlaan",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Burgemeester_Vening_Meineszlaan",
+    "wikipediaExtract": "The Burgemeester Vening Meineszlaan is located in the district (\"garden city\") Slotermeer in the Amsterdam municipality of Nieuw-West."
+  },
+  {
+    "id": "extract_streets_1383927755",
+    "name": "James Rosskade",
+    "type": "street",
+    "wikidata": "Q19275957",
+    "wikipedia": "nl:James Rosskade",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/James_Rosskade",
+    "wikipediaExtract": "The James Rosskade is a street in the Bos en Lommer district in the Amsterdam municipality of West. The street runs south-north in terms of numbering and begins as such at the ventweg on the north side of the Jan van Galenstraat and ends on the southern quay of the Erasmusgracht. It runs parallel to the Einsteinweg."
+  },
+  {
+    "id": "extract_streets_1822211022",
+    "name": "Van de Sande Bakhuijzenstraat",
+    "type": "street",
+    "wikidata": "Q19619277",
+    "wikipedia": "nl:Van de Sande Bakhuijzenstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Van_de_Sande_Bakhuijzenstraat",
+    "wikipediaExtract": "The Van de Sande Bakhuijzenstraat is a street in Amsterdam in the Overtoomse Veld district in the Nieuw-West district. The street connects Jan Tooropstraat with Jan van Galenstraat. The street borders GVB-Garage West."
+  },
+  {
+    "id": "extract_streets_687165558",
+    "name": "Nieuwe Doelenstraat",
+    "type": "street",
+    "wikidata": "Q2139443",
+    "wikipedia": "nl:Nieuwe Doelenstraat (Amsterdam)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Doelenstraat_(Amsterdam)",
+    "wikipediaExtract": "The Nieuwe Doelenstraat is a street in the city center of Amsterdam. The street runs along the Kloveniersburgwal and runs from the corner with Staalstraat in a southwest direction to the Oude Turfmarkt, where the Doelensluis crosses the Rokin. This street was home to the Kloveniersdoelen, where The Night Watch was originally hung. The street is empty"
+  },
+  {
+    "id": "extract_streets_818694103",
+    "name": "Speelmanstraat",
+    "type": "street",
+    "wikidata": "Q19532586",
+    "wikipedia": "nl:Speelmanstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Speelmanstraat",
+    "wikipediaExtract": "Speelmanstraat is a street in the Amsterdam garden city of Slotermeer. The street was named after resistance fighter Wim Speelman on July 9, 1952."
+  },
+  {
+    "id": "extract_streets_71143400",
+    "name": "Laan van Spartaan",
+    "type": "street",
+    "wikidata": "Q1881375",
+    "wikipedia": "nl:Laan van Spartaan",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Laan_van_Spartaan",
+    "wikipediaExtract": "Laan van Spartaan is a residential neighborhood in the Amsterdam district of West, formerly district of Bos en Lommer. The neighborhood is bordered by the dike of the Ringspoorbaan in the west, Jan van Galenstraat in the south, the Ringweg (A10) in the east and the Erasmusgracht in the north."
+  },
+  {
+    "id": "extract_streets_1717991528",
+    "name": "Freek Oxstraat",
+    "type": "street",
+    "wikidata": "Q19159710",
+    "wikipedia": "nl:Freek Oxstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Freek_Oxstraat",
+    "wikipediaExtract": "Freek Oxstraat is a street in the Amsterdam garden city of Slotermeer. The street was named after resistance fighter Freek Ox on July 9, 1952."
+  },
+  {
+    "id": "extract_streets_279385402",
+    "name": "Nieuwe Passeerdersstraat",
+    "type": "street",
+    "wikidata": "Q19354971",
+    "wikipedia": "nl:Nieuwe Passeerdersstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Passeerdersstraat",
+    "wikipediaExtract": "The Nieuwe Passeerdersstraat is a street in the Jordaan in Amsterdam-Centrum."
+  },
+  {
+    "id": "extract_streets_572222913",
+    "name": "Robert Scottstraat",
+    "type": "street",
+    "wikidata": "Q19474687",
+    "wikipedia": "nl:Robert Scottstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Robert_Scottstraat",
+    "wikipediaExtract": "The Robert Scottstraat is a street in Amsterdam-West in the Robert Scott neighborhood named after him."
+  },
+  {
+    "id": "extract_streets_1686683528",
+    "name": "Kattenburgergracht",
+    "type": "street",
+    "wikidata": "Q19292739",
+    "wikipedia": "nl:Kattenburgergracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Kattenburgergracht",
+    "wikipediaExtract": "The Kattenburgergracht is a street in the center of Amsterdam that runs from Kattenburgerplein to Wittenburgergracht. North of Kattenburgerplein and canal lies the island of Kattenburg, on the southern side of it is the Nieuwe Vaart. With the Wittenburger and the Oostenburgergracht, which lie in each other's extension, the Kattenburgergracht"
+  },
+  {
+    "id": "extract_streets_354813936",
+    "name": "Burgemeester Eliasstraat",
+    "type": "street",
+    "wikidata": "Q1977105",
+    "wikipedia": "nl:Burgemeester Eliasstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Burgemeester_Eliasstraat",
+    "wikipediaExtract": "The Burgemeester Eliasstraat is a street in Amsterdam Nieuw-West, located in the Slotermeer Zuid neighborhood. The Burgemeester Eliasstraat is located between the Haarlemmerweg and the Louis Couperusstraat in Slotermeer. The street is crossed by the Burgemeester Vening Meineszlaan, the Burgemeester De Vlugtlaan and the Burgemeester Van Tienhovengracht."
+  },
+  {
+    "id": "extract_streets_570262167",
+    "name": "Burgemeester Hogguerstraat",
+    "type": "street",
+    "wikidata": "Q2620441",
+    "wikipedia": "nl:Burgemeester Hogguerstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Burgemeester_Hogguerstraat",
+    "wikipediaExtract": "The Burgemeester Hogguerstraat is a street in Slotermeer in Amsterdam Nieuw-West. The street begins at Burgemeester Van de Pollstraat and runs to Burgemeester Rendorpstraat. The street was named in 1958 and was named after Mr. Paul Iwan Hogguer (1760-1816), mayor of Amsterdam from 1813 to 1816. The street is dominated by three in"
+  },
+  {
+    "id": "extract_streets_1933890261",
+    "name": "Bijltjespad",
+    "type": "street",
+    "wikidata": "Q1957099",
+    "wikipedia": "nl:Bijltjespad",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Bijltjespad",
+    "wikipediaExtract": "The Bijltjespad is a dead-end car-free side street of the Kattenburgerstraat on the Kattenburg island in the Oostelijke Eilanden district in Amsterdam. On the other side of the Bijltjespad is a student complex. The houses on the other side belong to the Kattenburgerhof. The street name is derived from Bijltjes, a nickname for the in the verle"
+  },
+  {
+    "id": "extract_streets_103113615",
+    "name": "Scharrebiersluis",
+    "type": "street",
+    "wikidata": "Q17291506",
+    "wikipedia": "nl:Scharrebiersluis (Amsterdam)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Scharrebiersluis_(Amsterdam)",
+    "wikipediaExtract": "The Scharrebiersluis (bridge 278) is a lift bridge in Amsterdam-Centrum. The bridge is named after scharrebier, a cheap beer of moderate quality that was bought on site here by waiting captains. The bridge forms the connection between Rapenburgplein and Foeliedwarsstraat on Rapenburg on the west side and Kadijksplein and the Laagte Kadijk on"
+  },
+  {
+    "id": "extract_streets_1742383007",
+    "name": "Van Kinsbergenstraat",
+    "type": "street",
+    "wikipedia": "nl:Van Kinsbergenstraat (Amsterdam)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Van_Kinsbergenstraat_(Amsterdam)",
+    "wikipediaExtract": "The Van Kinsbergenstraat is a street in the Chassébuurt of Amsterdam-West. The name refers to the Dutch naval officer Jan Hendrik van Kinsbergen (1735-1819). The Van Kinsbergenstraat was built in the 1920s. The western end of the street comes out at a footbridge over the Admiralengracht where a café was located. The eastern end of the"
+  },
+  {
+    "id": "extract_streets_1809361034",
+    "name": "Koninginneweg",
+    "type": "street",
+    "wikipedia": "nl:Zeilstraat",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Zeilstraat",
+    "wikipediaExtract": "The Zeilstraat is a street in Amsterdam-Zuid, between the Amstelveenseweg and the Schinkel. The Zeilstraat is known as a busy, main shopping street. It extends along the Koninginneweg."
+  },
+  {
+    "id": "extract_water_278815928",
+    "name": "Amstel",
+    "type": "water",
+    "wikidata": "Q185405",
+    "wikipedia": "nl:Amstel (rivier)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Amstel",
+    "wikipediaExtract": "The Amstel (Dutch: [ˈɑmstəl] ) is a river in the province of North Holland in the Netherlands. It flows from the Aarkanaal and Drecht in Nieuwveen northwards, passing Uithoorn, Amstelveen, and Ouderkerk aan de Amstel, to the IJ in Amsterdam, to which the river gives its name. Annually, the river is the location of the Liberation Day concert, Head of the Rive"
+  },
+  {
+    "id": "extract_water_52746438",
+    "name": "IJmeer",
+    "type": "water",
+    "wikidata": "Q1653947",
+    "wikipedia": "nl:IJmeer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/IJmeer",
+    "wikipediaExtract": "The IJmeer is a 'bordering lake' (Randmeer) in the Netherlands straddling the provinces of North Holland and Flevoland. Namely, it is the southwestern section of the Markermeer. It is an important habitat for birds such as the tufted duck and scaup."
+  },
+  {
+    "id": "extract_water_516384323",
+    "name": "Herengracht",
+    "type": "water",
+    "wikidata": "Q2623129",
+    "wikipedia": "nl:Herengracht (Amsterdam)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Herengracht",
+    "wikipediaExtract": "The Herengracht (Dutch pronunciation: [ˈɦeːrə(ŋ)ˌɣrɑxt]) is the second of four Amsterdam canals belonging to the canal belt and lies between the Singel and the Keizersgracht. \nThe Gouden Bocht (Golden Bend) in particular is known for its large and beautiful canal houses."
+  },
+  {
+    "id": "extract_water_1731701035",
+    "name": "Entrepotdok",
+    "type": "water",
+    "wikidata": "Q2452724",
+    "wikipedia": "nl:Entrepotdok",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Entrepotdok",
+    "wikipediaExtract": "The Entrepotdok (Warehouse Dock), formerly Nieuwe Rapenburgergracht, is a canal in Amsterdam, and a street and row of former warehouses with the same name along the northeast side of the canal. They were constructed between 1708 and 1829, used for storage, squatted in the 1990s and are now converted into apartments. Entrepotdok is the largest inhabited wareh"
+  },
+  {
+    "id": "extract_water_185877525",
+    "name": "Gaasperplas",
+    "type": "water",
+    "wikidata": "Q1487911",
+    "wikipedia": "nl:Gaasperplas (water)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gaasperplas",
+    "wikipediaExtract": "Gaasperplas is an artificial lake used for recreational purposes south-east of Amsterdam in the Netherlands.\nGaasperplas was created with the extraction of sand for the construction of the Bijlmer. At its deepest the lake is 35 metres deep. It was the setting for the 1982 Floriade landscape and flower show, and the Eastern end of the lake is surrounded by pa"
+  },
+  {
+    "id": "extract_water_1462380300",
+    "name": "Houthaven",
+    "type": "water",
+    "wikidata": "Q1886567",
+    "wikipedia": "nl:Houthavens (Amsterdam)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Houthaven",
+    "wikipediaExtract": "Houthaven is a neighbourhood of Amsterdam, Netherlands situated in the West borough. Literally meaning \"lumber port\", Houthaven is a port situated along the IJ in Amsterdam's western port. It is bordered by a dam in the IJ river to the north and the Spaarndammerbuurt in the south. It is currently predominantly used by inland barges, however plans are in moti"
+  },
+  {
+    "id": "extract_water_1807872671",
+    "name": "Rokin",
+    "type": "water",
+    "wikidata": "Q673399",
+    "wikipedia": "nl:Rokin",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Rokin",
+    "wikipediaExtract": "The Rokin is a canal and major street in the centre of Amsterdam. The street runs from Muntplein square to Dam square. The Rokin canal used to run from Muntplein square to Dam Square, but in 1936, the part between Spui square and Dam Square was filled in. Canal boats are now moored on the remaining part of the water, from the Amstel to Grimburgwal."
+  },
+  {
+    "id": "extract_water_1881858831",
+    "name": "Burgemeester Cramergracht",
+    "type": "water",
+    "wikidata": "Q1835670",
+    "wikipedia": "nl:Burgemeester Cramergracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Burgemeester_Cramergracht",
+    "wikipediaExtract": "The Burgemeester Cramergracht is a canal and a street running parallel to it in Amsterdam Nieuw-West. The canal was named in 1952 and was named after Willem Daniël Cramer (1788-1856), mayor of Amsterdam from 1836 to 1841."
+  },
+  {
+    "id": "extract_water_1964663576",
+    "name": "Buiksloterkanaal",
+    "type": "water",
+    "wikidata": "Q30027012",
+    "wikipedia": "nl:Buiksloterkanaal",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Buiksloterkanaal",
+    "wikipediaExtract": "The Buiksloterkanaal in Amsterdam-North is the connection between the (western part of the) Johan van Hasselt Canal and the IJ. The canal with north-south orientation lies between Buiksloterham in the west and Volewijck in the east. The canal was dug in 1926 in the polder Buiksloterham."
+  },
+  {
+    "id": "extract_water_422786109",
+    "name": "Coenhaven",
+    "type": "water",
+    "wikidata": "Q2467916",
+    "wikipedia": "nl:Coenhaven",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Coenhaven",
+    "wikipediaExtract": "The Coenhaven is a port in the Amsterdam Western Port Area north of the Vlothaven, south of the North Sea Canal near the Coentunnel named after the port, east of the Petroleum Port and west of the Mercuriushaven. The port has provided space for ships and activities that are no longer desired in the Eastern Port Area"
+  },
+  {
+    "id": "extract_water_1995240904",
+    "name": "Burgemeester van Tienhovengracht",
+    "type": "water",
+    "wikidata": "Q2619026",
+    "wikipedia": "nl:Burgemeester Van Tienhovengracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Burgemeester_Van_Tienhovengracht",
+    "wikipediaExtract": "The Burgemeester Van Tienhovengracht in Amsterdam Nieuw-West was built in the 1950s as part of the Western Garden Cities. The canal is located in Slotermeer and is the extension of the Erasmusgracht. The canal ends in a bend at the Plein '40-'45. The canal was named in 1952 and was named after Gijsbert van Tienhoven (1841-1914), bu"
+  },
+  {
+    "id": "extract_water_13399064",
+    "name": "Abcouder Meer",
+    "type": "water",
+    "wikidata": "Q307092",
+    "wikipedia": "nl:Abcoudermeer",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Abcoudermeer",
+    "wikipediaExtract": "Lake in the Netherlands."
+  },
+  {
+    "id": "extract_water_958230711",
+    "name": "Schinkel",
+    "type": "water",
+    "wikidata": "Q2039670",
+    "wikipedia": "nl:Schinkel (rivier)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Schinkel_(rivier)",
+    "wikipediaExtract": "The Schinkel is a small canalized river in Amsterdam, in the Dutch province of North Holland. The river runs from the (former) Overtoomse Sluis to the Nieuwe Meer."
+  },
+  {
+    "id": "extract_water_82187522",
+    "name": "Oosterdok",
+    "type": "water",
+    "wikidata": "Q2302371",
+    "wikipedia": "nl:Oosterdok",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Oosterdok",
+    "wikipediaExtract": "The Oosterdok ('Eastern Dock') is a former wet dock in Amsterdam. It was created in 1831–1832 by constructing the Oosterdoksdam and the Oosterdoksluis, forming a reliable deep port closed off from the tidal IJ."
+  },
+  {
+    "id": "extract_water_718916820",
+    "name": "Ringvaart",
+    "type": "water",
+    "wikidata": "Q15120362",
+    "wikipedia": "nl:Ringvaart (Watergraafsmeer)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Ringvaart_(Watergraafsmeer)",
+    "wikipediaExtract": "The Ringvaart in Amsterdam-Oost is the name of the northern and eastern part of the ring canal around the Watergraafsmeer polder, which was reclaimed in 1629. The Ringvaart also forms the border of the Watergraafsmeer district (until 1921 a separate municipality and from 1987 to 1998 a district of Amsterdam)."
+  },
+  {
+    "id": "extract_water_49324435",
+    "name": "Zwanenburgwal",
+    "type": "water",
+    "wikidata": "Q2498664",
+    "wikipedia": "nl:Zwanenburgwal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Zwanenburgwal",
+    "wikipediaExtract": "The Zwanenburgwal is a canal and street in the center of Amsterdam. During the Dutch Golden Age the canal was home to painter Rembrandt van Rijn, as well as philosopher Spinoza lived here. In 2006 it was voted one of the most beautiful streets in Amsterdam by readers of Het Parool, a local daily newspaper.\nThe Zwanenburgwal flows from the Sint Antoniessluis "
+  },
+  {
+    "id": "extract_water_176138248",
+    "name": "Kloveniersburgwal",
+    "type": "water",
+    "wikidata": "Q2621306",
+    "wikipedia": "nl:Kloveniersburgwal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Kloveniersburgwal,_Amsterdam",
+    "wikipediaExtract": "Kloveniersburgwal is an Amsterdam canal flowing south from Nieuwmarkt to the Amstel River on the edge of the medieval city, lying east of the dam in the centre of Amsterdam."
+  },
+  {
+    "id": "extract_water_920581431",
+    "name": "Oudeschans",
+    "type": "water",
+    "wikidata": "Q2441755",
+    "wikipedia": "nl:Oudeschans (Amsterdam)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Oudeschans,_Amsterdam",
+    "wikipediaExtract": "The Oudeschans, or Oude Schans (Old Rampart), originally the Nieuwe Gracht, is a wide canal in the eastern part of the inner city of Amsterdam."
+  },
+  {
+    "id": "extract_water_1820923592",
+    "name": "Raamgracht",
+    "type": "water",
+    "wikidata": "Q1872315",
+    "wikipedia": "nl:Raamgracht (Amsterdam)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Raamgracht",
+    "wikipediaExtract": "The Raamgracht (Frame Canal) is a canal in central Amsterdam that runs from the Kloveniersburgwal to the Zwanenburgwal. \nThe Groenburgwal, Verversstraat and Zanddwarsstraat lead to the Raamgracht. \nBridge 225 over the canal is beside the Kloveniersburgwal, and Theo Boschbrug (bridge 230) over the canal is beside the Zwanenburgwal."
+  },
+  {
+    "id": "extract_water_1115016321",
+    "name": "Nieuwe Keizersgracht",
+    "type": "water",
+    "wikidata": "Q2394887",
+    "wikipedia": "nl:Nieuwe Keizersgracht (Amsterdam)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nieuwe_Keizersgracht",
+    "wikipediaExtract": "The Nieuwe Keizersgracht is a canal in Amsterdam, part of the eastern Grachtengordel (canal belt)."
+  },
+  {
+    "id": "extract_water_896173106",
+    "name": "Waalseilandgracht",
+    "type": "water",
+    "wikidata": "Q5465767",
+    "wikipedia": "nl:Waalseilandsgracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Waalseilandsgracht",
+    "wikipediaExtract": "The Waalseilandsgracht, or Waalseilandgracht, is a short, wide canal in the east part of the inner city of Amsterdam."
+  },
+  {
+    "id": "extract_water_1331446551",
+    "name": "Oranjesluizen",
+    "type": "water",
+    "wikidata": "Q1800919",
+    "wikipedia": "nl:Oranjesluizen",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Oranje_Locks",
+    "wikipediaExtract": "The Oranje Locks are a group of locks and other water management facilities just east of Amsterdam."
+  },
+  {
+    "id": "extract_water_1741024007",
+    "name": "Westlandgracht",
+    "type": "water",
+    "wikidata": "Q2443725",
+    "wikipedia": "nl:Westlandgracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Westlandgracht",
+    "wikipediaExtract": "The Westlandgracht is a surface water, a street and until 1962 the name of a district and is named after the Westland, the area west of Delft and south of The Hague. The streets in the neighborhood are also named after places and regions in South Holland. The canal was named in 1933 and was built in the 1920s on the territory of the in"
+  },
+  {
+    "id": "extract_water_649146611",
+    "name": "Duivendrechtsevaart",
+    "type": "water",
+    "wikidata": "Q4489489",
+    "wikipedia": "nl:Duivendrechtsevaart",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Duivendrechtsevaart",
+    "wikipediaExtract": "The Duivendrechtsevaart is a canal in Amsterdam and Duivendrecht (Ouder-Amstel municipality). The waterway runs from the Amstel near the Omval to the Van der Madeweg in the Overamstel industrial area. The municipal border between Amsterdam and Ouder-Amstel runs across the canal. The waterway is named after the nearby village of Duivendrecht."
+  },
+  {
+    "id": "extract_water_204191520",
+    "name": "Damrak",
+    "type": "water",
+    "wikidata": "Q901461",
+    "wikipedia": "nl:Damrak",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Damrak",
+    "wikipediaExtract": "The Damrak is an avenue and partially filled in canal at the centre of Amsterdam, Netherlands, running between Amsterdam Centraal in the north and Dam Square in the south. It is the main street where people arriving at the station enter the centre of the city. Also, it is one of the two GVB tram routes from the station into the centre, with lines 4, 9, 16, a"
+  },
+  {
+    "id": "extract_water_202797634",
+    "name": "De Kom",
+    "type": "water",
+    "wikidata": "Q24706051",
+    "wikipedia": "nl:De Kom (Amsterdam)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/De_Kom_(Amsterdam)",
+    "wikipediaExtract": "De Kom is an unofficial name for a body of water in Amsterdam-Zuid. It is a crossroads of five waterways. These waterways also have a bridge on \"De Kom\" except for one."
+  },
+  {
+    "id": "extract_water_1639802995",
+    "name": "Westerkanaalschutsluis",
+    "type": "water",
+    "wikidata": "Q85308137",
+    "wikipedia": "nl:Westerkanaalschutsluis",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Westerkanaalschutsluis",
+    "wikipediaExtract": "The Westerkanaalschutsluis is a lock in the Westerkanaal, Amsterdam-West. They are located between both Houtmankades. The original lock was built from June 1877 (date of tender) in the then newly dug Westerkanaal, which formed a continuous route between the Singelgracht and the IJ. Large ships came in, so it became a fairly large sch"
+  },
+  {
+    "id": "extract_water_432753294",
+    "name": "Le Mairegracht",
+    "type": "water",
+    "wikidata": "Q1922432",
+    "wikipedia": "nl:Le Mairegracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Le_Mairegracht",
+    "wikipediaExtract": "The Le Mairegracht is a canal in the West district of Amsterdam. The name was established by council decision of November 20, 1878. The canal is named after Jacob le Maire (1585-1616), a explorer, who discovered the sea route named after him at the southern tip of South America. He named the cape after his birthplace Cape Horn. The Le Mairegra"
+  },
+  {
+    "id": "extract_water_432489278",
+    "name": "Van Noordtgracht",
+    "type": "water",
+    "wikidata": "Q2115354",
+    "wikipedia": "nl:Van Noordtgracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Van_Noordtgracht",
+    "wikipediaExtract": "The Van Noordtgracht is a canal in the West district of Amsterdam. The name was established by council decision of November 20, 1878. The canal is named after Olivier van Noort (1558-1627), a explorer, who was the first Dutchman to circumnavigate the world via street Magelhaens from 1598 to 1601."
+  },
+  {
+    "id": "extract_water_1437280274",
+    "name": "Nieuwe Meersluis",
+    "type": "water",
+    "wikidata": "Q3114693",
+    "wikipedia": "nl:Nieuwe Meersluis",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Meersluis",
+    "wikipediaExtract": "The Nieuwe Meersluis, also known as Schinkelsluis, is a sluice gate in the Dutch municipality of Amsterdam."
+  },
+  {
+    "id": "extract_water_587423443",
+    "name": "Sloterplas",
+    "type": "water",
+    "wikidata": "Q2677308",
+    "wikipedia": "nl:Sloterplas",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Sloterplas",
+    "wikipediaExtract": "The Sloterplas is located in the center of the Western Garden Cities in Amsterdam Nieuw-West. The pond was dug between 1948 and 1956 and has a maximum depth of 37 meters."
+  },
+  {
+    "id": "extract_water_232653258",
+    "name": "Singel",
+    "type": "water",
+    "wikidata": "Q2308267",
+    "wikipedia": "nl:Muntsluis",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Muntsluis",
+    "wikipediaExtract": "Muntsluis can refer to: Muntsluis (Amsterdam), a bridge in Amsterdam (with the Muntplein) Muntsluis (Utrecht), a lock complex in the Merwedekanaal (with the Muntbrug)"
+  },
+  {
+    "id": "extract_water_1333756167",
+    "name": "Korte Prinsengracht",
+    "type": "water",
+    "wikidata": "Q18055687",
+    "wikipedia": "nl:Eenhoornschutsluis",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Eenhoornschutsluis",
+    "wikipediaExtract": "The Unicorn Lock (lock no. 103) is a lock in the Haarlemmerdijk between the Prinsengracht and the Korte Prinsengracht in Amsterdam. The lock and associated bridge Unicorn Lock (bridge no. 313) were planned as a connection of the then new canals with the IJ, since 1832 the Westerdok, when the canal belt was built. The name is derived from a later"
+  },
+  {
+    "id": "extract_water_940760696",
+    "name": "Nieuwe Meer",
+    "type": "water",
+    "wikidata": "Q2832221",
+    "wikipedia": "nl:Nieuwe Meer (water)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Meer_(water)",
+    "wikipediaExtract": "The Nieuwe Meer (or 'the' Nieuwe Meer) is a narrow lake southwest of Amsterdam. It forms the connection between the Schinkel in Amsterdam and the Ringvaart of the Haarlemmermeerpolder. Via the Nieuwe Meersluis (or Schinkelsluis) you can sail to the Schinkel, which is in open connection with the canals in Amsterdam-Zuid and the canals of Amsterdam. on"
+  },
+  {
+    "id": "extract_water_1556840502",
+    "name": "Bijleveldschesluis",
+    "type": "water",
+    "wikidata": "Q97011113",
+    "wikipedia": "nl:Bijleveldschesluis",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Bijleveldschesluis",
+    "wikipediaExtract": "The Bijleveldschesluis (bridge 495) is a structural work of art in Amsterdam-Centrum. The original lock has been mostly underground for centuries; it was converted into a one-meter-long tunnel, which runs from the Geldersekade to the Kloveniersburgwal. This means that it runs under the Nieuwmarkt and also the southeastern part of the histori"
+  },
+  {
+    "id": "extract_water_1511200561",
+    "name": "Hans Snoekfontein",
+    "type": "water",
+    "wikidata": "Q61965308",
+    "wikipedia": "nl:Hans Snoekfontein",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Hans_Snoekfontein",
+    "wikipediaExtract": "The Hans Snoekfontein is a work of art in Amsterdam-Centrum. The fountain is named after Hans Snoek, founder of the Scapino Ballet, who financially contributed to the construction of the fountain and the renovation of the square through a legacy. Other contributions came from American Hotel and Holland Casino."
+  },
+  {
+    "id": "extract_water_1343998000",
+    "name": "Haarlemmertrekvaart",
+    "type": "water",
+    "wikidata": "Q650966",
+    "wikipedia": "nl:Haarlemmertrekvaart (Amsterdam)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Haarlemmertrekvaart",
+    "wikipediaExtract": "The Haarlemmertrekvaart [ˌhaːrlɛmərˈtrɛkfaːrt] (Haarlem's Tow-Canal) is a canal between Amsterdam and Haarlem in the province of North Holland, the Netherlands. It was dug in 1631, making it the oldest tow-canal in Holland. Travel on such canals was historically done by barges (or trekschuit in Dutch) which were towed by animals (and sometimes by man-power) "
+  },
+  {
+    "id": "extract_water_338640030",
+    "name": "Noordzeekanaal",
+    "type": "water",
+    "wikidata": "Q119314",
+    "wikipedia": "nl:Noordzeekanaal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/North_Sea_Canal",
+    "wikipediaExtract": "The North Sea Canal (Dutch: Noordzeekanaal) is a Dutch ship canal from Amsterdam to the North Sea at IJmuiden, constructed between 1865 and 1876 to enable seafaring vessels to reach the port of Amsterdam. This man-made channel terminates at Amsterdam in the closed-off IJ Bay, which in turn connects to the Amsterdam-Rhine Canal.\nThe drainage of the canal to t"
+  },
+  {
+    "id": "extract_water_1456704999",
+    "name": "Mercuriushaven",
+    "type": "water",
+    "wikidata": "Q13836728",
+    "wikipedia": "nl:Mercuriushaven",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Mercuriushaven",
+    "wikipediaExtract": "The Mercuriushaven is a port in the Amsterdam port area. The port is located on the west side of the IJ and on the southwest side of the North Sea Canal, between the Houthavens and the Coenhaven, near the Nieuwe Hemweg. The Mercuriushaven was dug in the last part of the 19th century and is named after Mercury as god/personification of trade."
+  },
+  {
+    "id": "extract_water_35696905",
+    "name": "Vlothaven",
+    "type": "water",
+    "wikidata": "Q2107489",
+    "wikipedia": "nl:Vlothaven",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Vlothaven",
+    "wikipediaExtract": "The Vlothaven is a port in the Amsterdam Western Port Area south of the Coenhaven, north of the Nieuwe Hemweg, east of the Einsteinweg and north of the Neptunushaven. The port is named after the raft. The port was dug in 1931 near the Mercuriushaven and provided space for ships and activities in the Eastern Harbor Area"
+  },
+  {
+    "id": "extract_water_1455197018",
+    "name": "Schellingwouderbreek",
+    "type": "water",
+    "wikidata": "Q18088614",
+    "wikipedia": "nl:Schellingwouderbreek",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Schellingwouderbreek",
+    "wikipediaExtract": "The Schellingwouderbreek is a lake in Amsterdam-North. The breakwater is a provincial monument."
+  },
+  {
+    "id": "extract_water_9675728",
+    "name": "Minervahaven",
+    "type": "water",
+    "wikidata": "Q2726932",
+    "wikipedia": "nl:Minervahaven",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Minervahaven",
+    "wikipediaExtract": "The Minervahaven is a harbor basin in the port of Amsterdam. It was dug around 1880 on the southern bank of the North Sea Canal, which had been dug shortly before. The Minervahaven is one of the few ports in Amsterdam-West within the ring road A10. The port was used for a long time for wood dumping and there was a wood processing industry established."
+  },
+  {
+    "id": "extract_water_90266816",
+    "name": "Geldersekade",
+    "type": "water",
+    "wikidata": "Q4807145",
+    "wikipedia": "nl:Geldersekade (Amsterdam)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Geldersekade",
+    "wikipediaExtract": "The Geldersekade is a canal and a street in Amsterdam that connects the Nieuwmarkt with the Prins Hendrikkade.\nThe Geldersekade is in the easternmost part of De Wallen, the red light district, and borders Chinatown."
+  },
+  {
+    "id": "extract_water_423804254",
+    "name": "Ransdorper Die",
+    "type": "water",
+    "wikidata": "Q19884269",
+    "wikipedia": "nl:Ransdorper Die",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Ransdorper_Die",
+    "wikipediaExtract": "The Ransdorper Die is a creek, named, in Waterland in North Holland. The water lies north of the village of Ransdorp, which belongs to the municipality of Amsterdam, southwest of Holysloot and south of Broek in Waterland. It is also connected through the Nauw to the Holysloter Die north of Holysloot and further to the Uitdammer Die i"
+  },
+  {
+    "id": "extract_water_225813925",
+    "name": "Open Havenfront",
+    "type": "water",
+    "wikidata": "Q2563802",
+    "wikipedia": "nl:Open Havenfront",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Open_Havenfront",
+    "wikipediaExtract": "The Open Havenfront is the water between the Prins Hendrikkade and the Stationseiland in Amsterdam. Over this water lie three wide bridges, equipped with separate lanes for cars or footpaths and tram rails: the Western Access Bridge (bridge no. 13), the Sint Nicolaas Bridge (Middle Access Bridge; bridge no. 306) and the Kamper Bridge (bridge no. 285)."
+  },
+  {
+    "id": "extract_water_1310613269",
+    "name": "Blauwburgwal",
+    "type": "water",
+    "wikidata": "Q2488713",
+    "wikipedia": "nl:Blauwburgwal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Blauwburgwal",
+    "wikipediaExtract": "The Blauwburgwal (literally: Dutch: blue fortress wall) is a canal in Amsterdam between the Singel (at Lijnbaanssteeg) and the Herengracht (at Herenstraat). \nIt is close to the city center and part of the west Grachtengordel (canal belt).\nHalfway along the northeast side, the Langestraat meets the Blauwburgwal. \nThe canal has two bridges, one beside Singel b"
+  },
+  {
+    "id": "extract_water_1912413490",
+    "name": "Dijksgracht",
+    "type": "water",
+    "wikidata": "Q19017633",
+    "wikipedia": "nl:Dijksgracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dijksgracht",
+    "wikipediaExtract": "The Dijksgracht (Dutch pronunciation: [ˈdɛiksˌxrɑxt]; Dike Canal) is a canal in the center of Amsterdam, north of the three Oostelijke Eilanden (Eastern Islands). It is also the name of the adjacent street."
+  },
+  {
+    "id": "extract_water_1755641833",
+    "name": "Grimburgwal",
+    "type": "water",
+    "wikidata": "Q2122890",
+    "wikipedia": "nl:Grimburgwal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Grimburgwal",
+    "wikipediaExtract": "The Grimburgwal is a small canal and street in the center of Amsterdam."
+  },
+  {
+    "id": "extract_water_1832529380",
+    "name": "Bickersgracht",
+    "type": "water",
+    "wikidata": "Q2137956",
+    "wikipedia": "nl:Bickersgracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bickersgracht",
+    "wikipediaExtract": "The Bickersgracht (Dutch pronunciation: [ˈbɪkərsˌxrɑxt]) is a canal in the center of Amsterdam at  Westelijke Eilanden (Western Islands), but also a street."
+  },
+  {
+    "id": "extract_water_214419720",
+    "name": "Achtergracht",
+    "type": "water",
+    "wikidata": "Q2059752",
+    "wikipedia": "nl:Achtergracht (Amsterdam)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Achtergracht",
+    "wikipediaExtract": "The Achtergracht (Dutch pronunciation: [ˈɑxtərˌɣrɑxt]) is a short canal in Amsterdam, located between Frederiksplein and the Amstel, parallel to the Prinsengracht. \nThe Achtergracht is located in the eastern part of the Grachtengordel (canal belt)."
+  },
+  {
+    "id": "extract_water_1284014694",
+    "name": "Sluis Haarlemmervaart",
+    "type": "water",
+    "wikidata": "Q18774957",
+    "wikipedia": "nl:Schutsluis Haarlemmervaart",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Schutsluis_Haarlemmervaart",
+    "wikipediaExtract": "De Schutsluis Haarlemmervaart ligt in de Haarlemmervaart in Amsterdam-West ter hoogte van de Van Slingelandtstraat.\nDe sluis met een schutlengte van 36,44 meter en een doorvaartbreedte van 6 meter werd aangelegd omdat de Haarlemmervaart in de 19e eeuw zijn functie als trekvaart had verloren en er ter hoogte van het Nassauplein een rechtstreekse verbinding tu",
+    "wikipediaExtractLang": "nl"
+  },
+  {
+    "id": "extract_water_1941412539",
+    "name": "Nieuwendammersluis",
+    "type": "water",
+    "wikidata": "Q28805316",
+    "wikipedia": "nl:Nieuwendammersluis",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Nieuwendammersluis",
+    "wikipediaExtract": "The Nieuwendammersluis is a historic lock in the Nieuwendammerdijk in Amsterdam-North. It was originally a sea lock in the Nieuwendammerdijk, which was part of the Waterlandse Zeedijk and the Noorder IJ and Zeedijk."
+  },
+  {
+    "id": "extract_water_114698891",
+    "name": "IJ",
+    "type": "water",
+    "wikidata": "Q338137",
+    "wikipedia": "nl:IJ (rivier)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/IJ_(Amsterdam)",
+    "wikipediaExtract": "The IJ (Dutch: [ɛi] ; sometimes shown on old maps as Y or Ye) is a body of water,  formerly a bay, in the Dutch province of North Holland. It is known for being Amsterdam's waterfront."
+  },
+  {
+    "id": "extract_water_88018924",
+    "name": "Amerikahaven",
+    "type": "water",
+    "wikidata": "Q2336114",
+    "wikipedia": "nl:Amerikahaven",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Amerikahaven",
+    "wikipediaExtract": "The Amerikahaven is a port in the Amsterdam port area. The port was dug in the 1960s and is located on the south side of the North Sea Canal, in the former Groote IJpolder, east of the former Zijkanaal F. The port in Westpoort consists of several port basins: the Australia port, the Asia port, the Tasmania port, the Texas port, the Cocoa"
+  },
+  {
+    "id": "extract_water_103825583",
+    "name": "Weteringpoort",
+    "type": "water",
+    "wikidata": "Q37455207",
+    "wikipedia": "nl:Weteringwaterkering",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Weteringwaterkering",
+    "wikipediaExtract": "The Water Management Lock (lock 209) is a lock in the center of Amsterdam between Lijnbaansgracht and Singelgracht. The lock dates back to 1657 when two passages into the city were built in the Schans; the other was the Leidsepoortsluis (demolished in 1880)."
+  },
+  {
+    "id": "extract_water_1344539004",
+    "name": "Nieuwe Herengracht",
+    "type": "water",
+    "wikidata": "Q2327303",
+    "wikipedia": "nl:Nieuwe Herengracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nieuwe_Herengracht",
+    "wikipediaExtract": "The Nieuwe Herengracht (Dutch pronunciation: [ˌniu.ə ˈɦeːrə(ŋ)ˌɣrɑxt]) is a canal in Centrum district of Amsterdam.\nThe canal is an extension of the Herengracht that runs between the Amstel and the Scharrebiersluis (lock) leading to the Schippersgracht from the Entrepotdok.\nIt is in the Plantage neighborhood in the eastern part of the Grachtengordel (canal b"
+  },
+  {
+    "id": "extract_water_1902874397",
+    "name": "Westhaven",
+    "type": "water",
+    "wikidata": "Q3195678",
+    "wikipedia": "nl:Westhaven",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Westhaven",
+    "wikipediaExtract": "The Westhaven is a port in the Western Port Area in Amsterdam and was built as part of the General Expansion Plan of 1934. The port is located west of the former Hembrug, on the south side of the North Sea Canal, in the former Groote IJpolder. The first part was dug in 1937 and was then called 'Fordhaven', after the nearby"
+  },
+  {
+    "id": "extract_water_744741709",
+    "name": "Reguliersgracht",
+    "type": "water",
+    "wikidata": "Q12013307",
+    "wikipedia": "nl:Reguliersgracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Reguliersgracht",
+    "wikipediaExtract": "Reguliersgracht is a canal in Amsterdam, Netherlands. Established in 1658, it is located in the Grachtengordel, in the Centrum borough. During World War II the \"nerve center\" of the illegal paper Het Parool was housed there, in a house (number 111) occupied by Simon Carmiggelt, Max Nord, Wim van Norden and their families."
+  },
+  {
+    "id": "extract_water_970275987",
+    "name": "Leidsegracht",
+    "type": "water",
+    "wikidata": "Q657507",
+    "wikipedia": "nl:Leidsegracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Leidsegracht",
+    "wikipediaExtract": "The Leidsegracht (Dutch pronunciation: [ˈlɛitsəˌɣrɑxt]) is a canal in Amsterdam, Netherlands.\nIt is a cross-canal in Amsterdam-Center that connects Herengracht, Keizersgracht, Prinsengracht and Lijnbaansgracht and flows into the Singelgracht at Marnixstraat."
+  },
+  {
+    "id": "extract_water_1871264508",
+    "name": "Zijkanaal I",
+    "type": "water",
+    "wikidata": "Q27067903",
+    "wikipedia": "nl:Zijkanaal I",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Zijkanaal_I",
+    "wikipediaExtract": "The Zijkanaal I (with the letter \"I\") is a waterway in Amsterdam-North. It forms the connection between the IJ in Amsterdam and the former Oostzaner Overtoom near Oostzanerwerf. The eastern and northeastern banks of the canal lie along the Buiksloterdijk, the Landsmeerderdijk and a section of the Oostzanerdijk, which are part of the historic Wat"
+  },
+  {
+    "id": "extract_water_1469536293",
+    "name": "Nieuwe Prinsengracht",
+    "type": "water",
+    "wikidata": "Q4987241",
+    "wikipedia": "nl:Nieuwe Prinsengracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nieuwe_Prinsengracht",
+    "wikipediaExtract": "The Nieuwe Prinsengracht is a canal in the Plantage neighborhood of Amsterdam, an extension of the Prinsengracht in the eastern Grachtengordel (canal belt)."
+  },
+  {
+    "id": "extract_water_1871264509",
+    "name": "Zijkanaal H",
+    "type": "water",
+    "wikidata": "Q2568465",
+    "wikipedia": "nl:Zijkanaal H",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Zijkanaal_H",
+    "wikipediaExtract": "The Zijkanaal H is a side channel of the North Sea Canal and connects the Barndegat on the border of Amsterdam and Zaandam to the North Sea Canal. The canal was put into use in 1876 simultaneously with the North Sea Canal. It is, viewed from IJmuiden, the eighth side channel."
+  },
+  {
+    "id": "extract_water_65601669",
+    "name": "Uilenburgergracht",
+    "type": "water",
+    "wikidata": "Q16681640",
+    "wikipedia": "nl:Uilenburgergracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Uilenburgergracht",
+    "wikipediaExtract": "The Uilenburgergracht is a secondary canal in Amsterdam, the Netherlands. \nIt is located east of the Amsterdam-Centrum district, in the Lastage neighborhood.\nThe Uilenburgergracht defines the southeastern border of Uilenburg Island. \nIt is connected to Houtkopersburgwal and Rapenburgwal, which delimit the southwest and the northeast borders of the island.\nTh"
+  },
+  {
+    "id": "extract_water_1774547487",
+    "name": "Plantage Muidergracht",
+    "type": "water",
+    "wikidata": "Q2211214",
+    "wikipedia": "nl:Plantage Muidergracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Plantage_Muidergracht",
+    "wikipediaExtract": "The Plantage Muidergracht is a canal and street in the Plantage neighborhood of Amsterdam.\nOn and along the Plantage Muidergracht, near Roeterseiland, are some of the buildings of the University of Amsterdam, originally built for courses or subfaculties of physics, chemistry, biology, environmental science and mathematics, but now used by other faculties."
+  },
+  {
+    "id": "extract_water_991536571",
+    "name": "Zoutkeetsgracht",
+    "type": "water",
+    "wikidata": "Q2805657",
+    "wikipedia": "nl:Zoutkeetsgracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Zoutkeetsgracht",
+    "wikipediaExtract": "The Zoutkeetsgracht (Salt sheds canal) is a canal to the west of the center of Amsterdam."
+  },
+  {
+    "id": "extract_water_1506933369",
+    "name": "Weespertrekvaart",
+    "type": "water",
+    "wikidata": "Q2358028",
+    "wikipedia": "nl:Weespertrekvaart",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Weespertrekvaart",
+    "wikipediaExtract": "The Weespertrekvaart is a canal that connects the Amstel in Amsterdam with the Vecht in Weesp. The canal was built in 1639, using several existing waterways: the ring canal of the Watergraafsmeer polder (constructed in 1629), the ring canal of the Bijlmermeer polder (constructed in 1626), the Gaasp river, and the ge"
+  },
+  {
+    "id": "extract_water_1639628569",
+    "name": "Nieuwe Achtergracht",
+    "type": "water",
+    "wikidata": "Q2099627",
+    "wikipedia": "nl:Nieuwe Achtergracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nieuwe_Achtergracht",
+    "wikipediaExtract": "The Nieuwe Achtergracht is a canal in Amsterdam in the east of the Grachtengordel (canal belt) in the Amsterdam-Centrum district. It runs parallel to the Nieuwe Prinsengracht and connects the Onbekendegracht with the Plantage Muidergracht. The canal is crossed by Weesperstraat (at the Weesperplein) and Roetersstraat."
+  },
+  {
+    "id": "extract_water_183397",
+    "name": "Westelijk Marktkanaal",
+    "type": "water",
+    "wikidata": "Q2418172",
+    "wikipedia": "nl:Westelijk Marktkanaal",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Westelijk_Marktkanaal",
+    "wikipediaExtract": "The Westelijk Marktkanaal is a canal in Amsterdam-West. The name of the canal refers to the location of the canal relative to the Central Market Halls. The canal was put into use in 1934 for the opening and supply of the Central Market Halls. Today, most transport takes place by truck. Unlike the Kostv"
+  },
+  {
+    "id": "extract_water_1589231812",
+    "name": "Groene Tunnel",
+    "type": "water",
+    "wikidata": "Q42329434",
+    "wikipedia": "nl:Groene Tunnel",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Groene_Tunnel",
+    "wikipediaExtract": "The Groene Tunnel is a 35-meter-wide canal between Haveneiland and the Grote Rieteiland, and between the northern and southern part of Haveneiland-Oost, in the residential district IJburg in the Oost district of Amsterdam. The canal crosses the district from northwest to southeast."
+  },
+  {
+    "id": "extract_water_1131568630",
+    "name": "Albardagracht",
+    "type": "water",
+    "wikidata": "Q2636122",
+    "wikipedia": "nl:Albardagracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Albardagracht",
+    "wikipediaExtract": "The Albardagracht is a canal in the Amsterdam district of Geuzenveld. The canal was named in 1957 and is named after the politician Willem Albarda. The Albardakade does not run along this canal. The canal runs from east to west from Eendrachtspark to the Eendracht neighborhood. The canal was dug in the second half of the 1950s and has a function"
+  },
+  {
+    "id": "extract_water_627241148",
+    "name": "Amstelkanaal",
+    "type": "water",
+    "wikidata": "Q2371875",
+    "wikipedia": "nl:Amstelkanaal",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Amstelkanaal",
+    "wikipediaExtract": "The Amstelkanaal is a canal in Amsterdam-Zuid that was dug as part of H.P. Berlage's Plan Zuid. The canal is part of the connection between the Amstel and the Schinkel and forms the separation between De Pijp and the Rivierenbuurt. The Amstelkanaal runs from the Amstel to \"De Kom\", a five-way junction of canals where the Boerenwetering, the"
+  },
+  {
+    "id": "extract_water_873422094",
+    "name": "Oudezijds Achterburgwal",
+    "type": "water",
+    "wikidata": "Q3001173",
+    "wikipedia": "nl:Oudezijds Achterburgwal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Oudezijds_Achterburgwal",
+    "wikipediaExtract": "The Oudezijds Achterburgwal, often abbreviated to OZ Achterburgwal, is a street and canal in De Wallen, the red light district in the center of Amsterdam."
+  },
+  {
+    "id": "extract_water_794484432",
+    "name": "Kattenburgervaart",
+    "type": "water",
+    "wikidata": "Q37427136",
+    "wikipedia": "nl:Kattenburgervaart",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Kattenburgervaart",
+    "wikipediaExtract": "The Kattenburgervaart is a short canal in Amsterdam that runs through the Oostelijke Eilanden (Eastern Islands). \nThe canal separates the island of Wittenburg, which was built in the 17th century, from the island of Kattenburg. \nThe Kattenburgervaart runs parallel to the Wittenburgervaart (to the east) from the Nieuwe Vaart to the Dijksgracht."
+  },
+  {
+    "id": "extract_water_201054509",
+    "name": "Oudezijds Voorburgwal",
+    "type": "water",
+    "wikidata": "Q2484869",
+    "wikipedia": "nl:Oudezijds Voorburgwal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Oudezijds_Voorburgwal",
+    "wikipediaExtract": "The Oudezijds Voorburgwal, often abbreviated to OZ Voorburgwal, is a street and canal in De Wallen in the center of Amsterdam. It runs from the Grimburgwal in the south to the Zeedijk in the north, where it changes into the Oudezijds Kolk, which drains into the IJ.\nThe bridge over the OZ Voorburgwal between Damstraat and Oude Doelenstraat (bridge 204) forms "
+  },
+  {
+    "id": "extract_water_1137953420",
+    "name": "Leliegracht",
+    "type": "water",
+    "wikidata": "Q2400867",
+    "wikipedia": "nl:Leliegracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Leliegracht",
+    "wikipediaExtract": "The Leliegracht (Dutch pronunciation: [ˈleːliˌɣrɑxt]; Lily Canal) is a canal in Amsterdam, the Netherlands, between Herengracht (no. 148 and 169) and Prinsengracht (no. 124 and 241). The canal lies within the western Grachtengordel (canal belt) in the Jordaan neighborhood of the Amsterdam-Centrum district."
+  },
+  {
+    "id": "extract_water_401324840",
+    "name": "Passeerdersgracht",
+    "type": "water",
+    "wikidata": "Q2511759",
+    "wikipedia": "nl:Passeerdersgracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Passeerdersgracht",
+    "wikipediaExtract": "The Passeerdersgracht is a short canal in Amsterdam, the Netherlands, that connects the Prinsengracht with the Lijnbaansgracht. It is the southernmost canal in the Jordaan neighbourhood, and borders the west part of the Grachtengordel (Canal District)."
+  },
+  {
+    "id": "extract_water_931060828",
+    "name": "Rapenburgwal",
+    "type": "water",
+    "wikidata": "Q16672161",
+    "wikipedia": "nl:Rapenburgwal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Rapenburgwal",
+    "wikipediaExtract": "The Rapenburgwal (Dutch pronunciation: [ˈraːpə(m)ˌbʏr(ə)xʋɑl]) is a canal in Amsterdam in the east of the Amsterdam-Centrum district, in the Lastage neighborhood."
+  },
+  {
+    "id": "extract_water_1958935029",
+    "name": "Recht Boomssloot",
+    "type": "water",
+    "wikidata": "Q2220608",
+    "wikipedia": "nl:Rechtboomssloot",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Rechtboomssloot",
+    "wikipediaExtract": "The Rechtboomssloot, or Recht Boomssloot, is a canal in the Lastage (Nieuwmarktbuurt) neighborhood in the center of Amsterdam."
+  },
+  {
+    "id": "extract_water_293869222",
+    "name": "Krom Boomssloot",
+    "type": "water",
+    "wikidata": "Q2192281",
+    "wikipedia": "nl:Kromboomssloot",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Kromboomssloot",
+    "wikipediaExtract": "The Kromboomssloot, or Krom Boomssloot, is a canal in the Lastage (Nieuwmarktbuurt) neighborhood in the center of Amsterdam. \nIt provides a transverse navigation from the Rechtboomssloot and was previously called Dwarsboomssloot.\nAs the names indicate, the Rechtboomssloot (Straight Boom Ditch) is completely straight, while there is a curve in the Kromboomssl"
+  },
+  {
+    "id": "extract_water_1564747138",
+    "name": "Da Costagracht",
+    "type": "water",
+    "wikidata": "Q15874170",
+    "wikipedia": "nl:Da Costagracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Da_Costagracht",
+    "wikipediaExtract": "The Da Costagracht is a canal in Amsterdam-West. The canal connects the Hugo de Grootgracht in the north with the Jacob van Lennepkanaal in the south. The canal is named after the 19th-century poet and prose writer Isaäc da Costa (1798-1860)."
+  },
+  {
+    "id": "extract_water_758757382",
+    "name": "Spiegelgracht",
+    "type": "water",
+    "wikidata": "Q2590555",
+    "wikipedia": "nl:Spiegelgracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spiegelgracht",
+    "wikipediaExtract": "The Spiegelgracht (Dutch: [ˈspi.ɣəlɣrɑxt], mirror canal) is a canal in the centre of Amsterdam, located near the Prinsengracht. Built in the 16th century, it is a part of the Canals of Amsterdam which have been designated as UNESCO World Heritage Sites."
+  },
+  {
+    "id": "extract_water_694811320",
+    "name": "Onbekendegracht",
+    "type": "water",
+    "wikidata": "Q2456618",
+    "wikipedia": "nl:Onbekendegracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Onbekendegracht",
+    "wikipediaExtract": "The Onbekendegracht (Unknown Canal) is a short canal in Amsterdam, in the eastern part of the Grachtengordel (canal belt)."
+  },
+  {
+    "id": "extract_water_1484265655",
+    "name": "Oostelijk Marktkanaal",
+    "type": "water",
+    "wikidata": "Q1989533",
+    "wikipedia": "nl:Oostelijk Marktkanaal",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Oostelijk_Marktkanaal",
+    "wikipediaExtract": "The Oostelijk Marktkanaal is a canal in Amsterdam-West. The canal branches off from the Kostverlorenvaart in a northerly direction at the Beltbrug and opened up the grounds of the Centrale Markthallen on the east side. Along the Buyskade lies the Buysbrug over the Oostelijk Marktkanaal, over which a bicycle path leads to Jan van Galenstraat. The canal"
+  },
+  {
+    "id": "extract_water_666086124",
+    "name": "Admiralengracht",
+    "type": "water",
+    "wikidata": "Q2350206",
+    "wikipedia": "nl:Admiralengracht (Amsterdam)",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Admiralengracht_(Amsterdam)",
+    "wikipediaExtract": "The Admiralengracht is a canal and street name in Amsterdam-West, the canal was dug in the 1920s as part of the Plan West. The canal was named in 1924, after the Dutch and Zeelandish admirals from the 16th, 17th, 18th and 19th centuries, after which many streets in the surrounding district, the Admiralenbuurt, are named."
+  },
+  {
+    "id": "extract_water_1692857444",
+    "name": "Westerkanaal",
+    "type": "water",
+    "wikidata": "Q2397124",
+    "wikipedia": "nl:Westerkanaal",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Westerkanaal",
+    "wikipediaExtract": "The Westerkanaal is a canal in Amsterdam that connects the Singelgracht and the Haarlemmertrekvaart to the IJ, where the ships on the north side of the canal first have to cross the Oude Houthaven. The canal runs from the Singelgrachtbrug to Tasmanstraat/Van Diemenstraat. The western quay is interrupted by the Le Mairegracht and the Va"
+  },
+  {
+    "id": "extract_water_142796395",
+    "name": "Smallepadsgracht",
+    "type": "water",
+    "wikidata": "Q2207295",
+    "wikipedia": "nl:Smallepadsgracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Smallepadsgracht",
+    "wikipediaExtract": "The Smallepadsgracht (Narrow path canal in Dutch) is a short and narrow canal in the Amsterdam-Centrum district of Amsterdam.\nIt is in the Westelijke Eilanden (Western Islands) neighborhood."
+  },
+  {
+    "id": "extract_water_1447549754",
+    "name": "Schippersgracht",
+    "type": "water",
+    "wikidata": "Q2209820",
+    "wikipedia": "nl:Schippersgracht (Amsterdam)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Schippersgracht",
+    "wikipediaExtract": "The Schippersgracht (Dutch pronunciation: [ˈsxɪpərsˌxrɑxt]) is a canal and street in the Centrum district of Amsterdam that runs from the Rapenburgerplein to the Prins Hendrikkade."
+  },
+  {
+    "id": "extract_water_527321899",
+    "name": "Snoekjesgracht",
+    "type": "water",
+    "wikidata": "Q4834672",
+    "wikipedia": "nl:Snoekjesgracht",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Snoekjesgracht",
+    "wikipediaExtract": "The Snoekjesgracht (Pike Canal) is a small canal in Amsterdam, in the Lastage neighborhood."
+  },
+  {
+    "id": "extract_water_556693489",
+    "name": "Hoekenesgracht",
+    "type": "water",
+    "wikidata": "Q2494169",
+    "wikipedia": "nl:Hoekenes",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Hoekenes",
+    "wikipediaExtract": "Hoekenes in a street in Amsterdam Nieuw-West. The street is located in several neighborhoods (including Wildemanbuurt) in Osdorp due to its length."
+  },
+  {
+    "id": "extract_water_928899935",
+    "name": "Bilderdijkgracht",
+    "type": "water",
+    "wikidata": "Q15873114",
+    "wikipedia": "nl:Bilderdijkgracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Bilderdijkgracht",
+    "wikipediaExtract": "The Bilderdijkgracht is a canal in Amsterdam-West, named after poet and historian Willem Bilderdijk. The canal connects the Hugo de Grootgracht/Kostverlorenvaart at Bilderdijkpark in the north with the Jacob van Lennepkanaal in the south. The canal is crossed by De Clercqstraat (bridge no. 135), Kwakersstraat/Kwakersplein (bridge no."
+  },
+  {
+    "id": "extract_water_1233110790",
+    "name": "Hugo de Grootgracht",
+    "type": "water",
+    "wikidata": "Q15876490",
+    "wikipedia": "nl:Hugo de Grootgracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Hugo_de_Grootgracht",
+    "wikipediaExtract": "The Hugo de Grootgracht is a canal in Amsterdam-West."
+  },
+  {
+    "id": "extract_water_2055355457",
+    "name": "De Rijpgracht",
+    "type": "water",
+    "wikidata": "Q2370863",
+    "wikipedia": "nl:De Rijpgracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/De_Rijpgracht",
+    "wikipediaExtract": "The De Rijpgracht is a canal in the Amsterdam neighborhood of Landlust. The canal was named after the explorer Jan Corneliszoon Rijp (1570-1630) by a council decision of April 27, 1933, with the understanding that the canal and associated street have an article (the De Rijpgracht)."
+  },
+  {
+    "id": "extract_water_807852441",
+    "name": "Beulingsloot",
+    "type": "water",
+    "wikidata": "Q15845174",
+    "wikipedia": "nl:Beulingsloot",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Beulingsloot",
+    "wikipediaExtract": "The Beulingsloot is one of the oldest and shortest canals in Amsterdam-Centrum. It is located within the Canal Ring."
+  },
+  {
+    "id": "extract_water_1534340214",
+    "name": "Betonsluis",
+    "type": "water",
+    "wikidata": "Q56196760",
+    "wikipedia": "nl:Sluis 124",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Sluis_124",
+    "wikipediaExtract": "Sluis 124, also known as the Concrete Lock, is a sluice lock in the IJburg district of Amsterdam. Bridge 2050 crosses the lock."
+  },
+  {
+    "id": "extract_water_523870429",
+    "name": "Kinselmeer",
+    "type": "water",
+    "wikidata": "Q2785842",
+    "wikipedia": "nl:Kinselmeer",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Kinselmeer",
+    "wikipediaExtract": "The Kinselmeer is a Dutch lake in the province of North Holland north of Durgerdam and east of Ransdorp (Amsterdam municipality). It is located on the IJsselmeerdijk (Uitdammerdijk) between Durgerdam and Uitdam, and was formed during the Saint Elizabeth's Flood of 1421. The name is derived from two villages that used to be nearby here, Grote and Kle"
+  },
+  {
+    "id": "extract_water_170469359",
+    "name": "Erasmusgracht",
+    "type": "water",
+    "wikipedia": "nl:Erasmusgracht",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Erasmusgracht",
+    "wikipediaExtract": "The Erasmusgracht in Amsterdam-West was built in the 1940s as part of the new Bos en Lommer district. Along the extension beyond the dike of the Ringspoorbaan lies the Burgemeester Van Tienhovengracht. The canal was named in 1939 and was named after Desiderius Erasmus (1467-1536), famous Dutch humanist. The canal runs from the Admiral"
+  },
+  {
+    "id": "extract_water_553726831",
+    "name": "Sisyfusgemaal",
+    "type": "water",
+    "wikidata": "Q65999789",
+    "wikipedia": "nl:Sisyfusgemaal",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Sisyfusgemaal",
+    "wikipediaExtract": "The Sisyfusgemaal is both a structural and artistic work of art (applied art) in Amsterdam Nieuw-West."
+  },
+  {
+    "id": "extract_water_362932619",
+    "name": "Syphonsluis",
+    "type": "water",
+    "wikipedia": "nl:Sifon van het Merwedekanaal",
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Sifon_van_het_Merwedekanaal",
+    "wikipediaExtract": "The Merwedekanaal siphon is a feeder tunnel, or water transport tunnel, that connects two branches of the Merwedekanaal on the south side of the city of Utrecht under the Amsterdam-Rhine Canal (ARK). The current siphon has existed since 1973 and has replaced an older, steel passage. This had to be replaced because the Amsterdam-Rhine Canal"
   }
 ]

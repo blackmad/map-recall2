@@ -948,6 +948,7 @@ export default function App() {
             unit={unit}
             roundNumber={currentRoundIndex + 1}
             totalRounds={featuresForGame.length}
+            factSeed={gameSeed}
             searchCenter={searchBoundary?.center || currentCity.center}
           />
         )}
@@ -965,6 +966,7 @@ export default function App() {
             isLastRound={currentRoundIndex + 1 >= featuresForGame.length}
             roundNumber={currentRoundIndex + 1}
             totalRounds={featuresForGame.length}
+            factSeed={gameSeed}
           />
         )}
 

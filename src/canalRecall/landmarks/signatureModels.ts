@@ -1,0 +1,145 @@
+// The curated list. One entry per building worth recognising on sight.
+//
+// Nine of these are the City of Amsterdam's own survey models, uploaded in a
+// single batch on 2007-05-08 for Google's Earth 3D-buildings programme back
+// when Google owned SketchUp. The other six are community models of landmarks
+// the city never made, found by `search-3dwarehouse-landmarks.ts` and credited
+// to their own authors.
+//
+// The bulk of each entry — where the building is, which landmark it answers
+// to, what its OSM footprint measures — is generated into
+// `surveyedLandmarks.json` rather than typed out. What stays here is what no
+// fetch can decide: which way a facade points, and how tall a building is
+// where the number is worth asserting.
+//
+// PROTOTYPE: these are used under the 3D Warehouse General Model License,
+// which covers a Combined Work but not redistributing an asset library. That
+// question is parked, not answered — see TODO.md before this goes anywhere
+// public.
+
+import surveyedCatalogue from './surveyedLandmarks.json';
+import type { LngLat, OrientedFootprint, SignatureModelSpec } from './signaturePlacement';
+
+interface SurveyedCatalogueEntry {
+  id: string;
+  name: string;
+  author: string;
+  warehouseId: string;
+  landmarkId: string;
+  landmarkName: string | null;
+  address: string | null;
+  anchor: [number, number];
+  anchorToLandmarkMetres: number | null;
+  footprint: OrientedFootprint | null;
+}
+
+/**
+ * Height assertions, in metres to the highest point, for the buildings where
+ * the number is worth pinning.
+ *
+ * Only filled in where there is something to check against. The Palace is the
+ * case that earned it: Dutch Wikipedia and Wikidata both claim 90 m for a
+ * building whose own survey puts the main stone mass at 51.9 m and the rooster
+ * on the weathervane at 60.9 m. A surveyed model is placed at scale 1, so a
+ * height that disagrees with the survey means the wrong file rather than a bad
+ * fit — which is exactly the failure worth catching.
+ */
+const EXPECTED_HEIGHTS: Readonly<Record<string, { metres: number; tolerance: number }>> = {
+  'palace-on-the-dam': { metres: 60.9, tolerance: 1.5 },
+};
+
+/**
+ * Which way each building's front faces, as a compass bearing.
+ *
+ * Not used to place a surveyed model — it arrives already turned correctly —
+ * but it is the human-checkable fact about each one, and the thing a reviewer
+ * can disagree with. "The Palace faces east onto the Dam" is verifiable; "the
+ * mesh is north-up" is not. Values are approximate to the nearest degree and
+ * several are unverified guesses; the check script is where they should
+ * eventually be pinned against the OSM footprint's long axis.
+ */
+const FACADE_BEARINGS: Readonly<Record<string, number>> = {
+  'palace-on-the-dam': 91, // east, onto the Dam
+  'centraal-station': 187, // south, down the Damrak
+  'rijksmuseum': 13, // north, towards the city
+  'westerkerk': 93, // east, onto the Prinsengracht
+  'oude-kerk': 93, // east, onto the Oudekerksplein
+  'de-beurs-van-berlage': 97,
+  'nemo': 250,
+  'stadhuis': 270,
+  'national-monument-on-the-dam': 271,
+  'munttoren-amsterdam': 200,
+  'montelbaanstoren-amsterdam': 250,
+  'concertgebouw': 12,
+  'bimhuis-in-amsterdam-the-netherlands': 200,
+  'heineken-experience-amsterdam': 100,
+  'netherlands-film-and-television-academy-the-netherlands': 180,
+};
+
+const WAREHOUSE_LICENCE = {
+  licence: '3D Warehouse General Model License',
+  licenceUrl: 'https://3dwarehouse.sketchup.com/tos/',
+  modifications:
+    'Cleaned up for the web, not changed artistically: SketchUp construction edges removed, '
+    + 'faces made double-sided so inward-facing normals stop rendering black, all materials set '
+    + "non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with "
+    + "no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets "
+    + 'and tangents dropped, textures re-encoded as WebP, geometry quantized and '
+    + "meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, "
+    + 'unscaled and unrotated.',
+} as const;
+
+/** `extract_landmarks_342809743` -> `['w342809743', 'r342809743']`. */
+function osmIdCandidates(landmarkId: string): string[] {
+  const digits = landmarkId.replace(/^\D+/, '');
+  if (!/^\d+$/.test(digits)) return [];
+  return [`w${digits}`, `r${digits}`];
+}
+
+function specFromCatalogue(entry: SurveyedCatalogueEntry): SignatureModelSpec {
+  const height = EXPECTED_HEIGHTS[entry.id];
+  return {
+    id: entry.id,
+    name: entry.name,
+    landmarkId: entry.landmarkId,
+    modelUrl: `./models/${entry.id}.glb`,
+    // Both prefixes for the same number, because the extract records a
+    // landmark as `extract_landmarks_<id>` without saying whether that id is a
+    // way or a relation — the Palace is relation 3580875 whose outer ring is
+    // way 342809743, and which of the two the tiles carry is not knowable from
+    // here. An id that does not exist simply never matches, so offering both
+    // costs nothing and guessing wrong would cost the suppression.
+    suppressOsmIds: osmIdCandidates(entry.landmarkId),
+    footprint: entry.footprint ?? undefined,
+    heightMetres: height?.metres,
+    heightToleranceMetres: height?.tolerance,
+    groundAltitudeMetres: 0,
+    facingOffsetDegrees: FACADE_BEARINGS[entry.id] ?? 0,
+    surveyed: {
+      anchor: entry.anchor as unknown as LngLat,
+      northOffsetDegrees: 0,
+      source: `3D Warehouse entity ${entry.warehouseId}, geo attribute`,
+    },
+    attribution: {
+      title: entry.name,
+      author: entry.author,
+      sourceUrl: `https://3dwarehouse.sketchup.com/model/${entry.warehouseId}`,
+      licence: WAREHOUSE_LICENCE.licence,
+      licenceUrl: WAREHOUSE_LICENCE.licenceUrl,
+      modifications: WAREHOUSE_LICENCE.modifications,
+    },
+  };
+}
+
+export const SIGNATURE_MODELS: readonly SignatureModelSpec[] =
+  (surveyedCatalogue as SurveyedCatalogueEntry[]).map(specFromCatalogue);
+
+/** Looks up a spec by id. */
+export function signatureModel(id: string): SignatureModelSpec | undefined {
+  return SIGNATURE_MODELS.find(model => model.id === id);
+}
+
+/** Every OSM footprint that a signature model stands in for. */
+export function suppressedOsmIds(): string[] {
+  return SIGNATURE_MODELS.flatMap(model => [...model.suppressOsmIds]);
+}

@@ -16,6 +16,15 @@ class VectorBasemap {
     this._detailedBuildings = null;
     this._completeCity = null;
     this._detailedBuildingsVisible = false;
+    this._signatureLandmarks = null;
+    this._appearanceOsmIds = [];
+    this._appearanceFeatures = [];
+    this._appearanceCentroidGrid = null;
+    this._basemapProximityHideIds = [];
+    this._basemapDuplicateScanQueued = false;
+    this._googleTiles = null;
+    this._googleTilesEnabled = false;
+    this._googleTilesActive = false;
     this._activeLandmark = null;
     this._playerBike = null;
     this._playerBoat = null;
@@ -53,6 +62,9 @@ class VectorBasemap {
         });
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
+      // Signature landmark GLBs are built and demoable, but disabled in the
+      // live game: thirteen meshopt models were too expensive on the shared
+      // MapLibre/Three canvas (see TODO item 22).
       if (window.CanalRecallVehicles) {
         const { PlayerBike3D, PlayerBoat3D } = window.CanalRecallVehicles;
         if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl);
@@ -106,23 +118,30 @@ class VectorBasemap {
 
   _ensureBuildingAppearanceLayers() {
     if (this.map.getSource('osm-building-appearance')) return;
+    // The source starts empty and is filled by `_loadBuildingAppearance` so that
+    // these two layers still land in their place in the stack: everything added
+    // after them expects to sit above the building extrusions.
     this.map.addSource('osm-building-appearance', {
-      type: 'geojson', data: '../data/extracts/amsterdam/buildings-colored.geojson',
+      type: 'geojson', data: { type: 'FeatureCollection', features: [] },
       generateId: true,
       attribution: 'Building appearance © OpenStreetMap contributors'
     });
     // Three extrusions can describe one building here: the basemap's own
-    // `building-3d`, our measured-colour walls, and the roof cap. Any two
-    // horizontal faces at an identical height z-fight, which is the striping
-    // that appeared across roofs — two surfaces at the same depth, the renderer
+    // `building-3d`, our measured-colour walls, and the roof cap. Any two faces
+    // that occupy the same plane z-fight, which is the striping that appeared
+    // across roofs and facades — two surfaces at the same depth, the renderer
     // picking a different winner per pixel.
     //
-    // So no two visible faces share a height. Walls finish 0.35 m above the
-    // basemap's estimate, which puts the basemap's roof inside ours rather than
-    // level with it. The roof cap *starts* below the wall top, so the slab's
-    // underside and the wall's top face are both buried and only the cap's own
-    // top is drawn. Opacity is 1 on both: a translucent extrusion blends with
-    // whatever it is fighting, which turns a depth tie into a visible stripe.
+    // Height offsets only ever separate *horizontal* faces. A wall is coplanar
+    // with itself no matter how tall either box is, so the basemap's copy of a
+    // building has to go entirely — see `_hideDuplicatedBasemapBuildings`.
+    //
+    // Between the two layers that remain, the roof cap starts exactly where the
+    // walls stop, so their side faces meet along an edge instead of overlapping
+    // in a 0.30 m band. MapLibre draws no underside on an extrusion, so there is
+    // nothing beneath the cap to leave exposed. Opacity is 1 on both: a
+    // translucent extrusion blends with whatever it overlaps, which turns a
+    // depth tie into a visible stripe.
     const OSM_HEIGHT = ['coalesce', ['get', 'height'], 5];
     this.map.addLayer({
       id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
@@ -137,11 +156,238 @@ class VectorBasemap {
       id: 'osm-colored-building-roofs', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'roofColour']],
-        'fill-extrusion-base': ['+', OSM_HEIGHT, 0.05],
+        'fill-extrusion-base': ['+', OSM_HEIGHT, 0.35],
         'fill-extrusion-height': ['+', OSM_HEIGHT, 0.7],
         'fill-extrusion-opacity': 1
       }
     });
+    this._loadBuildingAppearance();
+  }
+
+  // Fetched here rather than handed to MapLibre as a source URL because the
+  // same features are needed twice: once as the extrusion geometry, and once to
+  // name the basemap buildings this layer replaces.
+  async _loadBuildingAppearance() {
+    let data;
+    try {
+      const response = await fetch('../data/extracts/amsterdam/buildings-colored.geojson');
+      if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+      data = await response.json();
+    } catch (error) {
+      console.warn('Building appearance extract unavailable; keeping basemap extrusions.', error);
+      return;
+    }
+    const source = this.map && this.map.getStyle() && this.map.getSource('osm-building-appearance');
+    if (!source) return;
+    source.setData(data);
+    this._hideDuplicatedBasemapBuildings(data);
+  }
+
+  // The basemap keeps only the buildings the extract does not carry. Its ids
+  // arrive encoded in the vector-tile feature id, so `basemapBuildingFilter`
+  // does the decoding and documents which id types are safe to match.
+  //
+  // OpenFreeMap's z14 building layer is sparse — 113 features in the tile over
+  // the centre against 10,578 in the extract — so this removes the double-drawn
+  // minority and leaves the rest of the city standing. An id match alone cut
+  // co-located pairs from 145 to 47; the remainder are held under different
+  // OSM ids by the two pipelines, so `_scanBasemapDuplicates` measures
+  // proximity against the extract and feeds those feature ids in too.
+  _hideDuplicatedBasemapBuildings(data) {
+    this._appearanceFeatures = (data && data.features) || [];
+    this._appearanceOsmIds = this._appearanceFeatures
+      .map(feature => feature.properties && feature.properties.osmId)
+      .filter(Boolean);
+    this._appearanceCentroidGrid = this._buildAppearanceCentroidGrid(this._appearanceFeatures);
+    this._basemapProximityHideIds = [];
+    this._refreshBuildingSuppression();
+    this._queueBasemapDuplicateScan();
+    if (!this._basemapDuplicateScanBound) {
+      this._basemapDuplicateScanBound = true;
+      // Tiles stream in after the extract; rescan whenever more buildings
+      // arrive so a late basemap copy cannot reappear under a coloured roof.
+      this.map.on('sourcedata', (event) => {
+        if (event.sourceId !== 'openmaptiles' || !event.isSourceLoaded) return;
+        this._queueBasemapDuplicateScan();
+      });
+      this.map.on('moveend', () => this._queueBasemapDuplicateScan());
+    }
+  }
+
+  // One owner per building: hide the basemap copy of every coloured-extract
+  // building (by id and by measured proximity), and hide coloured extrusions
+  // under any signature model that has loaded.
+  _refreshBuildingSuppression() {
+    if (!this.map || !this.map.getStyle()) return;
+    if (this.map.getLayer('building-3d') && window.CanalRecallBuildings) {
+      const { basemapBuildingFilter } = window.CanalRecallBuildings;
+      if (basemapBuildingFilter) {
+        if (this._baseBuildingFilter === undefined) {
+          this._baseBuildingFilter = this.map.getFilter('building-3d') || null;
+        }
+        const osmIds = [...this._appearanceOsmIds, ...this._signatureSuppressOsmIds()];
+        try {
+          this.map.setFilter(
+            'building-3d',
+            basemapBuildingFilter(osmIds, this._baseBuildingFilter, this._basemapProximityHideIds),
+          );
+        } catch (error) {
+          console.warn('Could not de-duplicate basemap buildings; extrusions may z-fight.', error);
+        }
+      }
+    }
+    this._refreshColoredBuildingFilter();
+  }
+
+  _queueBasemapDuplicateScan() {
+    if (this._basemapDuplicateScanQueued || !this._appearanceCentroidGrid) return;
+    this._basemapDuplicateScanQueued = true;
+    requestAnimationFrame(() => {
+      this._basemapDuplicateScanQueued = false;
+      this._scanBasemapDuplicates();
+    });
+  }
+
+  // The id filter cannot see buildings the two pipelines hold under different
+  // OSM ids. For every loaded basemap building, if any of its ring centroids
+  // sits within 3 m of an extract building, hide it — same tolerance the
+  // earlier audit used when it counted the residual 47 pairs. Ring-by-ring
+  // matters because OpenFreeMap sometimes batches many footprints into one
+  // multipolygon feature; a single feature centroid would miss the overlap.
+  _scanBasemapDuplicates() {
+    if (!this.map || !this._appearanceCentroidGrid) return;
+    let features;
+    try {
+      features = this.map.querySourceFeatures('openmaptiles', { sourceLayer: 'building' });
+    } catch (_) {
+      return;
+    }
+    if (!features || !features.length) return;
+    const { encodeBasemapBuildingId } = window.CanalRecallBuildings || {};
+    const known = new Set();
+    if (encodeBasemapBuildingId) {
+      for (const osmId of this._appearanceOsmIds) {
+        const encoded = encodeBasemapBuildingId(osmId);
+        if (encoded !== null) known.add(encoded);
+      }
+    }
+    for (const id of this._basemapProximityHideIds) known.add(id);
+    const found = [];
+    for (const feature of features) {
+      const id = feature.id;
+      if (typeof id !== 'number' || !Number.isSafeInteger(id) || id <= 0 || known.has(id)) continue;
+      const centres = this._featureRingCentres(feature);
+      if (!centres.some(centre => this._appearanceNear(centre, 3))) continue;
+      known.add(id);
+      found.push(id);
+    }
+    if (!found.length) return;
+    this._basemapProximityHideIds = this._basemapProximityHideIds.concat(found);
+    this._refreshBuildingSuppression();
+  }
+
+  _buildAppearanceCentroidGrid(features) {
+    // ~25 m cells at Amsterdam latitude — large enough that a 3 m search only
+    // touches the home cell and its neighbours.
+    const cellDeg = 0.00025;
+    const grid = new Map();
+    for (const feature of features) {
+      const centre = this._featureCentreLngLat(feature);
+      if (!centre) continue;
+      const key = `${Math.floor(centre[0] / cellDeg)}:${Math.floor(centre[1] / cellDeg)}`;
+      let bucket = grid.get(key);
+      if (!bucket) { bucket = []; grid.set(key, bucket); }
+      bucket.push(centre);
+    }
+    return { cellDeg, grid };
+  }
+
+  _appearanceNear(lngLat, metres) {
+    const index = this._appearanceCentroidGrid;
+    if (!index) return false;
+    const [lng, lat] = lngLat;
+    const metresPerDegLat = 110540;
+    const metresPerDegLng = 111320 * Math.cos(lat * Math.PI / 180);
+    const cellLng = Math.floor(lng / index.cellDeg);
+    const cellLat = Math.floor(lat / index.cellDeg);
+    const limit2 = metres * metres;
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -1; dy <= 1; dy++) {
+        const bucket = index.grid.get(`${cellLng + dx}:${cellLat + dy}`);
+        if (!bucket) continue;
+        for (const [olng, olat] of bucket) {
+          const east = (olng - lng) * metresPerDegLng;
+          const north = (olat - lat) * metresPerDegLat;
+          if (east * east + north * north <= limit2) return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  _signatureSuppressOsmIds() {
+    if (!this._signatureLandmarks) return [];
+    const ids = new Set(this._signatureLandmarks.shownSuppressOsmIds());
+    const helpers = window.CanalRecallSignatureLandmarks;
+    if (!helpers || !helpers.footprintPolygon || !helpers.pointInRing) return [...ids];
+    for (const footprint of this._signatureLandmarks.shownFootprints()) {
+      const ring = helpers.footprintPolygon(footprint, 4);
+      for (const feature of this._appearanceFeatures) {
+        const osmId = feature.properties && feature.properties.osmId;
+        if (!osmId || ids.has(osmId)) continue;
+        const centre = this._featureCentreLngLat(feature);
+        if (centre && helpers.pointInRing(centre, ring)) ids.add(osmId);
+      }
+    }
+    return [...ids];
+  }
+
+  _featureCentreLngLat(feature) {
+    const centres = this._featureRingCentres(feature);
+    if (!centres.length) return null;
+    let sumLng = 0;
+    let sumLat = 0;
+    for (const point of centres) { sumLng += point[0]; sumLat += point[1]; }
+    return [sumLng / centres.length, sumLat / centres.length];
+  }
+
+  _featureRingCentres(feature) {
+    const geometry = feature && feature.geometry;
+    if (!geometry || !geometry.coordinates) return [];
+    const rings = geometry.type === 'Polygon'
+      ? [geometry.coordinates[0]]
+      : geometry.type === 'MultiPolygon'
+        ? geometry.coordinates.map(polygon => polygon[0])
+        : [];
+    const centres = [];
+    for (const ring of rings) {
+      if (!Array.isArray(ring) || !ring.length) continue;
+      let sumLng = 0;
+      let sumLat = 0;
+      let count = 0;
+      for (const point of ring) {
+        if (!Array.isArray(point) || typeof point[0] !== 'number') continue;
+        sumLng += point[0];
+        sumLat += point[1];
+        count += 1;
+      }
+      if (count) centres.push([sumLng / count, sumLat / count]);
+    }
+    return centres;
+  }
+
+  _refreshColoredBuildingFilter() {
+    if (!this.map) return;
+    const hide = this._signatureSuppressOsmIds();
+    const filter = hide.length
+      ? ['!', ['in', ['get', 'osmId'], ['literal', hide]]]
+      : null;
+    for (const id of ['osm-colored-buildings', 'osm-colored-building-roofs']) {
+      if (!this.map.getLayer(id)) continue;
+      try { this.map.setFilter(id, filter); } catch (error) {
+        console.warn(`Could not filter ${id} under signature models.`, error);
+      }
+    }
   }
 
   /**
@@ -349,11 +595,90 @@ class VectorBasemap {
     this.setActiveLandmark(this._activeLandmark);
   }
 
+  setGoogleTilesEnabled(enabled) {
+    this._googleTilesEnabled = !!enabled;
+    if (!this._googleTilesEnabled && this._googleTiles) this._googleTiles.setEnabled(false);
+    this._updateGoogleTiles();
+  }
+
+  /**
+   * Camera height above the ground, in metres.
+   *
+   * MapLibre has no `getFreeCameraOptions()` — that is Mapbox GL JS 2.x, added
+   * after the fork — so asking for it silently disabled this whole feature.
+   * The transform is where MapLibre keeps the real camera height.
+   */
+  _cameraAltitudeMeters() {
+    const transform = this.map && this.map.transform;
+    if (!transform || typeof transform.getCameraAltitude !== 'function') return null;
+    try {
+      const altitude = transform.getCameraAltitude();
+      return Number.isFinite(altitude) ? altitude : null;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  /**
+   * Google's mesh earns its place only from the overview camera: measured, it is
+   * excellent from ~25 m up and a smear at cycling height, and it carries no
+   * building identity to highlight an answer with. So altitude, not preference
+   * alone, decides — and it swaps back to 3DBAG on the way down.
+   *
+   * The altitude rule itself, including its hysteresis band, is
+   * `src/canalRecall/building/photorealGate.ts` and is covered by
+   * `npm run test:photoreal-gate`. Note that at the heights this camera
+   * actually reaches the rule never says no — see TODO item 8c.
+   */
+  _updateGoogleTiles() {
+    if (!this.map) return;
+    const altitude = this._cameraAltitudeMeters();
+    const api = window.CanalRecallGoogleTiles;
+    const gate = window.CanalRecallPhotorealGate;
+    if (!gate) return;
+    const want = gate.shouldShowPhotoreal({
+      enabled: this._googleTilesEnabled,
+      altitudeMeters: altitude,
+      active: this._googleTilesActive,
+    });
+
+    if (want && !this._googleTiles && api && api.GooglePhotorealTiles) {
+      // Built on first use, so a player who never turns it on never pays for
+      // the tileset session, and never sends a request Google would bill.
+      this._googleTiles = new api.GooglePhotorealTiles(this.map, maplibregl, text => this.setGoogleAttribution(text));
+    }
+    if (this._googleTiles) this._googleTiles.setEnabled(want);
+
+    const active = !!(want && this._googleTiles && this._googleTiles.ready);
+    if (active === this._googleTilesActive) return;
+    this._googleTilesActive = active;
+    if (!active) this.setGoogleAttribution('');
+    this._syncDetailedBuildingLayers();
+  }
+
+  setGoogleAttribution(text) {
+    const el = document.getElementById('google-tiles-attribution');
+    if (!el) return;
+    el.textContent = text || '';
+    el.style.display = text ? 'block' : 'none';
+  }
+
   _syncDetailedBuildingLayers() {
     if (!this.map) return;
-    const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
+    const google = this._googleTilesActive;
+    // 3DBAG and Google must never draw together: they are the same buildings
+    // twice, z-fighting into a shimmer.
+    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google);
+    const detailed = !google && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     for (const id of ['building-3d', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
-      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', detailed ? 'none' : 'visible');
+      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google) ? 'none' : 'visible');
+    }
+    // Signature models are the LoD1 replacement for a handful of landmarks.
+    // Hide them under photoreal/3DBAG the same way the extrusions hide, so two
+    // representations of Centraal never occupy the same air.
+    if (this._signatureLandmarks) {
+      this._signatureLandmarks.setEnabled(!detailed && !google);
+      this._refreshBuildingSuppression();
     }
   }
 
@@ -520,6 +845,7 @@ class VectorBasemap {
     }
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
+    if (this._signatureLandmarks) this._signatureLandmarks.setActiveLandmark(detailed ? null : landmark);
     if (!detailed && landmark && landmark.featureTarget) {
       try {
         this.map.setFeatureState(landmark.featureTarget, { highlighted: true });
@@ -572,6 +898,20 @@ class VectorBasemap {
     return this._labelsVisible;
   }
 
+  // The map is simply the screen. It used to be centred with
+  // `left = (innerWidth - width) / 2`, which letterboxed a tall desktop window
+  // and fed a phone loop: a stale width left the container hanging off the
+  // right edge, the document grew, the browser shrank the page to fit,
+  // `innerWidth` grew with it, and the next resize made the container wider
+  // still. Pinning it to the viewport breaks both.
+  resizeToViewport(_viewport) {
+    this.container.style.width = '100%';
+    this.container.style.height = '100%';
+    this.container.style.left = '0px';
+    this.container.style.top = '0px';
+    if (this.map) this.map.resize();
+  }
+
   resize(width, height) {
     if (!this.container) return;
     this.container.style.width = `${width}px`;
@@ -600,6 +940,7 @@ class VectorBasemap {
     // keeps sitting exactly on the basemap.
     const pitch = cockpit ? 72 : chase ? 58 : TOPDOWN_TILT_DEGREES;
     this.map.jumpTo({ center: [lon, lat], zoom: cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom, bearing, pitch });
+    this._updateGoogleTiles();
     camera.projector = pitch > 0
       ? (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas)
       : null;

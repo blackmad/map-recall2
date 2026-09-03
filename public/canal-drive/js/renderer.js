@@ -162,15 +162,15 @@ class Renderer {
     const destination = camera.worldToScreen(track.finishPoint.x, track.finishPoint.y);
     ctx.save();
     ctx.translate(destination.x, destination.y);
-    ctx.fillStyle = 'rgba(3,18,28,.82)';
+    ctx.fillStyle = window.CanalRecallUi.hudSurface.cardSolid;
     roundRect(ctx, -43, 18, 86, 20, 5);
     ctx.fill();
-    ctx.fillStyle = '#FFFFFF';
+    ctx.fillStyle = window.CanalRecallUi.paperTheme.ink;
     ctx.font = 'bold 10px monospace';
     ctx.textAlign = 'center';
     ctx.fillText('DESTINATION', 0, 32);
-    ctx.fillStyle = '#FACC15';
-    ctx.strokeStyle = '#FFFFFF';
+    ctx.fillStyle = window.CanalRecallUi.paperTheme.terracotta;
+    ctx.strokeStyle = window.CanalRecallUi.paperTheme.paperRaised;
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(0, 16);
@@ -316,12 +316,21 @@ class Renderer {
   // elision, the shrink-to-fit name, the card's own height — is decided by
   // src/canalRecall/noticeCards.ts and arrives here as `card`. This half only
   // puts it on the canvas, in order.
+  // Paper, like every other card. This was the last dark-and-gold surface: a
+  // navy panel with yellow rules sitting under a HUD made of cream cards.
   drawLandmarkCard(ctx, card, x, y, image) {
-    ctx.fillStyle = 'rgba(3,18,28,.92)';
-    roundRect(ctx, x, y, card.width, card.height, 10);
+    const surface = window.CanalRecallUi.hudSurface;
+    ctx.save();
+    ctx.shadowColor = surface.shadow;
+    ctx.shadowBlur = 18;
+    ctx.shadowOffsetY = 4;
+    ctx.fillStyle = surface.cardSolid;
+    roundRect(ctx, x, y, card.width, card.height, 12);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(250,204,21,.35)';
-    ctx.lineWidth = 1.5;
+    ctx.restore();
+    ctx.strokeStyle = surface.border;
+    ctx.lineWidth = 1;
+    roundRect(ctx, x, y, card.width, card.height, 12);
     ctx.stroke();
 
     if (image) {
@@ -335,11 +344,14 @@ class Renderer {
       ctx.restore();
     }
 
+    // Ink on tinted paper. The kinds stay visually distinct — the category and
+    // the kind of fact are different axes and must not read as one label.
     const badgeColors = {
-      category: ['rgba(250,204,21,.2)', '#FACC15'],
-      lang: ['rgba(148,163,184,.22)', '#CBD5E1'],
-      article: ['rgba(125,211,252,.18)', '#7DD3FC'],
-      more: ['rgba(74,222,128,.18)', '#4ADE80'],
+      category: ['rgba(183,129,37,.18)', '#7a5514'],
+      lang: ['rgba(104,116,110,.16)', '#54605a'],
+      article: ['rgba(53,102,83,.15)', '#264b3d'],
+      more: ['rgba(199,95,67,.15)', '#a24b33'],
+      fact: ['rgba(94,74,124,.15)', '#5b4a7c'],
     };
     let textY = y + 22;
     ctx.font = 'bold 9px monospace';
@@ -354,12 +366,12 @@ class Renderer {
     }
     if (card.badges.length) textY += 17;
 
-    ctx.fillStyle = '#FACC15';
+    ctx.fillStyle = window.CanalRecallUi.paperTheme.ink;
     ctx.font = 'bold 15px monospace';
     ctx.fillText(card.displayName, x + card.textLeft, textY);
     textY += 18;
 
-    ctx.fillStyle = '#CBD5E1';
+    ctx.fillStyle = window.CanalRecallUi.paperTheme.inkMuted;
     ctx.font = '11px monospace';
     for (const line of card.lines) {
       ctx.fillText(line, x + card.textLeft, textY);
@@ -373,7 +385,7 @@ class Renderer {
     roundRect(ctx, x, y, card.width, card.height, 8);
     ctx.clip();
 
-    ctx.fillStyle = '#092330';
+    ctx.fillStyle = window.CanalRecallUi.hudSurface.cardSolid;
     ctx.fillRect(x, y, card.width, card.height);
     if (image) {
       const crop = window.CanalRecallCards.coverCrop(
@@ -392,10 +404,10 @@ class Renderer {
 
     const textX = x + card.textLeft;
     ctx.textAlign = 'left';
-    ctx.fillStyle = '#7DD3FC';
+    ctx.fillStyle = window.CanalRecallUi.paperTheme.moss;
     ctx.font = 'bold 10px monospace';
     ctx.fillText(card.heading, textX, y + 27);
-    ctx.fillStyle = '#F0F9FF';
+    ctx.fillStyle = window.CanalRecallUi.paperTheme.ink;
     ctx.font = `800 ${card.nameFontSize}px system-ui, sans-serif`;
     ctx.fillText(card.name, textX, y + 58);
     ctx.fillStyle = '#9CCFE1';

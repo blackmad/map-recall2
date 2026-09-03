@@ -1,0 +1,31 @@
+{
+  "cityId": "den-haag",
+  "wikidata": "Q36600",
+  "name": "The Hague",
+  "description": "city and municipality in South Holland, Netherlands, seat of the Dutch government",
+  "colors": [],
+  "population": 548320,
+  "populationAsOf": "+2021-01-01T00:00:00Z",
+  "inception": "+1201-01-01T00:00:00Z",
+  "officialWebsite": "https://www.denhaag.nl/",
+  "flag": {
+    "file": "Flag of The Hague.svg",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Flag_of_The_Hague.svg/960px-Flag_of_The_Hague.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "source": "https://commons.wikimedia.org/wiki/File:Flag%20of%20The%20Hague.svg"
+  },
+  "coatOfArms": {
+    "file": "Den Haag wapen.svg",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/960px-Den_Haag_wapen.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "source": "https://commons.wikimedia.org/wiki/File:Den%20Haag%20wapen.svg"
+  },
+  "headOfGovernment": {
+    "wikidata": "Q2216667",
+    "name": "Jan van Zanen",
+    "description": "Dutch mayor",
+    "image": {
+      "file": "Jan-van-zanen-1311232102.jpg",
+      "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Jan-van-zanen-1311232102.jpg/960px-Jan-van-zanen-1311232102.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "source": "https://commons.wikimedia.org/wiki/File:Jan-van-zanen-1311232102.jpg"
+    }
+  }
+}

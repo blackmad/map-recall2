@@ -1,0 +1,35 @@
+/** Build a fail-closed local review sheet for individual 3DBAG roof-plane colours. */
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import proj4 from 'proj4';
+import type { RoofPlane } from '../src/canalRecall/building/facadePointCloud.ts';
+
+type Proposal = { buildingId: string; surfaceId: string; measuredColour?: string; confidence?: number; status: string; reason?: string | null; diagnostics?: { tileKeys?: string[]; channelIqr?: number; validPixels?: number } };
+const root = path.resolve('.cache/building-enrichment'); const output = path.join(root, 'roof-plane-review'); await mkdir(output, { recursive: true });
+const surfaces = JSON.parse(await readFile(path.join(root, 'panorama/facade-wall-planes.json'), 'utf8')) as { buildings: Array<{ roofs: RoofPlane[] }> };
+const measurements = JSON.parse(await readFile(path.join(root, 'roof-plane-colour-proposals.json'), 'utf8')) as { source: { imageryLayer: string }; proposals: Proposal[] };
+proj4.defs('EPSG:28992', '+proj=sterea +lat_0=52.15616055555556 +lon_0=5.38763888888889 +k=0.9999079 +x_0=155000 +y_0=463000 +ellps=bessel +units=m +no_defs +towgs84=565.4171,50.3319,465.5524,-0.398957,0.343988,-1.8774,4.0725');
+const roofById = new Map(surfaces.buildings.flatMap((building) => building.roofs || []).map((roof) => [roof.surfaceId, roof]));
+const TILE_METRES = 128; const TILE_PIXELS = 1024;
+const items = measurements.proposals.map((proposal) => {
+  const roof = roofById.get(proposal.surfaceId); if (!roof) return null;
+  const projected = roof.vertices.map(([x, y]) => proj4('EPSG:28992', 'EPSG:3857', [x, y]) as [number, number]);
+  const tiles = (proposal.diagnostics?.tileKeys || []).map((key) => {
+    const [tx, ty] = key.split(',').map(Number); const points = projected.map(([x, y]) => [(x - tx * TILE_METRES) / TILE_METRES * TILE_PIXELS, TILE_PIXELS - (y - ty * TILE_METRES) / TILE_METRES * TILE_PIXELS]);
+    const minX = Math.min(...points.map((point) => point[0])); const maxX = Math.max(...points.map((point) => point[0])); const minY = Math.min(...points.map((point) => point[1])); const maxY = Math.max(...points.map((point) => point[1]));
+    const size = Math.min(1024, Math.max(100, maxX - minX, maxY - minY) * 2.4); const cx = Math.max(size / 2, Math.min(1024 - size / 2, (minX + maxX) / 2)); const cy = Math.max(size / 2, Math.min(1024 - size / 2, (minY + maxY) / 2));
+    return { image: `../pdok-roof-plane-tiles/${measurements.source.imageryLayer}/${tx}_${ty}.jpg`, polygon: points.map((point) => point.map((value) => value.toFixed(1)).join(',')).join(' '), viewBox: `${cx - size / 2} ${cy - size / 2} ${size} ${size}` };
+  });
+  return { ...proposal, slopeDegrees: roof.slopeDegrees, areaSquareMetres: roof.areaSquareMetres, tiles };
+}).filter(Boolean).sort((a, b) => Number(a!.confidence || 0) - Number(b!.confidence || 0));
+const data = JSON.stringify(items).replaceAll('<', '\\u003c');
+const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Roof-plane review</title><style>
+:root{font:15px system-ui;color:#18212a;background:#ebe8e1}*{box-sizing:border-box}body{margin:0}header{position:sticky;top:0;z-index:3;display:flex;gap:9px;align-items:center;padding:12px 18px;background:#172a36;color:white}button,select,input{font:inherit}button{border:0;border-radius:7px;padding:9px 12px;cursor:pointer}.primary{background:#1680a8;color:white}.muted{background:#e5e7eb}.progress{margin-left:auto}.card{max-width:1100px;margin:18px auto;background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px #0002}.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));background:#222}.tile{aspect-ratio:1;position:relative}.tile svg{width:100%;height:100%}.meta,.controls{padding:14px 18px}.controls{display:flex;gap:14px;flex-wrap:wrap;align-items:center}.swatch{width:44px;height:44px;border:2px solid #222;border-radius:7px}</style></head><body>
+<header><strong>Roof-plane review</strong><button id="prev" class="muted">← Previous</button><button id="next" class="primary">Save & next →</button><button id="export" class="muted">Export reviewed</button><span id="progress" class="progress"></span></header><main id="app"></main><script>
+const items=${data},key='mapRecall.roofPlaneReview.v1';let labels=JSON.parse(localStorage.getItem(key)||'{}'),index=0;const q=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function save(){const x=items[index],quality=q('#quality').value;if(quality==='unreviewed'){alert('Choose a review result before saving.');return false}labels[x.surfaceId]={schemaVersion:1,buildingId:x.buildingId,surfaceId:x.surfaceId,quality,roofColour:q('#colour').value,notes:q('#notes').value,source:'human-roof-plane-review',reviewedAt:new Date().toISOString()};localStorage.setItem(key,JSON.stringify(labels));return true}
+function render(){const x=items[index],old=labels[x.surfaceId]||{};q('#progress').textContent=(index+1)+' / '+items.length+' · '+Object.keys(labels).length+' reviewed';q('#app').innerHTML='<article class="card"><div class="tiles">'+x.tiles.map(t=>'<div class="tile"><svg viewBox="'+t.viewBox+'"><image href="'+t.image+'" width="1024" height="1024"/><polygon points="'+t.polygon+'" fill="#ff2aa322" stroke="#ff2aa3" stroke-width="5" vector-effect="non-scaling-stroke"/></svg></div>').join('')+'</div><div class="meta"><b>'+esc(x.buildingId)+'</b><br>'+esc(x.surfaceId)+' · '+Math.round((x.areaSquareMetres||0)*10)/10+' m² · slope '+Math.round(x.slopeDegrees||0)+'° · confidence '+Math.round((x.confidence||0)*100)+'% · IQR '+esc(x.diagnostics?.channelIqr)+'</div><div class="controls"><i class="swatch" style="background:'+esc(x.measuredColour||'#888888')+'"></i><label>Review result <select id="quality"><option value="unreviewed">Choose…</option><option value="correct-plane">Correct plane and representative colour</option><option value="mixed">Mixed roof covering</option><option value="misaligned">Geometry/image misaligned</option><option value="shadowed">Shadowed</option><option value="unusable">Other unusable</option></select></label><label>Chosen colour <input id="colour" type="color" value="'+esc(old.roofColour||x.measuredColour||'#888888')+'"></label><label>Notes <input id="notes" value="'+esc(old.notes||'')+'"></label></div></article>';q('#quality').value=old.quality||'unreviewed'}
+q('#next').onclick=()=>{if(save()){index=Math.min(items.length-1,index+1);render()}};q('#prev').onclick=()=>{index=Math.max(0,index-1);render()};q('#export').onclick=()=>{const blob=new Blob([JSON.stringify({schemaVersion:1,source:${JSON.stringify(measurements.source)},labels:Object.values(labels)},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='roof-plane-human-labels.json';a.click();URL.revokeObjectURL(a.href)};render();
+</script></body></html>`;
+await writeFile(path.join(output, 'index.html'), html);
+process.stdout.write(`Wrote fail-closed review for ${items.length} roof planes.\n`);

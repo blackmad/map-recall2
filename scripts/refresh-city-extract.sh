@@ -11,16 +11,50 @@ work_dir="$(mktemp -d "/tmp/map-recall-${city_id}.XXXXXX")"
 build_dir="$work_dir/output"
 trap 'rm -rf "$work_dir"' EXIT
 
+# The fourth argument is either a BBBike city name or a full URL to any PBF.
+# A URL is how a city whose municipality is larger than its BBBike extract gets
+# built at all: BBBike publishes Rotterdam as a bbox from lon 4.18, while the
+# municipality reaches lon 3.94 at Hoek van Holland, so the boundary relation
+# arrives with its western ways missing and assembles into no polygon.
 if [[ -n "$source_pbf" ]]; then
   if [[ ! -s "$source_pbf" ]]; then
     echo "Supplied PBF does not exist or is empty: $source_pbf" >&2
     exit 2
   fi
-  city_pbf="$source_pbf"
+  source_file="$source_pbf"
+  wide_source=1
+elif [[ "$bbbike_name" == http*://* ]]; then
+  # Province-sized downloads are cached and shared: Rotterdam and Den Haag are
+  # both in Zuid-Holland, and re-fetching 200 MB per city per run is the kind
+  # of cost that stops anyone from running the pipeline.
+  mkdir -p .cache/osm-source
+  source_file=".cache/osm-source/$(basename "$bbbike_name")"
+  if [[ -s "$source_file" ]]; then
+    echo "Using cached source $source_file"
+  else
+    curl -L --fail --retry 3 -o "$source_file.part" "$bbbike_name"
+    mv "$source_file.part" "$source_file"
+  fi
+  wide_source=1
 else
-  city_pbf="$work_dir/city.osm.pbf"
-  curl -L --fail --retry 3 -o "$city_pbf" \
+  source_file="$work_dir/city.osm.pbf"
+  curl -L --fail --retry 3 -o "$source_file" \
     "https://download.bbbike.org/osm/bbbike/${bbbike_name}/${bbbike_name}.osm.pbf"
+  wide_source=0
+fi
+
+if [[ "$wide_source" == 1 ]]; then
+  # Cut the source down to the city, but only after reading the boundary out of
+  # it. A bbox guessed before the boundary is read is what slices a relation in
+  # half; reading first means the cut is derived from the city's own extent.
+  osmium tags-filter "$source_file" r/boundary=administrative -o "$work_dir/admin.osm.pbf"
+  osmium export "$work_dir/admin.osm.pbf" -o "$work_dir/admin.geojson"
+  city_bbox="$(node --import tsx scripts/select-municipality-bbox.ts "$work_dir/admin.geojson" "$city_name")"
+  echo "Cutting $city_id out of $(basename "$source_file") at $city_bbox"
+  city_pbf="$work_dir/city.osm.pbf"
+  osmium extract -b "$city_bbox" "$source_file" -o "$city_pbf"
+else
+  city_pbf="$source_file"
 fi
 
 osmium tags-filter "$city_pbf" \

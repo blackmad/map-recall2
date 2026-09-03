@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model compare</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #0B1B26; color: #E0F2FE;
+    font: 13px ui-sans-serif, system-ui, sans-serif; }
+  #row { display: flex; height: 100%; }
+  .pane { flex: 1; position: relative; border-right: 1px solid rgba(148,197,220,.2); }
+  .pane:last-child { border-right: 0; }
+  .label { position: absolute; top: 10px; left: 12px; z-index: 2; font-variant-numeric: tabular-nums;
+    background: rgba(7,30,43,.85); padding: 6px 10px; border-radius: 7px;
+    border: 1px solid rgba(148,197,220,.25); }
+  canvas { display: block; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<div id="row"></div>
+<script src="./js/three.bundle.js"></script>
+<script>
+// Side-by-side GLB viewer, so a decimated vehicle can be judged against the
+// one it replaces before it is committed. Same camera, same lights, same
+// framing in every pane; only the file differs.
+//
+//   model-compare.html?a=<url>&b=<url>&…   (any number of panes, in order)
+const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
+const params = new URLSearchParams(location.search);
+const models = [...params.entries()].filter(([k]) => k !== 'spin').map(([key, url]) => ({ key, url }));
+const spin = Number(params.get('spin') ?? 0.6);
+
+const row = document.getElementById('row');
+window.__panesReady = 0;
+// Every pane registers its own setter. A single `window.__setAngle` was only
+// ever the last pane's, so a screenshot caught one model posed and the rest
+// wherever their animation frame happened to leave them.
+const angleSetters = [];
+window.__setAngle = value => { for (const set of angleSetters) set(value); };
+
+for (const { key, url } of models) {
+  const pane = document.createElement('div');
+  pane.className = 'pane';
+  const label = document.createElement('div');
+  label.className = 'label';
+  label.textContent = key + ' — loading…';
+  pane.appendChild(label);
+  row.appendChild(pane);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0b1b26);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x33424c, 2.4));
+  const key1 = new THREE.DirectionalLight(0xffffff, 2.6); key1.position.set(3, 5, 4); scene.add(key1);
+  const key2 = new THREE.DirectionalLight(0x9ecbe6, 1.1); key2.position.set(-4, 2, -3); scene.add(key2);
+
+  const camera = new THREE.PerspectiveCamera(35, 1, 0.01, 500);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  pane.appendChild(renderer.domElement);
+
+  const pivot = new THREE.Group();
+  scene.add(pivot);
+
+  const loader = new GLTFLoader();
+  if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
+  const started = performance.now();
+  loader.load(url, gltf => {
+    const model = gltf.scene;
+    // Frame every model identically: centre it and normalise its longest side,
+    // so a size difference between panes is a real difference in the mesh and
+    // not in how it happened to be exported.
+    const box = new THREE.Box3().setFromObject(model);
+    const size = box.getSize(new THREE.Vector3());
+    const centre = box.getCenter(new THREE.Vector3());
+    const longest = Math.max(size.x, size.y, size.z) || 1;
+    model.position.sub(centre);
+    model.scale.setScalar(1 / longest);
+    pivot.add(model);
+
+    let triangles = 0, drawCalls = 0;
+    model.traverse(child => {
+      if (!child.isMesh) return;
+      drawCalls += 1;
+      const geometry = child.geometry;
+      triangles += (geometry.index ? geometry.index.count : geometry.attributes.position.count) / 3;
+    });
+    label.textContent = `${key} · ${Math.round(triangles).toLocaleString()} tris · ${drawCalls} meshes · ${Math.round(performance.now() - started)} ms`;
+    window.__panesReady += 1;
+  }, undefined, error => { label.textContent = key + ' — FAILED'; console.warn(url, error); });
+
+  const resize = () => {
+    const w = pane.clientWidth || 400;
+    const h = pane.clientHeight || 400;
+    // `updateStyle` must stay on: with it off the canvas keeps its default
+    // 300x150 CSS box and the model renders into a corner of the pane.
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    // Framed from the model's own normalised size (longest side 1), so the
+    // distance does not have to be re-tuned per model.
+    camera.position.set(1.15, 0.7, 1.45);
+    camera.lookAt(0, 0, 0);
+    camera.updateProjectionMatrix();
+  };
+  // A ResizeObserver, not a one-shot call: `resize()` runs when its pane is
+  // created, and the first pane is briefly the only child of a full-width row,
+  // so it sized its canvas to the whole window. `renderer.setSize` writes that
+  // width as an inline style, which outranks the stylesheet, so the first pane
+  // stayed full-width and shoved every later pane off the screen.
+  new ResizeObserver(resize).observe(pane);
+  addEventListener('resize', resize);
+
+  let angle = 0;
+  const tick = () => {
+    angle += spin * 0.004;
+    pivot.rotation.y = angle;
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  };
+  tick();
+  // Let a screenshot pin an exact angle rather than catching the spin anywhere.
+  angleSetters.push(value => { angle = value; pivot.rotation.y = value; renderer.render(scene, camera); });
+}
+</script>
+</body>
+</html>

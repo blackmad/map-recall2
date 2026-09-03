@@ -1,0 +1,86 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google Photorealistic Tiles — bike-height spike</title>
+<style>
+  html,body{margin:0;height:100%;background:#111;color:#eee;font:13px/1.4 system-ui,sans-serif}
+  #view{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+  #panel{position:fixed;top:12px;left:12px;z-index:2;background:rgba(18,18,20,.88);
+    padding:12px 14px;border-radius:10px;max-width:330px;backdrop-filter:blur(6px)}
+  h1{font-size:13px;margin:0 0 8px;font-weight:600}
+  button{background:#2a2a30;color:#eee;border:1px solid #3a3a44;border-radius:6px;
+    padding:5px 9px;margin:2px 2px 2px 0;cursor:pointer;font-size:12px}
+  button:hover{background:#35353d}
+  button.primary{background:#2f6fdb;border-color:#3f7fe8}
+  input{width:100%;padding:6px 8px;border-radius:6px;border:1px solid #3a3a44;
+    background:#1c1c22;color:#eee;font-size:12px;box-sizing:border-box}
+  .row{margin:8px 0 0}
+  .hint{color:#9a9aa6;font-size:11px;margin-top:8px}
+  #status{font-family:ui-monospace,monospace;font-size:11px;color:#8fd88f;margin-top:8px;white-space:pre-line}
+  #err{color:#ff8888}
+</style>
+
+<canvas id="view"></canvas>
+<div id="panel">
+  <h1>Google Photorealistic 3D Tiles — spike</h1>
+  <div id="setup">
+    <div class="row">Google Cloud API key (Map Tiles API enabled):</div>
+    <div class="row"><input id="key" type="password" placeholder="AIza…" autocomplete="off"></div>
+    <div class="row"><button class="primary" id="go">Start</button>
+      <span class="hint">Stored in localStorage only, never committed.</span></div>
+  </div>
+  <div id="controls" hidden>
+    <div class="row">
+      <button data-h="1.7" class="primary">Bike height (1.7 m)</button>
+      <button data-h="150">Aerial (150 m)</button>
+    </div>
+    <div class="row" id="places"></div>
+    <div class="hint">Drag to look · W/A/S/D move · Q/E down/up · Shift to sprint</div>
+    <div id="status"></div>
+    <div id="err"></div>
+  </div>
+</div>
+
+<script type="module">
+  import { start, PLACES } from './js/google-tiles-spike.bundle.js';
+
+  const $ = (s) => document.querySelector(s);
+  const KEY_STORE = 'canalRecall.googleTilesKey';
+  // ?key=… lets the harness deep-link straight into a view. The key is a
+  // browser key restricted to localhost + tile.googleapis.com, so it is public
+  // by design; the referrer restriction is what actually protects it.
+  const urlKey = new URLSearchParams(location.search).get('key');
+  $('#key').value = urlKey || localStorage.getItem(KEY_STORE) || '';
+
+  const boot = () => {
+    const apiToken = $('#key').value.trim();
+    if (!apiToken) return;
+    localStorage.setItem(KEY_STORE, apiToken);
+    $('#setup').hidden = true;
+    $('#controls').hidden = false;
+
+    const app = start({
+      canvas: $('#view'),
+      apiToken,
+      onStatus: (s) => {
+        if (s.error) { $('#err').textContent = s.error; return; }
+        const v = s.view;
+        $('#status').textContent =
+          `alt ${v.height.toFixed(1)} m · ${v.lat.toFixed(5)}, ${v.lon.toFixed(5)}\n` +
+          `heading ${Math.round((v.az % 360 + 360) % 360)}° · tiles ↓${s.downloading} ⚙${s.parsing}`;
+      },
+    });
+
+    for (const [key, place] of Object.entries(PLACES)) {
+      const b = document.createElement('button');
+      b.textContent = place.label;
+      b.addEventListener('click', () => app.goTo(key));
+      $('#places').appendChild(b);
+    }
+    document.querySelectorAll('[data-h]').forEach((b) =>
+      b.addEventListener('click', () => app.setHeight(Number(b.dataset.h))));
+    window.spikeApp = app;
+  };
+  $('#go').addEventListener('click', boot);
+  if (urlKey) boot();
+</script>

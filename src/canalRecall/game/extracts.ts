@@ -68,9 +68,13 @@ export interface BridgeCrossingIndex {
 }
 
 export interface StreetKnowledgeEntry {
+  id?: string;
   name: string;
   type?: string;
+  /** From `streets.json` / `water.json` so we can resolve the English article. */
+  wikidata?: string;
   wikipedia?: string;
   wikipediaUrl?: string;
   wikipediaExtract?: string;
+  wikipediaExtractLang?: string;
 }

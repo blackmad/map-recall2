@@ -3,8 +3,662 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## Street encyclopedia is no longer just Nes
+
+`street-knowledge.json` had one street. `streets.json` already carried
+Wikipedia URLs for 30 of 300 streets, but `enrich-amsterdam-wikimedia.ts`
+threw away Dutch intros, so 21 of those were a link with no card text.
+The Wikipedia extract pass now includes streets, water, squares and parks;
+Dutch ledes are kept and tagged, then translated. Amsterdam ships 48 street
+and 98 water encyclopedia records with English blurbs. Cards still only open
+after a quiz answer — showing them when you turn onto a new street is item 7.
+
+## Basemap duplicates near the extract are hidden by proximity too
+
+The id filter that stops `building-3d` redrawing coloured-extract buildings cut
+co-located pairs in the centre from 145 to 47, then stopped: the remaining 47
+are the same footprints under different OSM ids in the two pipelines, which is
+what still striped roofs around the Shipping House and along the Singel. The
+runtime now builds a centroid grid of the extract and, as OpenFreeMap tiles
+load, hides any basemap building whose ring centroid sits within 3 m of an
+extract building — the same tolerance the earlier audit used. Ring-by-ring
+matters because a tile feature can batch many footprints; a single feature
+centroid would miss the overlap. Signature landmark GLBs stay demo-only after
+a playtest found thirteen meshopt models too slow and Centraal still carrying
+its SketchUp ground plane.
+
+## Desktop fills the window instead of letterboxing 16:9
+
+The phone portrait work correctly filled touch screens, but left desktop on the
+historic fixed 1280×720 letterbox. A tall browser window therefore still showed
+a landscape strip floating in paper white — the same failure mode phones used
+to have, just without the compact HUD. `viewport.ts` now expands the desktop
+logical space to the window aspect (keeping 1280×720 density on the constrained
+axis, so a true 16:9 window is unchanged), and both the canvas and MapLibre
+layer pin to the viewport on every layout mode. Named regression: a 900×1200
+desktop window fills 900×1200 CSS with a 1280×1707 logical space.
+
+The follow-up: filling the window then pinned every HUD card to the far edges
+of an ultrawide, and compact mode had been clamping logical width to 900 while
+CSS-stretching the canvas to `100%`, so cards also blew sideways. `hudBand`
+now caps chrome at the design width (1280 desktop / 900 compact) and centres
+that band; the map stays full-bleed, the cards stay dense beside the corridor.
+
+## Thirteen landmarks are real buildings now
+
+The city was OSM footprints extruded to an OSM height: honest about where every
+building is, silent about what any of them looks like. Nothing on the Dam said
+"Amsterdam". Thirteen buildings are now drawn from real models — nine of the
+City of Amsterdam's own survey models and four community ones, all from
+3D Warehouse.
+
+**The municipal models are artefacts of Google Earth.** All eleven were uploaded
+on 2007-05-08, the same day, by the city's Geo- en Vastgoedinformatie
+department, for Google's Earth 3D-buildings programme back when Google owned
+SketchUp. That origin is why each is built on a Google Earth snapshot the export
+still carries, and why there are only eleven: it is what one department
+hand-modelled in 2007. Google sold SketchUp to Trimble in 2012, which is why
+they now sit under Trimble's General Model License.
+
+**A surveyed model is placed, not fitted.** These arrive life-size, with their
+origin at a published coordinate, and north-up by SketchUp convention. Fitting
+one to a footprint discards better information than the fit can recover and
+actively makes it worse: the Palace's bounding box is 85.1 × 73.1 m against a
+80.98 × 65.49 m OSM ring, because the survey includes entrance steps and roof
+overhang the wall line excludes, so fitting would shrink the building 6% to
+squeeze its overhangs inside its walls. Scale is exactly 1. The city's
+coordinate and a rectangle fitted independently to the OSM ring agree to within
+15 m.
+
+The first Palace was an AI reconstruction and is what taught this. It was 24.5 m
+deep against a 65.5 m footprint — faithful in its street frontage, guessed in
+its bulk, because photo-derived models see a facade honestly and invent the
+depth. From behind you could see straight into its hollow back.
+
+**Height is measured, not looked up.** Dutch Wikipedia and Wikidata both give
+the Palace 90 m; the survey names its parts, and `PD-natsteen`, the main stone
+mass, tops out at 51.9 m while `PD-haantje` — the rooster on the vane — reaches
+60.9 m. The 90 m is almost certainly the 80 m facade width mis-entered and
+copied between them. A height outside its stated tolerance is now a hard build
+failure, because an over-eager cleanup rule once deleted the Palace's roof and
+shortened it to 56.6 m, and a warning in a nine-model loop scrolls straight past.
+
+**Four export defects, none of them what they looked like.** SketchUp writes
+construction edges as LINE primitives — on Centraal an `Edge` node spanning
+3.3 km, which drew as hairlines and made the model measure 136 m wide. Faces
+arrive inward-wound and render black; every material is now double-sided. Every
+material also arrives at `metallicFactor 1.0`, glTF's default when an exporter
+omits the field rather than anyone's choice, and a fully metallic surface with
+no environment map reflects nothing and renders black — that, not the winding,
+was the actual black cut-out. And each model is traced over a Google Earth
+snapshot that ships inside it: a photo plane 700 m across on Centraal, a terrain
+patch 239 × 201 m under the Rijksmuseum. Flatness is the wrong test for those
+and density is the right one — ground covers a couple of hundred metres with
+eight triangles where the Rijksmuseum's own roof spends 1,702.
+
+**Suppression: I was wrong about what was possible.** I concluded the basemap's
+extrusions could not be filtered — the tiles batch buildings, one feature on the
+Dam carries 498 rings, and no OSM id appears in the properties. The id is in the
+vector-tile *feature id*, as `osmId * 10 + type`, which is what
+`basemapBuildingFilter` already matches on. The layer now uses it, and keeps a
+polygon offset for the remainder no id can pair up.
+
+**Anything under 250 triangles is rejected.** Community uploads vary: the
+"Bimhuis" cleans up to 12 triangles and the Film Academy to 60, which on the map
+is a bare grey slab across the street — worse than the extrusion it replaces,
+because at least the extrusion is building-shaped.
+
+Models are matched to landmarks by distance from their published coordinate, not
+by name. The vocabularies disagree in both directions — the extract says "Royal
+Palace" where the city says "Palace on the Dam", and "Stadhuis" is a different
+building from the palace that used to be the city hall — and searching "Anne
+Frank House" returns the Westerkerk, which is next door and a different
+building. Searching in Dutch roughly doubles the hit rate, because nobody
+uploads a model under a translated name.
+
+The licence is unresolved and is recorded in `NOTICE.md` and TODO item 22.
+
+
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
+
+- **The façade pilot was aimed at the road, and the API's own conventions say
+  why.** With a gate keeping only real buildings, `w274039950` — 134 m² and
+  17.7 m, the one genuine building in the pilot — still came back as a parked
+  car and one storey of windows, and `roofline` abstained because the roof was
+  out of frame. The fixed request was `fov=70, horizon=0.34`, and two measured
+  facts break it. `horizon` is the horizon line's height as a fraction from the
+  *bottom* of the frame, so it aims **down** as it grows and `0.34` spent a
+  third of the crop on tarmac; at `horizon=0` the API returns pure sky. And the
+  distance that decides framing is the distance to the nearest façade, not to
+  the footprint centroid — a 670 m² block's centroid is 22 m from the camera
+  while its wall is 6 m away, so a centroid-derived field of view is far too
+  narrow. `planFacadeCrop` now derives `fov` and `horizon` from the target's
+  measured height and `metresToNearestFootprintPoint`, keeps the ground edge
+  fixed and spends the rest of the lens going up, and gives short buildings a
+  tighter crop so their pixels land on the façade instead of on the street.
+  Framing that physically cannot fit — an 18 m façade seen from 6 m — is
+  reported as `fullFacadeVisible: false` rather than silently truncated, because
+  a truncated crop is exactly what made `roofline` abstain without saying so.
+  `aspect` stays fixed at 1.6 and is the next thing to measure: it is why a tall
+  near façade still clamps at `fov=100`.
+
+- **Five of the six façade pilot targets were not buildings.** Measuring
+  cross-model agreement raised the question the agreement numbers could not
+  answer — were the two models looking at the same building? For five of six
+  targets there was no target building to look at. `w1475011497` covers **one
+  square metre**; `w282294826`, the anchor the procedural block demo was built
+  around, is a 7 m² box 2.5 m tall; `w1388560103` is 112 m² but only 3.7 m
+  high. One target, `w274039950` at 134 m² and 17.7 m, is a building. This is
+  not a sampling accident: `buildings-colored.geojson` is filtered by appearance
+  rather than building-ness, and across its 10,578 features the **median
+  footprint is 18 m²**, the 10th percentile is 6 m², and 62.6% are under 40 m²
+  or under 4 m tall — sheds, kiosks, canopies and dormers are its typical
+  member, which is the measurement behind `LOD.md`'s warning never to treat that
+  file as the mapped building set. It also explains the labels: both models
+  reported `targetVisible` true at 0.8–0.9 confidence on all six and were not
+  wrong, because a panorama aimed at a 1 m² object does show a façade — the one
+  behind it. Two models have no reason to choose the same neighbour, which is
+  precisely the disagreement the agreement table found. A `targetVisible` field
+  cannot catch this, since the failure is that the target has no façade rather
+  than that the camera missed it. So `judgeFacadeTarget` now decides before a
+  panorama is ever requested — 40 m², 4 m tall, one 5 m edge, structured
+  reasons, and a missing height rejects rather than passing silently — keeping
+  3,694 of 10,578 targets (34.9%), and `test:facade-target` pins all six as
+  named regressions. **This corrects the entry below**: `bayCount` was called
+  unreliable because the models read different façade rhythms, but they were
+  substantially reading different buildings. What survives is that a street-level
+  crop cannot see a roofline and that gating on what a photograph supplies beats
+  gating on counts; what does not survive is any estimate of how well two models
+  agree about one façade. That has still not been measured.
+
+- **The façade grammar gate was failing on the two fields a photograph cannot
+  supply.** A two-model pilot (`gemini-3.1-pro-preview`, `claude-sonnet-4.6`) put
+  the full enum grammar to 6 cached Amsterdam panorama crops for $0.117 and
+  reported 0 of 6 buildings auto-eligible. That number said nothing about *what*
+  the models disagreed on, so `measure:facade-grammar-agreement` re-derives
+  consensus from the cached labels — free, and re-normalized first, because the
+  stored labels predate the fix mapping a provider's `"unknown"` count onto
+  `null`. Measured per field, the appearance half of the grammar holds: material,
+  colour, window pattern and ground-floor treatment each agree on 5 of 6
+  buildings, ornament and window-frame colour on 6 of 6. The count half does not.
+  `bayCount` has **one** informative agreement in six and *zero* of its four
+  disagreements fall within ±1 — the models read different façade rhythms, they
+  do not miscount the same one. `roofline` is the trap: its 4/6 agreement is
+  three cases of both models answering `not-visible`, because a crop taken 22 m
+  away down a canal cannot see a roof. Counting mutual abstention as agreement
+  made the blindest field look like one of the strongest, so the measurement now
+  reports informative agreement separately from bare agreement. The original gate
+  required exactly `bayCount` and `roofline` and so could never pass; gating
+  instead on material, colour, window pattern and ground floor passes 4 of 6, and
+  adding storeys within ±1 keeps 4 of 6. The lesson kept: ask a street-level
+  photograph for appearance, and take counts and roofline from 3DBAG height and
+  the nadir roof lane that already exists. n=6 is a pilot and agreement is not
+  accuracy, so nothing was promoted past `machine-proposal`.
+
+- **The basemap stopped drawing the buildings we draw ourselves.** Facades in
+  the centre broke into vertical stripes and dithered patches, and pale grey
+  slabs floated inside coloured buildings. Two layers were extruding the same
+  OSM buildings from different pipelines: Liberty's `building-3d` off
+  OpenFreeMap's vector tiles, and `osm-colored-buildings` off
+  `buildings-colored.geojson`. An earlier pass had tried to separate them with
+  height offsets, which cannot work — a height offset separates *horizontal*
+  faces, and a wall is coplanar with itself whatever the box above it does. The
+  two pipelines also disagree on height (7 m against 14 m, 10 m against 19 m on
+  the Singel), which is what pushed the grey box out through the coloured one.
+
+  So the basemap now keeps only the buildings the extract does not carry.
+  Planetiler drops the OSM id from the building layer's properties and folds it
+  into the vector-tile feature id as `osmId * 10 + type`, so
+  `basemapBuildingFilter` re-encodes every extract id and filters `building-3d`
+  on it. Only types 2 (way) and 3 (relation) are matched: type 0 shares the way
+  numbering, and 90 of its ids decode to a real extract way sitting a median
+  27 m and up to 1.3 km away, so matching it would have erased ~90 buildings
+  that were never duplicated. The filter is a `match`, not an `in`, because `in`
+  rescans ten thousand ids for every building in every tile; it evaluates 1,189
+  real tile features in 0.8 ms.
+
+  Measured over central Amsterdam it drops 136 of 1,189 basemap buildings and
+  cuts the pairs standing within 3 m of an extract building from 145 to 47. The
+  47 that remain are buildings the two pipelines hold under different OSM ids,
+  which no id filter can pair up; TODO item 10 step 2 deletes this whole
+  three-extrusion stack and is the real fix. Nothing is lost outside the
+  extract: OpenFreeMap's z14 building layer is sparse — 113 features in the tile
+  over the centre against 10,578 in the extract — so this only removes the
+  double-drawn minority.
+
+  Two smaller things went with it. The roof cap used to start 0.30 m *below* the
+  wall top so its underside would be buried, but MapLibre draws no underside on
+  an extrusion, and the overlap put the cap's side faces in the same plane as
+  the walls' — a speckled dashed line along every roof edge. The cap now starts
+  exactly where the walls stop. And `check-canal-buildings.ts` still asserted the
+  old translucent `buildingOpacity('clean') === 0.9`, so it had been failing
+  since opacity went to 1; it is not in `check:canal`, which is why nobody
+  noticed.
+
+- **The photoreal option was shipped inert, and now actually draws.** The
+  switch below reached the map correctly and then did nothing visible, because
+  four defects sat in a row behind it and every existing test passed anyway.
+
+  First, `_updateGoogleTiles` opened by asking for `map.getFreeCameraOptions()`.
+  That is Mapbox GL JS 2.x, added after MapLibre forked from 1.13, so MapLibre
+  has never had it: the guard was false on every frame and the function returned
+  before the gate was consulted. MapLibre keeps the camera height on the
+  transform, so `_cameraAltitudeMeters()` reads `transform.getCameraAltitude()`
+  instead.
+
+  Second, the custom layer's `render` returned early unless `owner.ready`, and
+  the only thing that can set `ready` is the `load-tileset` event, which only
+  fires once `tiles.update()` has fetched the root tileset — and `tiles.update()`
+  was called after that early return. Nothing was ever requested. Traversal now
+  runs whether or not the layer is ready; only the draw waits.
+
+  Third, the local frame was derived from the loaded tileset's bounding sphere.
+  That works for a regional tileset whose root carries a local transform, and
+  Google's does not: it is one global tileset in ECEF, so the root sphere is
+  centred on the middle of the Earth and the derived latitude was in the
+  thousands. MapLibre threw `Invalid LngLat`. The frame is anchored on the map's
+  own centre now and rebuilt when the camera wanders more than 500 m from it,
+  because a tangent plane and mercator metres only agree near their anchor.
+
+  Fourth, and only visible once the other three were fixed: the east/north/up
+  frame needs no rotation before MapLibre's mercator scale. The negative y in
+  `scale(s, -s, s)` *is* the north-to-south flip, and adding a further -90°
+  about x on top of it swapped north with up, standing the city on edge. That
+  one is easy to miss by eye, because the error is zero at the anchor and grows
+  with distance from it — the first screenshots looked perfectly aligned.
+
+  A fifth, smaller thing: `addLayer` throws while the style is settling, and
+  `isStyleLoaded()` is no defence because it reports every source and so drops
+  back to false whenever basemap tiles are in flight. The add is attempted and
+  retried on the next map event instead.
+
+  The tests are the real lesson. All four original tests passed against a
+  completely dead feature: they checked the pure gate, checked that the setting
+  reached the map, and checked a negative — that no tile is requested at cycling
+  height — which an inert feature satisfies perfectly. The new ones assert
+  positives that only a working layer can satisfy: that the altitude fed to the
+  gate is a finite number, that enabling it at overview height actually attempts
+  a `tile.googleapis.com` request (routed to `abort`, so it costs nothing), and
+  that a known Amsterdam coordinate pushed through the placement matrices lands
+  within a metre of where `MercatorCoordinate.fromLngLat` puts it. Each was
+  confirmed to fail with its fix reverted. The placement math is exported as
+  `localFrameAt`/`ellipsoidPosition` for exactly that reason.
+
+  Known and recorded as TODO item 8c: the 25 m activation height never binds.
+  The game's camera sits 95–520 m up across every view mode and camera-zoom
+  setting, so the gate always says yes and the hand-back to 3DBAG described
+  below does not happen in practice.
+
+- **Google's mesh now has a switch, and it only reaches the overview camera.**
+  The measurement below settled where it is usable; this is the option built on
+  top of it. "Google photoreal (overview)" appears in both settings panels and
+  is off by default. Altitude, not the preference alone, decides: the mesh
+  appears at 25 m and up, and 3DBAG comes back on the way down, so the corridor
+  the player actually rides keeps geometry that can be highlighted as a correct
+  answer. The rule lives in `src/canalRecall/building/photorealGate.ts` rather
+  than as a branch buried in `vector-map.js`, with a release height of 22 m
+  against an activation height of 25 m — riding a canal holds a near-constant
+  altitude, which parks the camera on a single threshold and flips the whole
+  city between two renderers every few frames. `npm run test:photoreal-gate`
+  covers the band from both directions; `tests/e2e/google-tiles-option.spec.ts`
+  covers the wiring, and asserts that switching the option on at cycling height
+  issues no request to `tile.googleapis.com` at all, because a billable request
+  from a height whose output is unusable is the specific waste worth a guard.
+
+  The browser key is committed. It is restricted at Google's end to the Map
+  Tiles API and to this game's own origins, so it grants nothing off-origin;
+  rotate it in the Cloud console rather than editing a copy somewhere. Two
+  smaller things are load-bearing: the tiles bundle is ESM where its siblings
+  are IIFE, because three's `DRACOLoader` resolves decoder paths at module top
+  level through `import.meta.url` and esbuild stubs that out of an IIFE; and the
+  layer is built on first use, so a player who never switches it on never opens
+  a tileset session. Google's terms require its attribution to be visible
+  whenever its imagery is, which `#google-tiles-attribution` carries.
+
+- **Google's photorealistic mesh was measured at cycling height, and rejected
+  for the driving corridor.** The question was whether to replace the view layer
+  with Google Earth's imagery, since `3d-tiles-renderer` already ships here for
+  3DBAG LoD2.2 and Google Photorealistic 3D Tiles is the same OGC format behind
+  a `GoogleCloudAuthPlugin` — no Cesium and no Unity required. It is roughly a
+  tileset-URL swap, so it was cheap to answer with pictures instead of argument.
+  `google-tiles-spike.html` renders Google's tiles at pinned Amsterdam canal
+  locations with a one-click 1.7 m / 150 m toggle. At Prinsengracht
+  (52.37511, 4.88347), fully converged at Google's best LOD — 412 tiles loaded,
+  nothing queued or parsing — the 192 m view is excellent and the 1.7 m view is
+  unusable: trees collapse to faceted green blobs, the canal is a flat grey
+  smear, facades are illegible, and moored boats are fused into the quay. The
+  decisive point is not the blur but what it costs: Google returns anonymous
+  triangle soup, so a correct-answer building cannot be highlighted and a fact
+  card cannot be attached to it. 3DBAG geometry carries a building id; that
+  semantics is the product, and photogrammetry trades it for pixels that only
+  hold up from altitudes the game never uses. Kept as an evaluation harness,
+  not shipped surface: it is excluded from `npm run build`, bundles its own
+  three.js rather than the shared `three.bundle.js` global, and takes its API
+  key from `localStorage` or `?key=`, never the repo.
+
+  Three things cost real time and will cost it again. **Ellipsoid height is not
+  eye height:** the Netherlands sits about 43 m above the WGS84 ellipsoid, so a
+  camera at "1.7 m" is ~41 m underground; ground truth comes from raycasting the
+  loaded mesh, taking the *deepest* hit, since the first is a roof or tree
+  canopy. **Both the render loop and the library's own download and parse queues
+  schedule through `requestAnimationFrame`**, which a background or headless tab
+  throttles to a standstill — traversal marks tiles `queued` and nothing ever
+  downloads. The exported `Scheduler.flushPending()` plus a hand-pumped `frame()`
+  is what makes screenshot regressions possible at all. **The bundle must be
+  ESM:** three's `DRACOLoader` resolves decoder paths at module top level via
+  `new URL(..., import.meta.url)`, which esbuild stubs out of an IIFE, throwing
+  "Invalid URL" before any of our code runs. Also note Google's browser-key
+  referrer patterns need a path component — `http://localhost:*` never matches,
+  `http://localhost:3000/*` does.
+
+- **Roof colour is now measured twice on exact LoD2.2 planes.**  PDOK's live
+  3D Basisvoorziening OGC API exposed the missing source: pinned 2025 CC BY 4.0
+  RGB DSM tiles as direct LAZ downloads. Five buildings required five 20 cm
+  tiles and contained 12 roof planes. Eleven planes had enough points; nine
+  agreed with independent `2025_orthoHR` measurements within RGB distance 20,
+  two disagreed and one was sparse. The median comparable distance was 2.83.
+  A modal height-offset join handles the 0.35 m median difference between the
+  independent surfaces while retaining a narrow 12 cm sample band. Every file
+  is hashed, every output remains a proposal, and the review sheet starts
+  unreviewed.
+
+- **The phone pass reached past the driving screen.** Portrait, the d-pad and
+  the paper system had covered the map and the HUD; the overlays over them had
+  never been opened at a phone's size, because the `iphone` Playwright project
+  could not reach them until the horizontal-overflow bug below was fixed.
+  Opening them found real faults, not polish.
+
+  The recall question docked to the bottom of a portrait screen at 72dvh, which
+  put its top edge above the vehicle — so the game asked which canal you were
+  on while the card covered the canal you were on. It is capped at 46dvh and
+  scrolls. The d-pad was still being drawn underneath every overlay: the
+  vehicle is stopped behind a question, so those were dead controls under an
+  opaque card, and the pad is now suppressed whenever a question, panel or
+  article owns the screen.
+
+  The arrival card was the last dark surface in the game — navy with a sky
+  accent at the end of a route played on paper — and its actions were ENTER,
+  ESC and C, three keys a phone does not have. It is paper now, with real
+  buttons hit-tested against `_finishButtonBounds`; the keyboard paths run the
+  same actions rather than a second copy of them. Its five stats were laid out
+  in five columns sized for a 600 px card and ran "420", "03:33" and "0.00 km"
+  into each other at 366 px; they wrap into rows of three. The card itself was
+  600 px wide, which put its left edge at x = -105 on a phone. The settings
+  panel clipped its own Done button off the bottom of an over-tall centred
+  card, and its checkboxes were 13 px targets.
+
+  Touch had no zoom at all — only the `-`/`+` keys and a trackpad wheel — so
+  two-finger pinch now works anywhere outside the pad, and a pinch no longer
+  also pans.
+
+  Storybook earned its place here: three of these were found by building the
+  states rather than by reading the code. It also exposed two bugs of the same
+  class in the existing fixtures. `CANVAS_W`, `CANVAS_H` and `PIXELS_PER_METER`
+  are top-level `let`/`const` in classic scripts, which makes them global
+  *lexical* bindings and never properties of `window`; the stories read them
+  off `contentWindow`, got `undefined`, and silently fell back to 1280×720 and
+  to a NaN distance. And every finish story had been throwing on
+  `routeDifficulty.charAt` — invisible for as long as the frame itself was
+  404ing.
+
+- **The grounded trivia catalog now covers the Randstad.** OpenRouter Qwen 3.5
+  Flash summarized cached real Wikipedia sections while local `trn` translated
+  Dutch evidence sentence-for-sentence. A separately versioned verifier plus
+  deterministic gates rejected 3,735 candidates and retained full rejection
+  reasons and evidence for audit. The owner approved the 4,263 survivors: 2,239
+  Amsterdam facts, 760 Rotterdam facts, 663 Den Haag facts and 601 Utrecht
+  facts across 1,456 features. Each shipped statement retains its exact source,
+  translation where applicable, licence, retrieval date, writer and verifier.
+  The entire four-city OpenRouter generation cost $0.3102.
+
+  `/canal-drive/trivia-review.html` exposes staged, rejected and published
+  catalogs separately, with city tabs, search, filters, evidence drill-down and
+  manual checkpoint refresh. Rejected text never enters the shipped catalogs.
+
+- **Canal Recall became playable on a phone, and the product became one design
+  system.** The canvas was a fixed 1280×720 logical surface letterboxed into
+  whatever window it was given, so a 390×844 phone got a 390×219 canvas floating
+  in the middle of the screen while the MapLibre layer underneath kept its own
+  size: the HUD and the map showed different parts of Amsterdam, and most of the
+  HUD — placed by constants like `roundRect(ctx, 15, 15, 310, …)` — was off
+  screen. `viewport.ts` now decides the logical space (desktop keeps the proven
+  16:9 letterbox; a touch viewport *becomes* the CSS viewport, so the canvas
+  fills the screen and 13 px type renders at 13 px), and `hudLayout.ts` places
+  every card for desktop, compact portrait and compact landscape.
+
+  This also explains and closes the old item 14b, "Playwright's phone projects
+  cannot reach fixed overlays". The 613×1044 layout viewport inside a 390×664
+  device viewport was not the launch config: it was the page. `#route-card` was
+  `min(94vw, 680px)` inside a 22 px-padded flex container — wider than its
+  container on any screen under ~733 px — and `#vector-map` was centred with
+  `left = (innerWidth - width) / 2`, so a stale width left it hanging off the
+  right edge. The page overflowed, Chrome shrank to fit, `innerWidth` grew, and
+  the next resize overflowed further. Worse, the inflated width read as a
+  desktop and latched the 16:9 layout onto the phone for the rest of the
+  session. The canvas and map are now pinned to the viewport and cannot widen
+  the document; measured after the fix, `innerWidth` is a true 390 with zero
+  overflowing elements. Portrait plus touch also reads as a phone whatever width
+  the layout viewport claims, and `orientationchange`/`visualViewport` are
+  listened to, not just `resize`.
+
+  Driving on touch was an invisible gesture — the left half of the screen
+  steered *and* forced the throttle, the right half was gas above and brake
+  below, a double-tap was the handbrake — and it shared its pixels with the
+  camera-pan drag, so panning the map also drove the boat. It is one drawn
+  d-pad with auto-throttle now: the vehicle rolls forward unless you brake, so a
+  learner spends their attention on the city rather than on holding a pedal. The
+  pad is a 3×3 grid, so the corners give diagonals and a thumb that lands
+  slightly off still reads as the direction the player meant. The pad owns its
+  rectangle and nothing else; touches outside it pan the camera. Tapping the map
+  no longer presses Enter on every touch while driving.
+
+  On the design: there were three visual languages plus a fourth set of cream
+  hexes hand-coded in `hud.js` — a warm paper map sheet for the briefing, dark
+  navy with a sky accent for the in-game chrome, and dark-and-gold for the
+  trivia card. Moving between the briefing and the game felt like moving between
+  two products. All of it is now the root map-quest app's own paper tokens, held
+  in `hudTheme.ts` and mirrored as CSS custom properties so the two surfaces
+  cannot drift, and the same tokens are what a future map-quest/Canal Recall
+  merge would start from. The trivia card is measured at the width it will be
+  drawn at, so a phone card rewraps instead of clipping.
+
+  Verified by 576 portrait/landscape layout scenarios across six device
+  profiles asserting every HUD rectangle is on screen and disjoint, by the
+  existing 288-scenario desktop suite passing unchanged (the proof the desktop
+  layout did not move), and by six new Storybook phone states. `storybook dev`
+  served `/canal-drive/` as a 404, so every game-frame story rendered the dev
+  server's "Not Found" page; the stories name `index.html` explicitly now.
+- **Reviewed trivia and civic POIs reached the original Map Recall game.** Its
+  Amsterdam extract loader now joins the shared reviewed `facts.json` only by
+  exact feature id. Answer cards prefer a provenance-bearing quotation and
+  rotate deterministically by game seed and round; a missing catalog or an
+  unmatched feature keeps the existing Wikipedia card. The join is typed and
+  tested independently of React. The same audit found that cinema, library,
+  university and music-venue features were extracted but absent from both the
+  All and Landmarks category type lists, so the UI filtered them out; both
+  lists and the regression check now include every civic POI type.
+
+- **Local facts now have an editorial boundary and a memory.** The old Ollama
+  script read the same lede already shown on the card, asked for exactly three
+  facts, and wrote its first answer directly into the public extract. Its
+  replacement caches whole Wikipedia articles, mines useful sections, records
+  statement-level source/licence/model provenance, and rejects ungrounded
+  numbers, stale wording, lede restatements and duplicates before anything can
+  be reviewed. Output is staged; a version-matched human label is required for
+  `facts:publish`, and the committed review starts empty so silence can never
+  mean approval.
+- **Measured façade colour now has a fail-closed point-cloud path.**  The
+  3DBAG API produced 255 semantic exterior LoD2.2 walls for 28 of the 30 BAG
+  panorama targets; all returned models passed its quality flag, while two
+  persistent HTTP 502s remain explicit rejections. A typed sampler joins RGB
+  points to exact wall polygons, balances colour by spatial cell, rejects
+  sparse, shadowed and mixed samples, hashes its LAZ input and never accepts its
+  own output. Amsterdam's advertised street-level 2024/2025 LAZ catalog was
+  empty during the run. PDOK's newly located RGB DSM is useful for roofs but,
+  as a top-surface product, does not replace oblique façade evidence.
+
+- **Façade grammar now starts from reviewed evidence, not one lucky camera.**
+  A live pilot fetched three spatially distinct 2025 municipal panorama crops
+  for each of 30 BAG buildings: 90/90 requests succeeded. The first five made
+  the selection problem visible — one centroid-aimed crop looked down a canal
+  and another was foliage — so the manifest now pins its camera-distance and
+  mission policy, stores alternatives and rejection reasons, and a grouped
+  review sheet selects one exact panorama or records that none is usable.
+
+  The runtime loads the resulting `facts.json` as optional enrichment. It shows
+  every reviewed sentence once before repeating the oldest, varies naming,
+  history, design and curiosity across cards, and remembers the rotation in
+  local storage. Missing files—including a development server returning its
+  HTML fallback with status 200—leave the Wikipedia lede intact instead of
+  blanking all landmarks. The decision modules and their staging/publication
+  gate are covered by `test:facts`.
+
+  The first real run changed the safety boundary again. Merely checking that
+  every generated number occurred in the source admitted false relationships:
+  2009 to 2012 became “six years”, 1988 became “80 years prior to 2013”, and an
+  event borrowed the date from the next sentence. Ollama now performs
+  **extractive summarisation** over cached English Wikipedia: it selects and
+  classifies, while the displayed sentence must occur verbatim in the selected
+  passage. Dutch-to-English generation cannot publish yet. Complete-sentence,
+  explicit-subject and exact-provenance gates reduced a 30-feature pilot from
+  141 rewrites to 27 eligible quotations; review struck 6, left 2 features
+  unreviewed, and published 19 statements for 9 features. This lower yield is
+  the intended cost of making a fact catalog safe to learn from.
+
+- **The Randstad pipeline claimed four cities and built two.** `refresh-randstad.sh`
+  had been wired for Amsterdam, Rotterdam, Den Haag and Utrecht since 4758e46,
+  but Rotterdam and Den Haag had never been built, and both failed at the same
+  line — `municipality polygon was not found` — for two different reasons.
+
+  **Den Haag was a name.** The pipeline asked osmium for `r/name='s-Gravenhage'`.
+  OSM now carries that relation as `name=Den Haag` with `'s-Gravenhage` demoted
+  to `official_name`, so the filter matched nothing and the boundary file came
+  back empty. The builder already tolerated several name fields; the osmium step
+  in front of it did not, and it is the one that decides what reaches the
+  builder at all.
+
+  **Rotterdam was a bbox.** Measured against Overpass: the municipality spans
+  lon 3.94–4.60 because it reaches Hoek van Holland, while BBBike's Rotterdam
+  extract starts at lon 4.18. The boundary relation therefore arrived with its
+  western ways missing, and an unclosable relation assembles into no polygon at
+  all. Amsterdam and Utrecht are both comfortably inside their BBBike boxes,
+  which is the only reason this had never been seen.
+
+  The fix is ordering: the fourth argument now takes any PBF URL, Rotterdam and
+  Den Haag are cut from a cached Zuid-Holland province file, and the cut is
+  derived from the municipality *after* its boundary has been read
+  (`select-municipality-bbox.ts`) rather than guessed before. Which relation is
+  "the city" moved into `lib/municipality.ts` so the shell step and the builder
+  cannot disagree — clipping features to one boundary and naming them after
+  another would be silent.
+
+  Both cities now build: Rotterdam 31,810 routing ways / 227 waters / 22,559
+  appearance-backed buildings, Den Haag 17,920 / 90 / 27,576. The runtime still
+  cannot reach any of them — `osm-loader.js` hardcodes Amsterdam — so this is
+  data, not a playable city. `test:municipality` pins both failures.
+
+- **The refused ledes are rescued by protecting the name, not weakening the
+  guard.** The English pass refuses a translation that drops the feature's own
+  name, because a card calling the Aluminiumbrug the "Aluminum Bridge" teaches
+  the wrong name. That fired on every name built from a Dutch common noun —
+  brug, kerk, kapel, synagoge — and left 130 Amsterdam features showing a
+  Wikidata one-liner ("Bridge in Amsterdam, Netherlands.") instead of a lede
+  naming the canal it spans and the year it was built.
+
+  Neither CLI translator takes a prompt, so the name is protected *around* the
+  translator: `protectNames` substitutes an invented capitalised placeholder
+  for the feature's own name, the translator works on that, and the name is put
+  back before the guard runs. Amsterdam went from 130 descriptions to 126 real
+  ledes — 440 translated / 8 descriptions / 0 non-English. The Aluminiumbrug
+  now says it spans the Kloveniersburgwal and that Pieter Bast drew a bridge
+  there on his 1599 city plan.
+
+  Three measured choices. The placeholder has to be *name-shaped*: a
+  noun-shaped one ("Qplaats") pulled "ophaalbrug" from "lift bridge" to
+  "pick-up bridge" in the same sentence, while name-shaped tokens came back
+  byte-identical in every position tried — subject, possessive, after a
+  preposition. Protection is **case-sensitive**, because a Dutch lede writes
+  "De Oude Lutherse Kerk … de kerk werd gebouwd", and protecting that second,
+  lowercase "kerk" would restore "Kerk was built" into the English; restoring
+  the capitalised occurrence alone satisfies the guard for every token of the
+  name. And the guard still runs afterwards on the restored text, which is how
+  8 refusals survived protection and kept their description — including
+  "Brug 361", whose Dutch lede is actually about brug 244.
+
+- **The OSM loader is an adapter: its arithmetic is typed and tested.**
+  Projection about a chosen centre, Douglas-Peucker, recentring the network on
+  the world origin, snapping a lat/lng onto the nearest carriageway,
+  start/finish selection, haversine and the slippy-tile grid all moved to
+  `src/canalRecall/osm/roadProjection.ts`. `osm-loader.js` went from 404 lines
+  to 268, and what remains is Overpass mirrors, failover and `Image` loading —
+  I/O that can only be tested by going to the network.
+
+  Two things worth keeping. The world is **centred twice**: ways are projected
+  about the geographic centre, then the whole network is translated so its
+  bounding box lands on `WORLD_ORIGIN` (1300, 1000). Anything projected later —
+  a POI, a home address, a basemap tile — must be given that same offset, which
+  is why `buildRoadSegments` returns it rather than hiding it. And
+  `WORLD_ORIGIN` is not decorative: `findStartFinish` measures "near the city
+  centre" as distance from it, so moving it moves every route's start.
+
+  The one deliberate behaviour change is the simplifier: recursive with a
+  `depth > 50` cap became an explicit stack. That cap returned the unsimplified
+  remainder without saying so. Measured, it never fires — the two agree exactly
+  on all 6,542 paths in the shipped extract, longest 1,665 points, and
+  `check-road-projection.ts` re-runs that comparison against the old algorithm
+  on every run. A latent hazard removed rather than a bug fixed.
+
+  The typed tile helpers are fractional so they round-trip; a tile *index* is
+  the floor of that, which is the caller's need and stays in the adapter.
+
+  Verified with the driving harness, the reachability audit, the car
+  regressions and the full Canal Recall e2e spec.
+
+- **The game speaks English: 448 Dutch ledes down to 4.**
+  `trn` (hotchpotch/trn, Apple Intelligence via `--quality high`) is installed
+  and the pass finally ran end to end. 314 features carry a translated lede,
+  130 fall back to a Wikidata description, 4 are still Dutch.
+
+  The pass had never actually worked under Node. `trn` 0.2.0 decides whether it
+  has stdin at startup, before a pipe opened by `child_process` has anything in
+  it, so all 448 came back `exited 1` — and the code threw the reason away, so
+  the message that says exactly this was never seen. It takes the text as an
+  argument instead; `translate` keeps stdin, which it reads normally. `execFile`
+  passes an argv array and never involves a shell, so an argument is safe
+  against quoting, but not against option parsing, and `trn` has no `--`
+  separator: a lede starting with a dash gets one leading space, which stops
+  the parse and which the translator ignores.
+
+  **134 translations were refused for renaming the place**, which is the guard
+  working rather than failing: "Oude Lutherse Kerk" came back as "Old Lutheran
+  Church", and a card whose body renames the thing the player is being asked to
+  learn teaches the wrong name. Those features took the Wikidata description
+  instead — true, English, and thin. The refusals cluster on names built from
+  Dutch common nouns (kerk, kapel, synagoge, museum), which is the obvious
+  place to improve next; see TODO 7.
+
+  `check-translation.ts` used to assert the backlog was still there, because it
+  measured the guard's coverage across the untranslated pile. It now asserts the
+  opposite — that no more than 25 non-English ledes ship — so a refetch that
+  reintroduces Dutch fails loudly, and it measures the guard over the cache it
+  actually judged.
+
+- **The pre-OSM track is deleted, and the suspicion about the car is retired.**
+  `track.js` had been superseded by `road-network.js` since open-road mode
+  landed, but the file kept loading on every page view. `this.track` is only
+  ever assigned a `RoadNetwork`; the `Track` class was constructed nowhere and
+  its name referenced nowhere; it defined nothing else. 186 lines and one
+  `<script>` tag gone.
+
+  `car.js` was on the same list of suspects and is **not** dead: `PlayerCar
+  extends Car`, so it is the live base physics. Recorded because "looks
+  superseded" was wrong once here and the next reader deserves the answer
+  rather than the suspicion. The `Track` interface in `collaborators.ts` stays
+  — it is structural, and what it now describes is `RoadNetwork`.
+
+  Verified with the driving harness and the full Canal Recall e2e spec on
+  desktop and iPhone.
 
 - **The renderer draws the streamed city, and buildings keep their identity.**
   The map swaps its OSM-only appearance source for the complete BAG-keyed city

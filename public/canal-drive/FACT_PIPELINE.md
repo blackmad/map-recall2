@@ -60,6 +60,92 @@ Every displayed statement must retain statement-level provenance. Do not merge c
 
 ## Build stages
 
+### Implemented first slice
+
+The current pipeline deliberately starts from features already resolved by the
+city extract instead of attempting a second entity-resolution system:
+
+1. `npm run facts:articles` caches complete English or Dutch Wikipedia articles
+   for landmarks, bridges, squares, parks, streets and waterways. The cache is
+   local and ignored.
+2. `npm run facts:build` selects useful article sections and asks local Ollama
+   to write short English summaries. Dutch source sentences are first
+   translated one-to-one by local `trn --quality high`, with place names held
+   out of the translator and the exact Dutch/English pair cached. The writer
+   cites numbered English source sentences; code retrieves the aligned exact
+   Wikipedia sentences, and a separate
+   temperature-zero local pass must confirm that the evidence entails every
+   claim. Deterministic gates separately reject altered numbers, stale claims,
+   lede restatements, fragments, markup and near-duplicates. It writes only to the ignored
+   `public/data/extracts/<city>/staging/` directory. Dutch facts retain the
+   exact Dutch evidence, the local `trn` translation, and translator version
+   alongside writer and verifier provenance before human review.
+3. A person reviews `facts-review.md` and records feature-level approval and
+   struck sentences in `scripts/facts-review.json`. Reviews are tied to the
+   generator version and therefore fail closed after prompt or gate changes.
+4. `npm run facts:publish -- --dry-run` reports exactly what is eligible.
+   Running it without `--dry-run` is the only path that writes the shipped
+   `facts.json`.
+5. The runtime loads that optional file, rotates unseen facts before repeats,
+   varies their kinds, and persists the rotation locally. A missing, malformed,
+   or wholly unreviewed catalog leaves the existing Wikipedia lede unchanged.
+
+Regenerate the four Randstad staging catalogs after caching their articles:
+
+```sh
+for city in amsterdam rotterdam den-haag utrecht; do
+  npm run facts:articles -- --directory=public/data/extracts/$city
+  npm run facts:build -- --directory=public/data/extracts/$city --city=$city
+done
+```
+
+The writer, translator and verifier caches are content-addressed, shared across
+reruns, and ignored by Git. Publication remains a separate per-city review
+operation: Amsterdam uses `scripts/facts-review.json`; the other cities use
+`scripts/facts-review-<city>.json` by default.
+
+Every build also writes `staging/fact-rejections.json` and
+`staging/fact-rejections.md`. They retain the complete rejected proposal,
+rejection code, verifier explanation, feature identity, section, source URL,
+original evidence and local translation. Console samples are only a summary;
+the staging logs are the audit record used to improve prompts and gates.
+
+Open `/canal-drive/trivia-review.html` while the development server is running
+for the visual Trivia Lab. It keeps automatically grounded candidates,
+rejections, and human-published facts in separate views, and exposes original
+evidence, local Dutch translations, verifier explanations, provenance, search,
+and filters. During a build, the generator checkpoints the accepted and
+rejected JSON plus `staging/fact-progress.json` every ten attempted features;
+use the lab's Refresh button to load a newer checkpoint without interrupting
+reading. “Passed gates” always means awaiting human review—not published.
+
+Ollama remains the offline default. For faster bulk regeneration, the same
+prompts and fail-closed gates can use OpenRouter without changing catalog
+semantics:
+
+```sh
+FACT_ENV_FILE=/absolute/path/to/private/.env.local \
+  npm run facts:build -- --provider=openrouter \
+  --model=qwen/qwen3.5-flash-02-23 \
+  --directory=public/data/extracts/amsterdam --city=amsterdam
+```
+
+The environment file must define `OPENROUTER_API_KEY`; it is read at runtime
+and is never copied into the cache or generated facts. Facts record the exact
+provider/model used, so switching providers invalidates review and cache keys.
+
+Every published sentence retains its supporting exact source quotation,
+article URL, section, retrieval date, licence, writer and verifier model.
+`npm run test:facts` pins the editorial, review and runtime selection rules.
+The older first reviewed catalog contains 19 quotations for 9 Amsterdam
+features; regenerated summaries remain staged until they receive fresh review.
+
+Names remain native map identities. When Wikipedia explicitly explains a
+name, the writer may add its English meaning only as a gloss alongside the
+native form—`Magere Brug (“Skinny Bridge”)`—never as a replacement heading.
+
+### Longer-term catalog
+
 1. **Seed:** load the city boundary plus OSM landmarks, monuments, bridges, squares, museums, historic objects, and buildings with knowledge identifiers.
 2. **Authority ingest:** add Amsterdam monument records, Adamlink entities, and national heritage records.
 3. **Entity resolution:** merge first by Wikidata/RCE/Amsterdam identifiers, then OSM identity, then conservative name-and-distance matching. Keep ambiguous candidates separate for review.
@@ -82,7 +168,7 @@ Every displayed statement must retain statement-level provenance. Do not merge c
 - Keep the compact popup to one sentence; put images, longer context, source, and attribution in the collected postcard/detail view.
 - Suppress all fact popups independently from the master game-y toggle: facts are a learning layer, not an arcade mechanic.
 
-## Proposed scripts
+## Longer-term scripts
 
 - `scripts/facts/seed-city.ts`
 - `scripts/facts/ingest-amsterdam-heritage.ts`
@@ -92,4 +178,7 @@ Every displayed statement must retain statement-level provenance. Do not merge c
 - `scripts/facts/audit-licenses.ts`
 - `scripts/facts/validate-facts.ts`
 
-The existing `public/data/extracts/amsterdam/landmarks.json` can be the initial seed. The compiled output should eventually live beside it as `facts.json` and be generated—not hand-edited.
+The implemented first slice uses `public/data/extracts/amsterdam/landmarks.json`
+and its sibling collections as the seed. The broader multi-source catalog above
+remains future work; it should extend the same staged, reviewed publication
+boundary rather than bypass it.

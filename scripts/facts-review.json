@@ -1,0 +1,3082 @@
+{
+  "reviewedAt": "2026-09-02",
+  "generatorVersion": "facts-v10-faithful-paraphrase-verifier:openrouter:qwen/qwen3.5-flash-02-23",
+  "features": {
+    "extract_bridges_1015206480": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1024252792": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1043266057": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1053159621": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1055664974": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1079333700": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178045": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178049": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178053": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178076": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178079": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178114": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178115": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178137": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178139": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178140": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178143": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178144": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178169": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178170": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178171": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178174": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178205": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178207": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178208": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178234": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178235": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178262": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178268": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178270": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178296": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178298": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178299": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1084178300": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1093755250": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_110037589": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1106285607": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1145884688": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1148782076": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1154269316": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1156344503": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_115933198": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1166099928": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1186800407": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1190830539": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1200639700": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_121062431": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1210960245": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1213992328": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1223888218": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1237291517": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1238916134": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1239488499": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_124315547": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1246187772": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1254205821": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1267359191": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1267942340": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1272817163": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1274710889": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1284937817": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1288547347": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1292327774": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_129514634": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1299475323": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1309996157": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1313446255": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1320144129": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1327762729": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1349367256": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1362515269": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1364841231": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1380948096": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1385731213": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1406119805": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1406236604": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1406485074": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1410032228": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1417215318": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1422465009": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1430347323": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1440576108": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1450375974": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1451339968": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1463082467": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1468323789": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1472023191": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1478744210": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1480701528": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1486264671": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1492177533": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1500616039": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1503032904": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1520751001": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1520751002": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_153555960": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1550676348": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1554637558": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1595858311": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1599732055": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1614230453": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1630481797": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1635425623": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1638438953": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1646224835": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1647206976": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1650927256": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1652602457": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1658273308": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1659087354": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1661351579": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1663061366": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1668262968": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1669132850": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1669811193": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1680514436": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1683989860": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1709779633": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1721749775": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1728701910": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1730049274": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1730903629": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1738554774": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1744722373": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1754165022": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1764714982": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_17795568": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1786959094": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1790201412": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1790534633": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1790543403": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1795944317": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_18194542": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1834652181": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1845119293": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1846809505": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1863084205": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1872321526": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_187470124": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_189218205": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1917036406": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1932364019": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1935833877": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1937886994": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1963790335": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1990920068": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1991303470": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_1998712535": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_200665324": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2016757687": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2019060889": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2023530899": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2026364356": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2027323499": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2028079738": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2028994281": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2037502400": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_204119923": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2051039769": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2054269068": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2066621543": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2072033920": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2072350062": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2072665227": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2073137835": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2088553370": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2091394513": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2094627595": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2106707276": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2108546570": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2119580541": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2121267757": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2121955344": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2123295747": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2131625261": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2140356665": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_2142302760": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_215704216": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_227661055": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_230778473": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_230987522": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_251196808": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_256052628": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_260390055": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_277037192": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_287464410": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_296269444": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_299565436": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_30493055": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_310908137": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_312068153": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_322750817": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_324491871": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_326224429": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_333926576": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_335606607": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_339433175": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_343935850": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_35093928": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_353509358": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_372338811": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_402572732": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_406683963": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_412290057": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_414967826": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_416385494": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_418027076": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_422629104": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_442354341": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_467793432": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_468771811": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_493611935": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_514700581": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_519762159": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_536845379": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_537870137": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_538735546": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_540726169": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_558151605": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_558477034": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_558564154": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_579115504": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_611234654": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_61233892": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_629819820": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_637384708": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_670517828": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_678828431": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_684304988": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_689977313": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_69736012": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_697901065": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_704394296": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_714870884": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_722551465": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_723637796": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_730745053": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750212196": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750212197": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750213183": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750216755": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750216778": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750216847": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750216940": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750218830": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750218887": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750218916": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750218917": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_750218918": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_757573258": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_770632880": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_774091645": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_778000143": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_786755832": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_80164942": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_80852862": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_81384888": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_821590355": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_824003595": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_82624278": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_827369155": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_833696327": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_838746308": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_841090932": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_861741810": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_861991183": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_880836144": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_892222584": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_894525576": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_897982371": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_898091639": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_911184410": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_920616544": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_923615570": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_953303468": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_957065219": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_961510664": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_97167645": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_975426249": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_978416083": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_9790242": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_980304300": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_982377045": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_989666949": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_bridges_990270683": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1021577957": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1027016792": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1038852583": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1054259843": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1055638541": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1066419807": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1098130181": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1101340298": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1104215352": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_11127803": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1117288073": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1122909064": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1124317571": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1137362739": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1145162580": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1149389771": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1159979789": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1164156962": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1186428295": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1186431773": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1186438994": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1187067601": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1194428339": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1194604327": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1196280692": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1198118755": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1198863663": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1215417346": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1219441645": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1219850417": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1225009678": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1226660136": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1227471359": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1230133891": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1241141311": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1248010277": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1272308587": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1273422573": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1291547717": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1299755268": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1306682228": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1311905515": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1327496450": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1327725947": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1333703767": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1336248768": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1347119904": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1351046417": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1363105980": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1367642197": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1369065076": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1375159739": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1375175685": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1383482004": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1386134518": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_138657963": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1399359542": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1423556155": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1428677427": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1441755165": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1447049474": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1448080990": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1448512409": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1450151185": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1455669716": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1463154066": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1467127381": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1479429002": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1490092282": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_150139570": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1504170605": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1522513904": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1523176628": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_154293883": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_155371643": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1566771183": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1569842434": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1570040251": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1586263374": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1588171596": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1601841225": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1604899229": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1605152135": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1606629595": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1613749874": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1614063354": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1617200654": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1627616501": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1632187034": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1635482107": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1639802179": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1639856562": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1651446989": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1655376729": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1675243450": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1683945502": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1692085215": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1692446303": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_169465728": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1695083526": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1697896624": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1698086177": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1701367153": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1713342225": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1719479765": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1724865906": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1742509310": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_174768079": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_175435208": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1759004236": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1769455774": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1774408670": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1775562999": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1791250152": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1800555343": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1824871810": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1829365058": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1835126677": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1851417932": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1851884741": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1862244163": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1865435867": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1875094591": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1875254501": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1875483593": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1875699888": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1875747488": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1884008891": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1890840503": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1897367071": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1901312371": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1901613593": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1912579424": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1912967098": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1915737675": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1917401076": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1919682395": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1925449487": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1939633952": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1954788146": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1958595244": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1974741421": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1981243123": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1988238017": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1988696513": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1989090735": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1993361519": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_1997051448": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2001162595": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2001179186": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2003244540": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2017340658": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_202176253": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2028160645": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2034905768": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2037503288": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2044416411": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2047457033": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_204772388": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2066573666": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2070637412": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2083029836": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2099326007": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2115483451": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_211818595": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2127899711": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_213091641": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2134910296": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2141455457": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_2147399332": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_218084814": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_223836351": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_239964759": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_240585875": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_247891283": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_25099441": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_25101431": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_251933681": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_257271103": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_258085794": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_264245976": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_273619808": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_275245540": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_286524339": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_301593654": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_305692154": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_306477447": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_322904136": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_329419304": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_331298783": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_339731654": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_342809743": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_34585838": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_346840208": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_35124042": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_352379234": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_363043796": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_366321397": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_366386558": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_369277545": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_373035281": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_374802612": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_377151898": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_37868198": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_402613958": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_404188843": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_410506186": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_414346521": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_417591223": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_421921642": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_423720848": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_424812735": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_43239787": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_433737872": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_435355441": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_443712268": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_444968372": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_452804039": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_454055879": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_455176175": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_492320106": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_498862002": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_512243549": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_524443608": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_529083075": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_548900700": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_549496794": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_554373448": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_560548170": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_564717297": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_56521997": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_600078703": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_604950476": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_614625734": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_625273240": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_626684803": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_627803658": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_630735672": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_634569928": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_643362629": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_660242980": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_665340356": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_673680307": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_681957397": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_684653190": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_693338974": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_707691223": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_718756081": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_720777797": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_736156087": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_736359928": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_740511540": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_741048430": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_741771335": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_742782013": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_746878126": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_751632752": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_754896207": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_760984505": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_7630368": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_767085118": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_76787173": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_769225968": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_77247220": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_784457716": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_798381271": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_799279783": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_800494636": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_800803152": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_815052556": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_826462719": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_829880055": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_84905920": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_855923099": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_856768624": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_86609524": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_879972030": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_889547307": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_896870985": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_897347854": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_903098984": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_914627337": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_915035378": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_916929647": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_923643636": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_933328743": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_935859030": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_9366648": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_941219842": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_944681607": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_945535287": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_95134534": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_953524097": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_961954901": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_968719411": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_973198527": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_975578776": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_984169544": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_landmarks_993085115": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1012845851": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1111313146": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1126179756": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1178955353": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1179266626": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1217028153": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1242973092": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1243670636": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1262132998": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1266736980": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_130631667": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1346932553": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1407611451": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1418491437": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1449777290": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1606678164": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1735510536": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1762047837": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1763978706": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1769651067": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1773018190": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1823325376": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1845502426": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1857162459": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1880609890": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1886736313": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1928879625": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1931555921": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1935799030": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_19573594": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_1977159184": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_209294118": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_2122182808": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_2125825171": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_250364469": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_271380248": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_286741124": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_297636337": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_308502667": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_350387079": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_353894982": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_401558586": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_406052346": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_423132252": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_436488141": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_494241440": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_514322295": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_526436523": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_582045427": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_623019149": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_698716025": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_70194329": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_740610014": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_770029985": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_771392620": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_792396216": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_810436675": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_823297104": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_905672558": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_parks_988174888": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_1062053306": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_1178315948": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_1337779311": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_1339410338": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_1656379004": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_1776030512": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_1810435109": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_1810871640": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_1859495307": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_2106068605": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_2121462250": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_2138658294": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_27285300": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_293219149": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_499932595": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_508214942": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_524743497": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_672482984": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_688787425": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_794363774": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_squares_930452611": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1008250190": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1311921497": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1327344601": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1356272721": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1453440174": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1469031653": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1536393221": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_159207315": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1598433313": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1605678642": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1700434609": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_173765776": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1742383007": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1762198121": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1797654092": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1809361034": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_183120056": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_188747892": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1950136997": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_1966764676": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_2004781631": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_2021536949": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_2083054968": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_2116836170": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_340125248": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_359831611": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_438093062": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_525490560": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_594796006": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_streets_61188555": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_103825583": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1115016321": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1137953420": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_114698891": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1284014694": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1310613269": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1331446551": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1333756167": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_13399064": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1343998000": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1344539004": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_142796395": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1437280274": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1447549754": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1455197018": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1456704999": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1462380300": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1469536293": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1511200561": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1556840502": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1639628569": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1639802995": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_170469359": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1731701035": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1741024007": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1755641833": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_176138248": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1774547487": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1807872671": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1820923592": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1832529380": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_185877525": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1881858831": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1912413490": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1941412539": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1958935029": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_1964663576": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_201054509": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_202797634": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_204191520": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_214419720": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_225813925": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_278815928": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_293869222": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_338640030": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_35696905": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_362932619": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_401324840": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_422786109": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_423804254": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_432489278": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_432753294": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_49324435": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_516384323": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_527321899": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_52746438": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_587423443": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_649146611": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_65601669": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_694811320": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_718916820": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_744741709": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_758757382": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_794484432": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_82187522": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_873422094": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_90266816": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_920581431": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_931060828": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_940760696": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_958230711": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_9675728": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_970275987": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    },
+    "extract_water_991536571": {
+      "verdict": "approved",
+      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+    }
+  }
+}
