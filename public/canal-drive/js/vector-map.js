@@ -166,8 +166,8 @@ class VectorBasemap {
       filter: flatRoofFilter,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'roofColour']],
-        'fill-extrusion-base': WALL_TOP,
-        'fill-extrusion-height': ['+', WALL_TOP, 0.35],
+        'fill-extrusion-base': ['+', WALL_TOP, 0.15],
+        'fill-extrusion-height': ['+', WALL_TOP, 0.55],
         'fill-extrusion-opacity': 1
       }
     });
@@ -523,8 +523,8 @@ class VectorBasemap {
     this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-color', [
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['to-color', ['get', 'roofColour'], '#B09999']
     ]);
-    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-base', height);
-    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-height', ['+', height, 0.35]);
+    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-base', ['+', height, 0.15]);
+    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-height', ['+', height, 0.55]);
   }
 
   _ensurePlaceLayers() {

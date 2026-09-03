@@ -161,8 +161,8 @@ function addTodayLayers(map) {
     filter: FLAT_ROOF,
     paint: {
       'fill-extrusion-color': ['get', 'roofColour'],
-      'fill-extrusion-base': ['+', WALL_TOP, 0.05],
-      'fill-extrusion-height': ['+', WALL_TOP, 0.7],
+      'fill-extrusion-base': ['+', WALL_TOP, 0.15],
+      'fill-extrusion-height': ['+', WALL_TOP, 0.55],
       'fill-extrusion-opacity': 1
     }
   });
@@ -187,8 +187,8 @@ function addCompleteLayers(map) {
     filter: FLAT_ROOF,
     paint: {
       'fill-extrusion-color': ['to-color', ['get', 'roofColour'], '#B09999'],
-      'fill-extrusion-base': ['+', WALL_TOP, 0.05],
-      'fill-extrusion-height': ['+', WALL_TOP, 0.35],
+      'fill-extrusion-base': ['+', WALL_TOP, 0.15],
+      'fill-extrusion-height': ['+', WALL_TOP, 0.55],
       'fill-extrusion-opacity': 1
     }
   });

@@ -47,7 +47,9 @@ export type PyramidalRoofMesh = {
  *
  * `height` is the apex (or ridge). `roof:height` is the roof's own thickness.
  * Walls stop at height − roof:height; without a roof height the whole prism
- * stays a wall and this module has nothing to draw.
+ * stays a wall and this module has nothing to draw — unless the shape is
+ * pyramidal, in which case OSM Buildings still draws a cone and we invent a
+ * tip so the Oude Kerk spire is not a grey cylinder.
  */
 export function eavesHeightM(heightM: number, roofHeightM: number | null | undefined): number {
   if (!(heightM > 0)) return 0;
@@ -55,15 +57,39 @@ export function eavesHeightM(heightM: number, roofHeightM: number | null | undef
   return Math.max(0, heightM - roofHeightM);
 }
 
+/**
+ * Roof thickness used for meshing and for stopping walls at the eaves.
+ *
+ * Tagged `roof:height` wins. For `roof:shape=pyramidal` without a tag, invent a
+ * tip as 35% of the exposed part height, clamped to 3–12 m — enough to read as
+ * a spire without inventing a skyscraper hat.
+ */
+export function effectiveRoofHeightM(props: {
+  roofShape?: string | null;
+  roofHeight?: number | null;
+  height?: number | null;
+  minHeight?: number | null;
+}): number {
+  const tagged = Number(props.roofHeight ?? 0);
+  if (tagged > 0) return tagged;
+  if ((props.roofShape || '') !== 'pyramidal') return 0;
+  const height = Number(props.height ?? 0);
+  const minHeight = Math.max(0, Number(props.minHeight ?? 0));
+  if (!(height > minHeight)) return 0;
+  const exposed = height - minHeight;
+  return Math.min(12, Math.max(3, 0.35 * exposed));
+}
+
 /** True when this feature should get a procedural pyramidal roof, not a flat cap. */
 export function wantsPyramidalRoof(props: {
   roofShape?: string | null;
   roofHeight?: number | null;
   height?: number | null;
+  minHeight?: number | null;
 }): boolean {
   if ((props.roofShape || '') !== 'pyramidal') return false;
   const height = Number(props.height ?? 0);
-  const roofHeight = Number(props.roofHeight ?? 0);
+  const roofHeight = effectiveRoofHeightM(props);
   return height > 0 && roofHeight > 0 && roofHeight < height;
 }
 

@@ -185,32 +185,43 @@ export function dedupeAppearanceFeatures(features: AppearanceFeature[]): Appeara
 }
 
 /**
- * Wall top for a fill-extrusion: below a procedural roof when OSM tagged one.
+ * Wall top for a fill-extrusion: below the roof when OSM tagged a thickness.
  *
- * Pyramidal parts carry `height` at the apex and `roofHeight` for the cone.
- * Walls must stop at the eaves or the flat cap fights the mesh roof.
+ * Tagged `roofHeight` always wins. Untagged pyramidal parts (Oude Kerk's 58 m
+ * spire) get the same invented tip the mesh layer uses, otherwise walls fill
+ * the cone and leave a flat grey cylinder.
  */
 export function wallTopHeightExpression(): MapLibreExpression {
+  // inventedTip = clamp(0.35 * (height − minHeight), 3, 12)
+  const exposed = ['-', ['coalesce', ['get', 'height'], 5], ['coalesce', ['get', 'minHeight'], 0]];
+  const inventedTip = ['max', 3, ['min', 12, ['*', 0.35, exposed]]];
   return [
     'case',
-    ['all',
-      ['==', ['get', 'roofShape'], 'pyramidal'],
-      ['>', ['coalesce', ['get', 'roofHeight'], 0], 0],
-    ],
+    ['>', ['coalesce', ['get', 'roofHeight'], 0], 0],
     ['-', ['coalesce', ['get', 'height'], 5], ['get', 'roofHeight']],
+    ['==', ['get', 'roofShape'], 'pyramidal'],
+    ['-', ['coalesce', ['get', 'height'], 5], inventedTip],
     ['coalesce', ['get', 'height'], 5],
   ];
 }
 
-/** Flat roof caps skip features that get a procedural pyramidal mesh. */
+/**
+ * Flat roof caps: colour lids for parts we are not meshing yet.
+ *
+ * Skip:
+ *   - every pyramidal part (meshed, with tagged or invented tip)
+ *   - lids whose colour equals the wall (OSM often copies building:colour into
+ *     roof:colour; a same-colour lid only fights the wall top)
+ */
 export function flatRoofFilter(): MapLibreExpression {
   return [
     'all',
     ['has', 'roofColour'],
+    ['!=', ['get', 'roofShape'], 'pyramidal'],
     ['!',
       ['all',
-        ['==', ['get', 'roofShape'], 'pyramidal'],
-        ['>', ['coalesce', ['get', 'roofHeight'], 0], 0],
+        ['has', 'colour'],
+        ['==', ['get', 'roofColour'], ['get', 'colour']],
       ],
     ],
   ];
