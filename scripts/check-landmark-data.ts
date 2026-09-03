@@ -15,6 +15,7 @@ import {
   kmBetween,
   matchLandmarkToBuilding,
   GENERIC_BRIDGE_NAME_PATTERN,
+  isLocatorMapImage,
   isWorthACard,
   neighborhoodAt,
   pointInPolygon,
@@ -31,6 +32,7 @@ import type { BuildingHit, Landmark, WorldPoint } from '../src/canalRecall/game/
 import {
   buildRouteKnowledgeIndex,
   routeKnowledgeFor,
+  shouldOfferStreetKnowledge,
 } from '../src/canalRecall/game/routeKnowledge';
 
 const checks: string[] = [];
@@ -52,6 +54,28 @@ const toWorld = ([lat, lng]: LatLng): WorldPoint => ({
 });
 
 // ---- Text ----
+
+check('street encyclopedia stays off a novel unasked name and an open quiz', () => {
+  assert.equal(shouldOfferStreetKnowledge({
+    hasExtract: true, alreadyShownThisDrive: false, quizOpen: true, landmarkCardOpen: false,
+  }), false);
+  assert.equal(shouldOfferStreetKnowledge({
+    hasExtract: false, alreadyShownThisDrive: false, quizOpen: false, landmarkCardOpen: false,
+  }), false);
+  assert.equal(shouldOfferStreetKnowledge({
+    hasExtract: true, alreadyShownThisDrive: true, quizOpen: false, landmarkCardOpen: false,
+  }), false);
+  assert.equal(shouldOfferStreetKnowledge({
+    hasExtract: true, alreadyShownThisDrive: false, quizOpen: false, landmarkCardOpen: true,
+  }), false);
+  assert.equal(shouldOfferStreetKnowledge({
+    hasExtract: true, alreadyShownThisDrive: false, quizOpen: false, landmarkCardOpen: true,
+    replaceOpenCard: true,
+  }), true);
+  assert.equal(shouldOfferStreetKnowledge({
+    hasExtract: true, alreadyShownThisDrive: false, quizOpen: false, landmarkCardOpen: false,
+  }), true);
+});
 
 check('street and canal knowledge keeps exact IDs and homonyms separate', () => {
   const normalise = (name: string) => name.toLowerCase().replace(/\s+/g, '');
@@ -225,6 +249,24 @@ check('buildNeighborhoods ranks finest-first and borrows a parent photograph', (
   assert.equal(pijp.imageAttribution, 'CC BY', 'the borrowed attribution travels with the borrowed image');
   assert.equal(pijp.imageArea, 'Centrum', 'the card records whose picture it is showing');
   assert.equal(hoods[1].imageArea, undefined, 'an area using its own photograph names no other area');
+});
+
+check('locator maps are not treated as postcard photographs', () => {
+  assert.equal(isLocatorMapImage(
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Map_NL_-_Amsterdam_-_Weesperbuurt-Plantage.png/500px-Map.png'),
+  true);
+  assert.equal(isLocatorMapImage('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Hortus.jpg/500px.jpg'), false);
+
+  const hoods = buildNeighborhoods(boundaryFixtures, [
+    { name: 'Centrum', imageUrl: 'https://example.invalid/centrum.jpg', imageAttribution: 'CC BY' },
+    {
+      name: 'De Pijp',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/x/Map_NL_-_Amsterdam_-_De_Pijp.png/500px.png',
+    },
+  ], toWorld);
+  assert.equal(hoods[0].imageUrl, 'https://example.invalid/centrum.jpg',
+    'a Map_NL_ thumbnail is discarded so the parent photograph can be borrowed');
+  assert.equal(hoods[0].imageArea, 'Centrum');
 });
 
 check('neighborhoodAt reports the finest area containing the vehicle', () => {

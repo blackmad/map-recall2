@@ -193,6 +193,8 @@ export interface PostcardLayout {
 const POSTCARD_WIDTH = 390;
 const POSTCARD_HEIGHT = 104;
 const POSTCARD_PHOTO_WIDTH = 144;
+/** Gap between the photo’s right edge and the first glyph of the name. */
+const POSTCARD_TEXT_GAP = 18;
 const NAME_MAX = 24;
 const NAME_MIN = 16;
 
@@ -202,7 +204,10 @@ export function measurePostcard(
   /** The width the postcard has to fit in; a phone gives it less than 390. */
   cardWidth: number = POSTCARD_WIDTH,
 ): PostcardLayout {
-  const textLeft = (props.hasImage ? 136 : 0) + 22;
+  // textLeft used to hardcode 136 while the photo was 144 wide, and the
+  // renderer’s fade ran to x+170 — so “Weesperbuurt” started inside the photo
+  // and under a dark gradient left over from the old navy card.
+  const textLeft = props.hasImage ? POSTCARD_PHOTO_WIDTH + POSTCARD_TEXT_GAP : 22;
   const available = Math.max(60, cardWidth - textLeft - 18);
   let nameFontSize = NAME_MAX;
   const fontAt = (size: number) => `800 ${size}px system-ui, sans-serif`;

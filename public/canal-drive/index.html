@@ -86,29 +86,29 @@ canvas { display: block; position: relative; z-index: 2; }
 }
 
 /* ---- Recall prompt ---- */
-#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: flex-end; padding: 24px 30px; background: linear-gradient(90deg, transparent 35%, rgba(36,50,43,.10) 58%, rgba(36,50,43,.34)); z-index: 20; font-family: var(--font-mono); pointer-events: none; }
-#canal-prompt.dock-left { justify-content: flex-start; background: linear-gradient(270deg, transparent 35%, rgba(36,50,43,.10) 58%, rgba(36,50,43,.34)); }
-#canal-card { width: min(100%, 440px); padding: 24px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 18px 50px rgba(58,50,36,.22); pointer-events: auto; }
+#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: flex-end; padding: 24px 28px; background: linear-gradient(90deg, transparent 42%, rgba(36,50,43,.08) 62%, rgba(36,50,43,.28)); z-index: 20; font-family: var(--font-mono); pointer-events: none; }
+#canal-prompt.dock-left { justify-content: flex-start; background: linear-gradient(270deg, transparent 42%, rgba(36,50,43,.08) 62%, rgba(36,50,43,.28)); }
+#canal-card { width: min(100%, 360px); padding: 18px 18px 16px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 14px 40px rgba(58,50,36,.18); pointer-events: auto; }
 /* What you are being asked to name is the largest thing on the card, and the
    chip above it says which kind of feature the answer is. "Crossing a bridge"
    as the headline over "Which water are you crossing?" read as a question
    about the bridge. */
-.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 12px; padding: 5px 11px 5px 8px; border: 1px solid rgba(53,102,83,.35); border-radius: 999px; background: var(--moss-soft); color: var(--moss-dark); font: 800 11px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
-.prompt-kind .prompt-kind-icon { display: grid; place-items: center; width: 20px; height: 20px; line-height: 1; letter-spacing: 0; }
-.prompt-kind .prompt-kind-icon svg { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 8px; padding: 4px 10px 4px 7px; border: 1px solid rgba(53,102,83,.35); border-radius: 999px; background: var(--moss-soft); color: var(--moss-dark); font: 800 10px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.prompt-kind .prompt-kind-icon { display: grid; place-items: center; width: 18px; height: 18px; line-height: 1; letter-spacing: 0; }
+.prompt-kind .prompt-kind-icon svg { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .prompt-kind .prompt-kind-icon svg.filled { fill: currentColor; stroke: none; }
 .prompt-kind[data-kind="bridge"] { border-color: rgba(183,129,37,.42); background: rgba(183,129,37,.14); color: #7a5514; }
 .prompt-kind[data-kind="street"] { border-color: rgba(53,102,83,.38); background: rgba(53,102,83,.12); color: var(--moss-dark); }
-#canal-card h2 { color: var(--ink); margin-bottom: 6px; font-size: 25px; line-height: 1.15; }
-#canal-card p { color: var(--muted); margin-bottom: 18px; font-size: 13px; }
-#canal-answer { width: 100%; margin-bottom: 12px; padding: 14px 16px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); font: 18px var(--font-mono); }
-#canal-submit { width: 100%; padding: 12px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
-#canal-feedback { min-height: 22px; margin-top: 12px; font-weight: 700; }
-#canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-#canal-no-idea { width: 100%; margin-top: 8px; padding: 10px 8px; border: 1px dashed var(--line); border-radius: var(--radius-sm); background: transparent; color: var(--muted); font-weight: 600; cursor: pointer; }
+#canal-card h2 { color: var(--ink); margin-bottom: 4px; font-size: 21px; line-height: 1.15; }
+#canal-card p { color: var(--muted); margin-bottom: 12px; font-size: 12px; }
+#canal-answer { width: 100%; margin-bottom: 10px; padding: 12px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); font: 16px var(--font-mono); }
+#canal-submit { width: 100%; padding: 11px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
+#canal-feedback { min-height: 20px; margin-top: 10px; font-weight: 700; font-size: 13px; }
+#canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+#canal-no-idea { width: 100%; margin-top: 6px; padding: 9px 8px; border: 1px dashed var(--line); border-radius: var(--radius-sm); background: transparent; color: var(--muted); font-weight: 600; cursor: pointer; font-size: 13px; }
 #canal-no-idea:hover { background: var(--paper-muted); color: var(--ink); }
 #canal-no-idea .canal-choice-key { margin-right: 0; margin-left: 6px; }
-.canal-choice { padding: 12px 8px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper-muted); color: var(--ink); font-weight: 700; cursor: pointer; }
+.canal-choice { padding: 10px 8px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper-muted); color: var(--ink); font-weight: 700; cursor: pointer; font-size: 13px; }
 .canal-choice:hover { border-color: var(--moss); background: var(--moss-soft); }
 .canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: rgba(36,50,43,.12); color: var(--muted); font-size: 11px; font-weight: bold; }
 

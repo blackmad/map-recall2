@@ -44,7 +44,8 @@ import type { FactsFile } from '../facts/factTypes';
 import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
-import { buildRouteKnowledgeIndex, routeKnowledgeFor } from './routeKnowledge';
+import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge } from './routeKnowledge';
+import { canShowMiniMap, canShowTeachingCard } from './teachingSurface';
 
 /** Seconds a clicked card stays up. A drive-by card is held by proximity
  *  instead — see `landmarkNotice.ts`. */
@@ -273,12 +274,21 @@ export class GameLandmarkRuntime {
     window.open(notice.wikipediaUrl, '_blank', 'noopener');
   }
 
-  _showStreetKnowledge(name: string, type: 'street' | 'water' = 'street'): void {
+  _showStreetKnowledge(name: string, type: 'street' | 'water' = 'street', replaceOpenCard = false): void {
     const key = this._normaliseCanalName(name);
     const entry = routeKnowledgeFor(this.streetKnowledge, name, type,
       (value) => this._normaliseCanalName(value));
     if (!entry) return;
     const noticeId = entry.id || `${type}-knowledge:${key}`;
+    this._seenStreetKnowledge = this._seenStreetKnowledge || new Set();
+    if (!shouldOfferStreetKnowledge({
+      hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract),
+      alreadyShownThisDrive: this._seenStreetKnowledge.has(noticeId),
+      quizOpen: !!this.quizPromptName,
+      landmarkCardOpen: !!this._landmarkNotice,
+      replaceOpenCard,
+    })) return;
+    this._seenStreetKnowledge.add(noticeId);
     const split = splitDetail(entry.wikipediaExtract || '');
     this._showLandmarkNotice({
       id: noticeId,
@@ -439,7 +449,7 @@ export class GameLandmarkRuntime {
     // for the neighborhood the route starts in never appeared at all.
     if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
       this._previousNeighborhood = this.currentNeighborhood;
-      if (!this.quizPromptName && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      if (canShowTeachingCard(this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
         if (hood) this._ensureNeighborhoodImage(hood);
         this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
         this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
@@ -458,6 +468,7 @@ export class GameLandmarkRuntime {
       if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
     }
     if (this._landmarkNotice) return;
+    if (!canShowTeachingCard(this._teachingGate())) return;
     if (nearest) {
       this._seenLandmarks.add(nearest.id);
       this._seenLandmarkNames.add(nearest.name);
@@ -515,6 +526,7 @@ export class GameLandmarkRuntime {
     // over open map after the card faded out.
     this._landmarkCardBounds = null;
     if (!lm) return;
+    if (!canShowTeachingCard(this._teachingGate())) return;
     const ctx = this.ctx;
     const alpha = this._landmarkNoticeAlpha;
     if (alpha <= 0) return;
@@ -536,14 +548,15 @@ export class GameLandmarkRuntime {
     // Trivia belongs at the bottom of the screen. Across the top it sat exactly
     // where the player is looking to see what is coming, so a card about a
     // church already passed hid the junction ahead.
-    const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
+    const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0)
+      && canShowTeachingCard(this._teachingGate());
     const bottomLayout = window.CanalRecallUi.hudLayout({
       viewport: this.viewport,
       tripWidth: 180, postcardVisible: postcardShowing,
       landmarkWidth: card.width, landmarkHeight: card.height,
       feedbackVisible: !!this.quizFeedback,
       neighborhoodVisible: !!this.currentNeighborhood,
-      minimapVisible: this.showMiniMap,
+      minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
       zoomVisible: this._zoomBadgeTimer > 0,
       controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
     });
@@ -626,7 +639,7 @@ export class GameLandmarkRuntime {
   _renderNeighborhoodNotice(): void {
     const hood = this._neighborhoodNotice;
     if (!hood || this._neighborhoodNoticeTimer <= 0) return;
-    if (this.quizPromptName) return;
+    if (!canShowTeachingCard(this._teachingGate())) return;
     const ctx = this.ctx;
     const duration = NEIGHBORHOOD_NOTICE_SECONDS;
     const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);
@@ -643,7 +656,7 @@ export class GameLandmarkRuntime {
       viewport: this.viewport, tripWidth: 180,
       postcardHeight: card.height,
       neighborhoodVisible: !!this.currentNeighborhood,
-      minimapVisible: this.showMiniMap,
+      minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
     });
     const cardX = bottomLayout.postcard.x;
     const baseCardY = bottomLayout.postcard.y;

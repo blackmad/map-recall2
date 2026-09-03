@@ -294,8 +294,9 @@ class Renderer {
     ctx.beginPath();
     ctx.ellipse(3, 3, car.length / 2 + 2, car.width / 2 + 2, 0, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillStyle = '#F8FAFC';
-    ctx.strokeStyle = '#0C4A6E';
+    // Match the 3D sloep: dark green hull, cream cockpit (see PlayerBoat3D).
+    ctx.fillStyle = '#1A3D34';
+    ctx.strokeStyle = '#F4EFE4';
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(car.length / 2, 0);
@@ -305,7 +306,7 @@ class Renderer {
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
-    ctx.fillStyle = '#F59E0B';
+    ctx.fillStyle = '#E8DCC4';
     roundRect(ctx, -5, -6, 15, 12, 3);
     ctx.fill();
     ctx.restore();
@@ -388,15 +389,18 @@ class Renderer {
     ctx.fillStyle = window.CanalRecallUi.hudSurface.cardSolid;
     ctx.fillRect(x, y, card.width, card.height);
     if (image) {
+      const photoW = card.photoWidth;
       const crop = window.CanalRecallCards.coverCrop(
-        image.naturalWidth, image.naturalHeight, card.photoWidth, card.height);
-      ctx.drawImage(image, crop.sx, crop.sy, crop.sw, crop.sh, x, y, card.photoWidth, card.height);
-      // Fade the photo into the card rather than butting it against the text.
-      const shade = ctx.createLinearGradient(x + 90, 0, x + 170, 0);
-      shade.addColorStop(0, 'rgba(9,35,48,0)');
-      shade.addColorStop(1, '#092330');
+        image.naturalWidth, image.naturalHeight, photoW, card.height);
+      ctx.drawImage(image, crop.sx, crop.sy, crop.sw, crop.sh, x, y, photoW, card.height);
+      // Fade inside the photo into the cream card — never past the photo edge,
+      // and never into the leftover navy that used to sit under the name.
+      const fade = 48;
+      const shade = ctx.createLinearGradient(x + photoW - fade, 0, x + photoW, 0);
+      shade.addColorStop(0, 'rgba(255,253,248,0)');
+      shade.addColorStop(1, window.CanalRecallUi.hudSurface.cardSolid);
       ctx.fillStyle = shade;
-      ctx.fillRect(x + 90, y, 80, card.height);
+      ctx.fillRect(x + photoW - fade, y, fade, card.height);
     } else {
       ctx.fillStyle = '#0E7490';
       ctx.fillRect(x, y, 9, card.height);

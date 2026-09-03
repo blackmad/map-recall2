@@ -240,10 +240,12 @@ export class GameRecallRuntime {
 
     if (decision.action === 'adopt') {
       // A name the player has already proved they know is adopted silently
-      // instead of being asked again until it falls due.
+      // instead of being asked again until it falls due. Encyclopedia can
+      // still open — the name is no longer under question.
       this.quizCurrentName = decision.name;
       this.learnedNames.add(decision.name);
       this._revealName(decision.name);
+      this._showStreetKnowledge(decision.name, isCar(this.travelMode) ? 'street' : 'water');
       return;
     }
 
@@ -284,6 +286,11 @@ export class GameRecallRuntime {
     this.quizPromptName = name;
     this.quizPromptSegmentIndex = segmentIndex;
     this.quizPromptPointIndex = pointIndex;
+    // Quiz owns the teaching band: drop stale feedback and any card still up.
+    this.quizFeedback = '';
+    this._clearLandmarkNotice();
+    this._neighborhoodNotice = null;
+    this._neighborhoodNoticeTimer = 0;
     this.player.speed = 0;
     this.player.vx = 0;
     this.player.vy = 0;
@@ -505,6 +512,11 @@ export class GameRecallRuntime {
     this.quizFeedback = result.feedback;
     this._promptFeedback.textContent = result.feedback;
     this._promptFeedback.style.color = result.feedbackColor;
+    // Feedback owns the band for the hold; do not leave a museum card waiting
+    // to reappear the moment the prompt hides.
+    this._clearLandmarkNotice();
+    this._neighborhoodNotice = null;
+    this._neighborhoodNoticeTimer = 0;
     // Neither a bridge nor the water beneath it is what the wheels are on:
     // keep the waterway/street the player is actually travelling, or the route
     // quiz re-fires the moment the prompt closes.
@@ -536,8 +548,9 @@ export class GameRecallRuntime {
     const learnedRouteType = isCar(this.travelMode) ? 'street' : 'water';
     setTimeout(() => {
       this._prompt.style.display = 'none';
+      this.quizFeedback = '';
       this.canvas.focus();
-      if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType);
+      if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
     }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
   }
 }

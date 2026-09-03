@@ -176,6 +176,15 @@ export function buildLandmarks(
   return landmarks;
 }
 
+/** Dutch Wikipedia / Commons often illustrate neighbourhoods with a municipal
+ *  boundary thumbnail (`Map_NL_-_Amsterdam_-…`). Those are locator diagrams,
+ *  not photographs, and they read as the “generic green blob” on the postcard.
+ *  Treat them as absent so the containing district’s photo can be borrowed. */
+export function isLocatorMapImage(url: string): boolean {
+  if (!url) return false;
+  return /Map[_-]NL[_-]|Map_-_NL[_-]|\/Map_NL_|locator.?map|_kaart\./i.test(url);
+}
+
 /**
  * Only 42 of the 91 mapped areas are tagged `neighbourhood`, and between them
  * they cover about a tenth of the drivable network — which is why the
@@ -199,6 +208,7 @@ export function buildNeighborhoods(
     .filter(boundary => boundary.geometry && NEIGHBORHOOD_KIND_RANKS[boundary.kind])
     .map((boundary): Neighborhood => {
       const enriched = enrichmentByName.get(boundary.name);
+      const rawUrl = enriched?.imageUrl || '';
       return {
         name: boundary.name,
         kind: boundary.kind,
@@ -207,8 +217,8 @@ export function buildNeighborhoods(
           .map(polygon => (polygon[0] || []).map(toWorld))
           .filter(ring => ring.length > 2),
         wikipediaExtract: enriched?.wikipediaExtract || '',
-        imageUrl: enriched?.imageUrl || '',
-        imageAttribution: enriched?.imageAttribution || '',
+        imageUrl: isLocatorMapImage(rawUrl) ? '' : rawUrl,
+        imageAttribution: isLocatorMapImage(rawUrl) ? '' : (enriched?.imageAttribution || ''),
       };
     })
     .filter(hood => hood.rings.length)

@@ -177,6 +177,7 @@ class Game {
     this._neighborhoodImageRequests = new Set();
     this._postcardCanvas = null;
     this._seenLandmarks = new Set();
+    this._seenStreetKnowledge = new Set();
     this._visitedNeighborhoods = new Set();
     this._seenLandmarkNames = new Set();
     // Generated trivia, filled by _loadLandmarks from facts.json. Empty until
@@ -308,6 +309,21 @@ class Game {
     if (this._prompt && this._prompt.style.display !== 'none' && this._prompt.style.display !== '') return true;
     const panel = document.getElementById('landmark-panel');
     return !!panel && getComputedStyle(panel).display !== 'none';
+  }
+
+  /** One teaching surface at a time — see `teachingSurface.ts`. */
+  _teachingGate() {
+    const promptVisible = !!(this._prompt
+      && this._prompt.style.display !== 'none'
+      && this._prompt.style.display !== '');
+    const panel = document.getElementById('landmark-panel');
+    const landmarkPanelOpen = !!panel && getComputedStyle(panel).display !== 'none';
+    return {
+      quizOpen: !!this.quizPromptName,
+      feedbackVisible: !!this.quizFeedback,
+      promptVisible,
+      utilityOpen: !!this._utilityOpen || landmarkPanelOpen,
+    };
   }
 
   /** The finish card's tappable actions, for touch. Keyboard keeps ENTER/ESC/C. */

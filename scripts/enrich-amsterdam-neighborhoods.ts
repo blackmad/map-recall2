@@ -28,6 +28,16 @@ interface NeighborhoodEnriched {
 }
 
 const directory = path.resolve('public/data/extracts/amsterdam');
+
+/** Municipal boundary diagrams from Wikipedia are not postcard photographs. */
+function isLocatorMapImage(url: string): boolean {
+  return /Map[_-]NL[_-]|Map_-_NL[_-]|\/Map_NL_|locator.?map|_kaart\./i.test(url);
+}
+
+function acceptPhotoUrl(url: string | undefined): string | undefined {
+  if (!url || isLocatorMapImage(url)) return undefined;
+  return url.replace('http://', 'https://');
+}
 const headers = { 'User-Agent': 'MapQuestExtractBuilder/1.0 (https://github.com/blackmad/map-recall2)' };
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -114,9 +124,14 @@ for (const hood of neighborhoods) {
     if (match.imageUrl) {
       // Resolved to a direct upload.wikimedia.org thumbnail below; the
       // Special:FilePath redirect is not CORS-safe for canvas rendering.
-      entry.imageUrl = match.imageUrl.replace('http://', 'https://');
-      const filename = decodeURIComponent(match.imageUrl.split('/').pop() || '');
-      entry.imageAttribution = `Wikimedia Commons: ${filename}`;
+      // Locator maps (Map_NL_-_Amsterdam_-…) are rejected: they are diagrams,
+      // not photographs, and the postcard already borrows a parent photo.
+      const photo = acceptPhotoUrl(match.imageUrl);
+      if (photo) {
+        entry.imageUrl = photo;
+        const filename = decodeURIComponent(match.imageUrl.split('/').pop() || '');
+        entry.imageAttribution = `Wikimedia Commons: ${filename}`;
+      }
     }
     if (match.articleTitle) {
       const existing = titlesToFetch.get(match.articleTitle) || [];
@@ -156,8 +171,11 @@ for (const entry of results) {
   if (wiki) {
     entry.wikipediaExtract = wiki.extract;
     if (!entry.imageUrl && wiki.thumbnail) {
-      entry.imageUrl = wiki.thumbnail;
-      entry.imageAttribution = 'Wikipedia thumbnail';
+      const photo = acceptPhotoUrl(wiki.thumbnail);
+      if (photo) {
+        entry.imageUrl = photo;
+        entry.imageAttribution = 'Wikipedia thumbnail';
+      }
     }
   }
 }
@@ -197,8 +215,11 @@ if (missingExtract.length > 0) {
           if (entry && !entry.wikipediaExtract) {
             entry.wikipediaExtract = page.extract;
             if (!entry.imageUrl && page.thumbnail?.source) {
-              entry.imageUrl = page.thumbnail.source;
-              entry.imageAttribution = 'Wikipedia thumbnail (nl)';
+              const photo = acceptPhotoUrl(page.thumbnail.source);
+              if (photo) {
+                entry.imageUrl = photo;
+                entry.imageAttribution = 'Wikipedia thumbnail (nl)';
+              }
             }
           }
         }

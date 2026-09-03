@@ -541,6 +541,7 @@ class GameRouteRuntime {
     this.particles = new ParticleSystem();
 
     this._seenLandmarks = new Set();
+    this._seenStreetKnowledge = new Set();
     this._clearLandmarkNotice();
 
     const startInfo = this.track.getNearestRoad(this.track.startPoint.x, this.track.startPoint.y);

@@ -290,6 +290,7 @@
         this.quizCurrentName = decision.name;
         this.learnedNames.add(decision.name);
         this._revealName(decision.name);
+        this._showStreetKnowledge(decision.name, isCar(this.travelMode) ? "street" : "water");
         return;
       }
       const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y);
@@ -319,6 +320,10 @@
       this.quizPromptName = name;
       this.quizPromptSegmentIndex = segmentIndex;
       this.quizPromptPointIndex = pointIndex;
+      this.quizFeedback = "";
+      this._clearLandmarkNotice();
+      this._neighborhoodNotice = null;
+      this._neighborhoodNoticeTimer = 0;
       this.player.speed = 0;
       this.player.vx = 0;
       this.player.vy = 0;
@@ -547,8 +552,9 @@
       const learnedRouteType = isCar(this.travelMode) ? "street" : "water";
       setTimeout(() => {
         this._prompt.style.display = "none";
+        this.quizFeedback = "";
         this.canvas.focus();
-        if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType);
+        if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
       }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
     }
   };
