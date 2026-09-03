@@ -3,6 +3,30 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## One owner per building composition — LoD1 blockers cleared
+
+The comparison page's two real losses are fixed on `feat/building-one-owner`.
+
+**Hand-mapped massing survives without colour tags.** The ladder no longer reads
+only `buildings-colored.geojson`. A complete OSM extract
+(`staging/buildings-osm.geojson`, 422,570 buildings / 5,485 parts) feeds
+geometry; appearance joins by id afterward. Tier 2 now fires for stacked parts
+*or* multi-height compositions (Magna Plaza / Oude Kerk), and
+`compositionDrawIds` drops the parent outline so parts own the pixels alone.
+Named checks: Waag keeps its turrets, Magna Plaza keeps ≥8 OSM parts, Oude Kerk
+keeps a multi-height massing. Staged merge: 20,039 OSM parts standing in for
+8,703 panden (was 1,163 / 164).
+
+**Towers stop measuring as their podiums.** When the AHN ridge sits ≥10 m above
+the LoD1.2 height, extrusion uses `ridge-tower` instead of `roof-70p` /
+volume. Rebuild reports 201 such panden in the BAG table; 130 remain as BAG
+extrusions after OSM compositions claim the rest. Zuidas is the visual fixture.
+
+**Live overlay stops fighting before publish.** `dedupeAppearanceFeatures` runs
+when the coloured extract loads, so Oude Kerk / Waag no longer draw shell and
+parts together on today's three-extrusion stack. Publishing the staged z14
+tiles (16 MB gzipped) remains the step-2 decision.
+
 ## Street encyclopedia is no longer just Nes
 
 `street-knowledge.json` had one street. `streets.json` already carried

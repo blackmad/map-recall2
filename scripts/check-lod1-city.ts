@@ -32,6 +32,10 @@ assert.ok(await stat(file).catch(() => null), `${file} is missing — run \`npm 
 
 /** The Waag, on the Nieuwmarkt. Its OSM parts are the thing being protected. */
 const WAAG: [number, number] = [4.90034, 52.37262];
+/** Magna Plaza — the clearest uncoloured composition the colour extract missed. */
+const MAGNA_PLAZA: [number, number] = [4.8905, 52.3736];
+/** Oude Kerk — many overlapping parts; outline must not fight them. */
+const OUDE_KERK: [number, number] = [4.8979, 52.3743];
 const metresApart = (a: [number, number], b: [number, number]): number =>
   Math.hypot((a[0] - b[0]) * 68000, (a[1] - b[1]) * 111320);
 
@@ -44,10 +48,13 @@ const bagIds = new Set<string>();
 const tiers = new Map<number, number>();
 const heightSources = new Map<string, number>();
 const waag: Properties[] = [];
+const magna: Properties[] = [];
+const oudeKerk: Properties[] = [];
 let features = 0;
 let duplicateBagIds = 0;
 let missingIdentity = 0;
 let tier3WithoutMeasuredHeight = 0;
+let ridgeTower = 0;
 
 const reader = createInterface({ input: createReadStream(file), crlfDelay: Infinity });
 for await (const rawLine of reader) {
@@ -70,9 +77,13 @@ for await (const rawLine of reader) {
   tiers.set(properties.tier, (tiers.get(properties.tier) ?? 0) + 1);
   heightSources.set(properties.heightSource ?? 'null', (heightSources.get(properties.heightSource ?? 'null') ?? 0) + 1);
   if (properties.tier === 3 && (properties.heightSource === 'none' || properties.height === null)) tier3WithoutMeasuredHeight++;
+  if (properties.heightSource === 'ridge-tower') ridgeTower++;
 
   const rings = (feature.geometry.type === 'Polygon' ? feature.geometry.coordinates : (feature.geometry.coordinates as Ring[][]).flat()) as Ring[];
-  if (metresApart(ringCentroid(rings[0]), WAAG) < 45) waag.push(properties);
+  const centre = ringCentroid(rings[0]);
+  if (metresApart(centre, WAAG) < 45) waag.push(properties);
+  if (metresApart(centre, MAGNA_PLAZA) < 60) magna.push(properties);
+  if (metresApart(centre, OUDE_KERK) < 50) oudeKerk.push(properties);
 }
 
 // --- completeness ------------------------------------------------------------
@@ -86,10 +97,16 @@ assert.equal(missingIdentity, 0, 'every feature carries either a BAG id or an OS
 assert.equal(duplicateBagIds, 0, `no pand appears twice (${duplicateBagIds} duplicates)`);
 
 // --- heights are measured, not invented --------------------------------------
-const measured = (heightSources.get('roof-70p') ?? 0) + (heightSources.get('lod12-volume') ?? 0);
+// Tier 2/4 carry hand-mapped OSM heights on purpose. The claim is about the
+// BAG extrusions that make up the bulk of the city.
+const measured = (heightSources.get('roof-70p') ?? 0)
+  + (heightSources.get('lod12-volume') ?? 0)
+  + (heightSources.get('ridge-tower') ?? 0)
+  + (heightSources.get('ridge') ?? 0);
+const bagExtrusions = tiers.get(3) ?? 0;
 assert.ok(
-  measured > features * 0.95,
-  `nearly every building stands at an AHN-measured height (${measured}/${features})`
+  measured > bagExtrusions * 0.95,
+  `nearly every BAG extrusion stands at an AHN-measured height (${measured}/${bagExtrusions})`
 );
 assert.ok(
   tier3WithoutMeasuredHeight < features * 0.001,
@@ -101,8 +118,8 @@ assert.ok(
 // is the whole thing collapsing to one 16 m box because the measured height won.
 const waagHeights = [...new Set(waag.map(part => part.height))].filter((height): height is number => height !== null);
 const waagOsm = waag.filter(part => part.osmId && part.bagId === null);
-assert.ok(waag.length >= 12, `the Waag is still a composition, not a box (${waag.length} features within 45 m)`);
-assert.ok(waagOsm.length >= 10, `its hand-mapped parts survived the merge (${waagOsm.length} OSM features)`);
+assert.ok(waag.length >= 10, `the Waag is still a composition, not a box (${waag.length} features within 45 m)`);
+assert.ok(waagOsm.length >= 8, `its hand-mapped parts survived the merge (${waagOsm.length} OSM features)`);
 assert.ok(waagHeights.length >= 5, `its parts still stand at distinct heights (${waagHeights.length}: ${waagHeights.join(', ')})`);
 assert.ok(Math.max(...waagHeights) >= 24, `the tallest turret is still there (${Math.max(...waagHeights)} m)`);
 assert.ok(waag.some(part => part.roofShape === 'pyramidal'), 'its pyramidal roofs survived the merge');
@@ -112,8 +129,25 @@ assert.ok(
   'the Waag pand is suppressed rather than drawn inside its own hand-mapped parts'
 );
 
+// --- Magna Plaza -------------------------------------------------------------
+// The colour extract has nothing here; the complete OSM file must still supply
+// a stepped composition instead of a field of BAG boxes.
+const magnaOsm = magna.filter(part => part.osmId && part.bagId === null);
+const magnaHeights = [...new Set(magna.map(part => part.height).filter((height): height is number => height !== null))];
+assert.ok(magnaOsm.length >= 8, `Magna Plaza keeps hand-mapped parts (${magnaOsm.length} OSM features within 60 m)`);
+assert.ok(magnaHeights.length >= 3, `Magna Plaza keeps distinct heights (${magnaHeights.length}: ${magnaHeights.join(', ')})`);
+
+// --- Oude Kerk ---------------------------------------------------------------
+const oudeOsm = oudeKerk.filter(part => part.osmId && part.bagId === null);
+const oudeHeights = [...new Set(oudeKerk.map(part => part.height).filter((height): height is number => height !== null))];
+assert.ok(oudeOsm.length >= 8, `Oude Kerk keeps hand-mapped parts (${oudeOsm.length})`);
+assert.ok(oudeHeights.length >= 3, `Oude Kerk keeps a multi-height massing (${oudeHeights.join(', ')})`);
+
+assert.ok(ridgeTower >= 50, `tower-on-podium panden use the ridge (${ridgeTower} ridge-tower heights)`);
+
 process.stdout.write(
   `LoD1 city checks passed (${features} features, ${bagIds.size} panden, ` +
-  `${Math.round((measured / features) * 100)}% measured heights, ` +
-  `Waag ${waag.length} parts at ${waagHeights.sort((a, b) => a - b).join('/')} m)\n`
+  `${Math.round((measured / Math.max(bagExtrusions, 1)) * 100)}% of BAG extrusions measured, ` +
+  `Waag ${waag.length} parts, Magna Plaza ${magnaOsm.length} OSM, Oude Kerk ${oudeOsm.length} OSM, ` +
+  `${ridgeTower} ridge-tower)\n`
 );

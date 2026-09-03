@@ -63,14 +63,17 @@ export type Bag3dBuilding = {
 };
 
 /** Where a height came from, so a wrong skyline can be traced to its source. */
-export type HeightSource = 'lod12-volume' | 'ridge' | 'none';
+export type HeightSource = 'lod12-volume' | 'ridge' | 'ridge-tower' | 'none';
+
+/** Same gap as `TOWER_PODIUM_GAP_M` in bag3dCityJson — keep the two paths agreed. */
+const TOWER_PODIUM_GAP_M = 10;
 
 /**
  * The height to extrude a building to for the flat-topped LoD1 city.
  *
  * The obvious choice is the ridge, `b3_h_nok - b3_h_maaiveld`, and it is the
- * wrong one twice over. Measured over a central Amsterdam tile (667 buildings
- * at the Rijksmuseum, v20250903):
+ * wrong one twice over for ordinary pitched roofs. Measured over a central
+ * Amsterdam tile (667 buildings at the Rijksmuseum, v20250903):
  *
  *   - It is incomplete. Only 509/667 buildings have a ridge. Flat roofs have
  *     none by definition — `horizontal` and `multiple horizontal` are 0/41 —
@@ -83,21 +86,34 @@ export type HeightSource = 'lod12-volume' | 'ridge' | 'none';
  * It covers 667/667 of the same tile and sits at a median 0.94x the ridge,
  * which is the shape of the answer — a little below the ridge, above the eave.
  *
- * The ridge is still worth keeping, but as roof geometry for LoD2.2 work, not
- * as an extrusion height. Returns `source: 'none'` rather than a plausible
- * invention when 3DBAG measured neither; the caller decides whether an OSM tag
- * or a storey count is a good enough fallback, and records that it did.
+ * Tower-on-podium is the exception: when the ridge stands ≥10 m above the
+ * LoD1.2 height, the volume average is measuring the podium. Prefer the ridge
+ * there so Zuidas keeps its towers.
+ *
+ * Returns `source: 'none'` rather than a plausible invention when 3DBAG
+ * measured neither; the caller decides whether an OSM tag or a storey count is
+ * a good enough fallback, and records that it did.
  */
 export function lod1HeightM(building: Bag3dBuilding): { heightM: number | null; source: HeightSource } {
   const { volumeLod12M3, groundAreaM2, ridgeHeightNap, groundHeightNap } = building;
-  if (volumeLod12M3 !== null && groundAreaM2 !== null && groundAreaM2 > 0) {
-    const height = volumeLod12M3 / groundAreaM2;
-    if (height > 0) return { heightM: height, source: 'lod12-volume' };
+  const volumeHeight =
+    volumeLod12M3 !== null && groundAreaM2 !== null && groundAreaM2 > 0
+      ? volumeLod12M3 / groundAreaM2
+      : null;
+  const ridgeHeight =
+    ridgeHeightNap !== null && groundHeightNap !== null
+      ? ridgeHeightNap - groundHeightNap
+      : null;
+
+  if (
+    volumeHeight !== null && volumeHeight > 0 &&
+    ridgeHeight !== null && ridgeHeight > 0 &&
+    ridgeHeight - volumeHeight >= TOWER_PODIUM_GAP_M
+  ) {
+    return { heightM: ridgeHeight, source: 'ridge-tower' };
   }
-  if (ridgeHeightNap !== null && groundHeightNap !== null) {
-    const height = ridgeHeightNap - groundHeightNap;
-    if (height > 0) return { heightM: height, source: 'ridge' };
-  }
+  if (volumeHeight !== null && volumeHeight > 0) return { heightM: volumeHeight, source: 'lod12-volume' };
+  if (ridgeHeight !== null && ridgeHeight > 0) return { heightM: ridgeHeight, source: 'ridge' };
   return { heightM: null, source: 'none' };
 }
 

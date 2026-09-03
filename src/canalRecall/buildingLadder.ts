@@ -29,9 +29,18 @@
  * recoloured, and the OSM parts render in its place.
  */
 
-/** A closed ring of `[lng, lat]`. */
-export type Ring = [number, number][];
-export type Bbox = [number, number, number, number];
+import { compositionDrawIds, isHandMappedComposition } from './buildingComposition.js';
+import {
+  bboxesOverlap,
+  pointInRing,
+  ringBbox,
+  ringCentroid,
+  type Bbox,
+  type Ring,
+} from './buildingGeometry.js';
+
+export { bboxesOverlap, pointInRing, ringBbox, ringCentroid };
+export type { Bbox, Ring };
 
 export type LadderTier = 2 | 3 | 4;
 
@@ -43,6 +52,8 @@ export type OsmFootprint = {
   minHeightM: number;
   heightM: number;
   roofShape?: string;
+  /** OSM `building:part` — used to drop the parent outline from a composition. */
+  isPart?: boolean;
 };
 
 /** The minimum a BAG pand needs for the join. */
@@ -50,46 +61,6 @@ export type BagFootprint = {
   bagId: string;
   rings: Ring[];
 };
-
-export const ringBbox = (ring: Ring): Bbox => {
-  let [west, south, east, north] = [Infinity, Infinity, -Infinity, -Infinity];
-  for (const [lng, lat] of ring) {
-    west = Math.min(west, lng); east = Math.max(east, lng);
-    south = Math.min(south, lat); north = Math.max(north, lat);
-  }
-  return [west, south, east, north];
-};
-
-export const bboxesOverlap = (a: Bbox, b: Bbox): boolean =>
-  a[0] <= b[2] && a[2] >= b[0] && a[1] <= b[3] && a[3] >= b[1];
-
-/** Area-weighted centroid of a ring, falling back to the mean for degenerate rings. */
-export function ringCentroid(ring: Ring): [number, number] {
-  let twiceArea = 0;
-  let x = 0;
-  let y = 0;
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const cross = ring[j][0] * ring[i][1] - ring[i][0] * ring[j][1];
-    twiceArea += cross;
-    x += (ring[j][0] + ring[i][0]) * cross;
-    y += (ring[j][1] + ring[i][1]) * cross;
-  }
-  if (Math.abs(twiceArea) < 1e-12) {
-    return [ring.reduce((sum, p) => sum + p[0], 0) / ring.length, ring.reduce((sum, p) => sum + p[1], 0) / ring.length];
-  }
-  return [x / (3 * twiceArea), y / (3 * twiceArea)];
-}
-
-/** Ray casting. Points exactly on an edge are not worth special-casing here. */
-export function pointInRing([lng, lat]: [number, number], ring: Ring): boolean {
-  let inside = false;
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const [xi, yi] = ring[i];
-    const [xj, yj] = ring[j];
-    if (yi > lat !== yj > lat && lng < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) inside = !inside;
-  }
-  return inside;
-}
 
 /**
  * A uniform grid over footprints, for "what is near this polygon".
@@ -163,9 +134,13 @@ export type LadderDecision = {
  * mean nothing. Containment either way round also handles the two real cases —
  * one OSM outline over several panden, and one pand under several parts.
  *
- * Tier 2 requires a *stacked* part (`minHeightM > 0`). An OSM outline with a
- * single height is not a three-dimensional model; it is a footprint with a
- * guessed height, and the measured extrusion beats it.
+ * Tier 2 requires a hand-mapped composition: either a stacked part
+ * (`minHeightM > 0`) or several overlapping parts with meaningfully different
+ * heights (Magna Plaza, Oude Kerk). A lone OSM outline with one guessed height
+ * is not a three-dimensional model — the measured extrusion beats it.
+ *
+ * When tier 2 wins, parent outlines are dropped from `osmIds` so the parts own
+ * the pixels alone; see `compositionDrawIds`.
  */
 export function decideTier(pand: BagFootprint, candidates: OsmFootprint[]): LadderDecision {
   const pandRing = pand.rings[0];
@@ -179,12 +154,8 @@ export function decideTier(pand: BagFootprint, candidates: OsmFootprint[]): Ladd
   }
 
   const matchedOsmIds = matches.map(match => match.osmId);
-  const stacked = matches.filter(match => match.minHeightM > 0);
-  if (stacked.length > 0) {
-    // The whole modelled composition stands in for the pand, not just the
-    // raised parts: dropping the ground-level part would leave the building
-    // floating above a hole.
-    return { tier: 2, osmIds: matchedOsmIds, matchedOsmIds };
+  if (isHandMappedComposition(matches)) {
+    return { tier: 2, osmIds: compositionDrawIds(matches), matchedOsmIds };
   }
   return { tier: 3, osmIds: [], matchedOsmIds };
 }
