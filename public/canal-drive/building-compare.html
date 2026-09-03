@@ -8,6 +8,8 @@
 <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
 <script src="js/building-style.bundle.js"></script>
 <script src="js/building-tiles.bundle.js"></script>
+<script src="js/three.bundle.js"></script>
+<script src="js/pyramidal-roofs.bundle.js"></script>
 <style>
   :root {
     --ink: #0B1F2A; --panel: rgba(10,26,36,.92); --edge: rgba(255,255,255,.14);
@@ -59,7 +61,7 @@
       <div class="map" id="left"></div>
       <div class="tag">
         <b>Today</b>
-        <span id="left-note">OpenFreeMap's extrusion at OSM or guessed heights, plus 10,578 buildings with appearance tags</span>
+        <span id="left-note">OpenFreeMap's extrusion plus the 10,578-building coloured overlay</span>
       </div>
     </div>
     <div class="pane">
@@ -72,21 +74,19 @@
   </div>
 </div>
 <script>
-// A side-by-side of what the game draws now against the staged LoD1 city.
-//
-// It reads the tiles straight out of `staging/`, so it works before anything is
-// published — which is the point: this is the page you look at to decide
-// whether publishing is worth 111 MB.
+// A side-by-side of today's overlay against the published LoD1 city.
+// Tiles live in the versioned extract (~16 MB gzipped). Pyramidal roofs —
+// the Waag turrets — are the same Three custom layer the game uses.
 const STYLE = 'https://tiles.openfreemap.org/styles/liberty';
-const STAGING = '../data/extracts/amsterdam/staging';
+const EXTRACT = '../data/extracts/amsterdam';
 
 const PLACES = [
-  { name: 'Waag',          center: [4.90034, 52.37262], zoom: 17.6, pitch: 62, bearing: -20 },
+  { name: 'Waag',          center: [4.90034, 52.37262], zoom: 17.8, pitch: 64, bearing: -28 },
+  { name: 'Oude Kerk',     center: [4.89790, 52.37430], zoom: 17.4, pitch: 62, bearing: 12 },
+  { name: 'Magna Plaza',   center: [4.89050, 52.37360], zoom: 17.2, pitch: 62, bearing: -8 },
   { name: 'Canal ring',    center: [4.88600, 52.37200], zoom: 16.2, pitch: 58, bearing: 15 },
   { name: 'Rijksmuseum',   center: [4.88520, 52.36000], zoom: 16.4, pitch: 60, bearing: 0 },
   { name: 'Jordaan',       center: [4.88100, 52.37600], zoom: 16.6, pitch: 58, bearing: -35 },
-  { name: 'Noord',         center: [4.92700, 52.39500], zoom: 15.6, pitch: 55, bearing: 0 },
-  { name: 'Watergraafsm.', center: [4.93400, 52.35200], zoom: 15.8, pitch: 55, bearing: 25 },
   { name: 'Zuidas',        center: [4.87300, 52.33800], zoom: 15.6, pitch: 58, bearing: 10 },
 ];
 const START = PLACES[0];
@@ -127,31 +127,42 @@ const ramp = (heightExpression) => ['interpolate', ['linear'], heightExpression,
 const BASEMAP_HEIGHT = ['coalesce', ['get', 'render_height'], ['get', 'height'], 9];
 const OURS_HEIGHT = ['coalesce', ['get', 'height'], 5];
 
-const themeColor = window.CanalRecallBuildings
-  ? window.CanalRecallBuildings.buildingColorExpression('clean')
-  : '#D8D3CA';
+const helpers = window.CanalRecallBuildings;
+const themeColor = helpers ? helpers.buildingColorExpression('clean') : '#D8D3CA';
+const WALL_TOP = helpers && helpers.wallTopHeightExpression
+  ? helpers.wallTopHeightExpression()
+  : ['coalesce', ['get', 'height'], 5];
+const FLAT_ROOF = helpers && helpers.flatRoofFilter
+  ? helpers.flatRoofFilter()
+  : ['has', 'roofColour'];
+
+function attachPyramids(map) {
+  const api = window.CanalRecallPyramidalRoofs;
+  if (!api || !window.CanalRecallThree) return null;
+  return new api.PyramidalRoofs(map, maplibregl);
+}
 
 /** The appearance overlay the game ships today: 10,578 tagged buildings. */
 function addTodayLayers(map) {
   map.addSource('osm-appearance', {
-    type: 'geojson', data: '../data/extracts/amsterdam/buildings-colored.geojson', generateId: true
+    type: 'geojson', data: `${EXTRACT}/buildings-colored.geojson`, generateId: true
   });
-  const height = ['coalesce', ['get', 'height'], 5];
   map.addLayer({
     id: 'today-walls', type: 'fill-extrusion', source: 'osm-appearance', minzoom: 14,
     paint: {
       'fill-extrusion-color': ['coalesce', ['get', 'sideColour'], ['get', 'colour']],
       'fill-extrusion-base': ['coalesce', ['get', 'minHeight'], 0],
-      'fill-extrusion-height': ['+', height, 0.35],
+      'fill-extrusion-height': WALL_TOP,
       'fill-extrusion-opacity': 1
     }
   });
   map.addLayer({
     id: 'today-roofs', type: 'fill-extrusion', source: 'osm-appearance', minzoom: 14,
+    filter: FLAT_ROOF,
     paint: {
       'fill-extrusion-color': ['get', 'roofColour'],
-      'fill-extrusion-base': ['+', height, 0.05],
-      'fill-extrusion-height': ['+', height, 0.7],
+      'fill-extrusion-base': ['+', WALL_TOP, 0.05],
+      'fill-extrusion-height': ['+', WALL_TOP, 0.7],
       'fill-extrusion-opacity': 1
     }
   });
@@ -167,17 +178,17 @@ function addCompleteLayers(map) {
     paint: {
       'fill-extrusion-color': ['case', ['has', 'colour'], ['to-color', ['get', 'colour'], '#D8D3CA'], themeColor],
       'fill-extrusion-base': ['coalesce', ['get', 'minHeight'], 0],
-      'fill-extrusion-height': ['coalesce', ['get', 'height'], 5],
+      'fill-extrusion-height': WALL_TOP,
       'fill-extrusion-opacity': 1
     }
   });
   map.addLayer({
     id: 'complete-roofs', type: 'fill-extrusion', source: 'complete-city', minzoom: 13,
-    filter: ['has', 'roofColour'],
+    filter: FLAT_ROOF,
     paint: {
       'fill-extrusion-color': ['to-color', ['get', 'roofColour'], '#B09999'],
-      'fill-extrusion-base': ['+', ['coalesce', ['get', 'height'], 5], 0.05],
-      'fill-extrusion-height': ['+', ['coalesce', ['get', 'height'], 5], 0.35],
+      'fill-extrusion-base': ['+', WALL_TOP, 0.05],
+      'fill-extrusion-height': ['+', WALL_TOP, 0.35],
       'fill-extrusion-opacity': 1
     }
   });
@@ -208,9 +219,16 @@ function applyColouring() {
   }
 }
 
-left.on('load', () => {
+left.on('load', async () => {
   styleBasemap(left);
   addTodayLayers(left);
+  const leftRoofs = attachPyramids(left);
+  try {
+    const collection = await fetch(`${EXTRACT}/buildings-colored.geojson`).then(r => r.json());
+    if (leftRoofs) leftRoofs.setFeatures(collection.features || []);
+  } catch (error) {
+    console.warn('coloured overlay failed to load', error);
+  }
   // Re-apply, because the toggle can be clicked before a pane has finished
   // loading. `applyColouring` skips layers that do not exist yet, so without
   // this that pane stays on its default colours for the rest of the session
@@ -226,14 +244,18 @@ right.on('load', async () => {
   const note = document.getElementById('right-note');
   const runtime = window.CanalRecallBuildingTiles;
   if (!runtime) { note.textContent = 'building-tiles.bundle.js did not load'; return; }
-  streamer = new runtime.BuildingTileStreamer(right, 'complete-city', STAGING);
+  streamer = new runtime.BuildingTileStreamer(right, 'complete-city', EXTRACT);
   if (!(await streamer.probe())) {
-    note.textContent = 'no staged tiles — run `npm run build:lod1-tiles` first';
+    note.textContent = 'no published tiles — run `npm run publish:lod1-city -- --confirm`';
     return;
   }
+  const rightRoofs = attachPyramids(right);
   // The basemap extrusion is the thing being replaced, so it goes only once
   // real buildings have arrived to replace it.
-  streamer.attach(() => right.setLayoutProperty('building-3d', 'visibility', 'none'));
+  streamer.attach(
+    () => right.setLayoutProperty('building-3d', 'visibility', 'none'),
+    (features) => { if (rightRoofs) rightRoofs.setFeatures(features); },
+  );
   const tick = () => {
     const s = streamer.status();
     note.textContent = `3DBAG footprints at AHN-measured heights · ${s.tiles} tiles, ${s.features.toLocaleString()} buildings resident`;

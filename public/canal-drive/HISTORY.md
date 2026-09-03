@@ -7,9 +7,11 @@ belongs here.
 
 Byte strategy decided: ship `.geojson.gz` (~16 MB, 298 tiles) in the versioned
 Amsterdam extract, not 113 MB of raw GeoJSON. The streamer decompresses with
-`DecompressionStream`, feeds the same working set to procedural pyramidal roofs,
-and hides Liberty `building-3d` once the first tile lands. Tiles keep
-`roofHeight` so Waag eaves still stop under the cones. Publish is
+`DecompressionStream` (and still works if the host already decoded Content-Encoding),
+feeds the same working set to procedural pyramidal roofs, and hides Liberty
+`building-3d` once the first tile lands. Tiles keep `roofHeight` so Waag eaves
+still stop under the cones. The compare page at `/canal-drive/building-compare.html`
+now reads the published extract and draws the same cones. Publish is
 `npm run publish:lod1-city -- --confirm` from staging.
 
 ## One owner per building composition — LoD1 blockers cleared

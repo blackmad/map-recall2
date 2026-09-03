@@ -27,10 +27,15 @@ type MapLike = {
 
 /** Decompress a published `.geojson.gz` tile into a FeatureCollection. */
 async function readGzippedGeoJson(response: Response): Promise<{ features?: BuildingFeature[] }> {
-  if (!response.body || typeof DecompressionStream === 'undefined') {
+  const bytes = new Uint8Array(await response.arrayBuffer());
+  const gzipped = bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b;
+  if (!gzipped) {
+    return JSON.parse(new TextDecoder().decode(bytes)) as { features?: BuildingFeature[] };
+  }
+  if (typeof DecompressionStream === 'undefined') {
     throw new Error('gzip building tiles need DecompressionStream');
   }
-  const stream = response.body.pipeThrough(new DecompressionStream('gzip'));
+  const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
   const text = await new Response(stream).text();
   return JSON.parse(text) as { features?: BuildingFeature[] };
 }
