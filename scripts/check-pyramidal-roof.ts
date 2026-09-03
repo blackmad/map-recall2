@@ -5,6 +5,7 @@
 import assert from 'node:assert/strict';
 import {
   eavesHeightM,
+  effectiveRoofHeightM,
   pyramidalRoofMesh,
   wantsPyramidalRoof,
 } from '../src/canalRecall/pyramidalRoof.js';
@@ -19,8 +20,11 @@ assert.equal(eavesHeightM(12, 0), 12);
 assert.equal(eavesHeightM(12, null), 12);
 
 assert.equal(wantsPyramidalRoof({ roofShape: 'pyramidal', height: 26, roofHeight: 10 }), true);
-assert.equal(wantsPyramidalRoof({ roofShape: 'pyramidal', height: 26, roofHeight: 0 }), false);
+assert.equal(wantsPyramidalRoof({ roofShape: 'pyramidal', height: 26, roofHeight: 0 }), true,
+  'untagged pyramidal still gets an invented tip (Oude Kerk spire)');
 assert.equal(wantsPyramidalRoof({ roofShape: 'gabled', height: 26, roofHeight: 10 }), false);
+assert.equal(effectiveRoofHeightM({ roofShape: 'pyramidal', height: 58, minHeight: 40 }), 6.3);
+assert.equal(effectiveRoofHeightM({ roofShape: 'pyramidal', height: 26, roofHeight: 10 }), 10);
 
 const square = [[0, 0], [0.001, 0], [0.001, 0.001], [0, 0.001], [0, 0]];
 const mesh = pyramidalRoofMesh({
@@ -66,7 +70,13 @@ assert.ok(Number.isFinite(mesh.originLng) && Number.isFinite(mesh.originLat));
 
 const wall = wallTopHeightExpression();
 assert.equal(wall[0], 'case');
+assert.equal(JSON.stringify(wall[1]), JSON.stringify(['>', ['coalesce', ['get', 'roofHeight'], 0], 0]),
+  'tagged roofHeight stops the wall at the eaves');
+assert.equal(JSON.stringify(wall[3]), JSON.stringify(['==', ['get', 'roofShape'], 'pyramidal']),
+  'untagged pyramidal still gets an invented tip');
 const flat = flatRoofFilter();
 assert.equal(flat[0], 'all');
+assert.ok(JSON.stringify(flat).includes('pyramidal'), 'pyramidal lids are filtered out');
+assert.ok(JSON.stringify(flat).includes('roofColour'), 'same-colour lids are filtered out');
 
 process.stdout.write('Pyramidal roof checks passed\n');

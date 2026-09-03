@@ -52,6 +52,12 @@ on raw Amsterdam lng/lat (area ~1e-8) is numerically unstable, so a regular
 11 m turret got radii of 1–10 m and the fan looked like a shard. `ringCentroid`
 now translates to the first vertex before the area sum; Waag radii stay ~5.5 m.
 
+**Oude Kerk stops fighting its own roof lids.** Gabled parts carry `roof:height`
+too; walls used to extrude to the ridge while a blue cap sat in the same plane —
+brown/blue shimmer. Walls now stop at the eaves for any tagged roof thickness,
+same-colour lids are skipped, and untagged `roof:shape=pyramidal` (the 58 m
+spire) invents a tip so OSM Buildings' cone is not a grey cylinder.
+
 ## Street encyclopedia is no longer just Nes
 
 `street-knowledge.json` had one street. `streets.json` already carried

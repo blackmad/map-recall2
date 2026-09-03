@@ -9,6 +9,7 @@
  */
 import {
   eavesHeightM,
+  effectiveRoofHeightM,
   pyramidalRoofMesh,
   wantsPyramidalRoof,
 } from '../../../src/canalRecall/pyramidalRoof.ts';
@@ -95,7 +96,7 @@ export class PyramidalRoofs {
       const heightM = (maxLat - minLat) * 111320;
       if (!(widthM > 0.5) || !(heightM > 0.5) || widthM > 40 || heightM > 40) continue;
       const height = Number(props.height);
-      const roofHeight = Number(props.roofHeight);
+      const roofHeight = effectiveRoofHeightM(props);
       const eaves = eavesHeightM(height, roofHeight);
       const meshData = pyramidalRoofMesh({
         ring,
@@ -176,4 +177,4 @@ export class PyramidalRoofs {
   }
 }
 
-window.CanalRecallPyramidalRoofs = { PyramidalRoofs, eavesHeightM, wantsPyramidalRoof };
+window.CanalRecallPyramidalRoofs = { PyramidalRoofs, eavesHeightM, effectiveRoofHeightM, wantsPyramidalRoof };
