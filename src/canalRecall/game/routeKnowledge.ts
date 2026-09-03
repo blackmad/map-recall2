@@ -34,3 +34,28 @@ export function routeKnowledgeFor(
   return index.get(`${type}:${key}`)
     || index.get(`${type === 'street' ? 'water' : 'street'}:${key}`);
 }
+
+export interface StreetKnowledgeOfferInput {
+  /** Wikipedia URL or extract — otherwise there is nothing to put on the card. */
+  hasExtract: boolean;
+  /** Once per named street per drive, same idea as `_seenLandmarks`. */
+  alreadyShownThisDrive: boolean;
+  /** The card names the street; it must not sit next to an unanswered quiz. */
+  quizOpen: boolean;
+  /** Neighborhood and landmark cards keep the bottom band; do not stack. */
+  landmarkCardOpen: boolean;
+  /** After a quiz answer the encyclopedia may replace whatever card is up. */
+  replaceOpenCard?: boolean;
+}
+
+/**
+ * Encyclopedia on a named street is allowed after a quiz answer, or when a
+ * known name is adopted silently. Novel streets stay quiet until answered —
+ * the card would otherwise reveal the name under question.
+ */
+export function shouldOfferStreetKnowledge(input: StreetKnowledgeOfferInput): boolean {
+  if (!input.hasExtract || input.alreadyShownThisDrive) return false;
+  if (input.quizOpen) return false;
+  if (input.landmarkCardOpen && !input.replaceOpenCard) return false;
+  return true;
+}

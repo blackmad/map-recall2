@@ -3,6 +3,51 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## One teaching surface at a time
+
+A single frame could show a waterway quiz, stale “Not quite — …” feedback, a
+museum card, dense POI labels, and a duplicated trip readout. `teachingSurface.ts`
+now gates the bottom band: quiz / answer-hold / utility own it; landmark and
+neighbourhood cards wait. Opening a question clears cards and feedback; feedback
+clears when the hold ends. Desktop trip lives only in the bottom pill. POI name
+labels and the minimap hide while a prompt is up. The quiz card is tighter
+(360px) so more of the canal stays visible.
+
+## Postcard text no longer sits under the photo fade
+
+The neighbourhood card measured text at `x+158` while drawing a 144 px photo
+and a navy fade out to `x+170` — leftover from the dark-card era — so names
+like Weesperbuurt started inside the image. Text now clears the photo, and the
+fade blends into cream paper inside the photo edge. Locator-map Wikipedia
+thumbnails (`Map_NL_-_Amsterdam_-…`) are rejected as non-photos so a parent
+district photograph can be borrowed; Weesperbuurt’s page image was exactly that
+kind of map.
+
+## Canal sloop paint, not bare aluminium
+
+The Meshy boat GLB still has no materials — one mesh, one primitive — so colour
+has always been applied on load. The old flat `#b8c0c6` aluminium made it read
+as an unfinished placeholder from chase view. Height-based vertex colours now
+paint a classic Amsterdam rental sloep: dark green hull, cream seats, pale
+gunwale, with low metalness so it looks painted fibreglass rather than metal.
+The canvas 2D fallback matches. A multi-material swap still wants a new GLB.
+
+## Photoreal follows game zoom, not a fake cycling height
+
+The 25 m gate never bound: MapLibre altitude at play zoom is 95–520 m, so
+ticking the option always drew Google's mesh. The spike's metres were a free
+camera above the quay. The live gate now reads `camera.zoom` — default 0.50
+and anything street-ward stays on 3DBAG; zooming out through 0.32 turns the
+mesh on, and zooming back in past 0.38 hands the city back, with the same
+hysteresis idea as before. Named check: play zoom requests no Google tiles.
+
+## Street encyclopedia on known streets, still silent on novel ones
+
+Cards still must not name a street that is under question. They now also open
+when a Wikipedia-linked street or water is adopted silently (already known),
+once per drive, and still after a quiz answer. An open landmark card blocks
+the silent-adopt path so the bottom band does not stack.
+
 ## Street encyclopedia is no longer just Nes
 
 `street-knowledge.json` had one street. `streets.json` already carried
@@ -10,8 +55,8 @@ Wikipedia URLs for 30 of 300 streets, but `enrich-amsterdam-wikimedia.ts`
 threw away Dutch intros, so 21 of those were a link with no card text.
 The Wikipedia extract pass now includes streets, water, squares and parks;
 Dutch ledes are kept and tagged, then translated. Amsterdam ships 48 street
-and 98 water encyclopedia records with English blurbs. Cards still only open
-after a quiz answer — showing them when you turn onto a new street is item 7.
+and 98 water encyclopedia records with English blurbs. When those cards open
+is the later note above.
 
 ## Basemap duplicates near the extract are hidden by proximity too
 

@@ -96,18 +96,23 @@
     }
     return landmarks;
   }
+  function isLocatorMapImage(url) {
+    if (!url) return false;
+    return /Map[_-]NL[_-]|Map_-_NL[_-]|\/Map_NL_|locator.?map|_kaart\./i.test(url);
+  }
   function buildNeighborhoods(boundaries, enrichments, toWorld) {
     const enrichmentByName = new Map(enrichments.map((entry) => [entry.name, entry]));
     const neighborhoods = boundaries.filter((boundary) => boundary.geometry && NEIGHBORHOOD_KIND_RANKS[boundary.kind]).map((boundary) => {
       const enriched = enrichmentByName.get(boundary.name);
+      const rawUrl = enriched?.imageUrl || "";
       return {
         name: boundary.name,
         kind: boundary.kind,
         rank: NEIGHBORHOOD_KIND_RANKS[boundary.kind],
         rings: (boundary.geometry || []).map((polygon) => (polygon[0] || []).map(toWorld)).filter((ring) => ring.length > 2),
         wikipediaExtract: enriched?.wikipediaExtract || "",
-        imageUrl: enriched?.imageUrl || "",
-        imageAttribution: enriched?.imageAttribution || ""
+        imageUrl: isLocatorMapImage(rawUrl) ? "" : rawUrl,
+        imageAttribution: isLocatorMapImage(rawUrl) ? "" : enriched?.imageAttribution || ""
       };
     }).filter((hood) => hood.rings.length).sort((a, b) => b.rank - a.rank);
     for (const hood of neighborhoods) {
@@ -371,6 +376,23 @@
     const key = normalise(name);
     return index.get(`${type}:${key}`) || index.get(`${type === "street" ? "water" : "street"}:${key}`);
   }
+  function shouldOfferStreetKnowledge(input) {
+    if (!input.hasExtract || input.alreadyShownThisDrive) return false;
+    if (input.quizOpen) return false;
+    if (input.landmarkCardOpen && !input.replaceOpenCard) return false;
+    return true;
+  }
+
+  // src/canalRecall/game/teachingSurface.ts
+  function teachingOwnsBottom(input) {
+    return input.quizOpen || input.feedbackVisible || input.promptVisible || input.utilityOpen;
+  }
+  function canShowTeachingCard(input) {
+    return !teachingOwnsBottom(input);
+  }
+  function canShowMiniMap(enabled, input) {
+    return enabled && !teachingOwnsBottom(input);
+  }
 
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
@@ -559,7 +581,7 @@
       if (!notice || !notice.wikipediaUrl) return;
       window.open(notice.wikipediaUrl, "_blank", "noopener");
     }
-    _showStreetKnowledge(name, type = "street") {
+    _showStreetKnowledge(name, type = "street", replaceOpenCard = false) {
       const key = this._normaliseCanalName(name);
       const entry = routeKnowledgeFor(
         this.streetKnowledge,
@@ -569,6 +591,15 @@
       );
       if (!entry) return;
       const noticeId = entry.id || `${type}-knowledge:${key}`;
+      this._seenStreetKnowledge = this._seenStreetKnowledge || /* @__PURE__ */ new Set();
+      if (!shouldOfferStreetKnowledge({
+        hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract),
+        alreadyShownThisDrive: this._seenStreetKnowledge.has(noticeId),
+        quizOpen: !!this.quizPromptName,
+        landmarkCardOpen: !!this._landmarkNotice,
+        replaceOpenCard
+      })) return;
+      this._seenStreetKnowledge.add(noticeId);
       const split = splitDetail(entry.wikipediaExtract || "");
       this._showLandmarkNotice({
         id: noticeId,
@@ -713,7 +744,7 @@
       if (this.currentNeighborhood) this._visitedNeighborhoods.add(this.currentNeighborhood);
       if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
         this._previousNeighborhood = this.currentNeighborhood;
-        if (!this.quizPromptName && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+        if (canShowTeachingCard(this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
           if (hood) this._ensureNeighborhoodImage(hood);
           this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
           this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
@@ -732,6 +763,7 @@
         }
       }
       if (this._landmarkNotice) return;
+      if (!canShowTeachingCard(this._teachingGate())) return;
       if (nearest) {
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);
@@ -778,6 +810,7 @@
       const lm = this._landmarkNotice;
       this._landmarkCardBounds = null;
       if (!lm) return;
+      if (!canShowTeachingCard(this._teachingGate())) return;
       const ctx = this.ctx;
       const alpha = this._landmarkNoticeAlpha;
       if (alpha <= 0) return;
@@ -797,7 +830,7 @@
         hasArticle: !!lm.wikipediaUrl,
         hasImage
       }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
-      const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
+      const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) && canShowTeachingCard(this._teachingGate());
       const bottomLayout = window.CanalRecallUi.hudLayout({
         viewport: this.viewport,
         tripWidth: 180,
@@ -806,7 +839,7 @@
         landmarkHeight: card.height,
         feedbackVisible: !!this.quizFeedback,
         neighborhoodVisible: !!this.currentNeighborhood,
-        minimapVisible: this.showMiniMap,
+        minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
         zoomVisible: this._zoomBadgeTimer > 0,
         controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
       });
@@ -871,7 +904,7 @@
     _renderNeighborhoodNotice() {
       const hood = this._neighborhoodNotice;
       if (!hood || this._neighborhoodNoticeTimer <= 0) return;
-      if (this.quizPromptName) return;
+      if (!canShowTeachingCard(this._teachingGate())) return;
       const ctx = this.ctx;
       const duration = NEIGHBORHOOD_NOTICE_SECONDS;
       const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);
@@ -892,7 +925,7 @@
         tripWidth: 180,
         postcardHeight: card.height,
         neighborhoodVisible: !!this.currentNeighborhood,
-        minimapVisible: this.showMiniMap
+        minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate())
       });
       const cardX = bottomLayout.postcard.x;
       const baseCardY = bottomLayout.postcard.y;

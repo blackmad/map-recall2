@@ -186,4 +186,6 @@ export interface VectorMap {
   setActiveLandmark(landmark: LandmarkNotice | null): void;
   setPlaces(landmarks: unknown, boundaries: unknown): void;
   setBrandedPois(pois: unknown): void;
+  /** Hide dense place labels while a quiz owns the corridor. */
+  setQuizQuietMap(quiet: boolean): void;
 }

@@ -121,6 +121,8 @@ const stub = (text: string, font: string) => {
   assert.ok(long.nameFontSize >= 16, 'but never below the readable floor');
   assert.equal(short.heading, 'ENTERING NEIGHBORHOOD');
   assert.equal(measurePostcard({ name: 'De Pijp', kind: 'quarter' }, stub).heading, 'ENTERING QUARTER');
+  assert.ok(short.textLeft >= short.photoWidth,
+    'the name starts at or past the photo edge, never under it');
 }
 
 // A borrowed photo is credited to the district it was actually taken in.

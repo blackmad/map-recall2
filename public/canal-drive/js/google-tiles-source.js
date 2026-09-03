@@ -1,12 +1,10 @@
 /**
  * Google Photorealistic 3D Tiles, for the overview camera only.
  *
- * Measured before it was built (see HISTORY.md): Google's mesh is excellent
- * from ~25 m up and unusable at cycling height, where trees collapse to blobs
- * and the quay melts. It also returns anonymous triangle soup, so nothing in it
- * can be highlighted as a correct answer or carry a fact card. Both limits push
- * the same way, so this layer deliberately only exists above ACTIVATION_METERS
- * and hands back to 3DBAG below it, where the player actually rides.
+ * At street zoom the mesh smears and carries no building identity, so the
+ * live gate in `photorealGate.ts` keys off game `camera.zoom`, not metres.
+ * This module still only exists to draw the tileset once that gate says yes.
+ *
  *
  * ESM rather than IIFE, unlike its sibling 3D bundles: three's DRACOLoader
  * resolves decoder paths at module top level via `new URL(..., import.meta.url)`,
@@ -26,8 +24,8 @@ const { THREE, MeshoptDecoder } = window.CanalRecallThree;
 // it in the Cloud console rather than by editing a copy into some other file.
 const API_KEY = 'AIzaSyBURh1hjGzFqELADfruqrDPhEpl1lRnrPk';
 
-// Below this camera altitude the mesh stops being worth its cost. 25 m is where
-// the measured screenshots still read cleanly; 10 m was already smearing.
+// Re-exported so older tests can still find a number on this module; the live
+// gate is `CanalRecallPhotorealGate.ACTIVATION_ZOOM`.
 export const ACTIVATION_METERS = 25;
 
 const DRACO_DECODER_PATH = 'https://www.gstatic.com/draco/versioned/decoders/1.5.6/';
