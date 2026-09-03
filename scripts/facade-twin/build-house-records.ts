@@ -15,13 +15,13 @@
 import { readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import {
-  buildRecordFromRecon, summariseReconBuild,
+  applyHeritageEvidence, buildRecordFromRecon, summariseReconBuild,
   type BuildRecordInput, type BuiltRecord, type SourceDescriptor,
 } from '../../src/canalRecall/facade/buildRecord.ts';
 import { summariseCoverage, type Observation } from '../../src/canalRecall/facade/evidence.ts';
 import { auditHouse, fieldsOf, validateHouse } from '../../src/canalRecall/facade/houseRecord.ts';
 import { classifyObservationTier, evidenceCeiling } from '../../src/canalRecall/facade/observationTier.ts';
-import type { MassingRecord, RegistryBuilding } from '../../src/canalRecall/facade/sources.ts';
+import type { HeritageRecord, MassingRecord, RegistryBuilding } from '../../src/canalRecall/facade/sources.ts';
 
 const argument = (name: string) =>
   process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -40,6 +40,7 @@ interface ReconFile {
   };
   buildings: RegistryBuilding[];
   massing: MassingRecord[];
+  heritage: HeritageRecord[];
 }
 
 const recon = JSON.parse(await readFile(reconFile, 'utf8')) as ReconFile;
@@ -56,6 +57,7 @@ const descriptor = (key: string, fallbackId: string): SourceDescriptor => {
 
 const registry = descriptor('registry', 'registry');
 const massingSource = descriptor('massing', 'massing');
+const heritageSource = descriptor('heritage', 'heritage');
 
 const massingByBuilding = new Map(recon.massing.map(row => [row.buildingId, row]));
 // The registry's read date. Every registry-sourced field is dated by it, so the
@@ -71,6 +73,27 @@ const rows: BuildRecordInput[] = recon.buildings.map(building => ({
 }));
 
 const built: BuiltRecord[] = rows.map(buildRecordFromRecon);
+
+// A heritage description is the only façade evidence available before imagery,
+// and it reaches 636 of these buildings. Applied after massing so the gable
+// lands on a record that already has its footprint and silhouette.
+const heritageByBuilding = new Map<string, HeritageRecord[]>();
+for (const record of recon.heritage ?? []) {
+  if (!record.buildingId) continue;
+  const bucket = heritageByBuilding.get(record.buildingId);
+  if (bucket) bucket.push(record);
+  else heritageByBuilding.set(record.buildingId, [record]);
+}
+
+const heritageApplied = new Map<string, number>();
+for (const entry of built) {
+  const records = heritageByBuilding.get(entry.house.pandId);
+  if (!records) continue;
+  const evidence = applyHeritageEvidence(entry.house, records, registryReadAt, heritageSource);
+  entry.observations.push(...evidence.observations);
+  entry.notes.push(...evidence.notes);
+  for (const field of evidence.applied) heritageApplied.set(field, (heritageApplied.get(field) ?? 0) + 1);
+}
 
 // Audit every record against its own observations. A violation here is a bug in
 // the constructor, not a data problem, so it fails the build rather than being
@@ -105,6 +128,10 @@ const report = {
     note: 'Footprint and massing only. Every façade field is defaulted until a street-level or heritage observation exists; that is coverage, not a defect.',
   },
   summary,
+  heritage: {
+    buildingsWithRecord: heritageByBuilding.size,
+    fieldsApplied: Object.fromEntries(heritageApplied),
+  },
   observationTiers: Object.fromEntries([...tiers.entries()].sort((a, b) => b[1] - a[1])),
   evidenceViolations: violations.length,
   recordProblems: problems.slice(0, 50),
@@ -136,6 +163,7 @@ process.stdout.write(`  impossible heights ${summary.impossibleHeights} — ridg
 process.stdout.write(`  storeys            ${summary.withStoreys} (${percent(summary.withStoreys, summary.buildings)}%)\n`);
 process.stdout.write(`  year unknown       ${summary.unknownConstructionYear} (${percent(summary.unknownConstructionYear, summary.buildings)}%)\n`);
 process.stdout.write(`  mean ridge conf.   ${summary.meanHeightConfidence}\n`);
+process.stdout.write(`  heritage records   ${heritageByBuilding.size} buildings; applied ${JSON.stringify(Object.fromEntries(heritageApplied))}\n`);
 process.stdout.write(`  observation tiers  ${JSON.stringify(report.observationTiers)}\n`);
 
 const unobserved = coverage.filter(entry => entry.share === 0);

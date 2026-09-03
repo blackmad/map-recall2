@@ -21,7 +21,8 @@
 
 import { measured, type Measured, type Observation } from './evidence.ts';
 import { unobservedHouse, type CanalHouse } from './houseRecord.ts';
-import type { MassingRecord, RegistryBuilding } from './sources.ts';
+import { readGable, readHoistBeam } from './heritageText.ts';
+import type { HeritageRecord, MassingRecord, RegistryBuilding } from './sources.ts';
 
 /** Provenance of one source, as the recon metadata publishes it. */
 export interface SourceDescriptor {
@@ -389,4 +390,79 @@ export function summariseReconBuild(
     meanHeightConfidence: confidences.length === 0 ? 0
       : Number((confidences.reduce((sum, value) => sum + value, 0) / confidences.length).toFixed(3)),
   };
+}
+
+/**
+ * Apply a heritage register's descriptions to a record.
+ *
+ * Kept separate from {@link buildRecordFromRecon} because it is a different
+ * *kind* of evidence: a conservator's sentence about a façade, which sees
+ * things no roof reconstruction can and states almost nothing in metres. Per
+ * `FIELD_SOURCES`, `monument-text` may supply a gable, a cornice, dressings and
+ * a hoist beam, and may never supply a bay offset or a lean.
+ *
+ * A building can carry several heritage records — 1,493 records over 989
+ * buildings inside the pilot — so this reads all of them and refuses when they
+ * disagree about the front gable rather than picking the most confident.
+ * Two records contradicting each other is exactly the case a human should see.
+ */
+export interface HeritageEvidence {
+  observations: Observation[];
+  applied: string[];
+  notes: string[];
+}
+
+export function applyHeritageEvidence(
+  house: CanalHouse,
+  records: readonly HeritageRecord[],
+  readAt: string,
+  source: SourceDescriptor,
+): HeritageEvidence {
+  const observations: Observation[] = [];
+  const applied: string[] = [];
+  const notes: string[] = [];
+
+  const described = records.filter(record => record.description && record.description.trim());
+  if (described.length === 0) return { observations, applied, notes };
+
+  const observationFor = (record: HeritageRecord): Observation => {
+    const observation: Observation = {
+      id: `${source.id}:${record.heritageId}`,
+      pandId: house.pandId,
+      kind: 'monument-record',
+      elevation: 'front',
+      // The register publishes no per-record date in this feed, so the
+      // observation is dated by the day it was read. Recorded as such rather
+      // than left blank: a description read today may describe a 1970s survey,
+      // and that uncertainty belongs in review, not in a fabricated date.
+      capturedAt: readAt,
+      sourceUrl: record.recordUrl,
+      license: source.license,
+    };
+    observations.push(observation);
+    return observation;
+  };
+
+  const readings = described
+    .map(record => ({ record, reading: readGable(record.description) }))
+    .filter(entry => entry.reading.gable !== null);
+
+  const distinct = new Set(readings.map(entry => entry.reading.gable));
+  if (distinct.size > 1) {
+    notes.push(`heritage records disagree about the front gable (${[...distinct].join(', ')}); left unobserved for review`);
+  } else if (readings.length > 0) {
+    const best = readings.reduce((a, b) => (b.reading.confidence > a.reading.confidence ? b : a));
+    house.gable = measured(best.reading.gable!, 'monument-text', best.reading.confidence, observationFor(best.record));
+    applied.push('gable');
+  }
+
+  // Presence only. The register records what is notable, not what is ordinary,
+  // so silence about a hoisting beam is not evidence that there is none.
+  const withHoist = described.find(record => readHoistBeam(record.description));
+  if (withHoist) {
+    house.hoistBeam = measured(true, 'monument-text', 0.8, observationFor(withHoist));
+    applied.push('hoistBeam');
+  }
+
+  return { observations, applied, notes };
 }
