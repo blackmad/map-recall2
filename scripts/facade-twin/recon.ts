@@ -15,7 +15,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { findArea, SURVEY_AREAS } from '../../src/canalRecall/facade/areas.ts';
 import { dutchSources } from '../../src/canalRecall/facade/sources/netherlands.ts';
-import type { CitySources, HeritageRecord, LngLat, MassingRecord, ProjectedPoint, RegistryBuilding } from '../../src/canalRecall/facade/sources.ts';
+import type { CitySources, HeritageRecord, LngLat, MassingRecord, ProjectedPoint, RegistryBuilding, SemanticsRecord } from '../../src/canalRecall/facade/sources.ts';
 import { containsPoint, intersectsArea, resolveArea, type NamedWay, type ResolvedArea, type SurveyArea } from '../../src/canalRecall/facade/surveyArea.ts';
 import { loadNamedWays } from './fetch-area-features.ts';
 
@@ -184,6 +184,50 @@ async function reconnoitre(area: SurveyArea) {
     }
   }
 
+  // ---- Stage 4: hand-mapped semantics -----------------------------------
+  let semantics: SemanticsRecord[] = [];
+  if (sources.semantics) {
+    const fetched = await cached(`${area.areaId}-semantics.json`, () => sources.semantics!.fetchSemantics(resolved.bboxLngLat));
+    semantics = fetched.filter((r: SemanticsRecord) => ids.has(r.buildingId));
+    const authored = semantics.filter(r => !r.imported);
+    const composed = semantics.filter(r => r.partCount > 1);
+
+    console.log(`\n  ${sources.semantics.name}`);
+    console.log(`    ${semantics.length}/${measured.length} buildings matched by registry id (${(100 * semantics.length / measured.length).toFixed(1)}%)`);
+    console.log(`    ${authored.length} carry hand-authored tags beyond the bulk import (${(100 * authored.length / Math.max(1, semantics.length)).toFixed(1)}%)`);
+    console.log(`    ${composed.length} have a mapped multi-part composition an automated rebuild would flatten`);
+
+    const tagCounts = new Map<string, number>();
+    for (const record of semantics) for (const tag of record.manualTags) tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+    const interesting = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12);
+    if (interesting.length) {
+      console.log('    hand-added tags worth preserving:');
+      for (const [tag, count] of interesting) console.log(`      ${tag.padEnd(24)} ${count}`);
+    }
+
+    /**
+     * Where OSM's storey count and the measured massing disagree.
+     *
+     * The build prompt flags this as a signal rather than an error: on a canal
+     * house a levels/height mismatch usually means a *souterrain*, a raised
+     * *bel-étage* or a rear annex — exactly the features that decide where the
+     * front door sits and how the ground floor reads. Reported, never resolved
+     * automatically.
+     */
+    if (massingRecords.length) {
+      const byId = new Map(massingRecords.map(m => [m.buildingId, m]));
+      const comparable = semantics
+        .filter(r => r.levels !== null && byId.get(r.buildingId)?.storeys != null)
+        .map(r => ({ id: r.buildingId, osm: r.levels!, measured: byId.get(r.buildingId)!.storeys! }));
+      const disagree = comparable.filter(c => c.osm !== c.measured);
+      console.log(`    storey count: ${comparable.length} buildings carry both an OSM level count and a measured one`);
+      if (comparable.length) {
+        const osmLower = disagree.filter(c => c.osm < c.measured).length;
+        console.log(`      ${disagree.length} disagree — ${osmLower} where OSM counts fewer (a souterrain or bel-étage signal), ${disagree.length - osmLower} where it counts more`);
+      }
+    }
+  }
+
   const directory = path.join(STAGING, area.areaId);
   await mkdir(directory, { recursive: true });
   await writeFile(path.join(directory, 'recon.json'), JSON.stringify({
@@ -196,6 +240,7 @@ async function reconnoitre(area: SurveyArea) {
         registry: { id: sources.registry.id, name: sources.registry.name, license: sources.registry.license },
         massing: sources.massing && { id: sources.massing.id, name: sources.massing.name, license: sources.massing.license, vintage: sources.massing.vintage },
         heritage: sources.heritage && { id: sources.heritage.id, name: sources.heritage.name, license: sources.heritage.license },
+        semantics: sources.semantics && { id: sources.semantics.id, name: sources.semantics.name, license: sources.semantics.license },
       },
       areaKm2: Number(resolved.areaKm2.toFixed(4)),
       bboxLngLat: resolved.bboxLngLat,
@@ -203,6 +248,9 @@ async function reconnoitre(area: SurveyArea) {
       activeBuildings: active.length,
       massingMatched: massingRecords.length,
       heritageListings: heritage.length,
+      semanticsRecords: semantics.length,
+      handAuthoredSemantics: semantics.filter(r => !r.imported).length,
+      mappedCompositions: semantics.filter(r => r.partCount > 1).length,
     },
     boundary: { ringLngLat: resolved.ringLngLat, legs: resolved.legs, junctions: resolved.junctions },
     buildings: measured.map(b => ({
@@ -219,6 +267,7 @@ async function reconnoitre(area: SurveyArea) {
     })),
     massing: massingRecords,
     heritage,
+    semantics,
   }));
   // The boundary also ships as plain GeoJSON, so it can be dropped straight
   // onto a map without parsing the recon payload.
@@ -245,7 +294,7 @@ async function reconnoitre(area: SurveyArea) {
     ],
   }, null, 2) + '\n');
   console.log(`\n  wrote ${path.relative(process.cwd(), directory)}/{recon.json,boundary.geojson}`);
-  return { area, resolved, buildings: measured.length, massing: massingRecords.length, heritage: heritage.length };
+  return { area, resolved, buildings: measured.length, massing: massingRecords.length, heritage: heritage.length, semantics: semantics.length };
 }
 
 const requested = arg('area');
@@ -255,5 +304,5 @@ for (const area of areas) summaries.push(await reconnoitre(area));
 
 console.log(`\n${'='.repeat(72)}\nSummary`);
 for (const s of summaries) {
-  console.log(`  ${s.area.areaId.padEnd(34)} ${String(s.buildings).padStart(5)} buildings  ${String(s.massing).padStart(5)} massing  ${String(s.heritage).padStart(5)} listings  ${s.resolved.areaKm2.toFixed(3)} km²`);
+  console.log(`  ${s.area.areaId.padEnd(34)} ${String(s.buildings).padStart(5)} buildings  ${String(s.massing).padStart(5)} massing  ${String(s.heritage).padStart(5)} listings  ${String(s.semantics).padStart(5)} osm  ${s.resolved.areaKm2.toFixed(3)} km²`);
 }

@@ -146,6 +146,49 @@ export interface HeritageSource {
   fetchHeritage(bbox: BboxLngLat): Promise<HeritageRecord[]>;
 }
 
+/**
+ * Hand-mapped semantics for a building: what people have deliberately said
+ * about it, as distinct from what a register measured.
+ *
+ * This is a source in its own right because of a rule in `LOD.md` that is easy
+ * to violate: manual geometry must be consulted *before* any fidelity tier is
+ * chosen, and an automated reconstruction must never silently flatten a
+ * carefully mapped tower, wing, passage or courtyard. To honour that, the
+ * pipeline has to know which of these facts a human actually authored — a
+ * bulk-imported copy of the same register is not independent evidence, and
+ * treating it as such is how a pipeline ends up confirming itself.
+ */
+export interface SemanticsRecord {
+  buildingId: string;
+  /** Native id of the feature carrying these tags, e.g. 'way/12345'. */
+  featureId: string;
+  name: string | null;
+  levels: number | null;
+  roofLevels: number | null;
+  roofShape: string | null;
+  height: number | null;
+  material: string | null;
+  colour: string | null;
+  startDate: string | null;
+  /**
+   * Sub-volumes mapped by hand: towers, wings, podiums, stacked masses.
+   * More than one means a BAG-only pipeline would flatten a real composition.
+   */
+  partCount: number;
+  /** True when the tags came from a bulk import rather than a person. */
+  imported: boolean;
+  importSource: string | null;
+  /** Tags a person added on top of any import — the part worth preserving. */
+  manualTags: string[];
+}
+
+export interface SemanticsSource {
+  readonly id: string;
+  readonly name: string;
+  readonly license: string;
+  fetchSemantics(bbox: BboxLngLat): Promise<SemanticsRecord[]>;
+}
+
 /** Everything reconnaissance needs to know about where it is working. */
 export interface CitySources {
   readonly cityId: string;
@@ -153,4 +196,5 @@ export interface CitySources {
   readonly registry: BuildingRegistry;
   readonly massing: MassingSource | null;
   readonly heritage: HeritageSource | null;
+  readonly semantics: SemanticsSource | null;
 }
