@@ -586,6 +586,7 @@
         this._fetchEnglishStreetSummary(entry).then((split2) => {
           if (!split2) return;
           if (!this._landmarkNotice || this._landmarkNotice.id !== noticeId) return;
+          if (this._landmarkNotice.detail || this._landmarkNotice.longDetail) return;
           this._landmarkNotice = {
             ...this._landmarkNotice,
             detail: split2.detail,
