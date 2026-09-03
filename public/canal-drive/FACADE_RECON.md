@@ -1,8 +1,8 @@
 # M0 reconnaissance — Amsterdam façade twin, pilot boundary
 
-Status: **M0 complete for RECON-1, RECON-2 and RECON-3.** RECON-4 (OSM
-semantics), RECON-5 (PDOK ortho roof colour) and RECON-6…10 (per-building façade
-survey, quay/water) are not started.
+Status: **M0 complete for RECON-1 through RECON-4.** RECON-5 (PDOK ortho roof
+colour) and RECON-6…10 (per-building façade survey, quay/water) are not
+started.
 
 Every number here is measured from the sources named beside it. Where this
 document contradicts an estimate in
@@ -356,10 +356,74 @@ Descriptions are kept as the register's original Dutch, verbatim, as provenance.
 
 ---
 
+## RECON-4 — hand-mapped OSM semantics
+
+Source: **OpenStreetMap via Overpass**, ODbL 1.0. Joined to BAG by the `ref:bag`
+tag, which Dutch OSM carries on essentially every building — a direct key, no
+spatial matching needed.
+
+`LOD.md` makes this stage blocking rather than optional: manual OSM geometry
+must be consulted *before* any fidelity tier is chosen, and an automated
+reconstruction must never silently flatten a mapped tower, wing, passage or
+courtyard. `LOD.md`'s own "Blocker 1" is that the existing resolver reads only
+the colour-tagged subset and so never sees most manual work. This stage ingests
+every building and `building:part` in the boundary instead.
+
+- **2,907 of 3,025** buildings matched by `ref:bag` — **96.1%**
+- **221 (7.6%)** carry hand-authored tags beyond the bulk import
+- **9** have a mapped multi-part composition an automated rebuild would flatten
+
+### Most of Dutch OSM here is BAG wearing a different hat
+
+The single most important thing to know about this source in the Netherlands:
+large parts of it are a **bulk import of BAG, with heights copied from 3DBAG**.
+Those tags look like independent corroboration and are nothing of the kind. A
+pipeline that counts an imported `height` as a second opinion on a 3DBAG height
+is agreeing with itself and calling it evidence.
+
+So the adapter records, per building, whether the tags came from an import and
+which tags a person added on top. Only that second list is evidence. Across the
+pilot it is small but real:
+
+| hand-added tag | buildings |
+|---|---|
+| `building:levels` | 131 |
+| `roof:levels` | 110 |
+| `wikidata` | 101 |
+| `wikimedia_commons` | 90 |
+| `roof:shape` | 67 |
+| `name` | 36 |
+| `wikipedia` | 16 |
+| `heritage` | 7 |
+
+`roof:shape` on 67 buildings is the most directly useful: it is an independent,
+human statement about roof form for buildings whose 3DBAG roof reconstruction is
+exactly the thing RECON-2 showed cannot be trusted.
+
+### The storey-count disagreement is a souterrain detector
+
+The build prompt flags a `building:levels` / measured-height mismatch as a
+*signal* rather than an error — on a canal house it usually means a
+*souterrain*, a raised *bel-étage* or a rear annex. Measured:
+
+- **106** buildings carry both an OSM level count and a measured 3DBAG storey count
+- **71 of them disagree** — 67%
+- **60 of those 71 (85%) are cases where OSM counts fewer storeys**
+
+That asymmetry is the finding. Random noise would disagree in both directions
+roughly equally. A systematic bias towards OSM counting *fewer* is what a
+souterrain produces: 3DBAG measures a storey that exists in the building volume,
+while a mapper counting from the pavement does not see it as one. These 60
+buildings are the first concrete candidate list for `hasSouterrain` /
+`hasBelEtage` — a parameter-record field that decides where the front door sits
+and how the whole ground floor reads.
+
+It is a candidate list and not an answer: the disagreement is reported, never
+resolved automatically. 106 of 3,025 is also a 3.5% sample, so this establishes
+the mechanism, not the rate.
+
 ## What M0 still owes
 
-- **RECON-4** OSM semantics, `building:part` topology, existing colour/material
-  tags — needed before anything overwrites manual OSM structure, per `LOD.md`.
 - **RECON-5** PDOK ortho roof colour across the boundary. The pipeline already
   exists (`scripts/build-roof-color-observations.ts`, `ROOF_ENRICHMENT.md`) and
   needs pointing at the boundary rather than the A10 cache.
@@ -383,3 +447,11 @@ Descriptions are kept as the register's original Dutch, verbatim, as provenance.
   evidence for why a naive RMSE gate would be wrong.
 - Where the monument register lives, and that it is a 23%-coverage gable-type
   source rather than a general façade-attribute source.
+- That most Dutch OSM building data here is a BAG/3DBAG import and must not be
+  counted as independent corroboration — only the 7.6% carrying hand-authored
+  tags is evidence, and `roof:shape` on 67 buildings is the useful part.
+- A mechanism for detecting *souterrains*: OSM counts fewer storeys than the
+  measured massing in 60 of 71 disagreements, an asymmetry noise would not
+  produce.
+- That the pipeline is not Amsterdam-shaped, proved by running it over a second
+  city through identical code.

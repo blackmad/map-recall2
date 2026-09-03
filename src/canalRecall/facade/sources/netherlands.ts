@@ -9,6 +9,7 @@
  * second pipeline.
  */
 import { lngLatToRd, rdToLngLat } from '../rdNew.ts';
+import { openStreetMapSemantics } from './openStreetMap.ts';
 import type {
   BboxLngLat, BuildingRegistry, CitySources, HeritageRecord, HeritageSource,
   LngLat, MassingRecord, MassingSource, ProjectedCrs, ProjectedPoint, RegistryBuilding,
@@ -243,11 +244,15 @@ SELECT ?nummer ?tekst WHERE {
   },
 };
 
-/** Every Dutch city is reconnoitred by the same three national registers. */
+/**
+ * Every Dutch city is reconnoitred by the same three national registers, plus
+ * OSM for the hand-mapped semantics no register carries.
+ */
 export const dutchSources = (cityId: string): CitySources => ({
   cityId,
   crs: RD_NEW,
   registry: bagRegistry,
   massing: bag3dMassing,
   heritage: rijksmonumentenHeritage,
+  semantics: openStreetMapSemantics,
 });
