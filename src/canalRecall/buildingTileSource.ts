@@ -106,7 +106,7 @@ export function planTiles(
 
 /** Where a tile lives, relative to the extract directory. */
 export const tileUrl = (tile: TileId, base: string): string =>
-  `${base.replace(/\/$/, '')}/building-tiles/${tile.z}/${tile.x}/${tile.y}.geojson`;
+  `${base.replace(/\/$/, '')}/building-tiles/${tile.z}/${tile.x}/${tile.y}.geojson.gz`;
 
 export type BuildingFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 

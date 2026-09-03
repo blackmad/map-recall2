@@ -81,6 +81,10 @@ const renderProperties = (properties: Record<string, unknown>): Record<string, u
   for (const key of ['colour', 'roofColour', 'roofShape'] as const) {
     if (properties[key] !== null && properties[key] !== undefined && properties[key] !== '') rendered[key] = properties[key];
   }
+  // Procedural pyramidal roofs need the cone thickness on the wire, or walls
+  // extrude to the apex and the mesh has nothing to sit on.
+  const roofHeight = properties.roofHeight;
+  if (typeof roofHeight === 'number' && roofHeight > 0) rendered.roofHeight = roofHeight;
   return rendered;
 };
 
@@ -108,11 +112,14 @@ for await (const rawLine of reader) {
 const written: { tile: string; features: number; bytes: number; gzipBytes: number }[] = [];
 for (const [key, encoded] of buckets) {
   const [, x, y] = key.split('/');
-  const file = path.join(tilesDir, x, `${y}.geojson`);
+  // Ship gzipped only: ~16 MB in the versioned extract instead of ~113 MB raw.
+  // The runtime decompresses with DecompressionStream.
+  const file = path.join(tilesDir, x, `${y}.geojson.gz`);
   await mkdir(path.dirname(file), { recursive: true });
   const body = `{"type":"FeatureCollection","features":[\n${encoded.join(',\n')}\n]}\n`;
-  await writeFile(file, body);
-  written.push({ tile: key, features: encoded.length, bytes: Buffer.byteLength(body), gzipBytes: gzipSync(body).byteLength });
+  const gzipped = gzipSync(body);
+  await writeFile(file, gzipped);
+  written.push({ tile: key, features: encoded.length, bytes: Buffer.byteLength(body), gzipBytes: gzipped.byteLength });
 }
 
 written.sort((a, b) => b.bytes - a.bytes);

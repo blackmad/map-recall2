@@ -212,14 +212,14 @@ tier**. BAG/3DBAG is the measured Dutch foundation, not permission to flatten a
 carefully mapped tower, wing, passage, courtyard or stacked part. Resolve the
 sources into one owner per building; never draw overlapping representations.
 
-Status: `feat/building-one-owner` fixed the two LoD1 blockers on current `main`.
-Staged city: 351,202 features, 20,039 OSM parts standing in for 8,703 panden,
-201→130 ridge-tower heights, named fixtures Waag / Magna Plaza / Oude Kerk green.
-Live game also drops parent outlines from the coloured overlay via
-`dedupeAppearanceFeatures` so Oude Kerk stops fighting itself before publish.
-**Step 2 remaining:** decide where the ~16 MB gzipped z14 tiles live, then
-`npm run publish:lod1-city -- --confirm`. Until published, the streamer stays
-off and the overlay fallback is what players see.
+Status: `feat/building-one-owner` shipped LoD1 step 2 into the versioned extract.
+Published city: 351,202 features in 298 z14 `.geojson.gz` tiles (~16 MB on disk),
+20,039 OSM parts standing in for 8,703 panden, 130 ridge-tower heights, named
+fixtures Waag / Magna Plaza / Oude Kerk green. Tiles keep `roofHeight` so
+pyramidal cones still sit on eaves after the streamer replaces the coloured
+overlay. Byte strategy: gzip only (not 113 MB raw); the browser decompresses
+with `DecompressionStream`. The streamer turns on when `building-tiles/index-z14.json`
+is present.
 
 Do this as a gated progression rather than converting Amsterdam in one shot,
 ordered **completeness before fidelity** — every step that makes more of the
@@ -232,11 +232,10 @@ will be interrupted; each step must be worth shipping alone.
    ladder; compositions without `min_height` still win; parent outlines are
    dropped; tower-on-podium uses `ridge-tower` when the ridge sits ≥10 m above
    LoD1.2. Named checks: Waag, Magna Plaza, Oude Kerk, ≥50 ridge-tower.
-2. **Ship the complete LoD1 city.** Staged tiles rebuilt (298 z14 tiles, 16 MB
-   gzipped). Publish decision still open — see status above. Once published,
-   hide `building-3d` / coloured dual stack under the streamed source (already
-   wired). The live overlay already dedupes composition outlines so landmarks
-   stop shimmering before that ships.
+2. **Ship the complete LoD1 city.** ✅ Published on `feat/building-one-owner`:
+   298 z14 `.geojson.gz` tiles (~16 MB), streamer + basemap hide wired, Waag
+   `roofHeight` retained for procedural cones. Overlay dedupe remains the
+   fallback when the index is absent.
 3. **Rijksmuseum proof.** Fetch a tightly clipped, pinned 3DBAG LoD2.2 source
    around the Rijksmuseum and export an owned glTF. Confirm that the result
    preserves building parts, semantic roof/wall surfaces, the courtyard and the

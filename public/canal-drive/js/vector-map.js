@@ -455,6 +455,8 @@ class VectorBasemap {
       // the player driving through a city with nothing in it.
       this._completeCity.attach(() => {
         if (this.map.getLayer('building-3d')) this.map.setLayoutProperty('building-3d', 'visibility', 'none');
+      }, (features) => {
+        if (this._pyramidalRoofs) this._pyramidalRoofs.setFeatures(features);
       });
     }).catch(() => {});
   }
