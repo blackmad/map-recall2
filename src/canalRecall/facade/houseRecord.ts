@@ -26,7 +26,7 @@
  * this schema should ever be compressed away at the cost of measuring less.
  */
 
-import { defaulted, type Measured } from './evidence.ts';
+import { auditFields, defaulted, type EvidenceViolation, type FacadeSource, type Measured, type Observation, type SourceCompetence } from './evidence.ts';
 
 /**
  * The gable vocabulary of the 17th–18th century canal ring.
@@ -222,6 +222,81 @@ export function unobservedHouse(pandId: string): CanalHouse {
 export const fieldsOf = (house: CanalHouse): Record<string, Measured<unknown>> =>
   Object.fromEntries(CANAL_HOUSE_FIELDS.map(field => [field, house[field] as Measured<unknown>]));
 
+/** A human review settles any field, and a default is the absence of a source. */
+const ALWAYS: readonly FacadeSource[] = ['reviewed', 'default'];
+
+/**
+ * What each source is physically capable of observing, per field.
+ *
+ * Read this as a statement about instruments, not about accuracy. Three of the
+ * entries were measured across the pilot boundary rather than assumed:
+ *
+ * - `3dbag` and `ahn` reconstruct massing and roof *planes* from a point cloud.
+ *   They are authoritative for eaves and ridge height and carry no gable type
+ *   at all: LoD2.2 reconstruction error tracks roof complexity, not failure,
+ *   so a `klokgevel` attributed to 3DBAG was never in the data.
+ * - `pdok-ortho` is nadir imagery. It measures roofs, and no nadir image has
+ *   ever seen a wall — which is why it appears against no field of a *façade*
+ *   record. Roof colour is measured by the existing appearance pipeline.
+ * - `monument-text` is a written description. It routinely names the gable,
+ *   the cornice, the dressings and the pui, and it never states a distance in
+ *   metres, so it cannot supply bay offsets, a door position or a lean.
+ *
+ * `bag` is the authority on the footprint and nothing above it. `osm` carries
+ * hand-mapped semantics — storey counts and structure — but not the Dutch
+ * gable vocabulary, which it has no tag for.
+ */
+export const FIELD_SOURCES: SourceCompetence = {
+  // Footprint. Measured from BAG geometry; a rectified elevation can confirm
+  // the façade width, but nothing on the street can see how deep the plot runs.
+  plotWidthM: ['bag', '3dbag', 'streetlevel-measured', ...ALWAYS],
+  depthM: ['bag', '3dbag', ...ALWAYS],
+
+  // Heights. AHN and the 3DBAG planes built from it; a rectified elevation
+  // scaled from the known plot width measures them too.
+  eavesHeightM: ['ahn', '3dbag', 'streetlevel-measured', ...ALWAYS],
+  ridgeHeightM: ['ahn', '3dbag', 'streetlevel-measured', ...ALWAYS],
+  ridgeSagM: ['ahn', 'streetlevel-measured', ...ALWAYS],
+
+  storeys: ['3dbag', 'osm', 'monument-text', 'streetlevel-measured', ...ALWAYS],
+  // Diminishing storey heights are a metric read off a rectified elevation.
+  // AHN gives the building's total height, never how it divides internally.
+  storeyHeights: ['streetlevel-measured', ...ALWAYS],
+  hasSouterrain: ['osm', 'monument-text', 'streetlevel-measured', ...ALWAYS],
+  hasBelEtage: ['osm', 'monument-text', 'streetlevel-measured', ...ALWAYS],
+
+  // The façade proper. Only something that looked at the front of the building
+  // — an image, or a description written by someone standing in front of it.
+  gable: ['monument-text', 'streetlevel-measured', ...ALWAYS],
+  gableOrnament: ['monument-text', 'streetlevel-measured', ...ALWAYS],
+  corniceType: ['monument-text', 'streetlevel-measured', ...ALWAYS],
+  dressings: ['monument-text', 'streetlevel-measured', ...ALWAYS],
+  windowType: ['monument-text', 'streetlevel-measured', ...ALWAYS],
+  puiType: ['monument-text', 'streetlevel-measured', ...ALWAYS],
+  hoistBeam: ['monument-text', 'streetlevel-measured', ...ALWAYS],
+  bays: ['monument-text', 'streetlevel-measured', ...ALWAYS],
+
+  // Metric positions across the façade. A description never states these in
+  // metres, so they come from a rectified image or from nothing.
+  bayOffsetsM: ['streetlevel-measured', ...ALWAYS],
+  doorPositionM: ['streetlevel-measured', ...ALWAYS],
+  hoistBeamOffsetM: ['streetlevel-measured', ...ALWAYS],
+  leanDeg: ['streetlevel-measured', ...ALWAYS],
+
+  // Bond and pointing are visible in a description; a sampled sRGB value is not.
+  brick: ['streetlevel-measured', ...ALWAYS],
+};
+
+/**
+ * Audit one house: provenance, party walls, and whether each source could have
+ * seen the field it supplied. The form QA-EVIDENCE runs.
+ */
+export const auditHouse = (
+  house: CanalHouse,
+  observations: ReadonlyMap<string, Observation>,
+  today?: string,
+): EvidenceViolation[] => auditFields(house.pandId, fieldsOf(house), observations, today, FIELD_SOURCES);
+
 /**
  * Structural problems with a record's *values*, independent of provenance.
  *
@@ -237,10 +312,32 @@ export interface RecordProblem {
   detail: string;
 }
 
-/** Ridge cannot sit below eaves; a real canal house is at least this tall. */
-const MIN_PLAUSIBLE_RIDGE_M = 3;
-/** Grachtengordel plots run roughly 4–10 m; wider is possible and worth a look. */
-const MAX_PLAUSIBLE_PLOT_WIDTH_M = 40;
+/**
+ * Below this, a ridge height is a measurement error rather than a building.
+ *
+ * Also set from the boundary's own data rather than from the canal-house
+ * stereotype. The pilot contains 26 structures whose ridge sits under 3 m —
+ * outbuildings, sheds and rear annexes on footprints of 3–17 m², most with no
+ * recorded use — and they are real panden that render as massing. An earlier
+ * 3 m floor flagged every one of them. What is genuinely impossible is a ridge
+ * at or below the building's own ground level, which two buildings report; the
+ * constructor now leaves those unobserved, and this floor catches any that
+ * reach the record by another route.
+ */
+const MIN_PLAUSIBLE_RIDGE_M = 1.5;
+/**
+ * A façade wider than this is a measurement error rather than a building.
+ *
+ * Set from the pilot boundary's own distribution, not from the canal-house
+ * stereotype: median façade width is 5.7 m and the 99th percentile is 30.6 m,
+ * but 13 buildings exceed 40 m and the widest is 74 m — 20th-century office
+ * and institutional blocks that are genuinely that wide. An earlier 40 m cap
+ * flagged all of them, which is the validator rejecting architecture rather
+ * than catching errors. The invariant that actually bites is `plotWidthM <=
+ * depthM` below, which holds by construction for the short side of a
+ * minimum-area rectangle.
+ */
+const MAX_PLAUSIBLE_PLOT_WIDTH_M = 150;
 /** Op de vlucht is deliberate but small; beyond this it is a measurement error. */
 const MAX_PLAUSIBLE_LEAN_DEG = 8;
 
@@ -258,6 +355,16 @@ export function validateHouse(house: CanalHouse): RecordProblem[] {
   const width = observed<number>('plotWidthM');
   if (width !== null && (!(width > 0) || width > MAX_PLAUSIBLE_PLOT_WIDTH_M)) {
     report('plotWidthM', `${width} m is not a plausible plot width`);
+  }
+
+  // Holds by construction: `plotWidthM` is the short side of the footprint's
+  // minimum-area rectangle and `depthM` the long one. A violation means the two
+  // came from different footprints, or that the sides were swapped somewhere
+  // upstream — and a swapped pair silently rescales the entire façade grammar,
+  // because plot width is the dimension every other measurement derives from.
+  const depth = observed<number>('depthM');
+  if (width !== null && depth !== null && width > depth) {
+    report('plotWidthM', `façade width ${width} m exceeds plot depth ${depth} m; the footprint sides look swapped`);
   }
 
   const eaves = observed<number>('eavesHeightM');

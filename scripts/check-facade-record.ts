@@ -14,7 +14,8 @@ import {
   summariseCoverage, wasObserved, type Observation,
 } from '../src/canalRecall/facade/evidence.ts';
 import {
-  CANAL_HOUSE_FIELDS, fieldsOf, unobservedHouse, validateHouse, type CanalHouse,
+  CANAL_HOUSE_FIELDS, FIELD_SOURCES, auditHouse, fieldsOf, unobservedHouse, validateHouse,
+  type CanalHouse,
 } from '../src/canalRecall/facade/houseRecord.ts';
 import {
   classifyObservationTier, drawsOpenings, evidenceCeiling, resolveFidelityTier,
@@ -108,6 +109,59 @@ assert.deepEqual(auditFields(PAND, fieldsOf(unobservedHouse(PAND)), registry()),
   'an honestly unobserved building is clean, not broken');
 
 // ---------------------------------------------------------------------------
+// Source competence: could this source have seen this field at all?
+
+{
+  // Measured across the pilot boundary: 3DBAG's LoD2.2 reconstruction error
+  // tracks roof complexity rather than failure, and its planes carry no gable
+  // type. A klokgevel sourced to 3dbag was never in the data — so this is not
+  // a weak reading to be outranked later, it is a value with nothing behind it.
+  const massing = observation('3dbag-1', PAND, { kind: 'registry-record', elevation: 'roof', capturedAt: '2014-01-01' });
+  const laundered = unobservedHouse(PAND);
+  laundered.gable = measured('klok', '3dbag', 0.9, massing);
+
+  const violations = auditHouse(laundered, registry(massing));
+  assert.equal(violations.length, 1);
+  assert.equal(violations[0].code, 'incompetent-source');
+  assert.match(violations[0].detail, /3dbag cannot observe gable/);
+
+  // The same source on a field it genuinely measures is clean.
+  const honest = unobservedHouse(PAND);
+  honest.ridgeHeightM = measured(18.4, '3dbag', 0.8, massing);
+  honest.eavesHeightM = measured(14.1, 'ahn', 0.85, massing);
+  assert.deepEqual(auditHouse(honest, registry(massing)), []);
+
+  // A monument description names gables, cornices and dressings, and never
+  // states a distance in metres.
+  const rce = observation('rce-1', PAND, { kind: 'monument-record' });
+  const fromText = unobservedHouse(PAND);
+  fromText.gable = measured('hals', 'monument-text', 0.8, rce);
+  fromText.dressings = measured('sandstone', 'monument-text', 0.7, rce);
+  assert.deepEqual(auditHouse(fromText, registry(rce)), []);
+
+  const overreach = unobservedHouse(PAND);
+  overreach.bayOffsetsM = measured([1.1, 3.2], 'monument-text', 0.5, rce);
+  assert.equal(auditHouse(overreach, registry(rce))[0]?.code, 'incompetent-source');
+
+  // Nadir imagery has never seen a wall, so it backs no field of a façade record.
+  for (const field of CANAL_HOUSE_FIELDS) {
+    assert.equal(FIELD_SOURCES[field]?.includes('pdok-ortho') ?? false, false,
+      `pdok-ortho is nadir imagery and must not back ${field}`);
+  }
+
+  // Every field must declare its competent sources, or the gate has a hole in
+  // it exactly where a new field was added.
+  for (const field of CANAL_HOUSE_FIELDS) {
+    const sources = FIELD_SOURCES[field];
+    assert.equal(Array.isArray(sources) && sources.length > 0, true, `${field} declares no competent source`);
+    assert.equal(sources.includes('reviewed'), true, `a human review must be able to settle ${field}`);
+    assert.equal(sources.includes('default'), true, `${field} must be allowed to stay unobserved`);
+  }
+  assert.deepEqual(Object.keys(FIELD_SOURCES).filter(field => !(CANAL_HOUSE_FIELDS as readonly string[]).includes(field)), [],
+    'FIELD_SOURCES must not name fields that do not exist');
+}
+
+// ---------------------------------------------------------------------------
 // Source resolution
 
 {
@@ -150,9 +204,15 @@ assert.deepEqual(auditFields(PAND, fieldsOf(unobservedHouse(PAND)), registry()),
   assert.equal(classifyObservationTier([nadir, front], 'front'), 'frontal');
   assert.equal(classifyObservationTier([], 'front'), 'none');
 
-  // BAG and 3DBAG records measure massing and roof. They never see a façade,
-  // however authoritative they are about the footprint.
+  // Registry records measure massing and roof. They never see a façade,
+  // however authoritative they are about the footprint — and they are recorded
+  // against the roof elevation, so they must still classify as AERIAL ONLY
+  // when asked about the front. Getting this wrong sent a real run of 3,025
+  // buildings to `none → lod1`, massing and all.
   assert.equal(classifyObservationTier([observation('bag-1', PAND, { kind: 'registry-record' })], 'front'), 'aerial-only');
+  assert.equal(classifyObservationTier([observation('bag-2', PAND, { kind: 'registry-record', elevation: 'roof' })], 'front'), 'aerial-only');
+  assert.equal(classifyObservationTier([observation('bag-3', PAND, { kind: 'registry-record', elevation: 'roof' })], 'rear'), 'aerial-only');
+  assert.equal(evidenceCeiling(classifyObservationTier([observation('bag-4', PAND, { kind: 'registry-record', elevation: 'roof' })], 'front'), false), 'lod2.2');
 }
 
 // ---------------------------------------------------------------------------
@@ -240,6 +300,26 @@ const tier = (overrides: Partial<TierInput> = {}): FidelityTier => resolveFideli
 
   const inverted = { ...house, ridgeHeightM: measured(11.0, 'ahn', 0.9, front) };
   assert.equal(validateHouse(inverted).some(problem => problem.field === 'ridgeHeightM'), true, 'a ridge below the eaves is impossible');
+
+  // Plot width is the short side of the footprint's minimum-area rectangle, so
+  // exceeding the depth means the two sides came from different footprints or
+  // were swapped upstream. A swapped pair silently rescales the whole façade
+  // grammar, because every other measurement derives from the width.
+  const swapped = {
+    ...house,
+    plotWidthM: measured(24.1, 'bag', 0.99, front),
+    depthM: measured(5.4, 'bag', 0.99, front),
+  };
+  assert.equal(validateHouse(swapped).some(problem => problem.field === 'plotWidthM'), true,
+    'a façade wider than its own plot depth must be caught');
+  // A genuinely wide building is not a swapped one: the pilot holds 13 façades
+  // over 40 m and one at 74 m, all real 20th-century blocks.
+  assert.deepEqual(validateHouse({
+    ...house,
+    plotWidthM: measured(53.8, 'bag', 0.99, front),
+    depthM: measured(112.5, 'bag', 0.99, front),
+    bayOffsetsM: measured([1.1, 2.7, 4.3], 'streetlevel-measured', 0.85, front),
+  }), [], 'width is only wrong relative to its own depth, never on size alone');
 
   const miscounted = { ...house, bays: measured(4, 'streetlevel-measured', 0.9, front) };
   assert.equal(validateHouse(miscounted).some(problem => problem.field === 'bayOffsetsM'), true);

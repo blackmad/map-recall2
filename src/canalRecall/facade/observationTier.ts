@@ -98,9 +98,14 @@ function tierOfObservation(observation: Observation, elevation: Elevation): Obse
   // A human who looked at this building settles it for the elevation reviewed.
   if (observation.kind === 'human-review') return observation.elevation === elevation ? 'frontal' : 'none';
   if (observation.elevation !== elevation) {
-    // Nadir imagery measures the roof and the massing beneath it, whatever
-    // elevation you ask about, and measures no façade at all.
-    return observation.kind === 'ortho-nadir' ? 'aerial-only' : 'none';
+    // Nadir imagery and registry records measure the roof and the massing
+    // beneath it whatever elevation you ask about, and measure no façade at
+    // all. Both are recorded against the `roof` elevation, so without this
+    // the whole boundary classifies as NONE and falls to LoD1 — which is how
+    // this was caught: a real run over 3,025 buildings reported
+    // `none → lod1` for every one of them, including the 2,894 whose massing
+    // had just been measured.
+    return observation.kind === 'ortho-nadir' || observation.kind === 'registry-record' ? 'aerial-only' : 'none';
   }
   switch (observation.kind) {
     case 'street-panorama':
