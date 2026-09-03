@@ -51,3 +51,57 @@ export function buildingOpacity(theme: CanalTheme | string): number {
   // one building showed through another.
   return theme === 'cyberpunk' ? 0.98 : 1;
 }
+
+// OpenFreeMap's planet tiles are built with planetiler, which drops the OSM id
+// from the building layer's properties and folds it into the vector-tile
+// feature id instead, as `osmId * 10 + type`. Measured against
+// `buildings-colored.geojson` across central Amsterdam, ways recovered with
+// type 2 sit a median 1.5 m from the extract building they name, and the three
+// relations recovered with type 3 within 2.8 m.
+//
+// Type 0 is a different id space that happens to overlap the way numbering:
+// 90 of its ids decode to a real extract way, but a median 27 m away and up to
+// 1.3 km, so matching it would erase ~90 buildings the extract never had. Only
+// 2 and 3 are safe to match.
+const BASEMAP_ID_TYPES: Record<string, number> = { w: 2, r: 3 };
+
+export function encodeBasemapBuildingId(osmId: string): number | null {
+  const type = BASEMAP_ID_TYPES[osmId.slice(0, 1)];
+  if (type === undefined) return null;
+  const id = Number(osmId.slice(1));
+  if (!Number.isSafeInteger(id) || id <= 0) return null;
+  const encoded = id * 10 + type;
+  return Number.isSafeInteger(encoded) ? encoded : null;
+}
+
+/**
+ * A filter for the basemap's `building-3d` layer that drops every building the
+ * Canal Recall extract draws itself.
+ *
+ * Both layers extrude the same OSM buildings from different pipelines, so where
+ * they overlap the two sets of walls are exactly coplanar. No height offset can
+ * separate a vertical face from itself, so the depth test picks a different
+ * winner per pixel and facades break into stripes. The two pipelines also
+ * disagree on height — 7 m against 14 m, 10 m against 19 m on the Singel —
+ * which pushes the basemap's grey box out through the coloured one.
+ *
+ * `hide_3d` is OpenMapTiles' own marker for a building that a `building:part`
+ * already covers, which is the same fight one layer down.
+ */
+export function basemapBuildingFilter(
+  osmIds: Iterable<string>,
+  existingFilter?: unknown,
+): MapLibreExpression {
+  const encoded: number[] = [];
+  const seen = new Set<number>();
+  for (const osmId of osmIds) {
+    const id = typeof osmId === 'string' ? encodeBasemapBuildingId(osmId) : null;
+    if (id !== null && !seen.has(id)) { seen.add(id); encoded.push(id); }
+  }
+  const clauses: unknown[] = [['!', ['to-boolean', ['get', 'hide_3d']]]];
+  // `match` builds a lookup keyed on the label; `in` over ten thousand ids
+  // would rescan the whole list for every building in every tile.
+  if (encoded.length) clauses.push(['!', ['match', ['id'], encoded, true, false]]);
+  if (existingFilter) clauses.unshift(existingFilter);
+  return ['all', ...clauses];
+}

@@ -6,6 +6,100 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+- **The basemap stopped drawing the buildings we draw ourselves.** Facades in
+  the centre broke into vertical stripes and dithered patches, and pale grey
+  slabs floated inside coloured buildings. Two layers were extruding the same
+  OSM buildings from different pipelines: Liberty's `building-3d` off
+  OpenFreeMap's vector tiles, and `osm-colored-buildings` off
+  `buildings-colored.geojson`. An earlier pass had tried to separate them with
+  height offsets, which cannot work — a height offset separates *horizontal*
+  faces, and a wall is coplanar with itself whatever the box above it does. The
+  two pipelines also disagree on height (7 m against 14 m, 10 m against 19 m on
+  the Singel), which is what pushed the grey box out through the coloured one.
+
+  So the basemap now keeps only the buildings the extract does not carry.
+  Planetiler drops the OSM id from the building layer's properties and folds it
+  into the vector-tile feature id as `osmId * 10 + type`, so
+  `basemapBuildingFilter` re-encodes every extract id and filters `building-3d`
+  on it. Only types 2 (way) and 3 (relation) are matched: type 0 shares the way
+  numbering, and 90 of its ids decode to a real extract way sitting a median
+  27 m and up to 1.3 km away, so matching it would have erased ~90 buildings
+  that were never duplicated. The filter is a `match`, not an `in`, because `in`
+  rescans ten thousand ids for every building in every tile; it evaluates 1,189
+  real tile features in 0.8 ms.
+
+  Measured over central Amsterdam it drops 136 of 1,189 basemap buildings and
+  cuts the pairs standing within 3 m of an extract building from 145 to 47. The
+  47 that remain are buildings the two pipelines hold under different OSM ids,
+  which no id filter can pair up; TODO item 10 step 2 deletes this whole
+  three-extrusion stack and is the real fix. Nothing is lost outside the
+  extract: OpenFreeMap's z14 building layer is sparse — 113 features in the tile
+  over the centre against 10,578 in the extract — so this only removes the
+  double-drawn minority.
+
+  Two smaller things went with it. The roof cap used to start 0.30 m *below* the
+  wall top so its underside would be buried, but MapLibre draws no underside on
+  an extrusion, and the overlap put the cap's side faces in the same plane as
+  the walls' — a speckled dashed line along every roof edge. The cap now starts
+  exactly where the walls stop. And `check-canal-buildings.ts` still asserted the
+  old translucent `buildingOpacity('clean') === 0.9`, so it had been failing
+  since opacity went to 1; it is not in `check:canal`, which is why nobody
+  noticed.
+
+- **The photoreal option was shipped inert, and now actually draws.** The
+  switch below reached the map correctly and then did nothing visible, because
+  four defects sat in a row behind it and every existing test passed anyway.
+
+  First, `_updateGoogleTiles` opened by asking for `map.getFreeCameraOptions()`.
+  That is Mapbox GL JS 2.x, added after MapLibre forked from 1.13, so MapLibre
+  has never had it: the guard was false on every frame and the function returned
+  before the gate was consulted. MapLibre keeps the camera height on the
+  transform, so `_cameraAltitudeMeters()` reads `transform.getCameraAltitude()`
+  instead.
+
+  Second, the custom layer's `render` returned early unless `owner.ready`, and
+  the only thing that can set `ready` is the `load-tileset` event, which only
+  fires once `tiles.update()` has fetched the root tileset — and `tiles.update()`
+  was called after that early return. Nothing was ever requested. Traversal now
+  runs whether or not the layer is ready; only the draw waits.
+
+  Third, the local frame was derived from the loaded tileset's bounding sphere.
+  That works for a regional tileset whose root carries a local transform, and
+  Google's does not: it is one global tileset in ECEF, so the root sphere is
+  centred on the middle of the Earth and the derived latitude was in the
+  thousands. MapLibre threw `Invalid LngLat`. The frame is anchored on the map's
+  own centre now and rebuilt when the camera wanders more than 500 m from it,
+  because a tangent plane and mercator metres only agree near their anchor.
+
+  Fourth, and only visible once the other three were fixed: the east/north/up
+  frame needs no rotation before MapLibre's mercator scale. The negative y in
+  `scale(s, -s, s)` *is* the north-to-south flip, and adding a further -90°
+  about x on top of it swapped north with up, standing the city on edge. That
+  one is easy to miss by eye, because the error is zero at the anchor and grows
+  with distance from it — the first screenshots looked perfectly aligned.
+
+  A fifth, smaller thing: `addLayer` throws while the style is settling, and
+  `isStyleLoaded()` is no defence because it reports every source and so drops
+  back to false whenever basemap tiles are in flight. The add is attempted and
+  retried on the next map event instead.
+
+  The tests are the real lesson. All four original tests passed against a
+  completely dead feature: they checked the pure gate, checked that the setting
+  reached the map, and checked a negative — that no tile is requested at cycling
+  height — which an inert feature satisfies perfectly. The new ones assert
+  positives that only a working layer can satisfy: that the altitude fed to the
+  gate is a finite number, that enabling it at overview height actually attempts
+  a `tile.googleapis.com` request (routed to `abort`, so it costs nothing), and
+  that a known Amsterdam coordinate pushed through the placement matrices lands
+  within a metre of where `MercatorCoordinate.fromLngLat` puts it. Each was
+  confirmed to fail with its fix reverted. The placement math is exported as
+  `localFrameAt`/`ellipsoidPosition` for exactly that reason.
+
+  Known and recorded as TODO item 8c: the 25 m activation height never binds.
+  The game's camera sits 95–520 m up across every view mode and camera-zoom
+  setting, so the gate always says yes and the hand-back to 3DBAG described
+  below does not happen in practice.
+
 - **Google's mesh now has a switch, and it only reaches the overview camera.**
   The measurement below settled where it is usable; this is the option built on
   top of it. "Google photoreal (overview)" appears in both settings panels and
