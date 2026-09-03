@@ -43,6 +43,7 @@ const features = source.features.flatMap(feature => {
       sideColourSource: taggedSideColour ? 'osm' : materialColors[material] ? 'material' : 'fallback',
       roofColourSource: taggedRoofColour ? 'osm' : materialColors[roofMaterial] ? 'material' : sideColour ? 'side' : 'fallback',
       material, roofMaterial, roofShape: tags['roof:shape'] || '', height, minHeight,
+      isPart: tags['building:part'] != null && tags['building:part'] !== '' && tags['building:part'] !== 'no',
     },
     geometry: feature.geometry,
   }];

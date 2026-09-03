@@ -42,7 +42,16 @@ const city = flag('city') ?? 'amsterdam';
 const extractDir = path.join('public', 'data', 'extracts', city);
 const stagingDir = path.join(extractDir, 'staging');
 const bagFile = path.join(stagingDir, 'bag-buildings.geojson');
-const osmFile = path.join(extractDir, 'buildings-colored.geojson');
+// Complete OSM geometry — every building and building:part, colour or not.
+// Appearance still comes from buildings-colored.geojson and is joined by id.
+const osmFileCandidates = [
+  path.join(stagingDir, 'buildings-osm.geojson'),
+  path.join(extractDir, 'buildings-osm.geojson'),
+];
+const osmFile = (await Promise.all(osmFileCandidates.map(async candidate =>
+  (await stat(candidate).catch(() => null)) ? candidate : null))).find(Boolean);
+
+const colourFile = path.join(extractDir, 'buildings-colored.geojson');
 const outputFile = path.join(stagingDir, 'lod1-city.geojson');
 const reportFile = path.join(stagingDir, 'lod1-city.report.json');
 
@@ -59,6 +68,23 @@ if (!(await stat(bagFile).catch(() => null))) {
   process.stderr.write(`${bagFile} is missing — run \`npm run build:bag-buildings\` first\n`);
   process.exit(1);
 }
+if (!osmFile) {
+  process.stderr.write(
+    `buildings-osm.geojson is missing — run \`npm run build:osm-buildings\` into staging/ or the extract first\n`,
+  );
+  process.exit(1);
+}
+process.stdout.write(`OSM geometry: ${osmFile}\n`);
+
+// --- appearance, keyed by osmId so geometry need not carry colour ------------
+const colourById = new Map<string, Record<string, unknown>>();
+if (await stat(colourFile).catch(() => null)) {
+  const coloured = JSON.parse(await readFile(colourFile, 'utf8')) as { features: Feature[] };
+  for (const feature of coloured.features) {
+    const osmId = String(feature.properties.osmId ?? '');
+    if (osmId) colourById.set(osmId, feature.properties);
+  }
+}
 
 // --- the OSM side, indexed ---------------------------------------------------
 type OsmBuilding = OsmFootprint & { properties: Record<string, unknown> };
@@ -68,13 +94,17 @@ const osmById = new Map<string, OsmBuilding>();
 for (const feature of osm.features) {
   const rings = ringsOf(feature.geometry);
   if (rings.length === 0) continue;
+  const osmId = String(feature.properties.osmId ?? '');
+  const colour = colourById.get(osmId) ?? {};
+  const properties = { ...feature.properties, ...colour, osmId };
   const building: OsmBuilding = {
-    osmId: String(feature.properties.osmId ?? ''),
+    osmId,
     rings,
     minHeightM: Number(feature.properties.minHeight ?? 0),
-    heightM: Number(feature.properties.height ?? 0),
-    roofShape: (feature.properties.roofShape as string) || undefined,
-    properties: feature.properties
+    heightM: Number(feature.properties.height ?? colour.height ?? 0),
+    roofShape: (feature.properties.roofShape as string) || (colour.roofShape as string) || undefined,
+    isPart: Boolean(feature.properties.isPart),
+    properties,
   };
   grid.add(building);
   osmById.set(building.osmId, building);
@@ -173,12 +203,24 @@ const insideCoverage = (rings: Ring[]): boolean => {
   return lng >= coverage.west && lng <= coverage.east && lat >= coverage.south && lat <= coverage.north;
 };
 let outsideCoverage = 0;
+let suppressedUnmatched = 0;
 for (const building of osmById.values()) {
   const isStandIn = standIns.has(building.osmId);
   // Anything else overlapping a pand is already out at tier 3. What remains is
   // a structure with no pand under it at all.
   if (!isStandIn && represented.has(building.osmId)) continue;
   const covered = isStandIn || insideCoverage(building.rings);
+  if (!isStandIn && covered) {
+    // With the complete OSM file, most "unmatched" outlines inside BAG
+    // coverage are digitisation disagreements with a pand we already drew —
+    // emitting them doubles the city and reintroduces z-fighting. Keep only
+    // parts, stacked members, and named leftovers (true gaps in the register).
+    const named = typeof building.properties.name === 'string' && building.properties.name.length > 0;
+    if (!building.isPart && building.minHeightM <= 0 && !named) {
+      suppressedUnmatched++;
+      continue;
+    }
+  }
   if (!covered) outsideCoverage++;
   const tier: LadderTier = isStandIn ? 2 : 4;
   bump(tier === 2 ? 2 : 4);
@@ -224,6 +266,7 @@ const report = {
   pandsSuppressedByOsmParts: suppressedPands,
   bagCoverage: coverage,
   osmOutsideBagCoverage: outsideCoverage,
+  osmUnmatchedSuppressed: suppressedUnmatched,
   pandsWithOsmAppearance: colouredFromOsm,
   osmFeatures: osmById.size,
   heightChangeVsOsm: {
@@ -244,6 +287,7 @@ process.stdout.write(`  tier 2 osm      ${share(standInFeatures)} parts standing
 process.stdout.write(`  tier 3 bag      ${share(tiers.get(3) ?? 0)} measured extrusions\n`);
 process.stdout.write(`  tier 4 osm only ${share(tiers.get(4) ?? 0)}, of which ${outsideCoverage} lie outside the area BAG was fetched for\n`);
 process.stdout.write(`                  ${(tiers.get(4) ?? 0) - outsideCoverage} are genuine gaps in the register inside it\n`);
+process.stdout.write(`  unmatched skip  ${suppressedUnmatched} plain outlines inside BAG coverage (digitisation doubles)\n`);
 process.stdout.write(`  appearance      ${colouredFromOsm} panden inherit an OSM colour\n`);
 process.stdout.write(`  height vs osm   median ${report.heightChangeVsOsm.medianM} m (p05 ${report.heightChangeVsOsm.p05M}, p95 ${report.heightChangeVsOsm.p95M}) over ${heightChange.length} buildings\n`);
 process.stdout.write(`  output          ${(report.outputBytes / 1e6).toFixed(1)} MB\n`);

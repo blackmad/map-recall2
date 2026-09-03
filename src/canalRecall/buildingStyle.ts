@@ -1,3 +1,11 @@
+import {
+  compositionDrawIds,
+  isHandMappedComposition,
+  selectRenderableBuildings,
+} from './buildingComposition.js';
+import { FootprintGrid } from './buildingLadder.js';
+import { ringCentroid, type Ring } from './buildingGeometry.js';
+
 export type CanalTheme = 'clean' | '8bit' | '16bit' | 'psx' | 'cyberpunk';
 
 type MapLibreExpression = unknown[];
@@ -117,4 +125,63 @@ export function basemapBuildingFilter(
   if (encoded.length) clauses.push(['!', ['match', ['id'], encoded, true, false]]);
   if (existingFilter) clauses.unshift(existingFilter);
   return ['all', ...clauses];
+}
+
+export {
+  compositionDrawIds,
+  isHandMappedComposition,
+  selectRenderableBuildings,
+  FootprintGrid,
+};
+export type { Ring };
+
+type AppearanceFeature = {
+  type: string;
+  properties?: Record<string, unknown>;
+  geometry?: { type: string; coordinates: unknown };
+};
+
+/**
+ * Drop parent outlines from coloured-extract compositions before they reach
+ * MapLibre. Without this, Oude Kerk and Waag draw their shell and their parts
+ * in the same air and z-fight.
+ */
+export function dedupeAppearanceFeatures(features: AppearanceFeature[]): AppearanceFeature[] {
+  type Item = {
+    osmId: string;
+    rings: Ring[];
+    minHeightM: number;
+    heightM: number;
+    isPart?: boolean;
+    feature: AppearanceFeature;
+  };
+
+  const items: Item[] = [];
+  for (const feature of features) {
+    const props = feature.properties || {};
+    const osmId = String(props.osmId || '');
+    if (!osmId || !feature.geometry) continue;
+    const geometry = feature.geometry;
+    const rings: Ring[] = geometry.type === 'Polygon'
+      ? [(geometry.coordinates as Ring[])[0]]
+      : geometry.type === 'MultiPolygon'
+        ? (geometry.coordinates as Ring[][]).map(polygon => polygon[0])
+        : [];
+    if (!rings.length || !rings[0]?.length) continue;
+    // Prove the ring is well-formed enough for centroid math (and keep the
+    // helper referenced so esbuild does not drop the geometry module).
+    if (!Number.isFinite(ringCentroid(rings[0])[0])) continue;
+    items.push({
+      osmId,
+      rings,
+      minHeightM: Number(props.minHeight ?? 0),
+      heightM: Number(props.height ?? 0),
+      isPart: Boolean(props.isPart),
+      feature,
+    });
+  }
+
+  const grid = new FootprintGrid<Item>();
+  for (const item of items) grid.add(item);
+  return selectRenderableBuildings(items, item => grid.near(item.rings)).map(item => item.feature);
 }

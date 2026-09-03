@@ -78,6 +78,16 @@ assert.equal(flatOnly.tier, 3, 'an OSM outline with one guessed height does not 
 assert.deepEqual(flatOnly.osmIds, [], 'tier 3 emits the pand, so nothing stands in for it');
 assert.deepEqual(flatOnly.matchedOsmIds, ['w1'], 'the overlapping outline is still reported, so its colour can be carried');
 
+// Multi-height parts without min_height still beat BAG (Magna Plaza / Oude Kerk).
+const nave = osm('w-nave', square(4.9001, 52.3701, 0.0002), 0, 18);
+nave.isPart = true;
+const tower = osm('w-tower', square(4.90025, 52.37025, 0.0001), 0, 40);
+tower.isPart = true;
+const outline = osm('w-outline', square(4.9, 52.37, 0.0004), 0, 9);
+const plaza = decideTier(pand, [outline, nave, tower]);
+assert.equal(plaza.tier, 2, 'distinct heights without min_height still count as a composition');
+assert.deepEqual(plaza.osmIds.sort(), ['w-nave', 'w-tower'], 'the parent outline is not drawn beside its parts');
+
 const unmatched = decideTier(pand, [farAway]);
 assert.equal(unmatched.tier, 3, 'a pand with no OSM nearby is a measured extrusion');
 assert.deepEqual(unmatched.matchedOsmIds, [], 'nothing far away is reported as a match');

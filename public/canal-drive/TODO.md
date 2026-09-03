@@ -212,13 +212,14 @@ tier**. BAG/3DBAG is the measured Dutch foundation, not permission to flatten a
 carefully mapped tower, wing, passage, courtyard or stacked part. Resolve the
 sources into one owner per building; never draw overlapping representations.
 
-Status: `feat/building-one-owner` continues the LoD1 city from
-`feat/lod1-building-city` on current `main`. Staged: 336,784 BAG-keyed buildings,
-AHN heights, z14 tiles. Actively fixing the two blockers before publish: (1)
-feed every OSM `building`/`building:part` so Magna Plaza, Waag and Oude Kerk keep
-hand-mapped massing; (2) raise tower-on-podium panden off the 70p roof percentile.
-Until then the live game still uses the three-extrusion overlay and still z-fights
-on complex parts.
+Status: `feat/building-one-owner` fixed the two LoD1 blockers on current `main`.
+Staged city: 351,202 features, 20,039 OSM parts standing in for 8,703 panden,
+201→130 ridge-tower heights, named fixtures Waag / Magna Plaza / Oude Kerk green.
+Live game also drops parent outlines from the coloured overlay via
+`dedupeAppearanceFeatures` so Oude Kerk stops fighting itself before publish.
+**Step 2 remaining:** decide where the ~16 MB gzipped z14 tiles live, then
+`npm run publish:lod1-city -- --confirm`. Until published, the streamer stays
+off and the overlay fallback is what players see.
 
 Do this as a gated progression rather than converting Amsterdam in one shot,
 ordered **completeness before fidelity** — every step that makes more of the
@@ -226,30 +227,16 @@ city look like itself comes before any step that makes a few buildings look
 better. This is a P2 item on a board whose P1 tier is the learning model, so it
 will be interrupted; each step must be worth shipping alone.
 
-1. **Fix the two measured LoD1 regressions.** Feed the resolver every OSM
-   building and `building:part`, independently of appearance tags, and preserve
-   manual compositions such as Magna Plaza. Then detect tower-on-podium panden
-   instead of flattening them to the ordinary roof percentile. Pin both with
-   named comparison fixtures.
-2. **Ship the complete LoD1 city.** The city is gray because only 10,578
-   buildings have appearance at all, against 336,784 BAG/3DBAG buildings in the
-   staged drivable-area city — coverage, not fidelity.
-   Publish a complete BAG-keyed footprint + 3DBAG height + measured roof colour
-   source on the tile grid detailed geometry will later use, render it with
-   ordinary fill-extrusions, and delete `building-3d`, `osm-colored-buildings`,
-   `osm-colored-building-roofs` and the height-offset stack that keeps three
-   coplanar extrusions from z-fighting. That stack is now partly defused rather
-   than fixed: `basemapBuildingFilter` hides the basemap copy of any building
-   the extract carries (by OSM id), and a runtime proximity scan hides the
-   residual pairs the two pipelines hold under different ids (centroid within
-   3 m). One owner per building is still the real fix. Heights stop being
-   guessed in the same change: `build-osm-building-appearance.ts:32` currently falls back to
-   `levels * 3` or a flat 9 m, so much of the skyline is invented, and AHN-derived
-   3DBAG heights replace it everywhere. Largest visible win in the whole item,
-   no new renderer, and it is the fallback every later step needs. If step 1(a)
-   succeeded, this can ship as our LoD1 city underneath the existing hosted
-   LoD2.2 meshes, recoloured — high-quality existing geometry plus our own
-   measurements, no compiler written yet.
+1. **Fix the two measured LoD1 regressions.** ✅ Done on `feat/building-one-owner`:
+   complete `buildings-osm.geojson` (422,570 buildings / 5,485 parts) feeds the
+   ladder; compositions without `min_height` still win; parent outlines are
+   dropped; tower-on-podium uses `ridge-tower` when the ridge sits ≥10 m above
+   LoD1.2. Named checks: Waag, Magna Plaza, Oude Kerk, ≥50 ridge-tower.
+2. **Ship the complete LoD1 city.** Staged tiles rebuilt (298 z14 tiles, 16 MB
+   gzipped). Publish decision still open — see status above. Once published,
+   hide `building-3d` / coloured dual stack under the streamed source (already
+   wired). The live overlay already dedupes composition outlines so landmarks
+   stop shimmering before that ships.
 3. **Rijksmuseum proof.** Fetch a tightly clipped, pinned 3DBAG LoD2.2 source
    around the Rijksmuseum and export an owned glTF. Confirm that the result
    preserves building parts, semantic roof/wall surfaces, the courtyard and the

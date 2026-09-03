@@ -179,8 +179,17 @@ class VectorBasemap {
     }
     const source = this.map && this.map.getStyle() && this.map.getSource('osm-building-appearance');
     if (!source) return;
-    source.setData(data);
-    this._hideDuplicatedBasemapBuildings(data);
+    // Drop parent outlines from hand-mapped compositions so Oude Kerk / Waag
+    // stop z-fighting their own parts. Falls back to the raw extract when the
+    // typed helper is not on the page yet.
+    const dedupe = window.CanalRecallBuildings && window.CanalRecallBuildings.dedupeAppearanceFeatures;
+    const features = (data && data.features) || [];
+    const cleaned = {
+      type: 'FeatureCollection',
+      features: dedupe ? dedupe(features) : features,
+    };
+    source.setData(cleaned);
+    this._hideDuplicatedBasemapBuildings(cleaned);
   }
 
   // The basemap keeps only the buildings the extract does not carry. Its ids

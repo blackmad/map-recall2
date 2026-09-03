@@ -47,10 +47,23 @@ export type BagBuilding = {
   status: string | null;
 };
 
-export type BagHeightSource = 'roof-70p' | 'lod12-volume' | 'ridge' | 'none';
+export type BagHeightSource = 'roof-70p' | 'lod12-volume' | 'ridge' | 'ridge-tower' | 'none';
 
 const number = (value: unknown): number | null => (typeof value === 'number' && Number.isFinite(value) ? value : null);
 const text = (value: unknown): string | null => (typeof value === 'string' && value !== '' ? value : null);
+
+/**
+ * How far the AHN ridge may sit above the ordinary LoD1.2 height before we
+ * treat the pand as a tower on a podium and raise the extrusion.
+ *
+ * `b3_h_dak_70p` is correct for pitched canal houses: most roof points are on
+ * the slope, so the 70th percentile sits between eave and ridge. On a slim
+ * tower with a broad podium, most points belong to the podium and the
+ * percentile collapses to podium height while `b3_h_nok` still records the
+ * tip. Ten metres is the gap the comparison page measured across 201 Zuidas
+ * panden that were more than 10 m below their own ridge.
+ */
+export const TOWER_PODIUM_GAP_M = 10;
 
 /**
  * The height to extrude a pand to.
@@ -61,6 +74,11 @@ const text = (value: unknown): string | null => (typeof value === 'string' && va
  * ridge and above the eave, which is what a flat top should do for a pitched
  * roof.
  *
+ * The tower exception comes first: when the ridge stands far above the
+ * percentile, the percentile is measuring the podium, not the building the
+ * player recognises. Preferring the ridge there is what stops Zuidas from
+ * collapsing into one slab.
+ *
  * The two fallbacks exist because the same decision has to be made from the
  * hosted 3D Tiles, whose metadata publishes neither percentile. There,
  * `b3_volume_lod12 / b3_opp_grond` recovers the same number: measured over a
@@ -69,21 +87,32 @@ const text = (value: unknown): string | null => (typeof value === 'string' && va
  * volume and a point-cloud percentile is the two sources describing one
  * extrusion, and it is why the tiles-only path is trustworthy.
  *
- * The ridge is last and reluctant. It is missing for every flat roof by
- * definition, and standing a flat top at the ridge of a steep canal house
+ * The ridge is otherwise last and reluctant. It is missing for every flat roof
+ * by definition, and standing a flat top at the ridge of a steep canal house
  * overstates the whole row.
  */
 export function bagHeightM(attributes: Record<string, unknown>): { heightM: number | null; source: BagHeightSource } {
   const ground = number(attributes.b3_h_maaiveld);
   const roof70 = number(attributes.b3_h_dak_70p);
-  if (roof70 !== null && ground !== null && roof70 - ground > 0) return { heightM: roof70 - ground, source: 'roof-70p' };
+  const ridge = number(attributes.b3_h_nok);
+  const roof70h = roof70 !== null && ground !== null ? roof70 - ground : null;
+  const ridgeH = ridge !== null && ground !== null ? ridge - ground : null;
+
+  if (
+    roof70h !== null && roof70h > 0 &&
+    ridgeH !== null && ridgeH > 0 &&
+    ridgeH - roof70h >= TOWER_PODIUM_GAP_M
+  ) {
+    return { heightM: ridgeH, source: 'ridge-tower' };
+  }
+
+  if (roof70h !== null && roof70h > 0) return { heightM: roof70h, source: 'roof-70p' };
 
   const volume = number(attributes.b3_volume_lod12);
   const area = number(attributes.b3_opp_grond);
   if (volume !== null && area !== null && area > 0 && volume / area > 0) return { heightM: volume / area, source: 'lod12-volume' };
 
-  const ridge = number(attributes.b3_h_nok);
-  if (ridge !== null && ground !== null && ridge - ground > 0) return { heightM: ridge - ground, source: 'ridge' };
+  if (ridgeH !== null && ridgeH > 0) return { heightM: ridgeH, source: 'ridge' };
 
   return { heightM: null, source: 'none' };
 }
