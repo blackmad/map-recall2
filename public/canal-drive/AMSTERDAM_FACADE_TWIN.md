@@ -155,9 +155,10 @@ as candidates to confirm, not as established fact:
 - De Rode Hoed, Keizersgracht;
 - Torensluis and the Singel bridgehead buildings.
 
-Everything else is reconstructed by grammar, not by hand. That is the point of
-the pilot: the hero buildings prove the ceiling, the ordinary terraces prove the
-method scales.
+Everything else is reconstructed the same way as the heroes — from its own
+observations — but through the automated measurement pipeline rather than by
+hand. That is the point of the pilot: the hero buildings prove the ceiling, the
+ordinary terraces prove that per-building fidelity survives automation.
 
 ### Ground truth is measured, not guessed
 
@@ -213,13 +214,24 @@ level: quay heights vary, and a canal that renders perfectly horizontal across a
 kilometre is wrong.
 
 
-### The façade grammar
+### Per-building reconstruction
 
-Do not model 2,000 canal houses individually. Amsterdam's canal ring is the most
-grammatical urban fabric in Europe: narrow plots, party walls, a shared
-structural logic, and a small vocabulary of gable and window types that vary by
-date. Derive the grammar, then instantiate it per building from measured
-parameters.
+**Every building is reconstructed from its own evidence.** This is the central
+rule of the project and it outranks throughput.
+
+Amsterdam's canal ring is the most grammatical urban fabric in Europe — narrow
+plots, party walls, a shared structural logic, a small vocabulary of gable and
+window types that vary by date — and that grammar is genuinely useful. But it is
+useful as a **rendering vocabulary**, not as a source of facts. The parts library
+tells you how to draw a *klokgevel* once you know this house has one. It must
+never tell you that this house has one.
+
+So: derive the vocabulary, then measure each building into it. A house gets its
+own gable type, its own bay count, its own storey heights, its own door
+position, its own brick colour, its own lean — observed, not sampled from what
+its neighbours look like.
+
+#### The parameter record is per building, and cheap
 
 A building is described by a parameter record, not by a mesh:
 
@@ -236,23 +248,117 @@ interface CanalHouse {
   gable: 'trap' | 'hals' | 'klok' | 'tuit' | 'lijst' | 'punt' | 'verhoogde-hals';
   gableOrnament: OrnamentSpec;   // klauwstukken, vases, pediment, festoons
   bays: number;                  // window bays across the façade
+  bayOffsetsM: number[];         // measured, not evenly divided
   windowType: 'kruiskozijn' | 'schuifraam-6' | 'schuifraam-8' | 'later';
   storeyHeights: number[];       // diminishing upward, measured not assumed
+  doorPositionM: number;         // measured offset across the façade
   hoistBeam: boolean;
+  hoistBeamOffsetM: number | null;
   corniceType: CorniceSpec;
   brick: BrickSpec;              // bond, colour (measured), pointing
   dressings: 'sandstone' | 'painted' | 'none';
-  leanDeg: number;               // op de vlucht
+  leanDeg: number;               // op de vlucht, measured per façade
+  ridgeSagM: number;             // settlement, measured per façade
   puiType: PuiSpec;              // ground-floor shopfront frame, tenant-neutral
-  confidence: Record<string, number>;
-  sources: Record<string, string>;
+  evidence: EvidenceLedger;      // see below — mandatory
 }
 ```
 
-Every field carries a provenance and a confidence. A field that was inferred by
-a model rather than measured must say so, exactly as `BUILDING_ENRICHMENT.md`
-requires of roof colour. The renderer may use a guess; the extract may never
-silently launder one into a measurement.
+Thirty-odd numbers per building. At a citywide scale that is single-digit
+megabytes for the entire municipality — trivially affordable, and far smaller
+than the meshes it generates. **Per-building storage is not the constraint.
+Per-building *observation* is.** Plan the expansion around observation cost and
+nothing else; never compromise per-building fidelity to save bytes, because the
+bytes were never the problem.
+
+#### The evidence ledger
+
+Every field carries its provenance, its confidence and the observation it came
+from, exactly as `BUILDING_ENRICHMENT.md` requires of roof colour:
+
+```ts
+interface FieldEvidence {
+  value: unknown;
+  source: 'bag' | 'ahn' | '3dbag' | 'pdok-ortho' | 'monument-text'
+        | 'streetlevel-measured' | 'osm' | 'reviewed' | 'default';
+  confidence: number;            // calibrated, not vibes
+  observationId: string | null;  // which image, which record, which review
+  measuredAt: string;            // imagery or record date
+}
+```
+
+`default` is the only value that means "we did not observe this". It must be
+counted, reported, and visible in the QA report per field and per
+neighbourhood. The renderer may use a default; the extract may never launder one
+into a measurement.
+
+#### No jitter, and no invented façades
+
+Do not apply procedural jitter to make a terrace look hand-built. Real terraces
+already vary, in ways that are measurable: different lean, different sag,
+different storey heights, different brick, different pointing, different door
+positions. Measure that variation instead of simulating it. Jitter is a guess
+wearing the costume of detail, and in a game whose whole purpose is geographic
+learning it teaches confident falsehoods.
+
+That leads to the hard rule:
+
+> **A building whose façade has never been observed does not get a façade.**
+
+It renders at LoD2.2 — correct silhouette, correct roof, measured materials, and
+no openings — and it joins the observation queue. It never gets plausible
+invented windows.
+
+An unmodelled building is a gap. A confidently wrong building is a lie the
+player memorises, and this project exists to teach people what is actually
+there. Prefer the gap, every time.
+
+#### Observation tiers
+
+Reconstruction fidelity follows evidence, per elevation, not per building:
+
+```text
+FRONTAL      rectified street-level view of this façade
+             → full LoD3: openings, gable, cornice, pui, materials, lean
+
+OBLIQUE      angled or partial view, or a monument description naming the
+             gable type and bay count
+             → LoD3 for what is stated or visible; conservative elsewhere;
+               every unobserved field marked default
+
+AERIAL ONLY  roof and massing measured, façade never seen
+             → LoD2.2 with measured roof and wall colour, no openings
+
+NONE         no usable observation
+             → LoD1
+```
+
+Canal frontage in the pilot boundary should reach FRONTAL almost everywhere.
+Rear elevations, courtyard walls and party-wall returns frequently will not, and
+that is the correct place for the ladder to fall back.
+
+#### Measuring a façade
+
+For each building with street-level reference, in leaf-off imagery wherever the
+choice exists:
+
+1. rectify the façade to an orthographic elevation using the BAG footprint edge
+   as the ground-truth width;
+2. scale from the measured plot width — the one dimension you already know
+   exactly;
+3. locate storey lines, window openings, door, hoist beam, cornice and gable
+   apex in that rectified space;
+4. classify the gable type and ornament against the vocabulary;
+5. sample brick, paint and joinery colour away from shadow and highlight, as the
+   roof pipeline already does;
+6. emit the parameter record with per-field confidence and the observation id;
+7. flag for review anything ambiguous rather than picking the modal answer.
+
+Monument descriptions are a *second independent measurement* for protected
+buildings, not a substitute. Where the text and the imagery disagree, review
+that building by hand and record which won.
+
+#### Assembly
 
 Blender generates the parameterised parts offline:
 
@@ -264,10 +370,14 @@ make_pui(width_m=5.4, height_m=3.2, bays=2, frame="painted-timber", fascia="neut
 ```
 
 Parts are exported as compressed GLB, atlased, and assembled at runtime by
-instancing against the per-building parameter record. Two houses with identical
-parameters must still not render identically: apply deterministic per-`pand_id`
-jitter to lean, sag, brick tone and pointing so a terrace reads as built rather
-than stamped.
+instancing against each building's own parameter record. Instancing is a
+performance technique applied to geometry that genuinely repeats — a window
+sash, a cornice bracket — and never a licence to reuse one house's measurements
+for another.
+
+Two adjacent houses built by the same hand in the same year may legitimately
+resolve to near-identical records. That is a finding, not a shortcut, and it
+must arrive from two independent observations rather than from copying one.
 
 ### Fidelity ladder
 
@@ -277,16 +387,21 @@ Extend the ladder in `LOD.md` rather than inventing a parallel one.
   Complete coverage, offline fallback, everything outside the pilot boundary.
 - **LoD2.2** — 3DBAG reconstructed walls and roof planes. Correct silhouette,
   no openings. The current `detailed-buildings` baseline.
-- **LoD3 (new, this project)** — grammar-instantiated façade: real window and
-  door openings, gable form and ornament, cornice, *pui*, materials, lean.
-  This is the pilot's deliverable tier.
+- **LoD2.2 + measured appearance** — the above with measured roof and wall
+  colour and material. The correct resting tier for any building whose façade
+  has not been observed. No openings, ever, without evidence.
+- **LoD3 (new, this project)** — per-building measured façade: this building's
+  window and door openings, its gable form and ornament, its cornice, its *pui*,
+  its materials and its lean. Requires a frontal or oblique observation of the
+  elevation being detailed. This is the pilot's deliverable tier.
 - **Signature model** — authored GLB for the hero buildings, per the existing
   signature-model rules: attribution record, geographic transform, performance
   LODs, stable aliases, identical picking and highlight behaviour.
 
 A building renders at exactly one tier at any moment. Tier selection is per
-`pand_id` and per camera distance, and the transition must not pop the
-silhouette.
+`pand_id`, per elevation, per camera distance, **and per available evidence** —
+a building is never promoted above what has actually been observed of it. The
+transition must not pop the silhouette.
 
 ### Parallel reconstruction swarm
 
@@ -304,17 +419,20 @@ RECON-2   AHN heights: eaves, ridge, per-terrace roofline profiles
 RECON-3   Rijksmonumenten text mining → structured façade attributes
 RECON-4   OSM semantics, building:part topology, existing colour/material tags
 RECON-5   PDOK ortho roof colour + material for the whole boundary
-RECON-6   Gable-type census, Herengracht both banks
-RECON-7   Gable-type census, Keizersgracht both banks
-RECON-8   Gable-type census, Prinsengracht both banks
-RECON-9   Gable-type census, Singel + the nine cross-streets
+RECON-6   Per-building façade survey, Herengracht both banks
+RECON-7   Per-building façade survey, Keizersgracht both banks
+RECON-8   Per-building façade survey, Prinsengracht both banks
+RECON-9   Per-building façade survey, Singel + the nine cross-streets
 RECON-10  Quay, water level, bridge and kademuur geometry
 ```
 
-The census agents work canal-side by canal-side, house by house, from
-leaf-off street-level reference. For each `pand_id` they record gable type,
-bay count, storey count, window type, hoist beam, cornice, lean, and a
-confidence with its source. They do **not** record what shop is downstairs.
+The survey agents work canal-side by canal-side, **house by house**, from
+leaf-off street-level reference. For each `pand_id` they record that building's
+own gable type, bay count and offsets, storey count and heights, window type,
+door position, hoist beam, cornice, lean and materials, each with a confidence
+and an observation id. They record `default` where they could not see, and they
+never carry a neighbour's answer across a party wall. They do **not** record
+what shop is downstairs.
 
 Construction wave — again concurrent, one lane each:
 
@@ -324,7 +442,8 @@ BUILD-2   Blender window/door/shutter library
 BUILD-3   Blender cornice, dressing and ornament library
 BUILD-4   Blender pui (shopfront frame) library, tenant-neutral
 BUILD-5   Material library: brick bonds, sandstone, stucco, paint, glass, pantile, slate
-BUILD-6   Grammar instantiation engine (typed, in src/)
+BUILD-6   Façade rectification and measurement pipeline
+BUILD-6b  Per-building assembly engine (typed, in src/)
 BUILD-7   MapLibre custom-layer integration + tier resolution per pand_id
 BUILD-8   Quay walls, water surface, bridges
 BUILD-9   Hero building: Westerkerk
@@ -451,6 +570,7 @@ QA-ARCH     is this the right gable, the right period, the right proportion?
 QA-LOCAL    would someone who lives here recognise this stretch of canal?
 QA-TECH     materials, texture repetition, LOD popping, z-fighting, artifacts
 QA-SCOPE    has anyone smuggled in a tree, a bike, a boat or a shop logo?
+QA-EVIDENCE does every rendered opening trace to an observation of THIS pand?
 ```
 
 QA-GEOM and QA-ARCH produce error reports and do not modify the scene;
@@ -458,6 +578,13 @@ correction agents act on those reports; then an independent re-review runs.
 
 QA-SCOPE is not a joke lane. Scope creep into foliage and vehicles is the most
 likely way this project fails.
+
+QA-EVIDENCE is the second most likely. It audits the ledger against the render:
+pick buildings at random, trace every visible feature back to a `pand_id`-level
+observation, and report any that resolve to a neighbour's record, a template
+default or nothing at all. It should also re-review the buildings the pipeline
+was *most* confident about, because that is where an unnoticed template leak
+would hide.
 
 ### Performance
 
@@ -493,18 +620,21 @@ M0  RECONNAISSANCE       inventory, sources joined, grammar hypothesis, boundary
 M1  MASSING              BAG/3DBAG/AHN massing + roofs across the boundary, in-game
 M2  QUAY AND WATER       canals, quay walls, bridges, correct water level
 M3  GABLE LIBRARY        all seven types parameterised, reviewed twice
-M4  GRAMMAR ENGINE       per-pand instantiation from measured parameters
-M5  FAÇADE ROLLOUT       every building in the boundary at LoD3
-M6  HERO BUILDINGS       Westerkerk and the signature set
-M7  MATERIAL PASS        measured colour, brick, stone, glass, roofing
-M8  LIGHTING             day / sunset / night, reflections
-M9  INTEGRATION          tier resolution, picking, highlight, offline fallback
-M10 OPTIMISATION         profile, instance, atlas, stream
-M11 ADVERSARIAL QA       independent geometric, architectural, local and scope review
+M4  MEASUREMENT          rectification pipeline + per-building façade survey
+M5  ASSEMBLY             per-pand records drive geometry; evidence ladder enforced
+M6  FAÇADE ROLLOUT       every observed building in the boundary at LoD3
+M7  HERO BUILDINGS       Westerkerk and the signature set
+M8  MATERIAL PASS        measured colour, brick, stone, glass, roofing
+M9  LIGHTING             day / sunset / night, reflections
+M10 INTEGRATION          tier resolution, picking, highlight, offline fallback
+M11 OPTIMISATION         profile, instance, atlas, stream
+M12 ADVERSARIAL QA       independent geometric, architectural, local and scope review
 ```
 
 Do not proceed past M0 until the geographic inventory is coherent. Do not
 proceed past M1 until the massing is recognisable in overlay against reference.
+Do not proceed past M4 until measurement coverage is known per elevation — the
+rollout's job is to render what was measured, not to fill in what was not.
 
 ### Final QA bar
 
@@ -522,10 +652,18 @@ Integration with canal-drive        9/10
 Performance                         8.5/10
 Boundary completeness               9/10
 Scope discipline                    10/10
+Per-building evidence discipline    10/10
 ```
 
-No category may sit below 8, and scope discipline is pass/fail at 10. Do not
-lower the bar to justify unfinished work.
+No category may sit below 8. Scope discipline and evidence discipline are both
+pass/fail at 10: a single façade rendered from a neighbour's measurements, or a
+`default` shipped as though it were measured, fails the milestone outright. Do
+not lower the bar to justify unfinished work.
+
+Report **measurement coverage** alongside these scores — the share of buildings
+at each observation tier, and per field the share measured versus defaulted.
+A boundary that is 70% frontally observed and honest about it is a better
+result than one that is 100% detailed and 30% invented.
 
 ### The walkthrough test
 
@@ -557,9 +695,12 @@ without exposing unfinished geometry.
 
 - façade geometry rendering inside `public/canal-drive/` through the existing
   Three.js custom MapLibre layer;
-- typed grammar and instantiation modules in `src/`, with their generated
-  browser bundles committed atomically alongside them;
+- typed vocabulary, façade-measurement and per-building assembly modules in
+  `src/`, with their generated browser bundles committed atomically alongside
+  them;
 - offline Blender asset-generation scripts and their optimised GLB output;
+- the per-building evidence ledger, published with the extract, queryable by
+  `pand_id`, and summarised per field and per neighbourhood;
 - a versioned building-parameter extract under
   `public/data/extracts/amsterdam/`, written first to `staging/` with a coverage
   and diff report, and published only after review;
@@ -595,26 +736,34 @@ build the right things.
 
 ### The framing that makes this affordable
 
-The pilot is not just a beautiful neighbourhood. It is deliberately two other
+Per-building measurement is the requirement citywide, not a luxury the pilot
+could afford because it was small. What has to scale is therefore the
+*measuring*, not the guessing.
+
+The pilot is not just a beautiful neighbourhood. It is deliberately three other
 things:
 
-1. **A grammar.** Seven gable types, a window vocabulary, a cornice vocabulary,
-   a materials library, and a parameter schema that describes a canal house in
-   about thirty numbers rather than a mesh.
-2. **A labelled training corpus.** Roughly two thousand buildings, each with a
-   `pand_id` and hand-verified gable type, bay count, storey count, window type
-   and material, cross-referenced to BAG, AHN, ortho and monument text.
+1. **A vocabulary.** Seven gable types, a window vocabulary, a cornice
+   vocabulary, a materials library, and a parameter schema that describes any
+   canal house in about thirty numbers rather than a mesh.
+2. **A measurement pipeline.** Rectify a façade against its BAG footprint edge,
+   find its storey lines and openings, classify its gable, sample its colours,
+   emit a record with per-field confidence. This is the artifact that scales.
+3. **A calibration corpus.** Roughly two thousand buildings, each with a
+   `pand_id` and hand-verified fields, cross-referenced to BAG, AHN, ortho and
+   monument text — the set that tells you how much to trust the pipeline's
+   output on a building nobody has checked.
 
-Nothing else about the pilot scales. Hand-censusing every façade in Amsterdam is
-not a bigger version of the pilot; it is a different project that will never
-finish. **Expansion is a pipeline problem, and the pilot's job is to produce the
-pipeline's inputs.**
+What does *not* scale is a human looking at every façade. What does scale is a
+machine looking at every façade and a human looking at the ones it was unsure
+about. Those are very different things, and only the second preserves the
+per-building rule.
 
-Design the census tooling in the pilot with this in mind: structured records
-keyed by `pand_id`, one row per building, every field with provenance and
-confidence, exported as a training-ready dataset. If the pilot's façade
-knowledge lives in agent transcripts and hand-edited meshes instead of a table,
-the expansion is dead before it starts.
+Design the survey tooling in the pilot with this in mind: structured records
+keyed by `pand_id`, one row per building, every field with provenance,
+confidence and an observation id, exported as a calibration-ready dataset. If
+the pilot's façade knowledge lives in agent transcripts and hand-edited meshes
+instead of a table, the expansion is dead before it starts.
 
 ### Gate: what must be true before expansion begins
 
@@ -623,8 +772,12 @@ Do not open Tier 1 until all of these hold.
 - The pilot passes its final QA bar, scope discipline included.
 - The parameter schema is stable and versioned; no field has been added in the
   last two milestones.
-- Grammar instantiation is fully automatic from a parameter record: given a row,
-  the engine produces the building with no human step.
+- Assembly is fully automatic from a parameter record: given a row, the engine
+  produces that building with no human step.
+- Façade measurement is automatic end to end on the pilot boundary, and its
+  confidence scores are calibrated against held-out hand-verified buildings.
+- Observation coverage is measured and reported per elevation, and the QA report
+  distinguishes measured from defaulted fields for every building.
 - The gable/window/cornice/pui libraries are complete for the 17th–18th century
   vocabulary and reused, not forked, across the pilot.
 - Performance headroom exists: the pilot boundary at LoD3 uses no more than half
@@ -633,10 +786,13 @@ Do not open Tier 1 until all of these hold.
   seam, no duplicate building, no popped silhouette.
 - The extract pipeline writes to `staging/`, reports coverage and diffs, and
   publishes to versioned extracts only after review.
-- Offline size budget is understood: measure the pilot's bytes per building at
-  each tier, then multiply by the real citywide `pand` count from BAG. If that
-  product does not fit the streaming and cache budget, solve that **before**
-  building more city, not after.
+- Offline size budget is understood for *generated geometry* — the parameter
+  records themselves are megabytes citywide and never the constraint. Measure
+  the pilot's mesh and texture bytes per building at each tier, multiply by the
+  real citywide `pand` count from BAG, and if that product does not fit the
+  streaming and cache budget, solve it **before** building more city. Solve it
+  by tiling, atlasing and LOD, never by reverting to shared per-block
+  geometry.
 
 ### Measure the city first
 
@@ -657,8 +813,9 @@ exist. Do not carry this document's guesses into a schedule.
 ### Tiers
 
 Order by *grammatical coherence*, not by distance from the centre. Each tier is
-a fabric with its own vocabulary; the cost of a tier is the cost of learning its
-grammar plus a small marginal cost per building.
+a fabric with its own vocabulary; the cost of a tier is the cost of learning
+that vocabulary and teaching the extractor to read it, plus a small marginal
+measurement cost per building.
 
 #### Tier 1 — The rest of the 17th-century canal ring and Centrum
 
@@ -688,11 +845,17 @@ attacked immediately after Tier 1. Speculative *revolutiebouw* built these
 neighbourhoods in long, near-identical runs: the same developer, the same year,
 the same plan repeated forty times down a street. Template reuse is extreme.
 
-A new grammar is required — neo-renaissance and eclectic ornament, larger
-windows, cast-iron balconies, tiled tympana, shop *puien* under
-*bovenwoningen* — but once learned, a single template can cover an entire block
-face with per-building variation limited to colour, storey height and ornament
-sub-type.
+A new vocabulary is required — neo-renaissance and eclectic ornament, larger
+windows, cast-iron balconies, tiled tympana, shop *puien* under *bovenwoningen*.
+Once it exists, measurement gets cheap and reliable here: the repetition means
+the extractor sees the same forms thousands of times and its confidence is well
+calibrated, so the automation ratio is high and review lands only on the
+genuine oddities.
+
+The repetition is a reason measurement is *easy* here, not a reason to stop
+measuring. Two houses in a run of forty still differ in paint, ornament
+sub-type, later shopfront insertion and a century of alteration, and those
+differences are exactly what a rider navigates by. Measure all forty.
 
 Expect this tier to deliver more buildings per unit of effort than any other.
 
@@ -714,8 +877,11 @@ Westelijke Tuinsteden, Buitenveldert, Slotervaart, Bijlmer, Noord's postwar
 estates.
 
 Repetitive slabs and gallery blocks with flat façade grammar. Low fidelity cost
-per building, very high instancing efficiency: a whole estate is often three
-building types repeated. 3DBAG LoD2.2 already carries most of the silhouette;
+per building and very high instancing efficiency at the *part* level — window
+grids, balcony rows, panel bays. The estate-scale repetition is real, but it is
+still confirmed per building rather than assumed: postwar blocks are heavily
+renovated, and cladding, glazing and balcony infill now differ block to block.
+3DBAG LoD2.2 already carries most of the silhouette;
 LoD3 here is largely a matter of correct window grids, balcony rows and panel
 materials. Large building counts, small effort.
 
@@ -733,37 +899,56 @@ the way; reserve authored models for the towers that define the skyline.
 Sheds, terminals, tanks, bridges, the ring road's structures. Mostly acceptable
 at LoD2.2 with correct materials. Do not gold-plate.
 
-### The classification pipeline
+### The measurement pipeline at city scale
 
-The mechanism that makes Tiers 1–4 tractable:
+The mechanism that makes Tiers 1–4 tractable. Note what it is *not*: it is not a
+model that predicts what a building probably looks like. It is an automated
+observer that measures each building individually and says how sure it is.
 
 1. **Join** BAG, 3DBAG, AHN, OSM, monument register and ortho per `pand_id`.
-2. **Predict** the parameter record from cheap signals: `bouwjaar`, plot width,
-   footprint shape, roof form from 3DBAG, roof colour and material from ortho,
-   monument description text where it exists, neighbourhood, and — critically —
-   the parameters of adjacent buildings, since terraces are built in runs.
-3. **Score confidence** per field. The pilot's 2,000 hand-verified rows are the
-   training and calibration set; hold part of them out to measure honest
-   accuracy per field, per era.
-4. **Auto-accept** high-confidence predictions.
-5. **Review by exception.** Humans and review agents only ever look at
-   low-confidence buildings, disagreements between sources, and buildings that
-   are visually prominent — canal frontage, corners, squares, landmark
-   sightlines. A building at the back of an interior courtyard does not earn
-   review time.
-6. **Sample-audit** the auto-accepted population. Draw a random sample per
-   neighbourhood, review it blind, and publish the measured error rate per
-   field in the tier's QA report. If sampled accuracy for a field falls below
-   its threshold, that field is demoted to a conservative default across the
-   tier rather than shipped wrong.
-7. **Feed back.** Every reviewed correction becomes training data. Accuracy
-   should climb monotonically across tiers; if it does not, stop and find out
-   why.
+2. **Acquire** an observation of each elevation: street-level imagery, oblique
+   aerial, archive photography, monument text. Coverage is the gating resource,
+   so measure it first and report it per neighbourhood before building anything.
+3. **Measure** each façade from its own image — rectify, scale from the known
+   plot width, locate storey lines and openings, classify the gable, sample
+   colours. One building, one observation, one record.
+4. **Score confidence** per field, calibrated against the held-out pilot corpus
+   so the numbers mean something. Report accuracy per field, per era.
+5. **Use priors only to route attention.** `bouwjaar`, neighbourhood and
+   neighbouring buildings are legitimate for ordering review, flagging
+   surprises and breaking a genuine tie between two readings of the same image.
+   They are never a source of values. A neighbour's gable type may raise a
+   question about this building; it may not answer it.
+6. **Auto-accept** high-confidence *measurements*.
+7. **Review by exception.** Humans and review agents look at low-confidence
+   buildings, source disagreements, and buildings that are visually prominent —
+   canal frontage, corners, squares, landmark sightlines. A rear wall in an
+   interior courtyard does not earn review time.
+8. **Default the rest, visibly.** Anything neither measured nor reviewed stays
+   at its evidence tier — LoD2.2, no openings — and stays in the queue. Tiers
+   ship with holes rather than with fabrications.
+9. **Sample-audit** the auto-accepted population. Draw a random sample per
+   neighbourhood, review it blind, publish the measured error rate per field.
+   If a field falls below its threshold, demote that field to a conservative
+   default across the tier rather than shipping it wrong.
+10. **Feed back.** Every reviewed correction joins the calibration corpus.
+    Accuracy should climb monotonically across tiers; if it does not, stop and
+    find out why.
 
-Automation ratio is the metric that decides whether expansion is working.
-Target **95% auto-accepted** in Tiers 2 and 4, **85%** in Tier 1, **75%** in
-Tier 3. If a tier cannot hit its ratio, the grammar for that fabric is wrong —
-fix the grammar rather than throwing review capacity at it.
+Two metrics decide whether expansion is working, and they must be reported
+together:
+
+- **Observation coverage** — the share of buildings with a usable view of each
+  elevation. This is the ceiling on everything.
+- **Automation ratio** — the share of *observed* buildings whose measurement is
+  auto-accepted. Target **95%** in Tiers 2 and 4, **85%** in Tier 1, **75%** in
+  Tier 3.
+
+A high automation ratio over low observation coverage is not progress; it is a
+small measured city with a large invented one behind it. If a tier cannot hit
+its ratio, the measurement pipeline is wrong for that fabric — fix the pipeline
+rather than throwing review capacity at it, and never fix it by lowering the
+confidence bar.
 
 ### Delivery mechanics
 
@@ -807,8 +992,10 @@ Stop a tier and reassess when any of these fire:
 
 - Every active BAG `pand` in the municipality renders at LoD1 or better,
   offline.
-- Centrum, the 19th-century belt and the interwar belt render at LoD3 with a
-  published, sampled accuracy per field.
+- Centrum, the 19th-century belt and the interwar belt render at LoD3 from
+  per-building measurement, with published observation coverage and sampled
+  accuracy per field.
+- No building anywhere renders openings it was not observed to have.
 - Every landmark on the orientation list is a signature model.
 - A rider dropped anywhere inside the ring road can determine their
   neighbourhood from the buildings alone, and their street within Centrum.
