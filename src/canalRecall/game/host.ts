@@ -62,6 +62,15 @@ export interface GameCoreHost {
   _toggleUtilityPanel(panel: HTMLElement): void;
   _closeUtilityPanels(): void;
   _zoomBadgeTimer: number;
+  /** The live logical drawing space; see `src/canalRecall/viewport.ts`. */
+  viewport: import('../viewport.ts').Viewport;
+  /** This frame's HUD geometry, computed once by the presentation runtime. */
+  _hudLayoutCache?: import('../hudLayout.ts').HudLayout | null;
+  /** True while a DOM overlay owns the screen — the recall question, a utility
+   *  panel, or the expanded article. The d-pad is not drawn under any of them. */
+  _overlayOpen(): boolean;
+  /** Tap targets for the arrival card's actions, on touch. */
+  _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' }>;
 
   /** Owned by the recall subsystem; landmarks needs it to join street names to
    *  the knowledge extract by the same normalisation the quiz uses. */
@@ -70,6 +79,10 @@ export interface GameCoreHost {
 
 /** Landmarks, neighborhood postcards and the encyclopedia cards. */
 export interface LandmarkHost extends GameCoreHost {
+  /** The trivia card shares the bottom band with these, so placing it needs to
+   *  know which of them are on screen. */
+  quizFeedback: string;
+  showMiniMap: boolean;
   landmarks: Landmark[];
   neighborhoods: Neighborhood[];
   bridges: Bridge[];
@@ -190,7 +203,7 @@ export interface RecallHost extends GameCoreHost {
 
   /** Owned by other subsystems. */
   _savePreferences(): void;
-  _showStreetKnowledge(name: string): void;
+  _showStreetKnowledge(name: string, type?: 'street' | 'water'): void;
 }
 
 /** Frame composition, the menu, the pause overlay and the finish card. */

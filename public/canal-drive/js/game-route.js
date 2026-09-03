@@ -21,6 +21,7 @@ class GameRouteRuntime {
     this._treesEnabled = document.getElementById('trees-enabled');
     this._reducedMotion = document.getElementById('reduced-motion');
     this._detailed3d = document.getElementById('detailed-3d');
+    this._googleTiles = document.getElementById('google-tiles');
     this._cameraZoom = document.getElementById('camera-zoom');
     this._routePattern = document.getElementById('route-pattern');
     this._homeAddressField = document.getElementById('home-address-field');
@@ -71,6 +72,7 @@ class GameRouteRuntime {
       this._soundEnabled.checked = prefs.sound === true;
       this._treesEnabled.checked = prefs.trees !== false;
       this._detailed3d.checked = prefs.detailed3d === true;
+      if (this._googleTiles) this._googleTiles.checked = prefs.googleTiles === true;
       this._reducedMotion.checked = prefs.reducedMotion === true;
       if (this._skipMastered) {
         this._skipMastered.checked = prefs.skipMastered !== false;
@@ -102,6 +104,7 @@ class GameRouteRuntime {
       minimap: !!this.routeOptions.minimap,
       trees: this._treesEnabled ? this._treesEnabled.checked : true,
       detailed3d: this._detailed3d ? this._detailed3d.checked : false,
+      googleTiles: this._googleTiles ? this._googleTiles.checked : false,
       reducedMotion: this._reducedMotion ? this._reducedMotion.checked : false,
       skipMastered: this._skipMastered ? this._skipMastered.checked : true,
       gamey: this.gameyFeatures,
@@ -123,6 +126,7 @@ class GameRouteRuntime {
     this._liveTrees = document.getElementById('live-trees');
     this._liveReducedMotion = document.getElementById('live-reduced-motion');
     this._liveDetailed3d = document.getElementById('live-detailed-3d');
+    this._liveGoogleTiles = document.getElementById('live-google-tiles');
     this._liveZoom = document.getElementById('live-zoom');
     this._liveControls = document.getElementById('live-controls');
     this._liveView = document.getElementById('live-view');
@@ -130,7 +134,7 @@ class GameRouteRuntime {
     document.getElementById('open-help').addEventListener('click', () => this._toggleUtilityPanel(this._helpPanel));
     document.getElementById('open-settings').addEventListener('click', () => this._toggleUtilityPanel(this._settingsPanel));
     document.querySelectorAll('.utility-close').forEach(button => button.addEventListener('click', () => this._closeUtilityPanels()));
-    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveGamey, this._liveReducedMotion, this._liveTrees, this._liveDetailed3d, this._liveSound, this._liveZoom]) {
+    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveGamey, this._liveReducedMotion, this._liveTrees, this._liveDetailed3d, this._liveGoogleTiles, this._liveSound, this._liveZoom]) {
       control.addEventListener('change', () => this._readLiveSettings());
     }
     this._liveControls.addEventListener('change', () => this._readLiveSettings());
@@ -150,6 +154,7 @@ class GameRouteRuntime {
     this._liveTrees.checked = this._treesEnabled.checked;
     this._liveReducedMotion.checked = !!this.camera.reducedMotion;
     this._liveDetailed3d.checked = this._detailed3d.checked;
+    if (this._liveGoogleTiles && this._googleTiles) this._liveGoogleTiles.checked = this._googleTiles.checked;
     this._liveZoom.value = String(this.camera.zoom);
   }
 
@@ -175,6 +180,10 @@ class GameRouteRuntime {
     this._reducedMotion.checked = this.camera.reducedMotion;
     this._detailed3d.checked = this._liveDetailed3d.checked;
     this.vectorMap.setDetailedBuildingsVisible(this._liveDetailed3d.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
+    if (this._liveGoogleTiles && this._googleTiles) {
+      this._googleTiles.checked = this._liveGoogleTiles.checked;
+      this.vectorMap.setGoogleTilesEnabled(this._liveGoogleTiles.checked);
+    }
     this._savePreferences();
   }
 
@@ -482,6 +491,7 @@ class GameRouteRuntime {
     this.vectorMap.applyTheme(this.themeMode);
     this.vectorMap.setTreesVisible(this._treesEnabled.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setDetailedBuildingsVisible(this._detailed3d.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
+    if (this._googleTiles) this.vectorMap.setGoogleTilesEnabled(this._googleTiles.checked);
     document.querySelector('#canal-card p').textContent = this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?';
     this.routeDifficulty = this._routeDifficulty.value;
     this.showMiniMap = this.routeOptions.minimap;

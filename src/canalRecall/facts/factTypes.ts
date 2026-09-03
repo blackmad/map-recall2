@@ -46,16 +46,26 @@ export interface Fact {
   kind: FactKind;
   /** Article heading the source passage came from; `''` for the lede. */
   section: string;
-  /** Exact article sentence selected by the local summarizer. */
+  /** Exact Wikipedia passage that supports the locally written fact. */
   sourceQuote: string;
+  /** English translation used for summarization; identical for English sources. */
+  sourceQuoteEnglish?: string;
   /** Article URL, so the card's "read more" points at the actual claim. */
   sourceUrl: string;
   /** Licence of the source text, carried per statement and never merged away. */
   license: string;
   /** ISO date the source article was retrieved. */
   retrievedAt: string;
+  /** Language of the exact evidence; displayed facts are always English. */
+  sourceLanguage?: 'en' | 'nl';
+  /** Local translation tool used before summarization, for Dutch evidence. */
+  translator?: string;
   /** `ollama:gemma3:4b` — which local model wrote this sentence. */
   model: string;
+  /** A second, isolated local-model pass that checked entailment. */
+  verifierModel?: string;
+  /** Only an explicit grounded verdict may cross the publication boundary. */
+  verification?: 'grounded';
 }
 
 /** Every fact known for one feature, as published in `facts.json`. */

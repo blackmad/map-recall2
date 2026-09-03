@@ -25,6 +25,7 @@ interface PinpointModeOverlayProps {
   unit: DistanceUnit;
   roundNumber: number;
   totalRounds: number;
+  factSeed: number;
   searchCenter: [number, number];
 }
 
@@ -66,6 +67,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   unit,
   roundNumber,
   totalRounds,
+  factSeed,
   searchCenter,
 }) => {
   const [showClues, setShowClues] = useState(false);
@@ -308,7 +310,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   Dashed line shows distance on map
                 </span>
               </div>
-              <WikipediaCard feature={currentFeature} />
+              <WikipediaCard feature={currentFeature} factSeed={factSeed} roundIndex={roundNumber - 1} />
               <LookAroundLink feature={currentFeature} />
             </div>
           )

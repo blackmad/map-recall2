@@ -1,4 +1,5 @@
 export type GameMode = 'pinpoint' | 'guess_name' | 'guess_neighborhood';
+import type { Fact } from './canalRecall/facts/factTypes';
 
 export type LocationScope = 'neighborhood' | 'city' | 'region';
 
@@ -53,7 +54,7 @@ export const FEATURE_CATEGORIES: CategoryInfo[] = [
     label: 'All Features',
     shortLabel: 'All Types',
     icon: '◎',
-    types: ['street', 'avenue', 'boulevard', 'square', 'landmark', 'bridge', 'park', 'canal', 'water', 'museum', 'monument'],
+    types: ['street', 'avenue', 'boulevard', 'square', 'landmark', 'bridge', 'park', 'canal', 'water', 'museum', 'monument', 'cinema', 'library', 'university', 'music venue'],
     description: 'A rich mix of streets, waterways, bridges, squares & landmarks',
   },
   {
@@ -101,7 +102,7 @@ export const FEATURE_CATEGORIES: CategoryInfo[] = [
     label: 'Landmarks & Museums',
     shortLabel: 'Landmarks',
     icon: '◆',
-    types: ['landmark', 'museum', 'monument'],
+    types: ['landmark', 'museum', 'monument', 'cinema', 'library', 'university', 'music venue'],
     description: 'Famous monuments, museums & cultural attractions',
   },
 ];
@@ -173,6 +174,8 @@ export interface StreetFeature {
   wikipediaExtract?: string;
   wikipediaUrl?: string;
   wikipediaImageUrl?: string;
+  /** Human-reviewed, statement-provenance trivia joined by exact extract id. */
+  localFacts?: Fact[];
   highway?: string;
   neighborhood?: string;
   neighborhoodDistractors?: string[];

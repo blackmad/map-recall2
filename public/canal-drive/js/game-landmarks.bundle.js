@@ -355,6 +355,23 @@
     return next;
   }
 
+  // src/canalRecall/game/routeKnowledge.ts
+  var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract;
+  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise) {
+    const index = /* @__PURE__ */ new Map();
+    const add = (entry, type) => {
+      index.set(`${type}:${normalise(entry.name)}`, { ...entry, type });
+    };
+    for (const entry of legacy) add(entry, entry.type === "water" ? "water" : "street");
+    for (const entry of streets) if (eligible(entry)) add(entry, "street");
+    for (const entry of waters) if (eligible(entry)) add(entry, "water");
+    return index;
+  }
+  function routeKnowledgeFor(index, name, type, normalise) {
+    const key = normalise(name);
+    return index.get(`${type}:${key}`) || index.get(`${type === "street" ? "water" : "street"}:${key}`);
+  }
+
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
   var CLICK_SELECT_RADIUS = 120;
@@ -515,13 +532,18 @@
       if (!notice || !notice.wikipediaUrl) return;
       window.open(notice.wikipediaUrl, "_blank", "noopener");
     }
-    _showStreetKnowledge(name) {
+    _showStreetKnowledge(name, type = "street") {
       const key = this._normaliseCanalName(name);
-      const entry = this.streetKnowledge.get(key);
+      const entry = routeKnowledgeFor(
+        this.streetKnowledge,
+        name,
+        type,
+        (value) => this._normaliseCanalName(value)
+      );
       if (!entry) return;
       const split = splitDetail(entry.wikipediaExtract || "");
       this._showLandmarkNotice({
-        id: `street-knowledge:${key}`,
+        id: entry.id || `${type}-knowledge:${key}`,
         name: entry.name || name,
         type: "street",
         detail: split.detail,
@@ -542,6 +564,8 @@
           bridgeResponse,
           crossingResponse,
           streetKnowledgeResponse,
+          streetResponse,
+          waterResponse,
           brandedPoiResponse,
           factResponse
         ] = await Promise.all([
@@ -551,19 +575,34 @@
           fetch(url("bridges.json")),
           fetch(url("bridge-crossings.json")),
           fetch(url("street-knowledge.json")),
+          fetch(url("streets.json")),
+          fetch(url("water.json")),
           fetch(url("branded-pois.json")),
           // Generated trivia. Absent until a batch has been reviewed and
           // published, and the cards fall back to the Wikipedia lede when it is.
           fetch(url("facts.json")).catch(() => new Response("null", { status: 404 }))
         ]);
         if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error("Cached place data unavailable");
-        const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex, streetKnowledge, brandedPois, factsFile] = await Promise.all([
+        const [
+          features,
+          boundaries,
+          neighborhoodEnriched,
+          bridgeFeatures,
+          crossingIndex,
+          streetKnowledge,
+          streetFeatures,
+          waterFeatures,
+          brandedPois,
+          factsFile
+        ] = await Promise.all([
           landmarkResponse.json(),
           boundaryResponse.json(),
           readJson(neighborhoodEnrichedResponse, []),
           readJson(bridgeResponse, []),
           readJson(crossingResponse, { bridges: {} }),
           readJson(streetKnowledgeResponse, []),
+          readJson(streetResponse, []),
+          readJson(waterResponse, []),
           readJson(brandedPoiResponse, []),
           readJson(factResponse, null)
         ]);
@@ -571,8 +610,11 @@
         this._factRotation = loadRotationState(
           typeof localStorage === "undefined" ? null : localStorage
         );
-        this.streetKnowledge = new Map(
-          streetKnowledge.map((entry) => [this._normaliseCanalName(entry.name), entry])
+        this.streetKnowledge = buildRouteKnowledgeIndex(
+          streetKnowledge,
+          streetFeatures,
+          waterFeatures,
+          (name) => this._normaliseCanalName(name)
         );
         this.vectorMap.setPlaces(features, boundaries);
         this.vectorMap.setBrandedPois(brandedPois);
@@ -709,18 +751,22 @@
         extractLang: lm.extractLang,
         hasArticle: !!lm.wikipediaUrl,
         hasImage
-      }, measure);
+      }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
       const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
-      const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({
+      const bottomLayout = window.CanalRecallUi.hudLayout({
+        viewport: this.viewport,
         tripWidth: 180,
         postcardVisible: postcardShowing,
         landmarkWidth: card.width,
         landmarkHeight: card.height,
+        feedbackVisible: !!this.quizFeedback,
+        neighborhoodVisible: !!this.currentNeighborhood,
+        minimapVisible: this.showMiniMap,
         zoomVisible: this._zoomBadgeTimer > 0,
         controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
       });
-      const cardX = bottomLayout ? bottomLayout.landmark.x : CANVAS_W / 2 - card.width / 2;
-      const cardY = bottomLayout ? bottomLayout.landmark.y : CANVAS_H - card.height - 30;
+      const cardX = bottomLayout.landmark.x;
+      const cardY = bottomLayout.landmark.y;
       ctx.save();
       ctx.globalAlpha = Math.max(0, alpha);
       this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
@@ -793,11 +839,18 @@
       };
       const card = window.CanalRecallCards.measurePostcard(
         { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage },
-        measure
+        measure,
+        window.CanalRecallUi.postcardWidth(this.viewport)
       );
-      const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({ tripWidth: 180 });
-      const cardX = bottomLayout ? bottomLayout.postcard.x : CANVAS_W - card.width - 20;
-      const baseCardY = bottomLayout ? bottomLayout.postcard.y : CANVAS_H - card.height - 76;
+      const bottomLayout = window.CanalRecallUi.hudLayout({
+        viewport: this.viewport,
+        tripWidth: 180,
+        postcardHeight: card.height,
+        neighborhoodVisible: !!this.currentNeighborhood,
+        minimapVisible: this.showMiniMap
+      });
+      const cardX = bottomLayout.postcard.x;
+      const baseCardY = bottomLayout.postcard.y;
       const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.3);
       const cardY = baseCardY + (1 - (1 - Math.pow(1 - slideT, 3))) * 50;
       ctx.save();

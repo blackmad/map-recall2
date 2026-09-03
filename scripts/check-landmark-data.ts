@@ -28,6 +28,10 @@ import type {
   NeighborhoodEnrichment,
 } from '../src/canalRecall/game/extracts';
 import type { BuildingHit, Landmark, WorldPoint } from '../src/canalRecall/game/worldTypes';
+import {
+  buildRouteKnowledgeIndex,
+  routeKnowledgeFor,
+} from '../src/canalRecall/game/routeKnowledge';
 
 const checks: string[] = [];
 function check(name: string, run: () => void): void {
@@ -48,6 +52,18 @@ const toWorld = ([lat, lng]: LatLng): WorldPoint => ({
 });
 
 // ---- Text ----
+
+check('street and canal knowledge keeps exact IDs and homonyms separate', () => {
+  const normalise = (name: string) => name.toLowerCase().replace(/\s+/g, '');
+  const index = buildRouteKnowledgeIndex(
+    [{ name: 'Nes', wikipediaExtract: 'Legacy summary.' }],
+    [{ id: 'street:nes', name: 'Nes', wikipediaUrl: 'https://en.wikipedia.org/wiki/Nes' }],
+    [{ id: 'water:nes', name: 'Nes', wikipediaUrl: 'https://en.wikipedia.org/wiki/Nes_water' }],
+    normalise,
+  );
+  assert.equal(routeKnowledgeFor(index, 'NES', 'street', normalise)?.id, 'street:nes');
+  assert.equal(routeKnowledgeFor(index, 'Nes', 'water', normalise)?.id, 'water:nes');
+});
 
 check('splitDetail keeps whole sentences and caps both lengths', () => {
   const text = 'One. Two. Three. Four.';
