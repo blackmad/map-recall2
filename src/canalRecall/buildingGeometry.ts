@@ -23,19 +23,29 @@ export const bboxesOverlap = (a: Bbox, b: Bbox): boolean =>
 
 /** Area-weighted centroid of a ring, falling back to the mean for degenerate rings. */
 export function ringCentroid(ring: Ring): [number, number] {
+  if (ring.length === 0) return [0, 0];
+  // Shoelace is unstable in raw lng/lat: Amsterdam rings sit near (5, 52) with
+  // area ~1e-8, so 3×area in the denominator loses the centre. Translate to
+  // the first vertex first — otherwise a regular 11 m turret gets a centroid
+  // 5 m off-centre and a pyramidal fan that looks like a shard.
+  const [x0, y0] = ring[0];
   let twiceArea = 0;
   let x = 0;
   let y = 0;
   for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const cross = ring[j][0] * ring[i][1] - ring[i][0] * ring[j][1];
+    const xi = ring[i][0] - x0;
+    const yi = ring[i][1] - y0;
+    const xj = ring[j][0] - x0;
+    const yj = ring[j][1] - y0;
+    const cross = xj * yi - xi * yj;
     twiceArea += cross;
-    x += (ring[j][0] + ring[i][0]) * cross;
-    y += (ring[j][1] + ring[i][1]) * cross;
+    x += (xj + xi) * cross;
+    y += (yj + yi) * cross;
   }
-  if (Math.abs(twiceArea) < 1e-12) {
+  if (Math.abs(twiceArea) < 1e-18) {
     return [ring.reduce((sum, p) => sum + p[0], 0) / ring.length, ring.reduce((sum, p) => sum + p[1], 0) / ring.length];
   }
-  return [x / (3 * twiceArea), y / (3 * twiceArea)];
+  return [x0 + x / (3 * twiceArea), y0 + y / (3 * twiceArea)];
 }
 
 /** Ray casting. Points exactly on an edge are not worth special-casing here. */

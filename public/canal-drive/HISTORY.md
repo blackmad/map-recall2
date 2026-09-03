@@ -43,9 +43,11 @@ tiles (16 MB gzipped) remains the step-2 decision.
 so walls now stop at the eaves and a small Three.js custom layer draws the
 cones. `roof:height` is kept in the appearance extract (1,035 features). Flat
 roof caps skip those parts so the grey lid does not fight the mesh. The first
-mesh pass packed height on Z (ENU); MapLibre's shared custom-layer transform
-expects Three Y-up like the bike/boat/GLB layers, so the cones were laid flat
-along the map — fixed to `[east, up, north]`.
+mesh pass packed height on Z, the second on Three Y-up with `rotateX(π/2)`.
+Both sheared the fan toward the mercator origin, then `rotateX(π/2)` (the GLTF
+convention) stood the remaining cones on edge through the turrets. Vertices are
+east/north/up metres, placed with translate × scale(s,-s,s) like the photoreal
+layer — no extra rotation.
 
 ## Street encyclopedia is no longer just Nes
 

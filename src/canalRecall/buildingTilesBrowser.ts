@@ -135,7 +135,15 @@ export class BuildingTileStreamer {
           return;
         }
         const collection = await readGzippedGeoJson(response);
-        this.cache.adopt(key, collection.features ?? []);
+        // MapLibre's GeoJSON source tiles and may rewrite rings in place.
+        // Pyramidal roofs need the original closed footprint, so keep our own
+        // copy of coordinates before `setData`.
+        const features = (collection.features ?? []).map(feature => ({
+          type: 'Feature',
+          properties: { ...(feature.properties || {}) },
+          geometry: feature.geometry && JSON.parse(JSON.stringify(feature.geometry)),
+        }));
+        this.cache.adopt(key, features);
         if (!this.disposed) this.flush();
       } catch {
         this.empty.add(key);
@@ -149,8 +157,8 @@ export class BuildingTileStreamer {
 
   private flush(): void {
     const collection = this.cache.collection();
-    this.map.getSource(this.sourceId)?.setData(collection);
     this.onFeatures?.(collection.features);
+    this.map.getSource(this.sourceId)?.setData(JSON.parse(JSON.stringify(collection)));
     if (collection.features.length > 0 && this.onFirstBuildings) {
       const announce = this.onFirstBuildings;
       this.onFirstBuildings = undefined;
