@@ -6,10 +6,10 @@
  * that talks to the network and to MapLibre, kept thin on purpose.
  *
  * It is deliberately safe to run before the tiles exist. The complete city is
- * 15 MB of generated data that gets published into the versioned extract as a
- * reviewed decision, so until that happens the index is absent, `available`
- * stays false, and the caller keeps whatever source it already had. That is why
- * the probe is a single request for the index rather than an assumption.
+ * ~16 MB of gzipped tiles published into the versioned extract as a reviewed
+ * decision, so until that happens the index is absent, `available` stays false,
+ * and the caller keeps whatever source it already had. That is why the probe is
+ * a single request for the index rather than an assumption.
  */
 
 import {
@@ -25,12 +25,23 @@ type MapLike = {
   on(event: string, handler: () => void): void;
 };
 
+/** Decompress a published `.geojson.gz` tile into a FeatureCollection. */
+async function readGzippedGeoJson(response: Response): Promise<{ features?: BuildingFeature[] }> {
+  if (!response.body || typeof DecompressionStream === 'undefined') {
+    throw new Error('gzip building tiles need DecompressionStream');
+  }
+  const stream = response.body.pipeThrough(new DecompressionStream('gzip'));
+  const text = await new Response(stream).text();
+  return JSON.parse(text) as { features?: BuildingFeature[] };
+}
+
 export class BuildingTileStreamer {
   private readonly cache = new BuildingTileCache();
   /** Tiles that returned nothing. Remembered so a gap is not refetched forever. */
   private readonly empty = new Set<string>();
   private inFlight = 0;
   private onFirstBuildings?: () => void;
+  private onFeatures?: (features: BuildingFeature[]) => void;
   private available = false;
   private disposed = false;
 
@@ -76,10 +87,14 @@ export class BuildingTileStreamer {
    * which must not happen a moment earlier: hiding it on the strength of a
    * successful probe alone would leave an empty map if the tiles turned out to
    * be unreadable.
+   *
+   * `onFeatures` fires whenever the resident set changes, so procedural roofs
+   * can track the same working set as the extrusions.
    */
-  attach(onFirstBuildings?: () => void): void {
+  attach(onFirstBuildings?: () => void, onFeatures?: (features: BuildingFeature[]) => void): void {
     if (!this.available) return;
     this.onFirstBuildings = onFirstBuildings;
+    this.onFeatures = onFeatures;
     this.map.on('moveend', () => { void this.update(); });
     void this.update();
   }
@@ -114,7 +129,7 @@ export class BuildingTileStreamer {
           this.empty.add(key);
           return;
         }
-        const collection = (await response.json()) as { features?: BuildingFeature[] };
+        const collection = await readGzippedGeoJson(response);
         this.cache.adopt(key, collection.features ?? []);
         if (!this.disposed) this.flush();
       } catch {
@@ -130,6 +145,7 @@ export class BuildingTileStreamer {
   private flush(): void {
     const collection = this.cache.collection();
     this.map.getSource(this.sourceId)?.setData(collection);
+    this.onFeatures?.(collection.features);
     if (collection.features.length > 0 && this.onFirstBuildings) {
       const announce = this.onFirstBuildings;
       this.onFirstBuildings = undefined;

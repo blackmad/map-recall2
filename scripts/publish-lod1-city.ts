@@ -3,8 +3,9 @@
  *
  * Everything upstream of this writes to `staging/` and reports what it found;
  * this is the one step that changes what the game serves, and it is separate
- * because 15 MB of generated data across 382 files is a decision someone makes,
- * not a side effect of a build.
+ * because ~16 MB of gzipped tiles across ~300 files is a decision someone makes,
+ * not a side effect of a build. Raw GeoJSON would be ~113 MB; we publish
+ * `.geojson.gz` and decompress in the browser.
  *
  * It refuses rather than guesses. A staging directory that does not match its
  * own index, or that is missing tiles the index names, means a build was
@@ -18,7 +19,6 @@
 
 import { cp, readFile, readdir, rm, stat } from 'node:fs/promises';
 import path from 'node:path';
-import { gzipSync } from 'node:zlib';
 
 const flag = (name: string): string | undefined =>
   process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -48,7 +48,7 @@ const missing: string[] = [];
 let bytes = 0;
 for (const tile of index.tileList) {
   const [, x, y] = tile.split('/');
-  const file = path.join(stagedDir, String(index.zoom), x, `${y}.geojson`);
+  const file = path.join(stagedDir, String(index.zoom), x, `${y}.geojson.gz`);
   const found = await stat(file).catch(() => null);
   if (!found) missing.push(tile);
   else bytes += found.size;
@@ -72,7 +72,7 @@ process.stdout.write(`  to            ${publishedDir}\n`);
 process.stdout.write(`  zoom          z${index.zoom}\n`);
 process.stdout.write(`  tiles         ${index.tiles}, all present\n`);
 process.stdout.write(`  buildings     ${index.features}\n`);
-process.stdout.write(`  size          ${(bytes / 1e6).toFixed(0)} MB raw, ${(index.totalGzipBytes / 1e6).toFixed(0)} MB gzipped\n`);
+process.stdout.write(`  size          ${(bytes / 1e6).toFixed(1)} MB on disk (gzipped; raw would be ~${(index.totalBytes / 1e6).toFixed(0)} MB)\n`);
 process.stdout.write(`  replaces      ${existing ? `an existing ${previous}-column tree` : 'nothing — this is the first publish'}\n`);
 
 if (!confirm) {

@@ -42,6 +42,7 @@ const metresApart = (a: [number, number], b: [number, number]): number =>
 type Properties = {
   tier: number; bagId: string | null; osmId: string | null;
   height: number | null; heightSource: string | null; roofShape: string | null;
+  roofHeight?: number | null;
 };
 
 const bagIds = new Set<string>();
@@ -123,6 +124,10 @@ assert.ok(waagOsm.length >= 8, `its hand-mapped parts survived the merge (${waag
 assert.ok(waagHeights.length >= 5, `its parts still stand at distinct heights (${waagHeights.length}: ${waagHeights.join(', ')})`);
 assert.ok(Math.max(...waagHeights) >= 24, `the tallest turret is still there (${Math.max(...waagHeights)} m)`);
 assert.ok(waag.some(part => part.roofShape === 'pyramidal'), 'its pyramidal roofs survived the merge');
+assert.ok(
+  waag.some(part => part.roofShape === 'pyramidal' && Number(part.roofHeight) >= 4),
+  'roof:height survives so walls stop at the eaves and cones can draw'
+);
 // The pand underneath must be gone, or the box is inside the composition.
 assert.ok(
   !waag.some(part => part.bagId === 'NL.IMBAG.Pand.0363100012171850'),

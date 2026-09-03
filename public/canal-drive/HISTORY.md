@@ -3,6 +3,15 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## Complete LoD1 city published as gzipped z14 tiles
+
+Byte strategy decided: ship `.geojson.gz` (~16 MB, 298 tiles) in the versioned
+Amsterdam extract, not 113 MB of raw GeoJSON. The streamer decompresses with
+`DecompressionStream`, feeds the same working set to procedural pyramidal roofs,
+and hides Liberty `building-3d` once the first tile lands. Tiles keep
+`roofHeight` so Waag eaves still stop under the cones. Publish is
+`npm run publish:lod1-city -- --confirm` from staging.
+
 ## One owner per building composition — LoD1 blockers cleared
 
 The comparison page's two real losses are fixed on `feat/building-one-owner`.

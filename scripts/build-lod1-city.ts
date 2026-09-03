@@ -191,7 +191,8 @@ for await (const rawLine of reader) {
       osmId: matched?.osmId ?? null,
       colour: matched?.properties.colour ?? null,
       roofColour: matched?.properties.roofColour ?? null,
-      roofShape: matched?.properties.roofShape ?? null
+      roofShape: matched?.properties.roofShape ?? null,
+      roofHeight: matched?.properties.roofHeight ?? null
     },
     geometry: feature.geometry
   }));

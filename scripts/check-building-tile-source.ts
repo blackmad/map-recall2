@@ -73,12 +73,12 @@ for (const key of tiny.evict) assert.ok(!needed.has(key), 'a too-small budget st
 // --- urls --------------------------------------------------------------------
 assert.equal(
   tileUrl({ z: 14, x: 8414, y: 5384 }, '../data/extracts/amsterdam'),
-  '../data/extracts/amsterdam/building-tiles/14/8414/5384.geojson',
-  'tile urls match the layout the build writes'
+  '../data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz',
+  'tile urls match the gzipped layout the build writes'
 );
 assert.equal(
   tileUrl({ z: 14, x: 8414, y: 5384 }, '../data/extracts/amsterdam/'),
-  '../data/extracts/amsterdam/building-tiles/14/8414/5384.geojson',
+  '../data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz',
   'a trailing slash on the base does not double up'
 );
 
