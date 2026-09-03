@@ -47,7 +47,10 @@ mesh pass packed height on Z, the second on Three Y-up with `rotateX(π/2)`.
 Both sheared the fan toward the mercator origin, then `rotateX(π/2)` (the GLTF
 convention) stood the remaining cones on edge through the turrets. Vertices are
 east/north/up metres, placed with translate × scale(s,-s,s) like the photoreal
-layer — no extra rotation.
+layer — no extra rotation. A third bug put the apex ~5 m off-centre: shoelace
+on raw Amsterdam lng/lat (area ~1e-8) is numerically unstable, so a regular
+11 m turret got radii of 1–10 m and the fan looked like a shard. `ringCentroid`
+now translates to the first vertex before the area sum; Waag radii stay ~5.5 m.
 
 ## Street encyclopedia is no longer just Nes
 
