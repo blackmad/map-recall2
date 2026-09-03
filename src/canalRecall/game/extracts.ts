@@ -76,4 +76,5 @@ export interface StreetKnowledgeEntry {
   wikipedia?: string;
   wikipediaUrl?: string;
   wikipediaExtract?: string;
+  wikipediaExtractLang?: string;
 }

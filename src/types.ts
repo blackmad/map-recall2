@@ -172,6 +172,8 @@ export interface StreetFeature {
   wikidataSitelinks?: number;
   encyclopediaScore?: number;
   wikipediaExtract?: string;
+  /** Set when the stored extract is not English, so the translation pass can find it. */
+  wikipediaExtractLang?: string;
   wikipediaUrl?: string;
   wikipediaImageUrl?: string;
   /** Human-reviewed, statement-provenance trivia joined by exact extract id. */

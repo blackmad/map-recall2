@@ -577,7 +577,7 @@
         detail: split.detail,
         longDetail: split.longDetail,
         wikipediaUrl: entry.wikipediaUrl || "",
-        extractLang: "en"
+        extractLang: entry.wikipediaExtractLang || "en"
       }, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
       if (!entry.wikipediaExtract && entry.wikidata && entry.wikipediaUrl) {
         this._streetSummaryRequests = this._streetSummaryRequests || /* @__PURE__ */ new Set();
