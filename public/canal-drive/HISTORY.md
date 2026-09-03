@@ -3,6 +3,26 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## Map Tiles API key is no longer committed
+
+The Google photoreal option used to ship a browser key inside
+`google-tiles-source.js` / `google-tiles.bundle.js`. It now loads
+`google-tiles-config.json` at runtime (gitignored), written by
+`npm run canal:google-tiles-config` from `VITE_GOOGLE_MAP_TILES_API_KEY`.
+Without that file the option fails closed and keeps 3DBAG. The leaked key
+(`Canal Recall 3D tiles spike` in project `map-cms-amsterdam-v1`) was
+rotated via `gcloud services api-keys`: create a referrer-restricted
+replacement (`Canal Recall Map Tiles`, `tile.googleapis.com` only), write
+local config, then soft-delete the old key. Git history still contains the
+old string; the Cloud credential no longer accepts it.
+
+## Trivia Lab can label and export a review file
+
+The lab’s Human review view approves or rejects features, strikes individual
+sentences, attaches notes, keeps a browser draft, and downloads a
+version-matched `facts-review*.json` for `facts:publish`. The stratified audit
+of the published v10 catalog remains TODO 16.
+
 ## React overlay owns the briefing and live settings (item 8c)
 
 The route setup card, advanced options, account row and in-game settings panel

@@ -6,6 +6,14 @@
 import { test, expect } from '@playwright/test';
 
 async function loaded(page: import('@playwright/test').Page) {
+  // The Map Tiles key is no longer in the bundle. Inject a throwaway key so
+  // overview-path tests can still prove a tileset request is attempted; every
+  // tile.googleapis.com call is aborted below so nothing is billed.
+  await page.route('**/google-tiles-config.json', (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify({ apiKey: 'AIzaSyTEST_KEY_FOR_E2E_ONLY___________' }),
+  }));
   await page.goto('/canal-drive/');
   await page.waitForFunction(() => !!(window as any).canalRecallGame?.ctx);
   // The tiles module is ESM and therefore deferred; the gate is a classic

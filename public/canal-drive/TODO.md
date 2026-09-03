@@ -22,11 +22,14 @@ belongs here before anything below it.*
 
 **16. Review and refine the published Randstad trivia.** The owner approved the
 complete v10 automatically grounded batch, publishing 4,263 facts across 1,456
-features in Amsterdam, Rotterdam, Den Haag and Utrecht. Add per-fact
-approve/reject/edit controls to the Trivia Lab and export version-matched review
-files, then work through a stratified audit prioritising dates, quantities,
-Dutch translations and model-verifier disagreements. Corrections must retain
-exact Wikipedia evidence and must go back through the normal publication gate.
+features in Amsterdam, Rotterdam, Den Haag and Utrecht. Trivia Lab now has a
+**Human review** view: approve / reject / strike / note, local draft, load an
+existing `facts-review*.json`, and download a version-matched review file for
+`npm run facts:publish`. Remaining: work through a stratified audit prioritising
+dates, quantities, Dutch translations and model-verifier disagreements.
+Corrections that change wording must retain exact Wikipedia evidence and go
+back through the normal publication gate — the lab does not rewrite staged
+sentences in place.
 
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by
@@ -121,8 +124,8 @@ Amsterdam paths asserted against the algorithm it replaced).
 What is left in `osm-loader.js` is Overpass mirrors, failover and `Image`
 loading — network I/O that can only be tested by going to the network.
 
-**No un-migrated decision logic remains under this item.** What is left is
-item 8c's DOM work.
+**No un-migrated decision logic remains under this item.** Overlay preferences
+(item 8c) are typed; what is left in `game-route.js` is the Game adapter.
 
 Settled 2026-09-01: `track.js` was dead — `this.track` is only ever a
 `RoadNetwork`, and the `Track` class was constructed nowhere — so it is gone.

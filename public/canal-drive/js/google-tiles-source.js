@@ -19,14 +19,12 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 const { THREE, MeshoptDecoder } = window.CanalRecallThree;
 
-// Browser key, restricted at Google's end to the Map Tiles API and to this
-// game's own origins, so publishing it here grants nothing off-origin. Rotate
-// it in the Cloud console rather than by editing a copy into some other file.
-const API_KEY = 'AIzaSyBURh1hjGzFqELADfruqrDPhEpl1lRnrPk';
-
 // Re-exported so older tests can still find a number on this module; the live
 // gate is `CanalRecallPhotorealGate.ACTIVATION_ZOOM`.
 export const ACTIVATION_METERS = 25;
+
+/** Runtime config written by `npm run canal:google-tiles-config` (gitignored). */
+const CONFIG_URL = new URL('../google-tiles-config.json', import.meta.url).href;
 
 const DRACO_DECODER_PATH = 'https://www.gstatic.com/draco/versioned/decoders/1.5.6/';
 
@@ -93,7 +91,28 @@ export class GooglePhotorealTiles {
     this.failed = false;
     this.onAttribution = onAttribution;
     this._attribution = '';
+    this._apiKey = null;
+    this._apiKeyPromise = null;
     this.layer = this._makeLayer();
+  }
+
+  async _ensureApiKey() {
+    if (this._apiKey) return this._apiKey;
+    if (this._apiKeyPromise) return this._apiKeyPromise;
+    this._apiKeyPromise = (async () => {
+      try {
+        const response = await fetch(CONFIG_URL, { cache: 'no-store' });
+        if (!response.ok) return null;
+        const config = await response.json();
+        return typeof config.apiKey === 'string' && config.apiKey.startsWith('AIza')
+          ? config.apiKey
+          : null;
+      } catch {
+        return null;
+      }
+    })();
+    this._apiKey = await this._apiKeyPromise;
+    return this._apiKey;
   }
 
   setEnabled(enabled) {
@@ -102,9 +121,25 @@ export class GooglePhotorealTiles {
     this.enabled = next;
     if (this.enabled && !this.map.getLayer(this.layer.id) && !this.loading) {
       this.loading = true;
-      this._addLayerWhenStyleReady();
+      void this._startWithKey();
     }
     this.map.triggerRepaint();
+  }
+
+  async _startWithKey() {
+    const key = await this._ensureApiKey();
+    if (!key) {
+      this.loading = false;
+      this.failed = true;
+      this.enabled = false;
+      console.warn(
+        'Google photorealistic tiles unavailable: no Map Tiles API key. '
+        + 'Set VITE_GOOGLE_MAP_TILES_API_KEY and run npm run canal:google-tiles-config.',
+      );
+      return;
+    }
+    this._apiKey = key;
+    this._addLayerWhenStyleReady();
   }
 
   /**
@@ -180,7 +215,7 @@ export class GooglePhotorealTiles {
 
         const draco = new DRACOLoader().setDecoderPath(DRACO_DECODER_PATH);
         tiles = new TilesRenderer();
-        tiles.registerPlugin(new GoogleCloudAuthPlugin({ apiToken: API_KEY, autoRefreshToken: true }));
+        tiles.registerPlugin(new GoogleCloudAuthPlugin({ apiToken: owner._apiKey, autoRefreshToken: true }));
         tiles.registerPlugin(new GLTFExtensionsPlugin({ dracoLoader: draco, meshoptDecoder: MeshoptDecoder }));
         tiles.group.name = 'Google Photorealistic 3D Tiles';
         tiles.setCamera(tilesCamera);

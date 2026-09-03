@@ -129,3 +129,92 @@ export function summariseRejections(rejections: readonly FactRejection[]): Map<F
   }
   return counts;
 }
+
+/** Empty review file pinned to the staged generator — download this after labelling. */
+export function emptyReviewFile(generatorVersion: string, reviewedAt = new Date().toISOString().slice(0, 10)): FactReviewFile {
+  return { reviewedAt, generatorVersion, features: {} };
+}
+
+export function reviewDownloadName(cityId: string): string {
+  return cityId === 'amsterdam' ? 'facts-review.json' : `facts-review-${cityId}.json`;
+}
+
+export function setFeatureVerdict(
+  review: FactReviewFile,
+  featureId: string,
+  verdict: 'approved' | 'rejected' | null,
+): FactReviewFile {
+  const features = { ...(review.features || {}) };
+  if (!verdict) {
+    delete features[featureId];
+  } else {
+    const previous = features[featureId];
+    features[featureId] = {
+      ...(previous || {}),
+      verdict,
+      drop: previous?.drop,
+      note: previous?.note,
+    };
+  }
+  return { ...review, features };
+}
+
+export function setFeatureNote(
+  review: FactReviewFile,
+  featureId: string,
+  note: string,
+): FactReviewFile {
+  const features = { ...(review.features || {}) };
+  const previous = features[featureId];
+  if (!previous) {
+    // A note without a verdict still fails closed at publish — keep it only as
+    // a draft attachment once the feature is labelled.
+    return review;
+  }
+  const trimmed = note.trim();
+  features[featureId] = trimmed
+    ? { ...previous, note: trimmed }
+    : { verdict: previous.verdict, drop: previous.drop };
+  return { ...review, features };
+}
+
+/** Strike or restore one sentence. Text is matched exactly at publish time. */
+export function toggleStruckFact(
+  review: FactReviewFile,
+  featureId: string,
+  text: string,
+): FactReviewFile {
+  const features = { ...(review.features || {}) };
+  const previous = features[featureId] || { verdict: 'approved' as const };
+  const needle = text.trim();
+  const drop = new Set((previous.drop || []).map((entry) => entry.trim()));
+  if (drop.has(needle)) drop.delete(needle);
+  else drop.add(needle);
+  features[featureId] = {
+    ...previous,
+    verdict: previous.verdict || 'approved',
+    drop: drop.size ? [...drop] : undefined,
+  };
+  return { ...review, features };
+}
+
+export function isFactStruck(review: FactReviewFile, featureId: string, text: string): boolean {
+  const drop = review.features?.[featureId]?.drop || [];
+  const needle = text.trim();
+  return drop.some((entry) => entry.trim() === needle);
+}
+
+export function countReviewLabels(review: FactReviewFile): {
+  approved: number;
+  rejected: number;
+  labelled: number;
+} {
+  let approved = 0;
+  let rejected = 0;
+  for (const label of Object.values(review.features || {})) {
+    if (!label) continue;
+    if (label.verdict === 'approved') approved += 1;
+    else if (label.verdict === 'rejected') rejected += 1;
+  }
+  return { approved, rejected, labelled: approved + rejected };
+}
