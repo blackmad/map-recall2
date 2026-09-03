@@ -32,8 +32,8 @@ assert.ok(await stat(file).catch(() => null), `${file} is missing — run \`npm 
 
 /** The Waag, on the Nieuwmarkt. Its OSM parts are the thing being protected. */
 const WAAG: [number, number] = [4.90034, 52.37262];
-/** Magna Plaza — the clearest uncoloured composition the colour extract missed. */
-const MAGNA_PLAZA: [number, number] = [4.8905, 52.3736];
+/** Magna Plaza — centre of the hand-mapped part cluster (not the street label). */
+const MAGNA_PLAZA: [number, number] = [4.89132, 52.37312];
 /** Oude Kerk — many overlapping parts; outline must not fight them. */
 const OUDE_KERK: [number, number] = [4.8979, 52.3743];
 const metresApart = (a: [number, number], b: [number, number]): number =>
