@@ -175,9 +175,29 @@ export interface EvidenceViolation {
     | 'missing-observation'
     | 'foreign-observation'
     | 'confidence-out-of-range'
-    | 'stale-measurement-date';
+    | 'stale-measurement-date'
+    | 'incompetent-source';
   detail: string;
 }
+
+/**
+ * Which sources are physically capable of observing which field.
+ *
+ * Distinct from confidence, and from coverage. This is not "how often does
+ * this source get this right" — it is "could this source have seen this at
+ * all". A source that could not is not a weak measurement to be outranked
+ * later; it is a value with no observation behind it, which is the laundering
+ * case wearing a plausible label.
+ *
+ * The case that motivated it, measured across the pilot boundary: 3DBAG's
+ * LoD2.2 roof planes carry no gable *type*. Its reconstruction error tracks
+ * roof complexity rather than failure — flat across plot width and across
+ * century — so a `trapgevel` sourced to `3dbag` is not a poor reading of the
+ * roof, it is a value the roof never contained. `3dbag` is authoritative for
+ * ridge height and says nothing whatsoever about whether the gable is a bell
+ * or a neck.
+ */
+export type SourceCompetence = Readonly<Record<string, readonly FacadeSource[]>>;
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -195,6 +215,7 @@ export function auditFields(
   fields: Readonly<Record<string, Measured<unknown> | undefined>>,
   observations: ReadonlyMap<string, Observation>,
   today = new Date().toISOString().slice(0, 10),
+  competence?: SourceCompetence,
 ): EvidenceViolation[] {
   const violations: EvidenceViolation[] = [];
   const report = (field: string, code: EvidenceViolation['code'], detail: string) =>
@@ -213,6 +234,14 @@ export function auditFields(
       if (observationId !== null) report(field, 'default-claims-observation', `cites ${observationId}`);
       if (confidence !== 0) report(field, 'default-claims-confidence', `confidence ${confidence}`);
       continue;
+    }
+
+    // Checked before the observation exists, because a competent-looking
+    // receipt is exactly what makes this failure hard to see: the observation
+    // is real, of the right building, and still cannot have shown this field.
+    const competent = competence?.[field];
+    if (competent && !competent.includes(source)) {
+      report(field, 'incompetent-source', `${source} cannot observe ${field}`);
     }
 
     if (observationId === null) {
