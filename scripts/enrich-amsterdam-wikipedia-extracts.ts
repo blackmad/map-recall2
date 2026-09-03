@@ -1,5 +1,6 @@
 /**
- * Backfill `wikipediaExtract` for Amsterdam landmarks and bridges.
+ * Backfill `wikipediaExtract` for Amsterdam landmarks, bridges, streets,
+ * water, squares and parks.
  *
  * Most of these features only carry a Dutch article in their `wikipedia`
  * field ("nl:Blauwbrug"), but the game shows English blurbs, so the article
@@ -52,7 +53,7 @@ interface PageDetail {
 
 const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
 const directory = path.resolve(directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
-const files = ['landmarks.json', 'bridges.json'];
+const files = ['landmarks.json', 'bridges.json', 'streets.json', 'water.json', 'squares.json', 'parks.json'];
 const EXTRACT_CHARS = 2400;
 const DISPLAY_EXTRACT_CHARS = 360;
 

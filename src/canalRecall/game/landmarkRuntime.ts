@@ -287,7 +287,7 @@ export class GameLandmarkRuntime {
       detail: split.detail,
       longDetail: split.longDetail,
       wikipediaUrl: entry.wikipediaUrl || '',
-      extractLang: 'en',
+      extractLang: entry.wikipediaExtractLang || 'en',
     }, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS });
 
     // Many streets already have `wikipediaUrl` but not `wikipediaExtract`.

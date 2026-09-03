@@ -54,10 +54,22 @@
   "en": "The Ad Grimmonbrug (bridge 1915) is a fixed bridge in Amsterdam-Oost. The span is named after Ad Grimmon, an Amsterdam interior architect who realized many interior designs in that city in the first half of the twentieth century. The bridge is located in the Th. K. van Lohuizenlaan, formerly IJburglaan until 1998, and crosses the Nieuwe Vaart. she"
  },
  {
+  "name": "Admiralengracht",
+  "lang": "nl",
+  "hash": "9d4908b3e018",
+  "en": "The Admiralengracht is a canal and street name in Amsterdam-West, the canal was dug in the 1920s as part of the Plan West. The canal was named in 1924, after the Dutch and Zeelandish admirals from the 16th, 17th, 18th and 19th centuries, after which many streets in the surrounding district, the Admiralenbuurt, are named."
+ },
+ {
   "name": "Afrikahuis",
   "lang": "nl",
   "hash": "5fff10c4540a",
   "en": "The Afrikahuis is the former church of the Roman Catholic Sint Willibrordus parish in the De Pijp district of Amsterdam. The municipal monument has not been used as a place of worship since 2008, but is still owned by the diocese of Haarlem-Amsterdam. Since 2008 it has been used by temporary tenants."
+ },
+ {
+  "name": "Albardagracht",
+  "lang": "nl",
+  "hash": "8819fdb0e628",
+  "en": "The Albardagracht is a canal in the Amsterdam district of Geuzenveld. The canal was named in 1957 and is named after the politician Willem Albarda. The Albardakade does not run along this canal. The canal runs from east to west from Eendrachtspark to the Eendracht neighborhood. The canal was dug in the second half of the 1950s and has a function"
  },
  {
   "name": "Albert",
@@ -114,6 +126,12 @@
   "en": "The Aluminiumbrug (bridge 222) is a lift bridge in Amsterdam-Centrum. It spans the Kloveniersburgwal in Amsterdam and thus connects the Nieuwe Doelenstraat with the Staalstraat. There has been a bridge here for centuries. Pieter Bast already drew a bridge here on his city plan from 1599."
  },
  {
+  "name": "Amerikahaven",
+  "lang": "nl",
+  "hash": "eab54ef592c7",
+  "en": "The Amerikahaven is a port in the Amsterdam port area. The port was dug in the 1960s and is located on the south side of the North Sea Canal, in the former Groote IJpolder, east of the former Zijkanaal F. The port in Westpoort consists of several port basins: the Australia port, the Asia port, the Tasmania port, the Texas port, the Cocoa"
+ },
+ {
   "name": "AMHC Westerpark",
   "lang": "nl",
   "hash": "f0a5638ea80c",
@@ -124,6 +142,12 @@
   "lang": "nl",
   "hash": "8c2be355bac0",
   "en": "The Amstel Academie is a Dutch academy that specializes in training in the medical sector. The Amstel Academie is located on the campus of the Vrije Universiteit in Amsterdam. The Amstel Academie together with VUmc School of Medical Sciences and the VUmc Academy forms the Institute for Education and Training (IOO). The Amstel Academie has approximately"
+ },
+ {
+  "name": "Amstelkanaal",
+  "lang": "nl",
+  "hash": "6c63834f3c42",
+  "en": "The Amstelkanaal is a canal in Amsterdam-Zuid that was dug as part of H.P. Berlage's Plan Zuid. The canal is part of the connection between the Amstel and the Schinkel and forms the separation between De Pijp and the Rivierenbuurt. The Amstelkanaal runs from the Amstel to \"De Kom\", a five-way junction of canals where the Boerenwetering, the"
  },
  {
   "name": "Amstelstroombrug",
@@ -360,6 +384,18 @@
   "en": "The Beemsterstraatbrug is a structure in Rijksweg 10 in Amsterdam-Noord. It is a combination of a bridge and a viaduct. The plain bridge 1786 lies immediately to its south."
  },
  {
+  "name": "Bella Vistapark",
+  "lang": "nl",
+  "hash": "f66be521d97a",
+  "en": "The Bella Vistapark is a city park in Amstelkwartier-Noord, Amsterdam-Oost. It is also the name of the footpath through the park. The park, which had existed for some time as part of Park Somerlust, received its name on June 4, 2019 and was named after a country house on the Amstel. The park extends along the inlet harbor with the Zuidergasfabri"
+ },
+ {
+  "name": "Bellamyplein",
+  "lang": "nl",
+  "hash": "a170d199adb0",
+  "en": "The Bellamyplein is a triangular square in the Bellamy neighborhood in Amsterdam-West, between the Bilderdijkkade and the Ten Katestraat. Streets that end on the square are the Kwakersstraat, Elisabeth Wolffstraat, Agatha Dekenstraat, Jan Hanzenstraat and Bellamystraat. At the southern end of the park are two giant trees (tree numbers 504239 and 504235, not"
+ },
+ {
   "name": "Bellevue",
   "lang": "nl",
   "hash": "748dc7f8e0a0",
@@ -402,6 +438,12 @@
   "en": "Berta de Vriesbrug (bridge 128) is a fixed bridge in Amsterdam-Centrum. The traffic bridge, which carries no public transport, connects the Westerstraat with the Marnixplein and spans the Lijnbaansgracht. Several municipal monuments stand around it."
  },
  {
+  "name": "Betonsluis",
+  "lang": "nl",
+  "hash": "99fb41b371ee",
+  "en": "Sluis 124, also known as the Concrete Lock, is a sluice lock in the IJburg district of Amsterdam. Bridge 2050 crosses the lock."
+ },
+ {
   "name": "Beudekerbrug",
   "lang": "nl",
   "hash": "63c00a5c70c5",
@@ -412,6 +454,18 @@
   "lang": "nl",
   "hash": "ee92ec923568",
   "en": "The Beudekerbrug (bridge 122) is a fixed bridge in Amsterdam-Centrum. It is located on the northeastern quay of the Prinsengracht. It spans the Leidsegracht in the canal belt of Amsterdam. The bridge forms a junction over the Leidse and Prinsengracht with the Angenietje Swarthof Bridge and the Pieter Goemans Bridge."
+ },
+ {
+  "name": "Beulingsloot",
+  "lang": "nl",
+  "hash": "cc310bf5d28a",
+  "en": "The Beulingsloot is one of the oldest and shortest canals in Amsterdam-Centrum. It is located within the Canal Ring."
+ },
+ {
+  "name": "Beursplein",
+  "lang": "nl",
+  "hash": "c1ce20025255",
+  "en": "The Beursplein is a square in the center of Amsterdam, between the Damrak and the Beursstraat. On the square are the Effectenbeurs (Beursplein 5), the Beurs van Berlage and the Bijenkorf. On the square is also the entrance to the Bijenkorf parking garage, which regularly causes traffic jams up to the Damrak."
  },
  {
   "name": "Bevrijdingslinde",
@@ -426,6 +480,30 @@
   "en": "Bevrijdingslinde van de Jordaankinderen is a war monument in Amsterdam-Centrum. On May 4, 1946, a linden tree was planted in a park on Marnixplein south of bridge 128 on the western side of the Lijnbaansgracht. The liberation linden tree was planted in memory of children in the Jordaan (the district is on the other side of the Lijnbaansgracht),"
  },
  {
+  "name": "Bijleveldschesluis",
+  "lang": "nl",
+  "hash": "77db77808645",
+  "en": "The Bijleveldschesluis (bridge 495) is a structural work of art in Amsterdam-Centrum. The original lock has been mostly underground for centuries; it was converted into a one-meter-long tunnel, which runs from the Geldersekade to the Kloveniersburgwal. This means that it runs under the Nieuwmarkt and also the southeastern part of the histori"
+ },
+ {
+  "name": "Bijlmermonument",
+  "lang": "nl",
+  "hash": "151f26893de2",
+  "en": "The growing monument (Bijlmer disaster) or Bijlmermonument is an artistic work of art in Amsterdam-Zuidoost. On October 4 every year, the Bijlmer disaster is commemorated at the monument. Until 2023, a separate \"Stichting Beheer Het Groeiend Monument\" was responsible for the monument. Since then, the joint neighborhood residents have been responsible."
+ },
+ {
+  "name": "Bijlmerweide",
+  "lang": "nl",
+  "hash": "77fdf5726a7f",
+  "en": "The Bijlmerweide is a park in Amsterdam-Zuidoost. The park is located east of the low-rise neighborhoods Kantershof and Geerdinkhof, west of the Gaasp river and the Diemerpark, north of the Gaasperpark and Gaasperplas and south of the Verrijn Stuartweg industrial area in Diemen. The Veeneikbrug, a bicycle and pedestrian bridge, connects the Bij"
+ },
+ {
+  "name": "Bijltjespad",
+  "lang": "nl",
+  "hash": "40bba3b7ce0d",
+  "en": "The Bijltjespad is a dead-end car-free side street of the Kattenburgerstraat on the Kattenburg island in the Oostelijke Eilanden district in Amsterdam. On the other side of the Bijltjespad is a student complex. The houses on the other side belong to the Kattenburgerhof. The street name is derived from Bijltjes, a nickname for the in the verle"
+ },
+ {
   "name": "Bijzondere Collecties",
   "lang": "nl",
   "hash": "135fe68f3761",
@@ -436,6 +514,24 @@
   "lang": "nl",
   "hash": "583e8997cd6a",
   "en": "The Bijzondere Collecties of the University of Amsterdam is part of the University Library of Amsterdam. The Bijzondere Collecties houses the heritage of the University of Amsterdam, such as rare and valuable books, manuscripts, prints and drawings, photographs, archives, scientific instruments and paintings. ME"
+ },
+ {
+  "name": "Bilderdijkgracht",
+  "lang": "nl",
+  "hash": "6a43e032e479",
+  "en": "The Bilderdijkgracht is a canal in Amsterdam-West, named after poet and historian Willem Bilderdijk. The canal connects the Hugo de Grootgracht/Kostverlorenvaart at Bilderdijkpark in the north with the Jacob van Lennepkanaal in the south. The canal is crossed by De Clercqstraat (bridge no. 135), Kwakersstraat/Kwakersplein (bridge no."
+ },
+ {
+  "name": "Bilderdijkpark",
+  "lang": "nl",
+  "hash": "2afc260183ea",
+  "en": "Bilderdijkpark is both a small park and a street in Amsterdam-West. Both were named on April 3, 1912 by council decision after the Dutch author, poet, historian, writer of history, linguist and lawyer Willem Bilderdijk (1756-1831)."
+ },
+ {
+  "name": "Binnen Dommersstraat",
+  "lang": "nl",
+  "hash": "b890de85bc6c",
+  "en": "Bridge 148 is a lift bridge in Amsterdam-Centrum."
  },
  {
   "name": "Boerenweteringbrug",
@@ -948,6 +1044,12 @@
   "en": "The Buiksloterdraaibrug (number 2205) is a structure in Amsterdam-Noord."
  },
  {
+  "name": "Buiksloterkanaal",
+  "lang": "nl",
+  "hash": "1f757a983290",
+  "en": "The Buiksloterkanaal in Amsterdam-North is the connection between the (western part of the) Johan van Hasselt Canal and the IJ. The canal with north-south orientation lies between Buiksloterham in the west and Volewijck in the east. The canal was dug in 1926 in the polder Buiksloterham."
+ },
+ {
   "name": "Buiksloterkerk",
   "lang": "nl",
   "hash": "2c4f819fbc69",
@@ -990,6 +1092,42 @@
   "en": "The Bullewijkpadbrug (bridge 1083) is a structural work of art from 1981 in Amsterdam-Zuid. It has been the only existing bridge in the series 1080-1089 since the construction of the Gaasperdammertunnel. The design for the bridge in the form of a viaduct came from Dirk Sterenberg working at the Department of Public Works."
  },
  {
+  "name": "Burgemeester Cramergracht",
+  "lang": "nl",
+  "hash": "92b5efe683e9",
+  "en": "The Burgemeester Cramergracht is a canal and a street running parallel to it in Amsterdam Nieuw-West. The canal was named in 1952 and was named after Willem Daniël Cramer (1788-1856), mayor of Amsterdam from 1836 to 1841."
+ },
+ {
+  "name": "Burgemeester Eliasstraat",
+  "lang": "nl",
+  "hash": "8430c5190ca2",
+  "en": "The Burgemeester Eliasstraat is a street in Amsterdam Nieuw-West, located in the Slotermeer Zuid neighborhood. The Burgemeester Eliasstraat is located between the Haarlemmerweg and the Louis Couperusstraat in Slotermeer. The street is crossed by the Burgemeester Vening Meineszlaan, the Burgemeester De Vlugtlaan and the Burgemeester Van Tienhovengracht."
+ },
+ {
+  "name": "Burgemeester Fockstraat",
+  "lang": "nl",
+  "hash": "dc03b16c0ff3",
+  "en": "The Burgemeester Fockstraat is a street in Slotermeer, Amsterdam Nieuw-West. The street was named on July 9, 1952 and was named after Cornelis Fock (1828-1910), mayor of Amsterdam from 1866 to 1868, then Commissioner of the King for South Holland. Several streets in the district were named after Amsterdam mayors."
+ },
+ {
+  "name": "Burgemeester Hogguerstraat",
+  "lang": "nl",
+  "hash": "2e3718690f41",
+  "en": "The Burgemeester Hogguerstraat is a street in Slotermeer in Amsterdam Nieuw-West. The street begins at Burgemeester Van de Pollstraat and runs to Burgemeester Rendorpstraat. The street was named in 1958 and was named after Mr. Paul Iwan Hogguer (1760-1816), mayor of Amsterdam from 1813 to 1816. The street is dominated by three in"
+ },
+ {
+  "name": "Burgemeester van Tienhovengracht",
+  "lang": "nl",
+  "hash": "436af3f66826",
+  "en": "The Burgemeester Van Tienhovengracht in Amsterdam Nieuw-West was built in the 1950s as part of the Western Garden Cities. The canal is located in Slotermeer and is the extension of the Erasmusgracht. The canal ends in a bend at the Plein '40-'45. The canal was named in 1952 and was named after Gijsbert van Tienhoven (1841-1914), bu"
+ },
+ {
+  "name": "Burgemeester Vening Meineszlaan",
+  "lang": "nl",
+  "hash": "6974273b6a52",
+  "en": "The Burgemeester Vening Meineszlaan is located in the district (\"garden city\") Slotermeer in the Amsterdam municipality of Nieuw-West."
+ },
+ {
   "name": "Camera Obscurabrug",
   "lang": "nl",
   "hash": "3857d3ed33ff",
@@ -1000,6 +1138,12 @@
   "lang": "nl",
   "hash": "5ff4f79cf27c",
   "en": "The Camera Obscurabrug (bridge 322) is a permanent bridge in Amsterdam Nieuw-West. It is located in the extension of the Leeuwendalersweg southwards. It spans the Erasmusgracht, which west of the bridge is named Burgemeester Van Tienhovengracht."
+ },
+ {
+  "name": "Carel Willinkplantsoen",
+  "lang": "nl",
+  "hash": "6e9f438137c4",
+  "en": "The Carel Willinkplantsoen is a relatively small park in Amsterdam."
  },
  {
   "name": "Caroline Herschelbrug",
@@ -1068,6 +1212,12 @@
   "en": "Cinecenter is an Amsterdam cinema in Amsterdam-Centrum. It is located at Lijnbaansgracht 236 near Leidseplein. The cinema or film house was in 1979 the continuation of the CinéTol cinema, which was closed approximately at the same time by Cor Koppies. That came into conflict with the municipality of Amsterdam, which first wants the complex on Tolstraat"
  },
  {
+  "name": "Coenhaven",
+  "lang": "nl",
+  "hash": "c746761be6be",
+  "en": "The Coenhaven is a port in the Amsterdam Western Port Area north of the Vlothaven, south of the North Sea Canal near the Coentunnel named after the port, east of the Petroleum Port and west of the Mercuriushaven. The port has provided space for ships and activities that are no longer desired in the Eastern Port Area"
+ },
+ {
   "name": "Collectie Six",
   "lang": "nl",
   "hash": "3393416f7443",
@@ -1092,6 +1242,12 @@
   "en": "The Compagnietheater is housed in the former church of the Reformed Lutheran church on the Kloveniersburgwal in Amsterdam."
  },
  {
+  "name": "Constantiahofje",
+  "lang": "nl",
+  "hash": "fb9f6e9d66e2",
+  "en": "Constantia is a residential complex around a green courtyard on Willemsstraat 149-165 in Amsterdam, which was built in neoclassical style in 1863. The 36 houses were designed by architect Pieter Johannes Hamer on behalf of the 'Stichting voor den Ambachtsstand - Constantia Woningen'. The houses were (free of rent) intended for workers"
+ },
+ {
   "name": "Corry Tendeloobrug",
   "lang": "nl",
   "hash": "627eea38cf8f",
@@ -1102,6 +1258,12 @@
   "lang": "nl",
   "hash": "d037bd7a07f8",
   "en": "The Corry Tendeloobrug (bridge 713) is a fixed bridge in Amsterdam Nieuw-West. It lies in the Johan Huizingalaan and spans a canal running parallel to the Aletta Jacobslaan and Louwesweg on the north side. At the crossing with the Johan Huizingalaan the Aletta Jacobslaan becomes the Louwesweg."
+ },
+ {
+  "name": "Da Costagracht",
+  "lang": "nl",
+  "hash": "b4e2708c1ffc",
+  "en": "The Da Costagracht is a canal in Amsterdam-West. The canal connects the Hugo de Grootgracht in the north with the Jacob van Lennepkanaal in the south. The canal is named after the 19th-century poet and prose writer Isaäc da Costa (1798-1860)."
  },
  {
   "name": "Dageraadsbrug",
@@ -1120,6 +1282,12 @@
   "lang": "nl",
   "hash": "68b6f47b4744",
   "en": "A plaque and thirty-two paving stones on the Dam in Amsterdam-Centrum commemorate the victims of the shooting on the Dam on 7 May 1945."
+ },
+ {
+  "name": "Darwinplantsoen",
+  "lang": "nl",
+  "hash": "6cae0f061477",
+  "en": "Darwinplantsoen is a street and a park in the Dutch capital Amsterdam, more specifically in Amsterdam-Oost, Watergraafsmeer."
  },
  {
   "name": "De Ark",
@@ -1188,16 +1356,34 @@
   "en": "De knoop is an artistic work in Amsterdam-Noord. The name, in use for many years, refers to an originally untitled work by André Volten. The sculpture, several metres high, works out an essentially simple idea: it is a boundary marker and at the same time a link between Amsterdam-Noord and the IJ, two intertwined links standing on two supports."
  },
  {
+  "name": "De Kom",
+  "lang": "nl",
+  "hash": "0454c21ada36",
+  "en": "De Kom is an unofficial name for a body of water in Amsterdam-Zuid. It is a crossroads of five waterways. These waterways also have a bridge on \"De Kom\" except for one."
+ },
+ {
   "name": "De Krakeling",
   "lang": "nl",
   "hash": "0cab2884c024",
   "en": "De Krakeling is a theater hall in Amsterdam focused on youth theater. De Krakeling was founded in 1978 by Hans Snoek. It was the first theater building in the Netherlands specially designed for youth theater. The name \"De Krakeling\" was a reference to the adjacent Koekjesbrug in the Nieuwe Passeerdersstraat. The theater is part of the founded in 1971"
  },
  {
+  "name": "De Krommert",
+  "lang": "nl",
+  "hash": "115d87d391ff",
+  "en": "De Krommert (also known as De Krommerdt) is a neighborhood in the Amsterdam district of West, named after the De Krommert waterway."
+ },
+ {
   "name": "De Nieuwe Stad",
   "lang": "nl",
   "hash": "66b4ea22ebed",
   "en": "Kerkcentrum De Nieuwe Stad is a church in Amsterdam-Zuidoost (Bijlmermeer), built in 1992/1993 and designed by the architects Lafour and Wijk."
+ },
+ {
+  "name": "De Rijpgracht",
+  "lang": "nl",
+  "hash": "81d2e5ff546a",
+  "en": "The De Rijpgracht is a canal in the Amsterdam neighborhood of Landlust. The canal was named after the explorer Jan Corneliszoon Rijp (1570-1630) by a council decision of April 27, 1933, with the understanding that the canal and associated street have an article (the De Rijpgracht)."
  },
  {
   "name": "De Vriendschap",
@@ -1218,6 +1404,12 @@
   "en": "Dick Schmüllbrug (bridge 415) is a permanent bridge in Amsterdam-Zuid. The traffic bridge, over which GVB bus 15 also runs, is located on Parnassusweg and spans the Zuider Amstel Canal. In the north, the Stadionkade runs along the bridge and in the south the Locatellikade and Henri Viottakade."
  },
  {
+  "name": "Diepenbrockstraat",
+  "lang": "nl",
+  "hash": "60addde1735b",
+  "en": "The Diepenbrockstraat is a street in Amsterdam - Zuid. The street runs along the Wielingenstraat, which runs along the RAI exhibition center. The street begins on Bridge 422 over the Boerenwetering, from there the street runs in a circular shape over a bridge over the Zuider Amstel Canal. The street ends on the Stadionweg. The street was on September 30"
+ },
+ {
   "name": "Dirk de Waterduikerbrug",
   "lang": "nl",
   "hash": "3f54e0ed0f7f",
@@ -1234,6 +1426,12 @@
   "lang": "nl",
   "hash": "65c732ea7c38",
   "en": "The Doelensluis (bridge 220) is a fixed bridge in Amsterdam-Centrum."
+ },
+ {
+  "name": "Domela Nieuwenhuisplantsoen",
+  "lang": "nl",
+  "hash": "266c46f0de48",
+  "en": "The Domela Nieuwenhuisplantsoen is a small garden in the shape of a triangle in the Spaarndammerbuurt neighborhood in Amsterdam-West."
  },
  {
   "name": "Dominicuskerk",
@@ -1278,6 +1476,12 @@
   "en": "The Drs. P-brug (bridge 2115) is a structure in Amsterdam-Noord. Its working name was the Ridderspoorbrug."
  },
  {
+  "name": "Duivendrechtsevaart",
+  "lang": "nl",
+  "hash": "f600b18dd5d1",
+  "en": "The Duivendrechtsevaart is a canal in Amsterdam and Duivendrecht (Ouder-Amstel municipality). The waterway runs from the Amstel near the Omval to the Van der Madeweg in the Overamstel industrial area. The municipal border between Amsterdam and Ouder-Amstel runs across the canal. The waterway is named after the nearby village of Duivendrecht."
+ },
+ {
   "name": "Duizendste Brug",
   "lang": "nl",
   "hash": "db3ddbd0ed43",
@@ -1302,6 +1506,12 @@
   "en": "Brug 347 is a fixed bridge in Amsterdam Oud-West."
  },
  {
+  "name": "Eendrachtspark",
+  "lang": "nl",
+  "hash": "9ebe1f3b88cc",
+  "en": "The Eendrachtspark is a city park in Amsterdam Nieuw-West."
+ },
+ {
   "name": "Elsje Christiaensbrug",
   "lang": "nl",
   "hash": "772f88f49318",
@@ -1318,6 +1528,18 @@
   "lang": "nl",
   "hash": "9798d994e6d9",
   "en": "The former Elthetokerk was a Reformed church building at the corner of Insulindeweg and Kramatweg in the Indische Buurt in Amsterdam-Oost."
+ },
+ {
+  "name": "Erasmusgracht",
+  "lang": "nl",
+  "hash": "c3c29fa9e247",
+  "en": "The Erasmusgracht in Amsterdam-West was built in the 1940s as part of the new Bos en Lommer district. Along the extension beyond the dike of the Ringspoorbaan lies the Burgemeester Van Tienhovengracht. The canal was named in 1939 and was named after Desiderius Erasmus (1467-1536), famous Dutch humanist. The canal runs from the Admiral"
+ },
+ {
+  "name": "Erasmuspark",
+  "lang": "nl",
+  "hash": "42ba6f41ed07",
+  "en": "The Erasmuspark is a city park in Amsterdam-West. It is also the name of the neighborhood in which it is located."
  },
  {
   "name": "Etty Hillesumbrug",
@@ -1410,10 +1632,40 @@
   "en": "The Fré Cohenbrug is a fixed bridge with a culvert in Watergraafsmeer, Amsterdam. It lies in the Zaaiersweg in Betondorp and spans the Molenwetering, which comes from under the Rinus Michelsbrug in the Middenweg. Westward that watercourse also forms a ring ditch around the Nieuwe Oosterbegraafplaats. It is a fixed brick bridge in the Amsterdam School style."
  },
  {
+  "name": "Frederiksplein",
+  "lang": "nl",
+  "hash": "1f801c0e157d",
+  "en": "The Frederiksplein is a square in Amsterdam-Centrum, named in 1870 after Prince Frederick, uncle of King William III. The square extends along Utrechtsestraat, between the Weteringschans and the Sarphatistraat. De Nederlandsche Bank is located on the square."
+ },
+ {
+  "name": "Frederiksstraat",
+  "lang": "nl",
+  "hash": "7f8efcd7560f",
+  "en": "The Frederiksstraat is a relatively short street in Amsterdam Oud-West."
+ },
+ {
+  "name": "Freek Oxstraat",
+  "lang": "nl",
+  "hash": "784fcdb08b75",
+  "en": "Freek Oxstraat is a street in the Amsterdam garden city of Slotermeer. The street was named after resistance fighter Freek Ox on July 9, 1952."
+ },
+ {
   "name": "Fusillade",
   "lang": "nl",
   "hash": "d59938c0da9d",
   "en": "Fusillade, also known as The Fallen Hornblower, is a bronze statue in the Eerste Weteringplantsoen in Amsterdam, made in 1954 by Gerrit Bolhuis. Here, the German army executed thirty political prisoners on March 12, 1945 as a reprisal for a resistance act."
+ },
+ {
+  "name": "Gaasperpark",
+  "lang": "nl",
+  "hash": "e86505bf5a4b",
+  "en": "The Gaasperpark is a park in Gaasperdam, Amsterdam-Zuidoost district, on the northern bank of the Gaasperplas, an artificial recreation lake, created by sand mining for the elevation for the construction of Gaasperdam. The Gaasperpark is managed by Groengebied Amstelland and Recreatie Noord-Holland NV. It belongs to the Nature Network Nede"
+ },
+ {
+  "name": "Gaasperzoom",
+  "lang": "nl",
+  "hash": "4bf0689b1304",
+  "en": "The Gaasperzoom is a park and nature reserve in Amsterdam-Zuidoost. The area is located east of the Gein residential district, west of the Gein stream, north of the Ruwelswal and south of the Gaasperplas. The area was developed at the beginning of the 1980s, at the same time as the Gein district was ready. A bicycle path crosses it"
  },
  {
   "name": "Galgenbrug",
@@ -1452,6 +1704,12 @@
   "en": "The Geert Geertsenbrug (bridge 395) is a fixed bridge in Amsterdam-West. The footbridge lies on the western edge of the Erasmuspark and provides access from the Hondiusstraat and Mercatorstraat, spanning the ring ditch around the park. The bridge dates from around 1970."
  },
  {
+  "name": "Geertje Wielemaplein",
+  "lang": "nl",
+  "hash": "a8672f1f2ff2",
+  "en": "The Geertje Wielemaplein is a square in Amsterdam-Oost. The square is located on the Zeeburgereiland, the front line of IJburg northeast of the intersection of Zuiderzeeweg and IJburglaan, both busy main routes in Amsterdam Oost. The square was named in 2016, after swimmer Geertje Wielema, after the earlier decision to name a street after"
+ },
+ {
   "name": "Gemeenlandshuis",
   "lang": "nl",
   "hash": "b930d89ba412",
@@ -1488,6 +1746,12 @@
   "en": "The Synagoge Gerard Doustraat in the Amsterdam district of de Pijp was built in 1892 at the behest of Ashkenazi chevre Tesjoe'at Israel (Hulpe Israëls). Architect E.M. Rood (1851–1929) chose a neo-Renaissance architectural style. Between the residential houses on the street, the synagogue Gerard Doustraat 238 hardly stands out."
  },
  {
+  "name": "Gerbrandypark",
+  "lang": "nl",
+  "hash": "d6a56e3dc575",
+  "en": "The Gerbrandypark is a city park in Amsterdam Nieuw-West. The park is located along the Burgemeester Van Tienhovengracht in Slotermeer between the Ringspoorbaan and the Plein '40-'45. The park was laid out between 1957 and 1965 and was named in 1963 after the Dutch politician and statesman Pieter Sjoerds Gerbrandy (1885-1961)."
+ },
+ {
   "name": "Gerda Tarobrug",
   "lang": "nl",
   "hash": "261657fa6ff0",
@@ -1504,6 +1768,12 @@
   "lang": "nl",
   "hash": "f773f7f77e17",
   "en": "The Gerrie Mührenbrug (bridge 2235) is a structural work of art in Amsterdam-Oost. The bridge is one of the traffic bridges (the others are for slow traffic) that forms the connection within the Park de Meer neighborhood within the Watergraafsmeer, which rose from the ground here between 1998 and 2002."
+ },
+ {
+  "name": "Geuzenbos",
+  "lang": "nl",
+  "hash": "e0e797d7433c",
+  "en": "The Geuzenbos is a nature reserve in the Groote IJpolder between the Spaarnwoude Recreation Area, the De Heining business park and the Spaarndammerdijk northeast of Halfweg in the Amsterdam district of Westpoort. The area with an area of 60 hectares is divided in two by the Essenweg alderman. One of the entrances to the Geuzenbos"
  },
  {
   "name": "Gierzwaluwbrug",
@@ -1558,6 +1828,12 @@
   "lang": "nl",
   "hash": "ffa595541e26",
   "en": "Bridge 1186 or Groene spechtbrug is a building art work in Amsterdam-Zuidoost. The bridge is located on a footpath in the Bijlmerweide park and spans a ring lake around an island. The first bridge built here dates back to 1970. Dirk Sterenberg of the Public Works Department designed a nearly ten-meter-long wooden footbridge that without a bridge"
+ },
+ {
+  "name": "Groene Tunnel",
+  "lang": "nl",
+  "hash": "0f17ca0c59b0",
+  "en": "The Groene Tunnel is a 35-meter-wide canal between Haveneiland and the Grote Rieteiland, and between the northern and southern part of Haveneiland-Oost, in the residential district IJburg in the Oost district of Amsterdam. The canal crosses the district from northwest to southeast."
  },
  {
   "name": "Groentemarktbrug",
@@ -1710,6 +1986,18 @@
   "en": "Brug 716 is a fixed bridge in Amsterdam Nieuw-West. The foot and cycle bridge spans the Christoffel Plantijngracht, which runs parallel to the Christoffel Plantijnpad, at the Johan Brakensiekhof and the Theo Mann-Bouwmeesterhof. Dick Slebos of the Publieke Werken designed a number of structures for the Christoffel Plantijnpad."
  },
  {
+  "name": "Hans Snoekfontein",
+  "lang": "nl",
+  "hash": "8b98ef0a4c27",
+  "en": "The Hans Snoekfontein is a work of art in Amsterdam-Centrum. The fountain is named after Hans Snoek, founder of the Scapino Ballet, who financially contributed to the construction of the fountain and the renovation of the square through a legacy. Other contributions came from American Hotel and Holland Casino."
+ },
+ {
+  "name": "Haparandadam",
+  "lang": "nl",
+  "hash": "e4b37fa93e28",
+  "en": "The Haparandadam is a dam in Amsterdam-West. The dam forms the border between the Houthaven district and the Western Port Area. The dam is named after the Swedish port city of Haparanda on the Gulf of Bothnia, on the border with Finland, where much wood came from to Amsterdam."
+ },
+ {
   "name": "Haringpakkersbrug",
   "lang": "nl",
   "hash": "9512f91546ee",
@@ -1726,6 +2014,18 @@
   "lang": "nl",
   "hash": "39456ebe4b67",
   "en": "The Hartmanbrug (bridge no. 190) is a plate bridge in Amsterdam-Oost. It is located in the Molukkenstraat and spans the Ringvaart. The bridge thus connects the Indische Buurt with the Watergraafsmeer. The quay along the Ringvaart is called Valentijnkade on the north side and Ooster Ringdijk on the south side."
+ },
+ {
+  "name": "Havenstraat",
+  "lang": "nl",
+  "hash": "11bd6b79de83",
+  "en": "The Havenstraat is a street in the Schinkel neighborhood, Amsterdam-Zuid."
+ },
+ {
+  "name": "Heemtuin Sloterpark",
+  "lang": "nl",
+  "hash": "d54d33b23f11",
+  "en": "The Heemtuin Sloterpark is located in the Sloterpark west of the Sloterplas in Amsterdam Nieuw-West. After the land was raised in the 1950s, this area remained untouched for a long time. Here a rough area spontaneously developed with wild plants, reeds and willows."
  },
  {
   "name": "Heibrug",
@@ -1794,6 +2094,12 @@
   "en": "The Henrietta Leavittbrug is a fixed bridge in Amsterdam, Watergraafsmeer. The bridge, formerly known as the anonymous bridge number 195, spans the Ringvaart of the Watergraafsmeer near the halfway point of the Tie-Breakers tennis park and the Flevopark, located on the western banks of the Nieuwe Diep. North of the ringvaart lies the Valentijnkade, t"
  },
  {
+  "name": "Henriette Schwarzpark",
+  "lang": "nl",
+  "hash": "f08ea644df1f",
+  "en": "The Henriette Schwarzpark is a small park in Osdorp, Amsterdam-Nieuw West. It is located between the Baden Powellweg, Ookmeerweg and Osdorper Ban. It is crossed by a foot and bicycle path section of the Osdorperweg. The park of 311 (north-south) at 78 meters (east-west) was laid out on an already existing green strip and was renovated on September 1, 2022."
+ },
+ {
   "name": "Henriëtte van Heukelom-van den Brandelerbrug",
   "lang": "nl",
   "hash": "a05f88e72b2c",
@@ -1848,6 +2154,18 @@
   "en": "Veem House for Performance, called Het Veem Theater until 2014, is a production house, workshop, stage, laboratory and centre of expertise for contemporary mime theatre, based in the Het Veem building in Amsterdam. The building stands on the Van Diemenstraat and the Oude Houthaven along the IJ, west of Centraal Station."
  },
  {
+  "name": "Hoeckelingsdam",
+  "lang": "nl",
+  "hash": "0f890e253906",
+  "en": "The Hoeckelingsdam is a low, 1.6 kilometer long dam in the IJmeer, intended to create calm water between the dam and the Uitdammerdijk and thereby increase the natural value of the area. The dam is outside the dikes of the Kinselmeer and near the Kinsel pond, so it is also called Kinseldam. The southern end is near the Vuurt"
+ },
+ {
+  "name": "Hoekenesgracht",
+  "lang": "nl",
+  "hash": "6f7e946fa161",
+  "en": "Hoekenes in a street in Amsterdam Nieuw-West. The street is located in several neighborhoods (including Wildemanbuurt) in Osdorp due to its length."
+ },
+ {
   "name": "Hofkerk",
   "lang": "nl",
   "hash": "c49e157de9dc",
@@ -1864,6 +2182,18 @@
   "lang": "nl",
   "hash": "31b570904115",
   "en": "The Hogesluis (bridge no. 246) is a monumental Amsterdam double bascule bridge with ten openings, designed by Willem Springer in a Parisian style. The older 17th-century bridge was replaced by the present one in 1883. The slab bridge, partly a bascule bridge, is decorated with cast-iron ornaments bearing city arms, a stone vase balustrade and obelisks."
+ },
+ {
+  "name": "Hollandse Tuin",
+  "lang": "nl",
+  "hash": "351f784b0fc4",
+  "en": "The Hollandse Tuin is a 19th-century monumental garden within the Amsterdam zoo Artis. In the garden stands a monument by sculptor Bart van Hove."
+ },
+ {
+  "name": "Hoofddorpweg",
+  "lang": "nl",
+  "hash": "a4d4c306d089",
+  "en": "The Hoofddorpweg in the Hoofddorpplein neighborhood of Amsterdam-Zuid was built in the 1920s on the territory of the municipality of Sloten, which was annexed by Amsterdam in 1921."
  },
  {
   "name": "Horst Blankenburgbrug",
@@ -1890,6 +2220,12 @@
   "en": "The Hortusbrug (bridge no. 239) is a bascule bridge in Amsterdam-Centrum. The bridge spans the Nieuwe Herengracht and thus connects the Muiderstraat with the Plantage Middenlaan."
  },
  {
+  "name": "Hortusplantsoen",
+  "lang": "nl",
+  "hash": "6a8b79e56b04",
+  "en": "The Hortusplantsoen is a park and street in the center of Amsterdam. The park is located on the south side of the Hortus Botanicus, between the Nieuwe Herengracht (corner Weesperstraat) and the Nieuwe Keizersgracht (near the bend where the canal transitions into the Plantage Muidergracht)."
+ },
+ {
   "name": "Houten Huis",
   "lang": "nl",
   "hash": "7f9c29b2ee5c",
@@ -1900,6 +2236,18 @@
   "lang": "nl",
   "hash": "ddfc690b3e3f",
   "en": "Het Houten Huys is a building on the Begijnhof in Amsterdam dating from 1528 or shortly after. It is one of the oldest houses in Amsterdam and, along with a building at the start of the Zeedijk, one of the two surviving houses with a wooden front. From the city's founding almost all Amsterdam houses were built of wood."
+ },
+ {
+  "name": "Houthavenpark",
+  "lang": "nl",
+  "hash": "861cddc9fc7e",
+  "en": "The Houthavenpark is a park in Amsterdam-West, located between the Spaarndammerbuurt and the Houthavens district. The southern boundary of the park is formed by the Spaarndammerdijk and Tasmanstraat, the northern border is the Stavangerweg. The park is partly located on the Spaarndammertunnel, which was opened in 2018."
+ },
+ {
+  "name": "Hugo de Grootgracht",
+  "lang": "nl",
+  "hash": "7ea1dc86beef",
+  "en": "The Hugo de Grootgracht is a canal in Amsterdam-West."
  },
  {
   "name": "Hugo de Vriesbrug",
@@ -1968,6 +2316,12 @@
   "en": "IJ-toren may refer to the IJ-toren on the Veemkade, a 1998 residential tower in Amsterdam, or the IJ-toren on the Piet Heinkade, an office tower from 2002 in Amsterdam."
  },
  {
+  "name": "IJsbaanpad",
+  "lang": "nl",
+  "hash": "3394b466e5a8",
+  "en": "The IJsbaanpad is a street in Amsterdam-Zuid, between the Amstelveenseweg and the Schinkel. The Amsterdamsche IJsclub (AIJC) had a field near the Schinkel in use, which was submerged in winter to create an ice surface. The road to it was therefore named IJsbaanpad in 1949. On the former ice club grounds are now tennis courts."
+ },
+ {
   "name": "Ikeda Friendship and Peace Center",
   "lang": "nl",
   "hash": "59a2ff09e776",
@@ -2022,6 +2376,18 @@
   "en": "The Isaac Israëlsbrug, (Bridge 408), also known as Schildersbrug, is a bridge in Amsterdam-Zuid. The bridge spans the Noorder Amstel Canal and forms the connection between the Cornelis Schuytstraat and the Breitnerstraat."
  },
  {
+  "name": "Jaargetijden",
+  "lang": "nl",
+  "hash": "e5d635e1b333",
+  "en": "Brug Driemond is a lift bridge over the Weespertrekvaart in the North Holland village of Driemond. Until 1966, the bridge and village were in the municipality of Weesperkarspel."
+ },
+ {
+  "name": "Jac. P. Thijsseplein",
+  "lang": "nl",
+  "hash": "a7ab05b0c4a9",
+  "en": "Jac.P. Thijsseplein is a square in Volewijck, Amsterdam-North."
+ },
+ {
   "name": "Jacoba van Tongerenbrug",
   "lang": "nl",
   "hash": "487d01e57563",
@@ -2032,6 +2398,12 @@
   "lang": "nl",
   "hash": "be5dcb5f6fd0",
   "en": "The Jacoba van Tongerenbrug (bridge number 602) is a permanent bridge in Amsterdam Nieuw-West, Slotermeer. The traffic bridge is located in Burgemeester Fockstraat and spans the Afwateringstocht. It leads to the southern Gerbrandypark. The bridge was built in 1953 according to a design by Piet Kramer from 1950 (the date stones mention 1951). The bridge is"
+ },
+ {
+  "name": "James Rosskade",
+  "lang": "nl",
+  "hash": "73cefbf9beab",
+  "en": "The James Rosskade is a street in the Bos en Lommer district in the Amsterdam municipality of West. The street runs south-north in terms of numbering and begins as such at the ventweg on the north side of the Jan van Galenstraat and ends on the southern quay of the Erasmusgracht. It runs parallel to the Einsteinweg."
  },
  {
   "name": "Jan Evertsenbrug",
@@ -2080,6 +2452,12 @@
   "lang": "nl",
   "hash": "ed603c3e9e3b",
   "en": "Bridge 382 is a bascule bridge located in Amsterdam-West. The traffic bridge (over which bus lines 18 and 80 also run) is located in Jan van Galenstraat and spans the Western Market Canal. The bridge is located just near the Centrale Markt (now called Foodcenter) which was opened in 1934."
+ },
+ {
+  "name": "Jan van Zutphenplantsoen",
+  "lang": "nl",
+  "hash": "e989cbac8fdf",
+  "en": "The Jan van Zutphenplantsoen is a park and green strip in the Amsterdam district of Osdorp. The park is located in the southwestern part of the district west of the Hoekenesgracht, east of the Baden Powellweg, between the Slotervaart and the also named after Jan van Zutphen Jan van Zutphenstraat. The park and the street are with a"
  },
  {
   "name": "Jeruzalemkerk",
@@ -2166,6 +2544,12 @@
   "en": "The Johnny & Jonesbrug (bridge 433) is a fixed bridge in the Prinses Irenebuurt in Amsterdam-Zuid. The pedestrian bridge is located over the entrance to the circular central large pond of Beatrixpark. It is located next to the \"permanent botanical garden\". In the immediate vicinity stands the sculpture Penguins by Jan Trapman."
  },
  {
+  "name": "Julianapark",
+  "lang": "nl",
+  "hash": "40c5c1c1422d",
+  "en": "The Julianapark, named in 1939 after Princess Juliana, was a park but is now a residential area in Amsterdam Watergraafsmeer. The park was located north of Hugo de Vrieslaan, east of Amstel station and Julianaplein and was further enclosed by the Gooiseweg. The park was created after the opening of the Amstel station in 1939. Part of the park"
+ },
+ {
   "name": "Kabouterbrug",
   "lang": "nl",
   "hash": "373a856c8075",
@@ -2194,6 +2578,18 @@
   "lang": "nl",
   "hash": "9989bc721044",
   "en": "The Kattenburgerbrug (bridge 274) is a bascule bridge in Amsterdam-Centrum. The wide traffic bridge connects the Prins Hendrikkade and the Kadijksplein to the south-west with the Kattenburgerstraat, Kattenburgerplein and Kattenburgergracht to the north-east. The boundary between the Oosterdok and the Nieuwe Vaart runs beneath it."
+ },
+ {
+  "name": "Kattenburgergracht",
+  "lang": "nl",
+  "hash": "24e9b0ac0628",
+  "en": "The Kattenburgergracht is a street in the center of Amsterdam that runs from Kattenburgerplein to Wittenburgergracht. North of Kattenburgerplein and canal lies the island of Kattenburg, on the southern side of it is the Nieuwe Vaart. With the Wittenburger and the Oostenburgergracht, which lie in each other's extension, the Kattenburgergracht"
+ },
+ {
+  "name": "Kattenburgerplein",
+  "lang": "nl",
+  "hash": "64b6a9f6e410",
+  "en": "The Kattenburgerplein is a square in Kattenburg in Amsterdam-Centrum. It lies along the Prins Hendrikkade, opposite Kadijksplein, across the Kattenburgerbrug over the Nieuwe Vaart. From the square, traffic can continue onto the island of Kattenburg via Kattenburgerstraat, or via Kattenburgergracht to the other Eastern"
  },
  {
   "name": "Kattenrugbrug",
@@ -2268,6 +2664,18 @@
   "en": "The Kinkerbrug (bridge no. 266) is a bridge over the Kostverlorenvaart in Amsterdam-West. It connects the Kinkerstraat with the Postjesweg and the Witte de Withstraat, and between 1990 and 2010 formed the boundary between the former boroughs of De Baarsjes and Oud-West."
  },
  {
+  "name": "Kinselmeer",
+  "lang": "nl",
+  "hash": "b28bcab1d2ea",
+  "en": "The Kinselmeer is a Dutch lake in the province of North Holland north of Durgerdam and east of Ransdorp (Amsterdam municipality). It is located on the IJsselmeerdijk (Uitdammerdijk) between Durgerdam and Uitdam, and was formed during the Saint Elizabeth's Flood of 1421. The name is derived from two villages that used to be nearby here, Grote and Kle"
+ },
+ {
+  "name": "Kleine-Gartmanplantsoen",
+  "lang": "nl",
+  "hash": "1774195e87b2",
+  "en": "The Kleine-Gartmanplantsoen is a square and park in the center of Amsterdam. It lies along Leidseplein and is often considered part of this square. On the southeast side, the Weteringschans flows into the Kleine-Gartmanplantsoen. The park also borders the eastern part of the Lijnbaansgracht and the Ziesenisk here at bridge 198."
+ },
+ {
   "name": "Klimopbrug",
   "lang": "nl",
   "hash": "5e01e7e57d27",
@@ -2322,6 +2730,12 @@
   "en": "The Korte Ouderkerkerbrug (bridge 1962) is a bicycle and pedestrian bridge located in the Overamstel district on the right Amstel Riverbank in Amsterdam-Oost."
  },
  {
+  "name": "Korte Prinsengracht",
+  "lang": "nl",
+  "hash": "62d61751f588",
+  "en": "The Unicorn Lock (lock no. 103) is a lock in the Haarlemmerdijk between the Prinsengracht and the Korte Prinsengracht in Amsterdam. The lock and associated bridge Unicorn Lock (bridge no. 313) were planned as a connection of the then new canals with the IJ, since 1832 the Westerdok, when the canal belt was built. The name is derived from a later"
+ },
+ {
   "name": "Kraan 2868",
   "lang": "nl",
   "hash": "1ccadaa26ae9",
@@ -2346,6 +2760,12 @@
   "en": "Film theater Kriterion, officially the Association for Mutual Student Support Kriterion (V.O.S.S. Kriterion), is a student-run cinema and student association at Roetersstraat 170 in Amsterdam. It emerged from the student resistance during World War II."
  },
  {
+  "name": "Krugerplein",
+  "lang": "nl",
+  "hash": "a2a1189fa0dd",
+  "en": "The Krugerplein is a square in the Transvaalbuurt in Amsterdam-Oost."
+ },
+ {
   "name": "Kunstenaarsverzet",
   "lang": "nl",
   "hash": "6a05e639a15a",
@@ -2362,6 +2782,18 @@
   "lang": "nl",
   "hash": "ae3fca4ea05e",
   "en": "The L.H. Sarlouisbrug (bridge 240) is a fixed bridge in Amsterdam-Centrum. The traffic bridge is located in the Weesperstraat and spans the Nieuwe Keizersgracht. The bridge has a history similar to the Dr. Dünnerbrug and Dr. Meijer de Hondbrug, although it will be slightly older, due to the development of the city from the center. Older versions of the br"
+ },
+ {
+  "name": "Laan van Spartaan",
+  "lang": "nl",
+  "hash": "9c6c826dec56",
+  "en": "Laan van Spartaan is a residential neighborhood in the Amsterdam district of West, formerly district of Bos en Lommer. The neighborhood is bordered by the dike of the Ringspoorbaan in the west, Jan van Galenstraat in the south, the Ringweg (A10) in the east and the Erasmusgracht in the north."
+ },
+ {
+  "name": "Lange Bretten",
+  "lang": "nl",
+  "hash": "54cc751b7bbe",
+  "en": "De Bretten, and sometimes also called the Lange Bretten, is a nature reserve in the Amsterdam municipality of Nieuw-West with an area of 130 ha. It is a green strip north of the Haarlemmertrekvaart and south of the Western Port Area on the polder lands of the Spieringhorner Binnenpolder. The area is named after the House at Bretten, one of"
  },
  {
   "name": "Lau Mazirelbrug",
@@ -2388,6 +2820,12 @@
   "en": "The Grote or Laurenskerk is a church on the Kerkstraat and Nieuwstraat in the centre of Weesp, North Holland. It was built between 1429 and 1462 as a late Gothic cruciform church on the site of an earlier Romanesque church. From 1489 a college of seven canonical hours with paid professional singers was attached to it."
  },
  {
+  "name": "Le Mairegracht",
+  "lang": "nl",
+  "hash": "a660f96dec33",
+  "en": "The Le Mairegracht is a canal in the West district of Amsterdam. The name was established by council decision of November 20, 1878. The canal is named after Jacob le Maire (1585-1616), a explorer, who discovered the sea route named after him at the southern tip of South America. He named the cape after his birthplace Cape Horn. The Le Mairegra"
+ },
+ {
   "name": "Lee Millerbrug",
   "lang": "nl",
   "hash": "7791533a0ffb",
@@ -2410,6 +2848,12 @@
   "lang": "nl",
   "hash": "b0749a7d1178",
   "en": "The Leeuwenputbrug (bridge 371) is a fixed bridge in Amsterdam-Noord. This traffic bridge lies in the Grasweg and spans the Buiksloterkanaal; on the east side of the canal the Grasweg meets the Ranonkelkade. The first plans for a bridge here date from 1916, when the site was leased to the Dordtsche Petroleum Maatschappij."
+ },
+ {
+  "name": "Leidsebosje",
+  "lang": "nl",
+  "hash": "0f8f8f8b576d",
+  "en": "The Leidsebosje is a park between Leidseplein and Vondelpark in Amsterdam, in a north-south running strip between Stadhouderskade and Singelgracht in Amsterdam-West. On the north side it borders the Stadhouderskade 1 building, the former headquarters of Gemeentetram Amsterdam. In the south the park ends at the height of the Hein D"
  },
  {
   "name": "Leidsebrug",
@@ -2452,6 +2896,12 @@
   "lang": "nl",
   "hash": "7f0f17c944f2",
   "en": "The Liefdesbruggetje (bridge 172) is a bridge in Amsterdam Oud-Zuid. The footbridge is the most easterly located of the three bridges in Sarphatipark. It spans the drainage system of the park. The water is pumped up from a pond just before the bridge; then the water flows through an artificial water channel/fall into the large pond. Through the fall"
+ },
+ {
+  "name": "Lies Bakhuyzenlaan",
+  "lang": "nl",
+  "hash": "32fb7f3715d4",
+  "en": "Lies Bakhuyzenlaan is a street in Amsterdam Nieuw-West."
  },
  {
   "name": "Lijnbaansbrug",
@@ -2524,6 +2974,12 @@
   "lang": "nl",
   "hash": "df80eff28855",
   "en": "The Luther Museum Amsterdam, formerly known as the Luther Collection Amsterdam, is a museum that wants to introduce the public to Lutheranism in the Netherlands and Amsterdam, the role of Wittenberg as a center of administration and the works of the diaconate in the past and present, with a collection of art and historical objects related to Lutheranism."
+ },
+ {
+  "name": "Lutkemeerpark",
+  "lang": "nl",
+  "hash": "847890a2505b",
+  "en": "The Lutkemeerpark is the unofficial name of a park in the west of the Lutkemeerpolder."
  },
  {
   "name": "Lyceumbrug",
@@ -2676,6 +3132,12 @@
   "en": "The Image of Martin Luther King is an artistic work of art in Amsterdam-Zuid. Artist Airco Caravan (also known as Maria Koning or Ine Reijnen) wanted to draw attention to Martin Luther King's date of death in 2018 under the banner of Monument for Martin Luther King by placing a half-meter-high statue in cities in Europe and North America. Also, it would"
  },
  {
+  "name": "Martin Luther Kingpark",
+  "lang": "nl",
+  "hash": "98c69a872b98",
+  "en": "The Martin Luther Kingpark is a city park in Amsterdam-Zuid."
+ },
+ {
   "name": "Max Euwe Centrum",
   "lang": "nl",
   "hash": "4b5a9ea08850",
@@ -2706,6 +3168,18 @@
   "en": "Meervaart is a theater and a convention center in Amsterdam Nieuw-West. Meervaart is a contemporary metropolitan theater where audiences and creators with diverse backgrounds, taste preferences and ambitions come into contact with each other. Meervaart connects the neighborhood, the city and the wider world with each other."
  },
  {
+  "name": "Meidoornplein",
+  "lang": "nl",
+  "hash": "a47a35c4786e",
+  "en": "The Meidoornplein is a rectangular square in Amsterdam-North. The square was named on January 21, 1920 and thus cut off part of Meidoornlaan, which had already been named in 1919. Both were named after the Meidoorn. Meidoornlaan has been cutting through the square since the beginning of the construction from the same time. The entire area falls within he"
+ },
+ {
+  "name": "Mercuriushaven",
+  "lang": "nl",
+  "hash": "307cd990e01e",
+  "en": "The Mercuriushaven is a port in the Amsterdam port area. The port is located on the west side of the IJ and on the southwest side of the North Sea Canal, between the Houthavens and the Coenhaven, near the Nieuwe Hemweg. The Mercuriushaven was dug in the last part of the 19th century and is named after Mercury as god/personification of trade."
+ },
+ {
   "name": "Middenstip Stadion De Meer",
   "lang": "nl",
   "hash": "1a9e127b3edc",
@@ -2730,6 +3204,18 @@
   "en": "The Mien Ruysbrug (bridge 1944) is a structure in Amsterdam-Oost. It was built as part of the renovation of Park Frankendael, which had fallen behind on maintenance over the years and was brought up to date under the architects Sant en Co of Edwin Santhagens, with the path system reworked."
  },
  {
+  "name": "Mien Ruysplantsoen",
+  "lang": "nl",
+  "hash": "f7e01de91487",
+  "en": "The Mien Ruysplantsoen or KNSM park is a park or small city park on the KNSM island in the Eastern Harbor Area of Amsterdam."
+ },
+ {
+  "name": "Minervahaven",
+  "lang": "nl",
+  "hash": "ffca46164db1",
+  "en": "The Minervahaven is a harbor basin in the port of Amsterdam. It was dug around 1880 on the southern bank of the North Sea Canal, which had been dug shortly before. The Minervahaven is one of the few ports in Amsterdam-West within the ring road A10. The port was used for a long time for wood dumping and there was a wood processing industry established."
+ },
+ {
   "name": "Molen van Sloten",
   "lang": "nl",
   "hash": "415b27d37692",
@@ -2752,6 +3238,12 @@
   "lang": "nl",
   "hash": "bbfa74e54117",
   "en": "The Monument on the Haarlemmerweg is a monument for war victims, placed on the Haarlemmerweg, Amsterdam Nieuw-West between the pedestrian and bicycle bridges Burgemeester Eliasstraat and Burgemeester Fockstraat. Police officer Elias' father and son Verkuijl were shot dead here by the German occupiers as revenge for a resistance act on the railway track"
+ },
+ {
+  "name": "Monument Rozenoord",
+  "lang": "nl",
+  "hash": "db6ebce709fa",
+  "en": "Monument Rozenoord is a monument in Amsterdam-Zuid from 2015 to commemorate the executed during World War II at the Rozenoord firing range. A monument (memorial stone and flagpole) has stood at the site of the fusillade itself for years. However, the deceased are not individually mentioned here. The deceased received e in 2014/2015"
  },
  {
   "name": "Monument van voetbalclub BPC",
@@ -2922,6 +3414,12 @@
   "en": "The Muurschildering Johan Cruijff is a mural in Amsterdam-Watergraafsmeer. The portrait of Johan Cruyff was installed in 2017 on the side facade of a residential apartment building, which is located on Anfieldroad, perpendicular to Wembleylaan. Those streets were laid out on the grounds of the former AFC Ajax stadium Stadion De Meer."
  },
  {
+  "name": "Naardermeer",
+  "lang": "nl",
+  "hash": "3dc94433e2f2",
+  "en": "The Naardermeer is a protected nature reserve on the northwestern border of the Gooi, located between Muiderberg, Naarden, Hilversumse Meent and Weesp, in the merged municipality of Gooise Meren. The local population has long spoken of the Naardermeer (from the Naardermeer drainage works or the Naardermeerpolder). It is a pond area with reeds, hay"
+ },
+ {
   "name": "NACO-house",
   "lang": "nl",
   "hash": "6e97ac5d9c5b",
@@ -2946,6 +3444,18 @@
   "en": "The Nationaal Monument Slavernijverleden is a monument in the Oosterpark in Amsterdam to commemorate the abolition of slavery in the Dutch Kingdom. The statue is made of bronze and the base is made of concrete."
  },
  {
+  "name": "Natuurpark Vrije Geer",
+  "lang": "nl",
+  "hash": "9944a330f525",
+  "en": "The Natuurpark Vrije Geer is a small green area near the village of Sloten with an area of more than 4 hectares. It is located between the Plesmanlaan, the Nieuw Sloten district and the village of Sloten. It is a last remnant of the peat meadow area that formerly stretched between Amsterdam and Sloten."
+ },
+ {
+  "name": "Nelson Mandelapark",
+  "lang": "nl",
+  "hash": "68441be6544c",
+  "en": "The Nelson Mandelapark, formerly known as Bijlmerpark until 2014, is a city park in the south of the Bijlmermeer in Amsterdam-Zuidoost. Bijlmerpark was originally laid out in 1969 and 1970. Since 1975, the Kwakoe Summer Festival has been organized here annually."
+ },
+ {
   "name": "Nicolaas Beetsstraat",
   "lang": "nl",
   "hash": "fb2d2d97fabf",
@@ -2964,6 +3474,30 @@
   "en": "The Nieuwe Amstelbrug (bridge no. 101) in Amsterdam is a double bascule bridge over the Amstel on the boundary between De Pijp in Amsterdam-Zuid and Amsterdam-Oost. It links the Ceintuurbaan and Amsteldijk, formerly Utrechtsezijde, with the Weesperzijde, Ruyschstraat and Eerste Oosterparkstraat."
  },
  {
+  "name": "Nieuwe Doelenstraat",
+  "lang": "nl",
+  "hash": "1f49cd5d5606",
+  "en": "The Nieuwe Doelenstraat is a street in the city center of Amsterdam. The street runs along the Kloveniersburgwal and runs from the corner with Staalstraat in a southwest direction to the Oude Turfmarkt, where the Doelensluis crosses the Rokin. This street was home to the Kloveniersdoelen, where The Night Watch was originally hung. The street is empty"
+ },
+ {
+  "name": "Nieuwe Meer",
+  "lang": "nl",
+  "hash": "c9f16732ec0b",
+  "en": "The Nieuwe Meer (or 'the' Nieuwe Meer) is a narrow lake southwest of Amsterdam. It forms the connection between the Schinkel in Amsterdam and the Ringvaart of the Haarlemmermeerpolder. Via the Nieuwe Meersluis (or Schinkelsluis) you can sail to the Schinkel, which is in open connection with the canals in Amsterdam-Zuid and the canals of Amsterdam. on"
+ },
+ {
+  "name": "Nieuwe Meersluis",
+  "lang": "nl",
+  "hash": "d9b332688789",
+  "en": "The Nieuwe Meersluis, also known as Schinkelsluis, is a sluice gate in the Dutch municipality of Amsterdam."
+ },
+ {
+  "name": "Nieuwe Passeerdersstraat",
+  "lang": "nl",
+  "hash": "b852ed24f631",
+  "en": "The Nieuwe Passeerdersstraat is a street in the Jordaan in Amsterdam-Centrum."
+ },
+ {
   "name": "Nieuwe-Wercksbrug",
   "lang": "nl",
   "hash": "844c456e7c4a",
@@ -2976,6 +3510,12 @@
   "en": "The Nieuwendammerkerk is the village church of the dyke village of Nieuwendam in Amsterdam-Noord. It does not stand along the Nieuwendammerdijk but slightly lower behind it on the Brede Kerkepad. It is a handsomely sited village church with a graveyard around it."
  },
  {
+  "name": "Nieuwendammersluis",
+  "lang": "nl",
+  "hash": "0c12922cb1fa",
+  "en": "The Nieuwendammersluis is a historic lock in the Nieuwendammerdijk in Amsterdam-North. It was originally a sea lock in the Nieuwendammerdijk, which was part of the Waterlandse Zeedijk and the Noorder IJ and Zeedijk."
+ },
+ {
   "name": "Nollewoudsbrug",
   "lang": "nl",
   "hash": "bf653c9515d2",
@@ -2986,6 +3526,12 @@
   "lang": "nl",
   "hash": "c89b3893cc50",
   "en": "Bridge 432 is a fixed bridge in Amsterdam-North. The traffic bridge, over which bus line 32 used to run, since 2018 bus line 35, is located in the Purmerweg / Nieuwe Purmerweg and spans the ring ditch of the Buikslotermeer. There are three versions of this bridge. It began in 1937 as a wooden bridge in a rural area; there is no buildings yet to be found."
+ },
+ {
+  "name": "Noorderpark",
+  "lang": "nl",
+  "hash": "638d56fdf3be",
+  "en": "The Noorderpark is a park in Amsterdam-North. It was created in 2014 after the merger of the Florapark and Volewijkspark located on either side of the North Holland Canal."
  },
  {
   "name": "NSM-brug",
@@ -3066,6 +3612,12 @@
   "en": "The Oost-Indische Huisbrug (bridge 223) is a fixed bridge in Amsterdam-Centrum. It spans the Kloveniersburgwal, connecting the Rusland with the southern quay of the Raamgracht. It has been a municipal monument since 10 October 1995 and is named after the Oost-Indisch Huis on the corner of the Kloveniersburgwal and the Oude Hoogstraat."
  },
  {
+  "name": "Oostelijk Marktkanaal",
+  "lang": "nl",
+  "hash": "cfaabd610ae5",
+  "en": "The Oostelijk Marktkanaal is a canal in Amsterdam-West. The canal branches off from the Kostverlorenvaart in a northerly direction at the Beltbrug and opened up the grounds of the Centrale Markthallen on the east side. Along the Buyskade lies the Buysbrug over the Oostelijk Marktkanaal, over which a bicycle path leads to Jan van Galenstraat. The canal"
+ },
+ {
   "name": "Oosterbeerbrug",
   "lang": "nl",
   "hash": "f8af22251d6b",
@@ -3076,6 +3628,12 @@
   "lang": "nl",
   "hash": "ef0fd940b8a6",
   "en": "The Oosterparkkerk stands on the west side of the Oosterpark in Amsterdam, in the Oosterparkbuurt."
+ },
+ {
+  "name": "Open Havenfront",
+  "lang": "nl",
+  "hash": "0494944d984b",
+  "en": "The Open Havenfront is the water between the Prins Hendrikkade and the Stationseiland in Amsterdam. Over this water lie three wide bridges, equipped with separate lanes for cars or footpaths and tram rails: the Western Access Bridge (bridge no. 13), the Sint Nicolaas Bridge (Middle Access Bridge; bridge no. 306) and the Kamper Bridge (bridge no. 285)."
  },
  {
   "name": "Opstandingskerk",
@@ -3186,6 +3744,24 @@
   "en": "The Sint-Pancratiuskerk is a Roman Catholic church in the village of Sloten. The first Sloterkerk is first mentioned in a charter of Bishop Willem I (van Gelre) from 1063. This church may have stood near the current Van Suchtelen van de Haarestraat in Osdorp (between the Osdorpplein and Hoekenes). Since around 1175, the village has been"
  },
  {
+  "name": "Park De Kuil",
+  "lang": "nl",
+  "hash": "c70a43dba121",
+  "en": "Park de Kuil is a park in Amsterdam Nieuw-West."
+ },
+ {
+  "name": "Park de Schinkeleilanden",
+  "lang": "nl",
+  "hash": "e8b21f6d75c3",
+  "en": "The Park Schinkeleilanden is located in Amsterdam-Zuid west of the Olympic Stadium along the Schinkel. From the Olympic Quarter, the park can be reached via the Jan Wilsbrug. The railway line from Haarlemmermeer station in the direction of Amstelveen is located over two (almost) islands between the Schinkel and the Stadiongracht."
+ },
+ {
+  "name": "Park Somerlust",
+  "lang": "nl",
+  "hash": "6dfca9839112",
+  "en": "Park Somerlust is a park in Amsterdam-Oost"
+ },
+ {
   "name": "Pastoorsbrug",
   "lang": "nl",
   "hash": "3a500036e954",
@@ -3220,6 +3796,12 @@
   "lang": "nl",
   "hash": "f8bdae155640",
   "en": "The Pelikaanbrug (bridge number 277) is a drawbridge from 1984 in Amsterdam-Centrum, near the Oosterkerk. It spans the Nieuwe Vaart from the Hoogte Kadijk in the south to the Wittenburgergracht in the north, and is open only to pedestrians and cyclists. It is named after the pelican, and also after a nearby former works of that name."
+ },
+ {
+  "name": "Petemayenbrug",
+  "lang": "nl",
+  "hash": "4353d209daff",
+  "en": "The Petemayenbrug is a double pickup bridge in Amsterdam-Centrum. The name is said to be derived from petemoeien (stepmother), also an indication of old women. It connects Bokkinghangen with Zandhoek, both western docks of the Westerdok. Bokkinghangen is located on the former Bolwerk Blauwhoofd (Zeeheldenbuurt), Zandhoek on the Realeneiland. It spans"
  },
  {
   "name": "Peter Postbrug",
@@ -3294,6 +3876,12 @@
   "en": "The Piet Meerburgbrug (bridge 234) is a fixed bridge in Amsterdam-Centrum. The traffic bridge crosses two parallel culverts, which connect an ornamental pond in the Hortus Botanicus Amsterdam with the water of the Nieuwe Keizersgracht. It links the Hortusplantsoen on the west side with the northern quay of the Nieuwe Keizersgracht."
  },
  {
+  "name": "Piet Wiedijkpark",
+  "lang": "nl",
+  "hash": "465f15af2047",
+  "en": "The Piet Wiedijkpark is a park in the Amsterdam district of Osdorp, Amsterdam Nieuw-West."
+ },
+ {
   "name": "Pieter Goemansbrug",
   "lang": "nl",
   "hash": "a49e42f44bad",
@@ -3316,6 +3904,12 @@
   "lang": "nl",
   "hash": "cb29fa7dce3c",
   "en": "The Planciusspoorbrug is a railway viaduct in Amsterdam-Centrum. It spans the north-south Planciusstraat, from which it takes its name; both are named after Petrus Plancius. Until November 2017 the bridge was known as S6 and S7, when the city renamed all the railway bridges in Amsterdam."
+ },
+ {
+  "name": "Plantage Doklaan",
+  "lang": "nl",
+  "hash": "d98834a825c4",
+  "en": "The Plantage Doklaan is a street in the Plantagebuurt of Amsterdam. The street runs along the Entrepotdok, which was built in 1857, and is named after it. Originally, the street ran from Plantage Parklaan to Plantage Muidergracht and was crossed halfway by Plantage Kerklaan. Between Plantage Kerklaan and Plantage Muidergracht is the street"
  },
  {
   "name": "Plaquette Chet Baker",
@@ -3354,6 +3948,36 @@
   "en": "The Gerrie Mührenbrug (bridge 2235) is a structure in Amsterdam-Oost. It is one of the traffic bridges — the others are for slow traffic — within the Park de Meer neighbourhood in the Watergraafsmeer, built here between 1998 and 2002. That neighbourhood is entirely surrounded by a ring ditch."
  },
  {
+  "name": "Prins Hendrikkade",
+  "lang": "nl",
+  "hash": "64b6a9f6e410",
+  "en": "The Kattenburgerplein is a square in Kattenburg in Amsterdam-Centrum. It lies along the Prins Hendrikkade, opposite Kadijksplein, across the Kattenburgerbrug over the Nieuwe Vaart. From the square, traffic can continue to the island of Kattenburg via Kattenburgerstraat, or via Kattenburgergracht to the other Eastern"
+ },
+ {
+  "name": "Prinses Amaliaplein",
+  "lang": "nl",
+  "hash": "9efca7981c1b",
+  "en": "The Prinses Amaliaplein is a square in Amsterdam-Zuid. The square can already be seen on Hendrik Petrus Berlage's Plan Zuid from 1917. It forms the final piece of the Minervalaan towards the Zuiderstation. However, it would take several years before the city reached this point, but the site plan has hardly changed. On that drawn plan is an open"
+ },
+ {
+  "name": "Prinses Irenestraat",
+  "lang": "nl",
+  "hash": "40bf93173766",
+  "en": "The Prinses Irenestraat is a street in the Amsterdam district of Zuid, on the edge of the Zuidas. The street was named in 1953 and was named after Princess Irene, daughter of the then queen Juliana. The western part of the street changed its name after the renaming of Parnassusweg in 1977. This is now called Fred. Roeskestraat. With this, the"
+ },
+ {
+  "name": "Professor Joop van Stigtpark",
+  "lang": "nl",
+  "hash": "7874cb2e5c8b",
+  "en": "Professor Joop van Stigtpark is the unofficial name of a park-like environment in Amsterdam-Zuidoost. The park was named in 2013, when neighbors developed an initiative for naming a green strip with watercourse between the Gouden Leeuw and Groenhoven apartment blocks. This collection of apartments was built around 1974 according to the design of architect"
+ },
+ {
+  "name": "Purmerplein",
+  "lang": "nl",
+  "hash": "3d2241eb7f37",
+  "en": "The Purmerplein in Amsterdam-North is a square in the village of Nieuwendam, which has belonged to the municipality of Amsterdam since 1921. The Purmerplein forms the center of Tuindorp Nieuwendam, an expansion district with mainly worker housing that was built between 1924 and 1934 under the direction of the Municipal Housing Service Amsterdam."
+ },
+ {
   "name": "Raampoort",
   "lang": "nl",
   "hash": "0e0b4ca7e753",
@@ -3370,6 +3994,12 @@
   "lang": "nl",
   "hash": "e6ab7a1ce6be",
   "en": "The Velibor Vasovićbrug (bridge 1906) is a structure in Amsterdam-Oost. From 1983 a concrete bridge, then numbered 426, connected the Watergraafsmeer district with the neighbouring municipality of Diemen, which were separated by the eastern ring road and a Diemen ring ditch. A single shared span was chosen at the time."
+ },
+ {
+  "name": "Ransdorper Die",
+  "lang": "nl",
+  "hash": "2769ed984b98",
+  "en": "The Ransdorper Die is a creek, named, in Waterland in North Holland. The water lies north of the village of Ransdorp, which belongs to the municipality of Amsterdam, southwest of Holysloot and south of Broek in Waterland. It is also connected through the Nauw to the Holysloter Die north of Holysloot and further to the Uitdammer Die i"
  },
  {
   "name": "Ravensbrück memorial",
@@ -3396,6 +4026,12 @@
   "en": "The Rembrandt monument is a 19th-century memorial to the painter Rembrandt van Rijn on the Rembrandtplein in Amsterdam. It is the oldest surviving statue in Amsterdam and was the first statue of a visual artist in the Netherlands."
  },
  {
+  "name": "Rhijnspoorplein",
+  "lang": "nl",
+  "hash": "047f1922296b",
+  "en": "The Rhijnspoorplein is a square in Amsterdam-East and -Center. It is located between Weesperplein and Wibautstraat and is part of the Amsterdam city route s112, between the IJtunnel and the Gooiseweg. The square got its name in 1939. Previously, this was the Weesperpoort station from 1843 to 1939."
+ },
+ {
   "name": "Riekerhavenbrug",
   "lang": "nl",
   "hash": "1a8f5dddbb8c",
@@ -3408,10 +4044,22 @@
   "en": "Brug 307 is a metal drawbridge in the south-west of Amsterdam. The foot and cycle bridge lies in the Jaagpad and spans the dividing line between the Riekerhaven and the Schinkel. Less than 10 metres to the west lies the Uiverbrug (bridge 2208), a proper traffic bridge that has connected the Generaal Vetterstraat with the Valschermkade since 2003."
  },
  {
+  "name": "Rietlandpark",
+  "lang": "nl",
+  "hash": "735762193fa6",
+  "en": "The Rietlandpark in Amsterdam-Oost was named in 2005 and is named after the Stads Rietlanden. This was until around 1880 an off-dikes uninhabited, partly swampy and reed-covered area. At the end of the 19th century, trade areas and a railway yard were built here as the center of the Eastern Harbor Area. This was also here until the"
+ },
+ {
   "name": "Rijksakademie van beeldende kunsten",
   "lang": "nl",
   "hash": "12ed8ee761bc",
   "en": "The Royal Academy of Fine Arts (also Royal Academy of Fine Arts) in Amsterdam was the highest art training institution in the Kingdom of the Netherlands from 1820 to 1870. Until 1830, it shared this role with the academy of Antwerp. The Academy was the successor to the City Drawing Academy. In 1870, the Academy was abolished and replaced by the"
+ },
+ {
+  "name": "Ringvaart",
+  "lang": "nl",
+  "hash": "71631627b9b3",
+  "en": "The Ringvaart in Amsterdam-Oost is the name of the northern and eastern part of the ring canal around the Watergraafsmeer polder, which was reclaimed in 1629. The Ringvaart also forms the border of the Watergraafsmeer district (until 1921 a separate municipality and from 1987 to 1998 a district of Amsterdam)."
  },
  {
   "name": "Ringvaartbrug A5",
@@ -3424,6 +4072,12 @@
   "lang": "nl",
   "hash": "89e8e39b9742",
   "en": "The Ringvaartbrug A5, designated Kunstwerk 511, is a structure in the province of North Holland. It lies in Rijksweg 5, the Westrandweg, and crosses the Ringvaart of the Haarlemmermeer. Zwarts & Jansma Architecten were responsible for the design of this motorway and all its structures."
+ },
+ {
+  "name": "Robert Scottstraat",
+  "lang": "nl",
+  "hash": "6ce28de9f830",
+  "en": "The Robert Scottstraat is a street in Amsterdam-West in the Robert Scott neighborhood named after him."
  },
  {
   "name": "Rosa Overbeekbrug",
@@ -3504,6 +4158,18 @@
   "en": "The Sarphatimonument is a monument in honor of the 19th-century Jewish Amsterdam physician and benefactor Samuel Sarphati, in Sarphatipark in the Amsterdam district of de Pijp. The monument was built in 1886 on a small hill specially built for this purpose in the park."
  },
  {
+  "name": "Scharrebiersluis",
+  "lang": "nl",
+  "hash": "8b07e44b36a1",
+  "en": "The Scharrebiersluis (bridge 278) is a lift bridge in Amsterdam-Centrum. The bridge is named after scharrebier, a cheap beer of moderate quality that was bought on site here by waiting captains. The bridge forms the connection between Rapenburgplein and Foeliedwarsstraat on Rapenburg on the west side and Kadijksplein and the Laagte Kadijk on"
+ },
+ {
+  "name": "Schellingwouderbreek",
+  "lang": "nl",
+  "hash": "3b277ace269d",
+  "en": "The Schellingwouderbreek is a lake in Amsterdam-North. The breakwater is a provincial monument."
+ },
+ {
   "name": "Schellingwouderbrug",
   "lang": "nl",
   "hash": "c6c61d2918ba",
@@ -3514,6 +4180,12 @@
   "lang": "nl",
   "hash": "d20bb29efeba",
   "en": "The Schellingwouderbrug (bridge no. 55P) is a traffic bridge over the Buiten IJ in Amsterdam. The bridge connects the Zeeburgereiland (Amsterdam-East) and Amsterdam-North with each other."
+ },
+ {
+  "name": "Schinkel",
+  "lang": "nl",
+  "hash": "3c424d8a23b4",
+  "en": "The Schinkel is a small canalized river in Amsterdam, in the Dutch province of North Holland. The river runs from the (former) Overtoomse Sluis to the Nieuwe Meer."
  },
  {
   "name": "Schollenbrug",
@@ -3528,10 +4200,22 @@
   "en": "De Schaduwkade is a monument to two hundred Jewish residents of the Nieuwe Keizersgracht in Amsterdam who were murdered in the Second World War. It consists of two hundred metal plates bearing the residents' names, grouped around the number of the house where they lived on the other side of the water."
  },
  {
+  "name": "Siegerpark",
+  "lang": "nl",
+  "hash": "7b3fb73ab8fa",
+  "en": "The Siegerpark is a small city park on the Sloterweg in the Riekerpolder in Amsterdam-Nieuw-West. The name is not recorded in the Basic Registration of Addresses and Buildings."
+ },
+ {
   "name": "Simon Carmiggelt",
   "lang": "nl",
   "hash": "87b70a5d0087",
   "en": "The Bust of Simon Carmiggelt is a work of art in Amsterdam-Centrum. In November 1987, writer Simon Carmiggelt, a well-known Amsterdam personality, died. Soon after, the idea came up to have a statue erected in the city as a tribute. Friends, acquaintances of the writer and the public under the leadership of actor Ton van Duinhoven raised money. Van Du"
+ },
+ {
+  "name": "Singel",
+  "lang": "nl",
+  "hash": "37b2577719cd",
+  "en": "Muntsluis can refer to: Muntsluis (Amsterdam), a bridge in Amsterdam (with the Muntplein) Muntsluis (Utrecht), a lock complex in the Merwedekanaal (with the Muntbrug)"
  },
  {
   "name": "Singelgrachtbrug",
@@ -3612,6 +4296,12 @@
   "en": "The Sint-Petrus-en-Pauluskerk is a Dutch Old Catholic church building on Ruysdaelstraat in the Duivelseiland district of Amsterdam. The church, parsonage and teaching room form a whole and were designed by Johan W.F. Hartkamp jr., a pupil of Hendrik Petrus Berlage. The church complex was completed in 1914 as a precursor to the secret church 'De Ooievaar'"
  },
  {
+  "name": "Sisyfusgemaal",
+  "lang": "nl",
+  "hash": "45b99218826c",
+  "en": "The Sisyfusgemaal is both a structural and artistic work of art (applied art) in Amsterdam Nieuw-West."
+ },
+ {
   "name": "Sloterbrug",
   "lang": "nl",
   "hash": "d260aaffd418",
@@ -3636,6 +4326,24 @@
   "en": "The Sloterkerk is a Protestant church in Sloten, North Holland."
  },
  {
+  "name": "Sloterplas",
+  "lang": "nl",
+  "hash": "8fb6cc4a9e5c",
+  "en": "The Sloterplas is located in the center of the Western Garden Cities in Amsterdam Nieuw-West. The pond was dug between 1948 and 1956 and has a maximum depth of 37 meters."
+ },
+ {
+  "name": "Snodenhoekpark",
+  "lang": "nl",
+  "hash": "772e2882c062",
+  "en": "The Snodenhoekpark is a small park and a street in the Gaasperdam district in Amsterdam-Zuidoost. The park is located south of the Schoonhovendreef and north of De Hoge Dijk. The Steengroevenpad runs through the park. The park was built in the mid-1980s, at the same time as the Reigersbos district, part of Gaasperdam. The park is named after d"
+ },
+ {
+  "name": "Solebayplein",
+  "lang": "nl",
+  "hash": "a830a9521dcb",
+  "en": "Solebayplein is an unofficial name for a square in the Landlust district in Amsterdam-West."
+ },
+ {
   "name": "Solitudobrug",
   "lang": "nl",
   "hash": "19b31011bc13",
@@ -3654,10 +4362,28 @@
   "en": "The Solitudolaanspoorbrug, whose coordinates are Solitudolaan and Solitudopad in Amsterdam-Oost. The Solitudolaan and -pad received their names in 2015, when new residential buildings were built in this area and road redevelopment took place. The railway bridge was named after the avenue in February 2018."
  },
  {
+  "name": "Spaarndammerstraat",
+  "lang": "nl",
+  "hash": "6b109852692d",
+  "en": "The Spaarndammerstraat is a residential and shopping street in the Spaarndammerbuurt in Amsterdam Oud-West."
+ },
+ {
   "name": "Spanjemonument",
   "lang": "nl",
   "hash": "cab8be30b05d",
   "en": "The Spanjemonument is an artistic work and war memorial in Amsterdam-Noord."
+ },
+ {
+  "name": "Speelmanstraat",
+  "lang": "nl",
+  "hash": "437232baad71",
+  "en": "Speelmanstraat is a street in the Amsterdam garden city of Slotermeer. The street was named after resistance fighter Wim Speelman on July 9, 1952."
+ },
+ {
+  "name": "Staalmanpark",
+  "lang": "nl",
+  "hash": "6376296c84eb",
+  "en": "The Staalmanpark is a city park in Amsterdam-Nieuw-West."
  },
  {
   "name": "Staalmeestersbrug",
@@ -3684,6 +4410,18 @@
   "en": "The Staatsliedenbrug (bridge 139) is a fixed bridge in Amsterdam Oud-West. It connects the Van Limburg Stirumstraat with the Tweede Nassaustraat, spanning the Kostverlorenvaart and its quays at De Wittenkade. Most of the Kostverlorenvaart forms part of the Staandemastroute through Amsterdam-West, but not this stretch."
  },
  {
+  "name": "Stadionplein",
+  "lang": "nl",
+  "hash": "6ed59c5ff40a",
+  "en": "The Stadionplein is a square in Amsterdam-Zuid, which was built in the 1920s at the intersection of Stadionweg and Amstelveenseweg to better control car traffic to the site of the 1928 Summer Olympic Games in Amsterdam. It is located on the border of H.P. Berlage's Plan Zuid and the more modernist"
+ },
+ {
+  "name": "Stadspark Osdorp",
+  "lang": "nl",
+  "hash": "acaa842123a1",
+  "en": "The Stadspark Osdorp is a park in the Amsterdam district of Osdorp. It is a fairly new park, it was expanded in 1990 and took its current form in the years following as part of the large-scale urban renewal of Osdorp. The park is located along the west side of Hoekenes between Tussen Meer and the Pieter Calandlaan and east of the Wolbra"
+ },
+ {
   "name": "Steenhouwerijbrug",
   "lang": "nl",
   "hash": "79a03771d6ac",
@@ -3694,6 +4432,12 @@
   "lang": "nl",
   "hash": "c1dec5c44510",
   "en": "The Steenhouwerijbrug or Steenhouwerijsluis (bridge 45) is a fixed bridge in Amsterdam-Centrum. The arched bridge lies in the north-east bank of the Keizersgracht and crosses the Leidsegracht. It takes its name from the Stadsmetseltuin, the city masonry yard that stood on the Leidsegracht when this neighbourhood was laid out."
+ },
+ {
+  "name": "Syphonsluis",
+  "lang": "nl",
+  "hash": "e6ca623dcde3",
+  "en": "The Merwedekanaal siphon is a feeder tunnel, or water transport tunnel, that connects two branches of the Merwedekanaal on the south side of the city of Utrecht under the Amsterdam-Rhine Canal (ARK). The current siphon has existed since 1973 and has replaced an older, steel passage. This had to be replaced because the Amsterdam-Rhine Canal"
  },
  {
   "name": "Tante Saarbrug",
@@ -3748,6 +4492,12 @@
   "lang": "nl",
   "hash": "a71bfd397b16",
   "en": "The Theo Thijssen Museum is a museum in Amsterdam devoted to the writer, teacher and politician Theo Thijssen. It is run by the Stichting Theo Thijssen and occupies the ground floor of Thijssen's birthplace at Eerste Leliedwarsstraat 16."
+ },
+ {
+  "name": "Theo van Goghpark",
+  "lang": "nl",
+  "hash": "5d555e38b37f",
+  "en": "The Theo van Goghpark is a city park in the Amsterdam district of IJburg. The park is located on Haveneiland-Oost, south of the Pampuslaan, near the terminus of tram line 26 (IJtram). The park is partially built in a recessed manner but on the side of Pampuslaan it is actually built in an elevated manner and accessible by a wide staircase."
  },
  {
   "name": "This is Holland",
@@ -3882,6 +4632,12 @@
   "en": "The Van Buurenmonument is a memorial in Amsterdam commemorating Lucas van Buuren."
  },
  {
+  "name": "Van de Sande Bakhuijzenstraat",
+  "lang": "nl",
+  "hash": "7105ae3b96d6",
+  "en": "The Van de Sande Bakhuijzenstraat is a street in Amsterdam in the Overtoomse Veld district in the Nieuw-West district. The street connects Jan Tooropstraat with Jan van Galenstraat. The street borders GVB-Garage West."
+ },
+ {
   "name": "Van Eesteren Museum",
   "lang": "nl",
   "hash": "46cb1efeeed7",
@@ -3906,6 +4662,12 @@
   "en": "Bridge 171 is a bascule bridge in Amsterdam-West. It forms the connection between Van Hallstraat and Kostverlorenstraat and spans the Kostverlorenvaart. The Kostverlorenvaart is part of the Staandemast route, hence a fixed bridge is not possible here. Initially, it was not intended to build a bridge here, although"
  },
  {
+  "name": "Van Kinsbergenstraat",
+  "lang": "nl",
+  "hash": "e1c3d9a400a6",
+  "en": "The Van Kinsbergenstraat is a street in the Chassébuurt of Amsterdam-West. The name refers to the Dutch naval officer Jan Hendrik van Kinsbergen (1735-1819). The Van Kinsbergenstraat was built in the 1920s. The western end of the street comes out at a footbridge over the Admiralengracht where a café was located. The eastern end of the"
+ },
+ {
   "name": "Van Mierlobrug",
   "lang": "nl",
   "hash": "533a653cf2c7",
@@ -3916,6 +4678,12 @@
   "lang": "nl",
   "hash": "b68e81f7b852",
   "en": "Van Mierlobrug (bridge 18) is a fixed bridge in Amsterdam-Centrum. The traffic bridge connects the southern quay of the Blauwburgwal with Herenstraat. It spans Herengracht in the process. The bridge forms a whole with bridge 19 on the eastern quay of Herengracht and over the Blauwburgwal."
+ },
+ {
+  "name": "Van Noordtgracht",
+  "lang": "nl",
+  "hash": "e3cfcf4b9c0c",
+  "en": "The Van Noordtgracht is a canal in the West district of Amsterdam. The name was established by council decision of November 20, 1878. The canal is named after Olivier van Noort (1558-1627), a explorer, who was the first Dutchman to circumnavigate the world via street Magelhaens from 1598 to 1601."
  },
  {
   "name": "Varkenssluis",
@@ -3966,6 +4734,12 @@
   "en": "The Veeneikbrug is a bicycle and pedestrian bridge that connects pedestrians and cyclists between the Bijlmerweide in Amsterdam-Zuidoost (west) and the Diemerbos in Diemen (east). The bridge crosses the Provincial road N236 (Amsterdam side), the Gaasp/Weespertrekvaart and the Stammerdijk (Diemer side). On the Amsterdam side it connects to the Gulde"
  },
  {
+  "name": "Veroneseplantsoen",
+  "lang": "nl",
+  "hash": "8c3cddb03a1b",
+  "en": "The Veroneseplantsoen is a park in Amsterdam-Zuid, Oud-Zuid, Apollobuurt. The park was named after a council decision of October 31, 2017; after the painter Paolo Veronese. It is located between Veronesestraat (north), Raphaëlstraat (west), Gerrit van der Veenstraat (south) and Michelangelostraat (east), which were already in the 1920s"
+ },
+ {
   "name": "Vier Heemskinderenbrug",
   "lang": "nl",
   "hash": "16bd2fb85e28",
@@ -4000,6 +4774,12 @@
   "lang": "nl",
   "hash": "87400c0d3227",
   "en": "De Brakke Grond, in full Vlaams Cultuurhuis de Brakke Grond, is a Flemish cultural centre at Nes 45 in Amsterdam. The present building was designed by the architect Arthur Staal. Standing on a small square in the middle of the theatre district on the Nes, it presents performing arts, visual arts, music and other art forms."
+ },
+ {
+  "name": "Vlothaven",
+  "lang": "nl",
+  "hash": "b0bdce312714",
+  "en": "The Vlothaven is a port in the Amsterdam Western Port Area south of the Coenhaven, north of the Nieuwe Hemweg, east of the Einsteinweg and north of the Neptunushaven. The port is named after the raft. The port was dug in 1931 near the Mercuriushaven and provided space for ships and activities in the Eastern Harbor Area"
  },
  {
   "name": "Volewijckbrug",
@@ -4056,6 +4836,18 @@
   "en": "The Vrijheidscarillon in Amsterdam is a carillon made in 1952 by the firm A.H. van Bergen of Heiligerlee at the initiative of the Dutch national commemoration committee. It has hung in several places, including on the Dam in 1955, and was presented to the city of Amsterdam in 1960."
  },
  {
+  "name": "Vrijheidslaan",
+  "lang": "nl",
+  "hash": "d1d7b0831091",
+  "en": "The Vrijheidslaan (formerly Amstellaan and Stalinlaan) is a main street in Amsterdam-Zuid, which together with the Berlagebrug forms the eastern entrance to the Rivierenbuurt. The avenue is an important main axis within the monumental urban planning Plan Zuid by architect Berlage and splits into two equal parts west of the Rijnstraat, on the Victorieplein."
+ },
+ {
+  "name": "W.H. Vliegenbos",
+  "lang": "nl",
+  "hash": "0f1b98317e28",
+  "en": "The W.H. Vliegenbos is located in Amsterdam-North, between Meeuwenlaan, Nieuwendammerdijk, Nieuwendammerkade and Zamenhofstraat. It is the oldest urban forest of the municipality of Amsterdam."
+ },
+ {
   "name": "Waalseilandbrug",
   "lang": "nl",
   "hash": "10506a00716b",
@@ -4066,6 +4858,12 @@
   "lang": "nl",
   "hash": "e8413ad35425",
   "en": "Brug 283 is a fixed bridge in Amsterdam-Centrum. The bridge over the Waalseilandsgracht connects the Lastage, or Nieuwmarkt quarter, with the Waalseiland. The Buiten Bantammerstraat and the Binnenkant quay lie to the north-east, and the Binnen Bantammerstraat and the Lastageweg to the south-west."
+ },
+ {
+  "name": "Wachterliedplantsoen",
+  "lang": "nl",
+  "hash": "e465ba1c9de3",
+  "en": "The Wachterliedplantsoen is a park in the Bos en Lommer district in the Amsterdam municipality of West. The park, which was established in the early 1950s, is located between Egidiusstraat (west), Reinaert de Vosstraat (north), Heer Halewijnstraat (east) and Erasmusgracht (south). There is a pedestrian bridge over the canal to Erasmus Park. In 2010 is h"
  },
  {
   "name": "Wagon Litsbrug",
@@ -4116,10 +4914,34 @@
   "en": "The Weesperbrug is a fixed steel arch bridge over the Amsterdam-Rijnkanaal and forms part of the provincial road N236."
  },
  {
+  "name": "Weesperplein",
+  "lang": "nl",
+  "hash": "ed216e8e6c10",
+  "en": "The Weesperplein is a square in the center of Amsterdam, between the Singelgracht and the Nieuwe Achtergracht. It connects the Weesperstraat via the Weesperpoortbrug to the Rhijnspoorplein in the direction of the Wibautstraat and is part of the Amsterdam city route s112, which connects the Gooiseweg to the IJtunnel."
+ },
+ {
+  "name": "Weespertrekvaart",
+  "lang": "nl",
+  "hash": "57226e0d970a",
+  "en": "The Weespertrekvaart is a canal that connects the Amstel in Amsterdam with the Vecht in Weesp. The canal was built in 1639, using several existing waterways: the ring canal of the Watergraafsmeer polder (constructed in 1629), the ring canal of the Bijlmermeer polder (constructed in 1626), the Gaasp river, and the ge"
+ },
+ {
+  "name": "Wertheimpark",
+  "lang": "nl",
+  "hash": "1e9df58de6b2",
+  "en": "The Wertheimpark is a city park in the Plantagebuurt in Amsterdam."
+ },
+ {
   "name": "West Indian Warehouse",
   "lang": "nl",
   "hash": "132d3dd337f3",
   "en": "The West Indian Warehouse in Amsterdam dates back to 1642 and is located on the western part of Rapenburg, where the Oudeschans flows into the Oosterdok. It was originally owned by the West Indian Company (WIC). The letters GWC on the facade stand for the official name, 'Geoctroyeerde West-Indische Compagnie'. Currently it has the monument status."
+ },
+ {
+  "name": "Westelijk Marktkanaal",
+  "lang": "nl",
+  "hash": "8927f6776799",
+  "en": "The Westelijk Marktkanaal is a canal in Amsterdam-West. The name of the canal refers to the location of the canal relative to the Central Market Halls. The canal was put into use in 1934 for the opening and supply of the Central Market Halls. Today, most transport takes place by truck. Unlike the Kostv"
  },
  {
   "name": "Westerdoksdijkspoorbrug",
@@ -4132,6 +4954,24 @@
   "lang": "nl",
   "hash": "6902c67ae3e6",
   "en": "The Westerdoksluis is a bascule bridge in Amsterdam-Centrum. It crosses the connection between the Westerdok and the IJ, carrying the Stadsroute 100 between the Westerdokskade and De Ruijterkade on the south side and the Westerdoksdijk on Westerdokseiland to the north."
+ },
+ {
+  "name": "Westergasbrug",
+  "lang": "nl",
+  "hash": "a373e6848342",
+  "en": "The Westergasbrug (bridge 193) is an iron lifting bridge in Amsterdam-West. The bridge is not exactly along the extension of Van Limburg Stirumstraat, on the other side of its intersection with the Haarlemmerweg. It spans the Haarlemmervaart and provides access to the grounds of the former Westergasfabriek, its namesake."
+ },
+ {
+  "name": "Westerkanaal",
+  "lang": "nl",
+  "hash": "6bb5b166d1bb",
+  "en": "The Westerkanaal is a canal in Amsterdam that connects the Singelgracht and the Haarlemmertrekvaart to the IJ, where the ships on the north side of the canal first have to cross the Oude Houthaven. The canal runs from the Singelgrachtbrug to Tasmanstraat/Van Diemenstraat. The western quay is interrupted by the Le Mairegracht and the Va"
+ },
+ {
+  "name": "Westerkanaalschutsluis",
+  "lang": "nl",
+  "hash": "13656c400746",
+  "en": "The Westerkanaalschutsluis is a lock in the Westerkanaal, Amsterdam-West. They are located between both Houtmankades. The original lock was built from June 1877 (date of tender) in the then newly dug Westerkanaal, which formed a continuous route between the Singelgracht and the IJ. Large ships came in, so it became a fairly large sch"
  },
  {
   "name": "Westerkeersluis",
@@ -4158,6 +4998,18 @@
   "en": "Westerwijk or Wester-wijk is a building in Amsterdam with houses, office space and two rooms. The building was built after a tender in June 1925 in 1925/1926 on the Admiraal de Ruyterweg to the design of F.B. Jantzen in the style of the Amsterdam School. The construction cost amounted to just under 80,000 guilders at the time."
  },
  {
+  "name": "Westhaven",
+  "lang": "nl",
+  "hash": "99a1a24323a7",
+  "en": "The Westhaven is a port in the Western Port Area in Amsterdam and was built as part of the General Expansion Plan of 1934. The port is located west of the former Hembrug, on the south side of the North Sea Canal, in the former Groote IJpolder. The first part was dug in 1937 and was then called 'Fordhaven', after the nearby"
+ },
+ {
+  "name": "Westlandgracht",
+  "lang": "nl",
+  "hash": "ffe2c7b4c914",
+  "en": "The Westlandgracht is a surface water, a street and until 1962 the name of a district and is named after the Westland, the area west of Delft and south of The Hague. The streets in the neighborhood are also named after places and regions in South Holland. The canal was named in 1933 and was built in the 1920s on the territory of the in"
+ },
+ {
   "name": "Weteringpoort",
   "lang": "nl",
   "hash": "141a3cf285ce",
@@ -4168,6 +5020,12 @@
   "lang": "nl",
   "hash": "32b2fe69e689",
   "en": "The Weteringpoort was one of the eight Amsterdam city gates that were built during the third and fourth explanations. The Weteringpoort, which was part of the fortifications of Amsterdam, was one of the smaller city gates together with the Raampoort and Zaagmolenpoort."
+ },
+ {
+  "name": "Weteringpoort",
+  "lang": "nl",
+  "hash": "48ddd3c6cd0c",
+  "en": "The Water Management Lock (lock 209) is a lock in the center of Amsterdam between Lijnbaansgracht and Singelgracht. The lock dates back to 1657 when two passages into the city were built in the Schans; the other was the Leidsepoortsluis (demolished in 1880)."
  },
  {
   "name": "Wiegbrug",
@@ -4290,10 +5148,40 @@
   "en": "The Zeilbrug or Zeilstraatbrug (bridge no. 348) is a bridge over the Schinkel in Amsterdam. The bridge connects Zeilstraat and Hoofddorpweg and forms a connection between Oud-Zuid and the Hoofddorpplein neighborhood. Various documents from the municipality of Amsterdam only mentioned bridge 348; Sail Bridge was apparently not an official name."
  },
  {
+  "name": "Zeilstraat",
+  "lang": "nl",
+  "hash": "466c74c2c7c6",
+  "en": "The Zeilstraat is a street in Amsterdam-Zuid, between the Amstelveenseweg and the Schinkel. The Zeilstraat is known as a busy, main shopping street. It extends along the Koninginneweg."
+ },
+ {
   "name": "Zigeunermonument - Hel en Vuur",
   "lang": "nl",
   "hash": "f9f46112e9dc",
   "en": "The Roma memorial Hel en vuur on the Museumplein in Amsterdam is a bronze sculpture of a man, a woman and two children fleeing a flaring fire. It stands on a brick plinth and is 3.50 m high. It was made by the sculptor Heleen Levano, and the text on the plinth comes from a Roma and Sinti prayer for the dead."
+ },
+ {
+  "name": "Zijkanaal H",
+  "lang": "nl",
+  "hash": "c80b996b0178",
+  "en": "The Zijkanaal H is a side channel of the North Sea Canal and connects the Barndegat on the border of Amsterdam and Zaandam to the North Sea Canal. The canal was put into use in 1876 simultaneously with the North Sea Canal. It is, viewed from IJmuiden, the eighth side channel."
+ },
+ {
+  "name": "Zijkanaal I",
+  "lang": "nl",
+  "hash": "06f1cecfd7d6",
+  "en": "The Zijkanaal I (with the letter \"I\") is a waterway in Amsterdam-North. It forms the connection between the IJ in Amsterdam and the former Oostzaner Overtoom near Oostzanerwerf. The eastern and northeastern banks of the canal lie along the Buiksloterdijk, the Landsmeerderdijk and a section of the Oostzanerdijk, which are part of the historic Wat"
+ },
+ {
+  "name": "Zimmerterrein",
+  "lang": "nl",
+  "hash": "284e7ff1bc56",
+  "en": "The Zimmerterrein, also known as the Landje van Ome Kick, is a small park in the Bellamy neighborhood in Amsterdam-West. The park is located on the east side of the Kostverlorenvaart near the Wiegbrug. On the north side the park borders Tolbrugstraat and on the south side Schimmelstraat. The site forms a break in the Tweede Kostverlorenkade. the"
+ },
+ {
+  "name": "Zocherstraat",
+  "lang": "nl",
+  "hash": "e4ddbcba044b",
+  "en": "The Zocherstraat is a street in Amsterdam-West. The street was named on October 10, 1915, after the landscape architect Louis Paul Zocher, who died on September 7, 1915, and together with his father Jan David Zocher designed the Vondelpark. The naming of the street took place when construction was already underway. Also Leiden, Rotterdam e"
  },
  {
   "name": "Zouthavenbrug",
@@ -4308,9 +5196,21 @@
   "en": "The Zuidertoren is the tower of the Zuiderkerk in Amsterdam."
  },
  {
+  "name": "Zuiderkerkhof",
+  "lang": "nl",
+  "hash": "29b7e1967a46",
+  "en": "Zuiderkerkhof is an indoor square in Amsterdam-Centrum, Zuiderkerkbuurt."
+ },
+ {
   "name": "Zuiderzeeweg",
   "lang": "nl",
   "hash": "85bf39829b70",
   "en": "The Amsterdamsebrug (bridge 54P) is a fixed arch bridge carrying the Zuiderzeeweg over the Amsterdam-Rijnkanaal, between the Zeeburgerdijk in Amsterdam-Oost and Zeeburgereiland. Beyond it the road continues on a concrete fixed bridge that curves left onto Zeeburgereiland, followed by the Schellingwouderbrug."
+ },
+ {
+  "name": "Zuidplein",
+  "lang": "nl",
+  "hash": "50ecfc4f258d",
+  "en": "The Zuidplein in Amsterdam-Zuid is the forecourt of Amsterdam Zuid station. The square is located in the Zuidas area. On the other side of Station Zuid is Gustav Mahlerplein. The square was already planned in 1917 in the Zuid plan by H.P. Berlage as a large forecourt of a large Zuid station. Only 61 years later, on December 20, 1978, the laa"
  }
 ]

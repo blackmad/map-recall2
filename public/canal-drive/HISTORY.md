@@ -3,6 +3,16 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## Street encyclopedia is no longer just Nes
+
+`street-knowledge.json` had one street. `streets.json` already carried
+Wikipedia URLs for 30 of 300 streets, but `enrich-amsterdam-wikimedia.ts`
+threw away Dutch intros, so 21 of those were a link with no card text.
+The Wikipedia extract pass now includes streets, water, squares and parks;
+Dutch ledes are kept and tagged, then translated. Amsterdam ships 48 street
+and 98 water encyclopedia records with English blurbs. Cards still only open
+after a quiz answer — showing them when you turn onto a new street is item 7.
+
 ## Basemap duplicates near the extract are hidden by proximity too
 
 The id filter that stops `building-3d` redrawing coloured-extract buildings cut

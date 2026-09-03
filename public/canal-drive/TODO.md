@@ -35,12 +35,12 @@ nearby learned features, visits, answer history and recency rather than treating
 one drive-through as mastery. Pairs naturally with item 5: the same data answers
 "what do I know" and "where should I be sent next".
 
-**7. Expand the street encyclopedia beyond Nes.**
-The runtime card, the `W` article action and the normalized-name join are proven
-end to end with one street. What remains is generating the compact
-knowledge extract for notable streets city-wide — English lede, article URL,
-optional image — and showing each street sparingly, so facts support spatial
-recall rather than interrupt every junction.
+**7. Show street encyclopedia sparingly on new streets.**
+The compact extract is now city-wide for Wikipedia-linked streets and
+waterways (48 streets, 98 waters with English ledes). Cards still only open
+after a quiz answer, so turning onto an unasked street stays silent. Gate the
+card on entering a named street that is novel or due, keep it bottom-compact,
+and do not interrupt every junction.
 
 ---
 

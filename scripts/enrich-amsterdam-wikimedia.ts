@@ -80,7 +80,18 @@ for (const [file, partition] of partitions) {
     feature.wikipediaPageviews60d = views || undefined;
     feature.wikidataSitelinks = links || undefined;
     feature.encyclopediaScore = score || undefined;
-    feature.wikipediaExtract = preferredPage?.startsWith('en:') ? details?.extract : undefined;
+    // Keep the intro even when the tagged article is Dutch. Dropping it used
+    // to leave streets as a Wikipedia URL with no card text, and the English
+    // translation pass had nothing to work from. Tag the language so a later
+    // pass can replace Dutch without guessing.
+    if (details?.extract) {
+      feature.wikipediaExtract = details.extract;
+      const language = preferredPage && preferredPage.includes(':')
+        ? preferredPage.slice(0, preferredPage.indexOf(':'))
+        : 'en';
+      if (language && language !== 'en') feature.wikipediaExtractLang = language;
+      else delete feature.wikipediaExtractLang;
+    }
     feature.wikipediaUrl = details?.url;
     feature.wikipediaImageUrl = details?.image;
   }
