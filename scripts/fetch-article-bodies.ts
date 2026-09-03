@@ -55,7 +55,10 @@ const refresh = process.argv.includes('--refresh');
 const cacheDirectory = path.resolve('.cache/wikipedia-articles');
 
 /** Every extract file that carries features with English articles. */
-const FILES = ['landmarks.json', 'bridges.json', 'squares.json', 'parks.json'];
+const FILES = [
+  'landmarks.json', 'bridges.json', 'squares.json', 'parks.json',
+  'streets.json', 'water.json',
+];
 
 const headers = {
   'User-Agent': 'map-recall2 fact pipeline (https://github.com/blackmad/map-recall2)',

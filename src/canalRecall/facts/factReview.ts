@@ -1,11 +1,9 @@
 // What a human has said about generated facts, and what may therefore ship.
 //
 // The generator is a 4B model writing sentences from Wikipedia sections. Its
-// grounding check proves every year it prints occurs in the source; it cannot
-// prove the *relation* between two true numbers, which is the mistake a small
-// model actually makes ("rebuilt in 1883" attached to the wrong of two
-// bridges). Nothing else in the pipeline can catch that, so a person reads the
-// review sheet and this module decides what their reading permits.
+// deterministic checks prove every number occurs in the source, while a
+// separate local-model pass checks that the evidence entails the complete
+// paraphrase. A person still reads the review sheet before publication.
 //
 // It fails closed, in the same shape as `facadeEvidence.ts`: a feature with no
 // label does not ship, a label written against a different generator version
@@ -100,9 +98,12 @@ export function selectReviewedFacts(
         rejected.push({ id: feature.id, reason: 'struck-by-reviewer', text: fact.text });
         continue;
       }
-      if (!fact.text || fact.sourceQuote !== fact.text
+      if (!fact.text || !fact.sourceQuote
         || !/^https:\/\/[^/]+\.wikipedia\.org\//.test(fact.sourceUrl)
-        || !fact.license || !fact.retrievedAt || !fact.model) {
+        || !fact.license || !fact.retrievedAt || !fact.model
+        || !fact.sourceLanguage || !fact.sourceQuoteEnglish
+        || (fact.sourceLanguage === 'nl' && !fact.translator)
+        || fact.verification !== 'grounded' || !fact.verifierModel) {
         rejected.push({ id: feature.id, reason: 'invalid-provenance', text: fact.text });
         continue;
       }

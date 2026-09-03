@@ -42,6 +42,11 @@ import {
   splitArticleSections,
   truncateAtSentence,
 } from '../src/canalRecall/facts/articleSections';
+import {
+  evidenceFor,
+  sourceSentences,
+  stripEvidenceMarkers,
+} from '../src/canalRecall/facts/groundedSummary';
 
 const checks: string[] = [];
 function check(name: string, run: () => void): void {
@@ -171,6 +176,11 @@ check('a clipped quotation is rejected before it can change a claim', () => {
   );
 });
 
+check('apostrophes in names and possessives are not mistaken for quotations', () => {
+  assert.equal(hasUnbalancedQuotation("Amsterdam’s oldest bridge wasn't made of stone."), false);
+  assert.equal(hasUnbalancedQuotation("The venue was called ‘Amsterdam's room’."), false);
+});
+
 check('extractive summarisation rejects even a plausible rewrite', () => {
   const source = 'The first students arrived in 2009. The first class graduated in 2012.';
   assert.equal(isSourceQuotation('The first students arrived in 2009.', source), true);
@@ -234,6 +244,15 @@ check('only a naming fact has to contain the name', () => {
       { name: 'Magere Brug', source: 'De Magere Brug dankt zijn naam aan de smalle oorspronkelijke overspanning.', kind: 'naming' }),
     { ok: false, reason: 'does-not-name-subject' },
   );
+});
+
+check('a naming fact can teach the native name and its English meaning together', () => {
+  const source = 'Because the bridge was very narrow, locals called it magere brug, literally "skinny bridge".';
+  const verdict = judgeFact(
+    'Magere Brug means “Skinny Bridge,” a name inspired by the original narrow crossing.',
+    { name: 'Magere Brug', aliases: ['Magere Brug'], source, kind: 'naming' },
+  );
+  assert.equal(verdict.ok, true, JSON.stringify(verdict));
 });
 
 check('digits inside the feature\u2019s own name are grounded', () => {
@@ -303,6 +322,21 @@ check('a fragment and a paragraph-length fact are both rejected', () => {
 
 // ---- Choosing the source passage ----
 
+check('sentence IDs resolve to exact consecutive source evidence', () => {
+  const source = 'First claim. Second claim has 1883 in it. Third claim!';
+  assert.deepEqual(sourceSentences(source), [
+    'First claim.', 'Second claim has 1883 in it.', 'Third claim!',
+  ]);
+  assert.equal(evidenceFor([2, 3], source), 'Second claim has 1883 in it. Third claim!');
+  assert.equal(evidenceFor([1, 3], source), null, 'disconnected evidence cannot be stitched together');
+  assert.equal(evidenceFor([4], source), null, 'an invented sentence ID fails closed');
+});
+
+check('echoed evidence markers are removed without rewriting the claim', () => {
+  assert.equal(stripEvidenceMarkers('The bridge opened in 1883 [2, 3].'), 'The bridge opened in 1883.');
+  assert.equal(stripEvidenceMarkers('The bridge opened in 1883.'), 'The bridge opened in 1883.');
+});
+
 const ARTICLE = [
   'Vondelpark is a public urban park in Amsterdam.',
   '',
@@ -368,8 +402,11 @@ check('a long passage is cut at a sentence end', () => {
 // ---- Rotation ----
 
 const fact = (text: string, kind: FactKind): Fact => ({
-  text, kind, section: 'History', sourceQuote: text, sourceUrl: 'https://en.wikipedia.org/wiki/Test',
-  license: 'CC BY-SA 4.0', retrievedAt: '2026-09-01', model: 'ollama:test',
+  text, kind, section: 'History', sourceQuote: text, sourceQuoteEnglish: text,
+  sourceUrl: 'https://en.wikipedia.org/wiki/Test',
+  license: 'CC BY-SA 4.0', retrievedAt: '2026-09-01', model: 'ollama:writer',
+  sourceLanguage: 'en',
+  verifierModel: 'ollama:verifier', verification: 'grounded',
 });
 
 const FACTS: Fact[] = [
@@ -534,8 +571,19 @@ check('a malformed verdict is not approval', () => {
   assert.equal(result.rejected[0].reason, 'invalid-verdict');
 });
 
-check('an approved sentence without exact provenance still cannot ship', () => {
-  const broken = [{ ...STAGED[0], facts: [{ ...FACTS[0], sourceQuote: 'different source words' }] }];
+check('a grounded paraphrase with separate verbatim evidence can ship', () => {
+  const paraphrased = [{ ...STAGED[0], facts: [{ ...FACTS[0],
+    text: 'A concise locally written version of the supported historical fact.',
+    sourceQuote: 'A longer exact quotation from the Wikipedia article supporting that historical fact.',
+  }] }];
+  const result = selectReviewedFacts(paraphrased, {
+    generatorVersion: 'facts-v2', features: { a: { verdict: 'approved' } },
+  }, 'facts-v2');
+  assert.equal(result.published.length, 1);
+});
+
+check('an approved sentence without verifier provenance still cannot ship', () => {
+  const broken = [{ ...STAGED[0], facts: [{ ...FACTS[0], verification: undefined }] }];
   const result = selectReviewedFacts(broken, {
     generatorVersion: 'facts-v2', features: { a: { verdict: 'approved' } },
   }, 'facts-v2');

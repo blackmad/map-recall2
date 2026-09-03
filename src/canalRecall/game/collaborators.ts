@@ -17,9 +17,18 @@ export interface Camera {
 
 export interface InputManager {
   readonly isMobile: boolean;
+  /** True while the one-line "steer with the pad" nudge is still showing. */
+  readonly showTouchHint: boolean;
+  /** Which d-pad directions are held, for drawing the pad lit. */
+  readonly padKeys: import('../touchControls.ts').DpadKeys;
+  /** The pad's rectangle, or null on a pointer device. */
+  readonly dpad: import('../touchControls.ts').DpadLayout | null;
   /** True once for the frame in which a key went down — the edge, not the
    *  level, so holding `1` does not answer every question in a row. */
   wasPressed(code: string): boolean;
+  setViewport(viewport: import('../viewport.ts').Viewport): void;
+  /** A tap on the map restarts a finished route; while driving it must not. */
+  setTapRestartEnabled(enabled: boolean): void;
 }
 
 /** One road segment of the loaded network, as `osm-loader.js` produces it. */
@@ -103,9 +112,20 @@ export interface Hud {
   setTime(seconds: number): void;
   formatTime(seconds: number): string;
   drawTripReadout(ctx: CanvasRenderingContext2D, speed: number, distancePx: number): void;
+  /** Speed and odometer as one string, so a phone can fold it into the score
+   *  row instead of spending a card on it. */
+  tripText(speed: number, distancePx: number): string;
+  /** This frame's HUD geometry, from the typed layout module. */
+  setLayout(layout: import('../hudLayout.ts').HudLayout): void;
+  /** One paper card: fill, hairline and shadow, drawn the same way everywhere. */
+  paperCard(
+    ctx: CanvasRenderingContext2D,
+    rect: import('../hudLayout.ts').Rect,
+    options?: { solid?: boolean; radius?: number },
+  ): void;
   drawCanalScore(
     ctx: CanvasRenderingContext2D, correct: number, attempts: number, points: number,
-    feedback: string, streak?: number, gamey?: boolean,
+    feedback: string, streak?: number, gamey?: boolean, trip?: string,
   ): void;
   drawCurrentLocation(
     ctx: CanvasRenderingContext2D, routeName: string, neighborhood: string,
@@ -118,6 +138,7 @@ export interface Hud {
   ): void;
   drawCityOverview(ctx: CanvasRenderingContext2D, game: unknown): void;
   drawTouchHint(ctx: CanvasRenderingContext2D): void;
+  drawDpad(ctx: CanvasRenderingContext2D, pressed: import('../touchControls.ts').DpadKeys): void;
 }
 
 export interface Renderer {

@@ -68,6 +68,7 @@ export interface BridgeCrossingIndex {
 }
 
 export interface StreetKnowledgeEntry {
+  id?: string;
   name: string;
   type?: string;
   wikipedia?: string;

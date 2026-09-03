@@ -44,6 +44,7 @@ import type { FactsFile } from '../facts/factTypes';
 import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
+import { buildRouteKnowledgeIndex, routeKnowledgeFor } from './routeKnowledge';
 
 /** Seconds a clicked card stays up. A drive-by card is held by proximity
  *  instead — see `landmarkNotice.ts`. */
@@ -230,13 +231,14 @@ export class GameLandmarkRuntime {
     window.open(notice.wikipediaUrl, '_blank', 'noopener');
   }
 
-  _showStreetKnowledge(name: string): void {
+  _showStreetKnowledge(name: string, type: 'street' | 'water' = 'street'): void {
     const key = this._normaliseCanalName(name);
-    const entry = this.streetKnowledge.get(key);
+    const entry = routeKnowledgeFor(this.streetKnowledge, name, type,
+      (value) => this._normaliseCanalName(value));
     if (!entry) return;
     const split = splitDetail(entry.wikipediaExtract || '');
     this._showLandmarkNotice({
-      id: `street-knowledge:${key}`,
+      id: entry.id || `${type}-knowledge:${key}`,
       name: entry.name || name,
       type: 'street',
       detail: split.detail,
@@ -259,7 +261,8 @@ export class GameLandmarkRuntime {
       const url = (name: string) => new URL(`../data/extracts/amsterdam/${name}`, base);
       const [
         landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse,
-        bridgeResponse, crossingResponse, streetKnowledgeResponse, brandedPoiResponse,
+        bridgeResponse, crossingResponse, streetKnowledgeResponse, streetResponse,
+        waterResponse, brandedPoiResponse,
         factResponse,
       ] = await Promise.all([
         fetch(url('landmarks.json')),
@@ -268,6 +271,8 @@ export class GameLandmarkRuntime {
         fetch(url('bridges.json')),
         fetch(url('bridge-crossings.json')),
         fetch(url('street-knowledge.json')),
+        fetch(url('streets.json')),
+        fetch(url('water.json')),
         fetch(url('branded-pois.json')),
         // Generated trivia. Absent until a batch has been reviewed and
         // published, and the cards fall back to the Wikipedia lede when it is.
@@ -275,7 +280,8 @@ export class GameLandmarkRuntime {
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
 
-      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex, streetKnowledge, brandedPois, factsFile] =
+      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex,
+        streetKnowledge, streetFeatures, waterFeatures, brandedPois, factsFile] =
         await Promise.all([
           landmarkResponse.json() as Promise<LandmarkFeature[]>,
           boundaryResponse.json() as Promise<BoundaryFeature[]>,
@@ -283,6 +289,8 @@ export class GameLandmarkRuntime {
           readJson<BridgeFeature[]>(bridgeResponse, []),
           readJson<BridgeCrossingIndex>(crossingResponse, { bridges: {} }),
           readJson<StreetKnowledgeEntry[]>(streetKnowledgeResponse, []),
+          readJson<StreetKnowledgeEntry[]>(streetResponse, []),
+          readJson<StreetKnowledgeEntry[]>(waterResponse, []),
           readJson<unknown[]>(brandedPoiResponse, []),
           readJson<FactsFile | null>(factResponse, null),
         ]);
@@ -291,8 +299,9 @@ export class GameLandmarkRuntime {
       this._factRotation = loadRotationState(
         typeof localStorage === 'undefined' ? null : localStorage);
 
-      this.streetKnowledge = new Map(
-        streetKnowledge.map(entry => [this._normaliseCanalName(entry.name), entry]),
+      this.streetKnowledge = buildRouteKnowledgeIndex(
+        streetKnowledge, streetFeatures, waterFeatures,
+        (name) => this._normaliseCanalName(name),
       );
       this.vectorMap.setPlaces(features, boundaries);
       this.vectorMap.setBrandedPois(brandedPois);
@@ -455,20 +464,26 @@ export class GameLandmarkRuntime {
       extractLang: lm.extractLang,
       hasArticle: !!lm.wikipediaUrl,
       hasImage,
-    }, measure);
+    }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
 
     // Trivia belongs at the bottom of the screen. Across the top it sat exactly
     // where the player is looking to see what is coming, so a card about a
     // church already passed hid the junction ahead.
     const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
-    const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({
+    const bottomLayout = window.CanalRecallUi.hudLayout({
+      viewport: this.viewport,
       tripWidth: 180, postcardVisible: postcardShowing,
       landmarkWidth: card.width, landmarkHeight: card.height,
+      feedbackVisible: !!this.quizFeedback,
+      neighborhoodVisible: !!this.currentNeighborhood,
+      minimapVisible: this.showMiniMap,
       zoomVisible: this._zoomBadgeTimer > 0,
       controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
     });
-    const cardX = bottomLayout ? bottomLayout.landmark.x : CANVAS_W / 2 - card.width / 2;
-    const cardY = bottomLayout ? bottomLayout.landmark.y : CANVAS_H - card.height - 30;
+    // On a phone the card spans the width it is given rather than its measured
+    // desktop width, so a 480 px card cannot hang off a 390 px screen.
+    const cardX = bottomLayout.landmark.x;
+    const cardY = bottomLayout.landmark.y;
 
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
@@ -554,11 +569,17 @@ export class GameLandmarkRuntime {
     const hasImage = !!(img && img.complete && img.naturalWidth > 0);
     const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
     const card = window.CanalRecallCards.measurePostcard(
-      { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage }, measure);
+      { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage }, measure,
+      window.CanalRecallUi.postcardWidth(this.viewport));
 
-    const bottomLayout = window.CanalRecallBottomHud?.bottomHudLayout({ tripWidth: 180 });
-    const cardX = bottomLayout ? bottomLayout.postcard.x : CANVAS_W - card.width - 20;
-    const baseCardY = bottomLayout ? bottomLayout.postcard.y : CANVAS_H - card.height - 76;
+    const bottomLayout = window.CanalRecallUi.hudLayout({
+      viewport: this.viewport, tripWidth: 180,
+      postcardHeight: card.height,
+      neighborhoodVisible: !!this.currentNeighborhood,
+      minimapVisible: this.showMiniMap,
+    });
+    const cardX = bottomLayout.postcard.x;
+    const baseCardY = bottomLayout.postcard.y;
     // Slide up into place rather than appearing; the offset is animation, not
     // layout, so it is applied after the band has been arbitrated.
     const slideT = Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.3);

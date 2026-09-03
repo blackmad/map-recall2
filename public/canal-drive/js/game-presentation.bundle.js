@@ -148,15 +148,18 @@
   }
 
   // src/canalRecall/game/presentationRuntime.ts
-  var INK = "#F1F5F9";
-  var MUTED = "#8FA3B0";
-  var BODY = "#C3D2DC";
-  var ACCENT = "#7DD3FC";
+  var INK = "#24322b";
+  var MUTED = "#68746e";
+  var BODY = "#3d4a43";
+  var ACCENT = "#c75f43";
+  var GOOD = "#356653";
   var GamePresentationRuntime = class {
     // ---- The frame ----
     _render() {
       const ctx = this.ctx;
       ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+      const utility = document.getElementById("utility-buttons");
+      if (utility) utility.style.display = this.state === GameState.FINISHED ? "none" : "";
       if (this.state === GameState.MENU) {
         this._renderMenu();
         return;
@@ -222,6 +225,7 @@
         this._renderFinish();
         return;
       }
+      this._syncHudLayout();
       this.hud.drawTripReadout(ctx, player.speed, this._playerDistancePx());
       this.hud.drawCanalScore(
         ctx,
@@ -230,7 +234,8 @@
         this.quizPoints,
         this.quizFeedback,
         this.quizStreak,
-        this.gameyFeatures
+        this.gameyFeatures,
+        this.hud.tripText(player.speed, this._playerDistancePx())
       );
       const routeAnswerHidden = !!this.quizPromptName || !!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName;
       const visibleRouteName = routeAnswerHidden ? "" : this.track.getRoadName(player.x, player.y);
@@ -264,9 +269,33 @@
       this._renderRecenterButton();
       if (this._debugMode) this._renderDebug();
       this._renderControlsHint();
-      if (this.input.isMobile && this.state === GameState.RACING) this.hud.drawTouchHint(ctx);
+      if (this.state === GameState.RACING && !this._overlayOpen()) {
+        this.hud.drawDpad(ctx, this.input.padKeys);
+        if (this.input.showTouchHint) this.hud.drawTouchHint(ctx);
+      }
       if (this.state === GameState.PAUSED) this._renderPaused();
       if (this.state === GameState.FINISHED) this._renderFinish();
+    }
+    /** Place the whole HUD for this frame. One call, so every card agrees about
+     *  where the others are and the phone layout stays collision-free. */
+    _syncHudLayout() {
+      const ui = window.CanalRecallUi;
+      this._hudLayoutCache = ui.hudLayout({
+        viewport: this.viewport,
+        tripWidth: 180,
+        landmarkHeight: 130,
+        feedbackVisible: !!this.quizFeedback,
+        neighborhoodVisible: !!this.currentNeighborhood,
+        minimapVisible: this.showMiniMap,
+        zoomVisible: this._zoomBadgeTimer > 0,
+        controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
+      });
+      this.hud.setLayout(this._hudLayoutCache);
+    }
+    /** The frame's layout, computing it if a caller runs before _syncHudLayout. */
+    _hudRects() {
+      if (!this._hudLayoutCache) this._syncHudLayout();
+      return this._hudLayoutCache;
     }
     /** The player's odometer, in world px. Not on the shared vehicle type
      *  because only the presentation layer reads it. */
@@ -278,16 +307,9 @@
     _renderZoomBadge() {
       if (this._zoomBadgeTimer <= 0) return;
       const ctx = this.ctx;
-      const layout = window.CanalRecallBottomHud?.bottomHudLayout({
-        tripWidth: 180,
-        zoomVisible: true,
-        controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
-      });
-      const rect = layout?.zoomBadge ?? { x: CANVAS_W / 2 - 35, y: CANVAS_H - 35, width: 70, height: 22 };
-      ctx.fillStyle = "rgba(0,0,0,0.4)";
-      roundRect(ctx, rect.x, rect.y, rect.width, rect.height, 4);
-      ctx.fill();
-      ctx.fillStyle = "rgba(255,255,255,0.7)";
+      const rect = this._hudRects().zoomBadge;
+      this.hud.paperCard(ctx, rect, { radius: 9 });
+      ctx.fillStyle = window.CanalRecallUi.paperTheme.inkMuted;
       ctx.font = "bold 12px monospace";
       ctx.textAlign = "center";
       ctx.fillText(`${Math.round(this.camera.zoom * 100)}%`, rect.x + rect.width / 2, rect.y + 15);
@@ -298,19 +320,16 @@
         return;
       }
       const ctx = this.ctx;
-      const width = 110, height = 28;
-      const x = CANVAS_W / 2 - width / 2, y = 70;
-      ctx.fillStyle = "rgba(3,18,28,0.85)";
-      roundRect(ctx, x, y, width, height, 6);
-      ctx.fill();
-      ctx.strokeStyle = "rgba(56,189,248,0.6)";
-      ctx.lineWidth = 1;
-      roundRect(ctx, x, y, width, height, 6);
-      ctx.stroke();
-      ctx.fillStyle = "#38BDF8";
+      const layout = this._hudRects();
+      const compact = layout.mode === "compact";
+      const width = compact ? 132 : 110, height = compact ? 44 : 28;
+      const x = Math.round(CANVAS_W / 2 - width / 2);
+      const y = Math.round(compact ? layout.destination.y + layout.destination.height + 10 : 70);
+      this.hud.paperCard(ctx, { x, y, width, height }, { solid: true, radius: compact ? 14 : 8 });
+      ctx.fillStyle = window.CanalRecallUi.paperTheme.moss;
       ctx.font = "bold 11px monospace";
       ctx.textAlign = "center";
-      ctx.fillText("RE-CENTER (R)", CANVAS_W / 2, y + 18);
+      ctx.fillText(compact ? "RE-CENTER" : "RE-CENTER (R)", CANVAS_W / 2, y + height / 2 + 4);
       this._recenterBtnBounds = { x, y, w: width, h: height };
     }
     /** Only while the player is settling in. It used to sit permanently on top
@@ -318,14 +337,9 @@
     _renderControlsHint() {
       if (this.input.isMobile || this.raceTime >= CONTROLS_HINT_DURATION) return;
       const ctx = this.ctx;
-      const layout = window.CanalRecallBottomHud?.bottomHudLayout({
-        tripWidth: 180,
-        zoomVisible: this._zoomBadgeTimer > 0,
-        controlsVisible: true
-      });
-      const rect = layout?.controlsHint ?? { x: CANVAS_W / 2 - 177, y: CANVAS_H - 32, width: 354, height: 12 };
+      const rect = this._hudRects().controlsHint;
       ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
-      ctx.fillStyle = "rgba(255,255,255,0.45)";
+      ctx.fillStyle = window.CanalRecallUi.paperTheme.inkMuted;
       ctx.font = "10px monospace";
       ctx.textAlign = "center";
       ctx.fillText(
@@ -582,10 +596,12 @@
      */
     _renderFinish() {
       const ctx = this.ctx;
-      ctx.fillStyle = "rgba(2,10,16,.72)";
+      ctx.fillStyle = "rgba(36,50,43,.42)";
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       const cx = CANVAS_W / 2;
-      const cardW = 600, padX = 30;
+      const compact = this.viewport.mode === "compact";
+      const cardW = Math.min(600, CANVAS_W - 24);
+      const padX = compact ? 18 : 30;
       const cardX = cx - cardW / 2;
       const innerW = cardW - padX * 2;
       const gamey = this.gameyFeatures;
@@ -595,7 +611,7 @@
       const image = landmark ? this._landmarkImages?.get(landmark.id) : void 0;
       const hasImage = !!image && image.complete && image.naturalWidth > 0;
       const rule = (y2) => {
-        ctx.strokeStyle = "rgba(143,163,176,.2)";
+        ctx.strokeStyle = "rgba(97,89,74,.22)";
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(cardX + padX, y2 + 0.5);
@@ -673,21 +689,27 @@
         this.viewMode.replace("-", " ").replace(/^./, (c) => c.toUpperCase())
       ];
       if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
-      blocks.push({ height: 78, rule: true, draw: (top) => {
-        const column = innerW / stats.length;
+      const statsPerRow = compact ? Math.min(3, stats.length) : stats.length;
+      const statRows = Math.ceil(stats.length / statsPerRow);
+      const ROW_H = 48;
+      blocks.push({ height: 30 + statRows * ROW_H, rule: true, draw: (top) => {
         ctx.textAlign = "center";
         stats.forEach((stat, index) => {
-          const sx = cardX + padX + column * (index + 0.5);
+          const row = Math.floor(index / statsPerRow);
+          const inRow = Math.min(statsPerRow, stats.length - row * statsPerRow);
+          const column = innerW / inRow;
+          const sx = cardX + padX + column * (index % statsPerRow + 0.5);
+          const sy = top + row * ROW_H;
           ctx.fillStyle = INK;
-          ctx.font = "bold 21px monospace";
-          ctx.fillText(stat.value, sx, top + 26);
+          ctx.font = `bold ${compact ? 19 : 21}px monospace`;
+          ctx.fillText(stat.value, sx, sy + 24);
           ctx.fillStyle = MUTED;
           ctx.font = "11px system-ui, sans-serif";
-          ctx.fillText(stat.label, sx, top + 44);
+          ctx.fillText(stat.label, sx, sy + 42);
         });
         ctx.fillStyle = MUTED;
         ctx.font = "11px system-ui, sans-serif";
-        ctx.fillText(footerBits.join("  \xB7  "), cx, top + 66);
+        ctx.fillText(footerBits.join("  \xB7  "), cx, top + statRows * ROW_H + 18);
       } });
       if (ribbon) {
         blocks.push({ height: 86, rule: true, draw: (top) => {
@@ -704,51 +726,96 @@
         if (this.learnedNames.size > 0) fresh.push(`${this.learnedNames.size} names`);
         if (this._visitedNeighborhoods.size > 0) fresh.push(`${this._visitedNeighborhoods.size} neighborhoods`);
         if (this._seenLandmarkNames.size > 0) fresh.push(`${this._seenLandmarkNames.size} landmarks`);
-        blocks.push({ height: fresh.length ? 52 : 36, rule: true, draw: (top) => {
+        const knowledgeStacked = compact;
+        const knowledgeH = (knowledgeStacked ? 34 : 18) + (fresh.length ? 20 : 0) + 18;
+        blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
           ctx.textAlign = "left";
           ctx.fillStyle = MUTED;
           ctx.font = "bold 9px monospace";
           ctx.fillText("CITY KNOWLEDGE", cardX + padX, top + 12);
           ctx.fillStyle = BODY;
           ctx.font = "12px system-ui, sans-serif";
-          ctx.textAlign = "right";
-          ctx.fillText(totals.join("  \xB7  ") || "Start exploring", cardX + cardW - padX, top + 12);
+          if (knowledgeStacked) {
+            ctx.fillText(totals.join("  \xB7  ") || "Start exploring", cardX + padX, top + 30);
+          } else {
+            ctx.textAlign = "right";
+            ctx.fillText(totals.join("  \xB7  ") || "Start exploring", cardX + cardW - padX, top + 12);
+          }
           if (fresh.length) {
             ctx.textAlign = "left";
             ctx.fillStyle = ACCENT;
             ctx.font = "11px system-ui, sans-serif";
-            ctx.fillText(`+${fresh.join(", +")} this route`, cardX + padX, top + 32);
+            ctx.fillText(
+              `+${fresh.join(", +")} this route`,
+              cardX + padX,
+              top + (knowledgeStacked ? 50 : 32)
+            );
           }
         } });
       }
       if (bestText) {
         blocks.push({ height: 26, draw: (top) => {
           ctx.textAlign = "left";
-          ctx.fillStyle = bestText.startsWith("\u2605") ? "#5EE0A0" : MUTED;
+          ctx.fillStyle = bestText.startsWith("\u2605") ? GOOD : MUTED;
           ctx.font = "bold 13px system-ui, sans-serif";
           ctx.fillText(bestText, cardX + padX, top + 14);
         } });
       }
-      blocks.push({ height: 34, rule: true, draw: (top) => {
-        const actions = [["ENTER", "Try again"], ["ESC", "Choose route"]];
-        if (this._shareUrl) actions.push(["C", this._copiedTimer > 0 ? "Link copied" : "Copy race link"]);
-        ctx.textAlign = "left";
-        let ax = cardX + padX;
-        for (const [key, caption] of actions) {
-          ctx.font = "bold 11px monospace";
-          const keyW = ctx.measureText(key).width + 14;
-          ctx.fillStyle = "rgba(143,163,176,.16)";
-          roundRect(ctx, ax, top + 4, keyW, 20, 5);
-          ctx.fill();
-          ctx.fillStyle = INK;
-          ctx.fillText(key, ax + 7, top + 18);
-          ax += keyW + 8;
-          ctx.fillStyle = caption === "Link copied" ? "#5EE0A0" : MUTED;
-          ctx.font = "12px system-ui, sans-serif";
-          ctx.fillText(caption, ax, top + 18);
-          ax += ctx.measureText(caption).width + 22;
+      const actions = [
+        { id: "again", key: "ENTER", caption: "Try again" },
+        { id: "route", key: "ESC", caption: "Choose route" }
+      ];
+      if (this._shareUrl) {
+        actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? "Link copied" : "Copy race link" });
+      }
+      const BUTTON_H = 44, BUTTON_GAP = 8;
+      const finishButtons = [];
+      this._finishButtonBounds = finishButtons;
+      blocks.push({
+        height: compact ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP : 34,
+        rule: true,
+        draw: (top) => {
+          if (compact) {
+            let by = top;
+            for (const action of actions) {
+              const primary = action.id === "again";
+              const bounds = { x: cardX + padX, y: by, w: cardW - padX * 2, h: BUTTON_H };
+              ctx.fillStyle = primary ? "#356653" : "rgba(238,233,223,.9)";
+              roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
+              ctx.fill();
+              if (!primary) {
+                ctx.strokeStyle = "rgba(97,89,74,.28)";
+                ctx.lineWidth = 1;
+                ctx.stroke();
+              }
+              ctx.textAlign = "center";
+              ctx.fillStyle = primary ? "#ffffff" : action.caption === "Link copied" ? GOOD : INK;
+              ctx.font = "700 14px system-ui, sans-serif";
+              ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
+              finishButtons.push({ ...bounds, id: action.id });
+              by += BUTTON_H + BUTTON_GAP;
+            }
+            ctx.textAlign = "left";
+            return;
+          }
+          ctx.textAlign = "left";
+          let ax = cardX + padX;
+          for (const action of actions) {
+            ctx.font = "bold 11px monospace";
+            const keyW = ctx.measureText(action.key).width + 14;
+            ctx.fillStyle = "rgba(97,89,74,.14)";
+            roundRect(ctx, ax, top + 4, keyW, 20, 5);
+            ctx.fill();
+            ctx.fillStyle = INK;
+            ctx.fillText(action.key, ax + 7, top + 18);
+            ax += keyW + 8;
+            ctx.fillStyle = action.caption === "Link copied" ? GOOD : MUTED;
+            ctx.font = "12px system-ui, sans-serif";
+            ctx.fillText(action.caption, ax, top + 18);
+            ax += ctx.measureText(action.caption).width + 22;
+          }
         }
-      } });
+      });
       const GAP = 16, PAD_TOP = 30, PAD_BOTTOM = 26;
       const leadFor = (block, index) => index === 0 ? 0 : block.rule ? GAP * 2 : GAP;
       let cardH = PAD_TOP + PAD_BOTTOM;
@@ -759,12 +826,11 @@
         Math.round((CANVAS_H - cardH) / 2),
         Math.max(16, CANVAS_H - cardH - 16)
       ));
-      ctx.fillStyle = "rgba(6,20,29,.96)";
-      roundRect(ctx, cardX, cardY, cardW, cardH, 16);
-      ctx.fill();
-      ctx.strokeStyle = "rgba(125,211,252,.28)";
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
+      this.hud.paperCard(
+        ctx,
+        { x: cardX, y: cardY, width: cardW, height: cardH },
+        { solid: true, radius: 16 }
+      );
       ctx.textBaseline = "alphabetic";
       let y = cardY + PAD_TOP;
       blocks.forEach((block, index) => {

@@ -30,6 +30,7 @@ export type RejectionReason =
   | 'talks-about-the-source'
   | 'unbalanced-quotation'
   | 'not-a-source-quotation'
+  | 'not-entailed'
   | 'markup'
   | 'ungrounded-number'
   | 'duplicate';
@@ -253,9 +254,12 @@ export function tidyFact(text: string): string {
 
 /** A clipped quotation is not merely ugly: it can reverse or obscure a claim. */
 export function hasUnbalancedQuotation(text: string): boolean {
-  const straight = (text.match(/["']/g) || []).length;
+  // Apostrophes inside a word are punctuation, not quotation marks. Without
+  // this, ordinary possessives such as “Amsterdam’s canals” fail at random.
+  const withoutApostrophes = text.replace(/(?<=\p{L})['’](?=\p{L}|s\b)/gu, '');
+  const straight = (withoutApostrophes.match(/["']/g) || []).length;
   const curlyDouble = (text.match(/[“”]/g) || []).length;
-  const curlySingle = (text.match(/[‘’]/g) || []).length;
+  const curlySingle = (withoutApostrophes.match(/[‘’]/g) || []).length;
   return straight % 2 !== 0 || curlyDouble % 2 !== 0 || curlySingle % 2 !== 0;
 }
 

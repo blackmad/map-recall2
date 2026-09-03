@@ -15,6 +15,7 @@ interface GuessNameModeOverlayProps {
   isLastRound: boolean;
   roundNumber: number;
   totalRounds: number;
+  factSeed: number;
 }
 
 function getFeatureTypeBadge(type: string) {
@@ -51,6 +52,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
   isLastRound,
   roundNumber,
   totalRounds,
+  factSeed,
 }) => {
   // Generate randomized 4 options: 1 correct + 3 distractors
   const options = useMemo(() => {
@@ -189,7 +191,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 </button>
               </div>
             </div>
-            <WikipediaCard feature={currentFeature} />
+            <WikipediaCard feature={currentFeature} factSeed={factSeed} roundIndex={roundNumber - 1} />
             <LookAroundLink feature={currentFeature} />
           </div>
         )}

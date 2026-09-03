@@ -20,16 +20,13 @@ belongs here before anything below it.*
 
 ## P1 — The learning model itself
 
-**16. Expand the reviewed local-fact catalog.** The safe first slice uses local
-Ollama only to select and classify verbatim sentences from cached English
-Wikipedia articles; model rewrites and Dutch-to-English output cannot publish.
-The first measured pilot published 19 reviewed quotations for 9 features from
-30 candidates; 107 model selections failed deterministic gates, 6 more were
-struck in review and 2 features remained unreviewed. Next, improve standalone
-sentence yield without weakening exact-source matching, review a stratified
-city sample, and design a separately proven translation gate before admitting
-Dutch-only articles. Do not restore abstractive rewriting: the earlier pilot
-combined true source numbers into false relationships.
+**16. Review and refine the published Randstad trivia.** The owner approved the
+complete v10 automatically grounded batch, publishing 4,263 facts across 1,456
+features in Amsterdam, Rotterdam, Den Haag and Utrecht. Add per-fact
+approve/reject/edit controls to the Trivia Lab and export version-matched review
+files, then work through a stratified audit prioritising dates, quantities,
+Dutch translations and model-verifier disagreements. Corrections must retain
+exact Wikipedia evidence and must go back through the normal publication gate.
 
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by
@@ -48,6 +45,23 @@ recall rather than interrupt every junction.
 ---
 
 ## P2 — Weight and reach
+
+**8c. Decide what the photoreal gate should actually measure.**
+The mesh works now, but its 25 m activation height never binds. MapLibre's
+camera altitude is a function of zoom and viewport height, not a simulated eye
+height: measured across the view modes and the whole camera-zoom slider, the
+game's camera sits between roughly 95 m and 520 m up, so `shouldShowPhotoreal`
+answers "yes" every time the option is ticked and the promised hand-back to
+3DBAG at cycling height never happens. The 25 m in `photorealGate.ts` came from
+the spike, where it was a real eye height above the quay in a free-flying
+camera, and it did not survive the move to a map camera.
+
+Either re-measure the smear threshold against something the game's camera
+actually varies — ground sample distance at the map centre, or map zoom — and
+restate the gate in those terms, or accept that the option is simply "photoreal
+on/off" at every height the game can reach and delete the altitude band along
+with its hysteresis. Do not leave it as-is: the code and `HISTORY.md` both
+describe a behaviour that never fires.
 
 **8a. Productionise government-data building appearance enrichment.**
 The current worktree has a working PDOK proof: 5,778 of 10,578 Amsterdam
@@ -105,7 +119,7 @@ order:
 3. **Restore the human view-selection gate** that `24c8beb` reverted. The
    extractor classifies unreviewed nearest-camera crops and records
    `panoramaSelection: nearest-camera-unreviewed` to say so.
-4. **Then** buy a stratified sample across typology and era. Not before 1 and 2:
+4. **Then** buy a stratified sample across typology and era. Not before 1–3:
    the existing agreement numbers measure footprint noise and camera aim as much
    as façades, so how well two models agree about one real façade is still
    unmeasured. n=6 supports no coverage claim, and agreement is not accuracy.
@@ -191,25 +205,47 @@ equivalent government geometry. The authoritative architecture, schemas,
 fallback ownership and migration gates are in
 [`BUILDING_RENDERER_DESIGN.md`](BUILDING_RENDERER_DESIGN.md).
 
+The fidelity ladder, source-resolution rules and measured implementation status
+are now kept in [`LOD.md`](LOD.md). The non-negotiable correction is that
+**manual OSM `building` and `building:part` geometry participates at every LoD
+tier**. BAG/3DBAG is the measured Dutch foundation, not permission to flatten a
+carefully mapped tower, wing, passage, courtyard or stacked part. Resolve the
+sources into one owner per building; never draw overlapping representations.
+
+Status: `main` has the complete OpenFreeMap/OSM extrusion fallback, a partial
+10,578-building measured-colour overlay, and optional hosted 3DBAG LoD2.2 roof
+geometry. `feat/lod1-building-city` has the unmerged complete 336,784-building
+BAG-keyed LoD1 city, measured AHN heights and z14 streaming tiles (15 MB
+gzipped). It is blocked by two comparison failures: its resolver sees only
+colour-tagged OSM parts, flattening uncoloured manual compositions such as Magna
+Plaza, and a roof percentile draws 201 tower-on-podium panden too low. Fix both,
+rerun the comparison/e2e gates, then merge the LoD1 foundation. No signature
+landmark GLB is integrated yet; `feat/signature-landmarks` is empty.
+
 Do this as a gated progression rather than converting Amsterdam in one shot,
 ordered **completeness before fidelity** — every step that makes more of the
 city look like itself comes before any step that makes a few buildings look
 better. This is a P2 item on a board whose P1 tier is the learning model, so it
 will be interrupted; each step must be worth shipping alone.
 
-1. **Answer two questions first.** (a) Does the hosted 3DBAG tileset resolve a
-   feature to a BAG `pand_id` via `EXT_structural_metadata`? One afternoon, and
-   it decides whether measured colours can be joined onto government geometry at
-   runtime with no compiler at all. (b) Finish item 8a, so the appearance table
-   is BAG-keyed, quantised and trustworthy.
+1. **Fix the two measured LoD1 regressions.** Feed the resolver every OSM
+   building and `building:part`, independently of appearance tags, and preserve
+   manual compositions such as Magna Plaza. Then detect tower-on-podium panden
+   instead of flattening them to the ordinary roof percentile. Pin both with
+   named comparison fixtures.
 2. **Ship the complete LoD1 city.** The city is gray because only 10,578
-   buildings have appearance at all, against a BAG pand count in the low
-   hundreds of thousands — coverage, not fidelity. Count it exactly in step 1.
+   buildings have appearance at all, against 336,784 BAG/3DBAG buildings in the
+   staged drivable-area city — coverage, not fidelity.
    Publish a complete BAG-keyed footprint + 3DBAG height + measured roof colour
    source on the tile grid detailed geometry will later use, render it with
    ordinary fill-extrusions, and delete `building-3d`, `osm-colored-buildings`,
    `osm-colored-building-roofs` and the height-offset stack that keeps three
-   coplanar extrusions from z-fighting. Heights stop being guessed in the same
+   coplanar extrusions from z-fighting. That stack is now partly defused rather
+   than fixed: `basemapBuildingFilter` hides the basemap copy of any building
+   the extract carries, which drops 136 of 1,189 basemap buildings in the centre
+   and cuts co-located pairs from 145 to 47. The remaining 47 are held under
+   different OSM ids by the two pipelines and still z-fight; one owner per
+   building is the only real fix. Heights stop being guessed in the same
    change: `build-osm-building-appearance.ts:32` currently falls back to
    `levels * 3` or a flat 9 m, so much of the skyline is invented, and AHN-derived
    3DBAG heights replace it everywhere. Largest visible win in the whole item,
@@ -349,25 +385,15 @@ A bonus on OSM ways with separated cycle infrastructure, tuned so it reinforces
 safe Amsterdam route knowledge without encouraging detours.
 
 **14. Finish the Storybook workbench.**
-Extract the remaining canvas card/HUD renderers behind small props-driven
-adapters, with fixtures for recall feedback, neighborhood entry (photo and
-fallback), landmark trivia, stacked notices and every finish-card combination;
-pair them with screenshot regressions. Follows naturally from item 3 — the same
-extraction serves both.
-
-**14b. Playwright's phone projects cannot reach fixed overlays.**
-Chromium's iPhone emulation gives `/canal-drive/` a 613×1044 layout viewport
-inside a 390×664 device viewport, even though the page's `<meta name=viewport>`
-is a correct `width=device-width, initial-scale=1.0`. Input coordinates are
-therefore unreachable below y≈664, so a tap cannot hit the lower half of any
-fixed overlay, and canvas hit targets do not map to tappable points at all.
-`tests/e2e/landmark-panel.spec.ts` works around it by resizing the desktop
-project to 390×664, which is a true narrow layout.
-
-Find the cause before writing more mobile specs against overlays — it is either
-the launch config's local-Chrome `executablePath` diverging from the bundled
-build, or something on the page forcing a layout width. Until then, treat the
-`iphone` project as unable to click fixed overlays.
+Ten phone states exist now — the driving HUD (idle, steering, mid-question,
+small phone, landscape), the route briefing, the recall prompt, the arrival
+card, the settings panel and the expanded article — driven by a
+`canalRecallForceTouch` override, because the viewport addon alone only makes a
+small desktop window and never produces a d-pad. What is left is the rest of
+item 14's original scope: props-driven adapters for neighborhood entry (photo
+and fallback), stacked notices and every finish-card combination, paired with
+screenshot regressions. Follows naturally from item 3 — the same extraction
+serves both.
 
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in
@@ -409,8 +435,31 @@ shadowed or mixed samples and compare a muted median wall colour against the
 current OSM-tag fallback before attempting a citywide pass. Straight-down roof
 imagery cannot measure building sides.
 
-**22. Signature landmark models** for the handful of buildings worth
-recognising on sight.
+**22. Signature landmark models — settle the licence, then finish the set.**
+Thirteen buildings are built and placed: nine of the City of Amsterdam's own
+survey models and four community ones, all from 3D Warehouse, all life-size and
+placed at their published coordinates. `HISTORY.md` records how they are cleaned
+up and why. Three things remain.
+
+*The licence is unresolved and blocks publication.* They are used under the
+3D Warehouse General Model License, which covers a Combined Work carrying
+substantial additional content but forbids aggregating models from the site for
+redistribution as an asset library. A `public/canal-drive/models/` directory in
+a public repository is arguably the second. Trimble takes written requests at
+3dwarehouse-tou@sketchup.com. Until this is answered, treat the models as a
+prototype: the code is fine, the binaries are the question.
+
+*Facade bearings are unverified.* `FACADE_BEARINGS` records which way each
+building faces and only the Palace's was checked. They do not affect placement —
+a surveyed model arrives correctly turned — but they are reported in the UI as
+fact. Pin them against each footprint's long axis in a check script.
+
+*Not yet wired into the game.* The layer runs in
+`signature-landmark-demo.html` only; `vector-map.js` does not construct it. It
+also has no mobile measurements. `search-3dwarehouse-landmarks.ts` lists 46
+further landmarks with published coordinates across the four cities — Euromast,
+Dom Tower, Rietveld Schröder House, Binnenhof — so finishing the set is mostly
+mechanical once the licence is settled.
 
 **25. Google's photorealistic mesh for the distant skyline only.** The spike in
 `google-tiles-spike.html` settled the main question — Google's tiles are

@@ -27,7 +27,11 @@ const argument = (name: string) =>
   process.argv.find((value) => value.startsWith(`--${name}=`))?.slice(name.length + 3);
 
 const directory = path.resolve(argument('directory') || 'public/data/extracts/amsterdam');
-const reviewPath = path.resolve(argument('review') || 'scripts/facts-review.json');
+const cityId = path.basename(directory);
+const defaultReview = cityId === 'amsterdam'
+  ? 'scripts/facts-review.json'
+  : `scripts/facts-review-${cityId}.json`;
+const reviewPath = path.resolve(argument('review') || defaultReview);
 const dryRun = process.argv.includes('--dry-run');
 const stagedPath = path.join(directory, 'staging', 'facts.json');
 const publishedPath = path.join(directory, 'facts.json');
