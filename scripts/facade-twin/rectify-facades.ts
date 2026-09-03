@@ -106,9 +106,18 @@ function viewsOf(elevation: ReturnType<typeof buildElevations>[number]) {
     const obliquity = obliquityDeg(elevation, pose.point);
     if (obliquity > 35) continue;
     const leafOff = isLeafOff(pose.view.capturedAt);
-    // Lower is better. A leaf-off view is worth 25° of obliquity; a metre of
-    // standoff is worth about a third of a degree.
-    found.push({ pose, obliquity, standoff, leafOff, score: obliquity + standoff * 0.35 - (leafOff ? 25 : 0) });
+    /**
+     * Standoff is wanted *proportional to the wall*, not minimised.
+     *
+     * A camera 4 m from a 5.7 m façade sees it across 68° of view, so the two
+     * ends are photographed at wildly different angles and the rectified strip
+     * distorts badly at its edges. Three to four wall-widths back puts the
+     * whole façade inside a comfortable 30–40°, and the far quay of a canal is
+     * usually exactly that. Too far and resolution runs out instead.
+     */
+    const ideal = Math.max(9, elevation.lengthM * 3.5);
+    const standoffPenalty = Math.abs(Math.log(standoff / ideal)) * 22;
+    found.push({ pose, obliquity, standoff, leafOff, score: obliquity + standoffPenalty - (leafOff ? 25 : 0) });
   }
   return found.sort((a, b) => a.score - b.score);
 }
@@ -192,7 +201,7 @@ if (process.argv.includes('--calibrate')) {
   // conventions differ by exactly half the image width, which is why a
   // "looks like a plausible canal scene" check cannot tell them apart — in
   // Amsterdam both directions look like a plausible canal scene.
-  const yaw = (arg('yaw') as YawConvention) ?? 'edge';
+  const yaw = (arg('yaw') as YawConvention) ?? 'centre';
   const ids = arg('ids')?.split(',');
   const addresses = ids ?? (arg('address')
     ? [arg('address')!]

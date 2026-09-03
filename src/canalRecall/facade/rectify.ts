@@ -43,14 +43,16 @@ export interface CameraPose {
  * produces a confident, well-formed picture of whatever stands behind the
  * camera.
  *
- * Amsterdam's panoramas are `edge`: heading sits at column zero. That was
- * established by rendering one wall both ways, not assumed. It is worth saying
- * how the wrong answer failed, because it nearly passed: the `centre` render
- * showed an upright, plausible, entirely convincing canal frontage. It was the
- * building on the other side of the street. In a city where every direction
- * looks like a canal, "the output looks right" is not a calibration — only
- * checking the output against a building whose identity is known independently
- * is.
+ * Amsterdam's panoramas are `centre`: the heading direction sits at the
+ * horizontal middle of the frame. That was settled by slicing one panorama into
+ * eight 45° bands and finding which band held the wall known to be 4.2 m away —
+ * it fell at u≈0.3, and `centre` predicts 0.305 while `edge` predicts 0.805.
+ *
+ * Worth recording how nearly the wrong answer won. Both conventions render
+ * upright, plausible, entirely convincing canal frontages, because in Amsterdam
+ * every direction is one. Judging by eye picked `edge`, and it was wrong. Only
+ * a prediction checked against geometry known independently — where is the wall
+ * we already measured — could tell them apart.
  */
 export type YawConvention = 'centre' | 'edge';
 
