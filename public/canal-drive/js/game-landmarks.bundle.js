@@ -385,6 +385,7 @@
     }
   }
   var GameLandmarkRuntime = class {
+    _streetSummaryRequests;
     // ---- Clicking a building ----
     _inspectBuildingAt(clientX, clientY) {
       if (!this.player || this.quizPromptName || this._utilityOpen) return;
@@ -525,6 +526,32 @@
       landmark.longDetail = split.longDetail;
       landmark.extractLang = "en";
     }
+    async _fetchEnglishStreetSummary(entry) {
+      const wikidata = entry.wikidata;
+      if (!wikidata) return null;
+      const entity = new URL("https://www.wikidata.org/w/api.php");
+      entity.search = new URLSearchParams({
+        action: "wbgetentities",
+        format: "json",
+        props: "sitelinks",
+        sitefilter: "enwiki",
+        ids: wikidata,
+        origin: "*"
+      }).toString();
+      const entityResponse = await fetch(entity, { headers: { accept: "application/json" } });
+      if (!entityResponse.ok) return null;
+      const data = await entityResponse.json();
+      const title = data?.entities?.[wikidata]?.sitelinks?.enwiki?.title || "";
+      if (!title) return null;
+      const summary = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, "_"))}`;
+      const response = await fetch(summary, { headers: { accept: "application/json" } });
+      if (!response.ok) return null;
+      const summaryData = await response.json();
+      if (!summaryData?.extract) return null;
+      entry.wikipediaExtract = summaryData.extract;
+      const split = splitDetail(summaryData.extract);
+      return { detail: split.detail, longDetail: split.longDetail };
+    }
     /** The extract carries a Wikipedia URL for 236 of its 300 landmarks, which
      *  the canvas card cannot make clickable — so it is offered on a key. */
     _openLandmarkArticle() {
@@ -541,9 +568,10 @@
         (value) => this._normaliseCanalName(value)
       );
       if (!entry) return;
+      const noticeId = entry.id || `${type}-knowledge:${key}`;
       const split = splitDetail(entry.wikipediaExtract || "");
       this._showLandmarkNotice({
-        id: entry.id || `${type}-knowledge:${key}`,
+        id: noticeId,
         name: entry.name || name,
         type: "street",
         detail: split.detail,
@@ -551,6 +579,22 @@
         wikipediaUrl: entry.wikipediaUrl || "",
         extractLang: "en"
       }, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
+      if (!entry.wikipediaExtract && entry.wikidata && entry.wikipediaUrl) {
+        this._streetSummaryRequests = this._streetSummaryRequests || /* @__PURE__ */ new Set();
+        if (this._streetSummaryRequests.has(noticeId)) return;
+        this._streetSummaryRequests.add(noticeId);
+        this._fetchEnglishStreetSummary(entry).then((split2) => {
+          if (!split2) return;
+          if (!this._landmarkNotice || this._landmarkNotice.id !== noticeId) return;
+          this._landmarkNotice = {
+            ...this._landmarkNotice,
+            detail: split2.detail,
+            longDetail: split2.longDetail,
+            extractLang: "en"
+          };
+        }).catch(() => {
+        });
+      }
     }
     // ---- Loading the extract ----
     async _loadLandmarks(centerLat, centerLng, segments) {
