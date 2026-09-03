@@ -5,6 +5,10 @@
  * is seven `roof:shape=pyramidal` turrets with `roof:height` — cones, not lids.
  * This module turns a footprint ring into the triangle fan OSM Buildings uses:
  * base at the eaves, apex above the centroid at the tagged height.
+ *
+ * Vertices stay in geographic coordinates. The custom layer converts each one
+ * with `MercatorCoordinate.fromLngLat(..., altitude)` so height is MapLibre's
+ * altitude, not a Three.js axis that has to be rotated into the map.
  */
 
 import type { Ring } from './buildingGeometry.js';
@@ -21,17 +25,19 @@ export type PyramidalRoofInput = {
   colour?: string;
 };
 
+export type PyramidalRoofVertex = {
+  lng: number;
+  lat: number;
+  /** Metres above ground; passed to MapLibre as altitude. */
+  altM: number;
+};
+
 export type PyramidalRoofMesh = {
-  /**
-   * Interleaved positions in local metres for MapLibre+Three: [e, u, n, ...].
-   * Same as GLTF Y-up — the custom layer's `rotateX(π/2)` + `(s,-s,s)` scale
-   * then maps that into mercator (x, y, z=altitude).
-   */
-  positions: Float32Array;
-  /** Triangle indices into `positions` (3 per face). */
-  indices: Uint32Array;
+  /** Apex first, then the eaves ring. */
+  vertices: PyramidalRoofVertex[];
+  /** Triangle indices into `vertices` (3 per face). */
+  indices: Uint16Array;
   colour: string;
-  /** Footprint centroid — MapLibre places the mesh here. */
   originLng: number;
   originLat: number;
 };
@@ -64,10 +70,10 @@ export function wantsPyramidalRoof(props: {
 /**
  * Build a pyramid: one triangle per ring edge, from edge → apex.
  *
- * Footprint lng/lat become local east/north metres about the centroid. Height
- * is stored on Three's Y so the shared MapLibre custom-layer transform (same
- * as bikes, boats, signature GLBs) lifts the apex into mercator altitude —
- * not sideways along the map, which is what the earlier ENU packing did.
+ * Returns geographic vertices so the renderer never has to guess which Three
+ * axis is "up". A fan over a concave outline can look clumsy; it cannot
+ * stretch a vertex to mercator (0,0), which is what the earlier local-metre
+ * + rotateX packing did on screen.
  */
 export function pyramidalRoofMesh(input: PyramidalRoofInput): PyramidalRoofMesh | null {
   const { ring, apexHeightM, eavesHeightM: eaves, colour } = input;
@@ -82,29 +88,17 @@ export function pyramidalRoofMesh(input: PyramidalRoofInput): PyramidalRoofMesh 
   if (open.length < 3) return null;
 
   const [originLng, originLat] = ringCentroid(open);
-  const metresPerDegLat = 111320;
-  const metresPerDegLng = 111320 * Math.cos(originLat * Math.PI / 180);
+  if (!Number.isFinite(originLng) || !Number.isFinite(originLat)) return null;
 
-  const toEastNorth = (lng: number, lat: number): [number, number] => [
-    (lng - originLng) * metresPerDegLng,
-    (lat - originLat) * metresPerDegLat,
+  const vertices: PyramidalRoofVertex[] = [
+    { lng: originLng, lat: originLat, altM: apexHeightM },
   ];
-
-  // Vertex 0 = apex; 1..n = eaves ring. Layout: [east, up, north].
-  const positions = new Float32Array((open.length + 1) * 3);
-  positions[0] = 0;
-  positions[1] = apexHeightM;
-  positions[2] = 0;
-  for (let i = 0; i < open.length; i++) {
-    const [e, n] = toEastNorth(open[i][0], open[i][1]);
-    const o = (i + 1) * 3;
-    positions[o] = e;
-    positions[o + 1] = eaves;
-    positions[o + 2] = n;
+  for (const [lng, lat] of open) {
+    if (!Number.isFinite(lng) || !Number.isFinite(lat)) return null;
+    vertices.push({ lng, lat, altM: eaves });
   }
 
-  // GeoJSON exterior rings are CCW from above; (apex, a, b) then faces outward.
-  const indices = new Uint32Array(open.length * 3);
+  const indices = new Uint16Array(open.length * 3);
   for (let i = 0; i < open.length; i++) {
     const a = i + 1;
     const b = i + 1 < open.length ? i + 2 : 1;
@@ -115,7 +109,7 @@ export function pyramidalRoofMesh(input: PyramidalRoofInput): PyramidalRoofMesh 
   }
 
   return {
-    positions,
+    vertices,
     indices,
     colour: colour || '#708090',
     originLng,
