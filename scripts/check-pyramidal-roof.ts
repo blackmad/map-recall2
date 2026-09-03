@@ -70,13 +70,16 @@ assert.ok(Number.isFinite(mesh.originLng) && Number.isFinite(mesh.originLat));
 
 const wall = wallTopHeightExpression();
 assert.equal(wall[0], 'case');
-assert.equal(JSON.stringify(wall[1]), JSON.stringify(['>', ['coalesce', ['get', 'roofHeight'], 0], 0]),
-  'tagged roofHeight stops the wall at the eaves');
-assert.equal(JSON.stringify(wall[3]), JSON.stringify(['==', ['get', 'roofShape'], 'pyramidal']),
-  'untagged pyramidal still gets an invented tip');
+assert.equal(JSON.stringify(wall[1]), JSON.stringify(['==', ['get', 'roofShape'], 'pyramidal']),
+  'pyramidal walls stop under the mesh tip first');
+const wallJson = JSON.stringify(wall);
+assert.ok(wallJson.includes('flat'), 'flat roofs with a distinct colour still cut to eaves');
+assert.ok(wallJson.includes('roofColour'), 'same-colour flat roofs stay at full height');
 const flat = flatRoofFilter();
 assert.equal(flat[0], 'all');
-assert.ok(JSON.stringify(flat).includes('pyramidal'), 'pyramidal lids are filtered out');
+assert.ok(JSON.stringify(flat).includes('flat'), 'only flat / untagged shapes get lids');
 assert.ok(JSON.stringify(flat).includes('roofColour'), 'same-colour lids are filtered out');
+assert.doesNotMatch(JSON.stringify(flat), /gabled|pyramidal|skillion/,
+  'shaped roofs never get a flat lid (they fight)');
 
 process.stdout.write('Pyramidal roof checks passed\n');

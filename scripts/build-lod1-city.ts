@@ -33,7 +33,22 @@ import { createInterface } from 'node:readline';
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { BAG3D_VERSION } from '../src/canalRecall/bag3dTiles.js';
+import {
+  footprintsShareOwnership,
+  footprintsWithinMetres,
+  hasPaintColour,
+  resolvePaintProps,
+  type PaintDonor,
+} from '../src/canalRecall/buildingPaintInherit.js';
 import { decideTier, FootprintGrid, type LadderTier, type OsmFootprint, type Ring } from '../src/canalRecall/buildingLadder.js';
+import {
+  asGeometry,
+  geometryHasHoles,
+  outerRingsOf,
+  polygonsOf,
+  type FootprintGeometry,
+  type PolygonRings,
+} from '../src/canalRecall/buildingGeometry.js';
 
 const flag = (name: string): string | undefined =>
   process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -55,14 +70,8 @@ const colourFile = path.join(extractDir, 'buildings-colored.geojson');
 const outputFile = path.join(stagingDir, 'lod1-city.geojson');
 const reportFile = path.join(stagingDir, 'lod1-city.report.json');
 
-type Geometry = { type: 'Polygon'; coordinates: Ring[] } | { type: 'MultiPolygon'; coordinates: Ring[][] };
+type Geometry = FootprintGeometry;
 type Feature = { properties: Record<string, unknown>; geometry: Geometry };
-
-const ringsOf = (geometry: Geometry): Ring[] =>
-  geometry.type === 'Polygon' ? geometry.coordinates : geometry.coordinates.flat();
-
-const asGeometry = (rings: Ring[]): Geometry =>
-  rings.length === 1 ? { type: 'Polygon', coordinates: rings } : { type: 'MultiPolygon', coordinates: rings.map(ring => [ring]) };
 
 if (!(await stat(bagFile).catch(() => null))) {
   process.stderr.write(`${bagFile} is missing — run \`npm run build:bag-buildings\` first\n`);
@@ -78,31 +87,44 @@ process.stdout.write(`OSM geometry: ${osmFile}\n`);
 
 // --- appearance, keyed by osmId so geometry need not carry colour ------------
 const colourById = new Map<string, Record<string, unknown>>();
+const paintDonors = new FootprintGrid<PaintDonor>();
 if (await stat(colourFile).catch(() => null)) {
   const coloured = JSON.parse(await readFile(colourFile, 'utf8')) as { features: Feature[] };
   for (const feature of coloured.features) {
     const osmId = String(feature.properties.osmId ?? '');
     if (osmId) colourById.set(osmId, feature.properties);
+    const rings = outerRingsOf(polygonsOf(feature.geometry));
+    if (rings.length === 0) continue;
+    paintDonors.add({ rings, properties: feature.properties });
   }
 }
 
 // --- the OSM side, indexed ---------------------------------------------------
-type OsmBuilding = OsmFootprint & { properties: Record<string, unknown> };
+type OsmBuilding = OsmFootprint & {
+  properties: Record<string, unknown>;
+  /** Full polygons including courtyard holes — not flattened to outers. */
+  polygons: PolygonRings[];
+};
 const osm = JSON.parse(await readFile(osmFile, 'utf8')) as { features: Feature[] };
 const grid = new FootprintGrid<OsmBuilding>();
 const osmById = new Map<string, OsmBuilding>();
 for (const feature of osm.features) {
-  const rings = ringsOf(feature.geometry);
+  const polygons = polygonsOf(feature.geometry);
+  const rings = outerRingsOf(polygons);
   if (rings.length === 0) continue;
   const osmId = String(feature.properties.osmId ?? '');
-  const colour = colourById.get(osmId) ?? {};
-  const properties = { ...feature.properties, ...colour, osmId };
+  const direct = colourById.get(osmId);
+  const paint = resolvePaintProps(direct, rings, paintDonors);
+  const properties = { ...feature.properties, ...paint, osmId };
   const building: OsmBuilding = {
     osmId,
     rings,
-    minHeightM: Number(feature.properties.minHeight ?? 0),
-    heightM: Number(feature.properties.height ?? colour.height ?? 0),
-    roofShape: (feature.properties.roofShape as string) || (colour.roofShape as string) || undefined,
+    polygons,
+    minHeightM: Number(feature.properties.minHeight ?? direct?.minHeight ?? 0),
+    // Height stays on the feature (or its own colour row). Inherited paint
+    // from a containing footprint must not rewrite height.
+    heightM: Number(feature.properties.height ?? direct?.height ?? 0),
+    roofShape: (feature.properties.roofShape as string) || (paint.roofShape as string) || undefined,
     isPart: Boolean(feature.properties.isPart),
     properties,
   };
@@ -129,6 +151,7 @@ const represented = new Set<string>();
 const heightChange: number[] = [];
 let pands = 0;
 let colouredFromOsm = 0;
+let osmCourtyardGeometry = 0;
 /**
  * How far the BAG table actually reaches.
  *
@@ -148,7 +171,8 @@ for await (const rawLine of reader) {
   const line = rawLine.replace(/,\s*$/, '');
   if (!line.startsWith('{"type":"Feature"')) continue;
   const feature = JSON.parse(line) as Feature;
-  const rings = ringsOf(feature.geometry);
+  const bagPolygons = polygonsOf(feature.geometry);
+  const rings = outerRingsOf(bagPolygons);
   if (rings.length === 0) continue;
   pands++;
   for (const ring of rings) {
@@ -172,6 +196,7 @@ for await (const rawLine of reader) {
 
   bump(3);
   const matched = decision.matchedOsmIds.length > 0 ? osmById.get(decision.matchedOsmIds[0]) : undefined;
+  const inherited = resolvePaintProps(matched?.properties, rings, paintDonors);
   if (matched) {
     colouredFromOsm++;
     const bagHeight = Number(feature.properties.height ?? 0);
@@ -179,23 +204,53 @@ for await (const rawLine of reader) {
     // the number that says whether Phase 1 is a visible upgrade or a rounding
     // difference, and it is worth reporting rather than asserting.
     if (matched.heightM > 0 && bagHeight > 0) heightChange.push(bagHeight - matched.heightM);
+  } else if (hasPaintColour(inherited)) {
+    colouredFromOsm++;
   }
+
+  // BAG footprints often flatten courtyards into solid slabs (or into several
+  // positive islands that used to be holes). When the matched OSM outline still
+  // carries inner rings, keep that cutout and the measured height.
+  const useOsmCourtyard = Boolean(matched && geometryHasHoles(matched.polygons));
+  if (useOsmCourtyard) osmCourtyardGeometry++;
 
   await write(JSON.stringify({
     type: 'Feature',
     properties: {
       ...feature.properties,
       tier: 3,
-      // Appearance rides along where an OSM footprint matched; the colour
-      // pipeline replaces this with a measured value later.
+      // Appearance rides along where an OSM footprint matched; also inherit
+      // from a coloured outline that contains this pand when the matched way
+      // itself has no paint (Oosterdokskade office).
       osmId: matched?.osmId ?? null,
-      colour: matched?.properties.colour ?? null,
-      roofColour: matched?.properties.roofColour ?? null,
-      roofShape: matched?.properties.roofShape ?? null,
-      roofHeight: matched?.properties.roofHeight ?? null
+      colour: inherited.colour ?? matched?.properties.colour ?? null,
+      roofColour: inherited.roofColour ?? matched?.properties.roofColour ?? null,
+      roofShape: inherited.roofShape ?? matched?.properties.roofShape ?? null,
+      roofHeight: inherited.roofHeight ?? matched?.properties.roofHeight ?? null
     },
-    geometry: feature.geometry
+    geometry: useOsmCourtyard ? asGeometry(matched!.polygons) : feature.geometry
   }));
+}
+
+// Parts that missed every BAG centroid still belong to a composition that
+// already stood in for neighbouring panden (Centraal's platform-side wings).
+// Mark them represented so pass two does not emit them as tier 4 against their
+// siblings — that is the brown/grey shimmer on the station façade.
+let suppressedSiblingParts = 0;
+for (const standInId of standIns) {
+  const standIn = osmById.get(standInId);
+  if (!standIn?.isPart) continue;
+  for (const nearby of grid.near(standIn.rings)) {
+    if (standIns.has(nearby.osmId) || represented.has(nearby.osmId)) continue;
+    if (!nearby.isPart) continue;
+    if (Math.abs(nearby.heightM - standIn.heightM) > 0.6) continue;
+    if (
+      !footprintsShareOwnership(standIn, nearby) &&
+      !footprintsWithinMetres(standIn, nearby, 10)
+    ) continue;
+    represented.add(nearby.osmId);
+    suppressedSiblingParts++;
+  }
 }
 
 // --- pass two: OSM features that stand in for a pand, or that BAG lacks -------
@@ -236,7 +291,7 @@ for (const building of osmById.values()) {
       // here". Only the first is a statement about the register.
       bagConsulted: covered
     },
-    geometry: asGeometry(building.rings)
+    geometry: asGeometry(building.polygons)
   }));
 }
 
@@ -268,6 +323,8 @@ const report = {
   bagCoverage: coverage,
   osmOutsideBagCoverage: outsideCoverage,
   osmUnmatchedSuppressed: suppressedUnmatched,
+  osmSiblingPartsSuppressed: suppressedSiblingParts,
+  osmCourtyardGeometry,
   pandsWithOsmAppearance: colouredFromOsm,
   osmFeatures: osmById.size,
   heightChangeVsOsm: {
@@ -289,6 +346,8 @@ process.stdout.write(`  tier 3 bag      ${share(tiers.get(3) ?? 0)} measured ext
 process.stdout.write(`  tier 4 osm only ${share(tiers.get(4) ?? 0)}, of which ${outsideCoverage} lie outside the area BAG was fetched for\n`);
 process.stdout.write(`                  ${(tiers.get(4) ?? 0) - outsideCoverage} are genuine gaps in the register inside it\n`);
 process.stdout.write(`  unmatched skip  ${suppressedUnmatched} plain outlines inside BAG coverage (digitisation doubles)\n`);
+process.stdout.write(`  sibling skip    ${suppressedSiblingParts} parts overlapping a stand-in but missing every BAG join\n`);
+process.stdout.write(`  courtyard osm   ${osmCourtyardGeometry} measured heights on OSM footprints that still have holes\n`);
 process.stdout.write(`  appearance      ${colouredFromOsm} panden inherit an OSM colour\n`);
 process.stdout.write(`  height vs osm   median ${report.heightChangeVsOsm.medianM} m (p05 ${report.heightChangeVsOsm.p05M}, p95 ${report.heightChangeVsOsm.p95M}) over ${heightChange.length} buildings\n`);
 process.stdout.write(`  output          ${(report.outputBytes / 1e6).toFixed(1)} MB\n`);

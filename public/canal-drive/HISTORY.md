@@ -3,6 +3,26 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## Post-publish LoD1 polish (review batch)
+
+Systemic pipeline/runtime fixes after the first city publish, plus two
+**stopgap** published-tile edits so `/canal-drive/building-compare.html` shows
+the intended result before the next full republish:
+
+- **Oude Kerk lids** — walls full-height for shaped roofs; flat colour lids only
+  for flat/untagged shapes (`buildingStyle`).
+- **Paint drift** — `buildingPaintInherit` copies colour from the smallest
+  containing coloured footprint when part ids are missing from
+  `buildings-colored.geojson`; wired into `build-lod1-city`.
+- **Centraal orphans** — builder marks nearby same-height `building:part`s
+  represented so they are not re-emitted as tier 4; tile `14/8415/5383`
+  patched in place.
+- **Droogbak courtyard** — `polygonsOf` / hole-aware `asGeometry`; tier 3 uses
+  OSM footprint when it still has holes. Tile `14/8414/5383` patched in place.
+
+Follow-up before treating the extract as fully pipeline-sourced: staging OSM
+must recover Magna Plaza part coverage, then rebuild + publish.
+
 ## Complete LoD1 city published as gzipped z14 tiles
 
 Byte strategy decided: ship `.geojson.gz` (~16 MB, 298 tiles) in the versioned
