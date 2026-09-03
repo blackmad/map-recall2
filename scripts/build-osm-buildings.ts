@@ -68,6 +68,7 @@ function toOutputFeature(feature: SourceFeature): object | null {
       height,
       minHeight,
       roofShape: tags['roof:shape'] || '',
+      roofHeight: numeric(tags['roof:height']) ?? 0,
       building: tags.building || '',
       buildingPart: tags['building:part'] || '',
     },

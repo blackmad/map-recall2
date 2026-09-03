@@ -34,5 +34,10 @@ const waagHeights = new Set(nearWaag.map(feature => feature.properties.height));
 assert.ok(nearWaag.length >= 12, `the Waag keeps its hand-mapped building parts, found ${nearWaag.length}`);
 assert.ok(waagHeights.size >= 5, `the Waag's parts keep distinct heights, found ${[...waagHeights].sort((a, b) => a - b).join('/')}`);
 assert.ok(nearWaag.some(feature => feature.properties.roofShape === 'pyramidal'), 'the Waag keeps its pyramidal tower roofs');
+const turret = nearWaag.find(feature => String(feature.properties.osmId) === 'w749066943') as
+  { properties: Building['properties'] & { roofHeight?: number; minHeight?: number } } | undefined;
+assert.ok(turret, 'the tallest Waag turret is in the extract');
+assert.equal(turret.properties.roofHeight, 10, 'roof:height survives so the cone can be drawn');
+assert.equal(turret.properties.minHeight, 13);
 
 process.stdout.write(`OSM building appearance checks passed (${collection.features.length} buildings, Waag ${nearWaag.length} parts at ${[...waagHeights].sort((a, b) => a - b).join('/')} m).\n`);

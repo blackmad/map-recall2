@@ -17,6 +17,7 @@ class VectorBasemap {
     this._completeCity = null;
     this._detailedBuildingsVisible = false;
     this._signatureLandmarks = null;
+    this._pyramidalRoofs = null;
     this._appearanceOsmIds = [];
     this._appearanceFeatures = [];
     this._appearanceCentroidGrid = null;
@@ -142,22 +143,31 @@ class VectorBasemap {
     // nothing beneath the cap to leave exposed. Opacity is 1 on both: a
     // translucent extrusion blends with whatever it overlaps, which turns a
     // depth tie into a visible stripe.
-    const OSM_HEIGHT = ['coalesce', ['get', 'height'], 5];
+    // Walls stop at the eaves when a procedural pyramidal roof will take over
+    // above — otherwise the flat prism fights the cone on the Waag's turrets.
+    const helpers = window.CanalRecallBuildings;
+    const WALL_TOP = helpers && helpers.wallTopHeightExpression
+      ? helpers.wallTopHeightExpression()
+      : ['coalesce', ['get', 'height'], 5];
+    const flatRoofFilter = helpers && helpers.flatRoofFilter
+      ? helpers.flatRoofFilter()
+      : ['has', 'roofColour'];
     this.map.addLayer({
       id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['coalesce', ['get', 'sideColour'], ['get', 'colour']]],
         'fill-extrusion-base': ['coalesce', ['get', 'minHeight'], 0],
-        'fill-extrusion-height': ['+', OSM_HEIGHT, 0.35],
+        'fill-extrusion-height': WALL_TOP,
         'fill-extrusion-opacity': 1
       }
     });
     this.map.addLayer({
       id: 'osm-colored-building-roofs', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
+      filter: flatRoofFilter,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'roofColour']],
-        'fill-extrusion-base': ['+', OSM_HEIGHT, 0.35],
-        'fill-extrusion-height': ['+', OSM_HEIGHT, 0.7],
+        'fill-extrusion-base': WALL_TOP,
+        'fill-extrusion-height': ['+', WALL_TOP, 0.35],
         'fill-extrusion-opacity': 1
       }
     });
@@ -190,6 +200,16 @@ class VectorBasemap {
     };
     source.setData(cleaned);
     this._hideDuplicatedBasemapBuildings(cleaned);
+    this._syncPyramidalRoofs(cleaned.features);
+  }
+
+  _syncPyramidalRoofs(features) {
+    const api = window.CanalRecallPyramidalRoofs;
+    if (!api || !api.PyramidalRoofs || !this.map) return;
+    if (!this._pyramidalRoofs) {
+      this._pyramidalRoofs = new api.PyramidalRoofs(this.map, maplibregl);
+    }
+    this._pyramidalRoofs.setFeatures(features || []);
   }
 
   // The basemap keeps only the buildings the extract does not carry. Its ids
@@ -485,17 +505,23 @@ class VectorBasemap {
     const themeColor = window.CanalRecallBuildings
       ? window.CanalRecallBuildings.buildingColorExpression(this.theme)
       : '#D8D3CA';
-    const height = ['coalesce', ['get', 'height'], 5];
+    const helpers = window.CanalRecallBuildings;
+    const height = helpers && helpers.wallTopHeightExpression
+      ? helpers.wallTopHeightExpression()
+      : ['coalesce', ['get', 'height'], 5];
     this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-color', [
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', themeColor
     ]);
     this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-height', height);
     this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', ['coalesce', ['get', 'minHeight'], 0]);
-    this.map.setFilter('osm-colored-building-roofs', ['has', 'roofColour']);
+    this.map.setFilter(
+      'osm-colored-building-roofs',
+      helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'],
+    );
     this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-color', [
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['to-color', ['get', 'roofColour'], '#B09999']
     ]);
-    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-base', ['+', height, 0.05]);
+    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-base', height);
     this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-height', ['+', height, 0.35]);
   }
 
@@ -689,6 +715,7 @@ class VectorBasemap {
       this._signatureLandmarks.setEnabled(!detailed && !google);
       this._refreshBuildingSuppression();
     }
+    if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !google);
   }
 
   setPlayerBike(player, loader, visible) {
