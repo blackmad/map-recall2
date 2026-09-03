@@ -213,14 +213,15 @@ carefully mapped tower, wing, passage, courtyard or stacked part. Resolve the
 sources into one owner per building; never draw overlapping representations.
 
 Status: `main` has the complete OpenFreeMap/OSM extrusion fallback, a partial
-10,578-building measured-colour overlay, and optional hosted 3DBAG LoD2.2 roof
-geometry. `feat/lod1-building-city` has the unmerged complete 336,784-building
+10,578-building measured-colour overlay, optional hosted 3DBAG LoD2.2 roof
+geometry, and thirteen signature landmark GLBs available in the demo (disabled
+in the live game for cost). The older `feat/signature-landmarks` lane is
+superseded. `feat/lod1-building-city` has the unmerged complete 336,784-building
 BAG-keyed LoD1 city, measured AHN heights and z14 streaming tiles (15 MB
 gzipped). It is blocked by two comparison failures: its resolver sees only
 colour-tagged OSM parts, flattening uncoloured manual compositions such as Magna
 Plaza, and a roof percentile draws 201 tower-on-podium panden too low. Fix both,
-rerun the comparison/e2e gates, then merge the LoD1 foundation. No signature
-landmark GLB is integrated yet; `feat/signature-landmarks` is empty.
+rerun the comparison/e2e gates, then merge the LoD1 foundation.
 
 Do this as a gated progression rather than converting Amsterdam in one shot,
 ordered **completeness before fidelity** — every step that makes more of the
@@ -242,11 +243,10 @@ will be interrupted; each step must be worth shipping alone.
    `osm-colored-building-roofs` and the height-offset stack that keeps three
    coplanar extrusions from z-fighting. That stack is now partly defused rather
    than fixed: `basemapBuildingFilter` hides the basemap copy of any building
-   the extract carries, which drops 136 of 1,189 basemap buildings in the centre
-   and cuts co-located pairs from 145 to 47. The remaining 47 are held under
-   different OSM ids by the two pipelines and still z-fight; one owner per
-   building is the only real fix. Heights stop being guessed in the same
-   change: `build-osm-building-appearance.ts:32` currently falls back to
+   the extract carries (by OSM id), and a runtime proximity scan hides the
+   residual pairs the two pipelines hold under different ids (centroid within
+   3 m). One owner per building is still the real fix. Heights stop being
+   guessed in the same change: `build-osm-building-appearance.ts:32` currently falls back to
    `levels * 3` or a flat 9 m, so much of the skyline is invented, and AHN-derived
    3DBAG heights replace it everywhere. Largest visible win in the whole item,
    no new renderer, and it is the fallback every later step needs. If step 1(a)
@@ -435,31 +435,26 @@ shadowed or mixed samples and compare a muted median wall colour against the
 current OSM-tag fallback before attempting a citywide pass. Straight-down roof
 imagery cannot measure building sides.
 
-**22. Signature landmark models — settle the licence, then finish the set.**
-Thirteen buildings are built and placed: nine of the City of Amsterdam's own
-survey models and four community ones, all from 3D Warehouse, all life-size and
-placed at their published coordinates. `HISTORY.md` records how they are cleaned
-up and why. Three things remain.
+**22. Signature landmark models — re-enable once cheap enough, then finish the set.**
+Thirteen buildings are built and placed; the demo page still draws them. They are
+**disabled in the live game** after a playtest: thirteen meshopt GLBs on the
+shared MapLibre/Three canvas were too slow, and Centraal arrived with its
+SketchUp ground plane still attached. Licence follow-up stays parked by owner
+decision. Remaining work:
 
-*The licence is unresolved and blocks publication.* They are used under the
-3D Warehouse General Model License, which covers a Combined Work carrying
-substantial additional content but forbids aggregating models from the site for
-redistribution as an asset library. A `public/canal-drive/models/` directory in
-a public repository is arguably the second. Trimble takes written requests at
-3dwarehouse-tou@sketchup.com. Until this is answered, treat the models as a
-prototype: the code is fine, the binaries are the question.
+*Re-enable behind a measured gate.* Load one model (Palace or Centraal) first,
+strip residual ground planes in the build, measure desktop and mobile frame
+time, then widen.
 
 *Facade bearings are unverified.* `FACADE_BEARINGS` records which way each
 building faces and only the Palace's was checked. They do not affect placement —
 a surveyed model arrives correctly turned — but they are reported in the UI as
 fact. Pin them against each footprint's long axis in a check script.
 
-*Not yet wired into the game.* The layer runs in
-`signature-landmark-demo.html` only; `vector-map.js` does not construct it. It
-also has no mobile measurements. `search-3dwarehouse-landmarks.ts` lists 46
-further landmarks with published coordinates across the four cities — Euromast,
-Dom Tower, Rietveld Schröder House, Binnenhof — so finishing the set is mostly
-mechanical once the licence is settled.
+*Widen the set.* `search-3dwarehouse-landmarks.ts` lists 46 further landmarks
+with published coordinates across the four cities — Euromast, Dom Tower,
+Rietveld Schröder House, Binnenhof — so finishing the set is mostly mechanical
+once cost is acceptable.
 
 **25. Google's photorealistic mesh for the distant skyline only.** The spike in
 `google-tiles-spike.html` settled the main question — Google's tiles are

@@ -3,6 +3,20 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## Basemap duplicates near the extract are hidden by proximity too
+
+The id filter that stops `building-3d` redrawing coloured-extract buildings cut
+co-located pairs in the centre from 145 to 47, then stopped: the remaining 47
+are the same footprints under different OSM ids in the two pipelines, which is
+what still striped roofs around the Shipping House and along the Singel. The
+runtime now builds a centroid grid of the extract and, as OpenFreeMap tiles
+load, hides any basemap building whose ring centroid sits within 3 m of an
+extract building — the same tolerance the earlier audit used. Ring-by-ring
+matters because a tile feature can batch many footprints; a single feature
+centroid would miss the overlap. Signature landmark GLBs stay demo-only after
+a playtest found thirteen meshopt models too slow and Centraal still carrying
+its SketchUp ground plane.
+
 ## Desktop fills the window instead of letterboxing 16:9
 
 The phone portrait work correctly filled touch screens, but left desktop on the

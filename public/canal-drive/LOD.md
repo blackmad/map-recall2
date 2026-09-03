@@ -164,11 +164,12 @@ probe found a unique `NL.IMBAG.Pand.*` identity for all 667 sampled features,
 so runtime identity joins are feasible. Production should still prefer pinned,
 owned assets so an upstream republish cannot silently change the game.
 
-### Signature models — not started
+### Signature models — demo only
 
-No landmark GLB is integrated. `feat/signature-landmarks` currently has no
-commits. The only shipped GLBs are player vehicles. A downloadable Sketchfab
-Paleis op de Dam model under CC BY is the proposed first proof.
+Thirteen curated GLBs ship under `public/canal-drive/models/` and draw in
+`signature-landmark-demo.html`. They are disabled in the live game after a
+playtest found them too slow and Centraal still carrying its SketchUp ground
+plane. See TODO item 22.
 
 ## Complete LoD1 branch status
 

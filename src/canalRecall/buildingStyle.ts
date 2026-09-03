@@ -87,16 +87,29 @@ export function encodeBasemapBuildingId(osmId: string): number | null {
  *
  * `hide_3d` is OpenMapTiles' own marker for a building that a `building:part`
  * already covers, which is the same fight one layer down.
+ *
+ * `extraEncodedIds` covers the residual pairs the two pipelines hold under
+ * different OSM ids: the runtime measures proximity against the extract and
+ * feeds the basemap feature ids straight in (already `osmId * 10 + type`).
  */
 export function basemapBuildingFilter(
   osmIds: Iterable<string>,
   existingFilter?: unknown,
+  extraEncodedIds?: Iterable<number>,
 ): MapLibreExpression {
   const encoded: number[] = [];
   const seen = new Set<number>();
   for (const osmId of osmIds) {
     const id = typeof osmId === 'string' ? encodeBasemapBuildingId(osmId) : null;
     if (id !== null && !seen.has(id)) { seen.add(id); encoded.push(id); }
+  }
+  if (extraEncodedIds) {
+    for (const id of extraEncodedIds) {
+      if (typeof id === 'number' && Number.isSafeInteger(id) && id > 0 && !seen.has(id)) {
+        seen.add(id);
+        encoded.push(id);
+      }
+    }
   }
   const clauses: unknown[] = [['!', ['to-boolean', ['get', 'hide_3d']]]];
   // `match` builds a lookup keyed on the label; `in` over ten thousand ids
