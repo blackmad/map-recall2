@@ -26,6 +26,7 @@ import {
 import { isCar } from './modes';
 import type { PresentationHost } from './host';
 import type { Landmark } from './worldTypes';
+import { canShowMiniMap, canShowPoiLabels } from './teachingSurface';
 
 /** One measured band of the arrival card. Each block reports its own height so
  *  the card measures itself, instead of keeping a stack of hand-tuned offsets
@@ -121,10 +122,14 @@ export class GamePresentationRuntime {
     if (this.state === GameState.FINISHED) { this._renderFinish(); return; }
 
     this._syncHudLayout();
+    const teaching = this._teachingGate();
+    const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
+    // Desktop keeps the bottom trip pill; the top-left score must not repeat it.
+    const tripInRecall = !!this._hudLayoutCache?.tripInRecall;
     this.hud.drawTripReadout(ctx, player.speed, this._playerDistancePx());
     this.hud.drawCanalScore(ctx, this.quizCorrect, this.quizAttempts, this.quizPoints,
       this.quizFeedback, this.quizStreak, this.gameyFeatures,
-      this.hud.tripText(player.speed, this._playerDistancePx()));
+      tripInRecall ? this.hud.tripText(player.speed, this._playerDistancePx()) : '');
     // Hide a new route name from the first candidate frame, not only after the
     // delayed question opens. Otherwise the HUD reveals the answer during the
     // turn-confirmation window.
@@ -136,11 +141,13 @@ export class GamePresentationRuntime {
     this.hud.drawDestination(ctx, this.routeTo.name,
       this.track.getDistanceToFinish(player.x, player.y), this._routeLearningPlan?.expectedNovelty ?? null);
 
+    this.hud.drawCompass(ctx, this.camera);
     if (this.routeOptions.arrow) {
       this.hud.drawFinishDirection(ctx, player.x, player.y,
         this.track.finishPoint.x, this.track.finishPoint.y, this.camera);
     }
-    if (this.showMiniMap) this.hud.drawCityOverview(ctx, this);
+    if (showMiniMap) this.hud.drawCityOverview(ctx, this);
+    this.vectorMap.setQuizQuietMap(!canShowPoiLabels(true, teaching));
     this._renderLandmarkNotice();
     this._renderNeighborhoodNotice();
     this._renderZoomBadge();
@@ -163,13 +170,15 @@ export class GamePresentationRuntime {
    *  where the others are and the phone layout stays collision-free. */
   _syncHudLayout(): void {
     const ui = window.CanalRecallUi;
+    const teaching = this._teachingGate();
+    const minimapVisible = canShowMiniMap(this.showMiniMap, teaching);
     this._hudLayoutCache = ui.hudLayout({
       viewport: this.viewport,
       tripWidth: 180,
       landmarkHeight: 130,
       feedbackVisible: !!this.quizFeedback,
       neighborhoodVisible: !!this.currentNeighborhood,
-      minimapVisible: this.showMiniMap,
+      minimapVisible,
       zoomVisible: this._zoomBadgeTimer > 0,
       controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
     });

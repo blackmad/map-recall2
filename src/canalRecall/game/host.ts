@@ -69,6 +69,8 @@ export interface GameCoreHost {
   /** True while a DOM overlay owns the screen — the recall question, a utility
    *  panel, or the expanded article. The d-pad is not drawn under any of them. */
   _overlayOpen(): boolean;
+  /** Shared gate for quiz / feedback / cards / minimap / POI labels. */
+  _teachingGate(): import('./teachingSurface.ts').TeachingGateInput;
   /** Tap targets for the arrival card's actions, on touch. */
   _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' }>;
 
@@ -105,6 +107,8 @@ export interface LandmarkHost extends GameCoreHost {
   _summaryRequests?: Set<string>;
   _seenLandmarks: Set<string>;
   _seenLandmarkNames: Set<string>;
+  /** Encyclopedia cards already shown this drive, keyed like landmark ids. */
+  _seenStreetKnowledge: Set<string>;
 
   /** Generated trivia by feature id, from the published `facts.json`. Empty
    *  when the file is absent, in which case cards fall back to the lede. */
@@ -189,6 +193,7 @@ export interface RecallHost extends GameCoreHost {
   _pendingCrossing: PendingCrossing | null;
   _lastBridgeQuizAt: number;
   _choiceOrder?: string[];
+  _pendingSkipMastered?: boolean;
 
   _prompt: HTMLElement;
   _promptInput: HTMLInputElement;
@@ -198,12 +203,17 @@ export interface RecallHost extends GameCoreHost {
   _promptKindLabel: HTMLElement;
   _promptHeading: HTMLElement;
   _promptQuestion: HTMLElement;
-  _routeError: HTMLElement;
-  _skipMastered: HTMLInputElement;
+  _routeError?: HTMLElement;
+  _skipMastered: HTMLInputElement | null;
+  _overlay?: import('../overlay/mount.ts').CanalOverlayHandle;
 
   /** Owned by other subsystems. */
   _savePreferences(): void;
-  _showStreetKnowledge(name: string, type?: 'street' | 'water'): void;
+  _setRouteError(message: string): void;
+  _showStreetKnowledge(name: string, type?: 'street' | 'water', replaceOpenCard?: boolean): void;
+  _clearLandmarkNotice(): void;
+  _neighborhoodNotice: { name: string; kind?: string; imageArea?: string } | null;
+  _neighborhoodNoticeTimer: number;
 }
 
 /** Frame composition, the menu, the pause overlay and the finish card. */

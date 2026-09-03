@@ -36,6 +36,8 @@ export interface RoadSegment {
   points: WorldPoint[];
   name?: string;
   type?: string;
+  /** Physically separated cycle track beside this carriageway. */
+  separatedCycleTrack?: boolean;
 }
 
 /** What the network knows about a name, beyond its geometry. */
@@ -136,6 +138,8 @@ export interface Hud {
     ctx: CanvasRenderingContext2D, playerX: number, playerY: number,
     finishX: number, finishY: number, camera: Camera,
   ): void;
+  /** Always-on north rose that tracks camera rotation. */
+  drawCompass(ctx: CanvasRenderingContext2D, camera: Camera): void;
   drawCityOverview(ctx: CanvasRenderingContext2D, game: unknown): void;
   drawTouchHint(ctx: CanvasRenderingContext2D): void;
   drawDpad(ctx: CanvasRenderingContext2D, pressed: import('../touchControls.ts').DpadKeys): void;
@@ -186,4 +190,6 @@ export interface VectorMap {
   setActiveLandmark(landmark: LandmarkNotice | null): void;
   setPlaces(landmarks: unknown, boundaries: unknown): void;
   setBrandedPois(pois: unknown): void;
+  /** Hide dense place labels while a quiz owns the corridor. */
+  setQuizQuietMap(quiet: boolean): void;
 }

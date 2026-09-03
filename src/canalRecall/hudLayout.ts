@@ -28,8 +28,11 @@ import {
   HUD_MAX_WIDTH_DESKTOP,
 } from './viewport.ts';
 import { dpadLayout, type DpadLayout } from './touchControls.ts';
+import { COMPASS_SIZE_COMPACT, COMPASS_SIZE_DESKTOP } from './compass.ts';
 
 export type Rect = { x: number; y: number; width: number; height: number };
+
+export { COMPASS_SIZE_COMPACT, COMPASS_SIZE_DESKTOP, northScreenAngle } from './compass.ts';
 
 export type HudBand = {
   /** Left edge of the chrome band in canvas coordinates. */
@@ -44,6 +47,8 @@ export type HudLayout = {
   /** The street or waterway you are on, plus the neighbourhood. */
   location: Rect;
   destination: Rect;
+  /** Always-on north rose. Orientation cue, not a route assist. */
+  compass: Rect;
   /** Speed + odometer. Folded into `recall` on a phone; see `tripInRecall`. */
   trip: Rect;
   postcard: Rect;
@@ -183,6 +188,14 @@ export function hudLayout({
         left,
       );
       const topBottom = destination.y + destination.height;
+      // Top-right under the destination stack. Left of the finish-direction
+      // arrow (which docks at the right edge), so both orientation cues sit
+      // together instead of the rose floating over empty map.
+      const compass = offsetRect({
+        x: width - MARGIN - COMPASS_SIZE_COMPACT - 68,
+        y: topBottom + GAP,
+        width: COMPASS_SIZE_COMPACT, height: COMPASS_SIZE_COMPACT,
+      }, left);
 
       // The bottom stack is built upwards from the d-pad, so the controls are
       // always reachable and everything else yields to them.
@@ -208,7 +221,7 @@ export function hudLayout({
         width: 70, height: COMPACT_ZOOM_H,
       };
       return {
-        recall, location, destination, trip: recall, postcard, landmark, minimap, zoomBadge,
+        recall, location, destination, compass, trip: recall, postcard, landmark, minimap, zoomBadge,
         controlsHint: { x: Math.round(left + width / 2 - 177), y: zoomBadge.y, width: 354, height: 12 },
         dpad, tripInRecall: true, mode: viewport.mode, band,
       };
@@ -231,6 +244,12 @@ export function hudLayout({
       x: width - MARGIN - columnWidth, y: viewport.safeTop + MARGIN,
       width: columnWidth, height: COMPACT_DESTINATION_H,
     }, left);
+    const compass = {
+      x: destination.x + destination.width - COMPASS_SIZE_COMPACT,
+      y: destination.y + destination.height + GAP,
+      width: COMPASS_SIZE_COMPACT,
+      height: COMPASS_SIZE_COMPACT,
+    };
     const cardWidth = Math.min(landmarkWidth, compactLandscapeCardWidth(band, dpad));
     const cardTop = destination.y + destination.height + GAP + (minimapVisible ? COMPACT_MINIMAP_H + GAP : 0);
     const cardHeight = clampHeight(landmarkHeight, height - viewport.safeBottom - MARGIN - cardTop);
@@ -255,7 +274,7 @@ export function hudLayout({
       width: 70, height: COMPACT_ZOOM_H,
     };
     return {
-      recall, location, destination, trip: recall, postcard, landmark, minimap, zoomBadge,
+      recall, location, destination, compass, trip: recall, postcard, landmark, minimap, zoomBadge,
       controlsHint: { x: Math.round(left + width / 2 - 177), y: zoomBadge.y, width: 354, height: 12 },
       dpad, tripInRecall: true, mode: viewport.mode, band,
     };
@@ -274,6 +293,14 @@ export function hudLayout({
     { x: width - 350, y: 15, width: 335, height: 48 },
     left,
   );
+  // Under the destination card on the right — next to where the finish arrow
+  // sits — instead of floating above the city overview in empty map.
+  const compass = {
+    x: destination.x + destination.width - COMPASS_SIZE_DESKTOP,
+    y: destination.y + destination.height + GAP,
+    width: COMPASS_SIZE_DESKTOP,
+    height: COMPASS_SIZE_DESKTOP,
+  };
   const trip = offsetRect(
     { x: width - tripWidth - 16, y: height - 98, width: tripWidth, height: 26 },
     left,
@@ -304,7 +331,7 @@ export function hudLayout({
     height: landmarkHeight,
   };
   return {
-    recall, location, destination, trip, postcard, landmark, minimap,
+    recall, location, destination, compass, trip, postcard, landmark, minimap,
     zoomBadge, controlsHint, dpad: null, tripInRecall: false, mode: viewport.mode, band,
   };
 }

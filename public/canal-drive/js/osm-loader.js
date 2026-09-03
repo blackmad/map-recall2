@@ -81,7 +81,7 @@ class OSMLoader {
     const west = lng - lngOffset, east = lng + lngOffset;
 
     const selector = travelMode === 'car'
-      ? 'way["highway"~"^(primary|secondary|tertiary|residential|living_street|unclassified)$"]["name"]'
+      ? 'way["highway"~"^(primary|secondary|tertiary|residential|living_street|unclassified|cycleway|pedestrian)$"]["name"]'
       : 'way["waterway"~"^(canal|river|dock)$"]["name"]';
     const query = `
       [out:json][timeout:60];

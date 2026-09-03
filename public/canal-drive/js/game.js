@@ -18,12 +18,7 @@ const CANAL_ROUTE_POIS = [
   { id: 'mint', name: 'Mint Tower', lat: 52.3670418, lng: 4.8932804 }
 ];
 
-const DIFFICULTY_PRESETS = {
-  easy: { answerMode: 'multiple', line: true, arrow: true, minimap: true },
-  medium: { answerMode: 'multiple', line: false, arrow: true, minimap: true },
-  hard: { answerMode: 'typing', line: false, arrow: true, minimap: false },
-  expert: { answerMode: 'typing', line: false, arrow: false, minimap: false }
-};
+const DIFFICULTY_PRESETS = window.CanalRecallPreferences.DIFFICULTY_PRESETS;
 const DIFFICULTY_SCORE_MULTIPLIERS = { easy: 0.5, medium: 0.75, hard: 1, expert: 1.25, custom: 0.85 };
 // Route ribbons grade the trip on what the game is trying to teach — name
 // recall, navigating without aids, and choosing an efficient route — rather
@@ -69,7 +64,6 @@ const ZOOM_BADGE_DURATION = 1.4;     // seconds the zoom percentage lingers
 const LIVE_ROUTE_OFF_ROUTE_DIST = 140; // px off the path before a full reroute
 const LIVE_ROUTE_REROUTE_INTERVAL = 2; // seconds between reroute attempts
 
-const CANAL_PREFS_KEY = 'canalRecall.preferences.v1';
 const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v2';
 
 class Game {
@@ -111,13 +105,9 @@ class Game {
     this.viewMode = 'north';
     this.themeMode = 'clean';
     this.learnedNames = new Set();
-    // Every name the player has been shown this route, right or wrong.
-    // `learnedNames` is the score; this feeds the map.
+    // Names shown this route (right or wrong); feeds the map, not the score.
     this.revealedNames = new Set();
-    // What is actually written on the map: the names revealed this route plus
-    // every name the spaced-repetition store considers known. A street you
-    // know well enough that the game has stopped asking is exactly the one
-    // whose label you still want to see while driving past it.
+    // Route reveals plus SRS-known names — still labelled while driving past.
     this._mapLabelNames = new Set();
     this.routeFrom = CANAL_ROUTE_POIS[1];
     this.routeTo = CANAL_ROUTE_POIS[2];
@@ -126,9 +116,7 @@ class Game {
     this.bridges = [];
     this._routeRerolls = 0;
     this._zoomBadgeTimer = 0;
-    // Once the player picks a zoom, a rotation or resize must not overrule it.
-    this._zoomTouchedByPlayer = false;
-    // Filled by _resize before the first frame; the design space until then.
+    this._zoomTouchedByPlayer = false; // player zoom wins over resize/rotation
     this.viewport = window.CanalRecallUi.resolveViewport({ windowWidth: CANVAS_W, windowHeight: CANVAS_H });
     this._lastZoomShown = null;
     this._liveRoutePath = null;
@@ -138,15 +126,12 @@ class Game {
     this._routeLearningPlan = null;
     this._routeMastery = {};
     this.quizPromptKind = 'route';
-    // Keyed per crossing, not per bridge: one OSM feature named "Zuiderzeeweg"
-    // is four separate bridges over three different waters.
+    // Per crossing, not per bridge (one OSM name can span several waters).
     this._quizzedCrossings = new Map();
     this._learnedBridges = new Map();
     this._pendingCrossing = null;
     this._lastBridgeQuizAt = -Infinity;
-    // name -> world points where the store says this name is already known.
-    // Rebuilt per race so the label test stays a short local loop.
-    this._knownPlaces = new Map();
+    this._knownPlaces = new Map(); // name -> world points the store already knows
     this.routePattern = 'surprise';
     this.homeBase = null;
     this.homeLeg = 'outbound';
@@ -177,27 +162,22 @@ class Game {
     this._neighborhoodImageRequests = new Set();
     this._postcardCanvas = null;
     this._seenLandmarks = new Set();
+    this._seenStreetKnowledge = new Set();
     this._visitedNeighborhoods = new Set();
     this._seenLandmarkNames = new Set();
-    // Generated trivia, filled by _loadLandmarks from facts.json. Empty until
-    // then, and empty for good if no batch has been published, in which case
-    // every card falls back to its Wikipedia lede.
+    // Generated trivia from facts.json; empty until _loadLandmarks (or forever).
     this._facts = new Map();
     this._factRotation = { history: {}, shown: 0, recentKinds: [] };
     this._explorationSnapshot = null;
     this._assistUsage = { line: false, arrow: false, minimap: false };
     this._ribbon = null;
-    // Master switch for the arcade layer. On by default so existing players
-    // keep the game they have; off produces a calm navigation-and-recall trip
-    // with no streaks, multipliers, points, or ribbons. Difficulty and
-    // navigation aids stay independent of it.
+    // Arcade layer (streaks/points/ribbons); aids and difficulty stay independent.
     this.gameyFeatures = true;
     this._debugMode = false;
     this._recenterBtnBounds = null;
     this._landmarkNotice = null;
     this._landmarkCardBounds = null;
-    // Why the card is up decides when it comes down; see game/landmarkNotice.ts.
-    this._landmarkNoticeHold = { kind: 'timed', seconds: 0 };
+    this._landmarkNoticeHold = { kind: 'timed', seconds: 0 }; // see game/landmarkNotice.ts
     this._landmarkNoticeState = { elapsed: 0, fadeRemaining: null };
     this._landmarkNoticeAlpha = 0;
     this._landmarkImages = new Map();
@@ -308,6 +288,21 @@ class Game {
     if (this._prompt && this._prompt.style.display !== 'none' && this._prompt.style.display !== '') return true;
     const panel = document.getElementById('landmark-panel');
     return !!panel && getComputedStyle(panel).display !== 'none';
+  }
+
+  /** One teaching surface at a time — see `teachingSurface.ts`. */
+  _teachingGate() {
+    const promptVisible = !!(this._prompt
+      && this._prompt.style.display !== 'none'
+      && this._prompt.style.display !== '');
+    const panel = document.getElementById('landmark-panel');
+    const landmarkPanelOpen = !!panel && getComputedStyle(panel).display !== 'none';
+    return {
+      quizOpen: !!this.quizPromptName,
+      feedbackVisible: !!this.quizFeedback,
+      promptVisible,
+      utilityOpen: !!this._utilityOpen || landmarkPanelOpen,
+    };
   }
 
   /** The finish card's tappable actions, for touch. Keyboard keeps ENTER/ESC/C. */
@@ -512,14 +507,13 @@ class Game {
     // driving it used to press Enter on every touch of the map.
     this.input.setTapRestartEnabled(this.state !== GameState.RACING);
     if (this.input.wasPressed('Slash') && (this.input.isDown('ShiftLeft') || this.input.isDown('ShiftRight'))) this._toggleUtilityPanel(this._helpPanel);
-    if (this.input.wasPressed('KeyG')) this._toggleUtilityPanel(this._settingsPanel);
+    if (this.input.wasPressed('KeyG')) this._toggleUtilityPanel('settings');
     if (this.input.wasPressed('Escape') && this._utilityOpen) { this._closeUtilityPanels(); return; }
     if (this._utilityOpen) return;
     if (this.input.wasPressed('Tab') || this.input.wasPressed('KeyM')) this.showMiniMap = !this.showMiniMap;
     if (this.input.wasPressed('KeyL')) {
       this.routeOptions.line = !this.routeOptions.line;
-      this._assistLine.checked = this.routeOptions.line;
-      this._liveLine.checked = this.routeOptions.line;
+      this._overlay.store.patchPrefs({ line: this.routeOptions.line }, this._overlayZoom());
       this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
       this._savePreferences();
     }

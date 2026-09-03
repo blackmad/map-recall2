@@ -138,7 +138,7 @@ export class BuildingTileStreamer {
         // MapLibre's GeoJSON source tiles and may rewrite rings in place.
         // Pyramidal roofs need the original closed footprint, so keep our own
         // copy of coordinates before `setData`.
-        const features = (collection.features ?? []).map(feature => ({
+        const features: BuildingFeature[] = (collection.features ?? []).map(feature => ({
           type: 'Feature',
           properties: { ...(feature.properties || {}) },
           geometry: feature.geometry && JSON.parse(JSON.stringify(feature.geometry)),

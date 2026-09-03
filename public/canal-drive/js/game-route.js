@@ -2,189 +2,131 @@
 // Keeping each subsystem in a class preserves private runtime state on the Game instance
 // while making ownership and review boundaries explicit.
 class GameRouteRuntime {
+  _overlayZoom() {
+    return { min: this.camera.minZoom, max: this.camera.maxZoom, defaultZoom: CAMERA_ZOOM_INITIAL };
+  }
+
+  _prefs() {
+    return this._overlay.store.getState().prefs;
+  }
+
+  _setRouteError(message) {
+    this._overlay.store.setRouteError(message || '');
+  }
+
   _setupRouteForm() {
-    this._routeSetup = document.getElementById('route-setup');
-    this._routeForm = document.getElementById('route-card');
+    this._overlay = window.CanalRecallOverlay.install(document.getElementById('canal-overlay-root'));
+    this._overlay.callbacks.zoom = this._overlayZoom();
+    this._overlay.callbacks.onStart = () => this._startConfiguredRoute();
+    this._overlay.callbacks.onLiveChange = () => this._readLiveSettings();
+    this._overlay.callbacks.onCloseSettings = () => this._closeUtilityPanels();
     this._routeFrom = document.getElementById('route-from');
     this._routeTo = document.getElementById('route-to');
-    this._routeDifficulty = document.getElementById('route-difficulty');
-    this._answerMode = document.getElementById('answer-mode');
-    this._travelMode = document.getElementById('travel-mode');
-    this._controlMode = document.getElementById('control-mode');
-    this._viewMode = document.getElementById('view-mode');
-    this._themeMode = document.getElementById('theme-mode');
-    this._assistLine = document.getElementById('assist-line');
-    this._assistArrow = document.getElementById('assist-arrow');
-    this._assistMinimap = document.getElementById('assist-minimap');
-    this._gameyFeatures = document.getElementById('gamey-features');
-    this._soundEnabled = document.getElementById('sound-enabled');
-    this._treesEnabled = document.getElementById('trees-enabled');
-    this._reducedMotion = document.getElementById('reduced-motion');
-    this._detailed3d = document.getElementById('detailed-3d');
-    this._googleTiles = document.getElementById('google-tiles');
-    this._cameraZoom = document.getElementById('camera-zoom');
-    this._routePattern = document.getElementById('route-pattern');
-    this._homeAddressField = document.getElementById('home-address-field');
-    this._homeAddress = document.getElementById('home-address');
-    this._routeError = document.getElementById('route-error');
+    this._settingsPanel = 'settings';
     for (const poi of CANAL_ROUTE_POIS) {
       this._routeFrom.add(new Option(poi.name, poi.id));
       this._routeTo.add(new Option(poi.name, poi.id));
     }
     this._routeFrom.value = this.routeFrom.id;
     this._routeTo.value = this.routeTo.id;
-    this._applyDifficulty('medium');
     this._loadPreferences();
-    this._routeDifficulty.addEventListener('change', () => {
-      if (this._routeDifficulty.value !== 'custom') this._applyDifficulty(this._routeDifficulty.value);
-    });
-    this._routePattern.addEventListener('change', () => this._syncHomeAddressField());
-    for (const control of [this._answerMode, this._assistLine, this._assistArrow, this._assistMinimap]) {
-      control.addEventListener('change', () => { this._routeDifficulty.value = 'custom'; });
-    }
-    this._routeForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      this._startConfiguredRoute();
-    });
   }
 
   _loadPreferences() {
-    try {
-      const prefs = JSON.parse(localStorage.getItem(CANAL_PREFS_KEY) || '{}');
-      const setValue = (control, value) => {
-        if (value != null && [...control.options].some(option => option.value === value && !option.disabled)) control.value = value;
-      };
-      setValue(this._routeDifficulty, prefs.difficulty);
-      if (this._routeDifficulty.value !== 'custom') this._applyDifficulty(this._routeDifficulty.value);
-      setValue(this._answerMode, prefs.answerMode);
-      setValue(this._travelMode, prefs.travelMode);
-      setValue(this._controlMode, prefs.controlMode);
-      setValue(this._viewMode, prefs.viewMode);
-      setValue(this._themeMode, prefs.themeMode);
-      setValue(this._routePattern, prefs.routePattern);
-      this._homeAddress.value = prefs.homeAddress || '';
-      this._syncHomeAddressField();
-      if (typeof prefs.line === 'boolean') this._assistLine.checked = prefs.line;
-      if (typeof prefs.arrow === 'boolean') this._assistArrow.checked = prefs.arrow;
-      if (typeof prefs.minimap === 'boolean') this._assistMinimap.checked = prefs.minimap;
-      this._gameyFeatures.checked = prefs.gamey !== false;
-      this.gameyFeatures = this._gameyFeatures.checked;
-      this._soundEnabled.checked = prefs.sound === true;
-      this._treesEnabled.checked = prefs.trees !== false;
-      this._detailed3d.checked = prefs.detailed3d === true;
-      if (this._googleTiles) this._googleTiles.checked = prefs.googleTiles === true;
-      this._reducedMotion.checked = prefs.reducedMotion === true;
-      if (this._skipMastered) {
-        this._skipMastered.checked = prefs.skipMastered !== false;
-        if (this.recall) this.recall.enabled = this._skipMastered.checked;
-      }
-      this.camera.reducedMotion = this._reducedMotion.checked;
-      if (Number.isFinite(prefs.zoom)) {
-        const migratedZoom = prefs.zoomDefaultVersion !== 2 && prefs.zoom === 0.65 ? CAMERA_ZOOM_INITIAL : prefs.zoom;
-        this.camera.zoom = clamp(migratedZoom, this.camera.minZoom, this.camera.maxZoom);
-      }
-      this._cameraZoom.value = String(this.camera.zoom);
-      this.themeMode = this._themeMode.value;
-      this.vectorMap.applyTheme(this.themeMode);
-    } catch (_) {}
+    const Prefs = window.CanalRecallPreferences;
+    if (!Prefs || !this._overlay) return;
+    const prefs = Prefs.readPreferences(localStorage, this._overlayZoom());
+    this._overlay.callbacks.zoom = this._overlayZoom();
+    this._overlay.store.replacePrefs(prefs);
+    this._pendingSkipMastered = prefs.skipMastered;
+    if (this.recall) this.recall.enabled = prefs.skipMastered;
+    this._applyPrefsToRuntime(prefs, { persist: false });
   }
 
   _savePreferences() {
-    localStorage.setItem(CANAL_PREFS_KEY, JSON.stringify({
-      difficulty: this.routeDifficulty || this._routeDifficulty.value,
-      answerMode: this.routeOptions.answerMode,
-      travelMode: this.travelMode,
-      controlMode: this.controlMode,
-      viewMode: this.viewMode,
-      themeMode: this.themeMode,
-      routePattern: this.routePattern || this._routePattern.value,
-      homeAddress: this._homeAddress ? this._homeAddress.value.trim() : '',
+    const Prefs = window.CanalRecallPreferences;
+    if (!Prefs || !this._overlay) return;
+    const zoom = this._overlayZoom();
+    const current = this._prefs();
+    const prefs = Prefs.coercePreferences({
+      ...current,
       line: !!this.routeOptions.line,
       arrow: !!this.routeOptions.arrow,
-      minimap: !!this.routeOptions.minimap,
-      trees: this._treesEnabled ? this._treesEnabled.checked : true,
-      detailed3d: this._detailed3d ? this._detailed3d.checked : false,
-      googleTiles: this._googleTiles ? this._googleTiles.checked : false,
-      reducedMotion: this._reducedMotion ? this._reducedMotion.checked : false,
-      skipMastered: this._skipMastered ? this._skipMastered.checked : true,
+      minimap: this.showMiniMap,
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
       zoom: this.camera.zoom,
-      zoomDefaultVersion: 2
-    }));
+      reducedMotion: !!this.camera.reducedMotion,
+      travelMode: this.travelMode || current.travelMode,
+      controlMode: this.controlMode || current.controlMode,
+      viewMode: this.viewMode || current.viewMode,
+      themeMode: this.themeMode || current.themeMode,
+      routePattern: this.routePattern || current.routePattern,
+      difficulty: this.routeDifficulty || current.difficulty,
+      answerMode: this.routeOptions.answerMode || current.answerMode,
+    }, zoom);
+    this._overlay.store.replacePrefs(prefs);
+    Prefs.writePreferences(localStorage, prefs);
   }
 
   _setupUtilityPanels() {
     this._helpPanel = document.getElementById('help-panel');
-    this._settingsPanel = document.getElementById('settings-panel');
     this._landmarkPanel = document.getElementById('landmark-panel');
-    this._liveLine = document.getElementById('live-line');
-    this._liveArrow = document.getElementById('live-arrow');
-    this._liveMinimap = document.getElementById('live-minimap');
-    this._liveGamey = document.getElementById('live-gamey');
-    this._liveSound = document.getElementById('live-sound');
-    this._liveTrees = document.getElementById('live-trees');
-    this._liveReducedMotion = document.getElementById('live-reduced-motion');
-    this._liveDetailed3d = document.getElementById('live-detailed-3d');
-    this._liveGoogleTiles = document.getElementById('live-google-tiles');
-    this._liveZoom = document.getElementById('live-zoom');
-    this._liveControls = document.getElementById('live-controls');
-    this._liveView = document.getElementById('live-view');
-    this._liveTheme = document.getElementById('live-theme');
     document.getElementById('open-help').addEventListener('click', () => this._toggleUtilityPanel(this._helpPanel));
-    document.getElementById('open-settings').addEventListener('click', () => this._toggleUtilityPanel(this._settingsPanel));
-    document.querySelectorAll('.utility-close').forEach(button => button.addEventListener('click', () => this._closeUtilityPanels()));
-    for (const control of [this._liveLine, this._liveArrow, this._liveMinimap, this._liveGamey, this._liveReducedMotion, this._liveTrees, this._liveDetailed3d, this._liveGoogleTiles, this._liveSound, this._liveZoom]) {
-      control.addEventListener('change', () => this._readLiveSettings());
-    }
-    this._liveControls.addEventListener('change', () => this._readLiveSettings());
-    this._liveView.addEventListener('change', () => this._readLiveSettings());
-    this._liveTheme.addEventListener('change', () => this._readLiveSettings());
+    document.getElementById('open-settings').addEventListener('click', () => this._toggleUtilityPanel('settings'));
+    document.querySelectorAll('#help-panel .utility-close, #landmark-panel .utility-close').forEach(button => {
+      button.addEventListener('click', () => this._closeUtilityPanels());
+    });
+  }
+
+  _applyPrefsToRuntime(prefs, { persist = true, applySound = persist } = {}) {
+    this.routeOptions = {
+      answerMode: prefs.answerMode,
+      line: prefs.line,
+      arrow: prefs.arrow,
+      minimap: prefs.minimap
+    };
+    this.gameyFeatures = prefs.gamey;
+    this.camera.reducedMotion = prefs.reducedMotion;
+    this.travelMode = prefs.travelMode;
+    this.controlMode = prefs.controlMode;
+    if (this.player) this.player.controlMode = this.controlMode;
+    this.viewMode = prefs.viewMode;
+    this.camera.viewMode = this.viewMode;
+    this.camera.northUp = this.viewMode === 'north';
+    this.themeMode = prefs.themeMode;
+    this.vectorMap.applyTheme(this.themeMode);
+    this.camera.zoom = prefs.zoom;
+    this.showMiniMap = prefs.minimap;
+    this.routeDifficulty = prefs.difficulty;
+    this.routePattern = prefs.routePattern;
+    this.vectorMap.setTreesVisible(prefs.trees && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
+    this.vectorMap.setDetailedBuildingsVisible(prefs.detailed3d && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
+    this.vectorMap.setGoogleTilesEnabled(!!prefs.googleTiles);
+    if (applySound) this._setSoundEnabled(prefs.sound);
+    if (persist) this._savePreferences();
   }
 
   _syncLiveSettings() {
-    this._liveLine.checked = !!this.routeOptions.line;
-    this._liveArrow.checked = !!this.routeOptions.arrow;
-    this._liveMinimap.checked = !!this.showMiniMap;
-    this._liveControls.value = this.controlMode;
-    this._liveView.value = this.viewMode;
-    this._liveTheme.value = this.themeMode;
-    this._liveGamey.checked = this.gameyFeatures;
-    this._liveSound.checked = !this.sound.muted;
-    this._liveTrees.checked = this._treesEnabled.checked;
-    this._liveReducedMotion.checked = !!this.camera.reducedMotion;
-    this._liveDetailed3d.checked = this._detailed3d.checked;
-    if (this._liveGoogleTiles && this._googleTiles) this._liveGoogleTiles.checked = this._googleTiles.checked;
-    this._liveZoom.value = String(this.camera.zoom);
+    const current = this._prefs();
+    this._overlay.store.replacePrefs({
+      ...current,
+      line: !!this.routeOptions.line,
+      arrow: !!this.routeOptions.arrow,
+      minimap: !!this.showMiniMap,
+      controlMode: this.controlMode,
+      viewMode: this.viewMode,
+      themeMode: this.themeMode,
+      gamey: this.gameyFeatures,
+      sound: !this.sound.muted,
+      reducedMotion: !!this.camera.reducedMotion,
+      zoom: this.camera.zoom
+    });
   }
 
   _readLiveSettings() {
-    this.routeOptions.line = this._liveLine.checked;
-    this.routeOptions.arrow = this._liveArrow.checked;
-    this.showMiniMap = this._liveMinimap.checked;
-    this.routeOptions.minimap = this.showMiniMap;
-    this.gameyFeatures = this._liveGamey.checked;
-    this._gameyFeatures.checked = this.gameyFeatures;
-    this.controlMode = this._liveControls.value;
-    if (this.player) this.player.controlMode = this.controlMode;
-    this.viewMode = this._liveView.value;
-    this.camera.viewMode = this.viewMode;
-    this.camera.northUp = this.viewMode === 'north';
-    this.themeMode = this._liveTheme.value;
-    this.vectorMap.applyTheme(this.themeMode);
-    this.camera.zoom = Number(this._liveZoom.value);
-    this._setSoundEnabled(this._liveSound.checked);
-    this._treesEnabled.checked = this._liveTrees.checked;
-    this.vectorMap.setTreesVisible(this._liveTrees.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
-    this.camera.reducedMotion = this._liveReducedMotion.checked;
-    this._reducedMotion.checked = this.camera.reducedMotion;
-    this._detailed3d.checked = this._liveDetailed3d.checked;
-    this.vectorMap.setDetailedBuildingsVisible(this._liveDetailed3d.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
-    if (this._liveGoogleTiles && this._googleTiles) {
-      this._googleTiles.checked = this._liveGoogleTiles.checked;
-      this.vectorMap.setGoogleTilesEnabled(this._liveGoogleTiles.checked);
-    }
-    this._savePreferences();
+    this._applyPrefsToRuntime(this._prefs());
+    if (this.routePath) this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
   }
 
   _setSoundEnabled(enabled) {
@@ -193,8 +135,6 @@ class GameRouteRuntime {
       this.soundStarted = true;
     }
     this.sound.setEnabled(enabled);
-    if (this._soundEnabled) this._soundEnabled.checked = enabled;
-    if (this._liveSound) this._liveSound.checked = enabled;
   }
 
   _toggleDebug() {
@@ -280,34 +220,34 @@ class GameRouteRuntime {
   }
 
   _toggleUtilityPanel(panel) {
-    const opening = panel.style.display !== 'flex';
+    const isSettings = panel === 'settings' || panel === this._settingsPanel;
+    const opening = isSettings
+      ? !this._overlay.store.getState().settingsOpen
+      : panel.style.display !== 'flex';
     this._closeUtilityPanels();
     if (opening) {
-      if (panel === this._settingsPanel) this._syncLiveSettings();
-      panel.style.display = 'flex';
+      if (isSettings) {
+        this._syncLiveSettings();
+        this._overlay.store.setSettingsOpen(true);
+      } else {
+        panel.style.display = 'flex';
+      }
       this._utilityOpen = true;
     }
   }
 
   _closeUtilityPanels() {
     this._helpPanel.style.display = 'none';
-    this._settingsPanel.style.display = 'none';
+    if (this._overlay) this._overlay.store.setSettingsOpen(false);
     this._landmarkPanel.style.display = 'none';
     this._utilityOpen = false;
   }
 
   _applyDifficulty(level) {
-    const preset = DIFFICULTY_PRESETS[level];
-    if (!preset) return;
-    this._answerMode.value = preset.answerMode;
-    this._assistLine.checked = preset.line;
-    this._assistArrow.checked = preset.arrow;
-    this._assistMinimap.checked = preset.minimap;
+    this._overlay.store.patchPrefs({ difficulty: level }, this._overlayZoom());
   }
 
-  _syncHomeAddressField() {
-    this._homeAddressField.style.display = this._routePattern.value === 'home' ? 'flex' : 'none';
-  }
+  _syncHomeAddressField() {}
 
   async _geocodeHomeAddress(address) {
     const rawAddress = address.trim();
@@ -354,17 +294,18 @@ class GameRouteRuntime {
 
   async _startConfiguredRoute({ isReroll = false } = {}) {
     if (!isReroll) this._routeRerolls = 0;
-    this._routeError.textContent = '';
-    this.routePattern = this._routePattern.value;
+    this._setRouteError('');
+    const prefs = this._prefs();
+    this.routePattern = prefs.routePattern;
     if (this.routePattern === 'home') {
-      const address = this._homeAddress.value.trim();
-      if (!address) { this._routeError.textContent = 'Enter a home address first.'; return; }
+      const address = (prefs.homeAddress || '').trim();
+      if (!address) { this._setRouteError('Enter a home address first.'); return; }
       try {
-        this._routeError.textContent = 'Finding your home base…';
+        this._setRouteError('Finding your home base…');
         this.homeBase = await this._geocodeHomeAddress(address);
         this.homeLeg = 'outbound';
       } catch (error) {
-        this._routeError.textContent = error.message || 'Could not find that address.';
+        this._setRouteError(error.message || 'Could not find that address.');
         return;
       }
     }
@@ -474,32 +415,10 @@ class GameRouteRuntime {
   _launchPoiRoute(from, to) {
     this.routeFrom = from;
     this.routeTo = to;
-    this.routeOptions = {
-      answerMode: this._answerMode.value,
-      line: this._assistLine.checked,
-      arrow: this._assistArrow.checked,
-      minimap: this._assistMinimap.checked
-    };
-    this.gameyFeatures = this._gameyFeatures.checked;
-    this.camera.reducedMotion = this._reducedMotion.checked;
-    this.travelMode = this._travelMode.value;
-    this.controlMode = this._controlMode.value;
-    this.viewMode = this._viewMode.value;
-    this.camera.viewMode = this.viewMode;
-    this.camera.northUp = this.viewMode === 'north';
-    this.themeMode = this._themeMode.value;
-    this.vectorMap.applyTheme(this.themeMode);
-    this.vectorMap.setTreesVisible(this._treesEnabled.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
-    this.vectorMap.setDetailedBuildingsVisible(this._detailed3d.checked && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
-    if (this._googleTiles) this.vectorMap.setGoogleTilesEnabled(this._googleTiles.checked);
+    this._applyPrefsToRuntime(this._prefs());
     document.querySelector('#canal-card p').textContent = this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?';
-    this.routeDifficulty = this._routeDifficulty.value;
-    this.showMiniMap = this.routeOptions.minimap;
-    this._savePreferences();
-    this._routeError.textContent = '';
-    this._routeSetup.style.display = 'none';
-    this.camera.zoom = Number(this._cameraZoom.value);
-    this._setSoundEnabled(this._soundEnabled.checked);
+    this._setRouteError('');
+    this._overlay.store.setSetupOpen(false);
     this._onLocationSelected(
       (from.lat + to.lat) / 2,
       (from.lng + to.lng) / 2,
@@ -521,8 +440,8 @@ class GameRouteRuntime {
 
   _returnToRouteSetup(message) {
     this.state = GameState.MENU;
-    this._routeError.textContent = message || '';
-    this._routeSetup.style.display = 'flex';
+    this._setRouteError(message || '');
+    this._overlay.store.setSetupOpen(true);
   }
 
   _checkShareLink() {
@@ -541,6 +460,7 @@ class GameRouteRuntime {
     this.particles = new ParticleSystem();
 
     this._seenLandmarks = new Set();
+    this._seenStreetKnowledge = new Set();
     this._clearLandmarkNotice();
 
     const startInfo = this.track.getNearestRoad(this.track.startPoint.x, this.track.startPoint.y);

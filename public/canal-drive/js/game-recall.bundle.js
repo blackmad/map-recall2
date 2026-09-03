@@ -101,6 +101,9 @@
     return mode === "car";
   }
 
+  // src/canalRecall/routing/cycleTrack.ts
+  var CYCLE_TRACK_ANSWER_MULTIPLIER = 1.1;
+
   // src/canalRecall/game/recallRuntime.ts
   var DISTRACTOR_COUNT = 3;
   var CHOICE_POOL_RADIUS = 1500;
@@ -111,43 +114,77 @@
     // ---- Store and account row ----
     _setupRecallStore() {
       this.recall = window.CanalRecallStoreModule ? window.CanalRecallStoreModule.store : null;
-      const row = document.getElementById("account-row");
-      const label = document.getElementById("account-label");
-      const note = document.getElementById("account-note");
-      const button = document.getElementById("account-button");
       this._skipMastered = document.getElementById("skip-mastered");
-      if (!this.recall || !row || !label || !note || !button) return;
+      const overlay = window.CanalRecallOverlay?.getOverlay?.() ?? this._overlay;
+      const skip = overlay?.store.getState().prefs.skipMastered ?? (typeof this._pendingSkipMastered === "boolean" ? this._pendingSkipMastered : true);
+      if (this.recall) this.recall.enabled = skip;
+      this._pendingSkipMastered = void 0;
+      if (!this.recall) return;
       const recall = this.recall;
-      this._skipMastered.addEventListener("change", () => {
-        recall.enabled = this._skipMastered.checked;
-        this._refreshMasteredLabels();
-        this._savePreferences();
-      });
+      if (overlay) {
+        overlay.callbacks.onSkipMastered = (enabled) => {
+          recall.enabled = enabled;
+          this._refreshMasteredLabels();
+          this._savePreferences();
+        };
+        overlay.callbacks.onAccountClick = async () => {
+          overlay.store.setAccount({ busy: true });
+          try {
+            if (recall.signedIn) await recall.signOut();
+            else await recall.signIn();
+          } catch (error) {
+            this._setRouteError(error.message || "Could not sign in.");
+          } finally {
+            overlay.store.setAccount({ busy: false });
+          }
+        };
+        overlay.callbacks.onClearKnowledge = async () => {
+          const cloud = recall.signedIn ? " and your signed-in cloud copy" : "";
+          const ok = window.confirm(
+            `Clear every street and canal name you have learned on this device${cloud}?
+
+Sign-in and your route settings stay. This cannot be undone.`
+          );
+          if (!ok) return;
+          overlay.store.setAccount({ busy: true });
+          try {
+            const cleared = await recall.clearKnowledge();
+            try {
+              localStorage.removeItem("canalRecall.factRotation.v1");
+            } catch {
+            }
+            this._factRotation = { history: {}, shown: 0, recentKinds: [] };
+            this._refreshMasteredLabels();
+            this._setRouteError(
+              cleared > 0 ? `Cleared ${cleared} learned name${cleared === 1 ? "" : "s"}.` : "No learned names to clear."
+            );
+          } catch (error) {
+            this._setRouteError(error.message || "Could not clear knowledge.");
+          } finally {
+            overlay.store.setAccount({ busy: false });
+          }
+        };
+      }
       recall.onUserChange((user) => {
-        row.style.display = "flex";
+        if (!overlay) return;
         if (user) {
-          label.textContent = user.label;
-          note.textContent = `${recall.masteredCount} answers synced`;
-          button.textContent = "Sign out";
+          overlay.store.setAccount({
+            visible: true,
+            label: user.label,
+            note: `${recall.masteredCount} answers synced`,
+            buttonLabel: "Sign out"
+          });
         } else {
-          label.textContent = "Playing as guest";
-          note.textContent = "Sign in to remember which streets you already know across devices.";
-          button.textContent = "Sign in";
-        }
-      });
-      button.addEventListener("click", async () => {
-        button.disabled = true;
-        try {
-          if (recall.signedIn) await recall.signOut();
-          else await recall.signIn();
-        } catch (error) {
-          this._routeError.textContent = error.message || "Could not sign in.";
-        } finally {
-          button.disabled = false;
+          overlay.store.setAccount({
+            visible: true,
+            label: "Playing as guest",
+            note: "Sign in to remember which streets you already know across devices.",
+            buttonLabel: "Sign in"
+          });
         }
       });
       recall.init().then(() => {
-        if (recall.available) row.style.display = "flex";
+        if (overlay) overlay.store.setAccount({ visible: true });
         this._refreshMasteredLabels();
       });
     }
@@ -290,6 +327,7 @@
         this.quizCurrentName = decision.name;
         this.learnedNames.add(decision.name);
         this._revealName(decision.name);
+        this._showStreetKnowledge(decision.name, isCar(this.travelMode) ? "street" : "water");
         return;
       }
       const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y);
@@ -319,6 +357,10 @@
       this.quizPromptName = name;
       this.quizPromptSegmentIndex = segmentIndex;
       this.quizPromptPointIndex = pointIndex;
+      this.quizFeedback = "";
+      this._clearLandmarkNotice();
+      this._neighborhoodNotice = null;
+      this._neighborhoodNoticeTimer = 0;
       this.player.speed = 0;
       this.player.vx = 0;
       this.player.vy = 0;
@@ -508,6 +550,12 @@
         },
         difficultyMultiplier: DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85,
         noveltyMultiplier: (this._routeMastery[this._normaliseCanalName(correctName)] || 0) < 0.5 ? 1.15 : 1,
+        cycleTrackMultiplier: (() => {
+          if (!isCar(this.travelMode) || !this.player) return 1;
+          const road = this.track.getNearestRoad(this.player.x, this.player.y);
+          const segment = road && this.track.segments?.[road.segIdx];
+          return segment?.separatedCycleTrack ? CYCLE_TRACK_ANSWER_MULTIPLIER : 1;
+        })(),
         gameyFeatures: this.gameyFeatures,
         recallFeature,
         recallStore: this.recall,
@@ -524,6 +572,9 @@
       this.quizFeedback = result.feedback;
       this._promptFeedback.textContent = result.feedback;
       this._promptFeedback.style.color = result.feedbackColor;
+      this._clearLandmarkNotice();
+      this._neighborhoodNotice = null;
+      this._neighborhoodNoticeTimer = 0;
       const atCrossing = this.quizPromptKind === "bridge" || this.quizPromptKind === "crossing-water";
       if (!atCrossing) {
         this.quizCurrentName = correctName;
@@ -547,8 +598,9 @@
       const learnedRouteType = isCar(this.travelMode) ? "street" : "water";
       setTimeout(() => {
         this._prompt.style.display = "none";
+        this.quizFeedback = "";
         this.canvas.focus();
-        if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType);
+        if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
       }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
     }
   };

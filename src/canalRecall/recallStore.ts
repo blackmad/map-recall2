@@ -86,6 +86,7 @@ class RecallStore {
 
   async init(): Promise<void> {
     this.states = read<StateMap>(STATES_KEY, {});
+    if (typeof window === 'undefined') return; // Node tests / scripts
     try {
       const response = await fetch(new URL(CONFIG_URL, window.location.href));
       if (!response.ok) return;                       // guest mode
@@ -99,8 +100,7 @@ class RecallStore {
       this.db = firestoreModule.getFirestore(app);
       authModule.onAuthStateChanged(this.auth, (user) => {
         this.uid = user ? user.uid : null;
-        const label = user ? (user.displayName || user.email || 'Signed in') : null;
-        for (const listener of this.listeners) listener(this.uid ? { uid: this.uid, label: label! } : null);
+        this._emitUser();
         if (this.uid) void this.pull();
       });
     } catch (reason) {
@@ -124,6 +124,54 @@ class RecallStore {
     if (!this.auth) return;
     const { signOut } = await import('firebase/auth');
     await signOut(this.auth);
+  }
+
+  /**
+   * Wipe spaced-repetition memory for street/canal names. Local always;
+   * cloud too when signed in. Leaves authentication and Canal preferences
+   * alone — “start over learning”, not “delete my account”.
+   */
+  async clearKnowledge(): Promise<number> {
+    const cleared = Object.keys(this.states).length;
+    this.states = {};
+    write(STATES_KEY, {});
+    write(EVENTS_KEY, {});
+    if (this.uid && this.db) {
+      try {
+        const { collection, getDocs, writeBatch } = await import('firebase/firestore');
+        for (const name of ['reviewStates', 'reviewEvents'] as const) {
+          const snapshot = await getDocs(collection(this.db, 'users', this.uid, name));
+          let batch = writeBatch(this.db);
+          let pending = 0;
+          for (const entry of snapshot.docs) {
+            batch.delete(entry.ref);
+            pending += 1;
+            if (pending >= 400) {
+              await batch.commit();
+              batch = writeBatch(this.db);
+              pending = 0;
+            }
+          }
+          if (pending > 0) await batch.commit();
+        }
+      } catch (reason) {
+        console.warn('Could not clear cloud recall progress:', reason);
+      }
+    }
+    this._emitUser();
+    return cleared;
+  }
+
+  private _emitUser(): void {
+    const user = this.uid
+      ? {
+        uid: this.uid,
+        label: this.auth?.currentUser?.displayName
+          || this.auth?.currentUser?.email
+          || 'Signed in',
+      }
+      : null;
+    for (const listener of this.listeners) listener(user);
   }
 
   keyFor(feature: RecallFeature): string {

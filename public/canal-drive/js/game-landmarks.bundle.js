@@ -96,18 +96,23 @@
     }
     return landmarks;
   }
+  function isLocatorMapImage(url) {
+    if (!url) return false;
+    return /Map[_-]NL[_-]|Map_-_NL[_-]|\/Map_NL_|locator.?map|_kaart\./i.test(url);
+  }
   function buildNeighborhoods(boundaries, enrichments, toWorld) {
     const enrichmentByName = new Map(enrichments.map((entry) => [entry.name, entry]));
     const neighborhoods = boundaries.filter((boundary) => boundary.geometry && NEIGHBORHOOD_KIND_RANKS[boundary.kind]).map((boundary) => {
       const enriched = enrichmentByName.get(boundary.name);
+      const rawUrl = enriched?.imageUrl || "";
       return {
         name: boundary.name,
         kind: boundary.kind,
         rank: NEIGHBORHOOD_KIND_RANKS[boundary.kind],
         rings: (boundary.geometry || []).map((polygon) => (polygon[0] || []).map(toWorld)).filter((ring) => ring.length > 2),
         wikipediaExtract: enriched?.wikipediaExtract || "",
-        imageUrl: enriched?.imageUrl || "",
-        imageAttribution: enriched?.imageAttribution || ""
+        imageUrl: isLocatorMapImage(rawUrl) ? "" : rawUrl,
+        imageAttribution: isLocatorMapImage(rawUrl) ? "" : enriched?.imageAttribution || ""
       };
     }).filter((hood) => hood.rings.length).sort((a, b) => b.rank - a.rank);
     for (const hood of neighborhoods) {
@@ -371,6 +376,150 @@
     const key = normalise(name);
     return index.get(`${type}:${key}`) || index.get(`${type === "street" ? "water" : "street"}:${key}`);
   }
+  function shouldOfferStreetKnowledge(input) {
+    if (!input.hasExtract || input.alreadyShownThisDrive) return false;
+    if (input.quizOpen) return false;
+    if (input.landmarkCardOpen && !input.replaceOpenCard) return false;
+    return true;
+  }
+
+  // src/canalRecall/game/teachingSurface.ts
+  function teachingOwnsBottom(input) {
+    return input.quizOpen || input.feedbackVisible || input.promptVisible || input.utilityOpen;
+  }
+  function canShowTeachingCard(input) {
+    return !teachingOwnsBottom(input);
+  }
+  function canShowMiniMap(enabled, input) {
+    return enabled && !teachingOwnsBottom(input);
+  }
+
+  // src/canalRecall/game/streetWikipedia.ts
+  var STREET_SUFFIX_PATTERN = /^(.*?)(straat|gracht|kade|plein|weg|laan|steeg|pad|plantsoen|brug)$/i;
+  function streetArticleTitleCandidates(name, city = "Amsterdam") {
+    const trimmed = name.trim();
+    if (!trimmed) return [];
+    return [`${trimmed} (${city})`, trimmed];
+  }
+  function personNameFromStreet(name) {
+    const match = name.trim().match(STREET_SUFFIX_PATTERN);
+    if (!match) return null;
+    const stem = match[1].trim().replace(/[-–—]\s*$/, "").trim();
+    if (!stem || stem.split(/\s+/).length < 2) return null;
+    return stem;
+  }
+  function parseDutchNamedAfter(wikitext) {
+    const match = wikitext.match(
+      /genoemdnaar\s*=\s*\[\[([^\]|#]+)(?:[|#][^\]]*)?\]\]/i
+    );
+    const name = match?.[1]?.trim();
+    return name || null;
+  }
+  function isThinStreetExtract(extract) {
+    const text = extract.trim();
+    if (!text) return true;
+    return /^(de\s+)?[\w\s'-]+\s+is een (straat|gracht|laan|weg|kade|plein)\b/i.test(text) || /^[\w\s'-]+\s+is a (street|canal|avenue|road|square)\b/i.test(text);
+  }
+  function composeNamedAfterBlurb(personName, personExtract) {
+    const extract = personExtract.trim();
+    if (!extract) return `Named after ${personName}.`;
+    if (extract.toLowerCase().startsWith(personName.toLowerCase())) {
+      return `Named after ${personName}. ${extract}`;
+    }
+    return `Named after ${personName}. ${extract}`;
+  }
+  async function fetchSummary(fetchJson, lang, title) {
+    const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, "_"))}`;
+    try {
+      const data = await fetchJson(url);
+      if (!data || data.type === "https://mediawiki.org/api/rest_v1/errors/not_found") return null;
+      if (!data.extract && !data.content_urls?.desktop?.page) return null;
+      return data;
+    } catch {
+      return null;
+    }
+  }
+  async function fetchWikitext(fetchJson, lang, title) {
+    const url = new URL(`https://${lang}.wikipedia.org/w/api.php`);
+    url.search = new URLSearchParams({
+      action: "parse",
+      page: title,
+      prop: "wikitext",
+      format: "json",
+      origin: "*",
+      redirects: "1"
+    }).toString();
+    try {
+      const data = await fetchJson(url.toString());
+      return data.parse?.wikitext?.["*"] || "";
+    } catch {
+      return "";
+    }
+  }
+  async function resolveStreetWikipedia(name, fetchJson, city = "Amsterdam") {
+    let streetSummary = null;
+    let streetLang = "nl";
+    let streetTitle = "";
+    for (const title of streetArticleTitleCandidates(name, city)) {
+      const english = await fetchSummary(fetchJson, "en", title);
+      if (english?.extract) {
+        streetSummary = english;
+        streetLang = "en";
+        streetTitle = english.title || title;
+        break;
+      }
+      const dutch = await fetchSummary(fetchJson, "nl", title);
+      if (dutch?.extract || dutch?.content_urls?.desktop?.page) {
+        streetSummary = dutch;
+        streetLang = "nl";
+        streetTitle = dutch.title || title;
+        break;
+      }
+    }
+    if (!streetSummary) return null;
+    const wikipediaUrl = streetSummary.content_urls?.desktop?.page || `https://${streetLang}.wikipedia.org/wiki/${encodeURIComponent(streetTitle.replace(/ /g, "_"))}`;
+    const wikidata = streetSummary.wikibase_item;
+    const streetExtract = (streetSummary.extract || "").trim();
+    let personName = personNameFromStreet(name);
+    if (streetLang === "nl" && streetTitle) {
+      const wikitext = await fetchWikitext(fetchJson, "nl", streetTitle);
+      personName = parseDutchNamedAfter(wikitext) || personName;
+    }
+    let personExtract = "";
+    if (personName) {
+      const person = await fetchSummary(fetchJson, "en", personName);
+      personExtract = (person?.extract || "").trim();
+    }
+    if (personName && personExtract && (isThinStreetExtract(streetExtract) || streetLang === "nl")) {
+      return {
+        name,
+        wikidata,
+        wikipedia: `${streetLang}:${streetTitle}`,
+        wikipediaUrl,
+        wikipediaExtract: composeNamedAfterBlurb(personName, personExtract),
+        wikipediaExtractLang: "en"
+      };
+    }
+    if (!streetExtract && !(personName && personExtract)) return null;
+    if (personName && personExtract && streetExtract && streetLang === "en") {
+      return {
+        name,
+        wikidata,
+        wikipedia: `en:${streetTitle}`,
+        wikipediaUrl,
+        wikipediaExtract: `${streetExtract} Named after ${personName}. ${personExtract}`,
+        wikipediaExtractLang: "en"
+      };
+    }
+    return {
+      name,
+      wikidata,
+      wikipedia: `${streetLang}:${streetTitle}`,
+      wikipediaUrl,
+      wikipediaExtract: streetExtract || composeNamedAfterBlurb(personName || name, personExtract),
+      wikipediaExtractLang: streetLang
+    };
+  }
 
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
@@ -559,16 +708,29 @@
       if (!notice || !notice.wikipediaUrl) return;
       window.open(notice.wikipediaUrl, "_blank", "noopener");
     }
-    _showStreetKnowledge(name, type = "street") {
+    _showStreetKnowledge(name, type = "street", replaceOpenCard = false) {
       const key = this._normaliseCanalName(name);
-      const entry = routeKnowledgeFor(
+      let entry = routeKnowledgeFor(
         this.streetKnowledge,
         name,
         type,
         (value) => this._normaliseCanalName(value)
       );
+      if (!entry && type === "street") {
+        this._resolveMissingStreetKnowledge(name, key, replaceOpenCard);
+        return;
+      }
       if (!entry) return;
       const noticeId = entry.id || `${type}-knowledge:${key}`;
+      this._seenStreetKnowledge = this._seenStreetKnowledge || /* @__PURE__ */ new Set();
+      if (!shouldOfferStreetKnowledge({
+        hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract),
+        alreadyShownThisDrive: this._seenStreetKnowledge.has(noticeId),
+        quizOpen: !!this.quizPromptName,
+        landmarkCardOpen: !!this._landmarkNotice,
+        replaceOpenCard
+      })) return;
+      this._seenStreetKnowledge.add(noticeId);
       const split = splitDetail(entry.wikipediaExtract || "");
       this._showLandmarkNotice({
         id: noticeId,
@@ -596,6 +758,43 @@
         }).catch(() => {
         });
       }
+    }
+    /**
+     * Curated extract coverage is sparse: only streets that scored into the top
+     * 300 *and* carried OSM wikipedia/wikidata tags get a shipped blurb. When a
+     * driveable street is missing, look up `Name (Amsterdam)` on Wikipedia and
+     * prefer an English "named after" person summary so the card can say who
+     * they were.
+     */
+    _resolveMissingStreetKnowledge(name, key, replaceOpenCard) {
+      if (this.quizPromptName) return;
+      if (this._landmarkNotice && !replaceOpenCard) return;
+      this._streetSummaryRequests = this._streetSummaryRequests || /* @__PURE__ */ new Set();
+      const requestId = `street-wiki:${key}`;
+      if (this._streetSummaryRequests.has(requestId)) return;
+      this._streetSummaryRequests.add(requestId);
+      const fetchJson = async (url) => {
+        const response = await fetch(url, { headers: { accept: "application/json" } });
+        if (!response.ok) throw new Error(`wikipedia ${response.status}`);
+        return response.json();
+      };
+      resolveStreetWikipedia(name, fetchJson).then((resolved) => {
+        if (!resolved?.wikipediaExtract && !resolved?.wikipediaUrl) return;
+        const entry = {
+          id: requestId,
+          name: resolved.name || name,
+          type: "street",
+          wikidata: resolved.wikidata,
+          wikipedia: resolved.wikipedia,
+          wikipediaUrl: resolved.wikipediaUrl,
+          wikipediaExtract: resolved.wikipediaExtract,
+          wikipediaExtractLang: resolved.wikipediaExtractLang
+        };
+        this.streetKnowledge = this.streetKnowledge || /* @__PURE__ */ new Map();
+        this.streetKnowledge.set(`street:${key}`, entry);
+        this._showStreetKnowledge(name, "street", replaceOpenCard);
+      }).catch(() => {
+      });
     }
     // ---- Loading the extract ----
     async _loadLandmarks(centerLat, centerLng, segments) {
@@ -713,7 +912,7 @@
       if (this.currentNeighborhood) this._visitedNeighborhoods.add(this.currentNeighborhood);
       if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
         this._previousNeighborhood = this.currentNeighborhood;
-        if (!this.quizPromptName && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+        if (canShowTeachingCard(this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
           if (hood) this._ensureNeighborhoodImage(hood);
           this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
           this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
@@ -732,6 +931,7 @@
         }
       }
       if (this._landmarkNotice) return;
+      if (!canShowTeachingCard(this._teachingGate())) return;
       if (nearest) {
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);
@@ -778,6 +978,7 @@
       const lm = this._landmarkNotice;
       this._landmarkCardBounds = null;
       if (!lm) return;
+      if (!canShowTeachingCard(this._teachingGate())) return;
       const ctx = this.ctx;
       const alpha = this._landmarkNoticeAlpha;
       if (alpha <= 0) return;
@@ -797,7 +998,7 @@
         hasArticle: !!lm.wikipediaUrl,
         hasImage
       }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
-      const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0);
+      const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) && canShowTeachingCard(this._teachingGate());
       const bottomLayout = window.CanalRecallUi.hudLayout({
         viewport: this.viewport,
         tripWidth: 180,
@@ -806,7 +1007,7 @@
         landmarkHeight: card.height,
         feedbackVisible: !!this.quizFeedback,
         neighborhoodVisible: !!this.currentNeighborhood,
-        minimapVisible: this.showMiniMap,
+        minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
         zoomVisible: this._zoomBadgeTimer > 0,
         controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
       });
@@ -871,7 +1072,7 @@
     _renderNeighborhoodNotice() {
       const hood = this._neighborhoodNotice;
       if (!hood || this._neighborhoodNoticeTimer <= 0) return;
-      if (this.quizPromptName) return;
+      if (!canShowTeachingCard(this._teachingGate())) return;
       const ctx = this.ctx;
       const duration = NEIGHBORHOOD_NOTICE_SECONDS;
       const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);
@@ -892,7 +1093,7 @@
         tripWidth: 180,
         postcardHeight: card.height,
         neighborhoodVisible: !!this.currentNeighborhood,
-        minimapVisible: this.showMiniMap
+        minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate())
       });
       const cardX = bottomLayout.postcard.x;
       const baseCardY = bottomLayout.postcard.y;

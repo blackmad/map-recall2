@@ -61,7 +61,9 @@ osmium tags-filter "$city_pbf" \
   w/waterway=canal,river,stream,drain,dock,ditch r/waterway=canal,river,stream,drain,dock,ditch \
   w/natural=water r/natural=water w/water=canal,river,basin,moat,pond,lake,reflecting_pool,oxbow \
   r/water=canal,river,basin,moat,pond,lake,reflecting_pool,oxbow w/landuse=basin \
-  w/highway=motorway,trunk,primary,secondary,tertiary,motorway_link,trunk_link,primary_link,secondary_link,tertiary_link,living_street,residential,unclassified,service,busway \
+  w/highway=motorway,trunk,primary,secondary,tertiary,motorway_link,trunk_link,primary_link,secondary_link,tertiary_link,living_street,residential,unclassified,service,busway,cycleway,pedestrian \
+  w/highway=footway/bicycle=yes,designated,permissive,official \
+  w/highway=path/bicycle=yes,designated,permissive,official \
   w/bridge=yes w/man_made=bridge nwr/place=square nwr/amenity=marketplace \
   nwr/leisure=park,garden,nature_reserve nwr/tourism=attraction,museum,viewpoint,monument,gallery,zoo \
   nwr/historic nwr/amenity=theatre,arts_centre,community_centre,townhall,place_of_worship \
