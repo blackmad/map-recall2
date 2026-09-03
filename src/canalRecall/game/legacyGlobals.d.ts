@@ -81,6 +81,7 @@ declare const CanalRecallBridges: typeof import('../bridgeCrossings');
 interface Window {
   CanalRecallCards: typeof import('../noticeCards');
   CanalRecallUi: typeof import('../gameUi');
+  CanalRecallOverlay?: typeof import('../overlay/mount');
   /** Subsystem classes queued for installation onto `Game.prototype`. */
   CanalRecallGameModules?: Array<new () => unknown>;
 }

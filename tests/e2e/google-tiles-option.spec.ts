@@ -1,12 +1,19 @@
-// Google's photorealistic mesh is an overview-only option: it reads cleanly
-// from ~25 m up and is a smear at cycling height, and it carries no building
-// identity to highlight an answer with (see HISTORY.md). The altitude rule
+// Google's photorealistic mesh is an overview-only option: street zoom keeps
+// 3DBAG so buildings still have identity (see HISTORY.md). The zoom rule
 // itself is unit-covered by `npm run test:photoreal-gate`; what this file
 // covers is the wiring around it — that the setting reaches the map, and that
-// no tile is ever requested from the height the game is actually played at.
+// no tile is ever requested from the zoom the game is actually played at.
 import { test, expect } from '@playwright/test';
 
 async function loaded(page: import('@playwright/test').Page) {
+  // The Map Tiles key is no longer in the bundle. Inject a throwaway key so
+  // overview-path tests can still prove a tileset request is attempted; every
+  // tile.googleapis.com call is aborted below so nothing is billed.
+  await page.route('**/google-tiles-config.json', (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify({ apiKey: 'AIzaSyTEST_KEY_FOR_E2E_ONLY___________' }),
+  }));
   await page.goto('/canal-drive/');
   await page.waitForFunction(() => !!(window as any).canalRecallGame?.ctx);
   // The tiles module is ESM and therefore deferred; the gate is a classic
@@ -16,23 +23,23 @@ async function loaded(page: import('@playwright/test').Page) {
   await page.waitForFunction(() => (window as any).canalRecallGame?.vectorMap?.ready);
 }
 
-test('the gate ships with the page and agrees with the measured heights', async ({ page }) => {
+test('the gate ships with the page and agrees with play vs overview zoom', async ({ page }) => {
   await loaded(page);
   const verdicts = await page.evaluate(() => {
     const gate = (window as any).CanalRecallPhotorealGate;
-    const at = (altitudeMeters: number, active: boolean) =>
-      gate.shouldShowPhotoreal({ enabled: true, altitudeMeters, active });
+    const at = (cameraZoom: number, active: boolean) =>
+      gate.shouldShowPhotoreal({ enabled: true, cameraZoom, active });
     return {
-      cycling: at(1.7, false),
-      smearing: at(10, false),
-      overview: at(150, false),
-      activation: (window as any).CanalRecallGoogleTiles.ACTIVATION_METERS,
+      play: at(0.5, false),
+      street: at(1.2, false),
+      overview: at(0.2, false),
+      activation: gate.ACTIVATION_ZOOM,
     };
   });
-  expect(verdicts.cycling).toBe(false);
-  expect(verdicts.smearing).toBe(false);
+  expect(verdicts.play).toBe(false);
+  expect(verdicts.street).toBe(false);
   expect(verdicts.overview).toBe(true);
-  expect(verdicts.activation).toBe(25);
+  expect(verdicts.activation).toBe(0.32);
 });
 
 test('the setting exists in both panels and reaches the map', async ({ page }) => {
@@ -43,7 +50,7 @@ test('the setting exists in both panels and reaches the map', async ({ page }) =
     typeof (window as any).canalRecallGame?.vectorMap?.setGoogleTilesEnabled)).toBe('function');
 });
 
-test('switching it on at cycling height requests no tiles and keeps 3DBAG', async ({ page }) => {
+test('switching it on at play zoom requests no tiles and keeps 3DBAG', async ({ page }) => {
   await loaded(page);
   const googleRequests: string[] = [];
   page.on('request', (request) => {
@@ -52,10 +59,7 @@ test('switching it on at cycling height requests no tiles and keeps 3DBAG', asyn
 
   const state = await page.evaluate(async () => {
     const map = (window as any).canalRecallGame.vectorMap;
-    // Actually put the camera at street level rather than only asserting from
-    // the overview one. Resetting `_googleTilesActive` alone leaves the real
-    // altitude in place, which is several hundred metres up and above the gate.
-    map._cameraAltitudeMeters = () => 1.7;
+    map._lastCameraZoom = 0.5;
     map._googleTilesActive = false;
     map.setGoogleTilesEnabled(true);
     map._updateGoogleTiles();
@@ -65,7 +69,7 @@ test('switching it on at cycling height requests no tiles and keeps 3DBAG', asyn
 
   expect(state.active).toBe(false);
   expect(state.layerAdded).toBe(false);
-  expect(googleRequests, 'no billable tile request may be made from cycling height').toEqual([]);
+  expect(googleRequests, 'no billable tile request may be made from play zoom').toEqual([]);
 });
 
 // The three defects that shipped together and left the option doing nothing at
@@ -101,6 +105,7 @@ test('switching it on at overview height actually asks Google for a tileset', as
 
   await page.evaluate(async () => {
     const map = (window as any).canalRecallGame.vectorMap;
+    map._lastCameraZoom = 0.2;
     map.setGoogleTilesEnabled(true);
     map._updateGoogleTiles();
   });

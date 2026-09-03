@@ -1,9 +1,11 @@
 /**
  * Build the 3D browser bundles against one shared copy of three.js.
  *
- * `detailed-buildings.bundle.js` (698 KB) and `player-vehicles.bundle.js`
- * (606 KB) each carried a complete private copy of three, so every player
- * downloaded and parsed it twice. `three.bundle.js` is now the only copy.
+ * Measured on close-out of TODO item 9: `three.bundle.js` ~783 KB is the only
+ * Three copy; `player-vehicles.bundle.js` ~5 KB and
+ * `detailed-buildings.bundle.js` ~136 KB both resolve `three` through the
+ * `CanalRecallThree` shim. (Older notes still mention 698/606 KB private
+ * copies — those were the pre-shim sizes.)
  *
  * This needs esbuild's JS API rather than the CLI: `--alias:three=…` matches by
  * prefix, so it also rewrote `three/addons/utils/BufferGeometryUtils.js` — which

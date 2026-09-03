@@ -18,6 +18,8 @@ const generatedBundles = [
   'js/game-recall.bundle.js',
   'js/route-selection.bundle.js',
   'js/game-presentation.bundle.js',
+  'js/preferences.bundle.js',
+  'js/overlay.bundle.js',
 ];
 
 const packageScripts = JSON.parse(fs.readFileSync('package.json', 'utf8')).scripts;
@@ -61,11 +63,16 @@ const runtimeFiles = [
 const gameFile = 'js/game.js';
 // Typed leaves the subsystems call through. They are loaded into the sandbox
 // first so that installing a subsystem exercises the same globals the page has.
-const dependencyBundles = ['js/route-selection.bundle.js'];
+const dependencyBundles = ['js/route-selection.bundle.js', 'js/preferences.bundle.js'];
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 
 let previousIndex = -1;
-for (const file of [...runtimeFiles, gameFile]) {
+for (const file of [
+  'js/preferences.bundle.js',
+  'js/overlay.bundle.js',
+  ...runtimeFiles,
+  gameFile,
+]) {
   const scriptIndex = index.indexOf(`src="${file}"`);
   assert(scriptIndex > previousIndex, `${file} must load after its dependencies`);
   previousIndex = scriptIndex;
@@ -96,6 +103,11 @@ for (const file of [...dependencyBundles, ...runtimeFiles]) {
 // An esbuild `--global-name` IIFE declares a top-level `var`, which in a vm
 // context lands on the sandbox global directly — the same way the page sees it.
 assert(context.CanalRecallRoute, 'route-selection bundle did not publish its global');
+assert(context.CanalRecallPreferences, 'preferences bundle did not publish its global');
+// Classic scripts put `var` globals on `window`; the vm keeps them on the
+// sandbox global instead, so mirror the page before evaluating game.js.
+context.window.CanalRecallPreferences = context.CanalRecallPreferences;
+context.window.CanalRecallRoute = context.CanalRecallRoute;
 
 const modules = context.window.CanalRecallGameModules;
 assert.equal(modules.length, runtimeFiles.length, 'every runtime file must register one module');

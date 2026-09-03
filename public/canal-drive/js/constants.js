@@ -200,7 +200,15 @@ const ROAD_WIDTHS = {
   secondary: 40, secondary_link: 32,
   tertiary: 35, tertiary_link: 28,
   residential: 30,
-  unclassified: 28
+  unclassified: 28,
+  // Bike-first centrelines: narrower than a residential carriageway.
+  living_street: 28,
+  service: 24,
+  busway: 32,
+  cycleway: 22,
+  pedestrian: 26,
+  footway: 18,
+  path: 20,
 };
 const DEFAULT_ROAD_WIDTH = 32;
 

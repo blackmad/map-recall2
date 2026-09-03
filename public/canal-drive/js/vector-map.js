@@ -26,6 +26,8 @@ class VectorBasemap {
     this._googleTiles = null;
     this._googleTilesEnabled = false;
     this._googleTilesActive = false;
+    this._lastCameraZoom = null;
+    this._quizQuietMap = false;
     this._activeLandmark = null;
     this._playerBike = null;
     this._playerBoat = null;
@@ -657,25 +659,23 @@ class VectorBasemap {
   }
 
   /**
-   * Google's mesh earns its place only from the overview camera: measured, it is
-   * excellent from ~25 m up and a smear at cycling height, and it carries no
-   * building identity to highlight an answer with. So altitude, not preference
-   * alone, decides — and it swaps back to 3DBAG on the way down.
+   * Google's mesh earns its place only from the overview camera: at street
+   * zoom it is a smear without building identity. The player-facing quantity
+   * is `camera.zoom` (default 0.50 stays on 3DBAG); MapLibre altitude never
+   * drops to the spike's 25 m cycling height.
    *
-   * The altitude rule itself, including its hysteresis band, is
+   * The zoom rule itself, including its hysteresis band, is
    * `src/canalRecall/building/photorealGate.ts` and is covered by
-   * `npm run test:photoreal-gate`. Note that at the heights this camera
-   * actually reaches the rule never says no — see TODO item 8c.
+   * `npm run test:photoreal-gate`.
    */
   _updateGoogleTiles() {
     if (!this.map) return;
-    const altitude = this._cameraAltitudeMeters();
     const api = window.CanalRecallGoogleTiles;
     const gate = window.CanalRecallPhotorealGate;
     if (!gate) return;
     const want = gate.shouldShowPhotoreal({
       enabled: this._googleTilesEnabled,
-      altitudeMeters: altitude,
+      cameraZoom: this._lastCameraZoom ?? null,
       active: this._googleTilesActive,
     });
 
@@ -936,6 +936,24 @@ class VectorBasemap {
     return this._labelsVisible;
   }
 
+  /**
+   * During a place quiz, hide dense POI / neighbourhood names so the map does
+   * not answer “where am I?”. Dots stay; the player’s D-toggle still owns the
+   * resting state via `_labelsVisible`.
+   */
+  setQuizQuietMap(quiet) {
+    if (!this.map || !this.map.getStyle()) return;
+    this._quizQuietMap = !!quiet;
+    const ids = ['poi-labels', 'brand-poi-labels', 'local-food-labels', 'neighborhood-labels'];
+    for (const id of ids) {
+      if (!this.map.getLayer(id)) continue;
+      try {
+        this.map.setLayoutProperty(id, 'visibility',
+          this._quizQuietMap ? 'none' : (this._labelsVisible ? 'visible' : 'none'));
+      } catch (_) {}
+    }
+  }
+
   // The map is simply the screen. It used to be centred with
   // `left = (innerWidth - width) / 2`, which letterboxed a tall desktop window
   // and fed a phone loop: a stale width left the container hanging off the
@@ -978,6 +996,7 @@ class VectorBasemap {
     // keeps sitting exactly on the basemap.
     const pitch = cockpit ? 72 : chase ? 58 : TOPDOWN_TILT_DEGREES;
     this.map.jumpTo({ center: [lon, lat], zoom: cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom, bearing, pitch });
+    this._lastCameraZoom = camera.zoom;
     this._updateGoogleTiles();
     camera.projector = pitch > 0
       ? (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas)

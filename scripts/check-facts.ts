@@ -27,7 +27,9 @@ import {
   pruneHistory,
   recordShown,
 } from '../src/canalRecall/facts/factRotation';
-import { selectReviewedFacts, summariseRejections } from '../src/canalRecall/facts/factReview';
+import { selectReviewedFacts, summariseRejections,
+  emptyReviewFile, setFeatureVerdict, toggleStruckFact, isFactStruck, countReviewLabels, reviewDownloadName,
+} from '../src/canalRecall/facts/factReview';
 import {
   buildFactIndex,
   commitShownFact,
@@ -589,6 +591,20 @@ check('an approved sentence without verifier provenance still cannot ship', () =
   }, 'facts-v2');
   assert.equal(result.published.length, 0);
   assert.equal(result.rejected[0].reason, 'invalid-provenance');
+});
+
+check('lab helpers build a version-matched review download', () => {
+  let review = emptyReviewFile('facts-v2', '2026-09-03');
+  review = setFeatureVerdict(review, 'a', 'approved');
+  review = toggleStruckFact(review, 'a', FACTS[1].text);
+  assert.equal(review.generatorVersion, 'facts-v2');
+  assert.equal(isFactStruck(review, 'a', FACTS[1].text), true);
+  review = toggleStruckFact(review, 'a', FACTS[1].text);
+  assert.equal(isFactStruck(review, 'a', FACTS[1].text), false);
+  review = setFeatureVerdict(review, 'b', 'rejected');
+  assert.deepEqual(countReviewLabels(review), { approved: 1, rejected: 1, labelled: 2 });
+  assert.equal(reviewDownloadName('amsterdam'), 'facts-review.json');
+  assert.equal(reviewDownloadName('utrecht'), 'facts-review-utrecht.json');
 });
 
 console.log(`Facts OK: ${checks.length} checks.`);

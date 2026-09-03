@@ -22,11 +22,14 @@ belongs here before anything below it.*
 
 **16. Review and refine the published Randstad trivia.** The owner approved the
 complete v10 automatically grounded batch, publishing 4,263 facts across 1,456
-features in Amsterdam, Rotterdam, Den Haag and Utrecht. Add per-fact
-approve/reject/edit controls to the Trivia Lab and export version-matched review
-files, then work through a stratified audit prioritising dates, quantities,
-Dutch translations and model-verifier disagreements. Corrections must retain
-exact Wikipedia evidence and must go back through the normal publication gate.
+features in Amsterdam, Rotterdam, Den Haag and Utrecht. Trivia Lab now has a
+**Human review** view: approve / reject / strike / note, local draft, load an
+existing `facts-review*.json`, and download a version-matched review file for
+`npm run facts:publish`. Remaining: work through a stratified audit prioritising
+dates, quantities, Dutch translations and model-verifier disagreements.
+Corrections that change wording must retain exact Wikipedia evidence and go
+back through the normal publication gate — the lab does not rewrite staged
+sentences in place.
 
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by
@@ -35,33 +38,9 @@ nearby learned features, visits, answer history and recency rather than treating
 one drive-through as mastery. Pairs naturally with item 5: the same data answers
 "what do I know" and "where should I be sent next".
 
-**7. Show street encyclopedia sparingly on new streets.**
-The compact extract is now city-wide for Wikipedia-linked streets and
-waterways (48 streets, 98 waters with English ledes). Cards still only open
-after a quiz answer, so turning onto an unasked street stays silent. Gate the
-card on entering a named street that is novel or due, keep it bottom-compact,
-and do not interrupt every junction.
-
 ---
 
 ## P2 — Weight and reach
-
-**8c. Decide what the photoreal gate should actually measure.**
-The mesh works now, but its 25 m activation height never binds. MapLibre's
-camera altitude is a function of zoom and viewport height, not a simulated eye
-height: measured across the view modes and the whole camera-zoom slider, the
-game's camera sits between roughly 95 m and 520 m up, so `shouldShowPhotoreal`
-answers "yes" every time the option is ticked and the promised hand-back to
-3DBAG at cycling height never happens. The 25 m in `photorealGate.ts` came from
-the spike, where it was a real eye height above the quay in a free-flying
-camera, and it did not survive the move to a map camera.
-
-Either re-measure the smear threshold against something the game's camera
-actually varies — ground sample distance at the map centre, or map zoom — and
-restate the gate in those terms, or accept that the option is simply "photoreal
-on/off" at every height the game can reach and delete the altitude band along
-with its hysteresis. Do not leave it as-is: the code and `HISTORY.md` both
-describe a behaviour that never fires.
 
 **8a. Productionise government-data building appearance enrichment.**
 The current worktree has a working PDOK proof: 5,778 of 10,578 Amsterdam
@@ -145,8 +124,8 @@ Amsterdam paths asserted against the algorithm it replaced).
 What is left in `osm-loader.js` is Overpass mirrors, failover and `Image`
 loading — network I/O that can only be tested by going to the network.
 
-**No un-migrated decision logic remains under this item.** What is left is
-item 8c's DOM work.
+**No un-migrated decision logic remains under this item.** Overlay preferences
+(item 8c) are typed; what is left in `game-route.js` is the Game adapter.
 
 Settled 2026-09-01: `track.js` was dead — `this.track` is only ever a
 `RoadNetwork`, and the `Track` class was constructed nowhere — so it is gone.
@@ -159,39 +138,12 @@ hotspot CLAUDE.md reserves), `renderer.js`, `hud.js`, `vector-map.js`,
 `map-picker.js`, the `*-source.js` 3D bundle entrypoints, and the small helpers
 (`input`, `camera`, `utils`, `sound`, `particles`, `loading-screen`).
 
-`game-route.js` (774) is parked behind item 8c: it is the part a UI framework
-would delete rather than type, so translating it verbatim would be work thrown
-away.
+`game-route.js` is a thin adapter over the React overlay (item 8c): it is the
+part a UI framework would delete rather than type, so translating it verbatim
+would be work thrown away.
 *The rule to keep: what the player is told is typed and tested; what paints it
 is not. Do not translate a method verbatim if the decision inside it belongs in
 the data half.*
-
-**8c. Decide the DOM overlay's framework, then rewrite the settings form.**
-Canvas draws the game, the HUD, every card and the finish screen; that stays
-hand-written and must never go near a framework. But roughly 450 lines are
-plain DOM — the route setup form, the quiz prompt card, the account row — and
-they are the hand-rolled state work: preferences, `<select>` values and game
-state are synchronised in three directions by hand across `_loadPreferences`,
-`_savePreferences`, `_syncLiveSettings`, `_readLiveSettings` and
-`_syncHomeAddressField`.
-
-React is the recommendation, on one ground: the repo already runs React 19 for
-the main Map Recall app, and adding Svelte would mean two component idioms and
-two toolchains for 450 lines of form. Its ~45 KB gzipped is real but small
-against the ~2 MB item 9 is about, and it deletes more state code than it adds.
-Mount it only on the overlay, code-split, never in the frame loop. Do this
-after `modes.ts` covers every setting, so the form binds to a typed state
-object rather than to `getElementById`.
-
-**9. Stop shipping three.js twice, and Firestore to everyone.**
-Measured, not suspected: `detailed-buildings.bundle.js` is 698 KB and
-`player-vehicles.bundle.js` is 606 KB, and both contain their own copy of
-three.js. `recall-store.bundle.js` is 750 KB, of which the great majority is
-Firebase/Firestore — shipped to every player including guests who never sign in.
-That is roughly 2 MB of JavaScript where well under half would do. Share one
-three build across the 3D bundles and load the Firestore sync lazily, behind
-sign-in.
-*Pure win, no design decisions, and it makes every later 3D addition cheaper.*
 
 **10. Replace flat landmark boxes with an appearance-aware building pipeline.**
 Keep MapLibre as the map, camera, labels and interaction surface. OSM Buildings
@@ -358,14 +310,11 @@ match any extract, because the Dutch ledes they were made from have since been
 rewritten upstream. The pass counts them; nothing prunes them.
 
 **12. Clear all my data.**
-A deliberately guarded reset for test accounts and players who want a fresh
-start: clears local preferences, recall and exploration state and the signed-in
-Firebase copy, explains exactly what will be deleted, requires confirmation,
-and leaves authentication intact. Also makes items 5 and 6 testable by hand.
-
-**13. Reward fully separated cycle tracks.**
-A bonus on OSM ways with separated cycle infrastructure, tuned so it reinforces
-safe Amsterdam route knowledge without encouraging detours.
+Partial: **Reset knowledge…** is on the route briefing account row (and
+confirms before wiping). It clears local + signed-in spaced-repetition memory
+and fact-rotation history, leaves auth and Canal preferences. Still open: a
+full “clear preferences / exploration / everything” path if we want that
+separate from knowledge reset.
 
 **14. Finish the Storybook workbench.**
 Ten phone states exist now — the driving HUD (idle, steering, mid-question,
@@ -381,7 +330,11 @@ serves both.
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in
 `scripts/check-canal-car.ts`. Ongoing, not a milestone: every geographic failure
-reported from play should land here before it is called fixed.
+reported from play should land here before it is called fixed. Bike-routing
+coverage for pedestrian/cycleway corridors is pinned in
+`scripts/check-city-extract.ts` (Zeedijk in, Kalverstraat out); still add the
+street name from any future "can't bike here" report so a junction-level miss
+does not hide behind the highway-class fix.
 
 ---
 

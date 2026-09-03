@@ -83,6 +83,167 @@ too; walls used to extrude to the ridge while a blue cap sat in the same plane �
 brown/blue shimmer. Walls now stop at the eaves for any tagged roof thickness,
 same-colour lids are skipped, and untagged `roof:shape=pyramidal` (the 58 m
 spire) invents a tip so OSM Buildings' cone is not a grey cylinder.
+## Street-mode routing includes bikeable ways
+
+Street mode presents as cycling but `streets-routing.json` was built from a
+car-only highway list. Pedestrian corridors and cycleways the basemap still
+draws — Zeedijk, Nieuwendijk, most of the separated cycle network — never
+entered the graph, so the router refused streets a bike can use. Routing now
+keeps the car set and adds `cycleway`, `pedestrian` unless `bicycle=no` /
+`dismount`, and `footway`/`path` only with an explicit bicycle yes. Kalverstraat
+(`bicycle=no`) stays out. Amsterdam routing grew 35,216 → 47,245 ways
+(~2.9 MB gzipped); `check-city-extract` pins Zeedijk in and Kalverstraat out.
+
+## Help panel scrolls instead of overflowing
+
+The `?` shortcuts card was centred with no max-height on desktop, so on a
+typical laptop height the title clipped off the top and Close fell off the
+bottom. Utility cards now cap at `86dvh`, scroll their body, and keep Close
+pinned under the list.
+
+## Account and knowledge reset sit on the briefing
+
+The route card buried sign-in under Advanced and had no way to start over.
+Account status is now a top-of-card row with **Sign in / Sign out** and
+**Reset knowledge…**, which confirms then clears local (and cloud, when signed
+in) spaced-repetition memory. Preferences stay. Cache-busted overlay/recall
+bundles so the icon-row briefing is not stuck behind an old `overlay.bundle.js`.
+
+## Briefing uses icon rows; compass sits under destination
+
+The route card’s four dropdowns became icon choice rows (travel, view, route,
+difficulty) so the first decisions are tappable rather than menu-hunting.
+Advanced options stay collapsed. The north rose moved from above the city
+overview to under the destination card on the right, beside the finish arrow.
+
+## On-demand street Wikipedia fills extract gaps
+
+Curated `streets.json` only keeps 300 streets, and encyclopedia cards only
+open for those with a shipped Wikipedia URL/extract (48 today). Driveable
+streets like Nicolaas Beetsstraat have a Dutch article and a person they are
+named after, but no OSM wiki tags, so they never entered the index. After a
+quiz answer (or silent adopt), a missing street now resolves
+`Name (Amsterdam)` on Wikipedia and prefers an English "named after" person
+summary — so the card can say who Nicolaas Beets was, not only that the road
+is in Oud-West.
+
+## Bottom chrome is just a faint map credit
+
+The old white `#prototype-links` pill (Map Recall back-link, Smokey’s GPL line,
+full OSM/CARTO prose) sat on the driving corridor. Driving now keeps a
+9 px `© OSM · CARTO` line with no card; Smokey’s and the Map Recall link live
+under **?** so GPL credit stays reachable without a permanent footer.
+
+## HUD has a north compass
+
+An always-on moss rose sits in the layout band (above the city overview on
+desktop; under the top stack on a phone, clear of the finish arrow). It tracks
+`camera.rotation` so heading-up and chase views still show true north. Separate
+from the terracotta destination assist — orientation cue, not a route hint.
+
+## Map Tiles API key is no longer committed
+
+The Google photoreal option used to ship a browser key inside
+`google-tiles-source.js` / `google-tiles.bundle.js`. It now loads
+`google-tiles-config.json` at runtime (gitignored), written by
+`npm run canal:google-tiles-config` from `VITE_GOOGLE_MAP_TILES_API_KEY`.
+Without that file the option fails closed and keeps 3DBAG. The leaked key
+(`Canal Recall 3D tiles spike` in project `map-cms-amsterdam-v1`) was
+rotated via `gcloud services api-keys`: create a referrer-restricted
+replacement (`Canal Recall Map Tiles`, `tile.googleapis.com` only), write
+local config, then soft-delete the old key. Git history still contains the
+old string; the Cloud credential no longer accepts it.
+
+## Trivia Lab can label and export a review file
+
+The lab’s Human review view approves or rejects features, strikes individual
+sentences, attaches notes, keeps a browser draft, and downloads a
+version-matched `facts-review*.json` for `facts:publish`. The stratified audit
+of the published v10 catalog remains TODO 16.
+
+## React overlay owns the briefing and live settings (item 8c)
+
+The route setup card, advanced options, account row and in-game settings panel
+are a React tree mounted on `#canal-overlay-root`, bound to
+`CanalPreferences` via `overlay/store.ts`. The Game reads that store instead of
+`getElementById` for travel mode, assists and zoom. Canvas HUD, quiz prompt,
+help and the landmark article stay vanilla. React is not in the frame loop;
+`flushSync` is only used so the first paint exists before the Game constructor
+wires callbacks.
+
+## Typed preferences object (item 8c foundation)
+
+`canalRecall.preferences.v1` is parsed and written by
+`src/canalRecall/game/preferences.ts` (`CanalRecallPreferences`): difficulty
+presets, mode unions via `parseMode`, zoom `0.65`→`0.50` migration, and
+boolean defaults live in one place. Load uses `parsePreferences` (preset then
+overlay); save uses `coercePreferences` so a live form snapshot is not rewritten
+by the difficulty preset. Skip-mastered is staged until the recall store binds,
+so a saved “ask everything” is no longer lost to the HTML default. The React
+settings overlay is still TODO 8c.
+
+## Separated cycle tracks earn a bounded answer bonus
+
+Street-mode answers on OSM ways tagged with a physically separated cycle track
+(`cycleway=track`, side-specific tracks, or kerb-segregated lanes) take a 1.1×
+score multiplier — below novelty, never a routing weight, so it does not pull
+players onto longer detours. Painted `cycleway=lane` alone does not qualify.
+
+## Three.js is shared; Firebase is code-split (item 9)
+
+Measured on close-out: `three.bundle.js` is the only Three copy (783 KB);
+`player-vehicles.bundle.js` is 5 KB and `detailed-buildings.bundle.js` is
+136 KB, both via the `CanalRecallThree` shim. The recall store ships as a 6 KB
+ESM entry with Firebase in separate chunks loaded from `init()` when
+`firebase-config.json` is present (session restore still needs Auth). Guests
+no longer download an inlined 750 KB IIFE of Firestore with the game scripts.
+Unifying Canal Recall’s store with the React app’s `progressRepository` is a
+separate follow-up, not this item.
+
+## One teaching surface at a time
+
+A single frame could show a waterway quiz, stale “Not quite — …” feedback, a
+museum card, dense POI labels, and a duplicated trip readout. `teachingSurface.ts`
+now gates the bottom band: quiz / answer-hold / utility own it; landmark and
+neighbourhood cards wait. Opening a question clears cards and feedback; feedback
+clears when the hold ends. Desktop trip lives only in the bottom pill. POI name
+labels and the minimap hide while a prompt is up. The quiz card is tighter
+(360px) so more of the canal stays visible.
+
+## Postcard text no longer sits under the photo fade
+
+The neighbourhood card measured text at `x+158` while drawing a 144 px photo
+and a navy fade out to `x+170` — leftover from the dark-card era — so names
+like Weesperbuurt started inside the image. Text now clears the photo, and the
+fade blends into cream paper inside the photo edge. Locator-map Wikipedia
+thumbnails (`Map_NL_-_Amsterdam_-…`) are rejected as non-photos so a parent
+district photograph can be borrowed; Weesperbuurt’s page image was exactly that
+kind of map.
+
+## Canal sloop paint, not bare aluminium
+
+The Meshy boat GLB still has no materials — one mesh, one primitive — so colour
+has always been applied on load. The old flat `#b8c0c6` aluminium made it read
+as an unfinished placeholder from chase view. Height-based vertex colours now
+paint a classic Amsterdam rental sloep: dark green hull, cream seats, pale
+gunwale, with low metalness so it looks painted fibreglass rather than metal.
+The canvas 2D fallback matches. A multi-material swap still wants a new GLB.
+
+## Photoreal follows game zoom, not a fake cycling height
+
+The 25 m gate never bound: MapLibre altitude at play zoom is 95–520 m, so
+ticking the option always drew Google's mesh. The spike's metres were a free
+camera above the quay. The live gate now reads `camera.zoom` — default 0.50
+and anything street-ward stays on 3DBAG; zooming out through 0.32 turns the
+mesh on, and zooming back in past 0.38 hands the city back, with the same
+hysteresis idea as before. Named check: play zoom requests no Google tiles.
+
+## Street encyclopedia on known streets, still silent on novel ones
+
+Cards still must not name a street that is under question. They now also open
+when a Wikipedia-linked street or water is adopted silently (already known),
+once per drive, and still after a quiz answer. An open landmark card blocks
+the silent-adopt path so the bottom band does not stack.
 
 ## Street encyclopedia is no longer just Nes
 
@@ -91,8 +252,8 @@ Wikipedia URLs for 30 of 300 streets, but `enrich-amsterdam-wikimedia.ts`
 threw away Dutch intros, so 21 of those were a link with no card text.
 The Wikipedia extract pass now includes streets, water, squares and parks;
 Dutch ledes are kept and tagged, then translated. Amsterdam ships 48 street
-and 98 water encyclopedia records with English blurbs. Cards still only open
-after a quiz answer — showing them when you turn onto a new street is item 7.
+and 98 water encyclopedia records with English blurbs. When those cards open
+is the later note above.
 
 ## Basemap duplicates near the extract are hidden by proximity too
 

@@ -32,7 +32,8 @@ The chase/cockpit player boat is “Moored Aluminum Boats”, generated with
 Meshy AI by the project owner rather than sourced from a third party, so it
 carries no upstream author to credit. Anyone redistributing this repository
 should confirm Meshy's current generated-asset terms for themselves; they vary
-by plan and are not asserted here.
+by plan and are not asserted here. The GLB has no materials; runtime paint
+makes it a canal sloep (dark green hull, cream seats) rather than bare metal.
 
 The bicycle ships here in modified form, which its CC BY-SA licence requires to
 be stated. It was not changed artistically, only reduced so a browser game can
@@ -48,7 +49,7 @@ original remains at the Sketchfab link above.
 
 The boat was reduced the same way, 2.85 MB to 0.24 MB and then to 0.03 MB at
 7,994 triangles; it arrives as raw geometry with no normals, materials or
-textures, so its shading and its aluminium colour are applied at runtime.
+textures, so normals and a height-painted sloep colour are applied at runtime.
 
 # Signature landmark models
 

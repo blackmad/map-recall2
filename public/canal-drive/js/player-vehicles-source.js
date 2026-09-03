@@ -38,6 +38,30 @@ const PIXELS_PER_METER_FALLBACK = 3;
 const MAX_HEEL = 0.16;
 const HEEL_EASING = 0.05;
 
+/**
+ * Paint a single-primitive boat mesh like a canal sloep. Height is the only
+ * reliable cue on this asset: the outer hull sits low, the benches and cockpit
+ * rise into the open cockpit, and the gunwale is the thin top rim.
+ */
+function paintBoatMesh(geometry, hull, seat, gunwale) {
+  geometry.computeBoundingBox();
+  const { min, max } = geometry.boundingBox;
+  const span = Math.max(1e-6, max.y - min.y);
+  const position = geometry.getAttribute('position');
+  const colors = new Float32Array(position.count * 3);
+  const mixed = new THREE.Color();
+  for (let i = 0; i < position.count; i++) {
+    const t = (position.getY(i) - min.y) / span;
+    if (t < 0.42) mixed.copy(hull);
+    else if (t < 0.78) mixed.copy(hull).lerp(seat, (t - 0.42) / 0.36);
+    else mixed.copy(seat).lerp(gunwale, Math.min(1, (t - 0.78) / 0.22));
+    colors[i * 3] = mixed.r;
+    colors[i * 3 + 1] = mixed.g;
+    colors[i * 3 + 2] = mixed.b;
+  }
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+}
+
 // Reused so a per-frame pose costs no allocation.
 const STEER_AXIS = new THREE.Vector3(0, 0, 1);
 const WHEEL_AXIS = new THREE.Vector3(0, 1, 0);
@@ -228,19 +252,24 @@ export class PlayerBoat3D extends Vehicle3D {
     this.heel += (target - this.heel) * HEEL_EASING;
   }
 
-  // The model is raw geometry: no normals, no materials, no textures. Without
-  // normals glTF requires flat shading, which makes a smooth aluminium hull
-  // look faceted, and without a material every mesh is default white. Both are
-  // cheaper to supply here than to ship — normals would add about 40% to the
-  // file for something the GPU can derive on load.
+  // The model is raw geometry: no normals, no materials, no textures — one
+  // mesh, one primitive. Without normals glTF requires flat shading; without
+  // a material every face is default white. Both are cheaper to supply here
+  // than to ship. Colour is painted by height so the same mesh reads as a
+  // classic Amsterdam rental sloep (dark green hull, cream seats) instead of
+  // bare aluminium. A multi-material swap would need a new GLB.
   _bind(imported) {
-    const hull = new THREE.MeshStandardMaterial({
-      color: 0xb8c0c6, roughness: 0.55, metalness: 0.4,
+    const hull = new THREE.Color(0x1a3d34);
+    const seat = new THREE.Color(0xe8dcc4);
+    const gunwale = new THREE.Color(0xf4efe4);
+    const paint = new THREE.MeshStandardMaterial({
+      color: 0xffffff, roughness: 0.48, metalness: 0.08, vertexColors: true,
     });
     imported.traverse((child) => {
       if (!child.isMesh) return;
       if (!child.geometry.getAttribute('normal')) child.geometry.computeVertexNormals();
-      child.material = hull;
+      paintBoatMesh(child.geometry, hull, seat, gunwale);
+      child.material = paint;
     });
   }
 

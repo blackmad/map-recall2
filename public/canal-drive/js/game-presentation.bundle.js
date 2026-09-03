@@ -147,6 +147,17 @@
     return mode === "car";
   }
 
+  // src/canalRecall/game/teachingSurface.ts
+  function teachingOwnsBottom(input) {
+    return input.quizOpen || input.feedbackVisible || input.promptVisible || input.utilityOpen;
+  }
+  function canShowMiniMap(enabled, input) {
+    return enabled && !teachingOwnsBottom(input);
+  }
+  function canShowPoiLabels(labelsWanted, input) {
+    return labelsWanted && !input.quizOpen && !input.promptVisible;
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
   var INK = "#24322b";
   var MUTED = "#68746e";
@@ -226,6 +237,9 @@
         return;
       }
       this._syncHudLayout();
+      const teaching = this._teachingGate();
+      const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
+      const tripInRecall = !!this._hudLayoutCache?.tripInRecall;
       this.hud.drawTripReadout(ctx, player.speed, this._playerDistancePx());
       this.hud.drawCanalScore(
         ctx,
@@ -235,7 +249,7 @@
         this.quizFeedback,
         this.quizStreak,
         this.gameyFeatures,
-        this.hud.tripText(player.speed, this._playerDistancePx())
+        tripInRecall ? this.hud.tripText(player.speed, this._playerDistancePx()) : ""
       );
       const routeAnswerHidden = !!this.quizPromptName || !!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName;
       const visibleRouteName = routeAnswerHidden ? "" : this.track.getRoadName(player.x, player.y);
@@ -252,6 +266,7 @@
         this.track.getDistanceToFinish(player.x, player.y),
         this._routeLearningPlan?.expectedNovelty ?? null
       );
+      this.hud.drawCompass(ctx, this.camera);
       if (this.routeOptions.arrow) {
         this.hud.drawFinishDirection(
           ctx,
@@ -262,7 +277,8 @@
           this.camera
         );
       }
-      if (this.showMiniMap) this.hud.drawCityOverview(ctx, this);
+      if (showMiniMap) this.hud.drawCityOverview(ctx, this);
+      this.vectorMap.setQuizQuietMap(!canShowPoiLabels(true, teaching));
       this._renderLandmarkNotice();
       this._renderNeighborhoodNotice();
       this._renderZoomBadge();
@@ -280,13 +296,15 @@
      *  where the others are and the phone layout stays collision-free. */
     _syncHudLayout() {
       const ui = window.CanalRecallUi;
+      const teaching = this._teachingGate();
+      const minimapVisible = canShowMiniMap(this.showMiniMap, teaching);
       this._hudLayoutCache = ui.hudLayout({
         viewport: this.viewport,
         tripWidth: 180,
         landmarkHeight: 130,
         feedbackVisible: !!this.quizFeedback,
         neighborhoodVisible: !!this.currentNeighborhood,
-        minimapVisible: this.showMiniMap,
+        minimapVisible,
         zoomVisible: this._zoomBadgeTimer > 0,
         controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
       });

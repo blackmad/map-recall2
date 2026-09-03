@@ -1,37 +1,41 @@
 /**
  * When Google's photorealistic mesh may replace the 3DBAG buildings.
  *
- * Measured before this was written (see HISTORY.md): Google's mesh reads
- * cleanly from about 25 m up, is already smearing at 10 m, and is unusable at
- * cycling height, where it also carries no building identity to highlight an
- * answer with. So the player's preference alone does not decide it — altitude
- * does, and the swap reverses on the way back down.
+ * The spike measured this as eye height in metres. The game's MapLibre camera
+ * never gets that low: altitude is a function of zoom and viewport, and across
+ * every view mode it sits roughly 95–520 m up. So the thing the player actually
+ * varies — `camera.zoom` — is what the gate reads. Smaller zoom is more city;
+ * the default play zoom stays on 3DBAG so buildings still have identity.
+ *
+ * Asymmetric on purpose: a near-constant camera parks on a single threshold
+ * and would otherwise flip the whole city every few frames.
  */
 
-/** Camera altitude, in metres, at which the mesh becomes worth showing. */
-export const ACTIVATION_METERS = 25;
+/** Game `camera.zoom` at or below which the mesh becomes worth showing. */
+export const ACTIVATION_ZOOM = 0.32;
 
 /**
- * The band is asymmetric on purpose. Riding a canal holds the camera at a
- * near-constant height, which parks it exactly on a single threshold and flips
- * the entire city between two renderers every few frames. Releasing lower than
- * it activates costs nothing and removes the flicker outright.
+ * Zooming back in past this (larger number) hands the city to 3DBAG.
+ * Must sit above activation: the player zooms out to overview, in to street.
  */
-export const RELEASE_METERS = 22;
+export const RELEASE_ZOOM = 0.38;
 
 export interface PhotorealGateInput {
   /** Whether the player has the option switched on at all. */
   enabled: boolean;
-  /** Camera altitude above the ellipsoid, or null when it cannot be measured. */
-  altitudeMeters: number | null;
+  /**
+   * The game camera's zoom multiplier (`CAMERA_ZOOM_INITIAL` is 0.50).
+   * Null when it has not been synced yet.
+   */
+  cameraZoom: number | null;
   /** Whether the mesh is showing right now, which sets which threshold applies. */
   active: boolean;
 }
 
-export function shouldShowPhotoreal({ enabled, altitudeMeters, active }: PhotorealGateInput): boolean {
+export function shouldShowPhotoreal({ enabled, cameraZoom, active }: PhotorealGateInput): boolean {
   if (!enabled) return false;
   // An unreadable camera is not evidence either way. Holding the current state
   // beats flipping the whole city on a transient failure to measure.
-  if (altitudeMeters == null || !Number.isFinite(altitudeMeters)) return active;
-  return active ? altitudeMeters >= RELEASE_METERS : altitudeMeters >= ACTIVATION_METERS;
+  if (cameraZoom == null || !Number.isFinite(cameraZoom)) return active;
+  return active ? cameraZoom <= RELEASE_ZOOM : cameraZoom <= ACTIVATION_ZOOM;
 }
