@@ -70,6 +70,8 @@ async function readJson<T>(response: Response, fallback: T): Promise<T> {
 export interface GameLandmarkRuntime extends LandmarkHost {}
 
 export class GameLandmarkRuntime {
+  _streetSummaryRequests?: Set<string>;
+
   // ---- Clicking a building ----
 
   _inspectBuildingAt(clientX: number, clientY: number): void {
@@ -223,6 +225,46 @@ export class GameLandmarkRuntime {
     landmark.extractLang = 'en';
   }
 
+  async _fetchEnglishStreetSummary(entry: StreetKnowledgeEntry): Promise<{ detail: string; longDetail: string } | null> {
+    const wikidata = entry.wikidata;
+    if (!wikidata) return null;
+
+    // Resolve the English article title through Wikidata, then fetch the
+    // English intro summary.
+    const entity = new URL('https://www.wikidata.org/w/api.php');
+    entity.search = new URLSearchParams({
+      action: 'wbgetentities',
+      format: 'json',
+      props: 'sitelinks',
+      sitefilter: 'enwiki',
+      ids: wikidata,
+      origin: '*',
+    }).toString();
+
+    const entityResponse = await fetch(entity, { headers: { accept: 'application/json' } });
+    if (!entityResponse.ok) return null;
+
+    const data = await entityResponse.json() as {
+      entities?: Record<string, { sitelinks?: { enwiki?: { title?: string } } }>;
+    };
+    const title = data?.entities?.[wikidata]?.sitelinks?.enwiki?.title || '';
+    if (!title) return null;
+
+    const summary = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, '_'))}`;
+    const response = await fetch(summary, { headers: { accept: 'application/json' } });
+    if (!response.ok) return null;
+
+    const summaryData = await response.json() as { extract?: string };
+    if (!summaryData?.extract) return null;
+
+    // Update the entry so the next render uses the cached extract without
+    // another request.
+    entry.wikipediaExtract = summaryData.extract;
+
+    const split = splitDetail(summaryData.extract);
+    return { detail: split.detail, longDetail: split.longDetail };
+  }
+
   /** The extract carries a Wikipedia URL for 236 of its 300 landmarks, which
    *  the canvas card cannot make clickable — so it is offered on a key. */
   _openLandmarkArticle(): void {
@@ -236,9 +278,10 @@ export class GameLandmarkRuntime {
     const entry = routeKnowledgeFor(this.streetKnowledge, name, type,
       (value) => this._normaliseCanalName(value));
     if (!entry) return;
+    const noticeId = entry.id || `${type}-knowledge:${key}`;
     const split = splitDetail(entry.wikipediaExtract || '');
     this._showLandmarkNotice({
-      id: entry.id || `${type}-knowledge:${key}`,
+      id: noticeId,
       name: entry.name || name,
       type: 'street',
       detail: split.detail,
@@ -246,6 +289,27 @@ export class GameLandmarkRuntime {
       wikipediaUrl: entry.wikipediaUrl || '',
       extractLang: 'en',
     }, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS });
+
+    // Many streets already have `wikipediaUrl` but not `wikipediaExtract`.
+    // If we have a wikidata id, fetch an English intro summary on demand and
+    // patch the open card.
+    if (!entry.wikipediaExtract && entry.wikidata && entry.wikipediaUrl) {
+      this._streetSummaryRequests = this._streetSummaryRequests || new Set();
+      if (this._streetSummaryRequests.has(noticeId)) return;
+      this._streetSummaryRequests.add(noticeId);
+      this._fetchEnglishStreetSummary(entry)
+        .then((split2) => {
+          if (!split2) return;
+          if (!this._landmarkNotice || this._landmarkNotice.id !== noticeId) return;
+          this._landmarkNotice = {
+            ...this._landmarkNotice,
+            detail: split2.detail,
+            longDetail: split2.longDetail,
+            extractLang: 'en',
+          };
+        })
+        .catch(() => { /* keep link-only card on failure */ });
+    }
   }
 
   // ---- Loading the extract ----
