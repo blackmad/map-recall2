@@ -34,6 +34,11 @@ const targets = [
     globalName: 'CanalRecallVehicles',
   },
   {
+    entry: 'public/canal-drive/js/signature-landmarks-source.js',
+    out: 'public/canal-drive/js/signature-landmarks.bundle.js',
+    globalName: 'CanalRecallSignature3D',
+  },
+  {
     // ESM, and so no globalName: three's DRACOLoader resolves its decoder paths
     // at module top level via `new URL(..., import.meta.url)`, which esbuild
     // stubs out of an IIFE and throws "Invalid URL" before any code runs. The
