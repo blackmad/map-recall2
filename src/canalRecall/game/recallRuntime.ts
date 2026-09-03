@@ -68,6 +68,30 @@ export class GameRecallRuntime {
           overlay.store.setAccount({ busy: false });
         }
       };
+      overlay.callbacks.onClearKnowledge = async () => {
+        const cloud = recall.signedIn ? ' and your signed-in cloud copy' : '';
+        const ok = window.confirm(
+          `Clear every street and canal name you have learned on this device${cloud}?\n\n`
+          + 'Sign-in and your route settings stay. This cannot be undone.',
+        );
+        if (!ok) return;
+        overlay.store.setAccount({ busy: true });
+        try {
+          const cleared = await recall.clearKnowledge();
+          try { localStorage.removeItem('canalRecall.factRotation.v1'); } catch { /* private mode */ }
+          this._factRotation = { history: {}, shown: 0, recentKinds: [] };
+          this._refreshMasteredLabels();
+          this._setRouteError(
+            cleared > 0
+              ? `Cleared ${cleared} learned name${cleared === 1 ? '' : 's'}.`
+              : 'No learned names to clear.',
+          );
+        } catch (error) {
+          this._setRouteError((error as Error).message || 'Could not clear knowledge.');
+        } finally {
+          overlay.store.setAccount({ busy: false });
+        }
+      };
     }
     recall.onUserChange((user) => {
       if (!overlay) return;
@@ -88,7 +112,7 @@ export class GameRecallRuntime {
       }
     });
     recall.init().then(() => {
-      if (recall.available && overlay) overlay.store.setAccount({ visible: true });
+      if (overlay) overlay.store.setAccount({ visible: true });
       this._refreshMasteredLabels();
     });
   }

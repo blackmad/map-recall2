@@ -3,6 +3,64 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## Street-mode routing includes bikeable ways
+
+Street mode presents as cycling but `streets-routing.json` was built from a
+car-only highway list. Pedestrian corridors and cycleways the basemap still
+draws — Zeedijk, Nieuwendijk, most of the separated cycle network — never
+entered the graph, so the router refused streets a bike can use. Routing now
+keeps the car set and adds `cycleway`, `pedestrian` unless `bicycle=no` /
+`dismount`, and `footway`/`path` only with an explicit bicycle yes. Kalverstraat
+(`bicycle=no`) stays out. Amsterdam routing grew 35,216 → 47,245 ways
+(~2.9 MB gzipped); `check-city-extract` pins Zeedijk in and Kalverstraat out.
+
+## Help panel scrolls instead of overflowing
+
+The `?` shortcuts card was centred with no max-height on desktop, so on a
+typical laptop height the title clipped off the top and Close fell off the
+bottom. Utility cards now cap at `86dvh`, scroll their body, and keep Close
+pinned under the list.
+
+## Account and knowledge reset sit on the briefing
+
+The route card buried sign-in under Advanced and had no way to start over.
+Account status is now a top-of-card row with **Sign in / Sign out** and
+**Reset knowledge…**, which confirms then clears local (and cloud, when signed
+in) spaced-repetition memory. Preferences stay. Cache-busted overlay/recall
+bundles so the icon-row briefing is not stuck behind an old `overlay.bundle.js`.
+
+## Briefing uses icon rows; compass sits under destination
+
+The route card’s four dropdowns became icon choice rows (travel, view, route,
+difficulty) so the first decisions are tappable rather than menu-hunting.
+Advanced options stay collapsed. The north rose moved from above the city
+overview to under the destination card on the right, beside the finish arrow.
+
+## On-demand street Wikipedia fills extract gaps
+
+Curated `streets.json` only keeps 300 streets, and encyclopedia cards only
+open for those with a shipped Wikipedia URL/extract (48 today). Driveable
+streets like Nicolaas Beetsstraat have a Dutch article and a person they are
+named after, but no OSM wiki tags, so they never entered the index. After a
+quiz answer (or silent adopt), a missing street now resolves
+`Name (Amsterdam)` on Wikipedia and prefers an English "named after" person
+summary — so the card can say who Nicolaas Beets was, not only that the road
+is in Oud-West.
+
+## Bottom chrome is just a faint map credit
+
+The old white `#prototype-links` pill (Map Recall back-link, Smokey’s GPL line,
+full OSM/CARTO prose) sat on the driving corridor. Driving now keeps a
+9 px `© OSM · CARTO` line with no card; Smokey’s and the Map Recall link live
+under **?** so GPL credit stays reachable without a permanent footer.
+
+## HUD has a north compass
+
+An always-on moss rose sits in the layout band (above the city overview on
+desktop; under the top stack on a phone, clear of the finish arrow). It tracks
+`camera.rotation` so heading-up and chase views still show true north. Separate
+from the terracotta destination assist — orientation cue, not a route hint.
+
 ## Map Tiles API key is no longer committed
 
 The Google photoreal option used to ship a browser key inside

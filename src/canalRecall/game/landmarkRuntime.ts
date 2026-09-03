@@ -46,6 +46,7 @@ import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge } from './routeKnowledge';
 import { canShowMiniMap, canShowTeachingCard } from './teachingSurface';
+import { resolveStreetWikipedia } from './streetWikipedia';
 
 /** Seconds a clicked card stays up. A drive-by card is held by proximity
  *  instead — see `landmarkNotice.ts`. */
@@ -276,8 +277,12 @@ export class GameLandmarkRuntime {
 
   _showStreetKnowledge(name: string, type: 'street' | 'water' = 'street', replaceOpenCard = false): void {
     const key = this._normaliseCanalName(name);
-    const entry = routeKnowledgeFor(this.streetKnowledge, name, type,
+    let entry = routeKnowledgeFor(this.streetKnowledge, name, type,
       (value) => this._normaliseCanalName(value));
+    if (!entry && type === 'street') {
+      this._resolveMissingStreetKnowledge(name, key, replaceOpenCard);
+      return;
+    }
     if (!entry) return;
     const noticeId = entry.id || `${type}-knowledge:${key}`;
     this._seenStreetKnowledge = this._seenStreetKnowledge || new Set();
@@ -323,6 +328,47 @@ export class GameLandmarkRuntime {
         })
         .catch(() => { /* keep link-only card on failure */ });
     }
+  }
+
+  /**
+   * Curated extract coverage is sparse: only streets that scored into the top
+   * 300 *and* carried OSM wikipedia/wikidata tags get a shipped blurb. When a
+   * driveable street is missing, look up `Name (Amsterdam)` on Wikipedia and
+   * prefer an English "named after" person summary so the card can say who
+   * they were.
+   */
+  _resolveMissingStreetKnowledge(name: string, key: string, replaceOpenCard: boolean): void {
+    if (this.quizPromptName) return;
+    if (this._landmarkNotice && !replaceOpenCard) return;
+    this._streetSummaryRequests = this._streetSummaryRequests || new Set();
+    const requestId = `street-wiki:${key}`;
+    if (this._streetSummaryRequests.has(requestId)) return;
+    this._streetSummaryRequests.add(requestId);
+
+    const fetchJson = async (url: string): Promise<unknown> => {
+      const response = await fetch(url, { headers: { accept: 'application/json' } });
+      if (!response.ok) throw new Error(`wikipedia ${response.status}`);
+      return response.json();
+    };
+
+    resolveStreetWikipedia(name, fetchJson)
+      .then((resolved) => {
+        if (!resolved?.wikipediaExtract && !resolved?.wikipediaUrl) return;
+        const entry: StreetKnowledgeEntry = {
+          id: requestId,
+          name: resolved.name || name,
+          type: 'street',
+          wikidata: resolved.wikidata,
+          wikipedia: resolved.wikipedia,
+          wikipediaUrl: resolved.wikipediaUrl,
+          wikipediaExtract: resolved.wikipediaExtract,
+          wikipediaExtractLang: resolved.wikipediaExtractLang,
+        };
+        this.streetKnowledge = this.streetKnowledge || new Map();
+        this.streetKnowledge.set(`street:${key}`, entry);
+        this._showStreetKnowledge(name, 'street', replaceOpenCard);
+      })
+      .catch(() => { /* no article — stay silent */ });
   }
 
   // ---- Loading the extract ----

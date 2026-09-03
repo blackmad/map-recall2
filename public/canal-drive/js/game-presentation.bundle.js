@@ -266,6 +266,7 @@
         this.track.getDistanceToFinish(player.x, player.y),
         this._routeLearningPlan?.expectedNovelty ?? null
       );
+      this.hud.drawCompass(ctx, this.camera);
       if (this.routeOptions.arrow) {
         this.hud.drawFinishDirection(
           ctx,

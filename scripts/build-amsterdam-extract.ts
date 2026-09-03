@@ -2,6 +2,7 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { FeatureCategory, FeatureType, StreetFeature } from '../src/types.ts';
 import { pickNearestDistractors } from '../src/canalRecall/bridgeDistractors.ts';
+import { isBikeRoutingHighway } from '../src/canalRecall/routing/bikeAccess.ts';
 import { findMunicipality, hasAreaGeometry } from './lib/municipality.ts';
 
 type Position = [number, number];
@@ -236,11 +237,8 @@ function simplifyPreservingJunctions(
 const grouped = new Map<string, { feature: StreetFeature; category: FeatureCategory; paths: [number, number][][]; score: number }>();
 const routingRoadCandidates: Array<{ feature: StreetFeature; category: FeatureCategory; paths: [number, number][][]; score: number }> = [];
 const majorHighways = new Set(['motorway', 'trunk', 'primary', 'secondary', 'tertiary']);
-const drivableHighways = new Set([
-  ...majorHighways,
-  'motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link',
-  'residential', 'living_street', 'unclassified', 'service', 'busway',
-]);
+// Street mode is cycling: routing candidates use `isBikeRoutingHighway`, not
+// the car-only set that used to live here.
 type OrientationPoi = {
   id: string; name: string; kind: 'albert-heijn' | 'local-food'; center: [number, number];
   brand?: string; brandWikidata?: string; shop?: string; amenity?: string; icon?: string;
@@ -312,7 +310,7 @@ for (const item of source.features) {
   const name = (classification.category === 'bridges' && tags['bridge:name']
     ? tags['bridge:name']
     : roadOrPlaceName).trim();
-  if (tags.highway && drivableHighways.has(tags.highway) && paths.length) {
+  if (tags.highway && isBikeRoutingHighway(tags) && paths.length) {
     const routingFeature: StreetFeature & { bridge?: boolean } = {
       id: `routing_${routingRoadCandidates.length}`, name: roadOrPlaceName, type: majorHighways.has(tags.highway) ? 'avenue' : 'street',
       cityId, center: featureCenter, funFact: '', clues: [], distractors: [], difficulty: 'hard', highway: tags.highway, railway: tags.railway,
