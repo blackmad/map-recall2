@@ -89,6 +89,13 @@ const WAREHOUSE_LICENCE = {
     + 'unscaled and unrotated.',
 } as const;
 
+/** `extract_landmarks_342809743` -> `['w342809743', 'r342809743']`. */
+function osmIdCandidates(landmarkId: string): string[] {
+  const digits = landmarkId.replace(/^\D+/, '');
+  if (!/^\d+$/.test(digits)) return [];
+  return [`w${digits}`, `r${digits}`];
+}
+
 function specFromCatalogue(entry: SurveyedCatalogueEntry): SignatureModelSpec {
   const height = EXPECTED_HEIGHTS[entry.id];
   return {
@@ -96,10 +103,13 @@ function specFromCatalogue(entry: SurveyedCatalogueEntry): SignatureModelSpec {
     name: entry.name,
     landmarkId: entry.landmarkId,
     modelUrl: `./models/${entry.id}.glb`,
-    // Nothing to list: suppression works by biasing the model towards the
-    // camera, because this basemap batches its building features and they
-    // cannot be filtered. See `signature-landmarks-source.js`.
-    suppressOsmIds: [],
+    // Both prefixes for the same number, because the extract records a
+    // landmark as `extract_landmarks_<id>` without saying whether that id is a
+    // way or a relation — the Palace is relation 3580875 whose outer ring is
+    // way 342809743, and which of the two the tiles carry is not knowable from
+    // here. An id that does not exist simply never matches, so offering both
+    // costs nothing and guessing wrong would cost the suppression.
+    suppressOsmIds: osmIdCandidates(entry.landmarkId),
     footprint: entry.footprint ?? undefined,
     heightMetres: height?.metres,
     heightToleranceMetres: height?.tolerance,
@@ -130,6 +140,6 @@ export function signatureModel(id: string): SignatureModelSpec | undefined {
 }
 
 /** Every OSM footprint that a signature model stands in for. */
-export function suppressedOsmIds(): number[] {
+export function suppressedOsmIds(): string[] {
   return SIGNATURE_MODELS.flatMap(model => [...model.suppressOsmIds]);
 }

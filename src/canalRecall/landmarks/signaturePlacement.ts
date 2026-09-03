@@ -71,10 +71,10 @@ export interface SignatureModelSpec {
   readonly landmarkId: string;
   /** Runtime GLB, relative to the Canal Recall page. */
   readonly modelUrl: string;
-  /** OSM ways whose extrusion must be hidden once the model is drawn. Hiding
-   *  is keyed on the way id rather than on a spatial test so that a partly
-   *  loaded tile can never leave both geometries visible. */
-  readonly suppressOsmIds: readonly number[];
+  /** OSM ids, prefixed `w`/`r`, whose basemap extrusion must be hidden once
+   *  the model is drawn. Keyed on the id rather than on a spatial test so a
+   *  partly loaded tile can never leave both geometries standing. */
+  readonly suppressOsmIds: readonly string[];
   /** The footprint the model is fitted to. Required for a fitted model; for a
    *  surveyed one it is only ever reported, and several municipal models cover
    *  landmarks the extract holds as a point with no ring. */

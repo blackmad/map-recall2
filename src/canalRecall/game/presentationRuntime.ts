@@ -37,7 +37,10 @@ interface CardBlock {
   draw(top: number): void;
 }
 
-const INK = '#F1F5F9', MUTED = '#8FA3B0', BODY = '#C3D2DC', ACCENT = '#7DD3FC';
+// The arrival card was the last dark surface: navy with a sky accent, sitting
+// at the end of a route played entirely on paper. These are the shared tokens.
+const INK = '#24322b', MUTED = '#68746e', BODY = '#3d4a43', ACCENT = '#c75f43';
+const GOOD = '#356653';
 
 export interface GamePresentationRuntime extends PresentationHost {}
 
@@ -47,6 +50,11 @@ export class GamePresentationRuntime {
   _render(): void {
     const ctx = this.ctx;
     ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+
+    // The arrival card is a full-screen modal; on a phone the settings and help
+    // buttons sat on top of its actions in the bottom-right corner.
+    const utility = document.getElementById('utility-buttons');
+    if (utility) utility.style.display = this.state === GameState.FINISHED ? 'none' : '';
 
     if (this.state === GameState.MENU) { this._renderMenu(); return; }
     if (this.state === GameState.MAP_SELECT) {
@@ -140,8 +148,10 @@ export class GamePresentationRuntime {
     if (this._debugMode) this._renderDebug();
     this._renderControlsHint();
 
-    if (this.state === GameState.RACING) {
-      // Last, so nothing can be drawn over the only way to steer.
+    if (this.state === GameState.RACING && !this._overlayOpen()) {
+      // Last, so nothing can be drawn over the only way to steer — but not at
+      // all while a question or panel owns the screen: the vehicle is stopped,
+      // the card covers the pad, and a pad drawn under a card is dead controls.
       this.hud.drawDpad(ctx, this.input.padKeys);
       if (this.input.showTouchHint) this.hud.drawTouchHint(ctx);
     }
@@ -496,11 +506,15 @@ export class GamePresentationRuntime {
    */
   _renderFinish(): void {
     const ctx = this.ctx;
-    ctx.fillStyle = 'rgba(2,10,16,.72)';
+    ctx.fillStyle = 'rgba(36,50,43,.42)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
     const cx = CANVAS_W / 2;
-    const cardW = 600, padX = 30;
+    const compact = this.viewport.mode === 'compact';
+    // 600 is wider than a phone screen, which put the card's left edge at
+    // x = -105 and its actions off the side.
+    const cardW = Math.min(600, CANVAS_W - 24);
+    const padX = compact ? 18 : 30;
     const cardX = cx - cardW / 2;
     const innerW = cardW - padX * 2;
     const gamey = this.gameyFeatures;
@@ -512,7 +526,7 @@ export class GamePresentationRuntime {
     const hasImage = !!image && image.complete && image.naturalWidth > 0;
 
     const rule = (y: number): void => {
-      ctx.strokeStyle = 'rgba(143,163,176,.2)';
+      ctx.strokeStyle = 'rgba(97,89,74,.22)';
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(cardX + padX, y + 0.5);
@@ -585,18 +599,29 @@ export class GamePresentationRuntime {
     ];
     if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
 
-    blocks.push({ height: 78, rule: true, draw: (top) => {
-      const column = innerW / stats.length;
+    // Five stats across a 600 px card is four columns of comfortable space; the
+    // same five across a 366 px phone card ran "420", "03:33" and "0.00 km"
+    // into each other. On a phone they wrap into rows of at most three.
+    const statsPerRow = compact ? Math.min(3, stats.length) : stats.length;
+    const statRows = Math.ceil(stats.length / statsPerRow);
+    const ROW_H = 48;
+    blocks.push({ height: 30 + statRows * ROW_H, rule: true, draw: (top) => {
       ctx.textAlign = 'center';
       stats.forEach((stat, index) => {
-        const sx = cardX + padX + column * (index + 0.5);
-        ctx.fillStyle = INK; ctx.font = 'bold 21px monospace';
-        ctx.fillText(stat.value, sx, top + 26);
+        const row = Math.floor(index / statsPerRow);
+        // The last row is centred rather than left-packed, so a trailing pair
+        // does not sit under the first two columns with a gap beside it.
+        const inRow = Math.min(statsPerRow, stats.length - row * statsPerRow);
+        const column = innerW / inRow;
+        const sx = cardX + padX + column * ((index % statsPerRow) + 0.5);
+        const sy = top + row * ROW_H;
+        ctx.fillStyle = INK; ctx.font = `bold ${compact ? 19 : 21}px monospace`;
+        ctx.fillText(stat.value, sx, sy + 24);
         ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
-        ctx.fillText(stat.label, sx, top + 44);
+        ctx.fillText(stat.label, sx, sy + 42);
       });
       ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
-      ctx.fillText(footerBits.join('  ·  '), cx, top + 66);
+      ctx.fillText(footerBits.join('  ·  '), cx, top + statRows * ROW_H + 18);
     } });
 
     if (ribbon) {
@@ -615,18 +640,27 @@ export class GamePresentationRuntime {
       if (this.learnedNames.size > 0) fresh.push(`${this.learnedNames.size} names`);
       if (this._visitedNeighborhoods.size > 0) fresh.push(`${this._visitedNeighborhoods.size} neighborhoods`);
       if (this._seenLandmarkNames.size > 0) fresh.push(`${this._seenLandmarkNames.size} landmarks`);
-      blocks.push({ height: fresh.length ? 52 : 36, rule: true, draw: (top) => {
+      // The label sits beside the totals on a wide card and above them on a
+      // phone: right-aligned totals ran straight into "CITY KNOWLEDGE".
+      const knowledgeStacked = compact;
+      const knowledgeH = (knowledgeStacked ? 34 : 18) + (fresh.length ? 20 : 0) + 18;
+      blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
         ctx.textAlign = 'left';
         ctx.fillStyle = MUTED; ctx.font = 'bold 9px monospace';
         ctx.fillText('CITY KNOWLEDGE', cardX + padX, top + 12);
         ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
-        ctx.textAlign = 'right';
-        ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + cardW - padX, top + 12);
+        if (knowledgeStacked) {
+          ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + padX, top + 30);
+        } else {
+          ctx.textAlign = 'right';
+          ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + cardW - padX, top + 12);
+        }
         if (fresh.length) {
           ctx.textAlign = 'left';
           ctx.fillStyle = ACCENT;
           ctx.font = '11px system-ui, sans-serif';
-          ctx.fillText(`+${fresh.join(', +')} this route`, cardX + padX, top + 32);
+          ctx.fillText(`+${fresh.join(', +')} this route`,
+            cardX + padX, top + (knowledgeStacked ? 50 : 32));
         }
       } });
     }
@@ -634,32 +668,69 @@ export class GamePresentationRuntime {
     if (bestText) {
       blocks.push({ height: 26, draw: (top) => {
         ctx.textAlign = 'left';
-        ctx.fillStyle = bestText.startsWith('★') ? '#5EE0A0' : MUTED;
+        ctx.fillStyle = bestText.startsWith('★') ? GOOD : MUTED;
         ctx.font = 'bold 13px system-ui, sans-serif';
         ctx.fillText(bestText, cardX + padX, top + 14);
       } });
     }
 
-    blocks.push({ height: 34, rule: true, draw: (top) => {
-      const actions: Array<[string, string]> = [['ENTER', 'Try again'], ['ESC', 'Choose route']];
-      if (this._shareUrl) actions.push(['C', this._copiedTimer > 0 ? 'Link copied' : 'Copy race link']);
-      ctx.textAlign = 'left';
-      let ax = cardX + padX;
-      for (const [key, caption] of actions) {
-        ctx.font = 'bold 11px monospace';
-        const keyW = ctx.measureText(key).width + 14;
-        ctx.fillStyle = 'rgba(143,163,176,.16)';
-        roundRect(ctx, ax, top + 4, keyW, 20, 5);
-        ctx.fill();
-        ctx.fillStyle = INK;
-        ctx.fillText(key, ax + 7, top + 18);
-        ax += keyW + 8;
-        ctx.fillStyle = caption === 'Link copied' ? '#5EE0A0' : MUTED;
-        ctx.font = '12px system-ui, sans-serif';
-        ctx.fillText(caption, ax, top + 18);
-        ax += ctx.measureText(caption).width + 22;
-      }
-    } });
+    // A phone has no ENTER, ESC or C, so the keycaps that document the actions
+    // on a keyboard are the actions themselves on touch: full-width buttons
+    // with 44 px targets, hit-tested against `_finishButtonBounds`.
+    type FinishAction = { id: 'again' | 'route' | 'copy'; key: string; caption: string };
+    const actions: FinishAction[] = [
+      { id: 'again', key: 'ENTER', caption: 'Try again' },
+      { id: 'route', key: 'ESC', caption: 'Choose route' },
+    ];
+    if (this._shareUrl) {
+      actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? 'Link copied' : 'Copy race link' });
+    }
+    const BUTTON_H = 44, BUTTON_GAP = 8;
+    const finishButtons: NonNullable<typeof this._finishButtonBounds> = [];
+    this._finishButtonBounds = finishButtons;
+    blocks.push({
+      height: compact ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP : 34,
+      rule: true,
+      draw: (top) => {
+        if (compact) {
+          let by = top;
+          for (const action of actions) {
+            const primary = action.id === 'again';
+            const bounds = { x: cardX + padX, y: by, w: cardW - padX * 2, h: BUTTON_H };
+            ctx.fillStyle = primary ? '#356653' : 'rgba(238,233,223,.9)';
+            roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
+            ctx.fill();
+            if (!primary) {
+              ctx.strokeStyle = 'rgba(97,89,74,.28)'; ctx.lineWidth = 1; ctx.stroke();
+            }
+            ctx.textAlign = 'center';
+            ctx.fillStyle = primary ? '#ffffff' : (action.caption === 'Link copied' ? GOOD : INK);
+            ctx.font = '700 14px system-ui, sans-serif';
+            ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
+            finishButtons.push({ ...bounds, id: action.id });
+            by += BUTTON_H + BUTTON_GAP;
+          }
+          ctx.textAlign = 'left';
+          return;
+        }
+        ctx.textAlign = 'left';
+        let ax = cardX + padX;
+        for (const action of actions) {
+          ctx.font = 'bold 11px monospace';
+          const keyW = ctx.measureText(action.key).width + 14;
+          ctx.fillStyle = 'rgba(97,89,74,.14)';
+          roundRect(ctx, ax, top + 4, keyW, 20, 5);
+          ctx.fill();
+          ctx.fillStyle = INK;
+          ctx.fillText(action.key, ax + 7, top + 18);
+          ax += keyW + 8;
+          ctx.fillStyle = action.caption === 'Link copied' ? GOOD : MUTED;
+          ctx.font = '12px system-ui, sans-serif';
+          ctx.fillText(action.caption, ax, top + 18);
+          ax += ctx.measureText(action.caption).width + 22;
+        }
+      },
+    });
 
     // Measurement and drawing share one formula for the space above a block,
     // so the card cannot end up with a band of dead space at the bottom.
@@ -671,12 +742,8 @@ export class GamePresentationRuntime {
     const cardY = Math.max(16, Math.min(
       Math.round((CANVAS_H - cardH) / 2), Math.max(16, CANVAS_H - cardH - 16)));
 
-    ctx.fillStyle = 'rgba(6,20,29,.96)';
-    roundRect(ctx, cardX, cardY, cardW, cardH, 16);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(125,211,252,.28)';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
+    this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH },
+      { solid: true, radius: 16 });
 
     ctx.textBaseline = 'alphabetic';
     let y = cardY + PAD_TOP;

@@ -299,6 +299,33 @@ class Game {
     this._checkShareLink();
   }
 
+  /** True while a DOM overlay owns the screen: the recall question, the
+   *  settings/help panels, or the expanded article. The vehicle is stopped
+   *  behind all of them, so the d-pad is dead controls and the map gestures
+   *  belong to the overlay. */
+  _overlayOpen() {
+    if (this._utilityOpen) return true;
+    if (this._prompt && this._prompt.style.display !== 'none' && this._prompt.style.display !== '') return true;
+    const panel = document.getElementById('landmark-panel');
+    return !!panel && getComputedStyle(panel).display !== 'none';
+  }
+
+  /** The finish card's tappable actions, for touch. Keyboard keeps ENTER/ESC/C. */
+  _runFinishAction(id) {
+    if (id === 'again') {
+      if (this.routePattern === 'home') { this._startNextHomeLeg(); return; }
+      this._setupRace();
+      this.state = GameState.RACING;
+    } else if (id === 'route') {
+      this.state = GameState.MENU;
+      this._routeSetup.style.display = 'flex';
+      history.replaceState(null, '', window.location.pathname);
+    } else if (id === 'copy' && this._shareUrl) {
+      navigator.clipboard.writeText(this._shareUrl).catch(() => {});
+      this._copiedTimer = 2;
+    }
+  }
+
   /** Logical canvas coordinates for a pointer/mouse event. */
   _eventPoint(event) {
     const rect = this.canvas.getBoundingClientRect();
@@ -322,9 +349,54 @@ class Game {
       }
       this._cameraZoom.value = this._liveZoom.value = String(this.camera.zoom);
     }, { passive: false });
+    // Two-finger pinch, anywhere outside the d-pad. Touch had no zoom at all:
+    // the only ways in were the -/+ keys and a trackpad wheel.
+    let pinchDistance = 0;
+    const livePinch = new Map();
+    const pinchPoints = () => [...livePinch.values()];
+    this.canvas.addEventListener('touchstart', event => {
+      for (const touch of event.changedTouches) {
+        const point = this._eventPoint(touch);
+        if (window.CanalRecallUi.isInsideDpad(point, this.input.dpad)) continue;
+        livePinch.set(touch.identifier, point);
+      }
+      const points = pinchPoints();
+      if (points.length === 2) {
+        pinchDistance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+      }
+    }, { passive: true });
+    this.canvas.addEventListener('touchmove', event => {
+      let changed = false;
+      for (const touch of event.changedTouches) {
+        if (!livePinch.has(touch.identifier)) continue;
+        livePinch.set(touch.identifier, this._eventPoint(touch));
+        changed = true;
+      }
+      if (!changed) return;
+      const points = pinchPoints();
+      if (points.length !== 2) return;
+      event.preventDefault();
+      const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+      if (pinchDistance > 0 && distance > 0) {
+        this.camera.zoom = clamp(this.camera.zoom * (distance / pinchDistance),
+          this.camera.minZoom, this.camera.maxZoom);
+        this._zoomTouchedByPlayer = true;
+        this._cameraZoom.value = this._liveZoom.value = String(this.camera.zoom);
+      }
+      pinchDistance = distance;
+    }, { passive: false });
+    const endPinch = event => {
+      for (const touch of event.changedTouches) livePinch.delete(touch.identifier);
+      if (livePinch.size < 2) pinchDistance = 0;
+    };
+    this.canvas.addEventListener('touchend', endPinch, { passive: true });
+    this.canvas.addEventListener('touchcancel', endPinch, { passive: true });
+
     this.canvas.addEventListener('pointerdown', event => {
       if (event.button !== 0 || this.state === GameState.MENU) return;
       if (window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) return;
+      // A pinch is not a pan: two fingers must not drag the map as well.
+      if (livePinch.size >= 2) return;
       dragging = true; moved = false; downX = lastX = event.clientX; downY = lastY = event.clientY;
       this.canvas.setPointerCapture(event.pointerId);
     });
@@ -339,6 +411,15 @@ class Game {
         const rect = this.canvas.getBoundingClientRect();
         const sx = (event.clientX - rect.left) * CANVAS_W / rect.width;
         const sy = (event.clientY - rect.top) * CANVAS_H / rect.height;
+        if (this.state === GameState.FINISHED && this._finishButtonBounds) {
+          for (const b of this._finishButtonBounds) {
+            if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
+              this._runFinishAction(b.id);
+              dragging = false;
+              return;
+            }
+          }
+        }
         if (this._recenterBtnBounds) {
           const b = this._recenterBtnBounds;
           if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
@@ -506,20 +587,10 @@ class Game {
       case GameState.FINISHED:
         if (this._copiedTimer > 0) this._copiedTimer -= dt;
         if (this.input.wasPressed('Enter') || this.input.wasPressed('Space') || this.input.wasPressed('KeyM')) {
-          if (this.routePattern === 'home') { this._startNextHomeLeg(); break; }
-          // Restart same track
-          this._setupRace();
-          this.state = GameState.RACING;
+          this._runFinishAction('again');
         }
-        if (this.input.wasPressed('Escape')) {
-          this.state = GameState.MENU;
-          this._routeSetup.style.display = 'flex';
-          history.replaceState(null, '', window.location.pathname);
-        }
-        if (this.input.wasPressed('KeyC') && this._shareUrl) {
-          navigator.clipboard.writeText(this._shareUrl).catch(() => {});
-          this._copiedTimer = 2;
-        }
+        if (this.input.wasPressed('Escape')) this._runFinishAction('route');
+        if (this.input.wasPressed('KeyC')) this._runFinishAction('copy');
         break;
     }
   }
