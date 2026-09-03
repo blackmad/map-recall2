@@ -17,6 +17,7 @@
 // the direction the player meant.
 
 import type { Viewport } from './viewport.ts';
+import { HUD_MAX_WIDTH_COMPACT, HUD_MAX_WIDTH_DESKTOP } from './viewport.ts';
 
 export type DpadRect = { x: number; y: number; width: number; height: number };
 
@@ -40,19 +41,31 @@ const PAD_MIN = 132;
 const PAD_MAX = 190;
 const PAD_MARGIN = 16;
 
+type Band = { x: number; width: number; height: number };
+
+function chromeBand(viewport: Viewport): Band {
+  const maxWidth = viewport.mode === 'compact' ? HUD_MAX_WIDTH_COMPACT : HUD_MAX_WIDTH_DESKTOP;
+  const width = Math.min(viewport.width, maxWidth);
+  return {
+    x: Math.round((viewport.width - width) / 2),
+    width,
+    height: viewport.height,
+  };
+}
+
 /** No pad on a mouse-driven desktop: it would only cover the map. */
-export function dpadLayout(viewport: Viewport): DpadLayout | null {
+export function dpadLayout(viewport: Viewport, band: Band = chromeBand(viewport)): DpadLayout | null {
   if (!viewport.touch || viewport.mode !== 'compact') return null;
   const size = Math.round(
-    Math.min(PAD_MAX, Math.max(PAD_MIN, Math.min(viewport.width, viewport.height) * PAD_FRACTION)),
+    Math.min(PAD_MAX, Math.max(PAD_MIN, Math.min(band.width, band.height) * PAD_FRACTION)),
   );
-  // Portrait is held one-handed, so the pad sits under the thumb in the middle.
-  // Landscape is held with two hands at the edges, where a centred pad is out
-  // of reach of both of them.
+  // Portrait is held one-handed, so the pad sits under the thumb in the middle
+  // of the chrome band. Landscape is held with two hands at the edges of that
+  // band — not the monitor bezels on a wide window.
   const cx = viewport.orientation === 'portrait'
-    ? Math.round(viewport.width / 2)
-    : Math.round(PAD_MARGIN + size / 2);
-  const cy = Math.round(viewport.height - viewport.safeBottom - PAD_MARGIN - size / 2);
+    ? Math.round(band.x + band.width / 2)
+    : Math.round(band.x + PAD_MARGIN + size / 2);
+  const cy = Math.round(band.height - viewport.safeBottom - PAD_MARGIN - size / 2);
   return {
     bounds: { x: cx - size / 2, y: cy - size / 2, width: size, height: size },
     cx,

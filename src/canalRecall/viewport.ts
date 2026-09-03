@@ -49,13 +49,17 @@ export const DESIGN_HEIGHT = 720;
 // landscape tablet stays on the desktop layout, which it has the room for.
 export const COMPACT_MAX_SHORT_EDGE = 820;
 
-// A logical space narrower than this makes the HUD cards collide no matter how
-// they are laid out; a wider one stops being a phone. Clamping keeps the layout
-// module's job finite.
+// Floor only — never clamp the *max* logical size below the CSS box. Doing that
+// and then pinning the canvas to `width: 100%` CSS-stretched a 900-wide layout
+// across an ultrawide window, so every card looked blown sideways. Wide
+// compact/desktop windows keep a 1:1 logical↔CSS mapping; `hudBand` in
+// hudLayout.ts is what keeps the chrome from pinning to the far edges.
 const MIN_COMPACT_WIDTH = 300;
-const MAX_COMPACT_WIDTH = 900;
 const MIN_COMPACT_HEIGHT = 380;
-const MAX_COMPACT_HEIGHT = 1400;
+
+/** Max width the HUD chrome occupies; wider windows centre this band. */
+export const HUD_MAX_WIDTH_DESKTOP = DESIGN_WIDTH;
+export const HUD_MAX_WIDTH_COMPACT = 900;
 
 const MAX_BACKING_SCALE = 3;
 
@@ -94,10 +98,10 @@ export function resolveViewport({
     : 'desktop';
 
   if (mode === 'compact') {
-    // Fill the window. Logical units are CSS pixels, so text keeps the size it
-    // was written at and the map container can simply be the whole screen.
-    const width = clamp(Math.round(winW), MIN_COMPACT_WIDTH, MAX_COMPACT_WIDTH);
-    const height = clamp(Math.round(winH), MIN_COMPACT_HEIGHT, MAX_COMPACT_HEIGHT);
+    // Fill the window 1:1. Logical units are CSS pixels, so text keeps the size
+    // it was written at and the map container is simply the whole screen.
+    const width = Math.max(MIN_COMPACT_WIDTH, Math.round(winW));
+    const height = Math.max(MIN_COMPACT_HEIGHT, Math.round(winH));
     return {
       width,
       height,

@@ -13,7 +13,7 @@
 
 import assert from 'node:assert/strict';
 import { resolveViewport, DESIGN_WIDTH, DESIGN_HEIGHT, type Viewport } from '../src/canalRecall/viewport.ts';
-import { hudLayout, rectsIntersect, type Rect } from '../src/canalRecall/hudLayout.ts';
+import { hudLayout, hudBand, rectsIntersect, type Rect } from '../src/canalRecall/hudLayout.ts';
 import { dpadLayout, dpadKeysAt, isInsideDpad, applyAutoThrottle, noKeys } from '../src/canalRecall/touchControls.ts';
 
 let checks = 0;
@@ -77,6 +77,44 @@ const ok = (condition: boolean, message: string): void => { assert.ok(condition,
   assert.equal(viewport.height, Math.round(DESIGN_WIDTH * 1200 / 900));
   assert.ok(viewport.height > DESIGN_HEIGHT, 'logical space grows taller, not letterboxed');
   checks += 6;
+}
+
+// Wide compact must stay 1:1 with the CSS box — clamping logical width below
+// the window and pinning canvas to 100% used to stretch every card sideways.
+{
+  const viewport = resolveViewport({ windowWidth: 1600, windowHeight: 800, devicePixelRatio: 2, touch: true });
+  assert.equal(viewport.mode, 'compact');
+  assert.equal(viewport.width, 1600, 'logical width matches the window');
+  assert.equal(viewport.cssWidth, 1600);
+  assert.equal(viewport.scale, 1, 'no CSS stretch of the chrome');
+  checks += 4;
+}
+
+// On a wide canvas the chrome sits in a centred band, not on the bezels.
+{
+  const viewport = resolveViewport({ windowWidth: 1920, windowHeight: 800, touch: true });
+  const band = hudBand(viewport);
+  const layout = hudLayout({ viewport, tripWidth: 180 });
+  assert.equal(band.width, 900, 'compact chrome caps at the phone-landscape width');
+  assert.equal(band.x, Math.round((1920 - 900) / 2));
+  assert.equal(layout.recall.x, band.x + 12, 'left cards sit on the band, not x=12 of the monitor');
+  assert.ok(layout.destination.x + layout.destination.width <= band.x + band.width,
+    'right cards stay inside the band');
+  assert.ok(layout.dpad && layout.dpad.bounds.x >= band.x, 'the d-pad follows the band too');
+  checks += 5;
+}
+
+{
+  const viewport = resolveViewport({ windowWidth: 2560, windowHeight: 1080 });
+  const band = hudBand(viewport);
+  const layout = hudLayout({ viewport, tripWidth: 180 });
+  assert.equal(band.width, DESIGN_WIDTH, 'desktop chrome caps at the design width');
+  assert.ok(layout.destination.x > band.x, 'destination is not glued to the left bezel');
+  assert.ok(layout.destination.x + layout.destination.width <= band.x + band.width + 0.5,
+    'and not glued to the right bezel either');
+  assert.equal(Math.round(layout.destination.x + layout.destination.width), band.x + band.width - 15,
+    'desktop destination keeps its design inset inside the band');
+  checks += 4;
 }
 
 // A touch laptop and a big landscape tablet have the room for the desktop
