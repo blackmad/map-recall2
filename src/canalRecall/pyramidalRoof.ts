@@ -22,7 +22,11 @@ export type PyramidalRoofInput = {
 };
 
 export type PyramidalRoofMesh = {
-  /** Interleaved positions in local ENU metres: [e, n, u, ...]. */
+  /**
+   * Interleaved positions in local metres for MapLibre+Three: [e, u, n, ...].
+   * Same as GLTF Y-up — the custom layer's `rotateX(π/2)` + `(s,-s,s)` scale
+   * then maps that into mercator (x, y, z=altitude).
+   */
   positions: Float32Array;
   /** Triangle indices into `positions` (3 per face). */
   indices: Uint32Array;
@@ -60,9 +64,10 @@ export function wantsPyramidalRoof(props: {
 /**
  * Build a pyramid: one triangle per ring edge, from edge → apex.
  *
- * Coordinates are converted to local east/north metres relative to the
- * footprint centroid so the mesh can sit in a MapLibre mercator frame with a
- * single origin translation. Up is metres above ground.
+ * Footprint lng/lat become local east/north metres about the centroid. Height
+ * is stored on Three's Y so the shared MapLibre custom-layer transform (same
+ * as bikes, boats, signature GLBs) lifts the apex into mercator altitude —
+ * not sideways along the map, which is what the earlier ENU packing did.
  */
 export function pyramidalRoofMesh(input: PyramidalRoofInput): PyramidalRoofMesh | null {
   const { ring, apexHeightM, eavesHeightM: eaves, colour } = input;
@@ -80,24 +85,25 @@ export function pyramidalRoofMesh(input: PyramidalRoofInput): PyramidalRoofMesh 
   const metresPerDegLat = 111320;
   const metresPerDegLng = 111320 * Math.cos(originLat * Math.PI / 180);
 
-  const toEnu = (lng: number, lat: number): [number, number] => [
+  const toEastNorth = (lng: number, lat: number): [number, number] => [
     (lng - originLng) * metresPerDegLng,
     (lat - originLat) * metresPerDegLat,
   ];
 
-  // Vertex 0 = apex; 1..n = eaves ring.
+  // Vertex 0 = apex; 1..n = eaves ring. Layout: [east, up, north].
   const positions = new Float32Array((open.length + 1) * 3);
   positions[0] = 0;
-  positions[1] = 0;
-  positions[2] = apexHeightM;
+  positions[1] = apexHeightM;
+  positions[2] = 0;
   for (let i = 0; i < open.length; i++) {
-    const [e, n] = toEnu(open[i][0], open[i][1]);
+    const [e, n] = toEastNorth(open[i][0], open[i][1]);
     const o = (i + 1) * 3;
     positions[o] = e;
-    positions[o + 1] = n;
-    positions[o + 2] = eaves;
+    positions[o + 1] = eaves;
+    positions[o + 2] = n;
   }
 
+  // GeoJSON exterior rings are CCW from above; (apex, a, b) then faces outward.
   const indices = new Uint32Array(open.length * 3);
   for (let i = 0; i < open.length; i++) {
     const a = i + 1;

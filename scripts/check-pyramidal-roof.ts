@@ -32,8 +32,10 @@ const mesh = pyramidalRoofMesh({
 assert.ok(mesh);
 assert.equal(mesh.positions.length / 3, 5, 'apex + 4 eaves corners');
 assert.equal(mesh.indices.length / 3, 4, 'four triangular faces');
-assert.equal(mesh.positions[2], 26, 'apex sits at the tagged height');
-assert.equal(mesh.positions[5], 16, 'eaves sit at height − roof:height');
+assert.equal(mesh.positions[1], 26, 'apex sits on Three Y (up)');
+assert.equal(mesh.positions[4], 16, 'eaves sit at height − roof:height on Y');
+assert.equal(mesh.positions[0], 0, 'apex is above the centroid in east');
+assert.equal(mesh.positions[2], 0, 'apex is above the centroid in north');
 assert.ok(Number.isFinite(mesh.originLng) && Number.isFinite(mesh.originLat));
 
 const wall = wallTopHeightExpression();

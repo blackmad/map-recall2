@@ -27,6 +27,15 @@ when the coloured extract loads, so Oude Kerk / Waag no longer draw shell and
 parts together on today's three-extrusion stack. Publishing the staged z14
 tiles (16 MB gzipped) remains the step-2 decision.
 
+**Waag's pyramidal roofs actually draw.** osmbuildings.org's Waag is seven
+`roof:shape=pyramidal` parts with `roof:height`. A fill-extrusion cannot slope,
+so walls now stop at the eaves and a small Three.js custom layer draws the
+cones. `roof:height` is kept in the appearance extract (1,035 features). Flat
+roof caps skip those parts so the grey lid does not fight the mesh. The first
+mesh pass packed height on Z (ENU); MapLibre's shared custom-layer transform
+expects Three Y-up like the bike/boat/GLB layers, so the cones were laid flat
+along the map — fixed to `[east, up, north]`.
+
 ## Street encyclopedia is no longer just Nes
 
 `street-knowledge.json` had one street. `streets.json` already carried
