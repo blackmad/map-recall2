@@ -182,6 +182,7 @@ for (const phone of PHONES) {
                 ['recall', layout.recall],
                 ['location', layout.location],
                 ['destination', layout.destination],
+                ['compass', layout.compass],
               ];
               if (landmarkVisible) band.push(['landmark', layout.landmark]);
               if (minimapVisible) band.push(['minimap', layout.minimap]);

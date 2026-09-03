@@ -131,45 +131,69 @@ canvas { display: block; position: relative; z-index: 2; }
 .advanced-options summary { padding: 13px 0; color: var(--ink-dim); font-weight: bold; cursor: pointer; }
 .advanced-options .setup-grid { padding-bottom: 14px; }
 
+/* Icon choice rows on the briefing — one decision per row, tap targets not menus. */
+.setup-choice-row { margin: 14px 0 0; }
+.setup-choice-label { margin-bottom: 8px; color: #7a8d8f; font: 800 10px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.setup-choice-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+.setup-choice { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-raised); color: var(--ink); text-align: left; cursor: pointer; font: inherit; }
+.setup-choice:hover { border-color: rgba(53,102,83,.45); background: var(--moss-soft); }
+.setup-choice.active { border-color: var(--moss); background: var(--moss-soft); box-shadow: inset 0 0 0 1px rgba(53,102,83,.35); }
+.setup-choice-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.setup-choice-text strong { font: 700 13px/1.2 var(--font-ui); }
+.setup-choice-text small { color: var(--muted); font: 11px/1.3 var(--font-ui); }
+.setup-choice-row.compact .setup-choice-options { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.setup-choice-row.compact .setup-choice { flex-direction: column; justify-content: center; gap: 2px; min-height: 48px; padding: 8px 4px; text-align: center; }
+.setup-choice-row.compact .setup-choice-text small { display: none; }
+.setup-choice-row.compact .setup-choice-text strong { font-size: 12px; font-weight: 700; }
+.setup-account { display: flex; align-items: center; gap: 12px; margin: 14px 0 4px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.setup-account-copy { flex: 1; min-width: 0; }
+.setup-account-copy strong { display: block; color: var(--ink); font: 700 14px/1.2 var(--font-ui); }
+.setup-account-copy small { display: block; margin-top: 3px; color: var(--muted); font: 12px/1.4 var(--font-ui); }
+.setup-account-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.account-button.quiet { background: transparent; color: var(--muted); }
+.account-button.quiet:hover { color: var(--ink); background: var(--paper-muted); }
+
 /* ---- Route briefing ---- */
 #route-setup { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: 22px; background: rgba(241,238,230,.80); backdrop-filter: blur(5px); color: var(--ink); font-family: var(--font-mono); }
 #route-card { width: min(100%, 680px); max-height: calc(100dvh - 44px); overflow-y: auto; overflow-x: hidden; padding: 26px 30px 24px; border: 1px solid rgba(35,55,57,.2); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 22px 65px rgba(25,42,43,.2); }
 .setup-eyebrow { margin-bottom: 7px; color: var(--accent); font: 800 11px/1 var(--font-mono); letter-spacing: .13em; text-transform: uppercase; }
 #route-card h1 { margin-bottom: 5px; color: var(--ink); font: 800 clamp(26px,4vw,34px)/1.05 var(--font-ui); letter-spacing: -.035em; }
-#route-card .lede { max-width: 580px; margin-bottom: 10px; color: var(--ink-dim); font: 14px/1.5 var(--font-ui); }
+#route-card .lede { max-width: 580px; margin-bottom: 4px; color: var(--ink-dim); font: 14px/1.5 var(--font-ui); }
 .route-surprise { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; align-items: center; gap: 14px; margin: 0; padding: 12px 14px; border: 0; border-left: 4px solid var(--moss); border-radius: var(--radius-sm); background: var(--moss-soft); color: var(--ink-dim); font: 13px/1.4 var(--font-ui); }
 .route-surprise > span { min-width: 0; overflow-wrap: anywhere; }
 .route-surprise .route-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--paper-raised); color: var(--moss); font-size: 19px; }
 .route-surprise strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 15px; }
 .route-chip { padding: 6px 9px; border-radius: 999px; background: transparent; color: #597175; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
-/* The paper sheet's fields are ruled lines on paper, not inset boxes. That is
-   a genuine difference in form, so it stays a rule — scoped to the sheet. */
 #route-card .setup-section-title { margin: 12px 0 5px; color: #7a8d8f; }
 #route-card .setup-grid { gap: 0 18px; }
 #route-card .setup-field { padding: 9px 0 10px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
 #route-card .setup-field:focus-within { border-color: var(--line-strong); box-shadow: none; }
 #route-card .setup-field select, #route-card .setup-field input[type="text"] { font-size: 14px; }
-#route-card .preference-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 16px; margin-top: 0; }
-/* The account block carries a sentence, not a two-word label; in a third of
-   the sheet it wrapped to one word per line. */
-#route-card #account-row { grid-column: 1 / -1; align-items: center; }
+#route-card .preference-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 16px; margin-top: 0; }
 #route-card .master-toggle { min-height: 45px; padding: 7px 0; border: 0; border-radius: 0; }
 #route-card .assist-options { color: #33494c; }
 #route-card .account-button { border-color: #91a7a8; background: transparent; color: #33494c; }
-#route-card .advanced-options { margin: 8px 0; padding: 0; border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); border-radius: 0; }
-#route-card .advanced-options summary { color: #52686b; font-size: 12px; }
+#route-card .advanced-options { margin: 14px 0 8px; padding: 0; border: 0; border-top: 1px solid var(--line); border-radius: 0; }
+#route-card .advanced-options summary { color: #52686b; font-size: 12px; padding: 10px 0; }
+#route-card .setup-choice-row { margin-top: 12px; }
+#route-card .setup-choice { background: transparent; }
+#route-card .setup-choice.active { background: var(--moss-soft); }
+#route-card .setup-account { margin-top: 10px; }
 #route-start { width: 100%; padding: 13px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font: 800 15px var(--font-ui); cursor: pointer; }
 #route-start:hover { filter: brightness(1.1); }
 #route-error { min-height: 20px; margin-top: 10px; color: #b45309; }
 
 /* ---- Help and live settings panels ---- */
-.utility-panel { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; background: rgba(36,50,43,.45); backdrop-filter: blur(4px); color: var(--ink); font-family: var(--font-mono); }
-.utility-card { width: min(100%, 520px); padding: 25px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,.55); }
-.utility-card h2 { margin-bottom: 16px; color: var(--accent-ink); }
+.utility-panel { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(36,50,43,.45); backdrop-filter: blur(4px); color: var(--ink); font-family: var(--font-mono); }
+.utility-card { display: flex; flex-direction: column; width: min(100%, 520px); max-height: min(86dvh, 640px); padding: 20px 22px 16px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,.55); overflow: hidden; }
+.utility-card h2 { flex: none; margin-bottom: 10px; color: var(--accent-ink); }
 .utility-card table { width: 100%; border-collapse: collapse; }
-.utility-card td { padding: 6px; border-bottom: 1px solid var(--line); }
-.utility-card td:first-child { width: 80px; color: var(--accent-ink); font-weight: bold; }
-.utility-close { width: 100%; margin-top: 18px; padding: 12px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
+.utility-card td { padding: 5px 4px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.utility-card td:first-child { width: 88px; color: var(--accent-ink); font-weight: bold; white-space: nowrap; }
+.utility-scroll { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.utility-close { flex: none; width: 100%; margin-top: 12px; padding: 12px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
+.help-credits { margin: 12px 0 0; color: var(--muted); font: 11px/1.45 var(--font-ui); }
+.help-credits a { color: var(--moss); }
 /* The landmark panel is the card's expanded form: the full extract, at length,
    with real scrolling. The canvas card is a glance; this is the read. */
 #landmark-panel .utility-card { display: flex; flex-direction: column; width: min(100%, 640px); max-height: min(86dvh, 760px); }
@@ -186,8 +210,8 @@ canvas { display: block; position: relative; z-index: 2; }
 input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); background: transparent; }
 #utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 12; display: flex; gap: 8px; }
 #utility-buttons button { width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); font-size: 18px; cursor: pointer; box-shadow: 0 6px 18px rgba(58,50,36,.16); }
-#prototype-links { position: fixed; left: 10px; bottom: 8px; z-index: 10; padding: 5px 8px; border-radius: 6px; background: var(--surface); color: var(--muted); font: 11px var(--font-ui); }
-#prototype-links a { color: var(--moss); }
+#map-attribution { position: fixed; left: 10px; bottom: 6px; z-index: 10; max-width: min(42vw, 220px); color: rgba(36,50,43,.55); font: 9px/1.3 var(--font-ui); text-shadow: 0 1px 0 rgba(255,253,248,.7); pointer-events: none; }
+#map-attribution a { color: inherit; pointer-events: auto; text-decoration: underline; text-underline-offset: 2px; }
 /* ---- Phone ----------------------------------------------------------- *
  * The briefing becomes a full-bleed sheet, the recall prompt docks to the
  * bottom where a thumb is, and the in-game chrome keeps clear of both the
@@ -195,13 +219,14 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
  *
  * Keyed on either axis. `max-width: 760px` alone missed a phone in landscape
  * entirely — 844x390 is not a narrow screen — so a rotated phone kept the
- * desktop tap targets, the attribution strip over the controls, and no
- * safe-area padding at all.
+ * desktop tap targets and no safe-area padding at all.
  * ---------------------------------------------------------------------- */
 @media (max-width: 760px), (max-height: 500px) {
   #route-setup { padding: 0; align-items: stretch; }
   #route-card { flex: none; width: 100%; min-width: 0; max-height: 100dvh; overflow-x: hidden; border: 0; border-radius: 0; padding: calc(20px + var(--safe-top)) 18px calc(18px + var(--safe-bottom)); }
   .setup-grid, .preference-grid { grid-template-columns: minmax(0,1fr); }
+  .setup-choice-row.compact .setup-choice-options { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .setup-choice { min-height: 48px; }
   .route-surprise { grid-template-columns: 40px minmax(0,1fr); }
   .route-chip { display: none; }
   /* Tap targets: 44px is the smallest reliably hittable control. */
@@ -220,16 +245,15 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   .canal-choice { min-height: 46px; }
   #canal-answer { font-size: 16px; }
   #canal-submit, #canal-no-idea { min-height: 46px; }
-  /* The d-pad owns the bottom centre, so these sit beside it on the right and
-     the attribution strip stands down rather than crowding the controls. */
+  /* The d-pad owns the bottom centre, so these sit beside it on the right. */
   #utility-buttons { right: calc(10px + env(safe-area-inset-right, 0px)); bottom: calc(12px + var(--safe-bottom)); }
   #utility-buttons button { width: 46px; height: 46px; }
-  #prototype-links { display: none; }
+  #map-attribution { display: none; }
   .utility-panel { padding: 12px; align-items: flex-end; }
-  /* `align-items: flex-end` plus a hard cap: centred, the card grew past both
-     edges and clipped its own Done button off the bottom of the screen. */
-  .utility-card { padding: 18px; max-height: calc(100dvh - 24px - var(--safe-bottom)); overflow-y: auto; margin-bottom: calc(6px + var(--safe-bottom)); }
-  .utility-close { min-height: 46px; position: sticky; bottom: 0; }
+  /* Card already flex-scrolls on every viewport; phone only nudges padding and
+     keeps Close above the home indicator. */
+  .utility-card { padding: 16px 16px 12px; max-height: calc(100dvh - 24px - var(--safe-bottom)); margin-bottom: calc(6px + var(--safe-bottom)); }
+  .utility-close { min-height: 46px; }
   /* Checkboxes were 13px targets in a two-up grid. */
   .assist-options { gap: 4px 14px; }
   .assist-options label { min-height: 44px; font-size: 14px; }
@@ -255,7 +279,28 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
 <div id="utility-buttons"><button id="open-settings" title="Settings (G)">⚙</button><button id="open-help" title="Keyboard shortcuts (?)">?</button></div>
 <div id="help-panel" class="utility-panel"><div class="utility-card">
   <h2>Keyboard shortcuts</h2>
-  <table><tr><td>Arrows</td><td>Steer and accelerate/brake</td></tr><tr><td>Space</td><td>Handbrake</td></tr><tr><td>M / Tab</td><td>Toggle minimap</td></tr><tr><td>L</td><td>Toggle route line</td></tr><tr><td>F</td><td>Toggle destination arrow</td></tr><tr><td>D</td><td>Toggle road name labels</td></tr><tr><td>W</td><td>Open Wikipedia for the landmark on screen</td></tr><tr><td>Click card</td><td>Expand the landmark card to the full article text</td></tr><tr><td>1 – 4</td><td>Pick a multiple-choice answer</td></tr><tr><td>O</td><td>Toggle north-up / heading-up</td></tr><tr><td>G</td><td>Settings</td></tr><tr><td>N</td><td>Sound</td></tr><tr><td>P / Esc</td><td>Pause</td></tr><tr><td>− / + or pinch</td><td>Zoom</td></tr><tr><td>Drag / two-finger pan</td><td>Pan camera</td></tr><tr><td>I J K U</td><td>Pan camera</td></tr><tr><td>R</td><td>Recenter camera</td></tr><tr><td>`</td><td>Debug overlay</td></tr></table>
+  <div class="utility-scroll">
+    <table>
+      <tr><td>Arrows</td><td>Steer and accelerate / brake</td></tr>
+      <tr><td>Space</td><td>Handbrake</td></tr>
+      <tr><td>M / Tab</td><td>Minimap</td></tr>
+      <tr><td>L</td><td>Route line</td></tr>
+      <tr><td>F</td><td>Destination arrow</td></tr>
+      <tr><td>D</td><td>Road name labels</td></tr>
+      <tr><td>O</td><td>North-up / heading-up</td></tr>
+      <tr><td>1 – 4</td><td>Multiple-choice answer</td></tr>
+      <tr><td>W</td><td>Wikipedia for the on-screen landmark</td></tr>
+      <tr><td>Click card</td><td>Full landmark article</td></tr>
+      <tr><td>G</td><td>Settings</td></tr>
+      <tr><td>N</td><td>Sound</td></tr>
+      <tr><td>P / Esc</td><td>Pause</td></tr>
+      <tr><td>− / +</td><td>Zoom (or pinch)</td></tr>
+      <tr><td>Drag / IJKU</td><td>Pan camera</td></tr>
+      <tr><td>R</td><td>Recenter</td></tr>
+      <tr><td>`</td><td>Debug overlay</td></tr>
+    </table>
+    <p class="help-credits"><a href="../">← Map Recall</a> · Adapted from <a href="https://github.com/a1anw2/smokeysandthebandit">Smokey’s</a> (GPL-3.0) · © OSM · © CARTO</p>
+  </div>
   <button class="utility-close" type="button">Close</button>
 </div></div>
 <div id="landmark-panel" class="utility-panel"><div class="utility-card">
@@ -280,7 +325,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
     <div id="canal-feedback" aria-live="polite"></div>
   </form>
 </div>
-<div id="prototype-links"><a href="../">← Map Recall</a> · Adapted from <a href="https://github.com/a1anw2/smokeysandthebandit">Smokey’s</a> (GPL-3.0) · © OpenStreetMap contributors © CARTO</div>
+<div id="map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> · © CARTO</div>
 
 <!-- Constants & Utilities (no dependencies) -->
 <script src="js/constants.js"></script>
@@ -298,7 +343,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
 
 <!-- Rendering (depends on constants/utils) -->
 <script src="js/renderer.js"></script>
-<script src="js/game-ui.bundle.js"></script>
+<script src="js/game-ui.bundle.js?v=20260903c"></script>
 <script src="js/notice-cards.bundle.js"></script>
 <script src="js/answer-path.bundle.js"></script>
 <script src="js/hud.js"></script>
@@ -330,9 +375,9 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
 <script src="js/boat-corridor.bundle.js"></script>
 <script src="js/city-overview.bundle.js"></script>
 <script src="js/preferences.bundle.js"></script>
-<script src="js/overlay.bundle.js"></script>
-<script src="js/game-landmarks.bundle.js"></script>
-<script src="js/game-recall.bundle.js"></script>
+<script src="js/overlay.bundle.js?v=20260903d"></script>
+<script src="js/game-landmarks.bundle.js?v=20260903c"></script>
+<script src="js/game-recall.bundle.js?v=20260903c"></script>
 <script src="js/game-route.js"></script>
 <script src="js/game-presentation.bundle.js"></script>
 <script src="js/game.js"></script>

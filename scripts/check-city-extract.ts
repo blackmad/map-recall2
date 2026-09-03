@@ -88,6 +88,19 @@ if (expectedCityId === 'amsterdam') {
   for (const name of ['OT301', 'Melkweg', 'Artis', 'Framer Framed']) {
     assert.ok(landmarkNames.has(name.toLocaleLowerCase()), `${name} is missing from Amsterdam landmarks`);
   }
+  // Street mode is cycling: bikeable pedestrian corridors must be in the
+  // routing graph, and bicycle=no shopping streets must stay out.
+  const routingByName = new Map<string, Array<{ highway?: string }>>();
+  for (const feature of routing as Array<{ name?: string; highway?: string }>) {
+    if (!feature.name) continue;
+    const list = routingByName.get(feature.name) || [];
+    list.push(feature);
+    routingByName.set(feature.name, list);
+  }
+  assert.ok((routingByName.get('Zeedijk') || []).some((way) => way.highway === 'pedestrian'),
+    'Zeedijk pedestrian centreline is missing from bike routing');
+  assert.equal((routingByName.get('Kalverstraat') || []).length, 0,
+    'Kalverstraat is bicycle=no and must not enter bike routing');
   const ah = brandedPois.filter((poi: { kind?: string }) => poi.kind === 'albert-heijn');
   assert.ok(ah.length >= 20, `Albert Heijn coverage regressed (${ah.length})`);
   const warehouse = landmarks.find((feature: { wikidata?: string }) => feature.wikidata === 'Q14518704');

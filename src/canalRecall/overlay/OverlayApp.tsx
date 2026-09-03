@@ -7,6 +7,7 @@ export interface OverlayCallbacks {
   onStart: () => void;
   onLiveChange: () => void;
   onAccountClick: () => void;
+  onClearKnowledge: () => void;
   onSkipMastered: (enabled: boolean) => void;
   onCloseSettings: () => void;
 }
@@ -46,6 +47,76 @@ function Check({
   );
 }
 
+type Choice<T extends string> = {
+  value: T;
+  title: string;
+  hint?: string;
+};
+
+function ChoiceRow<T extends string>({
+  label,
+  name,
+  value,
+  onChange,
+  options,
+  compact = false,
+}: {
+  label: string;
+  name: string;
+  value: T;
+  onChange: (value: T) => void;
+  options: readonly Choice<T>[];
+  compact?: boolean;
+}) {
+  return (
+    <div className={`setup-choice-row${compact ? ' compact' : ''}`} role="radiogroup" aria-label={label}>
+      <div className="setup-choice-label">{label}</div>
+      <div className="setup-choice-options">
+        {options.map(option => (
+          <button
+            key={option.value}
+            type="button"
+            className={`setup-choice${value === option.value ? ' active' : ''}`}
+            aria-pressed={value === option.value}
+            data-choice={`${name}:${option.value}`}
+            onClick={() => onChange(option.value)}
+          >
+            <span className="setup-choice-text">
+              <strong>{option.title}</strong>
+              {option.hint ? <small>{option.hint}</small> : null}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const TRAVEL: Choice<CanalPreferences['travelMode']>[] = [
+  { value: 'boat', title: 'Boat', hint: 'Canals' },
+  { value: 'car', title: 'Bike', hint: 'Streets' },
+];
+
+const VIEW: Choice<CanalPreferences['viewMode']>[] = [
+  { value: 'north', title: 'North-up', hint: 'Flat map' },
+  { value: 'heading', title: 'Heading-up', hint: 'Flat map' },
+  { value: 'chase', title: 'Chase', hint: '3D' },
+  { value: 'cockpit', title: 'Cockpit', hint: '3D' },
+];
+
+const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
+  { value: 'surprise', title: 'Surprise route', hint: 'Landmark to landmark' },
+  { value: 'home', title: 'Home base', hint: 'Errands from an address' },
+];
+
+const DIFFICULTY: Choice<CanalPreferences['difficulty']>[] = [
+  { value: 'easy', title: 'Easy' },
+  { value: 'medium', title: 'Medium' },
+  { value: 'hard', title: 'Hard' },
+  { value: 'expert', title: 'Expert' },
+  { value: 'custom', title: 'Custom' },
+];
+
 export function OverlayApp({
   store,
   callbacks,
@@ -71,32 +142,90 @@ export function OverlayApp({
         <form id="route-card" onSubmit={start}>
           <div className="setup-eyebrow">Learn Amsterdam by moving through it</div>
           <h1>Amsterdam Canal Recall</h1>
-          <p className="lede">Choose a route, then learn the city by moving through it.</p>
-          <div className="setup-section-title">Your route</div>
-          <div className="setup-grid">
-            <Field label="🎯 DIFFICULTY" id="route-difficulty" value={prefs.difficulty} onChange={value => patch({ difficulty: value as CanalPreferences['difficulty'] })}>
-              <option value="easy">Easy — full navigation help</option>
-              <option value="medium">Medium — GPS-like</option>
-              <option value="hard">Hard — sparse help</option>
-              <option value="expert">Expert — memory only</option>
-              <option value="custom">Custom</option>
-            </Field>
-            <Field label="⛵ TRAVEL" id="travel-mode" value={prefs.travelMode} onChange={value => patch({ travelMode: value as CanalPreferences['travelMode'] })}>
-              <option value="boat">Boat through the canals</option>
-              <option value="car">Bike through the streets</option>
-            </Field>
-            <Field label="🗺️ VIEW" id="view-mode" value={prefs.viewMode} onChange={value => patch({ viewMode: value as CanalPreferences['viewMode'] })}>
-              <option value="north">North-up map</option>
-              <option value="heading">Heading-up map</option>
-              <option value="chase">3D chase camera</option>
-              <option value="cockpit">3D near-first-person</option>
-            </Field>
-            <Field label="🏠 ROUTE LOOP" id="route-pattern" value={prefs.routePattern} onChange={value => patch({ routePattern: value as CanalPreferences['routePattern'] })}>
-              <option value="surprise">Surprise landmark route</option>
-              <option value="home">Home-base errands</option>
-            </Field>
-          </div>
-          <label id="home-address-field" className="setup-field" style={{ display: prefs.routePattern === 'home' ? 'flex' : 'none', marginTop: 14 }}>
+
+          {state.account.visible ? (
+            <div className="setup-account" id="account-row">
+              <div className="setup-account-copy">
+                <strong id="account-label">{state.account.label}</strong>
+                <small id="account-note">{state.account.note}</small>
+              </div>
+              <div className="setup-account-actions">
+                <button
+                  id="account-button"
+                  type="button"
+                  className="account-button"
+                  disabled={state.account.busy}
+                  onClick={() => callbacks.onAccountClick()}
+                >
+                  {state.account.buttonLabel}
+                </button>
+                <button
+                  id="clear-knowledge-button"
+                  type="button"
+                  className="account-button quiet"
+                  disabled={state.account.busy}
+                  onClick={() => callbacks.onClearKnowledge()}
+                >
+                  Reset knowledge…
+                </button>
+              </div>
+            </div>
+          ) : null}
+
+          {/* Hidden selects keep Playwright and any legacy getElementById wiring working. */}
+          <select id="travel-mode" hidden value={prefs.travelMode} onChange={event => patch({ travelMode: event.target.value as CanalPreferences['travelMode'] })}>
+            <option value="boat">Boat</option>
+            <option value="car">Bike</option>
+          </select>
+          <select id="view-mode" hidden value={prefs.viewMode} onChange={event => patch({ viewMode: event.target.value as CanalPreferences['viewMode'] })}>
+            <option value="north">North-up</option>
+            <option value="heading">Heading-up</option>
+            <option value="chase">Chase</option>
+            <option value="cockpit">Cockpit</option>
+          </select>
+          <select id="route-pattern" hidden value={prefs.routePattern} onChange={event => patch({ routePattern: event.target.value as CanalPreferences['routePattern'] })}>
+            <option value="surprise">Surprise</option>
+            <option value="home">Home</option>
+          </select>
+          <select id="route-difficulty" hidden value={prefs.difficulty} onChange={event => patch({ difficulty: event.target.value as CanalPreferences['difficulty'] })}>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+            <option value="expert">Expert</option>
+            <option value="custom">Custom</option>
+          </select>
+
+          <ChoiceRow
+            label="Travel"
+            name="travel"
+            value={prefs.travelMode}
+            onChange={value => patch({ travelMode: value })}
+            options={TRAVEL}
+          />
+          <ChoiceRow
+            label="View"
+            name="view"
+            value={prefs.viewMode}
+            onChange={value => patch({ viewMode: value })}
+            options={VIEW}
+          />
+          <ChoiceRow
+            label="Route"
+            name="route"
+            value={prefs.routePattern}
+            onChange={value => patch({ routePattern: value })}
+            options={ROUTE}
+          />
+          <ChoiceRow
+            label="Difficulty"
+            name="difficulty"
+            value={prefs.difficulty}
+            onChange={value => patch({ difficulty: value })}
+            options={DIFFICULTY}
+            compact
+          />
+
+          <label id="home-address-field" className="setup-field" style={{ display: prefs.routePattern === 'home' ? 'flex' : 'none', marginTop: 10 }}>
             HOME ADDRESS
             <input
               id="home-address"
@@ -108,28 +237,14 @@ export function OverlayApp({
             />
             <span style={{ fontSize: 11, color: '#718487' }}>Saved · boats start at nearby water</span>
           </label>
+
           <details
             className="advanced-options"
             open={state.advancedOpen}
             onToggle={event => store.setAdvancedOpen((event.target as HTMLDetailsElement).open)}
           >
-            <summary>⚙ Advanced options</summary>
+            <summary>More options</summary>
             <div className="preference-grid">
-              <div id="account-row" className="master-toggle" style={{ display: state.account.visible ? 'flex' : 'none' }}>
-                <span style={{ flex: 1 }}>
-                  <strong id="account-label">{state.account.label}</strong>
-                  <small id="account-note">{state.account.note}</small>
-                </span>
-                <button
-                  id="account-button"
-                  type="button"
-                  className="account-button"
-                  disabled={state.account.busy}
-                  onClick={() => callbacks.onAccountClick()}
-                >
-                  {state.account.buttonLabel}
-                </button>
-              </div>
               <label className="master-toggle">
                 <input
                   id="skip-mastered"
@@ -140,11 +255,11 @@ export function OverlayApp({
                     callbacks.onSkipMastered(event.target.checked);
                   }}
                 />
-                <span><strong>↻ Space reviews</strong><small>Only names due</small></span>
+                <span><strong>Space reviews</strong><small>Only names due</small></span>
               </label>
               <label className="master-toggle">
                 <input id="gamey-features" type="checkbox" checked={prefs.gamey} onChange={event => patch({ gamey: event.target.checked })} />
-                <span><strong>★ Scores & streaks</strong><small>Points and ribbons</small></span>
+                <span><strong>Scores & streaks</strong><small>Points and ribbons</small></span>
               </label>
             </div>
             <div className="setup-grid">
@@ -185,6 +300,7 @@ export function OverlayApp({
       <div id="settings-panel" className="utility-panel" style={{ display: state.settingsOpen ? 'flex' : 'none' }}>
         <div className="utility-card">
           <h2>Navigation settings</h2>
+          <div className="utility-scroll">
           <label className="master-toggle">
             <input id="live-gamey" type="checkbox" checked={prefs.gamey} onChange={event => patch({ gamey: event.target.checked }, true)} />
             <span><strong>Game-y features</strong><small>Streaks, multipliers, points, and route ribbons.</small></span>
@@ -219,6 +335,7 @@ export function OverlayApp({
           <label className="setup-field">CAMERA ZOOM
             <input id="live-zoom" type="range" min="0.35" max="1.3" step="0.05" value={prefs.zoom} onChange={event => patch({ zoom: Number(event.target.value) }, true)} />
           </label>
+          </div>
           <button className="utility-close" type="button" onClick={() => callbacks.onCloseSettings()}>Done</button>
         </div>
       </div>

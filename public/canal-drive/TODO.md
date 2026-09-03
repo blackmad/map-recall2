@@ -327,10 +327,11 @@ match any extract, because the Dutch ledes they were made from have since been
 rewritten upstream. The pass counts them; nothing prunes them.
 
 **12. Clear all my data.**
-A deliberately guarded reset for test accounts and players who want a fresh
-start: clears local preferences, recall and exploration state and the signed-in
-Firebase copy, explains exactly what will be deleted, requires confirmation,
-and leaves authentication intact. Also makes items 5 and 6 testable by hand.
+Partial: **Reset knowledge…** is on the route briefing account row (and
+confirms before wiping). It clears local + signed-in spaced-repetition memory
+and fact-rotation history, leaves auth and Canal preferences. Still open: a
+full “clear preferences / exploration / everything” path if we want that
+separate from knowledge reset.
 
 **14. Finish the Storybook workbench.**
 Ten phone states exist now — the driving HUD (idle, steering, mid-question,
@@ -346,7 +347,11 @@ serves both.
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in
 `scripts/check-canal-car.ts`. Ongoing, not a milestone: every geographic failure
-reported from play should land here before it is called fixed.
+reported from play should land here before it is called fixed. Bike-routing
+coverage for pedestrian/cycleway corridors is pinned in
+`scripts/check-city-extract.ts` (Zeedijk in, Kalverstraat out); still add the
+street name from any future "can't bike here" report so a junction-level miss
+does not hide behind the highway-class fix.
 
 ---
 

@@ -141,6 +141,7 @@ export class GamePresentationRuntime {
     this.hud.drawDestination(ctx, this.routeTo.name,
       this.track.getDistanceToFinish(player.x, player.y), this._routeLearningPlan?.expectedNovelty ?? null);
 
+    this.hud.drawCompass(ctx, this.camera);
     if (this.routeOptions.arrow) {
       this.hud.drawFinishDirection(ctx, player.x, player.y,
         this.track.finishPoint.x, this.track.finishPoint.y, this.camera);

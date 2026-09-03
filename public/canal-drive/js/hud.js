@@ -138,6 +138,57 @@ class HUD {
     ctx.fillText(distLabel, acx, boxY + 43);
   }
 
+  /** Always-on north rose. Quiet moss needle — not the terracotta finish arrow. */
+  drawCompass(ctx, camera) {
+    const ui = window.CanalRecallUi;
+    const size = this.layout?.mode === 'compact'
+      ? (ui.COMPASS_SIZE_COMPACT || 40)
+      : (ui.COMPASS_SIZE_DESKTOP || 44);
+    const fallback = { x: 15, y: CANVAS_H - 215 - 8 - size, width: size, height: size };
+    const rect = this._rect('compass', fallback);
+    this.paperCard(ctx, rect, { radius: Math.round(size / 2) });
+
+    const cx = rect.x + rect.width / 2;
+    const cy = rect.y + rect.height / 2;
+    const radius = rect.width * 0.32;
+    const angle = typeof ui.northScreenAngle === 'function'
+      ? ui.northScreenAngle(camera.rotation || 0)
+      : (-Math.PI / 2 - (camera.rotation || 0));
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.strokeStyle = 'rgba(97,89,74,0.28)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius + 4, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.rotate(angle);
+    ctx.fillStyle = ui.paperTheme.moss;
+    ctx.beginPath();
+    ctx.moveTo(radius + 1, 0);
+    ctx.lineTo(-radius * 0.45, -radius * 0.42);
+    ctx.lineTo(-radius * 0.18, 0);
+    ctx.lineTo(-radius * 0.45, radius * 0.42);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = 'rgba(104,116,110,0.55)';
+    ctx.beginPath();
+    ctx.moveTo(-radius * 0.18, 0);
+    ctx.lineTo(-radius * 0.45, -radius * 0.42);
+    ctx.lineTo(-radius - 1, 0);
+    ctx.lineTo(-radius * 0.45, radius * 0.42);
+    ctx.closePath();
+    ctx.fill();
+    // "N" sits on the needle, inside the chip so a round card does not clip it.
+    ctx.fillStyle = ui.paperTheme.mossDark;
+    ctx.font = `bold ${Math.max(9, Math.round(size * 0.26))}px sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('N', radius * 0.55, 0);
+    ctx.restore();
+  }
+
   drawRouteLine(ctx, player, finish, camera, routePath) {
     const start = camera.worldToScreen(player.x, player.y);
     const end = camera.worldToScreen(finish.x, finish.y);
