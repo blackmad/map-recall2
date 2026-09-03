@@ -6,6 +6,7 @@
   "scripts": {
     "build:canal-car": "esbuild src/canalRecall/carRoadGuard.ts --bundle --format=iife --global-name=CanalRecallCar --outfile=public/canal-drive/js/car-road-guard.bundle.js --minify",
     "build:canal-buildings": "esbuild src/canalRecall/buildingStyle.ts --bundle --format=iife --global-name=CanalRecallBuildings --outfile=public/canal-drive/js/building-style.bundle.js --minify",
+    "build:canal-signature-landmarks": "esbuild src/canalRecall/landmarks/browser.ts --bundle --format=iife --global-name=CanalRecallSignatureLandmarks --outfile=public/canal-drive/js/signature-placement.bundle.js --minify",
     "build:canal-streets": "esbuild src/canalRecall/streetOverlayStyle.ts --bundle --format=iife --global-name=CanalRecallStreets --outfile=public/canal-drive/js/street-overlay-style.bundle.js --minify",
     "build:canal-road-projection": "esbuild src/canalRecall/osm/roadProjection.ts --bundle --format=iife --global-name=CanalRecallRoadProjection --outfile=public/canal-drive/js/road-projection.bundle.js",
     "build:canal-road-surface": "esbuild src/canalRecall/routing/roadSurface.ts --bundle --format=iife --global-name=CanalRecallRoadSurface --outfile=public/canal-drive/js/road-surface.bundle.js",
@@ -57,6 +58,7 @@
     "enrich:english": "tsx scripts/translate-extracts-to-english.ts",
     "enrich:utrecht-english": "tsx scripts/translate-extracts-to-english.ts --directory=public/data/extracts/utrecht --ollama",
     "test:canal-buildings": "tsx scripts/check-canal-buildings.ts",
+    "test:signature-landmarks": "tsx scripts/check-signature-landmarks.ts",
     "test:osm-buildings": "tsx scripts/check-osm-building-appearance.ts",
     "test:building-colors": "node --import tsx scripts/check-building-color-extraction.ts",
     "test:canal-streets": "tsx scripts/check-canal-street-overlays.ts",
@@ -98,6 +100,8 @@
     "refresh:randstad": "bash scripts/refresh-randstad.sh",
     "build:canal-ui": "esbuild src/canalRecall/gameUi.ts --bundle --format=iife --global-name=CanalRecallUi --outfile=public/canal-drive/js/game-ui.bundle.js --minify",
     "test:mobile-hud": "node --experimental-strip-types scripts/check-mobile-hud.ts",
+    "build:signature-landmark-model": "tsx scripts/build-signature-landmark.ts",
+    "build:vehicle-models": "tsx scripts/build-vehicle-model.ts --source=public/canal-drive/carbon-frame-bike-runtime.glb --out=public/canal-drive/carbon-frame-bike-runtime.glb --triangles=20000 --error=0.02 --keep=Lenker,RadVorn,RadHinten",
     "build:google-tiles-spike": "node scripts/build-google-tiles-spike.mjs",
     "build:canal-photoreal-gate": "esbuild src/canalRecall/building/photorealGate.ts --bundle --format=iife --global-name=CanalRecallPhotorealGate --outfile=public/canal-drive/js/photoreal-gate.bundle.js --minify",
     "test:photoreal-gate": "tsx scripts/check-photoreal-gate.ts"
@@ -124,6 +128,9 @@
     "vite": "^6.2.3"
   },
   "devDependencies": {
+    "@gltf-transform/core": "^4.5.0",
+    "@gltf-transform/extensions": "^4.5.0",
+    "@gltf-transform/functions": "^4.5.0",
     "@playwright/test": "^1.62.1",
     "@storybook/addon-a11y": "^10.5.10",
     "@storybook/react-vite": "^10.5.10",
@@ -134,6 +141,8 @@
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.0",
     "jpeg-js": "^0.4.4",
+    "meshoptimizer": "^1.2.0",
+    "sharp": "^0.35.4",
     "storybook": "^10.5.10",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",

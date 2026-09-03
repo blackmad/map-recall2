@@ -396,8 +396,31 @@ shadowed or mixed samples and compare a muted median wall colour against the
 current OSM-tag fallback before attempting a citywide pass. Straight-down roof
 imagery cannot measure building sides.
 
-**22. Signature landmark models** for the handful of buildings worth
-recognising on sight.
+**22. Signature landmark models — settle the licence, then finish the set.**
+Thirteen buildings are built and placed: nine of the City of Amsterdam's own
+survey models and four community ones, all from 3D Warehouse, all life-size and
+placed at their published coordinates. `HISTORY.md` records how they are cleaned
+up and why. Three things remain.
+
+*The licence is unresolved and blocks publication.* They are used under the
+3D Warehouse General Model License, which covers a Combined Work carrying
+substantial additional content but forbids aggregating models from the site for
+redistribution as an asset library. A `public/canal-drive/models/` directory in
+a public repository is arguably the second. Trimble takes written requests at
+3dwarehouse-tou@sketchup.com. Until this is answered, treat the models as a
+prototype: the code is fine, the binaries are the question.
+
+*Facade bearings are unverified.* `FACADE_BEARINGS` records which way each
+building faces and only the Palace's was checked. They do not affect placement —
+a surveyed model arrives correctly turned — but they are reported in the UI as
+fact. Pin them against each footprint's long axis in a check script.
+
+*Not yet wired into the game.* The layer runs in
+`signature-landmark-demo.html` only; `vector-map.js` does not construct it. It
+also has no mobile measurements. `search-3dwarehouse-landmarks.ts` lists 46
+further landmarks with published coordinates across the four cities — Euromast,
+Dom Tower, Rietveld Schröder House, Binnenhof — so finishing the set is mostly
+mechanical once the licence is settled.
 
 **23. Authentic retro rendering**, and **24. the optional arcade layer.**
 Both are large presentation bets with long-form design notes preserved at the

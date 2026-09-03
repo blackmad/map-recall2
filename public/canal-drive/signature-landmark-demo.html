@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signature landmark — Paleis op de Dam</title>
+<link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #071E2B; color: #E0F2FE;
+    font: 13px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  #map { position: absolute; inset: 0; }
+  .panel { position: absolute; z-index: 2; background: rgba(7,30,43,.88);
+    border: 1px solid rgba(148,197,220,.28); border-radius: 10px; padding: 12px 14px;
+    backdrop-filter: blur(8px); max-width: 330px; }
+  #controls { top: 12px; left: 12px; }
+  #readout { bottom: 12px; left: 12px; font-variant-numeric: tabular-nums; }
+  #credit { bottom: 12px; right: 12px; max-width: 320px; font-size: 11.5px; color: #B7D3E2; }
+  h1 { font-size: 14px; margin: 0 0 8px; letter-spacing: .01em; }
+  h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .09em;
+    color: #7FB4CC; margin: 0 0 6px; font-weight: 600; }
+  label { display: flex; align-items: center; gap: 8px; padding: 3px 0; cursor: pointer; }
+  button { font: inherit; color: inherit; background: rgba(56,189,248,.14);
+    border: 1px solid rgba(56,189,248,.4); border-radius: 6px; padding: 5px 9px;
+    cursor: pointer; margin: 3px 4px 0 0; }
+  button:hover { background: rgba(56,189,248,.28); }
+  dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 0; }
+  dt { color: #7FB4CC; } dd { margin: 0; }
+  a { color: #7DD3FC; }
+  .warn { color: #FCD34D; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div class="panel" id="controls">
+  <h1>Paleis op de Dam — signature model</h1>
+  <label><input type="checkbox" id="show-model" checked> Signature model</label>
+  <label><input type="checkbox" id="suppress" checked> Hide the extrusion it replaces</label>
+  <label><input type="checkbox" id="highlight"> Highlight as the quiz answer</label>
+  <div style="margin-top:8px">
+    <h2>Landmark</h2>
+    <select id="landmark"></select>
+  </div>
+  <div style="margin-top:8px">
+    <h2>Camera</h2>
+    <button data-view="dam">From the Dam</button>
+    <button data-view="cyclist">Cyclist</button>
+    <button data-view="aerial">Aerial</button>
+    <button data-view="rear">From behind</button>
+  </div>
+</div>
+
+<div class="panel" id="readout"><h2>Measured placement</h2><dl id="numbers"></dl></div>
+<div class="panel" id="credit"></div>
+
+<script src="./js/three.bundle.js"></script>
+<script src="./js/signature-placement.bundle.js"></script>
+<script src="./js/signature-landmarks.bundle.js"></script>
+<script>
+// A deterministic view of one landmark, so the placement can be judged without
+// driving to it. Everything the page shows about the model — scale, bearing,
+// height, footprint coverage — is read back from the layer rather than
+// restated here, so a wrong number on screen means a wrong number in the game.
+const { SIGNATURE_MODELS, footprintPolygon } = window.CanalRecallSignatureLandmarks;
+// `?model=<url>` swaps in a candidate asset against the same footprint, which
+// is how a downloaded model is judged before it earns a manifest entry.
+const params = new URLSearchParams(location.search);
+// `?only=<id>` narrows to one landmark; `?model=<url>` swaps a candidate file
+// in against that landmark's anchor, which is how a download is judged before
+// it earns a catalogue entry.
+const only = params.get('only');
+const shown = only ? SIGNATURE_MODELS.filter(m => m.id === only) : SIGNATURE_MODELS;
+const spec = params.get('model') ? { ...shown[0], modelUrl: params.get('model') } : shown[0];
+const specs = params.get('model') ? [spec] : shown;
+const anchorOf = m => (m.surveyed ? m.surveyed.anchor : m.footprint.centre);
+const [lng, lat] = anchorOf(spec);
+
+const VIEWS = {
+  // Standing on the Dam, looking west at the facade — the recognition test.
+  dam:     { center: [lng + 0.0016, lat - 0.0002], zoom: 17.1, pitch: 72, bearing: 271 },
+  // Roughly a cyclist's eye entering the square from Damrak.
+  cyclist: { center: [lng + 0.0021, lat - 0.0009], zoom: 17.9, pitch: 80, bearing: 297 },
+  aerial:  { center: [lng, lat], zoom: 16.2, pitch: 45, bearing: 20 },
+  // The rear, where this particular model runs out of building.
+  rear:    { center: [lng - 0.0015, lat + 0.0002], zoom: 17.1, pitch: 72, bearing: 91 },
+};
+
+const map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://tiles.openfreemap.org/styles/liberty',
+  ...VIEWS.dam,
+  attributionControl: false,
+  fadeDuration: 0,
+});
+
+let landmarks = null;
+map.on('load', () => {
+  // The footprint the model is fitted to, drawn so a misfit is visible rather
+  // than inferred.
+  map.addSource('fitted-footprint', {
+    type: 'geojson',
+    data: { type: 'FeatureCollection', features: specs.filter(m => m.footprint).map(m => ({
+      type: 'Feature', properties: { id: m.id },
+      geometry: { type: 'Polygon', coordinates: [footprintPolygon(m.footprint).map(p => [p[0], p[1]])] } })) },
+  });
+  map.addLayer({ id: 'fitted-footprint', type: 'line', source: 'fitted-footprint',
+    paint: { 'line-color': '#38BDF8', 'line-width': 2, 'line-dasharray': [2, 2], 'line-opacity': 0.85 } });
+
+  landmarks = new window.CanalRecallSignature3D.SignatureLandmarks(map, maplibregl, {
+    models: specs,
+    // The layer suppresses the extrusions itself, once the model is drawn.
+    onModelShown: (shownSpec, placement) => report(shownSpec, placement),
+  });
+  window.__signatureLandmarks = landmarks;
+});
+
+function report(shownSpec, placement) {
+  const rows = [
+    ['anchor', `${placement.anchor[1].toFixed(6)}, ${placement.anchor[0].toFixed(6)}`],
+    ['facade faces', `${placement.facadeBearingDegrees.toFixed(1)}° (east onto the Dam)`],
+    ['mesh rotation', `${placement.modelRotationDegrees.toFixed(1)}°`],
+    ['scale', `${placement.scale.toFixed(3)}×`],
+    ['footprint', shownSpec.footprint
+      ? `${shownSpec.footprint.lengthMetres.toFixed(1)} × ${shownSpec.footprint.widthMetres.toFixed(1)} m`
+      : 'no ring in the extract'],
+  ];
+  document.getElementById('numbers').innerHTML = rows
+    .map(([term, value]) => `<dt>${term}</dt><dd>${value}</dd>`).join('');
+  const credit = shownSpec.attribution;
+  document.getElementById('credit').innerHTML =
+    `<h2>Model credit</h2>“<a href="${credit.sourceUrl}">${credit.title}</a>” by ${credit.author}, `
+    + `<a href="${credit.licenceUrl}">${credit.licence}</a>. ${credit.modifications}`;
+}
+
+document.getElementById('show-model').addEventListener('change', event => {
+  landmarks?.setEnabled(event.target.checked);
+  document.getElementById('suppress').disabled = !event.target.checked;
+});
+document.getElementById('suppress').addEventListener('change', event => landmarks?.setSuppressing(event.target.checked));
+document.getElementById('highlight').addEventListener('change', event => {
+  landmarks?.setActiveLandmark(event.target.checked ? { id: spec.landmarkId } : null);
+});
+// Flying between landmarks re-bases the camera presets on whichever one is
+// selected, so "From the Dam" means the same relative view at every building.
+let focus = spec;
+const picker = document.getElementById('landmark');
+picker.innerHTML = specs.map(m => `<option value="${m.id}">${m.name}</option>`).join('');
+function viewsFor(model) {
+  const [x, y] = anchorOf(model);
+  return {
+    dam:     { center: [x + 0.0016, y - 0.0002], zoom: 17.1, pitch: 72, bearing: 271 },
+    cyclist: { center: [x + 0.0021, y - 0.0009], zoom: 17.9, pitch: 80, bearing: 297 },
+    aerial:  { center: [x, y], zoom: 16.2, pitch: 45, bearing: 20 },
+    rear:    { center: [x - 0.0015, y + 0.0002], zoom: 17.1, pitch: 72, bearing: 91 },
+  };
+}
+picker.addEventListener('change', () => {
+  focus = specs.find(m => m.id === picker.value) || focus;
+  map.jumpTo(viewsFor(focus).aerial);
+  const entry = landmarks?.describe().find(e => e.id === focus.id);
+  if (entry) report(focus, entry.placement);
+});
+for (const button of document.querySelectorAll('button[data-view]')) {
+  button.addEventListener('click', () => map.jumpTo(viewsFor(focus)[button.dataset.view]));
+}
+window.__focusLandmark = id => { picker.value = id; picker.dispatchEvent(new Event('change')); };
+</script>
+</body>
+</html>

@@ -3,6 +3,81 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## Thirteen landmarks are real buildings now
+
+The city was OSM footprints extruded to an OSM height: honest about where every
+building is, silent about what any of them looks like. Nothing on the Dam said
+"Amsterdam". Thirteen buildings are now drawn from real models — nine of the
+City of Amsterdam's own survey models and four community ones, all from
+3D Warehouse.
+
+**The municipal models are artefacts of Google Earth.** All eleven were uploaded
+on 2007-05-08, the same day, by the city's Geo- en Vastgoedinformatie
+department, for Google's Earth 3D-buildings programme back when Google owned
+SketchUp. That origin is why each is built on a Google Earth snapshot the export
+still carries, and why there are only eleven: it is what one department
+hand-modelled in 2007. Google sold SketchUp to Trimble in 2012, which is why
+they now sit under Trimble's General Model License.
+
+**A surveyed model is placed, not fitted.** These arrive life-size, with their
+origin at a published coordinate, and north-up by SketchUp convention. Fitting
+one to a footprint discards better information than the fit can recover and
+actively makes it worse: the Palace's bounding box is 85.1 × 73.1 m against a
+80.98 × 65.49 m OSM ring, because the survey includes entrance steps and roof
+overhang the wall line excludes, so fitting would shrink the building 6% to
+squeeze its overhangs inside its walls. Scale is exactly 1. The city's
+coordinate and a rectangle fitted independently to the OSM ring agree to within
+15 m.
+
+The first Palace was an AI reconstruction and is what taught this. It was 24.5 m
+deep against a 65.5 m footprint — faithful in its street frontage, guessed in
+its bulk, because photo-derived models see a facade honestly and invent the
+depth. From behind you could see straight into its hollow back.
+
+**Height is measured, not looked up.** Dutch Wikipedia and Wikidata both give
+the Palace 90 m; the survey names its parts, and `PD-natsteen`, the main stone
+mass, tops out at 51.9 m while `PD-haantje` — the rooster on the vane — reaches
+60.9 m. The 90 m is almost certainly the 80 m facade width mis-entered and
+copied between them. A height outside its stated tolerance is now a hard build
+failure, because an over-eager cleanup rule once deleted the Palace's roof and
+shortened it to 56.6 m, and a warning in a nine-model loop scrolls straight past.
+
+**Four export defects, none of them what they looked like.** SketchUp writes
+construction edges as LINE primitives — on Centraal an `Edge` node spanning
+3.3 km, which drew as hairlines and made the model measure 136 m wide. Faces
+arrive inward-wound and render black; every material is now double-sided. Every
+material also arrives at `metallicFactor 1.0`, glTF's default when an exporter
+omits the field rather than anyone's choice, and a fully metallic surface with
+no environment map reflects nothing and renders black — that, not the winding,
+was the actual black cut-out. And each model is traced over a Google Earth
+snapshot that ships inside it: a photo plane 700 m across on Centraal, a terrain
+patch 239 × 201 m under the Rijksmuseum. Flatness is the wrong test for those
+and density is the right one — ground covers a couple of hundred metres with
+eight triangles where the Rijksmuseum's own roof spends 1,702.
+
+**Suppression: I was wrong about what was possible.** I concluded the basemap's
+extrusions could not be filtered — the tiles batch buildings, one feature on the
+Dam carries 498 rings, and no OSM id appears in the properties. The id is in the
+vector-tile *feature id*, as `osmId * 10 + type`, which is what
+`basemapBuildingFilter` already matches on. The layer now uses it, and keeps a
+polygon offset for the remainder no id can pair up.
+
+**Anything under 250 triangles is rejected.** Community uploads vary: the
+"Bimhuis" cleans up to 12 triangles and the Film Academy to 60, which on the map
+is a bare grey slab across the street — worse than the extrusion it replaces,
+because at least the extrusion is building-shaped.
+
+Models are matched to landmarks by distance from their published coordinate, not
+by name. The vocabularies disagree in both directions — the extract says "Royal
+Palace" where the city says "Palace on the Dam", and "Stadhuis" is a different
+building from the palace that used to be the city hall — and searching "Anne
+Frank House" returns the Westerkerk, which is next door and a different
+building. Searching in Dutch roughly doubles the hit rate, because nobody
+uploads a model under a translated name.
+
+The licence is unresolved and is recorded in `NOTICE.md` and TODO item 22.
+
+
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
