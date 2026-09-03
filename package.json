@@ -61,7 +61,7 @@
     "test:facade-boundary": "tsx scripts/check-facade-boundary.ts",
     "test:facade-record": "tsx scripts/check-facade-record.ts",
     "test:facade-calibration": "tsx scripts/check-facade-calibration.ts",
-    "recon:facade": "tsx scripts/facade-twin/build-pilot-boundary.ts && tsx scripts/facade-twin/build-pand-inventory.ts && tsx scripts/facade-twin/build-massing-join.ts && tsx scripts/facade-twin/build-monument-join.ts",
+    "recon:facade": "tsx scripts/facade-twin/recon.ts",
     "test:osm-buildings": "tsx scripts/check-osm-building-appearance.ts",
     "test:building-colors": "node --import tsx scripts/check-building-color-extraction.ts",
     "test:canal-streets": "tsx scripts/check-canal-street-overlays.ts",

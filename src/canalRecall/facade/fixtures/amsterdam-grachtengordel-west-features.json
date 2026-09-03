@@ -2,7 +2,7 @@
   "source": "OpenStreetMap via Overpass API, waterway=canal, the five canals that define the pilot boundary",
   "retrieved": "2026-09-03",
   "license": "ODbL 1.0, © OpenStreetMap contributors",
-  "note": "Committed so scripts/check-facade-boundary.ts is deterministic and offline. Refresh with: npx tsx scripts/facade-twin/fetch-boundary-canals.ts --refresh",
+  "note": "Committed so the boundary regression check is deterministic and offline. Refresh with: npx tsx scripts/facade-twin/recon.ts --area=amsterdam-grachtengordel-west --refresh",
   "queryBbox": [
     52.358,
     4.87,
