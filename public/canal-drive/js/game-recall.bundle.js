@@ -101,6 +101,9 @@
     return mode === "car";
   }
 
+  // src/canalRecall/routing/cycleTrack.ts
+  var CYCLE_TRACK_ANSWER_MULTIPLIER = 1.1;
+
   // src/canalRecall/game/recallRuntime.ts
   var DISTRACTOR_COUNT = 3;
   var CHOICE_POOL_RADIUS = 1500;
@@ -111,43 +114,51 @@
     // ---- Store and account row ----
     _setupRecallStore() {
       this.recall = window.CanalRecallStoreModule ? window.CanalRecallStoreModule.store : null;
-      const row = document.getElementById("account-row");
-      const label = document.getElementById("account-label");
-      const note = document.getElementById("account-note");
-      const button = document.getElementById("account-button");
       this._skipMastered = document.getElementById("skip-mastered");
-      if (!this.recall || !row || !label || !note || !button) return;
+      const overlay = window.CanalRecallOverlay?.getOverlay?.() ?? this._overlay;
+      const skip = overlay?.store.getState().prefs.skipMastered ?? (typeof this._pendingSkipMastered === "boolean" ? this._pendingSkipMastered : true);
+      if (this.recall) this.recall.enabled = skip;
+      this._pendingSkipMastered = void 0;
+      if (!this.recall) return;
       const recall = this.recall;
-      this._skipMastered.addEventListener("change", () => {
-        recall.enabled = this._skipMastered.checked;
-        this._refreshMasteredLabels();
-        this._savePreferences();
-      });
+      if (overlay) {
+        overlay.callbacks.onSkipMastered = (enabled) => {
+          recall.enabled = enabled;
+          this._refreshMasteredLabels();
+          this._savePreferences();
+        };
+        overlay.callbacks.onAccountClick = async () => {
+          overlay.store.setAccount({ busy: true });
+          try {
+            if (recall.signedIn) await recall.signOut();
+            else await recall.signIn();
+          } catch (error) {
+            this._setRouteError(error.message || "Could not sign in.");
+          } finally {
+            overlay.store.setAccount({ busy: false });
+          }
+        };
+      }
       recall.onUserChange((user) => {
-        row.style.display = "flex";
+        if (!overlay) return;
         if (user) {
-          label.textContent = user.label;
-          note.textContent = `${recall.masteredCount} answers synced`;
-          button.textContent = "Sign out";
+          overlay.store.setAccount({
+            visible: true,
+            label: user.label,
+            note: `${recall.masteredCount} answers synced`,
+            buttonLabel: "Sign out"
+          });
         } else {
-          label.textContent = "Playing as guest";
-          note.textContent = "Sign in to remember which streets you already know across devices.";
-          button.textContent = "Sign in";
-        }
-      });
-      button.addEventListener("click", async () => {
-        button.disabled = true;
-        try {
-          if (recall.signedIn) await recall.signOut();
-          else await recall.signIn();
-        } catch (error) {
-          this._routeError.textContent = error.message || "Could not sign in.";
-        } finally {
-          button.disabled = false;
+          overlay.store.setAccount({
+            visible: true,
+            label: "Playing as guest",
+            note: "Sign in to remember which streets you already know across devices.",
+            buttonLabel: "Sign in"
+          });
         }
       });
       recall.init().then(() => {
-        if (recall.available) row.style.display = "flex";
+        if (recall.available && overlay) overlay.store.setAccount({ visible: true });
         this._refreshMasteredLabels();
       });
     }
@@ -513,6 +524,12 @@
         },
         difficultyMultiplier: DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85,
         noveltyMultiplier: (this._routeMastery[this._normaliseCanalName(correctName)] || 0) < 0.5 ? 1.15 : 1,
+        cycleTrackMultiplier: (() => {
+          if (!isCar(this.travelMode) || !this.player) return 1;
+          const road = this.track.getNearestRoad(this.player.x, this.player.y);
+          const segment = road && this.track.segments?.[road.segIdx];
+          return segment?.separatedCycleTrack ? CYCLE_TRACK_ANSWER_MULTIPLIER : 1;
+        })(),
         gameyFeatures: this.gameyFeatures,
         recallFeature,
         recallStore: this.recall,
@@ -529,6 +546,9 @@
       this.quizFeedback = result.feedback;
       this._promptFeedback.textContent = result.feedback;
       this._promptFeedback.style.color = result.feedbackColor;
+      this._clearLandmarkNotice();
+      this._neighborhoodNotice = null;
+      this._neighborhoodNoticeTimer = 0;
       const atCrossing = this.quizPromptKind === "bridge" || this.quizPromptKind === "crossing-water";
       if (!atCrossing) {
         this.quizCurrentName = correctName;

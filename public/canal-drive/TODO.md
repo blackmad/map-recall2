@@ -135,39 +135,12 @@ hotspot CLAUDE.md reserves), `renderer.js`, `hud.js`, `vector-map.js`,
 `map-picker.js`, the `*-source.js` 3D bundle entrypoints, and the small helpers
 (`input`, `camera`, `utils`, `sound`, `particles`, `loading-screen`).
 
-`game-route.js` (774) is parked behind item 8c: it is the part a UI framework
-would delete rather than type, so translating it verbatim would be work thrown
-away.
+`game-route.js` is a thin adapter over the React overlay (item 8c): it is the
+part a UI framework would delete rather than type, so translating it verbatim
+would be work thrown away.
 *The rule to keep: what the player is told is typed and tested; what paints it
 is not. Do not translate a method verbatim if the decision inside it belongs in
 the data half.*
-
-**8c. Decide the DOM overlay's framework, then rewrite the settings form.**
-Canvas draws the game, the HUD, every card and the finish screen; that stays
-hand-written and must never go near a framework. But roughly 450 lines are
-plain DOM — the route setup form, the quiz prompt card, the account row — and
-they are the hand-rolled state work: preferences, `<select>` values and game
-state are synchronised in three directions by hand across `_loadPreferences`,
-`_savePreferences`, `_syncLiveSettings`, `_readLiveSettings` and
-`_syncHomeAddressField`.
-
-React is the recommendation, on one ground: the repo already runs React 19 for
-the main Map Recall app, and adding Svelte would mean two component idioms and
-two toolchains for 450 lines of form. Its ~45 KB gzipped is real but small
-against the ~2 MB item 9 is about, and it deletes more state code than it adds.
-Mount it only on the overlay, code-split, never in the frame loop. Do this
-after `modes.ts` covers every setting, so the form binds to a typed state
-object rather than to `getElementById`.
-
-**9. Stop shipping three.js twice, and Firestore to everyone.**
-Measured, not suspected: `detailed-buildings.bundle.js` is 698 KB and
-`player-vehicles.bundle.js` is 606 KB, and both contain their own copy of
-three.js. `recall-store.bundle.js` is 750 KB, of which the great majority is
-Firebase/Firestore — shipped to every player including guests who never sign in.
-That is roughly 2 MB of JavaScript where well under half would do. Share one
-three build across the 3D bundles and load the Firestore sync lazily, behind
-sign-in.
-*Pure win, no design decisions, and it makes every later 3D addition cheaper.*
 
 **10. Replace flat landmark boxes with an appearance-aware building pipeline.**
 Keep MapLibre as the map, camera, labels and interaction surface. OSM Buildings
@@ -355,10 +328,6 @@ A deliberately guarded reset for test accounts and players who want a fresh
 start: clears local preferences, recall and exploration state and the signed-in
 Firebase copy, explains exactly what will be deleted, requires confirmation,
 and leaves authentication intact. Also makes items 5 and 6 testable by hand.
-
-**13. Reward fully separated cycle tracks.**
-A bonus on OSM ways with separated cycle infrastructure, tuned so it reinforces
-safe Amsterdam route knowledge without encouraging detours.
 
 **14. Finish the Storybook workbench.**
 Ten phone states exist now — the driving HUD (idle, steering, mid-question,

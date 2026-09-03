@@ -23,28 +23,22 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     // Must be set before the game's first _resize, and re-applied because the
     // Storybook viewport addon resizes the iframe after load.
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
-    const select = (id: string, value: string) => {
-      const element = doc.getElementById(id) as HTMLSelectElement | null;
-      if (!element) return;
-      element.value = value;
-      element.dispatchEvent(new Event('change', { bubbles: true }));
+    const overlay = (win as any)?.CanalRecallOverlay?.getOverlay?.();
+    const patchPrefs = (patch: Record<string, unknown>) => {
+      if (!overlay) return;
+      overlay.store.patchPrefs(patch, overlay.callbacks.zoom);
     };
     if (scenario === 'bike-home') {
-      select('travel-mode', 'car');
-      select('view-mode', 'heading');
-      select('route-pattern', 'home');
-      const address = doc.getElementById('home-address') as HTMLInputElement | null;
-      if (address) address.value = 'Da Costakade 13-3, Amsterdam';
+      patchPrefs({
+        travelMode: 'car', viewMode: 'heading', routePattern: 'home',
+        homeAddress: 'Da Costakade 13-3, Amsterdam',
+      });
     }
-    if (scenario === 'advanced') {
-      const details = doc.querySelector<HTMLDetailsElement>('.advanced-options');
-      if (details) details.open = true;
-    }
+    if (scenario === 'advanced' && overlay) overlay.store.setAdvancedOpen(true);
     if (scenario === 'hud' || scenario === 'neighborhood' || scenario.startsWith('finish')
       || scenario.startsWith('landmark') || scenario.startsWith('touch-hud')
       || scenario === 'touch-prompt' || scenario === 'touch-settings') {
-      const setup = doc.getElementById('route-setup');
-      if (setup) setup.style.display = 'none';
+      overlay?.store.setSetupOpen(false);
       const drawWhenReady = () => {
         const game = (frame.contentWindow as typeof frame.contentWindow & { canalRecallGame?: any })?.canalRecallGame;
         if (!game?.ctx || !game?.hud) { window.setTimeout(drawWhenReady, 50); return; }

@@ -128,6 +128,7 @@ check('ways become recentred, widened, named segments', () => {
   assert.equal(segments[0].width, 32, 'an unlisted highway type gets the default');
   assert.equal(segments[1].width, 90, 'a listed one gets its own');
   assert.equal(segments[0].oneway, false);
+  assert.equal(segments[0].separatedCycleTrack, false);
 
   // The offset it reports is the one it applied — this is what lets a POI
   // projected later land on the road it belongs to.
@@ -148,6 +149,19 @@ check('oneway is only the OSM value that means it', () => {
   // graph too; changing it here alone would only disagree with the router.
   assert.equal(build('-1'), false);
   assert.equal(build('no'), false);
+});
+
+check('separated cycle tracks travel with the segment', () => {
+  const { segments } = buildRoadSegments(
+    [{
+      nodes: [{ lat: 52.37, lon: 4.89 }, { lat: 52.371, lon: 4.891 }],
+      highway: 'residential',
+      tags: { name: 'Nes', cycleway: 'track' },
+    }],
+    AMSTERDAM,
+    { simplificationToleranceDegrees: 0.00003, roadWidths: {}, defaultRoadWidth: 32 },
+  );
+  assert.equal(segments[0].separatedCycleTrack, true);
 });
 
 // --- Snapping --------------------------------------------------------------

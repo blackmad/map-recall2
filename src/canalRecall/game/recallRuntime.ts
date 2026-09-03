@@ -24,6 +24,7 @@ import {
 import type { PendingCrossing, RecallFeature, RecallHost } from './host';
 import { isCar, type QuizPromptKind, type QuizSubject } from './modes';
 import type { Bridge, BridgeCrossing, WorldPoint } from './worldTypes';
+import { CYCLE_TRACK_ANSWER_MULTIPLIER } from '../routing/cycleTrack';
 
 /** How many wrong answers a multiple-choice question offers. */
 const DISTRACTOR_COUNT = 3;
@@ -42,45 +43,52 @@ export class GameRecallRuntime {
 
   _setupRecallStore(): void {
     this.recall = window.CanalRecallStoreModule ? window.CanalRecallStoreModule.store : null;
-    const row = document.getElementById('account-row');
-    const label = document.getElementById('account-label');
-    const note = document.getElementById('account-note');
-    const button = document.getElementById('account-button') as HTMLButtonElement | null;
     this._skipMastered = document.getElementById('skip-mastered') as HTMLInputElement;
-    if (!this.recall || !row || !label || !note || !button) return;
+    const overlay = window.CanalRecallOverlay?.getOverlay?.() ?? this._overlay;
+    const skip = overlay?.store.getState().prefs.skipMastered
+      ?? (typeof this._pendingSkipMastered === 'boolean' ? this._pendingSkipMastered : true);
+    if (this.recall) this.recall.enabled = skip;
+    this._pendingSkipMastered = undefined;
+    if (!this.recall) return;
     const recall = this.recall;
-    this._skipMastered.addEventListener('change', () => {
-      recall.enabled = this._skipMastered.checked;
-      this._refreshMasteredLabels();
-      this._savePreferences();
-    });
+    if (overlay) {
+      overlay.callbacks.onSkipMastered = (enabled: boolean) => {
+        recall.enabled = enabled;
+        this._refreshMasteredLabels();
+        this._savePreferences();
+      };
+      overlay.callbacks.onAccountClick = async () => {
+        overlay.store.setAccount({ busy: true });
+        try {
+          if (recall.signedIn) await recall.signOut();
+          else await recall.signIn();
+        } catch (error) {
+          this._setRouteError((error as Error).message || 'Could not sign in.');
+        } finally {
+          overlay.store.setAccount({ busy: false });
+        }
+      };
+    }
     recall.onUserChange((user) => {
-      row.style.display = 'flex';
+      if (!overlay) return;
       if (user) {
-        label.textContent = user.label;
-        // One name can be several answers now: a long street is learned a
-        // stretch at a time, and each stretch is scheduled on its own.
-        note.textContent = `${recall.masteredCount} answers synced`;
-        button.textContent = 'Sign out';
+        overlay.store.setAccount({
+          visible: true,
+          label: user.label,
+          note: `${recall.masteredCount} answers synced`,
+          buttonLabel: 'Sign out',
+        });
       } else {
-        label.textContent = 'Playing as guest';
-        note.textContent = 'Sign in to remember which streets you already know across devices.';
-        button.textContent = 'Sign in';
-      }
-    });
-    button.addEventListener('click', async () => {
-      button.disabled = true;
-      try {
-        if (recall.signedIn) await recall.signOut();
-        else await recall.signIn();
-      } catch (error) {
-        this._routeError.textContent = (error as Error).message || 'Could not sign in.';
-      } finally {
-        button.disabled = false;
+        overlay.store.setAccount({
+          visible: true,
+          label: 'Playing as guest',
+          note: 'Sign in to remember which streets you already know across devices.',
+          buttonLabel: 'Sign in',
+        });
       }
     });
     recall.init().then(() => {
-      if (recall.available) row.style.display = 'flex';
+      if (recall.available && overlay) overlay.store.setAccount({ visible: true });
       this._refreshMasteredLabels();
     });
   }
@@ -496,6 +504,12 @@ export class GameRecallRuntime {
       },
       difficultyMultiplier: DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85,
       noveltyMultiplier: (this._routeMastery[this._normaliseCanalName(correctName)] || 0) < 0.5 ? 1.15 : 1,
+      cycleTrackMultiplier: (() => {
+        if (!isCar(this.travelMode) || !this.player) return 1;
+        const road = this.track.getNearestRoad(this.player.x, this.player.y);
+        const segment = road && this.track.segments?.[road.segIdx];
+        return segment?.separatedCycleTrack ? CYCLE_TRACK_ANSWER_MULTIPLIER : 1;
+      })(),
       gameyFeatures: this.gameyFeatures,
       recallFeature,
       recallStore: this.recall,
