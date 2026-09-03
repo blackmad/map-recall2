@@ -62,69 +62,146 @@ export function toGray(image: { width: number; height: number; data: Uint8Clampe
 }
 
 /**
- * Openings are dark against their wall, but "dark" is local.
+ * Openings sit on a grid, and the grid is easier to find than they are.
  *
- * A single global threshold fails on a canal terrace within one image: a
- * whitewashed house and a sooted brick one differ more from each other than a
- * window differs from its own wall. The threshold is therefore taken per column
- * band, against the brick immediately beside the opening.
+ * Hunting for each window separately fails on these façades: frames are pale,
+ * net curtains fill the glass, sunlight splits one window into fragments and
+ * joins two others into a blob. But a terrace is *grammatical* — the brief says
+ * so, and the data agrees. Windows in a canal house line up in vertical bays
+ * and horizontal storey bands, because that is how the building was built.
+ *
+ * That regularity is a legitimate prior and it does real work here. It is not
+ * being used as a source of values: nothing infers that this house has four
+ * bays because its neighbours do. It says only *where in this image to look*,
+ * and every opening reported is one that was found in this building's own
+ * photograph. The brief draws exactly that line — grammar as a way of reading,
+ * never as a source of facts.
+ *
+ * Aggregating along each axis is also what makes the signal survive. A single
+ * fragmented window is noise; forty pixels of window across a whole storey band
+ * summed into one row is not.
  */
-function darkMask(gray: Gray, bandPx: number, blueExcess?: Int16Array): Uint8Array {
+function openingScore(gray: Gray, blueExcess: Int16Array, bandPx: number): Float32Array {
   const { width, height, data } = gray;
-  const mask = new Uint8Array(width * height);
+  const score = new Float32Array(width * height);
   const bands = Math.max(1, Math.round(width / bandPx));
   for (let b = 0; b < bands; b++) {
     const from = Math.floor((b * width) / bands), to = Math.floor(((b + 1) * width) / bands);
     const values: number[] = [];
     for (let y = 0; y < height; y++) for (let x = from; x < to; x++) values.push(data[y * width + x]);
     values.sort((a, b2) => a - b2);
-    // The wall is the bright majority; openings sit in the lower tail. The 65th
-    // percentile stands in for "the wall", and a fixed fraction below it is dark.
-    const wall = values[Math.floor(values.length * 0.65)];
-    // 0.78 rather than 0.62: a window with a pale frame and a net curtain is
-    // only moderately darker than its brick, and the tighter threshold found
-    // only the near-black ones.
-    const threshold = wall * 0.78;
+    // The wall is the majority of the band; the median is a good stand-in for
+    // it, and the interquartile range for how much brick alone varies.
+    const wall = values[Math.floor(values.length * 0.5)] || 1;
+    const iqr = Math.max(10, values[Math.floor(values.length * 0.75)] - values[Math.floor(values.length * 0.25)]);
     for (let y = 0; y < height; y++) {
       for (let x = from; x < to; x++) {
         const index = y * width + x;
-        // Glass reads two ways depending on the sky: darker than brick when it
-        // shows a room, distinctly bluer when it reflects sky. Either counts,
-        // because a rule that only knows the first misses every sunlit façade.
-        const reflectsSky = blueExcess ? blueExcess[index] > 26 : false;
-        if (data[index] < threshold || reflectsSky) mask[index] = 1;
+        // Deviation in *either* direction. An earlier version looked only for
+        // dark regions and found almost nothing, because on these façades a
+        // window is as often brighter than its wall as darker: white-painted
+        // frames, net curtains, sunlit leaded glass and sky reflections all read
+        // lighter than brick, while an unlit room reads darker. What a window
+        // reliably is, is *not the wall* — so that is what gets measured.
+        const luma = Math.abs(data[index] - wall) / iqr;
+        const sky = Math.max(0, (blueExcess[index] - 14) / 60);
+        score[index] = Math.min(1, Math.max(luma * 0.55, sky));
       }
     }
   }
-  return mask;
+  return score;
 }
 
-interface Component { minX: number; maxX: number; minY: number; maxY: number; area: number; sum: number }
+/**
+ * Fit a storey ladder to the row profile.
+ *
+ * This is where the grammar earns its place. Storey bands found independently
+ * come out at impossible spacings — eleven metres between one band and the
+ * next, which is three storeys read as one — because a band that happens to be
+ * shadowed simply goes missing and nothing notices. But a canal house's storeys
+ * are regular: roughly 2.4 to 4.2 metres apart, and diminishing upward as the
+ * rooms get meaner toward the attic. That is a fact about how these houses were
+ * built, not about any one of them.
+ *
+ * So instead of asking "where are the bands", ask "which regular ladder best
+ * explains this profile" — search the spacings a canal house can actually have
+ * and take the one the image supports most strongly. A missing rung is then
+ * predicted rather than lost, and a spurious one has to beat the whole ladder
+ * rather than just a local threshold.
+ *
+ * The ladder still says only where to look. Every opening reported is one
+ * confirmed in this building's own photograph.
+ */
+function storeyLadder(profile: Float32Array, ppm: number): number[] {
+  const minSpacing = 2.4 * ppm, maxSpacing = 4.2 * ppm;
+  if (profile.length < minSpacing * 1.6) return [];
 
-function components(mask: Uint8Array, width: number, height: number): Component[] {
-  const seen = new Uint8Array(mask.length);
-  const found: Component[] = [];
-  const stack: number[] = [];
-  for (let start = 0; start < mask.length; start++) {
-    if (!mask[start] || seen[start]) continue;
-    stack.length = 0;
-    stack.push(start);
-    seen[start] = 1;
-    const box = { minX: width, maxX: -1, minY: height, maxY: -1, area: 0, sum: 0 };
-    while (stack.length) {
-      const index = stack.pop()!;
-      const x = index % width, y = (index / width) | 0;
-      box.minX = Math.min(box.minX, x); box.maxX = Math.max(box.maxX, x);
-      box.minY = Math.min(box.minY, y); box.maxY = Math.max(box.maxY, y);
-      box.area++;
-      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
-        const nx = x + dx, ny = y + dy;
-        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
-        const next = ny * width + nx;
-        if (mask[next] && !seen[next]) { seen[next] = 1; stack.push(next); }
+  let best: { spacing: number; phase: number; score: number } | null = null;
+  for (let spacing = minSpacing; spacing <= maxSpacing; spacing += 0.05 * ppm) {
+    for (let phase = 0; phase < spacing; phase += Math.max(1, ppm * 0.05)) {
+      let score = 0, rungs = 0;
+      for (let y = phase; y < profile.length; y += spacing) {
+        // Each rung scores the window band around it, not a single row.
+        const half = Math.min(spacing * 0.3, ppm * 1.1);
+        let sum = 0, n = 0;
+        for (let i = Math.max(0, Math.round(y - half)); i <= Math.min(profile.length - 1, Math.round(y + half)); i++) { sum += profile[i]; n++; }
+        if (!n) continue;
+        score += sum / n;
+        rungs++;
       }
+      // Normalise by rung count so a tight ladder cannot win by having more of
+      // them, then reward having enough rungs to be a real façade.
+      if (rungs < 2) continue;
+      const mean = score / rungs;
+      const total = mean * Math.min(rungs, 6);
+      if (!best || total > best.score) best = { spacing, phase, score: total };
     }
-    found.push(box);
+  }
+  if (!best) return [];
+  const rungs: number[] = [];
+  for (let y = best.phase; y < profile.length; y += best.spacing) rungs.push(y);
+  return rungs;
+}
+
+/** Smooth a 1-D profile with a moving average, to merge one window's fragments. */
+function smooth(values: Float32Array, radius: number): Float32Array {
+  const out = new Float32Array(values.length);
+  for (let i = 0; i < values.length; i++) {
+    let sum = 0, n = 0;
+    for (let j = Math.max(0, i - radius); j <= Math.min(values.length - 1, i + radius); j++) { sum += values[j]; n++; }
+    out[i] = sum / n;
+  }
+  return out;
+}
+
+/**
+ * Bands of a 1-D profile that stand above their surroundings.
+ *
+ * `minGapPx` keeps two adjacent windows from merging into one band, and
+ * `minWidthPx` throws away a downpipe's worth of signal.
+ */
+function bands(profile: Float32Array, minWidthPx: number, minGapPx: number): Array<{ from: number; to: number; peak: number }> {
+  const sorted = [...profile].sort((a, b) => a - b);
+  const low = sorted[Math.floor(sorted.length * 0.25)];
+  const high = sorted[Math.floor(sorted.length * 0.9)];
+  if (high - low < 0.02) return [];
+  const threshold = low + (high - low) * 0.45;
+
+  const found: Array<{ from: number; to: number; peak: number }> = [];
+  let start = -1;
+  for (let i = 0; i <= profile.length; i++) {
+    const above = i < profile.length && profile[i] >= threshold;
+    if (above && start < 0) start = i;
+    if (!above && start >= 0) {
+      if (i - start >= minWidthPx) {
+        let peak = 0;
+        for (let j = start; j < i; j++) peak = Math.max(peak, profile[j]);
+        const previous = found[found.length - 1];
+        if (previous && start - previous.to < minGapPx) { previous.to = i; previous.peak = Math.max(previous.peak, peak); }
+        else found.push({ from: start, to: i, peak });
+      }
+      start = -1;
+    }
   }
   return found;
 }
@@ -148,77 +225,129 @@ export interface MeasureOptions {
  * four metres across is a shadow or a shopfront, not a window, and one thirty
  * centimetres across is a downpipe.
  */
+/**
+ * Measure one rectified façade strip.
+ *
+ * Storey bands and bays are found first, from the whole image at once, and
+ * openings are then confirmed cell by cell where the two cross. The size limits
+ * are Amsterdam limits and they do real work: a *schuifraam* is roughly
+ * 0.9–1.8 m wide and a storey is 2.4–4.2 m, so a band four metres deep is two
+ * storeys read as one and a bay 0.3 m wide is a downpipe.
+ */
 export function measureFacade(
   image: { width: number; height: number; data: Uint8ClampedArray },
   options: MeasureOptions,
 ): FacadeMeasurement {
   const {
     pixelsPerMetre: ppm,
-    minWindowW = 0.5, maxWindowW = 2.4,
+    minWindowW = 0.5, maxWindowW = 2.6,
     minWindowH = 0.7, maxWindowH = 3.2,
   } = options;
 
   const gray = toGray(image);
-  const blueExcess = new Int16Array(gray.width * gray.height);
+  const { width, height } = gray;
+  const blueExcess = new Int16Array(width * height);
   for (let i = 0, p = 0; i < blueExcess.length; i++, p += 4) blueExcess[i] = image.data[p + 2] - image.data[p];
-  const mask = darkMask(gray, Math.max(24, Math.round(ppm * 1.2)), blueExcess);
-  const raw = components(mask, gray.width, gray.height);
+  const score = openingScore(gray, blueExcess, Math.max(24, Math.round(ppm * 1.2)));
 
-  const openings: Opening[] = [];
-  for (const box of raw) {
-    const widthM = (box.maxX - box.minX + 1) / ppm;
-    const heightM = (box.maxY - box.minY + 1) / ppm;
-    if (widthM < minWindowW || widthM > maxWindowW) continue;
-    if (heightM < minWindowH || heightM > maxWindowH) continue;
-    // A window is a filled rectangle. A branch or railing spans a big box with
-    // little inside it, and gets rejected on fill.
-    const fill = box.area / ((box.maxX - box.minX + 1) * (box.maxY - box.minY + 1));
-    if (fill < 0.55) continue;
-    // Upright: Dutch sash windows are taller than wide, or nearly square.
-    if (heightM / widthM < 0.7) continue;
-
+  // Horizontal bands: sum each row. A storey's windows all sit at the same
+  // height, so their combined signal survives any one of them being obscured.
+  const rowProfile = new Float32Array(height);
+  for (let y = 0; y < height; y++) {
     let sum = 0;
-    for (let y = box.minY; y <= box.maxY; y++) for (let x = box.minX; x <= box.maxX; x++) sum += gray.data[y * gray.width + x];
-    openings.push({
-      xM: box.minX / ppm,
-      yM: (gray.height - box.maxY - 1) / ppm,
-      widthM, heightM,
-      darkness: sum / ((box.maxY - box.minY + 1) * (box.maxX - box.minX + 1)),
-    });
+    for (let x = 0; x < width; x++) sum += score[y * width + x];
+    rowProfile[y] = sum / width;
+  }
+  const smoothedRows = smooth(rowProfile, Math.round(ppm * 0.12));
+  const rungs = storeyLadder(smoothedRows, ppm);
+  const halfBand = Math.round(Math.min(maxWindowH, 2.4) * ppm * 0.5);
+  const storeyBands = rungs
+    .map(y => ({ from: Math.max(0, Math.round(y - halfBand)), to: Math.min(height, Math.round(y + halfBand)), peak: 0 }))
+    .filter(band => band.to - band.from > minWindowH * ppm * 0.5);
+
+  // Vertical bays: sum each column, but only over the rows that a storey band
+  // occupies. Including the wall between storeys buries the signal in brick.
+  const columnProfile = new Float32Array(width);
+  let bandRows = 0;
+  for (const band of storeyBands) {
+    for (let y = band.from; y < band.to; y++, bandRows++) {
+      for (let x = 0; x < width; x++) columnProfile[x] += score[y * width + x];
+    }
+  }
+  if (bandRows) for (let x = 0; x < width; x++) columnProfile[x] /= bandRows;
+  const bayBands = bands(smooth(columnProfile, Math.round(ppm * 0.1)), Math.round(minWindowW * ppm * 0.55), Math.round(ppm * 0.3));
+
+  // Confirm an opening in each cell where a bay crosses a storey. Knowing where
+  // to look is what makes this tractable: the question becomes "is this
+  // rectangle darker than the wall beside it", which survives a pale frame and
+  // a net curtain that defeat a blob search.
+  const openings: Opening[] = [];
+  for (const band of storeyBands) {
+    for (const bay of bayBands) {
+      let inside = 0, n = 0;
+      for (let y = band.from; y < band.to; y++) {
+        for (let x = bay.from; x < bay.to; x++) { inside += score[y * width + x]; n++; }
+      }
+      if (!n) continue;
+      const mean = inside / n;
+      if (mean < 0.14) continue;
+
+      // Tighten the cell to the part that actually carries the signal, so the
+      // reported size is the opening's and not the search window's.
+      const tighten = (from: number, to: number, at: (i: number) => number) => {
+        let lo = from, hi = to - 1;
+        while (lo < hi && at(lo) < mean * 0.6) lo++;
+        while (hi > lo && at(hi) < mean * 0.6) hi--;
+        return [lo, hi] as const;
+      };
+      const [y0, y1] = tighten(band.from, band.to, y => {
+        let sum = 0;
+        for (let x = bay.from; x < bay.to; x++) sum += score[y * width + x];
+        return sum / (bay.to - bay.from);
+      });
+      const [x0, x1] = tighten(bay.from, bay.to, x => {
+        let sum = 0;
+        for (let y = band.from; y < band.to; y++) sum += score[y * width + x];
+        return sum / (band.to - band.from);
+      });
+
+      const widthM = (x1 - x0 + 1) / ppm, heightM = (y1 - y0 + 1) / ppm;
+      if (widthM < minWindowW || widthM > maxWindowW) continue;
+      if (heightM < minWindowH || heightM > maxWindowH) continue;
+
+      let sum = 0;
+      for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) sum += gray.data[y * width + x];
+      openings.push({
+        xM: x0 / ppm,
+        yM: (height - y1 - 1) / ppm,
+        widthM, heightM,
+        darkness: sum / ((y1 - y0 + 1) * (x1 - x0 + 1)),
+      });
+    }
   }
 
-  // Storeys: cluster openings by the height of their sills. A storey band is a
-  // run of openings whose sills agree to well within a storey height.
-  const byHeight = [...openings].sort((a, b) => a.yM - b.yM);
-  const storeys: Storey[] = [];
-  let band: Opening[] = [];
-  for (const opening of byHeight) {
-    if (band.length && opening.yM - band[band.length - 1].yM > 1.0) {
-      storeys.push({ centreM: band.reduce((s, o) => s + o.yM + o.heightM / 2, 0) / band.length, openings: band.length });
-      band = [];
-    }
-    band.push(opening);
-  }
-  if (band.length) storeys.push({ centreM: band.reduce((s, o) => s + o.yM + o.heightM / 2, 0) / band.length, openings: band.length });
+  const storeys: Storey[] = storeyBands.map(band => ({
+    centreM: (height - (band.from + band.to) / 2) / ppm,
+    openings: openings.filter(o => {
+      const centre = (height - (o.yM + o.heightM / 2) * ppm);
+      return centre >= band.from && centre <= band.to;
+    }).length,
+  })).filter(storey => storey.openings > 0);
 
   const storeyHeightsM: number[] = [];
-  for (let i = 1; i < storeys.length; i++) storeyHeightsM.push(Number((storeys[i].centreM - storeys[i - 1].centreM).toFixed(2)));
+  const ordered = [...storeys].sort((a, b) => a.centreM - b.centreM);
+  for (let i = 1; i < ordered.length; i++) storeyHeightsM.push(Number((ordered[i].centreM - ordered[i - 1].centreM).toFixed(2)));
 
-  // Bays: cluster opening centres horizontally. A bay is a vertical column of
-  // windows, so its members come from different storeys at the same offset.
-  const centres = openings.map(o => o.xM + o.widthM / 2).sort((a, b) => a - b);
-  const bayOffsetsM: number[] = [];
-  let group: number[] = [];
-  for (const centre of centres) {
-    if (group.length && centre - group[group.length - 1] > 0.7) {
-      bayOffsetsM.push(Number((group.reduce((s, v) => s + v, 0) / group.length).toFixed(2)));
-      group = [];
-    }
-    group.push(centre);
-  }
-  if (group.length) bayOffsetsM.push(Number((group.reduce((s, v) => s + v, 0) / group.length).toFixed(2)));
+  const bayOffsetsM = bayBands
+    .filter(bay => openings.some(o => o.xM * ppm >= bay.from - ppm * 0.3 && (o.xM + o.widthM) * ppm <= bay.to + ppm * 0.3))
+    .map(bay => Number((((bay.from + bay.to) / 2) / ppm).toFixed(2)));
 
-  const groundOpenings = openings.filter(o => o.yM < 0.6);
-
-  return { openings, storeys, bays: bayOffsetsM.length, bayOffsetsM, storeyHeightsM, groundOpenings };
+  return {
+    openings,
+    storeys: ordered,
+    bays: bayOffsetsM.length,
+    bayOffsetsM,
+    storeyHeightsM,
+    groundOpenings: openings.filter(o => o.yM < 0.8),
+  };
 }
