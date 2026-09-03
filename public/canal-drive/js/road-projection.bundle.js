@@ -40,6 +40,21 @@ var CanalRecallRoadProjection = (() => {
     tileXToLng: () => tileXToLng,
     tileYToLat: () => tileYToLat
   });
+
+  // src/canalRecall/routing/cycleTrack.ts
+  var TRACK = /^(track|separate)$/;
+  function hasSeparatedCycleTrack(tags) {
+    if (TRACK.test(tags.cycleway || "")) return true;
+    if (TRACK.test(tags["cycleway:both"] || "")) return true;
+    if (TRACK.test(tags["cycleway:left"] || "")) return true;
+    if (TRACK.test(tags["cycleway:right"] || "")) return true;
+    if (tags["cycleway:both:segregated"] === "yes") return true;
+    if (tags["cycleway:left:segregated"] === "yes") return true;
+    if (tags["cycleway:right:segregated"] === "yes") return true;
+    return false;
+  }
+
+  // src/canalRecall/osm/roadProjection.ts
   var PIXELS_PER_METER = 3;
   var METRES_PER_DEGREE_LAT = 111320;
   var WORLD_ORIGIN = { x: 1300, y: 1e3 };
@@ -126,7 +141,8 @@ var CanalRecallRoadProjection = (() => {
         width: options.roadWidths[way.highway] ?? options.defaultRoadWidth,
         type: way.highway,
         oneway: way.tags.oneway === "yes",
-        name: way.tags.name || ""
+        name: way.tags.name || "",
+        separatedCycleTrack: hasSeparatedCycleTrack(way.tags)
       });
     }
     const offset = centringOffset(segments);

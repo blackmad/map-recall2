@@ -21,6 +21,11 @@ export interface SubmitAnswerInput {
   difficultyMultiplier: number;
   /** Bounded bonus for correctly recalling a street that was new to this route. */
   noveltyMultiplier?: number;
+  /**
+   * Bounded bonus for naming a street with a separated cycle track. Street
+   * (cycling) mode only; never used as a routing weight.
+   */
+  cycleTrackMultiplier?: number;
   gameyFeatures: boolean;
   recallFeature?: RecallFeature | null;
   recallStore?: AnswerRecallStore | null;
@@ -65,14 +70,20 @@ export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
     const streakMultiplier = input.gameyFeatures ? 1 + 0.1 * Math.min(streak - 1, 9) : 1;
     const noveltyMultiplier = input.gameyFeatures
       ? Math.max(1, Math.min(1.25, input.noveltyMultiplier ?? 1)) : 1;
-    const earned = Math.round(base * streakMultiplier * noveltyMultiplier);
+    const cycleTrackMultiplier = input.gameyFeatures
+      ? Math.max(1, Math.min(1.15, input.cycleTrackMultiplier ?? 1)) : 1;
+    const earned = Math.round(base * streakMultiplier * noveltyMultiplier * cycleTrackMultiplier);
     points += earned;
     input.markLearned?.(input.correctName);
     input.revealName(input.correctName);
     if (!input.gameyFeatures) {
       feedback = `Correct — ${input.correctName}`;
+    } else if (noveltyMultiplier > 1 && cycleTrackMultiplier > 1) {
+      feedback = `Correct — ${input.correctName}  (+${earned} pts, new · cycle track)`;
     } else if (noveltyMultiplier > 1) {
       feedback = `Correct — ${input.correctName}  (+${earned} pts, ${noveltyMultiplier.toFixed(2)}× new street)`;
+    } else if (cycleTrackMultiplier > 1) {
+      feedback = `Correct — ${input.correctName}  (+${earned} pts, cycle track)`;
     } else if (streak >= 2) {
       feedback = `Correct — ${input.correctName}  (+${earned} pts, ${streak}× streak)`;
     } else {

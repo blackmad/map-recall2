@@ -3,6 +3,45 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+## React overlay owns the briefing and live settings (item 8c)
+
+The route setup card, advanced options, account row and in-game settings panel
+are a React tree mounted on `#canal-overlay-root`, bound to
+`CanalPreferences` via `overlay/store.ts`. The Game reads that store instead of
+`getElementById` for travel mode, assists and zoom. Canvas HUD, quiz prompt,
+help and the landmark article stay vanilla. React is not in the frame loop;
+`flushSync` is only used so the first paint exists before the Game constructor
+wires callbacks.
+
+## Typed preferences object (item 8c foundation)
+
+`canalRecall.preferences.v1` is parsed and written by
+`src/canalRecall/game/preferences.ts` (`CanalRecallPreferences`): difficulty
+presets, mode unions via `parseMode`, zoom `0.65`→`0.50` migration, and
+boolean defaults live in one place. Load uses `parsePreferences` (preset then
+overlay); save uses `coercePreferences` so a live form snapshot is not rewritten
+by the difficulty preset. Skip-mastered is staged until the recall store binds,
+so a saved “ask everything” is no longer lost to the HTML default. The React
+settings overlay is still TODO 8c.
+
+## Separated cycle tracks earn a bounded answer bonus
+
+Street-mode answers on OSM ways tagged with a physically separated cycle track
+(`cycleway=track`, side-specific tracks, or kerb-segregated lanes) take a 1.1×
+score multiplier — below novelty, never a routing weight, so it does not pull
+players onto longer detours. Painted `cycleway=lane` alone does not qualify.
+
+## Three.js is shared; Firebase is code-split (item 9)
+
+Measured on close-out: `three.bundle.js` is the only Three copy (783 KB);
+`player-vehicles.bundle.js` is 5 KB and `detailed-buildings.bundle.js` is
+136 KB, both via the `CanalRecallThree` shim. The recall store ships as a 6 KB
+ESM entry with Firebase in separate chunks loaded from `init()` when
+`firebase-config.json` is present (session restore still needs Auth). Guests
+no longer download an inlined 750 KB IIFE of Firestore with the game scripts.
+Unifying Canal Recall’s store with the React app’s `progressRepository` is a
+separate follow-up, not this item.
+
 ## One teaching surface at a time
 
 A single frame could show a waterway quiz, stale “Not quite — …” feedback, a

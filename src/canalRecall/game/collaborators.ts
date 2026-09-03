@@ -36,6 +36,8 @@ export interface RoadSegment {
   points: WorldPoint[];
   name?: string;
   type?: string;
+  /** Physically separated cycle track beside this carriageway. */
+  separatedCycleTrack?: boolean;
 }
 
 /** What the network knows about a name, beyond its geometry. */

@@ -193,6 +193,7 @@ export interface RecallHost extends GameCoreHost {
   _pendingCrossing: PendingCrossing | null;
   _lastBridgeQuizAt: number;
   _choiceOrder?: string[];
+  _pendingSkipMastered?: boolean;
 
   _prompt: HTMLElement;
   _promptInput: HTMLInputElement;
@@ -202,11 +203,13 @@ export interface RecallHost extends GameCoreHost {
   _promptKindLabel: HTMLElement;
   _promptHeading: HTMLElement;
   _promptQuestion: HTMLElement;
-  _routeError: HTMLElement;
-  _skipMastered: HTMLInputElement;
+  _routeError?: HTMLElement;
+  _skipMastered: HTMLInputElement | null;
+  _overlay?: import('../overlay/mount.ts').CanalOverlayHandle;
 
   /** Owned by other subsystems. */
   _savePreferences(): void;
+  _setRouteError(message: string): void;
   _showStreetKnowledge(name: string, type?: 'street' | 'water', replaceOpenCard?: boolean): void;
   _clearLandmarkNotice(): void;
   _neighborhoodNotice: { name: string; kind?: string; imageArea?: string } | null;

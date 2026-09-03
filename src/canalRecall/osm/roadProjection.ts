@@ -18,6 +18,8 @@
  * offset or it lands hundreds of metres from the road it belongs to.
  */
 
+import { hasSeparatedCycleTrack } from '../routing/cycleTrack.ts';
+
 /** A point in world (pixel) space. */
 export interface WorldPoint { x: number; y: number }
 
@@ -28,7 +30,7 @@ export interface LatLng { lat: number; lon: number }
 export interface OsmWay {
   nodes: LatLng[];
   highway: string;
-  tags: { name?: string; oneway?: string };
+  tags: Record<string, string | undefined>;
 }
 
 /** A carriageway in world space. */
@@ -38,6 +40,8 @@ export interface RoadSegment {
   type: string;
   oneway: boolean;
   name: string;
+  /** True when OSM tags a physically separated cycle track on this way. */
+  separatedCycleTrack?: boolean;
 }
 
 /** World units per metre. One unit is 1/3 m. */
@@ -195,6 +199,7 @@ export function buildRoadSegments(
       type: way.highway,
       oneway: way.tags.oneway === 'yes',
       name: way.tags.name || '',
+      separatedCycleTrack: hasSeparatedCycleTrack(way.tags),
     });
   }
 
