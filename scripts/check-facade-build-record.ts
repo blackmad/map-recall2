@@ -10,14 +10,15 @@
  */
 import assert from 'node:assert/strict';
 import {
-  buildRecordFromRecon, declaredExtent, footprintExtent, massingConfidence,
-  reconObservations, resolveHeights, summariseReconBuild,
+  applyHeritageEvidence, buildRecordFromRecon, declaredExtent, footprintExtent,
+  massingConfidence, reconObservations, resolveHeights, summariseReconBuild,
   type BuildRecordInput, type SourceDescriptor,
 } from '../src/canalRecall/facade/buildRecord.ts';
+import { GABLE_CONFIDENCE } from '../src/canalRecall/facade/heritageText.ts';
 import { wasObserved } from '../src/canalRecall/facade/evidence.ts';
 import { CANAL_HOUSE_FIELDS, auditHouse, validateHouse } from '../src/canalRecall/facade/houseRecord.ts';
 import { classifyObservationTier, drawsOpenings, evidenceCeiling } from '../src/canalRecall/facade/observationTier.ts';
-import type { MassingRecord, RegistryBuilding } from '../src/canalRecall/facade/sources.ts';
+import type { HeritageRecord, MassingRecord, RegistryBuilding } from '../src/canalRecall/facade/sources.ts';
 
 const BUILDING = '0363100012164995';
 
@@ -275,6 +276,104 @@ for (const storeys of [null, 0]) {
   assert.equal(summary.withEaves, 2);
   assert.equal(summary.unknownConstructionYear, 1, 'a normalised null year is the honest signal');
   assert.equal(summary.meanHeightConfidence > 0 && summary.meanHeightConfidence <= 1, true);
+}
+
+// ---------------------------------------------------------------------------
+// Heritage descriptions: the only façade evidence before imagery exists
+
+const heritageSource: SourceDescriptor = {
+  id: 'rce', license: 'CC0', vintage: '2026-09',
+  recordUrlTemplate: 'https://example.invalid/monument/{id}',
+};
+
+const heritage = (heritageId: string, description: string | null): HeritageRecord => ({
+  heritageId,
+  buildingId: BUILDING,
+  lngLat: [4.884, 52.375],
+  designation: 'rijksmonument',
+  category: 'Woningen en woningbouwcomplexen',
+  subcategory: 'Woonhuis(K)',
+  description,
+  descriptionLanguage: 'nl',
+  recordUrl: `https://example.invalid/monument/${heritageId}`,
+});
+
+{
+  const { house } = buildRecordFromRecon(input());
+  const evidence = applyHeritageEvidence(house, [heritage('432', 'Huis met halsgevel met houten pui uit de bouwtijd (1741).')], '2026-09-03', heritageSource);
+
+  assert.deepEqual(evidence.applied, ['gable']);
+  assert.equal(house.gable.value, 'hals');
+  assert.equal(house.gable.source, 'monument-text');
+  assert.equal(evidence.observations[0].kind, 'monument-record');
+  assert.equal(evidence.observations[0].pandId, BUILDING, 'the observation is of this building');
+  assert.equal(evidence.observations[0].elevation, 'front');
+
+  // The record must still audit clean: monument-text is competent for a gable.
+  const registry = new Map([
+    ...buildRecordFromRecon(input()).observations.map(observation => [observation.id, observation] as const),
+    ...evidence.observations.map(observation => [observation.id, observation] as const),
+  ]);
+  assert.deepEqual(auditHouse(house, registry, '2026-09-03'), []);
+
+  // A heritage description promotes the front to OBLIQUE, which is the first
+  // tier entitled to draw openings — and the openings are still absent,
+  // because bays and window type were never observed.
+  const tier = classifyObservationTier([...registry.values()], 'front');
+  assert.equal(tier, 'oblique');
+  assert.equal(evidenceCeiling(tier, false), 'lod3');
+  assert.equal(wasObserved(house.bays), false, 'a stated gable is not permission to invent bays');
+  assert.equal(wasObserved(house.windowType), false);
+}
+
+// Two records that disagree about the front gable get no gable at all.
+{
+  const { house } = buildRecordFromRecon(input());
+  const evidence = applyHeritageEvidence(house, [
+    heritage('a', 'Huis met halsgevel.'),
+    heritage('b', 'Pand met klokgevel (plm 1750).'),
+  ], '2026-09-03', heritageSource);
+
+  assert.deepEqual(evidence.applied, [], 'a contradiction is for a human, not for the most confident reading');
+  assert.equal(wasObserved(house.gable), false);
+  assert.match(evidence.notes.join(' '), /disagree about the front gable/);
+}
+
+// Records that agree resolve to the most directly stated reading.
+{
+  const { house } = buildRecordFromRecon(input());
+  applyHeritageEvidence(house, [
+    heritage('a', 'Pand met gevel onder rechte lijst (XIX).'),
+    heritage('b', 'Woonhuis met lijstgevel.'),
+  ], '2026-09-03', heritageSource);
+  assert.equal(house.gable.value, 'lijst');
+  assert.equal(house.gable.confidence, GABLE_CONFIDENCE.stated, 'the plainly stated reading wins over the inferred one');
+}
+
+// A hoist beam is recorded when stated and never denied when not.
+{
+  const stated = buildRecordFromRecon(input()).house;
+  applyHeritageEvidence(stated, [heritage('a', 'Pand met klokgevel en hijsbalk.')], '2026-09-03', heritageSource);
+  assert.equal(stated.hoistBeam.value, true);
+  assert.equal(stated.hoistBeam.source, 'monument-text');
+
+  const silent = buildRecordFromRecon(input()).house;
+  applyHeritageEvidence(silent, [heritage('a', 'Pand met klokgevel.')], '2026-09-03', heritageSource);
+  assert.equal(wasObserved(silent.hoistBeam), false, 'silence is not evidence that there is no hoisting beam');
+  // Its offset is a distance in metres, which a description never states.
+  assert.equal(wasObserved(silent.hoistBeamOffsetM), false);
+}
+
+// No description, or none that names a gable, applies nothing and is not an error.
+{
+  const { house } = buildRecordFromRecon(input());
+  const empty = applyHeritageEvidence(house, [heritage('a', null), heritage('b', '   ')], '2026-09-03', heritageSource);
+  assert.deepEqual(empty.applied, []);
+  assert.deepEqual(empty.observations, [], 'an unusable record produces no observation to trace');
+  assert.deepEqual(empty.notes, []);
+
+  const noGable = applyHeritageEvidence(buildRecordFromRecon(input()).house, [heritage('a', 'Woonhuis met gepleisterde gevel.')], '2026-09-03', heritageSource);
+  assert.deepEqual(noGable.applied, []);
 }
 
 console.log('All façade build-record checks passed.');
