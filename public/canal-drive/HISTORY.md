@@ -6,6 +6,19 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Building tiles load the spawn neighbourhood first
+
+`planTiles` already sorted nearest-first, but the streamer started every wanted
+fetch with `Promise.all`, so bandwidth was shared evenly and a fat corner tile
+often landed before the centre — the player spawned into a hole. Worse, attach
+fetched against MapLibre's Damrak default centre before the route start was
+known, and those in-flight requests kept eating the pipe after the camera
+jumped. The streamer now: waits for `followCamera` from `vector-map.sync` (and
+`moveend`) instead of loading on attach; fetches with concurrency 2 in plan
+order; aborts in-flight tiles the new viewport no longer wants. `planTiles`
+also returns `wanted` so abort decisions use the full camera set.
+`check-building-tile-source` pins non-decreasing load distance.
+
 ## First turn no longer pays for the static building extract when tiles exist
 
 Amsterdam's LoD1 city is published, but map load still fetched, parsed and

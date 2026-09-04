@@ -35,6 +35,21 @@ assert.deepEqual(
   { x: fresh.load[0].x, y: fresh.load[0].y }, { x: centre.x, y: centre.y },
   'the tile under the camera is fetched first'
 );
+assert.ok(fresh.wanted.includes(tileKey(centre)), 'wanted includes the camera tile');
+assert.equal(fresh.wanted.length, fresh.load.length, 'a cold cache wants exactly what it loads');
+
+// Second ring is strictly further than the centre — streamers that honour
+// this order with bounded concurrency fill the spawn tile before corners.
+assert.ok(
+  fresh.load.every((tile, index) => {
+    if (index === 0) return true;
+    const prev = fresh.load[index - 1];
+    const prevDist = (prev.x - centre.x) ** 2 + (prev.y - centre.y) ** 2;
+    const dist = (tile.x - centre.x) ** 2 + (tile.y - centre.y) ** 2;
+    return dist >= prevDist;
+  }),
+  'load order is non-decreasing distance from the camera tile'
+);
 
 // --- holding what is already held --------------------------------------------
 const held = fresh.load.map(tileKey);

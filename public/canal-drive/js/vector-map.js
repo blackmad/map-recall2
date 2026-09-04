@@ -1074,6 +1074,11 @@ class VectorBasemap {
     const pitch = cockpit ? 72 : chase ? 58 : TOPDOWN_TILT_DEGREES;
     this.map.jumpTo({ center: [lon, lat], zoom: cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom, bearing, pitch });
     this._lastCameraZoom = camera.zoom;
+    // Building tiles follow the driving camera, not the style's Damrak default.
+    // followCamera no-ops until the centre tile / zoom bucket changes.
+    if (this._completeCity && typeof this._completeCity.followCamera === 'function') {
+      this._completeCity.followCamera();
+    }
     this._updateGoogleTiles();
     camera.projector = pitch > 0
       ? (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas)

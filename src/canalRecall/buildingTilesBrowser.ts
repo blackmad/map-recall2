@@ -5,6 +5,14 @@
  * `buildingTileSource.ts` and is tested without a browser. This is the part
  * that talks to the network and to MapLibre, kept thin on purpose.
  *
+ * Load order matters for the first turn: the tile under the camera must win
+ * the bandwidth race against its neighbours. Starting every wanted fetch with
+ * `Promise.all` shared the pipe evenly, so a fat corner tile often landed
+ * before the centre and the player spawned into a hole. Fetches now run with
+ * a small concurrency limit, nearest-first, and are aborted when the camera
+ * leaves them behind (the Damrak default view must not keep downloading once
+ * the route start jumps elsewhere).
+ *
  * It is deliberately safe to run before the tiles exist. The complete city is
  * ~16 MB of gzipped tiles published into the versioned extract as a reviewed
  * decision, so until that happens the index is absent, `available` stays false,
@@ -16,14 +24,20 @@ import {
   BuildingTileCache, BUILDING_TILE_ZOOM, planTiles, tileUrl,
   type BuildingFeature, type Bounds
 } from './buildingTileSource.js';
-import { tileKey } from './slippyTiles.js';
+import { tileFor, tileKey } from './slippyTiles.js';
 
 type GeoJsonSource = { setData(data: unknown): void };
 type MapLike = {
   getSource(id: string): GeoJsonSource | undefined;
   getBounds(): { getWest(): number; getSouth(): number; getEast(): number; getNorth(): number };
+  getCenter(): { lng: number; lat: number };
+  getZoom(): number;
   on(event: string, handler: () => void): void;
 };
+
+/** How many building tiles may download at once. Two keeps the pipe busy
+ *  without starving the camera tile the way an unbounded `Promise.all` did. */
+export const BUILDING_TILE_LOAD_CONCURRENCY = 2;
 
 /** Decompress a published `.geojson.gz` tile into a FeatureCollection. */
 async function readGzippedGeoJson(response: Response): Promise<{ features?: BuildingFeature[] }> {
@@ -44,11 +58,17 @@ export class BuildingTileStreamer {
   private readonly cache = new BuildingTileCache();
   /** Tiles that returned nothing. Remembered so a gap is not refetched forever. */
   private readonly empty = new Set<string>();
+  /** In-flight fetches, keyed so a camera jump can abort the ones we no longer want. */
+  private readonly controllers = new Map<string, AbortController>();
+  /** Nearest-first remaining work for the current plan. */
+  private queue: ReturnType<typeof planTiles>['load'] = [];
   private inFlight = 0;
   private onFirstBuildings?: () => void;
   private onFeatures?: (features: BuildingFeature[]) => void;
   private available = false;
   private disposed = false;
+  /** Last camera signature we planned for — avoids re-planning every jumpTo frame. */
+  private lastFollowSignature = '';
 
   constructor(
     private readonly map: MapLike,
@@ -85,7 +105,12 @@ export class BuildingTileStreamer {
   }
 
   /**
-   * Follow the camera. Safe to call on every `moveend`.
+   * Follow the camera. Safe to call on every `moveend` and from the game
+   * `sync` loop when the centre tile or zoom bucket changes.
+   *
+   * Does **not** load on attach by itself: the MapLibre style boots centred on
+   * Damrak, and fetching that neighbourhood before the route start is known
+   * steals the pipe from the tile under the player.
    *
    * `onFirstBuildings` fires once, when a tile has actually been parsed and
    * carried buildings. The caller uses it to hide the basemap's own extrusion,
@@ -100,59 +125,113 @@ export class BuildingTileStreamer {
     if (!this.available) return;
     this.onFirstBuildings = onFirstBuildings;
     this.onFeatures = onFeatures;
-    this.map.on('moveend', () => { void this.update(); });
-    void this.update();
+    this.map.on('moveend', () => this.followCamera());
   }
 
-  dispose(): void { this.disposed = true; }
+  /**
+   * Re-plan when the camera's centre tile or half-step zoom changes.
+   * Called from `vector-map.sync` so the first driving frame targets the
+   * start point, not the style's default centre.
+   */
+  followCamera(): void {
+    if (!this.available || this.disposed) return;
+    const centre = this.map.getCenter();
+    const tile = tileFor(centre.lng, centre.lat, this.zoom);
+    const zoomBucket = Math.round(this.map.getZoom() * 2) / 2;
+    const signature = `${tileKey(tile)}@${zoomBucket}`;
+    if (signature === this.lastFollowSignature) return;
+    this.lastFollowSignature = signature;
+    this.update();
+  }
+
+  dispose(): void {
+    this.disposed = true;
+    for (const controller of this.controllers.values()) controller.abort();
+    this.controllers.clear();
+    this.queue = [];
+  }
 
   private bounds(): Bounds {
     const bounds = this.map.getBounds();
     return { west: bounds.getWest(), south: bounds.getSouth(), east: bounds.getEast(), north: bounds.getNorth() };
   }
 
-  async update(): Promise<void> {
+  private update(): void {
     if (!this.available || this.disposed) return;
     const plan = planTiles(this.bounds(), this.cache.heldKeys, { zoom: this.zoom });
+    const wantedKeys = new Set(plan.wanted);
 
     let changed = false;
-    for (const key of plan.evict) { this.cache.drop(key); changed = true; }
+    for (const key of plan.evict) {
+      this.cache.drop(key);
+      changed = true;
+    }
 
-    // Nearest tile first, so the ground under the camera fills in before its
-    // corners. Requests run in parallel but the source is only rewritten when
-    // one lands, which keeps a slow corner tile from holding up the centre.
-    const wanted = plan.load.filter(tile => !this.empty.has(tileKey(tile)));
-    await Promise.all(wanted.map(async tile => {
+    // Drop in-flight work the camera no longer needs so a Damrak prefetch
+    // cannot keep eating bandwidth after the start jump.
+    for (const [key, controller] of this.controllers) {
+      if (wantedKeys.has(key)) continue;
+      controller.abort();
+      this.controllers.delete(key);
+    }
+
+    const inFlightKeys = new Set(this.controllers.keys());
+    this.queue = plan.load.filter((tile) => {
       const key = tileKey(tile);
-      if (this.cache.has(key)) return;
-      this.inFlight++;
-      try {
-        const response = await fetch(tileUrl(tile, this.baseUrl));
-        if (!response.ok) {
-          // Most of the 382 tiles cover water, parks or the edge of the
-          // region. A missing one is ordinary, not an error worth retrying.
-          this.empty.add(key);
-          return;
-        }
-        const collection = await readGzippedGeoJson(response);
-        // MapLibre's GeoJSON source tiles and may rewrite rings in place.
-        // Pyramidal roofs need the original closed footprint, so keep our own
-        // copy of coordinates before `setData`.
-        const features: BuildingFeature[] = (collection.features ?? []).map(feature => ({
-          type: 'Feature',
-          properties: { ...(feature.properties || {}) },
-          geometry: feature.geometry && JSON.parse(JSON.stringify(feature.geometry)),
-        }));
-        this.cache.adopt(key, features);
-        if (!this.disposed) this.flush();
-      } catch {
-        this.empty.add(key);
-      } finally {
-        this.inFlight--;
-      }
-    }));
+      return !this.empty.has(key) && !this.cache.has(key) && !inFlightKeys.has(key);
+    });
 
-    if (changed && !this.disposed) this.flush();
+    if (changed) this.flush();
+    this.pump();
+  }
+
+  private pump(): void {
+    while (
+      !this.disposed
+      && this.inFlight < BUILDING_TILE_LOAD_CONCURRENCY
+      && this.queue.length > 0
+    ) {
+      const tile = this.queue.shift();
+      if (!tile) break;
+      void this.fetchTile(tile);
+    }
+  }
+
+  private async fetchTile(tile: ReturnType<typeof planTiles>['load'][number]): Promise<void> {
+    const key = tileKey(tile);
+    if (this.cache.has(key) || this.empty.has(key) || this.controllers.has(key)) return;
+
+    const controller = new AbortController();
+    this.controllers.set(key, controller);
+    this.inFlight++;
+    try {
+      const response = await fetch(tileUrl(tile, this.baseUrl), { signal: controller.signal });
+      if (!response.ok) {
+        // Most of the 382 tiles cover water, parks or the edge of the
+        // region. A missing one is ordinary, not an error worth retrying.
+        this.empty.add(key);
+        return;
+      }
+      const collection = await readGzippedGeoJson(response);
+      if (controller.signal.aborted || this.disposed) return;
+      // MapLibre's GeoJSON source tiles and may rewrite rings in place.
+      // Pyramidal roofs need the original closed footprint, so keep our own
+      // copy of coordinates before `setData`.
+      const features: BuildingFeature[] = (collection.features ?? []).map((feature) => ({
+        type: 'Feature',
+        properties: { ...(feature.properties || {}) },
+        geometry: feature.geometry && JSON.parse(JSON.stringify(feature.geometry)),
+      }));
+      this.cache.adopt(key, features);
+      if (!this.disposed) this.flush();
+    } catch (error) {
+      if ((error as Error)?.name === 'AbortError') return;
+      this.empty.add(key);
+    } finally {
+      this.controllers.delete(key);
+      this.inFlight = Math.max(0, this.inFlight - 1);
+      this.pump();
+    }
   }
 
   private flush(): void {
@@ -167,12 +246,13 @@ export class BuildingTileStreamer {
   }
 
   /** For diagnostics: how much of the city is resident right now. */
-  status(): { tiles: number; features: number; inFlight: number; available: boolean } {
+  status(): { tiles: number; features: number; inFlight: number; available: boolean; queued: number } {
     return {
       tiles: this.cache.size,
       features: this.cache.collection().features.length,
       inFlight: this.inFlight,
-      available: this.available
+      available: this.available,
+      queued: this.queue.length,
     };
   }
 }
