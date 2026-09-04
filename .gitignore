@@ -20,3 +20,6 @@ dist-canalrecall/
 public/canal-drive/_yaw/
 public/canal-drive/_yaw.html
 public/canal-drive/_contact.html
+weights/
+yolov8*.pt
+public/canal-drive/facade-segmentation/

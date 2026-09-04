@@ -57,3 +57,63 @@ gitignored.
 - **It has not been checked against a human.** The same standing caveat as
   everything else here. A model trained on Amsterdam façades agreeing with a
   strip that looks like an Amsterdam façade is not validation.
+
+
+## The ensemble
+
+`ensemble.py` replaces `detect_openings.py` for production. Two detectors and a
+grid, because each fails differently:
+
+- **`amsterdam-facade` v2** is trained on Amsterdam and excellent on the brick
+  canal house it has seen a thousand of. On a pale classical frontage it goes
+  uncertain and paints half the wall `background` — one strip returned two
+  windows where eight are plainly visible.
+- **YOLO-World** (`yolov8s-worldv2.pt`, prompt `window`, `imgsz=960`) is
+  open-vocabulary and knows nothing about Amsterdam, so it has no such blind
+  spot. It is also looser and will box a windscreen. At the default 640 it finds
+  almost nothing on a tall narrow strip; the image size is load-bearing.
+
+**The grid is proposed by geometry, not derived from detections.** That was the
+bug worth recording: bay runs were taken where the column profile exceeded a
+quarter of its own maximum, so a strongly-detected left half pushed a weaker
+right half below the bar. Half of a five-bay Herengracht frontage produced no
+cells at all, and every window in it was missed along with two plainly visible
+front doors — not because the models failed, but because nothing ever looked
+there. The grid is now laid across the whole observed wall at the measured
+2.6 m bay pitch and 3.0 m storey height, and every cell is asked.
+
+**Doors get their own pass.** They cannot come out of a window grid: storey rows
+are found from the window vote profile, and a front door is by definition not
+window-like. The ground storey is therefore asserted from geometry — the
+pavement is where the pavement is — and a bay in it that is wall rather than
+glazing is the way in. Doors went from 31 to 560 across 1,821 strips on this
+change alone.
+
+**Occlusion is reported, not guessed through.** Where more than 40% of the
+ground storey is behind parked cars and bicycles, no door is emitted and the
+façade is marked `groundStoreyOccluded`. 1,129 of 1,821 strips are in that
+state. A door not found under a van is unobserved, not absent, and the earlier
+version put a doorway on a car.
+
+Every opening carries `sources` — which of `segmentation`, `yolo-world`,
+`grid`, `grid-ground-storey` produced it — and `inferred: true` where the grid
+proposed it and neither model saw it.
+
+| | |
+|---|---|
+| Strips | 1,821 |
+| Windows | 5,507 |
+| Doors | 560 (30% of strips) |
+| Ground floor too occluded to say | 1,129 (62%) |
+| Seen by both models | 211 |
+| Proposed by the grid alone | 1,675 |
+
+### Still wrong
+
+- **Doors are placed, not seen.** Every one is `inferred`. The box lands in the
+  right bay but its vertical placement is anchored to the strip base rather than
+  the visible pavement, so it can sit low — on the quay wall in one checked case.
+- **Doors are still labelled as windows** where they sit in a storey row that
+  the window grid found.
+- **1,675 of 7,282 openings were seen by no model.** They are marked, and they
+  should not be treated as observations.

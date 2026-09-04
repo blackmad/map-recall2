@@ -241,6 +241,12 @@ function setup() {
     // No index is a fine state: the map still works, clicking just says nothing.
     .catch(() => {});
 
+  // Not named `escape`: that is a deprecated global that URL-encodes, so a
+  // helper of that name which goes out of scope fails *silently* into it and
+  // renders "Measured%20fa%E7ade" instead of throwing.
+  const safe = text => String(text).replace(/[&<>"]/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
   const number = (v, digits = 1) => v === null || v === undefined ? '—' : Number(v).toFixed(digits);
 
   /**
@@ -342,14 +348,14 @@ function setup() {
       // The honest empty state. A building with no façade is the *rule*, not a
       // failure, and saying so is more useful than an apology.
       evidenceBody.innerHTML = `<h2>Massing only</h2>
-        <p class="pand">pand ${escape(building.id)}</p>
+        <p class="pand">pand ${safe(building.id)}</p>
         <p class="cap">This building's front has never been photographed square-on from a
         leaf-off panorama, so it has no façade: no openings, no measured colour, no gable
         beyond a plain triangle. That is the rule the twin turns on — a building nobody has
         observed gets the gap rather than a confident guess.</p>
         <dl><dt>Footprint</dt><dd>${building.ring.length / 2} vertices</dd>
         <dt>Height</dt><dd>${heights}</dd>
-        <dt>Roof</dt><dd>${escape(building.roof)}</dd></dl>`;
+        <dt>Roof</dt><dd>${safe(building.roof)}</dd></dl>`;
       evidence.classList.add('open');
       return;
     }
@@ -403,8 +409,8 @@ function setup() {
     const disagree = found.massingStoreys && found.storeyBands !== found.massingStoreys
       ? `<div class="warn"><b>Storeys disagree</b>The strip reads ${found.storeyBands} bands; 3DBAG says ${found.massingStoreys}.</div>`
       : '';
-    evidenceBody.innerHTML = `<h2>${escape(found.wallMaterialName ?? 'Measured façade')}</h2>
-      <p class="pand">pand ${escape(found.pandId)} · ${escape(found.capturedAt)}</p>
+    evidenceBody.innerHTML = `<h2>${safe(found.wallMaterialName ?? 'Measured façade')}</h2>
+      <p class="pand">pand ${safe(found.pandId)} · ${safe(found.capturedAt)}</p>
       ${drawing.svg}
       <figcaption>Measured elevation, to scale — ${number(drawing.width, 2)} m of frontage.
       <span style="color:#28e678">green</span> window,
@@ -418,7 +424,7 @@ function setup() {
       <div class="reasoning"><b>What the detector did</b>${reasoning.join('')}</div>
       <img src="${strip}" alt="Rectified façade with the detector's openings drawn on it"
            onerror="this.style.display='none';this.nextElementSibling.textContent=
-           'No strip rendered for this building yet — run build-evidence.ts --ids=${escape(found.pandId)}'">
+           'No strip rendered for this building yet — run build-evidence.ts --ids=${safe(found.pandId)}'">
       <p class="cap">The photograph it was measured from, with the same boxes on it. Rectified to
       this building's own wall plane at ${number(found.standoffM, 0)} m and ${number(found.obliquityDeg)}° off square.</p>
       ${failures}${disagree}
@@ -430,9 +436,9 @@ function setup() {
         <dt>Height</dt><dd>${heights}</dd>
         <dt>Wall colour</dt><dd>${found.wallRgb ? `rgb(${found.wallRgb.join(', ')})` : '—'}</dd>
         <dt>Obstructions</dt><dd>${found.obstructionColumns} column${found.obstructionColumns === 1 ? '' : 's'} rejected</dd>
-        <dt>Panorama</dt><dd style="font-size:11px">${escape(found.panoramaId)}</dd>
+        <dt>Panorama</dt><dd style="font-size:11px">${safe(found.panoramaId)}</dd>
       </dl>
-      ${found.register ? `<p class="quote">Register: ${escape(found.register)}</p>` : ''}
+      ${found.register ? `<p class="quote">Register: ${safe(found.register)}</p>` : ''}
       <div class="links">
         <a href="${google}" target="_blank" rel="noopener">Google Street View</a>
         <a href="${apple}" target="_blank" rel="noopener">Apple Maps</a>

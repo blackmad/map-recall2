@@ -263,7 +263,11 @@ for (const entry of registry) {
       }
       const openings = seen
         ? [...seen.windows, ...seen.doors]
-            .filter(o => o.widthM >= 0.3 && o.heightM >= 0.4)
+            // Nothing below the bottom of the strip it was measured in, and
+            // nothing wider than a shopfront. Both are the box running off the
+            // picture rather than a real opening.
+            .filter(o => o.widthM >= 0.3 && o.heightM >= 0.4
+              && o.yM >= -STRIP_BASE_BELOW_GROUND_M - 0.05 && o.widthM <= 4)
             .map(o => [
               Number(o.xM.toFixed(2)), Number(o.yM.toFixed(2)),
               Number(o.widthM.toFixed(2)), Number(o.heightM.toFixed(2)),
