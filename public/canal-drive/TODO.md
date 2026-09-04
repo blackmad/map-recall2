@@ -26,8 +26,11 @@ features in Amsterdam, Rotterdam, Den Haag and Utrecht. Trivia Lab now has a
 **Human review** view: approve / reject / strike / note, local draft, load an
 existing `facts-review*.json`, and download a version-matched review file for
 `npm run facts:publish`. Cards now frame each rotated fact with a same-article
-opening (`facts:attach-openings` / next `facts:build`). Remaining: work through
-a stratified audit prioritising dates, quantities, Dutch translations and
+opening (`facts:attach-openings` / next `facts:build`). A **v11**
+(`facts-v11-opening-then-trivia`) staging regen is complete for all four cities
+(Amsterdam 948 / Rotterdam 270 / Den Haag 199 / Utrecht 211 features) and awaits
+review before publish — generator version changed, so the old review sheet does
+not carry over. Remaining audit: dates, quantities, Dutch translations and
 model-verifier disagreements. Corrections that change wording must retain exact
 Wikipedia evidence and go back through the normal publication gate — the lab
 does not rewrite staged sentences in place.
