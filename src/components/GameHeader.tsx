@@ -712,7 +712,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 }}
                 className="hidden"
               >
-                <Database className="w-3.5 h-3.5 text-blue-400" />
+                <Database className="w-3.5 h-3.5 text-[#c4a35a]" />
                 <span>Debug Loaded Places ({categoryCounts['all'] || currentCity.features.length})</span>
               </button>
             )}
