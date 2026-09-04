@@ -183,6 +183,55 @@ function medianTile(patches: Uint8ClampedArray[]): Uint8ClampedArray {
   return tile;
 }
 
+/**
+ * How large this material's tile is in the world.
+ *
+ * Brick has a module and the tile has to respect it: 0.63 m is three
+ * stretchers, so the bond seams on a perpend rather than mid-brick.
+ *
+ * Paint and render have no module, and giving them a brick's tile was actively
+ * wrong — it repeated the same 63 cm of wall up a four-storey elevation, which
+ * turns any residual structure in the tile into obvious banding at a spacing
+ * the eye locks onto immediately. They get a tile three times as wide, which
+ * pushes the repeat past the size of a window and makes it stop reading as a
+ * pattern. Nothing is resampled to do it: the same 128 px covers more wall.
+ */
+function tileMetresFor(family: string): number {
+  if (family === 'brick') return TILE_M;
+  return family === 'stone' ? TILE_M * 2 : TILE_M * 3;
+}
+
+/**
+ * Take the horizontal trend out of a tile that should not have one.
+ *
+ * The median across buildings is supposed to keep what every wall of a material
+ * has in common and discard what is particular to one. For brick that works —
+ * the courses line up. For paint and render it manufactures structure that is
+ * not there: string courses, storey shadows and window heads sit at similar
+ * heights on every canal house, so they survive the median as horizontal bands
+ * on a surface that in life is flat. Measured colour is the thing worth
+ * keeping; the banding is an artefact of how it was measured.
+ *
+ * So each row is pulled back to the tile's mean, leaving the grain that varies
+ * within a row and removing the trend between rows.
+ */
+function flattenCourses(tile: Uint8ClampedArray): void {
+  for (let c = 0; c < 3; c++) {
+    let total = 0;
+    for (let i = 0; i < TILE_PX * TILE_PX; i++) total += tile[i * 4 + c];
+    const mean = total / (TILE_PX * TILE_PX);
+    for (let y = 0; y < TILE_PX; y++) {
+      let row = 0;
+      for (let x = 0; x < TILE_PX; x++) row += tile[(y * TILE_PX + x) * 4 + c];
+      const bias = row / TILE_PX - mean;
+      for (let x = 0; x < TILE_PX; x++) {
+        const i = (y * TILE_PX + x) * 4 + c;
+        tile[i] = Math.max(0, Math.min(255, tile[i] - bias));
+      }
+    }
+  }
+}
+
 /** Lay a stretcher bond over a measured colour field, in real brick sizes. */
 function applyBond(tile: Uint8ClampedArray): void {
   const px = TILE_PX / TILE_M;
@@ -236,19 +285,21 @@ for (const [materialId, facades] of [...byMaterial.entries()].sort((a, b) => b[1
   const collected = [...byBuilding.values()].flat();
   const buildings = byBuilding.size;
   const tile = medianTile(collected);
-  const isBrick = MATERIALS[materialId].family === 'brick';
-  if (isBrick) applyBond(tile);
+  const family = MATERIALS[materialId].family;
+  const isBrick = family === 'brick';
+  if (isBrick) applyBond(tile); else flattenCourses(tile);
+  const tileM = tileMetresFor(family);
   const file = `${materialId}.jpg`;
   await writeFile(path.join(OUT, file), jpeg.encode({ width: TILE_PX, height: TILE_PX, data: Buffer.from(tile) }, 92).data);
   const material = MATERIALS[materialId];
   manifest.push({
     materialId, file, buildings, patches: collected.length,
-    colour: 'measured', bond: isBrick ? 'constructed at 210x50 mm' : 'none',
-    tileM: [TILE_M, TILE_M], pixels: TILE_PX,
+    colour: 'measured', bond: isBrick ? 'constructed at 210x50 mm' : 'none, courses flattened',
+    tileMetres: tileM, tileM: [tileM, tileM], pixels: TILE_PX,
     fallbackColour: material.colour, name: material.name,
   });
   console.log(`  ${materialId.padEnd(19)} ${String(collected.length).padStart(4)} patches, ${String(buildings).padStart(3)} buildings`
-    + `${isBrick ? ', bond laid in' : ''} → ${file}`);
+    + `${isBrick ? ', bond laid in' : ', courses flattened'}, tiling at ${tileM.toFixed(2)} m → ${file}`);
 }
 
 await writeFile(path.join(OUT, 'manifest.json'), JSON.stringify({
@@ -258,6 +309,8 @@ await writeFile(path.join(OUT, 'manifest.json'), JSON.stringify({
     attribution: '© Gemeente Amsterdam, Kernregistratie Panoramabeelden (CC BY 4.0)',
     method: `One-metre wall patches cropped from rectified orthographic façades between the measured openings, `
       + `resampled to ${TILE_PX} px and medianed per material across buildings.`,
+    // Per-material now; this is the brick module and the fallback for a reader
+    // that does not look at the per-texture value.
     tileMetres: TILE_M, tilePixels: TILE_PX,
   },
   textures: manifest,

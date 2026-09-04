@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-09-04T17:26:12.002Z",
+    "generatedAt": "2026-09-04T18:06:01.973Z",
     "generator": "scripts/facade-twin/build-textures.ts",
     "attribution": "© Gemeente Amsterdam, Kernregistratie Panoramabeelden (CC BY 4.0)",
     "method": "One-metre wall patches cropped from rectified orthographic façades between the measured openings, resampled to 128 px and medianed per material across buildings.",
@@ -12,9 +12,10 @@
       "materialId": "brick-grey",
       "file": "brick-grey.jpg",
       "buildings": 30,
-      "patches": 2529,
+      "patches": 2764,
       "colour": "measured",
       "bond": "constructed at 210x50 mm",
+      "tileMetres": 0.63,
       "tileM": [
         0.63,
         0.63
@@ -27,12 +28,13 @@
       "materialId": "painted-white",
       "file": "painted-white.jpg",
       "buildings": 30,
-      "patches": 3155,
+      "patches": 3875,
       "colour": "measured",
-      "bond": "none",
+      "bond": "none, courses flattened",
+      "tileMetres": 1.8900000000000001,
       "tileM": [
-        0.63,
-        0.63
+        1.8900000000000001,
+        1.8900000000000001
       ],
       "pixels": 128,
       "fallbackColour": "#e5e2d9",
@@ -42,12 +44,13 @@
       "materialId": "painted-grey",
       "file": "painted-grey.jpg",
       "buildings": 30,
-      "patches": 2877,
+      "patches": 2737,
       "colour": "measured",
-      "bond": "none",
+      "bond": "none, courses flattened",
+      "tileMetres": 1.8900000000000001,
       "tileM": [
-        0.63,
-        0.63
+        1.8900000000000001,
+        1.8900000000000001
       ],
       "pixels": 128,
       "fallbackColour": "#9aa0a0",
@@ -56,13 +59,14 @@
     {
       "materialId": "painted-black",
       "file": "painted-black.jpg",
-      "buildings": 28,
-      "patches": 1201,
+      "buildings": 30,
+      "patches": 1555,
       "colour": "measured",
-      "bond": "none",
+      "bond": "none, courses flattened",
+      "tileMetres": 1.8900000000000001,
       "tileM": [
-        0.63,
-        0.63
+        1.8900000000000001,
+        1.8900000000000001
       ],
       "pixels": 128,
       "fallbackColour": "#2b2b2b",
@@ -71,10 +75,11 @@
     {
       "materialId": "brick-yellow",
       "file": "brick-yellow.jpg",
-      "buildings": 30,
-      "patches": 2453,
+      "buildings": 25,
+      "patches": 2109,
       "colour": "measured",
       "bond": "constructed at 210x50 mm",
+      "tileMetres": 0.63,
       "tileM": [
         0.63,
         0.63
@@ -86,13 +91,14 @@
     {
       "materialId": "stucco",
       "file": "stucco.jpg",
-      "buildings": 15,
-      "patches": 2058,
+      "buildings": 12,
+      "patches": 1525,
       "colour": "measured",
-      "bond": "none",
+      "bond": "none, courses flattened",
+      "tileMetres": 1.26,
       "tileM": [
-        0.63,
-        0.63
+        1.26,
+        1.26
       ],
       "pixels": 128,
       "fallbackColour": "#ded6c8",

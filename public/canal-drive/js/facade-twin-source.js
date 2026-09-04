@@ -213,10 +213,18 @@ export class FacadeTwin {
         // So: a mesh per material, RepeatWrapping, and UVs in real metres. Seven
         // draw calls for the whole canal ring is not a cost worth a bug.
         const textures = new Map();
-        let tileM = 0.63;
+        // Tile size is per material, not global: brick has a module and has to
+        // seam on a perpend, paint and render have none and tile larger so the
+        // repeat stops reading as banding. The manifest's top-level value is
+        // only the fallback.
+        const tileMetres = new Map();
+        let fallbackTileM = 0.63;
         try {
           const manifest = await (await fetch(owner.textureUrl)).json();
-          tileM = manifest.metadata?.tileMetres || tileM;
+          fallbackTileM = manifest.metadata?.tileMetres || fallbackTileM;
+          for (const tile of manifest.textures || []) {
+            tileMetres.set(tile.materialId, tile.tileMetres || fallbackTileM);
+          }
           await Promise.all((manifest.textures || []).map(tile => new Promise(resolve => {
             const image = new Image();
             image.onload = () => {
@@ -235,7 +243,8 @@ export class FacadeTwin {
           // No texture pack is a fine state: the measured colours still draw.
           console.warn('Façade textures unavailable; drawing flat measured colour.', error);
         }
-        owner._tileM = tileM;
+        owner._tileMetres = tileMetres;
+        owner._tileM = fallbackTileM;
 
         // One bucket per wall material, plus one for everything that is not a
         // textured wall — roofs, joinery, glass, water.
@@ -277,6 +286,7 @@ export class FacadeTwin {
           // the bond stays continuous around its own corners without the UV
           // growing to a thousand tiles and losing precision in a float.
           const ox = building.ring[0], oy = building.ring[1];
+          const tileM = tileMetres.get(material) ?? fallbackTileM;
 
           // Runs of one part in a row become one span, so a colour-mode change
           // is a handful of writes per building rather than one per vertex.
