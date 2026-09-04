@@ -111,7 +111,14 @@ a:focus-visible {
 }
 .button-primary:hover { filter: brightness(1.05); }
 .button-primary:active { transform: translateY(1px); }
-.button-primary:disabled { color: rgba(255,255,255,.45); background: rgba(255,255,255,.12); box-shadow: none; }
+/* Disabled is "not yet", not "faded": full-contrast label on a dashed ghost. */
+.button-primary:disabled {
+  color: rgba(255,255,255,.85);
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,.4);
+  box-shadow: none;
+  filter: none;
+}
 
 .button-secondary {
   color: var(--enamel-ink);
