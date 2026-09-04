@@ -36,6 +36,10 @@ plaque frames. Photographic backdrops are real CC0 (or the live map): see
 
 - **Canal Recall route setup** — map-led asymmetric: left enamel rail, right
   CC0 Reguliersgracht vista (Storybook and live setup).
+- **Map Quest start** — same grammar: riveted Map Recall plaque rail over the
+  CC0 vista; Canals & Streets elevated; other layers demoted; mode gloss on
+  the rail. During an active round the header collapses to brand + modes +
+  score (filters live in the overflow menu).
 - **In-drive HUD** — deep navy plates (`hudSurface`, `rgba(7,20,48,.84)`),
   not cobalt: the basemap is mostly water, and cobalt over blue canals is
   blue-on-blue. White type, one gold accent (distance, streak, compass north),
@@ -46,14 +50,14 @@ plaque frames. Photographic backdrops are real CC0 (or the live map): see
   stays on surfaces you stop at: setup, recall prompt, help/settings panels,
   arrival card.
 - **Map Quest** — header, dialogs, and map reveal labels use the component
-  classes in `src/index.css`: `app-dialog` (surface), `enamel-chip` (header
-  control, `.active` = rivet hairline), `enamel-tile` (choice tile),
-  `enamel-segment` (mode switcher), `enamel-float` (chip over the map),
-  `button-primary` (copper CTA) / `button-secondary`. Do not add
-  slate/stone/emerald/amber utilities on these surfaces; do not give a
-  component class a `display` value (it would defeat Tailwind `hidden`).
-  Canvas values come from `hudTheme.ts` (export names `paperTheme` /
-  `paperCssVariables` are historical).
+  classes in `src/index.css`: `app-dialog` (surface), `enamel-plaque` /
+  `enamel-framed` (riveted hero), `enamel-chip` (header control, `.active` =
+  rivet hairline), `enamel-tile` (choice tile), `enamel-segment` (mode
+  switcher), `enamel-float` (chip over the map), `button-primary` (copper
+  CTA) / `button-secondary`. Do not add slate/stone/emerald/amber utilities
+  on these surfaces; do not give a component class a `display` value (it
+  would defeat Tailwind `hidden`). Canvas values come from `hudTheme.ts`
+  (export names `paperTheme` / `paperCssVariables` are historical).
 
 ## Constraints that stay true
 

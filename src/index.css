@@ -44,6 +44,41 @@ body {
   --font-plaque: "Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
 }
 
+/* Framed enamel plaque (rivets + white rim) — hero title / primary stamp only. */
+.enamel-plaque {
+  --_enamel: var(--enamel);
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  border-radius: 6px;
+  color: var(--enamel-ink);
+  background:
+    linear-gradient(165deg, var(--enamel-bright) 0%, var(--_enamel) 42%, var(--enamel-deep) 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 6px 18px rgba(0, 0, 0, 0.28);
+}
+.enamel-plaque.enamel-framed::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.enamel-plaque.enamel-framed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.9;
+  background-image:
+    radial-gradient(circle at 7px 7px, #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px),
+    radial-gradient(circle at calc(100% - 7px) 7px, #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px),
+    radial-gradient(circle at 7px calc(100% - 7px), #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px),
+    radial-gradient(circle at calc(100% - 7px) calc(100% - 7px), #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px);
+}
+
 button:focus-visible,
 select:focus-visible,
 input:focus-visible,
