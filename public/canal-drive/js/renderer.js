@@ -162,15 +162,16 @@ class Renderer {
     const destination = camera.worldToScreen(track.finishPoint.x, track.finishPoint.y);
     ctx.save();
     ctx.translate(destination.x, destination.y);
-    ctx.fillStyle = window.CanalRecallUi.hudSurface.cardSolid;
+    const surface = window.CanalRecallUi.hudSurface;
+    ctx.fillStyle = surface.cardSolid;
     roundRect(ctx, -43, 18, 86, 20, 5);
     ctx.fill();
-    ctx.fillStyle = window.CanalRecallUi.paperTheme.ink;
-    ctx.font = 'bold 10px monospace';
+    ctx.fillStyle = surface.ink;
+    ctx.font = `700 10px ${surface.fontPlaque}`;
     ctx.textAlign = 'center';
     ctx.fillText('DESTINATION', 0, 32);
-    ctx.fillStyle = window.CanalRecallUi.paperTheme.terracotta;
-    ctx.strokeStyle = window.CanalRecallUi.paperTheme.paperRaised;
+    ctx.fillStyle = surface.arrow;
+    ctx.strokeStyle = surface.ink;
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(0, 16);
@@ -345,17 +346,18 @@ class Renderer {
       ctx.restore();
     }
 
-    // Ink on tinted paper. The kinds stay visually distinct — the category and
-    // the kind of fact are different axes and must not read as one label.
+    // Light ink on the navy plate. The kinds stay visually distinct — the
+    // category and the kind of fact are different axes and must not read as one
+    // label — but only the category gets the gold; the rest are white tints.
     const badgeColors = {
-      category: ['rgba(183,129,37,.18)', '#7a5514'],
-      lang: ['rgba(104,116,110,.16)', '#54605a'],
-      article: ['rgba(53,102,83,.15)', '#264b3d'],
-      more: ['rgba(199,95,67,.15)', '#a24b33'],
-      fact: ['rgba(94,74,124,.15)', '#5b4a7c'],
+      category: ['rgba(196,163,90,.22)', '#e2c98a'],
+      lang: ['rgba(255,255,255,.12)', 'rgba(255,255,255,.78)'],
+      article: ['rgba(255,255,255,.12)', 'rgba(255,255,255,.78)'],
+      more: ['rgba(208,138,74,.22)', '#f0b98a'],
+      fact: ['rgba(255,255,255,.12)', 'rgba(255,255,255,.78)'],
     };
     let textY = y + 22;
-    ctx.font = 'bold 9px monospace';
+    ctx.font = `700 9px ${surface.fontMono}`;
     ctx.textAlign = 'left';
     for (const badge of card.badges) {
       const [fill, ink] = badgeColors[badge.kind];
@@ -367,13 +369,13 @@ class Renderer {
     }
     if (card.badges.length) textY += 17;
 
-    ctx.fillStyle = window.CanalRecallUi.paperTheme.ink;
-    ctx.font = 'bold 15px monospace';
-    ctx.fillText(card.displayName, x + card.textLeft, textY);
+    ctx.fillStyle = surface.ink;
+    ctx.font = `800 16px ${surface.fontPlaque}`;
+    ctx.fillText(card.displayName.toUpperCase(), x + card.textLeft, textY);
     textY += 18;
 
-    ctx.fillStyle = window.CanalRecallUi.paperTheme.inkMuted;
-    ctx.font = '11px monospace';
+    ctx.fillStyle = surface.inkMuted;
+    ctx.font = `500 11px ${surface.fontUi}`;
     for (const line of card.lines) {
       ctx.fillText(line, x + card.textLeft, textY);
       textY += 14;
@@ -397,30 +399,31 @@ class Renderer {
       // and never into the leftover navy that used to sit under the name.
       const fade = 48;
       const shade = ctx.createLinearGradient(x + photoW - fade, 0, x + photoW, 0);
-      shade.addColorStop(0, 'rgba(255,253,248,0)');
+      shade.addColorStop(0, 'rgba(7,20,48,0)');
       shade.addColorStop(1, window.CanalRecallUi.hudSurface.cardSolid);
       ctx.fillStyle = shade;
       ctx.fillRect(x + photoW - fade, y, fade, card.height);
     } else {
-      ctx.fillStyle = '#0E7490';
-      ctx.fillRect(x, y, 9, card.height);
+      ctx.fillStyle = window.CanalRecallUi.hudSurface.accent;
+      ctx.fillRect(x, y, 5, card.height);
     }
 
+    const surface = window.CanalRecallUi.hudSurface;
     const textX = x + card.textLeft;
     ctx.textAlign = 'left';
-    ctx.fillStyle = window.CanalRecallUi.paperTheme.moss;
-    ctx.font = 'bold 10px monospace';
-    ctx.fillText(card.heading, textX, y + 27);
-    ctx.fillStyle = window.CanalRecallUi.paperTheme.ink;
-    ctx.font = `800 ${card.nameFontSize}px system-ui, sans-serif`;
-    ctx.fillText(card.name, textX, y + 58);
-    ctx.fillStyle = '#9CCFE1';
-    ctx.font = '11px system-ui, sans-serif';
+    ctx.fillStyle = surface.accent;
+    ctx.font = `700 11px ${surface.fontPlaque}`;
+    ctx.fillText(card.heading.toUpperCase(), textX, y + 27);
+    ctx.fillStyle = surface.ink;
+    ctx.font = `800 ${card.nameFontSize}px ${surface.fontPlaque}`;
+    ctx.fillText(card.name.toUpperCase(), textX, y + 58);
+    ctx.fillStyle = surface.inkMuted;
+    ctx.font = `500 12px ${surface.fontUi}`;
     ctx.fillText(card.caption, textX, y + 80);
     ctx.restore();
 
-    ctx.strokeStyle = 'rgba(125,211,252,.55)';
-    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = surface.border;
+    ctx.lineWidth = 1;
     roundRect(ctx, x, y, card.width, card.height, 8);
     ctx.stroke();
   }

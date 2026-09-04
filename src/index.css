@@ -17,196 +17,212 @@ body {
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
-  background: #f1eee6;
-  color: #24322b;
+  background: #071430;
+  color: #ffffff;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
 
 :root {
-  --paper: #f8f5ee;
-  --paper-raised: #fffdf8;
-  --paper-muted: #eee9df;
-  --ink: #24322b;
-  --ink-muted: #68746e;
-  --line: #d8d2c6;
-  --moss: #356653;
-  --moss-dark: #264b3d;
-  --moss-soft: #dce8e1;
-  --terracotta: #c75f43;
-  --ochre: #b78125;
+  --paper: #0b3a8c;
+  --paper-raised: #1450b8;
+  --paper-muted: #072861;
+  --ink: #ffffff;
+  --ink-muted: rgba(255, 255, 255, 0.72);
+  --line: rgba(255, 255, 255, 0.28);
+  --moss: #1450b8;
+  --moss-dark: #072861;
+  --moss-soft: rgba(20, 80, 184, 0.28);
+  --terracotta: #b87333;
+  --ochre: #c4a35a;
+  --enamel: #0b3a8c;
+  --enamel-bright: #1450b8;
+  --enamel-deep: #072861;
+  --enamel-ink: #ffffff;
+  --rivet: #c4a35a;
+  --enamel-copper: #b87333;
+  --font-plaque: "Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
 }
 
 button:focus-visible,
 select:focus-visible,
 input:focus-visible,
 a:focus-visible {
-  outline: 3px solid rgb(53 102 83 / 0.3);
+  outline: 3px solid rgb(196 163 90 / 0.45);
   outline-offset: 2px;
 }
 
-/* Calm, paper-like quiz surfaces. These semantic classes deliberately sit
-   after Tailwind so the game reads as one product instead of a stack of pills. */
+/* ---- Enamel component classes (Map Quest) ----------------------------
+ * Plain, unlayered classes beat Tailwind's @layer utilities, so no
+ * `!important` is needed. Components should use these instead of ad-hoc
+ * slate/stone/emerald utilities. Copper is reserved for the primary CTA.
+ * --------------------------------------------------------------------- */
+.app-dialog,
 .quiz-card,
-.quiz-result-card,
-.app-dialog {
-  color: var(--ink) !important;
-  background: rgb(255 253 248 / 0.97) !important;
-  border: 1px solid rgb(97 89 74 / 0.2) !important;
-  border-radius: 18px !important;
-  box-shadow: 0 12px 35px rgb(58 50 36 / 0.16) !important;
-  backdrop-filter: blur(12px);
+.quiz-result-card {
+  color: var(--enamel-ink);
+  background: linear-gradient(165deg, var(--enamel-bright) 0%, var(--enamel) 42%, var(--enamel-deep) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.16) inset,
+    0 14px 40px rgba(0, 0, 0, 0.4);
 }
 
-.quiz-card .text-white,
-.quiz-card .text-slate-100,
-.quiz-card .text-slate-200,
-.quiz-result-card .text-white,
-.quiz-result-card .text-slate-100,
-.quiz-result-card .text-slate-200,
-.app-dialog .text-white,
-.app-dialog .text-slate-100,
-.app-dialog .text-slate-200 { color: var(--ink) !important; }
-
-.quiz-card .text-slate-300,
-.quiz-card .text-slate-400,
-.quiz-card .text-slate-500,
-.quiz-result-card .text-slate-300,
-.quiz-result-card .text-slate-400,
-.quiz-result-card .text-slate-500,
-.app-dialog .text-slate-300,
-.app-dialog .text-slate-400,
-.app-dialog .text-slate-500 { color: var(--ink-muted) !important; }
-
-.quiz-card .border-slate-700,
-.quiz-card .border-slate-800,
-.quiz-result-card .border-slate-700,
-.quiz-result-card .border-slate-800,
-.app-dialog .border-slate-700,
-.app-dialog .border-slate-800 { border-color: var(--line) !important; }
-
-.quiz-card .bg-slate-800,
-.quiz-card .bg-slate-900,
-.quiz-card .bg-slate-950,
-.quiz-result-card .bg-slate-800,
-.quiz-result-card .bg-slate-900,
-.quiz-result-card .bg-slate-950,
-.app-dialog .bg-slate-800,
-.app-dialog .bg-slate-900,
-.app-dialog .bg-slate-950 { background: var(--paper-muted) !important; }
-
-.quiz-card [class*="bg-slate-"],
-.quiz-result-card [class*="bg-slate-"],
-.app-dialog [class*="bg-slate-"] { background: var(--paper-muted) !important; }
-.quiz-card [class*="border-slate-"],
-.quiz-result-card [class*="border-slate-"],
-.app-dialog [class*="border-slate-"] { border-color: var(--line) !important; }
-.quiz-card [class*="text-slate-"],
-.quiz-result-card [class*="text-slate-"],
-.app-dialog [class*="text-slate-"] { color: var(--ink-muted) !important; }
-.quiz-card [class*="text-white"],
-.quiz-result-card [class*="text-white"],
-.app-dialog [class*="text-white"] { color: var(--ink) !important; }
-.app-dialog [class*="bg-blue-"],
-.app-dialog [class*="bg-violet-"] {
-  color: white !important;
-  background: var(--moss) !important;
-  border-color: var(--moss-dark) !important;
+/* Legacy utility colours inside enamel surfaces. Dark-on-blue is unreadable,
+ * so every gray/stone/green text shade collapses to ink or muted ink. */
+.app-dialog :is([class*="text-slate-"], [class*="text-stone-"], [class*="text-gray-"], [class*="text-emerald-8"], [class*="text-emerald-7"], [class*="text-emerald-9"]),
+.quiz-card :is([class*="text-slate-"], [class*="text-stone-"], [class*="text-gray-"], [class*="text-emerald-8"], [class*="text-emerald-7"], [class*="text-emerald-9"]),
+.quiz-result-card :is([class*="text-slate-"], [class*="text-stone-"], [class*="text-gray-"], [class*="text-emerald-8"], [class*="text-emerald-7"], [class*="text-emerald-9"]) {
+  color: var(--ink-muted);
+}
+.app-dialog :is(.text-slate-100, .text-slate-200, .text-stone-800, .text-stone-900, .text-slate-900, .text-white),
+.quiz-card :is(.text-slate-100, .text-slate-200, .text-stone-800, .text-stone-900, .text-slate-900, .text-white),
+.quiz-result-card :is(.text-slate-100, .text-slate-200, .text-stone-800, .text-stone-900, .text-slate-900, .text-white) {
+  color: var(--enamel-ink);
+}
+.app-dialog :is([class*="bg-slate-"], [class*="bg-stone-"], [class*="bg-white"]),
+.quiz-card :is([class*="bg-slate-"], [class*="bg-stone-"], [class*="bg-white"]),
+.quiz-result-card :is([class*="bg-slate-"], [class*="bg-stone-"], [class*="bg-white"]) {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--enamel-ink);
+}
+.app-dialog :is([class*="border-slate-"], [class*="border-stone-"]),
+.quiz-card :is([class*="border-slate-"], [class*="border-stone-"]),
+.quiz-result-card :is([class*="border-slate-"], [class*="border-stone-"]) {
+  border-color: var(--line);
+}
+.app-dialog :is([class*="text-amber-"], [class*="text-emerald-4"]),
+.quiz-card :is([class*="text-amber-"], [class*="text-emerald-4"]),
+.quiz-result-card :is([class*="text-amber-"], [class*="text-emerald-4"]) {
+  color: var(--rivet);
 }
 
 .button-primary {
-  color: white !important;
-  background: var(--moss) !important;
-  border: 1px solid var(--moss-dark) !important;
-  border-radius: 11px !important;
-  box-shadow: 0 2px 0 var(--moss-dark) !important;
-  font-weight: 700 !important;
-  transform: none !important;
+  color: #fff;
+  background: linear-gradient(180deg, #c9844a, var(--enamel-copper) 48%, #8a5524);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.22) inset, 0 6px 16px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-plaque);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
-.button-primary:hover { background: var(--moss-dark) !important; }
-.button-primary:active { box-shadow: none !important; transform: translateY(1px) !important; }
-.button-primary:disabled { color: #999f9b !important; background: #e5e2da !important; border-color: #d4d0c7 !important; box-shadow: none !important; }
+.button-primary:hover { filter: brightness(1.05); }
+.button-primary:active { transform: translateY(1px); }
+.button-primary:disabled { color: rgba(255,255,255,.45); background: rgba(255,255,255,.12); box-shadow: none; }
 
 .button-secondary {
-  color: var(--ink-muted) !important;
-  background: transparent !important;
-  border: 1px solid var(--line) !important;
-  border-radius: 11px !important;
-  box-shadow: none !important;
+  color: var(--enamel-ink);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  box-shadow: none;
 }
-.button-secondary:hover { color: var(--ink) !important; background: var(--paper-muted) !important; }
+.button-secondary:hover { background: rgba(255, 255, 255, 0.14); }
 
+/* Choice tile inside a dialog (category picker, answer options). */
+.enamel-tile,
 .answer-detail-card {
-  color: var(--ink) !important;
-  background: #f4f0e7 !important;
-  border: 1px solid var(--line) !important;
-  border-radius: 12px !important;
+  color: var(--enamel-ink);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 7px;
+  box-shadow: none;
+  transition: background 160ms ease-out, border-color 160ms ease-out;
+}
+.enamel-tile:hover,
+.answer-detail-card:hover { background: rgba(255, 255, 255, 0.13); border-color: rgba(255, 255, 255, 0.3); }
+.enamel-tile.active {
+  background: linear-gradient(165deg, var(--enamel-bright), var(--enamel));
+  border-color: rgba(196, 163, 90, 0.7);
+}
+
+/* Small header control: select, toggle, icon button. */
+.enamel-chip {
+  color: var(--enamel-ink);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  box-shadow: none;
+  transition: background 140ms ease-out, border-color 140ms ease-out;
+}
+.enamel-chip:hover { background: rgba(255, 255, 255, 0.14); border-color: rgba(255, 255, 255, 0.28); }
+.enamel-chip.active {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(196, 163, 90, 0.75);
+}
+.enamel-chip option { background: var(--enamel-deep); color: var(--enamel-ink); }
+
+/* Segmented control (game mode). */
+.enamel-segment {
+  padding: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 7px;
+  background: rgba(7, 20, 48, 0.35);
+}
+.enamel-segment button {
+  color: var(--ink-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  transition: background 140ms ease-out, color 140ms ease-out;
+}
+.enamel-segment button:hover { color: var(--enamel-ink); background: rgba(255, 255, 255, 0.08); }
+.enamel-segment button[aria-pressed="true"] {
+  color: var(--enamel-ink);
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(196, 163, 90, 0.7);
 }
 
 #app-game-header {
-  color: var(--ink) !important;
-  background: rgb(255 253 248 / 0.96) !important;
-  border-color: var(--line) !important;
-  box-shadow: 0 1px 10px rgb(58 50 36 / 0.08) !important;
+  color: var(--enamel-ink);
+  background: linear-gradient(180deg, rgba(20, 80, 184, 0.96), rgba(11, 58, 140, 0.96));
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.14) inset, 0 6px 22px rgba(0, 0, 0, 0.35);
 }
-#app-game-header select,
-#app-game-header button,
-#header-score-badge {
-  color: var(--ink-muted) !important;
-  background: #f4f0e8 !important;
-  border-color: var(--line) !important;
-  box-shadow: none !important;
-}
-#app-game-header [class*="bg-blue-600"],
-#app-game-header [class*="bg-violet-600"] {
-  color: white !important;
-  background: var(--moss) !important;
-  border-color: var(--moss-dark) !important;
-}
-#app-game-header [class*="text-slate-100"],
-#app-game-header [class*="text-slate-200"],
-#app-game-header [class*="text-slate-300"] { color: var(--ink) !important; }
-#app-game-header [class*="text-amber-400"] { color: var(--ochre) !important; }
-
-#game-mode-switcher {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-#game-mode-switcher button {
-  color: #68746e !important;
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 7px !important;
-  box-shadow: none !important;
-  padding-block: 6px !important;
-}
-#game-mode-switcher button:hover { color: var(--ink) !important; background: #eee9df !important; }
-#game-mode-switcher button[class*="bg-blue-600"],
-#game-mode-switcher button[class*="bg-violet-600"] {
-  color: white !important;
-  background: var(--moss) !important;
-}
-#header-score-badge {
-  background: transparent !important;
-  border-color: transparent !important;
-  padding-inline: 6px !important;
+.enamel-brand {
+  font-family: var(--font-plaque);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.leaflet-container { background-color: #e6e4dc !important; }
+/* Floating chips over the map (toast, Canal Recall link). */
+.enamel-float {
+  color: var(--enamel-ink);
+  background: rgba(11, 58, 140, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+.enamel-float:hover { background: rgba(20, 80, 184, 0.94); }
+
+/* Loading bar */
+.enamel-progress { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); }
+.enamel-progress > div { background: linear-gradient(90deg, var(--rivet), #e0c988); }
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background-color: #0a1a36 !important;
+  font-family: inherit;
+}
 .leaflet-control-zoom a {
-  color: var(--ink) !important;
-  background: var(--paper-raised) !important;
+  color: var(--enamel-ink) !important;
+  background: var(--enamel) !important;
   border-color: var(--line) !important;
 }
 .leaflet-control-attribution {
-  color: #727972 !important;
-  background: rgb(255 253 248 / 0.8) !important;
+  color: var(--ink-muted) !important;
+  background: rgb(11 58 140 / 0.8) !important;
 }
 
 @media (max-width: 640px) {
   .quiz-card,
-  .quiz-result-card { border-radius: 16px !important; }
+  .quiz-result-card { border-radius: 10px !important; }
   .quiz-result-card { max-height: min(58dvh, 520px); overflow-y: auto; }
 }
 
@@ -252,28 +268,19 @@ input {
   }
 }
 
-/* Leaflet container fixes */
-.leaflet-container {
-  width: 100%;
-  height: 100%;
-  background-color: #e6e4dc !important;
-  font-family: inherit;
-}
-
 .custom-map-icon {
   background: transparent;
   border: none;
 }
 
-/* Hide default leaflet popups border artifact */
 .leaflet-popup-content-wrapper {
-  background: var(--paper-raised);
-  color: var(--ink);
-  border-radius: 12px;
+  background: var(--enamel);
+  color: var(--enamel-ink);
+  border-radius: 10px;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
   border: 1px solid var(--line);
 }
 
 .leaflet-popup-tip {
-  background: var(--paper-raised);
+  background: var(--enamel);
 }

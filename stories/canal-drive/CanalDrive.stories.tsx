@@ -23,6 +23,9 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     // Must be set before the game's first _resize, and re-applied because the
     // Storybook viewport addon resizes the iframe after load.
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
+    const setupStories = new Set(['default', 'bike-home', 'advanced', 'touch-setup']);
+    if (setupStories.has(scenario)) doc.body.classList.add('storybook-setup');
+    else doc.body.classList.remove('storybook-setup');
     const overlay = (win as any)?.CanalRecallOverlay?.getOverlay?.();
     const patchPrefs = (patch: Record<string, unknown>) => {
       if (!overlay) return;
@@ -155,12 +158,14 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           // Place the whole HUD from the live viewport, exactly as a frame
           // would, so the story shows the real arrangement and not a guess.
           game._syncHudLayout();
-          game.hud.drawCanalScore(ctx, 7, 9, 640, game.quizFeedback, 4, true,
-            game.hud.tripText(42, 6240));
           // The street under question is withheld: the HUD must never answer it.
-          game.hud.drawCurrentLocation(ctx, 'Prinsengracht', 'Jordaan', 'car', asking);
-          game.hud.drawDestination(ctx, 'Westerkerk', 1860, 0.42);
-          game.hud.drawTripReadout(ctx, 42, 6240);
+          game.hud.drawPlaque(ctx, {
+            routeName: 'Prinsengracht', neighborhood: 'Jordaan', answerHidden: asking,
+            correct: 7, attempts: 9, points: 640, streak: 4, gamey: true,
+            trip: game.hud.tripText(42, 6240), feedback: game.quizFeedback,
+          });
+          game.hud.drawDestination(ctx, 'Westerkerk', 1860, 0.42, -Math.PI / 3);
+          game.hud.drawCompass(ctx, game.camera);
           game.hud.drawCityOverview(ctx, game);
           const steering = scenario === 'touch-hud-steering';
           game.hud.drawDpad(ctx, {

@@ -188,11 +188,11 @@ export function hudLayout({
         left,
       );
       const topBottom = destination.y + destination.height;
-      // Top-right under the destination stack. Left of the finish-direction
-      // arrow (which docks at the right edge), so both orientation cues sit
-      // together instead of the rose floating over empty map.
+      // Top-right under the destination row, flush with its right edge. The
+      // finish arrow used to dock beside it here; it lives inside the
+      // destination card now.
       const compass = offsetRect({
-        x: width - MARGIN - COMPASS_SIZE_COMPACT - 68,
+        x: width - MARGIN - COMPASS_SIZE_COMPACT,
         y: topBottom + GAP,
         width: COMPASS_SIZE_COMPACT, height: COMPASS_SIZE_COMPACT,
       }, left);

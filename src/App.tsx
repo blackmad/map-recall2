@@ -778,7 +778,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col w-screen h-screen overflow-hidden bg-stone-100 text-stone-800 font-sans select-none">
+    <div className="flex flex-col w-screen h-screen overflow-hidden bg-[#071430] text-white font-sans select-none">
       {/* Top App Header (Strict Single Line) */}
       <GameHeader
         cities={allCities}
@@ -828,7 +828,7 @@ export default function App() {
       <main className="flex-1 relative w-full h-full overflow-hidden">
         <a
           href={canalRecallUrl}
-          className="hidden sm:block absolute bottom-4 left-4 z-30 rounded-lg border border-stone-300 bg-white/90 px-3 py-2 text-xs font-semibold text-stone-700 shadow-sm backdrop-blur transition hover:bg-stone-50"
+          className="enamel-float enamel-brand hidden sm:block absolute bottom-4 left-4 z-30 px-3 py-2 text-xs transition"
         >
           Canal Recall →
         </a>
@@ -860,7 +860,7 @@ export default function App() {
         {locationToast && (
           <div
             id="location-toast-badge"
-            className="absolute top-3 left-1/2 -translate-x-1/2 z-30 px-4 py-2 rounded-lg bg-white/95 text-stone-700 text-xs sm:text-sm font-medium border border-stone-300 shadow-md backdrop-blur-md flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300 pointer-events-none"
+            className="enamel-float absolute top-3 left-1/2 -translate-x-1/2 z-30 px-4 py-2 text-xs sm:text-sm font-medium flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300 pointer-events-none"
           >
             <span>{locationToast}</span>
           </div>
@@ -869,8 +869,8 @@ export default function App() {
         {dataError && !isLocating && (
           <div className="absolute inset-x-3 top-3 z-40 mx-auto max-w-xl" role="alert">
             <div className="app-dialog p-4 text-sm">
-              <div className="font-bold text-rose-700">Couldn’t load map features</div>
-              <p className="mt-1 text-xs leading-relaxed text-stone-600">{dataError}</p>
+              <div className="font-bold text-white">Couldn’t load map features</div>
+              <p className="mt-1 text-xs leading-relaxed text-white/75">{dataError}</p>
               <div className="mt-3 flex gap-2">
                 <button
                   onClick={() => handleRefetchCategory(selectedCategory, true)}
@@ -891,18 +891,16 @@ export default function App() {
 
         {/* Empty OSM dataset: require an explicit category before starting. */}
         {!currentFeature && !isLocating && !isGameOver && !dataError && (
-          <div className="absolute inset-0 z-20 flex items-center justify-center p-4 bg-stone-900/10 backdrop-blur-[1px]">
-            <div className="app-dialog w-full max-w-lg p-5">
-              <div className="text-center mb-4">
-                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-900 text-lg text-white">⌖</div>
-                <h2 className="text-lg font-bold text-stone-800">What would you like to learn?</h2>
-                <p className="mt-1 text-sm text-stone-500">
+          <div className="absolute inset-0 z-20 flex items-center justify-center p-4 bg-[#071430]/25">
+            <div className="app-dialog w-full max-w-lg p-5 sm:p-6">
+              <div className="mb-5">
+                <h2 className="enamel-brand text-2xl sm:text-[26px] leading-tight text-white">What would you like to learn?</h2>
+                <p className="mt-1.5 text-sm text-white/75">
                   Pick a map layer for {currentCity.name}. We’ll build a short, shuffled quiz from it.
                 </p>
-                <p className="mt-2 text-xs font-medium text-emerald-800">
-                  Search area: {(searchRadiusMeters / 1000).toFixed(1)} km radius
+                <p className="mt-2 text-[11px] text-white/60">
+                  Search area {(searchRadiusMeters / 1000).toFixed(1)} km · no account required · progress stays on this device
                 </p>
-                <p className="mt-1 text-[11px] text-stone-500">No account required · progress stays on this device</p>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -916,16 +914,16 @@ export default function App() {
                         handleSelectCategory(category.id);
                       }
                     }}
-                    className="answer-detail-card flex items-center gap-2 px-3 py-3 text-left text-xs font-semibold transition hover:-translate-y-px hover:shadow-sm cursor-pointer"
+                    className="enamel-tile flex items-center gap-2.5 px-3 py-3 text-left text-[13px] font-semibold cursor-pointer"
                   >
-                    <span className="text-base">{category.icon}</span>
+                    <span className="text-base text-white/80">{category.icon}</span>
                     <span>{category.shortLabel}</span>
                   </button>
                 ))}
               </div>
               <button
                 onClick={() => selectedCategory === 'all' ? handleRefetchCategory('all', false) : handleSelectCategory('all')}
-                className="button-secondary mt-3 w-full py-2 text-xs font-semibold"
+                className="button-secondary mt-3 w-full py-2.5 text-xs font-semibold cursor-pointer"
               >
                 Or make me a mixed quiz
               </button>

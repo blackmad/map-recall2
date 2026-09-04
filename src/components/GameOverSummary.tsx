@@ -71,17 +71,17 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
 
   // Title / Rank
   let rankTitle = 'A useful first pass';
-  let rankColor = 'text-stone-600';
+  let rankColor = 'text-white/75';
 
   if (percentage >= 90) {
     rankTitle = 'You know this map';
-    rankColor = 'text-emerald-800';
+    rankColor = 'text-[#c4a35a]';
   } else if (percentage >= 70) {
     rankTitle = 'Strong sense of place';
-    rankColor = 'text-emerald-700';
+    rankColor = 'text-[#c4a35a]';
   } else if (percentage >= 45) {
     rankTitle = 'Getting your bearings';
-    rankColor = 'text-stone-700';
+    rankColor = 'text-white/85';
   }
 
   // Average distance off (for pinpoint mode)
@@ -100,16 +100,16 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
         <button
           id="toggle-map-inspect-btn"
           onClick={() => setIsMapInspectMode(!isMapInspectMode)}
-          className="button-secondary bg-white/95 px-4 py-2 text-xs sm:text-sm font-semibold shadow-sm flex items-center gap-2 backdrop-blur-md transition cursor-pointer"
+          className="enamel-float px-4 py-2 text-xs sm:text-sm font-semibold flex items-center gap-2 transition cursor-pointer"
         >
           {isMapInspectMode ? (
             <>
-              <Layers className="w-4 h-4 text-amber-400" />
+              <Layers className="w-4 h-4 text-[#c4a35a]" />
               <span>Show Results Summary</span>
             </>
           ) : (
             <>
-              <Map className="w-4 h-4 text-blue-400" />
+              <Map className="w-4 h-4 text-[#c4a35a]" />
               <span>Review guesses on map</span>
             </>
           )}
@@ -119,8 +119,8 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
       {/* Floating Top Banner when Inspecting Map */}
       {isMapInspectMode && (
         <div className="fixed top-14 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
-          <div className="bg-slate-900/90 backdrop-blur-md text-white rounded-full px-4 py-1.5 shadow-lg border border-slate-700/80 text-xs font-semibold flex items-center gap-2 animate-fadeIn">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+          <div className="enamel-float rounded-full px-4 py-1.5 text-xs font-semibold flex items-center gap-2 animate-fadeIn">
+            <span className="w-2 h-2 rounded-full bg-[#c4a35a] animate-ping" />
             <span>Map Review: Explore your pins & correct street lines</span>
           </div>
         </div>
@@ -138,10 +138,10 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
           >
             {/* Header Ribbon */}
             <div className="text-center space-y-1">
-              <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-amber-100 text-amber-800 mb-1">
+              <div className="inline-flex items-center justify-center w-11 h-11 rounded-md border border-white/40 bg-white/10 text-[#c4a35a] mb-1">
                 <Trophy className="w-6 h-6" />
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-stone-800">Round complete</h2>
+              <h2 className="enamel-brand text-2xl sm:text-3xl text-white">Round complete</h2>
               <div className={`text-sm sm:text-base font-bold ${rankColor}`}>{rankTitle}</div>
               <div className="flex items-center justify-center gap-2 pt-1">
                 <span className="px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 text-xs font-semibold border border-slate-700">

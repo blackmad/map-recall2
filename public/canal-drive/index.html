@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amsterdam Canal Recall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet">
 <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
 <style>
@@ -14,7 +17,7 @@
 /* 100dvh, not 100vh: on mobile Safari the URL bar makes 100vh taller than the
    screen, which pushed the d-pad under the browser chrome. */
 html { height: 100%; }
-body { background: var(--paper); display: flex; justify-content: center; align-items: center; height: 100vh; height: 100dvh; overflow: hidden; position: relative; overscroll-behavior: none; -webkit-tap-highlight-color: transparent; }
+body { background: #071430; display: flex; justify-content: center; align-items: center; height: 100vh; height: 100dvh; overflow: hidden; position: relative; overscroll-behavior: none; -webkit-tap-highlight-color: transparent; }
 /* The canvas is the control surface; the browser must not treat a drag on it
    as a scroll or a double-tap on it as a zoom. */
 canvas#gameCanvas { touch-action: none; }
@@ -55,30 +58,41 @@ canvas { display: block; position: relative; z-index: 2; }
  * carries the identical values for the canvas HUD to paint with.
  * ------------------------------------------------------------------ */
 :root {
-  --paper: #f8f5ee;
-  --paper-raised: #fffdf8;
-  --paper-muted: #eee9df;
-  --ink: #24322b;
-  --ink-dim: #3d4a43;
-  --muted: #68746e;
-  --surface: rgba(255,253,248,.97);
-  --surface-sunk: rgba(238,233,223,.62);
-  --surface-sunk-focus: rgba(238,233,223,.92);
-  --line: #d8d2c6;
-  --line-strong: rgba(97,89,74,.34);
-  --accent: #c75f43;
-  --accent-ink: #a24b33;
-  --accent-soft: rgba(199,95,67,.10);
-  --moss: #356653;
-  --moss-dark: #264b3d;
-  --moss-soft: #dce8e1;
-  --ochre: #b78125;
-  --primary: #356653;
+  --paper: #0b3a8c;
+  --paper-raised: #1450b8;
+  --paper-muted: #072861;
+  --ink: #ffffff;
+  --ink-dim: rgba(255,255,255,.86);
+  --muted: rgba(255,255,255,.72);
+  --surface: rgba(11,58,140,.94);
+  --surface-sunk: rgba(255,255,255,.08);
+  --surface-sunk-focus: rgba(255,255,255,.14);
+  --line: rgba(255,255,255,.28);
+  --line-strong: rgba(196,163,90,.55);
+  --accent: #b87333;
+  --accent-ink: #e6d094;
+  --accent-soft: rgba(184,115,51,.18);
+  --moss: #1450b8;
+  --moss-dark: #072861;
+  --moss-soft: rgba(20,80,184,.28);
+  --ochre: #c4a35a;
+  --primary: #b87333;
   --primary-ink: #ffffff;
-  --radius: 16px;
-  --radius-sm: 10px;
+  --radius: 10px;
+  --radius-sm: 7px;
   --font-ui: system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Enamel street-plaque chrome (route setup + utility panels). */
+  --enamel: #0b3a8c;
+  --enamel-bright: #1450b8;
+  --enamel-deep: #072861;
+  --enamel-ink: #ffffff;
+  --enamel-muted: rgba(255,255,255,.72);
+  --rivet: #c4a35a;
+  --rivet-deep: #8a7040;
+  --enamel-copper: #b87333;
+  --enamel-copper-deep: #8a5524;
+  --font-plaque: "Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
   /* Read back by the typed viewport module so the HUD can keep clear of the
      notch and the home indicator. */
   --safe-top: env(safe-area-inset-top, 0px);
@@ -86,31 +100,49 @@ canvas { display: block; position: relative; z-index: 2; }
 }
 
 /* ---- Recall prompt ---- */
-#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: flex-end; padding: 24px 28px; background: linear-gradient(90deg, transparent 42%, rgba(36,50,43,.08) 62%, rgba(36,50,43,.28)); z-index: 20; font-family: var(--font-mono); pointer-events: none; }
-#canal-prompt.dock-left { justify-content: flex-start; background: linear-gradient(270deg, transparent 42%, rgba(36,50,43,.08) 62%, rgba(36,50,43,.28)); }
-#canal-card { width: min(100%, 360px); padding: 18px 18px 16px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 14px 40px rgba(58,50,36,.18); pointer-events: auto; }
-/* What you are being asked to name is the largest thing on the card, and the
-   chip above it says which kind of feature the answer is. "Crossing a bridge"
-   as the headline over "Which water are you crossing?" read as a question
-   about the bridge. */
-.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 8px; padding: 4px 10px 4px 7px; border: 1px solid rgba(53,102,83,.35); border-radius: 999px; background: var(--moss-soft); color: var(--moss-dark); font: 800 10px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+#canal-prompt { position: fixed; inset: 0; display: none; align-items: center; justify-content: flex-end; padding: 24px 28px; background: linear-gradient(90deg, transparent 42%, rgba(7,20,48,.12) 62%, rgba(7,20,48,.42)); z-index: 20; font-family: var(--font-ui); pointer-events: none; }
+#canal-prompt.dock-left { justify-content: flex-start; background: linear-gradient(270deg, transparent 42%, rgba(7,20,48,.12) 62%, rgba(7,20,48,.42)); }
+#canal-card {
+  width: min(100%, 360px);
+  padding: 18px 18px 16px;
+  border: 0;
+  border-radius: 8px;
+  background:
+    radial-gradient(120% 90% at 50% 12%, var(--enamel-bright), var(--enamel) 58%, var(--enamel-deep));
+  color: var(--enamel-ink);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.22) inset,
+    0 -2px 6px rgba(0,0,0,.28) inset,
+    0 14px 40px rgba(0,0,0,.4);
+  pointer-events: auto;
+}
+#canal-card::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1.5px solid rgba(255,255,255,.9);
+  border-radius: 4px;
+  pointer-events: none;
+}
+#canal-card { position: relative; }
+.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 8px; padding: 4px 10px 4px 7px; border: 1px solid rgba(196,163,90,.55); border-radius: 999px; background: rgba(196,163,90,.16); color: var(--rivet); font: 800 10px/1 var(--font-plaque); letter-spacing: .14em; text-transform: uppercase; }
 .prompt-kind .prompt-kind-icon { display: grid; place-items: center; width: 18px; height: 18px; line-height: 1; letter-spacing: 0; }
 .prompt-kind .prompt-kind-icon svg { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .prompt-kind .prompt-kind-icon svg.filled { fill: currentColor; stroke: none; }
-.prompt-kind[data-kind="bridge"] { border-color: rgba(183,129,37,.42); background: rgba(183,129,37,.14); color: #7a5514; }
-.prompt-kind[data-kind="street"] { border-color: rgba(53,102,83,.38); background: rgba(53,102,83,.12); color: var(--moss-dark); }
-#canal-card h2 { color: var(--ink); margin-bottom: 4px; font-size: 21px; line-height: 1.15; }
-#canal-card p { color: var(--muted); margin-bottom: 12px; font-size: 12px; }
-#canal-answer { width: 100%; margin-bottom: 10px; padding: 12px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); font: 16px var(--font-mono); }
-#canal-submit { width: 100%; padding: 11px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
-#canal-feedback { min-height: 20px; margin-top: 10px; font-weight: 700; font-size: 13px; }
+.prompt-kind[data-kind="bridge"] { border-color: rgba(196,163,90,.7); background: rgba(196,163,90,.22); color: #e6d094; }
+.prompt-kind[data-kind="street"] { border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.1); color: var(--enamel-ink); }
+#canal-card h2 { color: var(--enamel-ink); margin-bottom: 4px; font: 800 22px/1.15 var(--font-plaque); letter-spacing: .02em; text-transform: uppercase; }
+#canal-card p { color: var(--enamel-muted); margin-bottom: 12px; font-size: 12px; }
+#canal-answer { width: 100%; margin-bottom: 10px; padding: 12px 14px; border: 1px solid rgba(255,255,255,.35); border-radius: var(--radius-sm); background: rgba(255,255,255,.08); color: var(--enamel-ink); font: 16px var(--font-ui); }
+#canal-submit { width: 100%; padding: 11px; border: 0; border-radius: var(--radius-sm); background: linear-gradient(180deg, #d08a4a, var(--enamel-copper) 45%, var(--enamel-copper-deep)); color: var(--enamel-ink); font: 800 15px/1 var(--font-plaque); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+#canal-feedback { min-height: 20px; margin-top: 10px; font-weight: 700; font-size: 13px; color: var(--rivet); }
 #canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-#canal-no-idea { width: 100%; margin-top: 6px; padding: 9px 8px; border: 1px dashed var(--line); border-radius: var(--radius-sm); background: transparent; color: var(--muted); font-weight: 600; cursor: pointer; font-size: 13px; }
-#canal-no-idea:hover { background: var(--paper-muted); color: var(--ink); }
+#canal-no-idea { width: 100%; margin-top: 6px; padding: 9px 8px; border: 1px dashed rgba(255,255,255,.35); border-radius: var(--radius-sm); background: transparent; color: var(--enamel-muted); font-weight: 600; cursor: pointer; font-size: 13px; }
+#canal-no-idea:hover { background: rgba(255,255,255,.08); color: var(--enamel-ink); }
 #canal-no-idea .canal-choice-key { margin-right: 0; margin-left: 6px; }
-.canal-choice { padding: 10px 8px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper-muted); color: var(--ink); font-weight: 700; cursor: pointer; font-size: 13px; }
-.canal-choice:hover { border-color: var(--moss); background: var(--moss-soft); }
-.canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: rgba(36,50,43,.12); color: var(--muted); font-size: 11px; font-weight: bold; }
+.canal-choice { padding: 10px 8px; border: 1px solid rgba(255,255,255,.28); border-radius: var(--radius-sm); background: rgba(255,255,255,.08); color: var(--enamel-ink); font: 700 13px/1.2 var(--font-plaque); letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
+.canal-choice:hover { border-color: var(--rivet); background: rgba(196,163,90,.18); }
+.canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: rgba(255,255,255,.16); color: var(--enamel-muted); font-size: 11px; font-weight: bold; }
 
 /* ---- Shared form components (both themes) ---- */
 .setup-section-title { margin: 24px 0 10px; color: var(--accent-ink); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
@@ -131,69 +163,271 @@ canvas { display: block; position: relative; z-index: 2; }
 .advanced-options summary { padding: 13px 0; color: var(--ink-dim); font-weight: bold; cursor: pointer; }
 .advanced-options .setup-grid { padding-bottom: 14px; }
 
-/* Icon choice rows on the briefing — one decision per row, tap targets not menus. */
-.setup-choice-row { margin: 14px 0 0; }
-.setup-choice-label { margin-bottom: 8px; color: #7a8d8f; font: 800 10px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
-.setup-choice-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
-.setup-choice { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-raised); color: var(--ink); text-align: left; cursor: pointer; font: inherit; }
-.setup-choice:hover { border-color: rgba(53,102,83,.45); background: var(--moss-soft); }
-.setup-choice.active { border-color: var(--moss); background: var(--moss-soft); box-shadow: inset 0 0 0 1px rgba(53,102,83,.35); }
+/* Enamel: real street plaques are calm cobalt + white lettering.
+   Rivets/white rim only on hero + Start — not every option tile. */
+.enamel-plaque {
+  --_enamel: var(--enamel);
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  border-radius: 6px;
+  color: var(--enamel-ink);
+  background:
+    linear-gradient(165deg, var(--enamel-bright) 0%, var(--_enamel) 42%, var(--enamel-deep) 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.18) inset,
+    0 6px 18px rgba(0,0,0,.28);
+  transition: filter 160ms ease-out, box-shadow 160ms ease-out, background 160ms ease-out;
+}
+.enamel-plaque.enamel-framed::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(255,255,255,.88);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.enamel-plaque.enamel-framed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .9;
+  background-image:
+    radial-gradient(circle at 7px 7px, #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px),
+    radial-gradient(circle at calc(100% - 7px) 7px, #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px),
+    radial-gradient(circle at 7px calc(100% - 7px), #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px),
+    radial-gradient(circle at calc(100% - 7px) calc(100% - 7px), #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px);
+}
+.enamel-icon { flex: none; color: var(--enamel-ink); opacity: .92; }
+
+/* Choice tiles: same cobalt family, no rivet costume. */
+.enamel-tile {
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 6px;
+  color: var(--enamel-ink);
+  background: rgba(11,58,140,.55);
+  box-shadow: none;
+  transition: background 160ms ease-out, border-color 160ms ease-out, filter 160ms ease-out;
+}
+.enamel-tile:hover { background: rgba(20,80,184,.62); border-color: rgba(255,255,255,.28); }
+.enamel-tile.active {
+  background: linear-gradient(165deg, var(--enamel-bright), var(--enamel));
+  border-color: rgba(196,163,90,.7);
+  box-shadow: 0 1px 0 rgba(255,255,255,.16) inset;
+}
+
+.setup-choice-row { margin: 16px 0 0; }
+.setup-choice-label {
+  margin: 0 0 7px;
+  color: rgba(255,255,255,.55);
+  font: 600 11px/1 var(--font-plaque);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.setup-choice-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 7px; }
+.setup-choice {
+  display: flex; align-items: center; gap: 10px;
+  min-height: 50px; padding: 10px 12px;
+  text-align: left; cursor: pointer; font: inherit;
+}
 .setup-choice-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.setup-choice-text strong { font: 700 13px/1.2 var(--font-ui); }
-.setup-choice-text small { color: var(--muted); font: 11px/1.3 var(--font-ui); }
+.setup-choice-text strong {
+  font: 650 14px/1.15 var(--font-plaque);
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--enamel-ink);
+}
+.setup-choice-text small { color: var(--enamel-muted); font: 500 11px/1.3 var(--font-ui); }
 .setup-choice-row.compact .setup-choice-options { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
-.setup-choice-row.compact .setup-choice { flex-direction: column; justify-content: center; gap: 2px; min-height: 48px; padding: 8px 4px; text-align: center; }
+.setup-choice-row.compact .setup-choice { flex-direction: column; justify-content: center; gap: 4px; min-height: 48px; padding: 8px 4px; text-align: center; }
 .setup-choice-row.compact .setup-choice-text small { display: none; }
-.setup-choice-row.compact .setup-choice-text strong { font-size: 12px; font-weight: 700; }
-.setup-account { display: flex; align-items: center; gap: 12px; margin: 14px 0 4px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.setup-choice-row.compact .setup-choice-text strong { font-size: 12px; }
+
+.setup-account {
+  display: flex; align-items: center; gap: 12px;
+  margin: 14px 0 2px; padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 6px;
+  background: rgba(7,20,48,.35);
+}
 .setup-account-copy { flex: 1; min-width: 0; }
-.setup-account-copy strong { display: block; color: var(--ink); font: 700 14px/1.2 var(--font-ui); }
-.setup-account-copy small { display: block; margin-top: 3px; color: var(--muted); font: 12px/1.4 var(--font-ui); }
-.setup-account-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
-.account-button.quiet { background: transparent; color: var(--muted); }
-.account-button.quiet:hover { color: var(--ink); background: var(--paper-muted); }
+.setup-account-copy strong {
+  display: block;
+  color: var(--enamel-ink);
+  font: 650 14px/1.2 var(--font-plaque);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.setup-account-copy small { display: block; margin-top: 3px; color: var(--enamel-muted); font: 12px/1.4 var(--font-ui); }
+.setup-account-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.account-button.enamel-quiet {
+  padding: 7px 10px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 5px;
+  background: rgba(255,255,255,.06);
+  color: var(--enamel-ink);
+  cursor: pointer;
+  font: 600 12px/1 var(--font-plaque);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.account-button.enamel-quiet:hover { background: rgba(255,255,255,.12); }
 
-/* ---- Route briefing ---- */
-#route-setup { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: 22px; background: rgba(241,238,230,.80); backdrop-filter: blur(5px); color: var(--ink); font-family: var(--font-mono); }
-#route-card { width: min(100%, 680px); max-height: calc(100dvh - 44px); overflow-y: auto; overflow-x: hidden; padding: 26px 30px 24px; border: 1px solid rgba(35,55,57,.2); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: 0 22px 65px rgba(25,42,43,.2); }
-.setup-eyebrow { margin-bottom: 7px; color: var(--accent); font: 800 11px/1 var(--font-mono); letter-spacing: .13em; text-transform: uppercase; }
-#route-card h1 { margin-bottom: 5px; color: var(--ink); font: 800 clamp(26px,4vw,34px)/1.05 var(--font-ui); letter-spacing: -.035em; }
-#route-card .lede { max-width: 580px; margin-bottom: 4px; color: var(--ink-dim); font: 14px/1.5 var(--font-ui); }
-.route-surprise { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; align-items: center; gap: 14px; margin: 0; padding: 12px 14px; border: 0; border-left: 4px solid var(--moss); border-radius: var(--radius-sm); background: var(--moss-soft); color: var(--ink-dim); font: 13px/1.4 var(--font-ui); }
-.route-surprise > span { min-width: 0; overflow-wrap: anywhere; }
-.route-surprise .route-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--paper-raised); color: var(--moss); font-size: 19px; }
-.route-surprise strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 15px; }
-.route-chip { padding: 6px 9px; border-radius: 999px; background: transparent; color: #597175; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
-#route-card .setup-section-title { margin: 12px 0 5px; color: #7a8d8f; }
+/* ---- Route briefing: map-led asymmetric enamel rail ---- */
+#route-setup.enamel-setup {
+  position: fixed; inset: 0; z-index: 30;
+  display: flex; align-items: stretch; justify-content: flex-start;
+  padding: 0; gap: 0;
+  background: transparent;
+  backdrop-filter: none;
+  color: var(--enamel-ink);
+  font-family: var(--font-ui);
+}
+.enamel-setup-rail {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  width: min(100%, 400px);
+  max-height: 100dvh;
+  padding: calc(20px + var(--safe-top)) 18px calc(20px + var(--safe-bottom));
+  background: linear-gradient(90deg, rgba(7,20,48,.88) 0%, rgba(7,20,48,.72) 100%);
+  box-shadow: 16px 0 48px rgba(0,0,0,.4);
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+.enamel-setup-form {
+  display: flex; flex-direction: column; gap: 0;
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto; overflow-x: hidden;
+  padding: 0 2px 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.enamel-setup-vista {
+  flex: 1; min-width: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(7,20,48,.55) 0%, rgba(7,20,48,.12) 38%, transparent 58%),
+    url('assets/media/setup-backdrop.jpg') center / cover no-repeat;
+  background-color: #071430;
+}
+.enamel-title {
+  margin: 0 0 2px;
+  padding: 18px 20px;
+  font: 750 clamp(26px, 3.8vw, 32px)/1.05 var(--font-plaque);
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  text-align: center;
+}
 #route-card .setup-grid { gap: 0 18px; }
-#route-card .setup-field { padding: 9px 0 10px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
-#route-card .setup-field:focus-within { border-color: var(--line-strong); box-shadow: none; }
-#route-card .setup-field select, #route-card .setup-field input[type="text"] { font-size: 14px; }
-#route-card .preference-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 16px; margin-top: 0; }
-#route-card .master-toggle { min-height: 45px; padding: 7px 0; border: 0; border-radius: 0; }
-#route-card .assist-options { color: #33494c; }
-#route-card .account-button { border-color: #91a7a8; background: transparent; color: #33494c; }
-#route-card .advanced-options { margin: 14px 0 8px; padding: 0; border: 0; border-top: 1px solid var(--line); border-radius: 0; }
-#route-card .advanced-options summary { color: #52686b; font-size: 12px; padding: 10px 0; }
-#route-card .setup-choice-row { margin-top: 12px; }
-#route-card .setup-choice { background: transparent; }
-#route-card .setup-choice.active { background: var(--moss-soft); }
-#route-card .setup-account { margin-top: 10px; }
-#route-start { width: 100%; padding: 13px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font: 800 15px var(--font-ui); cursor: pointer; }
-#route-start:hover { filter: brightness(1.1); }
-#route-error { min-height: 20px; margin-top: 10px; color: #b45309; }
+#route-card .setup-field,
+.enamel-field {
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: rgba(255,255,255,.08);
+  color: var(--enamel-muted);
+  font: 700 11px/1 var(--font-plaque);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+#route-card .setup-field select,
+#route-card .setup-field input[type="text"],
+.enamel-field input[type="text"] {
+  color: var(--enamel-ink);
+  font: 600 14px/1.3 var(--font-ui);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.enamel-field-note { font: 11px/1.4 var(--font-ui); color: var(--enamel-muted); text-transform: none; letter-spacing: 0; }
+#route-card .preference-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin-top: 8px; }
+#route-card .master-toggle {
+  min-height: 45px; padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 6px;
+  background: rgba(255,255,255,.06);
+  color: var(--enamel-ink);
+}
+#route-card .master-toggle small { color: var(--enamel-muted); }
+#route-card .assist-options { color: var(--enamel-muted); }
+#route-card .advanced-options {
+  margin: 14px 0 8px; padding: 0;
+  border: 0; border-top: 1px solid rgba(255,255,255,.18);
+  border-radius: 0; background: transparent;
+}
+#route-card .advanced-options summary {
+  color: var(--enamel-muted);
+  font: 700 13px/1 var(--font-plaque);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 12px 0;
+  cursor: pointer;
+}
+.enamel-start {
+  width: 100%;
+  margin-top: 16px;
+  padding: 15px 16px;
+  cursor: pointer;
+  font: 750 17px/1 var(--font-plaque);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--enamel-ink);
+  background:
+    linear-gradient(180deg, #c9844a, var(--enamel-copper) 48%, var(--enamel-copper-deep));
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.22) inset,
+    0 8px 20px rgba(0,0,0,.32);
+}
+.enamel-start.enamel-framed::before { border-color: rgba(255,248,230,.75); }
+.enamel-start:hover { filter: brightness(1.05); }
+body.setup-open #utility-buttons { display: none; }
+#route-error { min-height: 20px; margin-top: 10px; color: #ffb4a2; font: 13px/1.4 var(--font-ui); }
 
-/* ---- Help and live settings panels ---- */
-.utility-panel { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(36,50,43,.45); backdrop-filter: blur(4px); color: var(--ink); font-family: var(--font-mono); }
-.utility-card { display: flex; flex-direction: column; width: min(100%, 520px); max-height: min(86dvh, 640px); padding: 20px 22px 16px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,.55); overflow: hidden; }
-.utility-card h2 { flex: none; margin-bottom: 10px; color: var(--accent-ink); }
-.utility-card table { width: 100%; border-collapse: collapse; }
-.utility-card td { padding: 5px 4px; border-bottom: 1px solid var(--line); font-size: 13px; }
-.utility-card td:first-child { width: 88px; color: var(--accent-ink); font-weight: bold; white-space: nowrap; }
+/* ---- Help and live settings panels (enamel) ---- */
+.utility-panel {
+  position: fixed; inset: 0; z-index: 40;
+  display: none; align-items: center; justify-content: center;
+  padding: 16px;
+  background: rgba(7,20,48,.55);
+  backdrop-filter: blur(4px);
+  color: var(--enamel-ink);
+  font-family: var(--font-ui);
+}
+.utility-card.enamel-panel,
+.utility-card {
+  display: flex; flex-direction: column;
+  width: min(100%, 520px);
+  max-height: min(86dvh, 640px);
+  padding: 20px 22px 16px;
+  overflow: hidden;
+}
+.utility-card h2 {
+  flex: none; margin-bottom: 10px;
+  color: var(--enamel-ink);
+  font: 800 22px/1.1 var(--font-plaque);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.utility-card table { width: 100%; border-collapse: collapse; color: var(--enamel-ink); }
+.utility-card td { padding: 5px 4px; border-bottom: 1px solid rgba(255,255,255,.16); font-size: 13px; }
+.utility-card td:first-child { width: 88px; color: var(--rivet); font-weight: bold; white-space: nowrap; }
 .utility-scroll { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-.utility-close { flex: none; width: 100%; margin-top: 12px; padding: 12px; border: 0; border-radius: var(--radius-sm); background: var(--primary); color: var(--primary-ink); font-weight: 800; cursor: pointer; }
-.help-credits { margin: 12px 0 0; color: var(--muted); font: 11px/1.45 var(--font-ui); }
-.help-credits a { color: var(--moss); }
+.utility-close { flex: none; width: 100%; margin-top: 12px; padding: 12px; cursor: pointer; }
+.enamel-utility .master-toggle {
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color: var(--enamel-ink);
+}
+.enamel-utility .master-toggle small { color: var(--enamel-muted); }
+.enamel-utility .assist-options { color: var(--enamel-muted); }
+.enamel-utility .setup-field {
+  color: var(--enamel-muted);
+  border-bottom-color: rgba(255,255,255,.18);
+}
+.enamel-utility .setup-field select,
+.enamel-utility .setup-field input { color: var(--enamel-ink); }
+.help-credits { margin: 12px 0 0; color: var(--enamel-muted); font: 11px/1.45 var(--font-ui); }
+.help-credits a { color: var(--rivet); }
 /* The landmark panel is the card's expanded form: the full extract, at length,
    with real scrolling. The canvas card is a glance; this is the read. */
 #landmark-panel .utility-card { display: flex; flex-direction: column; width: min(100%, 640px); max-height: min(86dvh, 760px); }
@@ -205,12 +439,21 @@ canvas { display: block; position: relative; z-index: 2; }
 #landmark-panel-scroll { overflow-y: auto; flex: 1; min-height: 0; -webkit-overflow-scrolling: touch; }
 #landmark-panel-image { float: right; width: 168px; margin: 0 0 12px 14px; border-radius: var(--radius-sm); }
 #landmark-panel-body { font-size: 13px; line-height: 1.65; white-space: pre-wrap; }
-#landmark-panel-link { display: inline-block; margin-top: 14px; color: var(--moss); font-size: 12px; }
+#landmark-panel-link { display: inline-block; margin-top: 14px; color: var(--rivet); font-size: 12px; }
 @media (max-width: 760px) { #landmark-panel-image { float: none; width: 100%; margin: 0 0 12px; } }
 input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); background: transparent; }
 #utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 12; display: flex; gap: 8px; }
-#utility-buttons button { width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); font-size: 18px; cursor: pointer; box-shadow: 0 6px 18px rgba(58,50,36,.16); }
-#map-attribution { position: fixed; left: 10px; bottom: 6px; z-index: 10; max-width: min(42vw, 220px); color: rgba(36,50,43,.55); font: 9px/1.3 var(--font-ui); text-shadow: 0 1px 0 rgba(255,253,248,.7); pointer-events: none; }
+/* Same navy plate as the canvas readouts (hudSurface.card), not cobalt: these
+   float over the map next to the HUD, and cobalt over water is blue-on-blue. */
+#utility-buttons button {
+  width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.22); border-radius: 8px;
+  background: rgba(7,20,48,.84);
+  color: var(--enamel-ink);
+  font-size: 18px; cursor: pointer;
+  box-shadow: 0 3px 14px rgba(4,12,28,.45);
+}
+#utility-buttons button:hover { background: rgba(7,20,48,.96); border-color: rgba(255,255,255,.4); }
+#map-attribution { position: fixed; left: 10px; bottom: 6px; z-index: 10; max-width: min(42vw, 220px); color: rgba(255,255,255,.62); font: 9px/1.3 var(--font-ui); text-shadow: 0 1px 2px rgba(0,0,0,.55); pointer-events: none; }
 #map-attribution a { color: inherit; pointer-events: auto; text-decoration: underline; text-underline-offset: 2px; }
 /* ---- Phone ----------------------------------------------------------- *
  * The briefing becomes a full-bleed sheet, the recall prompt docks to the
@@ -222,8 +465,16 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
  * desktop tap targets and no safe-area padding at all.
  * ---------------------------------------------------------------------- */
 @media (max-width: 760px), (max-height: 500px) {
-  #route-setup { padding: 0; align-items: stretch; }
-  #route-card { flex: none; width: 100%; min-width: 0; max-height: 100dvh; overflow-x: hidden; border: 0; border-radius: 0; padding: calc(20px + var(--safe-top)) 18px calc(18px + var(--safe-bottom)); }
+  #route-setup.enamel-setup { flex-direction: column; }
+  .enamel-setup-rail { width: 100%; max-width: none; box-shadow: none; }
+  .enamel-setup-vista { min-height: 28dvh; }
+  .enamel-setup-vista {
+    background:
+      linear-gradient(0deg, rgba(7,20,48,.5), transparent 50%),
+      url('assets/media/setup-backdrop.jpg') center / cover no-repeat;
+    background-color: #071430;
+  }
+  #route-card { flex: none; width: 100%; min-width: 0; max-height: none; overflow-x: hidden; }
   .setup-grid, .preference-grid { grid-template-columns: minmax(0,1fr); }
   .setup-choice-row.compact .setup-choice-options { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .setup-choice { min-height: 48px; }
@@ -231,8 +482,8 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   .route-chip { display: none; }
   /* Tap targets: 44px is the smallest reliably hittable control. */
   .setup-field select, .setup-field input[type="text"] { min-height: 30px; font-size: 16px; }
-  #route-start { position: sticky; bottom: 0; z-index: 3; min-height: 50px; box-shadow: 0 -14px 28px var(--paper-raised), 0 8px 24px rgba(53,102,83,.25); }
-  #canal-prompt, #canal-prompt.dock-left { align-items: flex-end; justify-content: center; padding: 12px calc(12px + env(safe-area-inset-right, 0px)) calc(12px + var(--safe-bottom)) calc(12px + env(safe-area-inset-left, 0px)); background: linear-gradient(0deg, rgba(36,50,43,.42), transparent 62%); }
+  #route-start, .enamel-start { position: sticky; bottom: 0; z-index: 3; min-height: 50px; }
+  #canal-prompt, #canal-prompt.dock-left { align-items: flex-end; justify-content: center; padding: 12px calc(12px + env(safe-area-inset-right, 0px)) calc(12px + var(--safe-bottom)) calc(12px + env(safe-area-inset-left, 0px)); background: linear-gradient(0deg, rgba(7,20,48,.5), transparent 62%); }
   /* Capped so the vehicle, which sits at the centre of the screen, stays above
      the card. At 72dvh the card covered it — and being asked which canal you
      are on while the card hides the canal you are on is the one thing this
@@ -277,7 +528,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
 <select id="route-to" hidden></select>
 <div id="canal-overlay-root"></div>
 <div id="utility-buttons"><button id="open-settings" title="Settings (G)">⚙</button><button id="open-help" title="Keyboard shortcuts (?)">?</button></div>
-<div id="help-panel" class="utility-panel"><div class="utility-card">
+<div id="help-panel" class="utility-panel enamel-utility"><div class="utility-card enamel-plaque enamel-framed enamel-panel">
   <h2>Keyboard shortcuts</h2>
   <div class="utility-scroll">
     <table>
@@ -301,9 +552,9 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
     </table>
     <p class="help-credits"><a href="../">← Map Recall</a> · Adapted from <a href="https://github.com/a1anw2/smokeysandthebandit">Smokey’s</a> (GPL-3.0) · © OSM · © CARTO</p>
   </div>
-  <button class="utility-close" type="button">Close</button>
+  <button class="utility-close enamel-plaque enamel-framed enamel-start" type="button">Close</button>
 </div></div>
-<div id="landmark-panel" class="utility-panel"><div class="utility-card">
+<div id="landmark-panel" class="utility-panel enamel-utility"><div class="utility-card enamel-plaque enamel-framed enamel-panel">
   <div id="landmark-panel-badges"></div>
   <h2 id="landmark-panel-title"></h2>
   <div id="landmark-panel-scroll">
@@ -311,7 +562,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
     <div id="landmark-panel-body"></div>
     <a id="landmark-panel-link" target="_blank" rel="noopener" hidden>Read the full article on Wikipedia &rarr;</a>
   </div>
-  <button class="utility-close" type="button">Close</button>
+  <button class="utility-close enamel-plaque enamel-framed enamel-start" type="button">Close</button>
 </div></div>
 <div id="canal-prompt">
   <form id="canal-card">
