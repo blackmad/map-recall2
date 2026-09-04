@@ -43,16 +43,28 @@ export interface CameraPose {
  * produces a confident, well-formed picture of whatever stands behind the
  * camera.
  *
- * Amsterdam's panoramas are `centre`: the heading direction sits at the
- * horizontal middle of the frame. That was settled by slicing one panorama into
- * eight 45° bands and finding which band held the wall known to be 4.2 m away —
- * it fell at u≈0.3, and `centre` predicts 0.305 while `edge` predicts 0.805.
+ * **Amsterdam's panoramas are `edge`**: the heading direction sits at the left
+ * edge of the equirectangular frame, so azimuth 0 maps to u = 0.
  *
- * Worth recording how nearly the wrong answer won. Both conventions render
- * upright, plausible, entirely convincing canal frontages, because in Amsterdam
- * every direction is one. Judging by eye picked `edge`, and it was wrong. Only
- * a prediction checked against geometry known independently — where is the wall
- * we already measured — could tell them apart.
+ * This was got wrong, and the way it was got wrong is the lesson. An earlier
+ * calibration sliced one panorama into eight 45° bands, asked which band held a
+ * wall known to be 4.2 m away, and concluded `centre`. That single measurement
+ * outvoted a direct comparison, and it was wrong. The settling evidence is
+ * dumber and much stronger: render the same wall from the same panorama both
+ * ways for six buildings and look. Under `centre` they are a bridge parapet, a
+ * street receding to a vanishing point, and a blank sky; under `edge` they are
+ * canal houses with windows, doors and parked cars in front of them.
+ *
+ * Both conventions produce upright, plausible, entirely convincing pictures,
+ * because 180° from a canal frontage in Amsterdam is another canal frontage.
+ * That is exactly why one clever indirect test is not enough, and why this now
+ * has a fixture: `check-facade-yaw.ts` renders both and asserts which one holds
+ * the building.
+ *
+ * The convention has no default anywhere. It is a property of the *publisher*,
+ * so the imagery adapter states it and every caller must pass it — an omitted
+ * argument is a type error rather than a silent 180° error in 2,184 records,
+ * which is what the previous default cost.
  */
 export type YawConvention = 'centre' | 'edge';
 
@@ -137,7 +149,15 @@ function sample(image: EquirectangularImage, u: number, v: number, out: number[]
 export interface RectifyOptions {
   /** Output resolution, in pixels per metre of wall. */
   pixelsPerMetre?: number;
-  yaw?: YawConvention;
+  /**
+   * Required. Where the publisher puts the heading direction in the frame.
+   *
+   * Not optional and never defaulted: this is a property of the imagery, the
+   * two values differ by 180°, and both produce a convincing picture. A default
+   * here silently pointed 2,184 measurements at whatever stood behind the
+   * camera. Take it from the imagery adapter.
+   */
+  yaw: YawConvention;
   /** Cap on output size, so a long warehouse wall cannot allocate unboundedly. */
   maxPixels?: number;
 }
@@ -167,10 +187,10 @@ export function rectifyFacade(
   image: EquirectangularImage,
   pose: CameraPose,
   plane: FacadePlane,
-  options: RectifyOptions = {},
+  options: RectifyOptions,
 ): RectifiedFacade {
   const pixelsPerMetre = options.pixelsPerMetre ?? 60;
-  const yaw = options.yaw ?? 'centre';
+  const yaw = options.yaw;
   const maxPixels = options.maxPixels ?? 12e6;
 
   const wallWidthM = Math.hypot(plane.end.x - plane.start.x, plane.end.y - plane.start.y);

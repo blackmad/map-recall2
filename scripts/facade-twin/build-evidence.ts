@@ -31,7 +31,7 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/area
 import { STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
 import { nearestMaterial } from '../../src/canalRecall/facade/materials.ts';
 import { rectifyFacade, type CameraPose } from '../../src/canalRecall/facade/rectify.ts';
-import { GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView } from '../../src/canalRecall/facade/sources.ts';
 
@@ -39,6 +39,7 @@ const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
 const CACHE = path.resolve('.cache/facade-twin');
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const STRIPS = path.resolve('public/canal-drive/facade-evidence');
+const CLEAN = path.resolve('.cache/facade-twin/strips-clean');
 const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))?.slice(name.length + 3);
 
 interface Stored {
@@ -125,10 +126,10 @@ async function strip(record: Stored): Promise<boolean> {
   } satisfies CameraPose,
     { start: { x: x0, y: y0 }, end: { x: x1, y: y1 },
       baseZ: ground - STRIP_BASE_BELOW_GROUND_M, topZ: eaves + 0.3 },
-    { pixelsPerMetre: Math.min(60, Math.max(24, 1250 / record.standoffM)) });
+    { pixelsPerMetre: Math.min(60, Math.max(24, 1250 / record.standoffM)), yaw: AMSTERDAM_YAW_CONVENTION });
 
   const ppm = rect.pixelsPerMetre;
-  for (const o of record.openings) {
+  for (const o of clean ? [] : record.openings) {
     const bx0 = Math.round(o.xM * ppm), bx1 = Math.round((o.xM + o.widthM) * ppm);
     const by1 = Math.round(rect.height - o.yM * ppm);
     const by0 = Math.round(by1 - o.heightM * ppm);
@@ -139,22 +140,32 @@ async function strip(record: Stored): Promise<boolean> {
   }
   // The ground line, so a reviewer can see what is souterrain and what is not.
   const gy = Math.round(rect.height - STRIP_BASE_BELOW_GROUND_M * ppm);
-  for (let x = 0; x < rect.width; x++) {
+  for (let x = 0; !clean && x < rect.width; x++) {
     if (Math.floor(x / 7) % 2) continue;
     const i = (gy * rect.width + x) * 4;
     rect.data[i] = 255; rect.data[i + 1] = 90; rect.data[i + 2] = 90;
   }
 
   const encoded = jpeg.encode({ width: rect.width, height: rect.height, data: Buffer.from(rect.data) }, 82);
-  await writeFile(path.join(STRIPS, `${record.pandId}.jpg`), encoded.data);
+  await writeFile(path.join(clean ? CLEAN : STRIPS, `${record.pandId}.jpg`), encoded.data);
   return true;
 }
 
 const records = Object.values(store.facades).filter(f => f.openings?.length);
 const wanted = (arg('ids') ?? '').split(',').filter(Boolean);
 const budget = Number(arg('strips') ?? 0);
+/**
+ * Draw the strip without the detector's findings on it.
+ *
+ * For a machine reviewer this is not optional. Asking a vision model whether
+ * the boxes are in the right place while the boxes are drawn on the image is
+ * asking it to agree with me, and it will. The clean strip is the photograph
+ * and nothing else.
+ */
+const clean = process.argv.includes('--clean');
 
 await mkdir(STRIPS, { recursive: true });
+await mkdir(CLEAN, { recursive: true });
 let drawn = 0;
 const queue = wanted.length
   ? records.filter(r => wanted.includes(r.pandId))

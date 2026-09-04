@@ -31,7 +31,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { rectifyFacade, type CameraPose, type EquirectangularImage, type YawConvention } from '../../src/canalRecall/facade/rectify.ts';
-import { GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { normalise, skyline, skylineSteps } from '../../src/canalRecall/facade/skyline.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
@@ -214,7 +214,7 @@ async function offsetFor(buildingId: string, headingSign: number, yawOffsetDeg: 
     // the sky boundary, so there has to be sky.
     baseZ: (massing.get(buildingId)?.groundLevel ?? 1) + 4,
     topZ: tallestRidge + 14,
-  }, { pixelsPerMetre: PX_PER_M, yaw });
+  }, { pixelsPerMetre: PX_PER_M, yaw, yaw: AMSTERDAM_YAW_CONVENTION });
 
   const toPx = (a: number) => ((a + SPAN_M / 2) / SPAN_M) * rect.width;
   const heights = skyline(rect);

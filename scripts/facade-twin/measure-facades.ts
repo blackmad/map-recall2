@@ -16,9 +16,9 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
-import { measureFacade } from '../../src/canalRecall/facade/measure.ts';
+import { measureFacade, STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade, type CameraPose } from '../../src/canalRecall/facade/rectify.ts';
-import { GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -176,9 +176,9 @@ for (const buildingId of ids) {
   } satisfies CameraPose, { start: wall.start, end: wall.end, baseZ, topZ },
     // Do not invent pixels: sample at what the panorama holds at this range,
     // capped so a very close view does not produce an enormous strip.
-    { pixelsPerMetre: Math.min(PX_PER_M, Math.max(24, 1250 / found.standoff)) });
+    { pixelsPerMetre: Math.min(PX_PER_M, Math.max(24, 1250 / found.standoff)), yaw: AMSTERDAM_YAW_CONVENTION });
 
-  const measurement = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
+  const measurement = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre, yaw: AMSTERDAM_YAW_CONVENTION });
   const ppm = rect.pixelsPerMetre;
 
   for (const opening of measurement.openings) {

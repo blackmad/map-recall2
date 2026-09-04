@@ -24,7 +24,7 @@ import { buildElevations, inFrontOf, obliquityDeg, standoffM, type Elevation } f
 import { plausibility, PLAUSIBLE_ENOUGH } from '../../src/canalRecall/facade/grammar.ts';
 import { measureFacade, STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
-import { GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, MassingRecord, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -228,9 +228,9 @@ for (const { panoramaId, pose: planPose, jobs } of plan) {
     const rect = rectifyFacade(image, {
       x: entry.pose.point.x, y: entry.pose.point.y, z: entry.pose.view.cameraHeight - GEOID_SEPARATION_M,
       headingDeg: entry.pose.view.headingDeg, pitchDeg: entry.pose.view.pitchDeg, rollDeg: entry.pose.view.rollDeg,
-    }, { start: job.wall.start, end: job.wall.end, baseZ: ground - STRIP_BASE_BELOW_GROUND_M, topZ: eaves + 0.3 }, { pixelsPerMetre: ppm });
+    }, { start: job.wall.start, end: job.wall.end, baseZ: ground - STRIP_BASE_BELOW_GROUND_M, topZ: eaves + 0.3 }, { pixelsPerMetre: ppm, yaw: AMSTERDAM_YAW_CONVENTION });
 
-    const m = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
+    const m = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre, yaw: AMSTERDAM_YAW_CONVENTION });
     // Is this a façade at all? The reference sheet showed that low obliquity and
     // short standoff are not enough: several such readings were of canal elms.
     const verdict = plausibility({

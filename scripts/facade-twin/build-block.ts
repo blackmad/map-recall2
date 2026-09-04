@@ -28,7 +28,7 @@ import { summariseCoverage, wasObserved } from '../../src/canalRecall/facade/evi
 import { applyStreetLevelEvidence, wallMaterialOf } from '../../src/canalRecall/facade/streetLevelEvidence.ts';
 import { measureFacade, STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
-import { GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -241,8 +241,8 @@ for (const entry of block) {
         const rect = rectifyFacade(image, {
           x: found.pose.point.x, y: found.pose.point.y, z: found.pose.view.cameraHeight - GEOID_SEPARATION_M,
           headingDeg: found.pose.view.headingDeg, pitchDeg: found.pose.view.pitchDeg, rollDeg: found.pose.view.rollDeg,
-        }, { start: found.wall.start, end: found.wall.end, baseZ: base - STRIP_BASE_BELOW_GROUND_M, topZ: eavesNap + 0.3 }, { pixelsPerMetre: ppm });
-        const measurement = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
+        }, { start: found.wall.start, end: found.wall.end, baseZ: base - STRIP_BASE_BELOW_GROUND_M, topZ: eavesNap + 0.3 }, { pixelsPerMetre: ppm, yaw: AMSTERDAM_YAW_CONVENTION });
+        const measurement = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre, yaw: AMSTERDAM_YAW_CONVENTION });
         // Kept for the renderer. Each rectangle is one opening found in this
         // building's own photograph; drawing a grid rebuilt from bay and storey
         // *counts* would be inventing geometry the detector never saw.

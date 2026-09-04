@@ -18,7 +18,7 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
-import { GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { MassingRecord, PanoramaView } from '../../src/canalRecall/facade/sources.ts';
 
@@ -91,7 +91,7 @@ for (const f of chosen) {
   }, {
     start: { x: f.wall[0], y: f.wall[1] }, end: { x: f.wall[2], y: f.wall[3] },
     baseZ: mass.groundLevel! - 1, topZ: mass.groundLevel! - 1 + TILE_H_M,
-  }, { pixelsPerMetre: PPM });
+  }, { pixelsPerMetre: PPM, yaw: AMSTERDAM_YAW_CONVENTION });
   tiles.push({ pandId: f.pandId, widthPx: rect.width, data: rect.data, widthM: f.wallWidthM, year: years.get(f.pandId) ?? null });
 }
 

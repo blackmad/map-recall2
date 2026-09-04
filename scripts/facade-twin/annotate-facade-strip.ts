@@ -20,7 +20,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { rectifyFacade, type CameraPose, type EquirectangularImage, type YawConvention } from '../../src/canalRecall/facade/rectify.ts';
-import { GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { skyline, skylineSteps } from '../../src/canalRecall/facade/skyline.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
@@ -126,7 +126,7 @@ const rect = rectifyFacade(image, cameraPose, {
   start: { x: centre.x - ux * (SPAN_M / 2), y: centre.y - uy * (SPAN_M / 2) },
   end: { x: centre.x + ux * (SPAN_M / 2), y: centre.y + uy * (SPAN_M / 2) },
   baseZ: ground + 4, topZ: ridge + 7,
-}, { pixelsPerMetre: PX_PER_M, yaw });
+}, { pixelsPerMetre: PX_PER_M, yaw, yaw: AMSTERDAM_YAW_CONVENTION });
 
 // Draw the register's boundaries over the photograph.
 const paint = (x: number, colour: [number, number, number], width: number) => {

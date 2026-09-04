@@ -16,3 +16,7 @@ public/data/extracts/*/staging/
 firebase-debug.log
 dist-canalrecall/
 .firebase/
+.venv-vision/
+public/canal-drive/_yaw/
+public/canal-drive/_yaw.html
+public/canal-drive/_contact.html

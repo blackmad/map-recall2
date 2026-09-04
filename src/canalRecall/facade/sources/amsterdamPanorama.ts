@@ -31,6 +31,23 @@ const PAGE_SIZE = 500;
  * here so a camera height can be compared with a 3DBAG ground level, and it is
  * checked against measured ground levels rather than trusted.
  */
+/**
+ * Where Gemeente Amsterdam puts the heading direction in an equirectangular
+ * frame: at the **left edge**, so azimuth 0 maps to u = 0.
+ *
+ * Established by rendering the same wall from the same panorama under both
+ * conventions for six buildings and looking at the results. Under the other
+ * convention they are a bridge parapet, a street receding to a vanishing point
+ * and a blank sky; under this one they are canal houses. Pinned by
+ * `check-facade-yaw.ts`.
+ *
+ * It lives here rather than in the rectifier because it is a fact about this
+ * publisher, not about rectification, and the previous arrangement — a default
+ * in the rectifier that five scripts inherited without stating — is what let a
+ * 180° error reach every measurement in the pilot.
+ */
+export const AMSTERDAM_YAW_CONVENTION = 'edge' as const;
+
 export const GEOID_SEPARATION_M = 43.5;
 
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));

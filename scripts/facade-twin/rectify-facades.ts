@@ -17,7 +17,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { rectifyFacade, type CameraPose, type EquirectangularImage, type YawConvention } from '../../src/canalRecall/facade/rectify.ts';
-import { GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView } from '../../src/canalRecall/facade/sources.ts';
 
@@ -176,7 +176,7 @@ async function rectify(buildingId: string, label: string, yaw: YawConvention, su
     end: { x: wall.end.x + ex, y: wall.end.y + ey },
     baseZ: ground - 1.5,          // include the stoep and any souterrain light well
     topZ: ridge + 1.5,            // and headroom above the ridge for the gable top
-  }, { pixelsPerMetre: 70, yaw });
+  }, { pixelsPerMetre: 70, yaw, yaw: AMSTERDAM_YAW_CONVENTION });
 
   const encoded = jpeg.encode({ width: result.width, height: result.height, data: Buffer.from(result.data) }, 88);
   await mkdir(OUT, { recursive: true });
