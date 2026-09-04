@@ -6,6 +6,22 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Every roof in the city stops z-fighting its own lid
+
+Roofs across the streamed LoD1 city shimmered light/mauve at driving distance
+even though the basemap copy was hidden and compositions were deduped. A live
+probe explained it: `osm-colored-building-roofs` had **no filter** and was
+drawing a `#B09999` fallback lid on 2,284 of 2,633 visible buildings, 0.15 m
+above their own wall tops. The cap layer's `flatRoofFilter()` and the
+signature-model suppression were each written with a bare `setFilter`, and
+the suppression pass — which runs on every extract load, usually with nothing
+to hide — ran last and replaced the roof filter with `null`. Both layers now
+go through `coloredBuildingLayerFilter(base, hideOsmIds)` in
+`buildingStyle.ts`, so the cap filter survives every refresh; the same view
+now draws 7 lids, all with a real `roofColour`. The suppression clause also
+matches `id` as well as `osmId`, because streamed tiles carry OSM-owned
+features under `id`. `check-canal-buildings.ts` pins the composition.
+
 ## Driving HUD: navy plates, one plaque, arrow inside the destination
 
 The enamel pass put cobalt cards over a basemap that is mostly water, which

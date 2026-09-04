@@ -151,9 +151,7 @@ class VectorBasemap {
     const WALL_TOP = helpers && helpers.wallTopHeightExpression
       ? helpers.wallTopHeightExpression()
       : ['coalesce', ['get', 'height'], 5];
-    const flatRoofFilter = helpers && helpers.flatRoofFilter
-      ? helpers.flatRoofFilter()
-      : ['has', 'roofColour'];
+    const flatRoofFilter = this._coloredBuildingBaseFilter('osm-colored-building-roofs');
     this.map.addLayer({
       id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
@@ -407,14 +405,26 @@ class VectorBasemap {
     return centres;
   }
 
+  // The cap layer's own filter (flat roofs with a distinct colour) must survive
+  // every refresh: setting the signature suppression on its own replaced it
+  // with `null`, capped every building in the city, and the lid z-fought the
+  // roof under it. Both layers therefore always go through one composer.
+  _coloredBuildingBaseFilter(id) {
+    if (id !== 'osm-colored-building-roofs') return null;
+    const helpers = window.CanalRecallBuildings;
+    return helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'];
+  }
+
   _refreshColoredBuildingFilter() {
     if (!this.map) return;
     const hide = this._signatureSuppressOsmIds();
-    const filter = hide.length
-      ? ['!', ['in', ['get', 'osmId'], ['literal', hide]]]
-      : null;
+    const helpers = window.CanalRecallBuildings;
     for (const id of ['osm-colored-buildings', 'osm-colored-building-roofs']) {
       if (!this.map.getLayer(id)) continue;
+      const base = this._coloredBuildingBaseFilter(id);
+      const filter = helpers && helpers.coloredBuildingLayerFilter
+        ? helpers.coloredBuildingLayerFilter(base, hide)
+        : base;
       try { this.map.setFilter(id, filter); } catch (error) {
         console.warn(`Could not filter ${id} under signature models.`, error);
       }
@@ -518,10 +528,7 @@ class VectorBasemap {
     ]);
     this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-height', height);
     this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', ['coalesce', ['get', 'minHeight'], 0]);
-    this.map.setFilter(
-      'osm-colored-building-roofs',
-      helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'],
-    );
+    this._refreshColoredBuildingFilter();
     this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-color', [
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['to-color', ['get', 'roofColour'], '#B09999']
     ]);
