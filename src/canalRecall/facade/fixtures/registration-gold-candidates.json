@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "selectionStatus": "candidate-set-for-two-pass-review",
+  "candidates": [
+    { "pandId": "0363100012164989", "label": "Herengracht 270", "rationale": "Pinned 180-degree registration regression.", "intendedCoverage": ["known-regression", "canal-bank", "winter-panorama"] },
+    { "pandId": "0363100012169587", "label": "Prinsengracht 263", "rationale": "Anne Frank Huis; required named fixture.", "intendedCoverage": ["named-landmark", "canal-bank", "partial-occlusion-review"] },
+    { "pandId": "0363100012177213", "label": "Keizersgracht 123", "rationale": "Huis met de Hoofden; required named fixture.", "intendedCoverage": ["named-landmark", "canal-bank"] },
+    { "pandId": "0363100012176355", "label": "Herengracht 172", "rationale": "Huis Bartolotti; required named fixture.", "intendedCoverage": ["named-landmark", "wide-or-double-house-review"] },
+    { "pandId": "0363100012168556", "label": "Keizersgracht 324", "rationale": "Felix Meritis; required named fixture.", "intendedCoverage": ["named-landmark", "wide-or-double-house-review"] },
+    { "pandId": "0363100012176537", "label": "Herengracht 386", "rationale": "Het Grachtenhuis; contrasting Herengracht block.", "intendedCoverage": ["canal-bank", "multi-address-review"] },
+    { "pandId": "0363100012169510", "label": "Herengracht 366", "rationale": "Cromhouthuizen; contrasting heritage frontage.", "intendedCoverage": ["named-landmark", "multi-address-review"] },
+    { "pandId": "0363100012174221", "label": "Prinsengracht 279", "rationale": "East bank near Westerkerk.", "intendedCoverage": ["east-bank", "cardinal-balance"] },
+    { "pandId": "0363100012173861", "label": "Prinsengracht 300", "rationale": "Opposite Prinsengracht bank.", "intendedCoverage": ["west-bank", "cardinal-balance"] },
+    { "pandId": "0363100012167968", "label": "Singel 140", "rationale": "Singel west-bank contrast.", "intendedCoverage": ["west-bank", "cardinal-balance"] },
+    { "pandId": "0363100012165085", "label": "Singel 411", "rationale": "Far-bank boundary regression.", "intendedCoverage": ["east-bank", "far-bank-boundary"] },
+    { "pandId": "0363100012571509", "label": "Brouwersgracht 100", "rationale": "Northern canal-edge fixture.", "intendedCoverage": ["north-bank", "cardinal-balance"] },
+    { "pandId": "0363100012172285", "label": "Leidsegracht 20", "rationale": "Southern survey-edge fixture.", "intendedCoverage": ["south-edge", "cardinal-balance"] },
+    { "pandId": "0363100012174613", "label": "Berenstraat 10", "rationale": "Negen Straatjes non-canal frontage.", "intendedCoverage": ["street-front", "corner-building-review"] },
+    { "pandId": "0363100012173636", "label": "Egelantiersgracht 12", "rationale": "First Jordaan row and side-canal contrast.", "intendedCoverage": ["side-canal", "irregular-footprint-review"] },
+    { "pandId": "0363100012174030", "label": "Bloemstraat 12", "rationale": "First Jordaan row non-canal contrast.", "intendedCoverage": ["street-front", "irregular-footprint-review"] }
+  ]
+}
