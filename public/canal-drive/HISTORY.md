@@ -6,6 +6,98 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Amsterdam façade twin: four bugs that only a screenshot could find
+
+Everything in this entry was found by looking at the render. None of it was
+found by reading JSON, and some of it had survived weeks of reading JSON. The
+lesson is cheap to state and was expensive to learn: a geometry pipeline needs
+a picture in the loop, and the picture needs to be looked at by someone willing
+to say "those bricks are the wrong size."
+
+**The bricks were the size of doors, and the tile size was not the cause.**
+Wall textures were packed into a single atlas so the whole boundary stayed one
+draw call. That is a reasonable instinct and it was the bug. An atlas forces
+every UV into a cell, so world-space UVs have to be wrapped by hand — the code
+did `fract(east)` and mapped the result into the cell. But a wall quad has only
+*two* vertices along its length, and between them the rasteriser interpolates
+linearly. `fract` evaluated at each end does not repeat a tile fifteen times
+across a 15 m wall; it stretches one tile across the whole thing, and where the
+two fractions happen to descend it runs the tile backwards. Wrapping is the
+GPU's job, it is free, and it only works on an *unwrapped* UV — which is exactly
+what an atlas cannot have.
+
+The fix is a mesh per material with `RepeatWrapping` and UVs in real metres.
+Seven draw calls for the canal ring, against one, is not a cost worth a bug.
+Worth remembering as a general shape: a performance optimisation that forces a
+correctness workaround is usually cheaper to delete than to fix.
+
+The tile itself also changed, from 1 m at 96 px to 0.63 m at 128 px. The module
+has to be a whole number of bricks or the bond breaks at the seam, and three
+stretchers is the smallest that still carries enough wall to read as wall. That
+is 45 px per brick rather than 20, which is where a bond starts looking like
+brick instead of concrete masonry.
+
+**Every roof was a pyramid, and the gable generator had never been called.**
+The roof was drawn by tapering the footprint ring toward its own centroid. That
+is a marquee. It is also the wrong *kind* of construction: a canal-house roof is
+a property of the plot, not of the ring — one ridge running front to back, two
+planes falling to the party walls, and the front wall carried up into a shaped
+gable that screens the roof from the street. That silhouette is the building
+type. Getting it wrong meant 3,025 buildings that could have been anywhere.
+
+The embarrassing part: `gableProfile()` had drawn seven gable types since the
+generator landed, with a comment explaining why each is a separate function
+rather than one parameterised curve, and it had never once been called by
+anything that draws. The vocabulary was built and then not used. Worth checking
+for elsewhere.
+
+Wiring it up forced the honesty question the brief exists to answer. The ridge
+*height* is measured — laser altimetry, for nearly every building here — so
+drawing a pitched roof is reporting a measurement. Which shaped gable screens
+that roof is measured nowhere, and is stated in prose by the register for 695
+of the 3,025. So the rule splits: state it where stated, assume it from the
+construction year where not, and give a building whose front nobody has
+photographed a `punt` — a plain triangle, the least any pitched roof can end in.
+The geometry carries `part: 'gable' | 'trim'` so a renderer can drop the drawn
+vocabulary entirely, and evidence mode colours it as generated rather than
+letting it pass for massing.
+
+The check that came out of this is the useful artefact: no gable may stand above
+the measured ridge (the drawing conforms to the measurement, never the reverse),
+a shaped gable reaches it exactly, and `lijst` deliberately falls short — it is a
+parapet cornice with the roof visible behind it, and forcing it to the ridge
+would turn every 19th-century frontage into a spout gable.
+
+**Windows were stickers.** They were flat quads set 5 cm proud of the wall. The
+reasoning in the comment was that at the distance a rider reads this from, a
+plane and a real reveal are indistinguishable — and that is wrong in a way a
+screenshot settles instantly. The one cue that says "hole" is the shadow down
+the side of the reveal. Without it, a dark rectangle reads as something stuck
+on the front. Glass now sits 140 mm back with joinery, a reveal and a sill, and
+white frames against a dark wall turn out to be most of what makes a canal
+elevation legible at a distance.
+
+**The scene was dark because of the light meant to fix it.** There was an
+`AmbientLight` at 1.5. An ambient that strong is not lighting: it adds the same
+value to every surface regardless of which way it faces, so it was washing the
+measured colours toward white *and* flattening every normal at once — reveal,
+cornice and roof pitch all coming out the same value as the wall. It raised the
+floor so far that the sun had nothing left to lift the lit faces above. A
+hemisphere, a south-west sun and a cool fill replace it, and the same geometry
+is now legible.
+
+**And one measurement bug the render pointed at sideways.** A screenshot showed
+a window hanging off the bottom of a wall. The sill histogram explained it:
+1,020 of 10,335 openings sit at exactly −0.40 m. A spike that sharp is never a
+measurement. `measure-facades.ts` built its rectified strip from `ground - 0.4`,
+and 40 cm does not clear a souterrain — the bottom edge of the image cut
+straight through every basement window and front door, and the detector clamped
+them to the edge it could see. The same cut explains why doors are essentially
+undetected: 1,213 of 1,340 measured façades have no door-shaped opening at all,
+because the door reaches the ground and the ground was off-frame. The strip now
+starts 1.8 m down. Everything measured before that change has a broken ground
+floor and has to be re-run.
+
 ## Amsterdam façade twin: a grammar, and the discipline of testing it
 
 The detector was producing numbers that were individually defensible and

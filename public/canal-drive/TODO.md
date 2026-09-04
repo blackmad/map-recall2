@@ -386,6 +386,70 @@ second city, RECON-4 is done, observation coverage is measured (139,937 panorama
 poses; **88.6% of buildings have a frontal view**), and façades rectify and
 measure end to end from Amsterdam's CC BY panoramas.
 
+### Where the twin stands today
+
+Numbers are from the current staged extract; re-derive them rather than trusting
+this paragraph if it is more than a few commits old.
+
+| | |
+|---|---|
+| Buildings in the boundary | 3,025 |
+| Massing (footprint, ground, eaves, ridge, roof form) | 3,025 — 138 at a fallback height |
+| Front observed and measured | **1,340 (44.3%)** |
+| No façade at all — drawn as bare massing | **1,685 (55.7%)** |
+| Ceiling, from camera poses alone | 88.6% |
+| Measured openings | 10,335 |
+| Gable type stated by the register | 695 panden (23%) |
+| Wall materials with an extracted texture | 6 of 12 |
+
+**The gap between 44.3% and 88.6% is the single most visible defect in the
+render, and it is not a bug.** A building whose front has never been photographed
+gets no façade, by the rule the project turns on. It is bare grey massing with no
+windows. Closing it is a measurement run, not a code change: `measure-facades.ts`
+over the remaining ids. Everything else on this list is smaller than that.
+
+### What the renderer draws, and how much of it is measured
+
+Commit `416ffeb` moved the layer from "extruded footprints" to something that
+reads as a canal house. The honesty boundary moved with it and is worth stating
+plainly, because the layer now draws things nobody observed:
+
+- **Measured, and reported as such:** footprint, ground level, eaves, ridge,
+  roof form, opening positions and sizes, wall material and its colour.
+- **Stated in prose by the register:** gable type, for 695 panden. Weaker than a
+  measurement; coloured separately in evidence mode.
+- **Drawn from the vocabulary, observed nowhere:** the gable *shape* on everything
+  the register does not name, the cornice, the window joinery and sills. These
+  carry `part: 'gable' | 'trim'` through the geometry so a renderer can drop them,
+  and evidence mode paints them as generated rather than laundering them into
+  the massing.
+- **Deliberately withheld:** a building with no observed front gets `punt`, a
+  plain triangle — the least any pitched roof can end in.
+
+### Open defects found by looking at the render
+
+Four screenshots found four bugs that months of reading JSON did not. Keep
+looking at it.
+
+- **`ground - 0.4` was not enough strip.** *(Fixed in `416ffeb`, not yet
+  re-measured.)* The rectified strip started 40 cm below ground, which does not
+  clear a souterrain. Its bottom edge cut through every basement window and front
+  door and the detector clamped them to it: **1,020 of 10,335 openings sit at a
+  sill of exactly −0.40 m**, which is the picture running out, not a measurement.
+  The strip now starts 1.8 m down. **Everything measured before that change has
+  a broken ground floor and needs re-running.**
+- **Doors are essentially undetected.** 1,213 of 1,340 measured façades have no
+  door-shaped opening at all; only 66 have exactly one. `measureFacade` already
+  computes `groundOpenings` and the extract throws it away — openings reach the
+  renderer as bare `[along, up, w, h]` with no kind, so every door draws as
+  glass. Needs: carry the kind through, and re-measure on the deeper strip
+  before judging whether the detector or the strip was at fault.
+- **Textures exist for 6 of 12 wall materials.** `sandstone` (2 buildings) and
+  `brick-purple-brown` (1) were skipped for want of samples. Both fall back to
+  measured flat colour, which is correct but flat.
+- **Only the front wall gets openings.** Fine in a terrace, wrong on a corner
+  building, where the flank is a blank wall of brick.
+
 **What actually blocks progress now, in order.**
 
 1. **The overlay gate.** The massing draws — 3,025 buildings, 434k vertices, in
@@ -418,6 +482,16 @@ measure end to end from Amsterdam's CC BY panoramas.
    3,025 records at LoD2.2 keyed by `pand_id`, `resolveFidelityTier` suppressing
    `detailed-buildings` inside the boundary so one representation owns each
    building, and the photo/render opacity overlay at two reference viewpoints.
+1e. **There is no way to see a building's evidence from the render.** The
+   fastest calibration loop available is: click a building, see the panorama it
+   was measured from, the rectified strip, and the detected openings drawn on
+   that strip, side by side with the model. Every artefact this needs already
+   exists on disk — `.cache/facade-twin/measured/<pandId>.jpg` is the annotated
+   strip, `measured-facades.json` holds the panorama id and capture date — and
+   nothing surfaces them. Building this before the blind review is probably
+   worth more than the blind review, because it makes every future defect
+   visible in a click instead of a paragraph of JSON.
+
 2. **No detector output has been validated.** *(Everything below still holds;
    coverage is now 1,598 buildings measured, 1,340 with openings, 44.3% of the
    boundary — which raises the stakes rather than lowering them.)* `check-facade-registration.ts` is
