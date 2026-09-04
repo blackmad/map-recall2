@@ -315,8 +315,10 @@ export function OverlayApp({
               </button>
             </details>
             </div>
-            <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">Start route</button>
-            <div id="route-error" aria-live="polite">{state.routeError}</div>
+            <div className="enamel-setup-footer">
+              <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">Start route</button>
+              <div id="route-error" aria-live="polite">{state.routeError}</div>
+            </div>
           </form>
         </div>
         <div className="enamel-setup-vista" aria-hidden="true" />

@@ -6,6 +6,15 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Canal setup: phone Start clears Difficulty
+
+Sticky Start over the scroll covered Difficulty on phones (~40px of overlap).
+Start now lives in a flex footer below the scroll; phone density (shorter vista,
+caption-less tiles, tighter rows) keeps Travel → Difficulty in the first view.
+Start is night-ink on copper (~WCAG AA) instead of white-on-copper (~3.1:1), and
+secondary type floors at 12px. View’s four cameras stay; only captions hide on
+phone.
+
 ## Building tiles load the spawn neighbourhood first
 
 `planTiles` already sorted nearest-first, but the streamer started every wanted
