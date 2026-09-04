@@ -823,6 +823,7 @@ export default function App() {
         onOpenAuth={() => setIsAuthOpen(true)}
         onSignOut={() => void signOutUser()}
         roundActive={!!currentFeature && !isGameOver}
+        startOpen={!currentFeature && !isLocating && !isGameOver && !dataError}
       />
 
       {/* Main Map Viewport & Overlays */}
@@ -857,10 +858,11 @@ export default function App() {
           fetchingBoundary={fetchingBoundary}
           searchBoundary={searchBoundary}
           showSearchBoundary={showSearchBoundary}
+          showLocate={!(!currentFeature && !isLocating && !isGameOver && !dataError)}
         />
 
         {/* Location Detection Toast Notification */}
-        {locationToast && (
+        {locationToast && !(!currentFeature && !isLocating && !isGameOver && !dataError) && (
           <div
             id="location-toast-badge"
             className="enamel-float absolute top-3 left-1/2 -translate-x-1/2 z-30 px-4 py-2 text-xs sm:text-sm font-medium flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300 pointer-events-none"
@@ -903,38 +905,24 @@ export default function App() {
             }}
           >
             <div
-              className="pointer-events-auto relative flex w-full max-w-md flex-col gap-4 overflow-y-auto border-r border-white/15 px-4 py-5 sm:px-5 sm:py-6 lg:max-w-sm lg:bg-transparent"
+              className="pointer-events-auto relative flex w-full max-w-md flex-col gap-5 overflow-y-auto border-r border-white/15 px-4 py-5 sm:px-5 sm:py-6 lg:max-w-sm lg:bg-transparent"
               style={{
                 background:
                   'linear-gradient(165deg, rgba(20,80,184,0.94) 0%, rgba(11,58,140,0.96) 42%, rgba(7,20,48,0.98) 100%)',
               }}
             >
-              <h1 className="enamel-plaque enamel-framed enamel-brand px-4 py-3 text-center text-xl sm:text-2xl text-white">
-                Map Recall
-              </h1>
-
-              <div>
-                <p className="text-sm text-white/80 leading-relaxed">
-                  Learn {currentCity.name} by placing and naming real streets, canals, and landmarks.
+              <div className="space-y-2">
+                <h1 className="enamel-plaque enamel-framed enamel-brand px-4 py-3 text-center text-xl sm:text-2xl text-white">
+                  Map Recall
+                </h1>
+                <p className="text-xs text-white/65 text-center leading-relaxed">
+                  Learn {currentCity.name} · {(searchRadiusMeters / 1000).toFixed(1)} km
                 </p>
-                <p className="mt-2 text-xs text-white/70">
-                  {(searchRadiusMeters / 1000).toFixed(1)} km search · progress stays on this device
-                </p>
-              </div>
-
-              <div className="space-y-1.5">
-                <p className="text-xs font-bold uppercase tracking-wider text-white/70">Mode</p>
-                <p className="text-xs text-white/75 leading-relaxed">
-                  {gameMode === 'pinpoint' && 'Pinpoint — we name a place; you find it on the map.'}
-                  {gameMode === 'guess_name' && 'Guess Name — the map highlights a place; you name it.'}
-                  {gameMode === 'guess_neighborhood' && 'Neighborhood — place the area boundary on the map.'}
-                </p>
-                <p className="text-xs text-white/60">Change mode in the header anytime.</p>
               </div>
 
               <div className="space-y-2">
-                <p className="text-xs font-bold uppercase tracking-wider text-white/70">Start with</p>
-                <div className="grid grid-cols-1 gap-2">
+                <p className="enamel-brand text-sm text-white tracking-wide">Start with</p>
+                <div className="grid grid-cols-1 gap-2.5">
                   {FEATURE_CATEGORIES.filter((c) => c.id === 'water' || c.id === 'streets').map((category) => (
                     <button
                       key={category.id}
@@ -942,21 +930,21 @@ export default function App() {
                         if (category.id === selectedCategory) handleRefetchCategory(category.id, false);
                         else handleSelectCategory(category.id);
                       }}
-                      className="enamel-tile flex items-center gap-3 px-3 py-3.5 text-left cursor-pointer"
+                      className="enamel-tile flex items-center gap-3 px-3.5 py-4 text-left cursor-pointer"
                     >
-                      <span className="text-lg text-[#c4a35a]">{category.icon}</span>
+                      <span className="text-xl text-[#c4a35a]">{category.icon}</span>
                       <span className="min-w-0">
-                        <span className="enamel-brand block text-base text-white">{category.shortLabel}</span>
-                        <span className="block text-xs text-white/70 font-normal">{category.description}</span>
+                        <span className="enamel-brand block text-lg text-white">{category.shortLabel}</span>
+                        <span className="block text-xs text-white/65 font-normal mt-0.5">{category.description}</span>
                       </span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <p className="text-xs font-bold uppercase tracking-wider text-white/70">Also</p>
-                <div className="grid grid-cols-2 gap-2">
+              <div className="space-y-2 pt-1">
+                <p className="text-xs font-bold uppercase tracking-wider text-white/45">Also</p>
+                <div className="grid grid-cols-2 gap-1.5">
                   {FEATURE_CATEGORIES.filter((c) => !['all', 'water', 'streets'].includes(c.id)).map((category) => (
                     <button
                       key={category.id}
@@ -964,21 +952,43 @@ export default function App() {
                         if (category.id === selectedCategory) handleRefetchCategory(category.id, false);
                         else handleSelectCategory(category.id);
                       }}
-                      className="enamel-tile flex items-center gap-2 px-2.5 py-2.5 text-left text-xs font-semibold cursor-pointer"
+                      className="enamel-chip flex items-center gap-2 px-2.5 py-2 text-left text-xs font-semibold cursor-pointer text-white/80"
                     >
-                      <span className="text-white/80">{category.icon}</span>
+                      <span className="text-white/55">{category.icon}</span>
                       <span>{category.shortLabel}</span>
                     </button>
                   ))}
                 </div>
+                <button
+                  onClick={() => selectedCategory === 'all' ? handleRefetchCategory('all', false) : handleSelectCategory('all')}
+                  className="w-full py-2 text-xs font-semibold text-white/55 hover:text-white cursor-pointer"
+                >
+                  Or a mixed quiz
+                </button>
               </div>
 
-              <button
-                onClick={() => selectedCategory === 'all' ? handleRefetchCategory('all', false) : handleSelectCategory('all')}
-                className="button-secondary w-full py-2.5 text-xs font-semibold cursor-pointer"
-              >
-                Or make me a mixed quiz
-              </button>
+              <div className="mt-auto pt-2 space-y-1.5 border-t border-white/10">
+                <p className="text-xs text-white/45">Mode</p>
+                <div className="enamel-segment flex w-full">
+                  {(
+                    [
+                      { id: 'pinpoint' as const, label: 'Pinpoint' },
+                      { id: 'guess_name' as const, label: 'Guess Name' },
+                      { id: 'guess_neighborhood' as const, label: 'Area' },
+                    ]
+                  ).map((mode) => (
+                    <button
+                      key={mode.id}
+                      type="button"
+                      onClick={() => setGameMode(mode.id)}
+                      aria-pressed={gameMode === mode.id}
+                      className="flex-1 px-2 py-2 text-xs font-semibold cursor-pointer"
+                    >
+                      {mode.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div

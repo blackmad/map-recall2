@@ -162,35 +162,23 @@ export function OverlayApp({
           <form id="route-card" className="enamel-setup-form" onSubmit={start}>
             <h1 className="enamel-plaque enamel-framed enamel-title">Amsterdam Canal Recall</h1>
 
-            {state.account.visible ? (
-              <div className="setup-account" id="account-row">
-                <div className="setup-account-copy">
-                  <strong id="account-label">{state.account.label}</strong>
-                  <small id="account-note">{state.account.note}</small>
-                </div>
-                <div className="setup-account-actions">
-                  <button
-                    id="account-button"
-                    type="button"
-                    className="account-button enamel-quiet"
-                    disabled={state.account.busy}
-                    onClick={() => callbacks.onAccountClick()}
-                  >
-                    {state.account.buttonLabel}
-                  </button>
-                  <button
-                    id="clear-knowledge-button"
-                    type="button"
-                    className="account-button quiet enamel-quiet"
-                    disabled={state.account.busy}
-                    onClick={() => callbacks.onClearKnowledge()}
-                  >
-                    Reset knowledge…
-                  </button>
-                </div>
+            <div className="setup-account" id="account-row">
+              <div className="setup-account-copy">
+                <strong id="account-label">{state.account.label}</strong>
+                <small id="account-note">{state.account.note}</small>
               </div>
-            ) : null}
+              <button
+                id="account-button"
+                type="button"
+                className="account-button enamel-quiet"
+                disabled={state.account.busy}
+                onClick={() => callbacks.onAccountClick()}
+              >
+                {state.account.buttonLabel}
+              </button>
+            </div>
 
+            <div className="enamel-setup-scroll">
             {/* Hidden selects keep Playwright and any legacy getElementById wiring working. */}
             <select id="travel-mode" hidden value={prefs.travelMode} onChange={event => patch({ travelMode: event.target.value as CanalPreferences['travelMode'] })}>
               <option value="boat">Boat</option>
@@ -315,7 +303,18 @@ export function OverlayApp({
                 <Check id="google-tiles" checked={prefs.googleTiles} onChange={googleTiles => patch({ googleTiles })}> Google photoreal (overview)</Check>
                 <Check id="sound-enabled" checked={prefs.sound} onChange={sound => patch({ sound })}> Sound</Check>
               </div>
+              <button
+                id="clear-knowledge-button"
+                type="button"
+                className="account-button quiet enamel-quiet"
+                disabled={state.account.busy}
+                onClick={() => callbacks.onClearKnowledge()}
+                style={{ marginTop: 10, width: '100%' }}
+              >
+                Reset knowledge…
+              </button>
             </details>
+            </div>
             <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">Start route</button>
             <div id="route-error" aria-live="polite">{state.routeError}</div>
           </form>
