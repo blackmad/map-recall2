@@ -22,6 +22,13 @@ now draws 7 lids, all with a real `roofColour`. The suppression clause also
 matches `id` as well as `osmId`, because streamed tiles carry OSM-owned
 features under `id`. `check-canal-buildings.ts` pins the composition.
 
+## Storybook: fallback postcard, stacked notices, bike finish
+
+Item 14 gap fill: `neighborhood-fallback` (typography-only postcard),
+`stacked-notices` (+ phone), `landmark-card-bare`, and `finish-bike` so the
+workbench can review the states that used to need a lucky drive. Screenshot
+regressions for them are still open on the TODO.
+
 ## Map Quest: enamel the remaining quiz chrome
 
 Game over, loading, auth, settings, and the locate FAB leave the pre-enamel
