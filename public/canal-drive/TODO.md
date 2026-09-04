@@ -386,6 +386,10 @@ second city, RECON-4 is done, observation coverage is measured (139,937 panorama
 poses; **88.6% of buildings have a frontal view**), and façades rectify and
 measure end to end from Amsterdam's CC BY panoramas.
 
+**Read [`FACADE_STATE.md`](FACADE_STATE.md) first.** It is the measured state of
+the extraction — what is trustworthy, what is not, and the failure counts — and
+it is kept current with the numbers rather than with adjectives.
+
 ### Where the twin stands today
 
 Numbers are from the current staged extract; re-derive them rather than trusting

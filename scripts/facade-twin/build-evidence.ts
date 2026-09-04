@@ -199,6 +199,15 @@ const index = records.map(record => {
     plausibility: record.plausibility, plausibilityFailures: record.plausibilityFailures,
     obstructionColumns: record.obstructionColumns,
     massingStoreys: massing.get(record.pandId)?.storeys ?? null,
+    // Needed to line the overlay up with the strip: the strip runs from
+    // STRIP_BASE_BELOW_GROUND_M under this building's ground to a little above
+    // its eaves, and the eaves height is per building.
+    groundLevelM: massing.get(record.pandId)?.groundLevel ?? null,
+    eavesAboveGroundM: (() => {
+      const m = massing.get(record.pandId);
+      return m?.eavesHeight != null && m?.groundLevel != null
+        ? Number((m.eavesHeight - m.groundLevel).toFixed(2)) : null;
+    })(),
     register: heritage.get(record.pandId) ?? null,
     lngLat: spot.at.map(v => Number(v.toFixed(6))) as LngLat,
     viewFrom: spot.eye.map(v => Number(v.toFixed(6))) as LngLat,
@@ -214,6 +223,11 @@ await writeFile(path.join(STAGING, 'facade-evidence.json'), JSON.stringify({
     note: 'Rectified strips are derived from third-party imagery. They live in a gitignored directory, '
       + 'are reference for review only, and must never be committed or shipped as assets.',
     stripDirectory: 'public/canal-drive/facade-evidence',
+    // The strip's own extent, so a viewer can lay vector geometry over the
+    // photograph without hard-coding the datum in two places — which is the
+    // mistake that put five copies of 0.4 in this pipeline.
+    stripBaseBelowGroundM: STRIP_BASE_BELOW_GROUND_M,
+    stripTopAboveEavesM: 0.3,
     stripsDrawn: drawn,
     strippedBy: wanted.length ? 'explicit ids' : 'lowest plausibility first',
   },
