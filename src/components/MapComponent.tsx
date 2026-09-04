@@ -409,8 +409,8 @@ export const MapComponent: React.FC<MapComponentProps> = ({
         const revealIcon = L.divIcon({
           className: 'custom-map-icon',
           html: `
-            <div class="inline-flex px-3 py-1.5 rounded-lg bg-[#fffdf8] text-[#24322b] font-bold text-xs shadow-lg border border-[#978f81] items-center gap-1.5 whitespace-nowrap">
-              <span class="w-2 h-2 rounded-full bg-[#c75f43]"></span>
+            <div class="inline-flex px-3 py-1.5 rounded-lg bg-[#0b3a8c] text-white font-bold text-xs shadow-lg border border-white/35 items-center gap-1.5 whitespace-nowrap" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:.04em;text-transform:uppercase">
+              <span class="w-2 h-2 rounded-full bg-[#c4a35a]"></span>
               <span>${currentFeature.name}</span>
             </div>
           `,
@@ -469,8 +469,8 @@ export const MapComponent: React.FC<MapComponentProps> = ({
           className: 'custom-true-target-icon',
           html: `
             <div style="display:flex;align-items:center;gap:7px;transform:translate(8px,-46px);white-space:nowrap;filter:drop-shadow(0 4px 8px rgb(0 0 0 / .65));">
-              ${polylinesToRender ? '' : '<span style="display:block;width:18px;height:18px;flex:none;border-radius:999px;background:#fffdf8;border:4px solid #356653;box-shadow:0 1px 4px rgb(0 0 0 / .25);"></span>'}
-              <span style="display:block;border:1px solid #978f81;border-radius:8px;background:#fffdf8;padding:6px 10px;color:#24322b;font:800 13px/1.1 'Plus Jakarta Sans',sans-serif;letter-spacing:.01em;box-shadow:0 4px 12px rgb(58 50 36 / .2);">${currentFeature.name}</span>
+              ${polylinesToRender ? '' : '<span style="display:block;width:18px;height:18px;flex:none;border-radius:999px;background:#0b3a8c;border:4px solid #c4a35a;box-shadow:0 1px 4px rgb(0 0 0 / .35);"></span>'}
+              <span style="display:block;border:1px solid rgba(255,255,255,.35);border-radius:8px;background:#0b3a8c;padding:6px 10px;color:#fff;font:800 14px/1.1 'Barlow Condensed',sans-serif;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 4px 12px rgb(0 0 0 / .35);">${currentFeature.name}</span>
             </div>
           `,
           iconSize: [240, 40],
@@ -508,7 +508,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
             currentFeature.paths
           );
           const connectingLine = L.polyline([userPinnedLocation, nearestTargetPoint], {
-            color: '#c75f43',
+            color: '#c4a35a',
             weight: 3,
             dashArray: '6, 8',
             opacity: 0.85,

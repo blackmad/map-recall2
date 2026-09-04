@@ -138,17 +138,17 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       {/* STRICT SINGLE-LINE HEADER */}
       <header
         id="app-game-header"
-        className="w-full h-12 sm:h-14 backdrop-blur-md border-b z-30 flex items-center px-3 sm:px-4"
+        className="w-full h-12 sm:h-14 border-b z-30 flex items-center px-3 sm:px-4"
       >
         <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-2">
           {/* Left: Compact Logo, City Selector, Scope Toggle & Feature Type Pill */}
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
             <div className="flex items-center gap-1.5 flex-shrink-0">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-900 flex items-center justify-center">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md border border-white/40 bg-white/10 flex items-center justify-center">
                 <Compass className="w-4 h-4 text-white" />
               </div>
-              <span className="font-extrabold tracking-tight text-sm sm:text-base text-slate-100 hidden md:inline">
-                Map Quest
+              <span className="enamel-brand text-base sm:text-lg text-white hidden md:inline">
+                Map Recall
               </span>
             </div>
 
@@ -158,26 +158,22 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 id="city-select-dropdown"
                 value={currentCity.id}
                 onChange={(e) => onSelectCity(e.target.value)}
-                className="w-full pl-2 pr-5 py-1 text-xs font-semibold bg-slate-800/90 text-slate-200 rounded-lg border border-slate-700/80 hover:border-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition cursor-pointer appearance-none truncate"
+                className="enamel-chip w-full pl-2 pr-5 py-1 text-xs font-semibold focus:outline-none cursor-pointer appearance-none truncate"
                 title={`Current Location: ${currentCity.name}`}
               >
                 {cities.map((city) => (
-                  <option key={city.id} value={city.id} className="bg-stone-50 text-stone-800">
+                  <option key={city.id} value={city.id}>
                     {city.name} {city.countryCode ? `(${city.countryCode})` : ''}
                   </option>
                 ))}
               </select>
-              <span className="absolute right-1.5 pointer-events-none text-[9px] text-slate-400">▼</span>
+              <span className="absolute right-1.5 pointer-events-none text-[9px] text-white/60">▼</span>
             </div>
 
             {searchRadiusMeters && (
               <button
                 onClick={() => setIsSearchAreaOpen((open) => !open)}
-                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-semibold border whitespace-nowrap transition cursor-pointer ${
-                  showSearchBoundary
-                    ? 'bg-cyan-950/70 text-cyan-200 border-cyan-700/60'
-                    : 'bg-slate-800/70 text-slate-400 border-slate-700/60'
-                }`}
+                className={`enamel-chip flex items-center gap-1 px-2 py-1 text-[11px] font-semibold whitespace-nowrap cursor-pointer${showSearchBoundary ? ' active' : ''}`}
                 title="Adjust search radius or administrative boundary"
               >
                 <Ruler className="w-3 h-3" />
@@ -193,7 +189,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   onChangeLocationScope(locationScope === 'neighborhood' ? 'city' : locationScope === 'city' ? 'region' : 'neighborhood');
                 }}
                 title="Cycle administrative scope"
-                className="flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold bg-blue-950/80 text-blue-300 border border-blue-500/50 hover:bg-blue-900 transition flex-shrink-0 cursor-pointer"
+                className="enamel-chip flex items-center gap-1 px-2 py-1 text-xs font-bold flex-shrink-0 cursor-pointer"
               >
                 <span>{locationScope === 'neighborhood' ? '🏘️ Hood' : locationScope === 'region' ? '🗺️ Region' : '🏙️ City'}</span>
               </button>
@@ -205,33 +201,23 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 id="feature-category-dropdown"
                 value={selectedCategory}
                 onChange={(e) => onChangeCategory(e.target.value as FeatureCategory)}
-                className={`w-full pl-2 pr-5 py-1 text-xs font-semibold rounded-lg border focus:outline-none focus:ring-1 transition cursor-pointer appearance-none truncate ${
-                  selectedCategory !== 'all'
-                    ? 'bg-blue-950/80 border-blue-500/60 text-blue-200 focus:ring-blue-400'
-                    : 'bg-slate-800/80 border-slate-700/80 text-slate-300 hover:border-slate-600 focus:ring-blue-500'
-                }`}
+                className={`enamel-chip w-full pl-2 pr-5 py-1 text-xs font-semibold focus:outline-none cursor-pointer appearance-none truncate${selectedCategory !== 'all' ? ' active' : ''}`}
                 title={`Feature Type Filter: ${activeCategoryInfo.label}`}
               >
                 {FEATURE_CATEGORIES.map((cat) => {
                   const count = categoryCounts[cat.id] || 0;
                   return (
-                    <option
-                      key={cat.id}
-                      value={cat.id}
-                      className="bg-stone-50 text-stone-800"
-                    >
+                    <option key={cat.id} value={cat.id}>
                       {cat.icon} {cat.shortLabel} {cat.id !== 'all' ? `(${count})` : ''}
                     </option>
                   );
                 })}
               </select>
-              <span className="absolute right-1.5 pointer-events-none text-[9px] text-slate-400">▼</span>
+              <span className="absolute right-1.5 pointer-events-none text-[9px] text-white/60">▼</span>
             </div>}
             {gameMode !== 'guess_neighborhood' && <button
               onClick={onToggleLinkedFeaturesOnly}
-              className={`hidden sm:block rounded-lg border px-2 py-1 text-[11px] font-bold transition cursor-pointer ${linkedFeaturesOnly
-                ? 'border-violet-400/70 bg-violet-600 text-white'
-                : 'border-slate-700/80 bg-slate-800/80 text-slate-400 hover:text-white'}`}
+              className={`enamel-chip hidden sm:block px-2 py-1 text-[11px] font-bold cursor-pointer${linkedFeaturesOnly ? ' active' : ''}`}
               title="Only quiz features linked to Wikipedia or Wikidata"
             >
               Wiki
@@ -241,7 +227,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
           {/* Center/Right: Inline Mode (Desktop only) + Score & Round + Menu Button */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
             {/* Desktop Mode Toggle Pills */}
-            <div id="game-mode-switcher" className="hidden lg:flex items-center gap-1">
+            <div id="game-mode-switcher" className="enamel-segment hidden lg:flex items-center gap-0.5">
               <button
                 onClick={() => {
                   if (gameMode !== 'pinpoint') {
@@ -249,11 +235,8 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     onChangeMode('pinpoint');
                   }
                 }}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold transition ${
-                  gameMode === 'pinpoint'
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
+                aria-pressed={gameMode === 'pinpoint'}
+                className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold cursor-pointer"
               >
                 <MapPin className="w-3 h-3" />
                 <span>Pinpoint</span>
@@ -266,18 +249,16 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     onChangeMode('guess_name');
                   }
                 }}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold transition ${
-                  gameMode === 'guess_name'
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
+                aria-pressed={gameMode === 'guess_name'}
+                className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold cursor-pointer"
               >
                 <Eye className="w-3 h-3" />
                 <span>Guess Name</span>
               </button>
               <button
                 onClick={() => gameMode !== 'guess_neighborhood' && onChangeMode('guess_neighborhood')}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold transition ${gameMode === 'guess_neighborhood' ? 'bg-violet-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'}`}
+                aria-pressed={gameMode === 'guess_neighborhood'}
+                className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold cursor-pointer"
                 title="Place neighborhood boundaries on the map"
               >
                 <Compass className="w-3 h-3" />
@@ -288,11 +269,11 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {/* Score & Round Badge */}
             <div
               id="header-score-badge"
-              className="hidden sm:flex items-center gap-1.5 bg-slate-800/90 px-2 sm:px-2.5 py-1 rounded-lg border border-slate-700/70 text-xs"
+              className="hidden sm:flex items-center gap-1.5 px-1 text-xs"
               title={`Round ${currentRound} of ${totalRounds}`}
             >
-              <span className="text-amber-400 font-black whitespace-nowrap">
-                {totalScore.toLocaleString()} <span className="text-[9px] font-normal opacity-60">pts</span>
+              <span className="text-white font-bold whitespace-nowrap font-mono">
+                {totalScore.toLocaleString()} <span className="text-[9px] font-normal text-[#c4a35a]">pts</span>
               </span>
             </div>
 
@@ -301,7 +282,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <button
                 onClick={onToggleBlindMap}
                 title="Blind Map Mode active (labels hidden). Click to toggle."
-                className="hidden sm:flex items-center gap-1 px-1.5 py-1 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-bold uppercase tracking-wider hover:bg-amber-500/30 transition cursor-pointer"
+                className="enamel-chip active hidden sm:flex items-center gap-1 px-1.5 py-1 text-[10px] font-bold uppercase tracking-wider cursor-pointer"
               >
                 <EyeOff className="w-3 h-3" />
                 <span>No Labels</span>
@@ -313,9 +294,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               id="header-sound-btn"
               onClick={onToggleMute}
               title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
-              className="hidden sm:block p-1.5 rounded-lg bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700/60 transition cursor-pointer"
+              className="enamel-chip hidden sm:block p-1.5 cursor-pointer"
             >
-              {isMuted ? <VolumeX className="w-3.5 h-3.5 text-rose-400" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
+              {isMuted ? <VolumeX className="w-3.5 h-3.5 text-white/60" /> : <Volume2 className="w-3.5 h-3.5 text-white" />}
             </button>
 
             {/* All Options Overflow Menu Button */}
@@ -323,9 +304,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               id="header-menu-btn"
               onClick={() => setIsMenuOpen(true)}
               title="Open Menu & Settings"
-              className="p-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700/80 transition flex items-center justify-center cursor-pointer"
+              className="enamel-chip p-1.5 flex items-center justify-center cursor-pointer"
             >
-              <MoreVertical className="w-4 h-4 text-blue-400" />
+              <MoreVertical className="w-4 h-4 text-white" />
             </button>
           </div>
         </div>
@@ -334,7 +315,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       {isSearchAreaOpen && searchRadiusMeters && (
         <div className="app-dialog fixed top-14 sm:top-16 left-2 sm:left-1/2 sm:-translate-x-1/2 z-50 w-[calc(100%-1rem)] sm:w-80 p-3.5 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-bold flex items-center gap-2"><Ruler className="w-4 h-4 text-cyan-400" />Search area</span>
+            <span className="text-sm font-bold flex items-center gap-2"><Ruler className="w-4 h-4 text-[#c4a35a]" />Search area</span>
             <button onClick={() => setIsSearchAreaOpen(false)} className="text-slate-400 hover:text-white cursor-pointer"><X className="w-4 h-4" /></button>
           </div>
           <form
@@ -351,12 +332,12 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               onChange={(event) => setLocationQuery(event.target.value)}
               placeholder="City, address, or postcode"
               aria-label="Search location"
-              className="min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs text-white placeholder:text-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="enamel-chip min-w-0 flex-1 px-3 py-2 text-xs text-white placeholder:text-white/50 focus:outline-none"
             />
             <button
               type="submit"
               disabled={!locationQuery.trim() || isLocating}
-              className="rounded-xl bg-cyan-600 px-3 text-white hover:bg-cyan-500 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
+              className="button-primary px-3 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
               title="Find this location using the selected radius"
             >
               <Search className="w-4 h-4" />
@@ -367,7 +348,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <button
                 key={radius}
                 onClick={() => onChangeSearchRadius?.(radius)}
-                className={`rounded-lg border py-2 text-[10px] font-semibold cursor-pointer ${!selectedAdministrativeAreaId && searchRadiusMeters === radius ? 'bg-cyan-600 border-cyan-400' : 'bg-slate-800 border-slate-700 hover:bg-slate-700'}`}
+                className={`enamel-chip py-2 text-[10px] font-semibold cursor-pointer${!selectedAdministrativeAreaId && searchRadiusMeters === radius ? ' active' : ''}`}
               >
                 {radius / 1000} km
               </button>
@@ -377,7 +358,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             <select
               value={selectedAdministrativeAreaId ?? ''}
               onChange={(event) => onSelectAdministrativeArea?.(event.target.value ? Number(event.target.value) : null)}
-              className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-xs text-slate-200 cursor-pointer"
+              className="enamel-chip w-full px-3 py-2 text-xs cursor-pointer"
             >
               <option value="">Custom radius circle</option>
               {administrativeAreas.map((area) => <option key={area.id} value={area.id}>{area.name} · {area.kind || `level ${area.adminLevel}`}</option>)}
@@ -385,9 +366,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
           )}
           <button
             onClick={onToggleSearchBoundary}
-            className="w-full flex items-center justify-between rounded-xl bg-slate-800 px-3 py-2 text-xs text-slate-300 hover:bg-slate-700 cursor-pointer"
+            className="enamel-chip w-full flex items-center justify-between px-3 py-2 text-xs cursor-pointer"
           >
-            <span>Show boundary on map</span><span className={showSearchBoundary ? 'text-emerald-400' : 'text-slate-500'}>{showSearchBoundary ? 'On' : 'Off'}</span>
+            <span>Show boundary on map</span><span className={showSearchBoundary ? 'text-[#c4a35a] font-bold' : 'text-white/50'}>{showSearchBoundary ? 'On' : 'Off'}</span>
           </button>
         </div>
       )}
@@ -406,10 +387,10 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {/* Drawer Header */}
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                <div className="w-7 h-7 rounded-md border border-white/40 bg-white/10 flex items-center justify-center text-white">
                   <Compass className="w-4 h-4" />
                 </div>
-                <h3 className="font-bold text-sm sm:text-base text-slate-100">Map Quest Options</h3>
+                <h3 className="font-bold text-sm sm:text-base text-slate-100">Map Recall Options</h3>
               </div>
               <button
                 onClick={() => setIsMenuOpen(false)}
@@ -422,7 +403,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {/* Account and cloud progress */}
             <div className="rounded-xl border border-slate-700/60 bg-slate-800/70 p-3">
               <div className="mb-2 flex items-center gap-2">
-                <Cloud className={`h-4 w-4 ${accountEmail ? 'text-emerald-400' : 'text-slate-400'}`} />
+                <Cloud className={`h-4 w-4 ${accountEmail ? 'text-[#c4a35a]' : 'text-white/60'}`} />
                 <div className="min-w-0">
                   <div className="truncate text-xs font-semibold text-slate-100">{accountEmail || 'Guest progress'}</div>
                   <div className="text-[11px] text-slate-400">{accountEmail ? 'Progress sync is active' : 'Reviews are saved on this device'}</div>
@@ -433,7 +414,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   <LogOut className="h-3.5 w-3.5" /> Sign out
                 </button>
               ) : (
-                <button disabled={!isCloudConfigured} onClick={() => { onOpenAuth?.(); setIsMenuOpen(false); }} className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 py-2 text-xs font-semibold text-white hover:bg-blue-500 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400" title={isCloudConfigured ? 'Sign in to sync progress' : 'Add Firebase environment variables to enable cloud sync'}>
+                <button disabled={!isCloudConfigured} onClick={() => { onOpenAuth?.(); setIsMenuOpen(false); }} className="button-primary flex w-full items-center justify-center gap-2 py-2 text-xs disabled:cursor-not-allowed" title={isCloudConfigured ? 'Sign in to sync progress' : 'Add Firebase environment variables to enable cloud sync'}>
                   <LogIn className="h-3.5 w-3.5" /> {isCloudConfigured ? 'Sign in to sync' : 'Cloud sync not configured'}
                 </button>
               )}
@@ -456,11 +437,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     sounds.playPinDrop();
                     onChangeLocationScope('neighborhood');
                   }}
-                  className={`p-2.5 rounded-xl border text-xs font-semibold flex flex-col items-center gap-0.5 transition cursor-pointer ${
-                    locationScope === 'neighborhood'
-                      ? 'bg-blue-600 border-blue-400 text-white shadow-md'
-                      : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-700'
-                  }`}
+                  className={`enamel-tile p-2.5 text-xs font-semibold flex flex-col items-center gap-0.5 cursor-pointer${locationScope === 'neighborhood' ? ' active' : ''}`}
                 >
                   <span className="text-sm">🏘️</span>
                   <span>Neighborhood</span>
@@ -472,11 +449,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     sounds.playPinDrop();
                     onChangeLocationScope('city');
                   }}
-                  className={`p-2.5 rounded-xl border text-xs font-semibold flex flex-col items-center gap-0.5 transition cursor-pointer ${
-                    locationScope === 'city'
-                      ? 'bg-blue-600 border-blue-400 text-white shadow-md'
-                      : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-700'
-                  }`}
+                  className={`enamel-tile p-2.5 text-xs font-semibold flex flex-col items-center gap-0.5 cursor-pointer${locationScope === 'city' ? ' active' : ''}`}
                 >
                   <span className="text-sm">🏙️</span>
                   <span>Whole City</span>
@@ -487,11 +460,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     sounds.playPinDrop();
                     onChangeLocationScope('region');
                   }}
-                  className={`p-2.5 rounded-xl border text-xs font-semibold flex flex-col items-center gap-0.5 transition cursor-pointer ${
-                    locationScope === 'region'
-                      ? 'bg-blue-600 border-blue-400 text-white shadow-md'
-                      : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-700'
-                  }`}
+                  className={`enamel-tile p-2.5 text-xs font-semibold flex flex-col items-center gap-0.5 cursor-pointer${locationScope === 'region' ? ' active' : ''}`}
                 >
                   <span className="text-sm">🗺️</span>
                   <span>Region</span>
@@ -504,18 +473,16 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                  <Filter className="w-3 h-3 text-blue-400" />
+                  <Filter className="w-3 h-3 text-[#c4a35a]" />
                   <span>Question pool</span>
                 </label>
-                <span className="text-[11px] text-blue-400 font-medium">
+                <span className="text-[11px] text-white/70 font-medium">
                   {categoryCounts[selectedCategory] || 0} features
                 </span>
               </div>
               <button
                 onClick={onToggleLinkedFeaturesOnly}
-                className={`w-full rounded-xl border p-2.5 text-left text-xs transition cursor-pointer ${linkedFeaturesOnly
-                  ? 'border-violet-400 bg-violet-600/30 text-violet-100'
-                  : 'border-slate-700 bg-slate-800/80 text-slate-300 hover:bg-slate-700'}`}
+                className={`enamel-tile w-full p-2.5 text-left text-xs cursor-pointer${linkedFeaturesOnly ? ' active' : ''}`}
               >
                 <span className="font-bold">Wikipedia / Wikidata only</span>
                 <span className="mt-0.5 block text-[10px] opacity-75">Use OSM features linked to an encyclopedia record</span>
@@ -577,13 +544,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     onChangeMode('pinpoint');
                     setIsMenuOpen(false);
                   }}
-                  className={`p-2.5 rounded-xl border text-xs font-semibold flex flex-col items-center gap-1 transition cursor-pointer ${
-                    gameMode === 'pinpoint'
-                      ? 'bg-blue-600 border-blue-400 text-white shadow-md'
-                      : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-700'
-                  }`}
+                  className={`enamel-tile p-2.5 text-xs font-semibold flex flex-col items-center gap-1 cursor-pointer${gameMode === 'pinpoint' ? ' active' : ''}`}
                 >
-                  <MapPin className="w-4 h-4 text-rose-400" />
+                  <MapPin className="w-4 h-4" />
                   <span>Pinpoint Location</span>
                 </button>
 
@@ -593,13 +556,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     onChangeMode('guess_name');
                     setIsMenuOpen(false);
                   }}
-                  className={`p-2.5 rounded-xl border text-xs font-semibold flex flex-col items-center gap-1 transition cursor-pointer ${
-                    gameMode === 'guess_name'
-                      ? 'bg-blue-600 border-blue-400 text-white shadow-md'
-                      : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-700'
-                  }`}
+                  className={`enamel-tile p-2.5 text-xs font-semibold flex flex-col items-center gap-1 cursor-pointer${gameMode === 'guess_name' ? ' active' : ''}`}
                 >
-                  <Eye className="w-4 h-4 text-emerald-400" />
+                  <Eye className="w-4 h-4" />
                   <span>Guess the Name</span>
                 </button>
                 <button
@@ -608,9 +567,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                     onChangeMode('guess_neighborhood');
                     setIsMenuOpen(false);
                   }}
-                  className={`p-2.5 rounded-xl border text-xs font-semibold flex flex-col items-center gap-1 transition cursor-pointer ${gameMode === 'guess_neighborhood' ? 'bg-violet-600 border-violet-400 text-white shadow-md' : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-700'}`}
+                  className={`enamel-tile p-2.5 text-xs font-semibold flex flex-col items-center gap-1 cursor-pointer${gameMode === 'guess_neighborhood' ? ' active' : ''}`}
                 >
-                  <Compass className="w-4 h-4 text-violet-300" />
+                  <Compass className="w-4 h-4" />
                   <span>Guess Neighborhood</span>
                 </button>
               </div>
@@ -626,7 +585,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                       onLocateUser();
                       setIsMenuOpen(false);
                     }}
-                    className="text-[11px] text-blue-400 hover:text-blue-300 flex items-center gap-1 font-semibold cursor-pointer"
+                    className="text-[11px] text-[#c4a35a] hover:text-white flex items-center gap-1 font-semibold cursor-pointer"
                   >
                     <LocateFixed className="w-3 h-3" />
                     <span>{isLocating ? 'Locating...' : 'Use My Location'}</span>
@@ -639,10 +598,10 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   onSelectCity(e.target.value);
                   setIsMenuOpen(false);
                 }}
-                className="w-full p-2.5 text-xs font-semibold bg-slate-800 text-slate-100 rounded-xl border border-slate-700 hover:border-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
+                className="enamel-chip w-full p-2.5 text-xs font-semibold focus:outline-none cursor-pointer"
               >
                 {cities.map((city) => (
-                  <option key={city.id} value={city.id} className="bg-stone-50 text-stone-800">
+                  <option key={city.id} value={city.id}>
                     {city.name} {city.countryCode ? `(${city.countryCode})` : ''}
                   </option>
                 ))}

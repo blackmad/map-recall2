@@ -6,6 +6,64 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Driving HUD: navy plates, one plaque, arrow inside the destination
+
+The enamel pass put cobalt cards over a basemap that is mostly water, which
+read as blue-on-blue, and it kept the old five-piece arrangement — a "RECALL"
+score card, a "STREET" name card, a destination card, a separate finish-arrow
+box that repeated the same "955 m", and a bottom trip pill on desktop — each
+with a tiny kicker label. `hudSurface` is now a deep navy plate
+(`rgba(7,20,48,.84)`, white hairline) with white type and gold as the only
+accent; cobalt is kept for surfaces you stop at (setup, prompt, panels, the
+arrival card). `hud.drawPlaque` replaces `drawCanalScore` +
+`drawCurrentLocation`: street name in Barlow Condensed caps as the headline,
+then neighbourhood + speed/odometer on one line, then score (streak in gold),
+then feedback. It sizes itself to its text and is anchored at the layout's
+`recall` slot, capped at the bottom of the `location` slot, so the layout
+module and its 864 pinned scenarios did not change. `drawDestination` takes
+the finish heading and draws the copper arrow inside the card;
+`drawFinishDirection` and `drawTripReadout` are gone (`finishDirection`
+returns the angle). The portrait compass no longer reserves 68 px for the
+arrow box. The desktop controls hint gets a plate instead of bare 10 px text
+over white streets. Landmark-card badges and the postcard went from dark ink
+on cream tints to light ink on the plate.
+
+## Map Quest: real enamel classes instead of an override layer
+
+The first pass restyled the React quiz by stacking `!important` attribute
+selectors over Tailwind's slate classes. It caught `slate-*` and nothing else,
+so the start dialog shipped stone-800 text on cobalt, an orphan green icon,
+and — because every `bg-blue-600` was remapped to copper — an orange Pinpoint
+tab beside a green speaker. Replaced with a small set of plain component
+classes in `src/index.css` (`enamel-chip`, `enamel-tile`, `enamel-segment`,
+`enamel-float`, `app-dialog`) that win over `@layer utilities` without
+`!important`; header, start dialog, toast, loading modal and round-complete
+header now use them directly. Copper is reserved for `.button-primary`.
+Component classes must not set `display`, or Tailwind's `hidden`/`lg:flex`
+responsive switches stop working (the mode switcher leaked onto the phone
+header until `.enamel-segment` dropped its `display: flex`).
+
+## Quieter enamel: plaques, not arcade rivets
+
+First enamel pass put gold frames and corner rivets on every choice tile, and
+left the neon canvas attract menu drawing through the setup vista — two UIs at
+once. Rivets and white rim stay on the title plaque and Start stamp only;
+options are flat cobalt tiles. Setup open silences the canvas menu and shows
+the CC0 canal photo as the vista.
+
+## Enamel street plaque is the product chrome
+
+Paper-moss cream cards were reading as a different product from the city the
+player is learning. The chrome is now cobalt enamel street plaques end-to-end:
+route setup rail, settings/help panels, utility FABs, translucent canvas HUD
+fills (`hudTheme` / `hudSurface`), and the arrival card’s white-on-enamel type.
+Map Quest header, dialogs, and map reveal labels share the same tokens so the
+two surfaces stop fighting. Plaque borders and rivets are CSS, not AI rasters;
+Storybook’s setup vista uses a CC0 Reguliersgracht photograph
+(`assets/media/setup-backdrop.jpg`) when the live map is not present. Brand
+copy on the quiz shell is **Map Recall**; “Map Quest” remains only as the
+historical quiz-mode nickname in older notes.
+
 ## The gate was red, and had stopped covering enough to notice
 
 `npm run check:canal` is the pre-integration gate, and it could not pass on

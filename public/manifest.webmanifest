@@ -1,13 +1,13 @@
 {
-  "name": "Map Quest",
-  "short_name": "Map Quest",
-  "description": "Learn streets, waterways, landmarks, and neighborhoods through map quizzes.",
+  "name": "Map Recall",
+  "short_name": "Map Recall",
+  "description": "Learn streets, waterways, landmarks, and neighborhoods through map quizzes and Canal Recall rides.",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#f8f5ee",
-  "theme_color": "#fffdf8",
+  "background_color": "#071430",
+  "theme_color": "#0b3a8c",
   "icons": [
     {
       "src": "app-icon.svg",

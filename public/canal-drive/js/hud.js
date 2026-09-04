@@ -38,109 +38,42 @@ class HUD {
   }
 
 
-  /** Speed and odometer. On a phone this is folded into the score row, where
-   *  there is width going spare, rather than taking a card of its own. */
+  /** Speed and odometer as one string. Lives on the plaque's second line on
+   *  every viewport; the desktop used to spend a fifth card on it. */
   tripText(speed, distancePx) {
     const kilometres = distancePx / PIXELS_PER_METER / 1000;
     const kmh = Math.round(Math.abs(speed) / PIXELS_PER_METER * 3.6);
-    return `${kmh} km/h   ${kilometres < 10 ? kilometres.toFixed(2) : kilometres.toFixed(1)} km`;
+    return `${kmh} km/h · ${kilometres < 10 ? kilometres.toFixed(2) : kilometres.toFixed(1)} km`;
   }
 
-  drawTripReadout(ctx, speed, distancePx) {
-    if (this.layout?.tripInRecall) return; // drawn inside the score row instead
-    const theme = window.CanalRecallUi.paperTheme;
-    const text = this.tripText(speed, distancePx);
-    ctx.font = 'bold 12px monospace';
-    const w = ctx.measureText(text).width + 22;
-    const fallback = { x: CANVAS_W - w - 16, y: CANVAS_H - 98, width: w, height: 26 };
-    const rect = { ...this._rect('trip', fallback), width: w };
-    this.paperCard(ctx, rect, { radius: 9 });
-    ctx.fillStyle = theme.ink;
-    ctx.textAlign = 'left';
-    ctx.fillText(text, rect.x + 11, rect.y + 17);
-  }
-
-  drawFinishDirection(ctx, playerX, playerY, finishX, finishY, camera) {
+  /** Screen-space heading to the finish, or null when close enough that an
+   *  arrow would only point at the player's own feet. The destination card
+   *  draws it; there is no separate arrow box any more. */
+  finishDirection(playerX, playerY, finishX, finishY, camera) {
     const dx = finishX - playerX;
     const dy = finishY - playerY;
-    const distWorld = Math.sqrt(dx * dx + dy * dy);
-    if (distWorld < FINISH_RADIUS * 2) return; // close enough, hide arrow
-
-    const angle = Math.atan2(dy, dx) - (camera.rotation || 0);
-
-    // The arrow used to sit at a hardcoded (CANVAS_W/2 - 170, 10), which on a
-    // phone put it straight on top of the recall card. It follows the layout
-    // now: beside the destination on desktop, below the top stack on a phone.
-    const boxW = 60;
-    const boxH = 50;
-    const destination = this.layout?.destination;
-    const compact = this.layout?.mode === 'compact';
-    const boxX = compact
-      ? CANVAS_W - boxW - 12
-      : (destination ? destination.x - boxW - 12 : CANVAS_W / 2 - 170);
-    const boxY = compact
-      ? (destination ? destination.y + destination.height + 10 : 10)
-      : 10;
-    this.paperCard(ctx, { x: boxX, y: boxY, width: boxW, height: boxH }, { radius: 10 });
-
-    // Arrow in center of panel
-    const acx = boxX + boxW / 2;
-    const acy = boxY + 22;
-
-    ctx.save();
-    ctx.translate(acx, acy);
-    ctx.rotate(angle);
-
-    const arrowLen = 14;
-    const arrowW = 7;
-
-    // Pulsating glow (use raceTime passed via game loop)
-    const pulse = 0.5 + 0.5 * Math.sin(this._time * 3.33);
-    const alpha = 0.6 + pulse * 0.4;
-
-    // Outer glow
-    ctx.fillStyle = `rgba(199,95,67,${alpha * 0.28})`;
-    ctx.beginPath();
-    ctx.moveTo(arrowLen + 3, 0);
-    ctx.lineTo(-arrowLen / 2 - 1, -arrowW - 3);
-    ctx.lineTo(-arrowLen / 4 - 1, 0);
-    ctx.lineTo(-arrowLen / 2 - 1, arrowW + 3);
-    ctx.closePath();
-    ctx.fill();
-
-    // Main arrow
-    ctx.fillStyle = `rgba(199,95,67,${alpha})`;
-    ctx.beginPath();
-    ctx.moveTo(arrowLen, 0);
-    ctx.lineTo(-arrowLen / 2, -arrowW);
-    ctx.lineTo(-arrowLen / 4, 0);
-    ctx.lineTo(-arrowLen / 2, arrowW);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.strokeStyle = `rgba(255,253,248,${alpha * 0.8})`;
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
-    ctx.restore();
-
-    // Distance label below arrow
-    const meters = distWorld / PIXELS_PER_METER;
-    let distLabel;
-    if (meters >= 1609.344) {
-      distLabel = (meters / 1609.344).toFixed(1) + ' mi';
-    } else {
-      distLabel = Math.round(meters) + ' m';
-    }
-    ctx.font = 'bold 9px monospace';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = window.CanalRecallUi.paperTheme.ink;
-    ctx.fillText(distLabel, acx, boxY + 43);
+    if (Math.hypot(dx, dy) < FINISH_RADIUS * 2) return null;
+    return Math.atan2(dy, dx) - (camera.rotation || 0);
   }
 
-  /** Always-on north rose. Quiet moss needle — not the terracotta finish arrow. */
+  _font(weight, size, family) {
+    return `${weight} ${size}px ${family}`;
+  }
+
+  /** Fit `text` into `maxWidth`, trimming with an ellipsis. Clipping cut names
+   *  mid-glyph; a trimmed name still reads as a name. */
+  _fit(ctx, text, maxWidth) {
+    if (ctx.measureText(text).width <= maxWidth) return text;
+    let cut = text;
+    while (cut.length > 1 && ctx.measureText(`${cut}…`).width > maxWidth) cut = cut.slice(0, -1);
+    return `${cut.trimEnd()}…`;
+  }
+
+  /** Always-on north rose. The north half is the one gold accent on the HUD;
+   *  the south half is dim so the needle has a front. */
   drawCompass(ctx, camera) {
     const ui = window.CanalRecallUi;
+    const surface = ui.hudSurface;
     const size = this.layout?.mode === 'compact'
       ? (ui.COMPASS_SIZE_COMPACT || 40)
       : (ui.COMPASS_SIZE_DESKTOP || 44);
@@ -157,14 +90,14 @@ class HUD {
 
     ctx.save();
     ctx.translate(cx, cy);
-    ctx.strokeStyle = 'rgba(97,89,74,0.28)';
+    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.arc(0, 0, radius + 4, 0, Math.PI * 2);
     ctx.stroke();
 
     ctx.rotate(angle);
-    ctx.fillStyle = ui.paperTheme.moss;
+    ctx.fillStyle = surface.accent;
     ctx.beginPath();
     ctx.moveTo(radius + 1, 0);
     ctx.lineTo(-radius * 0.45, -radius * 0.42);
@@ -172,7 +105,7 @@ class HUD {
     ctx.lineTo(-radius * 0.45, radius * 0.42);
     ctx.closePath();
     ctx.fill();
-    ctx.fillStyle = 'rgba(104,116,110,0.55)';
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
     ctx.beginPath();
     ctx.moveTo(-radius * 0.18, 0);
     ctx.lineTo(-radius * 0.45, -radius * 0.42);
@@ -181,11 +114,11 @@ class HUD {
     ctx.closePath();
     ctx.fill();
     // "N" sits on the needle, inside the chip so a round card does not clip it.
-    ctx.fillStyle = ui.paperTheme.mossDark;
-    ctx.font = `bold ${Math.max(9, Math.round(size * 0.26))}px sans-serif`;
+    ctx.fillStyle = '#071430';
+    ctx.font = this._font(800, Math.max(9, Math.round(size * 0.24)), surface.fontPlaque);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('N', radius * 0.55, 0);
+    ctx.fillText('N', radius * 0.5, 0);
     ctx.restore();
   }
 
@@ -217,47 +150,58 @@ class HUD {
     ctx.restore();
   }
 
-  drawDestination(ctx, name, distancePx, expectedNovelty = null) {
-    const theme = window.CanalRecallUi.paperTheme;
+  /** Where you are going: arrow, name, distance, one row. The arrow used to
+   *  have a card of its own beside this one, showing the same distance twice. */
+  drawDestination(ctx, name, distancePx, expectedNovelty = null, arrowAngle = null) {
+    const surface = window.CanalRecallUi.hudSurface;
     const meters = Math.max(0, distancePx / PIXELS_PER_METER);
     const distance = meters >= 1000 ? `${(meters / 1000).toFixed(1)} km` : `${Math.round(meters)} m`;
     const rect = this._rect('destination', { x: CANVAS_W - 350, y: 15, width: 335, height: 48 });
     this.paperCard(ctx, rect);
-    const left = rect.x + 13;
-    const right = rect.x + rect.width - 13;
     const compact = rect.height < 44;
-    const novelty = Number.isFinite(expectedNovelty)
-      ? ` · ${Math.round(expectedNovelty * 100)}% NEW` : '';
-    ctx.save();
-    roundRect(ctx, rect.x, rect.y, rect.width, rect.height, 12);
-    ctx.clip();
-    if (compact) {
-      // Phone: one row — label, name, distance — instead of a stacked card.
-      ctx.textAlign = 'left';
-      ctx.font = 'bold 9px monospace';
-      ctx.fillStyle = theme.moss;
-      ctx.fillText(`TO${novelty}`, left, rect.y + 14);
-      ctx.fillStyle = theme.ink;
-      ctx.font = 'bold 13px monospace';
-      ctx.fillText(name, left, rect.y + 29);
-      ctx.textAlign = 'right';
-      ctx.fillStyle = theme.terracotta;
-      ctx.font = 'bold 12px monospace';
-      ctx.fillText(distance, right, rect.y + 29);
-    } else {
-      ctx.textAlign = 'right';
-      ctx.fillStyle = theme.moss;
-      ctx.font = 'bold 9px monospace';
-      ctx.fillText(`DESTINATION${novelty}`, right, rect.y + 15);
-      ctx.fillStyle = theme.ink;
-      ctx.font = 'bold 13px monospace';
-      ctx.fillText(name, right - 54, rect.y + 34);
-      ctx.fillStyle = theme.terracotta;
-      ctx.font = 'bold 11px monospace';
-      ctx.fillText(distance, right, rect.y + 34);
+    const midY = rect.y + rect.height / 2;
+    const hasArrow = Number.isFinite(arrowAngle);
+    let left = rect.x + 13;
+    const right = rect.x + rect.width - 13;
+
+    if (hasArrow) {
+      const r = compact ? 10 : 12;
+      const acx = left + r;
+      ctx.save();
+      ctx.translate(acx, midY);
+      ctx.rotate(arrowAngle);
+      const len = r * 0.95, wid = r * 0.55;
+      ctx.fillStyle = surface.arrow;
+      ctx.beginPath();
+      ctx.moveTo(len, 0);
+      ctx.lineTo(-len * 0.55, -wid);
+      ctx.lineTo(-len * 0.25, 0);
+      ctx.lineTo(-len * 0.55, wid);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+      left = acx + r + 10;
     }
-    ctx.restore();
+
+    ctx.save();
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'right';
+    ctx.font = this._font(700, compact ? 12 : 13, surface.fontMono);
+    ctx.fillStyle = surface.accent;
+    ctx.fillText(distance, right, midY + 1);
+    let distanceLeft = right - ctx.measureText(distance).width;
+    if (Number.isFinite(expectedNovelty)) {
+      const novelty = `${Math.round(expectedNovelty * 100)}% new  `;
+      ctx.font = this._font(500, compact ? 10 : 11, surface.fontUi);
+      ctx.fillStyle = surface.inkMuted;
+      ctx.fillText(novelty, distanceLeft, midY + 1);
+      distanceLeft -= ctx.measureText(novelty).width;
+    }
     ctx.textAlign = 'left';
+    ctx.font = this._font(700, compact ? 16 : 18, surface.fontPlaque);
+    ctx.fillStyle = surface.ink;
+    ctx.fillText(this._fit(ctx, (name || '').toUpperCase(), distanceLeft - left - 12), left, midY + 1);
+    ctx.restore();
   }
 
   drawStreetName(ctx, name) {
@@ -274,68 +218,86 @@ class HUD {
     ctx.fillText(name, x, y + 1);
   }
 
-  drawCanalScore(ctx, correct, attempts, points, feedback, streak = 0, gamey = true, trip = '') {
-    const theme = window.CanalRecallUi.paperTheme;
-    const hasStreak = gamey && streak >= 2;
-    const rect = this._rect('recall', { x: 15, y: 15, width: 310, height: feedback ? 62 : 43 });
+  /** The one plaque on the left: where you are, then how you are doing.
+   *
+   *  This replaces two cards ("RECALL" score + "STREET" name) that sat in a
+   *  stack with a kicker label each. The street is the thing you are trying to
+   *  learn, so it is the headline; the neighbourhood, speed and odometer are
+   *  one quiet line under it; the score is a third. The card is sized to its
+   *  text and anchored at the layout's recall slot, so it is never taller than
+   *  the recall + location slots the layout reserves for it. */
+  drawPlaque(ctx, {
+    routeName = '', neighborhood = '', answerHidden = false,
+    correct = 0, attempts = 0, points = 0, streak = 0, gamey = true,
+    trip = '', feedback = '',
+  } = {}) {
+    const surface = window.CanalRecallUi.hudSurface;
+    const anchor = this._rect('recall', { x: 15, y: 15, width: 310, height: 43 });
+    const slot = this._rect('location', null);
+    const compact = this.layout?.mode === 'compact';
+    const pad = 12;
+    const nameSize = compact ? 19 : 21;
+    const lineH = compact ? 15 : 16;
+    const wanted = pad + nameSize + 4 + lineH + lineH + (feedback ? lineH : 0) + pad - 2;
+    const available = slot ? (slot.y + slot.height - anchor.y) : wanted;
+    const rect = { x: anchor.x, y: anchor.y, width: anchor.width, height: Math.min(wanted, available) };
     this.paperCard(ctx, rect);
-    const left = rect.x + 13;
-    const right = rect.x + rect.width - 13;
-    ctx.fillStyle = theme.terracotta;
-    ctx.font = 'bold 10px monospace';
-    ctx.textAlign = 'left';
-    ctx.fillText('RECALL', left, rect.y + 16);
-    ctx.fillStyle = theme.ink;
-    ctx.font = 'bold 14px monospace';
-    const tally = gamey ? `${correct} / ${attempts}   ${points} pts` : `${correct} / ${attempts}`;
-    ctx.fillText(tally, left, rect.y + 34);
-    ctx.textAlign = 'right';
-    // The phone folds speed and distance in here; a streak, when there is one,
-    // is the more interesting number and takes the slot.
-    if (hasStreak) {
-      ctx.fillStyle = theme.terracotta;
-      ctx.font = 'bold 13px monospace';
-      const mult = (1 + 0.1 * Math.min(streak - 1, 9)).toFixed(1);
-      ctx.fillText(`${streak} STREAK  ${mult}x`, right, rect.y + 33);
-    } else if (trip) {
-      ctx.fillStyle = theme.inkMuted;
-      ctx.font = 'bold 11px monospace';
-      ctx.fillText(trip, right, rect.y + 33);
-    }
-    ctx.textAlign = 'left';
-    if (feedback) {
-      ctx.fillStyle = theme.inkMuted;
-      ctx.font = '12px monospace';
-      ctx.fillText(feedback, left, rect.y + rect.height - 8);
-    }
-  }
 
-  drawCurrentLocation(ctx, routeName, neighborhood, travelMode, answerHidden = false) {
-    const theme = window.CanalRecallUi.paperTheme;
-    const routeLabel = travelMode === 'car' ? 'STREET' : 'WATERWAY';
-    const rect = this._rect('location', { x: 15, y: 84, width: 310, height: neighborhood ? 55 : 38 });
-    this.paperCard(ctx, rect);
-    const left = rect.x + 13;
-    ctx.textAlign = 'left';
-    ctx.font = 'bold 11px monospace';
-    ctx.fillStyle = theme.moss;
-    ctx.fillText(routeLabel, left, rect.y + 16);
-    ctx.fillStyle = theme.ink;
-    ctx.font = 'bold 13px monospace';
-    // The name is withheld while it is the question; the HUD must never answer
-    // it. Clipped to the card so a long street cannot run off a phone screen.
+    const left = rect.x + pad + 1;
+    const right = rect.x + rect.width - pad - 1;
+    const inner = right - left;
     ctx.save();
-    roundRect(ctx, rect.x, rect.y, rect.width, rect.height, 12);
-    ctx.clip();
-    ctx.fillText(answerHidden ? '???' : (routeName || '-'), left, rect.y + 33);
-    ctx.restore();
-    if (neighborhood) {
-      ctx.fillStyle = theme.inkMuted;
-      ctx.font = '10px monospace';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
+
+    // The name is withheld while it is the question; the HUD must never answer
+    // it. Ellipsised, so a long street cannot run off a phone screen.
+    let y = rect.y + pad + nameSize - 4;
+    ctx.font = this._font(800, nameSize, surface.fontPlaque);
+    ctx.fillStyle = surface.ink;
+    const headline = answerHidden ? '? ? ?' : (routeName || '—');
+    ctx.fillText(this._fit(ctx, headline.toUpperCase(), inner), left, y);
+
+    // Where and how fast, on one line. The neighbourhood yields to the trip
+    // readout rather than the other way round: the numbers never move.
+    y += lineH + 3;
+    ctx.font = this._font(600, 11, surface.fontMono);
+    ctx.fillStyle = surface.inkMuted;
+    let tripWidth = 0;
+    if (trip) {
       ctx.textAlign = 'right';
-      ctx.fillText(neighborhood.toUpperCase(), rect.x + rect.width - 13, rect.y + 16);
+      ctx.fillText(trip, right, y);
+      tripWidth = ctx.measureText(trip).width + 12;
       ctx.textAlign = 'left';
     }
+    if (neighborhood) {
+      ctx.font = this._font(500, 12, surface.fontUi);
+      ctx.fillText(this._fit(ctx, neighborhood, inner - tripWidth), left, y);
+    }
+
+    // Score line. A streak, when there is one, takes the right-hand slot in
+    // gold; it is the only number on the plaque that is allowed to shout.
+    y += lineH;
+    ctx.font = this._font(700, 12, surface.fontMono);
+    ctx.fillStyle = surface.ink;
+    const tally = gamey ? `${correct} / ${attempts}  ·  ${points} pts` : `${correct} / ${attempts}`;
+    ctx.fillText(tally, left, y);
+    if (gamey && streak >= 2) {
+      const mult = (1 + 0.1 * Math.min(streak - 1, 9)).toFixed(1);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = surface.accent;
+      ctx.font = this._font(700, 11, surface.fontMono);
+      ctx.fillText(`${streak} streak · ${mult}×`, right, y);
+      ctx.textAlign = 'left';
+    }
+
+    if (feedback) {
+      y += lineH;
+      ctx.font = this._font(500, 12, surface.fontUi);
+      ctx.fillStyle = surface.inkMuted;
+      ctx.fillText(this._fit(ctx, feedback, inner), left, y);
+    }
+    ctx.restore();
   }
 
   drawLapCounter(ctx, currentLap, totalLaps) {
@@ -553,11 +515,11 @@ class HUD {
   drawTouchHint(ctx) {
     const layout = this.layout;
     if (!layout?.dpad) return;
-    const theme = window.CanalRecallUi.paperTheme;
+    const theme = window.CanalRecallUi.hudSurface;
     const pad = layout.dpad;
     const text = 'steer with the pad — it drives itself';
     ctx.save();
-    ctx.font = 'bold 11px monospace';
+    ctx.font = `500 12px ${theme.fontUi}`;
     ctx.textAlign = 'center';
     const width = Math.min(ctx.measureText(text).width + 22, CANVAS_W - 16);
     // Clamped on screen: in landscape the pad sits at the left edge, and a hint

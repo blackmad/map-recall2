@@ -159,11 +159,13 @@
   }
 
   // src/canalRecall/game/presentationRuntime.ts
-  var INK = "#24322b";
-  var MUTED = "#68746e";
-  var BODY = "#3d4a43";
-  var ACCENT = "#c75f43";
-  var GOOD = "#356653";
+  var INK = "#ffffff";
+  var MUTED = "rgba(255,255,255,0.72)";
+  var BODY = "rgba(255,255,255,0.88)";
+  var ACCENT = "#c4a35a";
+  var GOOD = "#c4a35a";
+  var COPPER = "#b87333";
+  var RULE = "rgba(255,255,255,0.22)";
   var GamePresentationRuntime = class {
     // ---- The frame ----
     _render() {
@@ -239,44 +241,35 @@
       this._syncHudLayout();
       const teaching = this._teachingGate();
       const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
-      const tripInRecall = !!this._hudLayoutCache?.tripInRecall;
-      this.hud.drawTripReadout(ctx, player.speed, this._playerDistancePx());
-      this.hud.drawCanalScore(
-        ctx,
-        this.quizCorrect,
-        this.quizAttempts,
-        this.quizPoints,
-        this.quizFeedback,
-        this.quizStreak,
-        this.gameyFeatures,
-        tripInRecall ? this.hud.tripText(player.speed, this._playerDistancePx()) : ""
-      );
       const routeAnswerHidden = !!this.quizPromptName || !!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName;
       const visibleRouteName = routeAnswerHidden ? "" : this.track.getRoadName(player.x, player.y);
-      this.hud.drawCurrentLocation(
-        ctx,
-        visibleRouteName,
-        this.currentNeighborhood,
-        this.travelMode,
-        routeAnswerHidden
-      );
+      this.hud.drawPlaque(ctx, {
+        routeName: visibleRouteName,
+        neighborhood: this.currentNeighborhood,
+        answerHidden: routeAnswerHidden,
+        correct: this.quizCorrect,
+        attempts: this.quizAttempts,
+        points: this.quizPoints,
+        streak: this.quizStreak,
+        gamey: this.gameyFeatures,
+        trip: this.hud.tripText(player.speed, this._playerDistancePx()),
+        feedback: this.quizFeedback
+      });
+      const finishAngle = this.routeOptions.arrow ? this.hud.finishDirection(
+        player.x,
+        player.y,
+        this.track.finishPoint.x,
+        this.track.finishPoint.y,
+        this.camera
+      ) : null;
       this.hud.drawDestination(
         ctx,
         this.routeTo.name,
         this.track.getDistanceToFinish(player.x, player.y),
-        this._routeLearningPlan?.expectedNovelty ?? null
+        this._routeLearningPlan?.expectedNovelty ?? null,
+        finishAngle
       );
       this.hud.drawCompass(ctx, this.camera);
-      if (this.routeOptions.arrow) {
-        this.hud.drawFinishDirection(
-          ctx,
-          player.x,
-          player.y,
-          this.track.finishPoint.x,
-          this.track.finishPoint.y,
-          this.camera
-        );
-      }
       if (showMiniMap) this.hud.drawCityOverview(ctx, this);
       this.vectorMap.setQuizQuietMap(!canShowPoiLabels(true, teaching));
       this._renderLandmarkNotice();
@@ -326,9 +319,10 @@
       if (this._zoomBadgeTimer <= 0) return;
       const ctx = this.ctx;
       const rect = this._hudRects().zoomBadge;
+      const surface = window.CanalRecallUi.hudSurface;
       this.hud.paperCard(ctx, rect, { radius: 9 });
-      ctx.fillStyle = window.CanalRecallUi.paperTheme.inkMuted;
-      ctx.font = "bold 12px monospace";
+      ctx.fillStyle = surface.inkMuted;
+      ctx.font = `700 12px ${surface.fontMono}`;
       ctx.textAlign = "center";
       ctx.fillText(`${Math.round(this.camera.zoom * 100)}%`, rect.x + rect.width / 2, rect.y + 15);
     }
@@ -343,9 +337,10 @@
       const width = compact ? 132 : 110, height = compact ? 44 : 28;
       const x = Math.round(CANVAS_W / 2 - width / 2);
       const y = Math.round(compact ? layout.destination.y + layout.destination.height + 10 : 70);
+      const surface = window.CanalRecallUi.hudSurface;
       this.hud.paperCard(ctx, { x, y, width, height }, { solid: true, radius: compact ? 14 : 8 });
-      ctx.fillStyle = window.CanalRecallUi.paperTheme.moss;
-      ctx.font = "bold 11px monospace";
+      ctx.fillStyle = surface.accent;
+      ctx.font = `700 12px ${surface.fontPlaque}`;
       ctx.textAlign = "center";
       ctx.fillText(compact ? "RE-CENTER" : "RE-CENTER (R)", CANVAS_W / 2, y + height / 2 + 4);
       this._recenterBtnBounds = { x, y, w: width, h: height };
@@ -356,22 +351,31 @@
       if (this.input.isMobile || this.raceTime >= CONTROLS_HINT_DURATION) return;
       const ctx = this.ctx;
       const rect = this._hudRects().controlsHint;
+      const surface = window.CanalRecallUi.hudSurface;
+      const text = "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   D  labels   \xB7   P  pause";
+      ctx.save();
       ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
-      ctx.fillStyle = window.CanalRecallUi.paperTheme.inkMuted;
-      ctx.font = "10px monospace";
+      ctx.font = `600 11px ${surface.fontMono}`;
+      const width = Math.min(ctx.measureText(text).width + 24, CANVAS_W - 16);
+      const plate = { x: Math.round(rect.x + rect.width / 2 - width / 2), y: rect.y - 6, width, height: 22 };
+      this.hud.paperCard(ctx, plate, { radius: 9 });
+      ctx.fillStyle = surface.inkMuted;
       ctx.textAlign = "center";
-      ctx.fillText(
-        "?: help  G: settings  M: map  O: north  D: labels  P: pause",
-        rect.x + rect.width / 2,
-        rect.y + 9
-      );
-      ctx.globalAlpha = 1;
+      ctx.fillText(text, plate.x + plate.width / 2, plate.y + 15);
+      ctx.restore();
     }
     // ---- Menu ----
     _renderMenu() {
       const ctx = this.ctx;
+      const setup = document.getElementById("route-setup");
+      const setupOpen = !!setup && setup.style.display !== "none";
+      if (setupOpen) {
+        ctx.fillStyle = "#071430";
+        ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+        return;
+      }
       const cx = CANVAS_W / 2;
-      ctx.fillStyle = "#0a0a14";
+      ctx.fillStyle = "#071430";
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       const t = Date.now() / 1e3;
       ctx.strokeStyle = "rgba(33,150,243,0.06)";
@@ -398,35 +402,36 @@
         ctx.fill();
       }
       const grad = ctx.createLinearGradient(0, 0, 0, CANVAS_H);
-      grad.addColorStop(0, "rgba(10,10,20,0.9)");
-      grad.addColorStop(0.4, "rgba(10,10,20,0.7)");
-      grad.addColorStop(0.7, "rgba(10,10,20,0.8)");
-      grad.addColorStop(1, "rgba(10,10,20,0.95)");
+      grad.addColorStop(0, "rgba(7,20,48,0.9)");
+      grad.addColorStop(0.4, "rgba(7,20,48,0.7)");
+      grad.addColorStop(0.7, "rgba(7,20,48,0.8)");
+      grad.addColorStop(1, "rgba(7,20,48,0.95)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       ctx.save();
       ctx.textAlign = "center";
-      ctx.font = "bold 58px monospace";
-      ctx.shadowColor = "#FFD700";
-      ctx.shadowBlur = 20;
-      ctx.fillStyle = "#FFD700";
+      ctx.font = 'bold 48px "Barlow Condensed", sans-serif';
+      ctx.fillStyle = "#ffffff";
       ctx.fillText("AMSTERDAM CANAL RECALL", cx, 70);
-      ctx.shadowBlur = 0;
       ctx.restore();
       ctx.textAlign = "center";
-      ctx.fillStyle = "#38BDF8";
-      ctx.font = "bold 14px monospace";
+      ctx.fillStyle = "rgba(255,255,255,0.72)";
+      ctx.font = "14px system-ui, sans-serif";
       ctx.fillText("Navigate the real canal network and name each waterway after you turn", cx, 100);
-      ctx.fillStyle = "rgba(0,0,0,0.6)";
+      ctx.fillStyle = "rgba(11,58,140,0.88)";
       roundRect(ctx, cx - 320, 120, 640, 160, 10);
       ctx.fill();
+      ctx.strokeStyle = "rgba(255,255,255,0.35)";
+      ctx.lineWidth = 1;
+      roundRect(ctx, cx - 320, 120, 640, 160, 10);
+      ctx.stroke();
       ctx.textAlign = "left";
       const rulesX = cx - 290;
-      ctx.fillStyle = "#FFD700";
-      ctx.font = "bold 13px monospace";
-      ctx.fillText("HOW TO PLAY:", rulesX, 145);
-      ctx.fillStyle = "#CCC";
-      ctx.font = "12px monospace";
+      ctx.fillStyle = "#c4a35a";
+      ctx.font = 'bold 13px "Barlow Condensed", sans-serif';
+      ctx.fillText("HOW TO PLAY", rulesX, 145);
+      ctx.fillStyle = "rgba(255,255,255,0.88)";
+      ctx.font = "12px system-ui, sans-serif";
       const rules = [
         "1. Use WASD or the arrow keys to steer the boat",
         "2. The boat slows dramatically when it leaves mapped water",
@@ -436,22 +441,21 @@
         "6. This is an early prototype \u2014 feedback is the point"
       ];
       rules.forEach((line, index) => ctx.fillText(line, rulesX, 165 + index * 18));
-      ctx.fillStyle = "#777";
-      ctx.font = "11px monospace";
+      ctx.fillStyle = "rgba(255,255,255,0.45)";
+      ctx.font = "11px system-ui, sans-serif";
       ctx.textAlign = "center";
       ctx.fillText(this.input.isMobile ? "Left side: Steer    Right side: Gas/Brake    Double-tap: Drift" : "Arrow Keys / WASD - Drive    SPACE - Drift    TAB - Map    N - Sound    -/+ Zoom", cx, 298);
-      const pulse = 0.5 + 0.5 * Math.sin(Date.now() / 400);
-      ctx.fillStyle = `rgba(144,202,249,${0.4 + pulse * 0.6})`;
-      ctx.font = "bold 24px monospace";
+      ctx.fillStyle = "rgba(255,255,255,0.9)";
+      ctx.font = 'bold 22px "Barlow Condensed", sans-serif';
       ctx.fillText(this.input.isMobile ? "TAP TO START" : "PRESS ENTER TO START", cx, CANVAS_H / 2 + 55);
       if (!this._menuQuote) {
         this._menuQuote = BANDIT_QUOTES[Math.floor(Math.random() * BANDIT_QUOTES.length)];
       }
-      ctx.fillStyle = "rgba(255,215,0,0.5)";
-      ctx.font = "italic 13px monospace";
+      ctx.fillStyle = "rgba(196,163,90,0.75)";
+      ctx.font = "italic 13px system-ui, sans-serif";
       ctx.fillText(`"${this._menuQuote.text}"`, cx, CANVAS_H / 2 + 90);
-      ctx.fillStyle = "rgba(255,255,255,0.3)";
-      ctx.font = "11px monospace";
+      ctx.fillStyle = "rgba(255,255,255,0.35)";
+      ctx.font = "11px system-ui, sans-serif";
       ctx.fillText(`\u2014 ${this._menuQuote.character}`, cx, CANVAS_H / 2 + 107);
       this._renderExplorationBadge(cx);
       this._renderMenuChase(t);
@@ -469,10 +473,10 @@
       if (known > 0) parts.push(`${known} waterways`);
       if (exploration.visitedNeighborhoods.length > 0) parts.push(`${exploration.visitedNeighborhoods.length} hoods`);
       if (exploration.seenLandmarks.length > 0) parts.push(`${exploration.seenLandmarks.length} landmarks`);
-      ctx.fillStyle = "rgba(88,28,135,.3)";
+      ctx.fillStyle = "rgba(11,58,140,.55)";
       roundRect(ctx, cx - 200, CANVAS_H / 2 + 120, 400, 28, 6);
       ctx.fill();
-      ctx.fillStyle = "#C4B5FD";
+      ctx.fillStyle = "rgba(255,255,255,0.85)";
       ctx.font = "11px monospace";
       ctx.textAlign = "center";
       ctx.fillText(
@@ -614,7 +618,7 @@
      */
     _renderFinish() {
       const ctx = this.ctx;
-      ctx.fillStyle = "rgba(36,50,43,.42)";
+      ctx.fillStyle = "rgba(7,20,48,.55)";
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       const cx = CANVAS_W / 2;
       const compact = this.viewport.mode === "compact";
@@ -629,7 +633,7 @@
       const image = landmark ? this._landmarkImages?.get(landmark.id) : void 0;
       const hasImage = !!image && image.complete && image.naturalWidth > 0;
       const rule = (y2) => {
-        ctx.strokeStyle = "rgba(97,89,74,.22)";
+        ctx.strokeStyle = RULE;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(cardX + padX, y2 + 0.5);
@@ -798,11 +802,11 @@
             for (const action of actions) {
               const primary = action.id === "again";
               const bounds = { x: cardX + padX, y: by, w: cardW - padX * 2, h: BUTTON_H };
-              ctx.fillStyle = primary ? "#356653" : "rgba(238,233,223,.9)";
+              ctx.fillStyle = primary ? COPPER : "rgba(255,255,255,.08)";
               roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
               ctx.fill();
               if (!primary) {
-                ctx.strokeStyle = "rgba(97,89,74,.28)";
+                ctx.strokeStyle = RULE;
                 ctx.lineWidth = 1;
                 ctx.stroke();
               }
@@ -821,7 +825,7 @@
           for (const action of actions) {
             ctx.font = "bold 11px monospace";
             const keyW = ctx.measureText(action.key).width + 14;
-            ctx.fillStyle = "rgba(97,89,74,.14)";
+            ctx.fillStyle = "rgba(255,255,255,.14)";
             roundRect(ctx, ax, top + 4, keyW, 20, 5);
             ctx.fill();
             ctx.fillStyle = INK;

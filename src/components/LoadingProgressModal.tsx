@@ -24,7 +24,7 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
   return (
     <div
       id="loading-progress-modal-backdrop"
-      className="fixed inset-0 bg-stone-900/30 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
+      className="fixed inset-0 bg-[#071430]/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
     >
       <div
         id="loading-progress-card"
@@ -33,7 +33,7 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
         {/* Top Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-emerald-900 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-md border border-white/40 bg-white/10 flex items-center justify-center">
               <Compass className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -41,7 +41,7 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
                 Preparing your quiz
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
-                <MapPin className="w-3.5 h-3.5 text-blue-400" />
+                <MapPin className="w-3.5 h-3.5 text-[#c4a35a]" />
                 <span>{locationName || 'Current Location'}</span>
                 <span>•</span>
                 <span className="capitalize px-1.5 py-0.5 rounded-full bg-slate-800 text-blue-300 font-semibold text-[10px]">
@@ -66,13 +66,13 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
         <div className="space-y-1.5 bg-slate-950/60 p-3.5 rounded-2xl border border-slate-800/80">
           <div className="flex items-center justify-between text-xs font-semibold">
             <span className="text-slate-200">{progress.message}</span>
-            <span className="text-blue-400 font-mono font-bold">{Math.round(percent)}%</span>
+            <span className="text-[#c4a35a] font-mono font-bold">{Math.round(percent)}%</span>
           </div>
 
           {/* Progress Bar Container */}
-          <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700/60">
+          <div className="enamel-progress w-full h-3 rounded-full overflow-hidden p-0.5">
             <div
-            className="h-full rounded-full bg-emerald-700 transition-all duration-300 ease-out"
+            className="h-full rounded-full transition-all duration-300 ease-out"
               style={{ width: `${percent}%` }}
             />
           </div>

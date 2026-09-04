@@ -113,9 +113,7 @@ export interface LoadingScreen {
 export interface Hud {
   setTime(seconds: number): void;
   formatTime(seconds: number): string;
-  drawTripReadout(ctx: CanvasRenderingContext2D, speed: number, distancePx: number): void;
-  /** Speed and odometer as one string, so a phone can fold it into the score
-   *  row instead of spending a card on it. */
+  /** Speed and odometer as one string; drawn on the plaque's second line. */
   tripText(speed: number, distancePx: number): string;
   /** This frame's HUD geometry, from the typed layout module. */
   setLayout(layout: import('../hudLayout.ts').HudLayout): void;
@@ -125,19 +123,21 @@ export interface Hud {
     rect: import('../hudLayout.ts').Rect,
     options?: { solid?: boolean; radius?: number },
   ): void;
-  drawCanalScore(
-    ctx: CanvasRenderingContext2D, correct: number, attempts: number, points: number,
-    feedback: string, streak?: number, gamey?: boolean, trip?: string,
+  /** The single left-hand plaque: street, neighbourhood + trip, score, feedback. */
+  drawPlaque(ctx: CanvasRenderingContext2D, plaque: {
+    routeName?: string; neighborhood?: string; answerHidden?: boolean;
+    correct?: number; attempts?: number; points?: number; streak?: number; gamey?: boolean;
+    trip?: string; feedback?: string;
+  }): void;
+  /** Destination card; the finish arrow draws inside it when `arrowAngle` is set. */
+  drawDestination(
+    ctx: CanvasRenderingContext2D, name: string, distancePx: number,
+    expectedNovelty?: number | null, arrowAngle?: number | null,
   ): void;
-  drawCurrentLocation(
-    ctx: CanvasRenderingContext2D, routeName: string, neighborhood: string,
-    travelMode: string, answerHidden?: boolean,
-  ): void;
-  drawDestination(ctx: CanvasRenderingContext2D, name: string, distancePx: number, expectedNovelty?: number | null): void;
-  drawFinishDirection(
-    ctx: CanvasRenderingContext2D, playerX: number, playerY: number,
-    finishX: number, finishY: number, camera: Camera,
-  ): void;
+  /** Screen-space heading to the finish, or null when already there. */
+  finishDirection(
+    playerX: number, playerY: number, finishX: number, finishY: number, camera: Camera,
+  ): number | null;
   /** Always-on north rose that tracks camera rotation. */
   drawCompass(ctx: CanvasRenderingContext2D, camera: Camera): void;
   drawCityOverview(ctx: CanvasRenderingContext2D, game: unknown): void;
