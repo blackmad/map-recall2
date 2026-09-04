@@ -123,5 +123,22 @@ export const fromLocalMetres = ({ x, y }: RdPoint): RdPoint =>
  */
 export const CANAL_WATER_LEVEL_NAP_M = -0.40;
 
-/** Typical Grachtengordel quay crown above NAP; a starting value, always superseded by an AHN measurement. */
-export const NOMINAL_QUAY_CROWN_NAP_M = 1.05;
+/**
+ * Quay crown above NAP across the pilot boundary — measured, not assumed.
+ *
+ * This was 1.05 m, a plausible figure taken from nothing in particular. RECON-10
+ * measured it: the buildings fronting each canal stand on its quay, and 3DBAG's
+ * AHN-derived ground level for each of them samples the crown roughly every
+ * five metres of frontage. Across 126 segments of the five boundary canals the
+ * median is 0.73 m NAP — the guess was 32 cm high, which is a third of the
+ * freeboard and would have floated every building in the pilot.
+ *
+ * It remains a fallback and nothing more. Quay heights genuinely vary: the
+ * Prinsengracht crown runs from 0.17 to 1.42 m NAP along its 1.7 km, so a canal
+ * drawn level across its length is wrong by up to 1.26 m. Per-segment crowns
+ * live in the quay-water extract and any renderer should use those.
+ */
+export const NOMINAL_QUAY_CROWN_NAP_M = 0.73;
+
+/** Median freeboard, quay crown above the water surface. Measured alongside it. */
+export const NOMINAL_FREEBOARD_M = 1.13;

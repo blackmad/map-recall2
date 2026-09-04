@@ -510,6 +510,37 @@ extract: a building nobody has looked at still gets no façade.
 heights are generated but the eaves height they sum to is a measurement, and a
 rule about the parts may never move the whole.
 
+## RECON-10 — quay crowns and water
+
+The brief admits quays and water into an otherwise buildings-only scope for one
+reason: buildings are unreadable without them. It also warns against the easy
+mistake — Amsterdam is flat but not level, and "a canal that renders perfectly
+horizontal across a kilometre is wrong".
+
+Measured, and the warning is right. The buildings fronting a canal stand *on*
+its quay, so 3DBAG's AHN-derived ground level for each of them samples the crown
+about every five metres of frontage — a denser survey than this project could
+acquire on its own. Bucketed every 45 m and taken as a median:
+
+| canal | length | crown min / median / max (m NAP) | fall | freeboard |
+|---|---|---|---|---|
+| Prinsengracht | 1,755 m | 0.17 / 0.57 / 1.42 | **1.25 m** | 0.97 m |
+| Herengracht | 1,575 m | 0.38 / 0.75 / 1.41 | 1.03 m | 1.15 m |
+| Singel | 1,350 m | 0.37 / 0.82 / 1.63 | **1.26 m** | 1.22 m |
+| Brouwersgracht | 630 m | 0.44 / 0.88 / 1.45 | 1.01 m | 1.28 m |
+| Leidsegracht | 360 m | 0.62 / 0.89 / 1.23 | 0.61 m | 1.29 m |
+
+**A canal drawn level along its length is wrong by up to 1.26 m** — more than
+the freeboard itself. Per-segment crowns are in the extract and a renderer
+should use them rather than any single number.
+
+It also corrected one of mine. `NOMINAL_QUAY_CROWN_NAP_M` was 1.05 m, a
+plausible figure from nothing in particular; the measured median across 126
+segments is **0.73 m**. The guess was 32 cm high — a third of the freeboard, and
+enough to float every building in the pilot. Water level is unchanged and still
+not measured here: it is Rijkswaterstaat's target level for the Amsterdam
+boezem, carried in `rdNew.ts` with its source.
+
 ## What M0 still owes
 
 - **RECON-5** PDOK ortho roof colour across the boundary. The pipeline already
