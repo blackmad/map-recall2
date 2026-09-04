@@ -388,7 +388,22 @@ measure end to end from Amsterdam's CC BY panoramas.
 
 **What actually blocks progress now, in order.**
 
-1. **Nothing is drawn in the game.** Fourteen commits, zero pixels. The brief
+1. **The massing layer is wired but its pixels are unverified.** The extract,
+   the typed geometry, 13 passing geometry checks, the browser adapter, the
+   bundle, the wiring into `vector-map.js`/`index.html` and a
+   reference-viewpoint harness at `public/canal-drive/facade-twin.html` all
+   exist. What has *not* happened is seeing it draw. Two real bugs were found
+   and fixed on the way — a `glyphs: null` that stopped the harness style
+   loading, and geometry emitted Z-up when MapLibre's custom-layer transform
+   expects Y-up, which lays every building flat on the water. Then the map
+   stopped finishing its style load in this environment with no error surfaced,
+   and the game page itself redirects to the deployed site (Firebase auth's
+   authDomain), so neither route could be driven to a screenshot. **Next
+   session: get one screenshot of the harness.** Everything downstream is
+   cheaper once a silhouette can be checked by eye. Note a second dev server was
+   running on :3000 from another worktree — use a private port.
+
+1b. **Then the overlay gate.** Fourteen commits, zero verified pixels. The brief
    gates M1 — massing in-game, recognisable in overlay against reference —
    before measurement work, and every measurement bug found so far took
    paragraphs of prose to discover from JSON when it would have been obvious in

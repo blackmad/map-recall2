@@ -1,0 +1,180 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Façade twin — massing harness</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<style>
+  :root { color-scheme: dark; --ink:#eef2f1; --panel:#161c1e; --line:#333d3f; --muted:#8b9595; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #0e1214; color: var(--ink);
+    font: 14px/1.5 "IBM Plex Sans", system-ui, sans-serif; }
+  #map { position: absolute; inset: 0; }
+  .panel { position: absolute; top: 14px; left: 14px; z-index: 5; width: 292px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 13px 15px; }
+  .panel h1 { font-size: 15px; margin: 0 0 3px; }
+  .panel p.sub { margin: 0 0 11px; color: var(--muted); font-size: 12.5px; }
+  fieldset { border: 0; border-top: 1px solid var(--line); margin: 11px 0 0; padding: 10px 0 0; }
+  legend { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 0 6px 0 0; }
+  .row { display: flex; gap: 5px; flex-wrap: wrap; }
+  button, select { background: #1f2729; color: var(--ink); border: 1px solid var(--line);
+    border-radius: 3px; padding: 5px 9px; font: inherit; font-size: 12.5px; cursor: pointer; }
+  button[aria-pressed="true"] { background: var(--ink); color: #10161a; }
+  button:hover { border-color: #55696b; }
+  select { width: 100%; }
+  input[type=range] { width: 100%; }
+  .legend { display: grid; gap: 4px; margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .legend div { display: flex; align-items: center; gap: 7px; }
+  .sw { width: 13px; height: 10px; border-radius: 2px; }
+  .stat { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--muted); margin-top: 9px; }
+</style>
+
+<div id="map"></div>
+<div class="panel">
+  <h1>Façade twin — LoD2.2 massing</h1>
+  <p class="sub">The measured silhouette, in the game's own renderer. No façades: 2,981 of these buildings have never had their front observed.</p>
+
+  <fieldset><legend>Colour by</legend>
+    <div class="row" id="modes"></div>
+    <div class="legend" id="legend"></div>
+  </fieldset>
+
+  <fieldset><legend>Reference viewpoint</legend>
+    <select id="viewpoints"></select>
+  </fieldset>
+
+  <fieldset><legend>Basemap</legend>
+    <div class="row">
+      <button id="basemap-off" aria-pressed="true">None</button>
+      <button id="basemap-on" aria-pressed="false">Streets</button>
+    </div>
+    <p class="sub" style="margin:6px 0 0">The overlay comparison the brief asks for. Off by default so the geometry is visible even when the tile server is not.</p>
+  </fieldset>
+
+  <fieldset><legend>Massing opacity</legend>
+    <input type="range" id="opacity" min="0" max="100" value="100">
+    <p class="sub" style="margin:6px 0 0">Fade the model to compare its silhouette against the basemap beneath.</p>
+  </fieldset>
+
+  <p class="stat" id="stat">loading…</p>
+</div>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="js/three.bundle.js"></script>
+<script src="js/facade-twin.bundle.js"></script>
+<script>
+/**
+ * A bare harness for the massing layer.
+ *
+ * The layer's home is the game, and it is wired there. This page exists because
+ * the brief asks for fixed reference viewpoints and a blendable overlay, and
+ * because a silhouette is the one thing worth checking before any more façade
+ * work happens — every measurement bug so far took paragraphs of prose to find
+ * in JSON and would have been obvious here in seconds.
+ */
+const VIEWPOINTS = [
+  { name: 'Westermarkt, facing the Westerkerk',      center: [4.88379, 52.37466], zoom: 17.2, pitch: 66, bearing: 300 },
+  { name: 'Prinsengracht 263, frontal',              center: [4.88400, 52.37520], zoom: 17.8, pitch: 72, bearing: 120 },
+  { name: 'Keizersgracht 123, Huis met de Hoofden',  center: [4.88650, 52.37760], zoom: 17.6, pitch: 70, bearing: 210 },
+  { name: 'Herengracht, looking south along the water', center: [4.88900, 52.37500], zoom: 16.4, pitch: 74, bearing: 205 },
+  { name: 'Keizersgracht 100–180, the measured block', center: [4.88750, 52.37850], zoom: 16.8, pitch: 68, bearing: 225 },
+  { name: 'Brouwersgracht, the northern edge',       center: [4.89000, 52.37960], zoom: 16.2, pitch: 66, bearing: 250 },
+  { name: 'The whole boundary, from above',          center: [4.88700, 52.37350], zoom: 14.3, pitch: 45, bearing: 0 },
+];
+
+/**
+ * A bare style by default.
+ *
+ * The harness has to work without a basemap: its job is to show whether the
+ * measured silhouette is right, and waiting on a tile server means it shows
+ * nothing at all when that server is slow or unreachable — which is exactly
+ * when you most want to look at your own geometry. The basemap is a toggle,
+ * not a dependency.
+ */
+const BARE_STYLE = {
+  version: 8, sources: {},
+  layers: [{ id: 'ground', type: 'background', paint: { 'background-color': '#11171a' } }],
+};
+const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/positron';
+
+const map = new maplibregl.Map({
+  container: 'map',
+  style: BARE_STYLE,
+  center: VIEWPOINTS[0].center, zoom: VIEWPOINTS[0].zoom,
+  pitch: VIEWPOINTS[0].pitch, bearing: VIEWPOINTS[0].bearing,
+  antialias: true,
+});
+
+map.on('error', event => {
+  const stat = document.getElementById('stat');
+  if (stat) stat.textContent = 'map error: ' + (event.error?.message || event.type);
+});
+
+/**
+ * A style with no sources can finish loading before this script attaches its
+ * handler, so `load` never arrives and the page sits on "loading…" forever.
+ * Run setup on whichever comes first, once.
+ */
+let started = false;
+const start = () => { if (started) return; started = true; setup(); };
+map.on('load', start);
+if (map.loaded() || map.isStyleLoaded()) start();
+else map.once('style.load', start);
+
+function setup() {
+  const twin = new window.CanalRecallFacadeTwin.FacadeTwin(map, maplibregl, {
+    extractUrl: '/data/extracts/amsterdam/staging/facade-twin/amsterdam-grachtengordel-west/lod22.json',
+    onReady: t => {
+      const n = t.extract.buildings.length;
+      const measured = t.extract.buildings.filter(b => b.ridge !== null).length;
+      document.getElementById('stat').textContent =
+        `${n} buildings · ${measured} with a measured ridge · ${n - measured} at a fallback height`;
+    },
+  });
+  window.__twin = twin;
+  twin.setEnabled(true);
+
+  const LEGENDS = {
+    massing: [['#b8ada0', 'wall'], ['#8a7f74', 'roof']],
+    height: [['#f0e0d6', 'under 8 m'], ['#dcb49c', '8–12 m'], ['#c48a68', '12–16 m'], ['#a4603d', '16–20 m'], ['#7a3618', '20 m and over']],
+    evidence: [['#1baf7a', 'height measured'], ['#eda100', 'source heights inverted'], ['#e34948', 'no measured height']],
+  };
+  const modes = document.getElementById('modes');
+  const legend = document.getElementById('legend');
+  const paintLegend = mode => {
+    legend.innerHTML = LEGENDS[mode].map(([c, label]) =>
+      `<div><span class="sw" style="background:${c}"></span>${label}</div>`).join('');
+  };
+  for (const mode of ['massing', 'height', 'evidence']) {
+    const button = document.createElement('button');
+    button.textContent = mode[0].toUpperCase() + mode.slice(1);
+    button.setAttribute('aria-pressed', String(mode === 'massing'));
+    button.onclick = () => {
+      twin.setColourMode(mode);
+      [...modes.children].forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+      paintLegend(mode);
+    };
+    modes.append(button);
+  }
+  paintLegend('massing');
+
+  const select = document.getElementById('viewpoints');
+  VIEWPOINTS.forEach((v, i) => select.append(new Option(v.name, String(i))));
+  select.onchange = () => {
+    const v = VIEWPOINTS[Number(select.value)];
+    map.flyTo({ center: v.center, zoom: v.zoom, pitch: v.pitch, bearing: v.bearing, duration: 900 });
+  };
+
+  document.getElementById('opacity').oninput = event => twin.setOpacity(event.target.value / 100);
+
+  // Switching styles drops custom layers, so the twin is re-added afterwards.
+  const setBasemap = (on) => {
+    document.getElementById('basemap-on').setAttribute('aria-pressed', String(on));
+    document.getElementById('basemap-off').setAttribute('aria-pressed', String(!on));
+    const camera = { center: map.getCenter(), zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing() };
+    map.once('style.load', () => { map.jumpTo(camera); map.addLayer(twin.layer); twin.setEnabled(true); });
+    map.setStyle(on ? BASEMAP_STYLE : BARE_STYLE);
+  };
+  document.getElementById('basemap-on').onclick = () => setBasemap(true);
+  document.getElementById('basemap-off').onclick = () => setBasemap(false);
+}
+</script>

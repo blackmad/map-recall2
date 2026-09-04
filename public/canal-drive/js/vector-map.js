@@ -15,6 +15,8 @@ class VectorBasemap {
     this._treesVisible = false;
     this._detailedBuildings = null;
     this._detailedBuildingsVisible = false;
+    this._facadeTwin = null;
+    this._facadeTwinVisible = false;
     this._googleTiles = null;
     this._googleTilesEnabled = false;
     this._googleTilesActive = false;
@@ -53,6 +55,16 @@ class VectorBasemap {
           this.setActiveLandmark(this._activeLandmark);
         });
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
+      }
+      if (window.CanalRecallFacadeTwin && window.CanalRecallFacadeTwin.FacadeTwin) {
+        // The façade twin owns its boundary's buildings. Where it draws, the
+        // 3DBAG tile layer must not: two representations of one building
+        // fighting for the same pixels is the z-fighting the renderer design
+        // exists to prevent.
+        this._facadeTwin = new window.CanalRecallFacadeTwin.FacadeTwin(this.map, maplibregl, {
+          onReady: () => { this._syncDetailedBuildingLayers(); this.map.triggerRepaint(); },
+        });
+        this._facadeTwin.setEnabled(this._facadeTwinVisible);
       }
       if (window.CanalRecallVehicles) {
         const { PlayerBike3D, PlayerBoat3D } = window.CanalRecallVehicles;
@@ -299,6 +311,28 @@ class VectorBasemap {
     if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
     this._syncDetailedBuildingLayers();
     this.setActiveLandmark(this._activeLandmark);
+  }
+
+  /** Show the façade twin's measured massing over the pilot boundary. */
+  setFacadeTwinVisible(visible) {
+    this._facadeTwinVisible = !!visible;
+    if (this._facadeTwin) this._facadeTwin.setEnabled(this._facadeTwinVisible);
+    this._syncDetailedBuildingLayers();
+  }
+
+  /** 'massing' | 'height' | 'evidence' — what the massing is coloured by. */
+  setFacadeTwinColourMode(mode) {
+    if (this._facadeTwin) this._facadeTwin.setColourMode(mode);
+  }
+
+  /** Fade the massing against a reference photograph, 0…1. */
+  setFacadeTwinOpacity(opacity) {
+    if (this._facadeTwin) this._facadeTwin.setOpacity(opacity);
+  }
+
+  /** Pand ids the façade twin has taken ownership of, for tier resolution. */
+  facadeTwinOwnedIds() {
+    return this._facadeTwin && this._facadeTwinVisible ? this._facadeTwin.ownedIds() : new Set();
   }
 
   setGoogleTilesEnabled(enabled) {
