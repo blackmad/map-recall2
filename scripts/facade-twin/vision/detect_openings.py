@@ -23,15 +23,16 @@ Usage:
   python detect_openings.py --strips <dir> --out <json> [--limit N] [--ids a,b]
 """
 from __future__ import annotations
-import argparse, base64, io, json, os, sys, time, urllib.request, urllib.error
+import argparse, base64, io, json, os, sys, warnings
 from pathlib import Path
+
+warnings.filterwarnings("ignore")
 
 import numpy as np
 from PIL import Image
 from scipy import ndimage
 
 MODEL = "amsterdam-facade/2"
-ENDPOINT = "https://segment.roboflow.com"
 
 # A window smaller than this is either a fanlight fragment or mask noise. Set in
 # metres rather than pixels because strips are rendered at different resolutions
@@ -42,26 +43,31 @@ MIN_W_M, MIN_H_M = 0.35, 0.45
 MIN_ASPECT = 0.12
 
 
-def segment(path: Path, key: str, retries: int = 3) -> dict | None:
-    data = base64.b64encode(path.read_bytes())
-    url = f"{ENDPOINT}/{MODEL}?api_key={key}&name={path.name}"
-    for attempt in range(retries):
-        try:
-            req = urllib.request.Request(
-                url, data=data, headers={"Content-Type": "application/x-www-form-urlencoded"})
-            with urllib.request.urlopen(req, timeout=180) as r:
-                return json.load(r)
-        except urllib.error.HTTPError as e:
-            if e.code in (429, 500, 502, 503) and attempt < retries - 1:
-                time.sleep(2 ** attempt * 2)
-                continue
-            return None
-        except Exception:
-            if attempt < retries - 1:
-                time.sleep(2)
-                continue
-            return None
-    return None
+def load_model():
+    """
+    Load the weights locally rather than calling the hosted endpoint.
+
+    `get_model` fetches the ONNX weights once — 17.5 MB — caches them, and then
+    runs on-device through CoreML on Apple Silicon. That matters for more than
+    speed: a thousand-image run over a hosted API is rate-limited, costs money,
+    needs a key present at run time, and makes the extraction unreproducible by
+    anyone who does not have one. Offline weights make the whole pass a local
+    computation, which is what the rest of this pipeline already is.
+
+    An API key is still needed the first time, to fetch the weights.
+    """
+    from inference import get_model
+    return get_model(model_id=MODEL)
+
+
+def segment(model, path: Path) -> dict | None:
+    try:
+        image = np.array(Image.open(path).convert("RGB"))
+        result = model.infer(image)
+        result = result[0] if isinstance(result, list) else result
+        return result.model_dump()["predictions"]
+    except Exception:
+        return None
 
 
 def instances(mask: np.ndarray, class_id: int, ppm: float, height_px: int, base_m: float):
@@ -103,10 +109,10 @@ def main() -> int:
     ap.add_argument("--base", type=float, default=1.8, help="strip base, metres below ground")
     args = ap.parse_args()
 
-    key = os.environ.get("ROBOFLOW_API_KEY")
-    if not key:
-        print("ROBOFLOW_API_KEY not set", file=sys.stderr)
+    if not os.environ.get("ROBOFLOW_API_KEY"):
+        print("ROBOFLOW_API_KEY not set (needed once, to fetch the weights)", file=sys.stderr)
         return 2
+    model = load_model()
 
     meta = json.loads(Path(args.meta).read_text())
     by_id = {f["pandId"]: f for f in meta["facades"]}
@@ -123,11 +129,10 @@ def main() -> int:
         path = strips / f"{pid}.jpg"
         if not path.exists() or pid not in by_id:
             continue
-        r = segment(path, key)
-        if not r:
+        preds = segment(model, path)
+        if not preds:
             failed += 1
             continue
-        preds = r["predictions"]
         cmap = {int(k): v for k, v in preds["class_map"].items()}
         mask = np.array(Image.open(io.BytesIO(base64.b64decode(preds["segmentation_mask"]))))
         if mask.ndim == 3:
