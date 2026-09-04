@@ -3,6 +3,184 @@
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
+Entries keep the words they were written in, because each records *why* a thing
+is the way it is, and that is the expensive part to recover later.
+
+## Amsterdam façade twin: reading façades out of the city's own panoramas
+
+Amsterdam publishes its street-level panoramas under CC BY 4.0, which is what
+makes measurement possible at all — the brief forbids shipping third-party
+imagery, and an openly licensed municipal source is one a derived measurement
+can cite. Coverage was computed first, from published camera poses and before
+downloading a single image, because whether a wall can be measured is decided by
+where the camera stood rather than by what the pixels contain: 139,937 poses,
+17,251 elevations, 26.5% of elevations frontal, **88.6% of buildings with a
+frontal view of at least one elevation**, and 86.7% of those leaf-off. The 70%
+of elevations never seen are party walls and courtyard returns no street camera
+can reach, which is the shape the brief predicted.
+
+**The heading convention nearly took me, and the way it nearly took me is the
+lesson.** Publishers differ over whether a panorama's `heading` sits at the
+image centre or at column zero, and the two differ by exactly 180°. I rendered
+one, saw an upright and wholly convincing canal frontage, and accepted it — it
+was the building behind the camera. In a city where every direction looks like a
+canal, "the output looks right" is not a calibration. Settling it took a
+prediction checked against geometry known independently: slice one panorama into
+eight 45° bands, ask which band holds a wall already measured at 4.2 m, and
+compare against what each convention predicts. It fell at u≈0.3; `centre`
+predicts 0.305 and `edge` 0.805.
+
+**Registration has no systematic error, and that is a different claim from
+verified.** The first check correlated several views of one wall against each
+other and failed at 2.9 m — wrong instrument, because views 20 and 80 m from a
+façade differ in resolution, exposure, season and which parked cars obscure
+what. The second correlated vertical-edge density against BAG's plot boundaries
+and also failed, for a subtler reason: a canal façade's strongest vertical edges
+are window jambs repeating every metre or two, and a quasi-periodic signal
+correlates almost equally at many shifts, so the peak lands at random. The
+roofline is the right signal because it is *aperiodic* — an Amsterdam terrace is
+narrow plots built to different heights, so its skyline is a staircase stepping
+at every party wall. Two sky-detector bugs came out of that, both producing
+confident nonsense: testing "close to median sky brightness" makes a white cloud
+read as building and plants a roofline halfway up the sky, and taking the median
+of the top band fails when a taller building behind fills part of it. Median
+disagreement fell 2.92 → 1.04 m, and the number that matters is the signed mean:
+**−0.13 m**. A constant misregistration biases every building the same way.
+Nothing like that is present. The check nonetheless stays red at its 0.5 m bar,
+because "no detectable bias" is not "verified to half a metre" and measurement
+should not start on the weaker claim.
+
+**Every time I reached for a heuristic about building geometry, the register
+already held the answer.** Three in a row picked the wrong wall as a building's
+front — longest, most-viewed, best-quality — each landing on a party wall
+running back into the block or a corner return. A canal house's front is the
+*short* side of its plot, and BAG gives that exactly as the short side of the
+footprint's minimum-area rectangle. Constraining candidates to within 35% of it
+fixed the selection outright.
+
+**But the grammar is real, and refusing to use it was its own mistake.** After
+those three failures I had talked myself out of heuristics entirely, and the
+opening detector stalled at nought to three windows on houses with ten. The
+brief draws the line precisely: the canal ring's grammar is useful as a
+*rendering vocabulary*, never as a source of facts — it tells you how to draw a
+klokgevel once you know this house has one, and must never tell you that it has
+one. Using "windows line up in bays and storeys" to decide where in this image to
+look is still measuring this building's own photograph. Two changes followed. An
+opening is not *dark*, it is *not the wall*: on these façades a window is as
+often brighter than its brick as darker, because white frames, net curtains and
+sky reflections all read lighter while an unlit room reads darker. And storeys
+are a *ladder* rather than independent bands, because a shadowed band otherwise
+goes missing and nothing notices — bands found separately came out eleven metres
+apart.
+
+**The demo script was where the discipline quietly stopped applying.** Its first
+version wrote its own `{ value, source }` shape instead of the record schema,
+with source names not in `FacadeSource` and no confidence, observation or date,
+so none of the evidence machinery could run on it — and it carried a fourth copy
+of the gable regex, throwing away the rear-clause handling `heritageText.ts`
+already does. Routed properly through `buildRecordFromRecon` →
+`applyHeritageEvidence` → `applyStreetLevelEvidence` → `auditHouse`, the audit
+immediately found 281 violations in data the forked shape had reported as clean.
+Two were real: street-level fields carried a full ISO timestamp where the ledger
+dates observations by day, and `storeyHeights` was being set to the *gaps
+between* window bands, so n bands gave n−1 values where the record wants one per
+storey. Padding to length would have invented the top storey's height, which is
+what the length check exists to catch.
+
+Two guesses were removed in the same pass. Roof material had been
+`bouwjaar < 1850 ? pantile : slate` under a source label that made it look
+measured — a prior supplying a value, and its fallback read the 215 unknown-year
+buildings as medieval. It is `default` now until RECON-5 measures it. Heights
+were being invented with `?? 1` and `?? ground + 12`; `resolveHeights` decides
+instead, and caught the eight buildings whose modelled ridge sits below their own
+measured roof height.
+
+Everything the opening detector produces is capped at confidence 0.4, below any
+auto-accept. That is the measured position rather than modesty: the storey
+ladder returns six storeys for 32 of 56 buildings on a street that is mostly
+three or four plus an attic, and the wall-colour sampler's percentile was tuned
+by moving it until fewer buildings came out black — which is fitting to an
+expectation about the answer, not validating against one.
+
+## Amsterdam façade twin, M0: measure first, and let the measurements argue back
+
+The build prompt in `AMSTERDAM_FACADE_TWIN.md` is emphatic that ground truth is
+measured rather than guessed, and that its own estimates are not to be carried
+into a schedule. Taking that literally turned out to be the whole value of M0:
+three of the brief's working assumptions did not survive contact with the data,
+and each one would have been expensive to discover later.
+
+**The coordinate system had a constant lie in it.** The standard
+Schreutelkamp / Strang van Hees polynomials sit 0.183 m east and 0.234 m north
+off PDOK's own published WGS84 — measured over 24 Locatieserver RD/LL pairs from
+Kerkrade to Groningen, and constant to within a centimetre nationally. A
+constant that stable over 300 km is a datum offset, not approximation noise, so
+it is subtracted as a measured constant rather than absorbed into a tolerance. A
+second session measured the same offset independently, against a different
+endpoint and a different point set, and got 0.184 / 0.233 — one millimetre
+apart. Residual after correction is 1.4 mm worst inside the pilot, which is a
+hundredth of the 12.5 cm orthophoto pixel everything downstream measures from.
+Two tolerances are pinned rather than one, because once the datum offset is
+removed the remaining residual is a polynomial fit centred near Amersfoort:
+small mid-country, larger at the coasts. Demanding pilot precision in Vlissingen
+would be pinning noise.
+
+**The boundary is not a box, and it is not the shape the brief describes.** It
+follows canal centrelines, because the ring curves continuously and a chord
+between corner junctions cuts off the outside of every bend. Each leg is pushed
+outward by its own documented distance to reach the far bank — 42 m on
+Brouwersgracht, 45 m on the main grachten, 95 m on Prinsengracht to take the
+first Jordaan row, that last figure set from measured perpendiculars rather than
+chosen. Two facts the four-canal description does not cover: Singel never
+reaches Leidsegracht, so Herengracht carries the south-east corner; and the
+district is 0.95 km × 1.77 km, not the estimated 1.1 × 0.7 — the brief's
+north–south run was roughly half the real one.
+
+**Membership is footprint intersection, and it matters which rule you test.**
+Singel 411's BAG address point sits 79 m from the Singel centreline, outside any
+sane offset, while its footprint plainly crosses the boundary. Address points
+sit deep inside blocks. A check written against them would have passed 35 of 36
+named locations while quietly dropping far-bank buildings — so that exact case
+is pinned as the one that distinguishes the two rules. An offset ring also
+self-intersects wherever the offset exceeds the local radius of curvature; one
+such loop at a kink in Singel is excised, because left in it inverts
+inside/outside for every building near it.
+
+**The pilot is 3,025 buildings, not "roughly two thousand".** Median plot width
+is 5.66 m, which is the canal-house grammar showing up in the data unprompted.
+215 of them carry BAG's `1005` sentinel and have no known construction year, so
+they must not be routed as though they were medieval.
+
+**3DBAG gives good massing and an untrustworthy gable.** Its own reconstruction
+error is 0.59 m median across the pilot, and the tempting move — threshold at
+0.5 m, promote what passes — keeps only 39% of the boundary. But the same number
+split by roof type is 0.11 m on flat roofs against 0.60 m on pitched, and it is
+flat across plot width and across century. So it measures roof *complexity*, not
+reconstruction failure: dormers, chimneys, ridges and stepped gables are real
+geometry that LoD2.2 planes do not represent, and the point cloud reports the
+difference honestly. A global gate would reject buildings for being interesting,
+which is exactly backwards for a project about gables. Footprints, walls,
+storeys and eaves heights stand; the gable top has to be observed.
+
+**The monument register is real, hidden, and narrower than hoped.** Every
+endpoint one would reach for is a 404 — `api.pdok.nl/rce/rijksmonumenten/*`, the
+PDOK WFS, the atom index. It actually lives in two places that must be joined:
+geometry at `services.rce.geovoorziening.nl/rce/wfs`
+(`rce:NationalListedMonumentPoints`) and the *redengevende omschrijving* text at
+the RCE linked-data SPARQL endpoint under `ceo:heeftOmschrijving`. Inside the
+boundary that is 1,764 monuments, 1,568 with text — but only 989 distinct panden,
+because one house can carry several records and 15% of monument points miss every
+footprint. The text names a specific gable type for 70% of described monuments,
+and that is close to all it reliably gives: bay count 3%, storey count 1%,
+median length 88 characters. So it is a 23%-coverage gable-type source — a real
+head start on the hardest field — and not the general façade-attribute source
+the brief hoped for. Bays, storeys and window arrangement must come from imagery.
+
+Two API behaviours are written down so nobody rediscovers them: the 3DBAG API
+takes an RD bbox and returns zero features rather than an error for a WGS84 one,
+and its offsets are 1-based, so `offset=0` is an HTTP 500 and paging must follow
+the server's own `next` link.
+
 ## LoD1 city republished from the polished pipeline
 
 `build:lod1-city` → `build:lod1-tiles` → `publish:lod1-city --confirm` after
@@ -360,9 +538,6 @@ uploads a model under a translated name.
 
 The licence is unresolved and is recorded in `NOTICE.md` and TODO item 22.
 
-
-Entries keep the words they were written in, because each records *why* a thing
-is the way it is, and that is the expensive part to recover later.
 
 - **The façade pilot was aimed at the road, and the API's own conventions say
   why.** With a gate keeping only real buildings, `w274039950` — 134 m² and

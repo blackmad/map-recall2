@@ -238,6 +238,71 @@ the custom-layer spike and its measurements. That result decides whether the
 production format is tiled glTF, 3D Tiles, or signature-landmark GLBs; it must
 not introduce a second map or a runtime dependency on OSM Buildings.
 
+**10b. Amsterdam façade twin — pilot boundary reconnaissance (M0).**
+The build prompt is [`AMSTERDAM_FACADE_TWIN.md`](AMSTERDAM_FACADE_TWIN.md);
+measured findings are in [`FACADE_RECON.md`](FACADE_RECON.md). M0 is done for
+RECON-1/2/3, merged to `main` on 2026-09-04: coordinate system pinned
+to 1.4 mm in the pilot, boundary fixed as geometry with 36 named locations,
+**3,025 panden** counted (not the brief's ~2,000), 3DBAG massing joined at 95.7%,
+and the Rijksmonumenten register located and mined.
+
+Two measured findings change the plan and should be read before M1 starts:
+
+- **3DBAG's roof is not a gable source.** `b3_rmse_lod22` is 0.60 m median on
+  pitched roofs against 0.11 m on flat, and flat across plot width and century.
+  It tracks roof *complexity*, not reconstruction failure, so a naive 0.5 m gate
+  would reject 61% of the pilot for being interesting. Massing, storeys and
+  eaves are trustworthy; the gable top must come from façade observation.
+- **The monument register is a gable-type source and little else.** It names a
+  specific gable for 70% of described monuments — 695 panden, 23% of the
+  pilot — but bay count for 3% and storey count for 1%. Median description is 88
+  characters. Bays, storeys and window arrangement must come from imagery.
+
+Since then: the pipeline is source-adapter driven and runs unchanged over a
+second city, RECON-4 is done, observation coverage is measured (139,937 panorama
+poses; **88.6% of buildings have a frontal view**), and façades rectify and
+measure end to end from Amsterdam's CC BY panoramas.
+
+**What actually blocks progress now, in order.**
+
+1. **Nothing is drawn in the game.** Fourteen commits, zero pixels. The brief
+   gates M1 — massing in-game, recognisable in overlay against reference —
+   before measurement work, and every measurement bug found so far took
+   paragraphs of prose to discover from JSON when it would have been obvious in
+   five seconds of overlay. Next slice: the MapLibre custom layer drawing the
+   3,025 records at LoD2.2 keyed by `pand_id`, `resolveFidelityTier` suppressing
+   `detailed-buildings` inside the boundary so one representation owns each
+   building, and the photo/render opacity overlay at two reference viewpoints.
+2. **No detector output has been validated.** `check-facade-registration.ts` is
+   red at its own 0.5 m bar, and street-level fields are capped at confidence
+   0.4 because of it. The storey ladder returns 6 storeys for 32 of 56
+   Keizersgracht buildings where 3DBAG's pilot median is 4–5. `calibration.ts`
+   was written for this and has never been fed a real `ReviewOutcome`. Fix:
+   hand-label ~20 of the Keizersgracht 100–180 rectified strips for storeys,
+   bays, gable and wall family, run `fieldAccuracy` → `fieldVerdict`, and let
+   the verdict decide accept / needs-review / demote per field.
+3. **RECON-5 blocks a field.** Roof material is `default` on every record
+   because inferring it from bouwjaar would be a prior supplying a value. The
+   pipeline exists (`scripts/build-roof-color-observations.ts`); it needs
+   pointing at the boundary rather than the A10 cache, and `nearestRoof` in
+   `materials.ts` is already waiting for it.
+4. **BUILD-1…5 can run in parallel now.** The Blender gable, window, cornice and
+   pui libraries depend on the vocabulary, not on any measurement.
+   `materials.ts` is a start on BUILD-5, but `wallFamily`'s thresholds are
+   constants with no labelled case behind them.
+
+Also outstanding: RECON-10 (quay, water level, bridges), the 131 panden with no
+3DBAG match, and reconciling the 3DBAG API's `v2023.10.08` collection against the
+`v20250903` tileset the runtime actually streams.
+
+Left by the merge, and cheap: the project now carries two RD New
+implementations — `src/canalRecall/rdCoordinates.ts` (pinned by
+`test:rd-coordinates`) and `src/canalRecall/facade/rdNew.ts` (pinned by
+`test:facade-coordinates`, and the one that subtracts the measured 0.183 m /
+0.234 m datum offset). Both checks pass, so nothing is wrong today; keep the
+façade one and fold the other into it before a third caller picks the wrong
+one.
+
 **11. Let the game actually play a second city.**
 The extractor is city-agnostic and four cities are now built and checked:
 Amsterdam, Utrecht (11,801 routing ways, 380 landmarks), Rotterdam (31,810
