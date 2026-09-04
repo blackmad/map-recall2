@@ -17,6 +17,8 @@ export class FacadeTwin {
     this.maplibregl = maplibregl;
     this.extractUrl = options.extractUrl
       || '/data/extracts/amsterdam/staging/facade-twin/amsterdam-grachtengordel-west/lod22.json';
+    this.textureUrl = options.textureUrl || '/canal-drive/facade-textures/manifest.json';
+    this.textured = options.textured !== false;
     this.enabled = false;
     this.ready = false;
     this.colourMode = options.colourMode || 'massing';
@@ -36,6 +38,16 @@ export class FacadeTwin {
     this.enabled = !!enabled;
     if (this.enabled && !this.map.getLayer(this.layer.id)) this.map.addLayer(this.layer);
     if (this._mesh) this._mesh.visible = this.enabled;
+    this.map.triggerRepaint();
+  }
+
+  /** Draw with the extracted wall textures, or with flat measured colour. */
+  setTextured(on) {
+    this.textured = !!on;
+    if (this._mesh) {
+      this._mesh.material.map = this.textured ? this._atlas : null;
+      this._mesh.material.needsUpdate = true;
+    }
     this.map.triggerRepaint();
   }
 
@@ -117,8 +129,45 @@ export class FacadeTwin {
           .scale(new THREE.Vector3(scale, -scale, scale))
           .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
 
+        // Wall textures, packed into one atlas so the whole boundary stays a
+        // single draw call. Each material gets a cell; a wall's UVs are scaled
+        // so the tile repeats at its real one-metre size.
+        let atlasIndex = new Map();
+        try {
+          const manifest = await (await fetch(owner.textureUrl)).json();
+          const tiles = manifest.textures || [];
+          if (tiles.length) {
+            const cell = manifest.metadata?.tilePixels || 96;
+            const cols = Math.ceil(Math.sqrt(tiles.length));
+            const rows = Math.ceil(tiles.length / cols);
+            const canvas = document.createElement('canvas');
+            canvas.width = cols * cell; canvas.height = rows * cell;
+            const context = canvas.getContext('2d');
+            await Promise.all(tiles.map((tile, i) => new Promise(resolve => {
+              const img = new Image();
+              img.onload = () => {
+                context.drawImage(img, (i % cols) * cell, Math.floor(i / cols) * cell, cell, cell);
+                atlasIndex.set(tile.materialId, {
+                  u0: (i % cols) / cols, v0: Math.floor(i / cols) / rows,
+                  du: 1 / cols, dv: 1 / rows,
+                });
+                resolve();
+              };
+              img.onerror = resolve;
+              img.src = owner.textureUrl.replace(/manifest\.json$/, tile.file);
+            })));
+            owner._atlas = new THREE.CanvasTexture(canvas);
+            owner._atlas.colorSpace = THREE.SRGBColorSpace;
+            owner._atlas.anisotropy = 4;
+          }
+        } catch (error) {
+          // No texture pack is a fine state: the measured colours still draw.
+          console.warn('Façade textures unavailable; drawing flat measured colour.', error);
+        }
+        owner._atlasIndex = atlasIndex;
+
         owner._cache = new Map();
-        const positions = [], normals = [], colours = [];
+        const positions = [], normals = [], colours = [], uvs = [];
         const colour = new THREE.Color();
         for (const building of extract.buildings) {
           const geometry = buildingGeometry(building);
@@ -138,6 +187,16 @@ export class FacadeTwin {
             normals.push(geometry.normals[i * 3], geometry.normals[i * 3 + 2], -geometry.normals[i * 3 + 1]);
             colour.setHex(colourFor(building, owner.colourMode, geometry.isRoof[i] ? 'roof' : 'wall'));
             colours.push(colour.r, colour.g, colour.b);
+            // World-space UVs at one tile per metre, mapped into the material's
+            // atlas cell. Using world coordinates rather than per-face UVs keeps
+            // the bond continuous across a building's corners.
+            const cellFor = geometry.isRoof[i] ? null : atlasIndex.get(building.facade?.wallMaterial);
+            if (cellFor) {
+              uvs.push(cellFor.u0 + (((east % 1) + 1) % 1) * cellFor.du,
+                       cellFor.v0 + (((up % 1) + 1) % 1) * cellFor.dv);
+            } else {
+              uvs.push(0.001, 0.001);
+            }
           }
         }
 
@@ -153,6 +212,7 @@ export class FacadeTwin {
             normals.push(opening.normals[i * 3], opening.normals[i * 3 + 2], -opening.normals[i * 3 + 1]);
             colour.setHex(GLASS_COLOUR);
             colours.push(colour.r, colour.g, colour.b);
+            uvs.push(0.001, 0.001);
           }
           owner._openingRanges.push([from, positions.length / 3]);
         }
@@ -167,13 +227,19 @@ export class FacadeTwin {
           normals.push(0, 1, 0);
           colour.setHex(WATER_COLOUR);
           colours.push(colour.r, colour.g, colour.b);
+          uvs.push(0.001, 0.001);
         }
+
 
         const geometry = new THREE.BufferGeometry();
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
         geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
         geometry.setAttribute('color', new THREE.Float32BufferAttribute(colours, 3));
-        owner._mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({ vertexColors: true }));
+        geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+        owner._mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({
+          vertexColors: true,
+          map: owner.textured ? owner._atlas : null,
+        }));
         owner._mesh.visible = owner.enabled;
         scene.add(owner._mesh);
 

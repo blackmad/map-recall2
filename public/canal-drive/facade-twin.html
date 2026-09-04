@@ -42,6 +42,14 @@
     <select id="viewpoints"></select>
   </fieldset>
 
+  <fieldset><legend>Wall surface</legend>
+    <div class="row">
+      <button id="tex-on" aria-pressed="true">Extracted texture</button>
+      <button id="tex-off" aria-pressed="false">Flat colour</button>
+    </div>
+    <p class="sub" style="margin:6px 0 0">Textures cropped from the buildings' own rectified façades — colour measured, brick bond laid in at 210&nbsp;×&nbsp;50&nbsp;mm.</p>
+  </fieldset>
+
   <fieldset><legend>Basemap</legend>
     <div class="row">
       <button id="basemap-off" aria-pressed="true">None</button>
@@ -215,6 +223,14 @@ function setup() {
     map.once('style.load', () => { map.jumpTo(camera); map.addLayer(twin.layer); twin.setEnabled(true); });
     map.setStyle(on ? BASEMAP_STYLE : BARE_STYLE);
   };
+  const setTextured = (on) => {
+    document.getElementById('tex-on').setAttribute('aria-pressed', String(on));
+    document.getElementById('tex-off').setAttribute('aria-pressed', String(!on));
+    twin.setTextured(on);
+  };
+  document.getElementById('tex-on').onclick = () => setTextured(true);
+  document.getElementById('tex-off').onclick = () => setTextured(false);
+
   document.getElementById('basemap-on').onclick = () => setBasemap(true);
   document.getElementById('basemap-off').onclick = () => setBasemap(false);
 }
