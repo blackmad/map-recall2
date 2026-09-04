@@ -225,6 +225,31 @@ canvas { display: block; position: relative; z-index: 2; }
   letter-spacing: .14em;
   text-transform: uppercase;
 }
+.setup-choice-gloss {
+  margin: -2px 0 8px;
+  color: var(--enamel-muted);
+  font: 500 12px/1.35 var(--font-ui);
+}
+.setup-view-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 16px 0 0;
+}
+.setup-view-summary-body {
+  color: var(--enamel-ink);
+  font: 500 13px/1.4 var(--font-ui);
+}
+.setup-view-change {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--rivet);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
 .setup-choice-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 7px; }
 .setup-choice {
   display: flex; align-items: center; gap: 10px;
@@ -239,10 +264,15 @@ canvas { display: block; position: relative; z-index: 2; }
   color: var(--enamel-ink);
 }
 .setup-choice-text small { color: var(--enamel-muted); font: 500 12px/1.3 var(--font-ui); }
-.setup-choice-row.compact .setup-choice-options { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.setup-choice-row.compact .setup-choice-options { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
 .setup-choice-row.compact .setup-choice { flex-direction: column; justify-content: center; gap: 4px; min-height: 48px; padding: 8px 4px; text-align: center; }
 .setup-choice-row.compact .setup-choice-text small { display: none; }
 .setup-choice-row.compact .setup-choice-text strong { font-size: 12px; }
+.setup-choice-row.compact:has([data-choice="difficulty:expert"].active) .setup-choice-options,
+.setup-choice-row.compact:has([data-choice="difficulty:custom"].active) .setup-choice-options,
+.setup-choice-row.compact[aria-label="Harder difficulties"] .setup-choice-options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 
 .setup-account {
   display: flex; align-items: center; gap: 10px;
@@ -534,7 +564,12 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   }
   .setup-choice-text small { display: none; }
   .setup-choice-text strong { font-size: 13px; }
-  .setup-choice-row.compact .setup-choice-options { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .setup-choice-row.compact .setup-choice-options { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .setup-choice-row.compact[aria-label="Harder difficulties"] .setup-choice-options,
+  .setup-choice-row.compact:has([data-choice="difficulty:expert"].active) .setup-choice-options,
+  .setup-choice-row.compact:has([data-choice="difficulty:custom"].active) .setup-choice-options {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  }
   .setup-choice-row.compact .setup-choice { min-height: 42px; padding: 6px 2px; }
   .setup-choice-row.compact .setup-choice-text strong { font-size: 12px; }
   .advanced-options > summary { padding: 8px 0; font-size: 12px; }

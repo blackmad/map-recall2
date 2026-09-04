@@ -6,6 +6,14 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Canal setup distilled View/Difficulty; Map Quest mode gloss + undo
+
+Setup no longer fronts four cameras or five difficulties: View is a one-line
+summary (cameras under More), Difficulty is Easy–Hard with Expert/Custom in
+More, and each row gets a short gloss. Map Quest uses “Neighborhood”
+everywhere, explains modes on the start rail, labels disabled Confirm as
+“Place a pin first,” and offers a brief Back to start after a category tap.
+
 ## Encyclopedia text is offline-only — no live Wikipedia in the game
 
 The browser used to resolve missing street blurbs (and landmark summaries)

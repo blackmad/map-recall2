@@ -133,7 +133,35 @@ export default function App() {
   const [locationToast, setLocationToast] = useState<string | null>(null);
   const [dataError, setDataError] = useState<string | null>(null);
   const [cityOverpassFeatures, setCityOverpassFeatures] = useState<Record<string, StreetFeature[]>>({});
+  const [startUndoVisible, setStartUndoVisible] = useState(false);
+  const startUndoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const activeSearchRef = useRef<string | null>(null);
+
+  const showStartUndo = useCallback(() => {
+    if (startUndoTimerRef.current) clearTimeout(startUndoTimerRef.current);
+    setStartUndoVisible(true);
+    startUndoTimerRef.current = setTimeout(() => setStartUndoVisible(false), 6000);
+  }, []);
+
+  const returnToStart = useCallback(() => {
+    if (startUndoTimerRef.current) clearTimeout(startUndoTimerRef.current);
+    setStartUndoVisible(false);
+    setCityOverpassFeatures((prev) => {
+      const next = { ...prev };
+      delete next[currentCityId];
+      return next;
+    });
+    if (currentCityId === 'my_location') {
+      setCustomLocationCity((prev) => (prev ? { ...prev, features: [] } : null));
+    }
+    setCurrentRoundIndex(0);
+    setRoundResults([]);
+    setUserPinnedLocation(null);
+    setSelectedGuessName(null);
+    setIsRoundComplete(false);
+    setWasRoundSkipped(false);
+    setIsGameOver(false);
+  }, [currentCityId]);
 
   // Keep the complete quiz setup bookmarkable without polluting browser history
   // for every toolbar adjustment. Coordinates make searched/device locations
@@ -520,6 +548,7 @@ export default function App() {
           resetGame(currentCityId, gameMode, targetCategory);
           // Skip inventory toast — loading modal already reported progress; the
           // question card is the entry beat, not "Loaded N places…".
+          showStartUndo();
         }
       } catch (err) {
         console.error('Error refetching category features:', err);
@@ -530,7 +559,7 @@ export default function App() {
         setLoadingProgress(null);
       }
     },
-    [userLocation, currentCity, customLocationCity, currentCityId, locationScope, searchRadiusMeters, selectedAdministrativeAreaId, gameMode, resetGame]
+    [userLocation, currentCity, customLocationCity, currentCityId, locationScope, searchRadiusMeters, selectedAdministrativeAreaId, gameMode, resetGame, showStartUndo]
   );
 
   const restoredQuizLoadedRef = useRef(false);
@@ -832,6 +861,18 @@ export default function App() {
             Canal Recall →
           </a>
         )}
+        {startUndoVisible && !!currentFeature && !isGameOver && (
+          <div className="enamel-float absolute top-3 right-3 z-30 flex items-center gap-2 px-3 py-1.5 text-xs sm:left-1/2 sm:right-auto sm:-translate-x-1/2">
+            <span className="text-white/80">Quiz started</span>
+            <button
+              type="button"
+              onClick={returnToStart}
+              className="font-semibold text-[#e2c98a] underline underline-offset-2 cursor-pointer"
+            >
+              Back to start
+            </button>
+          </div>
+        )}
         {/* Leaflet Map Canvas */}
         <MapComponent
           cityCenter={currentCity.center}
@@ -965,7 +1006,7 @@ export default function App() {
                     [
                       { id: 'pinpoint' as const, label: 'Pinpoint' },
                       { id: 'guess_name' as const, label: 'Guess Name' },
-                      { id: 'guess_neighborhood' as const, label: 'Area' },
+                      { id: 'guess_neighborhood' as const, label: 'Neighborhood' },
                     ]
                   ).map((mode) => (
                     <button
@@ -973,12 +1014,15 @@ export default function App() {
                       type="button"
                       onClick={() => setGameMode(mode.id)}
                       aria-pressed={gameMode === mode.id}
-                      className="flex-1 px-2 py-2 text-xs font-semibold cursor-pointer"
+                      className="flex-1 px-1.5 py-2 text-xs font-semibold cursor-pointer sm:px-2"
                     >
                       {mode.label}
                     </button>
                   ))}
                 </div>
+                <p className="text-xs text-white/55 leading-relaxed">
+                  Pinpoint places a named spot. Guess Name names the highlight. Neighborhood places area boundaries.
+                </p>
               </div>
             </div>
 
