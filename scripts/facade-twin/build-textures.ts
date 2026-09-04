@@ -22,6 +22,7 @@
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { MATERIALS, nearestMaterial, wallFamily, type MaterialId } from '../../src/canalRecall/facade/materials.ts';
@@ -217,13 +218,13 @@ for (const [materialId, facades] of [...byMaterial.entries()].sort((a, b) => b[1
     const point = RD_NEW.fromLngLat(view.lngLat);
     const image = await panorama(view);
     const ppm = Math.min(96, Math.max(40, 1250 / f.standoffM));
-    const baseZ = mass.groundLevel! - 0.4;
+    const baseZ = mass.groundLevel! - STRIP_BASE_BELOW_GROUND_M;
     const rect = rectifyFacade(image, {
       x: point.x, y: point.y, z: view.cameraHeight - GEOID_SEPARATION_M,
       headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
     }, { start: { x: f.wall[0], y: f.wall[1] }, end: { x: f.wall[2], y: f.wall[3] }, baseZ, topZ: mass.eavesHeight! + 0.3 },
       { pixelsPerMetre: ppm });
-    const got = patches(rect, rect.pixelsPerMetre, f.openings, 0.4);
+    const got = patches(rect, rect.pixelsPerMetre, f.openings, STRIP_BASE_BELOW_GROUND_M);
     if (got.length >= 3) byBuilding.set(f.pandId, got);
   }
   // Four buildings minimum: fewer and the "material" is one house, which is how

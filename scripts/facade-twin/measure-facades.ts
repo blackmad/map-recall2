@@ -168,7 +168,7 @@ for (const buildingId of ids) {
   // 1.8 m clears the deepest souterrain sill in the fabric and takes in the
   // stoep with it. It costs a taller strip and some quay wall at the bottom,
   // which the detector's own plausibility test already rejects.
-  const baseZ = ground - 1.8, topZ = eaves + 0.3;
+  const baseZ = ground - STRIP_BASE_BELOW_GROUND_M, topZ = eaves + 0.3;
 
   const rect = rectifyFacade(image, {
     x: pose.point.x, y: pose.point.y, z: pose.view.cameraHeight - GEOID_SEPARATION_M,

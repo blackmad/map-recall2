@@ -26,6 +26,26 @@ export interface Gray {
   data: Uint8Array;
 }
 
+/**
+ * How far below the building's own ground level the rectified strip starts.
+ *
+ * This is a *datum*, not a margin, and it was a bare `0.4` copied into four
+ * scripts — the rectifier that builds the strip, the extract that converts the
+ * detector's `yM` back to a height above ground, the texture sampler and the
+ * block builder. Every one of them has to agree, and nothing made them: moving
+ * the strip in one file would have shifted every opening in the extract by the
+ * difference, silently, and the render would have looked *almost* right.
+ *
+ * 1.8 m, not the original 0.4 m, because a canal house is entered up a stoep
+ * and the storey the stoep steps over is a souterrain whose windows sit 0.8–1.6
+ * m below street level. At 0.4 m the strip's bottom edge cut through them, so
+ * the detector clamped them to the edge — 1,020 of 10,335 openings came out at
+ * a sill of exactly -0.40 m, which is the picture running out rather than a
+ * measurement — and the front door, being the other thing that reaches the
+ * ground, was missed with them.
+ */
+export const STRIP_BASE_BELOW_GROUND_M = 1.8;
+
 export interface Opening {
   /** Metres from the left edge of the measured strip. */
   xM: number;

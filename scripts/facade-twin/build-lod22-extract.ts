@@ -24,6 +24,7 @@
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { resolveHeights, type HeightReason } from '../../src/canalRecall/facade/buildRecord.ts';
 import { CANAL_WATER_LEVEL_NAP_M } from '../../src/canalRecall/facade/rdNew.ts';
@@ -156,7 +157,7 @@ for (const entry of registry) {
         // Openings are metres along the wall from its start, and metres above
         // the strip base, which was cut 0.4 m below the measured ground.
         openings: record.openings.map(o =>
-          [o.xM, o.yM - 0.4, o.widthM, o.heightM] as [number, number, number, number]),
+          [o.xM, o.yM - STRIP_BASE_BELOW_GROUND_M, o.widthM, o.heightM] as [number, number, number, number]),
       };
     })(),
   });
