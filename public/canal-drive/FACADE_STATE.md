@@ -23,8 +23,9 @@
 > frontage, storey count against 3DBAG — that all held **while the pipeline was
 > photographing the wrong side of the canal**. See §10.
 >
-> A re-measurement under the corrected convention is in progress. Numbers here
-> will be replaced when it lands.
+> A re-measurement under the corrected convention has landed. **See §11 at the
+> bottom for the current numbers** — they are much smaller and much better
+> founded than the ones in §1–§9, which describe the tainted run.
 
 Written 2026-09-04, at commit `92d9ad7` on `feat/amsterdam-building-twin`.
 
@@ -329,3 +330,83 @@ looks like a canal frontage, that is guaranteed.
 Identity needs a per-item check against something that knows what the item
 should look like: a human, a model, or geometry projected back into the source
 image. Not a median.
+
+
+---
+
+## 11. Current state, after the yaw repair (2026-09-04, late)
+
+### What ran
+
+1. Yaw corrected to `edge`; convention moved into the imagery adapter and made a
+   required argument. `check-facade-yaw.ts`, 8 checks.
+2. Full re-measurement: **2,180 buildings, 1,821 with openings**.
+3. Every strip re-rendered clean (no annotation) and put through
+   `cmp-zosci/amsterdam-facade` v2 segmentation, locally, 49 ms each.
+4. The extract now takes its openings from the model and gates on its verdict.
+
+### Where it stands
+
+| | |
+|---|---|
+| Buildings in the boundary | 3,025 |
+| Strips segmented | 1,821 |
+| Median `building` share of frame | **13.6%** |
+| Strips ≥25% building | 643 (35%) |
+| Strips ≥45% building | 331 (18%) |
+| **Façades surviving the gate** | **837 (27.7% of the boundary)** |
+| Openings kept | 4,892 |
+| Windows found by the model | 5,323 |
+| **Doors found by the model** | **31** |
+
+**837, not 1,820.** The gate rejects a little over half of what the detector was
+willing to measure. That is the number to trust, and it is the first coverage
+figure in this project that has had a per-item check behind it rather than a
+distributional one.
+
+### Two bugs found in the vision pass itself
+
+- **Colour channels.** `inference` follows OpenCV and reads arrays as **BGR**; I
+  passed `np.array(Image.open(p).convert("RGB"))`. Red and blue swapped before
+  the model saw anything, so brick went blue and sky went orange — and the model
+  reported a brick wall as 92% sky. It looked like a model that could not handle
+  our imagery. It was two characters. One strip went from 9% to 58% building on
+  the fix alone; the usable rate went 8% → 18%.
+- **Connected components are the wrong grouping.** A window is cut into slivers
+  by its own glazing bars, so one window arrives as five ragged fragments and any
+  solidity filter strict enough to reject a tree also rejects every sash window
+  in Amsterdam. Replaced with a grid: project the window mask onto each axis,
+  take the runs as bays and storeys, and let each cell be one opening. Fragments
+  merge because they share a cell.
+
+### What is still wrong, plainly
+
+- **Doors: 31 found across 1,821 strips.** `check-facade-layer.ts` fails on this
+  and is **left failing** — 30 of 837 façades carry a door-shaped opening, 4%.
+  The model has a `door` class trained on 1,048 instances and it almost never
+  fires at our scale. This is the clearest open defect.
+- **Median building share is 13.6%.** Even corrected, most strips are not
+  predominantly the target building. Some of that is the `background` class
+  swallowing neighbours on a narrow plot; some is real rectification failure.
+  Not yet separated.
+- **Skewed strips.** Several strips show visible perspective — a receding
+  building — which means the sampling plane is not the wall plane. Rectification
+  onto a correct plane cannot produce perspective, so this is a registration
+  error, not a rectifier bug. Unquantified.
+- **Nothing has still ever been checked by a human.** Unchanged.
+
+### Next
+
+1. **Doors.** Either the model at a larger input scale, a second detector, or
+   fall back to the geometric rule (an opening standing on the pavement, tall
+   and narrow) over the model's window mask.
+2. **Un-skew.** Detect residual perspective in a strip and either re-solve the
+   plane or reject. A strip that is genuinely fronto-parallel has vertical
+   building edges; measuring their convergence is a direct test.
+3. **Combine detectors.** One Amsterdam-specific segmentation model is a single
+   point of failure. A general window detector as a second opinion, with the
+   grid as the arbiter between them.
+4. **Separate the tests**, per the external audit: address → pand, pand →
+   elevation, world point → panorama pixel, panorama → rectified strip, strip →
+   openings. Today a façade-looking image is still treated as evidence that
+   every upstream step was right.

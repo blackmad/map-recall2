@@ -81,6 +81,51 @@ for (const listing of recon.heritage as Array<{ buildingId: string | null; descr
  * Optional on purpose: the extract must build before any façade has been
  * measured, and the renderer must draw a boundary in which almost nothing has.
  */
+/**
+ * Openings from the segmentation model, where it has been run.
+ *
+ * Two things come out of that pass and both are used here. The openings
+ * replace the heuristic detector's, because a model trained on 7,245 labelled
+ * Amsterdam windows knows what a window is and the heuristic — which scored any
+ * region deviating from its local wall — demonstrably did not: it boxed bare
+ * trees, blank sky and the gaps in a bridge railing.
+ *
+ * The `share` figures are the more important half. They say how much of the
+ * rectified frame is actually building, and a strip that is mostly sky or road
+ * was pointed at nothing. Those façades are dropped entirely rather than
+ * measured badly, which is the gate this pipeline never had and the reason a
+ * 180° yaw error reached 2,184 records unchallenged.
+ */
+/**
+ * When the model's verdict is good enough to keep the façade.
+ *
+ * Not a single threshold on building share, because the share alone rejects
+ * good work. The model's `background` class swallows the neighbouring houses on
+ * either side of a narrow plot, so a perfectly rectified 4.5 m frontage with
+ * every window found can come back at 41% building — visibly correct, and
+ * rejected by a 45% bar.
+ *
+ * Two ways through, then. Either the frame is substantially building, or the
+ * model found a real grid of openings in it. A strip with several windows in it
+ * is a façade whatever the share says, and a strip with neither is not one
+ * whatever the detector claims to have measured.
+ */
+const MIN_BUILDING_SHARE = 25;
+const MIN_WINDOWS_IF_THIN = 3;
+interface Segmented {
+  share: Record<string, number>;
+  windows: Array<{ xM: number; yM: number; widthM: number; heightM: number }>;
+  doors: Array<{ xM: number; yM: number; widthM: number; heightM: number }>;
+}
+let segmented = new Map<string, Segmented>();
+try {
+  const file = JSON.parse(await readFile(path.join(STAGING, 'segmented-openings.json'), 'utf8')) as
+    { facades: Record<string, Segmented> };
+  segmented = new Map(Object.entries(file.facades));
+} catch (error) {
+  if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+}
+
 let facades = new Map<string, MeasuredFacade>();
 try {
   const store = JSON.parse(await readFile(path.join(STAGING, 'measured-facades.json'), 'utf8')) as { facades: Record<string, MeasuredFacade> };
@@ -209,7 +254,21 @@ for (const entry of registry) {
       const material = record.wallRgb
         ? nearestMaterial(record.wallRgb, wallFamily(record.wallRgb)).material.id
         : null;
-      const openings = openingsOf(record);
+      // Where the model has looked at this strip, its verdict governs.
+      const seen = segmented.get(entry.buildingId);
+      if (seen) {
+        const buildingShare = seen.share.building ?? 0;
+        const found = seen.windows.length + seen.doors.length;
+        if (buildingShare < MIN_BUILDING_SHARE && found < MIN_WINDOWS_IF_THIN) return null;
+      }
+      const openings = seen
+        ? [...seen.windows, ...seen.doors]
+            .filter(o => o.widthM >= 0.3 && o.heightM >= 0.4)
+            .map(o => [
+              Number(o.xM.toFixed(2)), Number(o.yM.toFixed(2)),
+              Number(o.widthM.toFixed(2)), Number(o.heightM.toFixed(2)),
+            ] as [number, number, number, number])
+        : openingsOf(record);
       // Rejecting every reading leaves nothing observed, and a façade record
       // with no openings in it is a claim to have looked with nothing to show
       // for it. The building falls back to massing, which is what it is.
