@@ -26,9 +26,43 @@
   .legend div { display: flex; align-items: center; gap: 7px; }
   .sw { width: 13px; height: 10px; border-radius: 2px; }
   .stat { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--muted); margin-top: 9px; }
+
+  /* The evidence panel. Right-hand side, so it never covers the building the
+     click just selected — which is always under the cursor, and the cursor is
+     wherever the reader was already looking. */
+  #evidence { position: absolute; top: 14px; right: 14px; bottom: 14px; z-index: 6; width: 372px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 4px;
+    padding: 13px 15px; overflow-y: auto; display: none; }
+  #evidence.open { display: block; }
+  #evidence h2 { font-size: 14px; margin: 0 0 2px; }
+  #evidence .pand { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--muted); margin: 0 0 10px; }
+  #evidence img { width: 100%; border-radius: 3px; border: 1px solid var(--line); display: block; background: #0b0f10; }
+  #evidence .cap { font-size: 11px; color: var(--muted); margin: 6px 0 0; line-height: 1.45; }
+  #evidence dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; margin: 10px 0 0; font-size: 12.5px; }
+  #evidence dt { color: var(--muted); }
+  #evidence dd { margin: 0; font-variant-numeric: tabular-nums; }
+  #evidence .warn { border-left: 2px solid #eda100; padding: 5px 0 5px 9px; margin: 10px 0 0;
+    font-size: 12px; color: #e6d3a8; }
+  #evidence .warn b { display: block; color: #eda100; font-weight: 500; font-size: 10.5px;
+    letter-spacing: .09em; text-transform: uppercase; margin-bottom: 3px; }
+  #evidence figure { margin: 11px 0 0; }
+  #evidence figcaption { font-size: 11px; color: var(--muted); margin-top: 5px; line-height: 1.45; }
+  #evidence svg { width: 100%; display: block; background: #10171a; border: 1px solid var(--line); border-radius: 3px; }
+  #evidence .swatch { display: inline-block; width: 11px; height: 11px; border-radius: 2px;
+    border: 1px solid var(--line); vertical-align: -1px; margin-right: 5px; }
+  #evidence .quote { font-size: 12px; color: var(--muted); font-style: italic; margin: 10px 0 0; line-height: 1.45; }
+  #evidence .links { display: flex; gap: 6px; margin: 11px 0 0; flex-wrap: wrap; }
+  #evidence a { color: var(--ink); border: 1px solid var(--line); border-radius: 3px;
+    padding: 5px 9px; font-size: 12px; text-decoration: none; }
+  #evidence a:hover { border-color: #55696b; }
+  #evidence .close { position: absolute; top: 11px; right: 13px; padding: 2px 7px; }
 </style>
 
 <div id="map"></div>
+<div id="evidence" aria-live="polite">
+  <button class="close" id="evidence-close" title="Close">×</button>
+  <div id="evidence-body"></div>
+</div>
 <div class="panel">
   <h1>Façade twin — LoD2.2 massing</h1>
   <p class="sub" id="sub">The measured silhouette, in the game's own renderer.</p>
@@ -180,6 +214,157 @@ function setup() {
   });
   window.__twin = twin;
   twin.setEnabled(true);
+
+  /**
+   * Click a building to see what it was measured from.
+   *
+   * Picking is done in 2D — click point to lng/lat to the extract's local
+   * metres, then point-in-polygon over the footprint rings — rather than by
+   * raycasting the meshes. Raycasting would be more correct at a high pitch,
+   * where the click lands on a wall rather than on the ground under it, but it
+   * needs the layer's matrix and the mesh buffers, and this is a review tool:
+   * the reviewer can tilt down. Cheap and obvious beats accurate and fragile
+   * for something whose job is to make other things checkable.
+   */
+  const evidence = document.getElementById('evidence');
+  const evidenceBody = document.getElementById('evidence-body');
+  let evidenceIndex = null;
+  fetch('/data/extracts/amsterdam/staging/facade-twin/amsterdam-grachtengordel-west/facade-evidence.json')
+    .then(r => r.ok ? r.json() : null)
+    .then(data => { if (data) evidenceIndex = new Map(data.facades.map(f => [f.pandId, f])); })
+    // No index is a fine state: the map still works, clicking just says nothing.
+    .catch(() => {});
+
+  const number = (v, digits = 1) => v === null || v === undefined ? '—' : Number(v).toFixed(digits);
+
+  /**
+   * The measured elevation, drawn from the numbers rather than photographed.
+   *
+   * The panel used to be a wall of figures, and figures are the wrong medium
+   * for the question a reviewer is actually asking — *is that where the windows
+   * are?* — which the eye answers in one glance and arithmetic never does. This
+   * draws only what was measured: the frontage to scale, each opening where the
+   * detector put it, the storey bands it inferred, the street level, and the
+   * wall colour it sampled. Nothing here is from the vocabulary. If it looks
+   * wrong, it is wrong, and that is the point.
+   */
+  const elevation = building => {
+    const openings = building.facade?.openings ?? [];
+    const width = Math.hypot(building.facade.wall[2] - building.facade.wall[0],
+                             building.facade.wall[3] - building.facade.wall[1]);
+    const top = (building.ridge ?? building.eaves ?? 12);
+    const eaves = Math.min(building.eaves ?? top * 0.78, top);
+    // Metres to viewBox units, with room for the souterrain below street level.
+    const below = Math.max(0, -Math.min(0, ...openings.map(o => o[1])));
+    const W = Math.max(width, 3), H = top + below + 0.6;
+    const sx = 100 / W, sy = 100 / W;                  // one scale, so it is not distorted
+    const vbW = 100, vbH = H * sy;
+    const yOf = zm => (H - 0.3 - (zm + below)) * sy;
+    const wall = evidenceIndex?.get(building.id)?.wallRgb;
+    const fill = wall ? `rgb(${wall.join(',')})` : '#6d6a63';
+    const parts = [];
+    // The wall, to the eaves, then the gable above it as a plain triangle.
+    parts.push(`<rect x="0" y="${yOf(eaves).toFixed(2)}" width="${vbW}" height="${(eaves * sy).toFixed(2)}" fill="${fill}"/>`);
+    if (top > eaves + 0.15) {
+      parts.push(`<polygon points="0,${yOf(eaves).toFixed(2)} ${(vbW / 2).toFixed(2)},${yOf(top).toFixed(2)} ${vbW},${yOf(eaves).toFixed(2)}" fill="${fill}" opacity="0.62"/>`);
+    }
+    // Street level.
+    parts.push(`<line x1="0" y1="${yOf(0).toFixed(2)}" x2="${vbW}" y2="${yOf(0).toFixed(2)}" stroke="#ff5a5a" stroke-width="0.5" stroke-dasharray="2 1.6"/>`);
+    // Storey bands the detector inferred.
+    const found = evidenceIndex?.get(building.id);
+    if (found?.storeyIntervalsM?.length) {
+      let z = 0;
+      for (const gap of found.storeyIntervalsM) {
+        z += gap;
+        parts.push(`<line x1="0" y1="${yOf(z).toFixed(2)}" x2="${vbW}" y2="${yOf(z).toFixed(2)}" stroke="#5aa9ff" stroke-width="0.35" stroke-dasharray="1.4 1.4" opacity="0.75"/>`);
+      }
+    }
+    // Every measured opening, where the measurement put it.
+    for (const [along, up, w, h] of openings) {
+      const low = up < 0.6;
+      parts.push(`<rect x="${(along * sx).toFixed(2)}" y="${yOf(up + h).toFixed(2)}" `
+        + `width="${(w * sx).toFixed(2)}" height="${(h * sy).toFixed(2)}" `
+        + `fill="#0d1418" stroke="${low ? '#ffbe00' : '#28e678'}" stroke-width="0.45"/>`);
+    }
+    return `<figure><svg viewBox="0 0 ${vbW} ${vbH.toFixed(2)}" role="img"
+      aria-label="Measured elevation, ${number(width, 2)} m wide">${parts.join('')}</svg>
+      <figcaption>Measured elevation, drawn from the numbers — ${number(width, 2)} m of frontage,
+      ${openings.length} opening${openings.length === 1 ? '' : 's'}, to scale.
+      <span style="color:#28e678">green</span> above street level,
+      <span style="color:#ffbe00">amber</span> at or below it,
+      <span style="color:#5aa9ff">blue</span> the inferred storey bands,
+      <span style="color:#ff5a5a">red</span> this building's own ground.
+      <br><span class="swatch" style="background:${fill}"></span>the wall colour sampled from its photograph.</figcaption></figure>`;
+  };
+  const escape = text => String(text).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  const showEvidence = building => {
+    const found = evidenceIndex?.get(building.id) ?? null;
+    const heights = building.ridge !== null
+      ? `${number(building.eaves)} m to the eaves, ${number(building.ridge)} m to the ridge`
+      : 'no measured height';
+    if (!found) {
+      // The honest empty state. A building with no façade is the *rule*, not a
+      // failure, and saying so is more useful than an apology.
+      evidenceBody.innerHTML = `<h2>Massing only</h2>
+        <p class="pand">pand ${escape(building.id)}</p>
+        <p class="cap">This building's front has never been photographed square-on from a
+        leaf-off panorama, so it has no façade: no openings, no measured colour, no gable
+        beyond a plain triangle. That is the rule the twin turns on — a building nobody has
+        observed gets the gap rather than a confident guess.</p>
+        <dl><dt>Footprint</dt><dd>${building.ring.length / 2} vertices</dd>
+        <dt>Height</dt><dd>${heights}</dd>
+        <dt>Roof</dt><dd>${escape(building.roof)}</dd></dl>`;
+      evidence.classList.add('open');
+      return;
+    }
+    const [lng, lat] = found.viewFrom;
+    const google = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`
+      + `&heading=${found.headingDeg}&pitch=10&fov=80`;
+    const apple = `https://maps.apple.com/?ll=${lat},${lng}&t=k&z=19`;
+    const strip = `/canal-drive/facade-evidence/${found.pandId}.jpg`;
+    const failures = found.plausibilityFailures?.length
+      ? `<div class="warn"><b>The detector doubts itself here</b>${found.plausibilityFailures.map(escape).join('<br>')}</div>`
+      : '';
+    const disagree = found.massingStoreys && found.storeyBands !== found.massingStoreys
+      ? `<div class="warn"><b>Storeys disagree</b>The strip reads ${found.storeyBands} bands; 3DBAG says ${found.massingStoreys}.</div>`
+      : '';
+    evidenceBody.innerHTML = `<h2>${escape(found.wallMaterialName ?? 'Measured façade')}</h2>
+      <p class="pand">pand ${escape(found.pandId)} · ${escape(found.capturedAt)}</p>
+      ${elevation(building)}
+      <img src="${strip}" alt="Rectified façade with the detector's openings drawn on it"
+           onerror="this.style.display='none';this.nextElementSibling.textContent=
+           'No strip rendered for this building yet — run build-evidence.ts --ids=${escape(found.pandId)}'">
+      <p class="cap">Green boxes are measured openings; amber are at or below street level;
+      the red dashed line is this building's own ground. Rectified to its wall plane at
+      ${number(found.standoffM, 0)} m and ${number(found.obliquityDeg)}° off square.</p>
+      ${failures}${disagree}
+      <dl>
+        <dt>Frontage</dt><dd>${number(found.wallWidthM, 2)} m</dd>
+        <dt>Openings</dt><dd>${found.openings}, ${found.openingsAtStreetLevel} at street level</dd>
+        <dt>Bays</dt><dd>${found.bays}</dd>
+        <dt>Storey bands</dt><dd>${found.storeyBands}${found.massingStoreys ? ` (3DBAG: ${found.massingStoreys})` : ''}</dd>
+        <dt>Height</dt><dd>${heights}</dd>
+        <dt>Wall colour</dt><dd>${found.wallRgb ? `rgb(${found.wallRgb.join(', ')})` : '—'}</dd>
+        <dt>Obstructions</dt><dd>${found.obstructionColumns} column${found.obstructionColumns === 1 ? '' : 's'} rejected</dd>
+        <dt>Panorama</dt><dd style="font-size:11px">${escape(found.panoramaId)}</dd>
+      </dl>
+      ${found.register ? `<p class="quote">Register: ${escape(found.register)}</p>` : ''}
+      <div class="links">
+        <a href="${google}" target="_blank" rel="noopener">Google Street View</a>
+        <a href="${apple}" target="_blank" rel="noopener">Apple Maps</a>
+      </div>
+      <p class="cap">Both links stand off the wall on its own normal and look back at it —
+      a second opinion taken from a different seat than the one that measured it.</p>`;
+    evidence.classList.add('open');
+  };
+
+  map.on('click', event => {
+    const hit = twin.pick(event.lngLat);
+    if (hit) showEvidence(hit); else evidence.classList.remove('open');
+  });
+  document.getElementById('evidence-close').onclick = () => evidence.classList.remove('open');
+  map.getCanvas().style.cursor = 'crosshair';
 
   const LEGENDS = {
     massing: [['#b8ada0', 'wall'], ['#8a7f74', 'roof']],

@@ -135,23 +135,39 @@ const strayCounts = withFacade.find(b => {
 check('each opening draws one glass pane and its sill', !strayCounts,
   strayCounts ? `pand ${strayCounts.id}` : `${openingsTotal} openings`);
 
-// The reveal is the point of the rewrite: the glass has to sit *behind* the
-// wall face, not proud of it. Proud, it reads as a sticker stuck on the front.
-// Measured on the wall's own outward normal so it holds at any bearing.
-const notRecessed = withFacade.find(b => {
+// Depth is the point of the window rewrite, and it is built outward because
+// the wall has no aperture cut in it. Two things have to hold, measured on the
+// wall's own outward normal so they hold at any bearing: the pane must sit at
+// the wall face, not buried behind it — buried, it is inside the building and
+// nothing can see it, which rendered a terrace as rows of white dashes — and
+// the joinery must stand proud of the pane, because the shadow the joinery
+// throws across the glass is the whole cue that says "hole" rather than
+// "sticker".
+const depths = (b: (typeof withFacade)[number], want: string) => {
   const geometry = openingGeometry(b);
-  if (!geometry.positions.length) return false;
   const [x0, y0, x1, y1] = b.facade!.wall;
   const length = Math.hypot(x1 - x0, y1 - y0);
   const nx = (y1 - y0) / length, ny = -(x1 - x0) / length;
+  const out: number[] = [];
   for (let i = 0; i < geometry.part.length; i++) {
-    if (geometry.part[i] !== 'glass') continue;
-    const d = (geometry.positions[i * 3] - x0) * nx + (geometry.positions[i * 3 + 1] - y0) * ny;
-    if (d > -0.05) return true;
+    if (geometry.part[i] !== want) continue;
+    out.push((geometry.positions[i * 3] - x0) * nx + (geometry.positions[i * 3 + 1] - y0) * ny);
   }
-  return false;
+  return out;
+};
+const buried = withFacade.find(b => {
+  const glass = depths(b, 'glass');
+  return glass.length > 0 && Math.min(...glass) < -0.001;
 });
-check('glass is recessed behind the wall face', !notRecessed, notRecessed ? `pand ${notRecessed.id}` : 'all reveals');
+check('the pane sits at the wall face, not inside the building', !buried,
+  buried ? `pand ${buried.id}` : 'all panes');
+
+const noRelief = withFacade.find(b => {
+  const glass = depths(b, 'glass'), frame = depths(b, 'frame');
+  if (!glass.length || !frame.length) return false;
+  return Math.max(...frame) - Math.max(...glass) < 0.04;
+});
+check('the joinery stands proud of the pane', !noRelief, noRelief ? `pand ${noRelief.id}` : 'all reveals');
 
 // The ridge is a measurement and the gable is drawn, so the drawing conforms to
 // the measurement and never the other way round: no gable may stand above the

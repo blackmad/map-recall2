@@ -8,6 +8,7 @@
  * drawing the buildings this layer now owns.
  */
 import { buildingGeometry, colourFor, FRAME_COLOUR, GLASS_COLOUR, openingGeometry, ownedPandIds, SILL_COLOUR, WATER_COLOUR, waterGeometry } from '../../../src/canalRecall/facade/facadeLayer.ts';
+import { RD_NEW } from '../../../src/canalRecall/facade/sources/netherlands.ts';
 
 const { THREE } = window.CanalRecallThree;
 
@@ -27,6 +28,39 @@ export class FacadeTwin {
     this.onReady = options.onReady || (() => {});
     this._meshes = [];
     this.layer = this._makeLayer();
+  }
+
+  /**
+   * Which building is under a longitude and latitude.
+   *
+   * The projection has to do this conversion; a flat metres-per-degree
+   * approximation does not work here. RD New's grid north is the Amersfoort
+   * meridian at 5.387°E, and this boundary sits at about 4.88°E, so grid north
+   * and true north differ by the meridian convergence — roughly 0.4° at this
+   * latitude. Over a kilometre that is a seven-metre rotation, and a canal plot
+   * is under six metres wide, so the approximation reliably picks the wrong
+   * building the further you get from the origin.
+   *
+   * Picking in 2D rather than by raycasting the meshes: at a high pitch the
+   * click lands on the ground in front of a wall rather than on the wall, which
+   * a reviewer fixes by tilting down. Cheap and obvious beats accurate and
+   * fragile for a tool whose whole job is making other things checkable.
+   */
+  pick(lngLat) {
+    if (!this.extract) return null;
+    const origin = this.extract.metadata.localOrigin;
+    const point = RD_NEW.fromLngLat([lngLat.lng ?? lngLat[0], lngLat.lat ?? lngLat[1]]);
+    const x = point.x - origin.x, y = point.y - origin.y;
+    for (const building of this.extract.buildings) {
+      const ring = building.ring;
+      let inside = false;
+      for (let i = 0, j = ring.length / 2 - 1; i < ring.length / 2; j = i++) {
+        const xi = ring[i * 2], yi = ring[i * 2 + 1], xj = ring[j * 2], yj = ring[j * 2 + 1];
+        if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+      }
+      if (inside) return building;
+    }
+    return null;
   }
 
   /** Pand ids this layer owns, so nothing else draws them. */
@@ -51,13 +85,15 @@ export class FacadeTwin {
   /**
    * Whose walls carry a texture right now.
    *
-   * Only in façade mode. The other modes are reporting a number per building —
-   * a height band, a provenance — and a brick bond drawn over a legend colour
-   * makes it unreadable without adding anything true.
+   * Massing and façade both show the building as it looks, so both take the
+   * texture. Height and evidence are reporting a number per building — a band,
+   * a provenance — and a brick bond drawn over a legend colour makes it
+   * unreadable without adding anything true, so those two drop it.
    */
   _applyMaps() {
+    const appearance = this.colourMode === 'facade' || this.colourMode === 'massing';
     for (const mesh of this._meshes) {
-      const map = (this.textured && this.colourMode === 'facade') ? (mesh.userData.texture || null) : null;
+      const map = (this.textured && appearance) ? (mesh.userData.texture || null) : null;
       if (mesh.material.map !== map) {
         mesh.material.map = map;
         mesh.material.needsUpdate = true;

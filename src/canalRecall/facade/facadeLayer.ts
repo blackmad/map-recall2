@@ -403,10 +403,23 @@ export function buildingGeometry(building: Lod22Building):
   // klokgevel on the side they cannot see from the canal.
   quad(at(sMin, dMax, top), at(sc, dMax, zTop), at(sMax, dMax, top), at(sMax, dMax, top), 'roof');
 
-  // The front gable: a screen wall standing in front of the roof, which is what
-  // it is in life — the reason a canal frontage reads as a row of distinct
-  // silhouettes rather than as one continuous roofline.
+  // Close the front of the roof volume with a plain triangle, *before* the
+  // shaped gable goes on.
+  //
+  // This is structure, not decoration, and leaving it out left holes. The roof
+  // planes rise in a straight line from the eaves at the party wall to the ridge
+  // at the centre; a shaped gable does not follow that line — a `lijst` stops at
+  // half the rise, a `klok` swells and tucks — so wherever the profile sits
+  // below the roof's leading edge there was nothing at all between them. What
+  // showed through was the *back* of the far roof plane, which is culled, so it
+  // read as a black hole punched in the roof. A canal house has a real gable
+  // wall behind its shaped one; now so does this.
   const { type } = gableFor(building);
+  quad(at(sMin, dMin, top), at(sc, dMin, zTop), at(sMax, dMin, top), at(sMax, dMin, top), 'gable');
+
+  // The shaped gable, a screen wall standing a little in front of that — which
+  // is what it is in life, and the reason a canal frontage reads as a row of
+  // distinct silhouettes rather than as one continuous roofline.
   const profile = gableProfile(type, width, rise);
   // A hair proud of the wall below, so the two coplanar surfaces cannot fight
   // for the same pixels along the eaves line where they meet.
@@ -437,7 +450,20 @@ export function buildingGeometry(building: Lod22Building):
  * that at the distance a rider reads this from, a plane and a real reveal are
  * indistinguishable. That was wrong, and wrong in a way a screenshot settles:
  * a proud dark rectangle reads as a *sticker*, because the one cue that says
- * "hole" is the shadow down one side of the reveal. It costs four quads.
+ * "hole" is the shadow down one side of the reveal.
+ *
+ * The first attempt at fixing it was worse: it set the glass 140 mm *behind*
+ * the wall plane, which would be right if the wall had a hole in it. The wall
+ * is an unbroken extrusion of the footprint, so every pane went inside the
+ * building where nothing can see it, and the only part left visible was the
+ * sill, which projects. A terrace rendered as rows of little white dashes.
+ *
+ * Cutting real apertures means triangulating a polygon with holes for 1,340
+ * façades, and it buys nothing at the distance this is read from. So the depth
+ * is built *outward* instead: the pane sits just proud of the wall, and the
+ * joinery around it stands proud of the pane. The frame's inner faces then
+ * point back at the glass and catch no sun, which puts the shadow exactly where
+ * a reveal would put it. Same cue, no boolean.
  *
  * The frame is the other half. Amsterdam glazing sits in white-painted joinery
  * against a dark wall, and that contrast is most of what makes a canal
@@ -451,8 +477,15 @@ export function buildingGeometry(building: Lod22Building):
  */
 export type OpeningPart = 'glass' | 'frame' | 'sill';
 
-/** How far the glass sits behind the wall face, and how wide the frame is. */
-const REVEAL = { depth: 0.14, frame: 0.09, sill: 0.06 };
+/**
+ * The window assembly, in metres.
+ *
+ * `glass` clears the wall by just enough not to fight it for pixels; `frame`
+ * is how far the joinery stands proud of the pane, which is what casts the
+ * shadow that reads as depth; `width` is the joinery's face width and `sill`
+ * how far the sill throws water clear.
+ */
+const REVEAL = { glass: 0.02, frame: 0.11, width: 0.09, sill: 0.07 };
 
 export function openingGeometry(building: Lod22Building):
   { positions: number[]; normals: number[]; part: OpeningPart[] } {
@@ -491,28 +524,33 @@ export function openingGeometry(building: Lod22Building):
     if (width < 0.2 || height < 0.2) continue;
     const s0 = along, s1 = along + width;
     const zb = building.ground + up, zt = zb + height;
-    const back = -REVEAL.depth;
-    const f = Math.min(REVEAL.frame, width / 3, height / 3);
+    const g = REVEAL.glass, f = REVEAL.frame;
+    const w = Math.min(REVEAL.width, width / 3, height / 3);
 
-    // Glass, at the back of the reveal and inset by the frame it sits in.
-    quad(at(s0 + f, back, zb + f), at(s1 - f, back, zb + f),
-         at(s1 - f, back, zt - f), at(s0 + f, back, zt - f), 'glass');
+    // The pane, just clear of the wall.
+    quad(at(s0 + w, g, zb + w), at(s1 - w, g, zb + w),
+         at(s1 - w, g, zt - w), at(s0 + w, g, zt - w), 'glass');
 
-    // The frame around it, in the plane of the glass. Four bands rather than a
-    // ring so each stays a quad and none of them needs triangulating.
-    quad(at(s0, back, zb), at(s1, back, zb), at(s1, back, zb + f), at(s0, back, zb + f), 'frame');
-    quad(at(s0, back, zt - f), at(s1, back, zt - f), at(s1, back, zt), at(s0, back, zt), 'frame');
-    quad(at(s0, back, zb + f), at(s0 + f, back, zb + f), at(s0 + f, back, zt - f), at(s0, back, zt - f), 'frame');
-    quad(at(s1 - f, back, zb + f), at(s1, back, zb + f), at(s1, back, zt - f), at(s1 - f, back, zt - f), 'frame');
+    // Joinery: four bands standing proud of the pane. Outer face first, then
+    // the inner face that looks back across the glass — that one faces away
+    // from the sun and is the shadow a reveal would cast.
+    const band = (a0: number, a1: number, b0: number, b1: number) => {
+      quad(at(a0, f, b0), at(a1, f, b0), at(a1, f, b1), at(a0, f, b1), 'frame');
+    };
+    band(s0, s1, zb, zb + w);                       // cill piece
+    band(s0, s1, zt - w, zt);                       // head
+    band(s0, s0 + w, zb + w, zt - w);               // left stile
+    band(s1 - w, s1, zb + w, zt - w);               // right stile
 
-    // The reveal itself: the sides and head of the hole. This is the shadow.
-    quad(at(s0, 0, zb), at(s0, back, zb), at(s0, back, zt), at(s0, 0, zt), 'frame');
-    quad(at(s1, back, zb), at(s1, 0, zb), at(s1, 0, zt), at(s1, back, zt), 'frame');
-    quad(at(s0, 0, zt), at(s0, back, zt), at(s1, back, zt), at(s1, 0, zt), 'frame');
+    // The returns, from the joinery's proud face back down to the pane.
+    quad(at(s0 + w, f, zb + w), at(s1 - w, f, zb + w), at(s1 - w, g, zb + w), at(s0 + w, g, zb + w), 'frame');
+    quad(at(s0 + w, g, zt - w), at(s1 - w, g, zt - w), at(s1 - w, f, zt - w), at(s0 + w, f, zt - w), 'frame');
+    quad(at(s0 + w, g, zb + w), at(s0 + w, g, zt - w), at(s0 + w, f, zt - w), at(s0 + w, f, zb + w), 'frame');
+    quad(at(s1 - w, f, zb + w), at(s1 - w, f, zt - w), at(s1 - w, g, zt - w), at(s1 - w, g, zb + w), 'frame');
 
-    // A sill, projecting a little to throw water clear of the wall below.
+    // A sill, throwing water clear of the wall below.
     const p = REVEAL.sill;
-    quad(at(s0 - p, p, zb), at(s1 + p, p, zb), at(s1 + p, back, zb), at(s0 - p, back, zb), 'sill');
+    quad(at(s0 - p, p, zb), at(s1 + p, p, zb), at(s1 + p, g, zb), at(s0 - p, g, zb), 'sill');
     quad(at(s0 - p, p, zb - p), at(s1 + p, p, zb - p), at(s1 + p, p, zb), at(s0 - p, p, zb), 'sill');
   }
   return { positions, normals, part };
