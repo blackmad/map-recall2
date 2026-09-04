@@ -6,6 +6,24 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Trivia cards open with who/what, then a second beat
+
+Rotated facts used to replace the Wikipedia lede entirely, so a people or
+history punchline could land without saying who the namesake was. Cards now
+pair an **opening** sentence from the same article (catalog `opening`, or the
+feature’s published encyclopedia lede) with the chosen trivia sentence.
+`facts:build` records openings from the article lede; `facts:attach-openings`
+backfills them onto an already-published catalog without regenerating facts.
+The writer prompt treats trivia as the second beat after that opening.
+
+## Shared enamel CSS from one hudTheme source
+
+Map Quest and Canal each kept a hand-copied cobalt palette and plaque recipe.
+Hex values now live only in `hudTheme.ts` (`enamelTheme`); `publish:enamel-css`
+writes `enamel-tokens.css` + Canal’s `css/enamel.css` (tokens + plaque/tile
+chrome). Canal layout CSS stays in `index.html`; Map Quest quiz chips/dialogs
+stay in `src/index.css`. `check-enamel-css` pins the publish output.
+
 ## Overview map stays up during quizzes; player pin is readable
 
 The city overview used to vanish whenever a quiz or answer-hold owned the

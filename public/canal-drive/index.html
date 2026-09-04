@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="css/enamel.css" rel="stylesheet">
 <link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet">
 <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
 <style>
@@ -17,7 +18,7 @@
 /* 100dvh, not 100vh: on mobile Safari the URL bar makes 100vh taller than the
    screen, which pushed the d-pad under the browser chrome. */
 html { height: 100%; }
-body { background: #071430; display: flex; justify-content: center; align-items: center; height: 100vh; height: 100dvh; overflow: hidden; position: relative; overscroll-behavior: none; -webkit-tap-highlight-color: transparent; }
+body { background: var(--night); display: flex; justify-content: center; align-items: center; height: 100vh; height: 100dvh; overflow: hidden; position: relative; overscroll-behavior: none; -webkit-tap-highlight-color: transparent; }
 /* The canvas is the control surface; the browser must not treat a drag on it
    as a scroll or a double-tap on it as a zoom. */
 canvas#gameCanvas { touch-action: none; }
@@ -44,55 +45,22 @@ canvas { display: block; position: relative; z-index: 2; }
 #vector-map { position: fixed; z-index: 1; pointer-events: none; }
 #map-container { border-radius: 0; }
 /* ------------------------------------------------------------------ *
- * Theme tokens — one language, shared with the root map-quest app.
- *
- * There used to be three: a warm paper map sheet scoped to #route-setup, a
- * dark navy/sky theme on :root for the in-game chrome, and a dark-and-gold
- * trivia card drawn on the canvas — plus a fourth set of cream hexes
- * hand-coded into hud.js that were almost, but not quite, the paper sheet.
- * Moving between the briefing and the game felt like moving between two
- * products, and the canvas HUD matched neither stylesheet.
- *
- * These are the root app's own tokens (src/index.css), so Canal Recall and
- * map-quest are now the same product visually, and `src/canalRecall/hudTheme.ts`
- * carries the identical values for the canvas HUD to paint with.
+ * Canal-local layout tokens (surfaces, radii, safe areas).
+ * Palette + plaque/tile primitives: css/enamel.css ← hudTheme.ts
+ * via `npm run publish:enamel-css`.
  * ------------------------------------------------------------------ */
 :root {
-  --paper: #0b3a8c;
-  --paper-raised: #1450b8;
-  --paper-muted: #072861;
-  --ink: #ffffff;
-  --ink-dim: rgba(255,255,255,.86);
-  --muted: rgba(255,255,255,.72);
   --surface: rgba(11,58,140,.94);
   --surface-sunk: rgba(255,255,255,.08);
   --surface-sunk-focus: rgba(255,255,255,.14);
-  --line: rgba(255,255,255,.28);
   --line-strong: rgba(196,163,90,.55);
-  --accent: #b87333;
   --accent-ink: #e6d094;
   --accent-soft: rgba(184,115,51,.18);
-  --moss: #1450b8;
-  --moss-dark: #072861;
-  --moss-soft: rgba(20,80,184,.28);
-  --ochre: #c4a35a;
-  --primary: #b87333;
   --primary-ink: #ffffff;
   --radius: 10px;
   --radius-sm: 7px;
   --font-ui: system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-  /* Enamel street-plaque chrome (route setup + utility panels). */
-  --enamel: #0b3a8c;
-  --enamel-bright: #1450b8;
-  --enamel-deep: #072861;
-  --enamel-ink: #ffffff;
-  --enamel-muted: rgba(255,255,255,.72);
-  --rivet: #c4a35a;
-  --rivet-deep: #8a7040;
-  --enamel-copper: #b87333;
-  --enamel-copper-deep: #8a5524;
-  --font-plaque: "Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
   /* Read back by the typed viewport module so the HUD can keep clear of the
      notch and the home indicator. */
   --safe-top: env(safe-area-inset-top, 0px);
@@ -134,7 +102,7 @@ canvas { display: block; position: relative; z-index: 2; }
 #canal-card h2 { color: var(--enamel-ink); margin-bottom: 4px; font: 800 22px/1.15 var(--font-plaque); letter-spacing: .02em; text-transform: uppercase; }
 #canal-card p { color: var(--enamel-muted); margin-bottom: 12px; font-size: 12px; }
 #canal-answer { width: 100%; margin-bottom: 10px; padding: 12px 14px; border: 1px solid rgba(255,255,255,.35); border-radius: var(--radius-sm); background: rgba(255,255,255,.08); color: var(--enamel-ink); font: 16px var(--font-ui); }
-#canal-submit { width: 100%; padding: 11px; border: 0; border-radius: var(--radius-sm); background: linear-gradient(180deg, #d08a4a, var(--enamel-copper) 45%, var(--enamel-copper-deep)); color: var(--enamel-ink); font: 800 15px/1 var(--font-plaque); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+#canal-submit { width: 100%; padding: 11px; border: 0; border-radius: var(--radius-sm); background: linear-gradient(180deg, var(--enamel-copper-mid), var(--enamel-copper) 45%, var(--enamel-copper-deep)); color: var(--enamel-ink); font: 800 15px/1 var(--font-plaque); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
 #canal-feedback { min-height: 20px; margin-top: 10px; font-weight: 700; font-size: 13px; color: var(--rivet); }
 #canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
 #canal-no-idea { width: 100%; margin-top: 6px; padding: 9px 8px; border: 1px dashed rgba(255,255,255,.35); border-radius: var(--radius-sm); background: transparent; color: var(--enamel-muted); font-weight: 600; cursor: pointer; font-size: 13px; }
@@ -163,60 +131,9 @@ canvas { display: block; position: relative; z-index: 2; }
 .advanced-options summary { padding: 13px 0; color: var(--ink-dim); font-weight: bold; cursor: pointer; }
 .advanced-options .setup-grid { padding-bottom: 14px; }
 
-/* Enamel: real street plaques are calm cobalt + white lettering.
-   Rivets/white rim only on hero + Start — not every option tile. */
-.enamel-plaque {
-  --_enamel: var(--enamel);
-  position: relative;
-  isolation: isolate;
-  border: 0;
-  border-radius: 6px;
-  color: var(--enamel-ink);
-  background:
-    linear-gradient(165deg, var(--enamel-bright) 0%, var(--_enamel) 42%, var(--enamel-deep) 100%);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.18) inset,
-    0 6px 18px rgba(0,0,0,.28);
-  transition: filter 160ms ease-out, box-shadow 160ms ease-out, background 160ms ease-out;
-}
-.enamel-plaque.enamel-framed::before {
-  content: '';
-  position: absolute;
-  inset: 6px;
-  border: 1px solid rgba(255,255,255,.88);
-  border-radius: 3px;
-  pointer-events: none;
-}
-.enamel-plaque.enamel-framed::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: .9;
-  background-image:
-    radial-gradient(circle at 7px 7px, #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px),
-    radial-gradient(circle at calc(100% - 7px) 7px, #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px),
-    radial-gradient(circle at 7px calc(100% - 7px), #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px),
-    radial-gradient(circle at calc(100% - 7px) calc(100% - 7px), #ddd3a8 0 1.5px, var(--rivet) 2px 3.5px, transparent 4px);
-}
 .enamel-icon { flex: none; color: var(--enamel-ink); opacity: .92; }
 
-/* Choice tiles: same cobalt family, no rivet costume. */
-.enamel-tile {
-  border: 1px solid rgba(255,255,255,.16);
-  border-radius: 6px;
-  color: var(--enamel-ink);
-  background: rgba(11,58,140,.55);
-  box-shadow: none;
-  transition: background 160ms ease-out, border-color 160ms ease-out, filter 160ms ease-out;
-}
-.enamel-tile:hover { background: rgba(20,80,184,.62); border-color: rgba(255,255,255,.28); }
-.enamel-tile.active {
-  background: linear-gradient(165deg, var(--enamel-bright), var(--enamel));
-  border-color: rgba(196,163,90,.7);
-  box-shadow: 0 1px 0 rgba(255,255,255,.16) inset;
-}
-
+/* Choice layout — tile look comes from shared css/enamel.css. */
 .setup-choice-row { margin: 16px 0 0; }
 .setup-choice-label {
   margin: 0 0 7px;
@@ -442,9 +359,9 @@ canvas { display: block; position: relative; z-index: 2; }
   letter-spacing: .07em;
   text-transform: uppercase;
   /* Night ink on copper — white-on-copper failed WCAG (~3.1:1). */
-  color: #071430;
+  color: var(--night);
   background:
-    linear-gradient(180deg, #d9a05b, var(--enamel-copper) 42%, var(--enamel-copper-deep));
+    linear-gradient(180deg, var(--enamel-copper-hi), var(--enamel-copper) 42%, var(--enamel-copper-deep));
   box-shadow:
     0 1px 0 rgba(255,255,255,.28) inset,
     0 8px 20px rgba(0,0,0,.32);
