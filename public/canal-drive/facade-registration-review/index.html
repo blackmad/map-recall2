@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Façade registration review · Map Recall</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/enamel.css">
+  <style>
+    :root { --panel: #0a1d42; --panel-raised: #102959; --hairline: rgba(255,255,255,.2); --success: #80d8ae; --danger: #ff9d90; --warning: #e6c46b; }
+    * { box-sizing: border-box; }
+    html { background: var(--night); }
+    body { margin: 0; min-height: 100vh; overflow: hidden; background: var(--night); color: var(--ink); font: 15px/1.45 system-ui, sans-serif; }
+    ::selection { background: var(--rivet); color: var(--night); }
+    :focus-visible { outline: 3px solid var(--rivet); outline-offset: 3px; }
+button, input, select, textarea { font: inherit; }
+[hidden] { display: none !important; }
+    button { color: inherit; }
+    a { color: #b9d7ff; text-underline-offset: .2em; }
+    * { scrollbar-color: var(--rivet) var(--night); scrollbar-width: thin; }
+    .shell { width: 100%; max-width: 100vw; height: 100vh; min-width: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); overflow-x: clip; }
+    header { min-height: 88px; display: flex; align-items: center; gap: 20px; padding: 14px 22px; background: #061128; border-bottom: 1px solid var(--hairline); }
+    .brand { min-width: 250px; padding: 12px 26px 13px; }
+    .brand strong { display: block; font: 800 1.65rem/.9 var(--font-plaque); letter-spacing: .035em; text-transform: uppercase; }
+    .brand span { display: block; margin-top: 7px; color: var(--enamel-muted); font: 600 .75rem/1 "JetBrains Mono", monospace; }
+    .headline { flex: 1; min-width: 0; }
+    .headline h1 { margin: 0 0 3px; font: 700 clamp(1.35rem, 2.4vw, 2rem)/1 var(--font-plaque); letter-spacing: .01em; text-transform: uppercase; }
+    .headline p { margin: 0; color: var(--muted); max-width: 72ch; }
+    .counter { color: var(--warning); font: 700 .82rem/1.3 "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; text-align: right; }
+    .workspace { min-height: 0; display: grid; grid-template-columns: minmax(250px, 19vw) minmax(470px, 1fr) minmax(300px, 24vw); }
+    aside, main { min-width: 0; min-height: 0; }
+    .fixtures { border-right: 1px solid var(--hairline); background: #081733; display: grid; grid-template-rows: auto 1fr; }
+    .filter { padding: 18px; border-bottom: 1px solid var(--hairline); }
+    .filter label, .field-label { display: block; margin-bottom: 7px; color: var(--enamel-muted); font: 700 .7rem/1 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; }
+    .filter input, input, select, textarea { width: 100%; border: 1px solid var(--hairline); border-radius: 7px; background: #061128; color: var(--ink); padding: 10px 11px; }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.54); }
+    .fixture-list { overflow: auto; padding: 8px; }
+    .fixture { width: 100%; display: grid; grid-template-columns: 9px 1fr auto; gap: 10px; align-items: center; border: 0; border-radius: 8px; background: transparent; padding: 11px 10px; text-align: left; cursor: pointer; }
+    .fixture:hover { background: rgba(255,255,255,.06); }
+    .fixture.active { background: var(--enamel); box-shadow: 0 5px 15px rgba(0,0,0,.22); }
+    .fixture .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--warning); }
+    .fixture[data-state="accepted"] .dot { background: var(--success); }
+    .fixture[data-state="rejected"] .dot { background: var(--danger); }
+    .fixture strong { display: block; font: 700 1rem/1.05 var(--font-plaque); letter-spacing: .025em; text-transform: uppercase; }
+    .fixture small { display: block; margin-top: 4px; color: var(--muted); font: 500 .62rem/1 "JetBrains Mono", monospace; }
+    .fixture b { color: var(--warning); font: 700 .66rem/1 "JetBrains Mono", monospace; }
+    .observation { overflow: auto; background: #030b1d; }
+    .observation-bar { min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 18px; border-bottom: 1px solid var(--hairline); }
+    .observation-bar h2 { margin: 0; font: 700 1.25rem/1 var(--font-plaque); letter-spacing: .02em; text-transform: uppercase; }
+    .mono { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+    .observation-bar code { color: var(--muted); font-size: .68rem; }
+    .phase-lock { color: var(--warning); font: 700 .65rem/1.2 "JetBrains Mono", monospace; text-align: right; }
+    .viewer { position: relative; min-height: 320px; display: grid; place-items: center; background: #000; overflow: hidden; cursor: crosshair; }
+    .viewer img { display: block; width: 100%; height: auto; max-height: 64vh; object-fit: contain; }
+    .viewer.empty { cursor: default; }
+    .viewer-message { padding: 46px; max-width: 62ch; color: var(--muted); text-align: center; }
+    .anchor { position: absolute; width: 16px; height: 16px; margin: -8px 0 0 -8px; border: 2px solid #fff; border-radius: 50%; background: var(--rivet); box-shadow: 0 3px 10px rgba(0,0,0,.6); pointer-events: none; }
+    .anchor::after { content: attr(data-kind); position: absolute; left: 13px; top: -5px; white-space: nowrap; padding: 3px 6px; border-radius: 4px; background: rgba(3,11,29,.88); color: #fff; font: 700 .58rem/1 "JetBrains Mono", monospace; }
+    .under-viewer { display: grid; grid-template-columns: minmax(220px, .72fr) 1fr; border-top: 1px solid var(--hairline); }
+    .footprint { padding: 18px; border-right: 1px solid var(--hairline); }
+    .footprint svg { width: 100%; max-width: 100%; height: 220px; display: block; overflow: hidden; background: #071430; border-radius: 8px; }
+    .footprint path { fill: rgba(20,80,184,.18); stroke: rgba(255,255,255,.28); stroke-width: 1.5; }
+    .footprint line { stroke: var(--muted); stroke-width: 2; vector-effect: non-scaling-stroke; }
+    .footprint line.selected { stroke: var(--rivet); stroke-width: 5; }
+    .footprint circle { fill: var(--enamel-copper-hi); }
+    .preview { min-height: 260px; padding: 18px; display: grid; grid-template-rows: auto 1fr; }
+    .surface-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .surface-title h3 { margin: 0; font: 700 1rem/1 var(--font-plaque); letter-spacing: .035em; text-transform: uppercase; }
+    .surface-title span { color: var(--muted); font: 600 .6rem/1 "JetBrains Mono", monospace; }
+    .locked-preview { min-height: 190px; display: grid; place-items: center; border: 1px dashed rgba(255,255,255,.27); border-radius: 8px; color: var(--muted); text-align: center; padding: 28px; }
+    .locked-preview strong { display: block; color: var(--warning); font: 700 .72rem/1.2 "JetBrains Mono", monospace; }
+    .inspector { overflow: auto; border-left: 1px solid var(--hairline); background: var(--panel); }
+    .section { padding: 19px; border-bottom: 1px solid var(--hairline); }
+    .section h3 { margin: 0 0 13px; font: 700 1rem/1 var(--font-plaque); letter-spacing: .04em; text-transform: uppercase; }
+    .fact-grid { display: grid; grid-template-columns: minmax(90px, .7fr) 1.3fr; gap: 7px 12px; font-size: .78rem; }
+    .fact-grid dt { color: var(--muted); }
+    .fact-grid dd { margin: 0; overflow-wrap: anywhere; word-break: break-word; font-family: "JetBrains Mono", monospace; font-size: .7rem; font-variant-numeric: tabular-nums; }
+    .addresses { margin: 12px 0 0; padding: 0; list-style: none; }
+    .addresses li { padding: 7px 0; border-top: 1px solid rgba(255,255,255,.11); font-size: .78rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
+    .tag { border-radius: 999px; background: rgba(255,255,255,.09); padding: 5px 8px; color: var(--muted); font-size: .68rem; }
+    .elevation-list { display: grid; gap: 6px; }
+    .elevation-option { display: grid; grid-template-columns: auto 1fr auto; gap: 9px; align-items: center; padding: 8px; border-radius: 7px; cursor: pointer; }
+    .elevation-option:hover { background: rgba(255,255,255,.06); }
+    .elevation-option input { width: auto; margin: 0; accent-color: var(--rivet); }
+    .elevation-option span { min-width: 0; overflow-wrap: anywhere; word-break: break-word; font: 600 .65rem/1.35 "JetBrains Mono", monospace; }
+    .elevation-option b { color: var(--muted); font: 600 .62rem/1 "JetBrains Mono", monospace; }
+    .anchor-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .anchor-controls .wide { grid-column: 1 / -1; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
+    .button { border: 1px solid var(--hairline); border-radius: 7px; background: rgba(255,255,255,.08); padding: 9px 11px; cursor: pointer; font-weight: 700; }
+    .button:hover { background: rgba(255,255,255,.14); }
+    .button.primary { border-color: rgba(196,163,90,.72); background: var(--enamel-copper); color: #071430; }
+    .button.danger { color: var(--danger); }
+    .button:disabled { cursor: not-allowed; opacity: .42; }
+    .review-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .review-fields .wide { grid-column: 1/-1; }
+    textarea { min-height: 72px; resize: vertical; }
+    .notice { border-radius: 8px; background: rgba(230,196,107,.1); padding: 11px; color: #f5dda0; font-size: .75rem; }
+    .review-error { min-height: 1.2em; margin: 9px 0 0; color: var(--danger); font-size: .75rem; }
+    .error { margin: 32px; padding: 24px; border: 1px solid rgba(255,157,144,.5); border-radius: 10px; background: rgba(255,157,144,.08); color: #ffd0ca; }
+    @media (max-width: 1120px) {
+      .workspace { grid-template-columns: 260px minmax(0, 1fr); grid-template-rows: minmax(560px, 1fr) auto; overflow: auto; }
+      .fixtures, .observation { max-height: calc(100vh - 88px); }
+      .inspector { grid-column: 1 / -1; overflow: visible; border-left: 0; border-top: 1px solid var(--hairline); display: grid; grid-template-columns: repeat(3, 1fr); }
+      .section { border-right: 1px solid var(--hairline); }
+    }
+    @media (max-width: 760px) {
+      body { overflow: auto; }
+      .shell { width: 100vw; height: auto; min-height: 100vh; }
+      header { align-items: flex-start; flex-wrap: wrap; padding: 12px; }
+      .brand { min-width: 210px; }
+      .counter { margin-left: auto; }
+      .headline { order: 3; flex-basis: 100%; }
+      .workspace { display: block; width: 100%; max-width: 100vw; overflow-x: clip; }
+      .fixtures { border-right: 0; border-bottom: 1px solid var(--hairline); display: block; }
+      .fixture-list { width: 100%; max-width: 100vw; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; overflow: visible; }
+      .fixture { min-width: 0; padding-inline: 7px; }
+      .fixture strong { font-size: .88rem; }
+      .fixture small { overflow-wrap: anywhere; }
+      .filter { padding: 12px; }
+      .viewer { min-height: 195px; }
+      .under-viewer { grid-template-columns: 1fr; }
+      .footprint { border-right: 0; border-bottom: 1px solid var(--hairline); }
+      .inspector { display: block; }
+      .section { border-right: 0; }
+.phase-lock { display: block; font-size: .7rem; line-height: 1.25; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand enamel-plaque enamel-framed">
+        <strong>Map Recall</strong><span>FAÇADE EVIDENCE DESK</span>
+      </div>
+      <div class="headline">
+        <h1>Registration review</h1>
+        <p>Confirm the BAG pand and exact wall before camera calibration or opening detection can begin.</p>
+      </div>
+      <div class="counter" id="counter">LOADING</div>
+    </header>
+    <div class="workspace" id="app" aria-live="polite"></div>
+  </div>
+  <script>
+    const state = { fixtures: [], selected: 0, filter: '', edits: {} };
+    const anchorKinds = ['wall-left', 'wall-right', 'ground', 'eaves', 'roofline'];
+    const storageKey = fixture => `map-recall-registration-review:${fixture.fixtureId}`;
+    const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+    const address = item => `${item.publicSpaceName} ${item.houseNumber}${item.houseLetter || ''}${item.suffix ? `-${item.suffix}` : ''}${item.postalCode ? `, ${item.postalCode}` : ''}`;
+    const current = () => state.fixtures[state.selected];
+    const edited = fixture => state.edits[fixture.fixtureId] || fixture;
+    const loadEdit = fixture => { try { return JSON.parse(localStorage.getItem(storageKey(fixture))) || fixture; } catch { return fixture; } };
+    const persist = fixture => { state.edits[fixture.fixtureId] = fixture; localStorage.setItem(storageKey(fixture), JSON.stringify(fixture)); render(); };
+    const reviewerKey = value => String(value || '').trim().toLocaleLowerCase();
+    const isAgreed = fixture => {
+      const accepted = (fixture.reviewPasses || []).filter(pass => pass.identityVerdict === 'accepted' && pass.elevationVerdict === 'accepted');
+      const first = accepted.find(pass => pass.passId === 'pass-1');
+      const second = accepted.find(pass => pass.passId === 'pass-2');
+      return Boolean(fixture.selectedElevationId && first && second && reviewerKey(first.reviewer) !== reviewerKey(second.reviewer));
+    };
+    const statusOf = fixture => { const item = edited(fixture); return item.status === 'rejected' ? 'rejected' : isAgreed(item) ? 'accepted' : 'candidate'; };
+    const reviewCount = fixture => edited(fixture).reviewPasses?.length || 0;
+
+    function fixtureList() {
+      const query = state.filter.trim().toLowerCase();
+      return state.fixtures.map((fixture, index) => ({ fixture, index })).filter(({fixture}) => !query || `${fixture.label} ${fixture.pandId}`.toLowerCase().includes(query));
+    }
+
+    function footprintSvg(fixture) {
+      const points = fixture.footprintRd;
+      const xs = points.map(point => point.x), ys = points.map(point => point.y);
+      const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+      const span = Math.max(maxX - minX, maxY - minY, 1), pad = span * .15;
+      const box = `${minX-pad} ${-(maxY+pad)} ${span+pad*2} ${span+pad*2}`;
+      const path = points.map((point, index) => `${index ? 'L' : 'M'} ${point.x} ${-point.y}`).join(' ') + ' Z';
+      const lines = fixture.elevations.map(elevation => `<line class="${elevation.elevationId === fixture.selectedElevationId ? 'selected' : ''}" x1="${elevation.start.x}" y1="${-elevation.start.y}" x2="${elevation.end.x}" y2="${-elevation.end.y}"><title>${escapeHtml(elevation.elevationId)} · ${elevation.lengthM.toFixed(2)} m · faces ${elevation.facingDeg.toFixed(0)}°</title></line>`).join('');
+      const camera = fixture.panorama ? (() => {
+        const lng = fixture.panorama.lngLat[0], lat = fixture.panorama.lngLat[1];
+        return `<text x="${minX}" y="${-(maxY+pad*.35)}" fill="rgba(255,255,255,.7)" font-size="${span*.04}">camera position is shown in panorama metadata</text>`;
+      })() : '';
+      return `<svg viewBox="${box}" role="img" aria-label="BAG footprint and candidate elevations"><path d="${path}"/>${lines}${camera}</svg>`;
+    }
+
+    function renderViewer(fixture) {
+      if (!fixture.panorama?.localImageUrl) return `<div class="viewer empty"><div class="viewer-message"><strong>No panorama assigned.</strong><br>This contrast fixture is waiting for explicit geometric view selection. It cannot inherit an old crop.</div></div>`;
+      const anchors = fixture.anchors.map(anchor => `<span class="anchor" data-kind="${escapeHtml(anchor.kind)}" style="left:${anchor.pixel.x / 80}%;top:${anchor.pixel.y / 40}%"></span>`).join('');
+      return `<div class="viewer" id="viewer"><img id="panorama" src="${escapeHtml(fixture.panorama.localImageUrl)}" width="8000" height="4000" alt="Full equirectangular municipal panorama for ${escapeHtml(fixture.label)}">${anchors}</div>`;
+    }
+
+    function render() {
+      const source = current();
+      if (!source) return;
+      const fixture = edited(source);
+      const accepted = state.fixtures.filter(item => statusOf(item) === 'accepted').length;
+      document.querySelector('#counter').innerHTML = `${accepted}/${state.fixtures.length} AGREED<br>${state.fixtures.filter(item => reviewCount(item) > 0).length} TOUCHED`;
+      document.querySelector('#app').innerHTML = `
+        <aside class="fixtures">
+          <div class="filter"><label for="fixture-filter">Find pand or address</label><input id="fixture-filter" type="search" placeholder="Herengracht 270" value="${escapeHtml(state.filter)}"></div>
+          <nav class="fixture-list" aria-label="Registration fixtures">${fixtureList().map(({fixture:item,index}) => `<button class="fixture ${index === state.selected ? 'active' : ''}" data-index="${index}" data-state="${statusOf(item)}"><span class="dot"></span><span><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.pandId)}</small></span><b>${reviewCount(item)}/2</b></button>`).join('')}</nav>
+        </aside>
+        <main class="observation">
+          <div class="observation-bar"><div><h2>${escapeHtml(fixture.label)}</h2><code>${escapeHtml(fixture.panorama?.panoramaId || 'PANORAMA NOT SELECTED')}</code></div><div class="phase-lock">CAMERA MODEL LOCKED<br>DETECTORS HIDDEN</div></div>
+          ${renderViewer(fixture)}
+          <div class="under-viewer">
+            <section class="footprint"><div class="surface-title"><h3>Canonical footprint</h3><span>RD NEW · METRES</span></div>${footprintSvg(fixture)}</section>
+            <section class="preview"><div class="surface-title"><h3>Rectified observation</h3><span>PHASE 3 INPUT</span></div><div class="locked-preview"><div><strong>NOT PRODUCED</strong><br>No camera convention is permitted at this checkpoint. The projected quadrilateral and rectification stay empty until the gold anchors exist.</div></div></section>
+          </div>
+        </main>
+        <aside class="inspector">
+          <section class="section"><h3>Building identity</h3><dl class="fact-grid"><dt>BAG pand</dt><dd>${escapeHtml(fixture.pandId)}</dd><dt>Status</dt><dd>${escapeHtml(statusOf(source))}</dd><dt>Vertices</dt><dd>${fixture.footprintRd.length}</dd><dt>Elevations</dt><dd>${fixture.elevations.length}</dd><dt>Source quad</dt><dd>${fixture.sourceQuad ? 'present' : 'unavailable'}</dd></dl><ul class="addresses">${fixture.addresses.length ? fixture.addresses.map(item => `<li>${escapeHtml(address(item))}${item.primary ? ' <small>primary</small>' : ''}</li>`).join('') : '<li>No BAG address joined — reject or investigate.</li>'}</ul><div class="tags">${fixture.intendedCoverage.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}</div></section>
+          <section class="section"><h3>Observation metadata</h3>${fixture.panorama ? `<dl class="fact-grid"><dt>Captured</dt><dd>${escapeHtml(new Date(fixture.panorama.capturedAt).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'medium', timeZone: 'Europe/Amsterdam' }))}</dd><dt>Mission</dt><dd>${escapeHtml(fixture.panorama.mission || fixture.panorama.missionYear || 'not supplied')}</dd><dt>Longitude</dt><dd>${fixture.panorama.lngLat[0].toFixed(8)}</dd><dt>Latitude</dt><dd>${fixture.panorama.lngLat[1].toFixed(8)}</dd><dt>Camera height</dt><dd>${fixture.panorama.cameraHeight.toFixed(3)} m</dd><dt>Heading</dt><dd>${fixture.panorama.headingDeg.toFixed(3)}°</dd><dt>Pitch</dt><dd>${fixture.panorama.pitchDeg.toFixed(3)}°</dd><dt>Roll</dt><dd>${fixture.panorama.rollDeg.toFixed(3)}°</dd></dl>` : '<p class="notice">No observation is assigned. Metadata cannot be inferred from a nearby image.</p>'}</section>
+          <section class="section"><h3>Elevation decision</h3><div class="elevation-list">${fixture.elevations.map(elevation => `<label class="elevation-option"><input type="radio" name="elevation" value="${escapeHtml(elevation.elevationId)}" ${elevation.elevationId === fixture.selectedElevationId ? 'checked' : ''}><span>${escapeHtml(elevation.elevationId.split(':').at(-1))}<br>${elevation.lengthM.toFixed(2)} m</span><b>${elevation.facingDeg.toFixed(0)}°</b></label>`).join('')}</div>${fixture.elevationSelectionBasis ? `<p class="notice">${escapeHtml(fixture.elevationSelectionBasis)}</p>` : '<p class="notice">No elevation is preselected. Choose only after checking the full context and BAG footprint.</p>'}</section>
+          <section class="section"><h3>Source-pixel anchors</h3><div class="anchor-controls"><label><span class="field-label">Anchor kind</span><select id="anchor-kind">${anchorKinds.map(kind => `<option>${kind}</option>`).join('')}</select></label><label><span class="field-label">Note</span><input id="anchor-note" placeholder="distinctive cornice"></label><label><span class="field-label">Pixel X</span><input id="anchor-x" type="number" min="0" max="7999" step="1"></label><label><span class="field-label">Pixel Y</span><input id="anchor-y" type="number" min="0" max="3999" step="1"></label></div><div class="button-row"><button class="button" id="add-anchor" ${fixture.panorama ? '' : 'disabled'}>Add anchor</button><button class="button" id="undo-anchor" ${fixture.anchors.length ? '' : 'disabled'}>Undo last</button></div><p class="notice">Click the full panorama to capture a pixel, or enter exact coordinates. ${fixture.anchors.length} anchors recorded locally.</p></section>
+          <section class="section"><h3>Independent review pass</h3><div class="review-fields"><label class="wide"><span class="field-label">Reviewer</span><input id="reviewer" autocomplete="name" placeholder="Name or initials"></label><label><span class="field-label">Pass</span><select id="review-pass"><option value="pass-1">Pass 1</option><option value="pass-2">Pass 2</option></select></label><label><span class="field-label">Identity</span><select id="identity-verdict"><option>uncertain</option><option>accepted</option><option>rejected</option></select></label><label><span class="field-label">Elevation</span><select id="elevation-verdict"><option>uncertain</option><option>accepted</option><option>rejected</option></select></label><label class="wide"><span class="field-label">Review note</span><textarea id="review-note" placeholder="Name the evidence or ambiguity."></textarea></label></div><p class="review-error" id="review-error" role="alert"></p><div class="button-row"><button class="button primary" id="save-pass">Save review pass</button><button class="button danger" id="reject-fixture">Reject fixture</button><button class="button" id="export-review">Export JSON</button></div></section>
+        </aside>`;
+      wire(fixture);
+    }
+
+    function withFixture(change) { const fixture = structuredClone(edited(current())); change(fixture); persist(fixture); }
+    function addAnchor(x, y) {
+      const kind = document.querySelector('#anchor-kind').value;
+      const note = document.querySelector('#anchor-note').value.trim();
+      withFixture(fixture => fixture.anchors.push({ anchorId: `${kind}-${Date.now()}`, kind, pixel: { x: Math.round(x), y: Math.round(y) }, note }));
+    }
+    function wire(fixture) {
+      document.querySelector('#fixture-filter').addEventListener('input', event => {
+        state.filter = event.target.value;
+        const query = state.filter.trim().toLowerCase();
+        document.querySelectorAll('.fixture').forEach(button => {
+          const item = state.fixtures[Number(button.dataset.index)];
+          button.hidden = Boolean(query && !`${item.label} ${item.pandId}`.toLowerCase().includes(query));
+        });
+      });
+      document.querySelectorAll('.fixture').forEach(button => button.addEventListener('click', () => { state.selected = Number(button.dataset.index); render(); }));
+      document.querySelectorAll('input[name="elevation"]').forEach(input => input.addEventListener('change', () => withFixture(item => { item.selectedElevationId = input.value; item.elevationSelectionBasis = 'Chosen in registration review; awaiting two-pass agreement.'; })));
+      document.querySelector('#add-anchor').addEventListener('click', () => { const x = Number(document.querySelector('#anchor-x').value), y = Number(document.querySelector('#anchor-y').value); if (Number.isFinite(x) && Number.isFinite(y)) addAnchor(x, y); });
+      document.querySelector('#undo-anchor').addEventListener('click', () => withFixture(item => item.anchors.pop()));
+      document.querySelector('#viewer')?.addEventListener('click', event => {
+        const image = document.querySelector('#panorama');
+        const rect = image.getBoundingClientRect();
+        addAnchor((event.clientX - rect.left) / rect.width * image.naturalWidth, (event.clientY - rect.top) / rect.height * image.naturalHeight);
+      });
+      document.querySelector('#save-pass').addEventListener('click', () => {
+        const reviewer = document.querySelector('#reviewer').value.trim();
+        if (!reviewer) { document.querySelector('#reviewer').focus(); return; }
+        const passId = document.querySelector('#review-pass').value;
+        const otherPass = fixture.reviewPasses.find(pass => pass.passId !== passId);
+        if (otherPass && reviewerKey(otherPass.reviewer) === reviewerKey(reviewer)) {
+          document.querySelector('#review-error').textContent = `${otherPass.reviewer} already supplied the other pass. Use an independent reviewer identity.`;
+          document.querySelector('#reviewer').focus();
+          return;
+        }
+        withFixture(item => {
+          const review = { passId, reviewer, reviewedAt: new Date().toISOString(), identityVerdict: document.querySelector('#identity-verdict').value, elevationVerdict: document.querySelector('#elevation-verdict').value, note: document.querySelector('#review-note').value.trim() };
+          item.reviewPasses = item.reviewPasses.filter(pass => pass.passId !== review.passId).concat(review);
+          item.status = isAgreed(item) ? 'accepted' : 'candidate';
+        });
+      });
+      document.querySelector('#reject-fixture').addEventListener('click', () => withFixture(item => item.status = 'rejected'));
+      document.querySelector('#export-review').addEventListener('click', () => {
+        const payload = { schemaVersion: 1, exportedAt: new Date().toISOString(), fixtures: state.fixtures.map(item => edited(item)) };
+        const link = document.createElement('a'); link.href = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'})); link.download = 'facade-registration-review.json'; link.click(); URL.revokeObjectURL(link.href);
+      });
+    }
+
+    fetch('./local/fixtures.json').then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); }).then(payload => {
+      state.fixtures = payload.fixtures; for (const fixture of state.fixtures) state.edits[fixture.fixtureId] = loadEdit(fixture); render();
+    }).catch(error => {
+      document.querySelector('#counter').textContent = 'DATA UNAVAILABLE';
+      document.querySelector('#app').innerHTML = `<div class="error"><h2>Local review evidence has not been materialised.</h2><p>Run <code>npm run build:facade-registration-review</code>, then reload this page through the project dev server.</p><p class="mono">${escapeHtml(error.message)}</p></div>`;
+    });
+  </script>
+</body>
+</html>

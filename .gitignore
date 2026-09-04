@@ -13,6 +13,7 @@ public/canal-drive/google-tiles-config.json
 
 # Aerial imagery tile cache for scripts/build-satellite-roof-colours.ts
 .cache/
+public/canal-drive/facade-registration-review/local/
 public/data/extracts/*/staging/
 firebase-debug.log
 dist-canalrecall/

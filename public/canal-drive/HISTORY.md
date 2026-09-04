@@ -6,6 +6,27 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Amsterdam façade rebuild: identity before pixels
+
+The first clean-rebuild checkpoint implements phases 0–2 of
+`AMSTERDAM_FACADE_REBUILD_PLAN.md`. The previous rectifications, measurements,
+textures, review labels, correlations, and renderer extracts are explicitly
+invalidated after the Herengracht 270 wrong-side panorama failure. A hard
+allowlist migrated 1,444 upstream/raw files into a new ignored namespace with
+per-file SHA-256, source URL, retrieval date, and licence; measured derivatives
+never entered it.
+
+BAG identity is now an explicit pand → verblijfsobject → every address join,
+not an address-point or OSM guess. Footprints normalise to stable per-pand
+elevations while retaining original survey vertices; candidate selection is a
+separate stage and returns ambiguity instead of inventing a front. The initial
+16-building gold catalog and local registration desk cover the named landmarks,
+both canal banks, cardinal contrasts, multi-address cases, and the pinned
+Herengracht 270 observation. That fixture reproduces 38.6 m standoff and 3.3°
+obliquity without choosing an image yaw. The UI deliberately has no detector
+boxes or rectification: two human pand/elevation passes and hand-clicked anchors
+are the next gate.
+
 ## Shared enamel CSS from one hudTheme source
 
 Map Quest and Canal each kept a hand-copied cobalt palette and plaque recipe.
