@@ -29,6 +29,7 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/area
 import { resolveHeights, type HeightReason } from '../../src/canalRecall/facade/buildRecord.ts';
 import { CANAL_WATER_LEVEL_NAP_M } from '../../src/canalRecall/facade/rdNew.ts';
 import { nearestMaterial, wallFamily } from '../../src/canalRecall/facade/materials.ts';
+import { readGable } from '../../src/canalRecall/facade/heritageText.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, MassingRecord } from '../../src/canalRecall/facade/sources.ts';
 
@@ -49,6 +50,30 @@ const registry = JSON.parse(await readFile(path.join(CACHE, `${AREA.areaId}-regi
 const recon = JSON.parse(await readFile(path.join(STAGING, 'recon.json'), 'utf8'));
 const massing = new Map<string, MassingRecord>(recon.massing.map((m: MassingRecord) => [m.buildingId, m]));
 const inArea = new Set<string>(recon.buildings.map((b: { buildingId: string }) => b.buildingId));
+
+/**
+ * Construction year, and the gable the register names.
+ *
+ * Both were sitting in the reconnaissance file unused, and their absence was
+ * visible: with no year, `assumedGable` falls to its own default and every
+ * building in the boundary got a `lijst` — a 19th-century parapet cornice
+ * stamped across four centuries of fabric. With no register reading, the 695
+ * panden whose gable is actually *stated* in prose were guessing alongside the
+ * ones that are not.
+ *
+ * The distinction the renderer needs is not which gable but how we know: a
+ * stated gable and an assumed one are different kinds of claim and are coloured
+ * differently in evidence mode, so `stated` travels with the type.
+ */
+const years = new Map<string, number | null>(
+  recon.buildings.map((b: { buildingId: string; constructionYear: number | null }) =>
+    [b.buildingId, b.constructionYear ?? null]));
+const statedGables = new Map<string, string>();
+for (const listing of recon.heritage as Array<{ buildingId: string | null; description: string | null }>) {
+  if (!listing.buildingId || !listing.description) continue;
+  const reading = readGable(listing.description);
+  if (reading.gable) statedGables.set(listing.buildingId, reading.gable);
+}
 
 /**
  * Measured façades, where any exist yet.
@@ -98,6 +123,40 @@ const waterRings = water.rings
     return false;
   });
 
+/**
+ * Openings as the renderer wants them: metres along the wall, metres above the
+ * building's own ground.
+ */
+function openingsOf(record: MeasuredFacade): Array<[number, number, number, number]> {
+  return record.openings.flatMap(o => {
+          /**
+           * An opening sitting on the strip's bottom edge was not measured to
+           * the bottom; the picture ran out under it.
+           *
+           * Lowering the strip from 0.4 m to 1.8 m below ground moved this
+           * problem, it did not remove it — 1,223 of 15,178 openings still come
+           * back with `yM` at exactly 0, which is the image edge, not a sill.
+           * Some are genuine shopfronts and doors running to the pavement;
+           * others are the strip's dark bottom — quay wall, shadow, the water —
+           * read as one tall dark region.
+           *
+           * Either way the *sill* is unobserved, and drawing it at -1.8 m puts a
+           * window floating in the air below a wall that starts at ground level,
+           * which is worse than either reading. So the bottom is brought to the
+           * building's own ground: a door or a shopfront does reach it, and the
+           * top of the opening — which *was* observed — is left where it was
+           * measured. Anything with no height left above ground is dropped
+           * rather than drawn as a sliver.
+           */
+          const bottom = o.yM - STRIP_BASE_BELOW_GROUND_M;
+          const top = bottom + o.heightM;
+          const truncated = o.yM <= 0.08;
+          if (!truncated) return [[o.xM, bottom, o.widthM, o.heightM] as [number, number, number, number]];
+          if (top <= 0.4) return [];
+          return [[o.xM, 0, o.widthM, Number(top.toFixed(2))] as [number, number, number, number]];
+        });
+}
+
 const seen = new Set<string>();
 const buildings: Array<{
   id: string;
@@ -140,12 +199,21 @@ for (const entry of registry) {
     ridge: heights?.ridgeM != null ? round(heights.ridgeM) : null,
     roof: mass?.roofForm ?? 'unknown',
     reason: heights?.reason ?? null,
+    year: years.get(entry.buildingId) ?? null,
+    gable: statedGables.has(entry.buildingId)
+      ? { type: statedGables.get(entry.buildingId)!, stated: true }
+      : null,
     facade: (() => {
       const record = facades.get(entry.buildingId);
       if (!record) return null;
       const material = record.wallRgb
         ? nearestMaterial(record.wallRgb, wallFamily(record.wallRgb)).material.id
         : null;
+      const openings = openingsOf(record);
+      // Rejecting every reading leaves nothing observed, and a façade record
+      // with no openings in it is a claim to have looked with nothing to show
+      // for it. The building falls back to massing, which is what it is.
+      if (!openings.length) return null;
       return {
         wall: [
           round(record.wall[0] - origin.x), round(record.wall[1] - origin.y),
@@ -154,10 +222,7 @@ for (const entry of registry) {
         // Null, not a default brick: a wall whose colour was never sampled must
         // not arrive at the renderer wearing one.
         wallMaterial: material,
-        // Openings are metres along the wall from its start, and metres above
-        // the strip base, which was cut 0.4 m below the measured ground.
-        openings: record.openings.map(o =>
-          [o.xM, o.yM - STRIP_BASE_BELOW_GROUND_M, o.widthM, o.heightM] as [number, number, number, number]),
+        openings,
       };
     })(),
   });

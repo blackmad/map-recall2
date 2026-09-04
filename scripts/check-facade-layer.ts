@@ -9,7 +9,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../src/canalRecall/facade/areas.ts';
-import { buildingGeometry, colourFor, drawableHeights, EVIDENCE_COLOURS, FACADE_COLOURS, gableFor, openingGeometry, ownedPandIds, type Lod22Extract } from '../src/canalRecall/facade/facadeLayer.ts';
+import { buildingGeometry, classifyOpening, colourFor, drawableHeights, EVIDENCE_COLOURS, FACADE_COLOURS, gableFor, openingGeometry, ownedPandIds, type Lod22Extract } from '../src/canalRecall/facade/facadeLayer.ts';
 
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AMSTERDAM_GRACHTENGORDEL_WEST.areaId);
 const extract = JSON.parse(readFileSync(path.join(STAGING, 'lod22.json'), 'utf8')) as Lod22Extract;
@@ -120,20 +120,39 @@ if (unobserved) {
   check('an unobserved building reads as unobserved', colourFor(unobserved, 'facade', 'wall') === FACADE_COLOURS.unobserved, `pand ${unobserved.id}`);
 }
 
-// Every opening draws glass, joinery and a sill, and nothing else.
+// Every opening draws a leaf — glass, or a door panel where the shape says
+// door — and a window keeps its sill. A door and a shopfront do not get one:
+// they meet the pavement, and a projecting stone sill across a doorway is a
+// step nobody measured.
+const drawnOpenings = (b: (typeof withFacade)[number]) => {
+  const [x0, y0, x1, y1] = b.facade!.wall;
+  const wallLength = Math.hypot(x1 - x0, y1 - y0);
+  return b.facade!.openings.filter(([along, , w, h]) =>
+    along >= -0.5 && along <= wallLength + 0.5 && w >= 0.2 && h >= 0.2);
+};
 const strayCounts = withFacade.find(b => {
-  const drawnHere = b.facade!.openings.filter(([along, , w, h]) => {
-    const [x0, y0, x1, y1] = b.facade!.wall;
-    const length = Math.hypot(x1 - x0, y1 - y0);
-    return along >= -0.5 && along <= length + 0.5 && w >= 0.2 && h >= 0.2;
+  const here = drawnOpenings(b);
+  const leaves = here.length;
+  const sills = here.filter(([, up, w, h]) => {
+    const kind = classifyOpening(up, w, h);
+    return kind === 'window' || kind === 'souterrain';
   }).length;
   const parts = openingGeometry(b).part;
-  const glass = parts.filter(p => p === 'glass').length / 6;
-  const sill = parts.filter(p => p === 'sill').length / 6;
-  return glass !== drawnHere || sill !== drawnHere * 2;
+  const drawn = (parts.filter(p => p === 'glass').length + parts.filter(p => p === 'door').length) / 6;
+  return drawn !== leaves || parts.filter(p => p === 'sill').length / 6 !== sills * 2;
 });
-check('each opening draws one glass pane and its sill', !strayCounts,
+check('each opening draws one leaf, and only a window gets a sill', !strayCounts,
   strayCounts ? `pand ${strayCounts.id}` : `${openingsTotal} openings`);
+
+// A door must not draw as glass: that is what made every ground floor look like
+// another storey of windows.
+const glassDoor = withFacade.find(b => {
+  const geometry = openingGeometry(b);
+  const doors = drawnOpenings(b).filter(([, up, w, h]) => classifyOpening(up, w, h) === 'door').length;
+  return doors > 0 && geometry.part.filter(p => p === 'door').length / 6 !== doors;
+});
+check('a door draws as a panel, not as glass', !glassDoor,
+  glassDoor ? `pand ${glassDoor.id}` : 'all doors');
 
 // Depth is the point of the window rewrite, and it is built outward because
 // the wall has no aperture cut in it. Two things have to hold, measured on the
@@ -169,6 +188,51 @@ const noRelief = withFacade.find(b => {
 });
 check('the joinery stands proud of the pane', !noRelief, noRelief ? `pand ${noRelief.id}` : 'all reveals');
 
+// Every face must point out of the building.
+//
+// This is the check that was missing when roofs rendered see-through. BAG
+// footprint rings arrive in both winding directions, the plot frame's normal
+// flips with them, and a face wound the wrong way is discarded by the GPU as a
+// back face — so the building gets a hole you can look through into a dark
+// interior, and any face that survives is lit as though the sun were inside it.
+// Testable with no GPU at all: a normal on a closed solid points away from the
+// middle of the solid.
+const inwardFacing = extract.buildings.find(b => {
+  const geometry = buildingGeometry(b);
+  if (!geometry.positions.length) return false;
+  const ring = b.ring, n = ring.length / 2;
+  let cx = 0, cy = 0;
+  for (let i = 0; i < n; i++) { cx += ring[i * 2]; cy += ring[i * 2 + 1]; }
+  cx /= n; cy /= n;
+  const { eaves } = drawableHeights(b);
+  const cz = b.ground + eaves / 2;
+  for (let i = 0; i < geometry.positions.length / 3; i += 3) {
+    // One vertex per triangle is enough: the whole triangle shares a normal.
+    const dx = geometry.positions[i * 3] - cx;
+    const dy = geometry.positions[i * 3 + 1] - cy;
+    const dz = geometry.positions[i * 3 + 2] - cz;
+    const dot = geometry.normals[i * 3] * dx + geometry.normals[i * 3 + 1] * dy
+      + geometry.normals[i * 3 + 2] * dz;
+    // A face through the centre height can legitimately read near zero; only a
+    // clearly inward normal is a fault.
+    if (dot < -0.35) return true;
+  }
+  return false;
+});
+check('every face points out of its building', !inwardFacing,
+  inwardFacing ? `pand ${inwardFacing.id}` : `${extract.buildings.length} buildings`);
+
+// A canal house is entered from the street, so a façade measured down to the
+// pavement should find the way in. This does not assert that every building has
+// one — a warehouse door, a shared portico or a shopfront can all swallow it —
+// but a *collapse* means the strip is not reaching the ground again, which is
+// the failure that hid every door in the pilot behind a sill of exactly -0.40 m.
+const groundFloor = withFacade.filter(b =>
+  b.facade!.openings.some(([, up, w, h]) => up < 0.8 && h >= 1.8 && w <= 2.2));
+const share = groundFloor.length / Math.max(withFacade.length, 1);
+check('façades reach their own ground floor', share > 0.4,
+  `${groundFloor.length}/${withFacade.length} carry a door-shaped opening (${(share * 100).toFixed(0)}%)`);
+
 // The ridge is a measurement and the gable is drawn, so the drawing conforms to
 // the measurement and never the other way round: no gable may stand above the
 // ridge the laser found. A shaped gable reaches it exactly, because that is
@@ -187,17 +251,30 @@ const peakOf = (b: (typeof gabled)[number]) => {
 const overRidge = gabled.find(b => peakOf(b) > b.ground + b.ridge! + 0.05);
 check('no gable stands above the measured ridge', !overRidge,
   overRidge ? `pand ${overRidge.id}` : `${gabled.length} gables`);
-const shaped = gabled.filter(b => gableFor(b).type !== 'lijst');
+// Only a canal plot gets a shaped gable at all: a church, a warehouse or an
+// L-shaped corner site gets a roof tapered inside its own footprint, because
+// the plot-frame construction spans a bounding box and would throw shards over
+// the neighbours. So this asks the question only of buildings that have one.
+const hasGable = (b: (typeof gabled)[number]) =>
+  buildingGeometry(b).part.some(p => p === 'gable');
+const shaped = gabled.filter(b => gableFor(b).type !== 'lijst' && hasGable(b));
 const shortGable = shaped.find(b => Math.abs(peakOf(b) - (b.ground + b.ridge!)) > 0.05);
 check('a shaped gable reaches the measured ridge', !shortGable,
   shortGable ? `pand ${shortGable.id}` : `${shaped.length} shaped`);
 
-// A building nobody has looked at gets the plainest gable there is. Anything
-// shaped would be inventing a front that has never been photographed.
-const unobservedGables = extract.buildings.filter(b => !b.facade);
+// A building nobody has *photographed* gets the plainest gable there is —
+// unless the register names one in prose, which is a weaker observation than a
+// photograph but is still somebody having looked. What must never happen is a
+// shaped gable on a building with neither: that would be pure invention on the
+// exact question this twin exists not to invent.
+const unobservedGables = extract.buildings.filter(b => !b.facade && !b.gable);
 const invented = unobservedGables.find(b => gableFor(b).type !== 'punt' || gableFor(b).stated);
-check('an unobserved front gets a plain gable', !invented,
-  invented ? `pand ${invented.id}` : `${unobservedGables.length} unobserved`);
+check('an unphotographed, unstated front gets a plain gable', !invented,
+  invented ? `pand ${invented.id}` : `${unobservedGables.length} with neither`);
+
+const statedOnly = extract.buildings.filter(b => !b.facade && b.gable);
+check('a stated gable is marked as stated, not measured',
+  statedOnly.every(b => gableFor(b).stated), `${statedOnly.length} stated without a photograph`);
 
 console.log(`Façades: ${withFacade.length} measured, ${openingsTotal} openings, `
   + `${(100 * withFacade.length / extract.buildings.length).toFixed(1)}% of the boundary observed.`);

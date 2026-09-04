@@ -168,6 +168,26 @@ export const GLASS_COLOUR = 0x2f3a40;
  */
 export const FRAME_COLOUR = 0xe8e4d9;
 export const SILL_COLOUR = 0xbdb6a6;
+/**
+ * A front door reads as a solid panel, not as glass.
+ *
+ * Drawing doors as dark panes is what made the ground floor of every building
+ * look like another storey of windows. Painted joinery in a dark colour — the
+ * near-black green and oxblood this fabric actually uses — is what separates a
+ * doorway from the window beside it at any distance.
+ */
+export const DOOR_COLOUR = 0x24312c;
+/**
+ * The hijsbalk: the hoist beam under the gable.
+ *
+ * Canal houses are deep, their stairs are famously impossible, and everything
+ * large came in through the windows — so a beam projects from the gable with a
+ * hook on it, and on most of this fabric it is still there. It is one of the
+ * two or three details that say "Amsterdam" rather than "old European city",
+ * which is why it is worth drawing even though it is generated rather than
+ * measured.
+ */
+export const BEAM_COLOUR = 0x3b3129;
 /** The cornice. Painted the same as the joinery, being the same trade. */
 export const TRIM_COLOUR = 0xdcd6c8;
 
@@ -349,16 +369,45 @@ export function buildingGeometry(building: Lod22Building):
   const base = building.ground;
   const top = base + eaves;
 
+  let cx = 0, cy = 0;
+  for (let i = 0; i < count; i++) { cx += ring[i * 2]; cy += ring[i * 2 + 1]; }
+  cx /= count; cy /= count;
+
+  /**
+   * A quad, wound so its front face points out of the building.
+   *
+   * Winding cannot be assumed here. BAG footprint rings arrive in both
+   * directions — the registry does not promise an orientation — and the plot
+   * frame's normal flips with them, so quads written in a fixed vertex order
+   * came out front-facing on some buildings and back-facing on others. The GPU
+   * discards back faces, so those buildings rendered with holes in their roofs
+   * and walls that you could see straight through into a dark interior. It is
+   * not a rendering setting to paper over with `DoubleSide`: a face whose
+   * normal points into the building is also lit as though the sun were inside.
+   *
+   * So every face is checked against the building's own centre and flipped if
+   * it is facing inward. Sound for the shapes here, which are extrusions and
+   * roofs over a single footprint.
+   */
   const quad = (a: readonly number[], b: readonly number[], c: readonly number[], d: readonly number[],
                 kind: GeometryPart) => {
     const ux = b[0] - a[0], uy = b[1] - a[1], uz = b[2] - a[2];
     const vx = c[0] - a[0], vy = c[1] - a[1], vz = c[2] - a[2];
-    const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+    let nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
     const length = Math.hypot(nx, ny, nz);
     if (length < 1e-9) return;                       // collapsed; contributes nothing
-    for (const pt of [a, b, c, a, c, d]) {
+    nx /= length; ny /= length; nz /= length;
+    // Does it face away from the building's middle?
+    const fx = (a[0] + b[0] + c[0] + d[0]) / 4 - cx;
+    const fy = (a[1] + b[1] + c[1] + d[1]) / 4 - cy;
+    const fz = (a[2] + b[2] + c[2] + d[2]) / 4 - (base + eaves / 2);
+    const order = (nx * fx + ny * fy + nz * fz) < 0
+      ? [a, c, b, a, d, c]                           // inward: reverse the winding
+      : [a, b, c, a, c, d];
+    if ((nx * fx + ny * fy + nz * fz) < 0) { nx = -nx; ny = -ny; nz = -nz; }
+    for (const pt of order) {
       positions.push(pt[0], pt[1], pt[2]);
-      normals.push(nx / length, ny / length, nz / length);
+      normals.push(nx, ny, nz);
       isRoof.push(kind === 'roof');
       part.push(kind);
     }
@@ -386,8 +435,48 @@ export function buildingGeometry(building: Lod22Building):
     if (s < sMin) sMin = s; if (s > sMax) sMax = s;
     if (d < dMin) dMin = d; if (d > dMax) dMax = d;
   }
-  const width = sMax - sMin;
-  if (width < 1 || dMax - dMin < 1) return { positions, normals, isRoof, part };
+  const width = sMax - sMin, depth = dMax - dMin;
+  if (width < 1 || depth < 1) return { positions, normals, isRoof, part };
+
+  /**
+   * Is this actually a canal plot?
+   *
+   * Everything above the eaves is built in the plot frame — one ridge front to
+   * back, two planes to the party walls, a gable screening the front — and all
+   * of that is true of a canal house and false of a church, a warehouse, a
+   * 1960s block or an L-shaped corner site. Applied to those, it spans the
+   * bounding box rather than the footprint and throws long triangular shards
+   * out over the neighbours, which is exactly what it did.
+   *
+   * The boundary's own numbers draw the line. Median frontage is 6.0 m and the
+   * plots are far deeper than wide, so: no wider than 15 m, at least as deep as
+   * it is wide, and filling at least 65% of its own bounding box, which is what
+   * separates a rectangle from an L. That leaves out roughly a fifth of the
+   * boundary, and a fifth of the boundary is not canal houses.
+   *
+   * What the rest gets is the old centroid taper. It is a dull roof and it is
+   * not what those buildings have, but it is contained by the footprint, and a
+   * dull roof in the right place beats a dramatic one in the wrong place.
+   */
+  let ringArea = 0;
+  for (let i = 0, j = count - 1; i < count; j = i++) {
+    ringArea += ring[j * 2] * ring[i * 2 + 1] - ring[i * 2] * ring[j * 2 + 1];
+  }
+  const fill = Math.abs(ringArea / 2) / (width * depth);
+  const isCanalPlot = width <= 15 && depth >= width && fill >= 0.65;
+
+  if (!isCanalPlot) {
+    // Tapered toward the centroid, so it cannot leave the footprint.
+    for (let i = 0; i < count; i++) {
+      const j = (i + 1) % count;
+      const x0 = ring[i * 2], y0 = ring[i * 2 + 1];
+      const x1 = ring[j * 2], y1 = ring[j * 2 + 1];
+      const rx0 = cx + (x0 - cx) * 0.22, ry0 = cy + (y0 - cy) * 0.22;
+      const rx1 = cx + (x1 - cx) * 0.22, ry1 = cy + (y1 - cy) * 0.22;
+      quad([x0, y0, top], [x1, y1, top], [rx1, ry1, base + ridge], [rx0, ry0, base + ridge], 'roof');
+    }
+    return { positions, normals, isRoof, part };
+  }
 
   // World point from plot coordinates.
   const at = (s: number, d: number, z: number): [number, number, number] =>
@@ -475,7 +564,43 @@ export function buildingGeometry(building: Lod22Building):
  * Returns nothing for a building whose front has not been observed. That is the
  * rule the whole project turns on: no façade without an observation of it.
  */
-export type OpeningPart = 'glass' | 'frame' | 'sill';
+export type OpeningPart = 'glass' | 'frame' | 'sill' | 'door' | 'beam';
+
+/**
+ * What an opening *is*, read from the rectangle that was measured.
+ *
+ * The detector measures rectangles and nothing had ever said what they were, so
+ * every one of them drew as glass and the canal ring had no front doors in it
+ * at all. Classification here is honest because it uses only measured
+ * quantities — where the opening sits relative to this building's own ground,
+ * and its proportions — and no prior about what a house ought to have. A tall
+ * narrow opening standing on the pavement is a door in any city; a wide one is
+ * a shopfront; anything below the pavement is a souterrain, which on these
+ * plots is a real storey and not an error.
+ *
+ * The one thing it cannot do is tell a door from a very tall window that
+ * happens to reach the ground, and it does not pretend to: `door` is a reading
+ * of a shape, which is why it is drawn as a panel rather than asserted in a
+ * record.
+ */
+export type OpeningKind = 'window' | 'door' | 'shopfront' | 'souterrain';
+
+export function classifyOpening(
+  aboveGroundM: number, widthM: number, heightM: number,
+): OpeningKind {
+  const top = aboveGroundM + heightM;
+  // Entirely below the pavement, or nearly so: the basement storey a canal
+  // house is entered *over*, up its stoep.
+  if (top <= 0.9) return 'souterrain';
+  if (aboveGroundM <= -0.35) return 'souterrain';
+  // Standing on the pavement.
+  if (aboveGroundM < 0.7 && heightM >= 1.9) {
+    if (widthM > 2.0 || (widthM > 1.5 && heightM < 2.6)) return 'shopfront';
+    if (heightM / widthM >= 1.5) return 'door';
+    return 'shopfront';
+  }
+  return 'window';
+}
 
 /**
  * The window assembly, in metres.
@@ -527,9 +652,11 @@ export function openingGeometry(building: Lod22Building):
     const g = REVEAL.glass, f = REVEAL.frame;
     const w = Math.min(REVEAL.width, width / 3, height / 3);
 
-    // The pane, just clear of the wall.
+    // Glass, or a solid door leaf where the shape says door.
+    const kind = classifyOpening(up, width, height);
     quad(at(s0 + w, g, zb + w), at(s1 - w, g, zb + w),
-         at(s1 - w, g, zt - w), at(s0 + w, g, zt - w), 'glass');
+         at(s1 - w, g, zt - w), at(s0 + w, g, zt - w),
+         kind === 'door' ? 'door' : 'glass');
 
     // Joinery: four bands standing proud of the pane. Outer face first, then
     // the inner face that looks back across the glass — that one faces away
@@ -548,10 +675,43 @@ export function openingGeometry(building: Lod22Building):
     quad(at(s0 + w, g, zb + w), at(s0 + w, g, zt - w), at(s0 + w, f, zt - w), at(s0 + w, f, zb + w), 'frame');
     quad(at(s1 - w, f, zb + w), at(s1 - w, f, zt - w), at(s1 - w, g, zt - w), at(s1 - w, g, zb + w), 'frame');
 
-    // A sill, throwing water clear of the wall below.
-    const p = REVEAL.sill;
-    quad(at(s0 - p, p, zb), at(s1 + p, p, zb), at(s1 + p, g, zb), at(s0 - p, g, zb), 'sill');
-    quad(at(s0 - p, p, zb - p), at(s1 + p, p, zb - p), at(s1 + p, p, zb), at(s0 - p, p, zb), 'sill');
+    // A sill, throwing water clear of the wall below — but only on a window.
+    // A door and a shopfront meet the pavement, and putting a projecting stone
+    // sill across a doorway is drawing a step nobody measured.
+    if (kind === 'window' || kind === 'souterrain') {
+      const p = REVEAL.sill;
+      quad(at(s0 - p, p, zb), at(s1 + p, p, zb), at(s1 + p, g, zb), at(s0 - p, g, zb), 'sill');
+      quad(at(s0 - p, p, zb - p), at(s1 + p, p, zb - p), at(s1 + p, p, zb), at(s0 - p, p, zb), 'sill');
+    }
+  }
+
+  /**
+   * The hijsbalk, under the apex of the gable.
+   *
+   * Generated, not measured — the detector looks for openings and a beam is not
+   * one. It is included because it is nearly universal on this fabric and
+   * because its absence is conspicuous: a canal gable without one reads as a
+   * model of a canal house rather than a canal house. Placed at the centre of
+   * the frontage just under the ridge, which is where the thing it lifts has to
+   * come through.
+   */
+  const beamTop = building.ridge ?? building.eaves;
+  if (beamTop !== null && (building.ridge ?? 0) - (building.eaves ?? 0) > 1.2) {
+    const centre = length / 2;
+    const z = building.ground + beamTop - 0.75;
+    const half = 0.075, reach = 0.55;
+    // A square section standing out of the gable, drawn on its four long faces.
+    quad(at(centre - half, 0, z - half), at(centre + half, 0, z - half),
+         at(centre + half, reach, z - half), at(centre - half, reach, z - half), 'beam');
+    quad(at(centre - half, reach, z + half), at(centre + half, reach, z + half),
+         at(centre + half, 0, z + half), at(centre - half, 0, z + half), 'beam');
+    quad(at(centre - half, 0, z - half), at(centre - half, reach, z - half),
+         at(centre - half, reach, z + half), at(centre - half, 0, z + half), 'beam');
+    quad(at(centre + half, reach, z - half), at(centre + half, 0, z - half),
+         at(centre + half, 0, z + half), at(centre + half, reach, z + half), 'beam');
+    // The end face, where the hook hangs.
+    quad(at(centre - half, reach, z - half), at(centre + half, reach, z - half),
+         at(centre + half, reach, z + half), at(centre - half, reach, z + half), 'beam');
   }
   return { positions, normals, part };
 }

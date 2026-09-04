@@ -7,7 +7,7 @@
  * aligned with MapLibre's mercator, and telling the 3DBAG tile layer to stop
  * drawing the buildings this layer now owns.
  */
-import { buildingGeometry, colourFor, FRAME_COLOUR, GLASS_COLOUR, openingGeometry, ownedPandIds, SILL_COLOUR, WATER_COLOUR, waterGeometry } from '../../../src/canalRecall/facade/facadeLayer.ts';
+import { BEAM_COLOUR, buildingGeometry, colourFor, DOOR_COLOUR, FRAME_COLOUR, GLASS_COLOUR, openingGeometry, ownedPandIds, SILL_COLOUR, WATER_COLOUR, waterGeometry } from '../../../src/canalRecall/facade/facadeLayer.ts';
 import { RD_NEW } from '../../../src/canalRecall/facade/sources/netherlands.ts';
 
 const { THREE } = window.CanalRecallThree;
@@ -305,11 +305,30 @@ export class FacadeTwin {
             for (let k = i; k < j; k++) {
               const east = geometry.positions[k * 3], north = geometry.positions[k * 3 + 1];
               const up = geometry.positions[k * 3 + 2];
-              // World-space UVs at the tile's real size. Horizontal distance is
-              // measured along the ground so a wall's bond does not shear with
-              // its bearing; vertical is simply height, so courses stay level.
-              const along = Math.hypot(east - ox, north - oy);
-              emit(bucket, geometry, k, hex, textured ? along / tileM : 0.5, textured ? up / tileM : 0.5);
+              if (!textured) { emit(bucket, geometry, k, hex, 0.5, 0.5); continue; }
+              // Horizontal UV runs along the face's own direction.
+              //
+              // This was the radial distance from the building's first ring
+              // vertex, which is only the distance along a wall if the wall
+              // points away from that vertex. A wall running across the radius
+              // barely changes it at all, so the tile smeared sideways into
+              // horizontal streaks — visible as brick stretched to the width of
+              // a room. The face's horizontal tangent is perpendicular to its
+              // normal, so projecting onto it gives true distance along the
+              // wall at any bearing. Coplanar faces stay continuous; corners
+              // take a seam, which a corner has anyway.
+              const nx = geometry.normals[k * 3], ny = geometry.normals[k * 3 + 1];
+              const flat = Math.hypot(nx, ny);
+              let u;
+              if (flat < 1e-6) {
+                // Facing straight up: a flat roof or a coping. Project onto
+                // east instead, since there is no wall direction to follow.
+                u = (east - ox) / tileM;
+              } else {
+                const tx = -ny / flat, ty = nx / flat;
+                u = ((east - ox) * tx + (north - oy) * ty) / tileM;
+              }
+              emit(bucket, geometry, k, hex, u, up / tileM);
             }
             bucket.spans.push({ from, to: bucket.positions.length / 3, building, part });
             i = j;
@@ -319,7 +338,8 @@ export class FacadeTwin {
         // Measured openings. Glass, joinery and sills each keep a fixed colour
         // in every mode: they are the measurement being reported, not a legend.
         const trim = bucketFor(UNTEXTURED);
-        const OPENING_COLOURS = { glass: GLASS_COLOUR, frame: FRAME_COLOUR, sill: SILL_COLOUR };
+        const OPENING_COLOURS = { glass: GLASS_COLOUR, frame: FRAME_COLOUR, sill: SILL_COLOUR,
+          door: DOOR_COLOUR, beam: BEAM_COLOUR };
         for (const building of extract.buildings) {
           const opening = openingGeometry(building);
           if (!opening.positions.length) continue;
