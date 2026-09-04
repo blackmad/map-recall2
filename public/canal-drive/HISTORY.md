@@ -6,6 +6,20 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## First turn no longer pays for the static building extract when tiles exist
+
+Amsterdam's LoD1 city is published, but map load still fetched, parsed and
+`setData`'d the 5.6 MB `buildings-colored.geojson`, built a 10k-centroid grid,
+installed a 10k-id `building-3d` filter, and bound a proximity rescan on every
+OpenFreeMap `sourcedata` / `moveend` — then tore that work down when the tile
+index probed true. `_bootstrapBuildings` now awaits the complete-city probe
+first; on success it never touches the static extract or the proximity path.
+The no-tiles fallback still loads the GeoJSON, but reads a published
+`basemap-hide-ids.json` sidecar (`collectEncodedBasemapHideIds`, built by
+`npm run build:basemap-hide-ids` and wired into `refresh-city-extract.sh`) so
+the filter can land without re-encoding every osmId on the main thread.
+`check-canal-buildings` pins the sidecar against the extract when present.
+
 ## Every roof in the city stops z-fighting its own lid
 
 Roofs across the streamed LoD1 city shimmered light/mauve at driving distance
