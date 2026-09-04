@@ -463,7 +463,9 @@ class GameRouteRuntime {
     this._seenStreetKnowledge = new Set();
     this._clearLandmarkNotice();
 
-    const startInfo = this.track.getNearestRoad(this.track.startPoint.x, this.track.startPoint.y);
+    // No heading yet: this is the call that produces one. The explicit null is
+    // what `check-road-name-heading.ts` accepts in place of `player.angle`.
+    const startInfo = this.track.getNearestRoad(this.track.startPoint.x, this.track.startPoint.y, null);
     const startAngle = startInfo ? startInfo.angle : 0;
     const startX = this.track.startPoint.x;
     const startY = this.track.startPoint.y;

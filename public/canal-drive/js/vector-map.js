@@ -139,12 +139,14 @@ class VectorBasemap {
     // with itself no matter how tall either box is, so the basemap's copy of a
     // building has to go entirely — see `_hideDuplicatedBasemapBuildings`.
     //
-    // Between the two layers that remain, the roof cap starts exactly where the
-    // walls stop, so their side faces meet along an edge instead of overlapping
-    // in a 0.30 m band. MapLibre draws no underside on an extrusion, so there is
-    // nothing beneath the cap to leave exposed. Opacity is 1 on both: a
-    // translucent extrusion blends with whatever it overlaps, which turns a
-    // depth tie into a visible stripe.
+    // Between the two layers that remain, the roof cap is a 0.40 m slab whose
+    // base sits 0.15 m above the wall top, so its top face is 0.55 m clear of
+    // the roof it covers and its side faces never share a plane with the
+    // wall's. MapLibre draws no underside on an extrusion, so the gap is not
+    // visible from above. Opacity is 1 on both: a translucent extrusion blends
+    // with whatever it overlaps, which turns a depth tie into a visible stripe.
+    // The cap is drawn only for flat roofs with a distinct colour — see
+    // `_coloredBuildingBaseFilter`; a cap on every building z-fights citywide.
     // Walls stop at the eaves when a procedural pyramidal roof will take over
     // above — otherwise the flat prism fights the cone on the Waag's turrets.
     const helpers = window.CanalRecallBuildings;
