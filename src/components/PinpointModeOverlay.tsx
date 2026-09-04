@@ -113,18 +113,18 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   }, [isRoundComplete, onNextRound, onConfirmGuess, userPinnedLocation]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-4 sm:p-4 z-20">
+    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
       {/* UNIFIED BOTTOM CARD: QUESTION + CLUES + PIN STATUS + SUBMIT CTA */}
-      <div className="pointer-events-auto w-full max-w-xl mx-auto">
+      <div className="pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] sm:max-h-none overflow-y-auto">
         {!isRoundComplete ? (
           /* ACTIVE QUESTION & ACTION CARD */
           <div
             id="pinpoint-bottom-card"
-            className="quiz-card w-full min-w-0 p-3.5 sm:p-4 space-y-3 animate-slideUp"
+            className="quiz-card w-full min-w-0 p-2.5 sm:p-4 space-y-2 sm:space-y-3 animate-slideUp"
           >
             {/* Top Question Row: Feature Type + Target Name + Clue Trigger + Round Indicator */}
             <div className="flex items-start justify-between gap-2">
-              <div className="min-w-0 space-y-1">
+              <div className="min-w-0 space-y-0.5 sm:space-y-1">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="enamel-chip px-2 py-0.5 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
                     <span className="text-[#c4a35a]">{badge.icon}</span>
@@ -137,7 +137,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
 
                 <h1
                   id="target-feature-name"
-                  className="enamel-brand text-lg sm:text-2xl text-white leading-snug truncate"
+                  className="enamel-brand text-base sm:text-2xl text-white leading-snug truncate"
                   title={currentFeature.name}
                 >
                   {currentFeature.name}
@@ -149,13 +149,14 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                 <button
                   id="hint-toggle-btn"
                   onClick={() => setShowClues(!showClues)}
-                  className={`enamel-chip ${showClues ? 'active' : ''} flex items-center gap-1 text-xs font-bold px-2.5 py-1 transition cursor-pointer`}
+                  aria-label={showClues ? 'Hide hint' : 'Show hint'}
+                  className={`enamel-chip ${showClues ? 'active' : ''} flex items-center gap-1 text-xs font-bold px-2 py-1 sm:px-2.5 transition cursor-pointer`}
                 >
                   <HelpCircle className="w-3.5 h-3.5 text-[#c4a35a]" />
-                  <span>{showClues ? 'Hide hint' : 'Hint'}</span>
+                  <span className="hidden sm:inline">{showClues ? 'Hide hint' : 'Hint'}</span>
                 </button>
 
-                <span className="enamel-chip px-2.5 py-1 text-xs font-bold font-mono whitespace-nowrap">
+                <span className="enamel-chip px-2 py-1 text-xs font-bold font-mono whitespace-nowrap sm:px-2.5">
                   {roundNumber}/{totalRounds}
                 </span>
               </div>
@@ -200,19 +201,19 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
             )}
 
             {/* Bottom Status & CTA Row */}
-            <div className="pt-2 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3">
+            <div className="pt-1.5 sm:pt-2 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3">
               <div className="flex items-center gap-2 min-w-0">
                 <div
-                  className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-all border ${
+                  className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-all border ${
                     userPinnedLocation
                       ? 'bg-[#b87333] border-[#d08a4a] text-white scale-105'
                       : 'bg-white/10 border-white/25 text-[#c4a35a]'
                   }`}
                 >
                   {userPinnedLocation ? (
-                    <MapPin className="w-5 h-5" />
+                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
                   ) : (
-                    <Target className="w-5 h-5 animate-pulse" />
+                    <Target className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" />
                   )}
                 </div>
 
@@ -220,7 +221,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   <p className="text-xs sm:text-sm font-bold text-white truncate">
                     {userPinnedLocation ? 'Pin placed' : 'Tap the map to place a pin'}
                   </p>
-                  <p className="text-xs text-white/75 truncate">
+                  <p className="hidden sm:block text-xs text-white/75 truncate">
                     {userPinnedLocation ? 'Tap again to move it' : 'Anywhere you think it is'}
                   </p>
                 </div>
@@ -229,7 +230,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
               <div className="flex w-full sm:w-auto items-center gap-2 flex-shrink-0">
                 <button
                   onClick={onNoIdea}
-                  className="button-secondary flex-1 sm:flex-none px-3 py-2.5 text-xs font-semibold transition cursor-pointer"
+                  className="button-secondary flex-1 sm:flex-none px-3 py-2 sm:py-2.5 text-xs font-semibold transition cursor-pointer"
                 >
                   No idea
                 </button>

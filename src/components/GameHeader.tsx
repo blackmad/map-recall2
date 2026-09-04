@@ -144,9 +144,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       {/* STRICT SINGLE-LINE HEADER */}
       <header
         id="app-game-header"
-        className="w-full h-12 sm:h-14 border-b z-30 flex items-center px-3 sm:px-4"
+        className="w-full h-10 sm:h-14 border-b z-30 flex items-center px-2.5 sm:px-4"
       >
-        <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-2">
+        <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-1.5 sm:gap-2">
           {/* Left: brand when not on start; filters only between start and play */}
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
             {!startOpen && (
@@ -154,7 +154,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md border border-white/40 bg-white/10 flex items-center justify-center">
                 <Compass className="w-4 h-4 text-white" />
               </div>
-              <span className="enamel-brand text-sm sm:text-lg text-white whitespace-nowrap">
+              <span className="enamel-brand hidden sm:inline text-sm sm:text-lg text-white whitespace-nowrap">
                 Map Recall
               </span>
             </div>
@@ -249,12 +249,12 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   }
                 }}
                 aria-pressed={gameMode === 'pinpoint'}
+                aria-label="Pinpoint: place the named feature on the map"
                 title="Pinpoint: place the named feature on the map"
                 className="flex items-center gap-1 px-1.5 sm:px-2.5 py-1 text-xs font-semibold cursor-pointer"
               >
-                <MapPin className="w-3 h-3" />
+                <MapPin className="w-3.5 h-3.5 sm:w-3 sm:h-3" />
                 <span className="hidden sm:inline">Pinpoint</span>
-                <span className="sm:hidden">Pin</span>
               </button>
 
               <button
@@ -265,22 +265,22 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   }
                 }}
                 aria-pressed={gameMode === 'guess_name'}
+                aria-label="Guess Name: name the feature highlighted on the map"
                 title="Guess Name: name the feature highlighted on the map"
                 className="flex items-center gap-1 px-1.5 sm:px-2.5 py-1 text-xs font-semibold cursor-pointer"
               >
-                <Eye className="w-3 h-3" />
+                <Eye className="w-3.5 h-3.5 sm:w-3 sm:h-3" />
                 <span className="hidden sm:inline">Guess Name</span>
-                <span className="sm:hidden">Name</span>
               </button>
               <button
                 onClick={() => gameMode !== 'guess_neighborhood' && onChangeMode('guess_neighborhood')}
                 aria-pressed={gameMode === 'guess_neighborhood'}
+                aria-label="Neighborhood: place neighborhood boundaries on the map"
                 title="Neighborhood: place neighborhood boundaries on the map"
                 className="flex items-center gap-1 px-1.5 sm:px-2.5 py-1 text-xs font-semibold cursor-pointer"
               >
-                <Compass className="w-3 h-3" />
+                <Compass className="w-3.5 h-3.5 sm:w-3 sm:h-3" />
                 <span className="hidden sm:inline">Neighborhood</span>
-                <span className="sm:hidden">Area</span>
               </button>
             </div>
             )}
@@ -289,11 +289,12 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {!startOpen && (
             <div
               id="header-score-badge"
-              className="flex items-center gap-1.5 px-1 text-xs"
+              className="flex items-center gap-1 px-0.5 sm:gap-1.5 sm:px-1 text-xs"
               title={`Round ${currentRound} of ${totalRounds}`}
             >
               <span className="text-white font-bold whitespace-nowrap font-mono">
-                {totalScore.toLocaleString()} <span className="text-xs font-normal text-[#c4a35a]">pts</span>
+                {totalScore.toLocaleString()}
+                <span className="hidden sm:inline text-xs font-normal text-[#c4a35a]"> pts</span>
               </span>
             </div>
             )}
@@ -305,7 +306,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 title="Blind Map Mode active (labels hidden). Click to toggle."
                 className="enamel-chip active flex items-center gap-1 px-1.5 py-1 text-xs font-bold uppercase tracking-wider cursor-pointer"
               >
-                <EyeOff className="w-3 h-3" />
+                <EyeOff className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">No Labels</span>
               </button>
             )}
