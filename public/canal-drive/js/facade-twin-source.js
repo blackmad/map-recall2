@@ -178,7 +178,7 @@ export class FacadeTwin {
 
         let extract;
         try {
-          const response = await fetch(owner.extractUrl);
+          const response = await fetch(owner.extractUrl, { cache: 'no-store' });
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           extract = await response.json();
         } catch (error) {
@@ -220,7 +220,7 @@ export class FacadeTwin {
         const tileMetres = new Map();
         let fallbackTileM = 0.63;
         try {
-          const manifest = await (await fetch(owner.textureUrl)).json();
+          const manifest = await (await fetch(owner.textureUrl, { cache: 'no-store' })).json();
           fallbackTileM = manifest.metadata?.tileMetres || fallbackTileM;
           for (const tile of manifest.textures || []) {
             tileMetres.set(tile.materialId, tile.tileMetres || fallbackTileM);

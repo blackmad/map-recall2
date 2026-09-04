@@ -50,6 +50,12 @@
   #evidence svg { width: 100%; display: block; background: #10171a; border: 1px solid var(--line); border-radius: 3px; }
   #evidence .swatch { display: inline-block; width: 11px; height: 11px; border-radius: 2px;
     border: 1px solid var(--line); vertical-align: -1px; margin-right: 5px; }
+  #evidence .reasoning { border-left: 2px solid #3f5c6b; padding: 7px 0 7px 10px; margin: 11px 0 0;
+    font-size: 12px; color: var(--ink-2, #aeb8b8); line-height: 1.5; }
+  #evidence .reasoning b { display: block; color: #7fb2cc; font-weight: 500; font-size: 10.5px;
+    letter-spacing: .09em; text-transform: uppercase; margin-bottom: 5px; }
+  #evidence .reasoning span.step { display: block; margin-bottom: 5px; }
+  #evidence .reasoning i { font-style: normal; color: #cfe3ee; font-weight: 500; }
   #evidence .quote { font-size: 12px; color: var(--muted); font-style: italic; margin: 10px 0 0; line-height: 1.45; }
   #evidence .links { display: flex; gap: 6px; margin: 11px 0 0; flex-wrap: wrap; }
   #evidence a { color: var(--ink); border: 1px solid var(--line); border-radius: 3px;
@@ -229,7 +235,7 @@ function setup() {
   const evidence = document.getElementById('evidence');
   const evidenceBody = document.getElementById('evidence-body');
   let evidenceIndex = null;
-  fetch('/data/extracts/amsterdam/staging/facade-twin/amsterdam-grachtengordel-west/facade-evidence.json')
+  fetch('/data/extracts/amsterdam/staging/facade-twin/amsterdam-grachtengordel-west/facade-evidence.json', { cache: 'no-store' })
     .then(r => r.ok ? r.json() : null)
     .then(data => { if (data) evidenceIndex = new Map(data.facades.map(f => [f.pandId, f])); })
     // No index is a fine state: the map still works, clicking just says nothing.
@@ -248,55 +254,84 @@ function setup() {
    * wall colour it sampled. Nothing here is from the vocabulary. If it looks
    * wrong, it is wrong, and that is the point.
    */
-  const elevation = building => {
+  const elevation = (building, found) => {
     const openings = building.facade?.openings ?? [];
     const width = Math.hypot(building.facade.wall[2] - building.facade.wall[0],
                              building.facade.wall[3] - building.facade.wall[1]);
     const top = (building.ridge ?? building.eaves ?? 12);
     const eaves = Math.min(building.eaves ?? top * 0.78, top);
-    // Metres to viewBox units, with room for the souterrain below street level.
     const below = Math.max(0, -Math.min(0, ...openings.map(o => o[1])));
     const W = Math.max(width, 3), H = top + below + 0.6;
-    const sx = 100 / W, sy = 100 / W;                  // one scale, so it is not distorted
-    const vbW = 100, vbH = H * sy;
-    const yOf = zm => (H - 0.3 - (zm + below)) * sy;
-    const wall = evidenceIndex?.get(building.id)?.wallRgb;
+    const scale = 100 / W;                               // one scale, so nothing is distorted
+    const vbW = 100, vbH = H * scale;
+    const yOf = zm => (H - 0.3 - (zm + below)) * scale;
+    const xOf = m => m * scale;
+    const wall = found?.wallRgb;
     const fill = wall ? `rgb(${wall.join(',')})` : '#6d6a63';
     const parts = [];
-    // The wall, to the eaves, then the gable above it as a plain triangle.
-    parts.push(`<rect x="0" y="${yOf(eaves).toFixed(2)}" width="${vbW}" height="${(eaves * sy).toFixed(2)}" fill="${fill}"/>`);
+
+    parts.push(`<rect x="0" y="${yOf(eaves).toFixed(2)}" width="${vbW}" height="${(eaves * scale).toFixed(2)}" fill="${fill}"/>`);
     if (top > eaves + 0.15) {
       parts.push(`<polygon points="0,${yOf(eaves).toFixed(2)} ${(vbW / 2).toFixed(2)},${yOf(top).toFixed(2)} ${vbW},${yOf(eaves).toFixed(2)}" fill="${fill}" opacity="0.62"/>`);
     }
-    // Street level.
-    parts.push(`<line x1="0" y1="${yOf(0).toFixed(2)}" x2="${vbW}" y2="${yOf(0).toFixed(2)}" stroke="#ff5a5a" stroke-width="0.5" stroke-dasharray="2 1.6"/>`);
-    // Storey bands the detector inferred.
-    const found = evidenceIndex?.get(building.id);
+
+    /**
+     * The grid the detector was working against, and where it came up empty.
+     *
+     * This is the part worth drawing. The detector infers a bay rhythm and a
+     * storey ladder and then finds openings; when it finds fewer than the grid
+     * implies, the numbers say "4 openings, 1 bay, 4 storey bands" and the
+     * elevation shows a house with a two-storey hole in it and no way to tell
+     * whether the hole is real. Drawing the empty cells says which it is: a
+     * dashed outline is somewhere the detector looked and found nothing, and if
+     * there is a window there in the photograph, that is the bug.
+     */
+    const bandTops = [];
     if (found?.storeyIntervalsM?.length) {
       let z = 0;
-      for (const gap of found.storeyIntervalsM) {
-        z += gap;
-        parts.push(`<line x1="0" y1="${yOf(z).toFixed(2)}" x2="${vbW}" y2="${yOf(z).toFixed(2)}" stroke="#5aa9ff" stroke-width="0.35" stroke-dasharray="1.4 1.4" opacity="0.75"/>`);
+      for (const gap of found.storeyIntervalsM) { bandTops.push(z); z += gap; }
+      bandTops.push(z);
+    }
+    const bays = found?.bayOffsetsM?.length ? found.bayOffsetsM : [];
+    const empties = [];
+    for (let b = 0; b < bays.length; b++) {
+      for (let k = 0; k + 1 < bandTops.length; k++) {
+        const lo = bandTops[k], hi = bandTops[k + 1];
+        const filled = openings.some(([along, up, w, h]) =>
+          along < bays[b] + 1.1 && along + w > bays[b] - 1.1 && up + h > lo + 0.2 && up < hi - 0.2);
+        if (!filled) empties.push([bays[b], lo, hi]);
       }
     }
-    // Every measured opening, where the measurement put it.
-    for (const [along, up, w, h] of openings) {
-      const low = up < 0.6;
-      parts.push(`<rect x="${(along * sx).toFixed(2)}" y="${yOf(up + h).toFixed(2)}" `
-        + `width="${(w * sx).toFixed(2)}" height="${(h * sy).toFixed(2)}" `
-        + `fill="#0d1418" stroke="${low ? '#ffbe00' : '#28e678'}" stroke-width="0.45"/>`);
+    for (const [centre, lo, hi] of empties) {
+      const w = Math.min(1.2, W / Math.max(bays.length, 1) * 0.5);
+      parts.push(`<rect x="${xOf(Math.max(0, centre - w / 2)).toFixed(2)}" y="${yOf(hi - 0.35).toFixed(2)}" `
+        + `width="${(w * scale).toFixed(2)}" height="${((hi - lo - 0.7) * scale).toFixed(2)}" `
+        + `fill="none" stroke="#e34948" stroke-width="0.4" stroke-dasharray="1.6 1.2" opacity="0.9"/>`);
     }
-    return `<figure><svg viewBox="0 0 ${vbW} ${vbH.toFixed(2)}" role="img"
-      aria-label="Measured elevation, ${number(width, 2)} m wide">${parts.join('')}</svg>
-      <figcaption>Measured elevation, drawn from the numbers — ${number(width, 2)} m of frontage,
-      ${openings.length} opening${openings.length === 1 ? '' : 's'}, to scale.
-      <span style="color:#28e678">green</span> above street level,
-      <span style="color:#ffbe00">amber</span> at or below it,
-      <span style="color:#5aa9ff">blue</span> the inferred storey bands,
-      <span style="color:#ff5a5a">red</span> this building's own ground.
-      <br><span class="swatch" style="background:${fill}"></span>the wall colour sampled from its photograph.</figcaption></figure>`;
+
+    for (const z of bandTops) {
+      parts.push(`<line x1="0" y1="${yOf(z).toFixed(2)}" x2="${vbW}" y2="${yOf(z).toFixed(2)}" stroke="#5aa9ff" stroke-width="0.3" stroke-dasharray="1.4 1.4" opacity="0.6"/>`);
+    }
+    for (const centre of bays) {
+      parts.push(`<line x1="${xOf(centre).toFixed(2)}" y1="${yOf(top).toFixed(2)}" x2="${xOf(centre).toFixed(2)}" y2="${yOf(-below).toFixed(2)}" stroke="#5aa9ff" stroke-width="0.25" stroke-dasharray="0.8 1.8" opacity="0.45"/>`);
+    }
+    parts.push(`<line x1="0" y1="${yOf(0).toFixed(2)}" x2="${vbW}" y2="${yOf(0).toFixed(2)}" stroke="#ff5a5a" stroke-width="0.5" stroke-dasharray="2 1.6"/>`);
+
+    for (const [along, up, w, h] of openings) {
+      const kind = up + h <= 0.9 || up <= -0.35 ? 'souterrain'
+        : up < 0.7 && h >= 1.9 ? (w > 2.0 || (w > 1.5 && h < 2.6) ? 'shopfront' : (h / w >= 1.5 ? 'door' : 'shopfront'))
+        : 'window';
+      const stroke = { window: '#28e678', door: '#ffbe00', shopfront: '#ff8a3d', souterrain: '#a86bff' }[kind];
+      parts.push(`<rect x="${xOf(along).toFixed(2)}" y="${yOf(up + h).toFixed(2)}" `
+        + `width="${(w * scale).toFixed(2)}" height="${(h * scale).toFixed(2)}" `
+        + `fill="#0d1418" stroke="${stroke}" stroke-width="0.45"/>`);
+    }
+
+    const expected = bays.length * Math.max(bandTops.length - 1, 0);
+    return { svg: `<svg viewBox="0 0 ${vbW} ${vbH.toFixed(2)}" role="img"
+        aria-label="Measured elevation, ${number(width, 2)} m wide">${parts.join('')}</svg>`,
+      empties: empties.length, expected, width, fill };
   };
-  const escape = text => String(text).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
   const showEvidence = building => {
     const found = evidenceIndex?.get(building.id) ?? null;
@@ -323,6 +358,45 @@ function setup() {
       + `&heading=${found.headingDeg}&pitch=10&fov=80`;
     const apple = `https://maps.apple.com/?ll=${lat},${lng}&t=k&z=19`;
     const strip = `/canal-drive/facade-evidence/${found.pandId}.jpg`;
+    const drawing = elevation(building, found);
+
+    /**
+     * What the detector did, in the order it did it.
+     *
+     * The panel used to report only what survived, which is the least useful
+     * half. A façade with four openings on a five-cell grid is either a house
+     * with a blank wall or a detector that missed a window, and the numbers
+     * alone cannot tell you which. So: how good the look was, what grid was
+     * inferred, what was found against it, and what was thrown away.
+     */
+    const reasoning = [];
+    const resolution = found.pixelsPerMetre ?? Math.round(1250 / found.standoffM);
+    reasoning.push(`<span class="step"><i>Looked</i> from ${number(found.standoffM, 0)} m at
+      ${number(found.obliquityDeg)}° off square, which resolves about ${resolution} px per metre —
+      ${resolution >= 70 ? 'enough to see glazing bars' : resolution >= 40 ? 'enough for openings, not for glazing bars' : 'coarse; openings only, and small ones may be lost'}.</span>`);
+    if (found.bayOffsetsM?.length) {
+      reasoning.push(`<span class="step"><i>Inferred</i> ${found.bays} bay${found.bays === 1 ? '' : 's'} at
+        ${found.bayOffsetsM.map(v => number(v, 1)).join(', ')} m, and ${found.storeyBands} storey
+        band${found.storeyBands === 1 ? '' : 's'}${found.storeyIntervalsM?.length
+          ? ` spaced ${found.storeyIntervalsM.map(v => number(v, 2)).join(', ')} m` : ''}.</span>`);
+    }
+    if (drawing.expected) {
+      reasoning.push(`<span class="step"><i>Found</i> ${found.openings} opening${found.openings === 1 ? '' : 's'}
+        against a grid of ${drawing.expected}.` + (drawing.empties
+          ? ` <span style="color:#e34948">${drawing.empties} cell${drawing.empties === 1 ? '' : 's'}
+            came back empty</span> — drawn in red dashes. If the photograph has a window there,
+            that is a miss, not a blank wall.`
+          : ' Every cell filled.'));
+    }
+    if (found.obstructionColumns) {
+      reasoning.push(`<span class="step"><i>Rejected</i> ${found.obstructionColumns} vertical
+        column${found.obstructionColumns === 1 ? '' : 's'} as an obstruction — a tree, a downpipe or
+        scaffolding standing across most of the wall's height.</span>`);
+    }
+    reasoning.push(`<span class="step"><i>Believed</i> it ${found.plausibility >= 1 ? 'fully' : `${Math.round(found.plausibility * 100)}%`}.
+      ${found.plausibility >= 1 ? 'Nothing failed the grammar checks.' : 'See the warning below.'}
+      Street-level fields are capped at confidence 0.4 until a human has reviewed them.</span>`);
+
     const failures = found.plausibilityFailures?.length
       ? `<div class="warn"><b>The detector doubts itself here</b>${found.plausibilityFailures.map(escape).join('<br>')}</div>`
       : '';
@@ -331,13 +405,22 @@ function setup() {
       : '';
     evidenceBody.innerHTML = `<h2>${escape(found.wallMaterialName ?? 'Measured façade')}</h2>
       <p class="pand">pand ${escape(found.pandId)} · ${escape(found.capturedAt)}</p>
-      ${elevation(building)}
+      ${drawing.svg}
+      <figcaption>Measured elevation, to scale — ${number(drawing.width, 2)} m of frontage.
+      <span style="color:#28e678">green</span> window,
+      <span style="color:#ffbe00">amber</span> door,
+      <span style="color:#ff8a3d">orange</span> shopfront,
+      <span style="color:#a86bff">violet</span> souterrain.
+      <span style="color:#5aa9ff">Blue</span> is the bay-and-storey grid the detector inferred;
+      <span style="color:#e34948">red dashes</span> are cells where it looked and found nothing.
+      <span style="color:#ff5a5a">Red line</span> is this building's own ground.
+      <br><span class="swatch" style="background:${drawing.fill}"></span>wall colour sampled from its photograph.</figcaption></figure>
+      <div class="reasoning"><b>What the detector did</b>${reasoning.join('')}</div>
       <img src="${strip}" alt="Rectified façade with the detector's openings drawn on it"
            onerror="this.style.display='none';this.nextElementSibling.textContent=
            'No strip rendered for this building yet — run build-evidence.ts --ids=${escape(found.pandId)}'">
-      <p class="cap">Green boxes are measured openings; amber are at or below street level;
-      the red dashed line is this building's own ground. Rectified to its wall plane at
-      ${number(found.standoffM, 0)} m and ${number(found.obliquityDeg)}° off square.</p>
+      <p class="cap">The photograph it was measured from, with the same boxes on it. Rectified to
+      this building's own wall plane at ${number(found.standoffM, 0)} m and ${number(found.obliquityDeg)}° off square.</p>
       ${failures}${disagree}
       <dl>
         <dt>Frontage</dt><dd>${number(found.wallWidthM, 2)} m</dd>

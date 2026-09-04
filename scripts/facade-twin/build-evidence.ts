@@ -181,7 +181,21 @@ const index = records.map(record => {
     wallWidthM: record.wallWidthM,
     wallRgb: rgb, wallMaterial: material?.id ?? null, wallMaterialName: material?.name ?? null,
     storeyBands: record.storeyBands, storeyIntervalsM: record.storeyIntervalsM,
-    bays: record.bays, openings: record.openings.length, openingsAtStreetLevel: openingsLow,
+    bays: record.bays, bayOffsetsM: record.bayOffsetsM,
+    openings: record.openings.length, openingsAtStreetLevel: openingsLow,
+    // Every rectangle the detector kept, so the inspector can draw what was
+    // found against what the bay-and-storey grid led it to expect. The gaps are
+    // the interesting part: a façade with four openings on a five-storey grid
+    // has one cell where the detector looked and found nothing, and saying
+    // which cell is the difference between a number and a diagnosis.
+    openingRects: record.openings.map(o => [
+      Number(o.xM.toFixed(2)), Number((o.yM - STRIP_BASE_BELOW_GROUND_M).toFixed(2)),
+      Number(o.widthM.toFixed(2)), Number(o.heightM.toFixed(2)),
+    ]),
+    // What the strip could actually resolve. An 8000 px equirectangular gives
+    // about 1250 px per radian, so this is the honest limit on how fine a
+    // detail could have been seen at all.
+    pixelsPerMetre: Math.round(1250 / record.standoffM),
     plausibility: record.plausibility, plausibilityFailures: record.plausibilityFailures,
     obstructionColumns: record.obstructionColumns,
     massingStoreys: massing.get(record.pandId)?.storeys ?? null,
