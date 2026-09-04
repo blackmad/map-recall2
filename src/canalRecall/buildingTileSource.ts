@@ -44,6 +44,8 @@ export type TilePlan = {
   load: TileId[];
   /** Keys to drop, furthest from the camera first, to stay inside the budget. */
   evict: string[];
+  /** Every tile key the camera currently needs (held or not). */
+  wanted: string[];
 };
 
 const centreOf = (bounds: Bounds): [number, number] =>
@@ -67,6 +69,10 @@ function tileDistance(tile: TileId, from: TileId): number {
  * tile the camera still needs, even when the budget is exceeded — a budget
  * smaller than the visible set is a misconfiguration, and dropping visible
  * geometry to honour it would blink buildings out in front of the player.
+ *
+ * `load` is sorted nearest-to-camera first. The browser streamer must honour
+ * that order with a bounded concurrency — firing every fetch at once shares
+ * the pipe evenly and the centre tile loses to fatter neighbours.
  */
 export function planTiles(
   bounds: Bounds,
@@ -77,14 +83,15 @@ export function planTiles(
   const margin = options.margin ?? MARGIN_TILES;
   const budget = options.budget ?? DEFAULT_BUDGET;
 
-  const wanted = tilesCovering(bounds, zoom, margin);
-  const wantedKeys = new Set(wanted.map(tileKey));
+  const wantedTiles = tilesCovering(bounds, zoom, margin);
+  const wanted = wantedTiles.map(tileKey);
+  const wantedKeys = new Set(wanted);
   const heldKeys = new Set(held);
 
   const [centreLng, centreLat] = centreOf(bounds);
   const centreTile = tilesCovering({ west: centreLng, south: centreLat, east: centreLng, north: centreLat }, zoom)[0];
 
-  const load = wanted
+  const load = wantedTiles
     .filter(tile => !heldKeys.has(tileKey(tile)))
     .sort((a, b) => tileDistance(a, centreTile) - tileDistance(b, centreTile));
 
@@ -101,7 +108,7 @@ export function planTiles(
   const overBudget = heldKeys.size + load.length - budget;
   const evict = overBudget > 0 ? evictable.slice(0, Math.min(overBudget, evictable.length)).map(entry => entry.key) : [];
 
-  return { load, evict };
+  return { load, evict, wanted };
 }
 
 /** Where a tile lives, relative to the extract directory. */
