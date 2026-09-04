@@ -17,3 +17,8 @@ public/data/extracts/*/staging/
 firebase-debug.log
 dist-canalrecall/
 .firebase/
+
+# Local agent scratch and per-agent worktrees (see CLAUDE.md on parallel agents)
+.claude/
+.impeccable/
+.worktrees/

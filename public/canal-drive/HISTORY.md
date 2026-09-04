@@ -44,6 +44,15 @@ arrival card). `hud.drawPlaque` replaces `drawCanalScore` +
 `drawCurrentLocation`: street name in Barlow Condensed caps as the headline,
 then neighbourhood + speed/odometer on one line, then score (streak in gold),
 then feedback. It sizes itself to its text and is anchored at the layout's
+The rule was tested and the wiring was not, which is how it went unnoticed.
+`check-road-name-heading.ts` (`npm run test:road-name-heading`, in
+`check:canal`) now pins both halves: `_updateCanalQuiz` on a real
+`roadSurface` junction, player 4 px toward Hasebroekstraat while heading along
+Kinkerstraat, must make Kinkerstraat the candidate; and every
+`getRoadName`/`getNearestRoad` call in the game runtimes must carry a third
+argument. The one call with no heading to give — deriving the start heading
+in `_setupRace` — passes an explicit `null` so the check reads as intent.
+
 `recall` slot, capped at the bottom of the `location` slot, so the layout
 module and its 864 pinned scenarios did not change. `drawDestination` takes
 the finish heading and draws the copper arrow inside the card;
