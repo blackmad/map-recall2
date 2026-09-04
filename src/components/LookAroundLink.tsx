@@ -17,7 +17,7 @@ export const LookAroundLink: React.FC<{ feature: StreetFeature }> = ({ feature }
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="flex w-full items-center justify-between px-3 py-2 text-xs font-bold text-emerald-900 transition hover:bg-black/5"
+        className="flex w-full items-center justify-between px-3 py-2 text-xs font-bold text-white transition hover:bg-white/10"
         aria-expanded={isOpen}
       >
         <span>{isOpen ? 'Hide Street View' : 'Look around this place'}</span>
@@ -41,7 +41,7 @@ export const LookAroundLink: React.FC<{ feature: StreetFeature }> = ({ feature }
       href={streetViewUrl}
       target="_blank"
       rel="noreferrer"
-      className="answer-detail-card flex items-center justify-between px-3 py-2 text-xs font-bold text-emerald-900 transition hover:brightness-95"
+      className="answer-detail-card flex items-center justify-between px-3 py-2 text-xs font-bold text-white transition"
     >
       <span>Open Street View</span>
       <span aria-hidden="true">360° ↗</span>

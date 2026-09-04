@@ -18,26 +18,27 @@ interface GuessNameModeOverlayProps {
   factSeed: number;
 }
 
+// One chip style for every kind; see PinpointModeOverlay for why.
 function getFeatureTypeBadge(type: string) {
   switch (type) {
     case 'canal':
     case 'water':
-      return { label: 'Canal / Waterway', icon: '≈', bg: 'bg-sky-500/20', text: 'text-sky-700', border: 'border-sky-500/30' };
+      return { label: 'Canal / Waterway', icon: '≈' };
     case 'bridge':
-      return { label: 'Bridge', icon: '⌁', bg: 'bg-amber-500/20', text: 'text-amber-800', border: 'border-amber-500/30' };
+      return { label: 'Bridge', icon: '⌁' };
     case 'square':
-      return { label: 'Square / Plaza', icon: '□', bg: 'bg-purple-500/20', text: 'text-purple-800', border: 'border-purple-500/30' };
+      return { label: 'Square / Plaza', icon: '□' };
     case 'park':
-      return { label: 'Park / Greenway', icon: '♧', bg: 'bg-emerald-500/20', text: 'text-emerald-800', border: 'border-emerald-500/30' };
+      return { label: 'Park / Greenway', icon: '♧' };
     case 'museum':
     case 'landmark':
     case 'monument':
-      return { label: 'Landmark', icon: '◆', bg: 'bg-indigo-500/20', text: 'text-indigo-800', border: 'border-indigo-500/30' };
+      return { label: 'Landmark', icon: '◆' };
     case 'avenue':
     case 'boulevard':
     case 'street':
     default:
-      return { label: 'Street', icon: '╱', bg: 'bg-blue-500/20', text: 'text-blue-800', border: 'border-blue-500/30' };
+      return { label: 'Street', icon: '╱' };
   }
 }
 
@@ -91,25 +92,23 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
             <div className="flex items-start justify-between gap-2">
               <div className="space-y-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <span
-                    className={`px-2 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider ${badge.bg} ${badge.text} border ${badge.border} flex items-center gap-1`}
-                  >
-                    <span>{badge.icon}</span>
+                  <span className="enamel-chip px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+                    <span className="text-[#c4a35a]">{badge.icon}</span>
                     <span>{badge.label}</span>
                   </span>
-                  <span className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
-                    Glowing on Map
+                  <span className="text-[11px] text-white/70 font-semibold uppercase tracking-wider">
+                    Highlighted on the map
                   </span>
                 </div>
 
-                <h1 className="text-base sm:text-lg font-black text-white tracking-tight leading-snug">
-                  What is the name of this {badge.label.toLowerCase()}?
+                <h1 className="enamel-brand text-base sm:text-xl text-white leading-snug">
+                  Which {badge.label.toLowerCase()} is this?
                 </h1>
               </div>
 
               {/* Round counter */}
               <div className="flex items-center gap-1.5 flex-shrink-0 pt-0.5">
-                <span className="px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 font-mono whitespace-nowrap">
+                <span className="enamel-chip px-2.5 py-1 text-xs font-bold font-mono whitespace-nowrap">
                   {roundNumber}/{totalRounds}
                 </span>
               </div>
@@ -122,9 +121,9 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                   key={option}
                   id={`guess-option-${idx}`}
                   onClick={() => onSelectGuess(option)}
-                  className="answer-detail-card px-3 py-2.5 sm:py-3 font-bold text-xs sm:text-sm text-left flex items-center gap-2.5 transition cursor-pointer group"
+                  className="enamel-tile px-3 py-2.5 sm:py-3 font-bold text-xs sm:text-sm text-left flex items-center gap-2.5 transition cursor-pointer group"
                 >
-                  <span className="w-6 h-6 rounded-lg bg-slate-950/70 text-slate-300 group-hover:bg-blue-500 group-hover:text-white text-xs font-mono font-bold flex items-center justify-center border border-slate-700/60 flex-shrink-0 transition-colors">
+                  <span className="w-6 h-6 rounded-md bg-white/15 text-white/80 group-hover:bg-[#c4a35a] group-hover:text-[#071430] text-xs font-mono font-bold flex items-center justify-center flex-shrink-0 transition-colors">
                     {idx + 1}
                   </span>
                   <span className="truncate leading-tight">{option}</span>
@@ -145,13 +144,13 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
             className="quiz-result-card w-full min-w-0 p-4 sm:p-5 space-y-3 animate-slideUp"
           >
             {/* Top Result Row */}
-            <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-800">
+            <div className="flex items-center justify-between gap-2 pb-2 border-b border-white/15">
               <div className="flex items-center gap-2.5 min-w-0">
                 <div
-                  className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 ${
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border ${
                     isCorrect
-                      ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
-                      : 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
+                      ? 'bg-[#c4a35a] border-[#e2c98a] text-[#071430]'
+                      : 'bg-white/10 border-white/25 text-white'
                   }`}
                 >
                   {isCorrect ? <CheckCircle2 className="w-5 h-5" /> : <XCircle className="w-5 h-5" />}
@@ -159,15 +158,11 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
 
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5">
-                    <h2
-                      className={`text-sm sm:text-base font-black tracking-tight truncate ${
-                        isCorrect ? 'text-emerald-400' : 'text-rose-400'
-                      }`}
-                    >
-                      {wasSkipped ? 'Skipped' : isCorrect ? 'Correct!' : 'Incorrect!'}
+                    <h2 className={`enamel-brand text-base sm:text-lg truncate ${isCorrect ? 'text-[#e2c98a]' : 'text-white'}`}>
+                      {wasSkipped ? 'Skipped' : isCorrect ? 'Correct' : 'Not quite'}
                     </h2>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-200 font-bold truncate">
+                  <p className="text-xs sm:text-sm text-white/80 font-bold truncate">
                     It's <span className="text-white underline">{currentFeature.name}</span>
                   </p>
                 </div>
@@ -176,9 +171,9 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
               {/* Score & Next Round CTA */}
               <div className="flex items-center gap-3 flex-shrink-0">
                 <div className="text-right">
-                  <div className="text-sm sm:text-base font-black text-amber-400 tracking-tight">
+                  <div className="text-sm sm:text-base font-black text-[#c4a35a] tracking-tight">
                     {isCorrect ? '+5,000' : '+0'}{' '}
-                    <span className="text-[10px] font-normal text-amber-300/70">PTS</span>
+                    <span className="text-[10px] font-normal text-white/70">PTS</span>
                   </div>
                 </div>
 

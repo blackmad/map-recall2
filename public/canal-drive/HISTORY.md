@@ -28,6 +28,18 @@ arrow box. The desktop controls hint gets a plate instead of bare 10 px text
 over white streets. Landmark-card badges and the postcard went from dark ink
 on cream tints to light ink on the plate.
 
+## Map Quest quiz cards: no per-type pastel chips, no faded disabled button
+
+The pinpoint and name-guess cards still carried their pre-enamel palette:
+per-type feature chips (`text-sky-700` on cobalt for canals, `indigo-800` for
+landmarks), slate round badges, a blue "reveal hint" link, dark-ink Wikipedia
+facts, an emerald Street View link, and a disabled Confirm at 45 % white on
+`white/12` — all low contrast on the blue card. The chip is now one
+`enamel-chip` for every kind with the glyph in gold (the word already says
+which kind it is); hint, round counter, answer tiles and result badges use
+the same component classes; `.button-primary:disabled` is a dashed ghost with
+a full-contrast label so "not yet" does not read as "greyed out".
+
 ## Map Quest: real enamel classes instead of an override layer
 
 The first pass restyled the React quiz by stacking `!important` attribute
