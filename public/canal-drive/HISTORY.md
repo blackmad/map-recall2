@@ -22,6 +22,15 @@ now draws 7 lids, all with a real `roofColour`. The suppression clause also
 matches `id` as well as `osmId`, because streamed tiles carry OSM-owned
 features under `id`. `check-canal-buildings.ts` pins the composition.
 
+## Street name at junctions uses heading, not nearest centreline
+
+The HUD plaque and route quiz called `getRoadName(x, y)` without the player's
+angle. `pickRoadContact` already prefers heading-aligned roads at junctions
+(so you are not taught the cross street), but the name path never passed the
+angle — so at Hasebroekstraat / Kinkerbuurt junctions the plaque and any
+follow-on street knowledge card could name the side street underfoot. Callers
+that name or quiz the road under the wheels now pass `player.angle`.
+
 ## Driving HUD: navy plates, one plaque, arrow inside the destination
 
 The enamel pass put cobalt cards over a basemap that is mostly water, which

@@ -157,12 +157,12 @@ class GameRouteRuntime {
     ctx.fillStyle = '#E0F2FE';
     ctx.font = '11px monospace';
     if (this.player) {
-      const road = this.track.getNearestRoad(this.player.x, this.player.y);
+      const road = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
       ctx.fillText(`Pos: ${Math.round(this.player.x)}, ${Math.round(this.player.y)}`, x, y); y += 14;
       ctx.fillText(`Speed: ${Math.round(this.player.speed)} px/s`, x, y); y += 14;
       ctx.fillText(`Angle: ${(this.player.angle * 180 / Math.PI).toFixed(1)}°`, x, y); y += 14;
       ctx.fillText(`Road dist: ${road ? road.dist.toFixed(0) : 'N/A'}`, x, y); y += 14;
-      ctx.fillText(`Road name: ${this.track.getRoadName(this.player.x, this.player.y) || '(none)'}`, x, y); y += 14;
+      ctx.fillText(`Road name: ${this.track.getRoadName(this.player.x, this.player.y, this.player.angle) || '(none)'}`, x, y); y += 14;
       ctx.fillText(`Surface: ${this.track.getSurface(this.player.x, this.player.y)}`, x, y); y += 14;
       ctx.fillText(`Neighborhood: ${this.currentNeighborhood || '(none)'}`, x, y); y += 14;
       ctx.fillText(`Route path: ${this.routePath ? this.routePath.length + ' pts' : 'none'}`, x, y); y += 14;
@@ -486,7 +486,7 @@ class GameRouteRuntime {
 
     // Canal Recall intentionally starts with a quiet network: the experiment
     // is navigation and name recall, not traffic avoidance.
-    this.quizCurrentName = this.track.getRoadName(startX, startY);
+    this.quizCurrentName = this.track.getRoadName(startX, startY, this.player.angle);
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
     this.quizPromptName = '';
