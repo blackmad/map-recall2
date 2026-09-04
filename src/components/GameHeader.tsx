@@ -497,7 +497,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 className={`enamel-tile w-full p-2.5 text-left text-xs cursor-pointer${linkedFeaturesOnly ? ' active' : ''}`}
               >
                 <span className="font-bold">Encyclopedia only</span>
-                <span className="mt-0.5 block text-xs opacity-75">Only quiz places with a Wikipedia page</span>
+                <span className="mt-0.5 block text-xs opacity-75">Only quiz places with an encyclopedia page</span>
               </button>
               <div className="hidden">
                 {FEATURE_CATEGORIES.map((cat) => {
