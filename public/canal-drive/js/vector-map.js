@@ -406,12 +406,27 @@ class VectorBasemap {
   _syncDetailedBuildingLayers() {
     if (!this.map) return;
     const google = this._googleTilesActive;
-    // 3DBAG and Google must never draw together: they are the same buildings
-    // twice, z-fighting into a shimmer.
-    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google);
-    const detailed = !google && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
+    // One representation per building. The façade twin and the 3DBAG tile layer
+    // are the *same buildings from the same source* — 3DBAG LoD2.2 — one
+    // streamed as tiles and one compiled into a measured extract. Drawing both
+    // is not a near-miss that z-fights at the edges; it is the same geometry
+    // twice, and the twin is the one that carries measured façades, corrected
+    // heights and pand-level ownership.
+    //
+    // Boundary-only suppression would be better and is not possible yet: the
+    // tile layer draws whole tiles and cannot skip individual panden, and
+    // masking by tile bounds is exactly what BUILDING_RENDERER_DESIGN.md rules
+    // out — it erases the navigation corridor and cannot stop a tall extrusion
+    // leaning in from the next tile. Until the tile layer can filter by
+    // pand_id, the twin takes the whole layer or none of it. `facadeTwinOwnedIds()`
+    // publishes the 3,025 ids that filter will need.
+    const twinOwns = !!(this._facadeTwinVisible && this._facadeTwin && this._facadeTwin.ready);
+    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google && !twinOwns);
+    const detailed = !google && !twinOwns && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
+    // The basemap's own extrusions are OSM-derived and keyed by OSM id, so they
+    // cannot yet be filtered against BAG pand ids either. Same rule applies.
     for (const id of ['building-3d', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
-      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google) ? 'none' : 'visible');
+      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google || twinOwns) ? 'none' : 'visible');
     }
   }
 

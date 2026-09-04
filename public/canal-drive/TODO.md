@@ -397,10 +397,20 @@ measure end to end from Amsterdam's CC BY panoramas.
    inside the game itself — the harness proved the layer, not the wiring in
    `vector-map.js`.
 
-1c. **Tier ownership is declared but not enforced.** `facadeTwinOwnedIds()`
-   returns the 3,025 ids and `_syncDetailedBuildingLayers` is called, but
-   nothing yet makes the 3DBAG tile layer skip them. Two representations of one
-   building will z-fight until it does. The brief
+1c. **Tier ownership is enforced coarsely.** When the twin is on, the 3DBAG
+   tile layer and the basemap extrusions are hidden entirely — correct, because
+   the twin and the tile layer are the same buildings from the same source, but
+   blunt, because it hides them for the whole city rather than the boundary.
+   Per-pand suppression needs the tile layer to filter by `pand_id`;
+   `facadeTwinOwnedIds()` already publishes the 3,025 ids that filter will need.
+   Masking by tile bounds is ruled out by `BUILDING_RENDERER_DESIGN.md`.
+
+1d. **In-game rendering is still unverified.** The harness proves the layer; the
+   wiring in `vector-map.js` has not been seen to draw. Both attempts failed on
+   environment rather than code: a hidden tab throttles rAF to nothing (fixed in
+   the harness with a shim) and the game's full basemap style — glyphs, sprites,
+   vector tiles — does not finish loading in that tab even with the shim. Try
+   from a foreground window, or point the game at a bare style for the test. The brief
    gates M1 — massing in-game, recognisable in overlay against reference —
    before measurement work, and every measurement bug found so far took
    paragraphs of prose to discover from JSON when it would have been obvious in
