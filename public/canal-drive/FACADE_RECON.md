@@ -428,6 +428,88 @@ It is a candidate list and not an answer: the disagreement is reported, never
 resolved automatically. 106 of 3,025 is also a 3.5% sample, so this establishes
 the mechanism, not the rate.
 
+## The grammar, and what it is allowed to do
+
+`src/canalRecall/facade/grammar.ts` holds the geometric constants this project
+reasons with. Every one carries the evidence beside it, because the whole risk
+of a grammar is that it stops being a way of reading and becomes a source of
+facts. These numbers may narrow a search, reject an implausible reading, or rank
+two readings of the same image. They may never supply a value for a building
+nobody looked at.
+
+**Storey height, from independent data.** 3DBAG's storey counts divided by AHN
+eaves heights, n = 2,390 — neither of which has anything to do with this
+project's detector:
+
+| p05 | p25 | p50 | p75 | p95 |
+|---|---|---|---|---|
+| 2.40 m | 2.76 m | **3.01 m** | 3.26 m | 3.71 m |
+
+Eaves by storey count: 3 storeys → 9.5 m, 4 → 12.1 m, 5 → 14.9 m (medians).
+Narrow plots under 5 m are 4 storeys at the median; wider ones 5.
+
+**The Amsterdam foot, tested and rejected.** Canal-ring plots were set out in
+Amsterdam feet of 28.13 cm at 18, 20, 22, 24 or 26 feet — 5.06 to 7.31 m — and
+the pilot's median plot width is 5.66 m, which is 20 feet almost exactly. It is
+very tempting to quantise measured widths onto that module.
+
+The module is not there. Across 1,343 pre-1800 plots the mean distance from a
+whole foot is **0.2524**, against **0.2524** for a randomised control — 0.25
+being exactly what no structure looks like. The 20-foot peak is the mode of the
+distribution, not evidence of quantisation. The historic module was real; it is
+simply not recoverable from a BAG footprint, which is a modern survey of a
+building rebuilt, merged, split and settled for four centuries, and whose
+"width" here is the short side of a minimum-area rectangle rather than a plot
+boundary. The constant is kept for provenance and deliberately unused.
+
+**What the reference sheet showed.** Rectifying ten façades at 26 px/m with a
+metre grid drawn over them was meant to yield proportions. What it actually
+showed was that several readings at obliquity under 12° and standoff under 40 m
+— filters that sound strict — were photographs of canal elms, scaffolding, a
+lamp post, or a wildly mis-scaled close-up. Those pass every test on the
+*camera* and none on the *building*. Hence `plausibility()`, which asks whether
+a reading is a façade at all before it is kept: storey count against the
+building's own height, floor-to-floor intervals against the measured range, bays
+against frontage, opening area as a share of wall, and how many openings are
+window-shaped. 41 readings were rejected on the last run, each with its reason.
+
+**What changed as a result**, measured over the same 190 panoramas:
+
+| | before | after |
+|---|---|---|
+| storey bands, p25/p50/p75 | 5 / 6 / 6 | 3 / 4 / 5 |
+| bays, p50 | 1 | **2** |
+| readings rejected as not façades | 0 | 41 |
+
+Two bugs fell out of it. The storey ladder was scoring `mean × rung count`
+capped at six, which is a *reward* for finding six rungs whatever the comment
+beside it claimed — that alone put the median at exactly 6. And a tree trunk,
+downpipe or lamp standard reads as a strong deviation from the wall in one
+continuous vertical band from pavement to roofline, which a window never does,
+so columns that stay high across 82% of the height are now discarded as
+obstructions.
+
+## The generator
+
+`src/canalRecall/facade/generate.ts` turns a measured skeleton — plot width,
+eaves, ridge, storeys — into a full plausible façade: diminishing storey
+heights that sum to the measured eaves exactly, bays at a ~1.9 m pitch, windows
+that shrink with their storey, a door on the ground floor, a hoisting beam, and
+one of seven gable profiles drawn per type rather than smeared into a single
+parameterised curve.
+
+It exists as the *rendering vocabulary* the brief describes: it tells you how to
+draw a klokgevel once you know this house has one, and it must never tell you
+that this house has one. Everything it emits is stamped `provenance: 'generated'`
+and an unstated gable is flagged `gableIsAssumed`. It is for the parts library
+the Blender lanes need, for filling a bay the detector lost to a tree on a
+building whose other bays were measured, and for spikes. It is not for the
+extract: a building nobody has looked at still gets no façade.
+
+59 checks pin it, and the ones that matter are the conservation rules — storey
+heights are generated but the eaves height they sum to is a measurement, and a
+rule about the parts may never move the whole.
+
 ## What M0 still owes
 
 - **RECON-5** PDOK ortho roof colour across the boundary. The pipeline already

@@ -6,6 +6,62 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Amsterdam façade twin: a grammar, and the discipline of testing it
+
+The detector was producing numbers that were individually defensible and
+collectively wrong — a median of six storeys on a street of four, one bay on a
+five-metre front. The fix was not more thresholds but a grammar built from
+evidence, and the interesting part is which pieces of evidence survived.
+
+**Storey geometry came from data that owes this project nothing.** 3DBAG's
+storey counts divided by AHN eaves heights, n = 2,390: p05 2.40 m, p50 3.01 m,
+p95 3.71 m. The ladder had been searching 2.4–4.2 m — too wide, and centred well
+below where houses actually are — and it drifted to the bottom of that range
+because more rungs fit there.
+
+**Two bugs came out of looking.** The ladder scored `mean × rung count` capped
+at six, which is a reward for finding six rungs however the comment beside it
+described itself; scoring by mean fit alone moved the median from 6 to 4. And a
+tree trunk, downpipe or lamp standard reads as a strong deviation from the wall
+in one continuous band from pavement to roofline, which a window never does —
+columns high across 82% of the height are now discarded as obstructions.
+
+**The Amsterdam foot was the interesting failure.** Canal-ring plots were set out
+in feet of 28.13 cm at 18, 20, 22, 24 or 26 feet, and the pilot's median plot
+width is 5.66 m, which is 20 feet almost exactly. Quantising every measured
+width onto that module would have been an elegant, well-sourced, confident
+error. Tested across 1,343 pre-1800 plots, the mean distance from a whole foot is
+0.2524 against 0.2524 for a randomised control — 0.25 being what no structure at
+all looks like. The 20-foot peak is just the mode. The historic module was real;
+it is not recoverable from a BAG footprint, which surveys a building four
+centuries of rebuilding later and reports the short side of its minimum-area
+rectangle rather than a plot boundary. The constant stays in the file, unused,
+with the test written next to it.
+
+**A reference sheet answered a question nobody had asked.** Ten façades
+rectified at 26 px/m with a metre grid over them, meant to yield proportions,
+instead showed that several readings at obliquity under 12° and standoff under
+40 m were photographs of canal elms, scaffolding, a lamp post, or a wildly
+mis-scaled close-up. Those pass every test on the camera and none on the
+building. So `plausibility()` now asks whether a reading is a façade at all
+before it is kept — storey count against the building's own height, intervals
+against the measured range, bays against frontage, opening area as a share of
+wall, and how many openings are window-shaped. 41 readings rejected, each with
+its reason. Bays moved from a median of 1 to 2; storey bands from 5/6/6 to
+3/4/5.
+
+**And a generator, which is the grammar pointed the other way.** Given a
+measured skeleton it produces a full plausible façade: diminishing storey
+heights that sum to the measured eaves *exactly*, bays at a 1.9 m pitch, windows
+that shrink with their storey, a door, a hoisting beam, and seven gable profiles
+drawn per type rather than smeared into one parameterised curve. It is the
+rendering vocabulary the brief describes — how to draw a klokgevel once you know
+this house has one, never a claim that it has one — so everything it emits is
+stamped `provenance: 'generated'` and an unstated gable is flagged assumed. The
+checks that matter are conservation rules: storey heights are generated, but the
+eaves height they sum to is a measurement, and a rule about the parts may never
+move the whole.
+
 ## Amsterdam façade twin: reading façades out of the city's own panoramas
 
 Amsterdam publishes its street-level panoramas under CC BY 4.0, which is what

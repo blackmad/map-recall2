@@ -439,3 +439,37 @@ measure end to end from Amsterdam's CC BY panoramas.
 Also outstanding: RECON-10 (quay, water level, bridges), the 131 panden with no
 3DBAG match, and reconciling the 3DBAG API's `v2023.10.08` collection against the
 `v20250903` tileset the runtime actually streams.
+
+**And the part that is not canal houses.** The pilot's grammar is one fabric out
+of six, and the rest of Amsterdam is mostly *not* this. The plan, in the order
+the brief argues for and with what each actually needs:
+
+- **19th-century belt** (De Pijp, Oud-West, Kinkerbuurt) — the highest-leverage
+  tier and the one to do first after Centrum. Speculative *revolutiebouw* built
+  these in long identical runs, so the same forms recur thousands of times and
+  the detector's confidence calibrates well. It needs a new vocabulary — larger
+  windows, cast-iron balconies, tiled tympana, shop *puien* under
+  *bovenwoningen* — but the machinery is unchanged: the storey ladder, the
+  opening detector and the plausibility rules are all fabric-agnostic; only
+  `grammar.ts`'s constants are Amsterdam-canal-specific, and they are already
+  isolated in one file for that reason.
+- **Postwar estates** (Westelijke Tuinsteden, Bijlmer, Slotervaart) — cheapest
+  per building and closes the most map. Flat façade grammar, so LoD2.2 plus a
+  correct window grid and balcony rows is most of the way. The current detector
+  should transfer almost as-is; what it needs is a panel-and-balcony vocabulary
+  rather than a gable one.
+- **Amsterdam School and interwar** (Plan Zuid, Spaarndammerbuurt) — the most
+  expensive grammar per building and the one to do last of the big three.
+  Parabolic arches, rounded corners, ladder windows and decorative bond defeat a
+  rectangle detector, and RECON-2's finding bites hardest here: 3DBAG's roof
+  reconstruction is weakest on exactly these forms.
+- **Contemporary** (Zuidas, IJburg, Houthavens) — few buildings, simple forms,
+  and curtain wall is a *regular grid*, which the bay-and-storey machinery is
+  already good at. Mostly a materials problem.
+- **Industrial and port** — LoD2.2 with correct materials. Do not gold-plate.
+
+Two things generalise before any of that, and both are cheap now: `grammar.ts`
+should take a fabric parameter rather than being implicitly Grachtengordel, and
+`plausibility()`'s thresholds should be derived per fabric from the same
+independent 3DBAG-storeys × AHN-eaves calculation that produced the canal-house
+ones. Neither needs new imagery.

@@ -1,3 +1,5 @@
+import { STOREY_HEIGHT_M } from './grammar.ts';
+
 /**
  * Measuring a façade: openings, storeys and bays.
  *
@@ -42,6 +44,8 @@ export interface Storey {
 }
 
 export interface FacadeMeasurement {
+  /** Columns discarded as continuous vertical obstructions — trunks, downpipes. */
+  obstructionColumns: number;
   openings: Opening[];
   storeys: Storey[];
   /** Distinct vertical window columns — the bay rhythm. */
@@ -59,6 +63,35 @@ export function toGray(image: { width: number; height: number; data: Uint8Clampe
     data[i] = 0.299 * image.data[p] + 0.587 * image.data[p + 1] + 0.114 * image.data[p + 2];
   }
   return { width: image.width, height: image.height, data };
+}
+
+/**
+ * Reject columns that run the whole height of the façade.
+ *
+ * A tree trunk, a downpipe, a drainpipe or a lamp standard all read as a strong
+ * deviation from the wall — the detector's own signal — and they do it in one
+ * continuous vertical band from pavement to roofline. A window never does: it
+ * belongs to one storey. So a column whose score stays high across nearly the
+ * full height is an obstruction in front of the façade, not part of it, and
+ * including it drags a whole bay onto the tree.
+ *
+ * Found in the reference sheet, where several sampled "façades" at low
+ * obliquity and short standoff turned out to be photographs of canal elms.
+ */
+function suppressObstructions(score: Float32Array, width: number, height: number): number {
+  const top = Math.floor(height * 0.1), bottom = Math.floor(height * 0.92);
+  const rows = bottom - top;
+  let suppressed = 0;
+  for (let x = 0; x < width; x++) {
+    let high = 0;
+    for (let y = top; y < bottom; y++) if (score[y * width + x] > 0.3) high++;
+    // 82%: a genuine bay is broken by spandrel wall between every storey, so it
+    // cannot be continuously "not the wall" over four storeys and a cornice.
+    if (high / rows < 0.82) continue;
+    for (let y = 0; y < height; y++) score[y * width + x] = 0;
+    suppressed++;
+  }
+  return suppressed;
 }
 
 /**
@@ -133,7 +166,11 @@ function openingScore(gray: Gray, blueExcess: Int16Array, bandPx: number): Float
  * confirmed in this building's own photograph.
  */
 function storeyLadder(profile: Float32Array, ppm: number): number[] {
-  const minSpacing = 2.4 * ppm, maxSpacing = 4.2 * ppm;
+  // Range and prior from `grammar.ts`: 2,390 buildings' 3DBAG storey counts
+  // divided by their AHN eaves heights give p05 2.40, p50 3.01, p95 3.71 m.
+  // The old 2.4–4.2 m search was both too wide and centred too low, and the
+  // ladder kept drifting to the 2.4 m end where more rungs fit.
+  const minSpacing = STOREY_HEIGHT_M.min * ppm, maxSpacing = STOREY_HEIGHT_M.max * ppm;
   if (profile.length < minSpacing * 1.6) return [];
 
   let best: { spacing: number; phase: number; score: number } | null = null;
@@ -149,12 +186,28 @@ function storeyLadder(profile: Float32Array, ppm: number): number[] {
         score += sum / n;
         rungs++;
       }
-      // Normalise by rung count so a tight ladder cannot win by having more of
-      // them, then reward having enough rungs to be a real façade.
+      /**
+       * Mean fit per rung, and nothing else.
+       *
+       * An earlier version multiplied the mean by the rung count, capped at
+       * six — which is a *reward* for having six rungs, not a normalisation,
+       * whatever the comment beside it claimed. Measured across the boundary it
+       * put the median storey count at exactly 6 on a fabric whose own massing
+       * model says 4–5, because the tightest spacing that reached six rungs won
+       * regardless of whether the extra ones landed on anything.
+       *
+       * Mean alone is self-correcting: a ladder at half the true spacing puts
+       * every second rung on blank wall, and the blank rungs drag the mean down.
+       * The rung count is only used to reject a ladder too short to be a façade.
+       */
       if (rungs < 2) continue;
-      const mean = score / rungs;
-      const total = mean * Math.min(rungs, 6);
-      if (!best || total > best.score) best = { spacing, phase, score: total };
+      // A gentle pull toward the measured median, enough to break a tie between
+      // two ladders the image supports equally and not enough to override one it
+      // supports better. At the extremes of the range this costs about 8%.
+      const fromMedian = Math.abs(spacing / ppm - STOREY_HEIGHT_M.median);
+      const prior = 1 - Math.min(0.08, fromMedian * 0.06);
+      const mean = (score / rungs) * prior;
+      if (!best || mean > best.score) best = { spacing, phase, score: mean };
     }
   }
   if (!best) return [];
@@ -249,6 +302,7 @@ export function measureFacade(
   const blueExcess = new Int16Array(width * height);
   for (let i = 0, p = 0; i < blueExcess.length; i++, p += 4) blueExcess[i] = image.data[p + 2] - image.data[p];
   const score = openingScore(gray, blueExcess, Math.max(24, Math.round(ppm * 1.2)));
+  const obstructions = suppressObstructions(score, width, height);
 
   // Horizontal bands: sum each row. A storey's windows all sit at the same
   // height, so their combined signal survives any one of them being obscured.
@@ -343,6 +397,7 @@ export function measureFacade(
     .map(bay => Number((((bay.from + bay.to) / 2) / ppm).toFixed(2)));
 
   return {
+    obstructionColumns: obstructions,
     openings,
     storeys: ordered,
     bays: bayOffsetsM.length,

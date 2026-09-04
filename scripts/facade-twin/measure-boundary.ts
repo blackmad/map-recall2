@@ -21,6 +21,7 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM, type Elevation } from '../../src/canalRecall/facade/elevations.ts';
+import { plausibility, PLAUSIBLE_ENOUGH } from '../../src/canalRecall/facade/grammar.ts';
 import { measureFacade } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
 import { GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
@@ -46,6 +47,10 @@ export interface MeasuredFacade {
   wallRgb: [number, number, number] | null;
   storeyBands: number;
   storeyIntervalsM: number[];
+  /** How much this reading looks like a façade rather than a tree. */
+  plausibility: number;
+  plausibilityFailures: string[];
+  obstructionColumns: number;
   bays: number;
   bayOffsetsM: number[];
   openings: Array<{ xM: number; yM: number; widthM: number; heightM: number }>;
@@ -205,7 +210,8 @@ function sampleWall(rect: { width: number; height: number; data: Uint8ClampedArr
   return channels.map(v => { if (!v.length) return 128; v.sort((a, b) => a - b); return v[Math.floor(v.length * 0.72)]; }) as [number, number, number];
 }
 
-let images = 0, measured = 0, failed = 0;
+let images = 0, measured = 0, failed = 0, rejected = 0;
+const rejectionReasons: string[] = [];
 for (const { panoramaId, pose: planPose, jobs } of plan) {
   const entry = { pose: planPose, jobs };
   const image = await panorama(entry.pose.view);
@@ -225,6 +231,18 @@ for (const { panoramaId, pose: planPose, jobs } of plan) {
     }, { start: job.wall.start, end: job.wall.end, baseZ: ground - 0.4, topZ: eaves + 0.3 }, { pixelsPerMetre: ppm });
 
     const m = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
+    // Is this a façade at all? The reference sheet showed that low obliquity and
+    // short standoff are not enough: several such readings were of canal elms.
+    const verdict = plausibility({
+      wallWidthM: job.wall.lengthM,
+      eavesHeightM: eaves - ground,
+      declaredStoreys: mass?.storeys ?? null,
+      storeyBands: m.storeys.length,
+      storeyIntervalsM: m.storeyHeightsM,
+      bays: m.bays,
+      openings: m.openings,
+    });
+    if (verdict.score < PLAUSIBLE_ENOUGH) { rejected++; rejectionReasons.push(...verdict.failures); continue; }
     store[job.pandId] = {
       pandId: job.pandId,
       panoramaId, capturedAt: entry.pose.view.capturedAt,
@@ -234,6 +252,9 @@ for (const { panoramaId, pose: planPose, jobs } of plan) {
       wallRgb: m.openings.length ? sampleWall(rect, m.openings, rect.pixelsPerMetre) : null,
       storeyBands: m.storeys.length,
       storeyIntervalsM: m.storeyHeightsM,
+      plausibility: Number(verdict.score.toFixed(2)),
+      plausibilityFailures: verdict.failures,
+      obstructionColumns: m.obstructionColumns,
       bays: m.bays, bayOffsetsM: m.bayOffsetsM,
       openings: m.openings.map(o => ({
         xM: Number(o.xM.toFixed(2)), yM: Number(o.yM.toFixed(2)),
@@ -262,6 +283,15 @@ process.stdout.write('\n');
 
 const all = Object.values(store);
 const withOpenings = all.filter(f => f.openings.length > 0);
+console.log(`\n${rejected} readings rejected as not façades`);
+if (rejectionReasons.length) {
+  const counts = new Map<string, number>();
+  for (const reason of rejectionReasons) {
+    const key = reason.replace(/[\d.]+/g, 'N');
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  for (const [reason, n] of [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6)) console.log(`  ${String(n).padStart(4)}  ${reason}`);
+}
 console.log(`\n${all.length} buildings measured in total (${(100 * all.length / footprints.size).toFixed(1)}% of the boundary)`);
 console.log(`  ${withOpenings.length} with at least one opening, ${all.reduce((s, f) => s + f.openings.length, 0)} openings total`);
 if (withOpenings.length) {
