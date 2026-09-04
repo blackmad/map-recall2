@@ -44,14 +44,45 @@ export function buildFactIndex(file: FactsFile | null | undefined): FactIndex {
   return index;
 }
 
-/** First sentence of an encyclopedia lede, capped for the collapsed card. */
+/** First sentence of an encyclopedia lede, capped for the collapsed card.
+ *
+ *  Respects the same abbreviation list the English extract trimmer uses, so
+ *  "bridge no. 221" and "St. Antonius" are not cut at the inner period. */
 export function openingSentence(text: string | undefined, maxChars = 160): string {
   const trimmed = (text || '').replace(/\s+/g, ' ').trim();
   if (!trimmed) return '';
-  const match = trimmed.match(/^(.+?[.!?])(?:\s|$)/);
-  const sentence = (match?.[1] || trimmed).trim();
+
+  // Words whose trailing period is not a sentence end — kept in sync with
+  // `scripts/lib/translation.ts` ABBREVIATIONS (nl + en encyclopedia prose).
+  const abbreviations = new Set([
+    'st', 'sint', 'ste', 'mr', 'mrs', 'ms', 'dr', 'prof', 'ir', 'ing', 'drs',
+    'jr', 'sr', 'nr', 'no', 'vs', 'ca', 'ong', 'bijv', 'nl', 'oa', 'dwz', 'zgn',
+    'etc', 'incl', 'excl', 'eeuw', 'eeuwse',
+  ]);
+  const isSentenceEnd = (index: number): boolean => {
+    if (trimmed[index] !== '.') return true;
+    const before = /([\p{L}]+)$/u.exec(trimmed.slice(0, index));
+    if (!before) return true;
+    const word = before[1];
+    if (word.length === 1) return false; // initials: "J. Smit"
+    return !abbreviations.has(word.toLocaleLowerCase());
+  };
+
+  let end = -1;
+  for (const match of trimmed.matchAll(/[.!?](?=\s|$)/g)) {
+    if (isSentenceEnd(match.index)) {
+      end = match.index + 1;
+      break;
+    }
+  }
+  const sentence = (end > 0 ? trimmed.slice(0, end) : trimmed).trim();
   if (sentence.length <= maxChars) return sentence;
   const window = sentence.slice(0, maxChars);
+  let boundary = -1;
+  for (const match of window.matchAll(/[.!?](?=\s|$)/g)) {
+    if (isSentenceEnd(match.index)) boundary = match.index + 1;
+  }
+  if (boundary > maxChars * 0.5) return window.slice(0, boundary).trim();
   const cut = Math.max(window.lastIndexOf(', '), window.lastIndexOf(' '));
   return `${(cut > maxChars * 0.5 ? window.slice(0, cut) : window).trim()}…`;
 }

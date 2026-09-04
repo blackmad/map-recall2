@@ -340,10 +340,59 @@
   function openingSentence(text, maxChars = 160) {
     const trimmed = (text || "").replace(/\s+/g, " ").trim();
     if (!trimmed) return "";
-    const match = trimmed.match(/^(.+?[.!?])(?:\s|$)/);
-    const sentence = (match?.[1] || trimmed).trim();
+    const abbreviations = /* @__PURE__ */ new Set([
+      "st",
+      "sint",
+      "ste",
+      "mr",
+      "mrs",
+      "ms",
+      "dr",
+      "prof",
+      "ir",
+      "ing",
+      "drs",
+      "jr",
+      "sr",
+      "nr",
+      "no",
+      "vs",
+      "ca",
+      "ong",
+      "bijv",
+      "nl",
+      "oa",
+      "dwz",
+      "zgn",
+      "etc",
+      "incl",
+      "excl",
+      "eeuw",
+      "eeuwse"
+    ]);
+    const isSentenceEnd = (index) => {
+      if (trimmed[index] !== ".") return true;
+      const before = /([\p{L}]+)$/u.exec(trimmed.slice(0, index));
+      if (!before) return true;
+      const word = before[1];
+      if (word.length === 1) return false;
+      return !abbreviations.has(word.toLocaleLowerCase());
+    };
+    let end = -1;
+    for (const match of trimmed.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) {
+        end = match.index + 1;
+        break;
+      }
+    }
+    const sentence = (end > 0 ? trimmed.slice(0, end) : trimmed).trim();
     if (sentence.length <= maxChars) return sentence;
     const window2 = sentence.slice(0, maxChars);
+    let boundary = -1;
+    for (const match of window2.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) boundary = match.index + 1;
+    }
+    if (boundary > maxChars * 0.5) return window2.slice(0, boundary).trim();
     const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
     return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
   }
