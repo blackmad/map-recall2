@@ -33,8 +33,10 @@ import { selectReviewedFacts, summariseRejections,
 import {
   buildFactIndex,
   commitShownFact,
+  composeFactWithOpening,
   factCardText,
   loadRotationState,
+  openingSentence,
   ROTATION_STORAGE_KEY,
 } from '../src/canalRecall/facts/factStore';
 import type { Fact, FactKind, FeatureFacts } from '../src/canalRecall/facts/factTypes';
@@ -501,6 +503,48 @@ check('a published fact replaces the lede and carries its kind to the card', () 
   assert.equal(chosen.text.detail, chosen.choice.fact.text);
   assert.equal(chosen.text.factKind.length > 0, true);
   assert.equal(chosen.text.factTexts[0], chosen.text.detail);
+});
+
+check('an opening sentence frames trivia from the same article', () => {
+  const opening = 'Nicolaas Beemsstraat honours Nicolaas Beems, an Amsterdam Anabaptist.';
+  const trivia = 'Beems was executed on the Dam in 1546 for his faith.';
+  const composed = composeFactWithOpening(trivia, opening);
+  assert.equal(composed.opening, openingSentence(opening));
+  assert.ok(composed.detail.startsWith(openingSentence(opening)));
+  assert.ok(composed.detail.includes(trivia));
+
+  const index = buildFactIndex({
+    cityId: 'amsterdam', generatorVersion: 'facts-v2', generatedAt: '2026-09-01',
+    features: [{
+      id: 'street:beems',
+      name: 'Nicolaas Beemsstraat',
+      collection: 'streets',
+      opening,
+      facts: [{ ...FACTS[0], text: trivia, kind: 'people' }],
+    }],
+  });
+  const chosen = factCardText('street:beems', index, emptyRotationState());
+  assert.ok(chosen);
+  assert.equal(chosen.text.factTexts[0], openingSentence(opening));
+  assert.equal(chosen.text.factTexts[1], trivia);
+  assert.equal(chosen.text.detail, `${openingSentence(opening)} ${trivia}`);
+});
+
+check('a near-duplicate opening is not prepended twice', () => {
+  const text = 'The Magere Brug is a bridge over the Amstel.';
+  assert.equal(composeFactWithOpening(text, text).detail, text);
+});
+
+check('a missing catalog opening falls back to the notice lede', () => {
+  const index = buildFactIndex({
+    cityId: 'amsterdam', generatorVersion: 'facts-v2', generatedAt: '2026-09-01',
+    features: [{ id: 'bridge:a', name: 'Alpha', collection: 'bridges', facts: FACTS }],
+  });
+  const opening = 'Alpha is a bascule bridge over the Amstel in Amsterdam.';
+  const chosen = factCardText('bridge:a', index, emptyRotationState(), opening);
+  assert.ok(chosen);
+  assert.ok(chosen.text.detail.startsWith(openingSentence(opening)));
+  assert.ok(chosen.text.detail.includes(chosen.choice.fact.text));
 });
 
 check('a feature absent from the reviewed catalog keeps its lede', () => {

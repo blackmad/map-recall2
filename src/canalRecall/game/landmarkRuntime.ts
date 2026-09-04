@@ -120,7 +120,9 @@ export class GameLandmarkRuntime {
   }
 
   /**
-   * Replace the card's lede with the next fact in this feature's rotation.
+   * Replace the card's lede with the next fact in this feature's rotation,
+   * keeping a same-article opening sentence ahead of the trivia so the
+   * punchline stays in context.
    *
    * Returns the card unchanged when the feature has no generated facts, which
    * is the normal case until a batch has been reviewed and published — the
@@ -128,7 +130,14 @@ export class GameLandmarkRuntime {
    */
   _withRotatedFact(notice: LandmarkNotice): LandmarkNotice {
     if (!this._facts || !this._facts.size) return notice;
-    const chosen = factCardText(notice.id, this._facts, this._factRotation);
+    // Prefer the catalog opening; fall back to the encyclopedia lede already
+    // on this notice before rotation overwrites `detail`.
+    const chosen = factCardText(
+      notice.id,
+      this._facts,
+      this._factRotation,
+      notice.detail || notice.longDetail,
+    );
     if (!chosen) return notice;
     this._commitFact(chosen.choice);
     return { ...notice, ...chosen.text };
