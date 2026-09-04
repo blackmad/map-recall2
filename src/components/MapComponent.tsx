@@ -36,6 +36,7 @@ interface MapComponentProps {
   fetchingBoundary?: SearchBoundary | null;
   searchBoundary?: SearchBoundary | null;
   showSearchBoundary?: boolean;
+  showLocate?: boolean;
 }
 
 function getFeatureColors(type: string) {
@@ -81,6 +82,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
   fetchingBoundary,
   searchBoundary,
   showSearchBoundary,
+  showLocate = true,
 }) => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
@@ -554,6 +556,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
       <div ref={mapContainerRef} className="w-full h-full z-0" />
 
       {/* Floating Locate Me Button (Positioned above Zoom controls) */}
+      {showLocate && (
       <button
         id="map-locate-me-btn"
         onClick={handleLocateClick}
@@ -566,6 +569,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
           <LocateFixed className="w-4 h-4 text-[#c4a35a]" />
         )}
       </button>
+      )}
     </div>
   );
 };

@@ -27,9 +27,9 @@ export interface OverlayState {
 }
 
 export const GUEST_ACCOUNT: AccountState = {
-  visible: false,
+  visible: true,
   label: 'Playing as guest',
-  note: 'Sign in to remember which streets you already know across devices.',
+  note: 'Sign in to sync learned streets',
   buttonLabel: 'Sign in',
   busy: false,
 };

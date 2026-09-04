@@ -22,6 +22,15 @@ now draws 7 lids, all with a real `roofColour`. The suppression clause also
 matches `id` as well as `osmId`, because streamed tiles carry OSM-owned
 features under `id`. `check-canal-buildings.ts` pins the composition.
 
+## Map Quest start hierarchy + Canal setup density
+
+Map Quest start: the rail owns the job — plaque, then Canals/Streets as the
+primary action, demoted Also chips, mode as a footer control. Header on start
+is menu-only (no duplicate brand, filters, score, or toast). Canal setup:
+account row always present as a single compact line (no login bounce), Reset
+knowledge moved under More options, and Start route pinned below a scrolling
+middle so it stays on screen.
+
 ## Storybook: fallback postcard, stacked notices, bike finish
 
 Item 14 gap fill: `neighborhood-fallback` (typography-only postcard),

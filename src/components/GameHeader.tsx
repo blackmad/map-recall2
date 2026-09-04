@@ -62,6 +62,8 @@ interface GameHeaderProps {
   onSignOut?: () => void;
   /** True once a feature is loaded and a round is in play — collapses filters. */
   roundActive?: boolean;
+  /** Start overlay is open — header yields brand/filters to the rail plaque. */
+  startOpen?: boolean;
 }
 
 export const GameHeader: React.FC<GameHeaderProps> = ({
@@ -104,6 +106,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   onSelectAdministrativeArea,
   onSearchLocation,
   roundActive = false,
+  startOpen = false,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchAreaOpen, setIsSearchAreaOpen] = useState(false);
@@ -144,8 +147,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
         className="w-full h-12 sm:h-14 border-b z-30 flex items-center px-3 sm:px-4"
       >
         <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-2">
-          {/* Left: brand always; filters only before a round starts */}
+          {/* Left: brand when not on start; filters only between start and play */}
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+            {!startOpen && (
             <div className="flex items-center gap-1.5 flex-shrink-0">
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md border border-white/40 bg-white/10 flex items-center justify-center">
                 <Compass className="w-4 h-4 text-white" />
@@ -154,8 +158,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 Map Recall
               </span>
             </div>
+            )}
 
-            {!roundActive && (
+            {!roundActive && !startOpen && (
               <div className="hidden sm:contents">
             {/* Compact City Dropdown Pill */}
             <div className="relative flex items-center min-w-0 max-w-[105px] sm:max-w-[170px]">
@@ -233,7 +238,8 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
 
           {/* Center/Right: Inline Mode (Desktop only) + Score & Round + Menu Button */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
-            {/* Mode pills — always visible; compact labels on small screens */}
+            {/* Mode pills — hidden on start (rail owns mode); always during play */}
+            {!startOpen && (
             <div id="game-mode-switcher" className="enamel-segment flex items-center gap-0.5">
               <button
                 onClick={() => {
@@ -277,8 +283,10 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 <span className="sm:hidden">Area</span>
               </button>
             </div>
+            )}
 
-            {/* Score & Round Badge */}
+            {/* Score — only once a round has begun */}
+            {!startOpen && (
             <div
               id="header-score-badge"
               className="flex items-center gap-1.5 px-1 text-xs"
@@ -288,9 +296,10 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 {totalScore.toLocaleString()} <span className="text-xs font-normal text-[#c4a35a]">pts</span>
               </span>
             </div>
+            )}
 
             {/* Blind Map indicator badge */}
-            {blindMapMode && (
+            {!startOpen && blindMapMode && (
               <button
                 onClick={onToggleBlindMap}
                 title="Blind Map Mode active (labels hidden). Click to toggle."
@@ -302,6 +311,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             )}
 
             {/* Quick Mute Toggle */}
+            {!startOpen && (
             <button
               id="header-sound-btn"
               onClick={onToggleMute}
@@ -310,6 +320,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             >
               {isMuted ? <VolumeX className="w-3.5 h-3.5 text-white/70" /> : <Volume2 className="w-3.5 h-3.5 text-white" />}
             </button>
+            )}
 
             {/* All Options Overflow Menu Button */}
             <button

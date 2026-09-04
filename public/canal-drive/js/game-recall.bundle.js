@@ -171,14 +171,14 @@ Sign-in and your route settings stay. This cannot be undone.`
           overlay.store.setAccount({
             visible: true,
             label: user.label,
-            note: `${recall.masteredCount} answers synced`,
+            note: `${recall.masteredCount} synced`,
             buttonLabel: "Sign out"
           });
         } else {
           overlay.store.setAccount({
             visible: true,
             label: "Playing as guest",
-            note: "Sign in to remember which streets you already know across devices.",
+            note: "Sign in to sync learned streets",
             buttonLabel: "Sign in"
           });
         }
