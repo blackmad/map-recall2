@@ -31,6 +31,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
+import { ENCYCLOPEDIA_PARTITION_FILES } from './lib/encyclopedia-extract-files.ts';
 import { resolveStreetWikipedia } from '../src/canalRecall/game/streetWikipedia.ts';
 
 interface Feature {
@@ -44,6 +45,8 @@ interface Feature {
   wikipediaImageUrl?: string;
   /** Set only for non-English blurbs, so they can be told apart later. */
   wikipediaExtractLang?: string;
+  /** 'wikidata-description' when the blurb is a thin English floor from Wikidata. */
+  wikipediaExtractSource?: string;
 }
 
 interface PageDetail {
@@ -57,7 +60,7 @@ interface PageDetail {
 const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
 const directory = path.resolve(directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
 const filesArgument = process.argv.find((argument) => argument.startsWith('--files='));
-const defaultFiles = ['landmarks.json', 'bridges.json', 'streets.json', 'water.json', 'squares.json', 'parks.json'];
+const defaultFiles = [...ENCYCLOPEDIA_PARTITION_FILES];
 const files = filesArgument
   ? filesArgument.slice('--files='.length).split(',').map((name) => name.trim()).filter(Boolean)
   : defaultFiles;
@@ -272,11 +275,14 @@ for (const batch of chunks(neededCommonsFiles, 20)) {
   }
 }
 
-// Step 4: write the blurbs back.
+// Step 4: write the blurbs back. Features that still have only a Q-id and no
+// article get Wikidata's English description as a thin floor — better a true
+// one-liner than a silent card that looked "linked" in OSM.
 const filled = new Map<string, number>();
 const viaCounts = new Map<string, number>();
 const fallbackCounts = new Map<string, number>();
 const unresolved: string[] = [];
+const needsDescription: Feature[] = [];
 for (const [file, partition] of partitions) {
   for (const feature of partition) {
     if (!pendingSet.has(feature)) continue;
@@ -297,6 +303,9 @@ for (const [file, partition] of partitions) {
       feature.wikipediaExtractLang = language;
       if (!feature.wikipediaUrl && foreign.url) feature.wikipediaUrl = foreign.url;
       fallbackCounts.set(language, (fallbackCounts.get(language) || 0) + 1);
+    } else if (feature.wikidata) {
+      needsDescription.push(feature);
+      continue;
     } else {
       const reason = !feature.wikipedia && !feature.wikidata ? 'no wikidata or wikipedia tag'
         : !feature.wikipedia ? 'wikidata only, no English or Dutch article'
@@ -309,6 +318,44 @@ for (const [file, partition] of partitions) {
     if (image) feature.wikipediaImageUrl = image;
     filled.set(file, (filled.get(file) || 0) + 1);
   }
+}
+
+const descriptionByQid = new Map<string, string>();
+const descriptionQids = [...new Set(needsDescription.map((feature) => feature.wikidata!).filter(Boolean))];
+for (const batch of chunks(descriptionQids, 50)) {
+  const url = new URL('https://www.wikidata.org/w/api.php');
+  url.search = new URLSearchParams({
+    action: 'wbgetentities', format: 'json', props: 'descriptions', languages: 'en',
+    ids: batch.join('|'), origin: '*',
+  }).toString();
+  const data = await fetchJson(url);
+  for (const [qid, entity] of Object.entries(data.entities || {}) as [string, {
+    descriptions?: { en?: { value?: string } };
+  }][]) {
+    const value = entity.descriptions?.en?.value;
+    if (!value) continue;
+    descriptionByQid.set(qid, `${value.charAt(0).toUpperCase()}${value.slice(1)}.`);
+  }
+}
+let described = 0;
+for (const [file, partition] of partitions) {
+  for (const feature of partition) {
+    if (!needsDescription.includes(feature)) continue;
+    const description = feature.wikidata ? descriptionByQid.get(feature.wikidata) : undefined;
+    if (!description) {
+      unresolved.push(`${feature.name} [${file}] — wikidata only, no English description`);
+      continue;
+    }
+    feature.wikipediaExtract = description.slice(0, DISPLAY_EXTRACT_CHARS);
+    feature.wikipediaSourceText = description;
+    feature.wikipediaExtractSource = 'wikidata-description';
+    delete feature.wikipediaExtractLang;
+    const wikidataImage = feature.wikidata ? imageByQid.get(feature.wikidata) : undefined;
+    const image = wikidataImage ? commonsImages.get(wikidataImage) : undefined;
+    if (image) feature.wikipediaImageUrl = image;
+    filled.set(file, (filled.get(file) || 0) + 1);
+    described++;
+  }
   if (!dryRun) await writeFile(path.join(directory, file), JSON.stringify(partition));
 }
 
@@ -317,5 +364,6 @@ for (const [file, count] of filledByTitle) process.stdout.write(`  ${file}: ${co
 for (const [file, count] of filled) process.stdout.write(`  ${file}: ${count} extracts added\n`);
 for (const [via, count] of viaCounts) process.stdout.write(`  english via ${via}: ${count}\n`);
 for (const [language, count] of fallbackCounts) process.stdout.write(`  fallback ${language}: ${count}\n`);
+process.stdout.write(`  Wikidata descriptions: ${described}\n`);
 process.stdout.write(`  still without an extract: ${unresolved.length}\n`);
 for (const line of unresolved) process.stdout.write(`    ${line}\n`);

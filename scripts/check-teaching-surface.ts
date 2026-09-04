@@ -24,11 +24,14 @@ assert.equal(canShowTeachingCard(hold), false, 'no postcard under lingering feed
 assert.equal(canShowTeachingCard(staleFeedback), false);
 
 assert.equal(canShowMiniMap(true, idle), true);
-assert.equal(canShowMiniMap(true, quiz), false);
+assert.equal(canShowMiniMap(true, quiz), true, 'overview stays up while answering');
+assert.equal(canShowMiniMap(true, hold), true, 'and during answer feedback');
+assert.equal(canShowMiniMap(true, overlay), false, 'utility panels still own the screen');
 assert.equal(canShowMiniMap(false, idle), false);
+assert.equal(canShowMiniMap(false, quiz), false);
 
 assert.equal(canShowPoiLabels(true, idle), true);
 assert.equal(canShowPoiLabels(true, quiz), false);
 assert.equal(canShowPoiLabels(false, idle), false);
 
-console.log('teaching surface: 14 checks passed');
+console.log('teaching surface: 17 checks passed');

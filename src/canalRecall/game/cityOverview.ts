@@ -205,8 +205,10 @@ export const OVERVIEW_COLORS: OverviewColors = {
   route: '#c75f43',
   start: '#356653',
   finish: '#c75f43',
-  player: '#24322b',
-  playerRing: 'rgba(255,253,248,0.92)',
+  // Bright ink-blue, not the route terracotta or the dark network: the whole
+  // point of the overview is finding yourself on it at a glance.
+  player: '#1f4fd8',
+  playerRing: 'rgba(255,253,248,0.96)',
 };
 
 function strokePath(
@@ -279,18 +281,29 @@ export function drawOverviewDynamic(
 
   if (vehicle) {
     const at = project(projection, vehicle);
-    // A heading cone rather than a bare dot: on a city-scale map "which way am
-    // I pointing" is most of the orientation problem.
-    const spread = 0.45, length = 9;
+    // Soft halo → solid disc → heading wedge. The old lone dark cone vanished
+    // into the network at city scale; the disc pins "where", the wedge "which way".
+    ctx.fillStyle = 'rgba(31, 79, 216, 0.22)';
+    ctx.beginPath();
+    ctx.arc(at.x, at.y, 11, 0, Math.PI * 2);
+    ctx.fill();
+
     ctx.fillStyle = colors.player;
     ctx.strokeStyle = colors.playerRing;
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(at.x, at.y, 4.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+    const spread = 0.42, length = 12;
+    ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(at.x + Math.cos(vehicle.angle) * length, at.y + Math.sin(vehicle.angle) * length);
-    ctx.lineTo(at.x + Math.cos(vehicle.angle + Math.PI - spread) * 5,
-      at.y + Math.sin(vehicle.angle + Math.PI - spread) * 5);
-    ctx.lineTo(at.x + Math.cos(vehicle.angle + Math.PI + spread) * 5,
-      at.y + Math.sin(vehicle.angle + Math.PI + spread) * 5);
+    ctx.lineTo(at.x + Math.cos(vehicle.angle + Math.PI - spread) * 5.5,
+      at.y + Math.sin(vehicle.angle + Math.PI - spread) * 5.5);
+    ctx.lineTo(at.x + Math.cos(vehicle.angle + Math.PI + spread) * 5.5,
+      at.y + Math.sin(vehicle.angle + Math.PI + spread) * 5.5);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();

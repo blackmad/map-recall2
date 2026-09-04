@@ -148,11 +148,8 @@
   }
 
   // src/canalRecall/game/teachingSurface.ts
-  function teachingOwnsBottom(input) {
-    return input.quizOpen || input.feedbackVisible || input.promptVisible || input.utilityOpen;
-  }
   function canShowMiniMap(enabled, input) {
-    return enabled && !teachingOwnsBottom(input);
+    return enabled && !input.utilityOpen;
   }
   function canShowPoiLabels(labelsWanted, input) {
     return labelsWanted && !input.quizOpen && !input.promptVisible;

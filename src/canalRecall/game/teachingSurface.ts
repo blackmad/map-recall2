@@ -27,8 +27,13 @@ export function canShowTeachingCard(input: TeachingGateInput): boolean {
   return !teachingOwnsBottom(input);
 }
 
+/**
+ * The city overview stays up during a quiz. It draws no names, so it does not
+ * answer the question, and orientation is most useful exactly when you are
+ * stopped and thinking. Utility panels still own the screen; hide under those.
+ */
 export function canShowMiniMap(enabled: boolean, input: TeachingGateInput): boolean {
-  return enabled && !teachingOwnsBottom(input);
+  return enabled && !input.utilityOpen;
 }
 
 /** Dense POI names answer “where am I?” for free during a place quiz. */
