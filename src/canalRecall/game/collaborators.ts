@@ -83,8 +83,9 @@ export interface Track {
   startPoint: WorldPoint;
   finishPoint: WorldPoint;
   /** The name of the way under a point, or '' where nothing is mapped. */
-  getRoadName(x: number, y: number): string;
-  getNearestRoad(x: number, y: number): NearestRoad | null;
+  /** Prefer `preferredAngle` at junctions so the cross street is not named. */
+  getRoadName(x: number, y: number, preferredAngle?: number | null): string;
+  getNearestRoad(x: number, y: number, preferredAngle?: number | null): NearestRoad | null;
   getDistanceToFinish(x: number, y: number): number;
   /**
    * `isKnown` decides per label *and per place*, not per name: knowing the

@@ -248,11 +248,14 @@ export class GameRecallRuntime {
 
   _updateCanalQuiz(dt: number): void {
     if (!this.player) return;
-    const name = this.track.getRoadName(this.player.x, this.player.y);
+    const heading = this.player.angle;
+    const name = this.track.getRoadName(this.player.x, this.player.y, heading);
     // Only worth a spatial query once there is a name that could become a
     // question; on most frames there is not.
     const interesting = !!name && name !== this.quizCurrentName;
-    const nearestRoad = interesting ? this.track.getNearestRoad(this.player.x, this.player.y) : null;
+    const nearestRoad = interesting
+      ? this.track.getNearestRoad(this.player.x, this.player.y, heading)
+      : null;
     const decision = advanceRouteQuiz({
       candidateName: this.quizCandidateName,
       candidateSeconds: this.quizCandidateTimer,
@@ -281,7 +284,7 @@ export class GameRecallRuntime {
       return;
     }
 
-    const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y);
+    const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
     this._openQuizPrompt({
       kind: 'route',
       name: decision.name,
@@ -401,7 +404,7 @@ export class GameRecallRuntime {
       waterKnownHere: !!water && !!this.recall && this.recall.isKnownHere(water),
       waterSuppressedHere: !!water && !!this.recall && this.recall.isSuppressedHere(water),
       bridgeSuppressedHere: !!this.recall && this.recall.isSuppressedHere(bridgeFeature),
-      currentRoadName: this.track.getRoadName(this.player.x, this.player.y),
+      currentRoadName: this.track.getRoadName(this.player.x, this.player.y, this.player.angle),
       quizCurrentName: this.quizCurrentName,
     });
     if (!kind) return;
@@ -530,7 +533,7 @@ export class GameRecallRuntime {
       noveltyMultiplier: (this._routeMastery[this._normaliseCanalName(correctName)] || 0) < 0.5 ? 1.15 : 1,
       cycleTrackMultiplier: (() => {
         if (!isCar(this.travelMode) || !this.player) return 1;
-        const road = this.track.getNearestRoad(this.player.x, this.player.y);
+        const road = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
         const segment = road && this.track.segments?.[road.segIdx];
         return segment?.separatedCycleTrack ? CYCLE_TRACK_ANSWER_MULTIPLIER : 1;
       })(),
@@ -568,7 +571,7 @@ export class GameRecallRuntime {
       // If the bridge carries the name of the road under the wheels, that name
       // is now answered — otherwise the street quiz asks for it again on the
       // very next frame.
-      if (this.track.getRoadName(this.player.x, this.player.y) === correctName) {
+      if (this.track.getRoadName(this.player.x, this.player.y, this.player.angle) === correctName) {
         this.quizCurrentName = correctName;
       }
     }

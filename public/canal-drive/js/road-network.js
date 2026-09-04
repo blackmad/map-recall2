@@ -150,9 +150,11 @@ class RoadNetwork {
     return best;
   }
 
-  // Get the name of the road nearest to (x,y)
-  getRoadName(x, y) {
-    return SURFACE.roadNameAt(this.segments, this.getNearestRoad(x, y));
+  // Name of the road the player is on. Prefer `preferredAngle` (player heading)
+  // at junctions: without it the geometrically nearest centreline is often the
+  // cross street, and the HUD/quiz would teach the wrong name.
+  getRoadName(x, y, preferredAngle = null) {
+    return SURFACE.roadNameAt(this.segments, this.getNearestRoad(x, y, preferredAngle));
   }
 
   // Return the connected run of same-name OSM ways containing the triggering

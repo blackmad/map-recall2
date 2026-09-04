@@ -305,9 +305,10 @@ Sign-in and your route settings stay. This cannot be undone.`
     // ---- The route question ----
     _updateCanalQuiz(dt) {
       if (!this.player) return;
-      const name = this.track.getRoadName(this.player.x, this.player.y);
+      const heading = this.player.angle;
+      const name = this.track.getRoadName(this.player.x, this.player.y, heading);
       const interesting = !!name && name !== this.quizCurrentName;
-      const nearestRoad = interesting ? this.track.getNearestRoad(this.player.x, this.player.y) : null;
+      const nearestRoad = interesting ? this.track.getNearestRoad(this.player.x, this.player.y, heading) : null;
       const decision = advanceRouteQuiz({
         candidateName: this.quizCandidateName,
         candidateSeconds: this.quizCandidateTimer
@@ -330,7 +331,7 @@ Sign-in and your route settings stay. This cannot be undone.`
         this._showStreetKnowledge(decision.name, isCar(this.travelMode) ? "street" : "water");
         return;
       }
-      const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y);
+      const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
       this._openQuizPrompt({
         kind: "route",
         name: decision.name,
@@ -439,7 +440,7 @@ Sign-in and your route settings stay. This cannot be undone.`
         waterKnownHere: !!water && !!this.recall && this.recall.isKnownHere(water),
         waterSuppressedHere: !!water && !!this.recall && this.recall.isSuppressedHere(water),
         bridgeSuppressedHere: !!this.recall && this.recall.isSuppressedHere(bridgeFeature),
-        currentRoadName: this.track.getRoadName(this.player.x, this.player.y),
+        currentRoadName: this.track.getRoadName(this.player.x, this.player.y, this.player.angle),
         quizCurrentName: this.quizCurrentName
       });
       if (!kind) return;
@@ -552,7 +553,7 @@ Sign-in and your route settings stay. This cannot be undone.`
         noveltyMultiplier: (this._routeMastery[this._normaliseCanalName(correctName)] || 0) < 0.5 ? 1.15 : 1,
         cycleTrackMultiplier: (() => {
           if (!isCar(this.travelMode) || !this.player) return 1;
-          const road = this.track.getNearestRoad(this.player.x, this.player.y);
+          const road = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
           const segment = road && this.track.segments?.[road.segIdx];
           return segment?.separatedCycleTrack ? CYCLE_TRACK_ANSWER_MULTIPLIER : 1;
         })(),
@@ -583,7 +584,7 @@ Sign-in and your route settings stay. This cannot be undone.`
           name: correctName,
           labelPoint: pending.crossing.labelPoint
         });
-        if (this.track.getRoadName(this.player.x, this.player.y) === correctName) {
+        if (this.track.getRoadName(this.player.x, this.player.y, this.player.angle) === correctName) {
           this.quizCurrentName = correctName;
         }
       }

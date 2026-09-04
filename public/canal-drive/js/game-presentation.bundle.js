@@ -242,7 +242,7 @@
       const teaching = this._teachingGate();
       const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
       const routeAnswerHidden = !!this.quizPromptName || !!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName;
-      const visibleRouteName = routeAnswerHidden ? "" : this.track.getRoadName(player.x, player.y);
+      const visibleRouteName = routeAnswerHidden ? "" : this.track.getRoadName(player.x, player.y, player.angle);
       this.hud.drawPlaque(ctx, {
         routeName: visibleRouteName,
         neighborhood: this.currentNeighborhood,

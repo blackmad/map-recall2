@@ -134,7 +134,11 @@ export class GamePresentationRuntime {
     // turn-confirmation window.
     const routeAnswerHidden = !!this.quizPromptName
       || (!!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName);
-    const visibleRouteName = routeAnswerHidden ? '' : this.track.getRoadName(player.x, player.y);
+    // Pass heading so a junction names the street you are driving, not the
+    // cross street whose centreline happens to be nearer.
+    const visibleRouteName = routeAnswerHidden
+      ? ''
+      : this.track.getRoadName(player.x, player.y, player.angle);
     // One plaque: street, neighbourhood + trip, score. Speed and odometer live
     // here on every viewport; there is no separate trip pill any more.
     this.hud.drawPlaque(ctx, {
