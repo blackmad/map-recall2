@@ -23,6 +23,13 @@ signal — not soft cream quiz cards, and not arcade rivet spam on every control
 | Type | Barlow Condensed | Plaque titles and CTAs |
 | UI type | system / JetBrains Mono | Body and readouts |
 
+**Source of truth:** hex values live in `src/canalRecall/hudTheme.ts`
+(`enamelTheme` + `hudSurface`). Run `npm run publish:enamel-css` to emit
+`src/theme/enamel-tokens.css` and `public/canal-drive/css/enamel.css`. Shared
+plaque/tile rules live in `src/theme/enamel-chrome.css`. Map Quest imports
+those via `src/index.css`; Canal links `css/enamel.css`. Product-local chrome
+(setup rail, quiz chips, dialogs) stays in each surface’s own sheet.
+
 **Hierarchy:** title plaque + Start stamp carry framed enamel (white rim,
 corner rivets). Choice options are quieter `enamel-tile` fills — same cobalt
 family, no rivet costume. Setup vista uses the CC0 canal photo; the legacy
@@ -51,15 +58,13 @@ plaque frames. Photographic backdrops are real CC0 (or the live map): see
   separate arrow box, no trip pill. Utility FABs use the same plate. Cobalt
   stays on surfaces you stop at: setup, recall prompt, help/settings panels,
   arrival card.
-- **Map Quest** — header, dialogs, and map reveal labels use the component
-  classes in `src/index.css`: `app-dialog` (surface), `enamel-plaque` /
-  `enamel-framed` (riveted hero), `enamel-chip` (header control, `.active` =
-  rivet hairline), `enamel-tile` (choice tile), `enamel-segment` (mode
-  switcher), `enamel-float` (chip over the map), `button-primary` (copper
-  CTA) / `button-secondary`. Do not add slate/stone/emerald/amber utilities
-  on these surfaces; do not give a component class a `display` value (it
-  would defeat Tailwind `hidden`). Canvas values come from `hudTheme.ts`
-  (export names `paperTheme` / `paperCssVariables` are historical).
+- **Map Quest** — header, dialogs, and map reveal labels use shared enamel
+  primitives plus Map Quest–only classes in `src/index.css`: `app-dialog`,
+  `enamel-chip`, `enamel-segment`, `enamel-float`, `button-primary` /
+  `button-secondary`. Do not add slate/stone/emerald/amber utilities on these
+  surfaces; do not give a component class a `display` value (it would defeat
+  Tailwind `hidden`). Canvas values come from `hudTheme.ts` (`enamelTheme`;
+  `paperTheme` / `paperCssVariables` are historical aliases).
 
 ## Constraints that stay true
 
