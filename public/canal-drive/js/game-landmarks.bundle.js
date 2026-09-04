@@ -292,6 +292,28 @@
     return { ...state, history: Object.fromEntries(kept) };
   }
 
+  // src/canalRecall/facts/factQuality.ts
+  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
+  var LEDE_RESTATEMENT = new RegExp(
+    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
+    "i"
+  );
+  var FILLER_CLAUSE = new RegExp(
+    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
+    "i"
+  );
+  function words(text) {
+    return text.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function similarity(a, b) {
+    const left = new Set(words(a));
+    const right = new Set(words(b));
+    if (!left.size || !right.size) return 0;
+    let shared = 0;
+    for (const word of left) if (right.has(word)) shared++;
+    return shared / Math.min(left.size, right.size);
+  }
+
   // src/canalRecall/facts/factTypes.ts
   var FACT_KIND_LABELS = {
     naming: "Name",
@@ -306,9 +328,34 @@
   function buildFactIndex(file) {
     const index = /* @__PURE__ */ new Map();
     for (const feature of file?.features || []) {
-      if (feature?.id && feature.facts?.length) index.set(feature.id, feature.facts);
+      if (feature?.id && feature.facts?.length) {
+        index.set(feature.id, {
+          facts: feature.facts,
+          opening: feature.opening?.trim() || void 0
+        });
+      }
     }
     return index;
+  }
+  function openingSentence(text, maxChars = 160) {
+    const trimmed = (text || "").replace(/\s+/g, " ").trim();
+    if (!trimmed) return "";
+    const match = trimmed.match(/^(.+?[.!?])(?:\s|$)/);
+    const sentence = (match?.[1] || trimmed).trim();
+    if (sentence.length <= maxChars) return sentence;
+    const window2 = sentence.slice(0, maxChars);
+    const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
+    return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
+  }
+  function composeFactWithOpening(factText, opening) {
+    const lead = openingSentence(opening);
+    if (!lead) return { detail: factText };
+    if (similarity(lead, factText) >= 0.55) return { detail: factText };
+    const leadStem = lead.replace(/[.!?…]+$/, "").toLowerCase();
+    if (leadStem.length >= 24 && factText.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
+      return { detail: factText };
+    }
+    return { detail: `${lead} ${factText}`, opening: lead };
   }
   var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
   function loadRotationState(storage) {
@@ -331,17 +378,21 @@
     } catch {
     }
   }
-  function factCardText(featureId, index, state) {
-    const facts = index.get(featureId);
-    if (!facts?.length) return null;
-    const choice = chooseFact(featureId, facts, state);
+  function factCardText(featureId, index, state, fallbackOpening) {
+    const entry = index.get(featureId);
+    if (!entry?.facts?.length) return null;
+    const choice = chooseFact(featureId, entry.facts, state);
     if (!choice) return null;
-    const others = expandedFacts(facts, choice.fact.text);
-    const all = [choice.fact.text, ...others.map((fact) => fact.text)];
+    const composed = composeFactWithOpening(
+      choice.fact.text,
+      entry.opening || fallbackOpening
+    );
+    const others = expandedFacts(entry.facts, choice.fact.text);
+    const all = composed.opening ? [composed.opening, choice.fact.text, ...others.map((fact) => fact.text)] : [choice.fact.text, ...others.map((fact) => fact.text)];
     return {
       choice,
       text: {
-        detail: choice.fact.text,
+        detail: composed.detail,
         longDetail: all.join(" "),
         factTexts: all,
         factKind: FACT_KIND_LABELS[choice.fact.kind]
@@ -446,7 +497,9 @@
       this._landmarkNoticeAlpha = 0;
     }
     /**
-     * Replace the card's lede with the next fact in this feature's rotation.
+     * Replace the card's lede with the next fact in this feature's rotation,
+     * keeping a same-article opening sentence ahead of the trivia so the
+     * punchline stays in context.
      *
      * Returns the card unchanged when the feature has no generated facts, which
      * is the normal case until a batch has been reviewed and published — the
@@ -454,7 +507,12 @@
      */
     _withRotatedFact(notice) {
       if (!this._facts || !this._facts.size) return notice;
-      const chosen = factCardText(notice.id, this._facts, this._factRotation);
+      const chosen = factCardText(
+        notice.id,
+        this._facts,
+        this._factRotation,
+        notice.detail || notice.longDetail
+      );
       if (!chosen) return notice;
       this._commitFact(chosen.choice);
       return { ...notice, ...chosen.text };

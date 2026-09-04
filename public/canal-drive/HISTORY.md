@@ -6,16 +6,6 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
-## Trivia cards open with who/what, then a second beat
-
-Rotated facts used to replace the Wikipedia lede entirely, so a people or
-history punchline could land without saying who the namesake was. Cards now
-pair an **opening** sentence from the same article (catalog `opening`, or the
-feature’s published encyclopedia lede) with the chosen trivia sentence.
-`facts:build` records openings from the article lede; `facts:attach-openings`
-backfills them onto an already-published catalog without regenerating facts.
-The writer prompt treats trivia as the second beat after that opening.
-
 ## Shared enamel CSS from one hudTheme source
 
 Map Quest and Canal each kept a hand-copied cobalt palette and plaque recipe.

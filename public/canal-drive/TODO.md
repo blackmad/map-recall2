@@ -25,11 +25,12 @@ complete v10 automatically grounded batch, publishing 4,263 facts across 1,456
 features in Amsterdam, Rotterdam, Den Haag and Utrecht. Trivia Lab now has a
 **Human review** view: approve / reject / strike / note, local draft, load an
 existing `facts-review*.json`, and download a version-matched review file for
-`npm run facts:publish`. Remaining: work through a stratified audit prioritising
-dates, quantities, Dutch translations and model-verifier disagreements.
-Corrections that change wording must retain exact Wikipedia evidence and go
-back through the normal publication gate — the lab does not rewrite staged
-sentences in place.
+`npm run facts:publish`. Cards now frame each rotated fact with a same-article
+opening (`facts:attach-openings` / next `facts:build`). Remaining: work through
+a stratified audit prioritising dates, quantities, Dutch translations and
+model-verifier disagreements. Corrections that change wording must retain exact
+Wikipedia evidence and go back through the normal publication gate — the lab
+does not rewrite staged sentences in place.
 
 **6. City knowledge review map.**
 A full-city review screen colour-coding every learned road and waterway by

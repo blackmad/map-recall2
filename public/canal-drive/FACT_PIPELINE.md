@@ -69,7 +69,10 @@ city extract instead of attempting a second entity-resolution system:
    for landmarks, bridges, squares, parks, streets and waterways. The cache is
    local and ignored.
 2. `npm run facts:build` selects useful article sections and asks local Ollama
-   to write short English summaries. Dutch source sentences are first
+   to write short English summaries. Each staged feature also records an
+   `opening` — the first sentence of the article lede (translated when the
+   source is Dutch) — so the runtime can show who/what context beside a later
+   trivia beat from the same article. Dutch source sentences are first
    translated one-to-one by local `trn --quality high`, with place names held
    out of the translator and the exact Dutch/English pair cached. The writer
    cites numbered English source sentences; code retrieves the aligned exact
@@ -165,8 +168,23 @@ native form—`Magere Brug (“Skinny Bridge”)`—never as a replacement headi
 - Apply a cooldown and never show two facts simultaneously.
 - Show a landmark at most once per route; allow a “repeat learned facts” preference later.
 - Prioritize unseen entities, then facts relevant to the current neighborhood or destination.
-- Keep the compact popup to one sentence; put images, longer context, source, and attribution in the collected postcard/detail view.
+- Pair each rotated trivia sentence with an **opening** from the same Wikipedia
+  article (the published encyclopedia lede’s first sentence, or `FeatureFacts.opening`
+  from `facts:build` / `facts:attach-openings`). The card therefore reads as
+  “who / what this is” and then a second beat — a namesake’s fate, a rebuild
+  year — rather than an orphaned punchline. Skip the opening when it duplicates
+  the chosen fact. Put further facts, images, source, and attribution in the
+  expanded postcard/detail view.
 - Suppress all fact popups independently from the master game-y toggle: facts are a learning layer, not an arcade mechanic.
+
+After publishing or refreshing extracts, attach openings without regenerating facts:
+
+```sh
+npm run facts:attach-openings -- --directory=public/data/extracts/amsterdam
+```
+
+Openings are not review-gated (they are the already English-gated encyclopedia
+lede). Trivia sentences still require the normal review + publish path.
 
 ## Longer-term scripts
 

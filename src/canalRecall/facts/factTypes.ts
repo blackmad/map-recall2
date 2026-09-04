@@ -74,6 +74,14 @@ export interface FeatureFacts {
   name: string;
   /** Which extract file the feature lives in: `landmarks`, `bridges`, … */
   collection: string;
+  /**
+   * Opening sentence from the same Wikipedia article (who / what this is).
+   * Shown ahead of a rotated trivia sentence so a people or history punchline
+   * is not orphaned — e.g. who Nicolaas Beems was, then a second detail from
+   * the article. Optional on older catalogs; the runtime falls back to the
+   * feature's published encyclopedia lede when this is absent.
+   */
+  opening?: string;
   facts: Fact[];
 }
 

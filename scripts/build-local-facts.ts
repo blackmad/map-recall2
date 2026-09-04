@@ -44,6 +44,7 @@ import {
   type FactsFile,
   type FeatureFacts,
 } from '../src/canalRecall/facts/factTypes.ts';
+import { openingSentence } from '../src/canalRecall/facts/factStore.ts';
 import { articleReference, readCachedArticle } from './fetch-article-bodies.ts';
 import {
   evidenceFromSentences,
@@ -95,7 +96,7 @@ if (provider === 'openrouter' && !process.env.OPENROUTER_API_KEY) {
 const GENERATOR_VERSION = 'facts-v10-faithful-paraphrase-verifier';
 /** Prompt/cache version stays stable when only deterministic publication gates
  * change, so a stricter rerun does not spend another local model inference. */
-const PROMPT_VERSION = 'facts-v9-native-name-with-english-gloss';
+const PROMPT_VERSION = 'facts-v10-opening-then-trivia';
 const VERIFIER_VERSION = 'english-entailment-batch-v3';
 const OPENROUTER_ADAPTER_VERSION = 'openrouter-json-nonthinking-v2';
 const runVersion = `${GENERATOR_VERSION}:${provider}:${model}`;
@@ -143,6 +144,10 @@ SOURCE (the "${passage.section || 'introduction'}" section of its Wikipedia arti
 ${numberedSource}
 
 Write up to 4 standalone facts about ${name} that a player would enjoy learning.
+The player's card already shows a one-sentence opening from this article's lede
+(who / what ${name} is). Your facts are the *second* beat from the same article —
+a naming story, a person detail, a date, an oddity — so they should add something
+the opening did not already say.
 
 Rules:
 - Paraphrase and compress the source into clear natural English.
@@ -153,7 +158,9 @@ Rules:
 - Put sentence IDs only in evidenceIds; never add [1], [2], or any citation marker to text.
 - Never combine details unless the evidence explicitly states their relationship.
 - Never select a sentence beginning with "It", "This", "The bridge" or "The building".
-- Do not restate what ${name} is and where it is. The player's card already says that.
+- Do not restate what ${name} is and where it is; that is the opening sentence.
+  Prefer a second detail from the same article (a namesake's fate, a rebuild year,
+  an odd nickname) that makes sense *after* that opening.
 - Prefer the concrete and the surprising over the general.
 - Say nothing about what is planned, proposed or under way; this text is read years from now.
 - End the sentence when the fact ends. Do not append an evaluative clause such as "a striking feature" or "marking a significant milestone".
@@ -416,7 +423,17 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
   if (!reference) return null;
   const article = await readCachedArticle(reference);
   if (!article) return null;
-  const passages = selectSourcePassages(splitArticleSections(article.text))
+  const sections = splitArticleSections(article.text);
+  const ledeSection = sections.find((section) => section.depth === 0 && section.text.trim())
+    || sections[0];
+  let opening = openingSentence(feature.wikipediaExtract);
+  if (ledeSection?.text) {
+    const ledeLines = article.lang === 'nl'
+      ? (await translateDutchPassage(ledeSection.text, [feature.name, article.title])).english
+      : sourceSentences(ledeSection.text);
+    opening = openingSentence(ledeLines[0] || '') || opening;
+  }
+  const passages = selectSourcePassages(sections)
     .slice(0, MAX_PASSAGES_PER_FEATURE);
   if (!passages.length) return null;
 
@@ -491,7 +508,14 @@ async function factsForFeature(feature: Feature, collection: string): Promise<Fe
     }
   }
   const facts = preferSpecific(accepted).slice(0, MAX_FACTS_PER_FEATURE);
-  return facts.length ? { id: feature.id, name: feature.name, collection, facts } : null;
+  if (!facts.length) return null;
+  return {
+    id: feature.id,
+    name: feature.name,
+    collection,
+    ...(opening ? { opening } : {}),
+    facts,
+  };
 }
 
 // ---- Run ----

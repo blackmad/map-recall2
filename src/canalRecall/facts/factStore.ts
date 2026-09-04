@@ -18,17 +18,61 @@ import {
   type FactChoice,
   type RotationState,
 } from './factRotation';
+import { similarity } from './factQuality';
 import { FACT_KIND_LABELS, type Fact, type FactsFile } from './factTypes';
 
+/** Facts and optional article opening, keyed by feature id. */
+export interface FeatureFactEntry {
+  facts: Fact[];
+  /** Same-article framing sentence; see `FeatureFacts.opening`. */
+  opening?: string;
+}
+
 /** Facts by feature id, as the runtime holds them. */
-export type FactIndex = Map<string, Fact[]>;
+export type FactIndex = Map<string, FeatureFactEntry>;
 
 export function buildFactIndex(file: FactsFile | null | undefined): FactIndex {
   const index: FactIndex = new Map();
   for (const feature of file?.features || []) {
-    if (feature?.id && feature.facts?.length) index.set(feature.id, feature.facts);
+    if (feature?.id && feature.facts?.length) {
+      index.set(feature.id, {
+        facts: feature.facts,
+        opening: feature.opening?.trim() || undefined,
+      });
+    }
   }
   return index;
+}
+
+/** First sentence of an encyclopedia lede, capped for the collapsed card. */
+export function openingSentence(text: string | undefined, maxChars = 160): string {
+  const trimmed = (text || '').replace(/\s+/g, ' ').trim();
+  if (!trimmed) return '';
+  const match = trimmed.match(/^(.+?[.!?])(?:\s|$)/);
+  const sentence = (match?.[1] || trimmed).trim();
+  if (sentence.length <= maxChars) return sentence;
+  const window = sentence.slice(0, maxChars);
+  const cut = Math.max(window.lastIndexOf(', '), window.lastIndexOf(' '));
+  return `${(cut > maxChars * 0.5 ? window.slice(0, cut) : window).trim()}…`;
+}
+
+/**
+ * Pair an article opening with a rotated trivia sentence when the trivia alone
+ * would lack who/what context. Skips the opening when it is empty, already
+ * restated by the fact, or near-duplicate of it.
+ */
+export function composeFactWithOpening(
+  factText: string,
+  opening: string | undefined,
+): { detail: string; opening?: string } {
+  const lead = openingSentence(opening);
+  if (!lead) return { detail: factText };
+  if (similarity(lead, factText) >= 0.55) return { detail: factText };
+  const leadStem = lead.replace(/[.!?…]+$/, '').toLowerCase();
+  if (leadStem.length >= 24 && factText.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
+    return { detail: factText };
+  }
+  return { detail: `${lead} ${factText}`, opening: lead };
 }
 
 /** Anything with the two `localStorage` methods used here. */
@@ -81,26 +125,35 @@ export interface FactCardText {
  * What a card should say for a feature, or `null` when there are no facts for
  * it and the Wikipedia lede should stand.
  *
- * The collapsed card gets the chosen fact and nothing else — one sentence is
- * the whole point of the rotation, and appending the lede to it would put the
- * sentence the player has already read underneath the one they have not. The
- * expanded card gets the rest, which is what makes `+ MORE` worth opening.
+ * The collapsed card gets the article opening (who / what) plus the chosen
+ * trivia sentence from the same Wikipedia article, so a namesake or history
+ * punchline is not orphaned. Pass `fallbackOpening` when the catalog entry
+ * has no `opening` yet — typically the feature's published encyclopedia lede
+ * already on the notice before rotation overwrites it. The expanded card then
+ * lists opening + chosen fact + further facts as separate paragraphs.
  */
 export function factCardText(
   featureId: string,
   index: FactIndex,
   state: RotationState,
+  fallbackOpening?: string,
 ): { text: FactCardText; choice: FactChoice } | null {
-  const facts = index.get(featureId);
-  if (!facts?.length) return null;
-  const choice = chooseFact(featureId, facts, state);
+  const entry = index.get(featureId);
+  if (!entry?.facts?.length) return null;
+  const choice = chooseFact(featureId, entry.facts, state);
   if (!choice) return null;
-  const others = expandedFacts(facts, choice.fact.text);
-  const all = [choice.fact.text, ...others.map((fact) => fact.text)];
+  const composed = composeFactWithOpening(
+    choice.fact.text,
+    entry.opening || fallbackOpening,
+  );
+  const others = expandedFacts(entry.facts, choice.fact.text);
+  const all = composed.opening
+    ? [composed.opening, choice.fact.text, ...others.map((fact) => fact.text)]
+    : [choice.fact.text, ...others.map((fact) => fact.text)];
   return {
     choice,
     text: {
-      detail: choice.fact.text,
+      detail: composed.detail,
       longDetail: all.join(' '),
       factTexts: all,
       factKind: FACT_KIND_LABELS[choice.fact.kind],
