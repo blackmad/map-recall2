@@ -238,12 +238,14 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   id="confirm-pinpoint-btn"
                   disabled={!userPinnedLocation}
                   onClick={onConfirmGuess}
-                  className={`button-primary flex-1 sm:flex-none justify-center px-5 sm:px-6 py-2.5 sm:py-3 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all ${
+                  aria-label={userPinnedLocation ? 'Confirm pin location' : 'Place a pin on the map first'}
+                  title={userPinnedLocation ? 'Confirm pin location' : 'Place a pin on the map first'}
+                  className={`button-primary flex-1 sm:flex-none justify-center px-4 sm:px-6 py-2.5 sm:py-3 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all ${
                     userPinnedLocation ? 'cursor-pointer hover:scale-[1.03] active:scale-95' : 'cursor-not-allowed'
                   }`}
                 >
-                  <span>Confirm</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>{userPinnedLocation ? 'Confirm' : 'Place a pin first'}</span>
+                  {userPinnedLocation ? <ArrowRight className="w-4 h-4" /> : null}
                 </button>
               </div>
             </div>

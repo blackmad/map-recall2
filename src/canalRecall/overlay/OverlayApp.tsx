@@ -68,6 +68,7 @@ function ChoiceRow<T extends string>({
   options,
   compact = false,
   icons,
+  gloss,
 }: {
   label: string;
   name: string;
@@ -76,10 +77,12 @@ function ChoiceRow<T extends string>({
   options: readonly Choice<T>[];
   compact?: boolean;
   icons?: Partial<Record<T, import('lucide-react').LucideIcon | null>>;
+  gloss?: string;
 }) {
   return (
     <div className={`setup-choice-row${compact ? ' compact' : ''}`} role="radiogroup" aria-label={label}>
       <div className="setup-choice-label">{label}</div>
+      {gloss ? <p className="setup-choice-gloss">{gloss}</p> : null}
       <div className="setup-choice-options">
         {options.map(option => {
           const Icon = icons?.[option.value];
@@ -110,22 +113,33 @@ const TRAVEL: Choice<CanalPreferences['travelMode']>[] = [
   { value: 'car', title: 'Bike', hint: 'Streets' },
 ];
 
-const VIEW: Choice<CanalPreferences['viewMode']>[] = [
-  { value: 'north', title: 'North-up', hint: 'Flat map' },
-  { value: 'heading', title: 'Heading-up', hint: 'Flat map' },
-  { value: 'chase', title: 'Chase', hint: '3D' },
-  { value: 'cockpit', title: 'Cockpit', hint: '3D' },
+/** Full camera set lives under More — primary setup only shows the active label. */
+const VIEW_MORE: Choice<CanalPreferences['viewMode']>[] = [
+  { value: 'north', title: 'North-up', hint: 'Flat map, north at top' },
+  { value: 'heading', title: 'Heading-up', hint: 'Flat map, turns with you' },
+  { value: 'chase', title: 'Chase', hint: '3D behind the vehicle' },
+  { value: 'cockpit', title: 'Cockpit', hint: '3D near first person' },
 ];
+
+const VIEW_LABEL: Record<CanalPreferences['viewMode'], string> = {
+  north: 'North-up map',
+  heading: 'Heading-up map',
+  chase: '3D chase',
+  cockpit: '3D cockpit',
+};
 
 const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
   { value: 'surprise', title: 'Surprise route', hint: 'Landmark to landmark' },
   { value: 'home', title: 'Home base', hint: 'Errands from an address' },
 ];
 
-const DIFFICULTY: Choice<CanalPreferences['difficulty']>[] = [
+const DIFFICULTY_MAIN: Choice<CanalPreferences['difficulty']>[] = [
   { value: 'easy', title: 'Easy' },
   { value: 'medium', title: 'Medium' },
   { value: 'hard', title: 'Hard' },
+];
+
+const DIFFICULTY_EXTRA: Choice<CanalPreferences['difficulty']>[] = [
   { value: 'expert', title: 'Expert' },
   { value: 'custom', title: 'Custom' },
 ];
@@ -210,14 +224,21 @@ export function OverlayApp({
               options={TRAVEL}
               icons={TRAVEL_ICONS}
             />
-            <ChoiceRow
-              label="View"
-              name="view"
-              value={prefs.viewMode}
-              onChange={value => patch({ viewMode: value })}
-              options={VIEW}
-              icons={VIEW_ICONS}
-            />
+            <p className="setup-view-summary">
+              <span className="setup-choice-label">View</span>
+              <span className="setup-view-summary-body">
+                {VIEW_LABEL[prefs.viewMode]}
+                {prefs.viewMode === 'north' ? ' · recommended' : ''}
+                {' — '}
+                <button
+                  type="button"
+                  className="setup-view-change"
+                  onClick={() => store.setAdvancedOpen(true)}
+                >
+                  change in More options
+                </button>
+              </span>
+            </p>
             <ChoiceRow
               label="Route"
               name="route"
@@ -231,9 +252,14 @@ export function OverlayApp({
               name="difficulty"
               value={prefs.difficulty}
               onChange={value => patch({ difficulty: value })}
-              options={DIFFICULTY}
+              options={
+                prefs.difficulty === 'expert' || prefs.difficulty === 'custom'
+                  ? [...DIFFICULTY_MAIN, ...DIFFICULTY_EXTRA.filter(d => d.value === prefs.difficulty)]
+                  : DIFFICULTY_MAIN
+              }
               compact
               icons={DIFFICULTY_ICONS}
+              gloss="How much help you get naming streets — Expert and Custom are under More options."
             />
 
             <label id="home-address-field" className="setup-field enamel-field" style={{ display: prefs.routePattern === 'home' ? 'flex' : 'none', marginTop: 10 }}>
@@ -255,6 +281,25 @@ export function OverlayApp({
               onToggle={event => store.setAdvancedOpen((event.target as HTMLDetailsElement).open)}
             >
               <summary>More options</summary>
+              <ChoiceRow
+                label="Camera"
+                name="view"
+                value={prefs.viewMode}
+                onChange={value => patch({ viewMode: value })}
+                options={VIEW_MORE}
+                icons={VIEW_ICONS}
+                gloss="Pick how the map follows you after Start."
+              />
+              <ChoiceRow
+                label="Harder difficulties"
+                name="difficulty-extra"
+                value={prefs.difficulty}
+                onChange={value => patch({ difficulty: value })}
+                options={DIFFICULTY_EXTRA}
+                compact
+                icons={DIFFICULTY_ICONS}
+                gloss="Expert hides assists. Custom appears when you tweak assists below."
+              />
               <div className="preference-grid">
                 <label className="master-toggle">
                   <input
