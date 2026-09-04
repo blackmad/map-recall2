@@ -1,5 +1,5 @@
 /**
- * On-demand street Wikipedia resolution helpers.
+ * Offline street Wikipedia resolution helpers (enrich pipeline, not runtime).
  */
 import assert from 'node:assert/strict';
 import {

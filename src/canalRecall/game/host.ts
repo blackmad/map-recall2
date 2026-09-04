@@ -102,9 +102,6 @@ export interface LandmarkHost extends GameCoreHost {
   _landmarkCardBounds: LinkBounds | null;
   _landmarkImages: Map<string, HTMLImageElement>;
   _landmarkImageRequests: Set<string>;
-  /** Landmarks whose English summary has already been requested this session,
-   *  so a failed fetch is not retried every frame. */
-  _summaryRequests?: Set<string>;
   _seenLandmarks: Set<string>;
   _seenLandmarkNames: Set<string>;
   /** Encyclopedia cards already shown this drive, keyed like landmark ids. */

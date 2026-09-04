@@ -25,10 +25,13 @@
  * is retained for cacheable local fact generation without another API call.
  *
  * Usage: npm run enrich:amsterdam-wikipedia [-- --dry-run] [-- --limit=20]
+ *                               [-- --files=streets.json,water.json]
+ *                               [-- --directory=public/data/extracts/amsterdam]
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
+import { resolveStreetWikipedia } from '../src/canalRecall/game/streetWikipedia.ts';
 
 interface Feature {
   name: string;
@@ -53,7 +56,11 @@ interface PageDetail {
 
 const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
 const directory = path.resolve(directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
-const files = ['landmarks.json', 'bridges.json', 'streets.json', 'water.json', 'squares.json', 'parks.json'];
+const filesArgument = process.argv.find((argument) => argument.startsWith('--files='));
+const defaultFiles = ['landmarks.json', 'bridges.json', 'streets.json', 'water.json', 'squares.json', 'parks.json'];
+const files = filesArgument
+  ? filesArgument.slice('--files='.length).split(',').map((name) => name.trim()).filter(Boolean)
+  : defaultFiles;
 const EXTRACT_CHARS = 2400;
 const DISPLAY_EXTRACT_CHARS = 360;
 
@@ -136,13 +143,45 @@ const pendingSet = new Set<Feature>([...partitions.values()].flat()
 const pending = [...pendingSet];
 process.stdout.write(`${pending.length} features pending extract, image, or long-source enrichment\n`);
 
+// Step 0: streets/water with no OSM wikipedia/wikidata tags. The live game used
+// to look these up in the browser and showed Dutch ledes with an NL badge.
+// Title discovery belongs here, with the rest of the published extract.
+const titleFetch = async (url: string) => fetchJson(new URL(url));
+let discoveredByTitle = 0;
+const filledByTitle = new Map<string, number>();
+for (const file of ['streets.json', 'water.json']) {
+  if (!partitions.has(file)) continue;
+  for (const feature of partitions.get(file)!) {
+    if (!pendingSet.has(feature)) continue;
+    if (feature.wikipedia || feature.wikidata) continue;
+    const resolved = await resolveStreetWikipedia(feature.name, titleFetch);
+    if (!resolved?.wikipediaExtract && !resolved?.wikipediaUrl) continue;
+    if (resolved.wikipedia) feature.wikipedia = resolved.wikipedia;
+    if (resolved.wikidata) feature.wikidata = resolved.wikidata;
+    if (resolved.wikipediaUrl) feature.wikipediaUrl = resolved.wikipediaUrl;
+    if (resolved.wikipediaExtract) {
+      feature.wikipediaSourceText = resolved.wikipediaExtract;
+      feature.wikipediaExtract = resolved.wikipediaExtract.slice(0, DISPLAY_EXTRACT_CHARS);
+      if (resolved.wikipediaExtractLang === 'en') delete feature.wikipediaExtractLang;
+      else feature.wikipediaExtractLang = resolved.wikipediaExtractLang;
+    }
+    pendingSet.delete(feature);
+    discoveredByTitle++;
+    filledByTitle.set(file, (filledByTitle.get(file) || 0) + 1);
+  }
+}
+process.stdout.write(`${discoveredByTitle} untagged streets/water resolved by article title\n`);
+
+// Remaining work after title discovery.
+const remaining = [...pendingSet];
+
 // Step 1: Q-id -> English and Dutch article titles. Some OSM features carry a
 // Wikidata tag but no wikipedia tag (Fatih Mosque is one); without discovering
 // nlwiki here they never acquire source text for the translation pass.
 const englishByQid = new Map<string, string>();
 const dutchByQid = new Map<string, string>();
 const imageByQid = new Map<string, string>();
-const qids = [...new Set(pending.flatMap((feature) => (feature.wikidata ? [feature.wikidata] : [])))];
+const qids = [...new Set(remaining.flatMap((feature) => (feature.wikidata ? [feature.wikidata] : [])))];
 for (const batch of chunks(qids, 50)) {
   const url = new URL('https://www.wikidata.org/w/api.php');
   url.search = new URLSearchParams({
@@ -167,7 +206,7 @@ process.stdout.write(`${englishByQid.size} of ${qids.length} Q-ids have an Engli
 process.stdout.write(`${dutchByQid.size} of ${qids.length} Q-ids have a Dutch sitelink\n`);
 
 let discoveredDutch = 0;
-for (const feature of pending) {
+for (const feature of remaining) {
   if (feature.wikipedia || !feature.wikidata) continue;
   const title = dutchByQid.get(feature.wikidata);
   if (!title) continue;
@@ -179,7 +218,7 @@ process.stdout.write(`${discoveredDutch} missing wikipedia tags recovered throug
 // Step 2: read the stored (usually Dutch) articles — both for their own lede,
 // which is the fallback, and for their interwiki link to English.
 const foreignByLanguage = new Map<string, Set<string>>();
-for (const feature of pending) {
+for (const feature of remaining) {
   if (feature.wikidata && englishByQid.has(feature.wikidata)) continue;
   if (!feature.wikipedia) continue;
   const { language, title } = splitPage(feature.wikipedia);
@@ -203,7 +242,7 @@ function englishTitleFor(feature: Feature): { title: string; via: 'wikidata' | '
 }
 
 // Step 3: pull the English extracts for everything we managed to resolve.
-const englishTitles = new Set(pending.flatMap((feature) => {
+const englishTitles = new Set(remaining.flatMap((feature) => {
   const english = englishTitleFor(feature);
   return english ? [english.title] : [];
 }));
@@ -213,7 +252,7 @@ const englishDetails = englishTitles.size ? await fetchPages('en', [...englishTi
 // Wikidata P18 is the authoritative fallback, but resolve it through Commons'
 // imageinfo API so cards receive a direct, canvas-safe upload.wikimedia URL.
 const commonsImages = new Map<string, string>();
-const neededCommonsFiles = [...new Set(pending.flatMap((feature) => {
+const neededCommonsFiles = [...new Set(remaining.flatMap((feature) => {
   const filename = feature.wikidata ? imageByQid.get(feature.wikidata) : undefined;
   return filename ? [filename] : [];
 }))];
@@ -274,6 +313,7 @@ for (const [file, partition] of partitions) {
 }
 
 process.stdout.write(`\n${dryRun ? 'DRY RUN — nothing written' : `wrote ${files.join(', ')}`}\n`);
+for (const [file, count] of filledByTitle) process.stdout.write(`  ${file}: ${count} by title discovery\n`);
 for (const [file, count] of filled) process.stdout.write(`  ${file}: ${count} extracts added\n`);
 for (const [via, count] of viaCounts) process.stdout.write(`  english via ${via}: ${count}\n`);
 for (const [language, count] of fallbackCounts) process.stdout.write(`  fallback ${language}: ${count}\n`);

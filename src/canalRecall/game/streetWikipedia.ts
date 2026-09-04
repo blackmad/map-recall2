@@ -1,10 +1,14 @@
 /** On-demand Wikipedia resolution for streets missing from the curated extract.
  *
+ *  Used by the **offline** enrich pipeline (`enrich-amsterdam-wikipedia-extracts`),
+ *  not by the live game. The browser must not hit Wikipedia at runtime: English
+ *  blurbs are a published extract decision, reviewed through `enrich:english`.
+ *
  *  The Amsterdam extract only ships encyclopedia blurbs for a prominence-capped
  *  subset of streets that already carry OSM `wikipedia` / `wikidata` tags.
  *  Plenty of driveable streets have a Dutch street article (and a person they
  *  are named after) without those tags — Nicolaas Beetsstraat is the example
- *  that turned this up. This module looks the article up by title, then prefers
+ *  that turned this up. Enrich looks the article up by title, then prefers
  *  an English "named after" person summary so the English game can say who
  *  they were rather than only "a street in Oud-West".
  */
@@ -119,6 +123,9 @@ async function fetchWikitext(
 /**
  * Resolve a driveable street that is missing from `streets.json` /
  * `street-knowledge.json` into a card-ready encyclopedia entry.
+ *
+ * Offline enrich only — the game reads the published result and never calls
+ * this at runtime.
  */
 export async function resolveStreetWikipedia(
   name: string,

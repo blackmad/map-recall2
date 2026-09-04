@@ -89,7 +89,7 @@ interface Feature {
 const argument = (name: string) => process.argv.find((value) => value.startsWith(`--${name}=`))?.slice(name.length + 3);
 const directory = path.resolve(argument('directory') || 'public/data/extracts/amsterdam');
 const cacheFile = path.resolve('scripts/english-translations.json');
-const files = ['water.json', 'streets.json', 'bridges.json', 'squares.json', 'parks.json', 'landmarks.json', 'all.json'];
+const files = ['water.json', 'streets.json', 'bridges.json', 'squares.json', 'parks.json', 'landmarks.json', 'all.json', 'street-knowledge.json'];
 const dryRun = process.argv.includes('--dry-run');
 const limit = Number(process.argv.find(value => value.startsWith('--limit='))?.split('=')[1] || Infinity);
 const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '';

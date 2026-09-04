@@ -25,12 +25,6 @@
       longDetail: parts.slice(0, 3).join(" ").slice(0, 280)
     };
   }
-  function englishTitle(wikipedia) {
-    if (!wikipedia) return "";
-    const separator = wikipedia.indexOf(":");
-    if (separator < 0) return "";
-    return wikipedia.slice(0, separator) === "en" ? wikipedia.slice(separator + 1) : "";
-  }
   function kmBetween(a, b) {
     const latKm = (a.lat - b.lat) * 111.32;
     const lngKm = (a.lng - b.lng) * 111.32 * Math.cos(a.lat * Math.PI / 180);
@@ -394,133 +388,6 @@
     return enabled && !teachingOwnsBottom(input);
   }
 
-  // src/canalRecall/game/streetWikipedia.ts
-  var STREET_SUFFIX_PATTERN = /^(.*?)(straat|gracht|kade|plein|weg|laan|steeg|pad|plantsoen|brug)$/i;
-  function streetArticleTitleCandidates(name, city = "Amsterdam") {
-    const trimmed = name.trim();
-    if (!trimmed) return [];
-    return [`${trimmed} (${city})`, trimmed];
-  }
-  function personNameFromStreet(name) {
-    const match = name.trim().match(STREET_SUFFIX_PATTERN);
-    if (!match) return null;
-    const stem = match[1].trim().replace(/[-–—]\s*$/, "").trim();
-    if (!stem || stem.split(/\s+/).length < 2) return null;
-    return stem;
-  }
-  function parseDutchNamedAfter(wikitext) {
-    const match = wikitext.match(
-      /genoemdnaar\s*=\s*\[\[([^\]|#]+)(?:[|#][^\]]*)?\]\]/i
-    );
-    const name = match?.[1]?.trim();
-    return name || null;
-  }
-  function isThinStreetExtract(extract) {
-    const text = extract.trim();
-    if (!text) return true;
-    return /^(de\s+)?[\w\s'-]+\s+is een (straat|gracht|laan|weg|kade|plein)\b/i.test(text) || /^[\w\s'-]+\s+is a (street|canal|avenue|road|square)\b/i.test(text);
-  }
-  function composeNamedAfterBlurb(personName, personExtract) {
-    const extract = personExtract.trim();
-    if (!extract) return `Named after ${personName}.`;
-    if (extract.toLowerCase().startsWith(personName.toLowerCase())) {
-      return `Named after ${personName}. ${extract}`;
-    }
-    return `Named after ${personName}. ${extract}`;
-  }
-  async function fetchSummary(fetchJson, lang, title) {
-    const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, "_"))}`;
-    try {
-      const data = await fetchJson(url);
-      if (!data || data.type === "https://mediawiki.org/api/rest_v1/errors/not_found") return null;
-      if (!data.extract && !data.content_urls?.desktop?.page) return null;
-      return data;
-    } catch {
-      return null;
-    }
-  }
-  async function fetchWikitext(fetchJson, lang, title) {
-    const url = new URL(`https://${lang}.wikipedia.org/w/api.php`);
-    url.search = new URLSearchParams({
-      action: "parse",
-      page: title,
-      prop: "wikitext",
-      format: "json",
-      origin: "*",
-      redirects: "1"
-    }).toString();
-    try {
-      const data = await fetchJson(url.toString());
-      return data.parse?.wikitext?.["*"] || "";
-    } catch {
-      return "";
-    }
-  }
-  async function resolveStreetWikipedia(name, fetchJson, city = "Amsterdam") {
-    let streetSummary = null;
-    let streetLang = "nl";
-    let streetTitle = "";
-    for (const title of streetArticleTitleCandidates(name, city)) {
-      const english = await fetchSummary(fetchJson, "en", title);
-      if (english?.extract) {
-        streetSummary = english;
-        streetLang = "en";
-        streetTitle = english.title || title;
-        break;
-      }
-      const dutch = await fetchSummary(fetchJson, "nl", title);
-      if (dutch?.extract || dutch?.content_urls?.desktop?.page) {
-        streetSummary = dutch;
-        streetLang = "nl";
-        streetTitle = dutch.title || title;
-        break;
-      }
-    }
-    if (!streetSummary) return null;
-    const wikipediaUrl = streetSummary.content_urls?.desktop?.page || `https://${streetLang}.wikipedia.org/wiki/${encodeURIComponent(streetTitle.replace(/ /g, "_"))}`;
-    const wikidata = streetSummary.wikibase_item;
-    const streetExtract = (streetSummary.extract || "").trim();
-    let personName = personNameFromStreet(name);
-    if (streetLang === "nl" && streetTitle) {
-      const wikitext = await fetchWikitext(fetchJson, "nl", streetTitle);
-      personName = parseDutchNamedAfter(wikitext) || personName;
-    }
-    let personExtract = "";
-    if (personName) {
-      const person = await fetchSummary(fetchJson, "en", personName);
-      personExtract = (person?.extract || "").trim();
-    }
-    if (personName && personExtract && (isThinStreetExtract(streetExtract) || streetLang === "nl")) {
-      return {
-        name,
-        wikidata,
-        wikipedia: `${streetLang}:${streetTitle}`,
-        wikipediaUrl,
-        wikipediaExtract: composeNamedAfterBlurb(personName, personExtract),
-        wikipediaExtractLang: "en"
-      };
-    }
-    if (!streetExtract && !(personName && personExtract)) return null;
-    if (personName && personExtract && streetExtract && streetLang === "en") {
-      return {
-        name,
-        wikidata,
-        wikipedia: `en:${streetTitle}`,
-        wikipediaUrl,
-        wikipediaExtract: `${streetExtract} Named after ${personName}. ${personExtract}`,
-        wikipediaExtractLang: "en"
-      };
-    }
-    return {
-      name,
-      wikidata,
-      wikipedia: `${streetLang}:${streetTitle}`,
-      wikipediaUrl,
-      wikipediaExtract: streetExtract || composeNamedAfterBlurb(personName || name, personExtract),
-      wikipediaExtractLang: streetLang
-    };
-  }
-
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
   var CLICK_SELECT_RADIUS = 120;
@@ -534,7 +401,6 @@
     }
   }
   var GameLandmarkRuntime = class {
-    _streetSummaryRequests;
     // ---- Clicking a building ----
     _inspectBuildingAt(clientX, clientY) {
       if (!this.player || this.quizPromptName || this._utilityOpen) return;
@@ -561,7 +427,6 @@
         if (!building) return;
         nearest = this._cardForClickedBuilding(building);
       }
-      this._ensureLandmarkSummary(nearest);
       this._showLandmarkNotice(nearest, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
       this.vectorMap.setActiveLandmark(nearest);
     }
@@ -625,82 +490,6 @@
       };
     }
     // ---- Encyclopedia text ----
-    /**
-     * Only 112 of the 300 landmarks ship an extract, so the rest showed a bare
-     * name. Wikipedia's REST summary endpoint sends CORS headers, so the missing
-     * text is fetched on demand — no proxy, one request per landmark, cached for
-     * the session.
-     */
-    _ensureLandmarkSummary(landmark) {
-      if (!landmark || landmark.longDetail || landmark.detail) return;
-      if (!landmark.wikidata && !englishTitle(landmark.wikipedia)) return;
-      this._summaryRequests = this._summaryRequests || /* @__PURE__ */ new Set();
-      if (this._summaryRequests.has(landmark.id)) return;
-      this._summaryRequests.add(landmark.id);
-      this._fetchEnglishSummary(landmark).catch(() => {
-      });
-    }
-    /**
-     * The `wikipedia` tag OSM carries is nearly always the Dutch article
-     * ("nl:Blauwbrug"), so fetching the summary it names filled the card with
-     * Dutch. The English article is resolved through the feature's Wikidata id
-     * instead, and if English has nothing to say about the place the card keeps
-     * its name rather than showing a language the player did not ask for.
-     */
-    async _fetchEnglishSummary(landmark) {
-      let title = englishTitle(landmark.wikipedia);
-      if (!title && landmark.wikidata) {
-        const entity = new URL("https://www.wikidata.org/w/api.php");
-        entity.search = new URLSearchParams({
-          action: "wbgetentities",
-          format: "json",
-          props: "sitelinks",
-          sitefilter: "enwiki",
-          ids: landmark.wikidata,
-          origin: "*"
-        }).toString();
-        const response2 = await fetch(entity, { headers: { accept: "application/json" } });
-        if (!response2.ok) return;
-        const data2 = await response2.json();
-        title = data2?.entities?.[landmark.wikidata]?.sitelinks?.enwiki?.title || "";
-      }
-      if (!title) return;
-      const summary = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, "_"))}`;
-      const response = await fetch(summary, { headers: { accept: "application/json" } });
-      if (!response.ok) return;
-      const data = await response.json();
-      if (!data?.extract) return;
-      const split = splitDetail(data.extract);
-      landmark.detail = split.detail;
-      landmark.longDetail = split.longDetail;
-      landmark.extractLang = "en";
-    }
-    async _fetchEnglishStreetSummary(entry) {
-      const wikidata = entry.wikidata;
-      if (!wikidata) return null;
-      const entity = new URL("https://www.wikidata.org/w/api.php");
-      entity.search = new URLSearchParams({
-        action: "wbgetentities",
-        format: "json",
-        props: "sitelinks",
-        sitefilter: "enwiki",
-        ids: wikidata,
-        origin: "*"
-      }).toString();
-      const entityResponse = await fetch(entity, { headers: { accept: "application/json" } });
-      if (!entityResponse.ok) return null;
-      const data = await entityResponse.json();
-      const title = data?.entities?.[wikidata]?.sitelinks?.enwiki?.title || "";
-      if (!title) return null;
-      const summary = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, "_"))}`;
-      const response = await fetch(summary, { headers: { accept: "application/json" } });
-      if (!response.ok) return null;
-      const summaryData = await response.json();
-      if (!summaryData?.extract) return null;
-      entry.wikipediaExtract = summaryData.extract;
-      const split = splitDetail(summaryData.extract);
-      return { detail: split.detail, longDetail: split.longDetail };
-    }
     /** The extract carries a Wikipedia URL for 236 of its 300 landmarks, which
      *  the canvas card cannot make clickable — so it is offered on a key. */
     _openLandmarkArticle() {
@@ -708,18 +497,23 @@
       if (!notice || !notice.wikipediaUrl) return;
       window.open(notice.wikipediaUrl, "_blank", "noopener");
     }
+    /**
+     * Show a shipped encyclopedia card for a named street or waterway.
+     *
+     * Text comes only from the published extract (`streets.json` / `water.json` /
+     * `street-knowledge.json`), filled offline by `enrich:amsterdam-wikipedia`
+     * and made English by `enrich:english`. Missing coverage stays silent — the
+     * game must not fetch Wikipedia at runtime (that path shipped Dutch ledes
+     * with an NL badge).
+     */
     _showStreetKnowledge(name, type = "street", replaceOpenCard = false) {
       const key = this._normaliseCanalName(name);
-      let entry = routeKnowledgeFor(
+      const entry = routeKnowledgeFor(
         this.streetKnowledge,
         name,
         type,
         (value) => this._normaliseCanalName(value)
       );
-      if (!entry && type === "street") {
-        this._resolveMissingStreetKnowledge(name, key, replaceOpenCard);
-        return;
-      }
       if (!entry) return;
       const noticeId = entry.id || `${type}-knowledge:${key}`;
       this._seenStreetKnowledge = this._seenStreetKnowledge || /* @__PURE__ */ new Set();
@@ -741,60 +535,6 @@
         wikipediaUrl: entry.wikipediaUrl || "",
         extractLang: entry.wikipediaExtractLang || "en"
       }, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
-      if (!entry.wikipediaExtract && entry.wikidata && entry.wikipediaUrl) {
-        this._streetSummaryRequests = this._streetSummaryRequests || /* @__PURE__ */ new Set();
-        if (this._streetSummaryRequests.has(noticeId)) return;
-        this._streetSummaryRequests.add(noticeId);
-        this._fetchEnglishStreetSummary(entry).then((split2) => {
-          if (!split2) return;
-          if (!this._landmarkNotice || this._landmarkNotice.id !== noticeId) return;
-          if (this._landmarkNotice.detail || this._landmarkNotice.longDetail) return;
-          this._landmarkNotice = {
-            ...this._landmarkNotice,
-            detail: split2.detail,
-            longDetail: split2.longDetail,
-            extractLang: "en"
-          };
-        }).catch(() => {
-        });
-      }
-    }
-    /**
-     * Curated extract coverage is sparse: only streets that scored into the top
-     * 300 *and* carried OSM wikipedia/wikidata tags get a shipped blurb. When a
-     * driveable street is missing, look up `Name (Amsterdam)` on Wikipedia and
-     * prefer an English "named after" person summary so the card can say who
-     * they were.
-     */
-    _resolveMissingStreetKnowledge(name, key, replaceOpenCard) {
-      if (this.quizPromptName) return;
-      if (this._landmarkNotice && !replaceOpenCard) return;
-      this._streetSummaryRequests = this._streetSummaryRequests || /* @__PURE__ */ new Set();
-      const requestId = `street-wiki:${key}`;
-      if (this._streetSummaryRequests.has(requestId)) return;
-      this._streetSummaryRequests.add(requestId);
-      const fetchJson = async (url) => {
-        const response = await fetch(url, { headers: { accept: "application/json" } });
-        if (!response.ok) throw new Error(`wikipedia ${response.status}`);
-        return response.json();
-      };
-      resolveStreetWikipedia(name, fetchJson).then((resolved) => {
-        if (!resolved?.wikipediaExtract && !resolved?.wikipediaUrl) return;
-        const entry = {
-          id: requestId,
-          name: resolved.name || name,
-          type: "street",
-          wikidata: resolved.wikidata,
-          wikipedia: resolved.wikipedia,
-          wikipediaUrl: resolved.wikipediaUrl,
-          wikipediaExtract: resolved.wikipediaExtract,
-          wikipediaExtractLang: resolved.wikipediaExtractLang
-        };
-        this.streetKnowledge = this.streetKnowledge || /* @__PURE__ */ new Map();
-        this.streetKnowledge.set(`street:${key}`, entry);
-        this._showStreetKnowledge(name, "street", replaceOpenCard);
-      }).catch(() => {
-      });
     }
     // ---- Loading the extract ----
     async _loadLandmarks(centerLat, centerLng, segments) {
@@ -935,7 +675,6 @@
       if (nearest) {
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);
-        this._ensureLandmarkSummary(nearest);
         this._showLandmarkNotice(nearest, { kind: "proximity", anchor: { x: nearest.x, y: nearest.y } });
         this.vectorMap.setActiveLandmark(nearest);
       }
