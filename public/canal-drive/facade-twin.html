@@ -71,6 +71,38 @@
  * work happens — every measurement bug so far took paragraphs of prose to find
  * in JSON and would have been obvious here in seconds.
  */
+/**
+ * Keep animation frames running when the tab is hidden.
+ *
+ * A backgrounded tab throttles requestAnimationFrame to nothing, and MapLibre
+ * defers both its style load and its render loop onto it — so in a hidden tab
+ * the map never finishes loading, never draws, and reports no error at all.
+ * That is a genuinely confusing failure: `map.style._loaded` stays false, the
+ * error handler never fires, and it looks exactly like a broken style.
+ *
+ * It matters here because this page exists to be screenshotted from reference
+ * viewpoints, and automated capture drives a tab that is usually not the
+ * foreground one. Timers keep running when rAF does not, so the shim routes
+ * frames through setTimeout — only while hidden, so a visible tab keeps proper
+ * vsync.
+ */
+if (document.hidden) {
+  const pending = new Map();
+  let nextHandle = 1;
+  const native = window.requestAnimationFrame.bind(window);
+  const nativeCancel = window.cancelAnimationFrame.bind(window);
+  window.requestAnimationFrame = (callback) => {
+    if (!document.hidden) return native(callback);
+    const handle = nextHandle++;
+    pending.set(handle, setTimeout(() => { pending.delete(handle); callback(performance.now()); }, 16));
+    return handle;
+  };
+  window.cancelAnimationFrame = (handle) => {
+    if (pending.has(handle)) { clearTimeout(pending.get(handle)); pending.delete(handle); }
+    else nativeCancel(handle);
+  };
+}
+
 const VIEWPOINTS = [
   { name: 'Westermarkt, facing the Westerkerk',      center: [4.88379, 52.37466], zoom: 17.2, pitch: 66, bearing: 300 },
   { name: 'Prinsengracht 263, frontal',              center: [4.88400, 52.37520], zoom: 17.8, pitch: 72, bearing: 120 },

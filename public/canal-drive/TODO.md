@@ -388,22 +388,19 @@ measure end to end from Amsterdam's CC BY panoramas.
 
 **What actually blocks progress now, in order.**
 
-1. **The massing layer is wired but its pixels are unverified.** The extract,
-   the typed geometry, 13 passing geometry checks, the browser adapter, the
-   bundle, the wiring into `vector-map.js`/`index.html` and a
-   reference-viewpoint harness at `public/canal-drive/facade-twin.html` all
-   exist. What has *not* happened is seeing it draw. Two real bugs were found
-   and fixed on the way — a `glyphs: null` that stopped the harness style
-   loading, and geometry emitted Z-up when MapLibre's custom-layer transform
-   expects Y-up, which lays every building flat on the water. Then the map
-   stopped finishing its style load in this environment with no error surfaced,
-   and the game page itself redirects to the deployed site (Firebase auth's
-   authDomain), so neither route could be driven to a screenshot. **Next
-   session: get one screenshot of the harness.** Everything downstream is
-   cheaper once a silhouette can be checked by eye. Note a second dev server was
-   running on :3000 from another worktree — use a private port.
+1. **The overlay gate.** The massing draws — 3,025 buildings, 434k vertices, in
+   the game's Three.js runtime via a MapLibre custom layer, verified by
+   screenshot from the harness at `public/canal-drive/facade-twin.html`. What
+   M1 still owes is the *comparison*: the brief's gate is "recognisable in
+   overlay against reference", and the basemap toggle exists but has not been
+   driven against a reference photograph at a fixed viewpoint. Also unverified
+   inside the game itself — the harness proved the layer, not the wiring in
+   `vector-map.js`.
 
-1b. **Then the overlay gate.** Fourteen commits, zero verified pixels. The brief
+1c. **Tier ownership is declared but not enforced.** `facadeTwinOwnedIds()`
+   returns the 3,025 ids and `_syncDetailedBuildingLayers` is called, but
+   nothing yet makes the 3DBAG tile layer skip them. Two representations of one
+   building will z-fight until it does. The brief
    gates M1 — massing in-game, recognisable in overlay against reference —
    before measurement work, and every measurement bug found so far took
    paragraphs of prose to discover from JSON when it would have been obvious in
