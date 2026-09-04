@@ -266,3 +266,30 @@ export function flatRoofFilter(): MapLibreExpression {
     ],
   ];
 }
+
+/**
+ * The complete filter for one coloured-extract layer: its own base filter
+ * (`flatRoofFilter()` for the cap layer, none for the walls) AND-ed with the
+ * buildings hidden under loaded signature models.
+ *
+ * The two used to be set independently with `setFilter`, and the signature
+ * pass ran last with an empty list, replacing the cap layer's filter with
+ * `null`. Every measured pand then grew a fallback-colour lid 0.15 m above
+ * its own roof, and at driving distance those two horizontal faces z-fought
+ * across the whole city.
+ *
+ * Suppressed ids are matched against `osmId` (static extract) or `id`
+ * (streamed LoD1 tiles, where OSM-owned features carry their OSM id there).
+ */
+export function coloredBuildingLayerFilter(
+  base: MapLibreExpression | null,
+  hideOsmIds: readonly string[],
+): MapLibreExpression | null {
+  const clauses: MapLibreExpression[] = [];
+  if (base) clauses.push(base);
+  if (hideOsmIds.length) {
+    clauses.push(['!', ['in', ['coalesce', ['get', 'osmId'], ['get', 'id'], ''], ['literal', [...hideOsmIds]]]]);
+  }
+  if (!clauses.length) return null;
+  return clauses.length === 1 ? clauses[0] : ['all', ...clauses];
+}

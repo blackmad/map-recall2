@@ -3,8 +3,10 @@ import {
   basemapBuildingFilter,
   buildingColorExpression,
   buildingOpacity,
+  coloredBuildingLayerFilter,
   dedupeAppearanceFeatures,
   encodeBasemapBuildingId,
+  flatRoofFilter,
 } from '../src/canalRecall/buildingStyle';
 
 const clean = JSON.stringify(buildingColorExpression('clean'));
@@ -82,5 +84,21 @@ assert.deepEqual(
   ['w-nave', 'w-tower'],
   'dedupeAppearanceFeatures drops the parent outline',
 );
+
+// The roof-cap layer must keep its own filter when the signature suppression
+// is refreshed with nothing to hide. Losing it capped every pand in the city
+// with the fallback lid colour and z-fought the roof beneath.
+assert.deepEqual(coloredBuildingLayerFilter(flatRoofFilter(), []), flatRoofFilter(),
+  'an empty suppression list leaves the base filter untouched');
+assert.equal(coloredBuildingLayerFilter(null, []), null, 'walls with nothing to hide have no filter');
+const suppressed = coloredBuildingLayerFilter(flatRoofFilter(), ['w1', 'w2']) as unknown[];
+assert.equal(suppressed[0], 'all');
+assert.deepEqual(suppressed[1], flatRoofFilter(), 'the base filter is kept alongside the suppression');
+const suppressedJson = JSON.stringify(suppressed);
+assert.match(suppressedJson, /"w1"/);
+assert.match(suppressedJson, /"osmId"/);
+assert.match(suppressedJson, /"id"/, 'streamed LoD1 features carry their OSM id under `id`');
+const wallsOnly = coloredBuildingLayerFilter(null, ['w1']) as unknown[];
+assert.equal(wallsOnly[0], '!', 'walls with suppression get the suppression clause alone');
 
 process.stdout.write('Canal Recall building-style checks passed.\n');
