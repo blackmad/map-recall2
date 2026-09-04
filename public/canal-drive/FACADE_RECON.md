@@ -516,10 +516,31 @@ rule about the parts may never move the whole.
   exists (`scripts/build-roof-color-observations.ts`, `ROOF_ENRICHMENT.md`) and
   needs pointing at the boundary rather than the A10 cache.
 - **RECON-10** quay, water level, bridge and *kademuur* geometry.
-- **RECON-5** — the roof-colour pipeline pointed at the boundary. It is the one
-  unstarted recon whose pipeline already exists, and it is now load-bearing:
-  every record ships `roofMaterial: default` because inferring it from bouwjaar
-  would be a prior supplying a value.
+- **RECON-5 is running** but not yet wired into the records. Measured roof
+  colour from PDOK `Actueel_orthoHR` at 12.5 cm/px across a 250-building spread:
+  **17% pantile, 63% zinc, 20% slate**. Three bugs had to be found before that
+  number meant anything, and all three produced confident, wrong answers:
+
+  1. A bounded run selected `sort().slice(0, limit)` over BAG pand ids. Those are
+     issued in registration order, so a lexical prefix is a block of buildings
+     standing together — the run measured one street and reported it as the
+     boundary.
+  2. The palette's roof colours were written from imagination. `roof-pantile`
+     was `#8c4a32`, a vivid dark terracotta at r−b +90 and luma 88. A roof shot
+     from directly above in flat winter light is far paler: the measured warm
+     cluster sits at r−b +37, luma 168. The invented value could never win the
+     snap, so 1.6% of the ring came out pantile against an orthophoto showing
+     whole terraces of it. The palette now carries measured medians.
+  3. On a pitched roof the material was snapped from the *larger* illumination
+     cluster. The shaded slope is darker and bluer because it is lit by sky
+     rather than sun — a fact about the hour the plane flew, not the roof — and
+     whichever slope faces away is larger about half the time. Snapping from the
+     **sunlit** slope moved pantile from 2 to 42 of 250, matching the 16% warm
+     cluster found independently.
+
+  Still open: the shadow and vegetation rejectors never fire (0 of 250), and the
+  rasterised footprint area runs about 2.6× the registry's own `areaM2`, which
+  wants explaining before the numbers are trusted.
 - **Validation of the façade detector.** `check-facade-registration.ts` is red
   at its own 0.5 m bar, and no detector output has been checked against a
   hand-labelled building. Street-level fields are therefore capped at confidence

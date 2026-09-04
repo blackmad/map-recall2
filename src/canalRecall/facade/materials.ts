@@ -56,10 +56,24 @@ export const MATERIALS: Record<MaterialId, Material> = {
   'sandstone':          { id: 'sandstone',          family: 'stone',   name: 'Bentheimer zandsteen',     colour: '#cdc3ab', texture: 'stone/sandstone',    tileM: [1.20, 0.60], roughness: 0.85, metalness: 0 },
   'stucco':             { id: 'stucco',             family: 'stone',   name: 'Pleisterwerk',             colour: '#ded6c8', texture: 'stone/stucco',       tileM: [1.50, 1.50], roughness: 0.88, metalness: 0 },
 
-  'roof-pantile':       { id: 'roof-pantile',       family: 'roof',    name: 'Hollandse dakpan',         colour: '#8c4a32', texture: 'roof/pantile',       tileM: [0.30, 0.36], roughness: 0.85, metalness: 0 },
-  'roof-slate':         { id: 'roof-slate',         family: 'roof',    name: 'Leisteen',                 colour: '#4a4f52', texture: 'roof/slate',         tileM: [0.30, 0.20], roughness: 0.70, metalness: 0 },
-  'roof-zinc':          { id: 'roof-zinc',          family: 'roof',    name: 'Zink',                     colour: '#8b9296', texture: 'roof/zinc',          tileM: [0.50, 2.00], roughness: 0.45, metalness: 0.65 },
-  'roof-bitumen':       { id: 'roof-bitumen',       family: 'roof',    name: 'Bitumen',                  colour: '#3a3a38', texture: 'roof/bitumen',       tileM: [1.00, 1.00], roughness: 0.95, metalness: 0 },
+  // Roof colours are MEASURED, and the difference matters. They were first
+  // written from imagination — pantile as #8c4a32, a vivid dark terracotta —
+  // and the result was that 1.6% of the canal ring snapped to pantile while the
+  // orthophoto plainly shows whole terraces of it. A roof photographed from
+  // directly above in flat winter light is far paler and far less saturated
+  // than the same tile seen from the street: measured across 250 buildings, the
+  // warm cluster sits at r−b +37 and luma 168, where the invented value implied
+  // r−b +90 and luma 88. It could never win the snap.
+  //
+  // These are the median RGB of the three natural clusters in the sunlit slope
+  // of 250 sampled roofs (PDOK Actueel_orthoHR, 12.5 cm/px), which is 16% warm,
+  // 68% neutral and 16% dark. `nearestRoof` snaps against these; a renderer
+  // wanting a street-level appearance should darken and saturate them, because
+  // that is a rendering decision and not what the roof measured.
+  'roof-pantile':       { id: 'roof-pantile',       family: 'roof',    name: 'Hollandse dakpan',         colour: '#bba196', texture: 'roof/pantile',       tileM: [0.30, 0.36], roughness: 0.85, metalness: 0 },
+  'roof-slate':         { id: 'roof-slate',         family: 'roof',    name: 'Leisteen',                 colour: '#646972', texture: 'roof/slate',         tileM: [0.30, 0.20], roughness: 0.70, metalness: 0 },
+  'roof-zinc':          { id: 'roof-zinc',          family: 'roof',    name: 'Zink',                     colour: '#999697', texture: 'roof/zinc',          tileM: [0.50, 2.00], roughness: 0.45, metalness: 0.65 },
+  'roof-bitumen':       { id: 'roof-bitumen',       family: 'roof',    name: 'Bitumen',                  colour: '#4a4b49', texture: 'roof/bitumen',       tileM: [1.00, 1.00], roughness: 0.95, metalness: 0 },
 
   'timber-white':       { id: 'timber-white',       family: 'joinery', name: 'Wit schilderwerk',         colour: '#efece3', texture: 'joinery/white',      tileM: [0.20, 0.20], roughness: 0.60, metalness: 0 },
   'timber-green':       { id: 'timber-green',       family: 'joinery', name: 'Donkergroen schilderwerk', colour: '#1f3b31', texture: 'joinery/green',      tileM: [0.20, 0.20], roughness: 0.60, metalness: 0 },

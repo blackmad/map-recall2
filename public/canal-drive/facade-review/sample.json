@@ -1,0 +1,228 @@
+{
+  "metadata": {
+    "generatedAt": "2026-09-04T07:57:09.277Z",
+    "generator": "scripts/facade-twin/build-review-sample.ts",
+    "attribution": "© Gemeente Amsterdam, Kernregistratie Panoramabeelden (CC BY 4.0)",
+    "count": 27,
+    "strata": 9,
+    "note": "The reviewer sees this file only. Detector readings live in truth.json and are joined after labelling, so the review is blind."
+  },
+  "items": [
+    {
+      "pandId": "0363100012167748",
+      "image": "facades/0363100012167748.jpg",
+      "widthM": 2.94,
+      "stripHeightM": 15.04,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2020-01-08"
+    },
+    {
+      "pandId": "0363100012167767",
+      "image": "facades/0363100012167767.jpg",
+      "widthM": 4.64,
+      "stripHeightM": 19.07,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2023-01-16"
+    },
+    {
+      "pandId": "0363100012167498",
+      "image": "facades/0363100012167498.jpg",
+      "widthM": 4.31,
+      "stripHeightM": 13.03,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2019-01-15"
+    },
+    {
+      "pandId": "0363100012167641",
+      "image": "facades/0363100012167641.jpg",
+      "widthM": 5.6,
+      "stripHeightM": 19.8,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-01-25"
+    },
+    {
+      "pandId": "0363100012167642",
+      "image": "facades/0363100012167642.jpg",
+      "widthM": 5.65,
+      "stripHeightM": 20.34,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2017-03-13"
+    },
+    {
+      "pandId": "0363100012165061",
+      "image": "facades/0363100012165061.jpg",
+      "widthM": 5.72,
+      "stripHeightM": 19.37,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2017-03-13"
+    },
+    {
+      "pandId": "0363100012164995",
+      "image": "facades/0363100012164995.jpg",
+      "widthM": 16.53,
+      "stripHeightM": 21.88,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2023-01-11"
+    },
+    {
+      "pandId": "0363100012165024",
+      "image": "facades/0363100012165024.jpg",
+      "widthM": 9.27,
+      "stripHeightM": 12.16,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2017-03-13"
+    },
+    {
+      "pandId": "0363100012167636",
+      "image": "facades/0363100012167636.jpg",
+      "widthM": 10.05,
+      "stripHeightM": 27.18,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-01-22"
+    },
+    {
+      "pandId": "0363100012168610",
+      "image": "facades/0363100012168610.jpg",
+      "widthM": 4.99,
+      "stripHeightM": 15.71,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-03-17"
+    },
+    {
+      "pandId": "0363100012169584",
+      "image": "facades/0363100012169584.jpg",
+      "widthM": 4.4,
+      "stripHeightM": 18.26,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-01-25"
+    },
+    {
+      "pandId": "0363100012167656",
+      "image": "facades/0363100012167656.jpg",
+      "widthM": 4.11,
+      "stripHeightM": 18.18,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2017-03-13"
+    },
+    {
+      "pandId": "0363100012167651",
+      "image": "facades/0363100012167651.jpg",
+      "widthM": 5.34,
+      "stripHeightM": 16.03,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2017-03-13"
+    },
+    {
+      "pandId": "0363100012167657",
+      "image": "facades/0363100012167657.jpg",
+      "widthM": 5.36,
+      "stripHeightM": 17.61,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2023-01-30"
+    },
+    {
+      "pandId": "0363100012167727",
+      "image": "facades/0363100012167727.jpg",
+      "widthM": 5.61,
+      "stripHeightM": 15.86,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2017-03-13"
+    },
+    {
+      "pandId": "0363100012165021",
+      "image": "facades/0363100012165021.jpg",
+      "widthM": 27.49,
+      "stripHeightM": 25.11,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2022-12-15"
+    },
+    {
+      "pandId": "0363100012167634",
+      "image": "facades/0363100012167634.jpg",
+      "widthM": 8.53,
+      "stripHeightM": 20.89,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-01-22"
+    },
+    {
+      "pandId": "0363100012167670",
+      "image": "facades/0363100012167670.jpg",
+      "widthM": 8.6,
+      "stripHeightM": 19.24,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2017-03-13"
+    },
+    {
+      "pandId": "0363100012167673",
+      "image": "facades/0363100012167673.jpg",
+      "widthM": 3.51,
+      "stripHeightM": 13.67,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2024-12-03"
+    },
+    {
+      "pandId": "0363100012165022",
+      "image": "facades/0363100012165022.jpg",
+      "widthM": 4.87,
+      "stripHeightM": 14.24,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-01-22"
+    },
+    {
+      "pandId": "0363100012167493",
+      "image": "facades/0363100012167493.jpg",
+      "widthM": 3.45,
+      "stripHeightM": 20.4,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-01-25"
+    },
+    {
+      "pandId": "0363100012167681",
+      "image": "facades/0363100012167681.jpg",
+      "widthM": 6.09,
+      "stripHeightM": 21.22,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-01-22"
+    },
+    {
+      "pandId": "0363100012167650",
+      "image": "facades/0363100012167650.jpg",
+      "widthM": 5.61,
+      "stripHeightM": 12.68,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-01-25"
+    },
+    {
+      "pandId": "0363100012164991",
+      "image": "facades/0363100012164991.jpg",
+      "widthM": 5.79,
+      "stripHeightM": 17.3,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-01-22"
+    },
+    {
+      "pandId": "0363100012165056",
+      "image": "facades/0363100012165056.jpg",
+      "widthM": 7.78,
+      "stripHeightM": 18.32,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2023-02-06"
+    },
+    {
+      "pandId": "0363100012167743",
+      "image": "facades/0363100012167743.jpg",
+      "widthM": 11.29,
+      "stripHeightM": 21.39,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2021-01-25"
+    },
+    {
+      "pandId": "0363100012167669",
+      "image": "facades/0363100012167669.jpg",
+      "widthM": 7.19,
+      "stripHeightM": 18.18,
+      "pixelsPerMetre": 34,
+      "capturedAt": "2023-03-27"
+    }
+  ]
+}
