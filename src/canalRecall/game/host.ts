@@ -144,6 +144,8 @@ export interface RecallStore extends AnswerRecallStore {
   routeMastery(cityId: string): Record<string, number>;
   isKnownHere(feature: RecallFeature): boolean;
   isSuppressedHere(feature: RecallFeature): boolean;
+  /** Wipes local and signed-in review memory; returns how many were cleared. */
+  clearKnowledge(): Promise<number>;
 }
 
 /** The crossing a prompt is currently about, held between opening the question
@@ -160,6 +162,9 @@ export interface RecallHost extends GameCoreHost {
   track: Track;
   bridges: Bridge[];
   recall: RecallStore | null;
+  /** Cleared alongside review memory when the player resets knowledge, so the
+   *  next drive does not re-tell the facts they just wiped. */
+  _factRotation: RotationState;
 
   routeOptions: { answerMode: AnswerMode };
   routeDifficulty: RouteDifficulty;

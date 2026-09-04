@@ -6,6 +6,42 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## The gate was red, and had stopped covering enough to notice
+
+`npm run check:canal` is the pre-integration gate, and it could not pass on
+`main` at 9c087b4 — before the façade lane merged, and for reasons unrelated to
+it. Two failures, and the interesting part is the third thing, which is why
+neither was noticed.
+
+`lint` failed on two interface gaps the implementations had already grown past:
+`RecallStore` never declared `clearKnowledge` although `recallStore.ts`
+implements it, and `_factRotation` sat on `LandmarkHost` but not on `RecallHost`
+— the half that clears it when a player resets their knowledge. Both are the
+ordinary drift of a runtime split across declaration-merged host interfaces.
+
+`check-game-decomposition.mjs` reported a dependency-order bug in correct
+markup. It asserted order by `index.indexOf('src="js/overlay.bundle.js"')`, and
+three script tags have since grown a cache-busting `?v=` suffix. The exact
+attribute no longer occurs, so `indexOf` returned **-1**, and -1 compares as
+*earlier than everything* rather than as absent. A missing file and a
+first-in-the-file script are the same value to that comparison, which is the
+whole failure: the check had two distinct conditions collapsed into one number.
+It matches the path with an optional query now and asserts presence separately,
+so a genuinely missing tag cannot hide in the silence the old form left.
+
+The reason a red gate could sit on `main` is that the gate had quietly stopped
+being the gate. Fifteen of 62 `test:` scripts were outside it — including
+`test:recall-clear`, which pins exactly the `clearKnowledge` contract `lint` was
+failing on. A guard that exists but never runs is worse than a missing one,
+because the board reads as covered. Eleven fast offline checks are in it now, and
+the three that stay out are named with their reason: two need Playwright and a
+served page, one checks a staging build the pipeline produces rather than
+anything committed.
+
+One entry was removed rather than added. `test:signature-landmarks` pointed at a
+script that has never existed in any branch, so the gate had been *reporting* a
+check nobody wrote. TODO item 22 already wanted that check, and still does.
+
 ## Amsterdam façade twin: reading façades out of the city's own panoramas
 
 Amsterdam publishes its street-level panoramas under CC BY 4.0, which is what
