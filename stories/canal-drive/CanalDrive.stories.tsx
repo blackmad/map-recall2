@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
-  | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-bike'
+  | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-panel' | 'landmark-panel-dutch'
   // Phone states. `touch-*` force the compact layout on a pointer device,
   // which is the only way to see the d-pad and the portrait card stack in the
@@ -11,7 +11,8 @@ type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood' | 
   // Overlay states on a phone: the question, the arrival card, the panels and
   // the expanded article. These are DOM over canvas, so the HUD layout suite
   // cannot reach them and Storybook is where they get reviewed.
-  | 'touch-prompt' | 'touch-settings' | 'finish-touch' | 'landmark-panel-touch'
+  | 'touch-prompt' | 'touch-settings' | 'finish-touch' | 'finish-calm-bare-touch'
+  | 'landmark-panel-touch'
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch';
 
 function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
@@ -68,13 +69,15 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + canvasH * 0.58, canvasH); ctx.stroke();
         }
         if (scenario.startsWith('finish')) {
-          game.gameyFeatures = scenario !== 'finish-calm';
+          const calm = scenario.includes('calm');
+          const bare = scenario.includes('bare');
+          game.gameyFeatures = !calm;
           // The arrival card's footer reads these; a game that never went
           // through route setup has none, and `routeDifficulty.charAt` threw.
           // Every finish story was failing on it, unnoticed while the frame
           // itself was 404ing.
           game.routeDifficulty = 'medium';
-          game.travelMode = scenario === 'finish-bike' ? 'bike' : 'car';
+          game.travelMode = scenario.includes('bike') ? 'bike' : 'car';
           game.viewMode = 'north';
           game.quizCorrect = 2; game.quizAttempts = 4; game.quizPoints = 158; game.quizBestStreak = 2;
           game.raceTime = 98.299;
@@ -91,7 +94,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
             totalRoutes: 3, learnedWaterways: new Array(14).fill('w'), learnedStreets: [],
             visitedNeighborhoods: new Array(8).fill('n'), seenLandmarks: new Array(8).fill('l'),
           };
-          game._ribbon = {
+          game._ribbon = calm ? null : {
             id: 'bronze', label: 'BRONZE RIBBON', color: '#D9A05B', dim: 'rgba(217,160,91,.13)', score: 0.5,
             axes: [{ label: 'Recall', score: 0.5 }, { label: 'Unaided', score: 0 }, { label: 'Efficiency', score: 1 }],
           };
@@ -101,6 +104,11 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
             longDetail: 'The Vondelpark Open Air Theatre in Amsterdam has staged free performances every summer since 1865, when the park itself was still new, and it remains one of the oldest open-air stages in the Netherlands.',
             wikipediaUrl: 'https://en.wikipedia.org/wiki/Vondelpark_Open_Air_Theatre',
           }];
+          if (bare) {
+            game._landmarkImages = new Map();
+            game._renderFinish();
+            return;
+          }
           const photo = new Image();
           photo.onload = () => { game._landmarkImages.set('theater', photo); game._renderFinish(); };
           photo.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#41603f"/><rect y="200" width="400" height="100" fill="#6d8a70"/><circle cx="200" cy="120" r="70" fill="#8fb08a"/></svg>')}`;
@@ -272,6 +280,8 @@ export const Mobile: Story = {
 export const LiveHud: Story = { args: { scenario: 'hud' } };
 export const FinishCard: Story = { args: { scenario: 'finish' } };
 export const FinishCardCalmMode: Story = { args: { scenario: 'finish-calm' } };
+/** Calm finish with no landmark photo — typography-only arrival. */
+export const FinishCardCalmBare: Story = { args: { scenario: 'finish-calm-bare' } };
 export const FinishCardBike: Story = { args: { scenario: 'finish-bike' } };
 export const NeighborhoodPhotoCard: Story = { args: { scenario: 'neighborhood' } };
 /** Neighborhood entry with no photo — typography-only postcard. */
@@ -339,6 +349,12 @@ export const PortraitRecallPrompt: Story = {
  *  ESC / C keycaps a phone has no way to press. */
 export const PortraitFinishCard: Story = {
   args: { scenario: 'finish-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** Calm arrival on phone with no landmark photo. */
+export const PortraitFinishCardCalmBare: Story = {
+  args: { scenario: 'finish-calm-bare-touch' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 
