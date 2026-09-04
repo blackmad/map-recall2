@@ -79,14 +79,33 @@ export function storeyHeights(eavesHeightM: number, storeys: number): number[] {
 /**
  * How many window bays fit across a frontage.
  *
- * A bay pitch of about 1.9 m is what a 5.7 m median front with two windows and
- * its party walls actually produces, and it holds across the range: a 4.5 m
- * front takes two, a 9 m front four or five. Clamped at five because past that
- * the plot is a warehouse or a merged pair, not a canal house.
+ * **The pitch here is disputed and the dispute is deliberately unresolved.**
+ *
+ * This function assumes about 1.9 m per bay, which is what I reasoned a 5.7 m
+ * front with two windows and its party walls ought to produce. The detector,
+ * measuring 1,375 real façades, disagrees: it reports a median of 2 bays across
+ * the 5.5–6.5 m band, which is a pitch nearer 2.9 m. It is not obviously wrong
+ * either — it scales properly with frontage (p50 of 1, 1, 2, 2, 2, 3 as width
+ * runs 4 m to 15 m) and the openings it finds are the right size, 0.90 m wide
+ * and 2.33 m tall at the median, both inside the range for a *schuifraam*.
+ *
+ * So one of two things is true: the detector merges adjacent bays, or my 1.9 m
+ * is too tight. I am not entitled to decide that by preferring my own number —
+ * the last three constants I reasoned my way to were each wrong by about a
+ * third — and the detector is not entitled to decide it either, being
+ * unvalidated.
+ *
+ * The review harness asks a person how many bays each façade has. That settles
+ * it, and until it does this stays as written with the disagreement recorded.
+ * Clamped at five because past that the plot is a warehouse or a merged pair.
  */
 export function bayCount(plotWidthM: number): number {
   return Math.max(1, Math.min(5, Math.round(plotWidthM / 1.9)));
 }
+
+/** What the detector's own readings imply, for comparison in review. */
+export const MEASURED_BAY_PITCH_M = 2.9;
+export const ASSUMED_BAY_PITCH_M = 1.9;
 
 /** Bay centres, evenly spaced with a margin to the party walls. */
 export function bayCentres(plotWidthM: number, bays: number): number[] {

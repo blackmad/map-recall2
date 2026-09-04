@@ -428,6 +428,14 @@ measure end to end from Amsterdam's CC BY panoramas.
    hand-label ~20 of the Keizersgracht 100–180 rectified strips for storeys,
    bays, gable and wall family, run `fieldAccuracy` → `fieldVerdict`, and let
    the verdict decide accept / needs-review / demote per field.
+
+   **One specific question the review settles.** The generator assumes a 1.9 m
+   bay pitch; the detector, over 1,375 measured façades, implies about 2.9 m —
+   a median of 2 bays across the 5.5–6.5 m band where 1.9 m predicts 3. Neither
+   side is entitled to win on its own authority: the assumption is mine and the
+   last three constants I reasoned my way to were each wrong by about a third,
+   and the detector is unvalidated. The harness asks a person how many bays each
+   façade has, which decides it.
 3. **RECON-5 blocks a field.** Roof material is `default` on every record
    because inferring it from bouwjaar would be a prior supplying a value. The
    pipeline exists (`scripts/build-roof-color-observations.ts`); it needs
