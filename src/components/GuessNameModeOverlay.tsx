@@ -79,24 +79,24 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
   }, [isRoundComplete, onNextRound, onSelectGuess, options]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-4 sm:p-4 z-20">
+    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
       {/* UNIFIED BOTTOM CARD: QUESTION + MULTIPLE CHOICE OPTIONS */}
-      <div className="pointer-events-auto w-full max-w-xl mx-auto">
+      <div className="pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] sm:max-h-none overflow-y-auto">
         {!isRoundComplete ? (
           /* ACTIVE QUESTION & 4 MULTIPLE CHOICE OPTIONS */
           <div
             id="guess-bottom-card"
-            className="quiz-card w-full min-w-0 p-3.5 sm:p-4 space-y-3 animate-slideUp"
+            className="quiz-card w-full min-w-0 p-2.5 sm:p-4 space-y-2 sm:space-y-3 animate-slideUp"
           >
             {/* Top Prompt Header */}
             <div className="flex items-start justify-between gap-2">
-              <div className="space-y-1 min-w-0">
+              <div className="space-y-0.5 sm:space-y-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <span className="enamel-chip px-2 py-0.5 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
                     <span className="text-[#c4a35a]">{badge.icon}</span>
                     <span>{badge.label}</span>
                   </span>
-                  <span className="text-xs text-white/70 font-semibold uppercase tracking-wider">
+                  <span className="hidden sm:inline text-xs text-white/70 font-semibold uppercase tracking-wider">
                     Highlighted on the map
                   </span>
                 </div>
@@ -108,20 +108,20 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
 
               {/* Round counter */}
               <div className="flex items-center gap-1.5 flex-shrink-0 pt-0.5">
-                <span className="enamel-chip px-2.5 py-1 text-xs font-bold font-mono whitespace-nowrap">
+                <span className="enamel-chip px-2 py-1 text-xs font-bold font-mono whitespace-nowrap sm:px-2.5">
                   {roundNumber}/{totalRounds}
                 </span>
               </div>
             </div>
 
             {/* 2x2 Multiple Choice Option Grid */}
-            <div className="grid grid-cols-2 gap-2 pt-1">
+            <div className="grid grid-cols-2 gap-1.5 sm:gap-2 pt-0.5 sm:pt-1">
               {options.map((option, idx) => (
                 <button
                   key={option}
                   id={`guess-option-${idx}`}
                   onClick={() => onSelectGuess(option)}
-                  className="enamel-tile px-3 py-2.5 sm:py-3 font-bold text-xs sm:text-sm text-left flex items-center gap-2.5 transition cursor-pointer group"
+                  className="enamel-tile px-2.5 py-2 sm:px-3 sm:py-3 font-bold text-xs sm:text-sm text-left flex items-center gap-2 sm:gap-2.5 transition cursor-pointer group"
                 >
                   <span className="w-6 h-6 rounded-md bg-white/15 text-white/80 group-hover:bg-[#c4a35a] group-hover:text-[#071430] text-xs font-mono font-bold flex items-center justify-center flex-shrink-0 transition-colors">
                     {idx + 1}

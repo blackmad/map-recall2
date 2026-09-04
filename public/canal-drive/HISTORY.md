@@ -6,6 +6,26 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Encyclopedia text is offline-only — no live Wikipedia in the game
+
+The browser used to resolve missing street blurbs (and landmark summaries)
+against Wikipedia at runtime. That path shipped Dutch ledes with an `NL` badge
+(Nassaukade) because title lookup preferred nlwiki and never ran
+`enrich:english`. Live fetches are gone: `_showStreetKnowledge` only reads the
+published extract, and landmark cards no longer call the REST summary API.
+Untagged streets/water are discovered by title in
+`enrich-amsterdam-wikipedia-extracts.ts` (step 0, `--files=` supported);
+`translate-extracts-to-english.ts` now also covers `street-knowledge.json`.
+`resolveStreetWikipedia` remains as the enrich helper and stays unit-tested.
+
+## Map Quest phone vista, quiet entry, map-first play
+
+Phone start used a full-height cobalt rail and hid the CC0 canal; it now
+mirrors Canal’s rail + vista strip. Category fetch no longer dumps
+“Loaded N places…” over the first question (loading modal already covers
+progress). Play on phone: shorter header, icon-only modes, capped quiz cards,
+and Canal Recall float visible — so the map stays the learning surface.
+
 ## Canal setup: phone Start clears Difficulty
 
 Sticky Start over the scroll covered Difficulty on phones (~40px of overlap).
@@ -507,14 +527,10 @@ overview to under the destination card on the right, beside the finish arrow.
 
 ## On-demand street Wikipedia fills extract gaps
 
-Curated `streets.json` only keeps 300 streets, and encyclopedia cards only
-open for those with a shipped Wikipedia URL/extract (48 today). Driveable
-streets like Nicolaas Beetsstraat have a Dutch article and a person they are
-named after, but no OSM wiki tags, so they never entered the index. After a
-quiz answer (or silent adopt), a missing street now resolves
-`Name (Amsterdam)` on Wikipedia and prefers an English "named after" person
-summary — so the card can say who Nicolaas Beets was, not only that the road
-is in Oud-West.
+~~Curated `streets.json` only keeps 300 streets…~~ **Superseded:** live
+Wikipedia resolution was removed. Title discovery and English translation run
+offline in `enrich:amsterdam-wikipedia` / `enrich:english`; see the newer
+HISTORY entry above.
 
 ## Bottom chrome is just a faint map credit
 

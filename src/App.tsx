@@ -396,8 +396,9 @@ export default function App() {
             setIsGameOver(false);
             setTimeRoundStarted(Date.now());
 
-            setLocationToast(`Loaded ${combinedFeatures.length} places for ${placeName}`);
-            setTimeout(() => setLocationToast(null), 4500);
+            // Place counts belong in loading progress — not the first play beat.
+            setLocationToast(`Ready near ${placeName}`);
+            setTimeout(() => setLocationToast(null), 2500);
           } catch (err) {
             console.warn('Error configuring local location city:', err);
             setIsLocating(false);
@@ -517,8 +518,8 @@ export default function App() {
 
           setSelectedCategory(targetCategory);
           resetGame(currentCityId, gameMode, targetCategory);
-          setLocationToast(`Loaded ${finalFeatures.length} ${catInfo.label} places in ${placeName}`);
-          setTimeout(() => setLocationToast(null), 4000);
+          // Skip inventory toast — loading modal already reported progress; the
+          // question card is the entry beat, not "Loaded N places…".
         }
       } catch (err) {
         console.error('Error refetching category features:', err);
@@ -590,8 +591,8 @@ export default function App() {
       setCustomLocationCity(city);
       setCityOverpassFeatures((previous) => ({ ...previous, my_location: features }));
       resetGame('my_location', gameMode, selectedCategory);
-      setLocationToast(`Loaded ${features.length} features near ${result.name.split(',')[0]}`);
-      setTimeout(() => setLocationToast(null), 4000);
+      setLocationToast(`Ready near ${result.name.split(',')[0]}`);
+      setTimeout(() => setLocationToast(null), 2500);
     } catch (error) {
       setDataError(error instanceof Error ? error.message : 'Could not load this location');
       setLocationToast(error instanceof Error ? error.message : 'Could not find that location');
@@ -632,12 +633,7 @@ export default function App() {
   const handleSelectCategory = (newCategory: FeatureCategory) => {
     if (newCategory === selectedCategory) return;
     setSelectedCategory(newCategory);
-    const catInfo = FEATURE_CATEGORIES.find((c) => c.id === newCategory);
-    if (catInfo && newCategory !== 'all') {
-      setLocationToast(`${catInfo.icon} Feature focus: ${catInfo.label}`);
-      setTimeout(() => setLocationToast(null), 3000);
-    }
-    // Perform category fetch for the active city
+    // Perform category fetch for the active city (no focus toast — card + map say it)
     handleRefetchCategory(newCategory, false);
   };
 
@@ -831,7 +827,7 @@ export default function App() {
         {!!currentFeature && (
           <a
             href={canalRecallUrl}
-            className="enamel-float enamel-brand hidden sm:block absolute bottom-4 left-4 z-30 px-3 py-2 text-xs transition"
+            className="enamel-float enamel-brand absolute top-3 left-3 z-30 px-2.5 py-1.5 text-xs transition sm:top-auto sm:bottom-4 sm:left-4 sm:px-3 sm:py-2"
           >
             Canal Recall →
           </a>
@@ -861,11 +857,11 @@ export default function App() {
           showLocate={!(!currentFeature && !isLocating && !isGameOver && !dataError)}
         />
 
-        {/* Location Detection Toast Notification */}
+        {/* Status toast — errors and brief ready cues only (not inventory dumps) */}
         {locationToast && !(!currentFeature && !isLocating && !isGameOver && !dataError) && (
           <div
             id="location-toast-badge"
-            className="enamel-float absolute top-3 left-1/2 -translate-x-1/2 z-30 px-4 py-2 text-xs sm:text-sm font-medium flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300 pointer-events-none"
+            className="enamel-float absolute top-3 right-3 left-auto z-30 max-w-[min(70vw,16rem)] px-3 py-1.5 text-xs font-medium animate-in fade-in duration-300 pointer-events-none sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:max-w-none sm:px-4 sm:py-2"
           >
             <span>{locationToast}</span>
           </div>
@@ -896,21 +892,15 @@ export default function App() {
 
         {/* Empty OSM dataset: require an explicit category before starting. */}
         {!currentFeature && !isLocating && !isGameOver && !dataError && (
-          <div
-            className="absolute inset-0 z-20 flex"
-            style={{
-              backgroundImage: `linear-gradient(105deg, rgba(7,20,48,0.92) 0%, rgba(7,20,48,0.78) 42%, rgba(7,20,48,0.35) 100%), url(${import.meta.env.BASE_URL}canal-drive/assets/media/setup-backdrop.jpg)`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
+          <div className="absolute inset-0 z-20 flex flex-col lg:flex-row">
             <div
-              className="pointer-events-auto relative flex w-full max-w-md flex-col gap-5 overflow-y-auto border-r border-white/15 px-4 py-5 sm:px-5 sm:py-6 lg:max-w-sm lg:bg-transparent"
+              className="pointer-events-auto relative flex min-h-0 w-full max-w-none flex-1 flex-col border-white/15 lg:max-w-sm lg:border-r"
               style={{
                 background:
                   'linear-gradient(165deg, rgba(20,80,184,0.94) 0%, rgba(11,58,140,0.96) 42%, rgba(7,20,48,0.98) 100%)',
               }}
             >
+              <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-4 py-4 sm:gap-5 sm:px-5 sm:py-6">
               <div className="space-y-2">
                 <h1 className="enamel-plaque enamel-framed enamel-brand px-4 py-3 text-center text-xl sm:text-2xl text-white">
                   Map Recall
@@ -930,7 +920,7 @@ export default function App() {
                         if (category.id === selectedCategory) handleRefetchCategory(category.id, false);
                         else handleSelectCategory(category.id);
                       }}
-                      className="enamel-tile flex items-center gap-3 px-3.5 py-4 text-left cursor-pointer"
+                      className="enamel-tile flex items-center gap-3 px-3.5 py-3.5 text-left cursor-pointer sm:py-4"
                     >
                       <span className="text-xl text-[#c4a35a]">{category.icon}</span>
                       <span className="min-w-0">
@@ -966,8 +956,9 @@ export default function App() {
                   Or a mixed quiz
                 </button>
               </div>
+              </div>
 
-              <div className="mt-auto pt-2 space-y-1.5 border-t border-white/10">
+              <div className="shrink-0 space-y-1.5 border-t border-white/10 px-4 py-3 sm:px-5">
                 <p className="text-xs text-white/45">Mode</p>
                 <div className="enamel-segment flex w-full">
                   {(
@@ -991,8 +982,14 @@ export default function App() {
               </div>
             </div>
 
+            {/* Place as chrome: phone vista strip; desktop side plane (same CC0 canal). */}
             <div
-              className="relative hidden min-h-0 flex-1 lg:block"
+              className="mq-setup-vista relative h-[18dvh] shrink-0 lg:h-auto lg:min-h-0 lg:flex-1"
+              style={{
+                backgroundImage: `linear-gradient(0deg, rgba(7,20,48,0.45) 0%, transparent 55%), linear-gradient(90deg, rgba(7,20,48,0.55) 0%, transparent 40%), url(${import.meta.env.BASE_URL}canal-drive/assets/media/setup-backdrop.jpg)`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
               aria-hidden="true"
             />
           </div>

@@ -38,8 +38,10 @@ plaque frames. Photographic backdrops are real CC0 (or the live map): see
   CC0 Reguliersgracht vista (Storybook and live setup).
 - **Map Quest start** — same grammar: riveted Map Recall plaque rail over the
   CC0 vista; Canals & Streets elevated; other layers demoted; mode gloss on
-  the rail. During an active round the header collapses to brand + modes +
-  score (filters live in the overflow menu).
+  the rail. Phone keeps a bottom vista strip (rail is not a full cobalt wall).
+  During an active round the header collapses to brand + modes + score
+  (filters live in the overflow menu); phone play uses a shorter header,
+  icon-only modes, and capped quiz cards so the map stays the hero.
 - **In-drive HUD** — deep navy plates (`hudSurface`, `rgba(7,20,48,.84)`),
   not cobalt: the basemap is mostly water, and cobalt over blue canals is
   blue-on-blue. White type, one gold accent (distance, streak, compass north),
