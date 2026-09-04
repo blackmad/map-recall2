@@ -3,11 +3,14 @@ import {
   basemapBuildingFilter,
   buildingColorExpression,
   buildingOpacity,
+  collectEncodedBasemapHideIds,
   coloredBuildingLayerFilter,
   dedupeAppearanceFeatures,
   encodeBasemapBuildingId,
   flatRoofFilter,
 } from '../src/canalRecall/buildingStyle';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 
 const clean = JSON.stringify(buildingColorExpression('clean'));
 assert.match(clean, /colour/);
@@ -32,6 +35,17 @@ assert.equal(encodeBasemapBuildingId('r17967'), 179673);
 assert.equal(encodeBasemapBuildingId('n123'), null, 'nodes are not buildings in this layer');
 assert.equal(encodeBasemapBuildingId('751683818'), null, 'an unprefixed id has no known type');
 assert.equal(encodeBasemapBuildingId('wnope'), null);
+
+assert.deepEqual(
+  collectEncodedBasemapHideIds(['w751683818', 'r17967', 'n5', 'w751683818', 'bad']),
+  [179673, 7516838182],
+  'hide-id collection is sorted, unique, and skips unsafe id types',
+);
+assert.deepEqual(
+  collectEncodedBasemapHideIds([]),
+  [],
+  'an empty extract produces an empty hide-id list',
+);
 
 const filter = basemapBuildingFilter(['w751683818', 'r17967', 'n5', 'w751683818']);
 const encoded = JSON.stringify(filter);
@@ -100,5 +114,31 @@ assert.match(suppressedJson, /"osmId"/);
 assert.match(suppressedJson, /"id"/, 'streamed LoD1 features carry their OSM id under `id`');
 const wallsOnly = coloredBuildingLayerFilter(null, ['w1']) as unknown[];
 assert.equal(wallsOnly[0], '!', 'walls with suppression get the suppression clause alone');
+
+// Published hide-id sidecar must match the extract it names. Missing sidecar
+// is fine (fallback encodes at runtime); a present sidecar with a missing or
+// mismatched extract is not.
+const hideIdsPath = path.resolve('public/data/extracts/amsterdam/basemap-hide-ids.json');
+const appearancePath = path.resolve('public/data/extracts/amsterdam/buildings-colored.geojson');
+let hideRaw: string | null = null;
+try {
+  hideRaw = await readFile(hideIdsPath, 'utf8');
+} catch (error) {
+  if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+}
+if (hideRaw !== null) {
+  const hidePayload = JSON.parse(hideRaw) as { encodedIds?: number[]; count?: number };
+  const appearance = JSON.parse(await readFile(appearancePath, 'utf8')) as {
+    features?: Array<{ properties?: { osmId?: string } }>;
+  };
+  const expected = collectEncodedBasemapHideIds(
+    (appearance.features || [])
+      .map((feature) => feature.properties?.osmId)
+      .filter((id): id is string => typeof id === 'string'),
+  );
+  assert.equal(hidePayload.count, expected.length);
+  assert.deepEqual(hidePayload.encodedIds, expected,
+    'basemap-hide-ids.json must match buildings-colored.geojson encodings');
+}
 
 process.stdout.write('Canal Recall building-style checks passed.\n');

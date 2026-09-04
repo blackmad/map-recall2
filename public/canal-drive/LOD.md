@@ -141,10 +141,12 @@ building data. It preserves citywide OSM `render_min_height` and building-part
 massing where the basemap contains them, but many heights are tagged estimates
 or generic fallbacks rather than AHN measurements.
 
-### OSM appearance overlay — live but partial
+### OSM appearance overlay — fallback when LoD1 tiles are absent
 
 `buildings-colored.geojson` contains 10,578 appearance-backed OSM buildings.
-The renderer draws separate wall extrusions and artificial flat roof caps;
+When the published LoD1 tile index is present the runtime never loads it; the
+no-tiles fallback still draws separate wall extrusions and flat roof caps, and
+filters basemap duplicates via `basemap-hide-ids.json` plus a proximity scan.
 5,778 buildings currently have a sampled aerial roof colour. This improves
 colour for part of the city but is not a complete geometry source.
 

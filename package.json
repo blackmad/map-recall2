@@ -155,6 +155,7 @@
     "build:canal-photoreal-gate": "esbuild src/canalRecall/building/photorealGate.ts --bundle --format=iife --global-name=CanalRecallPhotorealGate --outfile=public/canal-drive/js/photoreal-gate.bundle.js --minify",
     "test:photoreal-gate": "tsx scripts/check-photoreal-gate.ts",
     "build:osm-buildings": "tsx scripts/build-osm-buildings.ts",
+    "build:basemap-hide-ids": "tsx scripts/build-basemap-hide-ids.ts",
     "test:building-composition": "tsx scripts/check-building-composition.ts",
     "test:pyramidal-roof": "tsx scripts/check-pyramidal-roof.ts",
     "test:building-paint-inherit": "tsx scripts/check-building-paint-inherit.ts"

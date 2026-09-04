@@ -83,6 +83,21 @@ export function encodeBasemapBuildingId(osmId: string): number | null {
 }
 
 /**
+ * Encode every extract osmId that OpenFreeMap can name as a vector-tile
+ * feature id. Sorted and unique so the published `basemap-hide-ids.json`
+ * sidecar is stable across rebuilds and cheap to diff.
+ */
+export function collectEncodedBasemapHideIds(osmIds: Iterable<string>): number[] {
+  const seen = new Set<number>();
+  for (const osmId of osmIds) {
+    if (typeof osmId !== 'string') continue;
+    const id = encodeBasemapBuildingId(osmId);
+    if (id !== null) seen.add(id);
+  }
+  return [...seen].sort((a, b) => a - b);
+}
+
+/**
  * A filter for the basemap's `building-3d` layer that drops every building the
  * Canal Recall extract draws itself.
  *
@@ -99,6 +114,8 @@ export function encodeBasemapBuildingId(osmId: string): number | null {
  * `extraEncodedIds` covers the residual pairs the two pipelines hold under
  * different OSM ids: the runtime measures proximity against the extract and
  * feeds the basemap feature ids straight in (already `osmId * 10 + type`).
+ * When the published hide-id sidecar is present, pass that list here and leave
+ * `osmIds` for anything discovered at runtime (signature footprints, etc.).
  */
 export function basemapBuildingFilter(
   osmIds: Iterable<string>,

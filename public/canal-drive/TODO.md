@@ -186,8 +186,9 @@ will be interrupted; each step must be worth shipping alone.
    LoD1.2. Named checks: Waag, Magna Plaza, Oude Kerk, ≥50 ridge-tower.
 2. **Ship the complete LoD1 city.** ✅ Republished on `feat/building-one-owner`:
    295 z14 `.geojson.gz` tiles (~15.4 MB), 342,993 features, courtyard holes
-   and paint-inherit in the pipeline. Overlay dedupe remains the fallback when
-   the index is absent.
+   and paint-inherit in the pipeline. Runtime now skips the static coloured
+   extract + basemap proximity de-dupe when the tile index is present; the
+   extract + `basemap-hide-ids.json` sidecar remain the no-tiles fallback.
 3. **Rijksmuseum proof.** Fetch a tightly clipped, pinned 3DBAG LoD2.2 source
    around the Rijksmuseum and export an owned glTF. Confirm that the result
    preserves building parts, semantic roof/wall surfaces, the courtyard and the

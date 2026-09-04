@@ -21,8 +21,10 @@ class VectorBasemap {
     this._appearanceOsmIds = [];
     this._appearanceFeatures = [];
     this._appearanceCentroidGrid = null;
+    this._preencodedBasemapHideIds = [];
     this._basemapProximityHideIds = [];
     this._basemapDuplicateScanQueued = false;
+    this._buildingsFromTiles = false;
     this._googleTiles = null;
     this._googleTilesEnabled = false;
     this._googleTilesActive = false;
@@ -51,7 +53,6 @@ class VectorBasemap {
       this._ensureStreetOverlayLayers();
       this._ensureTreeLayers();
       this._ensureBuildingAppearanceLayers();
-      this._ensureCompleteCity();
       this._ensurePlaceLayers();
       this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
       this.setBrandedPois(this._pendingBrandedPois);
@@ -121,9 +122,10 @@ class VectorBasemap {
 
   _ensureBuildingAppearanceLayers() {
     if (this.map.getSource('osm-building-appearance')) return;
-    // The source starts empty and is filled by `_loadBuildingAppearance` so that
-    // these two layers still land in their place in the stack: everything added
-    // after them expects to sit above the building extrusions.
+    // The source starts empty. `_bootstrapBuildings` fills it from streamed
+    // LoD1 tiles when published, otherwise from `_loadBuildingAppearance`, so
+    // these two layers still land in their place in the stack: everything
+    // added after them expects to sit above the building extrusions.
     this.map.addSource('osm-building-appearance', {
       type: 'geojson', data: { type: 'FeatureCollection', features: [] },
       generateId: true,
@@ -173,13 +175,27 @@ class VectorBasemap {
         'fill-extrusion-opacity': 1
       }
     });
-    this._loadBuildingAppearance();
+    // Prefer streamed LoD1 tiles when published; only then fall back to the
+    // 5.6 MB static extract (and its basemap de-dupe work). Running both used
+    // to hitch the first turn: parse + setData the extract, install a 10k-id
+    // filter, then tear it down for tiles.
+    void this._bootstrapBuildings();
+  }
+
+  async _bootstrapBuildings() {
+    const usedTiles = await this._ensureCompleteCity();
+    if (usedTiles) return;
+    await this._loadBuildingAppearance();
   }
 
   // Fetched here rather than handed to MapLibre as a source URL because the
   // same features are needed twice: once as the extrusion geometry, and once to
-  // name the basemap buildings this layer replaces.
+  // name the basemap buildings this layer replaces. Skipped entirely when the
+  // complete-city tile index is published.
   async _loadBuildingAppearance() {
+    if (this._buildingsFromTiles) return;
+    // Hide-id sidecar can filter `building-3d` before the GeoJSON finishes.
+    const hideIdsPromise = this._loadBasemapHideIds();
     let data;
     try {
       const response = await fetch('../data/extracts/amsterdam/buildings-colored.geojson');
@@ -187,8 +203,11 @@ class VectorBasemap {
       data = await response.json();
     } catch (error) {
       console.warn('Building appearance extract unavailable; keeping basemap extrusions.', error);
+      await hideIdsPromise;
       return;
     }
+    await hideIdsPromise;
+    if (this._buildingsFromTiles) return;
     const source = this.map && this.map.getStyle() && this.map.getSource('osm-building-appearance');
     if (!source) return;
     // Drop parent outlines from hand-mapped compositions so Oude Kerk / Waag
@@ -203,6 +222,21 @@ class VectorBasemap {
     source.setData(cleaned);
     this._hideDuplicatedBasemapBuildings(cleaned);
     this._syncPyramidalRoofs(cleaned.features);
+  }
+
+  async _loadBasemapHideIds() {
+    try {
+      const response = await fetch('../data/extracts/amsterdam/basemap-hide-ids.json');
+      if (!response.ok) return;
+      const payload = await response.json();
+      const ids = payload && Array.isArray(payload.encodedIds) ? payload.encodedIds : [];
+      this._preencodedBasemapHideIds = ids.filter(
+        (id) => typeof id === 'number' && Number.isSafeInteger(id) && id > 0,
+      );
+      if (this._preencodedBasemapHideIds.length) this._refreshBuildingSuppression();
+    } catch (_) {
+      // Sidecar is optional; encoding from the extract still works.
+    }
   }
 
   _syncPyramidalRoofs(features) {
@@ -224,7 +258,12 @@ class VectorBasemap {
   // co-located pairs from 145 to 47; the remainder are held under different
   // OSM ids by the two pipelines, so `_scanBasemapDuplicates` measures
   // proximity against the extract and feeds those feature ids in too.
+  //
+  // This path is the no-tiles fallback only. When LoD1 tiles are published,
+  // `_bootstrapBuildings` skips it and hides `building-3d` wholesale once the
+  // first tile lands.
   _hideDuplicatedBasemapBuildings(data) {
+    if (this._buildingsFromTiles) return;
     this._appearanceFeatures = (data && data.features) || [];
     this._appearanceOsmIds = this._appearanceFeatures
       .map(feature => feature.properties && feature.properties.osmId)
@@ -238,10 +277,14 @@ class VectorBasemap {
       // Tiles stream in after the extract; rescan whenever more buildings
       // arrive so a late basemap copy cannot reappear under a coloured roof.
       this.map.on('sourcedata', (event) => {
+        if (this._buildingsFromTiles) return;
         if (event.sourceId !== 'openmaptiles' || !event.isSourceLoaded) return;
         this._queueBasemapDuplicateScan();
       });
-      this.map.on('moveend', () => this._queueBasemapDuplicateScan());
+      this.map.on('moveend', () => {
+        if (this._buildingsFromTiles) return;
+        this._queueBasemapDuplicateScan();
+      });
     }
   }
 
@@ -249,6 +292,7 @@ class VectorBasemap {
   // building (by id and by measured proximity), and hide coloured extrusions
   // under any signature model that has loaded.
   _refreshBuildingSuppression() {
+    if (this._buildingsFromTiles) return;
     if (!this.map || !this.map.getStyle()) return;
     if (this.map.getLayer('building-3d') && window.CanalRecallBuildings) {
       const { basemapBuildingFilter } = window.CanalRecallBuildings;
@@ -256,11 +300,18 @@ class VectorBasemap {
         if (this._baseBuildingFilter === undefined) {
           this._baseBuildingFilter = this.map.getFilter('building-3d') || null;
         }
-        const osmIds = [...this._appearanceOsmIds, ...this._signatureSuppressOsmIds()];
+        // Prefer the published hide-id sidecar (already encoded). Fall back to
+        // encoding extract osmIds when the sidecar is missing.
+        const runtimeOsmIds = this._preencodedBasemapHideIds.length
+          ? this._signatureSuppressOsmIds()
+          : [...this._appearanceOsmIds, ...this._signatureSuppressOsmIds()];
+        const extraEncoded = this._preencodedBasemapHideIds.length
+          ? [...this._preencodedBasemapHideIds, ...this._basemapProximityHideIds]
+          : this._basemapProximityHideIds;
         try {
           this.map.setFilter(
             'building-3d',
-            basemapBuildingFilter(osmIds, this._baseBuildingFilter, this._basemapProximityHideIds),
+            basemapBuildingFilter(runtimeOsmIds, this._baseBuildingFilter, extraEncoded),
           );
         } catch (error) {
           console.warn('Could not de-duplicate basemap buildings; extrusions may z-fight.', error);
@@ -271,6 +322,7 @@ class VectorBasemap {
   }
 
   _queueBasemapDuplicateScan() {
+    if (this._buildingsFromTiles) return;
     if (this._basemapDuplicateScanQueued || !this._appearanceCentroidGrid) return;
     this._basemapDuplicateScanQueued = true;
     requestAnimationFrame(() => {
@@ -286,6 +338,7 @@ class VectorBasemap {
   // matters because OpenFreeMap sometimes batches many footprints into one
   // multipolygon feature; a single feature centroid would miss the overlap.
   _scanBasemapDuplicates() {
+    if (this._buildingsFromTiles) return;
     if (!this.map || !this._appearanceCentroidGrid) return;
     let features;
     try {
@@ -451,28 +504,43 @@ class VectorBasemap {
    * coplanar extrusions from z-fighting stop being needed for the walls, since
    * there is now exactly one description per building — the roof cap still sits
    * inside the wall, because two horizontal faces at one height still fight.
+   *
+   * Returns true when the tile path owns buildings (static extract must not
+   * load). Returns false when the caller should fall back to the GeoJSON.
    */
-  _ensureCompleteCity() {
+  async _ensureCompleteCity() {
     const runtime = window.CanalRecallBuildingTiles;
-    if (!runtime || !runtime.BuildingTileStreamer) return;
+    if (!runtime || !runtime.BuildingTileStreamer) return false;
     this._completeCity = new runtime.BuildingTileStreamer(
       this.map, 'osm-building-appearance', '../data/extracts/amsterdam'
     );
-    this._completeCity.probe().then((available) => {
-      if (!available || !this.map.getSource('osm-building-appearance')) return;
-      this._recreateBuildingSourceWithStableIds();
-      this._styleCompleteCity();
-      // The basemap's extrusion is hidden only once a tile has actually landed
-      // with buildings in it, never on the strength of the probe alone. A host
-      // that answers a missing file with its own index.html and a 200 — which
-      // both the dev server and most static hosts do — would otherwise leave
-      // the player driving through a city with nothing in it.
-      this._completeCity.attach(() => {
-        if (this.map.getLayer('building-3d')) this.map.setLayoutProperty('building-3d', 'visibility', 'none');
-      }, (features) => {
-        if (this._pyramidalRoofs) this._pyramidalRoofs.setFeatures(features);
-      });
-    }).catch(() => {});
+    let available = false;
+    try {
+      available = await this._completeCity.probe();
+    } catch (_) {
+      available = false;
+    }
+    if (!available || !this.map.getSource('osm-building-appearance')) return false;
+
+    this._buildingsFromTiles = true;
+    this._appearanceFeatures = [];
+    this._appearanceOsmIds = [];
+    this._appearanceCentroidGrid = null;
+    this._preencodedBasemapHideIds = [];
+    this._basemapProximityHideIds = [];
+    this._recreateBuildingSourceWithStableIds();
+    this._styleCompleteCity();
+    // The basemap's extrusion is hidden only once a tile has actually landed
+    // with buildings in it, never on the strength of the probe alone. A host
+    // that answers a missing file with its own index.html and a 200 — which
+    // both the dev server and most static hosts do — would otherwise leave
+    // the player driving through a city with nothing in it.
+    this._completeCity.attach(() => {
+      if (this.map.getLayer('building-3d')) this.map.setLayoutProperty('building-3d', 'visibility', 'none');
+    }, (features) => {
+      this._syncPyramidalRoofs(features);
+    });
+    return true;
   }
 
   /**
