@@ -558,12 +558,12 @@ export const MapComponent: React.FC<MapComponentProps> = ({
         id="map-locate-me-btn"
         onClick={handleLocateClick}
         title="Center on My Location"
-        className="absolute bottom-20 right-2.5 z-[900] p-2.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-200 hover:text-white shadow-md border border-slate-700/80 transition-all hover:scale-105 active:scale-95 flex items-center justify-center backdrop-blur-sm cursor-pointer"
+        className="enamel-float absolute bottom-20 right-2.5 z-[900] p-2.5 flex items-center justify-center cursor-pointer transition hover:scale-105 active:scale-95"
       >
         {isLocating ? (
-          <Loader2 className="w-4 h-4 text-blue-400 animate-spin" />
+          <Loader2 className="w-4 h-4 text-[#c4a35a] animate-spin" />
         ) : (
-          <LocateFixed className="w-4 h-4 text-blue-400 hover:text-blue-300" />
+          <LocateFixed className="w-4 h-4 text-[#c4a35a]" />
         )}
       </button>
     </div>

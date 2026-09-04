@@ -126,11 +126,11 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0 space-y-1">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="enamel-chip px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+                  <span className="enamel-chip px-2 py-0.5 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
                     <span className="text-[#c4a35a]">{badge.icon}</span>
                     <span>{badge.label}</span>
                   </span>
-                  <span className="hidden sm:inline text-[11px] text-white/70 font-semibold uppercase tracking-wider">
+                  <span className="hidden sm:inline text-xs text-white/70 font-semibold uppercase tracking-wider">
                     Locate on map
                   </span>
                 </div>
@@ -181,7 +181,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                       key={idx}
                       className="enamel-tile p-2 text-white text-xs flex items-start gap-2"
                     >
-                      <span className="w-4 h-4 rounded-full bg-[#c4a35a]/25 text-[#e2c98a] font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="w-4 h-4 rounded-full bg-[#c4a35a]/25 text-[#e2c98a] font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
                         {idx + 1}
                       </span>
                       <span className="leading-relaxed">{clue}</span>
@@ -220,7 +220,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   <p className="text-xs sm:text-sm font-bold text-white truncate">
                     {userPinnedLocation ? 'Pin placed' : 'Tap the map to place a pin'}
                   </p>
-                  <p className="text-[11px] text-white/75 truncate">
+                  <p className="text-xs text-white/75 truncate">
                     {userPinnedLocation ? 'Tap again to move it' : 'Anywhere you think it is'}
                   </p>
                 </div>
@@ -280,7 +280,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   <div className="text-right">
                     <div className="text-sm sm:text-base font-black text-[#c4a35a] tracking-tight">
                       +{wasSkipped ? '0' : scoreResult.score.toLocaleString()}{' '}
-                      <span className="text-[10px] font-normal text-white/70">PTS</span>
+                      <span className="text-xs font-normal text-white/70">PTS</span>
                     </div>
                   </div>
 
@@ -299,7 +299,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                 <span>
                   Target: <strong className="text-white">{currentFeature.name}</strong>
                 </span>
-                <span className="text-[11px] text-white/60 italic hidden sm:inline">
+                <span className="text-xs text-white/60 italic hidden sm:inline">
                   Dashed line shows distance on map
                 </span>
               </div>

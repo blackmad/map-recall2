@@ -11,7 +11,6 @@ import {
   MapPin,
   Map,
   Layers,
-  Filter,
 } from 'lucide-react';
 import { sounds } from '../utils/audio';
 
@@ -39,8 +38,6 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
   unit,
   onPlayAgain,
   onSwitchMode,
-  onChangeCity,
-  allCities,
 }) => {
   const [isMapInspectMode, setIsMapInspectMode] = useState(false);
   const percentage = Math.round((totalScore / maxPossibleScore) * 100);
@@ -130,7 +127,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
       {!isMapInspectMode && (
         <div
           id="game-over-backdrop"
-          className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 z-30 overflow-y-auto animate-fadeIn"
+          className="fixed inset-0 bg-[rgba(7,20,48,0.82)] backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 z-30 overflow-y-auto animate-fadeIn"
         >
           <div
             id="game-over-modal"
@@ -144,11 +141,11 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
               <h2 className="enamel-brand text-2xl sm:text-3xl text-white">Round complete</h2>
               <div className={`text-sm sm:text-base font-bold ${rankColor}`}>{rankTitle}</div>
               <div className="flex items-center justify-center gap-2 pt-1">
-                <span className="px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 text-xs font-semibold border border-slate-700">
+                <span className="enamel-chip px-2.5 py-0.5 text-xs font-semibold">
                   📍 {currentCity.name}
                 </span>
                 {selectedCategory !== 'all' && (
-                  <span className="px-2.5 py-0.5 rounded-full bg-blue-900/60 text-blue-300 text-xs font-semibold border border-blue-600/40 flex items-center gap-1">
+                  <span className="enamel-chip active px-2.5 py-0.5 text-xs font-semibold flex items-center gap-1">
                     <span>{activeCategoryInfo.icon}</span>
                     <span>{activeCategoryInfo.label}</span>
                   </span>
@@ -158,32 +155,32 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
 
             {/* Stats Row */}
             <div className="grid grid-cols-3 gap-2">
-              <div className="bg-slate-800/80 p-2.5 rounded-2xl border border-slate-700/60 text-center">
-                <div className="text-[10px] text-slate-400 font-medium">Final Score</div>
-                <div className="text-lg sm:text-xl font-black text-amber-400 tracking-tight">
+              <div className="enamel-chip p-2.5 text-center">
+                <div className="text-xs text-white/60 font-medium">Final Score</div>
+                <div className="text-lg sm:text-xl font-black text-[#c4a35a] tracking-tight">
                   {totalScore.toLocaleString()}
                 </div>
-                <div className="text-[9px] text-slate-500">of {maxPossibleScore.toLocaleString()}</div>
+                <div className="text-xs text-white/50">of {maxPossibleScore.toLocaleString()}</div>
               </div>
 
-              <div className="bg-slate-800/80 p-2.5 rounded-2xl border border-slate-700/60 text-center">
-                <div className="text-[10px] text-slate-400 font-medium">Accuracy</div>
-                <div className="text-lg sm:text-xl font-black text-emerald-400 tracking-tight">
+              <div className="enamel-chip p-2.5 text-center">
+                <div className="text-xs text-white/60 font-medium">Accuracy</div>
+                <div className="text-lg sm:text-xl font-black text-white tracking-tight">
                   {percentage}%
                 </div>
-                <div className="text-[9px] text-slate-500">Overall</div>
+                <div className="text-xs text-white/50">Overall</div>
               </div>
 
-              <div className="bg-slate-800/80 p-2.5 rounded-2xl border border-slate-700/60 text-center">
-                <div className="text-[10px] text-slate-400 font-medium">
+              <div className="enamel-chip p-2.5 text-center">
+                <div className="text-xs text-white/60 font-medium">
                   {gameMode !== 'guess_name' ? 'Avg. Error' : 'City'}
                 </div>
-                <div className="text-xs sm:text-sm font-black text-blue-400 tracking-tight truncate pt-1">
+                <div className="text-xs sm:text-sm font-black text-white tracking-tight truncate pt-1">
                   {gameMode !== 'guess_name' && averageDistanceError !== null
                     ? formatDistance(averageDistanceError, unit)
                     : currentCity.name}
                 </div>
-                <div className="text-[9px] text-slate-500 capitalize">
+                <div className="text-xs text-white/50 capitalize">
                   {gameMode !== 'guess_name' ? 'Average distance' : 'Guess mode'}
                 </div>
               </div>
@@ -191,32 +188,32 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
 
             {/* Round by Round Breakdown */}
             <div className="space-y-1.5">
-              <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-slate-400 px-1">
+              <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-white/70 px-1">
                 <span>Round Breakdown</span>
                 <button
                   onClick={() => setIsMapInspectMode(true)}
-                  className="text-blue-400 hover:text-blue-300 capitalize text-[10px] underline flex items-center gap-1 cursor-pointer"
+                  className="text-[#c4a35a] hover:text-white capitalize text-xs underline flex items-center gap-1 cursor-pointer"
                 >
                   <Map className="w-3 h-3" />
                   <span>View Map</span>
                 </button>
               </div>
-              <div className="bg-slate-800/50 rounded-2xl border border-slate-700/50 overflow-hidden divide-y divide-slate-700/40 max-h-48 overflow-y-auto">
+              <div className="enamel-chip overflow-hidden divide-y divide-white/10 max-h-48 overflow-y-auto">
                 {roundResults.map((result, idx) => (
                   <div key={idx} className="p-2 sm:px-3 flex items-center justify-between text-xs gap-2">
                     <div className="flex items-center gap-2 min-w-0">
-                      <span className="w-5 h-5 rounded-full bg-slate-700 text-slate-300 font-bold text-[10px] flex items-center justify-center flex-shrink-0">
+                      <span className="w-5 h-5 rounded-full border border-white/30 bg-white/10 text-white/80 font-bold text-xs flex items-center justify-center flex-shrink-0">
                         {idx + 1}
                       </span>
                       <div className="truncate">
-                        <div className="font-bold text-slate-200 truncate">{result.feature.name}</div>
-                        <div className="text-[10px] text-slate-400 capitalize">{result.feature.type}</div>
+                        <div className="font-bold text-white truncate">{result.feature.name}</div>
+                        <div className="text-xs text-white/60 capitalize">{result.feature.type}</div>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-2 text-right flex-shrink-0">
                       {result.gameMode === 'pinpoint' ? (
-                        <div className="text-[11px] font-mono text-slate-300">
+                        <div className="text-xs font-mono text-white/80">
                           {result.distanceErrorMeters !== undefined
                             ? formatDistance(result.distanceErrorMeters, unit)
                             : '-'}
@@ -224,18 +221,18 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
                       ) : (
                         <div>
                           {result.isCorrect ? (
-                            <span className="text-emerald-400 text-[11px] font-semibold flex items-center gap-0.5">
+                            <span className="text-[#c4a35a] text-xs font-semibold flex items-center gap-0.5">
                               <CheckCircle2 className="w-3 h-3" /> Correct
                             </span>
                           ) : (
-                            <span className="text-rose-400 text-[11px] font-semibold flex items-center gap-0.5">
+                            <span className="text-white/70 text-xs font-semibold flex items-center gap-0.5">
                               <XCircle className="w-3 h-3" /> Missed
                             </span>
                           )}
                         </div>
                       )}
 
-                      <div className="font-mono font-bold text-amber-400 min-w-[55px] text-right text-xs">
+                      <div className="font-mono font-bold text-[#c4a35a] min-w-[55px] text-right text-xs">
                         +{result.pointsEarned.toLocaleString()}
                       </div>
                     </div>
@@ -260,7 +257,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
                 onClick={() => onSwitchMode(gameMode === 'pinpoint' ? 'guess_name' : 'pinpoint')}
                 className="button-secondary w-full sm:flex-1 py-2.5 font-semibold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer"
               >
-                {gameMode === 'pinpoint' ? <Target className="w-3.5 h-3.5 text-blue-400" /> : <MapPin className="w-3.5 h-3.5 text-emerald-400" />}
+                {gameMode === 'pinpoint' ? <Target className="w-3.5 h-3.5 text-[#c4a35a]" /> : <MapPin className="w-3.5 h-3.5 text-[#c4a35a]" />}
                 <span>Try {gameMode === 'pinpoint' ? 'Guess Name' : 'Pinpoint'}</span>
               </button>
             </div>

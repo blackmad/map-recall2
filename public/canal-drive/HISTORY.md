@@ -22,6 +22,12 @@ now draws 7 lids, all with a real `roofColour`. The suppression clause also
 matches `id` as well as `osmId`, because streamed tiles carry OSM-owned
 features under `id`. `check-canal-buildings.ts` pins the composition.
 
+## Map Quest: enamel the remaining quiz chrome
+
+Game over, loading, auth, settings, and the locate FAB leave the pre-enamel
+slate/amber/emerald accents for the same navy plates and rivet gold as the
+start rail and header. Quiz overlay secondary type is floored at `text-xs`.
+
 ## Map Quest: plaque start, phone brand, distilled play header
 
 Critique P1+P2 for `src/App.tsx`: start is now a riveted Map Recall plaque rail

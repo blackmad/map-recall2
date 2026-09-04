@@ -92,11 +92,11 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
             <div className="flex items-start justify-between gap-2">
               <div className="space-y-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="enamel-chip px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+                  <span className="enamel-chip px-2 py-0.5 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
                     <span className="text-[#c4a35a]">{badge.icon}</span>
                     <span>{badge.label}</span>
                   </span>
-                  <span className="text-[11px] text-white/70 font-semibold uppercase tracking-wider">
+                  <span className="text-xs text-white/70 font-semibold uppercase tracking-wider">
                     Highlighted on the map
                   </span>
                 </div>
@@ -173,7 +173,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 <div className="text-right">
                   <div className="text-sm sm:text-base font-black text-[#c4a35a] tracking-tight">
                     {isCorrect ? '+5,000' : '+0'}{' '}
-                    <span className="text-[10px] font-normal text-white/70">PTS</span>
+                    <span className="text-xs font-normal text-white/70">PTS</span>
                   </div>
                 </div>
 
