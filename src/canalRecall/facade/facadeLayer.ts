@@ -34,7 +34,7 @@ export interface Lod22Building {
   facade: {
     /** Front wall ends in local metres: x0, y0, x1, y1. */
     wall: [number, number, number, number];
-    wallMaterial: string;
+    wallMaterial: string | null;
     /** Openings as [along the wall, above ground, width, height], in metres. */
     openings: Array<[number, number, number, number]>;
   } | null;
@@ -116,7 +116,8 @@ export function colourFor(building: Lod22Building, mode: ColourMode, part: 'wall
     // but the colour was not, fall back to the observed marker rather than to a
     // brick that was never seen.
     if (!building.facade) return FACADE_COLOURS.unobserved;
-    return WALL_COLOURS[building.facade.wallMaterial] ?? FACADE_COLOURS.observed;
+    const measured = building.facade.wallMaterial ? WALL_COLOURS[building.facade.wallMaterial] : undefined;
+    return measured ?? FACADE_COLOURS.observed;
   }
   if (mode === 'massing') return part === 'roof' ? MASSING_ROOF : MASSING_WALL;
   const { ridge, estimated } = drawableHeights(building);

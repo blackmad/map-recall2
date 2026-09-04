@@ -31,7 +31,7 @@
 <div id="map"></div>
 <div class="panel">
   <h1>Façade twin — LoD2.2 massing</h1>
-  <p class="sub">The measured silhouette, in the game's own renderer. No façades: 2,981 of these buildings have never had their front observed.</p>
+  <p class="sub" id="sub">The measured silhouette, in the game's own renderer.</p>
 
   <fieldset><legend>Colour by</legend>
     <div class="row" id="modes"></div>
@@ -156,10 +156,18 @@ function setup() {
   const twin = new window.CanalRecallFacadeTwin.FacadeTwin(map, maplibregl, {
     extractUrl: '/data/extracts/amsterdam/staging/facade-twin/amsterdam-grachtengordel-west/lod22.json',
     onReady: t => {
-      const n = t.extract.buildings.length;
-      const measured = t.extract.buildings.filter(b => b.ridge !== null).length;
+      // Written from the extract, never hard-coded: a stale coverage claim in
+      // the caption is the same lie as a stale one in the data.
+      const all = t.extract.buildings;
+      const ridges = all.filter(b => b.ridge !== null).length;
+      const facades = all.filter(b => b.facade).length;
+      const openings = all.reduce((sum, b) => sum + (b.facade?.openings.length ?? 0), 0);
+      document.getElementById('sub').textContent =
+        `The measured silhouette, in the game's own renderer. ${facades.toLocaleString()} of these `
+        + `${all.length.toLocaleString()} buildings have had their front observed; the other `
+        + `${(all.length - facades).toLocaleString()} have not, and get no façade.`;
       document.getElementById('stat').textContent =
-        `${n} buildings · ${measured} with a measured ridge · ${n - measured} at a fallback height`;
+        `${all.length} buildings · ${ridges} measured ridges · ${facades} façades · ${openings.toLocaleString()} openings`;
     },
   });
   window.__twin = twin;

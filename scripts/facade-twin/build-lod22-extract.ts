@@ -26,14 +26,16 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { resolveHeights, type HeightReason } from '../../src/canalRecall/facade/buildRecord.ts';
+import { nearestMaterial, wallFamily } from '../../src/canalRecall/facade/materials.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, MassingRecord } from '../../src/canalRecall/facade/sources.ts';
 
-interface BlockRecord {
-  house: { pandId: string };
-  frontWall: { start: [number, number]; end: [number, number]; widthM: number } | null;
-  measuredOpenings: Array<{ xM: number; yM: number; widthM: number; heightM: number }>;
-  render: { wallMaterial: string; wallSource: string };
+interface MeasuredFacade {
+  pandId: string;
+  wall: [number, number, number, number];
+  wallWidthM: number;
+  wallRgb: [number, number, number] | null;
+  openings: Array<{ xM: number; yM: number; widthM: number; heightM: number }>;
 }
 
 const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
@@ -52,12 +54,10 @@ const inArea = new Set<string>(recon.buildings.map((b: { buildingId: string }) =
  * Optional on purpose: the extract must build before any façade has been
  * measured, and the renderer must draw a boundary in which almost nothing has.
  */
-let facades = new Map<string, BlockRecord>();
+let facades = new Map<string, MeasuredFacade>();
 try {
-  const block = JSON.parse(await readFile(path.join(STAGING, 'block.json'), 'utf8')) as { buildings: BlockRecord[] };
-  facades = new Map(block.buildings
-    .filter(record => record.frontWall && record.measuredOpenings?.length)
-    .map(record => [record.house.pandId, record]));
+  const store = JSON.parse(await readFile(path.join(STAGING, 'measured-facades.json'), 'utf8')) as { facades: Record<string, MeasuredFacade> };
+  facades = new Map(Object.values(store.facades).filter(f => f.openings?.length).map(f => [f.pandId, f]));
 } catch (error) {
   if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
 }
@@ -77,7 +77,7 @@ const buildings: Array<{
   /** Present only where this building's front has actually been observed. */
   facade: {
     wall: [x0: number, y0: number, x1: number, y1: number];
-    wallMaterial: string;
+    wallMaterial: string | null;
     openings: Array<[alongM: number, upM: number, widthM: number, heightM: number]>;
   } | null;
 }> = [];
@@ -109,16 +109,21 @@ for (const entry of registry) {
     reason: heights?.reason ?? null,
     facade: (() => {
       const record = facades.get(entry.buildingId);
-      if (!record?.frontWall) return null;
+      if (!record) return null;
+      const material = record.wallRgb
+        ? nearestMaterial(record.wallRgb, wallFamily(record.wallRgb)).material.id
+        : null;
       return {
         wall: [
-          round(record.frontWall.start[0] - origin.x), round(record.frontWall.start[1] - origin.y),
-          round(record.frontWall.end[0] - origin.x), round(record.frontWall.end[1] - origin.y),
+          round(record.wall[0] - origin.x), round(record.wall[1] - origin.y),
+          round(record.wall[2] - origin.x), round(record.wall[3] - origin.y),
         ] as [number, number, number, number],
-        wallMaterial: record.render.wallMaterial,
+        // Null, not a default brick: a wall whose colour was never sampled must
+        // not arrive at the renderer wearing one.
+        wallMaterial: material,
         // Openings are metres along the wall from its start, and metres above
         // the strip base, which was cut 0.4 m below the measured ground.
-        openings: record.measuredOpenings.map(o =>
+        openings: record.openings.map(o =>
           [o.xM, o.yM - 0.4, o.widthM, o.heightM] as [number, number, number, number]),
       };
     })(),

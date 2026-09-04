@@ -9,7 +9,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../src/canalRecall/facade/areas.ts';
-import { buildingGeometry, colourFor, drawableHeights, EVIDENCE_COLOURS, ownedPandIds, type Lod22Extract } from '../src/canalRecall/facade/facadeLayer.ts';
+import { buildingGeometry, colourFor, drawableHeights, EVIDENCE_COLOURS, FACADE_COLOURS, openingGeometry, ownedPandIds, type Lod22Extract } from '../src/canalRecall/facade/facadeLayer.ts';
 
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AMSTERDAM_GRACHTENGORDEL_WEST.areaId);
 const extract = JSON.parse(readFileSync(path.join(STAGING, 'lod22.json'), 'utf8')) as Lod22Extract;
@@ -83,6 +83,49 @@ const flat = extract.buildings.filter(b => b.roof === 'flat' && b.eaves !== null
 const pitchedFlats = flat.filter(b => { const h = drawableHeights(b); return h.ridge - h.eaves > 2; }).length;
 check('flat roofs are not drawn with a pitch', pitchedFlats < flat.length * 0.25, `${pitchedFlats} of ${flat.length} flat roofs rise more than 2 m`);
 
+// ---- façade invariants ---------------------------------------------------
+// These matter more than the massing ones. A wrong silhouette is visibly wrong;
+// a window drawn where none was measured is invisibly wrong, and it is the exact
+// failure the brief says is worse than a gap.
+const withFacade = extract.buildings.filter(b => b.facade);
+const openingsTotal = withFacade.reduce((sum, b) => sum + b.facade!.openings.length, 0);
+
+check('no façade without openings behind it', withFacade.every(b => b.facade!.openings.length > 0),
+  `${withFacade.filter(b => b.facade!.openings.length === 0).length} carry an empty façade`);
+
+// An opening outside its own wall is a rectification failure, and drawing it
+// puts a window on a neighbour's house.
+let strayOpenings = 0, tallOpenings = 0, sunkOpenings = 0;
+for (const building of withFacade) {
+  const [x0, y0, x1, y1] = building.facade!.wall;
+  const wallLength = Math.hypot(x1 - x0, y1 - y0);
+  const { ridge } = drawableHeights(building);
+  for (const [along, up, width, height] of building.facade!.openings) {
+    if (along < -0.5 || along + width > wallLength + 0.5) strayOpenings++;
+    if (up + height > ridge + 0.5) tallOpenings++;
+    if (up < -2.5) sunkOpenings++;
+  }
+}
+check('no opening outside its own wall', strayOpenings === 0, `${strayOpenings} of ${openingsTotal} stray`);
+check('no opening above its own ridge', tallOpenings === 0, `${tallOpenings} of ${openingsTotal} above the roof`);
+check('no opening buried below the souterrain', sunkOpenings === 0, `${sunkOpenings} of ${openingsTotal} under the ground`);
+
+// Geometry must actually be produced for a measured façade, and never for one
+// that was not measured.
+const drawn = withFacade.filter(b => openingGeometry(b).positions.length > 0).length;
+check('every measured façade draws openings', drawn === withFacade.length, `${drawn}/${withFacade.length}`);
+const unobserved = extract.buildings.find(b => !b.facade);
+if (unobserved) {
+  check('an unobserved building draws no openings', openingGeometry(unobserved).positions.length === 0, `pand ${unobserved.id}`);
+  check('an unobserved building reads as unobserved', colourFor(unobserved, 'facade', 'wall') === FACADE_COLOURS.unobserved, `pand ${unobserved.id}`);
+}
+
+// Openings are six vertices each — two triangles — and nothing else.
+const stray = withFacade.find(b => openingGeometry(b).positions.length / 3 !== b.facade!.openings.length * 6);
+check('each opening is exactly two triangles', !stray, stray ? `pand ${stray.id}` : `${openingsTotal} openings`);
+
+console.log(`Façades: ${withFacade.length} measured, ${openingsTotal} openings, `
+  + `${(100 * withFacade.length / extract.buildings.length).toFixed(1)}% of the boundary observed.`);
 console.log(`Extract: ${extract.buildings.length} buildings, heights ${minZ.toFixed(1)}–${maxZ.toFixed(1)} m, ${estimated} at a fallback height.`);
 if (failures.length) {
   console.error(`\n${failures.length} of ${checks} layer checks failed:`);
