@@ -26,6 +26,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { resolveHeights, type HeightReason } from '../../src/canalRecall/facade/buildRecord.ts';
+import { CANAL_WATER_LEVEL_NAP_M } from '../../src/canalRecall/facade/rdNew.ts';
 import { nearestMaterial, wallFamily } from '../../src/canalRecall/facade/materials.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, MassingRecord } from '../../src/canalRecall/facade/sources.ts';
@@ -64,6 +65,37 @@ try {
 
 const origin = AREA.localOrigin;
 const round = (value: number) => Math.round(value * 10) / 10;
+
+/**
+ * Canal water, in the same local frame as the buildings.
+ *
+ * Real OSM polygons rather than a buffer around the centrelines. A buffer needs
+ * an assumed half-width, and the running score for assumed constants in this
+ * project is three found and all three wrong by roughly a third.
+ *
+ * Drawn at the water level in rdNew.ts, which is Rijkswaterstaat's target for
+ * the Amsterdam boezem — the one number here that is a published constant
+ * rather than a measurement, and it says so.
+ */
+const water = JSON.parse(await readFile(
+  path.resolve('src/canalRecall/facade/fixtures', `${AREA.areaId}-water.json`), 'utf8')) as
+  { rings: Array<{ name: string | null; ring: LngLat[] }> };
+const waterRings = water.rings
+  .map(entry => {
+    const ring: number[] = [];
+    for (const point of entry.ring) {
+      const p = RD_NEW.fromLngLat(point);
+      ring.push(round(p.x - origin.x), round(p.y - origin.y));
+    }
+    return ring;
+  })
+  // Anything wholly outside the boundary's bounding box is another canal.
+  .filter(ring => {
+    for (let i = 0; i < ring.length; i += 2) {
+      if (ring[i] > -700 && ring[i] < 900 && ring[i + 1] > -1200 && ring[i + 1] < 1200) return true;
+    }
+    return false;
+  });
 
 const seen = new Set<string>();
 const buildings: Array<{
@@ -145,11 +177,13 @@ await writeFile(file, JSON.stringify({
     buildings: buildings.length,
     withRidge: buildings.filter(b => b.ridge !== null).length,
     withEaves: buildings.filter(b => b.eaves !== null).length,
+    waterRings: waterRings.length,
     facadesMeasured: buildings.filter(b => b.facade).length,
     openingsMeasured: buildings.reduce((sum, b) => sum + (b.facade?.openings.length ?? 0), 0),
     note: 'Massing for every building; a measured façade only where one exists. `facade: null` means nobody has observed that building\'s front, which is true of almost all of them.',
   },
   buildings,
+  water: { levelNap: CANAL_WATER_LEVEL_NAP_M, rings: waterRings },
 }));
 
 const bytes = (await readFile(file)).length;

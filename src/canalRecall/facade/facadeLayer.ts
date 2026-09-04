@@ -48,6 +48,83 @@ export interface Lod22Extract {
     attribution: string;
   };
   buildings: Lod22Building[];
+  /** Canal surfaces, drawn at a published level rather than a measured one. */
+  water?: { levelNap: number; rings: number[][] };
+}
+
+export const WATER_COLOUR = 0x27383a;
+
+/**
+ * Triangulate a water ring by ear clipping.
+ *
+ * Canal polygons are simple, non-convex and often long and thin, so a fan from
+ * the first vertex folds over itself on the bends. Ear clipping is a few lines
+ * and handles them, which is cheaper than pulling in a triangulation library for
+ * 72 rings.
+ */
+export function triangulateRing(ring: number[]): number[] {
+  const n = ring.length / 2;
+  if (n < 3) return [];
+  const indices = Array.from({ length: n }, (_, i) => i);
+  const x = (i: number) => ring[i * 2], y = (i: number) => ring[i * 2 + 1];
+
+  const area = () => {
+    let total = 0;
+    for (let i = 0, j = n - 1; i < n; j = i++) total += x(j) * y(i) - x(i) * y(j);
+    return total / 2;
+  };
+  // Work counter-clockwise so the ear test's sign is consistent.
+  if (area() < 0) indices.reverse();
+
+  const inTriangle = (ax: number, ay: number, bx: number, by: number, cx: number, cy: number, px: number, py: number) => {
+    const d1 = (px - bx) * (ay - by) - (ax - bx) * (py - by);
+    const d2 = (px - cx) * (by - cy) - (bx - cx) * (py - cy);
+    const d3 = (px - ax) * (cy - ay) - (cx - ax) * (py - ay);
+    return !((d1 < 0 || d2 < 0 || d3 < 0) && (d1 > 0 || d2 > 0 || d3 > 0));
+  };
+
+  const out: number[] = [];
+  let guard = indices.length * 3;
+  while (indices.length > 3 && guard-- > 0) {
+    let clipped = false;
+    for (let i = 0; i < indices.length; i++) {
+      const a = indices[(i - 1 + indices.length) % indices.length];
+      const b = indices[i];
+      const c = indices[(i + 1) % indices.length];
+      const cross = (x(b) - x(a)) * (y(c) - y(a)) - (y(b) - y(a)) * (x(c) - x(a));
+      if (cross <= 0) continue;                                  // reflex, not an ear
+      let contains = false;
+      for (const other of indices) {
+        if (other === a || other === b || other === c) continue;
+        if (inTriangle(x(a), y(a), x(b), y(b), x(c), y(c), x(other), y(other))) { contains = true; break; }
+      }
+      if (contains) continue;
+      out.push(x(a), y(a), x(b), y(b), x(c), y(c));
+      indices.splice(i, 1);
+      clipped = true;
+      break;
+    }
+    if (!clipped) break;                                          // degenerate; stop rather than spin
+  }
+  if (indices.length === 3) {
+    for (const i of indices) out.push(x(i), y(i));
+  }
+  return out;
+}
+
+/** Water surface geometry, flat at the published level. */
+export function waterGeometry(extract: Lod22Extract): { positions: number[]; normals: number[] } {
+  const positions: number[] = [], normals: number[] = [];
+  if (!extract.water) return { positions, normals };
+  const z = extract.water.levelNap;
+  for (const ring of extract.water.rings) {
+    const flat = triangulateRing(ring);
+    for (let i = 0; i < flat.length; i += 2) {
+      positions.push(flat[i], flat[i + 1], z);
+      normals.push(0, 0, 1);
+    }
+  }
+  return { positions, normals };
 }
 
 export type ColourMode = 'massing' | 'height' | 'evidence' | 'facade';

@@ -7,7 +7,7 @@
  * aligned with MapLibre's mercator, and telling the 3DBAG tile layer to stop
  * drawing the buildings this layer now owns.
  */
-import { buildingGeometry, colourFor, GLASS_COLOUR, openingGeometry, ownedPandIds } from '../../../src/canalRecall/facade/facadeLayer.ts';
+import { buildingGeometry, colourFor, GLASS_COLOUR, openingGeometry, ownedPandIds, WATER_COLOUR, waterGeometry } from '../../../src/canalRecall/facade/facadeLayer.ts';
 
 const { THREE } = window.CanalRecallThree;
 
@@ -70,6 +70,10 @@ export class FacadeTwin {
     colour.setHex(GLASS_COLOUR);
     for (const [from, to] of this._openingRanges || []) {
       for (let i = from; i < to; i++) colours.setXYZ(i, colour.r, colour.g, colour.b);
+    }
+    if (this._waterRange) {
+      colour.setHex(WATER_COLOUR);
+      for (let i = this._waterRange[0]; i < this._waterRange[1]; i++) colours.setXYZ(i, colour.r, colour.g, colour.b);
     }
     colours.needsUpdate = true;
   }
@@ -151,6 +155,18 @@ export class FacadeTwin {
             colours.push(colour.r, colour.g, colour.b);
           }
           owner._openingRanges.push([from, positions.length / 3]);
+        }
+
+        // Canal water, flat at its published level. Appended last so it can be
+        // tinted independently of any colour mode — the water is context, not a
+        // measurement being reported.
+        const water = waterGeometry(extract);
+        owner._waterRange = [positions.length / 3, positions.length / 3 + water.positions.length / 3];
+        for (let i = 0; i < water.positions.length / 3; i++) {
+          positions.push(water.positions[i * 3], water.positions[i * 3 + 2], -water.positions[i * 3 + 1]);
+          normals.push(0, 1, 0);
+          colour.setHex(WATER_COLOUR);
+          colours.push(colour.r, colour.g, colour.b);
         }
 
         const geometry = new THREE.BufferGeometry();
