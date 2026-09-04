@@ -1,8 +1,9 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood' | 'finish' | 'finish-calm'
-  | 'landmark-card' | 'landmark-panel' | 'landmark-panel-dutch'
+type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
+  | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-bike'
+  | 'landmark-card' | 'landmark-card-bare' | 'landmark-panel' | 'landmark-panel-dutch'
   // Phone states. `touch-*` force the compact layout on a pointer device,
   // which is the only way to see the d-pad and the portrait card stack in the
   // workbench; the viewport addon alone just makes a small desktop window.
@@ -10,7 +11,8 @@ type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood' | 
   // Overlay states on a phone: the question, the arrival card, the panels and
   // the expanded article. These are DOM over canvas, so the HUD layout suite
   // cannot reach them and Storybook is where they get reviewed.
-  | 'touch-prompt' | 'touch-settings' | 'finish-touch' | 'landmark-panel-touch';
+  | 'touch-prompt' | 'touch-settings' | 'finish-touch' | 'landmark-panel-touch'
+  | 'stacked-notices-touch' | 'neighborhood-fallback-touch';
 
 function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
   const configure = useCallback((frame: HTMLIFrameElement) => {
@@ -38,7 +40,10 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       });
     }
     if (scenario === 'advanced' && overlay) overlay.store.setAdvancedOpen(true);
-    if (scenario === 'hud' || scenario === 'neighborhood' || scenario.startsWith('finish')
+    if (scenario === 'hud' || scenario === 'neighborhood' || scenario === 'neighborhood-fallback'
+      || scenario === 'stacked-notices' || scenario === 'stacked-notices-touch'
+      || scenario === 'neighborhood-fallback-touch'
+      || scenario.startsWith('finish')
       || scenario.startsWith('landmark') || scenario.startsWith('touch-hud')
       || scenario === 'touch-prompt' || scenario === 'touch-settings') {
       overlay?.store.setSetupOpen(false);
@@ -69,7 +74,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           // Every finish story was failing on it, unnoticed while the frame
           // itself was 404ing.
           game.routeDifficulty = 'medium';
-          game.travelMode = 'car';
+          game.travelMode = scenario === 'finish-bike' ? 'bike' : 'car';
           game.viewMode = 'north';
           game.quizCorrect = 2; game.quizAttempts = 4; game.quizPoints = 158; game.quizBestStreak = 2;
           game.raceTime = 98.299;
@@ -104,12 +109,13 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
         }
         if (scenario.startsWith('landmark')) {
           const dutch = scenario === 'landmark-panel-dutch';
+          const bare = scenario === 'landmark-card-bare';
           game._landmarkNotice = {
             id: 'oude-kerk',
             name: 'Oude Kerk',
             type: 'church',
             extractLang: dutch ? 'nl' : 'en',
-            imageUrl: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#9fc1c7"/><rect y="220" width="400" height="80" fill="#759bb5"/><path d="M150 220V90l50-60 50 60v130z" fill="#b95c45"/><rect x="185" y="140" width="30" height="80" fill="#3f2f28"/></svg>')}`,
+            imageUrl: bare ? undefined : `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#9fc1c7"/><rect y="220" width="400" height="80" fill="#759bb5"/><path d="M150 220V90l50-60 50 60v130z" fill="#b95c45"/><rect x="185" y="140" width="30" height="80" fill="#3f2f28"/></svg>')}`,
             wikipediaUrl: 'https://en.wikipedia.org/wiki/Oude_Kerk,_Amsterdam',
             longDetail: dutch
               ? 'De Oude Kerk is het oudste gebouw en de oudste parochiekerk van '
@@ -125,11 +131,55 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           };
           game._landmarkNoticeAlpha = 1;
           game.currentNeighborhood = 'De Wallen';
+          if (bare) {
+            game._renderLandmarkNotice();
+            return;
+          }
           const paint = new Image();
           paint.onload = () => {
             game._landmarkImages.set('oude-kerk', paint);
             game._renderLandmarkNotice();
-            if (scenario !== 'landmark-card') game._expandLandmarkNotice();
+            if (scenario !== 'landmark-card' && scenario !== 'landmark-card-bare') game._expandLandmarkNotice();
+          };
+          paint.src = game._landmarkNotice.imageUrl;
+          return;
+        }
+        if (scenario === 'neighborhood-fallback' || scenario === 'neighborhood-fallback-touch') {
+          game.currentNeighborhood = 'De Pijp';
+          game._neighborhoodImages = new Map();
+          game._neighborhoodNotice = { name: 'De Pijp', kind: 'neighborhood' };
+          game._neighborhoodNoticeTimer = 4;
+          game._syncHudLayout?.();
+          game._renderNeighborhoodNotice();
+          return;
+        }
+        if (scenario === 'stacked-notices' || scenario === 'stacked-notices-touch') {
+          game.currentNeighborhood = 'Jordaan';
+          game._landmarkNotice = {
+            id: 'westerkerk',
+            name: 'Westerkerk',
+            type: 'church',
+            extractLang: 'en',
+            imageUrl: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#8aa4b8"/><rect y="200" width="400" height="100" fill="#5f7a8c"/><rect x="160" y="40" width="80" height="160" fill="#c9b29a"/><rect x="185" y="10" width="30" height="40" fill="#3f2f28"/></svg>')}`,
+            wikipediaUrl: 'https://en.wikipedia.org/wiki/Westerkerk',
+            longDetail: 'The Westerkerk is a Reformed church within Dutch Protestant '
+              + 'church in central Amsterdam, built between 1620 and 1631 after a design '
+              + 'by Hendrick de Keyser.',
+          };
+          game._landmarkNoticeAlpha = 1;
+          const paint = new Image();
+          paint.onload = () => {
+            game._landmarkImages.set('westerkerk', paint);
+            const hood = new Image();
+            hood.onload = () => {
+              game._neighborhoodImages = new Map([['Jordaan', hood]]);
+              game._neighborhoodNotice = { name: 'Jordaan', kind: 'neighborhood' };
+              game._neighborhoodNoticeTimer = 4;
+              game._syncHudLayout?.();
+              game._renderLandmarkNotice();
+              game._renderNeighborhoodNotice();
+            };
+            hood.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="600" height="400" fill="#9fc1c7"/><rect y="210" width="600" height="190" fill="#6d8a70"/><path d="M30 250V110h120v140M190 250V70h150v180M380 250V125h180v125" fill="#b95c45"/><path d="M0 290h600v80H0z" fill="#759bb5"/></svg>')}`;
           };
           paint.src = game._landmarkNotice.imageUrl;
           return;
@@ -222,8 +272,15 @@ export const Mobile: Story = {
 export const LiveHud: Story = { args: { scenario: 'hud' } };
 export const FinishCard: Story = { args: { scenario: 'finish' } };
 export const FinishCardCalmMode: Story = { args: { scenario: 'finish-calm' } };
+export const FinishCardBike: Story = { args: { scenario: 'finish-bike' } };
 export const NeighborhoodPhotoCard: Story = { args: { scenario: 'neighborhood' } };
+/** Neighborhood entry with no photo — typography-only postcard. */
+export const NeighborhoodFallbackCard: Story = { args: { scenario: 'neighborhood-fallback' } };
+/** Landmark trivia and neighborhood postcard sharing the bottom band. */
+export const StackedNotices: Story = { args: { scenario: 'stacked-notices' } };
 export const LandmarkCard: Story = { args: { scenario: 'landmark-card' } };
+/** Landmark card when the extract has no image. */
+export const LandmarkCardBare: Story = { args: { scenario: 'landmark-card-bare' } };
 export const LandmarkPanel: Story = { args: { scenario: 'landmark-panel' } };
 export const LandmarkPanelUntranslated: Story = { args: { scenario: 'landmark-panel-dutch' } };
 export const LandmarkPanelMobile: Story = {
@@ -282,6 +339,16 @@ export const PortraitRecallPrompt: Story = {
  *  ESC / C keycaps a phone has no way to press. */
 export const PortraitFinishCard: Story = {
   args: { scenario: 'finish-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+export const PortraitStackedNotices: Story = {
+  args: { scenario: 'stacked-notices-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+export const PortraitNeighborhoodFallback: Story = {
+  args: { scenario: 'neighborhood-fallback-touch' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 

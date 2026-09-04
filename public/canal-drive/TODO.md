@@ -425,15 +425,15 @@ full “clear preferences / exploration / everything” path if we want that
 separate from knowledge reset.
 
 **14. Finish the Storybook workbench.**
-Ten phone states exist now — the driving HUD (idle, steering, mid-question,
+Ten phone states existed already — the driving HUD (idle, steering, mid-question,
 small phone, landscape), the route briefing, the recall prompt, the arrival
 card, the settings panel and the expanded article — driven by a
-`canalRecallForceTouch` override, because the viewport addon alone only makes a
-small desktop window and never produces a d-pad. What is left is the rest of
-item 14's original scope: props-driven adapters for neighborhood entry (photo
-and fallback), stacked notices and every finish-card combination, paired with
-screenshot regressions. Follows naturally from item 3 — the same extraction
-serves both.
+`canalRecallForceTouch` override. Added: neighborhood photo fallback, stacked
+neighborhood+landmark notices (desktop + phone), bare landmark card, and bike
+finish card. Still open: screenshot regressions for the new states, and any
+finish-card combination still missing from play (e.g. ribbonless calm + no
+landmark photo). Follows naturally from item 3 — the same extraction serves
+both.
 
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in
