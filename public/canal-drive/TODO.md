@@ -418,7 +418,9 @@ measure end to end from Amsterdam's CC BY panoramas.
    3,025 records at LoD2.2 keyed by `pand_id`, `resolveFidelityTier` suppressing
    `detailed-buildings` inside the boundary so one representation owns each
    building, and the photo/render opacity overlay at two reference viewpoints.
-2. **No detector output has been validated.** `check-facade-registration.ts` is
+2. **No detector output has been validated.** *(Everything below still holds;
+   coverage is now 1,598 buildings measured, 1,340 with openings, 44.3% of the
+   boundary — which raises the stakes rather than lowering them.)* `check-facade-registration.ts` is
    red at its own 0.5 m bar, and street-level fields are capped at confidence
    0.4 because of it. The storey ladder returns 6 storeys for 32 of 56
    Keizersgracht buildings where 3DBAG's pilot median is 4–5. `calibration.ts`

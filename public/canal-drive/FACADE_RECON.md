@@ -7,8 +7,16 @@ roof material is `default` on every record until it runs.
 
 Coverage measured for the whole boundary: 17,251 elevations, 139,937 panorama
 poses, **26.5% of elevations frontal and 88.6% of buildings with a frontal view
-of at least one elevation**, 86.7% of those leaf-off. Façade *measurement* on
-top of that coverage is not validated — see the caveat under RECON-6…9.
+of at least one elevation**, 86.7% of those leaf-off.
+
+Façades actually measured, as of the latest run: **1,598 buildings, of which
+1,340 carry at least one opening — 44.3% of the boundary — and 10,335 openings
+in total.** 56 readings were rejected by the plausibility filter as not being
+façades at all, each with its reason. None of this is validated: the
+registration check is red at its own bar and no field has been checked against a
+hand-labelled building, so every street-level field is capped at confidence 0.4.
+The review harness that lifts that cap is built and waiting at
+`public/canal-drive/facade-review/`.
 
 Every number here is measured from the sources named beside it. Where this
 document contradicts an estimate in
