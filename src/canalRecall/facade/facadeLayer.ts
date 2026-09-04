@@ -19,6 +19,9 @@
  * the same pixels is the z-fighting the renderer design exists to prevent.
  */
 
+import { gableProfile, assumedGable } from './generate.ts';
+import type { GableType } from './houseRecord.ts';
+
 export interface Lod22Building {
   id: string;
   /** Flat [x0,y0,x1,y1,…] in metres from the extract's local origin. */
@@ -30,6 +33,14 @@ export interface Lod22Building {
   ridge: number | null;
   roof: string;
   reason: string | null;
+  /**
+   * The front gable's form. `stated` where the register named it in prose,
+   * assumed from the construction year otherwise. Never measured — the
+   * *height* it rises to is measured, the shape it makes getting there is not.
+   */
+  gable?: { type: GableType; stated: boolean } | null;
+  /** Routes the assumed-gable choice only. Never supplies a dimension. */
+  year?: number | null;
   /** Present only where this building's front has been observed. */
   facade: {
     /** Front wall ends in local metres: x0, y0, x1, y1. */
@@ -147,6 +158,19 @@ export const WALL_COLOURS: Record<string, number> = {
 /** Glass, for a measured opening. */
 export const GLASS_COLOUR = 0x2f3a40;
 
+/**
+ * Joinery and stonework, for the parts that are drawn rather than measured.
+ *
+ * White frames and a pale sill against a dark wall is the single strongest cue
+ * this fabric gives at a distance, so it gets a colour of its own rather than
+ * inheriting the wall's. Not quite white: painted joinery outdoors reads warm
+ * and slightly grey, and pure white against measured brick looks like a decal.
+ */
+export const FRAME_COLOUR = 0xe8e4d9;
+export const SILL_COLOUR = 0xbdb6a6;
+/** The cornice. Painted the same as the joinery, being the same trade. */
+export const TRIM_COLOUR = 0xdcd6c8;
+
 /** Buildings whose front has been observed read differently from those that have not. */
 export const FACADE_COLOURS = { observed: 0x1baf7a, unobserved: 0x3d4548 } as const;
 
@@ -184,11 +208,21 @@ export const EVIDENCE_COLOURS = {
   measured: 0x1baf7a,
   inverted: 0xeda100,
   estimated: 0xe34948,
+  /** A gable type the register named in prose. Weaker than a measurement. */
+  stated: 0x4a9fd8,
+  /** Drawn from the vocabulary. Nobody observed this; it is here to look right. */
+  generated: 0x8a6bbf,
 } as const;
 
-export function colourFor(building: Lod22Building, mode: ColourMode, part: 'wall' | 'roof'): number {
+export function colourFor(building: Lod22Building, mode: ColourMode, part: GeometryPart): number {
+  // Trim is joinery in every mode but evidence, where the point is to show what
+  // was measured and trim was not.
+  if (part === 'trim' && mode !== 'evidence') return TRIM_COLOUR;
   if (mode === 'facade') {
-    if (part === 'roof') return building.facade ? 0x14805c : 0x2c3336;
+    // The roof is tiled, not painted, and a measured roof colour is a separate
+    // pipeline; until it lands, a slate that reads as slate beats a green that
+    // reads as nothing. The gable is wall — it *is* the front wall, continued.
+    if (part === 'roof') return building.facade ? 0x585f5e : 0x3a4143;
     // Where a wall material was measured, show it; where the front was observed
     // but the colour was not, fall back to the observed marker rather than to a
     // brick that was never seen.
@@ -202,6 +236,13 @@ export function colourFor(building: Lod22Building, mode: ColourMode, part: 'wall
     const band = HEIGHT_BANDS.find(([max]) => ridge <= max) ?? HEIGHT_BANDS[HEIGHT_BANDS.length - 1];
     return band[1];
   }
+  // Evidence mode reports provenance, so the drawn vocabulary has to declare
+  // itself: an assumed gable and a cornice nobody measured are not evidence of
+  // anything, and colouring them like the massing would launder them into it.
+  if (part === 'trim') return EVIDENCE_COLOURS.generated;
+  if (part === 'gable') {
+    return gableFor(building).stated ? EVIDENCE_COLOURS.stated : EVIDENCE_COLOURS.generated;
+  }
   if (estimated) return EVIDENCE_COLOURS.estimated;
   return building.reason === 'inverted' || building.reason === 'impossible'
     ? EVIDENCE_COLOURS.inverted
@@ -209,100 +250,272 @@ export function colourFor(building: Lod22Building, mode: ColourMode, part: 'wall
 }
 
 /**
+ * The plot's own frame: along the street, and into the plot.
+ *
+ * Everything above the eaves is built in this frame rather than on the
+ * footprint ring, because a canal-house roof is a property of the *plot* — one
+ * ridge running front to back — and not of whatever the registry's ring does at
+ * a light well or a rear annexe. Following the ring upward is what produced the
+ * old centroid-tapered roof, and a shape tapered toward its own centroid is a
+ * marquee, not a house.
+ *
+ * Where the front has been observed, the front wall gives the frame directly.
+ * Where it has not, the longest edge stands in: the plots here are long and
+ * narrow, so the longest edge runs front-to-back and the ridge runs with it.
+ * That is the same rule either way, just measured with a worse instrument.
+ */
+function plotFrame(building: Lod22Building):
+  { ox: number; oy: number; ux: number; uy: number; nx: number; ny: number } | null {
+  const ring = building.ring, count = ring.length / 2;
+  if (count < 3) return null;
+
+  if (building.facade) {
+    const [x0, y0, x1, y1] = building.facade.wall;
+    const length = Math.hypot(x1 - x0, y1 - y0);
+    if (length >= 0.5) {
+      const ux = (x1 - x0) / length, uy = (y1 - y0) / length;
+      // Into the plot, away from the street: the opposite of the outward normal
+      // the openings are set proud along.
+      return { ox: x0, oy: y0, ux, uy, nx: -uy, ny: ux };
+    }
+  }
+
+  // No observed front. Take the longest edge as the depth axis, so the ridge
+  // runs along the plot rather than across it.
+  let best = -1, bx = 1, by = 0;
+  for (let i = 0; i < count; i++) {
+    const j = (i + 1) % count;
+    const dx = ring[j * 2] - ring[i * 2], dy = ring[j * 2 + 1] - ring[i * 2 + 1];
+    const length = Math.hypot(dx, dy);
+    if (length > best) { best = length; bx = dx / length; by = dy / length; }
+  }
+  if (best <= 0) return null;
+  // The long edge is the depth axis, so `u` — across the plot — is its normal.
+  return { ox: ring[0], oy: ring[1], ux: -by, uy: bx, nx: bx, ny: by };
+}
+
+/**
+ * Which gable this building gets, and whether anybody said so.
+ *
+ * The rule the project turns on applies to the *type*, not to the roof: the
+ * ridge height is measured from laser altimetry for almost every building here,
+ * so a pitched roof is a measurement and drawing one is reporting it. Which
+ * shaped gable screens that roof from the street is not measured anywhere, and
+ * is stated in prose by the register for 636 of the 3,025. So: state it where
+ * stated, assume it from the construction year where not, and mark the
+ * difference so the evidence mode can show which is which.
+ *
+ * A building with no observed front gets `punt` — a plain triangle. It is the
+ * least any pitched roof can end in, so it invents the least. A klokgevel on a
+ * building nobody has photographed would be a confident lie about the exact
+ * thing this façade twin exists to avoid lying about.
+ */
+export function gableFor(building: Lod22Building): { type: GableType; stated: boolean } {
+  if (building.gable) return building.gable;
+  if (!building.facade) return { type: 'punt', stated: false };
+  return { type: assumedGable(building.year ?? null), stated: false };
+}
+
+/**
  * Build the geometry for one building, in metres in the extract's local frame.
  *
  * Returned as plain arrays so this is testable without a WebGL context — the
- * layer turns them into buffers. Walls are the footprint extruded to the eaves;
- * the roof is a prism from eaves to ridge, tapered toward the centroid so a
- * pitched building reads as pitched at a distance without pretending to know
- * a ridge direction nobody measured.
+ * layer turns them into buffers. Walls are the footprint extruded to the eaves.
+ * Above that the plot frame takes over: one ridge front-to-back, two roof
+ * planes falling to the party walls, a shaped gable screening the front and a
+ * plain triangle closing the back.
+ *
+ * `part` distinguishes what is being reported from what is being drawn around
+ * it. `wall` and `roof` are massing, and are measured. `gable` and `trim` are
+ * the generated vocabulary — the shape of the gable and the cornice under it —
+ * and a renderer that wants to show only what was measured can drop them.
  */
-export function buildingGeometry(building: Lod22Building): { positions: number[]; normals: number[]; isRoof: boolean[] } {
+export type GeometryPart = 'wall' | 'roof' | 'gable' | 'trim';
+
+/** Projecting depth and height of the cornice under a gable, in metres. */
+const CORNICE = { project: 0.22, height: 0.30 };
+
+export function buildingGeometry(building: Lod22Building):
+  { positions: number[]; normals: number[]; isRoof: boolean[]; part: GeometryPart[] } {
   const ring = building.ring;
   const count = ring.length / 2;
   const positions: number[] = [];
   const normals: number[] = [];
   const isRoof: boolean[] = [];
-  if (count < 3) return { positions, normals, isRoof };
+  const part: GeometryPart[] = [];
+  if (count < 3) return { positions, normals, isRoof, part };
 
   const { eaves, ridge } = drawableHeights(building);
   const base = building.ground;
   const top = base + eaves;
 
-  let cx = 0, cy = 0;
-  for (let i = 0; i < count; i++) { cx += ring[i * 2]; cy += ring[i * 2 + 1]; }
-  cx /= count; cy /= count;
-
-  const quad = (ax: number, ay: number, az: number, bx: number, by: number, bz: number,
-                cxx: number, cyy: number, cz: number, dx: number, dy: number, dz: number, roof: boolean) => {
-    // Two triangles, with a flat normal from the first.
-    const ux = bx - ax, uy = by - ay, uz = bz - az;
-    const vx = cxx - ax, vy = cyy - ay, vz = cz - az;
+  const quad = (a: readonly number[], b: readonly number[], c: readonly number[], d: readonly number[],
+                kind: GeometryPart) => {
+    const ux = b[0] - a[0], uy = b[1] - a[1], uz = b[2] - a[2];
+    const vx = c[0] - a[0], vy = c[1] - a[1], vz = c[2] - a[2];
     const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
-    const length = Math.hypot(nx, ny, nz) || 1;
-    for (const [px, py, pz] of [[ax, ay, az], [bx, by, bz], [cxx, cyy, cz], [ax, ay, az], [cxx, cyy, cz], [dx, dy, dz]]) {
-      positions.push(px, py, pz);
+    const length = Math.hypot(nx, ny, nz);
+    if (length < 1e-9) return;                       // collapsed; contributes nothing
+    for (const pt of [a, b, c, a, c, d]) {
+      positions.push(pt[0], pt[1], pt[2]);
       normals.push(nx / length, ny / length, nz / length);
-      isRoof.push(roof);
+      isRoof.push(kind === 'roof');
+      part.push(kind);
     }
   };
 
+  // Walls, base to eaves, on the footprint the registry published.
   for (let i = 0; i < count; i++) {
     const j = (i + 1) % count;
     const x0 = ring[i * 2], y0 = ring[i * 2 + 1];
     const x1 = ring[j * 2], y1 = ring[j * 2 + 1];
-    // Walls, base to eaves.
-    quad(x0, y0, base, x1, y1, base, x1, y1, top, x0, y0, top, false);
-    // Roof, eaves to ridge, drawn toward the centroid.
-    if (ridge > eaves) {
-      const rx0 = cx + (x0 - cx) * 0.22, ry0 = cy + (y0 - cy) * 0.22;
-      const rx1 = cx + (x1 - cx) * 0.22, ry1 = cy + (y1 - cy) * 0.22;
-      quad(x0, y0, top, x1, y1, top, rx1, ry1, base + ridge, rx0, ry0, base + ridge, true);
-    }
+    quad([x0, y0, base], [x1, y1, base], [x1, y1, top], [x0, y0, top], 'wall');
   }
-  return { positions, normals, isRoof };
+
+  const rise = ridge - eaves;
+  const frame = plotFrame(building);
+  if (rise <= 0.15 || !frame) return { positions, normals, isRoof, part };
+
+  // Extent of the footprint in the plot's own frame: `s` across the frontage,
+  // `d` into the plot.
+  const { ox, oy, ux, uy, nx, ny } = frame;
+  let sMin = Infinity, sMax = -Infinity, dMin = Infinity, dMax = -Infinity;
+  for (let i = 0; i < count; i++) {
+    const px = ring[i * 2] - ox, py = ring[i * 2 + 1] - oy;
+    const s = px * ux + py * uy, d = px * nx + py * ny;
+    if (s < sMin) sMin = s; if (s > sMax) sMax = s;
+    if (d < dMin) dMin = d; if (d > dMax) dMax = d;
+  }
+  const width = sMax - sMin;
+  if (width < 1 || dMax - dMin < 1) return { positions, normals, isRoof, part };
+
+  // World point from plot coordinates.
+  const at = (s: number, d: number, z: number): [number, number, number] =>
+    [ox + ux * s + nx * d, oy + uy * s + ny * d, z];
+
+  const sc = (sMin + sMax) / 2;
+  const zTop = base + ridge;
+
+  // Two roof planes, falling from the ridge to the party walls at the eaves.
+  quad(at(sMin, dMin, top), at(sMin, dMax, top), at(sc, dMax, zTop), at(sc, dMin, zTop), 'roof');
+  quad(at(sc, dMin, zTop), at(sc, dMax, zTop), at(sMax, dMax, top), at(sMax, dMin, top), 'roof');
+  // The back closes with a plain triangle. Nobody has seen it; nobody gets a
+  // klokgevel on the side they cannot see from the canal.
+  quad(at(sMin, dMax, top), at(sc, dMax, zTop), at(sMax, dMax, top), at(sMax, dMax, top), 'roof');
+
+  // The front gable: a screen wall standing in front of the roof, which is what
+  // it is in life — the reason a canal frontage reads as a row of distinct
+  // silhouettes rather than as one continuous roofline.
+  const { type } = gableFor(building);
+  const profile = gableProfile(type, width, rise);
+  // A hair proud of the wall below, so the two coplanar surfaces cannot fight
+  // for the same pixels along the eaves line where they meet.
+  const front = dMin - 0.02;
+  for (let i = 0; i + 1 < profile.length; i++) {
+    const [a0, h0] = profile[i], [a1, h1] = profile[i + 1];
+    const s0 = sMin + a0, s1 = sMin + a1;
+    quad(at(s0, front, top), at(s1, front, top),
+         at(s1, front, top + h1), at(s0, front, top + h0), 'gable');
+  }
+
+  // The cornice under it. A projecting band is close to universal on this
+  // fabric and it is what stops a wall from ending as a bare cut edge, but it
+  // is drawn from the vocabulary, not measured, so it is tagged as trim.
+  const cs = CORNICE.project, ch = CORNICE.height;
+  const cz = top - ch, out = dMin - cs;
+  quad(at(sMin, out, cz), at(sMax, out, cz), at(sMax, out, top), at(sMin, out, top), 'trim');
+  quad(at(sMin, out, top), at(sMax, out, top), at(sMax, dMin, top), at(sMin, dMin, top), 'trim');
+  quad(at(sMin, dMin, cz), at(sMax, dMin, cz), at(sMax, out, cz), at(sMin, out, cz), 'trim');
+
+  return { positions, normals, isRoof, part };
 }
 
 /**
- * Measured openings, as quads on the front wall.
+ * Measured openings, as recessed reveals on the front wall.
  *
- * Set slightly proud of the wall rather than cut into it. Booleaning holes
- * through a footprint extrusion is expensive and fragile, and at the distances
- * this layer is read from — a rider on the far quay — a recessed plane and a
- * real reveal are indistinguishable. What matters is that each rectangle is
- * where the measurement put it.
+ * These used to be flat rectangles set 5 cm proud of the wall, on the reasoning
+ * that at the distance a rider reads this from, a plane and a real reveal are
+ * indistinguishable. That was wrong, and wrong in a way a screenshot settles:
+ * a proud dark rectangle reads as a *sticker*, because the one cue that says
+ * "hole" is the shadow down one side of the reveal. It costs four quads.
+ *
+ * The frame is the other half. Amsterdam glazing sits in white-painted joinery
+ * against a dark wall, and that contrast is most of what makes a canal
+ * elevation legible at a distance — it is the reason the fabric reads as rows
+ * of bright verticals rather than as a wall with dents. The *positions* here
+ * are measured; that there is a frame at all, and that it is white, is drawn
+ * from the vocabulary, so the frame is tagged separately from the glass.
  *
  * Returns nothing for a building whose front has not been observed. That is the
  * rule the whole project turns on: no façade without an observation of it.
  */
-export function openingGeometry(building: Lod22Building): { positions: number[]; normals: number[] } {
+export type OpeningPart = 'glass' | 'frame' | 'sill';
+
+/** How far the glass sits behind the wall face, and how wide the frame is. */
+const REVEAL = { depth: 0.14, frame: 0.09, sill: 0.06 };
+
+export function openingGeometry(building: Lod22Building):
+  { positions: number[]; normals: number[]; part: OpeningPart[] } {
   const positions: number[] = [];
   const normals: number[] = [];
-  if (!building.facade?.openings.length) return { positions, normals };
+  const part: OpeningPart[] = [];
+  if (!building.facade?.openings.length) return { positions, normals, part };
 
   const [x0, y0, x1, y1] = building.facade.wall;
   const length = Math.hypot(x1 - x0, y1 - y0);
-  if (length < 0.5) return { positions, normals };
+  if (length < 0.5) return { positions, normals, part };
   const ux = (x1 - x0) / length, uy = (y1 - y0) / length;
   // Outward normal, to the right of the wall's own direction.
   const nx = uy, ny = -ux;
-  const PROUD = 0.05;
+
+  // A point on the wall: `s` along it, `d` proud of it, `z` absolute.
+  const at = (s: number, d: number, z: number): [number, number, number] =>
+    [x0 + ux * s + nx * d, y0 + uy * s + ny * d, z];
+
+  const quad = (a: readonly number[], b: readonly number[], c: readonly number[], d: readonly number[],
+                kind: OpeningPart) => {
+    const vx0 = b[0] - a[0], vy0 = b[1] - a[1], vz0 = b[2] - a[2];
+    const vx1 = c[0] - a[0], vy1 = c[1] - a[1], vz1 = c[2] - a[2];
+    const mx = vy0 * vz1 - vz0 * vy1, my = vz0 * vx1 - vx0 * vz1, mz = vx0 * vy1 - vy0 * vx1;
+    const len = Math.hypot(mx, my, mz);
+    if (len < 1e-9) return;
+    for (const pt of [a, b, c, a, c, d]) {
+      positions.push(pt[0], pt[1], pt[2]);
+      normals.push(mx / len, my / len, mz / len);
+      part.push(kind);
+    }
+  };
 
   for (const [along, up, width, height] of building.facade.openings) {
     if (along < -0.5 || along > length + 0.5) continue;   // outside its own wall
-    const ax = x0 + ux * along + nx * PROUD, ay = y0 + uy * along + ny * PROUD;
-    const bx = ax + ux * width, by = ay + uy * width;
-    const base = building.ground + up;
-    const top = base + height;
-    for (const [px, py, pz] of [
-      [ax, ay, base], [bx, by, base], [bx, by, top],
-      [ax, ay, base], [bx, by, top], [ax, ay, top],
-    ] as const) {
-      positions.push(px, py, pz);
-      normals.push(nx, ny, 0);
-    }
+    if (width < 0.2 || height < 0.2) continue;
+    const s0 = along, s1 = along + width;
+    const zb = building.ground + up, zt = zb + height;
+    const back = -REVEAL.depth;
+    const f = Math.min(REVEAL.frame, width / 3, height / 3);
+
+    // Glass, at the back of the reveal and inset by the frame it sits in.
+    quad(at(s0 + f, back, zb + f), at(s1 - f, back, zb + f),
+         at(s1 - f, back, zt - f), at(s0 + f, back, zt - f), 'glass');
+
+    // The frame around it, in the plane of the glass. Four bands rather than a
+    // ring so each stays a quad and none of them needs triangulating.
+    quad(at(s0, back, zb), at(s1, back, zb), at(s1, back, zb + f), at(s0, back, zb + f), 'frame');
+    quad(at(s0, back, zt - f), at(s1, back, zt - f), at(s1, back, zt), at(s0, back, zt), 'frame');
+    quad(at(s0, back, zb + f), at(s0 + f, back, zb + f), at(s0 + f, back, zt - f), at(s0, back, zt - f), 'frame');
+    quad(at(s1 - f, back, zb + f), at(s1, back, zb + f), at(s1, back, zt - f), at(s1 - f, back, zt - f), 'frame');
+
+    // The reveal itself: the sides and head of the hole. This is the shadow.
+    quad(at(s0, 0, zb), at(s0, back, zb), at(s0, back, zt), at(s0, 0, zt), 'frame');
+    quad(at(s1, back, zb), at(s1, 0, zb), at(s1, 0, zt), at(s1, back, zt), 'frame');
+    quad(at(s0, 0, zt), at(s0, back, zt), at(s1, back, zt), at(s1, 0, zt), 'frame');
+
+    // A sill, projecting a little to throw water clear of the wall below.
+    const p = REVEAL.sill;
+    quad(at(s0 - p, p, zb), at(s1 + p, p, zb), at(s1 + p, back, zb), at(s0 - p, back, zb), 'sill');
+    quad(at(s0 - p, p, zb - p), at(s1 + p, p, zb - p), at(s1 + p, p, zb), at(s0 - p, p, zb), 'sill');
   }
-  return { positions, normals };
+  return { positions, normals, part };
 }
 
 /** Every building whose footprint the boundary contains, for tier ownership. */

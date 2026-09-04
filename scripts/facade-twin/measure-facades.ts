@@ -154,7 +154,21 @@ for (const buildingId of ids) {
   const eaves = mass?.eavesHeight ?? ground + 12;
   // Measure the wall below the eaves: that is where openings live, and it keeps
   // the roof's dark slates out of the dark-region search.
-  const baseZ = ground - 0.4, topZ = eaves + 0.3;
+  //
+  // The base was `ground - 0.4`, and 40 cm is not enough. A canal house is
+  // entered up a stoep, and the storey the stoep steps over is a souterrain
+  // whose windows sit roughly 0.8–1.6 m *below* street level. At 40 cm the
+  // strip's bottom edge cut straight through them, so every souterrain opening
+  // ran off the bottom of the image and the detector clamped it to the edge:
+  // 1,020 of 10,335 openings across the pilot came out at a sill of exactly
+  // -0.40 m, which is not a measurement, it is the picture running out. The
+  // front door went the same way, being the other thing that reaches the
+  // ground — 1,213 of 1,340 measured façades had no door-shaped opening at all.
+  //
+  // 1.8 m clears the deepest souterrain sill in the fabric and takes in the
+  // stoep with it. It costs a taller strip and some quay wall at the bottom,
+  // which the detector's own plausibility test already rejects.
+  const baseZ = ground - 1.8, topZ = eaves + 0.3;
 
   const rect = rectifyFacade(image, {
     x: pose.point.x, y: pose.point.y, z: pose.view.cameraHeight - GEOID_SEPARATION_M,

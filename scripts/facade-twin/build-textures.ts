@@ -38,16 +38,21 @@ const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))
 const PER_MATERIAL = Number(arg('per-material') ?? 40);
 
 /**
- * A tile is one metre square at 96 px.
+ * A tile is 0.63 m square at 128 px — three brick stretchers wide.
  *
- * A metre is the right module because the material tile sizes in the vocabulary
- * are already in metres, so a renderer can repeat this without knowing anything
- * about how it was captured. 96 px/m is a little under the ~100 px/m the closest
- * panoramas resolve, so tiles are never upsampled into detail that was not
- * photographed.
+ * The module has to be a whole number of bricks or the bond breaks at the seam,
+ * and 3 x 0.21 m is the smallest that still carries enough wall to look like
+ * wall. At 128 px that is 45 px per stretcher and 10 px per course, which is
+ * where a bond starts reading as brick rather than as blocks — the first
+ * version used a 1 m tile at 96 px, giving 20 px per stretcher, and the result
+ * looked like concrete masonry units the size of a door.
+ *
+ * 203 px/m is above what the closest panoramas resolve, so the photographic
+ * half is upsampled a little. That is the right trade: the colour survives
+ * upsampling and the bond is drawn, not sampled.
  */
-const TILE_PX = 96;
-const TILE_M = 1;
+const TILE_PX = 128;
+const TILE_M = 0.63;   // three stretchers plus joints, so the tile seams on a perpend
 
 interface Measured {
   pandId: string; panoramaId: string; standoffM: number; obliquityDeg: number;

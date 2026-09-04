@@ -9,7 +9,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../src/canalRecall/facade/areas.ts';
-import { buildingGeometry, colourFor, drawableHeights, EVIDENCE_COLOURS, FACADE_COLOURS, openingGeometry, ownedPandIds, type Lod22Extract } from '../src/canalRecall/facade/facadeLayer.ts';
+import { buildingGeometry, colourFor, drawableHeights, EVIDENCE_COLOURS, FACADE_COLOURS, gableFor, openingGeometry, ownedPandIds, type Lod22Extract } from '../src/canalRecall/facade/facadeLayer.ts';
 
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AMSTERDAM_GRACHTENGORDEL_WEST.areaId);
 const extract = JSON.parse(readFileSync(path.join(STAGING, 'lod22.json'), 'utf8')) as Lod22Extract;
@@ -120,9 +120,68 @@ if (unobserved) {
   check('an unobserved building reads as unobserved', colourFor(unobserved, 'facade', 'wall') === FACADE_COLOURS.unobserved, `pand ${unobserved.id}`);
 }
 
-// Openings are six vertices each — two triangles — and nothing else.
-const stray = withFacade.find(b => openingGeometry(b).positions.length / 3 !== b.facade!.openings.length * 6);
-check('each opening is exactly two triangles', !stray, stray ? `pand ${stray.id}` : `${openingsTotal} openings`);
+// Every opening draws glass, joinery and a sill, and nothing else.
+const strayCounts = withFacade.find(b => {
+  const drawnHere = b.facade!.openings.filter(([along, , w, h]) => {
+    const [x0, y0, x1, y1] = b.facade!.wall;
+    const length = Math.hypot(x1 - x0, y1 - y0);
+    return along >= -0.5 && along <= length + 0.5 && w >= 0.2 && h >= 0.2;
+  }).length;
+  const parts = openingGeometry(b).part;
+  const glass = parts.filter(p => p === 'glass').length / 6;
+  const sill = parts.filter(p => p === 'sill').length / 6;
+  return glass !== drawnHere || sill !== drawnHere * 2;
+});
+check('each opening draws one glass pane and its sill', !strayCounts,
+  strayCounts ? `pand ${strayCounts.id}` : `${openingsTotal} openings`);
+
+// The reveal is the point of the rewrite: the glass has to sit *behind* the
+// wall face, not proud of it. Proud, it reads as a sticker stuck on the front.
+// Measured on the wall's own outward normal so it holds at any bearing.
+const notRecessed = withFacade.find(b => {
+  const geometry = openingGeometry(b);
+  if (!geometry.positions.length) return false;
+  const [x0, y0, x1, y1] = b.facade!.wall;
+  const length = Math.hypot(x1 - x0, y1 - y0);
+  const nx = (y1 - y0) / length, ny = -(x1 - x0) / length;
+  for (let i = 0; i < geometry.part.length; i++) {
+    if (geometry.part[i] !== 'glass') continue;
+    const d = (geometry.positions[i * 3] - x0) * nx + (geometry.positions[i * 3 + 1] - y0) * ny;
+    if (d > -0.05) return true;
+  }
+  return false;
+});
+check('glass is recessed behind the wall face', !notRecessed, notRecessed ? `pand ${notRecessed.id}` : 'all reveals');
+
+// The ridge is a measurement and the gable is drawn, so the drawing conforms to
+// the measurement and never the other way round: no gable may stand above the
+// ridge the laser found. A shaped gable reaches it exactly, because that is
+// what a shaped gable is — the front wall carried up to the ridge. A `lijst`
+// deliberately does not: it is a cornice with the roof visible behind it, and
+// forcing it to the ridge would turn every 19th-century parapet into a spout.
+const gabled = extract.buildings.filter(b => b.facade && (b.ridge ?? 0) - (b.eaves ?? 0) > 0.5);
+const peakOf = (b: (typeof gabled)[number]) => {
+  const geometry = buildingGeometry(b);
+  let peak = -Infinity;
+  for (let i = 0; i < geometry.part.length; i++) {
+    if (geometry.part[i] === 'gable') peak = Math.max(peak, geometry.positions[i * 3 + 2]);
+  }
+  return peak;
+};
+const overRidge = gabled.find(b => peakOf(b) > b.ground + b.ridge! + 0.05);
+check('no gable stands above the measured ridge', !overRidge,
+  overRidge ? `pand ${overRidge.id}` : `${gabled.length} gables`);
+const shaped = gabled.filter(b => gableFor(b).type !== 'lijst');
+const shortGable = shaped.find(b => Math.abs(peakOf(b) - (b.ground + b.ridge!)) > 0.05);
+check('a shaped gable reaches the measured ridge', !shortGable,
+  shortGable ? `pand ${shortGable.id}` : `${shaped.length} shaped`);
+
+// A building nobody has looked at gets the plainest gable there is. Anything
+// shaped would be inventing a front that has never been photographed.
+const unobservedGables = extract.buildings.filter(b => !b.facade);
+const invented = unobservedGables.find(b => gableFor(b).type !== 'punt' || gableFor(b).stated);
+check('an unobserved front gets a plain gable', !invented,
+  invented ? `pand ${invented.id}` : `${unobservedGables.length} unobserved`);
 
 console.log(`Façades: ${withFacade.length} measured, ${openingsTotal} openings, `
   + `${(100 * withFacade.length / extract.buildings.length).toFixed(1)}% of the boundary observed.`);

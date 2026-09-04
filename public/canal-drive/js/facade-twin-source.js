@@ -7,7 +7,7 @@
  * aligned with MapLibre's mercator, and telling the 3DBAG tile layer to stop
  * drawing the buildings this layer now owns.
  */
-import { buildingGeometry, colourFor, GLASS_COLOUR, openingGeometry, ownedPandIds, WATER_COLOUR, waterGeometry } from '../../../src/canalRecall/facade/facadeLayer.ts';
+import { buildingGeometry, colourFor, FRAME_COLOUR, GLASS_COLOUR, openingGeometry, ownedPandIds, SILL_COLOUR, WATER_COLOUR, waterGeometry } from '../../../src/canalRecall/facade/facadeLayer.ts';
 
 const { THREE } = window.CanalRecallThree;
 
@@ -25,7 +25,7 @@ export class FacadeTwin {
     this.opacity = 1;
     this.extract = null;
     this.onReady = options.onReady || (() => {});
-    this._mesh = null;
+    this._meshes = [];
     this.layer = this._makeLayer();
   }
 
@@ -37,57 +37,66 @@ export class FacadeTwin {
   setEnabled(enabled) {
     this.enabled = !!enabled;
     if (this.enabled && !this.map.getLayer(this.layer.id)) this.map.addLayer(this.layer);
-    if (this._mesh) this._mesh.visible = this.enabled;
+    for (const mesh of this._meshes) mesh.visible = this.enabled;
     this.map.triggerRepaint();
   }
 
   /** Draw with the extracted wall textures, or with flat measured colour. */
   setTextured(on) {
     this.textured = !!on;
-    if (this._mesh) {
-      this._mesh.material.map = this.textured ? this._atlas : null;
-      this._mesh.material.needsUpdate = true;
-    }
+    this._applyMaps();
     this.map.triggerRepaint();
+  }
+
+  /**
+   * Whose walls carry a texture right now.
+   *
+   * Only in façade mode. The other modes are reporting a number per building —
+   * a height band, a provenance — and a brick bond drawn over a legend colour
+   * makes it unreadable without adding anything true.
+   */
+  _applyMaps() {
+    for (const mesh of this._meshes) {
+      const map = (this.textured && this.colourMode === 'facade') ? (mesh.userData.texture || null) : null;
+      if (mesh.material.map !== map) {
+        mesh.material.map = map;
+        mesh.material.needsUpdate = true;
+      }
+    }
   }
 
   setColourMode(mode) {
     this.colourMode = mode;
-    if (this.extract && this._mesh) this._paint();
+    if (this.extract && this._meshes.length) this._paint();
+    this._applyMaps();
     this.map.triggerRepaint();
   }
 
   /** Fade the massing against a reference photograph. */
   setOpacity(opacity) {
     this.opacity = Math.max(0, Math.min(1, opacity));
-    if (this._mesh) {
-      this._mesh.material.opacity = this.opacity;
-      this._mesh.material.transparent = this.opacity < 1;
+    for (const mesh of this._meshes) {
+      mesh.material.opacity = this.opacity;
+      mesh.material.transparent = this.opacity < 1;
     }
     this.map.triggerRepaint();
   }
 
   _paint() {
-    const colours = this._mesh.geometry.getAttribute('color');
-    let vertex = 0;
     const colour = new THREE.Color();
-    for (const building of this.extract.buildings) {
-      const { positions, isRoof } = this._cache.get(building.id);
-      for (let i = 0; i < positions.length / 3; i++) {
-        colour.setHex(colourFor(building, this.colourMode, isRoof[i] ? 'roof' : 'wall'));
-        colours.setXYZ(vertex++, colour.r, colour.g, colour.b);
+    for (const mesh of this._meshes) {
+      const colours = mesh.geometry.getAttribute('color');
+      for (const span of mesh.userData.spans) {
+        // A span is one contiguous run of vertices with one source of colour:
+        // a building's massing, a fixed part colour, or the water.
+        const hex = span.building
+          ? colourFor(span.building, this.colourMode, span.part)
+          : span.hex;
+        colour.setHex(hex);
+        for (let i = span.from; i < span.to; i++) colours.setXYZ(i, colour.r, colour.g, colour.b);
       }
+      colours.needsUpdate = true;
     }
-    // Openings stay glass in every mode: they are the measurement, not a legend.
-    colour.setHex(GLASS_COLOUR);
-    for (const [from, to] of this._openingRanges || []) {
-      for (let i = from; i < to; i++) colours.setXYZ(i, colour.r, colour.g, colour.b);
-    }
-    if (this._waterRange) {
-      colour.setHex(WATER_COLOUR);
-      for (let i = this._waterRange[0]; i < this._waterRange[1]; i++) colours.setXYZ(i, colour.r, colour.g, colour.b);
-    }
-    colours.needsUpdate = true;
   }
 
   _makeLayer() {
@@ -100,10 +109,34 @@ export class FacadeTwin {
       async onAdd(map, gl) {
         camera = new THREE.PerspectiveCamera();
         scene = new THREE.Scene();
-        scene.add(new THREE.AmbientLight(0xffffff, 1.5));
-        const sun = new THREE.DirectionalLight(0xfff4e6, 1.4);
-        sun.position.set(-0.5, -1, 1.2);
+        // Lighting.
+        //
+        // This was an AmbientLight at 1.5 plus one directional, and an ambient
+        // that strong is not lighting — it is a flat wash that adds the same
+        // value to every surface regardless of which way it faces. It was doing
+        // two bad things at once: washing the measured colours toward white,
+        // and flattening every normal, so a reveal, a cornice and a roof pitch
+        // all came out the same value as the wall. The scene read as dark
+        // *because* of it: the wash raised the floor, so the sun had nothing
+        // left to lift the lit faces above.
+        //
+        // A hemisphere replaces it. Sky above and ground bounce below is what
+        // an overcast Dutch afternoon actually is, and it still varies with the
+        // normal, so a north-facing wall goes cooler and a sill catches light
+        // from below the way a real one does.
+        scene.add(new THREE.HemisphereLight(0xc9d9e4, 0x4a4238, 1.35));
+        // Sun from the south-west, which is where the afternoon light that
+        // makes a canal frontage legible comes from. Vector is in the layer's
+        // y-up frame, so y is height and z runs south.
+        const sun = new THREE.DirectionalLight(0xffeed2, 1.9);
+        sun.position.set(-0.62, 0.66, 0.42);
         scene.add(sun);
+        // A cool fill from the opposite side, at a fifth of the sun. Without it
+        // every shaded elevation crushes to one flat dark value and the terrace
+        // loses its depth — which is the other half of why this looked dark.
+        const fill = new THREE.DirectionalLight(0x9fb4c6, 0.42);
+        fill.position.set(0.55, 0.30, -0.72);
+        scene.add(fill);
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
 
@@ -129,119 +162,161 @@ export class FacadeTwin {
           .scale(new THREE.Vector3(scale, -scale, scale))
           .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
 
-        // Wall textures, packed into one atlas so the whole boundary stays a
-        // single draw call. Each material gets a cell; a wall's UVs are scaled
-        // so the tile repeats at its real one-metre size.
-        let atlasIndex = new Map();
+        // Wall textures, one repeating material each.
+        //
+        // These used to be packed into a single atlas so the boundary stayed one
+        // draw call, and the atlas is exactly why the bricks came out the size
+        // of doors. An atlas forces UVs into a cell, so a world-space UV has to
+        // be wrapped by hand — `fract(east)` — and a wall quad has only two
+        // vertices along its length. Between them the rasteriser interpolates,
+        // so `fract` at each end does not repeat the tile fifteen times across a
+        // 15 m wall: it stretches *one* tile across the whole thing, or runs it
+        // backwards when the fractions happen to descend. Wrapping is the GPU's
+        // job and it can only do it on an unwrapped UV, which an atlas forbids.
+        //
+        // So: a mesh per material, RepeatWrapping, and UVs in real metres. Seven
+        // draw calls for the whole canal ring is not a cost worth a bug.
+        const textures = new Map();
+        let tileM = 0.63;
         try {
           const manifest = await (await fetch(owner.textureUrl)).json();
-          const tiles = manifest.textures || [];
-          if (tiles.length) {
-            const cell = manifest.metadata?.tilePixels || 96;
-            const cols = Math.ceil(Math.sqrt(tiles.length));
-            const rows = Math.ceil(tiles.length / cols);
-            const canvas = document.createElement('canvas');
-            canvas.width = cols * cell; canvas.height = rows * cell;
-            const context = canvas.getContext('2d');
-            await Promise.all(tiles.map((tile, i) => new Promise(resolve => {
-              const img = new Image();
-              img.onload = () => {
-                context.drawImage(img, (i % cols) * cell, Math.floor(i / cols) * cell, cell, cell);
-                atlasIndex.set(tile.materialId, {
-                  u0: (i % cols) / cols, v0: Math.floor(i / cols) / rows,
-                  du: 1 / cols, dv: 1 / rows,
-                });
-                resolve();
-              };
-              img.onerror = resolve;
-              img.src = owner.textureUrl.replace(/manifest\.json$/, tile.file);
-            })));
-            owner._atlas = new THREE.CanvasTexture(canvas);
-            owner._atlas.colorSpace = THREE.SRGBColorSpace;
-            owner._atlas.anisotropy = 4;
-          }
+          tileM = manifest.metadata?.tileMetres || tileM;
+          await Promise.all((manifest.textures || []).map(tile => new Promise(resolve => {
+            const image = new Image();
+            image.onload = () => {
+              const texture = new THREE.Texture(image);
+              texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+              texture.colorSpace = THREE.SRGBColorSpace;
+              texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+              texture.needsUpdate = true;
+              textures.set(tile.materialId, texture);
+              resolve();
+            };
+            image.onerror = resolve;
+            image.src = owner.textureUrl.replace(/manifest\.json$/, tile.file);
+          })));
         } catch (error) {
           // No texture pack is a fine state: the measured colours still draw.
           console.warn('Façade textures unavailable; drawing flat measured colour.', error);
         }
-        owner._atlasIndex = atlasIndex;
+        owner._tileM = tileM;
+
+        // One bucket per wall material, plus one for everything that is not a
+        // textured wall — roofs, joinery, glass, water.
+        const buckets = new Map();
+        const bucketFor = key => {
+          let bucket = buckets.get(key);
+          if (!bucket) {
+            bucket = { key, positions: [], normals: [], colours: [], uvs: [], spans: [] };
+            buckets.set(key, bucket);
+          }
+          return bucket;
+        };
+        const UNTEXTURED = '';
 
         owner._cache = new Map();
-        const positions = [], normals = [], colours = [], uvs = [];
         const colour = new THREE.Color();
+
+        // Axis swap, and it is load-bearing. The geometry is RD-native — x east,
+        // y north, z up — because that is what the extract holds and what the
+        // geometry check can reason about without a GPU. MapLibre's custom-layer
+        // transform is the usual three.js one, which rotates about X by 90°, so
+        // it expects y to be *up* and z to run south. Feeding it z-up geometry
+        // lays every building flat on the water and draws nothing at the
+        // camera's pitch.
+        const emit = (bucket, src, i, hex, u, v) => {
+          bucket.positions.push(src.positions[i * 3], src.positions[i * 3 + 2], -src.positions[i * 3 + 1]);
+          bucket.normals.push(src.normals[i * 3], src.normals[i * 3 + 2], -src.normals[i * 3 + 1]);
+          colour.setHex(hex);
+          bucket.colours.push(colour.r, colour.g, colour.b);
+          bucket.uvs.push(u, v);
+        };
+
         for (const building of extract.buildings) {
           const geometry = buildingGeometry(building);
           owner._cache.set(building.id, geometry);
-          for (let i = 0; i < geometry.positions.length / 3; i++) {
-            // Axis swap, and it is load-bearing. The geometry is RD-native —
-            // x east, y north, z up — because that is what the extract holds and
-            // what the geometry check can reason about without a GPU. MapLibre's
-            // custom-layer transform is the usual three.js one, which rotates
-            // about X by 90°, so it expects y to be *up* and z to run south.
-            // Feeding it z-up geometry lays every building flat on the water and
-            // draws nothing at the camera's pitch.
-            const east = geometry.positions[i * 3];
-            const north = geometry.positions[i * 3 + 1];
-            const up = geometry.positions[i * 3 + 2];
-            positions.push(east, up, -north);
-            normals.push(geometry.normals[i * 3], geometry.normals[i * 3 + 2], -geometry.normals[i * 3 + 1]);
-            colour.setHex(colourFor(building, owner.colourMode, geometry.isRoof[i] ? 'roof' : 'wall'));
-            colours.push(colour.r, colour.g, colour.b);
-            // World-space UVs at one tile per metre, mapped into the material's
-            // atlas cell. Using world coordinates rather than per-face UVs keeps
-            // the bond continuous across a building's corners.
-            const cellFor = geometry.isRoof[i] ? null : atlasIndex.get(building.facade?.wallMaterial);
-            if (cellFor) {
-              uvs.push(cellFor.u0 + (((east % 1) + 1) % 1) * cellFor.du,
-                       cellFor.v0 + (((up % 1) + 1) % 1) * cellFor.dv);
-            } else {
-              uvs.push(0.001, 0.001);
+          const material = building.facade?.wallMaterial;
+          const texture = textures.get(material);
+          // Origin for this building's UVs. Per-building rather than citywide so
+          // the bond stays continuous around its own corners without the UV
+          // growing to a thousand tiles and losing precision in a float.
+          const ox = building.ring[0], oy = building.ring[1];
+
+          // Runs of one part in a row become one span, so a colour-mode change
+          // is a handful of writes per building rather than one per vertex.
+          let i = 0;
+          const total = geometry.positions.length / 3;
+          while (i < total) {
+            const part = geometry.part[i];
+            let j = i;
+            while (j < total && geometry.part[j] === part) j++;
+            // A gable is the front wall continued, so it carries the wall's
+            // texture; roof and trim never do.
+            const textured = texture && (part === 'wall' || part === 'gable');
+            const bucket = bucketFor(textured ? material : UNTEXTURED);
+            const from = bucket.positions.length / 3;
+            const hex = colourFor(building, owner.colourMode, part);
+            for (let k = i; k < j; k++) {
+              const east = geometry.positions[k * 3], north = geometry.positions[k * 3 + 1];
+              const up = geometry.positions[k * 3 + 2];
+              // World-space UVs at the tile's real size. Horizontal distance is
+              // measured along the ground so a wall's bond does not shear with
+              // its bearing; vertical is simply height, so courses stay level.
+              const along = Math.hypot(east - ox, north - oy);
+              emit(bucket, geometry, k, hex, textured ? along / tileM : 0.5, textured ? up / tileM : 0.5);
             }
+            bucket.spans.push({ from, to: bucket.positions.length / 3, building, part });
+            i = j;
           }
         }
 
-        // Measured openings, appended to the same buffers. Tagged so a colour
-        // mode change repaints walls and roofs without turning glass into brick.
-        owner._openingRanges = [];
+        // Measured openings. Glass, joinery and sills each keep a fixed colour
+        // in every mode: they are the measurement being reported, not a legend.
+        const trim = bucketFor(UNTEXTURED);
+        const OPENING_COLOURS = { glass: GLASS_COLOUR, frame: FRAME_COLOUR, sill: SILL_COLOUR };
         for (const building of extract.buildings) {
           const opening = openingGeometry(building);
           if (!opening.positions.length) continue;
-          const from = positions.length / 3;
-          for (let i = 0; i < opening.positions.length / 3; i++) {
-            positions.push(opening.positions[i * 3], opening.positions[i * 3 + 2], -opening.positions[i * 3 + 1]);
-            normals.push(opening.normals[i * 3], opening.normals[i * 3 + 2], -opening.normals[i * 3 + 1]);
-            colour.setHex(GLASS_COLOUR);
-            colours.push(colour.r, colour.g, colour.b);
-            uvs.push(0.001, 0.001);
+          let i = 0;
+          const total = opening.positions.length / 3;
+          while (i < total) {
+            const part = opening.part[i];
+            let j = i;
+            while (j < total && opening.part[j] === part) j++;
+            const hex = OPENING_COLOURS[part] ?? GLASS_COLOUR;
+            const from = trim.positions.length / 3;
+            for (let k = i; k < j; k++) emit(trim, opening, k, hex, 0.5, 0.5);
+            trim.spans.push({ from, to: trim.positions.length / 3, hex });
+            i = j;
           }
-          owner._openingRanges.push([from, positions.length / 3]);
         }
 
-        // Canal water, flat at its published level. Appended last so it can be
-        // tinted independently of any colour mode — the water is context, not a
-        // measurement being reported.
+        // Canal water, flat at its published level. The water is context, not a
+        // measurement being reported, so it is tinted independently of any mode.
         const water = waterGeometry(extract);
-        owner._waterRange = [positions.length / 3, positions.length / 3 + water.positions.length / 3];
-        for (let i = 0; i < water.positions.length / 3; i++) {
-          positions.push(water.positions[i * 3], water.positions[i * 3 + 2], -water.positions[i * 3 + 1]);
-          normals.push(0, 1, 0);
-          colour.setHex(WATER_COLOUR);
-          colours.push(colour.r, colour.g, colour.b);
-          uvs.push(0.001, 0.001);
+        if (water.positions.length) {
+          const from = trim.positions.length / 3;
+          for (let i = 0; i < water.positions.length / 3; i++) {
+            emit(trim, water, i, WATER_COLOUR, 0.5, 0.5);
+          }
+          trim.spans.push({ from, to: trim.positions.length / 3, hex: WATER_COLOUR });
         }
 
-
-        const geometry = new THREE.BufferGeometry();
-        geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-        geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
-        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colours, 3));
-        geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
-        owner._mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({
-          vertexColors: true,
-          map: owner.textured ? owner._atlas : null,
-        }));
-        owner._mesh.visible = owner.enabled;
-        scene.add(owner._mesh);
+        owner._meshes = [];
+        for (const bucket of buckets.values()) {
+          if (!bucket.positions.length) continue;
+          const geometry = new THREE.BufferGeometry();
+          geometry.setAttribute('position', new THREE.Float32BufferAttribute(bucket.positions, 3));
+          geometry.setAttribute('normal', new THREE.Float32BufferAttribute(bucket.normals, 3));
+          geometry.setAttribute('color', new THREE.Float32BufferAttribute(bucket.colours, 3));
+          geometry.setAttribute('uv', new THREE.Float32BufferAttribute(bucket.uvs, 2));
+          const mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({ vertexColors: true }));
+          mesh.userData = { spans: bucket.spans, texture: textures.get(bucket.key) || null };
+          mesh.visible = owner.enabled;
+          owner._meshes.push(mesh);
+          scene.add(mesh);
+        }
+        owner._applyMaps();
 
         owner.ready = true;
         owner.onReady(owner);
@@ -250,7 +325,7 @@ export class FacadeTwin {
 
       render(gl, matrix) {
         owner.renderCalls = (owner.renderCalls || 0) + 1;
-        if (!owner.enabled || !owner._mesh || !localTransform) { owner.lastSkip = { enabled: owner.enabled, mesh: !!owner._mesh, transform: !!localTransform }; return; }
+        if (!owner.enabled || !owner._meshes.length || !localTransform) { owner.lastSkip = { enabled: owner.enabled, meshes: owner._meshes.length, transform: !!localTransform }; return; }
         owner.drawCalls = (owner.drawCalls || 0) + 1;
         camera.projectionMatrix = new THREE.Matrix4().fromArray(matrix).multiply(localTransform);
         renderer.resetState();
@@ -258,11 +333,13 @@ export class FacadeTwin {
       },
 
       onRemove() {
-        if (owner._mesh) {
-          owner._mesh.geometry.dispose();
-          owner._mesh.material.dispose();
-          owner._mesh = null;
+        for (const mesh of owner._meshes) {
+          mesh.geometry.dispose();
+          mesh.material.map?.dispose();
+          mesh.material.dispose();
+          scene?.remove(mesh);
         }
+        owner._meshes = [];
         owner.ready = false;
       },
     };
