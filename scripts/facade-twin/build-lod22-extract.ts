@@ -3,9 +3,15 @@
  *
  * Footprint, ground level, eaves and ridge for every building in the boundary,
  * keyed by BAG `pand_id`, in metres relative to the area's fixed local origin.
- * Nothing here is a façade: no openings, no gable form, no measured colour.
- * That is the correct resting tier for a building whose front nobody has
- * looked at, and 2,981 of the 3,025 are in exactly that state.
+ * Most of it is not a façade: no openings, no gable form, no measured colour.
+ * That is the correct resting tier for a building whose front nobody has looked
+ * at, and it is the state the great majority are in.
+ *
+ * Where a façade *has* been measured, it is merged in here so the renderer can
+ * draw it — the openings found in that building's own photograph, its measured
+ * wall material, and the front wall they sit on. The two tiers live in one
+ * extract because the renderer has to resolve one representation per building,
+ * and a building carries `facade: null` when nobody has observed its front.
  *
  * Heights come through `resolveHeights` rather than straight off the massing
  * model, so the 198 buildings across the pilot whose modelled ridge sits below
@@ -23,6 +29,13 @@ import { resolveHeights, type HeightReason } from '../../src/canalRecall/facade/
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, MassingRecord } from '../../src/canalRecall/facade/sources.ts';
 
+interface BlockRecord {
+  house: { pandId: string };
+  frontWall: { start: [number, number]; end: [number, number]; widthM: number } | null;
+  measuredOpenings: Array<{ xM: number; yM: number; widthM: number; heightM: number }>;
+  render: { wallMaterial: string; wallSource: string };
+}
+
 const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
 const CACHE = path.resolve('.cache/facade-twin');
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
@@ -32,6 +45,22 @@ const registry = JSON.parse(await readFile(path.join(CACHE, `${AREA.areaId}-regi
 const recon = JSON.parse(await readFile(path.join(STAGING, 'recon.json'), 'utf8'));
 const massing = new Map<string, MassingRecord>(recon.massing.map((m: MassingRecord) => [m.buildingId, m]));
 const inArea = new Set<string>(recon.buildings.map((b: { buildingId: string }) => b.buildingId));
+
+/**
+ * Measured façades, where any exist yet.
+ *
+ * Optional on purpose: the extract must build before any façade has been
+ * measured, and the renderer must draw a boundary in which almost nothing has.
+ */
+let facades = new Map<string, BlockRecord>();
+try {
+  const block = JSON.parse(await readFile(path.join(STAGING, 'block.json'), 'utf8')) as { buildings: BlockRecord[] };
+  facades = new Map(block.buildings
+    .filter(record => record.frontWall && record.measuredOpenings?.length)
+    .map(record => [record.house.pandId, record]));
+} catch (error) {
+  if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+}
 
 const origin = AREA.localOrigin;
 const round = (value: number) => Math.round(value * 10) / 10;
@@ -45,6 +74,12 @@ const buildings: Array<{
   ridge: number | null;
   roof: string;
   reason: HeightReason | null;
+  /** Present only where this building's front has actually been observed. */
+  facade: {
+    wall: [x0: number, y0: number, x1: number, y1: number];
+    wallMaterial: string;
+    openings: Array<[alongM: number, upM: number, widthM: number, heightM: number]>;
+  } | null;
 }> = [];
 
 const reasons = new Map<string, number>();
@@ -72,6 +107,21 @@ for (const entry of registry) {
     ridge: heights?.ridgeM != null ? round(heights.ridgeM) : null,
     roof: mass?.roofForm ?? 'unknown',
     reason: heights?.reason ?? null,
+    facade: (() => {
+      const record = facades.get(entry.buildingId);
+      if (!record?.frontWall) return null;
+      return {
+        wall: [
+          round(record.frontWall.start[0] - origin.x), round(record.frontWall.start[1] - origin.y),
+          round(record.frontWall.end[0] - origin.x), round(record.frontWall.end[1] - origin.y),
+        ] as [number, number, number, number],
+        wallMaterial: record.render.wallMaterial,
+        // Openings are metres along the wall from its start, and metres above
+        // the strip base, which was cut 0.4 m below the measured ground.
+        openings: record.measuredOpenings.map(o =>
+          [o.xM, o.yM - 0.4, o.widthM, o.heightM] as [number, number, number, number]),
+      };
+    })(),
   });
 }
 
@@ -90,7 +140,9 @@ await writeFile(file, JSON.stringify({
     buildings: buildings.length,
     withRidge: buildings.filter(b => b.ridge !== null).length,
     withEaves: buildings.filter(b => b.eaves !== null).length,
-    note: 'Massing only. No façade: no openings, no gable form, no measured colour. A building here has not had its front observed.',
+    facadesMeasured: buildings.filter(b => b.facade).length,
+    openingsMeasured: buildings.reduce((sum, b) => sum + (b.facade?.openings.length ?? 0), 0),
+    note: 'Massing for every building; a measured façade only where one exists. `facade: null` means nobody has observed that building\'s front, which is true of almost all of them.',
   },
   buildings,
 }));
@@ -98,6 +150,7 @@ await writeFile(file, JSON.stringify({
 const bytes = (await readFile(file)).length;
 console.log(`${buildings.length} buildings, ${(bytes / 1024 / 1024).toFixed(2)} MB`);
 console.log(`  ${buildings.filter(b => b.ridge !== null).length} with a ridge, ${buildings.filter(b => b.eaves !== null).length} with eaves`);
+console.log(`  ${buildings.filter(b => b.facade).length} with a measured façade, ${buildings.reduce((s, b) => s + (b.facade?.openings.length ?? 0), 0)} openings in total`);
 console.log('\nHeight resolution');
 for (const [reason, n] of [...reasons.entries()].sort((a, b) => b[1] - a[1])) console.log(`  ${String(n).padStart(5)}  ${reason}`);
 const roofs = new Map<string, number>();

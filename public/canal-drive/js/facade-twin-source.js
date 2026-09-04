@@ -7,7 +7,7 @@
  * aligned with MapLibre's mercator, and telling the 3DBAG tile layer to stop
  * drawing the buildings this layer now owns.
  */
-import { buildingGeometry, colourFor, ownedPandIds } from '../../../src/canalRecall/facade/facadeLayer.ts';
+import { buildingGeometry, colourFor, GLASS_COLOUR, openingGeometry, ownedPandIds } from '../../../src/canalRecall/facade/facadeLayer.ts';
 
 const { THREE } = window.CanalRecallThree;
 
@@ -65,6 +65,11 @@ export class FacadeTwin {
         colour.setHex(colourFor(building, this.colourMode, isRoof[i] ? 'roof' : 'wall'));
         colours.setXYZ(vertex++, colour.r, colour.g, colour.b);
       }
+    }
+    // Openings stay glass in every mode: they are the measurement, not a legend.
+    colour.setHex(GLASS_COLOUR);
+    for (const [from, to] of this._openingRanges || []) {
+      for (let i = from; i < to; i++) colours.setXYZ(i, colour.r, colour.g, colour.b);
     }
     colours.needsUpdate = true;
   }
@@ -130,6 +135,22 @@ export class FacadeTwin {
             colour.setHex(colourFor(building, owner.colourMode, geometry.isRoof[i] ? 'roof' : 'wall'));
             colours.push(colour.r, colour.g, colour.b);
           }
+        }
+
+        // Measured openings, appended to the same buffers. Tagged so a colour
+        // mode change repaints walls and roofs without turning glass into brick.
+        owner._openingRanges = [];
+        for (const building of extract.buildings) {
+          const opening = openingGeometry(building);
+          if (!opening.positions.length) continue;
+          const from = positions.length / 3;
+          for (let i = 0; i < opening.positions.length / 3; i++) {
+            positions.push(opening.positions[i * 3], opening.positions[i * 3 + 2], -opening.positions[i * 3 + 1]);
+            normals.push(opening.normals[i * 3], opening.normals[i * 3 + 2], -opening.normals[i * 3 + 1]);
+            colour.setHex(GLASS_COLOUR);
+            colours.push(colour.r, colour.g, colour.b);
+          }
+          owner._openingRanges.push([from, positions.length / 3]);
         }
 
         const geometry = new THREE.BufferGeometry();

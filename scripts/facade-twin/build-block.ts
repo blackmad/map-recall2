@@ -229,8 +229,8 @@ for (const entry of block) {
 
   // 3. The street-level measurement, capped below auto-accept because the
   //    registration check is still red and no field has been validated.
+  let measuredOpenings: Array<{ xM: number; yM: number; widthM: number; heightM: number }> = [];
   const found = frontage(entry.buildingId);
-  const ground = house.eavesHeightM.source === 'default' ? null : (massing.get(entry.buildingId)?.groundLevel ?? null);
   if (found) {
     const image = await panorama(found.pose.view);
     if (image) {
@@ -243,6 +243,13 @@ for (const entry of block) {
           headingDeg: found.pose.view.headingDeg, pitchDeg: found.pose.view.pitchDeg, rollDeg: found.pose.view.rollDeg,
         }, { start: found.wall.start, end: found.wall.end, baseZ: base - 0.4, topZ: eavesNap + 0.3 }, { pixelsPerMetre: ppm });
         const measurement = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
+        // Kept for the renderer. Each rectangle is one opening found in this
+        // building's own photograph; drawing a grid rebuilt from bay and storey
+        // *counts* would be inventing geometry the detector never saw.
+        measuredOpenings = measurement.openings.map(o => ({
+          xM: Number(o.xM.toFixed(2)), yM: Number(o.yM.toFixed(2)),
+          widthM: Number(o.widthM.toFixed(2)), heightM: Number(o.heightM.toFixed(2)),
+        }));
         const applied = applyStreetLevelEvidence(house, {
           view: found.pose.view, standoffM: found.standoff, obliquityDeg: found.obliquity,
           measurement, wallRgb: sampleWall(rect, measurement.openings, rect.pixelsPerMetre),
@@ -275,6 +282,7 @@ for (const entry of block) {
     frontWall: found ? { start: [found.wall.start.x, found.wall.start.y], end: [found.wall.end.x, found.wall.end.y], widthM: Number(found.wall.lengthM.toFixed(2)) } : null,
     groundLevelNap: massing.get(entry.buildingId)?.groundLevel ?? null,
     roofForm: massing.get(entry.buildingId)?.roofForm ?? 'unknown',
+    measuredOpenings,
     render: {
       wallMaterial: wall.id,
       wallSource: wall.source,

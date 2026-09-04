@@ -30,6 +30,14 @@ export interface Lod22Building {
   ridge: number | null;
   roof: string;
   reason: string | null;
+  /** Present only where this building's front has been observed. */
+  facade: {
+    /** Front wall ends in local metres: x0, y0, x1, y1. */
+    wall: [number, number, number, number];
+    wallMaterial: string;
+    /** Openings as [along the wall, above ground, width, height], in metres. */
+    openings: Array<[number, number, number, number]>;
+  } | null;
 }
 
 export interface Lod22Extract {
@@ -42,7 +50,28 @@ export interface Lod22Extract {
   buildings: Lod22Building[];
 }
 
-export type ColourMode = 'massing' | 'height' | 'evidence';
+export type ColourMode = 'massing' | 'height' | 'evidence' | 'facade';
+
+/**
+ * Named wall materials, as flat colours for the massing layer.
+ *
+ * A subset of the full vocabulary in `materials.ts`, inlined so the layer has
+ * no import cycle and so a renderer with no texture pack still shows what was
+ * measured. The texture slots live with the materials; these are the fallbacks.
+ */
+export const WALL_COLOURS: Record<string, number> = {
+  'brick-red': 0x9c4b39, 'brick-red-brown': 0x8a5a44, 'brick-purple-brown': 0x6f4a45,
+  'brick-yellow': 0xb09a6f, 'brick-grey': 0x7d7873,
+  'painted-white': 0xe5e2d9, 'painted-cream': 0xd8cdb4, 'painted-grey': 0x9aa0a0,
+  'painted-black': 0x2b2b2b, 'painted-green': 0x26433a,
+  'sandstone': 0xcdc3ab, 'stucco': 0xded6c8,
+};
+
+/** Glass, for a measured opening. */
+export const GLASS_COLOUR = 0x2f3a40;
+
+/** Buildings whose front has been observed read differently from those that have not. */
+export const FACADE_COLOURS = { observed: 0x1baf7a, unobserved: 0x3d4548 } as const;
 
 /** Height above ground the renderer uses when the model measured none. */
 const FALLBACK_RIDGE_M = 11;
@@ -81,6 +110,14 @@ export const EVIDENCE_COLOURS = {
 } as const;
 
 export function colourFor(building: Lod22Building, mode: ColourMode, part: 'wall' | 'roof'): number {
+  if (mode === 'facade') {
+    if (part === 'roof') return building.facade ? 0x14805c : 0x2c3336;
+    // Where a wall material was measured, show it; where the front was observed
+    // but the colour was not, fall back to the observed marker rather than to a
+    // brick that was never seen.
+    if (!building.facade) return FACADE_COLOURS.unobserved;
+    return WALL_COLOURS[building.facade.wallMaterial] ?? FACADE_COLOURS.observed;
+  }
   if (mode === 'massing') return part === 'roof' ? MASSING_ROOF : MASSING_WALL;
   const { ridge, estimated } = drawableHeights(building);
   if (mode === 'height') {
@@ -146,6 +183,48 @@ export function buildingGeometry(building: Lod22Building): { positions: number[]
     }
   }
   return { positions, normals, isRoof };
+}
+
+/**
+ * Measured openings, as quads on the front wall.
+ *
+ * Set slightly proud of the wall rather than cut into it. Booleaning holes
+ * through a footprint extrusion is expensive and fragile, and at the distances
+ * this layer is read from — a rider on the far quay — a recessed plane and a
+ * real reveal are indistinguishable. What matters is that each rectangle is
+ * where the measurement put it.
+ *
+ * Returns nothing for a building whose front has not been observed. That is the
+ * rule the whole project turns on: no façade without an observation of it.
+ */
+export function openingGeometry(building: Lod22Building): { positions: number[]; normals: number[] } {
+  const positions: number[] = [];
+  const normals: number[] = [];
+  if (!building.facade?.openings.length) return { positions, normals };
+
+  const [x0, y0, x1, y1] = building.facade.wall;
+  const length = Math.hypot(x1 - x0, y1 - y0);
+  if (length < 0.5) return { positions, normals };
+  const ux = (x1 - x0) / length, uy = (y1 - y0) / length;
+  // Outward normal, to the right of the wall's own direction.
+  const nx = uy, ny = -ux;
+  const PROUD = 0.05;
+
+  for (const [along, up, width, height] of building.facade.openings) {
+    if (along < -0.5 || along > length + 0.5) continue;   // outside its own wall
+    const ax = x0 + ux * along + nx * PROUD, ay = y0 + uy * along + ny * PROUD;
+    const bx = ax + ux * width, by = ay + uy * width;
+    const base = building.ground + up;
+    const top = base + height;
+    for (const [px, py, pz] of [
+      [ax, ay, base], [bx, by, base], [bx, by, top],
+      [ax, ay, base], [bx, by, top], [ax, ay, top],
+    ] as const) {
+      positions.push(px, py, pz);
+      normals.push(nx, ny, 0);
+    }
+  }
+  return { positions, normals };
 }
 
 /** Every building whose footprint the boundary contains, for tier ownership. */

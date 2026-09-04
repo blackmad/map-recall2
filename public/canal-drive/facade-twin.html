@@ -169,6 +169,7 @@ function setup() {
     massing: [['#b8ada0', 'wall'], ['#8a7f74', 'roof']],
     height: [['#f0e0d6', 'under 8 m'], ['#dcb49c', '8–12 m'], ['#c48a68', '12–16 m'], ['#a4603d', '16–20 m'], ['#7a3618', '20 m and over']],
     evidence: [['#1baf7a', 'height measured'], ['#eda100', 'source heights inverted'], ['#e34948', 'no measured height']],
+    facade: [['#8a5a44', 'measured wall material'], ['#3d4548', 'front never observed'], ['#2f3a40', 'measured opening']],
   };
   const modes = document.getElementById('modes');
   const legend = document.getElementById('legend');
@@ -176,7 +177,7 @@ function setup() {
     legend.innerHTML = LEGENDS[mode].map(([c, label]) =>
       `<div><span class="sw" style="background:${c}"></span>${label}</div>`).join('');
   };
-  for (const mode of ['massing', 'height', 'evidence']) {
+  for (const mode of ['massing', 'height', 'evidence', 'facade']) {
     const button = document.createElement('button');
     button.textContent = mode[0].toUpperCase() + mode.slice(1);
     button.setAttribute('aria-pressed', String(mode === 'massing'));
