@@ -93,7 +93,7 @@ if (provider === 'openrouter' && !process.env.OPENROUTER_API_KEY) {
  * sentences written under the old rules — and it is written into the output,
  * so a review sheet can be traced to the rules that produced it.
  */
-const GENERATOR_VERSION = 'facts-v10-faithful-paraphrase-verifier';
+const GENERATOR_VERSION = 'facts-v11-opening-then-trivia';
 /** Prompt/cache version stays stable when only deterministic publication gates
  * change, so a stricter rerun does not spend another local model inference. */
 const PROMPT_VERSION = 'facts-v10-opening-then-trivia';
