@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "generatedAt": "2026-09-04T16:11:12.826Z",
+    "generator": "scripts/facade-twin/build-textures.ts",
+    "attribution": "© Gemeente Amsterdam, Kernregistratie Panoramabeelden (CC BY 4.0)",
+    "method": "One-metre wall patches cropped from rectified orthographic façades between the measured openings, resampled to 96 px and medianed per material across buildings.",
+    "tileMetres": 1,
+    "tilePixels": 96
+  },
+  "textures": [
+    {
+      "materialId": "brick-grey",
+      "file": "brick-grey.jpg",
+      "buildings": 28,
+      "patches": 915,
+      "colour": "measured",
+      "bond": "constructed at 210x50 mm",
+      "tileM": [
+        1,
+        1
+      ],
+      "pixels": 96,
+      "fallbackColour": "#7d7873",
+      "name": "Grijze baksteen"
+    },
+    {
+      "materialId": "painted-white",
+      "file": "painted-white.jpg",
+      "buildings": 27,
+      "patches": 1022,
+      "colour": "measured",
+      "bond": "none",
+      "tileM": [
+        1,
+        1
+      ],
+      "pixels": 96,
+      "fallbackColour": "#e5e2d9",
+      "name": "Wit geschilderd"
+    },
+    {
+      "materialId": "painted-grey",
+      "file": "painted-grey.jpg",
+      "buildings": 27,
+      "patches": 946,
+      "colour": "measured",
+      "bond": "none",
+      "tileM": [
+        1,
+        1
+      ],
+      "pixels": 96,
+      "fallbackColour": "#9aa0a0",
+      "name": "Grijs geschilderd"
+    },
+    {
+      "materialId": "painted-black",
+      "file": "painted-black.jpg",
+      "buildings": 20,
+      "patches": 389,
+      "colour": "measured",
+      "bond": "none",
+      "tileM": [
+        1,
+        1
+      ],
+      "pixels": 96,
+      "fallbackColour": "#2b2b2b",
+      "name": "Zwart geschilderd"
+    },
+    {
+      "materialId": "brick-yellow",
+      "file": "brick-yellow.jpg",
+      "buildings": 22,
+      "patches": 589,
+      "colour": "measured",
+      "bond": "constructed at 210x50 mm",
+      "tileM": [
+        1,
+        1
+      ],
+      "pixels": 96,
+      "fallbackColour": "#b09a6f",
+      "name": "Gele ijsselsteen"
+    },
+    {
+      "materialId": "stucco",
+      "file": "stucco.jpg",
+      "buildings": 9,
+      "patches": 303,
+      "colour": "measured",
+      "bond": "none",
+      "tileM": [
+        1,
+        1
+      ],
+      "pixels": 96,
+      "fallbackColour": "#ded6c8",
+      "name": "Pleisterwerk"
+    }
+  ]
+}

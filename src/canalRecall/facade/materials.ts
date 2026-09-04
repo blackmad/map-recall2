@@ -30,7 +30,15 @@ export interface Material {
   name: string;
   /** Flat-shaded fallback, and the base colour a texture is tinted toward. */
   colour: string;
-  /** Texture slot. A renderer with no texture pack falls back to `colour`. */
+  /**
+   * Texture slot. A renderer with no texture pack falls back to `colour`.
+   *
+   * Filled by `build-textures.ts` from the buildings themselves: one-metre wall
+   * patches cropped from rectified orthographic façades between the measured
+   * openings, medianed per material across buildings. Tiles live in
+   * public/canal-drive/facade-textures/ with a manifest saying, per material,
+   * whether the colour is measured and whether a bond was constructed.
+   */
   texture: string;
   /** Real-world size of one texture tile, in metres. */
   tileM: [width: number, height: number];
