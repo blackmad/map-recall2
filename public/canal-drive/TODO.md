@@ -385,38 +385,24 @@ pass checks. Two regressions to fix before any of it reaches `main`:
   The two files are a matched pair keyed on id — rebuild them together.
   `test:bridge-crossings` now asserts that alignment.
 
-**11c. Give Amsterdam and Utrecht real ledes. Blocked on a macOS upgrade.**
-Amsterdam has 448 distinct Dutch ledes left; Utrecht has 39 Dutch and 103
-Wikidata one-liners. Both upgrade in place — every feature keeps
-`wikipediaExtractOriginal` and its language — and the pass is now built and
-tested against the translator this project has chosen: `translate`
-(scriptingosx/translate-cli) or `trn` (hotchpotch/trn), auto-detected in that
-order. Both are local, free and keyless.
-
-The only thing standing in the way is that both need **macOS 26**, plus the
-Dutch language pack installed through System Settings. Once the machine is
-upgraded, the whole job is:
+**11c. Give Amsterdam and Utrecht real ledes.**
+Amsterdam’s card-facing extracts are English in the publish gate
+(`check:extract-english` after `enrich:english` in `refresh-city-extract.sh`).
+Remaining thin blurbs are Wikidata description floors or rename refusals that
+fell back to a description. Utrecht still has Dutch / one-liner backlog:
 
     brew tap hotchpotch/trn https://github.com/hotchpotch/trn
     brew install hotchpotch/trn/trn     # or install translate-cli
-    npm run enrich:english -- --dry-run --limit=20   # read the output first
-    npm run enrich:english
+    npm run enrich:utrecht-english -- --translator=trn --dry-run --limit=20
     npm run enrich:utrecht-english -- --translator=trn
 
-Read the dry run before the real one. Translations are written into
-`scripts/english-translations.json` keyed by a hash of the exact source text,
-so they are reviewed in a diff like any other text and a refreshed extract
-invalidates a stale entry rather than silently keeping it.
+`street-knowledge.json` is now generated from streets/water
+(`npm run build:street-knowledge`) — do not hand-edit it. Stale entries in
+`scripts/english-translations.json` are still counted but not pruned.
 
 Expect some refusals: the pass rejects a translation that lost the feature's
-own name, because "The Blue Bridge is a bascule bridge over the canal" teaches
-the wrong name for the Blauwbrug. Those come back as
-`refused — translated the name itself` and are worth reading; the feature keeps
-its Dutch lede rather than getting a wrong English one.
-
-Also still open, and cheaper: 281 entries in the translation cache no longer
-match any extract, because the Dutch ledes they were made from have since been
-rewritten upstream. The pass counts them; nothing prunes them.
+own name. Those come back as `refused — translated the name itself` and fall
+back to a Wikidata description when one exists.
 
 **12. Clear all my data.**
 Partial: **Reset knowledge…** is on the route briefing account row (and
@@ -430,11 +416,11 @@ Ten phone states existed already — the driving HUD (idle, steering, mid-questi
 small phone, landscape), the route briefing, the recall prompt, the arrival
 card, the settings panel and the expanded article — driven by a
 `canalRecallForceTouch` override. Added: neighborhood photo fallback, stacked
-neighborhood+landmark notices (desktop + phone), bare landmark card, and bike
-finish card. Still open: screenshot regressions for the new states, and any
-finish-card combination still missing from play (e.g. ribbonless calm + no
-landmark photo). Follows naturally from item 3 — the same extraction serves
-both.
+neighborhood+landmark notices (desktop + phone), bare landmark card, bike
+finish card, and **calm finish without landmark photo** (desktop + phone).
+Still open: automated screenshot regressions for the new states (build-storybook
+compiles them; visual diffs are not wired yet). Follows naturally from item 3 —
+the same extraction serves both.
 
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in

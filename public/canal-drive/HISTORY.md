@@ -6,6 +6,21 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Encyclopedia refresh publishes English or fails
+
+`refresh-city-extract.sh` now builds `street-knowledge.json` from streets/water
+extracts, runs `enrich:english`, and gates on `check-extract-english` so a
+rebuild cannot ship `wikipediaExtractLang: "nl"` again. The three enrich
+scripts share `ENCYCLOPEDIA_PARTITION_FILES`. Wikidata-only features with no
+article get an English description floor instead of a silent “linked” card.
+`street-knowledge.json` is generated, not hand-edited.
+
+## Storybook calm finish without photo; GameHeader drawer enamel
+
+Arrival can now be reviewed without a ribbon or landmark image
+(`finish-calm-bare` + phone). Hidden Map Quest overflow controls drop the last
+slate/amber/emerald chips for enamel tiles and segments.
+
 ## Canal setup distilled View/Difficulty; Map Quest mode gloss + undo
 
 Setup no longer fronts four cameras or five difficulties: View is a one-line
