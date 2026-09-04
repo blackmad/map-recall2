@@ -22,6 +22,19 @@ now draws 7 lids, all with a real `roofColour`. The suppression clause also
 matches `id` as well as `osmId`, because streamed tiles carry OSM-owned
 features under `id`. `check-canal-buildings.ts` pins the composition.
 
+## Map Quest: plaque start, phone brand, distilled play header
+
+Critique P1+P2 for `src/App.tsx`: start is now a riveted Map Recall plaque rail
+over the CC0 Reguliersgracht vista (Canals/Streets elevated, other layers
+demoted); phone always shows the brand and mode pills (Pin/Name/Area) and keeps
+city/radius/category chips out of the narrow header (drawer only); filters
+collapse once a round is active (`roundActive`); Wiki renamed Encyclopedia;
+mode gloss on start and in the drawer; Hint always labeled; secondary type
+floored at 12px (`text-xs`). Shared `.enamel-plaque.enamel-framed` lives in
+`src/index.css`. The Canal Recall float stays off the start rail so it does not
+collide with “Or make me a mixed quiz”; the overflow drawer drops the remaining
+slate chips for enamel surfaces.
+
 ## Street name at junctions uses heading, not nearest centreline
 
 The HUD plaque and route quiz called `getRoadName(x, y)` without the player's
@@ -30,6 +43,15 @@ angle. `pickRoadContact` already prefers heading-aligned roads at junctions
 angle — so at Hasebroekstraat / Kinkerbuurt junctions the plaque and any
 follow-on street knowledge card could name the side street underfoot. Callers
 that name or quiz the road under the wheels now pass `player.angle`.
+
+The rule was tested and the wiring was not, which is how it went unnoticed.
+`check-road-name-heading.ts` (`npm run test:road-name-heading`, in
+`check:canal`) now pins both halves: `_updateCanalQuiz` on a real
+`roadSurface` junction, player 4 px toward Hasebroekstraat while heading along
+Kinkerstraat, must make Kinkerstraat the candidate; and every
+`getRoadName`/`getNearestRoad` call in the game runtimes must carry a third
+argument. The one call with no heading to give — deriving the start heading
+in `_setupRace` — passes an explicit `null` so the check reads as intent.
 
 ## Driving HUD: navy plates, one plaque, arrow inside the destination
 
@@ -44,15 +66,6 @@ arrival card). `hud.drawPlaque` replaces `drawCanalScore` +
 `drawCurrentLocation`: street name in Barlow Condensed caps as the headline,
 then neighbourhood + speed/odometer on one line, then score (streak in gold),
 then feedback. It sizes itself to its text and is anchored at the layout's
-The rule was tested and the wiring was not, which is how it went unnoticed.
-`check-road-name-heading.ts` (`npm run test:road-name-heading`, in
-`check:canal`) now pins both halves: `_updateCanalQuiz` on a real
-`roadSurface` junction, player 4 px toward Hasebroekstraat while heading along
-Kinkerstraat, must make Kinkerstraat the candidate; and every
-`getRoadName`/`getNearestRoad` call in the game runtimes must carry a third
-argument. The one call with no heading to give — deriving the start heading
-in `_setupRace` — passes an explicit `null` so the check reads as intent.
-
 `recall` slot, capped at the bottom of the `location` slot, so the layout
 module and its 864 pinned scenarios did not change. `drawDestination` takes
 the finish heading and draws the copper arrow inside the card;

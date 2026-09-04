@@ -822,16 +822,19 @@ export default function App() {
         isCloudConfigured={isCloudConfigured}
         onOpenAuth={() => setIsAuthOpen(true)}
         onSignOut={() => void signOutUser()}
+        roundActive={!!currentFeature && !isGameOver}
       />
 
       {/* Main Map Viewport & Overlays */}
       <main className="flex-1 relative w-full h-full overflow-hidden">
-        <a
-          href={canalRecallUrl}
-          className="enamel-float enamel-brand hidden sm:block absolute bottom-4 left-4 z-30 px-3 py-2 text-xs transition"
-        >
-          Canal Recall →
-        </a>
+        {!!currentFeature && (
+          <a
+            href={canalRecallUrl}
+            className="enamel-float enamel-brand hidden sm:block absolute bottom-4 left-4 z-30 px-3 py-2 text-xs transition"
+          >
+            Canal Recall →
+          </a>
+        )}
         {/* Leaflet Map Canvas */}
         <MapComponent
           cityCenter={currentCity.center}
@@ -891,43 +894,97 @@ export default function App() {
 
         {/* Empty OSM dataset: require an explicit category before starting. */}
         {!currentFeature && !isLocating && !isGameOver && !dataError && (
-          <div className="absolute inset-0 z-20 flex items-center justify-center p-4 bg-[#071430]/25">
-            <div className="app-dialog w-full max-w-lg p-5 sm:p-6">
-              <div className="mb-5">
-                <h2 className="enamel-brand text-2xl sm:text-[26px] leading-tight text-white">What would you like to learn?</h2>
-                <p className="mt-1.5 text-sm text-white/75">
-                  Pick a map layer for {currentCity.name}. We’ll build a short, shuffled quiz from it.
+          <div
+            className="absolute inset-0 z-20 flex"
+            style={{
+              backgroundImage: `linear-gradient(105deg, rgba(7,20,48,0.92) 0%, rgba(7,20,48,0.78) 42%, rgba(7,20,48,0.35) 100%), url(${import.meta.env.BASE_URL}canal-drive/assets/media/setup-backdrop.jpg)`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            <div
+              className="pointer-events-auto relative flex w-full max-w-md flex-col gap-4 overflow-y-auto border-r border-white/15 px-4 py-5 sm:px-5 sm:py-6 lg:max-w-sm lg:bg-transparent"
+              style={{
+                background:
+                  'linear-gradient(165deg, rgba(20,80,184,0.94) 0%, rgba(11,58,140,0.96) 42%, rgba(7,20,48,0.98) 100%)',
+              }}
+            >
+              <h1 className="enamel-plaque enamel-framed enamel-brand px-4 py-3 text-center text-xl sm:text-2xl text-white">
+                Map Recall
+              </h1>
+
+              <div>
+                <p className="text-sm text-white/80 leading-relaxed">
+                  Learn {currentCity.name} by placing and naming real streets, canals, and landmarks.
                 </p>
-                <p className="mt-2 text-[11px] text-white/60">
-                  Search area {(searchRadiusMeters / 1000).toFixed(1)} km · no account required · progress stays on this device
+                <p className="mt-2 text-xs text-white/70">
+                  {(searchRadiusMeters / 1000).toFixed(1)} km search · progress stays on this device
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {FEATURE_CATEGORIES.filter((category) => category.id !== 'all').map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => {
-                      if (category.id === selectedCategory) {
-                        handleRefetchCategory(category.id, false);
-                      } else {
-                        handleSelectCategory(category.id);
-                      }
-                    }}
-                    className="enamel-tile flex items-center gap-2.5 px-3 py-3 text-left text-[13px] font-semibold cursor-pointer"
-                  >
-                    <span className="text-base text-white/80">{category.icon}</span>
-                    <span>{category.shortLabel}</span>
-                  </button>
-                ))}
+              <div className="space-y-1.5">
+                <p className="text-xs font-bold uppercase tracking-wider text-white/70">Mode</p>
+                <p className="text-xs text-white/75 leading-relaxed">
+                  {gameMode === 'pinpoint' && 'Pinpoint — we name a place; you find it on the map.'}
+                  {gameMode === 'guess_name' && 'Guess Name — the map highlights a place; you name it.'}
+                  {gameMode === 'guess_neighborhood' && 'Neighborhood — place the area boundary on the map.'}
+                </p>
+                <p className="text-xs text-white/60">Change mode in the header anytime.</p>
               </div>
+
+              <div className="space-y-2">
+                <p className="text-xs font-bold uppercase tracking-wider text-white/70">Start with</p>
+                <div className="grid grid-cols-1 gap-2">
+                  {FEATURE_CATEGORIES.filter((c) => c.id === 'water' || c.id === 'streets').map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => {
+                        if (category.id === selectedCategory) handleRefetchCategory(category.id, false);
+                        else handleSelectCategory(category.id);
+                      }}
+                      className="enamel-tile flex items-center gap-3 px-3 py-3.5 text-left cursor-pointer"
+                    >
+                      <span className="text-lg text-[#c4a35a]">{category.icon}</span>
+                      <span className="min-w-0">
+                        <span className="enamel-brand block text-base text-white">{category.shortLabel}</span>
+                        <span className="block text-xs text-white/70 font-normal">{category.description}</span>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs font-bold uppercase tracking-wider text-white/70">Also</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {FEATURE_CATEGORIES.filter((c) => !['all', 'water', 'streets'].includes(c.id)).map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => {
+                        if (category.id === selectedCategory) handleRefetchCategory(category.id, false);
+                        else handleSelectCategory(category.id);
+                      }}
+                      className="enamel-tile flex items-center gap-2 px-2.5 py-2.5 text-left text-xs font-semibold cursor-pointer"
+                    >
+                      <span className="text-white/80">{category.icon}</span>
+                      <span>{category.shortLabel}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <button
                 onClick={() => selectedCategory === 'all' ? handleRefetchCategory('all', false) : handleSelectCategory('all')}
-                className="button-secondary mt-3 w-full py-2.5 text-xs font-semibold cursor-pointer"
+                className="button-secondary w-full py-2.5 text-xs font-semibold cursor-pointer"
               >
                 Or make me a mixed quiz
               </button>
             </div>
+
+            <div
+              className="relative hidden min-h-0 flex-1 lg:block"
+              aria-hidden="true"
+            />
           </div>
         )}
 

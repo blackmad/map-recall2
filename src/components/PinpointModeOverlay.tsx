@@ -152,7 +152,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   className={`enamel-chip ${showClues ? 'active' : ''} flex items-center gap-1 text-xs font-bold px-2.5 py-1 transition cursor-pointer`}
                 >
                   <HelpCircle className="w-3.5 h-3.5 text-[#c4a35a]" />
-                  <span className="hidden sm:inline">{showClues ? 'Hide hint' : 'Hint'}</span>
+                  <span>{showClues ? 'Hide hint' : 'Hint'}</span>
                 </button>
 
                 <span className="enamel-chip px-2.5 py-1 text-xs font-bold font-mono whitespace-nowrap">
