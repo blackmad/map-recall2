@@ -73,7 +73,11 @@ for (const file of [
   ...runtimeFiles,
   gameFile,
 ]) {
-  const scriptIndex = index.indexOf(`src="${file}"`);
+  // Match the path, not the whole attribute: several tags carry a
+  // cache-busting `?v=` suffix, and an exact match silently returns -1, which
+  // reads as "loaded before everything" rather than as a missing script.
+  const scriptIndex = index.search(new RegExp(`src="${file.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\?[^"]*)?"`));
+  assert(scriptIndex >= 0, `${file} is not loaded by index.html`);
   assert(scriptIndex > previousIndex, `${file} must load after its dependencies`);
   previousIndex = scriptIndex;
 }

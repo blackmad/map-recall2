@@ -450,7 +450,10 @@ time, then widen.
 *Facade bearings are unverified.* `FACADE_BEARINGS` records which way each
 building faces and only the Palace's was checked. They do not affect placement —
 a surveyed model arrives correctly turned — but they are reported in the UI as
-fact. Pin them against each footprint's long axis in a check script.
+fact. Pin them against each footprint's long axis in a check script. That check
+is the one `package.json` used to *claim*: a `test:signature-landmarks` entry
+pointed at `scripts/check-signature-landmarks.ts`, which has never existed in
+any branch. The dead entry is gone; write the check it promised.
 
 *Widen the set.* `search-3dwarehouse-landmarks.ts` lists 46 further landmarks
 with published coordinates across the four cities — Euromast, Dom Tower,
