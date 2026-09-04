@@ -69,7 +69,7 @@ export interface GameCoreHost {
   /** True while a DOM overlay owns the screen — the recall question, a utility
    *  panel, or the expanded article. The d-pad is not drawn under any of them. */
   _overlayOpen(): boolean;
-  /** Shared gate for quiz / feedback / cards / minimap / POI labels. */
+  /** Shared gate for quiz / feedback / cards / POI labels (overview stays up). */
   _teachingGate(): import('./teachingSurface.ts').TeachingGateInput;
   /** Tap targets for the arrival card's actions, on touch. */
   _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' }>;

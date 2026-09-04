@@ -97,6 +97,11 @@ node --import tsx scripts/build-osm-buildings.ts "$work_dir/buildings-osm.geojso
 node --import tsx scripts/build-osm-trees.ts "$work_dir/features.geojson" "$build_dir/trees.json"
 node --import tsx scripts/enrich-amsterdam-wikimedia.ts "--directory=$build_dir"
 node --import tsx scripts/enrich-amsterdam-wikipedia-extracts.ts "--directory=$build_dir"
+# Card blurbs must be English before publish. street-knowledge is generated from
+# the partitions (not hand-curated) so it cannot drift from streets/water.
+node --import tsx scripts/build-street-knowledge.ts "$build_dir"
+node --import tsx scripts/translate-extracts-to-english.ts "--directory=$build_dir"
+node --import tsx scripts/check-extract-english.ts "$build_dir"
 node --import tsx scripts/enrich-city-profile.ts "--directory=$build_dir" "--name=$city_name"
 node --import tsx scripts/enrich-brand-identifiers.ts "--directory=$build_dir"
 node --import tsx scripts/apply-wikimedia-image-overrides.ts "$build_dir"

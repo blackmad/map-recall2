@@ -385,7 +385,7 @@
     return !teachingOwnsBottom(input);
   }
   function canShowMiniMap(enabled, input) {
-    return enabled && !teachingOwnsBottom(input);
+    return enabled && !input.utilityOpen;
   }
 
   // src/canalRecall/game/landmarkRuntime.ts

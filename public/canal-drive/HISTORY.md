@@ -6,6 +6,17 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Overview map stays up during quizzes; player pin is readable
+
+The city overview used to vanish whenever a quiz or answer-hold owned the
+bottom band — the same gate that keeps landmark cards from stacking under a
+question. That was wrong for orientation: the map draws no names, so it cannot
+answer the prompt, and “where am I in the city?” is most useful while you are
+stopped and thinking. It now stays visible during quiz and feedback; utility
+panels (settings / help / expanded article) still hide it. The player mark is
+a soft halo, solid blue disc, and larger heading wedge instead of a lone dark
+cone that disappeared into the network at city scale.
+
 ## Encyclopedia refresh publishes English or fails
 
 `refresh-city-extract.sh` now builds `street-knowledge.json` from streets/water
@@ -635,8 +646,8 @@ museum card, dense POI labels, and a duplicated trip readout. `teachingSurface.t
 now gates the bottom band: quiz / answer-hold / utility own it; landmark and
 neighbourhood cards wait. Opening a question clears cards and feedback; feedback
 clears when the hold ends. Desktop trip lives only in the bottom pill. POI name
-labels and the minimap hide while a prompt is up. The quiz card is tighter
-(360px) so more of the canal stays visible.
+labels hide while a prompt is up; the city overview stays (it has no names).
+The quiz card is tighter (360px) so more of the canal stays visible.
 
 ## Postcard text no longer sits under the photo fade
 

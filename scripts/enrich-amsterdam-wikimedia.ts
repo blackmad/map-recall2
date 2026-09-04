@@ -2,10 +2,11 @@ import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { StreetFeature } from '../src/types.ts';
 import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
+import { ENCYCLOPEDIA_PARTITION_FILES } from './lib/encyclopedia-extract-files.ts';
 
 const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
 const directory = path.resolve(directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
-const files = ['water.json', 'streets.json', 'bridges.json', 'squares.json', 'parks.json', 'landmarks.json', 'all.json'];
+const files = [...ENCYCLOPEDIA_PARTITION_FILES];
 const partitions = new Map<string, StreetFeature[]>();
 for (const file of files) partitions.set(file, JSON.parse(await readFile(path.join(directory, file), 'utf8')));
 const features = [...partitions.values()].flat();
