@@ -303,6 +303,49 @@ implementations — `src/canalRecall/rdCoordinates.ts` (pinned by
 façade one and fold the other into it before a third caller picks the wrong
 one.
 
+**10c. Decide what a drawn gable is allowed to claim. Unmerged, needs a call.**
+`feat/canal-house-gables` (one commit, `8d7aa24`, 68 behind main) gives the
+whole centre a roofline instead of thirteen signature models:
+`src/canalRecall/buildings/gableProfile.ts` picks one of six gable types per
+building from its footprint and OSM tags, seeded on the building's own id so a
+house keeps its gable between runs, and the renderer merges ~5,000 gables into
+one geometry in about 100 ms. 11 checks pin the citywide *mix* — step gables
+under 14%, lijstgevel over 25% — so the centre reads as a city rather than a
+theme park. 2,668 of 10,578 buildings qualify. It draws only on
+`signature-landmark-demo.html`, not in the game.
+
+It is good work and it is blocked on a question, not on a bug. Item 10b just
+merged `src/canalRecall/facade/gable.ts`, which names the same six types by
+*measuring* the building's own roofline and returns `unknown` when it cannot.
+The two modules answer "which gable does this house have" in opposite ways:
+one measures this house, the other invents a plausible one from its id and
+tunes the answer until the city-wide distribution looks right.
+
+This board's ordering rule is that a game which teaches the wrong thing is
+broken in a way that a plain-looking one is not, and the façade brief is
+explicit that the ring's grammar is a *rendering vocabulary*, never a source of
+facts — it may say how to draw a klokgevel once you know this house has one,
+never that it has one. A seeded gable is a prior supplying a value, which is the
+same mistake that put roof material back to `default` in 10b. The branch's own
+commit message argues the player "learns something true about the city", and
+that is the claim at issue: true of the *distribution*, not of the house the
+player is looking at.
+
+Three ways out, in increasing cost:
+
+1. **Merge it as a demo, and say so.** It only touches the demo page today.
+   Land it behind a name that cannot be mistaken for measurement, keep it out of
+   the game, and treat it as the rendering half waiting for a source.
+2. **Make it consume measured types.** `gableProfile.ts` draws outlines well and
+   `facade/gable.ts` classifies. Feed the measured type in where one exists,
+   draw nothing — or a flat lijstgevel — where it says `unknown`, and the
+   invented distribution problem disappears. The 88.6% frontal-view coverage
+   from 10b is roughly the ceiling on what could be filled.
+3. **Drop it**, and let 10b's measured path reach the renderer on its own.
+
+Do not merge it into the game as-is on the strength of it looking right; that is
+the failure mode 10b spent a whole lane learning to avoid.
+
 **11. Let the game actually play a second city.**
 The extractor is city-agnostic and four cities are now built and checked:
 Amsterdam, Utrecht (11,801 routing ways, 380 landmarks), Rotterdam (31,810
