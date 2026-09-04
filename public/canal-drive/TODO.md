@@ -386,6 +386,12 @@ second city, RECON-4 is done, observation coverage is measured (139,937 panorama
 poses; **88.6% of buildings have a frontal view**), and façades rectify and
 measure end to end from Amsterdam's CC BY panoramas.
 
+> **P0, blocking everything street-level.** A 180° yaw error meant every façade
+> measurement sampled the scene *behind* the survey camera. Fixed in `9220fd8`;
+> the old outputs are quarantined in `.cache/facade-twin/quarantine-yaw-centre/`
+> and a re-measurement is running. Massing is unaffected. Until the re-run
+> lands, treat every street-level number in this file as void.
+
 **Read [`FACADE_STATE.md`](FACADE_STATE.md) first.** It is the measured state of
 the extraction — what is trustworthy, what is not, and the failure counts — and
 it is kept current with the numbers rather than with adjectives.

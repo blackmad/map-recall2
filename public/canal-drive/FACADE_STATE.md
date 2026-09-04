@@ -1,5 +1,31 @@
 # Façade twin — state of the world
 
+> ## ⚠️ Superseded in its central claim, and worth reading anyway
+>
+> This document was written on 2026-09-04 and argued that the extraction was
+> "not nonsensical — but unvalidated". **That was wrong.** Hours later an
+> external audit found a 180° yaw error: Amsterdam's panoramas put the heading
+> direction at the *left edge* of the equirectangular frame, the rectifier
+> assumed the *centre*, and every street-level measurement therefore sampled
+> whatever stood **behind** the survey camera.
+>
+> All 2,184 buildings and 15,178 openings described below are quarantined in
+> `.cache/facade-twin/quarantine-yaw-centre/`. So are the wall colours, the
+> material classifications and the six extracted textures, which all derive
+> from those crops.
+>
+> **The massing is unaffected** — footprints, ground, eaves, ridge and roof form
+> come from BAG, 3DBAG and AHN and never touched a panorama.
+>
+> The section below headed *"§1. The honest summary"* is left exactly as
+> written, because how it went wrong is the most useful thing in this file. It
+> made a case from three independent agreements — median storey height, median
+> frontage, storey count against 3DBAG — that all held **while the pipeline was
+> photographing the wrong side of the canal**. See §10.
+>
+> A re-measurement under the corrected convention is in progress. Numbers here
+> will be replaced when it lands.
+
 Written 2026-09-04, at commit `92d9ad7` on `feat/amsterdam-building-twin`.
 
 This document exists because the question was asked directly: *are these
@@ -253,3 +279,53 @@ Checks wired into `check:canal`: `facade-boundary`, `facade-build-record`,
 `facade-generate`, `facade-heritage-text`, `facade-layer` (30),
 `facade-record`. `check-facade-registration.ts` is deliberately **not** wired,
 because it is red and hiding that would be worse than failing it.
+
+
+---
+
+## 10. Postscript: how a wrong pipeline passed a numeric audit
+
+This is the part worth keeping.
+
+Section 1 argued the extraction was sound because three quantities agreed with
+independent sources: median storey interval 3.00 m against a grammar figure of
+3.01 m, median frontage 5.66 m against BAG's 5.7 m, and storey counts within ±1
+of 3DBAG for 82.7%. Those agreements were real. The pipeline was also, at that
+moment, measuring buildings on the wrong side of the canal.
+
+**Why the agreements held anyway.** Every one of them is a property of *the
+fabric*, not of the building being measured. Amsterdam canal houses have ~3 m
+storeys and ~5.7 m frontages whether you photograph number 270 or the house
+opposite. The frontage figure could not have disagreed: the wall width comes
+from BAG geometry, not from the photograph, so it was never testing the
+imagery. And a storey ladder fitted to *some* Amsterdam façade will land on
+Amsterdam's storey height regardless of which façade it was.
+
+So the audit tested that the outputs were *typical of Amsterdam*, and they were.
+It could not test whether they were **this building**, and nothing in it ever
+could have.
+
+**What would have caught it, in order of cost:**
+
+1. **Looking at fourteen strips.** Free. It took one contact sheet to see
+   railings, streets and blank sky. I had rendered 200 strips and inspected
+   none of them.
+2. **The `building` and `sky` classes of a segmentation model.** The bad strip
+   comes back 13% building, 47% sky. Automatic, per-strip, and now wired in.
+3. **Reading the comment above the bug.** `rectify-facades.ts:199` said in
+   plain words that `centre` pointed 180° away at a building four metres behind
+   the camera. The next line defaulted to `centre`.
+4. **A registration check that was allowed to stay red** and was deliberately
+   unwired from `check:canal`, where nobody had to look at it.
+
+**The general lesson, stated so it survives this file.** Aggregate statistics
+answer *"is this output typical of the population?"*. They cannot answer *"is
+this output about the thing I think it is about?"* — identity is not a
+distributional property. A pipeline that samples the wrong object will pass
+every distributional test you can write, as long as the wrong object is drawn
+from the same population as the right one. In a city where every direction
+looks like a canal frontage, that is guaranteed.
+
+Identity needs a per-item check against something that knows what the item
+should look like: a human, a model, or geometry projected back into the source
+image. Not a median.
