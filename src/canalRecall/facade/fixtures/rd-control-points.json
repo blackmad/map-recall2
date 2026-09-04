@@ -1,0 +1,271 @@
+{
+  "source": "PDOK BZK Locatieserver v3_1 (api.pdok.nl/bzk/locatieserver/search/v3_1/free), fields centroide_rd + centroide_ll",
+  "retrieved": "2026-09-03",
+  "note": "Authoritative RD New / WGS84 pairs for the same address, published by the same agency that publishes BAG. Sixteen inside the pilot boundary, eight spread across the Netherlands to prove the correction is national and not fitted to Amsterdam.",
+  "points": [
+    {
+      "name": "Prinsengracht 263, 1016GV Amsterdam",
+      "rd": {
+        "x": 120755.124,
+        "y": 487570.292
+      },
+      "lngLat": [
+        4.88431719,
+        52.37493637
+      ]
+    },
+    {
+      "name": "Herengracht 26-O, Amsterdam",
+      "rd": {
+        "x": 121206,
+        "y": 487960
+      },
+      "lngLat": [
+        4.89089889,
+        52.37846672
+      ]
+    },
+    {
+      "name": "Keizersgracht 123, 1015CJ Amsterdam",
+      "rd": {
+        "x": 120964,
+        "y": 487732
+      },
+      "lngLat": [
+        4.88736806,
+        52.37640267
+      ]
+    },
+    {
+      "name": "Singel 140-1, 1015AG Amsterdam",
+      "rd": {
+        "x": 121148,
+        "y": 487646
+      },
+      "lngLat": [
+        4.89007876,
+        52.37564114
+      ]
+    },
+    {
+      "name": "Brouwersgracht 100, 1013GZ Amsterdam",
+      "rd": {
+        "x": 121137.822,
+        "y": 488132.282
+      },
+      "lngLat": [
+        4.88988029,
+        52.38001086
+      ]
+    },
+    {
+      "name": "Leidsegracht 20, 1016CL Amsterdam",
+      "rd": {
+        "x": 120833,
+        "y": 486724
+      },
+      "lngLat": [
+        4.88554679,
+        52.36733535
+      ]
+    },
+    {
+      "name": "Berenstraat 10-1, 1016GH Amsterdam",
+      "rd": {
+        "x": 120722,
+        "y": 487072
+      },
+      "lngLat": [
+        4.8838816,
+        52.37045601
+      ]
+    },
+    {
+      "name": "Wolvenstraat 5, 1016EM Amsterdam",
+      "rd": {
+        "x": 120882,
+        "y": 487047
+      },
+      "lngLat": [
+        4.88623342,
+        52.37024129
+      ]
+    },
+    {
+      "name": "Runstraat 12-H, 1016GK Amsterdam",
+      "rd": {
+        "x": 120709,
+        "y": 486905
+      },
+      "lngLat": [
+        4.88370776,
+        52.36895432
+      ]
+    },
+    {
+      "name": "Reestraat 8, 1016DN Amsterdam",
+      "rd": {
+        "x": 120750.062,
+        "y": 487291.691
+      },
+      "lngLat": [
+        4.88427125,
+        52.37243219
+      ]
+    },
+    {
+      "name": "Hartenstraat 15-H, 1016BZ Amsterdam",
+      "rd": {
+        "x": 120874,
+        "y": 487270
+      },
+      "lngLat": [
+        4.88609332,
+        52.37224496
+      ]
+    },
+    {
+      "name": "Huidenstraat 4, 1016ES Amsterdam",
+      "rd": {
+        "x": 120875,
+        "y": 486895
+      },
+      "lngLat": [
+        4.88614607,
+        52.36887479
+      ]
+    },
+    {
+      "name": "Keizersgracht 324, 1016EZ Amsterdam",
+      "rd": {
+        "x": 120748.812,
+        "y": 487020.313
+      },
+      "lngLat": [
+        4.88428055,
+        52.36999316
+      ]
+    },
+    {
+      "name": "Herengracht 386, 1016CJ Amsterdam",
+      "rd": {
+        "x": 120883,
+        "y": 486785
+      },
+      "lngLat": [
+        4.8862747,
+        52.36788669
+      ]
+    },
+    {
+      "name": "Prinsengracht 1055B-4, Amsterdam",
+      "rd": {
+        "x": 121748,
+        "y": 486164
+      },
+      "lngLat": [
+        4.8990362,
+        52.36235862
+      ]
+    },
+    {
+      "name": "Singel 400A, 1016AK Amsterdam",
+      "rd": {
+        "x": 120964,
+        "y": 486909
+      },
+      "lngLat": [
+        4.8874514,
+        52.36900614
+      ]
+    },
+    {
+      "name": "Martinikerkhof 3, 9712JG Groningen",
+      "rd": {
+        "x": 233908.029,
+        "y": 582053.016
+      },
+      "lngLat": [
+        6.56856744,
+        53.21926823
+      ]
+    },
+    {
+      "name": "Grote Markt 4A-1, 6511KA Nijmegen",
+      "rd": {
+        "x": 187851.532,
+        "y": 428846.872
+      },
+      "lngLat": [
+        5.86396414,
+        51.84723037
+      ]
+    },
+    {
+      "name": "Coolsingel 40, 3011AD Rotterdam",
+      "rd": {
+        "x": 92539.395,
+        "y": 437527.922
+      },
+      "lngLat": [
+        4.47920127,
+        51.92272076
+      ]
+    },
+    {
+      "name": "Domplein 29, 3512JE Utrecht",
+      "rd": {
+        "x": 136847.54,
+        "y": 455809.159
+      },
+      "lngLat": [
+        5.12233385,
+        52.09024389
+      ]
+    },
+    {
+      "name": "Jeroen Boschstraat 1, 4812AE Breda",
+      "rd": {
+        "x": 111846.75,
+        "y": 399365.752
+      },
+      "lngLat": [
+        4.7646025,
+        51.58155223
+      ]
+    },
+    {
+      "name": "Willemstraat 8G-1, Kerkrade",
+      "rd": {
+        "x": 199918.741,
+        "y": 318861.93
+      },
+      "lngLat": [
+        6.02512117,
+        50.85782114
+      ]
+    },
+    {
+      "name": "Oude Markt 24, 7511GB Enschede",
+      "rd": {
+        "x": 258144.932,
+        "y": 471344.843
+      },
+      "lngLat": [
+        6.89670438,
+        52.22052417
+      ]
+    },
+    {
+      "name": "Waagplein 1, 1811JP Alkmaar",
+      "rd": {
+        "x": 111866.007,
+        "y": 516147.873
+      },
+      "lngLat": [
+        4.75009443,
+        52.63113278
+      ]
+    }
+  ]
+}
