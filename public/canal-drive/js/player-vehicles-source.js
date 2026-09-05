@@ -27,8 +27,8 @@ const TRANSIT_MODEL_URL = assetUrl('./gvb-metro-51-runtime.glb');
  */
 const BIKE_GAME_SCALE = 4.5;
 const BOAT_GAME_SCALE = 1.5;
-/** Metro car is already ~6 m long; mild scale so it reads at chase altitude. */
-const TRANSIT_GAME_SCALE = 2.2;
+/** Metro car is ~6 m long; exaggerate more than boat so it reads cartoony at chase altitude. */
+const TRANSIT_GAME_SCALE = 3.4;
 
 /**
  * Measured off each model, not assumed. The authored omafiets points its blue

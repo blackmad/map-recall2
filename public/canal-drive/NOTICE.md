@@ -32,10 +32,10 @@ hubs. Runtime file is `omafiets-runtime.glb`. Players can also pick:
 
 - Kin Chen’s “Pink city bicycle” (CC0 via MorfVision / BlenderKit) —
   `pink-city-bicycle-runtime.glb`, rigged by `scripts/rig-pink-city-bike.py`
-- Authored Swapfiets-alike (red frame, blue front tyre, cargo rack) —
-  `swapfiets-runtime.glb`, built by `scripts/build-swapfiets-bike.py`
-  (steer / spin). Earlier PatrickGoud Sketchfab body was look-only and is
-  no longer shipped.
+- Authored Swapfiets Original-alike (double step-through, chrome bars,
+  front carrier, blue front tyre) — `swapfiets-runtime.glb`, built by
+  `scripts/build-swapfiets-bike.py` (steer / spin). Earlier PatrickGoud
+  Sketchfab body was look-only and is no longer shipped.
 
 Bike skin preference: `bikeSkin` in `canalRecall.preferences.v1`.
 Optional rear child seat: `bikeBabySeat` (omafiets `BabySeat`; default off).
