@@ -386,35 +386,98 @@ second city, RECON-4 is done, observation coverage is measured (139,937 panorama
 poses; **88.6% of buildings have a frontal view**), and façades rectify and
 measure end to end from Amsterdam's CC BY panoramas.
 
-> **P0, blocking everything street-level.** Every façade measurement in this
-> file was made through a camera model that rotated the projection by the survey
-> van's heading. Amsterdam's panoramas are *world-aligned* — north at the frame
-> centre, horizon level — and `heading`/`pitch`/`roll` describe the vehicle, not
-> the picture. Corrected in `a331948`; the model is `AMSTERDAM_CAMERA` and it is
-> pinned by `check-facade-camera.ts` plus `facade-twin/pose-experiments.ts`.
+> **P0, blocking everything street-level.** Five separate faults were found and
+> fixed in one session, and the measurement instrument itself turned out to be
+> unsound. Every street-level number predating this is void. `FACADE_STATE.md`
+> §13–§17 carries the measurements; this is the handoff.
 >
-> This supersedes the earlier "180° yaw" diagnosis, which was the same bug seen
-> through too small a question: `centre` and `edge` were both wrong by the van's
-> heading, and `edge` looked right only on views where heading happened to be
-> near 180°. Massing is unaffected. **Every street-level number below is void
-> until a re-measurement lands.** See `FACADE_STATE.md` §13.
+> ### What was wrong, and is now fixed
 >
-> Next, in order:
-> 1. **Diagnose the residual tail.** Cross-view registration is median 0.95 m but
->    p90 5.55 m, and bimodal — 30 of 60 inside a metre, then a tail. That is a
->    correct camera with another stage failing, most likely wall selection and
->    occlusion. It must be separated per case, not attributed by assertion.
-> 2. **House-number anchors.** `number-bands.ts` + `vision/read_numbers.py` +
->    `check-number-anchors.ts` read the doorplate off the near-side pass and
->    match it against BAG address points, which certifies *identity* the way
->    cross-view agreement cannot. Identity only: a BAG address point is not the
->    surveyed centre of a plaque, so the along-band offset is loose.
-> 3. **Recover 2024–2025.** 15,312 panoramas publish height 0. Orientation is no
->    longer a blocker — the camera model never reads it — and azimuth is exactly
->    independent of height, so those frames already serve for horizontal
->    registration and identity. A one-parameter vertical fit against a sound view
->    of the same wall is what remains. Until then they stay rejected, not guessed.
-> 4. **Only then** re-measure the boundary.
+> 1. **The camera model.** Amsterdam's panoramas are *world-aligned* — north at
+>    the frame centre, horizon level — and `heading`/`pitch`/`roll` describe the
+>    van, not the picture. The pipeline rotated every projection by the van's
+>    heading. This supersedes the "180° yaw" diagnosis: `centre` and `edge` were
+>    both wrong by the heading, and `edge` looked right only where heading
+>    happened to be near 180°. `AMSTERDAM_CAMERA`, pinned by
+>    `check-facade-camera.ts` and `facade-twin/pose-experiments.ts` (`--opposed`,
+>    `--flow`, `--rigs`). All three vendors — Cyclomedia, kempkes, 360geo — are
+>    world-aligned.
+> 2. **`b3_h_nok` is not a ridge height.** Read as one it put the ridge below the
+>    eaves on 484 of 6,429 buildings, 186 of which pass `b3_val3dity_lod22`.
+>    Ridge now comes from `b3_h_dak_max`, clamped. Inversions 484 → 0.
+> 3. **A frontage split by a jog is still one frontage.** `buildElevations`
+>    grouped only *consecutive* edges, so a bay or a porch broke a wall into
+>    pieces and the pipeline measured one. 176 panden, chosen piece a median
+>    2.31× too small. `mergeCoplanar` → 34. Merged elevations carry
+>    `maxDeviationM`: 26 fronts bow more than 0.35 m and are wrong to rectify.
+> 4. **The frontage was a coin flip.** `measure-facades.ts` counted cameras
+>    standing in front of a wall and never asked whether they could see it, so the
+>    back of a narrow deep plot scored as highly as the front — and the tiebreak,
+>    wall length against plot width, is a coin flip between two short sides that
+>    are often identical to the centimetre. `chooseFrontage` uses visibility:
+>    **770 of 2,180 panden (35%) get a different wall**, almost every switch
+>    exactly 180°, and **491 (23%) have no visible elevation and are massing only**.
+> 5. **The vertical datum drifts within a survey run.** Solved from co-located
+>    frames with no ground level at all, one offset per ~125 m segment: **78% of
+>    the disagreement removed**, scored on held-out *places*. Fleet lens above
+>    local ground 0.73–4.57 m → 1.79–3.77 m.
+>
+> ### The instrument is unsound, and that is the top of the list
+>
+> **Cross-view correlation measures image similarity, not registration.** Two
+> frames of one pass share their pose error — same GNSS state, same per-track
+> datum — so comparing them cannot reveal the dominant error, it cancels it.
+> Measured directly on the same 200 buildings, same walls, only the view pair
+> differing:
+>
+> | view pair | median | within 1 m | median peak |
+> |---|---|---|---|
+> | best two by quality (54% same-year) | 0.30 m | 75% | 0.197 |
+> | one per capture year (3% same-year) | 1.25 m | 42% | 0.113 |
+>
+> The 0.40 m / 88% quoted earlier in this session was the first row. It is not a
+> registration result. The honest figure is **1.25 m median, 42% within a metre**
+> (0.80 m, 65% on confident correlations) — and even that is deflated, because two
+> views years apart differ by real change as well as mis-registration.
+>
+> ### Next, in order
+>
+> 1. **Rebuild the metric on instruments that do not need two photographs to look
+>    alike.** House-number anchors read the building's own name;
+>    human/machine verdicts judge the picture. `check-number-anchors.ts` and the
+>    review deck exist; the registration headline should come from them, not from
+>    correlation. This is the blocker for everything else being believable.
+> 2. **Download views for the corrected frontages.** The selector can only choose
+>    among the 2,922 panoramas on disk, and those were fetched for the *old*
+>    walls — so `rankViews` has never been shown what it can do.
+> 3. **Adjudicate the five house-number conflicts** from §14, including
+>    Herengracht 56/58 where the plate reads 56 three metres inside the wall
+>    proposed as 58.
+> 4. **Finish the scripts typecheck.** `tsconfig.json` included only `src`, so
+>    `npm run lint` had never seen the pipeline. `lint:scripts` closes it: 43
+>    errors → 24, two of them real bugs (a bogus `camera` option on
+>    `measureFacade`; `nearestMaterial` called with one argument and its wrapper
+>    misread, so **every `wallMaterial` in the evidence index has been null**).
+>    Clear the rest, then fold into `check:canal`.
+> 5. **2024–2025 imagery** is blocked on height alone. Orientation is not needed
+>    and azimuth is exactly independent of height, so those 15,312 frames already
+>    serve for horizontal registration and identity via `lensHeightNap`, which
+>    marks an inferred height as inferred.
+> 6. **Only then** re-measure the boundary.
+>
+> ### Instruments that exist
+>
+> | | |
+> |---|---|
+> | `pose-experiments.ts` | camera model from first principles, no buildings |
+> | `cross-view-registration.ts` | registration residual + why a pair failed (`--spread=0` for the same-pass control) |
+> | `solve-track-datum.ts` | per-segment vertical offset, held-out scored |
+> | `number-bands.ts` + `vision/read_numbers.py` + `check-number-anchors.ts` | house numbers vs BAG |
+> | `build-explorer.ts` | browse: parcel, panorama, rectified wall, door band |
+> | `build-registration-review.ts` + `registration.html` | decide: 3 questions, SQLite |
+> | `build-help-wanted.ts` | the cases where a person beats a measurement |
+> | `llm-review.ts` | machine verdicts, stored separately so agreement is measured |
+> | `rebuild-derived.ts` | recompute derived records offline; never re-download |
 
 **Read [`FACADE_STATE.md`](FACADE_STATE.md) first.** It is the measured state of
 the extraction — what is trustworthy, what is not, and the failure counts — and
