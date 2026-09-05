@@ -27,7 +27,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { MATERIALS, nearestMaterial, wallFamily, type MaterialId } from '../../src/canalRecall/facade/materials.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { MassingRecord, PanoramaView } from '../../src/canalRecall/facade/sources.ts';
 
@@ -272,7 +272,7 @@ for (const [materialId, facades] of [...byMaterial.entries()].sort((a, b) => b[1
       x: point.x, y: point.y, z: view.cameraHeight - GEOID_SEPARATION_M,
       headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
     }, { start: { x: f.wall[0], y: f.wall[1] }, end: { x: f.wall[2], y: f.wall[3] }, baseZ, topZ: mass.eavesHeight! + 0.3 },
-      { pixelsPerMetre: ppm, yaw: AMSTERDAM_YAW_CONVENTION });
+      { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA });
     const got = patches(rect, rect.pixelsPerMetre, f.openings, STRIP_BASE_BELOW_GROUND_M);
     if (got.length >= 3) byBuilding.set(f.pandId, got);
   }

@@ -26,7 +26,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
 import { MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE, STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { PanoramaView } from '../../src/canalRecall/facade/sources.ts';
 
@@ -87,7 +87,7 @@ for (const buildingId of queue) {
     }, { start, end,
          baseZ: mass.groundLevel - STRIP_BASE_BELOW_GROUND_M,
          topZ: (mass.eavesHeight ?? mass.groundLevel + 12) + 0.3 },
-       { pixelsPerMetre: ppm, yaw: AMSTERDAM_YAW_CONVENTION, maxPixels: 24e6 });
+       { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA, maxPixels: 24e6 });
     const file = path.join(buildingId, `${i}.jpg`);
     await writeFile(path.join(OUT, file),
       jpeg.encode({ width: rect.width, height: rect.height, data: Buffer.from(rect.data) }, 86).data);

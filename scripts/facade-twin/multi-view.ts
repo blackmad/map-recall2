@@ -39,7 +39,7 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/area
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade, type CameraPose } from '../../src/canalRecall/facade/rectify.ts';
-import { hasUsablePose, AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { hasUsablePose, AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -187,7 +187,7 @@ for (const buildingId of queue) {
       { start: wall.e.start, end: wall.e.end,
         baseZ: mass.groundLevel - STRIP_BASE_BELOW_GROUND_M,
         topZ: (mass.eavesHeight ?? mass.groundLevel + 12) + 0.3 },
-      { pixelsPerMetre: ppm, yaw: AMSTERDAM_YAW_CONVENTION });
+      { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA });
     const file = path.join(buildingId, `${i}.jpg`);
     await writeFile(path.join(OUT, file),
       jpeg.encode({ width: rect.width, height: rect.height, data: Buffer.from(rect.data) }, 86).data);

@@ -29,44 +29,105 @@ export interface CameraPose {
   x: number;
   y: number;
   z: number;
+  /**
+   * The vehicle's attitude at capture.
+   *
+   * Whether these rotate the *image* is a property of the publisher, not of the
+   * pose — see `CameraModel`. For a world-aligned publisher they are metadata
+   * describing the van, and applying them is a bug.
+   */
   headingDeg: number;
   pitchDeg: number;
   rollDeg: number;
 }
 
+/** World-frame offset from the camera to a point: east, north, up, in metres. */
+export type WorldDelta = readonly [number, number, number];
+
 /**
- * Where the panorama's `heading` sits in the image.
+ * How a publisher's equirectangular frame relates to the world.
  *
- * Publishers differ and rarely document it: some put the heading direction at
- * the horizontal centre of the equirectangular frame, others at the left edge.
- * The two differ by exactly half the image width — 180° — so guessing wrong
- * produces a confident, well-formed picture of whatever stands behind the
- * camera.
+ * This is the question that cost this project every street-level measurement it
+ * had, twice, and both times because it was asked in too small a form. The
+ * first form was "where does azimuth zero sit, the centre of the frame or the
+ * left edge?" — which silently assumes the frame turns with the vehicle. The
+ * answer to the *larger* question, for Amsterdam, is that it does not:
  *
- * **Amsterdam's panoramas are `edge`**: the heading direction sits at the left
- * edge of the equirectangular frame, so azimuth 0 maps to u = 0.
+ *   - Two cameras standing 9–14 cm apart with headings 180° opposed produce raw
+ *     images that agree at 0.0° ± 0.5° under normalised cross-correlation. If
+ *     the frame turned with the vehicle they would differ by half a frame.
+ *   - The optical-flow expansion centre between consecutive frames of a track —
+ *     which is the direction of travel, and is known independently from the two
+ *     published positions — lands at `world bearing + 180°` in image columns,
+ *     with the anticlockwise alternative ruled out (concentration R = 0.84
+ *     against 0.05).
  *
- * This was got wrong, and the way it was got wrong is the lesson. An earlier
- * calibration sliced one panorama into eight 45° bands, asked which band held a
- * wall known to be 4.2 m away, and concluded `centre`. That single measurement
- * outvoted a direct comparison, and it was wrong. The settling evidence is
- * dumber and much stronger: render the same wall from the same panorama both
- * ways for six buildings and look. Under `centre` they are a bridge parapet, a
- * street receding to a vanishing point, and a blank sky; under `edge` they are
- * canal houses with windows, doors and parked cars in front of them.
+ * So Amsterdam's frames are *world-aligned*: north sits at the horizontal
+ * centre, the horizon is level, and `heading`/`pitch`/`roll` describe the van.
+ * The pipeline was rotating every projection by the van's heading, which is why
+ * two panoramas of one pand landed on two different houses, and why the whole
+ * `centre`/`edge` argument was unwinnable: both were wrong by `heading`, and
+ * `edge` looked right only on the views where heading happened to be near 180°.
  *
- * Both conventions produce upright, plausible, entirely convincing pictures,
- * because 180° from a canal frontage in Amsterdam is another canal frontage.
- * That is exactly why one clever indirect test is not enough, and why this now
- * has a fixture: `check-facade-yaw.ts` renders both and asserts which one holds
- * the building.
- *
- * The convention has no default anywhere. It is a property of the *publisher*,
- * so the imagery adapter states it and every caller must pass it — an omitted
- * argument is a type error rather than a silent 180° error in 2,184 records,
- * which is what the previous default cost.
+ * A model is therefore a named object, not a string, and it is always required.
  */
-export type YawConvention = 'centre' | 'edge';
+export interface CameraModel {
+  readonly id: string;
+  /** Where a world-frame offset from the camera lands in the frame. */
+  project(delta: WorldDelta, pose: CameraPose, image: { width: number; height: number }): [number, number];
+}
+
+const toRadians = (degrees: number) => (degrees * Math.PI) / 180;
+
+/** Direction (east, north, up) → pixel, given where north sits horizontally. */
+function equirectangular(
+  dx: number, dy: number, dz: number,
+  image: { width: number; height: number },
+  northAtU: number,
+): [number, number] {
+  const length = Math.hypot(dx, dy, dz) || 1;
+  // Azimuth clockwise from north; elevation positive upward.
+  const azimuth = Math.atan2(dx, dy);
+  const elevation = Math.asin(Math.max(-1, Math.min(1, dz / length)));
+  const u = (((azimuth / (Math.PI * 2)) + northAtU) % 1 + 1) % 1;
+  return [u * image.width, (0.5 - elevation / Math.PI) * image.height];
+}
+
+/**
+ * A publisher who has already rotated the frame into the world.
+ *
+ * The image is north-aligned and level; the pose's orientation fields are
+ * ignored deliberately, and that is the whole content of the model.
+ */
+export const worldAlignedFrame = (id: string, northAtU: number): CameraModel => ({
+  id,
+  project: (delta, _pose, image) => equirectangular(delta[0], delta[1], delta[2], image, northAtU),
+});
+
+/**
+ * A publisher whose frame turns with the vehicle.
+ *
+ * Yaw about the vertical axis first, then pitch, then roll — the order a
+ * vehicle-mounted head actually moves in. Kept because it is the other real
+ * convention and the distinction is the lesson; no Amsterdam code path uses it.
+ */
+export const bodyAlignedFrame = (id: string, forwardAtU: number): CameraModel => ({
+  id,
+  project: (delta, pose, image) => {
+    const yaw = toRadians(pose.headingDeg), pitch = toRadians(pose.pitchDeg), roll = toRadians(pose.rollDeg);
+    const [dx, dy, dz] = delta;
+    // Rotate the world so the camera's forward axis is +y.
+    let x = dx * Math.cos(yaw) - dy * Math.sin(yaw);
+    let y = dx * Math.sin(yaw) + dy * Math.cos(yaw);
+    let z = dz;
+    const y1 = y * Math.cos(pitch) + z * Math.sin(pitch);
+    const z1 = -y * Math.sin(pitch) + z * Math.cos(pitch);
+    y = y1; z = z1;
+    const x2 = x * Math.cos(roll) - z * Math.sin(roll);
+    const z2 = x * Math.sin(roll) + z * Math.cos(roll);
+    return equirectangular(x2, y, z2, image, forwardAtU);
+  },
+});
 
 export interface FacadePlane {
   /** Wall ends, in RD metres, ordered so the wall's outward normal is to the right. */
@@ -76,57 +137,6 @@ export interface FacadePlane {
   baseZ: number;
   /** NAP height of the top of the sampled strip — ridge plus headroom. */
   topZ: number;
-}
-
-const toRadians = (degrees: number) => (degrees * Math.PI) / 180;
-
-/**
- * Rotate a world direction into the camera frame.
- *
- * Yaw about the vertical axis first, then pitch, then roll — the order a
- * vehicle-mounted head actually moves in. Pitch and roll are typically a degree
- * or two here, but at 25 m a single degree is 44 cm on the wall, which is a
- * whole window sill.
- */
-function toCameraFrame(dx: number, dy: number, dz: number, pose: CameraPose): [number, number, number] {
-  const yaw = toRadians(pose.headingDeg);
-  const pitch = toRadians(pose.pitchDeg);
-  const roll = toRadians(pose.rollDeg);
-
-  // Yaw: rotate the world so the camera's forward axis is +y.
-  const cosYaw = Math.cos(yaw), sinYaw = Math.sin(yaw);
-  let x = dx * cosYaw - dy * sinYaw;
-  let y = dx * sinYaw + dy * cosYaw;
-  let z = dz;
-
-  const cosPitch = Math.cos(pitch), sinPitch = Math.sin(pitch);
-  const y1 = y * cosPitch + z * sinPitch;
-  const z1 = -y * sinPitch + z * cosPitch;
-  y = y1; z = z1;
-
-  const cosRoll = Math.cos(roll), sinRoll = Math.sin(roll);
-  const x2 = x * cosRoll - z * sinRoll;
-  const z2 = x * sinRoll + z * cosRoll;
-  x = x2; z = z2;
-
-  return [x, y, z];
-}
-
-/** Camera-frame direction → pixel coordinates in the equirectangular frame. */
-export function directionToPixel(
-  direction: [number, number, number],
-  image: { width: number; height: number },
-  yaw: YawConvention,
-): [number, number] {
-  const [x, y, z] = direction;
-  const length = Math.hypot(x, y, z) || 1;
-  // Azimuth measured clockwise from the camera's forward axis.
-  const azimuth = Math.atan2(x, y);
-  const elevation = Math.asin(Math.max(-1, Math.min(1, z / length)));
-  const turns = azimuth / (Math.PI * 2);
-  const u = ((yaw === 'centre' ? turns + 0.5 : turns) % 1 + 1) % 1;
-  const v = 0.5 - elevation / Math.PI;
-  return [u * image.width, v * image.height];
 }
 
 /** Bilinear sample, wrapping horizontally because the panorama is a cylinder. */
@@ -150,14 +160,14 @@ export interface RectifyOptions {
   /** Output resolution, in pixels per metre of wall. */
   pixelsPerMetre?: number;
   /**
-   * Required. Where the publisher puts the heading direction in the frame.
+   * Required. How this publisher's frame relates to the world.
    *
-   * Not optional and never defaulted: this is a property of the imagery, the
-   * two values differ by 180°, and both produce a convincing picture. A default
-   * here silently pointed 2,184 measurements at whatever stood behind the
-   * camera. Take it from the imagery adapter.
+   * Not optional and never defaulted. The wrong model produces an upright,
+   * well-lit, entirely convincing picture of a different building, because in
+   * Amsterdam whatever you point at is a canal house. Take it from the imagery
+   * adapter, which is where the fact about the publisher belongs.
    */
-  yaw: YawConvention;
+  camera: CameraModel;
   /** Cap on output size, so a long warehouse wall cannot allocate unboundedly. */
   maxPixels?: number;
 }
@@ -190,7 +200,7 @@ export function rectifyFacade(
   options: RectifyOptions,
 ): RectifiedFacade {
   const pixelsPerMetre = options.pixelsPerMetre ?? 60;
-  const yaw = options.yaw;
+  const camera = options.camera;
   const maxPixels = options.maxPixels ?? 12e6;
 
   const wallWidthM = Math.hypot(plane.end.x - plane.start.x, plane.end.y - plane.start.y);
@@ -216,10 +226,8 @@ export function rectifyFacade(
       const worldX = plane.start.x + ux * along;
       const worldY = plane.start.y + uy * along;
 
-      const direction = toCameraFrame(worldX - pose.x, worldY - pose.y, worldZ - pose.z, pose);
-      if (!Number.isFinite(direction[0])) { missing++; continue; }
-      const [su, sv] = directionToPixel(direction, image, yaw);
-      if (sv < 0 || sv >= image.height) { missing++; continue; }
+      const [su, sv] = camera.project([worldX - pose.x, worldY - pose.y, worldZ - pose.z], pose, image);
+      if (!Number.isFinite(su) || sv < 0 || sv >= image.height) { missing++; continue; }
       sample(image, su, sv, rgb);
 
       const offset = (py * width + px) * 4;

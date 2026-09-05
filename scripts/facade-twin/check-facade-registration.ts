@@ -30,8 +30,8 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
-import { rectifyFacade, type CameraPose, type EquirectangularImage, type YawConvention } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { rectifyFacade, type CameraPose, type EquirectangularImage } from '../../src/canalRecall/facade/rectify.ts';
+import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { normalise, skyline, skylineSteps } from '../../src/canalRecall/facade/skyline.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
@@ -173,7 +173,7 @@ function frontage(buildingId: string) {
  * edges for one building. Null when the strip holds too few boundaries for the
  * correlation to mean anything.
  */
-async function offsetFor(buildingId: string, headingSign: number, yawOffsetDeg: number, yaw: YawConvention) {
+async function offsetFor(buildingId: string, headingSign: number, yawOffsetDeg: number) {
   const front = frontage(buildingId);
   if (!front || !front.views.length) { reason = 'no view meeting standoff/obliquity/leaf-off'; return null; }
   const wall = front.wall;
@@ -214,7 +214,7 @@ async function offsetFor(buildingId: string, headingSign: number, yawOffsetDeg: 
     // the sky boundary, so there has to be sky.
     baseZ: (massing.get(buildingId)?.groundLevel ?? 1) + 4,
     topZ: tallestRidge + 14,
-  }, { pixelsPerMetre: PX_PER_M, yaw, yaw: AMSTERDAM_YAW_CONVENTION });
+  }, { pixelsPerMetre: PX_PER_M, camera: AMSTERDAM_CAMERA });
 
   const toPx = (a: number) => ((a + SPAN_M / 2) / SPAN_M) * rect.width;
   const heights = skyline(rect);
@@ -239,15 +239,14 @@ const targets = (arg('ids') ?? [
 ].join(',')).split(',');
 
 let reason = '';
-const yaw = (arg('yaw') as YawConvention) ?? 'centre';
-console.log(`Registration against BAG plot boundaries — yaw=${yaw}\n`);
+console.log(`Registration against BAG plot boundaries — camera '${AMSTERDAM_CAMERA.id}'\n`);
 
 const offsets: number[] = [];
 const signed: number[] = [];
 for (const buildingId of targets) {
   if (!footprints.has(buildingId)) { console.log(`${buildingId}  not in area`); continue; }
   reason = 'unknown';
-  const result = await offsetFor(buildingId, 1, 0, yaw);
+  const result = await offsetFor(buildingId, 1, 0);
   if (!result) { console.log(`${buildingId}  skipped — ${reason}`); continue; }
   offsets.push(Math.abs(result.offsetM));
   signed.push(result.offsetM);

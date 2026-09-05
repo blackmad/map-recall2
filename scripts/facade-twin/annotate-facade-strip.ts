@@ -19,8 +19,8 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
-import { rectifyFacade, type CameraPose, type EquirectangularImage, type YawConvention } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { rectifyFacade, type CameraPose, type EquirectangularImage } from '../../src/canalRecall/facade/rectify.ts';
+import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { skyline, skylineSteps } from '../../src/canalRecall/facade/skyline.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
@@ -34,7 +34,6 @@ const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))
 const targetId = arg('id') ?? '0363100012165026';
 const SPAN_M = Number(arg('span') ?? 40);
 const PX_PER_M = 55;
-const yaw = (arg('yaw') as YawConvention) ?? 'centre';
 const MIN_STANDOFF = Number(arg('min-standoff') ?? 4);
 const MAX_STANDOFF = Number(arg('max-standoff') ?? 30);
 const MAX_OBLIQUITY = Number(arg('max-obliquity') ?? 20);
@@ -126,7 +125,7 @@ const rect = rectifyFacade(image, cameraPose, {
   start: { x: centre.x - ux * (SPAN_M / 2), y: centre.y - uy * (SPAN_M / 2) },
   end: { x: centre.x + ux * (SPAN_M / 2), y: centre.y + uy * (SPAN_M / 2) },
   baseZ: ground + 4, topZ: ridge + 7,
-}, { pixelsPerMetre: PX_PER_M, yaw, yaw: AMSTERDAM_YAW_CONVENTION });
+}, { pixelsPerMetre: PX_PER_M, camera: AMSTERDAM_CAMERA });
 
 // Draw the register's boundaries over the photograph.
 const paint = (x: number, colour: [number, number, number], width: number) => {

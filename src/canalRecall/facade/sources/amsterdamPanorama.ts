@@ -20,6 +20,7 @@
  *   - published camera position and orientation, so visibility is a geometry
  *     question answerable before any image is downloaded.
  */
+import { worldAlignedFrame } from '../rectify.ts';
 import type { BboxLngLat, ImagerySource, LngLat, PanoramaView } from '../sources.ts';
 
 const API = 'https://api.data.amsterdam.nl/panorama/panoramas/';
@@ -32,19 +33,43 @@ const PAGE_SIZE = 500;
  * checked against measured ground levels rather than trusted.
  */
 /**
- * Where Gemeente Amsterdam puts the heading direction in an equirectangular
- * frame: at the **left edge**, so azimuth 0 maps to u = 0.
+ * How Gemeente Amsterdam's equirectangular frames relate to the world.
  *
- * Established by rendering the same wall from the same panorama under both
- * conventions for six buildings and looking at the results. Under the other
- * convention they are a bridge parapet, a street receding to a vanishing point
- * and a blank sky; under this one they are canal houses. Pinned by
- * `check-facade-yaw.ts`.
+ * They are **world-aligned**: north sits at the horizontal centre of the frame,
+ * the horizon is level, and the published `heading`, `pitch` and `roll` describe
+ * the survey van rather than the image. Nothing rotates them.
  *
- * It lives here rather than in the rectifier because it is a fact about this
- * publisher, not about rectification, and the previous arrangement — a default
- * in the rectifier that five scripts inherited without stating — is what let a
- * 180° error reach every measurement in the pilot.
+ * This replaced a `centre`/`edge` yaw convention that was the wrong question.
+ * That question presumes the frame turns with the vehicle; both of its answers
+ * were wrong by the van's heading, and `edge` passed its review only because
+ * the six façades it was checked on happened to be seen from panoramas whose
+ * heading was near 180°, where the two coincide. It is why two panoramas of one
+ * pand put its footprint on two different houses, and why 0 of 120 buildings
+ * locked under cross-view correlation.
+ *
+ * Three independent measurements settle it, and none of them needs a building,
+ * a detector or a rectified strip:
+ *
+ *   1. **Opposed pairs.** Six pairs of cameras standing 9–14 cm apart with
+ *      headings 180° apart — the same spot on different days, driven the other
+ *      way — give raw images that agree at 0.0° ± 0.5°, correlation peaks 0.42
+ *      to 0.74. A body-aligned frame would put them half a frame apart.
+ *   2. **Optical flow.** Between consecutive frames of a track the horizontal
+ *      flow is a sinusoid whose ascending zero is the direction of travel, and
+ *      travel is known exactly from the two published positions. Its image
+ *      azimuth lands at bearing + 180°, i.e. north at u = W/2, over 21 tracks
+ *      spanning 2021–2023; the anticlockwise alternative is ruled out
+ *      (concentration R = 0.84 against 0.05).
+ *   3. **Cross-view residual.** Rectifying one wall from two panoramas and
+ *      correlating the upper façade: the median registration residual falls
+ *      from 2.05 m to 0.95 m and the share within a metre rises from 23% to 50%.
+ *      The signed median is 0.05 m, so the published position is the lens and
+ *      carries no vehicle offset.
+ *
+ * Applying pitch and roll on top makes it slightly worse (median 1.15 m), which
+ * is the expected sign if the publisher has already levelled the frame.
+ *
+ * Pinned by `check-facade-camera.ts`, which re-runs (1) and (2) from the cache.
  */
 /**
  * Is this pose usable at all?
@@ -84,7 +109,7 @@ export const hasUsablePose = (view: {
   // All three exactly zero is the other way this feed says "no orientation".
   && !(view.headingDeg === 0 && view.pitchDeg === 0 && view.rollDeg === 0);
 
-export const AMSTERDAM_YAW_CONVENTION = 'edge' as const;
+export const AMSTERDAM_CAMERA = worldAlignedFrame('amsterdam-world-aligned', 0.5);
 
 export const GEOID_SEPARATION_M = 43.5;
 

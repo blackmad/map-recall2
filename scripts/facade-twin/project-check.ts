@@ -33,8 +33,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
-import { directionToPixel } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, hasUsablePose } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -61,20 +60,14 @@ for (const e of registry) if (!footprints.has(e.buildingId)) {
   footprints.set(e.buildingId, e.footprintLngLat.map(p => RD_NEW.fromLngLat(p)));
 }
 
-/** World direction → camera frame. Same rotation order as the rectifier. */
-function toCamera(dx: number, dy: number, dz: number, v: PanoramaView): [number, number, number] {
-  const rad = (d: number) => (d * Math.PI) / 180;
-  const yaw = rad(v.headingDeg), pitch = rad(v.pitchDeg), roll = rad(v.rollDeg);
-  let x = dx * Math.cos(yaw) - dy * Math.sin(yaw);
-  let y = dx * Math.sin(yaw) + dy * Math.cos(yaw);
-  let z = dz;
-  const y1 = y * Math.cos(pitch) + z * Math.sin(pitch);
-  const z1 = -y * Math.sin(pitch) + z * Math.cos(pitch);
-  y = y1; z = z1;
-  const x2 = x * Math.cos(roll) - z * Math.sin(roll);
-  const z2 = x * Math.sin(roll) + z * Math.cos(roll);
-  return [x2, y, z2];
-}
+/**
+ * World offset → pixel, through the publisher's camera model.
+ *
+ * This used to rotate by the van's heading, pitch and roll before mapping to a
+ * pixel. It does not any more, and that single change is what put the outline on
+ * the building: Amsterdam's frames are already north-aligned and level. See
+ * `AMSTERDAM_CAMERA`.
+ */
 
 const ids = (arg('ids') ?? '').split(',').filter(Boolean);
 const limit = Number(arg('limit') ?? 0);
@@ -99,7 +92,7 @@ for (const buildingId of queue) {
   if (chosen) candidates.push(chosen);
   for (const extra of (multi[buildingId] ?? [])) {
     const v = views.get(extra.panoramaId);
-    if (v && !candidates.some(c => c.panoramaId === v.panoramaId)) candidates.push(v);
+    if (v && hasUsablePose(v) && !candidates.some(c => c.panoramaId === v.panoramaId)) candidates.push(v);
   }
   for (const view of candidates) {
   let bytes: Buffer;
@@ -110,10 +103,9 @@ for (const buildingId of queue) {
   const ground = mass.groundLevel;
   const eaves = mass.eavesHeight ?? ground + 12;
 
-  const project = (p: ProjectedPoint, z: number) => {
-    const d = toCamera(p.x - cam.x, p.y - cam.y, z - camZ, view);
-    return directionToPixel(d, image, AMSTERDAM_YAW_CONVENTION);
-  };
+  const project = (p: ProjectedPoint, z: number) =>
+    AMSTERDAM_CAMERA.project([p.x - cam.x, p.y - cam.y, z - camZ],
+      { x: cam.x, y: cam.y, z: camZ, headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg }, image);
 
   // Every footprint corner at ground and at eaves.
   const low = ring.map(p => project(p, ground));

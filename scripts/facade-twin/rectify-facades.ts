@@ -16,8 +16,8 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
-import { rectifyFacade, type CameraPose, type EquirectangularImage, type YawConvention } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { rectifyFacade, type CameraPose, type EquirectangularImage } from '../../src/canalRecall/facade/rectify.ts';
+import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView } from '../../src/canalRecall/facade/sources.ts';
 
@@ -154,7 +154,7 @@ function poseOf(view: PanoramaView, point: { x: number; y: number }): CameraPose
   };
 }
 
-async function rectify(buildingId: string, label: string, yaw: YawConvention, suffix = '') {
+async function rectify(buildingId: string, label: string, suffix = '') {
   const found = frontageOf(buildingId);
   if (!found) { console.log(`  ${label}: no usable view`); return null; }
   const { wall, view } = found;
@@ -176,7 +176,7 @@ async function rectify(buildingId: string, label: string, yaw: YawConvention, su
     end: { x: wall.end.x + ex, y: wall.end.y + ey },
     baseZ: ground - 1.5,          // include the stoep and any souterrain light well
     topZ: ridge + 1.5,            // and headroom above the ridge for the gable top
-  }, { pixelsPerMetre: 70, yaw, yaw: AMSTERDAM_YAW_CONVENTION });
+  }, { pixelsPerMetre: 70, camera: AMSTERDAM_CAMERA });
 
   const encoded = jpeg.encode({ width: result.width, height: result.height, data: Buffer.from(result.data) }, 88);
   await mkdir(OUT, { recursive: true });
@@ -190,27 +190,22 @@ async function rectify(buildingId: string, label: string, yaw: YawConvention, su
 }
 
 // ---- entry points --------------------------------------------------------
-if (process.argv.includes('--calibrate')) {
-  // The yaw convention is undocumented, so render both and look at them.
-  const buildingId = await buildingIdFor(arg('address') ?? 'Prinsengracht 263');
-  console.log(`Calibrating yaw convention on ${arg('address') ?? 'Prinsengracht 263'} (${buildingId})`);
-  for (const yaw of ['centre', 'edge'] as const) await rectify(buildingId, 'calibration', yaw, `-${yaw}`);
-} else {
-  // Calibrated, not assumed: rendering the same wall both ways showed 'centre'
-  // pointing 180° away, at a building four metres behind the camera. The two
-  // conventions differ by exactly half the image width, which is why a
-  // "looks like a plausible canal scene" check cannot tell them apart — in
-  // Amsterdam both directions look like a plausible canal scene.
-  const yaw = (arg('yaw') as YawConvention) ?? 'centre';
+{
+  // There is no longer a convention to calibrate. `--calibrate` used to render
+  // the same wall under `centre` and `edge` and invite a person to pick; both
+  // were wrong by the van's heading, and picking between them is what kept the
+  // error alive for the whole pilot. The camera model is now a measured property
+  // of the publisher, stated in the imagery adapter and pinned by
+  // `check-facade-camera.ts`.
   const ids = arg('ids')?.split(',');
   const addresses = ids ?? (arg('address')
     ? [arg('address')!]
     : ['Prinsengracht 263', 'Keizersgracht 123', 'Herengracht 172', 'Keizersgracht 324', 'Herengracht 386', 'Singel 140']);
-  console.log(`Rectifying ${addresses.length} façade(s), yaw=${yaw}`);
+  console.log(`Rectifying ${addresses.length} façade(s) with camera model '${AMSTERDAM_CAMERA.id}'`);
   const manifest = [];
   for (const address of addresses) {
     const buildingId = ids ? address : await buildingIdFor(address);
-    const out = await rectify(buildingId, address, yaw);
+    const out = await rectify(buildingId, address);
     if (out) manifest.push({
       address, buildingId,
       panoramaId: out.view.pose.view.panoramaId,

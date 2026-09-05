@@ -26,7 +26,7 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/fac
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
-import { hasUsablePose, AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { hasUsablePose, AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -105,7 +105,7 @@ for (const year of [...byYear.keys()].sort()) {
       { start, end, baseZ: mass.groundLevel - STRIP_BASE_BELOW_GROUND_M,
         topZ: (mass.eavesHeight ?? mass.groundLevel + 12) + 0.3 },
       // One scale for every render, so a shift between them is metres.
-      { pixelsPerMetre: 14, yaw: AMSTERDAM_YAW_CONVENTION, maxPixels: 30e6 });
+      { pixelsPerMetre: 14, camera: AMSTERDAM_CAMERA, maxPixels: 30e6 });
     const name = `${year}-${i}.jpg`;
     await writeFile(path.join(OUT, PAND, name),
       jpeg.encode({ width: rect.width, height: rect.height, data: Buffer.from(rect.data) }, 86).data);
