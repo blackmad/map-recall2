@@ -117,3 +117,42 @@ proposed it and neither model saw it.
   the window grid found.
 - **1,675 of 7,282 openings were seen by no model.** They are marked, and they
   should not be treated as observations.
+
+
+## Where the ground is, and why doors are hard
+
+Two findings from the door work, both worth keeping.
+
+**The height model and the photograph disagree about the ground.** Doors were
+anchored to `3DBAG ground − strip base`. On one checked building that put the
+doorway on the quay wall below the parked cars: reading the strip bottom-up it
+is solid masonry (the quay), then a gap (cars on the pavement), then the façade
+proper **3.6 m above** where the height model put the ground. The façade foot is
+now found from the mask — the lowest unbroken run of wall — and the gap between
+that and the geometric line is reported as `groundResidualM`.
+
+Across 1,821 strips the median residual is **0.02 m**, which says the height
+model is usually right. But **425 are over 1.5 m out**, and those get no door at
+all: when the two sources disagree by more than a storey, placing a doorway on
+either answer is a guess.
+
+**Doors are mostly unobservable from this imagery, and that is the real limit.**
+Of 1,821 façades, 977 have their ground storey more than 40% hidden behind
+parked cars and bicycles. A survey car photographs a canal from 20–40 m across
+the water, and the one part of the wall that is reliably occluded is the bottom
+three metres — which is exactly where the front door is. This is not a
+detection problem and a better model will not fix it.
+
+The fix that would work is **multiple panoramas per building**. A car parked in
+front of the door in January's pass is not there in March's, and the pipeline
+already knows every panorama that sees each wall — it just picks one. That is
+the highest-value remaining change for the ground floor.
+
+| | after door work |
+|---|---|
+| Windows | 5,343 |
+| Doors | 403 (22% of strips) |
+| Ground storey too occluded | 977 (54%) |
+| Ground residual over 1.5 m | 425 (23%) |
+| Seen by both models | 201 |
+| Grid-proposed only | 1,372 |

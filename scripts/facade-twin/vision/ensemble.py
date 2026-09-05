@@ -55,6 +55,9 @@ DOOR_MIN_H_M = 1.8
 GROUND_STOREY_M = 3.0
 # Above this, the ground storey is too hidden to say anything about.
 MAX_GROUND_OCCLUSION = 0.4
+# How far the photograph and the height model may disagree about the ground
+# before neither is trusted to place a doorway.
+MAX_GROUND_RESIDUAL_M = 1.5
 # Bay pitch measured across 1,375 façades earlier in this project, and the
 # widest a single opening gets before it is a shopfront.
 BAY_PITCH_M = 2.6
@@ -207,7 +210,7 @@ def main() -> int:
                                 int(z - 0.12 * GROUND_STOREY_M * ppm)))
                 z = top
 
-        windows, doors = [], []
+        windows, doors, found = [], [], []
 
         def tighten(y0, y1, x0, x1):
             """
@@ -288,14 +291,66 @@ def main() -> int:
             # running off the image rather than an opening under the pavement.
             if (h - by1) / ppm - args.base < -args.base - 0.05:
                 continue
-            windows.append({
+            found.append({
                 "xM": round(bx0 / ppm, 2),
                 "yM": round((h - by1) / ppm - args.base, 2),
                 "widthM": round(w_m, 2), "heightM": round(h_m, 2),
                 "glazed": round(c["glazed"], 2),
                 "sources": c["sources"] or ["grid"],
+                "_sillPx": by1,
                 **({"inferred": True} if inferred else {}),
             })
+
+        # Where the façade actually starts, as opposed to where we think it does.
+        #
+        # The ground storey was anchored to `ground - STRIP_BASE`, taken from
+        # 3DBAG. On one checked building that put the doorway on the quay wall,
+        # below the parked cars, because the strip reads bottom-up as: solid
+        # masonry (the quay), a gap (cars on the pavement), then the façade
+        # proper 3.6 m above where the model said the ground was.
+        #
+        # The picture knows better than the height model here. Scanning down the
+        # wall column, the façade is the lowest run of rows that is
+        # substantially building and does not break; below its foot is street,
+        # vehicles or quay. That foot is the pavement.
+        #
+        # The gap between the two is a vertical registration residual, and it is
+        # reported per building rather than silently absorbed — it is the same
+        # class of error as the yaw bug and deserves to be visible.
+        wall_rows = wall_mask.mean(axis=1)
+        solid = wall_rows > 0.55
+        facade_foot_px = None
+        run_end = None
+        for y in range(h - 1, -1, -1):
+            if solid[y]:
+                if run_end is None:
+                    run_end = y
+            else:
+                if run_end is not None and (run_end - y) >= GROUND_STOREY_M * ppm * 0.6:
+                    facade_foot_px = run_end
+                    break
+                run_end = None
+        if facade_foot_px is None:
+            facade_foot_px = int(h - args.base * ppm)
+        geometric_ground_px = h - args.base * ppm
+        ground_residual_m = round((geometric_ground_px - facade_foot_px) / ppm, 2)
+
+        # Openings standing on the pavement are doors, not windows.
+        #
+        # The grid finds openings; it does not say what they are, so a front
+        # door falling inside a storey row the window grid happened to find was
+        # emitted as a window. The distinction is not subtle and does not need a
+        # model: a door stands *on* the pavement and is tall, where a window sits
+        # on a sill above it. Measured against the façade foot found from the
+        # picture rather than the height model, since the two disagree by more
+        # than a storey on a quarter of these buildings.
+        for box in found:
+            sill_above_pavement = (facade_foot_px - box.pop("_sillPx")) / ppm
+            is_door = (abs(sill_above_pavement) <= DOOR_MAX_SILL_M
+                       and box["heightM"] >= DOOR_MIN_H_M
+                       and box["widthM"] <= 2.2
+                       and box["glazed"] < 0.6)
+            (doors if is_door else windows).append(box)
 
         # Doors get their own pass, over the ground storey.
         #
@@ -310,7 +365,7 @@ def main() -> int:
         # position is the one thing here not in doubt: the pavement is where the
         # pavement is, and the door stands on it. Within that band, a bay whose
         # cell is wall rather than glazing is the way in.
-        ground_y = int(min(h, h - args.base * ppm))
+        ground_y = int(min(h, facade_foot_px))
         ground_top = int(max(0, ground_y - GROUND_STOREY_M * ppm))
         door_bays = bays
         # How much of the ground storey is hidden behind parked things? A door
@@ -324,7 +379,11 @@ def main() -> int:
         # door is unobserved, not absent, and guessing where it is puts a
         # doorway on a car — which is exactly what a 0.45 wall threshold did.
         # Saying "blocked" is worth more than a confident wrong rectangle.
-        for x0, x1 in (door_bays if occluded <= MAX_GROUND_OCCLUSION else []):
+        # A residual this large means the height model and the photograph
+        # disagree about where the ground is by more than a storey. Placing a
+        # door on either answer would be a guess, so none is placed.
+        can_place_door = occluded <= MAX_GROUND_OCCLUSION and abs(ground_residual_m) <= MAX_GROUND_RESIDUAL_M
+        for x0, x1 in (door_bays if can_place_door and not doors else []):
             cell_glass = window_mask[ground_top:ground_y, x0:x1]
             cell_wall = wall_mask[ground_top:ground_y, x0:x1]
             # The bay has to be nearly all wall for the opening in it to be
@@ -355,6 +414,7 @@ def main() -> int:
         out[pid] = {"pandId": pid, "share": share, "pixelsPerMetre": round(ppm, 1),
                     "windows": windows, "doors": doors,
                     "groundStoreyOccluded": occluded,
+                    "groundResidualM": ground_residual_m,
                     "worldBoxes": len(world_boxes)}
         if overlays:
             base = Image.open(path).convert("RGB")
@@ -400,6 +460,10 @@ def main() -> int:
         both = sum(1 for v in out.values() for b in v["windows"] if len(b["sources"]) > 1)
         withdoor = sum(1 for v in out.values() if v["doors"])
         blocked = sum(1 for v in out.values() if not v["doors"] and v.get("groundStoreyOccluded", 0) > 0.5)
+        res = sorted(abs(v.get("groundResidualM", 0)) for v in out.values())
+        if res:
+            print(f"  ground residual |m|: median {res[len(res)//2]:.2f}  p90 {res[9*len(res)//10]:.2f}"
+                  f"  over 1.5 m: {sum(1 for x in res if x > 1.5)}")
         print(f"{done} strips | {nw} windows, {nd} doors")
         print(f"  no door, ground floor blocked: {blocked}")
         print(f"  seen by both models : {both}")
