@@ -3,8 +3,9 @@
 Branch / worktree: `spike/canal-transit` ·
 `.worktrees/transit` · started 2026-09-05.
 
-This is a design spike, not a ship plan. Goal: decide the smallest mode that
-teaches real Amsterdam transit geography without becoming a GTFS timetable app.
+This is a design spike, not a ship plan. Goal: teach real Amsterdam transit
+geography (stop / line / headsign) from a **versioned GTFS-derived extract**,
+not a live timetable app.
 
 ---
 
@@ -21,127 +22,113 @@ distinguish:
 | **Line** | “Which tram is this?” (12, 2) |
 | **Destination / headsign** | “Where is this service going?” (Nieuw Sloten) |
 
-Teaching a dab Wikipedia “public transport in Amsterdam” list is explicitly
-out — the trivia pipeline already strips those sections.
-
-Live disruption data stays **optional**. Learning must work from a cached,
-versioned extract.
+Live disruption (GTFS-RT) stays **optional**. Learning must work from a cached
+extract. Do not poll OVapi more than daily; send a real `User-Agent`.
 
 ---
 
-## What exists today
+## Data: GTFS is primary
 
-- Travel modes are a binary: `boat` | `car` (`car` is bike in the UI).
-  Branching is `isCar()` everywhere — prefs, loader, physics, quiz subject,
-  exploration (`byBoat`).
-- Extracts have **no** transit partition. Amsterdam `streets-routing` has
-  `busway` lanes and a handful of abandoned-railway tags, not tram/metro
-  lines. Bridge-railway tagging only silences rail-only bridges from quizzes.
-- OSM probe (Overpass, Amsterdam admin_level=8, 2026-09-05): **~148**
-  tram/subway/ferry/bus **route relations** and **~526** stop-like nodes in
-  one count query. Enough geography to teach; needs a real builder, not the
-  highway extract.
+OSM route relations exist (~148 in Amsterdam) but are the wrong foundation for
+this mode: incomplete stop sequences, weak headsigns, no reliable transfers,
+and bus/tram identity that drifts from what riders see on the vehicle.
+
+**Source of truth:** [OVapi GTFS NL](https://gtfs.ovapi.nl/nl/gtfs-nl.zip)
+(~220 MB). Agency **GVB** alone is enough for Amsterdam v0.
+
+Measured from the 2026-09-05 feed (staging build):
+
+| Mode | GVB routes kept | Notes |
+| --- | --- | --- |
+| Tram (`route_type=0`) | 17 | refs 1–7, 12–14, 17, 19, 24–29 |
+| Metro (`route_type=1`) | 5 | 50–54 |
+| Ferry (`route_type=4`) | 10 | F1–F9, F20–F22 |
+| Bus (`route_type=3`) | *deferred* | 43 GVB buses — too dense for v0 learning |
+
+Staging extract: `public/data/extracts/amsterdam/transit-network.json`
+(~320 KB): one representative trip + shape + stop sequence per line, 309
+stops (302 inside the Amsterdam play bbox). Named pins already hold:
+
+- tram **2** stops at **Dam**
+- metro **52** stops at **Noord**
+
+Rebuild (from worktree, after caching the zip):
+
+```bash
+# already downloaded to .cache/transit/gtfs-nl.zip
+python3 scripts/build-amsterdam-transit-gtfs.py
+```
+
+**OSM role (secondary):** basemap context, quay/walk connectors, maybe snapping
+ferry terminals to water. Not the line/stop catalog.
 
 ---
 
-## Data sources (ordered)
+## What exists today in the game
 
-1. **OSM route relations + stops** (preferred for v0 geometry)  
-   `route=tram|subway|ferry` (+ GVB bus later). Same provenance as canals and
-   streets; versionable via BBBike/PBF refresh. Shapes and stop order live on
-   relations; colours/refs are usually tagged.
-
-2. **OVapi GTFS** (`https://gtfs.ovapi.nl/nl/gtfs-nl.zip`, ~220 MB NL-wide)  
-   Best for **schedules, headsigns, transfers**, agency completeness. License:
-   open, no SLA; must send a real `User-Agent` and prefer daily cache, not
-   polling. **Do not** depend on GTFS-RT for the learning game.
-
-3. **Hybrid** (likely production shape)  
-   OSM for drawable corridors and stop positions; GTFS for line identity /
-   headsigns / transfer edges when OSM is thin. Publish a trimmed
-   Amsterdam-only GTFS slice into `.cache/` then a compact
-   `transit-network.json` extract.
-
-v0 should ship from **OSM alone** so refresh stays offline-capable after one
-PBF pull. Add GTFS when stop naming or transfers are wrong in playtests.
+- Travel modes are binary: `boat` | `car` (bike UI). Branching is `isCar()`.
+- No transit extract in the published Amsterdam partitions.
+- Bridge-railway tagging only silences rail-only bridges from quizzes.
 
 ---
 
 ## Mode model (not a vehicle skin)
 
-Add `transit` to `TRAVEL_MODES` (or finer `tram` later). Replace binary
-`isCar` with a small **mode profile**:
+Add `transit` to `TRAVEL_MODES`. Replace binary `isCar` with a **mode profile**:
 
 ```ts
 {
   id: 'transit',
   label: 'Transit',
-  dataset: 'transit-routing',      // new extract
+  dataset: 'transit-network',      // from GTFS
   quizSubjects: ['stop', 'line', 'headsign'],
-  learnedType: 'stop' | 'line',    // mastery keys
-  motion: 'follow-corridor',       // reuse road graph snap
+  learnedType: 'stop' | 'line',
+  motion: 'follow-corridor',       // snap to GTFS shapes
   vehicle: 'tram-car',             // presentation only
 }
 ```
 
-Reuse `RoadNetwork` / `planRoute` / mastery weighting. Physics can start as
-**road-constrain along corridor centerlines** (same as bike), not boat water
-fit. Ferry legs are stop-to-stop hops or short water corridors — decide after
-counting named ferry routes.
-
-Harder without touching legacy JS: `game.js` collision and `game-route.js`
-load copy. Typed path: `modes.ts` → extract filter → `osm-loader` third
-dataset → `recallRuntime` / `recallRules` subjects.
+Reuse `RoadNetwork` / `planRoute` on corridor polylines from `shapes.txt`.
+Transfers: GTFS `transfers.txt` (2.6 MB NL-wide) filtered to GVB stop ids —
+edge list for multi-leg trips later.
 
 ---
 
 ## Recall design (v0)
 
-- **While moving on a line corridor:** ask the **line** (ref + colour chip) or
-  the **next / current stop**.
-- **At a stop / transfer:** ask the stop name; distractors from nearby stops
-  on other lines (not random citywide).
-- **Never** reveal the line on the HUD before the answer when the question is
-  the line (same rule as street/canal names).
-- Spaced repetition keys: `transit:stop:…` and `transit:line:…` — separate
-  from street/water mastery.
+- On a corridor: ask **line** or **current / next stop**.
+- At a stop: ask stop name; distractors from nearby stops on other lines.
+- Never reveal the line on the HUD before a line-answer (same as streets/canals).
+- Mastery keys: `transit:stop:…` and `transit:line:…`.
 
-Surprise routes: landmark POIs already curated; transit mode can target
-**Centraal, a metro terminus, a ferry terminal** as anchors.
+Surprise anchors: Centraal, metro termini, IJ ferry terminals.
 
 ---
 
 ## First deliverables (gated)
 
-1. **`scripts/build-amsterdam-transit.ts`** — from PBF/Overpass cache, emit
-   `transit-routing.json`: lines (ref, colour, mode, stop sequence) + stop
-   nodes + corridor polylines. Pin counts (tram lines, metro lines, ferry
-   routes, stops with names).
-2. **`check:transit-extract`** — named regressions (e.g. tram 2 stops at
-   Dam; metro 52 has Noord; IJ ferry terminals exist).
-3. **Mode profile spike** (typed only) — `TravelMode` includes `transit`;
-   prefs parse safely; no game wiring yet.
-4. **Playable thin slice** — follow one tram corridor with stop quizzes only.
-   No transfers, no bus, no live data.
-
-Stop before citywide bus. Bus density will drown the learning signal.
+1. **Cache + filter pipeline** — download OVapi GTFS with UA; write Amsterdam
+   GVB tram/metro/ferry `transit-network.json` (staging → publish after review).
+2. **`check:transit-extract`** — pin tram 2↔Dam, metro 52↔Noord, ferry F-lines
+   present, stop count band, every line has path + stops.
+3. **Mode profile spike** — `TravelMode` includes `transit`; prefs parse safe.
+4. **Playable thin slice** — follow one tram shape with stop quizzes only.
+   No bus, no GTFS-RT.
 
 ---
 
-## Out of scope for the spike
+## Out of scope
 
-- GTFS-RT / vehicle positions on the map
-- Full multi-leg journey planner UX
-- NS trains (different agency, different learning problem)
-- Skinning a tram mesh before the extract and quiz subjects exist
+- GTFS-RT vehicle dots
+- Full journey-planner UX before one corridor plays
+- NS trains
+- Tram mesh before extract + quiz subjects exist
+- Citywide bus (add only after tram/metro/ferry teach well)
 
 ---
 
 ## Open questions for the owner
 
-1. **Tram-only Amsterdam first**, or tram + metro together?
-2. Is the player **riding a single line** (arcade follow) or **planning
-   transfers** (true transit model)? Item 17 text says the latter; v0 play
-   may still be single-line follow with transfer questions at stops.
-3. Should transit mastery sync with street/water mastery on the knowledge map,
-   or a separate layer?
+1. Tram-only first, or tram + metro + ferry together (staging already has all three)?
+2. Ride-one-line follow vs transfer planner as the first playable loop?
+3. Transit mastery on the knowledge map: separate layer or mixed with streets?
