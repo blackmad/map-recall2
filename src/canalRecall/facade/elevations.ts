@@ -23,6 +23,17 @@ export interface Elevation {
    * from, rather than to a merged abstraction that exists nowhere in BAG.
    */
   mergedFrom?: number[];
+  /**
+   * The furthest any constituent vertex sits from this elevation's own line.
+   *
+   * Zero for a single straight run. For a merged one it is how far from flat
+   * the wall really is, and that decides what the elevation is good for. A
+   * rounded corner shopfront comes back as one 26 m frontage, which is right
+   * for saying *which building* — and wrong for rectification, because
+   * resampling a curve onto a plane stretches one end and squeezes the other.
+   * Identity may ignore this; any measurement in metres must not.
+   */
+  maxDeviationM?: number;
   start: ProjectedPoint;
   end: ProjectedPoint;
   midpoint: ProjectedPoint;
@@ -204,9 +215,14 @@ function mergeCoplanar(
     const dy = (spine.end.y - spine.start.y) / spine.lengthM;
     const start = { x: spine.start.x + dx * lo, y: spine.start.y + dy * lo };
     const end = { x: spine.start.x + dx * hi, y: spine.start.y + dy * hi };
+    let deviation = 0;
+    for (const i of members) for (const point of [elevations[i].start, elevations[i].end]) {
+      deviation = Math.max(deviation, Math.abs(project(spine, point).off));
+    }
     merged.push({
       index: 0,
       mergedFrom: members.slice().sort((a, b) => a - b),
+      maxDeviationM: Number(deviation.toFixed(3)),
       start, end,
       midpoint: { x: (start.x + end.x) / 2, y: (start.y + end.y) / 2 },
       normal: spine.normal,
