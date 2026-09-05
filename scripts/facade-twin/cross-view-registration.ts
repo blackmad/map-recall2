@@ -45,6 +45,7 @@ const CACHE = path.resolve('.cache/facade-twin');
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const arg = (n: string) => process.argv.find(v => v.startsWith(`--${n}=`))?.slice(n.length + 3);
 const PPM = 20, MARGIN = 1.8;
+const SPREAD_YEARS = (arg('spread') ?? '1') !== '0';
 
 const registry = JSON.parse(await readFile(path.join(CACHE, `${AREA.areaId}-registry.json`), 'utf8')).data as
   Array<{ buildingId: string; footprintLngLat: LngLat[] }>;
@@ -182,7 +183,20 @@ for (const pandId of Object.keys(store)) {
   const ranked = rankViews(wall, pandId, probe,
     posedViews.filter(c => existsSync(path.join(CACHE, 'panoramas', `${c.view.panoramaId}.jpg`))),
     { wallHeightM: (mass.ridgeHeight ?? mass.groundLevel + 14) - mass.groundLevel });
-  const spread = spreadAcrossYears(ranked, 2);
+  /**
+   * Independent views, or merely two views?
+   *
+   * `--spread=0` takes the best two by quality, which on a dense pass is two
+   * frames of the same afternoon five metres apart: same weather, same parked
+   * cars, same awnings, same season. They correlate beautifully and prove
+   * almost nothing about registration, because they share every error the pass
+   * made. Year-spread deliberately takes one per capture year, which is a much
+   * harder and much more honest test. The flag exists to measure the
+   * difference rather than assume it.
+   */
+  const spread = SPREAD_YEARS
+    ? spreadAcrossYears(ranked, 2)
+    : ranked.slice(0, 2);
   if (spread.length < 2) continue;
   const [a, b] = [spread[0].view, spread[1].view];
   const [imA, imB] = [await panorama(a.panoramaId), await panorama(b.panoramaId)];
@@ -239,11 +253,11 @@ const share = (rs: any[], f: (r: any) => boolean) => `${Math.round(100 * rs.filt
 console.log(`    ${'either view occluded'.padEnd(26)} locked ${share(good, r => r.occludedA || r.occludedB).padStart(7)}   missed ${share(bad, r => r.occludedA || r.occludedB).padStart(7)}`);
 console.log(`    ${'opposed headings'.padEnd(26)} locked ${share(good, r => Math.abs(r.dHeading) > 120).padStart(7)}   missed ${share(bad, r => Math.abs(r.dHeading) > 120).padStart(7)}`);
 
-await writeFile(path.join(CACHE, 'cross-view-registration.json'), JSON.stringify({
+await writeFile(path.join(CACHE, `cross-view-registration${SPREAD_YEARS ? '' : '-samepass'}.json`), JSON.stringify({
   metadata: {
     generatedAt: new Date().toISOString(),
     generator: 'scripts/facade-twin/cross-view-registration.ts',
-    cameraModel: AMSTERDAM_CAMERA.id, pixelsPerMetre: PPM, planeMargin: MARGIN,
+    cameraModel: AMSTERDAM_CAMERA.id, pixelsPerMetre: PPM, planeMargin: MARGIN, yearSpread: SPREAD_YEARS,
     note: 'shiftM is the along-wall offset at best agreement between two independent panoramas. '
       + 'The diagnostics are recorded so a residual tail can be explained rather than asserted.',
   },

@@ -43,6 +43,34 @@ export interface VisibilityProbe {
 }
 
 const MIN_STANDOFF_M = 8, MAX_STANDOFF_M = 45, MAX_OBLIQUITY_DEG = 35;
+/** How many points along a wall the visibility test samples. */
+const OCCLUSION_SAMPLES = 9;
+
+/**
+ * The fraction of a wall a camera cannot see, from 0 to 1.
+ *
+ * Testing the midpoint alone is a crude proxy and it was being used as a veto:
+ * a footprint that clips the ray to the centre may hide a metre of a twelve
+ * metre frontage, and rejecting that view outright can leave only worse ones.
+ * Equally, a camera that sees the middle through a gap between two buildings
+ * passes a midpoint test while most of the wall is hidden. Sampling along the
+ * wall answers the question that was actually being asked.
+ */
+export function blockedFraction(
+  elevation: Elevation, from: ProjectedPoint, pandId: string, probe: VisibilityProbe,
+  samples = OCCLUSION_SAMPLES,
+): number {
+  let hidden = 0;
+  for (let i = 0; i < samples; i++) {
+    const t = (i + 0.5) / samples;
+    const point = {
+      x: elevation.start.x + (elevation.end.x - elevation.start.x) * t,
+      y: elevation.start.y + (elevation.end.y - elevation.start.y) * t,
+    };
+    if (probe.blocked(from, point, pandId)) hidden++;
+  }
+  return hidden / samples;
+}
 
 /** Camera positions with an unobstructed, usable line to this elevation. */
 export function countClearViews(elevation: Elevation, pandId: string, probe: VisibilityProbe): number {
@@ -52,7 +80,8 @@ export function countClearViews(elevation: Elevation, pandId: string, probe: Vis
     const standoff = standoffM(elevation, p);
     if (standoff < MIN_STANDOFF_M || standoff > MAX_STANDOFF_M) continue;
     if (obliquityDeg(elevation, p) > MAX_OBLIQUITY_DEG) continue;
-    if (probe.blocked(p, elevation.midpoint, pandId)) continue;
+    // Mostly visible counts as a view of this wall; mostly hidden does not.
+    if (blockedFraction(elevation, p, pandId, probe) > 0.5) continue;
     clear++;
   }
   return clear;
@@ -201,6 +230,8 @@ export interface RankedView<T> extends ViewCandidate<T> {
   standoffM: number; obliquityDeg: number;
   /** Source pixels per metre at the *worst* point of the wall — its top. */
   worstPixelsPerMetre: number;
+  /** Share of the wall this camera cannot see, 0 to 1. */
+  blockedFraction: number;
   leafOff: boolean;
 }
 
@@ -226,15 +257,20 @@ export function rankViews<T>(
     if (standoff < minStandoffM || standoff > maxStandoffM) continue;
     const obliquity = obliquityDeg(elevation, candidate.point);
     if (obliquity > maxObliquityDeg) continue;
-    if (probe.blocked(candidate.point, elevation.midpoint, pandId)) continue;
+    // Occlusion is a penalty, not a veto, until most of the wall is gone. A
+    // view that loses a metre of a twelve-metre frontage to a corner is worth
+    // more than a clear view from twice the distance, and the old hard filter
+    // could not say so.
+    const hidden = blockedFraction(elevation, candidate.point, pandId, probe);
+    if (hidden > 0.4) continue;
     // The binding constraint is whichever axis resolves worse.
     const worst = Math.min(
       verticalPixelsPerMetre(standoff, topAboveLens),
       horizontalPixelsPerMetre(standoff, obliquity),
-    );
+    ) * (1 - hidden);
     const month = new Date(candidate.capturedAt).getUTCMonth() + 1;
     ranked.push({ ...candidate, standoffM: standoff, obliquityDeg: obliquity,
-      worstPixelsPerMetre: worst, leafOff: month >= 11 || month <= 3 });
+      worstPixelsPerMetre: worst, blockedFraction: hidden, leafOff: month >= 11 || month <= 3 });
   }
   // Leaf-off first among comparable views: an Amsterdam canal elm covers the
   // façade this project exists to measure, and a bare one covers much less.

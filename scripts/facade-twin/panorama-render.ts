@@ -99,7 +99,7 @@ export function projectFootprint(
   image: DecodedPanorama, view: PanoramaView, camera: CameraModel,
   ring: ProjectedPoint[], wall: readonly number[], groundZ: number, topZ: number,
   { maxWidth = 420, quality = 78, contextFraction = 0.6, eavesZ = null as number | null, heightOffsetM = 0 } = {},
-): { jpeg: Buffer; width: number; height: number } | null {
+): { jpeg: Buffer; width: number; height: number; nativeWidth: number } | null {
   const pose = poseOf(view, heightOffsetM);
   const project = (p: ProjectedPoint, z: number) =>
     camera.project([p.x - pose.x, p.y - pose.y, z - pose.z], pose, image);
@@ -181,8 +181,19 @@ export function projectFootprint(
     edge(a, eavesZ, b, eavesZ, [235, 190, 60], 1);
   }
 
-  const small = downscale(out, cw, ch, maxWidth);
-  return { jpeg: encodeJpeg(small.width, small.height, small.data, quality), width: small.width, height: small.height };
+  /**
+   * Never enlarge past what the source holds.
+   *
+   * A wall 5.6 m wide at 43 m subtends about 165 source pixels; blown up to a
+   * 560-pixel card it becomes a blurry abstraction that a reviewer cannot
+   * possibly judge a roofline from, and which reads as a bug in the projection
+   * rather than a limit of the photograph. The crop is capped at its own native
+   * width and reports what that was, so a card can say "this is all there is"
+   * instead of pretending.
+   */
+  const small = downscale(out, cw, ch, Math.min(maxWidth, cw));
+  return { jpeg: encodeJpeg(small.width, small.height, small.data, quality),
+    width: small.width, height: small.height, nativeWidth: cw };
 }
 
 /** The wall resampled into its own plane, so a measurement scales by one constant. */
@@ -190,7 +201,7 @@ export function rectifyWall(
   image: DecodedPanorama, view: PanoramaView, camera: CameraModel,
   wall: readonly number[], baseZ: number, topZ: number,
   { pixelsPerMetre = 26, margin = 1.25, maxWidth = 380, quality = 78, heightOffsetM = 0 } = {},
-): { jpeg: Buffer; width: number; height: number } | null {
+): { jpeg: Buffer; width: number; height: number; nativeWidth: number } | null {
   const pose = poseOf(view, heightOffsetM);
   const [x0, y0, x1, y1] = wall;
   const wallWidthM = Math.hypot(x1 - x0, y1 - y0);
@@ -218,7 +229,8 @@ export function rectifyWall(
     }
   }
   const small = downscale(data, w, h, maxWidth);
-  return { jpeg: encodeJpeg(small.width, small.height, small.data, quality), width: small.width, height: small.height };
+  return { jpeg: encodeJpeg(small.width, small.height, small.data, quality),
+    width: small.width, height: small.height, nativeWidth: w };
 }
 
 /**

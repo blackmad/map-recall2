@@ -102,10 +102,26 @@ const clearViews = (e: any, pandId: string) => nearby(e.midpoint.x, e.midpoint.y
 });
 
 const decoded = new Map<string, any>();
+let downloads = 0;
 async function panorama(id: string) {
   if (decoded.has(id)) return decoded.get(id);
   if (decoded.size > 4) decoded.clear();
   const file = path.join(CACHE, 'panoramas', `${id}.jpg`);
+  // The alternative frontage is, by construction, seen from cameras the old
+  // pipeline never used, so its panorama is usually not on disk. A page that
+  // asks "which of these two" and shows one is worse than useless.
+  if (!existsSync(file) && downloads < 40) {
+    const view = byId.get(id);
+    if (view?.imageUrl) {
+      try {
+        const response = await fetch(view.imageUrl, { signal: AbortSignal.timeout(90_000) });
+        if (response.ok) {
+          const bytes = Buffer.from(await response.arrayBuffer());
+          if (bytes.length > 100_000) { await writeFile(file, bytes); downloads++; }
+        }
+      } catch { /* leave it missing */ }
+    }
+  }
   if (!existsSync(file)) return null;
   const image = jpeg.decode(await readFile(file), { useTArray: true, formatAsRGBA: true });
   decoded.set(id, image);
@@ -118,7 +134,7 @@ async function shot(pandId: string, view: PanoramaView, wall: readonly number[],
   const out = projectFootprint(image, view, AMSTERDAM_CAMERA, footprints.get(pandId)!, wall,
     mass.groundLevel, Math.max(mass.ridgeHeight ?? 0, mass.eavesHeight ?? 0),
     { maxWidth: width, quality: 80, contextFraction: 0.55, eavesZ: mass.eavesHeight, heightOffsetM: trackOffset(view).offsetM });
-  return out ? out.jpeg.toString('base64') : null;
+  return out ? { image: out.jpeg.toString('base64'), nativeWidth: out.nativeWidth } : null;
 }
 const plan = (pandId: string, wall: readonly number[]) => {
   const ring = footprints.get(pandId)!;
@@ -161,7 +177,8 @@ for (const r of reported) {
     currentView ? await shot(r.pandId, currentView, [current.start.x, current.start.y, current.end.x, current.end.y]) : null,
     await shot(r.pandId, alt.v, [better.e.start.x, better.e.start.y, better.e.end.x, better.e.end.y]),
   ];
-  if (!nowShot && !altShot) continue;
+  // A "which of these two" question needs two pictures.
+  if (!nowShot || !altShot) continue;
   cases.push({
     kind: 'which-wall', pandId: r.pandId, label: label.get(r.pandId) ?? r.pandId,
     question: 'Which of these is the street frontage?',
@@ -169,8 +186,8 @@ for (const r of reported) {
     facts: `wall now ${current.lengthM.toFixed(1)} m facing ${current.facingDeg.toFixed(0)}° · 0 clear views`
       + ` — alternative ${better.e.lengthM.toFixed(1)} m facing ${better.e.facingDeg.toFixed(0)}° · ${better.n.length} clear views`,
     options: ['The one on the left (current)', 'The one on the right (alternative)', 'Neither — no frontage visible', 'Cannot tell'],
-    shots: [nowShot && { image: nowShot, caption: `current — ${current.lengthM.toFixed(1)} m, no clear view exists` },
-            altShot && { image: altShot, caption: `alternative — ${better.e.lengthM.toFixed(1)} m, ${better.n.length} clear views` }].filter(Boolean),
+    shots: [{ image: nowShot.image, caption: `current — ${current.lengthM.toFixed(1)} m, no clear view exists` },
+            { image: altShot.image, caption: `alternative — ${better.e.lengthM.toFixed(1)} m, ${better.n.length} clear views` }],
   });
 }
 
@@ -184,14 +201,15 @@ for (const r of reported) {
   const view = byId.get(rec.panoramaId);
   if (!view) continue;
   const image = await shot(r.pandId, view, [current.start.x, current.start.y, current.end.x, current.end.y], 620);
-  if (!image) continue;
+  // Below about 300 native pixels the crop is a blur and the question is unfair.
+  if (!image || image.nativeWidth < 300) continue;
   cases.push({
     kind: 'obstruction', pandId: r.pandId, label: label.get(r.pandId) ?? r.pandId,
     question: 'The outline looks right and two views still disagree. What is in the way?',
     plan: plan(r.pandId, [current.start.x, current.start.y, current.end.x, current.end.y]),
     facts: `correlation peak ${r.peak.toFixed(3)} — noise · shift ${r.shiftM} m · no building blocks the line of sight`,
     options: ['A tree', 'A moored boat', 'Scaffolding or hoarding', 'A parked van or lorry', 'Nothing — it looks clear', 'Something else'],
-    shots: [{ image, caption: `${view.capturedAt.slice(0, 10)} · the view the measurement used` }],
+    shots: [{ image: image.image, caption: `${view.capturedAt.slice(0, 10)} · the view the measurement used · ${image.nativeWidth} px of source` }],
   });
 }
 
@@ -204,7 +222,7 @@ for (const r of reported) {
   const view = byId.get(rec.panoramaId);
   if (!view) continue;
   const image = await shot(r.pandId, view, [current.start.x, current.start.y, current.end.x, current.end.y], 560);
-  if (!image) continue;
+  if (!image || image.nativeWidth < 300) continue;
   cases.push({
     kind: 'roofline', pandId: r.pandId, label: label.get(r.pandId) ?? r.pandId,
     question: 'Green is the top of the building as 3DBAG has it. Where does the building actually stop?',
@@ -212,7 +230,7 @@ for (const r of reported) {
     facts: `ground ${mass.groundLevel.toFixed(2)} m · eaves ${mass.eavesHeight?.toFixed(2)} (orange) · ridge ${mass.ridgeHeight.toFixed(2)} (green top)`
       + ` · registers to ${Math.abs(r.shiftM).toFixed(2)} m sideways`,
     options: ['Green is right', 'Green is too low', 'Green is too high', 'Cannot tell'],
-    shots: [{ image, caption: `${view.capturedAt.slice(0, 10)} · green top = ridge, orange = eaves` }],
+    shots: [{ image: image.image, caption: `${view.capturedAt.slice(0, 10)} · green top = ridge, orange = eaves · ${image.nativeWidth} px of source` }],
   });
 }
 
