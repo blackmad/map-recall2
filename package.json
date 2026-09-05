@@ -128,6 +128,8 @@
     "build:canal-game-landmarks": "esbuild src/canalRecall/game/landmarkRuntime.ts --bundle --format=iife --outfile=public/canal-drive/js/game-landmarks.bundle.js",
     "test:landmark-data": "tsx scripts/check-landmark-data.ts",
     "test:street-wikipedia": "tsx scripts/check-street-wikipedia.ts",
+    "test:transit-extract": "tsx scripts/check-transit-extract.ts",
+    "build:amsterdam-transit-gtfs": "python3 scripts/build-amsterdam-transit-gtfs.py",
     "test:recall-clear": "tsx scripts/check-recall-clear.ts",
     "test:canal-clear-all": "tsx scripts/check-canal-clear-all.ts",
     "build:canal-game-recall": "esbuild src/canalRecall/game/recallRuntime.ts --bundle --format=iife --outfile=public/canal-drive/js/game-recall.bundle.js",
