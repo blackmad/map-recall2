@@ -103,7 +103,13 @@ for (const pandId of Object.keys(store).sort()) {
   // The ridge is the top of what a person sees on a canal frontage; the eaves
   // is a level partway up it. Judge the box against the building, not against a
   // definition the building does not display.
-  const top = Number.isFinite(mass.ridgeHeight) ? mass.ridgeHeight : (eaves ?? ground + 12);
+  // A ridge below its own eaves is a source defect, not a low roof: 3DBAG's
+  // `b3_h_nok` is not a height above NAP and used to be read as one. The
+  // adapter no longer prefers it, and this keeps a stale extract from drawing a
+  // box that stops halfway up the building.
+  const rawTop = Number.isFinite(mass.ridgeHeight) ? mass.ridgeHeight : null;
+  const top = Math.max(rawTop ?? 0, eaves ?? 0, ground + 6) || ground + 12;
+  const heightsInverted = rawTop !== null && eaves !== null && rawTop < eaves;
   const wallElevation = buildElevations(ring)
     .map(e => ({ e, d: Math.hypot(e.midpoint.x - (record.wall[0] + record.wall[2]) / 2,
                                   e.midpoint.y - (record.wall[1] + record.wall[3]) / 2) }))
@@ -119,7 +125,10 @@ for (const pandId of Object.keys(store).sort()) {
     const strip = rectifyWall(image, view, AMSTERDAM_CAMERA, record.wall, ground - 1, top + 1.5,
       { pixelsPerMetre: 34, margin: 1.2, maxWidth: 620, quality: 84 });
     if (!projected && !strip) continue;
-    const stem = `${pandId}__${view.panoramaId}`;
+    // Named for the geometry that produced them, so a rebuild after a massing
+    // or camera change adds files rather than replacing them. A reviewer's
+    // verdict refers to a picture, and that picture has to still exist.
+    const stem = `${pandId}__${view.panoramaId}__g${ground.toFixed(1)}t${top.toFixed(1)}`;
     if (projected) await writeFile(path.join(OUT, `${stem}__proj.jpg`), projected.jpeg);
     if (strip) await writeFile(path.join(OUT, `${stem}__wall.jpg`), strip.jpeg);
     frames.push({
@@ -181,6 +190,7 @@ for (const pandId of Object.keys(store).sort()) {
     groundZ: Number(ground.toFixed(2)),
     eavesZ: eaves === null ? null : Number(eaves.toFixed(2)),
     ridgeZ: Number(top.toFixed(2)),
+    heightsInverted,
     /**
      * How high the modelled lens sits above this building's modelled ground.
      * A survey van's is about 2.5 m. Far from that and the box's vertical
@@ -210,15 +220,22 @@ for (const pandId of Object.keys(store).sort()) {
 }
 process.stdout.write('\r');
 
-await writeFile(path.join(OUT, 'deck.json'), JSON.stringify({
+// The live deck the page reads, plus a dated copy kept alongside it: the deck
+// records which picture a verdict was cast against, and a verdict whose deck
+// has been overwritten cannot be interpreted later.
+const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+const deck = JSON.stringify({
   metadata: {
     generatedAt: new Date().toISOString(),
     generator: 'scripts/facade-twin/build-registration-review.ts',
     cameraModel: AMSTERDAM_CAMERA.id,
     area: AREA.areaId,
+    deckId: stamp,
     note: 'The wall on each card is a proposal from the pre-correction measurement run. It is the '
       + 'thing being judged, not accepted evidence.',
   },
   cards,
-}, null, 1));
+}, null, 1);
+await writeFile(path.join(OUT, `deck-${stamp}.json`), deck);
+await writeFile(path.join(OUT, 'deck.json'), deck);
 console.log(`${cards.length} cards, ${cards.reduce((s, c) => s + c.frames.length, 0)} frames → ${path.relative(process.cwd(), OUT)}`);

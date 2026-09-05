@@ -174,8 +174,14 @@ for (const pandId of queue) {
         data[d] = image.data[s]; data[d + 1] = image.data[s + 1]; data[d + 2] = image.data[s + 2];
       }
     }
-    const name = `${pandId}__${chosen.v.panoramaId}__${startM.toFixed(1)}.jpg`;
-    await writeFile(path.join(OUT, name), jpeg.encode({ width, height, data: Buffer.from(data) }, 93).data);
+    // Tiles are named for everything that determines their content, so a
+    // regenerated tile lands beside its predecessors rather than on top of one.
+    // Derived imagery is expensive to make and impossible to reconstruct once
+    // the inputs move on: nothing here deletes.
+    const name = `${pandId}__${chosen.v.panoramaId}__${startM.toFixed(1)}__${Math.round(scale)}ppm.jpg`;
+    if (!existsSync(path.join(OUT, name))) {
+      await writeFile(path.join(OUT, name), jpeg.encode({ width, height, data: Buffer.from(data) }, 93).data);
+    }
     tiles.push({ file: name, startM: Number(startM.toFixed(2)), lengthM: Number(lengthM.toFixed(2)), width, height,
       pixelsPerMetre: Number(scale.toFixed(1)), nativePixelsPerMetre: Number(native.toFixed(1)),
       missingFraction: Number((missing / (width * height)).toFixed(3)) });

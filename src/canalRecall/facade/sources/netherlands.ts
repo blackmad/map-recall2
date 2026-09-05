@@ -113,6 +113,76 @@ const TILE_M = 250;
  * 1-based, so `offset=0` is an HTTP 500 and paging must follow the server's own
  * `next` link.
  */
+/**
+ * 3DBAG attributes to a massing record, as a pure function.
+ *
+ * Separated from the fetch so derived records can be rebuilt from the cached
+ * raw responses without touching the network. That distinction matters more
+ * than it looks: the cache holds two different things — the bytes a source
+ * returned, and what this project made of them — and only the first is
+ * expensive to obtain or rate-limited to get again. When the mapping turns out
+ * to be wrong, as `b3_h_nok` did, the fix must not require re-downloading a
+ * city or hammering somebody's Overpass instance.
+ */
+export function massingFromAttributes(attributes: Record<string, any>): MassingRecord[] {
+  const number = (value: unknown): number | null => (typeof value === 'number' && Number.isFinite(value) ? value : null);
+  const roofForm = (raw: unknown): MassingRecord['roofForm'] => {
+    if (raw === 'slanted') return 'pitched';
+    if (raw === 'horizontal') return 'flat';
+    if (raw === 'multiple horizontal') return 'mixed';
+    return 'unknown';
+  };
+
+  const seen = new Set<string>();
+  const records: MassingRecord[] = [];
+  for (const [key, a] of Object.entries(attributes)) {
+    const buildingId = key.replace(/^NL\.IMBAG\.Pand\./, '').split('-')[0];
+    if (seen.has(buildingId)) continue;
+    seen.add(buildingId);
+    records.push({
+      buildingId,
+      storeys: number(a.b3_bouwlagen),
+      roofForm: roofForm(a.b3_dak_type),
+      roofFormRaw: typeof a.b3_dak_type === 'string' ? a.b3_dak_type : null,
+      groundLevel: number(a.b3_h_maaiveld),
+      eavesHeight: number(a.b3_h_dak_50p),
+      /**
+       * The top of the roof, from `b3_h_dak_max` — and deliberately *not*
+       * `b3_h_nok`, which this adapter used to prefer.
+       *
+       * `b3_h_nok` is not a height above NAP. On pand 0363100012165024 the
+       * roof runs 4.22 m to 16.69 m with a 50th percentile of 16.38, and
+       * `b3_h_nok` reads 8.94 — below the building's own eaves. Reading it as
+       * a ridge put the ridge under the eaves on 198 of 2,892 buildings,
+       * 6.8%, by a median of 1.87 m and as much as 15.8 m; 186 of those pass
+       * `b3_val3dity_lod22`, so no quality flag catches it.
+       *
+       * `b3_h_dak_max` is a percentile-free maximum and can be pulled up by a
+       * single stray lidar return, so it is clamped to the 70th percentile
+       * plus the distance from there to the 50th — enough headroom for a real
+       * gable, not enough for an aerial artefact. The eaves stay at the 50th
+       * percentile, which is what they have always been.
+       */
+      ridgeHeight: (() => {
+        const p50 = number(a.b3_h_dak_50p), p70 = number(a.b3_h_dak_70p), max = number(a.b3_h_dak_max);
+        if (max === null) return p70 ?? p50;
+        if (p50 === null || p70 === null) return max;
+        return Math.min(max, p70 + Math.max(0, p70 - p50) * 6);
+      })(),
+      reconstructionError: number(a.b3_rmse_lod22),
+      geometryValid: typeof a.b3_val3dity_lod22 === 'string' ? a.b3_val3dity_lod22 === '[]' : null,
+      sourceQualityFlag: typeof a.b3_kwaliteitsindicator === 'boolean' ? a.b3_kwaliteitsindicator : null,
+      surveyCampaign: typeof a.b3_pw_bron === 'string' ? a.b3_pw_bron : null,
+      surveyYear: number(a.b3_pw_datum),
+      insufficientInput: typeof a.b3_pw_onvoldoende === 'boolean' ? a.b3_pw_onvoldoende : null,
+      groundArea: number(a.b3_opp_grond),
+      exteriorWallArea: number(a.b3_opp_buitenmuur),
+      partyWallArea: number(a.b3_opp_scheidingsmuur),
+    });
+  }
+  return records;
+}
+
 export const bag3dMassing: MassingSource = {
   id: '3dbag',
   name: '3DBAG LoD2.2 (api.3dbag.nl)',
@@ -140,40 +210,7 @@ export const bag3dMassing: MassingSource = {
       }
     }
 
-    const number = (value: unknown): number | null => (typeof value === 'number' && Number.isFinite(value) ? value : null);
-    const roofForm = (raw: unknown): MassingRecord['roofForm'] => {
-      if (raw === 'slanted') return 'pitched';
-      if (raw === 'horizontal') return 'flat';
-      if (raw === 'multiple horizontal') return 'mixed';
-      return 'unknown';
-    };
-
-    const seen = new Set<string>();
-    const records: MassingRecord[] = [];
-    for (const [key, a] of Object.entries(attributes)) {
-      const buildingId = key.replace(/^NL\.IMBAG\.Pand\./, '').split('-')[0];
-      if (seen.has(buildingId)) continue;
-      seen.add(buildingId);
-      records.push({
-        buildingId,
-        storeys: number(a.b3_bouwlagen),
-        roofForm: roofForm(a.b3_dak_type),
-        roofFormRaw: typeof a.b3_dak_type === 'string' ? a.b3_dak_type : null,
-        groundLevel: number(a.b3_h_maaiveld),
-        eavesHeight: number(a.b3_h_dak_50p),
-        ridgeHeight: number(a.b3_h_nok) ?? number(a.b3_h_dak_max),
-        reconstructionError: number(a.b3_rmse_lod22),
-        geometryValid: typeof a.b3_val3dity_lod22 === 'string' ? a.b3_val3dity_lod22 === '[]' : null,
-        sourceQualityFlag: typeof a.b3_kwaliteitsindicator === 'boolean' ? a.b3_kwaliteitsindicator : null,
-        surveyCampaign: typeof a.b3_pw_bron === 'string' ? a.b3_pw_bron : null,
-        surveyYear: number(a.b3_pw_datum),
-        insufficientInput: typeof a.b3_pw_onvoldoende === 'boolean' ? a.b3_pw_onvoldoende : null,
-        groundArea: number(a.b3_opp_grond),
-        exteriorWallArea: number(a.b3_opp_buitenmuur),
-        partyWallArea: number(a.b3_opp_scheidingsmuur),
-      });
-    }
-    return records;
+    return massingFromAttributes(attributes);
   },
 };
 
