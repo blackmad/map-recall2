@@ -386,11 +386,35 @@ second city, RECON-4 is done, observation coverage is measured (139,937 panorama
 poses; **88.6% of buildings have a frontal view**), and façades rectify and
 measure end to end from Amsterdam's CC BY panoramas.
 
-> **P0, blocking everything street-level.** A 180° yaw error meant every façade
-> measurement sampled the scene *behind* the survey camera. Fixed in `9220fd8`;
-> the old outputs are quarantined in `.cache/facade-twin/quarantine-yaw-centre/`
-> and a re-measurement is running. Massing is unaffected. Until the re-run
-> lands, treat every street-level number in this file as void.
+> **P0, blocking everything street-level.** Every façade measurement in this
+> file was made through a camera model that rotated the projection by the survey
+> van's heading. Amsterdam's panoramas are *world-aligned* — north at the frame
+> centre, horizon level — and `heading`/`pitch`/`roll` describe the vehicle, not
+> the picture. Corrected in `a331948`; the model is `AMSTERDAM_CAMERA` and it is
+> pinned by `check-facade-camera.ts` plus `facade-twin/pose-experiments.ts`.
+>
+> This supersedes the earlier "180° yaw" diagnosis, which was the same bug seen
+> through too small a question: `centre` and `edge` were both wrong by the van's
+> heading, and `edge` looked right only on views where heading happened to be
+> near 180°. Massing is unaffected. **Every street-level number below is void
+> until a re-measurement lands.** See `FACADE_STATE.md` §13.
+>
+> Next, in order:
+> 1. **Diagnose the residual tail.** Cross-view registration is median 0.95 m but
+>    p90 5.55 m, and bimodal — 30 of 60 inside a metre, then a tail. That is a
+>    correct camera with another stage failing, most likely wall selection and
+>    occlusion. It must be separated per case, not attributed by assertion.
+> 2. **House-number anchors.** `number-bands.ts` + `vision/read_numbers.py` +
+>    `check-number-anchors.ts` read the doorplate off the near-side pass and
+>    match it against BAG address points, which certifies *identity* the way
+>    cross-view agreement cannot. Identity only: a BAG address point is not the
+>    surveyed centre of a plaque, so the along-band offset is loose.
+> 3. **Recover 2024–2025.** 15,312 panoramas publish height 0. Orientation is no
+>    longer a blocker — the camera model never reads it — and azimuth is exactly
+>    independent of height, so those frames already serve for horizontal
+>    registration and identity. A one-parameter vertical fit against a sound view
+>    of the same wall is what remains. Until then they stay rejected, not guessed.
+> 4. **Only then** re-measure the boundary.
 
 **Read [`FACADE_STATE.md`](FACADE_STATE.md) first.** It is the measured state of
 the extraction — what is trustworthy, what is not, and the failure counts — and

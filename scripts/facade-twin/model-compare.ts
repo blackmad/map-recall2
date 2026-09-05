@@ -165,6 +165,20 @@ async function panorama(id: string) {
   return im;
 }
 
+// Optional exhibits: independently sourced evidence dropped into exhibits/,
+// with captions alongside. Kept out of the generator so the corroboration can
+// grow without the code changing.
+const exhibits: string[] = [];
+try {
+  const dir = path.join(OUT, 'exhibits');
+  const captions = JSON.parse(await readFile(path.join(dir, 'captions.json'), 'utf8')) as Record<string, string>;
+  for (const name of Object.keys(captions).sort()) {
+    const b64 = (await readFile(path.join(dir, name))).toString('base64');
+    exhibits.push(`<figure class="exhibit"><img src="data:image/jpeg;base64,${b64}" alt="">`
+      + `<figcaption>${captions[name]}</figcaption></figure>`);
+  }
+} catch { /* exhibits are optional */ }
+
 const sections: string[] = [];
 let done = 0;
 for (const pandId of candidates) {
@@ -273,6 +287,12 @@ const page = `<title>North at the Centre</title>
   figcaption { font-family:var(--mono); font-size:.73rem; color:var(--muted);
                font-variant-numeric:tabular-nums; }
 
+  .verify { border-top:1px solid var(--rule); }
+  .exhibits { display:flex; gap:1rem; overflow-x:auto; padding-bottom:.5rem; align-items:flex-start; }
+  .exhibit { flex:0 0 300px; display:flex; flex-direction:column; gap:.5rem; }
+  .exhibit img { width:100%; border-radius:3px; }
+  .exhibit figcaption { font-family:var(--body); font-size:.8rem; line-height:1.45;
+                        color:var(--muted); font-variant-numeric:normal; }
   footer { border-top:1px solid var(--rule); padding-top:1.2rem; color:var(--muted);
            font-size:.82rem; max-width:70ch; }
   code { font-family:var(--mono); font-size:.9em; }
@@ -291,9 +311,43 @@ const page = `<title>North at the Centre</title>
   <p class="lede">That single mistake is every symptom of the last two days: two panoramas of one
   building landing on two different houses, zero of 120 buildings locking under cross-view
   correlation, and a <em>centre</em>-versus-<em>edge</em> argument that could not be won because both
-  answers were wrong by the van's heading. The rows below are the fix, read the only way it can be
-  read without ground truth: the same footprint projected into several independent panoramas.</p>
+  answers were wrong by the van's heading. The rows further down are the fix, shown as the same
+  footprint projected into several independent panoramas.</p>
+  <p class="lede"><strong>Agreement between views is necessary but not sufficient.</strong> Where every
+  panorama of a building happens to share a heading, the old model is wrong by the same amount in
+  each and agrees with itself. Identity needs a source outside the geometry, so this page carries
+  four.</p>
 </header>
+
+<section class="verify">
+  <div class="head"><h2>Checked against sources outside this pipeline</h2>
+  <p class="meta">the part cross-view agreement cannot supply</p></div>
+
+  <div class="evidence">
+    <div class="ev">
+      <h3>The publisher documents it</h3>
+      <p>Amsterdam's Open Panorama pipeline, stage two: <em>“images are edited to face northwards and
+      have a straight horizon.”</em> Both findings at once — north-aligned, and levelled.</p>
+      <p class="figure">which is why adding pitch and roll<br>makes the residual worse, 0.95 → 1.15 m</p>
+    </div>
+    <div class="ev">
+      <h3>The monument register describes it</h3>
+      <p>Herengracht 270: a double house, sandstone façade five windows wide, straight triglyph
+      cornice with balustrade, sculptured window surrounds in two bays, a 17th-century door and two
+      façade lanterns.</p>
+      <p class="figure">every one of those is in the strip<br>Rijksmonument 1789</p>
+    </div>
+    <div class="ev">
+      <h3>The building states its own address</h3>
+      <p>At 4 m standoff the number carved on the stone right of the door is legible in our own
+      rectified strip. It is a semantic check on identity, not a metric anchor — the geometry could
+      still be a metre out and it would read the same.</p>
+      <p class="figure">reads 270 · BAG labels the pand<br>Herengracht 270G</p>
+    </div>
+  </div>
+
+  <div class="exhibits">${exhibits.join('')}</div>
+</section>
 
 <div class="evidence">
   <div class="ev">
