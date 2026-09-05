@@ -28,6 +28,7 @@ import { travelProfile } from './travelProfile';
 import type { PresentationHost } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels } from './teachingSurface';
+import { bicycleRestrictionNotice } from '../routing/bikeAccess';
 
 /** One measured band of the arrival card. Each block reports its own height so
  *  the card measures itself, instead of keeping a stack of hand-tuned offsets
@@ -164,6 +165,19 @@ export class GamePresentationRuntime {
     }
     // One plaque: street, neighbourhood + trip, score. Speed and odometer live
     // here on every viewport; there is no separate trip pill any more.
+    // Bike mode: when OSM forbids cycling on this corridor, say so without
+    // naming the street (the headline may still be hidden under a quiz).
+    let restrictionNote = '';
+    if (isCar(this.travelMode) && this.player) {
+      const road = this.track.getNearestRoad(player.x, player.y, player.angle);
+      const segment = road && this.track.segments?.[road.segIdx];
+      if (segment?.bicycleRestricted) {
+        restrictionNote = bicycleRestrictionNotice({
+          bicycleRestricted: 'yes',
+          bicycle: segment.bicycle || 'no',
+        }) || 'No cycling in real life';
+      }
+    }
     this.hud.drawPlaque(ctx, {
       routeName: visibleRouteName,
       neighborhood: this.currentNeighborhood,
@@ -175,6 +189,7 @@ export class GamePresentationRuntime {
       gamey: this.gameyFeatures,
       trip: this.hud.tripText(player.speed, this._playerDistancePx()),
       feedback: this.quizFeedback,
+      restrictionNote,
     });
     // The finish arrow sits inside the destination card, so the heading and
     // the distance are one readout instead of two boxes saying "955 m".

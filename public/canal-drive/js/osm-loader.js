@@ -69,10 +69,19 @@ class OSMLoader {
           const highway = travelMode === 'car'
             ? (feature.highway || (feature.type === 'avenue' ? 'secondary' : 'residential'))
             : (feature.type === 'canal' ? 'canal' : 'river');
+          const tags = {
+            name: feature.name,
+            [travelMode === 'car' ? 'highway' : 'waterway']: highway,
+          };
+          // Real-world bike ban on a playable pedestrian corridor (Kalverstraat).
+          if (travelMode === 'car' && feature.bicycleRestricted) {
+            tags.bicycleRestricted = 'yes';
+            tags.bicycle = feature.bicycle || 'no';
+          }
           ways.push({
             id: `${feature.id}:${pathIndex}`,
             nodes: path.map(([pathLat, pathLon]) => ({ lat: pathLat, lon: pathLon })),
-            tags: { name: feature.name, [travelMode === 'car' ? 'highway' : 'waterway']: highway },
+            tags,
             highway
           });
         }

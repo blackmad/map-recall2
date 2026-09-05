@@ -24,6 +24,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build:amsterdam": "tsx scripts/build-amsterdam-extract.ts",
+    "ensure:amsterdam-teaching-streets": "tsx scripts/ensure-amsterdam-teaching-streets.ts",
+    "patch:amsterdam-restricted-pedestrian": "tsx scripts/patch-amsterdam-restricted-pedestrian.ts",
     "enrich:amsterdam": "tsx scripts/enrich-amsterdam-wikimedia.ts",
     "enrich:neighborhoods": "tsx scripts/enrich-amsterdam-neighborhoods.ts",
     "refresh:amsterdam": "bash scripts/refresh-amsterdam-extract.sh",

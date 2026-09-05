@@ -38,6 +38,10 @@ export interface RoadSegment {
   type?: string;
   /** Physically separated cycle track beside this carriageway. */
   separatedCycleTrack?: boolean;
+  /** Real-world bike ban on a still-playable corridor. */
+  bicycleRestricted?: boolean;
+  /** OSM bicycle tag when restricted. */
+  bicycle?: string;
 }
 
 /** What the network knows about a name, beyond its geometry. */
@@ -137,6 +141,8 @@ export interface Hud {
     routeName?: string; neighborhood?: string; answerHidden?: boolean;
     correct?: number; attempts?: number; points?: number; streak?: number; gamey?: boolean;
     trip?: string; feedback?: string;
+    /** Real-world bike ban on this corridor (no street name). */
+    restrictionNote?: string;
   }): void;
   /** Destination card; the finish arrow draws inside it when `arrowAngle` is set. */
   drawDestination(
