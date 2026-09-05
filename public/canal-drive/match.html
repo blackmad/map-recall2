@@ -1,0 +1,199 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Does the outline sit on the building?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: dark; --ink:#eef2f1; --ink-2:#a9b4b4; --ink-3:#788384;
+    --line:#2c3638; --hot:#c8825a; --yes:#28c07a; --no:#e05a55; --maybe:#e0a33a; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:#0d1214; color:var(--ink);
+    font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif; }
+  header { padding:14px 20px 10px; border-bottom:1px solid var(--line); }
+  h1 { font-size:15px; margin:0 0 2px; }
+  .addr { font-size:20px; font-weight:600; margin:0; letter-spacing:-.01em; }
+  .pand { font:11px "IBM Plex Mono",ui-monospace,monospace; color:var(--ink-3); margin:1px 0 0; }
+  .bar { height:4px; background:#1d2527; margin-top:10px; border-radius:2px; overflow:hidden; }
+  .bar i { display:block; height:100%; background:var(--hot); transition:width .2s; }
+  main { padding:16px 20px 90px; }
+  .strip { display:flex; gap:10px; align-items:flex-start; overflow-x:auto; padding-bottom:6px; }
+  .strip figure { margin:0; flex:0 0 auto; }
+  .strip img { display:block; border:1px solid var(--line); border-radius:3px; max-height:46vh; }
+  .strip figcaption { font:10px "IBM Plex Mono",ui-monospace,monospace; color:var(--ink-3);
+    margin-top:4px; text-align:center; }
+  h2 { font-size:14.5px; margin:20px 0 3px; }
+  p.why { margin:0 0 9px; font-size:12.5px; color:var(--ink-3); max-width:70ch; }
+  .opts { display:flex; gap:6px; flex-wrap:wrap; }
+  button { background:#1e2729; color:var(--ink-2); border:1px solid var(--line); border-radius:4px;
+    padding:8px 13px; font:inherit; font-size:13.5px; cursor:pointer; display:flex; gap:7px; align-items:center; }
+  button kbd { font:inherit; font-size:10.5px; color:var(--ink-3); background:#151c1e;
+    border:1px solid #2a3335; border-radius:3px; padding:1px 5px; }
+  button:hover { border-color:#4c6062; color:var(--ink); }
+  button[aria-pressed="true"] { background:var(--ink); color:#10161a; border-color:var(--ink); }
+  button.yes[aria-pressed="true"]{ background:var(--yes); border-color:var(--yes); color:#06251a; }
+  button.no[aria-pressed="true"] { background:var(--no);  border-color:var(--no);  color:#2a0806; }
+  button.maybe[aria-pressed="true"]{ background:var(--maybe); border-color:var(--maybe); color:#2b1c00; }
+  footer { position:fixed; bottom:0; left:0; right:0; background:rgba(13,18,20,.96);
+    border-top:1px solid var(--line); padding:9px 20px; display:flex; gap:14px; align-items:center;
+    font-size:12px; color:var(--ink-3); }
+  footer .grow { flex:1; }
+  .saved { color:var(--yes); }
+  .tally { font:11px "IBM Plex Mono",ui-monospace,monospace; }
+</style>
+
+<header>
+  <h1 id="count">loading…</h1>
+  <p class="addr" id="addr"></p>
+  <p class="pand" id="pand"></p>
+  <div class="bar"><i id="bar" style="width:0"></i></div>
+</header>
+<main>
+  <div class="strip" id="shots"></div>
+  <div id="qs"></div>
+</main>
+<footer>
+  <button id="prev">← Back</button>
+  <button id="skip">Skip</button>
+  <span class="grow"></span>
+  <span id="status"></span>
+  <span class="tally" id="tally"></span>
+</footer>
+
+<script>
+/**
+ * Is the projected outline on the right building?
+ *
+ * This asks the one question the pipeline cannot answer about itself. Every
+ * automated check available reads the same imagery through the same camera
+ * model, so all of them share its mistakes — which is how a 180° yaw error
+ * survived: the rectified strips looked like façades, and in Amsterdam anything
+ * looks like a façade.
+ *
+ * Two pictures are shown. The projection is the BAG footprint drawn into the
+ * raw panorama, which tests the coordinate transform, the camera model, the
+ * pose and the wall choice at once. The rectified views are the same wall taken
+ * from different panoramas on different days; if the correspondence is right
+ * they are the same wall photographed twice, and a person can see that in a
+ * second where cross-correlation currently says they agree no better than two
+ * different buildings.
+ *
+ * Answers go straight into SQLite on each click. The first version of this kept
+ * them in localStorage behind a JSON export, which is a good way to lose the
+ * scarcest data in the project.
+ */
+const QUESTIONS = [
+  { id: 'outlineOnBuilding',
+    ask: 'Is the green outline on a building — and is it one building, not two?',
+    why: 'The green box is the wall being rectified. If it is over a road, the canal, the sky, or spans a party wall, everything measured from it is measured from the wrong place.',
+    opts: [['yes','Yes, one building','yes'],['spans','Spans two or more buildings','maybe'],
+           ['neighbour','On the wrong building','no'],['off','Not on a building at all','no'],
+           ['?','Can’t tell','maybe']] },
+  { id: 'viewsAgree',
+    ask: 'Do the rectified views show the same wall?',
+    why: 'Independent panoramas of one wall should be the same picture at different quality. Cross-correlation says they currently agree no better than two unrelated buildings.',
+    opts: [['yes','Yes, same wall','yes'],['some','Some do, some do not','maybe'],
+           ['no','No, different things','no'],['one','Only one view','maybe']] },
+  { id: 'coversFacade',
+    ask: 'Does the outline cover the whole frontage?',
+    why: 'Too narrow and we measure part of a house; too wide and we take in the neighbours.',
+    opts: [['yes','About right','yes'],['narrow','Too narrow','maybe'],
+           ['wide','Too wide','maybe'],['?','Can’t tell','maybe']] },
+];
+const KEYS = '12345';
+
+let deck = [], answers = {}, at = 0, focusQ = 0;
+
+const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+async function boot() {
+  const [proj, multi, saved] = await Promise.all([
+    fetch('/data/extracts/amsterdam/staging/facade-twin/amsterdam-grachtengordel-west/projection-check.json', {cache:'no-store'}).then(r => r.json()).catch(() => ({buildings: []})),
+    fetch('/data/extracts/amsterdam/staging/facade-twin/amsterdam-grachtengordel-west/multi-view.json', {cache:'no-store'}).then(r => r.json()).catch(() => ({facades: {}})),
+    fetch('/api/answers', {cache:'no-store'}).then(r => r.json()).catch(() => ({answers: {}, tally: []})),
+  ]);
+  answers = saved.answers || {};
+  const byId = new Map();
+  for (const b of proj.buildings) {
+    if (!byId.has(b.buildingId)) byId.set(b.buildingId, { pandId: b.buildingId, address: b.address, projections: [], views: [] });
+    byId.get(b.buildingId).projections.push(b);
+  }
+  for (const [pid, entry] of byId) entry.views = (multi.facades || {})[pid] || [];
+  deck = [...byId.values()];
+  at = deck.findIndex(d => !answers[d.pandId]?.outlineOnBuilding);
+  if (at < 0) at = 0;
+  renderTally(saved.tally);
+  render();
+}
+
+function renderTally(tally) {
+  if (!tally?.length) { document.getElementById('tally').textContent = ''; return; }
+  const key = tally.filter(t => t.question === 'outlineOnBuilding');
+  document.getElementById('tally').textContent =
+    key.map(t => `${t.answer} ${t.n}`).join('  ');
+}
+
+function render() {
+  const card = deck[at];
+  if (!card) return;
+  const mine = answers[card.pandId] || {};
+  const done = Object.values(answers).filter(a => a.outlineOnBuilding).length;
+  document.getElementById('count').textContent = `${done} of ${deck.length} checked`;
+  document.getElementById('addr').textContent = card.address || 'address unknown';
+  document.getElementById('pand').textContent = `pand ${card.pandId}`;
+  document.getElementById('bar').style.width = `${(100 * done / deck.length).toFixed(1)}%`;
+
+  document.getElementById('shots').innerHTML =
+    card.projections.slice(0, 2).map(p => `
+      <figure><img src="/canal-drive/projection-check/${esc(p.file)}" alt="footprint projected into the panorama">
+      <figcaption>projection · ${esc(p.capturedAt || '')} · ${p.wallWidthM} m</figcaption></figure>`).join('')
+    + card.views.slice(0, 4).map(v => `
+      <figure><img src="/cache-strips/${esc(card.pandId)}/${esc(v.file.split('/').pop())}" alt="rectified view"
+        onerror="this.closest('figure').style.display='none'">
+      <figcaption>rectified · ${esc(v.capturedAt)} · ${v.standoffM} m · ${v.obliquityDeg}°</figcaption></figure>`).join('');
+
+  document.getElementById('qs').innerHTML = QUESTIONS.map((q, qi) => `
+    <h2>${esc(q.ask)}</h2><p class="why">${esc(q.why)}</p>
+    <div class="opts">${q.opts.map(([v, label, tone], oi) => `
+      <button class="${tone||''}" data-q="${q.id}" data-v="${v}" aria-pressed="${mine[q.id]===v}">
+        ${esc(label)}${qi === focusQ ? `<kbd>${KEYS[oi]||''}</kbd>` : ''}</button>`).join('')}
+    </div>`).join('');
+
+  document.querySelectorAll('.opts button').forEach(b => b.onclick = () => answer(b.dataset.q, b.dataset.v));
+  document.getElementById('prev').onclick = () => { at = Math.max(0, at-1); focusQ = 0; render(); };
+  document.getElementById('skip').onclick = () => { at = Math.min(deck.length-1, at+1); focusQ = 0; render(); };
+}
+
+async function answer(question, value) {
+  const card = deck[at];
+  answers[card.pandId] = { ...(answers[card.pandId] || {}), [question]: value };
+  render();
+  const status = document.getElementById('status');
+  status.textContent = 'saving…';
+  try {
+    const r = await fetch('/api/answer', { method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ pandId: card.pandId, answers: { [question]: value } }) });
+    const j = await r.json();
+    status.innerHTML = j.ok ? '<span class="saved">saved to database</span>' : 'save failed';
+    const fresh = await fetch('/api/answers', {cache:'no-store'}).then(x => x.json());
+    renderTally(fresh.tally);
+  } catch { status.textContent = 'save failed — is the review server running?'; }
+  // Answering the last question moves on, so a full pass is three keys.
+  if (question === QUESTIONS[QUESTIONS.length - 1].id) {
+    setTimeout(() => { at = Math.min(deck.length-1, at+1); focusQ = 0; render(); }, 180);
+  } else {
+    focusQ = Math.min(QUESTIONS.length - 1, QUESTIONS.findIndex(q => q.id === question) + 1);
+    render();
+  }
+}
+
+addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') { at = Math.max(0, at-1); focusQ = 0; return render(); }
+  if (e.key === 'ArrowRight') { at = Math.min(deck.length-1, at+1); focusQ = 0; return render(); }
+  const i = KEYS.indexOf(e.key);
+  if (i < 0) return;
+  const q = QUESTIONS[focusQ];
+  if (q && q.opts[i]) answer(q.id, q.opts[i][0]);
+});
+
+boot();
+</script>
