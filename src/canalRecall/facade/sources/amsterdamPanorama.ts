@@ -156,6 +156,58 @@ export const hasUsablePose = (view: {
 
 export const AMSTERDAM_CAMERA = worldAlignedFrame('amsterdam-world-aligned', 0.5);
 
+/**
+ * The survey vehicle's lens, above the ground it is standing on.
+ *
+ * Measured across 93,566 posed panoramas against the nearest building's
+ * `b3_h_maaiveld`: median 2.44 m, which is right for a van. The p05–p95 spread
+ * of 0.73 to 4.57 m is not lens height varying by four metres — it is a
+ * vertical datum offset that is constant along a survey run and jumps between
+ * runs. Consecutive frames of one track agree to 41 mm; two cameras standing a
+ * metre apart in different years disagree by a median 0.75 m.
+ */
+export const SURVEY_LENS_ABOVE_GROUND_M = 2.44;
+
+/**
+ * The lens height in NAP, and whether it had to be inferred.
+ *
+ * 15,312 panoramas — every frame from 2024 and 2025 — publish a height of zero,
+ * which is a missing value and must never be arithmetic. But a missing height
+ * does not make a frame useless, and treating it that way hid the newest and
+ * best imagery in the archive behind a filter.
+ *
+ * What a height is needed for is the *vertical* half of a projection.
+ * `AMSTERDAM_CAMERA` takes azimuth from `atan2(dx, dy)` and never reads `z`, so
+ * where a wall sits horizontally — and therefore which building it is — is
+ * exact whether or not the height is known. Only elevation suffers.
+ *
+ * So a frame with no height gets one inferred from the ground beneath it, and
+ * says so. The inference is worth about a metre, which is the same order as the
+ * per-track datum offset already carried by every frame that does publish a
+ * height: this is not a new class of error, it is the existing one made
+ * explicit. Anything vertical — storey bands, sill heights — must check the
+ * flag; anything horizontal may ignore it.
+ */
+export function lensHeightNap(
+  view: { cameraHeight: number; headingDeg: number; pitchDeg: number; rollDeg: number },
+  groundZ: number | null | undefined,
+): { z: number; inferred: boolean } | null {
+  if (Number.isFinite(view.cameraHeight) && view.cameraHeight > 0) {
+    return { z: view.cameraHeight - GEOID_SEPARATION_M, inferred: false };
+  }
+  if (!Number.isFinite(groundZ as number)) return null;
+  return { z: (groundZ as number) + SURVEY_LENS_ABOVE_GROUND_M, inferred: true };
+}
+
+/**
+ * Usable for saying *where* something is, which needs no height.
+ *
+ * The stricter `hasUsablePose` still gates anything that measures upward.
+ */
+export const hasUsableGeometry = (view: {
+  cameraHeight: number; headingDeg: number; pitchDeg: number; rollDeg: number;
+}) => defectsOf(view, AMSTERDAM_CAMERA).every(defect => defect === 'no-height');
+
 export const GEOID_SEPARATION_M = 43.5;
 
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));

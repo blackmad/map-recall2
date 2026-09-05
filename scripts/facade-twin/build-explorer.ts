@@ -30,7 +30,7 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
-import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, hasUsablePose } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA, hasUsableGeometry, lensHeightNap } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -76,10 +76,12 @@ async function panorama(id: string) {
   return image;
 }
 
-const poseOf = (view: PanoramaView) => {
+const poseOf = (view: PanoramaView, groundZ: number) => {
   const cam = RD_NEW.fromLngLat(view.lngLat);
-  return { x: cam.x, y: cam.y, z: view.cameraHeight - GEOID_SEPARATION_M,
-    headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg };
+  const lens = lensHeightNap(view, groundZ);
+  if (!lens) return null;
+  return { pose: { x: cam.x, y: cam.y, z: lens.z,
+    headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg }, inferred: lens.inferred };
 };
 
 const encode = (width: number, height: number, data: Uint8ClampedArray, quality = 74) =>
@@ -101,6 +103,7 @@ function downscale(src: Uint8ClampedArray, w: number, h: number, maxW: number) {
 async function projection(pandId: string, view: PanoramaView, wall: number[], ground: number, eaves: number) {
   const image = await panorama(view.panoramaId);
   if (!image) return null;
+  const groundZ = ground;
   const ring = footprints.get(pandId)!;
   const pose = poseOf(view);
   const project = (p: ProjectedPoint, z: number) => AMSTERDAM_CAMERA.project([p.x - pose.x, p.y - pose.y, z - pose.z], pose, image);
@@ -163,7 +166,9 @@ async function projection(pandId: string, view: PanoramaView, wall: number[], gr
 async function rectified(view: PanoramaView, wall: number[], baseZ: number, topZ: number, marginFactor = 1.25) {
   const image = await panorama(view.panoramaId);
   if (!image) return null;
-  const pose = poseOf(view);
+  const posed = poseOf(view, baseZ + 1);
+  if (!posed) return null;
+  const pose = posed.pose;
   const [x0, y0, x1, y1] = wall;
   const wM = Math.hypot(x1 - x0, y1 - y0);
   const mid = { x: (x0 + x1) / 2, y: (y0 + y1) / 2 };
@@ -257,7 +262,7 @@ for (const pandId of queue) {
   const chosen: PanoramaView[] = [];
   for (const id of [record.panoramaId, ...(multi[pandId] ?? []).map(m => m.panoramaId)]) {
     const v = views.get(id);
-    if (v && hasUsablePose(v) && !chosen.some(c => c.panoramaId === id)) chosen.push(v);
+    if (v && hasUsableGeometry(v) && !chosen.some(c => c.panoramaId === id)) chosen.push(v);
   }
   if (!chosen.length) continue;
   const shown = chosen.slice(0, 3);
