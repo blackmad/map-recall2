@@ -61,6 +61,21 @@ const views = new Map<string, PanoramaView>(
 const recon = JSON.parse(await readFile(path.join(STAGING, 'recon.json'), 'utf8'));
 const massing = new Map<string, { groundLevel?: number; eavesHeight?: number; storeys?: number }>(
   recon.massing.map((m: { buildingId: string }) => [m.buildingId, m]));
+/**
+ * Addresses, so a reviewer can say which house this is.
+ *
+ * `pand_id` stays canonical — it is the only stable identity a Dutch building
+ * has — but `0363100012164989` cannot be walked to, looked up, or argued about.
+ * Every review task starts with knowing it is Herengracht 270.
+ */
+let addresses = new Map<string, { label: string; others: number; exact: boolean }>();
+try {
+  const file = JSON.parse(await readFile(path.join(CACHE, 'addresses.json'), 'utf8'));
+  addresses = new Map(Object.entries(file.addresses as Record<string, any>));
+} catch (error) {
+  if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+}
+
 const heritage = new Map<string, string>();
 for (const h of recon.heritage) if (h.buildingId && h.description) heritage.set(h.buildingId, h.description);
 
@@ -186,6 +201,9 @@ const index = records.map(record => {
   const openingsLow = record.openings.filter(o => o.yM < STRIP_BASE_BELOW_GROUND_M + 0.6).length;
   return {
     pandId: record.pandId,
+    address: addresses.get(record.pandId)?.label ?? null,
+    addressIsExact: addresses.get(record.pandId)?.exact ?? null,
+    addressOthers: addresses.get(record.pandId)?.others ?? 0,
     panoramaId: record.panoramaId,
     capturedAt: record.capturedAt.slice(0, 10),
     standoffM: record.standoffM, obliquityDeg: record.obliquityDeg,

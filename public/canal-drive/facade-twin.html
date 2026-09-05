@@ -410,7 +410,10 @@ function setup() {
       ? `<div class="warn"><b>Storeys disagree</b>The strip reads ${found.storeyBands} bands; 3DBAG says ${found.massingStoreys}.</div>`
       : '';
     evidenceBody.innerHTML = `<h2>${safe(found.wallMaterialName ?? 'Measured façade')}</h2>
-      <p class="pand">pand ${safe(found.pandId)} · ${safe(found.capturedAt)}</p>
+      <p class="pand">${found.address ? safe(found.address) : 'no address'}${
+        found.addressOthers ? ` +${found.addressOthers} more` : ''}${
+        found.address && found.addressIsExact === false ? ' (nearest — may be next door)' : ''}</p>
+      <p class="pand" style="margin-top:-8px">pand ${safe(found.pandId)} · ${safe(found.capturedAt)}</p>
       ${drawing.svg}
       <figcaption>Measured elevation, to scale — ${number(drawing.width, 2)} m of frontage.
       <span style="color:#28e678">green</span> window,
