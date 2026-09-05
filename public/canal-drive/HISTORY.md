@@ -24,8 +24,11 @@ separate stage and returns ambiguity instead of inventing a front. The initial
 both canal banks, cardinal contrasts, multi-address cases, and the pinned
 Herengracht 270 observation. That fixture reproduces 38.6 m standoff and 3.3°
 obliquity without choosing an image yaw. The UI deliberately has no detector
-boxes or rectification: two human pand/elevation passes and hand-clicked anchors
-are the next gate.
+boxes or rectification: it exposes Herengracht 270 as the one reviewable task,
+keeps the 15 geometry-only candidates in a separate waiting queue, and guides
+the reviewer through the photo, building outline, highlighted wall, and two
+plain-language verdicts. Two independent human passes are the next gate;
+source-pixel anchors remain an optional advanced control.
 
 ## Shared enamel CSS from one hudTheme source
 

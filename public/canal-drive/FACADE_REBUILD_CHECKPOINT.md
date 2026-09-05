@@ -80,11 +80,14 @@ npm run dev
 ```
 
 Then open `/canal-drive/facade-registration-review/index.html`. The local page
-shows the full original panorama, exact BAG footprint and elevations, metadata,
-anchor capture, explicit rejection, and two independent review passes. Detector
-boxes are absent. The projected quadrilateral and rectified preview deliberately
-remain locked and empty until phase 3 supplies a proven camera model.
+presents Herengracht 270 as the one task with a traceable source panorama and
+separates the 15 geometry-only candidates into a non-actionable waiting queue.
+The primary path asks the reviewer to compare the full panorama, official BAG
+identity, footprint, and highlighted wall before recording two plain-language
+verdicts. Metadata and source-pixel anchors remain available as advanced details.
+Detector boxes are absent; calibration and rectification remain locked.
 
-The phase-2 human gate is still open: every fixture needs two agreeing passes on
-pand and elevation. Until then no fixture except the plan-pinned Herengracht 270
-wall has a selected elevation, and no detector or measurement run is authorised.
+The phase-2 human gate is still open: Herengracht 270 needs two independent
+agreeing passes, then every remaining fixture needs an explicit panorama
+selection before it can enter the same review. Until then no detector or
+measurement run is authorised.
