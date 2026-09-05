@@ -1148,8 +1148,39 @@ samples nine points along the wall; frontage choice counts a view as clear under
 50% blocked, and ranking treats it as a penalty on the resolution score,
 refusing only past 40%.
 
-**Until the controlled comparison lands, the 0.40 m / 88% figure above is not
-safe to quote.** It may be measuring how alike two frames of one afternoon are.
+### The comparison landed, and the earlier figures were flattered
+
+Same 200 panden, same walls, only the view pair differs:
+
+| view pair | median | within 1 m | median peak | same-year |
+|---|---|---|---|---|
+| best two by quality | **0.30 m** | 75% | 0.197 | 54% |
+| one per capture year | 1.25 m | 42% | 0.113 | 3% |
+
+Paired across 199 panden the gap is 0.30 m against 1.30 m, and the same-pass
+pair scores better on 60% of them. **So the 0.40 m / 88% quoted above is not a
+registration result.** It was measuring how alike two frames of one afternoon
+are.
+
+And the reason is structural, not statistical. Two frames of one pass share
+their pose error — the same GNSS state, the same per-track vertical datum, the
+same everything the run got wrong — so comparing them **cannot reveal** the
+dominant error, it cancels it. A test blind to the error it is meant to detect
+returns a good number for the wrong reason, however carefully it is run.
+
+The honest figure is the cross-year one: **1.25 m median, 42% within a metre**,
+or 0.80 m and 65% on confident correlations.
+
+But cross-year is not a clean registration measure either, in the opposite
+direction: two views years apart differ by real change as well as by
+mis-registration — a new shopfront, a repainted door, different parked cars —
+and the correlator cannot tell those from a shift. The median peak falls from
+0.197 to 0.113 between the two, which is what real change looks like.
+
+**Cross-view correlation measures image similarity, not registration, and it has
+been over-read in both directions.** The instruments that do not depend on two
+photographs looking alike are the house-number anchors, which read the
+building's own name, and human verdicts. Those are the ones to build on.
 
 ### Still open
 

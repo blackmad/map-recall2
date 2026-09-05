@@ -242,7 +242,7 @@ for (const entry of block) {
           x: found.pose.point.x, y: found.pose.point.y, z: found.pose.view.cameraHeight - GEOID_SEPARATION_M,
           headingDeg: found.pose.view.headingDeg, pitchDeg: found.pose.view.pitchDeg, rollDeg: found.pose.view.rollDeg,
         }, { start: found.wall.start, end: found.wall.end, baseZ: base - STRIP_BASE_BELOW_GROUND_M, topZ: eavesNap + 0.3 }, { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA });
-        const measurement = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre, camera: AMSTERDAM_CAMERA });
+        const measurement = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
         // Kept for the renderer. Each rectangle is one opening found in this
         // building's own photograph; drawing a grid rebuilt from bay and storey
         // *counts* would be inventing geometry the detector never saw.

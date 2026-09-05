@@ -72,7 +72,7 @@ async function panorama(view: PanoramaView) {
   if (images.has(view.panoramaId)) return images.get(view.panoramaId)!;
   const bytes = await readFile(path.join(CACHE, 'panoramas', `${view.panoramaId}.jpg`));
   const decoded = jpeg.decode(bytes, { useTArray: true, formatAsRGBA: true });
-  const image = { width: decoded.width, height: decoded.height, data: decoded.data };
+  const image = { width: decoded.width, height: decoded.height, data: Uint8ClampedArray.from(decoded.data) };
   images.set(view.panoramaId, image);
   return image;
 }

@@ -230,7 +230,7 @@ for (const { panoramaId, pose: planPose, jobs } of plan) {
       headingDeg: entry.pose.view.headingDeg, pitchDeg: entry.pose.view.pitchDeg, rollDeg: entry.pose.view.rollDeg,
     }, { start: job.wall.start, end: job.wall.end, baseZ: ground - STRIP_BASE_BELOW_GROUND_M, topZ: eaves + 0.3 }, { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA });
 
-    const m = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre, camera: AMSTERDAM_CAMERA });
+    const m = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
     // Is this a façade at all? The reference sheet showed that low obliquity and
     // short standoff are not enough: several such readings were of canal elms.
     const verdict = plausibility({

@@ -155,7 +155,7 @@ let done = 0, single = 0, none = 0;
 for (const buildingId of queue) {
   const record = store.facades[buildingId];
   const mass = massing.get(buildingId);
-  if (!record || !Number.isFinite(mass?.groundLevel)) { none++; continue; }
+  if (!record || !mass || !Number.isFinite(mass.groundLevel)) { none++; continue; }
   const [x0, y0, x1, y1] = record.wall;
   // Rebuild the elevation from the footprint rather than from the four stored
   // numbers: `inFrontOf` and `standoffM` need the outward normal, and deriving

@@ -87,7 +87,7 @@ async function panorama(view: PanoramaView) {
   if (images.size > 24) images.clear();                       // bounded, these are 32 MB each decoded
   const bytes = await readFile(path.join(CACHE, 'panoramas', `${view.panoramaId}.jpg`));
   const decoded = jpeg.decode(bytes, { useTArray: true, formatAsRGBA: true });
-  const image = { width: decoded.width, height: decoded.height, data: decoded.data };
+  const image = { width: decoded.width, height: decoded.height, data: Uint8ClampedArray.from(decoded.data) };
   images.set(view.panoramaId, image);
   return image;
 }

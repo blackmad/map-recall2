@@ -29,7 +29,7 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
-import { nearestMaterial } from '../../src/canalRecall/facade/materials.ts';
+import { nearestMaterial, wallFamily } from '../../src/canalRecall/facade/materials.ts';
 import { rectifyFacade, type CameraPose } from '../../src/canalRecall/facade/rectify.ts';
 import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
@@ -127,11 +127,12 @@ async function panorama(view: PanoramaView) {
 async function strip(record: Stored): Promise<boolean> {
   const view = views.get(record.panoramaId);
   const mass = massing.get(record.pandId);
-  if (!view || !Number.isFinite(mass?.groundLevel)) return false;
+  if (!view || !mass || !Number.isFinite(mass.groundLevel)) return false;
   const image = await panorama(view);
   if (!image) return false;
 
   const ground = mass.groundLevel;
+  if (typeof ground !== 'number') return false;
   const eaves = mass.eavesHeight ?? ground + 12;
   const [x0, y0, x1, y1] = record.wall;
   const rect = rectifyFacade(image, {
@@ -197,7 +198,19 @@ for (const record of queue) {
 const index = records.map(record => {
   const spot = viewpoint(record.wall, record.standoffM);
   const rgb = record.wallRgb;
-  const material = rgb ? nearestMaterial(rgb) : null;
+  /**
+   * The wall's material, from its own sampled colour.
+   *
+   * Two faults here, both hidden until `scripts/` was typechecked for the first
+   * time: `nearestMaterial` takes a family as well as a colour, and returns
+   * `{ material, distance }` rather than the material. Called with one argument
+   * it filtered an empty candidate list, and `material?.id` read a property that
+   * does not exist on the wrapper — so every `wallMaterial` in this index has
+   * been null since the file was written. `wallFamily` picks brick, paint or
+   * stone from the colour, exactly as the other three call sites do.
+   */
+  const nearest = rgb ? nearestMaterial(rgb, wallFamily(rgb)) : null;
+  const material = nearest?.material ?? null;
   const openingsLow = record.openings.filter(o => o.yM < STRIP_BASE_BELOW_GROUND_M + 0.6).length;
   return {
     pandId: record.pandId,
@@ -209,6 +222,7 @@ const index = records.map(record => {
     standoffM: record.standoffM, obliquityDeg: record.obliquityDeg,
     wallWidthM: record.wallWidthM,
     wallRgb: rgb, wallMaterial: material?.id ?? null, wallMaterialName: material?.name ?? null,
+    wallMaterialDistance: nearest ? Number(nearest.distance.toFixed(1)) : null,
     storeyBands: record.storeyBands, storeyIntervalsM: record.storeyIntervalsM,
     bays: record.bays, bayOffsetsM: record.bayOffsetsM,
     openings: record.openings.length, openingsAtStreetLevel: openingsLow,

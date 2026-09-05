@@ -76,7 +76,7 @@ for (const record of heritage) {
 // in real metres and never does trigonometry on degrees.
 const origin = AREA.localOrigin;
 const seen = new Set<string>();
-const buildings = [];
+const buildings: any[] = [];
 for (const entry of registry) {
   if (!inArea.has(entry.buildingId) || seen.has(entry.buildingId)) continue;
   seen.add(entry.buildingId);

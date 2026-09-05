@@ -178,7 +178,7 @@ for (const buildingId of ids) {
     // capped so a very close view does not produce an enormous strip.
     { pixelsPerMetre: Math.min(MAX_PIXELS_PER_METRE, Math.max(MIN_PIXELS_PER_METRE, 1250 / found.standoff)), camera: AMSTERDAM_CAMERA });
 
-  const measurement = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre, camera: AMSTERDAM_CAMERA });
+  const measurement = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
   const ppm = rect.pixelsPerMetre;
 
   for (const opening of measurement.openings) {
