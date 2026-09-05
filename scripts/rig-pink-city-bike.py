@@ -49,7 +49,7 @@ def reparent_keep(obj: bpy.types.Object, parent: bpy.types.Object) -> None:
 
 
 def empty_at(name: str, loc: Vector) -> bpy.types.Object:
-  bpy.ops.object.empty_add(type='PLAIN_AXES', location=(loc.x, 0.0, loc.z))
+  bpy.ops.object.empty_add(type='PLAIN_AXES', location=(loc.x, loc.y, loc.z))
   obj = bpy.context.view_layer.objects.active
   obj.name = name
   return obj
@@ -106,6 +106,101 @@ def bake_wheel_to_pivot(wheel: bpy.types.Object, pivot: bpy.types.Object) -> Non
     raise RuntimeError(f'{wheel.name} expected thin Y after bake, got {"XYZ"[thin]}')
 
 
+def bake_world_rotation(obj: bpy.types.Object) -> None:
+  """Zero object rotation while keeping visual orientation (mesh bake)."""
+  bpy.ops.object.select_all(action='DESELECT')
+  obj.select_set(True)
+  bpy.context.view_layer.objects.active = obj
+  if obj.type == 'MESH':
+    bpy.ops.object.make_single_user(type='SELECTED_OBJECTS', object=True, obdata=True)
+    bpy.ops.object.transform_apply(location=False, rotation=True, scale=False)
+  else:
+    obj.rotation_euler = (0.0, 0.0, 0.0)
+    obj.rotation_quaternion = (1.0, 0.0, 0.0, 0.0)
+  bpy.context.view_layer.update()
+
+
+def straighten_handle(handle: bpy.types.Object) -> None:
+  """Bake rest yaw out of the whole handle/fork/fender subtree.
+
+  Children must not keep their old world rotations — that left the fender
+  yawed while the front wheel (under RadVorn) stayed straight.
+  """
+  bpy.context.view_layer.update()
+  subtree: list[bpy.types.Object] = []
+
+  def collect(obj: bpy.types.Object) -> None:
+    for child in obj.children:
+      collect(child)
+      subtree.append(child)
+
+  collect(handle)
+  subtree.append(handle)
+  parent_names = {
+    obj.name: (obj.parent.name if obj.parent else None) for obj in subtree
+  }
+
+  for obj in subtree:
+    if obj.parent is not None:
+      bpy.ops.object.select_all(action='DESELECT')
+      obj.select_set(True)
+      bpy.context.view_layer.objects.active = obj
+      bpy.ops.object.parent_clear(type='CLEAR_KEEP_TRANSFORM')
+
+  for obj in subtree:
+    bake_world_rotation(obj)
+
+  # Re-link parent relationships bottom-up using baked objects.
+  by_name = {obj.name: obj for obj in bpy.context.scene.objects}
+  for obj in subtree:
+    parent_name = parent_names[obj.name]
+    if parent_name and parent_name in by_name:
+      reparent_keep(obj, by_name[parent_name])
+
+  print(
+    'handle straightened; fork world euler',
+    tuple(
+      round(math.degrees(angle), 1)
+      for angle in bpy.data.objects['Fork'].matrix_world.to_euler()
+    )
+    if 'Fork' in bpy.data.objects
+    else None,
+  )
+
+
+def delete_stray_cables() -> None:
+  """Drop brake wires and other chase-invisible cable spaghetti."""
+  removed: list[str] = []
+  for obj in list(bpy.context.scene.objects):
+    name = obj.name
+    if (
+      '剎車線' in name
+      or 'brake_cable' in name.lower()
+      or name.endswith('lse')  # source typo on 前/後剎車線lse
+    ):
+      removed.append(name)
+      bpy.data.objects.remove(obj, do_unlink=True)
+      continue
+    # Long thin free-floating cable-like meshes parented to the frameset.
+    if obj.type == 'MESH' and obj.parent and 'frame' in obj.parent.name.lower():
+      xs = [vertex.co.x for vertex in obj.data.vertices]
+      ys = [vertex.co.y for vertex in obj.data.vertices]
+      zs = [vertex.co.z for vertex in obj.data.vertices]
+      extents = sorted(
+        (max(xs) - min(xs), max(ys) - min(ys), max(zs) - min(zs)),
+        reverse=True,
+      )
+      if (
+        len(obj.data.vertices) < 3000
+        and extents[0] > 0.25
+        and extents[1] < 0.04
+        and extents[2] < 0.04
+      ):
+        removed.append(name)
+        bpy.data.objects.remove(obj, do_unlink=True)
+  print(f'removed cable-like objects: {removed}')
+
+
 def main() -> None:
   args = parse_args(sys.argv)
   source = Path(args.source).expanduser().resolve()
@@ -119,6 +214,8 @@ def main() -> None:
   for obj in list(bpy.context.scene.objects):
     if obj.type in {'LIGHT', 'CAMERA'} or obj.name == 'Icosphere':
       bpy.data.objects.remove(obj, do_unlink=True)
+
+  delete_stray_cables()
 
   handle = bpy.data.objects['handle']
   front_wheel = bpy.data.objects['front_wheelset']
@@ -156,6 +253,7 @@ def main() -> None:
   reparent_keep(rad_h, root)
   reparent_keep(rad_v, lenker)
   reparent_keep(handle, lenker)
+  straighten_handle(handle)
   bake_wheel_to_pivot(front_wheel, rad_v)
   bake_wheel_to_pivot(rear_wheel, rad_h)
 
@@ -200,6 +298,13 @@ def main() -> None:
   print(f'Lenker={tuple(round(c, 3) for c in world_loc(lenker))}')
   print(f'RadVorn={tuple(round(c, 3) for c in world_loc(rad_v))}')
   print(f'RadHinten={tuple(round(c, 3) for c in world_loc(rad_h))}')
+  # Sanity: fork/fender should share the wheel's forward plane (small yaw).
+  fork = bpy.data.objects.get('Fork')
+  mud = next((obj for obj in bpy.context.scene.objects if 'mudguard' in obj.name.lower() and 'front' in obj.name.lower()), None)
+  if fork:
+    print('fork world euler', tuple(round(math.degrees(a), 1) for a in fork.matrix_world.to_euler()))
+  if mud:
+    print('front_mudguard world euler', tuple(round(math.degrees(a), 1) for a in mud.matrix_world.to_euler()))
 
 
 if __name__ == '__main__':
