@@ -23,7 +23,8 @@ import {
   saveExploration,
   type Exploration,
 } from './progressStore';
-import { isCar } from './modes';
+import { isCar, isBoat, isTransit } from './modes';
+import { travelProfile } from './travelProfile';
 import type { PresentationHost } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels } from './teachingSurface';
@@ -86,8 +87,10 @@ export class GamePresentationRuntime {
     // Both travel modes have a real model now; the canvas glyph stays only as
     // the loading fallback, and is not painted over a mesh that is ready.
     const pitched = this.viewMode === 'chase' || this.viewMode === 'cockpit';
-    const byBoat = !isCar(this.travelMode);
-    this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && !byBoat);
+    const byBoat = isBoat(this.travelMode);
+    // Transit reuses the bike mesh until a tram asset exists.
+    const showBike = !byBoat;
+    this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike);
     this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
     this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
     if (!byBoat) {
@@ -329,7 +332,12 @@ export class GamePresentationRuntime {
     ctx.textAlign = 'center';
     ctx.fillStyle = 'rgba(255,255,255,0.72)';
     ctx.font = '14px system-ui, sans-serif';
-    ctx.fillText('Navigate the real canal network and name each waterway after you turn', cx, 100);
+    const tagline = isTransit(this.travelMode)
+      ? 'Ride real tram corridors and name the lines and stops'
+      : isCar(this.travelMode)
+        ? 'Navigate the real street network and name each street after you turn'
+        : 'Navigate the real canal network and name each waterway after you turn';
+    ctx.fillText(tagline, cx, 100);
 
     ctx.fillStyle = 'rgba(11,58,140,0.88)';
     roundRect(ctx, cx - 320, 120, 640, 160, 10);
@@ -346,14 +354,32 @@ export class GamePresentationRuntime {
     ctx.fillText('HOW TO PLAY', rulesX, 145);
     ctx.fillStyle = 'rgba(255,255,255,0.88)';
     ctx.font = '12px system-ui, sans-serif';
-    const rules = [
-      '1. Use WASD or the arrow keys to steer the boat',
-      '2. The boat slows dramatically when it leaves mapped water',
-      '3. After entering a differently named waterway, type its name',
-      '4. Map labels are hidden: navigate from the shape of the city',
-      '5. TAB toggles the overview map; -/+ changes zoom',
-      '6. This is an early prototype — feedback is the point',
-    ];
+    const rules = isTransit(this.travelMode)
+      ? [
+        '1. Use WASD or the arrow keys to ride the tram corridor',
+        '2. Stay on the mapped line — the guard keeps you on the shape',
+        '3. Name the line while moving, and stops as you approach them',
+        '4. Line colour and labels stay hidden until you answer',
+        '5. TAB toggles the overview map; -/+ changes zoom',
+        '6. Transit is a thin slice — tram 2 first; more lines later',
+      ]
+      : isCar(this.travelMode)
+        ? [
+          '1. Use WASD or the arrow keys to steer the bike',
+          '2. Stay on mapped streets; the road guard keeps you on the network',
+          '3. After entering a differently named street, type its name',
+          '4. Map labels are hidden: navigate from the shape of the city',
+          '5. TAB toggles the overview map; -/+ changes zoom',
+          '6. This is an early prototype — feedback is the point',
+        ]
+        : [
+          '1. Use WASD or the arrow keys to steer the boat',
+          '2. The boat slows dramatically when it leaves mapped water',
+          '3. After entering a differently named waterway, type its name',
+          '4. Map labels are hidden: navigate from the shape of the city',
+          '5. TAB toggles the overview map; -/+ changes zoom',
+          '6. This is an early prototype — feedback is the point',
+        ];
     rules.forEach((line, index) => ctx.fillText(line, rulesX, 165 + index * 18));
 
     ctx.fillStyle = 'rgba(255,255,255,0.45)';
@@ -389,9 +415,10 @@ export class GamePresentationRuntime {
     const exploration = this._loadExploration();
     if (exploration.totalRoutes <= 0) return;
     const ctx = this.ctx;
-    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length;
+    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length
+      + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
     const parts: string[] = [];
-    if (known > 0) parts.push(`${known} waterways`);
+    if (known > 0) parts.push(`${known} names`);
     if (exploration.visitedNeighborhoods.length > 0) parts.push(`${exploration.visitedNeighborhoods.length} hoods`);
     if (exploration.seenLandmarks.length > 0) parts.push(`${exploration.seenLandmarks.length} landmarks`);
 
@@ -628,7 +655,8 @@ export class GamePresentationRuntime {
     }
 
     // One stat row instead of four differently coloured boxes.
-    const recallNoun = isCar(this.travelMode) ? 'Streets' : 'Canals';
+    const profile = travelProfile(this.travelMode);
+    const recallNoun = profile.recallNoun;
     const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
     const stats = [
       { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
@@ -640,7 +668,7 @@ export class GamePresentationRuntime {
 
     const footerBits = [
       this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
-      isCar(this.travelMode) ? 'Bike' : 'Boat',
+      profile.label,
       this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()),
     ];
     if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
@@ -677,13 +705,16 @@ export class GamePresentationRuntime {
     }
 
     if (exploration) {
-      const known = exploration.learnedWaterways.length + exploration.learnedStreets.length;
+      const known = exploration.learnedWaterways.length + exploration.learnedStreets.length
+        + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
       const totals: string[] = [];
       if (known > 0) totals.push(`${known} names`);
       if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
       if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
       const fresh: string[] = [];
-      if (this.learnedNames.size > 0) fresh.push(`${this.learnedNames.size} names`);
+      if (this.learnedNames.size + (this.learnedStopNames?.size || 0) > 0) {
+        fresh.push(`${this.learnedNames.size + (this.learnedStopNames?.size || 0)} names`);
+      }
       if (this._visitedNeighborhoods.size > 0) fresh.push(`${this._visitedNeighborhoods.size} neighborhoods`);
       if (this._seenLandmarkNames.size > 0) fresh.push(`${this._seenLandmarkNames.size} landmarks`);
       // The label sits beside the totals on a wide card and above them on a
@@ -945,8 +976,9 @@ export class GamePresentationRuntime {
     try {
       const before = readExploration(localStorage);
       const after = mergeExploration(before, {
-        byBoat: !isCar(this.travelMode),
+        learnedKind: travelProfile(this.travelMode).learnedKind,
         learnedNames: this.learnedNames,
+        learnedStopNames: this.learnedStopNames || [],
         visitedNeighborhoods: this._visitedNeighborhoods,
         seenLandmarkNames: this._seenLandmarkNames,
         correct: this.quizCorrect,

@@ -7,7 +7,7 @@
 // every one of these arrives from a `<select>`, so the page and these unions
 // must agree or a preference silently stops applying.
 
-export const TRAVEL_MODES = ['boat', 'car'] as const;
+export const TRAVEL_MODES = ['boat', 'car', 'transit'] as const;
 export type TravelMode = typeof TRAVEL_MODES[number];
 
 export const ANSWER_MODES = ['multiple', 'typing'] as const;
@@ -34,7 +34,7 @@ export type HomeLeg = typeof HOME_LEGS[number];
 
 /** What a recall question is asking about. Drives the chip at the top of the
  *  prompt card. */
-export const QUIZ_SUBJECT_NAMES = ['street', 'waterway', 'water', 'bridge'] as const;
+export const QUIZ_SUBJECT_NAMES = ['street', 'waterway', 'water', 'bridge', 'line', 'stop'] as const;
 export type QuizSubject = typeof QUIZ_SUBJECT_NAMES[number];
 
 /** Why a recall question was opened. `route` is the way under the vehicle;
@@ -61,7 +61,15 @@ export function parseMode<T extends string>(
 }
 
 /** Amsterdam street mode is cycling in the presentation, even while it reuses
- *  the proven road-routing physics internally. */
+ *  the proven road-routing physics internally. Transit is neither. */
 export function isCar(mode: TravelMode): boolean {
   return mode === 'car';
+}
+
+export function isTransit(mode: TravelMode): boolean {
+  return mode === 'transit';
+}
+
+export function isBoat(mode: TravelMode): boolean {
+  return mode === 'boat';
 }

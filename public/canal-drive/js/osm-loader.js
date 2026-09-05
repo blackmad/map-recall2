@@ -24,6 +24,10 @@ class OSMLoader {
       // Quiz partitions stay deliberately compact. Driving needs the complete
       // connected street component or visible bridge approaches can have no
       // underlying centerline and the road guard will correctly refuse them.
+      // Transit loads a GTFS-derived network object and adapts it to ways.
+      if (travelMode === 'transit') {
+        return this._fetchTransitWays(city);
+      }
       const dataset = travelMode === 'car' ? 'streets-routing' : 'water';
       const dataUrl = new URL(`${city.extractPath}/${dataset}.json`, window.location.href);
       const response = await fetch(dataUrl);
@@ -35,6 +39,7 @@ class OSMLoader {
       // rather than from wherever the player happens to be standing.
       this.featureMeta = this.featureMeta || new Map();
       this.cityId = city.id;
+      this.transitLoad = null;
       for (const feature of features) {
         if (feature.name && feature.center && !this.featureMeta.has(feature.name)) {
           this.featureMeta.set(feature.name, {
@@ -227,6 +232,29 @@ class OSMLoader {
   _latToTileY(lat, z) { return Math.floor(PROJECT.latToTileY(lat, z)); }
   _tileXToLng(x, z) { return PROJECT.tileXToLng(x, z); }
   _tileYToLat(y, z) { return PROJECT.tileYToLat(y, z); }
+
+  async _fetchTransitWays(city) {
+    const Transit = window.CanalRecallTransit;
+    if (!Transit || typeof Transit.adaptTransitNetwork !== 'function') {
+      throw new Error('Transit adapter not loaded');
+    }
+    if (city.id !== 'amsterdam') {
+      throw new Error('Transit mode is Amsterdam-only for now');
+    }
+    const dataUrl = new URL(`${city.extractPath}/transit-network.json`, window.location.href);
+    const response = await fetch(dataUrl);
+    if (!response.ok) throw new Error(`${city.name} transit-network: HTTP ${response.status}`);
+    const network = await response.json();
+    const load = Transit.adaptTransitNetwork(network, {
+      playableRefs: Transit.TRANSIT_THIN_SLICE_REFS,
+      cityId: city.id,
+    });
+    this.featureMeta = new Map(load.featureMeta);
+    this.cityId = city.id;
+    this.transitLoad = load;
+    console.log(`Loaded ${load.ways.length} transit corridors (${load.stops.length} stops) for ${city.name}`);
+    return load.ways;
+  }
 
   // Convert ways to game-coordinate road segments. The arithmetic — projection,
   // simplification, widths, recentring — lives in `roadProjection.ts`; what

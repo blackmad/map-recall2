@@ -100,9 +100,73 @@
   function isCar(mode) {
     return mode === "car";
   }
+  function isTransit(mode) {
+    return mode === "transit";
+  }
+  function isBoat(mode) {
+    return mode === "boat";
+  }
+
+  // src/canalRecall/game/travelProfile.ts
+  var PROFILES = {
+    boat: {
+      id: "boat",
+      label: "Boat",
+      extractFile: "water",
+      quizRouteSubject: "waterway",
+      quizRouteQuestion: "Which waterway are you on now?",
+      learnedKind: "water",
+      motion: "water",
+      vehicle: "boat",
+      networkNoun: "waterways",
+      networkNounSingular: "waterway",
+      recallNoun: "Canals",
+      exploreNoun: "waterways",
+      usesRoadConstraint: false,
+      usesWaterTest: true
+    },
+    car: {
+      id: "car",
+      label: "Bike",
+      extractFile: "streets-routing",
+      quizRouteSubject: "street",
+      quizRouteQuestion: "Which street are you on now?",
+      learnedKind: "street",
+      motion: "road",
+      vehicle: "bike",
+      networkNoun: "streets",
+      networkNounSingular: "street",
+      recallNoun: "Streets",
+      exploreNoun: "streets",
+      usesRoadConstraint: true,
+      usesWaterTest: false
+    },
+    transit: {
+      id: "transit",
+      label: "Transit",
+      extractFile: "transit-network",
+      quizRouteSubject: "line",
+      quizRouteQuestion: "Which line are you on now?",
+      learnedKind: "transit",
+      motion: "corridor",
+      vehicle: "transit",
+      networkNoun: "tram lines",
+      networkNounSingular: "line",
+      recallNoun: "Lines",
+      exploreNoun: "lines and stops",
+      usesRoadConstraint: true,
+      usesWaterTest: false
+    }
+  };
+  function travelProfile(mode) {
+    return PROFILES[mode] ?? PROFILES.boat;
+  }
 
   // src/canalRecall/routing/cycleTrack.ts
   var CYCLE_TRACK_ANSWER_MULTIPLIER = 1.1;
+
+  // src/canalRecall/game/bikeSkins.ts
+  var DEFAULT_BIKE_SKIN = "omafiets";
 
   // src/canalRecall/game/cities.ts
   var AMSTERDAM_POIS = [
@@ -232,6 +296,8 @@
       skipMastered: true,
       gamey: true,
       sound: false,
+      bikeSkin: DEFAULT_BIKE_SKIN,
+      bikeBabySeat: false,
       zoom: zoom.defaultZoom,
       zoomDefaultVersion: ZOOM_DEFAULT_VERSION
     };
@@ -260,6 +326,8 @@
     return {
       learnedWaterways: [],
       learnedStreets: [],
+      learnedTransitLines: [],
+      learnedTransitStops: [],
       visitedNeighborhoods: [],
       seenLandmarks: [],
       totalRoutes: 0,
@@ -328,7 +396,7 @@
         overlay.callbacks.onClearKnowledge = async () => {
           const cloud = recall.signedIn ? " and your signed-in cloud copy" : "";
           const ok = window.confirm(
-            `Clear every street and canal name you have learned on this device${cloud}?
+            `Clear every street, canal, line and stop name you have learned on this device${cloud}?
 
 Sign-in and your route settings stay. This cannot be undone.`
           );
@@ -432,12 +500,14 @@ Learned names, exploration collection, personal bests, route settings and the ho
     // ---- Recall identity ----
     _recallFeatureAt(name, x, y, type = "") {
       if (!name) return null;
-      const center = this._toLatLon(x, y);
-      if (!center) return null;
       const meta = this.osmLoader && this.osmLoader.featureMeta && this.osmLoader.featureMeta.get(name);
+      const center = meta && meta.center ? meta.center : this._toLatLon(x, y);
+      if (!center) return null;
+      const profile = travelProfile(this.travelMode);
+      const defaultType = profile.learnedKind === "street" ? "street" : profile.learnedKind === "transit" ? "line" : "canal";
       return {
         name,
-        type: type || meta && meta.type || (isCar(this.travelMode) ? "street" : "canal"),
+        type: type || meta && meta.type || defaultType,
         cityId: meta && meta.cityId || this.cityId || "amsterdam",
         center
       };
@@ -524,6 +594,9 @@ Learned names, exploration collection, personal bests, route settings and the ho
     // ---- The route question ----
     _updateCanalQuiz(dt) {
       if (!this.player) return;
+      if (isTransit(this.travelMode)) {
+        this._updateTransitStopQuiz();
+      }
       const heading = this.player.angle;
       const name = this.track.getRoadName(this.player.x, this.player.y, heading);
       const interesting = !!name && name !== this.quizCurrentName;
@@ -543,22 +616,84 @@ Learned names, exploration collection, personal bests, route settings and the ho
       this.quizCandidateName = decision.state.candidateName;
       this.quizCandidateTimer = decision.state.candidateSeconds;
       if (decision.action === "idle") return;
+      const profile = travelProfile(this.travelMode);
       if (decision.action === "adopt") {
         this.quizCurrentName = decision.name;
         this.learnedNames.add(decision.name);
         this._revealName(decision.name);
-        this._showStreetKnowledge(decision.name, isCar(this.travelMode) ? "street" : "water");
+        this._showStreetKnowledge(
+          decision.name,
+          profile.learnedKind === "street" ? "street" : profile.learnedKind === "transit" ? "line" : "water"
+        );
         return;
       }
+      if (isTransit(this.travelMode)) {
+        const cooldown = window.CanalRecallTransit?.TRANSIT_LINE_QUIZ_COOLDOWN_S ?? 45;
+        if (this.raceTime - (this._lastTransitLineQuizAt || -Infinity) < cooldown) {
+          this.quizCurrentName = decision.name;
+          return;
+        }
+        this._lastTransitLineQuizAt = this.raceTime;
+      }
       const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
+      const lineChoices = isTransit(this.travelMode) ? this._transitLineChoices(decision.name) : null;
       this._openQuizPrompt({
         kind: "route",
         name: decision.name,
-        subject: isCar(this.travelMode) ? "street" : "waterway",
-        question: isCar(this.travelMode) ? "Which street are you on now?" : "Which waterway are you on now?",
-        context: "You made a turn",
+        subject: profile.quizRouteSubject,
+        question: profile.quizRouteQuestion,
+        context: isTransit(this.travelMode) ? "Riding the corridor" : "You made a turn",
+        choices: lineChoices,
         segmentIndex: quizRoad ? quizRoad.segIdx : -1,
         pointIndex: quizRoad ? quizRoad.ptIdx : 0
+      });
+    }
+    _transitLineChoices(answer) {
+      const load = this.osmLoader && this.osmLoader.transitLoad;
+      const pool = load && load.lineDistractors || [];
+      const alternatives = pickDistractors(pool, answer, DISTRACTOR_COUNT, shuffle);
+      return alternatives.length >= 2 ? [answer, ...alternatives] : null;
+    }
+    _updateTransitStopQuiz() {
+      if (this.quizPromptName || !this.player) return;
+      const Transit = window.CanalRecallTransit;
+      const load = this.osmLoader && this.osmLoader.transitLoad;
+      if (!Transit || !load || !load.stops || !load.stops.length) return;
+      const cooldown = Transit.TRANSIT_STOP_QUIZ_COOLDOWN_S ?? 18;
+      if (this.raceTime - (this._lastTransitStopQuizAt || -Infinity) < cooldown) return;
+      if (Math.abs(this.player.speed) > 80) return;
+      const radiusM = Transit.TRANSIT_STOP_QUIZ_RADIUS_M ?? 45;
+      const radiusPx = radiusM * PIXELS_PER_METER;
+      let best = null;
+      for (const stop of load.stops) {
+        if (this._quizzedTransitStops && this._quizzedTransitStops.has(stop.stopId)) continue;
+        if (this.revealedNames.has(stop.name)) continue;
+        const world = this._toWorld(stop.center[0], stop.center[1]);
+        if (!world) continue;
+        const dist = Math.hypot(world.x - this.player.x, world.y - this.player.y);
+        if (dist > radiusPx) continue;
+        if (!best || dist < best.dist) best = { stop, dist };
+      }
+      if (!best) return;
+      const feature = {
+        name: best.stop.name,
+        type: "stop",
+        cityId: this.cityId || "amsterdam",
+        center: best.stop.center
+      };
+      if (this.recall && this.recall.isSuppressedHere(feature)) return;
+      this._quizzedTransitStops = this._quizzedTransitStops || /* @__PURE__ */ new Set();
+      this._quizzedTransitStops.add(best.stop.stopId);
+      this._lastTransitStopQuizAt = this.raceTime;
+      const pool = load.stopDistractors || [];
+      const alternatives = pickDistractors(pool, best.stop.name, DISTRACTOR_COUNT, shuffle);
+      this._openQuizPrompt({
+        kind: "route",
+        name: best.stop.name,
+        subject: "stop",
+        question: "Which stop is this?",
+        context: "Approaching a stop",
+        choices: alternatives.length >= 2 ? [best.stop.name, ...alternatives] : null
       });
     }
     /**
@@ -617,12 +752,13 @@ Learned names, exploration collection, personal bests, route settings and the ho
      * crosses the bridge's mapped centreline.
      */
     _updateBridgeQuiz(previousPosition) {
+      if (isTransit(this.travelMode)) return;
       if (this.quizPromptName || !this.bridges.length || !previousPosition || !this.player) return;
       if (Math.abs(this.player.speed) < 5) return;
       if (this.raceTime - this._lastBridgeQuizAt < BRIDGE_QUIZ_COOLDOWN) return;
       const movedBy = Math.hypot(this.player.x - previousPosition.x, this.player.y - previousPosition.y);
       if (movedBy <= 0) return;
-      const byBoat = !isCar(this.travelMode);
+      const byBoat = isBoat(this.travelMode);
       const closest = findCrossedBridge(
         this.bridges,
         previousPosition,
@@ -744,6 +880,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       const correctName = this.quizPromptName;
       const answer = selectedAnswer == null ? this._promptInput.value : selectedAnswer;
       const pending = this._pendingCrossing;
+      const isStopQuiz = this._promptKind?.dataset?.kind === "stop";
       let recallFeature;
       if (pending && this.quizPromptKind === "crossing-water") {
         recallFeature = pending.water;
@@ -753,6 +890,15 @@ Learned names, exploration collection, personal bests, route settings and the ho
           type: "bridge",
           cityId: this.cityId || "amsterdam",
           center: pending.crossing.center
+        };
+      } else if (isStopQuiz) {
+        const load = this.osmLoader && this.osmLoader.transitLoad;
+        const stop = load && load.stops && load.stops.find((s) => s.name === correctName);
+        recallFeature = {
+          name: correctName,
+          type: "stop",
+          cityId: this.cityId || "amsterdam",
+          center: stop && stop.center || this._toLatLon(this.player.x, this.player.y) || [52.37, 4.89]
         };
       } else {
         recallFeature = this._recallFeatureAt(correctName, this.player.x, this.player.y);
@@ -780,7 +926,14 @@ Learned names, exploration collection, personal bests, route settings and the ho
         recallFeature,
         recallStore: this.recall,
         revealName: (name) => this._revealName(name),
-        markLearned: (name) => this.learnedNames.add(name),
+        markLearned: (name) => {
+          if (isStopQuiz) {
+            this.learnedStopNames = this.learnedStopNames || /* @__PURE__ */ new Set();
+            this.learnedStopNames.add(name);
+          } else {
+            this.learnedNames.add(name);
+          }
+        },
         rememberKnownPlace: (name, center) => this._rememberKnownPlace(name, center)
       });
       const correct = result.wasCorrect;
@@ -796,7 +949,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       this._neighborhoodNotice = null;
       this._neighborhoodNoticeTimer = 0;
       const atCrossing = this.quizPromptKind === "bridge" || this.quizPromptKind === "crossing-water";
-      if (!atCrossing) {
+      if (!atCrossing && !isStopQuiz) {
         this.quizCurrentName = correctName;
       } else if (this.quizPromptKind === "bridge" && correct && pending) {
         this._learnedBridges.set(pending.key, {
@@ -814,8 +967,9 @@ Learned names, exploration collection, personal bests, route settings and the ho
       this.quizPromptName = "";
       this.quizPromptSegmentIndex = -1;
       this.quizPromptPointIndex = 0;
-      const learnedRoute = !atCrossing ? correctName : "";
-      const learnedRouteType = isCar(this.travelMode) ? "street" : "water";
+      const learnedRoute = !atCrossing && !isStopQuiz ? correctName : "";
+      const profile = travelProfile(this.travelMode);
+      const learnedRouteType = profile.learnedKind === "street" ? "street" : profile.learnedKind === "transit" ? "line" : "water";
       setTimeout(() => {
         this._prompt.style.display = "none";
         this.quizFeedback = "";

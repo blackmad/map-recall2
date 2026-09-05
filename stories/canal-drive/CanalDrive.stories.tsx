@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-type Scenario = 'default' | 'bike-home' | 'advanced' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
-  | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike'
+type Scenario = 'default' | 'bike-home' | 'transit' | 'advanced' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
+  | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-panel' | 'landmark-panel-dutch'
   // Phone states. `touch-*` force the compact layout on a pointer device,
   // which is the only way to see the d-pad and the portrait card stack in the
   // workbench; the viewport addon alone just makes a small desktop window.
-  | 'touch-hud' | 'touch-hud-steering' | 'touch-hud-question' | 'touch-setup'
+  | 'touch-hud' | 'touch-hud-steering' | 'touch-hud-question' | 'touch-setup' | 'touch-setup-transit'
   // Overlay states on a phone: the question, the arrival card, the panels and
   // the expanded article. These are DOM over canvas, so the HUD layout suite
   // cannot reach them and Storybook is where they get reviewed.
@@ -26,7 +26,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     // Must be set before the game's first _resize, and re-applied because the
     // Storybook viewport addon resizes the iframe after load.
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
-    const setupStories = new Set(['default', 'bike-home', 'advanced', 'touch-setup']);
+    const setupStories = new Set(['default', 'bike-home', 'transit', 'advanced', 'touch-setup', 'touch-setup-transit']);
     if (setupStories.has(scenario)) doc.body.classList.add('storybook-setup');
     else doc.body.classList.remove('storybook-setup');
     const overlay = (win as any)?.CanalRecallOverlay?.getOverlay?.();
@@ -38,6 +38,11 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       patchPrefs({
         travelMode: 'car', viewMode: 'heading', routePattern: 'home',
         homeAddress: 'Da Costakade 13-3, Amsterdam',
+      });
+    }
+    if (scenario === 'transit' || scenario === 'touch-setup-transit') {
+      patchPrefs({
+        travelMode: 'transit', cityId: 'amsterdam', viewMode: 'heading', routePattern: 'surprise',
       });
     }
     if (scenario === 'advanced' && overlay) overlay.store.setAdvancedOpen(true);
@@ -77,7 +82,9 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           // Every finish story was failing on it, unnoticed while the frame
           // itself was 404ing.
           game.routeDifficulty = 'medium';
-          game.travelMode = scenario.includes('bike') ? 'bike' : 'car';
+          game.travelMode = scenario.includes('bike') ? 'bike'
+            : scenario.includes('transit') ? 'transit'
+            : 'car';
           game.viewMode = 'north';
           game.quizCorrect = 2; game.quizAttempts = 4; game.quizPoints = 158; game.quizBestStreak = 2;
           game.raceTime = 98.299;
@@ -272,9 +279,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = { args: { scenario: 'default' } };
 export const BikeFromHome: Story = { args: { scenario: 'bike-home' } };
+export const TransitBriefing: Story = { args: { scenario: 'transit' } };
 export const AdvancedOptions: Story = { args: { scenario: 'advanced' } };
 export const Mobile: Story = {
   args: { scenario: 'default' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
+export const TransitBriefingPhone: Story = {
+  args: { scenario: 'touch-setup-transit' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 export const LiveHud: Story = { args: { scenario: 'hud' } };
@@ -283,6 +295,7 @@ export const FinishCardCalmMode: Story = { args: { scenario: 'finish-calm' } };
 /** Calm finish with no landmark photo — typography-only arrival. */
 export const FinishCardCalmBare: Story = { args: { scenario: 'finish-calm-bare' } };
 export const FinishCardBike: Story = { args: { scenario: 'finish-bike' } };
+export const FinishCardTransit: Story = { args: { scenario: 'finish-transit' } };
 export const NeighborhoodPhotoCard: Story = { args: { scenario: 'neighborhood' } };
 /** Neighborhood entry with no photo — typography-only postcard. */
 export const NeighborhoodFallbackCard: Story = { args: { scenario: 'neighborhood-fallback' } };

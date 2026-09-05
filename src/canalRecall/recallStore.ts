@@ -11,6 +11,8 @@
  */
 import { ReviewState, scheduleReview } from '../spacedRepetition';
 import { getFeatureKey } from '../utils/featureIdentity';
+import { getTransitLineKey, getTransitStopKey } from './transit/identity';
+import type { TransitMode } from './transit/network';
 import { RoundResult, StreetFeature } from '../types';
 import { LatLon, chunkCenter, isKnownNear, isSuppressedNear } from './recallChunks';
 
@@ -44,6 +46,14 @@ const stateId = (state: Pick<ReviewState, 'featureKey' | 'mode'>) => `${state.fe
 const routeNameKey = (name: string): string => name.normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
+const LINE_NAME_RE = /^(tram|metro|ferry)\s+(.+)$/i;
+
+function parseLineDisplayName(name: string): { mode: TransitMode; ref: string } | null {
+  const match = name.trim().match(LINE_NAME_RE);
+  if (!match) return null;
+  return { mode: match[1].toLowerCase() as TransitMode, ref: match[2].trim() };
+}
+
 /** Collapse place-local review chunks into a conservative per-name routing prior. */
 export function routeMasteryFromStates(
   states: readonly ReviewState[], cityId: string, now = Date.now(),
@@ -52,7 +62,7 @@ export function routeMasteryFromStates(
   for (const state of states) {
     const feature = state.featureSnapshot;
     if (state.mode !== 'guess_name' || feature.cityId !== cityId
-      || !['street', 'canal'].includes(feature.type)) continue;
+      || !['street', 'canal', 'line'].includes(feature.type)) continue;
     const key = routeNameKey(feature.name);
     if (!key || state.repetitions <= 0) continue;
     const practiced = Math.min(1, state.repetitions / 3);
@@ -175,6 +185,25 @@ class RecallStore {
   }
 
   keyFor(feature: RecallFeature): string {
+    if (feature.type === 'stop') {
+      return getTransitStopKey({
+        cityId: feature.cityId,
+        name: feature.name,
+        center: feature.center,
+      });
+    }
+    if (feature.type === 'line') {
+      const parsed = parseLineDisplayName(feature.name);
+      if (parsed) {
+        return getTransitLineKey({
+          cityId: feature.cityId,
+          mode: parsed.mode,
+          ref: parsed.ref,
+          name: feature.name,
+          center: feature.center,
+        });
+      }
+    }
     return getFeatureKey(feature as unknown as StreetFeature);
   }
 

@@ -95,6 +95,8 @@
     return {
       learnedWaterways: [],
       learnedStreets: [],
+      learnedTransitLines: [],
+      learnedTransitStops: [],
       visitedNeighborhoods: [],
       seenLandmarks: [],
       totalRoutes: 0,
@@ -108,6 +110,8 @@
     return {
       learnedWaterways: stored.learnedWaterways ?? base.learnedWaterways,
       learnedStreets: stored.learnedStreets ?? base.learnedStreets,
+      learnedTransitLines: stored.learnedTransitLines ?? base.learnedTransitLines,
+      learnedTransitStops: stored.learnedTransitStops ?? base.learnedTransitStops,
       visitedNeighborhoods: stored.visitedNeighborhoods ?? base.visitedNeighborhoods,
       seenLandmarks: stored.seenLandmarks ?? base.seenLandmarks,
       totalRoutes: stored.totalRoutes ?? base.totalRoutes,
@@ -121,9 +125,12 @@
     return [...set];
   }
   function mergeExploration(current, contribution) {
+    const kind = contribution.learnedKind;
     return {
-      learnedWaterways: contribution.byBoat ? addUnique(current.learnedWaterways, contribution.learnedNames) : current.learnedWaterways,
-      learnedStreets: contribution.byBoat ? current.learnedStreets : addUnique(current.learnedStreets, contribution.learnedNames),
+      learnedWaterways: kind === "water" ? addUnique(current.learnedWaterways, contribution.learnedNames) : current.learnedWaterways,
+      learnedStreets: kind === "street" ? addUnique(current.learnedStreets, contribution.learnedNames) : current.learnedStreets,
+      learnedTransitLines: kind === "transit" ? addUnique(current.learnedTransitLines, contribution.learnedNames) : current.learnedTransitLines,
+      learnedTransitStops: kind === "transit" ? addUnique(current.learnedTransitStops, contribution.learnedStopNames || []) : current.learnedTransitStops,
       visitedNeighborhoods: addUnique(current.visitedNeighborhoods, contribution.visitedNeighborhoods),
       seenLandmarks: addUnique(current.seenLandmarks, contribution.seenLandmarkNames),
       totalRoutes: current.totalRoutes + 1,
@@ -135,8 +142,10 @@
     store.setItem(EXPLORATION_STORAGE_KEY, JSON.stringify(exploration));
   }
   function explorationGain(before, after) {
+    const beforeNames = before.learnedWaterways.length + before.learnedStreets.length + before.learnedTransitLines.length + before.learnedTransitStops.length;
+    const afterNames = after.learnedWaterways.length + after.learnedStreets.length + after.learnedTransitLines.length + after.learnedTransitStops.length;
     return {
-      newNames: after.learnedWaterways.length + after.learnedStreets.length - (before.learnedWaterways.length + before.learnedStreets.length),
+      newNames: afterNames - beforeNames,
       newNeighborhoods: after.visitedNeighborhoods.length - before.visitedNeighborhoods.length,
       newLandmarks: after.seenLandmarks.length - before.seenLandmarks.length
     };
@@ -145,6 +154,67 @@
   // src/canalRecall/game/modes.ts
   function isCar(mode) {
     return mode === "car";
+  }
+  function isTransit(mode) {
+    return mode === "transit";
+  }
+  function isBoat(mode) {
+    return mode === "boat";
+  }
+
+  // src/canalRecall/game/travelProfile.ts
+  var PROFILES = {
+    boat: {
+      id: "boat",
+      label: "Boat",
+      extractFile: "water",
+      quizRouteSubject: "waterway",
+      quizRouteQuestion: "Which waterway are you on now?",
+      learnedKind: "water",
+      motion: "water",
+      vehicle: "boat",
+      networkNoun: "waterways",
+      networkNounSingular: "waterway",
+      recallNoun: "Canals",
+      exploreNoun: "waterways",
+      usesRoadConstraint: false,
+      usesWaterTest: true
+    },
+    car: {
+      id: "car",
+      label: "Bike",
+      extractFile: "streets-routing",
+      quizRouteSubject: "street",
+      quizRouteQuestion: "Which street are you on now?",
+      learnedKind: "street",
+      motion: "road",
+      vehicle: "bike",
+      networkNoun: "streets",
+      networkNounSingular: "street",
+      recallNoun: "Streets",
+      exploreNoun: "streets",
+      usesRoadConstraint: true,
+      usesWaterTest: false
+    },
+    transit: {
+      id: "transit",
+      label: "Transit",
+      extractFile: "transit-network",
+      quizRouteSubject: "line",
+      quizRouteQuestion: "Which line are you on now?",
+      learnedKind: "transit",
+      motion: "corridor",
+      vehicle: "transit",
+      networkNoun: "tram lines",
+      networkNounSingular: "line",
+      recallNoun: "Lines",
+      exploreNoun: "lines and stops",
+      usesRoadConstraint: true,
+      usesWaterTest: false
+    }
+  };
+  function travelProfile(mode) {
+    return PROFILES[mode] ?? PROFILES.boat;
   }
 
   // src/canalRecall/game/teachingSurface.ts
@@ -192,8 +262,9 @@
       }
       this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
       const pitched = this.viewMode === "chase" || this.viewMode === "cockpit";
-      const byBoat = !isCar(this.travelMode);
-      this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && !byBoat);
+      const byBoat = isBoat(this.travelMode);
+      const showBike = !byBoat;
+      this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike);
       this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
       this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
       if (!byBoat) {
@@ -414,7 +485,8 @@
       ctx.textAlign = "center";
       ctx.fillStyle = "rgba(255,255,255,0.72)";
       ctx.font = "14px system-ui, sans-serif";
-      ctx.fillText("Navigate the real canal network and name each waterway after you turn", cx, 100);
+      const tagline = isTransit(this.travelMode) ? "Ride real tram corridors and name the lines and stops" : isCar(this.travelMode) ? "Navigate the real street network and name each street after you turn" : "Navigate the real canal network and name each waterway after you turn";
+      ctx.fillText(tagline, cx, 100);
       ctx.fillStyle = "rgba(11,58,140,0.88)";
       roundRect(ctx, cx - 320, 120, 640, 160, 10);
       ctx.fill();
@@ -429,7 +501,21 @@
       ctx.fillText("HOW TO PLAY", rulesX, 145);
       ctx.fillStyle = "rgba(255,255,255,0.88)";
       ctx.font = "12px system-ui, sans-serif";
-      const rules = [
+      const rules = isTransit(this.travelMode) ? [
+        "1. Use WASD or the arrow keys to ride the tram corridor",
+        "2. Stay on the mapped line \u2014 the guard keeps you on the shape",
+        "3. Name the line while moving, and stops as you approach them",
+        "4. Line colour and labels stay hidden until you answer",
+        "5. TAB toggles the overview map; -/+ changes zoom",
+        "6. Transit is a thin slice \u2014 tram 2 first; more lines later"
+      ] : isCar(this.travelMode) ? [
+        "1. Use WASD or the arrow keys to steer the bike",
+        "2. Stay on mapped streets; the road guard keeps you on the network",
+        "3. After entering a differently named street, type its name",
+        "4. Map labels are hidden: navigate from the shape of the city",
+        "5. TAB toggles the overview map; -/+ changes zoom",
+        "6. This is an early prototype \u2014 feedback is the point"
+      ] : [
         "1. Use WASD or the arrow keys to steer the boat",
         "2. The boat slows dramatically when it leaves mapped water",
         "3. After entering a differently named waterway, type its name",
@@ -465,9 +551,9 @@
       const exploration = this._loadExploration();
       if (exploration.totalRoutes <= 0) return;
       const ctx = this.ctx;
-      const known = exploration.learnedWaterways.length + exploration.learnedStreets.length;
+      const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
       const parts = [];
-      if (known > 0) parts.push(`${known} waterways`);
+      if (known > 0) parts.push(`${known} names`);
       if (exploration.visitedNeighborhoods.length > 0) parts.push(`${exploration.visitedNeighborhoods.length} hoods`);
       if (exploration.seenLandmarks.length > 0) parts.push(`${exploration.seenLandmarks.length} landmarks`);
       ctx.fillStyle = "rgba(11,58,140,.55)";
@@ -693,7 +779,8 @@
           blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
         } });
       }
-      const recallNoun = isCar(this.travelMode) ? "Streets" : "Canals";
+      const profile = travelProfile(this.travelMode);
+      const recallNoun = profile.recallNoun;
       const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
       const stats = [
         { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
@@ -704,7 +791,7 @@
       if (gamey) stats.splice(2, 0, { label: "Points", value: String(this.quizPoints) });
       const footerBits = [
         this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
-        isCar(this.travelMode) ? "Bike" : "Boat",
+        profile.label,
         this.viewMode.replace("-", " ").replace(/^./, (c) => c.toUpperCase())
       ];
       if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
@@ -736,13 +823,15 @@
         } });
       }
       if (exploration) {
-        const known = exploration.learnedWaterways.length + exploration.learnedStreets.length;
+        const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
         const totals = [];
         if (known > 0) totals.push(`${known} names`);
         if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
         if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
         const fresh = [];
-        if (this.learnedNames.size > 0) fresh.push(`${this.learnedNames.size} names`);
+        if (this.learnedNames.size + (this.learnedStopNames?.size || 0) > 0) {
+          fresh.push(`${this.learnedNames.size + (this.learnedStopNames?.size || 0)} names`);
+        }
         if (this._visitedNeighborhoods.size > 0) fresh.push(`${this._visitedNeighborhoods.size} neighborhoods`);
         if (this._seenLandmarkNames.size > 0) fresh.push(`${this._seenLandmarkNames.size} landmarks`);
         const knowledgeStacked = compact;
@@ -993,8 +1082,9 @@
       try {
         const before = readExploration(localStorage);
         const after = mergeExploration(before, {
-          byBoat: !isCar(this.travelMode),
+          learnedKind: travelProfile(this.travelMode).learnedKind,
           learnedNames: this.learnedNames,
+          learnedStopNames: this.learnedStopNames || [],
           visitedNeighborhoods: this._visitedNeighborhoods,
           seenLandmarkNames: this._seenLandmarkNames,
           correct: this.quizCorrect,

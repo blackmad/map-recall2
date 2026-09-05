@@ -639,7 +639,7 @@ class Game {
     this.sound.resume();
     this.player.handleInput(this.input);
     this.player.update(dt, this.track);
-    if (this.travelMode === 'car') {
+    if (this.travelMode === 'car' || this.travelMode === 'transit') {
       const road = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
       const previousRoad = this.track.getNearestRoad(previousPlayerPosition.x, previousPlayerPosition.y, this.player.angle);
       const guard = CanalRecallCar.constrainCarToRoad(
@@ -734,7 +734,7 @@ class Game {
   }
 
   _updateBoundaryCollisions() {
-    if (this.travelMode === 'car') return;
+    if (this.travelMode === 'car' || this.travelMode === 'transit') return;
     for (const car of this.cars) {
       const surface = this.track.getSurface(car.x, car.y);
       if (surface === 'grass') {

@@ -176,12 +176,16 @@ const QUIZ_ICONS = {
   street: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>',
   water: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>',
   bridge: '<svg class="filled" viewBox="0 0 576 512" aria-hidden="true"><path d="M32 32C14.3 32 0 46.3 0 64S14.3 96 32 96h40v64H0v128c53 0 96 43 96 96v64c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32v-64c0-53 43-96 96-96s96 43 96 96v64c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32v-64c0-53 43-96 96-96V160h-72V96h40c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zm424 64v64h-80V96h80zm-128 0v64h-80V96h80zm-128 0v64h-80V96h80z"/></svg>',
+  line: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15h16"/><path d="M4 9h16"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/></svg>',
+  stop: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>',
 };
 const QUIZ_SUBJECTS = {
   street:   { kind: 'street', icon: QUIZ_ICONS.street, label: 'Street',   placeholder: 'Street name' },
   waterway: { kind: 'water',  icon: QUIZ_ICONS.water,  label: 'Waterway', placeholder: 'Waterway name' },
   water:    { kind: 'water',  icon: QUIZ_ICONS.water,  label: 'Water',    placeholder: 'Canal or river name' },
   bridge:   { kind: 'bridge', icon: QUIZ_ICONS.bridge, label: 'Bridge',   placeholder: 'Bridge name' },
+  line:     { kind: 'line',   icon: QUIZ_ICONS.line,   label: 'Line',     placeholder: 'Line name' },
+  stop:     { kind: 'stop',   icon: QUIZ_ICONS.stop,   label: 'Stop',     placeholder: 'Stop name' },
 };
 // Degrees of tilt in the 2D views. Enough for buildings to show a face and for
 // the city to read as a city; not enough to lose the plan-view legibility the
@@ -209,6 +213,11 @@ const ROAD_WIDTHS = {
   pedestrian: 26,
   footway: 18,
   path: 20,
+  // Transit corridors (GTFS shapes) — slightly wider than a cycleway so the
+  // road guard has a forgiving envelope along tram/metro alignments.
+  tram: 26,
+  metro: 28,
+  ferry: 30,
 };
 const DEFAULT_ROAD_WIDTH = 32;
 

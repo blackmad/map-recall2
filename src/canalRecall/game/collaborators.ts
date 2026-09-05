@@ -42,8 +42,14 @@ export interface RoadSegment {
 
 /** What the network knows about a name, beyond its geometry. */
 export interface FeatureMeta {
+  name?: string;
   type?: string;
   cityId?: string;
+  /** Stable extract centre `[lat, lng]` when available. */
+  center?: [number, number];
+  ref?: string;
+  mode?: string;
+  color?: string | null;
 }
 
 export interface OsmLoader {
@@ -55,6 +61,8 @@ export interface OsmLoader {
   _lastCenterLat?: number;
   _lastCenterLng?: number;
   featureMeta?: Map<string, FeatureMeta>;
+  /** Sidecar from `CanalRecallTransit.adaptTransitNetwork` when travelMode is transit. */
+  transitLoad?: import('../transit/segments').TransitPlayLoad | null;
   /**
    * Project a lat/lng and snap it to the nearest loaded road point. Pass
    * `false` for `maxSnapDist` to mean "no limit" — the landmark pass wants a

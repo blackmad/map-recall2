@@ -615,6 +615,7 @@
      * with an NL badge).
      */
     _showStreetKnowledge(name, type = "street", replaceOpenCard = false) {
+      if (type === "line") return;
       const key = this._normaliseCanalName(name);
       const entry = routeKnowledgeFor(
         this.streetKnowledge,

@@ -123,6 +123,7 @@ const CITY_OPTIONS: Choice<CanalPreferences['cityId']>[] = playableCities().map(
 const TRAVEL: Choice<CanalPreferences['travelMode']>[] = [
   { value: 'boat', title: 'Boat', hint: 'Canals' },
   { value: 'car', title: 'Bike', hint: 'Streets' },
+  { value: 'transit', title: 'Transit', hint: 'Tram lines' },
 ];
 
 const BIKE_SKIN_OPTIONS: Choice<CanalPreferences['bikeSkin']>[] = BIKE_SKIN_IDS.map(id => ({
@@ -222,6 +223,7 @@ export function OverlayApp({
             <select id="travel-mode" hidden value={prefs.travelMode} onChange={event => patch({ travelMode: event.target.value as CanalPreferences['travelMode'] })}>
               <option value="boat">Boat</option>
               <option value="car">Bike</option>
+              <option value="transit">Transit</option>
             </select>
             <select id="view-mode" hidden value={prefs.viewMode} onChange={event => patch({ viewMode: event.target.value as CanalPreferences['viewMode'] })}>
               <option value="north">North-up</option>
@@ -254,7 +256,12 @@ export function OverlayApp({
               label="Travel"
               name="travel"
               value={prefs.travelMode}
-              onChange={value => patch({ travelMode: value })}
+              onChange={value => {
+                const next: Partial<CanalPreferences> = { travelMode: value };
+                // Transit extract is Amsterdam-only for now.
+                if (value === 'transit' && prefs.cityId !== 'amsterdam') next.cityId = 'amsterdam';
+                patch(next);
+              }}
               options={TRAVEL}
               icons={TRAVEL_ICONS}
             />
