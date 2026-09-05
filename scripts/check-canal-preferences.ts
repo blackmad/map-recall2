@@ -116,9 +116,6 @@ const memory = () => {
 }
 
 {
-  // A live form can still say "medium" while the player has flipped assists —
-  // the change handler usually moves to custom, but save must not rewrite the
-  // snapshot back to the medium preset.
   const live = coercePreferences({
     difficulty: 'medium', answerMode: 'typing', line: true, arrow: false, minimap: false,
   }, zoom);
@@ -126,6 +123,14 @@ const memory = () => {
   assert.equal(live.answerMode, 'typing');
   assert.equal(live.line, true);
   assert.equal(live.arrow, false);
+}
+
+{
+  assert.equal(defaultPreferences(zoom).cityId, 'amsterdam');
+  assert.equal(parsePreferences({ cityId: 'utrecht' }, zoom).cityId, 'utrecht');
+  assert.equal(parsePreferences({ cityId: 'den-haag' }, zoom).cityId, 'den-haag');
+  assert.equal(parsePreferences({ cityId: 'paris' }, zoom).cityId, 'amsterdam');
+  assert.equal(parsePreferences({}, zoom).cityId, 'amsterdam');
 }
 
 console.log('canal preferences: checks passed');

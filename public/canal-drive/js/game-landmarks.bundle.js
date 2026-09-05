@@ -544,6 +544,7 @@
       this._landmarkNoticeHold = hold;
       this._landmarkNoticeState = openNotice();
       this._landmarkNoticeAlpha = 0;
+      this._ensureLandmarkImage(this._landmarkNotice);
     }
     /**
      * Replace the card's lede with the next fact in this feature's rotation,
@@ -639,6 +640,7 @@
         type: "street",
         detail: split.detail,
         longDetail: split.longDetail,
+        imageUrl: entry.wikipediaImageUrl || "",
         wikipediaUrl: entry.wikipediaUrl || "",
         extractLang: entry.wikipediaExtractLang || "en"
       }, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
@@ -646,8 +648,10 @@
     // ---- Loading the extract ----
     async _loadLandmarks(centerLat, centerLng, segments) {
       try {
+        const Prefs = window.CanalRecallPreferences;
+        const city = Prefs && Prefs.cityById ? Prefs.cityById(this.cityId || Prefs.DEFAULT_CITY_ID || "amsterdam") : { extractPath: "../data/extracts/amsterdam" };
         const base = window.location.href;
-        const url = (name) => new URL(`../data/extracts/amsterdam/${name}`, base);
+        const url = (name) => new URL(`${city.extractPath}/${name}`, base);
         const [
           landmarkResponse,
           boundaryResponse,
@@ -837,7 +841,11 @@
       };
       const card = cards.measureLandmarkCard({
         name: lm.name,
-        body: lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood),
+        body: lm.longDetail || lm.detail || cards.placeOnlyDetail(
+          lm.type,
+          this.currentNeighborhood,
+          this._cityDisplayName()
+        ),
         category: lm.type ? lm.type.toUpperCase() : "",
         factKind: lm.factKind,
         extractLang: lm.extractLang,
@@ -878,7 +886,7 @@
       const panel = this._landmarkPanel;
       if (!lm || !panel) return false;
       const cards = window.CanalRecallCards;
-      const body = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join("\n\n") : "") || lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood);
+      const body = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join("\n\n") : "") || lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood, this._cityDisplayName());
       const badges = panel.querySelector("#landmark-panel-badges");
       badges.textContent = "";
       const pushBadge = (label, kind) => {
@@ -929,8 +937,16 @@
         ctx.font = font;
         return ctx.measureText(text).width;
       };
+      const city = typeof this._activeCity === "function" ? this._activeCity() : null;
       const card = window.CanalRecallCards.measurePostcard(
-        { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage },
+        {
+          name: hood.name,
+          kind: hood.kind,
+          imageArea: hood.imageArea,
+          hasImage,
+          cityName: city?.name || this._cityDisplayName?.() || "Amsterdam",
+          provinceCaption: city?.provinceCaption || ""
+        },
         measure,
         window.CanalRecallUi.postcardWidth(this.viewport)
       );

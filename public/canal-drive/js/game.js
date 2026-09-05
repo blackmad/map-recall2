@@ -4,20 +4,6 @@
 const GameState = { MENU: 0, MAP_SELECT: 1, LOADING: 2, RACING: 4, FINISHED: 5, PAUSED: 6 };
 Object.freeze(GameState);
 
-const CANAL_ROUTE_POIS = [
-  { id: 'central', name: 'Central Station', lat: 52.3784943, lng: 4.899843 },
-  { id: 'anne-frank', name: 'Anne Frank House', lat: 52.3753446, lng: 4.8840669 },
-  { id: 'rijksmuseum', name: 'Rijksmuseum', lat: 52.3598672, lng: 4.8864162 },
-  { id: 'maritime', name: 'National Maritime Museum', lat: 52.371493, lng: 4.9151332 },
-  { id: 'nemo', name: 'NEMO Science Museum', lat: 52.3738532, lng: 4.9121113 },
-  { id: 'palace', name: 'Royal Palace', lat: 52.373258, lng: 4.8918222 },
-  { id: 'red-light', name: 'Red Light District', lat: 52.3719371, lng: 4.8956406 },
-  { id: 'rembrandt', name: 'Rembrandt House', lat: 52.3693692, lng: 4.9012497 },
-  { id: 'hart', name: 'H’ART Museum', lat: 52.3656522, lng: 4.9022137 },
-  { id: 'westerkerk', name: 'Westerkerk', lat: 52.3743736, lng: 4.8837289 },
-  { id: 'mint', name: 'Mint Tower', lat: 52.3670418, lng: 4.8932804 }
-];
-
 const DIFFICULTY_PRESETS = window.CanalRecallPreferences.DIFFICULTY_PRESETS;
 const DIFFICULTY_SCORE_MULTIPLIERS = { easy: 0.5, medium: 0.75, hard: 1, expert: 1.25, custom: 0.85 };
 // Route ribbons grade the trip on what the game is trying to teach — name
@@ -39,12 +25,10 @@ const RIBBON_AID_COST = { line: 0.5, arrow: 0.25, minimap: 0.25 };
 // prominence-ranked landmarks in the city extract. Both ends of a route must
 // sit inside the single OSM_FETCH_RADIUS window fetched around their midpoint,
 // so candidates are capped by distance from the city centre and from each
-// other — otherwise a Weesp fort could be paired with Westerpark and half the
-// route would fall outside the loaded network.
-const AMSTERDAM_CENTRE = { lat: 52.3676, lng: 4.9041 };
+// other — otherwise a distant fort could be paired with a downtown landmark and
+// half the route would fall outside the loaded network.
 const ROUTE_POI_MAX_KM_FROM_CENTRE = 4;
 const ROUTE_POI_MAX_PAIR_KM = 6;
-const ROUTE_POI_CATALOG_URL = '../data/extracts/amsterdam/landmarks.json';
 // Both modes require an actual traversal, never proximity. A boat crosses the
 // span's centreline. A car drives along it, so it is tested against a gate
 // drawn perpendicular through the span's midpoint: sitting at the kerb aligned
@@ -101,6 +85,7 @@ class Game {
     this.quizFeedback = '';
     this.routeOptions = { ...DIFFICULTY_PRESETS.medium };
     this.travelMode = 'boat';
+    this.cityId = (window.CanalRecallPreferences && window.CanalRecallPreferences.DEFAULT_CITY_ID) || 'amsterdam';
     this.controlMode = 'relative';
     this.viewMode = 'north';
     this.themeMode = 'clean';
@@ -109,10 +94,11 @@ class Game {
     this.revealedNames = new Set();
     // Route reveals plus SRS-known names — still labelled while driving past.
     this._mapLabelNames = new Set();
-    this.routeFrom = CANAL_ROUTE_POIS[1];
-    this.routeTo = CANAL_ROUTE_POIS[2];
+    const starterPois = this._curatedRoutePois();
+    this.routeFrom = starterPois[1] || starterPois[0] || { id: 'start', name: 'Start', lat: 52.37, lng: 4.89 };
+    this.routeTo = starterPois[2] || starterPois[1] || starterPois[0] || this.routeFrom;
     // Grows once the landmark extract loads; see _loadRoutePoiCatalog.
-    this.routePois = [...CANAL_ROUTE_POIS];
+    this.routePois = [...starterPois];
     this.bridges = [];
     this._routeRerolls = 0;
     this._zoomBadgeTimer = 0;
@@ -321,6 +307,40 @@ class Game {
     }
   }
 
+  /** Active city catalog entry (extract path, centre, geocode bounds). */
+  _activeCity() {
+    const Prefs = window.CanalRecallPreferences;
+    const id = this.cityId || (Prefs && Prefs.DEFAULT_CITY_ID) || 'amsterdam';
+    return Prefs && Prefs.cityById ? Prefs.cityById(id) : {
+      id, name: id, extractPath: `../data/extracts/${id}`,
+      center: { lat: 52.372851, lng: 4.8936 },
+      geocodeSuffix: `, ${id}`,
+      geocodeViewbox: [4.72, 52.43, 5.02, 52.27],
+      provinceCaption: '',
+      curatedPois: [],
+    };
+  }
+
+  _curatedRoutePois() {
+    const curated = this._activeCity().curatedPois || [];
+    return curated.map(poi => ({ ...poi }));
+  }
+
+  _cityDisplayName() {
+    return this._activeCity().name || 'Amsterdam';
+  }
+
+  /** Pull keyboard focus back onto the canvas so Enter/Esc reach InputManager
+   *  instead of a leftover quiz field or utility button. */
+  _reclaimKeyboardFocus() {
+    const active = document.activeElement;
+    if (active instanceof HTMLElement && active !== this.canvas) active.blur();
+    if (this.canvas && typeof this.canvas.focus === 'function') {
+      try { this.canvas.focus({ preventScroll: true }); }
+      catch (_) { this.canvas.focus(); }
+    }
+  }
+
   /** Logical canvas coordinates for a pointer/mouse event. */
   _eventPoint(event) {
     const rect = this.canvas.getBoundingClientRect();
@@ -508,8 +528,11 @@ class Game {
     this.input.setTapRestartEnabled(this.state !== GameState.RACING);
     if (this.input.wasPressed('Slash') && (this.input.isDown('ShiftLeft') || this.input.isDown('ShiftRight'))) this._toggleUtilityPanel(this._helpPanel);
     if (this.input.wasPressed('KeyG')) this._toggleUtilityPanel('settings');
-    if (this.input.wasPressed('Escape') && this._utilityOpen) { this._closeUtilityPanels(); return; }
-    if (this._utilityOpen) return;
+    // Finish owns Esc/Enter; do not let a stale utility flag swallow them.
+    if (this.state !== GameState.FINISHED) {
+      if (this.input.wasPressed('Escape') && this._utilityOpen) { this._closeUtilityPanels(); return; }
+      if (this._utilityOpen) return;
+    }
     if (this.input.wasPressed('Tab') || this.input.wasPressed('KeyM')) this.showMiniMap = !this.showMiniMap;
     if (this.input.wasPressed('KeyL')) {
       this.routeOptions.line = !this.routeOptions.line;
@@ -581,6 +604,13 @@ class Game {
 
       case GameState.FINISHED:
         if (this._copiedTimer > 0) this._copiedTimer -= dt;
+        // If a utility somehow stayed marked open (e.g. settings opened mid-race
+        // and the finish card hid its chrome), Esc must choose a route — not
+        // only dismiss an invisible panel and return early.
+        if (this._utilityOpen) {
+          this._closeUtilityPanels();
+          this._reclaimKeyboardFocus();
+        }
         if (this.input.wasPressed('Enter') || this.input.wasPressed('Space') || this.input.wasPressed('KeyM')) {
           this._runFinishAction('again');
         }
@@ -683,6 +713,11 @@ class Game {
     if (this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
       this.state = GameState.FINISHED;
       this.sound.silence();
+      // Settings/help may still be "open" in state even though the finish card
+      // hides their buttons; clear that so Esc chooses a route instead of only
+      // closing an invisible panel. Also reclaim focus from any quiz field.
+      if (typeof this._closeUtilityPanels === 'function') this._closeUtilityPanels();
+      this._reclaimKeyboardFocus();
       const arrived = this._finishLandmark();
       if (arrived) {
         // The arrival card belongs to the finish screen and stays until

@@ -77,4 +77,7 @@ export interface StreetKnowledgeEntry {
   wikipediaUrl?: string;
   wikipediaExtract?: string;
   wikipediaExtractLang?: string;
+  /** Commons / Wikipedia page image when the enricher found one. Street and
+   *  water cards use the same notice slot as landmarks, so this must travel. */
+  wikipediaImageUrl?: string;
 }

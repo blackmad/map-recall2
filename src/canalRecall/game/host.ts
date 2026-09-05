@@ -51,6 +51,10 @@ export interface GameCoreHost {
   raceTime: number;
   currentNeighborhood: string;
   travelMode: TravelMode;
+  /** Active extract city — stamps recall keys and extract URLs. */
+  cityId: string;
+  _cityDisplayName(): string;
+  _activeCity(): { name: string; provinceCaption?: string; extractPath?: string; center?: { lat: number; lng: number } };
 
   /** Non-empty while a recall question is open. The HUD must not cover it, and
    *  nothing may reveal a name while it is up. */

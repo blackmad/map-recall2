@@ -82,11 +82,21 @@ check('street and canal knowledge keeps exact IDs and homonyms separate', () => 
   const index = buildRouteKnowledgeIndex(
     [{ name: 'Nes', wikipediaExtract: 'Legacy summary.' }],
     [{ id: 'street:nes', name: 'Nes', wikipediaUrl: 'https://en.wikipedia.org/wiki/Nes' }],
-    [{ id: 'water:nes', name: 'Nes', wikipediaUrl: 'https://en.wikipedia.org/wiki/Nes_water' }],
+    [{
+      id: 'water:nes',
+      name: 'Nes',
+      wikipediaUrl: 'https://en.wikipedia.org/wiki/Nes_water',
+      wikipediaImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/n.jpg',
+    }],
     normalise,
   );
   assert.equal(routeKnowledgeFor(index, 'NES', 'street', normalise)?.id, 'street:nes');
   assert.equal(routeKnowledgeFor(index, 'Nes', 'water', normalise)?.id, 'water:nes');
+  assert.equal(
+    routeKnowledgeFor(index, 'Nes', 'water', normalise)?.wikipediaImageUrl,
+    'https://upload.wikimedia.org/wikipedia/commons/n.jpg',
+    'water extract photos must survive the route-knowledge index',
+  );
 });
 
 check('splitDetail keeps whole sentences and caps both lengths', () => {

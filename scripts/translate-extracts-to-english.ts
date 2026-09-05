@@ -115,7 +115,8 @@ const onPath = async (binary: string) =>
  */
 async function chooseTranslator(): Promise<Translator> {
   const requested = argument('translator') as Translator | undefined;
-  if (process.argv.includes('--ollama')) return 'ollama';
+  // An explicit `--translator=` wins over the legacy `--ollama` flag so
+  // `enrich:utrecht-english -- --translator=trn` can override the script default.
   if (requested) {
     if ((CLI_TRANSLATORS as readonly string[]).includes(requested) && !await onPath(requested)) {
       process.stdout.write(`--translator=${requested} was asked for but it is not on PATH
@@ -124,6 +125,7 @@ async function chooseTranslator(): Promise<Translator> {
     }
     return requested;
   }
+  if (process.argv.includes('--ollama')) return 'ollama';
   for (const tool of CLI_TRANSLATORS) if (await onPath(tool)) return tool;
   if (process.env.OLLAMA_MODEL) return 'ollama';
   if (apiKey) return 'gemini';
@@ -155,7 +157,19 @@ const groupKey = (group: Feature[]) => {
 };
 
 const partitions = new Map<string, Feature[]>();
-for (const file of files) partitions.set(file, JSON.parse(await readFile(path.join(directory, file), 'utf8')));
+for (const file of files) {
+  try {
+    partitions.set(file, JSON.parse(await readFile(path.join(directory, file), 'utf8')));
+  } catch (error) {
+    // Utrecht and other cities may lack a generated street-knowledge.json;
+    // partitions that are not on disk are simply skipped.
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      process.stdout.write(`Skipping missing ${file}\n`);
+      continue;
+    }
+    throw error;
+  }
+}
 
 // The same feature appears in several partitions (all.json overlaps the rest),
 // so work is deduplicated by name + original text and written back everywhere.
@@ -377,7 +391,19 @@ for (const group of groups) {
   const originalLanguage = group[0].wikipediaExtractOriginalLang || group[0].wikipediaExtractLang;
   const english = translations.get(groupKey(group))
     || (group[0].wikidata ? descriptions.get(group[0].wikidata) : undefined);
-  if (!english) { stillForeign++; continue; }
+  if (!english) {
+    stillForeign++;
+    // English game: silence beats a Dutch card. Keep the original so a later
+    // translator (or a hand review) can fill it without re-fetching Wikipedia.
+    for (const feature of group) {
+      feature.wikipediaExtractOriginal = original;
+      feature.wikipediaExtractOriginalLang = originalLanguage;
+      delete feature.wikipediaExtract;
+      delete feature.wikipediaExtractLang;
+      delete feature.wikipediaExtractSource;
+    }
+    continue;
+  }
   const source = translations.has(groupKey(group)) ? 'translated' : 'wikidata-description';
   for (const feature of group) {
     feature.wikipediaExtractOriginal = original;
@@ -401,7 +427,8 @@ if (!dryRun) {
 process.stdout.write(`${dryRun ? 'DRY RUN — nothing written' : `wrote ${files.join(', ')}`}\n`);
 process.stdout.write(`  translated ledes: ${translated}\n`);
 process.stdout.write(`  Wikidata descriptions: ${described}\n`);
-process.stdout.write(`  still not English: ${stillForeign}\n`);
+process.stdout.write(`  still not English: ${stillForeign}`
+  + `${stillForeign ? ' (Dutch cleared; originals kept for a later pass)' : ''}\n`);
 if (renamed) {
   process.stdout.write(`  refused for renaming the place: ${renamed}\n`);
 }

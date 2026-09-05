@@ -17,27 +17,30 @@ class OSMLoader {
   // Load the curated Amsterdam waterways shipped with Map Recall. The return
   // shape intentionally matches Smokey's Overpass road loader so the original
   // game engine can remain unchanged.
-  async fetchRoads(lat, lng, radiusMeters, travelMode = 'boat') {
+  async fetchRoads(lat, lng, radiusMeters, travelMode = 'boat', cityId = 'amsterdam') {
+    const Prefs = window.CanalRecallPreferences;
+    const city = Prefs && Prefs.cityById ? Prefs.cityById(cityId) : { id: cityId || 'amsterdam', extractPath: `../data/extracts/${cityId || 'amsterdam'}`, name: cityId || 'amsterdam' };
     try {
       // Quiz partitions stay deliberately compact. Driving needs the complete
       // connected street component or visible bridge approaches can have no
       // underlying centerline and the road guard will correctly refuse them.
       const dataset = travelMode === 'car' ? 'streets-routing' : 'water';
-      const dataUrl = new URL(`../data/extracts/amsterdam/${dataset}.json`, window.location.href);
+      const dataUrl = new URL(`${city.extractPath}/${dataset}.json`, window.location.href);
       const response = await fetch(dataUrl);
-      if (!response.ok) throw new Error(`Amsterdam water data: HTTP ${response.status}`);
+      if (!response.ok) throw new Error(`${city.name} ${dataset}: HTTP ${response.status}`);
       const features = await response.json();
       const ways = [];
       // Stable per-name identity for the spaced-repetition store. The review
       // key hashes the feature's centre, so it has to come from the extract
       // rather than from wherever the player happens to be standing.
       this.featureMeta = this.featureMeta || new Map();
+      this.cityId = city.id;
       for (const feature of features) {
         if (feature.name && feature.center && !this.featureMeta.has(feature.name)) {
           this.featureMeta.set(feature.name, {
             name: feature.name,
             type: feature.type || (travelMode === 'car' ? 'street' : 'canal'),
-            cityId: feature.cityId || 'amsterdam',
+            cityId: feature.cityId || city.id,
             center: feature.center,
           });
         }
@@ -69,7 +72,7 @@ class OSMLoader {
           });
         }
       }
-      console.log(`Loaded ${ways.length} curated Amsterdam ${dataset} paths`);
+      console.log(`Loaded ${ways.length} curated ${city.name} ${dataset} paths`);
       return ways;
     } catch (localError) {
       console.warn('Curated water data unavailable; falling back to Overpass:', localError);

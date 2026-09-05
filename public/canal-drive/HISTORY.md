@@ -6,6 +6,93 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Utrecht full refresh published (2026-09-05)
+
+`npm run refresh:utrecht` finally ran end-to-end against the cached BBBike PBF.
+Published extract now has `street-knowledge.json` and English card blurbs:
+streets 0→91 ledes, water 2→41, landmarks 125, bridges 66 (0 leftover `nl`).
+Two pipeline hardenings landed with it: rename-refusal leftovers clear Dutch
+instead of failing the English gate, and `build-bridge-railways` retries Overpass
+mirrors so a 504 does not throw away a finished enrich.
+
+## Street-mode bicycle is an authored low-poly omafiets
+
+The Sketchfab Swapfiets was a studio prop (open shells, texture alpha,
+no hub pivots). Chase altitude needed the opposite, and every fix fought the
+mesh: double-sided holes, wrong-axis tyre cuts, spin around the bike origin,
+width hacks that still read as a hairline. Replaced by
+`scripts/build-omafiets-bike.py`: thick-tube step-through frame, blue front
+tyre, authored `Lenker` / `RadVorn` / `RadHinten` empties at head and hubs.
+Runtime stays at `omafiets-runtime.glb` (~140 KB, no meshopt — meshopt was
+mangling node scales and exploding the hierarchy in MapLibre). Mild
+`BIKE_WIDTH_SCALE` (1.35) only; tune in `bike-preview.html`.
+
+## Street-mode bicycle is a Swapfiets omafiets
+
+The Carbon Frame Bike GLB read as a sport road bike from chase altitude — wrong
+for Amsterdam street mode, which is cycling presentation. It is replaced by
+PatrickGoud’s Sketchfab “Swapfiets” (CC BY 4.0): step-through frame, upright
+bars, blue front tyre. `scripts/stylize-swapfiets-bike.py` levels the mesh
+(yaw/pitch/roll so both wheel contacts share a ground plane), grounds it at
+Y = 0, and splits `Lenker` / `RadVorn` / `RadHinten` for steer about +Y and
+wheel roll about +Z. Runtime is `swapfiets-runtime.glb` (~1.4 MB, meshopt +
+1024² WebP, hierarchy preserved). Heading offset is `0` (+X forward). An
+earlier 0.15 simplify pass and voxel remesh were rejected for crushing thin
+tubes. Credit in `NOTICE.md`.
+
+## Full city selector (Amsterdam / Utrecht / Rotterdam / Den Haag)
+
+The briefing City row writes `cityId` into preferences. A typed catalog in
+`src/canalRecall/game/cities.ts` owns centre, extract path, geocode suffix /
+viewbox, province caption, and Amsterdam's curated route POIs. Loaders,
+recall keys, home geocode, postcard captions, and the basemap extract root
+all follow that id — so a Utrecht answer cannot stamp an Amsterdam mastery
+key. Selecting a city on the briefing jumps the map to that centre and
+refetches the landmark destination pool. Cities without curated POIs start
+from the prominence-ranked landmark extract. Remaining content gaps
+(Rotterdam / Den Haag landmark text, Utrecht ledes) stay on the board as
+11b/11c, not as a blocked play path.
+
+## Randstad refresh reuses OSM and Wikimedia caches
+
+`npm run refresh:randstad` is the one command for Amsterdam, Rotterdam, Den
+Haag and Utrecht. BBBike city PBFs and the shared Zuid-Holland province file
+now live in `.cache/osm-source/` (Amsterdam/Utrecht used to re-download every
+run). Municipality cuts for Rotterdam and Den Haag are cached against the
+province mtime. Enrichment still hits `.cache/wikimedia/` and
+`english-translations.json`. `REFRESH_FORCE_DOWNLOAD`, `REFRESH_FORCE_CUT`, and
+`REFRESH_OFFLINE` control cache behaviour.
+
+## Finish card hears Enter and Esc again
+
+Arrival actions were painted with ENTER / ESC shortcuts, but the keys often
+did nothing: quiz focus stayed on a hidden `#canal-answer` or a settings
+button, `InputManager` ignored those targets, and a stale `_utilityOpen`
+flag returned before the FINISHED handler. The canvas is now focusable, finish
+reclaims focus and clears utilities, and keyboard ignore no longer treats
+buttons or hidden fields as live form focus.
+
+## Street/water cards show their Wikipedia photos
+
+Amstel and many other route names already had `wikipediaImageUrl` in the
+extract, but `_showStreetKnowledge` never put it on the notice — only
+landmarks did. Street and water encyclopedia cards now pass the image through
+and kick the same on-demand loader landmarks use when the card opens.
+
+## Borough postcards: Centrum and the other stadsdelen
+
+OSM names districts `Centrum` / `Noord` / … while Wikidata labels them
+`Amsterdam-Centrum`. Boroughs also use instance-of `borough of Amsterdam`
+(Q15079751), which the neighborhood SPARQL omitted. Aliases plus that type
+bring the seven boroughs into `neighborhoods-enriched.json` with photos
+(Centrum now has a Jordaan canal Commons image).
+
+## Utrecht English ledes via trn
+
+`enrich:utrecht-english` now skips a missing `street-knowledge.json` and
+honours an explicit `--translator=` over the script’s `--ollama` default.
+A `trn` pass translated 141 Utrecht blurbs (6 rename refusals).
+
 ## Published v11 Randstad trivia (opening then second beat)
 
 Owner blanket-approved the `facts-v11-opening-then-trivia` OpenRouter

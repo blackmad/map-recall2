@@ -178,10 +178,14 @@ export function wrapToLines(
  * cinemas — and a badge over a blank strip read as a rendering failure. The
  * kind of place and the neighborhood are both true and both worth reading.
  */
-export function placeOnlyDetail(type: string | undefined, neighborhood: string | undefined): string {
+export function placeOnlyDetail(
+  type: string | undefined,
+  neighborhood: string | undefined,
+  cityName = 'Amsterdam',
+): string {
   const kind = String(type || 'landmark').replace('_', ' ');
   const article = /^[aeiou]/i.test(kind) ? 'An' : 'A';
-  const where = neighborhood ? ` in ${neighborhood}` : ' in Amsterdam';
+  const where = neighborhood ? ` in ${neighborhood}` : ` in ${cityName}`;
   return `${article} ${kind}${where}. No encyclopedia article yet.`;
 }
 
@@ -192,6 +196,9 @@ export interface PostcardProps {
   kind?: string;
   imageArea?: string;
   hasImage?: boolean;
+  /** City name for the caption; defaults keep Amsterdam cards unchanged. */
+  cityName?: string;
+  provinceCaption?: string;
 }
 
 export interface PostcardLayout {
@@ -240,7 +247,9 @@ export function measurePostcard(
     heading: `ENTERING ${String(props.kind || 'NEIGHBORHOOD').toUpperCase()}`,
     // Crediting the photo matters when it was borrowed from the containing
     // district rather than taken in this neighborhood.
-    caption: props.imageArea ? `Photo: ${props.imageArea} · Amsterdam` : 'Amsterdam · Noord-Holland',
+    caption: props.imageArea
+      ? `Photo: ${props.imageArea} · ${props.cityName || 'Amsterdam'}`
+      : `${props.cityName || 'Amsterdam'}${props.provinceCaption ? ` · ${props.provinceCaption}` : ''}`,
   };
 }
 

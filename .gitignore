@@ -22,3 +22,6 @@ dist-canalrecall/
 .claude/
 .impeccable/
 .worktrees/
+
+# Full OSM building dumps from refresh — hundreds of MB; LoD1 tiles cover play.
+public/data/extracts/*/buildings-osm.geojson

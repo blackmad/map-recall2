@@ -9,13 +9,25 @@ versioned extract under `public/data/extracts/<city>/`, built here.
 ## Running it
 
 ```bash
-npm run refresh:amsterdam          # downloads Amsterdam from BBBike, rebuilds, publishes
-npm run refresh:utrecht            # the same script, different arguments
-bash scripts/refresh-city-extract.sh <id> <Name> <lat,lon> <BBBikeName> [local.osm.pbf]
+npm run refresh:randstad       # all four cities (preferred)
+npm run refresh:amsterdam      # one city
+npm run refresh:utrecht
+npm run refresh:rotterdam
+npm run refresh:den-haag
+bash scripts/refresh-city-extract.sh <id> <Name> <lat,lon> <BBBikeName|URL> [local.osm.pbf]
 ```
 
-Pass a local `.osm.pbf` as the fifth argument to skip the download — useful when
-iterating, because the download is the slowest stage and the least interesting.
+Pass a local `.osm.pbf` as the fifth argument to skip the download entirely.
+
+OSM downloads and municipality cuts live in `.cache/osm-source/` and are reused
+on the next run. Wikimedia/Wikipedia JSON is under `.cache/wikimedia/`. English
+ledes reuse `scripts/english-translations.json`. Useful env vars:
+
+| variable | effect |
+| --- | --- |
+| `REFRESH_FORCE_DOWNLOAD=1` | re-fetch BBBike / Geofabrik PBFs |
+| `REFRESH_FORCE_CUT=1` | redo Rotterdam/Den Haag cuts from the province file |
+| `REFRESH_OFFLINE=1` | fail on a missing OSM cache instead of downloading |
 
 `refresh-amsterdam-extract.sh` is one `exec` into the general script. Amsterdam
 gets no private path; if it did, it would drift.
@@ -23,7 +35,8 @@ gets no private path; if it did, it would drift.
 Everything is built into a temporary directory and copied into
 `public/data/extracts/<id>/` **only after every stage succeeds**. A transient
 Wikimedia failure must not replace a working city with a half-enriched one.
-
+Amsterdam then refreshes `neighborhoods-enriched.json` (borough postcards); a
+postcard failure warns but does not roll back the extract.
 ## The stages
 
 1. **Download and filter.** `osmium tags-filter` reduces the city PBF to the
@@ -116,10 +129,11 @@ routes are easier to drive.
 npm run refresh:randstad     # all four, each publishing independently
 ```
 
-BBBike publishes exactly four of the conurbation — Amsterdam, Rotterdam, Den
-Haag and Utrecht — and those are what `refresh-randstad.sh` rebuilds. The
-smaller Randstad cities (Leiden, Haarlem, Delft, Dordrecht, Almere, Amersfoort)
-have no BBBike extract and would need a different source first.
+Rebuilds Amsterdam, Rotterdam, Den Haag and Utrecht. Amsterdam and Utrecht use
+cached BBBike city PBFs; Rotterdam and Den Haag share a cached Zuid-Holland
+province file, and each city's cut of that file is cached against the province
+mtime. Enrichment hits `.cache/wikimedia/` and the English translation cache, so
+a warm re-run is mostly osmium filter + extract work.
 
 Each city is independent: one failing does not stop the rest, and each publishes
 only if its own build and checks pass.
@@ -128,9 +142,8 @@ A municipality is not always mapped under the name people call it — The Hague 
 `'s-Gravenhage` in OSM — so the boundary lookup matches `name`, `name:nl`,
 `name:en`, `official_name` or `alt_name`.
 
-Built so far: **Amsterdam** (35,216 routing ways, 99 components) and **Utrecht**
-(17,594 ways, 58 components). Rotterdam and Den Haag are wired up but have not
-been run.
+The briefing City selector picks among Amsterdam, Utrecht, Rotterdam and Den
+Haag; this command refreshes the data for all four.
 
 ## Adding a city
 
@@ -138,9 +151,10 @@ The extractor is city-agnostic: bounds, centre, curation file, boundary-lookup
 name and the `cityId` filed into review keys are all arguments, and the curation
 file is optional.
 
-What is not yet city-agnostic is the **runtime**. `osm-loader.js` hardcodes
-`../data/extracts/amsterdam/${dataset}.json`, so a built city cannot be reached
-from the game. See TODO item 11.
+The **runtime** reads the same `cityId` from preferences and resolves extract
+paths, geocode bounds and recall keys through `src/canalRecall/game/cities.ts`.
+To offer a new city in the game: publish its extract, add a catalog entry with
+`playable: true`, and rebuild the preferences / overlay bundles.
 
 ## What the checks cost
 

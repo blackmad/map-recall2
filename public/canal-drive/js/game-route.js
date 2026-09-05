@@ -23,7 +23,7 @@ class GameRouteRuntime {
     this._routeFrom = document.getElementById('route-from');
     this._routeTo = document.getElementById('route-to');
     this._settingsPanel = 'settings';
-    for (const poi of CANAL_ROUTE_POIS) {
+    for (const poi of this._curatedRoutePois()) {
       this._routeFrom.add(new Option(poi.name, poi.id));
       this._routeTo.add(new Option(poi.name, poi.id));
     }
@@ -58,6 +58,7 @@ class GameRouteRuntime {
       zoom: this.camera.zoom,
       reducedMotion: !!this.camera.reducedMotion,
       travelMode: this.travelMode || current.travelMode,
+      cityId: this.cityId || current.cityId,
       controlMode: this.controlMode || current.controlMode,
       viewMode: this.viewMode || current.viewMode,
       themeMode: this.themeMode || current.themeMode,
@@ -80,6 +81,7 @@ class GameRouteRuntime {
   }
 
   _applyPrefsToRuntime(prefs, { persist = true, applySound = persist } = {}) {
+    const previousCityId = this.cityId;
     this.routeOptions = {
       answerMode: prefs.answerMode,
       line: prefs.line,
@@ -89,6 +91,7 @@ class GameRouteRuntime {
     this.gameyFeatures = prefs.gamey;
     this.camera.reducedMotion = prefs.reducedMotion;
     this.travelMode = prefs.travelMode;
+    this.cityId = prefs.cityId || (window.CanalRecallPreferences && window.CanalRecallPreferences.DEFAULT_CITY_ID) || 'amsterdam';
     this.controlMode = prefs.controlMode;
     if (this.player) this.player.controlMode = this.controlMode;
     this.viewMode = prefs.viewMode;
@@ -96,6 +99,23 @@ class GameRouteRuntime {
     this.camera.northUp = this.viewMode === 'north';
     this.themeMode = prefs.themeMode;
     this.vectorMap.applyTheme(this.themeMode);
+    const city = this._activeCity();
+    if (typeof this.vectorMap.setExtractRoot === 'function') {
+      this.vectorMap.setExtractRoot(city.extractPath);
+    }
+    // Briefing only: show the chosen city centre instead of Damrak defaults.
+    if (previousCityId !== this.cityId && this.state === GameState.MENU) {
+      const center = city.center;
+      if (center && this.vectorMap.map && typeof this.vectorMap.map.jumpTo === 'function') {
+        this.vectorMap.map.jumpTo({
+          center: [center.lng, center.lat],
+          zoom: 13,
+          bearing: 0,
+          pitch: 0,
+        });
+      }
+      this._loadRoutePoiCatalog();
+    }
     this.camera.zoom = prefs.zoom;
     this.showMiniMap = prefs.minimap;
     this.routeDifficulty = prefs.difficulty;
@@ -183,7 +203,8 @@ class GameRouteRuntime {
     ctx.fillText(`POI DESTINATIONS (${this.routePois.length})`, x, y); y += 14;
     ctx.fillStyle = '#E0F2FE';
     ctx.font = '10px monospace';
-    const shownPois = [...CANAL_ROUTE_POIS];
+    const curated = this._curatedRoutePois();
+    const shownPois = [...curated];
     for (const poi of [this.routeFrom, this.routeTo]) {
       if (poi && !shownPois.some(entry => entry.id === poi.id)) shownPois.push(poi);
     }
@@ -191,7 +212,7 @@ class GameRouteRuntime {
       const isCurrent = (this.routeFrom?.id === poi.id ? '> ' : this.routeTo?.id === poi.id ? '* ' : '  ');
       ctx.fillText(`${isCurrent}${poi.name}`, x, y); y += 12;
     }
-    const hidden = this.routePois.length - CANAL_ROUTE_POIS.length;
+    const hidden = this.routePois.length - curated.length;
     if (hidden > 0) {
       ctx.fillStyle = '#94A3B8';
       ctx.fillText(`  +${hidden} more from the landmark extract`, x, y); y += 12;
@@ -250,9 +271,10 @@ class GameRouteRuntime {
   _syncHomeAddressField() {}
 
   async _geocodeHomeAddress(address) {
+    const city = this._activeCity();
     const rawAddress = address.trim();
-    const query = `${rawAddress}, Amsterdam`;
-    const key = query.toLocaleLowerCase();
+    const query = `${rawAddress}${city.geocodeSuffix}`;
+    const key = `${city.id}|${query}`.toLocaleLowerCase();
     let cache = {};
     try { cache = JSON.parse(localStorage.getItem(HOME_GEOCODE_CACHE_KEY) || '{}'); } catch (_) {}
     if (cache[key]) return cache[key];
@@ -276,7 +298,8 @@ class GameRouteRuntime {
     } catch (_) { /* bounded OSM fallback below */ }
 
     if (!resolved) {
-      const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&countrycodes=nl&limit=3&bounded=1&viewbox=4.72,52.43,5.02,52.27&q=${encodeURIComponent(query)}`;
+      const [west, north, east, south] = city.geocodeViewbox;
+      const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&countrycodes=nl&limit=3&bounded=1&viewbox=${west},${north},${east},${south}&q=${encodeURIComponent(query)}`;
       const response = await fetch(url);
       if (!response.ok) throw new Error('Address search is unavailable right now');
       const results = await response.json();
@@ -284,7 +307,7 @@ class GameRouteRuntime {
       if (result) resolved = { lat: Number(result.lat), lng: Number(result.lon), label: result.display_name };
     }
     if (!resolved || !Number.isFinite(resolved.lat) || !Number.isFinite(resolved.lng)) {
-      throw new Error('Could not find that exact Amsterdam address');
+      throw new Error(`Could not find that exact ${city.name} address`);
     }
     const home = { id: 'home', name: 'Home', address: rawAddress, label: resolved.label, lat: resolved.lat, lng: resolved.lng };
     cache[key] = home;
@@ -296,6 +319,20 @@ class GameRouteRuntime {
     if (!isReroll) this._routeRerolls = 0;
     this._setRouteError('');
     const prefs = this._prefs();
+    this._applyPrefsToRuntime(prefs, { persist: true, applySound: false });
+    // City may have changed on the briefing since the last catalog fetch.
+    await this._loadRoutePoiCatalog();
+    const curated = this._curatedRoutePois();
+    if (curated.length) {
+      this.routeFrom = curated[Math.min(1, curated.length - 1)];
+      this.routeTo = curated[Math.min(2, curated.length - 1)] || curated[0];
+    } else if (this.routePois.length >= 2) {
+      this.routeFrom = this.routePois[0];
+      this.routeTo = this.routePois[1];
+    } else {
+      this._setRouteError(`Not enough landmarks loaded for ${this._cityDisplayName()}.`);
+      return;
+    }
     this.routePattern = prefs.routePattern;
     if (this.routePattern === 'home') {
       const address = (prefs.homeAddress || '').trim();
@@ -383,11 +420,14 @@ class GameRouteRuntime {
   // usable if this fetch fails or is slow.
 
   async _loadRoutePoiCatalog() {
+    const city = this._activeCity();
+    const curated = this._curatedRoutePois();
     try {
-      const response = await fetch(new URL(ROUTE_POI_CATALOG_URL, window.location.href));
+      const catalogUrl = `${city.extractPath}/landmarks.json`;
+      const response = await fetch(new URL(catalogUrl, window.location.href));
       if (!response.ok) throw new Error(`landmark catalog ${response.status}`);
       const features = await response.json();
-      const seen = new Set(CANAL_ROUTE_POIS.map(poi => this._normaliseCanalName(poi.name)));
+      const seen = new Set(curated.map(poi => this._normaliseCanalName(poi.name)));
       const extras = [];
       for (const feature of features) {
         const centre = feature.center;
@@ -396,18 +436,26 @@ class GameRouteRuntime {
         if (seen.has(key)) continue;
         const poi = { id: `lm-${feature.id}`, name: feature.name, lat: centre[0], lng: centre[1],
                       prominence: feature.prominenceScore || 0, type: feature.type || 'landmark' };
-        if (Game._kmBetween(poi, AMSTERDAM_CENTRE) > ROUTE_POI_MAX_KM_FROM_CENTRE) continue;
+        if (Game._kmBetween(poi, city.center) > ROUTE_POI_MAX_KM_FROM_CENTRE) continue;
         seen.add(key);
         extras.push(poi);
       }
       extras.sort((a, b) => b.prominence - a.prominence);
-      this.routePois = [...CANAL_ROUTE_POIS, ...extras];
-      for (const poi of extras) {
-        this._routeFrom.add(new Option(poi.name, poi.id));
-        this._routeTo.add(new Option(poi.name, poi.id));
+      this.routePois = [...curated, ...extras];
+      // Rebuild destination selects from the active city's pool.
+      if (this._routeFrom && this._routeTo) {
+        this._routeFrom.innerHTML = '';
+        this._routeTo.innerHTML = '';
+        for (const poi of this.routePois) {
+          this._routeFrom.add(new Option(poi.name, poi.id));
+          this._routeTo.add(new Option(poi.name, poi.id));
+        }
+        if (this.routeFrom) this._routeFrom.value = this.routeFrom.id;
+        if (this.routeTo) this._routeTo.value = this.routeTo.id;
       }
-      console.info(`Route destinations: ${this.routePois.length} (${CANAL_ROUTE_POIS.length} curated + ${extras.length} from the extract)`);
+      console.info(`Route destinations (${city.name}): ${this.routePois.length} (${curated.length} curated + ${extras.length} from the extract)`);
     } catch (error) {
+      this.routePois = [...curated];
       console.warn('Landmark route catalog unavailable, using the curated list:', error);
     }
   }
@@ -543,12 +591,12 @@ class GameRouteRuntime {
     this._loadingAborted = false;
     this.loadingProgress = 0.05;
     const networkNoun = this.travelMode === 'car' ? 'streets' : 'waterways';
-    this.loadingMessage = `Loading Amsterdam ${networkNoun}...`;
+    this.loadingMessage = `Loading ${this._activeCity().name} ${networkNoun}...`;
 
     try {
       // Step 1: Fetch from Overpass API (tries multiple servers)
       this.loadingProgress = 0.1;
-      const ways = await this.osmLoader.fetchRoads(lat, lng, OSM_FETCH_RADIUS, this.travelMode);
+      const ways = await this.osmLoader.fetchRoads(lat, lng, OSM_FETCH_RADIUS, this.travelMode, this.cityId);
       if (this._loadingAborted) return;
 
       if (ways.length === 0) {
@@ -644,7 +692,7 @@ class GameRouteRuntime {
       if (this._loadingAborted) return;
 
       this.track = new RoadNetwork(segments, start, finish, tiles);
-      this._routeMastery = this.recall ? this.recall.routeMastery('amsterdam') : {};
+      this._routeMastery = this.recall ? this.recall.routeMastery(this.cityId || 'amsterdam') : {};
       this.track.setRouteMastery(this._routeMastery);
       if (this.travelMode === 'boat') this.track.waterTest = (x, y) => this.vectorMap.isWater(x, y, this.osmLoader);
       // Aim the basemap at the start while the loading overlay is still up so

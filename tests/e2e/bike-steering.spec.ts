@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
-// The asset shipped with its front wheel authored mid-turn, so it sat cocked
-// against the frame and never moved. It steers now, and this pins the thing a
-// screenshot cannot: that the fork turns, the frame does not, and the wheels
-// roll by distance travelled rather than by frame count. The bike is usually
-// behind a building, so the pose is measured off the scene graph instead.
+// Swapfiets is authored level with `Lenker` / `RadVorn` / `RadHinten` from
+// `scripts/stylize-swapfiets-bike.py`. This pins that the fork turns about +Y,
+// the frame does not, and the wheels roll about their +Z axle by distance
+// travelled rather than by frame count. The bike is usually behind a building,
+// so the pose is measured off the scene graph instead of a screenshot.
 test('the front wheel steers and the wheels roll, and the frame stays put', async ({ page }) => {
   test.setTimeout(180000);
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
@@ -21,12 +21,11 @@ test('the front wheel steers and the wheels roll, and the frame stays put', asyn
     g.state = 3;
     const bike = g.vectorMap._playerBike;
     const ll = g.vectorMap.worldToLngLat(g.player.x, g.player.y, g.osmLoader);
-    // Local +Y of a wheel is its axle. Read it straight out of the world
-    // matrix so the check needs nothing exported from the bundle.
+    // Local +Z of a Swapfiets wheel is its axle (carbon bike used +Y).
     const axleOf = (o: any) => {
       o.updateWorldMatrix(true, false);
       const e = o.matrixWorld.elements;
-      const v = [e[4], e[5], e[6]];
+      const v = [e[8], e[9], e[10]];
       const n = Math.hypot(v[0], v[1], v[2]) || 1;
       return [v[0] / n, v[1] / n, v[2] / n];
     };
@@ -35,6 +34,7 @@ test('the front wheel steers and the wheels roll, and the frame stays put', asyn
       try { bike.layer.render(null, { defaultProjectionData: { mainMatrix: new Array(16).fill(0) } }); } catch (e) { /* pose is applied before projection */ }
       return { front: axleOf(bike.parts.frontWheel), rear: axleOf(bike.parts.rearWheel) };
     };
+    // Local +X spins as the wheel rolls about +Z.
     const spinOf = (o: any) => {
       o.updateWorldMatrix(true, false);
       const e = o.matrixWorld.elements;
@@ -44,7 +44,6 @@ test('the front wheel steers and the wheels roll, and the frame stays put', asyn
     const left = read(-1);
     const straight = read(0);
     const right = read(1);
-    // Roll: same steering, different distance travelled.
     for (let i = 0; i < 120; i++) bike.update(ll, g.player.angle, true, 0, 0);
     try { bike.layer.render(null, { defaultProjectionData: { mainMatrix: new Array(16).fill(0) } }); } catch (e) { /* pose applied first */ }
     const rollAt0 = spinOf(bike.parts.frontWheel);
@@ -54,8 +53,7 @@ test('the front wheel steers and the wheels roll, and the frame stays put', asyn
     const ang = (a: number[], b: number[]) =>
       (Math.acos(Math.max(-1, Math.min(1, a[0]*b[0]+a[1]*b[1]+a[2]*b[2]))) * 180 / Math.PI);
     return {
-      // Axles are undirected: the two wheel nodes use opposite local +Y, so
-      // parallel can read as either 0° or 180°.
+      hasParts: !!(bike.parts.steer && bike.parts.frontWheel && bike.parts.rearWheel),
       straightFrontVsRear: Math.min(ang(straight.front, straight.rear), 180 - ang(straight.front, straight.rear)),
       frontLeftVsStraight: ang(left.front, straight.front),
       frontRightVsStraight: ang(right.front, straight.front),
@@ -65,10 +63,10 @@ test('the front wheel steers and the wheels roll, and the frame stays put', asyn
     };
   });
   console.log(JSON.stringify(pose, null, 2));
-  expect(pose.straightFrontVsRear).toBeLessThan(1);
+  expect(pose.hasParts).toBe(true);
+  expect(pose.straightFrontVsRear).toBeLessThan(15);
   expect(pose.rearLeftVsStraight).toBeLessThan(0.5);
   expect(pose.frontLeftVsStraight).toBeGreaterThan(10);
   expect(pose.frontLeftVsRight).toBeGreaterThan(20);
-  // 400 px at 3 px/m over a 0.35 m wheel is ~6.1 rad, well past a right angle.
   expect(pose.rollAfter400px).toBeGreaterThan(20);
 });

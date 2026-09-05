@@ -117,6 +117,9 @@ export class GameLandmarkRuntime {
     // Start transparent so the card fades in, and so a new card never inherits
     // the alpha the previous one happened to be at.
     this._landmarkNoticeAlpha = 0;
+    // Street/water encyclopedia cards arrive here without a proximity prefetch,
+    // so kick the image load as soon as the notice opens.
+    this._ensureLandmarkImage(this._landmarkNotice);
   }
 
   /**
@@ -219,6 +222,7 @@ export class GameLandmarkRuntime {
       type: 'street',
       detail: split.detail,
       longDetail: split.longDetail,
+      imageUrl: entry.wikipediaImageUrl || '',
       wikipediaUrl: entry.wikipediaUrl || '',
       extractLang: entry.wikipediaExtractLang || 'en',
     }, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS });
@@ -233,8 +237,12 @@ export class GameLandmarkRuntime {
     segments: RoadSegment[],
   ): Promise<void> {
     try {
+      const Prefs = window.CanalRecallPreferences;
+      const city = Prefs && Prefs.cityById
+        ? Prefs.cityById(this.cityId || Prefs.DEFAULT_CITY_ID || 'amsterdam')
+        : { extractPath: '../data/extracts/amsterdam' };
       const base = window.location.href;
-      const url = (name: string) => new URL(`../data/extracts/amsterdam/${name}`, base);
+      const url = (name: string) => new URL(`${city.extractPath}/${name}`, base);
       const [
         landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse,
         bridgeResponse, crossingResponse, streetKnowledgeResponse, streetResponse,
@@ -435,7 +443,11 @@ export class GameLandmarkRuntime {
     const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
     const card = cards.measureLandmarkCard({
       name: lm.name,
-      body: lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood),
+      body: lm.longDetail || lm.detail || cards.placeOnlyDetail(
+        lm.type,
+        this.currentNeighborhood,
+        this._cityDisplayName(),
+      ),
       category: lm.type ? lm.type.toUpperCase() : '',
       factKind: lm.factKind,
       extractLang: lm.extractLang,
@@ -489,7 +501,7 @@ export class GameLandmarkRuntime {
     // rambling one.
     const body = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join('\n\n') : '')
       || lm.longDetail || lm.detail
-      || cards.placeOnlyDetail(lm.type, this.currentNeighborhood);
+      || cards.placeOnlyDetail(lm.type, this.currentNeighborhood, this._cityDisplayName());
 
     const badges = panel.querySelector('#landmark-panel-badges') as HTMLElement;
     badges.textContent = '';
@@ -546,8 +558,17 @@ export class GameLandmarkRuntime {
     const img = this._neighborhoodImages && this._neighborhoodImages.get(hood.name);
     const hasImage = !!(img && img.complete && img.naturalWidth > 0);
     const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
+    const city = typeof this._activeCity === 'function' ? this._activeCity() : null;
     const card = window.CanalRecallCards.measurePostcard(
-      { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage }, measure,
+      {
+        name: hood.name,
+        kind: hood.kind,
+        imageArea: hood.imageArea,
+        hasImage,
+        cityName: city?.name || this._cityDisplayName?.() || 'Amsterdam',
+        provinceCaption: city?.provinceCaption || '',
+      },
+      measure,
       window.CanalRecallUi.postcardWidth(this.viewport));
 
     const bottomLayout = window.CanalRecallUi.hudLayout({

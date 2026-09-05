@@ -34,6 +34,7 @@ class VectorBasemap {
     this._playerBike = null;
     this._playerBoat = null;
     this._labelsVisible = false;
+    this._extractPath = '../data/extracts/amsterdam';
     if (!container || typeof maplibregl === 'undefined') return;
 
     this.map = new maplibregl.Map({
@@ -79,6 +80,22 @@ class VectorBasemap {
       // now so OSM building colours replace Liberty's uniform gray default.
       this.applyTheme(this.theme);
     });
+  }
+
+  /** Point building / tile fetches at the active city's extract root. */
+  setExtractRoot(path) {
+    if (!path || path === this._extractPath) return;
+    this._extractPath = path;
+    // Drop the previous city's tile streamer so the next probe uses the new root.
+    if (this._completeCity && typeof this._completeCity.dispose === 'function') {
+      try { this._completeCity.dispose(); } catch (_) { /* ignore */ }
+    }
+    this._completeCity = null;
+    this._buildingsFromTiles = false;
+  }
+
+  _extractFile(name) {
+    return `${this._extractPath || '../data/extracts/amsterdam'}/${name}`;
   }
 
   _ensureRouteLayer() {
@@ -198,7 +215,7 @@ class VectorBasemap {
     const hideIdsPromise = this._loadBasemapHideIds();
     let data;
     try {
-      const response = await fetch('../data/extracts/amsterdam/buildings-colored.geojson');
+      const response = await fetch(this._extractFile('buildings-colored.geojson'));
       if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
       data = await response.json();
     } catch (error) {
@@ -226,7 +243,7 @@ class VectorBasemap {
 
   async _loadBasemapHideIds() {
     try {
-      const response = await fetch('../data/extracts/amsterdam/basemap-hide-ids.json');
+      const response = await fetch(this._extractFile('basemap-hide-ids.json'));
       if (!response.ok) return;
       const payload = await response.json();
       const ids = payload && Array.isArray(payload.encodedIds) ? payload.encodedIds : [];
@@ -512,7 +529,7 @@ class VectorBasemap {
     const runtime = window.CanalRecallBuildingTiles;
     if (!runtime || !runtime.BuildingTileStreamer) return false;
     this._completeCity = new runtime.BuildingTileStreamer(
-      this.map, 'osm-building-appearance', '../data/extracts/amsterdam'
+      this.map, 'osm-building-appearance', this._extractPath || '../data/extracts/amsterdam'
     );
     let available = false;
     try {

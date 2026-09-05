@@ -153,7 +153,7 @@ export class GameRecallRuntime {
     return {
       name,
       type: type || (meta && meta.type) || (isCar(this.travelMode) ? 'street' : 'canal'),
-      cityId: (meta && meta.cityId) || 'amsterdam',
+      cityId: (meta && meta.cityId) || this.cityId || 'amsterdam',
       center,
     };
   }
@@ -389,11 +389,11 @@ export class GameRecallRuntime {
     const water: RecallFeature | null = crossing.waterway ? {
       name: crossing.waterway,
       type: crossing.waterwayType || 'canal',
-      cityId: 'amsterdam',
+      cityId: this.cityId || 'amsterdam',
       center: crossing.center as LatLon,
     } : null;
     const bridgeFeature: RecallFeature = {
-      name: closest.name, type: 'bridge', cityId: 'amsterdam', center: crossing.center as LatLon,
+      name: closest.name, type: 'bridge', cityId: this.cityId || 'amsterdam', center: crossing.center as LatLon,
     };
 
     const kind = crossingQuestionKind({
@@ -512,7 +512,7 @@ export class GameRecallRuntime {
       recallFeature = pending.water;
     } else if (pending && this.quizPromptKind === 'bridge') {
       recallFeature = {
-        name: correctName, type: 'bridge', cityId: 'amsterdam',
+        name: correctName, type: 'bridge', cityId: this.cityId || 'amsterdam',
         center: pending.crossing.center as LatLon,
       };
     } else {
@@ -590,7 +590,8 @@ export class GameRecallRuntime {
     setTimeout(() => {
       this._prompt.style.display = 'none';
       this.quizFeedback = '';
-      this.canvas.focus();
+      if (typeof this._reclaimKeyboardFocus === 'function') this._reclaimKeyboardFocus();
+      else this.canvas.focus();
       if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
     }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
   }

@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bike preview</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #1a1f1c;
+    --muted: #5c675f;
+    --panel: #f3f1ea;
+    --line: #cfc8b8;
+    --accent: #0b6e4f;
+    --ground: #d7e0d2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #e8ebe4; color: var(--ink);
+    font: 13px/1.45 "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; }
+  #viewport { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .panel {
+    position: absolute; z-index: 2; background: color-mix(in srgb, var(--panel) 92%, transparent);
+    border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+    backdrop-filter: blur(8px); max-width: 320px;
+  }
+  #controls { top: 12px; left: 12px; }
+  #readout { bottom: 12px; left: 12px; font-variant-numeric: tabular-nums; min-width: 240px; }
+  #credit { bottom: 12px; right: 12px; max-width: 280px; font-size: 11.5px; color: var(--muted); }
+  h1 { font-size: 15px; margin: 0 0 4px; letter-spacing: 0.01em; }
+  .sub { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
+  h2 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); margin: 10px 0 6px; font-weight: 600; }
+  label.row { display: flex; align-items: center; gap: 8px; padding: 3px 0; cursor: pointer; }
+  label.slider { display: grid; gap: 4px; padding: 4px 0; }
+  label.slider span { display: flex; justify-content: space-between; color: var(--muted); }
+  input[type="range"] { width: 100%; accent-color: var(--accent); }
+  button, .file {
+    font: inherit; color: inherit; background: #fff; border: 1px solid var(--line);
+    border-radius: 6px; padding: 5px 9px; cursor: pointer; margin: 0 4px 4px 0;
+  }
+  button:hover, .file:hover { border-color: var(--accent); }
+  button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .file { display: inline-block; }
+  .file input { display: none; }
+  dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 0; }
+  dt { color: var(--muted); } dd { margin: 0; }
+  .ok { color: var(--accent); } .bad { color: #a33; }
+  a { color: var(--accent); }
+  #drop {
+    position: absolute; inset: 0; display: none; place-items: center;
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    border: 3px dashed var(--accent); z-index: 5; pointer-events: none;
+    font-size: 18px; font-weight: 600; color: var(--accent);
+  }
+  #drop.on { display: grid; }
+</style>
+</head>
+<body>
+<canvas id="viewport"></canvas>
+<div id="drop">Drop a .glb / .gltf to preview</div>
+
+<div class="panel" id="controls">
+  <h1>Bike preview</h1>
+  <p class="sub">Compare the authored omafiets against the Sketchfab Swapfiets reference.</p>
+
+  <h2>Model</h2>
+  <button type="button" data-model="omafiets" class="active">Omafiets (game)</button>
+  <button type="button" data-model="swapfiets">Swapfiets (Sketchfab)</button>
+  <label class="file">Load file<input type="file" id="file" accept=".glb,.gltf,model/gltf-binary,model/gltf+json"></label>
+
+  <h2>Chase readability</h2>
+  <p class="sub" style="margin-top:0">From above a real bike is a hairline. These match the game constants in <code>player-vehicles-source.js</code>.</p>
+  <label class="slider">
+    <span>Width × <b id="width-val">1.35</b></span>
+    <input type="range" id="width" min="1" max="3" step="0.1" value="1.35">
+  </label>
+  <label class="slider">
+    <span>Game scale × <b id="game-val">4.5</b></span>
+    <input type="range" id="game" min="1" max="8" step="0.1" value="4.5">
+  </label>
+
+  <h2>Camera</h2>
+  <button type="button" data-view="side">Side</button>
+  <button type="button" data-view="front">Front</button>
+  <button type="button" data-view="chase">Chase</button>
+  <button type="button" data-view="top" class="active">Top (chase-like)</button>
+
+  <h2>Helpers</h2>
+  <label class="row"><input type="checkbox" id="axes" checked> Axes (X red, Y green, Z blue)</label>
+  <label class="row"><input type="checkbox" id="grid" checked> Ground grid</label>
+  <label class="row"><input type="checkbox" id="parts"> Highlight Lenker / wheels</label>
+
+  <h2>Motion</h2>
+  <label class="slider">
+    <span>Steer <b id="steer-val">0</b></span>
+    <input type="range" id="steer" min="-1" max="1" step="0.01" value="0">
+  </label>
+  <label class="row"><input type="checkbox" id="spin"> Spin wheels</label>
+  <label class="row"><input type="checkbox" id="waggle"> Waggle steer</label>
+</div>
+
+<div class="panel" id="readout">
+  <h2>Scene graph</h2>
+  <dl id="numbers"></dl>
+</div>
+<div class="panel" id="credit">
+  Preview only. <strong>Omafiets</strong> is authored for the game.
+  <strong>Swapfiets</strong> is PatrickGoud’s Sketchfab model
+  (<a href="https://sketchfab.com/3d-models/swapfiets-163434395a0e4ab38c12ae195e978a0d">CC BY 4.0</a>)
+  with preview-only <code>Lenker</code> / wheel pivots so steer and spin work.
+  Reference only — not used in the live game.
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.185.1/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.185.1/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+
+const MODELS = {
+  omafiets: new URL('./omafiets-runtime.glb', import.meta.url).href,
+  swapfiets: new URL('./swapfiets-sketchfab-preview.glb', import.meta.url).href,
+};
+const params = new URLSearchParams(location.search);
+const initialKey = params.get('model') === 'swapfiets' ? 'swapfiets'
+  : (params.get('model') && !MODELS[params.get('model')] ? null : 'omafiets');
+const initialUrl = params.get('model') && !MODELS[params.get('model')]
+  ? params.get('model')
+  : MODELS[initialKey || 'omafiets'];
+
+const canvas = document.querySelector('#viewport');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setClearColor(0xe8ebe4, 1);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 1, 0.05, 200);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+controls.target.set(0, 0.7, 0);
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x8a9a88, 1.4));
+const sun = new THREE.DirectionalLight(0xffffff, 2.2);
+sun.position.set(4, 8, 3);
+scene.add(sun);
+
+const grid = new THREE.GridHelper(6, 24, 0x9aab95, 0xc5d0bf);
+grid.position.y = 0.001;
+scene.add(grid);
+const axes = new THREE.AxesHelper(1.4);
+scene.add(axes);
+
+const STEER_AXIS = new THREE.Vector3(0, 1, 0);
+const WHEEL_AXIS = new THREE.Vector3(0, 0, 1);
+const scratch = new THREE.Quaternion();
+
+const state = {
+  root: null,
+  imported: null,
+  parts: { steer: null, frontWheel: null, rearWheel: null },
+  rest: { steer: null, frontWheel: null, rearWheel: null },
+  highlight: new Map(),
+  steer: 0,
+  spin: 0,
+  url: initialUrl,
+  widthScale: 1.35,
+  gameScale: 4.5,
+  baseUniform: 1,
+};
+
+const loader = new GLTFLoader();
+loader.setMeshoptDecoder(MeshoptDecoder);
+
+function resize() {
+  const { clientWidth: w, clientHeight: h } = canvas.parentElement || document.body;
+  renderer.setSize(window.innerWidth, window.innerHeight, false);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+}
+
+function clearModel() {
+  if (!state.root) return;
+  scene.remove(state.root);
+  state.root.traverse(obj => {
+    if (obj.isMesh) {
+      obj.geometry?.dispose?.();
+      const mats = Array.isArray(obj.material) ? obj.material : [obj.material];
+      for (const mat of mats) mat?.dispose?.();
+    }
+  });
+  state.root = null;
+  state.imported = null;
+  state.parts = { steer: null, frontWheel: null, rearWheel: null };
+  state.rest = { steer: null, frontWheel: null, rearWheel: null };
+  state.highlight.clear();
+}
+
+/** Match game load: normalise length, fatten local Z, then apply gameScale. */
+function groundAndFrame(imported) {
+  imported.position.set(0, 0, 0);
+  imported.scale.set(1, 1, 1);
+  imported.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(imported);
+  const size = box.getSize(new THREE.Vector3());
+  state.baseUniform = 2.15 / Math.max(size.x, size.z, 0.001);
+  applyChaseScales(imported);
+  return new THREE.Box3().setFromObject(state.root).getSize(new THREE.Vector3());
+}
+
+function applyChaseScales(imported = state.imported) {
+  if (!imported || !state.root) return;
+  const uniform = state.baseUniform;
+  imported.scale.set(uniform, uniform, uniform * state.widthScale);
+  imported.updateMatrixWorld(true);
+  const grounded = new THREE.Box3().setFromObject(imported);
+  const center = grounded.getCenter(new THREE.Vector3());
+  imported.position.set(-center.x, -grounded.min.y, -center.z);
+  state.root.scale.setScalar(state.gameScale);
+  state.root.updateMatrixWorld(true);
+}
+
+function tintPart(obj, color) {
+  if (!obj) return;
+  obj.traverse(child => {
+    if (!child.isMesh || !child.material) return;
+    const mats = Array.isArray(child.material) ? child.material : [child.material];
+    mats.forEach((mat, index) => {
+      const key = `${child.uuid}:${index}`;
+      if (!state.highlight.has(key)) state.highlight.set(key, mat);
+      const copy = mat.clone();
+      copy.color = new THREE.Color(color);
+      copy.emissive = new THREE.Color(color).multiplyScalar(0.15);
+      if (Array.isArray(child.material)) child.material[index] = copy;
+      else child.material = copy;
+    });
+  });
+}
+
+function restoreMaterials() {
+  for (const [key, mat] of state.highlight) {
+    const [uuid, index] = key.split(':');
+    state.root?.traverse(child => {
+      if (child.uuid !== uuid || !child.isMesh) return;
+      if (Array.isArray(child.material)) child.material[Number(index)] = mat;
+      else child.material = mat;
+    });
+  }
+}
+
+function applyHighlights(on) {
+  restoreMaterials();
+  if (!on) return;
+  tintPart(state.parts.steer, 0x1f7a5c);
+  tintPart(state.parts.frontWheel, 0x2f6fed);
+  tintPart(state.parts.rearWheel, 0xb45309);
+}
+
+function bindParts(root) {
+  const steer = root.getObjectByName('Lenker');
+  const frontWheel = root.getObjectByName('RadVorn');
+  const rearWheel = root.getObjectByName('RadHinten');
+  state.parts = { steer, frontWheel, rearWheel };
+  state.rest = {
+    steer: steer ? steer.quaternion.clone() : null,
+    frontWheel: frontWheel ? frontWheel.quaternion.clone() : null,
+    rearWheel: rearWheel ? rearWheel.quaternion.clone() : null,
+  };
+}
+
+function listNames(root) {
+  const names = [];
+  root.traverse(obj => { if (obj.name) names.push(obj.name); });
+  return names;
+}
+
+function updateReadout(size, names, error) {
+  const dl = document.querySelector('#numbers');
+  const row = (dt, dd, cls = '') => `<dt>${dt}</dt><dd class="${cls}">${dd}</dd>`;
+  if (error) {
+    dl.innerHTML = row('status', error, 'bad');
+    return;
+  }
+  const part = (label, obj) => row(label, obj ? obj.name : 'missing', obj ? 'ok' : 'bad');
+  dl.innerHTML = [
+    row('file', state.url.split('/').pop()),
+    row('size', `${size.x.toFixed(2)} × ${size.y.toFixed(2)} × ${size.z.toFixed(2)}`),
+    part('Lenker', state.parts.steer),
+    part('RadVorn', state.parts.frontWheel),
+    part('RadHinten', state.parts.rearWheel),
+    row('named nodes', names.slice(0, 12).join(', ') + (names.length > 12 ? '…' : '')),
+  ].join('');
+}
+
+async function loadModel(url, revoke) {
+  clearModel();
+  state.url = url;
+  try {
+    const gltf = await loader.loadAsync(url);
+    const imported = gltf.scene;
+    const root = new THREE.Group();
+    root.add(imported);
+    state.root = root;
+    state.imported = imported;
+    const size = groundAndFrame(imported);
+    scene.add(root);
+    imported.traverse(child => {
+      if (!child.isMesh || !child.material) return;
+      const mats = Array.isArray(child.material) ? child.material : [child.material];
+      for (const mat of mats) {
+        if (!mat) continue;
+        mat.side = THREE.DoubleSide;
+        mat.transparent = false;
+        mat.depthWrite = true;
+      }
+    });
+    bindParts(imported);
+    applyHighlights(document.querySelector('#parts').checked);
+    updateReadout(size, listNames(imported));
+    setView(document.querySelector('button[data-view].active')?.dataset.view || 'top');
+  } catch (error) {
+    console.error(error);
+    updateReadout(null, [], String(error.message || error));
+  } finally {
+    if (revoke) URL.revokeObjectURL(url);
+  }
+}
+
+const views = {
+  side: () => { camera.position.set(0.4, 4.5, 14); controls.target.set(0, 2.5, 0); },
+  front: () => { camera.position.set(14, 4, 0.4); controls.target.set(0, 2.5, 0); },
+  chase: () => { camera.position.set(-10, 7, 9); controls.target.set(1.5, 2.2, 0); },
+  top: () => { camera.position.set(0.2, 18, 0.2); controls.target.set(0, 0.5, 0); },
+};
+
+function setView(name) {
+  (views[name] || views.side)();
+  controls.update();
+  for (const button of document.querySelectorAll('button[data-view]')) {
+    button.classList.toggle('active', button.dataset.view === name);
+  }
+}
+
+function poseParts(time) {
+  const steerInput = document.querySelector('#waggle').checked
+    ? Math.sin(time * 0.002) * 0.85
+    : state.steer;
+  document.querySelector('#steer-val').textContent = steerInput.toFixed(2);
+  if (state.parts.steer && state.rest.steer) {
+    state.parts.steer.quaternion.copy(state.rest.steer)
+      .multiply(scratch.setFromAxisAngle(STEER_AXIS, steerInput * 0.42));
+  }
+  if (document.querySelector('#spin').checked) state.spin = time * 0.004;
+  for (const key of ['frontWheel', 'rearWheel']) {
+    const part = state.parts[key];
+    const rest = state.rest[key];
+    if (!part || !rest) continue;
+    part.quaternion.copy(rest)
+      .multiply(scratch.setFromAxisAngle(WHEEL_AXIS, state.spin));
+  }
+}
+
+function frame(time) {
+  poseParts(time);
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+}
+
+document.querySelector('#axes').addEventListener('change', e => { axes.visible = e.target.checked; });
+document.querySelector('#grid').addEventListener('change', e => { grid.visible = e.target.checked; });
+document.querySelector('#parts').addEventListener('change', e => applyHighlights(e.target.checked));
+document.querySelector('#steer').addEventListener('input', e => {
+  state.steer = Number(e.target.value);
+  document.querySelector('#waggle').checked = false;
+});
+document.querySelector('#width').addEventListener('input', e => {
+  state.widthScale = Number(e.target.value);
+  document.querySelector('#width-val').textContent = state.widthScale.toFixed(1);
+  applyChaseScales();
+  if (state.root) {
+    updateReadout(
+      new THREE.Box3().setFromObject(state.root).getSize(new THREE.Vector3()),
+      listNames(state.imported),
+    );
+  }
+});
+document.querySelector('#game').addEventListener('input', e => {
+  state.gameScale = Number(e.target.value);
+  document.querySelector('#game-val').textContent = state.gameScale.toFixed(1);
+  applyChaseScales();
+  if (state.root) {
+    updateReadout(
+      new THREE.Box3().setFromObject(state.root).getSize(new THREE.Vector3()),
+      listNames(state.imported),
+    );
+  }
+});
+for (const button of document.querySelectorAll('button[data-view]')) {
+  button.addEventListener('click', () => setView(button.dataset.view));
+}
+for (const button of document.querySelectorAll('button[data-model]')) {
+  button.addEventListener('click', () => {
+    const key = button.dataset.model;
+    for (const other of document.querySelectorAll('button[data-model]')) {
+      other.classList.toggle('active', other === button);
+    }
+    // Sketchfab reference: no chase width hack — judge the mesh as authored.
+    if (key === 'swapfiets') {
+      state.widthScale = 1;
+      document.querySelector('#width').value = '1';
+      document.querySelector('#width-val').textContent = '1.0';
+    } else {
+      state.widthScale = 1.35;
+      document.querySelector('#width').value = '1.35';
+      document.querySelector('#width-val').textContent = '1.35';
+    }
+    loadModel(MODELS[key]);
+  });
+}
+document.querySelector('#file').addEventListener('change', e => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+  for (const other of document.querySelectorAll('button[data-model]')) {
+    other.classList.remove('active');
+  }
+  loadModel(URL.createObjectURL(file), true);
+});
+
+const drop = document.querySelector('#drop');
+window.addEventListener('dragenter', e => { e.preventDefault(); drop.classList.add('on'); });
+window.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('on'); });
+window.addEventListener('dragleave', () => drop.classList.remove('on'));
+window.addEventListener('drop', e => {
+  e.preventDefault();
+  drop.classList.remove('on');
+  const file = [...e.dataTransfer.files].find(f => /\.(glb|gltf)$/i.test(f.name));
+  if (file) loadModel(URL.createObjectURL(file), true);
+});
+
+window.addEventListener('resize', resize);
+resize();
+setView('side');
+if (initialKey === 'swapfiets') {
+  state.widthScale = 1;
+  document.querySelector('#width').value = '1';
+  document.querySelector('#width-val').textContent = '1.0';
+  for (const button of document.querySelectorAll('button[data-model]')) {
+    button.classList.toggle('active', button.dataset.model === 'swapfiets');
+  }
+}
+loadModel(initialUrl);
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

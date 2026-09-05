@@ -401,7 +401,7 @@ export class GamePresentationRuntime {
     ctx.fillStyle = 'rgba(255,255,255,0.85)';
     ctx.font = '11px monospace';
     ctx.textAlign = 'center';
-    ctx.fillText(`Amsterdam: ${parts.join(' · ')} · ${exploration.totalRoutes} routes`,
+    ctx.fillText(`${this._cityDisplayName()}: ${parts.join(' · ')} · ${exploration.totalRoutes} routes`,
       cx, CANVAS_H / 2 + 138);
   }
 
@@ -605,7 +605,7 @@ export class GamePresentationRuntime {
       const textW = cardX + cardW - padX - textX;
       ctx.font = '12px system-ui, sans-serif';
       const blurb = wrapText(ctx, landmark.longDetail || landmark.detail
-        || 'A place to remember on your Amsterdam map.', textW, hasImage ? 4 : 3);
+        || `A place to remember on your ${this._cityDisplayName()} map.`, textW, hasImage ? 4 : 3);
       const height = Math.max(photo, 20 + blurb.length * 17) + 14;
       blocks.push({ height, draw: (top) => {
         if (hasImage && image) {
