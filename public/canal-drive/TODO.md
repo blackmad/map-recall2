@@ -63,10 +63,10 @@ automated screenshot diffs for those states (not just `build-storybook`).
 ## P3 — Bets worth a spike, on their own branch
 
 **17. Public transit mode.** Tram / metro / bus / ferry as its own routing and
-recall model, not a vehicle skin. *Large.* **GTFS-first** (OVapi → GVB slice);
-spike notes and staging extract: [`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on
-`spike/canal-transit`. `npm run test:transit-extract` pins tram 2↔Dam and
-metro 52↔Noord.
+recall model, not a vehicle skin. *Large.* **GTFS-first** (OVapi → GVB). Full
+implementation plan: [`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on
+`spike/canal-transit`. Extract + pins done (`test:transit-extract`); game
+wiring starts at Phase B in that doc.
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.
