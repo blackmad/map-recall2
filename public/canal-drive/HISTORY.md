@@ -6,6 +6,27 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Pedestrian bicycle=no is playable, flagged restricted — 2026-09-05
+
+Kalverstraat (and similar shopping streets) are `highway=pedestrian` +
+`bicycle=no` in OSM. The bike graph used to exclude them on purpose. Street
+mode now keeps those corridors **playable** and stores `bicycleRestricted`
+(+ OSM `bicycle` value) on the routing way / road segment. The left plaque
+shows a rivet-accent line (“No cycling in real life” / “Walk bikes…”) while
+you are on one — never the street name, so it cannot answer a quiz. Sidewalk
+`footway`s still need an explicit bicycle tag. Named check: Kalverstraat must
+be in `streets-routing` with the restriction flag.
+
+## Canal-belt streets survive the quiz extract — 2026-09-05
+
+`streets.json` was capped at 300 and scored mostly on OSM wiki tags + length,
+so Coen Tunnel outranked Leidsestraat / Damrak. Two fixes: streets cap → 500
+in the builder; `amsterdam-curation.json` scoreBoosts for canal-belt and tram
+corridor names. Published extract patched now via
+`ensure:amsterdam-teaching-streets` (pull geometry from `streets-routing`,
+42 names added → 342 streets). Tram-2 corridor hits within 80 m: 12 → 25.
+Kalverstraat still missing — not in bike routing (pedestrian-only OSM).
+
 ## Tram lock + along-route teaching — 2026-09-05
 
 Phase C playtest: the line vanished from the plaque as soon as a stop question

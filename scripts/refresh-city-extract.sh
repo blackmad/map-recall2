@@ -142,6 +142,12 @@ osmium export "$work_dir/place-boundaries.osm.pbf" -o "$work_dir/place-boundarie
 
 node --import tsx scripts/build-amsterdam-extract.ts "$work_dir/features.geojson" "$work_dir/boundaries.geojson" \
   "$work_dir/place-boundaries.geojson" "$build_dir" "$city_id" "$city_name" "$city_center"
+# Amsterdam: force-include canal-belt / tram-corridor teaching streets even if
+# a future scoring tweak drops them again. No-op for other cities (no boosts).
+if [[ "$city_id" == "amsterdam" ]]; then
+  # ensure reads/writes under public/… by default; point it at the staging dir.
+  EXTRACT_DIR="$build_dir" node --import tsx scripts/ensure-amsterdam-teaching-streets.ts
+fi
 node --import tsx scripts/build-osm-building-appearance.ts "$work_dir/building-appearance.geojson" "$build_dir/buildings-colored.geojson"
 node --import tsx scripts/build-basemap-hide-ids.ts "$build_dir/buildings-colored.geojson" "$build_dir/basemap-hide-ids.json"
 node --import tsx scripts/build-osm-buildings.ts "$work_dir/buildings-osm.geojson" "$build_dir/buildings-osm.geojson"

@@ -229,7 +229,7 @@ class HUD {
   drawPlaque(ctx, {
     routeName = '', neighborhood = '', answerHidden = false,
     correct = 0, attempts = 0, points = 0, streak = 0, gamey = true,
-    trip = '', feedback = '',
+    trip = '', feedback = '', restrictionNote = '',
   } = {}) {
     const surface = window.CanalRecallUi.hudSurface;
     const anchor = this._rect('recall', { x: 15, y: 15, width: 310, height: 43 });
@@ -238,7 +238,8 @@ class HUD {
     const pad = 12;
     const nameSize = compact ? 19 : 21;
     const lineH = compact ? 15 : 16;
-    const wanted = pad + nameSize + 4 + lineH + lineH + (feedback ? lineH : 0) + pad - 2;
+    const extraLines = (feedback ? 1 : 0) + (restrictionNote ? 1 : 0);
+    const wanted = pad + nameSize + 4 + lineH + lineH + (extraLines * lineH) + pad - 2;
     const available = slot ? (slot.y + slot.height - anchor.y) : wanted;
     const rect = { x: anchor.x, y: anchor.y, width: anchor.width, height: Math.min(wanted, available) };
     this.paperCard(ctx, rect);
@@ -289,6 +290,14 @@ class HUD {
       ctx.font = this._font(700, 11, surface.fontMono);
       ctx.fillText(`${streak} streak · ${mult}×`, right, y);
       ctx.textAlign = 'left';
+    }
+
+    // Real-world bike ban on a still-playable corridor — never names the street.
+    if (restrictionNote) {
+      y += lineH;
+      ctx.font = this._font(600, 11, surface.fontUi);
+      ctx.fillStyle = surface.accent;
+      ctx.fillText(this._fit(ctx, restrictionNote, inner), left, y);
     }
 
     if (feedback) {

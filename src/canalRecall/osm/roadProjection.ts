@@ -19,6 +19,7 @@
  */
 
 import { hasSeparatedCycleTrack } from '../routing/cycleTrack.ts';
+import { isBicycleRestricted } from '../routing/bikeAccess.ts';
 
 /** A point in world (pixel) space. */
 export interface WorldPoint { x: number; y: number }
@@ -42,6 +43,13 @@ export interface RoadSegment {
   name: string;
   /** True when OSM tags a physically separated cycle track on this way. */
   separatedCycleTrack?: boolean;
+  /**
+   * True when OSM forbids cycling here (`bicycle=no` / dismount / …) but the
+   * game still lets you ride the corridor for teaching.
+   */
+  bicycleRestricted?: boolean;
+  /** OSM `bicycle=*` when restricted (no / dismount / private / …). */
+  bicycle?: string;
 }
 
 /** World units per metre. One unit is 1/3 m. */
@@ -200,6 +208,10 @@ export function buildRoadSegments(
       oneway: way.tags.oneway === 'yes',
       name: way.tags.name || '',
       separatedCycleTrack: hasSeparatedCycleTrack(way.tags),
+      bicycleRestricted: way.tags.bicycleRestricted === 'yes' || isBicycleRestricted(way.tags),
+      bicycle: isBicycleRestricted(way.tags) || way.tags.bicycleRestricted === 'yes'
+        ? (way.tags.bicycle || 'no')
+        : undefined,
     });
   }
 

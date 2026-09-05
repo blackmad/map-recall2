@@ -225,6 +225,19 @@
     return labelsWanted && !input.quizOpen && !input.promptVisible;
   }
 
+  // src/canalRecall/routing/bikeAccess.ts
+  var BICYCLE_DENIED = /* @__PURE__ */ new Set(["no", "dismount", "private", "customers"]);
+  function isBicycleRestricted(tags) {
+    return BICYCLE_DENIED.has(tags.bicycle || "") || tags.bicycleRestricted === "yes";
+  }
+  function bicycleRestrictionNotice(tags) {
+    if (!isBicycleRestricted(tags)) return null;
+    const bicycle = tags.bicycle || "";
+    if (bicycle === "dismount") return "Walk bikes in real life";
+    if (bicycle === "private" || bicycle === "customers") return "Private \u2014 no public cycling";
+    return "No cycling in real life";
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
   var INK = "#ffffff";
   var MUTED = "rgba(255,255,255,0.72)";
@@ -331,6 +344,17 @@
         routeAnswerHidden = !!this.quizPromptName || !!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName;
         visibleRouteName = routeAnswerHidden ? "" : roadName || "";
       }
+      let restrictionNote = "";
+      if (isCar(this.travelMode) && this.player) {
+        const road = this.track.getNearestRoad(player.x, player.y, player.angle);
+        const segment = road && this.track.segments?.[road.segIdx];
+        if (segment?.bicycleRestricted) {
+          restrictionNote = bicycleRestrictionNotice({
+            bicycleRestricted: "yes",
+            bicycle: segment.bicycle || "no"
+          }) || "No cycling in real life";
+        }
+      }
       this.hud.drawPlaque(ctx, {
         routeName: visibleRouteName,
         neighborhood: this.currentNeighborhood,
@@ -341,7 +365,8 @@
         streak: this.quizStreak,
         gamey: this.gameyFeatures,
         trip: this.hud.tripText(player.speed, this._playerDistancePx()),
-        feedback: this.quizFeedback
+        feedback: this.quizFeedback,
+        restrictionNote
       });
       const finishAngle = this.routeOptions.arrow ? this.hud.finishDirection(
         player.x,

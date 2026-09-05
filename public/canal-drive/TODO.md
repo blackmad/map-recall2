@@ -69,9 +69,10 @@ shipped on this branch:** extract + `TravelMode=transit` + tram 2 thin slice
 (stop/line quizzes, sticky line plaque, dest-scoped intermediate stops,
 corridor street quizzes from curated `streets.json`, near-route landmarks,
 `check:transit`). Still open: Phase D (all GVB lines), Phase E (transfers),
-bus, GTFS-RT, dedicated mesh. Central canal-belt streets are thin in the
-prominence-capped streets extract — southern tram-2 corridor streets fire
-today; thicken the overlay when Phase D lands.
+bus, GTFS-RT, dedicated mesh. Canal-belt teaching streets are force-included
+via `amsterdam-curation` boosts + `ensure:amsterdam-teaching-streets` (cap
+raised to 500 on next full rebuild). Pedestrian `bicycle=no` corridors
+(Kalverstraat) are playable with `bicycleRestricted` saved on the way.
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.
