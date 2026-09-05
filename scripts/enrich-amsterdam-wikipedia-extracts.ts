@@ -32,6 +32,8 @@ import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
 import { ENCYCLOPEDIA_PARTITION_FILES } from './lib/encyclopedia-extract-files.ts';
+import { cityById } from '../src/canalRecall/game/cities.ts';
+import { isDisambiguationExtract } from '../src/canalRecall/game/encyclopediaDisambiguation.ts';
 import { resolveStreetWikipedia } from '../src/canalRecall/game/streetWikipedia.ts';
 
 interface Feature {
@@ -59,6 +61,8 @@ interface PageDetail {
 
 const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
 const directory = path.resolve(directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
+const cityId = path.basename(directory);
+const cityName = cityById(cityId).name;
 const filesArgument = process.argv.find((argument) => argument.startsWith('--files='));
 const defaultFiles = [...ENCYCLOPEDIA_PARTITION_FILES];
 const files = filesArgument
@@ -100,9 +104,10 @@ async function fetchPages(language: string, titles: string[], withLangLinks: boo
     const url = new URL(`https://${language}.wikipedia.org/w/api.php`);
     url.search = new URLSearchParams({
       action: 'query', format: 'json', redirects: '1', titles: batch.join('|'),
-      prop: withLangLinks ? 'extracts|info|langlinks|pageimages' : 'extracts|info|pageimages', inprop: 'url',
+      prop: withLangLinks ? 'extracts|info|langlinks|pageimages|pageprops' : 'extracts|info|pageimages|pageprops', inprop: 'url',
       exintro: '1', explaintext: '1', exchars: String(EXTRACT_CHARS), exlimit: '20',
       piprop: 'thumbnail', pithumbsize: '640',
+      ppprop: 'disambiguation',
       ...(withLangLinks ? { lllang: 'en' } : {}),
     }).toString();
     const data = await fetchJson(url);
@@ -114,9 +119,16 @@ async function fetchPages(language: string, titles: string[], withLangLinks: boo
       aliases.set(item.from, item.to);
     }
     const pages = Object.values(data.query?.pages || {}) as {
-      title: string; extract?: string; fullurl?: string; thumbnail?: { source?: string }; langlinks?: { lang: string; '*': string }[];
+      title: string;
+      extract?: string;
+      fullurl?: string;
+      thumbnail?: { source?: string };
+      langlinks?: { lang: string; '*': string }[];
+      pageprops?: { disambiguation?: string };
     }[];
     for (const page of pages) {
+      if (page.pageprops && 'disambiguation' in page.pageprops) continue;
+      if (isDisambiguationExtract(page.extract)) continue;
       const detail: PageDetail = {
         extract: page.extract,
         url: page.fullurl,
@@ -157,8 +169,9 @@ for (const file of ['streets.json', 'water.json']) {
   for (const feature of partitions.get(file)!) {
     if (!pendingSet.has(feature)) continue;
     if (feature.wikipedia || feature.wikidata) continue;
-    const resolved = await resolveStreetWikipedia(feature.name, titleFetch);
+    const resolved = await resolveStreetWikipedia(feature.name, titleFetch, cityName);
     if (!resolved?.wikipediaExtract && !resolved?.wikipediaUrl) continue;
+    if (isDisambiguationExtract(resolved.wikipediaExtract)) continue;
     if (resolved.wikipedia) feature.wikipedia = resolved.wikipedia;
     if (resolved.wikidata) feature.wikidata = resolved.wikidata;
     if (resolved.wikipediaUrl) feature.wikipediaUrl = resolved.wikipediaUrl;
@@ -289,20 +302,30 @@ for (const [file, partition] of partitions) {
     const english = englishTitleFor(feature);
     const englishExtract = english ? englishDetails.get(`en:${english.title}`) : undefined;
     const foreign = feature.wikipedia ? foreignDetails.get(feature.wikipedia) : undefined;
-    if (english && englishExtract?.extract) {
+    if (english && englishExtract?.extract && !isDisambiguationExtract(englishExtract.extract)) {
       feature.wikipediaSourceText = englishExtract.extract;
       feature.wikipediaExtract = englishExtract.extract.slice(0, DISPLAY_EXTRACT_CHARS);
       // Existing entries all point at en.wikipedia when the blurb is English.
       if (englishExtract.url) feature.wikipediaUrl = englishExtract.url;
       delete feature.wikipediaExtractLang;
       viaCounts.set(english.via, (viaCounts.get(english.via) || 0) + 1);
-    } else if (foreign?.extract && feature.wikipedia) {
+    } else if (foreign?.extract && feature.wikipedia && !isDisambiguationExtract(foreign.extract)) {
       const { language } = splitPage(feature.wikipedia);
       feature.wikipediaSourceText = foreign.extract;
       feature.wikipediaExtract = foreign.extract.slice(0, DISPLAY_EXTRACT_CHARS);
       feature.wikipediaExtractLang = language;
       if (!feature.wikipediaUrl && foreign.url) feature.wikipediaUrl = foreign.url;
       fallbackCounts.set(language, (fallbackCounts.get(language) || 0) + 1);
+    } else if (
+      (englishExtract?.extract && isDisambiguationExtract(englishExtract.extract))
+      || (foreign?.extract && isDisambiguationExtract(foreign.extract))
+    ) {
+      // OSM/Wikidata pointed at a list page. Forget the join so title discovery
+      // can try `Name (City)` on a later pass instead of republishing the list.
+      delete feature.wikipedia;
+      delete feature.wikipediaUrl;
+      unresolved.push(`${feature.name} [${file}] — linked article is a disambiguation page`);
+      continue;
     } else if (feature.wikidata) {
       needsDescription.push(feature);
       continue;

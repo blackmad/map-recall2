@@ -153,6 +153,7 @@ node --import tsx scripts/enrich-amsterdam-wikipedia-extracts.ts "--directory=$b
 node --import tsx scripts/build-street-knowledge.ts "$build_dir"
 node --import tsx scripts/translate-extracts-to-english.ts "--directory=$build_dir"
 node --import tsx scripts/check-extract-english.ts "$build_dir"
+node --import tsx scripts/check-encyclopedia-disambiguation.ts "$build_dir"
 node --import tsx scripts/enrich-city-profile.ts "--directory=$build_dir" "--name=$city_name"
 node --import tsx scripts/enrich-brand-identifiers.ts "--directory=$build_dir"
 node --import tsx scripts/apply-wikimedia-image-overrides.ts "$build_dir"

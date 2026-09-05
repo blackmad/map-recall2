@@ -90,7 +90,20 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
     geocodeViewbox: viewboxAround({ lat: 52.0907374, lng: 5.1214201 }),
     provinceCaption: 'Utrecht',
     playable: true,
-    curatedPois: [],
+    // Historic-core anchors — prominence ranking alone prefers universities
+    // and Science Park over Dom / Oudegracht destinations.
+    curatedPois: [
+      { id: 'dom-tower', name: 'Dom tower', lat: 52.090764, lng: 5.121398 },
+      { id: 'centraal-museum', name: 'Centraal Museum', lat: 52.083445, lng: 5.126395 },
+      { id: 'museum-speelklok', name: 'Museum Speelklok', lat: 52.0907282, lng: 5.1194134 },
+      { id: 'buurkerk', name: 'Buurkerk', lat: 52.090738, lng: 5.119781 },
+      { id: 'jacobikerk', name: 'Jacobikerk', lat: 52.094895, lng: 5.115757 },
+      { id: 'catharijneconvent', name: 'Museum Catharijneconvent', lat: 52.087646, lng: 5.124579 },
+      { id: 'academiegebouw', name: 'Academiegebouw', lat: 52.0902439, lng: 5.1223339 },
+      { id: 'inktpot', name: 'De Inktpot', lat: 52.087099, lng: 5.115846 },
+      { id: 'pieterskerk', name: 'Pieterskerk', lat: 52.091397, lng: 5.124743 },
+      { id: 'rietveld', name: 'Rietveld-Schröderhuis', lat: 52.085297, lng: 5.147607 },
+    ],
   },
   rotterdam: {
     id: 'rotterdam',
@@ -102,7 +115,14 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
     geocodeViewbox: viewboxAround({ lat: 51.9225, lng: 4.47917 }, 0.22),
     provinceCaption: 'Zuid-Holland',
     playable: true,
-    curatedPois: [],
+    curatedPois: [
+      { id: 'euromast', name: 'Euromast', lat: 51.905356, lng: 4.466785 },
+      { id: 'laurenskerk', name: 'Grote of Sint-Laurenskerk', lat: 51.921706, lng: 4.486122 },
+      { id: 'doelen', name: 'de Doelen', lat: 51.9220495, lng: 4.4726898 },
+      { id: 'bibliotheek', name: 'Centrale Bibliotheek', lat: 51.9223535, lng: 4.4871283 },
+      { id: 'depot-boijmans', name: 'Depot Boijmans Van Beuningen', lat: 51.9139529, lng: 4.471132 },
+      { id: 'zoo', name: 'Rotterdam Zoo', lat: 51.924954, lng: 4.450176 },
+    ],
   },
   'den-haag': {
     id: 'den-haag',
@@ -114,7 +134,13 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
     geocodeViewbox: viewboxAround({ lat: 52.0705, lng: 4.3007 }),
     provinceCaption: 'Zuid-Holland',
     playable: true,
-    curatedPois: [],
+    curatedPois: [
+      { id: 'binnenhof', name: 'Binnenhof', lat: 52.079334, lng: 4.312407 },
+      { id: 'huis-ten-bosch', name: 'Huis ten Bosch', lat: 52.093169, lng: 4.343465 },
+      { id: 'amare', name: 'Amare', lat: 52.078015, lng: 4.318695 },
+      { id: 'catshuis', name: 'Catshuis', lat: 52.090293, lng: 4.284739 },
+      { id: 'kb', name: 'KB, nationale bibliotheek', lat: 52.0815311, lng: 4.3275274 },
+    ],
   },
 };
 

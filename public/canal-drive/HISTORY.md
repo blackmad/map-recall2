@@ -6,6 +6,17 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Disambiguation pages never become cards; curated POIs for every Randstad city
+
+Title discovery was accepting Wikipedia list pages (`Nieuwegracht can refer
+to…`, `Vecht may refer to…`) and publishing them as place encyclopedia — silence
+is better than that. `isDisambiguationExtract` rejects them in enrich and title
+discovery, `scrub:disambiguation` cleared 86 published offenders across the four
+cities, and `check:encyclopedia-disambiguation` is a publish gate. Title lookup
+now passes the city's own name (`Nieuwegracht (Utrecht)` before the bare title).
+Surprise routes for Utrecht, Rotterdam and Den Haag get curated landmark
+anchors so prominence no longer sends every trip to a university campus.
+
 ## Utrecht full refresh published (2026-09-05)
 
 `npm run refresh:utrecht` finally ran end-to-end against the cached BBBike PBF.

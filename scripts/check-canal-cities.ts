@@ -23,6 +23,7 @@ for (const id of CANAL_CITY_IDS) {
   assert.ok(Number.isFinite(CANAL_CITIES[id].center.lat));
   assert.ok(Number.isFinite(CANAL_CITIES[id].center.lng));
   assert.equal(CANAL_CITIES[id].geocodeViewbox.length, 4);
+  assert.ok(CANAL_CITIES[id].curatedPois.length >= 5, `${id} needs curated route anchors`);
 }
 
 console.log('canal cities: checks passed');
