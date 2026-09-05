@@ -259,6 +259,10 @@ Pick **tram 2** (pinned, central, Dam).
 - [x] Mastery keys for stop + line; `clearKnowledge` / clear-all still wipe them
 - [x] Finish card nouns: stops / lines
 - [x] Named checks: “tram 2 corridor reachable end-to-end”, “Dam stop triggers”
+- [x] Sticky line plaque after answer; stronger corridor lock
+- [x] Destination-scoped intermediate stop quizzes
+- [x] Corridor street quizzes (read-only `streets.json` index)
+- [x] Near-route landmarks without snap-onto-rails
 - [ ] Playwright or driving harness pin if cheap; else typed proximity tests
 
 **Exit:** a player can complete a tram 2 surprise hop answering stops (and

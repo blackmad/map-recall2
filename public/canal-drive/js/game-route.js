@@ -581,11 +581,22 @@ class GameRouteRuntime {
     this.learnedStopNames = new Set();
     this._lastTransitStopQuizAt = -Infinity;
     this._lastTransitLineQuizAt = -Infinity;
+    this._lastTransitStreetQuizAt = -Infinity;
     this._quizzedTransitStops = new Set();
+    this._quizzedTransitStreets = new Set();
+    this._activeTransitLine = '';
+    this.quizPromptSubject = '';
 
     // Canal Recall intentionally starts with a quiet network: the experiment
-    // is navigation and name recall, not traffic avoidance.
-    this.quizCurrentName = this.track.getRoadName(startX, startY, this.player.angle);
+    // is navigation and name recall, not traffic avoidance. Transit must not
+    // pre-reveal the line on the plaque — ask it after settle instead.
+    if (this.travelMode === 'transit') {
+      this.quizCurrentName = '';
+      this.quizFeedback = '';
+    } else {
+      this.quizCurrentName = this.track.getRoadName(startX, startY, this.player.angle);
+      this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';
+    }
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
     this.quizPromptName = '';
@@ -596,7 +607,6 @@ class GameRouteRuntime {
     this.quizPoints = 0;
     this.quizStreak = 0;
     this.quizBestStreak = 0;
-    this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';
     this.quizPromptKind = 'route';
     this._quizzedCrossings = new Map();
     this._learnedBridges = new Map();

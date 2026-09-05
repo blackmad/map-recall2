@@ -3,7 +3,7 @@
  * (or is body-only for look reference). Paths are relative to `public/canal-drive/`.
  */
 
-export const BIKE_SKIN_IDS = ['omafiets', 'pink', 'mama', 'swapfiets'] as const;
+export const BIKE_SKIN_IDS = ['omafiets', 'pink', 'swapfiets'] as const;
 export type BikeSkinId = (typeof BIKE_SKIN_IDS)[number];
 
 export const DEFAULT_BIKE_SKIN: BikeSkinId = 'omafiets';
@@ -41,23 +41,14 @@ export const BIKE_SKINS: Record<BikeSkinId, BikeSkin> = {
     babySeat: false,
     credit: 'Kin Chen / BlenderKit (CC0)',
   },
-  mama: {
-    id: 'mama',
-    label: 'Mama-chari',
-    file: 'mama-chari-runtime.glb',
-    widthScale: 1.65,
-    motion: true,
-    babySeat: true,
-    credit: 'pokoponmaru / Sketchfab (CC BY 4.0)',
-  },
   swapfiets: {
     id: 'swapfiets',
     label: 'Swapfiets',
-    file: 'swapfiets-sketchfab-preview.glb',
-    widthScale: 1,
-    motion: false,
+    file: 'swapfiets-runtime.glb',
+    widthScale: 1.3,
+    motion: true,
     babySeat: false,
-    credit: 'PatrickGoud / Sketchfab (CC BY 4.0) — look only',
+    credit: 'Authored for Canal Recall (Swapfiets-alike)',
   },
 };
 

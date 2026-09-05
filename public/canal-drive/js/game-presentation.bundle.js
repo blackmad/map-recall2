@@ -313,8 +313,24 @@
       this._syncHudLayout();
       const teaching = this._teachingGate();
       const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
-      const routeAnswerHidden = !!this.quizPromptName || !!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName;
-      const visibleRouteName = routeAnswerHidden ? "" : this.track.getRoadName(player.x, player.y, player.angle);
+      const roadName = this.track.getRoadName(player.x, player.y, player.angle);
+      let visibleRouteName = "";
+      let routeAnswerHidden = false;
+      if (isTransit(this.travelMode) && window.CanalRecallTransit?.transitPlaqueRouteName) {
+        const plaque = window.CanalRecallTransit.transitPlaqueRouteName({
+          activeLine: this._activeTransitLine || "",
+          roadName: roadName || "",
+          quizPromptName: this.quizPromptName || "",
+          quizPromptSubject: this.quizPromptSubject || "",
+          quizCandidateName: this.quizCandidateName || "",
+          quizCurrentName: this.quizCurrentName || ""
+        });
+        visibleRouteName = plaque.routeName;
+        routeAnswerHidden = plaque.answerHidden;
+      } else {
+        routeAnswerHidden = !!this.quizPromptName || !!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName;
+        visibleRouteName = routeAnswerHidden ? "" : roadName || "";
+      }
       this.hud.drawPlaque(ctx, {
         routeName: visibleRouteName,
         neighborhood: this.currentNeighborhood,

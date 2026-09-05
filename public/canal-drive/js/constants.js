@@ -213,11 +213,11 @@ const ROAD_WIDTHS = {
   pedestrian: 26,
   footway: 18,
   path: 20,
-  // Transit corridors (GTFS shapes) — slightly wider than a cycleway so the
-  // road guard has a forgiving envelope along tram/metro alignments.
-  tram: 26,
-  metro: 28,
-  ferry: 30,
+  // Transit corridors (GTFS shapes) — wider than a cycleway so the road guard
+  // keeps the vehicle locked to noisy GTFS alignments.
+  tram: 38,
+  metro: 40,
+  ferry: 34,
 };
 const DEFAULT_ROAD_WIDTH = 32;
 

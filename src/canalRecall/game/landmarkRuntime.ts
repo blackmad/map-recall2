@@ -45,6 +45,12 @@ import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge } from './routeKnowledge';
 import { canShowMiniMap, canShowTeachingCard } from './teachingSurface';
+import { isTransit } from './modes';
+import {
+  buildCorridorStreetIndex,
+  distanceToPath,
+  type CorridorStreetFeature,
+} from '../transit/corridorStreets';
 
 /** Seconds a clicked card stays up. A drive-by card is held by proximity
  *  instead — see `landmarkNotice.ts`. */
@@ -292,8 +298,20 @@ export class GameLandmarkRuntime {
       this.vectorMap.setPlaces(features, boundaries);
       this.vectorMap.setBrandedPois(brandedPois);
 
-      this.landmarks = buildLandmarks(features, (lat, lng) =>
-        this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false));
+      const metersPerDegreeLat = 111320;
+      const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
+      const toWorld = ([lat, lng]: LatLng): WorldPoint => ({
+        x: (lng - centerLng) * metersPerDegreeLng * PIXELS_PER_METER + this.osmLoader._lastOffsetX,
+        y: -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this.osmLoader._lastOffsetY,
+      });
+      // Transit corridors must not snap landmarks onto the rails — that pulled
+      // off-corridor museums onto the tram shape. Boat/bike still snap so a
+      // landmark standing beside a named way lands on the mapped network.
+      this.landmarks = buildLandmarks(features, (lat, lng) => (
+        isTransit(this.travelMode)
+          ? toWorld([lat, lng])
+          : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false)
+      ));
 
       // Photos are fetched as the player approaches, not up front. Preloading
       // the 50 most prominent landmarks in the city meant 229 landmarks had a
@@ -303,15 +321,25 @@ export class GameLandmarkRuntime {
       this._landmarkImages = new Map();
       this._landmarkImageRequests = new Set();
 
-      const metersPerDegreeLat = 111320;
-      const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
-      const toWorld = ([lat, lng]: LatLng): WorldPoint => ({
-        x: (lng - centerLng) * metersPerDegreeLng * PIXELS_PER_METER + this.osmLoader._lastOffsetX,
-        y: -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this.osmLoader._lastOffsetY,
-      });
-
       this.neighborhoods = buildNeighborhoods(boundaries, neighborhoodEnriched, toWorld);
       this.bridges = buildBridges(bridgeFeatures, crossingIndex, toWorld);
+
+      // Read-only street centrelines for transit corridor quizzes — never
+      // driveable, only nearest-name lookup along the rails.
+      if (isTransit(this.travelMode)) {
+        const corridorStreets: CorridorStreetFeature[] = streetFeatures.map((street) => ({
+          name: street.name,
+          paths: (street.paths || (street.path ? [street.path] : []))
+            .map((path) => path.map(([lat, lng]) => [lat, lng] as [number, number])),
+          distractors: street.distractors,
+        }));
+        this._corridorStreetIndex = buildCorridorStreetIndex(
+          corridorStreets,
+          (lat, lng) => toWorld([lat, lng]),
+        );
+      } else {
+        this._corridorStreetIndex = null;
+      }
 
       // Postcard images load on demand — see _warmRouteNeighborhoodImages.
       // Preloading the whole city cost ~26 fetches per route for postcards
@@ -322,6 +350,7 @@ export class GameLandmarkRuntime {
     } catch (error) {
       console.warn('Landmark notes unavailable:', error);
       this.landmarks = [];
+      this._corridorStreetIndex = null;
     }
   }
 
@@ -367,6 +396,10 @@ export class GameLandmarkRuntime {
 
     let nearest: Landmark | null = null;
     let nearestDistance = DRIVE_BY_RADIUS;
+    const routePath = this.routePath;
+    const landmarkRouteRadiusPx = isTransit(this.travelMode)
+      ? (window.CanalRecallTransit?.TRANSIT_LANDMARK_ROUTE_RADIUS_M ?? 120) * PIXELS_PER_METER
+      : Infinity;
     for (const landmark of this.landmarks) {
       const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
       if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
@@ -374,6 +407,9 @@ export class GameLandmarkRuntime {
       // A card with nothing but a name interrupts the driving corridor to teach
       // nothing. Clicking such a building still answers; driving past it does not.
       if (!isWorthACard(landmark)) continue;
+      if (isTransit(this.travelMode) && routePath && routePath.length >= 2) {
+        if (distanceToPath(routePath, landmark.x, landmark.y) > landmarkRouteRadiusPx) continue;
+      }
       if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
     }
     if (this._landmarkNotice) return;

@@ -23,7 +23,7 @@ from mathutils import Matrix, Vector
 WHEEL_R = 0.355
 TIRE_T = 0.042
 HUB_R = 0.048
-AXLE_HALF = 0.095
+AXLE_HALF = 0.12
 TUBE_R = 0.042
 DROPOUT_R = 0.024
 
@@ -35,12 +35,13 @@ RIM = (0.82, 0.82, 0.84, 1.0)
 SEAT = (0.05, 0.05, 0.05, 1.0)
 CHROME = (0.7, 0.72, 0.75, 1.0)
 
+# Slightly longer wheelbase so the step-through U can clear the front tyre.
 REAR_HUB = Vector((-0.58, 0.0, WHEEL_R))
-FRONT_HUB = Vector((0.64, 0.0, WHEEL_R))
+FRONT_HUB = Vector((0.70, 0.0, WHEEL_R))
 BB = Vector((0.04, 0.0, WHEEL_R * 0.50))
 SEAT_J = Vector((-0.22, 0.0, 0.82))
-HEAD = Vector((0.46, 0.0, 0.86))
-BARS = Vector((0.40, 0.0, 1.12))
+HEAD = Vector((0.48, 0.0, 0.86))
+BARS = Vector((0.42, 0.0, 1.12))
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -164,6 +165,88 @@ def join(name: str, objects: list[bpy.types.Object], material: bpy.types.Materia
   return paint(obj, material)
 
 
+def catmull_rom(points: list[Vector], samples_per_span: int = 6) -> list[Vector]:
+  """Resample a control polyline into a smoother open Catmull-Rom curve."""
+  if len(points) < 2:
+    return list(points)
+  if len(points) == 2:
+    return [points[0].copy(), points[1].copy()]
+  # Pad ends so the curve passes through the first/last controls.
+  padded = [points[0] + (points[0] - points[1]), *points, points[-1] + (points[-1] - points[-2])]
+  out: list[Vector] = []
+  for i in range(1, len(padded) - 2):
+    p0, p1, p2, p3 = padded[i - 1], padded[i], padded[i + 1], padded[i + 2]
+    steps = samples_per_span if i < len(padded) - 3 else samples_per_span + 1
+    for step in range(steps):
+      t = step / samples_per_span
+      t2 = t * t
+      t3 = t2 * t
+      out.append(
+        0.5
+        * (
+          (2.0 * p1)
+          + (-p0 + p2) * t
+          + (2.0 * p0 - 5.0 * p1 + 4.0 * p2 - p3) * t2
+          + (-p0 + 3.0 * p1 - 3.0 * p2 + p3) * t3
+        )
+      )
+  return out
+
+
+def tube_along(
+  points: list[Vector],
+  radius: float,
+  material: bpy.types.Material,
+  segments: int = 10,
+) -> list[bpy.types.Object]:
+  """One bevelled Bézier curve mesh (smooth continuous tube through controls)."""
+  del segments  # kept for call-site compatibility; bevel_resolution sets smoothness
+  if len(points) < 2:
+    return []
+  curve_data = bpy.data.curves.new('TubePath', type='CURVE')
+  curve_data.dimensions = '3D'
+  curve_data.resolution_u = 24
+  curve_data.fill_mode = 'FULL'
+  curve_data.bevel_depth = radius
+  curve_data.bevel_resolution = 5
+  spline = curve_data.splines.new('BEZIER')
+  spline.bezier_points.add(len(points) - 1)
+  for i, point in enumerate(points):
+    bp = spline.bezier_points[i]
+    bp.co = point
+    bp.handle_left_type = 'AUTO'
+    bp.handle_right_type = 'AUTO'
+  obj = bpy.data.objects.new('Tube', curve_data)
+  bpy.context.collection.objects.link(obj)
+  bpy.ops.object.select_all(action='DESELECT')
+  bpy.context.view_layer.objects.active = obj
+  obj.select_set(True)
+  bpy.ops.object.convert(target='MESH')
+  mesh_obj = bpy.context.view_layer.objects.active
+  bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+  # Soft shade so chase/preview doesn't reintroduce fake cylinder kinks.
+  bpy.ops.object.shade_smooth()
+  return [paint(mesh_obj, material)]
+
+
+def ellipsoid(
+  center: Vector,
+  radii: Vector,
+  material: bpy.types.Material,
+  segments: int = 16,
+) -> bpy.types.Object:
+  bpy.ops.mesh.primitive_uv_sphere_add(
+    segments=segments,
+    ring_count=max(8, segments // 2),
+    radius=1.0,
+    location=center,
+  )
+  obj = bpy.context.view_layer.objects.active
+  obj.scale = radii
+  bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+  return paint(obj, material)
+
+
 def arc_tubes(
   center: Vector,
   radius: float,
@@ -182,6 +265,25 @@ def arc_tubes(
     p1 = center + Vector((math.cos(t1) * radius, 0.0, math.sin(t1) * radius))
     parts.append(paint(cylinder(p0, p1, tube_r, 8), material))
   return parts
+
+
+def stay_clear_of_wheel(
+  hub: Vector,
+  dropout: Vector,
+  seat: Vector,
+  tube_r: float,
+) -> list[Vector]:
+  """Route a seat stay outside the rear tyre instead of chord-cutting through it."""
+  mid = (dropout + seat) * 0.5
+  radial = Vector((mid.x - hub.x, 0.0, mid.z - hub.z))
+  if radial.length < 1e-6:
+    radial = Vector((0.0, 0.0, 1.0))
+  else:
+    radial.normalize()
+  clear = WHEEL_R + TIRE_T + tube_r + 0.035
+  waypoint = hub + radial * clear
+  waypoint.y = dropout.y * 1.08
+  return [dropout, waypoint, seat]
 
 
 def build_wheel(hub: Vector, tire_mat, rim_mat, prefix: str) -> tuple[bpy.types.Object, bpy.types.Object]:
@@ -232,27 +334,34 @@ def build_bike() -> bpy.types.Object:
   bb_l, bb_r = BB + Vector((0, -0.035, 0)), BB + Vector((0, 0.035, 0))
   front_l, front_r = side(FRONT_HUB, -1), side(FRONT_HUB, 1)
 
-  # Deep open U — classic oma step-through (clear leg gap).
-  u = [
+  # Deep open U — classic oma step-through. Sparse Bézier controls → one
+  # continuous bevelled tube (not a chain of kinked cylinders). Tube *axes*
+  # must clear the front tyre by ~WHEEL_R + tire + tube (+ margin).
+  u_ctrl = [
     SEAT_J + Vector((0.05, 0.0, -0.52)),
-    Vector((-0.06, 0.0, 0.30)),
-    Vector((0.10, 0.0, 0.24)),
-    Vector((0.26, 0.0, 0.26)),
-    Vector((0.38, 0.0, 0.36)),
-    HEAD + Vector((-0.05, 0.0, -0.46)),
+    Vector((-0.08, 0.0, 0.32)),
+    Vector((0.04, 0.0, 0.20)),
+    Vector((0.15, 0.0, 0.22)),
+    Vector((0.18, 0.0, 0.48)),
+    Vector((0.22, 0.0, 0.72)),
+    Vector((0.34, 0.0, 0.84)),
+    HEAD + Vector((-0.02, 0.0, -0.02)),
   ]
+  seat_l = SEAT_J + Vector((0, -0.03, 0))
+  seat_r = SEAT_J + Vector((0, 0.03, 0))
   frame_parts = [
     paint(cylinder(rear_l, bb_l, TUBE_R), mats['frame']),
     paint(cylinder(rear_r, bb_r, TUBE_R), mats['frame']),
-    paint(cylinder(rear_l, SEAT_J + Vector((0, -0.025, 0)), TUBE_R * 0.95), mats['frame']),
-    paint(cylinder(rear_r, SEAT_J + Vector((0, 0.025, 0)), TUBE_R * 0.95), mats['frame']),
+    *tube_along(stay_clear_of_wheel(REAR_HUB, rear_l, seat_l, TUBE_R * 0.95), TUBE_R * 0.95, mats['frame']),
+    *tube_along(stay_clear_of_wheel(REAR_HUB, rear_r, seat_r, TUBE_R * 0.95), TUBE_R * 0.95, mats['frame']),
     paint(cylinder(BB, SEAT_J, TUBE_R * 1.1), mats['frame']),
-    paint(cylinder(BB, HEAD + Vector((0, 0, -0.1)), TUBE_R * 1.15), mats['frame']),
-    paint(cylinder(HEAD + Vector((0, 0, -0.2)), HEAD + Vector((0, 0, 0.07)), TUBE_R * 1.25), mats['frame']),
+    # Short BB → U join only — a full BB→head diagonal punched through the tyre.
+    paint(cylinder(BB, Vector((0.15, 0.0, 0.22)), TUBE_R * 1.05), mats['frame']),
+    # Short head tube — a long drop into the front tyre volume.
+    paint(cylinder(HEAD + Vector((0, 0, -0.05)), HEAD + Vector((0, 0, 0.07)), TUBE_R * 1.25), mats['frame']),
     paint(cylinder(rear_l, rear_r, DROPOUT_R, 12), mats['frame']),
   ]
-  for a, b in zip(u, u[1:]):
-    frame_parts.append(paint(cylinder(a, b, TUBE_R * 0.98), mats['frame']))
+  frame_parts.extend(tube_along(u_ctrl, TUBE_R * 0.98, mats['frame']))
   frame = join('Frame', frame_parts, mats['frame'])
   bind_mesh(frame, root)
 
@@ -270,15 +379,17 @@ def build_bike() -> bpy.types.Object:
   )
   bind_mesh(front_fender, steer)
 
-  # Spring saddle — tapered nose reads better than a floating black tablet.
+  # Spring saddle — chunky rounded body + tapered nose, flush on the post.
+  seat_post_top = SEAT_J + Vector((-0.02, 0, 0.08))
   seat = join(
     'Seat',
     [
-      paint(cylinder(SEAT_J, SEAT_J + Vector((-0.02, 0, 0.06)), TUBE_R * 0.55, 10), mats['dark']),
-      paint(cylinder(SEAT_J + Vector((-0.05, -0.025, 0.07)), SEAT_J + Vector((-0.05, -0.025, 0.11)), 0.009, 8), mats['dark']),
-      paint(cylinder(SEAT_J + Vector((-0.05, 0.025, 0.07)), SEAT_J + Vector((-0.05, 0.025, 0.11)), 0.009, 8), mats['dark']),
-      paint(box(SEAT_J + Vector((-0.02, 0, 0.135)), Vector((0.22, 0.13, 0.038))), mats['seat']),
-      paint(box(SEAT_J + Vector((0.08, 0, 0.132)), Vector((0.10, 0.08, 0.032))), mats['seat']),
+      paint(cylinder(SEAT_J, seat_post_top + Vector((0, 0, 0.01)), TUBE_R * 0.55, 10), mats['dark']),
+      paint(cylinder(SEAT_J + Vector((-0.04, -0.022, 0.05)), seat_post_top + Vector((-0.02, -0.018, -0.01)), 0.008, 8), mats['dark']),
+      paint(cylinder(SEAT_J + Vector((-0.04, 0.022, 0.05)), seat_post_top + Vector((-0.02, 0.018, -0.01)), 0.008, 8), mats['dark']),
+      # Overlap the post so the saddle does not float.
+      ellipsoid(seat_post_top + Vector((-0.02, 0, 0.008)), Vector((0.13, 0.10, 0.055)), mats['seat'], segments=20),
+      ellipsoid(seat_post_top + Vector((0.10, 0, 0.0)), Vector((0.07, 0.05, 0.038)), mats['seat'], segments=16),
     ],
     mats['seat'],
   )
@@ -297,12 +408,13 @@ def build_bike() -> bpy.types.Object:
   )
   bind_mesh(crank, root)
 
-  # Chain case — thin city-bike cue (fat slab read as a moped from chase).
+  # Chain case — thin, outboard and slightly below the green stays so gray
+  # never punches through the frame (side view overlap).
   case = join(
     'ChainCase',
     [
-      paint(cylinder(REAR_HUB + Vector((0.05, -0.08, 0.0)), BB + Vector((0.0, -0.08, 0.02)), 0.028, 14), mats['dark']),
-      paint(cylinder(REAR_HUB + Vector((0.10, -0.08, 0.14)), REAR_HUB + Vector((-0.06, -0.08, 0.18)), 0.02, 10), mats['dark']),
+      paint(cylinder(REAR_HUB + Vector((0.06, -0.18, -0.04)), BB + Vector((0.02, -0.18, -0.02)), 0.018, 14), mats['dark']),
+      paint(cylinder(REAR_HUB + Vector((0.12, -0.18, 0.06)), REAR_HUB + Vector((-0.04, -0.18, 0.10)), 0.014, 10), mats['dark']),
     ],
     mats['dark'],
   )
@@ -361,8 +473,11 @@ def build_bike() -> bpy.types.Object:
   fork = join(
     'Fork',
     [
-      paint(cylinder(HEAD, front_l + Vector((0.01, 0, -0.015)), TUBE_R * 0.95), mats['frame']),
-      paint(cylinder(HEAD, front_r + Vector((0.01, 0, -0.015)), TUBE_R * 0.95), mats['frame']),
+      # Bow out early so side views don't read as tubes through the tyre.
+      paint(cylinder(HEAD + Vector((0.02, -0.08, -0.04)), front_l + Vector((0.01, 0, -0.015)), TUBE_R * 0.85), mats['frame']),
+      paint(cylinder(HEAD + Vector((0.02, 0.08, -0.04)), front_r + Vector((0.01, 0, -0.015)), TUBE_R * 0.85), mats['frame']),
+      paint(cylinder(HEAD, HEAD + Vector((0.02, -0.08, -0.04)), TUBE_R * 0.9, 10), mats['frame']),
+      paint(cylinder(HEAD, HEAD + Vector((0.02, 0.08, -0.04)), TUBE_R * 0.9, 10), mats['frame']),
       paint(cylinder(front_l, front_r, DROPOUT_R * 1.2, 12), mats['frame']),
       paint(cylinder(HEAD + Vector((0, -0.05, -0.02)), HEAD + Vector((0, 0.05, -0.02)), TUBE_R * 1.15, 10), mats['frame']),
     ],
@@ -370,17 +485,40 @@ def build_bike() -> bpy.types.Object:
   )
   bind_mesh(fork, steer)
 
-  # Swept upright city bars + bell.
+  # Swept upright city bars — one continuous bevelled Bézier through stem + grips.
+  bar_ctrl = [
+    BARS + Vector((0.12, -0.38, 0.18)),
+    BARS + Vector((0.02, -0.26, 0.09)),
+    BARS + Vector((-0.03, 0.0, 0.03)),
+    BARS + Vector((0.02, 0.26, 0.09)),
+    BARS + Vector((0.12, 0.38, 0.18)),
+  ]
+  stem_meet = bar_ctrl[2]
   bars = join(
     'LenkerBars',
     [
-      paint(cylinder(HEAD, BARS, TUBE_R * 0.85, 10), mats['dark']),
-      paint(cylinder(BARS + Vector((-0.04, -0.2, 0.05)), BARS + Vector((-0.04, 0.2, 0.05)), TUBE_R * 0.9, 10), mats['dark']),
-      paint(cylinder(BARS + Vector((-0.04, -0.2, 0.05)), BARS + Vector((0.06, -0.34, 0.16)), TUBE_R, 10), mats['dark']),
-      paint(cylinder(BARS + Vector((-0.04, 0.2, 0.05)), BARS + Vector((0.06, 0.34, 0.16)), TUBE_R, 10), mats['dark']),
-      paint(cylinder(BARS + Vector((0.06, -0.34, 0.16)), BARS + Vector((0.12, -0.36, 0.18)), TUBE_R * 1.1, 10), mats['dark']),
-      paint(cylinder(BARS + Vector((0.06, 0.34, 0.16)), BARS + Vector((0.12, 0.36, 0.18)), TUBE_R * 1.1, 10), mats['dark']),
-      paint(torus(BARS + Vector((0.02, 0.12, 0.08)), 0.025, 0.008, 12, 6), mats['chrome']),
+      paint(cylinder(HEAD, stem_meet, TUBE_R * 0.85, 10), mats['dark']),
+      *tube_along(bar_ctrl, TUBE_R * 0.95, mats['dark']),
+      # Slightly thicker grips at the ends.
+      paint(
+        cylinder(
+          bar_ctrl[0],
+          bar_ctrl[0] + (bar_ctrl[0] - bar_ctrl[1]).normalized() * 0.05,
+          TUBE_R * 1.2,
+          10,
+        ),
+        mats['dark'],
+      ),
+      paint(
+        cylinder(
+          bar_ctrl[-1],
+          bar_ctrl[-1] + (bar_ctrl[-1] - bar_ctrl[-2]).normalized() * 0.05,
+          TUBE_R * 1.2,
+          10,
+        ),
+        mats['dark'],
+      ),
+      paint(torus(stem_meet + Vector((0.02, 0.10, 0.04)), 0.025, 0.008, 12, 6), mats['chrome']),
     ],
     mats['dark'],
   )
@@ -438,6 +576,32 @@ def export_glb(root: bpy.types.Object, out: Path) -> None:
   )
 
 
+def assert_front_clearance() -> None:
+  """Fail closed if Frame/Fork still punch the front tyre."""
+  frame = bpy.data.objects.get('Frame')
+  fork = bpy.data.objects.get('Fork')
+  tire = bpy.data.objects.get('FrontTire')
+  if frame is None or fork is None or tire is None:
+    raise RuntimeError('Frame/Fork/FrontTire missing after build')
+  tire_points = [tire.matrix_world @ vertex.co for vertex in tire.data.vertices]
+
+  def min_gap(mesh: bpy.types.Object) -> float:
+    worst = 999.0
+    for vertex in mesh.data.vertices:
+      point = mesh.matrix_world @ vertex.co
+      for tire_point in tire_points[::2]:
+        worst = min(worst, (point - tire_point).length)
+    return worst
+
+  frame_gap = min_gap(frame)
+  fork_gap = min_gap(fork)
+  print(f'front tyre mesh gap Frame={frame_gap:.3f}m Fork={fork_gap:.3f}m')
+  if frame_gap < 0.04:
+    raise RuntimeError(f'Frame still clips front tyre (gap {frame_gap:.3f}m)')
+  if fork_gap < 0.03:
+    raise RuntimeError(f'Fork still clips front tyre (gap {fork_gap:.3f}m)')
+
+
 def report(root: bpy.types.Object) -> None:
   def walk(obj: bpy.types.Object, depth: int = 0) -> None:
     tag = f' mesh={len(obj.data.polygons)}f' if obj.type == 'MESH' else ''
@@ -455,6 +619,7 @@ def main() -> None:
   clear_scene()
   root = build_bike()
   report(root)
+  assert_front_clearance()
   export_glb(root, out)
   print(f'wrote {out}')
 

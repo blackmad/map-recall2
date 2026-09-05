@@ -79,9 +79,9 @@ const memory = () => {
 {
   const prefs = parsePreferences({ bikeSkin: 'pink' }, zoom);
   assert.equal(prefs.bikeSkin, 'pink');
-  const mama = parsePreferences({ bikeSkin: 'mama', bikeBabySeat: true }, zoom);
-  assert.equal(mama.bikeSkin, 'mama');
-  assert.equal(mama.bikeBabySeat, true);
+  const retiredMama = parsePreferences({ bikeSkin: 'mama', bikeBabySeat: true }, zoom);
+  assert.equal(retiredMama.bikeSkin, 'omafiets', 'retired mama skin falls back');
+  assert.equal(retiredMama.bikeBabySeat, true);
   const bad = parsePreferences({ bikeSkin: 'unicycle' }, zoom);
   assert.equal(bad.bikeSkin, 'omafiets', 'unknown bike skin falls back');
   assert.equal(prefs.bikeBabySeat, false);

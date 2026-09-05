@@ -16,6 +16,17 @@ import {
   getTransitLineKey,
   getTransitStopKey,
 } from '../src/canalRecall/transit/identity.ts';
+import {
+  intermediateStopIds,
+  isStopAheadTowardFinish,
+  resolveRouteStopId,
+  stopIdsInTravelOrder,
+} from '../src/canalRecall/transit/routeStops.ts';
+import { transitPlaqueRouteName } from '../src/canalRecall/transit/plaque.ts';
+import {
+  buildCorridorStreetIndex,
+  nearestCorridorStreet,
+} from '../src/canalRecall/transit/corridorStreets.ts';
 import { buildRoadSegments } from '../src/canalRecall/osm/roadProjection.ts';
 import { buildRoadGraph, findRoadRoute } from '../src/canalRecall/routing/roadGraph.ts';
 
@@ -57,13 +68,87 @@ assert.ok(anchors.length >= 4, 'enough retarget anchors');
   assert.match(stopKey, /^v1_amsterdam_/);
 }
 
+// Destination-scoped intermediate stops: Centraal → Museumplein.
+{
+  const line = load.lines[0];
+  assert.ok(line, 'thin slice line');
+  const centraal = load.stops.find((s) => s.name === 'Centraal Station');
+  const museum = load.stops.find((s) => s.name === 'Museumplein');
+  assert.ok(centraal && museum, 'Centraal and Museumplein on tram 2');
+  const fromId = resolveRouteStopId(load.stops, { id: `stop-${centraal.stopId}`, name: centraal.name });
+  const toId = resolveRouteStopId(load.stops, { id: `stop-${museum.stopId}`, name: museum.name });
+  assert.equal(fromId, centraal.stopId);
+  assert.equal(toId, museum.stopId);
+  const travel = stopIdsInTravelOrder(line.stopIds, fromId!, toId!);
+  assert.equal(travel[0], centraal.stopId);
+  assert.equal(travel[travel.length - 1], museum.stopId);
+  const intermediate = intermediateStopIds(line.stopIds, fromId!, toId!);
+  assert.ok(intermediate.includes(dam.stopId), 'Dam is intermediate Centraal→Museumplein');
+  assert.ok(!intermediate.includes(centraal.stopId), 'origin excluded from intermediate set');
+  assert.ok(intermediate.includes(museum.stopId), 'destination included');
+  assert.ok(isStopAheadTowardFinish(500, 200), 'closer-to-finish stop is ahead');
+  assert.ok(!isStopAheadTowardFinish(100, 400), 'farther-from-finish stop is behind');
+}
+
+// Sticky line plaque: stop/street prompts keep Tram 2 visible.
+{
+  const sticky = transitPlaqueRouteName({
+    activeLine: 'Tram 2',
+    roadName: 'Tram 2',
+    quizPromptName: 'Dam',
+    quizPromptSubject: 'stop',
+    quizCandidateName: '',
+    quizCurrentName: 'Tram 2',
+  });
+  assert.equal(sticky.routeName, 'Tram 2');
+  assert.equal(sticky.answerHidden, false);
+
+  const hiding = transitPlaqueRouteName({
+    activeLine: '',
+    roadName: 'Tram 2',
+    quizPromptName: '',
+    quizPromptSubject: '',
+    quizCandidateName: 'Tram 2',
+    quizCurrentName: '',
+  });
+  assert.equal(hiding.routeName, '');
+  assert.equal(hiding.answerHidden, true);
+
+  const lineAsk = transitPlaqueRouteName({
+    activeLine: 'Tram 2',
+    roadName: 'Tram 2',
+    quizPromptName: 'Tram 2',
+    quizPromptSubject: 'line',
+    quizCandidateName: '',
+    quizCurrentName: 'Tram 2',
+  });
+  assert.equal(lineAsk.answerHidden, true);
+}
+
+// Curated streets index can name a corridor-adjacent street (world-space stub).
+{
+  const index = buildCorridorStreetIndex([
+    {
+      name: 'Stadhouderskade',
+      paths: [[[52.36, 4.88], [52.361, 4.881], [52.362, 4.882]]],
+    },
+    {
+      name: 'Amstelveenseweg',
+      paths: [[[52.35, 4.85], [52.351, 4.851]]],
+    },
+  ], (lat, lng) => ({ x: lng * 1000, y: lat * 1000 }));
+  const hit = nearestCorridorStreet(index, 4.881 * 1000, 52.361 * 1000, 50);
+  assert.ok(hit, 'nearest corridor street finds Stadhouderskade');
+  assert.equal(hit!.name, 'Stadhouderskade');
+}
+
 // Tram 2 corridor reachable end-to-end on the adapted graph.
 {
   const centre = { lat: 52.372851, lon: 4.8936 };
   const { segments } = buildRoadSegments(load.ways, centre, {
     simplificationToleranceDegrees: 0.00003,
-    roadWidths: { tram: 26 },
-    defaultRoadWidth: 26,
+    roadWidths: { tram: 38 },
+    defaultRoadWidth: 38,
   });
   assert.ok(segments.length >= 1, 'tram 2 builds segments');
   assert.equal(segments[0].name, 'Tram 2');
@@ -82,5 +167,5 @@ assert.ok(anchors.length >= 4, 'enough retarget anchors');
 
 console.log(
   `Transit routing OK: Tram 2 (${load.stops.length} stops, ${load.ways[0].nodes.length} shape pts), `
-  + `Dam pin, line/stop keys stable.`,
+  + `Dam pin, dest-scoped stops, sticky plaque, corridor streets, line/stop keys stable.`,
 );
