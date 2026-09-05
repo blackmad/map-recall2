@@ -202,6 +202,47 @@ for (const [name, s] of [['fitted', fitted], ['HELD OUT', held]] as const) {
     + `   p90 ${s.beforeP90.toFixed(2)} → ${s.afterP90.toFixed(2)} m`
     + `   (${Math.round(100 * (1 - s.afterMedian / s.beforeMedian))}% of the median removed)`);
 }
+/**
+ * How well each unknown was actually pinned, and a coarser answer to fall back on.
+ *
+ * A segment crossed by two hundred co-located frames is solved; one crossed by
+ * three is a guess wearing the same units. Left ungated, the guesses are wild —
+ * 177 of 6,152 segments came out beyond ±3 m, which is not a GNSS drift over
+ * 125 m of driving, and one of them put a façade's foot in the canal. So the
+ * equation count travels with the offset, and a thinly-constrained segment
+ * falls back to its whole run rather than being trusted or thrown away.
+ */
+const equationsPer = new Map<string, number>();
+const residualPer = new Map<string, number[]>();
+for (const e of train) {
+  equationsPer.set(e.a, (equationsPer.get(e.a) ?? 0) + 1);
+  equationsPer.set(e.b, (equationsPer.get(e.b) ?? 0) + 1);
+  const residual = Math.abs(e.d - (offsets.get(e.a)! - offsets.get(e.b)!));
+  (residualPer.get(e.a) ?? residualPer.set(e.a, []).get(e.a)!).push(residual);
+  (residualPer.get(e.b) ?? residualPer.set(e.b, []).get(e.b)!).push(residual);
+}
+/** One offset per run, from its segments weighted by how well each was pinned. */
+const runOffsets = new Map<string, number>();
+{
+  const bySegment = new Map<string, Array<{ offset: number; weight: number }>>();
+  for (const [key, offset] of offsets) {
+    const run = key.includes('#') ? key.slice(0, key.indexOf('#')) : key;
+    const weight = equationsPer.get(key) ?? 0;
+    if (weight < 1) continue;
+    (bySegment.get(run) ?? bySegment.set(run, []).get(run)!).push({ offset, weight });
+  }
+  for (const [run, parts] of bySegment) {
+    parts.sort((a, b) => a.offset - b.offset);
+    const total = parts.reduce((sum, p) => sum + p.weight, 0);
+    let seen = 0, chosen = parts[0].offset;
+    for (const part of parts) { seen += part.weight; if (seen >= total / 2) { chosen = part.offset; break; } }
+    runOffsets.set(run, chosen);
+  }
+}
+const thin = [...offsets.keys()].filter(k => (equationsPer.get(k) ?? 0) < 8).length;
+console.log(`\n  ${thin} of ${offsets.size} segments carry fewer than 8 equations and fall back to their run`);
+console.log(`  ${[...offsets.entries()].filter(([, o]) => Math.abs(o) > 3).length} segments solved beyond ±3 m before that gate`);
+
 const applied = [...offsets.values()].sort((a, b) => a - b);
 const q = (p: number) => applied[Math.floor(p * (applied.length - 1))];
 console.log(`\n  offsets  p05 ${q(0.05).toFixed(2)}  median ${q(0.5).toFixed(2)}  p95 ${q(0.95).toFixed(2)} m`);
@@ -222,6 +263,15 @@ await writeFile(out, JSON.stringify({
       + 'Solved from co-located frames of different runs; scored on held-out pairs.',
   },
   score: { heldOut: held, fitted },
-  offsets: Object.fromEntries([...offsets].sort()),
+  minEquations: 8,
+  offsets: Object.fromEntries([...offsets].sort().map(([key, offsetM]) => {
+    const residuals = (residualPer.get(key) ?? []).sort((a, b) => a - b);
+    return [key, {
+      offsetM: Number(offsetM.toFixed(3)),
+      equations: equationsPer.get(key) ?? 0,
+      residualM: residuals.length ? Number(residuals[Math.floor(residuals.length / 2)].toFixed(3)) : null,
+    }];
+  })),
+  runOffsets: Object.fromEntries([...runOffsets].sort().map(([k, v]) => [k, Number(v.toFixed(3))])),
 }, null, 1));
 console.log(`\n→ ${path.relative(process.cwd(), out)}`);

@@ -35,6 +35,7 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
+import { loadTrackOffsets } from './panorama-render.ts';
 import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, hasUsablePose } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
@@ -68,9 +69,11 @@ async function panorama(id: string) {
   return image;
 }
 
+const trackOffset = await loadTrackOffsets(CACHE);
+
 function strip(image: any, view: PanoramaView, start: ProjectedPoint, end: ProjectedPoint, baseZ: number, topZ: number) {
   const cam = RD_NEW.fromLngLat(view.lngLat);
-  const pose = { x: cam.x, y: cam.y, z: view.cameraHeight - GEOID_SEPARATION_M,
+  const pose = { x: cam.x, y: cam.y, z: view.cameraHeight - trackOffset(view).offsetM - GEOID_SEPARATION_M,
     headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg };
   const wM = Math.hypot(end.x - start.x, end.y - start.y), hM = topZ - baseZ;
   const w = Math.max(8, Math.round(wM * PPM)), h = Math.max(8, Math.round(hM * PPM));
@@ -161,7 +164,26 @@ for (const pandId of Object.keys(store)) {
   const [imA, imB] = [await panorama(a.panoramaId), await panorama(b.panoramaId)];
   if (!imA || !imB) continue;
 
-  const [x0, y0, x1, y1] = record.wall;
+  /**
+   * The merged elevation the stale proposal points at.
+   *
+   * `measured-facades.json` stores a wall chosen before coplanar stretches were
+   * rejoined, so on a frontage with a jog it holds one piece — a median 2.31x
+   * too small. Registration measured on a third of a wall is measuring a
+   * different thing from registration measured on the wall.
+   */
+  const proposal = record.wall as number[];
+  const mid0 = { x: (proposal[0] + proposal[2]) / 2, y: (proposal[1] + proposal[3]) / 2 };
+  const snapped = buildElevations(ring)
+    .map(e => {
+      const ux0 = (e.end.x - e.start.x) / e.lengthM, uy0 = (e.end.y - e.start.y) / e.lengthM;
+      const along = Math.max(0, Math.min(e.lengthM, (mid0.x - e.start.x) * ux0 + (mid0.y - e.start.y) * uy0));
+      return { e, d: Math.hypot(mid0.x - (e.start.x + ux0 * along), mid0.y - (e.start.y + uy0 * along)) };
+    })
+    .sort((a, b) => a.d - b.d)[0]?.e;
+  const [x0, y0, x1, y1] = snapped
+    ? [snapped.start.x, snapped.start.y, snapped.end.x, snapped.end.y]
+    : proposal;
   const wM = Math.hypot(x1 - x0, y1 - y0);
   const mid = { x: (x0 + x1) / 2, y: (y0 + y1) / 2 };
   const ux = (x1 - x0) / wM, uy = (y1 - y0) / wM;
@@ -171,13 +193,14 @@ for (const pandId of Object.keys(store)) {
 
   const { score, shift } = align(strip(imA, a, start, end, baseZ, topZ), strip(imB, b, start, end, baseZ, topZ), Math.round(wM * PPM * 0.7));
 
-  const wall = buildElevations(ring).map(e => ({ e, d: Math.hypot(e.midpoint.x - mid.x, e.midpoint.y - mid.y) }))
+  const wall = snapped ?? buildElevations(ring)
+    .map(e => ({ e, d: Math.hypot(e.midpoint.x - mid.x, e.midpoint.y - mid.y) }))
     .sort((p, q) => p.d - q.d)[0].e;
   const camA = RD_NEW.fromLngLat(a.lngLat), camB = RD_NEW.fromLngLat(b.lngLat);
   rows.push({
     pandId, shiftM: Number((shift / PPM).toFixed(2)), peak: Number(score.toFixed(3)),
     dHeading: Number((((b.headingDeg - a.headingDeg) % 360 + 540) % 360 - 180).toFixed(1)),
-    wallWidthM: Number(wM.toFixed(2)),
+    wallWidthM: Number(wM.toFixed(2)), proposedWidthM: record.wallWidthM,
     // Independent explanations for a bad residual, recorded rather than assumed.
     obliquityA: Number(obliquityDeg(wall, camA).toFixed(1)), obliquityB: Number(obliquityDeg(wall, camB).toFixed(1)),
     standoffA: Number(standoffM(wall, camA).toFixed(1)), standoffB: Number(standoffM(wall, camB).toFixed(1)),

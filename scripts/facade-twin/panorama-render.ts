@@ -43,20 +43,31 @@ export const poseOf = (view: PanoramaView, heightOffsetM = 0): CameraPose => {
  * function reports whether it had one, because a corrected height and an
  * uncorrected one are different evidence and the difference belongs on the card.
  */
-export async function loadTrackOffsets(cacheDir: string): Promise<(view: PanoramaView) => { offsetM: number; solved: boolean }> {
-  let offsets: Record<string, number> = {};
-  let segment = 0;
+export async function loadTrackOffsets(cacheDir: string):
+  Promise<(view: PanoramaView) => { offsetM: number; source: 'segment' | 'run' | 'none' }> {
+  let offsets: Record<string, { offsetM: number; equations: number }> = {};
+  let runOffsets: Record<string, number> = {};
+  let segment = 0, minEquations = 8;
   try {
     const file = JSON.parse(await readFile(path.join(cacheDir, 'track-datum.json'), 'utf8'));
     offsets = file.offsets ?? {};
+    runOffsets = file.runOffsets ?? {};
     segment = file.metadata?.segmentFrames ?? 0;
+    minEquations = file.minEquations ?? 8;
   } catch { /* solve it and this lights up; until then every frame is uncorrected */ }
   return (view: PanoramaView) => {
     const m = view.panoramaId.match(/^(.*)_(\d{6})$/);
-    if (!m) return { offsetM: 0, solved: false };
-    const key = segment > 0 ? `${m[1]}#${Math.floor(Number(m[2]) / segment)}` : m[1];
-    const offsetM = offsets[key];
-    return Number.isFinite(offsetM) ? { offsetM, solved: true } : { offsetM: 0, solved: false };
+    if (!m) return { offsetM: 0, source: 'none' as const };
+    const run = m[1];
+    const key = segment > 0 ? `${run}#${Math.floor(Number(m[2]) / segment)}` : run;
+    const solved = offsets[key];
+    // A well-pinned segment, else the run it belongs to, else leave it alone.
+    // Falling back is not the same as having no answer, so the card says which.
+    if (solved && solved.equations >= minEquations && Number.isFinite(solved.offsetM)) {
+      return { offsetM: solved.offsetM, source: 'segment' as const };
+    }
+    if (Number.isFinite(runOffsets[run])) return { offsetM: runOffsets[run], source: 'run' as const };
+    return { offsetM: 0, source: 'none' as const };
   };
 }
 

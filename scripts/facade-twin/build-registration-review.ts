@@ -167,7 +167,8 @@ for (const pandId of Object.keys(store).sort()) {
       heading: Number(view.headingDeg.toFixed(1)),
       standoffM: Number(standoffM(wallElevation, camera).toFixed(1)),
       obliquityDeg: Number(obliquityDeg(wallElevation, camera).toFixed(1)),
-      datumCorrectedM: datum.solved ? Number(datum.offsetM.toFixed(2)) : null,
+      datumCorrectedM: datum.source === 'none' ? null : Number(datum.offsetM.toFixed(2)),
+      datumSource: datum.source,
       projection: projected ? `${stem}__proj.jpg` : null,
       wall: strip ? `${stem}__wall.jpg` : null,
     });
