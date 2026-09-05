@@ -21,7 +21,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../src/canalRecall/facade/areas.ts';
 import { directionToPixel } from '../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_YAW_CONVENTION } from '../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { GEOID_SEPARATION_M, hasUsablePose, AMSTERDAM_YAW_CONVENTION } from '../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../src/canalRecall/facade/sources/netherlands.ts';
 import type { PanoramaView } from '../src/canalRecall/facade/sources.ts';
 
@@ -83,6 +83,29 @@ const rectifySource = readFileSync(path.resolve('src/canalRecall/facade/rectify.
 check('the rectifier has no yaw default', !/yaw\s*=\s*options\.yaw\s*\?\?/.test(rectifySource)
   && !/yaw\?\:\s*YawConvention/.test(rectifySource), 'a default would let a caller inherit 180°');
 check('rectify options are required', !/options:\s*RectifyOptions\s*=\s*\{\}/.test(rectifySource));
+
+
+/**
+ * A pose with no camera height is not a pose.
+ *
+ * Every panorama captured in 2024 and 2025 publishes `cameraHeight: 0`, which
+ * with a 43.5 m geoid separation places the lens forty-six metres under the
+ * street. The rectifier does not object — it computes the directions from there
+ * to a wall above, which point almost straight up, and returns roofline and
+ * sky. 11% of the pilot's façades were measured that way before this check
+ * existed.
+ */
+const unusable = views.filter(v => !hasUsablePose(v));
+check('poses without a camera height are rejected',
+  unusable.every(v => !hasUsablePose(v)) && unusable.length > 0,
+  `${unusable.length} of ${views.length} panoramas carry cameraHeight <= 0`);
+check('the usable fleet has a plausible lens height', (() => {
+  const heights = views.filter(hasUsablePose).map(v => v.cameraHeight).sort((a, b) => a - b);
+  if (!heights.length) return false;
+  const median = heights[Math.floor(heights.length / 2)] - GEOID_SEPARATION_M;
+  return median > 1.5 && median < 5;                 // a vehicle lens above NAP
+})(), 'median lens height after the geoid separation');
+
 
 console.log(`Yaw convention: Amsterdam is '${AMSTERDAM_YAW_CONVENTION}', ${views.length} poses available.`);
 if (failures.length) {

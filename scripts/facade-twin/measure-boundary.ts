@@ -24,7 +24,7 @@ import { buildElevations, inFrontOf, obliquityDeg, standoffM, type Elevation } f
 import { plausibility, PLAUSIBLE_ENOUGH } from '../../src/canalRecall/facade/grammar.ts';
 import { measureFacade, STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { hasUsablePose, AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, MassingRecord, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -72,7 +72,7 @@ for (const entry of registry) {
 
 // Leaf-off poses only, indexed on a coarse grid so the assignment below is not
 // 3,025 × 140,000.
-const posed = views.filter(v => isLeafOff(v.capturedAt)).map(view => ({ view, point: RD_NEW.fromLngLat(view.lngLat) }));
+const posed = views.filter(v => isLeafOff(v.capturedAt) && hasUsablePose(v)).map(view => ({ view, point: RD_NEW.fromLngLat(view.lngLat) }));
 const CELL = 50;
 const poseIndex = new Map<string, typeof posed>();
 for (const pose of posed) {

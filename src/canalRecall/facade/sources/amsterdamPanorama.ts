@@ -46,6 +46,29 @@ const PAGE_SIZE = 500;
  * in the rectifier that five scripts inherited without stating — is what let a
  * 180° error reach every measurement in the pilot.
  */
+/**
+ * Is this pose usable at all?
+ *
+ * 15,312 of the 139,937 published panoramas — every one captured in 2024 and
+ * 2025 — carry `cameraHeight: 0`. That is a missing value, not a measurement:
+ * the geoid separation here is 43.5 m, so a zero reading places the lens 43.5 m
+ * below NAP, forty-six metres under the street.
+ *
+ * Nothing downstream noticed. The rectifier faithfully computed the directions
+ * from a camera in the earth's crust to a wall above it, which point almost
+ * straight up, and returned rooflines and sky — a well-formed picture of the
+ * wrong thing, which is this project's signature failure. 249 of 2,180 measured
+ * façades, 11%, were measured that way, and any cross-view comparison including
+ * one of them was guaranteed to disagree.
+ *
+ * The rest of the fleet is sound: median published height 46.69 m, which is
+ * 3.19 m NAP after the separation, 2.56 m above this boundary's typical ground
+ * — right for a survey vehicle's lens.
+ */
+export const hasUsablePose = (view: { cameraHeight: number; headingDeg: number }) =>
+  Number.isFinite(view.cameraHeight) && view.cameraHeight > 0
+  && Number.isFinite(view.headingDeg);
+
 export const AMSTERDAM_YAW_CONVENTION = 'edge' as const;
 
 export const GEOID_SEPARATION_M = 43.5;

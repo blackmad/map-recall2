@@ -542,3 +542,46 @@ If instead they disagree individually, the pose error is per-panorama and the
 answer is an external opinion: Mapillary has its own poses for these streets,
 free, and Google's Street View metadata endpoint returns the position it
 actually used.
+
+
+### 12c. The campaign hypothesis is wrong, and a real bug found instead
+
+The experiment settled it, and against the hypothesis.
+
+**Heading is consistent across campaigns.** Taking every pair of panoramas
+whose cameras stand within 2 m of each other in *different* capture years and
+driving roughly the same way — 263,535 pairs — the signed median heading
+difference is **0.00°**, and no year pair exceeds 0.17°:
+
+    2019/2023  +0.06°  n=36,758      2022/2023  −0.01°  n=22,848
+    2020/2023  −0.03°  n=30,953      2016/2023  +0.03°  n=15,799
+    2021/2023  +0.05°  n=25,561      2019/2021  +0.17°  n=8,471
+
+There is no per-campaign heading offset to solve for. That closes the line of
+enquiry §12b opened, cheaply, on metadata alone and without a single image.
+
+**But the same look found a real bug.** `cameraHeight` is exactly `0` for every
+panorama captured in **2024 and 2025 — 15,312 of 139,937, 11% of the fleet**.
+It is a missing value, not a measurement, and with a 43.5 m geoid separation it
+places the lens 43.5 m *below* NAP: forty-six metres under the street.
+
+Nothing objected. The rectifier faithfully computed the directions from a camera
+in the earth's crust to a wall above it — which point almost straight up — and
+returned rooflines and sky. **249 of 2,180 measured façades, 11%, were measured
+that way.** Any cross-view comparison including one of them was guaranteed to
+disagree, which means the "0 of 120 lock" figure was measured on a set partly
+poisoned by this.
+
+Rejected now by `hasUsablePose`, applied in all five scripts that select views,
+and pinned by two checks. The rest of the fleet is sound: median published
+height 46.69 m, which is 3.19 m NAP after the separation and 2.56 m above this
+boundary's typical ground of 0.63 m — right for a survey vehicle's lens, and
+the first independent confirmation that `GEOID_SEPARATION_M` is correct.
+
+**What is still unexplained.** Removing the underground cameras does not by
+itself account for two *valid* panoramas putting one wall on two different
+houses. Heading agrees, height is now sound, the yaw convention is pinned, the
+rectifier is faithful and the wall is well chosen. The remaining suspects are
+the published camera *position* — whether `lngLat` is the lens or the vehicle
+reference point — and the pitch/roll application order. Both are testable
+against Mapillary, which publishes its own poses for these streets for free.
