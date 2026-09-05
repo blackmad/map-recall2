@@ -248,7 +248,7 @@ with checkpoint evidence in
 implemented: old street-derived artifacts are invalidated, only hashed
 upstream/raw caches were migrated, BAG pand→VBO→all-address identity and stable
 elevations are typed and tested, and the 16-building registration review desk
-is populated. Next, complete two independent pand/elevation review passes and
+is populated. Next, complete one recorded local pand/elevation review and
 hand-click the wall/ground/eaves/roofline anchors. Do not start camera-model
 phase 3 or any detector run until that human gate closes.
 

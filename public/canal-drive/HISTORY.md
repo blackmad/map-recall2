@@ -27,8 +27,11 @@ obliquity without choosing an image yaw. The UI deliberately has no detector
 boxes or rectification: it exposes Herengracht 270 as the one reviewable task,
 keeps the 15 geometry-only candidates in a separate waiting queue, and guides
 the reviewer through the photo, building outline, highlighted wall, and two
-plain-language verdicts. Two independent human passes are the next gate;
-source-pixel anchors remain an optional advanced control.
+plain-language verdicts. One accepted local review completes the solo-operator
+checkpoint while retaining reviewer, timestamp, and verdict provenance;
+source-pixel points remain an optional advanced control and can be removed
+individually, undone in reverse order, or cleared together with a guarded
+two-click action.
 
 ## Shared enamel CSS from one hudTheme source
 

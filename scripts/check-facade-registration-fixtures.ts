@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { registrationFixtureIsAgreed, type RegistrationGoldFixture } from '../src/canalRecall/facade/registrationGold.ts';
+import { registrationFixtureIsReviewed, type RegistrationGoldFixture } from '../src/canalRecall/facade/registrationGold.ts';
 
 const invalidation = JSON.parse(readFileSync('src/canalRecall/facade/fixtures/street-derived-invalidation.json', 'utf8'));
 assert.equal(invalidation.knownRegression.pandId, '0363100012164989');
@@ -24,16 +24,10 @@ const review = (passId: 'pass-1' | 'pass-2', verdict: 'accepted' | 'uncertain') 
   passId, reviewer: passId, reviewedAt: '2026-09-04T00:00:00Z', identityVerdict: verdict,
   elevationVerdict: verdict, note: 'fixture-only test',
 });
-const fixture = { selectedElevationId: 'pand:e:wall', reviewPasses: [review('pass-1', 'accepted'), review('pass-2', 'accepted')] } as RegistrationGoldFixture;
-assert.equal(registrationFixtureIsAgreed(fixture), true);
-assert.equal(registrationFixtureIsAgreed({ ...fixture, reviewPasses: [review('pass-1', 'accepted')] }), false, 'one pass cannot certify registration');
-assert.equal(registrationFixtureIsAgreed({ ...fixture, reviewPasses: [review('pass-1', 'accepted'), review('pass-2', 'uncertain')] }), false, 'uncertainty fails closed');
-assert.equal(registrationFixtureIsAgreed({
-  ...fixture,
-  reviewPasses: [
-    { ...review('pass-1', 'accepted'), reviewer: 'Same Person' },
-    { ...review('pass-2', 'accepted'), reviewer: ' same person ' },
-  ],
-}), false, 'one reviewer cannot certify both independent passes');
+const fixture = { selectedElevationId: 'pand:e:wall', reviewPasses: [review('pass-1', 'accepted')] } as RegistrationGoldFixture;
+assert.equal(registrationFixtureIsReviewed(fixture), true, 'one accepted local review completes the solo checkpoint');
+assert.equal(registrationFixtureIsReviewed({ ...fixture, selectedElevationId: null }), false, 'a review cannot accept an unspecified wall');
+assert.equal(registrationFixtureIsReviewed({ ...fixture, reviewPasses: [review('pass-1', 'uncertain')] }), false, 'uncertainty fails closed');
+assert.equal(registrationFixtureIsReviewed({ ...fixture, reviewPasses: [{ ...review('pass-1', 'accepted'), identityVerdict: 'rejected' }] }), false, 'a rejected identity fails closed');
 
-console.log('Façade registration fixture checks passed (16-building coverage, invalidation, two-pass agreement).');
+console.log('Façade registration fixture checks passed (16-building coverage, invalidation, solo-review gate).');

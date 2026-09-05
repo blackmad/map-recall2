@@ -39,11 +39,8 @@ export interface RegistrationGoldFixture {
   reviewPasses: RegistrationReviewPass[];
 }
 
-export const registrationFixtureIsAgreed = (fixture: RegistrationGoldFixture): boolean => {
-  const accepted = fixture.reviewPasses.filter(pass => pass.identityVerdict === 'accepted' && pass.elevationVerdict === 'accepted');
-  const first = accepted.find(pass => pass.passId === 'pass-1');
-  const second = accepted.find(pass => pass.passId === 'pass-2');
-  return fixture.selectedElevationId !== null
-    && Boolean(first && second)
-    && first!.reviewer.trim().toLocaleLowerCase() !== second!.reviewer.trim().toLocaleLowerCase();
-};
+export const registrationFixtureIsReviewed = (fixture: RegistrationGoldFixture): boolean => fixture.selectedElevationId !== null
+  && fixture.reviewPasses.some(pass => pass.identityVerdict === 'accepted' && pass.elevationVerdict === 'accepted');
+
+/** Compatibility alias for checkpoint consumers created before solo review was adopted. */
+export const registrationFixtureIsAgreed = registrationFixtureIsReviewed;

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "selectionStatus": "candidate-set-for-two-pass-review",
+  "selectionStatus": "candidate-set-for-solo-local-review",
   "candidates": [
     { "pandId": "0363100012164989", "label": "Herengracht 270", "rationale": "Pinned 180-degree registration regression.", "intendedCoverage": ["known-regression", "canal-bank", "winter-panorama"] },
     { "pandId": "0363100012169587", "label": "Prinsengracht 263", "rationale": "Anne Frank Huis; required named fixture.", "intendedCoverage": ["named-landmark", "canal-bank", "partial-occlusion-review"] },
