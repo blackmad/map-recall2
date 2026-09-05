@@ -1,0 +1,229 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Is this the right building?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: dark;
+    --bg:#0e1213; --panel:#161c1e; --ink:#eef2f1; --ink-2:#a9b4b4; --ink-3:#788384;
+    --line:#2a3335; --hot:#c8825a; --yes:#28c07a; --no:#e05a55; --maybe:#e0a33a; --plan:#5b9bd5; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.5 "IBM Plex Sans",system-ui,-apple-system,sans-serif; }
+  header { padding:12px 20px 10px; border-bottom:1px solid var(--line); position:sticky; top:0;
+    background:var(--bg); z-index:5; }
+  .top { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+  .addr { font-size:21px; font-weight:600; margin:0; letter-spacing:-.01em; }
+  .pand { font:11px "IBM Plex Mono",ui-monospace,monospace; color:var(--ink-3); margin:0; }
+  .counter { margin-left:auto; font:12px "IBM Plex Mono",ui-monospace,monospace; color:var(--ink-3); }
+  .bar { height:3px; background:#1d2527; margin-top:9px; border-radius:2px; overflow:hidden; }
+  .bar i { display:block; height:100%; background:var(--hot); transition:width .18s; }
+  main { padding:14px 20px 150px; display:grid; gap:16px; grid-template-columns:1fr; }
+  @media (min-width:1000px) { main { grid-template-columns:310px 1fr; align-items:start; } }
+  .side { display:flex; flex-direction:column; gap:10px; }
+  .plan { width:100%; height:auto; background:#0b0f10; border:1px solid var(--line); border-radius:4px; }
+  .plan .nb { fill:#1b2325; stroke:#2a3335; stroke-width:.7; }
+  .plan .me { fill:rgba(91,155,213,.20); stroke:var(--plan); stroke-width:1.3; }
+  .plan .wall { stroke:var(--yes); stroke-width:3.2; stroke-linecap:round; }
+  .plan .ray { stroke:#4a5658; stroke-width:.7; stroke-dasharray:3 3; }
+  .plan .ray.primary { stroke:var(--hot); }
+  .plan .cam { fill:#4a5658; } .plan .cam.primary { fill:var(--hot); }
+  .plan .addr { fill:var(--maybe); }
+  .plan .scale { stroke:var(--ink-2); stroke-width:1.3; }
+  .plan .scaletext { font:9px "IBM Plex Mono",monospace; fill:var(--ink-3); }
+  .facts { font:11.5px "IBM Plex Mono",ui-monospace,monospace; color:var(--ink-3); line-height:1.7; }
+  .facts b { color:var(--ink-2); font-weight:500; }
+  .legend { font:10.5px "IBM Plex Mono",monospace; color:var(--ink-3); display:flex; gap:9px; flex-wrap:wrap; }
+  .k { display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:3px; vertical-align:-1px; }
+  .frames { display:flex; flex-direction:column; gap:14px; }
+  .frame { border:1px solid var(--line); border-radius:5px; padding:10px 11px 11px; background:var(--panel); }
+  .frame h3 { margin:0 0 8px; font:11px "IBM Plex Mono",monospace; color:var(--ink-3);
+    letter-spacing:.05em; text-transform:uppercase; }
+  .pair { display:flex; gap:10px; overflow-x:auto; align-items:flex-start; }
+  .pair figure { margin:0; flex:0 0 auto; }
+  .pair img { display:block; border:1px solid var(--line); border-radius:3px; max-height:52vh; }
+  .pair figcaption { font:10px "IBM Plex Mono",monospace; color:var(--ink-3); margin-top:5px; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:rgba(14,18,19,.97);
+    border-top:1px solid var(--line); padding:11px 20px; backdrop-filter:blur(8px); }
+  .q { font-size:14px; margin:0 0 7px; }
+  .q b { color:var(--hot); }
+  .opts { display:flex; gap:7px; flex-wrap:wrap; align-items:center; }
+  button { background:#1e2729; color:var(--ink-2); border:1px solid var(--line); border-radius:4px;
+    padding:8px 14px; font:inherit; font-size:13.5px; cursor:pointer; display:flex; gap:8px; align-items:center; }
+  button:hover { border-color:#4c6062; color:var(--ink); }
+  button:focus-visible { outline:2px solid var(--plan); outline-offset:2px; }
+  button kbd { font:10.5px "IBM Plex Mono",monospace; color:var(--ink-3); background:#141a1b;
+    border:1px solid #2a3335; border-radius:3px; padding:1px 5px; }
+  button.yes:hover { border-color:var(--yes); } button.no:hover { border-color:var(--no); }
+  button.maybe:hover { border-color:var(--maybe); }
+  .status { font:11.5px "IBM Plex Mono",monospace; color:var(--ink-3); margin-left:auto; }
+  .status.err { color:var(--no); }
+  .hint { font:11.5px "IBM Plex Mono",monospace; color:var(--ink-3); margin:7px 0 0; }
+  .hint.on { color:var(--maybe); }
+  input.note { flex:1 1 200px; min-width:150px; background:#141a1b; color:var(--ink);
+    border:1px solid var(--line); border-radius:4px; padding:7px 9px; font:inherit; font-size:13px; }
+  .empty { padding:60px 20px; color:var(--ink-3); text-align:center; }
+</style>
+
+<header>
+  <div class="top">
+    <div>
+      <p class="addr" id="addr">—</p>
+      <p class="pand" id="pand"></p>
+    </div>
+    <span class="counter" id="counter"></span>
+  </div>
+  <div class="bar"><i id="progress" style="width:0"></i></div>
+</header>
+
+<main id="main">
+  <div class="side">
+    <div id="plan"></div>
+    <p class="legend">
+      <span><span class="k" style="background:#28c07a"></span>wall judged</span>
+      <span><span class="k" style="background:#c8825a"></span>camera</span>
+      <span><span class="k" style="background:#e0a33a"></span>BAG address</span>
+      <span><span class="k" style="background:#1b2325;border:1px solid #2a3335"></span>neighbour</span>
+    </p>
+    <p class="facts" id="facts"></p>
+  </div>
+  <div class="frames" id="frames"></div>
+</main>
+
+<footer>
+  <p class="q" id="question"></p>
+  <div class="opts" id="opts"></div>
+  <p class="hint" id="hint"></p>
+</footer>
+
+<script>
+/**
+ * Three questions, one keystroke each, answered before the next card loads.
+ *
+ * The machine's own verdict is withheld until the last question is answered.
+ * A reviewer shown a confident number agrees with it, and an opinion that
+ * agrees by construction is worth nothing.
+ */
+const QUESTIONS = [
+  { key: 'right-building', text: 'Is the green outline on <b>the right building</b> — the one the address names?',
+    options: [['yes', 'Yes', 'y', 'yes'], ['no', 'No, another building', 'n', 'no'],
+              ['unsure', 'Cannot tell', 'u', 'maybe']] },
+  { key: 'right-wall', text: 'Is it on <b>the right wall</b> of that building — the frontage, not a return or the rear?',
+    options: [['yes', 'Yes', 'y', 'yes'], ['no', 'Wrong wall', 'n', 'no'],
+              ['unsure', 'Cannot tell', 'u', 'maybe']] },
+  { key: 'visible', text: 'Can the façade <b>actually be seen</b>, or is it behind a tree, boat, van or scaffolding?',
+    options: [['clear', 'Clear enough', 'y', 'yes'], ['partly', 'Partly blocked', 'p', 'maybe'],
+              ['blocked', 'Blocked', 'n', 'no']] },
+];
+
+const state = { deck: [], i: 0, q: 0, answers: {}, note: '' };
+const $ = id => document.getElementById(id);
+
+async function load() {
+  let deck;
+  try {
+    deck = await (await fetch('/registration-review/deck.json', { cache: 'no-store' })).json();
+  } catch (error) {
+    $('main').innerHTML = '<p class="empty">No deck found. Run '
+      + '<code>npx tsx scripts/facade-twin/build-registration-review.ts</code> first, '
+      + 'then reload.</p>';
+    return;
+  }
+  state.deck = deck.cards || [];
+  try {
+    const seen = await (await fetch('/api/answers', { cache: 'no-store' })).json();
+    // Resume where the reviewer stopped rather than at the top of the deck.
+    const answered = new Set(Object.keys(seen.answers || {}));
+    const next = state.deck.findIndex(c => !answered.has(c.pandId));
+    state.i = next === -1 ? 0 : next;
+  } catch (error) { /* a fresh database is not an error */ }
+  if (!state.deck.length) { $('main').innerHTML = '<p class="empty">The deck is empty.</p>'; return; }
+  render();
+}
+
+function render() {
+  const card = state.deck[state.i];
+  if (!card) { $('main').innerHTML = '<p class="empty">Deck finished. Thank you — every answer is in SQLite.</p>';
+    document.querySelector('footer').hidden = true; return; }
+  $('addr').textContent = card.label;
+  $('pand').textContent = `BAG ${card.pandId} · ${card.addressCount} address${card.addressCount === 1 ? '' : 'es'}`
+    + (card.constructionYear ? ` · built ${card.constructionYear}` : '') + ` · wall ${card.wallWidthM} m`;
+  $('counter').textContent = `${state.i + 1} / ${state.deck.length}`;
+  $('progress').style.width = ((state.i / state.deck.length) * 100).toFixed(1) + '%';
+  $('plan').innerHTML = card.plan;
+  $('facts').innerHTML = card.frames.map(f =>
+    `<b>${f.capturedAt}</b> heading ${f.heading}° · ${f.standoffM} m · ${f.obliquityDeg}° off square`).join('<br>');
+  $('frames').innerHTML = card.frames.map(f => `
+    <div class="frame">
+      <h3>${f.capturedAt} · heading ${f.heading}° · ${f.standoffM} m away</h3>
+      <div class="pair">
+        ${f.projection ? `<figure><img src="/registration-review/${f.projection}" alt="">
+          <figcaption>footprint drawn into the raw panorama</figcaption></figure>` : ''}
+        ${f.wall ? `<figure><img src="/registration-review/${f.wall}" alt="">
+          <figcaption>that wall, rectified</figcaption></figure>` : ''}
+      </div>
+    </div>`).join('');
+  $('hint').textContent = '';
+  $('hint').className = 'hint';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[state.q];
+  $('question').innerHTML = `<span style="color:var(--ink-3)">${state.q + 1}/${QUESTIONS.length}</span> ${q.text}`;
+  $('opts').innerHTML = q.options.map(([value, label, key, cls]) =>
+    `<button class="${cls}" data-value="${value}"><kbd>${key}</kbd>${label}</button>`).join('')
+    + `<input class="note" id="note" placeholder="optional note" value="${state.note.replace(/"/g, '&quot;')}">`
+    + `<span class="status" id="status"></span>`;
+  for (const button of $('opts').querySelectorAll('button')) {
+    button.addEventListener('click', () => answer(button.dataset.value));
+  }
+  $('note').addEventListener('input', event => { state.note = event.target.value; });
+}
+
+async function answer(value) {
+  state.answers[QUESTIONS[state.q].key] = value;
+  // A wrong building makes the wall question meaningless; skip to visibility.
+  const skipWall = state.q === 0 && value === 'no';
+  if (skipWall) state.answers['right-wall'] = 'n/a';
+  state.q = skipWall ? 2 : state.q + 1;
+  if (state.q < QUESTIONS.length) { renderQuestion(); return; }
+  await save();
+}
+
+async function save() {
+  const card = state.deck[state.i];
+  const status = $('status');
+  if (status) status.textContent = 'saving…';
+  try {
+    const response = await fetch('/api/answer', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ pandId: card.pandId, answers: state.answers,
+        reviewer: 'human', note: state.note || null }),
+    });
+    if (!response.ok) throw new Error(await response.text());
+  } catch (error) {
+    if (status) { status.textContent = 'NOT SAVED — ' + error.message; status.className = 'status err'; }
+    return;                                     // stay put; a lost verdict is the one thing to avoid
+  }
+  // Only now show what the machine thought, and only as a note.
+  const hint = card.hint;
+  if (hint) {
+    $('hint').textContent = `cross-view residual ${Math.abs(hint.shiftM).toFixed(2)} m, `
+      + `peak ${hint.peak.toFixed(2)}${hint.occluded ? ', a view is occluded' : ''}`;
+    $('hint').className = 'hint on';
+  }
+  state.answers = {}; state.note = ''; state.q = 0; state.i++;
+  setTimeout(render, hint ? 550 : 0);
+}
+
+document.addEventListener('keydown', event => {
+  if (event.target.tagName === 'INPUT') { if (event.key === 'Enter') event.target.blur(); return; }
+  if (event.key === 'ArrowLeft' && state.i > 0) { state.i--; state.q = 0; state.answers = {}; render(); return; }
+  if (event.key === 'ArrowRight') { state.i++; state.q = 0; state.answers = {}; render(); return; }
+  const q = QUESTIONS[state.q];
+  const hit = q.options.find(o => o[2] === event.key.toLowerCase());
+  if (hit) { event.preventDefault(); answer(hit[0]); }
+});
+
+load();
+</script>

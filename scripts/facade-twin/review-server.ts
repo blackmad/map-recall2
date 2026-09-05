@@ -89,6 +89,26 @@ const server = createServer(async (req, res) => {
     return;
   }
 
+  // Review imagery lives in the cache, not under public/, because it is derived
+  // from third-party imagery and must never be committed or accidentally
+  // staged for publication. Served from explicit prefixes rather than by moving
+  // it, so the rule stays visible at the one place it could be broken.
+  for (const [prefix, dir] of [['/registration-review/', '.cache/facade-twin/registration-review']] as const) {
+    if (!url.pathname.startsWith(prefix)) continue;
+    const rel = url.pathname.slice(prefix.length);
+    const root = path.resolve(dir);
+    const file = path.resolve(dir, decodeURIComponent(rel));
+    if (!file.startsWith(root)) { res.writeHead(403).end('no'); return; }
+    try {
+      res.writeHead(200, {
+        'content-type': TYPES[path.extname(file)] ?? 'application/octet-stream',
+        'cache-control': 'no-store',
+      });
+      res.end(await readFile(file));
+    } catch { res.writeHead(404).end('no'); }
+    return;
+  }
+
   // Multi-view strips live in the cache, not under public/, because they are
   // derived from third-party imagery and must never be committed. Served from
   // an explicit prefix rather than by moving them.
@@ -126,4 +146,5 @@ server.listen(PORT, '127.0.0.1', () => {
   console.log(`  database ${path.relative(process.cwd(), DB_PATH)} — ${n} answers so far`);
   console.log(`  review deck  http://127.0.0.1:${PORT}/canal-drive/review.html`);
   console.log(`  projections  http://127.0.0.1:${PORT}/canal-drive/match.html`);
+  console.log(`  registration http://127.0.0.1:${PORT}/canal-drive/registration.html`);
 });
