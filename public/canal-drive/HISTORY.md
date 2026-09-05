@@ -37,6 +37,43 @@ step-through + basket with separate `handle` / `front_wheelset` /
 non-Dutch city-bike candidate with working spin/steer; game still uses authored
 omafiets until taste-pass decides.
 
+## Clear all data (item 12)
+
+**Reset knowledge…** stays the soft wipe (spaced repetition + fact rotation).
+**Clear all data…** sits beside it under Advanced: knowledge, exploration
+collection, personal bests, preferences (UI resets to defaults), and the
+home-address geocode cache. Sign-in stays. Helpers live next to the storage
+keys; `test:canal-clear-all` pins them.
+
+## One RD New transform (façade alignment)
+
+`rdCoordinates.ts` is now a thin tuple wrapper over `facade/rdNew.ts`, so
+3DBAG callers use the same NSGI-aligned polynomials as the façade pipeline
+(~1 cm vs PDOK). `test:rd-coordinates` expects the aligned Amersfoort origin.
+
+## Building / façade / 3D work left the board
+
+Items 8a, 10, 10b, 10c, 18, 20, 20b, 21, 22 and 25 are owned by other agents.
+Design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`; this board no
+longer tracks them.
+
+## Disambiguation follow on Rotterdam and Den Haag
+
+Same city-qualified dab follow as Utrecht: each city re-enrich followed 1
+page to a confident `Name (City)` article; English pass ran for water/streets;
+`check:encyclopedia-disambiguation` and `check:extract-english` green.
+
+## Disambiguation pages follow a city-qualified article when score ≥45
+
+Silence alone dropped real places whose OSM sitelink pointed at a dab page
+(`Nieuwegracht` → list). Enrich and live title discovery now fetch the dab
+wikitext, score link targets with `pickDisambiguationTarget` (exact
+`Name (City)` = 100; Den Haag aliases; refuse rename traps), and refetch the
+summary only when confident. Utrecht re-enrich followed 15 pages; English pass
+restored ledes for Nieuwegracht, Leidseweg, Amsterdamsestraatweg, and peers.
+Ambiguous leftovers (Middelwetering, Bijleveld, …) stay empty. 16 checks in
+`test:street-wikipedia`.
+
 ## Disambiguation pages never become cards; curated POIs for every Randstad city
 
 Title discovery was accepting Wikipedia list pages (`Nieuwegracht can refer
@@ -57,17 +94,21 @@ Two pipeline hardenings landed with it: rename-refusal leftovers clear Dutch
 instead of failing the English gate, and `build-bridge-railways` retries Overpass
 mirrors so a 504 does not throw away a finished enrich.
 
-## Street-mode bicycle is an authored low-poly omafiets
+## Swapfiets overlay tyres removed (looked broken)
 
-The Sketchfab Swapfiets was a studio prop (open shells, texture alpha,
-no hub pivots). Chase altitude needed the opposite, and every fix fought the
-mesh: double-sided holes, wrong-axis tyre cuts, spin around the bike origin,
-width hacks that still read as a hairline. Replaced by
-`scripts/build-omafiets-bike.py`: thick-tube step-through frame, blue front
-tyre, authored `Lenker` / `RadVorn` / `RadHinten` empties at head and hubs.
-Runtime stays at `omafiets-runtime.glb` (~140 KB, no meshopt — meshopt was
-mangling node scales and exploding the hierarchy in MapLibre). Mild
-`BIKE_WIDTH_SCALE` (1.35) only; tune in `bike-preview.html`.
+Tyre overlays on the Sketchfab Swapfiets preview were ~3× too thick and sat on
+top of the painted wheels — double-wheel donuts through the frame. Dropped them;
+`swapfiets-sketchfab-preview.glb` is an intact body + pivot empties only.
+Steer/spin stay on the authored `omafiets-runtime.glb`. A free game-ready Dutch
+bike with real wheel splits is still the path to Sketchfab motion.
+
+## Omafiets authored; Swapfiets reference is body-only
+
+Hand-built `omafiets-runtime.glb` is the game bike (deep step-through, blue
+front tyre, `Lenker`/`RadVorn`/`RadHinten`). Sketchfab Swapfiets native meshes
+are not clean wheel/frame splits; cutting verts tore fenders and bars apart.
+Preview keeps the intact baked body for look comparison only.
+
 
 ## Street-mode bicycle is a Swapfiets omafiets
 

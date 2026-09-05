@@ -14,8 +14,10 @@
  */
 
 import {
+  extractWikiLinkTitles,
   isDisambiguationExtract,
   isDisambiguationSummaryType,
+  pickDisambiguationTarget,
 } from './encyclopediaDisambiguation.ts';
 
 export const STREET_SUFFIX_PATTERN =
@@ -89,18 +91,43 @@ async function fetchSummary(
   fetchJson: JsonFetcher,
   lang: 'en' | 'nl',
   title: string,
+  city?: string,
+  featureName?: string,
 ): Promise<WikiSummary | null> {
   const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, '_'))}`;
   try {
     const data = await fetchJson(url) as WikiSummary & { type?: string; title?: string };
     if (!data || data.type === 'https://mediawiki.org/api/rest_v1/errors/not_found') return null;
-    if (isDisambiguationSummaryType(data.type)) return null;
+    const looksLikeDisambiguation = isDisambiguationSummaryType(data.type)
+      || isDisambiguationExtract(data.extract);
+    if (looksLikeDisambiguation) {
+      if (!city || !featureName) return null;
+      const resolvedTitle = await resolveDisambiguationTitle(
+        fetchJson, lang, data.title || title, featureName, city,
+      );
+      if (!resolvedTitle || foldTitle(resolvedTitle) === foldTitle(title)) return null;
+      return fetchSummary(fetchJson, lang, resolvedTitle);
+    }
     if (!data.extract && !data.content_urls?.desktop?.page) return null;
-    if (isDisambiguationExtract(data.extract)) return null;
     return data;
   } catch {
     return null;
   }
+}
+
+const foldTitle = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+
+/** Follow a disambiguation page to `Name (City)` when the list makes that clear. */
+export async function resolveDisambiguationTitle(
+  fetchJson: JsonFetcher,
+  lang: 'en' | 'nl',
+  disambiguationTitle: string,
+  featureName: string,
+  city: string,
+): Promise<string | null> {
+  const wikitext = await fetchWikitext(fetchJson, lang, disambiguationTitle);
+  if (!wikitext) return null;
+  return pickDisambiguationTarget(featureName, city, extractWikiLinkTitles(wikitext));
 }
 
 async function fetchWikitext(
@@ -144,14 +171,14 @@ export async function resolveStreetWikipedia(
   let streetTitle = '';
 
   for (const title of streetArticleTitleCandidates(name, city)) {
-    const english = await fetchSummary(fetchJson, 'en', title);
+    const english = await fetchSummary(fetchJson, 'en', title, city, name);
     if (english?.extract) {
       streetSummary = english;
       streetLang = 'en';
       streetTitle = english.title || title;
       break;
     }
-    const dutch = await fetchSummary(fetchJson, 'nl', title);
+    const dutch = await fetchSummary(fetchJson, 'nl', title, city, name);
     if (dutch?.extract || dutch?.content_urls?.desktop?.page) {
       streetSummary = dutch;
       streetLang = 'nl';

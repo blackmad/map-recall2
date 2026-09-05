@@ -8,6 +8,8 @@
 
 export const LEADERBOARD_STORAGE_KEY = 'satb_bestTimes';
 export const EXPLORATION_STORAGE_KEY = 'canalRecall.exploration.v1';
+/** Nominatim cache for the home-address field; cleared with “Clear all data”. */
+export const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v2';
 /** Personal bests are capped and evicted oldest-first. */
 export const LEADERBOARD_MAX_ENTRIES = 50;
 
@@ -15,6 +17,16 @@ export const LEADERBOARD_MAX_ENTRIES = 50;
 export interface KeyValueStore {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
+  removeItem?(key: string): void;
+}
+
+function removeKey(store: KeyValueStore, key: string): void {
+  try {
+    if (store.removeItem) store.removeItem(key);
+    else store.setItem(key, '');
+  } catch {
+    /* private mode */
+  }
 }
 
 function readJson<T>(store: KeyValueStore, key: string, fallback: T): T {
@@ -163,6 +175,21 @@ export function mergeExploration(
 
 export function saveExploration(store: KeyValueStore, exploration: Exploration): void {
   store.setItem(EXPLORATION_STORAGE_KEY, JSON.stringify(exploration));
+}
+
+/** Wipe the exploration collection (not spaced-repetition knowledge). */
+export function clearExploration(store: KeyValueStore): void {
+  removeKey(store, EXPLORATION_STORAGE_KEY);
+}
+
+/** Wipe personal-best times. */
+export function clearBestTimes(store: KeyValueStore): void {
+  removeKey(store, LEADERBOARD_STORAGE_KEY);
+}
+
+/** Wipe the home-address geocode cache. */
+export function clearHomeGeocodeCache(store: KeyValueStore): void {
+  removeKey(store, HOME_GEOCODE_CACHE_KEY);
 }
 
 /** How much of this route was new — what the finish screen celebrates. */

@@ -23,10 +23,12 @@
  */
 
 import assert from 'node:assert/strict';
+import { NSGI_ALIGNMENT_M } from '../src/canalRecall/facade/rdNew.js';
 import { lngLatBboxToRd, lngLatToRd, rdToLngLat } from '../src/canalRecall/rdCoordinates.js';
 
 const WGS84_A = 6378137.0;
 const WGS84_E2 = 6.69437999014e-3;
+const METRES_PER_DEGREE_LATITUDE = 111_320;
 
 /** Ellipsoidal distance, accurate well past what a 1 km probe needs. */
 function geodesicM([lng1, lat1]: [number, number], [lng2, lat2]: [number, number]): number {
@@ -44,10 +46,13 @@ function geodesicM([lng1, lat1]: [number, number], [lng2, lat2]: [number, number
 const scaleAt = (x: number, y: number, dx: number, dy: number): number =>
   Math.hypot(dx, dy) / geodesicM(rdToLngLat(x, y), rdToLngLat(x + dx, y + dy));
 
-// --- the origin is exact ----------------------------------------------------
+// --- the origin is Amersfoort, after the measured NSGI datum offset ----------
 const [originLng, originLat] = rdToLngLat(155000, 463000);
-assert.ok(Math.abs(originLat - 52.15517440) < 1e-7, 'RD origin returns the Amersfoort latitude');
-assert.ok(Math.abs(originLng - 5.38720621) < 1e-7, 'RD origin returns the Amersfoort longitude');
+const expectedOriginLat = 52.15517440 - NSGI_ALIGNMENT_M.north / METRES_PER_DEGREE_LATITUDE;
+const expectedOriginLng = 5.38720621
+  - NSGI_ALIGNMENT_M.east / (METRES_PER_DEGREE_LATITUDE * Math.cos((expectedOriginLat * Math.PI) / 180));
+assert.ok(Math.abs(originLat - expectedOriginLat) < 1e-7, 'RD origin returns the aligned Amersfoort latitude');
+assert.ok(Math.abs(originLng - expectedOriginLng) < 1e-7, 'RD origin returns the aligned Amersfoort longitude');
 
 // --- conformality, across the country and in every direction ----------------
 const places: [string, number, number][] = [
