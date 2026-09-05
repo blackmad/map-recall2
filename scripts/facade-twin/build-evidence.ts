@@ -28,7 +28,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
-import { STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
+import { STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
 import { nearestMaterial } from '../../src/canalRecall/facade/materials.ts';
 import { rectifyFacade, type CameraPose } from '../../src/canalRecall/facade/rectify.ts';
 import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
@@ -141,7 +141,7 @@ async function strip(record: Stored): Promise<boolean> {
   } satisfies CameraPose,
     { start: { x: x0, y: y0 }, end: { x: x1, y: y1 },
       baseZ: ground - STRIP_BASE_BELOW_GROUND_M, topZ: eaves + 0.3 },
-    { pixelsPerMetre: Math.min(60, Math.max(24, 1250 / record.standoffM)), yaw: AMSTERDAM_YAW_CONVENTION });
+    { pixelsPerMetre: Math.min(MAX_PIXELS_PER_METRE, Math.max(MIN_PIXELS_PER_METRE, 1250 / record.standoffM)), yaw: AMSTERDAM_YAW_CONVENTION });
 
   const ppm = rect.pixelsPerMetre;
   for (const o of clean ? [] : record.openings) {

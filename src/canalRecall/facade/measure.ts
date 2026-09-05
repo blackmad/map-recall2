@@ -46,6 +46,20 @@ export interface Gray {
  */
 export const STRIP_BASE_BELOW_GROUND_M = 1.8;
 
+// Resolution cap.
+//
+// An 8000 px equirectangular gives about 1250 px per radian, so a wall at 25 m
+// resolves at 50 px/m and the same wall at 10 m at 125. The cap was 60, which
+// threw away half the detail on every close view — and half these strips are
+// under 300 px wide, so they were being magnified 3x in every viewer to
+// compensate for resolution the source actually had. The floor of 24 stays:
+// below that an opening is a smudge whatever you do.
+//
+// It is still a cap, not a target. `1250 / standoff` is the real limit and
+// nothing here samples above it, because upsampling invents detail.
+export const MAX_PIXELS_PER_METRE = 110;
+export const MIN_PIXELS_PER_METRE = 24;
+
 export interface Opening {
   /** Metres from the left edge of the measured strip. */
   xM: number;

@@ -37,7 +37,7 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
-import { STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
+import { STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade, type CameraPose } from '../../src/canalRecall/facade/rectify.ts';
 import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
@@ -177,7 +177,7 @@ for (const buildingId of queue) {
   for (const [i, pick] of picks.entries()) {
     const image = await panorama(pick.pose.view);
     if (!image) continue;
-    const ppm = Math.min(60, Math.max(24, 1250 / pick.standoff));
+    const ppm = Math.min(MAX_PIXELS_PER_METRE, Math.max(MIN_PIXELS_PER_METRE, 1250 / pick.standoff));
     const rect = rectifyFacade(image, {
       x: pick.pose.point.x, y: pick.pose.point.y,
       z: pick.pose.view.cameraHeight - GEOID_SEPARATION_M,

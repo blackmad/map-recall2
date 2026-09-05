@@ -26,7 +26,7 @@ import { applyHeritageEvidence, buildRecordFromRecon, type SourceDescriptor } fr
 import { auditHouse, validateHouse } from '../../src/canalRecall/facade/houseRecord.ts';
 import { summariseCoverage, wasObserved } from '../../src/canalRecall/facade/evidence.ts';
 import { applyStreetLevelEvidence, wallMaterialOf } from '../../src/canalRecall/facade/streetLevelEvidence.ts';
-import { measureFacade, STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
+import { measureFacade, STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
 import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
@@ -237,7 +237,7 @@ for (const entry of block) {
       const base = massing.get(entry.buildingId)?.groundLevel ?? null;
       const eavesNap = massing.get(entry.buildingId)?.eavesHeight ?? null;
       if (base !== null && eavesNap !== null && eavesNap > base) {
-        const ppm = Math.min(60, Math.max(24, 1250 / found.standoff));
+        const ppm = Math.min(MAX_PIXELS_PER_METRE, Math.max(MIN_PIXELS_PER_METRE, 1250 / found.standoff));
         const rect = rectifyFacade(image, {
           x: found.pose.point.x, y: found.pose.point.y, z: found.pose.view.cameraHeight - GEOID_SEPARATION_M,
           headingDeg: found.pose.view.headingDeg, pitchDeg: found.pose.view.pitchDeg, rollDeg: found.pose.view.rollDeg,

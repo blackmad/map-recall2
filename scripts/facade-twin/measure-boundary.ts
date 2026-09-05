@@ -22,7 +22,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM, type Elevation } from '../../src/canalRecall/facade/elevations.ts';
 import { plausibility, PLAUSIBLE_ENOUGH } from '../../src/canalRecall/facade/grammar.ts';
-import { measureFacade, STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
+import { measureFacade, STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
 import { AMSTERDAM_YAW_CONVENTION, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
@@ -224,7 +224,7 @@ for (const { panoramaId, pose: planPose, jobs } of plan) {
     const eaves = mass?.eavesHeight ?? null;
     if (ground === null || eaves === null || eaves <= ground) { failed++; continue; }
 
-    const ppm = Math.min(60, Math.max(24, 1250 / job.standoff));
+    const ppm = Math.min(MAX_PIXELS_PER_METRE, Math.max(MIN_PIXELS_PER_METRE, 1250 / job.standoff));
     const rect = rectifyFacade(image, {
       x: entry.pose.point.x, y: entry.pose.point.y, z: entry.pose.view.cameraHeight - GEOID_SEPARATION_M,
       headingDeg: entry.pose.view.headingDeg, pitchDeg: entry.pose.view.pitchDeg, rollDeg: entry.pose.view.rollDeg,

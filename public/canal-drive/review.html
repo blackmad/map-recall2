@@ -13,7 +13,18 @@
     max-width:1180px; margin:0 auto; padding:20px 20px 60px; align-items:start; }
   .shot { background:#0a0e10; border:1px solid var(--line); border-radius:5px; padding:8px;
     position:sticky; top:20px; }
-  .shot img { width:100%; display:block; border-radius:3px; }
+  /* Never upscale the strip.
+     A 3.8 m canal house rectified at 60 px/m is 228 px wide, and stretching it
+     to panel width is a 3x magnification of an image that has no more detail in
+     it — which reads as "wildly zoomed in" and as noise, because that is what
+     an upscaled 30 px/m photograph is. Shown at its own size, centred, and
+     capped in height so a tall narrow house does not run off the screen.
+     `image-rendering: auto` so the browser at least interpolates if the cap
+     does force a scale. */
+  .shot img { display:block; margin:0 auto; border-radius:3px;
+    max-width:100%; max-height:70vh; width:auto; height:auto; }
+  .shot .scale { font:10.5px ui-monospace,monospace; color:var(--ink-3);
+    text-align:center; margin-top:6px; }
   .shot figcaption { font-size:11.5px; color:var(--ink-3); margin-top:7px; line-height:1.45; }
   h1 { font-size:16px; margin:0 0 2px; letter-spacing:-.01em; }
   .addr { font-size:19px; margin:0 0 1px; font-weight:600; letter-spacing:-.01em; }
@@ -119,6 +130,7 @@ function render() {
   document.getElementById('app').innerHTML = `
     <figure class="shot">
       <img src="${card.strip}" alt="Rectified façade">
+      <div class="scale">shown at native resolution — no upscaling</div>
       <figcaption>Rectified from a ${esc(card.capturedAt)} panorama. Green boxes are what the
       detector found — ignore them when answering, they are the thing being judged.
       Sampled because: <b>${esc(card.stratum)}</b>.</figcaption>
