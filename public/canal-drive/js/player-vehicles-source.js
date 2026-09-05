@@ -7,6 +7,7 @@ const assetUrl = path => new URL(path, window.location.href).href;
 const BIKE_SKINS = {
   omafiets: { id: 'omafiets', file: 'omafiets-runtime.glb', widthScale: 1.35, motion: true, babySeat: true, label: 'Omafiets' },
   pink: { id: 'pink', file: 'pink-city-bicycle-runtime.glb', widthScale: 1.2, motion: true, babySeat: false, label: 'City bike' },
+  mama: { id: 'mama', file: 'mama-chari-runtime.glb', widthScale: 1.65, motion: true, babySeat: true, label: 'Mama-chari' },
   swapfiets: { id: 'swapfiets', file: 'swapfiets-sketchfab-preview.glb', widthScale: 1, motion: false, babySeat: false, label: 'Swapfiets' },
 };
 const DEFAULT_BIKE_SKIN = 'omafiets';

@@ -32,11 +32,14 @@ hubs. Runtime file is `omafiets-runtime.glb`. Players can also pick:
 
 - Kin Chen’s “Pink city bicycle” (CC0 via MorfVision / BlenderKit) —
   `pink-city-bicycle-runtime.glb`, rigged by `scripts/rig-pink-city-bike.py`
+- pokoponmaru’s Sketchfab “City Bike (mama-chari)” (CC BY 4.0) —
+  `mama-chari-runtime.glb`, rigged by `scripts/rig-mama-chari-bike.py`
+  (optional `BabySeat`)
 - PatrickGoud’s Sketchfab “Swapfiets” (CC BY 4.0) —
   `swapfiets-sketchfab-preview.glb` (intact body, baked chase width, look-only)
 
 Bike skin preference: `bikeSkin` in `canalRecall.preferences.v1`.
-Optional rear child seat: `bikeBabySeat` (omafiets `BabySeat` node; default off).
+Optional rear child seat: `bikeBabySeat` (omafiets / mama-chari `BabySeat`; default off).
 
 The chase/cockpit player boat is “Moored Aluminum Boats”, generated with
 Meshy AI by the project owner rather than sourced from a third party, so it
