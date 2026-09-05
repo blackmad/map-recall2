@@ -13,6 +13,11 @@
  *  they were rather than only "a street in Oud-West".
  */
 
+import {
+  isDisambiguationExtract,
+  isDisambiguationSummaryType,
+} from './encyclopediaDisambiguation.ts';
+
 export const STREET_SUFFIX_PATTERN =
   /^(.*?)(straat|gracht|kade|plein|weg|laan|steeg|pad|plantsoen|brug)$/i;
 
@@ -89,7 +94,9 @@ async function fetchSummary(
   try {
     const data = await fetchJson(url) as WikiSummary & { type?: string; title?: string };
     if (!data || data.type === 'https://mediawiki.org/api/rest_v1/errors/not_found') return null;
+    if (isDisambiguationSummaryType(data.type)) return null;
     if (!data.extract && !data.content_urls?.desktop?.page) return null;
+    if (isDisambiguationExtract(data.extract)) return null;
     return data;
   } catch {
     return null;
@@ -158,6 +165,7 @@ export async function resolveStreetWikipedia(
     || `https://${streetLang}.wikipedia.org/wiki/${encodeURIComponent(streetTitle.replace(/ /g, '_'))}`;
   const wikidata = streetSummary.wikibase_item;
   const streetExtract = (streetSummary.extract || '').trim();
+  if (isDisambiguationExtract(streetExtract)) return null;
 
   let personName = personNameFromStreet(name);
   if (streetLang === 'nl' && streetTitle) {

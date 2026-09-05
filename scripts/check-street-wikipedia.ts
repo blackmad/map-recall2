@@ -2,6 +2,7 @@
  * Offline street Wikipedia resolution helpers (enrich pipeline, not runtime).
  */
 import assert from 'node:assert/strict';
+import { isDisambiguationExtract } from '../src/canalRecall/game/encyclopediaDisambiguation.ts';
 import {
   composeNamedAfterBlurb,
   isThinStreetExtract,
@@ -47,6 +48,11 @@ assert.equal(
 );
 
 {
+  assert.equal(isDisambiguationExtract('New Canal can refer to: Nieuwegracht (Utrecht)'), true);
+  assert.equal(isDisambiguationExtract('The Oudegracht runs through the center of Utrecht.'), false);
+}
+
+{
   const fetchJson = async (url: string) => {
     if (url.includes('/en.wikipedia.org/api/rest_v1/page/summary/Nicolaas_Beetsstraat')) {
       return { type: 'https://mediawiki.org/api/rest_v1/errors/not_found' };
@@ -80,4 +86,4 @@ assert.equal(
   assert.equal(resolved!.wikipediaUrl, 'https://nl.wikipedia.org/wiki/Nicolaas_Beetsstraat_(Amsterdam)');
 }
 
-console.log('Street Wikipedia OK: 9 checks.');
+console.log('Street Wikipedia OK: 11 checks.');

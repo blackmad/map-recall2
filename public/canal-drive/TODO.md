@@ -507,6 +507,10 @@ end of `HISTORY.md`. Neither is queued; both are deliberately parked.
 
 Not milestones — standing obligations, each with a live guard already in place.
 
+- Keep rejecting Wikipedia disambiguation / surname-list ledes in enrich
+  (`isDisambiguationExtract`) and the publish gate
+  (`check:encyclopedia-disambiguation`). Re-run `npm run scrub:disambiguation`
+  only after a bad enrich slips through.
 - Refine boat shoreline response and bridge traversal across more route
   geometries. The current guard rolls the hull inward and preserves
   canal-tangent movement instead of leaving it stuck against a quay.
