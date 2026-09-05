@@ -52,11 +52,11 @@ stops (302 inside the Amsterdam play bbox). Named pins already hold:
 - tram **2** stops at **Dam**
 - metro **52** stops at **Noord**
 
-Rebuild (from worktree, after caching the zip):
+Types live in `src/canalRecall/transit/network.ts`. Rebuild (after caching the zip):
 
 ```bash
 # already downloaded to .cache/transit/gtfs-nl.zip
-python3 scripts/build-amsterdam-transit-gtfs.py
+npm run build --silent/build-amsterdam-transit-gtfs.ts
 ```
 
 **OSM role (secondary):** basemap context, quay/walk connectors, maybe snapping

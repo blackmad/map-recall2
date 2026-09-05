@@ -1,21 +1,19 @@
 /**
- * Named pins for the Amsterdam GVB transit staging extract (from OVapi GTFS).
+ * Named pins for the Amsterdam GVB transit extract (from OVapi GTFS).
  */
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
+import type { TransitNetwork } from '../src/canalRecall/transit/network.ts';
 
-const extractPath = path.resolve(
-  'public/data/extracts/amsterdam/transit-network.json',
+const extractPath = path.resolve('public/data/extracts/amsterdam/transit-network.json');
+
+assert.ok(
+  existsSync(extractPath),
+  `missing ${extractPath} — run npm run build:amsterdam-transit-gtfs`,
 );
 
-assert.ok(existsSync(extractPath), `missing ${extractPath} — run scripts/build-amsterdam-transit-gtfs.py`);
-
-const network = JSON.parse(readFileSync(extractPath, 'utf8')) as {
-  counts: { lines: number; byMode: Record<string, number>; stops: number; linesWithPath: number };
-  lines: Array<{ ref: string; mode: string; stopIds: string[]; path: number[][] | null }>;
-  stops: Record<string, { name: string }>;
-};
+const network = JSON.parse(readFileSync(extractPath, 'utf8')) as TransitNetwork;
 
 assert.equal(network.counts.byMode.tram, 17, 'GVB tram lines');
 assert.equal(network.counts.byMode.metro, 5, 'GVB metro lines');
@@ -27,7 +25,7 @@ assert.ok(network.counts.stops >= 250, `enough stops (got ${network.counts.stops
 function lineHasStop(ref: string, needle: string): boolean {
   const line = network.lines.find((l) => l.ref === ref);
   assert.ok(line, `line ${ref} exists`);
-  return line!.stopIds.some((id) => (network.stops[id]?.name || '').toLowerCase().includes(needle.toLowerCase()));
+  return line.stopIds.some((id) => (network.stops[id]?.name || '').toLowerCase().includes(needle.toLowerCase()));
 }
 
 assert.ok(lineHasStop('2', 'Dam'), 'tram 2 stops at Dam');
