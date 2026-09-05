@@ -560,10 +560,25 @@ difference is **0.00°**, and no year pair exceeds 0.17°:
 There is no per-campaign heading offset to solve for. That closes the line of
 enquiry §12b opened, cheaply, on metadata alone and without a single image.
 
-**But the same look found a real bug.** `cameraHeight` is exactly `0` for every
-panorama captured in **2024 and 2025 — 15,312 of 139,937, 11% of the fleet**.
-It is a missing value, not a measurement, and with a 43.5 m geoid separation it
-places the lens 43.5 m *below* NAP: forty-six metres under the street.
+**But the same look found a real bug.** Stated carefully, because the first
+version of this paragraph said something false: *the photographs are fine, and
+nothing was taken underground.* What is true is that Amsterdam publishes a
+missing value as a zero, and this pipeline did arithmetic on it.
+
+Checked against the API rather than inferred from our cache:
+
+    recording_2025-06-16_…   coordinates [lng, lat, 0.0]   heading 0    pitch 0    roll 0
+    b_20241121_1354_…        coordinates [lng, lat, 0.0]   heading 3.14 pitch 1.68 roll -0.18
+
+**15,312 of 139,937 panoramas publish a height of zero** — all of 2024 and
+2025. Of those, the **7,317 `recording_*` frames from 2025 also publish heading,
+pitch and roll as exactly zero**, which is absent orientation rather than a
+camera pointing due north perfectly level; the 7,995 from 2024 carry a real
+orientation and lack only height.
+
+A zero height then went through `cameraHeight - GEOID_SEPARATION_M` and became
+a lens 43.5 m *below* NAP — forty-six metres under the street, in our model,
+not in life.
 
 Nothing objected. The rectifier faithfully computed the directions from a camera
 in the earth's crust to a wall above it — which point almost straight up — and

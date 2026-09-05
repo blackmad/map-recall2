@@ -49,25 +49,40 @@ const PAGE_SIZE = 500;
 /**
  * Is this pose usable at all?
  *
- * 15,312 of the 139,937 published panoramas — every one captured in 2024 and
- * 2025 — carry `cameraHeight: 0`. That is a missing value, not a measurement:
- * the geoid separation here is 43.5 m, so a zero reading places the lens 43.5 m
- * below NAP, forty-six metres under the street.
+ * Amsterdam publishes a missing value as a zero, in two different fields, and
+ * neither is signalled any other way. Verified against the API itself rather
+ * than inferred from our cache:
  *
- * Nothing downstream noticed. The rectifier faithfully computed the directions
- * from a camera in the earth's crust to a wall above it, which point almost
- * straight up, and returned rooflines and sky — a well-formed picture of the
- * wrong thing, which is this project's signature failure. 249 of 2,180 measured
- * façades, 11%, were measured that way, and any cross-view comparison including
- * one of them was guaranteed to disagree.
+ *     recording_2025-06-16_…  coordinates [lng, lat, 0.0]   heading 0 pitch 0 roll 0
+ *     b_20241121_1354_…       coordinates [lng, lat, 0.0]   heading 3.14 pitch 1.68 roll -0.18
  *
- * The rest of the fleet is sound: median published height 46.69 m, which is
- * 3.19 m NAP after the separation, 2.56 m above this boundary's typical ground
- * — right for a survey vehicle's lens.
+ * So of 139,937 panoramas: **15,312 publish a zero height** — all of 2024 and
+ * 2025 — and of those, the **7,317 `recording_*` frames from 2025 also publish
+ * heading, pitch and roll as exactly zero**, which is absent orientation, not a
+ * camera pointing due north perfectly level. The other 7,995, the 2024 `b_*`
+ * batch, carry a real orientation and only lack height.
+ *
+ * The photographs are fine. What was wrong was this pipeline's handling: a zero
+ * height went through `cameraHeight - GEOID_SEPARATION_M` and became a lens
+ * 43.5 m *below* NAP, forty-six metres under the street. The rectifier then
+ * faithfully computed the directions from there up to a wall and returned
+ * roofline and sky — a well-formed picture of the wrong thing, which is this
+ * project's signature failure. 249 of 2,180 measured façades were measured that
+ * way, so any cross-view comparison including one was guaranteed to disagree.
+ *
+ * A missing value must never be arithmetic. Both forms are rejected here.
+ *
+ * The rest of the fleet confirms the geoid constant independently: median
+ * published height 46.69 m is 3.19 m NAP after the separation, 2.56 m above
+ * this boundary's typical ground of 0.63 m — right for a survey vehicle's lens.
  */
-export const hasUsablePose = (view: { cameraHeight: number; headingDeg: number }) =>
+export const hasUsablePose = (view: {
+  cameraHeight: number; headingDeg: number; pitchDeg: number; rollDeg: number;
+}) =>
   Number.isFinite(view.cameraHeight) && view.cameraHeight > 0
-  && Number.isFinite(view.headingDeg);
+  && Number.isFinite(view.headingDeg)
+  // All three exactly zero is the other way this feed says "no orientation".
+  && !(view.headingDeg === 0 && view.pitchDeg === 0 && view.rollDeg === 0);
 
 export const AMSTERDAM_YAW_CONVENTION = 'edge' as const;
 

@@ -95,10 +95,17 @@ check('rectify options are required', !/options:\s*RectifyOptions\s*=\s*\{\}/.te
  * sky. 11% of the pilot's façades were measured that way before this check
  * existed.
  */
-const unusable = views.filter(v => !hasUsablePose(v));
-check('poses without a camera height are rejected',
-  unusable.every(v => !hasUsablePose(v)) && unusable.length > 0,
-  `${unusable.length} of ${views.length} panoramas carry cameraHeight <= 0`);
+const zeroHeight = views.filter(v => !(v.cameraHeight > 0));
+const zeroPose = views.filter(v => v.headingDeg === 0 && v.pitchDeg === 0 && v.rollDeg === 0);
+check('a zero camera height is rejected, not made arithmetic',
+  zeroHeight.length > 0 && zeroHeight.every(v => !hasUsablePose(v)),
+  `${zeroHeight.length} of ${views.length} publish height 0`);
+check('an all-zero orientation is rejected',
+  zeroPose.length > 0 && zeroPose.every(v => !hasUsablePose(v)),
+  `${zeroPose.length} publish heading=pitch=roll=0`);
+check('the usable fleet is most of the fleet',
+  views.filter(hasUsablePose).length > views.length * 0.8,
+  `${views.filter(hasUsablePose).length} of ${views.length} usable`);
 check('the usable fleet has a plausible lens height', (() => {
   const heights = views.filter(hasUsablePose).map(v => v.cameraHeight).sort((a, b) => a - b);
   if (!heights.length) return false;
