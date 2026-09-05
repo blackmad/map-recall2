@@ -36,7 +36,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { loadTrackOffsets } from './panorama-render.ts';
-import { buildProbe, chooseFrontage } from './frontage.ts';
+import { buildProbe, chooseFrontage, rankViews, spreadAcrossYears } from './frontage.ts';
 import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, hasUsablePose } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
@@ -71,6 +71,8 @@ async function panorama(id: string) {
 }
 
 const trackOffset = await loadTrackOffsets(CACHE);
+const posedViews = [...views.values()].filter(hasUsablePose)
+  .map(view => ({ view, point: RD_NEW.fromLngLat(view.lngLat), capturedAt: view.capturedAt }));
 const probe = buildProbe(footprints, [...views.values()].filter(hasUsablePose).map(v => RD_NEW.fromLngLat(v.lngLat)));
 const addressPoints = new Map<string, ProjectedPoint[]>();
 try {
@@ -159,27 +161,7 @@ for (const pandId of Object.keys(store)) {
   if (done >= limit) break;
   const record = store[pandId], ring = footprints.get(pandId), mass = massing.get(pandId);
   if (!record || !ring || !Number.isFinite(mass?.groundLevel)) continue;
-  const usable: PanoramaView[] = [];
-  for (const id of [record.panoramaId, ...(multi[pandId] ?? []).map(m => m.panoramaId)]) {
-    const v = views.get(id);
-    if (v && hasUsablePose(v) && !usable.some(u => u.panoramaId === id)) usable.push(v);
-  }
-  if (usable.length < 2) continue;
-  const a = usable[0];
-  const b = usable.slice(1).sort((p, q) =>
-    Math.abs(((q.headingDeg - a.headingDeg) % 360 + 540) % 360 - 180)
-    - Math.abs(((p.headingDeg - a.headingDeg) % 360 + 540) % 360 - 180))[0];
-  const [imA, imB] = [await panorama(a.panoramaId), await panorama(b.panoramaId)];
-  if (!imA || !imB) continue;
 
-  /**
-   * The merged elevation the stale proposal points at.
-   *
-   * `measured-facades.json` stores a wall chosen before coplanar stretches were
-   * rejoined, so on a frontage with a jog it holds one piece — a median 2.31x
-   * too small. Registration measured on a third of a wall is measuring a
-   * different thing from registration measured on the wall.
-   */
   /**
    * The frontage, chosen by visibility rather than by a stale proposal.
    *
@@ -193,6 +175,18 @@ for (const pandId of Object.keys(store)) {
     { proposal: record.wall, addressPoints: addressPoints.get(pandId) ?? [] });
   if (!choice.elevation) continue;                 // nothing visible: massing only
   const wall = choice.elevation;
+  // Views are chosen for *this* wall, not read from a record chosen for another
+  // one. That record picked its views for the elevation the old selector liked,
+  // which on a third of buildings is the back — so a corrected frontage
+  // inherited views that never pointed at it.
+  const ranked = rankViews(wall, pandId, probe,
+    posedViews.filter(c => existsSync(path.join(CACHE, 'panoramas', `${c.view.panoramaId}.jpg`))),
+    { wallHeightM: (mass.ridgeHeight ?? mass.groundLevel + 14) - mass.groundLevel });
+  const spread = spreadAcrossYears(ranked, 2);
+  if (spread.length < 2) continue;
+  const [a, b] = [spread[0].view, spread[1].view];
+  const [imA, imB] = [await panorama(a.panoramaId), await panorama(b.panoramaId)];
+  if (!imA || !imB) continue;
   const [x0, y0, x1, y1] = [wall.start.x, wall.start.y, wall.end.x, wall.end.y];
   const wM = Math.hypot(x1 - x0, y1 - y0);
   const mid = { x: (x0 + x1) / 2, y: (y0 + y1) / 2 };
@@ -210,6 +204,8 @@ for (const pandId of Object.keys(store)) {
     dHeading: Number((((b.headingDeg - a.headingDeg) % 360 + 540) % 360 - 180).toFixed(1)),
     wallWidthM: Number(wM.toFixed(2)), proposedWidthM: record.wallWidthM,
     frontageChanged: choice.changed, clearViews: choice.clearViews,
+    yearsApart: Math.abs(Number(a.capturedAt.slice(0,4)) - Number(b.capturedAt.slice(0,4))),
+    worstPpmA: Number(spread[0].worstPixelsPerMetre.toFixed(1)), worstPpmB: Number(spread[1].worstPixelsPerMetre.toFixed(1)),
     // Independent explanations for a bad residual, recorded rather than assumed.
     obliquityA: Number(obliquityDeg(wall, camA).toFixed(1)), obliquityB: Number(obliquityDeg(wall, camB).toFixed(1)),
     standoffA: Number(standoffM(wall, camA).toFixed(1)), standoffB: Number(standoffM(wall, camB).toFixed(1)),

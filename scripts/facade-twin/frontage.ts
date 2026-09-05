@@ -170,3 +170,103 @@ export function buildProbe(
     },
   };
 }
+
+/**
+ * Ranking the views of one wall by how much of it they can actually resolve.
+ *
+ * The old selector took whatever was in front of the wall between 3 and 35 m
+ * and preferred the squarest and nearest. Three things it never considered, and
+ * each of them was costing whole buildings:
+ *
+ * **Whether the wall can be seen.** A camera on the next street is in front of
+ * a courtyard wall at a fine obliquity with a building in the way. Hard
+ * requirement now, not a preference.
+ *
+ * **Where the frame is squeezed.** An equirectangular image is linear in
+ * elevation, so a metre of wall at elevation phi earns v-pixels in proportion to
+ * cos^2(phi). At 10 m from a 20 m building the top has a *fifth* the vertical
+ * detail of the foot. Maximising the worst sampling over the wall's height,
+ * d/(d^2 + h^2), peaks at **d = h**: the best standoff is about the building's
+ * own height, and a flat 8-45 m band happily picks a 9 m view whose upper
+ * storeys are mush.
+ *
+ * **That a different year may simply be clear.** Westermarkt 1 is wrapped in
+ * scaffolding in 2019 and perfectly visible in 2023, and nothing in the ranking
+ * ever looked at a second year. Obstruction cannot be seen from metadata, so
+ * this returns a spread across capture years and lets agreement between them
+ * decide, rather than betting everything on one date.
+ */
+export interface ViewCandidate<T> { view: T; point: ProjectedPoint; capturedAt: string }
+export interface RankedView<T> extends ViewCandidate<T> {
+  standoffM: number; obliquityDeg: number;
+  /** Source pixels per metre at the *worst* point of the wall — its top. */
+  worstPixelsPerMetre: number;
+  leafOff: boolean;
+}
+
+const FRAME_HEIGHT_PX = 4000, FRAME_WIDTH_PX = 8000;
+
+/** Vertical source sampling a metre of wall earns at height `z`, in pixels. */
+export const verticalPixelsPerMetre = (standoff: number, heightAboveLens: number) =>
+  (FRAME_HEIGHT_PX / Math.PI) * (standoff / (standoff * standoff + heightAboveLens * heightAboveLens));
+
+/** Horizontal sampling across the wall, which foreshortens with obliquity. */
+export const horizontalPixelsPerMetre = (standoff: number, obliquity: number) =>
+  (FRAME_WIDTH_PX / (2 * Math.PI)) * Math.cos((obliquity * Math.PI) / 180) / standoff;
+
+export function rankViews<T>(
+  elevation: Elevation, pandId: string, probe: VisibilityProbe, candidates: Array<ViewCandidate<T>>,
+  { wallHeightM = 14, lensHeightM = 2.4, maxObliquityDeg = 35, minStandoffM = 6, maxStandoffM = 60 } = {},
+): Array<RankedView<T>> {
+  const topAboveLens = Math.max(1, wallHeightM - lensHeightM);
+  const ranked: Array<RankedView<T>> = [];
+  for (const candidate of candidates) {
+    if (!inFrontOf(elevation, candidate.point)) continue;
+    const standoff = standoffM(elevation, candidate.point);
+    if (standoff < minStandoffM || standoff > maxStandoffM) continue;
+    const obliquity = obliquityDeg(elevation, candidate.point);
+    if (obliquity > maxObliquityDeg) continue;
+    if (probe.blocked(candidate.point, elevation.midpoint, pandId)) continue;
+    // The binding constraint is whichever axis resolves worse.
+    const worst = Math.min(
+      verticalPixelsPerMetre(standoff, topAboveLens),
+      horizontalPixelsPerMetre(standoff, obliquity),
+    );
+    const month = new Date(candidate.capturedAt).getUTCMonth() + 1;
+    ranked.push({ ...candidate, standoffM: standoff, obliquityDeg: obliquity,
+      worstPixelsPerMetre: worst, leafOff: month >= 11 || month <= 3 });
+  }
+  // Leaf-off first among comparable views: an Amsterdam canal elm covers the
+  // façade this project exists to measure, and a bare one covers much less.
+  ranked.sort((a, b) => (Number(b.leafOff) - Number(a.leafOff)) || (b.worstPixelsPerMetre - a.worstPixelsPerMetre));
+  return ranked;
+}
+
+/**
+ * A spread of views across capture years, best first within each.
+ *
+ * Taking the top `n` by quality alone returns `n` frames of one pass on one
+ * afternoon, which agree with each other because they share every mistake and
+ * every obstruction. One per year is a genuinely independent set.
+ */
+export function spreadAcrossYears<T>(ranked: Array<RankedView<T>>, count: number): Array<RankedView<T>> {
+  const byYear = new Map<string, Array<RankedView<T>>>();
+  for (const r of ranked) {
+    const year = r.capturedAt.slice(0, 4);
+    (byYear.get(year) ?? byYear.set(year, []).get(year)!).push(r);
+  }
+  const years = [...byYear.keys()].sort((a, b) => b.localeCompare(a));
+  const out: Array<RankedView<T>> = [];
+  for (let round = 0; out.length < count; round++) {
+    let added = false;
+    for (const year of years) {
+      const list = byYear.get(year)!;
+      if (round >= list.length) continue;
+      out.push(list[round]);
+      added = true;
+      if (out.length >= count) break;
+    }
+    if (!added) break;
+  }
+  return out;
+}
