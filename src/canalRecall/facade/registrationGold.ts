@@ -32,7 +32,7 @@ export interface RegistrationGoldFixture {
   elevations: Elevation[];
   selectedElevationId: string | null;
   elevationSelectionBasis: string | null;
-  panorama: (PanoramaView & { mission: string | null; localImageUrl: string | null }) | null;
+  panorama: (PanoramaView & { mission: string | null; localImageUrl: string | null; cameraRd: ProjectedPoint }) | null;
   sourceQuad: Array<{ x: number; y: number }> | null;
   rectifiedPreviewUrl: string | null;
   anchors: RegistrationAnchor[];

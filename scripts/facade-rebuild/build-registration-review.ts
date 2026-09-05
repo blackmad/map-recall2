@@ -62,7 +62,12 @@ const fixtures: RegistrationGoldFixture[] = candidates.candidates.map((candidate
     }
     selectedElevationId = selected.elevationId;
     elevationSelectionBasis = `Recorded regression observation: ${standoffM(selected, camera).toFixed(1)} m standoff, ${obliquityDeg(selected, camera).toFixed(1)}° off square. No image-yaw claim.`;
-    panorama = { ...regressionPanorama, mission: regressionPanorama.missionYear, localImageUrl: `local/${regressionPanoramaId}.jpg` };
+    panorama = {
+      ...regressionPanorama,
+      mission: regressionPanorama.missionYear,
+      localImageUrl: `local/${regressionPanoramaId}.jpg`,
+      cameraRd: camera,
+    };
   }
   return {
     fixtureId: `ams-reg-${String(index + 1).padStart(2, '0')}`,
