@@ -866,7 +866,7 @@
       this._landmarkCardBounds = { x: cardX, y: cardY, w: card.width, h: card.height };
     }
     /**
-     * The expanded card. `measureLandmarkCard` cuts the body to two or four
+     * The expanded card. `measureLandmarkCard` cuts the body to three or four
      * lines so the driving corridor stays visible; this is where the rest of the
      * extract lives, in HTML, where it can scroll and carry a real link.
      *

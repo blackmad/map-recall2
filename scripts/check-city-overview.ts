@@ -125,8 +125,25 @@ check('a route running past the mapped areas is still framed', () => {
   }, RECT);
   assert.ok(built);
   const finish = project(built.projection, { x: 5000, y: 5000 });
-  assert.ok(finish.x <= RECT.x + RECT.width && finish.y <= RECT.y + RECT.height,
-    'the destination cannot fall off the edge of its own map');
+  // Zoomed framing may clip a little rim; the destination still stays near the
+  // box rather than flying off into empty canvas.
+  assert.ok(
+    finish.x > RECT.x - 40 && finish.x < RECT.x + RECT.width + 40
+    && finish.y > RECT.y - 40 && finish.y < RECT.y + RECT.height + 40,
+    'the destination cannot fall far off the edge of its own map');
+});
+
+check('the overview sits a notch closer than a pure fit-to-city framing', () => {
+  const areaRings = [[
+    { x: 0, y: 0 }, { x: 2000, y: 0 }, { x: 2000, y: 2000 }, { x: 0, y: 2000 }, { x: 0, y: 0 },
+  ]];
+  const built = buildOverview({
+    areaRings, networkSegments: [], route: [], start: null, finish: null,
+  }, RECT);
+  assert.ok(built);
+  const fitted = fitProjection({ minX: 0, minY: 0, maxX: 2000, maxY: 2000 }, RECT, 6, 1);
+  assert.ok(built.projection.scale > fitted.scale * 1.1,
+    `expected ~18% tighter framing, got ${built.projection.scale / fitted.scale}`);
 });
 
 check('an empty world produces no overview rather than a broken one', () => {

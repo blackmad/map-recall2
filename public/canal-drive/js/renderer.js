@@ -336,7 +336,7 @@ class Renderer {
     ctx.stroke();
 
     if (image) {
-      const ix = x + 10, iy = y + 10;
+      const ix = x + 12, iy = y + 12;
       ctx.save();
       roundRect(ctx, ix, iy, card.imageWidth, card.imageHeight, 6);
       ctx.clip();
@@ -356,7 +356,9 @@ class Renderer {
       more: ['rgba(208,138,74,.22)', '#f0b98a'],
       fact: ['rgba(255,255,255,.12)', 'rgba(255,255,255,.78)'],
     };
-    let textY = y + 22;
+    // Keep in step with `measureLandmarkCard` height: top air, badge row, name,
+    // body line step, then bottom air so the last glyph is not flush to the plate.
+    let textY = y + 18;
     ctx.font = `700 9px ${surface.fontMono}`;
     ctx.textAlign = 'left';
     for (const badge of card.badges) {
@@ -367,18 +369,18 @@ class Renderer {
       ctx.fillStyle = ink;
       ctx.fillText(badge.label, x + badge.x + 5, textY);
     }
-    if (card.badges.length) textY += 17;
+    if (card.badges.length) textY += 18;
 
     ctx.fillStyle = surface.ink;
     ctx.font = `800 16px ${surface.fontPlaque}`;
     ctx.fillText(card.displayName.toUpperCase(), x + card.textLeft, textY);
-    textY += 18;
+    textY += 20;
 
     ctx.fillStyle = surface.inkMuted;
     ctx.font = `500 11px ${surface.fontUi}`;
     for (const line of card.lines) {
       ctx.fillText(line, x + card.textLeft, textY);
-      textY += 14;
+      textY += 15;
     }
   }
 

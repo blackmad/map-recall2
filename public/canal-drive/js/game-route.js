@@ -513,6 +513,15 @@ class GameRouteRuntime {
 
     this.camera.x = this.player.x;
     this.camera.y = this.player.y;
+    this.camera._lookahead = 0;
+    this.camera.resetPan();
+    // Snap the basemap onto the boat before the first paint — sync only runs
+    // once RACING draws, and without this the map can still show Damrak for a
+    // frame (or sit off-centre until camera smoothing catches up).
+    if (this.vectorMap && typeof this.vectorMap.aimAtWorld === 'function') {
+      const bearing = this.camera.northUp ? 0 : (this.player.angle + Math.PI / 2) * 180 / Math.PI;
+      this.vectorMap.aimAtWorld(this.player.x, this.player.y, this.osmLoader, { bearing });
+    }
     this._warmRouteNeighborhoodImages();
   }
 
@@ -638,6 +647,12 @@ class GameRouteRuntime {
       this._routeMastery = this.recall ? this.recall.routeMastery('amsterdam') : {};
       this.track.setRouteMastery(this._routeMastery);
       if (this.travelMode === 'boat') this.track.waterTest = (x, y) => this.vectorMap.isWater(x, y, this.osmLoader);
+      // Aim the basemap at the start while the loading overlay is still up so
+      // LoD1 tiles download under the spawn — not on Damrak, and not as a hitch
+      // on the first racing frame.
+      if (this.vectorMap && typeof this.vectorMap.aimAtWorld === 'function') {
+        this.vectorMap.aimAtWorld(start.x, start.y, this.osmLoader);
+      }
       this._routeLearningPlan = this.track.planRoute(start, finish);
       this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : [];
       if (!this.routePath || this.routePath.length < 2) {

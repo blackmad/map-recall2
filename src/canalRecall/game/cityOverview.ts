@@ -75,8 +75,16 @@ export function unionBounds(a: Bounds | null, b: Bounds | null): Bounds | null {
  * Uniform matters more here than filling the box: Amsterdam stretched to a
  * 180×140 rectangle is not a map of Amsterdam, and the canal ring is only
  * recognisable while it is still round.
+ *
+ * `zoom` > 1 tightens the framing after the fit (cropping a little rim) so the
+ * overview can sit a notch closer without losing the city's shape.
  */
-export function fitProjection(bounds: Bounds, rect: Rect, padding = 6): Projection {
+export function fitProjection(
+  bounds: Bounds,
+  rect: Rect,
+  padding = 6,
+  zoom = 1,
+): Projection {
   const usableWidth = Math.max(1, rect.width - padding * 2);
   const usableHeight = Math.max(1, rect.height - padding * 2);
   const spanX = bounds.maxX - bounds.minX;
@@ -84,9 +92,10 @@ export function fitProjection(bounds: Bounds, rect: Rect, padding = 6): Projecti
   // A single point, or a perfectly straight line of them, has no extent on one
   // axis; fall back to a scale that puts it in the middle rather than dividing
   // by zero and projecting everything to NaN.
-  const scale = spanX <= 0 && spanY <= 0
+  const fitted = spanX <= 0 && spanY <= 0
     ? 1
     : Math.min(spanX > 0 ? usableWidth / spanX : Infinity, spanY > 0 ? usableHeight / spanY : Infinity);
+  const scale = fitted * Math.max(0.01, zoom);
   const centreX = (bounds.minX + bounds.maxX) / 2;
   const centreY = (bounds.minY + bounds.maxY) / 2;
   return {
@@ -152,7 +161,12 @@ export interface OverviewSources {
  * something the player knows rather than something they re-read each time. The
  * route and its endpoints are unioned in so a trip that runs past the mapped
  * areas cannot fall off the edge.
+ *
+ * `OVERVIEW_ZOOM` pulls in a little from a pure fit-to-city framing: the canal
+ * ring stays readable and the player mark is easier to find in the 260×200 box.
  */
+export const OVERVIEW_ZOOM = 1.18;
+
 export function buildOverview(
   sources: OverviewSources,
   rect: Rect,
@@ -164,7 +178,7 @@ export function buildOverview(
     boundsOf([sources.route, endpoints]),
   );
   if (!bounds) return null;
-  const projection = fitProjection(bounds, rect, padding);
+  const projection = fitProjection(bounds, rect, padding, OVERVIEW_ZOOM);
   return {
     projection,
     layers: {

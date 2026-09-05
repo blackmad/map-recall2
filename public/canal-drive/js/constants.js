@@ -44,8 +44,8 @@ const GRID_CELL = 200;                         // px — collision grid cell siz
 // --- Car Physics ---
 const CAR_WIDTH = 24;                          // px — car width
 const CAR_LENGTH = 56;                         // px — car length
-const CAR_MAX_SPEED = 205;                     // px/s — fast arcade boat pace
-const CAR_ACCEL = 98;                          // px/s² — reach the higher cap promptly
+const CAR_MAX_SPEED = 260;                     // px/s — arcade boat top speed
+const CAR_ACCEL = 120;                         // px/s² — reach the higher cap promptly
 const CAR_BRAKE_FORCE = 75;                    // px/s² / reverse thrust
 const CAR_TURN_RATE = 1.45;                    // rad/s
 const PLAYER_CAR_TURN_MULT = 1.45;             // tighter street-mode steering
