@@ -59,6 +59,11 @@ export interface GameCoreHost {
   /** Non-empty while a recall question is open. The HUD must not cover it, and
    *  nothing may reveal a name while it is up. */
   quizPromptName: string;
+  /** Subject of the open prompt (`line` / `stop` / `street` / …). Transit uses
+   *  this so stop/street questions do not blank the sticky line plaque. */
+  quizPromptSubject: string;
+  /** Line display name kept on the plaque after the first transit line answer. */
+  _activeTransitLine: string;
   /** True while a settings or debug panel is open over the canvas. */
   _utilityOpen: boolean;
   /** The expanded landmark card. Owned by the route/DOM half of the game. */
@@ -93,6 +98,9 @@ export interface LandmarkHost extends GameCoreHost {
   neighborhoods: Neighborhood[];
   bridges: Bridge[];
   streetKnowledge: Map<string, StreetKnowledgeEntry>;
+  routePath: WorldPoint[] | null;
+  /** Read-only street centreline index for corridor street quizzes. */
+  _corridorStreetIndex: import('../transit/corridorStreets.ts').CorridorStreetIndex | null;
 
   _landmarkNotice: LandmarkNotice | null;
   /** Why the current card is up, and how far through its life it is. */
@@ -167,6 +175,8 @@ export interface RecallHost extends GameCoreHost {
    *  next drive does not re-tell the facts they just wiped. */
   _factRotation: RotationState;
 
+  routeFrom: { id: string; name: string };
+  routeTo: { id: string; name: string };
   routeOptions: { answerMode: AnswerMode };
   routeDifficulty: RouteDifficulty;
   gameyFeatures: boolean;
@@ -202,7 +212,11 @@ export interface RecallHost extends GameCoreHost {
   _lastBridgeQuizAt: number;
   _lastTransitStopQuizAt: number;
   _lastTransitLineQuizAt: number;
+  _lastTransitStreetQuizAt: number;
   _quizzedTransitStops: Set<string>;
+  _quizzedTransitStreets: Set<string>;
+  /** Read-only street centreline index for corridor street quizzes. */
+  _corridorStreetIndex: import('../transit/corridorStreets.ts').CorridorStreetIndex | null;
   _choiceOrder?: string[];
   _pendingSkipMastered?: boolean;
 
@@ -265,6 +279,8 @@ export interface PresentationHost extends GameCoreHost {
   quizFeedback: string;
   quizCurrentName: string;
   quizCandidateName: string;
+  quizPromptSubject: string;
+  _activeTransitLine: string;
   quizPromptSegmentIndex: number;
   quizPromptPointIndex: number;
 

@@ -141,14 +141,27 @@ export class GamePresentationRuntime {
     const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
     // Hide a new route name from the first candidate frame, not only after the
     // delayed question opens. Otherwise the HUD reveals the answer during the
-    // turn-confirmation window.
-    const routeAnswerHidden = !!this.quizPromptName
-      || (!!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName);
-    // Pass heading so a junction names the street you are driving, not the
-    // cross street whose centreline happens to be nearer.
-    const visibleRouteName = routeAnswerHidden
-      ? ''
-      : this.track.getRoadName(player.x, player.y, player.angle);
+    // turn-confirmation window. Transit keeps a sticky line plaque after the
+    // first answer — stop/street quizzes must not blank it.
+    const roadName = this.track.getRoadName(player.x, player.y, player.angle);
+    let visibleRouteName = '';
+    let routeAnswerHidden = false;
+    if (isTransit(this.travelMode) && window.CanalRecallTransit?.transitPlaqueRouteName) {
+      const plaque = window.CanalRecallTransit.transitPlaqueRouteName({
+        activeLine: this._activeTransitLine || '',
+        roadName: roadName || '',
+        quizPromptName: this.quizPromptName || '',
+        quizPromptSubject: this.quizPromptSubject || '',
+        quizCandidateName: this.quizCandidateName || '',
+        quizCurrentName: this.quizCurrentName || '',
+      });
+      visibleRouteName = plaque.routeName;
+      routeAnswerHidden = plaque.answerHidden;
+    } else {
+      routeAnswerHidden = !!this.quizPromptName
+        || (!!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName);
+      visibleRouteName = routeAnswerHidden ? '' : (roadName || '');
+    }
     // One plaque: street, neighbourhood + trip, score. Speed and odometer live
     // here on every viewport; there is no separate trip pill any more.
     this.hud.drawPlaque(ctx, {

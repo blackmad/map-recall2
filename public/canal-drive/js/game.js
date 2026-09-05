@@ -170,6 +170,11 @@ class Game {
     this.streetKnowledge = new Map();
     this._blockedBoatFrames = 0;
     this._blockedCarFrames = 0;
+    this._activeTransitLine = '';
+    this.quizPromptSubject = '';
+    this._lastTransitStreetQuizAt = -Infinity;
+    this._quizzedTransitStreets = new Set();
+    this._corridorStreetIndex = null;
 
     this._alanLinkBounds = null;
     this._githubLinkBounds = null;
@@ -642,12 +647,21 @@ class Game {
     if (this.travelMode === 'car' || this.travelMode === 'transit') {
       const road = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
       const previousRoad = this.track.getNearestRoad(previousPlayerPosition.x, previousPlayerPosition.y, this.player.angle);
+      const guardOpts = this.travelMode === 'transit'
+        ? {
+          edgeTolerance: CAR_ROAD_EDGE_TOLERANCE,
+          softPullFactor: 0.36,
+          softPullLimit: 5.5,
+          blockedFrames: this._blockedCarFrames,
+          unwedgeAfter: 4,
+        }
+        : { edgeTolerance: CAR_ROAD_EDGE_TOLERANCE, blockedFrames: this._blockedCarFrames };
       const guard = CanalRecallCar.constrainCarToRoad(
         this.player,
         previousPlayerPosition,
         road,
         previousRoad,
-        { edgeTolerance: CAR_ROAD_EDGE_TOLERANCE, blockedFrames: this._blockedCarFrames }
+        guardOpts,
       );
       this._blockedCarFrames = guard === 'rolled-back' ? this._blockedCarFrames + 1 : 0;
     } else if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {

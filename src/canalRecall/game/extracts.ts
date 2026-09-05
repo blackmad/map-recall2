@@ -80,4 +80,8 @@ export interface StreetKnowledgeEntry {
   /** Commons / Wikipedia page image when the enricher found one. Street and
    *  water cards use the same notice slot as landmarks, so this must travel. */
   wikipediaImageUrl?: string;
+  /** Curated street geometry — used for transit corridor street quizzes. */
+  path?: LatLng[];
+  paths?: LatLng[][];
+  distractors?: string[];
 }

@@ -488,6 +488,71 @@
     return enabled && !input.utilityOpen;
   }
 
+  // src/canalRecall/game/modes.ts
+  function isTransit(mode) {
+    return mode === "transit";
+  }
+
+  // src/canalRecall/transit/corridorStreets.ts
+  function pointToSegDist(px, py, ax, ay, bx, by) {
+    const dx = bx - ax;
+    const dy = by - ay;
+    const len2 = dx * dx + dy * dy;
+    if (len2 <= 1e-9) return Math.hypot(px - ax, py - ay);
+    let t = ((px - ax) * dx + (py - ay) * dy) / len2;
+    t = Math.max(0, Math.min(1, t));
+    return Math.hypot(px - (ax + t * dx), py - (ay + t * dy));
+  }
+  function buildCorridorStreetIndex(streets, project) {
+    const segments = [];
+    const names = [];
+    const distractorsByName = /* @__PURE__ */ new Map();
+    const seen = /* @__PURE__ */ new Set();
+    for (const street of streets) {
+      if (!street.name) continue;
+      if (!seen.has(street.name)) {
+        seen.add(street.name);
+        names.push(street.name);
+        if (street.distractors && street.distractors.length) {
+          distractorsByName.set(street.name, street.distractors);
+        }
+      }
+      for (const path of street.paths) {
+        if (!path || path.length < 2) continue;
+        let prev = null;
+        for (const [lat, lng] of path) {
+          const point = project(lat, lng);
+          if (!point) {
+            prev = null;
+            continue;
+          }
+          if (prev) {
+            segments.push({
+              name: street.name,
+              ax: prev.x,
+              ay: prev.y,
+              bx: point.x,
+              by: point.y
+            });
+          }
+          prev = point;
+        }
+      }
+    }
+    return { segments, names, distractorsByName };
+  }
+  function distanceToPath(path, x, y) {
+    if (!path.length) return Infinity;
+    if (path.length === 1) return Math.hypot(path[0].x - x, path[0].y - y);
+    let best = Infinity;
+    for (let i = 1; i < path.length; i += 1) {
+      const a = path[i - 1];
+      const b = path[i];
+      best = Math.min(best, pointToSegDist(x, y, a.x, a.y, b.x, b.y));
+    }
+    return best;
+  }
+
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
   var CLICK_SELECT_RADIUS = 120;
@@ -714,23 +779,37 @@
         );
         this.vectorMap.setPlaces(features, boundaries);
         this.vectorMap.setBrandedPois(brandedPois);
-        this.landmarks = buildLandmarks(features, (lat, lng) => this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false));
-        this._landmarkImages = /* @__PURE__ */ new Map();
-        this._landmarkImageRequests = /* @__PURE__ */ new Set();
         const metersPerDegreeLat = 111320;
         const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
         const toWorld = ([lat, lng]) => ({
           x: (lng - centerLng) * metersPerDegreeLng * PIXELS_PER_METER + this.osmLoader._lastOffsetX,
           y: -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this.osmLoader._lastOffsetY
         });
+        this.landmarks = buildLandmarks(features, (lat, lng) => isTransit(this.travelMode) ? toWorld([lat, lng]) : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false));
+        this._landmarkImages = /* @__PURE__ */ new Map();
+        this._landmarkImageRequests = /* @__PURE__ */ new Set();
         this.neighborhoods = buildNeighborhoods(boundaries, neighborhoodEnriched, toWorld);
         this.bridges = buildBridges(bridgeFeatures, crossingIndex, toWorld);
+        if (isTransit(this.travelMode)) {
+          const corridorStreets = streetFeatures.map((street) => ({
+            name: street.name,
+            paths: (street.paths || (street.path ? [street.path] : [])).map((path) => path.map(([lat, lng]) => [lat, lng])),
+            distractors: street.distractors
+          }));
+          this._corridorStreetIndex = buildCorridorStreetIndex(
+            corridorStreets,
+            (lat, lng) => toWorld([lat, lng])
+          );
+        } else {
+          this._corridorStreetIndex = null;
+        }
         this._neighborhoodImages = /* @__PURE__ */ new Map();
         this._neighborhoodLetterArt = /* @__PURE__ */ new Map();
         this._neighborhoodImageRequests = /* @__PURE__ */ new Set();
       } catch (error) {
         console.warn("Landmark notes unavailable:", error);
         this.landmarks = [];
+        this._corridorStreetIndex = null;
       }
     }
     // ---- Per-frame ----
@@ -772,11 +851,16 @@
       }
       let nearest = null;
       let nearestDistance = DRIVE_BY_RADIUS;
+      const routePath = this.routePath;
+      const landmarkRouteRadiusPx = isTransit(this.travelMode) ? (window.CanalRecallTransit?.TRANSIT_LANDMARK_ROUTE_RADIUS_M ?? 120) * PIXELS_PER_METER : Infinity;
       for (const landmark of this.landmarks) {
         const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
         if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
         if (this._seenLandmarks.has(landmark.id)) continue;
         if (!isWorthACard(landmark)) continue;
+        if (isTransit(this.travelMode) && routePath && routePath.length >= 2) {
+          if (distanceToPath(routePath, landmark.x, landmark.y) > landmarkRouteRadiusPx) continue;
+        }
         if (distance < nearestDistance) {
           nearest = landmark;
           nearestDistance = distance;

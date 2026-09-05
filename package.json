@@ -152,7 +152,7 @@
     "build:canal-ui": "esbuild src/canalRecall/gameUi.ts --bundle --format=iife --global-name=CanalRecallUi --outfile=public/canal-drive/js/game-ui.bundle.js --minify",
     "test:mobile-hud": "node --experimental-strip-types scripts/check-mobile-hud.ts",
     "build:signature-landmark-model": "tsx scripts/build-signature-landmark.ts",
-    "build:vehicle-models": "blender --background --python scripts/build-omafiets-bike.py -- --out=public/canal-drive/omafiets-runtime.glb",
+    "build:vehicle-models": "blender --background --python scripts/build-omafiets-bike.py -- --out=public/canal-drive/omafiets-runtime.glb && blender --background --python scripts/build-swapfiets-bike.py -- --out=public/canal-drive/swapfiets-runtime.glb",
     "build:google-tiles-spike": "node scripts/build-google-tiles-spike.mjs",
     "build:canal-overlay": "esbuild src/canalRecall/overlay/mount.tsx --bundle --format=iife --global-name=CanalRecallOverlay --outfile=public/canal-drive/js/overlay.bundle.js --minify --jsx=automatic",
     "test:canal-overlay": "tsx scripts/check-canal-overlay.ts",

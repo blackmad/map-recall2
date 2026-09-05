@@ -6,6 +6,56 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Tram lock + along-route teaching — 2026-09-05
+
+Phase C playtest: the line vanished from the plaque as soon as a stop question
+opened (or after a brief shape gap), and the ride only asked line + any nearby
+stop — not streets, landmarks, or stops toward the destination.
+
+- **Sticky line plaque:** once Tram 2 is answered/adopted, keep it on the HUD
+  for the hop. Only a line question (or pre-answer settle) blanks it; stop and
+  street prompts leave the line visible. Do not pre-reveal the line at spawn.
+- **Stronger corridor lock:** wider tram/metro envelopes + firmer soft-pull so
+  noisy GTFS shapes feel locked, not grazable.
+- **Dest-scoped stops:** quiz only intermediate (+ destination) stops on the
+  ordered line between `routeFrom` and `routeTo`, and only while still ahead
+  toward the finish.
+- **Corridor streets:** read-only index from curated `streets.json` paths —
+  never driveable. Secondary “which street is the tram on?” quizzes along the
+  rails; encyclopedia via existing street knowledge.
+- **Landmarks:** pure lat/lng projection in transit (no snap-onto-rails), and
+  prefer cards within ~120 m of `routePath`.
+
+## Swapfiets BB junction cleaned (2026-09-05)
+
+Side close-up showed a floating red stub behind the bottom bracket — the
+step-through Bézier started rear of the seat tube and looped into a dead end,
+plus a separate BB→U cylinder stacked on top. U now starts mid seat-tube, dips
+ahead of the BB, and a short BB shell + trough join replace the stub. Preview
+`?v=2`.
+
+## Swapfiets authored from scratch (2026-09-05)
+
+PatrickGoud’s Sketchfab body never yielded clean wheel/steer splits — cuts
+tore bars/seat/tyres, and the `×1.7` lateral bake ovalled the discs. Replaced
+the look-only preview with a procedural twin of the omafiets geometry:
+red frame, blue front tyre, black rear, cargo front rack, real
+`Lenker` / `RadVorn` / `RadHinten`. `scripts/build-swapfiets-bike.py` →
+`swapfiets-runtime.glb`; skin `motion: true`, `widthScale: 1.3`. Front-tyre
+clearance assert green (~9cm Frame / ~11cm Fork). Sketchfab GLB removed from
+ship; omafiets stays the dark-green distinct livery.
+
+## Mama-chari: solid frame, metre-scale (2026-09-05)
+
+Preview showed floating seat/wheels/basket. Three stacked causes: (1) strip used
+`abs(x)<0.012` through the front-wheel disc and ate the ±0.02-wide midplane
+spine — now annulus-only, and only isolated tyre-island verts (frame joints
+kept); (2) root×scale left body/handle at object scale ~15 while wheels were 1,
+plus leftover Sketchfab/FBX empties — bake mesh scales and prune before export;
+(3) preview `widthScale=1.65` non-uniform Z exploded the multi-node rig — set to
+1. Prefer standalone/zip `.glb` over FBX. Uniform root scale targets wheelbase
+≈ 1.08 m. Asserts strip count, body X span, and midplane gap. Preview `?v=8`.
+
 ## Transit mode thin slice (tram 2) — 2026-09-05
 
 Phases A–C of [`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on `spike/canal-transit`.
@@ -27,6 +77,101 @@ Phases A–C of [`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on `spike/canal-transit`.
 - **Demo chase mesh:** `gvb-metro-51-runtime.glb` (~3k tris, meshopt) from
   mini-amsterdam-3d’s mirror of UiGoku’s Sketchfab metro 51. Licence not
   cleared — stand-in only; street-tram asset still wanted.
+
+## Mama-chari retired (2026-09-05)
+
+Gave up. Sketchfab mama-chari never yielded a chase-clean steerable skin
+(welded front tyre, handle/body seam, strip/copy hacks made it worse). Removed
+from `bikeSkins`, preview, NOTICE, and deleted `mama-chari-runtime.glb` +
+`scripts/rig-mama-chari-bike.py`. Stored pref `bikeSkin=mama` falls back to
+omafiets. Keep omafiets + pink (motion) and Swapfiets (look-only).
+
+## Swapfiets: unskewed look-only body (2026-09-05)
+
+The earlier `×1.7` lateral bake ovalled the wheels. Cutting verts for real
+steer/spin still tears PatrickGoud’s mesh into floating bars/seat/tyres (tried
+again with `stylize-swapfiets-bike.py`). Preview GLB is intact + leveled, no
+lateral bake; motion stays off. Steerable skins: omafiets / pink / mama.
+
+## Mama-chari: stop inventing a front disc (2026-09-05)
+
+Prior rigs searched a “front hub” on the body and pasted a rear-disc copy
+there — that parked a stray wheel mid-frame and, with the midplane strip,
+hollowed the bike. Front tyre/fork/basket live on the handle mesh. Rig now
+keeps the handle intact under `Lenker` (steer), spins only the rear disc, uses
+the standalone `.glb`, scales to ~1.08 m wheelbase, and forces preview
+`widthScale=1` (non-uniform Z exploded the hierarchy). Head-tube seam is the
+source’s two-mesh join (~1 cm), not an exploded transform.
+
+## Omafiets: chain case clear of frame (2026-09-05)
+
+Gray chain case was punching through the green stay/U. Moved outboard/lower
+(`Y≈−0.18`). Preview `?v=8`.
+
+## Pink city bike: front fender concentric (2026-09-05)
+
+Side/3/4 shots still showed an uneven tyre↔mudguard gap and a slight lean —
+`front_mudguard` sat ~10° off the wheel plane and ~15° pitched after handle
+straighten. Rig now PCA-aligns the fender onto +Y about the hub, searches
+pitch for min radial spread, and snaps midplane. Asserts thin↔Y < 2° and
+midΔY < 3cm. Preview `?v=19`.
+
+## Omafiets: curved step-through, bars, saddle (2026-09-05)
+
+Side/top screenshots showed a kinked U (few straight cylinders), angular
+three-segment bars, and a floating flat seat tablet. Rebuild uses sparse
+auto-handle Bézier controls + bevelled tubes for the step-through and
+handlebars (smooth-shaded), stacked ellipsoids for a flush spring saddle,
+and seat stays routed outside the rear tyre. Preview `?v=6`. Front clearance
+assert still green (~9cm Frame / ~11cm Fork). OpenRouter side+top QA: PASS.
+
+## Mama-chari: front wheel spin + straight track (2026-09-05)
+
+Same class of bug as the pink city bike: the front tyre was welded into
+`MamaChariBody`, so `RadVorn` was an empty (no spin) and the authored tyre sat
+cocked vs the frame. There is no clean loose front disc — cutting “roundish”
+parts tore mid-frame tubes earlier. Rig now strips the welded front-tyre verts,
+mounts a copy of the rear disc under `RadVorn`, PCA-bakes axle → +Y, and puts
+both hubs on one midplane. Preview `?v=6`. Steer couples bars+wheel; spin
+verified via frame diffs (solid disc is hard to see by eye).
+
+## Pink city bike: track centering (2026-09-05)
+
+Front hub sat ~6cm beside the rear after straighten, and the basket was
+another ~8cm offline — top-down looked off-centre / slightly wobbly even
+with a true spin axle. Rig now snaps the front assembly onto the rear
+midplane, nudges the basket onto the hub track, and recentres so hubs sit
+on Y=0. Preview `?v=18`. Ortho-top + spin QA: PASS.
+
+## Pink city bike: front wheel spin axle (2026-09-05)
+
+After rest-steer straighten, AABB “thin=Y” still left the front disc ~10°
+tilted, so +Z spin looked wobbly. `bake_wheel_to_pivot` now aligns the
+min-variance axle onto +Y (residual 0°; thickness matches the rear). Preview
+`?v=15`.
+
+## Omafiets: front tyre no longer eats the frame (2026-09-05)
+
+The authored step-through U and a BB→head diagonal ran through the front
+tyre volume (~3cm penetration). Rebuild pulls the U back/up behind the wheel,
+drops the long diagonal for a short BB→U join, shortens the head tube, nudges
+the front hub forward, and bows the fork out wider (`AXLE_HALF` 0.12) so side
+views do not read as tubes through rubber. Build asserts Frame/Fork mesh gaps
+before export. Preview `?v=3`. OpenRouter chase-angle QA: PASS.
+
+## Pink city bike: rest steer + stray cables (2026-09-05)
+
+Kin Chen’s CC0 pink city bike shipped with bars/fork/fender yawed ~50° while
+the game spin pivot forced the front tyre upright, so the wheel sat beside
+the fender. Brake-cable meshes (`*剎車線*`, `煞車TL*`) also floated once the
+bars moved under `Lenker`.
+
+`scripts/rig-pink-city-bike.py` now: deletes those cable objects; searches the
+Z rotation that minimizes front-wheel lateral span (mudguard AABB was a bad
+proxy); places `Lenker`/`RadVorn` *after* straighten at the mesh hub so the
+tyre is not left at the pre-yaw hub; puts `Lenker` on the hub’s lateral
+midplane so steer does not orbit the wheel sideways. Preview cache `?v=14`.
+OpenRouter vision QA on side/front/chase/steer screenshots: PASS.
 
 ## Board cleanup (2026-09-05): 8b closed, 11b demoted
 

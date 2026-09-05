@@ -87,12 +87,11 @@
 <div class="panel" id="controls">
   <div id="controls-scroll">
   <h1>Bike preview</h1>
-  <p class="sub">Compare authored omafiets, free city bikes, and the Sketchfab Swapfiets reference.</p>
+  <p class="sub">Compare authored omafiets, free city bikes, and authored Swapfiets.</p>
 
   <h2>Model</h2>
   <button type="button" data-model="omafiets" class="active">Omafiets</button>
   <button type="button" data-model="pink">City bike (CC0)</button>
-  <button type="button" data-model="mama">Mama-chari</button>
   <button type="button" data-model="swapfiets">Swapfiets</button>
   <label class="file">Load file<input type="file" id="file" accept=".glb,.gltf,model/gltf-binary,model/gltf+json"></label>
 
@@ -138,11 +137,7 @@
   Preview only. <strong>Omafiets</strong> is authored for the game (dark-green Dutch roadster; steer / spin).
   <strong>City bike</strong> is Kin Chen via MorfVision/BlenderKit
   (<a href="https://morfvision.store/en/assets/bk-4c1a83c1829f4c00/">CC0</a>) — step-through + basket, real wheel/handle splits.
-  <strong>Mama-chari</strong> is pokoponmaru’s Sketchfab mesh
-  (<a href="https://sketchfab.com/3d-models/city-bikemama-chari-876e5b6f0e90424a9679c73b284f03e0">CC BY 4.0</a>) — optional rear baby seat.
-  <strong>Swapfiets</strong> is PatrickGoud’s Sketchfab mesh
-  (<a href="https://sketchfab.com/3d-models/swapfiets-163434395a0e4ab38c12ae195e978a0d">CC BY 4.0</a>):
-  intact body, chase-width baked, look only (no spin).
+  <strong>Swapfiets</strong> is authored (red frame, blue front tyre, cargo rack; steer / spin).
 </div>
 
 <script type="importmap">
@@ -160,10 +155,9 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
 const MODELS = {
-  omafiets: new URL('./omafiets-runtime.glb', import.meta.url).href,
-  pink: `${new URL('./pink-city-bicycle-runtime.glb', import.meta.url).href}?v=7`,
-  mama: `${new URL('./mama-chari-runtime.glb', import.meta.url).href}?v=4`,
-  swapfiets: `${new URL('./swapfiets-sketchfab-preview.glb', import.meta.url).href}?v=body4`,
+  omafiets: `${new URL('./omafiets-runtime.glb', import.meta.url).href}?v=8`,
+  pink: `${new URL('./pink-city-bicycle-runtime.glb', import.meta.url).href}?v=19`,
+  swapfiets: `${new URL('./swapfiets-runtime.glb', import.meta.url).href}?v=2`,
 };
 const params = new URLSearchParams(location.search);
 const initialKey = MODELS[params.get('model')] ? params.get('model')
@@ -494,28 +488,19 @@ for (const button of document.querySelectorAll('button[data-model]')) {
     }
     document.querySelector('#spin').checked = false;
     document.querySelector('#waggle').checked = false;
-    const motionOn = key !== 'swapfiets';
-    document.querySelector('#steer').disabled = !motionOn;
-    document.querySelector('#spin').disabled = !motionOn;
-    document.querySelector('#waggle').disabled = !motionOn;
-    document.querySelector('#motion-hint').textContent = key === 'swapfiets'
-      ? 'Reference mesh only (no overlays). Use Omafiets or Pink city for steer / spin.'
-      : 'A / D or ← → steer · S spin · W waggle';
+    document.querySelector('#steer').disabled = false;
+    document.querySelector('#spin').disabled = false;
+    document.querySelector('#waggle').disabled = false;
+    document.querySelector('#motion-hint').textContent =
+      'A / D or ← → steer · S spin · W waggle';
     if (key === 'swapfiets') {
-      state.widthScale = 1;
-      document.querySelector('#width').value = '1';
-      document.querySelector('#width-val').textContent = '1.0';
-      document.querySelector('#steer').value = '0';
-      document.querySelector('#steer-val').textContent = '0';
-      state.steer = 0;
+      state.widthScale = 1.3;
+      document.querySelector('#width').value = '1.3';
+      document.querySelector('#width-val').textContent = '1.3';
     } else if (key === 'pink') {
       state.widthScale = 1.2;
       document.querySelector('#width').value = '1.2';
       document.querySelector('#width-val').textContent = '1.2';
-    } else if (key === 'mama') {
-      state.widthScale = 1.65;
-      document.querySelector('#width').value = '1.65';
-      document.querySelector('#width-val').textContent = '1.65';
     } else {
       state.widthScale = 1.35;
       document.querySelector('#width').value = '1.35';
@@ -547,24 +532,15 @@ window.addEventListener('drop', e => {
 window.addEventListener('resize', resize);
 resize();
 setView('side');
-if (initialKey === 'swapfiets' || initialKey === 'pink' || initialKey === 'mama') {
+if (initialKey === 'swapfiets' || initialKey === 'pink') {
   if (initialKey === 'swapfiets') {
-    state.widthScale = 1;
-    document.querySelector('#width').value = '1';
-    document.querySelector('#width-val').textContent = '1.0';
-    document.querySelector('#steer').disabled = true;
-    document.querySelector('#spin').disabled = true;
-    document.querySelector('#waggle').disabled = true;
-    document.querySelector('#motion-hint').textContent =
-      'Reference mesh only (no overlays). Use Omafiets or Pink city for steer / spin.';
+    state.widthScale = 1.3;
+    document.querySelector('#width').value = '1.3';
+    document.querySelector('#width-val').textContent = '1.3';
   } else if (initialKey === 'pink') {
     state.widthScale = 1.2;
     document.querySelector('#width').value = '1.2';
     document.querySelector('#width-val').textContent = '1.2';
-  } else {
-    state.widthScale = 1.65;
-    document.querySelector('#width').value = '1.65';
-    document.querySelector('#width-val').textContent = '1.65';
   }
   for (const button of document.querySelectorAll('button[data-model]')) {
     button.classList.toggle('active', button.dataset.model === initialKey);

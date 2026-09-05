@@ -297,6 +297,7 @@ export class GameRecallRuntime {
     if (!this.player) return;
     if (isTransit(this.travelMode)) {
       this._updateTransitStopQuiz();
+      this._updateTransitStreetQuiz();
     }
     const heading = this.player.angle;
     const name = this.track.getRoadName(this.player.x, this.player.y, heading);
@@ -331,6 +332,7 @@ export class GameRecallRuntime {
       this.quizCurrentName = decision.name;
       this.learnedNames.add(decision.name);
       this._revealName(decision.name);
+      if (isTransit(this.travelMode)) this._activeTransitLine = decision.name;
       this._showStreetKnowledge(
         decision.name,
         profile.learnedKind === 'street' ? 'street'
@@ -344,6 +346,7 @@ export class GameRecallRuntime {
       const cooldown = window.CanalRecallTransit?.TRANSIT_LINE_QUIZ_COOLDOWN_S ?? 45;
       if (this.raceTime - (this._lastTransitLineQuizAt || -Infinity) < cooldown) {
         this.quizCurrentName = decision.name;
+        this._activeTransitLine = this._activeTransitLine || decision.name;
         return;
       }
       this._lastTransitLineQuizAt = this.raceTime;
@@ -381,14 +384,26 @@ export class GameRecallRuntime {
     if (this.raceTime - (this._lastTransitStopQuizAt || -Infinity) < cooldown) return;
     if (Math.abs(this.player.speed) > 80) return;
 
+    const allowedIds = this._transitDestinationStopIds();
+    if (allowedIds && allowedIds.size === 0) return;
+    // Line first: stop quizzes wait until the corridor identity is sticky.
+    if (!this._activeTransitLine) return;
+
     const radiusM = Transit.TRANSIT_STOP_QUIZ_RADIUS_M ?? 45;
     const radiusPx = radiusM * PIXELS_PER_METER;
+    const playerDistToFinish = this.track.getDistanceToFinish(this.player.x, this.player.y);
     let best: { stop: { stopId: string; name: string; center: LatLon }; dist: number } | null = null;
     for (const stop of load.stops) {
+      if (allowedIds && !allowedIds.has(stop.stopId)) continue;
       if (this._quizzedTransitStops && this._quizzedTransitStops.has(stop.stopId)) continue;
       if (this.revealedNames.has(stop.name)) continue;
       const world = this._toWorld(stop.center[0], stop.center[1]);
       if (!world) continue;
+      const stopDistToFinish = this.track.getDistanceToFinish(world.x, world.y);
+      if (Transit.isStopAheadTowardFinish
+        && !Transit.isStopAheadTowardFinish(playerDistToFinish, stopDistToFinish)) {
+        continue;
+      }
       const dist = Math.hypot(world.x - this.player.x, world.y - this.player.y);
       if (dist > radiusPx) continue;
       if (!best || dist < best.dist) best = { stop, dist };
@@ -418,6 +433,64 @@ export class GameRecallRuntime {
     });
   }
 
+  /** Stop ids between origin and destination on the active thin-slice line. */
+  _transitDestinationStopIds(): Set<string> | null {
+    const Transit = window.CanalRecallTransit;
+    const load = this.osmLoader && this.osmLoader.transitLoad;
+    if (!Transit || !load || !load.lines || !load.lines.length) return null;
+    const line = load.lines[0];
+    if (!line || !line.stopIds || !line.stopIds.length) return null;
+    const fromId = Transit.resolveRouteStopId(load.stops, this.routeFrom);
+    const toId = Transit.resolveRouteStopId(load.stops, this.routeTo);
+    if (!fromId || !toId) return null;
+    const ids = Transit.intermediateStopIds(line.stopIds, fromId, toId);
+    return new Set(ids);
+  }
+
+  _updateTransitStreetQuiz(): void {
+    if (this.quizPromptName || !this.player) return;
+    const Transit = window.CanalRecallTransit;
+    const index = this._corridorStreetIndex;
+    if (!Transit || !index) return;
+    const cooldown = Transit.TRANSIT_STREET_QUIZ_COOLDOWN_S ?? 22;
+    if (this.raceTime - (this._lastTransitStreetQuizAt || -Infinity) < cooldown) return;
+  // Prefer stop quizzes when both could fire; also wait until the line has
+  // been asked/adopted so street questions do not race the first line ask.
+  if (!this._activeTransitLine) return;
+  const stopCooldown = Transit.TRANSIT_STOP_QUIZ_COOLDOWN_S ?? 18;
+  if (this.raceTime - (this._lastTransitStopQuizAt || -Infinity) < stopCooldown * 0.5) return;
+    if (Math.abs(this.player.speed) > 90) return;
+
+    const radiusM = Transit.TRANSIT_STREET_QUIZ_RADIUS_M ?? 35;
+    const radiusPx = radiusM * PIXELS_PER_METER;
+    const nearest = Transit.nearestCorridorStreet(
+      index, this.player.x, this.player.y, radiusPx,
+    );
+    if (!nearest) return;
+    if (this._quizzedTransitStreets && this._quizzedTransitStreets.has(nearest.name)) return;
+    if (this.revealedNames.has(nearest.name)) return;
+    if (this.recall && this.recall.isSuppressedHere({
+      name: nearest.name,
+      type: 'street',
+      cityId: this.cityId || 'amsterdam',
+      center: this._toLatLon(this.player.x, this.player.y) || [52.37, 4.89],
+    })) return;
+
+    this._quizzedTransitStreets = this._quizzedTransitStreets || new Set();
+    this._quizzedTransitStreets.add(nearest.name);
+    this._lastTransitStreetQuizAt = this.raceTime;
+    const pool = index.distractorsByName.get(nearest.name) || index.names;
+    const alternatives = pickDistractors(pool, nearest.name, DISTRACTOR_COUNT, shuffle);
+    this._openQuizPrompt({
+      kind: 'route',
+      name: nearest.name,
+      subject: 'street',
+      question: 'Which street is the tram on?',
+      context: 'Along the corridor',
+      choices: alternatives.length >= 2 ? [nearest.name, ...alternatives] : null,
+    });
+  }
+
   /**
    * Shared prompt plumbing for every kind of recall question.
    *
@@ -441,6 +514,7 @@ export class GameRecallRuntime {
     this._pendingCrossing = null;
     this.quizPromptKind = kind;
     this.quizPromptName = name;
+    this.quizPromptSubject = subject;
     this.quizPromptSegmentIndex = segmentIndex;
     this.quizPromptPointIndex = pointIndex;
     // Quiz owns the teaching band: drop stale feedback and any card still up.
@@ -630,7 +704,13 @@ export class GameRecallRuntime {
     // A crossing answer belongs to the crossing, not to wherever the vehicle
     // rolled to a stop; everything else belongs to where the player was.
     const pending: PendingCrossing | null = this._pendingCrossing;
-    const isStopQuiz = this._promptKind?.dataset?.kind === 'stop';
+    const isStopQuiz = this._promptKind?.dataset?.kind === 'stop'
+      || this.quizPromptSubject === 'stop';
+    const isStreetQuiz = this._promptKind?.dataset?.kind === 'street'
+      || this.quizPromptSubject === 'street';
+    const isLineQuiz = this.quizPromptSubject === 'line'
+      || (!isStopQuiz && !isStreetQuiz && isTransit(this.travelMode)
+        && this._promptKind?.dataset?.kind === 'line');
     let recallFeature: RecallFeature | null;
     if (pending && this.quizPromptKind === 'crossing-water') {
       recallFeature = pending.water;
@@ -700,10 +780,14 @@ export class GameRecallRuntime {
     this._neighborhoodNoticeTimer = 0;
     // Neither a bridge nor the water beneath it is what the wheels are on:
     // keep the waterway/street the player is actually travelling, or the route
-    // quiz re-fires the moment the prompt closes.
+    // quiz re-fires the moment the prompt closes. Stop/street overlays on a
+    // transit hop likewise must not displace the corridor line identity.
     const atCrossing = this.quizPromptKind === 'bridge' || this.quizPromptKind === 'crossing-water';
-    if (!atCrossing && !isStopQuiz) {
+    if (!atCrossing && !isStopQuiz && !isStreetQuiz) {
       this.quizCurrentName = correctName;
+      if (isTransit(this.travelMode) || isLineQuiz) {
+        this._activeTransitLine = correctName;
+      }
     } else if (this.quizPromptKind === 'bridge' && correct && pending) {
       this._learnedBridges.set(pending.key, {
         name: correctName, labelPoint: pending.crossing.labelPoint,
@@ -720,6 +804,7 @@ export class GameRecallRuntime {
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
     this.quizPromptName = '';
+    this.quizPromptSubject = '';
     this.quizPromptSegmentIndex = -1;
     this.quizPromptPointIndex = 0;
     // "Not quite — this is Lijnbaansgracht" is the single most useful sentence
@@ -727,8 +812,9 @@ export class GameRecallRuntime {
     // long enough to actually read the name that was missed.
     const learnedRoute = !atCrossing && !isStopQuiz ? correctName : '';
     const profile = travelProfile(this.travelMode);
-    const learnedRouteType = profile.learnedKind === 'street' ? 'street'
-      : profile.learnedKind === 'transit' ? 'line' : 'water';
+    const learnedRouteType = isStreetQuiz ? 'street'
+      : profile.learnedKind === 'street' ? 'street'
+        : profile.learnedKind === 'transit' ? 'line' : 'water';
     setTimeout(() => {
       this._prompt.style.display = 'none';
       this.quizFeedback = '';

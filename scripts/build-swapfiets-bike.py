@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
-"""Author a chase-readable low-poly Dutch omafiets / Swapfiets-alike.
+"""Author a chase-readable low-poly Swapfiets (Original silhouette).
 
-  blender --background --python scripts/build-omafiets-bike.py -- \\
-    --out=public/canal-drive/omafiets-runtime.glb
+Matches PatrickGoud / real Original cues without cutting the Sketchfab mesh:
+double step-through, chrome upright bars, front carrier only, ring lock,
+iconic blue front tyre. Real Lenker / RadVorn / RadHinten pivots.
+
+  blender --background --python scripts/build-swapfiets-bike.py -- \\
+    --out=public/canal-drive/swapfiets-runtime.glb
 
 Named pivots (mesh baked into parent-local space):
 
@@ -21,27 +25,28 @@ from mathutils import Matrix, Vector
 
 
 WHEEL_R = 0.355
-TIRE_T = 0.042
+TIRE_T = 0.048  # ~42 mm Original tyre
 HUB_R = 0.048
 AXLE_HALF = 0.12
-TUBE_R = 0.042
+TUBE_R = 0.040
 DROPOUT_R = 0.024
 
-# Classic dark-green Dutch roadster — red+blue is reserved for the Swapfiets skin.
-FRAME = (0.12, 0.28, 0.20, 1.0)
+# Swapfiets Original: vivid red frame, iconic blue front tyre.
+FRAME = (0.86, 0.05, 0.08, 1.0)
+BLUE_TIRE = (0.08, 0.38, 0.95, 1.0)
 DARK = (0.09, 0.09, 0.10, 1.0)
-BLACK = (0.06, 0.06, 0.07, 1.0)
-RIM = (0.82, 0.82, 0.84, 1.0)
-SEAT = (0.05, 0.05, 0.05, 1.0)
-CHROME = (0.7, 0.72, 0.75, 1.0)
+BLACK = (0.05, 0.05, 0.06, 1.0)
+RIM = (0.78, 0.78, 0.80, 1.0)
+SEAT = (0.07, 0.07, 0.07, 1.0)
+CHROME = (0.78, 0.80, 0.84, 1.0)
 
-# Slightly longer wheelbase so the step-through U can clear the front tyre.
+# Slightly longer wheelbase so the double step-through clears the front tyre.
 REAR_HUB = Vector((-0.58, 0.0, WHEEL_R))
 FRONT_HUB = Vector((0.70, 0.0, WHEEL_R))
 BB = Vector((0.04, 0.0, WHEEL_R * 0.50))
-SEAT_J = Vector((-0.22, 0.0, 0.82))
-HEAD = Vector((0.48, 0.0, 0.86))
-BARS = Vector((0.42, 0.0, 1.12))
+SEAT_J = Vector((-0.20, 0.0, 0.80))
+HEAD = Vector((0.50, 0.0, 0.88))
+BARS = Vector((0.44, 0.0, 1.18))
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -56,7 +61,7 @@ def clear_scene() -> None:
   bpy.ops.wm.read_factory_settings(use_empty=True)
 
 
-def mat(name: str, color: tuple[float, float, float, float]) -> bpy.types.Material:
+def mat(name: str, color: tuple[float, float, float, float], *, metallic: float = 0.06, roughness: float = 0.7) -> bpy.types.Material:
   material = bpy.data.materials.new(name=name)
   material.use_nodes = True
   material.use_backface_culling = False
@@ -64,9 +69,9 @@ def mat(name: str, color: tuple[float, float, float, float]) -> bpy.types.Materi
     material.blend_method = 'OPAQUE'
   node = next(n for n in material.node_tree.nodes if n.type == 'BSDF_PRINCIPLED')
   node.inputs['Base Color'].default_value = color
-  node.inputs['Roughness'].default_value = 0.7
+  node.inputs['Roughness'].default_value = roughness
   if 'Metallic' in node.inputs:
-    node.inputs['Metallic'].default_value = 0.06
+    node.inputs['Metallic'].default_value = metallic
   return material
 
 
@@ -310,20 +315,21 @@ def build_wheel(hub: Vector, tire_mat, rim_mat, prefix: str) -> tuple[bpy.types.
 
 def build_bike() -> bpy.types.Object:
   mats = {
-    'frame': mat('OmaFrame', FRAME),
-    'dark': mat('OmaDark', DARK),
-    'black': mat('OmaBlack', BLACK),
-    'rim': mat('OmaRim', RIM),
-    'seat': mat('OmaSeat', SEAT),
-    'chrome': mat('OmaChrome', CHROME),
+    'frame': mat('SwapFrame', FRAME, metallic=0.08, roughness=0.55),
+    'dark': mat('SwapDark', DARK, metallic=0.15, roughness=0.55),
+    'black': mat('SwapBlack', BLACK, metallic=0.05, roughness=0.8),
+    'blue': mat('SwapBlueTire', BLUE_TIRE, metallic=0.0, roughness=0.75),
+    'rim': mat('SwapRim', RIM, metallic=0.55, roughness=0.35),
+    'seat': mat('SwapSeat', SEAT, metallic=0.0, roughness=0.85),
+    'chrome': mat('SwapChrome', CHROME, metallic=0.85, roughness=0.22),
   }
 
-  root = empty('Omafiets', Vector((0, 0, 0)))
+  root = empty('Swapfiets', Vector((0, 0, 0)))
   steer = empty('Lenker', HEAD)
   front = empty('RadVorn', FRONT_HUB)
   rear = empty('RadHinten', REAR_HUB)
 
-  ft, fr = build_wheel(FRONT_HUB, mats['black'], mats['rim'], 'Front')
+  ft, fr = build_wheel(FRONT_HUB, mats['blue'], mats['rim'], 'Front')
   rt, rr = build_wheel(REAR_HUB, mats['black'], mats['rim'], 'Rear')
   for part in (ft, fr):
     bind_mesh(part, front)
@@ -334,19 +340,26 @@ def build_bike() -> bpy.types.Object:
   bb_l, bb_r = BB + Vector((0, -0.035, 0)), BB + Vector((0, 0.035, 0))
   front_l, front_r = side(FRONT_HUB, -1), side(FRONT_HUB, 1)
 
-  # Deep open U — classic oma step-through. Sparse Bézier controls → one
-  # continuous bevelled tube (not a chain of kinked cylinders). Tube *axes*
-  # must clear the front tyre by ~WHEEL_R + tire + tube (+ margin).
-  u_ctrl = [
-    SEAT_J + Vector((0.05, 0.0, -0.52)),
-    Vector((-0.08, 0.0, 0.32)),
-    Vector((0.04, 0.0, 0.20)),
-    Vector((0.15, 0.0, 0.22)),
-    Vector((0.18, 0.0, 0.48)),
-    Vector((0.22, 0.0, 0.72)),
-    Vector((0.34, 0.0, 0.84)),
-    HEAD + Vector((-0.02, 0.0, -0.02)),
-  ]
+  # Double parallel step-through (Sketchfab / Original silhouette) — lower +
+  # upper tubes from seat cluster to head, dipping ahead of the BB.
+  def step_through(start: Vector, trough_z: float) -> list[Vector]:
+    # Keep the climb behind the front tyre volume (clearance assert ~4cm+).
+    trough = Vector((0.10, 0.0, trough_z))
+    return [
+      start,
+      Vector((start.x * 0.4 + 0.01, 0.0, (start.z + trough_z) * 0.55)),
+      trough,
+      Vector((0.16, 0.0, trough_z + 0.14)),
+      Vector((0.22, 0.0, 0.60)),
+      Vector((0.32, 0.0, 0.82)),
+      HEAD + Vector((-0.04, 0.0, -0.02)),
+    ]
+
+  u_lower_start = BB.lerp(SEAT_J, 0.32)
+  u_upper_start = BB.lerp(SEAT_J, 0.58)
+  u_lower = step_through(u_lower_start, 0.24)
+  u_upper = step_through(u_upper_start, 0.38)
+  u_trough = u_lower[2]
   seat_l = SEAT_J + Vector((0, -0.03, 0))
   seat_r = SEAT_J + Vector((0, 0.03, 0))
   frame_parts = [
@@ -355,26 +368,27 @@ def build_bike() -> bpy.types.Object:
     *tube_along(stay_clear_of_wheel(REAR_HUB, rear_l, seat_l, TUBE_R * 0.95), TUBE_R * 0.95, mats['frame']),
     *tube_along(stay_clear_of_wheel(REAR_HUB, rear_r, seat_r, TUBE_R * 0.95), TUBE_R * 0.95, mats['frame']),
     paint(cylinder(BB, SEAT_J, TUBE_R * 1.1), mats['frame']),
-    # Short BB → U join only — a full BB→head diagonal punched through the tyre.
-    paint(cylinder(BB, Vector((0.15, 0.0, 0.22)), TUBE_R * 1.05), mats['frame']),
-    # Short head tube — a long drop into the front tyre volume.
+    # BB shell so chainstay / seat / join ends read as one hub.
+    paint(cylinder(BB + Vector((0, -0.055, 0)), BB + Vector((0, 0.055, 0)), TUBE_R * 1.4, 14), mats['frame']),
+    paint(cylinder(BB, u_trough, TUBE_R * 1.0), mats['frame']),
     paint(cylinder(HEAD + Vector((0, 0, -0.05)), HEAD + Vector((0, 0, 0.07)), TUBE_R * 1.25), mats['frame']),
     paint(cylinder(rear_l, rear_r, DROPOUT_R, 12), mats['frame']),
   ]
-  frame_parts.extend(tube_along(u_ctrl, TUBE_R * 0.98, mats['frame']))
+  frame_parts.extend(tube_along(u_lower, TUBE_R * 0.92, mats['frame']))
+  frame_parts.extend(tube_along(u_upper, TUBE_R * 0.92, mats['frame']))
   frame = join('Frame', frame_parts, mats['frame'])
   bind_mesh(frame, root)
 
-  # Fenders.
+  # Fenders — Original ships a clear rear cover; front is light under the rack.
   rear_fender = join(
     'RearFender',
-    arc_tubes(REAR_HUB, WHEEL_R + 0.04, 0.016, 25, 155, 10, mats['dark']),
+    arc_tubes(REAR_HUB, WHEEL_R + 0.045, 0.016, 20, 160, 11, mats['dark']),
     mats['dark'],
   )
   bind_mesh(rear_fender, root)
   front_fender = join(
     'FrontFender',
-    arc_tubes(FRONT_HUB, WHEEL_R + 0.04, 0.015, 40, 140, 8, mats['dark']),
+    arc_tubes(FRONT_HUB, WHEEL_R + 0.045, 0.014, 45, 135, 7, mats['dark']),
     mats['dark'],
   )
   bind_mesh(front_fender, steer)
@@ -387,8 +401,10 @@ def build_bike() -> bpy.types.Object:
       paint(cylinder(SEAT_J, seat_post_top + Vector((0, 0, 0.01)), TUBE_R * 0.55, 10), mats['dark']),
       paint(cylinder(SEAT_J + Vector((-0.04, -0.022, 0.05)), seat_post_top + Vector((-0.02, -0.018, -0.01)), 0.008, 8), mats['dark']),
       paint(cylinder(SEAT_J + Vector((-0.04, 0.022, 0.05)), seat_post_top + Vector((-0.02, 0.018, -0.01)), 0.008, 8), mats['dark']),
-      # Overlap the post so the saddle does not float.
-      ellipsoid(seat_post_top + Vector((-0.02, 0, 0.008)), Vector((0.13, 0.10, 0.055)), mats['seat'], segments=20),
+      # Visible coil springs (Sketchfab cue).
+      paint(torus(seat_post_top + Vector((-0.04, -0.04, -0.01)), 0.022, 0.006, 10, 6), mats['chrome']),
+      paint(torus(seat_post_top + Vector((-0.04, 0.04, -0.01)), 0.022, 0.006, 10, 6), mats['chrome']),
+      ellipsoid(seat_post_top + Vector((-0.02, 0, 0.008)), Vector((0.14, 0.11, 0.055)), mats['seat'], segments=20),
       ellipsoid(seat_post_top + Vector((0.10, 0, 0.0)), Vector((0.07, 0.05, 0.038)), mats['seat'], segments=16),
     ],
     mats['seat'],
@@ -408,68 +424,39 @@ def build_bike() -> bpy.types.Object:
   )
   bind_mesh(crank, root)
 
-  # Chain case — thin, outboard and slightly below the green stays so gray
-  # never punches through the frame (side view overlap).
+  # Fuller enclosed chain case (Dutch city bike).
+  case_mid = BB.lerp(REAR_HUB, 0.48) + Vector((0.0, -0.17, 0.01))
   case = join(
     'ChainCase',
     [
-      paint(cylinder(REAR_HUB + Vector((0.06, -0.18, -0.04)), BB + Vector((0.02, -0.18, -0.02)), 0.018, 14), mats['dark']),
-      paint(cylinder(REAR_HUB + Vector((0.12, -0.18, 0.06)), REAR_HUB + Vector((-0.04, -0.18, 0.10)), 0.014, 10), mats['dark']),
+      paint(box(case_mid, Vector((0.38, 0.035, 0.13))), mats['dark']),
+      paint(cylinder(REAR_HUB + Vector((0.0, -0.17, 0.02)), BB + Vector((0.0, -0.17, 0.0)), 0.055, 16), mats['dark']),
     ],
     mats['dark'],
   )
   bind_mesh(case, root)
 
-  # Kickstand.
+  # Kickstand to the ground.
   stand = paint(
-    cylinder(BB + Vector((-0.08, 0.06, -0.02)), Vector((-0.05, 0.18, 0.02)), 0.012, 8),
+    cylinder(BB + Vector((-0.06, 0.05, -0.02)), Vector((-0.02, 0.16, 0.015)), 0.012, 8),
     mats['dark'],
   )
   stand.name = 'Kickstand'
   bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
   bind_mesh(stand, root)
 
-  # Rear rack with side rails + stays to the dropouts (no floating plank).
-  rack_deck_z = WHEEL_R + 0.14
-  rack_front = REAR_HUB + Vector((0.08, 0.0, rack_deck_z))
-  rack_back = REAR_HUB + Vector((-0.18, 0.0, rack_deck_z))
-  rack_y = 0.11
-  rear_rack = join(
-    'RearRack',
+  # Ring lock on the seat tube (Original ships ring + chain lock).
+  lock = join(
+    'RingLock',
     [
-      paint(cylinder(SEAT_J + Vector((-0.02, -0.03, 0.02)), rack_front + Vector((0, -rack_y, 0)), 0.011, 8), mats['dark']),
-      paint(cylinder(SEAT_J + Vector((-0.02, 0.03, 0.02)), rack_front + Vector((0, rack_y, 0)), 0.011, 8), mats['dark']),
-      paint(cylinder(rack_front + Vector((0, -rack_y, 0)), rack_front + Vector((0, rack_y, 0)), 0.011, 8), mats['dark']),
-      paint(cylinder(rack_back + Vector((0, -rack_y, 0)), rack_back + Vector((0, rack_y, 0)), 0.011, 8), mats['dark']),
-      paint(cylinder(rack_front + Vector((0, -rack_y, 0)), rack_back + Vector((0, -rack_y, 0)), 0.011, 8), mats['dark']),
-      paint(cylinder(rack_front + Vector((0, rack_y, 0)), rack_back + Vector((0, rack_y, 0)), 0.011, 8), mats['dark']),
-      paint(cylinder(rack_back + Vector((0, -rack_y, 0)), rear_l + Vector((0, 0, 0.02)), 0.01, 6), mats['dark']),
-      paint(cylinder(rack_back + Vector((0, rack_y, 0)), rear_r + Vector((0, 0, 0.02)), 0.01, 6), mats['dark']),
-      paint(cylinder(rack_front + Vector((0, -rack_y, 0)), rear_l + Vector((0.05, 0, 0.02)), 0.01, 6), mats['dark']),
-      paint(cylinder(rack_front + Vector((0, rack_y, 0)), rear_r + Vector((0.05, 0, 0.02)), 0.01, 6), mats['dark']),
+      paint(torus(SEAT_J + Vector((0.02, 0.0, -0.12)), 0.07, 0.012, 18, 8), mats['dark']),
+      paint(box(SEAT_J + Vector((0.02, 0.0, -0.05)), Vector((0.05, 0.04, 0.08))), mats['dark']),
     ],
     mats['dark'],
   )
-  bind_mesh(rear_rack, root)
+  bind_mesh(lock, root)
 
-  # Optional rear child seat (prefs `bikeBabySeat`). Named BabySeat so runtime
-  # can hide it without a second GLB; mama-chari will reuse the same node name.
-  baby_deck = REAR_HUB + Vector((-0.05, 0.0, rack_deck_z + 0.02))
-  baby_seat = join(
-    'BabySeat',
-    [
-      paint(cylinder(baby_deck, baby_deck + Vector((0.0, 0.0, 0.12)), 0.018, 10), mats['dark']),
-      paint(box(baby_deck + Vector((0.02, 0.0, 0.18)), Vector((0.22, 0.20, 0.04))), mats['dark']),
-      paint(box(baby_deck + Vector((-0.06, 0.0, 0.28)), Vector((0.05, 0.20, 0.22))), mats['dark']),
-      paint(box(baby_deck + Vector((0.02, -0.11, 0.26)), Vector((0.18, 0.03, 0.16))), mats['dark']),
-      paint(box(baby_deck + Vector((0.02, 0.11, 0.26)), Vector((0.18, 0.03, 0.16))), mats['dark']),
-      paint(cylinder(baby_deck + Vector((0.10, -0.08, 0.02)), rear_l + Vector((0.02, 0.0, 0.04)), 0.01, 6), mats['dark']),
-      paint(cylinder(baby_deck + Vector((0.10, 0.08, 0.02)), rear_r + Vector((0.02, 0.0, 0.04)), 0.01, 6), mats['dark']),
-    ],
-    mats['dark'],
-  )
-  bind_mesh(baby_seat, root)
-
+  # Original has no rear luggage rack — front carrier only.
   fork = join(
     'Fork',
     [
@@ -485,57 +472,72 @@ def build_bike() -> bpy.types.Object:
   )
   bind_mesh(fork, steer)
 
-  # Swept upright city bars — one continuous bevelled Bézier through stem + grips.
+  # Chrome high-rise bars + black grips + bell (Sketchfab / Original cue).
   bar_ctrl = [
-    BARS + Vector((0.12, -0.38, 0.18)),
-    BARS + Vector((0.02, -0.26, 0.09)),
-    BARS + Vector((-0.03, 0.0, 0.03)),
-    BARS + Vector((0.02, 0.26, 0.09)),
-    BARS + Vector((0.12, 0.38, 0.18)),
+    BARS + Vector((0.10, -0.36, 0.16)),
+    BARS + Vector((0.02, -0.24, 0.08)),
+    BARS + Vector((-0.02, 0.0, 0.02)),
+    BARS + Vector((0.02, 0.24, 0.08)),
+    BARS + Vector((0.10, 0.36, 0.16)),
   ]
   stem_meet = bar_ctrl[2]
+  grip_l0 = bar_ctrl[0]
+  grip_l1 = bar_ctrl[0] + (bar_ctrl[0] - bar_ctrl[1]).normalized() * 0.07
+  grip_r0 = bar_ctrl[-1]
+  grip_r1 = bar_ctrl[-1] + (bar_ctrl[-1] - bar_ctrl[-2]).normalized() * 0.07
   bars = join(
     'LenkerBars',
     [
-      paint(cylinder(HEAD, stem_meet, TUBE_R * 0.85, 10), mats['dark']),
-      *tube_along(bar_ctrl, TUBE_R * 0.95, mats['dark']),
-      # Slightly thicker grips at the ends.
-      paint(
-        cylinder(
-          bar_ctrl[0],
-          bar_ctrl[0] + (bar_ctrl[0] - bar_ctrl[1]).normalized() * 0.05,
-          TUBE_R * 1.2,
-          10,
-        ),
-        mats['dark'],
-      ),
-      paint(
-        cylinder(
-          bar_ctrl[-1],
-          bar_ctrl[-1] + (bar_ctrl[-1] - bar_ctrl[-2]).normalized() * 0.05,
-          TUBE_R * 1.2,
-          10,
-        ),
-        mats['dark'],
-      ),
-      paint(torus(stem_meet + Vector((0.02, 0.10, 0.04)), 0.025, 0.008, 12, 6), mats['chrome']),
+      paint(cylinder(HEAD, stem_meet, TUBE_R * 0.8, 10), mats['chrome']),
+      *tube_along(bar_ctrl, TUBE_R * 0.88, mats['chrome']),
+      paint(cylinder(grip_l0, grip_l1, TUBE_R * 1.15, 10), mats['black']),
+      paint(cylinder(grip_r0, grip_r1, TUBE_R * 1.15, 10), mats['black']),
+      # Bell on the left.
+      paint(torus(bar_ctrl[1] + Vector((0.02, 0.0, 0.03)), 0.022, 0.007, 12, 6), mats['dark']),
     ],
-    mats['dark'],
+    mats['chrome'],
   )
   bind_mesh(bars, steer)
 
-  # Front rack tied to dropouts.
-  rack_top = HEAD + Vector((0.18, 0, 0.0))
+  # Front carrier over the blue tyre — Original luggage is front-only.
+  rack_top = HEAD + Vector((0.22, 0, -0.04))
+  rack_y = 0.15
+  rack_depth = 0.18
   rack = join(
     'FrontRack',
     [
-      paint(cylinder(HEAD + Vector((0.02, 0, -0.02)), rack_top, 0.013, 8), mats['dark']),
-      paint(cylinder(rack_top + Vector((0, -0.13, 0)), rack_top + Vector((0, 0.13, 0)), 0.013, 8), mats['dark']),
-      paint(cylinder(rack_top + Vector((0.1, -0.13, 0)), rack_top + Vector((0.1, 0.13, 0)), 0.013, 8), mats['dark']),
-      paint(cylinder(rack_top + Vector((0, -0.13, 0)), rack_top + Vector((0.1, -0.13, 0)), 0.013, 8), mats['dark']),
-      paint(cylinder(rack_top + Vector((0, 0.13, 0)), rack_top + Vector((0.1, 0.13, 0)), 0.013, 8), mats['dark']),
-      paint(cylinder(front_l, rack_top + Vector((0, -0.13, 0)), 0.012, 6), mats['dark']),
-      paint(cylinder(front_r, rack_top + Vector((0, 0.13, 0)), 0.012, 6), mats['dark']),
+      paint(cylinder(HEAD + Vector((0.02, 0, -0.02)), rack_top, 0.014, 8), mats['dark']),
+      paint(cylinder(rack_top + Vector((0, -rack_y, 0)), rack_top + Vector((0, rack_y, 0)), 0.014, 8), mats['dark']),
+      paint(
+        cylinder(
+          rack_top + Vector((rack_depth, -rack_y, 0)),
+          rack_top + Vector((rack_depth, rack_y, 0)),
+          0.014,
+          8,
+        ),
+        mats['dark'],
+      ),
+      paint(
+        cylinder(rack_top + Vector((0, -rack_y, 0)), rack_top + Vector((rack_depth, -rack_y, 0)), 0.014, 8),
+        mats['dark'],
+      ),
+      paint(
+        cylinder(rack_top + Vector((0, rack_y, 0)), rack_top + Vector((rack_depth, rack_y, 0)), 0.014, 8),
+        mats['dark'],
+      ),
+      paint(
+        cylinder(
+          rack_top + Vector((rack_depth * 0.5, -rack_y, 0)),
+          rack_top + Vector((rack_depth * 0.5, rack_y, 0)),
+          0.011,
+          8,
+        ),
+        mats['dark'],
+      ),
+      paint(cylinder(front_l, rack_top + Vector((0.02, -rack_y, 0)), 0.012, 6), mats['dark']),
+      paint(cylinder(front_r, rack_top + Vector((0.02, rack_y, 0)), 0.012, 6), mats['dark']),
+      paint(cylinder(front_l, rack_top + Vector((rack_depth, -rack_y, 0)), 0.011, 6), mats['dark']),
+      paint(cylinder(front_r, rack_top + Vector((rack_depth, rack_y, 0)), 0.011, 6), mats['dark']),
     ],
     mats['dark'],
   )

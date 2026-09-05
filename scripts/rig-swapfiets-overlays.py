@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
-"""Swapfiets preview rig: intact Sketchfab body + steer/spin empties (no tyre overlays).
+"""Swapfiets preview rig: intact Sketchfab body + steer/spin empties (no cuts).
 
   blender --background --python scripts/rig-swapfiets-overlays.py -- \\
     --source=~/Downloads/swapfiets.glb \\
     --out=public/canal-drive/swapfiets-sketchfab-preview.glb
 
-Earlier overlay toruses were oversized and sat on top of the painted wheels,
-which looked broken in the chase preview. Cutting verts from the Sketchfab
-mesh also failed (holes / floating parts). This export keeps the reference
-mesh whole, bakes ~1.7× lateral width for chase parity with the authored
-omafiets, and only adds Lenker / RadVorn / RadHinten empties so the preview
-page can share the same pivot names.
-
-Spin of the painted tyres still needs a game-ready split mesh; the default
-game bike remains omafiets-runtime.glb. Swapfiets is a look-only skin.
+Cutting verts for real spin/steer tears this mesh apart. Keep the reference
+body whole, level it, and add Lenker / RadVorn / RadHinten empties. Painted
+tyres do not spin; empties exist so the preview shares pivot names. Game
+default remains omafiets / pink / mama.
 """
 
 from __future__ import annotations
@@ -76,13 +71,8 @@ def import_bake_body(source: Path) -> bpy.types.Object:
   body.location -= Vector((cx, cy, min_z))
   bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
 
-  # Bake chase readability fattening into lateral Y (becomes Three.js Z after
-  # export_yup). Runtime non-uniform scale broke the Sketchfab hierarchy.
-  body.scale = (1.0, 1.7, 1.0)
-  bpy.ops.object.select_all(action='DESELECT')
-  body.select_set(True)
-  bpy.context.view_layer.objects.active = body
-  bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+  # Do NOT bake non-uniform lateral scale — that skewed the wheels/frame.
+  # Chase width stays at preview widthScale=1 for this multi-node reference.
   bpy.ops.object.shade_smooth()
   return body
 
