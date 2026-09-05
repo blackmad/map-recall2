@@ -261,6 +261,29 @@ class RecallStore {
   }
 
   /**
+   * Practised street/canal places with coordinates — used to grow the home
+   * learning radius and prefer destinations that still have unfamiliar corridors.
+   */
+  homeMasterySamples(
+    cityId: string,
+    now = Date.now(),
+  ): Array<{ lat: number; lng: number; mastery: number }> {
+    const out: Array<{ lat: number; lng: number; mastery: number }> = [];
+    for (const state of Object.values(this.states)) {
+      const feature = state.featureSnapshot;
+      if (state.mode !== 'guess_name' || feature.cityId !== cityId) continue;
+      if (!['street', 'canal'].includes(feature.type)) continue;
+      if (state.repetitions <= 0) continue;
+      const [lat, lng] = feature.center;
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+      const practiced = Math.min(1, state.repetitions / 3);
+      const mastery = state.dueAt > now ? practiced : practiced * 0.5;
+      out.push({ lat, lng, mastery });
+    }
+    return out;
+  }
+
+  /**
    * Record an answer against the *place* it was given, so one correct answer on
    * the Overtoom by the Vondelpark does not retire the whole street. Snapping
    * happens here rather than at the call sites so a recorded centre and the

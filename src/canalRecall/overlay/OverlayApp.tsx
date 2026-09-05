@@ -149,7 +149,7 @@ const VIEW_LABEL: Record<CanalPreferences['viewMode'], string> = {
 
 const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
   { value: 'surprise', title: 'Surprise route', hint: 'Landmark to landmark' },
-  { value: 'home', title: 'Home base', hint: 'Errands from an address' },
+  { value: 'home', title: 'Home base', hint: 'Nearby first, expands as you learn' },
 ];
 
 const DIFFICULTY_MAIN: Choice<CanalPreferences['difficulty']>[] = [
@@ -336,7 +336,7 @@ export function OverlayApp({
                 value={prefs.homeAddress}
                 onChange={event => patch({ homeAddress: event.target.value })}
               />
-              <span className="enamel-field-note">Saved · boats start at nearby water</span>
+              <span className="enamel-field-note">Saved · starts nearby, expands as you learn · boats use nearby water</span>
             </label>
 
             <details

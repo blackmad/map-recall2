@@ -47,6 +47,13 @@ stop — not streets, landmarks, or stops toward the destination.
 - **Landmarks:** pure lat/lng projection in transit (no snap-onto-rails), and
   prefer cards within ~120 m of `routePath`.
 
+## Home routes expand from nearby (2026-09-05)
+
+Home-base destination picks were a flat random within 6 km. They now use a
+learning ring that starts at ~1 km and steps outward as practised street/canal
+answers accumulate near home, scoring closer + less-familiar landmarks first.
+Surprise pairing is unchanged. Prefs copy: “Nearby first, expands as you learn.”
+
 ## Transit chase scale bumped (2026-09-05)
 
 Metro stand-in read as a speck in the yellow tram corridor at chase altitude

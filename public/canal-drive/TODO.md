@@ -35,6 +35,8 @@ Wikipedia evidence.
 Full-city map colouring learned roads and waterways by mastery / review state,
 with fog-of-war over the rest. Derive from visits, answers and recency — not
 one drive-through as mastery. Same data should later feed “where next”.
+*Related shipped:* Home-base routes now grow an expanding learning radius from
+the address (closer + novel destinations first) — not a full knowledge map.
 
 ---
 
