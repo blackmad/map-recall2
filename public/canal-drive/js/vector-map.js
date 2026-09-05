@@ -71,7 +71,7 @@ class VectorBasemap {
       // live game: thirteen meshopt models were too expensive on the shared
       // MapLibre/Three canvas (see TODO item 22).
       if (window.CanalRecallVehicles) {
-        const { PlayerBike3D, PlayerBoat3D } = window.CanalRecallVehicles;
+        const { PlayerBike3D, PlayerBoat3D, PlayerTransit3D } = window.CanalRecallVehicles;
         const Prefs = window.CanalRecallPreferences;
         let bikeSkin = 'omafiets';
         try {
@@ -81,6 +81,7 @@ class VectorBasemap {
         } catch (_) { /* ignore */ }
         if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl, bikeSkin);
         if (PlayerBoat3D) this._playerBoat = new PlayerBoat3D(this.map, maplibregl);
+        if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
       this.ready = true;
       // Theme setup can run before the asynchronous style load. Reapply it
@@ -850,12 +851,23 @@ class VectorBasemap {
     );
   }
 
+  setPlayerTransit(player, loader, visible) {
+    if (!this._playerTransit || !player || !loader) return;
+    this._playerTransit.update(
+      this.worldToLngLat(player.x, player.y, loader), player.angle, visible
+    );
+  }
+
   isPlayerBikeReady() {
     return !!(this._playerBike && this._playerBike.ready);
   }
 
   isPlayerBoatReady() {
     return !!(this._playerBoat && this._playerBoat.ready);
+  }
+
+  isPlayerTransitReady() {
+    return !!(this._playerTransit && this._playerTransit.ready);
   }
 
   inspectBuilding(cssX, cssY, canvasRect) {
