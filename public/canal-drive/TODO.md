@@ -63,7 +63,8 @@ automated screenshot diffs for those states (not just `build-storybook`).
 ## P3 — Bets worth a spike, on their own branch
 
 **17. Public transit mode.** Tram / metro / bus / ferry as its own routing and
-recall model, not a vehicle skin. *Large.*
+recall model, not a vehicle skin. *Large.* Spike notes and first gates:
+[`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on branch `spike/canal-transit`.
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.
