@@ -1,0 +1,221 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Façade review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: dark;
+    --ink:#eef2f1; --ink-2:#a9b4b4; --ink-3:#788384; --panel:#161c1e; --line:#2c3638;
+    --hot:#c8825a; --yes:#28c07a; --no:#e05a55; --maybe:#e0a33a; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; min-height:100%; background:#0d1214; color:var(--ink);
+    font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif; }
+  #app { display:grid; grid-template-columns: minmax(320px,1fr) 420px; gap:22px;
+    max-width:1180px; margin:0 auto; padding:20px 20px 60px; align-items:start; }
+  .shot { background:#0a0e10; border:1px solid var(--line); border-radius:5px; padding:8px;
+    position:sticky; top:20px; }
+  .shot img { width:100%; display:block; border-radius:3px; }
+  .shot figcaption { font-size:11.5px; color:var(--ink-3); margin-top:7px; line-height:1.45; }
+  h1 { font-size:16px; margin:0 0 2px; letter-spacing:-.01em; }
+  .addr { font-size:19px; margin:0 0 1px; font-weight:600; letter-spacing:-.01em; }
+  .pand { font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; color:var(--ink-3); margin:0 0 12px; }
+  .bar { height:4px; background:#1d2527; border-radius:2px; overflow:hidden; margin:0 0 16px; }
+  .bar i { display:block; height:100%; background:var(--hot); transition:width .25s; }
+  .q { border-top:1px solid var(--line); padding:14px 0 4px; }
+  .q:first-of-type { border-top:0; }
+  .q h2 { font-size:14.5px; margin:0 0 3px; font-weight:600; }
+  .q p { margin:0 0 9px; font-size:12.5px; color:var(--ink-3); line-height:1.45; }
+  .opts { display:flex; gap:6px; flex-wrap:wrap; }
+  button { background:#1e2729; color:var(--ink-2); border:1px solid var(--line);
+    border-radius:4px; padding:7px 12px; font:inherit; font-size:13.5px; cursor:pointer;
+    display:flex; align-items:center; gap:7px; }
+  button kbd { font:inherit; font-size:10.5px; color:var(--ink-3); background:#151c1e;
+    border:1px solid #2a3335; border-radius:3px; padding:1px 5px; }
+  button:hover { border-color:#4c6062; color:var(--ink); }
+  button[aria-pressed="true"] { background:var(--ink); color:#10161a; border-color:var(--ink); }
+  button[aria-pressed="true"] kbd { background:#c9d2d2; color:#3c4747; border-color:#b7c0c0; }
+  button.yes[aria-pressed="true"] { background:var(--yes); border-color:var(--yes); color:#06251a; }
+  button.no[aria-pressed="true"]  { background:var(--no);  border-color:var(--no);  color:#2a0806; }
+  button.maybe[aria-pressed="true"] { background:var(--maybe); border-color:var(--maybe); color:#2b1c00; }
+  .nav { display:flex; gap:8px; align-items:center; margin-top:18px;
+    border-top:1px solid var(--line); padding-top:14px; }
+  .nav .grow { flex:1; }
+  .verdict { margin-top:14px; border-left:2px solid var(--hot); padding:9px 0 9px 11px;
+    font-size:12.5px; color:var(--ink-2); line-height:1.5; }
+  .verdict b { display:block; color:var(--hot); font-weight:500; font-size:10px;
+    letter-spacing:.1em; text-transform:uppercase; margin-bottom:4px; }
+  .verdict .row { display:flex; justify-content:space-between; gap:12px; }
+  .verdict .ok { color:var(--yes); } .verdict .bad { color:var(--no); }
+  .done { text-align:center; padding:60px 20px; }
+  .done h1 { font-size:22px; }
+  a.dl { color:var(--hot); }
+  .hint { position:fixed; bottom:0; left:0; right:0; background:rgba(13,18,20,.94);
+    border-top:1px solid var(--line); padding:7px 20px; font-size:11.5px; color:var(--ink-3);
+    display:flex; gap:16px; justify-content:center; }
+</style>
+
+<div id="app"></div>
+<div class="hint" id="hint"></div>
+
+<script>
+/**
+ * Human review, five questions at a time.
+ *
+ * Everything this pipeline measures is capped at confidence 0.4 because nobody
+ * has ever checked any of it. The scoring machinery has been waiting for real
+ * answers since it was written; what was missing was a way to ask that takes
+ * minutes.
+ *
+ * Two rules the tool has to keep. The pipeline's own answer stays hidden until
+ * the reviewer has committed, or this measures agreement with a suggestion
+ * rather than the truth. And "I can't tell" is always available, because a door
+ * behind a parked van is unobserved, which is a different and more useful
+ * answer than "no door".
+ */
+const QUESTIONS = [
+  { id: 'isFacade', ask: 'Is this the front of one building, seen square-on?',
+    why: 'A 180° error once pointed every measurement at the far side of the canal. This is the only answer that can invalidate all the others.',
+    opts: [['yes', 'Yes', 'yes'], ['partly', 'Partly — two buildings, or skewed', 'maybe'],
+           ['no', 'No — street, sky, water, a wall', 'no']] },
+  { id: 'storeys', ask: 'Floors above the pavement?',
+    why: 'Not counting a basement. We read +1.09 storeys against human counts and think the souterrain is why.',
+    opts: [['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['7','7+'],['?','Can’t tell','maybe']] },
+  { id: 'souterrain', ask: 'Is there a basement storey below the pavement?',
+    why: 'Windows at or below street level, usually behind a railing.',
+    opts: [['yes','Yes','yes'],['no','No','no'],['?','Can’t tell','maybe']] },
+  { id: 'door', ask: 'Can you see the front door?',
+    why: '977 of 1,821 façades have their ground floor behind parked cars. Hidden is a different answer from none.',
+    opts: [['yes','Yes','yes'],['hidden','It’s hidden','maybe'],
+           ['none','No door on this frontage','no'],['?','Can’t tell','maybe']] },
+  { id: 'bays', ask: 'Windows across a typical upper floor?',
+    why: 'The bay count has never been checked against anything.',
+    opts: [['1','1'],['2','2'],['3','3'],['4','4'],['5','5+'],['?','Can’t tell','maybe']] },
+];
+
+const KEYS = '1234567';
+let deck = [], answers = {}, at = 0;
+
+const saved = () => { try { return JSON.parse(localStorage.getItem('facade-review') || '{}'); } catch { return {}; } };
+const save = () => { try { localStorage.setItem('facade-review', JSON.stringify(answers)); } catch {} };
+
+async function boot() {
+  const r = await fetch('/data/extracts/amsterdam/staging/facade-twin/amsterdam-grachtengordel-west/review-deck.json', { cache: 'no-store' });
+  deck = (await r.json()).deck;
+  answers = saved();
+  at = Math.min(deck.findIndex(d => !answers[d.pandId]?.done), deck.length - 1);
+  if (at < 0) at = deck.length - 1;
+  render();
+}
+
+const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function render() {
+  const card = deck[at];
+  const done = Object.values(answers).filter(a => a.done).length;
+  if (!card) return;
+  const mine = answers[card.pandId] || {};
+  const committed = !!mine.done;
+  const g = card.guess;
+
+  document.getElementById('app').innerHTML = `
+    <figure class="shot">
+      <img src="${card.strip}" alt="Rectified façade">
+      <figcaption>Rectified from a ${esc(card.capturedAt)} panorama. Green boxes are what the
+      detector found — ignore them when answering, they are the thing being judged.
+      Sampled because: <b>${esc(card.stratum)}</b>.</figcaption>
+    </figure>
+    <div>
+      <div class="bar"><i style="width:${(100 * done / deck.length).toFixed(1)}%"></i></div>
+      <h1>${done} of ${deck.length} reviewed</h1>
+      <p class="addr">${card.address ? esc(card.address) : 'address unknown'}</p>
+      <p class="pand">pand ${esc(card.pandId)} · ${card.wallWidthM} m frontage</p>
+      ${QUESTIONS.map((q, qi) => `
+        <div class="q">
+          <h2>${esc(q.ask)}</h2>
+          <p>${esc(q.why)}</p>
+          <div class="opts">${q.opts.map(([v, label, tone], oi) => `
+            <button class="${tone || ''}" data-q="${q.id}" data-v="${v}"
+              aria-pressed="${mine[q.id] === v}">${esc(label)}${qi === focusQ ? `<kbd>${KEYS[oi] || ''}</kbd>` : ''}</button>`).join('')}
+          </div>
+        </div>`).join('')}
+      <div class="nav">
+        <button id="prev">← Back</button>
+        <span class="grow"></span>
+        <button id="skip">Skip</button>
+        <button id="next" ${QUESTIONS.every(q => mine[q.id]) ? '' : 'disabled style="opacity:.45"'}>
+          ${committed ? 'Next →' : 'Commit and next →'}</button>
+      </div>
+      ${committed ? verdict(card, mine) : ''}
+      <p style="font-size:12px;color:var(--ink-3);margin-top:20px">
+        <a class="dl" href="#" id="export">Download answers as JSON</a> —
+        ${done} answered, saved in this browser.</p>
+    </div>`;
+
+  document.querySelectorAll('.opts button').forEach(b => b.onclick = () => {
+    answers[card.pandId] = { ...(answers[card.pandId] || {}), [b.dataset.q]: b.dataset.v };
+    save(); render();
+  });
+  document.getElementById('prev').onclick = () => { at = Math.max(0, at - 1); focusQ = 0; render(); };
+  document.getElementById('skip').onclick = () => { at = Math.min(deck.length - 1, at + 1); focusQ = 0; render(); };
+  document.getElementById('next').onclick = commit;
+  document.getElementById('export').onclick = e => { e.preventDefault(); exportJson(); };
+  document.getElementById('hint').innerHTML =
+    `<span><kbd>1</kbd>–<kbd>7</kbd> answer</span><span><kbd>↵</kbd> commit &amp; next</span>`
+    + `<span><kbd>←</kbd> <kbd>→</kbd> move</span><span>answers stay in this browser</span>`;
+}
+
+function commit() {
+  const card = deck[at];
+  const mine = answers[card.pandId] || {};
+  if (!QUESTIONS.every(q => mine[q.id])) return;
+  if (!mine.done) {
+    answers[card.pandId] = { ...mine, done: true, at: new Date().toISOString() };
+    save(); render();                       // show the comparison before moving on
+    return;
+  }
+  at = Math.min(deck.length - 1, at + 1); focusQ = 0; render();
+}
+
+/** The pipeline's answer, revealed only after the reviewer has committed. */
+function verdict(card, mine) {
+  const g = card.guess;
+  const row = (label, theirs, ours, ok) =>
+    `<div class="row"><span>${label}</span><span class="${ok === null ? '' : ok ? 'ok' : 'bad'}">
+      you ${esc(theirs)} · pipeline ${esc(ours)}</span></div>`;
+  const storeyOk = mine.storeys === '?' ? null : Number(mine.storeys) === g.storeys;
+  const bayOk = mine.bays === '?' ? null : Number(mine.bays) === g.bays;
+  const doorOk = mine.door === 'yes' ? g.doors > 0 : mine.door === 'none' ? g.doors === 0 : null;
+  return `<div class="verdict"><b>What the pipeline said</b>
+    ${row('Storeys', mine.storeys, `${g.storeys}${g.massingStoreys ? ` (3DBAG ${g.massingStoreys})` : ''}`, storeyOk)}
+    ${row('Bays', mine.bays, g.bays, bayOk)}
+    ${row('Doors found', mine.door, g.doors, doorOk)}
+    ${row('Kept by the gate', mine.isFacade, g.kept ? 'yes' : 'no', mine.isFacade === 'yes' ? g.kept : !g.kept)}
+    ${g.occluded != null ? `<div class="row"><span>Ground floor occluded</span><span>${Math.round(g.occluded * 100)}%</span></div>` : ''}
+  </div>`;
+}
+
+function exportJson() {
+  const payload = { generatedAt: new Date().toISOString(), questions: QUESTIONS.map(q => q.id),
+    answers: Object.fromEntries(Object.entries(answers).filter(([, a]) => a.done)) };
+  const blob = new Blob([JSON.stringify(payload, null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'facade-review.json';
+  document.body.append(a); a.click(); a.remove();
+}
+
+let focusQ = 0;
+addEventListener('keydown', e => {
+  if (e.key === 'Enter') { commit(); return; }
+  if (e.key === 'ArrowLeft') { at = Math.max(0, at - 1); focusQ = 0; render(); return; }
+  if (e.key === 'ArrowRight') { at = Math.min(deck.length - 1, at + 1); focusQ = 0; render(); return; }
+  const i = KEYS.indexOf(e.key);
+  if (i < 0) return;
+  const card = deck[at]; if (!card) return;
+  const q = QUESTIONS[focusQ]; if (!q || !q.opts[i]) return;
+  answers[card.pandId] = { ...(answers[card.pandId] || {}), [q.id]: q.opts[i][0] };
+  focusQ = Math.min(QUESTIONS.length - 1, focusQ + 1);
+  save(); render();
+});
+
+boot();
+</script>

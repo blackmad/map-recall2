@@ -47,7 +47,12 @@
     letter-spacing: .09em; text-transform: uppercase; margin-bottom: 3px; }
   #evidence figure { margin: 11px 0 0; }
   #evidence figcaption { font-size: 11px; color: var(--muted); margin-top: 5px; line-height: 1.45; }
-  #evidence svg { width: 100%; display: block; background: #10171a; border: 1px solid var(--line); border-radius: 3px; }
+  /* The schematic is a reading of the photograph, so it must never crowd the
+     photograph out. Capped and centred; the strip above it gets the room. */
+  #evidence svg { max-height: 230px; width: auto; max-width: 100%; display: block;
+    margin: 0 auto; background: #10171a; border: 1px solid var(--line); border-radius: 3px; }
+  #evidence figure.plan { margin-top: 12px; }
+  #evidence img { max-height: 420px; width: auto; margin: 0 auto; }
   #evidence .swatch { display: inline-block; width: 11px; height: 11px; border-radius: 2px;
     border: 1px solid var(--line); vertical-align: -1px; margin-right: 5px; }
   #evidence .reasoning { border-left: 2px solid #3f5c6b; padding: 7px 0 7px 10px; margin: 11px 0 0;
@@ -261,9 +266,14 @@ function setup() {
    * wrong, it is wrong, and that is the point.
    */
   const elevation = (building, found) => {
-    const openings = building.facade?.openings ?? [];
-    const width = Math.hypot(building.facade.wall[2] - building.facade.wall[0],
-                             building.facade.wall[3] - building.facade.wall[1]);
+    // Openings come from the extract when the renderer kept them, and from the
+    // evidence index when the gate dropped them — a reviewer needs to see what
+    // was measured either way.
+    const openings = building.facade?.openings ?? found?.openingRects ?? [];
+    const width = building.facade
+      ? Math.hypot(building.facade.wall[2] - building.facade.wall[0],
+                   building.facade.wall[3] - building.facade.wall[1])
+      : (found?.wallWidthM ?? 6);
     const top = (building.ridge ?? building.eaves ?? 12);
     const eaves = Math.min(building.eaves ?? top * 0.78, top);
     const below = Math.max(0, -Math.min(0, ...openings.map(o => o[1])));
@@ -340,7 +350,20 @@ function setup() {
   };
 
   const showEvidence = building => {
+    /**
+     * The evidence decides what this panel shows, not the extract.
+     *
+     * These diverged when the segmentation gate landed: the extract keeps 846
+     * façades, the evidence index holds 1,821, and the difference is buildings
+     * that *were* photographed and measured but whose strip the model judged
+     * not to be a façade. Keying the panel off the extract meant clicking one
+     * of those said "this building has never been photographed" — which is
+     * false, and hides the very strip a reviewer needs in order to say whether
+     * the gate was right. If there is evidence, show it, and say what happened
+     * to it afterwards.
+     */
     const found = evidenceIndex?.get(building.id) ?? null;
+    const gated = !!found && !building.facade;
     const heights = building.ridge !== null
       ? `${number(building.eaves)} m to the eaves, ${number(building.ridge)} m to the ridge`
       : 'no measured height';
@@ -414,22 +437,25 @@ function setup() {
         found.addressOthers ? ` +${found.addressOthers} more` : ''}${
         found.address && found.addressIsExact === false ? ' (nearest — may be next door)' : ''}</p>
       <p class="pand" style="margin-top:-8px">pand ${safe(found.pandId)} · ${safe(found.capturedAt)}</p>
-      ${drawing.svg}
-      <figcaption>Measured elevation, to scale — ${number(drawing.width, 2)} m of frontage.
-      <span style="color:#28e678">green</span> window,
-      <span style="color:#ffbe00">amber</span> door,
-      <span style="color:#ff8a3d">orange</span> shopfront,
-      <span style="color:#a86bff">violet</span> souterrain.
-      <span style="color:#5aa9ff">Blue</span> is the bay-and-storey grid the detector inferred;
-      <span style="color:#e34948">red dashes</span> are cells where it looked and found nothing.
-      <span style="color:#ff5a5a">Red line</span> is this building's own ground.
-      <br><span class="swatch" style="background:${drawing.fill}"></span>wall colour sampled from its photograph.</figcaption></figure>
-      <div class="reasoning"><b>What the detector did</b>${reasoning.join('')}</div>
       <img src="${strip}" alt="Rectified façade with the detector's openings drawn on it"
            onerror="this.style.display='none';this.nextElementSibling.textContent=
-           'No strip rendered for this building yet — run build-evidence.ts --ids=${safe(found.pandId)}'">
-      <p class="cap">The photograph it was measured from, with the same boxes on it. Rectified to
-      this building's own wall plane at ${number(found.standoffM, 0)} m and ${number(found.obliquityDeg)}° off square.</p>
+           'Strip not rendered yet for this building — it is queued; run build-evidence.ts --ids=${safe(found.pandId)} to jump it'">
+      <p class="cap">The photograph it was measured from, rectified to this building's own wall
+      plane at ${number(found.standoffM, 0)} m and ${number(found.obliquityDeg)}° off square.</p>
+      <figure class="plan">${drawing.svg}
+      <figcaption>And the same thing read as numbers, to scale — ${number(drawing.width, 2)} m of
+      frontage. <span style="color:#28e678">green</span> window,
+      <span style="color:#ffbe00">amber</span> door,
+      <span style="color:#ff8a3d">orange</span> shopfront,
+      <span style="color:#a86bff">violet</span> souterrain;
+      <span style="color:#5aa9ff">blue</span> the inferred grid,
+      <span style="color:#e34948">red dashes</span> cells that came back empty.
+      <br><span class="swatch" style="background:${drawing.fill}"></span>wall colour sampled from
+      the photograph.</figcaption></figure>
+      ${gated ? `<div class="warn"><b>Dropped from the model</b>This façade was measured, but the
+        segmentation model judged the strip not to be predominantly this building's front, so the
+        renderer draws it as bare massing. The evidence is here so you can say whether that was
+        right.</div>` : ''}
       ${failures}${disagree}
       <dl>
         <dt>Frontage</dt><dd>${number(found.wallWidthM, 2)} m</dd>
