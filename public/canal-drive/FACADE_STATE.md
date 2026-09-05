@@ -410,3 +410,91 @@ distributional one.
    elevation, world point → panorama pixel, panorama → rectified strip, strip →
    openings. Today a façade-looking image is still treated as evidence that
    every upstream step was right.
+
+
+---
+
+## 12. The correspondence is not consistent between panoramas
+
+The state at the end of 2026-09-05. This section supersedes §11's coverage
+numbers in the only way that matters: those numbers describe measurements made
+on a correspondence that does not hold.
+
+### What is now known, and how
+
+Three tools, each answering a question the previous one could not.
+
+**`project-check.ts`** draws the BAG footprint into the raw panorama — no
+rectification — so the coordinate transform, camera model, pose and wall choice
+are tested together. Two visualisation bugs had to be removed before it could
+be trusted, and both were instructive:
+
+- Edges were drawn as **straight lines between projected corners**. In an
+  equirectangular frame the image of a straight 3-D line is an arc, and over the
+  20–30° a canal house subtends the bow is tens of pixels — so the outline lay
+  visibly across the wall on a projection that was in fact exact. Edges are now
+  subdivided in world space and every sample projected.
+- The crop was sized to the **whole footprint including its 20 m of depth**,
+  which from the quay spans about 100° of the panorama. The frontage being
+  judged occupied a fifth of a very wide, very curved picture. Cropping to the
+  wall fixed what looked like "far too zoomed in".
+
+With both fixed, the scale checks out: 470 px for a 12.24 m wall at 30 m is
+40 px/m against the 41.7 the range implies, and 113 of 149 projections are
+within 15% of expected.
+
+**`cross_view.py`** is model-free. If a wall plane is where we think it is, two
+panoramas rectified onto it give the same picture and lock under normalised
+cross-correlation. The control is the whole point: **a strip against itself
+scores exactly 1.000 at zero offset**, so the instrument works.
+
+**The result: 0 of 120 buildings lock.** Two views of the same wall score 0.06.
+Two views of *different buildings* score 0.05.
+
+### Where the fault is
+
+Putting a projection beside the strip rectified from the same panorama settles
+it. The strip faithfully reproduces whatever is inside the green outline —
+**`rectifyFacade` is correct**. But two panoramas of one pand put the outline on
+two different houses: one a narrow house with a stoep, the other a wider corner
+building with a stepped gable.
+
+So the fault is not in rectification, not in wall selection (87% of walls sit
+within 5° of a plot axis, 68% match plot width within 10%), and not in the
+yaw convention, which was fixed and pinned. **The pose-to-pixel mapping is
+inconsistent between panoramas.**
+
+That is a much narrower target than "the correspondence is broken", and the
+suspects are enumerable. The poses come from five camera rigs across ten years:
+
+    TMX7316010203  118,587    recording   7,317    b   7,995
+    TMX7316060226    5,749    TMX7315120208  289
+
+and each record carries a `missionYear` that differs from its own `capturedAt`.
+A convention that varies by rig or campaign — heading reference, camera-height
+datum, or a position that is the vehicle rather than the lens — would produce
+exactly this.
+
+### What to do next, in order
+
+1. **Solve for a per-panorama aim correction** and see whether it clusters by
+   rig prefix or mission year. `aim-error.ts` already renders each wall from
+   every view onto one widened plane at a shared scale, which is what that
+   measurement needs.
+2. **Get a second opinion on pose.** Mapillary is free and has its own poses for
+   the same streets; Google Street View's metadata endpoint returns the pano
+   position it actually used. Either would say whether Amsterdam's published
+   pose or our reading of it is at fault.
+3. **Only then** re-run anything downstream. Every façade number in §11 was
+   measured through this.
+
+### Standing instruments
+
+| tool | what it answers | needs a model |
+|---|---|---|
+| `project-check.ts` | is the outline on the right building? | no |
+| `cross_view.py` | do independent views agree? | no |
+| `check-facade-external.ts` | do OSM and BAG agree with us? | no |
+| `match.html` + `review-server.ts` | what does a person say? (SQLite) | no |
+| `vision/ensemble.py` | where are the openings? | yes |
+| `vision/correspondence.py` | **abandoned** — the model calls a wall 3.8% building | yes |

@@ -123,9 +123,15 @@ for (const buildingId of queue) {
   const wallLow = [project({ x: wx0, y: wy0 }, ground), project({ x: wx1, y: wy1 }, ground)];
   const wallHigh = [project({ x: wx0, y: wy0 }, eaves), project({ x: wx1, y: wy1 }, eaves)];
 
-  // A panorama wraps, so work in a frame centred on the building and unwrap
-  // every point into it before measuring extent.
-  const all = [...low, ...high];
+  // Crop around the *wall*, not the whole footprint.
+  //
+  // The footprint includes twenty metres of depth, and seen from the quay its
+  // rear corners sit at wildly different bearings — the bounding box of the
+  // whole solid spanned about 100° of the panorama, so the frontage being
+  // judged occupied a fifth of a very wide, very curved picture. What a
+  // reviewer needs is the wall and enough of its neighbours to see whether it
+  // is on the right house.
+  const all = [...wallLow, ...wallHigh];
   const anchor = all[0][0];
   const unwrap = (u: number) => {
     let d = u - anchor;
@@ -137,7 +143,8 @@ for (const buildingId of queue) {
   const vs = all.map(p => p[1]);
   const minU = Math.min(...us), maxU = Math.max(...us);
   const minV = Math.min(...vs), maxV = Math.max(...vs);
-  const padU = Math.max(60, (maxU - minU) * 0.55), padV = Math.max(60, (maxV - minV) * 0.35);
+  // Half a frontage of context on each side: enough to see the neighbours.
+  const padU = Math.max(80, (maxU - minU) * 0.6), padV = Math.max(60, (maxV - minV) * 0.3);
   const x0 = Math.round(minU - padU), x1 = Math.round(maxU + padU);
   const y0 = Math.max(0, Math.round(minV - padV)), y1 = Math.min(image.height, Math.round(maxV + padV));
   const cw = x1 - x0, ch = y1 - y0;
@@ -153,9 +160,35 @@ for (const buildingId of queue) {
       out[d + 2] = image.data[s + 2]; out[d + 3] = 255;
     }
   }
+  /**
+   * A 3-D edge, drawn as the curve it actually is.
+   *
+   * In an equirectangular frame the image of a straight line in the world is
+   * *not* straight — it is a great-circle arc, and over the 20–30° a canal house
+   * subtends at twenty metres the bow is tens of pixels. Drawing straight lines
+   * between projected corners therefore lays a box across the wall at a visible
+   * angle to it, and the outline looks wrong on a projection that is in fact
+   * exact. The scale was right all along: 470 px for a 12.24 m wall at 30 m is
+   * 40 px/m against the 41.7 the range implies.
+   *
+   * So the edge is subdivided in *world* space and every sample projected. The
+   * drawn curve is then the real image of the edge.
+   */
+  const edge = (pa: ProjectedPoint, za: number, pb: ProjectedPoint, zb: number,
+                colour: [number, number, number], thick = 2) => {
+    const STEPS = 48;
+    let prev: number[] | null = null;
+    for (let i = 0; i <= STEPS; i++) {
+      const t = i / STEPS;
+      const here = project({ x: pa.x + (pb.x - pa.x) * t, y: pa.y + (pb.y - pa.y) * t }, za + (zb - za) * t);
+      if (prev) line(prev, here, colour, thick);
+      prev = here;
+    }
+  };
+
   const line = (a: number[], b: number[], colour: [number, number, number], thick = 2) => {
     const ax = unwrap(a[0]) - x0, ay = a[1] - y0, bx = unwrap(b[0]) - x0, by = b[1] - y0;
-    const steps = Math.ceil(Math.hypot(bx - ax, by - ay));
+    const steps = Math.max(1, Math.ceil(Math.hypot(bx - ax, by - ay)));
     for (let i = 0; i <= steps; i++) {
       const px = Math.round(ax + ((bx - ax) * i) / steps);
       const py = Math.round(ay + ((by - ay) * i) / steps);
@@ -167,17 +200,19 @@ for (const buildingId of queue) {
       }
     }
   };
-  // Whole footprint in blue, the measured front wall in green, verticals faint.
+  // Whole footprint in blue, the measured front wall in green — every edge
+  // drawn as the arc it really is.
   for (let i = 0; i < ring.length; i++) {
     const j = (i + 1) % ring.length;
-    line(low[i], low[j], [70, 150, 255], 1);
-    line(high[i], high[j], [70, 150, 255], 1);
-    line(low[i], high[i], [70, 150, 255], 1);
+    edge(ring[i], ground, ring[j], ground, [70, 150, 255], 1);
+    edge(ring[i], eaves, ring[j], eaves, [70, 150, 255], 1);
+    edge(ring[i], ground, ring[i], eaves, [70, 150, 255], 1);
   }
-  line(wallLow[0], wallLow[1], [40, 235, 120], 3);
-  line(wallHigh[0], wallHigh[1], [40, 235, 120], 3);
-  line(wallLow[0], wallHigh[0], [40, 235, 120], 3);
-  line(wallLow[1], wallHigh[1], [40, 235, 120], 3);
+  const wa = { x: wx0, y: wy0 }, wb = { x: wx1, y: wy1 };
+  edge(wa, ground, wb, ground, [40, 235, 120], 3);
+  edge(wa, eaves, wb, eaves, [40, 235, 120], 3);
+  edge(wa, ground, wa, eaves, [40, 235, 120], 3);
+  edge(wb, ground, wb, eaves, [40, 235, 120], 3);
 
   const stem = `${buildingId}__${view.panoramaId}`;
   await writeFile(path.join(OUT, `${stem}.jpg`),
