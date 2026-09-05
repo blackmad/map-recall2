@@ -6,6 +6,26 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Board cleanup (2026-09-05): 8b closed, 11b demoted
+
+**8b** (type the decision half) is finished: no un-migrated decision logic left
+under that item. Rule kept in CLAUDE.md — decisions in TypeScript, paint in
+JavaScript; `game.js` and renderers stay JS on purpose.
+
+**11b** was describing a failed staging rebuild (network halved, bridge ids
+desynced). That never shipped. Published Amsterdam on `main` is healthy
+(`check-city-extract` / bridge crossings green; ~47k ways; city profile
+present). The board item is now an optional currency refresh, not a red bug.
+
+## Mama-chari skin (optional baby seat)
+
+pokoponmaru’s Sketchfab “City Bike (mama-chari)” (CC BY 4.0) is rigged from
+the downloaded FBX zip by `scripts/rig-mama-chari-bike.py`. Loose parts split
+into `BabySeat`, handle → `Lenker`, and the one true circular rear disc →
+`RadHinten`. The front tyre is welded into the body (cutting “wheel-like”
+mid-frame tubes made them spin and split the bike), so only the rear spins.
+Pref skin id `mama`; baby seat uses the shared `bikeBabySeat` toggle.
+
 ## Optional baby seat on omafiets
 
 Authored omafiets ships a named `BabySeat` on the rear rack. Pref
@@ -132,9 +152,9 @@ recall keys, home geocode, postcard captions, and the basemap extract root
 all follow that id — so a Utrecht answer cannot stamp an Amsterdam mastery
 key. Selecting a city on the briefing jumps the map to that centre and
 refetches the landmark destination pool. Cities without curated POIs start
-from the prominence-ranked landmark extract. Remaining content gaps
-(Rotterdam / Den Haag landmark text, Utrecht ledes) stay on the board as
-11b/11c, not as a blocked play path.
+from the prominence-ranked landmark extract. Remaining content gaps stay on
+the board as optional extract refresh (11b) and thin-lede polish (11c), not as
+a blocked play path.
 
 ## Randstad refresh reuses OSM and Wikimedia caches
 
