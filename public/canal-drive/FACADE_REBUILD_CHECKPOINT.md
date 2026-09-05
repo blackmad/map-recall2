@@ -87,7 +87,11 @@ identity, footprint, and highlighted wall before recording two plain-language
 verdicts. Metadata and source-pixel anchors remain available as advanced details.
 Detector boxes are absent; calibration and rectification remain locked.
 
-The phase-2 human gate is still open: Herengracht 270 needs two independent
-agreeing passes, then every remaining fixture needs an explicit panorama
-selection before it can enter the same review. Until then no detector or
-measurement run is authorised.
+The phase-2 human gate is still open: under the explicit solo-operator decision
+adopted on 2026-09-05, Herengracht 270 needs one auditable local review with a
+selected wall and accepted identity and elevation verdicts. An uncertain or
+rejected verdict fails closed. Source-pixel points can be removed individually,
+undone in reverse order, or cleared together through a guarded two-click action.
+Every remaining fixture still needs an explicit panorama selection before it
+can enter the same review. Until then no detector or measurement run is
+authorised.

@@ -1,6 +1,6 @@
 # Amsterdam façade twin — clean rebuild implementation plan
 
-Status: approved rebuild lane created; implementation has not started.
+Status: phases 0–2 implemented; phase-2 local review gate remains open.
 
 ## Working lane
 
@@ -189,7 +189,10 @@ footprint/elevation inset, projected quadrilateral, metadata, rectified preview,
 anchor correction, and explicit rejection. Hide detector boxes during
 registration review.
 
-Gate: two review passes agree on pand and elevation for every fixture.
+Gate: one recorded local review accepts both pand and elevation for every
+fixture. This is the explicit solo-operator checkpoint adopted on 2026-09-05;
+reviewer identity, timestamp, both verdicts, and notes remain auditable, and an
+uncertain or rejected verdict still fails closed.
 
 ## Phase 3 — camera model and rectifier
 
