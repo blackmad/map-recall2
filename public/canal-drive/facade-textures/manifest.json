@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-09-04T18:06:01.973Z",
+    "generatedAt": "2026-09-04T18:14:59.718Z",
     "generator": "scripts/facade-twin/build-textures.ts",
     "attribution": "© Gemeente Amsterdam, Kernregistratie Panoramabeelden (CC BY 4.0)",
     "method": "One-metre wall patches cropped from rectified orthographic façades between the measured openings, resampled to 128 px and medianed per material across buildings.",
@@ -11,8 +11,8 @@
     {
       "materialId": "brick-grey",
       "file": "brick-grey.jpg",
-      "buildings": 30,
-      "patches": 2764,
+      "buildings": 40,
+      "patches": 4172,
       "colour": "measured",
       "bond": "constructed at 210x50 mm",
       "tileMetres": 0.63,
@@ -27,8 +27,8 @@
     {
       "materialId": "painted-white",
       "file": "painted-white.jpg",
-      "buildings": 30,
-      "patches": 3875,
+      "buildings": 40,
+      "patches": 5052,
       "colour": "measured",
       "bond": "none, courses flattened",
       "tileMetres": 1.8900000000000001,
@@ -43,8 +43,8 @@
     {
       "materialId": "painted-grey",
       "file": "painted-grey.jpg",
-      "buildings": 30,
-      "patches": 2737,
+      "buildings": 40,
+      "patches": 4098,
       "colour": "measured",
       "bond": "none, courses flattened",
       "tileMetres": 1.8900000000000001,
@@ -59,8 +59,8 @@
     {
       "materialId": "painted-black",
       "file": "painted-black.jpg",
-      "buildings": 30,
-      "patches": 1555,
+      "buildings": 40,
+      "patches": 1872,
       "colour": "measured",
       "bond": "none, courses flattened",
       "tileMetres": 1.8900000000000001,
@@ -75,8 +75,8 @@
     {
       "materialId": "brick-yellow",
       "file": "brick-yellow.jpg",
-      "buildings": 25,
-      "patches": 2109,
+      "buildings": 30,
+      "patches": 2974,
       "colour": "measured",
       "bond": "constructed at 210x50 mm",
       "tileMetres": 0.63,
@@ -91,8 +91,8 @@
     {
       "materialId": "stucco",
       "file": "stucco.jpg",
-      "buildings": 12,
-      "patches": 1525,
+      "buildings": 14,
+      "patches": 1745,
       "colour": "measured",
       "bond": "none, courses flattened",
       "tileMetres": 1.26,

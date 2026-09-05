@@ -723,3 +723,102 @@ in this boundary. The position is that:
   house-number OCR is the next instrument and not a nicety.
 - Everything downstream of §11 was measured through the old model and stays
   quarantined.
+
+
+---
+
+## 14. The buildings can be made to say their own names (2026-09-05, late)
+
+§13 left two things open: a residual tail attributed to nothing in particular,
+and the fact that cross-view agreement cannot certify identity. Both moved.
+
+### The tail is occlusion, and it is not wall selection
+
+`cross-view-registration.ts` measures the along-wall offset between two
+independent panoramas of one wall, and records what could explain a failure
+other than the camera. On 90 panden: median 0.95 m, p90 5.55 m, half within a
+metre, bimodal. What separates the 45 that lock from the 30 that miss by two
+metres or more:
+
+| | locks < 1 m | misses ≥ 2 m |
+|---|---|---|
+| either view occluded | 27% | **83%** |
+| further standoff | 22.8 m | 32.6 m |
+| wall off plot axis | 0.0° | 0.0° |
+| worse obliquity | 13.0° | 13.8° |
+
+Occlusion and distance. **Not wall selection** — the chosen wall sits on a plot
+axis in both groups and obliquity barely moves. The view selector should reject
+occluded views and prefer nearer ones; that is a change to view ranking, not to
+geometry.
+
+### House numbers, and what they can and cannot certify
+
+A house number is the only thing in a street photograph that *identifies* the
+building rather than describing it, and it is independent of the geometry being
+tested: the plaque reads 270 whether or not the projection is a metre out.
+
+Geometry decides whether it is legible. A 13 cm digit subtends 41 px at 4 m and
+5 px at 30 m, so numbers come from the **near-side pass** — the van driving the
+building's own quay — and not from the across-canal view the façade is measured
+from. Different panoramas of the same building, which is the point.
+`number-bands.ts` samples at the rate the source carries and never above it: 54
+of 175 tiles were dropped below 45 px/m, where no recogniser reads a digit and
+enlargement adds pixels rather than evidence. Median native resolution across the
+kept tiles is 113 px/m.
+
+First run, 30 panden, EasyOCR (Apache-2.0), never told what to expect:
+
+| | |
+|---|---|
+| **confirmed** — a number this pand carries, on the wall we projected | **3** |
+| **conflict** — another pand's number inside our wall span | **5** |
+| neighbour only — real numbers read, all outside our wall span | 1 |
+| **unread** — nothing legible that names a nearby address | **21** |
+
+330 raw digit readings; most are window bars and reflections and are discarded by
+requiring that a reading name a real address nearby. **Coverage is the honest
+problem: 9 of 30 yield a usable number and 3 of 30 confirm identity.**
+
+Along-band offset of a confirming reading from its BAG address point: n = 3,
+median 1.47 m. That is loose by construction — a BAG address point is a point
+*inside* the building, not the surveyed centre of a plaque — and it is sharp
+enough only to catch a one-house error, which is 5–6 m on a canal terrace.
+
+### The strongest catch, stated carefully
+
+Pand `0363100012167495` carries Herengracht **58**. Its band reads **56** twice,
+at 0.999 and 0.961, from two different tiles, agreeing at 8.59 m — three metres
+into an eight-metre wall, not at its edge. The plate was then looked at directly:
+white enamel on brick, beside a stone pilaster. BAG places Herengracht 56 in the
+*adjacent* pand `0363100012167494`, and its address point falls 0.02 m from where
+the plate was read.
+
+**What that proves and what it does not.** It proves BAG's own point for number
+56 lies inside the wall this pipeline proposes as number 58's frontage. It does
+not by itself say which is wrong: a laterally offset projection, a wrong footprint
+edge, a corner building with two street frontages, and a misplaced address point
+would all produce it. It is a flag for a person, and that is what the instrument
+is for.
+
+### Two review surfaces, and why they are two
+
+- **`build-explorer.ts`** browses: parcel, footprint in the raw panorama,
+  rectified wall per view, door band, filters, and a per-building report control.
+  The evidence had been scattered across a dozen JSON files and three pages that
+  each answered one question, which is how a wrong camera model survived a pilot.
+- **`build-registration-review.ts`** + `registration.html` decides: one building,
+  three questions, a keystroke each, straight into SQLite. The door band is shown
+  as *evidence* so a reviewer can read the number themselves; the recogniser's
+  answer and the cross-view residual are withheld until after the verdict,
+  because a reviewer shown a confident number agrees with it.
+
+### Still open
+
+- Coverage. 21 of 30 unread. Whether that is resolution, plate style, occlusion
+  or the recogniser has not been separated, and the first three are geometry.
+- The 5 conflicts are unadjudicated. None should be called a registration error
+  until a person has looked.
+- The view selector still does not use the occlusion finding.
+- 2024–2025 remain blocked on height alone, as §13 describes.
+- Everything downstream of §11 stays quarantined.

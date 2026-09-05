@@ -58,6 +58,8 @@ const multi = (await readJson(path.join(STAGING, 'multi-view.json'), { facades: 
 const addressPoints = (await readJson(path.join(CACHE, 'address-points.json'), { addresses: [] })).addresses as
   Array<{ street: string; houseNumber: number; display: string; rd: ProjectedPoint; pandId: string | null }>;
 const registration = (await readJson(path.join(CACHE, 'cross-view-registration.json'), { panden: [] })).panden as any[];
+const bandManifest = (await readJson(path.join(CACHE, 'number-bands/manifest.json'), { bands: [] })).bands as any[];
+const anchors = (await readJson(path.join(CACHE, 'number-bands/anchors.json'), { panden: [] })).panden as any[];
 
 const footprints = new Map<string, ProjectedPoint[]>();
 const years = new Map<string, number | undefined>();
@@ -137,6 +139,32 @@ for (const pandId of Object.keys(store).sort()) {
   const addresses = addressesOf.get(pandId) ?? [];
   const reg = registration.find(r => r.pandId === pandId);
 
+  /**
+   * The door band, shown as evidence and never as a verdict.
+   *
+   * A house number is the one thing in a street photograph that identifies the
+   * building rather than describing it, so a reviewer should see it. What they
+   * must not see is what the recogniser made of it: told the machine read 56,
+   * they will read 56. So the tiles go on the card and the OCR result waits
+   * with the rest of the machine's opinion until after the answer.
+   */
+  const band = bandManifest.find(b => b.pandId === pandId);
+  const doorBand: any[] = [];
+  if (band) {
+    for (const tile of band.tiles) {
+      const file = path.join(CACHE, 'number-bands', tile.file);
+      if (!existsSync(file)) continue;
+      const name = `${pandId}__band__${tile.startM}.jpg`;
+      await writeFile(path.join(OUT, name), await readFile(file));
+      doorBand.push({
+        file: name, startM: tile.startM,
+        // Where this stretch sits relative to the wall being judged.
+        onWall: tile.startM + tile.lengthM > band.wallStartM && tile.startM < band.wallEndM,
+      });
+    }
+  }
+  const anchor = anchors.find(a => a.pandId === pandId);
+
   cards.push({
     pandId,
     label: addresses.length
@@ -150,9 +178,17 @@ for (const pandId of Object.keys(store).sort()) {
         label: `${v.capturedAt.slice(0, 10)} · heading ${v.headingDeg.toFixed(1)}°` })),
       addresses.map(a => a.rd), neighbours, { width: 300, minHeight: 170, maxHeight: 240 }),
     frames,
+    doorBand,
+    wallSpanM: band ? [band.wallStartM, band.wallEndM] : null,
     // Shown after answering, never before: a reviewer told the machine's answer
     // agrees with it, and the point of a review is an independent opinion.
-    hint: reg ? { shiftM: reg.shiftM, peak: reg.peak, occluded: !!(reg.occludedA || reg.occludedB) } : null,
+    hint: {
+      registration: reg ? { shiftM: reg.shiftM, peak: reg.peak, occluded: !!(reg.occludedA || reg.occludedB) } : null,
+      anchor: anchor ? {
+        verdict: anchor.verdict,
+        best: anchor.readings.filter((r: any) => r.insideWall).sort((a: any, b: any) => b.confidence - a.confidence)[0] ?? null,
+      } : null,
+    },
   });
   done++;
   process.stdout.write(`\r  ${done} cards`);

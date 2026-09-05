@@ -152,7 +152,15 @@ function render() {
   $('plan').innerHTML = card.plan;
   $('facts').innerHTML = card.frames.map(f =>
     `<b>${f.capturedAt}</b> heading ${f.heading}° · ${f.standoffM} m · ${f.obliquityDeg}° off square`).join('<br>');
-  $('frames').innerHTML = card.frames.map(f => `
+  const band = (card.doorBand || []).length ? `
+    <div class="frame">
+      <h3>Door band, near-side pass — read the number yourself</h3>
+      <div class="pair">
+        ${card.doorBand.map(t => `<figure><img src="/registration-review/${t.file}" alt="">
+          <figcaption>${t.startM} m along${t.onWall ? ' · <b style="color:var(--yes)">on the judged wall</b>' : ' · past its edge'}</figcaption></figure>`).join('')}
+      </div>
+    </div>` : '';
+  $('frames').innerHTML = band + card.frames.map(f => `
     <div class="frame">
       <h3>${f.capturedAt} · heading ${f.heading}° · ${f.standoffM} m away</h3>
       <div class="pair">
@@ -206,14 +214,22 @@ async function save() {
     return;                                     // stay put; a lost verdict is the one thing to avoid
   }
   // Only now show what the machine thought, and only as a note.
-  const hint = card.hint;
-  if (hint) {
-    $('hint').textContent = `cross-view residual ${Math.abs(hint.shiftM).toFixed(2)} m, `
-      + `peak ${hint.peak.toFixed(2)}${hint.occluded ? ', a view is occluded' : ''}`;
-    $('hint').className = 'hint on';
+  const hint = card.hint || {};
+  const parts = [];
+  if (hint.registration) {
+    parts.push(`cross-view residual ${Math.abs(hint.registration.shiftM).toFixed(2)} m, `
+      + `peak ${hint.registration.peak.toFixed(2)}${hint.registration.occluded ? ', a view is occluded' : ''}`);
   }
+  if (hint.anchor) {
+    const a = hint.anchor;
+    parts.push(a.best
+      ? `house number read “${a.best.text}” (${a.best.confidence.toFixed(2)}) → ${a.best.address}`
+        + `, ${a.verdict === 'confirmed' ? 'this pand’s own' : 'NOT this pand’s'}`
+      : `no house number named a nearby address (${a.verdict})`);
+  }
+  if (parts.length) { $('hint').textContent = parts.join('  ·  '); $('hint').className = 'hint on'; }
   state.answers = {}; state.note = ''; state.q = 0; state.i++;
-  setTimeout(render, hint ? 550 : 0);
+  setTimeout(render, parts.length ? 900 : 0);
 }
 
 document.addEventListener('keydown', event => {
