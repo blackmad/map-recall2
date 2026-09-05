@@ -189,8 +189,10 @@ export interface VectorMap {
   sync(camera: Camera, loader: OsmLoader, canvas: HTMLCanvasElement): void;
   setPlayerBike(player: unknown, loader: OsmLoader, visible: boolean): void;
   setPlayerBoat(player: unknown, loader: OsmLoader, visible: boolean): void;
+  setPlayerTransit?(player: unknown, loader: OsmLoader, visible: boolean): void;
   isPlayerBikeReady(): boolean;
   isPlayerBoatReady(): boolean;
+  isPlayerTransitReady?(): boolean;
   setRoute(routePath: readonly WorldPoint[] | null, loader: OsmLoader, visible: boolean): void;
   setStreetHighlights(
     track: Track, loader: OsmLoader, learnedNames: Set<string>,

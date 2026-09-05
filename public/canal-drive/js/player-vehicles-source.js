@@ -17,6 +17,8 @@ function bikeSkin(id) {
 }
 
 const BOAT_MODEL_URL = assetUrl('./canal-boat-runtime.glb');
+/** Demo chase mesh for transit mode — GVB metro 51 lookalike from mini-amsterdam-3d. */
+const TRANSIT_MODEL_URL = assetUrl('./gvb-metro-51-runtime.glb');
 
 /**
  * Chase mode sees the world from tens of metres up. A literal-size bicycle
@@ -26,6 +28,8 @@ const BOAT_MODEL_URL = assetUrl('./canal-boat-runtime.glb');
  */
 const BIKE_GAME_SCALE = 4.5;
 const BOAT_GAME_SCALE = 1.5;
+/** Metro car is already ~6 m long; mild scale so it reads at chase altitude. */
+const TRANSIT_GAME_SCALE = 2.2;
 
 /**
  * Measured off each model, not assumed. The authored omafiets points its blue
@@ -36,6 +40,8 @@ const BOAT_GAME_SCALE = 1.5;
  */
 const BIKE_HEADING_OFFSET = 0;
 const BOAT_HEADING_OFFSET = Math.PI;
+/** Metro-51 source is long on +X; same convention as the bike. Flip to Math.PI if playtests show it reverse. */
+const TRANSIT_HEADING_OFFSET = 0;
 
 /** Radians of bar travel at full lock — a bicycle, not a shopping trolley. */
 const MAX_STEER = 0.42;
@@ -346,5 +352,22 @@ export class PlayerBoat3D extends Vehicle3D {
   _pose(model) {
     model.rotation.set(0, 0, 0);
     model.rotateX(this.heel);
+  }
+}
+
+/**
+ * Transit chase vehicle. Rigid hull (no bellows animation) — demo stand-in
+ * using the GVB metro 51 mesh. Look-only; no wheel spin yet.
+ */
+export class PlayerTransit3D extends Vehicle3D {
+  constructor(map, maplibregl) {
+    super(map, maplibregl, {
+      id: 'player-transit-3d',
+      modelUrl: TRANSIT_MODEL_URL,
+      label: 'transit model',
+      gameScale: TRANSIT_GAME_SCALE,
+      headingOffset: TRANSIT_HEADING_OFFSET,
+      normaliseTo: 6.1,
+    });
   }
 }

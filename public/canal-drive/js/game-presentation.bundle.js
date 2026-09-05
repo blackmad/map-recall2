@@ -263,9 +263,13 @@
       this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
       const pitched = this.viewMode === "chase" || this.viewMode === "cockpit";
       const byBoat = isBoat(this.travelMode);
-      const showBike = !byBoat;
+      const byTransit = isTransit(this.travelMode);
+      const showBike = !byBoat && !byTransit;
       this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike);
       this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
+      if (typeof this.vectorMap.setPlayerTransit === "function") {
+        this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit);
+      }
       this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
       if (!byBoat) {
         this.vectorMap.setStreetHighlights(
@@ -289,7 +293,7 @@
       }
       this.renderer.drawSkidMarks(this.particles, this.camera);
       this._renderBridgeLabels();
-      const meshReady = pitched && (byBoat ? this.vectorMap.isPlayerBoatReady() : this.vectorMap.isPlayerBikeReady());
+      const meshReady = pitched && (byBoat ? this.vectorMap.isPlayerBoatReady() : byTransit ? typeof this.vectorMap.isPlayerTransitReady === "function" && this.vectorMap.isPlayerTransitReady() : this.vectorMap.isPlayerBikeReady());
       if (!meshReady) {
         if (byBoat) this.renderer.drawCar(player, this.camera);
         else this.renderer.drawPlayerCar(player, this.camera);

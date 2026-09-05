@@ -52,6 +52,13 @@ The boat was reduced the same way, 2.85 MB to 0.24 MB and then to 0.03 MB at
 7,994 triangles; it arrives as raw geometry with no normals, materials or
 textures, so normals and a height-painted sloep colour are applied at runtime.
 
+# Transit chase mesh (demo)
+
+**DEMO ONLY — licence not cleared for shipping.** Transit mode currently loads
+`gvb-metro-51-runtime.glb`, packed from the mini-amsterdam-3d coursework
+mirror of UiGoku’s Sketchfab “Gvb metro 51”. Treat as a temporary stand-in
+(metro silhouette, not street tram 2). Replace before any public release.
+
 # Signature landmark models
 
 **PROTOTYPE — the licence question below is open and unresolved.**

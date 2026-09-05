@@ -24,6 +24,9 @@ Phases A–C of [`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on `spike/canal-transit`.
   shape; lines key on mode+ref+city, stops on extract centres.
 - Gate: `npm run check:transit` (extract pins, tram 2 reachability, prefs,
   overlay). Boat/bike regression: `test:canal-car`.
+- **Demo chase mesh:** `gvb-metro-51-runtime.glb` (~3k tris, meshopt) from
+  mini-amsterdam-3d’s mirror of UiGoku’s Sketchfab metro 51. Licence not
+  cleared — stand-in only; street-tram asset still wanted.
 
 ## Board cleanup (2026-09-05): 8b closed, 11b demoted
 
