@@ -95,7 +95,8 @@ if (process.argv.some(v => v.startsWith('--submit'))) {
       continue;
     }
     insert.run(v.pandId, 'right-building', v.rightBuilding, REVIEWER, v.note ?? null);
-    insert.run(v.pandId, 'fit', v.rightBuilding === 'no' ? 'n/a' : (v.fit ?? 'unsure'), REVIEWER, null);
+    const gradable = v.rightBuilding === 'yes' || v.rightBuilding === 'unsure';
+    insert.run(v.pandId, 'fit', gradable ? (v.fit ?? 'unsure') : 'n/a', REVIEWER, null);
     insert.run(v.pandId, 'visible', v.visible, REVIEWER, null);
     n++;
   }
@@ -120,6 +121,7 @@ for (const card of batch) {
   console.log();
 }
 console.log('Judge each on what the pictures show, then submit:');
-console.log(`  rightBuilding: yes | no | unsure`);
-console.log(`  fit:           snug | near | loose | wrong-wall | unsure`);
-console.log(`  visible:       clear | partly | blocked`);
+console.log(`  rightBuilding: yes (the frontage) | other-wall (this building, another face)`);
+console.log(`                 | no (a different building) | unsure`);
+console.log(`  fit:           snug | near (<1 m) | loose (>=1 m) | unsure     — only when rightBuilding is yes`);
+console.log(`  visible:       clear (<1/4 blocked) | partly (1/4-1/2) | blocked (>1/2)`);

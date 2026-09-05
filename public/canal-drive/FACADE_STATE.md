@@ -922,3 +922,128 @@ rather than a missing value to be guessed.
   storey bands, sill heights, the door band's window — should be trusted until it
   is, and it now affects the whole fleet rather than the 2024–2025 batches alone.
 - Everything in §14 that was open stays open.
+
+
+---
+
+## 16. Three defects out, and a machine reviewer that knows its own bias (2026-09-05, night)
+
+Review found six problems in an afternoon. They were three faults, and all three
+are now fixed or measured.
+
+### A frontage split by a jog is still one frontage
+
+`buildElevations` grouped runs of *consecutive* near-parallel edges — right for a
+corner, wrong for a canal front, which steps in and out by tens of centimetres
+for a bay, a porch or a thicker party wall. The step is a real perpendicular
+edge, so it broke the run and one façade arrived as two or three pieces. The
+pipeline measured one piece.
+
+**176 of 2,180 panden, 8%.** The chosen piece was a median **2.31× smaller** than
+the real frontage and missed a median 10.1 m of wall. Herengracht 58 returned
+7.98 m and 13.94 m, both facing 28.5°, both in the same plane.
+
+`mergeCoplanar` joins elevations passing all three tests and only those: same
+facing within 8°, same plane within 1.2 m, adjacent within 4 m. Facing alone
+would join a front to a wing across a courtyard; without the offset test it would
+join a front to a back. **Splits 176 → 34**, 653 panden gained a merge, and
+Herengracht 58 now covers its whole 1905 block party wall to party wall.
+
+The guard against over-merging is the city's own: **median frontage per house
+number is 5.2 m**, which is an Amsterdam canal plot. Median front 5.6 m, p95
+16.0, three over 30 m, none over 45.
+
+### `b3_h_nok` is not a ridge height
+
+Keizersgracht 162 published ground −0.02 m, eaves 16.38 and a ridge of **8.94** —
+a ridge seven metres below its own eaves. The adapter preferred `b3_h_nok` over
+`b3_h_dak_max`; whatever `b3_h_nok` is, it is not a height above NAP. Read as
+one it inverted **484 of 6,429** cached buildings, 198 in this boundary, by a
+median 1.87 m and as much as 15.8 — and **186 of those pass `b3_val3dity_lod22`**,
+so no quality flag catches it.
+
+Ridge now comes from `b3_h_dak_max`, clamped to the 70th percentile plus six
+times its distance from the 50th: headroom for a real gable, not for one stray
+lidar return. Inversions **484 → 0**; 5,456 ridges move by a median −0.07 m, so
+`b3_h_nok` was usually close and occasionally catastrophic.
+
+### The vertical datum drifts within a run, and 78% of it comes out
+
+§15 measured a per-run vertical offset and left it unsolved. It is not per-run —
+it drifts.
+
+Solved with no ground level at all: where two runs pass within a metre the true
+height is the same, so `z_a − z_b = offset_a − offset_b`. 198,856 such pairs over
+687 runs, least squares over the graph they form. The gauge is set afterwards by
+putting the fleet median lens at 2.44 m above local ground — the only place a
+ground level enters, and only to place the solution, never to shape it.
+
+Scored on **held-out places**, not held-out pairs:
+
+| unknown per | held out |
+|---|---|
+| whole run | 27% |
+| 100 frames | 57% |
+| **25 frames (~125 m)** | **78% — median 0.74 m → 0.17 m** |
+
+The holdout had to be rebuilt first. Held out at random, 25-frame segments scored
+88%, flattered because two cameras at one spot generate many pairs and a pair's
+siblings pin its unknowns. Whole 60 m blocks are held out instead. 89% fitted
+against 78% held out is the honest overfitting margin.
+
+Fleet lens above local ground: p05–p95 **0.73–4.57 m → 1.79–3.77 m**, median
+2.44. Review deck median **1.15 m → 2.62 m**; cards outside the plausible
+1.6–3.6 m fall **43 of 60 → 28**. The rest of that spread is the building's own
+`b3_h_maaiveld`, not the camera.
+
+### The machine reviewer, and the two biases it has
+
+`llm-review.ts` grades cards under its own reviewer name so agreement is
+*measured*, never assumed. Nine cards judged by both:
+
+| | |
+|---|---|
+| right-building | 7/9 |
+| fit | 2/2 |
+| visible | 7/9 |
+
+Both numbers are too small to conclude from, and **both disagreement types are
+systematic**, which is worth more than the score:
+
+- **Corner buildings.** Both right-building disagreements are the machine saying
+  *yes* where the human says *no*, on a building whose box sits on a face that is
+  not the addressed frontage. The machine is over-permissive about which face
+  counts, and the first version of the question let it be: a flank is *both* the
+  right building and not the façade. There is now an explicit `other-wall`
+  answer, scored as a miss.
+- **Occlusion.** Both `visible` disagreements are the machine saying *partly*
+  where the human says *clear*. It is stricter about a bare tree. The question
+  now carries a shared threshold — blocked over more than about a quarter —
+  rather than leaving it to taste.
+
+### Also closed
+
+`tsconfig.json` included only `src`, so `npm run lint` — the project typecheck,
+part of `check:canal` — **had never looked at `scripts/`**, where this entire
+pipeline lives. That is how a `poseOf(view)` call missing a required argument
+reached runtime. `tsconfig.scripts.json` and `lint:scripts` close it: 43 errors,
+26 in facade-twin, all pre-existing but one. Deliberately not in `check:canal`
+until they are cleared, because slipping it in silently would hide how long they
+have been there.
+
+Derived records are now rebuildable offline from cached raw responses
+(`rebuild-derived.ts`), and nothing in the review path deletes: band tiles carry
+their sampling rate, review frames carry the ground and top that made them, decks
+are written live and dated. A verdict refers to a picture, and that picture has
+to still exist.
+
+### Still open
+
+- 34 frontages still split — separated by more than 4 m or facing more than 8°
+  apart, and not yet looked at individually.
+- The 43 script type errors.
+- Herengracht 178's box sits low enough that its bottom is in the water: the
+  datum correction over-corrects on some frames, and the per-frame residual is
+  not yet reported on the card.
+- The five house-number conflicts from §14 remain unadjudicated.
+- Everything downstream of §11 stays quarantined.
