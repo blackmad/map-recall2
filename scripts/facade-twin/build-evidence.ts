@@ -127,7 +127,7 @@ async function panorama(view: PanoramaView) {
 async function strip(record: Stored): Promise<boolean> {
   const view = views.get(record.panoramaId);
   const mass = massing.get(record.pandId);
-  if (!view || !mass?.groundLevel) return false;
+  if (!view || !Number.isFinite(mass?.groundLevel)) return false;
   const image = await panorama(view);
   if (!image) return false;
 

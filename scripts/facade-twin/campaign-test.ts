@@ -49,7 +49,7 @@ const store = JSON.parse(await readFile(path.join(STAGING, 'measured-facades.jso
 const ring = registry.find(e => e.buildingId === PAND)?.footprintLngLat.map(p => RD_NEW.fromLngLat(p));
 const record = store[PAND];
 const mass = massing.get(PAND);
-if (!ring || !record || !mass?.groundLevel) throw new Error(`no data for ${PAND}`);
+if (!ring || !record || !Number.isFinite(mass?.groundLevel)) throw new Error(`no data for ${PAND}`);
 
 const [x0, y0, x1, y1] = record.wall;
 const mid = { x: (x0 + x1) / 2, y: (y0 + y1) / 2 };

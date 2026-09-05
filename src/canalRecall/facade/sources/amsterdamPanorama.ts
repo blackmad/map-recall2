@@ -101,13 +101,58 @@ const PAGE_SIZE = 500;
  * published height 46.69 m is 3.19 m NAP after the separation, 2.56 m above
  * this boundary's typical ground of 0.63 m — right for a survey vehicle's lens.
  */
+export type PoseDefect = 'no-height' | 'no-orientation';
+
+/**
+ * What is missing from a pose, for a given camera model.
+ *
+ * Amsterdam publishes a missing value as a zero, in two fields, and signals it
+ * no other way. Verified against the API rather than inferred from our cache:
+ *
+ *     recording_2025-06-16_…  coordinates [lng, lat, 0.0]   heading 0 pitch 0 roll 0
+ *     b_20241121_1354_…       coordinates [lng, lat, 0.0]   heading 3.14 pitch 1.68 roll -0.18
+ *
+ * Of 139,937 panoramas, 15,312 publish a zero height — all of 2024 and 2025 —
+ * and of those the 7,317 `recording_*` frames from 2025 also publish heading,
+ * pitch and roll as exactly zero, which is absent orientation and not a camera
+ * pointing due north perfectly level.
+ *
+ * Whether absent orientation matters is a question about the *camera model*,
+ * not about the pose. Under `AMSTERDAM_CAMERA` the frame is world-aligned and
+ * the orientation fields are never read, so a frame that publishes none is
+ * merely undescribed, not unusable. Under a body-aligned model it is fatal.
+ * Missing height is fatal either way, and remains the only thing standing
+ * between the 2024–2025 batches and use — see `defectsOf`.
+ *
+ * The photographs were always fine. What was wrong was this pipeline doing
+ * arithmetic on the sentinel: a zero height went through
+ * `cameraHeight - GEOID_SEPARATION_M` and became a lens 43.5 m below NAP. The
+ * rectifier then faithfully computed directions from there up to a wall and
+ * returned roofline and sky. A missing value must never be arithmetic.
+ */
+export function defectsOf(
+  view: { cameraHeight: number; headingDeg: number; pitchDeg: number; rollDeg: number },
+  camera: { usesOrientation: boolean },
+): PoseDefect[] {
+  const defects: PoseDefect[] = [];
+  if (!Number.isFinite(view.cameraHeight) || view.cameraHeight <= 0) defects.push('no-height');
+  const orientationAbsent = !Number.isFinite(view.headingDeg)
+    // All three exactly zero is the other way this feed says "no orientation".
+    || (view.headingDeg === 0 && view.pitchDeg === 0 && view.rollDeg === 0);
+  if (camera.usesOrientation && orientationAbsent) defects.push('no-orientation');
+  return defects;
+}
+
+/**
+ * Usable under the Amsterdam camera model.
+ *
+ * Kept as a narrow helper because every view-selecting script needs it, but it
+ * is deliberately a question about a *named* model rather than about poses in
+ * general.
+ */
 export const hasUsablePose = (view: {
   cameraHeight: number; headingDeg: number; pitchDeg: number; rollDeg: number;
-}) =>
-  Number.isFinite(view.cameraHeight) && view.cameraHeight > 0
-  && Number.isFinite(view.headingDeg)
-  // All three exactly zero is the other way this feed says "no orientation".
-  && !(view.headingDeg === 0 && view.pitchDeg === 0 && view.rollDeg === 0);
+}) => defectsOf(view, AMSTERDAM_CAMERA).length === 0;
 
 export const AMSTERDAM_CAMERA = worldAlignedFrame('amsterdam-world-aligned', 0.5);
 

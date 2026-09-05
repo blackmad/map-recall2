@@ -170,7 +170,7 @@ let done = 0;
 for (const pandId of candidates) {
   if (done >= (ids.length ? ids.length : limit)) break;
   const record = store[pandId], ring = footprints.get(pandId), mass = massing.get(pandId);
-  if (!record || !ring || !mass?.groundLevel) continue;
+  if (!record || !ring || !Number.isFinite(mass?.groundLevel)) continue;
 
   const chosen: PanoramaView[] = [];
   for (const id of [record.panoramaId, ...(multi[pandId] ?? []).map(m => m.panoramaId)]) {

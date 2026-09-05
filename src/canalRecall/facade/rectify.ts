@@ -73,6 +73,14 @@ export type WorldDelta = readonly [number, number, number];
  */
 export interface CameraModel {
   readonly id: string;
+  /**
+   * Whether the pose's orientation fields are inputs to the projection.
+   *
+   * This is what decides whether a panorama with no published orientation is
+   * unusable or merely undescribed. Under a world-aligned model it is the
+   * latter, so validity has to be asked of the model rather than assumed.
+   */
+  readonly usesOrientation: boolean;
   /** Where a world-frame offset from the camera lands in the frame. */
   project(delta: WorldDelta, pose: CameraPose, image: { width: number; height: number }): [number, number];
 }
@@ -101,6 +109,7 @@ function equirectangular(
  */
 export const worldAlignedFrame = (id: string, northAtU: number): CameraModel => ({
   id,
+  usesOrientation: false,
   project: (delta, _pose, image) => equirectangular(delta[0], delta[1], delta[2], image, northAtU),
 });
 
@@ -113,6 +122,7 @@ export const worldAlignedFrame = (id: string, northAtU: number): CameraModel => 
  */
 export const bodyAlignedFrame = (id: string, forwardAtU: number): CameraModel => ({
   id,
+  usesOrientation: true,
   project: (delta, pose, image) => {
     const yaw = toRadians(pose.headingDeg), pitch = toRadians(pose.pitchDeg), roll = toRadians(pose.rollDeg);
     const [dx, dy, dz] = delta;

@@ -600,3 +600,126 @@ rectifier is faithful and the wall is well chosen. The remaining suspects are
 the published camera *position* — whether `lngLat` is the lens or the vehicle
 reference point — and the pitch/roll application order. Both are testable
 against Mapillary, which publishes its own poses for these streets for free.
+
+
+---
+
+## 13. The frame is world-aligned, and that was the whole bug (2026-09-05)
+
+Section 12 left the fault narrowed to "the pose-to-pixel mapping is inconsistent
+between panoramas", with `lngLat` and the pitch/roll order as the remaining
+suspects. It was neither. The question itself was wrong.
+
+**Amsterdam's equirectangular frames do not turn with the survey van.** They are
+world-aligned: north at the horizontal centre, horizon level, and `heading`,
+`pitch` and `roll` describe the vehicle. The pipeline rotated every projection
+by the van's heading — an angle that varies per panorama and has nothing to do
+with the picture.
+
+This is why the `centre`/`edge` argument could not be won. Both answers presume a
+body-aligned frame, and both are wrong by `heading`. `edge` passed its six-façade
+review because those views happened to have heading near 180°, where the two
+conventions coincide. Herengracht 270's three views have headings 181.5, 0.7 and
+181.3 — and §12a's odd one out, the 2021-01-22 view showing "a different stretch
+entirely", is exactly the 0.7 one. "0 of 120 lock" followed directly: the van
+drives both ways along a canal.
+
+### The measurements
+
+Three, none of which needs a building, a detector or a rectified strip. Two are
+reproducible from source via `scripts/facade-twin/pose-experiments.ts`.
+
+| experiment | prediction if world-aligned | measured |
+|---|---|---|
+| Opposed pairs — cameras < 1.5 m apart, headings 180° apart | raw frames differ by 0° | median 0.18°, worst 2.34°, n = 8, peaks 0.44–0.80 |
+| Optical flow — expansion centre against known travel bearing | bearing + 180° | median 181.55° (mad 7.02°), n = 14; 181.88° (mad 4.08°) on the 8 strongest |
+| Cross-view residual, upper façade only | small | median 2.05 m → 0.95 m, within 1 m 23% → 50% |
+
+Handedness is settled with it: clockwise, concentration R = 0.78 against 0.17.
+
+**Two instrument notes, because both nearly produced a wrong answer.** The
+cross-view correlator reads only the upper façade: everything below the first
+floor is tree, car, bike, lamp post and parking sign, none of it in the wall
+plane, all of it sliding metres sideways under parallax and swamping the wall
+that does not. And the flow experiment must be summarised by a circular *median*.
+A track with a weak flow field can score a high sign-agreement and still return a
+badly determined angle — agreement measures whether signs match, not whether the
+angle is sharp — and two such tracks dragged a mean of fourteen by 10°, which at
+a canal's width is 4 m of façade.
+
+### Independently confirmed
+
+- **The publisher says so.** Amsterdam's Open Panorama pipeline documents its
+  second stage as: *"images are edited to face northwards and have a straight
+  horizon."* That is both findings at once — north-aligned, and levelled, which
+  is why applying pitch and roll on top makes the residual slightly worse
+  (0.95 m → 1.15 m).
+- **The building says so.** At 4 m standoff the number **270** is legible in our
+  own rectified strip of pand `0363100012164989`, carved on the stone right of
+  the door — the pand BAG labels *Herengracht 270G*.
+- **The register says so.** The Rijksmonument entry for Herengracht 270
+  describes a double house with a sandstone façade, five windows wide, a straight
+  triglyph cornice with balustrade, sculptured window surrounds in two bays, a
+  17th-century door and two façade lanterns. Every one of those is visible in the
+  corrected strip, in both the heading-181° and the heading-0.7° view.
+- **Street View says so.** Google's May 2024 imagery of Herengracht 270 shows
+  the same door, the same two lanterns, the same carved surrounds.
+
+### The suspect that is now closed, and the one that is not
+
+Splitting the cross-view residual by whether the two views' headings agree:
+
+| pairs | n | signed median | median &#124;shift&#124; | within 1 m |
+|---|---|---|---|---|
+| opposed headings (> 120°) | 54 | **0.00 m** | 0.55 m | 65% |
+| similar headings (< 60°) | 31 | −0.80 m | 1.65 m | 29% |
+
+A vehicle-frame position offset — `lngLat` being the van rather than the lens —
+would make *opposed* pairs disagree by twice the offset while same-heading pairs
+cancel. The opposite is observed, so that suspect is closed with the
+discriminating subset rather than with an aggregate median. **The −0.80 m on
+similar-heading pairs is unexplained** and n is small; it is not being explained
+away.
+
+### Retraction
+
+§12c said the fleet's median lens height "2.56 m above this boundary's typical
+ground of 0.63 m" was "the first independent confirmation that
+`GEOID_SEPARATION_M` is correct". That claim does not hold. Measured against
+local ground under each camera across 93,553 panoramas, lens height has a median
+of 2.47 m but a p05–p95 span of 0.72–4.61 m and a MAD of 0.69 m. Part of that is
+a crude ground proxy — the median ground of buildings within 45 m — but it is far
+too loose to confirm a datum to better than a metre.
+
+### 2024 and 2025
+
+15,312 panoramas publish a height of zero — 5,567 from 2024 and 9,745 from 2025
+in this boundary. The position is that:
+
+1. **The orientation blocker is gone.** `AMSTERDAM_CAMERA` never reads heading,
+   pitch or roll, so the 2025 `recording_*` frames that publish all three as zero
+   are merely undescribed, not unusable. Pose validity now asks the *camera
+   model* whether orientation matters — `defectsOf(view, camera)` — rather than
+   assuming it does.
+2. **Height is the only remaining blocker, and it is real.** A constant cannot
+   be substituted: see the retraction above.
+3. **But height does not affect azimuth at all.** The projection takes azimuth
+   from `atan2(dx, dy)`; `dz` enters only the elevation. So a zero-height frame is
+   already usable for horizontal registration and building identity, and unusable
+   for storey bands, sill heights and anything else vertical.
+4. **The way to recover it** is a one-parameter vertical fit of the strip against
+   a view of the same wall from the sound fleet. Not implemented yet, and until
+   it is, these frames stay rejected rather than guessed — the whole point of §12c.
+
+### Still open
+
+- p90 of the cross-view residual is 5.55 m. The distribution is bimodal — 30 of
+  60 within a metre, then a tail — which is the signature of a correct model with
+  some other stage failing, most likely wall selection and occlusion. Not yet
+  separated per case, and it must not be attributed by assertion.
+- Cross-view agreement alone does not certify identity. Where every view of a
+  pand shares a heading, the old model agrees with itself while pointing at the
+  wrong house. Identity needs the address evidence above, which is why
+  house-number OCR is the next instrument and not a nicety.
+- Everything downstream of §11 was measured through the old model and stays
+  quarantined.

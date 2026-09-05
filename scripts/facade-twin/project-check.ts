@@ -81,7 +81,7 @@ for (const buildingId of queue) {
   const record = store[buildingId];
   const ring = footprints.get(buildingId);
   const mass = massing.get(buildingId);
-  if (!record || !ring || !mass?.groundLevel) continue;
+  if (!record || !ring || !Number.isFinite(mass?.groundLevel)) continue;
   // Every view of this wall we have, not just the one it was measured from.
   // Agreement between independent panoramas is the correspondence test: two
   // cameras in different places on different days cannot both put a building

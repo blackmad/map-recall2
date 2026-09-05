@@ -55,7 +55,7 @@ const queue = ids.filter((_, i) => i % Math.max(1, Math.floor(ids.length / LIMIT
 for (const buildingId of queue) {
   const record = store[buildingId];
   const mass = massing.get(buildingId);
-  if (!record || !mass?.groundLevel) continue;
+  if (!record || !Number.isFinite(mass?.groundLevel)) continue;
   const [x0, y0, x1, y1] = record.wall;
   const len = Math.hypot(x1 - x0, y1 - y0);
   if (len < 1) continue;
