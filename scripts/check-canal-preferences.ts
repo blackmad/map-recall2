@@ -72,12 +72,15 @@ const memory = () => {
 }
 
 {
-  const prefs = parsePreferences({ gamey: false, trees: false, skipMastered: false, sound: true }, zoom);
-  assert.equal(prefs.gamey, false);
-  assert.equal(prefs.trees, false);
-  assert.equal(prefs.skipMastered, false);
-  assert.equal(prefs.sound, true);
+  const prefs = parsePreferences({ bikeSkin: 'pink' }, zoom);
+  assert.equal(prefs.bikeSkin, 'pink');
+  const bad = parsePreferences({ bikeSkin: 'unicycle' }, zoom);
+  assert.equal(bad.bikeSkin, 'omafiets', 'unknown bike skin falls back');
+  assert.equal(prefs.bikeBabySeat, false);
+  const withSeat = parsePreferences({ bikeBabySeat: true }, zoom);
+  assert.equal(withSeat.bikeBabySeat, true);
 }
+
 
 {
   const store = memory();

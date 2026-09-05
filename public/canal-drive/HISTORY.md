@@ -6,6 +6,37 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Optional baby seat on omafiets
+
+Authored omafiets ships a named `BabySeat` on the rear rack. Pref
+`bikeBabySeat` (default off) and the preview checkbox show/hide it. Skins
+advertise support via `bikeSkins.babySeat`. Mama-chari can reuse the same
+node + pref once Sketchfab download is available.
+
+## Bike skins are pickable (omafiets / city / Swapfiets)
+
+`bikeSkin` lives in preferences. Street-mode chase loads
+`omafiets-runtime.glb`, `pink-city-bicycle-runtime.glb`, or the Sketchfab
+Swapfiets body. Setup shows a Bicycle row when Travel is Bike; live settings
+have the same control. Swapfiets is look-only (no spin). Catalog:
+`src/canalRecall/game/bikeSkins.ts`.
+
+Omafiets livery is dark-green Dutch roadster (not red+blue) so it stays
+distinct from Swapfiets. Chaincase thinned, rear rack has stays, tires
+slightly slimmer, saddle tapered. Swapfiets body bakes ~1.7× lateral width
+for chase parity. Pink city bike is decimated and its wheel axles are baked
+onto the game spin axis (+Z after glTF). Preview: `bike-preview.html`.
+`swapfiets-runtime.glb` is no longer a copy of omafiets.
+
+## Free pink city bike in preview (CC0, real pivots)
+
+Downloaded Kin Chen’s BlenderKit “Pink city bicycle” (CC0 via MorfVision) —
+step-through + basket with separate `handle` / `front_wheelset` /
+`back_wheelset`. Rigged to `Lenker` / `RadVorn` / `RadHinten` in
+`scripts/rig-pink-city-bike.py` and added to `bike-preview.html`. Closest free
+non-Dutch city-bike candidate with working spin/steer; game still uses authored
+omafiets until taste-pass decides.
+
 ## Disambiguation pages never become cards; curated POIs for every Randstad city
 
 Title discovery was accepting Wikipedia list pages (`Nieuwegracht can refer

@@ -1,5 +1,7 @@
 import { useEffect, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import {
+  BIKE_SKINS,
+  BIKE_SKIN_IDS,
   playableCities,
   type CanalPreferences,
   type ZoomClamp,
@@ -19,6 +21,7 @@ export interface OverlayCallbacks {
   onLiveChange: () => void;
   onAccountClick: () => void;
   onClearKnowledge: () => void;
+  onClearAllData: () => void;
   onSkipMastered: (enabled: boolean) => void;
   onCloseSettings: () => void;
 }
@@ -121,6 +124,12 @@ const TRAVEL: Choice<CanalPreferences['travelMode']>[] = [
   { value: 'boat', title: 'Boat', hint: 'Canals' },
   { value: 'car', title: 'Bike', hint: 'Streets' },
 ];
+
+const BIKE_SKIN_OPTIONS: Choice<CanalPreferences['bikeSkin']>[] = BIKE_SKIN_IDS.map(id => ({
+  value: id,
+  title: BIKE_SKINS[id].label,
+  hint: BIKE_SKINS[id].motion ? 'Steer + spin' : 'Look only',
+}));
 
 /** Full camera set lives under More — primary setup only shows the active label. */
 const VIEW_MORE: Choice<CanalPreferences['viewMode']>[] = [
@@ -249,6 +258,29 @@ export function OverlayApp({
               options={TRAVEL}
               icons={TRAVEL_ICONS}
             />
+            {prefs.travelMode === 'car' ? (
+              <>
+                <ChoiceRow
+                  label="Bicycle"
+                  name="bike-skin"
+                  value={prefs.bikeSkin}
+                  onChange={value => patch({ bikeSkin: value })}
+                  options={BIKE_SKIN_OPTIONS}
+                  compact
+                  gloss="Chase bike look. Swapfiets is photoreal reference (no spin)."
+                />
+                {BIKE_SKINS[prefs.bikeSkin]?.babySeat ? (
+                  <label className="master-toggle" style={{ marginTop: 6 }}>
+                    <input
+                      type="checkbox"
+                      checked={prefs.bikeBabySeat}
+                      onChange={event => patch({ bikeBabySeat: event.target.checked })}
+                    />
+                    <span><strong>Baby seat</strong><small>Rear child seat on the luggage rack.</small></span>
+                  </label>
+                ) : null}
+              </>
+            ) : null}
             <p className="setup-view-summary">
               <span className="setup-choice-label">View</span>
               <span className="setup-view-summary-body">
@@ -383,6 +415,16 @@ export function OverlayApp({
               >
                 Reset knowledge…
               </button>
+              <button
+                id="clear-all-data-button"
+                type="button"
+                className="account-button quiet enamel-quiet"
+                disabled={state.account.busy}
+                onClick={() => callbacks.onClearAllData()}
+                style={{ marginTop: 8, width: '100%' }}
+              >
+                Clear all data…
+              </button>
             </details>
             </div>
             <div className="enamel-setup-footer">
@@ -421,6 +463,20 @@ export function OverlayApp({
             <option value="chase">3D — chase camera</option>
             <option value="cockpit">3D — near first person</option>
           </Field>
+          {prefs.travelMode === 'car' ? (
+            <>
+              <Field label="BICYCLE" id="live-bike-skin" value={prefs.bikeSkin} onChange={value => patch({ bikeSkin: value as CanalPreferences['bikeSkin'] }, true)}>
+                {BIKE_SKIN_OPTIONS.map(option => (
+                  <option key={option.value} value={option.value}>{option.title}</option>
+                ))}
+              </Field>
+              {BIKE_SKINS[prefs.bikeSkin]?.babySeat ? (
+                <Check id="live-bike-baby-seat" checked={prefs.bikeBabySeat} onChange={bikeBabySeat => patch({ bikeBabySeat }, true)}>
+                  {' '}Baby seat
+                </Check>
+              ) : null}
+            </>
+          ) : null}
           <Field label="THEME" id="live-theme" value={prefs.themeMode} onChange={value => patch({ themeMode: value as CanalPreferences['themeMode'] }, true)}>
             <option value="clean">Clean map</option>
             <option value="8bit">8-bit arcade</option>

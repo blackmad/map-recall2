@@ -24,12 +24,19 @@ The recall prompt uses Route and Waves icons from Lucide, licensed under the
 ISC License, and the Bridge icon from Font Awesome Free, licensed under
 CC BY 4.0. See https://lucide.dev and https://fontawesome.com.
 
-The chase/cockpit player bicycle is an authored low-poly Dutch omafiets
-(step-through frame, upright bars, blue front tyre as a Swapfiets cue), built
-by `scripts/build-omafiets-bike.py` for chase readability rather than studio
-detail. Named pivots `Lenker` / `RadVorn` / `RadHinten` are authored empties at
-the head tube and hubs. Runtime file is `omafiets-runtime.glb`. No third-party
-mesh credit.
+The chase/cockpit player bicycle defaults to an authored low-poly Dutch
+omafiets (dark-green step-through, upright bars) built by
+`scripts/build-omafiets-bike.py` for chase readability. Named pivots
+`Lenker` / `RadVorn` / `RadHinten` are authored empties at the head tube and
+hubs. Runtime file is `omafiets-runtime.glb`. Players can also pick:
+
+- Kin Chen’s “Pink city bicycle” (CC0 via MorfVision / BlenderKit) —
+  `pink-city-bicycle-runtime.glb`, rigged by `scripts/rig-pink-city-bike.py`
+- PatrickGoud’s Sketchfab “Swapfiets” (CC BY 4.0) —
+  `swapfiets-sketchfab-preview.glb` (intact body, baked chase width, look-only)
+
+Bike skin preference: `bikeSkin` in `canalRecall.preferences.v1`.
+Optional rear child seat: `bikeBabySeat` (omafiets `BabySeat` node; default off).
 
 The chase/cockpit player boat is “Moored Aluminum Boats”, generated with
 Meshy AI by the project owner rather than sourced from a third party, so it
