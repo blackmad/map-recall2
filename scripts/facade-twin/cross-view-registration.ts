@@ -36,6 +36,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { loadTrackOffsets } from './panorama-render.ts';
+import { buildProbe, chooseFrontage } from './frontage.ts';
 import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, hasUsablePose } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
@@ -70,6 +71,13 @@ async function panorama(id: string) {
 }
 
 const trackOffset = await loadTrackOffsets(CACHE);
+const probe = buildProbe(footprints, [...views.values()].filter(hasUsablePose).map(v => RD_NEW.fromLngLat(v.lngLat)));
+const addressPoints = new Map<string, ProjectedPoint[]>();
+try {
+  for (const a of JSON.parse(await readFile(path.join(CACHE, 'address-points.json'), 'utf8')).addresses as any[]) {
+    if (a.pandId) (addressPoints.get(a.pandId) ?? addressPoints.set(a.pandId, []).get(a.pandId)!).push(a.rd);
+  }
+} catch { /* optional */ }
 
 function strip(image: any, view: PanoramaView, start: ProjectedPoint, end: ProjectedPoint, baseZ: number, topZ: number) {
   const cam = RD_NEW.fromLngLat(view.lngLat);
@@ -172,18 +180,20 @@ for (const pandId of Object.keys(store)) {
    * too small. Registration measured on a third of a wall is measuring a
    * different thing from registration measured on the wall.
    */
-  const proposal = record.wall as number[];
-  const mid0 = { x: (proposal[0] + proposal[2]) / 2, y: (proposal[1] + proposal[3]) / 2 };
-  const snapped = buildElevations(ring)
-    .map(e => {
-      const ux0 = (e.end.x - e.start.x) / e.lengthM, uy0 = (e.end.y - e.start.y) / e.lengthM;
-      const along = Math.max(0, Math.min(e.lengthM, (mid0.x - e.start.x) * ux0 + (mid0.y - e.start.y) * uy0));
-      return { e, d: Math.hypot(mid0.x - (e.start.x + ux0 * along), mid0.y - (e.start.y + uy0 * along)) };
-    })
-    .sort((a, b) => a.d - b.d)[0]?.e;
-  const [x0, y0, x1, y1] = snapped
-    ? [snapped.start.x, snapped.start.y, snapped.end.x, snapped.end.y]
-    : proposal;
+  /**
+   * The frontage, chosen by visibility rather than by a stale proposal.
+   *
+   * The proposal in `measured-facades.json` was picked by geometry, which
+   * cannot tell a frontage from a courtyard wall, and on 35% of panden it
+   * picked a wall facing the other way. Registration measured on the back of a
+   * building is not a worse measurement of the front, it is a measurement of
+   * something else.
+   */
+  const choice = chooseFrontage(ring, pandId, probe,
+    { proposal: record.wall, addressPoints: addressPoints.get(pandId) ?? [] });
+  if (!choice.elevation) continue;                 // nothing visible: massing only
+  const wall = choice.elevation;
+  const [x0, y0, x1, y1] = [wall.start.x, wall.start.y, wall.end.x, wall.end.y];
   const wM = Math.hypot(x1 - x0, y1 - y0);
   const mid = { x: (x0 + x1) / 2, y: (y0 + y1) / 2 };
   const ux = (x1 - x0) / wM, uy = (y1 - y0) / wM;
@@ -193,14 +203,13 @@ for (const pandId of Object.keys(store)) {
 
   const { score, shift } = align(strip(imA, a, start, end, baseZ, topZ), strip(imB, b, start, end, baseZ, topZ), Math.round(wM * PPM * 0.7));
 
-  const wall = snapped ?? buildElevations(ring)
-    .map(e => ({ e, d: Math.hypot(e.midpoint.x - mid.x, e.midpoint.y - mid.y) }))
-    .sort((p, q) => p.d - q.d)[0].e;
+
   const camA = RD_NEW.fromLngLat(a.lngLat), camB = RD_NEW.fromLngLat(b.lngLat);
   rows.push({
     pandId, shiftM: Number((shift / PPM).toFixed(2)), peak: Number(score.toFixed(3)),
     dHeading: Number((((b.headingDeg - a.headingDeg) % 360 + 540) % 360 - 180).toFixed(1)),
     wallWidthM: Number(wM.toFixed(2)), proposedWidthM: record.wallWidthM,
+    frontageChanged: choice.changed, clearViews: choice.clearViews,
     // Independent explanations for a bad residual, recorded rather than assumed.
     obliquityA: Number(obliquityDeg(wall, camA).toFixed(1)), obliquityB: Number(obliquityDeg(wall, camB).toFixed(1)),
     standoffA: Number(standoffM(wall, camA).toFixed(1)), standoffB: Number(standoffM(wall, camB).toFixed(1)),
