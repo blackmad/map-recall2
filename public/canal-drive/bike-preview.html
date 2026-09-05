@@ -137,7 +137,8 @@
   Preview only. <strong>Omafiets</strong> is authored for the game (dark-green Dutch roadster; steer / spin).
   <strong>City bike</strong> is Kin Chen via MorfVision/BlenderKit
   (<a href="https://morfvision.store/en/assets/bk-4c1a83c1829f4c00/">CC0</a>) — step-through + basket, real wheel/handle splits.
-  <strong>Swapfiets</strong> is authored (red frame, blue front tyre, cargo rack; steer / spin).
+  <strong>Swapfiets</strong> is authored to the Original silhouette
+  (double step-through, chrome bars, front carrier, blue front tyre; steer / spin).
 </div>
 
 <script type="importmap">
@@ -155,9 +156,9 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
 const MODELS = {
-  omafiets: `${new URL('./omafiets-runtime.glb', import.meta.url).href}?v=8`,
+  omafiets: `${new URL('./omafiets-runtime.glb', import.meta.url).href}?v=10`,
   pink: `${new URL('./pink-city-bicycle-runtime.glb', import.meta.url).href}?v=19`,
-  swapfiets: `${new URL('./swapfiets-runtime.glb', import.meta.url).href}?v=2`,
+  swapfiets: `${new URL('./swapfiets-runtime.glb', import.meta.url).href}?v=4`,
 };
 const params = new URLSearchParams(location.search);
 const initialKey = MODELS[params.get('model')] ? params.get('model')

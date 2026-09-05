@@ -26,6 +26,32 @@ stop — not streets, landmarks, or stops toward the destination.
 - **Landmarks:** pure lat/lng projection in transit (no snap-onto-rails), and
   prefer cards within ~120 m of `routePath`.
 
+## Transit chase scale bumped (2026-09-05)
+
+Metro stand-in read as a speck in the yellow tram corridor at chase altitude
+(`TRANSIT_GAME_SCALE` 2.2). Experiment: 3.4 — still below bike’s 4.5, above
+boat’s 1.5 — for a slightly cartoony read without filling the lane.
+
+## Pedals joined to crank arms (2026-09-05)
+
+Top-down showed floating pedal bricks with a gap past the arm tips. Cranks now
+run spindle → arm → pedal spindle → platform with overlaps on omafiets and
+Swapfiets. Preview `?v=10` / `?v=4`.
+
+## Omafiets BB junction cleaned (2026-09-05)
+
+Same floating rear stub as Swapfiets had: step-through Bézier started behind
+the seat tube. U now starts mid seat-tube with a BB shell + trough join.
+Preview `?v=9`.
+
+## Swapfiets Original silhouette pass (2026-09-05)
+
+Authored skin was still a recolored omafiets. Reshaped toward PatrickGoud /
+real Original cues: double parallel step-through, chrome high-rise bars with
+black grips + bell, front carrier only (no rear rack), ring lock on the seat
+tube, fuller chain case, spring coils under the saddle, ~42 mm tyres, vivid
+red + iconic blue. Clearance assert still green. Preview `?v=3`.
+
 ## Swapfiets BB junction cleaned (2026-09-05)
 
 Side close-up showed a floating red stub behind the bottom bracket — the

@@ -411,14 +411,21 @@ def build_bike() -> bpy.types.Object:
   )
   bind_mesh(seat, root)
 
+  # Crank: continuous spindle → arms → pedal spindles → platforms (no float gaps).
+  spindle_y = 0.13
+  pedal_l = BB + Vector((0.17, -spindle_y - 0.02, -0.025))
+  pedal_r = BB + Vector((-0.17, spindle_y + 0.02, -0.025))
   crank = join(
     'Crank',
     [
-      paint(cylinder(BB + Vector((0, -0.15, 0)), BB + Vector((0, 0.15, 0)), 0.03, 12), mats['dark']),
-      paint(cylinder(BB, BB + Vector((0.15, -0.15, -0.03)), 0.015, 8), mats['dark']),
-      paint(cylinder(BB, BB + Vector((-0.15, 0.15, -0.03)), 0.015, 8), mats['dark']),
-      paint(box(BB + Vector((0.15, -0.19, -0.03)), Vector((0.11, 0.05, 0.028))), mats['dark']),
-      paint(box(BB + Vector((-0.15, 0.19, -0.03)), Vector((0.11, 0.05, 0.028))), mats['dark']),
+      paint(cylinder(BB + Vector((0, -spindle_y, 0)), BB + Vector((0, spindle_y, 0)), 0.028, 12), mats['dark']),
+      paint(cylinder(BB + Vector((0, -spindle_y, 0)), pedal_l, 0.016, 8), mats['dark']),
+      paint(cylinder(BB + Vector((0, spindle_y, 0)), pedal_r, 0.016, 8), mats['dark']),
+      # Pedal spindles overlap arm tips and pedal boxes.
+      paint(cylinder(pedal_l + Vector((0, -0.01, 0)), pedal_l + Vector((0, 0.045, 0)), 0.011, 8), mats['dark']),
+      paint(cylinder(pedal_r + Vector((0, -0.045, 0)), pedal_r + Vector((0, 0.01, 0)), 0.011, 8), mats['dark']),
+      paint(box(pedal_l + Vector((0, -0.038, 0)), Vector((0.12, 0.045, 0.03))), mats['dark']),
+      paint(box(pedal_r + Vector((0, 0.038, 0)), Vector((0.12, 0.045, 0.03))), mats['dark']),
     ],
     mats['dark'],
   )

@@ -334,17 +334,19 @@ def build_bike() -> bpy.types.Object:
   bb_l, bb_r = BB + Vector((0, -0.035, 0)), BB + Vector((0, 0.035, 0))
   front_l, front_r = side(FRONT_HUB, -1), side(FRONT_HUB, 1)
 
-  # Deep open U — classic oma step-through. Sparse Bézier controls → one
-  # continuous bevelled tube (not a chain of kinked cylinders). Tube *axes*
-  # must clear the front tyre by ~WHEEL_R + tire + tube (+ margin).
+  # Deep open U — starts ON the seat tube (no rearward floating stub), dips
+  # ahead of the BB, then climbs to the head. Tube *axes* must clear the front
+  # tyre by ~WHEEL_R + tire + tube (+ margin).
+  u_start = BB.lerp(SEAT_J, 0.40)  # mid seat-tube attach
+  u_trough = Vector((0.14, 0.0, 0.24))  # low point ahead of BB
   u_ctrl = [
-    SEAT_J + Vector((0.05, 0.0, -0.52)),
-    Vector((-0.08, 0.0, 0.32)),
-    Vector((0.04, 0.0, 0.20)),
-    Vector((0.15, 0.0, 0.22)),
-    Vector((0.18, 0.0, 0.48)),
-    Vector((0.22, 0.0, 0.72)),
-    Vector((0.34, 0.0, 0.84)),
+    u_start,
+    Vector((0.00, 0.0, 0.30)),
+    u_trough,
+    Vector((0.20, 0.0, 0.32)),
+    Vector((0.24, 0.0, 0.54)),
+    Vector((0.30, 0.0, 0.76)),
+    Vector((0.38, 0.0, 0.86)),
     HEAD + Vector((-0.02, 0.0, -0.02)),
   ]
   seat_l = SEAT_J + Vector((0, -0.03, 0))
@@ -355,8 +357,10 @@ def build_bike() -> bpy.types.Object:
     *tube_along(stay_clear_of_wheel(REAR_HUB, rear_l, seat_l, TUBE_R * 0.95), TUBE_R * 0.95, mats['frame']),
     *tube_along(stay_clear_of_wheel(REAR_HUB, rear_r, seat_r, TUBE_R * 0.95), TUBE_R * 0.95, mats['frame']),
     paint(cylinder(BB, SEAT_J, TUBE_R * 1.1), mats['frame']),
-    # Short BB → U join only — a full BB→head diagonal punched through the tyre.
-    paint(cylinder(BB, Vector((0.15, 0.0, 0.22)), TUBE_R * 1.05), mats['frame']),
+    # BB shell so chainstay / seat / join ends read as one hub, not stacked stubs.
+    paint(cylinder(BB + Vector((0, -0.055, 0)), BB + Vector((0, 0.055, 0)), TUBE_R * 1.4, 14), mats['frame']),
+    # Short BB → U trough only — a full BB→head diagonal punched through the tyre.
+    paint(cylinder(BB, u_trough, TUBE_R * 1.05), mats['frame']),
     # Short head tube — a long drop into the front tyre volume.
     paint(cylinder(HEAD + Vector((0, 0, -0.05)), HEAD + Vector((0, 0, 0.07)), TUBE_R * 1.25), mats['frame']),
     paint(cylinder(rear_l, rear_r, DROPOUT_R, 12), mats['frame']),
@@ -395,14 +399,21 @@ def build_bike() -> bpy.types.Object:
   )
   bind_mesh(seat, root)
 
+  # Crank: continuous spindle → arms → pedal spindles → platforms (no float gaps).
+  spindle_y = 0.13
+  pedal_l = BB + Vector((0.17, -spindle_y - 0.02, -0.025))
+  pedal_r = BB + Vector((-0.17, spindle_y + 0.02, -0.025))
   crank = join(
     'Crank',
     [
-      paint(cylinder(BB + Vector((0, -0.15, 0)), BB + Vector((0, 0.15, 0)), 0.03, 12), mats['dark']),
-      paint(cylinder(BB, BB + Vector((0.15, -0.15, -0.03)), 0.015, 8), mats['dark']),
-      paint(cylinder(BB, BB + Vector((-0.15, 0.15, -0.03)), 0.015, 8), mats['dark']),
-      paint(box(BB + Vector((0.15, -0.19, -0.03)), Vector((0.11, 0.05, 0.028))), mats['dark']),
-      paint(box(BB + Vector((-0.15, 0.19, -0.03)), Vector((0.11, 0.05, 0.028))), mats['dark']),
+      paint(cylinder(BB + Vector((0, -spindle_y, 0)), BB + Vector((0, spindle_y, 0)), 0.028, 12), mats['dark']),
+      paint(cylinder(BB + Vector((0, -spindle_y, 0)), pedal_l, 0.016, 8), mats['dark']),
+      paint(cylinder(BB + Vector((0, spindle_y, 0)), pedal_r, 0.016, 8), mats['dark']),
+      # Pedal spindles overlap arm tips and pedal boxes.
+      paint(cylinder(pedal_l + Vector((0, -0.01, 0)), pedal_l + Vector((0, 0.045, 0)), 0.011, 8), mats['dark']),
+      paint(cylinder(pedal_r + Vector((0, -0.045, 0)), pedal_r + Vector((0, 0.01, 0)), 0.011, 8), mats['dark']),
+      paint(box(pedal_l + Vector((0, -0.038, 0)), Vector((0.12, 0.045, 0.03))), mats['dark']),
+      paint(box(pedal_r + Vector((0, 0.038, 0)), Vector((0.12, 0.045, 0.03))), mats['dark']),
     ],
     mats['dark'],
   )
