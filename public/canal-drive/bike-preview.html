@@ -21,11 +21,36 @@
   .panel {
     position: absolute; z-index: 2; background: color-mix(in srgb, var(--panel) 92%, transparent);
     border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
-    backdrop-filter: blur(8px); max-width: 320px;
   }
-  #controls { top: 12px; left: 12px; }
-  #readout { bottom: 12px; left: 12px; font-variant-numeric: tabular-nums; min-width: 240px; }
+  #controls {
+    top: 12px;
+    left: 12px;
+    width: min(320px, calc(100vw - 24px));
+    max-height: calc(100dvh - 24px);
+    max-height: calc(100vh - 24px);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  #controls-scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    padding: 12px 14px;
+  }
+  #controls-scroll::-webkit-scrollbar { width: 8px; }
+  #controls-scroll::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--muted) 45%, transparent);
+    border-radius: 4px;
+  }
+  #readout { top: 12px; right: 12px; bottom: auto; left: auto; min-width: 220px; max-width: 280px; }
   #credit { bottom: 12px; right: 12px; max-width: 280px; font-size: 11.5px; color: var(--muted); }
+  .kbd { font-size: 11px; color: var(--muted); margin: 0 0 6px; }
   h1 { font-size: 15px; margin: 0 0 4px; letter-spacing: 0.01em; }
   .sub { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
   h2 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
@@ -60,16 +85,34 @@
 <div id="drop">Drop a .glb / .gltf to preview</div>
 
 <div class="panel" id="controls">
+  <div id="controls-scroll">
   <h1>Bike preview</h1>
-  <p class="sub">Compare the authored omafiets against the Sketchfab Swapfiets reference.</p>
+  <p class="sub">Compare authored omafiets, free city bikes, and the Sketchfab Swapfiets reference.</p>
 
   <h2>Model</h2>
-  <button type="button" data-model="omafiets" class="active">Omafiets (game)</button>
-  <button type="button" data-model="swapfiets">Swapfiets (Sketchfab)</button>
+  <button type="button" data-model="omafiets" class="active">Omafiets</button>
+  <button type="button" data-model="pink">City bike (CC0)</button>
+  <button type="button" data-model="swapfiets">Swapfiets</button>
   <label class="file">Load file<input type="file" id="file" accept=".glb,.gltf,model/gltf-binary,model/gltf+json"></label>
 
+  <h2>Motion</h2>
+  <p class="kbd" id="motion-hint">A / D or ← → steer · S spin · W waggle</p>
+  <label class="slider">
+    <span>Steer <b id="steer-val">0</b></span>
+    <input type="range" id="steer" min="-1" max="1" step="0.01" value="0">
+  </label>
+  <label class="row"><input type="checkbox" id="spin"> Spin wheels</label>
+  <label class="row"><input type="checkbox" id="waggle"> Waggle steer</label>
+  <label class="row" id="baby-seat-row"><input type="checkbox" id="baby-seat"> Baby seat</label>
+
+  <h2>Camera</h2>
+  <button type="button" data-view="side" class="active">Side</button>
+  <button type="button" data-view="front">Front</button>
+  <button type="button" data-view="chase">Chase</button>
+  <button type="button" data-view="top">Top (chase-like)</button>
+
   <h2>Chase readability</h2>
-  <p class="sub" style="margin-top:0">From above a real bike is a hairline. These match the game constants in <code>player-vehicles-source.js</code>.</p>
+  <p class="sub" style="margin-top:0">Game constants in <code>player-vehicles-source.js</code>.</p>
   <label class="slider">
     <span>Width × <b id="width-val">1.35</b></span>
     <input type="range" id="width" min="1" max="3" step="0.1" value="1.35">
@@ -79,24 +122,11 @@
     <input type="range" id="game" min="1" max="8" step="0.1" value="4.5">
   </label>
 
-  <h2>Camera</h2>
-  <button type="button" data-view="side">Side</button>
-  <button type="button" data-view="front">Front</button>
-  <button type="button" data-view="chase">Chase</button>
-  <button type="button" data-view="top" class="active">Top (chase-like)</button>
-
   <h2>Helpers</h2>
   <label class="row"><input type="checkbox" id="axes" checked> Axes (X red, Y green, Z blue)</label>
   <label class="row"><input type="checkbox" id="grid" checked> Ground grid</label>
   <label class="row"><input type="checkbox" id="parts"> Highlight Lenker / wheels</label>
-
-  <h2>Motion</h2>
-  <label class="slider">
-    <span>Steer <b id="steer-val">0</b></span>
-    <input type="range" id="steer" min="-1" max="1" step="0.01" value="0">
-  </label>
-  <label class="row"><input type="checkbox" id="spin"> Spin wheels</label>
-  <label class="row"><input type="checkbox" id="waggle"> Waggle steer</label>
+  </div>
 </div>
 
 <div class="panel" id="readout">
@@ -104,11 +134,12 @@
   <dl id="numbers"></dl>
 </div>
 <div class="panel" id="credit">
-  Preview only. <strong>Omafiets</strong> is authored for the game.
-  <strong>Swapfiets</strong> is PatrickGoud’s Sketchfab model
-  (<a href="https://sketchfab.com/3d-models/swapfiets-163434395a0e4ab38c12ae195e978a0d">CC BY 4.0</a>)
-  with preview-only <code>Lenker</code> / wheel pivots so steer and spin work.
-  Reference only — not used in the live game.
+  Preview only. <strong>Omafiets</strong> is authored for the game (dark-green Dutch roadster; steer / spin).
+  <strong>City bike</strong> is Kin Chen via MorfVision/BlenderKit
+  (<a href="https://morfvision.store/en/assets/bk-4c1a83c1829f4c00/">CC0</a>) — step-through + basket, real wheel/handle splits.
+  <strong>Swapfiets</strong> is PatrickGoud’s Sketchfab mesh
+  (<a href="https://sketchfab.com/3d-models/swapfiets-163434395a0e4ab38c12ae195e978a0d">CC BY 4.0</a>):
+  intact body, chase-width baked, look only (no spin).
 </div>
 
 <script type="importmap">
@@ -127,10 +158,11 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
 const MODELS = {
   omafiets: new URL('./omafiets-runtime.glb', import.meta.url).href,
-  swapfiets: new URL('./swapfiets-sketchfab-preview.glb', import.meta.url).href,
+  pink: `${new URL('./pink-city-bicycle-runtime.glb', import.meta.url).href}?v=5`,
+  swapfiets: `${new URL('./swapfiets-sketchfab-preview.glb', import.meta.url).href}?v=body4`,
 };
 const params = new URLSearchParams(location.search);
-const initialKey = params.get('model') === 'swapfiets' ? 'swapfiets'
+const initialKey = MODELS[params.get('model')] ? params.get('model')
   : (params.get('model') && !MODELS[params.get('model')] ? null : 'omafiets');
 const initialUrl = params.get('model') && !MODELS[params.get('model')]
   ? params.get('model')
@@ -147,6 +179,12 @@ const camera = new THREE.PerspectiveCamera(45, 1, 0.05, 200);
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
 controls.target.set(0, 0.7, 0);
+// Don't zoom the 3D view when the trackpad is over a UI panel.
+for (const el of document.querySelectorAll('.panel')) {
+  el.addEventListener('pointerenter', () => { controls.enableZoom = false; });
+  el.addEventListener('pointerleave', () => { controls.enableZoom = true; });
+  el.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
+}
 
 scene.add(new THREE.HemisphereLight(0xffffff, 0x8a9a88, 1.4));
 const sun = new THREE.DirectionalLight(0xffffff, 2.2);
@@ -166,7 +204,7 @@ const scratch = new THREE.Quaternion();
 const state = {
   root: null,
   imported: null,
-  parts: { steer: null, frontWheel: null, rearWheel: null },
+  parts: { steer: null, frontWheel: null, rearWheel: null, babySeat: null },
   rest: { steer: null, frontWheel: null, rearWheel: null },
   highlight: new Map(),
   steer: 0,
@@ -199,7 +237,7 @@ function clearModel() {
   });
   state.root = null;
   state.imported = null;
-  state.parts = { steer: null, frontWheel: null, rearWheel: null };
+  state.parts = { steer: null, frontWheel: null, rearWheel: null, babySeat: null };
   state.rest = { steer: null, frontWheel: null, rearWheel: null };
   state.highlight.clear();
 }
@@ -219,7 +257,10 @@ function groundAndFrame(imported) {
 function applyChaseScales(imported = state.imported) {
   if (!imported || !state.root) return;
   const uniform = state.baseUniform;
-  imported.scale.set(uniform, uniform, uniform * state.widthScale);
+  // Non-uniform Z fattening is for the authored omafiets only. Sketchfab's
+  // multi-node hierarchy (and even the baked mesh) looks broken if we squash axes.
+  const width = state.widthScale;
+  imported.scale.set(uniform, uniform, uniform * width);
   imported.updateMatrixWorld(true);
   const grounded = new THREE.Box3().setFromObject(imported);
   const center = grounded.getCenter(new THREE.Vector3());
@@ -268,12 +309,23 @@ function bindParts(root) {
   const steer = root.getObjectByName('Lenker');
   const frontWheel = root.getObjectByName('RadVorn');
   const rearWheel = root.getObjectByName('RadHinten');
-  state.parts = { steer, frontWheel, rearWheel };
+  const babySeat = root.getObjectByName('BabySeat');
+  state.parts = { steer, frontWheel, rearWheel, babySeat };
   state.rest = {
     steer: steer ? steer.quaternion.clone() : null,
     frontWheel: frontWheel ? frontWheel.quaternion.clone() : null,
     rearWheel: rearWheel ? rearWheel.quaternion.clone() : null,
   };
+  applyBabySeat();
+}
+
+function applyBabySeat() {
+  const row = document.querySelector('#baby-seat-row');
+  const box = document.querySelector('#baby-seat');
+  const has = !!state.parts.babySeat;
+  row.style.display = has ? '' : 'none';
+  if (!has) return;
+  state.parts.babySeat.visible = box.checked;
 }
 
 function listNames(root) {
@@ -296,6 +348,7 @@ function updateReadout(size, names, error) {
     part('Lenker', state.parts.steer),
     part('RadVorn', state.parts.frontWheel),
     part('RadHinten', state.parts.rearWheel),
+    part('BabySeat', state.parts.babySeat),
     row('named nodes', names.slice(0, 12).join(', ') + (names.length > 12 ? '…' : '')),
   ].join('');
 }
@@ -325,7 +378,7 @@ async function loadModel(url, revoke) {
     bindParts(imported);
     applyHighlights(document.querySelector('#parts').checked);
     updateReadout(size, listNames(imported));
-    setView(document.querySelector('button[data-view].active')?.dataset.view || 'top');
+    setView(document.querySelector('button[data-view].active')?.dataset.view || 'side');
   } catch (error) {
     console.error(error);
     updateReadout(null, [], String(error.message || error));
@@ -378,9 +431,31 @@ function frame(time) {
 document.querySelector('#axes').addEventListener('change', e => { axes.visible = e.target.checked; });
 document.querySelector('#grid').addEventListener('change', e => { grid.visible = e.target.checked; });
 document.querySelector('#parts').addEventListener('change', e => applyHighlights(e.target.checked));
+document.querySelector('#baby-seat').addEventListener('change', () => applyBabySeat());
 document.querySelector('#steer').addEventListener('input', e => {
   state.steer = Number(e.target.value);
   document.querySelector('#waggle').checked = false;
+});
+window.addEventListener('keydown', e => {
+  if (e.target.matches?.('input, textarea')) return;
+  const steer = document.querySelector('#steer');
+  if (e.key === 'a' || e.key === 'A' || e.key === 'ArrowLeft') {
+    state.steer = Math.max(-1, state.steer - 0.08);
+    steer.value = String(state.steer);
+    document.querySelector('#waggle').checked = false;
+    e.preventDefault();
+  } else if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') {
+    state.steer = Math.min(1, state.steer + 0.08);
+    steer.value = String(state.steer);
+    document.querySelector('#waggle').checked = false;
+    e.preventDefault();
+  } else if (e.key === 's' || e.key === 'S') {
+    const spin = document.querySelector('#spin');
+    spin.checked = !spin.checked;
+  } else if (e.key === 'w' || e.key === 'W') {
+    const waggle = document.querySelector('#waggle');
+    waggle.checked = !waggle.checked;
+  }
 });
 document.querySelector('#width').addEventListener('input', e => {
   state.widthScale = Number(e.target.value);
@@ -413,11 +488,26 @@ for (const button of document.querySelectorAll('button[data-model]')) {
     for (const other of document.querySelectorAll('button[data-model]')) {
       other.classList.toggle('active', other === button);
     }
-    // Sketchfab reference: no chase width hack — judge the mesh as authored.
+    document.querySelector('#spin').checked = false;
+    document.querySelector('#waggle').checked = false;
+    const motionOn = key !== 'swapfiets';
+    document.querySelector('#steer').disabled = !motionOn;
+    document.querySelector('#spin').disabled = !motionOn;
+    document.querySelector('#waggle').disabled = !motionOn;
+    document.querySelector('#motion-hint').textContent = key === 'swapfiets'
+      ? 'Reference mesh only (no overlays). Use Omafiets or Pink city for steer / spin.'
+      : 'A / D or ← → steer · S spin · W waggle';
     if (key === 'swapfiets') {
       state.widthScale = 1;
       document.querySelector('#width').value = '1';
       document.querySelector('#width-val').textContent = '1.0';
+      document.querySelector('#steer').value = '0';
+      document.querySelector('#steer-val').textContent = '0';
+      state.steer = 0;
+    } else if (key === 'pink') {
+      state.widthScale = 1.2;
+      document.querySelector('#width').value = '1.2';
+      document.querySelector('#width-val').textContent = '1.2';
     } else {
       state.widthScale = 1.35;
       document.querySelector('#width').value = '1.35';
@@ -449,12 +539,23 @@ window.addEventListener('drop', e => {
 window.addEventListener('resize', resize);
 resize();
 setView('side');
-if (initialKey === 'swapfiets') {
-  state.widthScale = 1;
-  document.querySelector('#width').value = '1';
-  document.querySelector('#width-val').textContent = '1.0';
+if (initialKey === 'swapfiets' || initialKey === 'pink') {
+  if (initialKey === 'swapfiets') {
+    state.widthScale = 1;
+    document.querySelector('#width').value = '1';
+    document.querySelector('#width-val').textContent = '1.0';
+    document.querySelector('#steer').disabled = true;
+    document.querySelector('#spin').disabled = true;
+    document.querySelector('#waggle').disabled = true;
+    document.querySelector('#motion-hint').textContent =
+      'Reference mesh only (no overlays). Use Omafiets or Pink city for steer / spin.';
+  } else {
+    state.widthScale = 1.2;
+    document.querySelector('#width').value = '1.2';
+    document.querySelector('#width-val').textContent = '1.2';
+  }
   for (const button of document.querySelectorAll('button[data-model]')) {
-    button.classList.toggle('active', button.dataset.model === 'swapfiets');
+    button.classList.toggle('active', button.dataset.model === initialKey);
   }
 }
 loadModel(initialUrl);

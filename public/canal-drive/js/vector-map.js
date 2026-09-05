@@ -72,7 +72,14 @@ class VectorBasemap {
       // MapLibre/Three canvas (see TODO item 22).
       if (window.CanalRecallVehicles) {
         const { PlayerBike3D, PlayerBoat3D } = window.CanalRecallVehicles;
-        if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl);
+        const Prefs = window.CanalRecallPreferences;
+        let bikeSkin = 'omafiets';
+        try {
+          if (Prefs?.readPreferences) {
+            bikeSkin = Prefs.readPreferences(localStorage, { min: 0.2, max: 1.5, defaultZoom: 0.5 }).bikeSkin || 'omafiets';
+          }
+        } catch (_) { /* ignore */ }
+        if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl, bikeSkin);
         if (PlayerBoat3D) this._playerBoat = new PlayerBoat3D(this.map, maplibregl);
       }
       this.ready = true;
@@ -823,6 +830,16 @@ class VectorBasemap {
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
       player.steerInput || 0, player.distancePx || 0
     );
+  }
+
+  setBikeSkin(skinId) {
+    if (!this._playerBike || typeof this._playerBike.setSkin !== 'function') return;
+    this._playerBike.setSkin(skinId);
+  }
+
+  setBikeBabySeat(visible) {
+    if (!this._playerBike || typeof this._playerBike.setBabySeatVisible !== 'function') return;
+    this._playerBike.setBabySeatVisible(visible);
   }
 
   setPlayerBoat(player, loader, visible) {

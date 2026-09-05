@@ -27,10 +27,26 @@ import {
 } from './modes.ts';
 import type { KeyValueStore } from './progressStore.ts';
 import {
+  BIKE_SKIN_IDS,
+  DEFAULT_BIKE_SKIN,
+  parseBikeSkin,
+  type BikeSkinId,
+} from './bikeSkins.ts';
+import {
   DEFAULT_CITY_ID,
   parseCityId,
   type CanalCityId,
 } from './cities.ts';
+
+export {
+  BIKE_SKIN_IDS,
+  BIKE_SKINS,
+  DEFAULT_BIKE_SKIN,
+  bikeSkinById,
+  parseBikeSkin,
+  type BikeSkin,
+  type BikeSkinId,
+} from './bikeSkins.ts';
 
 export {
   CANAL_CITIES,
@@ -84,6 +100,9 @@ export interface CanalPreferences {
   skipMastered: boolean;
   gamey: boolean;
   sound: boolean;
+  bikeSkin: BikeSkinId;
+  /** Show rear child seat when the active skin has a `BabySeat` node. */
+  bikeBabySeat: boolean;
   zoom: number;
   zoomDefaultVersion: typeof ZOOM_DEFAULT_VERSION;
 }
@@ -114,6 +133,8 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     skipMastered: true,
     gamey: true,
     sound: false,
+    bikeSkin: DEFAULT_BIKE_SKIN,
+    bikeBabySeat: false,
     zoom: zoom.defaultZoom,
     zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
   };
@@ -168,6 +189,8 @@ function fillPreferences(
     skipMastered: parseBoolean(source.skipMastered, base.skipMastered),
     gamey: parseBoolean(source.gamey, base.gamey),
     sound: parseBoolean(source.sound, base.sound),
+    bikeSkin: parseBikeSkin(source.bikeSkin, base.bikeSkin),
+    bikeBabySeat: parseBoolean(source.bikeBabySeat, base.bikeBabySeat),
     zoom: parseZoom(source, zoom),
     zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
   };
@@ -218,6 +241,17 @@ export function writePreferences(store: KeyValueStore, prefs: CanalPreferences):
   } catch {
     /* private mode */
   }
+}
+
+/** Remove stored preferences and return a fresh default snapshot for the UI. */
+export function clearPreferences(store: KeyValueStore, zoom: ZoomClamp): CanalPreferences {
+  try {
+    if (store.removeItem) store.removeItem(PREFERENCES_STORAGE_KEY);
+    else store.setItem(PREFERENCES_STORAGE_KEY, '');
+  } catch {
+    /* private mode */
+  }
+  return defaultPreferences(zoom);
 }
 
 /** Overlay a named difficulty onto a preferences object. `custom` is a no-op. */
