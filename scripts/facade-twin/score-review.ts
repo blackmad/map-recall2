@@ -141,7 +141,7 @@ console.log('  field         n   correct   accuracy   95% interval        ECE   
 for (const a of accuracies.sort((x, y) => y.reviewed - x.reviewed)) {
   const verdict = fieldVerdict(a);
   console.log(`  ${a.field.padEnd(12)} ${String(a.reviewed).padStart(3)}  ${String(a.correct).padStart(7)}   `
-    + `${(a.accuracy * 100).toFixed(0).padStart(6)}%   `
+    + `${(a.rate * 100).toFixed(0).padStart(6)}%   `
     + `${(a.lower * 100).toFixed(0).padStart(3)}–${(a.upper * 100).toFixed(0).padEnd(3)}%   `
     + `${a.expectedCalibrationError.toFixed(3)}   ${verdict}`);
 }

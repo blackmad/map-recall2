@@ -211,6 +211,14 @@ const buildings: Array<{
   ridge: number | null;
   roof: string;
   reason: HeightReason | null;
+  /** Construction year where BAG states one. Drives the assumed gable. */
+  year: number | null;
+  /**
+   * The gable the register names in prose, where it names one. `stated` is the
+   * point of the field: an assumed gable is a different kind of claim and is
+   * drawn differently, so the two must not arrive looking alike.
+   */
+  gable: { type: string; stated: true } | null;
   /** Present only where this building's front has actually been observed. */
   facade: {
     wall: [x0: number, y0: number, x1: number, y1: number];

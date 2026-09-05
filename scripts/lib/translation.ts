@@ -218,7 +218,7 @@ export interface ProtectedSource {
  * the guard, which is the honest outcome: there was no name in the source to
  * keep.
  */
-export function protectNames(source: string, names: string[]): ProtectedSource {
+export function protectNames(source: string, names: readonly string[]): ProtectedSource {
   const candidates: string[] = [];
   for (const name of names) {
     if (name.length > 3 && wholeWord(name, 'u').test(source)) {

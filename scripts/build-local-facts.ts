@@ -256,7 +256,9 @@ async function generate(prompt: string): Promise<GeneratedFact[]> {
   let generated: GeneratedFact[] = [];
   try {
     const parsed = parseJsonResponse(responseText);
-    const list = Array.isArray(parsed) ? parsed : parsed.facts;
+    // The response is whatever the model sent. Reaching through it optionally
+    // keeps a null or a bare string from throwing where a shape check belongs.
+    const list = Array.isArray(parsed) ? parsed : (parsed as { facts?: unknown } | null)?.facts;
     // Only the requested shape is accepted. Older abstractive cache shapes
     // must never become eligible for publication.
     generated = (Array.isArray(list) ? list : [])

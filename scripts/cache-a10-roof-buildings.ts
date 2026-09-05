@@ -3,6 +3,10 @@ import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 type Point = [number, number];
 type BagFeature = { type: 'Feature'; id: string; properties: Record<string, unknown>; geometry: { type: 'Polygon'; coordinates: Point[][] } };
+/** One page of the BAG feature API. Named, and the page annotated with it, because
+ * inferring it from the call makes the paging cursor circular: the type of `next`
+ * at the call site would depend on the assignment that comes out of the response. */
+type BagPage = { features: BagFeature[]; links?: Array<{ rel: string; href: string }> };
 type OsmNode = { type: 'node'; id: number; lat: number; lon: number };
 type OsmWay = { type: 'way'; id: number; nodes: number[] };
 type OsmRelation = { type: 'relation'; id: number; members: Array<{ type: string; ref: number; role: string }> };
@@ -27,7 +31,7 @@ const bounds = ring.reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y),
 const active = new Set(['Pand in gebruik', 'Pand in gebruik (niet ingemeten)', 'Bouw gestart', 'Bouwvergunning verleend']);
 let next: string | undefined = `https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=${bounds.join(',')}&limit=1000&f=json`, fetched = 0;
 const features: BagFeature[] = [];
-while (next) { const page = await fetchJson<{ features: BagFeature[]; links?: Array<{ rel: string; href: string }> }>(next); fetched += page.features.length; for (const feature of page.features) { const outer = feature.geometry.coordinates[0], centre: Point = [outer.reduce((s, p) => s + p[0], 0) / outer.length, outer.reduce((s, p) => s + p[1], 0) / outer.length]; if (active.has(String(feature.properties.status)) && contains(centre)) { feature.properties = { ...feature.properties, buildingId: `bag:${feature.properties.identificatie}` }; features.push(feature); } } next = page.links?.find(x => x.rel === 'next')?.href; process.stdout.write(`${fetched} BAG bbox records → ${features.length} inside A10\n`); }
+while (next) { const page: BagPage = await fetchJson<BagPage>(next); fetched += page.features.length; for (const feature of page.features) { const outer = feature.geometry.coordinates[0], centre: Point = [outer.reduce((s, p) => s + p[0], 0) / outer.length, outer.reduce((s, p) => s + p[1], 0) / outer.length]; if (active.has(String(feature.properties.status)) && contains(centre)) { feature.properties = { ...feature.properties, buildingId: `bag:${feature.properties.identificatie}` }; features.push(feature); } } next = page.links?.find(x => x.rel === 'next')?.href; process.stdout.write(`${fetched} BAG bbox records → ${features.length} inside A10\n`); }
 if (features.length < 50_000) throw new Error(`Implausible A10 building count: ${features.length}`);
 const output = { type: 'FeatureCollection', metadata: { schemaVersion: 1, generatedAt: new Date().toISOString(), bagSource: 'PDOK BAG OGC API v2', bagLicense: 'Public Domain Mark 1.0', boundarySource: 'OpenStreetMap relation 165334', boundaryLicense: 'ODbL 1.0', fetched }, features };
 const temporary = `${outputFile}.tmp`; await writeFile(temporary, JSON.stringify(output)); await rename(temporary, outputFile);

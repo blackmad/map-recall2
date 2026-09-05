@@ -207,7 +207,7 @@ function stitch(segments: Segment[], radius: number): Stitched {
         const t = Math.max(0, Math.min(1, ((end.x - a.x) * abx + (end.y - a.y) * aby) / lengthSquared));
         const distance = Math.hypot(end.x - (a.x + t * abx), end.y - (a.y + t * aby));
         if (distance > radius) continue;
-        const target = t < 0.5 ? a : b;
+        const target: Node = t < 0.5 ? a : b;
         if (target === from) continue;
         from.edges.push(target);
         target.edges.push(from);

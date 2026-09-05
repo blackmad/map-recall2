@@ -36,7 +36,7 @@ for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'land
 
 const routing = await readJson('streets-routing.json');
 assert.ok(routing.length >= 1_000, `routing graph is implausibly small (${routing.length})`);
-assert.ok(routing.every((feature: { cityId?: string; center?: number[] }) =>
+assert.ok(routing.every((feature: { cityId?: string; center?: number[]; path?: unknown[]; paths?: unknown[][] }) =>
   feature.cityId === expectedCityId && finitePosition(feature.center) && finitePaths(feature)),
   `routing ways belong to ${expectedCityId} and have finite centers`);
 assert.equal(new Set(routing.map((feature: { id?: string }) => feature.id)).size, routing.length,

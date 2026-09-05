@@ -155,7 +155,8 @@ let done = 0, single = 0, none = 0;
 for (const buildingId of queue) {
   const record = store.facades[buildingId];
   const mass = massing.get(buildingId);
-  if (!record || !mass || !Number.isFinite(mass.groundLevel)) { none++; continue; }
+  const groundLevel = mass?.groundLevel;
+  if (!record || !mass || typeof groundLevel !== 'number' || !Number.isFinite(groundLevel)) { none++; continue; }
   const [x0, y0, x1, y1] = record.wall;
   // Rebuild the elevation from the footprint rather than from the four stored
   // numbers: `inFrontOf` and `standoffM` need the outward normal, and deriving
@@ -185,8 +186,8 @@ for (const buildingId of queue) {
       rollDeg: pick.pose.view.rollDeg,
     } satisfies CameraPose,
       { start: wall.e.start, end: wall.e.end,
-        baseZ: mass.groundLevel - STRIP_BASE_BELOW_GROUND_M,
-        topZ: (mass.eavesHeight ?? mass.groundLevel + 12) + 0.3 },
+        baseZ: groundLevel - STRIP_BASE_BELOW_GROUND_M,
+        topZ: (mass.eavesHeight ?? groundLevel + 12) + 0.3 },
       { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA });
     const file = path.join(buildingId, `${i}.jpg`);
     await writeFile(path.join(OUT, file),

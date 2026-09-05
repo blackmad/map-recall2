@@ -22,10 +22,22 @@ import type { PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/
 
 export interface DecodedPanorama { width: number; height: number; data: Uint8Array | Uint8ClampedArray }
 
-export const poseOf = (view: PanoramaView, heightOffsetM = 0): CameraPose => {
+/**
+ * The camera's pose, with the lens height either published or supplied.
+ *
+ * `lensZNap` exists because a published height of zero is a *missing value*, and
+ * running it through `cameraHeight - GEOID_SEPARATION_M` puts the lens 43.5 m
+ * under the quay — every ray then points at sky and the strip renders white.
+ * That is not hypothetical: it produced two blank images in a set of ninety
+ * before this argument existed. A caller that has inferred a height from the
+ * ground beneath the camera passes it here rather than smuggling it in as an
+ * offset, so the intent is visible at the call site.
+ */
+export const poseOf = (view: PanoramaView, heightOffsetM = 0, lensZNap: number | null = null): CameraPose => {
   const camera = RD_NEW.fromLngLat(view.lngLat);
   return {
-    x: camera.x, y: camera.y, z: view.cameraHeight - heightOffsetM - GEOID_SEPARATION_M,
+    x: camera.x, y: camera.y,
+    z: lensZNap ?? (view.cameraHeight - heightOffsetM - GEOID_SEPARATION_M),
     headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
   };
 };
@@ -98,9 +110,10 @@ export const encodeJpeg = (width: number, height: number, data: Uint8ClampedArra
 export function projectFootprint(
   image: DecodedPanorama, view: PanoramaView, camera: CameraModel,
   ring: ProjectedPoint[], wall: readonly number[], groundZ: number, topZ: number,
-  { maxWidth = 420, quality = 78, contextFraction = 0.6, eavesZ = null as number | null, heightOffsetM = 0 } = {},
+  { maxWidth = 420, quality = 78, contextFraction = 0.6, eavesZ = null as number | null,
+    heightOffsetM = 0, lensZNap = null as number | null } = {},
 ): { jpeg: Buffer; width: number; height: number; nativeWidth: number } | null {
-  const pose = poseOf(view, heightOffsetM);
+  const pose = poseOf(view, heightOffsetM, lensZNap);
   const project = (p: ProjectedPoint, z: number) =>
     camera.project([p.x - pose.x, p.y - pose.y, z - pose.z], pose, image);
 
@@ -200,9 +213,10 @@ export function projectFootprint(
 export function rectifyWall(
   image: DecodedPanorama, view: PanoramaView, camera: CameraModel,
   wall: readonly number[], baseZ: number, topZ: number,
-  { pixelsPerMetre = 26, margin = 1.25, maxWidth = 380, quality = 78, heightOffsetM = 0 } = {},
+  { pixelsPerMetre = 26, margin = 1.25, maxWidth = 380, quality = 78, heightOffsetM = 0,
+    lensZNap = null as number | null } = {},
 ): { jpeg: Buffer; width: number; height: number; nativeWidth: number } | null {
-  const pose = poseOf(view, heightOffsetM);
+  const pose = poseOf(view, heightOffsetM, lensZNap);
   const [x0, y0, x1, y1] = wall;
   const wallWidthM = Math.hypot(x1 - x0, y1 - y0);
   const mid = { x: (x0 + x1) / 2, y: (y0 + y1) / 2 };

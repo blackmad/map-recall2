@@ -30,7 +30,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
-import { AMSTERDAM_CAMERA, hasUsableGeometry } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA, hasUsableGeometry, lensHeightNap } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import { loadTrackOffsets, rectifyWall } from './panorama-render.ts';
 import { blockedFraction, buildProbe, chooseFrontage, rankViews } from './frontage.ts';
@@ -73,7 +73,23 @@ const posed = views.filter(hasUsableGeometry)
 const probe = buildProbe(footprints, posed.map(p => p.point));
 const trackOffset = await loadTrackOffsets(CACHE);
 
+/** Greyscale spread of a rendered strip, or null if it cannot be read back. */
+function standardDeviation(encoded: Buffer): number | null {
+  try {
+    const image = jpeg.decode(encoded, { useTArray: true, formatAsRGBA: true });
+    let sum = 0, sumSquares = 0, count = 0;
+    for (let i = 0; i < image.data.length; i += 4 * 17) {
+      const grey = (image.data[i] + image.data[i + 1] + image.data[i + 2]) / 3;
+      sum += grey; sumSquares += grey * grey; count++;
+    }
+    if (!count) return null;
+    const mean = sum / count;
+    return Math.sqrt(Math.max(0, sumSquares / count - mean * mean));
+  } catch { return null; }
+}
+
 let downloads = 0;
+let blank = 0;
 async function panorama(id: string) {
   const file = path.join(CACHE, 'panoramas', `${id}.jpg`);
   if (!existsSync(file)) {
@@ -122,11 +138,36 @@ for (const pandId of Object.keys(store).sort()) {
     // Render at what the source carries, never above it: a blurry enlargement
     // is a worse picture that looks like a better one.
     const ppm = Math.min(48, Math.max(20, Math.round(candidate.worstPixelsPerMetre)));
+    /**
+     * The lens height, inferred where the frame publishes none.
+     *
+     * `hasUsableGeometry` admits a frame with no published height because
+     * azimuth never reads z — which is right for asking *where* a wall is and
+     * wrong for rendering it. Left alone, `cameraHeight - GEOID_SEPARATION_M`
+     * turns the zero into a lens 43.5 m under the quay and the strip comes out
+     * white. Two of the first ninety did exactly that. `lensHeightNap` is the
+     * function that exists for this, and the manifest carries its verdict so
+     * the extra metre of vertical uncertainty travels with the picture.
+     */
+    const lens = lensHeightNap(candidate.view, ground);
+    if (!lens) continue;
     const strip = rectifyWall(image, candidate.view, AMSTERDAM_CAMERA,
       [wall.start.x, wall.start.y, wall.end.x, wall.end.y], ground - 0.8, top + 0.5,
       { pixelsPerMetre: ppm, margin: 1.06, maxWidth: 1400, quality: 92,
-        heightOffsetM: trackOffset(candidate.view).offsetM });
+        heightOffsetM: lens.inferred ? 0 : trackOffset(candidate.view).offsetM,
+        lensZNap: lens.inferred ? lens.z : null });
     if (!strip) continue;
+    /**
+     * A last look at the pixels before the strip counts as a strip.
+     *
+     * Every other gate here is geometry, checked before anything is resampled,
+     * and geometry cannot notice that the render came out blank. A flat image
+     * is a lens in the wrong place, a ray outside the frame, or a source that
+     * failed to decode — this does not care which. Cheap, and it catches the
+     * whole class rather than the one cause that prompted it.
+     */
+    const flat = standardDeviation(strip.jpeg);
+    if (flat !== null && flat < 8) { blank++; continue; }
     const name = `${(label.get(pandId) ?? pandId).replace(/[^A-Za-z0-9]+/g, '-')}__${pandId}__${candidate.view.capturedAt.slice(0, 10)}.jpg`;
     await writeFile(path.join(OUT, name), strip.jpeg);
     manifest.push({
@@ -144,6 +185,8 @@ for (const pandId of Object.keys(store).sort()) {
       leafOff: candidate.leafOff,
       groundZ: Number(ground.toFixed(2)), topZ: Number(top.toFixed(2)),
       wallBowM: wall.maxDeviationM ?? 0,
+      heightInferred: lens.inferred,
+      pixelStdDev: flat === null ? null : Number(flat.toFixed(1)),
       size: `${strip.width}x${strip.height}`,
     });
     made = true;
@@ -160,7 +203,8 @@ await writeFile(path.join(OUT, 'manifest.json'), JSON.stringify({
     generator: 'scripts/facade-twin/build-strip-set.ts',
     cameraModel: AMSTERDAM_CAMERA.id,
     gates: { minClearViews: MIN_CLEAR_VIEWS, maxBlockedFraction: MAX_BLOCKED,
-      minSourcePixelsPerMetre: MIN_PIXELS_PER_M, maxObliquityDeg: MAX_OBLIQUITY },
+      minSourcePixelsPerMetre: MIN_PIXELS_PER_M, maxObliquityDeg: MAX_OBLIQUITY,
+      minRenderedStdDev: 8 },
     note: 'Selected on geometry and source quality, never on cross-view agreement — that '
       + 'measures image similarity rather than registration. Rendered at the rate the source '
       + 'carries, so nothing is upsampled. Street imagery © Gemeente Amsterdam, CC BY 4.0.',

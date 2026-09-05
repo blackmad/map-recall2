@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { attachLocalFacts, triviaForRound } from '../src/mapRecall/localFacts';
+import { attachLocalFacts, triviaForRound, type FactBearingFeature } from '../src/mapRecall/localFacts';
 import type { Fact, FactsFile } from '../src/canalRecall/facts/factTypes';
 import { FEATURE_CATEGORIES } from '../src/types';
 
@@ -13,7 +13,11 @@ const catalog: FactsFile = {
   cityId: 'amsterdam', generatorVersion: 'test', generatedAt: '2026-09-01',
   features: [{ id: 'extract_landmarks_1', name: 'Alpha', collection: 'landmarks', facts }],
 };
-const features = [{ id: 'extract_landmarks_1', name: 'Alpha' }, { id: 'osm_node_2', name: 'Beta' }];
+// Typed as fact-bearing, which is what the join returns: inferred from the
+// literal alone, `localFacts` would not exist on it and the assertions below
+// would be checking a property the type says cannot be there.
+const features: Array<FactBearingFeature & { name: string }> =
+  [{ id: 'extract_landmarks_1', name: 'Alpha' }, { id: 'osm_node_2', name: 'Beta' }];
 const joined = attachLocalFacts(features, catalog, 'amsterdam');
 assert.deepEqual(joined[0].localFacts, facts);
 assert.equal(joined[1].localFacts, undefined);

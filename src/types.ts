@@ -177,6 +177,12 @@ export interface StreetFeature {
   /** Human-reviewed, statement-provenance trivia joined by exact extract id. */
   localFacts?: Fact[];
   highway?: string;
+  /**
+   * OSM `railway` tag where a drivable way carries one — `abandoned` and
+   * `razed` in the published extracts. Kept so a street that is also a former
+   * rail alignment says so; `streets-routing.json` publishes it.
+   */
+  railway?: string;
   neighborhood?: string;
   neighborhoodDistractors?: string[];
   areaGeometry?: [number, number][][][];

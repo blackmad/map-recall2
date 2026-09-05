@@ -134,8 +134,15 @@ export function measured<T>(
 export const defaulted = <T>(value: T): Measured<T> =>
   ({ value, source: 'default', confidence: 0, observationId: null, measuredAt: null });
 
-/** True when this field was actually observed, rather than filled in. */
-export const wasObserved = <T>(field: Measured<T>): boolean => field.source !== 'default';
+/**
+ * True when this field was actually observed, rather than filled in.
+ *
+ * Takes `Measured<unknown>` rather than a generic: the question is about the
+ * source, never the value, and a generic parameter cannot be inferred from a
+ * union of differently-typed fields — which is exactly how a record is walked
+ * field by field.
+ */
+export const wasObserved = (field: Measured<unknown>): boolean => field.source !== 'default';
 
 /**
  * Read a field only if it was observed, otherwise fall back.

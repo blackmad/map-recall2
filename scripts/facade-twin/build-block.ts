@@ -23,7 +23,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { applyHeritageEvidence, buildRecordFromRecon, type SourceDescriptor } from '../../src/canalRecall/facade/buildRecord.ts';
-import { auditHouse, validateHouse } from '../../src/canalRecall/facade/houseRecord.ts';
+import { auditHouse, fieldsOf, validateHouse } from '../../src/canalRecall/facade/houseRecord.ts';
 import { summariseCoverage, wasObserved } from '../../src/canalRecall/facade/evidence.ts';
 import { applyStreetLevelEvidence, wallMaterialOf } from '../../src/canalRecall/facade/streetLevelEvidence.ts';
 import { measureFacade, STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
@@ -293,7 +293,13 @@ for (const entry of block) {
       roofSource: 'default',
     },
     notes,
-    violations: [...evidenceViolations, ...valueViolations].map(v => `${v.field}: ${v.code} — ${v.detail}`),
+    // The two audits report different shapes: an evidence violation names a
+    // code, a value problem is a plain implausibility. Interpolating `code`
+    // across both wrote `undefined` into every value line.
+    violations: [
+      ...evidenceViolations.map(v => `${v.field}: ${v.code} — ${v.detail}`),
+      ...valueViolations.map(v => `${v.field}: implausible-value — ${v.detail}`),
+    ],
   });
   allNotes.push(...notes);
 
@@ -321,7 +327,9 @@ await writeFile(file, JSON.stringify({
 }, null, 2));
 
 const houses = records.map(r => r.house);
-const coverage = summariseCoverage(houses);
+// Coverage is over the measured fields, which is what `fieldsOf` selects:
+// passing the record whole counted `pandId` as a field with no source.
+const coverage = summariseCoverage(houses.map(fieldsOf));
 console.log(`\n${records.length} buildings, ${violations} evidence/value violations`);
 console.log('\nField coverage — observed vs defaulted');
 for (const field of coverage.filter(f => f.measured > 0).sort((a, b) => b.measured - a.measured)) {
