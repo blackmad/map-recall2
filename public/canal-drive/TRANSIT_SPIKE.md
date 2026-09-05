@@ -19,13 +19,13 @@ never be revealed by the HUD before the answer.
 | OVapi GTFS → GVB tram/metro/ferry extract | **Done** — `transit-network.json` (32 lines, 309 stops) |
 | Typed network schema | **Done** — `src/canalRecall/transit/network.ts` |
 | Builder + pin check | **Done** — `build:amsterdam-transit-gtfs`, `test:transit-extract` |
-| `TravelMode = 'transit'` | Not started |
-| Graph load / drive along shapes | Not started |
-| Stop / line / headsign quizzes | Not started |
+| `TravelMode = 'transit'` + travel profiles | **Done** — Phase B |
+| Graph load / drive along shapes | **Done** — thin slice tram 2 |
+| Stop / line / headsign quizzes | **Done** — stop + line (headsign deferred) |
 | Transfers / multi-leg | Later phase |
 | Bus / GTFS-RT / tram mesh | Out of v1 |
 
-Rebuild extract (zip cached under `.cache/transit/`):
+Local gate: `npm run check:transit`. Rebuild extract (zip cached under `.cache/transit/`):
 
 ```bash
 npm run build:amsterdam-transit-gtfs
@@ -230,21 +230,20 @@ Each phase must be **worth shipping alone** and gated by named checks.
 - [x] GTFS download + GVB filter
 - [x] `transit-network.json` committed
 - [x] `test:transit-extract` pins
-- [ ] Add `test:transit-extract` to `check:canal` (or a lighter
-      `check:transit` pre-merge gate on this branch)
-- [ ] Document cache path + UA in `EXTRACT_PIPELINE.md`
+- [x] Add `test:transit-extract` to `check:canal` / `check:transit`
+- [x] Document cache path + UA in `EXTRACT_PIPELINE.md`
 - [ ] Optional: both directions per ref; transfer sidecar
 
 **Exit:** refresh is reproducible; pins green on CI.
 
 ### Phase B — Mode profile + wiring (no play yet)
 
-- [ ] `'transit'` in `TRAVEL_MODES` / prefs / overlay Travel row
-- [ ] `travelProfile.ts` + migrate a few call sites off raw `isCar`
-- [ ] `osm-loader.fetchRoads` loads `transit-network.json` → segments
-- [ ] Loading screen / setup copy for transit
-- [ ] `test:canal-preferences` + `test:canal-overlay` cover transit parse
-- [ ] Storybook: briefing with Transit selected (desktop + phone)
+- [x] `'transit'` in `TRAVEL_MODES` / prefs / overlay Travel row
+- [x] `travelProfile.ts` + migrate a few call sites off raw `isCar`
+- [x] `osm-loader.fetchRoads` loads `transit-network.json` → segments
+- [x] Loading screen / setup copy for transit
+- [x] `test:canal-preferences` + `test:canal-overlay` cover transit parse
+- [x] Storybook: briefing with Transit selected (desktop + phone)
 
 **Exit:** selecting Transit loads a transit graph without crashing; boat/bike
 unaffected (regression: `test:canal-car`, `test:reachability`).
@@ -253,13 +252,13 @@ unaffected (regression: `test:canal-car`, `test:reachability`).
 
 Pick **tram 2** (pinned, central, Dam).
 
-- [ ] Spawn on tram 2 shape; road-constrain along corridor
-- [ ] Stop proximity detector → stop quiz
-- [ ] Occasional line quiz while moving
-- [ ] Distractors from extract, not citywide random
-- [ ] Mastery keys for stop + line; `clearKnowledge` / clear-all still wipe them
-- [ ] Finish card nouns: stops / lines
-- [ ] Named checks: “tram 2 corridor reachable end-to-end”, “Dam stop triggers”
+- [x] Spawn on tram 2 shape; road-constrain along corridor
+- [x] Stop proximity detector → stop quiz
+- [x] Occasional line quiz while moving
+- [x] Distractors from extract, not citywide random
+- [x] Mastery keys for stop + line; `clearKnowledge` / clear-all still wipe them
+- [x] Finish card nouns: stops / lines
+- [x] Named checks: “tram 2 corridor reachable end-to-end”, “Dam stop triggers”
 - [ ] Playwright or driving harness pin if cheap; else typed proximity tests
 
 **Exit:** a player can complete a tram 2 surprise hop answering stops (and

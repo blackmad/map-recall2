@@ -8,6 +8,26 @@
  * `game-route.js` call into this module; it has no `document`.
  */
 
+export {
+  ANSWER_MODES,
+  CONTROL_MODES,
+  parseMode,
+  ROUTE_DIFFICULTIES,
+  ROUTE_PATTERNS,
+  THEME_MODES,
+  TRAVEL_MODES,
+  VIEW_MODES,
+  isBoat,
+  isCar,
+  isTransit,
+  type AnswerMode,
+  type ControlMode,
+  type RouteDifficulty,
+  type RoutePattern,
+  type ThemeMode,
+  type TravelMode,
+  type ViewMode,
+} from './modes.ts';
 import {
   ANSWER_MODES,
   CONTROL_MODES,
@@ -25,6 +45,15 @@ import {
   type TravelMode,
   type ViewMode,
 } from './modes.ts';
+export {
+  travelProfile,
+  usesRoadConstraint,
+  usesWaterTest,
+  type TravelProfile,
+  type LearnedKind,
+  type MotionKind,
+  type VehicleKind,
+} from './travelProfile.ts';
 import type { KeyValueStore } from './progressStore.ts';
 import {
   BIKE_SKIN_IDS,

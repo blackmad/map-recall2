@@ -18,6 +18,8 @@ const zoom = { min: 0.2, max: 1.5, defaultZoom: 0.5 };
   store.patchPrefs({ travelMode: 'car', routePattern: 'home', homeAddress: 'Da Costakade' }, zoom);
   assert.equal(store.getState().prefs.travelMode, 'car');
   assert.equal(store.getState().prefs.homeAddress, 'Da Costakade');
+  store.patchPrefs({ travelMode: 'transit' }, zoom);
+  assert.equal(store.getState().prefs.travelMode, 'transit');
   store.setSetupOpen(false);
   store.setSettingsOpen(true);
   assert.equal(store.getState().setupOpen, false);

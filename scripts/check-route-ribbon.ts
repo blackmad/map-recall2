@@ -205,14 +205,14 @@ check('a stored collection missing a newer field is not blanked', () => {
 
 check('waterways and streets are collected apart', () => {
   const byBoat = mergeExploration(emptyExploration(), {
-    byBoat: true, learnedNames: ['Singel'], visitedNeighborhoods: [], seenLandmarkNames: [],
+    learnedKind: 'water', learnedNames: ['Singel'], visitedNeighborhoods: [], seenLandmarkNames: [],
     correct: 1, attempts: 2,
   });
   assert.deepEqual(byBoat.learnedWaterways, ['Singel']);
   assert.deepEqual(byBoat.learnedStreets, [], 'a canal is not a street');
 
   const thenByCar = mergeExploration(byBoat, {
-    byBoat: false, learnedNames: ['Nes'], visitedNeighborhoods: ['Centrum'], seenLandmarkNames: ['Dam'],
+    learnedKind: 'street', learnedNames: ['Nes'], visitedNeighborhoods: ['Centrum'], seenLandmarkNames: ['Dam'],
     correct: 2, attempts: 2,
   });
   assert.deepEqual(thenByCar.learnedWaterways, ['Singel'], 'the earlier body of knowledge is kept');
@@ -222,13 +222,28 @@ check('waterways and streets are collected apart', () => {
   assert.equal(thenByCar.totalAttempts, 4);
 });
 
+check('transit lines and stops are collected apart from streets', () => {
+  const transit = mergeExploration(emptyExploration(), {
+    learnedKind: 'transit',
+    learnedNames: ['Tram 2'],
+    learnedStopNames: ['Dam', 'Leidseplein'],
+    visitedNeighborhoods: [],
+    seenLandmarkNames: [],
+    correct: 3,
+    attempts: 3,
+  });
+  assert.deepEqual(transit.learnedTransitLines, ['Tram 2']);
+  assert.deepEqual(transit.learnedTransitStops, ['Dam', 'Leidseplein']);
+  assert.deepEqual(transit.learnedStreets, []);
+});
+
 check('driving the same street twice does not count it twice', () => {
   const once = mergeExploration(emptyExploration(), {
-    byBoat: false, learnedNames: ['Nes', 'Nes'], visitedNeighborhoods: ['Centrum'],
+    learnedKind: 'street', learnedNames: ['Nes', 'Nes'], visitedNeighborhoods: ['Centrum'],
     seenLandmarkNames: [], correct: 1, attempts: 1,
   });
   const twice = mergeExploration(once, {
-    byBoat: false, learnedNames: ['Nes'], visitedNeighborhoods: ['Centrum'],
+    learnedKind: 'street', learnedNames: ['Nes'], visitedNeighborhoods: ['Centrum'],
     seenLandmarkNames: [], correct: 1, attempts: 1,
   });
   assert.deepEqual(twice.learnedStreets, ['Nes']);
@@ -239,7 +254,7 @@ check('driving the same street twice does not count it twice', () => {
 check('the finish screen can tell what this route added', () => {
   const before = emptyExploration();
   const after = mergeExploration(before, {
-    byBoat: false, learnedNames: ['Nes', 'Damrak'], visitedNeighborhoods: ['Centrum'],
+    learnedKind: 'street', learnedNames: ['Nes', 'Damrak'], visitedNeighborhoods: ['Centrum'],
     seenLandmarkNames: ['Dam', 'Beurs'], correct: 2, attempts: 2,
   });
   assert.deepEqual(explorationGain(before, after),
@@ -251,7 +266,7 @@ check('the finish screen can tell what this route added', () => {
 check('saved collections round-trip', () => {
   const store = memoryStore();
   const exploration = mergeExploration(emptyExploration(), {
-    byBoat: true, learnedNames: ['Singel'], visitedNeighborhoods: [], seenLandmarkNames: [],
+    learnedKind: 'water', learnedNames: ['Singel'], visitedNeighborhoods: [], seenLandmarkNames: [],
     correct: 1, attempts: 1,
   });
   saveExploration(store, exploration);

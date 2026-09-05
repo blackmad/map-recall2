@@ -329,14 +329,21 @@ class GameRouteRuntime {
     // City may have changed on the briefing since the last catalog fetch.
     await this._loadRoutePoiCatalog();
     const curated = this._curatedRoutePois();
-    if (curated.length) {
+    if (this.travelMode === 'transit' && this.routePois.length >= 2) {
+      this.routeFrom = this.routePois[0];
+      this.routeTo = this.routePois[Math.min(1, this.routePois.length - 1)];
+    } else if (curated.length) {
       this.routeFrom = curated[Math.min(1, curated.length - 1)];
       this.routeTo = curated[Math.min(2, curated.length - 1)] || curated[0];
     } else if (this.routePois.length >= 2) {
       this.routeFrom = this.routePois[0];
       this.routeTo = this.routePois[1];
     } else {
-      this._setRouteError(`Not enough landmarks loaded for ${this._cityDisplayName()}.`);
+      this._setRouteError(
+        this.travelMode === 'transit'
+          ? 'Transit stop anchors failed to load for Amsterdam.'
+          : `Not enough landmarks loaded for ${this._cityDisplayName()}.`,
+      );
       return;
     }
     this.routePattern = prefs.routePattern;
@@ -427,6 +434,10 @@ class GameRouteRuntime {
 
   async _loadRoutePoiCatalog() {
     const city = this._activeCity();
+    if (this.travelMode === 'transit') {
+      await this._loadTransitRoutePois(city);
+      return;
+    }
     const curated = this._curatedRoutePois();
     try {
       const catalogUrl = `${city.extractPath}/landmarks.json`;
@@ -463,6 +474,33 @@ class GameRouteRuntime {
     } catch (error) {
       this.routePois = [...curated];
       console.warn('Landmark route catalog unavailable, using the curated list:', error);
+    }
+  }
+
+  async _loadTransitRoutePois(city) {
+    const Transit = window.CanalRecallTransit;
+    try {
+      const dataUrl = new URL(`${city.extractPath}/transit-network.json`, window.location.href);
+      const response = await fetch(dataUrl);
+      if (!response.ok) throw new Error(`transit-network ${response.status}`);
+      const network = await response.json();
+      const load = Transit.adaptTransitNetwork(network, {
+        playableRefs: Transit.TRANSIT_THIN_SLICE_REFS,
+        cityId: city.id,
+      });
+      this.routePois = Transit.transitRouteAnchors(load);
+      if (this._routeFrom && this._routeTo) {
+        this._routeFrom.innerHTML = '';
+        this._routeTo.innerHTML = '';
+        for (const poi of this.routePois) {
+          this._routeFrom.add(new Option(poi.name, poi.id));
+          this._routeTo.add(new Option(poi.name, poi.id));
+        }
+      }
+      console.info(`Transit destinations (${city.name}): ${this.routePois.length} stop anchors`);
+    } catch (error) {
+      this.routePois = [];
+      console.warn('Transit route anchors unavailable:', error);
     }
   }
 
@@ -531,6 +569,7 @@ class GameRouteRuntime {
     if (this.player.isBoat) {
       this.player.turnRate *= 1.18;
     } else {
+      // Bike and transit both use corridor / road physics.
       this.player.turnRate *= PLAYER_CAR_TURN_MULT;
       this.player.driftFactor = PLAYER_CAR_DRIFT_FACTOR;
       this.player.maxSpeed *= PLAYER_CAR_SPEED_MULT;
@@ -539,6 +578,10 @@ class GameRouteRuntime {
       this.player.liftOffBraking = PLAYER_CAR_LIFT_OFF_BRAKING;
     }
     this.cars.push(this.player);
+    this.learnedStopNames = new Set();
+    this._lastTransitStopQuizAt = -Infinity;
+    this._lastTransitLineQuizAt = -Infinity;
+    this._quizzedTransitStops = new Set();
 
     // Canal Recall intentionally starts with a quiet network: the experiment
     // is navigation and name recall, not traffic avoidance.
@@ -596,8 +639,15 @@ class GameRouteRuntime {
     this.state = GameState.LOADING;
     this._loadingAborted = false;
     this.loadingProgress = 0.05;
-    const networkNoun = this.travelMode === 'car' ? 'streets' : 'waterways';
-    this.loadingMessage = `Loading ${this._activeCity().name} ${networkNoun}...`;
+    const Prefs = window.CanalRecallPreferences;
+    const profile = Prefs && Prefs.travelProfile
+      ? Prefs.travelProfile(this.travelMode)
+      : { networkNoun: this.travelMode === 'car' ? 'streets' : 'waterways',
+          networkNounSingular: this.travelMode === 'car' ? 'street' : 'waterway' };
+    const networkNoun = profile.networkNoun;
+    this.loadingMessage = this.travelMode === 'transit'
+      ? `Mapping ${this._activeCity().name} tram lines...`
+      : `Loading ${this._activeCity().name} ${networkNoun}...`;
 
     try {
       // Step 1: Fetch from Overpass API (tries multiple servers)
@@ -612,7 +662,7 @@ class GameRouteRuntime {
       }
 
       // Step 2: Build road segments
-      this.loadingMessage = `Building ${this.travelMode === 'car' ? 'street' : 'canal'} network...`;
+      this.loadingMessage = `Building ${profile.networkNounSingular} network...`;
       this.loadingProgress = 0.3;
       const segments = this.osmLoader.buildRoadSegments(ways, lat, lng);
 
@@ -630,7 +680,7 @@ class GameRouteRuntime {
       if (this._loadingAborted) return;
 
       // Step 4: Find start/finish — use user-picked points or auto-find
-      this.loadingMessage = `Choosing a starting ${this.travelMode === 'car' ? 'street' : 'waterway'}...`;
+      this.loadingMessage = `Choosing a starting ${profile.networkNounSingular}...`;
       this.loadingProgress = 0.6;
 
       let start, finish;
@@ -690,7 +740,11 @@ class GameRouteRuntime {
       }
 
       // Step 5: Create the waterway network using Smokey's spatial engine.
-      this.loadingMessage = 'Rendering waterways...';
+      this.loadingMessage = this.travelMode === 'transit'
+        ? 'Rendering tram lines...'
+        : this.travelMode === 'car'
+          ? 'Rendering streets...'
+          : 'Rendering waterways...';
       this.loadingProgress = 0.8;
 
       // Use a small delay to let the loading screen render

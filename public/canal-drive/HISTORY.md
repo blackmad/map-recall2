@@ -6,6 +6,25 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Transit mode thin slice (tram 2) — 2026-09-05
+
+Phases A–C of [`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on `spike/canal-transit`.
+
+- **Why GTFS, not OSM relations:** stop/line/headsign identity is timetable
+  catalog, not basemap geometry. OVapi → GVB filter →
+  `transit-network.json`; OSM stays secondary for walk connectors later.
+- **Why a travel profile:** binary `isCar` could not absorb a third mode
+  without another sprawl of boat/bike forks. `travelProfile.ts` owns extract
+  file, quiz nouns, motion, and road-constrain flags; legacy `isCar` /
+  `isBoat` remain thin wrappers.
+- **Why tram 2 only:** one corridor teaches stop + line quizzes before the
+  full 32-line surface drowns surprise routing. `TRANSIT_THIN_SLICE_REFS`
+  unlocks Phase D later without rewiring mastery.
+- **Why separate line keys:** ask-point SRS would fragment mastery along the
+  shape; lines key on mode+ref+city, stops on extract centres.
+- Gate: `npm run check:transit` (extract pins, tram 2 reachability, prefs,
+  overlay). Boat/bike regression: `test:canal-car`.
+
 ## Board cleanup (2026-09-05): 8b closed, 11b demoted
 
 **8b** (type the decision half) is finished: no un-migrated decision logic left

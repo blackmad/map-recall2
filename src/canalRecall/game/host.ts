@@ -186,6 +186,8 @@ export interface RecallHost extends GameCoreHost {
   quizFeedback: string;
 
   learnedNames: Set<string>;
+  /** Stop names answered on a transit run. */
+  learnedStopNames: Set<string>;
   revealedNames: Set<string>;
   _mapLabelNames: Set<string>;
   /** name -> world points where the store says this name is already known.
@@ -198,6 +200,9 @@ export interface RecallHost extends GameCoreHost {
   _learnedBridges: Map<string, { name: string; labelPoint?: WorldPoint }>;
   _pendingCrossing: PendingCrossing | null;
   _lastBridgeQuizAt: number;
+  _lastTransitStopQuizAt: number;
+  _lastTransitLineQuizAt: number;
+  _quizzedTransitStops: Set<string>;
   _choiceOrder?: string[];
   _pendingSkipMastered?: boolean;
 
@@ -216,10 +221,12 @@ export interface RecallHost extends GameCoreHost {
   /** Owned by other subsystems. */
   _savePreferences(): void;
   _setRouteError(message: string): void;
-  _showStreetKnowledge(name: string, type?: 'street' | 'water', replaceOpenCard?: boolean): void;
+  _showStreetKnowledge(name: string, type?: 'street' | 'water' | 'line', replaceOpenCard?: boolean): void;
   _clearLandmarkNotice(): void;
   _neighborhoodNotice: { name: string; kind?: string; imageArea?: string } | null;
   _neighborhoodNoticeTimer: number;
+  _explorationSnapshot?: Exploration | null;
+  _reclaimKeyboardFocus?(): void;
 }
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
@@ -262,6 +269,7 @@ export interface PresentationHost extends GameCoreHost {
   quizPromptPointIndex: number;
 
   learnedNames: Set<string>;
+  learnedStopNames: Set<string>;
   _mapLabelNames: Set<string>;
   _visitedNeighborhoods: Set<string>;
   _seenLandmarkNames: Set<string>;

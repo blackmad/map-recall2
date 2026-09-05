@@ -165,4 +165,34 @@ To offer a new city in the game: publish its extract, add a catalog entry with
 | `npm run test:bridge-crossings` | per-crossing identity, and bridges/index alignment |
 | `npm run test:bridge-railways` | railway lines are not asked as bridges |
 | `npm run test:reachability` | the routing graph reaches what it claims to |
+| `npm run test:transit-extract` | GVB tram/metro/ferry pins in `transit-network.json` |
+| `npm run test:transit-routing` | tram 2 corridor adapts and routes end-to-end |
+| `npm run check:transit` | extract + routing + prefs/overlay transit wiring |
 | `npx playwright test tests/e2e/driving-harness.spec.ts` | 120 real drives; drivability, not coverage |
+
+## Amsterdam transit (GTFS)
+
+Public transit mode does **not** rebuild line/stop identity from OSM
+`route=tram` relations. The catalog is derived from
+[OVapi GTFS NL](https://gtfs.ovapi.nl/nl/gtfs-nl.zip), agency **GVB**, filtered
+to tram / metro / ferry (bus deferred).
+
+```bash
+npm run build:amsterdam-transit-gtfs   # download or reuse zip, write extract
+npm run test:transit-extract           # named pins (tram 2↔Dam, metro 52↔Noord)
+```
+
+| detail | value |
+| --- | --- |
+| Cache | `.cache/transit/gtfs-nl.zip` (and unzipped feed beside it) |
+| User-Agent | `map-recall2-transit-spike/0.1 (…; research)` — required by OVapi |
+| Accept-Encoding | `gzip` |
+| Published artifact | `public/data/extracts/amsterdam/transit-network.json` |
+| Force re-download | `npx tsx scripts/build-amsterdam-transit-gtfs.ts --force-download` |
+
+The builder is **not** part of every CI run: the committed JSON plus
+`test:transit-extract` is the gate. Rebuild when the feed needs refreshing;
+stage and review before replacing the published extract.
+
+Thin-slice play currently drives **tram 2** only (`TRANSIT_THIN_SLICE_REFS`);
+the full GVB rail+ferry set stays in the extract for Phase D.
