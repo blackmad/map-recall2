@@ -104,6 +104,193 @@
   // src/canalRecall/routing/cycleTrack.ts
   var CYCLE_TRACK_ANSWER_MULTIPLIER = 1.1;
 
+  // src/canalRecall/game/cities.ts
+  var AMSTERDAM_POIS = [
+    { id: "central", name: "Central Station", lat: 52.3784943, lng: 4.899843 },
+    { id: "anne-frank", name: "Anne Frank House", lat: 52.3753446, lng: 4.8840669 },
+    { id: "rijksmuseum", name: "Rijksmuseum", lat: 52.3598672, lng: 4.8864162 },
+    { id: "maritime", name: "National Maritime Museum", lat: 52.371493, lng: 4.9151332 },
+    { id: "nemo", name: "NEMO Science Museum", lat: 52.3738532, lng: 4.9121113 },
+    { id: "palace", name: "Royal Palace", lat: 52.373258, lng: 4.8918222 },
+    { id: "red-light", name: "Red Light District", lat: 52.3719371, lng: 4.8956406 },
+    { id: "rembrandt", name: "Rembrandt House", lat: 52.3693692, lng: 4.9012497 },
+    { id: "hart", name: "H\u2019ART Museum", lat: 52.3656522, lng: 4.9022137 },
+    { id: "westerkerk", name: "Westerkerk", lat: 52.3743736, lng: 4.8837289 },
+    { id: "mint", name: "Mint Tower", lat: 52.3670418, lng: 4.8932804 }
+  ];
+  function viewboxAround(center, pad = 0.18) {
+    return [
+      center.lng - pad,
+      center.lat + pad,
+      center.lng + pad,
+      center.lat - pad
+    ];
+  }
+  var CANAL_CITIES = {
+    amsterdam: {
+      id: "amsterdam",
+      name: "Amsterdam",
+      productName: "Canal Recall",
+      center: { lat: 52.372851, lng: 4.8936 },
+      extractPath: "../data/extracts/amsterdam",
+      geocodeSuffix: ", Amsterdam",
+      // Preserves the historical Amsterdam home search window.
+      geocodeViewbox: [4.72, 52.43, 5.02, 52.27],
+      provinceCaption: "Noord-Holland",
+      playable: true,
+      curatedPois: AMSTERDAM_POIS
+    },
+    utrecht: {
+      id: "utrecht",
+      name: "Utrecht",
+      productName: "Canal Recall",
+      center: { lat: 52.0907374, lng: 5.1214201 },
+      extractPath: "../data/extracts/utrecht",
+      geocodeSuffix: ", Utrecht",
+      geocodeViewbox: viewboxAround({ lat: 52.0907374, lng: 5.1214201 }),
+      provinceCaption: "Utrecht",
+      playable: true,
+      // Historic-core anchors — prominence ranking alone prefers universities
+      // and Science Park over Dom / Oudegracht destinations.
+      curatedPois: [
+        { id: "dom-tower", name: "Dom tower", lat: 52.090764, lng: 5.121398 },
+        { id: "centraal-museum", name: "Centraal Museum", lat: 52.083445, lng: 5.126395 },
+        { id: "museum-speelklok", name: "Museum Speelklok", lat: 52.0907282, lng: 5.1194134 },
+        { id: "buurkerk", name: "Buurkerk", lat: 52.090738, lng: 5.119781 },
+        { id: "jacobikerk", name: "Jacobikerk", lat: 52.094895, lng: 5.115757 },
+        { id: "catharijneconvent", name: "Museum Catharijneconvent", lat: 52.087646, lng: 5.124579 },
+        { id: "academiegebouw", name: "Academiegebouw", lat: 52.0902439, lng: 5.1223339 },
+        { id: "inktpot", name: "De Inktpot", lat: 52.087099, lng: 5.115846 },
+        { id: "pieterskerk", name: "Pieterskerk", lat: 52.091397, lng: 5.124743 },
+        { id: "rietveld", name: "Rietveld-Schr\xF6derhuis", lat: 52.085297, lng: 5.147607 }
+      ]
+    },
+    rotterdam: {
+      id: "rotterdam",
+      name: "Rotterdam",
+      productName: "Canal Recall",
+      center: { lat: 51.9225, lng: 4.47917 },
+      extractPath: "../data/extracts/rotterdam",
+      geocodeSuffix: ", Rotterdam",
+      geocodeViewbox: viewboxAround({ lat: 51.9225, lng: 4.47917 }, 0.22),
+      provinceCaption: "Zuid-Holland",
+      playable: true,
+      curatedPois: [
+        { id: "euromast", name: "Euromast", lat: 51.905356, lng: 4.466785 },
+        { id: "laurenskerk", name: "Grote of Sint-Laurenskerk", lat: 51.921706, lng: 4.486122 },
+        { id: "doelen", name: "de Doelen", lat: 51.9220495, lng: 4.4726898 },
+        { id: "bibliotheek", name: "Centrale Bibliotheek", lat: 51.9223535, lng: 4.4871283 },
+        { id: "depot-boijmans", name: "Depot Boijmans Van Beuningen", lat: 51.9139529, lng: 4.471132 },
+        { id: "zoo", name: "Rotterdam Zoo", lat: 51.924954, lng: 4.450176 }
+      ]
+    },
+    "den-haag": {
+      id: "den-haag",
+      name: "Den Haag",
+      productName: "Canal Recall",
+      center: { lat: 52.0705, lng: 4.3007 },
+      extractPath: "../data/extracts/den-haag",
+      geocodeSuffix: ", Den Haag",
+      geocodeViewbox: viewboxAround({ lat: 52.0705, lng: 4.3007 }),
+      provinceCaption: "Zuid-Holland",
+      playable: true,
+      curatedPois: [
+        { id: "binnenhof", name: "Binnenhof", lat: 52.079334, lng: 4.312407 },
+        { id: "huis-ten-bosch", name: "Huis ten Bosch", lat: 52.093169, lng: 4.343465 },
+        { id: "amare", name: "Amare", lat: 52.078015, lng: 4.318695 },
+        { id: "catshuis", name: "Catshuis", lat: 52.090293, lng: 4.284739 },
+        { id: "kb", name: "KB, nationale bibliotheek", lat: 52.0815311, lng: 4.3275274 }
+      ]
+    }
+  };
+  var DEFAULT_CITY_ID = "amsterdam";
+
+  // src/canalRecall/game/preferences.ts
+  var PREFERENCES_STORAGE_KEY = "canalRecall.preferences.v1";
+  var ZOOM_DEFAULT_VERSION = 2;
+  var DIFFICULTY_PRESETS = {
+    easy: { answerMode: "multiple", line: true, arrow: true, minimap: true },
+    medium: { answerMode: "multiple", line: false, arrow: true, minimap: true },
+    hard: { answerMode: "typing", line: false, arrow: true, minimap: false },
+    expert: { answerMode: "typing", line: false, arrow: false, minimap: false }
+  };
+  function defaultPreferences(zoom) {
+    return {
+      cityId: DEFAULT_CITY_ID,
+      difficulty: "medium",
+      ...DIFFICULTY_PRESETS.medium,
+      travelMode: "boat",
+      controlMode: "relative",
+      viewMode: "north",
+      themeMode: "clean",
+      routePattern: "surprise",
+      homeAddress: "",
+      trees: true,
+      detailed3d: false,
+      googleTiles: false,
+      reducedMotion: false,
+      skipMastered: true,
+      gamey: true,
+      sound: false,
+      zoom: zoom.defaultZoom,
+      zoomDefaultVersion: ZOOM_DEFAULT_VERSION
+    };
+  }
+  function clearPreferences(store, zoom) {
+    try {
+      if (store.removeItem) store.removeItem(PREFERENCES_STORAGE_KEY);
+      else store.setItem(PREFERENCES_STORAGE_KEY, "");
+    } catch {
+    }
+    return defaultPreferences(zoom);
+  }
+
+  // src/canalRecall/game/progressStore.ts
+  var LEADERBOARD_STORAGE_KEY = "satb_bestTimes";
+  var EXPLORATION_STORAGE_KEY = "canalRecall.exploration.v1";
+  var HOME_GEOCODE_CACHE_KEY = "canalRecall.homeGeocodes.v2";
+  function removeKey(store, key) {
+    try {
+      if (store.removeItem) store.removeItem(key);
+      else store.setItem(key, "");
+    } catch {
+    }
+  }
+  function emptyExploration() {
+    return {
+      learnedWaterways: [],
+      learnedStreets: [],
+      visitedNeighborhoods: [],
+      seenLandmarks: [],
+      totalRoutes: 0,
+      totalCorrect: 0,
+      totalAttempts: 0
+    };
+  }
+  function clearExploration(store) {
+    removeKey(store, EXPLORATION_STORAGE_KEY);
+  }
+  function clearBestTimes(store) {
+    removeKey(store, LEADERBOARD_STORAGE_KEY);
+  }
+  function clearHomeGeocodeCache(store) {
+    removeKey(store, HOME_GEOCODE_CACHE_KEY);
+  }
+
+  // src/canalRecall/facts/factQuality.ts
+  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
+  var LEDE_RESTATEMENT = new RegExp(
+    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
+    "i"
+  );
+  var FILLER_CLAUSE = new RegExp(
+    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
+    "i"
+  );
+
+  // src/canalRecall/facts/factStore.ts
+  var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
+
   // src/canalRecall/game/recallRuntime.ts
   var DISTRACTOR_COUNT = 3;
   var CHOICE_POOL_RADIUS = 1500;
@@ -150,7 +337,7 @@ Sign-in and your route settings stay. This cannot be undone.`
           try {
             const cleared = await recall.clearKnowledge();
             try {
-              localStorage.removeItem("canalRecall.factRotation.v1");
+              localStorage.removeItem(ROTATION_STORAGE_KEY);
             } catch {
             }
             this._factRotation = { history: {}, shown: 0, recentKinds: [] };
@@ -160,6 +347,38 @@ Sign-in and your route settings stay. This cannot be undone.`
             );
           } catch (error) {
             this._setRouteError(error.message || "Could not clear knowledge.");
+          } finally {
+            overlay.store.setAccount({ busy: false });
+          }
+        };
+        overlay.callbacks.onClearAllData = async () => {
+          const cloud = recall.signedIn ? " and your signed-in cloud copy" : "";
+          const ok = window.confirm(
+            `Clear everything Canal Recall stores on this device${cloud}?
+
+Learned names, exploration collection, personal bests, route settings and the home-address cache all go. Sign-in stays. This cannot be undone.`
+          );
+          if (!ok) return;
+          overlay.store.setAccount({ busy: true });
+          try {
+            await recall.clearKnowledge();
+            clearExploration(localStorage);
+            clearBestTimes(localStorage);
+            clearHomeGeocodeCache(localStorage);
+            try {
+              localStorage.removeItem(ROTATION_STORAGE_KEY);
+            } catch {
+            }
+            this._factRotation = { history: {}, shown: 0, recentKinds: [] };
+            this._explorationSnapshot = emptyExploration();
+            const defaults = clearPreferences(localStorage, overlay.callbacks.zoom);
+            overlay.store.replacePrefs(defaults);
+            recall.enabled = defaults.skipMastered;
+            this._refreshMasteredLabels();
+            overlay.callbacks.onLiveChange();
+            this._setRouteError("Cleared all local Canal Recall data.");
+          } catch (error) {
+            this._setRouteError(error.message || "Could not clear data.");
           } finally {
             overlay.store.setAccount({ busy: false });
           }

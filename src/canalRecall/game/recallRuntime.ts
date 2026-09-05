@@ -25,6 +25,14 @@ import type { PendingCrossing, RecallFeature, RecallHost } from './host';
 import { isCar, type QuizPromptKind, type QuizSubject } from './modes';
 import type { Bridge, BridgeCrossing, WorldPoint } from './worldTypes';
 import { CYCLE_TRACK_ANSWER_MULTIPLIER } from '../routing/cycleTrack';
+import { clearPreferences } from './preferences';
+import {
+  clearBestTimes,
+  clearExploration,
+  clearHomeGeocodeCache,
+  emptyExploration,
+} from './progressStore';
+import { ROTATION_STORAGE_KEY } from '../facts/factStore';
 
 /** How many wrong answers a multiple-choice question offers. */
 const DISTRACTOR_COUNT = 3;
@@ -78,7 +86,7 @@ export class GameRecallRuntime {
         overlay.store.setAccount({ busy: true });
         try {
           const cleared = await recall.clearKnowledge();
-          try { localStorage.removeItem('canalRecall.factRotation.v1'); } catch { /* private mode */ }
+          try { localStorage.removeItem(ROTATION_STORAGE_KEY); } catch { /* private mode */ }
           this._factRotation = { history: {}, shown: 0, recentKinds: [] };
           this._refreshMasteredLabels();
           this._setRouteError(
@@ -88,6 +96,35 @@ export class GameRecallRuntime {
           );
         } catch (error) {
           this._setRouteError((error as Error).message || 'Could not clear knowledge.');
+        } finally {
+          overlay.store.setAccount({ busy: false });
+        }
+      };
+      overlay.callbacks.onClearAllData = async () => {
+        const cloud = recall.signedIn ? ' and your signed-in cloud copy' : '';
+        const ok = window.confirm(
+          `Clear everything Canal Recall stores on this device${cloud}?\n\n`
+          + 'Learned names, exploration collection, personal bests, route settings '
+          + 'and the home-address cache all go. Sign-in stays. This cannot be undone.',
+        );
+        if (!ok) return;
+        overlay.store.setAccount({ busy: true });
+        try {
+          await recall.clearKnowledge();
+          clearExploration(localStorage);
+          clearBestTimes(localStorage);
+          clearHomeGeocodeCache(localStorage);
+          try { localStorage.removeItem(ROTATION_STORAGE_KEY); } catch { /* private mode */ }
+          this._factRotation = { history: {}, shown: 0, recentKinds: [] };
+          this._explorationSnapshot = emptyExploration();
+          const defaults = clearPreferences(localStorage, overlay.callbacks.zoom);
+          overlay.store.replacePrefs(defaults);
+          recall.enabled = defaults.skipMastered;
+          this._refreshMasteredLabels();
+          overlay.callbacks.onLiveChange();
+          this._setRouteError('Cleared all local Canal Recall data.');
+        } catch (error) {
+          this._setRouteError((error as Error).message || 'Could not clear data.');
         } finally {
           overlay.store.setAccount({ busy: false });
         }

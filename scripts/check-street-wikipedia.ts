@@ -2,7 +2,11 @@
  * Offline street Wikipedia resolution helpers (enrich pipeline, not runtime).
  */
 import assert from 'node:assert/strict';
-import { isDisambiguationExtract } from '../src/canalRecall/game/encyclopediaDisambiguation.ts';
+import {
+  extractWikiLinkTitles,
+  isDisambiguationExtract,
+  pickDisambiguationTarget,
+} from '../src/canalRecall/game/encyclopediaDisambiguation.ts';
 import {
   composeNamedAfterBlurb,
   isThinStreetExtract,
@@ -50,6 +54,32 @@ assert.equal(
 {
   assert.equal(isDisambiguationExtract('New Canal can refer to: Nieuwegracht (Utrecht)'), true);
   assert.equal(isDisambiguationExtract('The Oudegracht runs through the center of Utrecht.'), false);
+
+  const vechtLinks = extractWikiLinkTitles(`
+'''Vecht''' may refer to:
+* [[Vecht (Utrecht)]], a Rhine branch
+* [[Vechte]], a river in Germany
+* [[Rosa Vecht]] (1881–1915), Dutch nurse
+`);
+  assert.deepEqual(vechtLinks, ['Vecht (Utrecht)', 'Vechte', 'Rosa Vecht']);
+  assert.equal(pickDisambiguationTarget('Vecht', 'Utrecht', vechtLinks), 'Vecht (Utrecht)');
+  assert.equal(pickDisambiguationTarget('Vecht', 'Amsterdam', vechtLinks), null);
+
+  const nieuwLinks = extractWikiLinkTitles(`
+* Nieuwe Gracht in Amsterdam, tegenwoordig de [[Oudeschans (Amsterdam)|Oudeschans]].
+* [[Nieuwe Gracht (Delft)]]
+* [[Nieuwegracht (Utrecht)]]
+* [[Nieuwegrachtje]] (Amsterdam)
+`);
+  assert.equal(
+    pickDisambiguationTarget('Nieuwegracht', 'Utrecht', nieuwLinks),
+    'Nieuwegracht (Utrecht)',
+  );
+  assert.equal(
+    pickDisambiguationTarget('Nieuwegracht', 'Amsterdam', nieuwLinks),
+    null,
+    'Oudeschans is not Nieuwegracht — do not follow a rename',
+  );
 }
 
 {
@@ -86,4 +116,50 @@ assert.equal(
   assert.equal(resolved!.wikipediaUrl, 'https://nl.wikipedia.org/wiki/Nicolaas_Beetsstraat_(Amsterdam)');
 }
 
-console.log('Street Wikipedia OK: 11 checks.');
+{
+  // Bare title is a disambiguation page; follow to Name (City) when the
+  // direct `Name (City)` summary is missing on the first try.
+  let allowUtrechtSummary = false;
+  const fetchJson = async (url: string) => {
+    const isUtrechtSummary = url.includes('summary') && url.includes('Nieuwegracht') && url.includes('Utrecht');
+    if (isUtrechtSummary && !allowUtrechtSummary) {
+      return { type: 'https://mediawiki.org/api/rest_v1/errors/not_found' };
+    }
+    if (isUtrechtSummary && allowUtrechtSummary) {
+      return {
+        title: 'Nieuwegracht (Utrecht)',
+        extract: 'De Nieuwegracht is een van de bekendste grachten in de binnenstad van Utrecht.',
+        lang: 'nl',
+        wikibase_item: 'Q3318480',
+        content_urls: { desktop: { page: 'https://nl.wikipedia.org/wiki/Nieuwegracht_(Utrecht)' } },
+      };
+    }
+    if (url.includes('/nl.wikipedia.org/api/rest_v1/page/summary/Nieuwegracht')) {
+      return {
+        type: 'disambiguation',
+        title: 'Nieuwe Gracht',
+        extract: 'Nieuwe Gracht kan verwijzen naar: Nieuwegracht (Utrecht)',
+      };
+    }
+    if (url.includes('/en.wikipedia.org/api/rest_v1/page/summary/Nieuwegracht')) {
+      return { type: 'https://mediawiki.org/api/rest_v1/errors/not_found' };
+    }
+    if (url.includes('/nl.wikipedia.org/w/api.php') && url.includes('parse')) {
+      allowUtrechtSummary = true;
+      return {
+        parse: {
+          wikitext: {
+            '*': '* [[Nieuwe Gracht (Delft)]]\n* [[Nieuwegracht (Utrecht)]]\n',
+          },
+        },
+      };
+    }
+    throw new Error(`unexpected fetch ${url}`);
+  };
+  const resolved = await resolveStreetWikipedia('Nieuwegracht', fetchJson, 'Utrecht');
+  assert.ok(resolved, 'disambiguation follow should land on Nieuwegracht (Utrecht)');
+  assert.match(resolved!.wikipediaExtract, /Nieuwegracht is een van de bekendste grachten/);
+  assert.equal(resolved!.wikipedia, 'nl:Nieuwegracht (Utrecht)');
+}
+
+console.log('Street Wikipedia OK: 16 checks.');

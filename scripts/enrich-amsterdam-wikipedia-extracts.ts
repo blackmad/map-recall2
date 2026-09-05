@@ -296,6 +296,7 @@ const viaCounts = new Map<string, number>();
 const fallbackCounts = new Map<string, number>();
 const unresolved: string[] = [];
 const needsDescription: Feature[] = [];
+const needsDisambiguationFollow: { feature: Feature; file: string }[] = [];
 for (const [file, partition] of partitions) {
   for (const feature of partition) {
     if (!pendingSet.has(feature)) continue;
@@ -319,12 +320,12 @@ for (const [file, partition] of partitions) {
     } else if (
       (englishExtract?.extract && isDisambiguationExtract(englishExtract.extract))
       || (foreign?.extract && isDisambiguationExtract(foreign.extract))
+      // Pageprops stripped the dab extract from the batch map, but OSM still
+      // points at the list page — try `Name (City)` / dab follow before the
+      // Wikidata "Wikimedia disambiguation page." floor.
+      || (feature.wikipedia && !englishExtract?.extract && !foreign?.extract)
     ) {
-      // OSM/Wikidata pointed at a list page. Forget the join so title discovery
-      // can try `Name (City)` on a later pass instead of republishing the list.
-      delete feature.wikipedia;
-      delete feature.wikipediaUrl;
-      unresolved.push(`${feature.name} [${file}] — linked article is a disambiguation page`);
+      needsDisambiguationFollow.push({ feature, file });
       continue;
     } else if (feature.wikidata) {
       needsDescription.push(feature);
@@ -341,6 +342,36 @@ for (const [file, partition] of partitions) {
     if (image) feature.wikipediaImageUrl = image;
     filled.set(file, (filled.get(file) || 0) + 1);
   }
+}
+
+let followedDisambiguation = 0;
+async function followDisambiguation(feature: Feature, file: string): Promise<boolean> {
+  const resolved = await resolveStreetWikipedia(feature.name, titleFetch, cityName);
+  if (!resolved?.wikipediaExtract || isDisambiguationExtract(resolved.wikipediaExtract)) {
+    delete feature.wikipedia;
+    delete feature.wikipediaUrl;
+    delete feature.wikipediaExtract;
+    delete feature.wikipediaExtractLang;
+    delete feature.wikipediaExtractSource;
+    delete feature.wikipediaSourceText;
+    unresolved.push(`${feature.name} [${file}] — linked article is a disambiguation page`);
+    return false;
+  }
+  if (resolved.wikipedia) feature.wikipedia = resolved.wikipedia;
+  if (resolved.wikidata) feature.wikidata = resolved.wikidata;
+  if (resolved.wikipediaUrl) feature.wikipediaUrl = resolved.wikipediaUrl;
+  feature.wikipediaSourceText = resolved.wikipediaExtract;
+  feature.wikipediaExtract = resolved.wikipediaExtract.slice(0, DISPLAY_EXTRACT_CHARS);
+  delete feature.wikipediaExtractSource;
+  if (resolved.wikipediaExtractLang === 'en') delete feature.wikipediaExtractLang;
+  else feature.wikipediaExtractLang = resolved.wikipediaExtractLang;
+  followedDisambiguation++;
+  filled.set(file, (filled.get(file) || 0) + 1);
+  return true;
+}
+
+for (const { feature, file } of needsDisambiguationFollow) {
+  await followDisambiguation(feature, file);
 }
 
 const descriptionByQid = new Map<string, string>();
@@ -365,8 +396,14 @@ for (const [file, partition] of partitions) {
   for (const feature of partition) {
     if (!needsDescription.includes(feature)) continue;
     const description = feature.wikidata ? descriptionByQid.get(feature.wikidata) : undefined;
-    if (!description) {
-      unresolved.push(`${feature.name} [${file}] — wikidata only, no English description`);
+    if (!description || isDisambiguationExtract(description)) {
+      // Wikidata sometimes describes the dab item itself as
+      // "Wikimedia disambiguation page." — try a city-qualified article.
+      if (file === 'streets.json' || file === 'water.json') {
+        await followDisambiguation(feature, file);
+      } else {
+        unresolved.push(`${feature.name} [${file}] — wikidata only, no English description`);
+      }
       continue;
     }
     feature.wikipediaExtract = description.slice(0, DISPLAY_EXTRACT_CHARS);
@@ -380,6 +417,10 @@ for (const [file, partition] of partitions) {
     described++;
   }
   if (!dryRun) await writeFile(path.join(directory, file), JSON.stringify(partition));
+}
+
+if (followedDisambiguation) {
+  process.stdout.write(`followed ${followedDisambiguation} disambiguation pages to a city-qualified article\n`);
 }
 
 process.stdout.write(`\n${dryRun ? 'DRY RUN — nothing written' : `wrote ${files.join(', ')}`}\n`);
