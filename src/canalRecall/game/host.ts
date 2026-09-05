@@ -151,6 +151,7 @@ export interface RecallStore extends AnswerRecallStore {
   onUserChange(listener: (user: { label: string } | null) => void): void;
   knownPlaces(): Array<{ name: string; center: LatLon }>;
   routeMastery(cityId: string): Record<string, number>;
+  homeMasterySamples?(cityId: string): Array<{ lat: number; lng: number; mastery: number }>;
   isKnownHere(feature: RecallFeature): boolean;
   isSuppressedHere(feature: RecallFeature): boolean;
   /** Wipes local and signed-in review memory; returns how many were cleared. */

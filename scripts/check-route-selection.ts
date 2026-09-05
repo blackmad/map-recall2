@@ -7,16 +7,23 @@ import assert from 'node:assert/strict';
 
 import {
   advanceLiveRoute,
+  HOME_RADIUS_KNOWN_TO_EXPAND,
+  HOME_RADIUS_MAX_KM,
+  HOME_RADIUS_MIN_KM,
+  homeLearningRadiusKm,
   kmBetween,
   LIVE_ROUTE_OFF_ROUTE_DIST,
   LIVE_ROUTE_REROUTE_INTERVAL,
   nearestRouteIndex,
   nearestSnappableDestination,
   pickDestinationNear,
+  pickHomeDestination,
   rankRetargetCandidates,
   routeAhead,
   ROUTE_POI_MAX_PAIR_KM,
+  scoreHomeDestination,
   type LiveRouteState,
+  type MasterySample,
   type RoutePoi,
 } from '../src/canalRecall/game/routeSelection';
 import type { WorldPoint } from '../src/canalRecall/game/worldTypes';
@@ -74,6 +81,60 @@ check('an excluded destination is not offered', () => {
   for (let i = 0; i < 6; i++) {
     const chosen = pickDestinationNear(POIS, CENTRAL, () => i % 3, 'palace');
     assert.notEqual(chosen?.id, 'palace');
+  }
+});
+
+// ---- Home expanding radius ----
+
+const HOME = { id: 'home', lat: 52.373258, lng: 4.8918222 }; // near the Palace
+
+check('a fresh home ring starts at the minimum radius', () => {
+  assert.equal(homeLearningRadiusKm(HOME, []), HOME_RADIUS_MIN_KM);
+});
+
+check('practised nearby places expand the home ring', () => {
+  const samples: MasterySample[] = [];
+  for (let i = 0; i < HOME_RADIUS_KNOWN_TO_EXPAND; i++) {
+    samples.push({
+      lat: HOME.lat + 0.002 * (i + 1), // ~0.2 km steps north
+      lng: HOME.lng,
+      mastery: 0.8,
+    });
+  }
+  const radius = homeLearningRadiusKm(HOME, samples);
+  assert.ok(radius > HOME_RADIUS_MIN_KM,
+    `expected expansion beyond ${HOME_RADIUS_MIN_KM}, got ${radius}`);
+  assert.ok(radius <= HOME_RADIUS_MAX_KM);
+});
+
+check('a fresh home pick stays inside the learning ring (not Weesp)', () => {
+  const picks = new Set<string>();
+  for (let i = 0; i < 12; i++) {
+    const chosen = pickHomeDestination(POIS, HOME, [], () => (i + 0.5) / 12);
+    assert.ok(chosen, 'home must still produce a destination');
+    picks.add(chosen.poi.id);
+    assert.notEqual(chosen.poi.id, 'weesp', 'Weesp is outside a fresh 1 km ring');
+    assert.equal(chosen.radiusKm, HOME_RADIUS_MIN_KM);
+  }
+  assert.ok(picks.has('palace') || picks.has('central') || picks.has('rijks'));
+});
+
+check('home scoring prefers a closer novel landmark over a familiar far one', () => {
+  // Palace is ~0 km from HOME; Rijks ~1.6 km. With high familiarity at Rijks,
+  // palace should score higher inside the min ring... Palace is too close to
+  // HOME (< HOME_MIN_TRIP). Use Central (~0.7 km) vs a mid-ring familiar POI.
+  const nearNovel = scoreHomeDestination(CENTRAL, HOME, HOME_RADIUS_MIN_KM, []);
+  const nearFamiliar = scoreHomeDestination(CENTRAL, HOME, HOME_RADIUS_MIN_KM, [
+    { lat: CENTRAL.lat, lng: CENTRAL.lng, mastery: 1 },
+  ]);
+  assert.ok(nearNovel > nearFamiliar,
+    `novel corridor should beat a mastered one (${nearNovel} vs ${nearFamiliar})`);
+});
+
+check('home pick excludes the previous destination on the next outbound leg', () => {
+  for (let i = 0; i < 8; i++) {
+    const chosen = pickHomeDestination(POIS, HOME, [], () => (i + 0.5) / 8, 'palace');
+    assert.notEqual(chosen?.poi.id, 'palace');
   }
 });
 

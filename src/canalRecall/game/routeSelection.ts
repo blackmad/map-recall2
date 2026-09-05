@@ -26,6 +26,25 @@ export const ROUTE_POI_MAX_PAIR_KM = 6;
 /** How many nearby stand-ins to snap-test before giving up on routing. */
 export const RETARGET_ATTEMPTS = 25;
 
+/** Home-mode learning ring: start tight, expand as nearby knowledge grows. */
+export const HOME_RADIUS_MIN_KM = 1.0;
+export const HOME_RADIUS_MAX_KM = ROUTE_POI_MAX_PAIR_KM;
+export const HOME_RADIUS_STEP_KM = 0.75;
+/** Mastered samples inside the ring required before expanding one step. */
+export const HOME_RADIUS_KNOWN_TO_EXPAND = 3;
+export const HOME_RADIUS_MASTERED_MIN = 0.45;
+/** Soft overshoot so the frontier is not a hard wall. */
+export const HOME_RADIUS_OVERSHOOT = 1.15;
+/** Destinations closer than this feel like a stub trip. */
+export const HOME_MIN_TRIP_KM = 0.2;
+
+export interface MasterySample {
+  lat: number;
+  lng: number;
+  /** 0..1 familiarity at that place. */
+  mastery: number;
+}
+
 export function kmBetween(
   a: { lat: number; lng: number },
   b: { lat: number; lng: number },
@@ -59,6 +78,114 @@ export function pickDestinationNear(
   const inRange = candidates.filter(poi => kmBetween(poi, from) <= ROUTE_POI_MAX_PAIR_KM);
   const pool = inRange.length > 0 ? inRange : candidates;
   return pool[chooseIndex(pool.length)] ?? null;
+}
+
+/**
+ * How far from home destination picks may roam.
+ *
+ * Fresh players stay in a ~1 km ring. Each time enough nearby street/canal
+ * answers look practised, the ring steps outward — up to the same pairing
+ * cap surprise routes use — so the city opens as local knowledge sticks.
+ */
+export function homeLearningRadiusKm(
+  home: { lat: number; lng: number },
+  samples: readonly MasterySample[],
+): number {
+  let radius = HOME_RADIUS_MIN_KM;
+  while (radius < HOME_RADIUS_MAX_KM - 1e-9) {
+    const known = samples.filter(
+      sample => sample.mastery >= HOME_RADIUS_MASTERED_MIN && kmBetween(sample, home) <= radius,
+    );
+    if (known.length < HOME_RADIUS_KNOWN_TO_EXPAND) break;
+    const next = Math.min(HOME_RADIUS_MAX_KM, radius + HOME_RADIUS_STEP_KM);
+    if (next <= radius) break;
+    radius = next;
+  }
+  return radius;
+}
+
+function localFamiliarity(
+  point: { lat: number; lng: number },
+  samples: readonly MasterySample[],
+  bandKm = 0.6,
+): number {
+  const near = samples.filter(sample => kmBetween(sample, point) <= bandKm);
+  if (near.length === 0) return 0;
+  return near.reduce((sum, sample) => sum + sample.mastery, 0) / near.length;
+}
+
+/** Higher is better: near + novel corridors beat far mastered ones. */
+export function scoreHomeDestination(
+  poi: RoutePoi,
+  home: { lat: number; lng: number },
+  radiusKm: number,
+  samples: readonly MasterySample[],
+): number {
+  const km = kmBetween(poi, home);
+  if (km < HOME_MIN_TRIP_KM) return 0;
+  if (km > radiusKm * HOME_RADIUS_OVERSHOOT) return 0;
+  const closeness = 1 / (0.35 + km);
+  const novelty = 1 - localFamiliarity(poi, samples);
+  return closeness * (0.35 + 0.65 * novelty);
+}
+
+/** Injected so weighted home picks stay deterministic under test. */
+export type ChooseUnit = () => number;
+
+export const randomUnit: ChooseUnit = () => Math.random();
+
+function pickWeighted<T>(
+  entries: readonly { item: T; weight: number }[],
+  chooseUnit: ChooseUnit,
+): T | null {
+  const positive = entries.filter(entry => entry.weight > 0);
+  if (positive.length === 0) return null;
+  const total = positive.reduce((sum, entry) => sum + entry.weight, 0);
+  let tick = chooseUnit() * total;
+  for (const entry of positive) {
+    tick -= entry.weight;
+    if (tick <= 0) return entry.item;
+  }
+  return positive[positive.length - 1]?.item ?? null;
+}
+
+export interface HomeDestinationPick {
+  poi: RoutePoi;
+  radiusKm: number;
+}
+
+/**
+ * Home-base destination: prefer closer, less-familiar landmarks inside the
+ * player's current learning radius. Falls back to the surprise pairing pool
+ * when the ring has no landmarks yet (new address / sparse extract).
+ */
+export function pickHomeDestination(
+  pois: readonly RoutePoi[],
+  home: { id?: string; lat: number; lng: number },
+  samples: readonly MasterySample[] = [],
+  chooseUnit: ChooseUnit = randomUnit,
+  alsoExcludeId: string | null = null,
+): HomeDestinationPick | null {
+  const radiusKm = homeLearningRadiusKm(home, samples);
+  const homeId = home.id ?? 'home';
+  const candidates = pois.filter(poi => poi.id !== homeId && poi.id !== alsoExcludeId);
+  if (candidates.length === 0) return null;
+
+  const scored = candidates.map(poi => ({
+    item: poi,
+    weight: scoreHomeDestination(poi, home, radiusKm, samples),
+  }));
+  const picked = pickWeighted(scored, chooseUnit);
+  if (picked) return { poi: picked, radiusKm };
+
+  const chooseIndex: ChooseIndex = count => Math.min(count - 1, Math.floor(chooseUnit() * count));
+  const fallback = pickDestinationNear(
+    pois,
+    { id: homeId, lat: home.lat, lng: home.lng },
+    chooseIndex,
+    alsoExcludeId,
+  );
+  return fallback ? { poi: fallback, radiusKm } : null;
 }
 
 /** Projects a POI onto the loaded network, or `null` where it does not snap. */

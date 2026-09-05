@@ -362,7 +362,9 @@ class GameRouteRuntime {
     const pool = this.routePois;
     const choices = pool.filter(poi => poi.id !== this.routeFrom?.id || pool.length < 3);
     const from = this.routePattern === 'home' ? this.homeBase : choices[Math.floor(Math.random() * choices.length)];
-    this._launchPoiRoute(from, this._pickDestinationNear(from));
+    this._launchPoiRoute(from, this.routePattern === 'home'
+      ? this._pickHomeDestination(from)
+      : this._pickDestinationNear(from));
   }
 
   // A destination far enough to be a journey but inside the same fetched map
@@ -372,6 +374,20 @@ class GameRouteRuntime {
   // without generating routes until one looks wrong.
   _pickDestinationNear(from, alsoExcludeId = null) {
     return CanalRecallRoute.pickDestinationNear(this.routePois, from, undefined, alsoExcludeId);
+  }
+
+  /** Home pattern: closer + novel destinations inside an expanding learning ring. */
+  _pickHomeDestination(from, alsoExcludeId = null) {
+    const samples = this.recall && typeof this.recall.homeMasterySamples === 'function'
+      ? this.recall.homeMasterySamples(this.cityId || 'amsterdam')
+      : [];
+    const picked = CanalRecallRoute.pickHomeDestination(
+      this.routePois, from, samples, undefined, alsoExcludeId);
+    if (picked) {
+      this._homeLearningRadiusKm = picked.radiusKm;
+      return picked.poi;
+    }
+    return this._pickDestinationNear(from, alsoExcludeId);
   }
 
   // Nearest POI to `target` that actually snaps onto the mapped network.
@@ -527,7 +543,7 @@ class GameRouteRuntime {
       return;
     }
     this.homeLeg = 'outbound';
-    this._launchPoiRoute(this.homeBase, this._pickDestinationNear(this.homeBase, this.routeFrom.id));
+    this._launchPoiRoute(this.homeBase, this._pickHomeDestination(this.homeBase, this.routeFrom.id));
   }
 
   _returnToRouteSetup(message) {
