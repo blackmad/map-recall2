@@ -17,17 +17,17 @@ class InputManager {
     this._touchHintTimer = 6; // seconds to show hint
     this._suppressTapEnter = false;
 
-    // Keyboard input
+    // Keyboard input. Form fields keep their own shortcuts while they are the
+    // real focus target; a leftover focus on a hidden quiz input or a settings
+    // gear button must not swallow Enter/Esc on the finish card.
     window.addEventListener('keydown', e => {
-      const target = e.target;
-      if (target instanceof HTMLElement && (target.matches('input, textarea, select, button') || target.isContentEditable)) return;
+      if (this._shouldIgnoreKeyboardTarget(e.target)) return;
       if (!this.keys[e.code]) this.justPressed[e.code] = true;
       this.keys[e.code] = true;
-      if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','Enter','Minus','Equal','NumpadAdd','NumpadSubtract','Tab'].includes(e.code)) e.preventDefault();
+      if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','Enter','Escape','Minus','Equal','NumpadAdd','NumpadSubtract','Tab'].includes(e.code)) e.preventDefault();
     });
     window.addEventListener('keyup', e => {
-      const target = e.target;
-      if (target instanceof HTMLElement && (target.matches('input, textarea, select, button') || target.isContentEditable)) return;
+      if (this._shouldIgnoreKeyboardTarget(e.target)) return;
       this.keys[e.code] = false;
     });
 
@@ -35,6 +35,26 @@ class InputManager {
     if (this._isMobile) {
       this._setupTouch();
     }
+  }
+
+  /**
+   * True when the event target is an editable field that should keep the key.
+   * Buttons are excluded: focus often sticks on the settings gear or a quiz
+   * choice after the panel closes, and Enter/Esc must still drive the game.
+   */
+  _shouldIgnoreKeyboardTarget(target) {
+    if (!(target instanceof HTMLElement)) return false;
+    if (target.isContentEditable) return true;
+    if (!target.matches('input, textarea, select')) return false;
+    // A focused field inside a display:none prompt still receives events;
+    // treat that as abandoned focus so the game can hear Enter/Esc again.
+    let node = target;
+    while (node) {
+      const style = window.getComputedStyle(node);
+      if (style.display === 'none' || style.visibility === 'hidden') return false;
+      node = node.parentElement;
+    }
+    return true;
   }
 
   /** Called by Game._resize: the pad's geometry follows the logical canvas. */

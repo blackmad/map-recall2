@@ -477,7 +477,7 @@
       ctx.font = "11px monospace";
       ctx.textAlign = "center";
       ctx.fillText(
-        `Amsterdam: ${parts.join(" \xB7 ")} \xB7 ${exploration.totalRoutes} routes`,
+        `${this._cityDisplayName()}: ${parts.join(" \xB7 ")} \xB7 ${exploration.totalRoutes} routes`,
         cx,
         CANVAS_H / 2 + 138
       );
@@ -661,7 +661,7 @@
         const textX = cardX + padX + (hasImage ? photo + 16 : 0);
         const textW = cardX + cardW - padX - textX;
         ctx.font = "12px system-ui, sans-serif";
-        const blurb = wrapText(ctx, landmark.longDetail || landmark.detail || "A place to remember on your Amsterdam map.", textW, hasImage ? 4 : 3);
+        const blurb = wrapText(ctx, landmark.longDetail || landmark.detail || `A place to remember on your ${this._cityDisplayName()} map.`, textW, hasImage ? 4 : 3);
         const height = Math.max(photo, 20 + blurb.length * 17) + 14;
         blocks.push({ height, draw: (top) => {
           if (hasImage && image) {

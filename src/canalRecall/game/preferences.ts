@@ -26,6 +26,24 @@ import {
   type ViewMode,
 } from './modes.ts';
 import type { KeyValueStore } from './progressStore.ts';
+import {
+  DEFAULT_CITY_ID,
+  parseCityId,
+  type CanalCityId,
+} from './cities.ts';
+
+export {
+  CANAL_CITIES,
+  CANAL_CITY_IDS,
+  DEFAULT_CITY_ID,
+  cityById,
+  extractPath,
+  extractUrl,
+  parseCityId,
+  playableCities,
+  type CanalCity,
+  type CanalCityId,
+} from './cities.ts';
 
 export const PREFERENCES_STORAGE_KEY = 'canalRecall.preferences.v1';
 export const ZOOM_DEFAULT_VERSION = 2 as const;
@@ -47,6 +65,7 @@ export const DIFFICULTY_PRESETS: Record<Exclude<RouteDifficulty, 'custom'>, Diff
 };
 
 export interface CanalPreferences {
+  cityId: CanalCityId;
   difficulty: RouteDifficulty;
   answerMode: AnswerMode;
   travelMode: TravelMode;
@@ -79,6 +98,7 @@ export interface ZoomClamp {
 /** Medium difficulty plus the product defaults for everything else. */
 export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
   return {
+    cityId: DEFAULT_CITY_ID,
     difficulty: 'medium',
     ...DIFFICULTY_PRESETS.medium,
     travelMode: 'boat',
@@ -130,6 +150,7 @@ function fillPreferences(
 ): CanalPreferences {
   return {
     ...base,
+    cityId: parseCityId(source.cityId, base.cityId),
     answerMode: parseMode(ANSWER_MODES, source.answerMode, base.answerMode),
     travelMode: parseMode(TRAVEL_MODES, source.travelMode, base.travelMode),
     controlMode: parseMode(CONTROL_MODES, source.controlMode, base.controlMode),

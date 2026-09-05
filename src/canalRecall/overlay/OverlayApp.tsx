@@ -1,5 +1,9 @@
 import { useEffect, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
-import type { CanalPreferences, ZoomClamp } from '../game/preferences.ts';
+import {
+  playableCities,
+  type CanalPreferences,
+  type ZoomClamp,
+} from '../game/preferences.ts';
 import type { OverlayStore } from './store.ts';
 import {
   DIFFICULTY_ICONS,
@@ -108,6 +112,11 @@ function ChoiceRow<T extends string>({
   );
 }
 
+const CITY_OPTIONS: Choice<CanalPreferences['cityId']>[] = playableCities().map(city => ({
+  value: city.id,
+  title: city.name,
+}));
+
 const TRAVEL: Choice<CanalPreferences['travelMode']>[] = [
   { value: 'boat', title: 'Boat', hint: 'Canals' },
   { value: 'car', title: 'Bike', hint: 'Streets' },
@@ -153,6 +162,8 @@ export function OverlayApp({
 }) {
   const state = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const prefs = state.prefs;
+  const cityName = CITY_OPTIONS.find(option => option.value === prefs.cityId)?.title
+    || prefs.cityId;
 
   useEffect(() => {
     document.body.classList.toggle('setup-open', state.setupOpen);
@@ -174,7 +185,7 @@ export function OverlayApp({
       <div id="route-setup" className="enamel-setup" style={{ display: state.setupOpen ? 'flex' : 'none' }}>
         <div className="enamel-setup-rail">
           <form id="route-card" className="enamel-setup-form" onSubmit={start}>
-            <h1 className="enamel-plaque enamel-framed enamel-title">Amsterdam Canal Recall</h1>
+            <h1 className="enamel-plaque enamel-framed enamel-title">Canal Recall</h1>
 
             <div className="setup-account" id="account-row">
               <div className="setup-account-copy">
@@ -194,6 +205,11 @@ export function OverlayApp({
 
             <div className="enamel-setup-scroll">
             {/* Hidden selects keep Playwright and any legacy getElementById wiring working. */}
+            <select id="city-id" hidden value={prefs.cityId} onChange={event => patch({ cityId: event.target.value as CanalPreferences['cityId'] }, true)}>
+              {CITY_OPTIONS.map(option => (
+                <option key={option.value} value={option.value}>{option.title}</option>
+              ))}
+            </select>
             <select id="travel-mode" hidden value={prefs.travelMode} onChange={event => patch({ travelMode: event.target.value as CanalPreferences['travelMode'] })}>
               <option value="boat">Boat</option>
               <option value="car">Bike</option>
@@ -216,6 +232,15 @@ export function OverlayApp({
               <option value="custom">Custom</option>
             </select>
 
+            <ChoiceRow
+              label="City"
+              name="city"
+              value={prefs.cityId}
+              onChange={value => patch({ cityId: value }, true)}
+              options={CITY_OPTIONS}
+              compact
+              gloss="Which city's canals and streets to learn."
+            />
             <ChoiceRow
               label="Travel"
               name="travel"
@@ -268,7 +293,7 @@ export function OverlayApp({
                 id="home-address"
                 type="text"
                 autoComplete="street-address"
-                placeholder="Street and number, Amsterdam"
+                placeholder={`Street and number, ${cityName}`}
                 value={prefs.homeAddress}
                 onChange={event => patch({ homeAddress: event.target.value })}
               />

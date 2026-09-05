@@ -24,9 +24,12 @@ The recall prompt uses Route and Waves icons from Lucide, licensed under the
 ISC License, and the Bridge icon from Font Awesome Free, licensed under
 CC BY 4.0. See https://lucide.dev and https://fontawesome.com.
 
-The chase/cockpit player bicycle uses “Carbon Frame Bike” by Robert Schweier
-and prefrontal cortex, licensed under Creative Commons Attribution-ShareAlike
-4.0. Source: https://sketchfab.com/3d-models/398999b3360b4e6997a9aae253d6acbd
+The chase/cockpit player bicycle is an authored low-poly Dutch omafiets
+(step-through frame, upright bars, blue front tyre as a Swapfiets cue), built
+by `scripts/build-omafiets-bike.py` for chase readability rather than studio
+detail. Named pivots `Lenker` / `RadVorn` / `RadHinten` are authored empties at
+the head tube and hubs. Runtime file is `omafiets-runtime.glb`. No third-party
+mesh credit.
 
 The chase/cockpit player boat is “Moored Aluminum Boats”, generated with
 Meshy AI by the project owner rather than sourced from a third party, so it
@@ -34,18 +37,6 @@ carries no upstream author to credit. Anyone redistributing this repository
 should confirm Meshy's current generated-asset terms for themselves; they vary
 by plan and are not asserted here. The GLB has no materials; runtime paint
 makes it a canal sloep (dark green hull, cream seats) rather than bare metal.
-
-The bicycle ships here in modified form, which its CC BY-SA licence requires to
-be stated. It was not changed artistically, only reduced so a browser game can
-download and draw it: its rig, its unplayed animation and its tangents and UVs
-were removed — it carries no textures — and it was then welded, simplified and
-quantized, 8.57 MB to 2.01 MB. It has since been reduced again, from 1.92 MB to
-0.65 MB: the meshes the game does not animate were lifted to the scene root and
-merged, the whole was decimated from 73,921 to 48,235 triangles and 280 draw
-calls to 200, and the result compressed with EXT_meshopt_compression, which the
-earlier pass had never applied. `Lenker`, `RadVorn` and `RadHinten` are
-untouched, because the game steers and rolls them by name. The unmodified
-original remains at the Sketchfab link above.
 
 The boat was reduced the same way, 2.85 MB to 0.24 MB and then to 0.03 MB at
 7,994 triangles; it arrives as raw geometry with no normals, materials or

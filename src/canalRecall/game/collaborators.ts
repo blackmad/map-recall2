@@ -176,6 +176,8 @@ export interface Renderer {
 
 export interface VectorMap {
   ready?: boolean;
+  /** Point building/tile fetches at the active city's extract root. */
+  setExtractRoot?(path: string): void;
   sync(camera: Camera, loader: OsmLoader, canvas: HTMLCanvasElement): void;
   setPlayerBike(player: unknown, loader: OsmLoader, visible: boolean): void;
   setPlayerBoat(player: unknown, loader: OsmLoader, visible: boolean): void;

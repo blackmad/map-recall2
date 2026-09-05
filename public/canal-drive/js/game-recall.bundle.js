@@ -219,7 +219,7 @@ Sign-in and your route settings stay. This cannot be undone.`
       return {
         name,
         type: type || meta && meta.type || (isCar(this.travelMode) ? "street" : "canal"),
-        cityId: meta && meta.cityId || "amsterdam",
+        cityId: meta && meta.cityId || this.cityId || "amsterdam",
         center
       };
     }
@@ -423,13 +423,13 @@ Sign-in and your route settings stay. This cannot be undone.`
       const water = crossing.waterway ? {
         name: crossing.waterway,
         type: crossing.waterwayType || "canal",
-        cityId: "amsterdam",
+        cityId: this.cityId || "amsterdam",
         center: crossing.center
       } : null;
       const bridgeFeature = {
         name: closest.name,
         type: "bridge",
-        cityId: "amsterdam",
+        cityId: this.cityId || "amsterdam",
         center: crossing.center
       };
       const kind = crossingQuestionKind({
@@ -532,7 +532,7 @@ Sign-in and your route settings stay. This cannot be undone.`
         recallFeature = {
           name: correctName,
           type: "bridge",
-          cityId: "amsterdam",
+          cityId: this.cityId || "amsterdam",
           center: pending.crossing.center
         };
       } else {
@@ -600,7 +600,8 @@ Sign-in and your route settings stay. This cannot be undone.`
       setTimeout(() => {
         this._prompt.style.display = "none";
         this.quizFeedback = "";
-        this.canvas.focus();
+        if (typeof this._reclaimKeyboardFocus === "function") this._reclaimKeyboardFocus();
+        else this.canvas.focus();
         if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
       }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
     }

@@ -2,7 +2,7 @@
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 
 const assetUrl = path => new URL(path, window.location.href).href;
-const BIKE_MODEL_URL = assetUrl('./carbon-frame-bike-runtime.glb');
+const BIKE_MODEL_URL = assetUrl('./omafiets-runtime.glb');
 const BOAT_MODEL_URL = assetUrl('./canal-boat-runtime.glb');
 
 /**
@@ -11,25 +11,28 @@ const BOAT_MODEL_URL = assetUrl('./canal-boat-runtime.glb');
  * piece rather than reverting to a screen-space icon. The boat is a far bigger
  * object seen over open water, so it needs much less exaggeration.
  */
-const BIKE_GAME_SCALE = 3.6;
+const BIKE_GAME_SCALE = 4.5;
 const BOAT_GAME_SCALE = 1.5;
+/**
+ * Slight lateral fattening for chase altitude. The authored omafiets is already
+ * chunky; keep this near 1 and tune in `bike-preview.html` if needed.
+ */
+const BIKE_WIDTH_SCALE = 1.35;
 
 /**
- * Measured off each model, not assumed. The bicycle's named front wheel is on
- * its native -X. The canal sloop's bow is also on -X — its transom and motor
- * bracket are the squared-off +X end — so unlike the motor boat it replaced,
- * which pointed the other way, it takes the same offset as the bicycle. This is
- * exactly the value `boat-model.spec.ts` pins, because a boat sailing
- * stern-first looks very nearly right in a still image.
+ * Measured off each model, not assumed. The authored omafiets points its blue
+ * front tyre along native +X. The canal sloop's
+ * bow is on -X — its transom and motor bracket are the squared-off +X end — so
+ * it still takes Math.PI. That boat value is exactly what `boat-model.spec.ts`
+ * pins, because a boat sailing stern-first looks very nearly right in a still.
  */
-const BIKE_HEADING_OFFSET = Math.PI;
+const BIKE_HEADING_OFFSET = 0;
 const BOAT_HEADING_OFFSET = Math.PI;
 
 /** Radians of bar travel at full lock — a bicycle, not a shopping trolley. */
 const MAX_STEER = 0.42;
-// Measured by aligning the named front and rear wheel axles in model space.
-// The source steering pivot is authored mid-turn around its own local Z axis.
-const AUTHORED_STEER_OFFSET = 2.43976;
+// Omafiets is authored straight: `Lenker` is upright (+Y), wheel axles are +Z.
+const AUTHORED_STEER_OFFSET = 0;
 const STEER_EASING = 0.18;
 const WHEEL_RADIUS_M = 0.35;
 /** The world scale the game uses; kept local so the bundle stays standalone. */
@@ -62,9 +65,9 @@ function paintBoatMesh(geometry, hull, seat, gunwale) {
   geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 }
 
-// Reused so a per-frame pose costs no allocation.
-const STEER_AXIS = new THREE.Vector3(0, 0, 1);
-const WHEEL_AXIS = new THREE.Vector3(0, 1, 0);
+// Y-up omafiets: steer about vertical (+Y), roll wheels about the axle (+Z).
+const STEER_AXIS = new THREE.Vector3(0, 1, 0);
+const WHEEL_AXIS = new THREE.Vector3(0, 0, 1);
 const SCRATCH_QUAT = new THREE.Quaternion();
 
 /**
@@ -102,7 +105,7 @@ class Vehicle3D {
 
   _makeLayer() {
     const owner = this;
-    const { id, modelUrl, gameScale, headingOffset, normaliseTo, label } = this.options;
+    const { id, modelUrl, gameScale, headingOffset, normaliseTo, label, widthScale = 1 } = this.options;
     let camera, scene, renderer, model;
     return {
       id,
@@ -127,7 +130,10 @@ class Vehicle3D {
           const imported = gltf.scene;
           const bounds = new THREE.Box3().setFromObject(imported);
           const size = bounds.getSize(new THREE.Vector3());
-          imported.scale.setScalar(normaliseTo / Math.max(size.x, size.z, 0.001));
+          const uniform = normaliseTo / Math.max(size.x, size.z, 0.001);
+          // Non-uniform Z fattening is intentional for chase readability on the
+          // bicycle; boats leave widthScale at 1.
+          imported.scale.set(uniform, uniform, uniform * widthScale);
           imported.updateMatrixWorld(true);
           const scaledBounds = new THREE.Box3().setFromObject(imported);
           const scaledCenter = scaledBounds.getCenter(new THREE.Vector3());
@@ -149,6 +155,19 @@ class Vehicle3D {
             child.receiveShadow = false;
           });
           for (const child of presentationMeshes) child.parent?.remove(child);
+
+          // Authored omafiets is solid; keep DoubleSide anyway so any open
+          // tube ends from later edits do not cull into holes.
+          imported.traverse(child => {
+            if (!child.isMesh || !child.material) return;
+            const mats = Array.isArray(child.material) ? child.material : [child.material];
+            for (const mat of mats) {
+              if (!mat) continue;
+              mat.side = THREE.DoubleSide;
+              mat.transparent = false;
+              mat.depthWrite = true;
+            }
+          });
 
           model = new THREE.Group();
           model.add(imported);
@@ -184,16 +203,15 @@ export class PlayerBike3D extends Vehicle3D {
     super(map, maplibregl, {
       id: 'player-bike-3d', modelUrl: BIKE_MODEL_URL, label: 'bicycle model',
       gameScale: BIKE_GAME_SCALE, headingOffset: BIKE_HEADING_OFFSET, normaliseTo: 2.15,
+      widthScale: BIKE_WIDTH_SCALE,
     });
     this.steerAngle = 0;
     this.wheelSpin = 0;
   }
 
-  // The asset was authored mid-turn, so the front wheel sat visibly cocked
-  // against the frame and never moved. Rather than zero it, give it something
-  // to do: `Lenker` carries the whole front assembly (fork, wheel, bars), so
-  // steering is that node's rotation, and both wheels are discs whose thin
-  // local axis is Y, so rolling is a spin about their own Y.
+  // Authored omafiets: named `Lenker` / `RadVorn` / `RadHinten` empties from
+  // `scripts/build-omafiets-bike.py`. Missing parts must not throw —
+  // chase mode still needs the grounded bicycle if a rebuild drops a node.
   _bind(imported) {
     this.parts = {
       steer: imported.getObjectByName('Lenker') || null,
@@ -203,7 +221,7 @@ export class PlayerBike3D extends Vehicle3D {
     for (const part of Object.values(this.parts)) {
       if (part) part.userData.restQuaternion = part.quaternion.clone();
     }
-    if (this.parts.steer) {
+    if (this.parts.steer && AUTHORED_STEER_OFFSET) {
       this.parts.steer.userData.restQuaternion
         .multiply(SCRATCH_QUAT.setFromAxisAngle(STEER_AXIS, AUTHORED_STEER_OFFSET));
     }
