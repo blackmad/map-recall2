@@ -65,6 +65,33 @@ for (const e of registry) if (!footprints.has(e.buildingId)) {
 const addressesOf = new Map<string, typeof addressPoints>();
 for (const a of addressPoints) if (a.pandId) (addressesOf.get(a.pandId) ?? addressesOf.set(a.pandId, []).get(a.pandId)!).push(a);
 
+/**
+ * The footprint elevation the old proposal was pointing at.
+ *
+ * `measured-facades.json` stores a wall chosen before coplanar stretches were
+ * rejoined, so on a frontage with a jog it holds one piece of the wall — a
+ * median 2.31x too small across 176 panden. The record is quarantined evidence
+ * anyway; what it is still good for is saying *which* elevation was meant. So
+ * the proposal is snapped onto the elevation it lies on, and the geometry comes
+ * from the footprint rather than from the stale extract.
+ */
+function wallOf(ring: ProjectedPoint[], proposed: readonly number[]): [number, number, number, number] {
+  const mid = { x: (proposed[0] + proposed[2]) / 2, y: (proposed[1] + proposed[3]) / 2 };
+  const elevations = buildElevations(ring);
+  if (!elevations.length) return [proposed[0], proposed[1], proposed[2], proposed[3]];
+  // Nearest by perpendicular distance to the segment, not to its midpoint: a
+  // merged elevation's midpoint can sit far from the piece originally chosen.
+  const best = elevations
+    .map(e => {
+      const dx = (e.end.x - e.start.x) / e.lengthM, dy = (e.end.y - e.start.y) / e.lengthM;
+      const along = Math.max(0, Math.min(e.lengthM, (mid.x - e.start.x) * dx + (mid.y - e.start.y) * dy));
+      const px = e.start.x + dx * along, py = e.start.y + dy * along;
+      return { e, d: Math.hypot(mid.x - px, mid.y - py) };
+    })
+    .sort((a, b) => a.d - b.d)[0].e;
+  return [best.start.x, best.start.y, best.end.x, best.end.y];
+}
+
 const decoded = new Map<string, any>();
 async function panorama(id: string) {
   if (decoded.has(id)) return decoded.get(id);
@@ -105,7 +132,9 @@ async function projection(pandId: string, view: PanoramaView, wall: number[], gr
   if (!image) return null;
   const groundZ = ground;
   const ring = footprints.get(pandId)!;
-  const pose = poseOf(view);
+  const posed = poseOf(view, groundZ);
+  if (!posed) return null;
+  const pose = posed.pose;
   const project = (p: ProjectedPoint, z: number) => AMSTERDAM_CAMERA.project([p.x - pose.x, p.y - pose.y, z - pose.z], pose, image);
   const [wx0, wy0, wx1, wy1] = wall;
   const a = { x: wx0, y: wy0 }, b = { x: wx1, y: wy1 };
@@ -259,6 +288,7 @@ for (const pandId of queue) {
   const record = store[pandId], ring = footprints.get(pandId), mass = massing.get(pandId);
   if (!record || !ring || !Number.isFinite(mass?.groundLevel)) continue;
 
+  const wall = wallOf(ring, record.wall);
   const chosen: PanoramaView[] = [];
   for (const id of [record.panoramaId, ...(multi[pandId] ?? []).map(m => m.panoramaId)]) {
     const v = views.get(id);
@@ -271,7 +301,7 @@ for (const pandId of queue) {
   const eaves = Number.isFinite(mass.ridgeHeight) ? mass.ridgeHeight : (eavesLine ?? ground + 12);
 
   const wallElevation = buildElevations(ring)
-    .map(e => ({ e, d: Math.hypot(e.midpoint.x - (record.wall[0] + record.wall[2]) / 2, e.midpoint.y - (record.wall[1] + record.wall[3]) / 2) }))
+    .map(e => ({ e, d: Math.hypot(e.midpoint.x - (wall[0] + wall[2]) / 2, e.midpoint.y - (wall[1] + wall[3]) / 2) }))
     .sort((a, b) => a.d - b.d)[0].e;
 
   const projections: any[] = [];
@@ -284,9 +314,9 @@ for (const pandId of queue) {
       standoff: Number(standoffM(wallElevation, cam).toFixed(1)),
       obliquity: Number(obliquityDeg(wallElevation, cam).toFixed(1)),
     };
-    const p = await projection(pandId, view, record.wall, ground, eaves);
+    const p = await projection(pandId, view, wall, ground, eaves);
     if (p) projections.push({ ...meta, image: p });
-    const r = await rectified(view, record.wall, ground - 1, eaves + 1.5);
+    const r = await rectified(view, wall, ground - 1, eaves + 1.5);
     if (r) strips.push({ ...meta, image: r });
   }
   if (!projections.length && !strips.length) continue;
@@ -299,7 +329,7 @@ for (const pandId of queue) {
       const file = path.join(CACHE, 'number-bands', tile.file);
       if (!existsSync(file)) continue;
       const im = jpeg.decode(await readFile(file), { useTArray: true, formatAsRGBA: true });
-      const small = downscale(im.data as Uint8ClampedArray, im.width, im.height, 300);
+      const small = downscale(Uint8ClampedArray.from(im.data), im.width, im.height, 300);
       bandTiles.push({
         startM: tile.startM, native: tile.nativePixelsPerMetre, image: encode(small.w, small.h, small.data, 80),
         readings: readings.filter((r: any) => r.alongM >= tile.startM && r.alongM < tile.startM + tile.lengthM)
@@ -318,8 +348,9 @@ for (const pandId of queue) {
     pandId, label,
     addressCount: addresses.length,
     constructionYear: years.get(pandId) ?? null,
-    wallWidthM: record.wallWidthM, ground: Number(ground.toFixed(2)), eaves: Number(eaves.toFixed(2)),
-    plan: plan(pandId, record.wall, shown.map((v, i) => ({ view: v, role: i === 0 ? 'primary' : 'other' }))),
+    wallWidthM: Number(Math.hypot(wall[2] - wall[0], wall[3] - wall[1]).toFixed(2)),
+    proposedWidthM: record.wallWidthM, ground: Number(ground.toFixed(2)), eaves: Number(eaves.toFixed(2)),
+    plan: plan(pandId, wall, shown.map((v, i) => ({ view: v, role: i === 0 ? 'primary' : 'other' }))),
     projections, strips, bandTiles,
     registration: reg ? { shiftM: reg.shiftM, peak: reg.peak, occluded: !!(reg.occludedA || reg.occludedB), dHeading: reg.dHeading } : null,
     readingSummary: readings.slice(0, 4).map((r: any) => `${r.text} @${r.confidence.toFixed(2)}`),

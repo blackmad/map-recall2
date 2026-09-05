@@ -16,6 +16,13 @@ import type { ProjectedPoint } from './sources.ts';
 export interface Elevation {
   /** Index within its own building, stable for a given footprint. */
   index: number;
+  /**
+   * The runs this elevation was assembled from, when a jog split one wall.
+   *
+   * Kept so a measurement can be traced back to the survey vertices it came
+   * from, rather than to a merged abstraction that exists nowhere in BAG.
+   */
+  mergedFrom?: number[];
   start: ProjectedPoint;
   end: ProjectedPoint;
   midpoint: ProjectedPoint;
@@ -50,7 +57,17 @@ export const ringIsCounterClockwise = (ring: ProjectedPoint[]) => {
  */
 export function buildElevations(
   footprint: ProjectedPoint[],
-  { toleranceDeg = 15, minLengthM = 2 }: { toleranceDeg?: number; minLengthM?: number } = {},
+  {
+    toleranceDeg = 15, minLengthM = 2,
+    // A canal frontage steps in and out; these say how much of a step is still
+    // one wall. Measured against the pilot: 8° admits survey noise and not a
+    // corner, 1.2 m admits a bay or a porch and not a building's depth, and 4 m
+    // admits a party-wall step and not a courtyard.
+    facingToleranceDeg = 8, offsetToleranceM = 1.2, gapToleranceM = 4,
+  }: {
+    toleranceDeg?: number; minLengthM?: number;
+    facingToleranceDeg?: number; offsetToleranceM?: number; gapToleranceM?: number;
+  } = {},
 ): Elevation[] {
   // Normalise: drop a repeated closing vertex and any zero-length edge.
   const ring: ProjectedPoint[] = [];
@@ -109,7 +126,96 @@ export function buildElevations(
       facingDeg: (((Math.atan2(normal.x, normal.y) * 180) / Math.PI) + 360) % 360,
     });
   }
-  return elevations;
+  return mergeCoplanar(elevations, { facingToleranceDeg, offsetToleranceM, gapToleranceM });
+}
+
+/**
+ * Rejoin stretches of one wall that a jog in the footprint pulled apart.
+ *
+ * The run-grouping above walks the ring and breaks whenever consecutive edges
+ * turn by more than the tolerance. That is right for a corner and wrong for a
+ * canal frontage, which routinely steps in and out by a few tens of centimetres
+ * — a bay, a porch, a surveyor's vertex, a party wall thicker on one side. The
+ * step is a real edge running perpendicular to the front, so it breaks the run,
+ * and one façade arrives as two or three.
+ *
+ * Measured before this existed: 176 of 2,180 panden with a measured wall had
+ * their frontage split this way, and the piece the pipeline picked was a median
+ * **2.31× smaller than the real frontage**, missing a median 10.1 m of wall.
+ * Herengracht 58 came back as 7.98 m and 13.94 m, both facing 28.5°, both in the
+ * same plane; the measurement ran on the 7.98 m half.
+ *
+ * So a second pass joins elevations that are the same wall by all three tests
+ * that matter, and only those: they face the same way, they lie in the same
+ * plane, and they are adjacent along it. Facing alone would merge a front with
+ * a coplanar wing across a courtyard; dropping the offset test would merge a
+ * front with a back, which are parallel and twenty metres apart.
+ */
+function mergeCoplanar(
+  elevations: Elevation[],
+  { facingToleranceDeg, offsetToleranceM, gapToleranceM }:
+    { facingToleranceDeg: number; offsetToleranceM: number; gapToleranceM: number },
+): Elevation[] {
+  if (elevations.length < 2) return elevations;
+
+  const facingGap = (a: number, b: number) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
+  /** Where a point falls along, and how far it lies off, an elevation's line. */
+  const project = (elevation: Elevation, point: ProjectedPoint) => {
+    const dx = (elevation.end.x - elevation.start.x) / elevation.lengthM;
+    const dy = (elevation.end.y - elevation.start.y) / elevation.lengthM;
+    const ox = point.x - elevation.start.x, oy = point.y - elevation.start.y;
+    return { along: ox * dx + oy * dy, off: ox * elevation.normal.x + oy * elevation.normal.y };
+  };
+
+  const parent = elevations.map((_, i) => i);
+  const find = (i: number): number => (parent[i] === i ? i : (parent[i] = find(parent[i])));
+  for (let i = 0; i < elevations.length; i++) {
+    for (let j = i + 1; j < elevations.length; j++) {
+      const a = elevations[i], b = elevations[j];
+      if (facingGap(a.facingDeg, b.facingDeg) > facingToleranceDeg) continue;
+      const ends = [project(a, b.start), project(a, b.end)];
+      // Same plane: both ends of b sit within tolerance of a's line.
+      if (ends.some(e => Math.abs(e.off) > offsetToleranceM)) continue;
+      // Adjacent along it: the spans touch, overlap, or leave only a small gap.
+      const bLo = Math.min(ends[0].along, ends[1].along), bHi = Math.max(ends[0].along, ends[1].along);
+      const gap = Math.max(bLo - a.lengthM, 0 - bHi, 0);
+      if (gap > gapToleranceM) continue;
+      parent[find(i)] = find(j);
+    }
+  }
+
+  const groups = new Map<number, number[]>();
+  for (let i = 0; i < elevations.length; i++) {
+    const root = find(i);
+    (groups.get(root) ?? groups.set(root, []).get(root)!).push(i);
+  }
+
+  const merged: Elevation[] = [];
+  for (const members of groups.values()) {
+    if (members.length === 1) { merged.push({ ...elevations[members[0]] }); continue; }
+    // The longest member sets the line; the others are steps off it.
+    const spine = members.map(i => elevations[i]).sort((a, b) => b.lengthM - a.lengthM)[0];
+    let lo = Infinity, hi = -Infinity;
+    for (const i of members) for (const point of [elevations[i].start, elevations[i].end]) {
+      const { along } = project(spine, point);
+      lo = Math.min(lo, along); hi = Math.max(hi, along);
+    }
+    const dx = (spine.end.x - spine.start.x) / spine.lengthM;
+    const dy = (spine.end.y - spine.start.y) / spine.lengthM;
+    const start = { x: spine.start.x + dx * lo, y: spine.start.y + dy * lo };
+    const end = { x: spine.start.x + dx * hi, y: spine.start.y + dy * hi };
+    merged.push({
+      index: 0,
+      mergedFrom: members.slice().sort((a, b) => a - b),
+      start, end,
+      midpoint: { x: (start.x + end.x) / 2, y: (start.y + end.y) / 2 },
+      normal: spine.normal,
+      lengthM: hi - lo,
+      facingDeg: spine.facingDeg,
+    });
+  }
+  merged.sort((a, b) => b.lengthM - a.lengthM);
+  return merged.map((elevation, index) => ({ ...elevation, index }));
 }
 
 /** True when `point` lies on the outward side of an elevation's plane. */

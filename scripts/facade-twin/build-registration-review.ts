@@ -70,6 +70,33 @@ for (const e of registry) if (!footprints.has(e.buildingId)) {
 const addressesOf = new Map<string, typeof addressPoints>();
 for (const a of addressPoints) if (a.pandId) (addressesOf.get(a.pandId) ?? addressesOf.set(a.pandId, []).get(a.pandId)!).push(a);
 
+/**
+ * The footprint elevation the old proposal was pointing at.
+ *
+ * `measured-facades.json` stores a wall chosen before coplanar stretches were
+ * rejoined, so on a frontage with a jog it holds one piece of the wall — a
+ * median 2.31x too small across 176 panden. The record is quarantined evidence
+ * anyway; what it is still good for is saying *which* elevation was meant. So
+ * the proposal is snapped onto the elevation it lies on, and the geometry comes
+ * from the footprint rather than from the stale extract.
+ */
+function wallOf(ring: ProjectedPoint[], proposed: readonly number[]): [number, number, number, number] {
+  const mid = { x: (proposed[0] + proposed[2]) / 2, y: (proposed[1] + proposed[3]) / 2 };
+  const elevations = buildElevations(ring);
+  if (!elevations.length) return [proposed[0], proposed[1], proposed[2], proposed[3]];
+  // Nearest by perpendicular distance to the segment, not to its midpoint: a
+  // merged elevation's midpoint can sit far from the piece originally chosen.
+  const best = elevations
+    .map(e => {
+      const dx = (e.end.x - e.start.x) / e.lengthM, dy = (e.end.y - e.start.y) / e.lengthM;
+      const along = Math.max(0, Math.min(e.lengthM, (mid.x - e.start.x) * dx + (mid.y - e.start.y) * dy));
+      const px = e.start.x + dx * along, py = e.start.y + dy * along;
+      return { e, d: Math.hypot(mid.x - px, mid.y - py) };
+    })
+    .sort((a, b) => a.d - b.d)[0].e;
+  return [best.start.x, best.start.y, best.end.x, best.end.y];
+}
+
 const decoded = new Map<string, any>();
 async function panorama(id: string) {
   if (decoded.has(id)) return decoded.get(id);
@@ -91,6 +118,7 @@ for (const pandId of Object.keys(store).sort()) {
   const record = store[pandId], ring = footprints.get(pandId), mass = massing.get(pandId);
   if (!record || !ring || !Number.isFinite(mass?.groundLevel)) continue;
 
+  const wall = wallOf(ring, record.wall);
   const chosen: PanoramaView[] = [];
   for (const id of [record.panoramaId, ...(multi[pandId] ?? []).map(m => m.panoramaId)]) {
     const v = views.get(id);
@@ -111,8 +139,8 @@ for (const pandId of Object.keys(store).sort()) {
   const top = Math.max(rawTop ?? 0, eaves ?? 0, ground + 6) || ground + 12;
   const heightsInverted = rawTop !== null && eaves !== null && rawTop < eaves;
   const wallElevation = buildElevations(ring)
-    .map(e => ({ e, d: Math.hypot(e.midpoint.x - (record.wall[0] + record.wall[2]) / 2,
-                                  e.midpoint.y - (record.wall[1] + record.wall[3]) / 2) }))
+    .map(e => ({ e, d: Math.hypot(e.midpoint.x - (wall[0] + wall[2]) / 2,
+                                  e.midpoint.y - (wall[1] + wall[3]) / 2) }))
     .sort((a, b) => a.d - b.d)[0].e;
 
   const frames: any[] = [];
@@ -120,9 +148,9 @@ for (const pandId of Object.keys(store).sort()) {
     const image = await panorama(view.panoramaId);
     if (!image) continue;
     const camera = RD_NEW.fromLngLat(view.lngLat);
-    const projected = projectFootprint(image, view, AMSTERDAM_CAMERA, ring, record.wall, ground, top,
+    const projected = projectFootprint(image, view, AMSTERDAM_CAMERA, ring, wall, ground, top,
       { maxWidth: 900, quality: 84, contextFraction: 0.75, eavesZ: eaves });
-    const strip = rectifyWall(image, view, AMSTERDAM_CAMERA, record.wall, ground - 1, top + 1.5,
+    const strip = rectifyWall(image, view, AMSTERDAM_CAMERA, wall, ground - 1, top + 1.5,
       { pixelsPerMetre: 34, margin: 1.2, maxWidth: 620, quality: 84 });
     if (!projected && !strip) continue;
     // Named for the geometry that produced them, so a rebuild after a massing
@@ -186,7 +214,8 @@ for (const pandId of Object.keys(store).sort()) {
       : pandId,
     addressCount: addresses.length,
     constructionYear: years.get(pandId) ?? null,
-    wallWidthM: record.wallWidthM,
+    wallWidthM: Number(Math.hypot(wall[2] - wall[0], wall[3] - wall[1]).toFixed(2)),
+    proposedWidthM: record.wallWidthM,
     groundZ: Number(ground.toFixed(2)),
     eavesZ: eaves === null ? null : Number(eaves.toFixed(2)),
     ridgeZ: Number(top.toFixed(2)),
@@ -198,7 +227,7 @@ for (const pandId of Object.keys(store).sort()) {
      * building it is on, which a reviewer should be told before being asked.
      */
     lensAboveGroundM: Number((poseOf(shown[0]).z - ground).toFixed(2)),
-    plan: planSvg(ring, record.wall,
+    plan: planSvg(ring, wall,
       shown.map((v, i) => ({ point: RD_NEW.fromLngLat(v.lngLat), primary: i === 0,
         label: `${v.capturedAt.slice(0, 10)} · heading ${v.headingDeg.toFixed(1)}°` })),
       addresses.map(a => a.rd), neighbours, { width: 300, minHeight: 170, maxHeight: 240 }),

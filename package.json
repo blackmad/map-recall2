@@ -31,6 +31,7 @@
     "check:utrecht-extract": "node --import tsx scripts/check-city-extract.ts public/data/extracts/utrecht utrecht",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
+    "lint:scripts": "tsc --noEmit -p tsconfig.scripts.json",
     "test:srs": "tsx scripts/check-spaced-repetition.ts",
     "test:road-graph": "tsx scripts/check-road-graph.ts",
     "test:route-mastery": "tsx scripts/check-route-mastery.ts",
