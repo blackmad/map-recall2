@@ -6,6 +6,15 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Published v11 Randstad trivia (opening then second beat)
+
+Owner blanket-approved the `facts-v11-opening-then-trivia` OpenRouter
+`qwen/qwen3.5-flash-02-23` staging catalogs on 2026-09-05. Shipped
+`facts.json` for Amsterdam (948 / 2,354), Rotterdam (270 / 652), Den Haag
+(199 / 540) and Utrecht (211 / 506) — 1,628 features, 4,052 facts, every
+feature carrying an article-lede opening. Review sheets were rewritten for the
+new generator version; v10 labels do not carry over across generator bumps.
+
 ## Boat top speed raised
 
 Canal mode felt capped on long straight canals. Base `CAR_MAX_SPEED` is 260
