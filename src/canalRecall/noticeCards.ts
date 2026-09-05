@@ -56,13 +56,23 @@ export interface LandmarkCardLayout {
 const CARD_WIDTH = 480;
 const IMAGE_WIDTH = 90;
 const IMAGE_HEIGHT = 110;
+/** Horizontal inset for text and badges on a bare (no-photo) card. */
+const PAD_X = 20;
+/** Right inset so wrapped body does not kiss the plate edge. */
+const PAD_RIGHT = 20;
 const BADGE_FONT = 'bold 9px monospace';
 const NAME_FONT = 'bold 15px monospace';
 const BODY_FONT = '11px monospace';
+/** Body lines on a bare encyclopedia/street card — enough for a full short
+ *  lede sentence without turning into an article. */
+const BARE_BODY_LINES = 3;
+const PHOTO_BODY_LINES = 4;
 
 /**
  * The card's own size and content, given only what fits. A card with a photo
- * gets four lines of body text and a taller box; a bare one gets two.
+ * gets four lines of body text and a taller box; a bare one gets three, with
+ * height sized to the content so badges and the last line keep air from the
+ * plate edge.
  */
 export function measureLandmarkCard(
   props: LandmarkCardProps,
@@ -73,14 +83,11 @@ export function measureLandmarkCard(
 ): LandmarkCardLayout {
   const hasImage = !!props.hasImage;
   const imageWidth = hasImage ? IMAGE_WIDTH : 0;
-  const textLeft = hasImage ? imageWidth + 20 : 16;
-  const height = hasImage
-    ? Math.max(130, IMAGE_HEIGHT + 20)
-    : (props.body ? 80 : 50);
-
-  const maxTextWidth = Math.max(60, cardWidth - textLeft - 16);
+  const textLeft = hasImage ? imageWidth + 22 : PAD_X;
+  const maxTextWidth = Math.max(60, cardWidth - textLeft - PAD_RIGHT);
   const body = props.body || '';
-  const lines = wrapToLines(body, maxTextWidth, hasImage ? 4 : 2, measure, BODY_FONT);
+  const maxLines = hasImage ? PHOTO_BODY_LINES : (body ? BARE_BODY_LINES : 0);
+  const lines = wrapToLines(body, maxTextWidth, maxLines, measure, BODY_FONT);
   // The card shows a prefix of the body; whether anything was left behind is
   // what decides if there is a bigger version worth opening.
   const shownWords = lines.reduce((total, line) => total + line.split(' ').length, 0);
@@ -114,6 +121,15 @@ export function measureLandmarkCard(
     }
     displayName += '…';
   }
+
+  // Vertical budget mirrors `renderer.drawLandmarkNotice`: badge row, name,
+  // body lines, then bottom air. A fixed 80 px plate used to clip the second
+  // line of street cards flush against the edge.
+  const height = hasImage
+    ? Math.max(136, IMAGE_HEIGHT + 26)
+    : (!body
+      ? (badges.length ? 58 : 52)
+      : 18 + (badges.length ? 18 : 0) + 20 + lines.length * 15 + 14);
 
   return {
     width: cardWidth,

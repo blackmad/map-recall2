@@ -6,6 +6,12 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Boat top speed raised
+
+Canal mode felt capped on long straight canals. Base `CAR_MAX_SPEED` is 260
+px/s (was 205) with matching `CAR_ACCEL` 120 so the boat still reaches the new
+cap promptly. Street mode still multiplies on top via `PLAYER_CAR_SPEED_MULT`.
+
 ## Trivia cards open with who/what, then a second beat
 
 Rotated facts used to replace the Wikipedia lede entirely, so a people or
@@ -88,6 +94,16 @@ caption-less tiles, tighter rows) keeps Travel → Difficulty in the first view.
 Start is night-ink on copper (~WCAG AA) instead of white-on-copper (~3.1:1), and
 secondary type floors at 12px. View’s four cameras stay; only captions hide on
 phone.
+
+## Load aims at the boat and coalesces building-tile setData
+
+Two regressions after the nearest-first tile streamer: the map stayed on Damrak
+for the whole loading screen (tiles only started on the first racing `sync`),
+and every tile arrival deep-cloned the resident FeatureCollection into
+`setData`, so two concurrent finishes hitch the main thread. Loading now calls
+`aimAtWorld` once the start point is known (and again from `_setupRace`), the
+streamer coalesces flushes to one per animation frame, and concurrency stays
+at 1 until the first tile lands so the spawn neighbourhood wins the pipe.
 
 ## Building tiles load the spawn neighbourhood first
 

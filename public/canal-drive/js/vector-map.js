@@ -540,6 +540,9 @@ class VectorBasemap {
     }, (features) => {
       this._syncPyramidalRoofs(features);
     });
+    // Loading may already have aimed at the route start before the probe
+    // finished; apply that aim now so tiles stream under the overlay.
+    this._applyPendingAim();
     return true;
   }
 
@@ -1083,6 +1086,38 @@ class VectorBasemap {
     camera.projector = pitch > 0
       ? (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas)
       : null;
+  }
+
+  /**
+   * Jump the basemap to a world point and start loading building tiles there.
+   * Call during loading once the route start is known — otherwise the map sits
+   * on Damrak until the first racing frame, and the spawn neighbourhood only
+   * begins downloading after the player can already see the hitch.
+   *
+   * Safe to call before the tile streamer has probed: the aim is remembered
+   * and applied again when `_ensureCompleteCity` finishes attach.
+   */
+  aimAtWorld(worldX, worldY, loader, options = {}) {
+    this._pendingAim = { worldX, worldY, loader, options };
+    this._applyPendingAim();
+  }
+
+  _applyPendingAim() {
+    const pending = this._pendingAim;
+    if (!pending || !this.ready || !this.map) return;
+    const { worldX, worldY, loader, options } = pending;
+    if (!loader || loader._lastCenterLat == null) return;
+    const metersPerDegreeLat = 111320;
+    const metersPerDegreeLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180);
+    const lon = loader._lastCenterLng + (worldX - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER);
+    const lat = loader._lastCenterLat - (worldY - loader._lastOffsetY) / (metersPerDegreeLat * PIXELS_PER_METER);
+    const zoom = Number.isFinite(options.zoom) ? options.zoom : (this.map.getZoom() || 17);
+    const bearing = Number.isFinite(options.bearing) ? options.bearing : 0;
+    const pitch = Number.isFinite(options.pitch) ? options.pitch : TOPDOWN_TILT_DEGREES;
+    this.map.jumpTo({ center: [lon, lat], zoom, bearing, pitch });
+    if (this._completeCity && typeof this._completeCity.followCamera === 'function') {
+      this._completeCity.followCamera();
+    }
   }
 
   projectWorld(worldX, worldY, loader, canvas) {

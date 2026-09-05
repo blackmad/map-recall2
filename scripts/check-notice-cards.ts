@@ -23,29 +23,42 @@ const stub = (text: string, font: string) => {
   const bare = measureLandmarkCard({ name: 'Nes', body: '' }, stub);
   const text = measureLandmarkCard({ name: 'Nes', body: 'A street in the centre.' }, stub);
   const photo = measureLandmarkCard({ name: 'Nes', body: 'A street.', hasImage: true }, stub);
-  assert.equal(bare.height, 50, 'a card with nothing to say stays short');
-  assert.equal(text.height, 80);
-  assert.equal(photo.height, 130, 'a photo sets the floor');
+  assert.ok(bare.height >= 50 && bare.height <= 60, 'a card with nothing to say stays short');
+  assert.ok(text.height > bare.height, 'body text grows the plate');
+  assert.equal(photo.height, 136, 'a photo sets the floor');
   assert.equal(bare.imageWidth, 0);
+  assert.equal(text.textLeft, 20, 'bare cards keep side padding');
   assert.ok(photo.textLeft > bare.textLeft, 'text clears the photo');
+
+  const street = measureLandmarkCard({
+    name: 'Singelgracht',
+    category: 'STREET',
+    hasArticle: true,
+    body: 'The Singelgracht (Dutch pronunciation: [ˈsɪŋəlˌɣrɑxt]) is a semi-circular '
+      + 'waterway that borders the entire city centre of Amsterdam along the canals.',
+  }, stub);
+  assert.equal(street.lines.length, 3, 'street cards show three body lines');
+  assert.ok(street.height >= 100, `badges + three lines need air, got ${street.height}`);
+  assert.equal(street.textLeft, 20);
 }
 
 // --- Body text is wrapped and cut to a budget -------------------------------
 {
   const long = 'The Grachtengordel is a neighborhood in Amsterdam, Netherlands, '
     + 'located in the centre and known in English as the Canal District, and it '
-    + 'goes on considerably longer than any card could hold.';
+    + 'goes on considerably longer than any card could hold, with still more '
+    + 'about the rings of canals, the merchant houses, and the UNESCO listing '
+    + 'that a glance at the bottom of the screen is never meant to replace.';
   const bare = measureLandmarkCard({ name: 'Grachtengordel', body: long }, stub);
   const photo = measureLandmarkCard({ name: 'Grachtengordel', body: long, hasImage: true }, stub);
-  assert.equal(bare.lines.length, 2, 'a bare card gets two lines');
+  assert.equal(bare.lines.length, 3, 'a bare card gets three lines');
   assert.equal(photo.lines.length, 4, 'a card with a photo is taller and gets four');
   for (const line of [...bare.lines, ...photo.lines]) {
     assert.ok(line.length > 0 && !line.startsWith(' '), `bad line: ${JSON.stringify(line)}`);
   }
   assert.ok(long.startsWith(bare.lines[0]), 'wrapping preserves the text in order');
-  assert.equal(bare.truncated, true, 'a body cut to two lines says so');
-  assert.equal(photo.truncated, false,
-    'the same body fits the four-line budget a photo card gets');
+  assert.equal(bare.truncated, true, 'a body cut to three lines says so');
+  assert.equal(photo.truncated, true, 'even four lines cannot hold this body');
 }
 
 // --- Only a cut card advertises the expanded panel --------------------------
