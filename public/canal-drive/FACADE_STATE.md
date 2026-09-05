@@ -498,3 +498,47 @@ exactly this.
 | `match.html` + `review-server.ts` | what does a person say? (SQLite) | no |
 | `vision/ensemble.py` | where are the openings? | yes |
 | `vision/correspondence.py` | **abandoned** — the model calls a wall 3.8% building | yes |
+
+
+### 12a. Rendering it and looking settles what correlation could not
+
+Widening the plane to nine times the wall and rendering every view of one pand
+at a shared scale — 121 m of canal, three panoramas, same plane — shows the
+thing directly:
+
+- the **2023-02-27** and **2023-03-20** views show the *same* stretch of canal:
+  same buildings, same blue parking sign, small offset between them;
+- the **2021-01-22** view of the same plane shows a *different* stretch
+  entirely.
+
+Two panoramas from one campaign agree with each other. One from another
+campaign does not agree with either. The numbers back it weakly and in the same
+direction: across 30 pairs, same-capture-year pairs have a median correlation
+of 0.070 against 0.049 for cross-year, and the single best-agreeing pair in the
+whole set — 0.254, far above the 0.06 typical — is exactly the 2023/2023 pair
+that visibly matches.
+
+**So the leading hypothesis is that the pose convention differs between capture
+campaigns**, and the fault is in how a published pose is read rather than in
+the geometry, the rectifier or the wall.
+
+Two cautions on that. n = 30 pairs is small, and 0.070 against 0.049 is not a
+result on its own — it is a direction. And normalised cross-correlation is
+proving a poor instrument on these wide strips: it says 0.25 for two images a
+person can see are the same street. Its self-correlation control is exact, so
+it is not broken, but seasonal light, different ranges and heavy resampling
+leave it little to lock onto. **Rendering and looking is currently the more
+reliable test**, which is why the wide-strip renderer exists.
+
+### 12b. The experiment that would settle it
+
+Pick one pand with views spanning many years, render the widened plane from
+each, and sort them by campaign. If the images fall into groups that agree
+within a campaign and disagree between campaigns, the correction is a per-
+campaign constant and can be solved for directly — the shift between two groups,
+in metres at a known standoff, is a heading offset in degrees.
+
+If instead they disagree individually, the pose error is per-panorama and the
+answer is an external opinion: Mapillary has its own poses for these streets,
+free, and Google's Street View metadata endpoint returns the position it
+actually used.
