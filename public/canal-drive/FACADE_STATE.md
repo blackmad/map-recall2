@@ -1047,3 +1047,116 @@ to still exist.
   not yet reported on the card.
 - The five house-number conflicts from §14 remain unadjudicated.
 - Everything downstream of §11 stays quarantined.
+
+
+---
+
+## 17. The frontage was a coin flip, and the fix exposed how the metric was flattered (2026-09-05, late night)
+
+### Registration at two hundred buildings
+
+Measured on 200 panden with two independent panoramas each, through the
+corrected camera model, merged elevations and the solved vertical datum:
+
+| | median | within 1 m |
+|---|---|---|
+| all pairs | 1.05 m | 47% |
+| confident correlation | 0.55 m | 64% |
+| unoccluded | 0.50 m | 69% |
+| **confident and unoccluded** | **0.40 m** | **88%** (n = 56) |
+
+Read that last line with the caveat in the final section: it may be flattered by
+comparing near-duplicate views, and a controlled comparison is running.
+
+### The frontage was chosen by a coin flip
+
+`measure-facades.ts` scores each elevation by *exposure* — how many survey
+cameras stand in front of it within 35 m at a usable standoff and obliquity —
+and **never asks whether any of them can see it**. On a narrow, deep canal plot
+the back wall faces a courtyard or the next street, and there genuinely are
+cameras in front of it on that street, at fine obliquity, with a building in the
+way. Front and back both score high.
+
+The tiebreak is wall length against the plot's minimum-rectangle width. The
+front and back of a narrow deep plot are **both short sides**, frequently the
+same length to the centimetre:
+
+    Herengracht 41    5.1 m @121°   against   5.1 m @301°
+    Singel 54         5.9 m @305°   against   5.9 m @124°
+
+A coin flip between two identical walls 180° apart, and it lost about half the
+time. Herengracht 45's measured wall faces 121° and can be seen from **nowhere**;
+its frontage faces 301° and can be seen from **261** positions. That is not a
+judgement call, it is a count.
+
+`chooseFrontage` ranks elevations by unobstructed views in coarse bands, breaks
+ties on BAG address points — a front door is on the frontage — and then on
+length. **770 of 2,180 panden (35%) get a different wall**, and almost every
+switch is exactly 180°. **491 (23%) have no visible elevation at all** and are
+massing only, which is the rule the project turns on rather than a failure.
+
+That alone moved the whole boundary: all pairs 1.05 → **0.75 m**, 47% → **56%**;
+confident 0.55 → **0.40 m**, 64% → **79%**.
+
+### Where the equirectangular frame is squeezed
+
+An equirectangular image is linear in azimuth and linear in *elevation*, so
+horizontal sampling is uniform but a metre of wall at elevation φ earns v-pixels
+in proportion to **cos²φ**. On a 4000-pixel frame:
+
+| standoff | height | top angle | px/m at foot | px/m at top | ratio |
+|---|---|---|---|---|---|
+| 10 m | 20 m | 63° | 127 | 25 | **0.20** |
+| 15 m | 20 m | 53° | 85 | 31 | 0.36 |
+| 25 m | 20 m | 39° | 51 | 31 | 0.61 |
+| 40 m | 20 m | 27° | 32 | 25 | 0.80 |
+
+At 10 m the top of a 20 m building has a fifth the vertical detail of its foot.
+The rectifier samples uniformly in world z, so the geometry is right and the
+information is not there — the strip upsamples the top. Maximising the worst
+sampling over the wall's height, `d/(d² + h²)`, peaks at **d = h**: the best
+standoff is about the building's own height, and a flat 8–45 m band happily
+picks a 9 m view whose upper storeys are mush.
+
+### A different year is often simply clear
+
+Westermarkt 1 is wrapped in scaffolding and sheeting in 2019 and **perfectly
+visible in 2023**, and nothing in the ranking ever looked at a second year.
+Obstruction cannot be read from metadata, so `spreadAcrossYears` returns one
+view per capture year rather than *n* frames of one afternoon which agree
+because they share every mistake.
+
+### The regression I caused, and both explanations
+
+The new selector made registration **worse**: 0.75 → 1.25 m median, 56% → 42%.
+Two explanations are live and neither has been ruled out.
+
+**Independence.** Only 3% of pairs are now same-year, against a median of two
+years apart. Two frames from different years share nothing — season, cars,
+awnings, shopfronts — so the test is harder and more honest, and a worse number
+would mean nothing is broken. `--spread=0` takes the best two by quality
+instead, which on a dense pass is two frames of one afternoon five metres apart,
+so the difference can be measured rather than assumed.
+
+**A defect I introduced.** The occlusion test asks whether a footprint crosses
+the ray to the wall's *midpoint*, and I promoted it from a report to a hard
+veto. A footprint clipping that one ray may hide a metre of a twelve-metre
+frontage, and rejecting the view outright leaves only worse ones — which fits
+the evidence: every surviving pair is now unoccluded by construction and the
+worst resolution of a pair fell to a median 29 px/m. `blockedFraction` now
+samples nine points along the wall; frontage choice counts a view as clear under
+50% blocked, and ranking treats it as a penalty on the resolution score,
+refusing only past 40%.
+
+**Until the controlled comparison lands, the 0.40 m / 88% figure above is not
+safe to quote.** It may be measuring how alike two frames of one afternoon are.
+
+### Still open
+
+- The A/B between year-spread and same-pass pairs.
+- Views can only be chosen from the 2,922 panoramas on disk, which were
+  downloaded for the *old* frontages. The selector cannot yet show what it can do.
+- 34 frontages still split; 26 merged fronts bow more than 0.35 m.
+- 43 script type errors, one of them found by turning the check on.
+- Five house-number conflicts unadjudicated.
+- Everything downstream of §11 stays quarantined.
