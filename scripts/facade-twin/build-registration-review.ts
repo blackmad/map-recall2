@@ -35,7 +35,7 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/fac
 import { buildElevations, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { AMSTERDAM_CAMERA, hasUsablePose } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
-import { planSvg, projectFootprint, rectifyWall } from './panorama-render.ts';
+import { planSvg, poseOf, projectFootprint, rectifyWall } from './panorama-render.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
 const CACHE = path.resolve('.cache/facade-twin');
@@ -98,7 +98,12 @@ for (const pandId of Object.keys(store).sort()) {
   }
   if (!chosen.length) continue;
   const shown = chosen.slice(0, 3);
-  const ground = mass.groundLevel, eaves = mass.eavesHeight ?? ground + 12;
+  const ground = mass.groundLevel;
+  const eaves = Number.isFinite(mass.eavesHeight) ? mass.eavesHeight : null;
+  // The ridge is the top of what a person sees on a canal frontage; the eaves
+  // is a level partway up it. Judge the box against the building, not against a
+  // definition the building does not display.
+  const top = Number.isFinite(mass.ridgeHeight) ? mass.ridgeHeight : (eaves ?? ground + 12);
   const wallElevation = buildElevations(ring)
     .map(e => ({ e, d: Math.hypot(e.midpoint.x - (record.wall[0] + record.wall[2]) / 2,
                                   e.midpoint.y - (record.wall[1] + record.wall[3]) / 2) }))
@@ -109,9 +114,9 @@ for (const pandId of Object.keys(store).sort()) {
     const image = await panorama(view.panoramaId);
     if (!image) continue;
     const camera = RD_NEW.fromLngLat(view.lngLat);
-    const projected = projectFootprint(image, view, AMSTERDAM_CAMERA, ring, record.wall, ground, eaves,
-      { maxWidth: 900, quality: 84, contextFraction: 0.75 });
-    const strip = rectifyWall(image, view, AMSTERDAM_CAMERA, record.wall, ground - 1, eaves + 1.5,
+    const projected = projectFootprint(image, view, AMSTERDAM_CAMERA, ring, record.wall, ground, top,
+      { maxWidth: 900, quality: 84, contextFraction: 0.75, eavesZ: eaves });
+    const strip = rectifyWall(image, view, AMSTERDAM_CAMERA, record.wall, ground - 1, top + 1.5,
       { pixelsPerMetre: 34, margin: 1.2, maxWidth: 620, quality: 84 });
     if (!projected && !strip) continue;
     const stem = `${pandId}__${view.panoramaId}`;
@@ -173,6 +178,16 @@ for (const pandId of Object.keys(store).sort()) {
     addressCount: addresses.length,
     constructionYear: years.get(pandId) ?? null,
     wallWidthM: record.wallWidthM,
+    groundZ: Number(ground.toFixed(2)),
+    eavesZ: eaves === null ? null : Number(eaves.toFixed(2)),
+    ridgeZ: Number(top.toFixed(2)),
+    /**
+     * How high the modelled lens sits above this building's modelled ground.
+     * A survey van's is about 2.5 m. Far from that and the box's vertical
+     * placement is wrong for a reason that has nothing to do with which
+     * building it is on, which a reviewer should be told before being asked.
+     */
+    lensAboveGroundM: Number((poseOf(shown[0]).z - ground).toFixed(2)),
     plan: planSvg(ring, record.wall,
       shown.map((v, i) => ({ point: RD_NEW.fromLngLat(v.lngLat), primary: i === 0,
         label: `${v.capturedAt.slice(0, 10)} · heading ${v.headingDeg.toFixed(1)}°` })),

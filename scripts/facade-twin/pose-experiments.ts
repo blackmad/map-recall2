@@ -43,8 +43,10 @@ const PREVIEWS = path.join(CACHE, 'pose-experiments');
 const arg = (n: string) => process.argv.find(v => v.startsWith(`--${n}=`))?.slice(n.length + 3);
 const has = (n: string) => process.argv.includes(`--${n}`);
 
-const views = (JSON.parse(await readFile(path.join(CACHE, `${AREA.areaId}-panoramas.json`), 'utf8')).data as PanoramaView[])
-  .filter(hasUsablePose);
+const fleet = JSON.parse(await readFile(path.join(CACHE, `${AREA.areaId}-panoramas.json`), 'utf8')).data as PanoramaView[];
+const views = fleet.filter(hasUsablePose);
+/** The rig that took a frame, from its id: TMX…, b_…, recording_…. */
+const rigOf = (view: PanoramaView) => view.panoramaId.split(/[-_]/)[0];
 const M_PER_DEG_LAT = 111_320;
 const mPerDegLon = M_PER_DEG_LAT * Math.cos((views[0].lngLat[1] * Math.PI) / 180);
 const wrap180 = (d: number) => ((d % 360) + 540) % 360 - 180;
@@ -275,4 +277,98 @@ if (has('flow')) {
   }
 }
 
-if (!has('opposed') && !has('flow')) console.log('Nothing to do. Pass --opposed and/or --flow.');
+// ---- experiment 3: is a newer rig aligned the same way? ------------------
+
+/**
+ * Every alignment measurement in this project was made on `TMX…` frames,
+ * because the pose filter rejects the newer batches for their missing height
+ * and they never reached an experiment. But the 2024–2025 imagery comes from
+ * two *different* rigs — `b_…` and `recording_…` — and world alignment is a
+ * property of the publisher's normalisation pipeline, not of the city. A rig
+ * whose frames were not normalised would be north-aligned nowhere.
+ *
+ * The test needs no height and no orientation, which is exactly why it works
+ * here: put a frame from a newer rig beside an old `TMX…` frame taken within
+ * 1.5 m of it, and measure the circular offset between the raw images. Two
+ * world-aligned frames of the same place agree at zero however far apart in
+ * time; one un-normalised frame does not.
+ */
+if (has('rigs')) {
+  const wanted = Number(arg('pairs') ?? 6);
+  const cell = new Map<string, PanoramaView[]>();
+  const key = (v: PanoramaView) =>
+    `${Math.floor(v.lngLat[0] * mPerDegLon / 2)}:${Math.floor(v.lngLat[1] * M_PER_DEG_LAT / 2)}`;
+  for (const v of fleet) (cell.get(key(v)) ?? cell.set(key(v), []).get(key(v))!).push(v);
+
+  const byRig = new Map<string, Array<[PanoramaView, PanoramaView, number]>>();
+  for (const list of cell.values()) {
+    for (const a of list) {
+      if (rigOf(a) !== 'TMX7316010203') continue;
+      for (const b of list) {
+        const rig = rigOf(b);
+        if (rig === 'TMX7316010203' || rig === 'TMX7316060226' || rig === 'TMX7315120208') continue;
+        const [dx, dy] = metres(a, b);
+        const distance = Math.hypot(dx, dy);
+        if (distance > 1.5) continue;
+        const bucket = `${rig} ${b.capturedAt.slice(0, 4)}`;
+        (byRig.get(bucket) ?? byRig.set(bucket, []).get(bucket)!).push([a, b, distance]);
+      }
+    }
+  }
+
+  console.log(`\nNewer rigs against TMX7316010203 — same spot, different rig.\n`);
+  for (const [bucket, pairs] of [...byRig].sort()) {
+    pairs.sort((p, q) => p[2] - q[2]);
+    console.log(`  ${bucket}  (${pairs.length} candidate pairs within 1.5 m)`);
+    const rolls: number[] = [];
+    const peaks: number[] = [];
+    for (const [a, b, distance] of pairs) {
+      if (rolls.length >= wanted) break;
+      const [A, B] = [await band(a), await band(b)];
+      if (!A || !B) continue;
+      if (A.width !== B.width) {
+        console.log(`    ${distance.toFixed(2)}m  frame widths differ: ${A.width} vs ${B.width} — resampling`);
+      }
+      // Compare in the narrower frame's column space, so a rig that publishes a
+      // different width is still comparable.
+      const W = Math.min(A.width, B.width);
+      const at = (S: { cols: Float32Array[]; width: number }, u: number) =>
+        S.cols[Math.min(S.width - 1, Math.round((u / W) * S.width))];
+      let best = { score: -2, shift: 0 };
+      for (let k = 0; k < W; k++) {
+        let s = 0;
+        for (let x = 0; x < W; x += 2) s += dot(at(A, x), at(B, (x + k) % W));
+        s /= W / 2;
+        if (s > best.score) best = { score: s, shift: k };
+      }
+      const roll = wrap180((best.shift / W) * 360);
+      rolls.push(roll);
+      peaks.push(best.score);
+      console.log(`    ${distance.toFixed(2)}m  roll ${roll.toFixed(1).padStart(7)}°  peak ${best.score.toFixed(3)}`
+        + `  ${a.capturedAt.slice(0, 10)} / ${b.capturedAt.slice(0, 10)}  heading ${b.headingDeg.toFixed(1)}°`);
+    }
+    if (rolls.length) {
+      // A share, not a worst case. One bad pair can be the correlator failing on
+      // a blank quay; a rig that is not normalised fails most of the time. The
+      // question is which, and only the distribution answers it.
+      const median = [...rolls].sort((m, n) => m - n)[Math.floor(rolls.length / 2)];
+      const aligned = rolls.filter(r => Math.abs(r) < 5).length;
+      // An outlier's peak is the whole question. A weak peak is the correlator
+      // failing on a blank quay or a rebuilt frontage; a strong one is a frame
+      // that really is turned, and only the second needs a camera model.
+      const outliers = rolls.map((r, i) => ({ r, peak: peaks[i] })).filter(o => Math.abs(o.r) >= 5)
+        .map(o => `${o.r.toFixed(0)}° (peak ${o.peak.toFixed(2)})`).join(', ');
+      const strongOutliers = rolls.filter((r, i) => Math.abs(r) >= 5 && peaks[i] >= 0.35).length;
+      const share = aligned / rolls.length;
+      console.log(`    → ${aligned}/${rolls.length} within 5° of zero, median ${median.toFixed(2)}°`
+        + (outliers ? `; outliers ${outliers}` : ''));
+      console.log(`      ${strongOutliers === 0 ? 'aligned with the old fleet; every disagreement is a weak correlation'
+        : share >= 0.8 ? `aligned in the main, but ${strongOutliers} frame(s) disagree with a confident peak — a per-frame defect, not a rig-wide convention`
+        : 'NOT reliably aligned; this rig needs its own camera model'}\n`);
+    } else {
+      console.log(`    → no image pair could be fetched\n`);
+    }
+  }
+}
+
+if (!has('opposed') && !has('flow') && !has('rigs')) console.log('Nothing to do. Pass --opposed, --flow and/or --rigs.');

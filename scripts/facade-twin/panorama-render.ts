@@ -54,8 +54,8 @@ export const encodeJpeg = (width: number, height: number, data: Uint8ClampedArra
  */
 export function projectFootprint(
   image: DecodedPanorama, view: PanoramaView, camera: CameraModel,
-  ring: ProjectedPoint[], wall: readonly number[], groundZ: number, eavesZ: number,
-  { maxWidth = 420, quality = 78, contextFraction = 0.6 } = {},
+  ring: ProjectedPoint[], wall: readonly number[], groundZ: number, topZ: number,
+  { maxWidth = 420, quality = 78, contextFraction = 0.6, eavesZ = null as number | null } = {},
 ): { jpeg: Buffer; width: number; height: number } | null {
   const pose = poseOf(view);
   const project = (p: ProjectedPoint, z: number) =>
@@ -63,7 +63,7 @@ export function projectFootprint(
 
   const [wx0, wy0, wx1, wy1] = wall;
   const a = { x: wx0, y: wy0 }, b = { x: wx1, y: wy1 };
-  const corners = [project(a, groundZ), project(b, groundZ), project(a, eavesZ), project(b, eavesZ)];
+  const corners = [project(a, groundZ), project(b, groundZ), project(a, topZ), project(b, topZ)];
   const anchor = corners[0][0];
   const unwrap = (u: number) => {
     let d = u - anchor;
@@ -118,12 +118,25 @@ export function projectFootprint(
   for (let i = 0; i < ring.length; i++) {
     const j = (i + 1) % ring.length;
     edge(ring[i], groundZ, ring[j], groundZ, [70, 150, 255], 1);
-    edge(ring[i], eavesZ, ring[j], eavesZ, [70, 150, 255], 1);
+    edge(ring[i], topZ, ring[j], topZ, [70, 150, 255], 1);
   }
   edge(a, groundZ, b, groundZ, [40, 235, 120], 2);
-  edge(a, eavesZ, b, eavesZ, [40, 235, 120], 2);
-  edge(a, groundZ, a, eavesZ, [40, 235, 120], 2);
-  edge(b, groundZ, b, eavesZ, [40, 235, 120], 2);
+  edge(a, topZ, b, topZ, [40, 235, 120], 2);
+  edge(a, groundZ, a, topZ, [40, 235, 120], 2);
+  edge(b, groundZ, b, topZ, [40, 235, 120], 2);
+  /**
+   * The eaves, drawn inside the box rather than as its lid.
+   *
+   * Drawing the quad to the eaves made every gabled front look short by two
+   * metres, and a reviewer cannot tell that from a genuine registration error —
+   * they see a box that misses the top of the building either way. On an
+   * Amsterdam canal house the visible façade continues above the eaves to the
+   * gable top, so the box runs to the ridge and the eaves become a line across
+   * it: still legible as a measurement, no longer mistakable for a bad fit.
+   */
+  if (eavesZ !== null && eavesZ > groundZ && eavesZ < topZ) {
+    edge(a, eavesZ, b, eavesZ, [235, 190, 60], 1);
+  }
 
   const small = downscale(out, cw, ch, maxWidth);
   return { jpeg: encodeJpeg(small.width, small.height, small.data, quality), width: small.width, height: small.height };

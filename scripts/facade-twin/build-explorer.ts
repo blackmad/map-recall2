@@ -261,7 +261,9 @@ for (const pandId of queue) {
   }
   if (!chosen.length) continue;
   const shown = chosen.slice(0, 3);
-  const ground = mass.groundLevel, eaves = mass.eavesHeight ?? ground + 12;
+  const ground = mass.groundLevel;
+  const eavesLine = Number.isFinite(mass.eavesHeight) ? mass.eavesHeight : null;
+  const eaves = Number.isFinite(mass.ridgeHeight) ? mass.ridgeHeight : (eavesLine ?? ground + 12);
 
   const wallElevation = buildElevations(ring)
     .map(e => ({ e, d: Math.hypot(e.midpoint.x - (record.wall[0] + record.wall[2]) / 2, e.midpoint.y - (record.wall[1] + record.wall[3]) / 2) }))

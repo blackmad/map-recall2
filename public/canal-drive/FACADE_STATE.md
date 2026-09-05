@@ -822,3 +822,103 @@ is for.
 - The view selector still does not use the occlusion finding.
 - 2024–2025 remain blocked on height alone, as §13 describes.
 - Everything downstream of §11 stays quarantined.
+
+
+---
+
+## 15. Height is a per-track offset, and the newer rigs are aligned after all
+
+Asked why the green outline sits slightly off on a card that otherwise looks
+right. It is off, it is off vertically, and the reason is not the camera model.
+
+### Three separate faults, only one of them registration
+
+Herengracht 242, pand `0363100012164991`, from the 2021-01-22 view:
+
+| | |
+|---|---|
+| horizontal fit | right edge on the party wall, left edge ~0.45 m in — good |
+| box top | drawn at `eavesHeight` 13.17 m, which cuts across the middle of the neck gable |
+| box bottom | drawn at `groundLevel` 1.26 m, which lands halfway down the quay wall, ~1.8 m below the pavement |
+| camera | 2.03 m NAP, only **0.77 m** above this building's own ground |
+
+**The top was a definition mismatch.** On an Amsterdam canal house the visible
+façade continues above the eaves to the gable top, so a box drawn to the eaves is
+short by two metres on every gabled front — and a reviewer cannot tell that from
+a genuine registration error, because either way the box misses the top of the
+building. The quad now runs ground to **ridge**, with the eaves drawn as a line
+across it: still legible as a measurement, no longer mistakable for a bad fit.
+
+**The bottom is the real defect**, and it is fleet-wide. Across the 60-card deck
+the modelled lens sits a median of **1.15 m** above the building's own ground,
+with a 5th percentile of −0.54 m — below it. 43 of 60 cards are outside the 1.6
+to 3.6 m a survey van can plausibly occupy. The deck now says so on the card, so
+a reviewer judges the box sideways rather than vertically when the height is
+untrustworthy.
+
+### The height error is per-track, not per-frame
+
+That is the useful part, and it took two measurements to see:
+
+| | |
+|---|---|
+| consecutive frames of one track, ~5 m apart | median &#124;Δheight&#124; **0.041 m** |
+| two cameras within 1 m of each other, different years | median &#124;Δheight&#124; **0.75 m**, p90 1.97 m, p99 4.51 m |
+| within one track, p10–p90 of published height | 1.57 m over 586 tracks |
+
+Height is smooth *along* a run to four centimetres and disagrees *between* runs
+by up to a couple of metres. The same patch of quay cannot be two heights, so the
+difference is the error, and its shape is a **vertical datum offset per survey
+run** — the signature of a GNSS session bias. Across the fleet the median lens
+sits 2.44 m above the nearest building's ground, which is right; the spread,
+0.73 to 4.57 m at p05–p95, is the per-track bias, not real variation.
+
+**This is solvable as one constant per track**, which is far more tractable than
+per frame — and it is the same fix the 2024–2025 batches need for their missing
+height, so the two problems collapse into one. Azimuth is untouched either way:
+the projection takes it from `atan2(dx, dy)` and never reads `z`.
+
+It also retracts the remaining comfort in §13's geoid note. `GEOID_SEPARATION_M`
+is consistent with the fleet *median* and cannot be checked more finely than the
+per-track bias allows.
+
+### The 2024–2025 imagery: aligned, and from three different vendors
+
+The alignment experiments in §13 used `TMX…` frames only, because the pose filter
+rejects the newer batches for their missing height and they never reached an
+experiment. The newer imagery comes from **different vendors**, which the URLs
+give away:
+
+    TMX…       /panorama/2023/02/20/TMX7316010203-…      Cyclomedia
+    b_…        /panorama/2024/kempkes/Job_20241203_…     kempkes
+    recording… /panorama/2025/360geo/recording_2025-…    360geo
+
+World alignment is a property of a normalisation pipeline, not of the city, so
+this was a real gap. `pose-experiments.ts --rigs` closes it by putting a newer
+frame beside a `TMX…` frame taken within 1.5 m of it and measuring the circular
+offset between the raw images — a test that needs neither height nor orientation,
+which is why it works on batches that publish neither:
+
+| rig | within 5° of zero | median | outliers |
+|---|---|---|---|
+| `b_` 2024 | 19/20 | 0.72° | −142° at peak 0.56 |
+| `b_` 2025 | 17/20 | 0.54° | 170°, 91°, 171° — all at peak ≤ 0.31 |
+| `recording_` 2025 | 19/20 | 0.36° | −6° at peak 0.29 |
+
+An outlier's correlation peak is the whole question: a weak peak is the
+correlator failing on a blank quay, a confident one is a frame that really is
+turned. On that reading **all three vendors are world-aligned**, and the single
+confident disagreement — one `b_` 2024 frame at −142°, peak 0.56 — is a per-frame
+defect rather than a rig-wide convention. Worth a per-frame check before use; not
+worth a second camera model.
+
+So the answer on 2024–2025 is unchanged in substance and better founded: the
+blocker is height alone, and height is now a per-track constant to be solved
+rather than a missing value to be guessed.
+
+### Still open
+
+- The per-track height offset is diagnosed, not solved. Nothing vertical —
+  storey bands, sill heights, the door band's window — should be trusted until it
+  is, and it now affects the whole fleet rather than the 2024–2025 batches alone.
+- Everything in §14 that was open stays open.

@@ -79,7 +79,8 @@
   <div class="side">
     <div id="plan"></div>
     <p class="legend">
-      <span><span class="k" style="background:#28c07a"></span>wall judged</span>
+      <span><span class="k" style="background:#28c07a"></span>wall judged, ground to ridge</span>
+      <span><span class="k" style="background:#ebbe3c"></span>eaves</span>
       <span><span class="k" style="background:#c8825a"></span>camera</span>
       <span><span class="k" style="background:#e0a33a"></span>BAG address</span>
       <span><span class="k" style="background:#1b2325;border:1px solid #2a3335"></span>neighbour</span>
@@ -107,8 +108,19 @@ const QUESTIONS = [
   { key: 'right-building', text: 'Is the green outline on <b>the right building</b> — the one the address names?',
     options: [['yes', 'Yes', 'y', 'yes'], ['no', 'No, another building', 'n', 'no'],
               ['unsure', 'Cannot tell', 'u', 'maybe']] },
-  { key: 'right-wall', text: 'Is it on <b>the right wall</b> of that building — the frontage, not a return or the rear?',
-    options: [['yes', 'Yes', 'y', 'yes'], ['no', 'Wrong wall', 'n', 'no'],
+  /**
+   * "Almost right" is the common case and the first version had nowhere to put
+   * it. An outline that covers the right house but sits half a metre narrow is
+   * a different fact from one on the neighbour: the first is a metric error
+   * worth measuring, the second is an identity error that voids the building.
+   * Collapsing them into yes/no threw away the distinction the whole review
+   * exists to make, so the grades are ordered by how much they cost.
+   */
+  { key: 'fit', text: 'How well does it <b>fit that building</b>? Judge the green box against the party walls either side.',
+    options: [['snug', 'Snug — edges on the party walls', 's', 'yes'],
+              ['near', 'Close, off by under a metre', 'c', 'yes'],
+              ['loose', 'Off by a metre or more, same house', 'l', 'maybe'],
+              ['wrong-wall', 'Wrong wall of this building', 'w', 'no'],
               ['unsure', 'Cannot tell', 'u', 'maybe']] },
   { key: 'visible', text: 'Can the façade <b>actually be seen</b>, or is it behind a tree, boat, van or scaffolding?',
     options: [['clear', 'Clear enough', 'y', 'yes'], ['partly', 'Partly blocked', 'p', 'maybe'],
@@ -145,8 +157,12 @@ function render() {
   if (!card) { $('main').innerHTML = '<p class="empty">Deck finished. Thank you — every answer is in SQLite.</p>';
     document.querySelector('footer').hidden = true; return; }
   $('addr').textContent = card.label;
-  $('pand').textContent = `BAG ${card.pandId} · ${card.addressCount} address${card.addressCount === 1 ? '' : 'es'}`
-    + (card.constructionYear ? ` · built ${card.constructionYear}` : '') + ` · wall ${card.wallWidthM} m`;
+  const lens = card.lensAboveGroundM;
+  const lensOdd = lens != null && (lens < 1.6 || lens > 3.6);
+  $('pand').innerHTML = `BAG ${card.pandId} · ${card.addressCount} address${card.addressCount === 1 ? '' : 'es'}`
+    + (card.constructionYear ? ` · built ${card.constructionYear}` : '') + ` · wall ${card.wallWidthM} m`
+    + (lens == null ? '' : ` · lens ${lens.toFixed(2)} m above ground`
+        + (lensOdd ? ` <b style="color:var(--maybe)">— implausible for a van, so the box sits too ${lens < 1.6 ? 'low' : 'high'}; judge it sideways, not vertically</b>` : ''));
   $('counter').textContent = `${state.i + 1} / ${state.deck.length}`;
   $('progress').style.width = ((state.i / state.deck.length) * 100).toFixed(1) + '%';
   $('plan').innerHTML = card.plan;
@@ -190,9 +206,9 @@ function renderQuestion() {
 
 async function answer(value) {
   state.answers[QUESTIONS[state.q].key] = value;
-  // A wrong building makes the wall question meaningless; skip to visibility.
+  // A wrong building makes the fit question meaningless; skip to visibility.
   const skipWall = state.q === 0 && value === 'no';
-  if (skipWall) state.answers['right-wall'] = 'n/a';
+  if (skipWall) state.answers['fit'] = 'n/a';
   state.q = skipWall ? 2 : state.q + 1;
   if (state.q < QUESTIONS.length) { renderQuestion(); return; }
   await save();
