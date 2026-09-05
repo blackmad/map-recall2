@@ -31,6 +31,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { AMSTERDAM_CAMERA, hasUsableGeometry, lensHeightNap } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -103,10 +104,15 @@ async function panorama(id: string) {
   return image;
 }
 
+const trackOffset = await loadTrackOffsets(CACHE);
+
 const poseOf = (view: PanoramaView, groundZ: number) => {
   const cam = RD_NEW.fromLngLat(view.lngLat);
   const lens = lensHeightNap(view, groundZ);
   if (!lens) return null;
+  // The solved per-segment datum offset, where one exists; an inferred height
+  // is already anchored to the ground and must not be corrected twice.
+  if (!lens.inferred) lens.z -= trackOffset(view).offsetM;
   return { pose: { x: cam.x, y: cam.y, z: lens.z,
     headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg }, inferred: lens.inferred };
 };

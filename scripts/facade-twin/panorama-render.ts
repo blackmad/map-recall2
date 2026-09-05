@@ -12,6 +12,8 @@
  * project's signature failure was a projection that silently inherited the
  * wrong convention from a default argument.
  */
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
@@ -20,13 +22,43 @@ import type { PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/
 
 export interface DecodedPanorama { width: number; height: number; data: Uint8Array | Uint8ClampedArray }
 
-export const poseOf = (view: PanoramaView): CameraPose => {
+export const poseOf = (view: PanoramaView, heightOffsetM = 0): CameraPose => {
   const camera = RD_NEW.fromLngLat(view.lngLat);
   return {
-    x: camera.x, y: camera.y, z: view.cameraHeight - GEOID_SEPARATION_M,
+    x: camera.x, y: camera.y, z: view.cameraHeight - heightOffsetM - GEOID_SEPARATION_M,
     headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
   };
 };
+
+/**
+ * The solved vertical datum offset for a frame, or zero when none is known.
+ *
+ * Published camera height drifts within a survey run and jumps between runs;
+ * `solve-track-datum.ts` recovers it from co-located frames and writes one
+ * offset per ~125 m segment. Subtracting it removes 78% of the disagreement
+ * between two cameras standing at the same spot in different years, measured at
+ * places the solve never saw.
+ *
+ * A frame with no solved offset is left alone rather than guessed at. The
+ * function reports whether it had one, because a corrected height and an
+ * uncorrected one are different evidence and the difference belongs on the card.
+ */
+export async function loadTrackOffsets(cacheDir: string): Promise<(view: PanoramaView) => { offsetM: number; solved: boolean }> {
+  let offsets: Record<string, number> = {};
+  let segment = 0;
+  try {
+    const file = JSON.parse(await readFile(path.join(cacheDir, 'track-datum.json'), 'utf8'));
+    offsets = file.offsets ?? {};
+    segment = file.metadata?.segmentFrames ?? 0;
+  } catch { /* solve it and this lights up; until then every frame is uncorrected */ }
+  return (view: PanoramaView) => {
+    const m = view.panoramaId.match(/^(.*)_(\d{6})$/);
+    if (!m) return { offsetM: 0, solved: false };
+    const key = segment > 0 ? `${m[1]}#${Math.floor(Number(m[2]) / segment)}` : m[1];
+    const offsetM = offsets[key];
+    return Number.isFinite(offsetM) ? { offsetM, solved: true } : { offsetM: 0, solved: false };
+  };
+}
 
 export function downscale(source: Uint8ClampedArray, width: number, height: number, maxWidth: number) {
   if (width <= maxWidth) return { width, height, data: source };
@@ -55,9 +87,9 @@ export const encodeJpeg = (width: number, height: number, data: Uint8ClampedArra
 export function projectFootprint(
   image: DecodedPanorama, view: PanoramaView, camera: CameraModel,
   ring: ProjectedPoint[], wall: readonly number[], groundZ: number, topZ: number,
-  { maxWidth = 420, quality = 78, contextFraction = 0.6, eavesZ = null as number | null } = {},
+  { maxWidth = 420, quality = 78, contextFraction = 0.6, eavesZ = null as number | null, heightOffsetM = 0 } = {},
 ): { jpeg: Buffer; width: number; height: number } | null {
-  const pose = poseOf(view);
+  const pose = poseOf(view, heightOffsetM);
   const project = (p: ProjectedPoint, z: number) =>
     camera.project([p.x - pose.x, p.y - pose.y, z - pose.z], pose, image);
 
@@ -146,9 +178,9 @@ export function projectFootprint(
 export function rectifyWall(
   image: DecodedPanorama, view: PanoramaView, camera: CameraModel,
   wall: readonly number[], baseZ: number, topZ: number,
-  { pixelsPerMetre = 26, margin = 1.25, maxWidth = 380, quality = 78 } = {},
+  { pixelsPerMetre = 26, margin = 1.25, maxWidth = 380, quality = 78, heightOffsetM = 0 } = {},
 ): { jpeg: Buffer; width: number; height: number } | null {
-  const pose = poseOf(view);
+  const pose = poseOf(view, heightOffsetM);
   const [x0, y0, x1, y1] = wall;
   const wallWidthM = Math.hypot(x1 - x0, y1 - y0);
   const mid = { x: (x0 + x1) / 2, y: (y0 + y1) / 2 };

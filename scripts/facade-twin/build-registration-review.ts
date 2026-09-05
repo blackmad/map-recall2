@@ -35,7 +35,7 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/fac
 import { buildElevations, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { AMSTERDAM_CAMERA, hasUsablePose } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
-import { planSvg, poseOf, projectFootprint, rectifyWall } from './panorama-render.ts';
+import { loadTrackOffsets, planSvg, poseOf, projectFootprint, rectifyWall } from './panorama-render.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
 const CACHE = path.resolve('.cache/facade-twin');
@@ -97,6 +97,8 @@ function wallOf(ring: ProjectedPoint[], proposed: readonly number[]): [number, n
   return [best.start.x, best.start.y, best.end.x, best.end.y];
 }
 
+const trackOffset = await loadTrackOffsets(CACHE);
+
 const decoded = new Map<string, any>();
 async function panorama(id: string) {
   if (decoded.has(id)) return decoded.get(id);
@@ -148,10 +150,11 @@ for (const pandId of Object.keys(store).sort()) {
     const image = await panorama(view.panoramaId);
     if (!image) continue;
     const camera = RD_NEW.fromLngLat(view.lngLat);
+    const datum = trackOffset(view);
     const projected = projectFootprint(image, view, AMSTERDAM_CAMERA, ring, wall, ground, top,
-      { maxWidth: 900, quality: 84, contextFraction: 0.75, eavesZ: eaves });
+      { maxWidth: 900, quality: 84, contextFraction: 0.75, eavesZ: eaves, heightOffsetM: datum.offsetM });
     const strip = rectifyWall(image, view, AMSTERDAM_CAMERA, wall, ground - 1, top + 1.5,
-      { pixelsPerMetre: 34, margin: 1.2, maxWidth: 620, quality: 84 });
+      { pixelsPerMetre: 34, margin: 1.2, maxWidth: 620, quality: 84, heightOffsetM: datum.offsetM });
     if (!projected && !strip) continue;
     // Named for the geometry that produced them, so a rebuild after a massing
     // or camera change adds files rather than replacing them. A reviewer's
@@ -164,6 +167,7 @@ for (const pandId of Object.keys(store).sort()) {
       heading: Number(view.headingDeg.toFixed(1)),
       standoffM: Number(standoffM(wallElevation, camera).toFixed(1)),
       obliquityDeg: Number(obliquityDeg(wallElevation, camera).toFixed(1)),
+      datumCorrectedM: datum.solved ? Number(datum.offsetM.toFixed(2)) : null,
       projection: projected ? `${stem}__proj.jpg` : null,
       wall: strip ? `${stem}__wall.jpg` : null,
     });
@@ -226,7 +230,7 @@ for (const pandId of Object.keys(store).sort()) {
      * placement is wrong for a reason that has nothing to do with which
      * building it is on, which a reviewer should be told before being asked.
      */
-    lensAboveGroundM: Number((poseOf(shown[0]).z - ground).toFixed(2)),
+    lensAboveGroundM: Number((poseOf(shown[0], trackOffset(shown[0]).offsetM).z - ground).toFixed(2)),
     plan: planSvg(ring, wall,
       shown.map((v, i) => ({ point: RD_NEW.fromLngLat(v.lngLat), primary: i === 0,
         label: `${v.capturedAt.slice(0, 10)} · heading ${v.headingDeg.toFixed(1)}°` })),
