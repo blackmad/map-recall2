@@ -33,6 +33,14 @@ import {
   clearHomeGeocodeCache,
   emptyExploration,
 } from './progressStore';
+import { clearPlaceStreak } from './placeStreak';
+import { clearPassport } from './neighborhoodPassport';
+import {
+  COLD_OPEN_MIN_S,
+  COLD_OPEN_WINDOW_S,
+  pickColdOpenReview,
+} from './coldOpenReview';
+import { knowThisCornerFeedback } from './finishStory';
 import { ROTATION_STORAGE_KEY } from '../facts/factStore';
 
 /** How many wrong answers a multiple-choice question offers. */
@@ -115,6 +123,8 @@ export class GameRecallRuntime {
           clearExploration(localStorage);
           clearBestTimes(localStorage);
           clearHomeGeocodeCache(localStorage);
+          clearPlaceStreak(localStorage);
+          clearPassport(localStorage);
           try { localStorage.removeItem(ROTATION_STORAGE_KEY); } catch { /* private mode */ }
           this._factRotation = { history: {}, shown: 0, recentKinds: [] };
           this._explorationSnapshot = emptyExploration();
@@ -144,7 +154,7 @@ export class GameRecallRuntime {
         overlay.store.setAccount({
           visible: true,
           label: 'Playing as guest',
-          note: 'Sign in to sync learned streets',
+          note: 'Sign in to sync your fog map across devices',
           buttonLabel: 'Sign in',
         });
       }
@@ -295,6 +305,7 @@ export class GameRecallRuntime {
 
   _updateCanalQuiz(dt: number): void {
     if (!this.player) return;
+    if (this._tryColdOpenReview()) return;
     const transitReady = !isTransit(this.travelMode) || this._transitQuizzesReady();
     if (isTransit(this.travelMode) && transitReady) {
       this._updateTransitStopQuiz();
@@ -328,18 +339,14 @@ export class GameRecallRuntime {
 
     const profile = travelProfile(this.travelMode);
     if (decision.action === 'adopt') {
-      // A name the player has already proved they know is adopted silently
-      // instead of being asked again until it falls due. Encyclopedia can
-      // still open — the name is no longer under question.
+      // A name the player has already proved they know is adopted with a quiet
+      // wink instead of a full quiz. Encyclopedia stays closed here — the
+      // postcard should feel earned from a real answer, not a drive-through.
       this.quizCurrentName = decision.name;
       this.learnedNames.add(decision.name);
       this._revealName(decision.name);
       if (isTransit(this.travelMode)) this._stickTransitLine(decision.name);
-      this._showStreetKnowledge(
-        decision.name,
-        profile.learnedKind === 'street' ? 'street'
-          : profile.learnedKind === 'transit' ? 'line' : 'water',
-      );
+      this.quizFeedback = knowThisCornerFeedback(decision.name);
       return;
     }
 
@@ -371,6 +378,47 @@ export class GameRecallRuntime {
       segmentIndex: quizRoad ? quizRoad.segIdx : -1,
       pointIndex: quizRoad ? quizRoad.ptIdx : 0,
     });
+  }
+
+  /**
+   * One overdue SRS name in the first minute — a warm-up, not a spoiler on the
+   * briefing. Skips when nothing is due or a prompt is already open.
+   */
+  _tryColdOpenReview(): boolean {
+    if (this.quizPromptName || this._coldOpenDone) return false;
+    if (this.raceTime < COLD_OPEN_MIN_S || this.raceTime > COLD_OPEN_WINDOW_S) return false;
+    if (!this.recall || typeof this.recall.dueReviews !== 'function') {
+      this._coldOpenDone = true;
+      return false;
+    }
+    const profile = travelProfile(this.travelMode);
+    const preferTypes = profile.learnedKind === 'water' ? ['canal', 'waterway', 'river']
+      : profile.learnedKind === 'transit' ? ['line', 'stop', 'tram', 'subway']
+        : ['street', 'road'];
+    const pick = pickColdOpenReview({
+      due: this.recall.dueReviews(),
+      cityId: this.cityId || 'amsterdam',
+      preferTypes,
+    });
+    this._coldOpenDone = true;
+    if (!pick) return false;
+    const world = this._toWorld(pick.center[0], pick.center[1]);
+    const subject = pick.type === 'stop' ? 'stop'
+      : (profile.learnedKind === 'transit' ? 'line' : profile.quizRouteSubject);
+    this._openQuizPrompt({
+      kind: 'route',
+      name: pick.name,
+      subject,
+      question: 'Review — what is this place called?',
+      context: 'Warm-up from your spaced list',
+      choices: null,
+      segmentIndex: -1,
+      pointIndex: 0,
+    });
+    if (world) {
+      // Keep the player moving; do not teleport. The question is the review.
+    }
+    return true;
   }
 
   _transitQuizzesReady(): boolean {
@@ -976,7 +1024,7 @@ export class GameRecallRuntime {
       this.quizFeedback = '';
       if (typeof this._reclaimKeyboardFocus === 'function') this._reclaimKeyboardFocus();
       else this.canvas.focus();
-      if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
+      if (learnedRoute && correct) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
     }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
   }
 }

@@ -22,7 +22,16 @@ import {
   recordBestTime,
   saveExploration,
   type Exploration,
+  type ExplorationGain,
 } from './progressStore';
+import { notePlaceDay, placeStreakLabel, readPlaceStreak } from './placeStreak';
+import {
+  readPassport,
+  savePassport,
+  stampNewNeighborhoods,
+} from './neighborhoodPassport';
+import { finishStory } from './finishStory';
+import { missionBrief } from './missionBrief';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
 import type { PresentationHost } from './host';
@@ -758,16 +767,29 @@ export class GamePresentationRuntime {
       if (known > 0) totals.push(`${known} names`);
       if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
       if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
+      const gain = this._explorationRouteGain;
+      const story = finishStory({
+        gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
+        destinationName: this.routeTo?.name || '',
+        cityName: this._cityDisplayName(),
+        newPassportStamps: this._finishPassportFresh || [],
+        placeStreak: { days: [], current: 0, best: 0 },
+        signedIn: !!(this.recall && this.recall.signedIn),
+        recallAvailable: !!(this.recall && this.recall.available),
+      });
+      // Prefer live streak label computed at save time.
+      if (this._finishPlaceStreakLabel) story.streak = this._finishPlaceStreakLabel;
       const fresh: string[] = [];
-      if (this.learnedNames.size + (this.learnedStopNames?.size || 0) > 0) {
-        fresh.push(`${this.learnedNames.size + (this.learnedStopNames?.size || 0)} names`);
-      }
-      if (this._visitedNeighborhoods.size > 0) fresh.push(`${this._visitedNeighborhoods.size} neighborhoods`);
-      if (this._seenLandmarkNames.size > 0) fresh.push(`${this._seenLandmarkNames.size} landmarks`);
-      // The label sits beside the totals on a wide card and above them on a
-      // phone: right-aligned totals ran straight into "CITY KNOWLEDGE".
+      if (gain && gain.newNames > 0) fresh.push(`${gain.newNames} names`);
+      if (gain && gain.newNeighborhoods > 0) fresh.push(`${gain.newNeighborhoods} neighborhoods`);
+      if (gain && gain.newLandmarks > 0) fresh.push(`${gain.newLandmarks} landmarks`);
       const knowledgeStacked = compact;
-      const knowledgeH = (knowledgeStacked ? 34 : 18) + (fresh.length ? 20 : 0) + 18;
+      const storyLines = [story.headline, story.detail, story.passport, story.streak, story.guestTease]
+        .filter(Boolean) as string[];
+      const knowledgeH = (knowledgeStacked ? 34 : 18)
+        + (fresh.length ? 18 : 0)
+        + storyLines.length * 16
+        + 10;
       blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
         ctx.textAlign = 'left';
         ctx.fillStyle = MUTED; ctx.font = 'bold 9px monospace';
@@ -779,12 +801,20 @@ export class GamePresentationRuntime {
           ctx.textAlign = 'right';
           ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + cardW - padX, top + 12);
         }
+        let y = top + (knowledgeStacked ? 48 : 30);
         if (fresh.length) {
           ctx.textAlign = 'left';
           ctx.fillStyle = ACCENT;
           ctx.font = '11px system-ui, sans-serif';
-          ctx.fillText(`+${fresh.join(', +')} this route`,
-            cardX + padX, top + (knowledgeStacked ? 50 : 32));
+          ctx.fillText(`+${fresh.join(', +')} first-time`, cardX + padX, y);
+          y += 16;
+        }
+        ctx.textAlign = 'left';
+        ctx.fillStyle = BODY;
+        ctx.font = '12px system-ui, sans-serif';
+        for (const line of storyLines) {
+          ctx.fillText(line, cardX + padX, y);
+          y += 16;
         }
       } });
     }
@@ -1017,6 +1047,27 @@ export class GamePresentationRuntime {
     return readExploration(localStorage);
   }
 
+  /**
+   * Punchline for race open / briefing. Names the destination only — never the
+   * start corridor under the wheels.
+   */
+  _composeMissionBrief() {
+    const due = this.recall && typeof this.recall.dueReviews === 'function'
+      ? this.recall.dueReviews()
+      : [];
+    const hasCold = due.some((place) => place.cityId === (this.cityId || 'amsterdam')
+      && place.dueAt <= Date.now());
+    return missionBrief({
+      destinationName: this.routeTo?.name || '',
+      travelMode: isBoat(this.travelMode) ? 'boat'
+        : isTransit(this.travelMode) ? 'transit' : 'car',
+      routePattern: this.routePattern === 'home' ? 'home' : 'surprise',
+      cityName: this._cityDisplayName(),
+      homeLearningRadiusKm: this._homeLearningRadiusKm || 0,
+      hasColdOpenReview: hasCold,
+    });
+  }
+
   /** Returns the merged collection so the finish card can show both the totals
    *  and what this route added. */
   _saveExploration(): Exploration | null {
@@ -1032,6 +1083,21 @@ export class GamePresentationRuntime {
         attempts: this.quizAttempts,
       });
       saveExploration(localStorage, after);
+      const gain = explorationGain(before, after);
+      this._explorationRouteGain = gain;
+      if (gain.newNames > 0) {
+        const streak = notePlaceDay(localStorage);
+        this._finishPlaceStreakLabel = placeStreakLabel(streak);
+      } else {
+        this._finishPlaceStreakLabel = placeStreakLabel(readPlaceStreak(localStorage));
+      }
+      const stamped = stampNewNeighborhoods(
+        after,
+        this._visitedNeighborhoods,
+        readPassport(localStorage),
+      );
+      if (stamped.fresh.length) savePassport(localStorage, stamped.passport);
+      this._finishPassportFresh = stamped.fresh;
       return after;
     } catch (error) {
       console.warn('Could not save exploration:', error);
@@ -1040,7 +1106,7 @@ export class GamePresentationRuntime {
   }
 
   /** What this route added, for the finish card. */
-  _explorationGain(before: Exploration, after: Exploration) {
+  _explorationGain(before: Exploration, after: Exploration): ExplorationGain {
     return explorationGain(before, after);
   }
 }

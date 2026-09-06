@@ -152,6 +152,13 @@ export interface RecallStore extends AnswerRecallStore {
   signOut(): Promise<unknown>;
   onUserChange(listener: (user: { label: string } | null) => void): void;
   knownPlaces(): Array<{ name: string; center: LatLon }>;
+  dueReviews?(): Array<{
+    name: string;
+    type: string;
+    cityId: string;
+    center: [number, number];
+    dueAt: number;
+  }>;
   routeMastery(cityId: string): Record<string, number>;
   homeMasterySamples?(cityId: string): Array<{ lat: number; lng: number; mastery: number }>;
   isKnownHere(feature: RecallFeature): boolean;
@@ -220,6 +227,8 @@ export interface RecallHost extends GameCoreHost {
   _quizzedTransitStops: Set<string>;
   _quizzedTransitStreets: Set<string>;
   _quizzedTransitTransfers: Set<string>;
+  /** True after the cold-open window has been considered this race. */
+  _coldOpenDone: boolean;
   /** Multi-leg surprise plan when the hop changes lines at a hub. */
   _transitConnectionPlan: import('../transit/transfers').TransitConnectionPlan | null;
   /** 0-based leg on `_transitConnectionPlan` while driving a transfer hop. */
@@ -260,6 +269,7 @@ export interface PresentationHost extends GameCoreHost {
   hud: Hud;
   particles: ParticleSystem;
   loadingScreen: LoadingScreen;
+  recall: RecallStore | null;
 
   loadingMessage: string;
   loadingProgress: number;
@@ -307,6 +317,10 @@ export interface PresentationHost extends GameCoreHost {
 
   _ribbon: RouteRibbon | null;
   _explorationSnapshot: Exploration | null;
+  /** First-ever gains from the route that just finished. */
+  _explorationRouteGain: import('./progressStore').ExplorationGain | null;
+  _finishPassportFresh: string[];
+  _finishPlaceStreakLabel: string | null;
   _assistUsage: Partial<Record<RibbonAid, boolean>>;
 
   _raceKey: string | null;

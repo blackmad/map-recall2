@@ -6,6 +6,7 @@ import {
   type CanalPreferences,
   type ZoomClamp,
 } from '../game/preferences.ts';
+import { missionBrief } from '../game/missionBrief.ts';
 import type { OverlayStore } from './store.ts';
 import {
   DIFFICULTY_ICONS,
@@ -216,6 +217,29 @@ function homeLearningNote(prefs: CanalPreferences): string {
   } catch {
     return base;
   }
+}
+
+function briefingMission(prefs: CanalPreferences): string {
+  const city = playableCities().find((entry) => entry.id === prefs.cityId);
+  let homeKm = 0;
+  try {
+    const raw = localStorage.getItem(HOME_RADIUS_STORAGE_KEY);
+    if (raw) {
+      const saved = JSON.parse(raw) as { cityId?: string; address?: string; radiusKm?: number };
+      if (saved.cityId === prefs.cityId && saved.address === (prefs.homeAddress || '').trim()) {
+        homeKm = typeof saved.radiusKm === 'number' ? saved.radiusKm : 0;
+      }
+    }
+  } catch { /* ignore */ }
+  const brief = missionBrief({
+    destinationName: prefs.routePattern === 'home' ? 'home' : 'your destination',
+    travelMode: prefs.travelMode === 'boat' ? 'boat'
+      : prefs.travelMode === 'transit' ? 'transit' : 'car',
+    routePattern: prefs.routePattern === 'home' ? 'home' : 'surprise',
+    cityName: city?.name || 'the city',
+    homeLearningRadiusKm: homeKm,
+  });
+  return brief.tease ? `${brief.line} · ${brief.tease}` : brief.line;
 }
 
 const DIFFICULTY_MAIN: Choice<CanalPreferences['difficulty']>[] = [
@@ -481,6 +505,9 @@ export function OverlayApp({
             </details>
             </div>
             <div className="enamel-setup-footer">
+              <p className="enamel-field-note" id="mission-brief" style={{ margin: '0 0 8px', textAlign: 'center' }}>
+                {briefingMission(prefs)}
+              </p>
               <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">Start route</button>
               <div id="route-error" aria-live="polite">{state.routeError}</div>
             </div>

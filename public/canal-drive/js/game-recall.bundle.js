@@ -346,6 +346,47 @@
     removeKey(store, HOME_GEOCODE_CACHE_KEY);
   }
 
+  // src/canalRecall/game/placeStreak.ts
+  var PLACE_STREAK_STORAGE_KEY = "canalRecall.placeStreak.v1";
+  function clearPlaceStreak(store) {
+    try {
+      if (store.removeItem) store.removeItem(PLACE_STREAK_STORAGE_KEY);
+      else store.setItem(PLACE_STREAK_STORAGE_KEY, "");
+    } catch {
+    }
+  }
+
+  // src/canalRecall/game/neighborhoodPassport.ts
+  var PASSPORT_STORAGE_KEY = "canalRecall.neighborhoodPassport.v1";
+  function clearPassport(store) {
+    try {
+      if (store.removeItem) store.removeItem(PASSPORT_STORAGE_KEY);
+      else store.setItem(PASSPORT_STORAGE_KEY, "");
+    } catch {
+    }
+  }
+
+  // src/canalRecall/game/coldOpenReview.ts
+  function pickColdOpenReview(input) {
+    const now = input.now ?? Date.now();
+    const city = input.due.filter(
+      (place) => place.cityId === input.cityId && place.dueAt <= now && !!place.name && Number.isFinite(place.center[0]) && Number.isFinite(place.center[1])
+    );
+    if (!city.length) return null;
+    const preferred = city.filter((place) => input.preferTypes.includes(place.type));
+    const pool = preferred.length ? preferred : city;
+    pool.sort((a, b) => a.dueAt - b.dueAt);
+    return pool[0] || null;
+  }
+  var COLD_OPEN_WINDOW_S = 55;
+  var COLD_OPEN_MIN_S = 8;
+
+  // src/canalRecall/game/finishStory.ts
+  function knowThisCornerFeedback(name) {
+    const short = name.length > 28 ? `${name.slice(0, 26)}\u2026` : name;
+    return `You know ${short}`;
+  }
+
   // src/canalRecall/facts/factQuality.ts
   var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
   var LEDE_RESTATEMENT = new RegExp(
@@ -434,6 +475,8 @@ Learned names, exploration collection, personal bests, route settings and the ho
             clearExploration(localStorage);
             clearBestTimes(localStorage);
             clearHomeGeocodeCache(localStorage);
+            clearPlaceStreak(localStorage);
+            clearPassport(localStorage);
             try {
               localStorage.removeItem(ROTATION_STORAGE_KEY);
             } catch {
@@ -466,7 +509,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
           overlay.store.setAccount({
             visible: true,
             label: "Playing as guest",
-            note: "Sign in to sync learned streets",
+            note: "Sign in to sync your fog map across devices",
             buttonLabel: "Sign in"
           });
         }
@@ -595,6 +638,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
     // ---- The route question ----
     _updateCanalQuiz(dt) {
       if (!this.player) return;
+      if (this._tryColdOpenReview()) return;
       const transitReady = !isTransit(this.travelMode) || this._transitQuizzesReady();
       if (isTransit(this.travelMode) && transitReady) {
         this._updateTransitStopQuiz();
@@ -626,10 +670,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         this.learnedNames.add(decision.name);
         this._revealName(decision.name);
         if (isTransit(this.travelMode)) this._stickTransitLine(decision.name);
-        this._showStreetKnowledge(
-          decision.name,
-          profile.learnedKind === "street" ? "street" : profile.learnedKind === "transit" ? "line" : "water"
-        );
+        this.quizFeedback = knowThisCornerFeedback(decision.name);
         return;
       }
       if (isTransit(this.travelMode) && !transitReady) return;
@@ -654,6 +695,42 @@ Learned names, exploration collection, personal bests, route settings and the ho
         segmentIndex: quizRoad ? quizRoad.segIdx : -1,
         pointIndex: quizRoad ? quizRoad.ptIdx : 0
       });
+    }
+    /**
+     * One overdue SRS name in the first minute — a warm-up, not a spoiler on the
+     * briefing. Skips when nothing is due or a prompt is already open.
+     */
+    _tryColdOpenReview() {
+      if (this.quizPromptName || this._coldOpenDone) return false;
+      if (this.raceTime < COLD_OPEN_MIN_S || this.raceTime > COLD_OPEN_WINDOW_S) return false;
+      if (!this.recall || typeof this.recall.dueReviews !== "function") {
+        this._coldOpenDone = true;
+        return false;
+      }
+      const profile = travelProfile(this.travelMode);
+      const preferTypes = profile.learnedKind === "water" ? ["canal", "waterway", "river"] : profile.learnedKind === "transit" ? ["line", "stop", "tram", "subway"] : ["street", "road"];
+      const pick = pickColdOpenReview({
+        due: this.recall.dueReviews(),
+        cityId: this.cityId || "amsterdam",
+        preferTypes
+      });
+      this._coldOpenDone = true;
+      if (!pick) return false;
+      const world = this._toWorld(pick.center[0], pick.center[1]);
+      const subject = pick.type === "stop" ? "stop" : profile.learnedKind === "transit" ? "line" : profile.quizRouteSubject;
+      this._openQuizPrompt({
+        kind: "route",
+        name: pick.name,
+        subject,
+        question: "Review \u2014 what is this place called?",
+        context: "Warm-up from your spaced list",
+        choices: null,
+        segmentIndex: -1,
+        pointIndex: 0
+      });
+      if (world) {
+      }
+      return true;
     }
     _transitQuizzesReady() {
       const grace = window.CanalRecallTransit?.TRANSIT_ORIENTATION_GRACE_S ?? 18;
@@ -782,9 +859,10 @@ Learned names, exploration collection, personal bests, route settings and the ho
         let answer = null;
         let pool = [];
         if (plan && plan.transferStopId === stop.stopId && plan.nextLineName) {
-          answer = plan.nextLineName;
+          const nextLine = plan.nextLineName;
+          answer = nextLine;
           pool = Transit.transferTargetLines ? Transit.transferTargetLines(load, transfers, stop.stopId, this._activeTransitLine) : load.lineDistractors || [];
-          if (!pool.includes(answer)) pool = [...pool, answer];
+          if (!pool.includes(nextLine)) pool = [...pool, nextLine];
         } else {
           const others = Transit.transferTargetLines ? Transit.transferTargetLines(load, transfers, stop.stopId, this._activeTransitLine) : Transit.otherLinesAtStop ? Transit.otherLinesAtStop(load, stop.stopId, this._activeTransitLine) : [];
           if (others.length < 1) continue;
@@ -1165,7 +1243,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         this.quizFeedback = "";
         if (typeof this._reclaimKeyboardFocus === "function") this._reclaimKeyboardFocus();
         else this.canvas.focus();
-        if (learnedRoute) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
+        if (learnedRoute && correct) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
       }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
     }
   };
