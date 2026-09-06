@@ -6,6 +6,23 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Transit Phase D hardening + Phase E transfers — 2026-09-06
+
+Phase D was driveable but still taught like a single-line thin slice.
+
+- **Metro 52 pin:** end-to-end reachability + Noord/Centraal stop pins beside
+  tram 2 in `check:transit-routing`.
+- **Termini surprise pool:** `transitRouteAnchors` adds every driveable line’s
+  first/last stop (Isolatorweg, Gein, …) on top of curated hubs — 34 anchors.
+- **Active-line stop scope:** destination-scoped stop quizzes resolve the
+  corridor from `_activeTransitLine` / covering stops, not `lines[0]`.
+- **Sibling distractors:** line quizzes prefer corridors that share stops so
+  “which line am I on” is a real discrimination task at hubs.
+- **Phase E transfers:** `transit-transfers.json` (94 edges from parent
+  stations + proximity; GTFS `transfers.txt` merged when cached).
+  `planTransitConnection` caps at two rides; hub quiz asks which line you can
+  change to. Second-leg driving after the change is still open.
+
 ## Home radius polish, knowledge tint, transit Phase D, English prune — 2026-09-05
 
 Four follow-ons after the expanding home-learning radius landed:

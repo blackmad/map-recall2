@@ -219,51 +219,76 @@ export function adaptTransitNetwork(
   };
 }
 
-/** Curated surprise anchors spanning Phase D rail (tram + metro). */
-export function transitRouteAnchors(load: TransitPlayLoad): Array<{
+export type TransitRouteAnchor = {
   id: string;
   name: string;
   lat: number;
   lng: number;
   type: 'stop';
-}> {
-  const prefer = [
-    'Centraal Station',
-    'Dam',
-    'Leidseplein',
-    'Museumplein',
-    'Oudenaardeplantsoen',
-    'Station Zuid',
-    'Station Sloterdijk',
-    'Noord',
-    'Amstelstation',
-    'Waterlooplein',
-  ];
-  const byName = new Map(load.stops.map((s) => [s.name, s]));
-  const anchors: Array<{ id: string; name: string; lat: number; lng: number; type: 'stop' }> = [];
-  for (const label of prefer) {
+};
+
+const PREFERRED_TRANSIT_ANCHORS = [
+  'Centraal Station',
+  'Dam',
+  'Leidseplein',
+  'Museumplein',
+  'Oudenaardeplantsoen',
+  'Station Zuid',
+  'Station Sloterdijk',
+  'Noord',
+  'Amstelstation',
+  'Waterlooplein',
+  'Isolatorweg',
+  'Gein',
+  'Gaasperplas',
+] as const;
+
+function pushAnchor(
+  anchors: TransitRouteAnchor[],
+  seen: Set<string>,
+  stop: TransitStopFeature,
+): void {
+  const id = `stop-${stop.stopId}`;
+  if (seen.has(id) || seen.has(stop.name)) return;
+  seen.add(id);
+  seen.add(stop.name);
+  anchors.push({
+    id,
+    name: stop.name,
+    lat: stop.center[0],
+    lng: stop.center[1],
+    type: 'stop',
+  });
+}
+
+/**
+ * Surprise destinations for Phase D: curated hubs plus every driveable line's
+ * termini so metro/tram ends are reachable without a hand list per corridor.
+ */
+export function transitRouteAnchors(load: TransitPlayLoad): TransitRouteAnchor[] {
+  const byId = new Map(load.stops.map((stop) => [stop.stopId, stop]));
+  const byName = new Map(load.stops.map((stop) => [stop.name, stop]));
+  const anchors: TransitRouteAnchor[] = [];
+  const seen = new Set<string>();
+
+  for (const label of PREFERRED_TRANSIT_ANCHORS) {
     const stop = byName.get(label);
-    if (!stop) continue;
-    anchors.push({
-      id: `stop-${stop.stopId}`,
-      name: stop.name,
-      lat: stop.center[0],
-      lng: stop.center[1],
-      type: 'stop',
-    });
+    if (stop) pushAnchor(anchors, seen, stop);
   }
-  // Enough mid-line stops to retarget when an end is unreachable.
-  if (anchors.length < 6) {
+
+  for (const line of load.lines) {
+    if (line.stopIds.length < 2) continue;
+    const first = byId.get(line.stopIds[0]!);
+    const last = byId.get(line.stopIds[line.stopIds.length - 1]!);
+    if (first) pushAnchor(anchors, seen, first);
+    if (last) pushAnchor(anchors, seen, last);
+  }
+
+  // Fill so retarget still has mid-line options when termini snap poorly.
+  if (anchors.length < 10) {
     for (const stop of load.stops) {
-      if (anchors.some((a) => a.id === `stop-${stop.stopId}`)) continue;
-      anchors.push({
-        id: `stop-${stop.stopId}`,
-        name: stop.name,
-        lat: stop.center[0],
-        lng: stop.center[1],
-        type: 'stop',
-      });
-      if (anchors.length >= 12) break;
+      pushAnchor(anchors, seen, stop);
+      if (anchors.length >= 24) break;
     }
   }
   return anchors;

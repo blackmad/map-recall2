@@ -13,6 +13,7 @@ export {
   type TransitStopFeature,
   type TransitLineFeature,
   type TransitWay,
+  type TransitRouteAnchor,
 } from './segments.ts';
 
 export {
@@ -50,6 +51,19 @@ export {
   type NearestCorridorStreet,
 } from './corridorStreets.ts';
 
+export {
+  deriveTransfersFromNetwork,
+  otherLinesAtStop,
+  planTransitConnection,
+  preferSiblingDistractors,
+  resolveActiveLine,
+  siblingLineNames,
+  transferTargetLines,
+  type TransitConnectionPlan,
+  type TransitTransferEdge,
+  type TransitTransfers,
+} from './transfers.ts';
+
 /** Metres — stop dwell / approach radius for the thin-slice stop quiz. */
 export const TRANSIT_STOP_QUIZ_RADIUS_M = 45;
 
@@ -67,3 +81,6 @@ export const TRANSIT_STREET_QUIZ_COOLDOWN_S = 22;
 
 /** Metres — landmarks farther than this from the planned route stay quiet. */
 export const TRANSIT_LANDMARK_ROUTE_RADIUS_M = 120;
+
+/** Minimum seconds between transfer-hub line quizzes. */
+export const TRANSIT_TRANSFER_QUIZ_COOLDOWN_S = 40;

@@ -32,8 +32,19 @@ assert.ok(lineHasStop('2', 'Dam'), 'tram 2 stops at Dam');
 assert.ok(lineHasStop('52', 'Noord'), 'metro 52 stops at Noord');
 assert.ok(network.lines.some((l) => l.mode === 'ferry' && l.ref.startsWith('F')), 'ferry F-line present');
 
+const transfersPath = path.resolve('public/data/extracts/amsterdam/transit-transfers.json');
+assert.ok(
+  existsSync(transfersPath),
+  `missing ${transfersPath} — run npm run build:amsterdam-transit-transfers`,
+);
+const transfers = JSON.parse(readFileSync(transfersPath, 'utf8')) as {
+  counts: { transfers: number };
+  transfers: unknown[];
+};
+assert.ok(transfers.counts.transfers >= 50, `transfer extract populated (got ${transfers.counts.transfers})`);
+
 console.log(
   `Transit extract OK: ${network.counts.lines} lines `
   + `(${network.counts.byMode.tram} tram / ${network.counts.byMode.metro} metro / ${network.counts.byMode.ferry} ferry), `
-  + `${network.counts.stops} stops.`,
+  + `${network.counts.stops} stops, ${transfers.counts.transfers} transfers.`,
 );

@@ -401,7 +401,7 @@ export class GamePresentationRuntime {
         '3. Name the line while moving, and stops as you approach them',
         '4. Line colour and labels stay hidden until you answer',
         '5. TAB toggles the overview map; -/+ changes zoom',
-        '6. Transit covers tram and metro — ferries come later',
+        '6. Transit: tram + metro; change lines at hubs',
       ]
       : isCar(this.travelMode)
         ? [

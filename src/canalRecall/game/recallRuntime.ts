@@ -297,6 +297,7 @@ export class GameRecallRuntime {
     if (!this.player) return;
     if (isTransit(this.travelMode)) {
       this._updateTransitStopQuiz();
+      this._updateTransitTransferQuiz();
       this._updateTransitStreetQuiz();
     }
     const heading = this.player.angle;
@@ -369,9 +370,19 @@ export class GameRecallRuntime {
   }
 
   _transitLineChoices(answer: string): string[] | null {
+    const Transit = window.CanalRecallTransit;
     const load = this.osmLoader && this.osmLoader.transitLoad;
     const pool = (load && load.lineDistractors) || [];
-    const alternatives = pickDistractors(pool, answer, DISTRACTOR_COUNT, shuffle);
+    if (!Transit || !load) {
+      const alternatives = pickDistractors(pool, answer, DISTRACTOR_COUNT, shuffle);
+      return alternatives.length >= 2 ? [answer, ...alternatives] : null;
+    }
+    const siblings = Transit.siblingLineNames
+      ? Transit.siblingLineNames(load, answer)
+      : [];
+    const alternatives = Transit.preferSiblingDistractors
+      ? Transit.preferSiblingDistractors(answer, siblings, pool, DISTRACTOR_COUNT, shuffle)
+      : pickDistractors(pool, answer, DISTRACTOR_COUNT, shuffle);
     return alternatives.length >= 2 ? [answer, ...alternatives] : null;
   }
 
@@ -433,15 +444,100 @@ export class GameRecallRuntime {
     });
   }
 
-  /** Stop ids between origin and destination on the active thin-slice line. */
+  /**
+   * Phase E: at a hub (or planned transfer stop), ask which other line you can
+   * change to — still on a single-leg ride until the multi-leg path is driven.
+   */
+  _updateTransitTransferQuiz(): void {
+    if (this.quizPromptName || !this.player) return;
+    const Transit = window.CanalRecallTransit;
+    const load = this.osmLoader && this.osmLoader.transitLoad;
+    if (!Transit || !load || !this._activeTransitLine) return;
+    const cooldown = Transit.TRANSIT_TRANSFER_QUIZ_COOLDOWN_S ?? 40;
+    if (this.raceTime - (this._lastTransitTransferQuizAt || -Infinity) < cooldown) return;
+    if (Math.abs(this.player.speed) > 70) return;
+
+    const plan = this._transitConnectionPlan;
+    const radiusM = (Transit.TRANSIT_STOP_QUIZ_RADIUS_M ?? 45) * 1.15;
+    const radiusPx = radiusM * PIXELS_PER_METER;
+    const transfers = this.osmLoader.transitTransfers || null;
+
+    let best: {
+      stopId: string;
+      stopName: string;
+      answer: string;
+      pool: string[];
+      dist: number;
+    } | null = null;
+
+    for (const stop of load.stops) {
+      if (this._quizzedTransitTransfers && this._quizzedTransitTransfers.has(stop.stopId)) continue;
+      const world = this._toWorld(stop.center[0], stop.center[1]);
+      if (!world) continue;
+      const dist = Math.hypot(world.x - this.player.x, world.y - this.player.y);
+      if (dist > radiusPx) continue;
+
+      let answer: string | null = null;
+      let pool: string[] = [];
+      if (plan && plan.transferStopId === stop.stopId && plan.nextLineName) {
+        answer = plan.nextLineName;
+        pool = Transit.transferTargetLines
+          ? Transit.transferTargetLines(load, transfers, stop.stopId, this._activeTransitLine)
+          : (load.lineDistractors || []);
+        if (!pool.includes(answer)) pool = [...pool, answer];
+      } else {
+        const others = Transit.transferTargetLines
+          ? Transit.transferTargetLines(load, transfers, stop.stopId, this._activeTransitLine)
+          : (Transit.otherLinesAtStop
+            ? Transit.otherLinesAtStop(load, stop.stopId, this._activeTransitLine)
+            : []);
+        if (others.length < 1) continue;
+        // Prefer hubs with ≥2 other lines so the question is meaningful.
+        if (others.length < 2 && !(plan && plan.transferStopId === stop.stopId)) continue;
+        answer = others[Math.floor(Math.random() * others.length)]!;
+        pool = others;
+      }
+      if (!answer) continue;
+      if (!best || dist < best.dist) {
+        best = { stopId: stop.stopId, stopName: stop.name, answer, pool, dist };
+      }
+    }
+    if (!best) return;
+
+    this._quizzedTransitTransfers = this._quizzedTransitTransfers || new Set();
+    this._quizzedTransitTransfers.add(best.stopId);
+    this._lastTransitTransferQuizAt = this.raceTime;
+    const alternatives = Transit.preferSiblingDistractors
+      ? Transit.preferSiblingDistractors(
+        best.answer,
+        best.pool.filter((name) => name !== best!.answer),
+        load.lineDistractors || [],
+        DISTRACTOR_COUNT,
+        shuffle,
+      )
+      : pickDistractors(best.pool, best.answer, DISTRACTOR_COUNT, shuffle);
+    this._openQuizPrompt({
+      kind: 'route',
+      name: best.answer,
+      subject: 'line',
+      question: 'Which line can you change to here?',
+      context: `Transfer at ${best.stopName}`,
+      choices: alternatives.length >= 2 ? [best.answer, ...alternatives] : null,
+    });
+  }
+
+  /** Stop ids between origin and destination on the active corridor. */
   _transitDestinationStopIds(): Set<string> | null {
     const Transit = window.CanalRecallTransit;
     const load = this.osmLoader && this.osmLoader.transitLoad;
     if (!Transit || !load || !load.lines || !load.lines.length) return null;
-    const line = load.lines[0];
-    if (!line || !line.stopIds || !line.stopIds.length) return null;
     const fromId = Transit.resolveRouteStopId(load.stops, this.routeFrom);
     const toId = Transit.resolveRouteStopId(load.stops, this.routeTo);
+    const line = Transit.resolveActiveLine
+      ? Transit.resolveActiveLine(load.lines, this._activeTransitLine || null, fromId, toId)
+      : load.lines.find((entry: { name: string }) => entry.name === this._activeTransitLine)
+        || load.lines[0];
+    if (!line || !line.stopIds || !line.stopIds.length) return null;
     if (!fromId || !toId) return null;
     const ids = Transit.intermediateStopIds(line.stopIds, fromId, toId);
     return new Set(ids);

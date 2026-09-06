@@ -535,6 +535,30 @@ class GameRouteRuntime {
     }
   }
 
+  /** Phase E: single- or two-leg plan between the chosen stop anchors. */
+  _planTransitConnection() {
+    const Transit = window.CanalRecallTransit;
+    const load = this.osmLoader && this.osmLoader.transitLoad;
+    this._transitConnectionPlan = null;
+    if (!Transit || !load || typeof Transit.planTransitConnection !== 'function') return;
+    const fromId = Transit.resolveRouteStopId(load.stops, this.routeFrom);
+    const toId = Transit.resolveRouteStopId(load.stops, this.routeTo);
+    if (!fromId || !toId) return;
+    const plan = Transit.planTransitConnection(
+      load,
+      this.osmLoader.transitTransfers || null,
+      fromId,
+      toId,
+    );
+    this._transitConnectionPlan = plan;
+    if (plan && plan.legs.length > 1) {
+      console.info(
+        `Transit connection: ${plan.legs.map((leg) => leg.lineName).join(' → ')}`
+        + (plan.transferStopId ? ` (change at ${plan.transferStopId})` : ''),
+      );
+    }
+  }
+
   _launchPoiRoute(from, to) {
     this.routeFrom = from;
     this.routeTo = to;
@@ -613,9 +637,12 @@ class GameRouteRuntime {
     this._lastTransitStopQuizAt = -Infinity;
     this._lastTransitLineQuizAt = -Infinity;
     this._lastTransitStreetQuizAt = -Infinity;
+    this._lastTransitTransferQuizAt = -Infinity;
     this._quizzedTransitStops = new Set();
     this._quizzedTransitStreets = new Set();
+    this._quizzedTransitTransfers = new Set();
     this._activeTransitLine = '';
+    this._transitConnectionPlan = null;
     this.quizPromptSubject = '';
 
     // Canal Recall intentionally starts with a quiet network: the experiment
@@ -624,6 +651,7 @@ class GameRouteRuntime {
     if (this.travelMode === 'transit') {
       this.quizCurrentName = '';
       this.quizFeedback = '';
+      this._planTransitConnection();
     } else {
       this.quizCurrentName = this.track.getRoadName(startX, startY, this.player.angle);
       this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';

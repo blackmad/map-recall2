@@ -132,6 +132,7 @@
     "test:street-wikipedia": "tsx scripts/check-street-wikipedia.ts",
     "test:transit-extract": "tsx scripts/check-transit-extract.ts",
     "build:amsterdam-transit-gtfs": "tsx scripts/build-amsterdam-transit-gtfs.ts",
+    "build:amsterdam-transit-transfers": "tsx scripts/build-amsterdam-transit-transfers.ts",
     "test:recall-clear": "tsx scripts/check-recall-clear.ts",
     "test:canal-clear-all": "tsx scripts/check-canal-clear-all.ts",
     "build:canal-game-recall": "esbuild src/canalRecall/game/recallRuntime.ts --bundle --format=iife --outfile=public/canal-drive/js/game-recall.bundle.js",
