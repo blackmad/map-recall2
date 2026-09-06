@@ -1,7 +1,7 @@
 /**
  * Read a heritage register's prose as an observation of a façade.
  *
- * `AMSTERDAM_FACADE_TWIN.md` calls the monument register "the highest-value and
+ * `docs/FACADE_TWIN.md` calls the monument register "the highest-value and
  * most overlooked source for this project", and measured against the pilot
  * boundary it is: 695 of 3,025 buildings have a description that names a
  * specific gable type, which is 23% of the pilot and the *only* façade evidence

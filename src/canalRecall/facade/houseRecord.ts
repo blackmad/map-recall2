@@ -2,7 +2,7 @@
  * The per-building parameter record: an Amsterdam canal house in about thirty
  * numbers, each one carrying its own provenance.
  *
- * The central rule of `AMSTERDAM_FACADE_TWIN.md`, and the one this file is
+ * The central rule of `docs/FACADE_TWIN.md`, and the one this file is
  * shaped around:
  *
  * > Derive the vocabulary, then measure each building into it. The parts

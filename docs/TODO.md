@@ -1,19 +1,28 @@
-# Canal Recall — what is left
+# What is left
 
-The work board. Everything finished lives in `HISTORY.md`; this file is only
-things that are not done. Keep it current in the same change that moves an
-item, not afterwards.
+The work board. Finished work and the reasoning behind it live in
+[`HISTORY.md`](HISTORY.md); nothing finished belongs here.
+
+The design documents are [`ARCHITECTURE.md`](ARCHITECTURE.md) for the game and its
+data, and [`FACADE_TWIN.md`](FACADE_TWIN.md) for the buildings.
+
+---
+
+## The one number
+
+**Correspondence is 76%.** Of the panden a house-number reading can decide, 44
+confirm the wall we projected and 14 contradict it; the decoy confirms 3. The bar
+the owner set is 95%, and `check-number-anchors.ts` fails below it. Everything
+below is ordered by how much it moves that number.
+
+Keep this file current in the same change that moves an item, not afterwards.
 
 Ordered by one rule: **a learning game that teaches the wrong thing is broken
 in a way that a plain-looking one is not.** So correctness of what the game
 teaches outranks the depth of what it teaches, which outranks how it looks.
 Within a tier, cheap-and-blocking comes before expensive-and-isolated.
 
-**The correspondence number is 76%** (§21). Of 400 panden, 99 carry a legible
-house number; of those, 44 confirm the wall we projected and 14 contradict it,
-with 17 too close to a party wall to say either way. The decoy confirms 3. That is
-the first honest measurement of the thing this whole effort is for, and every
-downstream confidence should be derived from it — none currently is.
+Every downstream confidence should be derived from that 76% (§21). None currently is.
 
 **A fix is in flight for it.** Diagnosing the 14 contradictions turned up the one
 variable that separates them: obliquity, 17.4° at a contradiction against 9.3° at
@@ -287,7 +296,7 @@ spatial tiles, then render through a MapLibre custom 3D layer using the shared
 Three.js runtime. OSM2World remains the procedural adapter for cities without
 equivalent government geometry. The authoritative architecture, schemas,
 fallback ownership and migration gates are in
-[`BUILDING_RENDERER_DESIGN.md`](BUILDING_RENDERER_DESIGN.md).
+[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
 The fidelity ladder, source-resolution rules and measured implementation status
 are now kept in [`LOD.md`](LOD.md). The non-negotiable correction is that
@@ -485,8 +494,8 @@ Continue expanding named cul-de-sac and dead-end cases in
 reported from play should land here before it is called fixed.
 
 **10b. Amsterdam façade twin — pilot boundary reconnaissance (M0).**
-The build prompt is [`AMSTERDAM_FACADE_TWIN.md`](AMSTERDAM_FACADE_TWIN.md);
-measured findings are in [`FACADE_RECON.md`](FACADE_RECON.md). M0 is done for
+The build prompt is [`docs/FACADE_TWIN.md`](docs/FACADE_TWIN.md);
+measured findings are in [`docs/FACADE_TWIN.md`](docs/FACADE_TWIN.md). M0 is done for
 RECON-1/2/3 on branch `feat/amsterdam-building-twin`: coordinate system pinned
 to 1.4 mm in the pilot, boundary fixed as geometry with 36 named locations,
 **3,025 panden** counted (not the brief's ~2,000), 3DBAG massing joined at 95.7%,
@@ -511,7 +520,7 @@ measure end to end from Amsterdam's CC BY panoramas.
 
 > **P0, blocking everything street-level.** Five separate faults were found and
 > fixed in one session, and the measurement instrument itself turned out to be
-> unsound. Every street-level number predating this is void. `FACADE_STATE.md`
+> unsound. Every street-level number predating this is void. `docs/HISTORY.md`
 > §13–§17 carries the measurements; this is the handoff.
 >
 > ### What was wrong, and is now fixed
@@ -721,7 +730,7 @@ measure end to end from Amsterdam's CC BY panoramas.
 > | `llm-review.ts` | machine verdicts, stored separately so agreement is measured |
 > | `rebuild-derived.ts` | recompute derived records offline; never re-download |
 
-**Read [`FACADE_STATE.md`](FACADE_STATE.md) first.** It is the measured state of
+**Read [`docs/HISTORY.md`](docs/HISTORY.md) first.** It is the measured state of
 the extraction — what is trustworthy, what is not, and the failure counts — and
 it is kept current with the numbers rather than with adjectives.
 
@@ -806,7 +815,7 @@ looking at it.
    blunt, because it hides them for the whole city rather than the boundary.
    Per-pand suppression needs the tile layer to filter by `pand_id`;
    `facadeTwinOwnedIds()` already publishes the 3,025 ids that filter will need.
-   Masking by tile bounds is ruled out by `BUILDING_RENDERER_DESIGN.md`.
+   Masking by tile bounds is ruled out by `docs/ARCHITECTURE.md`.
 
 1d. **In-game rendering is still unverified.** The harness proves the layer; the
    wiring in `vector-map.js` has not been seen to draw. Both attempts failed on

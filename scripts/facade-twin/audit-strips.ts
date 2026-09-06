@@ -2,7 +2,7 @@
  * Ask a vision model what each rectified strip actually shows.
  *
  * Written because a numeric audit passed and a visual one failed badly. The
- * medians in `FACADE_STATE.md` agree with independent sources to a centimetre,
+ * medians in `docs/HISTORY.md` agree with independent sources to a centimetre,
  * and a random sample of fourteen strips turned out to contain views down a
  * street, a blank white frame, and a bridge parapet with the ironwork boxed as
  * windows. Aggregate statistics can look right while half the inputs are

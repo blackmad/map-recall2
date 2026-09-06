@@ -1,7 +1,7 @@
 /**
  * Pin the façade twin's evidence discipline.
  *
- * `AMSTERDAM_FACADE_TWIN.md` makes scope discipline and evidence discipline
+ * `docs/FACADE_TWIN.md` makes scope discipline and evidence discipline
  * pass/fail at 10/10: "a single façade rendered from a neighbour's
  * measurements, or a `default` shipped as though it were measured, fails the
  * milestone outright." A rule with that much weight on it needs a test, not a

@@ -3,7 +3,7 @@
  * actually looked at.
  *
  * `LOD.md` owns the fidelity ladder; this module adds the rule that
- * `AMSTERDAM_FACADE_TWIN.md` puts on top of it:
+ * `docs/FACADE_TWIN.md` puts on top of it:
  *
  * > A building is never promoted above what has actually been observed of it.
  *
@@ -176,7 +176,7 @@ export interface TierInput {
  *
  * "One representation per building at a time, resolved per `pand_id`, never
  * three overlapping geometries fighting for the same pixels" —
- * `BUILDING_RENDERER_DESIGN.md`. This returns exactly one tier; the caller
+ * `docs/ARCHITECTURE.md`. This returns exactly one tier; the caller
  * draws that and nothing else.
  */
 export function resolveFidelityTier(input: TierInput): FidelityTier {

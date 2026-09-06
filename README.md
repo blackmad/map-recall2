@@ -14,12 +14,21 @@ Two halves that share a repository:
 
 ## Start here
 
-| File | What it holds |
-|---|---|
-| [`public/canal-drive/TODO.md`](public/canal-drive/TODO.md) | The work board. Unfinished work only, ordered P0–P3, with measured results and blockers. Read this before choosing a task. |
-| [`public/canal-drive/HISTORY.md`](public/canal-drive/HISTORY.md) | Finished work, newest first — why a thing is the way it is. |
-| [`public/canal-drive/FACADE_STATE.md`](public/canal-drive/FACADE_STATE.md) | The façade twin's running log: every defect found, what it cost, and what disproved it. Sections are numbered and referenced from commit messages. |
-| [`CLAUDE.md`](CLAUDE.md) | Working agreement — verification expectations, worktree and integration rules. |
+Six documents, and that is the whole set.
+
+| File | What it holds | Read it when |
+|---|---|---|
+| [`docs/TODO.md`](docs/TODO.md) | The work board. Unfinished work only, P0–P3, with measured results and blockers. | Choosing what to do next. **Start here.** |
+| [`docs/HISTORY.md`](docs/HISTORY.md) | Why things are the way they are. Part 1 is Canal Recall newest-first; Part 2 is the façade twin's numbered findings, §1 onward, cited from commit messages. | Something looks wrong and you want to know whether it is already known. |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | How a city becomes something the game can teach: extracts, facts, levels of detail, the renderer, appearance enrichment. | Working on the game or the data that feeds it. |
+| [`docs/FACADE_TWIN.md`](docs/FACADE_TWIN.md) | The Amsterdam façade pipeline: scope contract, what the sources actually hold, the rebuild that shaped it. | Working on buildings. |
+| [`CLAUDE.md`](CLAUDE.md) | Working agreement — verification expectations, worktree and integration rules. | Before your first commit. |
+| [`DEPLOY.md`](DEPLOY.md) | Shipping it. | Deploying. |
+
+Two more stay where they are because their location is the point:
+`public/canal-drive/NOTICE.md` carries the upstream GPL attribution, and
+`scripts/facade-twin/vision/README.md` documents the Python vision environment
+beside the code that uses it.
 
 ## Viewers
 

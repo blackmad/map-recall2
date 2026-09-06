@@ -2,7 +2,7 @@
  * Whether the measurement pipeline's confidence means anything, and what to do
  * when it does not.
  *
- * `AMSTERDAM_FACADE_TWIN.md` gates the citywide expansion on this:
+ * `docs/FACADE_TWIN.md` gates the citywide expansion on this:
  *
  * > Façade measurement is automatic end to end on the pilot boundary, and its
  * > confidence scores are calibrated against held-out hand-verified buildings.

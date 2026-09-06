@@ -10,9 +10,9 @@ working behavior, and leave it easier for the next session to continue.
   small browser adapter when the legacy Canal Recall page needs a global.
 - Do not expand large untyped files when a focused typed module is practical.
   Existing vanilla JavaScript is not a reason to add more untestable logic.
-- Keep `public/canal-drive/TODO.md` current in the same change that moves an
-  item, and move finished work into `public/canal-drive/HISTORY.md` in that same
-  change. `TODO.md` is the handoff board and holds only unfinished work, ordered
+- Keep `docs/TODO.md` current in the same change that moves an
+  item, and move finished work into `docs/HISTORY.md` in that same
+  change. `docs/TODO.md` is the handoff board and holds only unfinished work, ordered
   P0–P3; it must reflect reality, including blockers and measured results.
   `HISTORY.md` is append-at-the-top and records why a thing is the way it is.
 - Make periodic, coherent commits after verification. Do not accumulate an

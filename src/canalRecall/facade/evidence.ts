@@ -1,7 +1,7 @@
 /**
  * Provenance for every façade parameter the twin renders.
  *
- * `AMSTERDAM_FACADE_TWIN.md` sets two rules that decide whether this project
+ * `docs/FACADE_TWIN.md` sets two rules that decide whether this project
  * teaches geography or fabricates it:
  *
  * > A building whose façade has never been observed does not get a façade.
@@ -26,7 +26,7 @@
 
 /**
  * Where a value came from, strongest first. The order is the source hierarchy
- * in `AMSTERDAM_FACADE_TWIN.md` Part 1, and {@link isStrongerSource} reads it,
+ * in `docs/FACADE_TWIN.md` Part 1, and {@link isStrongerSource} reads it,
  * so a resolver that has two answers for one field prefers the more direct
  * observation without each caller re-deciding what "more direct" means.
  */
