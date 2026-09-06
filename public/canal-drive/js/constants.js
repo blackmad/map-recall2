@@ -193,10 +193,13 @@ const QUIZ_SUBJECTS = {
 const TOPDOWN_TILT_DEGREES = 14;
 // Chase stays high and readable; cockpit drops in close over the bumper so the
 // two 3D modes no longer share nearly the same frustum.
+// Chase was reading as a distant aerial — bump zoom so the vehicle fills the
+// frame. Cockpit lookahead is a soft lead ahead of the bumper, not a far shove.
 const CHASE_PITCH_DEGREES = 42;
 const COCKPIT_PITCH_DEGREES = 82;
-const CHASE_ZOOM_OFFSET = 0.05;
+const CHASE_ZOOM_OFFSET = 0.55;
 const COCKPIT_ZOOM_OFFSET = 1.65;
+const COCKPIT_LOOKAHEAD = 160; // px — camera centre ahead of the vehicle
 const FINISH_RADIUS = 80;                      // px — proximity to finish point to complete race
 
 // --- Road Widths (px) ---
