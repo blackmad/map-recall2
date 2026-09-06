@@ -3992,7 +3992,82 @@ Note for pairing: the 1,152-band render in flight predates this fix, so its band
 come from the old behaviour. It affects at most a handful of them, all of which
 were black.
 
-### 29. A person looked at the picture and found a bug in the matcher (2026-09-06)
+### 30. The bound that scored 100% was measuring its own definition
+
+The plan for this stretch was to add an offset bound as a second pre-registered
+diagnostic beside the confidence floor. The numbers looked emphatic. Measured by
+verdict, the distance from a reading to the address point of the number it reads:
+
+```
+own number, on a confirmed band                n= 52  median  1.04 m  p90  2.51
+a NEIGHBOUR's number, neighbour-only band      n= 13  median  0.89 m  p90  3.30
+a neighbour's number, conflict band            n=  8  median  4.79 m  p90  8.06
+```
+
+and a 2.5 m bound took identity from 87% to **100%**. A conflict, the story went,
+is not the neighbour's plate seen from our band — if it were, it would appear
+where the neighbour's door is. At 4.79 m off it must be a misread.
+
+It is not a misread. It is a definition.
+
+A convicting reading is one that sits **well inside our wall**, that being the
+rule that makes it convict. And the number it reads belongs to a pand whose own
+address point lies **outside** our wall — in 7 of 8 cases, by a median of 3.24 m.
+The two conditions are the conflict verdict, and together they force the offset
+to be large before any recogniser is consulted. Computing the smallest offset each
+conflict could legally have had:
+
+```
+conflicts, doorplate, own-number point locatable: n=8
+  actual |offsetM|        median 4.79 m
+  forced by construction  median 3.58 m
+  residual                median 0.72 m
+  4 of 8 sit within 1 m of the smallest offset the geometry allows
+```
+
+0.72 m of signal in a 4.79 m effect. The bound scores 100% because it re-derives
+the verdict it is scoring, and a diagnostic that cannot fail is not a diagnostic.
+Not wired. This is the third time this session the same shape has appeared —
+§25's pooled variance, §21's decoy scored by a looser rule than the verdict — and
+the tell each time was a result arriving cleaner than the question deserved.
+
+The corroboration argument fell with it. I had reported r = −0.50 between
+confidence and offset as evidence that the two are "only partly the same signal,
+so they check each other". Within the confirmed readings alone that correlation is
+**+0.06** on 52 plates. The pooled −0.50 was the verdict split showing through,
+not a relationship. The confidence floor still stands — EasyOCR computes it
+knowing nothing of BAG, so it is genuinely independent of geometry — but it stands
+alone, with no second signal agreeing with it.
+
+### What survived: neighbour-only bands are registered correctly
+
+The one claim that was not circular is the one about the discarded verdict.
+`neighbour-only` means real numbers were read and every one fell outside our wall,
+so the band decides nothing about identity and is currently thrown away. But if a
+plate reading a *neighbour's* number lands where BAG puts that neighbour's door,
+the band's **registration** is right, whatever our own doorway carried.
+
+That claim has an honest null: had the plate read some other number from the same
+band's address pool, how far from the plate would it have sat? Without the null it
+is unreadable, because a short band puts every candidate close to everything.
+
+```
+neighbour-only registration — 12 plates land a median 0.75 m from where BAG puts
+the number they read, against 6.07 m by chance (50% inside a metre against 10%).
+Those 10 of 15 neighbour-only bands are registered correctly.
+```
+
+Five times closer than chance, five times more often inside a metre. So ten bands
+that the identity check records as undecided are in fact evidence that the wall
+inside the bracket is the right wall — the failure is the doorway, not the
+geometry. Identity and registration are separate failures with separate fixes, and
+`check-number-anchors` now reports them separately.
+
+`localAlongM` is carried onto each result so the null is built from the band's own
+address pool rather than a re-derived one that could drift from the filter §29
+added.
+
+## 29. A person looked at the picture and found a bug in the matcher (2026-09-06)
 
 `build-conflict-sheet.ts` draws each failing band as one continuous strip at a
 common scale, with our wall bracketed in green and every nearby address pinned
