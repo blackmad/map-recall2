@@ -41,7 +41,20 @@ const buildings = lod.buildings as LodBuilding[];
 const origin = lod.metadata.localOrigin as { x: number; y: number };
 
 const measured = ((await readJson(path.join(STAGING, 'measured-facades.json'), { facades: {} })) as any).facades as Record<string, any>;
-const attrs = ((await readJson(path.join(CACHE, '3dbag-attributes.json'), { attributes: {} })) as any).attributes as Record<string, any>;
+/**
+ * 3DBAG keys its attributes `NL.IMBAG.Pand.<id>`, sometimes with a `-N` suffix
+ * for a split pand; BAG footprints are keyed by the bare id. Joining without
+ * stripping the prefix matches nothing at all, silently — the first version of
+ * this page showed a dash in every 3DBAG row of every building and looked
+ * exactly like a data gap. `netherlands.ts` already owns this normalisation, so
+ * it is borrowed rather than restated.
+ */
+const rawAttrs = ((await readJson(path.join(CACHE, '3dbag-attributes.json'), { attributes: {} })) as any).attributes as Record<string, any>;
+const attrs: Record<string, any> = {};
+for (const [key, value] of Object.entries(rawAttrs)) {
+  const id = key.replace(/^NL\.IMBAG\.Pand\./, '').split('-')[0];
+  if (!attrs[id]) attrs[id] = value;
+}
 const anchors = ((await readJson(path.join(CACHE, 'number-bands/anchors.json'), { panden: [] })) as any).panden as any[];
 const addressPoints = ((await readJson(path.join(CACHE, 'address-points.json'), { addresses: [] })) as any).addresses as
   Array<{ street: string; display: string; pandId: string | null }>;
@@ -100,7 +113,8 @@ const nMeasured = rows.filter(r => r.ms).length;
 const nAnchored = rows.filter(r => r.v && r.v !== 'unread').length;
 
 await mkdir(OUT, { recursive: true });
-const page = `<title>Grachtengordel West</title>
+const page = `<meta charset="utf-8">
+<title>Grachtengordel West</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
   :root { --paper:#f5f4ef; --panel:#fbfaf7; --sunk:#efeee7; --ink:#191c19; --muted:#6c716b;
@@ -219,33 +233,72 @@ const num = (v, unit='') => v === null || v === undefined ? '—' : v + unit;
  * The building on its own, extruded to each height 3DBAG publishes.
  *
  * These are our extrusions of 3DBAG's height percentiles, not 3DBAG's own LoD2.2
- * mesh — that is not cached here. Drawn side by side because the spread between
- * them is the thing worth seeing: a building whose 50th and maximum roof heights
- * are seven metres apart has a roof our flat massing cannot describe.
+ * mesh -- that is not cached here, and saying otherwise would be the sort of
+ * quiet borrowing this project keeps finding in its own past. Drawn as solids
+ * rather than bars because the spread between the percentiles is a fact about
+ * the *roof*: a pand whose 50th and maximum are seven metres apart has a shape
+ * our flat massing cannot describe, and that is visible in a prism and invisible
+ * in a number.
+ *
+ * Axonometric, 30 degrees, no perspective: this is for comparing three solids of
+ * the same footprint, and perspective would make them differ for a reason that
+ * has nothing to do with the building.
  */
 function massing(b) {
   const levels = [
-    ['ground', b.mv, 'var(--muted)'],
-    ['h 50%', b.h50, 'var(--plan)'],
-    ['h 70%', b.h70, 'var(--ask)'],
-    ['h max', b.hmax, 'var(--stop)'],
-    ['ridge', b.nok, 'var(--good)'],
-  ].filter(l => typeof l[1] === 'number');
-  if (levels.length < 2) return '<p class="hint">No 3DBAG heights for this pand.</p>';
-  const top = Math.max(...levels.map(l => l[1]));
-  const W = 330, H = 130, base = H - 14, scale = (base - 12) / (top || 1);
-  let s = '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto">';
-  s += '<line x1="8" y1="'+base+'" x2="'+(W-8)+'" y2="'+base+'" stroke="var(--rule)" stroke-width="1"/>';
-  const step = (W - 30) / levels.length;
-  levels.forEach((l, i) => {
-    const [label, h, colour] = l;
-    const y = base - h * scale, x = 16 + i * step;
-    s += '<rect x="'+x+'" y="'+y+'" width="'+(step*0.62)+'" height="'+(base-y)+'" fill="'+colour+'" fill-opacity="0.35" stroke="'+colour+'" stroke-width="1"/>';
-    s += '<text x="'+(x+step*0.31)+'" y="'+(y-3)+'" font-size="8" fill="var(--muted)" text-anchor="middle" font-family="var(--mono)">'+h.toFixed(1)+'</text>';
-    s += '<text x="'+(x+step*0.31)+'" y="'+(base+10)+'" font-size="7.5" fill="var(--muted)" text-anchor="middle" font-family="var(--mono)">'+label+'</text>';
+    ['LoD1.1 · roof 50%', b.h50],
+    ['LoD1.2 · roof 70%', b.h70],
+    ['LoD1.3 · roof max', b.hmax],
+  ].filter(l => typeof l[1] === 'number' && l[1] > 0);
+  if (!levels.length) return '<p class="hint">No 3DBAG heights for this pand.</p>';
+
+  const ground = typeof b.mv === 'number' ? b.mv : 0;
+  const pts = [];
+  for (let i = 0; i < b.r.length; i += 2) pts.push([b.r[i], b.r[i + 1]]);
+  const cx = pts.reduce((s, p) => s + p[0], 0) / pts.length;
+  const cy = pts.reduce((s, p) => s + p[1], 0) / pts.length;
+  const local = pts.map(p => [p[0] - cx, p[1] - cy]);
+
+  const COS = Math.cos(Math.PI / 6), SIN = Math.sin(Math.PI / 6);
+  const iso = (x, y, z) => [(x - y) * COS, (x + y) * SIN - z];
+
+  // One scale for all three, so their heights are comparable by eye.
+  const tallest = Math.max(...levels.map(l => l[1])) - ground;
+  const probe = [];
+  for (const [x, y] of local) { probe.push(iso(x, y, 0)); probe.push(iso(x, y, tallest)); }
+  const bx0 = Math.min(...probe.map(p => p[0])), bx1 = Math.max(...probe.map(p => p[0]));
+  const by0 = Math.min(...probe.map(p => p[1])), by1 = Math.max(...probe.map(p => p[1]));
+  const CELL_W = 108, CELL_H = 104, PAD = 8;
+  const k = Math.min((CELL_W - PAD * 2) / Math.max(1e-6, bx1 - bx0), (CELL_H - PAD * 2) / Math.max(1e-6, by1 - by0));
+
+  let out = '<svg viewBox="0 0 ' + (CELL_W * levels.length) + ' ' + (CELL_H + 16) + '" style="width:100%;height:auto">';
+  levels.forEach(([label, h], n) => {
+    const height = h - ground;
+    const ox = n * CELL_W + PAD - bx0 * k;
+    const P = (x, y, z) => { const [px, py] = iso(x, y, z); return (ox + px * k) + ',' + (CELL_H - PAD - (py - by0) * k); };
+
+    // Side faces, furthest first, so nearer walls overdraw the ones behind.
+    const quads = local.map((p, i) => {
+      const q = local[(i + 1) % local.length];
+      return { depth: (p[0] + p[1] + q[0] + q[1]) / 4, p, q };
+    }).sort((a, z) => a.depth - z.depth);
+    for (const { p, q } of quads) {
+      out += '<polygon points="' + [P(p[0], p[1], 0), P(q[0], q[1], 0), P(q[0], q[1], height), P(p[0], p[1], height)].join(' ')
+        + '" fill="var(--plan)" fill-opacity="0.16" stroke="var(--plan)" stroke-width="0.4" stroke-opacity="0.5"/>';
+    }
+    out += '<polygon points="' + local.map(p => P(p[0], p[1], height)).join(' ')
+      + '" fill="var(--plan)" fill-opacity="0.42" stroke="var(--plan)" stroke-width="0.7"/>';
+    out += '<text x="' + (n * CELL_W + CELL_W / 2) + '" y="' + (CELL_H + 12) + '" font-size="6.5" fill="var(--muted)" '
+      + 'text-anchor="middle" font-family="var(--mono)">' + label + '</text>';
+    out += '<text x="' + (n * CELL_W + CELL_W / 2) + '" y="' + (CELL_H + 4) + '" font-size="7" fill="var(--ink)" '
+      + 'text-anchor="middle" font-family="var(--mono)">' + height.toFixed(1) + ' m</text>';
   });
-  s += '</svg>';
-  return s;
+  out += '</svg>';
+  const spread = (b.hmax ?? 0) - (b.h50 ?? 0);
+  return out + '<p class="hint" style="margin:.4rem 0 0;font-size:.76rem">Our extrusions of the 3DBAG height '
+    + 'percentiles above maaiveld, not the 3DBAG mesh itself. Roof spread '
+    + (Number.isFinite(spread) ? spread.toFixed(1) : '—') + ' m'
+    + (spread > 4 ? ' — a flat massing cannot describe this roof.' : '.') + '</p>';
 }
 
 function select(b) {
@@ -270,7 +323,7 @@ function select(b) {
     '<tr><td>built</td><td>' + num(b.y) + '</td></tr>' +
     '</table></div>' +
 
-    '<div class="grp"><h3>Massing at each published height</h3>' + massing(b) + '</div>' +
+    '<div class="grp"><h3>The building on its own</h3>' + massing(b) + '</div>' +
 
     '<div class="grp"><h3>Measured off a photograph</h3>' + (b.ms
       ? '<table class="kv">' +

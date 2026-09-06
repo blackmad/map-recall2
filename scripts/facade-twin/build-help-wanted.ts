@@ -263,7 +263,8 @@ const card = (c: any, i: number) => `
     <p class="said" aria-live="polite"></p></div>
 </article>`;
 
-const page = `<title>Help Wanted</title>
+const page = `<meta charset="utf-8">
+<title>Help Wanted</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
 <style>
   :root { --paper:#f5f4ef; --panel:#fbfaf7; --ink:#191c19; --muted:#6c716b; --rule:#dedbd2;

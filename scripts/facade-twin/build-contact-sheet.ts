@@ -111,7 +111,8 @@ const q = (xs: number[], p: number) => [...xs].sort((a, b) => a - b)[Math.floor(
 const years = new Map<string, number>();
 for (const s of strips) years.set(s.capturedAt.slice(0, 4), (years.get(s.capturedAt.slice(0, 4)) ?? 0) + 1);
 
-const page = `<title>Grachtengordel Façades</title>
+const page = `<meta charset="utf-8">
+<title>Grachtengordel Façades</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
   :root {

@@ -225,7 +225,8 @@ for (const pandId of candidates) {
 }
 process.stdout.write('\r');
 
-const page = `<title>North at the Centre</title>
+const page = `<meta charset="utf-8">
+<title>North at the Centre</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
   :root {
