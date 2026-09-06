@@ -1717,3 +1717,41 @@ Which resettles the priorities. The last stretch of work went into making OCR
 faster — a real 4.7× misconfiguration, worth fixing — but OCR is the *instrument*
 that measures identity, not the thing that improves it. Making the measurement
 cheaper moved correspondence not at all. Using the measurements jointly would.
+
+## 26. "OCR is slow" was a memory leak I had just introduced (2026-09-06)
+
+§24 moved EasyOCR onto MPS for a verified 4.7×, and the next run was *slower* than
+the CPU one it replaced — 0.6 bands a minute against the 10 the benchmark
+promised. The tiles were not the cause: the square-on set is smaller than the
+oblique one it replaced, 696 megapixels against 825.
+
+`ps` said the process held 613 MB. Activity Monitor said **57.44 GB**, and
+`footprint` confirmed a 58 GB physical footprint on a 48 GB machine. RSS does not
+count Metal's unified-memory allocations, so the standard tool was blind to the
+entire problem — and I had used it twice and concluded the pressure was coming
+from somewhere else.
+
+Metal's caching allocator does not release memory on its own, and every tile is a
+differently-sized allocation, so nothing gets reused and the cache grows without
+bound. By band 100 the machine was at 28 GB of swap with 77 MB free and 1.3
+million pageouts, and MPS shares that memory, so the GPU work stalled. Calling
+`torch.mps.empty_cache()` once per band costs milliseconds and bounds it: the
+footprint now oscillates between 3 and 20 GB instead of climbing, swap fell from
+28.4 GB to 4.0 GB, free memory rose from 77 MB to 9.4 GB, and the rate went from
+0.6 bands a minute to **11.7 — a twentyfold recovery**, giving the ~40 minute pass
+§24 predicted.
+
+Three things worth keeping from this.
+
+The benchmark that justified the change measured 40 tiles and was right about all
+of them; it could not see a leak that only matters after a hundred bands. A
+verified speedup is not a verified *run*.
+
+The instrument lied by omission. `ps aux` RSS is the reflex for "what is using
+memory" and it is simply wrong for Metal, by two orders of magnitude here. On a
+Mac the answer is `footprint <pid>`.
+
+And the symptom named the wrong culprit. "OCR takes hours" was true, and it was
+never about OCR — first it was `gpu=False`, then it was my own leak. Both times the
+number was quoted as a property of the workload and used to reason about whether
+to buy a commercial vision model.

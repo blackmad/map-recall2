@@ -111,6 +111,14 @@ def main() -> int:
             readings.extend(seen.values())
         readings.sort(key=lambda r: -r['confidence'])
         out_bands.append({'pandId': band['pandId'], 'panoramaId': band['panoramaId'], 'readings': readings})
+        # Metal's caching allocator does not hand memory back on its own, and
+        # every tile is a differently-sized allocation, so the cache grows without
+        # bound instead of being reused. Left alone it reached a 58 GB physical
+        # footprint on a 48 GB machine by band 100, and the swapping took the rate
+        # from 10 bands a minute to 1 -- which looked exactly like "OCR is slow".
+        # Releasing it once per band costs milliseconds.
+        if device == 'mps':
+            torch.mps.empty_cache()
         print(f'\r  {i}/{len(manifest["bands"])} bands, {sum(len(b["readings"]) for b in out_bands)} readings',
               end='', file=sys.stderr, flush=True)
     print(file=sys.stderr)
