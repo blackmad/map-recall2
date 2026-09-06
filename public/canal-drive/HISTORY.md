@@ -6,6 +6,102 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Large-letter fill bump — 2026-09-06
+
+User: still too much linen around the word. Wave AABB used 1.15× archPad so
+fit thought faces were full while photo ink sat mid-card (span 44%). Honest
+cap metrics + a taller comfort band (target ~74%, fill 60–78%) + less greeting
+reserve. Jordaan pixel span 44%→64%, reach 71%→75%; no top-ink clip.
+
+## Large-letter vision rounds (stop the size circle) — 2026-09-06
+
+The fill/clip/wave pendulum was chasing the wrong gap. Authentic Indiana /
+Waterloo / Alaska cards have a **chunky solid shelf**; ours had ~9px of color
+that read as a cyan outline. Three frozen-theme vision rounds against a 6-card
+gallery (no new fill/span asserts):
+
+1. Solid back-silhouette extrusion (~23–31px single-line) + black/white die-cut.
+2. Script may overlap left crests (no more shove-the-billboard); caption kept
+   chrome-yellow. Nest vs Waterloo is still only partial.
+3. Litho punch on letter windows, quieter scenic wash, stronger paper linen so
+   the four style presets read as different recipes.
+
+True vanishing-point mesh and place props stay open — those were how the last
+session burned tokens.
+
+## Vertical stretch restored — 2026-09-06
+
+Clip/size clamps left paintScaleY≈0.77 with sx≈1 — pancake letters (IJBURG).
+Raise face-fill comfort (~50–64%), keep sy with sx, let facePullY be the stretch.
+
+## Two-line planes + OUD WEST clip — 2026-09-06
+
+Per-glyph extrusion→face ordering let the top line's shelf cut halfway through
+WEST (hard seam / "different planes"). Draw each line as a unit; shorten
+two-line shelf + font; desert outline was a 9px tire.
+
+## Top/left clip (IJBURG rise-coastal) — 2026-09-06
+
+Rise + leftward extrusion soft-spilled past the paper: greeting loops and the
+"I"/crest were clipped. Hard side/top clearance pass, tilt-aware greeting top,
+milder rise pathAmount.
+
+## Billboard size comfort band (NOORD too big) — 2026-09-06
+
+Face AABB used 0.64em/0.03em while Archivo+pathWarp ink spans ~0.78/0.18em —
+fill caps thought NOORD was fine while pixels hit ~90%H. Honest metrics +
+MAX_FACE_FILL ~42–52%, and second paint-fit may only shrink (never re-expand).
+
+## Top crest clip → stair-step wave — 2026-09-06
+
+Aggressive 2nd-harmonic wave + grow-to-frame shoved mid-letter tops into the
+paper clip; clipped crests read as a flat stair-step ("fucked up the top").
+Fix: smooth Indiana rise+bow (no zig-zag harmonic), reserved greeting band
+above the billboard, hard `TOP_INK_CLEAR` shove-down, greeting stays above
+the crest.
+
+## Two-line eye-wave (Sloterdijk Centrum) — 2026-09-06
+
+Dual full arches on SLOTERDIJK + CENTRUM opened a lens/"eye" gap and parked
+"Greetings from" over the wrong end. Fix: top line carries the wave, line 2
+gets ~16% path; greeting pockets against the top line's left only; hyphen
+breaks no longer paint a trailing "-".
+
+## Stronger Indiana wave + greeting pocket — 2026-09-06
+
+Wave `pathAmount` 0.22→0.38 with hotter harmonics so letter-to-letter lift
+reads on the card; script parks in the left wave pocket (not mid-word), nests
+into the tops, and tilts with the local slope.
+
+## Billboard fill was lying — grow until the frame — 2026-09-06
+
+CENTRUM (and friends) still looked like a top strip over a linen desert while
+AABB “face fill” asserts passed. Root causes: (1) grow loop capped at
+`MIN_FACE_FILL * 1.15` so it refused to use the bottom of the card; (2) a second
+`fitLetterPaintScale` pass crushed the grown `paintScaleY`; (3) bounds overstated
+descenders. Fix: always binary-search sy to the frame, keep the grown scale,
+tighter cap ink bounds, caption tucked under faces, and a **pixel** letter-reach
+assert (≥70%H) in `render:large-letter-craft`.
+
+## Billboard fill + Indiana wave / Waterloo rise — 2026-09-06
+
+Empty linen under JORDAAN was a measurement bug: face AABB used ~0.18em
+descent on all-caps, so fit thought the word already filled the frame. Tightened
+cap bounds, target face height 74%, grow-until-fill assert, and stop top-parking
+short words. Multi-line (OUD WEST): shared path envelope + per-line band stretch
+(Atlantic City) so stacked lines stay coplanar and width-full. Path vocabulary:
+`wave` (Indiana undulation, now default `linen-arch`) and stronger `rise`
+(Waterloo slant).
+
+## Greeting vs name hierarchy (Monterey) — 2026-09-06
+
+Authentic linen refs (Monterey / Alaska / Athletics): script is ~15–25% of
+letter face height with a *thin* stroke, parked in arch slack — not a fixed
+corner sticker. Ours was ~28% of the em with a 2.1px outline and always
+left-top. Now: size from painted face AABB (~20%), stroke 1.15, pocket scorer
+picks left/mid/right headroom relative to the place name; region caption
+nudged heavier than the script.
+
 ## New route from pause / settings — 2026-09-06
 
 Playtest: mid-ride there was no reliable way back to route setup. Pause’s
@@ -35,6 +131,32 @@ overview (`routeReviewDue` → `reviewDueNetwork` / `reviewDueWater`), above the
 green mastery bands. Cache key includes due-count so answering a due place
 repaints without changing the track. Dedicated review screen still open.
 
+
+## Border + top-clip P0 — 2026-09-06
+
+User catch: fat cream mat + greeting/letter tops sliced by the paper clip —
+those are blockers, not polish. Fixes: `BORDER_INSET` 4–6 hairline, full-bleed
+backdrop (no inset photo panel), hard top in `fitLetterPaintScale` (no soft
+spill above frame), arch/fisheye pad in painted AABB, greeting baseline lowered
+for Pacifico loops, craft asserts + **pixel P0** in `render:large-letter-craft`
+(`topInk` on y=0, left cream ring ≤14px). Vision often re-reports the old clip;
+trust pixels.
+
+## Tall linen craft loop (keep iterating) — 2026-09-06
+
+More vision passes after the baseline re-anchor: solid-ish blue wall + short
+orange tip (no candy ribs), die-cut black/white/keyline, down-right shelf with
+paint order that matches shelf direction, fisheye center boost in path warp,
+settle-down into leftover bottom air, punchier letter photos. Craft assert
+effective face ≥58% card H. Still not true vanishing-point 3D sides.
+
+## Tall linen letters (baseline re-anchor) — 2026-09-06
+
+Vision loop: faces sat ~35% of card because glyphs were parked under the
+greeting, then `facePullY` blew tops off-paper and `paintScaleY` crushed them
+back. Fix: compute pull first, shift baselines so pulled faces land in the
+vertical frame, pivot from face mid, soft-clip extrusion into the caption
+pad. Effective JORDAAN mass ≥55% card H (craft assert); arch pathAmount 0.26.
 
 ## 3D tilt keyboard — 2026-09-06
 
