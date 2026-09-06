@@ -44,6 +44,13 @@ working behavior, and leave it easier for the next session to continue.
   commands are `npm run lint`, `npm run test:canal-car`,
   `npm run test:reachability`, `npm run test:canal-streets`, and focused
   Playwright specs.
+- The `pre-push` hook is **main-only**, and deliberately so. CI already runs the
+  end-to-end suite on every pull request and every push to `main`
+  (`.github/workflows/e2e.yml`), so gating a feature branch locally costs minutes
+  per push and catches nothing CI would not. Note that `.git/hooks` is one
+  directory shared by every worktree and is not version-controlled, so a change
+  there silently affects every other session — which is how a hook calling a
+  script that existed on no branch came to block all pushes for an afternoon.
 - `npm run check:canal` is the aggregate pre-integration gate for typed checks,
   named driving/reachability regressions, and the production Storybook build.
 - Use Storybook for deterministic visual states that are expensive to reach by
