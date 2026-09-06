@@ -40,6 +40,7 @@ class OSMLoader {
       this.featureMeta = this.featureMeta || new Map();
       this.cityId = city.id;
       this.transitLoad = null;
+      this.transitTransfers = null;
       for (const feature of features) {
         if (feature.name && feature.center && !this.featureMeta.has(feature.name)) {
           this.featureMeta.set(feature.name, {
@@ -262,6 +263,19 @@ class OSMLoader {
     this.featureMeta = new Map(load.featureMeta);
     this.cityId = city.id;
     this.transitLoad = load;
+    this.transitTransfers = null;
+    try {
+      const transferUrl = new URL(`${city.extractPath}/transit-transfers.json`, window.location.href);
+      const transferResponse = await fetch(transferUrl);
+      if (transferResponse.ok) {
+        this.transitTransfers = await transferResponse.json();
+        console.log(
+          `Loaded ${this.transitTransfers.counts?.transfers || 0} transit transfers for ${city.name}`,
+        );
+      }
+    } catch (error) {
+      console.warn('Transit transfers unavailable:', error);
+    }
     console.log(`Loaded ${load.ways.length} transit corridors (${load.stops.length} stops) for ${city.name}`);
     return load.ways;
   }

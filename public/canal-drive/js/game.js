@@ -174,7 +174,10 @@ class Game {
     this._activeTransitLine = '';
     this.quizPromptSubject = '';
     this._lastTransitStreetQuizAt = -Infinity;
+    this._lastTransitTransferQuizAt = -Infinity;
     this._quizzedTransitStreets = new Set();
+    this._quizzedTransitTransfers = new Set();
+    this._transitConnectionPlan = null;
     this._corridorStreetIndex = null;
 
     this._alanLinkBounds = null;

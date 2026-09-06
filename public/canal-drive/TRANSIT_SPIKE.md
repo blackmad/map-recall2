@@ -270,21 +270,22 @@ at least one line question) without HUD leaks.
 
 ### Phase D — Full GVB rail+ferry surface
 
-- [ ] All tram + metro + ferry lines selectable via surprise routing
-- [ ] Curated transit anchors (Centraal, Noord, ferry terminals)
+- [x] All tram + metro lines selectable via surprise routing (ferry deferred)
+- [x] Curated transit anchors + driveable termini (Centraal, Noord, Isolatorweg, …)
 - [ ] Ferry: corridor follow if shape is water-like; else stop-to-stop hop
       with short cinematic — decide with a measured F-line playtest
 - [ ] Line colour chips **after** answer only
-- [ ] Expand `test:transit-extract` + reachability sample across modes
+- [x] Expand `test:transit-routing` (metro 52 end-to-end + termini pool)
 
-**Exit:** surprise transit routes across modes; still no bus, no transfers.
+**Exit:** surprise transit routes across tram/metro; still no bus.
 
 ### Phase E — Transfers (true transit model)
 
-- [ ] `transit-transfers.json` from GTFS `transfers.txt`
-- [ ] Multi-leg planner: ride → walk/transfer → ride
-- [ ] Quiz at transfer stops: “which line next?” / “which stop to change?”
-- [ ] Cap legs (e.g. max 2 rides) so routes stay teachable
+- [x] `transit-transfers.json` (derived parent/proximity; GTFS merge when cached)
+- [x] Multi-leg **planner** (max 2 rides) — path still rides the merged graph
+- [x] Quiz at transfer stops: “which line can you change to here?”
+- [ ] Drive / constrain the second leg after the change (not just quiz)
+- [ ] Cap legs in surprise pairing so cross-line hops are common teachable cases
 - [ ] Knowledge map layer for transit mastery (item 6 can consume later)
 
 **Exit:** item 17’s “sequence of services and walking connections” is real.

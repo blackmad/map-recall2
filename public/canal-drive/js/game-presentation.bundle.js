@@ -553,7 +553,7 @@
         "3. Name the line while moving, and stops as you approach them",
         "4. Line colour and labels stay hidden until you answer",
         "5. TAB toggles the overview map; -/+ changes zoom",
-        "6. Transit covers tram and metro \u2014 ferries come later"
+        "6. Transit: tram + metro; change lines at hubs"
       ] : isCar(this.travelMode) ? [
         "1. Use WASD or the arrow keys to steer the bike",
         "2. Stay on mapped streets; the road guard keeps you on the network",

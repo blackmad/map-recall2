@@ -1,5 +1,5 @@
 /**
- * Named pins for transit corridor adaptation and tram 2 reachability.
+ * Named pins for transit corridor adaptation, Phase D surface, and Phase E transfers.
  */
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
@@ -28,6 +28,15 @@ import {
   buildCorridorStreetIndex,
   nearestCorridorStreet,
 } from '../src/canalRecall/transit/corridorStreets.ts';
+import {
+  otherLinesAtStop,
+  planTransitConnection,
+  preferSiblingDistractors,
+  resolveActiveLine,
+  siblingLineNames,
+  transferTargetLines,
+  type TransitTransfers,
+} from '../src/canalRecall/transit/transfers.ts';
 import { buildRoadSegments } from '../src/canalRecall/osm/roadProjection.ts';
 import { buildRoadGraph, findRoadRoute } from '../src/canalRecall/routing/roadGraph.ts';
 
@@ -63,7 +72,9 @@ assert.ok(dam.center, 'Dam has extract centre');
 const anchors = transitRouteAnchors(load);
 assert.ok(anchors.some((a) => a.name === 'Centraal Station'), 'Centraal anchor');
 assert.ok(anchors.some((a) => a.name === 'Dam'), 'Dam anchor');
-assert.ok(anchors.length >= 4, 'enough retarget anchors');
+assert.ok(anchors.some((a) => a.name === 'Noord'), 'Noord terminus anchor');
+assert.ok(anchors.some((a) => a.name === 'Isolatorweg'), 'metro 50 terminus in pool');
+assert.ok(anchors.length >= 12, `enough termini + hubs (got ${anchors.length})`);
 
 {
   const lineKeyA = getTransitLineKey({
@@ -102,6 +113,35 @@ assert.ok(anchors.length >= 4, 'enough retarget anchors');
   assert.ok(intermediate.includes(museum.stopId), 'destination included');
   assert.ok(isStopAheadTowardFinish(500, 200), 'closer-to-finish stop is ahead');
   assert.ok(!isStopAheadTowardFinish(100, 400), 'farther-from-finish stop is behind');
+}
+
+// Active line resolution must not default to lines[0] under Phase D.
+{
+  const metro = load.lines.find((l) => l.name === 'Metro 52');
+  assert.ok(metro, 'Metro 52 in Phase D load');
+  const fromId = metro.stopIds[0]!;
+  const toId = metro.stopIds[metro.stopIds.length - 1]!;
+  const resolved = resolveActiveLine(load.lines, 'Metro 52', fromId, toId);
+  assert.equal(resolved?.name, 'Metro 52');
+  const covering = resolveActiveLine(load.lines, null, fromId, toId);
+  assert.equal(covering?.name, 'Metro 52', 'covering line preferred over lines[0]');
+  assert.notEqual(load.lines[0]?.name, 'Metro 52');
+}
+
+// Sibling distractors prefer corridors that share stops.
+{
+  const siblings = siblingLineNames(load, 'Tram 2');
+  assert.ok(siblings.length >= 1, 'tram 2 shares stops with other lines');
+  const picked = preferSiblingDistractors(
+    'Tram 2',
+    siblings,
+    load.lineDistractors,
+    3,
+    (items) => items,
+  );
+  assert.ok(picked.length >= 2);
+  assert.ok(picked.every((name) => name !== 'Tram 2'));
+  assert.ok(siblings.includes(picked[0]!), 'first distractor is a sibling when available');
 }
 
 // Sticky line plaque: stop/street prompts keep Tram 2 visible.
@@ -156,16 +196,21 @@ assert.ok(anchors.length >= 4, 'enough retarget anchors');
   assert.equal(hit!.name, 'Stadhouderskade');
 }
 
-// Tram 2 corridor reachable end-to-end on the adapted graph.
-{
+function assertCorridorReachable(
+  label: string,
+  playableRefs: readonly string[],
+  highway: string,
+): void {
+  const slice = adaptTransitNetwork(network, { playableRefs });
+  assert.equal(slice.ways.length, 1, `${label} exposes one corridor`);
   const centre = { lat: 52.372851, lon: 4.8936 };
-  const { segments } = buildRoadSegments(thin.ways, centre, {
+  const { segments } = buildRoadSegments(slice.ways, centre, {
     simplificationToleranceDegrees: 0.00003,
-    roadWidths: { tram: 38 },
+    roadWidths: { tram: 38, metro: 40 },
     defaultRoadWidth: 38,
   });
-  assert.ok(segments.length >= 1, 'tram 2 builds segments');
-  assert.equal(segments[0].name, 'Tram 2');
+  assert.ok(segments.length >= 1, `${label} builds segments`);
+  assert.equal(segments[0].name, label);
 
   const graph = buildRoadGraph(segments.map((segment, index) => ({
     points: segment.points,
@@ -176,10 +221,53 @@ assert.ok(anchors.length >= 4, 'enough retarget anchors');
   const startPt = segments[0].points[0];
   const endPt = segments[0].points[segments[0].points.length - 1];
   const path = findRoadRoute(graph, startPt, endPt);
-  assert.ok(path && path.length >= 2, 'tram 2 corridor reachable end-to-end');
+  assert.ok(path && path.length >= 2, `${label} corridor reachable end-to-end (${highway})`);
+}
+
+assertCorridorReachable('Tram 2', TRANSIT_THIN_SLICE_REFS, 'tram');
+assertCorridorReachable('Metro 52', ['52'], 'metro');
+
+// Metro 52 named stop pin: Noord ↔ Centraal on the thin corridor.
+{
+  const metro = adaptTransitNetwork(network, { playableRefs: ['52'] });
+  assert.ok(metro.stops.some((s) => s.name === 'Noord'), 'metro 52 stops at Noord');
+  assert.ok(metro.stops.some((s) => /Centraal/i.test(s.name)), 'metro 52 stops at Centraal');
+}
+
+// Phase E transfers + two-leg connection plan.
+const transfersPath = path.resolve('public/data/extracts/amsterdam/transit-transfers.json');
+assert.ok(existsSync(transfersPath), `missing ${transfersPath} — run npm run build:amsterdam-transit-transfers`);
+const transfers = JSON.parse(readFileSync(transfersPath, 'utf8')) as TransitTransfers;
+assert.ok(transfers.counts.transfers >= 50, `enough transfer edges (got ${transfers.counts.transfers})`);
+
+{
+  const centraal = load.stops.find((s) => s.name === 'Centraal Station');
+  assert.ok(centraal, 'Centraal for transfer quiz pool');
+  const others = otherLinesAtStop(load, centraal.stopId, 'Tram 2');
+  assert.ok(others.length >= 1, 'Centraal offers other lines besides Tram 2');
+  const targets = transferTargetLines(load, transfers, centraal.stopId, 'Tram 2');
+  assert.ok(targets.length >= others.length, 'transfer targets include co-located lines');
+
+  const noord = load.stops.find((s) => s.name === 'Noord');
+  const isolator = load.stops.find((s) => s.name === 'Isolatorweg');
+  assert.ok(noord && isolator, 'cross-line termini for two-leg plan');
+  const plan = planTransitConnection(load, transfers, noord.stopId, isolator.stopId);
+  assert.ok(plan, 'Noord → Isolatorweg finds a connection');
+  assert.ok(plan!.legs.length >= 1 && plan!.legs.length <= 2, 'max two rides');
+  if (noord.stopId !== isolator.stopId) {
+    const sameLine = load.lines.some(
+      (l) => l.stopIds.includes(noord.stopId) && l.stopIds.includes(isolator.stopId),
+    );
+    if (!sameLine) {
+      assert.equal(plan!.legs.length, 2, 'cross-line hop is two legs');
+      assert.ok(plan!.transferStopId, 'transfer hub set');
+      assert.ok(plan!.nextLineName, 'next line named for hub quiz');
+    }
+  }
 }
 
 console.log(
-  `Transit routing OK: Phase D ${load.ways.length} corridors / ${load.stops.length} stops; `
-  + `tram 2 thin pin (${thin.ways[0].nodes.length} shape pts), Dam, dest-scoped stops, sticky plaque.`,
+  `Transit routing OK: Phase D ${load.ways.length} corridors / ${load.stops.length} stops / `
+  + `${anchors.length} anchors; Phase E ${transfers.counts.transfers} transfers; `
+  + `tram 2 + metro 52 end-to-end, Dam, sibling distractors, sticky plaque.`,
 );

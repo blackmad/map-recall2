@@ -71,14 +71,15 @@ automated screenshot diffs for those states (not just `build-storybook`).
 
 **17. Public transit mode.** Tram / metro / ferry as its own routing and
 recall model, not a vehicle skin. *Large.* **GTFS-first** (OVapi → GVB). Plan:
-[`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on `spike/canal-transit`. **Phases A–D
-shipped on this branch:** extract + `TravelMode=transit` + Phase D playable
-**tram + metro** (`playableRefs: []` + `TRANSIT_DRIVEABLE_MODES`; ferries still
-held for water hops). Stop/line quizzes, sticky plaque, dest-scoped stops,
-corridor streets, landmarks, `check:transit`. Still open: Phase E (transfers),
-bus, GTFS-RT, dedicated mesh. Canal-belt teaching streets are force-included
-via `amsterdam-curation` boosts + `ensure:amsterdam-teaching-streets` (cap
-raised to 500 on next full rebuild). Pedestrian `bicycle=no` corridors
+[`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md). **Phases A–E first cut shipped:**
+extract + Phase D tram+metro drive + termini surprise pool + metro 52 pin +
+sibling line distractors + active-line stop scope; Phase E
+`transit-transfers.json` (94 derived edges) + connection planner (max 2 legs)
++ hub quiz “Which line can you change to here?”. Still open: drive the second
+leg after a change, ferry water hops, bus, GTFS-RT, dedicated mesh, GTFS
+`transfers.txt` merge when the zip is cached. Canal-belt teaching streets are
+force-included via `amsterdam-curation` boosts +
+`ensure:amsterdam-teaching-streets`. Pedestrian `bicycle=no` corridors
 (Kalverstraat) are playable with `bicycleRestricted` saved on the way.
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
