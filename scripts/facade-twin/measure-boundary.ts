@@ -24,12 +24,14 @@ import { buildElevations, inFrontOf, obliquityDeg, standoffM, type Elevation } f
 import { plausibility, PLAUSIBLE_ENOUGH } from '../../src/canalRecall/facade/grammar.ts';
 import { measureFacade, STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
-import { hasUsablePose, AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { hasUsablePose, AMSTERDAM_CAMERA, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, MassingRecord, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
 const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
 const CACHE = path.resolve('.cache/facade-twin');
+const offsetOf = await loadTrackOffsets(CACHE);
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const STORE = path.join(STAGING, 'measured-facades.json');
 const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -225,10 +227,10 @@ for (const { panoramaId, pose: planPose, jobs } of plan) {
     if (ground === null || eaves === null || eaves <= ground) { failed++; continue; }
 
     const ppm = Math.min(MAX_PIXELS_PER_METRE, Math.max(MIN_PIXELS_PER_METRE, 1250 / job.standoff));
-    const rect = rectifyFacade(image, {
-      x: entry.pose.point.x, y: entry.pose.point.y, z: entry.pose.view.cameraHeight - GEOID_SEPARATION_M,
-      headingDeg: entry.pose.view.headingDeg, pitchDeg: entry.pose.view.pitchDeg, rollDeg: entry.pose.view.rollDeg,
-    }, { start: job.wall.start, end: job.wall.end, baseZ: ground - STRIP_BASE_BELOW_GROUND_M, topZ: eaves + 0.3 }, { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA });
+    // The lens in the wall's datum, never the raw published height.
+    const lens = resolveLens(entry.pose.view, offsetOf, ground);
+    if (!lens) continue;
+    const rect = rectifyFacade(image, lens.pose, { start: job.wall.start, end: job.wall.end, baseZ: ground - STRIP_BASE_BELOW_GROUND_M, topZ: eaves + 0.3 }, { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA });
 
     const m = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
     // Is this a façade at all? The reference sheet showed that low obliquity and

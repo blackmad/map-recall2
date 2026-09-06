@@ -18,12 +18,14 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/area
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { measureFacade, STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade, type CameraPose } from '../../src/canalRecall/facade/rectify.ts';
-import { hasUsablePose, AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { hasUsablePose, AMSTERDAM_CAMERA, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
 const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
 const CACHE = path.resolve('.cache/facade-twin');
+const offsetOf = await loadTrackOffsets(CACHE);
 const OUT = path.join(CACHE, 'measured');
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -170,10 +172,15 @@ for (const buildingId of ids) {
   // which the detector's own plausibility test already rejects.
   const baseZ = ground - STRIP_BASE_BELOW_GROUND_M, topZ = eaves + 0.3;
 
-  const rect = rectifyFacade(image, {
-    x: pose.point.x, y: pose.point.y, z: pose.view.cameraHeight - GEOID_SEPARATION_M,
-    headingDeg: pose.view.headingDeg, pitchDeg: pose.view.pitchDeg, rollDeg: pose.view.rollDeg,
-  } satisfies CameraPose, { start: wall.start, end: wall.end, baseZ, topZ },
+  // The strip is cut in world heights, so the lens has to be in the same datum
+  // as the wall or the whole strip slides: what lands between baseZ and topZ is
+  // the façade shifted by the lens error, which is how a four-storey house comes
+  // back with an extra row of windows borrowed from above the eaves.
+  const lens = resolveLens(pose.view, offsetOf, ground);
+  if (!lens) continue;
+
+  const rect = rectifyFacade(image, lens.pose satisfies CameraPose,
+    { start: wall.start, end: wall.end, baseZ, topZ },
     // Do not invent pixels: sample at what the panorama holds at this range,
     // capped so a very close view does not produce an enormous strip.
     { pixelsPerMetre: Math.min(MAX_PIXELS_PER_METRE, Math.max(MIN_PIXELS_PER_METRE, 1250 / found.standoff)), camera: AMSTERDAM_CAMERA });

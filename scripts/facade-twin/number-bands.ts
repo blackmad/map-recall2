@@ -34,7 +34,8 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
-import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, hasUsablePose, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA, hasUsablePose, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
@@ -69,6 +70,7 @@ const footprints = new Map<string, ProjectedPoint[]>();
 for (const e of registry) if (!footprints.has(e.buildingId)) footprints.set(e.buildingId, e.footprintLngLat.map(p => RD_NEW.fromLngLat(p)));
 
 const posed = views.filter(hasUsablePose).map(v => ({ v, p: RD_NEW.fromLngLat(v.lngLat) }));
+const offsetOf = await loadTrackOffsets(CACHE);
 
 const ids = (arg('ids') ?? '').split(',').filter(Boolean);
 const limit = Number(arg('limit') ?? 24);
@@ -124,9 +126,17 @@ for (const pandId of queue) {
   let image;
   try { image = jpeg.decode(await readFile(file), { useTArray: true, formatAsRGBA: true }); } catch { continue; }
 
-  const pose = { x: chosen.p.x, y: chosen.p.y, z: chosen.v.cameraHeight - GEOID_SEPARATION_M,
-    headingDeg: chosen.v.headingDeg, pitchDeg: chosen.v.pitchDeg, rollDeg: chosen.v.rollDeg };
   const ground = mass.groundLevel;
+  // This band is the most datum-sensitive thing the project renders, and it was
+  // the one place that ignored the datum. It deliberately picks the closest
+  // usable camera -- a 13 cm digit needs pixels -- and at a 4 m standoff half a
+  // metre of lens error is about seven degrees of aim, which walks a door-height
+  // band up to the first-floor windows. That is what was happening: the tiles
+  // were photographs of brickwork and window mullions, the recogniser dutifully
+  // found digit-shaped texture in them, and 21 of 30 panden came back unread.
+  const lens = resolveLens(chosen.v, offsetOf, ground);
+  if (!lens) continue;
+  const pose = lens.pose;
   const baseZ = ground + BASE_ABOVE_GROUND, topZ = ground + TOP_ABOVE_GROUND;
 
   // The band runs along the wall's own line, extended by a frontage each side.
@@ -201,6 +211,10 @@ for (const pandId of queue) {
     origin: { x: originX, y: originY }, direction: { x: ux, y: uy },
     spanM: Number(spanM.toFixed(2)), wallStartM: Number(pad.toFixed(2)), wallEndM: Number((pad + wall.lengthM).toFixed(2)),
     baseZ, topZ, tiles,
+    // What the lens correction did here, so a band that read nothing can be
+    // told apart from a band that was aimed with no correction available.
+    datumOffsetM: Number(lens.offsetM.toFixed(3)), datumSource: lens.offsetSource,
+    heightInferred: lens.heightInferred,
   });
   done++;
   process.stdout.write(`\r  ${done} panden, ${downloaded} panoramas downloaded`);

@@ -17,12 +17,14 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { rectifyFacade, type CameraPose, type EquirectangularImage } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView } from '../../src/canalRecall/facade/sources.ts';
 
 const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
 const CACHE = path.resolve('.cache/facade-twin');
+const offsetOf = await loadTrackOffsets(CACHE);
 const OUT = path.join(CACHE, 'rectified');
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -146,13 +148,7 @@ function frontageOf(buildingId: string) {
   return best;
 }
 
-function poseOf(view: PanoramaView, point: { x: number; y: number }): CameraPose {
-  return {
-    x: point.x, y: point.y,
-    z: view.cameraHeight - GEOID_SEPARATION_M,
-    headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
-  };
-}
+
 
 async function rectify(buildingId: string, label: string, suffix = '') {
   const found = frontageOf(buildingId);
@@ -171,7 +167,11 @@ async function rectify(buildingId: string, label: string, suffix = '') {
   const wallLen = Math.hypot(wall.end.x - wall.start.x, wall.end.y - wall.start.y);
   const ex = ((wall.end.x - wall.start.x) / wallLen) * contextM;
   const ey = ((wall.end.y - wall.start.y) / wallLen) * contextM;
-  const result = rectifyFacade(image, poseOf(view.pose.view, view.pose.point), {
+    // The lens goes in the wall's own datum -- see resolveLens. Rendering from a
+  // published height that has not been corrected slides the whole strip.
+  const lens = resolveLens(view.pose.view, offsetOf, ground);
+  if (!lens) { console.log(`  ${label}: no usable camera height`); return null; }
+  const result = rectifyFacade(image, lens.pose, {
     start: { x: wall.start.x - ex, y: wall.start.y - ey },
     end: { x: wall.end.x + ex, y: wall.end.y + ey },
     baseZ: ground - 1.5,          // include the stoep and any souterrain light well

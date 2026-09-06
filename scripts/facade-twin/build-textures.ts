@@ -27,12 +27,14 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { MATERIALS, nearestMaterial, wallFamily, type MaterialId } from '../../src/canalRecall/facade/materials.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { MassingRecord, PanoramaView } from '../../src/canalRecall/facade/sources.ts';
 
 const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
 const CACHE = path.resolve('.cache/facade-twin');
+const offsetOf = await loadTrackOffsets(CACHE);
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const OUT = path.resolve('public/canal-drive/facade-textures');
 const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -268,10 +270,10 @@ for (const [materialId, facades] of [...byMaterial.entries()].sort((a, b) => b[1
     const image = await panorama(view);
     const ppm = Math.min(96, Math.max(40, 1250 / f.standoffM));
     const baseZ = mass.groundLevel! - STRIP_BASE_BELOW_GROUND_M;
-    const rect = rectifyFacade(image, {
-      x: point.x, y: point.y, z: view.cameraHeight - GEOID_SEPARATION_M,
-      headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
-    }, { start: { x: f.wall[0], y: f.wall[1] }, end: { x: f.wall[2], y: f.wall[3] }, baseZ, topZ: mass.eavesHeight! + 0.3 },
+    // The lens in the wall's datum, never the raw published height.
+    const lens = resolveLens(view, offsetOf, mass.groundLevel);
+    if (!lens) continue;
+    const rect = rectifyFacade(image, lens.pose, { start: { x: f.wall[0], y: f.wall[1] }, end: { x: f.wall[2], y: f.wall[3] }, baseZ, topZ: mass.eavesHeight! + 0.3 },
       { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA });
     const got = patches(rect, rect.pixelsPerMetre, f.openings, STRIP_BASE_BELOW_GROUND_M);
     if (got.length >= 3) byBuilding.set(f.pandId, got);

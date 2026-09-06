@@ -15,7 +15,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import jpeg from 'jpeg-js';
-import { GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { GEOID_SEPARATION_M, lensHeightNap } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { CameraModel, CameraPose } from '../../src/canalRecall/facade/rectify.ts';
 import type { PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
@@ -39,6 +39,60 @@ export const poseOf = (view: PanoramaView, heightOffsetM = 0, lensZNap: number |
     x: camera.x, y: camera.y,
     z: lensZNap ?? (view.cameraHeight - heightOffsetM - GEOID_SEPARATION_M),
     headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
+  };
+};
+
+export interface ResolvedLens {
+  readonly pose: CameraPose;
+  readonly offsetM: number;
+  readonly offsetSource: 'segment' | 'run' | 'none';
+  readonly heightInferred: boolean;
+}
+
+/**
+ * The one correct way to place a lens in space, so that placing it wrongly
+ * takes more effort than placing it right.
+ *
+ * Two independent corrections have to happen before a panorama can be projected
+ * against a building, and sixteen scripts in this directory did neither. Both
+ * failures are silent -- the render still comes out, it is just of somewhere
+ * else -- which is why they survived so long:
+ *
+ *   1. **The published height is wrong by a drifting amount.** It wanders within
+ *      a survey run and jumps between runs; `solve-track-datum.ts` recovers it
+ *      per ~125 m segment. Median unapplied correction is about half a metre,
+ *      and the tail reaches two.
+ *   2. **Some frames publish no height at all**, as a zero. Passed through
+ *      untouched it becomes a lens 43.5 m under the quay.
+ *
+ * The correction order matters and is the reason this is a function rather than
+ * a convention. The track offset corrects a *published* height. A height
+ * inferred from the ground beneath the camera never used the published value,
+ * so applying the offset to it would be correcting an error it does not have --
+ * and the report says `none` in that case, because "no correction needed" and
+ * "no correction available" are different claims about a frame.
+ *
+ * Returns null when the height can be neither read nor inferred, which is a
+ * refusal to render rather than a render at an assumed height.
+ */
+export const resolveLens = (
+  view: PanoramaView,
+  offsetOf: (view: PanoramaView) => { offsetM: number; source: 'segment' | 'run' | 'none' },
+  groundZ: number | null | undefined,
+): ResolvedLens | null => {
+  const lens = lensHeightNap(view, groundZ);
+  if (!lens) return null;
+  const solved = offsetOf(view);
+  const offsetM = lens.inferred ? 0 : solved.offsetM;
+  const camera = RD_NEW.fromLngLat(view.lngLat);
+  return {
+    pose: {
+      x: camera.x, y: camera.y, z: lens.z - offsetM,
+      headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
+    },
+    offsetM,
+    offsetSource: lens.inferred ? 'none' : solved.source,
+    heightInferred: lens.inferred,
   };
 };
 

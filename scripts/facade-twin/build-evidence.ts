@@ -31,12 +31,14 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/area
 import { STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
 import { nearestMaterial, wallFamily } from '../../src/canalRecall/facade/materials.ts';
 import { rectifyFacade, type CameraPose } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView } from '../../src/canalRecall/facade/sources.ts';
 
 const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
 const CACHE = path.resolve('.cache/facade-twin');
+const offsetOf = await loadTrackOffsets(CACHE);
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const STRIPS = path.resolve('public/canal-drive/facade-evidence');
 const CLEAN = path.resolve('.cache/facade-twin/strips-clean');
@@ -135,11 +137,10 @@ async function strip(record: Stored): Promise<boolean> {
   if (typeof ground !== 'number') return false;
   const eaves = mass.eavesHeight ?? ground + 12;
   const [x0, y0, x1, y1] = record.wall;
-  const rect = rectifyFacade(image, {
-    x: RD_NEW.fromLngLat(view.lngLat).x, y: RD_NEW.fromLngLat(view.lngLat).y,
-    z: view.cameraHeight - GEOID_SEPARATION_M,
-    headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
-  } satisfies CameraPose,
+  // The lens in the wall's datum, never the raw published height -- see resolveLens.
+  const lens = resolveLens(view, offsetOf, ground);
+  if (!lens) return false;
+  const rect = rectifyFacade(image, lens.pose satisfies CameraPose,
     { start: { x: x0, y: y0 }, end: { x: x1, y: y1 },
       baseZ: ground - STRIP_BASE_BELOW_GROUND_M, topZ: eaves + 0.3 },
     { pixelsPerMetre: Math.min(MAX_PIXELS_PER_METRE, Math.max(MIN_PIXELS_PER_METRE, 1250 / record.standoffM)), camera: AMSTERDAM_CAMERA });
