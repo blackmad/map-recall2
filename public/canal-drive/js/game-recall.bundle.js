@@ -545,13 +545,15 @@ Learned names, exploration collection, personal bests, route settings and the ho
     _recallFeatureAt(name, x, y, type = "") {
       if (!name) return null;
       const meta = this.osmLoader && this.osmLoader.featureMeta && this.osmLoader.featureMeta.get(name);
-      const center = meta && meta.center ? meta.center : this._toLatLon(x, y);
-      if (!center) return null;
       const profile = travelProfile(this.travelMode);
       const defaultType = profile.learnedKind === "street" ? "street" : profile.learnedKind === "transit" ? "line" : "canal";
+      const resolvedType = type || meta && meta.type || defaultType;
+      const useMetaCenter = !!(meta && meta.center) && (resolvedType === "line" || resolvedType === "stop" || profile.learnedKind === "transit");
+      const center = useMetaCenter ? meta.center : this._toLatLon(x, y);
+      if (!center) return null;
       return {
         name,
-        type: type || meta && meta.type || defaultType,
+        type: resolvedType,
         cityId: meta && meta.cityId || this.cityId || "amsterdam",
         center
       };

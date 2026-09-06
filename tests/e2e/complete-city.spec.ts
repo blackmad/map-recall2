@@ -57,7 +57,11 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
   expect(loaded.basemapVisibility, 'the basemap extrusion is hidden').toBe('none');
   expect(loaded.wallsVisible, 'the merged source is what draws').toBe('visible');
   expect(loaded.roofFilter?.[0], 'the roof cap is a filter, not a paint').toBe('all');
-  expect(JSON.stringify(loaded.roofFilter), 'flat caps skip pyramidal parts that get a mesh cone').toContain('pyramidal');
+  // Flat lids are an allowlist of flat/untagged shapes; pyramidal parts are
+  // meshed separately and must not appear in the fill-extrusion filter.
+  const roofFilterJson = JSON.stringify(loaded.roofFilter);
+  expect(roofFilterJson, 'only flat / untagged shapes get lids').toContain('flat');
+  expect(roofFilterJson, 'shaped roofs never get a flat lid').not.toMatch(/gabled|pyramidal|skillion/);
 
   // Read the rendered source back: every feature must resolve to an identity or
   // picking cannot return a BuildingHit for it, and a measured height is the

@@ -77,6 +77,8 @@ const host = {
   _revealName: () => { throw new Error('should not reveal on the first frame'); },
   _showStreetKnowledge: () => { throw new Error('should not adopt on the first frame'); },
   _openQuizPrompt: () => { throw new Error('should not ask on the first frame'); },
+  // Cold-open review is a separate delight path; this fixture only pins heading.
+  _tryColdOpenReview: () => false,
 };
 GameRecallRuntime.prototype._updateCanalQuiz.call(host as unknown as GameRecallRuntime, 1 / 60);
 

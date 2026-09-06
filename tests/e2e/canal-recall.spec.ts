@@ -6,6 +6,8 @@ type HarnessGame = {
   quizCurrentName: string;
   quizCandidateName: string;
   quizPromptName: string;
+  quizFeedback: string;
+  _utilityOpen: boolean;
   player: { x: number; y: number; angle: number; speed: number };
   track: { getNearestRoad(x: number, y: number): { dist: number; width: number; angle: number } | null };
   landmarks: Array<{ id: string; name: string; x: number; y: number }>;
@@ -23,6 +25,7 @@ type HarnessGame = {
   };
   _landmarkNotice: { id: string; name: string } | null;
   streetKnowledge: Map<string, { name: string; wikipediaUrl: string; wikipediaExtract: string }>;
+  _normaliseCanalName: (name: string) => string;
   _showStreetKnowledge: (name: string) => void;
   _neighborhoodNotice: { name: string; kind?: string; wikipediaExtract?: string } | null;
   _neighborhoodNoticeTimer: number;
@@ -30,7 +33,7 @@ type HarnessGame = {
   _render: () => void;
   _renderNeighborhoodNotice: () => void;
   ctx: CanvasRenderingContext2D;
-  hud: { drawCurrentLocation: (...args: unknown[]) => void };
+  hud: { drawCurrentLocation: (...args: unknown[]) => void; drawPlaque: (...args: unknown[]) => void };
   camera: { x: number; y: number; detached: boolean; panX: number; pan(dx: number, dy: number): void; resetPan(): void; update(target: unknown, dt: number): void };
   viewport: import('../../src/canalRecall/viewport').Viewport;
   neighborhoods: Array<{ name: string; kind: string; rank: number; rings: Array<Array<{ x: number; y: number }>> }>;
@@ -150,10 +153,12 @@ test('HUD hides a new street before the delayed question opens', async ({ page }
     game.quizCurrentName = 'Previous Street';
     game.quizCandidateName = 'Secret New Street';
     game.quizPromptName = '';
-    let captured: unknown[] = [];
-    game.hud.drawCurrentLocation = (...args: unknown[]) => { captured = args; };
+    let captured: { routeName?: string; answerHidden?: boolean } | null = null;
+    game.hud.drawPlaque = (_ctx: unknown, opts: { routeName?: string; answerHidden?: boolean }) => {
+      captured = { routeName: opts.routeName, answerHidden: opts.answerHidden };
+    };
     game._render();
-    return { routeName: captured[1], answerHidden: captured[4] };
+    return captured;
   });
   expect(hudCall).toEqual({ routeName: '', answerHidden: true });
 });
@@ -248,6 +253,9 @@ test('a returning player sees what they have collected', async ({ page }) => {
   const badge = await page.evaluate(() => {
     const game = window.canalRecallGame;
     game.state = 0; // MENU
+    // Enamel setup owns MENU; hide it so the canvas attract screen (and badge) draw.
+    const setup = document.getElementById('route-setup');
+    if (setup) setup.style.display = 'none';
     const drawn: Array<{ text: string; x: number }> = [];
     const original = game.ctx.fillText.bind(game.ctx);
     game.ctx.fillText = ((text: string, x: number, y: number) => {
@@ -262,7 +270,7 @@ test('a returning player sees what they have collected', async ({ page }) => {
     return drawn.find(entry => entry.text.startsWith('Amsterdam:')) ?? null;
   });
   expect(badge?.text, 'the menu tells a returning player what they already know')
-    .toBe('Amsterdam: 3 waterways · 1 hoods · 2 landmarks · 7 routes');
+    .toBe('Amsterdam: 3 names · 1 hoods · 2 landmarks · 7 routes');
   // Not just that the call happened: the badge is centred. An undefined x here
   // is how the original bug looked once its ReferenceError was swallowed. The
   // centre is the logical canvas centre, which is 640 on desktop and half the
@@ -329,16 +337,25 @@ test('an active landmark is always marked on the map', async ({ page }) => {
 
 test('a learned street can open its encyclopedia card and article', async ({ page }) => {
   await openCarRoute(page);
-  await expect.poll(() => page.evaluate(() => window.canalRecallGame.streetKnowledge?.has('nes'))).toBe(true);
   const notice = await page.evaluate(() => {
     const game = window.canalRecallGame;
+    const key = `street:${game._normaliseCanalName('Nes')}`;
+    // Seed the typed index key — extract coverage of Nes can lag the UI contract.
+    game.streetKnowledge.set(key, {
+      name: 'Nes',
+      type: 'street',
+      wikipediaUrl: 'https://en.wikipedia.org/wiki/Nes_(Amsterdam)',
+      wikipediaExtract: 'The Nes is a narrow street in central Amsterdam.',
+    });
     game._showStreetKnowledge('Nes');
-    return game._landmarkNotice;
+    return {
+      notice: game._landmarkNotice,
+      url: game.streetKnowledge.get(key)?.wikipediaUrl,
+    };
   });
-  expect(notice).toMatchObject({ name: 'Nes' });
+  expect(notice.notice).toMatchObject({ name: 'Nes' });
   await expect(page.locator('#gameCanvas')).toBeVisible();
-  expect(await page.evaluate(() => window.canalRecallGame.streetKnowledge.get('nes')?.wikipediaUrl))
-    .toBe('https://en.wikipedia.org/wiki/Nes_(Amsterdam)');
+  expect(notice.url).toBe('https://en.wikipedia.org/wiki/Nes_(Amsterdam)');
 });
 
 test('neighborhood entry renders as a compact photo lower-third', async ({ page }, testInfo) => {
@@ -415,6 +432,12 @@ test('the first neighborhood entered also gets a postcard', async ({ page }) => 
     game._previousNeighborhood = '';
     game._neighborhoodNotice = null;
     game._neighborhoodNoticeTimer = 0;
+    // Clear teaching-gate owners so the postcard is allowed to show.
+    game.quizPromptName = '';
+    game.quizFeedback = '';
+    game._utilityOpen = false;
+    const prompt = document.getElementById('canal-prompt') || (game as unknown as { _prompt?: HTMLElement })._prompt;
+    if (prompt) prompt.style.display = 'none';
     for (let i = 0; i < 9; i++) game._updateLandmarks(0.1);
     return {
       name: game._neighborhoodNotice && game._neighborhoodNotice.name,

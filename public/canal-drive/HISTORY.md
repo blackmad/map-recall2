@@ -6,6 +6,18 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## CI unblocked for blank-boot ship — 2026-09-06
+
+Firebase stayed on `055ce32` because Canal CI failed after the blank-boot
+gate. Fixes: shrink `game.js` under the decomposition line cap (overlay /
+teaching / city helpers → presentation runtime; drop duplicate ribbon
+constants); restore stretch-local `_recallFeatureAt` centres for streets so
+one answer does not suppress the far end; refresh e2e for enamel HUD,
+omafiets heading, flat-roof filter, Map Quest start copy, knowledge keys,
+and a 120s Playwright budget so `openRoute` can finish. Also unmasked unit
+stubs (`_tryColdOpenReview`, postcard province caption) that never ran while
+the line-count assert failed first.
+
 ## Large-letter postcard compositor (standalone) — 2026-09-06
 
 An earlier HISTORY line claimed vintage large-letter neighborhood postcards had

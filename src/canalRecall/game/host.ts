@@ -68,6 +68,8 @@ export interface GameCoreHost {
   _transitLineStickyAt: number | null;
   /** True while a settings or debug panel is open over the canvas. */
   _utilityOpen: boolean;
+  /** The live canal-prompt DOM card (display toggled while a question is open). */
+  _prompt: HTMLElement;
   /** The expanded landmark card. Owned by the route/DOM half of the game. */
   _landmarkPanel: HTMLElement | null;
   _toggleUtilityPanel(panel: HTMLElement): void;
@@ -238,7 +240,6 @@ export interface RecallHost extends GameCoreHost {
   _choiceOrder?: string[];
   _pendingSkipMastered?: boolean;
 
-  _prompt: HTMLElement;
   _promptInput: HTMLInputElement;
   _promptFeedback: HTMLElement;
   _promptChoices: HTMLElement;

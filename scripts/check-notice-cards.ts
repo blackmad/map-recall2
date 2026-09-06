@@ -142,7 +142,12 @@ const stub = (text: string, font: string) => {
 {
   assert.equal(measurePostcard({ name: 'X', imageArea: 'Zuid' }, stub).caption,
     'Photo: Zuid · Amsterdam');
-  assert.equal(measurePostcard({ name: 'X' }, stub).caption, 'Amsterdam · Noord-Holland');
+  assert.equal(measurePostcard({ name: 'X' }, stub).caption, 'Amsterdam',
+    'without a province the caption is just the city');
+  assert.equal(
+    measurePostcard({ name: 'X', provinceCaption: 'Noord-Holland' }, stub).caption,
+    'Amsterdam · Noord-Holland',
+  );
 }
 
 // --- Cover-crop never distorts ---------------------------------------------
