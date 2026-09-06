@@ -36,6 +36,30 @@ distinction is currently unknown and is what gates the next spend.
 Scored with `check-number-anchors.ts --manifest= --readings=`, which already takes
 a paired band set.
 
+### Two instruments that will report for the first time, and what they should say
+
+Both refuse on the 400-band store for want of a denominator. The 1,013-band read
+crosses both thresholds, so the predictions go down now.
+
+**The pose / intrinsic split** needs 15 bands carrying two *different* house
+numbers; the 400 store has 9, so ~23 are expected here. The decision-relevant
+claim, not the point estimate: **the intrinsic term will be at least 1.0 m.** If it
+is, a perfect pose cannot take the anchor metric below a metre, and pose work has a
+bounded payoff that should be weighed against a better recogniser before anyone
+spends a week on it. If intrinsic comes in under a metre, pose is the whole story
+and that ordering flips.
+
+**OCR self-consistency** needs 25 plates carrying more than one assembled
+candidate; the 400 store has 20, so ~50 are expected. Prediction: **the
+disagreement rate lands between 5% and 20%, and at least one conflict is settled by
+it** — proven a misread with no reference data, as pand 122's "120"/"124" already
+is. A rate above 20% would say the assembler is generating spurious candidates
+rather than the recogniser misreading, which is a different bug in a different
+place.
+
+Neither prediction was chosen to be easy: the first can fail in the direction that
+makes more work, and the second is bounded on both sides.
+
 ## The one number
 
 **Correspondence is 87%.** Of the panden a house-number reading can decide, 41
