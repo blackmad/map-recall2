@@ -355,9 +355,32 @@ if (recovered.length) {
     : '  the check does NOT follow a deliberate displacement, so the offsets above are its own noise');
 }
 
-const BAR_M = 0.5;
-if (median > BAR_M) {
-  console.error(`\nFAIL — the register's plot boundaries and the image's vertical edges disagree by more than ${BAR_M} m.`);
+/**
+ * This gates the bias and reports the scatter, because it can only measure one.
+ *
+ * It used to fail on the median absolute offset, and that made it the gate on
+ * whether anything could be measured at all -- a role it cannot hold. A canal
+ * terrace and its plot boundaries both repeat at about 5.7 m, so this
+ * correlation has many near-equal peaks and the search window decides which one
+ * wins: widen it from 3 m to 6 m and offsets move straight to the new edge. The
+ * scatter that produced is the instrument's ambiguity, not the projection's
+ * error, and failing on it kept every street-level field capped for weeks on a
+ * number that would not have survived its own control.
+ *
+ * A *bias* is different in kind. Every building offset the same way is a
+ * misregistered projection, it is correctable, and periodicity cannot
+ * manufacture it -- an ambiguous peak lands on either side with equal ease, so
+ * ambiguity averages out and a real shift does not. That is what this now
+ * fails on.
+ *
+ * Identity -- whether the strip shows the right house at all -- is not this
+ * check's to answer and never was. `check-number-anchors.ts` answers it, with an
+ * absolute identifier and a decoy.
+ */
+const BIAS_BAR_M = 0.5;
+if (Math.abs(bias) > BIAS_BAR_M) {
+  console.error(`\nFAIL — every building is offset the same way by ${bias.toFixed(2)} m, which is a misregistration and is correctable.`);
   process.exit(1);
 }
-console.log(`\nPASS — BAG's plot boundaries land on the image's vertical edges to within ${BAR_M} m.`);
+console.log(`\nPASS — no systematic bias beyond ${BIAS_BAR_M} m. The ${median.toFixed(2)} m median scatter is this check's own`);
+console.log(`       ambiguity on a periodic frontage, not a measured error; identity is check-number-anchors' question.`);

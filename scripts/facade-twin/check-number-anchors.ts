@@ -309,3 +309,33 @@ await writeFile(path.join(BANDS, 'anchors.json'), JSON.stringify({
   },
   panden: results,
 }, null, 1));
+
+/**
+ * The acceptance bar, as a number rather than a paragraph.
+ *
+ * "Really good correspondence between panoramas and 3DBAG buildings" was the
+ * standing goal for weeks without a threshold, so every headline written against
+ * it chose its own. The owner has now set it: identity first, and identity is
+ * met when 95% of the panden this instrument can decide are confirmed rather
+ * than contradicted. Precision -- how far along the façade -- comes after, and
+ * is deliberately not gated here.
+ *
+ * The denominator is confirmed + conflict, the readings that say something. A
+ * pand whose plate sits on a party wall, or whose numbers all fall outside our
+ * wall span, has not been decided either way and must not be counted as a pass.
+ */
+const IDENTITY_BAR = 0.95;
+const MIN_DECIDED = 30;
+const decided = by('confirmed').length + by('conflict').length;
+const rate = decided ? by('confirmed').length / decided : 0;
+console.log(`\nidentity — ${by('confirmed').length} of ${decided} decided panden confirm, ${(rate * 100).toFixed(0)}%`
+  + `  (bar ${IDENTITY_BAR * 100}%; the decoy confirms ${decoyConfirmed})`);
+if (decided < MIN_DECIDED) {
+  console.error(`\nINCONCLUSIVE — ${decided} decided panden is too few to test a ${IDENTITY_BAR * 100}% bar. Render more bands.`);
+  process.exit(1);
+}
+if (rate < IDENTITY_BAR) {
+  console.error(`\nFAIL — the wall we project is the right house ${(rate * 100).toFixed(0)}% of the time when this can be told apart, below ${IDENTITY_BAR * 100}%.`);
+  process.exit(1);
+}
+console.log(`\nPASS — identity holds at ${(rate * 100).toFixed(0)}%, at or above the ${IDENTITY_BAR * 100}% bar.`);

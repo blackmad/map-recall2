@@ -26,14 +26,31 @@ The ranking now takes the squarest view that keeps 70% of the best available
 resolution — median obliquity 4.5°, square-on bands 138 → 230. A re-render and OCR
 pass over the same 400 panden is running to test whether 76% moves.
 
-**Waiting on the owner:** six façade-twin decisions are queued at
-<https://claude.ai/code/artifact/93e41df0-620e-475c-b993-9956caf65750> — the
-acceptance bar for panorama↔pand correspondence, what to do about the storey
-ladder, whether to buy more house-number anchors, whether the registration check
-stays a gate, which measured-façade file to keep, and whether to unpark the
-2024–2025 imagery. Answers persist in that artifact's store; read them back with
-the Artifact tool's `read_db` on `answers/<id>`. Items 1c, 1d and 5 below are
-blocked on them.
+**Owner decisions, taken 2026-09-06** (queued at
+<https://claude.ai/code/artifact/93e41df0-620e-475c-b993-9956caf65750>; answers
+live in that artifact's store under `answers/<id>`):
+
+1. **The bar is identity first, precision second.** Done when **95% of the panden
+   a house-number reading can decide are confirmed rather than contradicted**.
+   Today that is 76%. `check-number-anchors.ts` now fails against this bar, and it
+   is the first time the standing goal has been a number this repo can test.
+   Precision — how far along the façade — is explicitly *not* gated yet.
+2. **Fix opening detection, not the ladder.** Per §22 the storey count is
+   downstream of window detection, and 28% of façades change their opening count
+   under a 10 cm lens nudge.
+3. **Diagnose the 14 contradictions** — done, and it produced the obliquity fix
+   described above.
+4. **Registration is demoted from gate to diagnostic** — done.
+   `check-facade-registration.ts` now fails on *bias*, which is a real
+   misregistration and which periodicity cannot manufacture, and reports its
+   median scatter as the instrument ambiguity it is. Passing at −0.06 m bias.
+   `streetLevelEvidence.ts`'s confidence cap has been re-anchored: it no longer
+   cites this check or the long-fixed storey over-count, but the two live reasons
+   — identity at 76%, and opening detection not holding still.
+5. **Keep the 422-façade store**, not the 2,180.
+6. **Unpark the 2024–2025 imagery for identity and azimuth only**, with a check
+   that fails the build if an inferred-height frame reaches a vertical
+   measurement.
 
 ---
 

@@ -3,22 +3,38 @@
  * actually earned.
  *
  * This is where the detector's output meets the ledger, and the important thing
- * it does is *withhold*. `check-facade-registration.ts` is still red at the bar
- * it sets, and no field produced by the opening detector has been checked
- * against a hand-labelled building. Until `fieldVerdict` says otherwise, these
- * measurements are hypotheses with a provenance, not measurements at
- * auto-accept confidence.
+ * it does is *withhold*. Until `fieldVerdict` says otherwise these measurements
+ * are hypotheses with a provenance, not measurements at auto-accept confidence.
  *
- * Two independent reasons to distrust them right now, both measured rather than
- * suspected:
+ * The reasons have been rewritten, because the two originally given here were
+ * both wrong and a cap resting on wrong reasons is not a cap anyone can lift.
  *
- *   - the storey ladder over-counts. Across Keizersgracht 100–180 it returns 6
- *     storeys for 32 of 56 buildings, where 3DBAG's own median for the pilot is
- *     4–5 and the street is mostly three or four plus an attic. A spurious rung
- *     at a cornice or a basement light well produces exactly that.
- *   - the wall-colour sampler was tuned by moving its percentile until fewer
- *     buildings came out black. That is fitting to an expectation about the
- *     answer, not validating against one.
+ * Gone: "`check-facade-registration.ts` is red at the bar it sets." It is red,
+ * and its red is largely its own — widening its ±3 m search window to ±6 m sends
+ * offsets straight to the new edge, because a canal terrace and its plot
+ * boundaries both repeat at about 5.7 m and the window, not the photograph,
+ * picks which peak wins. It is a diagnostic of local precision, not a gate on
+ * identity, and it is no longer cited as one.
+ *
+ * Gone: "the storey ladder over-counts, 6 storeys for 32 of 56 Keizersgracht
+ * buildings." That was true of a scoring function that rewarded rung count and
+ * has since been replaced by mean fit. Measured over 342 façades the ladder now
+ * runs +0.30 storeys against 3DBAG at MAE 0.76, 88% within one storey.
+ *
+ * The live reasons, both measured:
+ *
+ *   - identity is 76%, not 95%. Of the panden a house-number reading can decide,
+ *     44 confirm the wall we projected and 14 contradict it. A field measured off
+ *     a wall that is the wrong house one time in four cannot be auto-accepted,
+ *     whatever the detector's own precision.
+ *   - opening detection does not hold still. A 10 cm change in assumed lens
+ *     height changes the opening count on 28% of façades, and every storey-count
+ *     flip observed followed an opening change. Storeys, bays and openings all
+ *     inherit that.
+ *
+ * The wall-colour sampler's percentile was also tuned by moving it until fewer
+ * buildings came out black, which is fitting to an expectation rather than
+ * validating against one. That has not been revisited.
  *
  * So everything here caps at {@link UNVALIDATED_CONFIDENCE}. The fields are
  * recorded, carry their observation, and are visible to review — which is what
