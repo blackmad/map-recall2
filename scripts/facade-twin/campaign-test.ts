@@ -27,10 +27,12 @@ import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/c
 import { STRIP_BASE_BELOW_GROUND_M } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
 import { hasUsablePose, AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
 const CACHE = path.resolve('.cache/facade-twin');
+const offsetOf = await loadTrackOffsets(CACHE);
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const OUT = path.join(CACHE, 'campaign-test');
 const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -98,10 +100,12 @@ for (const year of [...byYear.keys()].sort()) {
         await writeFile(file, bytes);
       } catch { continue; }
     }
+    // The lens in the wall's datum -- see resolveLens in panorama-render.ts.
+    const lens = resolveLens(pick.v, offsetOf, mass.groundLevel);
+    if (!lens) continue;
     const image = jpeg.decode(bytes, { useTArray: true, formatAsRGBA: true });
     const rect = rectifyFacade({ width: image.width, height: image.height, data: image.data },
-      { x: pick.p.x, y: pick.p.y, z: pick.v.cameraHeight - GEOID_SEPARATION_M,
-        headingDeg: pick.v.headingDeg, pitchDeg: pick.v.pitchDeg, rollDeg: pick.v.rollDeg },
+      lens.pose,
       { start, end, baseZ: mass.groundLevel - STRIP_BASE_BELOW_GROUND_M,
         topZ: (mass.eavesHeight ?? mass.groundLevel + 12) + 0.3 },
       // One scale for every render, so a shift between them is metres.

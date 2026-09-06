@@ -19,11 +19,13 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
 import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { MassingRecord, PanoramaView } from '../../src/canalRecall/facade/sources.ts';
 
 const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
 const CACHE = path.resolve('.cache/facade-twin');
+const offsetOf = await loadTrackOffsets(CACHE);
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))?.slice(name.length + 3);
 const COUNT = Number(arg('count') ?? 12);
@@ -85,10 +87,10 @@ for (const f of chosen) {
   const mass = massing.get(f.pandId)!;
   const point = RD_NEW.fromLngLat(view.lngLat);
   const image = await panorama(view);
-  const rect = rectifyFacade(image, {
-    x: point.x, y: point.y, z: view.cameraHeight - GEOID_SEPARATION_M,
-    headingDeg: view.headingDeg, pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
-  }, {
+  // The lens in the wall's datum -- see resolveLens in panorama-render.ts.
+  const lens = resolveLens(view, offsetOf, mass.groundLevel);
+  if (!lens) continue;
+  const rect = rectifyFacade(image, lens.pose, {
     start: { x: f.wall[0], y: f.wall[1] }, end: { x: f.wall[2], y: f.wall[3] },
     baseZ: mass.groundLevel! - 1, topZ: mass.groundLevel! - 1 + TILE_H_M,
   }, { pixelsPerMetre: PPM, camera: AMSTERDAM_CAMERA });

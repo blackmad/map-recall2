@@ -32,12 +32,14 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/area
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { rectifyFacade, type CameraPose, type EquirectangularImage } from '../../src/canalRecall/facade/rectify.ts';
 import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { normalise, skyline, skylineSteps } from '../../src/canalRecall/facade/skyline.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
 const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
 const CACHE = path.resolve('.cache/facade-twin');
+const offsetOf = await loadTrackOffsets(CACHE);
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))?.slice(name.length + 3);
 const VIEWS = Number(arg('views') ?? 5);
@@ -137,11 +139,21 @@ function boundaryProfile(width: number, positionsPx: number[], sigmaPx: number):
   return profile.map(v => (v - mean) / sd);
 }
 
-const poseOf = (view: PanoramaView, point: ProjectedPoint, headingSign = 1, yawOffsetDeg = 0): CameraPose => ({
-  x: point.x, y: point.y, z: view.cameraHeight - GEOID_SEPARATION_M,
-  headingDeg: view.headingDeg * headingSign + yawOffsetDeg,
-  pitchDeg: view.pitchDeg, rollDeg: view.rollDeg,
-});
+/**
+ * The heading arguments are the experiment; the height is not.
+ *
+ * This check varies heading and yaw deliberately, to show what a wrong azimuth
+ * looks like. It was also varying height accidentally, by using the published
+ * camera height with no datum correction -- so its baseline was measured on a
+ * lens that was, across the measured facades, 0.93 m out at the median.
+ */
+const poseOf = (view: PanoramaView, point: ProjectedPoint, groundZ: number,
+  headingSign = 1, yawOffsetDeg = 0): CameraPose | null => {
+  const lens = resolveLens(view, offsetOf, groundZ);
+  if (!lens) return null;
+  return { ...lens.pose, x: point.x, y: point.y,
+    headingDeg: view.headingDeg * headingSign + yawOffsetDeg };
+};
 
 /** The wall with the most well-conditioned leaf-off views — the street frontage. */
 function frontage(buildingId: string) {
@@ -207,7 +219,9 @@ async function offsetFor(buildingId: string, headingSign: number, yawOffsetDeg: 
   const image = await panorama(pose.view);
   if (!image) { reason = 'panorama image unavailable'; return null; }
 
-  const rect = rectifyFacade(image, poseOf(pose.view, pose.point, headingSign, yawOffsetDeg), {
+  const lens = poseOf(pose.view, pose.point, massing.get(buildingId)?.groundLevel ?? 1, headingSign, yawOffsetDeg);
+  if (!lens) return null;
+  const rect = rectifyFacade(image, lens, {
     start: { x: centre.x - ux * (SPAN_M / 2), y: centre.y - uy * (SPAN_M / 2) },
     end: { x: centre.x + ux * (SPAN_M / 2), y: centre.y + uy * (SPAN_M / 2) },
     // The strip must reach well above the tallest ridge in it: the signal is

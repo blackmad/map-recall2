@@ -21,12 +21,14 @@ import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/area
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { rectifyFacade, type CameraPose, type EquirectangularImage } from '../../src/canalRecall/facade/rectify.ts';
 import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { skyline, skylineSteps } from '../../src/canalRecall/facade/skyline.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
 const AREA = AMSTERDAM_GRACHTENGORDEL_WEST;
 const CACHE = path.resolve('.cache/facade-twin');
+const offsetOf = await loadTrackOffsets(CACHE);
 const OUT = path.join(CACHE, 'rectified');
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
 const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -114,10 +116,14 @@ try { bytes = await readFile(file); } catch {
 const decoded = jpeg.decode(bytes, { useTArray: true, formatAsRGBA: true });
 const image: EquirectangularImage = { width: decoded.width, height: decoded.height, data: decoded.data };
 
+// The annotation only means anything if it is drawn on the same strip the
+// measurement was taken from, so the lens is placed the same way -- corrected.
+const annotateGround = massing.get(targetId)?.groundLevel ?? 1;
+const annotateLens = resolveLens(pose.view, offsetOf, annotateGround);
+if (!annotateLens) throw new Error(`no usable camera height for ${pose.view.panoramaId}`);
 const cameraPose: CameraPose = {
-  x: pose.point.x, y: pose.point.y, z: pose.view.cameraHeight - GEOID_SEPARATION_M,
+  ...annotateLens.pose,
   headingDeg: pose.view.headingDeg * headingSign + yawOffset,
-  pitchDeg: pose.view.pitchDeg, rollDeg: pose.view.rollDeg,
 };
 const ground = massing.get(targetId)?.groundLevel ?? 1;
 const ridge = massing.get(targetId)?.ridgeHeight ?? 16;

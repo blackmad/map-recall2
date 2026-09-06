@@ -1,3 +1,4 @@
+import { readdir, readFile } from 'node:fs/promises';
 /**
  * Pin the panorama camera model against evidence that needs no building.
  *
@@ -173,6 +174,40 @@ check('the usable fleet has a plausible lens height', (() => {
   const median = heights[Math.floor(heights.length / 2)] - GEOID_SEPARATION_M;
   return median > 1.5 && median < 5;
 })(), 'median lens height after the geoid separation');
+
+/**
+ * No script may place a lens by hand.
+ *
+ * Sixteen of them did, as `cameraHeight - GEOID_SEPARATION_M`, which skips the
+ * solved datum offset and the inference that rescues a frame publishing no
+ * height. Nothing failed loudly: the render still comes out, it is just of
+ * somewhere else -- a door-height band landing on the first floor, a facade
+ * strip sliding far enough to borrow a row of windows from above the eaves.
+ * That is why it survived a year of review, and why the rule is now checked
+ * rather than remembered.
+ *
+ * The exemptions are the scripts whose whole subject is what an uncorrected
+ * pose looks like. They are listed by name, so adding one is a decision.
+ */
+const POSE_EXPERIMENTS = new Set([
+  'pose-experiments.ts', 'project-check.ts', 'aim-error.ts', 'model-compare.ts',
+]);
+{
+  const dir = path.resolve('scripts/facade-twin');
+  const offenders: string[] = [];
+  for (const name of (await readdir(dir)).filter(f => f.endsWith('.ts'))) {
+    if (POSE_EXPERIMENTS.has(name)) continue;
+    const body = await readFile(path.join(dir, name), 'utf8');
+    // Ignore prose: only code lines that actually build the height.
+    for (const line of body.split('\n')) {
+      if (line.trimStart().startsWith('*') || line.trimStart().startsWith('//')) continue;
+      if (/cameraHeight\s*-\s*GEOID_SEPARATION_M/.test(line)) { offenders.push(name); break; }
+    }
+  }
+  check('no script places a lens by hand', offenders.length === 0,
+    offenders.length ? `${offenders.length} still inline: ${offenders.join(', ')}`
+      : `${POSE_EXPERIMENTS.size} pose experiments exempt by name`);
+}
 
 console.log(`Camera model '${AMSTERDAM_CAMERA.id}': north at the frame centre, vehicle attitude ignored.`);
 console.log(`  ${straightPairs} consecutive track pairs — ${(100 * reversedShare).toFixed(1)}% put heading at travel+180°.`);
