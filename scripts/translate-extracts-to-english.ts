@@ -52,10 +52,11 @@
  *
  * Usage: npm run enrich:english [-- --dry-run] [-- --limit=50]
  *                               [-- --translator=translate|trn|ollama|gemini|none]
+ *                               [-- --prune-stale]
  */
 import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
 import { config as loadEnv } from 'dotenv';
@@ -92,6 +93,7 @@ const directory = path.resolve(argument('directory') || 'public/data/extracts/am
 const cacheFile = path.resolve('scripts/english-translations.json');
 const files = [...ENCYCLOPEDIA_PARTITION_FILES, 'street-knowledge.json'];
 const dryRun = process.argv.includes('--dry-run');
+const pruneStale = process.argv.includes('--prune-stale');
 const limit = Number(process.argv.find(value => value.startsWith('--limit='))?.split('=')[1] || Infinity);
 const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '';
 const model = process.env.TRANSLATE_MODEL || 'gemini-2.0-flash';
@@ -208,15 +210,50 @@ for (const group of groups) {
 // of a lede Wikipedia has since rewritten. Report it rather than dropping it
 // silently. This is measured against every feature, not just this run's
 // pending ones, so an already-applied translation does not read as stale.
+//
+// Prune must scan every published city: the cache is shared across Amsterdam,
+// Utrecht, Rotterdam, and Den Haag. Pruning against one `--directory` alone
+// would delete still-valid translations for the other cities.
 const live = new Set<string>();
-for (const partition of partitions.values()) {
-  for (const feature of partition) {
+const addLiveHashes = (features: Feature[]) => {
+  for (const feature of features) {
     const text = feature.wikipediaExtractOriginal || feature.wikipediaExtract;
     if (text) live.add(sourceHash(text));
+  }
+};
+for (const partition of partitions.values()) addLiveHashes(partition);
+const cityRoots = path.resolve('public/data/extracts');
+const siblingCities = pruneStale
+  ? (await readdir(cityRoots, { withFileTypes: true }))
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+  : [];
+for (const city of siblingCities) {
+  const cityDir = path.join(cityRoots, city);
+  if (path.resolve(cityDir) === directory) continue;
+  for (const file of files) {
+    try {
+      addLiveHashes(JSON.parse(await readFile(path.join(cityDir, file), 'utf8')) as Feature[]);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') continue;
+      throw error;
+    }
   }
 }
 for (const entry of cache) if (!live.has(entry.hash)) stale++;
 process.stdout.write(`cache: ${translations.size} of ${groups.length} already translated${stale ? `, ${stale} entries no longer match any extract` : ''}\n`);
+if (pruneStale && stale) {
+  const kept = cache.filter(entry => live.has(entry.hash));
+  process.stdout.write(`prune-stale: dropping ${cache.length - kept.length} orphaned cache entries (live hashes from all extracts)\n`);
+  if (!dryRun) {
+    await writeFile(cacheFile, `${JSON.stringify(kept, null, 2)}\n`);
+  }
+  // Refresh in-memory cache for the rest of the run.
+  cache.length = 0;
+  cache.push(...kept);
+  cached.clear();
+  for (const entry of kept) cached.set(entry.hash, entry);
+}
 
 // ---- Route 2: translate the rest with local Ollama or Gemini ----
 const needsTranslation = groups.filter(group => !translations.has(groupKey(group)));
@@ -416,7 +453,11 @@ for (const group of groups) {
 }
 
 if (!dryRun) {
-  for (const [file, partition] of partitions) await writeFile(path.join(directory, file), JSON.stringify(partition));
+  // Nothing to apply — leave partition files alone (avoids JSON reformat churn
+  // on prune-only / already-English runs).
+  if (groups.length) {
+    for (const [file, partition] of partitions) await writeFile(path.join(directory, file), JSON.stringify(partition));
+  }
   // Sorted so the file diffs by feature rather than by the order a run happened
   // to translate things in.
   if (freshlyTranslated) {
@@ -424,7 +465,13 @@ if (!dryRun) {
     await writeFile(cacheFile, `${JSON.stringify(cache, null, 1)}\n`);
   }
 }
-process.stdout.write(`${dryRun ? 'DRY RUN — nothing written' : `wrote ${files.join(', ')}`}\n`);
+process.stdout.write(
+  dryRun
+    ? 'DRY RUN — nothing written\n'
+    : groups.length
+      ? `wrote ${files.join(', ')}\n`
+      : (pruneStale ? 'prune-stale applied; extracts unchanged\n' : 'nothing to write\n'),
+);
 process.stdout.write(`  translated ledes: ${translated}\n`);
 process.stdout.write(`  Wikidata descriptions: ${described}\n`);
 process.stdout.write(`  still not English: ${stillForeign}`

@@ -355,9 +355,14 @@ class GameRouteRuntime {
         this.homeBase = await this._geocodeHomeAddress(address);
         this.homeLeg = 'outbound';
       } catch (error) {
+        this._homeLearningRadiusKm = null;
         this._setRouteError(error.message || 'Could not find that address.');
         return;
       }
+    } else {
+      this.homeBase = null;
+      this._homeLearningRadiusKm = null;
+      try { localStorage.removeItem('canalRecall.homeLearningRadius.v1'); } catch (_) { /* ignore */ }
     }
     const pool = this.routePois;
     const choices = pool.filter(poi => poi.id !== this.routeFrom?.id || pool.length < 3);
@@ -385,8 +390,17 @@ class GameRouteRuntime {
       this.routePois, from, samples, undefined, alsoExcludeId);
     if (picked) {
       this._homeLearningRadiusKm = picked.radiusKm;
+      try {
+        localStorage.setItem('canalRecall.homeLearningRadius.v1', JSON.stringify({
+          cityId: this.cityId || 'amsterdam',
+          address: (this._prefs().homeAddress || '').trim(),
+          radiusKm: picked.radiusKm,
+          at: Date.now(),
+        }));
+      } catch (_) { /* ignore */ }
       return picked.poi;
     }
+    this._homeLearningRadiusKm = null;
     return this._pickDestinationNear(from, alsoExcludeId);
   }
 
@@ -501,7 +515,8 @@ class GameRouteRuntime {
       if (!response.ok) throw new Error(`transit-network ${response.status}`);
       const network = await response.json();
       const load = Transit.adaptTransitNetwork(network, {
-        playableRefs: Transit.TRANSIT_THIN_SLICE_REFS,
+        playableRefs: [],
+        playableModes: Transit.TRANSIT_DRIVEABLE_MODES,
         cityId: city.id,
       });
       this.routePois = Transit.transitRouteAnchors(load);
@@ -780,6 +795,25 @@ class GameRouteRuntime {
       this.track = new RoadNetwork(segments, start, finish, tiles);
       this._routeMastery = this.recall ? this.recall.routeMastery(this.cityId || 'amsterdam') : {};
       this.track.setRouteMastery(this._routeMastery);
+      if (this.routePattern === 'home' && this.homeBase && this._homeLearningRadiusKm > 0) {
+        const homePoint = this.osmLoader.latLngToGamePoint(
+          this.homeBase.lat, this.homeBase.lng, lat, lng, segments, HOME_MAX_SNAP_DIST)
+          || (this.routeFrom && this.routeFrom.id === 'home' ? start : null)
+          || (this.routeTo && this.routeTo.id === 'home' ? finish : null);
+        if (homePoint) {
+          const ppm = (typeof PIXELS_PER_METER === 'number' && PIXELS_PER_METER > 0)
+            ? PIXELS_PER_METER
+            : 3;
+          this.track.setHomeBias({
+            x: homePoint.x,
+            y: homePoint.y,
+            radius: this._homeLearningRadiusKm * 1000 * ppm,
+            outsidePenalty: 0.25,
+          });
+        }
+      } else if (typeof this.track.setHomeBias === 'function') {
+        this.track.setHomeBias(null);
+      }
       if (this.travelMode === 'boat') this.track.waterTest = (x, y) => this.vectorMap.isWater(x, y, this.osmLoader);
       // Aim the basemap at the start while the loading overlay is still up so
       // LoD1 tiles download under the spawn — not on Damrak, and not as a hitch

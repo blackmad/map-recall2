@@ -178,6 +178,11 @@ export class GamePresentationRuntime {
         }) || 'No cycling in real life';
       }
     }
+    const homeLearningNote = this.routePattern === 'home'
+      && Number.isFinite(this._homeLearningRadiusKm)
+      && this._homeLearningRadiusKm > 0
+      ? `Learning near home · ~${this._homeLearningRadiusKm.toFixed(1)} km`
+      : '';
     this.hud.drawPlaque(ctx, {
       routeName: visibleRouteName,
       neighborhood: this.currentNeighborhood,
@@ -188,7 +193,7 @@ export class GamePresentationRuntime {
       streak: this.quizStreak,
       gamey: this.gameyFeatures,
       trip: this.hud.tripText(player.speed, this._playerDistancePx()),
-      feedback: this.quizFeedback,
+      feedback: this.quizFeedback || homeLearningNote,
       restrictionNote,
     });
     // The finish arrow sits inside the destination card, so the heading and
@@ -396,7 +401,7 @@ export class GamePresentationRuntime {
         '3. Name the line while moving, and stops as you approach them',
         '4. Line colour and labels stay hidden until you answer',
         '5. TAB toggles the overview map; -/+ changes zoom',
-        '6. Transit is a thin slice — tram 2 first; more lines later',
+        '6. Transit covers tram and metro — ferries come later',
       ]
       : isCar(this.travelMode)
         ? [

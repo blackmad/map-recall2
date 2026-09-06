@@ -9,6 +9,13 @@ import type { TransitLine, TransitMode, TransitNetwork, TransitStop } from './ne
 /** Phase C thin slice — one central tram corridor before unlocking the full GVB set. */
 export const TRANSIT_THIN_SLICE_REFS = ['2'] as const;
 
+/**
+ * Phase D driveable surface: tram + metro. Ferries stay out until their short
+ * water hops get a dedicated playtest. Combine with `playableRefs: []` so every
+ * matching line is driveable.
+ */
+export const TRANSIT_DRIVEABLE_MODES: readonly TransitMode[] = ['tram', 'metro'];
+
 export interface TransitWay {
   id: string;
   nodes: Array<{ lat: number; lon: number }>;
@@ -91,8 +98,10 @@ export function highwayForMode(mode: TransitMode): string {
 }
 
 export interface AdaptOptions {
-  /** Line refs to make driveable. Default: thin-slice tram 2. Empty = all lines. */
+  /** Line refs to make driveable. Default: thin-slice tram 2. Empty = all refs. */
   playableRefs?: readonly string[];
+  /** When set, only these modes become driveable ways (refs still apply). */
+  playableModes?: readonly TransitMode[];
   cityId?: string;
 }
 
@@ -109,6 +118,9 @@ export function adaptTransitNetwork(
     : options.playableRefs.length === 0
       ? null
       : new Set(options.playableRefs);
+  const modes = options.playableModes?.length
+    ? new Set<TransitMode>(options.playableModes)
+    : null;
 
   const allLines: TransitLineFeature[] = [];
   const ways: TransitWay[] = [];
@@ -140,8 +152,9 @@ export function adaptTransitNetwork(
       stopModes.get(stopId)!.add(line.mode);
     }
 
-    const include = !playable || playable.has(line.ref);
-    if (!include || !line.path || line.path.length < 2) continue;
+    const includeRef = !playable || playable.has(line.ref);
+    const includeMode = !modes || modes.has(line.mode);
+    if (!includeRef || !includeMode || !line.path || line.path.length < 2) continue;
 
     featureMeta.set(name, {
       name,
@@ -163,14 +176,16 @@ export function adaptTransitNetwork(
 
   const playableStopIds = new Set<string>();
   for (const line of network.lines) {
-    if (playable && !playable.has(line.ref)) continue;
+    const includeRef = !playable || playable.has(line.ref);
+    const includeMode = !modes || modes.has(line.mode);
+    if (!includeRef || !includeMode) continue;
     for (const id of line.stopIds) playableStopIds.add(id);
   }
 
   const stops: TransitStopFeature[] = [];
   for (const [stopId, stop] of Object.entries(network.stops)) {
     if (!stop.center) continue;
-    if (playable && !playableStopIds.has(stopId)) continue;
+    if ((playable || modes) && !playableStopIds.has(stopId)) continue;
     stops.push({
       stopId,
       name: displayStopName(stop.name),
@@ -188,17 +203,23 @@ export function adaptTransitNetwork(
       .map((s) => displayStopName(s.name)),
   )];
 
+  const driveableLines = allLines.filter((l) => {
+    const includeRef = !playable || playable.has(l.ref);
+    const includeMode = !modes || modes.has(l.mode);
+    return includeRef && includeMode;
+  });
+
   return {
     ways,
     featureMeta,
     stops,
-    lines: allLines.filter((l) => !playable || playable.has(l.ref)),
+    lines: driveableLines,
     lineDistractors,
     stopDistractors,
   };
 }
 
-/** Curated surprise anchors for the thin slice (tram 2). */
+/** Curated surprise anchors spanning Phase D rail (tram + metro). */
 export function transitRouteAnchors(load: TransitPlayLoad): Array<{
   id: string;
   name: string;
@@ -206,7 +227,18 @@ export function transitRouteAnchors(load: TransitPlayLoad): Array<{
   lng: number;
   type: 'stop';
 }> {
-  const prefer = ['Centraal Station', 'Dam', 'Leidseplein', 'Museumplein', 'Oudenaardeplantsoen'];
+  const prefer = [
+    'Centraal Station',
+    'Dam',
+    'Leidseplein',
+    'Museumplein',
+    'Oudenaardeplantsoen',
+    'Station Zuid',
+    'Station Sloterdijk',
+    'Noord',
+    'Amstelstation',
+    'Waterlooplein',
+  ];
   const byName = new Map(load.stops.map((s) => [s.name, s]));
   const anchors: Array<{ id: string; name: string; lat: number; lng: number; type: 'stop' }> = [];
   for (const label of prefer) {
@@ -221,7 +253,7 @@ export function transitRouteAnchors(load: TransitPlayLoad): Array<{
     });
   }
   // Enough mid-line stops to retarget when an end is unreachable.
-  if (anchors.length < 4) {
+  if (anchors.length < 6) {
     for (const stop of load.stops) {
       if (anchors.some((a) => a.id === `stop-${stop.stopId}`)) continue;
       anchors.push({
@@ -231,7 +263,7 @@ export function transitRouteAnchors(load: TransitPlayLoad): Array<{
         lng: stop.center[1],
         type: 'stop',
       });
-      if (anchors.length >= 8) break;
+      if (anchors.length >= 12) break;
     }
   }
   return anchors;

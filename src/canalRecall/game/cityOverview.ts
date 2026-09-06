@@ -139,6 +139,8 @@ export interface OverviewStaticLayers {
   areas: WorldPoint[][];
   /** The loaded network — canals by boat, streets by car. */
   network: WorldPoint[][];
+  /** Practised streets/canals (mastery tint) — still unnamed. */
+  knownNetwork: WorldPoint[][];
   /** The planned route, start to finish. */
   route: WorldPoint[];
   start: WorldPoint | null;
@@ -148,6 +150,8 @@ export interface OverviewStaticLayers {
 export interface OverviewSources {
   areaRings: readonly (readonly WorldPoint[])[];
   networkSegments: readonly (readonly WorldPoint[])[];
+  /** Optional practised corridors; drawn brighter, still without names. */
+  knownNetworkSegments?: readonly (readonly WorldPoint[])[];
   route: readonly WorldPoint[];
   start: WorldPoint | null;
   finish: WorldPoint | null;
@@ -186,6 +190,9 @@ export function buildOverview(
       network: sources.networkSegments
         .map(segment => simplifyForScale(segment, projection.scale))
         .filter(segment => segment.length >= 2),
+      knownNetwork: (sources.knownNetworkSegments || [])
+        .map(segment => simplifyForScale(segment, projection.scale))
+        .filter(segment => segment.length >= 2),
       route: simplifyForScale(sources.route, projection.scale),
       start: sources.start,
       finish: sources.finish,
@@ -200,6 +207,7 @@ export interface OverviewColors {
   border: string;
   area: string;
   network: string;
+  knownNetwork: string;
   route: string;
   start: string;
   finish: string;
@@ -216,6 +224,7 @@ export const OVERVIEW_COLORS: OverviewColors = {
   border: 'rgba(97,89,74,0.30)',
   area: 'rgba(53,102,83,0.13)',
   network: 'rgba(36,50,43,0.16)',
+  knownNetwork: 'rgba(53,102,83,0.55)',
   route: '#c75f43',
   start: '#356653',
   finish: '#c75f43',
@@ -256,6 +265,10 @@ export function drawOverviewStatic(
   ctx.strokeStyle = colors.network;
   ctx.lineWidth = 0.6;
   for (const segment of layers.network) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.knownNetwork;
+  ctx.lineWidth = 1.1;
+  for (const segment of layers.knownNetwork) strokePath(ctx, segment, projection);
 
   ctx.strokeStyle = colors.area;
   ctx.lineWidth = 0.8;

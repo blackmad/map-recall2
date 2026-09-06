@@ -355,6 +355,7 @@
           }) || "No cycling in real life";
         }
       }
+      const homeLearningNote = this.routePattern === "home" && Number.isFinite(this._homeLearningRadiusKm) && this._homeLearningRadiusKm > 0 ? `Learning near home \xB7 ~${this._homeLearningRadiusKm.toFixed(1)} km` : "";
       this.hud.drawPlaque(ctx, {
         routeName: visibleRouteName,
         neighborhood: this.currentNeighborhood,
@@ -365,7 +366,7 @@
         streak: this.quizStreak,
         gamey: this.gameyFeatures,
         trip: this.hud.tripText(player.speed, this._playerDistancePx()),
-        feedback: this.quizFeedback,
+        feedback: this.quizFeedback || homeLearningNote,
         restrictionNote
       });
       const finishAngle = this.routeOptions.arrow ? this.hud.finishDirection(
@@ -552,7 +553,7 @@
         "3. Name the line while moving, and stops as you approach them",
         "4. Line colour and labels stay hidden until you answer",
         "5. TAB toggles the overview map; -/+ changes zoom",
-        "6. Transit is a thin slice \u2014 tram 2 first; more lines later"
+        "6. Transit covers tram and metro \u2014 ferries come later"
       ] : isCar(this.travelMode) ? [
         "1. Use WASD or the arrow keys to steer the bike",
         "2. Stay on mapped streets; the road guard keeps you on the network",

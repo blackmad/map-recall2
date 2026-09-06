@@ -152,6 +152,24 @@ const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
   { value: 'home', title: 'Home base', hint: 'Nearby first, expands as you learn' },
 ];
 
+const HOME_RADIUS_STORAGE_KEY = 'canalRecall.homeLearningRadius.v1';
+
+function homeLearningNote(prefs: CanalPreferences): string {
+  const base = 'Saved · starts nearby, expands as you learn · boats use nearby water';
+  if (prefs.routePattern !== 'home') return base;
+  try {
+    const raw = localStorage.getItem(HOME_RADIUS_STORAGE_KEY);
+    if (!raw) return base;
+    const saved = JSON.parse(raw) as { cityId?: string; address?: string; radiusKm?: number };
+    const address = (prefs.homeAddress || '').trim();
+    if (!address || saved.address !== address || saved.cityId !== prefs.cityId) return base;
+    if (!(typeof saved.radiusKm === 'number') || !(saved.radiusKm > 0)) return base;
+    return `Learning near home · ~${saved.radiusKm.toFixed(1)} km · expands as you learn`;
+  } catch {
+    return base;
+  }
+}
+
 const DIFFICULTY_MAIN: Choice<CanalPreferences['difficulty']>[] = [
   { value: 'easy', title: 'Easy' },
   { value: 'medium', title: 'Medium' },
@@ -336,7 +354,7 @@ export function OverlayApp({
                 value={prefs.homeAddress}
                 onChange={event => patch({ homeAddress: event.target.value })}
               />
-              <span className="enamel-field-note">Saved · starts nearby, expands as you learn · boats use nearby water</span>
+              <span className="enamel-field-note">{homeLearningNote(prefs)}</span>
             </label>
 
             <details
