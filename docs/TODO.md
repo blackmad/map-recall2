@@ -790,6 +790,15 @@ measure end to end from Amsterdam's CC BY panoramas.
 >    review deck exist; the registration headline should come from them, not from
 >    correlation. This is the blocker for everything else being believable.
 >
+>    *Done, §30.* `check-number-anchors` now prints a registration line built from
+>    doorplates naming a number that is not ours — a selection no positional
+>    filter touches — scored against a chance null: **2.12 m median, 21% within a
+>    metre**, against 7.63 m and 4% by chance. That is the headline, and it is
+>    worse than correlation's 1.25 m / 42% precisely because it stops cancelling
+>    the per-track pose error the two views share. Identity (87%) and registration
+>    are now reported as the separate failures they are. Remaining: n = 42, so the
+>    1,013-band read fixes the size, not the method.
+>
 >    *Anchors are now sound but scarce, and the scarcity is the finding.* Three
 >    gates were added, each of which **reduced** the count reported: a reading
 >    must land within 9 m of where that number lives (seven of ten "conflicts"

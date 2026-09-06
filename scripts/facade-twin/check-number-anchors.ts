@@ -326,54 +326,58 @@ const IDENTITY_BAR = 0.95;
 const MIN_DECIDED = 30;
 const decided = by('confirmed').length + by('conflict').length;
 const rate = decided ? by('confirmed').length / decided : 0;
-// Is a `neighbour-only` band registered correctly?
+// Registration, measured separately from identity.
 //
-// The verdict means real numbers were read but every one fell outside our wall
-// span, so the band decides nothing about our pand's identity and is currently
-// discarded. It is not nothing, though: if a plate reading a NEIGHBOUR's number
-// lands where BAG puts that neighbour's door, the band's registration is right,
-// whatever our own doorway happened to carry. That is a claim about geometry, not
-// about identity, and it is worth separating because the two failures have
-// different fixes.
+// The identity check answers "is the wall we project the right house?" and can
+// only ask it of a pand whose own doorplate was legible -- 45 of 400. There is a
+// second question underneath it, better powered and with a different fix if it
+// fails: does the band's coordinate frame agree with BAG at all? A frame that is
+// a metre out and a frame that is on the wrong building both produce conflicts,
+// and they are not the same defect.
 //
-// Scored against a chance null -- had that plate read some other number from the
-// same band's address pool, how far from the plate would it have sat? Without the
-// null the number is unreadable, because a short band puts every candidate close
-// to everything. On the 400-band store: 0.75 m observed against 6.07 m by chance,
-// 50% inside a metre against 10%.
+// Scored on doorplates reading a number that is NOT ours. That selection applies
+// no positional filter -- unlike the conflict set, which is *defined* as
+// inside-the-wall and therefore forces its own offset, the trap that killed the
+// offset bound (§30). Against a chance null: had the plate read some other number
+// from this band's pool, how far off would it have been? Without the null the
+// figure is unreadable, because a short band puts every candidate near everything.
 //
-// The null is why this is reported and the offset bound of the same afternoon is
-// not. A bound on |offsetM| appeared to separate conflicts beautifully -- 4.79 m
-// against 1.04 m -- and the separation was an artefact: a convicting reading sits
-// well inside our wall by definition, and the number it reads belongs to a pand
-// whose own address point is outside our wall, median 3.24 m out. Subtract the
-// distance the geometry forces and 0.72 m of the 4.79 remains. Half the conflicts
-// sit within a metre of the smallest offset they could possibly have had.
+// On the 400-band store: 2.12 m observed against 7.63 m by chance, inside a metre
+// 21% against 4%. The frame is real -- three times better than chance placement --
+// and also loose, a median error of half a frontage, which is the ±one-house story
+// showing up as a measurement rather than an anecdote.
 {
-  const rows: Array<{ band: string; obs: number; null: number[] }> = [];
+  type Row = { verdict: string; obs: number; chance: number[] };
+  const rows: Row[] = [];
   for (const r of results) {
-    if (r.verdict !== 'neighbour-only') continue;
     const pool: number[] = r.localAlongM ?? [];
     if (pool.length < 2) continue;
     for (const x of (r.readings ?? []) as any[]) {
-      if (x.glyph !== 'doorplate' || x.offsetM == null) continue;
-      rows.push({ band: r.pandId, obs: Math.abs(x.offsetM), null: pool.map(a => Math.abs(x.alongM - a)) });
+      if (x.glyph !== 'doorplate' || x.isOwn || x.offsetM == null) continue;
+      rows.push({ verdict: r.verdict, obs: Math.abs(x.offsetM), chance: pool.map(a => Math.abs(x.alongM - a)) });
     }
   }
   const median = (xs: number[]) => {
     if (!xs.length) return NaN;
-    const s = [...xs].sort((a, b) => a - b);
-    return s[Math.floor((s.length - 1) / 2)];
+    const t = [...xs].sort((a, b) => a - b);
+    return t[Math.floor((t.length - 1) / 2)];
   };
+  const within = (xs: number[], t: number) => (xs.length ? Math.round((100 * xs.filter(v => v < t).length) / xs.length) : 0);
   if (rows.length) {
     const obs = rows.map(r => r.obs);
-    const chance = rows.flatMap(r => r.null);
-    const within = (xs: number[]) => Math.round((100 * xs.filter(v => v < 1).length) / xs.length);
-    console.log(`\n  neighbour-only registration — ${rows.length} plates land a median ${median(obs).toFixed(2)} m`
-      + ` from where BAG puts the number they read, against ${median(chance).toFixed(2)} m by chance`
-      + ` (${within(obs)}% inside a metre against ${within(chance)}%).`);
-    const bands = new Set(rows.map(r => r.band)).size;
-    console.log(`  Those ${bands} of ${by('neighbour-only').length} neighbour-only bands are registered correctly; it is the doorway that was unreadable.`);
+    const chance = rows.flatMap(r => r.chance);
+    console.log(`\n  registration — ${rows.length} doorplates naming a number that is not ours land a median`
+      + ` ${median(obs).toFixed(2)} m from where BAG puts it, against ${median(chance).toFixed(2)} m by chance`
+      + ` (inside a metre ${within(obs, 1)}% against ${within(chance, 1)}%).`);
+    console.log('  Nothing about where these sit took part in deciding a verdict, so the comparison is honest.');
+    // The neighbour-only slice is the one that changes what we do with a verdict:
+    // those bands are recorded as undecided, and a plate landing on the neighbour's
+    // own door says the bracket is on the right wall and only the doorway failed.
+    const no = rows.filter(r => r.verdict === 'neighbour-only');
+    if (no.length) {
+      console.log(`  Of those, the ${no.length} on neighbour-only bands sit ${median(no.map(r => r.obs)).toFixed(2)} m out`
+        + ` — registered correctly, undecided only because our own doorway was unreadable.`);
+    }
   }
 }
 

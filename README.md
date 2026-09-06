@@ -71,6 +71,7 @@ without a control behind it.
 | `npx tsx scripts/facade-twin/check-lens-height.ts` | **Whether a published camera height is believable.** The zero sentinel was always caught; a height that is present but nonsense was not. 631 frames claim up to 97 m above the street, and believing one aims the band into the panorama's black nadir cap. |
 | `npx tsx scripts/facade-twin/check-front-wall.ts` | **Whether the wall we project is the front.** From the building's own proportions — a canal house is narrow and deep, so a wall matching `plotWidthM` is a front and one matching `plotDepthM` is a flank. 96.2%. Nothing else tested an assumption every downstream measurement rests on. |
 | `npx tsx scripts/facade-twin/build-blocks.ts` | **Where one terrace ends and the next begins.** Party-wall chains, front row only, writing `blocks.json`. Its own test is that chain order agrees with BAG house numbers 98.4% of the time, having never seen a number. |
+| `npx tsx scripts/facade-twin/check-number-anchors.ts` | **Whether the wall is the right house, and separately whether the frame is right.** Identity from a pand's own doorplate; registration from doorplates naming anyone else's number, which no positional filter selects, against a chance null. |
 | `npx tsx scripts/facade-twin/fit-block-shifts.ts` | **Whether a registration error is shared along a block.** It is not: blocks differ from each other less than the houses inside one differ among themselves, and held out the fit makes 17 of 25 predictions worse. Kept as the instrument that says so. |
 
 ## Checks

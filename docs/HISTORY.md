@@ -4039,7 +4039,45 @@ not a relationship. The confidence floor still stands — EasyOCR computes it
 knowing nothing of BAG, so it is genuinely independent of geometry — but it stands
 alone, with no second signal agreeing with it.
 
-### What survived: neighbour-only bands are registered correctly
+### What survived: registration can be measured, and separately from identity
+
+The claim that was not circular is the one about position agreeing with BAG when
+nothing forced it to. Doorplates reading a number that is **not ours** are selected
+by no positional filter at all — unlike the conflict set, whose definition is its
+position — so their distance from BAG is a clean measurement of whether the band's
+coordinate frame is right, and it can be asked of far more readings than the 45
+panden whose own doorway happened to be legible.
+
+```
+registration — 42 doorplates naming a number that is not ours land a median 2.12 m
+from where BAG puts it, against 7.63 m by chance (inside a metre 21% against 4%).
+```
+
+Three times better than chance placement, five times as often inside a metre. The
+frame is real. It is also **loose**: a median error of 2.12 m is about half a
+frontage, which is the ±one-house story appearing as a measurement instead of an
+anecdote. That matters for what to fix next — a frame a metre out and a frame on
+the wrong building both surface as conflicts, and they are not the same defect.
+n = 42 is thin; the 1,013-band read is what settles the size.
+
+This is the headline `TODO` has been asking for since cross-view correlation was
+found to be measuring image similarity rather than registration — *"the
+registration headline should come from [anchors], not from correlation. This is
+the blocker for everything else being believable."* The two now sit side by side:
+
+| instrument | median | within 1 m | what it compares |
+|---|---|---|---|
+| cross-view correlation, one view per year | 1.25 m | 42% | one photograph against another |
+| doorplate against BAG | 2.12 m | 21% | the wall against the cadastre |
+
+The anchor figure is **worse, and it is the one to quote.** Correlation asks
+whether two views of a wall agree with each other, which shares and therefore
+cancels the per-track pose error; the doorplate asks whether the wall is where
+the cadastre says the building is, which is the question every downstream use
+actually needs answered. A metric getting worse when it stops cancelling its own
+dominant error term is the metric working.
+
+### The slice that changes a verdict: neighbour-only bands are registered correctly
 
 The one claim that was not circular is the one about the discarded verdict.
 `neighbour-only` means real numbers were read and every one fell outside our wall,
@@ -4057,10 +4095,11 @@ the number they read, against 6.07 m by chance (50% inside a metre against 10%).
 Those 10 of 15 neighbour-only bands are registered correctly.
 ```
 
-Five times closer than chance, five times more often inside a metre. So ten bands
-that the identity check records as undecided are in fact evidence that the wall
-inside the bracket is the right wall — the failure is the doorway, not the
-geometry. Identity and registration are separate failures with separate fixes, and
+Five times closer than chance, five times more often inside a metre — and against
+the 2.12 m of the general population, these sit at 0.75 m. So ten bands that the
+identity check records as undecided are in fact evidence that the wall inside the
+bracket is the right wall: the failure is the doorway, not the geometry. Identity
+and registration are separate failures with separate fixes, and
 `check-number-anchors` now reports them separately.
 
 `localAlongM` is carried onto each result so the null is built from the band's own
