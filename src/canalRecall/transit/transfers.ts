@@ -440,3 +440,91 @@ export function transferTargetLines(
 export function networkLineName(line: TransitLine): string {
   return lineDisplayName(line.mode, line.ref);
 }
+
+export type TransitAnchor = {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+};
+
+export type ChooseIndex = (count: number) => number;
+
+const randomIndex: ChooseIndex = (count) => Math.floor(Math.random() * count);
+
+function stopIdFromAnchor(anchor: TransitAnchor): string | null {
+  if (anchor.id.startsWith('stop-')) return anchor.id.slice('stop-'.length);
+  return null;
+}
+
+/**
+ * Surprise pairing for transit: prefer hops that teach a change of line.
+ *
+ * `preferTransfer` is the chance of returning a two-leg plan when any exist
+ * among sampled pairs; otherwise a single-leg (or any) pair is used so play
+ * never stalls.
+ */
+export function pickTeachableTransitPair(
+  load: TransitPlayLoad,
+  transfers: TransitTransfers | null,
+  anchors: readonly TransitAnchor[],
+  options: {
+    preferTransfer?: number;
+    chooseIndex?: ChooseIndex;
+    /** 0..1 roll; injectable for tests. */
+    transferRoll?: () => number;
+    maxAttempts?: number;
+  } = {},
+): { from: TransitAnchor; to: TransitAnchor; plan: TransitConnectionPlan } | null {
+  if (anchors.length < 2) return null;
+  const preferTransfer = options.preferTransfer ?? 0.65;
+  const chooseIndex = options.chooseIndex ?? randomIndex;
+  const transferRoll = options.transferRoll ?? Math.random;
+  const maxAttempts = options.maxAttempts ?? Math.min(80, anchors.length * 4);
+
+  const twoLeg: Array<{ from: TransitAnchor; to: TransitAnchor; plan: TransitConnectionPlan }> = [];
+  const oneLeg: Array<{ from: TransitAnchor; to: TransitAnchor; plan: TransitConnectionPlan }> = [];
+
+  for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+    const from = anchors[chooseIndex(anchors.length)]!;
+    let to = anchors[chooseIndex(anchors.length)]!;
+    if (to.id === from.id) {
+      to = anchors[(anchors.indexOf(from) + 1) % anchors.length]!;
+    }
+    if (to.id === from.id) continue;
+    const fromId = stopIdFromAnchor(from);
+    const toId = stopIdFromAnchor(to);
+    if (!fromId || !toId) continue;
+    const plan = planTransitConnection(load, transfers, fromId, toId);
+    if (!plan) continue;
+    const entry = { from, to, plan };
+    if (plan.legs.length >= 2) twoLeg.push(entry);
+    else oneLeg.push(entry);
+    if (twoLeg.length >= 8 && oneLeg.length >= 4) break;
+  }
+
+  if (twoLeg.length && (oneLeg.length === 0 || transferRoll() < preferTransfer)) {
+    return twoLeg[chooseIndex(twoLeg.length)]!;
+  }
+  if (oneLeg.length) return oneLeg[chooseIndex(oneLeg.length)]!;
+  if (twoLeg.length) return twoLeg[chooseIndex(twoLeg.length)]!;
+  return null;
+}
+
+/**
+ * Line-quiz distractors that teach hub discrimination: prefer other lines that
+ * actually stop here (or transfer-adjacent), then fill from the citywide pool.
+ */
+export function lineQuizDistractorsAtHub(
+  load: TransitPlayLoad,
+  transfers: TransitTransfers | null,
+  answer: string,
+  nearStopId: string | null,
+  count: number,
+  shuffle: <T>(items: T[]) => T[],
+): string[] {
+  const hubLines = nearStopId
+    ? transferTargetLines(load, transfers, nearStopId, answer)
+    : siblingLineNames(load, answer);
+  return preferSiblingDistractors(answer, hubLines, load.lineDistractors, count, shuffle);
+}

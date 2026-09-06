@@ -155,6 +155,7 @@ export class GamePresentationRuntime {
         quizPromptSubject: this.quizPromptSubject || '',
         quizCandidateName: this.quizCandidateName || '',
         quizCurrentName: this.quizCurrentName || '',
+        transitLegIndex: this._transitLegIndex || 0,
       });
       visibleRouteName = plaque.routeName;
       routeAnswerHidden = plaque.answerHidden;

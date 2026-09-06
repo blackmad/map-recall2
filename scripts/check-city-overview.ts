@@ -7,6 +7,10 @@ import {
   boundsOf,
   buildOverview,
   fitProjection,
+  isWaterSegmentType,
+  overviewMasteryBand,
+  OVERVIEW_MASTERY_KNOWN,
+  OVERVIEW_MASTERY_MASTERED,
   project,
   simplifyForScale,
   unionBounds,
@@ -160,6 +164,28 @@ check('degenerate network segments are dropped, not drawn', () => {
   }, RECT);
   assert.ok(built);
   assert.equal(built.layers.network.length, 1, 'a one-vertex way is not a line');
+});
+
+check('mastery bands and water types split the knowledge tint', () => {
+  assert.equal(overviewMasteryBand(0), 'fog');
+  assert.equal(overviewMasteryBand(OVERVIEW_MASTERY_KNOWN), 'known');
+  assert.equal(overviewMasteryBand(OVERVIEW_MASTERY_MASTERED), 'mastered');
+  assert.ok(isWaterSegmentType('canal'));
+  assert.ok(isWaterSegmentType('river'));
+  assert.ok(!isWaterSegmentType('residential'));
+
+  const built = buildOverview({
+    areaRings: [[{ x: 0, y: 0 }, { x: 100, y: 0 }, { x: 100, y: 100 }]],
+    networkSegments: [[{ x: 0, y: 0 }, { x: 10, y: 0 }]],
+    waterNetworkSegments: [[{ x: 0, y: 20 }, { x: 10, y: 20 }]],
+    learningNetworkSegments: [[{ x: 0, y: 40 }, { x: 10, y: 40 }]],
+    masteredWaterSegments: [[{ x: 0, y: 60 }, { x: 10, y: 60 }]],
+    route: [], start: null, finish: null,
+  }, RECT);
+  assert.ok(built);
+  assert.equal(built.layers.waterNetwork.length, 1);
+  assert.equal(built.layers.learningNetwork.length, 1);
+  assert.equal(built.layers.masteredWater.length, 1);
 });
 
 console.log(`City overview OK: ${checks.length} checks.`);

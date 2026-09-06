@@ -364,12 +364,40 @@ class GameRouteRuntime {
       this._homeLearningRadiusKm = null;
       try { localStorage.removeItem('canalRecall.homeLearningRadius.v1'); } catch (_) { /* ignore */ }
     }
+
+    if (this.travelMode === 'transit' && this.routePattern === 'surprise') {
+      const pair = this._pickTeachableTransitPair();
+      if (pair) {
+        this._launchPoiRoute(pair.from, pair.to);
+        return;
+      }
+    }
+
     const pool = this.routePois;
     const choices = pool.filter(poi => poi.id !== this.routeFrom?.id || pool.length < 3);
     const from = this.routePattern === 'home' ? this.homeBase : choices[Math.floor(Math.random() * choices.length)];
     this._launchPoiRoute(from, this.routePattern === 'home'
       ? this._pickHomeDestination(from)
       : this._pickDestinationNear(from));
+  }
+
+  /** Prefer two-leg transfers so surprise play teaches changing lines. */
+  _pickTeachableTransitPair() {
+    const Transit = window.CanalRecallTransit;
+    const load = this._transitPlayLoad
+      || (this.osmLoader && this.osmLoader.transitLoad);
+    if (!Transit || !load || typeof Transit.pickTeachableTransitPair !== 'function') return null;
+    const anchors = this.routePois && this.routePois.length
+      ? this.routePois
+      : Transit.transitRouteAnchors(load);
+    return Transit.pickTeachableTransitPair(
+      load,
+      this._transitTransfersCatalog
+        || (this.osmLoader && this.osmLoader.transitTransfers)
+        || null,
+      anchors,
+      { preferTransfer: 0.7 },
+    );
   }
 
   // A destination far enough to be a journey but inside the same fetched map
@@ -519,7 +547,15 @@ class GameRouteRuntime {
         playableModes: Transit.TRANSIT_DRIVEABLE_MODES,
         cityId: city.id,
       });
+      this._transitPlayLoad = load;
       this.routePois = Transit.transitRouteAnchors(load);
+      try {
+        const transferUrl = new URL(`${city.extractPath}/transit-transfers.json`, window.location.href);
+        const transferResponse = await fetch(transferUrl);
+        this._transitTransfersCatalog = transferResponse.ok ? await transferResponse.json() : null;
+      } catch (_) {
+        this._transitTransfersCatalog = null;
+      }
       if (this._routeFrom && this._routeTo) {
         this._routeFrom.innerHTML = '';
         this._routeTo.innerHTML = '';
@@ -531,6 +567,8 @@ class GameRouteRuntime {
       console.info(`Transit destinations (${city.name}): ${this.routePois.length} stop anchors`);
     } catch (error) {
       this.routePois = [];
+      this._transitPlayLoad = null;
+      this._transitTransfersCatalog = null;
       console.warn('Transit route anchors unavailable:', error);
     }
   }

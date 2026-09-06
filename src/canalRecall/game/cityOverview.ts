@@ -137,10 +137,19 @@ export interface OverviewStaticLayers {
   /** Neighborhood outlines: the city's structure, and the only thing that makes
    *  a 260 px map of Amsterdam recognisable as Amsterdam. */
   areas: WorldPoint[][];
-  /** The loaded network — canals by boat, streets by car. */
+  /** Unpractised fog — streets and other land corridors. */
   network: WorldPoint[][];
-  /** Practised streets/canals (mastery tint) — still unnamed. */
+  /** Unpractised fog — canals / rivers when present on the track. */
+  waterNetwork: WorldPoint[][];
+  /** Early practice (mastery mid band). */
+  learningNetwork: WorldPoint[][];
+  learningWater: WorldPoint[][];
+  /** Comfortable recall. */
   knownNetwork: WorldPoint[][];
+  knownWater: WorldPoint[][];
+  /** Strong mastery. */
+  masteredNetwork: WorldPoint[][];
+  masteredWater: WorldPoint[][];
   /** The planned route, start to finish. */
   route: WorldPoint[];
   start: WorldPoint | null;
@@ -150,11 +159,35 @@ export interface OverviewStaticLayers {
 export interface OverviewSources {
   areaRings: readonly (readonly WorldPoint[])[];
   networkSegments: readonly (readonly WorldPoint[])[];
-  /** Optional practised corridors; drawn brighter, still without names. */
+  waterNetworkSegments?: readonly (readonly WorldPoint[])[];
+  learningNetworkSegments?: readonly (readonly WorldPoint[])[];
+  learningWaterSegments?: readonly (readonly WorldPoint[])[];
   knownNetworkSegments?: readonly (readonly WorldPoint[])[];
+  knownWaterSegments?: readonly (readonly WorldPoint[])[];
+  masteredNetworkSegments?: readonly (readonly WorldPoint[])[];
+  masteredWaterSegments?: readonly (readonly WorldPoint[])[];
   route: readonly WorldPoint[];
   start: WorldPoint | null;
   finish: WorldPoint | null;
+}
+
+/** Mastery bands for the knowledge tint (still unnamed — no quiz leak). */
+export const OVERVIEW_MASTERY_LEARNING = 0.25;
+export const OVERVIEW_MASTERY_KNOWN = 0.45;
+export const OVERVIEW_MASTERY_MASTERED = 0.75;
+
+export function isWaterSegmentType(type: string | null | undefined): boolean {
+  const t = String(type || '').toLowerCase();
+  return t === 'canal' || t === 'river' || t === 'dock' || t === 'stream' || t === 'drain';
+}
+
+export type OverviewMasteryBand = 'fog' | 'learning' | 'known' | 'mastered';
+
+export function overviewMasteryBand(mastery: number): OverviewMasteryBand {
+  if (mastery >= OVERVIEW_MASTERY_MASTERED) return 'mastered';
+  if (mastery >= OVERVIEW_MASTERY_KNOWN) return 'known';
+  if (mastery >= OVERVIEW_MASTERY_LEARNING) return 'learning';
+  return 'fog';
 }
 
 /**
@@ -183,16 +216,23 @@ export function buildOverview(
   );
   if (!bounds) return null;
   const projection = fitProjection(bounds, rect, padding, OVERVIEW_ZOOM);
+  const thin = (segments: readonly (readonly WorldPoint[])[] | undefined) =>
+    (segments || [])
+      .map(segment => simplifyForScale(segment, projection.scale))
+      .filter(segment => segment.length >= 2);
+
   return {
     projection,
     layers: {
       areas: sources.areaRings.map(ring => simplifyForScale(ring, projection.scale)),
-      network: sources.networkSegments
-        .map(segment => simplifyForScale(segment, projection.scale))
-        .filter(segment => segment.length >= 2),
-      knownNetwork: (sources.knownNetworkSegments || [])
-        .map(segment => simplifyForScale(segment, projection.scale))
-        .filter(segment => segment.length >= 2),
+      network: thin(sources.networkSegments),
+      waterNetwork: thin(sources.waterNetworkSegments),
+      learningNetwork: thin(sources.learningNetworkSegments),
+      learningWater: thin(sources.learningWaterSegments),
+      knownNetwork: thin(sources.knownNetworkSegments),
+      knownWater: thin(sources.knownWaterSegments),
+      masteredNetwork: thin(sources.masteredNetworkSegments),
+      masteredWater: thin(sources.masteredWaterSegments),
       route: simplifyForScale(sources.route, projection.scale),
       start: sources.start,
       finish: sources.finish,
@@ -207,7 +247,13 @@ export interface OverviewColors {
   border: string;
   area: string;
   network: string;
+  waterNetwork: string;
+  learningNetwork: string;
+  learningWater: string;
   knownNetwork: string;
+  knownWater: string;
+  masteredNetwork: string;
+  masteredWater: string;
   route: string;
   start: string;
   finish: string;
@@ -219,12 +265,20 @@ export interface OverviewColors {
 // sky-blue canals and a gold route, which read as a different product sitting
 // in the corner of the one you were playing. The route stays the strongest mark
 // on it, because "where am I going" is what the overview is for.
+// Knowledge tints: land stays green-olive; waterways use cool blue so canal
+// practice does not read as the same ink as streets.
 export const OVERVIEW_COLORS: OverviewColors = {
   background: 'rgba(255,253,248,0.94)',
   border: 'rgba(97,89,74,0.30)',
   area: 'rgba(53,102,83,0.13)',
   network: 'rgba(36,50,43,0.16)',
+  waterNetwork: 'rgba(8,90,130,0.14)',
+  learningNetwork: 'rgba(53,102,83,0.32)',
+  learningWater: 'rgba(20,110,150,0.34)',
   knownNetwork: 'rgba(53,102,83,0.55)',
+  knownWater: 'rgba(15,100,140,0.55)',
+  masteredNetwork: 'rgba(28,82,58,0.82)',
+  masteredWater: 'rgba(8,78,120,0.78)',
   route: '#c75f43',
   start: '#356653',
   finish: '#c75f43',
@@ -266,9 +320,33 @@ export function drawOverviewStatic(
   ctx.lineWidth = 0.6;
   for (const segment of layers.network) strokePath(ctx, segment, projection);
 
+  ctx.strokeStyle = colors.waterNetwork;
+  ctx.lineWidth = 0.7;
+  for (const segment of layers.waterNetwork) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.learningNetwork;
+  ctx.lineWidth = 0.9;
+  for (const segment of layers.learningNetwork) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.learningWater;
+  ctx.lineWidth = 1.0;
+  for (const segment of layers.learningWater) strokePath(ctx, segment, projection);
+
   ctx.strokeStyle = colors.knownNetwork;
   ctx.lineWidth = 1.1;
   for (const segment of layers.knownNetwork) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.knownWater;
+  ctx.lineWidth = 1.2;
+  for (const segment of layers.knownWater) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.masteredNetwork;
+  ctx.lineWidth = 1.35;
+  for (const segment of layers.masteredNetwork) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.masteredWater;
+  ctx.lineWidth = 1.4;
+  for (const segment of layers.masteredWater) strokePath(ctx, segment, projection);
 
   ctx.strokeStyle = colors.area;
   ctx.lineWidth = 0.8;
