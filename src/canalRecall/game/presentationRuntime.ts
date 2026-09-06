@@ -36,7 +36,7 @@ import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
 import type { PresentationHost } from './host';
 import type { Landmark } from './worldTypes';
-import { canShowMiniMap, canShowPoiLabels } from './teachingSurface';
+import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
 import { bicycleRestrictionNotice } from '../routing/bikeAccess';
 
 /** One measured band of the arrival card. Each block reports its own height so
@@ -62,6 +62,56 @@ const RULE = 'rgba(255,255,255,0.22)';
 export interface GamePresentationRuntime extends PresentationHost {}
 
 export class GamePresentationRuntime {
+  /** True while a DOM overlay owns the screen — quiz, utility, or article. */
+  _overlayOpen(): boolean {
+    if (this._utilityOpen) return true;
+    if (this._prompt && this._prompt.style.display !== 'none' && this._prompt.style.display !== '') {
+      return true;
+    }
+    const panel = document.getElementById('landmark-panel');
+    return !!panel && getComputedStyle(panel).display !== 'none';
+  }
+
+  /** One teaching surface at a time — see `teachingSurface.ts`. */
+  _teachingGate(): TeachingGateInput {
+    const promptVisible = !!(this._prompt
+      && this._prompt.style.display !== 'none'
+      && this._prompt.style.display !== '');
+    const panel = document.getElementById('landmark-panel');
+    const landmarkPanelOpen = !!panel && getComputedStyle(panel).display !== 'none';
+    return {
+      quizOpen: !!this.quizPromptName,
+      feedbackVisible: !!this.quizFeedback,
+      promptVisible,
+      utilityOpen: !!this._utilityOpen || landmarkPanelOpen,
+    };
+  }
+
+  /** Active city catalog entry (extract path, centre, geocode bounds). */
+  _activeCity() {
+    const Prefs = window.CanalRecallPreferences;
+    const id = this.cityId || (Prefs && Prefs.DEFAULT_CITY_ID) || 'amsterdam';
+    return Prefs && Prefs.cityById ? Prefs.cityById(id) : {
+      id,
+      name: id,
+      extractPath: `../data/extracts/${id}`,
+      center: { lat: 52.372851, lng: 4.8936 },
+      geocodeSuffix: `, ${id}`,
+      geocodeViewbox: [4.72, 52.43, 5.02, 52.27] as [number, number, number, number],
+      provinceCaption: '',
+      curatedPois: [],
+    };
+  }
+
+  _curatedRoutePois() {
+    const curated = this._activeCity().curatedPois || [];
+    return curated.map(poi => ({ ...poi }));
+  }
+
+  _cityDisplayName(): string {
+    return this._activeCity().name || 'Amsterdam';
+  }
+
   // ---- The frame ----
 
   _render(): void {

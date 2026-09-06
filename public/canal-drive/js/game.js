@@ -6,48 +6,21 @@ Object.freeze(GameState);
 
 const DIFFICULTY_PRESETS = window.CanalRecallPreferences.DIFFICULTY_PRESETS;
 const DIFFICULTY_SCORE_MULTIPLIERS = { easy: 0.5, medium: 0.75, hard: 1, expert: 1.25, custom: 0.85 };
-// Route ribbons grade the trip on what the game is trying to teach — name
-// recall, navigating without aids, and choosing an efficient route — rather
-// than on raw speed. Ordered best-first; the first tier the score clears wins.
-// `minRecall` gates each tier independently of the blended score: this is a
-// recall game, so a spotless efficient run that never named a canal correctly
-// must not out-rank a slower player who knew where they were.
-const ROUTE_RIBBON_TIERS = [
-  { id: 'gold',   label: 'GOLD RIBBON',   min: 0.85, minRecall: 0.80, color: '#FACC15', dim: 'rgba(250,204,21,.16)' },
-  { id: 'silver', label: 'SILVER RIBBON', min: 0.68, minRecall: 0.55, color: '#CBD5E1', dim: 'rgba(203,213,225,.14)' },
-  { id: 'bronze', label: 'BRONZE RIBBON', min: 0.50, minRecall: 0.25, color: '#D8964A', dim: 'rgba(216,150,74,.16)' },
-  { id: 'none',   label: 'ROUTE COMPLETE', min: -Infinity, minRecall: -Infinity, color: '#7DD3FC', dim: 'rgba(56,189,248,.12)' }
-];
-// Weight of each aid when scoring self-reliance. The route line removes the
-// navigation problem entirely, so it costs the most.
-const RIBBON_AID_COST = { line: 0.5, arrow: 0.25, minimap: 0.25 };
-// Route destinations start from the curated list below, then grow with the
-// prominence-ranked landmarks in the city extract. Both ends of a route must
-// sit inside the single OSM_FETCH_RADIUS window fetched around their midpoint,
-// so candidates are capped by distance from the city centre and from each
-// other — otherwise a distant fort could be paired with a downtown landmark and
-// half the route would fall outside the loaded network.
+// Ribbon tiers / aid costs live in routeRibbon.ts (bundled with presentation).
+// Pair-distance / live-reroute numbers come from the typed route module so
+// game-route.js and the unit checks cannot drift.
+const Route = window.CanalRecallRoute;
 const ROUTE_POI_MAX_KM_FROM_CENTRE = 4;
-const ROUTE_POI_MAX_PAIR_KM = 6;
-// Both modes require an actual traversal, never proximity. A boat crosses the
-// span's centreline. A car drives along it, so it is tested against a gate
-// drawn perpendicular through the span's midpoint: sitting at the kerb aligned
-// with a bridge no longer counts, only passing its middle does.
-const BRIDGE_GATE_HALF_WIDTH = 26; // px — gate reaches this far either side
-const BRIDGE_LABEL_RANGE = 900; // px — keep named bridges labelled while nearby
-// How far a traversal may be from a crossing's centroid and still be that
-// crossing. Crossings of one bridge are clustered at least 70 m apart, and a
-// wide multi-span deck puts its centroid a span-length from the wheels.
-const CROSSING_MATCH_RANGE = 900; // px — 300 m
-// How many nearby stand-in destinations to try before giving up on routing.
-const RETARGET_ATTEMPTS = 25;
-// A stranded origin is re-rolled at most this many times before we accept it.
+const ROUTE_POI_MAX_PAIR_KM = Route.ROUTE_POI_MAX_PAIR_KM;
+const BRIDGE_GATE_HALF_WIDTH = 26;
+const BRIDGE_LABEL_RANGE = 900;
+const CROSSING_MATCH_RANGE = 900;
+const RETARGET_ATTEMPTS = Route.RETARGET_ATTEMPTS;
 const MAX_ROUTE_REROLLS = 2;
-const CONTROLS_HINT_DURATION = 12;   // seconds the keyboard hint stays on screen
-const ZOOM_BADGE_DURATION = 1.4;     // seconds the zoom percentage lingers
-const LIVE_ROUTE_OFF_ROUTE_DIST = 140; // px off the path before a full reroute
-const LIVE_ROUTE_REROUTE_INTERVAL = 2; // seconds between reroute attempts
-
+const CONTROLS_HINT_DURATION = 12;
+const ZOOM_BADGE_DURATION = 1.4;
+const LIVE_ROUTE_OFF_ROUTE_DIST = Route.LIVE_ROUTE_OFF_ROUTE_DIST;
+const LIVE_ROUTE_REROUTE_INTERVAL = Route.LIVE_ROUTE_REROUTE_INTERVAL;
 const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v2';
 
 class Game {
@@ -276,32 +249,6 @@ class Game {
     this._checkShareLink();
   }
 
-  /** True while a DOM overlay owns the screen: the recall question, the
-   *  settings/help panels, or the expanded article. The vehicle is stopped
-   *  behind all of them, so the d-pad is dead controls and the map gestures
-   *  belong to the overlay. */
-  _overlayOpen() {
-    if (this._utilityOpen) return true;
-    if (this._prompt && this._prompt.style.display !== 'none' && this._prompt.style.display !== '') return true;
-    const panel = document.getElementById('landmark-panel');
-    return !!panel && getComputedStyle(panel).display !== 'none';
-  }
-
-  /** One teaching surface at a time — see `teachingSurface.ts`. */
-  _teachingGate() {
-    const promptVisible = !!(this._prompt
-      && this._prompt.style.display !== 'none'
-      && this._prompt.style.display !== '');
-    const panel = document.getElementById('landmark-panel');
-    const landmarkPanelOpen = !!panel && getComputedStyle(panel).display !== 'none';
-    return {
-      quizOpen: !!this.quizPromptName,
-      feedbackVisible: !!this.quizFeedback,
-      promptVisible,
-      utilityOpen: !!this._utilityOpen || landmarkPanelOpen,
-    };
-  }
-
   /** The finish card's tappable actions, for touch. Keyboard keeps ENTER/ESC/C. */
   _runFinishAction(id) {
     if (id === 'again') {
@@ -316,29 +263,6 @@ class Game {
       navigator.clipboard.writeText(this._shareUrl).catch(() => {});
       this._copiedTimer = 2;
     }
-  }
-
-  /** Active city catalog entry (extract path, centre, geocode bounds). */
-  _activeCity() {
-    const Prefs = window.CanalRecallPreferences;
-    const id = this.cityId || (Prefs && Prefs.DEFAULT_CITY_ID) || 'amsterdam';
-    return Prefs && Prefs.cityById ? Prefs.cityById(id) : {
-      id, name: id, extractPath: `../data/extracts/${id}`,
-      center: { lat: 52.372851, lng: 4.8936 },
-      geocodeSuffix: `, ${id}`,
-      geocodeViewbox: [4.72, 52.43, 5.02, 52.27],
-      provinceCaption: '',
-      curatedPois: [],
-    };
-  }
-
-  _curatedRoutePois() {
-    const curated = this._activeCity().curatedPois || [];
-    return curated.map(poi => ({ ...poi }));
-  }
-
-  _cityDisplayName() {
-    return this._activeCity().name || 'Amsterdam';
   }
 
   /** Pull keyboard focus back onto the canvas so Enter/Esc reach InputManager

@@ -196,20 +196,28 @@ export class GameRecallRuntime {
   _recallFeatureAt(name: string, x: number, y: number, type = ''): RecallFeature | null {
     if (!name) return null;
     const meta = this.osmLoader && this.osmLoader.featureMeta && this.osmLoader.featureMeta.get(name);
-    // Prefer extract centres for stable SRS keys — especially transit lines/stops.
-    const center = (meta && meta.center)
-      ? meta.center as LatLon
-      : this._toLatLon(x, y);
-    if (!center) return null;
     const profile = travelProfile(this.travelMode);
     const defaultType = profile.learnedKind === 'street'
       ? 'street'
       : profile.learnedKind === 'transit'
         ? 'line'
         : 'canal';
+    const resolvedType = type || (meta && meta.type) || defaultType;
+    // Transit lines/stops keep the extract centre so SRS keys stay stable.
+    // Streets and canals must use the local stretch — otherwise one answer at
+    // Damrak's south end also suppresses (and labels) the far north end.
+    const useMetaCenter = !!(meta && meta.center) && (
+      resolvedType === 'line'
+      || resolvedType === 'stop'
+      || profile.learnedKind === 'transit'
+    );
+    const center = useMetaCenter
+      ? meta!.center as LatLon
+      : this._toLatLon(x, y);
+    if (!center) return null;
     return {
       name,
-      type: type || (meta && meta.type) || defaultType,
+      type: resolvedType,
       cityId: (meta && meta.cityId) || this.cityId || 'amsterdam',
       center,
     };
