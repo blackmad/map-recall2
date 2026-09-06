@@ -6,6 +6,17 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Transit second-leg drive after hub change — 2026-09-06
+
+Phase E planner/quiz landed without boarding the next corridor. Now:
+
+- **Corridor lock:** `setPreferredCorridor` + `pickRoadContactPreferName` keep the
+  road guard on the active leg’s line name at overlapping hubs.
+- **Hub is the first finish:** two-leg hops retarget `finishPoint` to the
+  transfer stop; arriving advances to leg 2 (`Change to Metro …`), restores the
+  real destination, and replans — race does not end at the hub.
+- Stop quizzes scope to the **current leg**’s from→to stops.
+
 ## Transit Phase D hardening + Phase E transfers — 2026-09-06
 
 Phase D was driveable but still taught like a single-line thin slice.
@@ -21,7 +32,7 @@ Phase D was driveable but still taught like a single-line thin slice.
 - **Phase E transfers:** `transit-transfers.json` (94 edges from parent
   stations + proximity; GTFS `transfers.txt` merged when cached).
   `planTransitConnection` caps at two rides; hub quiz asks which line you can
-  change to. Second-leg driving after the change is still open.
+  change to.
 
 ## Home radius polish, knowledge tint, transit Phase D, English prune — 2026-09-05
 

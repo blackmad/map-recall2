@@ -781,9 +781,16 @@ Learned names, exploration collection, personal bests, route settings and the ho
       const Transit = window.CanalRecallTransit;
       const load = this.osmLoader && this.osmLoader.transitLoad;
       if (!Transit || !load || !load.lines || !load.lines.length) return null;
-      const fromId = Transit.resolveRouteStopId(load.stops, this.routeFrom);
-      const toId = Transit.resolveRouteStopId(load.stops, this.routeTo);
-      const line = Transit.resolveActiveLine ? Transit.resolveActiveLine(load.lines, this._activeTransitLine || null, fromId, toId) : load.lines.find((entry) => entry.name === this._activeTransitLine) || load.lines[0];
+      const plan = this._transitConnectionPlan;
+      const leg = Transit.currentTransitLeg ? Transit.currentTransitLeg(plan, this._transitLegIndex || 0) : null;
+      const fromId = leg?.fromStopId || Transit.resolveRouteStopId(load.stops, this.routeFrom);
+      const toId = leg?.toStopId || Transit.resolveRouteStopId(load.stops, this.routeTo);
+      const line = Transit.resolveActiveLine ? Transit.resolveActiveLine(
+        load.lines,
+        leg?.lineName || this._activeTransitLine || null,
+        fromId,
+        toId
+      ) : load.lines.find((entry) => entry.name === (leg?.lineName || this._activeTransitLine)) || load.lines[0];
       if (!line || !line.stopIds || !line.stopIds.length) return null;
       if (!fromId || !toId) return null;
       const ids = Transit.intermediateStopIds(line.stopIds, fromId, toId);

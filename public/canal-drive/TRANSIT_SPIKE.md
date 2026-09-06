@@ -284,7 +284,7 @@ at least one line question) without HUD leaks.
 - [x] `transit-transfers.json` (derived parent/proximity; GTFS merge when cached)
 - [x] Multi-leg **planner** (max 2 rides) — path still rides the merged graph
 - [x] Quiz at transfer stops: “which line can you change to here?”
-- [ ] Drive / constrain the second leg after the change (not just quiz)
+- [x] Drive / constrain the second leg after the change (hub finish → board next corridor)
 - [ ] Cap legs in surprise pairing so cross-line hops are common teachable cases
 - [ ] Knowledge map layer for transit mastery (item 6 can consume later)
 

@@ -35,6 +35,9 @@ import {
   resolveActiveLine,
   siblingLineNames,
   transferTargetLines,
+  currentTransitLeg,
+  canAdvanceTransitLeg,
+  advanceTransitLeg,
   type TransitTransfers,
 } from '../src/canalRecall/transit/transfers.ts';
 import { buildRoadSegments } from '../src/canalRecall/osm/roadProjection.ts';
@@ -262,6 +265,12 @@ assert.ok(transfers.counts.transfers >= 50, `enough transfer edges (got ${transf
       assert.equal(plan!.legs.length, 2, 'cross-line hop is two legs');
       assert.ok(plan!.transferStopId, 'transfer hub set');
       assert.ok(plan!.nextLineName, 'next line named for hub quiz');
+      assert.ok(canAdvanceTransitLeg(plan, 0), 'leg 0 can advance at hub');
+      assert.ok(!canAdvanceTransitLeg(plan, 1), 'leg 1 is the last ride');
+      const advanced = advanceTransitLeg(plan!, 0);
+      assert.equal(advanced?.legIndex, 1);
+      assert.equal(advanced?.lineName, plan!.nextLineName);
+      assert.equal(currentTransitLeg(plan, 1)?.lineName, plan!.nextLineName);
     }
   }
 }
