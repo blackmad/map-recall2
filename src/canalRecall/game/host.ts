@@ -15,7 +15,7 @@ import type {
 } from './collaborators';
 import type { StreetKnowledgeEntry } from './extracts';
 import type {
-  AnswerMode, QuizPromptKind, RouteDifficulty, TravelMode, ViewMode,
+  AnswerMode, QuizPromptKind, RouteDifficulty, RoutePattern, TravelMode, ViewMode,
 } from './modes';
 import type { Exploration } from './progressStore';
 import type { RibbonAid, RouteRibbon } from './routeRibbon';
@@ -216,8 +216,14 @@ export interface RecallHost extends GameCoreHost {
   _lastTransitStopQuizAt: number;
   _lastTransitLineQuizAt: number;
   _lastTransitStreetQuizAt: number;
+  _lastTransitTransferQuizAt: number;
   _quizzedTransitStops: Set<string>;
   _quizzedTransitStreets: Set<string>;
+  _quizzedTransitTransfers: Set<string>;
+  /** Multi-leg surprise plan when the hop changes lines at a hub. */
+  _transitConnectionPlan: import('../transit/transfers').TransitConnectionPlan | null;
+  /** 0-based leg on `_transitConnectionPlan` while driving a transfer hop. */
+  _transitLegIndex: number;
   /** Read-only street centreline index for corridor street quizzes. */
   _corridorStreetIndex: import('../transit/corridorStreets.ts').CorridorStreetIndex | null;
   _choiceOrder?: string[];
@@ -261,6 +267,11 @@ export interface PresentationHost extends GameCoreHost {
   gameyFeatures: boolean;
   viewMode: ViewMode;
   routeDifficulty: RouteDifficulty;
+  routePattern: RoutePattern;
+  /** Expanding home-base learning ring, km; 0 when not on a home route. */
+  _homeLearningRadiusKm: number;
+  /** 0-based leg while driving a multi-line transit hop. */
+  _transitLegIndex: number;
   routeOptions: { answerMode: AnswerMode; line: boolean; arrow: boolean; minimap: boolean };
 
   routeFrom: { id: string; name: string };

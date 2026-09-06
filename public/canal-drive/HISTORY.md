@@ -6,6 +6,27 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Blank boot from transit overlay before MapLibre load — 2026-09-06
+
+This morning's corridor-overlay work called `setTransitNetwork` from
+`_applyPrefsToRuntime` during `new Game()`, before MapLibre's style `load`.
+`addSource` threw `Style is not done loading`, so `window.canalRecallGame`
+never stuck and Start Route left a navy blank with gear/help only.
+
+Fix: stash the pending network when `!ready`, create layers only once
+`isStyleLoaded()`, and flush on `load` (same pattern as pending trees/places).
+
+**CI / hooks (same day):** Playwright CI had been timing out for weeks because
+setup-rail selects are `hidden` and helpers used unforced `selectOption`. Deploy
+also shipped on every `main` push without waiting for e2e or `check:canal`.
+Now: shared `tests/e2e/helpers.ts` (`force: true`); `Canal CI` workflow runs
+`check:canal` + boot smoke + full e2e; Firebase/Pages deploy only after a green
+CI `workflow_run` on `main`; `prepare` installs pre-commit (`lint`) and
+pre-push (`lint` + `test:e2e:smoke`). Host type holes for transit transfers /
+home learning radius are filled so `tsc` (and therefore `check:canal`) is green
+again — it had been red on main since those fields landed without declaration-
+merge updates.
+
 ## Transit 3D camera, corridor callout, quiz pacing — 2026-09-06
 
 Playtest notes from a Waterlooplein / Academie van Bouwkunst metro hop:

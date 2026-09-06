@@ -67,6 +67,8 @@ export interface OsmLoader {
   featureMeta?: Map<string, FeatureMeta>;
   /** Sidecar from `CanalRecallTransit.adaptTransitNetwork` when travelMode is transit. */
   transitLoad?: import('../transit/segments').TransitPlayLoad | null;
+  /** Hub graph from Phase E transfer extract, when published. */
+  transitTransfers?: import('../transit/transfers').TransitTransfers | null;
   /**
    * Project a lat/lng and snap it to the nearest loaded road point. Pass
    * `false` for `maxSnapDist` to mean "no limit" — the landmark pass wants a

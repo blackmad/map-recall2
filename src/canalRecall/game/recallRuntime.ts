@@ -528,11 +528,12 @@ export class GameRecallRuntime {
       let answer: string | null = null;
       let pool: string[] = [];
       if (plan && plan.transferStopId === stop.stopId && plan.nextLineName) {
-        answer = plan.nextLineName;
+        const nextLine = plan.nextLineName;
+        answer = nextLine;
         pool = Transit.transferTargetLines
           ? Transit.transferTargetLines(load, transfers, stop.stopId, this._activeTransitLine)
           : (load.lineDistractors || []);
-        if (!pool.includes(answer)) pool = [...pool, answer];
+        if (!pool.includes(nextLine)) pool = [...pool, nextLine];
       } else {
         const others = Transit.transferTargetLines
           ? Transit.transferTargetLines(load, transfers, stop.stopId, this._activeTransitLine)
