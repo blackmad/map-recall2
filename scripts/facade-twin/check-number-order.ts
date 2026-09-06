@@ -177,6 +177,59 @@ for (const t of clean.filter(x => !inOrder(x.t)).sort((a, b) => b.overshootM - a
   console.log(`  ${t.street.padEnd(28)}${t.nums.join('→').padEnd(14)}${t.t.toFixed(2).padStart(6)}${t.baseline.toFixed(1).padStart(9)} m${t.overshootM.toFixed(1).padStart(9)} m`);
 }
 
+// Does curvature explain the residual? It does not, and this is the check that
+// says so. Straightness is measured per side — odd and even are separate
+// sequences — as the largest perpendicular deviation from the chord joining the
+// side's two extreme points, over the length of that chord. A ruler is 0; the
+// Herengracht horseshoe is large.
+console.log('\nDoes a curving street lose the ordering? Straightness measured per side:\n');
+const bend = (pts: Point[]) => {
+  let a = pts[0], b = pts[0], best = -1;
+  for (const p of pts) for (const q of pts) {
+    const d = (p.x - q.x) ** 2 + (p.y - q.y) ** 2;
+    if (d > best) { best = d; a = p; b = q; }
+  }
+  const len = Math.sqrt(best);
+  if (len < 30) return null; // too short for "curved" to mean anything
+  const dx = b.x - a.x, dy = b.y - a.y;
+  let dev = 0;
+  for (const p of pts) dev = Math.max(dev, Math.abs((p.x - a.x) * dy - (p.y - a.y) * dx) / len);
+  return dev / len;
+};
+const BINS: Array<[string, number, number]> = [
+  ['a ruler          (bend < 1%)', 0, 0.01],
+  ['nearly straight  (1–3%)', 0.01, 0.03],
+  ['gently curved    (3–10%)', 0.03, 0.10],
+  ['a horseshoe      (> 10%)', 0.10, Infinity],
+];
+const bins = BINS.map(() => ({ all: [] as Triple[], clean: [] as Triple[] }));
+{
+  const { streets } = groupByStreet(bagRows);
+  for (const [street, sides] of streets) {
+    for (const side of sides) {
+      if (side.length < 6) continue;
+      const b = bend(side);
+      if (b == null) continue;
+      const k = BINS.findIndex(([, lo, hi]) => b >= lo && b < hi);
+      if (k < 0) continue;
+      // Re-run the triple test over this side alone, so a side keeps its own bin.
+      for (const t of triples((side as Array<{ n: number } & Point>).map(p => ({ ...p, street })))) {
+        bins[k].all.push(t);
+        if (consecutive(t) && !sharedPand(t) && !anyOrphan(t)) bins[k].clean.push(t);
+      }
+    }
+  }
+}
+console.log('  ' + 'how straight is the side?'.padEnd(32) + 'all triples          clean triples');
+for (let i = 0; i < BINS.length; i++) {
+  const a = bins[i].all, c = bins[i].clean;
+  const pct = (l: Triple[]) => (l.length ? `${(100 * rate(l)).toFixed(1)}%` : '   —');
+  console.log(`  ${BINS[i][0].padEnd(32)}${String(a.length).padStart(6)}  ${pct(a).padStart(6)}${String(c.length).padStart(11)}  ${pct(c).padStart(6)}`);
+}
+console.log('\n  Curvature is not the mechanism. Once a merged pand and an orphan point are');
+console.log('  excluded, a horseshoe orders its numbers as well as a ruler does, and every');
+console.log('  clean triple on a side straight to within 3% is in order.');
+
 // A "street" whose points are not near a line is a square, and "along the
 // street" is undefined on it: the numbering turns corners. Blocks must be built
 // from contiguous same-side runs, never from a street name.

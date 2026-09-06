@@ -158,6 +158,12 @@ Guarded by `npx tsx scripts/facade-twin/check-number-order.ts`.
   whose address is **Hartenstraat 25**. The two points are swapped. **So: do not
   take ordering evidence from a multi-number pand.** Treat it as one unit
   spanning a numeric range, and let the anchor land on the range, not the point.
+- **Curvature is not a mechanism, so do not spend design on it.** Binned by how
+  straight each side is, the clean rate is 100% for sides straight to within 3%
+  (367 triples, zero failures) and still 99.1% on a horseshoe. The decline in the
+  raw rate down that column is confounded — the long curving grachten are also
+  where the wide merged panden are. Step 2 needs a local street direction because
+  a curve has no single axis, but it does not need to defend the ordering.
 - **A square is not a line, and its numbering turns corners.** Westermarkt runs
   1–37 along one side at y≈487450, 2–20 along another at y≈487560, 60–74 at
   y≈487507 and 76–82 at y≈487486. Every run is internally monotonic; every break

@@ -3584,6 +3584,24 @@ not a failure of numbering at all. The plan's step 1 already says a block is a
 contiguous same-side run and never a street name; that clause is now load-bearing
 and must not be relaxed.
 
+**And curvature turns out not to be the mechanism either.** Measuring straightness
+per side — the largest perpendicular deviation from the chord joining that side's
+two extreme points, over the length of that chord — and re-running the test inside
+each bin:
+
+| side | all triples | | clean triples | |
+|---|---|---|---|---|
+| a ruler (bend < 1%) | 45 | 100.0% | 31 | **100.0%** |
+| nearly straight (1–3%) | 1,089 | 97.9% | 336 | **100.0%** |
+| gently curved (3–10%) | 2,813 | 96.2% | 863 | 99.4% |
+| a horseshoe (> 10%) | 4,138 | 95.9% | 1,609 | 99.1% |
+
+Every clean triple on a side straight to within 3% is in order — 367 for 367. And
+a horseshoe orders its numbers essentially as well as a ruler once a merged pand
+and an orphan point are excluded. The apparent decline down the "all triples"
+column is confounded: the long curving grachten are also where the wide merged
+panden and the orphan points are, so curvature was standing in for them.
+
 There is a third thing this did not overturn. Projecting a gracht onto its
 principal axis genuinely is wrong — Herengracht spans 866 m along its own axis and
 551 m across it, because it is a horseshoe. The original note was right about
