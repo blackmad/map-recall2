@@ -72,12 +72,14 @@ for (const e of registry) if (!footprints.has(e.buildingId)) footprints.set(e.bu
 const posed = views.filter(hasUsablePose).map(v => ({ v, p: RD_NEW.fromLngLat(v.lngLat) }));
 const offsetOf = await loadTrackOffsets(CACHE);
 
+const AUDIT = process.argv.includes('--audit-views');
 const ids = (arg('ids') ?? '').split(',').filter(Boolean);
 const limit = Number(arg('limit') ?? 24);
 const queue = ids.length ? ids : Object.keys(store).sort();
 
 await mkdir(OUT, { recursive: true });
 const manifest: any[] = [];
+const audit: Array<{ pandId: string; chosenObliquity: number; chosenPpm: number; bestObliquity: number; bestPpm: number; candidates: number }> = [];
 let done = 0, downloaded = 0;
 
 for (const pandId of queue) {
@@ -108,8 +110,61 @@ for (const pandId of queue) {
     // 1250 px per radian is the equirectangular scale at 8000 px width.
     .map(q => ({ ...q, wallPixelsPerMetre: (1250 / q.standoff) * Math.cos((q.obliquity * Math.PI) / 180) }))
     .sort((a, b) => b.wallPixelsPerMetre - a.wallPixelsPerMetre);
-  const chosen = candidates.find(q => isLeafOff(q.v.capturedAt)) ?? candidates[0];
+  /**
+   * Spend a bounded amount of resolution to stand square on.
+   *
+   * Resolution alone chose the camera until now, and cos is a feeble penalty --
+   * 6% at 20° against a standoff term that varies by half -- so the close,
+   * oblique camera won almost every time: the median band was shot at 15.1° when
+   * a 3.1° view was available, and 107 of 366 panden could have been square-on
+   * and were not.
+   *
+   * It matters because obliquity does not merely foreshorten. It makes the map
+   * from image column to position along the wall ill-conditioned, so the same
+   * pixel error lands further from where it belongs -- and a band that cannot
+   * say *where* a plate is cannot say *whose* it is. Measured over the 400-pand
+   * run: a band within 10° of square confirms its own house number 89% of the
+   * time and one beyond 10° confirms 65% (z=2.16). Four fields were compared and
+   * only this one separated, so the statistic alone would be thin; it is the
+   * mechanism that makes it worth acting on.
+   *
+   * So: among the views that keep most of the best available resolution, take
+   * the squarest. The floor is what stops this trading away the plate itself --
+   * a 13 cm digit needs about 17 px, and the swap costs 18% of resolution at the
+   * median but would halve it for the worst tenth.
+   */
+  const RESOLUTION_FLOOR = 0.7;
+  const pool = candidates.filter(q => isLeafOff(q.v.capturedAt));
+  const ranked = pool.length ? pool : candidates;
+  const affordable = ranked.filter(q => q.wallPixelsPerMetre >= ranked[0].wallPixelsPerMetre * RESOLUTION_FLOOR);
+  const chosen = affordable.reduce((a, b) => (b.obliquity < a.obliquity ? b : a), affordable[0]);
   if (!chosen) continue;
+
+  /**
+   * Was a squarer view available, and what would it have cost?
+   *
+   * Measured over the 400-pand run, a band shot within 10° of square confirms
+   * its own house number 89% of the time and one beyond 10° confirms 65%. The
+   * ranking penalises obliquity only by cos, which is 6% at 20° against a
+   * standoff term that varies by half -- so the close, oblique camera keeps
+   * winning. This says how much room there is to change that, before anything
+   * is re-rendered.
+   */
+  if (AUDIT) {
+    const leafOff = candidates.filter(q => isLeafOff(q.v.capturedAt));
+    const pool = leafOff.length ? leafOff : candidates;
+    const squarest = pool.reduce((a, b) => (b.obliquity < a.obliquity ? b : a));
+    audit.push({
+      pandId,
+      chosenObliquity: Number(chosen.obliquity.toFixed(1)),
+      chosenPpm: Number(chosen.wallPixelsPerMetre.toFixed(0)),
+      bestObliquity: Number(squarest.obliquity.toFixed(1)),
+      bestPpm: Number(squarest.wallPixelsPerMetre.toFixed(0)),
+      candidates: pool.length,
+    });
+    done++;
+    continue;
+  }
 
   const file = path.join(CACHE, 'panoramas', `${chosen.v.panoramaId}.jpg`);
   if (!existsSync(file)) {
@@ -220,6 +275,26 @@ for (const pandId of queue) {
   process.stdout.write(`\r  ${done} panden, ${downloaded} panoramas downloaded`);
 }
 process.stdout.write('\r');
+
+if (AUDIT) {
+  const q = (a: number[], f: number) => a.length ? [...a].sort((x, y) => x - y)[Math.floor(f * a.length)] : 0;
+  const chosen = audit.map(a => a.chosenObliquity), best = audit.map(a => a.bestObliquity);
+  const squareNow = audit.filter(a => a.chosenObliquity <= 10).length;
+  const squarePossible = audit.filter(a => a.bestObliquity <= 10).length;
+  const gained = audit.filter(a => a.chosenObliquity > 10 && a.bestObliquity <= 10);
+  const cost = gained.map(a => a.bestPpm / a.chosenPpm);
+  console.log(`view audit over ${audit.length} panden\n`);
+  console.log(`  obliquity chosen now   p50 ${q(chosen, 0.5).toFixed(1)}°  p90 ${q(chosen, 0.9).toFixed(1)}°`);
+  console.log(`  squarest available     p50 ${q(best, 0.5).toFixed(1)}°  p90 ${q(best, 0.9).toFixed(1)}°`);
+  console.log(`  within 10° of square:  ${squareNow} now, ${squarePossible} possible`
+    + ` — ${gained.length} panden could be square-on and are not`);
+  if (cost.length) {
+    console.log(`  what the swap would cost those ${gained.length}: resolution × ${q(cost, 0.5).toFixed(2)} at the median,`
+      + ` × ${q(cost, 0.1).toFixed(2)} at the 10th centile`);
+  }
+  console.log(`\n  (a 13 cm digit needs about 17 px, so a factor much below 0.5 loses the plate)`);
+  process.exit(0);
+}
 
 await writeFile(path.join(OUT, 'manifest.json'), JSON.stringify({
   metadata: {

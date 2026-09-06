@@ -15,6 +15,17 @@ with 17 too close to a party wall to say either way. The decoy confirms 3. That 
 the first honest measurement of the thing this whole effort is for, and every
 downstream confidence should be derived from it — none currently is.
 
+**A fix is in flight for it.** Diagnosing the 14 contradictions turned up the one
+variable that separates them: obliquity, 17.4° at a contradiction against 9.3° at
+a confirmation. A band within 10° of square confirms 89% of the time, one beyond
+10° confirms 65% (z=2.16, and four fields were compared, so the mechanism carries
+more of the weight than the statistic). `number-bands.ts --audit-views` then showed
+the ranking was leaving that on the table: median obliquity chosen 15.1° where
+3.1° was available, and 107 of 366 panden could have been square-on and were not.
+The ranking now takes the squarest view that keeps 70% of the best available
+resolution — median obliquity 4.5°, square-on bands 138 → 230. A re-render and OCR
+pass over the same 400 panden is running to test whether 76% moves.
+
 **Waiting on the owner:** six façade-twin decisions are queued at
 <https://claude.ai/code/artifact/93e41df0-620e-475c-b993-9956caf65750> — the
 acceptance bar for panorama↔pand correspondence, what to do about the storey
