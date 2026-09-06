@@ -119,7 +119,12 @@ const alongOf = (band: Band, a: Address) =>
 
 await mkdir(OUT, { recursive: true });
 const rows: string[] = [];
-const chosen = anchors.filter(a => a.verdict === WANT).slice(0, LIMIT);
+const matching = anchors.filter(a => a.verdict === WANT);
+// A sheet that draws 12 of 14 and titles itself from what it drew is a sheet that
+// says "twelve" where the truth is fourteen, and nothing on the page corrects it.
+// The omission is stated below, on the page, not just in the terminal.
+const omitted = Math.max(0, matching.length - LIMIT);
+const chosen = matching.slice(0, LIMIT);
 
 for (const rec of chosen) {
   const band = bandOf.get(rec.pandId);
@@ -171,7 +176,9 @@ for (const rec of chosen) {
 </section>`);
 }
 
-const WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
+const WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine',
+  'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen',
+  'Nineteen', 'Twenty'];
 const TITLE = WANT === 'conflict'
   ? `The ${WORDS[rows.length] ?? rows.length} Conflicts`
   : `${WORDS[rows.length] ?? rows.length} ${WANT} bands`;
@@ -228,7 +235,7 @@ const html = `<!doctype html>
     <span><i style="background:#c9cdd4"></i>where BAG puts a number we believe this pand carries</span>
     <span><i style="background:rgba(255,255,255,.5);border:1px solid #999"></i>any other address in shot</span>
   </p>
-  <p class="prov">Bands drawn from <code>${PROVENANCE}</code>, marks from the anchor pass over it.</p>
+  <p class="prov">Bands drawn from <code>${PROVENANCE}</code>, marks from the anchor pass over it.${omitted ? ` Showing ${chosen.length} of ${matching.length} — <b>${omitted} not drawn</b>, raise <code>--limit=</code> to see them.` : ''}</p>
   ${rows.join('\n')}
 </main>`;
 
