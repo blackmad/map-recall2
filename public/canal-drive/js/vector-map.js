@@ -35,6 +35,8 @@ class VectorBasemap {
     this._playerBoat = null;
     this._labelsVisible = false;
     this._extractPath = '../data/extracts/amsterdam';
+    this._cameraTilt = 0;
+    this._pitchSmoothed = null;
     if (!container || typeof maplibregl === 'undefined') return;
 
     this.map = new maplibregl.Map({
@@ -52,6 +54,7 @@ class VectorBasemap {
       this._captureBasePaint();
       this._ensureRouteLayer();
       this._ensureStreetOverlayLayers();
+      this._ensureTransitOverlayLayers();
       this._ensureTreeLayers();
       this._ensureBuildingAppearanceLayers();
       this._ensurePlaceLayers();
@@ -122,6 +125,126 @@ class VectorBasemap {
     for (const layer of window.CanalRecallStreets.streetOverlayLayers()) {
       this.map.addLayer(layer, layer.type === 'symbol' ? undefined : before);
     }
+  }
+
+  _ensureTransitOverlayLayers() {
+    const Transit = window.CanalRecallTransit;
+    if (!Transit || this.map.getSource(Transit.TRANSIT_OVERLAY_SOURCE_ID || 'transit-network')) return;
+    const sourceId = Transit.TRANSIT_OVERLAY_SOURCE_ID || 'transit-network';
+    this.map.addSource(sourceId, {
+      type: 'geojson',
+      data: { type: 'FeatureCollection', features: [] },
+    });
+    const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
+    const under = typeof Transit.transitOverlayUnderBuildingLayers === 'function'
+      ? Transit.transitOverlayUnderBuildingLayers()
+      : [];
+    for (const layer of under) this.map.addLayer(layer, before);
+    const above = typeof Transit.transitOverlayAboveBuildingLayers === 'function'
+      ? Transit.transitOverlayAboveBuildingLayers()
+      : [];
+    // Tunnel callouts sit above extrusions so metro through buildings stays legible.
+    for (const layer of above) this.map.addLayer(layer);
+  }
+
+  /**
+   * Paint every driveable GTFS corridor. Metro is treated as underground
+   * (dashed, above buildings); tram stays a bold surface ribbon.
+   */
+  setTransitNetwork(load, visible) {
+    const Transit = window.CanalRecallTransit;
+    if (!this.map || !Transit) return;
+    this._ensureTransitOverlayLayers();
+    const sourceId = Transit.TRANSIT_OVERLAY_SOURCE_ID || 'transit-network';
+    const source = this.map.getSource(sourceId);
+    if (!source) return;
+    const lines = [];
+    if (load && load.ways && load.ways.length) {
+      for (const way of load.ways) {
+        if (!way.nodes || way.nodes.length < 2) continue;
+        const meta = load.featureMeta && way.tags && way.tags.name
+          ? load.featureMeta.get(way.tags.name)
+          : null;
+        lines.push({
+          name: (way.tags && way.tags.name) || way.id || 'line',
+          mode: way.highway || (meta && meta.mode) || 'tram',
+          color: meta && meta.color,
+          coordinates: way.nodes.map(node => [node.lon, node.lat]),
+        });
+      }
+    }
+    const collection = typeof Transit.transitOverlayCollection === 'function'
+      ? Transit.transitOverlayCollection(lines)
+      : { type: 'FeatureCollection', features: [] };
+    source.setData(collection);
+    const show = visible ? 'visible' : 'none';
+    for (const id of (Transit.TRANSIT_OVERLAY_LAYER_IDS || [])) {
+      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', show);
+    }
+    this._emphasizeTransitBasemap(!!visible);
+  }
+
+  /** Widen / recolour Liberty rail layers while transit mode is active. */
+  _emphasizeTransitBasemap(on) {
+    if (!this.map) return;
+    try {
+      for (const layer of this.map.getStyle().layers || []) {
+        if (layer.type !== 'line') continue;
+        const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
+        if (!/rail|transit|subway|tram/.test(identity) && !/transportation/.test(identity)) continue;
+        // Only touch layers that look like rails, not every road.
+        const isRail = /rail|transit|subway|tram|railway/.test(identity);
+        if (!isRail) continue;
+        if (!this._basePaint.has(`${layer.id}:line-width`)) {
+          try {
+            this._basePaint.set(`${layer.id}:line-width`, this.map.getPaintProperty(layer.id, 'line-width'));
+            this._basePaint.set(`${layer.id}:line-color`, this.map.getPaintProperty(layer.id, 'line-color'));
+            this._basePaint.set(`${layer.id}:line-opacity`, this.map.getPaintProperty(layer.id, 'line-opacity'));
+          } catch (_) { /* ignore */ }
+        }
+        if (on) {
+          this.map.setPaintProperty(layer.id, 'line-color', '#F59E0B');
+          this.map.setPaintProperty(layer.id, 'line-opacity', 0.55);
+          this.map.setPaintProperty(layer.id, 'line-width', [
+            'interpolate', ['linear'], ['zoom'], 13, 2.5, 18, 7,
+          ]);
+        } else {
+          const width = this._basePaint.get(`${layer.id}:line-width`);
+          const color = this._basePaint.get(`${layer.id}:line-color`);
+          const opacity = this._basePaint.get(`${layer.id}:line-opacity`);
+          if (width != null) this.map.setPaintProperty(layer.id, 'line-width', width);
+          if (color != null) this.map.setPaintProperty(layer.id, 'line-color', color);
+          if (opacity != null) this.map.setPaintProperty(layer.id, 'line-opacity', opacity);
+        }
+      }
+    } catch (_) { /* style may still be loading */ }
+  }
+
+  setCameraTilt(degrees) {
+    const value = Number(degrees);
+    this._cameraTilt = Number.isFinite(value) ? Math.max(-18, Math.min(18, value)) : 0;
+  }
+
+  pitchForViewMode(viewMode) {
+    const chase = viewMode === 'chase';
+    const cockpit = viewMode === 'cockpit';
+    const base = cockpit
+      ? (typeof COCKPIT_PITCH_DEGREES === 'number' ? COCKPIT_PITCH_DEGREES : 82)
+      : chase
+        ? (typeof CHASE_PITCH_DEGREES === 'number' ? CHASE_PITCH_DEGREES : 42)
+        : (typeof TOPDOWN_TILT_DEGREES === 'number' ? TOPDOWN_TILT_DEGREES : 14);
+    if (!chase && !cockpit) return base;
+    return Math.max(0, Math.min(85, base + (this._cameraTilt || 0)));
+  }
+
+  zoomOffsetForViewMode(viewMode) {
+    if (viewMode === 'cockpit') {
+      return typeof COCKPIT_ZOOM_OFFSET === 'number' ? COCKPIT_ZOOM_OFFSET : 1.65;
+    }
+    if (viewMode === 'chase') {
+      return typeof CHASE_ZOOM_OFFSET === 'number' ? CHASE_ZOOM_OFFSET : 0.05;
+    }
+    return 0;
   }
 
   _ensureTreeLayers() {
@@ -851,8 +974,13 @@ class VectorBasemap {
     );
   }
 
-  setPlayerTransit(player, loader, visible) {
+  setPlayerTransit(player, loader, visible, underground = false) {
     if (!this._playerTransit || !player || !loader) return;
+    if (typeof this._playerTransit.setAltitude === 'function') {
+      // Metro GTFS shapes are ground projections of tunnels — drop the mesh so
+      // it does not sit inside extruded buildings along the corridor.
+      this._playerTransit.setAltitude(underground ? -9 : 0.22);
+    }
     this._playerTransit.update(
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible
     );
@@ -1112,16 +1240,25 @@ class VectorBasemap {
     const displayScale = canvas.getBoundingClientRect().width / CANVAS_W;
     const pixelsPerMeter = PIXELS_PER_METER * camera.zoom * displayScale;
     const zoom = Math.log2(Math.cos(lat * Math.PI / 180) * 156543.03392 * pixelsPerMeter);
-    const chase = camera.viewMode === 'chase';
-    const cockpit = camera.viewMode === 'cockpit';
+    const viewMode = camera.viewMode || 'north';
     const bearing = camera.rotation * 180 / Math.PI;
     // Even the flat map gets a few degrees of tilt. It is not enough to make
     // the plan view hard to read, and it is enough for buildings to acquire
     // sides, which is what makes a top-down city look like a place rather than
     // a diagram. The canvas overlay then has to project through MapLibre so it
     // keeps sitting exactly on the basemap.
-    const pitch = cockpit ? 72 : chase ? 58 : TOPDOWN_TILT_DEGREES;
-    this.map.jumpTo({ center: [lon, lat], zoom: cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom, bearing, pitch });
+    const targetPitch = this.pitchForViewMode(viewMode);
+    // Ease pitch when entering chase/cockpit so the load→race handoff is not a
+    // hard snap from the top-down loading aim.
+    if (this._pitchSmoothed == null || camera.reducedMotion) {
+      this._pitchSmoothed = targetPitch;
+    } else {
+      this._pitchSmoothed += (targetPitch - this._pitchSmoothed) * 0.12;
+      if (Math.abs(targetPitch - this._pitchSmoothed) < 0.15) this._pitchSmoothed = targetPitch;
+    }
+    const pitch = this._pitchSmoothed;
+    const zoomOffset = this.zoomOffsetForViewMode(viewMode);
+    this.map.jumpTo({ center: [lon, lat], zoom: zoom + zoomOffset, bearing, pitch });
     this._lastCameraZoom = camera.zoom;
     // Building tiles follow the driving camera, not the style's Damrak default.
     // followCamera no-ops until the centre tile / zoom bucket changes.
@@ -1203,7 +1340,7 @@ class VectorBasemap {
     try {
       if (palette) {
         for (const layer of this.map.getStyle().layers || []) {
-          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('active-street') || layer.id.startsWith('learned-street') || layer.id.startsWith('navigation-route') || layer.id.startsWith('osm-colored-building') || layer.id.startsWith('tree-') || layer.id.startsWith('poi-') || layer.id.startsWith('neighborhood-')) continue;
+          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('active-street') || layer.id.startsWith('learned-street') || layer.id.startsWith('navigation-route') || layer.id.startsWith('transit-network') || layer.id.startsWith('osm-colored-building') || layer.id.startsWith('tree-') || layer.id.startsWith('poi-') || layer.id.startsWith('neighborhood-')) continue;
           const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
           const isWater = /water|ocean|river|canal/.test(identity);
           const isRoad = /road|street|transportation|bridge|tunnel|path/.test(identity);

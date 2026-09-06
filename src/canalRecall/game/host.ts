@@ -64,6 +64,8 @@ export interface GameCoreHost {
   quizPromptSubject: string;
   /** Line display name kept on the plaque after the first transit line answer. */
   _activeTransitLine: string;
+  /** Race time when `_activeTransitLine` became sticky (transfer pacing). */
+  _transitLineStickyAt: number | null;
   /** True while a settings or debug panel is open over the canvas. */
   _utilityOpen: boolean;
   /** The expanded landmark card. Owned by the route/DOM half of the game. */
@@ -282,6 +284,7 @@ export interface PresentationHost extends GameCoreHost {
   quizCandidateName: string;
   quizPromptSubject: string;
   _activeTransitLine: string;
+  _transitLineStickyAt: number | null;
   quizPromptSegmentIndex: number;
   quizPromptPointIndex: number;
 

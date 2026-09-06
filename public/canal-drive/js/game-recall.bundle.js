@@ -299,7 +299,8 @@
       bikeSkin: DEFAULT_BIKE_SKIN,
       bikeBabySeat: false,
       zoom: zoom.defaultZoom,
-      zoomDefaultVersion: ZOOM_DEFAULT_VERSION
+      zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
+      cameraTilt: 0
     };
   }
   function clearPreferences(store, zoom) {
@@ -594,7 +595,8 @@ Learned names, exploration collection, personal bests, route settings and the ho
     // ---- The route question ----
     _updateCanalQuiz(dt) {
       if (!this.player) return;
-      if (isTransit(this.travelMode)) {
+      const transitReady = !isTransit(this.travelMode) || this._transitQuizzesReady();
+      if (isTransit(this.travelMode) && transitReady) {
         this._updateTransitStopQuiz();
         this._updateTransitTransferQuiz();
         this._updateTransitStreetQuiz();
@@ -612,7 +614,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         headingOffRoad: nearestRoad ? headingOffRoad(this.player.angle, nearestRoad.angle) : null,
         speed: this.player.speed,
         alreadyRevealed: this.revealedNames.has(name),
-        settleSeconds: QUIZ_CANDIDATE_DELAY,
+        settleSeconds: isTransit(this.travelMode) ? Math.max(QUIZ_CANDIDATE_DELAY, 2.4) : QUIZ_CANDIDATE_DELAY,
         retestSeconds: QUIZ_RETEST_DELAY
       }, dt, interesting && this._isRecallSuppressedHere(name));
       this.quizCandidateName = decision.state.candidateName;
@@ -623,18 +625,19 @@ Learned names, exploration collection, personal bests, route settings and the ho
         this.quizCurrentName = decision.name;
         this.learnedNames.add(decision.name);
         this._revealName(decision.name);
-        if (isTransit(this.travelMode)) this._activeTransitLine = decision.name;
+        if (isTransit(this.travelMode)) this._stickTransitLine(decision.name);
         this._showStreetKnowledge(
           decision.name,
           profile.learnedKind === "street" ? "street" : profile.learnedKind === "transit" ? "line" : "water"
         );
         return;
       }
+      if (isTransit(this.travelMode) && !transitReady) return;
       if (isTransit(this.travelMode)) {
         const cooldown = window.CanalRecallTransit?.TRANSIT_LINE_QUIZ_COOLDOWN_S ?? 45;
         if (this.raceTime - (this._lastTransitLineQuizAt || -Infinity) < cooldown) {
           this.quizCurrentName = decision.name;
-          this._activeTransitLine = this._activeTransitLine || decision.name;
+          this._stickTransitLine(decision.name);
           return;
         }
         this._lastTransitLineQuizAt = this.raceTime;
@@ -651,6 +654,19 @@ Learned names, exploration collection, personal bests, route settings and the ho
         segmentIndex: quizRoad ? quizRoad.segIdx : -1,
         pointIndex: quizRoad ? quizRoad.ptIdx : 0
       });
+    }
+    _transitQuizzesReady() {
+      const grace = window.CanalRecallTransit?.TRANSIT_ORIENTATION_GRACE_S ?? 18;
+      return this.raceTime >= grace;
+    }
+    _stickTransitLine(name) {
+      if (!name) return;
+      if (this._activeTransitLine !== name) {
+        this._transitLineStickyAt = this.raceTime;
+      } else if (this._transitLineStickyAt == null) {
+        this._transitLineStickyAt = this.raceTime;
+      }
+      this._activeTransitLine = name;
     }
     _transitLineChoices(answer) {
       const Transit = window.CanalRecallTransit;
@@ -748,6 +764,9 @@ Learned names, exploration collection, personal bests, route settings and the ho
       if (!Transit || !load || !this._activeTransitLine) return;
       const cooldown = Transit.TRANSIT_TRANSFER_QUIZ_COOLDOWN_S ?? 40;
       if (this.raceTime - (this._lastTransitTransferQuizAt || -Infinity) < cooldown) return;
+      const afterLine = Transit.TRANSIT_TRANSFER_AFTER_LINE_S ?? 32;
+      const stickyAt = this._transitLineStickyAt ?? -Infinity;
+      if (this.raceTime - stickyAt < afterLine) return;
       if (Math.abs(this.player.speed) > 70) return;
       const plan = this._transitConnectionPlan;
       const radiusM = (Transit.TRANSIT_STOP_QUIZ_RADIUS_M ?? 45) * 1.15;
@@ -1119,7 +1138,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       if (!atCrossing && !isStopQuiz && !isStreetQuiz) {
         this.quizCurrentName = correctName;
         if (isTransit(this.travelMode) || isLineQuiz) {
-          this._activeTransitLine = correctName;
+          this._stickTransitLine(correctName);
         }
       } else if (this.quizPromptKind === "bridge" && correct && pending) {
         this._learnedBridges.set(pending.key, {

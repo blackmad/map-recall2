@@ -32,6 +32,14 @@ const memory = () => {
   assert.equal(prefs.gamey, true);
   assert.equal(prefs.sound, false);
   assert.equal(prefs.zoom, 0.5);
+  assert.equal(prefs.cameraTilt, 0);
+}
+
+{
+  const prefs = parsePreferences({ cameraTilt: 12 }, zoom);
+  assert.equal(prefs.cameraTilt, 12);
+  const clamped = parsePreferences({ cameraTilt: 99 }, zoom);
+  assert.equal(clamped.cameraTilt, 18);
 }
 
 {

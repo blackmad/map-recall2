@@ -75,11 +75,14 @@ recall model, not a vehicle skin. *Large.* **GTFS-first** (OVapi → GVB). Plan:
 tram+metro drive, termini pool, metro 52 pin, sibling/hub distractors,
 active-line stop scope, transfers, two-leg planner + second-leg drive, surprise
 pairing biased toward teachable transfers (~70%), second-leg plaque clear,
-named Noord→Isolatorweg two-leg pin. Still open: bus, GTFS-RT, dedicated mesh,
-GTFS `transfers.txt` merge when cached. Canal-belt teaching streets via
-`amsterdam-curation` + `ensure:amsterdam-teaching-streets`. Pedestrian
-`bicycle=no` corridors (Kalverstraat) playable with `bicycleRestricted`.
-Ferry water hops stay out of scope.
+named Noord→Isolatorweg two-leg pin. **2026-09-06 playtest:** chase≠cockpit +
+tilt slider; bold corridor overlay (metro dashed above buildings); orientation
+grace before line/transfer asks; map idle settle on load. Still open: bus,
+GTFS-RT, dedicated mesh, OSM tunnel tagging in extract, GTFS `transfers.txt`
+merge when cached. Canal-belt teaching streets via `amsterdam-curation` +
+`ensure:amsterdam-teaching-streets`. Pedestrian `bicycle=no` corridors
+(Kalverstraat) playable with `bicycleRestricted`. Ferry water hops stay out of
+scope.
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.

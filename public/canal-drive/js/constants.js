@@ -191,6 +191,12 @@ const QUIZ_SUBJECTS = {
 // the city to read as a city; not enough to lose the plan-view legibility the
 // map quiz depends on.
 const TOPDOWN_TILT_DEGREES = 14;
+// Chase stays high and readable; cockpit drops in close over the bumper so the
+// two 3D modes no longer share nearly the same frustum.
+const CHASE_PITCH_DEGREES = 42;
+const COCKPIT_PITCH_DEGREES = 82;
+const CHASE_ZOOM_OFFSET = 0.05;
+const COCKPIT_ZOOM_OFFSET = 1.65;
 const FINISH_RADIUS = 80;                      // px — proximity to finish point to complete race
 
 // --- Road Widths (px) ---

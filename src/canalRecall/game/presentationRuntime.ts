@@ -94,7 +94,13 @@ export class GamePresentationRuntime {
     this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike);
     this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
     if (typeof this.vectorMap.setPlayerTransit === 'function') {
-      this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit);
+      let underground = false;
+      if (byTransit && this.track && typeof this.track.getNearestRoad === 'function') {
+        const contact = this.track.getNearestRoad(player.x, player.y, player.angle);
+        const seg = contact && this.track.segments ? this.track.segments[contact.segIdx] : null;
+        underground = !!(seg && seg.type === 'metro');
+      }
+      this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground);
     }
     this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
     if (!byBoat) {

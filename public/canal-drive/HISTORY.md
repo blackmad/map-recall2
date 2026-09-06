@@ -6,6 +6,33 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Transit 3D camera, corridor callout, quiz pacing — 2026-09-06
+
+Playtest notes from a Waterlooplein / Academie van Bouwkunst metro hop:
+
+1. **Chase ≠ cockpit.** Chase is high (42° + small zoom); cockpit is bumper-
+   close (82°, +1.65 zoom, 240 px lookahead). Live **3D tilt** slider (−18…+18°)
+   offsets either mode. Pitch eases in so load→race is not a hard snap.
+2. **Tracks through buildings.** GTFS metro shapes and Liberty rails are ground
+   projections of tunnels — they are not OSM `tunnel=*` tagged in our extract.
+   Treatment: paint all driveable corridors; tram is a bold surface ribbon under
+   buildings; metro is a dashed amber tunnel drawn *above* extrusions; the 3D
+   metro mesh drops to −9 m altitude on `type=metro`.
+3. **Quiz pacing.** 18 s orientation grace before any transit ask; line settle
+   2.4 s; transfers wait 32 s after the line is sticky so hub spawn does not
+   stack “which metro” → “what can you transfer to”.
+4. **Load settle.** Aim with the active view pitch, then wait for MapLibre
+   `idle` (cap ~2.8 s) before racing so the first frames are not a Damrak hitch.
+
+## Setup rail distill — city select, strips, view icons — 2026-09-06
+
+Route setup was stacking wide two-line tiles (City grid, Travel captions,
+“change View in More options”). Distilled to scan faster while keeping enamel
+tiles: City is one `#city-id` dropdown; Travel / Route are equal one-word
+strips; View is an icon-only strip on the primary rail (tooltip/aria keep the
+mode name; camera select removed from More). Follow-up pass tightened vertical
+rhythm, dropped the City gloss, and paired View under Travel.
+
 ## Teachable transit pairs, graded knowledge map, hub polish — 2026-09-06
 
 1. **Surprise transfers:** `pickTeachableTransitPair` biases ~70% of transit

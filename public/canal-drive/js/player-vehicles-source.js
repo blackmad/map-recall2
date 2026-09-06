@@ -101,8 +101,14 @@ class Vehicle3D {
     this.parts = {};
     this._scene = null;
     this._modelRoot = null;
+    this.altitudeM = 0.22;
     this.layer = this._makeLayer();
     map.addLayer(this.layer);
+  }
+
+  setAltitude(metres) {
+    const value = Number(metres);
+    this.altitudeM = Number.isFinite(value) ? value : 0.22;
   }
 
   update(lngLat, angle, visible) {
@@ -205,7 +211,10 @@ class Vehicle3D {
       render(_gl, args) {
         if (!owner.ready || !owner.visible || !owner.lngLat || !owner._modelRoot) return;
         owner._pose(owner._modelRoot);
-        const coordinate = owner.maplibregl.MercatorCoordinate.fromLngLat(owner.lngLat, 0.22);
+        const coordinate = owner.maplibregl.MercatorCoordinate.fromLngLat(
+          owner.lngLat,
+          Number.isFinite(owner.altitudeM) ? owner.altitudeM : 0.22,
+        );
         const units = coordinate.meterInMercatorCoordinateUnits();
         const transform = new THREE.Matrix4()
           .makeTranslation(coordinate.x, coordinate.y, coordinate.z)

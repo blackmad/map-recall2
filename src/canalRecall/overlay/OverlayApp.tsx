@@ -67,6 +67,8 @@ type Choice<T extends string> = {
   hint?: string;
 };
 
+type ChoiceLayout = 'tiles' | 'strip' | 'icons';
+
 function ChoiceRow<T extends string>({
   label,
   name,
@@ -74,8 +76,10 @@ function ChoiceRow<T extends string>({
   onChange,
   options,
   compact = false,
+  layout = 'tiles',
   icons,
   gloss,
+  showCurrent = false,
 }: {
   label: string;
   name: string;
@@ -83,35 +87,87 @@ function ChoiceRow<T extends string>({
   onChange: (value: T) => void;
   options: readonly Choice<T>[];
   compact?: boolean;
+  /** `strip` = equal one-line buttons; `icons` = icon-led compact strip. */
+  layout?: ChoiceLayout;
   icons?: Partial<Record<T, import('lucide-react').LucideIcon | null>>;
   gloss?: string;
+  /** Show the selected option title beside the section label (helps icon-only rows). */
+  showCurrent?: boolean;
 }) {
+  const rowClass = [
+    'setup-choice-row',
+    compact ? 'compact' : '',
+    layout === 'strip' ? 'strip' : '',
+    layout === 'icons' ? 'icons' : '',
+  ].filter(Boolean).join(' ');
+  const currentTitle = options.find(option => option.value === value)?.title;
+
   return (
-    <div className={`setup-choice-row${compact ? ' compact' : ''}`} role="radiogroup" aria-label={label}>
-      <div className="setup-choice-label">{label}</div>
+    <div className={rowClass} role="radiogroup" aria-label={label}>
+      <div className="setup-choice-label">
+        <span>{label}</span>
+        {showCurrent && currentTitle ? (
+          <span className="setup-choice-current">{currentTitle}</span>
+        ) : null}
+      </div>
       {gloss ? <p className="setup-choice-gloss">{gloss}</p> : null}
-      <div className="setup-choice-options">
+      <div
+        className="setup-choice-options"
+        style={layout !== 'tiles' ? { gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` } : undefined}
+      >
         {options.map(option => {
           const Icon = icons?.[option.value];
+          const showHint = layout === 'tiles' && !!option.hint;
+          const a11y = option.hint ? `${option.title}. ${option.hint}` : option.title;
           return (
             <button
               key={option.value}
               type="button"
               className={`setup-choice enamel-tile${value === option.value ? ' active' : ''}`}
               aria-pressed={value === option.value}
+              aria-label={a11y}
+              title={option.hint || option.title}
               data-choice={`${name}:${option.value}`}
               onClick={() => onChange(option.value)}
             >
               {Icon ? <EnamelIcon icon={Icon} label={option.title} /> : null}
-              <span className="setup-choice-text">
-                <strong>{option.title}</strong>
-                {option.hint ? <small>{option.hint}</small> : null}
-              </span>
+              {layout === 'icons' ? null : (
+                <span className="setup-choice-text">
+                  <strong>{option.title}</strong>
+                  {showHint ? <small>{option.hint}</small> : null}
+                </span>
+              )}
             </button>
           );
         })}
       </div>
     </div>
+  );
+}
+
+function CitySelect({
+  value,
+  onChange,
+  options,
+}: {
+  value: CanalPreferences['cityId'];
+  onChange: (value: CanalPreferences['cityId']) => void;
+  options: readonly Choice<CanalPreferences['cityId']>[];
+}) {
+  return (
+    <label className="setup-field enamel-field setup-city-select">
+      <span className="setup-choice-label">City</span>
+      <select
+        id="city-id"
+        value={value}
+        onChange={event => onChange(event.target.value as CanalPreferences['cityId'])}
+        aria-label="City"
+      >
+        {options.map(option => (
+          <option key={option.value} value={option.value}>{option.title}</option>
+        ))}
+      </select>
+    </label>
   );
 }
 
@@ -121,9 +177,9 @@ const CITY_OPTIONS: Choice<CanalPreferences['cityId']>[] = playableCities().map(
 }));
 
 const TRAVEL: Choice<CanalPreferences['travelMode']>[] = [
-  { value: 'boat', title: 'Boat', hint: 'Canals' },
-  { value: 'car', title: 'Bike', hint: 'Streets' },
-  { value: 'transit', title: 'Transit', hint: 'Tram lines' },
+  { value: 'boat', title: 'Boat' },
+  { value: 'car', title: 'Bike' },
+  { value: 'transit', title: 'Transit' },
 ];
 
 const BIKE_SKIN_OPTIONS: Choice<CanalPreferences['bikeSkin']>[] = BIKE_SKIN_IDS.map(id => ({
@@ -132,24 +188,16 @@ const BIKE_SKIN_OPTIONS: Choice<CanalPreferences['bikeSkin']>[] = BIKE_SKIN_IDS.
   hint: BIKE_SKINS[id].motion ? 'Steer + spin' : 'Look only',
 }));
 
-/** Full camera set lives under More — primary setup only shows the active label. */
-const VIEW_MORE: Choice<CanalPreferences['viewMode']>[] = [
-  { value: 'north', title: 'North-up', hint: 'Flat map, north at top' },
-  { value: 'heading', title: 'Heading-up', hint: 'Flat map, turns with you' },
-  { value: 'chase', title: 'Chase', hint: '3D behind the vehicle' },
-  { value: 'cockpit', title: 'Cockpit', hint: '3D near first person' },
+const VIEW: Choice<CanalPreferences['viewMode']>[] = [
+  { value: 'north', title: 'North', hint: 'Flat map, north at top' },
+  { value: 'heading', title: 'Heading', hint: 'Flat map, turns with you' },
+  { value: 'chase', title: 'Chase', hint: 'High 3D, behind the vehicle' },
+  { value: 'cockpit', title: 'Cockpit', hint: 'Low 3D, over the bumper' },
 ];
 
-const VIEW_LABEL: Record<CanalPreferences['viewMode'], string> = {
-  north: 'North-up map',
-  heading: 'Heading-up map',
-  chase: '3D chase',
-  cockpit: '3D cockpit',
-};
-
 const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
-  { value: 'surprise', title: 'Surprise route', hint: 'Landmark to landmark' },
-  { value: 'home', title: 'Home base', hint: 'Nearby first, expands as you learn' },
+  { value: 'surprise', title: 'Surprise', hint: 'Landmark to landmark' },
+  { value: 'home', title: 'Home', hint: 'Nearby first, expands as you learn' },
 ];
 
 const HOME_RADIUS_STORAGE_KEY = 'canalRecall.homeLearningRadius.v1';
@@ -232,12 +280,8 @@ export function OverlayApp({
             </div>
 
             <div className="enamel-setup-scroll">
-            {/* Hidden selects keep Playwright and any legacy getElementById wiring working. */}
-            <select id="city-id" hidden value={prefs.cityId} onChange={event => patch({ cityId: event.target.value as CanalPreferences['cityId'] }, true)}>
-              {CITY_OPTIONS.map(option => (
-                <option key={option.value} value={option.value}>{option.title}</option>
-              ))}
-            </select>
+            {/* Hidden selects keep Playwright and any legacy getElementById wiring working.
+                City uses the visible #city-id select below. */}
             <select id="travel-mode" hidden value={prefs.travelMode} onChange={event => patch({ travelMode: event.target.value as CanalPreferences['travelMode'] })}>
               <option value="boat">Boat</option>
               <option value="car">Bike</option>
@@ -261,14 +305,10 @@ export function OverlayApp({
               <option value="custom">Custom</option>
             </select>
 
-            <ChoiceRow
-              label="City"
-              name="city"
+            <CitySelect
               value={prefs.cityId}
               onChange={value => patch({ cityId: value }, true)}
               options={CITY_OPTIONS}
-              compact
-              gloss="Which city's canals and streets to learn."
             />
             <ChoiceRow
               label="Travel"
@@ -282,6 +322,7 @@ export function OverlayApp({
               }}
               options={TRAVEL}
               icons={TRAVEL_ICONS}
+              layout="strip"
             />
             {prefs.travelMode === 'car' ? (
               <>
@@ -306,21 +347,16 @@ export function OverlayApp({
                 ) : null}
               </>
             ) : null}
-            <p className="setup-view-summary">
-              <span className="setup-choice-label">View</span>
-              <span className="setup-view-summary-body">
-                {VIEW_LABEL[prefs.viewMode]}
-                {prefs.viewMode === 'north' ? ' · recommended' : ''}
-                {' — '}
-                <button
-                  type="button"
-                  className="setup-view-change"
-                  onClick={() => store.setAdvancedOpen(true)}
-                >
-                  change in More options
-                </button>
-              </span>
-            </p>
+            <ChoiceRow
+              label="View"
+              name="view"
+              value={prefs.viewMode}
+              onChange={value => patch({ viewMode: value })}
+              options={VIEW}
+              icons={VIEW_ICONS}
+              layout="icons"
+              showCurrent
+            />
             <ChoiceRow
               label="Route"
               name="route"
@@ -328,6 +364,7 @@ export function OverlayApp({
               onChange={value => patch({ routePattern: value })}
               options={ROUTE}
               icons={ROUTE_ICONS}
+              layout="strip"
             />
             <ChoiceRow
               label="Difficulty"
@@ -341,7 +378,7 @@ export function OverlayApp({
               }
               compact
               icons={DIFFICULTY_ICONS}
-              gloss="How much help you get naming streets — Expert and Custom are under More options."
+              gloss="Naming help. Expert & Custom sit under More options."
             />
 
             <label id="home-address-field" className="setup-field enamel-field" style={{ display: prefs.routePattern === 'home' ? 'flex' : 'none', marginTop: 10 }}>
@@ -363,15 +400,6 @@ export function OverlayApp({
               onToggle={event => store.setAdvancedOpen((event.target as HTMLDetailsElement).open)}
             >
               <summary>More options</summary>
-              <ChoiceRow
-                label="Camera"
-                name="view"
-                value={prefs.viewMode}
-                onChange={value => patch({ viewMode: value })}
-                options={VIEW_MORE}
-                icons={VIEW_ICONS}
-                gloss="Pick how the map follows you after Start."
-              />
               <ChoiceRow
                 label="Harder difficulties"
                 name="difficulty-extra"
@@ -485,9 +513,22 @@ export function OverlayApp({
           <Field label="VIEW" id="live-view" value={prefs.viewMode} onChange={value => patch({ viewMode: value as CanalPreferences['viewMode'] }, true)}>
             <option value="north">2D — north up</option>
             <option value="heading">2D — heading up</option>
-            <option value="chase">3D — chase camera</option>
-            <option value="cockpit">3D — near first person</option>
+            <option value="chase">3D — chase (high / behind)</option>
+            <option value="cockpit">3D — cockpit (low / bumper)</option>
           </Field>
+          {(prefs.viewMode === 'chase' || prefs.viewMode === 'cockpit') ? (
+            <label className="setup-field">3D TILT
+              <input
+                id="live-tilt"
+                type="range"
+                min="-18"
+                max="18"
+                step="1"
+                value={prefs.cameraTilt}
+                onChange={event => patch({ cameraTilt: Number(event.target.value) }, true)}
+              />
+            </label>
+          ) : null}
           {prefs.travelMode === 'car' ? (
             <>
               <Field label="BICYCLE" id="live-bike-skin" value={prefs.bikeSkin} onChange={value => patch({ bikeSkin: value as CanalPreferences['bikeSkin'] }, true)}>

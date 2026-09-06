@@ -195,7 +195,7 @@ export interface VectorMap {
   sync(camera: Camera, loader: OsmLoader, canvas: HTMLCanvasElement): void;
   setPlayerBike(player: unknown, loader: OsmLoader, visible: boolean): void;
   setPlayerBoat(player: unknown, loader: OsmLoader, visible: boolean): void;
-  setPlayerTransit?(player: unknown, loader: OsmLoader, visible: boolean): void;
+  setPlayerTransit?(player: unknown, loader: OsmLoader, visible: boolean, underground?: boolean): void;
   isPlayerBikeReady(): boolean;
   isPlayerBoatReady(): boolean;
   isPlayerTransitReady?(): boolean;
