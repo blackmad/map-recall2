@@ -3991,3 +3991,77 @@ median −0.03 m; all 23 camera checks, 22 record checks and 44 boundary checks 
 Note for pairing: the 1,152-band render in flight predates this fix, so its bands
 come from the old behaviour. It affects at most a handful of them, all of which
 were black.
+
+### 29. A person looked at the picture and found a bug in the matcher (2026-09-06)
+
+`build-conflict-sheet.ts` draws each failing band as one continuous strip at a
+common scale, with our wall bracketed in green and every nearby address pinned
+where it actually is. It was built to ask a human a question the statistics could
+not answer: *is this the house next door, or the right house with a neighbour's
+plate in shot?*
+
+The first person to look at it asked a different question — what were those
+`64 64F 64G` pins doing on a Singel façade — and that was the bug.
+
+**They were Spuistraat, 31–38 m behind the wall.** Singel and Spuistraat run
+parallel with one block of deep canal houses between them, so the backs of the
+next street land inside the band's along-window. The matcher had **no
+perpendicular bound at all**: it took every address within 30 m of the band centre
+whose along-coordinate fell in the span, and asked only whether the number
+matched. A misread digit finding a Spuistraat number therefore counted as "a real
+number naming a nearby address" and was then judged against our wall.
+
+How much of the store this touched, by verdict — the share of matched readings
+naming a street other than the band's own:
+
+| verdict | matched readings | foreign street |
+|---|---|---|
+| confirmed | 66 | 6% |
+| conflict | 12 | 8% |
+| party-wall | 26 | 0% |
+| neighbour-only | 26 | 23% |
+| unread | 21 | 43% |
+
+The bound is measured rather than picked. Across the 400-band store an address
+point belonging to the band's own pand sits **4.1 m** behind the wall line at the
+median and 22.0 m at p95; the other points falling in the same along-window sit at
+**46.5 m** median. A 20 m bound keeps 93.5% of a band's own addresses and rejects
+76% of the rest.
+
+Re-scored on the identical 400 panden: **conflicts 7 → 6, confirmations unchanged
+at 41, identity 85% → 87%.** That is what a correctness fix should look like — it
+removes a false match and leaves the true ones alone. It is not tuning: nothing
+about the change was chosen by watching the rate.
+
+Two other things that came out of the same conversation.
+
+**Reading confidence separates the verdicts almost completely, and nothing was
+using it.** Confirmations have a median recogniser confidence of **0.96** with 2%
+below 0.35; conflicts have a median of **0.30** with 57% below. Lindengracht "25"
+at 13%, Bloemgracht "45" at 19%, Leliegracht "14" at 23%. So a substantial part of
+the ±one-frontage displacement chased through §25, §26b and §26c is not
+registration error at all — it is a misread digit landing on a plausible
+neighbour, which on a canal terrace is always available.
+
+A floor is pre-registered rather than fitted, because tuning one to maximise
+identity on seven cases is worthless. It is set from the **confirmations'
+distribution alone**: their 5th percentile is **0.425** — "less sure than 95% of
+readings that turn out to be right" — chosen without looking at a single conflict.
+Applied to the 400 store it keeps 39 of 41 confirmations and 3 of 7 conflicts.
+**The prediction, recorded before the larger run lands: identity rises to about
+92–93% while keeping about 95% of confirmations.**
+
+**And the human testimony agreed with BAG.** Asked about Singel 91, a person read
+the street: 89 is the narrow house, 91 the middle three-bay one, 93 the next along.
+BAG puts 89 at along 2.5 m, 91 at 7.2–7.5 m and 93 at 13.1 m, and our wall spans
+4.14–10.06 m — so the bracket *is* on 91 and that conflict is false. The reading
+that convicted it was a "93" placed at 9.2 m when 93's own address point is at
+13.1 m, a 3.9 m positional error inside the band. Worth holding onto: a reading
+can be right about the text and wrong about the place, and `MAX_ANCHOR_OFFSET_M`
+of 9 m is deliberately wide enough to let that through, because narrowing it would
+also blind the check to the one-house registration error it exists to catch.
+
+Also: `check-number-anchors.ts` now takes `--manifest=` and `--readings=`, so a
+superseded pair can be re-scored at any time and a long OCR run writing
+`readings.json` does not block measuring something else. That is how the 85% → 87%
+above was measured while the 1,013-band read was in flight.

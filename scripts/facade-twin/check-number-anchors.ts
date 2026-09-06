@@ -42,6 +42,7 @@ import {
 
 const CACHE = path.resolve('.cache/facade-twin');
 const BANDS = path.join(CACHE, 'number-bands');
+const arg = (n: string) => process.argv.find(v => v.startsWith(`--${n}=`))?.slice(n.length + 3);
 
 interface AddressPoint {
   street: string; houseNumber: number; letter: string | null; display: string;
@@ -49,8 +50,19 @@ interface AddressPoint {
 }
 
 const addresses = JSON.parse(await readFile(path.join(CACHE, 'address-points.json'), 'utf8')).addresses as AddressPoint[];
-const manifest = JSON.parse(await readFile(path.join(BANDS, 'manifest.json'), 'utf8')).bands as any[];
-const readings = JSON.parse(await readFile(path.join(BANDS, 'readings.json'), 'utf8')).bands as
+/**
+ * Which band and reading stores to judge.
+ *
+ * A paired comparison is the only kind worth running here (§22): the same panden,
+ * re-rendered or re-read, so a change in the rate is the change under test and
+ * not a change of sample. Both stores are therefore nameable, and a superseded
+ * pair kept beside the live one can be re-scored at any time — which also means
+ * a long OCR run writing `readings.json` does not block measuring something else.
+ */
+const manifestFile = arg('manifest') ?? 'manifest.json';
+const readingsFile = arg('readings') ?? 'readings.json';
+const manifest = JSON.parse(await readFile(path.join(BANDS, manifestFile), 'utf8')).bands as any[];
+const readings = JSON.parse(await readFile(path.join(BANDS, readingsFile), 'utf8')).bands as
   Array<{ pandId: string; panoramaId: string; readings: Array<{ text: string; confidence: number; alongM: number; heightM: number }> }>;
 
 /** House numbers a pand carries, as a doorplate would show them. */
@@ -77,6 +89,23 @@ const near = (x: number, y: number, radius: number) => {
 };
 
 
+// How far behind the wall line an address point may sit and still be about
+// *this* frontage.
+//
+// There was no such bound, and it let the backs of the next street in. Singel
+// 91's band carries eight Spuistraat addresses 31-38 m behind it, because
+// Singel and Spuistraat run parallel with one block of deep canal houses
+// between them, and a misread digit matching one of those counts as "a real
+// number naming a nearby address". Measured across the 400-band store: an
+// address point belonging to the band's own pand sits 4.1 m behind the wall at
+// the median and 22.0 m at p95, while the other points falling in the same
+// along-window sit at 46.5 m median. A 20 m bound keeps 93.5% of a band's own
+// addresses and rejects 76% of everything else.
+//
+// Found by a person looking at the drawn band and asking what the Spuistraat
+// pins were doing on a Singel facade, which is what the picture is for.
+const ADDRESS_BEHIND_WALL_M = 20;
+
 type Verdict = 'confirmed' | 'neighbour-only' | 'conflict' | 'party-wall' | 'unread';
 const results: any[] = [];
 
@@ -90,9 +119,12 @@ for (const band of manifest) {
   const centreY = band.origin.y + band.direction.y * band.spanM / 2;
   const alongOf = (a: AddressPoint) =>
     (a.rd.x - band.origin.x) * band.direction.x + (a.rd.y - band.origin.y) * band.direction.y;
+  const behindOf = (a: AddressPoint) =>
+    Math.abs(-(a.rd.x - band.origin.x) * band.direction.y + (a.rd.y - band.origin.y) * band.direction.x);
   const local = near(centreX, centreY, band.spanM / 2 + 30)
     .map(a => ({ a, along: alongOf(a) }))
-    .filter(p => p.along > -8 && p.along < band.spanM + 8);
+    .filter(p => p.along > -8 && p.along < band.spanM + 8)
+    .filter(p => behindOf(p.a) <= ADDRESS_BEHIND_WALL_M);
 
   // The decoy: the same band, scored against a house two doors along the same
   // street. It shares the street, the fabric and the stretch of numbers, so it

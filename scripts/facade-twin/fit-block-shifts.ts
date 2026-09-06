@@ -135,8 +135,12 @@ for (const band of manifest) {
   const cy = band.origin.y + band.direction.y * band.spanM / 2;
   const alongOf = (a: Address) =>
     (a.rd.x - band.origin.x) * band.direction.x + (a.rd.y - band.origin.y) * band.direction.y;
+  const behindOf = (a: Address) =>
+    Math.abs(-(a.rd.x - band.origin.x) * band.direction.y + (a.rd.y - band.origin.y) * band.direction.x);
   const local = near(cx, cy, band.spanM / 2 + 30).map(a => ({ a, along: alongOf(a) }))
-    .filter(p => p.along > -8 && p.along < band.spanM + 8);
+    .filter(p => p.along > -8 && p.along < band.spanM + 8)
+    // The next street's backs are not about this frontage; see check-number-anchors.
+    .filter(p => behindOf(p.a) <= 20);
 
   for (const r of assemble(rs)) {
     if (r.heightM < DOORPLATE_MIN_M || r.heightM > DOORPLATE_MAX_M) continue;

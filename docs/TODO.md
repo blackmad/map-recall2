@@ -10,8 +10,10 @@ data, and [`FACADE_TWIN.md`](FACADE_TWIN.md) for the buildings.
 
 ## The one number
 
-**Correspondence is 85%.** Of the panden a house-number reading can decide, 41
-confirm the wall we projected and 7 contradict it; the decoy confirms 3. The bar
+**Correspondence is 87%.** Of the panden a house-number reading can decide, 41
+confirm the wall we projected and 6 contradict it; the decoy confirms 3. It was
+85% until §29 gave the matcher a perpendicular bound — without one it was matching
+readings to the backs of the next street, 31–38 m behind the wall. The bar
 the owner set is 95%, and `check-number-anchors.ts` still fails below it.
 Everything below is ordered by how much it moves that number.
 
