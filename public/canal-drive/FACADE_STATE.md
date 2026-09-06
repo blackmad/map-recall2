@@ -1581,3 +1581,41 @@ was real but not binding (§19), the ladder was better than measured once empty
 readings came out (§20), and the ladder was not the fragile part at all (§22). The
 common thread is that every one of them came from measuring a component directly
 instead of inferring its behaviour from an aggregate.
+
+## 23. Three defects that only opening the page could find (2026-09-06)
+
+The city map built cleanly, typechecked, and reported "3025 panden — 422 measured".
+Opening it in a browser found three defects in about ninety seconds, and none of
+them would have shown up in a typecheck or a JSON diff.
+
+**The map was blank.** An apostrophe in `3DBAG's`, inside a single-quoted
+JavaScript string, inside a TypeScript template literal that ate one layer of the
+escape. The whole script threw `SyntaxError: Unexpected identifier 's'` and 3,025
+footprints drew nothing. The build script had no way to know: it emits a string.
+
+**Every 3DBAG row was a dash, for every building.** 3DBAG keys its attributes
+`NL.IMBAG.Pand.<id>`, sometimes with a `-N` suffix for a split pand; BAG footprints
+are keyed by the bare id. The join matched **zero of 3,025** — silently, and the
+result looked exactly like a data gap rather than a bug, which is why it survived
+into a screenshot. `netherlands.ts` already owned the normalisation and it is
+borrowed rather than restated: 2,894 of 3,025 match, 2,892 with a roof height.
+
+**None of the five viewers declared a charset.** Opened as a local file, a browser
+guesses latin-1, and these pages are full of degree signs, middots, em dashes and
+the word *façade*. Every viewer in this project has been rendering `FaÃ§ade Twin
+Explorer` and `Â·` for as long as it has existed, and nobody noticed because
+nobody had opened one and read it rather than looked at it. Fixed in all five
+generators.
+
+The pattern is worth naming, because it is the third time this month a thing was
+believed on the strength of a process completing rather than a result being
+inspected: the render still comes out, the file is still written, the count is
+still printed. §18's sixteen scripts placed the lens by an uncorrected height and
+the picture still appeared. §20's empty readings scored 0.80 and were still
+stored. Here a page built and served and was still blank.
+
+Also in this pass: the massing drawing became three extruded solids — roof 50th,
+70th and max above maaiveld — instead of a bar chart, because the spread between
+those percentiles is a fact about the roof's shape, and that is visible in a prism
+and invisible in a number. They are labelled as our extrusions of 3DBAG's heights,
+not 3DBAG's own LoD2.2 mesh, which is not cached here.
