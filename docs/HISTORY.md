@@ -4000,7 +4000,102 @@ Note for pairing: the 1,152-band render in flight predates this fix, so its band
 come from the old behaviour. It affects at most a handful of them, all of which
 were black.
 
-### 30. The bound that scored 100% was measuring its own definition
+### 31. Four predictions met the data, and they did not all survive
+
+The 1,013-band read finished: 9,581 readings in 6,055 s. Every prediction written
+down before it was scored automatically, by the tool, on a store none of them was
+derived from. **Identity is 89%** — 111 confirm against 14 — on 125 decided panden,
+against 87% on 47.
+
+### The confidence floor: better than predicted at the thing that matters, worse at the cost
+
+| | predicted | measured |
+|---|---|---|
+| identity at the 0.425 floor | ~92–93% | **97%** (97 against 3) |
+| confirmations kept | ~95% | **87%** |
+
+This is the real test. The floor was set from the 400-band store's *confirmations
+alone* — their 5th percentile, never once looking at a conflict — and it is applied
+here to a store 2.5× larger that it was not built on. It clears the 95% bar that
+the unfiltered rate has never reached.
+
+It is also dearer than predicted: it discards 13% of confirmations rather than 5%,
+so decided panden fall from 125 to 100. That is the trade, stated in the direction
+that costs something, and it is the owner's call whether 97% of 100 beats 89% of
+125.
+
+Why it works is visible in the conflicts:
+
+```
+own 122   "120" 0.71 / "124" 0.54      own  32   "17" 0.15
+own  91   "93"  1.00 / "93"  0.72      own  23   "04" 0.14
+own 573   "575" 0.99 / "575" 0.95      own  75   "73" 0.17
+own  16   "14"  0.23                   own 392   "394" 0.10
+own  19   "25"  0.13                   own 167   "14" 0.31
+own  41   "45"  0.19                   own  25   "23" 0.36
+own  68   "62"  0.30                   own   1   "03" 0.20
+```
+
+A convicting plate has a median confidence of **0.30**; a confirming one **0.97**
+over 152 readings. The 400-store figures were 0.30 and 0.96 — the separation is not
+a small-sample accident. Two of the fourteen sit above 0.9: Singel 91 read as "93",
+which the owner independently adjudicated from Street View as a genuine
+registration error, and Prinsengracht 573 read as "575" twice, at 0.99 and 0.95.
+Those two are the ones worth a person's time; the other twelve are the recogniser.
+
+### The corner prediction fails, and that is what pre-registration is for
+
+§26c predicted corner panden would stay enriched among conflicts by 3× or more.
+Measured: **1.3×** — 7% of 14 conflicts against 5% of 111 confirmations. The two
+cases it was built on were coincidence, exactly as the tool's own output now says.
+No per-street corner rule will be built. The value of the prediction was never that
+it would hold; it was that failing costs nothing when it is written down first.
+
+### The pose term is not distinguishable from zero
+
+With 18 bands carrying two *different* house numbers the split finally reports.
+Today's prediction — intrinsic at least 1.0 m — holds by a wide margin, and the
+other side is starker than expected:
+
+```
+                     bands   intrinsic   band means   pose
+every reading          18      3.64 m      2.31 m     not distinguishable from zero
+above the 0.425 floor  13      2.67 m      1.95 m     not distinguishable from zero
+```
+
+Readings sharing a band share a pose exactly, and they disagree by *more* than
+bands disagree with each other. **Fixing the pose has no measurable payoff.** That
+is the clearest steer of the day and it points away from a week of camera work.
+
+The second row says how much of that term is the recogniser rather than geometry:
+filtering to confident readings drops intrinsic from 3.64 m to 2.67 m. So OCR error
+is a real component — perhaps a quarter — and the remaining 2.67 m is the genuine
+gap between where a plate sits and where BAG puts the address it names. Both are
+larger than pose, and only one of them is fixable by us.
+
+### Registration holds at 2.06 m on 2.4× the sample
+
+```
+registration — 102 doorplates naming a number that is not ours land a median 2.06 m
+from where BAG puts it, against 7.12 m by chance (inside a metre 25% against 6%).
+Of those, the 35 on neighbour-only bands sit 0.97 m out.
+```
+
+Against 2.12 m, 7.61 m and 25% on the 400 store. A headline that moves by six
+centimetres when the sample nearly triples is a headline worth quoting.
+
+### OCR self-consistency, first report
+
+Predicted: a disagreement rate between 5% and 20%, and at least one conflict
+settled outright. Measured: **6 of 60 plates disagree with themselves, 10%**, and
+one conflict is settled — pand 122, whose single plate at 8.51 m yields both "120"
+and "124", neither of them 122. Both halves hold. The rate sitting inside the band
+rather than above it says the assembler is not manufacturing candidates; the
+recogniser is misreading them.
+
+The decoy control confirms on 2 of 1,013 bands.
+
+## 30. The bound that scored 100% was measuring its own definition
 
 The plan for this stretch was to add an offset bound as a second pre-registered
 diagnostic beside the confidence floor. The numbers looked emphatic. Measured by

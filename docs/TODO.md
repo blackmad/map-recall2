@@ -62,47 +62,18 @@ makes more work, and the second is bounded on both sides.
 
 ## The one number
 
-**Correspondence is 87%.** Of the panden a house-number reading can decide, 41
-confirm the wall we projected and 6 contradict it; the decoy confirms 3. It was
-85% until §29 gave the matcher a perpendicular bound — without one it was matching
-readings to the backs of the next street, 31–38 m behind the wall. The bar
-the owner set is 95%, and `check-number-anchors.ts` still fails below it.
-Everything below is ordered by how much it moves that number.
+**Correspondence is 89% unfiltered, and 97% at the pre-registered confidence
+floor.** On the 1,013-band read, 111 panden confirm the wall we projected and 14
+contradict it, over 125 a house-number reading can decide. Applying the 0.425
+confidence floor — set from the 400-band store's confirmations alone, and tested
+here on a store it was not built on — leaves 97 against 3, which **clears the 95%
+bar** for the first time. It costs 13% of confirmations, so decided panden fall
+from 125 to 100.
 
-It was **76%** (44 confirm, 14 conflict) until the square-on ranking landed — see
-below — and that is a paired result on the identical 400 panden, so the nine
-points are the ranking's, not sampling. Conflicts halved, 14 → 7.
+That trade is the open decision: 97% of 100 panden, or 89% of 125. `--min-confidence=0.425`
+runs the filtered version; the default headline stays unfiltered until someone chooses.
 
-Keep this file current in the same change that moves an item, not afterwards.
-
-Ordered by one rule: **a learning game that teaches the wrong thing is broken
-in a way that a plain-looking one is not.** So correctness of what the game
-teaches outranks the depth of what it teaches, which outranks how it looks.
-Within a tier, cheap-and-blocking comes before expensive-and-isolated.
-
-Every downstream confidence should be derived from that 85% (§21, §22). None currently is.
-
-**The fix landed, and it is worth nine points.** Diagnosing the 14 contradictions turned up the one
-variable that separates them: obliquity, 17.4° at a contradiction against 9.3° at
-a confirmation. A band within 10° of square confirms 89% of the time, one beyond
-10° confirms 65% (z=2.16, and four fields were compared, so the mechanism carries
-more of the weight than the statistic). `number-bands.ts --audit-views` then showed
-the ranking was leaving that on the table: median obliquity chosen 15.1° where
-3.1° was available, and 107 of 366 panden could have been square-on and were not.
-The ranking now takes the squarest view that keeps 70% of the best available
-resolution — median obliquity 4.5°, square-on bands 138 → 230. The paired re-render
-and OCR pass over the same 400 panden came back at **85%**: 41 confirm against 7
-conflicts, where the oblique pass gave 44 against 14. Fewer panden are decided (48
-against 58) because a squarer view is sometimes a more distant one, so the trade is
-real — but every one of the 7 surviving conflicts is still ±one frontage, which is
-what the anchoring plan below is for.
-
-**Viewers** are indexed in the repository [`README.md`](../../README.md), which
-also lists the instruments and what each one measures. New this session:
-`build-city-map.ts` draws all 3,025 footprints on one page, coloured by what the
-house-number anchor said, with 3DBAG's heights, the massing at each published
-height, and our own measurements a click away. It is vector only — the
-photographs live in the explorer, which it links to per pand.
+Coverage, not identity, is now the binding constraint: 125 decided of 1,013.
 
 ## P0 — Global anchoring: read the numbers as a sequence, not as labels
 
