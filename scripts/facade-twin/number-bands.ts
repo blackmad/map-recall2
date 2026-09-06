@@ -64,7 +64,16 @@ const registry = JSON.parse(await readFile(path.join(CACHE, `${AREA.areaId}-regi
 const views = JSON.parse(await readFile(path.join(CACHE, `${AREA.areaId}-panoramas.json`), 'utf8')).data as PanoramaView[];
 const recon = JSON.parse(await readFile(path.join(STAGING, 'recon.json'), 'utf8'));
 const massing = new Map<string, any>(recon.massing.map((m: any) => [m.buildingId, m]));
-const store = JSON.parse(await readFile(path.join(STAGING, 'measured-facades.json'), 'utf8')).facades as Record<string, any>;
+/**
+ * Which measured-façade store supplies the wall lines.
+ *
+ * The wall a band is projected onto comes from BAG footprint geometry, not from
+ * any lens, so an older store's walls are as good as a current one's -- and a
+ * paired experiment needs the same panden the first run used, which a re-measured
+ * store no longer holds. `--store=` is how a comparison stays paired.
+ */
+const STORE_FILE = arg('store') ?? 'measured-facades.json';
+const store = JSON.parse(await readFile(path.join(STAGING, STORE_FILE), 'utf8')).facades as Record<string, any>;
 
 const footprints = new Map<string, ProjectedPoint[]>();
 for (const e of registry) if (!footprints.has(e.buildingId)) footprints.set(e.buildingId, e.footprintLngLat.map(p => RD_NEW.fromLngLat(p)));
