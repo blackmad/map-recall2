@@ -4130,6 +4130,52 @@ the cadastre says the building is, which is the question every downstream use
 actually needs answered. A metric getting worse when it stops cancelling its own
 dominant error term is the metric working.
 
+### An OCR error provable without any reference data
+
+Every line above compares a reading against BAG, so none of them can separate a
+misread plate from a misplaced band. One test can, because it never leaves the
+image: when two assembled candidates sit at the **same position on the wall**,
+they are the same physical plate, and one plate cannot be two houses. Whichever is
+wrong, the disagreement *is* an OCR error — no cadastre, no pose, no ground truth.
+
+Laid over the six conflicts, with what each pand actually carries:
+
+```
+167667  own 16    read "14"   conf 0.23
+167769  own 19    read "25"   conf 0.13
+168272  own 122   read "120"  conf 0.71   ] one plate at 8.51 m,
+168272  own 122   read "124"  conf 0.54   ] and neither reading is 122
+168540  own 91    read "93"   conf 1.00
+168705  own 41    read "45"   conf 0.19
+168820  own 68    read "62"   conf 0.30
+```
+
+The 122 case settles itself. One plate, two candidates, neither matching the house
+— that conviction is a misread, and the finding needs nothing outside the picture
+to establish it. (An earlier version of this measurement clustered *raw* readings
+and reported 91% disagreement, which was meaningless: raw detections are single
+digits, so "3" and "4" beside each other are one number's digits, not two
+readings contradicting each other. On assembled candidates the sample is 19
+positions, and the instrument refuses below 25.)
+
+Two conflicts of the six were prefix-truncations of our own number — the
+hypothesis that sent me looking. Neither was. Five of the six differ from the
+house's own number in one digit, but so does a neighbour on a canal terrace, so
+that pattern separates nothing.
+
+**The exception is the one the owner already adjudicated.** Singel 91 reads "93"
+at confidence **1.00** — and shown that band, the owner's verdict was that 93 *is*
+the brick building next door and 91 is the middle house of the front. That is an
+outside witness, reached without reference to any of this, agreeing that this
+particular conviction is a genuine registration failure rather than a misread. It
+is also the only conflict with confidence above 0.71.
+
+What the pre-registered floor does with that is worth stating exactly, because it
+is not the clean story: at 0.425 it removes four conflicts and keeps two — the
+genuine Singel case, and the 122 misread that self-consistency proves is an OCR
+error. The floor removes most misreads and keeps the real failure, and it is not a
+clean separator, and both halves of that belong in the record.
+
 ### The slice that changes a verdict: neighbour-only bands are registered correctly
 
 The one claim that was not circular is the one about the discarded verdict.

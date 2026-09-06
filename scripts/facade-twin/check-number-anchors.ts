@@ -438,6 +438,55 @@ const rate = decided ? by('confirmed').length / decided : 0;
   }
 }
 
+// OCR error, established without any reference data.
+//
+// Every other line here compares a reading against BAG, so every one of them
+// answers "does the picture agree with the cadastre?" and none can separate a
+// misread plate from a misplaced band. This one can, because it never leaves the
+// image: when two assembled candidates sit at the same position on the wall, they
+// are the same physical plate, and one plate cannot be two houses. Whichever is
+// wrong, a disagreement IS an OCR error -- no BAG, no pose, no ground truth.
+//
+// It is worth having because it puts a floor under how much of the conflict rate
+// can possibly be geometry. On the 400-band store the sample is tiny (19
+// positions, 2 disagreeing) but one of the two is a conflict: pand 122 reads
+// "120" at 0.71 and "124" at 0.54 from one plate at 8.51 m, so that conviction is
+// provably a misread and not a band over the wrong building.
+//
+// Refuses below MIN_SELF_CHECKS for the same reason the variance split does.
+{
+  const MIN_SELF_CHECKS = 25;
+  const SAME_PLATE_M = 0.15;
+  const stemOf = (t: string) => (t.replace(/^0+/, '').match(/^\d+/) ?? [''])[0];
+  let clusters = 0, disagreeing = 0;
+  for (const r of results) {
+    const rs = ((r.readings ?? []) as any[])
+      .filter(x => x.glyph === 'doorplate' && stemOf(x.text))
+      .sort((a, b) => a.alongM - b.alongM);
+    let cur: any[] = [];
+    const flush = () => {
+      if (cur.length >= 2) {
+        clusters++;
+        if (new Set(cur.map(x => stemOf(x.text))).size > 1) disagreeing++;
+      }
+      cur = [];
+    };
+    for (const x of rs) {
+      if (cur.length && x.alongM - cur[cur.length - 1].alongM > SAME_PLATE_M) flush();
+      cur.push(x);
+    }
+    flush();
+  }
+  if (clusters >= MIN_SELF_CHECKS) {
+    console.log(`\n  OCR self-consistency — ${disagreeing} of ${clusters} plates carrying more than one`
+      + ` assembled candidate disagree with themselves (${Math.round((100 * disagreeing) / clusters)}%).`);
+    console.log('  One plate cannot be two houses, so this is measured without BAG, pose, or any ground truth.');
+  } else {
+    console.log(`\n  OCR self-consistency — only ${clusters} plates carry more than one assembled candidate,`
+      + ` below the ${MIN_SELF_CHECKS} this needs; not reported.`);
+  }
+}
+
 // What the pre-registered floor would do to this store, reported whether or not
 // it is applied. Confirmations and conflicts are counted by the same rule.
 {
