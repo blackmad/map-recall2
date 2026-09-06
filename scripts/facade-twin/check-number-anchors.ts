@@ -373,45 +373,61 @@ const rate = decided ? by('confirmed').length / decided : 0;
     // The neighbour-only slice is the one that changes what we do with a verdict:
     // those bands are recorded as undecided, and a plate landing on the neighbour's
     // own door says the bracket is on the right wall and only the doorway failed.
-    // What the offset is made of.
+    // What the offset is made of -- when there is enough to say.
     //
     // Two doorplates on ONE band share that band's pose exactly, so their
-    // disagreement carries no registration error at all: it is the intrinsic gap
-    // between where a plate physically is and where BAG puts the address point
-    // it names -- several units behind one door, a plate mounted beside the
-    // opening rather than on it, a verblijfsobject centroid deep in the house.
-    // The spread of band means carries that plus pose. Differencing separates
-    // them, and unlike §25's first attempt the comparison is between-group
-    // against within-group, never against the pooled spread that contains both.
+    // disagreement carries no registration error: it is the intrinsic gap between
+    // where a plate physically sits and where BAG puts the address it names. The
+    // spread of band means carries that plus pose, and differencing separates
+    // them -- between-group against within-group, never against the pooled spread
+    // that contains both (§25).
     //
-    // Both terms are conditioned by the inside-wall filter, which truncates the
-    // within-band spread more than the between-band one, so the intrinsic term
-    // is a LOWER bound and pose's share is if anything overstated.
+    // Two plates only count as two observations if they name DIFFERENT houses.
+    // "91" and "91C" are one physical plate the assembler produced twice: across
+    // the 400-band store such pairs disagree by a median of 0.01 m, against
+    // 1.27 m for pairs naming distinct houses. Counting them deflates the
+    // within-band spread the whole decomposition rests on, and it did -- an
+    // earlier version of this block read 20 multi-plate bands, reported intrinsic
+    // 1.93 m against pose 2.03 m, and called pose 58% of the variance. Nine of
+    // those bands were real. On df 9 the intrinsic term exceeds the between-band
+    // spread outright and pose cannot be distinguished from zero.
     //
-    // It matters because it bounds what fixing the pose can buy: on the 400-band
-    // store, intrinsic 1.93 m against pose 2.03 m, so a perfect pose still leaves
-    // most of a frontage of scatter and the anchor metric can never read better
-    // than that floor.
+    // So the block refuses below MIN_SPLIT_BANDS rather than print a split it
+    // cannot support. A variance ratio from nine groups is arithmetic, not
+    // evidence -- the same rule the corner prediction is held to.
     {
-      const groups = results.map((r: any) => (r.readings ?? [])
-        .filter((x: any) => x.glyph === 'doorplate' && x.offsetM != null && x.insideWall)
-        .map((x: any) => x.offsetM as number)).filter((g: number[]) => g.length > 0);
-      const multi = groups.filter((g: number[]) => g.length >= 2);
+      const MIN_SPLIT_BANDS = 15;
+      const stemOf = (t: string) => (t.replace(/^0+/, '').match(/^\d+/) ?? [''])[0];
+      const groups: number[][] = [];
+      for (const r of results) {
+        const best = new Map<string, any>();
+        for (const x of (r.readings ?? []) as any[]) {
+          if (x.glyph !== 'doorplate' || x.offsetM == null || !x.insideWall) continue;
+          const k = stemOf(x.text);
+          if (!k) continue;
+          if (!best.has(k) || x.confidence > best.get(k).confidence) best.set(k, x);
+        }
+        const g = [...best.values()].map(x => x.offsetM as number);
+        if (g.length) groups.push(g);
+      }
+      const multi = groups.filter(g => g.length >= 2);
       const mean = (g: number[]) => g.reduce((a, b) => a + b, 0) / g.length;
-      const n = multi.reduce((t, g) => t + g.length, 0);
-      const ss = multi.reduce((t, g) => t + g.reduce((u, v) => u + (v - mean(g)) ** 2, 0), 0);
-      const means = groups.map(mean);
-      if (multi.length >= 5 && means.length > 1 && n > multi.length) {
-        // df = N - G: each group's residuals sum to zero, so a naive n-1 would
-        // report an intrinsic term materially smaller than it is.
-        const wvar = ss / (n - multi.length);
+      if (multi.length < MIN_SPLIT_BANDS) {
+        console.log(`  Splitting that into pose and intrinsic needs bands carrying two DIFFERENT house numbers;`
+          + ` this store has ${multi.length}, below the ${MIN_SPLIT_BANDS} the split needs to mean anything.`);
+      } else {
+        const n = multi.reduce((t, g) => t + g.length, 0);
+        // df = N - G: each group's residuals sum to zero, so a naive n-1 reports
+        // an intrinsic term materially smaller than it is.
+        const wvar = multi.reduce((t, g) => t + g.reduce((u, v) => u + (v - mean(g)) ** 2, 0), 0) / (n - multi.length);
+        const means = groups.map(mean);
         const mvar = means.reduce((t, m) => t + (m - mean(means)) ** 2, 0) / (means.length - 1);
         const nbar = means.length / groups.reduce((t, g) => t + 1 / g.length, 0);
         const reg = mvar - wvar / nbar;
-        console.log(`  Of that spread: intrinsic ${Math.sqrt(wvar).toFixed(2)} m (${multi.length} bands carrying two plates, which share a pose)`
-          + `, pose ${reg > 0 ? `${Math.sqrt(reg).toFixed(2)} m` : 'not distinguishable from zero'}`
-          + `${reg > 0 ? ` — ${Math.round((100 * reg) / mvar)}% of the variance.` : '.'}`);
-        console.log('  A perfect pose would still leave the intrinsic term, so that is the floor this metric can read.');
+        console.log(`  Of that spread: intrinsic ${Math.sqrt(wvar).toFixed(2)} m over ${multi.length} bands carrying two distinct numbers`
+          + `, pose ${reg > 0 ? `${Math.sqrt(reg).toFixed(2)} m — ${Math.round((100 * reg) / mvar)}% of the variance.`
+            : 'not distinguishable from zero.'}`);
+        console.log('  The intrinsic term is a floor: a perfect pose would still leave it.');
       }
     }
     const no = rows.filter(r => r.verdict === 'neighbour-only');

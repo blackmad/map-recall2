@@ -4089,26 +4089,41 @@ No convention offset. BAG points sit where the doors are, and a whole class of
 explanation for the 2.12 m is ruled out.
 
 The second question needs readings that *share* a pose, and a band carrying two
-doorplates provides exactly that: their disagreement contains no registration
-error whatsoever, only the intrinsic gap between a plate and the address point it
-names — several units behind one door, a plate beside the opening rather than on
-it, a centroid deep in the house. The spread of band **means** carries that plus
-pose. Between-group against within-group, the decomposition §25 got wrong the
-first time by comparing against the pooled spread:
+doorplates provides exactly that: their disagreement contains no registration error
+whatsoever, only the intrinsic gap between a plate and the address point it names.
+The spread of band **means** carries that plus pose. Between-group against
+within-group, the decomposition §25 got wrong the first time by differencing
+against the pooled spread.
+
+It reported intrinsic 1.93 m against pose 2.03 m on 20 bands — pose 58% of the
+variance — and that is **wrong**, caught within the hour and before anything was
+built on it. Two plates are two observations only if they name *different houses*.
+"91" and "91C" are one physical plate the assembler produced twice:
 
 ```
-intrinsic 1.93 m (20 bands carrying two plates)   pose 2.03 m   — 58% of the variance
+same house, different unit (91 / 91C)   n=18  median 0.01 m
+different houses (91 / 93)              n=14  median 1.27 m
 ```
 
-Both terms are truncated by the inside-wall filter, more severely for the
-within-band spread, so the intrinsic term is a **lower bound** and pose's share is
-if anything overstated. Roughly half and half on 20 bands, which is thin.
+A median of 0.01 m is not agreement, it is the same reading counted twice, and 18
+of the 32 pairs were that. Collapsing to one reading per house number leaves **9**
+genuine bands, df 9, on which the intrinsic term exceeds the between-band spread
+outright and pose cannot be distinguished from zero at all.
 
-The consequence is a bound on an ambition: a *perfect* pose still leaves 1.93 m of
-scatter, most of a frontage. Chasing pose cannot take this metric below that
-floor, and any future claim that it has should be disbelieved.
+So the split is undetermined on this store, and the instrument now says so rather
+than printing a number: below 15 bands carrying two distinct house numbers it
+refuses, on the same rule the corner prediction is held to. A variance ratio from
+nine groups is arithmetic, not evidence.
 
-The anchor figure is **worse, and it is the one to quote.** Correlation asks
+The pattern is worth naming, because this is the fourth instance in one session
+and the first three each survived longer: §21's decoy scored by a looser rule than
+the verdict, §25's pooled variance, §30's offset bound, and now a group count
+inflated by duplicates. All four had the same tell — **the estimator quietly
+counted something twice, or counted something its own definition had already
+placed.** The defence that keeps working is not more care, it is making each
+instrument state its own denominator and refuse when the denominator is too small.
+
+The anchor figure is **worse, and it is the one to quote.**The anchor figure is **worse, and it is the one to quote.** Correlation asks
 whether two views of a wall agree with each other, which shares and therefore
 cancels the per-track pose error; the doorplate asks whether the wall is where
 the cadastre says the building is, which is the question every downstream use
