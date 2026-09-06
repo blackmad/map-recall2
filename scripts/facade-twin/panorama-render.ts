@@ -75,14 +75,32 @@ export interface ResolvedLens {
  * Returns null when the height can be neither read nor inferred, which is a
  * refusal to render rather than a render at an assumed height.
  */
+/**
+ * Beyond this, a solved offset is not drift and must not be applied as drift.
+ *
+ * Published height wanders by a metre or so; the solved offsets are 0.55 m at
+ * the median and 1.41 m at the ninetieth percentile. But 27 segments come back
+ * over 5 m and one run reaches 98 m -- a survey lens is 2.44 m above the road,
+ * so an offset like that says the run's published height is wrong in kind, not
+ * drifting, and subtracting it lands the camera nowhere in particular.
+ *
+ * The fallback is not "leave it alone", which would keep the bad published
+ * height. It is the ground inference, because that is the same answer the solve
+ * is reaching for: its own gauge is a lens 2.44 m above the ground beneath it.
+ */
+const MAX_PLAUSIBLE_DRIFT_M = 5;
+
 export const resolveLens = (
   view: PanoramaView,
   offsetOf: (view: PanoramaView) => { offsetM: number; source: 'segment' | 'run' | 'none' },
   groundZ: number | null | undefined,
 ): ResolvedLens | null => {
-  const lens = lensHeightNap(view, groundZ);
-  if (!lens) return null;
   const solved = offsetOf(view);
+  const implausible = Math.abs(solved.offsetM) > MAX_PLAUSIBLE_DRIFT_M;
+  const lens = implausible && Number.isFinite(groundZ as number)
+    ? lensHeightNap({ ...view, cameraHeight: 0 }, groundZ)
+    : lensHeightNap(view, groundZ);
+  if (!lens) return null;
   const offsetM = lens.inferred ? 0 : solved.offsetM;
   const camera = RD_NEW.fromLngLat(view.lngLat);
   return {

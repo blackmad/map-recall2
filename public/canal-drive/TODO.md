@@ -421,6 +421,22 @@ measure end to end from Amsterdam's CC BY panoramas.
 >    frames with no ground level at all, one offset per ~125 m segment: **78% of
 >    the disagreement removed**, scored on held-out *places*. Fleet lens above
 >    local ground 0.73–4.57 m → 1.79–3.77 m.
+> 6. **Sixteen scripts never applied that correction.** They built the pose
+>    inline as `cameraHeight - GEOID_SEPARATION_M`, skipping both the datum
+>    offset and the inference that rescues a frame publishing no height. Both
+>    failures are silent — the render still comes out, it is just of somewhere
+>    else. Across the 1,931 measured façades that name a panorama, the unapplied
+>    correction is **0.93 m at the median, 3.97 m at p75, and over 1.5 m on 39%**.
+>    `resolveLens` in `panorama-render.ts` is now the single way to place a lens;
+>    it applies the offset to a *published* height only, never to an inferred one
+>    (which would correct an error it does not have), and refuses an offset over
+>    5 m — 27 segments and one run exceed that, to 32 m and 98 m, which is not
+>    drift — falling back to the ground inference the solve's own gauge uses.
+> 7. **Number bands were aimed a storey too high.** Worst-hit of the sixteen,
+>    because the band picks the *closest* camera to get pixels onto a 13 cm digit
+>    and at a 4 m standoff half a metre of lens error is ~7° of aim. The tiles
+>    were photographs of first-floor brickwork; the recogniser found digit-shaped
+>    texture in them. They now frame doors, stoeps and souterrains.
 >
 > ### The instrument is unsound, and that is the top of the list
 >
@@ -447,13 +463,50 @@ measure end to end from Amsterdam's CC BY panoramas.
 >    human/machine verdicts judge the picture. `check-number-anchors.ts` and the
 >    review deck exist; the registration headline should come from them, not from
 >    correlation. This is the blocker for everything else being believable.
+>
+>    *Anchors are now sound but scarce, and the scarcity is the finding.* Three
+>    gates were added, each of which **reduced** the count reported: a reading
+>    must land within 9 m of where that number lives (seven of ten "conflicts"
+>    were single digits matched to an address point 9–22 m away — there are ten
+>    digits and the radius holds dozens of addresses, so collision was near
+>    certain); a single digit no longer certifies anything; and doorplate is
+>    separated from signage by glyph height, which parts them completely —
+>    every confirming read measured 9.8–20.8 cm, every conflicting one
+>    43.1–54.9 cm, which is painted shopfront lettering. A decoy scored against
+>    a house two doors along now travels with the result and confirms **0 of 30**.
+>    On 30 panden: **2 confirmed, 0 conflict, 0 neighbour-only, 28 unread**,
+>    along-band offset median 0.58 m (was 1.47 m before the lens was corrected).
+>
+>    **Yield, not accuracy, is the ceiling.** Looking at the best-resolved unread
+>    bands, the numbers are simply not there — Herengracht 56 renders perfectly
+>    and carries no legible number anywhere on its frontage. `unread` is usually
+>    the correct answer. At ~7% yield an anchor headline needs ~700 panden for
+>    n≈50; a 400-pand run is in flight. Because legibility depends on the door's
+>    design and not on our geometry, the confirm rate *among legible buildings*
+>    is still an unbiased estimate of correspondence accuracy — that is what makes
+>    a small anchor set usable as a headline at all.
+>
+>    A digit-assembly step, added on the theory that plates were being split
+>    character by character, turned out nearly inert (361 candidates from 330
+>    readings) and so disproves that theory. The scattered single digits are
+>    noise, not fragments.
+>
+> 1b. **Re-measure the 2,180 façades.** They were measured off strips placed by
+>    the uncorrected lens (see 6 above), so every storey ladder and opening in
+>    `measured-facades.json` sits on a vertically-shifted picture. This is the
+>    most likely explanation on offer for the ladder returning 6 storeys where
+>    3DBAG's pilot median is 4–5, and it should be re-run before any of that is
+>    treated as a detector problem.
 > 2. **Download views for the corrected frontages.** The selector can only choose
 >    among the 2,922 panoramas on disk, and those were fetched for the *old*
 >    walls — so `rankViews` has never been shown what it can do.
 > 3. **Adjudicate the five house-number conflicts** from §14, including
 >    Herengracht 56/58 where the plate reads 56 three metres inside the wall
 >    proposed as 58.
-> 4. **Finish the scripts typecheck.** `tsconfig.json` included only `src`, so
+> 4. **Fold `lint:scripts` into `check:canal`.** The typecheck reached zero
+>    (43 → 24 → 0), and two of those were real bugs. It is kept out of the
+>    aggregate gate only until it has been watched holding for a few sessions.
+>    Superseded detail: **Finish the scripts typecheck.** `tsconfig.json` included only `src`, so
 >    `npm run lint` had never seen the pipeline. `lint:scripts` closes it: 43
 >    errors → 24, two of them real bugs (a bogus `camera` option on
 >    `measureFacade`; `nearestMaterial` called with one argument and its wrapper
