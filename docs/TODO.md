@@ -10,10 +10,14 @@ data, and [`FACADE_TWIN.md`](FACADE_TWIN.md) for the buildings.
 
 ## The one number
 
-**Correspondence is 76%.** Of the panden a house-number reading can decide, 44
-confirm the wall we projected and 14 contradict it; the decoy confirms 3. The bar
-the owner set is 95%, and `check-number-anchors.ts` fails below it. Everything
-below is ordered by how much it moves that number.
+**Correspondence is 85%.** Of the panden a house-number reading can decide, 41
+confirm the wall we projected and 7 contradict it; the decoy confirms 3. The bar
+the owner set is 95%, and `check-number-anchors.ts` still fails below it.
+Everything below is ordered by how much it moves that number.
+
+It was **76%** (44 confirm, 14 conflict) until the square-on ranking landed — see
+below — and that is a paired result on the identical 400 panden, so the nine
+points are the ranking's, not sampling. Conflicts halved, 14 → 7.
 
 Keep this file current in the same change that moves an item, not afterwards.
 
@@ -22,9 +26,9 @@ in a way that a plain-looking one is not.** So correctness of what the game
 teaches outranks the depth of what it teaches, which outranks how it looks.
 Within a tier, cheap-and-blocking comes before expensive-and-isolated.
 
-Every downstream confidence should be derived from that 76% (§21). None currently is.
+Every downstream confidence should be derived from that 85% (§21, §22). None currently is.
 
-**A fix is in flight for it.** Diagnosing the 14 contradictions turned up the one
+**The fix landed, and it is worth nine points.** Diagnosing the 14 contradictions turned up the one
 variable that separates them: obliquity, 17.4° at a contradiction against 9.3° at
 a confirmation. A band within 10° of square confirms 89% of the time, one beyond
 10° confirms 65% (z=2.16, and four fields were compared, so the mechanism carries
@@ -32,8 +36,12 @@ more of the weight than the statistic). `number-bands.ts --audit-views` then sho
 the ranking was leaving that on the table: median obliquity chosen 15.1° where
 3.1° was available, and 107 of 366 panden could have been square-on and were not.
 The ranking now takes the squarest view that keeps 70% of the best available
-resolution — median obliquity 4.5°, square-on bands 138 → 230. A re-render and OCR
-pass over the same 400 panden is running to test whether 76% moves.
+resolution — median obliquity 4.5°, square-on bands 138 → 230. The paired re-render
+and OCR pass over the same 400 panden came back at **85%**: 41 confirm against 7
+conflicts, where the oblique pass gave 44 against 14. Fewer panden are decided (48
+against 58) because a squarer view is sometimes a more distant one, so the trade is
+real — but every one of the 7 surviving conflicts is still ±one frontage, which is
+what the anchoring plan below is for.
 
 **Viewers** are indexed in the repository [`README.md`](../../README.md), which
 also lists the instruments and what each one measures. New this session:
@@ -125,12 +133,38 @@ pairs are claimed by more than one pand. Median 1 number per pand, p90 2, though
 
 ### Obstacles, measured rather than guessed
 
-- **Numbering is not cleanly monotonic.** Walking each street rather than
-  projecting it, house numbers run monotonically only **78–95%** of the way along
-  the big grachten, and only about **80% of 12-address runs** are ≥95% monotonic.
-  Some of this is the 24% of panden carrying several numbers, some is address
-  points sitting inside deep blocks. **The fit must tolerate it** — which is why
-  step 4 says consensus rather than least squares.
+Guarded by `npx tsx scripts/facade-twin/check-number-order.ts`.
+
+- **Numbering *is* cleanly ordered — 99.3%.** An earlier pass here claimed 78–95%
+  and that was this estimator's fault, not Amsterdam's: it ordered a street by
+  greedy nearest-neighbour from one end of the principal axis, and on a gracht
+  that walk teleports up to **1204 m** when it meets a stretch without addresses,
+  manufacturing a run of inversions each time. Measured with no walk at all —
+  does number *n* lie geometrically between *n−2* and *n+2* — BAG says **96.2%**
+  over all 8,575 answerable triples and **99.3%** over the 2,968 clean ones
+  (consecutive numbers, one pand each, every point inside a footprint). OSM's
+  independent geometry says 95.3% overall. **The sequence is a far stronger
+  constraint than this plan first assumed**, which raises what step 4 can expect
+  rather than lowering it. Consensus over least squares still stands — there are
+  real outliers below — but it is now a guard against a few known mechanisms, not
+  against pervasive disorder.
+- **A pand carrying several numbers has no reliable internal order, and this is
+  the single largest mechanism.** Triples where two numbers share a pand run
+  92.3%; triples on distinct panden run 97.8%. BAG places one point per address
+  *inside* the footprint, and inside a merged pand those points are not in street
+  order. Ground truth, validated on the street: Hartenstraat 21/23/25 all belong
+  to pand `...169173`, 20.18 m wide — three and a half frontages. BAG puts 21 at
+  lon 4.885801 and 25 at 4.885888. The shop standing at 4.88578 is Fred Perry,
+  whose address is **Hartenstraat 25**. The two points are swapped. **So: do not
+  take ordering evidence from a multi-number pand.** Treat it as one unit
+  spanning a numeric range, and let the anchor land on the range, not the point.
+- **A square is not a line, and its numbering turns corners.** Westermarkt runs
+  1–37 along one side at y≈487450, 2–20 along another at y≈487560, 60–74 at
+  y≈487507 and 76–82 at y≈487486. Every run is internally monotonic; every break
+  is a corner. `Westermarkt 74→76→78` is the worst clean failure in the whole
+  boundary at 16.1 m, and it is not a failure of numbering. Step 1's block
+  definition — a contiguous same-side run, never a street name — already handles
+  this, and must not be relaxed into "group by street".
 - **BAG address points are inside the building, not on the plaque**, so every
   position carries 1–2 m of intrinsic scatter. Use medians, and never a tolerance
   tighter than that scatter.
@@ -139,11 +173,14 @@ pairs are claimed by more than one pand. Median 1 number per pand, p90 2, though
   that: ours [89], read `07`.
 - **Odd and even sides are separate sequences**, and a canal has water between
   them. Never let a block span both.
+- **A triple spanning under one frontage cannot be tested at all** — 11% of them —
+  because the points are effectively co-located. Any tolerance the fit uses has to
+  be larger than the spacing it is trying to resolve, or it is measuring nothing.
 
 ### Done when
 
 `check-number-anchors.ts` reports identity on **held-out** readings, and the rate
-has moved from 76% toward the 95% bar — or the attempt has failed and this section
+has moved from 85% toward the 95% bar — or the attempt has failed and this section
 says why, which is worth as much.
 
 **Notes for buying OCR instead of running it** (not needed yet; free local path is
@@ -171,7 +208,7 @@ live in that artifact's store under `answers/<id>`):
 
 1. **The bar is identity first, precision second.** Done when **95% of the panden
    a house-number reading can decide are confirmed rather than contradicted**.
-   Today that is 76%. `check-number-anchors.ts` now fails against this bar, and it
+   Today that is 85%. `check-number-anchors.ts` now fails against this bar, and it
    is the first time the standing goal has been a number this repo can test.
    Precision — how far along the façade — is explicitly *not* gated yet.
 2. **Fix opening detection, not the ladder.** Per §22 the storey count is
@@ -206,7 +243,7 @@ live in that artifact's store under `answers/<id>`):
    median scatter as the instrument ambiguity it is. Passing at −0.06 m bias.
    `streetLevelEvidence.ts`'s confidence cap has been re-anchored: it no longer
    cites this check or the long-fixed storey over-count, but the two live reasons
-   — identity at 76%, and opening detection not holding still.
+   — identity at 85%, and opening detection not holding still.
 5. **Keep the 422-façade store**, not the 2,180.
 6. **Unpark the 2024–2025 imagery for identity and azimuth only** — done.
    `check-inferred-height.ts` settles the claim the code made about itself: over

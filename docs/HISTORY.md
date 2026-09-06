@@ -24,12 +24,13 @@ For weeks the goal was "good correspondence between panoramas and 3DBAG
 buildings" with no threshold, so every headline written against it chose its own.
 It now has one, and a measurement to hold against it.
 
-**Correspondence is 76%.** Of 400 panden, 99 carry a legible house number; of the
-58 that a reading can decide, 44 confirm the wall we projected and 14 contradict
-it. The decoy — the same readings scored against a house two doors along —
-confirms 3, judged by exactly the rule that decides a real confirmation, which it
-was not before. The owner set the bar at 95%, so `check-number-anchors.ts` now
-exits red, which is the correct colour.
+**Correspondence is 85%** (§22), and was 76% (§21) for most of the session. Of the
+48 panden a house-number reading can decide, 41 confirm the wall we projected and
+7 contradict it. The decoy — the same readings scored against a house two doors
+along — confirms 3, judged by exactly the rule that decides a real confirmation,
+which it was not before. The owner set the bar at 95%, so `check-number-anchors.ts`
+still exits red, which is the correct colour. The nine points came from ranking
+bands by squareness rather than proximity, measured on the identical 400 panden.
 
 Three of the session's findings were corrections to its own earlier claims, and
 each came from measuring a component instead of inferring it from an aggregate:
@@ -3494,3 +3495,110 @@ And the symptom named the wrong culprit. "OCR takes hours" was true, and it was
 never about OCR — first it was `gpu=False`, then it was my own leak. Both times the
 number was quoted as a property of the workload and used to reason about whether
 to buy a commercial vision model.
+
+### 22. Squareness was worth nine points, on a paired run (2026-09-06)
+
+§21 fixed correspondence at 76% and named obliquity as the one variable that
+separated a confirmation from a contradiction — 9.3° against 17.4°. The band
+ranking then changed to take the squarest view that still keeps 70% of the best
+available resolution, rather than simply the closest. The paired test is now in:
+the same 400 panden, re-rendered and re-read.
+
+| | oblique ranking | square-on ranking |
+|---|---|---|
+| confirmed | 44 | **41** |
+| conflict | 14 | **7** |
+| decided panden | 58 | 48 |
+| **identity** | **76%** | **85%** |
+
+Conflicts halved. Nine points, and because it is the identical pand set the nine
+points are the ranking's rather than sampling.
+
+The trade is real and should be stated: ten fewer panden are decided, because the
+squarest view is sometimes the more distant one and a smaller plate is a plate
+that does not read. 3,644 raw readings against the oblique pass's 4,180. Identity
+is a rate among panden a reading can decide, so buying accuracy with coverage is
+progress against the owner's bar but not free.
+
+Every one of the seven surviving conflicts is still displaced by about one
+frontage — −4.82, −8.06, −3.07, −3.93, −6.72, −0.73, +3.13 m. That is the same
+±one-house signature §21 found, unmoved by making the view square. It is not an
+aiming error, and no amount of better imagery will remove it. It is what §23 and
+the anchoring plan are for.
+
+### 23. The numbers run in order after all, and the disorder was my walk (2026-09-06)
+
+The global-anchoring plan went into `docs/TODO.md` carrying an obstacle presented
+as measured: *house numbers run monotonically only 78–95% of the way along the big
+grachten*. That number was wrong, and the plan was shaped around it — step 4 was
+justified as needing consensus rather than least squares because the sequence was
+supposedly unreliable.
+
+**The fault was the estimator's.** To "walk" a street I had ordered its address
+points by greedy nearest-neighbour, starting from one end of their principal axis.
+On a gracht that walk runs up the bank, meets a stretch with no addresses, and
+teleports to wherever the nearest unvisited point happens to be — **up to 1204 m
+on Keizersgracht, 752 m on Prinsengracht, 780 m on Herengracht**, 35 hops over
+25 m on Prinsengracht alone. Every teleport manufactures a run of inversions. I
+had measured my own path-finding and reported it as a property of Amsterdam.
+
+Measured with no walk at all — does the point for number *n* lie geometrically
+between the points for *n−2* and *n+2*, which is local and has nothing to get
+wrong — the answer is the opposite:
+
+| | tested | out of order | in order |
+|---|---|---|---|
+| BAG, all answerable triples | 8,575 | 325 | **96.2%** |
+| BAG, two numbers share a pand | 2,507 | 192 | 92.3% |
+| BAG, all three on distinct panden | 6,068 | 133 | 97.8% |
+| BAG, **clean** — consecutive, distinct panden, no orphans | 2,968 | 20 | **99.3%** |
+| OSM, independent geometry, all | 11,941 | 560 | 95.3% |
+
+Two guards make it an honest test. A triple whose two outer points are less than
+one frontage apart cannot answer the question — 11% of them — so it is not
+counted. And OSM's own geometry, which places most addresses at building
+centroids rather than BAG's interior points, gets the same answer; that is not
+full independence, since OSM-NL is largely a BAG import, but it rules out a fault
+in how the BAG file is read.
+
+**So the sequence is a much stronger constraint than the plan assumed**, and the
+residual is two named mechanisms rather than noise.
+
+*A pand carrying several numbers has no reliable internal order.* This is the big
+one: 92.3% against 97.8%. BAG places one point per address inside the footprint,
+and inside a merged pand those points are not in street order. The clean example,
+checked on the street rather than argued: Hartenstraat 21, 23 and 25 all belong to
+pand `0363100012169173`, `plotWidthM` 20.18 — three and a half frontages, eleven
+dwellings, built 1725. BAG puts 21 at lon 4.885801 and 25 at 4.885888, 7 m apart
+in that order. The shop standing at 4.88578 is Fred Perry, and Fred Perry's
+address is **Hartenstraat 25**. The two points are swapped. The street is in
+order; the points inside the pand are not. The consequence for the plan is
+concrete: *do not take ordering evidence from a multi-number pand* — treat it as
+one unit spanning a numeric range and let the anchor land on the range.
+
+*A square is not a line.* Westermarkt's numbers run 1–37 along one side at
+y≈487450, 2–20 along another at y≈487560, 60–74 at y≈487507, 76–82 at y≈487486.
+Each run is internally monotonic and every break is a corner. `Westermarkt
+74→76→78` is the worst clean failure in the entire boundary — 16.1 m — and it is
+not a failure of numbering at all. The plan's step 1 already says a block is a
+contiguous same-side run and never a street name; that clause is now load-bearing
+and must not be relaxed.
+
+There is a third thing this did not overturn. Projecting a gracht onto its
+principal axis genuinely is wrong — Herengracht spans 866 m along its own axis and
+551 m across it, because it is a horseshoe. The original note was right about
+that and wrong about what followed from it: the fix for a curving street is a
+local test, not a cleverer global walk.
+
+`scripts/facade-twin/check-number-order.ts` now runs all of this and fails below
+98% on the clean case, so the figure the plan stands on is checked rather than
+remembered. The OSM cross-check reads a cached `osm-addresses.json`; one Overpass
+query built it and it is not re-fetched.
+
+The lesson is the same one §18 taught in a different costume. A number that
+supports a design decision has to be measured against something that can
+contradict it. "78–95%" felt like diligence — I had gone and measured rather than
+assumed — and it was diligence applied to an estimator nobody had validated. The
+tell was available and I walked past it: a walk that reports 78% monotonic on a
+canal where the houses are visibly numbered in order should have been suspected
+before Amsterdam was.

@@ -23,10 +23,11 @@
  *
  * The live reasons, both measured:
  *
- *   - identity is 76%, not 95%. Of the panden a house-number reading can decide,
- *     44 confirm the wall we projected and 14 contradict it. A field measured off
- *     a wall that is the wrong house one time in four cannot be auto-accepted,
- *     whatever the detector's own precision.
+ *   - identity is 85%, not 95%. Of the panden a house-number reading can decide,
+ *     41 confirm the wall we projected and 7 contradict it. A field measured off
+ *     a wall that is the wrong house one time in seven cannot be auto-accepted,
+ *     whatever the detector's own precision. It was 76% before the band ranking
+ *     started preferring a square-on view over a merely closer one.
  *   - opening detection does not hold still. A 10 cm change in assumed lens
  *     height changes the opening count on 28% of façades, and every storey-count
  *     flip observed followed an opening change. Storeys, bays and openings all
