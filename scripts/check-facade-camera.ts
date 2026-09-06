@@ -209,6 +209,40 @@ const POSE_EXPERIMENTS = new Set([
       : `${POSE_EXPERIMENTS.size} pose experiments exempt by name`);
 }
 
+/**
+ * A frame with no published height may say *where*, never *how tall*.
+ *
+ * `lensHeightNap` infers a height for the 15,312 frames of 2024-2025 that
+ * publish none, and `check-inferred-height.ts` measures that inference at a
+ * median of 3 cm against a datum-corrected published height, within a metre 88%
+ * of the time. Good enough to say which building a wall belongs to; not good
+ * enough to say how far up a sill sits, and the difference is invisible at the
+ * call site because both come back as a number.
+ *
+ * So the rule is structural rather than a matter of care: a script that measures
+ * upward filters its frames with `hasUsablePose`, which rejects a missing
+ * height. A script that only localises may use `hasUsableGeometry`. Naming the
+ * vertical scripts here means adding a new one to the wrong list fails the
+ * build instead of quietly publishing a storey count taken off a guess.
+ */
+const MEASURES_UPWARD = new Set([
+  'measure-boundary.ts', 'measure-facades.ts', 'build-block.ts', 'solve-track-datum.ts',
+]);
+{
+  const dir = path.resolve('scripts/facade-twin');
+  const offenders: string[] = [];
+  for (const name of MEASURES_UPWARD) {
+    const body = await readFile(path.join(dir, name), 'utf8');
+    const code = body.split('\n').filter(l => !l.trimStart().startsWith('*') && !l.trimStart().startsWith('//'));
+    const lax = code.some(l => /hasUsableGeometry/.test(l));
+    const strict = code.some(l => /hasUsablePose/.test(l));
+    if (lax || !strict) offenders.push(`${name}${lax ? ' admits no-height frames' : ' does not filter on hasUsablePose'}`);
+  }
+  check('every script that measures upward demands a published height',
+    offenders.length === 0,
+    offenders.length ? offenders.join('; ') : `${MEASURES_UPWARD.size} vertical scripts checked`);
+}
+
 console.log(`Camera model '${AMSTERDAM_CAMERA.id}': north at the frame centre, vehicle attitude ignored.`);
 console.log(`  ${straightPairs} consecutive track pairs — ${(100 * reversedShare).toFixed(1)}% put heading at travel+180°.`);
 console.log(`  ${opposed} opposed same-spot pairs available for the image experiment.`);

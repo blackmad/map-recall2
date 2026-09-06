@@ -28,7 +28,7 @@ import { summariseCoverage, wasObserved } from '../../src/canalRecall/facade/evi
 import { applyStreetLevelEvidence, wallMaterialOf } from '../../src/canalRecall/facade/streetLevelEvidence.ts';
 import { measureFacade, STRIP_BASE_BELOW_GROUND_M, MAX_PIXELS_PER_METRE, MIN_PIXELS_PER_METRE } from '../../src/canalRecall/facade/measure.ts';
 import { rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA, hasUsablePose, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
@@ -57,7 +57,11 @@ const footprints = new Map<string, ProjectedPoint[]>();
 for (const entry of registry) {
   if (!footprints.has(entry.buildingId)) footprints.set(entry.buildingId, entry.footprintLngLat.map(p => RD_NEW.fromLngLat(p)));
 }
-const posed = views.map(view => ({ view, point: RD_NEW.fromLngLat(view.lngLat) }));
+// This block measures storeys and sill heights, so it needs a *published*
+// height: an inferred one is good to about a metre, which is fine for saying
+// which building a wall is and not for saying how far up a window sits. Nothing
+// filtered here at all until check-facade-camera went looking.
+const posed = views.filter(hasUsablePose).map(view => ({ view, point: RD_NEW.fromLngLat(view.lngLat) }));
 
 /** Address the block by street and house-number range, via PDOK. */
 async function blockBuildings(): Promise<Array<{ buildingId: string; address: string; number: number }>> {

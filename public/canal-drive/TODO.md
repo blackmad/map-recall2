@@ -48,9 +48,17 @@ live in that artifact's store under `answers/<id>`):
    cites this check or the long-fixed storey over-count, but the two live reasons
    — identity at 76%, and opening detection not holding still.
 5. **Keep the 422-façade store**, not the 2,180.
-6. **Unpark the 2024–2025 imagery for identity and azimuth only**, with a check
-   that fails the build if an inferred-height frame reaches a vertical
-   measurement.
+6. **Unpark the 2024–2025 imagery for identity and azimuth only** — done.
+   `check-inferred-height.ts` settles the claim the code made about itself: over
+   97,120 frames the inferred height differs from a datum-corrected published one
+   by a **median of 3 cm**, within half a metre on 70% and a metre on 88% — the
+   same order as the datum offset every published height already carries.
+   `number-bands.ts` now takes `hasUsableGeometry`, admitting the 15,312 frames of
+   2024–25 (11% of the area, and the newest doorplates in the archive).
+   `check-facade-camera` holds the other half of the rule: any script that
+   measures upward must filter on `hasUsablePose`. It found `build-block.ts`
+   filtering on **nothing at all** on its first run — storeys and sill heights
+   from any frame with any pose — which is now fixed.
 
 ---
 

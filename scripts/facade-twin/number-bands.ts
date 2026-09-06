@@ -34,7 +34,7 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
-import { AMSTERDAM_CAMERA, hasUsablePose, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA, hasUsableGeometry, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
@@ -78,7 +78,25 @@ const store = JSON.parse(await readFile(path.join(STAGING, STORE_FILE), 'utf8'))
 const footprints = new Map<string, ProjectedPoint[]>();
 for (const e of registry) if (!footprints.has(e.buildingId)) footprints.set(e.buildingId, e.footprintLngLat.map(p => RD_NEW.fromLngLat(p)));
 
-const posed = views.filter(hasUsablePose).map(v => ({ v, p: RD_NEW.fromLngLat(v.lngLat) }));
+/**
+ * Identity work may use a frame that publishes no height.
+ *
+ * A band exists to read the number beside a door -- which house, not how tall --
+ * and azimuth is exactly independent of height, so the 15,312 frames of 2024 and
+ * 2025 were being excluded by a filter that gates the wrong thing. Measured
+ * rather than assumed: `check-inferred-height.ts` compares the inferred height
+ * against a datum-corrected published one across 97,120 frames and finds a
+ * median error of 3 cm, within a metre 88% of the time -- the same order as the
+ * datum offset every published height already carries.
+ *
+ * The band's vertical placement is not free of it: aiming a door-height band is
+ * the most height-sensitive thing in this pipeline. But a metre of inference is
+ * not worse than the uncorrected metre these bands were built on until this
+ * morning, and it buys the newest imagery in the archive, which is where the
+ * legible doorplates are. `check-facade-camera` holds the line that matters --
+ * anything measuring *upward* still demands a published height.
+ */
+const posed = views.filter(hasUsableGeometry).map(v => ({ v, p: RD_NEW.fromLngLat(v.lngLat) }));
 const offsetOf = await loadTrackOffsets(CACHE);
 
 const AUDIT = process.argv.includes('--audit-views');
