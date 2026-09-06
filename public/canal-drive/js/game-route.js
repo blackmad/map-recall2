@@ -1004,6 +1004,9 @@ class GameRouteRuntime {
 
       this.track = new RoadNetwork(segments, start, finish, tiles);
       this._routeMastery = this.recall ? this.recall.routeMastery(this.cityId || 'amsterdam') : {};
+      this._routeReviewDue = this.recall && typeof this.recall.routeReviewDue === 'function'
+        ? this.recall.routeReviewDue(this.cityId || 'amsterdam')
+        : {};
       this.track.setRouteMastery(this._routeMastery);
       if (this.routePattern === 'home' && this.homeBase && this._homeLearningRadiusKm > 0) {
         const homePoint = this.osmLoader.latLngToGamePoint(

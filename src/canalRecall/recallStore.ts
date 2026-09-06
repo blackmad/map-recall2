@@ -72,6 +72,26 @@ export function routeMasteryFromStates(
   return result;
 }
 
+/**
+ * Practised street/canal/line names whose review interval has elapsed.
+ * The overview paints these with a warm “due” tint so spaced review is visible
+ * on the knowledge map, not only in the cold-open hop.
+ */
+export function routeReviewDueFromStates(
+  states: readonly ReviewState[], cityId: string, now = Date.now(),
+): Record<string, true> {
+  const result: Record<string, true> = {};
+  for (const state of states) {
+    const feature = state.featureSnapshot;
+    if (state.mode !== 'guess_name' || feature.cityId !== cityId
+      || !['street', 'canal', 'line'].includes(feature.type)) continue;
+    const key = routeNameKey(feature.name);
+    if (!key || state.repetitions <= 0 || state.dueAt > now) continue;
+    result[key] = true;
+  }
+  return result;
+}
+
 /** The scheduler is written against the React game's round shape. */
 function asRoundResult(feature: RecallFeature, correct: boolean, timeSpentMs: number): RoundResult {
   return {
@@ -293,6 +313,11 @@ class RecallStore {
   /** Per-name familiarity used only as a small route preference. */
   routeMastery(cityId: string, now = Date.now()): Record<string, number> {
     return routeMasteryFromStates(Object.values(this.states), cityId, now);
+  }
+
+  /** Per-name flags for overview “review due” ink (and any future routing bias). */
+  routeReviewDue(cityId: string, now = Date.now()): Record<string, true> {
+    return routeReviewDueFromStates(Object.values(this.states), cityId, now);
   }
 
   /**

@@ -6,6 +6,18 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## City overview tighter + review-due tint — 2026-09-06
+
+Playtest: the city overview sat in too much empty rim (`OVERVIEW_ZOOM` 1.18 →
+1.35). Same city-fixed framing — just a notch closer so the canal ring and
+player mark read more easily.
+
+P1 #6 follow-on: overdue spaced-review streets/canals paint warm copper on the
+overview (`routeReviewDue` → `reviewDueNetwork` / `reviewDueWater`), above the
+green mastery bands. Cache key includes due-count so answering a due place
+repaints without changing the track. Dedicated review screen still open.
+
+
 ## 3D tilt keyboard — 2026-09-06
 
 Tilt slider was easy to miss: Settings (G) → View = Chase/Cockpit → **3D TILT**.

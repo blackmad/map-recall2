@@ -162,6 +162,7 @@ export interface RecallStore extends AnswerRecallStore {
     dueAt: number;
   }>;
   routeMastery(cityId: string): Record<string, number>;
+  routeReviewDue?(cityId: string): Record<string, true>;
   homeMasterySamples?(cityId: string): Array<{ lat: number; lng: number; mastery: number }>;
   isKnownHere(feature: RecallFeature): boolean;
   isSuppressedHere(feature: RecallFeature): boolean;
@@ -193,6 +194,8 @@ export interface RecallHost extends GameCoreHost {
   routeDifficulty: RouteDifficulty;
   gameyFeatures: boolean;
   _routeMastery: Record<string, number>;
+  /** Normalised names due for spaced review — overview warm tint. */
+  _routeReviewDue: Record<string, true>;
 
   quizCurrentName: string;
   quizCandidateName: string;

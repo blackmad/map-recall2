@@ -150,6 +150,9 @@ export interface OverviewStaticLayers {
   /** Strong mastery. */
   masteredNetwork: WorldPoint[][];
   masteredWater: WorldPoint[][];
+  /** Practised places whose spaced-review interval has elapsed. */
+  reviewDueNetwork: WorldPoint[][];
+  reviewDueWater: WorldPoint[][];
   /** The planned route, start to finish. */
   route: WorldPoint[];
   start: WorldPoint | null;
@@ -166,6 +169,8 @@ export interface OverviewSources {
   knownWaterSegments?: readonly (readonly WorldPoint[])[];
   masteredNetworkSegments?: readonly (readonly WorldPoint[])[];
   masteredWaterSegments?: readonly (readonly WorldPoint[])[];
+  reviewDueNetworkSegments?: readonly (readonly WorldPoint[])[];
+  reviewDueWaterSegments?: readonly (readonly WorldPoint[])[];
   route: readonly WorldPoint[];
   start: WorldPoint | null;
   finish: WorldPoint | null;
@@ -199,10 +204,11 @@ export function overviewMasteryBand(mastery: number): OverviewMasteryBand {
  * route and its endpoints are unioned in so a trip that runs past the mapped
  * areas cannot fall off the edge.
  *
- * `OVERVIEW_ZOOM` pulls in a little from a pure fit-to-city framing: the canal
- * ring stays readable and the player mark is easier to find in the 260×200 box.
+ * `OVERVIEW_ZOOM` pulls in from a pure fit-to-city framing: the canal ring
+ * stays readable and the player mark is easier to find in the 260×200 box.
+ * 1.35 crops a bit more empty rim than the original 1.18 notch.
  */
-export const OVERVIEW_ZOOM = 1.18;
+export const OVERVIEW_ZOOM = 1.35;
 
 export function buildOverview(
   sources: OverviewSources,
@@ -233,6 +239,8 @@ export function buildOverview(
       knownWater: thin(sources.knownWaterSegments),
       masteredNetwork: thin(sources.masteredNetworkSegments),
       masteredWater: thin(sources.masteredWaterSegments),
+      reviewDueNetwork: thin(sources.reviewDueNetworkSegments),
+      reviewDueWater: thin(sources.reviewDueWaterSegments),
       route: simplifyForScale(sources.route, projection.scale),
       start: sources.start,
       finish: sources.finish,
@@ -254,6 +262,8 @@ export interface OverviewColors {
   knownWater: string;
   masteredNetwork: string;
   masteredWater: string;
+  reviewDueNetwork: string;
+  reviewDueWater: string;
   route: string;
   start: string;
   finish: string;
@@ -279,6 +289,10 @@ export const OVERVIEW_COLORS: OverviewColors = {
   knownWater: 'rgba(15,100,140,0.55)',
   masteredNetwork: 'rgba(28,82,58,0.82)',
   masteredWater: 'rgba(8,78,120,0.78)',
+  // Warm copper — distinct from green mastery and blue waterways so “due for
+  // review” reads at a glance on the city overview.
+  reviewDueNetwork: 'rgba(176,96,28,0.82)',
+  reviewDueWater: 'rgba(150,78,36,0.78)',
   route: '#c75f43',
   start: '#356653',
   finish: '#c75f43',
@@ -347,6 +361,16 @@ export function drawOverviewStatic(
   ctx.strokeStyle = colors.masteredWater;
   ctx.lineWidth = 1.4;
   for (const segment of layers.masteredWater) strokePath(ctx, segment, projection);
+
+  // Due ink sits above mastery bands so overdue places stay visible even when
+  // they would otherwise paint as known/mastered green.
+  ctx.strokeStyle = colors.reviewDueNetwork;
+  ctx.lineWidth = 1.5;
+  for (const segment of layers.reviewDueNetwork) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.reviewDueWater;
+  ctx.lineWidth = 1.55;
+  for (const segment of layers.reviewDueWater) strokePath(ctx, segment, projection);
 
   ctx.strokeStyle = colors.area;
   ctx.lineWidth = 0.8;
