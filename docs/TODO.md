@@ -197,6 +197,33 @@ Guarded by `npx tsx scripts/facade-twin/check-number-order.ts`.
   because the points are effectively co-located. Any tolerance the fit uses has to
   be larger than the spacing it is trying to resolve, or it is measuring nothing.
 
+### P0-adjacent: coverage is bound by resolution, not by identity (§27)
+
+Identity is 85% on **48 of 400 panden**. The denominator is what starves
+everything downstream, and it is set by resolution:
+
+| best tile resolution | bands | produced a real number |
+|---|---|---|
+| ≤ 100 px/m | 118 | **2%** |
+| 100–150 px/m | 43 | 14% |
+| 150–200 px/m | 43 | 30% |
+| > 200 px/m | 196 | 32% |
+
+118 bands — 30% of the set — sit in the dead zone. The curve is flat above
+200 px/m, so this is a threshold and not a gradient. Occlusion is *not* the
+constraint: `obstructionColumns` is 22% among readable bands and 26% among
+unread, and higher among confirmations than conflicts.
+
+**The change to make, as a paired experiment:** `number-bands.ts` ranks views by
+squareness subject to `RESOLUTION_FLOOR = 0.7` of the *best available* resolution.
+A relative floor cannot know about a cliff — on a pand whose best view is
+140 px/m it will accept 98 px/m. Make the floor absolute at about 150 px/m, then
+prefer the squarest above it. Prediction: identity holds near 85%, decided panden
+rise. If identity falls, obliquity was doing more work than resolution.
+
+Run it *after* the 1,152-band render lands, on the same pand set, or the
+comparison is not paired and is worth nothing (§22).
+
 ### Next, given §25
 
 The block was the wrong unit. If the displacement is per-house then the suspects

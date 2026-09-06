@@ -3874,3 +3874,56 @@ coincidence and the note stays as a record of a hypothesis that did not survive.
 Writing the prediction down first is the whole point. It costs nothing now and it
 is the only thing that stops the larger run from being read as confirmation
 whatever it says.
+
+### 27. Coverage is bound by resolution, and the square-on ranking is paying for it (2026-09-06)
+
+Identity is 85% but it is decided on only **48 of 400 panden**. Everything the
+project wants — anchoring, propagation, a confidence anyone can derive — is
+starved by that denominator, not by the 85%. So: what makes a band unreadable?
+
+Not occlusion. `obstructionColumns` is non-zero on 22% of readable bands and 26%
+of unread ones, and *27%* of confirmations against 14% of conflicts, which is
+backwards. Either occlusion is not the constraint or that measure cannot see it;
+either way it is not evidence for building an occlusion gate.
+
+It is resolution, and the effect is a cliff:
+
+| best tile resolution | bands | produced a real number |
+|---|---|---|
+| ≤ 100 px/m | 118 | **2%** |
+| 100–150 px/m | 43 | 14% |
+| 150–200 px/m | 43 | 30% |
+| > 200 px/m | 196 | 32% |
+
+**118 bands — 30% of the whole set — are at or below 100 px/m and yield almost
+nothing.** A 13 cm digit is about 13 px there, and EasyOCR does not read it. The
+same split by verdict says it from the other side: decided bands sit at a median
+231 px/m and 5.0 m of standoff, unread bands at 163 px/m and 7.3 m.
+
+Two things follow.
+
+**The yield curve is flat above 200 px/m.** 150–200 gives 30% and beyond 200 gives
+32%, so extra resolution past roughly 200 px/m buys nothing, while below 150 it
+falls off a cliff. That is a threshold, not a gradient, and a ranking rule should
+be written against it.
+
+**The square-on ranking is paying for squareness in coverage, and §22 recorded the
+bill without diagnosing it.** The obliquity fix took identity 76% → 85% but dropped
+decided panden 58 → 48. The reason is visible now: a squarer view of a canal house
+is usually a more distant one, and the ranking's floor is *relative* —
+`RESOLUTION_FLOOR = 0.7` keeps 70% of the best available resolution, whatever that
+is. On a pand whose best view is 140 px/m, 70% is 98 px/m, which is inside the
+dead zone. A relative floor cannot know about a cliff.
+
+So the proposed change, to be run as a paired experiment like §22's and not
+before: **make the floor absolute — never accept a view below about 150 px/m when
+a closer one exists, and only then prefer the squarest.** The prediction is that
+identity holds near 85% while decided panden rise, because the bands it rescues
+are ones currently being read at 100 px/m and returning nothing. If identity falls
+instead, obliquity was doing more work than resolution and the relative floor was
+right.
+
+Not run yet, deliberately: a 1,152-band render is in flight under the current
+ranking, and changing the ranking mid-run would leave two stores that cannot be
+compared. §22 is only worth anything because it was paired on the identical 400
+panden.
