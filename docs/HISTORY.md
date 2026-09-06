@@ -4025,7 +4025,25 @@ panden, changing one flag:
 Eleven of 149 dead bands, but the size of the move is the point: a threefold gain in
 resolution, from the bottom of the dead zone to the top of the readable range, on
 bands that were producing literally nothing. The other 28 of the ~39 have a near
-frame the ranking rejects for some other reason, still to be found.
+frame the ranking rejects for some other reason.
+
+An attempt to classify them did not produce a trustworthy answer, and is recorded as
+such. The estimate of what a nearby frame *would* resolve used the ranking's
+`wallPixelsPerMetre` (1250 / standoff × cos obliquity), while "dead" is defined by
+the manifest's achieved `nativePixelsPerMetre`, additionally bounded by the source
+image and the 260 px/m cap. Those are different quantities and counts built by
+comparing one against the other mean little. A first pass at the same question also
+had the wall normal inverted, which put every one of the 400 chosen views "behind
+the wall plane" — caught only because that control was run at all.
+
+What it did establish is the shape: much of the remainder are frames standing almost
+against the wall and looking along it, under 3 m of standoff at more than 55°, which
+are correctly excluded and not recoverable. The question worth asking is narrower
+than "why are 28 rejected" — it is whether any excluded frame would achieve better
+*native* resolution than the one chosen, and the instrument is `--audit-views`
+reporting the resolution ceiling beside the obliquity it already reports. A small
+change to a tool that exists, rather than the ranking reimplemented in a script
+next to it, which is §30 and §31's lesson restated.
 
 The trade is honest in one direction and unproven in the other. A 63 px/m frame is
 illegible with certainty; a leaf-on frame at 4.5 m *may* have a tree across it. So

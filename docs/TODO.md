@@ -24,9 +24,12 @@ In the order I would spend on them:
 1. **The ~39 bands with a near frame that is not being used.** *Partly done, §33:*
    the leaf-off filter was an absolute veto, and `--leaf-on-rescue=150` lifts **11**
    of them from a median 81 px/m at 15.3 m to 258 px/m at 4.4 m. Whether trees spoil
-   those eleven is what the OCR pass is deciding now. **28 remain** — a near frame
-   exists and the ranking rejects it for some other reason, still to be found; that
-   reason probably generalises past these 28.
+   those eleven is what the OCR pass is deciding now. **28 remain.** Diagnosing them from outside the
+   pipeline failed twice (§33): a flipped wall normal, then a resolution proxy
+   that is not the quantity "dead" is defined by. The narrow question is whether
+   any excluded frame achieves better *native* resolution than the one chosen, and
+   the fix is `--audit-views` reporting the resolution ceiling beside the obliquity
+   it already reports — not the ranking reimplemented in a script beside it.
 2. **A stronger recogniser on poor views.** ~$18 of Cloud Vision on the dead-zone
    bands would settle whether 76 px/m is legible to anything better than EasyOCR.
    Super-resolution is the cheaper cousin and has an honest test available:
