@@ -25,6 +25,8 @@ export interface OverlayCallbacks {
   onClearAllData: () => void;
   onSkipMastered: (enabled: boolean) => void;
   onCloseSettings: () => void;
+  /** Leave the current ride and reopen route setup. */
+  onNewRoute: () => void;
 }
 
 function Field({
@@ -581,7 +583,16 @@ export function OverlayApp({
             <input id="live-zoom" type="range" min="0.35" max="1.3" step="0.05" value={prefs.zoom} onChange={event => patch({ zoom: Number(event.target.value) }, true)} />
           </label>
           </div>
-          <button className="utility-close enamel-plaque enamel-framed enamel-start" type="button" onClick={() => callbacks.onCloseSettings()}>Done</button>
+          <div className="utility-actions">
+            <button
+              className="enamel-plaque enamel-framed enamel-secondary"
+              type="button"
+              onClick={() => callbacks.onNewRoute()}
+            >
+              New route
+            </button>
+            <button className="utility-close enamel-plaque enamel-framed enamel-start" type="button" onClick={() => callbacks.onCloseSettings()}>Done</button>
+          </div>
         </div>
       </div>
     </>

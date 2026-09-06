@@ -20,6 +20,7 @@ class GameRouteRuntime {
     this._overlay.callbacks.onStart = () => this._startConfiguredRoute();
     this._overlay.callbacks.onLiveChange = () => this._readLiveSettings();
     this._overlay.callbacks.onCloseSettings = () => this._closeUtilityPanels();
+    this._overlay.callbacks.onNewRoute = () => this._openRouteSetup();
     this._routeFrom = document.getElementById('route-from');
     this._routeTo = document.getElementById('route-to');
     this._settingsPanel = 'settings';
@@ -731,9 +732,23 @@ class GameRouteRuntime {
   }
 
   _returnToRouteSetup(message) {
-    this.state = GameState.MENU;
     this._setRouteError(message || '');
-    this._overlay.store.setSetupOpen(true);
+    this._openRouteSetup();
+  }
+
+  /** Leave the ride and show route setup (pause M, finish Esc, settings). */
+  _openRouteSetup() {
+    this._closeUtilityPanels();
+    if (this.sound && typeof this.sound.silence === 'function') this.sound.silence();
+    // Drop an in-flight quiz so it does not sit invisible under the setup rail.
+    if (this.quizPromptName && this._prompt) {
+      this.quizPromptName = '';
+      this.quizPromptKind = null;
+      this._prompt.style.display = 'none';
+    }
+    this.state = GameState.MENU;
+    if (this._overlay && this._overlay.store) this._overlay.store.setSetupOpen(true);
+    history.replaceState(null, '', window.location.pathname);
   }
 
   _checkShareLink() {

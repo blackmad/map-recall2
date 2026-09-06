@@ -706,11 +706,11 @@ export class GameRecallRuntime {
   /**
    * Shared prompt plumbing for every kind of recall question.
    *
-   * `subject` is what the answer *is* — a street, a bridge, or the water under
-   * one. It is the chip at the top of the card, because "Crossing a bridge" as
-   * the headline above "Which water are you crossing?" read as a question
-   * about the bridge. The question is the headline now and the situation is
-   * the caption under it.
+   * `subject` is what the answer *is* — a street, a bridge, or the waterway
+   * you are crossing. It is the chip at the top of the card, because
+   * "Crossing a bridge" as the headline above a water question used to read
+   * as a question about the bridge. The question is the headline now and the
+   * situation is the caption under it.
    */
   _openQuizPrompt({ kind, name, subject, question, context, choices = null, segmentIndex = -1, pointIndex = 0 }: {
     kind: QuizPromptKind;
@@ -831,7 +831,7 @@ export class GameRecallRuntime {
       name: answer,
       subject: kind === 'water' ? 'water' : 'bridge',
       question: kind === 'water'
-        ? (byBoat ? 'Which water are you on?' : 'Which water is under this bridge?')
+        ? (byBoat ? 'Which water are you on?' : 'Which waterway are you crossing?')
         : 'Which bridge is this?',
       context: byBoat ? 'Passing under a bridge' : 'Crossing a bridge',
       choices: alternatives.length >= 2 ? [answer, ...alternatives] : null,

@@ -913,41 +913,95 @@
     // ---- Pause ----
     _renderPaused() {
       const ctx = this.ctx;
-      const cx = CANVAS_W / 2, cy = CANVAS_H / 2;
+      const cx = CANVAS_W / 2;
+      const compact = this.viewport.mode === "compact";
+      const cardW = Math.min(400, CANVAS_W - 24);
+      const padX = compact ? 18 : 28;
+      const cardX = cx - cardW / 2;
       ctx.fillStyle = "rgba(0,0,0,0.6)";
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
-      ctx.fillStyle = "rgba(0,0,0,0.7)";
-      roundRect(ctx, cx - 200, cy - 80, 400, 185, 12);
+      const actions = [
+        { id: "resume", key: "P / ESC", caption: "Resume" },
+        { id: "route", key: "M", caption: "New route" }
+      ];
+      if (this._shareUrl) {
+        actions.push({
+          id: "copy",
+          key: "C",
+          caption: this._copiedTimer > 0 ? "Link copied" : "Copy race link"
+        });
+      }
+      const BUTTON_H = 44;
+      const BUTTON_GAP = 8;
+      const titleH = compact ? 56 : 64;
+      const statsH = 28;
+      const actionsH = compact ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP : 28;
+      const cardH = 20 + titleH + actionsH + statsH + 18;
+      const cardY = (CANVAS_H - cardH) / 2;
+      ctx.fillStyle = "rgba(0,0,0,0.78)";
+      roundRect(ctx, cardX, cardY, cardW, cardH, 12);
       ctx.fill();
       ctx.fillStyle = "#FFD700";
-      ctx.font = "bold 48px monospace";
+      ctx.font = compact ? "bold 32px monospace" : "bold 40px monospace";
       ctx.textAlign = "center";
-      ctx.fillText("PAUSED", cx, cy - 20);
-      ctx.fillStyle = "rgba(255,255,255,0.7)";
-      ctx.font = "14px monospace";
-      ctx.fillText("P / ESC / SPACE to resume", cx, cy + 25);
-      ctx.fillStyle = "rgba(255,255,255,0.4)";
-      ctx.font = "12px monospace";
-      ctx.fillText("M \u2014 back to menu", cx, cy + 45);
-      if (this._shareUrl) {
-        if (this._copiedTimer > 0) {
-          ctx.fillStyle = "#4CAF50";
-          ctx.font = "bold 12px monospace";
-          ctx.fillText("Copied!", cx, cy + 62);
-        } else {
-          ctx.fillStyle = "rgba(255,255,255,0.4)";
-          ctx.font = "12px monospace";
-          ctx.fillText("C \u2014 copy race link", cx, cy + 62);
+      ctx.fillText("PAUSED", cx, cardY + (compact ? 38 : 44));
+      const pauseButtons = [];
+      this._pauseButtonBounds = pauseButtons;
+      let y = cardY + titleH;
+      if (compact) {
+        for (const action of actions) {
+          const primary = action.id === "resume";
+          const bounds = { x: cardX + padX, y, w: cardW - padX * 2, h: BUTTON_H };
+          ctx.fillStyle = primary ? COPPER : "rgba(255,255,255,.08)";
+          roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
+          ctx.fill();
+          if (!primary) {
+            ctx.strokeStyle = RULE;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+          ctx.fillStyle = primary ? "#ffffff" : action.caption === "Link copied" ? GOOD : INK;
+          ctx.font = "700 14px system-ui, sans-serif";
+          ctx.fillText(action.caption, bounds.x + bounds.w / 2, y + 28);
+          pauseButtons.push({ ...bounds, id: action.id });
+          y += BUTTON_H + BUTTON_GAP;
         }
+      } else {
+        ctx.textAlign = "left";
+        let ax = cardX + padX;
+        for (const action of actions) {
+          ctx.font = "bold 11px monospace";
+          const keyW = ctx.measureText(action.key).width + 14;
+          ctx.fillStyle = "rgba(255,255,255,.14)";
+          roundRect(ctx, ax, y + 2, keyW, 20, 5);
+          ctx.fill();
+          ctx.fillStyle = INK;
+          ctx.fillText(action.key, ax + 7, y + 16);
+          const captionX = ax + keyW + 8;
+          ctx.font = "12px system-ui, sans-serif";
+          ctx.fillStyle = action.caption === "Link copied" ? GOOD : MUTED;
+          ctx.fillText(action.caption, captionX, y + 16);
+          const captionW = ctx.measureText(action.caption).width;
+          pauseButtons.push({
+            x: ax,
+            y: y - 4,
+            w: keyW + 8 + captionW + 8,
+            h: 28,
+            id: action.id
+          });
+          ax = captionX + captionW + 22;
+        }
+        y += 28;
       }
+      ctx.textAlign = "center";
       ctx.font = "12px monospace";
       ctx.fillStyle = "#AAA";
       const miles = this._playerDistancePx() / PIXELS_PER_METER / 1609.344;
       const progress = this.player?.raceProgress ?? 0;
       ctx.fillText(
-        `Time: ${this.hud.formatTime(this.raceTime)}  |  ${miles.toFixed(2)} mi  |  ${Math.round(progress * 100)}%`,
+        `Time: ${this.hud.formatTime(this.raceTime)}  \xB7  ${miles.toFixed(2)} mi  \xB7  ${Math.round(progress * 100)}%`,
         cx,
-        cy + 80
+        y + 18
       );
     }
     // ---- The arrival card ----
@@ -1146,7 +1200,7 @@
       }
       const actions = [
         { id: "again", key: "ENTER", caption: "Try again" },
-        { id: "route", key: "ESC", caption: "Choose route" }
+        { id: "route", key: "ESC", caption: "New route" }
       ];
       if (this._shareUrl) {
         actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? "Link copied" : "Copy race link" });

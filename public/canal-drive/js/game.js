@@ -257,10 +257,25 @@ class Game {
       this._setupRace();
       this.state = GameState.RACING;
     } else if (id === 'route') {
-      this.state = GameState.MENU;
-      this._routeSetup.style.display = 'flex';
-      history.replaceState(null, '', window.location.pathname);
+      this._openRouteSetup();
     } else if (id === 'copy' && this._shareUrl) {
+      navigator.clipboard.writeText(this._shareUrl).catch(() => {});
+      this._copiedTimer = 2;
+    }
+  }
+
+  /** Pause card actions — same targets for keyboard and touch. */
+  _runPauseAction(id) {
+    if (id === 'resume') {
+      this.state = GameState.RACING;
+      this.sound.resume();
+      return;
+    }
+    if (id === 'route') {
+      this._openRouteSetup();
+      return;
+    }
+    if (id === 'copy' && this._shareUrl) {
       navigator.clipboard.writeText(this._shareUrl).catch(() => {});
       this._copiedTimer = 2;
     }
@@ -371,6 +386,15 @@ class Game {
             }
           }
         }
+        if (this.state === GameState.PAUSED && this._pauseButtonBounds) {
+          for (const b of this._pauseButtonBounds) {
+            if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
+              this._runPauseAction(b.id);
+              dragging = false;
+              return;
+            }
+          }
+        }
         if (this._recenterBtnBounds) {
           const b = this._recenterBtnBounds;
           if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
@@ -469,7 +493,9 @@ class Game {
       if (this.input.wasPressed('Escape') && this._utilityOpen) { this._closeUtilityPanels(); return; }
       if (this._utilityOpen) return;
     }
-    if (this.input.wasPressed('Tab') || this.input.wasPressed('KeyM')) this.showMiniMap = !this.showMiniMap;
+    if (this.state !== GameState.FINISHED && this.state !== GameState.PAUSED) {
+      if (this.input.wasPressed('Tab') || this.input.wasPressed('KeyM')) this.showMiniMap = !this.showMiniMap;
+    }
     if (this.input.wasPressed('KeyL')) {
       this.routeOptions.line = !this.routeOptions.line;
       this._overlay.store.patchPrefs({ line: this.routeOptions.line }, this._overlayZoom());
@@ -525,18 +551,13 @@ class Game {
       case GameState.PAUSED:
         if (this._copiedTimer > 0) this._copiedTimer -= dt;
         if (this.input.wasPressed('KeyP') || this.input.wasPressed('Escape') || this.input.wasPressed('Space')) {
-          this.state = GameState.RACING;
-          this.sound.resume();
+          this._runPauseAction('resume');
         }
         if (this.input.wasPressed('KeyM')) {
-          this.state = GameState.MENU;
-          this._routeSetup.style.display = 'flex';
-          this.sound.silence();
-          history.replaceState(null, '', window.location.pathname);
+          this._runPauseAction('route');
         }
         if (this.input.wasPressed('KeyC') && this._shareUrl) {
-          navigator.clipboard.writeText(this._shareUrl).catch(() => {});
-          this._copiedTimer = 2;
+          this._runPauseAction('copy');
         }
         break;
 
