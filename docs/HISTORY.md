@@ -4070,6 +4070,44 @@ the blocker for everything else being believable."* The two now sit side by side
 | cross-view correlation, one view per year | 1.25 m | 42% | one photograph against another |
 | doorplate against BAG | 2.12 m | 21% | the wall against the cadastre |
 
+### What the 2.12 m is made of
+
+Two questions follow, and the first one has a clean negative answer. BAG address
+points belong to *verblijfsobjecten*, and a unit's point is its centroid — so a
+systematic gap between "where BAG says the address is" and "where the door
+physically is" would inflate the metric without any pose error at all. Measured as
+a position within the pand's own frontage, over 50 confirmed plates:
+
+```
+0 = left party wall, 1 = right
+  the doorplate      mean 0.47   median 0.45
+  BAG address point  mean 0.48   median 0.47
+  plate minus BAG    mean -0.01  median -0.02   → -0.05 m on a 6.1 m frontage
+```
+
+No convention offset. BAG points sit where the doors are, and a whole class of
+explanation for the 2.12 m is ruled out.
+
+The second question needs readings that *share* a pose, and a band carrying two
+doorplates provides exactly that: their disagreement contains no registration
+error whatsoever, only the intrinsic gap between a plate and the address point it
+names — several units behind one door, a plate beside the opening rather than on
+it, a centroid deep in the house. The spread of band **means** carries that plus
+pose. Between-group against within-group, the decomposition §25 got wrong the
+first time by comparing against the pooled spread:
+
+```
+intrinsic 1.93 m (20 bands carrying two plates)   pose 2.03 m   — 58% of the variance
+```
+
+Both terms are truncated by the inside-wall filter, more severely for the
+within-band spread, so the intrinsic term is a **lower bound** and pose's share is
+if anything overstated. Roughly half and half on 20 bands, which is thin.
+
+The consequence is a bound on an ambition: a *perfect* pose still leaves 1.93 m of
+scatter, most of a frontage. Chasing pose cannot take this metric below that
+floor, and any future claim that it has should be disbelieved.
+
 The anchor figure is **worse, and it is the one to quote.** Correlation asks
 whether two views of a wall agree with each other, which shares and therefore
 cancels the per-track pose error; the doorplate asks whether the wall is where
