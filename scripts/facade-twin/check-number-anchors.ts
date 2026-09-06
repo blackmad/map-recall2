@@ -106,6 +106,30 @@ const near = (x: number, y: number, radius: number) => {
 // pins were doing on a Singel facade, which is what the picture is for.
 const ADDRESS_BEHIND_WALL_M = 20;
 
+/**
+ * A floor under how sure the recogniser has to be.
+ *
+ * Confidence separates the verdicts almost completely and nothing was using it.
+ * On the 400-band store a confirming doorplate has a median confidence of 0.96
+ * with 2% below 0.35; a convicting one has a median of 0.30 with 57% below.
+ * Lindengracht "25" at 13%, Bloemgracht "45" at 19%, Leliegracht "14" at 23%.
+ * A misread digit lands on a plausible neighbour because on a canal terrace one
+ * is always available, so part of the "one frontage displaced" story is not
+ * registration error at all.
+ *
+ * The value is set from the CONFIRMATIONS' distribution alone -- their 5th
+ * percentile, 0.425, meaning "less sure than 95% of readings that turn out to be
+ * right". Not one conflict was looked at in choosing it. Picking the number that
+ * maximised identity would have been fitting seven cases and reporting the fit.
+ *
+ * Default 0: the headline stays the unfiltered rate until a store the floor was
+ * not designed on has tested it. `--min-confidence=0.425` runs that test, and
+ * the block below always reports what the floor would do, so the comparison
+ * costs nothing and cannot be quietly skipped.
+ */
+const PREREGISTERED_CONFIDENCE_FLOOR = 0.425;
+const MIN_CONFIDENCE = Number(arg('min-confidence') ?? 0);
+
 type Verdict = 'confirmed' | 'neighbour-only' | 'conflict' | 'party-wall' | 'unread';
 const results: any[] = [];
 
@@ -188,7 +212,7 @@ for (const band of manifest) {
   const margin = Math.min(CONVICTING_MARGIN_M, (band.wallEndM - band.wallStartM) * 0.2);
   const wellInside = (m: number) => m >= band.wallStartM + margin && m <= band.wallEndM - margin;
   const doorplate = (r: { heightM: number }) => r.heightM >= DOORPLATE_MIN_M && r.heightM <= DOORPLATE_MAX_M;
-  const plates = matched.filter(r => insideWall(r.alongM) && doorplate(r));
+  const plates = matched.filter(r => insideWall(r.alongM) && doorplate(r) && r.confidence >= MIN_CONFIDENCE);
   const confirming = plates.filter(r => own.has(r.value) && wellInside(r.alongM));
   const conflicting = plates.filter(r => !own.has(r.value) && wellInside(r.alongM));
   const partyWall = plates.filter(r => !wellInside(r.alongM));
@@ -214,6 +238,10 @@ for (const band of manifest) {
       text: r.text, confidence: r.confidence, alongM: r.alongM, heightM: r.heightM,
       glyph: doorplate(r) ? 'doorplate' : 'signage',
       offsetM: r.offsetM, isOwn: own.has(r.value), insideWall: insideWall(r.alongM),
+      // The party-wall margin, recorded per reading so anything scoring this
+      // store later uses the rule that decided the verdict rather than a looser
+      // one -- the exact mistake the decoy control was fixed for in §21.
+      wellInside: wellInside(r.alongM),
       address: `${r.address.street} ${r.address.display}`,
     })),
     rawReadingCount: read.readings.length,
@@ -294,6 +322,33 @@ const IDENTITY_BAR = 0.95;
 const MIN_DECIDED = 30;
 const decided = by('confirmed').length + by('conflict').length;
 const rate = decided ? by('confirmed').length / decided : 0;
+// What the pre-registered floor would do to this store, reported whether or not
+// it is applied. Confirmations and conflicts are counted by the same rule.
+{
+  const at = (floor: number) => {
+    let c = 0, k = 0;
+    for (const r of results) {
+      // Exactly the verdict's own rule: a doorplate, inside the wall, and clear of
+      // both party walls. Anything looser makes the comparison meaningless.
+      const plates = (r.readings ?? []).filter((x: any) => x.glyph === 'doorplate' && x.insideWall && x.confidence >= floor);
+      if (plates.some((x: any) => x.isOwn && x.wellInside)) c++;
+      else if (plates.some((x: any) => !x.isOwn && x.wellInside)) k++;
+    }
+    return { c, k };
+  };
+  const base = at(0), pre = at(PREREGISTERED_CONFIDENCE_FLOOR);
+  const pctOf = (x: { c: number; k: number }) => (x.c + x.k ? `${Math.round((100 * x.c) / (x.c + x.k))}%` : '—');
+  console.log(`\n  confidence floor — the pre-registered ${PREREGISTERED_CONFIDENCE_FLOOR} would give`
+    + ` ${pre.c} confirmed against ${pre.k} conflicting, ${pctOf(pre)}`
+    + ` (unfiltered: ${base.c} against ${base.k}, ${pctOf(base)});`
+    + ` it keeps ${base.c ? Math.round((100 * pre.c) / base.c) : 0}% of confirmations.`);
+  console.log('  Set from the confirmations\' own 5th percentile, never from the conflicts.');
+  // The floor was derived from the 400-band store, so on that store this line is
+  // the fit and not a test of it, however good the number looks. Only a store the
+  // floor was not built on can decide whether it generalises.
+  console.log(`  On the store this floor was derived from, that figure is the fit and not the test.`);
+}
+
 console.log(`\nidentity — ${by('confirmed').length} of ${decided} decided panden confirm, ${(rate * 100).toFixed(0)}%`
   + `  (bar ${IDENTITY_BAR * 100}%; the decoy confirms ${decoyConfirmed})`);
 if (decided < MIN_DECIDED) {
@@ -304,4 +359,5 @@ if (rate < IDENTITY_BAR) {
   console.error(`\nFAIL — the wall we project is the right house ${(rate * 100).toFixed(0)}% of the time when this can be told apart, below ${IDENTITY_BAR * 100}%.`);
   process.exit(1);
 }
+
 console.log(`\nPASS — identity holds at ${(rate * 100).toFixed(0)}%, at or above the ${IDENTITY_BAR * 100}% bar.`);
