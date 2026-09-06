@@ -6,6 +6,17 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Teachable transit pairs, graded knowledge map, hub polish — 2026-09-06
+
+1. **Surprise transfers:** `pickTeachableTransitPair` biases ~70% of transit
+   surprise hops toward two-leg plans so changing lines is normal play, not a
+   hand-picked Noord→Isolatorweg demo.
+2. **Knowledge map slice 2:** overview mastery bands (fog / learning / known /
+   mastered) with separate blue tints for canal/river/dock vs land green.
+3. **Playtest polish:** line-quiz distractors prefer other lines at the nearest
+   hub; second-leg plaque stays blank until the new corridor is answered;
+   named check pins Noord→Isolatorweg as a two-leg hop.
+
 ## Transit second-leg drive after hub change — 2026-09-06
 
 Phase E planner/quiz landed without boarding the next corridor. Now:

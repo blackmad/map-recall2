@@ -35,9 +35,9 @@ Wikipedia evidence.
 Full-city map colouring learned roads and waterways by mastery / review state,
 with fog-of-war over the rest. Derive from visits, answers and recency — not
 one drive-through as mastery. Same data should later feed “where next”.
-*Shipped first slice:* overview paints fog vs known network (`mastery ≥ 0.45`)
-in a distinct green; cache busts when known count rises. Still open: graded
-mastery colours, waterways, review-due tint, and a dedicated review screen.
+*Shipped:* graded fog / learning / known / mastered tints; waterways (canal /
+river / dock) use cool blue bands vs land green; cache busts on band counts.
+Still open: review-due tint and a dedicated review screen.
 *Related:* Home-base routes grow an expanding learning radius from the address
 (HUD/briefing readout + soft path bias inside the ring).
 
@@ -71,15 +71,15 @@ automated screenshot diffs for those states (not just `build-storybook`).
 
 **17. Public transit mode.** Tram / metro / ferry as its own routing and
 recall model, not a vehicle skin. *Large.* **GTFS-first** (OVapi → GVB). Plan:
-[`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md). **Phases A–E shipped (first cut):**
-tram+metro drive, termini surprise pool, metro 52 pin, sibling distractors,
-active-line stop scope, `transit-transfers.json`, two-leg planner, hub change
-quiz, and **second-leg drive** (corridor lock + finish at hub then replan).
-Still open: ferry water hops, bus, GTFS-RT, dedicated mesh, GTFS
-`transfers.txt` merge when cached, surprise pairing biased toward teachable
-transfers. Canal-belt teaching streets via `amsterdam-curation` +
-`ensure:amsterdam-teaching-streets`. Pedestrian `bicycle=no` corridors
-(Kalverstraat) playable with `bicycleRestricted`.
+[`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md). **Phases A–E + play polish shipped:**
+tram+metro drive, termini pool, metro 52 pin, sibling/hub distractors,
+active-line stop scope, transfers, two-leg planner + second-leg drive, surprise
+pairing biased toward teachable transfers (~70%), second-leg plaque clear,
+named Noord→Isolatorweg two-leg pin. Still open: bus, GTFS-RT, dedicated mesh,
+GTFS `transfers.txt` merge when cached. Canal-belt teaching streets via
+`amsterdam-curation` + `ensure:amsterdam-teaching-streets`. Pedestrian
+`bicycle=no` corridors (Kalverstraat) playable with `bicycleRestricted`.
+Ferry water hops stay out of scope.
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.

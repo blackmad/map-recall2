@@ -62,6 +62,8 @@ export {
   currentTransitLeg,
   canAdvanceTransitLeg,
   advanceTransitLeg,
+  pickTeachableTransitPair,
+  lineQuizDistractorsAtHub,
   type TransitConnectionPlan,
   type TransitTransferEdge,
   type TransitTransfers,

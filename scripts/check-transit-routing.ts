@@ -35,6 +35,8 @@ import {
   resolveActiveLine,
   siblingLineNames,
   transferTargetLines,
+  pickTeachableTransitPair,
+  lineQuizDistractorsAtHub,
   currentTransitLeg,
   canAdvanceTransitLeg,
   advanceTransitLeg,
@@ -180,6 +182,18 @@ assert.ok(anchors.length >= 12, `enough termini + hubs (got ${anchors.length})`)
     quizCurrentName: 'Tram 2',
   });
   assert.equal(lineAsk.answerHidden, true);
+
+  const secondLegClear = transitPlaqueRouteName({
+    activeLine: '',
+    roadName: 'Metro 50',
+    quizPromptName: '',
+    quizPromptSubject: '',
+    quizCandidateName: '',
+    quizCurrentName: '',
+    transitLegIndex: 1,
+  });
+  assert.equal(secondLegClear.routeName, '', 'second leg clears plaque until new line is answered');
+  assert.equal(secondLegClear.answerHidden, true);
 }
 
 // Curated streets index can name a corridor-adjacent street (world-space stub).
@@ -250,29 +264,36 @@ assert.ok(transfers.counts.transfers >= 50, `enough transfer edges (got ${transf
   assert.ok(others.length >= 1, 'Centraal offers other lines besides Tram 2');
   const targets = transferTargetLines(load, transfers, centraal.stopId, 'Tram 2');
   assert.ok(targets.length >= others.length, 'transfer targets include co-located lines');
+  const hubDistractors = lineQuizDistractorsAtHub(
+    load, transfers, 'Tram 2', centraal.stopId, 3, (items) => items,
+  );
+  assert.ok(hubDistractors.length >= 2, 'hub line quiz has wrong-line distractors');
+  assert.ok(hubDistractors.every((name) => name !== 'Tram 2'));
 
+  // Named two-leg pin: Noord (metro 52) → Isolatorweg (metro 50) must change.
   const noord = load.stops.find((s) => s.name === 'Noord');
   const isolator = load.stops.find((s) => s.name === 'Isolatorweg');
   assert.ok(noord && isolator, 'cross-line termini for two-leg plan');
   const plan = planTransitConnection(load, transfers, noord.stopId, isolator.stopId);
   assert.ok(plan, 'Noord → Isolatorweg finds a connection');
-  assert.ok(plan!.legs.length >= 1 && plan!.legs.length <= 2, 'max two rides');
-  if (noord.stopId !== isolator.stopId) {
-    const sameLine = load.lines.some(
-      (l) => l.stopIds.includes(noord.stopId) && l.stopIds.includes(isolator.stopId),
-    );
-    if (!sameLine) {
-      assert.equal(plan!.legs.length, 2, 'cross-line hop is two legs');
-      assert.ok(plan!.transferStopId, 'transfer hub set');
-      assert.ok(plan!.nextLineName, 'next line named for hub quiz');
-      assert.ok(canAdvanceTransitLeg(plan, 0), 'leg 0 can advance at hub');
-      assert.ok(!canAdvanceTransitLeg(plan, 1), 'leg 1 is the last ride');
-      const advanced = advanceTransitLeg(plan!, 0);
-      assert.equal(advanced?.legIndex, 1);
-      assert.equal(advanced?.lineName, plan!.nextLineName);
-      assert.equal(currentTransitLeg(plan, 1)?.lineName, plan!.nextLineName);
-    }
-  }
+  assert.equal(plan!.legs.length, 2, 'Noord → Isolatorweg is a teachable two-leg hop');
+  assert.ok(plan!.transferStopId, 'transfer hub set');
+  assert.ok(plan!.nextLineName, 'next line named for hub quiz');
+  assert.ok(canAdvanceTransitLeg(plan, 0), 'leg 0 can advance at hub');
+  assert.ok(!canAdvanceTransitLeg(plan, 1), 'leg 1 is the last ride');
+  const advanced = advanceTransitLeg(plan!, 0);
+  assert.equal(advanced?.legIndex, 1);
+  assert.equal(advanced?.lineName, plan!.nextLineName);
+  assert.equal(currentTransitLeg(plan, 1)?.lineName, plan!.nextLineName);
+
+  const pair = pickTeachableTransitPair(load, transfers, anchors, {
+    preferTransfer: 1,
+    chooseIndex: () => 0,
+    transferRoll: () => 0,
+    maxAttempts: 60,
+  });
+  assert.ok(pair, 'teachable pair picker finds a route');
+  assert.equal(pair!.plan.legs.length, 2, 'preferTransfer=1 returns a two-leg hop when available');
 }
 
 console.log(

@@ -377,12 +377,38 @@ export class GameRecallRuntime {
       const alternatives = pickDistractors(pool, answer, DISTRACTOR_COUNT, shuffle);
       return alternatives.length >= 2 ? [answer, ...alternatives] : null;
     }
-    const siblings = Transit.siblingLineNames
-      ? Transit.siblingLineNames(load, answer)
-      : [];
-    const alternatives = Transit.preferSiblingDistractors
-      ? Transit.preferSiblingDistractors(answer, siblings, pool, DISTRACTOR_COUNT, shuffle)
-      : pickDistractors(pool, answer, DISTRACTOR_COUNT, shuffle);
+
+    let nearStopId: string | null = null;
+    if (this.player && load.stops && load.stops.length) {
+      const radiusPx = (Transit.TRANSIT_STOP_QUIZ_RADIUS_M ?? 45) * PIXELS_PER_METER * 1.8;
+      let bestDist = Infinity;
+      for (const stop of load.stops) {
+        const world = this._toWorld(stop.center[0], stop.center[1]);
+        if (!world) continue;
+        const dist = Math.hypot(world.x - this.player.x, world.y - this.player.y);
+        if (dist > radiusPx || dist >= bestDist) continue;
+        bestDist = dist;
+        nearStopId = stop.stopId;
+      }
+    }
+
+    const alternatives = Transit.lineQuizDistractorsAtHub
+      ? Transit.lineQuizDistractorsAtHub(
+        load,
+        this.osmLoader.transitTransfers || null,
+        answer,
+        nearStopId,
+        DISTRACTOR_COUNT,
+        shuffle,
+      )
+      : (() => {
+        const siblings = Transit.siblingLineNames
+          ? Transit.siblingLineNames(load, answer)
+          : [];
+        return Transit.preferSiblingDistractors
+          ? Transit.preferSiblingDistractors(answer, siblings, pool, DISTRACTOR_COUNT, shuffle)
+          : pickDistractors(pool, answer, DISTRACTOR_COUNT, shuffle);
+      })();
     return alternatives.length >= 2 ? [answer, ...alternatives] : null;
   }
 

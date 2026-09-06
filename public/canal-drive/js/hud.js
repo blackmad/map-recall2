@@ -387,27 +387,57 @@ class HUD {
     // network is painted as known. Rotating a phone changes 260×200 → 124×96;
     // answering more streets raises mastery without changing the track.
     const mastery = game._routeMastery || {};
-    let knownStamp = 0;
-    for (const value of Object.values(mastery)) {
-      if ((value || 0) >= 0.45) knownStamp += 1;
+    const nameKey = (name) => String(name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    const bandOf = overview.overviewMasteryBand
+      || ((value) => ((value || 0) >= 0.75 ? 'mastered' : (value || 0) >= 0.45 ? 'known' : (value || 0) >= 0.25 ? 'learning' : 'fog'));
+    const isWater = overview.isWaterSegmentType || (() => false);
+
+    let stampLearning = 0;
+    let stampKnown = 0;
+    let stampMastered = 0;
+    let stampWater = 0;
+    for (const [key, value] of Object.entries(mastery)) {
+      const band = bandOf(value || 0);
+      if (band === 'learning') stampLearning += 1;
+      else if (band === 'known') stampKnown += 1;
+      else if (band === 'mastered') stampMastered += 1;
+      void key;
     }
-    const cacheKey = `${rect.width}x${rect.height}|k${knownStamp}`;
+    for (const segment of game.track.segments || []) {
+      if (isWater(segment.type)) stampWater += 1;
+    }
+    const cacheKey = `${rect.width}x${rect.height}|L${stampLearning}|K${stampKnown}|M${stampMastered}|W${stampWater}`;
     if (this._overviewTrack !== game.track || this._overviewKey !== cacheKey || !this._overviewCache) {
-      const nameKey = (name) => String(name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
       const fog = [];
+      const fogWater = [];
+      const learning = [];
+      const learningWater = [];
       const known = [];
+      const knownWater = [];
+      const mastered = [];
+      const masteredWater = [];
       for (const segment of game.track.segments || []) {
         const points = segment.points || [];
         if (points.length < 2) continue;
         const key = nameKey(segment.name);
-        if (key && (mastery[key] || 0) >= 0.45) known.push(points);
-        else fog.push(points);
+        const band = key ? bandOf(mastery[key] || 0) : 'fog';
+        const water = isWater(segment.type);
+        if (band === 'mastered') (water ? masteredWater : mastered).push(points);
+        else if (band === 'known') (water ? knownWater : known).push(points);
+        else if (band === 'learning') (water ? learningWater : learning).push(points);
+        else (water ? fogWater : fog).push(points);
       }
       const built = overview.buildOverview({
         areaRings: (game.neighborhoods || []).flatMap(hood => hood.rings || []),
         networkSegments: fog,
+        waterNetworkSegments: fogWater,
+        learningNetworkSegments: learning,
+        learningWaterSegments: learningWater,
         knownNetworkSegments: known,
+        knownWaterSegments: knownWater,
+        masteredNetworkSegments: mastered,
+        masteredWaterSegments: masteredWater,
         route: game.routePath || [],
         start: game.track.startPoint || null,
         finish: game.track.finishPoint || null,
