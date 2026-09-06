@@ -58,7 +58,20 @@ const multi = (await readJson(path.join(STAGING, 'multi-view.json'), { facades: 
 const addressPoints = (await readJson(path.join(CACHE, 'address-points.json'), { addresses: [] })).addresses as
   Array<{ street: string; houseNumber: number; display: string; rd: ProjectedPoint; pandId: string | null }>;
 const registration = (await readJson(path.join(CACHE, 'cross-view-registration.json'), { panden: [] })).panden as any[];
-const bandManifest = (await readJson(path.join(CACHE, 'number-bands/manifest.json'), { bands: [] })).bands as any[];
+const manifestFile = arg('manifest') ?? 'manifest.json';
+{
+  // Bands come from a manifest and their verdicts from anchors, and both names are
+  // overwritten by whichever render ran last. Showing one render's picture under
+  // another's verdict is a mistake a person cannot see, so refuse it.
+  const stamped = (await readJson(path.join(CACHE, 'number-bands/anchors.json'), { metadata: {} }) as any)
+    .metadata?.source?.manifest as string | undefined;
+  if (stamped && stamped !== manifestFile) {
+    console.error(`anchors.json was built against ${stamped}, not ${manifestFile}.`
+      + ` Pass --manifest=${stamped}, or re-run check-number-anchors.`);
+    process.exit(2);
+  }
+}
+const bandManifest = (await readJson(path.join(CACHE, 'number-bands', manifestFile), { bands: [] })).bands as any[];
 const anchors = (await readJson(path.join(CACHE, 'number-bands/anchors.json'), { panden: [] })).panden as any[];
 
 const footprints = new Map<string, ProjectedPoint[]>();

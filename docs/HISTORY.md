@@ -4094,7 +4094,11 @@ matched pair — registration 2.12 m either way — but half a dozen quoted figu
 moved a point or two and are corrected above.
 
 `check-number-anchors` now states the overlap on every run and refuses below 50%.
-`check-front-wall` and `fit-block-shifts` read the same defaults and got the same
+Five consumers read those defaults; all five now name what they read.
+`build-conflict-sheet`, `build-registration-review` and `build-explorer` honour the
+stamp and exit rather than draw one render's picture under another's verdict — the
+review deck most of all, because a human label attached to the wrong band is worse
+than no label at all. `check-front-wall` and `fit-block-shifts` got the same
 treatment: both take `--manifest=`, the first honours the stamp anchors.json now
 carries, the second states its own overlap. Re-run matched, front walls reproduce
 exactly at 96.2%; §25's ratios all moved and its conclusions did not, and are
