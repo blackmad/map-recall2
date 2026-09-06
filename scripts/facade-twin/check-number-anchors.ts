@@ -349,6 +349,51 @@ const rate = decided ? by('confirmed').length / decided : 0;
   console.log(`  On the store this floor was derived from, that figure is the fit and not the test.`);
 }
 
+// The other pre-registration (§26c). On the 400-band store, corner panden were
+// enriched sixfold among conflicts -- 29% against 5% -- on three independent
+// descriptions of the same property, with a mechanism §23 had already named: a
+// corner building is numbered on the other street, so a plate on the frontage we
+// are looking at can legitimately belong to a number this pand does not carry
+// here. Two cases is not enough to build a rule on, so the prediction was written
+// down instead: on a larger store, corners stay enriched among conflicts by three
+// times or more, against a base rate near 5% among confirmations.
+//
+// Reported every run so the prediction is scored whether or not anyone remembers
+// to look for it.
+{
+  const streetsOf = new Map<string, Set<string>>();
+  for (const a of addresses) {
+    if (!a.pandId) continue;
+    (streetsOf.get(a.pandId) ?? streetsOf.set(a.pandId, new Set()).get(a.pandId)!).add(a.street);
+  }
+  const numbersFor = (id: string) => numbersOf.get(id) ?? new Set<number>();
+  const isCorner = (id: string) => {
+    const streets = streetsOf.get(id);
+    if (streets && streets.size > 1) return true;
+    const nums = [...numbersFor(id)];
+    return nums.some(n => n % 2 === 1) && nums.some(n => n % 2 === 0);
+  };
+  const share = (verdict: string) => {
+    const g = results.filter(r => r.verdict === verdict);
+    return g.length ? { n: g.length, pct: (100 * g.filter(r => isCorner(r.pandId)).length) / g.length } : null;
+  };
+  const k = share('conflict'), c = share('confirmed');
+  if (k && c) {
+    const ratio = c.pct > 0 ? k.pct / c.pct : Infinity;
+    console.log(`\n  corner panden — ${k.pct.toFixed(0)}% of ${k.n} conflicts against ${c.pct.toFixed(0)}% of ${c.n} confirmations`
+      + `, an enrichment of ${Number.isFinite(ratio) ? `${ratio.toFixed(1)}x` : 'infinite'}`);
+    // A ratio computed from one or two conflicts is arithmetic, not evidence:
+    // on the 400-band store a single corner among six conflicts already reads as
+    // "3.4x". The prediction can only be scored where there are enough conflicts
+    // for the share to mean something.
+    const MIN_CONFLICTS_TO_SCORE = 10;
+    console.log(k.n < MIN_CONFLICTS_TO_SCORE
+      ? `  §26c predicted 3x or more, but ${k.n} conflicts is too few to score it — that share moves by ${(100 / k.n).toFixed(0)} points per case.`
+      : `  §26c predicted 3x or more. ${ratio >= 3 ? 'The prediction holds; a per-street rule is earned.'
+        : 'The prediction fails on this store; those two cases were coincidence.'}`);
+  }
+}
+
 console.log(`\nidentity — ${by('confirmed').length} of ${decided} decided panden confirm, ${(rate * 100).toFixed(0)}%`
   + `  (bar ${IDENTITY_BAR * 100}%; the decoy confirms ${decoyConfirmed})`);
 if (decided < MIN_DECIDED) {

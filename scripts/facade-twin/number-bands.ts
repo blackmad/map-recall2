@@ -160,10 +160,29 @@ for (const pandId of queue) {
    * a 13 cm digit needs about 17 px, and the swap costs 18% of resolution at the
    * median but would halve it for the worst tenth.
    */
+  /**
+   * And a floor that knows about the cliff.
+   *
+   * `RESOLUTION_FLOOR` is *relative* — 70% of the best available, whatever that
+   * is — and a relative floor cannot know that legibility is a threshold rather
+   * than a gradient. Measured over the 400-band store (§27): at or below
+   * 100 px/m a band produces a usable number **2%** of the time; 100–150 gives
+   * 14%, 150–200 gives 30%, and above 200 it is flat at 32%. So on a pand whose
+   * best view is 140 px/m the relative floor happily accepts 98 px/m, which is
+   * inside the dead zone — the swap buys squareness and spends the plate.
+   *
+   * `--min-ppm=` adds an absolute floor on top, applied only when a view above
+   * it exists, so a pand whose every candidate is poor still gets its best one
+   * rather than nothing. Default 0, i.e. the behaviour §22 measured, because the
+   * change has to be tested as a paired run against that and not slipped in.
+   */
   const RESOLUTION_FLOOR = 0.7;
+  const MIN_PPM = Number(arg('min-ppm') ?? 0);
   const pool = candidates.filter(q => isLeafOff(q.v.capturedAt));
   const ranked = pool.length ? pool : candidates;
-  const affordable = ranked.filter(q => q.wallPixelsPerMetre >= ranked[0].wallPixelsPerMetre * RESOLUTION_FLOOR);
+  const legible = MIN_PPM > 0 ? ranked.filter(q => q.wallPixelsPerMetre >= MIN_PPM) : [];
+  const eligible = legible.length ? legible : ranked;
+  const affordable = eligible.filter(q => q.wallPixelsPerMetre >= eligible[0].wallPixelsPerMetre * RESOLUTION_FLOOR);
   const chosen = affordable.reduce((a, b) => (b.obliquity < a.obliquity ? b : a), affordable[0]);
   if (!chosen) continue;
 
