@@ -120,6 +120,20 @@ export function plausibility(input: PlausibilityInput): Plausibility {
   const failures: string[] = [];
   const { wallWidthM, eavesHeightM, declaredStoreys, storeyBands, storeyIntervalsM, bays, openings } = input;
 
+  /**
+   * An empty reading is not a weak measurement, it is the absence of one.
+   *
+   * Every rule below is guarded by `storeyBands > 0` or `openings.length`, so
+   * the emptier a reading is the fewer rules can touch it: a façade with four
+   * openings and five bands is checked six ways, and one with nothing at all
+   * tripped a single rule, lost a fifth, and passed at 0.8. Fifty-nine of 422
+   * stored readings were empty on that arithmetic. With no storey bands there
+   * are no bays and no openings either -- the row carries a wall colour and
+   * nothing else -- so it cannot support a single measured field.
+   */
+  if (storeyBands === 0) {
+    return { score: 0, failures: ['no storey bands found — this is not a façade measurement'] };
+  }
   if (openings.length === 0) failures.push('no openings found');
 
   // Storey count against the building's own height.

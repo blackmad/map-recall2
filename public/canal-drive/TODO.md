@@ -514,22 +514,45 @@ measure end to end from Amsterdam's CC BY panoramas.
 >      25 cm on 26%, 1 m on 55%. The null control is clean — 1 mm moves 3%, which
 >      is the rasterisation floor — so this is a dose-response, not a bug in the
 >      probe.
->    - against 3DBAG's declared storeys (excluding the 635 panden where the field
->      is `0`, which is a *missing* marker and not a zero-storey building):
->      **32% exact, MAE 1.21**.
+>    - against 3DBAG's declared storeys: **37% exact, MAE 0.76, 88% within one
+>      storey** (n=342). Two exclusions are needed to get an honest number and I
+>      first reported it without either: the 635 panden whose `storeys` field is
+>      `0`, which is a *missing* marker and not a zero-storey building, and the
+>      59 of 422 stored readings that are themselves empty — see 1e.
 >    - physically: our ladder implies a median **2.76 m** per storey and puts only
 >      **52%** of buildings in the plausible 2.6–3.6 m band, against **77%** for
->      3DBAG's own height-derived count.
+>      3DBAG's own height-derived count. This is the weakest of the three angles
+>      and the one to chase.
 >
->    Gating on stability helps but does not rescue it: readings that survive a
->    ±10 cm nudge are 36% exact against 21% for those that move, so invariance is
->    a real signal — it just is not a large one, and it costs 28% of coverage.
+>    Gating on stability is a real signal: readings surviving a ±10 cm nudge are
+>    41% exact at MAE 0.70, against 25% and 0.93 for those that move.
 >
->    Three independent angles, one conclusion: the ladder is fragile *and*
->    substantially wrong where it is stable. Fixing the detector, not re-running
->    it at scale, is what comes next. **Do not re-measure the remaining 2,600
->    buildings until this is settled** — it would only manufacture 2,600 more
->    readings with these properties.
+>    **The mechanism is diagnosed, so a fix has somewhere to start.** Two failure
+>    modes, from the delta histograms:
+>    - ~65% of flips are exactly ±1, which is an end rung. `storeyLadder` reports
+>      every rung that fits inside the strip, and the strip's padding (0.4 m below
+>      ground, 0.3 m above eaves) is arbitrary, so the count depends on where the
+>      phase happens to land against a boundary that means nothing.
+>    - the rest are the ladder switching spacing wholesale, including exact period
+>      doubling — pand 0363100012175410 goes 6 storeys to 3 as its spacing goes
+>      2.27 m to 4.54 m. That is the same disease as 1d: an argmax over a
+>      near-flat, quasi-periodic score surface, with no report of how flat it was.
+>
+>    **Do not re-measure the remaining 2,600 buildings until this is settled.**
+
+> 1e. **DONE — an empty reading scored 0.8 and was stored as a measurement.**
+>    Every rule in `plausibility()` is guarded by `storeyBands > 0` or
+>    `openings.length`, so the emptier a reading was the fewer rules could touch
+>    it: a façade with four openings and five bands is checked six ways, and one
+>    with nothing at all tripped `no openings found` alone, lost a fifth, and
+>    passed at 0.8 against a 0.6 bar. **59 of 422 stored readings are empty on
+>    that arithmetic** — no bands, no bays, no openings, a wall colour and nothing
+>    else. `storeyBands === 0` now scores 0 outright.
+>
+>    It also corrupted my own reporting: counting those 59 as "0 storeys" against
+>    3DBAG's 4–5 inflated the ladder's MAE from 0.76 to 1.21 and its within-one
+>    rate from 88% down to 76%. The first version of 1c above was wrong on the
+>    strength of it, and the ladder is a good deal better than I said.
 >
 > 1d. **`check-facade-registration` cannot currently certify registration, and
 >    its red is largely its own.** It correlates BAG plot boundaries against

@@ -1401,3 +1401,67 @@ complementary instruments, and the anchor yield stops being a side quest.
 What this costs: item 1b is closed as done-and-negative, and re-measuring the
 remaining 2,600 buildings is now explicitly blocked, because at these properties it
 would manufacture 2,600 more readings nobody can use.
+
+## 20. The emptier a reading was, the fewer rules could touch it (2026-09-06)
+
+§19 concluded that the storey ladder was "fragile *and* substantially wrong where
+it is stable", on the strength of 32% exact agreement with 3DBAG at MAE 1.21. Half
+of that was my own arithmetic, and this section is the correction.
+
+Chasing *why* the ladder flips, the delta histograms turned up buildings moving
+from four storeys to **zero** under a 25 cm nudge — and buildings sitting at zero
+in the store itself. **Fifty-nine of 422 stored readings have no storey bands, no
+bays and no openings.** They score 0.80 against a 0.6 bar and are published as
+measured façades. They carry a wall colour and nothing else.
+
+The cause is a structural inversion in `plausibility()`. Every rule in it is
+guarded by `storeyBands > 0` or `openings.length` — the interval check, the bay
+count, the opening-area share, the window-shape test, the comparison against an
+independent count. So a façade with four openings and five bands is checked six
+ways, and a reading with nothing in it trips exactly one rule, `no openings
+found`, loses a fifth, and passes. **The less a reading contained, the less could
+be held against it.** `storeyBands === 0` now scores 0 outright, because with no
+bands there are no bays and no openings either: the row cannot support a single
+measured field.
+
+Then the correction to §19, because those 59 rows were in the comparison as
+genuine zero-storey buildings measured against 3DBAG's four and five:
+
+| against 3DBAG | as reported in §19 | with empty readings excluded |
+|---|---|---|
+| exact | 32% | **37%** |
+| MAE | 1.21 | **0.76** |
+| within one storey | 76% | **88%** |
+| bias | −0.29 | **+0.30** |
+
+The ladder is a good deal better than §19 said. What survives unchanged is the
+fragility — 15–17% of real readings still change under a 10 cm lens nudge, 25%
+under 25 cm — and the physical objection, which is now the weakest link rather
+than one of three: our ladder implies 2.76 m per storey and puts 52% of buildings
+in the plausible 2.6–3.6 m band against 77% for 3DBAG's height-derived count.
+
+Stability separates more cleanly than it did on the contaminated numbers: readings
+surviving a ±10 cm nudge are 41% exact at MAE 0.70, against 25% and 0.93 for those
+that move.
+
+**And the fragility now has a mechanism, which §19 did not have.** Two modes:
+
+- About 65% of flips are exactly ±1 — an end rung. `storeyLadder` returns every
+  rung that fits inside the strip, and the strip's padding is 0.4 m below ground
+  and 0.3 m above eaves, both arbitrary. So the storey count partly depends on
+  where the ladder's phase lands against a boundary that means nothing about the
+  building. The band filter then clips a rung near the edge and drops it.
+- The rest switch spacing wholesale, including exact period doubling: pand
+  0363100012175410 reads 6 storeys at 2.27 m spacing and 3 at 4.54 m, one nudge
+  apart.
+
+That second mode is the same disease as §19's registration check — an argmax over
+a near-flat, quasi-periodic surface, with no report of how flat it was. Two
+detectors, built years apart for different jobs, failing the same way. The common
+fix is the one already applied to the registration check: measure the prominence
+of the winning peak and refuse to answer when it is low.
+
+The lesson worth keeping is narrower than "check your instruments". It is that a
+confidence score assembled from *failed rules* silently rewards emptiness, because
+an absent measurement cannot fail a rule about its contents. A score built that
+way needs a floor that asks whether there is anything there at all.
