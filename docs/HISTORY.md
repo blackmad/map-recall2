@@ -4078,6 +4078,53 @@ the blocker for everything else being believable."* The two now sit side by side
 | cross-view correlation, one view per year | 1.25 m | 42% | one photograph against another |
 | doorplate against BAG | 2.12 m | 25% | the wall against the cadastre |
 
+### A fourth hypothesis for the displacement, and a trap inside it
+
+If the imagery carried a scale error about the camera's own position — the band's
+metre being slightly wrong, hinged at the point the van stood — the offset would be
+zero under the camera and grow with distance along the wall, in a fixed proportion.
+That is a *correctable* error, unlike everything else on the list, so it was worth
+an hour.
+
+The first cut looked spectacular:
+
+```
+distance from the camera's foot point      median offset
+  -4.0 to -1.5 m      n=25                   -1.94 m
+  -1.5 to +1.5 m      n=33                   -0.07 m
+  +1.5 to +4.0 m      n=27                   +1.39 m
+```
+
+Zero under the camera, ±1.5 m at four metres out, r = +0.26, slope +0.31 m per
+metre. It is an artifact. The predictor was `alongM − foot` and the outcome is
+`offsetM = alongM − bagAlong`; both contain `alongM`, which manufactures the
+correlation before any physics.
+
+Measuring the position from BAG instead — `bagAlong − foot` — removes that and
+introduces the mirror image, because now the shared term appears in the two with
+opposite signs. It duly reports r = **−0.71**, slope −0.64. Two formulations of one
+question, one strongly positive and one strongly negative, neither meaning
+anything: readings are confined to the wall bracket by the `insideWall` filter
+while BAG positions are not, so the ranges differ and the restriction alone sets
+the slope.
+
+The one honest subset is own-number readings, where the BAG point lies inside our
+wall too and both sides span the same range:
+
+```
+n=65   r = -0.21   slope -0.31 m per metre   (predictor spread only 1.2 m sd)
+```
+
+Weak, and pointing the opposite way from the hypothesis. With 1.2 m of leverage
+this cannot exclude a small effect — but it gives no reason to believe one, and
+the two dramatic versions are worth keeping on the record precisely so nobody
+rediscovers the +0.31 and acts on it.
+
+Four hypotheses for the ±one-frontage error are now closed: a block-wide shift
+(§25), the choice of front wall (§26b), per-frame pose (§26c), and a
+camera-relative scale. What remains is the intrinsic term — how far a plate sits
+from the address point it names — which §30 could not yet size.
+
 ### The two files were from different renders, and nothing said so
 
 Every figure above was first computed against a mismatched pair. `manifest.json`
