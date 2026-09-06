@@ -41,8 +41,19 @@ import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall
 
 const CACHE = path.resolve('.cache/facade-twin');
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
-const OUT = path.join(CACHE, 'number-bands');
 const arg = (n: string) => process.argv.find(v => v.startsWith(`--${n}=`))?.slice(n.length + 3);
+/**
+ * Where the band images and the manifest go.
+ *
+ * Defaults to the one shared directory, which is how a render and a read of the
+ * same store used to collide: a second render overwrites the images an OCR pass
+ * is part-way through reading, and the manifest that describes them, and nothing
+ * announces it. The paired experiments this pipeline runs on -- §22's square-on
+ * ranking, §27's resolution floor -- are worthless unless the two band sets exist
+ * side by side, so give the variant its own directory rather than moving the
+ * previous one out of the way and hoping to remember.
+ */
+const OUT = path.join(CACHE, arg('out') ?? 'number-bands');
 
 const MAX_PIXELS_PER_M = Number(arg('ppm') ?? 260);
 /**
