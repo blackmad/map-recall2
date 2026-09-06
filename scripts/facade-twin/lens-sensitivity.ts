@@ -56,7 +56,8 @@ for (const [pandId, f] of Object.entries(stored)) {
   (byImage.get(f.panoramaId) ?? byImage.set(f.panoramaId, []).get(f.panoramaId)!).push(pandId);
 }
 
-type Row = { pandId: string; delta: number; storeys: number; bays: number; openings: number; prominence: number };
+type Row = { pandId: string; delta: number; storeys: number; bays: number; openings: number; prominence: number;
+  gates: Array<{ mean: number; widthM: number; heightM: number; verdict: string }> };
 const rows: Row[] = [];
 let done = 0, images = 0, skippedNoImage = 0;
 
@@ -93,7 +94,8 @@ for (const [panoramaId, pandIds] of byImage) {
         { start: wall.start, end: wall.end, baseZ: ground - STRIP_BASE_BELOW_GROUND_M, topZ: eaves + 0.3 },
         { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA });
       const m = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
-      rows.push({ pandId, delta, storeys: m.storeys.length, bays: m.bays, openings: m.openings.length, prominence: m.storeyProminence });
+      rows.push({ pandId, delta, storeys: m.storeys.length, bays: m.bays, openings: m.openings.length,
+        prominence: m.storeyProminence, gates: m.openingGates });
     }
     done++;
     if (done % 10 === 0) process.stdout.write(`  ${done}/${BUDGET} buildings`);
@@ -184,6 +186,48 @@ if (nudges.length) {
     if (!g.length) continue;
     const kept = g.filter(held).length;
     console.log(`  ${label.padEnd(18)}${String(g.length).padStart(4)}    ${(100 * kept / g.length).toFixed(0)}%`);
+  }
+}
+
+/**
+ * Which of the three gates changes its mind?
+ *
+ * Confirming an opening is a darkness floor, then a width range, then a height
+ * range, and the box the last two judge is trimmed at a fraction of the first
+ * one's mean -- so a nudge can move a cell across any of them, and across the
+ * later ones by way of the first. Fixing the wrong gate would be effort spent
+ * where the flips are not.
+ */
+if (nudges.length) {
+  const flips: Record<string, number> = {};
+  let cells = 0, changed = 0;
+  for (const d of nudges) {
+    const m = at(d);
+    for (const [id, r] of m) {
+      const b = base.get(id);
+      if (!b) continue;
+      // Cells are matched by position in the scan, which is stable: bands and
+      // bays are enumerated in the same order for the same façade.
+      const n = Math.min(b.gates.length, r.gates.length);
+      for (let i = 0; i < n; i++) {
+        cells++;
+        const was = b.gates[i].verdict, now = r.gates[i].verdict;
+        if (was === now) continue;
+        changed++;
+        flips[`${was} → ${now}`] = (flips[`${was} → ${now}`] ?? 0) + 1;
+      }
+    }
+  }
+  console.log(`\nopening gates: ${changed} of ${cells} cells changed their verdict under the nudge (${(100 * changed / cells).toFixed(1)}%)`);
+  for (const [k, v] of Object.entries(flips).sort((a, b) => b[1] - a[1])) {
+    console.log(`  ${k.padEnd(28)} ${String(v).padStart(4)}  ${(100 * v / changed).toFixed(0)}%`);
+  }
+  // How close does a confirmed opening sit to the floor it had to clear?
+  const means = [...base.values()].flatMap(r => r.gates.filter(g => g.verdict === 'confirmed').map(g => g.mean)).sort((a, b) => a - b);
+  if (means.length) {
+    const qq = (f: number) => means[Math.floor(f * means.length)];
+    console.log(`\n  confirmed cells' mean score: p10 ${qq(0.1).toFixed(3)}  p50 ${qq(0.5).toFixed(3)}  p90 ${qq(0.9).toFixed(3)}  (floor 0.14)`);
+    console.log(`  within 0.02 of the floor: ${(100 * means.filter(m => m < 0.16).length / means.length).toFixed(0)}%`);
   }
 }
 

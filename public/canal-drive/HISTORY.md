@@ -6,6 +6,73 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Amsterdam façade twin: the day the standing goal became a number
+
+For weeks the goal was "good correspondence between panoramas and 3DBAG
+buildings" with no threshold, so every headline written against it chose its own.
+It now has one, and a measurement to hold against it.
+
+**Correspondence is 76%.** Of 400 panden, 99 carry a legible house number; of the
+58 that a reading can decide, 44 confirm the wall we projected and 14 contradict
+it. The decoy — the same readings scored against a house two doors along —
+confirms 3, judged by exactly the rule that decides a real confirmation, which it
+was not before. The owner set the bar at 95%, so `check-number-anchors.ts` now
+exits red, which is the correct colour.
+
+Three of the session's findings were corrections to its own earlier claims, and
+each came from measuring a component instead of inferring it from an aggregate:
+
+- **The lens was real and not binding.** The re-measure prescribed after the
+  sixteen-script lens fix disproved its own hypothesis. The first comparison said
+  otherwise and was wrong: the superseded store had accumulated across three
+  commits and two heading changes, so old-versus-new measured the mixture, not the
+  lens.
+- **A confidence score that rewarded emptiness.** Every rule in `plausibility()`
+  is guarded by `storeyBands > 0` or `openings.length`, so the less a reading
+  contained the less could be held against it — 59 of 422 stored readings had no
+  bands, no bays and no windows, and scored 0.80 against a 0.6 bar. Counting them
+  as zero-storey buildings had inflated the storey ladder's own error from MAE
+  0.76 to 1.21.
+- **The ladder was never the fragile part.** Two mechanisms were proposed for its
+  flipping and both were wrong. `storeyBands` counts bands that kept a confirmed
+  *opening*: of 112 storey flips under a 10 cm lens nudge, 112 came with an
+  opening-count change, against 15% of the readings that held. The fragile
+  component is window detection, and 88% of its gate flips are the width gate,
+  not the darkness floor.
+
+**Instruments gained controls.** `lens-sensitivity.ts` reproduces the store
+exactly at zero offset (422/422) before it is allowed to say anything, and its
+null control — 1 mm moving 3% against 10 cm moving 16% — is what makes the
+dose-response a measurement rather than the probe's own noise.
+`check-facade-registration.ts` now injects a known displacement: widening its
+search window from ±3 m to ±6 m sent three offsets straight to the new edge
+(+6.00, −6.00, +5.92), so its long-standing red was largely its own ambiguity on a
+frontage that repeats every 5.7 m. It is demoted to gating *bias*, which
+periodicity cannot manufacture, and passes at −0.06 m.
+
+**Obliquity turned out to be the lever on identity.** Contradicting panden sit at
+17.4° against 9.3° for confirming ones; square-on bands confirm 89% against 65%.
+The band ranking had been choosing by resolution, where the obliquity penalty is a
+cosine — 6% at 20° against a standoff term that varies by half — so the median band
+was shot at 18.0° when 3.7° was available. It now buys squareness for up to 30% of
+resolution: median 4.4°, square-on bands 124 → 260 on the identical 400 panden.
+The specificity check is what makes it credible: obliquity predicts house-number
+correspondence strongly and storey-measurement quality not at all, which is
+exactly what a horizontal-localisation mechanism demands.
+
+**The 2024–2025 imagery is unparked.** `check-inferred-height.ts` settled the
+claim the code had made about itself: across 97,120 frames the inferred lens
+height differs from a datum-corrected published one by a median of 3 cm, within a
+metre 88% of the time. `number-bands.ts` takes those 15,312 frames now, and
+`check-facade-camera` holds the other half of the rule — anything measuring upward
+must demand a published height. On its first run that check found `build-block.ts`
+filtering on nothing at all.
+
+**New viewer.** `build-city-map.ts` puts all 3,025 footprints on one page,
+coloured by what the anchor said, with 3DBAG's heights and our measurements a
+click away. Nothing had ever shown them all at once, so questions that need a map
+had been answered by grepping JSON.
+
 ## Amsterdam façade twin: four bugs that only a screenshot could find
 
 Everything in this entry was found by looking at the render. None of it was

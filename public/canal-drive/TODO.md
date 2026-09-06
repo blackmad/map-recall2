@@ -26,6 +26,13 @@ The ranking now takes the squarest view that keeps 70% of the best available
 resolution — median obliquity 4.5°, square-on bands 138 → 230. A re-render and OCR
 pass over the same 400 panden is running to test whether 76% moves.
 
+**Viewers** are indexed in the repository [`README.md`](../../README.md), which
+also lists the instruments and what each one measures. New this session:
+`build-city-map.ts` draws all 3,025 footprints on one page, coloured by what the
+house-number anchor said, with 3DBAG's heights, the massing at each published
+height, and our own measurements a click away. It is vector only — the
+photographs live in the explorer, which it links to per pand.
+
 **Owner decisions, taken 2026-09-06** (queued at
 <https://claude.ai/code/artifact/93e41df0-620e-475c-b993-9956caf65750>; answers
 live in that artifact's store under `answers/<id>`):
@@ -37,7 +44,28 @@ live in that artifact's store under `answers/<id>`):
    Precision — how far along the façade — is explicitly *not* gated yet.
 2. **Fix opening detection, not the ladder.** Per §22 the storey count is
    downstream of window detection, and 28% of façades change their opening count
-   under a 10 cm lens nudge.
+   under a 10 cm lens nudge. **Diagnosed, one fix attempted and disproved:**
+
+   `measureFacade` now reports `openingGates` — every bay-crossed-storey cell and
+   which of the three thresholds decided it — so this is measurable rather than
+   inferred. Under a ±10 cm nudge, 15.4% of cells change verdict, and **88% of
+   those are the width gate**: `wrong-width → confirmed` and back. The darkness
+   floor accounts for 6%, and only 2% of confirmed cells sit within 0.02 of it, so
+   it is not the problem. Rejected cells cluster at 0.27–0.48 m wide against a
+   0.55 m floor, and confirmed ones begin exactly at 0.55.
+
+   The obvious suspect was `tighten`, which trims a cell while its profile sits
+   below **60% of the cell's own mean** — so a stronger opening raises its own
+   trimming threshold and is handed a narrower box. Replacing that with half of
+   the profile's peak (the ordinary way to measure a peak's width) was tried and
+   **made it worse**: on a paired 150 buildings, storey counts held 76%/80% against
+   83%/81%, and cell flips rose 15.4% → 16.4%. Reverted; the instrumentation kept.
+
+   So the next attempt should start from what the gate distribution says rather
+   than from the threshold's form: there is a dense population of 0.27–0.48 m
+   candidates that are probably not windows at all — mullions, or the gap between
+   sashes — and the question is whether they should be proposed as cells in the
+   first place.
 3. **Diagnose the 14 contradictions** — done, and it produced the obliquity fix
    described above.
 4. **Registration is demoted from gate to diagnostic** — done.

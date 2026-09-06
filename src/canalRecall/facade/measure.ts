@@ -77,6 +77,32 @@ export interface Storey {
   openings: number;
 }
 
+/**
+ * One candidate cell where a bay crossed a storey, and what became of it.
+ *
+ * Confirming an opening is three hard thresholds in a row -- a darkness floor,
+ * then a width range, then a height range -- and the box the last two judge is
+ * itself trimmed at a fraction of the first one's mean. So a cell near any
+ * boundary flips on a nudge, and the flips compound. This records where each
+ * cell sat, so how close a façade is to changing its mind is measurable instead
+ * of inferred.
+ */
+/**
+ * How much of a cell must read as "not the wall" before it is an opening.
+ *
+ * Named rather than inline because it is one of the three hard edges an opening
+ * has to clear, and the one a nudge crosses most often.
+ */
+export const FAINT_FLOOR = 0.14;
+
+export interface OpeningGate {
+  /** Mean opening-score over the whole cell, against the {@link FAINT_FLOOR}. */
+  mean: number;
+  widthM: number;
+  heightM: number;
+  verdict: 'confirmed' | 'too-faint' | 'wrong-width' | 'wrong-height';
+}
+
 export interface FacadeMeasurement {
   /** Columns discarded as continuous vertical obstructions — trunks, downpipes. */
   obstructionColumns: number;
@@ -100,6 +126,8 @@ export interface FacadeMeasurement {
    * the ladder switches spacing wholesale. 0 when no ladder was found.
    */
   storeyProminence: number;
+  /** Every bay-crossed-storey cell and the gate that decided it. */
+  openingGates: OpeningGate[];
 }
 
 export function toGray(image: { width: number; height: number; data: Uint8ClampedArray }): Gray {
@@ -385,6 +413,7 @@ export function measureFacade(
   // rectangle darker than the wall beside it", which survives a pale frame and
   // a net curtain that defeat a blob search.
   const openings: Opening[] = [];
+  const gates: OpeningGate[] = [];
   for (const band of storeyBands) {
     for (const bay of bayBands) {
       let inside = 0, n = 0;
@@ -393,7 +422,7 @@ export function measureFacade(
       }
       if (!n) continue;
       const mean = inside / n;
-      if (mean < 0.14) continue;
+      if (mean < FAINT_FLOOR) { gates.push({ mean, widthM: 0, heightM: 0, verdict: 'too-faint' }); continue; }
 
       // Tighten the cell to the part that actually carries the signal, so the
       // reported size is the opening's and not the search window's.
@@ -415,8 +444,9 @@ export function measureFacade(
       });
 
       const widthM = (x1 - x0 + 1) / ppm, heightM = (y1 - y0 + 1) / ppm;
-      if (widthM < minWindowW || widthM > maxWindowW) continue;
-      if (heightM < minWindowH || heightM > maxWindowH) continue;
+      if (widthM < minWindowW || widthM > maxWindowW) { gates.push({ mean, widthM, heightM, verdict: 'wrong-width' }); continue; }
+      if (heightM < minWindowH || heightM > maxWindowH) { gates.push({ mean, widthM, heightM, verdict: 'wrong-height' }); continue; }
+      gates.push({ mean, widthM, heightM, verdict: 'confirmed' });
 
       let sum = 0;
       for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) sum += gray.data[y * width + x];
@@ -454,5 +484,6 @@ export function measureFacade(
     storeyHeightsM,
     groundOpenings: openings.filter(o => o.yM < 0.8),
     storeyProminence: Number(storeyProminence.toFixed(2)),
+    openingGates: gates,
   };
 }
