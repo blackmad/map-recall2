@@ -3815,3 +3815,62 @@ elaborate one is what is broken — and the elaborate one here was mine, twice.
 Both of §25's per-house suspects are now closed: the block does not explain the
 displacement, and neither does wall choice. What remains is the projection itself
 — the per-frame camera pose — which is where the next look goes.
+
+### 26c. The pose cannot be tested, and a pre-registered guess about corners (2026-09-06)
+
+With the block (§25) and the wall (§26b) both closed, the remaining suspect was
+the per-frame camera pose. **It cannot be tested on this store at all**, and that
+is worth writing down rather than quietly working around: the 400 bands use **397
+distinct panoramas**. Only three frames serve two panden and none of those decides
+two. There is no frame that produces both a confirmation and a conflict, so the
+question "is this frame's pose wrong" has no comparison available. Any grouping by
+panorama is a grouping by pand wearing a different label, which is exactly the
+confound §25 had to point out about its own table.
+
+Nor do the recorded pose attributes separate the two verdicts:
+
+| | confirmed (41) | conflict (7) |
+|---|---|---|
+| obliquity, median | 1.5° | 2.1° |
+| standoff, median | 4.5 m | 5.2 m |
+| datum source | 40 segment, 1 run | 7 segment |
+| height inferred | none | none |
+| leaf-off | all | all |
+
+The obliquity lever from §22 is spent. After the square-on ranking both groups are
+essentially square-on, and what is left over is not explained by how the band was
+aimed.
+
+**What does separate them is being a corner.** Across three independent
+descriptions of the same property:
+
+| | conflict (7) | confirmed (41) |
+|---|---|---|
+| numbered on more than one street | 29% | 5% |
+| sits in more than one block | 29% | 5% |
+| carries both odd and even numbers | 29% | 2% |
+
+A sixfold enrichment, and the mechanism was already written down in §23: a corner
+building is numbered on the other street, so a plate on the frontage we are
+looking at can legitimately belong to a number our pand does not carry on this
+street. The two are `168820` (Leidsegracht and Prinsengracht, own 68 and 667) and
+`169452` (Eerste Egelantiersdwarsstraat and Egelantiersgracht, own 10, 13, 15).
+The other five conflicts are ordinary: one street, one number, 4.87–6.26 m wide.
+
+**This is deliberately not being fixed yet.** It is two cases. A rule that judges a
+corner pand against only the street its band faces would take identity from 85% to
+at most 89%, and it would be a rule fitted to two observations and then graded on
+those same two — which is the thumb on the scale §21 called out, arriving in a new
+costume. There is no honest way to earn four points from n=2.
+
+So it is pre-registered instead, before the larger store lands. A 1,152-band
+render is running, roughly tripling the decided set. **The prediction: corner
+panden — more than one street, more than one block, or both parities — will remain
+enriched among conflicts by a factor of three or more, at a base rate near 5%
+among confirmations.** If that holds on the larger sample the per-street rule is
+earned and can be implemented. If the enrichment evaporates, these two were
+coincidence and the note stays as a record of a hypothesis that did not survive.
+
+Writing the prediction down first is the whole point. It costs nothing now and it
+is the only thing that stops the larger run from being read as confirmation
+whatever it says.

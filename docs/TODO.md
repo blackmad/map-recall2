@@ -209,10 +209,19 @@ are per-house, and both are cheap to test:
   sit in `unread` with not one among the panden a reading decides. All seven
   conflicts are on front walls. Kept as a guard, since nothing else tested an
   assumption every downstream measurement rests on.
-- **The per-frame camera pose** is what is left after §25 and §26b closed the
-  block and the wall. The displacement is per-house, the wall under it is right,
-  and the block it stands in explains nothing — so the remaining candidate is the
-  projection of that one panorama.
+- ~~**The per-frame camera pose**~~ — **not testable on this store** (§26c). The
+  400 bands use 397 distinct panoramas and no frame decides two panden, so there
+  is no comparison to make; grouping by panorama is grouping by pand under another
+  name. No recorded pose attribute separates the verdicts either (obliquity 1.5°
+  against 2.1°, standoff 4.5 m against 5.2 m, all leaf-off, none height-inferred).
+  Testing it needs a *multi-view* store — the same pand read from two frames —
+  which `multi-view.ts` can build and nothing currently does.
+- **Corner panden — pre-registered, awaiting the larger run** (§26c). Corners are
+  enriched sixfold among conflicts (29% against 5%) on three independent measures,
+  with a mechanism §23 already named. But it is 2 of 7 cases, and a per-street rule
+  fitted to two observations and graded on the same two is worth nothing. The
+  prediction is recorded: **on the 1,152-band store, corners stay enriched among
+  conflicts by 3× or more.** Implement only if that holds.
 - **Corner panden face another street.** Already known to produce false conflicts
   (`169146`, ours [89], read `07`). Now detectable rather than anecdotal: a pand
   in two blocks on two streets is a corner by construction.
