@@ -92,11 +92,12 @@ merge when cached. Canal-belt teaching streets via `amsterdam-curation` +
 scope.
 
 **25. Large-letter postcard compositor (standalone).**
-Pure TS measure + canvas paint for classic “Greetings from…” cards (photo
-clipped inside extruded letters, multi-image strips, typographic fallback).
-Storybook: `Canal Drive/Large Letter Postcard`. Game pop-in overlay on
-neighborhood first-visit / reward is deferred; the compact HUD entry strip
-stays as-is.
+Craft board: [`LARGE_LETTER_CRAFT.md`](LARGE_LETTER_CRAFT.md). **Check loop:**
+`test:large-letter-craft` → `render:large-letter-craft -- --round=N` (gallery +
+pixel P0 on Jordaan: no top ink, cream ring ≤14px) → vision. Three themed
+rounds + a fill bump (span ~64%H). Remaining: true vanishing-point side faces,
+tighter Waterloo greeting nest, place props, game pop-in.
+
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.
