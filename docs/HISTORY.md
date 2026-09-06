@@ -3750,3 +3750,68 @@ Also here: `assemble` and the doorplate constants moved out of
 `check-number-anchors.ts` into `src/canalRecall/facade/doorplates.ts`, so the fit
 reads plates by exactly the rule the identity check grades them by. Verified by
 re-running the identity check across the move: 41 of 48, 85%, unchanged.
+
+### 26b. Wall choice is not the culprit either, and two angular tests were wrong (2026-09-06)
+
+§25 closed the block hypothesis and pointed at per-house suspects. The first was
+wall choice: a band is projected onto one edge of a BAG footprint, and picking a
+flank rather than the front would displace it by roughly the building's own
+frontage — exactly the observed error signature.
+
+It is not happening. `scripts/facade-twin/check-front-wall.ts` now guards it.
+
+| | bands |
+|---|---|
+| wall length matches `plotWidthM` — a front | 325 |
+| wall length matches `plotDepthM` — a flank | 13 |
+| plot too square to decide | 62 |
+
+**96.2% fronts**, and the split by verdict settles it outright:
+
+    unread          front 244   flank 13
+    confirmed       front  40   flank  0
+    neighbour-only  front  20   flank  0
+    party-wall      front  14   flank  0
+    conflict        front   7   flank  0
+
+Every one of the thirteen flanks sits in `unread` — which is exactly what a wall
+with no door on it looks like — and **not one** sits among the panden a reading
+decided anything about. All seven conflicts are on front walls. The lead is
+closed.
+
+The route there is the part worth keeping, because two tests were tried first and
+both were wrong in ways that would have been easy to believe.
+
+**Against `frontBearingDeg`.** It cannot answer the question: it is `atan2` of a
+minimum-area-rectangle edge, so it is ambiguous by 90° and does not distinguish a
+front from a flank. The tell was that comparing against it returned a median
+disagreement of **51°** across *all* bands including the confirmed ones — and 45°
+is what random looks like on a 0–90° fold. A corroboration that comes back at
+chance is a broken instrument, not a refutation. The field is misleadingly named.
+
+**Against a local run direction.** Comparing the band's wall against the block
+chain's tangent, drawn centroid to centroid, flagged 54 bands as more than 60° off
+— 23% — and that looked like a major finding: confirmed bands sat at a median
+12.6° against 24.6° for unread, and 133 of 294 unread bands were more than 30°
+off, which would have explained a large slice of the 79% unread rate. The corner
+confound was checked and killed (panden in two blocks score *better*, median 15.0°
+with 2 of 30 beyond 60°). Then the proportions test agreed with **7 of those 54**.
+
+Rather than accept that, the centroid explanation was tested — neighbouring canal
+houses have very different depths, so a centroid-to-centroid line is not along the
+terrace — by swapping in the street centreline's local direction, which knows
+nothing about depth. It flagged **63**, worse, agreeing on 8. So that explanation
+was wrong too, and the angular approach is dominated by something neither the
+terrace chain nor the centreline captures.
+
+The lesson is about which test wins a disagreement. The proportions test uses one
+number per building, from the building's own shape, with no street, no chain, no
+camera and no convention to get wrong. The angular tests each need a reference
+direction that has to be constructed, and both constructions turned out to carry
+more error than the effect being measured. When a simple independent test
+contradicts an elaborate one on 87% of the elaborate one's positives, the
+elaborate one is what is broken — and the elaborate one here was mine, twice.
+
+Both of §25's per-house suspects are now closed: the block does not explain the
+displacement, and neither does wall choice. What remains is the projection itself
+— the per-frame camera pose — which is where the next look goes.

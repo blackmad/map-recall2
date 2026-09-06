@@ -202,11 +202,17 @@ Guarded by `npx tsx scripts/facade-twin/check-number-order.ts`.
 The block was the wrong unit. If the displacement is per-house then the suspects
 are per-house, and both are cheap to test:
 
-- **Which footprint edge did we call the front wall?** A pand whose front was
-  taken from the wrong edge is displaced by roughly its own frontage, which is
-  exactly the error signature. Check the chosen wall against the block chain's
-  local direction — `blocks.json` now supplies that, and a front wall that is not
-  roughly parallel to its neighbours' is the candidate.
+- ~~**Which footprint edge did we call the front wall?**~~ **Closed** (§26b).
+  `check-front-wall.ts` measures it from the building's own proportions — a canal
+  house is narrow and deep, so a wall matching `plotWidthM` is a front and one
+  matching `plotDepthM` is a flank. **96.2% are fronts**, and all thirteen flanks
+  sit in `unread` with not one among the panden a reading decides. All seven
+  conflicts are on front walls. Kept as a guard, since nothing else tested an
+  assumption every downstream measurement rests on.
+- **The per-frame camera pose** is what is left after §25 and §26b closed the
+  block and the wall. The displacement is per-house, the wall under it is right,
+  and the block it stands in explains nothing — so the remaining candidate is the
+  projection of that one panorama.
 - **Corner panden face another street.** Already known to produce false conflicts
   (`169146`, ours [89], read `07`). Now detectable rather than anecdotal: a pand
   in two blocks on two streets is a corner by construction.
