@@ -4078,6 +4078,31 @@ the blocker for everything else being believable."* The two now sit side by side
 | cross-view correlation, one view per year | 1.25 m | 42% | one photograph against another |
 | doorplate against BAG | 2.12 m | 25% | the wall against the cadastre |
 
+### The dead zone yields nothing at all, and it is the imagery
+
+§27 put the sub-100 px/m yield at 2%. On the 400 store, split by resolution and
+counting *decided* panden rather than usable readings, the floor is lower than
+that:
+
+```
+    0-150 px/m    n=161    0% decided
+  150-220 px/m    n= 82   16%
+  220+   px/m     n=157   22%
+```
+
+Not one band below 150 px/m decided anything, over 161 of them — 40% of the store
+producing nothing whatever. `datumSource` looked at first like a second lever:
+bands carrying a per-run datum decide 3% against 13% for per-segment. It is the
+same fact wearing a different label. Run-datum bands sit at a median 118 px/m,
+15.4° of obliquity and 10.5 m of standoff, against 205 px/m, 3.9° and 5.6 m — they
+are the panden for which no near, square view exists at all, and inside a
+resolution band the gap disappears.
+
+So the dead zone is a property of what was photographed, not of how it is being
+chosen — which is exactly the question the pre-registered `--min-view-ppm` run
+exists to settle, and the reason its failure would be as informative as its
+success.
+
 ### A fourth hypothesis for the displacement, and a trap inside it
 
 If the imagery carried a scale error about the camera's own position — the band's
