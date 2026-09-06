@@ -383,14 +383,31 @@ class HUD {
     if (!overview || !game.track) return;
     const rect = this._rect('minimap', { x: MINIMAP_X, y: CANVAS_H - MINIMAP_H - 15, width: MINIMAP_W, height: MINIMAP_H });
 
-    // The cache is keyed on the rectangle as well as the track: rotating a
-    // phone changes the overview from 260x200 to 124x96, and a cache keyed on
-    // the track alone would blit the old size into the new box.
-    const cacheKey = `${rect.width}x${rect.height}`;
+    // The cache is keyed on the rectangle, the track, and how much of the
+    // network is painted as known. Rotating a phone changes 260×200 → 124×96;
+    // answering more streets raises mastery without changing the track.
+    const mastery = game._routeMastery || {};
+    let knownStamp = 0;
+    for (const value of Object.values(mastery)) {
+      if ((value || 0) >= 0.45) knownStamp += 1;
+    }
+    const cacheKey = `${rect.width}x${rect.height}|k${knownStamp}`;
     if (this._overviewTrack !== game.track || this._overviewKey !== cacheKey || !this._overviewCache) {
+      const nameKey = (name) => String(name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+      const fog = [];
+      const known = [];
+      for (const segment of game.track.segments || []) {
+        const points = segment.points || [];
+        if (points.length < 2) continue;
+        const key = nameKey(segment.name);
+        if (key && (mastery[key] || 0) >= 0.45) known.push(points);
+        else fog.push(points);
+      }
       const built = overview.buildOverview({
         areaRings: (game.neighborhoods || []).flatMap(hood => hood.rings || []),
-        networkSegments: (game.track.segments || []).map(segment => segment.points || []),
+        networkSegments: fog,
+        knownNetworkSegments: known,
         route: game.routePath || [],
         start: game.track.startPoint || null,
         finish: game.track.finishPoint || null,

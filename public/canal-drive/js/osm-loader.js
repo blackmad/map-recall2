@@ -255,7 +255,8 @@ class OSMLoader {
     if (!response.ok) throw new Error(`${city.name} transit-network: HTTP ${response.status}`);
     const network = await response.json();
     const load = Transit.adaptTransitNetwork(network, {
-      playableRefs: Transit.TRANSIT_THIN_SLICE_REFS,
+      playableRefs: [],
+      playableModes: Transit.TRANSIT_DRIVEABLE_MODES,
       cityId: city.id,
     });
     this.featureMeta = new Map(load.featureMeta);

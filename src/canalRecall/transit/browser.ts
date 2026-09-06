@@ -4,6 +4,7 @@
  */
 export {
   TRANSIT_THIN_SLICE_REFS,
+  TRANSIT_DRIVEABLE_MODES,
   adaptTransitNetwork,
   displayStopName,
   lineDisplayName,

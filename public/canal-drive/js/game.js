@@ -121,6 +121,7 @@ class Game {
     this.routePattern = 'surprise';
     this.homeBase = null;
     this.homeLeg = 'outbound';
+    this._homeLearningRadiusKm = null;
 
     // OSM components
     this.osmLoader = new OSMLoader();

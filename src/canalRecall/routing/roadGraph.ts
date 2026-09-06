@@ -54,6 +54,16 @@ export type LearningRouteOptions<TMetadata = unknown> = Readonly<{
   familiarityPenalty?: number;
   /** Maximum extra physical distance accepted. Defaults to 12%. */
   maxDetourRatio?: number;
+  /**
+   * Soft home-ring bias: edges whose midpoint sits outside `radius` (world px)
+   * pay up to `outsidePenalty` extra (default 25%). Omitted = no geo bias.
+   */
+  homeBias?: Readonly<{
+    x: number;
+    y: number;
+    radius: number;
+    outsidePenalty?: number;
+  }>;
 }>;
 
 export type LearningRoutePlan = Readonly<{
@@ -389,9 +399,22 @@ export function planLearningRoadRoute<TMetadata>(
     if (!names.length) return 0;
     return Math.max(...names.map((name) => Math.max(0, Math.min(1, options.masteryForName(name) || 0))));
   };
+  const homeBias = options.homeBias;
+  const outsidePenalty = homeBias?.outsidePenalty ?? 0.25;
+  if (homeBias && (!(homeBias.radius > 0) || !(outsidePenalty >= 0))) {
+    throw new RangeError('homeBias.radius must be positive and outsidePenalty non-negative');
+  }
+  const homeOutside = (from: RoadGraphNode<TMetadata>, to: RoadGraphNode<TMetadata>): number => {
+    if (!homeBias) return 0;
+    const midX = (from.x + to.x) * 0.5;
+    const midY = (from.y + to.y) * 0.5;
+    const dist = Math.hypot(midX - homeBias.x, midY - homeBias.y);
+    return Math.max(0, Math.min(1, dist / homeBias.radius - 1));
+  };
   const preferred = shortestRoadPaths(graph, startPoint, {
     stopAt: finish,
-    edgeCost: ({ edge, distance }) => distance * (1 + familiarityPenalty * mastery(edge)),
+    edgeCost: ({ edge, distance, from, to }) =>
+      distance * (1 + familiarityPenalty * mastery(edge) + outsidePenalty * homeOutside(from, to)),
   });
   const shortestNodes = nodePath(shortest.previous, finish);
   const preferredNodes = preferred?.distances.has(finish.key) ? nodePath(preferred.previous, finish) : shortestNodes;

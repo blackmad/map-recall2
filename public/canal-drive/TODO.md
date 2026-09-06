@@ -35,8 +35,11 @@ Wikipedia evidence.
 Full-city map colouring learned roads and waterways by mastery / review state,
 with fog-of-war over the rest. Derive from visits, answers and recency — not
 one drive-through as mastery. Same data should later feed “where next”.
-*Related shipped:* Home-base routes now grow an expanding learning radius from
-the address (closer + novel destinations first) — not a full knowledge map.
+*Shipped first slice:* overview paints fog vs known network (`mastery ≥ 0.45`)
+in a distinct green; cache busts when known count rises. Still open: graded
+mastery colours, waterways, review-due tint, and a dedicated review screen.
+*Related:* Home-base routes grow an expanding learning radius from the address
+(HUD/briefing readout + soft path bias inside the ring).
 
 ---
 
@@ -51,10 +54,12 @@ churn encyclopedia blurbs — stage, diff coverage, publish only after review.
 Do not treat this as a red routing bug.
 
 **11c. Thicken thin English ledes; prune translation cache.**
-English publish gates are green for the Randstad cities. Remaining thin cards
-are Wikidata description floors or rename-refusal fallbacks. Stale entries in
-`scripts/english-translations.json` are counted but not pruned. Re-run
-`enrich:*-english` after any refresh that reintroduces Dutch.
+English publish gates are green. `--prune-stale` on
+`translate-extracts-to-english.ts` now drops orphaned cache entries against
+**all** Randstad extracts (shared cache; one-city prune would delete live
+siblings) — 322 orphans removed → 1,422 kept. Remaining thin cards are mostly
+Wikidata description floors (~400 distinct); upgrade-from-original is sparse
+and `trn` still rename-refuses many. Re-run `enrich:*-english` after refresh.
 
 **14. Storybook visual regressions.**
 HUD / briefing / finish / notice states compile in Storybook. Still open:
@@ -66,11 +71,11 @@ automated screenshot diffs for those states (not just `build-storybook`).
 
 **17. Public transit mode.** Tram / metro / ferry as its own routing and
 recall model, not a vehicle skin. *Large.* **GTFS-first** (OVapi → GVB). Plan:
-[`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on `spike/canal-transit`. **Phases A–C
-shipped on this branch:** extract + `TravelMode=transit` + tram 2 thin slice
-(stop/line quizzes, sticky line plaque, dest-scoped intermediate stops,
-corridor street quizzes from curated `streets.json`, near-route landmarks,
-`check:transit`). Still open: Phase D (all GVB lines), Phase E (transfers),
+[`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on `spike/canal-transit`. **Phases A–D
+shipped on this branch:** extract + `TravelMode=transit` + Phase D playable
+**tram + metro** (`playableRefs: []` + `TRANSIT_DRIVEABLE_MODES`; ferries still
+held for water hops). Stop/line quizzes, sticky plaque, dest-scoped stops,
+corridor streets, landmarks, `check:transit`. Still open: Phase E (transfers),
 bus, GTFS-RT, dedicated mesh. Canal-belt teaching streets are force-included
 via `amsterdam-curation` boosts + `ensure:amsterdam-teaching-streets` (cap
 raised to 500 on next full rebuild). Pedestrian `bicycle=no` corridors

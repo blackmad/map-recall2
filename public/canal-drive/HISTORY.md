@@ -6,6 +6,30 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Home radius polish, knowledge tint, transit Phase D, English prune — 2026-09-05
+
+Four follow-ons after the expanding home-learning radius landed:
+
+1. **Home polish.** Persist `canalRecall.homeLearningRadius.v1`; HUD plaque and
+   briefing note show `Learning near home · ~X.X km` when there is no quiz
+   feedback. Soft `homeBias` on `planLearningRoadRoute` prefers paths that stay
+   inside the ring so surprise hops inside the radius do not swing across the
+   city for a few metres of novelty.
+2. **Knowledge overview (first slice of P1 #6).** City overview splits network
+   segments into fog vs known (`routeMastery ≥ 0.45`) and paints known in a
+   quieter green. Cache key includes known-count so answering a street updates
+   the map without changing the track. Graded colours / waterways / review-due
+   remain on the board.
+3. **Transit Phase D.** Playable modes are tram + metro (`TRANSIT_DRIVEABLE_MODES`);
+   `playableRefs: []` loads every line in those modes. Anchors broadened beyond
+   tram 2. Thin-slice pins stay in `check:transit-routing` for Dam / Centraal→
+   Museumplein regressions. Ferries still excluded until water hops are designed.
+4. **English cache prune.** `--prune-stale` drops orphaned
+   `english-translations.json` entries, scanning **all** city extracts so a
+   one-directory run cannot delete live Utrecht/Rotterdam/Den Haag hashes.
+   322 orphans removed. Thickening remaining Wikidata floors is still blocked
+   by sparse originals + rename-refusal on `trn`.
+
 ## Pedestrian bicycle=no is playable, flagged restricted — 2026-09-05
 
 Kalverstraat (and similar shopping streets) are `highway=pedestrian` +

@@ -6,6 +6,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { TransitNetwork } from '../src/canalRecall/transit/network.ts';
 import {
+  TRANSIT_DRIVEABLE_MODES,
   TRANSIT_THIN_SLICE_REFS,
   adaptTransitNetwork,
   displayStopName,
@@ -34,14 +35,26 @@ const extractPath = path.resolve('public/data/extracts/amsterdam/transit-network
 assert.ok(existsSync(extractPath), `missing ${extractPath}`);
 
 const network = JSON.parse(readFileSync(extractPath, 'utf8')) as TransitNetwork;
-const load = adaptTransitNetwork(network, { playableRefs: TRANSIT_THIN_SLICE_REFS });
 
-assert.equal(load.ways.length, 1, 'thin slice exposes one tram corridor');
-assert.equal(load.ways[0].tags.name, 'Tram 2');
-assert.ok(load.stops.length >= 15, `tram 2 has enough stops (got ${load.stops.length})`);
-assert.ok(load.stops.some((s) => s.name === 'Dam'), 'Dam stop display name');
+// Phase C pin: tram 2 thin slice still adapts and routes.
+const thin = adaptTransitNetwork(network, { playableRefs: TRANSIT_THIN_SLICE_REFS });
+assert.equal(thin.ways.length, 1, 'thin slice exposes one tram corridor');
+assert.equal(thin.ways[0].tags.name, 'Tram 2');
+assert.ok(thin.stops.length >= 15, `tram 2 has enough stops (got ${thin.stops.length})`);
+assert.ok(thin.stops.some((s) => s.name === 'Dam'), 'Dam stop display name');
 assert.equal(displayStopName('Amsterdam, Dam'), 'Dam');
 assert.equal(lineDisplayName('tram', '2'), 'Tram 2');
+
+// Phase D: all tram + metro corridors (ferries excluded).
+const load = adaptTransitNetwork(network, {
+  playableRefs: [],
+  playableModes: TRANSIT_DRIVEABLE_MODES,
+});
+assert.ok(load.ways.length > 1, `Phase D exposes many corridors (got ${load.ways.length})`);
+assert.ok(load.ways.some((w) => w.tags.name === 'Tram 2'), 'tram 2 still present in Phase D');
+assert.ok(load.ways.some((w) => w.tags.name.startsWith('Metro ')), 'metro corridors unlocked');
+assert.ok(!load.ways.some((w) => w.tags.name.startsWith('Ferry ')), 'ferries stay out of Phase D drive');
+assert.ok(load.stops.some((s) => s.name === 'Dam'), 'Dam stop display name');
 
 const dam = load.stops.find((s) => s.name === 'Dam');
 assert.ok(dam, 'Dam on tram 2');
@@ -68,22 +81,23 @@ assert.ok(anchors.length >= 4, 'enough retarget anchors');
   assert.match(stopKey, /^v1_amsterdam_/);
 }
 
-// Destination-scoped intermediate stops: Centraal → Museumplein.
+// Destination-scoped intermediate stops: Centraal → Museumplein (tram 2 line).
 {
-  const line = load.lines[0];
-  assert.ok(line, 'thin slice line');
-  const centraal = load.stops.find((s) => s.name === 'Centraal Station');
-  const museum = load.stops.find((s) => s.name === 'Museumplein');
-  assert.ok(centraal && museum, 'Centraal and Museumplein on tram 2');
-  const fromId = resolveRouteStopId(load.stops, { id: `stop-${centraal.stopId}`, name: centraal.name });
-  const toId = resolveRouteStopId(load.stops, { id: `stop-${museum.stopId}`, name: museum.name });
+  const line = thin.lines[0];
+  assert.ok(line, 'thin slice tram 2 line');
+  const centraal = thin.stops.find((s) => s.name === 'Centraal Station');
+  const museum = thin.stops.find((s) => s.name === 'Museumplein');
+  const damThin = thin.stops.find((s) => s.name === 'Dam');
+  assert.ok(centraal && museum && damThin, 'Centraal and Museumplein on tram 2');
+  const fromId = resolveRouteStopId(thin.stops, { id: `stop-${centraal.stopId}`, name: centraal.name });
+  const toId = resolveRouteStopId(thin.stops, { id: `stop-${museum.stopId}`, name: museum.name });
   assert.equal(fromId, centraal.stopId);
   assert.equal(toId, museum.stopId);
   const travel = stopIdsInTravelOrder(line.stopIds, fromId!, toId!);
   assert.equal(travel[0], centraal.stopId);
   assert.equal(travel[travel.length - 1], museum.stopId);
   const intermediate = intermediateStopIds(line.stopIds, fromId!, toId!);
-  assert.ok(intermediate.includes(dam.stopId), 'Dam is intermediate Centraal→Museumplein');
+  assert.ok(intermediate.includes(damThin.stopId), 'Dam is intermediate Centraal→Museumplein');
   assert.ok(!intermediate.includes(centraal.stopId), 'origin excluded from intermediate set');
   assert.ok(intermediate.includes(museum.stopId), 'destination included');
   assert.ok(isStopAheadTowardFinish(500, 200), 'closer-to-finish stop is ahead');
@@ -145,7 +159,7 @@ assert.ok(anchors.length >= 4, 'enough retarget anchors');
 // Tram 2 corridor reachable end-to-end on the adapted graph.
 {
   const centre = { lat: 52.372851, lon: 4.8936 };
-  const { segments } = buildRoadSegments(load.ways, centre, {
+  const { segments } = buildRoadSegments(thin.ways, centre, {
     simplificationToleranceDegrees: 0.00003,
     roadWidths: { tram: 38 },
     defaultRoadWidth: 38,
@@ -166,6 +180,6 @@ assert.ok(anchors.length >= 4, 'enough retarget anchors');
 }
 
 console.log(
-  `Transit routing OK: Tram 2 (${load.stops.length} stops, ${load.ways[0].nodes.length} shape pts), `
-  + `Dam pin, dest-scoped stops, sticky plaque, corridor streets, line/stop keys stable.`,
+  `Transit routing OK: Phase D ${load.ways.length} corridors / ${load.stops.length} stops; `
+  + `tram 2 thin pin (${thin.ways[0].nodes.length} shape pts), Dam, dest-scoped stops, sticky plaque.`,
 );

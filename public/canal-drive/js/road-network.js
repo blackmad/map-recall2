@@ -30,6 +30,7 @@ class RoadNetwork {
     this.numCheckpoints = 10;
     this._frameCache = new Map();
     this._routeMastery = {};
+    this._homeBias = null;
 
     this._computeSegmentGeometry();
     this._buildGrid();
@@ -276,6 +277,10 @@ class RoadNetwork {
     this._routeMastery = mastery || {};
   }
 
+  setHomeBias(bias) {
+    this._homeBias = bias && bias.radius > 0 ? bias : null;
+  }
+
   _edgeNames(edge) {
     return edge.segmentMetadata.map(metadata => metadata && metadata.name).filter(Boolean);
   }
@@ -287,10 +292,22 @@ class RoadNetwork {
   }
 
   _learningEdgeCost() {
-    if (!Object.keys(this._routeMastery).length) return undefined;
-    return ({ edge, distance }) => {
-      const familiarity = Math.max(0, ...this._edgeNames(edge).map(name => this._masteryForName(name)));
-      return distance * (1 + 0.18 * familiarity);
+    if (!Object.keys(this._routeMastery).length && !this._homeBias) return undefined;
+    const familiarityPenalty = 0.18;
+    const homeBias = this._homeBias;
+    const outsidePenalty = homeBias?.outsidePenalty ?? 0.25;
+    return ({ edge, distance, from, to }) => {
+      const familiarity = Object.keys(this._routeMastery).length
+        ? Math.max(0, ...this._edgeNames(edge).map(name => this._masteryForName(name)))
+        : 0;
+      let outside = 0;
+      if (homeBias) {
+        const midX = (from.x + to.x) * 0.5;
+        const midY = (from.y + to.y) * 0.5;
+        const dist = Math.hypot(midX - homeBias.x, midY - homeBias.y);
+        outside = Math.max(0, Math.min(1, dist / homeBias.radius - 1));
+      }
+      return distance * (1 + familiarityPenalty * familiarity + outsidePenalty * outside);
     };
   }
 
@@ -300,6 +317,7 @@ class RoadNetwork {
       namesForEdge: edge => this._edgeNames(edge),
       familiarityPenalty: 0.18,
       maxDetourRatio: 0.12,
+      homeBias: this._homeBias || undefined,
     });
   }
 
