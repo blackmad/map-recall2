@@ -44,8 +44,28 @@ def main() -> int:
     with open(manifest_path) as fh:
         manifest = json.load(fh)
 
-    import easyocr
-    reader = easyocr.Reader(['en'], gpu=False, verbose=False)
+    import easyocr, torch
+
+    # Apple GPU where there is one, and never the quantised model with it.
+    #
+    # This ran `gpu=False` with easyocr's default `quantize=True`, which forces a
+    # CPU-only dynamically-quantised LSTM -- the source of the torch deprecation
+    # warning at the top of every log. On this machine that cost 12.6 s a tile
+    # against 2.7 s on MPS, so a 400-pand pass took four and a half hours instead
+    # of forty minutes, and the whole plan for reaching the identity bar needs
+    # thousands of panden.
+    #
+    # Verified equivalent before being adopted, because a speedup that changes
+    # the answers is worse than no speedup: over 40 tiles both devices returned
+    # the same 82 readings, and all 40 tiles matched on text, confidence to two
+    # decimals, and box centre to the pixel.
+    if torch.cuda.is_available() or torch.backends.mps.is_available():
+        reader = easyocr.Reader(['en'], gpu=True, quantize=False, verbose=False)
+        device = 'cuda' if torch.cuda.is_available() else 'mps'
+    else:
+        reader = easyocr.Reader(['en'], gpu=False, verbose=False)
+        device = 'cpu'
+    print(f'easyocr on {device}', file=sys.stderr)
 
     def read(array, **kw):
         # Tiles are sampled at the source's own rate, so a 13 cm digit arrives
@@ -105,6 +125,7 @@ def main() -> int:
                 'licence': 'Apache-2.0',
                 'manifestSha256': manifest_hash,
                 'minConfidence': args.min_confidence,
+                'device': device,
                 'seconds': round(time.time() - t0, 1),
                 'note': 'The recogniser was not told what number to expect. Every digit reading is '
                         'kept, including ones belonging to a neighbour: those are the measurement.',

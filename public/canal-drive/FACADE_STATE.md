@@ -1619,3 +1619,41 @@ Also in this pass: the massing drawing became three extruded solids — roof 50t
 those percentiles is a fact about the roof's shape, and that is visible in a prism
 and invisible in a number. They are labelled as our extrusions of 3DBAG's heights,
 not 3DBAG's own LoD2.2 mesh, which is not cached here.
+
+## 24. Four and a half hours of OCR was a configuration mistake (2026-09-06)
+
+A 400-pand house-number pass took 16,056 seconds — 40 s per band, about 12.6 s per
+tile. That number was quoted several times in this log as the cost of an anchor
+run, and it shaped the plan: how many panden could be afforded, whether to buy a
+commercial vision model, whether identity evidence was worth having at all.
+
+It was `gpu=False`, with EasyOCR's default `quantize=True` forcing a CPU-only
+dynamically-quantised LSTM. The torch deprecation warning that opens every log in
+this project — `torch.quantize_per_tensor ... deprecated` — was that model
+announcing itself, and it had been read as noise for weeks. This machine has MPS,
+and EasyOCR 1.7.2 selects it.
+
+**2.71 s per tile against 12.64 s: 4.7× faster.** A 400-pand pass is now about 40
+minutes, and the boundary-wide run the identity bar needs goes from a fortnight of
+evenings to an afternoon.
+
+Verified before adoption, because a speedup that changes the answers is worse than
+no speedup: over 40 tiles both devices returned the same 82 readings, and all 40
+tiles matched exactly on text, confidence to two decimals, and box centre to the
+pixel.
+
+**The second pass was measured rather than assumed while the question was open.**
+Each tile is read twice, plain and autocontrast, on the theory that a number carved
+in sandstone is pale paint on pale stone. Halving the work by dropping that pass
+was tempting at 12.6 s a tile. The archive says no: autocontrast produces 2,625 of
+4,180 readings, and **40 bands — 11% of everything that reads at all — would go
+dark without it.**
+
+For the record, since the cost question came up: reading these tiles through a
+hosted vision model would cost **$0.42–$1.81 for all 3,025 panden** at current
+OpenRouter prices, which is not a reason to hesitate. The reason to hesitate is
+that this pipeline needs to know *where along the band* a reading sits — a plate
+mid-wall confirms, one within half a metre of a party wall settles nothing — and a
+detector returns boxes where a language model returns text. At 5.5 m tiles against
+a 0.5 m decision margin, tile-level position would collapse §21's three verdicts
+back into one.
