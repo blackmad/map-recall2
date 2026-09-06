@@ -8,57 +8,43 @@ data, and [`FACADE_TWIN.md`](FACADE_TWIN.md) for the buildings.
 
 ---
 
-## P0 — the resolution floor, pre-registered before the run lands
+## P0 — coverage, and the three ways out of the dead zone
 
-`number-bands --min-view-ppm=150` is rendering into
-`.cache/facade-twin/number-bands-minppm150/`, paired against the 1,013-band
-baseline on the identical store. **Predictions recorded now, while the answer is
-still unknown:**
+125 decided of 1,013. Identity is no longer the constraint; coverage is.
 
-1. **Decided panden rise by at least half.** §27 measured the yield curve — at or
-   below 100 px/m a band yields a usable number 2% of the time, 150–200 gives 30%,
-   above 200 it is flat at 32% — and 30% of bands sit in the dead zone. 150 is the
-   knee of that curve, not a tuned value, and nothing above 200 is worth demanding
-   because the curve is flat there.
-2. **Identity does not fall more than 3 points.** The floor buys resolution by
-   spending squareness (§22 ranked on obliquity), so some bands will be read from
-   a more oblique view. If identity falls further than that, the two effects are
-   the same size and the floor is not free.
-3. **Median chosen px/m rises and median obliquity rises with it** — the trade
-   being made, visible rather than assumed.
+**Settled §32:** the dead zone is the imagery, not the view ranking. The
+pre-registered `--min-view-ppm=150` run, paired on the identical 400 panden, lifts
+12 of 161 dead bands and no more; 109 of the remaining 149 have no panorama frame
+within 8 m of the wall at all. Prediction 1 (coverage up by half) fails on the
+mechanism; prediction 3 (the trade is visible) fails too, in the good direction —
+obliquity did not move, so the floor costs nothing and buys almost nothing.
 
-**The experiment is worth as much if it fails.** If coverage does not move, view
-selection is not the constraint: the imagery does not contain better views of
-those walls, and the answer is a better recogniser — or the ~$18 of Cloud Vision
-on the dead-zone bands — rather than a cleverer choice among what we have. That
-distinction is currently unknown and is what gates the next spend.
+In the order I would spend on them:
 
-Scored with `check-number-anchors.ts --manifest= --readings=`, which already takes
-a paired band set.
+1. **The ~39 bands with a near frame that is not being used.** Free, and mine to
+   chase: a frame stands within 8 m and carries a camera height, yet the band was
+   built from something 16 m away. Find out why — leaf-off filter, pose defect,
+   heading — and the answer probably generalises past these 39.
+2. **A stronger recogniser on poor views.** ~$18 of Cloud Vision on the dead-zone
+   bands would settle whether 76 px/m is legible to anything better than EasyOCR.
+   Super-resolution is the cheaper cousin and has an honest test available:
+   down-sample *readable* bands to 76 px/m, upscale, and see whether it recovers
+   numbers we already know. It can hallucinate a plausible neighbour, so it must be
+   scored against known answers before it is trusted anywhere near a verdict.
+   **Owner decision: the Cloud Vision spend.**
+3. **Different imagery** — Google and Apple drive different lines and may have the
+   near quay.
 
-### Two instruments that will report for the first time, and what they should say
+**Not a coverage fix: block propagation.** Measured and reclassified in §32. It
+would reach 102 bracketed and 398 one-sided undecided panden, but block context
+carries no information about whether a band is right — every cell sits on the base
+rate — so it extends reach at unchanged confidence and supplies no evidence. If
+built, propagated panden are *inferred* and must never enter the identity headline.
 
-Both refuse on the 400-band store for want of a denominator. The 1,013-band read
-crosses both thresholds, so the predictions go down now.
-
-**The pose / intrinsic split** needs 15 bands carrying two *different* house
-numbers; the 400 store has 9, so ~23 are expected here. The decision-relevant
-claim, not the point estimate: **the intrinsic term will be at least 1.0 m.** If it
-is, a perfect pose cannot take the anchor metric below a metre, and pose work has a
-bounded payoff that should be weighed against a better recogniser before anyone
-spends a week on it. If intrinsic comes in under a metre, pose is the whole story
-and that ordering flips.
-
-**OCR self-consistency** needs 25 plates carrying more than one assembled
-candidate; the 400 store has 20, so ~50 are expected. Prediction: **the
-disagreement rate lands between 5% and 20%, and at least one conflict is settled by
-it** — proven a misread with no reference data, as pand 122's "120"/"124" already
-is. A rate above 20% would say the assembler is generating spurious candidates
-rather than the recogniser misreading, which is a different bug in a different
-place.
-
-Neither prediction was chosen to be easy: the first can fail in the direction that
-makes more work, and the second is bounded on both sides.
+**Owner decision, now live: 97% of 100 panden, or 89% of 125.** The pre-registered
+confidence floor clears the 95% bar on a store it was not derived from, at a cost of
+13% of confirmations. `--min-confidence=0.425` runs it. The default stays unfiltered
+until someone chooses.
 
 ## The one number
 

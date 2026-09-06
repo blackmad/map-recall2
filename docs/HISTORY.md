@@ -4000,7 +4000,80 @@ Note for pairing: the 1,152-band render in flight predates this fix, so its band
 come from the old behaviour. It affects at most a handful of them, all of which
 were black.
 
-### 31. Four predictions met the data, and they did not all survive
+### 32. The dead zone is the imagery, and the block cannot vouch for a house
+
+Coverage, not identity, is the binding constraint: 125 decided of 1,013. The dead
+zone is where the missing bands are, so this is what it is made of.
+
+### What a dead zone is, and why
+
+A band whose best available view resolves the wall below ~150 px/m. At that scale a
+13 cm digit is 14–18 pixels tall and the recogniser reads essentially nothing: 161
+of 400 bands sit there and **not one of them decided anything**, against 16–22%
+above the line. They are not marginal cases, they are a floor.
+
+| | dead bands | readable bands |
+|---|---|---|
+| standoff | **16.1 m** | 4.8 m |
+| obliquity | **32.9°** | 2.5° |
+| best resolution | 76 px/m | 234 px/m |
+
+Sixteen metres at thirty-three degrees is a van that never got close or square, and
+they concentrate on the wide canals — Prinsengracht, Keizersgracht, Herengracht,
+Singel — which is what a pass along the far quay looks like.
+
+### It is not the view ranking, and now that is measured
+
+The pre-registered `--min-view-ppm=150` render, paired on the identical 400 panden
+(400 against 400, every pand shared): 56 bands switch view, the median resolution
+rises 197.8 → 205.6 px/m, and obliquity does not move at all — so the floor is very
+nearly free. And it rescues almost nothing:
+
+> **Of 161 dead bands, 12 have a better view anywhere in the archive. 149 do not.**
+
+Going further, of those 149: **109 have no panorama frame at all within 8 m of the
+wall**, and only 39 have a near frame carrying a usable camera height. So the
+population splits into ~39 bands where a near photograph exists and is not being
+used — ours to chase, and free — and ~110 where no near photograph was ever taken,
+which no amount of cleverness with this archive will fix.
+
+That is the answer §27 asked for and TODO pre-registered: the constraint is what was
+photographed, not how we choose among it. The next spend is a better recogniser on
+poor views, or different imagery — not a better ranking.
+
+### A block cannot vouch for its members
+
+The obvious way to spend 125 anchors on 1,013 panden: house numbers run
+monotonically at 99.3% (§23) and the party-wall chains are 98.4% order-accurate
+(§24), so a house between two anchored houses should be determined without reading
+its door. Unlike §25's block-shift model, which fitted a metric offset and was
+refuted, this uses only *order*.
+
+The cheap decisive test first: if block context carries information, a pand whose
+block-mates confirm should confirm more often than the base rate.
+
+```
+base rate                                       111 of 125 decided confirm   88.8%
+bracketed by confirmed anchors on BOTH sides     20 of  22                   91%
+a confirmed anchor on one side only              54 of  62                   87%
+no confirmed anchor on its block                 43 of  48                   90%
+```
+
+Nothing. Every cell sits on the base rate, bracketing included, and at n = 22 the
+91% is noise. **Block context tells you nothing about whether a particular band is
+correctly registered** — which is §25's finding again from a different direction:
+the displacement is a property of the individual house.
+
+That does not kill propagation, it reclassifies it. Propagation would reach 102
+undecided panden bracketed on both sides and 398 with an anchor on one side, at the
+ambient accuracy of roughly 89% × 98.4% ≈ 87% — no worse than a directly read
+anchor, and no better. So it is a **product** answer and not a **metric** one: it
+names several hundred more buildings at unchanged confidence, and it supplies no
+evidence whatever. If it is ever built, propagated panden must be labelled inferred
+and must never enter the identity headline, which counts only panden that told us
+their own name.
+
+## 31. Four predictions met the data, and they did not all survive
 
 The 1,013-band read finished: 9,581 readings in 6,055 s. Every prediction written
 down before it was scored automatically, by the tool, on a store none of them was
