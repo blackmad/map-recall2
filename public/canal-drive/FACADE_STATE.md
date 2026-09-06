@@ -1191,3 +1191,139 @@ building's own name, and human verdicts. Those are the ones to build on.
 - 43 script type errors, one of them found by turning the check on.
 - Five house-number conflicts unadjudicated.
 - Everything downstream of §11 stays quarantined.
+
+## 18. Sixteen scripts placed the lens by a height nobody had corrected (2026-09-06)
+
+`solve-track-datum.ts` (§15) recovers the drift in published camera height and
+removes 78% of the disagreement between two cameras standing in the same spot in
+different years. Six scripts applied it. **Sixteen did not.** They built the pose
+inline as `cameraHeight - GEOID_SEPARATION_M`, skipping both the datum offset and
+the inference that rescues a frame publishing no height at all.
+
+Neither failure is loud. The render still comes out; it is just of somewhere
+else. That is the whole reason this lasted: there is no exception, no blank
+image, no failing assertion — only a picture of the wrong part of a building,
+which looks exactly as convincing as a picture of the right part.
+
+### How big
+
+Across the 1,931 measured façades that name a panorama:
+
+| | |
+|---|---|
+| unapplied correction, median | **0.93 m** |
+| p75 | 3.97 m |
+| over 1.5 m | **39%** |
+
+The thirty number bands had suggested 0.49 m. They sit on the best-surveyed
+stretches, so the sample flattered the problem — the same way §17's view pairs
+flattered the registration metric.
+
+### Where it hurt most
+
+`number-bands.ts`, and for a reason worth stating: it is the most
+datum-sensitive thing the project renders and it was the one script ignoring the
+datum. It deliberately picks the *closest* usable camera, because a 13 cm
+doorplate digit needs pixels, and at a 4 m standoff half a metre of lens error is
+about seven degrees of aim. The door-height band was landing on the first-floor
+windows. The tiles were photographs of brickwork and mullions, and the
+recogniser dutifully found digit-shaped texture in them: 21 of 30 panden unread,
+330 readings of which 220 were single characters.
+
+After the fix the bands frame doors, stoeps and souterrains. The difference is
+not subtle and does not need a metric to see.
+
+### What the fix did, stated against my own hypothesis
+
+I expected the anchors to come back. They did not. Verdicts barely moved
+(confirmed 3 → 2). What moved is the along-band offset of a confirming reading:
+**1.47 m → 0.58 m**. Aim was a real error and not the binding one.
+
+Two further hypotheses died the same way, which is the point of writing them
+down:
+
+- **Digit fragmentation.** I built an assembler on the theory that plates were
+  being split character by character. It produced 361 candidates from 330
+  readings — nearly inert. The scattered single digits are noise, not fragments.
+- **Resolution.** The *unread* bands are better resolved than the read ones
+  (34 px per digit against 21). Not the constraint either.
+
+### The instrument, after three gates that each reduced its own count
+
+- A reading must land within 9 m of where that number lives. Seven of ten
+  "conflicts" were single digits matched to an address point 9–22 m away; there
+  are ten digits and the search radius holds dozens of addresses, so collision
+  was close to certain. The tolerance must stay *wider* than the error it is
+  meant to catch — a one-house slip is 5–6 m — or it would reject exactly the
+  failures worth finding.
+- A single digit certifies nothing. One in ten is not an identifier.
+- Doorplate and signage are separated by glyph height, and the separation is
+  total: every confirming read measured 9.8–20.8 cm, every conflicting one
+  43.1–54.9 cm. The latter is painted shopfront lettering or a gable stone, and a
+  business sign can name an address that is not the building it hangs on.
+  Signage is recorded, not discarded — on a corner site it may be the only
+  number facing this way.
+
+A **decoy** now travels with the result: the same readings scored against a house
+two doors along, which is the hypothesis a one-house error would produce. It
+confirms **0 of 30**.
+
+Result on 30 panden: **2 confirmed, 0 conflict, 0 neighbour-only, 28 unread**,
+along-band offset median 0.58 m, max 1.44 m.
+
+### The yield is the finding
+
+Looking at the best-resolved unread bands, the numbers are simply **not there**.
+Herengracht 56 renders perfectly — door, stoep, souterrain, pavement — and
+carries no legible number anywhere on its frontage. `unread` is usually the
+correct answer, not a detector failure.
+
+At ~7% yield an anchor headline needs ~700 panden for n≈50. This matters less
+than it sounds: legibility depends on the door's design, not on our geometry, so
+the confirm rate *among legible buildings* remains an unbiased estimate of
+correspondence accuracy. That is what makes a small anchor set usable as a
+headline at all.
+
+### A bound set from the median would have rejected a correction that was right
+
+27 segment offsets exceed 5 m, one reaching 32 m; a run offset reaches 98 m.
+Several are backed by over a hundred equations, so the equation count cannot
+filter them. A survey lens is 2.44 m above the road: an offset like that says the
+published height is wrong *in kind*, not drifting.
+
+I first bounded this at 5 m, reasoning from the solved distribution (0.55 m
+median, 1.41 m at p90) — and then checked it against the ninety confident strips,
+the one set here known to render correctly. **53 of them carry a run-level
+correction of 4.15–4.26 m**, almost exactly the 54 captured in 2021. That
+campaign publishes heights about 4.2 m off the gauge; the solve found it; the
+strips are right *because* of it. The bound had been sitting a hand's breadth
+above a known-good value.
+
+It is now **8.5 m** — twice the largest correction observed to be legitimate.
+The fallback is not "leave it alone", which keeps the bad published height, but
+the ground inference, because that is the same answer the solve's own gauge
+encodes. The asymmetry is what settles the direction: a false rejection costs
+per-frame precision, a false acceptance of 98 m costs the frame entirely.
+
+### The rule is now checked rather than remembered
+
+`resolveLens` in `panorama-render.ts` is the single way to place a lens. It
+applies the offset to a *published* height only — never to an inferred one, which
+would be correcting an error it does not have — and reports `none` rather than
+pretending a correction happened.
+
+`check-facade-camera.ts` fails if any script in `scripts/facade-twin` builds the
+height inline (22 checks, was 21). Verified by probe: dropping a file containing
+the old expression makes the check fail and name it. Four pose experiments —
+`pose-experiments`, `project-check`, `aim-error`, `model-compare` — are exempt
+**by name**, because showing what an uncorrected pose looks like is their
+subject. Adding to that list is now a visible decision rather than an omission.
+
+### Consequence still outstanding
+
+Every storey ladder and opening in `measured-facades.json` was measured off a
+vertically shifted strip. This is the most likely explanation available for the
+ladder returning 6 storeys where 3DBAG's pilot median is 4–5, and it should be
+re-run before that is treated as a detector problem. The uncorrected file is kept
+as `measured-facades.superseded-uncorrected-lens-*.json` so the comparison stays
+possible.
