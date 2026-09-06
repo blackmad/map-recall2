@@ -116,6 +116,8 @@ const limit = Number(arg('limit') ?? 24);
 const queue = ids.length ? ids : Object.keys(store).sort();
 
 await mkdir(OUT, { recursive: true });
+let leafOnRescues = 0;
+const LEAF_ON_RESCUE_REPORT = Number(arg('leaf-on-rescue') ?? 0);
 const manifest: any[] = [];
 const audit: Array<{ pandId: string; chosenObliquity: number; chosenPpm: number; bestObliquity: number; bestPpm: number; candidates: number }> = [];
 let done = 0, downloaded = 0;
@@ -193,10 +195,32 @@ for (const pandId of queue) {
    * only 62 panden with its 400-band baseline — a comparison of nothing, which
    * looked like a comparison.
    */
+  /**
+   * And leaf-off is a preference, not a veto, once nothing leaf-off is legible.
+   *
+   * The leaf-off filter discards every leaf-on candidate whenever a single
+   * leaf-off one survives — at any distance. §32 found what that costs. Pand
+   * 167620 is built from a frame 17.3 m away at 63 px/m, hopelessly inside the
+   * dead zone, while three frames stand 2.9–5.9 m from the same wall; they were
+   * captured on 13 May 2019 and thrown away for it. Four of the first four dead
+   * bands with a near frame available were this, every one of them a May capture.
+   *
+   * A leaf-on frame may be occluded by a tree. A 63 px/m frame is illegible with
+   * certainty. So `--leaf-on-rescue=` lets the leaf-on pool back in, but ONLY
+   * when no leaf-off candidate reaches the floor and some leaf-on candidate does
+   * — which changes nothing wherever leaf-off is already legible, and trades a
+   * certain failure for a possible one everywhere else. Default 0, paired run
+   * required, same as everything else here.
+   */
   const RESOLUTION_FLOOR = 0.7;
   const MIN_PPM = Number(arg('min-view-ppm') ?? 0);
+  const LEAF_ON_RESCUE = Number(arg('leaf-on-rescue') ?? 0);
   const pool = candidates.filter(q => isLeafOff(q.v.capturedAt));
-  const ranked = pool.length ? pool : candidates;
+  const rescued = LEAF_ON_RESCUE > 0
+    && !pool.some(q => q.wallPixelsPerMetre >= LEAF_ON_RESCUE)
+    && candidates.some(q => q.wallPixelsPerMetre >= LEAF_ON_RESCUE);
+  if (rescued) leafOnRescues++;
+  const ranked = rescued ? candidates : (pool.length ? pool : candidates);
   const legible = MIN_PPM > 0 ? ranked.filter(q => q.wallPixelsPerMetre >= MIN_PPM) : [];
   const eligible = legible.length ? legible : ranked;
   const affordable = eligible.filter(q => q.wallPixelsPerMetre >= eligible[0].wallPixelsPerMetre * RESOLUTION_FLOOR);
@@ -372,6 +396,7 @@ await writeFile(path.join(OUT, 'manifest.json'), JSON.stringify({
 const kept = manifest.reduce((s, b) => s + b.tiles.length, 0);
 const dropped = manifest.reduce((s, b) => s + b.tilesDroppedTooCoarse, 0);
 const ppms = manifest.flatMap(b => b.tiles.map((t: any) => t.nativePixelsPerMetre)).sort((a: number, b: number) => a - b);
+if (leafOnRescues) console.log(`  ${leafOnRescues} bands took a leaf-on view because nothing leaf-off reached ${LEAF_ON_RESCUE_REPORT} px/m`);
 console.log(`${manifest.length} bands, ${kept} tiles kept, ${dropped} dropped below ${MIN_NATIVE_PIXELS_PER_M} px/m, ${downloaded} panoramas downloaded`);
 if (ppms.length) console.log(`  native resolution across kept tiles: median ${ppms[Math.floor(ppms.length / 2)]} px/m `
   + `(a 13 cm digit is ${(0.13 * ppms[Math.floor(ppms.length / 2)]).toFixed(0)} px)`);
