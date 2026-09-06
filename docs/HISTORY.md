@@ -4000,7 +4000,45 @@ Note for pairing: the 1,152-band render in flight predates this fix, so its band
 come from the old behaviour. It affects at most a handful of them, all of which
 were black.
 
-### 32. The dead zone is the imagery, and the block cannot vouch for a house
+### 33. A May capture at 4.5 m beats a January one at 17 m, and the filter said otherwise
+
+§32 left ~39 dead bands where a near frame exists, carries a camera height, and is
+not being used. The first four inspected were all one thing, and all four were May
+captures: the leaf-off filter is an absolute veto. If a single leaf-off candidate
+survives — at any distance — every leaf-on candidate is discarded.
+
+`--leaf-on-rescue=150` readmits the leaf-on pool only when no leaf-off candidate
+reaches the floor and some leaf-on candidate does. Where leaf-off is already legible
+nothing changes. Paired against the `--min-view-ppm=150` render on the identical 400
+panden, changing one flag:
+
+```
+  bands that changed view: 11
+  among them, median 81 -> 258 px/m, standoff 15.3 m -> 4.4 m
+
+    167620   63 -> 256 px/m   17.3 -> 4.5 m   2019-01-15 -> 2019-05-13
+    167622   64 -> 244 px/m   17.9 -> 4.7 m   2020-01-08 -> 2019-05-13
+    168754  121 -> 258 px/m   10.3 -> 4.4 m   2022-01-27 -> 2018-05-03
+    168786  132 -> 266 px/m    9.4 -> 4.0 m   2020-01-08 -> 2019-05-13
+```
+
+Eleven of 149 dead bands, but the size of the move is the point: a threefold gain in
+resolution, from the bottom of the dead zone to the top of the readable range, on
+bands that were producing literally nothing. The other 28 of the ~39 have a near
+frame the ranking rejects for some other reason, still to be found.
+
+The trade is honest in one direction and unproven in the other. A 63 px/m frame is
+illegible with certainty; a leaf-on frame at 4.5 m *may* have a tree across it. So
+this exchanges a certain failure for a possible one, and whether the trees actually
+spoil these eleven is a question only the OCR pass answers — it is running, and if
+they read, the veto was costing coverage for nothing.
+
+Worth noting what made this findable. It was not a hypothesis about leaves; it was
+§32's split of the dead zone into "no near frame exists" and "a near frame exists
+and is unused", which turned a vague problem into a list of four panden to look at.
+The second number in that split was the whole finding.
+
+## 32. The dead zone is the imagery, and the block cannot vouch for a house
 
 Coverage, not identity, is the binding constraint: 125 decided of 1,013. The dead
 zone is where the missing bands are, so this is what it is made of.

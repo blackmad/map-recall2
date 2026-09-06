@@ -21,10 +21,12 @@ obliquity did not move, so the floor costs nothing and buys almost nothing.
 
 In the order I would spend on them:
 
-1. **The ~39 bands with a near frame that is not being used.** Free, and mine to
-   chase: a frame stands within 8 m and carries a camera height, yet the band was
-   built from something 16 m away. Find out why — leaf-off filter, pose defect,
-   heading — and the answer probably generalises past these 39.
+1. **The ~39 bands with a near frame that is not being used.** *Partly done, §33:*
+   the leaf-off filter was an absolute veto, and `--leaf-on-rescue=150` lifts **11**
+   of them from a median 81 px/m at 15.3 m to 258 px/m at 4.4 m. Whether trees spoil
+   those eleven is what the OCR pass is deciding now. **28 remain** — a near frame
+   exists and the ranking rejects it for some other reason, still to be found; that
+   reason probably generalises past these 28.
 2. **A stronger recogniser on poor views.** ~$18 of Cloud Vision on the dead-zone
    bands would settle whether 76 px/m is legible to anything better than EasyOCR.
    Super-resolution is the cheaper cousin and has an honest test available:
