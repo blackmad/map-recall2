@@ -50,7 +50,16 @@ const ELONGATION = 1.5;
 // about how walls are chosen and every downstream measurement is suspect.
 const FRONT_BAR = 0.92;
 
-const manifest = JSON.parse(await readFile(path.join(CACHE, 'number-bands/manifest.json'), 'utf8')).bands as
+/**
+ * Read the band manifest by name, and refuse a manifest the anchors were not
+ * built from. Both files have default names that whichever render ran last
+ * overwrites, so an instrument reading the defaults reports on whatever happens
+ * to be on disk -- silently, and plausibly. `check-number-anchors` stamps the
+ * pair it used; this honours the stamp.
+ */
+const arg = (n: string) => process.argv.find(v => v.startsWith(`--${n}=`))?.slice(n.length + 3);
+const manifestFile = arg('manifest') ?? 'manifest.json';
+const manifest = JSON.parse(await readFile(path.join(CACHE, 'number-bands', manifestFile), 'utf8')).bands as
   Array<{ pandId: string; wallStartM: number; wallEndM: number }>;
 const recon = JSON.parse(await readFile(path.join(STAGING, 'recon.json'), 'utf8'));
 const shape = new Map<string, { w: number; d: number }>(
@@ -60,7 +69,15 @@ const shape = new Map<string, { w: number; d: number }>(
 
 let anchors: Array<{ pandId: string; verdict: string }> = [];
 try {
-  anchors = JSON.parse(await readFile(path.join(CACHE, 'number-bands/anchors.json'), 'utf8')).panden;
+  const file = JSON.parse(await readFile(path.join(CACHE, 'number-bands/anchors.json'), 'utf8'));
+  const stamped = file.metadata?.source?.manifest as string | undefined;
+  if (stamped && stamped !== manifestFile) {
+    console.error(`anchors.json was built against ${stamped}, not ${manifestFile}.`
+      + ` Reporting one render's geometry against another's verdicts would look fine and be wrong.`
+      + ` Re-run check-number-anchors, or pass --manifest=${stamped}.`);
+    process.exit(2);
+  }
+  anchors = file.panden;
 } catch { /* the verdict split is a bonus, not the test */ }
 const verdictOf = new Map(anchors.map(a => [a.pandId, a.verdict]));
 

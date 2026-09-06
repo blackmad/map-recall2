@@ -101,9 +101,28 @@ type Band = {
 type Address = { street: string; houseNumber: number; pandId: string | null; rd: { x: number; y: number } };
 type Block = { blockId: string; street: string; parity: string; members: Array<{ pandId: string; numbers: number[]; alongM: number }> };
 
-const manifest = JSON.parse(await readFile(path.join(CACHE, 'number-bands/manifest.json'), 'utf8')).bands as Band[];
-const readingStore = JSON.parse(await readFile(path.join(CACHE, 'number-bands/readings.json'), 'utf8')).bands as
+/**
+ * Both files have default names that whichever render ran last overwrites, and
+ * readings join to a band on pand AND panorama — so a mismatched pair does not
+ * error, it silently drops every band whose chosen view differs and fits the
+ * model to the remainder. Name them, and say how many actually pair up.
+ */
+const arg = (n: string) => process.argv.find(v => v.startsWith(`--${n}=`))?.slice(n.length + 3);
+const manifestFile = arg('manifest') ?? 'manifest.json';
+const readingsFile = arg('readings') ?? 'readings.json';
+const manifest = JSON.parse(await readFile(path.join(CACHE, 'number-bands', manifestFile), 'utf8')).bands as Band[];
+const readingStore = JSON.parse(await readFile(path.join(CACHE, 'number-bands', readingsFile), 'utf8')).bands as
   Array<{ pandId: string; panoramaId: string; readings: Array<{ text: string; confidence: number; alongM: number; heightM: number }> }>;
+{
+  const have = new Set(readingStore.map(r => `${r.pandId}|${r.panoramaId}`));
+  const shared = manifest.filter(b => have.has(`${b.pandId}|${b.panoramaId}`)).length;
+  if (shared < manifest.length * 0.5) {
+    console.error(`${manifestFile} and ${readingsFile} share ${shared} of ${manifest.length} bands`
+      + ` — not one render. Pass --manifest= and --readings= from the same pass.`);
+    process.exit(2);
+  }
+  if (shared < manifest.length) console.log(`  ${shared} of ${manifest.length} bands carry readings.`);
+}
 const blocks = JSON.parse(await readFile(path.join(STAGING, 'blocks.json'), 'utf8')).blocks as Block[];
 const addresses = JSON.parse(await readFile(path.join(CACHE, 'address-points.json'), 'utf8')).addresses as Address[];
 

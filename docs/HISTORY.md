@@ -3695,9 +3695,9 @@ shifts and comparing spread *between* groups against spread *within* one:
 
 | grouping | groups | between | within | ratio |
 |---|---|---|---|---|
-| the block | 31 | 1.92 m | 2.43 m | **0.79** |
-| the street | 13 | 1.60 m | 2.73 m | **0.58** |
-| the panorama | 29 | 1.94 m | 1.85 m | 1.05 |
+| the block | 29 | 1.98 m | 2.06 m | **0.96** |
+| the street | 13 | 1.62 m | 2.42 m | **0.67** |
+| the panorama | 27 | 2.02 m | 1.53 m | 1.32 |
 
 A real block effect needs a ratio above 1 — blocks differing from each other by
 more than their own members differ among themselves. Both spatial groupings are
@@ -3705,15 +3705,23 @@ more than their own members differ among themselves. Both spatial groupings are
 it stands in.
 
 The panorama row is not a third result. With one band per pand it is the same
-partition as grouping by pand, so its 1.85 m "within" is not a pose effect at all
+partition as grouping by pand, so its 1.53 m "within" is not a pose effect at all
 — it is the plate-to-plate scatter across several plates on one façade, which is
 the noise floor the other rows are measured against, and it is very nearly as
 large as the whole between-house signal.
 
 **Hold-out agrees, and more bluntly.** Fitting each block's shift with one pand
-removed and then predicting that pand: median error 1.79 m with the fit against
-1.84 m assuming no shift — and the fit makes **17 of 25 predictions worse**. It is
+removed and then predicting that pand: median error 1.62 m with the fit against
+1.75 m assuming no shift — and the fit makes **15 of 23 predictions worse**. It is
 fitting noise.
+
+*(Figures restated §30. The originals came from a band pair that no longer exists
+on disk; these are what `--manifest=manifest.square400-2026-09-06.json
+--readings=readings.square400-2026-09-06.json` reproduces today, and the script now
+refuses a pair that is not one render. Every ratio moved and not one conclusion
+did — both spatial groupings still below 1, hold-out still worse on a majority.
+The panorama row rose to 1.32 and is still not a result, for the reason given
+below.)*
 
 Two things about how this was nearly missed.
 
@@ -4086,6 +4094,11 @@ matched pair — registration 2.12 m either way — but half a dozen quoted figu
 moved a point or two and are corrected above.
 
 `check-number-anchors` now states the overlap on every run and refuses below 50%.
+`check-front-wall` and `fit-block-shifts` read the same defaults and got the same
+treatment: both take `--manifest=`, the first honours the stamp anchors.json now
+carries, the second states its own overlap. Re-run matched, front walls reproduce
+exactly at 96.2%; §25's ratios all moved and its conclusions did not, and are
+restated there.
 The message names both files, because the fix is always to pass `--manifest=` and
 `--readings=` from one render, and the previous behaviour was to quietly report
 from whatever remained.
