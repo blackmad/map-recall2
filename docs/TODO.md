@@ -10,7 +10,7 @@ data, and [`FACADE_TWIN.md`](FACADE_TWIN.md) for the buildings.
 
 ## P0 — the resolution floor, pre-registered before the run lands
 
-`number-bands --min-ppm=150` is rendering into
+`number-bands --min-view-ppm=150` is rendering into
 `.cache/facade-twin/number-bands-minppm150/`, paired against the 1,013-band
 baseline on the identical store. **Predictions recorded now, while the answer is
 still unknown:**

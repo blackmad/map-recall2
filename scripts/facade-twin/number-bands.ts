@@ -182,13 +182,19 @@ for (const pandId of queue) {
    * best view is 140 px/m the relative floor happily accepts 98 px/m, which is
    * inside the dead zone — the swap buys squareness and spends the plate.
    *
-   * `--min-ppm=` adds an absolute floor on top, applied only when a view above
-   * it exists, so a pand whose every candidate is poor still gets its best one
-   * rather than nothing. Default 0, i.e. the behaviour §22 measured, because the
-   * change has to be tested as a paired run against that and not slipped in.
+   * `--min-view-ppm=` adds an absolute floor on top, applied only when a view
+   * above it exists, so a pand whose every candidate is poor still gets its best
+   * one rather than nothing. Default 0, i.e. the behaviour §22 measured, because
+   * the change has to be tested as a paired run against that and not slipped in.
+   *
+   * NOT `--min-ppm`, which was already taken by `MIN_NATIVE_PIXELS_PER_M`, the
+   * per-TILE floor. Reusing that name set both at once: a paired render at 150
+   * dropped 311 tiles and 169 whole bands, and produced a 231-band set sharing
+   * only 62 panden with its 400-band baseline — a comparison of nothing, which
+   * looked like a comparison.
    */
   const RESOLUTION_FLOOR = 0.7;
-  const MIN_PPM = Number(arg('min-ppm') ?? 0);
+  const MIN_PPM = Number(arg('min-view-ppm') ?? 0);
   const pool = candidates.filter(q => isLeafOff(q.v.capturedAt));
   const ranked = pool.length ? pool : candidates;
   const legible = MIN_PPM > 0 ? ranked.filter(q => q.wallPixelsPerMetre >= MIN_PPM) : [];
