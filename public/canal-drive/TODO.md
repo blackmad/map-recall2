@@ -544,16 +544,16 @@ measure end to end from Amsterdam's CC BY panoramas.
 >    Gating on stability is a real signal: readings surviving a ±10 cm nudge are
 >    41% exact at MAE 0.70, against 25% and 0.93 for those that move.
 >
->    **The mechanism is diagnosed, so a fix has somewhere to start.** Two failure
->    modes, from the delta histograms:
->    - ~65% of flips are exactly ±1, which is an end rung. `storeyLadder` reports
->      every rung that fits inside the strip, and the strip's padding (0.4 m below
->      ground, 0.3 m above eaves) is arbitrary, so the count depends on where the
->      phase happens to land against a boundary that means nothing.
->    - the rest are the ladder switching spacing wholesale, including exact period
->      doubling — pand 0363100012175410 goes 6 storeys to 3 as its spacing goes
->      2.27 m to 4.54 m. That is the same disease as 1d: an argmax over a
->      near-flat, quasi-periodic score surface, with no report of how flat it was.
+>    **The mechanism is diagnosed and it is not the ladder** (§22, superseding the
+>    two mechanisms I first proposed here, both of which were wrong).
+>    `storeyBands` counts bands that retained a confirmed *opening* —
+>    `.filter(storey => storey.openings > 0)`. Of 112 storey flips under a 10 cm
+>    nudge, **112 came with a change in the opening count**; of 614 readings whose
+>    storey count held, only 15% saw their openings move. Ladder peak prominence
+>    barely separates them (34% against 24% below 2σ).
+>
+>    So the fragile component is **opening detection**, and the storey count is
+>    downstream of it. Fixing `storeyLadder` would be effort on the wrong part.
 >
 >    **Do not re-measure the remaining 2,600 buildings until this is settled.**
 

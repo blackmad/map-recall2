@@ -1527,3 +1527,57 @@ Finally, the ladder-prominence diagnostic of §20 checks out. Storey readings wh
 winning ladder stood 2σ or more above the field survive a ±10 cm nudge 76% of the
 time; those at 1.5–2.0σ, 64%. Monotonic, real, and moderate — enough to confirm
 the "argmax over a near-flat surface" diagnosis, not enough to be a fix on its own.
+
+## 22. The storey count was never the thing that was fragile (2026-09-06)
+
+§20 gave the storey ladder's fragility two mechanisms: an end rung falling off an
+arbitrarily-padded strip, worth about 65% of flips, and the ladder switching
+spacing wholesale, worth the rest. **Both were wrong.** They were inferences from
+delta histograms, and one line of code settles it instead:
+
+```ts
+})).filter(storey => storey.openings > 0);
+```
+
+`storeyBands` does not count storey bands. It counts bands that retained at least
+one *confirmed opening*. So a storey exists, for this pipeline, only where a window
+was detected in it.
+
+Measured over 726 nudged readings:
+
+| | n | opening count also changed | ladder peak below 2σ |
+|---|---|---|---|
+| storey count held | 614 | 15% | 24% |
+| flipped by 1 | 85 | **100%** | 34% |
+| flipped by 2 or more | 27 | **100%** | 37% |
+
+Every single flip — all 112 — came with a change in the opening count, and a
+reading whose storey count held usually held its openings too. The ladder's peak
+prominence, which §20 leaned on, barely separates the groups at all.
+
+So the chain is: **the opening detector is fragile, and the storey count is its
+victim.** About 28% of readings change their opening count under a 10 cm lens
+nudge; where that change empties a band, a storey disappears. The 59 empty readings
+of §20 are the same fact at its limit — not "the ladder found nothing" but "no
+opening was confirmed anywhere on the façade", which is why they have the same
+obliquity and standoff as everything else and are spread evenly across every strip
+height.
+
+Obliquity supplies the specificity check that makes this credible rather than
+merely consistent. It predicts house-number correspondence strongly (§21: 89%
+against 65%) and predicts storey-measurement quality **not at all** — MAE 0.87 at
+0–3° against 0.73 at 15°+, flat and slightly backwards. That is exactly the
+pattern the mechanism demands: obliquity wrecks horizontal localisation, and a
+storey band is a vertical measurement. A variable that mattered everywhere would
+have been a sign the analysis was picking up something else.
+
+What this changes for the work: fixing `storeyLadder` would have been effort spent
+on the wrong component. The target is opening detection — and the honest statement
+of the field's quality is that a storey count is only as stable as the weakest
+window in the top band.
+
+Three corrections in one session, each narrowing rather than reversing: the lens
+was real but not binding (§19), the ladder was better than measured once empty
+readings came out (§20), and the ladder was not the fragile part at all (§22). The
+common thread is that every one of them came from measuring a component directly
+instead of inferring its behaviour from an aggregate.
