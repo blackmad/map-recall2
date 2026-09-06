@@ -46,6 +46,36 @@ export interface TransitConnectionPlan {
   nextLineName: string | null;
 }
 
+/** Active leg for corridor lock / destination stop scope. */
+export function currentTransitLeg(
+  plan: TransitConnectionPlan | null | undefined,
+  legIndex: number,
+): TransitLeg | null {
+  if (!plan?.legs?.length) return null;
+  const index = Math.max(0, Math.min(legIndex, plan.legs.length - 1));
+  return plan.legs[index] || null;
+}
+
+/** True when a two-leg plan still has a second ride to board. */
+export function canAdvanceTransitLeg(
+  plan: TransitConnectionPlan | null | undefined,
+  legIndex: number,
+): boolean {
+  return !!plan && plan.legs.length >= 2 && legIndex === 0 && !!plan.transferStopId && !!plan.nextLineName;
+}
+
+/**
+ * Arrive at the transfer hub: move to leg 1 and return the next corridor name.
+ * Returns null when there is nothing to advance.
+ */
+export function advanceTransitLeg(
+  plan: TransitConnectionPlan,
+  legIndex: number,
+): { legIndex: number; lineName: string } | null {
+  if (!canAdvanceTransitLeg(plan, legIndex) || !plan.nextLineName) return null;
+  return { legIndex: 1, lineName: plan.nextLineName };
+}
+
 const EARTH_M = 6371000;
 
 function haversineM(a: [number, number], b: [number, number]): number {

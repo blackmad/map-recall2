@@ -226,6 +226,25 @@ export function pickRoadContact(
   return aligned ?? nearest;
 }
 
+/**
+ * Prefer a named corridor (transit leg) when its centreline is nearby.
+ * Falls back to ordinary heading pick only when that corridor is absent from
+ * the contact set — never steals a far-away preferred line over a near one.
+ */
+export function pickRoadContactPreferName(
+  contacts: readonly RoadContact[],
+  segmentNameAt: (segIdx: number) => string,
+  preferredName: string,
+  preferredAngle: number | null = null,
+  maxPreferDist = 90,
+): RoadContact | null {
+  const named = contacts.filter((contact) =>
+    segmentNameAt(contact.segIdx) === preferredName
+    && contact.dist <= maxPreferDist);
+  if (named.length) return pickRoadContact(named, preferredAngle);
+  return pickRoadContact(contacts, preferredAngle);
+}
+
 /** px — how far from a road's centreline its name still applies. */
 export const NAME_WIDTH_SLACK = 20;
 

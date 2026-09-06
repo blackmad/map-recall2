@@ -34,6 +34,7 @@ var CanalRecallRoadSurface = (() => {
     contactsAt: () => contactsAt,
     headingDifference: () => headingDifference,
     pickRoadContact: () => pickRoadContact,
+    pickRoadContactPreferName: () => pickRoadContactPreferName,
     roadNameAt: () => roadNameAt,
     roadsNear: () => roadsNear
   });
@@ -140,6 +141,11 @@ var CanalRecallRoadSurface = (() => {
       if (delta < 0 || delta === 0 && contact.dist < aligned.dist) aligned = contact;
     }
     return aligned ?? nearest;
+  }
+  function pickRoadContactPreferName(contacts, segmentNameAt, preferredName, preferredAngle = null, maxPreferDist = 90) {
+    const named = contacts.filter((contact) => segmentNameAt(contact.segIdx) === preferredName && contact.dist <= maxPreferDist);
+    if (named.length) return pickRoadContact(named, preferredAngle);
+    return pickRoadContact(contacts, preferredAngle);
   }
   var NAME_WIDTH_SLACK = 20;
   function roadNameAt(segments, contact) {

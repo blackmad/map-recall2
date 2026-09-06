@@ -540,6 +540,8 @@ class GameRouteRuntime {
     const Transit = window.CanalRecallTransit;
     const load = this.osmLoader && this.osmLoader.transitLoad;
     this._transitConnectionPlan = null;
+    this._transitLegIndex = 0;
+    this._transitFinalFinish = null;
     if (!Transit || !load || typeof Transit.planTransitConnection !== 'function') return;
     const fromId = Transit.resolveRouteStopId(load.stops, this.routeFrom);
     const toId = Transit.resolveRouteStopId(load.stops, this.routeTo);
@@ -557,6 +559,81 @@ class GameRouteRuntime {
         + (plan.transferStopId ? ` (change at ${plan.transferStopId})` : ''),
       );
     }
+  }
+
+  /** Lock the road guard onto the active leg; for leg 0 of a transfer, finish at the hub. */
+  _beginTransitLeg(legIndex) {
+    const Transit = window.CanalRecallTransit;
+    const plan = this._transitConnectionPlan;
+    const load = this.osmLoader && this.osmLoader.transitLoad;
+    if (!this.track || typeof this.track.setPreferredCorridor !== 'function') return;
+
+    this._transitLegIndex = legIndex;
+    const leg = Transit && Transit.currentTransitLeg
+      ? Transit.currentTransitLeg(plan, legIndex)
+      : (plan && plan.legs && plan.legs[legIndex]) || null;
+    if (leg) this.track.setPreferredCorridor(leg.lineName);
+    else this.track.setPreferredCorridor(null);
+
+    if (!plan || !Transit || !load) return;
+
+    if (legIndex === 0 && Transit.canAdvanceTransitLeg && Transit.canAdvanceTransitLeg(plan, 0)) {
+      const hub = load.stops.find((stop) => stop.stopId === plan.transferStopId);
+      if (hub && hub.center && this.track.finishPoint) {
+        this._transitFinalFinish = {
+          x: this.track.finishPoint.x,
+          y: this.track.finishPoint.y,
+        };
+        const hubWorld = this._toWorld(hub.center[0], hub.center[1]);
+        if (hubWorld) {
+          this.track.finishPoint = hubWorld;
+          if (this.player) {
+            this._routeLearningPlan = this.track.planRoute(
+              { x: this.player.x, y: this.player.y },
+              hubWorld,
+            );
+          } else if (this.track.startPoint) {
+            this._routeLearningPlan = this.track.planRoute(this.track.startPoint, hubWorld);
+          }
+          this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : this.routePath;
+          if (typeof this._idealRouteLength === 'function') {
+            this._plannedRouteLengthPx = this._idealRouteLength();
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Board the second leg at the hub. Returns true when the race should continue
+   * instead of finishing.
+   */
+  _tryAdvanceTransitLeg() {
+    const Transit = window.CanalRecallTransit;
+    const plan = this._transitConnectionPlan;
+    if (!Transit || !plan || typeof Transit.advanceTransitLeg !== 'function') return false;
+    const advanced = Transit.advanceTransitLeg(plan, this._transitLegIndex || 0);
+    if (!advanced) return false;
+    if (!this._transitFinalFinish || !this.track || !this.player) return false;
+
+    this._transitLegIndex = advanced.legIndex;
+    this.track.setPreferredCorridor(advanced.lineName);
+    this._activeTransitLine = '';
+    this.quizCurrentName = '';
+    this.quizFeedback = `Change to ${advanced.lineName}`;
+    this.track.finishPoint = this._transitFinalFinish;
+    this._transitFinalFinish = null;
+    this._routeLearningPlan = this.track.planRoute(
+      { x: this.player.x, y: this.player.y },
+      this.track.finishPoint,
+    );
+    this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : [];
+    this._plannedRouteLengthPx = this._idealRouteLength ? this._idealRouteLength() : 0;
+    if (this.vectorMap && this.routePath) {
+      this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
+    }
+    console.info(`Transit leg 2: riding ${advanced.lineName} to destination`);
+    return true;
   }
 
   _launchPoiRoute(from, to) {
@@ -610,6 +687,28 @@ class GameRouteRuntime {
     this._seenStreetKnowledge = new Set();
     this._clearLandmarkNotice();
 
+    this._lastTransitStopQuizAt = -Infinity;
+    this._lastTransitLineQuizAt = -Infinity;
+    this._lastTransitStreetQuizAt = -Infinity;
+    this._lastTransitTransferQuizAt = -Infinity;
+    this._quizzedTransitStops = new Set();
+    this._quizzedTransitStreets = new Set();
+    this._quizzedTransitTransfers = new Set();
+    this._activeTransitLine = '';
+    this._transitConnectionPlan = null;
+    this._transitLegIndex = 0;
+    this._transitFinalFinish = null;
+    this.quizPromptSubject = '';
+
+    // Transit: plan legs and lock the corridor *before* spawn heading, so the
+    // road under the vehicle is the first leg — not a crossing metro at the hub.
+    if (this.travelMode === 'transit') {
+      this._planTransitConnection();
+      this._beginTransitLeg(0);
+    } else if (this.track && typeof this.track.setPreferredCorridor === 'function') {
+      this.track.setPreferredCorridor(null);
+    }
+
     // No heading yet: this is the call that produces one. The explicit null is
     // what `check-road-name-heading.ts` accepts in place of `player.angle`.
     const startInfo = this.track.getNearestRoad(this.track.startPoint.x, this.track.startPoint.y, null);
@@ -634,16 +733,6 @@ class GameRouteRuntime {
     }
     this.cars.push(this.player);
     this.learnedStopNames = new Set();
-    this._lastTransitStopQuizAt = -Infinity;
-    this._lastTransitLineQuizAt = -Infinity;
-    this._lastTransitStreetQuizAt = -Infinity;
-    this._lastTransitTransferQuizAt = -Infinity;
-    this._quizzedTransitStops = new Set();
-    this._quizzedTransitStreets = new Set();
-    this._quizzedTransitTransfers = new Set();
-    this._activeTransitLine = '';
-    this._transitConnectionPlan = null;
-    this.quizPromptSubject = '';
 
     // Canal Recall intentionally starts with a quiet network: the experiment
     // is navigation and name recall, not traffic avoidance. Transit must not
@@ -651,7 +740,17 @@ class GameRouteRuntime {
     if (this.travelMode === 'transit') {
       this.quizCurrentName = '';
       this.quizFeedback = '';
-      this._planTransitConnection();
+      // Replan from the player now that they exist (hub finish already set).
+      if (this._transitConnectionPlan && this.track.finishPoint) {
+        this._routeLearningPlan = this.track.planRoute(
+          { x: this.player.x, y: this.player.y },
+          this.track.finishPoint,
+        );
+        this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : this.routePath;
+        if (typeof this._idealRouteLength === 'function') {
+          this._plannedRouteLengthPx = this._idealRouteLength();
+        }
+      }
     } else {
       this.quizCurrentName = this.track.getRoadName(startX, startY, this.player.angle);
       this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';

@@ -178,6 +178,8 @@ class Game {
     this._quizzedTransitStreets = new Set();
     this._quizzedTransitTransfers = new Set();
     this._transitConnectionPlan = null;
+    this._transitLegIndex = 0;
+    this._transitFinalFinish = null;
     this._corridorStreetIndex = null;
 
     this._alanLinkBounds = null;
@@ -729,6 +731,10 @@ class Game {
     this.sound.update(this.player.speed, this.player.throttle, this.player.maxSpeed);
 
     if (this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
+      if (typeof this._tryAdvanceTransitLeg === 'function' && this._tryAdvanceTransitLeg()) {
+        this.player.finished = false;
+        return;
+      }
       this.state = GameState.FINISHED;
       this.sound.silence();
       // Settings/help may still be "open" in state even though the finish card
