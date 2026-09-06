@@ -325,6 +325,11 @@ await writeFile(path.join(BANDS, 'anchors.json'), JSON.stringify({
     generatedAt: new Date().toISOString(),
     generator: 'scripts/facade-twin/check-number-anchors.ts',
     area: AREA.areaId,
+    // Which render this was read from. Consumers draw bands from a manifest and
+    // marks from here, and the two are only the same picture if they came from
+    // the same pair -- a conflict sheet built from a manifest this file has never
+    // seen is a drawing of one photograph annotated from another.
+    source: { manifest: manifestFile, readings: readingsFile },
     note: 'Identity evidence, not metric calibration. A confirming reading certifies that the '
       + 'wall projected belongs to the pand requested. The along-band offset is loose because a '
       + 'BAG address point is inside the building, not the surveyed centre of the plaque.',

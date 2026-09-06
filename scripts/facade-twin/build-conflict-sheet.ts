@@ -52,8 +52,25 @@ type Band = {
 };
 type Address = { street: string; houseNumber: number; display: string; pandId: string | null; rd: { x: number; y: number } };
 
-const manifest = JSON.parse(await readFile(path.join(BANDS, 'manifest.json'), 'utf8')).bands as Band[];
-const anchors = JSON.parse(await readFile(path.join(BANDS, 'anchors.json'), 'utf8')).panden as Array<{
+/**
+ * The bands are drawn from a manifest and annotated from anchors, so the sheet is
+ * only honest if both came from one render. `check-number-anchors` stamps the pair
+ * it used into anchors.json; this refuses when the manifest it is given is not that
+ * one, because the failure is a picture of one photograph marked up from another
+ * and nothing on the page would show it.
+ */
+const manifestFile = arg('manifest') ?? 'manifest.json';
+const manifest = JSON.parse(await readFile(path.join(BANDS, manifestFile), 'utf8')).bands as Band[];
+const anchorFile = JSON.parse(await readFile(path.join(BANDS, 'anchors.json'), 'utf8'));
+const stamped = anchorFile.metadata?.source?.manifest as string | undefined;
+if (stamped && stamped !== manifestFile) {
+  console.error(`anchors.json was built against ${stamped}, not ${manifestFile}.`
+    + ` Drawing one render's bands with another's marks would look fine and be wrong.`
+    + ` Re-run check-number-anchors, or pass --manifest=${stamped}.`);
+  process.exit(2);
+}
+const PROVENANCE = `${manifestFile}${stamped ? '' : ' (anchors.json predates provenance stamping)'}`;
+const anchors = anchorFile.panden as Array<{
   pandId: string; verdict: string; ownNumbers: number[]; wallSpanM: [number, number];
   readings: Array<{ text: string; confidence: number; alongM: number; heightM: number; glyph: string; offsetM: number; isOwn: boolean; insideWall: boolean; address: string }>;
 }>;
@@ -211,6 +228,7 @@ const html = `<!doctype html>
     <span><i style="background:#c9cdd4"></i>where BAG puts a number we believe this pand carries</span>
     <span><i style="background:rgba(255,255,255,.5);border:1px solid #999"></i>any other address in shot</span>
   </p>
+  <p class="prov">Bands drawn from <code>${PROVENANCE}</code>, marks from the anchor pass over it.</p>
   ${rows.join('\n')}
 </main>`;
 
