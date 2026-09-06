@@ -42,7 +42,10 @@ plaque frames. Photographic backdrops are real CC0 (or the live map): see
 ## Surfaces
 
 - **Canal Recall route setup** — map-led asymmetric: left enamel rail, right
-  CC0 Reguliersgracht vista (Storybook and live setup).
+  CC0 Reguliersgracht vista (Storybook and live setup). Primary controls stay
+  dense: City is a native enamel select; Travel / Route are one-word icon
+  strips; View is an icon-only strip on the rail (name + hint via tooltip /
+  aria). Harder difficulties and assists stay in More options.
 - **Map Quest start** — same grammar: riveted Map Recall plaque rail over the
   CC0 vista; Canals & Streets elevated; other layers demoted; mode gloss on
   the rail. Phone keeps a bottom vista strip (rail is not a full cobalt wall).

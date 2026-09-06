@@ -89,3 +89,26 @@ export const TRANSIT_LANDMARK_ROUTE_RADIUS_M = 120;
 
 /** Minimum seconds between transfer-hub line quizzes. */
 export const TRANSIT_TRANSFER_QUIZ_COOLDOWN_S = 40;
+
+/**
+ * Seconds after race start before any transit quiz may open. Spawn is often a
+ * hub; without this the line ask and a transfer ask stack before the player
+ * has read the corridor.
+ */
+export const TRANSIT_ORIENTATION_GRACE_S = 18;
+
+/**
+ * After the active line is sticky, wait this long before asking about
+ * transfers — even at the stop you spawned on.
+ */
+export const TRANSIT_TRANSFER_AFTER_LINE_S = 32;
+
+export {
+  TRANSIT_OVERLAY_SOURCE_ID,
+  TRANSIT_OVERLAY_LAYER_IDS,
+  transitOverlayCollection,
+  transitOverlayUnderBuildingLayers,
+  transitOverlayAboveBuildingLayers,
+  type TransitOverlayLine,
+  type TransitOverlayGrade,
+} from './overlayStyle.ts';

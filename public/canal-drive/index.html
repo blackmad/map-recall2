@@ -134,38 +134,28 @@ canvas { display: block; position: relative; z-index: 2; }
 .enamel-icon { flex: none; color: var(--enamel-ink); opacity: .92; }
 
 /* Choice layout — tile look comes from shared css/enamel.css. */
-.setup-choice-row { margin: 16px 0 0; }
+.setup-choice-row { margin: 12px 0 0; }
 .setup-choice-label {
-  margin: 0 0 7px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 6px;
   color: rgba(255,255,255,.55);
   font: 600 12px/1 var(--font-plaque);
   letter-spacing: .14em;
   text-transform: uppercase;
 }
-.setup-choice-gloss {
-  margin: -2px 0 8px;
-  color: var(--enamel-muted);
-  font: 500 12px/1.35 var(--font-ui);
-}
-.setup-view-summary {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin: 16px 0 0;
-}
-.setup-view-summary-body {
+.setup-choice-current {
   color: var(--enamel-ink);
-  font: 500 13px/1.4 var(--font-ui);
+  font: 650 12px/1 var(--font-plaque);
+  letter-spacing: .06em;
+  opacity: .92;
 }
-.setup-view-change {
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--rivet);
-  font: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  cursor: pointer;
+.setup-choice-gloss {
+  margin: -2px 0 6px;
+  color: var(--enamel-muted);
+  font: 500 12px/1.3 var(--font-ui);
 }
 .setup-choice-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 7px; }
 .setup-choice {
@@ -182,13 +172,68 @@ canvas { display: block; position: relative; z-index: 2; }
 }
 .setup-choice-text small { color: var(--enamel-muted); font: 500 12px/1.3 var(--font-ui); }
 .setup-choice-row.compact .setup-choice-options { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
-.setup-choice-row.compact .setup-choice { flex-direction: column; justify-content: center; gap: 4px; min-height: 48px; padding: 8px 4px; text-align: center; }
+.setup-choice-row.compact .setup-choice { flex-direction: column; justify-content: center; gap: 4px; min-height: 44px; padding: 7px 4px; text-align: center; }
 .setup-choice-row.compact .setup-choice-text small { display: none; }
 .setup-choice-row.compact .setup-choice-text strong { font-size: 12px; }
 .setup-choice-row.compact:has([data-choice="difficulty:expert"].active) .setup-choice-options,
 .setup-choice-row.compact:has([data-choice="difficulty:custom"].active) .setup-choice-options,
 .setup-choice-row.compact[aria-label="Harder difficulties"] .setup-choice-options {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Travel / Route: icon + one word. View: icon-only (tooltip + aria carry the name). */
+.setup-choice-row.strip .setup-choice-options,
+.setup-choice-row.icons .setup-choice-options { gap: 6px; }
+.setup-choice-row.strip .setup-choice,
+.setup-choice-row.icons .setup-choice {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+.setup-choice-row.strip .setup-choice {
+  min-height: 48px;
+  padding: 7px 4px;
+}
+.setup-choice-row.icons .setup-choice {
+  min-height: 44px;
+  padding: 8px 4px;
+}
+.setup-choice-row.strip .setup-choice-text small { display: none; }
+.setup-choice-row.strip .setup-choice-text strong { font-size: 12px; letter-spacing: .06em; }
+.setup-choice-row.icons .enamel-icon { width: 22px; height: 22px; }
+.setup-choice-row.strip { margin-top: 10px; }
+/* Pair View under Travel — one cluster, not another full section stack. */
+.setup-choice-row.strip + .setup-choice-row.icons { margin-top: 8px; }
+.setup-choice-row.icons + .setup-choice-row.strip { margin-top: 12px; }
+
+.setup-city-select {
+  margin: 10px 0 0;
+  gap: 4px;
+  padding: 8px 12px;
+  border-color: rgba(255,255,255,.18);
+  background: rgba(11, 58, 140, 0.45);
+  color: var(--enamel-muted);
+}
+.setup-city-select .setup-choice-label { margin: 0; }
+.setup-city-select select {
+  color: var(--enamel-ink);
+  font: 650 16px/1.2 var(--font-plaque);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  appearance: none;
+  background:
+    transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23ffffff' d='M1 1l5 5 5-5'/%3E%3C/svg%3E")
+    right 2px center / 12px no-repeat;
+  padding-right: 22px;
+  min-height: 28px;
+}
+.setup-city-select:focus-within {
+  border-color: rgba(196,163,90,.55);
+  box-shadow: 0 0 0 2px rgba(196,163,90,.22);
 }
 
 .setup-account {
@@ -320,7 +365,8 @@ canvas { display: block; position: relative; z-index: 2; }
 }
 #route-card .setup-field select,
 #route-card .setup-field input[type="text"],
-.enamel-field input[type="text"] {
+.enamel-field input[type="text"],
+.enamel-field select {
   color: var(--enamel-ink);
   font: 600 14px/1.3 var(--font-ui);
   text-transform: none;
@@ -489,6 +535,16 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   }
   .setup-choice-row.compact .setup-choice { min-height: 42px; padding: 6px 2px; }
   .setup-choice-row.compact .setup-choice-text strong { font-size: 12px; }
+  .setup-choice-row.strip .setup-choice,
+  .setup-choice-row.icons .setup-choice {
+    min-height: 44px;
+    padding: 6px 2px;
+  }
+  .setup-choice-row.strip .setup-choice-text strong { font-size: 11px; }
+  .setup-choice-row.icons .enamel-icon { width: 20px; height: 20px; }
+  .setup-choice-row.strip + .setup-choice-row.icons { margin-top: 6px; }
+  .setup-city-select { margin: 6px 0 0; padding: 7px 10px; }
+  .setup-city-select select { font-size: 15px; min-height: 28px; }
   .advanced-options > summary { padding: 8px 0; font-size: 12px; }
   .route-surprise { grid-template-columns: 40px minmax(0,1fr); }
   .route-chip { display: none; }

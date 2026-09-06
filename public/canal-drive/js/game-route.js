@@ -56,6 +56,9 @@ class GameRouteRuntime {
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
       zoom: this.camera.zoom,
+      cameraTilt: (this.vectorMap && Number.isFinite(this.vectorMap._cameraTilt))
+        ? this.vectorMap._cameraTilt
+        : current.cameraTilt,
       reducedMotion: !!this.camera.reducedMotion,
       travelMode: this.travelMode || current.travelMode,
       cityId: this.cityId || current.cityId,
@@ -117,12 +120,21 @@ class GameRouteRuntime {
       this._loadRoutePoiCatalog();
     }
     this.camera.zoom = prefs.zoom;
+    if (typeof this.vectorMap.setCameraTilt === 'function') {
+      this.vectorMap.setCameraTilt(prefs.cameraTilt || 0);
+    }
     this.showMiniMap = prefs.minimap;
     this.routeDifficulty = prefs.difficulty;
     this.routePattern = prefs.routePattern;
     this.vectorMap.setTreesVisible(prefs.trees && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setDetailedBuildingsVisible(prefs.detailed3d && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setGoogleTilesEnabled(!!prefs.googleTiles);
+    if (typeof this.vectorMap.setTransitNetwork === 'function') {
+      this.vectorMap.setTransitNetwork(
+        this.osmLoader && this.osmLoader.transitLoad,
+        prefs.travelMode === 'transit' && !!(this.osmLoader && this.osmLoader.transitLoad),
+      );
+    }
     if (typeof this.vectorMap.setBikeSkin === 'function') {
       this.vectorMap.setBikeSkin(prefs.bikeSkin || 'omafiets');
     }
@@ -146,7 +158,8 @@ class GameRouteRuntime {
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
       reducedMotion: !!this.camera.reducedMotion,
-      zoom: this.camera.zoom
+      zoom: this.camera.zoom,
+      cameraTilt: (this.vectorMap && this.vectorMap._cameraTilt) || current.cameraTilt || 0,
     });
   }
 
@@ -733,6 +746,7 @@ class GameRouteRuntime {
     this._quizzedTransitStreets = new Set();
     this._quizzedTransitTransfers = new Set();
     this._activeTransitLine = '';
+    this._transitLineStickyAt = null;
     this._transitConnectionPlan = null;
     this._transitLegIndex = 0;
     this._transitFinalFinish = null;
@@ -823,7 +837,13 @@ class GameRouteRuntime {
     // frame (or sit off-centre until camera smoothing catches up).
     if (this.vectorMap && typeof this.vectorMap.aimAtWorld === 'function') {
       const bearing = this.camera.northUp ? 0 : (this.player.angle + Math.PI / 2) * 180 / Math.PI;
-      this.vectorMap.aimAtWorld(this.player.x, this.player.y, this.osmLoader, { bearing });
+      const pitch = typeof this.vectorMap.pitchForViewMode === 'function'
+        ? this.vectorMap.pitchForViewMode(this.viewMode)
+        : undefined;
+      this.vectorMap.aimAtWorld(this.player.x, this.player.y, this.osmLoader, { bearing, pitch });
+      if (typeof this.vectorMap._pitchSmoothed !== 'undefined') {
+        this.vectorMap._pitchSmoothed = pitch;
+      }
     }
     this._warmRouteNeighborhoodImages();
   }
@@ -984,7 +1004,19 @@ class GameRouteRuntime {
       // LoD1 tiles download under the spawn — not on Damrak, and not as a hitch
       // on the first racing frame.
       if (this.vectorMap && typeof this.vectorMap.aimAtWorld === 'function') {
-        this.vectorMap.aimAtWorld(start.x, start.y, this.osmLoader);
+        const pitch = typeof this.vectorMap.pitchForViewMode === 'function'
+          ? this.vectorMap.pitchForViewMode(this.viewMode)
+          : undefined;
+        this.vectorMap.aimAtWorld(start.x, start.y, this.osmLoader, { pitch });
+        if (typeof this.vectorMap._pitchSmoothed !== 'undefined') {
+          this.vectorMap._pitchSmoothed = pitch;
+        }
+      }
+      if (typeof this.vectorMap.setTransitNetwork === 'function') {
+        this.vectorMap.setTransitNetwork(
+          this.osmLoader.transitLoad,
+          this.travelMode === 'transit',
+        );
       }
       this._routeLearningPlan = this.track.planRoute(start, finish);
       this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : [];
@@ -1023,9 +1055,17 @@ class GameRouteRuntime {
       this.renderer.preRenderTrack(this.track);
 
       // Step 5: Setup race
+      this.loadingMessage = 'Settling the map...';
+      this.loadingProgress = 0.92;
+      this._setupRace();
+
+      // Hold briefly until MapLibre finishes the first idle at the spawn so
+      // the handoff into racing is not a Damrak→neighbourhood jump mid-frame.
+      await this._waitForMapSettle(2800);
+      if (this._loadingAborted) return;
+
       this.loadingMessage = 'Ready!';
       this.loadingProgress = 1.0;
-      this._setupRace();
 
       // Generate leaderboard key from route coordinates
       this._raceKey = (startLL && finishLL)
@@ -1041,7 +1081,7 @@ class GameRouteRuntime {
         this._shareUrl = null;
       }
 
-      await new Promise(r => setTimeout(r, 300));
+      await new Promise(r => setTimeout(r, 200));
 
       this.state = GameState.RACING;
 
@@ -1050,6 +1090,39 @@ class GameRouteRuntime {
       this.loadingMessage = 'Error: ' + (err.message || 'Failed to load waterways');
       setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 3000);
     }
+  }
+
+  /**
+   * Wait for the basemap to finish its first idle at the aimed spawn, or until
+   * maxMs — whichever comes first. Prevents racing into a still-loading tile
+   * cascade.
+   */
+  _waitForMapSettle(maxMs = 2500) {
+    return new Promise((resolve) => {
+      const map = this.vectorMap && this.vectorMap.map;
+      if (!map || !this.vectorMap.ready) {
+        setTimeout(resolve, Math.min(900, maxMs));
+        return;
+      }
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        resolve();
+      };
+      const timer = setTimeout(finish, maxMs);
+      const onIdle = () => {
+        clearTimeout(timer);
+        // One short breath after idle so follow-on tile requests can land.
+        setTimeout(finish, 450);
+      };
+      try {
+        map.once('idle', onIdle);
+      } catch (_) {
+        clearTimeout(timer);
+        setTimeout(finish, Math.min(900, maxMs));
+      }
+    });
   }
 
   // ---- Main Loop ----

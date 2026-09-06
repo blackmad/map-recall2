@@ -29,7 +29,7 @@ class Camera {
     // no longer surges forward and back with the throttle.
     const wantedLookahead = this.reducedMotion ? 0 : CAMERA_LOOKAHEAD * speedRatio;
     this._lookahead += (wantedLookahead - this._lookahead) * CAMERA_LOOKAHEAD_SMOOTHING;
-    const lookahead = (this.viewMode === 'cockpit' ? 115 : 0) + this._lookahead;
+    const lookahead = (this.viewMode === 'cockpit' ? 240 : 0) + this._lookahead;
     const tx = this.detached ? this.anchorX : target.x + Math.cos(target.angle) * lookahead;
     const ty = this.detached ? this.anchorY : target.y + Math.sin(target.angle) * lookahead;
     this.x += (tx - this.x) * this.smoothing;
