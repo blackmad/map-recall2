@@ -491,12 +491,55 @@ measure end to end from Amsterdam's CC BY panoramas.
 >    readings) and so disproves that theory. The scattered single digits are
 >    noise, not fragments.
 >
-> 1b. **Re-measure the 2,180 façades.** They were measured off strips placed by
->    the uncorrected lens (see 6 above), so every storey ladder and opening in
->    `measured-facades.json` sits on a vertically-shifted picture. This is the
->    most likely explanation on offer for the ladder returning 6 storeys where
->    3DBAG's pilot median is 4–5, and it should be re-run before any of that is
->    treated as a detector problem.
+> 1b. **DONE, and it disproved the hypothesis it was meant to test.** The 422
+>    façades re-measured with the corrected lens agree with 3DBAG *no better*
+>    than the uncorrected ones. The reason is item 1c, which the re-measure
+>    uncovered: the lens was never the binding error.
+>
+> 1c. **The storey ladder is not fit to publish, and the lens is not why.**
+>    `lens-sensitivity.ts` re-measures a stored façade at deliberate vertical
+>    offsets. It reproduces the store exactly at δ=0 (422/422), so it is
+>    measuring the detector and not a code difference. Then:
+>
+>    - a **10 cm** lens nudge changes the storey count on **16%** of buildings,
+>      25 cm on 26%, 1 m on 55%. The null control is clean — 1 mm moves 3%, which
+>      is the rasterisation floor — so this is a dose-response, not a bug in the
+>      probe.
+>    - against 3DBAG's declared storeys (excluding the 635 panden where the field
+>      is `0`, which is a *missing* marker and not a zero-storey building):
+>      **32% exact, MAE 1.21**.
+>    - physically: our ladder implies a median **2.76 m** per storey and puts only
+>      **52%** of buildings in the plausible 2.6–3.6 m band, against **77%** for
+>      3DBAG's own height-derived count.
+>
+>    Gating on stability helps but does not rescue it: readings that survive a
+>    ±10 cm nudge are 36% exact against 21% for those that move, so invariance is
+>    a real signal — it just is not a large one, and it costs 28% of coverage.
+>
+>    Three independent angles, one conclusion: the ladder is fragile *and*
+>    substantially wrong where it is stable. Fixing the detector, not re-running
+>    it at scale, is what comes next. **Do not re-measure the remaining 2,600
+>    buildings until this is settled** — it would only manufacture 2,600 more
+>    readings with these properties.
+>
+> 1d. **`check-facade-registration` cannot currently certify registration, and
+>    its red is largely its own.** It correlates BAG plot boundaries against
+>    roofline steps and reports the best lateral shift within a ±3 m window. Two
+>    controls, both new:
+>    - **Injection.** Displace the boundaries by a known +1 m: 6 of 9 buildings
+>      recover it to within 0.5 m. So the check does have local resolution.
+>    - **Window.** Widen the search from ±3 m to ±6 m and three buildings' offsets
+>      move straight to the new edge — +6.00, −6.00, +5.92. The peak follows the
+>      window wherever it is put.
+>
+>    A canal terrace and its plot boundaries both repeat at about 5.7 m, so the
+>    correlation has many near-equal peaks (prominence 1.7–2.7σ) and the window
+>    decides which wins. The check now refuses a reading whose peak sits against
+>    the window edge or below 2σ, which is honest but leaves only 5 of 12
+>    buildings answering, still at 2.38 m. **Local precision, no global lock** —
+>    and only an absolute identifier can supply the lock, which is exactly what
+>    the house-number anchors in item 1 are for. The two instruments are
+>    complementary, not redundant.
 > 2. **Download views for the corrected frontages.** The selector can only choose
 >    among the 2,922 panoramas on disk, and those were fetched for the *old*
 >    walls — so `rankViews` has never been shown what it can do.

@@ -31,7 +31,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
 import { buildElevations, inFrontOf, obliquityDeg, standoffM } from '../../src/canalRecall/facade/elevations.ts';
 import { rectifyFacade, type CameraPose, type EquirectangularImage } from '../../src/canalRecall/facade/rectify.ts';
-import { AMSTERDAM_CAMERA, GEOID_SEPARATION_M, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
+import { AMSTERDAM_CAMERA, isLeafOff } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { loadTrackOffsets, resolveLens } from './panorama-render.ts';
 import { normalise, skyline, skylineSteps } from '../../src/canalRecall/facade/skyline.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
@@ -45,8 +45,19 @@ const arg = (name: string) => process.argv.find(v => v.startsWith(`--${name}=`))
 const VIEWS = Number(arg('views') ?? 5);
 const PX_PER_M = 24;          // enough for party-wall and window edges, cheap to correlate
 const CONTEXT_M = 6;          // margin each side, so a shifted view still overlaps
-const MAX_SHIFT_M = 3;        // search window for the correlation peak
+const MAX_SHIFT_M = Number(arg('max-shift') ?? 3);  // search window for the correlation peak
 const SPAN_M = 26;           // strip width, wide enough to hold several party walls
+/**
+ * Displace BAG's boundaries by a known amount before correlating.
+ *
+ * This check reports an offset whatever it is fed, so the number alone cannot
+ * say whether it is measuring registration or reading noise. Injecting a known
+ * shift settles it: a check with resolution recovers what was injected, and one
+ * without it returns roughly the same answer either way.
+ */
+const INJECT_M = Number(arg('inject') ?? 0);
+/** How far a real peak must stand above the field of shifts around it. */
+const MIN_PROMINENCE = Number(arg('min-prominence') ?? 2.0);
 
 const registry = JSON.parse(await readFile(path.join(CACHE, `${AREA.areaId}-registry.json`), 'utf8')).data as
   Array<{ buildingId: string; footprintLngLat: LngLat[] }>;
@@ -102,9 +113,18 @@ function edgeProfile(rect: { width: number; height: number; data: Uint8ClampedAr
   return profile.map(v => (v - mean) / sd);
 }
 
-/** Lateral shift, in pixels, that best aligns b onto a. */
-function bestShift(a: number[], b: number[], maxShift: number): { shift: number; score: number } {
-  let best = { shift: 0, score: -Infinity };
+/**
+ * Lateral shift, in pixels, that best aligns b onto a.
+ *
+ * `prominence` is how far the winning score stands above the spread of every
+ * other shift in the window, in standard deviations. A correlation with no real
+ * peak still returns a winner -- the largest of a field of noise -- and it will
+ * sit anywhere in the search window, which reads downstream as a large offset
+ * rather than as the absence of an answer. Prominence is what tells those apart.
+ */
+function bestShift(a: number[], b: number[], maxShift: number): { shift: number; score: number; prominence: number } {
+  let best = { shift: 0, score: -Infinity, prominence: 0 };
+  const scores: number[] = [];
   for (let shift = -maxShift; shift <= maxShift; shift++) {
     let sum = 0, n = 0;
     for (let i = 0; i < a.length; i++) {
@@ -115,8 +135,12 @@ function bestShift(a: number[], b: number[], maxShift: number): { shift: number;
     }
     if (n < a.length * 0.5) continue;
     const score = sum / n;
-    if (score > best.score) best = { shift, score };
+    scores.push(score);
+    if (score > best.score) best = { shift, score, prominence: 0 };
   }
+  const mean = scores.reduce((s, v) => s + v, 0) / scores.length;
+  const sd = Math.sqrt(scores.reduce((s, v) => s + (v - mean) ** 2, 0) / scores.length) || 1;
+  best.prominence = (best.score - mean) / sd;
   return best;
 }
 
@@ -185,7 +209,7 @@ function frontage(buildingId: string) {
  * edges for one building. Null when the strip holds too few boundaries for the
  * correlation to mean anything.
  */
-async function offsetFor(buildingId: string, headingSign: number, yawOffsetDeg: number) {
+async function offsetFor(buildingId: string, headingSign: number, yawOffsetDeg: number, injectM = 0) {
   const front = frontage(buildingId);
   if (!front || !front.views.length) { reason = 'no view meeting standoff/obliquity/leaf-off'; return null; }
   const wall = front.wall;
@@ -240,10 +264,31 @@ async function offsetFor(buildingId: string, headingSign: number, yawOffsetDeg: 
     return null;
   }
 
-  const expected = boundaryProfile(rect.width, positions.map(toPx), 0.3 * PX_PER_M);
+  const expected = boundaryProfile(rect.width, positions.map(a => toPx(a + injectM)), 0.3 * PX_PER_M);
   const observed = normalise(skylineSteps(heights, Math.round(0.9 * PX_PER_M)));
-  const { shift } = bestShift(expected, observed, Math.round(MAX_SHIFT_M * PX_PER_M));
-  return { offsetM: shift / PX_PER_M, boundaries: positions.length, standoff: standoffM(wall, pose.point), obliquity: obliquityDeg(wall, pose.point), wallLength: wall.lengthM };
+  const window = Math.round(MAX_SHIFT_M * PX_PER_M);
+  const { shift, prominence } = bestShift(expected, observed, window);
+  /**
+   * A peak against the edge of the search window is not an answer.
+   *
+   * A canal terrace repeats at about 5.7 m and so do its plot boundaries, so
+   * this correlation has many near-equal peaks and the search window decides
+   * which one wins. Widening the window from 3 m to 6 m moved three of these
+   * buildings' "offsets" straight to the new edge -- +6.00, -6.00, +5.92 --
+   * which is the window reporting itself. Refusing the reading is the honest
+   * outcome: the check resolves a displacement (it recovers an injected 1 m)
+   * but cannot choose between periodic alignments, and only an absolute
+   * identifier -- a house number -- can.
+   */
+  if (Math.abs(shift) >= window * 0.9) {
+    reason = `correlation peak against the edge of the ±${MAX_SHIFT_M} m search window — periodic frontage, no lock`;
+    return null;
+  }
+  if (prominence < MIN_PROMINENCE) {
+    reason = `correlation peak only ${prominence.toFixed(1)}σ above the field, below ${MIN_PROMINENCE}σ — no lock`;
+    return null;
+  }
+  return { offsetM: shift / PX_PER_M, prominence, boundaries: positions.length, standoff: standoffM(wall, pose.point), obliquity: obliquityDeg(wall, pose.point), wallLength: wall.lengthM };
 }
 
 const targets = (arg('ids') ?? [
@@ -257,6 +302,7 @@ console.log(`Registration against BAG plot boundaries — camera '${AMSTERDAM_CA
 
 const offsets: number[] = [];
 const signed: number[] = [];
+const recovered: number[] = [];
 for (const buildingId of targets) {
   if (!footprints.has(buildingId)) { console.log(`${buildingId}  not in area`); continue; }
   reason = 'unknown';
@@ -264,8 +310,19 @@ for (const buildingId of targets) {
   if (!result) { console.log(`${buildingId}  skipped — ${reason}`); continue; }
   offsets.push(Math.abs(result.offsetM));
   signed.push(result.offsetM);
+  let recovery = '';
+  if (INJECT_M !== 0) {
+    const moved = await offsetFor(buildingId, 1, 0, INJECT_M);
+    if (moved) {
+      // Displacing the boundaries by d must move the recovered shift by -d.
+      const seen = -(moved.offsetM - result.offsetM);
+      recovered.push(seen);
+      recovery = `   inject ${INJECT_M >= 0 ? '+' : ''}${INJECT_M} → recovered ${seen >= 0 ? '+' : ''}${seen.toFixed(2)} m`;
+    }
+  }
   console.log(`${buildingId}  wall ${result.wallLength.toFixed(1)}m, view ${result.standoff.toFixed(0)}m at ${result.obliquity.toFixed(1)}°,`
-    + ` ${result.boundaries} boundaries  →  offset ${result.offsetM >= 0 ? '+' : ''}${result.offsetM.toFixed(2)} m`);
+    + ` ${result.boundaries} boundaries  →  offset ${result.offsetM >= 0 ? '+' : ''}${result.offsetM.toFixed(2)} m`
+    + `  peak ${result.prominence.toFixed(1)}σ${recovery}`);
 }
 
 if (offsets.length < 3) { console.error('\ntoo few buildings measured to conclude anything'); process.exit(1); }
@@ -287,6 +344,17 @@ console.log(`signed mean (bias) ${bias >= 0 ? '+' : ''}${bias.toFixed(2)} m — 
  * half a metre is half a bay — the difference between a three-bay and a
  * four-bay reading. That is the bar a measurement has to clear.
  */
+if (recovered.length) {
+  const mean = recovered.reduce((s, v) => s + v, 0) / recovered.length;
+  const err = recovered.map(v => Math.abs(v - INJECT_M));
+  const within = err.filter(e => e <= 0.5).length;
+  console.log(`\ninjected ${INJECT_M >= 0 ? '+' : ''}${INJECT_M} m and recovered ${mean >= 0 ? '+' : ''}${mean.toFixed(2)} m on average`
+    + ` — ${within}/${recovered.length} buildings within 0.5 m of the truth`);
+  console.log(recovered.length && within >= recovered.length * 0.6
+    ? '  the check follows a deliberate displacement, so the offsets above are measurements'
+    : '  the check does NOT follow a deliberate displacement, so the offsets above are its own noise');
+}
+
 const BAR_M = 0.5;
 if (median > BAR_M) {
   console.error(`\nFAIL — the register's plot boundaries and the image's vertical edges disagree by more than ${BAR_M} m.`);

@@ -1327,3 +1327,77 @@ ladder returning 6 storeys where 3DBAG's pilot median is 4–5, and it should be
 re-run before that is treated as a detector problem. The uncorrected file is kept
 as `measured-facades.superseded-uncorrected-lens-*.json` so the comparison stays
 possible.
+
+## 19. The lens was real and it was not the binding error (2026-09-06)
+
+§18 fixed sixteen scripts that placed the lens by an uncorrected height, and said
+plainly that the anchor verdicts barely moved. This section is what happened when
+the re-measure it prescribed finished.
+
+**The re-measure disproved the hypothesis it was run to confirm.** 422 façades,
+same buildings, corrected lens, agreeing with 3DBAG *no better* than before. The
+first comparison I ran said the opposite, and it was wrong: the superseded store
+was generated on 2026-09-04, three commits and two heading changes earlier, so
+old-vs-new was never a lens experiment. Any file that accumulates across commits
+is a mixture of code versions, and comparing against it measures the mixture.
+
+**So the lens got its own instrument.** `lens-sensitivity.ts` re-measures a stored
+façade at deliberate vertical offsets, reading only cached panoramas. Its δ=0 pass
+is the control: it must reproduce the store exactly, and it does — 422/422 on
+storeys. That is what licenses everything below, because it proves the probe and
+the pipeline are the same code.
+
+An early version reproduced only 57 of 60, and the cause is itself the finding: it
+read the store's `standoffM`, which is rounded to 0.1 m, where the run used the
+exact value. **Five centimetres of rounding in the pixels-per-metre moved three
+storey counts.**
+
+The dose-response, at full scale:
+
+| lens error | storey count changes on |
+|---|---|
+| 1 mm | 3% — the rasterisation floor |
+| 1 cm | 2% |
+| 3 cm | 8% |
+| 10 cm | 16% |
+| 25 cm | 26% |
+| 1 m | 55% |
+
+The 1 mm control is what makes the rest a measurement rather than a bug report
+against my own probe: if a millimetre had moved 16% too, the instrument would be
+the story.
+
+**Two more angles, because fragility alone does not prove wrongness.** Against
+3DBAG's declared storeys the ladder is 32% exact, MAE 1.21 — and that comparison
+needed a correction of its own: 635 panden carry `storeys: 0`, which is a missing
+marker, not a zero-storey building, and counting them as zeros inflated the error.
+Physically, our ladder implies a median 2.76 m per storey and puts 52% of
+buildings in the plausible 2.6–3.6 m band, against 77% for 3DBAG's own
+height-derived count.
+
+Gating on invariance is a real signal and a small one: readings surviving a ±10 cm
+nudge are 36% exact against 21% for those that move. It buys five points for 28%
+of the coverage. The ladder is fragile *and* substantially wrong where it is
+stable, so the work is in the detector, not in another 2,600 rows of this.
+
+**The registration check's red is largely its own.** It correlates BAG plot
+boundaries against roofline steps and reports the best lateral shift inside a ±3 m
+window. Injecting a known +1 m displacement, 6 of 9 buildings recover it to within
+0.5 m — so it resolves a displacement. But widening the window to ±6 m sends three
+offsets straight to the new edge: +6.00, −6.00, +5.92. The peak follows the window
+wherever it is put.
+
+A canal terrace repeats at about 5.7 m and so do its plot boundaries, so this
+correlation has many near-equal peaks — prominence 1.7–2.7σ — and the search
+window, not the photograph, picks the winner. The check now refuses a peak sitting
+against the window edge or below 2σ. That is honest and it is not a fix: 5 of 12
+buildings still answer, still at 2.38 m.
+
+The shape of the problem is **local precision, no global lock**. Correlation can
+say how far to nudge; it cannot say which house. Only an absolute identifier can,
+which is what a read house number is — so the anchors of item 1 and this check are
+complementary instruments, and the anchor yield stops being a side quest.
+
+What this costs: item 1b is closed as done-and-negative, and re-measuring the
+remaining 2,600 buildings is now explicitly blocked, because at these properties it
+would manufacture 2,600 more readings nobody can use.
