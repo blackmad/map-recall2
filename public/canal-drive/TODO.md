@@ -9,6 +9,12 @@ in a way that a plain-looking one is not.** So correctness of what the game
 teaches outranks the depth of what it teaches, which outranks how it looks.
 Within a tier, cheap-and-blocking comes before expensive-and-isolated.
 
+**The correspondence number is 76%** (§21). Of 400 panden, 99 carry a legible
+house number; of those, 44 confirm the wall we projected and 14 contradict it,
+with 17 too close to a party wall to say either way. The decoy confirms 3. That is
+the first honest measurement of the thing this whole effort is for, and every
+downstream confidence should be derived from it — none currently is.
+
 **Waiting on the owner:** six façade-twin decisions are queued at
 <https://claude.ai/code/artifact/93e41df0-620e-475c-b993-9956caf65750> — the
 acceptance bar for panorama↔pand correspondence, what to do about the storey

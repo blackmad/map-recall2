@@ -89,6 +89,17 @@ export interface FacadeMeasurement {
   storeyHeightsM: number[];
   /** Openings that reach the base of the strip: doors and shopfronts. */
   groundOpenings: Opening[];
+  /**
+   * How far the winning ladder's fit stood above every other spacing tried, in
+   * standard deviations of the field it beat.
+   *
+   * Diagnostic, not yet a gate. The search always returns a winner, and a winner
+   * that barely outscores its neighbours is one nudge away from being a
+   * different answer -- which is measurable in the store: a 10 cm lens shift
+   * changes 16% of storey counts, a third of those by several storeys at once as
+   * the ladder switches spacing wholesale. 0 when no ladder was found.
+   */
+  storeyProminence: number;
 }
 
 export function toGray(image: { width: number; height: number; data: Uint8ClampedArray }): Gray {
@@ -199,15 +210,16 @@ function openingScore(gray: Gray, blueExcess: Int16Array, bandPx: number): Float
  * The ladder still says only where to look. Every opening reported is one
  * confirmed in this building's own photograph.
  */
-function storeyLadder(profile: Float32Array, ppm: number): number[] {
+function storeyLadder(profile: Float32Array, ppm: number): { rungs: number[]; prominence: number } {
   // Range and prior from `grammar.ts`: 2,390 buildings' 3DBAG storey counts
   // divided by their AHN eaves heights give p05 2.40, p50 3.01, p95 3.71 m.
   // The old 2.4–4.2 m search was both too wide and centred too low, and the
   // ladder kept drifting to the 2.4 m end where more rungs fit.
   const minSpacing = STOREY_HEIGHT_M.min * ppm, maxSpacing = STOREY_HEIGHT_M.max * ppm;
-  if (profile.length < minSpacing * 1.6) return [];
+  if (profile.length < minSpacing * 1.6) return { rungs: [], prominence: 0 };
 
   let best: { spacing: number; phase: number; score: number } | null = null;
+  const field: number[] = [];
   for (let spacing = minSpacing; spacing <= maxSpacing; spacing += 0.05 * ppm) {
     for (let phase = 0; phase < spacing; phase += Math.max(1, ppm * 0.05)) {
       let score = 0, rungs = 0;
@@ -241,13 +253,16 @@ function storeyLadder(profile: Float32Array, ppm: number): number[] {
       const fromMedian = Math.abs(spacing / ppm - STOREY_HEIGHT_M.median);
       const prior = 1 - Math.min(0.08, fromMedian * 0.06);
       const mean = (score / rungs) * prior;
+      field.push(mean);
       if (!best || mean > best.score) best = { spacing, phase, score: mean };
     }
   }
-  if (!best) return [];
+  if (!best) return { rungs: [], prominence: 0 };
+  const avg = field.reduce((sum, v) => sum + v, 0) / field.length;
+  const sd = Math.sqrt(field.reduce((sum, v) => sum + (v - avg) ** 2, 0) / field.length) || 1;
   const rungs: number[] = [];
   for (let y = best.phase; y < profile.length; y += best.spacing) rungs.push(y);
-  return rungs;
+  return { rungs, prominence: (best.score - avg) / sd };
 }
 
 /** Smooth a 1-D profile with a moving average, to merge one window's fragments. */
@@ -347,7 +362,7 @@ export function measureFacade(
     rowProfile[y] = sum / width;
   }
   const smoothedRows = smooth(rowProfile, Math.round(ppm * 0.12));
-  const rungs = storeyLadder(smoothedRows, ppm);
+  const { rungs, prominence: storeyProminence } = storeyLadder(smoothedRows, ppm);
   const halfBand = Math.round(Math.min(maxWindowH, 2.4) * ppm * 0.5);
   const storeyBands = rungs
     .map(y => ({ from: Math.max(0, Math.round(y - halfBand)), to: Math.min(height, Math.round(y + halfBand)), peak: 0 }))
@@ -438,5 +453,6 @@ export function measureFacade(
     bayOffsetsM,
     storeyHeightsM,
     groundOpenings: openings.filter(o => o.yM < 0.8),
+    storeyProminence: Number(storeyProminence.toFixed(2)),
   };
 }

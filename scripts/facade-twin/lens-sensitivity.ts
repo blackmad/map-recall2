@@ -56,7 +56,7 @@ for (const [pandId, f] of Object.entries(stored)) {
   (byImage.get(f.panoramaId) ?? byImage.set(f.panoramaId, []).get(f.panoramaId)!).push(pandId);
 }
 
-type Row = { pandId: string; delta: number; storeys: number; bays: number; openings: number };
+type Row = { pandId: string; delta: number; storeys: number; bays: number; openings: number; prominence: number };
 const rows: Row[] = [];
 let done = 0, images = 0, skippedNoImage = 0;
 
@@ -93,7 +93,7 @@ for (const [panoramaId, pandIds] of byImage) {
         { start: wall.start, end: wall.end, baseZ: ground - STRIP_BASE_BELOW_GROUND_M, topZ: eaves + 0.3 },
         { pixelsPerMetre: ppm, camera: AMSTERDAM_CAMERA });
       const m = measureFacade(rect, { pixelsPerMetre: rect.pixelsPerMetre });
-      rows.push({ pandId, delta, storeys: m.storeys.length, bays: m.bays, openings: m.openings.length });
+      rows.push({ pandId, delta, storeys: m.storeys.length, bays: m.bays, openings: m.openings.length, prominence: m.storeyProminence });
     }
     done++;
     if (done % 10 === 0) process.stdout.write(`  ${done}/${BUDGET} buildings`);
@@ -137,11 +137,15 @@ for (const d of DELTAS) {
 const houses = JSON.parse(await readFile(path.join(STAGING, 'house-records.json'), 'utf8')).houses as
   Record<string, { pandId: string; storeys?: { value: number } }>;
 const declared = new Map<string, number>();
-for (const h of Object.values(houses)) if (h.storeys) declared.set(h.pandId, h.storeys.value);
+for (const h of Object.values(houses)) if (h.storeys && h.storeys.value > 0) declared.set(h.pandId, h.storeys.value);
 
 const nudges = DELTAS.filter(d => d !== 0 && Math.abs(d) <= 0.1);
 if (nudges.length && declared.size) {
-  const ids = [...base.keys()].filter(id => declared.has(id));
+  // Both exclusions matter and I first reported this figure without either. A
+  // pand whose 3DBAG `storeys` is 0 has no declared value -- 0 is the missing
+  // marker -- and a reading with no storey bands is the absence of a measurement.
+  // Counting the second against the first put the MAE at 1.21 instead of 0.76.
+  const ids = [...base.keys()].filter(id => declared.has(id) && base.get(id)!.storeys > 0);
   const stable = ids.filter(id => nudges.every(d => at(d).get(id)?.storeys === base.get(id)!.storeys));
   const shaky = ids.filter(id => !stable.includes(id));
   const report = (label: string, group: string[]) => {
@@ -157,6 +161,30 @@ if (nudges.length && declared.size) {
   report('  survives the nudge', stable);
   report('  moves under the nudge', shaky);
   report('  everything', ids);
+}
+
+/**
+ * Does a weak peak predict a reading that will not hold still?
+ *
+ * The ladder search always returns a winner. If the winner that barely outscores
+ * the field is also the one a nudge dislodges, prominence is a usable refusal
+ * criterion and the fix is the same one the registration check already got.
+ */
+if (nudges.length) {
+  const ids = [...base.keys()].filter(id => base.get(id)!.storeys > 0);
+  const held = (id: string) => nudges.every(d => at(d).get(id)?.storeys === base.get(id)!.storeys);
+  const bands: Array<[string, (p: number) => boolean]> = [
+    ['below 1.0σ', p => p < 1.0], ['1.0–1.5σ', p => p >= 1.0 && p < 1.5],
+    ['1.5–2.0σ', p => p >= 1.5 && p < 2.0], ['2.0σ and above', p => p >= 2.0],
+  ];
+  console.log(`\nladder peak prominence against survival of a ±${Math.max(...nudges.map(Math.abs))} m nudge:`);
+  console.log('  prominence          n    holds still');
+  for (const [label, test] of bands) {
+    const g = ids.filter(id => test(base.get(id)!.prominence));
+    if (!g.length) continue;
+    const kept = g.filter(held).length;
+    console.log(`  ${label.padEnd(18)}${String(g.length).padStart(4)}    ${(100 * kept / g.length).toFixed(0)}%`);
+  }
 }
 
 const out = path.join(CACHE, 'lens-sensitivity.json');

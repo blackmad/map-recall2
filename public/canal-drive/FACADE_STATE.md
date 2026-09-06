@@ -1465,3 +1465,65 @@ The lesson worth keeping is narrower than "check your instruments". It is that a
 confidence score assembled from *failed rules* silently rewards emptiness, because
 an absent measurement cannot fail a rule about its contents. A score built that
 way needs a floor that asks whether there is anything there at all.
+
+## 21. Correspondence is 76%, and that is the number we have been missing (2026-09-06)
+
+The 400-pand anchor run finished — 4,180 readings from 400 bands in 16,056 s —
+and for the first time there is a real answer to the standing question, rather
+than a pilot of thirty.
+
+The pilot's ~7% legibility estimate was wrong: **99 of 400 panden carry a legible
+number that names a nearby address**, 25%. The pilot was small and unlucky.
+
+What the raw verdicts said, and why the raw verdicts were not the answer:
+
+| | as first counted | after the party-wall rule |
+|---|---|---|
+| confirmed | 52 | **44** |
+| conflict | 23 | **14** |
+| party wall (ambiguous) | — | **17** |
+| neighbour only | 24 | 24 |
+| unread | 301 | 301 |
+
+A conflict was being recorded whenever a foreign number fell inside the wall span
+widened by 0.6 m. Measured against the wall's own half-width, a *confirming*
+reading sits at 0.46 — mid-wall — and a *conflicting* one at 1.77, past the wall
+entirely, with 87% of conflicts within half a metre of a party wall. Those were
+the neighbour's plate, seen because the band deliberately carries 0.7 of a
+frontage of context on each side. A doorplate sits beside a door and a canal
+house's door often sits hard against the party wall, so a plate in that half-metre
+could belong to either house.
+
+**The margin applies to both verdicts, and that choice cost eight confirmations.**
+Exempting confirmations was the first thing I tried, and it is not defensible: if
+a plate at a shared wall cannot convict, it cannot acquit either. The exemption is
+worth exactly five points — 81% against 76% — which is the size of the thumb it
+puts on the scale. For the record, all three rules:
+
+| rule | confirmed | conflict | confirm rate |
+|---|---|---|---|
+| original, 0.6 m tolerance both ways, no ambiguous zone | 52 | 23 | 69% |
+| margin on conviction only | 52 | 12 | 81% |
+| **margin on both — shipped** | **44** | **14** | **76%** |
+
+**So: 76%.** When a house number can be read at all, the wall we projected is the
+right house about three times in four. The decoy — the same readings scored
+against a house two doors along — confirms **3 of 400** against the real 44, a
+15:1 ratio, and it is now judged by exactly the rule that decides a real
+confirmation. It was not before, which made it a looser test than the thing it was
+controlling for.
+
+Three in four is not "really good correspondence" by any reading, and it is the
+first honest measurement of it. It is also the number every downstream confidence
+should be derived from, and none currently is.
+
+Two things it does not say. It is a rate among *legible* buildings, which is the
+right denominator only because legibility depends on a door's design and not on
+our geometry. And the along-band offset of a confirming reading has a median of
+1.44 m — worse than the 0.58 m the thirty-band pilot reported, which was a small
+sample flattering itself.
+
+Finally, the ladder-prominence diagnostic of §20 checks out. Storey readings whose
+winning ladder stood 2σ or more above the field survive a ±10 cm nudge 76% of the
+time; those at 1.5–2.0σ, 64%. Monotonic, real, and moderate — enough to confirm
+the "argmax over a near-flat surface" diagnosis, not enough to be a fix on its own.

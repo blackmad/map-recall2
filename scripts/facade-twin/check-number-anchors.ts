@@ -97,6 +97,8 @@ const near = (x: number, y: number, radius: number) => {
  */
 const MIN_ADVANCE = 0.35, MAX_ADVANCE = 1.4, MIN_SIZE_RATIO = 0.55;
 const MAX_ANCHOR_OFFSET_M = 9;
+/** How far inside both party walls a plate must sit before it counts either way. */
+const CONVICTING_MARGIN_M = 0.5;
 /**
  * A doorplate digit is 8-25 cm, and glyph height tells you what you are reading.
  *
@@ -141,7 +143,7 @@ function assemble<T extends { text: string; confidence: number; alongM: number; 
   return out;
 }
 
-type Verdict = 'confirmed' | 'neighbour-only' | 'conflict' | 'unread';
+type Verdict = 'confirmed' | 'neighbour-only' | 'conflict' | 'party-wall' | 'unread';
 const results: any[] = [];
 
 for (const band of manifest) {
@@ -196,15 +198,44 @@ for (const band of manifest) {
     .filter(r => r.digits >= 2 || r.text.trim().length >= 2);
 
   const insideWall = (m: number) => m >= band.wallStartM - 0.6 && m <= band.wallEndM + 0.6;
-  const decoyConfirming = matched.filter(r => decoy.has(r.value) && insideWall(r.alongM));
+  /**
+   * A plate at a party wall settles nothing, in either direction.
+   *
+   * A doorplate sits beside a door and on a canal terrace a door often sits hard
+   * against the party wall, so a plate within half a metre of that wall could
+   * belong to either house. Measured over 400 panden: a confirming reading sits
+   * at 0.46 of the half-width from centre -- mid-wall -- while a conflicting one
+   * sits at 1.77, past the wall entirely, and 87% of conflicts fall within half a
+   * metre of the party wall. Those were the neighbour's plate, seen because the
+   * band deliberately carries 0.7 of a frontage of context on each side.
+   *
+   * The margin applies to BOTH verdicts. Exempting confirmations was the first
+   * thing I tried and it is not defensible: if a plate at a shared wall cannot
+   * convict, it cannot acquit either, and the exemption is worth exactly five
+   * points of confirm rate -- 81% against 76% -- which is the size of the thumb
+   * it puts on the scale. Under the original rule, with 0.6 m of tolerance in
+   * both directions and no ambiguous zone at all, the rate is 69%.
+   *
+   * Reclassified rather than discarded: party-wall readings get their own row,
+   * because a rule that makes bad news disappear is not a fix.
+   */
+  const margin = Math.min(CONVICTING_MARGIN_M, (band.wallEndM - band.wallStartM) * 0.2);
+  const wellInside = (m: number) => m >= band.wallStartM + margin && m <= band.wallEndM - margin;
   const doorplate = (r: { heightM: number }) => r.heightM >= DOORPLATE_MIN_M && r.heightM <= DOORPLATE_MAX_M;
-  const confirming = matched.filter(r => own.has(r.value) && insideWall(r.alongM) && doorplate(r));
+  const plates = matched.filter(r => insideWall(r.alongM) && doorplate(r));
+  const confirming = plates.filter(r => own.has(r.value) && wellInside(r.alongM));
+  const conflicting = plates.filter(r => !own.has(r.value) && wellInside(r.alongM));
+  const partyWall = plates.filter(r => !wellInside(r.alongM));
   const signage = matched.filter(r => insideWall(r.alongM) && !doorplate(r));
-  const conflicting = matched.filter(r => !own.has(r.value) && insideWall(r.alongM) && doorplate(r));
+  // The decoy is only a control if it is scored by exactly the rule that decides
+  // a confirmation. Judged more loosely it would fail more often than the real
+  // thing for reasons that have nothing to do with the hypothesis it tests.
+  const decoyConfirming = plates.filter(r => decoy.has(r.value) && wellInside(r.alongM));
   const neighbouring = matched.filter(r => !own.has(r.value) && !insideWall(r.alongM));
 
   const verdict: Verdict = confirming.length ? 'confirmed'
     : conflicting.length ? 'conflict'
+    : partyWall.length ? 'party-wall'
     : neighbouring.length ? 'neighbour-only'
     : 'unread';
 
@@ -239,7 +270,8 @@ console.log(`  assembled candidates: ${results.reduce((t, r) => t + r.assembledC
 console.log(`  decoy (a house two doors along) confirmed on ${decoyConfirmed} of ${results.length} bands\n`);
 console.log(`  confirmed        ${String(by('confirmed').length).padStart(3)}   a number this pand carries, on the wall we projected`);
 console.log(`  neighbour only   ${String(by('neighbour-only').length).padStart(3)}   real numbers read, all outside our wall span`);
-console.log(`  conflict         ${String(by('conflict').length).padStart(3)}   another pand's number inside our wall span`);
+console.log(`  conflict         ${String(by('conflict').length).padStart(3)}   another pand's number well inside our wall span`);
+console.log(`  party wall       ${String(by('party-wall').length).padStart(3)}   a plate within ${CONVICTING_MARGIN_M} m of the party wall — could be either house, so it settles nothing`);
 console.log(`  unread           ${String(by('unread').length).padStart(3)}   nothing legible that names a nearby address`);
 if (offsets.length) {
   console.log(`\n  along-band offset of a confirming reading from its BAG address point:`);
@@ -268,7 +300,7 @@ await writeFile(path.join(BANDS, 'anchors.json'), JSON.stringify({
   summary: {
     panden: results.length,
     confirmed: by('confirmed').length, neighbourOnly: by('neighbour-only').length,
-    conflict: by('conflict').length, unread: by('unread').length,
+    conflict: by('conflict').length, partyWall: by('party-wall').length, unread: by('unread').length,
     offsetMedianM: offsets.length ? Number(q(0.5).toFixed(2)) : null,
     // The control travels with the number it controls. A confirmed count is
     // only worth reading next to how often the same method confirms a house
