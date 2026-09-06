@@ -1649,6 +1649,18 @@ was tempting at 12.6 s a tile. The archive says no: autocontrast produces 2,625 
 4,180 readings, and **40 bands — 11% of everything that reads at all — would go
 dark without it.**
 
+**A second local optimisation was tried and disproved.** Every tile is magnified
+3× before detection, and the arithmetic says that is wasteful: a 13 cm digit needs
+about 30 px, and at the median 129 px/m it is already 17 px, so 1.8× would do and
+19% of tiles are sharp enough at 1×. Setting `mag_ratio` per tile from its own
+`nativePixelsPerMetre` ran **5.65× faster and changed the answers** — 117 readings
+became 81, only 8 of 24 tiles matched, and one tile at 317 px/m, where a 13 cm
+digit is already 41 px, went from five readings including one at 0.66 confidence
+to none at all. CRAFT has its own preferred operating scale; the magnification is
+not merely compensating for small digits, and the comment claiming it "feeds a
+network trained at a scale" is right in a way the arithmetic missed. Rejected, and
+the fixed 3.0 stands.
+
 For the record, since the cost question came up: reading these tiles through a
 hosted vision model would cost **$0.42–$1.81 for all 3,025 panden** at current
 OpenRouter prices, which is not a reason to hesitate. The reason to hesitate is
