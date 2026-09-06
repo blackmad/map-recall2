@@ -9,6 +9,15 @@ in a way that a plain-looking one is not.** So correctness of what the game
 teaches outranks the depth of what it teaches, which outranks how it looks.
 Within a tier, cheap-and-blocking comes before expensive-and-isolated.
 
+**Waiting on the owner:** six façade-twin decisions are queued at
+<https://claude.ai/code/artifact/93e41df0-620e-475c-b993-9956caf65750> — the
+acceptance bar for panorama↔pand correspondence, what to do about the storey
+ladder, whether to buy more house-number anchors, whether the registration check
+stays a gate, which measured-façade file to keep, and whether to unpark the
+2024–2025 imagery. Answers persist in that artifact's store; read them back with
+the Artifact tool's `read_db` on `answers/<id>`. Items 1c, 1d and 5 below are
+blocked on them.
+
 ---
 
 ## P0 — Red, or actively teaching something false
