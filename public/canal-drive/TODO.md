@@ -33,6 +33,50 @@ house-number anchor said, with 3DBAG's heights, the massing at each published
 height, and our own measurements a click away. It is vector only — the
 photographs live in the explorer, which it links to per pand.
 
+**P0-adjacent: the contradictions are one house wide, and we are not using the
+anchors as a block.** Every band is scored alone against its own pand — there is no
+cross-band reasoning anywhere in `check-number-anchors.ts`. That throws away the
+one property a house number has that a correlation peak does not: **numbers run in
+a known monotonic sequence along a street, and BAG holds both the sequence and
+every frontage width.** One confident anchor therefore pins an entire terrace.
+
+The 14 contradictions say this is exactly the error being made. Measuring how far
+the read number's own BAG address point sits from our wall centre: twelve of the
+fourteen fall between **4.0 and 6.5 m**, and an Amsterdam canal frontage is 5.7 m
+at the median. The sign splits 8 one way, 6 the other. So it is not a systematic
+shift that a single offset would fix — it is **±one house, direction unknown**,
+which is precisely the "local precision, no global lock" of §19 and 1d, and
+precisely what a block constraint resolves.
+
+Reach, from the 44 confirmed anchors we already have: 5% of panden sit within 30 m
+of one, but that is the wrong metric. The right one is that those anchors land on
+**13 streets holding 1,894 panden — 36% of the boundary** — and a street with one
+anchor and a known frontage sequence is a street whose every building is
+positioned. Block anchoring turns 44 point measurements into constraints on up to
+1,894 buildings, and makes a one-frontage slip *detectable* rather than merely
+reported as a conflict.
+
+This is worth more than anything else currently open, including the storey work.
+
+**Notes for buying OCR instead of running it** (not needed yet; free local path is
+4.7× better than it was and adequate):
+
+- **Cost is not the obstacle.** Google Cloud Vision `TEXT_DETECTION` is
+  $1.50/1,000 images with the first 1,000 free, so the whole 3,025-pand boundary
+  (~11,700 tiles) is about **$18**, and a 400-pand pass about **$2.30**.
+- **It is the right shape**, unlike a vision LLM: it returns word-level bounding
+  polygons, and this pipeline's verdicts depend entirely on *where along the band*
+  a plate sits. A model that returns only text collapses confirmed / party-wall /
+  conflict back into one bucket at our 5.5 m tile size against a 0.5 m margin.
+- **The speed is concurrency, not latency.** One hosted call is no faster than the
+  2.7 s MPS now costs; 25 at once is. Whole boundary in ~10 minutes against ~5
+  hours local.
+- **OpenRouter is the wrong shop** — one OCR-branded model in the entire catalogue;
+  it routes chat models.
+- **The switch test is not equivalence.** A different engine legitimately reads
+  differently. Run both over the same 400 bands and compare the confirmed-versus-
+  conflict split, which `check-number-anchors.ts` now reports directly.
+
 **Owner decisions, taken 2026-09-06** (queued at
 <https://claude.ai/code/artifact/93e41df0-620e-475c-b993-9956caf65750>; answers
 live in that artifact's store under `answers/<id>`):

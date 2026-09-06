@@ -1669,3 +1669,51 @@ mid-wall confirms, one within half a metre of a party wall settles nothing — a
 detector returns boxes where a language model returns text. At 5.5 m tiles against
 a 0.5 m decision margin, tile-level position would collapse §21's three verdicts
 back into one.
+
+## 25. The contradictions are one house wide, and the anchors were used one at a time (2026-09-06)
+
+§21 reported 44 confirming panden against 14 contradicting, and treated the 14 as
+a rate. Asked whether the anchors were being used to position a *block* rather
+than to check one building at a time, the answer turned out to be no — every band
+in `check-number-anchors.ts` is scored alone against its own pand, with no
+cross-band reasoning anywhere — and looking at the 14 as a group rather than as a
+count says why that matters.
+
+Measuring how far the read number's own BAG address point sits from our wall
+centre:
+
+```
++5.96  +5.64  +4.10  −5.25  −0.19  −4.01  +4.76
+−5.26  +6.34  −5.47  +4.36  +10.66  −5.68  +6.53
+```
+
+Twelve of fourteen fall between **4.0 and 6.5 m**. An Amsterdam canal frontage is
+5.7 m at the median. The sign splits 8 one way and 6 the other, so this is not a
+systematic offset that one correction would remove — it is **±one house, direction
+unknown**, on about a quarter of the panden a reading can decide.
+
+That is the same finding as §19's registration diagnosis arriving by a different
+road. Correlating a periodic terrace against periodic plot boundaries has many
+near-equal peaks and the search window picks the winner; here the winner is
+sometimes the neighbour. §19 said "only an absolute identifier can supply the
+lock, which is what a read house number is" — and then the instrument built on
+that insight used each absolute identifier **in isolation**, which throws away the
+one property that makes it a lock.
+
+**A house number is not just an identifier, it is a position in a sequence.** BAG
+holds the sequence and every frontage width, so a single confident anchor pins an
+entire terrace: every building between two anchors has a determined place, and a
+pand whose wall assignment disagrees with the interpolation is a *detected* error
+rather than a reported conflict.
+
+The reach is better than the anchor count suggests. Only 5% of panden sit within
+30 m of one of the 44 confirmed anchors, but proximity is the wrong measure. Those
+anchors land on **13 streets holding 1,894 panden — 36% of the boundary** — and a
+street with one anchor and a known frontage sequence is a street whose every
+building is positioned. Forty-four point measurements become constraints on up to
+1,894 buildings.
+
+Which resettles the priorities. The last stretch of work went into making OCR
+faster — a real 4.7× misconfiguration, worth fixing — but OCR is the *instrument*
+that measures identity, not the thing that improves it. Making the measurement
+cheaper moved correspondence not at all. Using the measurements jointly would.
