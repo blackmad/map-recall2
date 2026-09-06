@@ -78,17 +78,28 @@ export interface ResolvedLens {
 /**
  * Beyond this, a solved offset is not drift and must not be applied as drift.
  *
- * Published height wanders by a metre or so; the solved offsets are 0.55 m at
- * the median and 1.41 m at the ninetieth percentile. But 27 segments come back
- * over 5 m and one run reaches 98 m -- a survey lens is 2.44 m above the road,
- * so an offset like that says the run's published height is wrong in kind, not
- * drifting, and subtracting it lands the camera nowhere in particular.
+ * The threshold cannot be set from the median, and this is the trap. Solved
+ * offsets sit at 0.55 m at the median and 1.41 m at p90, which suggests a tight
+ * bound -- but a whole survey campaign can be out by much more than drift and
+ * be right about it. 53 of the 90 confident strips carry a run-level correction
+ * of 4.15-4.26 m, almost exactly the 54 of them captured in 2021: that campaign
+ * publishes heights about 4.2 m off the gauge, the solve found it, and those
+ * strips render correctly. A 5 m bound would have sat a hand's breadth above a
+ * known-good correction.
+ *
+ * So the bound is set to roughly twice the largest correction observed to be
+ * legitimate. It still refuses the 15 segments beyond 8 m and the run that
+ * reaches 98 m -- a survey lens is 2.44 m above the road, so a number like that
+ * says the published height is wrong in kind rather than drifting, and
+ * subtracting it lands the camera nowhere in particular.
  *
  * The fallback is not "leave it alone", which would keep the bad published
  * height. It is the ground inference, because that is the same answer the solve
  * is reaching for: its own gauge is a lens 2.44 m above the ground beneath it.
+ * That makes a false rejection cheap -- it costs per-frame precision, not
+ * correctness -- while a false acceptance of 98 m costs everything.
  */
-const MAX_PLAUSIBLE_DRIFT_M = 5;
+const MAX_PLAUSIBLE_DRIFT_M = 8.5;
 
 export const resolveLens = (
   view: PanoramaView,
