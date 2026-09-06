@@ -67,6 +67,10 @@ without a control behind it.
 | `npx tsx scripts/facade-twin/check-facade-registration.ts --inject=1.0` | **Whether the registration check can see.** Displaces BAG's boundaries by a known amount and reports how much of it comes back. |
 | `npx tsx scripts/facade-twin/check-inferred-height.ts` | **Whether a guessed camera height is good enough.** Compares the inference against a datum-corrected published height across 97,120 frames. |
 | `npx tsx scripts/facade-twin/number-bands.ts --audit-views` | **What the view ranking is leaving on the table.** Chosen obliquity against the squarest available, and what a swap would cost in resolution. |
+| `npx tsx scripts/facade-twin/check-number-order.ts` | **Whether a house number is a position in a sequence.** Asks, with no walk and no street axis, whether number *n* lies geometrically between *n−2* and *n+2*; cross-checks against OSM's own geometry. 99.3% on clean triples. Guards the premise the whole anchoring design rests on. |
+| `npx tsx scripts/facade-twin/check-front-wall.ts` | **Whether the wall we project is the front.** From the building's own proportions — a canal house is narrow and deep, so a wall matching `plotWidthM` is a front and one matching `plotDepthM` is a flank. 96.2%. Nothing else tested an assumption every downstream measurement rests on. |
+| `npx tsx scripts/facade-twin/build-blocks.ts` | **Where one terrace ends and the next begins.** Party-wall chains, front row only, writing `blocks.json`. Its own test is that chain order agrees with BAG house numbers 98.4% of the time, having never seen a number. |
+| `npx tsx scripts/facade-twin/fit-block-shifts.ts` | **Whether a registration error is shared along a block.** It is not: blocks differ from each other less than the houses inside one differ among themselves, and held out the fit makes 17 of 25 predictions worse. Kept as the instrument that says so. |
 
 ## Checks
 
