@@ -108,10 +108,16 @@ pairs are claimed by more than one pand. Median 1 number per pand, p90 2, though
    the block — not just the band belonging to the pand being tested — each with
    its along-street position. `number-bands` already carries 0.7 of a frontage of
    context on each side, so bands overlap and a plate is often seen by two.
-4. **Fit one shift per block, robustly.** Each reading votes: "the pand owning
-   number N sits at position x". The residual against BAG's own position for N is
-   the error. Fit **one** shift for the whole block, in two models tested against
-   each other:
+4. **Fit one shift per block — TRIED, AND THE MODEL IS WRONG** (§25).
+   `fit-block-shifts.ts` is written and runs; it refutes its own premise. Blocks
+   differ from each other *less* than the houses within one block differ among
+   themselves (between/within 0.79 for the block, 0.58 for the street, where a
+   real effect needs above 1), and held out, the fitted shift makes 17 of 25
+   predictions **worse** than assuming no shift. The displacement is a property of
+   the individual house, not of the run it stands in. `block-shifts.json` must not
+   be applied. Caveat kept in view: 82 read panden on 17 usable blocks is thin,
+   and a 1,421-band render is in flight to triple it, after which this re-runs.
+   The original design, kept for the record:
    - *continuous* — one Δ metres;
    - *discrete* — our assignment is off by k frontages, k ∈ {−2…+2}, which is what
      the ±5.7 m evidence predicts.
@@ -190,6 +196,20 @@ Guarded by `npx tsx scripts/facade-twin/check-number-order.ts`.
 - **A triple spanning under one frontage cannot be tested at all** — 11% of them —
   because the points are effectively co-located. Any tolerance the fit uses has to
   be larger than the spacing it is trying to resolve, or it is measuring nothing.
+
+### Next, given §25
+
+The block was the wrong unit. If the displacement is per-house then the suspects
+are per-house, and both are cheap to test:
+
+- **Which footprint edge did we call the front wall?** A pand whose front was
+  taken from the wrong edge is displaced by roughly its own frontage, which is
+  exactly the error signature. Check the chosen wall against the block chain's
+  local direction — `blocks.json` now supplies that, and a front wall that is not
+  roughly parallel to its neighbours' is the candidate.
+- **Corner panden face another street.** Already known to produce false conflicts
+  (`169146`, ours [89], read `07`). Now detectable rather than anecdotal: a pand
+  in two blocks on two streets is a corner by construction.
 
 ### Done when
 

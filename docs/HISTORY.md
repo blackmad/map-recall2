@@ -3678,3 +3678,75 @@ Order agreement is a real test rather than a restatement, because the chain is
 built from geometry and the numbers come from BAG. 98.4% says a number read off a
 door is a position in a sequence that can be trusted, which is the premise the
 rest of the plan stands on.
+
+### 25. There is no block-wide shift, and the plan's step 4 is wrong (2026-09-06)
+
+`scripts/facade-twin/fit-block-shifts.ts` implements steps 3-5 of the anchoring
+plan, and its first honest run refutes step 4.
+
+The premise was that the surviving ±one-frontage failures are shared along a
+block, because a block shares a camera pass, a stretch of quay and a numbering
+sequence. If so, one shift fitted per block corrects a whole terrace from a couple
+of readings. Two tests say otherwise.
+
+**The variance does not decompose that way.** Every reading gives a shift
+Δ = −offsetM: how far the imagery is displaced along the band axis. Grouping those
+shifts and comparing spread *between* groups against spread *within* one:
+
+| grouping | groups | between | within | ratio |
+|---|---|---|---|---|
+| the block | 31 | 1.92 m | 2.43 m | **0.79** |
+| the street | 13 | 1.60 m | 2.73 m | **0.58** |
+| the panorama | 29 | 1.94 m | 1.85 m | 1.05 |
+
+A real block effect needs a ratio above 1 — blocks differing from each other by
+more than their own members differ among themselves. Both spatial groupings are
+*below* 1. The displacement is a property of the individual house, not of the run
+it stands in.
+
+The panorama row is not a third result. With one band per pand it is the same
+partition as grouping by pand, so its 1.85 m "within" is not a pose effect at all
+— it is the plate-to-plate scatter across several plates on one façade, which is
+the noise floor the other rows are measured against, and it is very nearly as
+large as the whole between-house signal.
+
+**Hold-out agrees, and more bluntly.** Fitting each block's shift with one pand
+removed and then predicting that pand: median error 1.79 m with the fit against
+1.84 m assuming no shift — and the fit makes **17 of 25 predictions worse**. It is
+fitting noise.
+
+Two things about how this was nearly missed.
+
+The first version of the file printed *"Within-block spread is the smaller, so a
+block-wide shift is a real effect"* over exactly this data. The comparison was
+within-block spread against the **pooled** spread — and pooling contains the
+between-group variation, so within will almost always look smaller than it. That
+comparison cannot fail, which is what makes it worthless. The test has to be
+between against within.
+
+The second was the hold-out verdict, which read `median(errFit) < median(errNull)`
+and so passed on 1.79 against 1.84 — a 3% improvement, while most individual
+predictions got worse. It now requires both a majority of predictions improved and
+a materially better median, and it fails.
+
+So step 4 of the P0 plan is wrong as written and `block-shifts.json` must not be
+applied. The machinery is kept: the guards are what produced the finding, and the
+same decomposition will test whatever model replaces it.
+
+**What this is not.** It is 124 plate readings on 82 panden, of which only 17
+blocks carry two or more read panden and 9 carry three. That is thin, and the
+sample is dominated by *correctly* registered bands — 41 of 48 decided panden
+confirm — so the misregistered minority is spread one-per-block, which is exactly
+the shape that would hide a block effect if one existed. A 1,421-band render is
+running to raise coverage on the blocks that already hold an anchor, and the
+decomposition is recomputed every run.
+
+**What it points at.** If the error is per-house rather than per-run, then the
+suspects are per-house too: which footprint edge was chosen as the front wall, and
+corner panden whose front faces another street. That is a different investigation
+from anchoring, and a cheaper one.
+
+Also here: `assemble` and the doorplate constants moved out of
+`check-number-anchors.ts` into `src/canalRecall/facade/doorplates.ts`, so the fit
+reads plates by exactly the rule the identity check grades them by. Verified by
+re-running the identity check across the move: 41 of 48, 85%, unchanged.
