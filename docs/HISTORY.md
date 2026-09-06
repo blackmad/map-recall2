@@ -4012,7 +4012,7 @@ It is not a misread. It is a definition.
 
 A convicting reading is one that sits **well inside our wall**, that being the
 rule that makes it convict. And the number it reads belongs to a pand whose own
-address point lies **outside** our wall — in 7 of 8 cases, by a median of 3.24 m.
+address point lies **outside** our wall — in 7 of 8 cases, by a median of 3.08 m.
 The two conditions are the conflict verdict, and together they force the offset
 to be large before any recogniser is consulted. Computing the smallest offset each
 conflict could legally have had:
@@ -4049,8 +4049,8 @@ coordinate frame is right, and it can be asked of far more readings than the 45
 panden whose own doorway happened to be legible.
 
 ```
-registration — 42 doorplates naming a number that is not ours land a median 2.12 m
-from where BAG puts it, against 7.63 m by chance (inside a metre 21% against 4%).
+registration — 44 doorplates naming a number that is not ours land a median 2.12 m
+from where BAG puts it, against 7.61 m by chance (inside a metre 25% against 5%).
 ```
 
 Three times better than chance placement, five times as often inside a metre. The
@@ -4068,7 +4068,31 @@ the blocker for everything else being believable."* The two now sit side by side
 | instrument | median | within 1 m | what it compares |
 |---|---|---|---|
 | cross-view correlation, one view per year | 1.25 m | 42% | one photograph against another |
-| doorplate against BAG | 2.12 m | 21% | the wall against the cadastre |
+| doorplate against BAG | 2.12 m | 25% | the wall against the cadastre |
+
+### The two files were from different renders, and nothing said so
+
+Every figure above was first computed against a mismatched pair. `manifest.json`
+held the 1,013-band wide render finished at 14:16; `readings.json` still held the
+400-band square OCR from 12:08. They share **358 of 1,013 bands**.
+
+It could have been worse than it was. Readings join to a band on pand *and*
+panorama, so one photograph's readings can never land on another's geometry — the
+failure mode is silent sample loss instead: every pand whose chosen view differs
+between renders finds no readings and falls to `unread`. The identity line read
+39 of 45 where the matched pair reads **41 of 47**, and a reader had no way to see
+that two panden had gone missing. The conclusions all survived re-running on the
+matched pair — registration 2.12 m either way — but half a dozen quoted figures
+moved a point or two and are corrected above.
+
+`check-number-anchors` now states the overlap on every run and refuses below 50%.
+The message names both files, because the fix is always to pass `--manifest=` and
+`--readings=` from one render, and the previous behaviour was to quietly report
+from whatever remained.
+
+This is the fifth instance of the session's one shape, and the plainest: **the
+denominator was not what it appeared to be.** The others were an estimator
+counting something twice; this was two files that looked like a pair.
 
 ### What the 2.12 m is made of
 
@@ -4076,13 +4100,13 @@ Two questions follow, and the first one has a clean negative answer. BAG address
 points belong to *verblijfsobjecten*, and a unit's point is its centroid — so a
 systematic gap between "where BAG says the address is" and "where the door
 physically is" would inflate the metric without any pose error at all. Measured as
-a position within the pand's own frontage, over 50 confirmed plates:
+a position within the pand's own frontage, over 52 confirmed plates:
 
 ```
-0 = left party wall, 1 = right
-  the doorplate      mean 0.47   median 0.45
-  BAG address point  mean 0.48   median 0.47
-  plate minus BAG    mean -0.01  median -0.02   → -0.05 m on a 6.1 m frontage
+0 = left party wall, 1 = right, over 52 confirmed plates
+  the doorplate      mean 0.47
+  BAG address point  mean 0.48
+  plate minus BAG    mean -0.02   → -0.09 m on a 6.1 m frontage
 ```
 
 No convention offset. BAG points sit where the doors are, and a whole class of
@@ -4101,12 +4125,12 @@ built on it. Two plates are two observations only if they name *different houses
 "91" and "91C" are one physical plate the assembler produced twice:
 
 ```
-same house, different unit (91 / 91C)   n=18  median 0.01 m
+same house, different unit (91 / 91C)   n=19  median 0.01 m
 different houses (91 / 93)              n=14  median 1.27 m
 ```
 
-A median of 0.01 m is not agreement, it is the same reading counted twice, and 18
-of the 32 pairs were that. Collapsing to one reading per house number leaves **9**
+A median of 0.01 m is not agreement, it is the same reading counted twice, and 19
+of the 33 pairs were that. Collapsing to one reading per house number leaves **9**
 genuine bands, df 9, on which the intrinsic term exceeds the between-band spread
 outright and pose cannot be distinguished from zero at all.
 
@@ -4189,13 +4213,12 @@ band's address pool, how far from the plate would it have sat? Without the null 
 is unreadable, because a short band puts every candidate close to everything.
 
 ```
-neighbour-only registration — 12 plates land a median 0.75 m from where BAG puts
-the number they read, against 6.07 m by chance (50% inside a metre against 10%).
-Those 10 of 15 neighbour-only bands are registered correctly.
+Of those, the 13 on neighbour-only bands sit 0.89 m out — registered correctly,
+undecided only because our own doorway was unreadable.
 ```
 
-Five times closer than chance, five times more often inside a metre — and against
-the 2.12 m of the general population, these sit at 0.75 m. So ten bands that the
+Against the 2.12 m of the general population these sit at 0.89 m, and against a
+chance null they are several times closer. So ten bands that the
 identity check records as undecided are in fact evidence that the wall inside the
 bracket is the right wall: the failure is the doorway, not the geometry. Identity
 and registration are separate failures with separate fixes, and

@@ -65,6 +65,40 @@ const manifest = JSON.parse(await readFile(path.join(BANDS, manifestFile), 'utf8
 const readings = JSON.parse(await readFile(path.join(BANDS, readingsFile), 'utf8')).bands as
   Array<{ pandId: string; panoramaId: string; readings: Array<{ text: string; confidence: number; alongM: number; heightM: number }> }>;
 
+/**
+ * The manifest and the readings must come from the same render.
+ *
+ * A band is joined to its readings on pand AND panorama, so a mismatched pair
+ * cannot put one photograph's readings on another's geometry -- but it fails
+ * silently in a worse way than an error: every pand whose chosen view differs
+ * between the two renders simply finds no readings and falls to `unread`, and the
+ * check reports a smaller sample with no sign anything is wrong. That happened
+ * today. `manifest.json` held the 1,013-band wide render while `readings.json`
+ * still held the 400-band square one, and the identity line quietly read 39 of 45
+ * where the matched pair reads 41 of 47. Every figure taken from it was computed
+ * on a sample two panden short, for no reason a reader could have seen.
+ *
+ * So the overlap is stated on every run, and a pair that agrees on almost nothing
+ * stops the run rather than reporting from the remainder.
+ */
+const MIN_PAIR_OVERLAP = 0.5;
+{
+  const inReadings = new Set(readings.map(r => `${r.pandId}|${r.panoramaId}`));
+  const shared = manifest.filter(b => inReadings.has(`${b.pandId}|${b.panoramaId}`)).length;
+  const overlap = manifest.length ? shared / manifest.length : 0;
+  const pair = `${manifestFile} against ${readingsFile}`;
+  if (overlap < MIN_PAIR_OVERLAP) {
+    console.error(`\nThese are not the same render: ${pair} share ${shared} of ${manifest.length} bands`
+      + ` (${Math.round(100 * overlap)}%). Readings are joined on pand AND panorama, so the rest would`
+      + ` silently read as unread. Pass --manifest= and --readings= from one render.`);
+    process.exit(2);
+  }
+  if (shared < manifest.length) {
+    console.log(`  ${pair}: ${shared} of ${manifest.length} bands carry readings`
+      + `${overlap < 0.98 ? ' — the remainder count as unread, which is a smaller sample, not a worse result.' : '.'}`);
+  }
+}
+
 /** House numbers a pand carries, as a doorplate would show them. */
 const numbersOf = new Map<string, Set<number>>();
 for (const a of addresses) {
@@ -342,8 +376,8 @@ const rate = decided ? by('confirmed').length / decided : 0;
 // from this band's pool, how far off would it have been? Without the null the
 // figure is unreadable, because a short band puts every candidate near everything.
 //
-// On the 400-band store: 2.12 m observed against 7.63 m by chance, inside a metre
-// 21% against 4%. The frame is real -- three times better than chance placement --
+// On the 400-band store: 2.12 m observed against 7.61 m by chance, inside a metre
+// 25% against 5%. The frame is real -- three times better than chance placement --
 // and also loose, a median error of half a frontage, which is the ±one-house story
 // showing up as a measurement rather than an anecdote.
 {
@@ -384,8 +418,8 @@ const rate = decided ? by('confirmed').length / decided : 0;
     //
     // Two plates only count as two observations if they name DIFFERENT houses.
     // "91" and "91C" are one physical plate the assembler produced twice: across
-    // the 400-band store such pairs disagree by a median of 0.01 m, against
-    // 1.27 m for pairs naming distinct houses. Counting them deflates the
+    // the 400-band store such pairs disagree by a median of 0.01 m over 19 pairs,
+    // against 1.27 m for the 14 naming distinct houses. Counting them deflates the
     // within-band spread the whole decomposition rests on, and it did -- an
     // earlier version of this block read 20 multi-plate bands, reported intrinsic
     // 1.93 m against pose 2.03 m, and called pose 58% of the variance. Nine of

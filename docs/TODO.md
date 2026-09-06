@@ -8,6 +8,34 @@ data, and [`FACADE_TWIN.md`](FACADE_TWIN.md) for the buildings.
 
 ---
 
+## P0 — the resolution floor, pre-registered before the run lands
+
+`number-bands --min-ppm=150` is rendering into
+`.cache/facade-twin/number-bands-minppm150/`, paired against the 1,013-band
+baseline on the identical store. **Predictions recorded now, while the answer is
+still unknown:**
+
+1. **Decided panden rise by at least half.** §27 measured the yield curve — at or
+   below 100 px/m a band yields a usable number 2% of the time, 150–200 gives 30%,
+   above 200 it is flat at 32% — and 30% of bands sit in the dead zone. 150 is the
+   knee of that curve, not a tuned value, and nothing above 200 is worth demanding
+   because the curve is flat there.
+2. **Identity does not fall more than 3 points.** The floor buys resolution by
+   spending squareness (§22 ranked on obliquity), so some bands will be read from
+   a more oblique view. If identity falls further than that, the two effects are
+   the same size and the floor is not free.
+3. **Median chosen px/m rises and median obliquity rises with it** — the trade
+   being made, visible rather than assumed.
+
+**The experiment is worth as much if it fails.** If coverage does not move, view
+selection is not the constraint: the imagery does not contain better views of
+those walls, and the answer is a better recogniser — or the ~$18 of Cloud Vision
+on the dead-zone bands — rather than a cleverer choice among what we have. That
+distinction is currently unknown and is what gates the next spend.
+
+Scored with `check-number-anchors.ts --manifest= --readings=`, which already takes
+a paired band set.
+
 ## The one number
 
 **Correspondence is 87%.** Of the panden a house-number reading can decide, 41
