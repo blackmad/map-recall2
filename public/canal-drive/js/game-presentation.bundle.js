@@ -151,6 +151,170 @@
     };
   }
 
+  // src/canalRecall/game/placeStreak.ts
+  var PLACE_STREAK_STORAGE_KEY = "canalRecall.placeStreak.v1";
+  function emptyPlaceStreak() {
+    return { days: [], current: 0, best: 0 };
+  }
+  function utcDayKey(now = Date.now()) {
+    return new Date(now).toISOString().slice(0, 10);
+  }
+  function dayOffset(key, delta) {
+    const date = /* @__PURE__ */ new Date(`${key}T12:00:00.000Z`);
+    date.setUTCDate(date.getUTCDate() + delta);
+    return date.toISOString().slice(0, 10);
+  }
+  function recompute(days) {
+    const unique = [...new Set(days)].sort();
+    if (unique.length === 0) return emptyPlaceStreak();
+    const today = utcDayKey();
+    const yesterday = dayOffset(today, -1);
+    let current = 0;
+    let cursor = unique.includes(today) ? today : unique.includes(yesterday) ? yesterday : "";
+    while (cursor && unique.includes(cursor)) {
+      current += 1;
+      cursor = dayOffset(cursor, -1);
+    }
+    let best = current;
+    let run = 1;
+    for (let i = 1; i < unique.length; i++) {
+      if (unique[i] === dayOffset(unique[i - 1], 1)) run += 1;
+      else run = 1;
+      if (run > best) best = run;
+    }
+    return { days: unique.slice(-90), current, best: Math.max(best, current) };
+  }
+  function readPlaceStreak(store) {
+    try {
+      const raw = store.getItem(PLACE_STREAK_STORAGE_KEY);
+      if (!raw) return emptyPlaceStreak();
+      const parsed = JSON.parse(raw);
+      return recompute(Array.isArray(parsed.days) ? parsed.days.map(String) : []);
+    } catch {
+      return emptyPlaceStreak();
+    }
+  }
+  function notePlaceDay(store, now = Date.now()) {
+    const day = utcDayKey(now);
+    const prior = readPlaceStreak(store);
+    if (prior.days.includes(day)) return prior;
+    const next = recompute([...prior.days, day]);
+    try {
+      store.setItem(PLACE_STREAK_STORAGE_KEY, JSON.stringify(next));
+    } catch {
+    }
+    return next;
+  }
+  function placeStreakLabel(streak) {
+    if (streak.current <= 0) return null;
+    if (streak.current === 1) return "First new place today";
+    return `${streak.current}-day place streak`;
+  }
+
+  // src/canalRecall/game/neighborhoodPassport.ts
+  var PASSPORT_STORAGE_KEY = "canalRecall.neighborhoodPassport.v1";
+  var PASSPORT_MIN_NAMES = 8;
+  function emptyPassport() {
+    return { stamped: [] };
+  }
+  function readPassport(store) {
+    try {
+      const raw = store.getItem(PASSPORT_STORAGE_KEY);
+      if (!raw) return emptyPassport();
+      const parsed = JSON.parse(raw);
+      return { stamped: Array.isArray(parsed.stamped) ? parsed.stamped.map(String) : [] };
+    } catch {
+      return emptyPassport();
+    }
+  }
+  function savePassport(store, passport) {
+    try {
+      store.setItem(PASSPORT_STORAGE_KEY, JSON.stringify(passport));
+    } catch {
+    }
+  }
+  function stampNewNeighborhoods(exploration, visitedThisRoute, prior, minNames = PASSPORT_MIN_NAMES) {
+    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
+    if (known < minNames) return { passport: prior, fresh: [] };
+    const stamped = new Set(prior.stamped);
+    const fresh = [];
+    for (const hood of visitedThisRoute) {
+      if (!hood || stamped.has(hood)) continue;
+      if (!exploration.visitedNeighborhoods.includes(hood)) continue;
+      stamped.add(hood);
+      fresh.push(hood);
+    }
+    return { passport: { stamped: [...stamped].sort() }, fresh };
+  }
+
+  // src/canalRecall/game/finishStory.ts
+  function finishStory(input) {
+    const { gain, destinationName, cityName, newPassportStamps, placeStreak } = input;
+    const dest = destinationName || "your destination";
+    const bits = [];
+    if (gain.newNames > 0) bits.push(`${gain.newNames} new name${gain.newNames === 1 ? "" : "s"}`);
+    if (gain.newNeighborhoods > 0) {
+      bits.push(`${gain.newNeighborhoods} new neighborhood${gain.newNeighborhoods === 1 ? "" : "s"}`);
+    }
+    if (gain.newLandmarks > 0) {
+      bits.push(`${gain.newLandmarks} landmark${gain.newLandmarks === 1 ? "" : "s"}`);
+    }
+    let headline;
+    if (bits.length) {
+      headline = `You made it to ${dest} \xB7 ${bits.join(", ")}`;
+    } else {
+      headline = `Arrived at ${dest}`;
+    }
+    const detail = bits.length ? `That knowledge sticks on your ${cityName} map.` : "A clean ride \u2014 review something overdue next time.";
+    const passport = newPassportStamps.length ? `Passport: ${newPassportStamps.slice(0, 3).join(", ")}${newPassportStamps.length > 3 ? "\u2026" : ""}` : null;
+    const streak = placeStreakLabel(placeStreak);
+    const guestTease = !input.signedIn && input.recallAvailable ? "Sign in to sync your fog map across devices" : null;
+    return { headline, detail, passport, streak, guestTease };
+  }
+
+  // src/canalRecall/game/missionBrief.ts
+  var BOAT = [
+    (d) => `Find your way to ${d} by water`,
+    (d) => `Canal hop to ${d}`,
+    (d) => `Drift toward ${d} \u2014 name what you ride`
+  ];
+  var BIKE = [
+    (d) => `Ride toward ${d}`,
+    (d) => `Pedal to ${d} \u2014 learn the turns`,
+    (d) => `Make ${d} feel like home`
+  ];
+  var TRANSIT = [
+    (d) => `Ride the line toward ${d}`,
+    (d) => `One hop to ${d} \u2014 own the corridor`,
+    (d) => `Transfer-ready: get to ${d}`
+  ];
+  var HOME = [
+    (km) => km > 0 ? `Home ring \xB7 learn within ~${km.toFixed(1)} km` : "Home base \xB7 grow your learning ring",
+    () => "Errand mode: leave knowing the way back"
+  ];
+  function pick(items, salt) {
+    let h = 0;
+    for (let i = 0; i < salt.length; i++) h = h * 31 + salt.charCodeAt(i) >>> 0;
+    return items[h % items.length];
+  }
+  function missionBrief(input) {
+    const dest = (input.destinationName || "your destination").trim();
+    const salt = `${input.cityName}|${dest}|${input.travelMode}|${input.routePattern}`;
+    if (input.routePattern === "home") {
+      const line2 = pick(HOME, salt)(input.homeLearningRadiusKm || 0);
+      return {
+        line: line2,
+        tease: input.hasColdOpenReview ? "A review waits in the first minute" : void 0
+      };
+    }
+    const pool = input.travelMode === "boat" ? BOAT : input.travelMode === "transit" ? TRANSIT : BIKE;
+    const line = pick(pool, salt)(dest);
+    return {
+      line,
+      tease: input.hasColdOpenReview ? "Warm up with one overdue name" : `Arrive knowing more of ${input.cityName}`
+    };
+  }
+
   // src/canalRecall/game/modes.ts
   function isCar(mode) {
     return mode === "car";
@@ -881,14 +1045,24 @@
         if (known > 0) totals.push(`${known} names`);
         if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
         if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
+        const gain = this._explorationRouteGain;
+        const story = finishStory({
+          gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
+          destinationName: this.routeTo?.name || "",
+          cityName: this._cityDisplayName(),
+          newPassportStamps: this._finishPassportFresh || [],
+          placeStreak: { days: [], current: 0, best: 0 },
+          signedIn: !!(this.recall && this.recall.signedIn),
+          recallAvailable: !!(this.recall && this.recall.available)
+        });
+        if (this._finishPlaceStreakLabel) story.streak = this._finishPlaceStreakLabel;
         const fresh = [];
-        if (this.learnedNames.size + (this.learnedStopNames?.size || 0) > 0) {
-          fresh.push(`${this.learnedNames.size + (this.learnedStopNames?.size || 0)} names`);
-        }
-        if (this._visitedNeighborhoods.size > 0) fresh.push(`${this._visitedNeighborhoods.size} neighborhoods`);
-        if (this._seenLandmarkNames.size > 0) fresh.push(`${this._seenLandmarkNames.size} landmarks`);
+        if (gain && gain.newNames > 0) fresh.push(`${gain.newNames} names`);
+        if (gain && gain.newNeighborhoods > 0) fresh.push(`${gain.newNeighborhoods} neighborhoods`);
+        if (gain && gain.newLandmarks > 0) fresh.push(`${gain.newLandmarks} landmarks`);
         const knowledgeStacked = compact;
-        const knowledgeH = (knowledgeStacked ? 34 : 18) + (fresh.length ? 20 : 0) + 18;
+        const storyLines = [story.headline, story.detail, story.passport, story.streak, story.guestTease].filter(Boolean);
+        const knowledgeH = (knowledgeStacked ? 34 : 18) + (fresh.length ? 18 : 0) + storyLines.length * 16 + 10;
         blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
           ctx.textAlign = "left";
           ctx.fillStyle = MUTED;
@@ -902,15 +1076,20 @@
             ctx.textAlign = "right";
             ctx.fillText(totals.join("  \xB7  ") || "Start exploring", cardX + cardW - padX, top + 12);
           }
+          let y2 = top + (knowledgeStacked ? 48 : 30);
           if (fresh.length) {
             ctx.textAlign = "left";
             ctx.fillStyle = ACCENT;
             ctx.font = "11px system-ui, sans-serif";
-            ctx.fillText(
-              `+${fresh.join(", +")} this route`,
-              cardX + padX,
-              top + (knowledgeStacked ? 50 : 32)
-            );
+            ctx.fillText(`+${fresh.join(", +")} first-time`, cardX + padX, y2);
+            y2 += 16;
+          }
+          ctx.textAlign = "left";
+          ctx.fillStyle = BODY;
+          ctx.font = "12px system-ui, sans-serif";
+          for (const line of storyLines) {
+            ctx.fillText(line, cardX + padX, y2);
+            y2 += 16;
           }
         } });
       }
@@ -1129,6 +1308,22 @@
     _loadExploration() {
       return readExploration(localStorage);
     }
+    /**
+     * Punchline for race open / briefing. Names the destination only — never the
+     * start corridor under the wheels.
+     */
+    _composeMissionBrief() {
+      const due = this.recall && typeof this.recall.dueReviews === "function" ? this.recall.dueReviews() : [];
+      const hasCold = due.some((place) => place.cityId === (this.cityId || "amsterdam") && place.dueAt <= Date.now());
+      return missionBrief({
+        destinationName: this.routeTo?.name || "",
+        travelMode: isBoat(this.travelMode) ? "boat" : isTransit(this.travelMode) ? "transit" : "car",
+        routePattern: this.routePattern === "home" ? "home" : "surprise",
+        cityName: this._cityDisplayName(),
+        homeLearningRadiusKm: this._homeLearningRadiusKm || 0,
+        hasColdOpenReview: hasCold
+      });
+    }
     /** Returns the merged collection so the finish card can show both the totals
      *  and what this route added. */
     _saveExploration() {
@@ -1144,6 +1339,21 @@
           attempts: this.quizAttempts
         });
         saveExploration(localStorage, after);
+        const gain = explorationGain(before, after);
+        this._explorationRouteGain = gain;
+        if (gain.newNames > 0) {
+          const streak = notePlaceDay(localStorage);
+          this._finishPlaceStreakLabel = placeStreakLabel(streak);
+        } else {
+          this._finishPlaceStreakLabel = placeStreakLabel(readPlaceStreak(localStorage));
+        }
+        const stamped = stampNewNeighborhoods(
+          after,
+          this._visitedNeighborhoods,
+          readPassport(localStorage)
+        );
+        if (stamped.fresh.length) savePassport(localStorage, stamped.passport);
+        this._finishPassportFresh = stamped.fresh;
         return after;
       } catch (error) {
         console.warn("Could not save exploration:", error);

@@ -255,6 +255,41 @@ class RecallStore {
       .map((state) => ({ name: state.featureSnapshot.name, center: state.featureSnapshot.center as LatLon }));
   }
 
+  /**
+   * Places whose review interval has elapsed — candidates for a cold-open hop.
+   * Includes any practised guess_name chunk that is due (wrong or right).
+   */
+  dueReviews(now = Date.now()): Array<{
+    name: string;
+    type: string;
+    cityId: string;
+    center: [number, number];
+    dueAt: number;
+  }> {
+    const out: Array<{
+      name: string;
+      type: string;
+      cityId: string;
+      center: [number, number];
+      dueAt: number;
+    }> = [];
+    for (const state of Object.values(this.states)) {
+      if (state.mode !== 'guess_name' || state.repetitions <= 0) continue;
+      if (state.dueAt > now) continue;
+      const snap = state.featureSnapshot;
+      const [lat, lng] = snap.center || [];
+      if (!snap.name || !Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+      out.push({
+        name: snap.name,
+        type: snap.type,
+        cityId: snap.cityId,
+        center: [lat, lng],
+        dueAt: state.dueAt,
+      });
+    }
+    return out;
+  }
+
   /** Per-name familiarity used only as a small route preference. */
   routeMastery(cityId: string, now = Date.now()): Record<string, number> {
     return routeMasteryFromStates(Object.values(this.states), cityId, now);

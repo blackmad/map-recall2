@@ -24,6 +24,12 @@ belongs here before anything below it.*
 
 ## P1 — The learning model itself
 
+**Delight loop (thin slice shipped 2026-09-06).** Mission punchlines, finish
+knowledge story, cold-open review, place-day streak, passport stamps,
+know-this-corner wink, correct-only encyclopedia. Still open: rival-route
+novelty bias, landmark scavenger stop-to-look, transfer dares, Dutch plaque
+hard mode, shareable blank silhouette routes, weather/time mood.
+
 **16. Review and refine the published Randstad trivia.**
 v11 is published (4,052 facts / 1,628 features). Trivia Lab’s **Human review**
 view is the audit path: approve / reject / strike / note, then
@@ -83,6 +89,13 @@ merge when cached. Canal-belt teaching streets via `amsterdam-curation` +
 `ensure:amsterdam-teaching-streets`. Pedestrian `bicycle=no` corridors
 (Kalverstraat) playable with `bicycleRestricted`. Ferry water hops stay out of
 scope.
+
+**25. Large-letter postcard compositor (standalone).**
+Pure TS measure + canvas paint for classic “Greetings from…” cards (photo
+clipped inside extruded letters, multi-image strips, typographic fallback).
+Storybook: `Canal Drive/Large Letter Postcard`. Game pop-in overlay on
+neighborhood first-visit / reward is deferred; the compact HUD entry strip
+stays as-is.
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.

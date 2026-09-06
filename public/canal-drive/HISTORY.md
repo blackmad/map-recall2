@@ -6,6 +6,39 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Large-letter postcard compositor (standalone) — 2026-09-06
+
+An earlier HISTORY line claimed vintage large-letter neighborhood postcards had
+shipped. That was aspirational: live `drawPostcard` is still the compact HUD
+strip (photo left, name right). The real compositor is now
+`src/canalRecall/largeLetterPostcard.ts` — pure measure + canvas paint, no AI.
+Letters are Barlow Condensed with a dark extrusion and outline; Wikimedia-style
+photos are cover-cropped and clipped with `destination-in` (one image spans the
+word, or N images become equal strips). Zero images get a solid typographic
+fill on sun-faded paper. Storybook hosts the states; `test:large-letter-postcard`
+guards fit / two-line split / caption. Game wiring is a later pop-in overlay —
+not a replacement for the bottom-band entry strip.
+
+## Play delight: missions, finish story, cold-open, passport — 2026-09-06
+
+Fun that still teaches the city:
+
+1. **Mission punchlines** on the setup footer and race open — destination /
+   home intent only; never the start corridor (removed `Starting on …`).
+2. **Finish knowledge story** uses real `explorationGain` (first-ever names /
+   hoods / landmarks), place-day streak, passport stamps, and a guest fog-map
+   sync tease.
+3. **Cold-open review** asks one overdue SRS place in the first minute when
+   due reviews exist (`RecallStore.dueReviews`).
+4. **“You know …” wink** on mastered re-entry instead of an encyclopedia card.
+5. **Encyclopedia postcards** open only after a *correct* answer (not wrong /
+   adopt drive-throughs).
+6. **Neighborhood passport** stamps visited hoods once the city collection is
+   thick enough (≥8 names).
+
+Typed modules: `missionBrief`, `finishStory`, `coldOpenReview`, `placeStreak`,
+`neighborhoodPassport`. Check: `npm run test:play-delight`.
+
 ## Blank boot from transit overlay before MapLibre load — 2026-09-06
 
 This morning's corridor-overlay work called `setTransitNetwork` from
@@ -2824,7 +2857,11 @@ Completed and being refined:
 - Trackpad and keyboard camera controls, remembered preferences, sound-off default, and absolute/relative vehicle controls.
 - Recall streaks and combo multipliers: consecutive correct answers build a streak (up to 2× at 10), displayed in the HUD with per-answer point feedback; best streak and accuracy percentage shown on the finish screen.
 - Landmark trivia cards: passing a notable place shows an expanded card with Wikipedia thumbnail, category badge (MUSEUM/BRIDGE/etc.), and multi-line description; the top 50 landmarks by prominence are image-preloaded at route start.
-- Vintage "Greetings from…" neighborhood postcards: entering a neighborhood now uses the classic large-letter travel-card composition—script heading, oversized outlined neighborhood name with Wikimedia photography clipped inside the letters, sun-faded paper, and an Amsterdam location line. A SPARQL-based enrichment script supplies images for 27 of 42 neighborhoods, with a typographic fallback for the rest. Continue tuning mobile scale and long-name typography against in-game screenshots.
+- Neighborhood entry postcards (compact HUD strip: photo + name + caption). A
+  contemporaneous note claimed classic large-letter composition; that look did
+  not land in `drawPostcard`. The real compositor arrived later — see
+  “Large-letter postcard compositor (standalone)” at the top of this file.
+  SPARQL enrichment still supplies Wikimedia thumbs for many neighborhoods.
 - Bridge recall: driving over a bridge, or passing under one by boat, asks which bridge it is. Backed by the 300-entry `bridges.json` extract, which supplies geometry and ready-made distractors, so the multiple-choice options are real neighbouring bridges rather than nearby street names.
 - Route destinations come from the landmark extract (245 reachable POIs) rather than 11 hand-written coordinates. Candidates are capped by distance from the centre and from each other so both ends fall inside one fetch window; an unsnappable endpoint is swapped for the nearest one that snaps, an unreachable destination is retargeted using a single Dijkstra pass over the whole pool, and an origin stranded in a disconnected component (typically across the IJ) re-rolls the pair.
 - Landmark cards show a Wikipedia affordance and `W` opens the article; the extract's `wikipediaUrl` and `wikidata` are carried onto the runtime record.

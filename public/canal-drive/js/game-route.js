@@ -745,6 +745,10 @@ class GameRouteRuntime {
     this._quizzedTransitStops = new Set();
     this._quizzedTransitStreets = new Set();
     this._quizzedTransitTransfers = new Set();
+    this._coldOpenDone = false;
+    this._explorationRouteGain = null;
+    this._finishPassportFresh = [];
+    this._finishPlaceStreakLabel = null;
     this._activeTransitLine = '';
     this._transitLineStickyAt = null;
     this._transitConnectionPlan = null;
@@ -789,9 +793,13 @@ class GameRouteRuntime {
     // Canal Recall intentionally starts with a quiet network: the experiment
     // is navigation and name recall, not traffic avoidance. Transit must not
     // pre-reveal the line on the plaque — ask it after settle instead.
+    // Mission punchline names the *destination*, never the start corridor.
+    const brief = (typeof this._composeMissionBrief === 'function')
+      ? this._composeMissionBrief()
+      : null;
     if (this.travelMode === 'transit') {
       this.quizCurrentName = '';
-      this.quizFeedback = '';
+      this.quizFeedback = (brief && brief.line) || '';
       // Replan from the player now that they exist (hub finish already set).
       if (this._transitConnectionPlan && this.track.finishPoint) {
         this._routeLearningPlan = this.track.planRoute(
@@ -805,7 +813,7 @@ class GameRouteRuntime {
       }
     } else {
       this.quizCurrentName = this.track.getRoadName(startX, startY, this.player.angle);
-      this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';
+      this.quizFeedback = (brief && brief.line) || '';
     }
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
