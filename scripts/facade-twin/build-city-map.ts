@@ -16,7 +16,7 @@
  *
  * Usage: npx tsx scripts/facade-twin/build-city-map.ts
  */
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
 
@@ -45,6 +45,16 @@ const attrs = ((await readJson(path.join(CACHE, '3dbag-attributes.json'), { attr
 const anchors = ((await readJson(path.join(CACHE, 'number-bands/anchors.json'), { panden: [] })) as any).panden as any[];
 const addressPoints = ((await readJson(path.join(CACHE, 'address-points.json'), { addresses: [] })) as any).addresses as
   Array<{ street: string; display: string; pandId: string | null }>;
+
+// Which panden already have a deep view built. A link to a page that is not
+// there is worse than the command that builds it, so the panel offers whichever
+// is true.
+const deep = new Set<string>();
+try {
+  for (const f of await readdir(path.join(CACHE, 'explorer'))) {
+    if (f.endsWith('.html') && f !== 'index.html') deep.add(f.slice(0, -5));
+  }
+} catch { /* no explorer pages built yet */ }
 
 const verdictOf = new Map<string, string>();
 for (const a of anchors) verdictOf.set(a.pandId, a.verdict);
@@ -82,6 +92,7 @@ const rows = buildings.map(b => {
       so: m.standoffM, ob: m.obliquityDeg, pn: m.panoramaId, w: m.wallWidthM,
       wall: m.wall.map((v: number) => Number(v.toFixed(1))) } : null,
     v: verdictOf.get(b.id) ?? null,
+    dp: deep.has(b.id) ? 1 : 0,
   };
 });
 
@@ -275,10 +286,12 @@ function select(b) {
       : '<p class="hint">Not measured. Either no plot-width frontage was found, or no square-on leaf-off view reaches it.</p>') +
     '</div>' +
 
-    '<div class="grp"><h3>Deep view</h3><p class="hint">' +
-    'Photographs, rectified strips, the projection and the door band for this pand:<br>' +
-    '<code style="font-size:.72rem">npx tsx scripts/facade-twin/build-explorer.ts --ids=' + b.i + '</code>' +
-    '</p></div>';
+    '<div class="grp"><h3>Deep view</h3>' + (b.dp
+      ? '<p class="hint"><a href="../explorer/' + b.i + '.html">Photographs, rectified strips, the ' +
+        'projection into the raw panorama, and the door band &rarr;</a></p>'
+      : '<p class="hint">Not built for this pand yet:<br>' +
+        '<code style="font-size:.72rem">npx tsx scripts/facade-twin/build-explorer.ts --split --ids=' + b.i + '</code></p>') +
+    '</div>';
   side.scrollTop = 0;
 }
 
@@ -311,4 +324,5 @@ svg.addEventListener('pointerup', e => { drag = null; svg.releasePointerCapture(
 await writeFile(path.join(OUT, 'index.html'), page);
 const kb = (page.length / 1024).toFixed(0);
 console.log(`${rows.length} panden — ${nMeasured} measured, ${nAnchored} with a house number read`);
+console.log(`  ${deep.size} have a deep view built; the rest show the command that builds one`);
 console.log(`wrote ${path.relative(process.cwd(), path.join(OUT, 'index.html'))} (${kb} KB)`);

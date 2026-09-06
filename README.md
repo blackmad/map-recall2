@@ -28,12 +28,19 @@ Nothing is served; open the file. They are built on demand because most embed
 photographs and are tens of megabytes.
 
 **Start with the city map** — it is the only one that shows all 3,025 buildings,
-and it is how you find a building worth looking at.
+and it is how you find a building worth looking at. Clicking a pand opens its deep
+view when one has been built, so the usual order is:
+
+```sh
+npx tsx scripts/facade-twin/build-explorer.ts --split --limit=200   # deep views
+npx tsx scripts/facade-twin/build-city-map.ts                       # then the map
+open .cache/facade-twin/city-map/index.html
+```
 
 | Build | Opens | What it answers |
 |---|---|---|
 | `npx tsx scripts/facade-twin/build-city-map.ts` | `.cache/facade-twin/city-map/index.html` | **Where is everything.** All 3,025 footprints, coloured by what the house-number anchor said. Click one for 3DBAG's heights, its massing at each published height, and what we measured off the photograph. Vector only, so it is a megabyte rather than a gigabyte. |
-| `npx tsx scripts/facade-twin/build-explorer.ts --ids=<pandId>` | `.cache/facade-twin/explorer/index.html` | **Everything known about one building.** The plan (footprint, wall, cameras, rays, address points), the footprint drawn into the raw panorama, the rectified strip from each independent view, the door band with any number read off it, and the numbers behind all of it. |
+| `npx tsx scripts/facade-twin/build-explorer.ts --split --ids=<pandId>` | `.cache/facade-twin/explorer/<pandId>.html` | **Everything known about one building.** The plan (footprint, wall, cameras, rays, address points), the footprint drawn into the raw panorama, the rectified strip from each independent view, the door band with any number read off it, and the numbers behind all of it. `--split` writes one page per pand, which is what the city map links to; without it you get one combined page. |
 | `npx tsx scripts/facade-twin/build-contact-sheet.ts` | `.cache/facade-twin/contact-sheet/index.html` | **Does the strip set look like a street?** Every confident rectified façade in one grid, judged by eye rather than by percentile. |
 | `npx tsx scripts/facade-twin/build-registration-review.ts` | `.cache/facade-twin/registration-review/index.html` | **Is this the right building?** One pand at a time, pictures as large as the screen allows, for adjudication rather than browsing. Answers land in `.cache/facade-twin/review.sqlite`. |
 | `npx tsx scripts/facade-twin/build-help-wanted.ts` | `.cache/facade-twin/help-wanted/index.html` | **What needs a person.** The cases where geometry has gone as far as it can and a human glance settles it in seconds. |
