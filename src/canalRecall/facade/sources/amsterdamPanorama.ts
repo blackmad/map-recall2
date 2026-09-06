@@ -192,12 +192,49 @@ export function lensHeightNap(
   view: { cameraHeight: number; headingDeg: number; pitchDeg: number; rollDeg: number },
   groundZ: number | null | undefined,
 ): { z: number; inferred: boolean } | null {
-  if (Number.isFinite(view.cameraHeight) && view.cameraHeight > 0) {
-    return { z: view.cameraHeight - GEOID_SEPARATION_M, inferred: false };
+  const published = Number.isFinite(view.cameraHeight) && view.cameraHeight > 0
+    ? view.cameraHeight - GEOID_SEPARATION_M
+    : null;
+  // A published height can be present and still be nonsense, and until now only
+  // the zero sentinel was caught. Measured against the ground beneath the camera
+  // across 106,435 frames that publish one, the lens sits 2.45 m up at the median
+  // — the survey van, exactly — and the distribution is tight to p99 at 10.66 m,
+  // then runs away to 97 m. 631 frames (0.59%) fall outside the bound below.
+  //
+  // They are corrupt, not a camera on a crane: frame
+  // TMX7316010203-002952_pano_0003_000616 publishes 106.1 m and shows an ordinary
+  // canal-side street from about two metres, the van's own roof rack in the
+  // bottom of the frame. Believed, such a height points the band 60 m downwards,
+  // the projection lands in the panorama's black nadir cap, and the tile comes
+  // back solid black — four of 400 bands in the current store, every one filed as
+  // `unread` as though the doorplate were merely illegible.
+  //
+  // Treated as missing rather than clamped, so it takes the inference path the
+  // 2024–25 frames already use and is *reported* as inferred. A wrong height that
+  // is quietly corrected is still a wrong height nobody knows about.
+  if (published !== null && Number.isFinite(groundZ as number)) {
+    const aboveGround = published - (groundZ as number);
+    if (aboveGround < MIN_LENS_ABOVE_GROUND_M || aboveGround > MAX_LENS_ABOVE_GROUND_M) {
+      return { z: (groundZ as number) + SURVEY_LENS_ABOVE_GROUND_M, inferred: true };
+    }
   }
+  if (published !== null) return { z: published, inferred: false };
   if (!Number.isFinite(groundZ as number)) return null;
   return { z: (groundZ as number) + SURVEY_LENS_ABOVE_GROUND_M, inferred: true };
 }
+
+/**
+ * How far above the ground a survey lens can plausibly be.
+ *
+ * Set wide on purpose. The point is to reject the physically impossible, not to
+ * second-guess the per-track vertical datum — that is `solve-track-datum.ts`'s
+ * job and it already tolerates 8.5 m of drift. p99 of the measured distribution
+ * is 10.66 m and p95 is 4.65 m, so +12 m rejects nothing a real survey produced
+ * while catching everything from 20 m up. The lower bound allows a camera below
+ * the ground of the *nearest building*, which happens legitimately beside a quay.
+ */
+const MIN_LENS_ABOVE_GROUND_M = -3;
+const MAX_LENS_ABOVE_GROUND_M = 12;
 
 /**
  * Usable for saying *where* something is, which needs no height.

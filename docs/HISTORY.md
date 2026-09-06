@@ -3927,3 +3927,67 @@ Not run yet, deliberately: a 1,152-band render is in flight under the current
 ranking, and changing the ranking mid-run would leave two stores that cannot be
 compared. §22 is only worth anything because it was paired on the identical 400
 panden.
+
+### 28. A published height can be present and still be nonsense (2026-09-06)
+
+Chasing why four bands read nothing turned up a black tile — solid black, 42 kB of
+it — and then a bug the pipeline had no check for.
+
+`defectsOf` has always rejected a camera height of zero, because Amsterdam
+publishes a missing value as a zero, and the comment beside it says a missing
+value must never be arithmetic. That is right, it catches 15,312 frames (all of
+2024 and 2025), and it was the whole of the check. **A height that is present but
+nonsense went straight through.**
+
+Measured against the ground beneath the camera across the frames that publish a
+height, the lens sits **2.45 m** up at the median — the survey van, matching
+`SURVEY_LENS_ABOVE_GROUND_M` to a centimetre — tight through p95 at 4.65 m and
+p99 at 10.66 m, and then it runs away to **97 m above the street**.
+
+They are corrupt, not unusual, and one frame settles it rather than an argument
+about distributions: `TMX7316010203-002952_pano_0003_000616` publishes **106.1 m**
+and shows an ordinary canal-side street from about two metres, the survey van's
+own roof rack in the bottom of the frame.
+
+What believing one costs: the band is aimed sixty metres downwards, the projection
+lands in the panorama's black nadir cap — which begins at −57° elevation — and the
+tile comes back solid black. Four of the 400 bands in the number-band store are
+black for exactly this reason, and every one was filed **`unread`**, which reads as
+"the doorplate was illegible" rather than "we photographed the ground".
+
+Three near-misses in how this was found, each worth more than the fix:
+
+- **`missingFraction` is zero on all 1,633 tiles**, including the black ones. It
+  counts samples landing *outside* the source image; these land inside it, where
+  the pixels are simply black. A field that exists to catch bad sampling did not
+  catch bad sampling, because the failure was upstream of it.
+- **The first instinct was that this was a render bug, and at scale.** It is a
+  render bug, but 15 tiles of 1,633 — 0.9% — across 4 of 400 panden. A dramatic
+  black image is not evidence of a widespread fault, and scanning every tile
+  before saying so took two minutes.
+- **The first count of "implausible heights" was 12% of the archive**, which was
+  wrong: it lumped the 15,312 known zero-height frames in with the genuinely
+  corrupt ones. Separated, the zeros are already handled and the real defect is
+  **631 frames, 0.51%**.
+
+The fix goes where the ground is known — `lensHeightNap`, not `defectsOf`, which
+cannot see it. A published height implying a lens outside −3 to +12 m above ground
+is treated as *missing*, taking the inference path the 2024–25 frames already use,
+and is reported as `inferred: true`. Not clamped: a wrong height quietly corrected
+is still a wrong height nobody knows about.
+
+The bound is set wide on purpose. It rejects the physically impossible and does
+not second-guess the per-track vertical datum, which is `solve-track-datum.ts`'s
+job and already tolerates 8.5 m of drift. With p99 at 10.66 m, +12 m rejects
+nothing a real survey produced.
+
+`check-lens-height.ts` holds it. After the fix the accepted population has a
+median of **2.44 m above ground** — `SURVEY_LENS_ABOVE_GROUND_M` exactly — and the
+631 rejections cluster in five survey tracks (002033:141, 001674:124, 003026:115,
+002549:85, 003004:73) rather than scattering, which is what a datum fault in one
+run looks like and not random corruption. `check-inferred-height` still passes at
+median −0.03 m; all 23 camera checks, 22 record checks and 44 boundary checks pass.
+
+Note for pairing: the 1,152-band render in flight predates this fix, so its bands
+come from the old behaviour. It affects at most a handful of them, all of which
+were black.
