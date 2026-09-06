@@ -89,11 +89,19 @@ pairs are claimed by more than one pand. Median 1 number per pand, p90 2, though
 
 ### Design
 
-1. **Blocks.** A block is a maximal run of panden whose front walls face the same
-   street on the same side, contiguous along it. Build from `recon.json`
-   footprints plus `address-points.json`. Do **not** define a block by projecting
-   a whole street onto a principal axis — the grachten curve, and that is where
-   the monotonicity below breaks.
+1. **Blocks — done** (§24). `scripts/facade-twin/build-blocks.ts` writes
+   `blocks.json`: 5,757 panden into 1,230 blocks, median 2 members, max 33, 4,661
+   panden in a block of three or more. Ordered by **party-wall adjacency**, not by
+   projection — canal houses are terraced, so footprint adjacency already is the
+   sequence, and a chain follows a curving gracht and stops at a corner without
+   being told to. Two membership rules do the real work: both panden must front
+   the same street (or the chain leaks around a corner), and a member must be in
+   the **front row**, within 8 m of the closest member of its group measured to
+   the street centreline (or the chain turns into a courtyard and comes back along
+   a rear row — Willemsstraat odd did, which is what the doubled 163/163, 161/161
+   in one block were). Chain order agrees with BAG house numbers **98.4%** of the
+   time, and that is a test rather than a restatement because the chain never sees
+   a number.
 2. **Order.** Within a block, order panden along the local street direction and
    attach every address point that names them.
 3. **Observations.** Collect every doorplate reading from every band overlapping

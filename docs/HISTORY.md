@@ -3620,3 +3620,61 @@ assumed — and it was diligence applied to an estimator nobody had validated. T
 tell was available and I walked past it: a walk that reports 78% monotonic on a
 canal where the houses are visibly numbered in order should have been suspected
 before Amsterdam was.
+
+### 24. Blocks are party-wall chains, and the front row only (2026-09-06)
+
+Step 1 of the anchoring plan: `scripts/facade-twin/build-blocks.ts`, writing
+`blocks.json`. 5,757 panden into **1,230 blocks**, median 2 members, p90 11, max
+33, with 4,661 panden in a block of three or more.
+
+The ordering comes from party walls rather than from projection. Amsterdam canal
+houses are terraced, so consecutive houses share a wall and footprint adjacency
+*already is* the sequence — the median pand has exactly two touching neighbours
+and only 2% have none. That matters because the alternative, projecting a street
+onto an axis and sorting, is the exact mistake §23 had to retract. A gracht is a
+horseshoe with no single axis; a chain of party walls follows it without needing
+one, and stops at a corner by itself. Westermarkt comes out as separate runs with
+no special case, because a corner *is* a break in the chain.
+
+**The first version was wrong, and the way it was wrong is worth keeping.** It
+scored 97.7% order agreement, and the worst offender was `Willemsstraat/odd`:
+
+    0.0 m   139     6.2 m from the centreline
+    12.2 m  141     6.1
+    ...
+    71.1 m  165     6.3
+    76.1 m  163     12.4   <- turned into the courtyard here
+    88.0 m  161     17.7
+    98.5 m  159     28.2
+    ...
+    142.9 m 151     12.2
+
+A hairpin. The chain ran up the front row to 165, turned into the block, and came
+back along a *rear* row — which is why numbers appeared doubled (163/163, 161/161,
+159/159) inside what was called one block. Party-wall adjacency is a 2-D graph in
+the Jordaan, not a path, because a voorhuis touches its achterhuis.
+
+The fix is a membership rule, not a cleverer walk: **a block member must front the
+street.** Distance is measured from the nearest footprint vertex to the street's
+OSM centreline, so a deep house is judged by its front wall, and every house on a
+side then sits at nearly the same distance — 6.0–6.3 m on Willemsstraat against
+12.4 m for the first rear-row pand. A member is kept if it is within 8 m of the
+closest member of its own group. 405 memberships dropped, and order agreement rose
+to **98.4%**.
+
+The centrelines are used for *this and only this*. They decide which row faces the
+street; they never order anything. That line is worth holding, because reaching
+for a street axis to sort by is how §23 happened.
+
+Two smaller things found on the way. The group key was `street + separator +
+parity` and was being split back apart on a space — which would have made
+`Nieuwe Leliestraat odd` into street `Nieuwe`, parity `Leliestraat`. The key now
+carries both fields in its value and is never taken apart. And the file had picked
+up two NUL bytes, which is why `grep` had gone silent on it: grep treats a file
+containing NUL as binary and prints nothing rather than erroring, so a search that
+returns no hits is not evidence the text is absent.
+
+Order agreement is a real test rather than a restatement, because the chain is
+built from geometry and the numbers come from BAG. 98.4% says a number read off a
+door is a position in a sequence that can be trusted, which is the premise the
+rest of the plan stands on.
