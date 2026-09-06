@@ -86,6 +86,10 @@ export interface GameCoreHost {
   _teachingGate(): import('./teachingSurface.ts').TeachingGateInput;
   /** Tap targets for the arrival card's actions, on touch. */
   _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' }>;
+  /** Tap targets for the pause card (resume / new route / copy). */
+  _pauseButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'resume' | 'route' | 'copy' }>;
+  _runPauseAction?(id: 'resume' | 'route' | 'copy'): void;
+  _openRouteSetup?(): void;
 
   /** Owned by the recall subsystem; landmarks needs it to join street names to
    *  the knowledge extract by the same normalisation the quiz uses. */

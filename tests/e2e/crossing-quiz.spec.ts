@@ -97,7 +97,7 @@ test('a bridge over water teaches the water first and the bridge second', async 
   expect(first.waterway).toBe('Amstel');
   expect(first.kind).toBe('crossing-water');
   expect(first.asked).toBe('Amstel');
-  expect(first.question).toBe('Which water is under this bridge?');
+  expect(first.question).toBe('Which waterway are you crossing?');
   expect(first.context).toBe('Crossing a bridge');
   expect(first.subject).toBe('Water');
   expect(first.subjectKind).toBe('water');

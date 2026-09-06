@@ -6,6 +6,24 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## New route from pause / settings — 2026-09-06
+
+Playtest: mid-ride there was no reliable way back to route setup. Pause’s
+`M — back to menu` and finish’s “Choose route” both wrote
+`this._routeSetup.style.display` on a never-assigned field, so they often did
+nothing. Now `_openRouteSetup()` opens the enamel rail via
+`overlay.store.setSetupOpen(true)`. Pause shows Resume + **New route** (touch
+targets on phone; `M` on keyboard), settings has a New route button, help
+lists `M (paused)`. Finish caption matches (“New route”).
+
+## Bridge water quiz: no more “under” flip — 2026-09-06
+
+Playtest: on a bike deck, “Which water is under this bridge?” forced a mental
+inversion (look *down* through the structure) while attention is on crossing.
+Street/car mode now asks “Which waterway are you crossing?” — same WATER chip
++ “Crossing a bridge” caption, answer still the canal. Boat keeps “Which water
+are you on?” / “Passing under a bridge” (hull *is* on the water).
+
 ## City overview tighter + review-due tint — 2026-09-06
 
 Playtest: the city overview sat in too much empty rim (`OVERVIEW_ZOOM` 1.18 →

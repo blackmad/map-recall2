@@ -240,7 +240,7 @@ class RecallStore {
   /**
    * True when the rider has actually got this name right near here and is still
    * inside its review interval. The stricter bar, for places where a wrong
-   * answer must not read as knowledge — such as the water under a bridge.
+   * answer must not read as knowledge — such as the waterway at a bridge.
    * Deliberately independent of `enabled`: turning off "skip what I know" asks
    * more questions, it does not claim the rider knows less.
    */

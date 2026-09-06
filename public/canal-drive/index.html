@@ -446,6 +446,15 @@ body.setup-open #utility-buttons { display: none; }
 .utility-card td { padding: 5px 4px; border-bottom: 1px solid rgba(255,255,255,.16); font-size: 13px; }
 .utility-card td:first-child { width: 88px; color: var(--rivet); font-weight: bold; white-space: nowrap; }
 .utility-scroll { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.utility-actions { flex: none; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.utility-actions .utility-close,
+.utility-actions button { width: 100%; margin-top: 0; padding: 12px; cursor: pointer; }
+.utility-actions .enamel-secondary {
+  background: rgba(255,255,255,.08);
+  color: var(--enamel-ink);
+  border: 1px solid rgba(255,255,255,.28);
+  font: 700 14px/1.2 var(--font-ui);
+}
 .utility-close { flex: none; width: 100%; margin-top: 12px; padding: 12px; cursor: pointer; }
 .enamel-utility .master-toggle {
   border: 1px solid rgba(255,255,255,.18);
@@ -616,6 +625,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
       <tr><td>G</td><td>Settings</td></tr>
       <tr><td>N</td><td>Sound</td></tr>
       <tr><td>P / Esc</td><td>Pause</td></tr>
+      <tr><td>M (paused)</td><td>New route</td></tr>
       <tr><td>− / +</td><td>Zoom (or pinch)</td></tr>
       <tr><td>Drag / IJKU</td><td>Pan camera</td></tr>
       <tr><td>R</td><td>Recenter</td></tr>
