@@ -21,6 +21,7 @@ import {
   classifyObservationTier, drawsOpenings, evidenceCeiling, resolveFidelityTier,
   silhouetteChanges, type FidelityTier, type TierInput,
 } from '../src/canalRecall/facade/observationTier.ts';
+import { plausibility, PLAUSIBLE_ENOUGH } from '../src/canalRecall/facade/grammar.ts';
 
 const PAND = '0363100012164995';       // Prinsengracht 263, the Anne Frank Huis group
 const NEIGHBOUR = '0363100012165023';  // a different pand entirely
@@ -373,6 +374,40 @@ const tier = (overrides: Partial<TierInput> = {}): FidelityTier => resolveFideli
     assert.equal(wasObserved(unobservedHouse(PAND)[field]), false, `${field} must start unobserved`);
   }
   assert.equal(defaulted(0).confidence, 0);
+}
+
+/**
+ * Plausibility must not reward a reading for being empty.
+ *
+ * Every rule in `plausibility` is guarded by `storeyBands > 0` or
+ * `openings.length`, because a rule about floor-to-floor intervals has nothing
+ * to say when there are no intervals. The consequence was the opposite of the
+ * intent: a façade with four openings and five bands was checked six ways and a
+ * reading with nothing in it tripped one rule, lost a fifth, and passed at 0.8
+ * against a 0.6 bar. Fifty-nine of 422 stored readings were empty on that
+ * arithmetic.
+ *
+ * Both cases below are pinned, because fixing only the first would leave the
+ * shape of the bug in place: a score assembled from failed rules must never rank
+ * a thinner reading above a fuller one.
+ */
+{
+  const wall = { wallWidthM: 5.7, eavesHeightM: 12.4, declaredStoreys: 4 };
+  const empty = plausibility({ ...wall, storeyBands: 0, storeyIntervalsM: [], bays: 0, openings: [] });
+  assert.equal(empty.score, 0, 'a reading with no storey bands is the absence of a measurement, not a weak one');
+  assert.equal(empty.score < PLAUSIBLE_ENOUGH, true, 'and it must never be stored');
+
+  const window = { xM: 1.1, yM: 3.2, widthM: 1.1, heightM: 2.0 };
+  const full = plausibility({
+    ...wall, storeyBands: 4, storeyIntervalsM: [3.1, 3.1, 3.0], bays: 2,
+    openings: [window, { ...window, yM: 6.3 }, { ...window, yM: 9.4 }],
+  });
+  assert.equal(full.score > empty.score, true, 'a reading that found a façade outscores one that found nothing');
+
+  // The general rule, not just the one instance that bit us: dropping the
+  // contents of a reading must never raise its score.
+  const thinned = plausibility({ ...wall, storeyBands: 4, storeyIntervalsM: [3.1, 3.1, 3.0], bays: 2, openings: [] });
+  assert.equal(thinned.score <= full.score, true, 'removing the openings from a reading cannot improve it');
 }
 
 console.log(`All façade record checks passed (${CANAL_HOUSE_FIELDS.length} parameter fields audited).`);
