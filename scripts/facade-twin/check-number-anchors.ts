@@ -41,8 +41,10 @@ import {
 } from '../../src/canalRecall/facade/doorplates.ts';
 
 const CACHE = path.resolve('.cache/facade-twin');
-const BANDS = path.join(CACHE, 'number-bands');
 const arg = (n: string) => process.argv.find(v => v.startsWith(`--${n}=`))?.slice(n.length + 3);
+// Paired experiments render into their own directory (§30's --out=), so the check
+// has to be able to look there. Defaults to the shared one.
+const BANDS = path.join(CACHE, arg('bands') ?? 'number-bands');
 
 interface AddressPoint {
   street: string; houseNumber: number; letter: string | null; display: string;

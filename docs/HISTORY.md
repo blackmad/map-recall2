@@ -4000,7 +4000,37 @@ Note for pairing: the 1,152-band render in flight predates this fix, so its band
 come from the old behaviour. It affects at most a handful of them, all of which
 were black.
 
-### 33. A May capture at 4.5 m beats a January one at 17 m, and the filter said otherwise
+### 34. The resolution floor was free and bought nothing, exactly as pre-registered
+
+The paired `--min-view-ppm=150` run, 400 panden against the same 400, only the flag
+differing. Scored against the three predictions written down before it rendered:
+
+| | baseline | with the floor | predicted |
+|---|---|---|---|
+| decided panden | 47 | **49** | *up by at least half* — **fails** |
+| identity | 87% | 86% | *falls no more than 3 points* — holds |
+| chosen resolution | 197.8 px/m | 205.6 px/m | *rises* — holds |
+| obliquity | 4.4° | 4.4° | *rises with it* — **fails** |
+
+Two of four. The coverage prediction fails by a wide margin: four percent, not fifty.
+And the obliquity prediction fails in the pleasant direction — I expected the floor
+to buy resolution by spending squareness, and it spends nothing, because the views it
+promotes are both nearer *and* square. The floor is very nearly free and very nearly
+worthless.
+
+Both failures say the same thing, and it is the thing the experiment existed to
+find out: **view selection is not what is holding coverage down.** §32 had already
+shown the mechanism — 12 of 161 dead bands have a better view anywhere in the
+archive — and this is the outcome measurement agreeing with it. TODO recorded in
+advance that a failure here would be as informative as a success, and it is: the
+next move is a better recogniser or different imagery, not a cleverer ranking, and
+that is now measured rather than argued.
+
+Worth noting what pre-registration bought. A run that lifts decided panden from 47 to
+49 and median resolution by 8 px/m could be written up as a modest improvement, and
+it would not be false. Having predicted +50% first makes it what it is: a refutation.
+
+## 33. A May capture at 4.5 m beats a January one at 17 m, and the filter said otherwise
 
 §32 left ~39 dead bands where a near frame exists, carries a camera height, and is
 not being used. The first four inspected were all one thing, and all four were May
