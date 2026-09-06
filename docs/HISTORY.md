@@ -4036,14 +4036,37 @@ comparing one against the other mean little. A first pass at the same question a
 had the wall normal inverted, which put every one of the 400 chosen views "behind
 the wall plane" — caught only because that control was run at all.
 
-What it did establish is the shape: much of the remainder are frames standing almost
-against the wall and looking along it, under 3 m of standoff at more than 55°, which
-are correctly excluded and not recoverable. The question worth asking is narrower
-than "why are 28 rejected" — it is whether any excluded frame would achieve better
-*native* resolution than the one chosen, and the instrument is `--audit-views`
-reporting the resolution ceiling beside the obliquity it already reports. A small
-change to a tool that exists, rather than the ranking reimplemented in a script
-next to it, which is §30 and §31's lesson restated.
+So the question was put to the pipeline instead. `--audit-views` now reports, for
+each pand, the sharpest view in range whatever the filters say, and — when it beats
+the chosen one by a fifth — the first rule that rejected it. Same geometry, computed
+once, with the numbers the ranking itself uses.
+
+Its first version was wrong in the same way, and this is worth recording because the
+error is a genus rather than a mistake. `1250 / standoff` diverges as a camera
+approaches the wall plane, so a frame sitting essentially *in* the façade scores
+thousands of px/m and looks like the best view in the city. It duly reported 146
+panden "excluded for being behind the wall plane" and 130 recoverable dead bands.
+Applying the ranking's own 3 m floor before calling anything sharper:
+
+```
+214 of 400 panden have a view in range at least 20% sharper than the one chosen:
+    94  obliquity over 55°
+    61  leaf-on, and something leaf-off was legible
+    58  passes every filter — the ranking traded it for squareness
+     1  standoff over 18 m
+  7 of them are below 150 px/m now and would be above it
+```
+
+**Seven.** Not 28, and not the 130 the broken version claimed. The 94 are glancing
+views correctly refused, the 61 are the leaf-on rescue behaving conservatively as
+designed, and the 58 are §22's squareness trade working as intended. After the
+leaf-on rescue the dead zone is very nearly exhausted by view selection: of 149 dead
+bands, 11 recovered and 7 more could be, and the remaining ~131 have nothing better
+in the archive at all.
+
+That is the answer, and it took three attempts, two of which produced confident
+numbers that were artifacts of dividing by something near zero. The instrument now
+lives in the tool, which is §30 and §31's lesson restated for the third time.
 
 The trade is honest in one direction and unproven in the other. A 63 px/m frame is
 illegible with certainty; a leaf-on frame at 4.5 m *may* have a tree across it. So

@@ -141,6 +141,23 @@ for (const pandId of queue) {
    * preferred but not required — a bare tree in front of a door still hides it,
    * and the ranking says so by preferring the squarer view.
    */
+  /**
+   * Everything in range, before the filters, so `--audit-views` can say what was
+   * excluded and why.
+   *
+   * §33 tried to answer "does a better frame exist that we are not using?" from a
+   * script beside the pipeline, twice, and got it wrong twice — once with the wall
+   * normal inverted, once by comparing the ranking's `wallPixelsPerMetre` against
+   * the manifest's achieved `nativePixelsPerMetre`, which are different
+   * quantities. The question is legitimate and the place to answer it is here,
+   * where the geometry is computed once and the same numbers the ranking uses are
+   * the numbers reported.
+   */
+  const inRange = posed
+    .map(q => ({ ...q, front: inFrontOf(wall, q.p), standoff: standoffM(wall, q.p), obliquity: obliquityDeg(wall, q.p) }))
+    .filter(q => q.standoff <= 25)
+    .map(q => ({ ...q, wallPpm: (1250 / Math.max(q.standoff, 0.1)) * Math.cos((Math.min(q.obliquity, 89) * Math.PI) / 180) }));
+
   const candidates = posed
     .filter(q => inFrontOf(wall, q.p))
     .map(q => ({ ...q, standoff: standoffM(wall, q.p), obliquity: obliquityDeg(wall, q.p) }))
@@ -248,6 +265,27 @@ for (const pandId of queue) {
       bestObliquity: Number(squarest.obliquity.toFixed(1)),
       bestPpm: Number(squarest.wallPixelsPerMetre.toFixed(0)),
       candidates: pool.length,
+      // The best view in range whatever the filters say, and — if it is better
+      // than what we chose — the first rule that rejected it. This is the only
+      // honest way to ask whether the ranking is leaving resolution on the table.
+      ...(() => {
+        // `1250 / standoff` blows up as a camera approaches the wall plane, so a
+        // frame sitting essentially *in* the façade scores thousands of px/m and
+        // looks like the best view in Amsterdam. The first version of this block
+        // reported 146 panden "excluded for being behind the wall plane" on
+        // exactly that arithmetic. A view is only a forgone opportunity if it
+        // could plausibly have been used, so the same 3 m floor the ranking
+        // applies is applied before anything is called sharper.
+        const plausible = inRange.filter(q => q.front && q.standoff >= 3);
+        if (!plausible.length) return {};
+        const best = plausible.reduce((a, b) => (b.wallPpm > a.wallPpm ? b : a));
+        if (best.wallPpm <= chosen.wallPixelsPerMetre * 1.2) return {};
+        const why = best.standoff > 18 ? 'standoff over 18 m'
+          : best.obliquity > 55 ? 'obliquity over 55°'
+          : !isLeafOff(best.v.capturedAt) ? 'leaf-on, and something leaf-off was legible'
+          : 'passes every filter — the ranking traded it for squareness';
+        return { forgonePpm: Number(best.wallPpm.toFixed(0)), forgoneWhy: why };
+      })(),
     });
     done++;
     continue;
@@ -373,6 +411,19 @@ if (AUDIT) {
   console.log(`view audit over ${audit.length} panden\n`);
   console.log(`  obliquity chosen now   p50 ${q(chosen, 0.5).toFixed(1)}°  p90 ${q(chosen, 0.9).toFixed(1)}°`);
   console.log(`  squarest available     p50 ${q(best, 0.5).toFixed(1)}°  p90 ${q(best, 0.9).toFixed(1)}°`);
+  {
+    // Where resolution is being left on the table, and what rule is doing it.
+    const forgone = audit.filter((a: any) => a.forgonePpm);
+    if (forgone.length) {
+      const by = new Map<string, number>();
+      for (const a of forgone as any[]) by.set(a.forgoneWhy, (by.get(a.forgoneWhy) ?? 0) + 1);
+      console.log(`\n  ${forgone.length} of ${audit.length} panden have a view in range at least 20% sharper`
+        + ` than the one chosen. What excludes it:`);
+      for (const [why, n] of [...by].sort((a, b) => b[1] - a[1])) console.log(`    ${String(n).padStart(4)}  ${why}`);
+      const dead = forgone.filter((a: any) => a.chosenPpm < 150 && a.forgonePpm >= 150);
+      console.log(`  ${dead.length} of them are below 150 px/m now and would be above it — the recoverable dead zone.\n`);
+    }
+  }
   console.log(`  within 10° of square:  ${squareNow} now, ${squarePossible} possible`
     + ` — ${gained.length} panden could be square-on and are not`);
   if (cost.length) {
