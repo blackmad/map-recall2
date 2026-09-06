@@ -146,8 +146,8 @@ check('the overview sits a notch closer than a pure fit-to-city framing', () => 
   }, RECT);
   assert.ok(built);
   const fitted = fitProjection({ minX: 0, minY: 0, maxX: 2000, maxY: 2000 }, RECT, 6, 1);
-  assert.ok(built.projection.scale > fitted.scale * 1.1,
-    `expected ~18% tighter framing, got ${built.projection.scale / fitted.scale}`);
+  assert.ok(built.projection.scale > fitted.scale * 1.25,
+    `expected ~35% tighter framing, got ${built.projection.scale / fitted.scale}`);
 });
 
 check('an empty world produces no overview rather than a broken one', () => {
@@ -186,6 +186,20 @@ check('mastery bands and water types split the knowledge tint', () => {
   assert.equal(built.layers.waterNetwork.length, 1);
   assert.equal(built.layers.learningNetwork.length, 1);
   assert.equal(built.layers.masteredWater.length, 1);
+  assert.equal(built.layers.reviewDueNetwork.length, 0);
+});
+
+check('review-due layers carry overdue practice separately from mastery bands', () => {
+  const built = buildOverview({
+    areaRings: [[{ x: 0, y: 0 }, { x: 100, y: 0 }, { x: 100, y: 100 }]],
+    networkSegments: [],
+    reviewDueNetworkSegments: [[{ x: 0, y: 0 }, { x: 10, y: 0 }]],
+    reviewDueWaterSegments: [[{ x: 0, y: 20 }, { x: 10, y: 20 }]],
+    route: [], start: null, finish: null,
+  }, RECT);
+  assert.ok(built);
+  assert.equal(built.layers.reviewDueNetwork.length, 1);
+  assert.equal(built.layers.reviewDueWater.length, 1);
 });
 
 console.log(`City overview OK: ${checks.length} checks.`);

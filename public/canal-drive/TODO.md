@@ -42,8 +42,9 @@ Full-city map colouring learned roads and waterways by mastery / review state,
 with fog-of-war over the rest. Derive from visits, answers and recency — not
 one drive-through as mastery. Same data should later feed “where next”.
 *Shipped:* graded fog / learning / known / mastered tints; waterways (canal /
-river / dock) use cool blue bands vs land green; cache busts on band counts.
-Still open: review-due tint and a dedicated review screen.
+river / dock) use cool blue bands vs land green; cache busts on band counts;
+review-due warm copper tint from `routeReviewDue` (overdue SRS names).
+Still open: a dedicated review screen.
 *Related:* Home-base routes grow an expanding learning radius from the address
 (HUD/briefing readout + soft path bias inside the ring).
 

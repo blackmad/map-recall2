@@ -84,6 +84,7 @@ class Game {
     this._plannedRouteLengthPx = 0;
     this._routeLearningPlan = null;
     this._routeMastery = {};
+    this._routeReviewDue = {};
     this.quizPromptKind = 'route';
     // Per crossing, not per bridge (one OSM name can span several waters).
     this._quizzedCrossings = new Map();
