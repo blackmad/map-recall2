@@ -42,30 +42,109 @@ house-number anchor said, with 3DBAG's heights, the massing at each published
 height, and our own measurements a click away. It is vector only — the
 photographs live in the explorer, which it links to per pand.
 
-**P0-adjacent: the contradictions are one house wide, and we are not using the
-anchors as a block.** Every band is scored alone against its own pand — there is no
-cross-band reasoning anywhere in `check-number-anchors.ts`. That throws away the
-one property a house number has that a correlation peak does not: **numbers run in
-a known monotonic sequence along a street, and BAG holds both the sequence and
-every frontage width.** One confident anchor therefore pins an entire terrace.
+## P0 — Global anchoring: read the numbers as a sequence, not as labels
+
+The single highest-value piece of work open, above the storey detector and well
+above anything to do with OCR speed.
+
+### Why — the evidence is already in
+
+Every band is scored alone against its own pand. `check-number-anchors.ts` has no
+cross-band reasoning anywhere, which throws away the one property a house number
+has that a correlation peak does not: **it is a position in a sequence, and BAG
+holds the sequence.**
 
 The 14 contradictions say this is exactly the error being made. Measuring how far
-the read number's own BAG address point sits from our wall centre: twelve of the
-fourteen fall between **4.0 and 6.5 m**, and an Amsterdam canal frontage is 5.7 m
-at the median. The sign splits 8 one way, 6 the other. So it is not a systematic
-shift that a single offset would fix — it is **±one house, direction unknown**,
-which is precisely the "local precision, no global lock" of §19 and 1d, and
-precisely what a block constraint resolves.
+the read number's own BAG address point sits from our wall centre, twelve of the
+fourteen fall between **4.0 and 6.5 m** — an Amsterdam canal frontage is 5.7 m at
+the median — and the sign splits 8 one way, 6 the other. Not a systematic offset
+one correction would remove: **±one house, direction unknown**, on about a quarter
+of the panden a reading can decide. That is §19's "local precision, no global
+lock" arriving from the other side.
 
-Reach, from the 44 confirmed anchors we already have: 5% of panden sit within 30 m
-of one, but that is the wrong metric. The right one is that those anchors land on
-**13 streets holding 1,894 panden — 36% of the boundary** — and a street with one
-anchor and a known frontage sequence is a street whose every building is
-positioned. Block anchoring turns 44 point measurements into constraints on up to
-1,894 buildings, and makes a one-frontage slip *detectable* rather than merely
-reported as a conflict.
+### What it buys
 
-This is worth more than anything else currently open, including the storey work.
+Identity for panden whose own door carries nothing legible, inherited from
+neighbours whose door does. The 44 confirmed anchors sit on **13 streets holding
+1,894 panden — 36% of the boundary**. Proximity is the wrong measure: a street
+with one anchor and a known frontage order is a street whose every building is
+positioned.
+
+It also converts a contradiction from a reported failure into a *correction*: "our
+wall for this pand is one frontage east" is actionable where "conflict" is not.
+
+### The enabling fact, measured
+
+A read number identifies a pand almost uniquely: only **1.7%** of street+number
+pairs are claimed by more than one pand. Median 1 number per pand, p90 2, though
+24% carry more than one.
+
+### Design
+
+1. **Blocks.** A block is a maximal run of panden whose front walls face the same
+   street on the same side, contiguous along it. Build from `recon.json`
+   footprints plus `address-points.json`. Do **not** define a block by projecting
+   a whole street onto a principal axis — the grachten curve, and that is where
+   the monotonicity below breaks.
+2. **Order.** Within a block, order panden along the local street direction and
+   attach every address point that names them.
+3. **Observations.** Collect every doorplate reading from every band overlapping
+   the block — not just the band belonging to the pand being tested — each with
+   its along-street position. `number-bands` already carries 0.7 of a frontage of
+   context on each side, so bands overlap and a plate is often seen by two.
+4. **Fit one shift per block, robustly.** Each reading votes: "the pand owning
+   number N sits at position x". The residual against BAG's own position for N is
+   the error. Fit **one** shift for the whole block, in two models tested against
+   each other:
+   - *continuous* — one Δ metres;
+   - *discrete* — our assignment is off by k frontages, k ∈ {−2…+2}, which is what
+     the ±5.7 m evidence predicts.
+   Use a consensus fit (largest supported set, RANSAC-style), **not** least
+   squares: see the obstacles below.
+5. **Lock or abstain.** A block with ≥2 readings agreeing on a shift, with residual
+   spread under about a metre, is *locked*, and every pand on it inherits both the
+   correction and an identity confidence. One reading is a suggestion, not a lock,
+   and must be reported as such.
+6. **Propagate and re-derive.** A locked block corrects its walls. Every
+   measurement taken off a corrected wall — storeys, bays, openings, wall colour —
+   was a measurement of the neighbour and must be re-run.
+
+### Validation, and how not to fool ourselves
+
+- **Hold-out is the primary test.** Fit each block's shift with one reading
+  removed, then predict it. A fit that cannot predict a reading it did not see is
+  fitting noise. Report the hold-out error distribution, not the training fit.
+- **The existing decoy still travels.** Score every block against a deliberate
+  ±1-frontage shift; the true shift must beat it, and by how much is the report.
+- **The headline must not become circular.** `check-number-anchors.ts` currently
+  measures identity *from* these readings. If corrections fitted from the readings
+  are then graded by the same readings, the number is meaningless. Grade only on
+  held-out readings, and state plainly which panden were used to fit.
+- **A block with one reading proves nothing about itself.** Count those
+  separately, always.
+
+### Obstacles, measured rather than guessed
+
+- **Numbering is not cleanly monotonic.** Walking each street rather than
+  projecting it, house numbers run monotonically only **78–95%** of the way along
+  the big grachten, and only about **80% of 12-address runs** are ≥95% monotonic.
+  Some of this is the 24% of panden carrying several numbers, some is address
+  points sitting inside deep blocks. **The fit must tolerate it** — which is why
+  step 4 says consensus rather than least squares.
+- **BAG address points are inside the building, not on the plaque**, so every
+  position carries 1–2 m of intrinsic scatter. Use medians, and never a tolerance
+  tighter than that scatter.
+- **Corner buildings are numbered on the other street** and will read as
+  contradictions on this one. `169146` in the current conflict set is exactly
+  that: ours [89], read `07`.
+- **Odd and even sides are separate sequences**, and a canal has water between
+  them. Never let a block span both.
+
+### Done when
+
+`check-number-anchors.ts` reports identity on **held-out** readings, and the rate
+has moved from 76% toward the 95% bar — or the attempt has failed and this section
+says why, which is worth as much.
 
 **Notes for buying OCR instead of running it** (not needed yet; free local path is
 4.7× better than it was and adequate):
