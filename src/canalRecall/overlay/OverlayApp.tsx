@@ -544,7 +544,7 @@ export function OverlayApp({
             <option value="cockpit">3D — cockpit (low / bumper)</option>
           </Field>
           {(prefs.viewMode === 'chase' || prefs.viewMode === 'cockpit') ? (
-            <label className="setup-field">3D TILT
+            <label className="setup-field">3D TILT ([ / ])
               <input
                 id="live-tilt"
                 type="range"

@@ -477,6 +477,8 @@ class Game {
     }
     if (this.input.wasPressed('KeyF')) this.routeOptions.arrow = !this.routeOptions.arrow;
     if (this.input.wasPressed('KeyO')) this.camera.northUp = !this.camera.northUp;
+    if (this.input.wasPressed('BracketLeft')) this._nudgeCameraTilt(-3);
+    if (this.input.wasPressed('BracketRight')) this._nudgeCameraTilt(3);
     if (this.input.wasPressed('KeyN')) { this._setSoundEnabled(this.sound.muted); this._savePreferences(); }
     if (this.input.wasPressed('KeyD')) this.vectorMap.toggleLabels();
     if (this.input.wasPressed('KeyW')) this._openLandmarkArticle();

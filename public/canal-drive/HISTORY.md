@@ -6,6 +6,25 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## 3D tilt keyboard — 2026-09-06
+
+Tilt slider was easy to miss: Settings (G) → View = Chase/Cockpit → **3D TILT**.
+`[` / `]` now nudge ±3° (clamped −18…+18), sync the live slider, and persist.
+Help card documents it.
+
+## Bike steer animation sign — 2026-09-06
+
+Omafiets / city-bike / Swapfiets fork yaw followed the wrong side of the turn:
+`steerInput +1` is right, but +Y rotation on a +X-facing bike yaws the bars
+left. Negate the steer target in `PlayerBike3D.update` so `Lenker` / front
+wheel track the pad. Frame physics were already correct; only the mesh pose.
+
+## Chase closer, cockpit less forward — 2026-09-06
+
+Playtest: chase (high/behind) sat too far out; cockpit nudged past the bumper.
+`CHASE_ZOOM_OFFSET` 0.05 → 0.55 (~1.5× closer on the log zoom scale). Cockpit
+lookahead 240 → 160 px (`COCKPIT_LOOKAHEAD`). Pitch unchanged (42° / 82°).
+
 ## CI unblocked for blank-boot ship — 2026-09-06
 
 Firebase stayed on `055ce32` because Canal CI failed after the blank-boot
@@ -76,8 +95,8 @@ merge updates.
 
 Playtest notes from a Waterlooplein / Academie van Bouwkunst metro hop:
 
-1. **Chase ≠ cockpit.** Chase is high (42° + small zoom); cockpit is bumper-
-   close (82°, +1.65 zoom, 240 px lookahead). Live **3D tilt** slider (−18…+18°)
+1. **Chase ≠ cockpit.** Chase is high (42° + 0.55 zoom); cockpit is bumper-
+   close (82°, +1.65 zoom, 160 px lookahead). Live **3D tilt** slider (−18…+18°)
    offsets either mode. Pitch eases in so load→race is not a hard snap.
 2. **Tracks through buildings.** GTFS metro shapes and Liberty rails are ground
    projections of tunnels — they are not OSM `tunnel=*` tagged in our extract.

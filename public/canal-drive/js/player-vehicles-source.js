@@ -297,7 +297,10 @@ export class PlayerBike3D extends Vehicle3D {
     super.update(lngLat, angle, visible);
     const skin = bikeSkin(this.skinId);
     const input = skin.motion ? steerInput : 0;
-    const target = Math.max(-1, Math.min(1, input || 0)) * MAX_STEER;
+    // Keyboard/right-pad: +1 = turn right. With the bike facing +X and steer
+    // about +Y, a positive angle yaws the fork toward +Z (the bike's left).
+    // Negate so the bars and front wheel follow the turn the rider asked for.
+    const target = -Math.max(-1, Math.min(1, input || 0)) * MAX_STEER;
     this.steerAngle += (target - this.steerAngle) * STEER_EASING;
     this.wheelSpin = skin.motion
       ? (distancePx || 0) / (PIXELS_PER_METER_FALLBACK * WHEEL_RADIUS_M)

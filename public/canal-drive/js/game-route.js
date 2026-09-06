@@ -168,6 +168,23 @@ class GameRouteRuntime {
     if (this.routePath) this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
   }
 
+  /** Nudge chase/cockpit pitch. No-op in 2D views. Step is degrees. */
+  _nudgeCameraTilt(delta) {
+    if (this.viewMode !== 'chase' && this.viewMode !== 'cockpit') return;
+    if (!this.vectorMap || typeof this.vectorMap.setCameraTilt !== 'function') return;
+    const Prefs = window.CanalRecallPreferences;
+    const min = Prefs && Number.isFinite(Prefs.CAMERA_TILT_MIN) ? Prefs.CAMERA_TILT_MIN : -18;
+    const max = Prefs && Number.isFinite(Prefs.CAMERA_TILT_MAX) ? Prefs.CAMERA_TILT_MAX : 18;
+    const current = Number.isFinite(this.vectorMap._cameraTilt) ? this.vectorMap._cameraTilt : 0;
+    const next = Math.max(min, Math.min(max, current + delta));
+    if (next === current) return;
+    this.vectorMap.setCameraTilt(next);
+    if (this._overlay && this._overlay.store) {
+      this._overlay.store.patchPrefs({ cameraTilt: next }, this._overlayZoom());
+    }
+    this._savePreferences();
+  }
+
   _setSoundEnabled(enabled) {
     if (enabled && !this.soundStarted) {
       this.sound.init();
