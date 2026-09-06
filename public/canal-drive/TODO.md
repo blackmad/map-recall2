@@ -96,6 +96,9 @@ Parked; design notes at the end of `HISTORY.md`.
 
 Not milestones — standing obligations with live guards.
 
+- `Canal CI` must stay green: `check:canal`, boot smoke, full Playwright.
+  Deploys wait on that workflow. Local: `prepare` installs pre-commit (`lint`)
+  and pre-push (`lint` + `test:e2e:smoke`).
 - Name every reported geographic failure in `scripts/check-canal-car.ts` (or
   the reachability / city-extract harness) before calling it fixed. Bike
   corridor pins: Zeedijk in, Kalverstraat out (`check-city-extract`).

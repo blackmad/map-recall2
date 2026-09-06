@@ -1,4 +1,5 @@
 import { expect, Page, test } from '@playwright/test';
+import { openRoute } from './helpers';
 
 // A driving harness rather than a scripted scenario: it plans routes between
 // random points of the real Amsterdam street network and drives them with the
@@ -61,21 +62,7 @@ async function openCarRoute(page: Page): Promise<void> {
   // The route the game picks decides where the world origin lands, which
   // changes how geometry rounds into routing-graph cells. Seed the generator
   // so every run of the harness drives the same city.
-  await page.addInitScript(() => {
-    let seed = 0x5eed1234;
-    Math.random = () => {
-      seed = (seed * 1664525 + 1013904223) >>> 0;
-      return seed / 0x100000000;
-    };
-  });
-  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
-  await page.goto('/canal-drive/');
-  await expect(page.locator('#route-card')).toBeVisible();
-  await page.locator('#travel-mode').selectOption('car');
-  await page.locator('#view-mode').selectOption('north');
-  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
-  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.player?.x)), { timeout: 60_000 }).toBe(true);
-  await page.evaluate(() => { window.canalRecallGame.state = 4; });
+  await openRoute(page, { travelMode: 'car', viewMode: 'north', playerTimeoutMs: 60_000 });
 }
 
 // Installed in the page so drives run at simulation speed rather than in real

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { openRoute } from './helpers';
 
 // Swapfiets is authored level with `Lenker` / `RadVorn` / `RadHinten` from
 // `scripts/stylize-swapfiets-bike.py`. This pins that the fork turns about +Y,
@@ -7,13 +8,7 @@ import { test, expect } from '@playwright/test';
 // so the pose is measured off the scene graph instead of a screenshot.
 test('the front wheel steers and the wheels roll, and the frame stays put', async ({ page }) => {
   test.setTimeout(180000);
-  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
-  await page.goto('/canal-drive/');
-  await expect(page.locator('#route-card')).toBeVisible();
-  await page.locator('#travel-mode').selectOption('car');
-  await page.locator('#view-mode').selectOption('chase');
-  await page.locator('#route-card').evaluate((f: HTMLFormElement) => f.requestSubmit());
-  await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.player?.x)), { timeout: 90000 }).toBe(true);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', seedRandom: false });
   await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.vectorMap?.isPlayerBikeReady?.())), { timeout: 90000 }).toBe(true);
 
   const pose = await page.evaluate(() => {

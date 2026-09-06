@@ -1,4 +1,5 @@
 import { expect, Page, test } from '@playwright/test';
+import { openRoute } from './helpers';
 
 // Named regression locations for the two-stage crossing question. Driving to a
 // specific bridge by autopilot is slow and flaky, so this drives the crossing
@@ -31,17 +32,7 @@ declare global {
 }
 
 async function openCarRoute(page: Page): Promise<void> {
-  await page.addInitScript(() => {
-    let seed = 0x5eed1234;
-    Math.random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 0x100000000; };
-  });
-  await page.route(/3dbag|cesium3dtiles/i, (route) => route.abort());
-  await page.goto('/canal-drive/');
-  await expect(page.locator('#route-card')).toBeVisible();
-  await page.locator('#travel-mode').selectOption('car');
-  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
-  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.player?.x)), { timeout: 60_000 }).toBe(true);
-  await page.evaluate(() => { window.canalRecallGame.state = 4; });
+  await openRoute(page, { travelMode: 'car', playerTimeoutMs: 60_000 });
 }
 
 /** Drive the vehicle through one crossing of a named bridge and report the question asked. */

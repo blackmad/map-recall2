@@ -12,6 +12,9 @@ class VectorBasemap {
     this._pendingTrees = [];
     this._pendingPlaces = { landmarks: [], boundaries: [] };
     this._pendingBrandedPois = [];
+    // Prefs apply during Game construction, before MapLibre's style load.
+    // Stash corridor paint until `load` so addSource does not throw and kill boot.
+    this._pendingTransitNetwork = null;
     this._treesVisible = false;
     this._detailedBuildings = null;
     this._completeCity = null;
@@ -90,6 +93,11 @@ class VectorBasemap {
       // Theme setup can run before the asynchronous style load. Reapply it
       // now so OSM building colours replace Liberty's uniform gray default.
       this.applyTheme(this.theme);
+      if (this._pendingTransitNetwork) {
+        const pending = this._pendingTransitNetwork;
+        this._pendingTransitNetwork = null;
+        this.setTransitNetwork(pending.load, pending.visible);
+      }
     });
   }
 
@@ -129,7 +137,9 @@ class VectorBasemap {
 
   _ensureTransitOverlayLayers() {
     const Transit = window.CanalRecallTransit;
-    if (!Transit || this.map.getSource(Transit.TRANSIT_OVERLAY_SOURCE_ID || 'transit-network')) return;
+    // MapLibre throws "Style is not done loading" on addSource before `load`.
+    if (!this.map || !Transit || typeof this.map.isStyleLoaded === 'function' && !this.map.isStyleLoaded()) return;
+    if (this.map.getSource(Transit.TRANSIT_OVERLAY_SOURCE_ID || 'transit-network')) return;
     const sourceId = Transit.TRANSIT_OVERLAY_SOURCE_ID || 'transit-network';
     this.map.addSource(sourceId, {
       type: 'geojson',
@@ -154,6 +164,13 @@ class VectorBasemap {
   setTransitNetwork(load, visible) {
     const Transit = window.CanalRecallTransit;
     if (!this.map || !Transit) return;
+    // Called from prefs during Game construction — before style `load`. Defer
+    // rather than throw; blank boot was "Style is not done loading" here.
+    if (!this.ready) {
+      this._pendingTransitNetwork = { load, visible: !!visible };
+      return;
+    }
+    this._pendingTransitNetwork = null;
     this._ensureTransitOverlayLayers();
     const sourceId = Transit.TRANSIT_OVERLAY_SOURCE_ID || 'transit-network';
     const source = this.map.getSource(sourceId);

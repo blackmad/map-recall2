@@ -435,7 +435,7 @@ export class GameLandmarkRuntime {
    * Wikipedia image for can show one; the card falls back to text until it
    * arrives, and a failure is remembered so it is not retried every frame.
    */
-  _ensureLandmarkImage(landmark: Landmark | null): void {
+  _ensureLandmarkImage(landmark: Landmark | LandmarkNotice | null): void {
     if (!landmark || !landmark.imageUrl) return;
     if (!this._landmarkImageRequests) this._landmarkImageRequests = new Set();
     if (this._landmarkImageRequests.has(landmark.id)) return;

@@ -9,6 +9,7 @@
 // touch rather than by a key a phone does not have.
 
 import { expect, Page, test } from '@playwright/test';
+import { openRoute } from './helpers';
 
 type OverlayGame = {
   state: number;
@@ -34,18 +35,7 @@ test.beforeEach(async ({}, testInfo) => {
 });
 
 async function drive(page: Page): Promise<void> {
-  await page.addInitScript(() => {
-    let seed = 0x5eed1234;
-    Math.random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 0x100000000; };
-  });
-  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
-  await page.goto('/canal-drive/');
-  await expect(page.locator('#route-card')).toBeVisible();
-  await page.locator('#travel-mode').selectOption('car');
-  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
-  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.player?.x)),
-    { timeout: 90_000 }).toBe(true);
-  await page.evaluate(() => { window.canalRecallGame.state = 4; });
+  await openRoute(page, { travelMode: 'car' });
 }
 
 /** Did this frame draw the d-pad? */
