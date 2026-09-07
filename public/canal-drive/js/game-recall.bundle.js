@@ -323,7 +323,8 @@
       bikeBabySeat: false,
       zoom: zoom.defaultZoom,
       zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
-      cameraTilt: 0
+      cameraTilt: 0,
+      cameraBearing: 0
     };
   }
   function clearPreferences(store, zoom) {
@@ -447,6 +448,10 @@
           recall.enabled = enabled;
           this._refreshMasteredLabels();
           this._savePreferences();
+        };
+        overlay.callbacks.onPracticeAgain = (itemKey) => {
+          recall.queueForPractice(itemKey);
+          this._refreshMasteredLabels();
         };
         overlay.callbacks.onAccountClick = async () => {
           overlay.store.setAccount({ busy: true });

@@ -76,6 +76,10 @@ export class GameRecallRuntime {
         this._refreshMasteredLabels();
         this._savePreferences();
       };
+      overlay.callbacks.onPracticeAgain = (itemKey: string) => {
+        recall.queueForPractice(itemKey);
+        this._refreshMasteredLabels();
+      };
       overlay.callbacks.onAccountClick = async () => {
         overlay.store.setAccount({ busy: true });
         try {

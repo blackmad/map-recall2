@@ -168,6 +168,8 @@ export interface RecallStore extends AnswerRecallStore {
   routeMastery(cityId: string): Record<string, number>;
   routeReviewDue?(cityId: string): Record<string, true>;
   homeMasterySamples?(cityId: string): Array<{ lat: number; lng: number; mastery: number }>;
+  /** Makes every place-local chunk for one named item due without logging a quiz result. */
+  queueForPractice(itemKey: string): number;
   isKnownHere(feature: RecallFeature): boolean;
   isSuppressedHere(feature: RecallFeature): boolean;
   /** Wipes local and signed-in review memory; returns how many were cleared. */

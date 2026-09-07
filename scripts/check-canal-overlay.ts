@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 import { defaultPreferences, patchLivePreferences } from '../src/canalRecall/game/preferences.ts';
-import { buildKnowledgeReview } from '../src/canalRecall/knowledgeReview.ts';
+import {
+  belongsToKnowledgeItem,
+  buildKnowledgeReview,
+  knowledgeItemKey,
+} from '../src/canalRecall/knowledgeReview.ts';
 import { createOverlayStore } from '../src/canalRecall/overlay/store.ts';
 import type { ReviewEvent, ReviewState } from '../src/spacedRepetition.ts';
 
@@ -84,6 +88,16 @@ const zoom = { min: 0.2, max: 1.5, defaultZoom: 0.5 };
   assert.equal(review.items[0].name, 'Overtoom');
   assert.equal(review.items[0].places, 2);
   assert.equal(review.activity.reduce((sum, day) => sum + day.reviews, 0), 2);
+  const prinsengracht = review.items.find(item => item.name === 'Prinsengracht');
+  assert.ok(prinsengracht);
+  assert.equal(
+    belongsToKnowledgeItem(
+      state('Prinsengracht', now + 1000, 3),
+      knowledgeItemKey({ cityId: 'amsterdam', type: 'street', name: 'Prínsengracht' }),
+    ),
+    true,
+    'practice controls identify all chunks using the same normalized key as the review screen',
+  );
 }
 
 console.log('canal overlay store: checks passed');

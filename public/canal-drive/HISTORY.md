@@ -16,6 +16,9 @@ search, and status filters. Empty and populated states have desktop and phone
 Storybook scenarios. **Plan review** returns to setup with “Space reviews”
 enabled; choosing a location-honest route near overdue names remains a separate
 routing task rather than pretending the current route already covers them.
+Each non-due row also has **Practice again**, which makes all of that name's
+place-local chunks due immediately without inventing a wrong answer or changing
+recall-rate statistics.
 
 ## Occluded bikes get a depth-aware cartoon silhouette — 2026-09-08
 
