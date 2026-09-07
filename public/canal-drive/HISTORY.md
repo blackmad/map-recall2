@@ -15,6 +15,17 @@ destinations now use the same content floor as landmark cards: each must have
 real text, a photograph, or an article that can be fetched and opened. Curated
 city anchors remain deliberate exceptions.
 
+## Streamed buildings keep sole ownership — 2026-09-07
+
+The LoD1 tile stream hid OpenFreeMap's duplicate `building-3d` extrusion when
+its first tile landed, but detailed-building readiness and settings changes
+later ran a shared visibility sync that blindly made all extrusion layers
+visible again. That restored two coplanar versions of every building and the
+citywide façade/roof shimmer. Complete-city ownership is now persistent state:
+the basemap remains as the empty-city fallback until a real tile lands, then no
+later layer sync may resurrect it. The browser regression deliberately runs
+that later sync after loading tiles.
+
 ## Bridge-named bike routes ask about the bridge — 2026-09-07
 
 Amsterdam's routing extract includes 77 named bridges as rideable ways. The
