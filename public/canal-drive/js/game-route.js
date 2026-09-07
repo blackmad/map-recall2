@@ -396,6 +396,27 @@ class GameRouteRuntime {
       try { localStorage.removeItem('canalRecall.homeLearningRadius.v1'); } catch (_) { /* ignore */ }
     }
 
+    if (this.routePattern === 'here') {
+      try {
+        if (!(isReroll && this.gpsOrigin)) {
+          this._setRouteError('Finding where you are…');
+          const city = this._activeCity();
+          const Route = window.CanalRecallRoute;
+          this.gpsOrigin = await Route.resolveGpsOrigin({
+            cityName: city.name,
+            viewbox: city.geocodeViewbox,
+            readFix: Route.browserGpsReader(navigator.geolocation, window.isSecureContext),
+          });
+        }
+      } catch (error) {
+        this.gpsOrigin = null;
+        this._setRouteError(error.message || 'Could not read your location.');
+        return;
+      }
+    } else {
+      this.gpsOrigin = null;
+    }
+
     if (this.travelMode === 'transit' && this.routePattern === 'surprise') {
       const pair = this._pickTeachableTransitPair();
       if (pair) {
@@ -406,10 +427,21 @@ class GameRouteRuntime {
 
     const pool = this.routePois;
     const choices = pool.filter(poi => poi.id !== this.routeFrom?.id || pool.length < 3);
-    const from = this.routePattern === 'home' ? this.homeBase : choices[Math.floor(Math.random() * choices.length)];
-    this._launchPoiRoute(from, this.routePattern === 'home'
+    const from = this.routePattern === 'home' ? this.homeBase
+      : this.routePattern === 'here' ? this.gpsOrigin
+        : choices[Math.floor(Math.random() * choices.length)];
+    const dest = this.routePattern === 'home'
       ? this._pickHomeDestination(from)
-      : this._pickDestinationNear(from));
+      : this._pickDestinationNear(from);
+    if (!from || !dest) {
+      this._setRouteError(
+        this.routePattern === 'here'
+          ? 'Could not plan a ride from your location. Try Surprise or Home.'
+          : `Not enough landmarks loaded for ${this._cityDisplayName()}.`,
+      );
+      return;
+    }
+    this._launchPoiRoute(from, dest);
   }
 
   /** Prefer two-leg transfers so surprise play teaches changing lines. */
@@ -705,6 +737,10 @@ class GameRouteRuntime {
     return true;
   }
 
+  _isGenerousSnapOrigin(poi) {
+    return !!(poi && (poi.id === 'home' || poi.id === 'here'));
+  }
+
   _launchPoiRoute(from, to) {
     this.routeFrom = from;
     this.routeTo = to;
@@ -952,14 +988,14 @@ class GameRouteRuntime {
       let start, finish;
       if (startLL && finishLL) {
         // Convert user-picked lat/lng to game coordinates
-        const startSnapLimit = this.routeFrom && this.routeFrom.id === 'home' ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
-        const finishSnapLimit = this.routeTo && this.routeTo.id === 'home' ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
+        const startSnapLimit = this._isGenerousSnapOrigin(this.routeFrom) ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
+        const finishSnapLimit = this._isGenerousSnapOrigin(this.routeTo) ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
         start = this.osmLoader.latLngToGamePoint(startLL.lat, startLL.lng, lat, lng, segments, startSnapLimit);
         finish = this.osmLoader.latLngToGamePoint(finishLL.lat, finishLL.lng, lat, lng, segments, finishSnapLimit);
         // Not every landmark in the extract sits within snapping range of a
         // mapped waterway or street. Rather than bouncing the player back to
         // the setup screen, swap in the nearest destination that does snap.
-        if (!start && this.routeFrom && this.routeFrom.id !== 'home') {
+        if (!start && this.routeFrom && !this._isGenerousSnapOrigin(this.routeFrom)) {
           const swap = this._nearestSnappableDestination(startLL, segments, lat, lng, startSnapLimit, this.routeTo?.id);
           if (swap) {
             start = swap.point;
@@ -992,7 +1028,9 @@ class GameRouteRuntime {
       if (!start || !finish) {
         this.loadingMessage = this.routePattern === 'home'
           ? 'That address is too far from a connected mapped waterway. Try a nearby bridge or canal-side address.'
-          : 'Could not place start/finish. Try different points.';
+          : this.routePattern === 'here'
+            ? 'Could not snap your location to a mapped street or waterway. Move closer to the network, or try Surprise.'
+            : 'Could not place start/finish. Try different points.';
         setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 2500);
         return;
       }
@@ -1079,7 +1117,7 @@ class GameRouteRuntime {
           this._routeLearningPlan = this.track.planRoute(start, finish);
           if (this._routeLearningPlan) this.routePath = this._routeLearningPlan.path;
           console.info(`Destination retargeted to ${retarget.poi.name}: the original was unreachable from the start`);
-        } else if (this.routePattern === 'surprise' && this._routeRerolls < MAX_ROUTE_REROLLS) {
+        } else if ((this.routePattern === 'surprise' || this.routePattern === 'here') && this._routeRerolls < MAX_ROUTE_REROLLS) {
           // Nothing in the pool is reachable, so the *origin* is stranded in a
           // disconnected component — most often a Noord canal cut off from the
           // centre by the IJ. Re-roll the pair rather than play a route with

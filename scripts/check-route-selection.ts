@@ -7,6 +7,8 @@ import assert from 'node:assert/strict';
 
 import {
   advanceLiveRoute,
+  GPS_ORIGIN_ID,
+  GpsOriginError,
   HOME_RADIUS_KNOWN_TO_EXPAND,
   HOME_RADIUS_MAX_KM,
   HOME_RADIUS_MIN_KM,
@@ -18,7 +20,10 @@ import {
   nearestSnappableDestination,
   pickDestinationNear,
   pickHomeDestination,
+  pointInGeocodeViewbox,
   rankRetargetCandidates,
+  resolveGpsOrigin,
+  browserGpsReader,
   routeAhead,
   ROUTE_POI_MAX_PAIR_KM,
   scoreHomeDestination,
@@ -228,6 +233,39 @@ check('routeAhead trims passed vertices and never returns a stub', () => {
   assert.deepEqual(routeAhead(ROUTE, ROUTE.length - 1, FINISH), [{ x: 400, y: 0 }, FINISH]);
   assert.deepEqual(routeAhead([], 0, FINISH), [FINISH]);
 });
+
+const AMSTERDAM_BOX = [4.72, 52.43, 5.02, 52.27] as const;
+
+check('GPS origin stays inside the city viewbox', () => {
+  assert.equal(pointInGeocodeViewbox(52.373, 4.892, AMSTERDAM_BOX), true);
+  assert.equal(pointInGeocodeViewbox(40.71, -74.01, AMSTERDAM_BOX), false);
+});
+
+const gpsOrigin = await resolveGpsOrigin({
+  cityName: 'Amsterdam',
+  viewbox: AMSTERDAM_BOX,
+  readFix: async () => ({ lat: 52.373, lng: 4.892 }),
+});
+assert.equal(gpsOrigin.id, GPS_ORIGIN_ID);
+assert.equal(gpsOrigin.name, 'Here');
+assert.equal(gpsOrigin.lat, 52.373);
+checks.push('resolveGpsOrigin uses a live fix as Here, not a geocoded home');
+
+await assert.rejects(
+  () => resolveGpsOrigin({
+    cityName: 'Amsterdam',
+    viewbox: AMSTERDAM_BOX,
+    readFix: async () => ({ lat: 52.09, lng: 5.12 }),
+  }),
+  (error: unknown) => error instanceof GpsOriginError && error.code === 'outside-city',
+);
+checks.push('resolveGpsOrigin refuses a fix outside the chosen city');
+
+await assert.rejects(
+  () => browserGpsReader(undefined, false)(),
+  (error: unknown) => error instanceof GpsOriginError && error.code === 'unsupported',
+);
+checks.push('GPS start needs a secure context');
 
 console.log(`Route selection OK: ${checks.length} checks.`);
 for (const name of checks) console.log(`  · ${name}`);

@@ -1,6 +1,13 @@
 /**
  * Cold-open review: one overdue SRS place in the first minute of a ride.
+ *
+ * The prompt is gated off until it is location-honest: a due name on/near the
+ * current route, or a visible highlight/camera hop. Asking “what is this place
+ * called?” about a name that is not under the bike teaches a false pairing.
  */
+
+/** Kill-switch until a due name is shown or is on the ridden corridor. */
+export const COLD_OPEN_ENABLED = false;
 
 export interface DueReviewPlace {
   name: string;

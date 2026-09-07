@@ -48,6 +48,11 @@ const memory = () => {
 }
 
 {
+  const prefs = parsePreferences({ routePattern: 'here' }, zoom);
+  assert.equal(prefs.routePattern, 'here');
+}
+
+{
   const prefs = parsePreferences({ difficulty: 'nope', travelMode: 'hovercraft' }, zoom);
   assert.equal(prefs.difficulty, 'medium', 'unknown difficulty falls back');
   assert.equal(prefs.travelMode, 'boat', 'unknown travel mode falls back');

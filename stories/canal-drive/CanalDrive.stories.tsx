@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-type Scenario = 'default' | 'bike-home' | 'transit' | 'advanced' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
+type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-panel' | 'landmark-panel-dutch'
   // Phone states. `touch-*` force the compact layout on a pointer device,
   // which is the only way to see the d-pad and the portrait card stack in the
   // workbench; the viewport addon alone just makes a small desktop window.
-  | 'touch-hud' | 'touch-hud-steering' | 'touch-hud-question' | 'touch-setup' | 'touch-setup-transit'
+  | 'touch-hud' | 'touch-hud-steering' | 'touch-hud-question' | 'touch-setup' | 'touch-setup-transit' | 'touch-setup-here'
   // Overlay states on a phone: the question, the arrival card, the panels and
   // the expanded article. These are DOM over canvas, so the HUD layout suite
   // cannot reach them and Storybook is where they get reviewed.
@@ -26,7 +26,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     // Must be set before the game's first _resize, and re-applied because the
     // Storybook viewport addon resizes the iframe after load.
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
-    const setupStories = new Set(['default', 'bike-home', 'transit', 'advanced', 'touch-setup', 'touch-setup-transit']);
+    const setupStories = new Set(['default', 'bike-home', 'bike-here', 'transit', 'advanced', 'touch-setup', 'touch-setup-transit', 'touch-setup-here']);
     if (setupStories.has(scenario)) doc.body.classList.add('storybook-setup');
     else doc.body.classList.remove('storybook-setup');
     const overlay = (win as any)?.CanalRecallOverlay?.getOverlay?.();
@@ -38,6 +38,11 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       patchPrefs({
         travelMode: 'car', viewMode: 'heading', routePattern: 'home',
         homeAddress: 'Da Costakade 13-3, Amsterdam',
+      });
+    }
+    if (scenario === 'bike-here' || scenario === 'touch-setup-here') {
+      patchPrefs({
+        travelMode: 'car', viewMode: 'heading', routePattern: 'here',
       });
     }
     if (scenario === 'transit' || scenario === 'touch-setup-transit') {
@@ -279,6 +284,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = { args: { scenario: 'default' } };
 export const BikeFromHome: Story = { args: { scenario: 'bike-home' } };
+export const BikeFromHere: Story = { args: { scenario: 'bike-here' } };
 export const TransitBriefing: Story = { args: { scenario: 'transit' } };
 export const AdvancedOptions: Story = { args: { scenario: 'advanced' } };
 export const Mobile: Story = {
@@ -397,5 +403,10 @@ export const PortraitArticlePanel: Story = {
  *  width overflowed the viewport and latched the desktop layout onto phones. */
 export const PortraitRouteSetup: Story = {
   args: { scenario: 'touch-setup' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+export const PortraitRouteSetupHere: Story = {
+  args: { scenario: 'touch-setup-here' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };

@@ -36,6 +36,7 @@ import {
 import { clearPlaceStreak } from './placeStreak';
 import { clearPassport } from './neighborhoodPassport';
 import {
+  COLD_OPEN_ENABLED,
   COLD_OPEN_MIN_S,
   COLD_OPEN_WINDOW_S,
   pickColdOpenReview,
@@ -389,10 +390,14 @@ export class GameRecallRuntime {
   }
 
   /**
-   * One overdue SRS name in the first minute — a warm-up, not a spoiler on the
-   * briefing. Skips when nothing is due or a prompt is already open.
+   * One overdue SRS name in the first minute — gated until the due place is
+   * on the route or shown. Asking the name of an unseen place teaches false.
    */
   _tryColdOpenReview(): boolean {
+    if (!COLD_OPEN_ENABLED) {
+      this._coldOpenDone = true;
+      return false;
+    }
     if (this.quizPromptName || this._coldOpenDone) return false;
     if (this.raceTime < COLD_OPEN_MIN_S || this.raceTime > COLD_OPEN_WINDOW_S) return false;
     if (!this.recall || typeof this.recall.dueReviews !== 'function') {

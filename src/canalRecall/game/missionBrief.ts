@@ -3,10 +3,12 @@
  * Never names the start corridor — that would spoil the first quiz.
  */
 
+import type { RoutePattern, TravelMode } from './modes.ts';
+
 export interface MissionBriefInput {
   destinationName: string;
-  travelMode: 'boat' | 'car' | 'transit';
-  routePattern: 'surprise' | 'home';
+  travelMode: TravelMode;
+  routePattern: RoutePattern;
   cityName: string;
   homeLearningRadiusKm?: number;
   /** Overdue review waiting in the first minute. */
@@ -41,6 +43,10 @@ const HOME = [
     : 'Home base · grow your learning ring',
   () => 'Errand mode: leave knowing the way back',
 ];
+const HERE = [
+  (d: string) => d && d !== 'your destination' ? `From here toward ${d}` : 'Start from where you are',
+  (_d: string) => 'Start from where you are — not a saved address',
+];
 
 function pick<T>(items: T[], salt: string): T {
   let h = 0;
@@ -58,6 +64,16 @@ export function missionBrief(input: MissionBriefInput): MissionBrief {
     return {
       line,
       tease: input.hasColdOpenReview ? 'A review waits in the first minute' : undefined,
+    };
+  }
+
+  if (input.routePattern === 'here') {
+    const line = pick(HERE, salt)(dest);
+    return {
+      line,
+      tease: input.hasColdOpenReview
+        ? 'Warm up with one overdue name'
+        : `Arrive knowing more of ${input.cityName}`,
     };
   }
 
