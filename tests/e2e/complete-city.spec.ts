@@ -42,6 +42,9 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
 
   const loaded = await page.evaluate(() => {
     const map = (window as any).canalRecallGame.vectorMap;
+    // Reproduce the settings/readiness sync that used to resurrect OpenFreeMap's
+    // duplicate extrusion after the streamed city had hidden it.
+    map.setDetailedBuildingsVisible(false);
     return {
       status: map._completeCity.status(),
       // A hidden `building-3d` is the point: once every building is described
@@ -54,7 +57,7 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
   });
 
   expect(loaded.status.features, 'the streamed tiles carry real buildings').toBeGreaterThan(500);
-  expect(loaded.basemapVisibility, 'the basemap extrusion is hidden').toBe('none');
+  expect(loaded.basemapVisibility, 'the basemap extrusion stays hidden after a layer sync').toBe('none');
   expect(loaded.wallsVisible, 'the merged source is what draws').toBe('visible');
   expect(loaded.roofFilter?.[0], 'the roof cap is a filter, not a paint').toBe('all');
   // Flat lids are an allowlist of flat/untagged shapes; pyramidal parts are
