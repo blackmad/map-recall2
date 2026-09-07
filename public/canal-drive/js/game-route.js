@@ -570,6 +570,10 @@ class GameRouteRuntime {
       for (const feature of features) {
         const centre = feature.center;
         if (!centre || !feature.name) continue;
+        // Completing a route must reveal something worth learning. The raw
+        // extract also contains named OSM features with no article, fact or
+        // image; those remain map geometry rather than empty arrival rewards.
+        if (!CanalRecallRoute.isTeachableRouteDestination(feature)) continue;
         const key = this._normaliseCanalName(feature.name);
         if (seen.has(key)) continue;
         const poi = { id: `lm-${feature.id}`, name: feature.name, lat: centre[0], lng: centre[1],

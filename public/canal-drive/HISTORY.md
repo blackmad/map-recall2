@@ -6,6 +6,15 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Empty landmarks are no longer route destinations — 2026-09-07
+
+The prominence-ranked landmark pool included named OSM features with no fact,
+encyclopedia article, or image. That let a full trip end at places such as UvA
+PC Hoofthuis with only the generic “A place to remember” filler. Extract-added
+destinations now use the same content floor as landmark cards: each must have
+real text, a photograph, or an article that can be fetched and opened. Curated
+city anchors remain deliberate exceptions.
+
 ## Active street overlay is one centreline — 2026-09-07
 
 The active street highlight now uses one MapLibre line layer instead of a
