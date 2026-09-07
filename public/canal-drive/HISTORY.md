@@ -6,6 +6,16 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Occluded bikes get a depth-aware cartoon silhouette — 2026-09-08
+
+Tall foreground buildings could completely hide the bicycle in pitched chase
+views. Making all buildings translucent was rejected: MapLibre cannot reliably
+depth-sort overlapping transparent extrusions, and fading the whole city would
+weaken its legibility. The bicycle now gets a second, gold x-ray pass using the
+inverse depth test. It paints only fragments that are behind nearer map
+geometry, so an occluding building shows a compact cartoon bike silhouette
+while an unobstructed bicycle and every building remain fully depth-correct.
+
 ## Street mode stops at the canal edge — 2026-09-08
 
 Street corridors were arcade-wide: a residential road allowed the bike centre

@@ -192,7 +192,7 @@ class Vehicle3D {
   _makeLayer() {
     const owner = this;
     const { id, modelUrl, headingOffset, label } = this.options;
-    let camera, renderer;
+    let camera, renderer, occlusionMaterial;
     return {
       id,
       type: 'custom',
@@ -204,6 +204,22 @@ class Vehicle3D {
         const sun = new THREE.DirectionalLight(0xffffff, 4.2);
         sun.position.set(-3, -4, 8);
         owner._scene.add(sun);
+        if (owner.options.occlusionColor != null) {
+          // A second depth pass paints only model fragments that failed the
+          // normal pass because nearer map geometry covered them. The bike
+          // stays depth-correct in the open, while a building turns it into a
+          // restrained cartoon x-ray instead of making the whole city glassy.
+          occlusionMaterial = new THREE.MeshBasicMaterial({
+            color: owner.options.occlusionColor,
+            opacity: 0.82,
+            transparent: true,
+            depthTest: true,
+            depthWrite: false,
+            depthFunc: THREE.GreaterDepth,
+            side: THREE.DoubleSide,
+            toneMapped: false,
+          });
+        }
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
         owner._loadModel(modelUrl);
@@ -224,6 +240,11 @@ class Vehicle3D {
         camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(transform);
         renderer.resetState();
         renderer.render(owner._scene, camera);
+        if (occlusionMaterial) {
+          owner._scene.overrideMaterial = occlusionMaterial;
+          renderer.render(owner._scene, camera);
+          owner._scene.overrideMaterial = null;
+        }
         owner.map.triggerRepaint();
       },
     };
@@ -241,6 +262,7 @@ export class PlayerBike3D extends Vehicle3D {
       headingOffset: BIKE_HEADING_OFFSET,
       normaliseTo: 2.15,
       widthScale: skin.widthScale,
+      occlusionColor: 0xffd21f,
     });
     this.skinId = skin.id || DEFAULT_BIKE_SKIN;
     this.steerAngle = 0;
