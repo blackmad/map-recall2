@@ -11,6 +11,7 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // Overlay states on a phone: the question, the arrival card, the panels and
   // the expanded article. These are DOM over canvas, so the HUD layout suite
   // cannot reach them and Storybook is where they get reviewed.
+  | 'knowledge' | 'touch-knowledge'
   | 'touch-prompt' | 'touch-settings' | 'finish-touch' | 'finish-calm-bare-touch'
   | 'landmark-panel-touch'
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch';
@@ -26,7 +27,10 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     // Must be set before the game's first _resize, and re-applied because the
     // Storybook viewport addon resizes the iframe after load.
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
-    const setupStories = new Set(['default', 'bike-home', 'bike-here', 'transit', 'advanced', 'touch-setup', 'touch-setup-transit', 'touch-setup-here']);
+    const setupStories = new Set([
+      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'knowledge',
+      'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge',
+    ]);
     if (setupStories.has(scenario)) doc.body.classList.add('storybook-setup');
     else doc.body.classList.remove('storybook-setup');
     const overlay = (win as any)?.CanalRecallOverlay?.getOverlay?.();
@@ -51,6 +55,45 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       });
     }
     if (scenario === 'advanced' && overlay) overlay.store.setAdvancedOpen(true);
+    if ((scenario === 'knowledge' || scenario === 'touch-knowledge') && win) {
+      const now = Date.now();
+      const names = [
+        ['Overtoom', 'street', now - 3 * 86_400_000, 2, 1],
+        ['Prinsengracht', 'canal', now - 7_200_000, 3, 0],
+        ['Zeedijk', 'street', now + 86_400_000, 1, 1],
+        ['Blauwbrug', 'bridge', now + 4 * 86_400_000, 2, 0],
+        ['Weteringschans', 'street', now + 8 * 86_400_000, 3, 0],
+        ['Ferdinand Bolstraat', 'street', now + 12 * 86_400_000, 3, 0],
+      ] as const;
+      const states = Object.fromEntries(names.map(([name, type, dueAt, repetitions, lapses], index) => {
+        const featureKey = `storybook-${index}`;
+        return [`${featureKey}_guess_name`, {
+          featureKey,
+          mode: 'guess_name',
+          dueAt,
+          intervalDays: 4,
+          ease: 2.3,
+          repetitions,
+          lapses,
+          lastReviewedAt: now - (index + 1) * 43_200_000,
+          lastEventId: `event-${index}`,
+          schedulerVersion: 1,
+          featureSnapshot: { name, type, cityId: 'amsterdam', center: [52.37, 4.89] },
+        }];
+      }));
+      const events = Object.fromEntries(new Array(18).fill(null).map((_, index) => [`event-${index}`, {
+        id: `event-${index}`,
+        featureKey: `storybook-${index % names.length}`,
+        mode: 'guess_name',
+        rating: index % 5 === 0 ? 'again' : 'good',
+        reviewedAt: now - (index % 7) * 86_400_000,
+        nextDueAt: now + 86_400_000,
+        result: { pointsEarned: 1, timeSpentMs: 4200, skipped: false },
+      }]));
+      win.localStorage.setItem('mapRecall_reviewStates_v1', JSON.stringify(states));
+      win.localStorage.setItem('mapRecall_reviewEvents_v1', JSON.stringify(events));
+      doc.getElementById('knowledge-button')?.click();
+    }
     if (scenario === 'hud' || scenario === 'neighborhood' || scenario === 'neighborhood-fallback'
       || scenario === 'stacked-notices' || scenario === 'stacked-notices-touch'
       || scenario === 'neighborhood-fallback-touch'
@@ -287,6 +330,7 @@ export const BikeFromHome: Story = { args: { scenario: 'bike-home' } };
 export const BikeFromHere: Story = { args: { scenario: 'bike-here' } };
 export const TransitBriefing: Story = { args: { scenario: 'transit' } };
 export const AdvancedOptions: Story = { args: { scenario: 'advanced' } };
+export const KnowledgeReview: Story = { args: { scenario: 'knowledge' } };
 export const Mobile: Story = {
   args: { scenario: 'default' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
@@ -408,5 +452,10 @@ export const PortraitRouteSetup: Story = {
 
 export const PortraitRouteSetupHere: Story = {
   args: { scenario: 'touch-setup-here' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+export const PortraitKnowledgeReview: Story = {
+  args: { scenario: 'touch-knowledge' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };

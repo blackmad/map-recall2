@@ -1,4 +1,5 @@
-import { useEffect, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
+import { ArrowLeft, BookOpenCheck, Clock3, Search } from 'lucide-react';
 import {
   BIKE_SKINS,
   BIKE_SKIN_IDS,
@@ -9,6 +10,12 @@ import {
   type ZoomClamp,
 } from '../game/preferences.ts';
 import { missionBrief } from '../game/missionBrief.ts';
+import {
+  loadKnowledgeReview,
+  type KnowledgeItem,
+  type KnowledgeReview,
+  type KnowledgeStatus,
+} from '../knowledgeReview.ts';
 import type { OverlayStore } from './store.ts';
 import {
   DIFFICULTY_ICONS,
@@ -258,6 +265,196 @@ const DIFFICULTY_EXTRA: Choice<CanalPreferences['difficulty']>[] = [
   { value: 'custom', title: 'Custom' },
 ];
 
+type KnowledgeFilter = KnowledgeStatus | 'all';
+
+const KNOWLEDGE_FILTERS: Array<{ value: KnowledgeFilter; label: string }> = [
+  { value: 'due', label: 'Due' },
+  { value: 'learning', label: 'Learning' },
+  { value: 'known', label: 'Known' },
+  { value: 'mastered', label: 'Mastered' },
+  { value: 'all', label: 'All' },
+];
+
+function relativeReviewTime(item: KnowledgeItem, now: number): string {
+  const difference = item.dueAt - now;
+  const absolute = Math.abs(difference);
+  const amount = absolute < 3_600_000
+    ? Math.max(1, Math.round(absolute / 60_000))
+    : absolute < 86_400_000
+      ? Math.round(absolute / 3_600_000)
+      : Math.round(absolute / 86_400_000);
+  const unit = absolute < 3_600_000 ? 'min' : absolute < 86_400_000 ? 'hr' : 'day';
+  if (difference <= 0) return `${amount} ${unit}${amount === 1 ? '' : 's'} overdue`;
+  return `in ${amount} ${unit}${amount === 1 ? '' : 's'}`;
+}
+
+function cityLabel(cityId: string): string {
+  return playableCities().find(city => city.id === cityId)?.name
+    || cityId.replace(/(^|-)([a-z])/g, (_match, separator, letter) => `${separator ? ' ' : ''}${letter.toUpperCase()}`);
+}
+
+function KnowledgeReviewScreen({
+  review,
+  now,
+  onClose,
+  onPlanReview,
+}: {
+  review: KnowledgeReview;
+  now: number;
+  onClose: () => void;
+  onPlanReview: () => void;
+}) {
+  const [filter, setFilter] = useState<KnowledgeFilter>(review.due ? 'due' : 'all');
+  const [query, setQuery] = useState('');
+  const visibleItems = useMemo(() => {
+    const term = query.trim().toLocaleLowerCase();
+    return review.items.filter(item => (filter === 'all' || item.status === filter)
+      && (!term || item.name.toLocaleLowerCase().includes(term) || cityLabel(item.cityId).toLocaleLowerCase().includes(term)));
+  }, [filter, query, review.items]);
+  const maxActivity = Math.max(1, ...review.activity.map(day => day.reviews));
+
+  return (
+    <section id="knowledge-review" className="knowledge-review" aria-labelledby="knowledge-review-title">
+      <header className="knowledge-header">
+        <button type="button" className="knowledge-back" onClick={onClose}>
+          <ArrowLeft aria-hidden="true" />
+          Route setup
+        </button>
+        <div>
+          <h1 id="knowledge-review-title">Your city knowledge</h1>
+          <p>What is sticking, what is fading, and what to ride next.</p>
+        </div>
+        <button
+          type="button"
+          className="enamel-plaque enamel-framed knowledge-plan"
+          onClick={onPlanReview}
+          disabled={review.due === 0}
+        >
+          <BookOpenCheck aria-hidden="true" />
+          {review.due ? `Plan review · ${review.due} due` : 'Nothing due now'}
+        </button>
+      </header>
+
+      {review.tracked === 0 ? (
+        <div className="knowledge-empty">
+          <div className="knowledge-empty-mark" aria-hidden="true"><BookOpenCheck /></div>
+          <h2>Your map starts with one answer</h2>
+          <p>Complete a route and recall a street, canal, bridge, stop, or line. It will appear here with its next review time.</p>
+          <button type="button" className="enamel-plaque enamel-framed knowledge-plan" onClick={onClose}>Choose a first route</button>
+        </div>
+      ) : (
+        <div className="knowledge-layout">
+          <aside className="knowledge-summary" aria-label="Knowledge summary">
+            <div className="knowledge-due-block">
+              <strong>{review.due}</strong>
+              <span>due now</span>
+              <p>{review.due ? 'These names have reached their review window.' : 'You are caught up. New reviews will appear here.'}</p>
+            </div>
+            <dl className="knowledge-stat-list">
+              <div><dt>Names tracked</dt><dd>{review.tracked}</dd></div>
+              <div><dt>Mastered</dt><dd>{review.mastered}</dd></div>
+              <div>
+                <dt>Recall rate</dt>
+                <dd>{review.accuracy === null ? '—' : `${Math.round(review.accuracy * 100)}%`}</dd>
+              </div>
+              <div><dt>Reviews logged</dt><dd>{review.reviews}</dd></div>
+            </dl>
+            <div className="knowledge-legend">
+              <h2>Map key</h2>
+              <div><i data-status="due" />Due for review</div>
+              <div><i data-status="learning" />Learning</div>
+              <div><i data-status="known" />Known</div>
+              <div><i data-status="mastered" />Mastered</div>
+            </div>
+          </aside>
+
+          <main className="knowledge-queue">
+            <div className="knowledge-queue-head">
+              <div>
+                <h2>Review queue</h2>
+                <p>{visibleItems.length} {visibleItems.length === 1 ? 'name' : 'names'} in this view</p>
+              </div>
+              <label className="knowledge-search">
+                <Search aria-hidden="true" />
+                <span className="sr-only">Search knowledge</span>
+                <input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search names or cities" />
+              </label>
+            </div>
+            <div className="knowledge-tabs" role="tablist" aria-label="Knowledge status">
+              {KNOWLEDGE_FILTERS.map(option => (
+                <button
+                  key={option.value}
+                  type="button"
+                  role="tab"
+                  aria-selected={filter === option.value}
+                  onClick={() => setFilter(option.value)}
+                >
+                  {option.label}
+                  <span>{option.value === 'all' ? review.tracked : review[option.value]}</span>
+                </button>
+              ))}
+            </div>
+            <div className="knowledge-items">
+              {visibleItems.length ? visibleItems.map(item => (
+                <article className="knowledge-item" key={item.key}>
+                  <i className="knowledge-status" data-status={item.status} aria-label={item.status} />
+                  <div className="knowledge-item-name">
+                    <h3>{item.name}</h3>
+                    <p>{cityLabel(item.cityId)} · {item.type}{item.places > 1 ? ` · ${item.places} places` : ''}</p>
+                  </div>
+                  <div className="knowledge-mastery" aria-label={`${Math.round(item.mastery * 100)} percent mastery`}>
+                    <span style={{ width: `${Math.max(4, item.mastery * 100)}%` }} />
+                  </div>
+                  <div className="knowledge-item-due">
+                    <Clock3 aria-hidden="true" />
+                    <span>{relativeReviewTime(item, now)}</span>
+                  </div>
+                  <div className="knowledge-item-history">
+                    {item.repetitions} successful · {item.lapses} {item.lapses === 1 ? 'lapse' : 'lapses'}
+                  </div>
+                </article>
+              )) : (
+                <div className="knowledge-no-results">
+                  <h3>No names here</h3>
+                  <p>{query ? 'Try another search or status.' : 'Your answers will move names into this group.'}</p>
+                </div>
+              )}
+            </div>
+          </main>
+
+          <aside className="knowledge-context">
+            <section>
+              <h2>Past 7 days</h2>
+              <div className="knowledge-activity" aria-label="Reviews in the past seven days">
+                {review.activity.map(day => (
+                  <div key={day.day}>
+                    <span className="knowledge-activity-bar" style={{ height: `${Math.max(3, day.reviews / maxActivity * 100)}%` }} title={`${day.reviews} reviews`} />
+                    <small>{day.label}</small>
+                  </div>
+                ))}
+              </div>
+              <p>{review.activity.reduce((sum, day) => sum + day.reviews, 0)} reviews this week</p>
+            </section>
+            <section>
+              <h2>By city</h2>
+              <div className="knowledge-cities">
+                {review.cities.map(city => (
+                  <div key={city.cityId}>
+                    <strong>{cityLabel(city.cityId)}</strong>
+                    <span>{city.tracked} tracked</span>
+                    <small>{city.due} due · {city.mastered} mastered</small>
+                  </div>
+                ))}
+              </div>
+            </section>
+            <p className="knowledge-explainer">Mastery rises across successful reviews. A name turns copper when its spaced-review interval expires.</p>
+          </aside>
+        </div>
+      )}
+    </section>
+  );
+}
+
 export function OverlayApp({
   store,
   callbacks,
@@ -267,6 +464,12 @@ export function OverlayApp({
 }) {
   const state = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const prefs = state.prefs;
+  const [knowledgeRefresh, setKnowledgeRefresh] = useState(0);
+  const knowledgeNow = useMemo(() => Date.now(), [knowledgeRefresh]);
+  const knowledgeReview = useMemo(
+    () => loadKnowledgeReview(localStorage, knowledgeNow),
+    [knowledgeNow],
+  );
   const cityName = CITY_OPTIONS.find(option => option.value === prefs.cityId)?.title
     || prefs.cityId;
 
@@ -285,6 +488,17 @@ export function OverlayApp({
     callbacks.onStart();
   };
 
+  const openKnowledge = () => {
+    setKnowledgeRefresh(value => value + 1);
+    store.setKnowledgeOpen(true);
+  };
+
+  const planReview = () => {
+    patch({ skipMastered: true });
+    callbacks.onSkipMastered(true);
+    store.setKnowledgeOpen(false);
+  };
+
   return (
     <>
       <div id="route-setup" className="enamel-setup" style={{ display: state.setupOpen ? 'flex' : 'none' }}>
@@ -297,15 +511,25 @@ export function OverlayApp({
                 <strong id="account-label">{state.account.label}</strong>
                 <small id="account-note">{state.account.note}</small>
               </div>
-              <button
-                id="account-button"
-                type="button"
-                className="account-button enamel-quiet"
-                disabled={state.account.busy}
-                onClick={() => callbacks.onAccountClick()}
-              >
-                {state.account.buttonLabel}
-              </button>
+              <div className="setup-account-actions">
+                <button
+                  id="knowledge-button"
+                  type="button"
+                  className="account-button enamel-quiet"
+                  onClick={openKnowledge}
+                >
+                  Knowledge
+                </button>
+                <button
+                  id="account-button"
+                  type="button"
+                  className="account-button enamel-quiet"
+                  disabled={state.account.busy}
+                  onClick={() => callbacks.onAccountClick()}
+                >
+                  {state.account.buttonLabel}
+                </button>
+              </div>
             </div>
 
             <div className="enamel-setup-scroll">
@@ -531,6 +755,14 @@ export function OverlayApp({
         </div>
         <div className="enamel-setup-vista" aria-hidden="true" />
       </div>
+      {state.knowledgeOpen ? (
+        <KnowledgeReviewScreen
+          review={knowledgeReview}
+          now={knowledgeNow}
+          onClose={() => store.setKnowledgeOpen(false)}
+          onPlanReview={planReview}
+        />
+      ) : null}
       <div id="settings-panel" className="utility-panel enamel-utility" style={{ display: state.settingsOpen ? 'flex' : 'none' }}>
         <div className="utility-card enamel-plaque enamel-framed enamel-panel">
           <h2>Navigation settings</h2>

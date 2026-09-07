@@ -39,15 +39,11 @@ view is the audit path: approve / reject / strike / note, then
 translations, and model-verifier disagreements. Corrections must keep exact
 Wikipedia evidence.
 
-**6. City knowledge review map.**
-Full-city map colouring learned roads and waterways by mastery / review state,
-with fog-of-war over the rest. Derive from visits, answers and recency — not
-one drive-through as mastery. Same data should later feed “where next”.
-*Shipped:* graded fog / learning / known / mastered tints; waterways (canal /
-river / dock) use cool blue bands vs land green; cache busts on band counts;
-review-due warm copper tint from `routeReviewDue` (overdue SRS names).
-Still open: a dedicated review screen.
-*Related:* Home-base routes grow an expanding learning radius from the address
+**6. Due-aware “where next” routing.**
+The full-city mastery map and dedicated knowledge review screen are shipped.
+Still open: let **Plan review** choose a location-honest route near overdue
+names, with a bounded detour, instead of only enabling due-only questions.
+Home-base routes already grow an expanding learning radius from the address
 (HUD/briefing readout + soft path bias inside the ring).
 
 ---

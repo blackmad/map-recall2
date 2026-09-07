@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { defaultPreferences, patchLivePreferences } from '../src/canalRecall/game/preferences.ts';
+import { buildKnowledgeReview } from '../src/canalRecall/knowledgeReview.ts';
 import { createOverlayStore } from '../src/canalRecall/overlay/store.ts';
+import type { ReviewEvent, ReviewState } from '../src/spacedRepetition.ts';
 
 const zoom = { min: 0.2, max: 1.5, defaultZoom: 0.5 };
 
@@ -26,9 +28,62 @@ const zoom = { min: 0.2, max: 1.5, defaultZoom: 0.5 };
   store.setSettingsOpen(true);
   assert.equal(store.getState().setupOpen, false);
   assert.equal(store.getState().settingsOpen, true);
+  store.setKnowledgeOpen(true);
+  assert.equal(store.getState().knowledgeOpen, true);
   store.setAccount({ visible: true, label: 'Ada', buttonLabel: 'Sign out' });
   assert.equal(store.getState().account.visible, true);
   assert.equal(store.getState().account.label, 'Ada');
+}
+
+{
+  const now = Date.UTC(2026, 8, 8, 12);
+  const state = (
+    name: string,
+    dueAt: number,
+    repetitions: number,
+    lapses = 0,
+    center: [number, number] = [52.37, 4.89],
+  ): ReviewState => ({
+    featureKey: `${name}-${center.join('-')}`,
+    mode: 'guess_name',
+    dueAt,
+    intervalDays: 2,
+    ease: 2.3,
+    repetitions,
+    lapses,
+    lastReviewedAt: now - 86_400_000,
+    lastEventId: name,
+    schedulerVersion: 1,
+    featureSnapshot: { name, type: 'street', cityId: 'amsterdam', center },
+  });
+  const event = (id: string, rating: ReviewEvent['rating'], reviewedAt: number): ReviewEvent => ({
+    id,
+    featureKey: id,
+    mode: 'guess_name',
+    rating,
+    reviewedAt,
+    nextDueAt: now,
+    result: { pointsEarned: 1, timeSpentMs: 1000, skipped: false },
+  });
+  const review = buildKnowledgeReview([
+    state('Overtoom', now - 1000, 2),
+    state('Overtoom', now + 86_400_000, 3, 0, [52.36, 4.88]),
+    state('Prinsengracht', now + 4 * 86_400_000, 3),
+    state('Zeedijk', now + 86_400_000, 1, 1),
+  ], [
+    event('1', 'good', now - 1000),
+    event('2', 'again', now - 2 * 86_400_000),
+  ], now);
+
+  assert.equal(review.tracked, 3, 'place chunks collapse to a single named item');
+  assert.equal(review.due, 1);
+  assert.equal(review.mastered, 1);
+  assert.equal(review.learning, 1);
+  assert.equal(review.reviews, 2);
+  assert.equal(review.accuracy, 0.5);
+  assert.equal(review.items[0].name, 'Overtoom');
+  assert.equal(review.items[0].places, 2);
+  assert.equal(review.activity.reduce((sum, day) => sum + day.reviews, 0), 2);
 }
 
 console.log('canal overlay store: checks passed');
