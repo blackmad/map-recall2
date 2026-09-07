@@ -246,8 +246,12 @@ export type RouteQuizDecision =
   | { action: 'idle'; state: RouteQuizState }
   /** The player already knows this one — adopt it silently, do not ask. */
   | { action: 'adopt'; name: string; state: RouteQuizState }
+  /** A recent miss is waiting for review — do not ask or claim mastery. */
+  | { action: 'defer'; name: string; state: RouteQuizState }
   /** Settled long enough, and moving: ask. */
   | { action: 'ask'; name: string; state: RouteQuizState };
+
+export type RouteQuizRecallStatus = 'none' | 'learning' | 'known';
 
 const CLEARED: RouteQuizState = { candidateName: '', candidateSeconds: 0 };
 /** Beyond 45° off the road the vehicle is crossing it, not travelling it. */
@@ -269,11 +273,14 @@ export function advanceRouteQuiz(
   state: RouteQuizState,
   input: RouteQuizInput,
   dt: number,
-  suppressedHere: boolean,
+  recallStatus: RouteQuizRecallStatus,
 ): RouteQuizDecision {
   const { roadName, currentName } = input;
-  if (roadName && roadName !== currentName && suppressedHere) {
+  if (roadName && roadName !== currentName && recallStatus === 'known') {
     return { action: 'adopt', name: roadName, state: CLEARED };
+  }
+  if (roadName && roadName !== currentName && recallStatus === 'learning') {
+    return { action: 'defer', name: roadName, state: CLEARED };
   }
   if (!roadName || roadName === currentName) return { action: 'idle', state: CLEARED };
   if (input.headingOffRoad !== null && input.headingOffRoad > MAX_HEADING_OFF_ROAD) {

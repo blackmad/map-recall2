@@ -17,6 +17,16 @@ Storybook scenarios. **Plan review** returns to setup with “Space reviews”
 enabled; choosing a location-honest route near overdue names remains a separate
 routing task rather than pretending the current route already covers them.
 
+## “No idea” no longer produces a mastery wink — 2026-09-07
+
+The scheduler already handled “No idea” correctly as a miss and scheduled it
+again in ten minutes, but the route HUD treated every temporarily suppressed
+question as known. Re-entering that corridor during the ten-minute wait could
+therefore say “You know …” even though the stored review state said the
+opposite. Route decisions now distinguish a recent miss (`learning`) from
+proved knowledge (`known`): both avoid an immediate repeat, but only proved
+knowledge earns the mastery wink, learned-name set, and map treatment.
+
 ## Occluded bikes get a depth-aware cartoon silhouette — 2026-09-08
 
 Tall foreground buildings could completely hide the bicycle in pitched chase
