@@ -374,7 +374,12 @@ export class GameRecallRuntime {
       this._lastTransitLineQuizAt = this.raceTime;
     }
 
-    const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
+    // Name adoption above is heading-aware so a crossing cannot steal the
+    // question. For the answer overlay, seed from the closest centreline with
+    // that settled name so parallel OSM ways do not put the blue line beside
+    // the road the rider is visibly on.
+    const quizRoad = this.track.getNearestRoadForName(
+      this.player.x, this.player.y, decision.name);
     const lineChoices = isTransit(this.travelMode)
       ? this._transitLineChoices(decision.name)
       : null;

@@ -6,6 +6,16 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Active street highlights start under the rider — 2026-09-07
+
+Road-name detection remains heading-aware at junctions, but the answer overlay
+no longer reapplies that heading preference when choosing among parallel
+same-name OSM spans. On a bend, the old second selection could prefer a
+slightly straighter line beside the rider and make the blue answer look offset
+from the visible road. Once the quiz name has settled, its overlay now starts
+from the closest span carrying that exact name; the connected-run rule still
+controls how its end-to-end fragments are stitched.
+
 ## Empty landmarks are no longer route destinations — 2026-09-07
 
 The prominence-ranked landmark pool included named OSM features with no fact,

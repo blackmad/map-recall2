@@ -100,6 +100,8 @@ export interface Track {
   /** Prefer `preferredAngle` at junctions so the cross street is not named. */
   getRoadName(x: number, y: number, preferredAngle?: number | null): string;
   getNearestRoad(x: number, y: number, preferredAngle?: number | null): NearestRoad | null;
+  /** Closest centreline carrying an already-settled quiz name. */
+  getNearestRoadForName(x: number, y: number, name: string): NearestRoad | null;
   getDistanceToFinish(x: number, y: number): number;
   /**
    * `isKnown` decides per label *and per place*, not per name: knowing the
