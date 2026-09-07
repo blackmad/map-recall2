@@ -13,6 +13,7 @@ import {
   HOME_RADIUS_MAX_KM,
   HOME_RADIUS_MIN_KM,
   homeLearningRadiusKm,
+  isTeachableRouteDestination,
   kmBetween,
   LIVE_ROUTE_OFF_ROUTE_DIST,
   LIVE_ROUTE_REROUTE_INTERVAL,
@@ -46,6 +47,24 @@ const PALACE: RoutePoi = { id: 'palace', name: 'Royal Palace', lat: 52.373258, l
 const RIJKS: RoutePoi = { id: 'rijks', name: 'Rijksmuseum', lat: 52.3598672, lng: 4.8864162 };
 const WEESP: RoutePoi = { id: 'weesp', name: 'Weesp Fort', lat: 52.3080, lng: 5.0410 };
 const POIS = [CENTRAL, PALACE, RIJKS, WEESP];
+
+check('route destinations have something to teach on arrival', () => {
+  assert.equal(isTeachableRouteDestination({
+    funFact: '',
+    wikipediaExtract: '',
+    wikipediaImageUrl: '',
+    wikipediaUrl: '',
+  }), false, 'UvA PC Hoofthuis-style bare OSM features are not destination rewards');
+  assert.equal(isTeachableRouteDestination({
+    wikipediaExtract: 'The building was designed by Theo Bosch and Aldo van Eyck.',
+  }), true, 'an encyclopedia description makes the destination teachable');
+  assert.equal(isTeachableRouteDestination({
+    wikipediaImageUrl: 'https://example.invalid/place.jpg',
+  }), true, 'a photograph gives the arrival card something to show');
+  assert.equal(isTeachableRouteDestination({
+    wikipediaUrl: 'https://en.wikipedia.org/wiki/Example',
+  }), true, 'an article can be fetched and opened even before its extract is cached');
+});
 
 check('kmBetween is right at city scale', () => {
   assert.equal(kmBetween(CENTRAL, CENTRAL), 0);

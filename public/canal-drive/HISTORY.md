@@ -16,6 +16,15 @@ sync. Shift + `[` / `]` now orbits the camera around the vehicle in 15° steps,
 and a labeled 3D spin slider makes the same control discoverable on touch
 devices. The chosen angle is saved with the other camera preferences.
 
+## Empty landmarks are no longer route destinations — 2026-09-07
+
+The prominence-ranked landmark pool included named OSM features with no fact,
+encyclopedia article, or image. That let a full trip end at places such as UvA
+PC Hoofthuis with only the generic “A place to remember” filler. Extract-added
+destinations now use the same content floor as landmark cards: each must have
+real text, a photograph, or an article that can be fetched and opened. Curated
+city anchors remain deliberate exceptions.
+
 ## Streamed buildings keep sole ownership — 2026-09-07
 
 The LoD1 tile stream hid OpenFreeMap's duplicate `building-3d` extrusion when
