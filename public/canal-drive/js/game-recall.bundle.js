@@ -709,7 +709,11 @@ Learned names, exploration collection, personal bests, route settings and the ho
         }
         this._lastTransitLineQuizAt = this.raceTime;
       }
-      const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
+      const quizRoad = this.track.getNearestRoadForName(
+        this.player.x,
+        this.player.y,
+        decision.name
+      );
       const lineChoices = isTransit(this.travelMode) ? this._transitLineChoices(decision.name) : null;
       const routeBridge = isCar(this.travelMode) ? findBridgeRouteAt(
         this.bridges,

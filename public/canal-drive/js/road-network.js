@@ -167,6 +167,19 @@ class RoadNetwork {
     return SURFACE.roadNameAt(this.segments, this.getNearestRoad(x, y, preferredAngle));
   }
 
+  // Once a quiz name has settled, choose the closest span carrying that name
+  // for its overlay. Heading was important while identifying the road at a
+  // junction, but can otherwise pull a curved-road highlight onto a straighter
+  // parallel segment beside the player.
+  getNearestRoadForName(x, y, name) {
+    const contacts = SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
+    return SURFACE.pickNearestRoadContactForName(
+      contacts,
+      (segIdx) => (this.segments[segIdx] && this.segments[segIdx].name) || '',
+      name,
+    );
+  }
+
   // Return the connected run of same-name OSM ways containing the triggering
   // segment. OSM commonly splits one canal at bridges and tag boundaries, so
   // one visible feature is often several source paths.
