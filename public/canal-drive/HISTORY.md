@@ -6,6 +6,17 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## City knowledge has a dedicated review screen — 2026-09-08
+
+The setup account row now opens a full knowledge review view built from the
+same local spaced-repetition states and events as the game. It collapses
+place-local chunks into one city/type/name row, then shows due, learning, known,
+and mastered status; mastery, review history, seven-day activity, city totals,
+search, and status filters. Empty and populated states have desktop and phone
+Storybook scenarios. **Plan review** returns to setup with “Space reviews”
+enabled; choosing a location-honest route near overdue names remains a separate
+routing task rather than pretending the current route already covers them.
+
 ## Street mode stops at the canal edge — 2026-09-08
 
 Street corridors were arcade-wide: a residential road allowed the bike centre
