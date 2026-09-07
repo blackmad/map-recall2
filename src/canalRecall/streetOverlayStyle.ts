@@ -1,6 +1,4 @@
 export const STREET_OVERLAY_LAYER_IDS = [
-  'active-street-casing',
-  'active-street-glow',
   'active-street-line',
 ] as const;
 
@@ -16,19 +14,12 @@ export function streetOverlayLayers(): Array<Record<string, unknown>> {
   ];
   return [
     {
-      id: 'active-street-casing', type: 'line', source: 'active-street',
-      layout: { 'line-cap': 'round', 'line-join': 'round' },
-      paint: { 'line-color': '#071E2B', 'line-width': zoomWidth(5, 16), 'line-opacity': 0.78 },
-    },
-    {
-      id: 'active-street-glow', type: 'line', source: 'active-street',
-      layout: { 'line-cap': 'round', 'line-join': 'round' },
-      paint: { 'line-color': '#7DD3FC', 'line-width': zoomWidth(5, 14), 'line-opacity': 0.42, 'line-blur': 3 },
-    },
-    {
       id: 'active-street-line', type: 'line', source: 'active-street',
       layout: { 'line-cap': 'round', 'line-join': 'round' },
-      paint: { 'line-color': '#38BDF8', 'line-width': zoomWidth(2, 6), 'line-opacity': 0.96 },
+      // Keep the active answer as one unambiguous centreline. The former
+      // casing/glow stack made every stitched fragment look like several
+      // parallel street lines at this camera angle.
+      paint: { 'line-color': '#38BDF8', 'line-width': zoomWidth(3, 7), 'line-opacity': 0.96 },
     },
   ];
 }
