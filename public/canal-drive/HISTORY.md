@@ -6,6 +6,21 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Start from GPS (Here) — 2026-09-07
+
+Home geocode is a saved address, not live location. Route strip now has
+**Here**: browser geolocation, city viewbox check, snap to the mapped network
+(same generous snap as home). Surprise still picks landmarks; Home still
+geocodes the typed address. Errors name permission, HTTPS, outside-city, and
+unsnappable fixes instead of silently swapping the origin to a POI.
+
+## Cold-open killed until location-honest — 2026-09-07
+
+Playtest: cold-open asked “what is this place called?” about a due SRS name
+that was not under the bike — no highlight, no hop. That teaches a false
+pairing. `COLD_OPEN_ENABLED` is off; the picker remains for a later hop that
+only asks dues on/near the route or shows the place. Copy was not the fix.
+
 ## Large-letter fill bump — 2026-09-06
 
 User: still too much linen around the word. Wave AABB used 1.15× archPad so

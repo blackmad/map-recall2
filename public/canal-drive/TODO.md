@@ -25,10 +25,12 @@ belongs here before anything below it.*
 ## P1 — The learning model itself
 
 **Delight loop (thin slice shipped 2026-09-06).** Mission punchlines, finish
-knowledge story, cold-open review, place-day streak, passport stamps,
-know-this-corner wink, correct-only encyclopedia. Still open: rival-route
-novelty bias, landmark scavenger stop-to-look, transfer dares, Dutch plaque
-hard mode, shareable blank silhouette routes, weather/time mood.
+knowledge story, place-day streak, passport stamps, know-this-corner wink,
+correct-only encyclopedia. Cold-open review is **disabled** (2026-09-07) until
+a due name is on/near the route or shown (highlight/camera) — see HISTORY.
+Still open: rival-route novelty bias, landmark scavenger stop-to-look,
+transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
+weather/time mood. Location-honest cold-open is the reopen condition.
 
 **16. Review and refine the published Randstad trivia.**
 v11 is published (4,052 facts / 1,628 features). Trivia Lab’s **Human review**
@@ -97,7 +99,6 @@ Craft board: [`LARGE_LETTER_CRAFT.md`](LARGE_LETTER_CRAFT.md). **Check loop:**
 pixel P0 on Jordaan: no top ink, cream ring ≤14px) → vision. Three themed
 rounds + a fill bump (span ~64%H). Remaining: true vanishing-point side faces,
 tighter Waterloo greeting nest, place props, game pop-in.
-
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.

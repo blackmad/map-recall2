@@ -329,3 +329,12 @@ export function routeAhead(
   const last = route[route.length - 1];
   return last ? [last, finish] : [finish];
 }
+
+export {
+  GPS_ORIGIN_ID,
+  GpsOriginError,
+  browserGpsReader,
+  gpsOriginPoi,
+  pointInGeocodeViewbox,
+  resolveGpsOrigin,
+} from './gpsOrigin.ts';

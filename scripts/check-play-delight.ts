@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { missionBrief } from '../src/canalRecall/game/missionBrief.ts';
-import { pickColdOpenReview } from '../src/canalRecall/game/coldOpenReview.ts';
+import { COLD_OPEN_ENABLED, pickColdOpenReview } from '../src/canalRecall/game/coldOpenReview.ts';
 import { finishStory, knowThisCornerFeedback } from '../src/canalRecall/game/finishStory.ts';
 import {
   notePlaceDay,
@@ -22,6 +22,16 @@ const brief = missionBrief({
 });
 assert.match(brief.line, /NEMO/);
 assert.doesNotMatch(brief.line, /Starting on/);
+assert.doesNotMatch(brief.tease || '', /Warm up/);
+
+const hereBrief = missionBrief({
+  destinationName: 'your destination',
+  travelMode: 'car',
+  routePattern: 'here',
+  cityName: 'Amsterdam',
+});
+assert.match(hereBrief.line, /where you are|From here/);
+assert.doesNotMatch(hereBrief.line, /Starting on/);
 
 const cold = pickColdOpenReview({
   due: [
@@ -37,6 +47,7 @@ const cold = pickColdOpenReview({
   preferTypes: ['street'],
 });
 assert.equal(cold?.name, 'Overtoom');
+assert.equal(COLD_OPEN_ENABLED, false, 'cold-open stays off until a due name is on the route or shown');
 assert.equal(pickColdOpenReview({
   due: [],
   cityId: 'amsterdam',

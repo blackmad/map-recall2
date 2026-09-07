@@ -32,6 +32,7 @@ import {
 } from './neighborhoodPassport';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
+import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
 import type { PresentationHost } from './host';
@@ -1174,10 +1175,11 @@ export class GamePresentationRuntime {
       destinationName: this.routeTo?.name || '',
       travelMode: isBoat(this.travelMode) ? 'boat'
         : isTransit(this.travelMode) ? 'transit' : 'car',
-      routePattern: this.routePattern === 'home' ? 'home' : 'surprise',
+      routePattern: this.routePattern === 'home' ? 'home'
+        : this.routePattern === 'here' ? 'here' : 'surprise',
       cityName: this._cityDisplayName(),
       homeLearningRadiusKm: this._homeLearningRadiusKm || 0,
-      hasColdOpenReview: hasCold,
+      hasColdOpenReview: COLD_OPEN_ENABLED && hasCold,
     });
   }
 

@@ -292,6 +292,10 @@
     (km) => km > 0 ? `Home ring \xB7 learn within ~${km.toFixed(1)} km` : "Home base \xB7 grow your learning ring",
     () => "Errand mode: leave knowing the way back"
   ];
+  var HERE = [
+    (d) => d && d !== "your destination" ? `From here toward ${d}` : "Start from where you are",
+    (_d) => "Start from where you are \u2014 not a saved address"
+  ];
   function pick(items, salt) {
     let h = 0;
     for (let i = 0; i < salt.length; i++) h = h * 31 + salt.charCodeAt(i) >>> 0;
@@ -307,6 +311,13 @@
         tease: input.hasColdOpenReview ? "A review waits in the first minute" : void 0
       };
     }
+    if (input.routePattern === "here") {
+      const line2 = pick(HERE, salt)(dest);
+      return {
+        line: line2,
+        tease: input.hasColdOpenReview ? "Warm up with one overdue name" : `Arrive knowing more of ${input.cityName}`
+      };
+    }
     const pool = input.travelMode === "boat" ? BOAT : input.travelMode === "transit" ? TRANSIT : BIKE;
     const line = pick(pool, salt)(dest);
     return {
@@ -314,6 +325,9 @@
       tease: input.hasColdOpenReview ? "Warm up with one overdue name" : `Arrive knowing more of ${input.cityName}`
     };
   }
+
+  // src/canalRecall/game/coldOpenReview.ts
+  var COLD_OPEN_ENABLED = false;
 
   // src/canalRecall/game/modes.ts
   function isCar(mode) {
@@ -1415,10 +1429,10 @@
       return missionBrief({
         destinationName: this.routeTo?.name || "",
         travelMode: isBoat(this.travelMode) ? "boat" : isTransit(this.travelMode) ? "transit" : "car",
-        routePattern: this.routePattern === "home" ? "home" : "surprise",
+        routePattern: this.routePattern === "home" ? "home" : this.routePattern === "here" ? "here" : "surprise",
         cityName: this._cityDisplayName(),
         homeLearningRadiusKm: this._homeLearningRadiusKm || 0,
-        hasColdOpenReview: hasCold
+        hasColdOpenReview: COLD_OPEN_ENABLED && hasCold
       });
     }
     /** Returns the merged collection so the finish card can show both the totals

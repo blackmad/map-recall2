@@ -201,6 +201,7 @@ const VIEW: Choice<CanalPreferences['viewMode']>[] = [
 const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
   { value: 'surprise', title: 'Surprise', hint: 'Landmark to landmark' },
   { value: 'home', title: 'Home', hint: 'Nearby first, expands as you learn' },
+  { value: 'here', title: 'Here', hint: 'Start from where you are now' },
 ];
 
 const HOME_RADIUS_STORAGE_KEY = 'canalRecall.homeLearningRadius.v1';
@@ -237,7 +238,7 @@ function briefingMission(prefs: CanalPreferences): string {
     destinationName: prefs.routePattern === 'home' ? 'home' : 'your destination',
     travelMode: prefs.travelMode === 'boat' ? 'boat'
       : prefs.travelMode === 'transit' ? 'transit' : 'car',
-    routePattern: prefs.routePattern === 'home' ? 'home' : 'surprise',
+    routePattern: prefs.routePattern,
     cityName: city?.name || 'the city',
     homeLearningRadiusKm: homeKm,
   });
@@ -322,6 +323,7 @@ export function OverlayApp({
             <select id="route-pattern" hidden value={prefs.routePattern} onChange={event => patch({ routePattern: event.target.value as CanalPreferences['routePattern'] })}>
               <option value="surprise">Surprise</option>
               <option value="home">Home</option>
+              <option value="here">Here</option>
             </select>
             <select id="route-difficulty" hidden value={prefs.difficulty} onChange={event => patch({ difficulty: event.target.value as CanalPreferences['difficulty'] })}>
               <option value="easy">Easy</option>
@@ -419,6 +421,16 @@ export function OverlayApp({
               />
               <span className="enamel-field-note">{homeLearningNote(prefs)}</span>
             </label>
+            <div
+              id="gps-origin-note"
+              className="setup-field enamel-field"
+              style={{ display: prefs.routePattern === 'here' ? 'flex' : 'none', marginTop: 10 }}
+            >
+              LIVE LOCATION
+              <span className="enamel-field-note">
+                Starts from where you are now — not a saved home address. Allow location when asked.
+              </span>
+            </div>
 
             <details
               className="advanced-options enamel-advanced"

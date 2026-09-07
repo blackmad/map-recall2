@@ -367,6 +367,7 @@
   }
 
   // src/canalRecall/game/coldOpenReview.ts
+  var COLD_OPEN_ENABLED = false;
   function pickColdOpenReview(input) {
     const now = input.now ?? Date.now();
     const city = input.due.filter(
@@ -699,10 +700,14 @@ Learned names, exploration collection, personal bests, route settings and the ho
       });
     }
     /**
-     * One overdue SRS name in the first minute — a warm-up, not a spoiler on the
-     * briefing. Skips when nothing is due or a prompt is already open.
+     * One overdue SRS name in the first minute — gated until the due place is
+     * on the route or shown. Asking the name of an unseen place teaches false.
      */
     _tryColdOpenReview() {
+      if (!COLD_OPEN_ENABLED) {
+        this._coldOpenDone = true;
+        return false;
+      }
       if (this.quizPromptName || this._coldOpenDone) return false;
       if (this.raceTime < COLD_OPEN_MIN_S || this.raceTime > COLD_OPEN_WINDOW_S) return false;
       if (!this.recall || typeof this.recall.dueReviews !== "function") {
