@@ -93,10 +93,13 @@
   var CLEARED = { candidateName: "", candidateSeconds: 0 };
   var MAX_HEADING_OFF_ROAD = Math.PI / 4;
   var MIN_QUIZ_SPEED = 5;
-  function advanceRouteQuiz(state, input, dt, suppressedHere) {
+  function advanceRouteQuiz(state, input, dt, recallStatus) {
     const { roadName, currentName } = input;
-    if (roadName && roadName !== currentName && suppressedHere) {
+    if (roadName && roadName !== currentName && recallStatus === "known") {
       return { action: "adopt", name: roadName, state: CLEARED };
+    }
+    if (roadName && roadName !== currentName && recallStatus === "learning") {
+      return { action: "defer", name: roadName, state: CLEARED };
     }
     if (!roadName || roadName === currentName) return { action: "idle", state: CLEARED };
     if (input.headingOffRoad !== null && input.headingOffRoad > MAX_HEADING_OFF_ROAD) {
@@ -620,13 +623,14 @@ Learned names, exploration collection, personal bests, route settings and the ho
       const radius = window.CanalRecallStoreModule.RECALL_LOCAL_RADIUS_METERS * PIXELS_PER_METER;
       return isPlaceKnown(this._knownPlaces.get(name), x, y, radius);
     }
-    /** True when this name was answered near the player recently enough that
-     *  asking it again here would be noise — a wrong answer included, which the
-     *  scheduler parks briefly so a correction is not instantly re-tested. */
-    _isRecallSuppressedHere(name) {
-      if (!this.recall || !this.recall.enabled || !this.player) return false;
+    /** Distinguish proved knowledge from a recent miss. Both suppress an
+     *  immediate repeat, but only the former may earn mastery treatment. */
+    _recallStatusHere(name) {
+      if (!this.recall || !this.recall.enabled || !this.player) return "none";
       const feature = this._recallFeatureAt(name, this.player.x, this.player.y);
-      return !!feature && this.recall.isSuppressedHere(feature);
+      if (!feature) return "none";
+      if (this.recall.isKnownHere(feature)) return "known";
+      return this.recall.isSuppressedHere(feature) ? "learning" : "none";
     }
     // ---- Bridge labels ----
     _bridgeGate(a, b) {
@@ -691,11 +695,16 @@ Learned names, exploration collection, personal bests, route settings and the ho
         alreadyRevealed: this.revealedNames.has(name),
         settleSeconds: isTransit(this.travelMode) ? Math.max(QUIZ_CANDIDATE_DELAY, 2.4) : QUIZ_CANDIDATE_DELAY,
         retestSeconds: QUIZ_RETEST_DELAY
-      }, dt, interesting && this._isRecallSuppressedHere(name));
+      }, dt, interesting ? this._recallStatusHere(name) : "none");
       this.quizCandidateName = decision.state.candidateName;
       this.quizCandidateTimer = decision.state.candidateSeconds;
       if (decision.action === "idle") return;
       const profile = travelProfile(this.travelMode);
+      if (decision.action === "defer") {
+        this.quizCurrentName = decision.name;
+        if (isTransit(this.travelMode)) this._stickTransitLine(decision.name);
+        return;
+      }
       if (decision.action === "adopt") {
         this.quizCurrentName = decision.name;
         this.learnedNames.add(decision.name);

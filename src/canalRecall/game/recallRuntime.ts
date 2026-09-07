@@ -20,6 +20,7 @@ import {
   toLatLon,
   toWorld,
   type LatLon,
+  type RouteQuizRecallStatus,
   type WorldOrigin,
 } from './recallRules';
 import type { PendingCrossing, RecallFeature, RecallHost } from './host';
@@ -265,13 +266,14 @@ export class GameRecallRuntime {
     return isPlaceKnown(this._knownPlaces.get(name), x, y, radius);
   }
 
-  /** True when this name was answered near the player recently enough that
-   *  asking it again here would be noise — a wrong answer included, which the
-   *  scheduler parks briefly so a correction is not instantly re-tested. */
-  _isRecallSuppressedHere(name: string): boolean {
-    if (!this.recall || !this.recall.enabled || !this.player) return false;
+  /** Distinguish proved knowledge from a recent miss. Both suppress an
+   *  immediate repeat, but only the former may earn mastery treatment. */
+  _recallStatusHere(name: string): RouteQuizRecallStatus {
+    if (!this.recall || !this.recall.enabled || !this.player) return 'none';
     const feature = this._recallFeatureAt(name, this.player.x, this.player.y);
-    return !!feature && this.recall.isSuppressedHere(feature);
+    if (!feature) return 'none';
+    if (this.recall.isKnownHere(feature)) return 'known';
+    return this.recall.isSuppressedHere(feature) ? 'learning' : 'none';
   }
 
   // ---- Bridge labels ----
@@ -345,13 +347,20 @@ export class GameRecallRuntime {
       alreadyRevealed: this.revealedNames.has(name),
       settleSeconds: isTransit(this.travelMode) ? Math.max(QUIZ_CANDIDATE_DELAY, 2.4) : QUIZ_CANDIDATE_DELAY,
       retestSeconds: QUIZ_RETEST_DELAY,
-    }, dt, interesting && this._isRecallSuppressedHere(name));
+    }, dt, interesting ? this._recallStatusHere(name) : 'none');
 
     this.quizCandidateName = decision.state.candidateName;
     this.quizCandidateTimer = decision.state.candidateSeconds;
     if (decision.action === 'idle') return;
 
     const profile = travelProfile(this.travelMode);
+    if (decision.action === 'defer') {
+      // A miss is suppressed briefly so the correction is not immediately
+      // re-tested. Treat the corridor as handled without calling it learned.
+      this.quizCurrentName = decision.name;
+      if (isTransit(this.travelMode)) this._stickTransitLine(decision.name);
+      return;
+    }
     if (decision.action === 'adopt') {
       // A name the player has already proved they know is adopted with a quiet
       // wink instead of a full quiz. Encyclopedia stays closed here — the
