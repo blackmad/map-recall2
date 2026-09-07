@@ -15,6 +15,17 @@ cross-check the loaded bridge catalog, ask “Which bridge are you on?”, offer
 bridge distractors, and file the answer as bridge knowledge. The Blauwbrug
 overlap is the named regression.
 
+## Active street overlay is one centreline — 2026-09-07
+
+The active street highlight now uses one MapLibre line layer instead of a
+casing/glow/line stack. The stacked strokes were visually read as multiple
+parallel street lines when a named feature contained several connected OSM
+segments, even though those segments had already been stitched into one
+geometry. The stitched geometry remains intact; only the presentation is
+reduced to one unambiguous centreline. A deterministic, offline MapLibre
+Storybook workbench now exercises single, connected, duplicate/reversed, and
+genuinely disconnected segment fixtures at a fixed oblique camera angle.
+
 ## Start from GPS (Here) — 2026-09-07
 
 Home geocode is a saved address, not live location. Route strip now has
