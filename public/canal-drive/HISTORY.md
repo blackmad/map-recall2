@@ -17,6 +17,16 @@ Storybook scenarios. **Plan review** returns to setup with “Space reviews”
 enabled; choosing a location-honest route near overdue names remains a separate
 routing task rather than pretending the current route already covers them.
 
+## Occluded bikes get a depth-aware cartoon silhouette — 2026-09-08
+
+Tall foreground buildings could completely hide the bicycle in pitched chase
+views. Making all buildings translucent was rejected: MapLibre cannot reliably
+depth-sort overlapping transparent extrusions, and fading the whole city would
+weaken its legibility. The bicycle now gets a second, gold x-ray pass using the
+inverse depth test. It paints only fragments that are behind nearer map
+geometry, so an occluding building shows a compact cartoon bike silhouette
+while an unobstructed bicycle and every building remain fully depth-correct.
+
 ## Street mode stops at the canal edge — 2026-09-08
 
 Street corridors were arcade-wide: a residential road allowed the bike centre
@@ -38,6 +48,27 @@ jumped diagonally to one of that span's distant endpoints. Junction stitches
 now split the span at the actual centreline projection, so the route reaches
 the intersection before turning. A named Westermarkt-style regression keeps
 the connector on the two source centrelines. The 42° chase camera is unchanged.
+
+## Active street highlights start under the rider — 2026-09-07
+
+Road-name detection remains heading-aware at junctions, but the answer overlay
+no longer reapplies that heading preference when choosing among parallel
+same-name OSM spans. On a bend, the old second selection could prefer a
+slightly straighter line beside the rider and make the blue answer look offset
+from the visible road. Once the quiz name has settled, its overlay now starts
+from the closest span carrying that exact name; the connected-run rule still
+controls how its end-to-end fragments are stitched.
+
+## Let the basemap name the shops — 2026-09-07
+
+AH was visible because it had a bespoke icon layer; the other 1,944 extracted
+food venues were text-only, aggressively thinned, and lost after the first
+quiet quiz. Meanwhile OpenFreeMap Liberty already shipped ranked, icon-backed
+OSM POI layers, but `_hideLabels()` hid every symbol indiscriminately. The map
+now restores Liberty's `source-layer=poi` symbols as sparse orientation cues
+while continuing to hide street and water names. It discovers the source layer
+rather than pinning today's `poi_r*` ids. Landmark quizzes still hide those
+labels, and the D toggle still controls the complete basemap label set.
 
 ## Route-end actions say Continue / Finish — 2026-09-07
 
