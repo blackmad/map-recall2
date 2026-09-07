@@ -1213,8 +1213,8 @@
         } });
       }
       const actions = [
-        { id: "again", key: "ENTER", caption: "Try again" },
-        { id: "route", key: "ESC", caption: "New route" }
+        { id: "again", key: "ENTER", caption: "Continue" },
+        { id: "route", key: "ESC", caption: "Finish" }
       ];
       if (this._shareUrl) {
         actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? "Link copied" : "Copy race link" });

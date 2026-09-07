@@ -947,8 +947,8 @@ export class GamePresentationRuntime {
     // with 44 px targets, hit-tested against `_finishButtonBounds`.
     type FinishAction = { id: 'again' | 'route' | 'copy'; key: string; caption: string };
     const actions: FinishAction[] = [
-      { id: 'again', key: 'ENTER', caption: 'Try again' },
-      { id: 'route', key: 'ESC', caption: 'New route' },
+      { id: 'again', key: 'ENTER', caption: 'Continue' },
+      { id: 'route', key: 'ESC', caption: 'Finish' },
     ];
     if (this._shareUrl) {
       actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? 'Link copied' : 'Copy race link' });

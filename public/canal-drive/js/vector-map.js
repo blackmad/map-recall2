@@ -239,7 +239,10 @@ class VectorBasemap {
 
   setCameraTilt(degrees) {
     const value = Number(degrees);
-    this._cameraTilt = Number.isFinite(value) ? Math.max(-18, Math.min(18, value)) : 0;
+    const prefs = window.CanalRecallPreferences;
+    const min = prefs && Number.isFinite(prefs.CAMERA_TILT_MIN) ? prefs.CAMERA_TILT_MIN : -36;
+    const max = prefs && Number.isFinite(prefs.CAMERA_TILT_MAX) ? prefs.CAMERA_TILT_MAX : 36;
+    this._cameraTilt = Number.isFinite(value) ? Math.max(min, Math.min(max, value)) : 0;
   }
 
   pitchForViewMode(viewMode) {
@@ -701,7 +704,12 @@ class VectorBasemap {
     // both the dev server and most static hosts do — would otherwise leave
     // the player driving through a city with nothing in it.
     this._completeCity.attach(() => {
-      if (this.map.getLayer('building-3d')) this.map.setLayoutProperty('building-3d', 'visibility', 'none');
+      // Record ownership instead of hiding the basemap just once. Settings and
+      // detailed-mesh readiness both re-run `_syncDetailedBuildingLayers`; that
+      // sync used to turn `building-3d` back on over the streamed city and put
+      // two coplanar solids in the same place, resurrecting the citywide shimmer.
+      this._completeCityHasBuildings = true;
+      this._syncDetailedBuildingLayers();
     }, (features) => {
       this._syncPyramidalRoofs(features);
     });
@@ -952,7 +960,14 @@ class VectorBasemap {
     // twice, z-fighting into a shimmer.
     if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google);
     const detailed = !google && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
-    for (const id of ['building-3d', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
+    // The streamed complete city owns every building once its first real tile
+    // lands. Never resurrect the basemap copy during a later settings/readiness
+    // sync; before that first tile, keep it as the no-empty-city fallback.
+    const hideBasemap = detailed || google || !!this._completeCityHasBuildings;
+    if (this.map.getLayer('building-3d')) {
+      this.map.setLayoutProperty('building-3d', 'visibility', hideBasemap ? 'none' : 'visible');
+    }
+    for (const id of ['osm-colored-buildings', 'osm-colored-building-roofs']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google) ? 'none' : 'visible');
     }
     // Signature models are the LoD1 replacement for a handful of landmarks.

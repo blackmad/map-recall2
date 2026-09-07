@@ -60,6 +60,9 @@ class GameRouteRuntime {
       cameraTilt: (this.vectorMap && Number.isFinite(this.vectorMap._cameraTilt))
         ? this.vectorMap._cameraTilt
         : current.cameraTilt,
+      cameraBearing: Number.isFinite(this.camera.bearingOffset)
+        ? this.camera.bearingOffset * 180 / Math.PI
+        : current.cameraBearing,
       reducedMotion: !!this.camera.reducedMotion,
       travelMode: this.travelMode || current.travelMode,
       cityId: this.cityId || current.cityId,
@@ -124,6 +127,7 @@ class GameRouteRuntime {
     if (typeof this.vectorMap.setCameraTilt === 'function') {
       this.vectorMap.setCameraTilt(prefs.cameraTilt || 0);
     }
+    this.camera.bearingOffset = (prefs.cameraBearing || 0) * Math.PI / 180;
     this.showMiniMap = prefs.minimap;
     this.routeDifficulty = prefs.difficulty;
     this.routePattern = prefs.routePattern;
@@ -161,6 +165,9 @@ class GameRouteRuntime {
       reducedMotion: !!this.camera.reducedMotion,
       zoom: this.camera.zoom,
       cameraTilt: (this.vectorMap && this.vectorMap._cameraTilt) || current.cameraTilt || 0,
+      cameraBearing: Number.isFinite(this.camera.bearingOffset)
+        ? this.camera.bearingOffset * 180 / Math.PI
+        : current.cameraBearing,
     });
   }
 
@@ -174,14 +181,28 @@ class GameRouteRuntime {
     if (this.viewMode !== 'chase' && this.viewMode !== 'cockpit') return;
     if (!this.vectorMap || typeof this.vectorMap.setCameraTilt !== 'function') return;
     const Prefs = window.CanalRecallPreferences;
-    const min = Prefs && Number.isFinite(Prefs.CAMERA_TILT_MIN) ? Prefs.CAMERA_TILT_MIN : -18;
-    const max = Prefs && Number.isFinite(Prefs.CAMERA_TILT_MAX) ? Prefs.CAMERA_TILT_MAX : 18;
+    const min = Prefs && Number.isFinite(Prefs.CAMERA_TILT_MIN) ? Prefs.CAMERA_TILT_MIN : -36;
+    const max = Prefs && Number.isFinite(Prefs.CAMERA_TILT_MAX) ? Prefs.CAMERA_TILT_MAX : 36;
     const current = Number.isFinite(this.vectorMap._cameraTilt) ? this.vectorMap._cameraTilt : 0;
     const next = Math.max(min, Math.min(max, current + delta));
     if (next === current) return;
     this.vectorMap.setCameraTilt(next);
     if (this._overlay && this._overlay.store) {
       this._overlay.store.patchPrefs({ cameraTilt: next }, this._overlayZoom());
+    }
+    this._savePreferences();
+  }
+
+  /** Orbit chase/cockpit around the vehicle. No-op in 2D views. */
+  _nudgeCameraBearing(delta) {
+    if (this.viewMode !== 'chase' && this.viewMode !== 'cockpit') return;
+    const current = Number.isFinite(this.camera.bearingOffset)
+      ? this.camera.bearingOffset * 180 / Math.PI
+      : 0;
+    const next = ((current + delta + 180) % 360 + 360) % 360 - 180;
+    this.camera.bearingOffset = next * Math.PI / 180;
+    if (this._overlay && this._overlay.store) {
+      this._overlay.store.patchPrefs({ cameraBearing: next }, this._overlayZoom());
     }
     this._savePreferences();
   }
@@ -570,6 +591,10 @@ class GameRouteRuntime {
       for (const feature of features) {
         const centre = feature.center;
         if (!centre || !feature.name) continue;
+        // Completing a route must reveal something worth learning. The raw
+        // extract also contains named OSM features with no article, fact or
+        // image; those remain map geometry rather than empty arrival rewards.
+        if (!CanalRecallRoute.isTeachableRouteDestination(feature)) continue;
         const key = this._normaliseCanalName(feature.name);
         if (seen.has(key)) continue;
         const poi = { id: `lm-${feature.id}`, name: feature.name, lat: centre[0], lng: centre[1],
