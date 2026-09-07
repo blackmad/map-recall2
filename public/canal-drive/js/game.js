@@ -564,7 +564,7 @@ class Game {
       case GameState.FINISHED:
         if (this._copiedTimer > 0) this._copiedTimer -= dt;
         // If a utility somehow stayed marked open (e.g. settings opened mid-race
-        // and the finish card hid its chrome), Esc must choose a route — not
+        // and the finish card hid its chrome), Esc must finish the trip — not
         // only dismiss an invisible panel and return early.
         if (this._utilityOpen) {
           this._closeUtilityPanels();
