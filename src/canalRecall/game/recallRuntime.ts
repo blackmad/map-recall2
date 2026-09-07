@@ -12,6 +12,7 @@ import {
   advanceRouteQuiz,
   bridgeGate,
   crossingQuestionKind,
+  findBridgeRouteAt,
   findCrossedBridge,
   headingOffRoad,
   isPlaceKnown,
@@ -377,13 +378,33 @@ export class GameRecallRuntime {
     const lineChoices = isTransit(this.travelMode)
       ? this._transitLineChoices(decision.name)
       : null;
+    const routeBridge = isCar(this.travelMode)
+      ? findBridgeRouteAt(
+        this.bridges,
+        decision.name,
+        this.player,
+        BRIDGE_GATE_HALF_WIDTH,
+      )
+      : null;
+    const bridgeAlternatives = routeBridge
+      ? pickDistractors(
+        [...routeBridge.distractors, ...this.bridges.map(bridge => bridge.name)],
+        decision.name,
+        DISTRACTOR_COUNT,
+        shuffle,
+      )
+      : [];
     this._openQuizPrompt({
       kind: 'route',
       name: decision.name,
-      subject: profile.quizRouteSubject,
-      question: profile.quizRouteQuestion,
-      context: isTransit(this.travelMode) ? 'Riding the corridor' : 'You made a turn',
-      choices: lineChoices,
+      subject: routeBridge ? 'bridge' : profile.quizRouteSubject,
+      question: routeBridge ? 'Which bridge are you on?' : profile.quizRouteQuestion,
+      context: routeBridge
+        ? 'Crossing a waterway'
+        : (isTransit(this.travelMode) ? 'Riding the corridor' : 'You made a turn'),
+      choices: routeBridge && bridgeAlternatives.length >= 2
+        ? [decision.name, ...bridgeAlternatives]
+        : lineChoices,
       segmentIndex: quizRoad ? quizRoad.segIdx : -1,
       pointIndex: quizRoad ? quizRoad.ptIdx : 0,
     });
@@ -946,7 +967,12 @@ export class GameRecallRuntime {
         center: (stop && stop.center) || this._toLatLon(this.player.x, this.player.y) || [52.37, 4.89],
       };
     } else {
-      recallFeature = this._recallFeatureAt(correctName, this.player.x, this.player.y);
+      recallFeature = this._recallFeatureAt(
+        correctName,
+        this.player.x,
+        this.player.y,
+        this.quizPromptSubject === 'bridge' ? 'bridge' : '',
+      );
     }
     const result = CanalRecallAnswerPath.submitAnswer({
       correctName,
