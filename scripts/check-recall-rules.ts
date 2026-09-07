@@ -220,63 +220,80 @@ function quizInput(overrides: Partial<RouteQuizInput> = {}): RouteQuizInput {
 const fresh: RouteQuizState = { candidateName: '', candidateSeconds: 0 };
 
 check('a name must settle before it becomes a question', () => {
-  const first = advanceRouteQuiz(fresh, quizInput(), 0.1, false);
+  const first = advanceRouteQuiz(fresh, quizInput(), 0.1, 'none');
   assert.equal(first.action, 'idle');
   assert.equal(first.state.candidateName, 'Prinsengracht', 'the first frame only nominates');
 
   let state = first.state;
-  let decision = advanceRouteQuiz(state, quizInput(), 0.5, false);
+  let decision = advanceRouteQuiz(state, quizInput(), 0.5, 'none');
   assert.equal(decision.action, 'idle', 'still under the settle delay');
   state = decision.state;
 
-  decision = advanceRouteQuiz(state, quizInput(), 0.3, false);
+  decision = advanceRouteQuiz(state, quizInput(), 0.3, 'none');
   assert.equal(decision.action, 'ask');
   assert.equal(decision.action === 'ask' && decision.name, 'Prinsengracht');
 });
 
 check('clipping the corner of a side street is not a turn onto it', () => {
-  const nominated = advanceRouteQuiz(fresh, quizInput(), 0.1, false).state;
+  const nominated = advanceRouteQuiz(fresh, quizInput(), 0.1, 'none').state;
   // The vehicle leaves the side street again before the delay elapses.
-  const left = advanceRouteQuiz(nominated, quizInput({ roadName: 'Reguliersgracht' }), 0.2, false);
+  const left = advanceRouteQuiz(
+    nominated, quizInput({ roadName: 'Reguliersgracht' }), 0.2, 'none',
+  );
   assert.equal(left.action, 'idle');
   assert.equal(left.state.candidateName, 'Reguliersgracht');
   assert.equal(left.state.candidateSeconds, 0, 'a different name restarts the clock');
 });
 
 check('crossing a street without turning onto it asks nothing', () => {
-  const decision = advanceRouteQuiz(fresh, quizInput({ headingOffRoad: Math.PI / 3 }), 1, false);
+  const decision = advanceRouteQuiz(
+    fresh, quizInput({ headingOffRoad: Math.PI / 3 }), 1, 'none',
+  );
   assert.equal(decision.action, 'idle');
   assert.equal(decision.state.candidateName, '', 'the candidate is abandoned, not merely paused');
 });
 
 check('a stopped vehicle is not asked where it is', () => {
-  const nominated = advanceRouteQuiz(fresh, quizInput(), 0.1, false).state;
-  const decision = advanceRouteQuiz(nominated, quizInput({ speed: 1 }), 1, false);
+  const nominated = advanceRouteQuiz(fresh, quizInput(), 0.1, 'none').state;
+  const decision = advanceRouteQuiz(nominated, quizInput({ speed: 1 }), 1, 'none');
   assert.equal(decision.action, 'idle', 'below 5 px/s the vehicle is not really under way');
 });
 
 check('an already-revealed name comes back sooner', () => {
-  const nominated = advanceRouteQuiz(fresh, quizInput({ alreadyRevealed: true }), 0.1, false).state;
-  const decision = advanceRouteQuiz(nominated, quizInput({ alreadyRevealed: true }), 0.35, false);
+  const nominated = advanceRouteQuiz(
+    fresh, quizInput({ alreadyRevealed: true }), 0.1, 'none',
+  ).state;
+  const decision = advanceRouteQuiz(
+    nominated, quizInput({ alreadyRevealed: true }), 0.35, 'none',
+  );
   assert.equal(decision.action, 'ask', 'a re-test is a quick check, not a fresh question');
 
   // The same elapsed time is not enough for a name the player has never seen.
-  const unseen = advanceRouteQuiz(fresh, quizInput(), 0.1, false).state;
-  assert.equal(advanceRouteQuiz(unseen, quizInput(), 0.35, false).action, 'idle',
+  const unseen = advanceRouteQuiz(fresh, quizInput(), 0.1, 'none').state;
+  assert.equal(advanceRouteQuiz(unseen, quizInput(), 0.35, 'none').action, 'idle',
     'a first question waits the full settle delay');
 });
 
 check('a name the player has proved they know is adopted, not asked', () => {
-  const decision = advanceRouteQuiz(fresh, quizInput(), 0.1, true);
+  const decision = advanceRouteQuiz(fresh, quizInput(), 0.1, 'known');
   assert.equal(decision.action, 'adopt');
   assert.equal(decision.action === 'adopt' && decision.name, 'Prinsengracht');
   assert.equal(decision.state.candidateName, '', 'adopting clears any pending candidate');
 });
 
+check('a recent miss is deferred without claiming the player knows it', () => {
+  const decision = advanceRouteQuiz(fresh, quizInput(), 0.1, 'learning');
+  assert.equal(decision.action, 'defer');
+  assert.equal(decision.action === 'defer' && decision.name, 'Prinsengracht');
+  assert.equal(decision.state.candidateName, '', 'deferring clears any pending candidate');
+});
+
 check('the road already being asked about is left alone', () => {
-  const decision = advanceRouteQuiz(fresh, quizInput({ currentName: 'Prinsengracht' }), 1, false);
+  const decision = advanceRouteQuiz(
+    fresh, quizInput({ currentName: 'Prinsengracht' }), 1, 'none',
+  );
   assert.equal(decision.action, 'idle');
-  const unnamed = advanceRouteQuiz(fresh, quizInput({ roadName: '' }), 1, false);
+  const unnamed = advanceRouteQuiz(fresh, quizInput({ roadName: '' }), 1, 'none');
   assert.equal(unnamed.action, 'idle', 'an unnamed way is never a question');
 });
 
