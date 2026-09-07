@@ -6,6 +6,13 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Route-end actions say Continue / Finish — 2026-09-07
+
+The arrival card called Escape “New route,” but it actually returns to route
+setup, making the end-of-trip decision feel misleading. Its two actions now
+read **Continue** (Enter, replay this route or start the next home leg) and
+**Finish** (Escape, leave the trip and return to setup).
+
 ## Empty landmarks are no longer route destinations — 2026-09-07
 
 The prominence-ranked landmark pool included named OSM features with no fact,
