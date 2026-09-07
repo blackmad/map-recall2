@@ -7,12 +7,35 @@
 // setup screen is built out of, so they live here rather than in the form.
 
 import type { WorldPoint } from './worldTypes';
+import { isWorthACard } from './landmarkData';
 
 export interface RoutePoi {
   id: string;
   name: string;
   lat: number;
   lng: number;
+}
+
+/** The content fields available on a raw landmark-extract destination. */
+export interface RouteDestinationFeature {
+  funFact?: string;
+  wikipediaExtract?: string;
+  wikipediaImageUrl?: string;
+  wikipediaUrl?: string;
+}
+
+/**
+ * A route destination has to teach something when the player reaches it.
+ *
+ * This deliberately uses the same content floor as drive-by landmark cards:
+ * a name and OSM category alone are not a reward for completing a route.
+ */
+export function isTeachableRouteDestination(feature: RouteDestinationFeature): boolean {
+  return isWorthACard({
+    detail: feature.funFact || feature.wikipediaExtract,
+    imageUrl: feature.wikipediaImageUrl,
+    wikipediaUrl: feature.wikipediaUrl,
+  });
 }
 
 /**
