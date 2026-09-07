@@ -143,6 +143,31 @@ export function buildRoadGraph<TMetadata = unknown>(
     }
     return node;
   };
+  const projectionNodeFor = (
+    point: RoadGraphPoint,
+    span: IndexedSpan,
+  ): RoadGraphNode<TMetadata> => {
+    // A junction projection must retain its exact place on the through
+    // centreline. Reusing the normal quantized node can merge it with the side
+    // street endpoint we are trying to connect, putting the "junction" several
+    // metres off the through road and recreating the diagonal corner cut.
+    const key = [
+      'junction',
+      span.segmentIndex,
+      span.a.x,
+      span.a.y,
+      span.b.x,
+      span.b.y,
+      point.x,
+      point.y,
+    ].join(':');
+    let node = nodes.get(key);
+    if (!node) {
+      node = { key, x: point.x, y: point.y, edges: [] };
+      nodes.set(key, node);
+    }
+    return node;
+  };
   const link = (
     a: RoadGraphNode<TMetadata>,
     b: RoadGraphNode<TMetadata>,
@@ -222,10 +247,22 @@ export function buildRoadGraph<TMetadata = unknown>(
       if (!from) continue;
       for (const span of spansNear(endpoint)) {
         if (span.segmentIndex === segmentIndex) continue;
-        if (closestPointOnSegment(endpoint, span.a, span.b).distance > junctionStitchRadius) continue;
-        const nearer = distanceBetween(endpoint, span.a) <= distanceBetween(endpoint, span.b) ? span.a : span.b;
-        const target = nodes.get(keyFor(nearer));
-        if (target) link(from, target, span.segmentIndex, 'junction-stitch');
+        const projection = closestPointOnSegment(endpoint, span.a, span.b);
+        if (projection.distance > junctionStitchRadius) continue;
+        // Split the through span at the actual projected junction. Linking the
+        // side street straight to the nearer *endpoint* of a long simplified
+        // span made route paths cut diagonally across corners and buildings.
+        const spanStart = nodes.get(keyFor(span.a));
+        const spanEnd = nodes.get(keyFor(span.b));
+        if (!spanStart || !spanEnd) continue;
+        const target = distanceBetween(projection, span.a) < 1e-6
+          ? spanStart
+          : distanceBetween(projection, span.b) < 1e-6
+            ? spanEnd
+            : projectionNodeFor(projection, span);
+        link(spanStart, target, span.segmentIndex, 'centreline');
+        link(target, spanEnd, span.segmentIndex, 'centreline');
+        link(from, target, span.segmentIndex, 'junction-stitch');
       }
     }
   });

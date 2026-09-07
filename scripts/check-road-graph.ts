@@ -97,10 +97,11 @@ assert.deepEqual(
   [],
   'a visible but separated T-junction is unreachable outside the stitch radius',
 );
-const stitched = buildRoadGraph(tJunction, { mergeSize: 1, junctionStitchRadius: 8 });
-assert.ok(
-  findRoadRoute(stitched, { x: 50, y: 50 }, { x: 100, y: 0 }).length >= 3,
-  'an endpoint on the stitch boundary reconnects to the through centreline',
+const stitched = buildRoadGraph(tJunction, { mergeSize: 18, junctionStitchRadius: 8 });
+assert.deepEqual(
+  findRoadRoute(stitched, { x: 50, y: 50 }, { x: 100, y: 0 }),
+  [{ x: 50, y: 50 }, { x: 50, y: 8 }, { x: 50, y: 0 }, { x: 100, y: 0 }],
+  'a Westermarkt-style T-junction joins at its centreline projection instead of cutting the corner',
 );
 
 assert.throws(
