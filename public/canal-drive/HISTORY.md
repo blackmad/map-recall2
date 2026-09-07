@@ -6,6 +6,17 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Let the basemap name the shops — 2026-09-07
+
+AH was visible because it had a bespoke icon layer; the other 1,944 extracted
+food venues were text-only, aggressively thinned, and lost after the first
+quiet quiz. Meanwhile OpenFreeMap Liberty already shipped ranked, icon-backed
+OSM POI layers, but `_hideLabels()` hid every symbol indiscriminately. The map
+now restores Liberty's `source-layer=poi` symbols as sparse orientation cues
+while continuing to hide street and water names. It discovers the source layer
+rather than pinning today's `poi_r*` ids. Landmark quizzes still hide those
+labels, and the D toggle still controls the complete basemap label set.
+
 ## Route-end actions say Continue / Finish — 2026-09-07
 
 The arrival card called Escape “New route,” but it actually returns to route

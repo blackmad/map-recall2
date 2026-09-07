@@ -1198,6 +1198,17 @@ class VectorBasemap {
     this.applyTheme(this.theme);
   }
 
+  _setBasemapOrientationPoisVisible(visible) {
+    if (!this.map || !this.map.getStyle()) return;
+    const pickLayers = window.CanalRecallOrientationPois
+      && window.CanalRecallOrientationPois.basemapOrientationPoiLayerIds;
+    if (!pickLayers) return;
+    const ids = pickLayers(this.map.getStyle().layers || []);
+    for (const id of ids) {
+      try { this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none'); } catch (_) {}
+    }
+  }
+
   _hideLabels() {
     if (!this.map || !this.map.getStyle()) return;
     this._labelsVisible = false;
@@ -1205,6 +1216,9 @@ class VectorBasemap {
       if (layer.type !== 'symbol') continue;
       try { this.map.setLayoutProperty(layer.id, 'visibility', 'none'); } catch (_) {}
     }
+    // Liberty already carries ranked, icon-backed OSM places. Keep that sparse
+    // orientation layer while hiding roads and waterways that can spoil recall.
+    this._setBasemapOrientationPoisVisible(!this._quizQuietMap);
   }
 
   _showLabels() {
@@ -1230,6 +1244,7 @@ class VectorBasemap {
   setQuizQuietMap(quiet) {
     if (!this.map || !this.map.getStyle()) return;
     this._quizQuietMap = !!quiet;
+    this._setBasemapOrientationPoisVisible(!this._quizQuietMap);
     const ids = ['poi-labels', 'brand-poi-labels', 'local-food-labels', 'neighborhood-labels'];
     for (const id of ids) {
       if (!this.map.getLayer(id)) continue;
