@@ -6,6 +6,15 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Bridge-named bike routes ask about the bridge — 2026-09-07
+
+Amsterdam's routing extract includes 77 named bridges as rideable ways. The
+generic route quiz called every one a street, so an answer such as “Blauwbrug”
+could appear under “Which street are you on?” Bike route questions now
+cross-check the loaded bridge catalog, ask “Which bridge are you on?”, offer
+bridge distractors, and file the answer as bridge knowledge. The Blauwbrug
+overlap is the named regression.
+
 ## Start from GPS (Here) — 2026-09-07
 
 Home geocode is a saved address, not live location. Route strip now has

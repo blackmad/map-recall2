@@ -67,6 +67,29 @@
   function pickDistractors(pool, answer, limit, shuffle2) {
     return shuffle2([...new Set(pool)].filter((candidate) => candidate && candidate !== answer)).slice(0, limit);
   }
+  function distanceToSegment(point, a, b) {
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const lengthSquared = dx * dx + dy * dy;
+    if (lengthSquared === 0) return Math.hypot(point.x - a.x, point.y - a.y);
+    const t = Math.max(0, Math.min(
+      1,
+      ((point.x - a.x) * dx + (point.y - a.y) * dy) / lengthSquared
+    ));
+    return Math.hypot(point.x - (a.x + t * dx), point.y - (a.y + t * dy));
+  }
+  function findBridgeRouteAt(bridges, routeName, point, maxDistance) {
+    if (!routeName) return null;
+    for (const bridge of bridges) {
+      if (bridge.name !== routeName) continue;
+      for (const line of bridge.lines) {
+        for (let i = 1; i < line.length; i++) {
+          if (distanceToSegment(point, line[i - 1], line[i]) <= maxDistance) return bridge;
+        }
+      }
+    }
+    return null;
+  }
   var CLEARED = { candidateName: "", candidateSeconds: 0 };
   var MAX_HEADING_OFF_ROAD = Math.PI / 4;
   var MIN_QUIZ_SPEED = 5;
@@ -688,13 +711,25 @@ Learned names, exploration collection, personal bests, route settings and the ho
       }
       const quizRoad = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
       const lineChoices = isTransit(this.travelMode) ? this._transitLineChoices(decision.name) : null;
+      const routeBridge = isCar(this.travelMode) ? findBridgeRouteAt(
+        this.bridges,
+        decision.name,
+        this.player,
+        BRIDGE_GATE_HALF_WIDTH
+      ) : null;
+      const bridgeAlternatives = routeBridge ? pickDistractors(
+        [...routeBridge.distractors, ...this.bridges.map((bridge) => bridge.name)],
+        decision.name,
+        DISTRACTOR_COUNT,
+        shuffle
+      ) : [];
       this._openQuizPrompt({
         kind: "route",
         name: decision.name,
-        subject: profile.quizRouteSubject,
-        question: profile.quizRouteQuestion,
-        context: isTransit(this.travelMode) ? "Riding the corridor" : "You made a turn",
-        choices: lineChoices,
+        subject: routeBridge ? "bridge" : profile.quizRouteSubject,
+        question: routeBridge ? "Which bridge are you on?" : profile.quizRouteQuestion,
+        context: routeBridge ? "Crossing a waterway" : isTransit(this.travelMode) ? "Riding the corridor" : "You made a turn",
+        choices: routeBridge && bridgeAlternatives.length >= 2 ? [decision.name, ...bridgeAlternatives] : lineChoices,
         segmentIndex: quizRoad ? quizRoad.segIdx : -1,
         pointIndex: quizRoad ? quizRoad.ptIdx : 0
       });
@@ -1172,7 +1207,12 @@ Learned names, exploration collection, personal bests, route settings and the ho
           center: stop && stop.center || this._toLatLon(this.player.x, this.player.y) || [52.37, 4.89]
         };
       } else {
-        recallFeature = this._recallFeatureAt(correctName, this.player.x, this.player.y);
+        recallFeature = this._recallFeatureAt(
+          correctName,
+          this.player.x,
+          this.player.y,
+          this.quizPromptSubject === "bridge" ? "bridge" : ""
+        );
       }
       const result = CanalRecallAnswerPath.submitAnswer({
         correctName,
