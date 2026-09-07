@@ -6,6 +6,28 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Street mode stops at the canal edge — 2026-09-08
+
+Street corridors were arcade-wide: a residential road allowed the bike centre
+10 m from its centreline, then granted another 4 m of edge tolerance. On canal
+quays that made several metres of visible water count as driveable shoulder.
+Road-class half-widths now reflect the physical corridor (6 m for residential,
+3 m for cycleways), and street edge tolerance is ~1.3 m. Intersections remain
+the union of every meeting corridor and bridge centrelines remain driveable, so
+tightening a quay does not close its junctions or crossings. A named
+Keizersgracht-style rollback test pins the canal edge.
+
+## Junction routes no longer cut through buildings — 2026-09-08
+
+A Homomonument / Westermarkt playtest showed the bike disappearing into a
+building near a junction. Camera pitch was a tempting symptom-level fix, but
+the routing graph contained the underlying geometry error: when a side-street
+endpoint sat near the middle of a simplified through-street span, the stitch
+jumped diagonally to one of that span's distant endpoints. Junction stitches
+now split the span at the actual centreline projection, so the route reaches
+the intersection before turning. A named Westermarkt-style regression keeps
+the connector on the two source centrelines. The 42° chase camera is unchanged.
+
 ## Let the basemap name the shops — 2026-09-07
 
 AH was visible because it had a bespoke icon layer; the other 1,944 extracted
