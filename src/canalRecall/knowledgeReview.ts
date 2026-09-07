@@ -49,6 +49,18 @@ export interface KnowledgeReview {
 const normalize = (value: string): string => value.normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
+export function knowledgeItemKey(
+  feature: Pick<ReviewState['featureSnapshot'], 'cityId' | 'type' | 'name'>,
+): string {
+  return `${feature.cityId}|${feature.type}|${normalize(feature.name)}`;
+}
+
+export function belongsToKnowledgeItem(state: ReviewState, itemKey: string): boolean {
+  return state.mode === 'guess_name'
+    && !!state.featureSnapshot?.name
+    && knowledgeItemKey(state.featureSnapshot) === itemKey;
+}
+
 const dayKey = (time: number): string => {
   const date = new Date(time);
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
@@ -75,7 +87,7 @@ export function buildKnowledgeReview(
   for (const state of states) {
     if (state.mode !== 'guess_name' || !state.featureSnapshot?.name) continue;
     const feature = state.featureSnapshot;
-    const key = `${feature.cityId}|${feature.type}|${normalize(feature.name)}`;
+    const key = knowledgeItemKey(feature);
     const group = groups.get(key);
     if (group) group.push(state);
     else groups.set(key, [state]);

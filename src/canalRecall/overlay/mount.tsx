@@ -26,6 +26,7 @@ export function install(container: HTMLElement | null): CanalOverlayHandle {
     onAccountClick: noop,
     onClearKnowledge: noop,
     onClearAllData: noop,
+    onPracticeAgain: noop,
     onSkipMastered: noop,
     onCloseSettings: noop,
     onNewRoute: noop,

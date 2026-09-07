@@ -15,6 +15,7 @@ import { getTransitLineKey, getTransitStopKey } from './transit/identity';
 import type { TransitMode } from './transit/network';
 import { RoundResult, StreetFeature } from '../types';
 import { LatLon, chunkCenter, isKnownNear, isSuppressedNear } from './recallChunks';
+import { belongsToKnowledgeItem } from './knowledgeReview';
 
 export { RECALL_LOCAL_RADIUS_METERS, RECALL_CHUNK_METERS } from './recallChunks';
 
@@ -344,6 +345,24 @@ class RecallStore {
   }
 
   /**
+   * Put every local chunk for a named item back into the due queue. This is a
+   * self-reported practice request, not a quiz result, so it deliberately does
+   * not create an event, increment lapses, or change recall-rate statistics.
+   */
+  queueForPractice(itemKey: string, now = Date.now()): number {
+    let changed = 0;
+    for (const [key, state] of Object.entries(this.states)) {
+      if (!belongsToKnowledgeItem(state, itemKey) || state.dueAt <= now) continue;
+      const queued = { ...state, dueAt: now };
+      this.states[key] = queued;
+      changed += 1;
+      if (this.uid && this.db) void this.push(queued);
+    }
+    if (changed > 0) write(STATES_KEY, this.states);
+    return changed;
+  }
+
+  /**
    * Record an answer against the *place* it was given, so one correct answer on
    * the Overtoom by the Vondelpark does not retire the whole street. Snapping
    * happens here rather than at the call sites so a recorded centre and the
@@ -362,13 +381,15 @@ class RecallStore {
     return scheduled.state;
   }
 
-  private async push(state: ReviewState, event: unknown): Promise<void> {
+  private async push(state: ReviewState, event?: unknown): Promise<void> {
     try {
       const { doc, writeBatch } = await import('firebase/firestore');
       const clean = <T,>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
       const batch = writeBatch(this.db!);
       batch.set(doc(this.db!, 'users', this.uid!, 'reviewStates', stateId(state)), clean(state));
-      batch.set(doc(this.db!, 'users', this.uid!, 'reviewEvents', (event as { id: string }).id), clean(event));
+      if (event) {
+        batch.set(doc(this.db!, 'users', this.uid!, 'reviewEvents', (event as { id: string }).id), clean(event));
+      }
       await batch.commit();
     } catch (reason) {
       console.warn('Could not sync recall progress:', reason);
