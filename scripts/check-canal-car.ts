@@ -29,6 +29,22 @@ const car = (overrides: Partial<CarKinematics> = {}): CarKinematics => ({
 }
 
 {
+  // A typical Amsterdam residential centreline is about 10 m from the canal
+  // edge. The live six-metre half-width plus ~1.3 m tolerance must reject a
+  // bike four metres into that water instead of treating it as road shoulder.
+  const subject = car({ x: 30, y: 0, vx: 0, vy: 90 });
+  const result = constrainCarToRoad(
+    subject,
+    { x: 21, y: 0 },
+    road({ x: 0, dist: 30, width: 18, angle: Math.PI / 2 }),
+    road({ x: 0, dist: 21, width: 18, angle: Math.PI / 2 }),
+    { edgeTolerance: 4 },
+  );
+  assert.equal(result, 'rolled-back', 'Keizersgracht-style canal intrusion is rejected');
+  assert.equal(subject.x, 21, 'canal-edge rollback restores the last street position');
+}
+
+{
   const subject = car({ x: 3, y: 0, angle: Math.PI / 2, vx: 0, vy: 120 });
   const result = constrainCarToRoad(subject, { x: 2, y: 0 }, road({ dist: 3, angle: Math.PI / 2 }), road({ angle: Math.PI / 2 }), options);
   assert.equal(result, 'on-road', 'a bridge-centre contact remains drivable even above rendered water');
@@ -94,4 +110,4 @@ for (const name of ['Van Limburg Stirumstraat', 'De Wittenkade', 'Staatsliedenbr
   assert.ok(junctionArms.some(street => street.name === name), `${name} remains connected at the Stirumstraat roundabout`);
 }
 
-process.stdout.write(`Canal Recall car checks passed (5 simulations, 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage).\n`);
+process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage).\n`);

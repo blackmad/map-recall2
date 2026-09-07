@@ -96,7 +96,10 @@ const COLLISION_PUSH_MAX = 20;                 // px — max push per frame
 const COLLISION_SPEED_DECAY = 0.93;            // speed multiplier on grass collision
 const OFF_ROAD_PUSH_SPEED = 1.5;              // px — curb correction push
 const OFF_ROAD_SPEED_DECAY = 0.98;             // speed multiplier on curb
-const CAR_ROAD_EDGE_TOLERANCE = 12;            // px beyond mapped road width before rollback
+// Bike centre may only leave the mapped road edge by ~1.3 m. The old 4 m
+// tolerance, added to oversized road half-widths, let street mode ride several
+// metres into Amsterdam's canals before rollback.
+const CAR_ROAD_EDGE_TOLERANCE = 4;
 const MIN_START_FINISH_DIST = 200;             // px — minimum distance between start and finish
 const MAX_SNAP_DIST = 800;                     // px — POIs may sit a short walk from the water
 const HOME_MAX_SNAP_DIST = 240;                // px (~80 m) — never teleport a home launch across the neighborhood
@@ -209,19 +212,21 @@ const ROAD_WIDTHS = {
   dock: 50,
   motorway: 55, motorway_link: 45,
   trunk: 50, trunk_link: 40,
-  primary: 45, primary_link: 35,
-  secondary: 40, secondary_link: 32,
-  tertiary: 35, tertiary_link: 28,
-  residential: 30,
-  unclassified: 28,
-  // Bike-first centrelines: narrower than a residential carriageway.
-  living_street: 28,
-  service: 24,
-  busway: 32,
-  cycleway: 22,
-  pedestrian: 26,
-  footway: 18,
-  path: 20,
+  primary: 30, primary_link: 24,
+  secondary: 26, secondary_link: 22,
+  tertiary: 21, tertiary_link: 18,
+  // These are playable half-widths, not cartographic stroke sizes. At 3 px/m,
+  // 18 px gives a residential corridor a realistic six metres from centreline
+  // to edge and keeps parallel canal water out of the street surface.
+  residential: 18,
+  unclassified: 17,
+  living_street: 16,
+  service: 13,
+  busway: 18,
+  cycleway: 9,
+  pedestrian: 14,
+  footway: 7,
+  path: 8,
   // Transit corridors (GTFS shapes) — wider than a cycleway so the road guard
   // keeps the vehicle locked to noisy GTFS alignments.
   tram: 38,
