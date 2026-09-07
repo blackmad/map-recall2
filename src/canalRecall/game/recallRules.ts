@@ -187,6 +187,39 @@ export function pickDistractors(
   return shuffle([...new Set(pool)].filter(candidate => candidate && candidate !== answer)).slice(0, limit);
 }
 
+function distanceToSegment(point: WorldPoint, a: WorldPoint, b: WorldPoint): number {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const lengthSquared = dx * dx + dy * dy;
+  if (lengthSquared === 0) return Math.hypot(point.x - a.x, point.y - a.y);
+  const t = Math.max(0, Math.min(1,
+    ((point.x - a.x) * dx + (point.y - a.y) * dy) / lengthSquared));
+  return Math.hypot(point.x - (a.x + t * dx), point.y - (a.y + t * dy));
+}
+
+/**
+ * A named bridge can also be the routing way under the bike. Match both its
+ * name and local deck geometry: matching only the name would mislabel the rest
+ * of a long street whose bridge happens to carry that street's name.
+ */
+export function findBridgeRouteAt<T extends CrossableBridge & { name: string }>(
+  bridges: readonly T[],
+  routeName: string,
+  point: WorldPoint,
+  maxDistance: number,
+): T | null {
+  if (!routeName) return null;
+  for (const bridge of bridges) {
+    if (bridge.name !== routeName) continue;
+    for (const line of bridge.lines) {
+      for (let i = 1; i < line.length; i++) {
+        if (distanceToSegment(point, line[i - 1], line[i]) <= maxDistance) return bridge;
+      }
+    }
+  }
+  return null;
+}
+
 // ---- Settling on a name to ask about ----
 
 export interface RouteQuizState {
