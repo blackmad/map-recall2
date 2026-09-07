@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { DEFAULT_CELL_METRES, thinOrientationPois } from '../src/canalRecall/orientationPois';
+import {
+  basemapOrientationPoiLayerIds,
+  DEFAULT_CELL_METRES,
+  thinOrientationPois,
+} from '../src/canalRecall/orientationPois';
 
 const poi = (id: string, lat: number, lng: number, orientationScore = 0, kind = 'local-food') =>
   ({ id, name: id, kind, center: [lat, lng] as [number, number], orientationScore });
@@ -36,6 +40,14 @@ assert.equal(mixed.length, 2);
 assert.deepEqual(mixed.map(item => item.id).sort(), ['food-b', 'shop']);
 
 assert.deepEqual(thinOrientationPois([]), []);
+
+assert.deepEqual(basemapOrientationPoiLayerIds([
+  { id: 'road-label', type: 'symbol', 'source-layer': 'transportation_name' },
+  { id: 'poi_r1', type: 'symbol', 'source-layer': 'poi' },
+  { id: 'poi_r7', type: 'symbol', 'source-layer': 'poi' },
+  { id: 'poi-fill', type: 'fill', 'source-layer': 'poi' },
+  { id: 'custom-pois', type: 'symbol' },
+]), ['poi_r1', 'poi_r7'], 'only the basemap OSM POI symbols become orientation cues');
 
 // The real extract: the point of the exercise is the count on screen.
 const extract = JSON.parse(readFileSync(
