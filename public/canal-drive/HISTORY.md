@@ -6,6 +6,17 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Streamed buildings keep sole ownership — 2026-09-07
+
+The LoD1 tile stream hid OpenFreeMap's duplicate `building-3d` extrusion when
+its first tile landed, but detailed-building readiness and settings changes
+later ran a shared visibility sync that blindly made all extrusion layers
+visible again. That restored two coplanar versions of every building and the
+citywide façade/roof shimmer. Complete-city ownership is now persistent state:
+the basemap remains as the empty-city fallback until a real tile lands, then no
+later layer sync may resurrect it. The browser regression deliberately runs
+that later sync after loading tiles.
+
 ## Start from GPS (Here) — 2026-09-07
 
 Home geocode is a saved address, not live location. Route strip now has
