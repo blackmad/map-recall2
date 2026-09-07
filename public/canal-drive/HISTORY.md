@@ -13,6 +13,16 @@ setup, making the end-of-trip decision feel misleading. Its two actions now
 read **Continue** (Enter, replay this route or start the next home leg) and
 **Finish** (Escape, leave the trip and return to setup).
 
+## 3D camera tilt and orbit controls — 2026-09-07
+
+The `[` / `]` camera controls stopped at ±18° and moved only 3° per press, so
+their adjustment remained subtle even at the limit. Chase and cockpit views now
+allow ±36° of extra pitch and move 6° per keypress. The settings slider shares
+the same exported bounds, keeping keyboard, saved preferences, and live UI in
+sync. Shift + `[` / `]` now orbits the camera around the vehicle in 15° steps,
+and a labeled 3D spin slider makes the same control discoverable on touch
+devices. The chosen angle is saved with the other camera preferences.
+
 ## Empty landmarks are no longer route destinations — 2026-09-07
 
 The prominence-ranked landmark pool included named OSM features with no fact,

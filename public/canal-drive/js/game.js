@@ -504,8 +504,21 @@ class Game {
     }
     if (this.input.wasPressed('KeyF')) this.routeOptions.arrow = !this.routeOptions.arrow;
     if (this.input.wasPressed('KeyO')) this.camera.northUp = !this.camera.northUp;
-    if (this.input.wasPressed('BracketLeft')) this._nudgeCameraTilt(-3);
-    if (this.input.wasPressed('BracketRight')) this._nudgeCameraTilt(3);
+    const shiftDown = this.input.isDown('ShiftLeft') || this.input.isDown('ShiftRight');
+    const tiltStep = Number.isFinite(window.CanalRecallPreferences?.CAMERA_TILT_KEY_STEP)
+      ? window.CanalRecallPreferences.CAMERA_TILT_KEY_STEP
+      : 6;
+    const bearingStep = Number.isFinite(window.CanalRecallPreferences?.CAMERA_BEARING_KEY_STEP)
+      ? window.CanalRecallPreferences.CAMERA_BEARING_KEY_STEP
+      : 15;
+    if (this.input.wasPressed('BracketLeft')) {
+      if (shiftDown) this._nudgeCameraBearing(-bearingStep);
+      else this._nudgeCameraTilt(-tiltStep);
+    }
+    if (this.input.wasPressed('BracketRight')) {
+      if (shiftDown) this._nudgeCameraBearing(bearingStep);
+      else this._nudgeCameraTilt(tiltStep);
+    }
     if (this.input.wasPressed('KeyN')) { this._setSoundEnabled(this.sound.muted); this._savePreferences(); }
     if (this.input.wasPressed('KeyD')) this.vectorMap.toggleLabels();
     if (this.input.wasPressed('KeyW')) this._openLandmarkArticle();
