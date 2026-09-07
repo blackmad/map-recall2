@@ -28,6 +28,63 @@ now split the span at the actual centreline projection, so the route reaches
 the intersection before turning. A named Westermarkt-style regression keeps
 the connector on the two source centrelines. The 42° chase camera is unchanged.
 
+## Route-end actions say Continue / Finish — 2026-09-07
+
+The arrival card called Escape “New route,” but it actually returns to route
+setup, making the end-of-trip decision feel misleading. Its two actions now
+read **Continue** (Enter, replay this route or start the next home leg) and
+**Finish** (Escape, leave the trip and return to setup).
+
+## 3D camera tilt and orbit controls — 2026-09-07
+
+The `[` / `]` camera controls stopped at ±18° and moved only 3° per press, so
+their adjustment remained subtle even at the limit. Chase and cockpit views now
+allow ±36° of extra pitch and move 6° per keypress. The settings slider shares
+the same exported bounds, keeping keyboard, saved preferences, and live UI in
+sync. Shift + `[` / `]` now orbits the camera around the vehicle in 15° steps,
+and a labeled 3D spin slider makes the same control discoverable on touch
+devices. The chosen angle is saved with the other camera preferences.
+
+## Empty landmarks are no longer route destinations — 2026-09-07
+
+The prominence-ranked landmark pool included named OSM features with no fact,
+encyclopedia article, or image. That let a full trip end at places such as UvA
+PC Hoofthuis with only the generic “A place to remember” filler. Extract-added
+destinations now use the same content floor as landmark cards: each must have
+real text, a photograph, or an article that can be fetched and opened. Curated
+city anchors remain deliberate exceptions.
+
+## Streamed buildings keep sole ownership — 2026-09-07
+
+The LoD1 tile stream hid OpenFreeMap's duplicate `building-3d` extrusion when
+its first tile landed, but detailed-building readiness and settings changes
+later ran a shared visibility sync that blindly made all extrusion layers
+visible again. That restored two coplanar versions of every building and the
+citywide façade/roof shimmer. Complete-city ownership is now persistent state:
+the basemap remains as the empty-city fallback until a real tile lands, then no
+later layer sync may resurrect it. The browser regression deliberately runs
+that later sync after loading tiles.
+
+## Bridge-named bike routes ask about the bridge — 2026-09-07
+
+Amsterdam's routing extract includes 77 named bridges as rideable ways. The
+generic route quiz called every one a street, so an answer such as “Blauwbrug”
+could appear under “Which street are you on?” Bike route questions now
+cross-check the loaded bridge catalog, ask “Which bridge are you on?”, offer
+bridge distractors, and file the answer as bridge knowledge. The Blauwbrug
+overlap is the named regression.
+
+## Active street overlay is one centreline — 2026-09-07
+
+The active street highlight now uses one MapLibre line layer instead of a
+casing/glow/line stack. The stacked strokes were visually read as multiple
+parallel street lines when a named feature contained several connected OSM
+segments, even though those segments had already been stitched into one
+geometry. The stitched geometry remains intact; only the presentation is
+reduced to one unambiguous centreline. A deterministic, offline MapLibre
+Storybook workbench now exercises single, connected, duplicate/reversed, and
+genuinely disconnected segment fixtures at a fixed oblique camera angle.
+
 ## Start from GPS (Here) — 2026-09-07
 
 Home geocode is a saved address, not live location. Route strip now has
