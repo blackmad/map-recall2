@@ -15,6 +15,7 @@ import {
   connectedNamedSegments,
   contactsAt,
   headingDifference,
+  pickNearestRoadContactForName,
   pickRoadContact,
   pickRoadContactPreferName,
   roadNameAt,
@@ -127,6 +128,29 @@ check('a preferred corridor name wins over a nearer cross line', () => {
     'Tram 2',
     'transit leg lock keeps the player on Tram 2',
   );
+});
+
+check('a settled name highlights its closest parallel centreline', () => {
+  const segments = [
+    horizontal(0, -500, 500, 32, 'Marnixstraat'),
+    {
+      points: [{ x: -500, y: 8 }, { x: 500, y: 18 }],
+      width: 32,
+      name: 'Marnixstraat',
+    },
+  ];
+  const index = buildRoadSpatialIndex(segments);
+  const contacts = contactsAt(roadsNear(index, 0, 7), 0, 7);
+  const segmentNameAt = (segIdx: number) => segments[segIdx]?.name || '';
+
+  assert.equal(pickRoadContact(contacts, 0)?.segIdx, 0,
+    'heading alone prefers the straighter but more distant parallel span');
+  assert.equal(pickNearestRoadContactForName(
+    contacts, segmentNameAt, 'Marnixstraat',
+  )?.segIdx, 1, 'the answer overlay starts on the same-name span under the rider');
+  assert.equal(pickNearestRoadContactForName(
+    contacts, segmentNameAt, 'Other street',
+  ), null, 'a missing name cannot seed an unrelated highlight');
 });
 
 check('a way digitised the opposite way round is still the same alignment', () => {

@@ -245,6 +245,28 @@ export function pickRoadContactPreferName(
   return pickRoadContact(contacts, preferredAngle);
 }
 
+/**
+ * The closest centreline carrying a known name.
+ *
+ * Route-name detection needs heading to avoid adopting a cross street at a
+ * junction. Once that name has settled, however, the highlight seed should be
+ * the same-name span directly under the player. Reapplying the heading rule can
+ * pick a parallel, slightly straighter span at a bend and draw the answer along
+ * the edge of the visible road instead of its centre.
+ */
+export function pickNearestRoadContactForName(
+  contacts: readonly RoadContact[],
+  segmentNameAt: (segIdx: number) => string,
+  name: string,
+): RoadContact | null {
+  let nearest: RoadContact | null = null;
+  for (const contact of contacts) {
+    if (segmentNameAt(contact.segIdx) !== name) continue;
+    if (!nearest || contact.dist < nearest.dist) nearest = contact;
+  }
+  return nearest;
+}
+
 /** px — how far from a road's centreline its name still applies. */
 export const NAME_WIDTH_SLACK = 20;
 

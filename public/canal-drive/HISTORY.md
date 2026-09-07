@@ -28,6 +28,16 @@ now split the span at the actual centreline projection, so the route reaches
 the intersection before turning. A named Westermarkt-style regression keeps
 the connector on the two source centrelines. The 42° chase camera is unchanged.
 
+## Active street highlights start under the rider — 2026-09-07
+
+Road-name detection remains heading-aware at junctions, but the answer overlay
+no longer reapplies that heading preference when choosing among parallel
+same-name OSM spans. On a bend, the old second selection could prefer a
+slightly straighter line beside the rider and make the blue answer look offset
+from the visible road. Once the quiz name has settled, its overlay now starts
+from the closest span carrying that exact name; the connected-run rule still
+controls how its end-to-end fragments are stitched.
+
 ## Let the basemap name the shops — 2026-09-07
 
 AH was visible because it had a bespoke icon layer; the other 1,944 extracted
