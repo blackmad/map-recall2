@@ -17,6 +17,26 @@ the basemap remains as the empty-city fallback until a real tile lands, then no
 later layer sync may resurrect it. The browser regression deliberately runs
 that later sync after loading tiles.
 
+## Bridge-named bike routes ask about the bridge — 2026-09-07
+
+Amsterdam's routing extract includes 77 named bridges as rideable ways. The
+generic route quiz called every one a street, so an answer such as “Blauwbrug”
+could appear under “Which street are you on?” Bike route questions now
+cross-check the loaded bridge catalog, ask “Which bridge are you on?”, offer
+bridge distractors, and file the answer as bridge knowledge. The Blauwbrug
+overlap is the named regression.
+
+## Active street overlay is one centreline — 2026-09-07
+
+The active street highlight now uses one MapLibre line layer instead of a
+casing/glow/line stack. The stacked strokes were visually read as multiple
+parallel street lines when a named feature contained several connected OSM
+segments, even though those segments had already been stitched into one
+geometry. The stitched geometry remains intact; only the presentation is
+reduced to one unambiguous centreline. A deterministic, offline MapLibre
+Storybook workbench now exercises single, connected, duplicate/reversed, and
+genuinely disconnected segment fixtures at a fixed oblique camera angle.
+
 ## Start from GPS (Here) — 2026-09-07
 
 Home geocode is a saved address, not live location. Route strip now has

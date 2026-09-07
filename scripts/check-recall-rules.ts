@@ -9,6 +9,7 @@ import {
   advanceRouteQuiz,
   bridgeGate,
   crossingQuestionKind,
+  findBridgeRouteAt,
   findCrossedBridge,
   headingOffRoad,
   isPlaceKnown,
@@ -182,6 +183,24 @@ check('distractors are deduplicated, never the answer, and capped', () => {
     'the right answer, blanks and duplicates never become wrong answers');
   assert.deepEqual(pickDistractors(['Amstel'], 'Amstel', 3, noShuffle), [],
     'a pool of nothing but the answer offers no alternatives');
+});
+
+check('Blauwbrug is described as a bridge when it is the routed way under the bike', () => {
+  const namedDeck = { id: 'blauwbrug', name: 'Blauwbrug', lines: [deck] };
+  assert.equal(
+    findBridgeRouteAt([namedDeck], 'Blauwbrug', { x: 8, y: 40 }, 10)?.id,
+    'blauwbrug',
+  );
+  assert.equal(
+    findBridgeRouteAt([namedDeck], 'Amstelstraat', { x: 8, y: 40 }, 10),
+    null,
+    'a nearby bridge with another name does not change a street question',
+  );
+  assert.equal(
+    findBridgeRouteAt([namedDeck], 'Blauwbrug', { x: 8, y: 140 }, 10),
+    null,
+    'the same route name away from the deck is still described as a street',
+  );
 });
 
 // ---- Settling on a question ----
