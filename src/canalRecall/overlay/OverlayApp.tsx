@@ -2,6 +2,8 @@ import { useEffect, useSyncExternalStore, type FormEvent, type ReactNode } from 
 import {
   BIKE_SKINS,
   BIKE_SKIN_IDS,
+  CAMERA_TILT_MAX,
+  CAMERA_TILT_MIN,
   playableCities,
   type CanalPreferences,
   type ZoomClamp,
@@ -558,17 +560,30 @@ export function OverlayApp({
             <option value="cockpit">3D — cockpit (low / bumper)</option>
           </Field>
           {(prefs.viewMode === 'chase' || prefs.viewMode === 'cockpit') ? (
-            <label className="setup-field">3D TILT ([ / ])
-              <input
-                id="live-tilt"
-                type="range"
-                min="-18"
-                max="18"
-                step="1"
-                value={prefs.cameraTilt}
-                onChange={event => patch({ cameraTilt: Number(event.target.value) }, true)}
-              />
-            </label>
+            <>
+              <label className="setup-field">3D TILT ([ / ])
+                <input
+                  id="live-tilt"
+                  type="range"
+                  min={CAMERA_TILT_MIN}
+                  max={CAMERA_TILT_MAX}
+                  step="1"
+                  value={prefs.cameraTilt}
+                  onChange={event => patch({ cameraTilt: Number(event.target.value) }, true)}
+                />
+              </label>
+              <label className="setup-field">3D SPIN (SHIFT + [ / ])
+                <input
+                  id="live-bearing"
+                  type="range"
+                  min="-180"
+                  max="180"
+                  step="5"
+                  value={prefs.cameraBearing}
+                  onChange={event => patch({ cameraBearing: Number(event.target.value) }, true)}
+                />
+              </label>
+            </>
           ) : null}
           {prefs.travelMode === 'car' ? (
             <>

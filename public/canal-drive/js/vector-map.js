@@ -239,7 +239,10 @@ class VectorBasemap {
 
   setCameraTilt(degrees) {
     const value = Number(degrees);
-    this._cameraTilt = Number.isFinite(value) ? Math.max(-18, Math.min(18, value)) : 0;
+    const prefs = window.CanalRecallPreferences;
+    const min = prefs && Number.isFinite(prefs.CAMERA_TILT_MIN) ? prefs.CAMERA_TILT_MIN : -36;
+    const max = prefs && Number.isFinite(prefs.CAMERA_TILT_MAX) ? prefs.CAMERA_TILT_MAX : 36;
+    this._cameraTilt = Number.isFinite(value) ? Math.max(min, Math.min(max, value)) : 0;
   }
 
   pitchForViewMode(viewMode) {

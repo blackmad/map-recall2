@@ -93,8 +93,12 @@ export {
 export const PREFERENCES_STORAGE_KEY = 'canalRecall.preferences.v1';
 export const ZOOM_DEFAULT_VERSION = 2 as const;
 /** Degrees of extra pitch the live tilt slider may add or subtract. */
-export const CAMERA_TILT_MIN = -18;
-export const CAMERA_TILT_MAX = 18;
+export const CAMERA_TILT_MIN = -36;
+export const CAMERA_TILT_MAX = 36;
+/** Degrees moved by each keyboard tilt nudge. */
+export const CAMERA_TILT_KEY_STEP = 6;
+/** Degrees moved by each Shift+[ / Shift+] orbit nudge. */
+export const CAMERA_BEARING_KEY_STEP = 15;
 /** Pre-v2 default; saved `0.65` without a version flag is migrated to the new default. */
 export const LEGACY_ZOOM_DEFAULT = 0.65;
 
@@ -142,6 +146,8 @@ export interface CanalPreferences {
    * Chase/cockpit use this as a live tilt control; 2D modes ignore it.
    */
   cameraTilt: number;
+  /** Orbit angle around the vehicle in chase/cockpit view, in degrees. */
+  cameraBearing: number;
 }
 
 export interface ZoomClamp {
@@ -175,6 +181,7 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     zoom: zoom.defaultZoom,
     zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
     cameraTilt: 0,
+    cameraBearing: 0,
   };
 }
 
@@ -195,6 +202,11 @@ function clampZoom(value: number, zoom: ZoomClamp): number {
 function clampTilt(value: unknown, fallback: number): number {
   if (typeof value !== 'number' || !Number.isFinite(value)) return fallback;
   return Math.min(CAMERA_TILT_MAX, Math.max(CAMERA_TILT_MIN, value));
+}
+
+function wrapBearing(value: unknown, fallback: number): number {
+  if (typeof value !== 'number' || !Number.isFinite(value)) return fallback;
+  return ((value + 180) % 360 + 360) % 360 - 180;
 }
 
 function parseZoom(raw: Record<string, unknown>, zoom: ZoomClamp): number {
@@ -237,6 +249,7 @@ function fillPreferences(
     zoom: parseZoom(source, zoom),
     zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
     cameraTilt: clampTilt(source.cameraTilt, base.cameraTilt),
+    cameraBearing: wrapBearing(source.cameraBearing, base.cameraBearing),
   };
 }
 

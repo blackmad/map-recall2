@@ -39,7 +39,13 @@ const memory = () => {
   const prefs = parsePreferences({ cameraTilt: 12 }, zoom);
   assert.equal(prefs.cameraTilt, 12);
   const clamped = parsePreferences({ cameraTilt: 99 }, zoom);
-  assert.equal(clamped.cameraTilt, 18);
+  assert.equal(clamped.cameraTilt, 36);
+}
+
+{
+  const prefs = parsePreferences({ cameraBearing: 225 }, zoom);
+  assert.equal(prefs.cameraBearing, -135);
+  assert.equal(parsePreferences({ cameraBearing: Number.NaN }, zoom).cameraBearing, 0);
 }
 
 {
