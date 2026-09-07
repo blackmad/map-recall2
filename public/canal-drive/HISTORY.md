@@ -6,6 +6,16 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## 3D camera tilt and orbit controls — 2026-09-07
+
+The `[` / `]` camera controls stopped at ±18° and moved only 3° per press, so
+their adjustment remained subtle even at the limit. Chase and cockpit views now
+allow ±36° of extra pitch and move 6° per keypress. The settings slider shares
+the same exported bounds, keeping keyboard, saved preferences, and live UI in
+sync. Shift + `[` / `]` now orbits the camera around the vehicle in 15° steps,
+and a labeled 3D spin slider makes the same control discoverable on touch
+devices. The chosen angle is saved with the other camera preferences.
+
 ## Streamed buildings keep sole ownership — 2026-09-07
 
 The LoD1 tile stream hid OpenFreeMap's duplicate `building-3d` extrusion when

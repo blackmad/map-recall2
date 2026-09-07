@@ -10,6 +10,7 @@ class Camera {
     this.maxZoom = CAMERA_ZOOM_MAX;
     this.northUp = true;
     this.rotation = 0;
+    this.bearingOffset = 0;
     this.viewMode = 'north';
     this.projector = null;
     this.panX = 0;
@@ -41,7 +42,10 @@ class Camera {
     this.panY = this.detached ? this.y - target.y : 0;
     // A panned map holds still: rotating it under the vehicle's heading while
     // the player is looking somewhere else is disorienting.
-    const wantedRotation = this.detached ? this.rotation : (this.northUp ? 0 : target.angle + Math.PI / 2);
+    const is3d = this.viewMode === 'chase' || this.viewMode === 'cockpit';
+    const wantedRotation = this.detached
+      ? this.rotation
+      : (this.northUp ? 0 : target.angle + Math.PI / 2) + (is3d ? this.bearingOffset : 0);
     const delta = Math.atan2(Math.sin(wantedRotation - this.rotation), Math.cos(wantedRotation - this.rotation));
     const rotationRate = this.reducedMotion ? CAMERA_REDUCED_ROTATION_SMOOTHING : CAMERA_ROTATION_SMOOTHING;
     this.rotation += delta * Math.min(1, this.smoothing * rotationRate);
