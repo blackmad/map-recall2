@@ -764,8 +764,12 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
 }
 .knowledge-item-due svg { width: 14px; height: 14px; color: var(--enamel-muted); }
 .knowledge-item-history { grid-column: 3 / 5; margin-top: -12px; text-align: right; }
-.knowledge-practice {
+.knowledge-item-actions {
   grid-column: 5; grid-row: 1 / 3;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.knowledge-practice,
+.knowledge-forget {
   min-height: 34px; padding: 0 10px;
   border: 1px solid rgba(255,255,255,.28);
   border-radius: 5px;
@@ -784,6 +788,18 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   color: var(--enamel-copper-hi);
   border-color: rgba(215,137,69,.32);
   cursor: default;
+}
+/* Destructive, so quieter than practice until pointed at. */
+.knowledge-forget {
+  min-height: 26px;
+  color: var(--enamel-muted);
+  border-color: rgba(255,255,255,.16);
+  background: transparent;
+}
+.knowledge-forget:hover {
+  color: var(--enamel-ink);
+  border-color: rgba(215,137,69,.7);
+  background: rgba(215,137,69,.12);
 }
 .knowledge-no-results {
   display: grid; place-content: center;
@@ -915,10 +931,9 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   .knowledge-mastery { grid-column: 2 / 3; width: 92px; }
   .knowledge-item-due { grid-column: 3; grid-row: 1; }
   .knowledge-item-history { grid-column: 2; margin: 0; text-align: left; }
-  .knowledge-practice {
-    grid-column: 3; grid-row: 2 / 4;
-    min-height: 40px; padding: 0 9px;
-  }
+  .knowledge-item-actions { grid-column: 3; grid-row: 2 / 4; }
+  .knowledge-practice { min-height: 40px; padding: 0 9px; }
+  .knowledge-forget { min-height: 32px; padding: 0 9px; }
   .knowledge-context { margin-top: 28px; gap: 24px; }
   .knowledge-activity { height: 92px; }
   .knowledge-explainer { margin-top: 0 !important; }
@@ -1126,9 +1141,9 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
 <script src="js/city-overview.bundle.js"></script>
 <script src="js/preferences.bundle.js?v=20260907a"></script>
 <script src="js/transit.bundle.js"></script>
-<script src="js/overlay.bundle.js?v=20260908a"></script>
+<script src="js/overlay.bundle.js?v=20260908b"></script>
 <script src="js/game-landmarks.bundle.js?v=20260903c"></script>
-<script src="js/game-recall.bundle.js?v=20260907a"></script>
+<script src="js/game-recall.bundle.js?v=20260908b"></script>
 <script src="js/game-route.js?v=20260907a"></script>
 <script src="js/game-presentation.bundle.js?v=20260907a"></script>
 <script src="js/game.js"></script>

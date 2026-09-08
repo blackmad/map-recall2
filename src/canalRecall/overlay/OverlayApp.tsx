@@ -33,6 +33,8 @@ export interface OverlayCallbacks {
   onClearKnowledge: () => void;
   onClearAllData: () => void;
   onPracticeAgain: (itemKey: string) => void;
+  /** Hard reset one named item after the host confirms with the player. */
+  onForgetItem: (itemKey: string, name: string) => void;
   onSkipMastered: (enabled: boolean) => void;
   onCloseSettings: () => void;
   /** Leave the current ride and reopen route setup. */
@@ -300,12 +302,14 @@ function KnowledgeReviewScreen({
   onClose,
   onPlanReview,
   onPracticeAgain,
+  onForgetItem,
 }: {
   review: KnowledgeReview;
   now: number;
   onClose: () => void;
   onPlanReview: () => void;
   onPracticeAgain: (itemKey: string) => void;
+  onForgetItem: (itemKey: string, name: string) => void;
 }) {
   const [filter, setFilter] = useState<KnowledgeFilter>(review.due ? 'due' : 'all');
   const [query, setQuery] = useState('');
@@ -415,17 +419,26 @@ function KnowledgeReviewScreen({
                   <div className="knowledge-item-history">
                     {item.repetitions} successful · {item.lapses} {item.lapses === 1 ? 'lapse' : 'lapses'}
                   </div>
-                  <button
-                    type="button"
-                    className="knowledge-practice"
-                    disabled={item.status === 'due'}
-                    onClick={() => {
-                      setFilter('due');
-                      onPracticeAgain(item.key);
-                    }}
-                  >
-                    {item.status === 'due' ? 'Queued' : 'Practice again'}
-                  </button>
+                  <div className="knowledge-item-actions">
+                    <button
+                      type="button"
+                      className="knowledge-practice"
+                      disabled={item.status === 'due'}
+                      onClick={() => {
+                        setFilter('due');
+                        onPracticeAgain(item.key);
+                      }}
+                    >
+                      {item.status === 'due' ? 'Queued' : 'Practice again'}
+                    </button>
+                    <button
+                      type="button"
+                      className="knowledge-forget"
+                      onClick={() => onForgetItem(item.key, item.name)}
+                    >
+                      Forget
+                    </button>
+                  </div>
                 </article>
               )) : (
                 <div className="knowledge-no-results">
@@ -514,6 +527,10 @@ export function OverlayApp({
   };
   const practiceAgain = (itemKey: string) => {
     callbacks.onPracticeAgain(itemKey);
+    setKnowledgeRefresh(value => value + 1);
+  };
+  const forgetItem = (itemKey: string, name: string) => {
+    callbacks.onForgetItem(itemKey, name);
     setKnowledgeRefresh(value => value + 1);
   };
 
@@ -780,6 +797,7 @@ export function OverlayApp({
           onClose={() => store.setKnowledgeOpen(false)}
           onPlanReview={planReview}
           onPracticeAgain={practiceAgain}
+          onForgetItem={forgetItem}
         />
       ) : null}
       <div id="settings-panel" className="utility-panel enamel-utility" style={{ display: state.settingsOpen ? 'flex' : 'none' }}>

@@ -456,6 +456,17 @@
           recall.queueForPractice(itemKey);
           this._refreshMasteredLabels();
         };
+        overlay.callbacks.onForgetItem = (itemKey, name) => {
+          const cloud = recall.signedIn ? ", here and in your signed-in cloud copy" : "";
+          const ok = window.confirm(
+            `Forget ${name}${cloud}?
+
+Its review history starts over as if you had never answered it. This cannot be undone.`
+          );
+          if (!ok) return;
+          recall.forgetItem(itemKey);
+          this._refreshMasteredLabels();
+        };
         overlay.callbacks.onAccountClick = async () => {
           overlay.store.setAccount({ busy: true });
           try {

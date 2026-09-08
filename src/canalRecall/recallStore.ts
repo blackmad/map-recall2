@@ -363,6 +363,43 @@ class RecallStore {
   }
 
   /**
+   * Erase every place-local chunk of one named item — locally always, and in
+   * the signed-in cloud copy too — so the next encounter schedules it like a
+   * brand-new name. Unlike queueForPractice this is a hard reset: repetitions,
+   * ease, and lapses go with the states. The review-event log stays, because
+   * those reviews really happened and forgetting a street should not rewrite
+   * recall-rate or activity history.
+   */
+  forgetItem(itemKey: string): number {
+    const forgotten: ReviewState[] = [];
+    for (const [key, state] of Object.entries(this.states)) {
+      if (!belongsToKnowledgeItem(state, itemKey)) continue;
+      forgotten.push(state);
+      delete this.states[key];
+    }
+    if (forgotten.length > 0) {
+      write(STATES_KEY, this.states);
+      if (this.uid && this.db) void this.deleteFromCloud(forgotten);
+    }
+    return forgotten.length;
+  }
+
+  /** Cloud half of forgetItem. Without it, the next pull() merges the states
+   *  straight back, undoing the forget on every reload. */
+  private async deleteFromCloud(states: readonly ReviewState[]): Promise<void> {
+    try {
+      const { doc, writeBatch } = await import('firebase/firestore');
+      const batch = writeBatch(this.db!);
+      for (const state of states) {
+        batch.delete(doc(this.db!, 'users', this.uid!, 'reviewStates', stateId(state)));
+      }
+      await batch.commit();
+    } catch (reason) {
+      console.warn('Could not forget cloud recall progress:', reason);
+    }
+  }
+
+  /**
    * Record an answer against the *place* it was given, so one correct answer on
    * the Overtoom by the Vondelpark does not retire the whole street. Snapping
    * happens here rather than at the call sites so a recorded centre and the
