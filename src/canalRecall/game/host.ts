@@ -170,6 +170,9 @@ export interface RecallStore extends AnswerRecallStore {
   homeMasterySamples?(cityId: string): Array<{ lat: number; lng: number; mastery: number }>;
   /** Makes every place-local chunk for one named item due without logging a quiz result. */
   queueForPractice(itemKey: string): number;
+  /** Erases every place-local chunk for one named item (local and cloud) so it
+   *  schedules like a brand-new name; returns how many chunks were removed. */
+  forgetItem(itemKey: string): number;
   isKnownHere(feature: RecallFeature): boolean;
   isSuppressedHere(feature: RecallFeature): boolean;
   /** Wipes local and signed-in review memory; returns how many were cleared. */

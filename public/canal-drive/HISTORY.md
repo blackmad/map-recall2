@@ -6,6 +6,19 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## The knowledge screen can forget a name entirely — 2026-09-08
+
+**Practice again** (below) intentionally keeps mastery and only makes chunks
+due; a player who wants a genuinely clean slate for one street had no control
+short of **Reset knowledge…** wiping everything. Each row now also has a
+quieter **Forget** button: after a `window.confirm` (the same pattern as the
+global resets), `RecallStore.forgetItem` erases every place-local chunk of
+that city/type/name — locally and, when signed in, the matching Firestore
+`reviewStates` docs, because otherwise the next `pull()` would merge them
+straight back. The review-event log is kept: those reviews happened, and a
+forget should not rewrite recall-rate or activity history. Pinned by
+`test:recall-forget` (in `check:canal`).
+
 ## City knowledge has a dedicated review screen — 2026-09-08
 
 The setup account row now opens a full knowledge review view built from the
