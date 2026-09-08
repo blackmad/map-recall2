@@ -18,7 +18,11 @@ enabled; choosing a location-honest route near overdue names remains a separate
 routing task rather than pretending the current route already covers them.
 Each non-due row also has **Practice again**, which makes all of that name's
 place-local chunks due immediately without inventing a wrong answer or changing
-recall-rate statistics.
+recall-rate statistics. That session ended abruptly after the commit, so the
+store half shipped untested; `test:recall-practice` (in `check:canal`) now pins
+it: matching chunks go due and stop reading as known, already-due chunks,
+other names, and non-name modes are untouched, no review event is invented,
+and the review screen's diacritic-folded item key matches the store's.
 
 ## “No idea” no longer produces a mastery wink — 2026-09-07
 
