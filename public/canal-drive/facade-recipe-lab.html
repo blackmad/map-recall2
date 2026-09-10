@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Façade workshop · Amsterdam</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
+<script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+<script src="js/three.bundle.js"></script><script src="js/facade-recipe.bundle.js"></script>
+<script src="js/building-tiles.bundle.js"></script>
+<style>
+  :root { color-scheme:light; --paper:#f5f2eb; --ink:#273630; --muted:#667267; --line:#d2d5ca; --accent:#246652; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--paper); color:var(--ink); font:14px/1.5 system-ui,sans-serif; }
+  header { display:flex; align-items:center; gap:24px; padding:18px 24px; border-bottom:1px solid var(--line); }
+  header p { margin:0; color:var(--muted); } h1 { margin:0; font:600 26px/1.2 Georgia,serif; } a { color:var(--accent); }
+  header a { margin-left:auto; } main { padding:20px 24px 32px; max-width:1700px; margin:auto; }
+  .bar { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }
+  label { display:flex; align-items:center; gap:7px; } input,select,button { font:inherit; border:1px solid var(--line); border-radius:5px; background:#fffefa; color:var(--ink); padding:7px 10px; }
+  button { cursor:pointer; } button:hover { border-color:var(--accent); } button[aria-pressed=true],button.primary { background:var(--accent); color:white; }
+  input[type=number] { width:88px; } input[type=color] { padding:3px; height:36px; width:45px; }
+  .notice { background:#fff0d1; padding:10px 14px; margin-bottom:16px; }
+  .views { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .panel { border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#fffefa; min-width:0; }
+  .panel-head { padding:10px 14px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); }
+  .panel-head span { color:var(--muted); font-size:12px; } .viewport { position:relative; height:430px; }
+  canvas#diagnostic { display:block; width:100%; height:100%; } #map { position:absolute; inset:0; }
+  #map-note { position:absolute; bottom:34px; left:12px; right:12px; background:#fffefaeF; padding:9px 12px; font-size:12px; pointer-events:none; }
+  #synthetic-note { position:absolute; inset:0; display:grid; place-content:center; padding:35px; background:#e9e6dd; color:var(--muted); text-align:center; z-index:3; }
+  #synthetic-note[hidden] { display:none; } .lower { display:grid; grid-template-columns:1.2fr 1fr; gap:16px; margin-top:16px; }
+  .body { padding:14px; } table { width:100%; border-collapse:collapse; font-size:12px; } td,th { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-weight:500; } code { font-size:11px; overflow-wrap:anywhere; } #error { min-height:24px; color:#a63225; font-weight:600; }
+  .small { font-size:12px; color:var(--muted); } #stats { margin-left:auto; } textarea { width:100%; height:230px; font:12px/1.4 monospace; border:1px solid var(--line); }
+  details { margin-top:12px; } summary { cursor:pointer; } #pick { min-height:30px; padding:8px 14px; color:var(--muted); font-size:12px; }
+  #map-controls { margin:0; padding:10px 14px; } .footprint { width:100%; height:135px; background:#f5f2eb; }
+  @media(max-width:850px) { .views,.lower { grid-template-columns:1fr; } header { align-items:flex-start; gap:12px; flex-wrap:wrap; } header p { font-size:12px; } main { padding:14px; } .viewport { height:330px; } #stats { margin-left:0; } }
+</style>
+</head>
+<body>
+<header><div><h1>Façade workshop</h1><p>Renderer demo · authored examples, not extracted buildings.</p></div><a href="facade-photo-lab.html">Photo → extraction → render ↗</a><a href="facade-registration-review/index.html">Registration desk ↗</a></header>
+<main>
+  <div class="bar"><label>Building <select id="fixture" aria-label="Building fixture"></select></label><label>Wall top <input id="height" type="number" min="1" max="40" step="0.1"> m</label><label>Wall colour <input type="color" id="colour"></label><span id="stats" class="small">Compiling…</span></div>
+  <div class="bar"><label>Wall finish <select id="material"><option value="flat">Flat palette</option><option value="procedural-brick">Procedural running bond</option><option value="ambientcg-Bricks057">ambientCG · Bricks057</option></select></label><label>Windows <select id="window-style"><option value="plain">Plain</option><option value="sash-6">Six-pane sash</option><option value="sash-8">Eight-pane sash</option><option value="cross">Cross-mullioned</option></select></label><label>Cornice <select id="cornice"><option value="none">None</option><option value="simple">Simple white band</option><option value="moulded">Moulded white cornice</option></select></label><label><input id="gable-trim" type="checkbox">White gable edging</label></div>
+  <div id="material-credit" class="small" style="margin-bottom:10px">Material and window choices are authored examples.</div>
+  <div class="notice" id="evidence-note">Diagnostic preview only. These recipes do not certify building identity or image registration.</div>
+  <div class="views">
+    <section class="panel"><div class="panel-head"><b>Recipe → mesh</b><span>Flat, unlit palette</span></div>
+      <div class="bar" style="padding:10px 14px;margin:0"><select id="view" aria-label="Diagnostic view"><option value="facade">Orthographic façade</option><option value="orbit">Three-quarter view</option><option value="roof">Courtyard / roof</option></select><select id="mode" aria-label="Diagnostic render mode"><option value="palette">Palette</option><option value="surfaces">Surface classes</option><option value="identity">Building ID</option></select><button id="save-image">Save PNG</button></div>
+      <div class="viewport"><canvas id="diagnostic" aria-label="Compiled facade diagnostic"></canvas></div><div id="pick">Click the mesh to inspect its building, surface and opening IDs.</div>
+    </section>
+    <section class="panel"><div class="panel-head"><b>Amsterdam map</b><span>Full city remains the fallback</span></div>
+      <div class="bar" id="map-controls"><button id="preview" aria-pressed="true">Show proposal</button><button id="evict">Evict mesh</button><button id="reload">Reload mesh</button><button id="fail">Simulate load failure</button></div>
+      <div class="viewport"><div id="map"></div><div id="map-note">Loading city context…</div><div id="synthetic-note" hidden>Synthetic fixture.<br>Inspect its geometry on the left; it is never placed over a real building.</div></div>
+      <div class="small" style="padding:8px 14px">Drag / zoom / tilt to inspect the proposal among its neighbours.</div>
+    </section>
+  </div>
+  <details id="source-evidence"><summary>Source photo and evidence · no photo-derived features in this demo</summary><section class="panel" style="margin-top:12px"><div class="body"><p id="source-status">Loading available source evidence…</p><div id="source-links"></div><a id="photo-link" target="_blank" rel="noopener"></a><p class="small" id="source-metadata"></p></div></section></details>
+  <div class="lower">
+    <section class="panel"><div class="panel-head"><b>Edit an opening</b><span>Metres in the selected wall's frame</span></div><div class="body">
+      <div class="bar"><label>Opening <select id="opening"></select></label><label>Left <input id="left" type="number" step="0.05"></label><label>Bottom <input id="bottom" type="number" step="0.05"></label><label>Width <input id="width" type="number" step="0.05"></label><label>Height <input id="opening-height" type="number" step="0.05"></label><button id="apply-opening" class="primary">Apply</button></div>
+      <div id="error" role="status"></div><div class="small">Invalid changes keep the last compiled mesh. Openings do not alter driving collision.</div>
+      <details><summary>Recipe JSON · import / export</summary><textarea id="recipe-json" aria-label="Recipe JSON"></textarea><div class="bar"><button id="apply-json">Compile JSON</button><button id="export">Export recipe + mesh</button><button id="reset">Reset fixture</button></div></details>
+    </div></section>
+    <section class="panel"><div class="panel-head"><b>Evidence and geometry</b><span id="dimensions"></span></div><div class="body"><table><tbody id="fields"></tbody></table><canvas id="footprint" class="footprint" aria-label="Footprint with courtyard and passage preserved"></canvas><div class="small" id="lineage"></div></div></section>
+  </div>
+</main>
+<script>
+(async () => {
+  const api = window.CanalRecallRecipe, $ = id => document.getElementById(id);
+  const originals = await api.recipeDevelopmentFixtures();
+  let selected = 0, recipe, asset, renderRevision = 0, mapLayer = null, streamer = null, mapReady = false, proposalEnabled = true, failure = null;
+  let replacementAliases = [], sourceFixtures = null;
+  const diagnostic = new api.RecipeDiagnosticView($('diagnostic'));
+  fetch('facade-registration-review/local/fixtures.json').then(r=>r.ok?r.json():null).then(p=>{sourceFixtures=p?.fixtures??[];updateSource();}).catch(()=>{sourceFixtures=[];updateSource();});
+  originals.forEach((r, i) => $('fixture').add(new Option(r.label, String(i))));
+  const real = originals[0], firstWall = wallFor(real);
+  const map = new maplibregl.Map({ container:'map', style:'https://tiles.openfreemap.org/styles/liberty',
+    center:api.rdToLngLat(firstWall.midpoint), zoom:19, pitch:65, maxPitch:75, bearing:firstWall.facingDeg + 180, attributionControl:true, fadeDuration:0 });
+  function wallFor(r) {
+    const e = r.elevations[0];
+    return api.buildElevations(r.footprint.value[e.polygonIndex].outer, { pandId:r.buildingId.replace(/^bag:/,'') }).find(w => w.elevationId === e.elevationId);
+  }
+  function syncSuppression(shown) {
+    replacementAliases = shown ? shown.aliases.filter(id => id === `NL.IMBAG.Pand.${shown.buildingId.slice(4)}`) : [];
+    if (map.getStyle() && map.getLayer('recipe-city-walls')) map.setFilter('recipe-city-walls', replacementAliases.length ? ['!', ['in', ['get','id'], ['literal', replacementAliases]]] : null);
+    updateMapNote();
+  }
+  function updateMapNote() {
+    const state = streamer?.status(), s = mapLayer?.status();
+    $('map-note').textContent = `${state?.tiles ?? 0} city tiles · ${s?.shown ? 'authored proposal drawn; exact BAG fallback hidden' : 'fallback visible'}${failure ? ' · ' + failure : ''}`;
+  }
+  map.on('load', async () => {
+    mapReady = true;
+    map.addSource('recipe-city', { type:'geojson', data:{type:'FeatureCollection',features:[]}, promoteId:'id' });
+    map.addLayer({id:'recipe-city-walls',type:'fill-extrusion',source:'recipe-city',paint:{'fill-extrusion-color':'#b6b4ac','fill-extrusion-base':['coalesce',['get','minHeight'],0], 'fill-extrusion-height':['coalesce',['get','height'],9], 'fill-extrusion-opacity':1}});
+    mapLayer = new api.RecipeMapLayer(map, maplibregl, { onVisibility:syncSuppression, groundReferenceNapM:0 });
+    if (asset?.buildingId.startsWith('bag:')) mapLayer.setAsset(asset, $('mode').value);
+    streamer = new window.CanalRecallBuildingTiles.BuildingTileStreamer(map,'recipe-city','../data/extracts/amsterdam');
+    try {
+      if (!await streamer.probe()) throw new Error('City tile index unavailable');
+      streamer.attach(() => { if(map.getLayer('building-3d')) map.setLayoutProperty('building-3d','visibility','none'); }, updateMapNote);
+      streamer.followCamera();
+    } catch(error) { failure = String(error); updateMapNote(); }
+  });
+  map.on('moveend',()=> { streamer?.followCamera(); updateMapNote(); });
+  map.on('idle',updateMapNote);
+  function footprint() {
+    const canvas = $('footprint'), c = canvas.getContext('2d'); canvas.width=600;canvas.height=135;
+    c.clearRect(0,0,600,135);
+    const polygons=recipe.footprint.value, points=polygons.flatMap(p=>p.outer);
+    const minX=Math.min(...points.map(p=>p.x)),maxX=Math.max(...points.map(p=>p.x)),minY=Math.min(...points.map(p=>p.y)),maxY=Math.max(...points.map(p=>p.y));
+    const scale=Math.min(560/(maxX-minX),105/(maxY-minY)),x=p=>300+(p.x-(minX+maxX)/2)*scale,y=p=>67-(p.y-(minY+maxY)/2)*scale;
+    for(const p of polygons){c.beginPath();for(const ring of [p.outer,...p.holes]){ring.forEach((p,i)=>i?c.lineTo(x(p),y(p)):c.moveTo(x(p),y(p)));c.closePath();}c.fillStyle='#bcc8bc';c.fill('evenodd');c.strokeStyle='#6b7d6a';c.lineWidth=1;c.stroke();}
+    const w=wallFor(recipe); c.beginPath();c.moveTo(x(w.start),y(w.start));c.lineTo(x(w.end),y(w.end));c.lineWidth=3;c.strokeStyle='#246652';c.stroke();
+  }
+  function openingForm() {
+    const o=recipe.elevations[0].openings.value.find(o=>o.id===$('opening').value);
+    for(const [id,key] of [['left','leftM'],['bottom','bottomM'],['width','widthM'],['opening-height','heightM']]) $(id).value=o ? Number(o[key].toFixed(3)) : '';
+    $('apply-opening').disabled=!o;
+  }
+  function updateSource() {
+    if(!recipe)return;
+    const f=sourceFixtures?.find(f=>`bag:${f.pandId}`===recipe.buildingId);
+    $('photo-link').replaceChildren();$('photo-link').removeAttribute('href');$('source-links').replaceChildren();$('source-metadata').textContent='';
+    $('source-status').textContent='The openings, height, materials and window styles here were authored to exercise the renderer. No photo was used to extract them.';
+    if(!recipe.buildingId.startsWith('bag:'))return;
+    const link=document.createElement('a');link.href='facade-registration-review/index.html';link.textContent='Open the registration desk';$('source-links').append(link);
+    if(f?.panorama){
+      const p=f.panorama, url=p.localImageUrl?`facade-registration-review/${p.localImageUrl}`:p.imageUrl;
+      const photo=document.createElement('img');photo.src=url;photo.alt='Candidate full panorama; not used to generate the authored recipe';
+      photo.style.cssText='width:100%;max-height:420px;object-fit:contain;background:#18221e';
+      photo.onerror=()=>{photo.remove();$('source-status').textContent+=' The cached panorama could not be loaded.';};
+      $('photo-link').append(photo);$('photo-link').href=url;
+      $('source-metadata').textContent=`Candidate panorama ${p.panoramaId} · ${p.capturedAt} · ${f.anchors?.length??0} anchors · ${f.reviewPasses?.length??0} review decisions · source ${f.sourceVersion?.sha256??'unversioned'}. This is context for future registration, not evidence for the displayed openings. © Gemeente Amsterdam, CC BY 4.0. Click for native resolution.`;
+    }else $('source-metadata').textContent='No local panorama is available for this fixture. No extracted appearance evidence is attached.';
+  }
+  function updateUi() {
+    $('height').value=recipe.wallTopM.value; $('colour').value=recipe.palette.value.wall;
+    $('material').value=recipe.detailing.value.wallMaterial;$('window-style').value=recipe.detailing.value.windowStyle;
+    $('cornice').value=recipe.detailing.value.cornice;$('gable-trim').checked=recipe.detailing.value.gableTrim;
+    $('material-credit').replaceChildren();
+    if(recipe.detailing.value.wallMaterial==='ambientcg-Bricks057'){
+      const link=document.createElement('a');link.href='https://ambientcg.com/a/Bricks057';link.textContent='ambientCG Bricks057 · CC0';link.target='_blank';link.rel='noopener';$('material-credit').append(link,' · 1.05 × 1.05 m tile; original 1K colour map.');
+    }else $('material-credit').textContent=recipe.detailing.value.wallMaterial==='procedural-brick'?'Procedural running bond · 22 × 6.5 cm bricks, 1 cm mortar. Authored material choice.':'Flat unlit palette · no surface texture.';
+    const previous=$('opening').value; $('opening').replaceChildren();
+    recipe.elevations[0].openings.value.forEach(o=>$('opening').add(new Option(o.id,o.id)));
+    if([...$('opening').options].some(o=>o.value===previous)) $('opening').value=previous;
+    openingForm();
+    const wall=wallFor(recipe);
+    $('dimensions').textContent=`${wall.lengthM.toFixed(2)} m selected wall · ${recipe.footprint.value.length} part(s)`;
+    $('stats').textContent=`${asset.triangleCount} triangles · ${asset.meshes.length} mesh draws · ${recipe.elevations[0].openings.value.length} openings`;
+    $('evidence-note').textContent=recipe.buildingId.startsWith('bag:') ? 'Real BAG footprint. Height, openings and palette are authored or inferred; appearance and image registration are unaccepted.' : 'Synthetic compiler fixture. This shape tests geometry; it represents no real Amsterdam building.';
+    $('synthetic-note').hidden=recipe.buildingId.startsWith('bag:');
+    $('fields').replaceChildren();
+    for(const [name,f] of [['Footprint',recipe.footprint],['Ground / NAP',recipe.groundNapM],['Wall top',recipe.wallTopM],['Openings',recipe.elevations[0].openings],['Palette',recipe.palette]]) {
+      const row=document.createElement('tr'); for(const text of [name,f.basis,f.state]){const td=document.createElement('td');td.textContent=text;row.append(td);} $('fields').append(row);
+    }
+    $('lineage').textContent=`${asset.buildingId} · recipe ${asset.recipeHash.slice(0,16)} · mesh ${asset.meshHash.slice(0,16)} · ${asset.origin.crs} / ${asset.origin.verticalDatum}`;
+    $('recipe-json').value=JSON.stringify(recipe,null,2); footprint();updateSource();
+  }
+  async function rebuild(next, { reframe=false }={}) {
+    const revision=++renderRevision;
+    try {
+      const compiled=await api.compile(next);
+      if(next.detailing.value.wallMaterial==='ambientcg-Bricks057')await api.loadMaterialAssets();
+      if(revision!==renderRevision)return;
+      recipe=structuredClone(next); asset=compiled; failure=null;
+      diagnostic.setAsset(asset,recipe,$('view').value,$('mode').value);
+      if(mapLayer){if(asset.buildingId.startsWith('bag:')){mapLayer.setAsset(asset,$('mode').value);mapLayer.setEnabled(proposalEnabled);}else mapLayer.clear();}
+      if(reframe&&mapReady&&asset.buildingId.startsWith('bag:')){const w=wallFor(recipe);map.jumpTo({center:api.rdToLngLat(w.midpoint),zoom:19,pitch:65,bearing:w.facingDeg+180});}
+      updateUi();$('pick').textContent='Click the mesh to inspect its building, surface and opening IDs.';$('error').textContent='';return true;
+    }catch(error){$('error').textContent=error.message;return false;}
+  }
+  $('fixture').onchange=()=>{selected=Number($('fixture').value);rebuild(structuredClone(originals[selected]),{reframe:true});};
+  $('height').onchange=()=>{const next=structuredClone(recipe);next.wallTopM.value=Number($('height').value);rebuild(next);};
+  $('colour').onchange=()=>{const next=structuredClone(recipe);next.palette.value.wall=$('colour').value;rebuild(next);};
+  for(const [id,key]of[['material','wallMaterial'],['window-style','windowStyle'],['cornice','cornice'],['gable-trim','gableTrim']])$(id).onchange=()=>{const next=structuredClone(recipe);next.detailing.value[key]=id==='gable-trim'?$(id).checked:$(id).value;rebuild(next);};
+  $('opening').onchange=openingForm;
+  $('apply-opening').onclick=()=>{const next=structuredClone(recipe),o=next.elevations[0].openings.value.find(o=>o.id===$('opening').value);for(const [id,key]of[['left','leftM'],['bottom','bottomM'],['width','widthM'],['opening-height','heightM']])o[key]=Number($(id).value);rebuild(next);};
+  $('view').onchange=()=>diagnostic.setAsset(asset,recipe,$('view').value,$('mode').value);
+  $('mode').onchange=()=>{diagnostic.setAsset(asset,recipe,$('view').value,$('mode').value);if(mapLayer&&asset.buildingId.startsWith('bag:'))mapLayer.setAsset(asset,$('mode').value);};
+  $('preview').onclick=()=>{proposalEnabled=!proposalEnabled;$('preview').setAttribute('aria-pressed',String(proposalEnabled));mapLayer?.setEnabled(proposalEnabled);};
+  $('evict').onclick=()=>{mapLayer?.clear();failure='mesh evicted';updateMapNote();};
+  $('reload').onclick=()=>{if(mapLayer&&asset.buildingId.startsWith('bag:')){failure=null;mapLayer.setAsset(asset,$('mode').value);mapLayer.setEnabled(proposalEnabled);}};
+  $('fail').onclick=()=>{mapLayer?.clear();failure='simulated load failure';updateMapNote();};
+  const download=(name,data,type)=>{const url=URL.createObjectURL(new Blob([data],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+  $('export').onclick=()=>download('facade-recipe-and-mesh.json',JSON.stringify({recipe,asset},null,2),'application/json');
+  $('apply-json').onclick=()=>{try{rebuild(JSON.parse($('recipe-json').value));}catch(error){$('error').textContent=error.message;}};
+  $('reset').onclick=()=>rebuild(structuredClone(originals[selected]));
+  $('save-image').onclick=()=>{$('diagnostic').toBlob(blob=>blob.arrayBuffer().then(bytes=>download(`facade-${$('view').value}-${$('mode').value}.png`,bytes,'image/png')));};
+  $('diagnostic').onclick=event=>{$('pick').textContent=JSON.stringify(diagnostic.pick(event.clientX,event.clientY))||'No mesh at this point.';};
+  window.canalRecallRecipeLab={status:()=>({ready:!!asset,assetHash:asset?.meshHash,recipeHash:asset?.recipeHash,buildingId:asset?.buildingId,triangles:asset?.triangleCount,
+    map:mapLayer?.status(),streaming:streamer?.status(),replacementAliases:[...replacementAliases],error:$('error').textContent}),
+    recipe:()=>structuredClone(recipe),asset:()=>structuredClone(asset),map,compile:rebuild};
+  await rebuild(structuredClone(originals[0]));
+})().catch(error=>{document.getElementById('error').textContent=error.message;console.error(error);});
+</script>
+</body></html>

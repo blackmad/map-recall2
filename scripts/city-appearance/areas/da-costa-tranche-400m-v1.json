@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "id": "da-costa-tranche-400m-v1",
+  "bbox": [4.8705, 52.3702, 4.8755, 52.3742],
+  "origin": [4.873, 52.3722],
+  "cacheRoot": ".cache/city-appearance/areas/da-costa-tranche-400m-v1/raw",
+  "outputRoot": ".cache/city-appearance/areas/da-costa-tranche-400m-v1/staging",
+  "panorama": { "center": [4.873, 52.3722], "radiusM": 330, "after": "2022-01-01" },
+  "concurrency": 2
+}

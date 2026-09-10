@@ -309,6 +309,18 @@ class GameRouteRuntime {
         return;
       }
     }
+    if (this.routePattern === 'study') {
+      try {
+        this._setRouteError('Loading the verified Da Costa lesson…');
+        const catalog = await CanalRecallBuildingTiles.loadVerifiedAppearanceCatalog('../data/city-appearance/areas.json');
+        const lesson = catalog.entries.find(entry => entry.lesson);
+        if (!lesson) throw new Error('No appearance lesson is published');
+        this._launchPoiRoute(lesson.studyRoute.from, lesson.studyRoute.to);
+      } catch (error) {
+        this._setRouteError('The verified Da Costa lesson is unavailable.');
+      }
+      return;
+    }
     const pool = this.routePois;
     const choices = pool.filter(poi => poi.id !== this.routeFrom?.id || pool.length < 3);
     const from = this.routePattern === 'home' ? this.homeBase : choices[Math.floor(Math.random() * choices.length)];

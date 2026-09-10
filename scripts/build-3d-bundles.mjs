@@ -26,6 +26,11 @@ const shareThree = {
 
 const targets = [
   {
+    entry: 'public/canal-drive/js/facade-recipe-source.js',
+    out: 'public/canal-drive/js/facade-recipe.bundle.js',
+    globalName: 'CanalRecallRecipe',
+  },
+  {
     entry: 'public/canal-drive/js/detailed-buildings-source.js',
     out: 'public/canal-drive/js/detailed-buildings.bundle.js',
     globalName: 'CanalRecallDetailed3D',

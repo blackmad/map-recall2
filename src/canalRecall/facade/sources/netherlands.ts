@@ -160,8 +160,7 @@ export const bag3dMassing: MassingSource = {
         roofForm: roofForm(a.b3_dak_type),
         roofFormRaw: typeof a.b3_dak_type === 'string' ? a.b3_dak_type : null,
         groundLevel: number(a.b3_h_maaiveld),
-        eavesHeight: number(a.b3_h_dak_50p),
-        ridgeHeight: number(a.b3_h_nok) ?? number(a.b3_h_dak_max),
+        ...threeBagSurfaceHeights(a),
         reconstructionError: number(a.b3_rmse_lod22),
         geometryValid: typeof a.b3_val3dity_lod22 === 'string' ? a.b3_val3dity_lod22 === '[]' : null,
         sourceQualityFlag: typeof a.b3_kwaliteitsindicator === 'boolean' ? a.b3_kwaliteitsindicator : null,
@@ -260,3 +259,18 @@ export const dutchSources = (cityId: string): CitySources => ({
   // own panoramas openly, and another city needs its own adapter or none.
   imagery: cityId === 'amsterdam' ? amsterdamPanoramas : null,
 });
+
+/** Pinned legacy pand attribute mapping; see docs.3dbag.nl/en/schema/attributes/.
+ * Newer roof-part b3_h_50p is a different location/schema and is not silently aliased.
+ */
+export function threeBagSurfaceHeights(attributes: Record<string, unknown>) {
+  const finite = (value: unknown): number | null => typeof value === 'number' && Number.isFinite(value) ? value : null;
+  return {
+    heightSemantics: 'surface-heights-v2' as const,
+    sourceSchema: '3dbag/pand/legacy-b3_h_dak/v2; docs-audited=2026-09-05',
+    roofSurfaceHeight50p: finite(attributes.b3_h_dak_50p),
+    roofSurfaceHeightMax: finite(attributes.b3_h_dak_max),
+    eavesHeight: null,
+    ridgeHeight: finite(attributes.b3_h_nok),
+  };
+}

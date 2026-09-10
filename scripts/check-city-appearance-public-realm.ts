@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import { pointSegmentDistance, publicRealmVertexCount, simplifyPublicRealmFeature, simplifyPublicRealmLine, simplifyPublicRealmRing } from '../src/canalRecall/cityAppearancePublicRealm.js';
+
+const denseRectangle:number[][]=[];
+for(let x=0;x<=10;x+=.05)denseRectangle.push([x,Math.sin(x)*.01]);
+for(let y=.05;y<=5;y+=.05)denseRectangle.push([10,y]);
+for(let x=9.95;x>=0;x-=.05)denseRectangle.push([x,5]);
+for(let y=4.95;y>0;y-=.05)denseRectangle.push([0,y]);
+denseRectangle.push(denseRectangle[0]);
+const simplified=simplifyPublicRealmRing(denseRectangle);
+assert.deepEqual(simplified[0],simplified.at(-1),'published rings remain closed');
+assert.ok(simplified.length<denseRectangle.length/20,'sub-decimetre survey density collapses at display scale');
+assert.ok(simplified.length>=5,'polygon does not collapse below a valid rectangle');
+const segments=simplified.slice(1).map((point,index)=>[simplified[index],point]);
+assert.ok(denseRectangle.every(point=>Math.min(...segments.map(([a,b])=>pointSegmentDistance(point,a,b)))<=.0800001),'every source vertex remains within the declared display tolerance');
+
+const feature={id:'fixture',kind:'voetpad',geometry:{type:'Polygon' as const,coordinates:[denseRectangle,[[2,2],[3,2],[3,3],[2,3],[2,2]]]}};
+const original=JSON.stringify(feature),result=simplifyPublicRealmFeature(feature);
+assert.equal(JSON.stringify(feature),original,'canonical BGT feature is never mutated');
+assert.equal(result.id,feature.id);assert.equal(result.geometry.coordinates.length,2,'holes remain attached to their source polygon');
+assert.ok(publicRealmVertexCount(result)<publicRealmVertexCount(feature));
+const multi=simplifyPublicRealmFeature({...feature,geometry:{type:'MultiPolygon' as const,coordinates:[feature.geometry.coordinates,feature.geometry.coordinates]}});
+assert.equal(multi.geometry.coordinates.length,2,'multipolygon ownership is retained');
+const denseLine=Array.from({length:201},(_,index)=>[index*.05,Math.sin(index*.05)*.01]),simpleLine=simplifyPublicRealmLine(denseLine);
+assert.deepEqual(simpleLine,[denseLine[0],denseLine.at(-1)],'sub-tolerance source line keeps exact endpoints');
+assert.deepEqual(simplifyPublicRealmFeature({geometry:{type:'MultiLineString' as const,coordinates:[denseLine,denseLine]}}).geometry.coordinates,[simpleLine,simpleLine]);
+assert.throws(()=>simplifyPublicRealmRing([[0,0],[1,Number.NaN],[0,0]]),/Invalid public-realm ring/);
+assert.throws(()=>simplifyPublicRealmRing(denseRectangle,0),/Invalid public-realm display tolerance/);
+assert.throws(()=>simplifyPublicRealmFeature({geometry:{type:'Point' as any,coordinates:[]}}),/Unsupported public-realm geometry/);
+console.log(`Public-realm display compiler: ${denseRectangle.length} → ${simplified.length} vertices within 0.08 m; closure, holes, multipolygons, immutability and validation passed.`);

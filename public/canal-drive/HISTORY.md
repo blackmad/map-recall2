@@ -1,5 +1,130 @@
 # Canal Recall — what is built
 
+## 2026-09-06 — DINO → bounded fitting → appearance → rendered mesh
+
+The photo lab now defaults to the integrated DINO/SAM run. It renders nine
+development façades through the existing recipe compiler, retaining raw boxes,
+fitting attempts, individual colour/bar evidence and explicit unknown fields.
+Row widths, heads/sills and column centres are softly fitted within five pixels;
+unsupported edge changes are declined and distinct floor heights are preserved.
+Across nine strips, 40/86 attempted adjustments apply; 104 proposals render and
+35 remain for review. These are isolated wall studies, not certified map assets.
+
+Keizersgracht 136's omitted bottom-right window had score 0.241 under a 0.25
+cutoff. A secondary row/column/mask/edge check recovers it without changing its
+score or inventing a grid cell. The door's nested proposal remains omitted.
+The expanded set exposes a confident door-like construction-hoarding patch:
+isolation plus semantic disagreement flags it for review and removes it from
+the mesh. Appearance is resampled after fitting; editing a fitted box revokes
+its colour/bar measurements. Original extracted ontology fields show stale
+bindings after edits and never inherit renderer defaults for unknown parts.
+
+On labelled new cases Tiny finds 12/13 frames; fitting preserves that count.
+Three cropped retries still miss Herenstraat 40's dormer. A pinned DINO Base
+comparison finds it at low score (13/13), while slightly worsening Koningsplein
+box overlap. Both comparisons and their source images are inspectable locally;
+the model choice remains failure-specific rather than a general accuracy claim.
+
+Validation: five model-free Python regressions, focused façade aggregate and
+TypeScript lint pass. All fourteen desktop/mobile photo, appearance, fitting and
+recipe browser cases pass across the initial run and targeted rerun after fixing
+legacy appearance-fit metadata handling. Full `check:canal`, production build
+and gameplay hardware performance were not rerun for this photo-only slice.
+
+## 2026-09-06 — Local DINO and SAM measured on development strips
+
+Pinned Grounding DINO Tiny and SAM 2.1 Tiny run offline on the M4 Pro GPU.
+Three strips take about 0.29 s each for DINO and 0.135 s each for batched SAM
+after warm-up. The comparison page preserves raw detector outputs, raw masks,
+largest-component derivatives and reference-box segmentation separately.
+At a development-tuned 0.25 threshold, DINO matches 16/16 labelled outer frames
+versus 9/16 for the existing baseline; raw SAM+DINO matches 13/16 and component
+cleanup recovers 16/16. These rectangle checks neither measure pixel-mask
+accuracy nor score every unlabelled proposal. Reference-box SAM still exposes
+a connected leak, showing why model confidence cannot accept a mask alone.
+
+Completed local inference and a browser inspection of all three comparison rows
+passed; source crops remain ignored and no paid inference service is required.
+This is a proposal benchmark, not yet a replacement for rendered photo recipes.
+
+## 2026-09-06 — Appearance evidence and per-window rendering
+
+The photo lab now exposes wall-colour patches, texture-repeat candidates,
+per-window frame/glass colours and image-supported bright/dark glazing-bar
+candidates. Opening refinement separates the named merged-storey case and
+isolates the repeated-opening region from foreground sampling. The mesh uses
+merged vertex colours and per-opening bar geometry; photo/render comparisons
+share scale. Pixel box edits revoke previous appearance measurements. Patch
+selection, bar rejection and explicit style annotations remain unaccepted
+development edits with source/version lineage.
+
+The small labelled development check improves two window matches from 0/2 to
+2/2 and excludes the headlight proposal. It also exposes a false glazing-bar
+candidate; this is not a broad accuracy result. The user's comparison identified
+the next missing stage: constrained fitting of repeated window dimensions and
+floor/bay alignment before further style extraction. Focused checks, lint and
+ten desktop/mobile photo/appearance/renderer browser tests passed.
+
+## 2026-09-06 — Inspectable photo → opening proposals → mesh
+
+`facade-photo-lab.html` displays three real rectified development strips beside
+meshes compiled from local semantic masks and opening boxes. Pixel edits,
+omissions and a visible-region crop update the same recipe; raw detections are
+retained. Image/mask hashes are checked before rendering, imports bind to the
+source and extraction version, and rejected observations clear the preview.
+A pinned Keizersgracht 136 example splits a detection spanning two storeys,
+removes a car-headlight false positive and excludes the foreground. This is
+development correction, not an accuracy benchmark or accepted registration.
+
+The offline Python runner uses cached `amsterdam-facade/2` ONNX weights with
+pinned preprocessing, emits raw masks, box support and masked camera RGB, and
+refuses known missing-height/uniform strips. Images stay in an ignored local
+directory. Photo studies have no BAG replacement aliases or map placement.
+The separate recipe workshop supports procedural brick, CC0 ambientCG Bricks057,
+sash/cross windows and cornice/gable trim as explicitly authored choices.
+
+Validation: focused façade aggregate, TypeScript lint, and eight desktop/mobile
+photo/recipe browser checks passed. Source mutation, stale imports, invalid
+edits, exact fallback restoration and context loss are covered. Saved raw,
+mask and corrected renders include source/extraction/mesh lineage. No full-city
+performance or extraction-generalisation result is claimed.
+
+## 2026-09-05 — One plan for a low-poly Amsterdam gameplay map
+
+Replaced competing building/LOD/enrichment/façade plans with the root
+[`AMSTERDAM_FACADE_REBUILD_PLAN.md`](../../AMSTERDAM_FACADE_REBUILD_PLAN.md).
+The target is recognisable, correctly placed low-poly buildings. The next
+visible milestone is 3–5 complete buildings, followed by a contiguous block
+and landmark route. Independent image/geometry evidence, diagnostic rendering,
+bounded stage-specific retries, held-out evaluation and explicit fallback form
+the correction loop. Large surveys and photorealism no longer precede rendering.
+
+The audit retained BAG identities, stable elevations, raw-cache quarantine,
+OSM compositions, existing renderer/signature assets and calibration utilities.
+It found gaps hidden by passing scaffolding checks: no exported reviewed/anchored
+registration fixtures, coarse OSM joins, implicit yaw, roof median labelled as
+eaves, rectangle width labelled as frontage, stale review acceptance, and
+unfinished external-photo evidence/license matching. These are planned fixes;
+this change edits documentation, not runtime behaviour. All five pre-existing
+untracked external-identity files were preserved.
+
+Validation: lint and 14 focused suites passed. Direct probes reproduced stale
+acceptance, duplicate-photo evidence and overbroad license matching. Local browser
+inspection confirmed the single ready review task; the comparison page remained
+at zero resident tiles after 18 seconds under standalone Vite, so it did not
+establish a complete-city rendering baseline. Full integration/build/performance
+checks were not repeated for this documentation change.
+
+Removed superseded documents: `AMSTERDAM_FACADE_TWIN.md`,
+`BUILDING_RENDERER_DESIGN.md`, `BUILDING_ENRICHMENT.md`,
+`BUILDING_COLOUR_COVERAGE.md`, `FACADE_ENRICHMENT_DESIGN.md`,
+`FACADE_REBUILD_CHECKPOINT.md`, `FACADE_RECON.md`, `ROOF_ENRICHMENT.md`,
+`RGB_CITY_DEMO.md`, `LOD.md` and stale session notes `WIP.md`.
+Commands for retained tools moved to `EXTRACT_PIPELINE.md`; TODO items
+8a/10/10b/10c became one current item. Historical entries and source comments
+below still describe their own time; deleted documents are available with
+`rtk git show 683d06b:public/canal-drive/<filename>`.
+
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 

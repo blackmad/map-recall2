@@ -1,0 +1,35 @@
+import { test, expect } from '@playwright/test';
+import { existsSync } from 'node:fs';
+
+test.skip(!existsSync('public/canal-drive/facade-photo-review/local/appearance-03/manifest.json'), 'Ignored local appearance run unavailable');
+test('appearance evidence controls the merged mesh and changed boxes revoke its detail', async ({ page }) => {
+  const errors: string[]=[]; page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/canal-drive/facade-photo-lab.html?run=appearance-03');
+  await page.waitForFunction(()=>(window as any).canalRecallPhotoLab?.status().ready);
+  const status=()=>page.evaluate(()=>(window as any).canalRecallPhotoLab.status());
+  const first=await status();
+  expect(first.openings).toHaveLength(9);
+  expect(first.omitted[0].id).toBe('window-9');
+  await expect(page.locator('#wall-evidence')).toContainText('#dcb98e');
+  await expect(page.locator('.patch')).toHaveCount(8);
+  await page.locator('.patch').first().click();
+  await expect(page.locator('#patch-caption')).toContainText('pixels');
+  await page.locator('#use-patch').click();
+  await expect.poll(async()=>(await status()).edits).toBe(1);
+  await page.locator('#opening').selectOption('window-1');
+  await expect(page.locator('#bar-controls button')).toHaveCount(1);
+  const beforeBar=await status();
+  await page.locator('#bar-controls button').click();
+  await expect.poll(async()=>(await status()).meshHash).not.toBe(beforeBar.meshHash);
+  await page.locator('#y0').fill('32');await page.locator('#apply').click();
+  await expect(page.locator('#window-evidence')).toContainText('stale');
+  const measured=await page.evaluate(()=>(window as any).canalRecallPhotoLab.recipe().elevations[0].openings.value.find((o:any)=>o.id==='window-1').appearance);
+  expect(measured).toBeUndefined();
+  await page.locator('#window-style').selectOption('sash-6');
+  await expect.poll(async()=>(await status()).edits).toBe(4);
+  await page.locator('#finish').selectOption('ambientcg-Bricks057');
+  await expect.poll(async()=>(await status()).edits).toBe(5);
+  await expect(page.locator('#texture-evidence')).toContainText('CC0');
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  expect(errors).toEqual([]);
+});

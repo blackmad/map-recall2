@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {TONIGHT_CALIBRATION,calibrationSourceReady,calibrationQueue} from '../public/canal-drive/js/review-calibration.js';
+const data=JSON.parse(await fs.readFile('public/data/da-costa-block/neighbourhood.json'));
+assert.equal(TONIGHT_CALIBRATION.length,12);
+assert.equal(new Set(TONIGHT_CALIBRATION.map(([id])=>id)).size,12);
+const queue=calibrationQueue(data.records.map(r=>({...r,review:null})));
+assert.deepEqual(queue.map(r=>r.id),TONIGHT_CALIBRATION.map(([id])=>id),'all twelve calibration cases have current source metadata');
+assert.equal(calibrationSourceReady({...queue[0],evidenceKey:null}),false);
+assert.equal(calibrationSourceReady({...queue[0],reviewSourceCurrent:false}),false,'server-detected stale source packets are excluded');
+assert.equal(calibrationSourceReady({...queue[0],images:{...queue[0].images,full:{...queue[0].images.full,sha256:'stale'}}}),false);
+assert.equal(calibrationQueue([{...queue[0],review:{placement:'accepted'}}]).length,0);
+console.log('Passed: 12 stable calibration cases, deterministic order, source-metadata gate, reviewed cases excluded.');

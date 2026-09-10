@@ -10,6 +10,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { AMSTERDAM_GRACHTENGORDEL_WEST } from '../../src/canalRecall/facade/areas.ts';
+import { resolveHeights } from '../../src/canalRecall/facade/buildRecord.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import type { HeritageRecord, LngLat, MassingRecord, SemanticsRecord } from '../../src/canalRecall/facade/sources.ts';
 import { resolveArea } from '../../src/canalRecall/facade/surveyArea.ts';
@@ -96,12 +97,13 @@ for (const entry of registry) {
     id: entry.buildingId,
     ring,
     year: entry.constructionYear,
-    width: record?.plotWidthM ?? null,
+    width: null, // No selected elevation: rectangle width cannot scale a façade.
+    footprintShortSideM: record?.plotWidthM ?? null,
     active: entry.active,
     storeys: mass?.storeys ?? null,
     roof: mass?.roofForm ?? null,
-    eaves: mass && mass.eavesHeight !== null && mass.groundLevel !== null ? Math.round((mass.eavesHeight - mass.groundLevel) * 10) / 10 : null,
-    ridge: mass && mass.ridgeHeight !== null && mass.groundLevel !== null ? Math.round((mass.ridgeHeight - mass.groundLevel) * 10) / 10 : null,
+    eaves: mass ? resolveHeights(mass).eavesM : null,
+    ridge: mass ? resolveHeights(mass).ridgeM : null,
     err: mass?.reconstructionError !== null && mass?.reconstructionError !== undefined ? Math.round(mass.reconstructionError * 100) / 100 : null,
     listed: !!listing,
     gable: gable?.type ?? null,

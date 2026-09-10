@@ -18,6 +18,16 @@ class VectorBasemap {
     this._detailedBuildingsVisible = false;
     this._signatureLandmarks = null;
     this._pyramidalRoofs = null;
+    this._studyRoofs = null;
+    this._studyFacades = null;
+    this._studyTrees = null;
+    this._studyPublicRealm = null;
+    this._studyRoofAreas = [];
+    this._studyFacadeAreas = [];
+    this._studyTreeAreas = [];
+    this._studyPublicRealmAreas = [];
+    this._appearanceAreas = [];
+    this._appearanceAreaFailures = [];
     this._appearanceOsmIds = [];
     this._appearanceFeatures = [];
     this._appearanceCentroidGrid = null;
@@ -155,12 +165,24 @@ class VectorBasemap {
     const WALL_TOP = helpers && helpers.wallTopHeightExpression
       ? helpers.wallTopHeightExpression()
       : ['coalesce', ['get', 'height'], 5];
+    const MIN_HEIGHT = ['coalesce', ['get', 'minHeight'], 0];
+    const GROUND_TOP = ['min', WALL_TOP, ['+', MIN_HEIGHT, ['coalesce', ['get', 'groundFloorHeightM'], 3.2]]];
     const flatRoofFilter = this._coloredBuildingBaseFilter('osm-colored-building-roofs');
+    this.map.addLayer({
+      id: 'osm-colored-building-ground-floors', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
+      filter: ['has', 'groundColour'],
+      paint: {
+        'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'groundColour']],
+        'fill-extrusion-base': MIN_HEIGHT,
+        'fill-extrusion-height': GROUND_TOP,
+        'fill-extrusion-opacity': 1
+      }
+    });
     this.map.addLayer({
       id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['coalesce', ['get', 'sideColour'], ['get', 'colour']]],
-        'fill-extrusion-base': ['coalesce', ['get', 'minHeight'], 0],
+        'fill-extrusion-base': ['case', ['has', 'groundColour'], GROUND_TOP, MIN_HEIGHT],
         'fill-extrusion-height': WALL_TOP,
         'fill-extrusion-opacity': 1
       }
@@ -465,6 +487,7 @@ class VectorBasemap {
   // with `null`, capped every building in the city, and the lid z-fought the
   // roof under it. Both layers therefore always go through one composer.
   _coloredBuildingBaseFilter(id) {
+    if (id === 'osm-colored-building-ground-floors') return ['has', 'groundColour'];
     if (id !== 'osm-colored-building-roofs') return null;
     const helpers = window.CanalRecallBuildings;
     return helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'];
@@ -474,7 +497,7 @@ class VectorBasemap {
     if (!this.map) return;
     const hide = this._signatureSuppressOsmIds();
     const helpers = window.CanalRecallBuildings;
-    for (const id of ['osm-colored-buildings', 'osm-colored-building-roofs']) {
+    for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
       if (!this.map.getLayer(id)) continue;
       const base = this._coloredBuildingBaseFilter(id);
       const filter = helpers && helpers.coloredBuildingLayerFilter
@@ -522,6 +545,22 @@ class VectorBasemap {
     }
     if (!available || !this.map.getSource('osm-building-appearance')) return false;
 
+    if (runtime.loadVerifiedAppearanceCatalog && this._completeCity.setAppearancePriors) {
+      try {
+        const catalog = await runtime.loadVerifiedAppearanceCatalog('../data/city-appearance/areas.json');
+        this._appearanceAreas = catalog.entries;
+        this._appearanceAreaFailures = catalog.failures;
+        this._completeCity.setAppearancePriors(catalog.priors);
+      } catch (error) {
+        console.warn('Verified area appearance unavailable; retaining the citywide display palette.', error);
+      }
+    }
+
+    // Hand the verified priors to the complete-city source before optional
+    // roofs, facades, trees and water start their independent loads. Waiting
+    // for every decorative layer here left the old static neutral source on
+    // screen for several seconds even though the colour sidecar had already
+    // passed verification.
     this._buildingsFromTiles = true;
     this._appearanceFeatures = [];
     this._appearanceOsmIds = [];
@@ -530,16 +569,35 @@ class VectorBasemap {
     this._basemapProximityHideIds = [];
     this._recreateBuildingSourceWithStableIds();
     this._styleCompleteCity();
-    // The basemap's extrusion is hidden only once a tile has actually landed
-    // with buildings in it, never on the strength of the probe alone. A host
-    // that answers a missing file with its own index.html and a 200 — which
-    // both the dev server and most static hosts do — would otherwise leave
-    // the player driving through a city with nothing in it.
     this._completeCity.attach(() => {
       if (this.map.getLayer('building-3d')) this.map.setLayoutProperty('building-3d', 'visibility', 'none');
     }, (features) => {
       this._syncPyramidalRoofs(features);
     });
+
+    if (this._appearanceAreas.length && this._completeCity.setAppearancePriors) {
+      const optional = [
+        { api: window.CanalRecallStudyRoofs, ctor: 'StudyRoofs', list: this._studyRoofAreas, alias: '_studyRoofs', label: 'roof geometry' },
+        { api: window.CanalRecallStudyFacades, ctor: 'StudyFacades', list: this._studyFacadeAreas, alias: '_studyFacades', label: 'facade geometry' },
+        { api: window.CanalRecallStudyTrees, ctor: 'StudyTrees', list: this._studyTreeAreas, alias: '_studyTrees', label: 'tree geometry' },
+        { api: window.CanalRecallStudyPublicRealm, ctor: 'StudyPublicRealm', list: this._studyPublicRealmAreas, alias: '_studyPublicRealm', label: 'public-realm geometry' },
+      ];
+      for (const area of this._appearanceAreas) for (const kind of optional) {
+        const Constructor = kind.api && kind.api[kind.ctor];
+        if (!Constructor) continue;
+        const renderer = new Constructor(this.map, maplibregl, area.id);
+        try {
+          await renderer.load(area.pointerUrl);
+          kind.list.push(renderer);
+          if (!this[kind.alias]) this[kind.alias] = renderer;
+        } catch (error) {
+          renderer.dispose();
+          this._appearanceAreaFailures.push({ id: area.id, layer: kind.ctor, message: String(error && error.message || error) });
+          console.warn(`Optional ${kind.label} unavailable for ${area.id}.`, error);
+        }
+      }
+    }
+
     return true;
   }
 
@@ -560,7 +618,7 @@ class VectorBasemap {
    * before anything has been highlighted, so nothing is lost with it.
    */
   _recreateBuildingSourceWithStableIds() {
-    const layers = ['osm-colored-buildings', 'osm-colored-building-roofs']
+    const layers = ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']
       .map(id => this.map.getLayer(id) && this.map.getStyle().layers.find(layer => layer.id === id))
       .filter(Boolean)
       .map(layer => JSON.parse(JSON.stringify(layer)));
@@ -593,11 +651,18 @@ class VectorBasemap {
     const height = helpers && helpers.wallTopHeightExpression
       ? helpers.wallTopHeightExpression()
       : ['coalesce', ['get', 'height'], 5];
+    const minHeight = ['coalesce', ['get', 'minHeight'], 0];
+    const groundTop = ['min', height, ['+', minHeight, ['coalesce', ['get', 'groundFloorHeightM'], 3.2]]];
+    this.map.setPaintProperty('osm-colored-building-ground-floors', 'fill-extrusion-color', [
+      'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['to-color', ['get', 'groundColour'], '#806451']
+    ]);
+    this.map.setPaintProperty('osm-colored-building-ground-floors', 'fill-extrusion-base', minHeight);
+    this.map.setPaintProperty('osm-colored-building-ground-floors', 'fill-extrusion-height', groundTop);
     this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-color', [
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', themeColor
     ]);
     this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-height', height);
-    this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', ['coalesce', ['get', 'minHeight'], 0]);
+    this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', ['case', ['has', 'groundColour'], groundTop, minHeight]);
     this._refreshColoredBuildingFilter();
     this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-color', [
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['to-color', ['get', 'roofColour'], '#B09999']
@@ -784,7 +849,7 @@ class VectorBasemap {
     // twice, z-fighting into a shimmer.
     if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google);
     const detailed = !google && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
-    for (const id of ['building-3d', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
+    for (const id of ['building-3d', 'osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google) ? 'none' : 'visible');
     }
     // Signature models are the LoD1 replacement for a handful of landmarks.
@@ -795,6 +860,7 @@ class VectorBasemap {
       this._refreshBuildingSuppression();
     }
     if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !google);
+    for (const renderer of [...this._studyRoofAreas, ...this._studyFacadeAreas, ...this._studyTreeAreas, ...this._studyPublicRealmAreas]) renderer.setEnabled(!detailed && !google);
   }
 
   setPlayerBike(player, loader, visible) {
@@ -1112,6 +1178,9 @@ class VectorBasemap {
     if (this.theme !== 'clean') document.body.classList.add(`theme-${this.theme}`);
     if (!this.map || !this.map.getLayer('building-3d')) return;
     this._restoreBasePaint();
+    if (window.CanalRecallBuildings && window.CanalRecallBuildings.buildingLight && this.map.setLight) {
+      this.map.setLight(window.CanalRecallBuildings.buildingLight(this.theme));
+    }
     const palettes = {
       '8bit': { ground: '#E8D878', land: '#88B058', water: '#2898D0', road: '#F8F0C8', outline: '#385078', building: '#B8A060', accent: '#F8D830' },
       '16bit': { ground: '#C9B8D9', land: '#74B57A', water: '#4878C8', road: '#EFE7D0', outline: '#463C70', building: '#A98A9E', accent: '#FFD35A' },

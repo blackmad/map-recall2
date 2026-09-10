@@ -34,6 +34,7 @@ export const VIEW_ICONS: Record<CanalPreferences['viewMode'], LucideIcon> = {
 export const ROUTE_ICONS: Record<CanalPreferences['routePattern'], LucideIcon> = {
   surprise: Shuffle,
   home: Home,
+  study: Navigation2,
 };
 
 export const DIFFICULTY_ICONS: Record<CanalPreferences['difficulty'], LucideIcon | null> = {

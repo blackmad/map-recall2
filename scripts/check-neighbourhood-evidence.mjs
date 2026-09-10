@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import { surfaceMatches,observationFor } from '../public/canal-drive/da-costa-block/evidence.js';
+import { reviewEvidenceKey } from './da-costa-block/review-dependencies.mjs';
+const b={surfaces:[{type:'wall',rings:[[[0,0,0],[10,0,0],[10,10,0],[0,10,0]]]},{type:'wall',rings:[[[10,0,0],[10,0,10],[10,10,10],[10,10,0]]]},{type:'roof',rings:[[[0,10,0],[10,10,0],[10,10,10]]]}]};
+assert.deepEqual(surfaceMatches(b,{localStart:[0,0],localEnd:[10,0]}),[0]);
+assert.deepEqual(surfaceMatches(b,{localStart:[10,0],localEnd:[10,10]}),[1]);
+assert.deepEqual(surfaceMatches(b,{localStart:[0,2],localEnd:[10,2]}),[]);
+const proposal={wholeUsable:'yes',shopfront:'yes'};
+const original={id:'ordinary',renderBuildingId:'a',renderSurfaceIndices:[0],effectiveProposal:proposal};
+const corrected={id:'corrected',renderBuildingId:'a',renderSurfaceIndices:[0],effectiveProposal:proposal,review:{placement:'accepted'}};
+assert.equal(observationFor([original,corrected],'a',0).id,'corrected','accepted correction overrides provisional target');
+assert.equal(observationFor([corrected],'a',1),undefined,'other wall untouched');
+assert.equal(observationFor([corrected],'b',0),undefined,'other building untouched');
+assert.equal(observationFor([{...corrected,review:{placement:'rejected'}}],'a',0),undefined);
+assert.equal(observationFor([{...corrected,review:{placement:'uncertain'}}],'a',0),undefined);
+assert.equal(observationFor([{...corrected,review:{placement:'crop-repair'}}],'a',0),undefined,'building confirmation must not promote a bad wall crop');
+assert.equal(observationFor([{...original,effectiveProposal:null},corrected],'a',0).id,'corrected');
+assert.equal(observationFor([original,{...original,id:'second'}],'a',0),undefined,'legacy lookup cannot silently pick a shared wall winner');
+assert.equal(observationFor([corrected,{...corrected,id:'conflicting-human'}],'a',0),undefined,'conflicting accepted observations need interval resolution');
+assert.notEqual(reviewEvidenceKey({derivationKey:'x'},{sha256:'old'}),reviewEvidenceKey({derivationKey:'x'},{sha256:'new'}));
+const data=JSON.parse(await fs.readFile('public/data/da-costa-block/neighbourhood.json'));
+const block=JSON.parse(await fs.readFile('public/data/da-costa-block/block.json'));
+assert.equal(new Set(data.records.map(r=>r.id)).size,data.records.length);
+assert.equal(data.records.filter(r=>r.priorityRank).length,20);
+assert.equal(new Set(data.records.filter(r=>r.priorityRank).map(r=>r.buildingId)).size,20,'short session covers distinct buildings');
+for(const r of data.records){
+  const building=block.buildings.find(b=>b.id===r.renderBuildingId);
+  assert.ok(building);for(const index of r.renderSurfaceIndices)assert.equal(building.surfaces[index].type,'wall');
+  assert.equal(r.metricEligible,false);
+  if(r.proposal?.groundUsable==='no')assert.equal(r.proposal.shopfront,'unknown');
+  if(r.images.aerial?.coverageComplete===false)assert.equal(r.images.aerial.roofColour,null);
+}
+console.log('Passed: per-wall matching, correction precedence, rejection/uncertainty, null proposals, aerial staleness and published IDs/queue.');

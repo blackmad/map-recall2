@@ -1,385 +1,396 @@
-# Amsterdam façade twin — clean rebuild implementation plan
+# Amsterdam gameplay map — reconstruction plan
 
-Status: phases 0–2 implemented; phase-2 local review gate remains open.
+Updated 2026-09-05 after auditing `feat/amsterdam-facade-rebuild` at `683d06b`
+and the five untracked external-identity files. This is the single forward plan
+for building identity, appearance, geometry and validation. The game work board
+is [TODO.md](public/canal-drive/TODO.md); commands live in
+[EXTRACT_PIPELINE.md](public/canal-drive/EXTRACT_PIPELINE.md).
 
-## Working lane
+## Outcome and priorities
 
-```text
-worktree  .worktrees/amsterdam-facade-rebuild
-branch    feat/amsterdam-facade-rebuild
-base      main at 737990d324496f4a367b6b6a53c581c992ae3584
+Build a **low-poly, mostly correct Amsterdam that players can navigate by real
+landmarks**. Prioritise location, street-facing orientation, footprint, relative
+height, roof/gable silhouette, opening rhythm and distinctive colour. Small
+ornament and photographic texture are optional. A recognisable building in the
+wrong polygon is a failure; simplified ornament is an acceptable gameplay asset.
+
+Keep the complete city as fallback. Improve a few verified buildings all the
+way into the game, then a contiguous block and a landmark route. Every milestone
+must produce a render or a measurable reduction in a named failure. Surveying
+200 buildings, training several models, completing a Blender library and
+photorealism are not prerequisites for rendering.
+
+This replaces the former phase/checkpoint stop instructions. Camera tests,
+candidate generation and rendering of known geometry can proceed immediately.
+Accepting building evidence still requires an actual, version-bound check;
+old unchecked crops do not become trusted because the plan changed.
+
+## What the audit establishes
+
+| Component | Keep | Gap to close |
+| --- | --- | --- |
+| Complete city | Published index: 342,993 features, 295 tiles, 15,357,833 gzip bytes | Features are not unique buildings or proof of current visibility |
+| Identity | [bagIdentity.ts](src/canalRecall/facade/bagIdentity.ts): pand → VBO → all addresses | Persistent join to OSM polygons, building groups and game IDs |
+| Elevations | [elevations.ts](src/canalRecall/facade/elevations.ts): canonical rings, collinear merging, stable wall IDs | Candidate scores are heuristics; the review builder selects its one wall by reproducing recorded distance/angle |
+| OSM ownership | [buildingLadder.ts](src/canalRecall/buildingLadder.ts), [buildingComposition.ts](src/canalRecall/buildingComposition.ts): useful parts and duplicate suppression | Centroid containment is not identity certification. The façade OSM adapter requests tags/centres and associates unreferenced parts with a centre within 40 m |
+| Registration | Review desk, raw panorama cache, 16 candidates | Local exported fixtures have **1 panorama, 0 anchors, 0 reviews**. Browser-only drafts were not audited; 15 candidates still need panoramas |
+| Review integrity | [registrationGold.ts](src/canalRecall/facade/registrationGold.ts): solo review | An earlier acceptance survives a later rejection. Acceptance is not bound to wall/source versions. Pixel anchors lack corresponding world coordinates |
+| Camera | [rectify.ts](src/canalRecall/facade/rectify.ts): metric wall resampling | Still defaults to `centre`; historical yaw claims conflict. `missingFraction` detects neither occlusion nor a wrong target |
+| Dimensions | Source adapters and [buildRecord.ts](src/canalRecall/facade/buildRecord.ts) | `b3_h_dak_50p` is named `eavesHeight`; rectangle short side is treated as façade width. Neither is generally the actual elevation dimension |
+| Extraction | Detector, gable classifier, grammar proposals, materials and [calibration.ts](src/canalRecall/facade/calibration.ts) | No demonstrated held-out accuracy on certified crops. A plausible grid or agreeing models can describe the wrong house |
+| External photos | Five untracked discovery/assessment files | Assessments empty; duplicate titles satisfy evidence count. License regex accepts `CC BY-NC`/`CC BY-ND` despite its intended allowlist. No npm/aggregate integration |
+| Rendering | MapLibre, shared Three.js, OSM parts, signature assets and streaming | No certified façade-record → gameplay-render path. Local comparison page reported 0 resident tiles after 18 seconds under standalone Vite; diagnose before using it as baseline evidence |
+
+TypeScript lint and 14 focused suites passed during the audit: identity,
+elevations, fixture scaffolding, coordinates, boundary, record, calibration,
+build-record, target selection, grammar, ladder, composition, pyramidal roof and
+paint inheritance. Direct probes reproduced the review/external-evidence gaps.
+These passes **do not certify image registration**. The full `check:canal`,
+production build, gameplay route and hardware performance were not rerun for
+this documentation change.
+
+Implementation update, 2026-09-05: the first delivery slice repairs review
+revocation/version binding, external evidence/license gates, height/frontage
+semantics and six legacy consumers. The comparison's missing initial camera
+update is fixed; loaded comparison and gameplay captures are reproducible with
+`capture:facade-baseline`. `check:facade-rebuild` is wired into `check:canal`.
+The full offline aggregate, production build and focused browser regressions
+pass. These are structural/render-baseline results: real accepted observations
+remain at zero. Current commands and capture details are in
+[EXTRACT_PIPELINE.md](public/canal-drive/EXTRACT_PIPELINE.md#building-reconstruction-workbench).
+
+The height issue is semantic: 3DBAG documents roof percentiles as roof-surface
+elevations, not eaves. Pin the source schema; derive local eaves from wall/roof
+boundaries where available and retain a percentile as a percentile or explicit
+approximation. An ordered pair alone does not prove correct eaves/ridge meaning.
+See [3DBAG layers](https://docs.3dbag.nl/en/schema/layers/) and
+[attributes](https://docs.3dbag.nl/en/schema/attributes/).
+
+## One dossier, separate stage decisions
+
+BAG pand IDs identify Dutch registry buildings. Add `buildingGroupId` for a
+landmark/composition spanning panden. Preserve OSM way/relation/part IDs and game
+POI IDs as aliases. An OSM-only building gets a namespaced OSM identity. A pand
+can have multiple elevations; an elevation can contain multiple visible façade
+segments. Do not force any of these into one building = one address = one wall.
+
+Extend existing typed modules with these artifacts:
+
+| Artifact | Required contents |
+| --- | --- |
+| Identity join | BAG IDs/addresses, OSM IDs/versions/roles, groups, polygons with holes, candidates/alternatives, decision/reason |
+| Registered observation | Building/group, elevation/segment, source hash/date, camera model/pose/datum, world↔pixel anchors and uncertainty, residuals, visibility masks, verdict |
+| Feature evidence | Value or unknown, units, elevation coordinates, supporting masks/anchors, observations, extractor version, calibrated confidence, review state |
+| Building recipe | Resolved footprint/parts/roof, per-elevation openings/gable profile, materials, evidence references, simplification decisions, LOD settings |
+| Compiled asset | Mesh/tile hash, local origin/transform, per-mesh IDs/aliases, bounds, collision footprint, budgets, recipe hash |
+| Evaluation | Reference views/labels, diagnostic renders, separate identity/geometry/appearance metrics, regressions, corrections and disposition |
+
+Keep raw observations, fitted recipes and rendered artifacts separate. Per field,
+record `observed`, `inferred`, `authored` or `unknown`, independently of
+`proposed/accepted/rejected/stale`. A twelve-vertex approximation of an observed
+bell gable is legitimate; choosing its type randomly from the building ID is
+not evidence. Unobserved walls can remain conservative massing. Existing theme
+fallbacks remain explicitly inferred, never counted as successful extraction.
+
+Hash dependencies per stage: source bytes/metadata/schema, identity join,
+footprint/elevation, camera, rectifier/config, detector/model/prompt, review
+revision, recipe/compiler and render config. Detector changes reuse valid
+registration; wall changes invalidate registration and descendants. Never resume
+on `pandId` alone. Keep immutable runs and a last accepted version. Timestamps
+belong in manifests, not deterministic asset content.
+
+## 1. Match the real building to its polygon and wall
+
+1. **Resolve the entity first.** Use official [BAG linked records](https://api.pdok.nl/kadaster/bag/ogc/v2)
+   to retain every VBO/address/suffix, active status and source date. A museum or
+   business may occupy several buildings. Distinguish its entrance POI, building
+   group and individual footprints before searching photographs.
+2. **Persist an OSM↔BAG crosswalk.** Preserve full geometry and relation
+   membership. Normalise `ref:bag` as a string with leading zeros; validate type
+   and geometry even for exact references. Preserve outline/part membership.
+   See [ref:bag](https://wiki.openstreetmap.org/wiki/Key:ref:bag) and
+   [building relations](https://wiki.openstreetmap.org/wiki/Relation:building).
+3. **Resolve missing/conflicting references.** Spatially index candidate
+   polygons in RD metres. Compute intersection/union area, coverage both ways,
+   boundary distance and orientation, respecting holes/multipolygons. Use
+   addresses/names as corroboration. Store runner-up and margin; calibrate
+   thresholds against reviewed examples. Proximity only discovers candidates.
+   Explicitly support one-to-many/many-to-one compositions.
+4. **Verify the wall separately.** Use stable elevation IDs, street/address/quay
+   context and line of sight through surrounding geometry. Keep corner fronts,
+   setbacks and façade segments. Scale from the selected wall length, not a
+   rectangle. Survey vertices do not automatically mark visual party walls.
+5. **Check spatial and visual evidence.** Show neighbouring footprints, both
+   canal banks, street names, camera/rays and target wall beside the full
+   panorama. Compare wall limits, readable address plaques, distinctive
+   gable/entrance and neighbour order. Reliably identified external photographs
+   corroborate; titles, two files, nearby cameras and duplicate images do not
+   independently prove identity. Imported BAG/3DBAG tags in OSM are not another
+   independent source.
+6. **Emit matched, grouped, ambiguous, unmatched or stale.** Do not send
+   ambiguous matches to extraction. Valid geometry can still supply fallback
+   massing while appearance remains unresolved.
+
+Start with Herengracht 270 and its opposite-bank/adjacent alternatives,
+Prinsengracht 263, Huis Bartolotti, Huis met de Hoofden and Felix Meritis from
+the catalog. Add Waag or Oude Kerk for multiple panden/OSM parts. Cover a corner,
+narrow house, double façade, courtyard, wrong/missing `ref:bag` and OSM-only
+building. Verify IDs from records rather than copying prose comments.
+
+## 2. Register observations and extract a small useful grammar
+
+### Camera and usable images
+
+The named regression is pand `0363100012164989`, Herengracht 270, panorama
+`TMX7316010203-001543_pano_0000_003628`. Historical standoff 38.6 m and obliquity
+3.3° constrain geometry but do not identify source pixels. Keep yaw hypotheses
+until independent world↔pixel correspondences resolve them. A convincing canal
+house crop is insufficient.
+
+- Export world→camera→pixel functions; require an explicit camera model at every
+  call. Pin axes, handedness, yaw zero/direction, pitch/roll order, seam, image
+  dimensions and vertical datum per source/mission. Inspect the municipal
+  [API implementation](https://github.com/Amsterdam/panorama-api) and
+  [viewer](https://github.com/Amsterdam/PanoViewer) as clues, then verify the
+  actual cached mission. Do not apply an assumed global yaw fix.
+- Add independent synthetic cardinal/wrap/pitch/roll fixtures and world↔pixel
+  anchor tests. Round-tripping the same wrong function proves little. Anchors
+  need world positions or wall-plane constraints, provenance and uncertainty;
+  a clicked “eaves” pixel alone is not a 3D point.
+- Audit camera ellipsoidal height versus NAP, the current 43.5 m geoid
+  approximation, both RD conversion implementations and source vintages.
+  Numerical projection residuals are not total geographic accuracy.
+- Rank several views using source pixels/metre, full-wall coverage, obliquity,
+  static/dynamic occlusion and date. Upsampling adds no evidence. Use geometry
+  for intervening buildings and image masks for trees, vehicles, sky and water.
+- Rectify wall plus context; export a target-only metric mask and separate
+  truncation/occlusion masks. Represent multi-plane setbacks/protrusions instead
+  of stretching them flat. Reserve a different usable view for validation when
+  available; single-view buildings remain explicitly single-view evidence.
+
+Repair the review desk in place: populate candidate panoramas, overlay source
+pixels, include map context and import/export reviews. Remove guidance that
+preselects the pictured building the reviewer should accept. The latest explicit
+decision must bind to the full observation hash; source/wall changes and later
+rejection revoke it. Validate reviewer/time, wall existence and source identity.
+Keep identity acceptance distinct from metric registration/anchor completeness.
+
+### Grammar, colour and texture
+
+Use only what materially identifies the building:
+
+- Actual footprint/parts, ground, wall top, ridge and roof planes.
+- Per-elevation segments, gable type/profile, storey bands, bay positions,
+  opening rectangles/types and a distinct ground floor where visible.
+- Dominant wall/roof/trim colours, material family and major identifying
+  features such as cornice, entrance, hoist beam or dormer.
+
+Preserve exceptions; shops, asymmetry and double houses need more than a global
+window grid. Start with manually corrected recipes for 3–5 buildings so the
+representation and renderer can be tested independently of a detector. Then
+compare the handcrafted extractor with **one** suitable licensed segmentation/
+detection baseline on the same certified images. Add a model or fine-tuning
+only for a measured failure class. Record dataset/model provenance, license,
+version and split; a training campaign is not a prerequisite for the first block.
+
+Fit parameters to detected evidence with bounded constraints: positive sizes,
+openings within visible wall, supported storey/bay positions. Retain raw
+observations and alternate hypotheses. Priors can regularise noisy observed
+positions; they cannot make a hidden opening or guessed gable measured.
+Heritage text can support a named feature after verifying the building and
+possible alterations since the description.
+
+Sample wall, trim, frames, glass and roof separately. Mask shadows, reflections,
+vegetation, occluders and clipped highlights; compare stable regions across
+views/dates. Camera RGB is not intrinsic surface colour. Record observed colour,
+uncertainty and its deliberate mapping to a small game palette; evaluate under
+neutral lighting. Use pinned aerial products/semantic roof planes for roofs.
+DSM and orthophoto can share upstream imagery, so agreement is not automatically
+independent. Two vision models also measure agreement, not accuracy.
+
+Start with flat palette materials. Add a small licensed, metre-scaled brick/
+stone/tile atlas only if a gameplay A/B comparison improves recognition without
+aliasing or excess memory. Material class, colour and texture-asset choice are
+separate. Ordinary buildings do not require extraction of exact brick bond.
+Do not bake panorama lighting, trees, people or neighbours into façades. Keep
+source pixels in ignored caches under their source policies and track rights
+separately for viewing, extraction, training and redistribution.
+
+## 3. Compile and verify in the real map
+
+Extend the MapLibre custom-layer/shared-Three.js path. The first compiler can
+emit recipe JSON and merged/instanced geometry; choose tiled GLB or another
+format after measuring the block. Reuse signature assets/placement code where
+sound. No second map engine or monolithic city mesh is required.
+
+1. Preserve footprints, courtyards, passages and significant OSM parts. Simplify
+   roof planes without flattening towers or gables; compare manual topology
+   before choosing 3DBAG. Retain uncertain heights and source dates.
+2. Compile each wall in its metric frame. Use opening quads/shallow recesses,
+   few-vertex gable silhouettes and conservative closed side/rear volumes.
+   Ordinary houses need no modelled bricks, interiors or hidden ornament.
+3. Explicitly transform metres to world coordinates using ground datum and
+   frontage axes. A minimum rectangle's 180° ambiguity must not choose a
+   landmark entrance direction. Use the same identity/recipe across LODs.
+4. Resolve one owner per building **or composition group**. Suppress only
+   aliased fallback features after replacement loads; restore on failure or
+   eviction. Preserve picking, highlighting, road/water depth and context-loss
+   recovery. Simple footprint colliders retain passages/courtyards; windows
+   should not affect driving.
+5. Render orthographic façade, registered source-camera and fixed gameplay
+   views. Export target IDs, depth, surface classes and unlit colour alongside
+   beauty images. Include neighbours in boundary/occlusion checks so a beautiful
+   wrong house cannot pass in isolation.
+
+Use a modest authored mesh for landmarks that exceed the grammar, with the
+same identity/evidence/evaluation. Prioritise Westerkerk and the canal fixtures
+for the first route, then Waag, Oude Kerk, Palace, Rijksmuseum and Centraal as
+navigation needs dictate. A signature model still requires correct placement.
+
+## The self-correcting loop
+
+```mermaid
+flowchart LR
+  A[Resolve identity and wall] --> B[Register views]
+  B --> C[Extract and fit recipe]
+  C --> D[Compile and render]
+  D --> E[Compare independent evidence]
+  E --> F{Failure stage}
+  F -->|Identity| A
+  F -->|Camera or visibility| B
+  F -->|Features or materials| C
+  F -->|Geometry or placement| D
+  F -->|Pass| G[Stage accepted artifact]
+  F -->|Unresolved or retry limit| H[Fallback and review queue]
 ```
 
-This branch starts from `main`, not `feat/amsterdam-building-twin`. The old
-feature branch is a source library and incident record only: its valid and
-invalid work is interleaved and its worktree has concurrent uncommitted edits.
-Do not cherry-pick its façade commits wholesale. Import each audited component
-only when the phase that needs it begins, together with tests and provenance.
-
-## Confirmed failure and rebuild rule
-
-The screenshot failure is reproducible for BAG pand `0363100012164989`,
-Herengracht 270, using panorama
-`TMX7316010203-001543_pano_0000_003628`. The recorded observation is 38.6 m
-from the wall and 3.3 degrees off square, yet the current `centre` yaw samples
-the foreground building on the camera side. The `edge` convention samples the
-intended building across the canal. Generic rectification defaults to
-`centre`, while a nearby script comment says that convention points 180
-degrees away; one boundary caller supplies no convention at all.
-
-The current registration check cannot settle the discrepancy: it fails under
-both conventions, treats redundant collinear BAG vertices as party walls, and
-correlates them with noisy roofline steps. It is not part of `check:canal`.
-
-Consequently all current street-derived results are quarantined until
-recomputed through a proven camera model: opening rectangles, storeys, bays,
-colours, materials, photographic textures, review labels, evidence strips,
-and renderer façade extracts. Plausible aggregate statistics do not establish
-per-building identity.
-
-## Scope and invariants
+Implement a reproducible runner under `scripts/facade-rebuild/`, with fixed
+input manifest, targets, seed, evaluation set and cost/retry limits. Proposed
+interface, **not an existing npm command**:
 
 ```text
-BAG address and pand
-  -> canonical footprint elevation
-  -> suitable panorama and explicit camera model
-  -> source-image façade quadrilateral
-  -> rectified metric observation
-  -> opening/material measurements
-  -> reviewed per-pand evidence
-  -> renderer extract
+facade:iterate --targets=<fixture-list> --offline --max-attempts=3
+  -> manifest + per-building dossiers + renders + report.json/html
 ```
 
-1. BAG `pand_id` is canonical. OSM may corroborate hand-authored semantics but
-   is not the parcel/address authority.
-2. Building identity, elevation selection, projection, rectification, and
-   feature detection are separate stages with separate tests.
-3. A detector or paid vision model cannot certify that a crop belongs to the
-   requested pand.
-4. Ambiguous elevations and crops are rejected, never repaired with plausible
-   façade grammar.
-5. A building without certified street evidence renders as massing only.
-6. Derived artifacts are invalid after any upstream source, camera, rectifier,
-   elevation, or model change unless their complete derivation key matches.
-7. Street imagery remains in ignored local caches unless its license and the
-   project distribution policy explicitly permit publication.
-8. No full-boundary measurement run occurs before the gold registration set
-   passes.
-
-## Import and quarantine matrix
-
-### Import early, after re-verification
-
-- Survey boundary and area declarations.
-- RD New/WGS84 conversion plus authoritative control-point fixtures.
-- BAG footprint adapter and raw BAG responses.
-- 3DBAG massing adapter and raw massing responses.
-- Panorama metadata adapter and original cached panoramas.
-- Evidence, house-record, and calibration types plus unit tests.
-- Rijksmonumenten and OSM adapters, with BAG remaining canonical.
-
-Existing checks provide only starting evidence: 54 coordinate checks, 44
-boundary checks, and the façade-record, build-record, and calibration-math
-checks pass in the old worktree. They must be rerun here. None proves
-street-image registration.
-
-### Import only with a valid consumer
-
-- Parameterised gable and façade geometry.
-- Blender gable library.
-- Runtime façade layer and evidence-inspector interaction patterns.
-- Quay/water work, which is independent but not needed for registration.
-- Roof-colour work after its separate footprint/rejection issues are resolved.
-
-### Quarantine; never import as evidence
-
-- `measured-facades.json` and derived façade/evidence extracts.
-- Existing façade review images and labels.
-- Existing photographic textures and material manifest.
-- Existing detector accuracy, coverage, and material-distribution claims.
-- Existing registration offsets and party-wall correlations.
-- Resumable caches keyed only by `pand_id`.
-
-The handcrafted detector remains a benchmark candidate, not a trusted
-extractor.
-
-## Target architecture
-
-```text
-BuildingIdentity
-  pandId, BAG addresses/VBOs, footprint, source versions
-
-Elevation
-  stable elevationId, ordered endpoints, outward normal, source vertex range
-
-ElevationCandidate
-  street/canal adjacency, address-side, visibility, ambiguity evidence
-
-PanoramaCameraModel
-  source id, mission/schema version, yaw origin, heading/pitch/roll convention
-
-RegisteredObservation
-  pandId, elevationId, panoramaId, pose, source quad, anchor residuals,
-  registration verdict, derivation key
-
-RectifiedObservation
-  metric extent, pixels per metre, missing/occluded fractions,
-  registration reference, derivation key
-
-FacadeDetection
-  masks/boxes, classes, confidence, metric coordinates, model/version
-
-ReviewedFacadeEvidence
-  accepted/rejected fields, reviewer/model provenance, calibration result
-```
-
-The panorama adapter must supply an explicit camera model. `rectifyFacade`
-must have no default yaw convention.
-
-## Phase 0 — clean baseline
-
-1. Record this worktree's exact base SHA and run relevant baseline checks.
-2. Add an invalidation record for old street-derived artifacts.
-3. Copy or hard-link only allowlisted raw caches into a new ignored namespace,
-   preserving source URL, retrieval date, byte hash, and license:
-   BAG, 3DBAG, heritage/OSM, panorama metadata, and original panoramas.
-4. Do not copy rectified strips, measurements, textures, review data, or
-   renderer extracts.
-
-Gate: the clean worktree builds and existing tests pass before façade changes.
-
-## Phase 1 — canonical identity and elevations
-
-1. Add a BAG address/VBO adapter retaining every address for multi-address
-   panden.
-2. Normalise footprint rings and create stable elevation IDs. Merge collinear
-   survey vertices while retaining original vertex ranges.
-3. Separate elevation-candidate generation from selection; a minimum rectangle
-   may nominate walls but cannot determine the front by itself.
-4. Score candidates using independent evidence: BAG public-space association,
-   street/quay/canal adjacency, panorama trajectory/visibility, footprint
-   occlusion, and OSM geometry as corroboration only.
-5. Represent corner and multi-front buildings with multiple elevations.
-
-Deliver typed modules, an address/pand inspection report, and tests for ring
-orientation, collinear merging, normals, stable IDs, and multi-front cases.
-
-Gate: every gold fixture resolves to the human-selected pand/elevation;
-ambiguous cases return `ambiguous` rather than a guessed wall.
-
-## Phase 2 — registration gold set and review tool
-
-Start with about 16 buildings and expand to 30 before detector evaluation.
-Include Herengracht 270 (the 180-degree regression), Prinsengracht 263, Huis met
-de Hoofden, Huis Bartolotti, Felix Meritis, both canal banks, all cardinal
-directions, a corner building, an irregular footprint, a wide/double house, a
-multi-address pand, and partial occlusion.
-
-For each fixture record redistributable structured facts only:
-
-- all addresses and `pand_id`;
-- elevation ID and exact RD endpoints;
-- panorama ID, capture date, mission, and pose;
-- hand-clicked source-pixel anchors for wall limits, ground, eaves, and
-  distinctive roofline points;
-- identity verdict and reviewer note.
-
-Build a local ignored-image review page with full panorama context, BAG
-footprint/elevation inset, projected quadrilateral, metadata, rectified preview,
-anchor correction, and explicit rejection. Hide detector boxes during
-registration review.
-
-Gate: one recorded local review accepts both pand and elevation for every
-fixture. This is the explicit solo-operator checkpoint adopted on 2026-09-05;
-reviewer identity, timestamp, both verdicts, and notes remain auditable, and an
-uncertain or rejected verdict still fails closed.
-
-## Phase 3 — camera model and rectifier
-
-1. Export pure world-to-camera and camera-to-equirectangular functions.
-2. Add synthetic cardinal panoramas pinning north/east/south/west, wrap,
-   elevation, pitch, and roll independently.
-3. Put yaw origin/orientation in the Amsterdam adapter; support mission-specific
-   models only if gold evidence requires them.
-4. Remove `centre`/`edge` defaults from generic APIs.
-5. Compare projected source pixels directly with gold anchors.
-6. Show context beyond wall bounds so lateral shifts cannot hide at crop edges.
-7. Validate horizontal and vertical scale separately.
-
-Initial acceptance: 100% correct pand/elevation, median wall-plane anchor error
-at most 0.25 m, 95th percentile at most 0.50 m, no unexplained sign/180-degree
-errors, and deterministic hashes. Any identity mismatch fails the gate.
-
-## Phase 4 — view selection and registration gate
-
-1. Rank only views geometrically capable of containing the full elevation.
-2. Measure wall resolution, not just panorama dimensions or standoff.
-3. Calculate occlusion and truncation separately from aesthetics.
-4. Retain several passing views and use cross-view agreement as a later signal.
-5. Replace party-wall/skyline proxies with anchor tests and conservative
-   projected-wall runtime checks.
-6. Add registration to `check:canal`.
-7. Refuse measurement without a passing verdict and matching derivation key.
-
-Artifact keys include footprint/elevation, panorama bytes/metadata, camera
-model, rectifier code/config, detector/model, and source-schema hashes.
-
-Gate: a stratified 50-building set has zero wrong-pand/wrong-elevation crops;
-ambiguous and obstructed observations are rejected and reported.
-
-## Phase 5 — facade parsing and opening detector benchmark
-
-Only correctly registered crops enter this phase. Benchmark:
-
-1. the existing handcrafted detector;
-2. the CMP **Amsterdam Facade** semantic-segmentation dataset/model;
-3. at least two licensed window/door object detectors;
-4. at least two licensed opening instance-segmentation models;
-5. an ensemble using geometry only as a consistency check.
-
-The [Amsterdam Facade dataset](https://universe.roboflow.com/cmp-zosci/amsterdam-facade)
-is a particularly useful domain-matched baseline and pretraining source. Its
-909 images label `building`, `door`, `window`, and `sky`, which can support
-facade/crop-quality masks and coarse opening parsing. Version 1 uses semantic
-segmentation with 818 training images, 91 validation images, and no held-out
-test set. It therefore cannot by itself measure generalisation, and its class
-pixels do not distinguish touching openings as separate instances. Before use:
-
-- verify original image and annotation provenance, not only the Roboflow host;
-- record the stated CC BY 4.0 license and required attribution;
-- audit duplicate/near-duplicate images and related views;
-- create a provenance-grouped external test set;
-- evaluate transfer from curated/rectified imagery to noisy municipal
-  panoramas with blur, trees, vehicles, reflections, and obliquity.
-
-Use it for semantic pretraining, crop-quality checks, and an honest baseline;
-do not use it as registration truth or assume it is the final instance-level
-extractor. Prior Amsterdam façade-parsing research also reports dataset bias
-and poor cross-dataset transfer, reinforcing the need for a project-specific
-held-out evaluation.
-
-For every external source record URL/owner, explicit license, image count,
-class semantics, annotation type/quality, split method, weights and architecture
-version, and preprocessing that might distort proportions. Published metrics
-are leads, not acceptance evidence.
-
-### Project-specific Amsterdam labels
-
-Build a private/local dataset from certified observations, initially 100–200
-corrected crops, with:
-
-- window;
-- door;
-- shopfront;
-- souterrain window;
-- façade boundary;
-- occlusion/unknown.
-
-Split by pand, street/block, and mission; never put multiple views of one pand
-across train and validation/test. Prioritise uncertain and disagreeing samples,
-fine-tune a compact segmentation model, and repeat against held-out blocks.
-
-Report per-class precision/recall and AP, mask IoU, exact opening-count
-accuracy, metric centroid/boundary error, false openings per square metre,
-performance by imaging condition/facade type, and cross-view consistency. Never
-calculate detector metrics on failed registrations.
-
-Gate: select the production detector from held-out project data. Fields below
-their calibrated threshold remain unobserved/defaulted.
-
-## Phase 6 — paid multimodal verification
-
-Use paid vision-language models as independent critics and triage tools, not
-geometric ground truth. Require terms compatible with the panorama license,
-acceptable retention/training controls, pinned model identifiers, structured
-JSON with `uncertain`, and stored prompt/image hash/response/time/cost metadata.
-
-Use two blind passes:
-
-1. clean crop: judge whether one facade dominates, rectification quality,
-   visible opening counts, obstruction, and truncation;
-2. overlay critique: inspect detector masks for false positives, misses, class
-   mistakes, and boundary errors.
-
-Do not show one model another model's answer. Send disagreements to a second
-independent model and unresolved cases to a human. Audit 100% of gold fixtures,
-the first 50 and 200 rollout buildings, all disagreements/low-confidence cases,
-a random accepted sample, and a deliberate high-confidence sample. Calibrate
-every judgement type against human labels before it can affect confidence.
-
-## Phase 7 — staged rollout
-
-```text
-gold fixtures -> 50 stratified buildings -> 200 buildings -> one canal block
--> full pilot boundary
-```
-
-At each stage emit registration/rejection statistics, per-field metrics,
-model-human disagreement, per-pand dossiers, clean/overlay contact sheets, and
-data/renderer diffs. Rejected observations remain massing-only.
-
-## Phase 8 — renderer and facade vocabulary
-
-Only after the 200-building evidence gate:
-
-1. implement/import the renderer against versioned records;
-2. import gable/parts geometry with independent tests;
-3. render accepted masks/boxes as openings;
-4. retain heritage claims with distinct provenance;
-5. retain massing-only fallback;
-6. regenerate textures/materials only from certified observations;
-7. verify real Canal Recall viewpoints.
-
-The evidence inspector shows address/pand, elevation/footprint, panorama context
-and projected quad, clean rectification, detections/confidence, review history,
-and exact source/derivation versions.
-
-## Continuous gates
-
-Add and then integrate:
-
-```text
-test:facade-identity
-test:facade-elevations
-test:facade-camera-model
-test:facade-rectification
-test:facade-registration
-test:facade-lineage
-test:facade-detector-benchmark
-test:facade-evidence-integrity
-```
-
-The integration gate fails for implicit camera conventions, excess anchor
-error, wrong pand/elevation, stale lineage, rendered openings without accepted
-evidence, undocumented model/dataset licensing, or staged review imagery.
-
-## Planned commit sequence
-
-1. clean baseline and invalidation record;
-2. BAG address identity and elevation schema;
-3. gold fixtures and ignored-image review tool;
-4. camera model plus synthetic/anchor tests;
-5. conservative multi-elevation frontage resolution;
-6. registration gate and derivation-keyed artifacts;
-7. detector benchmark and dataset/license manifests;
-8. Amsterdam labels and segmentation fine-tuning experiment;
-9. paid-model audit harness and calibration report;
-10. 50-building gate;
-11. 200-building gate;
-12. renderer/vocabulary against certified records;
-13. pilot boundary and final QA report.
-
-Keep commits small, independently reviewable, and accompanied by state/history
-updates. Generated browser bundles belong only in commits that change runtime
-code.
-
-## First implementation checkpoint
-
-Stop after phases 0–2 and return for review with baseline results, an
-import/quarantine manifest with hashes, the BAG address/elevation model, the
-gold-building list, and a registration review page populated with Herengracht
-270 plus contrasting fixtures.
-
-Do not change the camera convention or run a detector before that checkpoint.
-First confirm that the rebuilt pipeline asks the right identity and elevation
-questions.
+| Failure | Diagnostic evidence | Bounded correction |
+| --- | --- | --- |
+| Wrong house/bank/OSM alias | References, footprints, neighbour order, address evidence | Retry identity/wall; invalidate descendants |
+| Anchors shift together | Independent residuals across buildings in one mission | Revisit camera/pose/datum within documented bounds; test unused anchors |
+| One view fails | Occlusion/coverage masks and alternate views | Replace view or accept only supported fields |
+| Local gable/opening mismatch | Corrected labels, spare view, silhouette/opening diagnostics | Refit affected parameters, revise mask/detector or request a targeted correction |
+| Recipe right, mesh wrong | Diagnostic views, IDs, dimensions and transform checks | Repair compiler, UV scale, winding, placement or ownership |
+| Colour wrong, geometry right | Masked neutral-colour pass and multiple observations | Revisit sampling/exposure/palette, without moving geometry |
+| Render too expensive | Route traces, triangles, draw calls, memory and decode counters | Simplify/instance/atlas or reduce detail radius while preserving silhouette |
+
+Run cheap structural checks first, identify the earliest implicated stage and
+retain the previous best candidate. Change a bounded parameter group per attempt.
+An LLM critic may propose structured discrepancies with evidence; it cannot
+approve itself, alter identities or invent hidden geometry. Evaluate clean inputs
+before revealing previous conclusions to reduce confirmation bias.
+
+Accept a revision only if hard gates pass, its declared discrepancy improves
+and named regressions remain sound. Start with three attempts per building plus
+configured time/API limits. Plateau, oscillation or conflicting evidence ends in
+`needs-review` and fallback. Save changes, before/after renders, scores and
+reasons; resume only unchanged dependencies. A prettier image cannot compensate
+for wrong identity, stale evidence or loss of a landmark feature.
+
+Human correction should be small: choose the polygon/wall, move anchors, fix an
+opening mask or select a gable/material. One auditable reviewer is sufficient
+for an initial fixture. Corrections become versioned regression cases and may
+enter development/training data. Separate frozen holdouts by building, block
+and mission; keep all views of a building in the same split. Use a spare view
+for per-building fit validation, and frozen holdouts only at release checkpoints.
+Once a held-out case drives a fix, move it to development and obtain fresh blind
+evaluation before claiming generalisation. Never train on your own accepted
+predictions as though they were independent truth.
+
+The achievable automation is **detect errors, retry within limits, abstain**.
+It cannot recover an unseen façade or guarantee that agreeing models are right.
+Audit random accepted buildings alongside prominent/uncertain/disagreeing cases.
+Track rejected and unknown coverage so rejecting everything cannot look successful.
+
+## Acceptance measurements
+
+These are initial targets, not achieved results. Freeze target sets, masks and
+threshold meanings before comparison. Report denominators/distributions and
+confidence intervals; zero errors in a small sample does not prove citywide safety.
+
+| Layer | Initial gate |
+| --- | --- |
+| Identity | Zero known wrong building/group/wall assignments in accepted pilot assets; all mesh IDs resolve to recorded aliases; ambiguity explicit |
+| Registration | No unexplained sign/180° error. Independent visible anchors: median wall-plane error ≤0.25 m, p95 ≤0.50 m; report source/anchor uncertainty rather than unsupported precision |
+| Extraction | Labelled visible regions: opening precision ≥95%, recall ≥85%, median centre error ≤0.25 m. Report exact storey/bay counts and gable class separately; unknown is not a correct negative |
+| Recipe → mesh | Correct IDs, dimensions, ground heights, front direction and openings within declared simplification tolerance; no escaped openings, missing surfaces, duplicate owners or filled passages |
+| Visual fidelity | Target silhouette IoU ≥0.90 on evaluable source-view boundaries; report local gable/roof edge error separately, initially p95 ≤0.50 m. Landmark checklist covers distinctive parts |
+| Appearance | Initial ≥90% accepted dominant palette/material agreement against corrected labels, with confusion matrices. Report masked perceptual colour error separately; no universal raw-RGB cutoff |
+| Gameplay | Fixed near/far/bridge/corner views retain recognition and clearance; picking/fallback survive failure, eviction and reload |
+| Performance | Pin device/browser/resolution. Initial route p95 frame time ≤16.7 ms on development desktop, ≤33.3 ms on selected mobile hardware; hardware checks remain outstanding |
+
+Start ordinary detailed houses around 200–1,500 triangles, signature models
+around 5k–20k, then measure. Provisional building-layer ceilings: 500k visible
+triangles, 150 draw calls, 64 MiB resident textures and 5 MB compressed incremental
+assets for the first block. GPU budgets include baseline plus additions. Record
+cold-load/decode stalls and warm frame times. Reduce detail/radius before wider
+rollout if needed; these are constraints to validate, not current measurements.
+
+Report quality and delivery together: unique pand/groups, buildings observed,
+elevations registered, per-field observed/inferred/unknown coverage, acceptance
+rate, error by façade/mission/occlusion, time/cost per accepted building, review
+burden, bytes and frame time. Keep the fallback city complete without counting
+it as successful façade reconstruction.
+
+## Delivery order and next implementation slice
+
+1. **Repair trust and establish the rendered baseline.** Add meaningful
+   regressions for acceptance after rejection/source changes, invalid wall IDs,
+   duplicate evidence and exact license matching; repair those gates. Separate
+   roof percentiles from eaves and frontage width from rectangle width. Make
+   legacy measurement/export entrypoints reject quarantined/stale inputs.
+   Diagnose the comparison page's zero-tile state and capture the loaded city
+   in gameplay. Preserve and deliberately finish/simplify the five untracked
+   external-identity files; they are not completed integration.
+2. **Three to five complete buildings.** Persist OSM↔BAG matches, explicit
+   camera model and world↔pixel anchors for Herengracht 270 plus contrasting
+   cases. Implement the minimal recipe compiler/diagnostic views using corrected
+   recipes. Deliver dossiers and gameplay before/after images, including a
+   deliberately wrong-building case that the gate rejects.
+3. **Iteration on the 16-building catalog.** Supply missing views, benchmark
+   two extraction paths, implement failure-directed retries and review import.
+   Split development/blind buildings and expand missing conditions. Demonstrate
+   one correction improving the rendered result and one unresolved case falling
+   back. Do not report an unreviewed catalog as a gold set.
+4. **One contiguous block, roughly 20–40 buildings.** Select from verified
+   visibility and existing pilot geometry. Include both banks, a bridge, a
+   corner and ordinary houses; report exclusions. Verify neighbour order,
+   skyline, LOD transitions, collisions, bytes and gameplay performance. The
+   inherited 0.873 km² boundary is a later envelope. Historical “88.6% frontal
+   coverage” is only geometric candidate coverage until image identity and
+   occlusion are remeasured.
+5. **A landmark route, then more Amsterdam.** Connect canal houses to Westerkerk
+   and further landmarks by navigation value and visible error. Expand by
+   block/neighbourhood with complete fallback and blind release audits. Increase
+   training/acquisition only when a measured bottleneck warrants it.
+
+As implemented, wire identity join, camera/registration, lineage/revocation,
+recipe/mesh and named visual regressions into a focused aggregate and then
+`check:canal`. Keep offline checks separate from network/model acquisition.
+Produce versioned staging, per-building diffs and evaluation manifests; retain
+the previous accepted extract for rollback.
+
+## Documentation and retained evidence
+
+This consolidates the former façade-twin prompt, renderer/LOD plans, enrichment
+plans, colour/RGB experiments, reconnaissance report and checkpoint. Full
+historical text is recoverable with
+`rtk git show 683d06b:public/canal-drive/<filename>`. Old source comments naming
+those documents refer to historical design, not additional active plans.
+
+Keep code, raw caches, structured fixtures, attribution/license files,
+game/deployment docs and operational runbooks. The
+[invalidation record](src/canalRecall/facade/fixtures/street-derived-invalidation.json)
+and `.cache/facade-rebuild/raw/v1/manifest.json` retain quarantine and raw lineage.
+Roof/RGB pilots remain optional diagnostics. Citywide roof sampling, material
+fine-tuning, photographic façades, exhaustive ornament, new renderer frameworks
+and unrelated-city expansion wait for a measured gameplay need.

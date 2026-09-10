@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 2,
+  "sourceRun": "public/canal-drive/facade-photo-review/local/city-variety-07",
+  "sourceManifestSha256": "73996e035e3e1c7e89fdf0f2be2009f98ada952f36a779484aa92e2f2cd55aea",
+  "reviewedAt": "2026-09-07",
+  "reviewMethod": "Visual review of each raw municipal panorama with the selected BAG wall and ground/ridge footprint projected through the shared camera model; the rectified strip was reviewed beside it.",
+  "note": "Registration-reviewed, unlabelled development strips. Usable dispositions establish source-wall alignment for development, not opening ground truth, building identity, or citywide accuracy. Diagnostic-only cases must not enter opening metrics.",
+  "cases": [
+    {
+      "pandId": "0363100012179418",
+      "sourceSha256": "27b94af2cecac96269377c61f600f307839bd5dbfed32bd53d6b0a4e0ad0f8f3",
+      "disposition": "diagnostic-only",
+      "focus": "compound building whose selected BAG wall spans several visual facade segments",
+      "review": "Projection reaches the visible building, but the wall-to-architectural-unit correspondence is ambiguous."
+    },
+    {
+      "pandId": "0363100012167534",
+      "sourceSha256": "129c46abdcecc5c72c303aea9d8900b28478e33ed1b00f83b7bb869a5b2ef8f2",
+      "disposition": "diagnostic-only",
+      "focus": "traditional masonry beside modern infill with compound-footprint ambiguity",
+      "review": "Projection covers visually distinct construction within one BAG wall span; keep for ownership diagnosis only."
+    },
+    {
+      "pandId": "0363100012180292",
+      "sourceSha256": "ba3f53132e749aaf365d51e2f8d773c2e78b7678c397a2a6df4effbe5c7399a6",
+      "disposition": "usable-development",
+      "focus": "registered corner facade, repeated upper windows, commercial plinth and bicycle occlusion",
+      "review": "Projected wall edges follow the visible corner facade boundaries."
+    },
+    {
+      "pandId": "0363100012172053",
+      "sourceSha256": "4be34f2b03fd72ea4de4657897ef4fe2f9f42016e454a39c7d03d047f8c1c7ec",
+      "disposition": "usable-development",
+      "focus": "narrow irregular facade, staggered openings and severe foreground vehicle occlusion",
+      "review": "Wall registration is coherent; the vehicle makes this a useful partial-visibility case."
+    },
+    {
+      "pandId": "0363100012168782",
+      "sourceSha256": "1eb751795748fbb7b7e8b9753c851d0c1fdd03c84228edc5602a1959ed3bb4c2",
+      "disposition": "usable-development",
+      "focus": "wide low industrial or garage frontage, large glazing and privacy blur",
+      "review": "Projected wall matches the complete wide frontage."
+    },
+    {
+      "pandId": "0363100012173813",
+      "sourceSha256": "f4c11dc3574848c2215120ac6e6f4f0d4e811c85da5a211461ad6a722a41fd01",
+      "disposition": "usable-development",
+      "focus": "medium contemporary residential facade with large divided-light windows and a souterrain",
+      "review": "Both projected wall edges align with visible facade seams."
+    },
+    {
+      "pandId": "0363100012176665",
+      "sourceSha256": "b81e11d7474d5d5174ff4d601d77f98262634b11b61c16b6604547022635ab77",
+      "disposition": "usable-development",
+      "focus": "narrow canal facade with balconies, repeated windows and light branch occlusion",
+      "review": "Wall boundaries align with both neighbouring facade seams and openings remain measurable."
+    },
+    {
+      "pandId": "0363100012167762",
+      "sourceSha256": "7d22d9da45ef125d5791b3d6439cd1c164a83356fadbc287db5988385c741f08",
+      "disposition": "usable-development",
+      "focus": "tall narrow facade with tree, market-stall and vehicle occlusion",
+      "review": "Projected wall matches the tall gabled unit; upper opening evidence remains usable."
+    },
+    {
+      "pandId": "0363100012171819",
+      "sourceSha256": "03bb4cdc1d20bf66a88592099d9d452b53ef062321fec0f6d778d41aebb208bb",
+      "disposition": "usable-development",
+      "focus": "wide restaurant shopfront, regular upper windows and stepped-gable termination",
+      "review": "Projected edges follow the visible architectural unit."
+    },
+    {
+      "pandId": "0363100012175556",
+      "sourceSha256": "749b458e07572db7e7106495105670fb9d51a1f6950870365d108b74310bdcae",
+      "disposition": "usable-hard-negative",
+      "focus": "sparse contemporary cladding with few openings and a neighbouring gable intruding above",
+      "review": "Wall registration is exact; the sparse surface is retained to expose false opening proposals."
+    },
+    {
+      "pandId": "0363100012174702",
+      "sourceSha256": "3111aa2a7bc27ca1005ba9e41065d7f11cf36bb3a6fe080ef31a4e3f60bb082e",
+      "disposition": "usable-development",
+      "focus": "shopfront, entrance, paired upper windows and adjacent-building boundaries",
+      "review": "Projected wall edges isolate the red shopfront building."
+    },
+    {
+      "pandId": "0363100012174413",
+      "sourceSha256": "4fead496a3958c6122b61de2144067d4914be4771aa32984816ee36f14dd6ce3",
+      "disposition": "usable-development",
+      "focus": "monumental arched glazing, dense muntins, kiosk and lamp-post occlusion",
+      "review": "Projection isolates the intended church bay; treat it as a facade segment rather than the complete building."
+    }
+  ],
+  "rejectedPredecessors": [
+    { "pandId": "0363100012176321", "reason": "Rectification shows canal and street furniture instead of a usable target facade." },
+    { "pandId": "0363100012179488", "reason": "Distant facade is dominated by a tree and lacks usable opening evidence." },
+    { "pandId": "0363100012174842", "reason": "Extreme narrow crop contains one partial opening and no useful family context." },
+    { "pandId": "0363100012172742", "reason": "Projected wall falls in the alley or street beside the visible building." },
+    { "pandId": "0363100012174001", "reason": "Projected span crosses the road and several distant facades, so ownership is wrong." },
+    { "pandId": "0363100012175750", "reason": "Projected wall cuts through a corner building and a street gap." },
+    { "pandId": "0363100012174787", "reason": "Projected wall combines historic and modern neighbouring buildings." },
+    { "pandId": "0363100012172693", "reason": "A houseboat fully hides the selected facade plane." },
+    { "pandId": "0363100012173983", "reason": "Projected wall occupies the roadway and unrelated distant facades." },
+    { "pandId": "0363100012253862", "reason": "Projected wall cuts through a rounded compound footprint without matching architectural boundaries." },
+    { "pandId": "0363100012177634", "reason": "Target facade is too distant and hidden by parked cars and trees to support opening evidence." }
+  ]
+}

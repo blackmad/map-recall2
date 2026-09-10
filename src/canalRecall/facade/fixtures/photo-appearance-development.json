@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "split": "development",
+  "note": "Codex visual annotations on one already-used source image. These measure named development failures, not held-out accuracy or registration.",
+  "sourceSha256": "86c9496387692f2f252eed562a298b33a3e384a51cd85ce9aa1b2509f2b281f7",
+  "address": "Keizersgracht 136",
+  "openings": [
+    { "id": "upper-right", "box": [177, 31, 233, 114] },
+    { "id": "middle-right", "box": [177, 140, 233, 241] }
+  ],
+  "negativeRegions": [{ "id": "car-headlight", "box": [41, 438, 93, 482] }],
+  "litWallPatches": [[82, 40, 97, 106], [157, 40, 172, 106]],
+  "windowLines": [
+    { "openingId": "window-1", "horizontalY": [73], "verticalX": [], "tolerancePx": 3 },
+    { "openingId": "window-4", "horizontalY": [177, 206], "verticalX": [], "tolerancePx": 3 }
+  ]
+}

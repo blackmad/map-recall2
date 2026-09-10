@@ -1,0 +1,164 @@
+[
+  {
+    "id": "engels",
+    "name": "Engels Verf",
+    "number": 93,
+    "numbers": [
+      93,
+      95,
+      97
+    ],
+    "colour": "#493a32",
+    "trim": "#f3ecda",
+    "sign": "engels",
+    "signStyle": "rainbow",
+    "view": "engels",
+    "sources": [
+      "https://engelsverf.nl/contact/"
+    ],
+    "description": "The rainbow fascia repeats across addresses 93–97: one paint shop joined to two BAG building records.",
+    "evidence": "Address range 93–97: Engels own contact page. Rainbow stripes, white lettering, dark doors and pale display-window frames: own frontage photograph and June 2025 municipal panorama. Letterform and dimensions are simplified. Abstract shelves and paint tins are illustrative.",
+    "street": "Elandsgracht",
+    "width": 5.5,
+    "wallColour": "#876653"
+  },
+  {
+    "id": "waldo",
+    "name": "WALDO · 2025 frontage",
+    "number": 91,
+    "colour": "#66513d",
+    "trim": "#eee5cb",
+    "sign": "WALDO",
+    "view": "engels",
+    "description": "A brown-and-cream pastry-shop front immediately beside Engels.",
+    "evidence": "WALDO lettering and pale display surround visible in June 2025. Current occupancy unverified; external listings conflict. No awning added.",
+    "street": "Elandsgracht",
+    "sources": []
+  },
+  {
+    "id": "koffiespot",
+    "name": "Koffiespot",
+    "number": 53,
+    "colour": "#465558",
+    "trim": "#e5deca",
+    "sign": "KOFFIE SPOT",
+    "view": "eland-middle",
+    "description": "Tall grey-green café glazing and a small white sign.",
+    "sources": [
+      "https://www.koffiespot.nl/"
+    ],
+    "street": "Elandsgracht",
+    "evidence": "Ground-floor colour and broad glazing are observed in the linked municipal panorama. Dimensions, glazing divisions and colour values are authored approximations. This depicts the dated reference, not certified current occupancy."
+  },
+  {
+    "id": "baskets",
+    "name": "Baskèts · 2025 frontage",
+    "number": 57,
+    "colour": "#293633",
+    "trim": "#e9e4d5",
+    "sign": "baskèts",
+    "view": "eland-middle",
+    "description": "A very dark shop base below a brown-brick house; the pale display frame makes the ground floor legible.",
+    "street": "Elandsgracht",
+    "sources": [],
+    "evidence": "Ground-floor colour and broad glazing are observed in the linked municipal panorama. Dimensions, glazing divisions and colour values are authored approximations. This depicts the dated reference, not certified current occupancy."
+  },
+  {
+    "id": "broodhuys",
+    "name": "Vlaamsch Broodhuys",
+    "number": 122,
+    "colour": "#ddd9ca",
+    "trim": "#313c37",
+    "sign": "VLAAMSCH BROODHUYS",
+    "awning": true,
+    "awningColour": "#393c38",
+    "view": "front-122",
+    "sources": [
+      "https://www.vlaamschbroodhuys.nl/winkels/amsterdam/elandsgracht/"
+    ],
+    "description": "Pale bakery frontage under a dark projecting awning.",
+    "evidence": "Address: own location page. Pale ground floor and dark awning: June 2025 street reference. Furniture omitted; awning projection is approximate.",
+    "street": "Elandsgracht"
+  },
+  {
+    "id": "siem",
+    "name": "Siem van der Gragt",
+    "number": 116,
+    "letter": "A",
+    "colour": "#384d41",
+    "trim": "#e6dfc7",
+    "sign": "SIEM VAN DER GRAGT",
+    "awning": true,
+    "awningColour": "#426f5e",
+    "awningSections": 2,
+    "view": "front-108",
+    "sources": [
+      "https://www.elandsgracht.com/"
+    ],
+    "description": "Paired green awnings and a dark fascia distinguish the butcher frontage.",
+    "evidence": "Business association identifies 116a. Green awnings and the ecological-butcher fascia are visible in June 2025. Approximate span within the larger building; not a surveyed shop boundary.",
+    "width": 10,
+    "street": "Elandsgracht"
+  },
+  {
+    "id": "west-awning",
+    "name": "Taupe corner awning",
+    "number": 148,
+    "colour": "#747a70",
+    "trim": "#e5dfce",
+    "sign": "",
+    "awning": true,
+    "awningColour": "#817c73",
+    "view": "eland-west",
+    "description": "A deep taupe awning at the western street mouth, with a pale-framed ground floor.",
+    "evidence": "Awning colour and location observed in June 2025; tenant left unnamed. BAG address identifies the corner building. Projected depth and glazing layout are approximate.",
+    "street": "Elandsgracht",
+    "sources": [],
+    "wallColour": "#737970",
+    "brick": false
+  },
+  {
+    "id": "palladio-awning",
+    "name": "Blue awning · Elandsgracht 64",
+    "number": 64,
+    "colour": "#d1ccba",
+    "trim": "#e8dfc9",
+    "sign": "",
+    "awning": true,
+    "awningColour": "#3d486f",
+    "view": "front-64",
+    "description": "A blue canopy adds a distinct break in the northern shopfront row.",
+    "evidence": "Blue awning and pale lower facade observed in June 2025. Business name withheld: frontage colour is useful without claiming a current tenant.",
+    "street": "Elandsgracht",
+    "sources": []
+  },
+  {
+    "id": "black-awning",
+    "name": "Dark awning · Elandsgracht 66",
+    "number": 66,
+    "colour": "#53554c",
+    "trim": "#e8dfc9",
+    "sign": "",
+    "awning": true,
+    "awningColour": "#343b39",
+    "view": "front-64",
+    "description": "The neighbouring dark awning gives the row a second canopy depth and colour.",
+    "street": "Elandsgracht",
+    "sources": [],
+    "evidence": "Ground-floor colour and broad glazing are observed in the linked municipal panorama. Dimensions, glazing divisions and colour values are authored approximations. This depicts the dated reference, not certified current occupancy."
+  },
+  {
+    "id": "antiek",
+    "name": "Antiekcentrum · 2025 frontage",
+    "number": 109,
+    "colour": "#86464e",
+    "trim": "#eae0ce",
+    "sign": "ANTIEKCENTRUM",
+    "view": "front-113",
+    "description": "A broad burgundy entrance and pale lettering create another strong everyday anchor.",
+    "width": 8,
+    "street": "Elandsgracht",
+    "sources": [],
+    "evidence": "Ground-floor colour and broad glazing are observed in the linked municipal panorama. Dimensions, glazing divisions and colour values are authored approximations. This depicts the dated reference, not certified current occupancy."
+  }
+]
