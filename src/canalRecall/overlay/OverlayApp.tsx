@@ -131,6 +131,7 @@ const VIEW_LABEL: Record<CanalPreferences['viewMode'], string> = {
 const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
   { value: 'surprise', title: 'Surprise route', hint: 'Landmark to landmark' },
   { value: 'home', title: 'Home base', hint: 'Errands from an address' },
+  { value: 'study', title: 'Da Costa study', hint: 'Styled street lesson' },
 ];
 
 const DIFFICULTY_MAIN: Choice<CanalPreferences['difficulty']>[] = [
@@ -207,6 +208,7 @@ export function OverlayApp({
             <select id="route-pattern" hidden value={prefs.routePattern} onChange={event => patch({ routePattern: event.target.value as CanalPreferences['routePattern'] })}>
               <option value="surprise">Surprise</option>
               <option value="home">Home</option>
+              <option value="study">Da Costa study</option>
             </select>
             <select id="route-difficulty" hidden value={prefs.difficulty} onChange={event => patch({ difficulty: event.target.value as CanalPreferences['difficulty'] })}>
               <option value="easy">Easy</option>
@@ -243,7 +245,9 @@ export function OverlayApp({
               label="Route"
               name="route"
               value={prefs.routePattern}
-              onChange={value => patch({ routePattern: value })}
+              onChange={value => patch(value === 'study'
+                ? { routePattern: value, travelMode: 'car', viewMode: 'chase', zoom: 0.8 }
+                : { routePattern: value })}
               options={ROUTE}
               icons={ROUTE_ICONS}
             />

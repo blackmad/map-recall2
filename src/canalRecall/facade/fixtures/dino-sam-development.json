@@ -1,0 +1,22 @@
+{
+  "split": "development",
+  "note": "Approximate outer-frame rectangles on previously viewed images, annotated by Codex. Only the listed fully visible frames are scored; unlabelled ground-floor/partial openings are not false positives. No pixel-mask truth or registration acceptance.",
+  "cases": [
+    {
+      "sourceSha256": "2403d413cfcb7634b319e9ac442c25fbccb79a433faf2f0ccc0cb59ffc3edb3f",
+      "address": "Herengracht 242",
+      "boxes": [[74, 99, 161, 246], [188, 99, 277, 246], [73, 315, 162, 544], [184, 315, 278, 547]]
+    },
+    {
+      "sourceSha256": "1682e0b60ac9a260fdd510f19850290f42f98dfd0de849389f8f7f2e7f2fb370",
+      "address": "Herengracht 219",
+      "boxes": [[3, 60, 44, 141], [64, 61, 141, 143], [160, 63, 201, 143], [1, 175, 45, 289], [63, 175, 141, 289], [158, 175, 201, 290]]
+    },
+    {
+      "sourceSha256": "86c9496387692f2f252eed562a298b33a3e384a51cd85ce9aa1b2509f2b281f7",
+      "address": "Keizersgracht 136",
+      "boxes": [[21, 29, 79, 114], [101, 31, 154, 114], [177, 31, 233, 114], [21, 140, 79, 242], [100, 141, 156, 241], [177, 140, 233, 241]],
+      "negativeBoxes": [[41, 438, 93, 482]]
+    }
+  ]
+}

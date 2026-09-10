@@ -86,6 +86,13 @@ export interface MassingRecord {
   /** Native roof-type string, kept because normalisation loses detail. */
   roofFormRaw: string | null;
   groundLevel: number | null;
+  /** Required before consuming normalized heights; old cached adapters mislabelled roof percentiles. */
+  heightSemantics?: 'surface-heights-v2';
+  sourceSchema?: string;
+  /** Absolute surface percentiles in the source datum, never eaves or ridge. */
+  roofSurfaceHeight50p?: number | null;
+  roofSurfaceHeightMax?: number | null;
+  /** Local wall/roof boundary elevation, or unknown when boundaries were not read. */
   eavesHeight: number | null;
   ridgeHeight: number | null;
   /**

@@ -47,6 +47,7 @@ export function buildingColorExpression(theme: CanalTheme | string): MapLibreExp
   // quietly ignores the rest.
   return [
     'case',
+    ['has', 'sideColour'], ['to-color', ['get', 'sideColour'], THEME_DEFAULTS[selectedTheme]],
     ['has', 'colour'], ['to-color', ['get', 'colour'], THEME_DEFAULTS[selectedTheme]],
     ['has', 'color'], ['to-color', ['get', 'color'], THEME_DEFAULTS[selectedTheme]],
     materialMatch,
@@ -58,6 +59,25 @@ export function buildingOpacity(theme: CanalTheme | string): number {
   // each other, so overlapping footprints tore into visible streaks where
   // one building showed through another.
   return theme === 'cyberpunk' ? 0.98 : 1;
+}
+
+export type BuildingLight = { anchor:'map'; color:string; intensity:number; position:[number,number,number] };
+
+/** One stable map-anchored sun gives extrusion faces readable depth while the
+ * player turns. Theme variants change tone, not geometry or evidence. */
+export function buildingLight(theme:CanalTheme|string):BuildingLight {
+  const selected:CanalTheme=theme in THEME_DEFAULTS?theme as CanalTheme:'clean';
+  const values:Record<CanalTheme,{color:string;intensity:number}>={
+    // Keep enough directional contrast to describe extrusion depth without
+    // adding so much warm light that buff, plaster and grey priors converge on
+    // the clean theme's cream ground.
+    clean:{color:'#fff7ea',intensity:.5},
+    '8bit':{color:'#fff2c2',intensity:.68},
+    '16bit':{color:'#f2e7ff',intensity:.66},
+    psx:{color:'#e7d3b5',intensity:.56},
+    cyberpunk:{color:'#79dfff',intensity:.46},
+  };
+  return{anchor:'map',...values[selected],position:[1.25,210,42]};
 }
 
 // OpenFreeMap's planet tiles are built with planetiler, which drops the OSM id
@@ -246,6 +266,8 @@ export function wallTopHeightExpression(): MapLibreExpression {
   ];
   return [
     'case',
+    ['all', ['has', 'roofEavesHeightM'], ['>', ['coalesce', ['get', 'roofEavesHeightM'], 0], 0]],
+    ['min', height, ['get', 'roofEavesHeightM']],
     ['==', ['get', 'roofShape'], 'pyramidal'],
     eaves(pyramidalTip),
     ['all',

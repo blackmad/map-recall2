@@ -181,7 +181,11 @@
     </header>
     <div class="workspace" id="app" aria-live="polite"></div>
   </div>
+  <script src="../js/facade-registration.bundle.js"></script>
   <script>
+    const { registrationFixtureIsReviewed, registrationObservationHash, mergeRegistrationDraft } = window.CanalRecallRegistration;
+    let renderRevision = 0;
+    const reviewedFixtures = new Set();
     const state = { fixtures: [], selected: 0, edits: {}, anchorsOpen: false };
     const anchorKinds = ['wall-left', 'wall-right', 'ground', 'eaves', 'roofline'];
     const storageKey = fixture => `map-recall-registration-review:${fixture.fixtureId}`;
@@ -189,9 +193,9 @@
     const address = item => `${item.publicSpaceName} ${item.houseNumber}${item.houseLetter || ''}${item.suffix ? `-${item.suffix}` : ''}${item.postalCode ? `, ${item.postalCode}` : ''}`;
     const current = () => state.fixtures[state.selected];
     const edited = fixture => state.edits[fixture.fixtureId] || fixture;
-    const loadEdit = fixture => { try { return JSON.parse(localStorage.getItem(storageKey(fixture))) || fixture; } catch { return fixture; } };
+    const loadEdit = fixture => { try { return mergeRegistrationDraft(fixture, JSON.parse(localStorage.getItem(storageKey(fixture))) || fixture); } catch { return fixture; } };
     const persist = fixture => { state.edits[fixture.fixtureId] = fixture; localStorage.setItem(storageKey(fixture), JSON.stringify(fixture)); render(); };
-    const isReviewed = fixture => Boolean(fixture.selectedElevationId && (fixture.reviewPasses || []).some(pass => pass.identityVerdict === 'accepted' && pass.elevationVerdict === 'accepted'));
+    const isReviewed = fixture => reviewedFixtures.has(fixture.fixtureId);
     const statusOf = fixture => { const item = edited(fixture); return item.status === 'rejected' ? 'rejected' : isReviewed(item) ? 'accepted' : 'candidate'; };
     const reviewCount = fixture => edited(fixture).reviewPasses?.length || 0;
     const displayStatus = fixture => statusOf(fixture) === 'accepted' ? 'Reviewed' : statusOf(fixture) === 'rejected' ? 'Marked unusable' : reviewCount(fixture) ? 'Needs attention' : 'Not reviewed';
@@ -224,11 +228,17 @@
 
     function renderViewer(fixture) {
       if (!fixture.panorama?.localImageUrl) return `<div class="viewer empty"><div class="viewer-message"><strong>No panorama assigned.</strong><br>This contrast fixture is waiting for explicit geometric view selection. It cannot inherit an old crop.</div></div>`;
-      const anchors = fixture.anchors.map(anchor => `<span class="anchor" data-kind="${escapeHtml(anchor.kind)}" style="left:${anchor.pixel.x / 80}%;top:${anchor.pixel.y / 40}%"></span>`).join('');
-      return `<div class="viewer" id="viewer"><img id="panorama" src="${escapeHtml(fixture.panorama.localImageUrl)}" width="8000" height="4000" alt="Full equirectangular municipal panorama for ${escapeHtml(fixture.label)}">${anchors}</div>`;
+      const width = fixture.sourceVersion?.width || 8000, height = fixture.sourceVersion?.height || 4000;
+      const anchors = fixture.anchors.map(anchor => `<span class="anchor" data-kind="${escapeHtml(anchor.kind)}" style="left:${anchor.pixel.x / width * 100}%;top:${anchor.pixel.y / height * 100}%"></span>`).join('');
+      return `<div class="viewer" id="viewer"><img id="panorama" src="${escapeHtml(fixture.panorama.localImageUrl)}" width="${width}" height="${height}" alt="Full equirectangular municipal panorama for ${escapeHtml(fixture.label)}">${anchors}</div>`;
     }
 
-    function render() {
+    async function render() {
+      const revision = ++renderRevision;
+      const verdicts = await Promise.all(state.fixtures.map(async source => [source.fixtureId, await registrationFixtureIsReviewed(edited(source))]));
+      if (revision !== renderRevision) return;
+      reviewedFixtures.clear();
+      for (const [id, accepted] of verdicts) if (accepted) reviewedFixtures.add(id);
       const source = current();
       if (!source) return;
       const fixture = edited(source);
@@ -238,31 +248,31 @@
       document.querySelector('#counter').innerHTML = `${accepted}/${ready.length} REVIEWED<br>${waiting.length} WAITING FOR PANORAMAS`;
       document.querySelector('#app').innerHTML = `
         <aside class="fixtures">
-          <div class="queue-head"><h2>Ready now</h2><p>This is the only building with a traceable source panorama. Review it before preparing more.</p></div>
+          <div class="queue-head"><h2>Ready now</h2><p>Review each available panorama against the official footprint and neighbouring buildings.</p></div>
           <nav class="fixture-list" aria-label="Buildings ready for review">${ready.map(({fixture:item,index}) => `<button class="fixture ${index === state.selected ? 'active' : ''}" data-index="${index}" data-state="${statusOf(item)}"><span class="dot"></span><span><strong>${escapeHtml(item.label)}</strong><small>Official building ${escapeHtml(item.pandId)}</small></span><b>${reviewCount(item) ? 'SAVED' : 'START'}</b></button>`).join('')}</nav>
           <details class="waiting"><summary>Not ready yet <span>${waiting.length}</span></summary><p>These records have official building geometry, but no freshly selected panorama. They cannot be reviewed yet.</p><div class="waiting-list">${waiting.map(item => `<div class="waiting-item"><strong>${escapeHtml(item.label)}</strong><span>WAITING</span></div>`).join('')}</div></details>
         </aside>
         <main class="observation">
-          <div class="observation-bar"><div><h2>${escapeHtml(fixture.label)}</h2><code>READY FOR REVIEW · ${escapeHtml(fixture.panorama?.panoramaId || 'NO PANORAMA')}</code></div><div class="phase-lock">CAMERA MODEL LOCKED<br>OPENING DETECTOR OFF</div></div>
+          <div class="observation-bar"><div><h2>${escapeHtml(fixture.label)}</h2><code>READY FOR REVIEW · ${escapeHtml(fixture.panorama?.panoramaId || 'NO PANORAMA')}</code></div><div class="phase-lock">IDENTITY REVIEW<br>METRIC REGISTRATION SEPARATE</div></div>
           ${renderViewer(fixture)}
           <div class="under-viewer">
             <section class="footprint"><div class="surface-title"><h3>Building outline</h3><span>GREEN CAMERA → YELLOW WALL</span></div>${footprintSvg(fixture)}</section>
-            <section class="preview"><div class="surface-title"><h3>What to compare</h3><span>ONE DECISION</span></div><ul class="compare-list"><li><b>1</b><span><strong>Photo ↔ address</strong>Does the corner building in the panorama match Herengracht 270 and its official addresses?</span></li><li><b>2</b><span><strong>Photo ↔ outline</strong>Does the building shape make sense for the pictured corner?</span></li><li><b>3</b><span><strong>Camera ↔ yellow wall</strong>Does the green camera-to-wall line reach the façade visible in the panorama? It uses position only, never image heading. If any answer is unclear, record “Not sure.”</span></li></ul></section>
+            <section class="preview"><div class="surface-title"><h3>What to compare</h3><span>ONE DECISION</span></div><ul class="compare-list"><li><b>1</b><span><strong>Photo ↔ address</strong>Can you identify the target using visible address evidence, distinctive features and neighbour order?</span></li><li><b>2</b><span><strong>Photo ↔ outline</strong>Do the visible building limits match the selected footprint?</span></li><li><b>3</b><span><strong>Camera ↔ yellow wall</strong>Does the green camera-to-wall line reach the façade visible in the panorama? It uses position only, never image heading. If any answer is unclear, record “Not sure.”</span></li></ul></section>
           </div>
         </main>
         <aside class="inspector">
-          <section class="section task-guide"><h3>Your task</h3><p>Decide whether the panorama, official building record, and highlighted wall all describe the same façade.</p><ol class="task-steps"><li><b>1</b><span><strong>Look at the panorama</strong>Find the large corner building on the right.</span></li><li><b>2</b><span><strong>Follow the green line</strong>It runs from the camera position to the chosen yellow wall.</span></li><li><b>3</b><span><strong>Record your decision</strong>Answer two plain-language questions.</span></li></ol><p class="review-progress" role="status">${escapeHtml(reviewProgress(fixture))}</p><button class="button primary" id="jump-review">Record my decision</button></section>
+          <section class="section task-guide"><h3>Your task</h3><p>Decide whether the panorama, official building record, and highlighted wall all describe the same façade.</p><ol class="task-steps"><li><b>1</b><span><strong>Look at the panorama</strong>Locate the target independently. Consider adjacent buildings and the opposite canal bank.</span></li><li><b>2</b><span><strong>Follow the green line</strong>It runs from the camera position to the chosen yellow wall.</span></li><li><b>3</b><span><strong>Record your decision</strong>Answer two plain-language questions.</span></li></ol><p class="review-progress" role="status">${escapeHtml(reviewProgress(fixture))}</p><button class="button primary" id="jump-review">Record my decision</button></section>
           <section class="section"><h3>Is this the right building?</h3><dl class="fact-grid"><dt>Expected address</dt><dd>${escapeHtml(fixture.label)}</dd><dt>Official building ID</dt><dd>${escapeHtml(fixture.pandId)}</dd><dt>Review status</dt><dd>${escapeHtml(displayStatus(source))}</dd></dl><details class="advanced"><summary>Show all ${fixture.addresses.length} official addresses</summary><ul class="addresses">${fixture.addresses.length ? fixture.addresses.map(item => `<li>${escapeHtml(address(item))}</li>`).join('') : '<li>No official addresses were found. Record “Not sure.”</li>'}</ul></details></section>
-          <section class="section"><h3>Which wall faces the camera?</h3><p class="notice">The green dot is the panorama position; its dashed line ends at the chosen yellow wall. Select another wall only if that connection is clearly wrong.</p><div class="elevation-list">${fixture.elevations.map((elevation, index) => `<label class="elevation-option"><input type="radio" name="elevation" value="${escapeHtml(elevation.elevationId)}" ${elevation.elevationId === fixture.selectedElevationId ? 'checked' : ''}><span><strong>Wall ${index + 1}</strong><br>${elevation.lengthM.toFixed(2)} m</span><b>${cardinal(elevation.facingDeg)} · ${elevation.facingDeg.toFixed(0)}°</b></label>`).join('')}</div></section>
-          <section class="section" id="review-form"><h3>Record your decision</h3><div class="review-fields"><label class="wide"><span class="field-label">Your name or initials</span><input id="reviewer" autocomplete="name" placeholder="Required"></label><label><span class="field-label">Photo matches building?</span><select id="identity-verdict"><option value="uncertain">Not sure</option><option value="accepted">Yes — it matches</option><option value="rejected">No — wrong building</option></select></label><label><span class="field-label">Highlighted wall correct?</span><select id="elevation-verdict"><option value="uncertain">Not sure</option><option value="accepted">Yes — correct wall</option><option value="rejected">No — wrong wall</option></select></label><label class="wide"><span class="field-label">Notes (optional)</span><textarea id="review-note" placeholder="Explain anything uncertain or distinctive."></textarea></label></div><p class="notice">One review is enough for this local checkpoint. You can update it at any time.</p><p class="review-error" id="review-error" role="alert"></p><div class="button-row"><button class="button primary" id="save-pass">Save this review</button><button class="button danger" id="reject-fixture">Mark fixture unusable</button><button class="button" id="export-review">Export review JSON</button></div></section>
+          <section class="section"><h3>Which wall faces the camera?</h3><p class="notice">The green dot is the panorama position; its dashed line ends at the chosen yellow wall. Choose the wall supported by the image and street context. The initial selection is a geometric candidate.</p><div class="elevation-list">${fixture.elevations.map((elevation, index) => `<label class="elevation-option"><input type="radio" name="elevation" value="${escapeHtml(elevation.elevationId)}" ${elevation.elevationId === fixture.selectedElevationId ? 'checked' : ''}><span><strong>Wall ${index + 1}</strong><br>${elevation.lengthM.toFixed(2)} m</span><b>${cardinal(elevation.facingDeg)} · ${elevation.facingDeg.toFixed(0)}°</b></label>`).join('')}</div></section>
+          <section class="section" id="review-form"><h3>Record your decision</h3><div class="review-fields"><label class="wide"><span class="field-label">Your name or initials</span><input id="reviewer" autocomplete="name" placeholder="Required"></label><label><span class="field-label">Photo matches building?</span><select id="identity-verdict"><option value="uncertain">Not sure</option><option value="accepted">Yes — it matches</option><option value="rejected">No — wrong building</option></select></label><label><span class="field-label">Highlighted wall correct?</span><select id="elevation-verdict"><option value="uncertain">Not sure</option><option value="accepted">Yes — correct wall</option><option value="rejected">No — wrong wall</option></select></label><label class="wide"><span class="field-label">Notes (optional)</span><textarea id="review-note" placeholder="Explain anything uncertain or distinctive."></textarea></label></div><p class="notice">One recorded identity review is sufficient. Source or wall changes require a new review; metric registration needs world anchors and residual checks.</p><p class="review-error" id="review-error" role="alert"></p><div class="button-row"><button class="button primary" id="save-pass">Save this review</button><button class="button danger" id="reject-fixture">Mark fixture unusable</button><button class="button" id="export-review">Export review JSON</button><label class="button">Import review JSON<input id="import-review" type="file" accept="application/json" hidden></label></div></section>
           <section class="section"><details class="advanced"><summary>Panorama and geometry details</summary>${fixture.panorama ? `<dl class="fact-grid"><dt>Captured</dt><dd>${escapeHtml(new Date(fixture.panorama.capturedAt).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'medium', timeZone: 'Europe/Amsterdam' }))}</dd><dt>Mission</dt><dd>${escapeHtml(fixture.panorama.mission || fixture.panorama.missionYear || 'not supplied')}</dd><dt>Longitude</dt><dd>${fixture.panorama.lngLat[0].toFixed(8)}</dd><dt>Latitude</dt><dd>${fixture.panorama.lngLat[1].toFixed(8)}</dd><dt>Camera height</dt><dd>${fixture.panorama.cameraHeight.toFixed(3)} m</dd><dt>Heading</dt><dd>${fixture.panorama.headingDeg.toFixed(3)}°</dd><dt>Pitch</dt><dd>${fixture.panorama.pitchDeg.toFixed(3)}°</dd><dt>Roll</dt><dd>${fixture.panorama.rollDeg.toFixed(3)}°</dd><dt>Outline vertices</dt><dd>${fixture.footprintRd.length}</dd></dl>` : '<p class="notice">No observation is assigned. Metadata cannot be inferred from a nearby image.</p>'}</details></section>
-          <section class="section"><details class="advanced" id="anchor-details" ${state.anchorsOpen ? 'open' : ''}><summary>Advanced: marked points (${fixture.anchors.length})</summary><div class="anchor-controls"><label><span class="field-label">Point kind</span><select id="anchor-kind">${anchorKinds.map(kind => `<option>${kind}</option>`).join('')}</select></label><label><span class="field-label">Note</span><input id="anchor-note" placeholder="Distinctive cornice"></label><label><span class="field-label">Pixel X</span><input id="anchor-x" type="number" min="0" max="7999" step="1"></label><label><span class="field-label">Pixel Y</span><input id="anchor-y" type="number" min="0" max="3999" step="1"></label></div><div class="button-row"><button class="button" id="capture-anchor" ${fixture.panorama ? '' : 'disabled'}>Pick point from panorama</button><button class="button" id="add-anchor" ${fixture.panorama ? '' : 'disabled'}>Add exact coordinates</button><button class="button" id="undo-anchor" ${fixture.anchors.length ? '' : 'disabled'}>Undo last point</button><button class="button danger" id="clear-anchors" ${fixture.anchors.length ? '' : 'disabled'}>Clear all points</button></div><p class="notice">This is optional at the checkpoint. Points are stored only in your browser.</p>${fixture.anchors.length ? `<ol class="anchor-list">${fixture.anchors.map((anchor, index) => `<li class="anchor-item"><span><strong>Point ${index + 1} · ${escapeHtml(anchor.kind)}</strong>x ${anchor.pixel.x}, y ${anchor.pixel.y}${anchor.note ? ` · ${escapeHtml(anchor.note)}` : ''}</span><button class="button remove-anchor" data-anchor-id="${escapeHtml(anchor.anchorId)}" aria-label="Remove point ${index + 1}">Remove</button></li>`).join('')}</ol>` : '<p class="notice">No points have been marked.</p>'}</details></section>
-          <section class="section"><details class="advanced"><summary>Why is there no corrected façade image?</summary><p class="notice">That image belongs to the next phase. Camera calibration and opening detection remain locked until this building has one recorded review.</p></details></section>
+          <section class="section"><details class="advanced" id="anchor-details" ${state.anchorsOpen ? 'open' : ''}><summary>Advanced: marked points (${fixture.anchors.length})</summary><div class="anchor-controls"><label><span class="field-label">Point kind</span><select id="anchor-kind">${anchorKinds.map(kind => `<option>${kind}</option>`).join('')}</select></label><label><span class="field-label">Note</span><input id="anchor-note" placeholder="Distinctive cornice"></label><label><span class="field-label">Pixel X</span><input id="anchor-x" type="number" min="0" max="${(fixture.sourceVersion?.width || 8000) - 1}" step="1"></label><label><span class="field-label">Pixel Y</span><input id="anchor-y" type="number" min="0" max="${(fixture.sourceVersion?.height || 4000) - 1}" step="1"></label></div><div class="button-row"><button class="button" id="capture-anchor" ${fixture.panorama ? '' : 'disabled'}>Pick point from panorama</button><button class="button" id="add-anchor" ${fixture.panorama ? '' : 'disabled'}>Add exact coordinates</button><button class="button" id="undo-anchor" ${fixture.anchors.length ? '' : 'disabled'}>Undo last point</button><button class="button danger" id="clear-anchors" ${fixture.anchors.length ? '' : 'disabled'}>Clear all points</button></div><p class="notice">Pixel marks support identity review. Metric registration also requires world coordinates, provenance and uncertainty. Export to preserve your edits.</p>${fixture.anchors.length ? `<ol class="anchor-list">${fixture.anchors.map((anchor, index) => `<li class="anchor-item"><span><strong>Point ${index + 1} · ${escapeHtml(anchor.kind)}</strong>x ${anchor.pixel.x}, y ${anchor.pixel.y}${anchor.note ? ` · ${escapeHtml(anchor.note)}` : ''}</span><button class="button remove-anchor" data-anchor-id="${escapeHtml(anchor.anchorId)}" aria-label="Remove point ${index + 1}">Remove</button></li>`).join('')}</ol>` : '<p class="notice">No points have been marked.</p>'}</details></section>
+          <section class="section"><details class="advanced"><summary>Why is there no corrected façade image?</summary><p class="notice">Camera tests and diagnostic rectifications may proceed. Accepting extracted measurements requires separately verified metric registration.</p></details></section>
         </aside>`;
       wire(fixture);
     }
 
-    function withFixture(change) { const fixture = structuredClone(edited(current())); change(fixture); persist(fixture); }
+    async function withFixture(change) { const fixture = structuredClone(edited(current())); await change(fixture); persist(fixture); }
     function addAnchor(x, y) {
       const kind = document.querySelector('#anchor-kind').value;
       const note = document.querySelector('#anchor-note').value.trim();
@@ -281,7 +291,7 @@
         const xValue = document.querySelector('#anchor-x').value;
         const yValue = document.querySelector('#anchor-y').value;
         const x = Number(xValue), y = Number(yValue);
-        if (xValue !== '' && yValue !== '' && Number.isFinite(x) && Number.isFinite(y) && x >= 0 && x <= 7999 && y >= 0 && y <= 3999) addAnchor(x, y);
+        if (xValue !== '' && yValue !== '' && Number.isFinite(x) && Number.isFinite(y) && x >= 0 && x < (fixture.sourceVersion?.width || 8000) && y >= 0 && y < (fixture.sourceVersion?.height || 4000)) addAnchor(x, y);
       });
       document.querySelector('#undo-anchor').addEventListener('click', () => {
         withFixture(item => item.anchors.pop());
@@ -309,24 +319,64 @@
         withFixture(item => { item.anchors = []; });
         document.querySelector('#anchor-details summary').focus();
       });
+      const panoImage = document.querySelector('#panorama');
+      const imageBounds = () => {
+        const rect = panoImage.getBoundingClientRect();
+        const scale = Math.min(rect.width / panoImage.naturalWidth, rect.height / panoImage.naturalHeight);
+        const width = panoImage.naturalWidth * scale, height = panoImage.naturalHeight * scale;
+        return { left: rect.left + (rect.width - width) / 2, top: rect.top + (rect.height - height) / 2, width, height };
+      };
+      const positionAnchors = () => {
+        if (!panoImage?.naturalWidth) return;
+        const rect = imageBounds(), viewer = document.querySelector('#viewer').getBoundingClientRect();
+        document.querySelectorAll('#viewer .anchor').forEach((node, index) => {
+          const anchor = fixture.anchors[index];
+          node.style.left = `${rect.left - viewer.left + anchor.pixel.x / panoImage.naturalWidth * rect.width}px`;
+          node.style.top = `${rect.top - viewer.top + anchor.pixel.y / panoImage.naturalHeight * rect.height}px`;
+        });
+      };
+      if (panoImage) { panoImage.addEventListener('load', positionAnchors); positionAnchors(); }
+      window.onresize = positionAnchors;
       document.querySelector('#viewer')?.addEventListener('click', event => {
         if (!event.currentTarget.classList.contains('capture')) return;
         const image = document.querySelector('#panorama');
-        const rect = image.getBoundingClientRect();
-        addAnchor((event.clientX - rect.left) / rect.width * image.naturalWidth, (event.clientY - rect.top) / rect.height * image.naturalHeight);
+        const rect = imageBounds();
+        const x = (event.clientX - rect.left) / rect.width * image.naturalWidth;
+        const y = (event.clientY - rect.top) / rect.height * image.naturalHeight;
+        if (x >= 0 && y >= 0 && x < image.naturalWidth && y < image.naturalHeight) addAnchor(x, y);
       });
-      document.querySelector('#save-pass').addEventListener('click', () => {
+      async function saveReview(rejected = false) {
         const reviewer = document.querySelector('#reviewer').value.trim();
-        if (!reviewer) { document.querySelector('#reviewer').focus(); return; }
-        withFixture(item => {
-          const review = { passId: 'pass-1', reviewer, reviewedAt: new Date().toISOString(), identityVerdict: document.querySelector('#identity-verdict').value, elevationVerdict: document.querySelector('#elevation-verdict').value, note: document.querySelector('#review-note').value.trim() };
-          item.reviewPasses = item.reviewPasses.filter(pass => pass.passId !== review.passId).concat(review);
-          item.status = isReviewed(item) ? 'accepted' : 'candidate';
+        if (!reviewer) { document.querySelector('#review-error').textContent = 'Enter your name or initials to record this decision.'; document.querySelector('#reviewer').focus(); return; }
+        const identityVerdict = rejected ? 'rejected' : document.querySelector('#identity-verdict').value;
+        const elevationVerdict = rejected ? 'rejected' : document.querySelector('#elevation-verdict').value;
+        const note = document.querySelector('#review-note').value.trim();
+        await withFixture(async item => {
+          const review = { passId: crypto.randomUUID(), reviewer, reviewedAt: new Date().toISOString(),
+            identityVerdict, elevationVerdict, note, observationHash: await registrationObservationHash(item) };
+          item.reviewPasses.push(review);
+          item.status = rejected ? 'rejected' : 'candidate';
+          if (await registrationFixtureIsReviewed(item)) item.status = 'accepted';
         });
+      }
+      document.querySelector('#save-pass').addEventListener('click', () => saveReview());
+      document.querySelector('#reject-fixture').addEventListener('click', () => saveReview(true));
+      document.querySelector('#import-review').addEventListener('change', async event => {
+        try {
+          const file = event.target.files[0];
+          if (!file) return;
+          const payload = JSON.parse(await file.text());
+          if (!Array.isArray(payload.fixtures)) throw new Error('Expected a fixtures array.');
+          const drafts = state.fixtures.map(source => {
+            const draft = payload.fixtures.find(item => item.fixtureId === source.fixtureId);
+            return draft ? mergeRegistrationDraft(edited(source), draft) : edited(source);
+          });
+          for (const draft of drafts) { state.edits[draft.fixtureId] = draft; localStorage.setItem(storageKey(draft), JSON.stringify(draft)); }
+          render();
+        } catch (error) { document.querySelector('#review-error').textContent = `Import failed: ${error.message}`; }
       });
-      document.querySelector('#reject-fixture').addEventListener('click', () => withFixture(item => item.status = 'rejected'));
       document.querySelector('#export-review').addEventListener('click', () => {
-        const payload = { schemaVersion: 1, exportedAt: new Date().toISOString(), fixtures: state.fixtures.map(item => edited(item)) };
+        const payload = { schemaVersion: 2, exportedAt: new Date().toISOString(), fixtures: state.fixtures.map(item => edited(item)) };
         const link = document.createElement('a'); link.href = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'})); link.download = 'facade-registration-review.json'; link.click(); URL.revokeObjectURL(link.href);
       });
     }

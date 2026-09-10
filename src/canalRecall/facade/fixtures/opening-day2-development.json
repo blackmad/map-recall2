@@ -1,0 +1,54 @@
+{
+  "split": "development-day2",
+  "note": "Visible outer-opening rectangles on the four named source strips, labelled after the earlier runs were inspected. Fully visible, occluded and source-truncated observations have separate denominators. Explicit negatives are regions mistaken for openings. These development labels do not accept registration or BAG ownership.",
+  "cases": [
+    {
+      "address": "Herengracht 242",
+      "sourceSha256": "2403d413cfcb7634b319e9ac442c25fbccb79a433faf2f0ccc0cb59ffc3edb3f",
+      "boxes": [[74,98,162,247],[188,99,278,248],[73,313,162,545],[187,313,278,547]],
+      "partialBoxes": [[74,0,163,72],[190,0,277,67],[82,591,147,659]],
+      "families": [
+        {"name":"upper-paired-windows","boxes":[[74,98,162,247],[188,99,278,248]]},
+        {"name":"tall-lower-windows","boxes":[[73,313,162,545],[187,313,278,547]]}
+      ],
+      "coverage": {"roof":"absent from source strip; wider exact-pose view invalidated by camera-height outlier","basement":"partial at bottom edge","ownership":"left neighbour and souterrain datum unresolved"}
+    },
+    {
+      "address": "Herengracht 219",
+      "sourceSha256": "1682e0b60ac9a260fdd510f19850290f42f98dfd0de849389f8f7f2e7f2fb370",
+      "boxes": [[3,60,44,145],[64,60,141,145],[160,62,202,145],[3,174,45,290],[64,174,141,290],[159,174,202,290],[51,406,147,507],[169,333,202,382]],
+      "partialBoxes": [[65,0,140,27],[241,73,262,164],[239,187,262,286],[242,0,262,59]],
+      "families": [
+        {"name":"narrow-side-windows","boxes":[[3,60,44,145],[160,62,202,145],[3,174,45,290],[159,174,202,290]]},
+        {"name":"wide-centre-windows","boxes":[[64,60,141,145],[64,174,141,290]]},
+        {"name":"ground-assemblies","boxes":[[51,406,147,507],[169,333,202,382]]}
+      ],
+      "coverage": {"roof":"present in wider exact-pose view as a stepped gable, absent from source strip","basement":"not visible","ownership":"left source column and metric horizontal placement unresolved"}
+    },
+    {
+      "address": "Keizersgracht 136",
+      "sourceSha256": "86c9496387692f2f252eed562a298b33a3e384a51cd85ce9aa1b2509f2b281f7",
+      "boxes": [[21,29,79,114],[101,31,154,114],[177,31,233,114],[21,140,79,242],[100,141,156,241],[177,140,233,241],[22,280,80,425],[175,281,229,419]],
+      "occludedBoxes": [[99,283,153,422]],
+      "negativeBoxes": [[41,438,93,482]],
+      "families": [
+        {"name":"upper-windows","boxes":[[21,29,79,114],[101,31,154,114],[177,31,233,114]]},
+        {"name":"middle-windows","boxes":[[21,140,79,242],[100,141,156,241],[177,140,233,241]]},
+        {"name":"lower-opening-assemblies","boxes":[[22,280,80,425],[99,283,153,422],[175,281,229,419]]}
+      ],
+      "coverage": {"roof":"absent from source strip","basement":"not visible","ownership":"unreviewed"}
+    },
+    {
+      "address": "Bloemstraat 3",
+      "sourceSha256": "dc8c130edd62ffd4fb57abc9f13d283c08230a3f262bed24ce262ac3aeee61b8",
+      "boxes": [[59,21,122,96],[158,21,220,97],[59,129,123,205],[158,130,220,206],[254,131,326,227],[332,131,404,227],[449,130,519,212],[570,130,641,212],[59,238,122,319],[158,239,220,316],[254,241,326,337],[331,241,404,337],[447,238,522,323],[568,237,643,323],[59,346,120,424],[157,348,220,425],[253,349,326,446],[332,346,404,445],[448,349,519,432],[569,349,641,432],[449,459,519,542]],
+      "occludedBoxes": [[175,458,236,534]],
+      "negativeBoxes": [[294,520,406,630]],
+      "families": [
+        {"name":"smaller-side-windows","boxes":[[59,21,122,96],[158,21,220,97],[59,129,123,205],[158,130,220,206],[449,130,519,212],[570,130,641,212]]},
+        {"name":"tall-central-glazing","boxes":[[254,131,326,227],[332,131,404,227],[254,241,326,337],[331,241,404,337],[253,349,326,446],[332,346,404,445]]}
+      ],
+      "coverage": {"roof":"outside the target wall study","basement":"not visible","ownership":"left edge ground opening unresolved"}
+    }
+  ]
+}

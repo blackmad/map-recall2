@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "id": "da-costa-expansion-550m-v1",
+  "bbox": [4.869505, 52.36983, 4.877595, 52.37477],
+  "origin": [4.87355, 52.3723],
+  "cacheRoot": ".cache/city-appearance/areas/da-costa-expansion-550m-v1/raw",
+  "outputRoot": ".cache/city-appearance/areas/da-costa-expansion-550m-v1/staging",
+  "panorama": { "center": [4.87355, 52.3723], "radiusM": 420, "after": "2022-01-01" },
+  "concurrency": 2
+}

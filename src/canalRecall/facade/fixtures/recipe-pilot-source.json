@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.8850,52.3708,4.8872,52.3715&limit=1000&f=json",
+  "source": "BAG / PDOK",
+  "license": "CC0-1.0",
+  "feature": {
+    "type": "Feature",
+    "properties": {
+      "aantal_verblijfsobjecten": 13,
+      "bouwjaar": 1771,
+      "documentdatum": "2023-09-28",
+      "documentnummer": "GV00007182_AC00AC",
+      "gebruiksdoel": "kantoorfunctie,overige gebruiksfunctie,woonfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012164989",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012164989",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/55793e09-b4a0-5a88-b52a-aa5714228aec",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/70952bc7-f4a3-5bcd-87eb-18ebe951d9c2",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/6e3b9d4e-b99e-5247-9e19-4b8012a08d44",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/1c9ca381-143f-51ac-80c1-e728c88e2677",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/d14b37be-6ddd-5782-a184-fcd05e7e9b56",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/2542f1f8-77e4-5dd7-880f-f36bad3ad6bb",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/4a2b001f-286b-55fd-9bff-116781bf28d6",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/5df2f160-ef98-5413-8416-3dc066438cc1",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e7d95079-d41f-57a6-903d-738e0db3bd0d",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/dd4a15d0-1ea6-5d3f-aef0-c2a32195b5b8",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/4416316c-3d5c-5296-a8bb-b12f3ed990e9",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/4b0cca1c-5a86-5baa-87f5-0de7bab48157",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/c155c193-3bb5-5acc-b20b-21bc5dbd395b"
+      ]
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8866400480415235,
+            52.371172559685604
+          ],
+          [
+            4.886641045614365,
+            52.37118305256674
+          ],
+          [
+            4.886642081355239,
+            52.3711940668967
+          ],
+          [
+            4.886642461531948,
+            52.37119811297583
+          ],
+          [
+            4.886643930605593,
+            52.371213667933944
+          ],
+          [
+            4.886644272412184,
+            52.371217210538745
+          ],
+          [
+            4.88637691495779,
+            52.371226892179294
+          ],
+          [
+            4.8863729296544545,
+            52.37118580146241
+          ],
+          [
+            4.886279663059629,
+            52.37118918175874
+          ],
+          [
+            4.885846264774429,
+            52.37120489141786
+          ],
+          [
+            4.885845830203597,
+            52.371200467621584
+          ],
+          [
+            4.885840625315035,
+            52.37114650131186
+          ],
+          [
+            4.885838574153656,
+            52.371125308580076
+          ],
+          [
+            4.886173636970185,
+            52.37111318241119
+          ],
+          [
+            4.886632859017386,
+            52.371096547146735
+          ],
+          [
+            4.886633396730104,
+            52.37110224763162
+          ],
+          [
+            4.886634262984595,
+            52.37111136483734
+          ],
+          [
+            4.886634930998767,
+            52.371118530870746
+          ],
+          [
+            4.8866352857630515,
+            52.37112222632159
+          ],
+          [
+            4.886636413533448,
+            52.371134193738655
+          ],
+          [
+            4.886637411104597,
+            52.37114468661992
+          ],
+          [
+            4.8866400480415235,
+            52.371172559685604
+          ]
+        ]
+      ]
+    },
+    "id": "dc3dd357-8263-5457-a67a-757548b43899"
+  }
+}

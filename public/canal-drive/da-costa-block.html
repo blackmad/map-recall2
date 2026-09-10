@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#eceae3">
+  <title>One Amsterdam block · Canal Recall</title>
+  <link rel="stylesheet" href="./da-costa-block/style.css">
+</head>
+<body>
+  <header><a class="wordmark" href="./index.html"><span class="mark">↗</span> CANAL RECALL</a><span class="edition">AMSTERDAM · FIELD STUDY 01</span><button id="sources-open" class="quiet">Sources & field notes ↗</button></header>
+  <main>
+    <aside class="sidebar">
+      <div class="eyebrow">DA COSTA / NASSAUKADE</div>
+      <h1>A block <br>to remember<span>.</span></h1>
+      <p class="intro">Three canals. Two very different quays. One everyday piece of Amsterdam.</p>
+      <div class="section-label">BUILD THE STREET</div>
+      <label class="layer"><span class="number">01</span><span><strong>The public realm</strong><small>Trees, paving, rails & canal edges</small></span><input id="street" type="checkbox" checked><span class="switch"></span></label>
+      <label class="layer"><span class="number">02</span><span><strong>Everyday landmarks</strong><small>Shopfronts, signs & small terraces</small></span><input id="anchors" type="checkbox" checked><span class="switch"></span></label>
+      <label class="layer"><span class="number">03</span><span><strong>Façade families</strong><small>Brick, pale trim & balcony rhythms</small></span><input id="facades" type="checkbox" checked><span class="switch"></span></label>
+      <button id="compare" class="compare" aria-pressed="false">Compare with plain buildings <span>⇄</span></button>
+      <div class="section-label places-title">LOOK AROUND THE BLOCK</div>
+      <nav id="places" aria-label="Camera viewpoints">
+        <button data-view="overview" class="active"><span>↗</span> The whole block</button>
+        <button data-view="canal"><span>01</span> Da Costakade <small>the quiet quay</small></button>
+        <button data-view="shops"><span>02</span> De Clercqstraat <small>the shopfronts</small></button>
+        <button data-view="nassau"><span>03</span> Nassaukade <small>the broad quay</small></button>
+        <button data-view="amsta"><span>05</span> Amsta · De Poort</button>
+        <button data-view="north"><span>04</span> The northern corner</button>
+      </nav>
+      <nav class="study-links" aria-label="Field studies"><a href="./da-costa-block.html">Da Costa block</a> · <a href="./da-costa-block.html?study=elandsgracht">Elandsgracht shops ↗</a><br><a href="./CITY_APPEARANCE_PLAN.md" target="_blank" rel="noopener">Citywide appearance plan ↗</a></nav>
+      <div class="sidebar-foot"><span class="dot"></span><span>Real geometry · simplified appearance<br><a href="./DA_COSTA_BLOCK_LOG.md" target="_blank" rel="noopener">Read the experiment log ↗</a></span></div>
+    </aside>
+    <section class="stage" aria-label="Interactive 3D model of the Da Costa block">
+      <canvas id="scene" aria-label="Drag to orbit the block, scroll to zoom, right-drag to pan" tabindex="0"></canvas>
+      <div id="loading" role="status"><span class="spinner"></span>Building your corner of Amsterdam…</div>
+      <div class="scene-top"><span id="view-label">THE WHOLE BLOCK</span><span class="north">N ↑</span></div>
+      <div id="labels"></div>
+      <div id="selection" class="selection" hidden><button id="selection-close" aria-label="Close building details">×</button><div id="selection-body"></div></div>
+      <div class="scene-bottom"><span id="hint">Drag to orbit · scroll to zoom · right-drag to pan · click a building</span><button id="reset" aria-label="Reset view">↺</button></div>
+      <div id="view-note" class="view-note" hidden></div>
+      <span class="data-credit">BAG / BGT · 3DBAG © TU Delft / 3DGI · Gemeente Amsterdam</span>
+    </section>
+  </main>
+  <dialog id="sources-dialog"><button class="dialog-close" aria-label="Close sources">×</button><div class="eyebrow">FIELD NOTES</div><h2>What makes this block itself?</h2><p>Exact building footprints and reconstructed roofs carry the shape. Public-space data adds the street. A few observed shopfronts and simplified façade families add character.</p><div id="source-stats"></div><div id="source-list"></div><p class="fine">Window counts, balcony distribution, materials, furniture and canopy shapes are illustrative. Municipal records and photographs have different dates; this is a recognition study, not a survey of today's street works.</p><a class="log-link" href="./DA_COSTA_BLOCK_LOG.md" target="_blank" rel="noopener">Full research & implementation log ↗</a></dialog>
+  <dialog id="photo-dialog"><button class="dialog-close" aria-label="Close photograph">×</button><div class="eyebrow">MUNICIPAL STREET REFERENCE</div><h2 id="photo-title"></h2><img id="photo" loading="lazy" src="https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-03_08-35-58_00407/equirectangular/panorama_4000.jpg" alt="Municipal 360-degree street panorama used as visual reference"><p id="photo-caption"></p><a id="photo-original" href="https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-03_08-35-58_00407/equirectangular/panorama_4000.jpg" target="_blank" rel="noopener">Open original panorama ↗</a></dialog>
+  <script src="./js/three.bundle.js"></script>
+  <script type="module" src="./da-costa-block/demo.js"></script>
+</body>
+</html>

@@ -25,8 +25,12 @@ import {
   type BuildingFeature, type Bounds
 } from './buildingTileSource.js';
 import { tileFor, tileKey } from './slippyTiles.js';
+import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior } from './cityAppearancePalette.js';
 
 type GeoJsonSource = { setData(data: unknown): void };
+export type BuildingAppearancePrior={id:string;sourceId:string;geometryRevision:string;constructionYear:number|null;sideColour:string;roofColour:string;groundColour:string;groundFloorHeightM:number;roofShape:string|null;roofEavesHeightM:number|null;roofGeometrySource:string|null};
+export type AppearanceStudyRoute={id:string;distanceM:number;source:'guided-route-source-graph';from:{id:string;name:string;lat:number;lng:number};to:{id:string;name:string;lat:number;lng:number}};
+export type AppearanceAreaCatalogEntry={id:string;name:string;pointerUrl:string;lesson:boolean;priority:number};
 type MapLike = {
   getSource(id: string): GeoJsonSource | undefined;
   getBounds(): { getWest(): number; getSouth(): number; getEast(): number; getNorth(): number };
@@ -38,6 +42,35 @@ type MapLike = {
 /** How many building tiles may download at once. Two keeps the pipe busy
  *  without starving the camera tile the way an unbounded `Promise.all` did. */
 export const BUILDING_TILE_LOAD_CONCURRENCY = 2;
+
+const hex=async(bytes:ArrayBuffer)=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(value=>value.toString(16).padStart(2,'0')).join('');
+/** Load the current experimental appearance map only after validating its
+ * immutable release binding and exact bytes. Failure is intentionally left to
+ * the caller: neutral complete-city styling remains the safe fallback. */
+export async function loadVerifiedAppearanceRelease(pointerUrl:string,fetcher:typeof fetch=fetch):Promise<{releaseId:string;areaId:string;priors:Map<string,BuildingAppearancePrior>;studyRoute:AppearanceStudyRoute}>{
+  const pointerResponse=await fetcher(pointerUrl,{cache:'no-store'});if(!pointerResponse.ok)throw Error('Appearance release pointer unavailable');const pointer=await pointerResponse.json(),artifact=pointer?.maplibreAppearance;if(pointer?.version!==1||!pointer.releaseId||!artifact?.url||!/^[a-f0-9]{64}$/.test(artifact.sha256))throw Error('Unsupported appearance release pointer');
+  const response=await fetcher(artifact.url);if(!response.ok)throw Error('Appearance sidecar unavailable');const bytes=await response.arrayBuffer();if(await hex(bytes)!==artifact.sha256)throw Error('Appearance sidecar hash mismatch');const value=JSON.parse(new TextDecoder().decode(bytes));if(value.version!==1||value.releaseId!==pointer.releaseId||value.areaId!==pointer.areaId||value.styleSource!=='procedural-prior-not-measured'||value.sourceBlockSha256!==pointer.sourceHashes?.block||!Array.isArray(value.buildings)||value.buildings.length!==artifact.buildings)throw Error('Appearance sidecar release binding mismatch');
+  const priors=new Map<string,BuildingAppearancePrior>();for(const item of value.buildings){if(!/^NL\.IMBAG\.Pand\.\d+$/.test(item?.id)||!/^[a-f0-9]{64}$/.test(item.geometryRevision)||!/^#[a-f0-9]{6}$/i.test(item.sideColour)||!/^#[a-f0-9]{6}$/i.test(item.roofColour)||!/^#[a-f0-9]{6}$/i.test(item.groundColour)||!Number.isFinite(item.groundFloorHeightM)||item.groundFloorHeightM<2.5||item.groundFloorHeightM>5||!['source-slanted','flat',null].includes(item.roofShape)||item.roofEavesHeightM!==null&&(!Number.isFinite(item.roofEavesHeightM)||item.roofEavesHeightM<0||item.roofEavesHeightM>100)||item.roofGeometrySource!==null&&item.roofGeometrySource!=='3dbag-lod22-roof-surfaces'||priors.has(item.id))throw Error('Invalid appearance sidecar building');priors.set(item.id,item);}const route=value.studyRoute;if(route?.source!=='guided-route-source-graph'||!Number.isFinite(route.distanceM)||route.distanceM<100||![route.from,route.to].every(poi=>poi&&typeof poi.name==='string'&&[poi.lat,poi.lng].every(Number.isFinite)))throw Error('Invalid appearance sidecar study route');return{releaseId:value.releaseId,areaId:value.areaId,priors,studyRoute:route};
+}
+export async function loadVerifiedAppearancePriors(pointerUrl:string,fetcher:typeof fetch=fetch):Promise<Map<string,BuildingAppearancePrior>>{return(await loadVerifiedAppearanceRelease(pointerUrl,fetcher)).priors;}
+/** Resolve every published district through one data-driven catalog. Duplicate
+ * BAG identities are rejected instead of letting catalog order silently pick
+ * which area wins; overlapping areas need an explicit future merge policy. */
+export async function loadVerifiedAppearanceCatalog(catalogUrl:string,fetcher:typeof fetch=fetch):Promise<{entries:Array<AppearanceAreaCatalogEntry&{releaseId:string;areaId:string;studyRoute:AppearanceStudyRoute}>;priors:Map<string,BuildingAppearancePrior>;failures:Array<{id:string;message:string}>}>{
+  const response=await fetcher(catalogUrl,{cache:'no-store'});if(!response.ok)throw Error('Appearance area catalog unavailable');const catalog=await response.json();if(catalog?.version!==1||!Array.isArray(catalog.areas)||!catalog.areas.length)throw Error('Unsupported appearance area catalog');
+  const ids=new Set<string>(),pointers=new Set<string>();for(const entry of catalog.areas){if(!/^[a-z0-9][a-z0-9-]+$/.test(entry?.id)||typeof entry.name!=='string'||!entry.name.trim()||typeof entry.pointerUrl!=='string'||!entry.pointerUrl.startsWith('/')||typeof entry.lesson!=='boolean'||!Number.isInteger(entry.priority)||ids.has(entry.id)||pointers.has(entry.pointerUrl))throw Error('Invalid appearance area catalog entry');ids.add(entry.id);pointers.add(entry.pointerUrl);}
+  const settled=await Promise.allSettled(catalog.areas.map(async(entry:AppearanceAreaCatalogEntry)=>{const release=await loadVerifiedAppearanceRelease(entry.pointerUrl,fetcher);if(release.areaId!==entry.id)throw Error('Appearance catalog area binding mismatch');return{...entry,release};})),failures=[] as Array<{id:string;message:string}>,loaded=[] as any[];settled.forEach((result,index)=>{if(result.status==='fulfilled')loaded.push(result.value);else failures.push({id:catalog.areas[index].id,message:String(result.reason instanceof Error?result.reason.message:result.reason)});});if(!loaded.length)throw Error(`No verified appearance catalog areas: ${failures.map(item=>item.id).join(', ')}`);const priors=new Map<string,BuildingAppearancePrior>(),entries=[] as Array<AppearanceAreaCatalogEntry&{releaseId:string;areaId:string;studyRoute:AppearanceStudyRoute}>;for(const item of loaded.sort((a:any,b:any)=>b.priority-a.priority||a.id.localeCompare(b.id))){for(const [id,prior]of item.release.priors){if(priors.has(id))throw Error(`Overlapping appearance catalog building: ${id}`);priors.set(id,prior);}entries.push({id:item.id,name:item.name,pointerUrl:item.pointerUrl,lesson:item.lesson,priority:item.priority,releaseId:item.release.releaseId,areaId:item.release.areaId,studyRoute:item.release.studyRoute});}return{entries,priors,failures};
+}
+const present=(value:unknown)=>value!==undefined&&value!==null&&value!=='';
+export function decorateBuildingFeature(feature:BuildingFeature,priors:ReadonlyMap<string,BuildingAppearancePrior>):BuildingFeature{
+  const properties=feature.properties??{},id=String(properties.id??''),prior=priors.get(id);
+  if(prior)return{...feature,properties:{...properties,sideColour:prior.sideColour,roofColour:prior.roofColour,groundColour:prior.groundColour,groundFloorHeightM:prior.groundFloorHeightM,roofShape:prior.roofShape,roofEavesHeightM:prior.roofEavesHeightM,roofGeometrySource:prior.roofGeometrySource,constructionYear:prior.constructionYear,appearanceStyleSource:'procedural-prior-not-measured',appearanceGeometryRevision:prior.geometryRevision}};
+  if(!/^NL\.IMBAG\.Pand\.\d+$/.test(id))return feature;
+  const additions:Record<string,unknown>={};
+  if(!['sideColour','colour','color','material'].some(key=>present(properties[key]))){additions.sideColour=citywideBuildingWallPrior(id);additions.groundColour=citywideBuildingGroundPrior(id);additions.groundFloorHeightM=3.2;additions.appearanceStyleSource='citywide-identity-palette-v2-not-measured';additions.wallAppearanceStyleSource='citywide-identity-palette-v2-not-measured';additions.groundAppearanceStyleSource='citywide-ground-storey-palette-v1-not-measured';}
+  if(!present(properties.roofColour)&&(!present(properties.roofShape)||properties.roofShape==='flat')){additions.roofColour=citywideBuildingRoofPrior(id);additions.roofAppearanceStyleSource='citywide-flat-cap-palette-v2-not-measured';}
+  return Object.keys(additions).length?{...feature,properties:{...properties,...additions}}:feature;
+}
 
 /** Decompress a published `.geojson.gz` tile into a FeatureCollection. */
 async function readGzippedGeoJson(response: Response): Promise<{ features?: BuildingFeature[] }> {
@@ -67,6 +100,11 @@ export class BuildingTileStreamer {
   private onFeatures?: (features: BuildingFeature[]) => void;
   private available = false;
   private disposed = false;
+  private appearancePriors=new Map<string,BuildingAppearancePrior>();
+  private styledFeatures=0;
+  private contextualFeatures=0;
+  private contextualGrounds=0;
+  private contextualRoofs=0;
   /** Last camera signature we planned for — avoids re-planning every jumpTo frame. */
   private lastFollowSignature = '';
 
@@ -127,6 +165,8 @@ export class BuildingTileStreamer {
     this.onFeatures = onFeatures;
     this.map.on('moveend', () => this.followCamera());
   }
+
+  setAppearancePriors(priors:ReadonlyMap<string,BuildingAppearancePrior>):void{this.appearancePriors=new Map(priors);if(this.cache.size)this.flush();}
 
   /**
    * Re-plan when the camera's centre tile or half-step zoom changes.
@@ -235,7 +275,7 @@ export class BuildingTileStreamer {
   }
 
   private flush(): void {
-    const collection = this.cache.collection();
+    const source = this.cache.collection(),features=source.features.map(feature=>decorateBuildingFeature(feature,this.appearancePriors)),collection={...source,features};this.styledFeatures=features.filter(feature=>feature.properties.appearanceStyleSource==='procedural-prior-not-measured').length;this.contextualFeatures=features.filter(feature=>feature.properties.appearanceStyleSource==='citywide-identity-palette-v2-not-measured').length;this.contextualGrounds=features.filter(feature=>feature.properties.groundAppearanceStyleSource==='citywide-ground-storey-palette-v1-not-measured').length;this.contextualRoofs=features.filter(feature=>feature.properties.roofAppearanceStyleSource==='citywide-flat-cap-palette-v2-not-measured').length;
     this.onFeatures?.(collection.features);
     this.map.getSource(this.sourceId)?.setData(JSON.parse(JSON.stringify(collection)));
     if (collection.features.length > 0 && this.onFirstBuildings) {
@@ -246,10 +286,13 @@ export class BuildingTileStreamer {
   }
 
   /** For diagnostics: how much of the city is resident right now. */
-  status(): { tiles: number; features: number; inFlight: number; available: boolean; queued: number } {
+  sampleFeatures(limit=400):BuildingFeature[]{return this.cache.collection().features.slice(0,Math.max(0,limit)).map(feature=>decorateBuildingFeature(feature,this.appearancePriors));}
+
+  status(): { tiles: number; features: number; styledFeatures:number; contextualFeatures:number; contextualGrounds:number; contextualRoofs:number; inFlight: number; available: boolean; queued: number } {
     return {
       tiles: this.cache.size,
       features: this.cache.collection().features.length,
+      styledFeatures:this.styledFeatures,contextualFeatures:this.contextualFeatures,contextualGrounds:this.contextualGrounds,contextualRoofs:this.contextualRoofs,
       inFlight: this.inFlight,
       available: this.available,
       queued: this.queue.length,

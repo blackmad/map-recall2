@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import { compileContextTiles } from '../src/canalRecall/cityAppearanceContextTiles.js';
+import { CityAppearanceStreamer } from '../src/canalRecall/cityAppearanceStreamer.js';
+const block=JSON.parse(await fs.readFile('public/data/da-costa-block/block.json','utf8')),before=JSON.stringify(block),compiled=compileContextTiles(block,16);
+const rendered=['wegdeel','ondersteunendwegdeel','waterdeel','begroeidterreindeel','onbegroeidterreindeel','overbruggingsdeel','scheiding_lijn'];
+const expected=rendered.reduce((sum,key)=>sum+(block.layers[key]?.length??0),0)+block.trees.length,owners=compiled.tiles.flatMap(tile=>tile.owners);
+assert.equal(compiled.zoom,16);assert.equal(owners.length,expected);assert.equal(new Set(owners.map(owner=>owner.id)).size,owners.length);
+assert(compiled.tiles.length>1);assert(compiled.tiles.every(tile=>/^16\/\d+\/\d+$/.test(tile.key)));
+assert.equal(owners.filter(owner=>owner.geometry.kind==='tree').length,block.trees.length);assert.equal(JSON.stringify(block),before,'context compilation never mutates source');
+const streamer=new CityAppearanceStreamer({index:{version:1,zoom:16,tileList:compiled.tiles.map(tile=>tile.key)},budget:16,loadTile:async key=>compiled.tiles.find(tile=>tile.key===key),createResource:()=>({setLod(){},dispose(){}})});
+streamer.update({longitude:4.8735,latitude:52.3723,bounds:{west:4.872,south:52.371,east:4.875,north:52.374}});await streamer.whenIdle();assert.equal(streamer.status.failed.length,0);streamer.dispose();
+console.log(`City context tiles: ${owners.length} owner-bound features across ${compiled.tiles.length} z16 tiles; fine-zoom streaming and source immutability passed.`);

@@ -17,6 +17,8 @@
  *
  * Usage: npx tsx scripts/facade-twin/build-block.ts [--canal=Keizersgracht] [--from=100] [--to=180]
  */
+import { rejectLegacyStreetInputs } from '../lib/legacy-street-inputs.ts';
+rejectLegacyStreetInputs('build-block.ts');
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import jpeg from 'jpeg-js';

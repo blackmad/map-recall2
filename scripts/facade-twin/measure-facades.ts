@@ -11,6 +11,8 @@
  * reviewable, and the brief requires every field to be traceable to an
  * observation of *this* building.
  */
+import { rejectLegacyStreetInputs } from '../lib/legacy-street-inputs.ts';
+rejectLegacyStreetInputs('measure-facades.ts');
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import jpeg from 'jpeg-js';
