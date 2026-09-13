@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "id": "jordaan-sample-v1",
+  "bbox": [4.876173334224242, 52.365491736213876, 4.888430726182581, 52.38365058073888],
+  "origin": [4.88230, 52.37457],
+  "cacheRoot": ".cache/city-appearance/areas/jordaan-sample-v1/raw",
+  "outputRoot": ".cache/city-appearance/areas/jordaan-sample-v1/staging",
+  "panorama": { "center": [4.88230, 52.37457], "radiusM": 1250, "after": "2022-01-01" },
+  "concurrency": 2
+}

@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "sets": [
+    {
+      "id": "user-development",
+      "manifest": "development-examples.json",
+      "cases": 12,
+      "role": "tune-and-repair",
+      "status": "original twelve image-numbered examples outstanding; no invented source bindings"
+    },
+    {
+      "id": "cached-replacement-development",
+      "manifest": "active-development-manifest.json",
+      "cases": 12,
+      "role": "active cached development set; does not reproduce original twelve",
+      "referenceAnnotations": "independent-reference-measurements.json",
+      "registrationArtifact": "registration-artifact.json",
+      "status": "source identities frozen; independent ground references partial; registration acceptance pending"
+    },
+    {
+      "id": "named-compatibility",
+      "manifest": "named-compatibility.json",
+      "cases": 2,
+      "role": "dated shop compatibility",
+      "status": "agent-inspected sources; fitted assemblies unverified"
+    },
+    {
+      "id": "held-out",
+      "manifest": "heldout-source-inspection.json",
+      "cases": 30,
+      "districts": {
+        "Da Costabuurt": 15,
+        "Jordaan": 15
+      },
+      "role": "evaluate without tuning",
+      "status": "thirty disjoint source-bound candidates; feature quotas and quantitative references uncertified"
+    },
+    {
+      "id": "game-traversal",
+      "manifest": "traversal-captures.json",
+      "cameras": 14,
+      "layouts": [
+        "desktop",
+        "phone"
+      ],
+      "role": "occlusion, clearance, streaming and memory",
+      "status": "passed on preserved release"
+    },
+    {
+      "id": "renderer-engineering",
+      "fixture": "synthetic-fixture.ts",
+      "captureScript": "capture-synthetic.mjs",
+      "role": "geometry and material implementation checks only",
+      "status": "passed; does not establish photographic fidelity"
+    }
+  ],
+  "heldOutStrata": {
+    "perDistrictMinimums": {
+      "residential-entrances": 3,
+      "curved-openings": 2,
+      "shop-assemblies": 3,
+      "extended-awning": 1,
+      "retracted-awning": 1,
+      "contrasting-finishes-or-accents": 2,
+      "obscured-or-unknown": 3
+    },
+    "policy": "Assign a primary stratum from independent source inspection. If a district lacks a category, report the shortage and revise the sample explicitly. Never infer these reference labels from extractor output."
+  }
+}

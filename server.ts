@@ -1,4 +1,5 @@
 import compression from 'compression';
+import {districtNotesRouter,facadePreviewNotesRouter} from './scripts/review/district-notes.js';
 import express from 'express';
 import { promises as fs } from 'node:fs';
 import { randomUUID } from 'node:crypto';
@@ -88,6 +89,9 @@ async function startServer() {
   // was compressing it.
   app.use(compression());
   app.use(express.json());
+
+  app.use('/api/district-evaluation/notes',districtNotesRouter());
+  app.use('/api/facade-repair/notes',facadePreviewNotesRouter());
 
   // API routes
   app.get('/api/health', (_req, res) => {

@@ -1,3 +1,5 @@
+import { appearanceBrickMaterial } from './appearanceBrickMaterial.js';
+import { sourceToRenderHeight, napToSourceHeight } from './appearanceHeight.js';
 /** Actual Three.js renderer adapter for CityAppearanceStreamer. The workspace
  * provides Three's runtime but does not install its separate declaration package.
  * Buffer creation is independent of WebGL and covered by geometry tests.
@@ -8,7 +10,9 @@ import * as THREE from 'three';
 import { wallObservationIntervals, clipWallTriangles } from '../../public/canal-drive/da-costa-block/wall-intervals.js';
 import type { AppearanceTile, AppearanceLod } from './cityAppearanceTiles.js';
 import type { AppearanceTileResource } from './cityAppearanceStreamer.js';
-import { contextualFacadePatches, facadeRecipeRecords, facadeRecipePatches, FACADE_PATCH_COLOURS } from './cityAppearanceFacadeRecipes.js';
+import { compileFacadePatches, facadeRecipeRecords, FACADE_PATCH_COLOURS } from './cityAppearanceFacadeRecipes.js';
+import { drawMachineSignTexture, planMachineSignPlacements, deduplicateMachineSigns, type MachineSignPlacement } from './cityAppearanceMachineSigns.js';
+import { createFacadeSignMaterial } from './facadeSignMaterial.js';
 import { CONTEXTUAL_BUILDING_COLOURS, contextualBuildingPalette } from './cityAppearancePalette.js';
 
 type Point = [number, number, number];
@@ -21,7 +25,7 @@ export type BlockAppearanceGeometry = {
   };
 };
 type Owner = AppearanceTile<BlockAppearanceGeometry, any>['owners'][number];
-export type AppearanceTriangleIdentity = { buildingId: string; geometryRevision: string; sourceSurfaceIndex: number | null; observationId: string | null; approximateMassing: boolean; featureId?: string; featureKind?: string; styleSource?: string };
+export type AppearanceTriangleIdentity = { buildingId: string; geometryRevision: string; sourceSurfaceIndex: number | null; observationId: string | null; approximateMassing: boolean; featureId?: string; featureKind?: string; styleSource?: string; previewOnly?: true };
 export type ThreeAppearanceOptions = {
   /** Caller-owned scene/group; disposing a tile never disposes this parent. */
   parent: { add(object: any): unknown; remove(object: any): unknown };
@@ -33,6 +37,11 @@ export type ThreeAppearanceOptions = {
   proceduralFacades?: boolean;
   /** Still requires source-bound human placement plus deployed-fabric evidence. */
   reviewedAwnings?: boolean;
+  /** Dated, registered machine features are enabled by default, unreviewed. */
+  observedFacades?: boolean;
+  /** Local inspection mode for ambiguous native crop planes. It is off by
+   * default and must never be supplied by public/release compilation. */
+  candidateRegistrationPreview?: boolean;
   /** Evidence-coverage overlay only; colours indicate audit status, not facade paint. */
   auditCoverage?: boolean;
   /** Stable construction-era palette for visual legibility; never source evidence. */
@@ -41,6 +50,8 @@ export type ThreeAppearanceOptions = {
   castShadows?: boolean;
   /** Close-LOD exterior-window rhythm; display prior without observation IDs. */
   contextualFacades?: boolean;
+  /** Neutral machine-read shop name bands on supported ground intervals. */
+  machineSigns?: boolean;
 };
 export type ThreeAppearanceResource = AppearanceTileResource & {
   group: any;
@@ -48,11 +59,36 @@ export type ThreeAppearanceResource = AppearanceTileResource & {
   /** Runtime-only review cue; never alters source geometry or provenance. */
   setSelected(id: string | null): void;
   pick(mesh: any, faceIndex: number): AppearanceTriangleIdentity | null;
-  readonly stats: { triangles: number; meshes: number; buildings: number; windows: number; doors: number; storefronts: number; storefrontPatches: number; awnings: number; disposed: boolean };
+  setMachineSignsVisible(visible: boolean): void;
+  readonly stats: { triangles: number; meshes: number; buildings: number; windows: number; doors: number; storefronts: number; storefrontPatches: number; awnings: number; signs: number; machineSigns: number; geometryBufferBytes: number; textureBytes: number; disposed: boolean };
 };
 const PALETTE = { wall: '#c4c1b5', ...CONTEXTUAL_BUILDING_COLOURS, brown: '#876650', red: '#945c48', buff: '#bba681', grey: '#96938a', white: '#d8d4c3', black: '#57544e', auditedUsable: '#638774', auditedPartial: '#bd875b', ...FACADE_PATCH_COLOURS };
-type Palette = keyof typeof PALETTE;
-type Patch = { triangles: number[]; colour: Palette; identity: AppearanceTriangleIdentity };
+type Palette = keyof typeof PALETTE | `#${string}`;
+type SignDescriptor = { text: string; background: string; colour: string; font?: string; physicalSignId: string; aspectRatio?: number; uv: number[] };
+type Patch = { triangles: number[]; colour: Palette; material?: 'brick'; sign?: SignDescriptor; identity: AppearanceTriangleIdentity };
+
+/** WebGL expands `normalized` signed bytes to [-1, 1] for shader normals.
+ * Keep -128 for the one exactly representable negative endpoint; all other
+ * values use the symmetric 127 scale. */
+export function packUnitNormal(value: number): number {
+  if (!Number.isFinite(value)) throw new Error('Invalid vertex normal');
+  const unit = Math.max(-1, Math.min(1, value));
+  return unit <= -1 ? -128 : Math.round(unit * 127);
+}
+export function unpackUnitNormal(value: number): number {
+  return value === -128 ? -1 : value / 127;
+}
+
+/** MeshStandardMaterial needs normals, but Float32 normals duplicate a full
+ * position-sized buffer. Convert computed unit normals to GPU-normalized
+ * signed bytes without changing vertex order, face indices, or ray picking. */
+export function compactGeometryNormals(geometry: any): void {
+  const normal = geometry.getAttribute?.('normal');
+  if (!normal) return;
+  const packed = new Int8Array(normal.count * normal.itemSize);
+  for (let index = 0; index < packed.length; index++) packed[index] = packUnitNormal(normal.array[index]);
+  geometry.setAttribute('normal', new THREE.Int8BufferAttribute(packed, normal.itemSize, true));
+}
 
 /** Earcut on the dominant projection, with each triangle's source winding
  * restored. Triangulating holes first is essential before interval clipping. */
@@ -86,7 +122,7 @@ export function triangulateAppearanceSurface(rings: Point[][]): number[] {
 function massingSurfaces(owner: Owner): Surface[] {
   const building = owner.geometry.building;
   const ys = building.surfaces.flatMap(surface => surface.rings.flatMap(ring => ring.map(point => point[1])));
-  const base = ys.length ? Math.min(...ys) : (building.groundNAP ?? .65) - .65;
+  const base = ys.length ? Math.min(...ys) : napToSourceHeight(building.groundNAP ?? .65,owner.geometry.frame.heightDatum);
   const top = ys.length ? Math.max(...ys) : base + (building.height ?? 5);
   const polygons = building.footprint.type === 'Polygon' ? [building.footprint.coordinates] : building.footprint.coordinates;
   const surfaces: Surface[] = [];
@@ -108,8 +144,39 @@ function massingSurfaces(owner: Owner): Surface[] {
 
 function transform(triangles: number[], owner: Owner, options: ThreeAppearanceOptions): number[] {
   const origin = owner.geometry.frame.originRD, target = options.targetOriginRD;
-  const offsetY = .65 - (options.targetOffsetNAP ?? 0);
+  const offsetY = sourceToRenderHeight(0,owner.geometry.frame.heightDatum,options.targetOffsetNAP ?? 0);
   return triangles.map((value, index) => index % 3 === 0 ? value + origin.x - target.x : index % 3 === 1 ? value + offsetY : value + target.y - origin.y);
+}
+function transformPoint(point: [number, number, number], owner: Owner, options: ThreeAppearanceOptions): [number, number, number] {
+  const origin = owner.geometry.frame.originRD, target = options.targetOriginRD;
+  const offsetY = sourceToRenderHeight(0,owner.geometry.frame.heightDatum,options.targetOffsetNAP ?? 0);
+  return [point[0] + origin.x - target.x, point[1] + offsetY, point[2] + target.y - origin.y];
+}
+// Sign planes share one unit geometry; each placement keeps its own texture
+// and material, while route traversal does not multiply GPU geometry objects.
+const MACHINE_SIGN_GEOMETRY = new THREE.PlaneGeometry(1, 1);
+function createMachineSignMesh(placement: MachineSignPlacement, owner: Owner, options: ThreeAppearanceOptions) {
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.min(512,Math.ceil(64*placement.width/placement.height));
+  canvas.height = 64;
+  drawMachineSignTexture(canvas.getContext('2d')!, placement.displayText, canvas.width, placement.colour);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.generateMipmaps = false; texture.minFilter = THREE.LinearFilter;
+  const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.FrontSide });
+  const mesh = new THREE.Mesh(MACHINE_SIGN_GEOMETRY, material);
+  mesh.scale.set(placement.width, placement.height, 1);
+  mesh.position.set(...transformPoint(placement.localPosition, owner, options));
+  mesh.rotation.y = placement.rotationY;
+  mesh.userData.machineSign = true;
+  mesh.userData.observationId = placement.observationId;
+  mesh.userData.featureKind = 'machine-sign-unreviewed';
+  mesh.name = 'city-appearance-machine-sign';
+  return mesh;
+}
+function disposeMachineSignMesh(mesh: any) {
+  mesh.material?.map?.dispose?.();
+  mesh.material?.dispose?.();
 }
 
 /** Source-bound but still explicitly experimental. Upstream eligibility remains
@@ -139,20 +206,23 @@ export function createCityAppearanceThreeAdapter(options: ThreeAppearanceOptions
     for (const owner of owners) {
       const frame = owner.geometry?.frame;
       if (ids.has(owner.id) || owner.geometry?.building?.id !== owner.id || !frame || frame.axes !== 'x=east,y=up,z=south'
-        || frame.heightDatum !== 'legacy-block-NAP-minus-0.65m' || ![frame.originRD.x, frame.originRD.y].every(Number.isFinite)) throw new Error(`Unsupported or duplicate source frame: ${owner.id}`);
+        || !['legacy-block-NAP-minus-0.65m','NAP'].includes(frame.heightDatum) || ![frame.originRD.x, frame.originRD.y].every(Number.isFinite)) throw new Error(`Unsupported or duplicate source frame: ${owner.id}`);
       ids.add(owner.id);
     }
     const group = new THREE.Group(); group.name = 'city-appearance-owned-tile';
     group.userData.buildingIds = [...ids]; group.userData.experimentalWallColours = options.experimentalWallColours === true;
     group.userData.proceduralFacades = options.proceduralFacades === true;
-    group.userData.facadeStyleSource = 'Window rhythm and glazing are procedural display priors, not measured openings or inferred tenant boundaries.';
-    const materials = new Map<Palette, any>();
+    group.userData.facadeStyleSource = 'Registered source features retain per-feature evidence disposition; legacy and contextual rhythms remain explicit procedural priors.';
+    const materials = new Map<string, any>();
     const lods = new Map(owners.map(owner => [owner.id, 'facade' as AppearanceLod]));
     const prepared = new Map<string, Record<AppearanceLod, Patch[]>>();
     const selectionSurfaces = new Map<string, number[]>();
     const records = options.experimentalWallColours ? boundRecords(owners) : options.auditCoverage ? auditedRecords(owners) : [];
-    const recipeRecords = options.proceduralFacades ? facadeRecipeRecords(owners) : [];
-    let disposed = false, pending = false;
+    const recipeRecords = options.proceduralFacades || options.observedFacades!==false ? facadeRecipeRecords(owners) : [];
+    const signRecords = options.machineSigns === true ? facadeRecipeRecords(owners) : [];
+    const signGroup = new THREE.Group(); signGroup.name = 'city-appearance-machine-signs';
+    const signPlacements: { owner: Owner; placement: MachineSignPlacement }[] = [];
+    let machineSignsVisible = options.machineSigns === true, disposed = false, pending = false;
     const identity = (owner: Owner, index: number | null, approximateMassing = false, observationId: string | null = null): AppearanceTriangleIdentity => ({
       buildingId: owner.id, geometryRevision: owner.geometryRevision, sourceSurfaceIndex: index, observationId, approximateMassing,
     });
@@ -179,21 +249,36 @@ export function createCityAppearanceThreeAdapter(options: ThreeAppearanceOptions
       });
       // Material evidence remains visible at neighbourhood/facade distance;
       // only generated opening geometry is restricted to close detail LOD.
-      const facadeAppearance = options.experimentalWallColours||options.auditCoverage ? detail.slice() : facade;
+      const facadeAppearance = options.experimentalWallColours||options.auditCoverage ? detail.slice() : facade.slice();
       selectionSurfaces.set(owner.id, facade.flatMap(patch => patch.triangles));
-      if ((options.proceduralFacades || options.contextualFacades) && !approximate) surfaces.forEach((surface, index) => {
-        const supported = options.proceduralFacades ? facadeRecipePatches(owner, surface, index, recipeRecords, owners, options.reviewedAwnings === true) : [];
-        const recipes = supported.length || !options.contextualFacades ? supported : contextualFacadePatches(owner, surface, index, owners);
+      if ((options.proceduralFacades || options.contextualFacades || options.observedFacades!==false) && !approximate) surfaces.forEach((surface, index) => {
+        const recipes=compileFacadePatches(owner,surface,index,recipeRecords,owners,{procedural:options.proceduralFacades,contextual:options.contextualFacades,reviewedAwnings:options.reviewedAwnings,observed:options.observedFacades,candidateRegistrationPreview:options.candidateRegistrationPreview===true});
         for (const recipe of recipes) {
-          detail.push({ triangles: transform(recipe.triangles, owner, options), colour: recipe.colour,
-            identity: { ...identity(owner, index, false, recipe.observationId), featureId: recipe.featureId, featureKind: recipe.featureKind, styleSource: recipe.styleSource } });
+          const sign = (recipe as any).sign as SignDescriptor | undefined;
+          const signPatch = sign && sign.text && sign.physicalSignId && Array.isArray(sign.uv) ? { sign } : {};
+          if (recipe.featureKind.startsWith('observed-') && (recipe.featureKind==='observed-material'||(recipe.featureKind==='observed-awning'&&!sign)||recipe.colour==='doorWood'||recipe.colour==='windowGlass')) facadeAppearance.push({triangles:transform(recipe.triangles,owner,options),colour:recipe.colour,identity:{...identity(owner,index,false,recipe.observationId),featureId:recipe.featureId,featureKind:recipe.featureKind,styleSource:recipe.styleSource}});
+          detail.push({ triangles: transform(recipe.triangles, owner, options), colour: recipe.colour, material:recipe.material,
+          ...signPatch, identity: { ...identity(owner, index, false, recipe.observationId), featureId: recipe.featureId, featureKind: recipe.featureKind, styleSource: recipe.styleSource, ...(recipe.previewOnly?{previewOnly:true as const}:{}) } });
+          if (signPatch.sign) facadeAppearance.push({ triangles: transform(recipe.triangles, owner, options), colour: recipe.colour, sign: signPatch.sign, identity: { ...identity(owner, index, false, recipe.observationId), featureId: recipe.featureId, featureKind: recipe.featureKind, styleSource: recipe.styleSource } });
         }
+      });
+      if (signRecords.length && !approximate) surfaces.forEach((surface, index) => {
+        for (const placement of planMachineSignPlacements(owner, surface, index, signRecords, owners)) signPlacements.push({ owner, placement });
       });
       const massing: Patch[] = massingSurfaces(owner).map(surface => ({ triangles: transform(triangulateAppearanceSurface(surface.rings), owner, options), colour: options.contextualPalette?contextualColour(owner,surface.type):surface.type === 'roof' ? 'roof' : 'wall', identity: identity(owner, null, true) }));
       prepared.set(owner.id, { facade: facadeAppearance, detail, massing });
     }
+    const uniqueSigns=deduplicateMachineSigns(signPlacements.map(item=>({...item.placement,item})),signRecords);
+    signPlacements.splice(0,signPlacements.length,...uniqueSigns.map(p=>p.item));
     const selectionMaterial = new THREE.MeshBasicMaterial({ color: '#f2c14e', transparent: true, opacity: .24, depthWrite: false, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2 });
+    const sourceSignMaterials = new Map<string, { material: any; texture: any }>();
     let selectedId: string | null = null, selectionMesh: any = null;
+    function syncMachineSigns() {
+      const wanted=new Map(signPlacements.map((item,index)=>[String(index),item]).filter(([,item]:any)=>machineSignsVisible&&!disposed&&lods.get(item.owner.id)==='detail') as [string,{owner:Owner;placement:MachineSignPlacement}][]);
+      for(const mesh of [...signGroup.children]){const key=mesh.userData.placementKey;if(wanted.has(key)){wanted.delete(key);continue;}signGroup.remove(mesh);disposeMachineSignMesh(mesh);}
+      for(const [key,{owner,placement}]of wanted){const mesh=createMachineSignMesh(placement,owner,options);mesh.userData.placementKey=key;signGroup.add(mesh);}
+    }
+    if (options.machineSigns === true) { group.add(signGroup); signGroup.visible = machineSignsVisible; syncMachineSigns(); }
     function syncSelection() {
       if (selectionMesh) { group.remove(selectionMesh); selectionMesh.geometry.dispose(); selectionMesh = null; }
       const positions = selectedId ? selectionSurfaces.get(selectedId) : null;
@@ -210,29 +295,51 @@ export function createCityAppearanceThreeAdapter(options: ThreeAppearanceOptions
     function flush() {
       pending = false;
       if (disposed) return;
-      const batches = new Map<Palette, { positions: number[]; identities: AppearanceTriangleIdentity[] }>();
+      const batches = new Map<string, { colour:Palette; material?:'brick'; positions: number[]; identities: AppearanceTriangleIdentity[] }>();
+      const sourceSigns = new Map<string, { descriptor: SignDescriptor; positions: number[]; uvs: number[]; identities: AppearanceTriangleIdentity[] }>();
       for (const owner of owners) for (const patch of prepared.get(owner.id)![lods.get(owner.id)!]) {
         if (!patch.triangles.length) continue;
-        const batch = batches.get(patch.colour) ?? { positions: [], identities: [] };
+        if (patch.sign) {
+          const key = `${patch.sign.physicalSignId}:${patch.sign.text}:${patch.sign.background}:${patch.sign.colour}:${patch.sign.font ?? ''}`;
+          const signBatch = sourceSigns.get(key) ?? { descriptor: patch.sign, positions: [], uvs: [], identities: [] };
+          signBatch.positions.push(...patch.triangles);
+          signBatch.uvs.push(...patch.sign.uv);
+          for (let i = 0; i < patch.triangles.length / 9; i++) signBatch.identities.push(patch.identity);
+          sourceSigns.set(key, signBatch);
+          continue;
+        }
+        const key=`${patch.material??'flat'}:${patch.colour}`;
+        const batch = batches.get(key) ?? { colour:patch.colour,material:patch.material,positions: [], identities: [] };
         for (const value of patch.triangles) batch.positions.push(value);
         for (let i = 0; i < patch.triangles.length / 9; i++) batch.identities.push(patch.identity);
-        batches.set(patch.colour, batch);
+        batches.set(key, batch);
       }
       // Build replacements before retiring the previous frame's buffers.
       const meshes: any[] = [];
-      for (const [colour, batch] of batches) {
-        if (!materials.has(colour)) materials.set(colour, new THREE.MeshStandardMaterial({ color: PALETTE[colour], roughness: .9, side: THREE.DoubleSide }));
+      for (const [key, batch] of batches) {
+        const colour=batch.colour;
+        if (!materials.has(key)) {const paint=colour.startsWith('#')?colour:PALETTE[colour as keyof typeof PALETTE];materials.set(key,batch.material==='brick'?appearanceBrickMaterial({MeshStandardMaterial:THREE.MeshStandardMaterial,DoubleSide:THREE.DoubleSide},paint):new THREE.MeshStandardMaterial({color:paint,roughness:.9,side:THREE.DoubleSide}));}
         const geometry = new THREE.BufferGeometry();
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(batch.positions, 3));
-        geometry.computeVertexNormals(); geometry.computeBoundingBox(); geometry.computeBoundingSphere();
-        const mesh = new THREE.Mesh(geometry, materials.get(colour));
+        geometry.computeVertexNormals(); compactGeometryNormals(geometry); geometry.computeBoundingBox(); geometry.computeBoundingSphere();
+        const mesh = new THREE.Mesh(geometry, materials.get(key));
         mesh.name = `city-appearance-${colour}`; mesh.userData.triangleIdentities = batch.identities;
         mesh.castShadow = options.castShadows !== false; mesh.receiveShadow = false;
         meshes.push(mesh);
       }
-      for (const mesh of [...group.children]) if (mesh !== selectionMesh) { group.remove(mesh); mesh.geometry.dispose(); }
+      for (const [key, batch] of sourceSigns) {
+        let entry = sourceSignMaterials.get(key);
+        if (!entry) { entry = createFacadeSignMaterial({ CanvasTexture: THREE.CanvasTexture, MeshBasicMaterial: THREE.MeshBasicMaterial, DoubleSide: THREE.DoubleSide, SRGBColorSpace: THREE.SRGBColorSpace }, batch.descriptor); sourceSignMaterials.set(key, entry); }
+        // Source signs use MeshBasicMaterial, so a normal buffer cannot affect
+        // their lighting, picking, or texture mapping and is omitted entirely.
+        const geometry = new THREE.BufferGeometry(); geometry.setAttribute('position', new THREE.Float32BufferAttribute(batch.positions, 3)); geometry.setAttribute('uv', new THREE.Float32BufferAttribute(batch.uvs, 2));
+        const mesh = new THREE.Mesh(geometry, entry.material); mesh.name = `city-appearance-source-sign-${batch.descriptor.physicalSignId}`; mesh.userData.triangleIdentities = batch.identities; mesh.userData.sourceSign = true; meshes.push(mesh);
+      }
+      for (const mesh of [...group.children]) if (mesh !== selectionMesh && mesh !== signGroup && mesh.geometry) { group.remove(mesh); mesh.geometry.dispose(); if (mesh.userData.sourceSign) { /* shared source-sign materials are disposed below */ } }
       for (const mesh of meshes) group.add(mesh);
-      syncSelection();
+      // Touring a large batch must not retain textures for signs no longer drawn.
+      for(const [key,entry] of sourceSignMaterials)if(!sourceSigns.has(key)){entry.material.dispose();entry.texture.dispose();sourceSignMaterials.delete(key);}
+      syncSelection();syncMachineSigns();
     }
     const resource: ThreeAppearanceResource = {
       group, flush,
@@ -249,6 +356,12 @@ export function createCityAppearanceThreeAdapter(options: ThreeAppearanceOptions
         lods.set(id, lod);
         if (!pending) { pending = true; queueMicrotask(() => { if (pending) flush(); }); }
       },
+      setMachineSignsVisible(visible: boolean) {
+        if (disposed || machineSignsVisible === visible) return;
+        machineSignsVisible = visible;
+        if (visible && !signGroup.parent) { group.add(signGroup); syncMachineSigns(); }
+        signGroup.visible = visible;syncMachineSigns();
+      },
       pick(mesh, faceIndex) {
         if (disposed || !group.children.includes(mesh) || !Number.isInteger(faceIndex) || faceIndex < 0) return null;
         return mesh.userData.triangleIdentities?.[faceIndex] ?? null;
@@ -261,14 +374,32 @@ export function createCityAppearanceThreeAdapter(options: ThreeAppearanceOptions
           if (item.featureKind === 'shopfront-prior' && item.observationId) shopFrontages.add(item.observationId);
         }
         const count = (kind: string) => [...features.values()].filter(value => value === kind).length;
-        const renderMeshes=group.children.filter((mesh:any)=>!mesh.userData.runtimeSelection);
-        return { buildings: ids.size, meshes: renderMeshes.length, triangles: renderMeshes.reduce((sum: number, mesh: any) => sum + mesh.geometry.getAttribute('position').count / 3, 0), windows: count('window-prior')+count('contextual-window-prior'),doors:count('contextual-door-prior'), storefronts: shopFrontages.size, storefrontPatches: count('shopfront-prior'), awnings: count('reviewed-awning-prior'), disposed };
+        const renderMeshes=group.children.flatMap((child:any)=>child===signGroup&&signGroup.parent?child.children:[child]).filter((mesh:any)=>mesh.isMesh&&!mesh.userData.runtimeSelection);
+        const buffers = new Set<ArrayBufferLike>();
+        const textures = new Set<any>();
+        for (const mesh of renderMeshes) {
+          for (const attribute of Object.values(mesh.geometry.attributes) as any[]) {
+            const array = attribute.array ?? attribute.data?.array;
+            if (array?.buffer) buffers.add(array.buffer);
+          }
+          if (mesh.geometry.index?.array?.buffer) buffers.add(mesh.geometry.index.array.buffer);
+          for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material])
+            for (const value of Object.values(material ?? {}) as any[]) if (value?.isTexture) textures.add(value);
+        }
+        const geometryBufferBytes = [...buffers].reduce((sum, buffer) => sum + buffer.byteLength, 0);
+        const textureBytes = [...textures].reduce((sum, texture) => {
+          const image = texture.image;
+          return sum + Math.ceil((image?.width ?? 0) * (image?.height ?? 0) * 4 * (texture.generateMipmaps ? 4 / 3 : 1));
+        }, 0);
+        return { geometryBufferBytes, textureBytes, buildings: ids.size, meshes: renderMeshes.length, triangles: renderMeshes.reduce((sum: number, mesh: any) => sum + mesh.geometry.getAttribute('position').count / 3, 0), windows: count('window-prior')+count('contextual-window-prior')+count('observed-window'),doors:count('contextual-door-prior')+count('observed-door'), storefronts: shopFrontages.size, storefrontPatches: count('shopfront-prior'), awnings: count('reviewed-awning-prior')+count('observed-awning'), signs: count('observed-sign'), machineSigns: signGroup.children.length, disposed };
       },
       dispose() {
         if (disposed) return;
         disposed = true; options.parent.remove(group);
-        for (const mesh of [...group.children]) { group.remove(mesh); mesh.geometry.dispose(); }
+        for (const mesh of [...signGroup.children]) { signGroup.remove(mesh); disposeMachineSignMesh(mesh); }
+        for (const mesh of [...group.children]) { group.remove(mesh); if (mesh !== signGroup && mesh.geometry) mesh.geometry.dispose(); }
         for (const material of materials.values()) material.dispose();
+        for (const { material, texture } of sourceSignMaterials.values()) { texture.dispose(); material.dispose(); }
         selectionMesh=null; selectionMaterial.dispose(); materials.clear(); prepared.clear(); selectionSurfaces.clear(); lods.clear();
       },
     };

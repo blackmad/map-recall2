@@ -15,7 +15,11 @@ const root=arg('out',custom?`.cache/city-appearance/areas/${area.id}/evidence`:'
 const inventoryOnly=process.argv.includes('--inventory');
 const onlyBuilding=arg('building','');
 const onlyElevation=arg('elevation','');
-const selectedElevations=new Set(onlyElevation.split(',').filter(Boolean));
+const elevationFile=arg('elevation-file','');
+const selectedElevations=new Set([
+  ...onlyElevation.split(',').filter(Boolean),
+  ...(elevationFile?(await fs.readFile(elevationFile,'utf8')).split(/\r?\n|,/).map(value=>value.trim()).filter(Boolean):[]),
+]);
 const useWallHeights=process.argv.includes('--wall-heights');
 const reusePanoramas=arg('reuse-panoramas','.cache/da-costa-neighbourhood/panoramas');
 if(!inventoryOnly&&path.resolve(root)===path.resolve('.cache/da-costa-neighbourhood')&&!process.argv.includes('--allow-active-write'))
@@ -33,7 +37,12 @@ const registry=new Map(bag.map((f:any)=>[f.properties.identificatie,f]));
 const toLocal=(p:any)=>[p.x-block.origin.x,block.origin.y-p.y];
 const buildings=block.buildings.filter((b:any)=>(!onlyBuilding||b.id===onlyBuilding)&&b.addresses.length&&b.height>5&&
   (custom||area.referencePreset==='elandsgracht'?custom||b.street==='Elandsgracht':(['Da Costakade','Da Costastraat','De Clercqstraat','Nassaukade'].includes(b.street)||b.anchorIds?.length)));
-const cameraPoints=panos.map((p:any)=>({...p,rd:lngLatToRd(p.geometry.coordinates)}));
+const cameraPoints=panos.map((p:any,index:number)=>({...p,_order:index,rd:lngLatToRd(p.geometry.coordinates)}));
+const panoramaGrid=new Map<string,any[]>(),lensCache=new Map<string,any>();
+for(const p of cameraPoints){const key=`${Math.floor(p.rd.x/60)},${Math.floor(p.rd.y/60)}`,bucket=panoramaGrid.get(key)??[];bucket.push(p);panoramaGrid.set(key,bucket);}
+const nearbyPanoramas=(mid:any)=>{const x=Math.floor(mid.x/60),y=Math.floor(mid.y/60),found=[] as any[];for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++)found.push(...(panoramaGrid.get(`${x+dx},${y+dy}`)??[]));return found.sort((a,b)=>a._order-b._order);};
+function cachedLens(p:any,from:number[]){if(lensCache.has(p.pano_id))return lensCache.get(p.pano_id);let nearest:any,best=Infinity;for(const n of block.buildings){if(!Number.isFinite(n.groundNAP))continue;const distance=Math.hypot(n.center[0]-from[0],n.center[1]-from[1]);if(distance<best){best=distance;nearest=n;}}const lens=lensFor(p,nearest?.groundNAP);lensCache.set(p.pano_id,lens);return lens;}
+
 // Use the same BAG footprint as target-wall construction for self-occlusion;
 // otherwise a different footprint vintage can falsely put the endpoint indoors.
 const visibilityBuildings=block.buildings.map((b:any)=>{
@@ -43,7 +52,11 @@ const visibilityBuildings=block.buildings.map((b:any)=>{
   const points=polygons.flat(2),xs=points.map((p:any)=>p[0]),ys=points.map((p:any)=>p[1]);
   return {id:b.id,polygons,bounds:[Math.min(...xs),Math.min(...ys),Math.max(...xs),Math.max(...ys)]};
 });
-const blockers=(from:number[],to:number[])=>visibilityBuildings.filter((b:any)=>{
+function spatialIndex(items:any[],boundsFor:(value:any)=>number[]){const grid=new Map<string,number[]>();items.forEach((item,index)=>{const b=boundsFor(item);for(let x=Math.floor(b[0]/60);x<=Math.floor(b[2]/60);x++)for(let z=Math.floor(b[1]/60);z<=Math.floor(b[3]/60);z++){const key=`${x},${z}`,bucket=grid.get(key)??[];bucket.push(index);grid.set(key,bucket);}});return (b:number[])=>{const ids=new Set<number>();for(let x=Math.floor(b[0]/60);x<=Math.floor(b[2]/60);x++)for(let z=Math.floor(b[1]/60);z<=Math.floor(b[3]/60);z++)for(const index of grid.get(`${x},${z}`)??[])ids.add(index);return [...ids].sort((a,b)=>a-b).map(index=>items[index]);};}
+const nearbyBuildings=spatialIndex(visibilityBuildings,(b:any)=>b.bounds);
+const publicRoads=block.layers.wegdeel.filter((f:any)=>/voet|woon|rijbaan|fiets/.test(f.kind));
+const nearbyRoads=spatialIndex(publicRoads,(f:any)=>{const points=f.geometry.coordinates.flat(2),xs=points.map((p:any)=>p[0]),zs=points.map((p:any)=>p[1]);return[Math.min(...xs),Math.min(...zs),Math.max(...xs),Math.max(...zs)];});
+const blockers=(from:number[],to:number[])=>nearbyBuildings([Math.min(from[0],to[0]),Math.min(from[1],to[1]),Math.max(from[0],to[0]),Math.max(from[1],to[1])]).filter((b:any)=>{
   if(Math.max(from[0],to[0])<b.bounds[0]||Math.min(from[0],to[0])>b.bounds[2]||Math.max(from[1],to[1])<b.bounds[1]||Math.min(from[1],to[1])>b.bounds[3])return false;
   return footprintOcclusion(from,to,b.polygons).blocked;
 }).map((b:any)=>b.id);
@@ -56,10 +69,10 @@ for(const b of buildings){
     const verticalExtent=wallVerticalExtent(b,{localStart:toLocal(wall.start),localEnd:toLocal(wall.end)});
     const targetHeight=useWallHeights?verticalExtent.topNAP-(b.groundNAP??.65):b.height;
     const mid=toLocal(wall.midpoint),normal=[wall.normal.x,-wall.normal.y];
-    const publicFace=[2,5,9,14].some(d=>{const p=[mid[0]+normal[0]*d,mid[1]+normal[1]*d];return block.layers.wegdeel.some((f:any)=>/voet|woon|rijbaan|fiets/.test(f.kind)&&f.geometry.coordinates.some((poly:any)=>inside(p,poly[0])&&!poly.slice(1).some((hole:any)=>inside(p,hole))));});
+    const publicFace=[2,5,9,14].some(d=>{const p=[mid[0]+normal[0]*d,mid[1]+normal[1]*d];return nearbyRoads([p[0],p[1],p[0],p[1]]).some((f:any)=>f.geometry.coordinates.some((poly:any)=>inside(p,poly[0])&&!poly.slice(1).some((hole:any)=>inside(p,hole))));});
     if(!publicFace)continue;
     const ranked=[];
-    for(const p of cameraPoints){
+    for(const p of nearbyPanoramas(wall.midpoint)){
       const dx=p.rd.x-wall.midpoint.x,dy=p.rd.y-wall.midpoint.y;
       const distance=Math.hypot(dx,dy),standoff=dx*wall.normal.x+dy*wall.normal.y;
       if(standoff<3||distance>52)continue;
@@ -68,8 +81,7 @@ for(const b of buildings){
       const rayBlockers=[.15,.5,.85].map(t=>blockers(from,toLocal({x:wall.start.x+(wall.end.x-wall.start.x)*t,y:wall.start.y+(wall.end.y-wall.start.y)*t})));
       const hidden=rayBlockers.filter(ids=>ids.length).length/3;
       if(hidden>.34)continue;
-      const nearest=block.buildings.filter((n:any)=>Number.isFinite(n.groundNAP)).sort((a:any,c:any)=>Math.hypot(a.center[0]-from[0],a.center[1]-from[1])-Math.hypot(c.center[0]-from[0],c.center[1]-from[1]))[0];
-      const lens=lensFor(p,nearest?.groundNAP);if(!lens)continue;
+      const lens=cachedLens(p,from);if(!lens)continue;
       const fullQuality=Math.min(8000/(2*Math.PI)*Math.cos(angle*Math.PI/180)/standoff,4000/Math.PI*standoff/(standoff*standoff+targetHeight*targetHeight));
       const detailQuality=8000/(2*Math.PI)*Math.cos(angle*Math.PI/180)/standoff;
       const recent=Number(p.timestamp.slice(0,4))>=2025?1.15:1;
@@ -97,6 +109,13 @@ if(inventoryOnly){
   process.exit(0);
 }
 let downloads=0;const decoded=new Map<string,any>();const records:any[]=[],omitted:any[]=[];
+// Resume valid source-bound crops without re-rectifying 8K panoramas. Byte hashes
+// and the compiler source hash prevent stale or corrupt crops from being reused.
+const reusable=new Map<string,any>();let generatedAt=new Date().toISOString(),sourceDownloads=0;
+try{const previous=JSON.parse(await fs.readFile(path.join(root,'manifest.json'),'utf8'));if(previous.sourceHash===sourceHash&&previous.version===VERSION){generatedAt=previous.generatedAt;sourceDownloads=Number(previous.downloads)||0;for(const record of previous.records)reusable.set(record.id,record);}}catch(error:any){if(error.code!=='ENOENT')throw error;}
+const checkedFiles=new Map<string,string>();
+async function reusableRecord(id:string){const record=reusable.get(id);if(!record)return null;try{for(const image of Object.values(record.images) as any[]){for(const [file,expected] of [[path.join(root,'images',image.file),image.sha256],[path.join(root,'panoramas',image.panoramaId+'.jpg'),image.panoramaSha256]]){let actual=checkedFiles.get(file);if(!actual){actual=sha(await fs.readFile(file));checkedFiles.set(file,actual);}if(actual!==expected)return null;}}return record;}catch(error:any){if(error.code==='ENOENT')return null;throw error;}}
+
 async function panorama(p:any){
   if(decoded.has(p.pano_id))return decoded.get(p.pano_id);
   const file=path.join(root,'panoramas',p.pano_id+'.jpg');let bytes;
@@ -119,6 +138,7 @@ for(const target of targets.slice(0,limit)){
   const {b,wall,full,detail,mid,normal,verticalExtent}=target;
   try{
     const id=wall.elevationId.replaceAll(':','_');
+    const cached=await reusableRecord(id);if(cached){records.push(cached);continue;}
     const images:any={};
     for(const kind of ['full','ground','roof','context']){
       const v=kind==='ground'?detail:full;const {image,hash}=await panorama(v.p);
@@ -147,6 +167,7 @@ for(const target of targets.slice(0,limit)){
       derivationKey:sha(JSON.stringify({sourceHash,wall,images})),placement:'unreviewed',metricEligible:false});
     console.log(`${records.length}/${Math.min(limit,targets.length)} ${b.addresses[0]} ${wall.lengthM.toFixed(1)}m`);
   }catch(e){omitted.push({elevationId:wall.elevationId,buildingId:b.id,reason:String(e)});console.log(`omit ${b.id}: ${e}`);}
-  await fs.writeFile(path.join(root,'manifest.json'),JSON.stringify({version:VERSION,visibility:VISIBILITY_VERSION,sourceHash,camera:AMSTERDAM_WORLD_ALIGNED,generatedAt:new Date().toISOString(),origin:block.origin,bounds:block.bounds,records,omitted,candidates:targets.length,downloads},null,2));
+  await fs.writeFile(path.join(root,'manifest.json'),JSON.stringify({version:VERSION,visibility:VISIBILITY_VERSION,sourceHash,camera:AMSTERDAM_WORLD_ALIGNED,generatedAt,origin:block.origin,bounds:block.bounds,records,omitted,candidates:targets.length,downloads:sourceDownloads+downloads},null,2));
 }
+await fs.writeFile(path.join(root,'manifest.json'),JSON.stringify({version:VERSION,visibility:VISIBILITY_VERSION,sourceHash,camera:AMSTERDAM_WORLD_ALIGNED,generatedAt,origin:block.origin,bounds:block.bounds,records,omitted,candidates:targets.length,downloads:sourceDownloads+downloads},null,2));
 console.log(JSON.stringify({frontages:records.length,buildings:new Set(records.map(r=>r.buildingId)).size,omitted:omitted.length,downloads}));

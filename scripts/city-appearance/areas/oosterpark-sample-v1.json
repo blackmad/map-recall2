@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "id": "oosterpark-sample-v1",
+  "bbox": [4.9140, 52.3570, 4.9250, 52.3650],
+  "origin": [4.9195, 52.3610],
+  "cacheRoot": ".cache/city-appearance/areas/oosterpark-sample-v1/raw",
+  "outputRoot": ".cache/city-appearance/areas/oosterpark-sample-v1/staging",
+  "panorama": { "center": [4.9195, 52.3610], "radiusM": 750, "after": "2022-01-01" },
+  "concurrency": 2
+}

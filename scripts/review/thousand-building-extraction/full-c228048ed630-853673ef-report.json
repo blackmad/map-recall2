@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "kind": "paired-full-tier-source-snapshot",
+  "sourceBindingSha256": "853673ef04c21da3a8e987b3a6abfe80f55a44c8a44ef478935e30c6e5192688",
+  "groundSummarySha256": "c228048ed630ab211122d967f1bfbb72c919a387f56ffbbd2550a13ff1ea5ee7",
+  "requestedGroundValidBuildings": 1000,
+  "fullSourceAvailableBuildings": 1000,
+  "fullSourceMissingBuildings": 0,
+  "missingBuildingIds": [],
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "releasePointerSha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9",
+  "authorizationSha256": "eeb87fd984cd921c5df6e1317b5234a87df31f8babe6d2cb84f0306a71122c50",
+  "manifests": [
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-01.json",
+      "buildings": 75,
+      "first": "0363100012062260",
+      "last": "0363100012099292"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-02.json",
+      "buildings": 75,
+      "first": "0363100012100326",
+      "last": "0363100012145150"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-03.json",
+      "buildings": 75,
+      "first": "0363100012146211",
+      "last": "0363100012155417"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-04.json",
+      "buildings": 75,
+      "first": "0363100012155418",
+      "last": "0363100012157618"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-05.json",
+      "buildings": 75,
+      "first": "0363100012157621",
+      "last": "0363100012159739"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-06.json",
+      "buildings": 75,
+      "first": "0363100012159764",
+      "last": "0363100012162380"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-07.json",
+      "buildings": 75,
+      "first": "0363100012162387",
+      "last": "0363100012164841"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-08.json",
+      "buildings": 75,
+      "first": "0363100012164843",
+      "last": "0363100012167046"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-09.json",
+      "buildings": 75,
+      "first": "0363100012167086",
+      "last": "0363100012168979"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-10.json",
+      "buildings": 75,
+      "first": "0363100012168983",
+      "last": "0363100012169946"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-11.json",
+      "buildings": 75,
+      "first": "0363100012169952",
+      "last": "0363100012173865"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-12.json",
+      "buildings": 75,
+      "first": "0363100012173869",
+      "last": "0363100012174301"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-13.json",
+      "buildings": 75,
+      "first": "0363100012174302",
+      "last": "0363100012237082"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/full-c228048ed630-853673ef-14.json",
+      "buildings": 25,
+      "first": "0363100012237100",
+      "last": "0363100012572098"
+    }
+  ]
+}

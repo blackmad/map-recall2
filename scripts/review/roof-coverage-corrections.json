@@ -1,0 +1,294 @@
+{
+  "version": 1,
+  "scope": "Source-space roof coverage studies only. These annotations never establish building placement, camera calibration, or metric registration.",
+  "inspector": "agent-source-inspection",
+  "cases": [
+    {
+      "caseId": "case-01",
+      "address": "Rozengracht 158",
+      "source": {
+        "tier": "full",
+        "sha256": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+        "captureDate": "2025-01-20T10:11:20Z",
+        "width": 163,
+        "height": 723
+      },
+      "silhouettePolygonPx": [
+        [
+          0,
+          137
+        ],
+        [
+          7,
+          106
+        ],
+        [
+          34,
+          99
+        ],
+        [
+          43,
+          70
+        ],
+        [
+          62,
+          54
+        ],
+        [
+          62,
+          43
+        ],
+        [
+          75,
+          43
+        ],
+        [
+          82,
+          62
+        ],
+        [
+          105,
+          85
+        ],
+        [
+          110,
+          137
+        ],
+        [
+          163,
+          137
+        ]
+      ],
+      "add": [
+        {
+          "id": "full:review:roof-dormer-opening",
+          "kind": "window",
+          "bounds": [
+            62,
+            85,
+            91,
+            134
+          ],
+          "head": "rectangular",
+          "frameColour": "#d1d0c1",
+          "colour": "#4b5450",
+          "disposition": "agent-inspected",
+          "classificationNote": "Roof dormer glazing is visible through branches; source-pixel outline only."
+        },
+        {
+          "id": "full:review:roof-slate-field",
+          "kind": "material",
+          "material": "paint",
+          "region": "upper-wall",
+          "bounds": [
+            0,
+            43,
+            163,
+            141
+          ],
+          "colour": "#4a4d47",
+          "disposition": "agent-inspected",
+          "classificationNote": "Broad roof field behind the dormer; branches and left roof edge are occluded."
+        },
+        {
+          "id": "full:review:dormer-surround",
+          "kind": "material",
+          "material": "paint",
+          "region": "band",
+          "bounds": [
+            39,
+            61,
+            105,
+            137
+          ],
+          "colour": "#b7b6a0",
+          "disposition": "agent-inspected"
+        }
+      ],
+      "occlusionUncertainty": "Tree branches hide parts of the dormer surround and the left roof edge. The silhouette follows only the visible eave and dormer mass."
+    },
+    {
+      "caseId": "case-04",
+      "address": "Da Costakade 87",
+      "source": {
+        "tier": "full",
+        "sha256": "4def1337d462b838f2a733f59bfd6d4c375bf18b31480449894f3fc50473471f",
+        "captureDate": "2023-01-10T10:50:10.042960Z",
+        "width": 270,
+        "height": 934
+      },
+      "silhouettePolygonPx": [
+        [
+          0,
+          295
+        ],
+        [
+          139,
+          295
+        ],
+        [
+          141,
+          213
+        ],
+        [
+          190,
+          165
+        ],
+        [
+          235,
+          213
+        ],
+        [
+          231,
+          295
+        ],
+        [
+          270,
+          295
+        ]
+      ],
+      "remove": [
+        "full:w8"
+      ],
+      "add": [
+        {
+          "id": "full:review:roof-turret-opening",
+          "kind": "window",
+          "bounds": [
+            166,
+            243,
+            208,
+            298
+          ],
+          "head": "rectangular",
+          "mullions": [
+            0.5
+          ],
+          "frameColour": "#dedbc9",
+          "colour": "#4b5550",
+          "disposition": "agent-inspected",
+          "classificationNote": "Large turret opening, independently promoted from the inspected full crop."
+        },
+        {
+          "id": "full:review:roof-turret-cladding",
+          "kind": "material",
+          "material": "paint",
+          "region": "upper-wall",
+          "bounds": [
+            139,
+            165,
+            235,
+            315
+          ],
+          "colour": "#514941",
+          "disposition": "agent-inspected",
+          "classificationNote": "Broad dark turret cladding inside the roof silhouette; flagpole and adjacent roofs are omitted."
+        },
+        {
+          "id": "full:review:facade-brick",
+          "kind": "material",
+          "material": "brick",
+          "region": "upper-wall",
+          "bounds": [
+            0,
+            295,
+            270,
+            934
+          ],
+          "colour": "#5a463c",
+          "disposition": "agent-inspected"
+        }
+      ],
+      "occlusionUncertainty": "The flagpole, narrow right neighbour and cropped parapet have no reconstructable roof profile; they are omitted."
+    },
+    {
+      "caseId": "case-09",
+      "address": "Rozengracht 228",
+      "source": {
+        "tier": "full",
+        "sha256": "9585767f7360620e7439d1fcc08ddb2177635673169db28891774f8b20c3b886",
+        "captureDate": "2024-12-16T09:19:38Z",
+        "width": 225,
+        "height": 914
+      },
+      "silhouettePolygonPx": [
+        [
+          0,
+          114
+        ],
+        [
+          18,
+          114
+        ],
+        [
+          84,
+          28
+        ],
+        [
+          137,
+          27
+        ],
+        [
+          220,
+          111
+        ],
+        [
+          225,
+          111
+        ]
+      ],
+      "remove": [
+        "full:w1"
+      ],
+      "add": [
+        {
+          "id": "full:review:gable-opening",
+          "kind": "window",
+          "bounds": [
+            84,
+            69,
+            136,
+            187
+          ],
+          "head": "rounded",
+          "archRise": 0.22,
+          "frameColour": "#d7d5be",
+          "colour": "#4e5d58",
+          "disposition": "agent-inspected",
+          "classificationNote": "Single tall gable opening; profile is source-pixel approximate."
+        },
+        {
+          "id": "full:review:gable-brick-field",
+          "kind": "material",
+          "material": "brick",
+          "region": "upper-wall",
+          "bounds": [
+            0,
+            25,
+            225,
+            749
+          ],
+          "colour": "#5d4031",
+          "disposition": "agent-inspected",
+          "classificationNote": "Broad visible brick gable field; neighbour roof strips outside the silhouette are excluded."
+        },
+        {
+          "id": "full:review:ground-plaster",
+          "kind": "material",
+          "material": "plaster",
+          "region": "ground-floor",
+          "bounds": [
+            0,
+            749,
+            225,
+            914
+          ],
+          "colour": "#c4c5b4",
+          "disposition": "agent-inspected"
+        }
+      ],
+      "occlusionUncertainty": "The left and right neighbouring roof strips overlap the crop at the eaves; only the central gable is represented."
+    }
+  ],
+  "integrationReview": "Primary agent corrected roof coordinates against native cached images; broad silhouettes only, no metric claim."
+}

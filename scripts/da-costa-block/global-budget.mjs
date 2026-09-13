@@ -7,8 +7,9 @@ export const LEGACY_BUDGET_LEDGER = '.cache/da-costa-neighbourhood/spend.json';
 const validCost = value => Number.isFinite(value) && value >= 0;
 const total = state => state.entries.reduce((sum, entry) => sum + (validCost(entry.actualUsd) ? entry.actualUsd : entry.reservedUsd), 0);
 
-export function globalBudget({ file = DEFAULT_BUDGET_LEDGER, ceiling = 5, legacyLedgers = [LEGACY_BUDGET_LEDGER] } = {}) {
-  if (!Number.isFinite(ceiling) || ceiling <= 0 || ceiling > 5) throw Error('Budget ceiling must be positive and no greater than the authorized $5');
+export function globalBudget({ file = DEFAULT_BUDGET_LEDGER, ceiling = 5, legacyLedgers = [LEGACY_BUDGET_LEDGER], authorization = null } = {}) {
+  const extended=authorization&&typeof authorization.id==='string'&&authorization.id&&Number.isFinite(authorization.maxCeilingUsd)&&authorization.maxCeilingUsd>=ceiling;
+  if (!Number.isFinite(ceiling) || ceiling <= 0 || (ceiling > 5&&!extended)) throw Error('Budget ceiling exceeds its recorded authorization');
   file = path.resolve(file);
   const transaction = async change => lockedJson(file, { version: 1, entries: [] }, async state => {
     if (state.version !== 1 || !Array.isArray(state.entries)) throw Error('Unsupported global budget journal');
@@ -45,6 +46,7 @@ export function globalBudget({ file = DEFAULT_BUDGET_LEDGER, ceiling = 5, legacy
     }
     if (new Set(state.entries.map(entry => entry.id)).size !== state.entries.length) throw Error('Duplicate reservations in global journal');
     state.ceilingUsd = ceiling;
+    if(extended)state.ceilingAuthorization={id:authorization.id,maxCeilingUsd:authorization.maxCeilingUsd};
     const result = await change(state);
     state.observedOrReservedCostUsd = total(state);
     state.updatedAt = new Date().toISOString();

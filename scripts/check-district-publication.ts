@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {mergeDistrictBlocks} from './city-appearance/merge-district-blocks.js';
+import {lngLatToRd} from '../src/canalRecall/facade/rdNew.js';
+const origin=lngLatToRd([4.875,52.373]);
+const building={id:'1',center:[0,0],footprint:{type:'Polygon',coordinates:[[[0,0],[10,0],[10,10],[0,0]]]},surfaces:[{type:'wall',rings:[[[0,0,0],[10,0,0],[10,10,0]]]}]};
+const block={origin,verticalDatum:'NAP',bounds:[0,0,10,10],buildings:[building],layers:{waterdeel:[{id:'water',geometry:{type:'Polygon',coordinates:[[[0,0],[1,0],[1,1],[0,0]]]}}]},trees:[{id:5,position:[2,3]}]};
+const area={bbox:[4.87,52.37,4.89,52.38]};
+const entries=[{id:'a',district:'A',priority:1,area,block},{id:'b',district:'B',priority:2,area,block:{...block,origin:{x:origin.x+100,y:origin.y+200},buildings:[building,{...building,id:'2'}],trees:[{id:6,position:[2,3]}]}}];
+const district={id:'test',name:'test',configHash:'hash',boundary:[],boundarySource:{}};
+const merged=mergeDistrictBlocks(entries,district);
+assert.equal(merged.buildings.length,2);assert.equal(merged.layers.waterdeel.length,1);assert.equal(merged.trees.length,2);
+assert.deepEqual(merged.buildings[0].districtMembership,['A','B']);assert.equal(merged.buildings[0].ownerDistrict,'A');
+assert.deepEqual(merged.buildings[1].center,[100,-200]);assert.deepEqual(merged.buildings[1].surfaces[0].rings[0][2],[110,10,-200]);
+assert.deepEqual(merged.trees[1].position,[102,-197]);assert.deepEqual(mergeDistrictBlocks(entries.reverse(),district),merged);
+assert.throws(()=>mergeDistrictBlocks([{...entries[0],block:{...block,verticalDatum:'other'}},entries[1]],district),/datum mismatch/);
+console.log('District publication merge: deterministic ownership, cross-frame building/context/tree translation, height datum rejection passed.');

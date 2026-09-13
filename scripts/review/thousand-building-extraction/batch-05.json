@@ -1,0 +1,2587 @@
+{
+  "version": 2,
+  "phase": "neighbourhood-1000-preview",
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "analysisOnly": true,
+  "publicationBlocked": true,
+  "userAuthorizedPreviewScale": 1000,
+  "batchAuthorization": {
+    "path": "authorization.json",
+    "sha256": "eeb87fd984cd921c5df6e1317b5234a87df31f8babe6d2cb84f0306a71122c50"
+  },
+  "activeDevelopmentSet": {
+    "id": "thousand-building-preview-05",
+    "status": "validated",
+    "kind": "source-bound-neighborhood-preview",
+    "sha256": "2e6dcac6985130b7c581fc54c262508b1f884eb440d9a7ad4cee2f1cedce831a"
+  },
+  "cases": [
+    {
+      "id": "neighbourhood-0363100012174007",
+      "observationId": "0363100012174007_e_0l04h2s",
+      "buildingId": "0363100012174007",
+      "geometryRevision": "e997dc51e10f0d80c7cef24fa0a2ecaf232b26f7c05995e85a37ec471b13a100",
+      "evidenceKey": "c90ff5e067485ad8c721613c88509158ce14cd8402d675a4975fec923c0cfbee",
+      "frontage": [
+        [
+          643.3117426914687,
+          -470.9302519125631
+        ],
+        [
+          632.8517431361979,
+          -466.95025184372207
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/0a34aa5190a0d7daa9bf8f926ef199946c6542cd9e51193b26095bcb6c8d1846.jpg",
+          "cropSha256": "0a34aa5190a0d7daa9bf8f926ef199946c6542cd9e51193b26095bcb6c8d1846",
+          "captureDate": "2025-01-20T10:12:14Z",
+          "width": 1280,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174008",
+      "observationId": "0363100012174008_e_1uls0ed",
+      "buildingId": "0363100012174008",
+      "geometryRevision": "8af0a801e3303eeded0b57f9a95c2b5427620526bb7d0afbf8d8ac17c97d7d73",
+      "evidenceKey": "986e59d65ec88f52c1379b6afa339e7ffed9d3b4666289e6a432142554f2d8b2",
+      "frontage": [
+        [
+          632.8517431361979,
+          -466.95025184372207
+        ],
+        [
+          629.3257432855025,
+          -465.5842518223217
+        ]
+      ],
+      "surfaceIndices": [
+        11
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/206b8561bc3c63b0a69927d46159bfcbf4108f7d70e8ee0ae322a6c6c98198cb.jpg",
+          "cropSha256": "206b8561bc3c63b0a69927d46159bfcbf4108f7d70e8ee0ae322a6c6c98198cb",
+          "captureDate": "2025-01-20T10:12:13Z",
+          "width": 433,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174009",
+      "observationId": "0363100012174009_e_1vp8yhy",
+      "buildingId": "0363100012174009",
+      "geometryRevision": "bb52c5c17f23e83a1bbe9864da7ce532d8b875ce65dc704af567c1b2d55db6b9",
+      "evidenceKey": "fb9d74a72f573d6becef2181bf1526d327536df4527aa5f459f6331891340574",
+      "frontage": [
+        [
+          629.3127432868641,
+          -465.61325182113796
+        ],
+        [
+          624.9597434717871,
+          -463.95025179267395
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/e922674c077cd2bdd0eeea95e8c96572e0e7fbf517842efb6cf2bbe3c12dab1f.jpg",
+          "cropSha256": "e922674c077cd2bdd0eeea95e8c96572e0e7fbf517842efb6cf2bbe3c12dab1f",
+          "captureDate": "2025-01-20T10:12:12Z",
+          "width": 533,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174012",
+      "observationId": "0363100012174012_e_0u181jq",
+      "buildingId": "0363100012174012",
+      "geometryRevision": "8b9409d1de52a07f0c73c13cd8cb9e9aee7e3d246ac6d591f9c08bf541764939",
+      "evidenceKey": "a94469a4d6452cbf7429e113fd31bc3a2057c5fea76d14075d0e1b2372101180",
+      "frontage": [
+        [
+          668.2167424782529,
+          -510.53225212183315
+        ],
+        [
+          673.3147422640468,
+          -512.5552521554055
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/fd6fa8d3de26962071182d5e51a2bdc810b82d7fd0ed2293496a5c744761c854.jpg",
+          "cropSha256": "fd6fa8d3de26962071182d5e51a2bdc810b82d7fd0ed2293496a5c744761c854",
+          "captureDate": "2023-01-11T10:03:32.567250Z",
+          "width": 627,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174039",
+      "observationId": "0363100012174039_e_1s3rr97",
+      "buildingId": "0363100012174039",
+      "geometryRevision": "1ee01565b01193fa6b4b090355a0dc5db2cb1c791aa1c2497e3dbb1b0a4f3259",
+      "evidenceKey": "9d452e951b911f32426bd9dfa3912cc64e42bbb32bd174969675703e9682f656",
+      "frontage": [
+        [
+          688.0967416514177,
+          -518.7402522519114
+        ],
+        [
+          694.7807413748815,
+          -521.5572522939765
+        ]
+      ],
+      "surfaceIndices": [
+        3,
+        6
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/02353ff81f79ca72d5b496861254bdc03a8f7226ad8154741f70b4624b629229.jpg",
+          "cropSha256": "02353ff81f79ca72d5b496861254bdc03a8f7226ad8154741f70b4624b629229",
+          "captureDate": "2023-01-11T10:03:28.902260Z",
+          "width": 830,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174074",
+      "observationId": "0363100012174074_e_1qqt96y",
+      "buildingId": "0363100012174074",
+      "geometryRevision": "f1b7faad9b6fbe169ab301d38374c055b388f25e305f0474d3b9686ed83da32e",
+      "evidenceKey": "1e62c0d1d2fa88877c10aba0822e09f18cc89dca6d8f719c5f91824941b7c4bb",
+      "frontage": [
+        [
+          431.5527515838621,
+          -386.34725054819137
+        ],
+        [
+          427.10075177042745,
+          -384.5542505168123
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/e33c15cfd330a16902a70a33ac25f27a65fdf5c4f1843d3002258c5b7b799186.jpg",
+          "cropSha256": "e33c15cfd330a16902a70a33ac25f27a65fdf5c4f1843d3002258c5b7b799186",
+          "captureDate": "2025-01-20T10:11:22Z",
+          "width": 549,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174089",
+      "observationId": "0363100012174089_e_0xdd3ge",
+      "buildingId": "0363100012174089",
+      "geometryRevision": "f16453c629310ff5a150ff77602be0b2bb87cc1ed534883c5457e9916a5a5100",
+      "evidenceKey": "64d76f4b244c9b4afb479d84b3e83a996cd402da2601408835dcd38358ede2ab",
+      "frontage": [
+        [
+          443.76275191866443,
+          -421.40925067459466
+        ],
+        [
+          459.08575127749646,
+          -427.62025077611906
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/283752062d5b763572e283016412fc9a8c984ccabbc8d52d9376ade365e9c567.jpg",
+          "cropSha256": "283752062d5b763572e283016412fc9a8c984ccabbc8d52d9376ade365e9c567",
+          "captureDate": "2022-04-29T08:16:24.721460Z",
+          "width": 1891,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174100",
+      "observationId": "0363100012174100_e_023a1el",
+      "buildingId": "0363100012174100",
+      "geometryRevision": "358ad42cfa7d048c793adf50a22fd3eb475359a0c17e66cba4b4fadb1a5cd441",
+      "evidenceKey": "2ce1e0c93b080e6775867098af89232cd171b8a4524e8903fd6d6008bd50daa5",
+      "frontage": [
+        [
+          362.6187489135773,
+          -160.64924976811744
+        ],
+        [
+          366.4147487556911,
+          -162.22224979073508
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/2849168a4b79e7d477f3e1d20a3ecaf0de68071aaa31abd4ff4e5310f6a3f026.jpg",
+          "cropSha256": "2849168a4b79e7d477f3e1d20a3ecaf0de68071aaa31abd4ff4e5310f6a3f026",
+          "captureDate": "2025-07-03T09:38:41Z",
+          "width": 470,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174145",
+      "observationId": "0363100012174145_e_1hud63g",
+      "buildingId": "0363100012174145",
+      "geometryRevision": "79e8c4324aa42baa1544c23b9a239701d2de76e1b9899ef9f8d4f41ad780fca1",
+      "evidenceKey": "335453f2bec07ad545ba61d315176023720ba379f0e77bb08955dded0423fbcc",
+      "frontage": [
+        [
+          463.81573807029054,
+          33.635749993496574
+        ],
+        [
+          458.7447382684477,
+          36.18475002422929
+        ]
+      ],
+      "surfaceIndices": [
+        26,
+        35
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/9dbb7292986237aa1833d5aabd16180ac37542a69c200d2a77f3afddd4f7d729.jpg",
+          "cropSha256": "9dbb7292986237aa1833d5aabd16180ac37542a69c200d2a77f3afddd4f7d729",
+          "captureDate": "2025-06-30T05:28:12Z",
+          "width": 649,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174146",
+      "observationId": "0363100012174146_e_1xugoif",
+      "buildingId": "0363100012174146",
+      "geometryRevision": "17ae2b10f311db546ffb550003da58297d2e05ac6597590d898ebc77282568d0",
+      "evidenceKey": "dfe38a860199f2578a2534595f51536faf2749913b5ed41122e7ddaaf6525660",
+      "frontage": [
+        [
+          468.9057378770085,
+          30.872749960282817
+        ],
+        [
+          463.81573807029054,
+          33.635749993496574
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/106abc92acdfc9d821c3bf2e4d6b06acce95af37dc2303dc46fc3d5237be1be2.jpg",
+          "cropSha256": "106abc92acdfc9d821c3bf2e4d6b06acce95af37dc2303dc46fc3d5237be1be2",
+          "captureDate": "2025-06-30T05:28:12Z",
+          "width": 663,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174152",
+      "observationId": "0363100012174152_e_0m52v6l",
+      "buildingId": "0363100012174152",
+      "geometryRevision": "9fa260f826110c076d540c63747f09330299ddfd56fb15da9e8004d32ef4ad89",
+      "evidenceKey": "399aad00c5453b4cd0cb11954ae47fe17d8fe23790fb0c9e86658ef96cd201cb",
+      "frontage": [
+        [
+          417.33773983232095,
+          58.93475030409172
+        ],
+        [
+          419.9607395147177,
+          65.27175030106446
+        ]
+      ],
+      "surfaceIndices": [
+        24
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/023df20a563d2e75fad5099424cde9fc71ab64d1bb749bc2e3403b7fa5e91961.jpg",
+          "cropSha256": "023df20a563d2e75fad5099424cde9fc71ab64d1bb749bc2e3403b7fa5e91961",
+          "captureDate": "2022-01-27T08:55:24.201120Z",
+          "width": 785,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174153",
+      "observationId": "0363100012174153_e_14l6jep",
+      "buildingId": "0363100012174153",
+      "geometryRevision": "15b31356496f36c4f98c22cc4820e4a72dfcd62583c6c68fd6e5e84fe97ca00c",
+      "evidenceKey": "6720629a96050703989c9ef81cb9919c8ba60732f9eb80638cd4845fc46b5ada",
+      "frontage": [
+        [
+          440.0117389826046,
+          46.237750149855856
+        ],
+        [
+          434.08373921392194,
+          49.22675019066082
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/0e76ee4acc116c3c3eb6981af73eaac009281372cdbfbd65ea72e3435633f03e.jpg",
+          "cropSha256": "0e76ee4acc116c3c3eb6981af73eaac009281372cdbfbd65ea72e3435633f03e",
+          "captureDate": "2025-06-30T05:28:07Z",
+          "width": 759,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174155",
+      "observationId": "0363100012174155_e_03nisvn",
+      "buildingId": "0363100012174155",
+      "geometryRevision": "c58c84b5b14988807293977179c88a0f4d3d5144c4fc7ea6b92fb265c9e7b077",
+      "evidenceKey": "6ea995f964810c5c463447ad527158542ed63771704dbf2786789115dcab5610",
+      "frontage": [
+        [
+          438.31573994559585,
+          15.17575010744622
+        ],
+        [
+          444.1267397225165,
+          12.110750067105982
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/a047ca69423ad696209333994423618050205be1d03292b56c49025d7df01f05.jpg",
+          "cropSha256": "a047ca69423ad696209333994423618050205be1d03292b56c49025d7df01f05",
+          "captureDate": "2025-07-03T10:40:03Z",
+          "width": 752,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174156",
+      "observationId": "0363100012174156_e_04dr7wi",
+      "buildingId": "0363100012174156",
+      "geometryRevision": "063656a1018d2be4419da1cc94df98345f6f45f02502bafe666843ee966c51da",
+      "evidenceKey": "4c0c788ddc71863d3824a10e3b97e6398bfc9e71e8967de6d4feee2bc7809568",
+      "frontage": [
+        [
+          444.1267397225165,
+          12.110750067105982
+        ],
+        [
+          449.740739507135,
+          9.148750031541567
+        ]
+      ],
+      "surfaceIndices": [
+        8
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/6e8057f24b9f71ab30125a92586b6e492b00222996cf605d7713184f1f16c653.jpg",
+          "cropSha256": "6e8057f24b9f71ab30125a92586b6e492b00222996cf605d7713184f1f16c653",
+          "captureDate": "2025-07-03T10:40:02Z",
+          "width": 726,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174157",
+      "observationId": "0363100012174157_e_1mpqmhu",
+      "buildingId": "0363100012174157",
+      "geometryRevision": "5a825f21623f7dfab034d79f4942d62221a0552d1e9ea4046bbf79dde4cf03bc",
+      "evidenceKey": "29d75b7cdefcf4782ee096dd90dbdead3c9a620da7e22fe8ffc5b479429944fd",
+      "frontage": [
+        [
+          429.2137402949593,
+          19.977750167425256
+        ],
+        [
+          432.97774015054165,
+          17.99175014195498
+        ]
+      ],
+      "surfaceIndices": [
+        9
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/b7f1134ef808a802085b82e005e93342075408393b60540953bd957fb5d3956a.jpg",
+          "cropSha256": "b7f1134ef808a802085b82e005e93342075408393b60540953bd957fb5d3956a",
+          "captureDate": "2025-07-03T10:40:06Z",
+          "width": 487,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174158",
+      "observationId": "0363100012174158_e_1ejs321",
+      "buildingId": "0363100012174158",
+      "geometryRevision": "c2d7fa9e3fa1679fff3ff2eb0e4ad68f585a7ddeb5ef3b2540509343062ced81",
+      "evidenceKey": "f7e1896ff1c906384afd75a56bef4c14e22788df935d7f78ea6dfb048b43fa63",
+      "frontage": [
+        [
+          432.97774015054165,
+          17.99175014195498
+        ],
+        [
+          438.31573994559585,
+          15.17575010744622
+        ]
+      ],
+      "surfaceIndices": [
+        12,
+        13
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/43d312b8e977705ec8d37c97ab0835e81709a5792e4d13d621e949bbafe3a1df.jpg",
+          "cropSha256": "43d312b8e977705ec8d37c97ab0835e81709a5792e4d13d621e949bbafe3a1df",
+          "captureDate": "2025-07-03T10:40:04Z",
+          "width": 690,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174161",
+      "observationId": "0363100012174161_e_19sfn4b",
+      "buildingId": "0363100012174161",
+      "geometryRevision": "612340bc371bcf773b5b3fbd4b716773af52708f51c19bbe4f7a6affd5769e8a",
+      "evidenceKey": "65606bfc89f6413030a5ba3dda8dfc00104271db2dbaaf022349b33d39b07fc2",
+      "frontage": [
+        [
+          486.9297371959692,
+          20.98974983795779
+        ],
+        [
+          491.13673675223254,
+          28.812749828444794
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/c57c4d31338ca2250d0db36d9dfab8b88b4d5543de434fc3b3962e027d9d90e0.jpg",
+          "cropSha256": "c57c4d31338ca2250d0db36d9dfab8b88b4d5543de434fc3b3962e027d9d90e0",
+          "captureDate": "2025-06-30T05:28:14Z",
+          "width": 1016,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174167",
+      "observationId": "0363100012174167_e_1ea8uo3",
+      "buildingId": "0363100012174167",
+      "geometryRevision": "a10d1ef367e1eaba2cdb8767e83382172cdedbba954eddd78ccf770e06dda888",
+      "evidenceKey": "164ea2a50f0c7aee2125ed3f0c0af7cf06bb005e35a5f4beb28a4c3d612aabfe",
+      "frontage": [
+        [
+          465.9937509842857,
+          -430.2692508218461
+        ],
+        [
+          469.8417508218845,
+          -431.780250845477
+        ]
+      ],
+      "surfaceIndices": [
+        6
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/726cb378434290f0ae246d097477feecbd4088ec8abb212e05e3b5161c0c441d.jpg",
+          "cropSha256": "726cb378434290f0ae246d097477feecbd4088ec8abb212e05e3b5161c0c441d",
+          "captureDate": "2022-04-29T08:16:23.291510Z",
+          "width": 473,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174169",
+      "observationId": "0363100012174169_e_1w30ns5",
+      "buildingId": "0363100012174169",
+      "geometryRevision": "a1f9e4a95c8c50646b88f00edc12dd472002ada535fccdfbeac3384e1e9fe703",
+      "evidenceKey": "b032fb7bbb13b5f2109c000a35f47d9530c402f6a0f0a58ea629284f0be786a0",
+      "frontage": [
+        [
+          438.23375214557745,
+          -419.01125063881045
+        ],
+        [
+          442.93775194935733,
+          -420.9432506710873
+        ]
+      ],
+      "surfaceIndices": [
+        8
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/26947ced670e35f245a5a3061bba3fbcb9b424ae029728a258ea4b835a03d3f6.jpg",
+          "cropSha256": "26947ced670e35f245a5a3061bba3fbcb9b424ae029728a258ea4b835a03d3f6",
+          "captureDate": "2022-04-29T08:16:26.276470Z",
+          "width": 582,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174196",
+      "observationId": "0363100012174196_e_1pgb2yl",
+      "buildingId": "0363100012174196",
+      "geometryRevision": "92a73199fb0e4796ed40d4947508cc286ed9c42347586f4fb1a7111a28f3e0a8",
+      "evidenceKey": "a1dad98506a80a99503fedeb1d0b504ac4e0f8b2b49b8701067eadff63a4ce2b",
+      "frontage": [
+        [
+          375.3837483827956,
+          -165.93824984843377
+        ],
+        [
+          379.86474819635623,
+          -167.79424987587845
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/d79b7c584560e9366d9b1e69c33cd40df54a88c42959d1e1afc95f0d1bb829a4.jpg",
+          "cropSha256": "d79b7c584560e9366d9b1e69c33cd40df54a88c42959d1e1afc95f0d1bb829a4",
+          "captureDate": "2025-07-03T09:38:47Z",
+          "width": 555,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174198",
+      "observationId": "0363100012174198_e_057tydi",
+      "buildingId": "0363100012174198",
+      "geometryRevision": "32ee5a69929b3391fd0753feafa30421f56ef0430ed1a94be869cc42e1543c28",
+      "evidenceKey": "8ff699577ce07c5192aa623d2592da5dcdb4c61f9c65c2e4d9963a0bc2a5baa4",
+      "frontage": [
+        [
+          370.911748568702,
+          -164.0852498190361
+        ],
+        [
+          375.3837483827956,
+          -165.93824984843377
+        ]
+      ],
+      "surfaceIndices": [
+        7
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/8c3a157eb0aa9d68e573af26a7a7559a028169873ac5d132bb856adfb4d7e1d0.jpg",
+          "cropSha256": "8c3a157eb0aa9d68e573af26a7a7559a028169873ac5d132bb856adfb4d7e1d0",
+          "captureDate": "2023-03-20T11:10:59.703700Z",
+          "width": 554,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174200",
+      "observationId": "0363100012174200_e_0nwnsxh",
+      "buildingId": "0363100012174200",
+      "geometryRevision": "647e8eff24c9a3afb21875fb4642962c8a88ae91128a4a8ee371901dc46406a1",
+      "evidenceKey": "ae062fd7b2e72d71fec8ec4a47b8f47478457fdfa7e671224a230fd49c4b8fdc",
+      "frontage": [
+        [
+          391.45174686066457,
+          -142.1952498992905
+        ],
+        [
+          385.89974709071976,
+          -139.86824986565625
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/0bb58b9fa5d93cad1bad4b22fe4af1d40c74f61458c54f3ff838e73c7819c3ca.jpg",
+          "cropSha256": "0bb58b9fa5d93cad1bad4b22fe4af1d40c74f61458c54f3ff838e73c7819c3ca",
+          "captureDate": "2025-07-03T09:53:19Z",
+          "width": 689,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174203",
+      "observationId": "0363100012174203_e_1xsw9l0",
+      "buildingId": "0363100012174203",
+      "geometryRevision": "5b72df4014ef064f6f40f4a303ca01b9b3d9d10f12712284562f6a748e874f22",
+      "evidenceKey": "e1de545f3afe267430ba57aad571792b829ecddcfe11f0c3b9bc714bdb6e6d5f",
+      "frontage": [
+        [
+          385.89974709071976,
+          -139.86824986565625
+        ],
+        [
+          381.0937472899095,
+          -137.85424983192934
+        ]
+      ],
+      "surfaceIndices": [
+        0,
+        1
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/99d0e19f5e2840e941a5227650d366b3c9816d9a6b09c53f159288b09c7bf807.jpg",
+          "cropSha256": "99d0e19f5e2840e941a5227650d366b3c9816d9a6b09c53f159288b09c7bf807",
+          "captureDate": "2025-07-03T09:53:21Z",
+          "width": 596,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174204",
+      "observationId": "0363100012174204_e_1r4mm2h",
+      "buildingId": "0363100012174204",
+      "geometryRevision": "dd589cad9ee641ffaa5ecb6f1550d5e68c30320592e4f9721a1d3c9d1c57f0ff",
+      "evidenceKey": "404e76df3757063ed1b0410ec562c7d9afdc0e2067ee26e7210775011a168ee5",
+      "frontage": [
+        [
+          372.2407476568769,
+          -134.14324977603974
+        ],
+        [
+          366.9517478760099,
+          -131.9262497391319
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/c10a3abd7b934cbabbe057ae35eb34169d9b18f611762a9535271c9f640434f1.jpg",
+          "cropSha256": "c10a3abd7b934cbabbe057ae35eb34169d9b18f611762a9535271c9f640434f1",
+          "captureDate": "2025-07-03T09:53:25Z",
+          "width": 656,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174207",
+      "observationId": "0363100012174207_e_0y0y7um",
+      "buildingId": "0363100012174207",
+      "geometryRevision": "d7e3ccc62b9e9546baf83fa8f0467ca7174a44efd1ff1d836bbf69ef874c9b3e",
+      "evidenceKey": "15ffa0a1ff4305b1b44bc9c79691ed26eb410c6a9202d88f0143a0c83225af78",
+      "frontage": [
+        [
+          342.50074888949166,
+          -121.67724957776954
+        ],
+        [
+          345.1897485636873,
+          -115.17224958830047
+        ]
+      ],
+      "surfaceIndices": [
+        6
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/3d930b485ee036839f7f1b09c5f8ffc23ca9bd79dec4126dd9d84314d280f5bd.jpg",
+          "cropSha256": "3d930b485ee036839f7f1b09c5f8ffc23ca9bd79dec4126dd9d84314d280f5bd",
+          "captureDate": "2024-12-16T10:23:28Z",
+          "width": 805,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174210",
+      "observationId": "0363100012174210_e_15cjfhe",
+      "buildingId": "0363100012174210",
+      "geometryRevision": "2f3f220d6a88a7163ee05e0925dffe1afdecc024484b608378fff8834c582712",
+      "evidenceKey": "1832f7a765f94876db8ca07e9c0db1e59712847c0e7653448c65e9912aaa6217",
+      "frontage": [
+        [
+          342.9817497301992,
+          -152.5142496409826
+        ],
+        [
+          348.5157495000749,
+          -154.80624967208132
+        ]
+      ],
+      "surfaceIndices": [
+        7,
+        11
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/10c0517d16abc1053008e897f59dd42673d54f1d5b46eb6a26e1637ef687fa7d.jpg",
+          "cropSha256": "10c0517d16abc1053008e897f59dd42673d54f1d5b46eb6a26e1637ef687fa7d",
+          "captureDate": "2023-02-20T11:41:30.883830Z",
+          "width": 685,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174211",
+      "observationId": "0363100012174211_e_0a5dx7g",
+      "buildingId": "0363100012174211",
+      "geometryRevision": "d0ec11a35a6cb1f6ac12ea4dbab9f80179309376a472ce46db2236a8514161c2",
+      "evidenceKey": "4085c8a578baa1fbb17fcf7f408ef7b1d9d33d556ee21d4fda1a9f61ecd506b1",
+      "frontage": [
+        [
+          354.3557492571708,
+          -157.2262497121119
+        ],
+        [
+          358.41174908846733,
+          -158.90624973655213
+        ]
+      ],
+      "surfaceIndices": [
+        9
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/e6112d5f58cc80c7ea869291ede1c74286a3ccdc7073267372bff2293f0c625a.jpg",
+          "cropSha256": "e6112d5f58cc80c7ea869291ede1c74286a3ccdc7073267372bff2293f0c625a",
+          "captureDate": "2023-03-13T08:52:52.297820Z",
+          "width": 502,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174212",
+      "observationId": "0363100012174212_e_1e45knu",
+      "buildingId": "0363100012174212",
+      "geometryRevision": "2d0e35a52ed2186393332d9f9460063d5aebd7a14b7d707712c746f63923680e",
+      "evidenceKey": "810131b2bb90ea6d69aa9152c0e79d9a52514fe69fff5dfc180425f7c610e7e2",
+      "frontage": [
+        [
+          339.1627498890739,
+          -150.93224961450323
+        ],
+        [
+          342.9817497301992,
+          -152.5142496409826
+        ]
+      ],
+      "surfaceIndices": [
+        7
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/d6d7bbe15400619f73b15dd72f773f90a170942837ebce8e4f3d7c89082fccc6.jpg",
+          "cropSha256": "d6d7bbe15400619f73b15dd72f773f90a170942837ebce8e4f3d7c89082fccc6",
+          "captureDate": "2025-07-03T09:38:34Z",
+          "width": 473,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174214",
+      "observationId": "0363100012174214_e_11c0jzl",
+      "buildingId": "0363100012174214",
+      "geometryRevision": "5000ac41370ff415df2604a5a0f497e2632094fee1773120416b85936cc36f3f",
+      "evidenceKey": "a928dff4b2d7c722481d3ca8efdf84ca0a7e76df0c82b19a235af6a564f6dee8",
+      "frontage": [
+        [
+          389.205747807835,
+          -171.66424993606051
+        ],
+        [
+          393.5287476281519,
+          -173.45524996472523
+        ]
+      ],
+      "surfaceIndices": [
+        6,
+        9
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/bc074a943bbb3c535474d9433aee063bac5e23df1948ab45071c638587a8eeca.jpg",
+          "cropSha256": "bc074a943bbb3c535474d9433aee063bac5e23df1948ab45071c638587a8eeca",
+          "captureDate": "2025-07-03T09:38:51Z",
+          "width": 535,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174216",
+      "observationId": "0363100012174216_e_0fo2nad",
+      "buildingId": "0363100012174216",
+      "geometryRevision": "15012c7f6f07ba924b5e7ab865a7d538f6ef36609b8fffd89e4d2d21a5019055",
+      "evidenceKey": "5af708020532695d8acd448e95a9f7b90522a1b116b540bc111656ae432d6e5c",
+      "frontage": [
+        [
+          379.86474819635623,
+          -167.79424987587845
+        ],
+        [
+          384.2157480154274,
+          -169.59724990365794
+        ]
+      ],
+      "surfaceIndices": [
+        11
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/c27e227756e2c110988178c423985c250c5b91e078f500f208f24b79f310f2dd.jpg",
+          "cropSha256": "c27e227756e2c110988178c423985c250c5b91e078f500f208f24b79f310f2dd",
+          "captureDate": "2025-07-03T09:38:48Z",
+          "width": 539,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174281",
+      "observationId": "0363100012174281_e_1208fs2",
+      "buildingId": "0363100012174281",
+      "geometryRevision": "8f63c49b14a8c18f981baa2ed859ffdefde01432fa61d0a791f6ce260a5ecb18",
+      "evidenceKey": "0efec96ee3f373c1ef838317fcb9aed138b1f22117f493b2e0a261b041ad1a0f",
+      "frontage": [
+        [
+          388.24975339461525,
+          -368.75825026619714
+        ],
+        [
+          385.0977535267157,
+          -367.4862502456526
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/c65e059ec262ab8c4f171c101f503372e5bf2167a6ccfe887b99145720adf1d2.jpg",
+          "cropSha256": "c65e059ec262ab8c4f171c101f503372e5bf2167a6ccfe887b99145720adf1d2",
+          "captureDate": "2023-01-16T11:28:01.067840Z",
+          "width": 389,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174285",
+      "observationId": "0363100012174285_e_1x4nmp4",
+      "buildingId": "0363100012174285",
+      "geometryRevision": "e97b3a045097c15f8cc3441fdfd200d6e7bc4c7f49758859bb8417a41604dc9d",
+      "evidenceKey": "cd906f70c3bcad70e9235d0238d78aeed20d1749e55395ad66c0236b6b2d39d0",
+      "frontage": [
+        [
+          362.77175446752517,
+          -358.6682501032483
+        ],
+        [
+          358.2297546591144,
+          -356.88725007342873
+        ]
+      ],
+      "surfaceIndices": [
+        0,
+        27
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/1074910b39a47a2565cdeaffec5f92c3a03ebc60d42785567a535580420f0af0.jpg",
+          "cropSha256": "1074910b39a47a2565cdeaffec5f92c3a03ebc60d42785567a535580420f0af0",
+          "captureDate": "2023-01-16T11:27:58.207860Z",
+          "width": 558,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174289",
+      "observationId": "0363100012174289_e_0cj0mg6",
+      "buildingId": "0363100012174289",
+      "geometryRevision": "52df072e3d4d24dd3c2f4451738525a65b2de7a7f1c1c46e1fe23be68a3afc2e",
+      "evidenceKey": "b93e981fea1eeb9768e25975014b848348333810917c2b9a0de64166781a7e9a",
+      "frontage": [
+        [
+          366.4147487556911,
+          -162.22224979073508
+        ],
+        [
+          370.911748568702,
+          -164.0852498190361
+        ]
+      ],
+      "surfaceIndices": [
+        9
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/9ae637e866787c0a75dc36c89d53487d160d4675f8c8e5731ed5e2ca0736ba86.jpg",
+          "cropSha256": "9ae637e866787c0a75dc36c89d53487d160d4675f8c8e5731ed5e2ca0736ba86",
+          "captureDate": "2023-03-20T11:11:00.318660Z",
+          "width": 557,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174296",
+      "observationId": "0363100012174296_e_0m9u5ri",
+      "buildingId": "0363100012174296",
+      "geometryRevision": "2526c9c37333af140d2e5914cb3d3ec41984e5ea072db7a2cc06be83e8662984",
+      "evidenceKey": "b9093f6831eb50da73c8d939c692f03e20715005884433a36044bc1f953af05c",
+      "frontage": [
+        [
+          331.5627502077259,
+          -147.8742495632614
+        ],
+        [
+          335.98175002250355,
+          -149.65624959091656
+        ]
+      ],
+      "surfaceIndices": [
+        6
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/a6b214d5bea4f5b6b4bc62ad56d522c38861664ecde34653719a952b252dc366.jpg",
+          "cropSha256": "a6b214d5bea4f5b6b4bc62ad56d522c38861664ecde34653719a952b252dc366",
+          "captureDate": "2023-03-13T08:52:48.527840Z",
+          "width": 545,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174346",
+      "observationId": "0363100012174346_e_0p3mrsg",
+      "buildingId": "0363100012174346",
+      "geometryRevision": "9323567c7a31297a3f400fb8cdab5e9cae3a8b99fc73e9f2b336799ba52d71e4",
+      "evidenceKey": "478ed5ad1559759f57a75716408a4e59a00870b00d6e661ddc32728f4039a46a",
+      "frontage": [
+        [
+          495.88373773609055,
+          -15.192250276333652
+        ],
+        [
+          499.6787375903805,
+          -17.19425029976992
+        ]
+      ],
+      "surfaceIndices": [
+        8
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/af103cd2e57cdfecf6059f30a3db5cd21c57e6ab2ac011744f5c511b29926807.jpg",
+          "cropSha256": "af103cd2e57cdfecf6059f30a3db5cd21c57e6ab2ac011744f5c511b29926807",
+          "captureDate": "2024-12-16T09:30:35Z",
+          "width": 491,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174347",
+      "observationId": "0363100012174347_e_040beao",
+      "buildingId": "0363100012174347",
+      "geometryRevision": "891b7400401bcb73cea0b63954170055da8ba10ee82e654e53b60766bbc27cc0",
+      "evidenceKey": "2ae16ad3f7c4931c531b931392feae2a8b0dee9d058c0e42b68b150c0924657a",
+      "frontage": [
+        [
+          499.6787375903805,
+          -17.19425029976992
+        ],
+        [
+          503.26573745267524,
+          -19.086250328749884
+        ]
+      ],
+      "surfaceIndices": [
+        6
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/fb4d40547ee31f3e7b32ec3225f7155bec4f2fef2f20bffc69d6eec4699f9243.jpg",
+          "cropSha256": "fb4d40547ee31f3e7b32ec3225f7155bec4f2fef2f20bffc69d6eec4699f9243",
+          "captureDate": "2024-12-16T09:30:35Z",
+          "width": 464,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174349",
+      "observationId": "0363100012174349_e_1qllxd7",
+      "buildingId": "0363100012174349",
+      "geometryRevision": "da7b381ed1246c27225d25b7bbc2016a177bdce081bef33b9f5adefa2862b93c",
+      "evidenceKey": "8963ad443678c3788982e05ac23d3d9a9bf0b3045d01ce533e360112e4ba6d3a",
+      "frontage": [
+        [
+          486.5147380957351,
+          -10.250250215060078
+        ],
+        [
+          491.9897378854803,
+          -13.13825024815742
+        ]
+      ],
+      "surfaceIndices": [
+        16
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/2d577d5d6d869c339e40bd79f9bb1877451a30e6a849fd77633ebd369ce1ccda.jpg",
+          "cropSha256": "2d577d5d6d869c339e40bd79f9bb1877451a30e6a849fd77633ebd369ce1ccda",
+          "captureDate": "2023-01-16T09:28:42.787390Z",
+          "width": 708,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174350",
+      "observationId": "0363100012174350_e_0v2t5yf",
+      "buildingId": "0363100012174350",
+      "geometryRevision": "6d4c48c780d36bcb2972e5aa748ee4fc8a37c9d1b5c5ecd221bdbafc2d565b0f",
+      "evidenceKey": "199582b0503ddbdc55f0d05be941ff7f95d083d9d9a579ccf9615c6503963ddd",
+      "frontage": [
+        [
+          491.9897378854803,
+          -13.13825024815742
+        ],
+        [
+          495.88373773609055,
+          -15.192250276333652
+        ]
+      ],
+      "surfaceIndices": [
+        9
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/92c04e2396252adc61606167276a91f006632a10f367252d598381a3210c9b1b.jpg",
+          "cropSha256": "92c04e2396252adc61606167276a91f006632a10f367252d598381a3210c9b1b",
+          "captureDate": "2025-07-03T10:39:51Z",
+          "width": 504,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174351",
+      "observationId": "0363100012174351_e_1hhumoz",
+      "buildingId": "0363100012174351",
+      "geometryRevision": "b4e7b1c31669b6cdc207d78eed17fb25da9979310cabe5cf88b94d170551982d",
+      "evidenceKey": "3bd4b7331e4dd3953d810e9e61bf62d69dbc9fd76a9e4fc7024a66443cfe9bbc",
+      "frontage": [
+        [
+          474.2917385647015,
+          -3.802250132255722
+        ],
+        [
+          480.40373833017657,
+          -7.026250175083987
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/e4ec5f9f37194921653b53e97ff76e01909f059d9c09d39048a61abbb087d91d.jpg",
+          "cropSha256": "e4ec5f9f37194921653b53e97ff76e01909f059d9c09d39048a61abbb087d91d",
+          "captureDate": "2025-07-03T10:39:55Z",
+          "width": 791,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174352",
+      "observationId": "0363100012174352_e_0vzdubh",
+      "buildingId": "0363100012174352",
+      "geometryRevision": "500b0854f979819959774c2c222048ab88c1e1bf93b7c8543dd7802b86f89eb4",
+      "evidenceKey": "274e13fb32df5db005d7edec28df0e2d0bbfb6cea65108918acb2aee8f81fd09",
+      "frontage": [
+        [
+          480.40373833017657,
+          -7.026250175083987
+        ],
+        [
+          486.5147380957351,
+          -10.250250215060078
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/473841a3cd1d1635d9172cbe56a81662e41d2e1e10df609bf0518adb000fcafd.jpg",
+          "cropSha256": "473841a3cd1d1635d9172cbe56a81662e41d2e1e10df609bf0518adb000fcafd",
+          "captureDate": "2025-07-03T10:39:54Z",
+          "width": 790,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174357",
+      "observationId": "0363100012174357_e_0mu2iav",
+      "buildingId": "0363100012174357",
+      "geometryRevision": "f00238485b891f42dd6b0c8267cbb7951c8e15dc303cecdee0769f7237f7153b",
+      "evidenceKey": "91af39c136964d1fa64bc9db001b5f58584c614b920d3a3d530dffe0b220fcbf",
+      "frontage": [
+        [
+          398.93175294605317,
+          -373.03325033467263
+        ],
+        [
+          395.35375309975643,
+          -371.7182503133081
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/9d7c63d7bcd0f7ea4cf33f9d04c3fb959cafb1ffdebb0ccf43015cffe878511f.jpg",
+          "cropSha256": "9d7c63d7bcd0f7ea4cf33f9d04c3fb959cafb1ffdebb0ccf43015cffe878511f",
+          "captureDate": "2023-01-16T11:28:02.977830Z",
+          "width": 436,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174359",
+      "observationId": "0363100012174359_e_0jjpsa8",
+      "buildingId": "0363100012174359",
+      "geometryRevision": "68eb43785b864b3787e976f29eb989cec562c02803ec26e9a8bab6670253cd39",
+      "evidenceKey": "c058a68956499e6e3047fe5c6f17180bdefd97e5eb177be31c06b3b5c13c5361",
+      "frontage": [
+        [
+          347.837755099943,
+          -352.8782500086236
+        ],
+        [
+          331.7137557795795,
+          -346.51724990224466
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/c754a0c5fb30870f5d533de0c53719a2fed78123f16790ea33ea495e52dccc4d.jpg",
+          "cropSha256": "c754a0c5fb30870f5d533de0c53719a2fed78123f16790ea33ea495e52dccc4d",
+          "captureDate": "2023-01-16T11:27:55.312870Z",
+          "width": 1983,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174360",
+      "observationId": "0363100012174360_e_1bqfvl3",
+      "buildingId": "0363100012174360",
+      "geometryRevision": "bc6b8bc85d50ac5ee3521148e0b80f7857ccbda26773288e8dd30c1ecf64d6e7",
+      "evidenceKey": "1647ebf030d6e85a9d4de5ac6c9acadc52491f158b04acc3b9749bbd9d2abf66",
+      "frontage": [
+        [
+          366.8747542905912,
+          -360.14425012940774
+        ],
+        [
+          363.69075442652684,
+          -358.95325010822853
+        ]
+      ],
+      "surfaceIndices": [
+        26
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/d7571c6152a819d6479d0ecf80bc1e103728225917f688e04ae5ccbf25ea016a.jpg",
+          "cropSha256": "d7571c6152a819d6479d0ecf80bc1e103728225917f688e04ae5ccbf25ea016a",
+          "captureDate": "2023-01-16T11:27:58.757870Z",
+          "width": 389,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174442",
+      "observationId": "0363100012174442_e_0smyxbz",
+      "buildingId": "0363100012174442",
+      "geometryRevision": "f60166530c5a53383554169a14183100d9da422049b65877189ccdb55280b998",
+      "evidenceKey": "0ef58bb54dd55246b4201493761aab5495a990f7ef7deea952ea803936fe48d7",
+      "frontage": [
+        [
+          457.66974411653064,
+          -169.95025032834383
+        ],
+        [
+          453.52574428822845,
+          -168.21325030049775
+        ]
+      ],
+      "surfaceIndices": [
+        7,
+        10
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/35f8842c8a2a26753149c42c4f842a05e354681e417b1e65bb0a7c5cb8ff12e5.jpg",
+          "cropSha256": "35f8842c8a2a26753149c42c4f842a05e354681e417b1e65bb0a7c5cb8ff12e5",
+          "captureDate": "2023-02-13T10:57:57.989480Z",
+          "width": 514,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174519",
+      "observationId": "0363100012174519_e_0vbmo8g",
+      "buildingId": "0363100012174519",
+      "geometryRevision": "5f1f6c2ce41e8e2f12de3cbe91eb13889e0e30ecc2798b664321d06928c94429",
+      "evidenceKey": "e8633d6702125e8c39e4770b4757c4a33b8d60fae1682edec3b38138a8c54259",
+      "frontage": [
+        [
+          461.681743950292,
+          -171.6322503554402
+        ],
+        [
+          457.66974411653064,
+          -169.95025032834383
+        ]
+      ],
+      "surfaceIndices": [
+        8
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/693b4ea0047554434b11e5eb512dcfe393da96d6ea9fd0fe8d0a72e961767ac6.jpg",
+          "cropSha256": "693b4ea0047554434b11e5eb512dcfe393da96d6ea9fd0fe8d0a72e961767ac6",
+          "captureDate": "2025-07-03T09:52:58Z",
+          "width": 498,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174520",
+      "observationId": "0363100012174520_e_1vmewhe",
+      "buildingId": "0363100012174520",
+      "geometryRevision": "66cf88e413f0f69627a8887caad0bf9bfa0ff8bde1690016688dde9be3a40878",
+      "evidenceKey": "540d062217599aa2fa0d56db088c39cf94ff0e26f7e63adf05d942c45ed9ca21",
+      "frontage": [
+        [
+          484.46574300614884,
+          -181.1822505000746
+        ],
+        [
+          479.3197432193556,
+          -179.02425046626013
+        ]
+      ],
+      "surfaceIndices": [
+        27
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/f3de231c5a2569fb1d5bfb447005b9beef47895f2d8a8c94530f6e79ae532776.jpg",
+          "cropSha256": "f3de231c5a2569fb1d5bfb447005b9beef47895f2d8a8c94530f6e79ae532776",
+          "captureDate": "2025-07-03T09:52:50Z",
+          "width": 638,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174521",
+      "observationId": "0363100012174521_e_06zkfqe",
+      "buildingId": "0363100012174521",
+      "geometryRevision": "e2eddd69339c011a7adb0cb21789964d0e4a705a1a23bc31a060175bb2d0e5cf",
+      "evidenceKey": "d93020b5dd6c3c2f7c8a93ac3a691f819c04b89cb5cc2d8eab1a140018a88019",
+      "frontage": [
+        [
+          494.87274228656315,
+          -175.27325055352412
+        ],
+        [
+          491.84174266803893,
+          -183.11725054617273
+        ]
+      ],
+      "surfaceIndices": [
+        7,
+        10,
+        17
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/d02dfa28d8df5171c71f29c485169f014a4028d843106c6d636738a03a60b515.jpg",
+          "cropSha256": "d02dfa28d8df5171c71f29c485169f014a4028d843106c6d636738a03a60b515",
+          "captureDate": "2022-04-29T08:33:10.203160Z",
+          "width": 962,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174527",
+      "observationId": "0363100012174527_e_070l82f",
+      "buildingId": "0363100012174527",
+      "geometryRevision": "105df99a87a8b8215dd3c704012825e3cb80079d1e0ebfdfcb33cf75cfe28f3e",
+      "evidenceKey": "e0410f68157e037437282c6b18e72045cf5cb7e2eff7dc7a93bf6ebd0c60cc54",
+      "frontage": [
+        [
+          437.9867457796354,
+          -191.87425025075208
+        ],
+        [
+          441.7487456232193,
+          -193.4322502744617
+        ]
+      ],
+      "surfaceIndices": [
+        8
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/98e07daa4e6155ab2f80bb8d10f4d06c7127745820cd68d8cbc823cad44fb5a0.jpg",
+          "cropSha256": "98e07daa4e6155ab2f80bb8d10f4d06c7127745820cd68d8cbc823cad44fb5a0",
+          "captureDate": "2023-03-27T09:47:16.902160Z",
+          "width": 466,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174549",
+      "observationId": "0363100012174549_e_0brqvmp",
+      "buildingId": "0363100012174549",
+      "geometryRevision": "34bb45696a7b2d68b05c58de3de225d86558183d27a75b11af1e878291a67b56",
+      "evidenceKey": "86111b814cc787c69b8248feefea948f7747041e92f23a9d57c0bffb0970da41",
+      "frontage": [
+        [
+          478.9857374944986,
+          25.40374989202246
+        ],
+        [
+          468.9057378770085,
+          30.872749960282817
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/c393ccf669178e0844f8b6200efa7b4927db382db7fc66901f1ed1146a6dc269.jpg",
+          "cropSha256": "c393ccf669178e0844f8b6200efa7b4927db382db7fc66901f1ed1146a6dc269",
+          "captureDate": "2025-06-30T05:28:14Z",
+          "width": 1312,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174552",
+      "observationId": "0363100012174552_e_11xd5yb",
+      "buildingId": "0363100012174552",
+      "geometryRevision": "b83a4107e1da89be6a571bd2a071cb1e93ebb16e5cd445b640b08f77c004ac59",
+      "evidenceKey": "300893a5ea6b370140dc2ddc2c95698ce1322fe5a358cc4bf3b84cfc591c2177",
+      "frontage": [
+        [
+          417.833740731905,
+          25.980750243354123
+        ],
+        [
+          421.6297405862133,
+          23.97775021911366
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/48d30c8ebf97dfb0115dd829fe878c8fa6ecc32adac89848bb8e0571dea5e9cd.jpg",
+          "cropSha256": "48d30c8ebf97dfb0115dd829fe878c8fa6ecc32adac89848bb8e0571dea5e9cd",
+          "captureDate": "2025-07-03T10:40:10Z",
+          "width": 491,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174554",
+      "observationId": "0363100012174554_e_077rlll",
+      "buildingId": "0363100012174554",
+      "geometryRevision": "52459d4eb6d097fbbe6aef02f5e137358492fad7bb51e0e97919db477e04851c",
+      "evidenceKey": "4cb9a6a5b6b236ecadffa5f9a1bf6880761286df7c13a937192ef7102f88bcce",
+      "frontage": [
+        [
+          421.6297405862133,
+          23.97775021911366
+        ],
+        [
+          425.4457404395507,
+          21.965750193456188
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/0e19bf9f50852551ffc948add70c6ac40c8b62566ceb141773d31e0e6765708b.jpg",
+          "cropSha256": "0e19bf9f50852551ffc948add70c6ac40c8b62566ceb141773d31e0e6765708b",
+          "captureDate": "2025-07-03T10:40:08Z",
+          "width": 494,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174555",
+      "observationId": "0363100012174555_e_0etw0xy",
+      "buildingId": "0363100012174555",
+      "geometryRevision": "0ee10963360d41fc2fcd53d4775a0d3f570297c6f3e299738b1be348368b324f",
+      "evidenceKey": "8c2072fba2189b28c022aecdae976eee5b4f29eabb0367f619143578e3cef1a0",
+      "frontage": [
+        [
+          425.4457404395507,
+          21.965750193456188
+        ],
+        [
+          429.2137402949593,
+          19.977750167425256
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/ea610bf154fca086489e271508099c72cd84d872d8d6df4a25d7bb5136254440.jpg",
+          "cropSha256": "ea610bf154fca086489e271508099c72cd84d872d8d6df4a25d7bb5136254440",
+          "captureDate": "2025-07-03T10:40:07Z",
+          "width": 487,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174559",
+      "observationId": "0363100012174559_e_02r6hbf",
+      "buildingId": "0363100012174559",
+      "geometryRevision": "ba0f880fe976e05b8a4c66f667e0d2b6ea024da83467d0e62c9a28aa25790cfa",
+      "evidenceKey": "6988dfc38cb2cd4084f2ea37e6907b22878dd9c80cb65f9bc8a6cfea75a83794",
+      "frontage": [
+        [
+          495.4707368645468,
+          16.613749778654892
+        ],
+        [
+          491.58673701527005,
+          18.603749806061387
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/651e37792343458c4edf56e9d0ac7bcc17204a55b29b52a87d90a43d8585f93c.jpg",
+          "cropSha256": "651e37792343458c4edf56e9d0ac7bcc17204a55b29b52a87d90a43d8585f93c",
+          "captureDate": "2025-06-30T05:28:17Z",
+          "width": 499,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174561",
+      "observationId": "0363100012174561_e_17dg2bs",
+      "buildingId": "0363100012174561",
+      "geometryRevision": "e385a10b80d3b02583d20cd32a843d0b53fd17f3b6770ea560c32dfa92078352",
+      "evidenceKey": "1d0e836ab8ca92fd3604d5dcea528dbf46f84bca570bfcbb088d278b2f168b92",
+      "frontage": [
+        [
+          499.4197367124434,
+          14.547749754565302
+        ],
+        [
+          495.4707368645468,
+          16.613749778654892
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/2d41dbe054ad4ad60d1872ca3f4f2eea48f385284e7f5c1dd453c1b69b947d4d.jpg",
+          "cropSha256": "2d41dbe054ad4ad60d1872ca3f4f2eea48f385284e7f5c1dd453c1b69b947d4d",
+          "captureDate": "2025-06-30T05:28:18Z",
+          "width": 510,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174562",
+      "observationId": "0363100012174562_e_0id24bt",
+      "buildingId": "0363100012174562",
+      "geometryRevision": "7a2d09fbb16240b94e5179996be18c7211df9ba193a852546be91db13d1f46c8",
+      "evidenceKey": "6bb6d9467d71546597cf2b1afa61ab92d793ba2903dbad3d12c605f4724b1e9d",
+      "frontage": [
+        [
+          458.7447382684477,
+          36.18475002422929
+        ],
+        [
+          453.8717384586198,
+          38.64275006216485
+        ]
+      ],
+      "surfaceIndices": [
+        14
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/ad0194511ca33815b0ea17342f4e5acfdd8235a2138d8f249e145af4b52347b4.jpg",
+          "cropSha256": "ad0194511ca33815b0ea17342f4e5acfdd8235a2138d8f249e145af4b52347b4",
+          "captureDate": "2025-06-30T05:28:11Z",
+          "width": 624,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174563",
+      "observationId": "0363100012174563_e_07m7e00",
+      "buildingId": "0363100012174563",
+      "geometryRevision": "bb274ad2dedba02df981d5eeaf75d1d53e1ce9a2d64d83efed2607ea715228ef",
+      "evidenceKey": "15bb05c31210e7eb194490a490531f36963bc5d1abe4b9bef59ff487074bb577",
+      "frontage": [
+        [
+          312.91275741596473,
+          -369.1422498335596
+        ],
+        [
+          316.6357572595298,
+          -370.6292498613475
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/7157b7d8ad09daca7dfd8fc63d74edf723f6585557ef1aa7f1d6585f0de3c3f4.jpg",
+          "cropSha256": "7157b7d8ad09daca7dfd8fc63d74edf723f6585557ef1aa7f1d6585f0de3c3f4",
+          "captureDate": "2023-02-13T09:46:47.731590Z",
+          "width": 459,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174565",
+      "observationId": "0363100012174565_e_0f5lign",
+      "buildingId": "0363100012174565",
+      "geometryRevision": "0e5a5ca8e1b95ded799747a3465158a05bf89444c958d7b1f4253a6da6a3846e",
+      "evidenceKey": "80a3aa1af9795abbae791f7dac2b1e698ac1b77d569f0a727acf57cc17be5091",
+      "frontage": [
+        [
+          325.8307560274843,
+          -344.19624986319104
+        ],
+        [
+          318.24675634733285,
+          -341.20424981880933
+        ]
+      ],
+      "surfaceIndices": [
+        8,
+        15
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/37aebb2a75b363d54ffc68c316f4a8b8444b6880dd7957bd7c38dec734cf63c5.jpg",
+          "cropSha256": "37aebb2a75b363d54ffc68c316f4a8b8444b6880dd7957bd7c38dec734cf63c5",
+          "captureDate": "2023-01-16T11:27:52.407930Z",
+          "width": 933,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174566",
+      "observationId": "0363100012174566_e_0f96m8v",
+      "buildingId": "0363100012174566",
+      "geometryRevision": "15ed9d96eaeb3d6d282626135d2a338b91985367c9fa9602c4e012e10ec94e0c",
+      "evidenceKey": "2b472a6091dbe79ff8e517667738bcac6f163862fb67bc48cedfb5dd1f7f6e5b",
+      "frontage": [
+        [
+          331.7137557795795,
+          -346.51724990224466
+        ],
+        [
+          325.8307560274843,
+          -344.19624986319104
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/4ab8f04bdca27a6b2782b5e7e7b91624325db5d4d065a9400305f1f5de36b56a.jpg",
+          "cropSha256": "4ab8f04bdca27a6b2782b5e7e7b91624325db5d4d065a9400305f1f5de36b56a",
+          "captureDate": "2023-01-16T11:27:53.917970Z",
+          "width": 723,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174567",
+      "observationId": "0363100012174567_e_07lfkw8",
+      "buildingId": "0363100012174567",
+      "geometryRevision": "0c7c24fa54c103792e3a081eb66685ad6e54ab7b2f558c4efb57e3c9918feac6",
+      "evidenceKey": "3f43b5d8296a9c03b8eeed2fc29b9adfc6478f1728d405ef1fb20ede95fd330d",
+      "frontage": [
+        [
+          358.07675466829096,
+          -356.91825007181615
+        ],
+        [
+          351.9107549281616,
+          -354.4852500324487
+        ]
+      ],
+      "surfaceIndices": [
+        1,
+        12
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/ad228eff83d46a97646dac80909d25e392d046b245ffec08f51fec33c4399ba8.jpg",
+          "cropSha256": "ad228eff83d46a97646dac80909d25e392d046b245ffec08f51fec33c4399ba8",
+          "captureDate": "2023-01-16T11:27:57.112890Z",
+          "width": 758,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174568",
+      "observationId": "0363100012174568_e_0x8lkrs",
+      "buildingId": "0363100012174568",
+      "geometryRevision": "43a64542bfe41aa5167fd19dfdc0db5b35f21fe91fec4577f2e9f1c9b6aa6e2a",
+      "evidenceKey": "7aa931df6bb2085302bd1b3e19a8d654ce16e4e2d7b65916eab12bc49b724860",
+      "frontage": [
+        [
+          351.9107549281616,
+          -354.4852500324487
+        ],
+        [
+          347.837755099943,
+          -352.8782500086236
+        ]
+      ],
+      "surfaceIndices": [
+        11
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/c22c27dc56149a3fdf1bf1fab72970d5b6ef51557f64af81532f57174dc373d9.jpg",
+          "cropSha256": "c22c27dc56149a3fdf1bf1fab72970d5b6ef51557f64af81532f57174dc373d9",
+          "captureDate": "2023-01-16T11:27:56.547880Z",
+          "width": 501,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174820",
+      "observationId": "0363100012174820_e_007m5ol",
+      "buildingId": "0363100012174820",
+      "geometryRevision": "2a397f25e156a4ca4fa94641a516d312ccbd27d394a54e31450d550eebaeac3f",
+      "evidenceKey": "d780e3553631b120a21b9dd17c401ebdff8abf796c89a0cf6da6a5ccc21a2585",
+      "frontage": [
+        [
+          483.7247441389336,
+          -220.1062505650334
+        ],
+        [
+          486.920743743045,
+          -212.06725056946743
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/cad6df3de8299194d9101f80799f7864ec90f4ba107f6faa9e7a848132c47c6a.jpg",
+          "cropSha256": "cad6df3de8299194d9101f80799f7864ec90f4ba107f6faa9e7a848132c47c6a",
+          "captureDate": "2025-07-03T09:39:48Z",
+          "width": 990,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174821",
+      "observationId": "0363100012174821_e_19molap",
+      "buildingId": "0363100012174821",
+      "geometryRevision": "f464650c3ed217c1e4808d7ff40e476f9a7f5ff5fde91f0aded4af662a639143",
+      "evidenceKey": "6a972b353bf4b6ca699b243086e3a23b00024ca496fb7395e4f948bfc643e0c5",
+      "frontage": [
+        [
+          492.57174352087895,
+          -214.86025060300017
+        ],
+        [
+          498.2987432841619,
+          -217.28825064143166
+        ]
+      ],
+      "surfaceIndices": [
+        17
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/8917522994b3c80449267d27a479938630ecf2143515c9c55b61727913da252d.jpg",
+          "cropSha256": "8917522994b3c80449267d27a479938630ecf2143515c9c55b61727913da252d",
+          "captureDate": "2025-07-03T09:52:11Z",
+          "width": 712,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174822",
+      "observationId": "0363100012174822_e_1klgmit",
+      "buildingId": "0363100012174822",
+      "geometryRevision": "22b4d21b98272c2ed225e2306f09de0d17c2543c15dc772137b80f6cbb58451f",
+      "evidenceKey": "bdefb91989964db8d00c4af6631951a704ef25e0ca051ca8296250af3e3052f7",
+      "frontage": [
+        [
+          498.2987432841619,
+          -217.28825064143166
+        ],
+        [
+          503.7847430577385,
+          -219.61425068037352
+        ]
+      ],
+      "surfaceIndices": [
+        8
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/a45a660d7210261ba7c275a1d6b0e3f39e6ae6919d9b2cc1431c595b124dbb9e.jpg",
+          "cropSha256": "a45a660d7210261ba7c275a1d6b0e3f39e6ae6919d9b2cc1431c595b124dbb9e",
+          "captureDate": "2025-07-03T09:52:09Z",
+          "width": 682,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174886",
+      "observationId": "0363100012174886_e_0hlwydw",
+      "buildingId": "0363100012174886",
+      "geometryRevision": "0e8395ff7018167eb3bd5fb24db3c1ed0b0af5c3504157c05e57c94e919c4dc9",
+      "evidenceKey": "d436c6c112772ac793899fb94a4d256e1e3c340e63aeba358adc5941d3678428",
+      "frontage": [
+        [
+          468.1647445249255,
+          -204.37625044834567
+        ],
+        [
+          472.90274432812294,
+          -206.34025047946488
+        ]
+      ],
+      "surfaceIndices": [
+        13,
+        14
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/4f617ee4fec1abe040d128860423ec8b2b85cc0ddcf6ba33007c2c7c342cd268.jpg",
+          "cropSha256": "4f617ee4fec1abe040d128860423ec8b2b85cc0ddcf6ba33007c2c7c342cd268",
+          "captureDate": "2025-07-03T09:39:29Z",
+          "width": 587,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012174999",
+      "observationId": "0363100012174999_e_0f7aj85",
+      "buildingId": "0363100012174999",
+      "geometryRevision": "e75ce2d20b47f1a66cccf1e6081e91f22ff8f3026cc66abaaa14c8a49d62bc01",
+      "evidenceKey": "4abd7c933b2d1521003b42239a68ec113c08ed71ca330548889e291e8b957812",
+      "frontage": [
+        [
+          453.90675064193783,
+          -395.1722506923252
+        ],
+        [
+          441.7007511663396,
+          -390.7082506127772
+        ]
+      ],
+      "surfaceIndices": [
+        16,
+        56
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/02cd4a9d43fdbfd714c02f9be38328341962dba673bfc7c2ea3244f49d0b860e.jpg",
+          "cropSha256": "02cd4a9d43fdbfd714c02f9be38328341962dba673bfc7c2ea3244f49d0b860e",
+          "captureDate": "2025-01-20T10:11:25Z",
+          "width": 1487,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012175000",
+      "observationId": "0363100012175000_e_1opro3y",
+      "buildingId": "0363100012175000",
+      "geometryRevision": "50c67e9b0dcf34de2359b0afb6df2b79b606aa62ca1db6fd17e7f4becbbb80fa",
+      "evidenceKey": "42f5bd8cdf095ecde94241a26ab9c41edc2fdea829d9e25223d4ce55d8aa2ebe",
+      "frontage": [
+        [
+          458.90675043230294,
+          -397.18125072371913
+        ],
+        [
+          454.6027506143146,
+          -395.5072506930446
+        ]
+      ],
+      "surfaceIndices": [
+        7,
+        18
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/1a1902bad1c5964dd1b11b0f6e719b715351872c773a2bf5eeb0c33233af8063.jpg",
+          "cropSha256": "1a1902bad1c5964dd1b11b0f6e719b715351872c773a2bf5eeb0c33233af8063",
+          "captureDate": "2025-07-03T09:41:27Z",
+          "width": 528,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012185684",
+      "observationId": "0363100012185684_e_0qn149y",
+      "buildingId": "0363100012185684",
+      "geometryRevision": "8382739c0e9cb21d4e7e562efec85b7cb0ba52468c669750ef98b16b1a2d9d0f",
+      "evidenceKey": "2e714f4afd6f81daf1a288600ecef18474975222c2b2b10cadbfb9ef744c512a",
+      "frontage": [
+        [
+          300.11675795754127,
+          -364.16824975336203
+        ],
+        [
+          305.03275774754,
+          -366.01424978411524
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/79e21ed4885bcb8cefe2f1613cf5ce9cad579ce25ab4063e4730c965830b83ff.jpg",
+          "cropSha256": "79e21ed4885bcb8cefe2f1613cf5ce9cad579ce25ab4063e4730c965830b83ff",
+          "captureDate": "2023-03-20T11:11:53.013270Z",
+          "width": 601,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012186094",
+      "observationId": "0363100012186094_e_0a0a5bl",
+      "buildingId": "0363100012186094",
+      "geometryRevision": "3996ab98ea57191e4e31966adfc07b541474776037d44ee6a9a3908b1b75328a",
+      "evidenceKey": "83928237d9a0a2f77af21a4b80a26e9a5ef82264dae3a2491569e9f9210c728c",
+      "frontage": [
+        [
+          360.29274815216195,
+          -129.13524969742866
+        ],
+        [
+          354.15074840663874,
+          -126.56124965765048
+        ]
+      ],
+      "surfaceIndices": [
+        36
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/e480ab7bae58fbd6837e8c1a251d491f922b85582b3b3ee13ec40238dea64cea.jpg",
+          "cropSha256": "e480ab7bae58fbd6837e8c1a251d491f922b85582b3b3ee13ec40238dea64cea",
+          "captureDate": "2023-03-27T09:47:59.006940Z",
+          "width": 762,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012186296",
+      "observationId": "0363100012186296_e_1c58etq",
+      "buildingId": "0363100012186296",
+      "geometryRevision": "9d1f845f9bb484439c9f029859a003be753a95d8cf241fb59f644406dc103fbd",
+      "evidenceKey": "469f65e471e1674ed366f08d6888d7c300a92b39730f3639c73f6974e5ade074",
+      "frontage": [
+        [
+          173.59376335394336,
+          -316.43424894072814
+        ],
+        [
+          179.14676311489893,
+          -318.4522489758674
+        ]
+      ],
+      "surfaceIndices": [
+        7
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/ae2cb2c1b7a69caaa04e9e213b8b4604047f764635a3017511ae3788ea1543dc.jpg",
+          "cropSha256": "ae2cb2c1b7a69caaa04e9e213b8b4604047f764635a3017511ae3788ea1543dc",
+          "captureDate": "2022-05-02T06:43:18.478260Z",
+          "width": 676,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012236003",
+      "observationId": "0363100012236003_e_0k0u3th",
+      "buildingId": "0363100012236003",
+      "geometryRevision": "be6e64c86e14a91ef93e6bcb6ff2aff62ed813a42877483385bf156e5833619a",
+      "evidenceKey": "1c3c7c1abe21a4e32dc61e952b4ae43fbc8e0d1f73e392dfc97761d0c2e2dd60",
+      "frontage": [
+        [
+          -211.37922087532934,
+          -147.68824643699918
+        ],
+        [
+          -217.0262206309999,
+          -145.67024639924057
+        ]
+      ],
+      "surfaceIndices": [
+        0,
+        1
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/4571addfb503d9dc457841068d21fc832626e0d28f6481f13e2b122f33ba4c19.jpg",
+          "cropSha256": "4571addfb503d9dc457841068d21fc832626e0d28f6481f13e2b122f33ba4c19",
+          "captureDate": "2025-07-31T09:45:33Z",
+          "width": 686,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012236016",
+      "observationId": "0363100012236016_e_1g5hiht",
+      "buildingId": "0363100012236016",
+      "geometryRevision": "0bfe3532294f9ae7af587c5d05127a54b89d3d78858725e82e8a6c9cc944efe7",
+      "evidenceKey": "93684182726da3e354b8087df41d36d362b89f698625d909d1437c5f32868033",
+      "frontage": [
+        [
+          140.34575988491997,
+          -129.95124843536178
+        ],
+        [
+          138.67976015228487,
+          -136.3072484356817
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/a5379e711dc45aa447e080660014144095150bc9b39eb030124937e04a646ee7.jpg",
+          "cropSha256": "a5379e711dc45aa447e080660014144095150bc9b39eb030124937e04a646ee7",
+          "captureDate": "2025-07-03T11:23:27Z",
+          "width": 752,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012236121",
+      "observationId": "0363100012236121_e_0pbjzjk",
+      "buildingId": "0363100012236121",
+      "geometryRevision": "405129cb1cde1b130530b4c7b2126fa923b03805c5b79c3af165cda52ec31ad9",
+      "evidenceKey": "5cfc02093a73ac1c62f0cd92978db665d880171831e3dd66ee3aee507dec10c6",
+      "frontage": [
+        [
+          -194.4072216094064,
+          -153.76124654407613
+        ],
+        [
+          -200.07522136435728,
+          -151.73324650956783
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/92c256033b82c6d400f3953ea3f51cc94a637f0ca5128cb67003cf1ffccd2cc1.jpg",
+          "cropSha256": "92c256033b82c6d400f3953ea3f51cc94a637f0ca5128cb67003cf1ffccd2cc1",
+          "captureDate": "2025-07-31T09:45:37Z",
+          "width": 689,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012236141",
+      "observationId": "0363100012236141_e_041dz1t",
+      "buildingId": "0363100012236141",
+      "geometryRevision": "17b376e26b5e9921d97d66ebddf072337c416cb530293eb0c585a715ff40943d",
+      "evidenceKey": "18517498943f7af7ef08b9447ea68ec7b166416d0714469168b8fe15c9afe7ec",
+      "frontage": [
+        [
+          89.01076617723447,
+          -256.5712483507814
+        ],
+        [
+          83.56576641101856,
+          -254.56924831838114
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/6130ce75d7a8c70ac7fe8cf54cd308d0cdb4c8fde9f547ceb834ed950d0e563f.jpg",
+          "cropSha256": "6130ce75d7a8c70ac7fe8cf54cd308d0cdb4c8fde9f547ceb834ed950d0e563f",
+          "captureDate": "2025-07-03T08:56:03Z",
+          "width": 664,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012236194",
+      "observationId": "0363100012236194_e_00dx8kl",
+      "buildingId": "0363100012236194",
+      "geometryRevision": "08a8877a366b394cf6a5751989ee41990a7f798061763ae1979dec9bce43d423",
+      "evidenceKey": "e30bd5359a506acd6981b2c6e79d37cdafa2708671a1f6564b7b2f5e20c23a58",
+      "frontage": [
+        [
+          -76.54822669472196,
+          -196.3282472975552
+        ],
+        [
+          -81.79722646837763,
+          -194.4332472626702
+        ]
+      ],
+      "surfaceIndices": [
+        6
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/bffddf8e1778aac399b6511e640173b63cd92bf07e28c8bcbeda95af027a087a.jpg",
+          "cropSha256": "bffddf8e1778aac399b6511e640173b63cd92bf07e28c8bcbeda95af027a087a",
+          "captureDate": "2025-07-03T08:55:25Z",
+          "width": 638,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    },
+    {
+      "id": "neighbourhood-0363100012236235",
+      "observationId": "0363100012236235_e_1njqk8h",
+      "buildingId": "0363100012236235",
+      "geometryRevision": "5ba470b6f96280fed73e6b721ab55f71830b185036dd3e80bfcf2388f21efacb",
+      "evidenceKey": "3c6c565a6ef6fa52fd1e05f76571d80d2124d7fab6edb00bd0093894feeb15e0",
+      "frontage": [
+        [
+          -4.409238055770402,
+          71.0957527460996
+        ],
+        [
+          -9.232237470336258,
+          59.40975275321398
+        ]
+      ],
+      "surfaceIndices": [
+        20,
+        25
+      ],
+      "sources": {
+        "ground": {
+          "path": "../../../public/data/city-expansion/evidence/d88a448acfe040a24a349d2f7c122245ce16266b678540a25ebff027b63e9b11.jpg",
+          "cropSha256": "d88a448acfe040a24a349d2f7c122245ce16266b678540a25ebff027b63e9b11",
+          "captureDate": "2025-07-31T11:09:19Z",
+          "width": 1446,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+          },
+          "registrationAbstention": "Native crop plane has no verified <=0.15 m metric registration certificate"
+        }
+      }
+    }
+  ]
+}

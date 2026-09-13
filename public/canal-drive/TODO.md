@@ -86,268 +86,48 @@ is not. Do not translate a method verbatim if the decision inside it belongs in
 the data half.*
 
 **10. Build a low-poly Amsterdam that players recognise by real landmarks.**
-The single forward plan is
-[`AMSTERDAM_FACADE_REBUILD_PLAN.md`](../../AMSTERDAM_FACADE_REBUILD_PLAN.md).
-It incorporates the former 8a/10/10b/10c building work. Keep complete city
-massing and useful OSM parts; prioritise correct identity, silhouette, opening
-rhythm and distinctive colour at gameplay scale.
+Start with [the 13 September project review and delivery guide](../../CITY_RECONSTRUCTION_REVIEW.md).
+It maps the current implementation, measured costs, local CV opportunities,
+human review workflow and proposed unattended improvement loop. The detailed
+identity/registration design remains in
+[AMSTERDAM_FACADE_REBUILD_PLAN.md](../../AMSTERDAM_FACADE_REBUILD_PLAN.md).
 
-Next implementation slice:
+Current audited state: active district release `c4bebc1f…` contains 7,395
+source buildings. Its route processing covers 585/598 eligible frontages,
+96.4% by eligible length, with 560 compatible wall bindings. The latest
+`0f625ffc…` candidate has 1,000 valid ground analyses, 988 full analyses and
+compiled source-derived features on 973 buildings; it remains staged with
+zero accepted metric registrations. Counts describe different stages, not
+measured reconstruction fidelity. See [the district runbook](DISTRICT_PIPELINE.md)
+and [the thousand-building report](../../scripts/review/THOUSAND_BUILDING_REPORT.md).
 
-1. Persist the OSM↔BAG/group crosswalk, populate panorama candidates and calibrate
-   the explicit camera model with independent world↔pixel anchors.
-2. Render 3–5 corrected building recipes in the game with source/orthographic/
-   gameplay comparisons. Include the Herengracht 270 wrong-building regression.
-3. Use measured discrepancies to retry the responsible stage, with limits and
-   fallback. Evaluate on separate buildings/views before a contiguous 20–40
-   building block and a landmark route.
+Next work, in order:
 
-Implemented 2026-09-05: review decisions now bind to source/wall versions and
-later rejection revokes acceptance. Review history and import/export share the
-typed gate. External discovery is integrated as advisory JSON with exact
-licenses and distinct, versioned evidence. Roof percentiles and rectangle
-extents no longer masquerade as eaves/frontage; legacy measurement/export
-readers reject unversioned inputs. The comparison starts streaming without a
-camera gesture: 16 resident tiles / 63,765 features in the repaired capture.
-The gameplay baseline also loaded, with zero page errors.
+1. Freeze a reproducible baseline and protect saved labels/corrections. Reconcile
+   run-specific policy and budget reporting. Resolve the failing
+   `test:facade-fidelity` assertion against intended per-tier behavior: its
+   ground-only fixture currently also emits upper-floor window priors.
+2. Consolidate the existing comparison, registration and correction tools around
+   one source-bound case. Capture structured edits, preserve overrides, and
+   establish an independent evaluation split before further tuning.
+3. Complete source → recipe → both-viewer delivery for 20–40 representative
+   frontages on one route. Measure extraction in source pixels separately from
+   3D placement; address roof/gable silhouette, balconies, entrance placement,
+   temporal conflicts and the Moeders game sign-tile residency failure.
+4. Extend the existing resumable coordinator with failure-specific repairs,
+   bounded retries, independent evaluation, regression generation and a useful
+   unattended run report. Calibrate field-level automatic acceptance using
+   held-out evidence; retain conservative output for unresolved cases.
+5. Profile the complete scene on a named desktop and physical phone, then
+   expand to diverse architectural districts with measured quality and review
+   cost. The saved 9.12 MB building-buffer/texture figure excludes other scene
+   memory and cannot establish full-device performance.
 
-Validation: `check:canal` (including Storybook), production build, focused trust
-regressions, review browser flows and the complete-city/picking browser test
-pass. The fixture export still has 16 candidates, one panorama, zero anchors
-and zero reviews. No real registration or façade extraction has been certified;
-hardware performance and certified building placement remain outstanding.
+The existing unreviewed shopfront/literal-sign policy remains recorded in
+HISTORY.md. Proposed delivery levels do not bypass current release gates.
+Keep the missing twelve original image-numbered examples as an unresolved
+historical issue while defining new work against identified evidence.
 
-The 2026-09-06 photo lab now connects local segmentation masks and editable
-pixel boxes to the recipe compiler. Three supplied strips have development
-proposals; one known bad source abstains. Keizersgracht 136 has a version-bound
-correction example for a merged window, car false positive and foreground crop.
-These are isolated wall studies, not accepted building reconstructions. Next:
-correct and label opening extents on a small development set, measure local
-grouping/occlusion failures, improve wall-colour masking, and attach certified
-wall frames when available. Roofs, cornices and window-style extraction remain
-unimplemented; the renderer can demonstrate authored variants separately.
-
-Implemented in the next 2026-09-06 slice: Grounding DINO / SAM now feed the photo
-renderer, with raw detections retained, bounded row/column/width fitting and
-appearance remeasurement. Forty of 86 attempted adjustments across nine strips
-have sufficient edge support; 104 opening proposals render and 35 remain for
-review. The named low-score Keizersgracht 136 ground-floor window is recovered
-using row + column + mask + edge evidence. An isolated construction-hoarding
-candidate is flagged by semantic disagreement; scores are not acceptance.
-Per-field ontology records cover measured colour, candidate bars, texture and
-extents, with roof/lintel/eave/door-panel shape and material fields still unknown.
-
-Tiny matches 16/16 original labelled frames and 12/13 on the two newly labelled
-buildings. Fitting preserves those counts and slightly improves the latter's box
-overlap; its small drops on original cases remain reported. Three crop retries
-miss the dormer. DINO Base finds it (13/13), but its low score still needs review
-and its boxes are less accurate on Koningsplein. Use this as development evidence
-for selective escalation, not a blanket model upgrade or held-out accuracy claim.
-
-#### Next-day handoff for Sol 5.6 — 2026-09-06
-
-User requested this plan, then an implementation pause. Execute this bounded
-day when the handoff is resumed. It implements the existing
-[reconstruction plan](../../AMSTERDAM_FACADE_REBUILD_PLAN.md); commands and run
-locations are in [the runbook](EXTRACT_PIPELINE.md#current-photo-handoff-runs).
-The day's deliverable is a source → evidence → fitted recipe → render comparison
-for the four cases below, with visible improvements and explicit remaining
-failures. Prioritise architectural structure before adding more texture detail.
-
-**Starting state.** Work in `feat/amsterdam-facade-rebuild`, currently based on
-`683d06b`, with substantial uncommitted work. Re-read status and instructions;
-preserve unrelated edits and the deliberate documentation deletions. Read the
-sibling worktree's strips/model environment without modifying Claude's branch.
-The photo lab already offers Tiny/Base and optional inferred-reconstruction
-runs; its default remains `dino-fit-05`. These are unaccepted, isolated wall
-studies with no map aliases. Existing 104-proposed/35-review counts above describe
-the earlier Tiny slice, not the newer Base/hypothesis runs.
-
-Base and SAM checkpoints are already local. Base found one extra labelled dormer
-but worsened some other boxes; the dormer still fails downstream acceptance.
-Do not spend the morning reacquiring models or comparing aggregate detection
-counts. Inspect the exact stage that loses a feature. The current
-`context_check` in `compile-dino-photo.py` also rejects the real Herengracht 219
-garage under Base: score about 0.644, baseline semantic support about 3.95%.
-Keep this counterexample alongside the construction-hoarding false positive.
-
-| Case | Required correction or diagnostic | Guard against |
-| --- | --- | --- |
-| Keizersgracht 136 | Fit the lower middle opening to the supported lower-row assembly; show measured versus inferred extent and its peers | Sampling car/occlusion pixels as newly observed window; forcing every storey to one height |
-| Bloemstraat 3 | Separate tall central glazing from smaller side-window families; recover supported occluded candidates | Stretching side windows to central glazing; accepting a lamp silhouette as the opening mask |
-| Herengracht 219 | Explain/restore the left image column, fix the garage rejection, inspect wider source coverage for the reported roof | Treating provisional wall alignment as image evidence; assuming the roof is mansard from the user's description alone |
-| Herengracht 242 | Inspect source coverage for roof and souterrain openings; retain partial observations where visible | Treating everything below a provisional ground line as foreground, or inventing features outside the source |
-
-**0–0.5 h — freeze the cases and reproduce the failures.** Save the selected
-source hashes, model/config hashes, current run names and before renders. Label
-all evaluable openings in these four images, including ground-floor assemblies,
-partial/occluded regions and explicit negatives. Record which requested roof or
-basement features are actually in the crop. Existing upper-window box labels
-are insufficient for these complaints. These are development cases, not blind
-holdouts. Confirm current tests rather than inheriting an old passing artifact.
-
-**0.5–2.5 h — fit assemblies and local window families.** Extend
-`fit_openings.py` / `layout_hypotheses.py` around façade zones, repeated families
-and parent/component relationships (door plus transom, paired glazing, shopfront).
-Use row heads/sills, bay axes, edge support and visibility together. Preserve
-different widths, heights and staggered ground floors when supported. The
-conservative fitter's five-pixel movement cap is for measured-box refinement;
-larger continuations belong in separately bounded inferred geometry. Current
-K136 preview already extends the middle bottom from pixel 396 to 422 while
-sampling only the measured extent: retain that separation and test competing
-hypotheses. Row/column agreement can corroborate an existing weak observation;
-an empty grid cell alone must not create an observed opening. Require improvement
-on K136 without collapsing Bloemstraat's distinct window families.
-
-**2.5–4 h — separate detection, visibility and ownership decisions.** Repair
-the garage/hoarding disagreement gate using explicit supporting evidence and
-abstention, rather than lowering all thresholds. A failed SAM mask can prevent
-colour sampling while geometry remains a supported hypothesis. Keep image
-truncation, occlusion, source-wall disagreement and model disagreement as distinct
-reasons. A correctly detected left column can appear in an unplaced image study
-while its BAG ownership remains unresolved. Compare raw detections, proposed
-geometry and render omissions with denominators; do not improve precision merely
-by removing difficult features. Add garage-positive and hoarding-negative tests.
-
-**4–6 h — source coverage and one roof/basement vertical slice.** Inspect full
-cached panoramas and available rectification metadata for H219/H242. Obtain a
-wider source observation only with an explicit, supported camera pose; reject
-missing-height sentinels and retain source/rectifier lineage. Wider cropping
-alone does not certify registration. New pixels/rectification require new hashes
-and regenerated dependent labels/features. Verify the reported roof type from
-visible roof geometry. Where evidence supports it, carry one roof/gable/cornice
-profile through the existing recipe compiler and diagnostic render, with uncertain
-depth/hidden surfaces marked inferred. Represent visible basement openings and
-their datum uncertainty separately from canal/vehicle masks. Time-box source
-repair: if coverage/registration cannot be resolved within this slot, deliver
-the full-source coverage diagnostic and exact missing evidence, then use another
-existing usable roof view for the compiler experiment. Keep the original targets'
-unseen roof geometry unknown; do not turn the crop edge into a building roof.
-
-**6–7 h — appearance within the corrected structure.** Separate outer frame,
-glass, door panel, wall/plinth and any visible trim. Reuse a bar-layout hypothesis
-only within a supported window family, retaining exceptions and uncertainty.
-Check reflected branches, blinds and railings before interpreting lines as
-glazing bars. Attach source masks/patches to colour and material proposals;
-inferred continuation adds no colour samples. Keep procedural brick bond,
-mortar and depth explicitly authored until measured. Work on the clearest
-failure class first; detailed roof trim and a complete Dutch-window taxonomy
-are follow-ups if this time box is exhausted.
-
-**7–8 h — compare, test and leave a reviewable demo.** Produce four named
-before/after source-overlay/render pairs with raw boxes, fitted geometry,
-inferred extents, omitted candidates and reasons. Preserve the selected source
-when switching Tiny/Base or measured/inferred views. Update
-`capture-fitted-photos.ts` to capture the chosen new runs: it currently captures
-older Tiny runs and does not cover the newest hypothesis previews. Export recipe,
-mesh and dependency hashes beside the captures, plus per-case disposition.
-
-Report matched visible openings and false positives over the newly labelled
-denominators, extent error by window family, rendered-versus-detected omissions,
-and partial/unknown coverage. Evaluate hypotheses separately from measured boxes;
-the existing upper-window IoU gate alone cannot approve this change. Test raw
-measurement preservation, sampling bounds, asymmetric families, garage/hoarding,
-partial openings and any new roof geometry. Run the Python fitting checks,
-focused façade aggregate, lint and relevant photo/appearance/fitting/recipe browser
-tests; rebuild bundles and validate the production build if compiler/UI changes
-require them. Record checks actually run. No citywide accuracy, gameplay placement
-or hardware-performance claim follows from these wall renders.
-
-**End of day:** leave a working comparison URL, captures/report, reproducible
-commands and a short remaining-failures list. Retain the previous runs and fallback.
-No new renderer, training campaign, paid service, citywide acquisition or merge is
-needed for this slice. Meshy remains optional for authored components. Any broader
-model escalation follows a measured failure on this local pipeline.
-
-#### Day-two execution result — 2026-09-06
-
-The bounded slice is implemented in `dino-base-pilot-day2-03` and
-`dino-base-expansion-day2-03`. Window fitting now keeps family-specific sill and
-width groups while allowing shared head rows. K136's lower middle opening keeps
-its measured sampling box and records the bounded inferred extension separately;
-Bloemstraat's tall central glazing no longer stretches its smaller side-window
-families. Door panel colour is represented separately from glass, and nested
-door/window observations retain assembly roles.
-
-The semantic-disagreement rule now restores H219's garage only when a nearby
-independently bounded weak observation supplies clean SAM and four-edge support.
-The construction-hoarding negative still has no qualifying peer and remains out.
-Bloemstraat's supported occluded opening can pass with three strong sides plus a
-strong mean edge score. Partial source observations remain visible in purple in
-the lab and are excluded from rendered openings rather than silently discarded.
-
-The four-case development evaluation passes all gates. Visible matches are H242
-4/4, H219 8/8, K136 8/8 and Bloemstraat 21/21. Fitted mean IoU is 0.9404,
-0.9175, 0.9074 and 0.9834 respectively. K136's occluded opening improves from
-0.7979 raw IoU to 0.9815 fitted; the explicit K136 and Bloemstraat negatives have
-zero render hits. H242's three partial openings are detected but deliberately
-not rendered. H219 renders seven of eight labelled visible openings: the garage
-is restored, while a side opening remains a weak non-rendered observation.
-
-Exact-pose coverage diagnostics were generated for H219 and H242. H219's wider
-rectification visibly includes the whole gable and garage, but horizontal wall
-ownership remains unresolved, so no metric gable profile entered the compiler.
-H242 exposes souterrain evidence but its published camera height resolves to
-6.23 m above 3DBAG ground; reject its vertical registration until a supported
-height is available. The original H242 strip also clips the roof. No unseen roof
-shape was inferred.
-
-Review the runs at
-`/canal-drive/facade-photo-lab.html?run=dino-base-pilot-day2-03` and
-`/canal-drive/facade-photo-lab.html?run=dino-base-expansion-day2-03`. The report,
-source-coverage record and four before/after capture pairs are in
-`.cache/facade-rebuild/reports/day2-four-case-evaluation-02.json`,
-`.cache/facade-rebuild/reports/source-coverage-day2-02/report.json` and
-`.cache/facade-rebuild/reports/fitted-photos-2026-09-06T18-27-14.985Z/`.
-The runbook records the reproduction commands and source hashes. These labelled
-examples are development evidence only; registration, building identity and
-citywide accuracy remain unaccepted.
-
-A second source set now addresses narrow-crop bias. `city-variety-07` contains
-12 municipal-panorama strips selected across era, roof form, frontage width,
-height and use, with ground−1.2 m to ridge+1.0 m coverage. Raw-panorama wall
-overlays establish ten as usable development sources; two compound-footprint
-cases remain ownership diagnostics. Eleven rejected predecessors, including four
-clear wrong-wall crops, are recorded in `panorama-variety-development.json`.
-The review checker pins the manifest and covers every strip, while the benchmark
-runner excludes diagnostics by default. Base DINO/SAM completed on the ten usable
-sources as `dino-base-city-variety-04`, producing 117 proposals and two cleaned
-masks that require review. The set is unlabelled, so its immediate role is
-regression discovery and choosing the next independent annotations, not an
-accuracy claim.
-
-The reviewed panorama strips now feed the photo compiler through
-`prepare-panorama-photo-run.py`. Six of ten sources produce renderable family
-studies; four abstain. The geometric registered-wall envelope is restricted to
-sampling bounds and explicitly has unknown semantic state, so it cannot confirm
-its own DINO openings. Wall colour/material from this envelope is marked
-needs-review. The labelled expansion set now mixes DINO rectangles, bounded SAM,
-the independent semantic CNN, classical rectangle edges, family fitting, dense
-grid completion and a roof-context path. `dino-base-expansion-grid-03` restores
-Herenstraat's two occluded windows and measured dormer while leaving its
-out-of-wall side door for ownership review; Bloemstraat gains one separately
-identified inferred grid cell. The comparison report shows Herenstraat labelled
-recall moving 3/4 → 3/4 → 3/4 → 4/4 across semantic CNN, family context,
-cross-detector ensemble and roof context. Bloemstraat stays 21/21 while its
-explicit car negative stays excluded. All development gates pass in
-`.cache/facade-rebuild/reports/expansion-grid-evaluation-05.json`.
-
-Review the new run at
-`/canal-drive/facade-photo-lab.html?run=dino-base-expansion-grid-03`. The focused
-before/after render sheet and pinned capture manifest are in
-`.cache/facade-rebuild/reports/expansion-inference-demos-2026-09-07T06-37-01.363Z/`;
-the detector attribution is in
-`.cache/facade-rebuild/reports/opening-approach-comparison-03/`. Local Qwen 2.5
-VL 7B and Gemma 3 4B critiques are retained as machine proposals. The validated
-Herenstraat pass agrees on the four amber/cyan windows and amber dormer while
-flagging the side door; one broad Bloemstraat critic response and one strict
-Qwen call failed or emitted invalid IDs, which the tooling records rather than
-promoting. LLM review remains advisory and never accepts geometry.
-
-Roof/RGB experiments are optional inputs, with commands retained in
-[`EXTRACT_PIPELINE.md`](EXTRACT_PIPELINE.md#building-reconstruction-workbench).
-Import useful gable geometry only when a verified recipe supplies the type;
-aggregate gable distributions do not establish per-building correctness.
 
 **11. Let the game actually play a second city.**
 The extractor is city-agnostic and four cities are now built and checked:

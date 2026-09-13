@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "caseId": "replacement-finish-02",
+  "observationId": "0363100012089603_e_1cvhymq",
+  "inspector": "agent-visual-registration-review",
+  "inspectionDate": "2026-09-12",
+  "humanReviewed": false,
+  "source": {
+    "evidenceManifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+    "full": {
+      "file": "0363100012089603_e_1cvhymq-full.jpg",
+      "sha256": "415df37042996ed93a1429444d59dfd646ab05f1caf69b41e32dbb8e10718f1a",
+      "captureDate": "2025-07-03T11:25:13Z",
+      "dimensions": [901, 910],
+      "nativePlane": "The cached rectifier supplies a 19.246240967870115 m wall plane from NAP -0.1279999941587448 to 20.089999999999996.",
+      "nativePoseCaveat": "ground-plus-2.44m; approximate; heightInferred=true"
+    },
+    "ground": {
+      "file": "0363100012089603_e_1cvhymq-ground.jpg",
+      "sha256": "9e294e074dc9b14c5daf232fd344d7f29af3ea228c15e602dae57a68978107a7",
+      "captureDate": "2025-07-03T11:25:13Z",
+      "dimensions": [2202, 539],
+      "nativePoseCaveat": "ground-plus-2.44m; approximate; heightInferred=true"
+    }
+  },
+  "manualChecks": {
+    "signedWallDirection": "The full crop runs left-to-right along the native plane start-to-end direction; this is a candidate orientation only because a reviewed pixel-to-boundary correspondence is absent.",
+    "boundaryEvidence": "The left party edge is soft/partly outside the full frame and the right party edge reaches the image boundary. Neither end has a measured pixel-edge correspondence to the BAG wall endpoints.",
+    "rooflineEvidence": "The parapet/cornice is visible but overexposed against the sky. It supplies a qualitative roofline check, not a repeatable NAP-height correspondence within 0.15 m.",
+    "groundEvidence": "Cars and street furniture cover portions of the pavement/base. No pavement-to-base metric contact is taken.",
+    "cameraHeight": "Both tiers are generated from a height-inferred approximate datum, so vertical alignment cannot be independently certified from this cache."
+  },
+  "result": {
+    "status": "ambiguous",
+    "acceptedRegistration": false,
+    "candidateTransformRetained": true,
+    "reasons": [
+      "No measured correspondence for both BAG wall endpoints.",
+      "No independently resolved camera height or vertical datum.",
+      "No bounded registration uncertainty at or below 0.15 m.",
+      "No valid pavement/base contact measurement."
+    ]
+  }
+}
