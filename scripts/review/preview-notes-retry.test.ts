@@ -14,8 +14,8 @@ const bytes=Buffer.from(JSON.stringify({cases:[{caseId:'case-04',owner:{id:'fixt
 await fs.mkdir(path.dirname(casesPath),{recursive:true});await fs.writeFile(casesPath,bytes);
 await build({entryPoints:['scripts/review/preview-notes.ts'],bundle:true,format:'esm',platform:'browser',outfile:path.join(temporary,'notes.js')});
 await fs.writeFile(path.join(temporary,'index.html'),`<section id="repair-feedback"><h2 id="repair-note-label"></h2><select id="repair-note-status" disabled><option value="unreviewed">Unreviewed</option><option value="needs-work">Needs work</option></select><textarea id="repair-note" disabled></textarea><button id="repair-note-save" disabled>Save</button><button id="repair-notes-ready" disabled>Ready</button><p id="repair-note-message"></p></section><script type="module">import {mountPreviewNotesForCandidate} from '/notes.js'; window.notes=await mountPreviewNotesForCandidate('${id}');window.notes.show('case-04');window.ready=true;</script>`);
-let posts=0,delay=false;
-const app=express();app.use(express.json());app.use(express.static(temporary));app.post('/api/facade-repair/notes/:id',async(req,res,next)=>{posts++;if(posts===1){res.status(503).json({error:'Temporary outage'});return;}if(delay)await new Promise(resolve=>setTimeout(resolve,120));next();});app.use('/api/facade-repair/notes',facadePreviewNotesRouter(fixtureRoot,path.join(temporary,'notes')));
+let posts=0,delay=false,always503=false;
+const app=express();app.use(express.json());app.use(express.static(temporary));app.post('/api/facade-repair/notes/:id',async(req,res,next)=>{posts++;if(always503||posts===1){res.status(503).json({error:'Temporary outage'});return;}if(delay)await new Promise(resolve=>setTimeout(resolve,120));next();});app.use('/api/facade-repair/notes',facadePreviewNotesRouter(fixtureRoot,path.join(temporary,'notes')));
 const server=app.listen(0,'127.0.0.1');await new Promise<void>(resolve=>server.on('listening',resolve));
 const base=`http://127.0.0.1:${(server.address() as any).port}`,browser=await chromium.launch({headless:true});
 try{
@@ -38,8 +38,10 @@ try{
  await page.evaluate(()=>window.notes.show('case-04'));await page.locator('#repair-note').fill('local conflicting note');await page.locator('#repair-note-save').click();await page.waitForFunction(()=>document.querySelector('#repair-note-message')?.textContent?.includes('reload and compare'));
  assert.match(await page.evaluate(k=>localStorage.getItem(k),`repair-note:${id}:case-04`),/local conflicting note/);
  const conflictPosts=posts;await page.locator('#repair-note').fill('still local after conflict');await page.locator('#repair-note-save').click();await page.waitForTimeout(30);assert.equal(posts,conflictPosts,'typing does not clear a conflict block or resend stale revisions');
+ assert.equal(await page.evaluate(async()=>await (window as any).notes.saveCurrent()),false,'saveCurrent reports a conflict');
  assert.match(await page.evaluate(k=>localStorage.getItem(k),`repair-note:${id}:case-04`),/still local after conflict/);
  await page.locator('#repair-notes-ready').click();await page.waitForFunction(()=>document.querySelector('#repair-note-message')?.textContent?.includes('Reload and compare'));
  disk=JSON.parse(await fs.readFile(path.join(temporary,'notes',`${id}.json`),'utf8'));assert.equal(disk.readyForFixes,false);
+ always503=true;await page.evaluate(()=>window.notes.show('case-11'));await page.locator('#repair-note').fill('persistent outage');const before503=posts;assert.equal(await page.evaluate(async()=>await (window as any).notes.saveCurrent()),false,'persistent failure returns false');assert.equal(posts,before503+1,'one saveCurrent makes one failed request');
  console.log('Preview notes retry: transient retry, queued newest drafts, conflict preservation, and ready ordering passed.');
 }finally{await browser.close();await new Promise<void>(resolve=>server.close(()=>resolve()));}

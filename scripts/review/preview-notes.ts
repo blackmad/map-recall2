@@ -104,13 +104,17 @@ export async function mountPreviewNotesForCandidate(id: string) {
         const caseId = current;
         if (!caseId)
             return true;
-        await save(caseId);
+        const firstResult = await save(caseId);
+        if (!firstResult)
+            return false;
         await queue;
         // A draft may have changed while the request was in flight. Keep
         // flushing this case until its latest value is durable or blocked.
         let attempts = 0;
         while (pending.has(caseId) && !blocked.has(caseId) && attempts++ < 8) {
-            await save(caseId);
+            const result = await save(caseId);
+            if (!result)
+                return false;
             await queue;
         }
         return !pending.has(caseId) && !blocked.has(caseId);
