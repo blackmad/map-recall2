@@ -3,12 +3,16 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { buildSourceEvaluation } from './source-evaluation.ts';
 
+const usage = 'Usage: evaluate-source.ts --root=/absolute/input/root [--reference=path] [--analysis=path] [--manifest=path[,path]] [--iou=0.5] [--out=path]';
 const args = Object.fromEntries(process.argv.slice(2).map(value => {
   const match = /^--([^=]+)(?:=(.*))?$/.exec(value);
   if (!match) throw new Error(`Unexpected argument: ${value}`);
   return [match[1], match[2] ?? true];
 }));
-if (typeof args.root !== 'string') throw new Error('Usage: evaluate-source.ts --root=/absolute/input/root [--reference=path] [--analysis=path] [--manifest=path[,path]] [--iou=0.5] [--out=path]');
+const allowed = new Set(['root', 'reference', 'analysis', 'manifest', 'iou', 'out', 'help']);
+for (const key of Object.keys(args)) if (!allowed.has(key)) throw new Error(`Unknown option --${key}\n${usage}`);
+if ('help' in args) { process.stdout.write(`${usage}\n`); process.exit(0); }
+if (typeof args.root !== 'string') throw new Error(usage);
 const report = await buildSourceEvaluation({
   root: path.resolve(args.root),
   referencePath: typeof args.reference === 'string' ? args.reference : undefined,

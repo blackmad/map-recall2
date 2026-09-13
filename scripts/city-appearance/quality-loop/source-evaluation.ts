@@ -114,7 +114,7 @@ function validateReferenceFile(file: any) {
     if (entry?.disposition !== 'agent-inspected' || typeof entry?.inspectionMethod !== 'string') reasons.push('missing agent-inspected provenance');
     if (!Array.isArray(entry?.openings)) reasons.push('openings must be an array');
     const ids = new Set<string>();
-    for (const opening of entry?.openings ?? []) {
+    for (const opening of Array.isArray(entry?.openings) ? entry.openings : []) {
       if (typeof opening?.id !== 'string' || !opening.id || ids.has(opening.id)) reasons.push('invalid or duplicate opening id'); else ids.add(opening.id);
       if (!['window', 'door', 'storefront'].includes(opening?.kind)) reasons.push(`invalid opening kind for ${opening?.id ?? '?'}`);
       if (!validBounds(opening?.bounds, width, height)) reasons.push(`invalid bounds for ${opening?.id ?? '?'}`);
@@ -164,9 +164,12 @@ export async function buildSourceEvaluation(options: SourceEvaluationOptions): P
     if (completed.length > 1) selection = 'ambiguous';
     else if (completed.length === 1 && binding.status === 'verified') selection = 'matched';
     else if (completed.length === 1) selection = 'identity-mismatch';
+    const scorable = binding.status === 'verified' && selection !== 'ambiguous';
     const selected = selection === 'matched' ? completed[0] : undefined;
-    const candidatePredictions = selected?.proposal?.features ?? [];
-    const rejectedPredictions = candidatePredictions.flatMap((value, index) => {
+    const proposalFeatures = selected?.proposal?.features;
+    const featureContainerRejected = proposalFeatures !== undefined && !Array.isArray(proposalFeatures);
+    const candidatePredictions: Opening[] = Array.isArray(proposalFeatures) ? proposalFeatures : [];
+    const rejectedPredictions: { index: number; id: string | null; reasons: string[] }[] = candidatePredictions.flatMap((value, index) => {
       const reasons: string[] = [];
       if (typeof value?.id !== 'string' || !value.id) reasons.push('invalid id');
       if (!['window', 'door', 'storefront'].includes(value?.kind)) reasons.push('unsupported kind');
@@ -176,7 +179,8 @@ export async function buildSourceEvaluation(options: SourceEvaluationOptions): P
     });
     const rejectedIndexes = new Set(rejectedPredictions.map(value => value.index));
     const predictions = candidatePredictions.filter((_, index) => !rejectedIndexes.has(index));
-    const assignments = selection === 'matched' ? assignBoxes(completeRefs, predictions, threshold) : [];
+    if (featureContainerRejected) rejectedPredictions.push({ index: -1, id: null, reasons: ['proposal features must be an array'] });
+    const assignments = scorable ? assignBoxes(completeRefs, predictions, threshold) : [];
     const matchedRef = new Set(assignments.map(value => value.referenceIndex));
     const matchedPred = new Set(assignments.map(value => value.predictionIndex));
     const matches = assignments.map(pair => ({
@@ -191,15 +195,15 @@ export async function buildSourceEvaluation(options: SourceEvaluationOptions): P
       caseId: reference.caseId, observationId: reference.observationId, buildingId: reference.buildingId, tier: 'ground' as const,
       cropSha256: reference.cropSha256, dimensions: reference.imageDimensions, captureDate: reference.captureDate ?? null,
       source: { cropSha256: reference.cropSha256, ...reference.imageDimensions, captureDate: reference.captureDate },
-      binding, analysis: { outcome: selection, candidateCount: completed.length, selectedKey: selected?.key ?? null, openingsComplete: selected?.proposal?.openingsComplete ?? null, rejectedPredictions },
+      binding, scorable, analysis: { outcome: selection, candidateCount: completed.length, selectedKey: selected?.key ?? null, openingsComplete: selected?.proposal?.openingsComplete ?? null, rejectedPredictions },
       denominators: { completeVisibleReferences: completeRefs.length, partialVisibleExtentsIgnored: partialRefs.length, openingPredictions: predictions.length, rejectedPredictions: rejectedPredictions.length },
       matches,
-      misses: selection === 'matched' ? completeRefs.filter((_, index) => !matchedRef.has(index)).map(value => value.id) : [],
-      unscoredReferences: selection === 'matched' ? [] : completeRefs.map(value => value.id),
+      misses: scorable ? completeRefs.filter((_, index) => !matchedRef.has(index)).map(value => value.id) : [],
+      unscoredReferences: scorable ? [] : completeRefs.map(value => value.id),
       unmatchedPredictions: predictions.filter((_, index) => !matchedPred.has(index)).map(value => value.id),
       partialReferences: partialRefs.map(value => ({ id: value.id, handling: 'ignored-visible-extent-not-complete-box' as const })),
       diagnostics: {
-        localizationRecall: selection === 'matched' && completeRefs.length ? Number((matched / completeRefs.length).toFixed(6)) : null,
+        localizationRecall: scorable && completeRefs.length ? Number((matched / completeRefs.length).toFixed(6)) : null,
         meanMatchedIou: matched ? Number((matches.reduce((n, value) => n + value.iou, 0) / matched).toFixed(6)) : null,
         typeAccuracyOnLocalized: matched ? Number((matches.filter(value => value.type === 'correct').length / matched).toFixed(6)) : null,
         headAccuracyOnScoredLocalized: matches.some(value => value.head !== 'unscored') ? Number((matches.filter(value => value.head === 'correct').length / matches.filter(value => value.head !== 'unscored').length).toFixed(6)) : null,
@@ -210,7 +214,7 @@ export async function buildSourceEvaluation(options: SourceEvaluationOptions): P
         assertions: { count: Object.keys(reference.architecturalAssertions ?? {}).length, status: 'unscored-no-typed-prediction-mapping' as const },
       },
       claimLimits: ['Reference is partial development evidence.', 'Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated.'],
-      status: selection === 'matched' ? (completeRefs.length ? 'diagnostic-scored' as const : 'annotation-needed' as const) : 'abstained' as const,
+      status: scorable ? (completeRefs.length ? 'diagnostic-scored' as const : 'annotation-needed' as const) : 'abstained' as const,
     };
   }));
   const repairQueue = cases.flatMap(value => {
@@ -222,7 +226,8 @@ export async function buildSourceEvaluation(options: SourceEvaluationOptions): P
     if (value.denominators.partialVisibleExtentsIgnored || value.denominators.completeVisibleReferences === 0) rows.push({ caseId: value.caseId, category: 'annotation-needed', reason: `${value.denominators.partialVisibleExtentsIgnored} partial extents ignored; complete image annotation not established` });
     return rows;
   }).slice(0, 50);
-  const completeTotal = cases.filter(value => value.analysis.outcome === 'matched').reduce((n, value) => n + value.denominators.completeVisibleReferences, 0);
+  const totalCompleteReferences = cases.reduce((n, value) => n + value.denominators.completeVisibleReferences, 0);
+  const completeTotal = cases.filter(value => value.scorable).reduce((n, value) => n + value.denominators.completeVisibleReferences, 0);
   const matchedTotal = cases.reduce((n, value) => n + value.matches.length, 0);
   const report = {
     schemaVersion: 1, evaluator: { name: 'source-space-opening-diagnostic', iouThreshold: threshold, thresholdPurpose: 'localization-only diagnostic; not equivalent to a fidelity acceptance gate', matching: 'deterministic maximum-cardinality Hopcroft-Karp; adjacency prefers higher IoU then source order' },
@@ -230,7 +235,7 @@ export async function buildSourceEvaluation(options: SourceEvaluationOptions): P
     inputs: { root, files: [input(referenceLoaded, root), input(analysisLoaded, root), ...manifestLoaded.map(loaded => input(loaded, root))], readConsistency: 'hashes cover the exact bytes parsed for this report' },
     registration: { requiredForThisEvaluation: false, status: 'not-evaluated', metricAccuracyClaimed: false },
     stage: { mode: 'report-only', writesRepairs: false, acceptsCandidates: false },
-    coverage: { referenceEntries: referencesFile.entries.length, validReferenceCases: cases.length, invalidReferenceEntries, invalidAnalysisEntries, matchedAnalysisCases: cases.filter(value => value.analysis.outcome === 'matched').length, ambiguousAnalysisCases: cases.filter(value => value.analysis.outcome === 'ambiguous').length, unscorableCases: cases.filter(value => value.analysis.outcome !== 'matched').length + invalidReferenceEntries.length, completeVisibleReferencesOnVerifiedSources: completeTotal, partialVisibleExtentsIgnored: cases.reduce((n, value) => n + value.denominators.partialVisibleExtentsIgnored, 0) },
+    coverage: { referenceEntries: referencesFile.entries.length, validReferenceCases: cases.length, invalidReferenceEntries, invalidAnalysisEntries, matchedAnalysisCases: cases.filter(value => value.analysis.outcome === 'matched').length, missingOutputCasesOnVerifiedSources: cases.filter(value => value.scorable && value.analysis.outcome === 'missing').length, ambiguousAnalysisCases: cases.filter(value => value.analysis.outcome === 'ambiguous').length, unscorableCases: cases.filter(value => !value.scorable).length + invalidReferenceEntries.length, totalCompleteVisibleReferences: totalCompleteReferences, scorableCompleteVisibleReferences: completeTotal, partialVisibleExtentsIgnored: cases.reduce((n, value) => n + value.denominators.partialVisibleExtentsIgnored, 0) },
     aggregateDiagnostics: { extractionLocalizationRecallOnVerifiedSources: completeTotal ? Number((matchedTotal / completeTotal).toFixed(6)) : null, endToEndRecall: null, endToEndOmissionReason: 'Invalid or unverified sources are unscorable, not extraction misses.', precision: null, precisionOmissionReason: 'Complete annotation of all openings and image regions is not proven.' },
     summary: { scoredCases: cases.filter(value => value.status === 'diagnostic-scored').length, annotationNeededCases: cases.filter(value => value.status === 'annotation-needed').length, abstainedCases: cases.filter(value => value.status === 'abstained').length, completeReferenceMatches: matchedTotal, completeReferenceMisses: completeTotal - matchedTotal },
     cases, repairQueue,

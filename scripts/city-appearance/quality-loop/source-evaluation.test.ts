@@ -70,12 +70,14 @@ test('partial visible extents are ignored and suppress overall precision claims'
   assert.ok(report.repairQueue.some((item: any) => item.category === 'annotation-needed'));
 });
 
-test('missing analysis is an abstention with unscored references', async () => {
+test('missing analysis on a verified source counts complete references as misses', async () => {
   const f = await fixture({ analyses: [] });
   const report = await buildSourceEvaluation({ root: f.root, referencePath: f.files.reference, analysisPath: f.files.analysis, manifestPaths: [f.files.manifest] });
   assert.equal(report.cases[0].analysis.outcome, 'missing');
-  assert.deepEqual(report.cases[0].unscoredReferences, ['reference']);
-  assert.equal(report.cases[0].diagnostics.localizationRecall, null);
+  assert.deepEqual(report.cases[0].misses, ['reference']);
+  assert.equal(report.cases[0].diagnostics.localizationRecall, 0);
+  assert.equal(report.coverage.missingOutputCasesOnVerifiedSources, 1);
+  assert.equal(report.coverage.scorableCompleteVisibleReferences, 1);
 });
 
 test('empty predictions are misses on a verified source with complete references', async () => {
@@ -94,6 +96,14 @@ test('malformed references are omitted and malformed predictions are rejected', 
   const invalid = await buildSourceEvaluation({ root: f.root, referencePath: f.files.reference, analysisPath: f.files.analysis, manifestPaths: [f.files.manifest] });
   assert.equal(invalid.cases.length, 0);
   assert.equal(invalid.coverage.invalidReferenceEntries.length, 1);
+});
+
+test('non-array proposal features are rejected without crashing', async () => {
+  const f = await fixture();
+  await fs.writeFile(path.join(f.root, f.files.analysis), JSON.stringify({ results: [{ ...f.analysis, proposal: { openingsComplete: true, features: {} } }] }));
+  const report = await buildSourceEvaluation({ root: f.root, referencePath: f.files.reference, analysisPath: f.files.analysis, manifestPaths: [f.files.manifest] });
+  assert.equal(report.cases[0].denominators.rejectedPredictions, 1);
+  assert.deepEqual(report.cases[0].misses, ['reference']);
 });
 
 test('arbitrary annotations cannot be relabeled as independent inspected references', async () => {
