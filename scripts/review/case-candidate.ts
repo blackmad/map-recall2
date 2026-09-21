@@ -17,6 +17,7 @@ import {compileFacadePatches,facadeWallFrame,FACADE_PATCH_COLOURS} from '../../s
 import {applyRetailSourceCorrections} from './retail-source-corrections.ts';
 import {registeredFrontageWallSurface} from '../../src/canalRecall/facade/registeredFrontage.ts';
 import {applyFloorRowCorrections} from '../../src/canalRecall/facade/floorRowCorrections.ts';
+import {applyOpeningFrameCorrections} from '../../src/canalRecall/facade/openingFrameCorrections.ts';
 
 export interface CaseCandidateParams {
   caseId: string;
@@ -30,10 +31,11 @@ export interface CaseCandidateParams {
   signReferences: any;
   retailReview: any;
   floorRows?: any;
+  openingFrames?: any;
 }
 
 export function buildCaseCandidate(params: CaseCandidateParams) {
-  const {caseId, owner, original, complete, references, corrections, spatial, signReferences, retailReview, floorRows} = params;
+  const {caseId, owner, original, complete, references, corrections, spatial, signReferences, retailReview, floorRows, openingFrames} = params;
   // A reviewed floor-row correction is source-bound and idempotent by feature
   // id, so it is safe to apply to each cloned target and again to the stored
   // shape features without duplicating a row.
@@ -161,6 +163,10 @@ export function buildCaseCandidate(params: CaseCandidateParams) {
   for(const added of fix.add??[])if(!input.features.some((f:any)=>f.id===added.id))input.features.push({...added,disposition:'agent-inspected'});
  }}
  for(const tier of ['full','ground']){const input=shapeFeatures[tier];if(input&&floorRows?.cases?.[caseId]?.[tier])input.features=floorRowFix(tier,input.features,{sha256:input.cropSha256,date:input.captureDate});}
+ // Reviewed frame clearances are a source-shape study declaration only: they are
+ // applied after the metric candidate is compiled so the game-facing patches are
+ // untouched, while a full rebuild reproduces the delivered study exactly.
+ if(openingFrames)for(const tier of ['full','ground'] as const){const input=shapeFeatures[tier];if(input)input.features=applyOpeningFrameCorrections(openingFrames.cases?.[caseId]?.[tier],{features:input.features,cropSha256:input.cropSha256,captureDate:input.captureDate});}
  for(const tier of ['full','ground'])if(shapeFeatures[tier])shapeFeatures[tier]=applyRetailSourceCorrections(caseId,tier,shapeFeatures[tier],retailReview);
  return {frame,candidateObservations,patches,omissions,analyzedTiers,shapeFeatures};
 }
