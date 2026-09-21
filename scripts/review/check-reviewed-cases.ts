@@ -77,6 +77,11 @@ const CHECKS: readonly ReviewedCheck[] = [
     cases: 'case-02/13/19/22/29',
     script: 'scripts/review/check-reviewed-frontage-coverage.ts',
   },
+  {
+    lane: 'near-white window glazing guard',
+    cases: 'case-11/18',
+    script: 'scripts/review/check-reviewed-glazing.ts',
+  },
 ];
 
 const root = process.cwd();
