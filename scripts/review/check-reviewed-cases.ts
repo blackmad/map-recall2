@@ -72,6 +72,11 @@ const CHECKS: readonly ReviewedCheck[] = [
     cases: 'case-09',
     script: 'scripts/review/check-reviewed-frontage-fallback.ts',
   },
+  {
+    lane: 'registered-frontage coverage gap',
+    cases: 'case-02/13/19/22/29',
+    script: 'scripts/review/check-reviewed-frontage-coverage.ts',
+  },
 ];
 
 const root = process.cwd();
