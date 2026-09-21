@@ -19,7 +19,11 @@
  * It is idempotent: once the stored study and candidate match a fresh guarded
  * compile there is nothing to publish.
  *
- * Run: npx tsx scripts/review/refresh-reviewed-glazing.ts [--case=case-11] [--dry-run]
+ * Run: npx tsx scripts/review/refresh-reviewed-glazing.ts [--case=case-11] [--tier=full] [--dry-run]
+ *
+ * `--tier` restricts which source-shape tiers are recompiled (default both).
+ * Leave a tier out when it carries a delivered correction that the plain
+ * `compileSourceShapePreview` does not reproduce.
  */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -31,6 +35,13 @@ import { publishPreviewRevision } from './publish-preview-revision.ts';
 
 const flag = (name: string) => process.argv.find((value) => value.startsWith(`--${name}=`))?.slice(name.length + 3);
 const caseId = flag('case') ?? 'case-11';
+// Only the named source-shape tiers are recompiled. A stored tier can carry a
+// delivered correction that `compileSourceShapePreview` does not reproduce (e.g.
+// case-18's ground study has a raised-entrance patch plus an `omissions` note),
+// so such a tier is left byte-identical rather than silently dropping it.
+const tierArg = flag('tier');
+const tiers = (tierArg ? tierArg.split(',') : ['full', 'ground']).filter((tier): tier is 'full' | 'ground' => tier === 'full' || tier === 'ground');
+assert.ok(tiers.length, 'tier must be full and/or ground');
 const dryRun = process.argv.includes('--dry-run');
 const CASES = 'public/data/facade-repair-preview/cases.json';
 const OUT = 'review-data/glazing-refresh.json';
@@ -97,14 +108,22 @@ const fields: Record<string, unknown> = {
 
 // A fresh study from the same stored source features, through the guarded
 // compiler. The only permitted change is the near-white window glazing losing
-// its white panes; patch counts must not move.
+// its white panes. The white *frame* patches are architecture and stay white, so
+// a whole window is not a single colour: require conservation instead of a
+// wholesale white->neutral swap. The total observed-window patch count must not
+// move, every non-glazing colour must be untouched, and the neutral-glass gain
+// must equal the white loss.
+const NEUTRAL_GLASS = 'observed-window:#526a6b';
+const WHITE_GLASS = 'observed-window:#ffffff';
 const colourCounts = (study: any) => {
   const counts = new Map<string, number>();
   for (const patch of study.patches ?? []) counts.set(`${patch.featureKind}:${patch.colour}`, (counts.get(`${patch.featureKind}:${patch.colour}`) ?? 0) + 1);
   return counts;
 };
+const windowTotal = (counts: Map<string, number>) =>
+  [...counts].filter(([key]) => key.startsWith('observed-window:')).reduce((sum, [, count]) => sum + count, 0);
 const studyFields: Record<string, unknown> = {};
-for (const tier of ['full', 'ground'] as const) {
+for (const tier of tiers) {
   const input = entry.shapeFeatures?.[tier];
   if (!input) continue;
   const fresh = compileSourceShapePreview({ width: input.width, height: input.height, cropSha256: input.cropSha256, captureDate: input.captureDate, features: input.features });
@@ -114,16 +133,17 @@ for (const tier of ['full', 'ground'] as const) {
   if (JSON.stringify(fresh) === JSON.stringify(entry.shapeStudy?.[tier])) continue;
   const before = colourCounts(entry.shapeStudy?.[tier] ?? {});
   const after = colourCounts(fresh);
-  for (const [key, count] of after) {
-    const previous = before.get(key) ?? 0;
-    if (key.startsWith('observed-window:#526a6b')) assert.ok(previous <= count, `${caseId}/${tier}: neutral glass lost patches`);
-    else assert.equal(previous, count, `${caseId}/${tier}: unexpected patch-count change for ${key} (${previous} != ${count})`);
+  for (const key of new Set([...before.keys(), ...after.keys()])) {
+    if (key === WHITE_GLASS || key === NEUTRAL_GLASS) continue;
+    assert.equal(before.get(key) ?? 0, after.get(key) ?? 0, `${caseId}/${tier}: unexpected patch-count change for ${key}`);
   }
-  for (const [key, count] of before) {
-    const next = after.get(key) ?? 0;
-    if (key === 'observed-window:#ffffff') assert.ok(next <= count, `${caseId}/${tier}: white glazing gained patches`);
-    else assert.equal(next, count, `${caseId}/${tier}: unexpected patch-count change for ${key} (${count} != ${next})`);
-  }
+  assert.equal(windowTotal(before), windowTotal(after), `${caseId}/${tier}: observed-window patch total changed`);
+  const whiteLost = (before.get(WHITE_GLASS) ?? 0) - (after.get(WHITE_GLASS) ?? 0);
+  const glassGained = (after.get(NEUTRAL_GLASS) ?? 0) - (before.get(NEUTRAL_GLASS) ?? 0);
+  assert.ok(whiteLost >= 0, `${caseId}/${tier}: white glazing gained patches`);
+  assert.ok(glassGained >= 0, `${caseId}/${tier}: neutral glass lost patches`);
+  assert.equal(whiteLost, glassGained, `${caseId}/${tier}: recolour is not conserved (white -${whiteLost}, glass +${glassGained})`);
+  assert.ok(whiteLost > 0, `${caseId}/${tier}: no near-white glazing was recoloured`);
   studyFields[tier] = fresh;
 }
 
