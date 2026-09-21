@@ -40,9 +40,20 @@ export function buildCaseCandidate(params: CaseCandidateParams) {
   // still validates the synthetic ring against the building boundary.
   const declaredIndices=(original.renderSurfaceIndices?.length?original.renderSurfaceIndices:(params.bindingSurfaceIndices??[]));
   const declaredTargets=declaredIndices.flatMap((index:number)=>{const surface=owner.geometry.building.surfaces[index];if(!surface)return[];const surfaceFrame=facadeWallFrame(surface,owner,[owner]);return surfaceFrame?[{index,surface,frame:surfaceFrame}]:[];});
-  const frontageSurface=declaredTargets.length?null:registeredFrontageWallSurface(original.localStart,original.localEnd,owner.geometry.building.surfaces);
+  // Max perpendicular distance from a frame line to the cached crop-plane
+  // endpoints. This mirrors the compiler's own `.18` non-coplanarity abstention:
+  // a frame further from the crop plane than that will emit no source patches.
+  const sourceOrigin=owner.geometry.frame.originRD;
+  const cropPlaneOffset=(frame:any)=>{let max=0;for(const tier of ['full','ground']){const plane=original.images?.[tier]?.plane;if(!plane)continue;for(const point of [plane.start,plane.end]){const local=[point.x-sourceOrigin.x,sourceOrigin.y-point.y];max=Math.max(max,Math.abs((local[0]-frame.a[0])*frame.u[1]-(local[1]-frame.a[1])*frame.u[0]));}}return max;};
+  // A declared surface is only useful if it is coplanar enough for the compiler
+  // to draw on. When every usable declared frame is non-coplanar (3DBAG
+  // fragments the frontage into skewed pieces), the registered frontage is the
+  // defensible plane.
+  const declaredCoplanar=declaredTargets.length>0&&Math.min(...declaredTargets.map((target:any)=>cropPlaneOffset(target.frame)))<=.18;
+  const frontageSurface=declaredCoplanar?null:registeredFrontageWallSurface(original.localStart,original.localEnd,owner.geometry.building.surfaces);
   const frontageFrame=frontageSurface?facadeWallFrame(frontageSurface,owner,[owner]):null;
-  const renderTargets=declaredTargets.length?declaredTargets:(frontageSurface&&frontageFrame?[{index:declaredIndices[0]??0,surface:frontageSurface,frame:frontageFrame}]:[]);
+  const useFrontage=!declaredCoplanar&&frontageFrame!=null&&cropPlaneOffset(frontageFrame)<=.18;
+  const renderTargets=useFrontage?[{index:declaredIndices[0]??0,surface:frontageSurface!,frame:frontageFrame!}]:declaredTargets.length?declaredTargets:(frontageSurface&&frontageFrame?[{index:declaredIndices[0]??0,surface:frontageSurface,frame:frontageFrame}]:[]);
   const frame=renderTargets[0]?.frame??null;
   const shapeFeatures:any={};const candidateObservations:any[]=[];const patches:any[]=[];const omissions:string[]=[];let analyzedTiers=0;
   if(!frame)omissions.push('No usable published facade surface');
