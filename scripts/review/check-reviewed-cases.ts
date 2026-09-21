@@ -57,6 +57,11 @@ const CHECKS: readonly ReviewedCheck[] = [
     cases: 'case-14',
     script: 'scripts/review/check-reviewed-shape-study.ts',
   },
+  {
+    lane: 'roof coverage delivery',
+    cases: 'case-27',
+    script: 'scripts/review/check-reviewed-roof-coverage.ts',
+  },
 ];
 
 const root = process.cwd();
