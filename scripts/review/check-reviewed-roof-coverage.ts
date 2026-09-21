@@ -14,6 +14,13 @@
  * flat-topped brick rectangle. The same coverage lane now carries a
  * pixel-inspected bell-gable outline plus cream pediment/volute fields.
  *
+ * `case-12` Rozengracht 160 is the third delivered leg (2026-09-21, pass 21):
+ * the review's "missing roof detail" on a halsgevel whose stored study drew flat
+ * brick to the crop top. Its left neck outline and gable window are measured
+ * from the 2023 crop; the tree-trunk-occluded right side is mirrored and the
+ * crop-cut crest top is closed flat, so it is a coarse source-pixel
+ * approximation like case-21.
+ *
  * This pins that each delivered study is exactly a fresh coverage compile from
  * the packet's own stored features (so a rebuild would not lose it), that the
  * silhouette and reviewed fields are present, and that no roof opening was
@@ -143,6 +150,48 @@ for (const review of (reviewData as any).cases) {
   assert.match(entry.roofReview.uncertainty, /neighbour|cast shadow|crest/i);
 }
 
+// case-12 (pass 21) shares the same lane: its review's "missing roof detail" is
+// the halsgevel neck above the first-floor cornice, which the stored study drew
+// as flat brick to the crop top. It carries a measured neck outline and a
+// mirrored (tree-occluded) right side, so it must also be a fresh compile.
+{
+  const review = reviewFor('case-12');
+  const entry = caseById('case-12');
+  const input = entry.shapeFeatures.full;
+  const addIds = new Set(review.add.map((feature: any) => feature.id));
+  const freshInput = { ...input, features: input.features.filter((feature: any) => !addIds.has(feature.id)) };
+  const prepared = prepareRoofCoverageStudy('case-12', freshInput);
+  const fresh = applyRoofCoverageStudy(compileSourceShapePreview(prepared.input as any), prepared);
+  assert.equal(
+    JSON.stringify(entry.shapeStudy.full),
+    JSON.stringify(fresh),
+    'case-12 stored full study is out of sync; re-run scripts/review/refresh-reviewed-roof-coverage.ts',
+  );
+  const study = entry.shapeStudy.full;
+  assert.equal(entry.roofReview?.status, 'source-outline-reviewed', 'case-12 must report its roof as reviewed');
+  assert.match(entry.roofReview.uncertainty, /trunk|crest|mirror/i);
+  assert.equal(
+    study.sourceSilhouette.polygonPx.length,
+    review.silhouettePolygonPx.length + 2,
+    'case-12 silhouette closure changed',
+  );
+  assert.equal(study.sourceSilhouette.polygonPx.at(-2)[0], 262, 'case-12 right edge moved');
+  assert.equal(study.sourceSilhouette.polygonPx.at(-1)[0], 18, 'case-12 left edge moved');
+  // The delivered study must keep the pass-16 inferred upper row: the roof
+  // silhouette must not drop a reviewed study feature.
+  const windowIds = new Set(
+    (study.patches ?? []).map((patch: any) => patch.featureId).filter((id: string) => id.includes('inferred:row-1')),
+  );
+  assert.equal(windowIds.size, 3, 'case-12 lost its delivered inferred upper-floor row');
+  assert.ok(
+    (study.patches ?? []).every((patch: any) => !/review:.*(window|dormer|door)/.test(patch.featureId)),
+    'case-12 must not invent a roof opening',
+  );
+  // The gable window (window-1) must sit inside the neck, not be clipped away.
+  const gableWindow = (study.patches ?? []).some((patch: any) => patch.featureId.endsWith('full:window-1'));
+  assert.ok(gableWindow, 'case-12 gable window was clipped out of the neck');
+}
+
 // case-19 stays parked: its source has no defensible silhouette.
 {
   const entry = caseById('case-19');
@@ -173,5 +222,6 @@ fs.writeFileSync(
 console.log(
   `Reviewed roof coverage: ${(reviewData as any).cases.length} declared corrections delivered with silhouettes and reviewed features; ` +
     `case-27 is a fresh compile (${caseById('case-27').shapeStudy.full.patches.length} patches, #3f3f3d, two stacks); ` +
-    `case-21 is a fresh compile (${caseById('case-21').shapeStudy.full.patches.length} patches, cream gable fields); case-19 stays parked.`,
+    `case-21 is a fresh compile (${caseById('case-21').shapeStudy.full.patches.length} patches, cream gable fields); ` +
+    `case-12 is a fresh compile (${caseById('case-12').shapeStudy.full.patches.length} patches, measured halsgevel neck); case-19 stays parked.`,
 );
