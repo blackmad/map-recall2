@@ -69,6 +69,7 @@ const corrections = await read('scripts/review/development-photo-corrections.jso
 const spatial = await read('scripts/review/spatial-source-corrections.json');
 const signReferences = await read('scripts/review/roof-sign-corrections.json');
 const retailReview = await read('scripts/review/retail-priority-source-review.json');
+const floorRows = await read('scripts/review/floor-row-corrections.json');
 const cache = await read('.cache/city-appearance/fidelity-extraction/analysis-results.json');
 const index = await read('.cache/city-appearance/fidelity-extraction/development-analysis-index.json');
 const manifest = await fs.readFile('scripts/review/facade-regression-analysis-manifest.json');
@@ -90,6 +91,7 @@ const candidate = buildCaseCandidate({
   spatial,
   signReferences,
   retailReview,
+  floorRows,
 });
 
 const fields: Record<string, unknown> = {

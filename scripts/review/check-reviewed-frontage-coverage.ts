@@ -184,6 +184,7 @@ for (const id of Object.keys(KEEP_DECLARED)) {
       spatial: JSON.parse(fs.readFileSync('scripts/review/spatial-source-corrections.json', 'utf8')),
       signReferences: JSON.parse(fs.readFileSync('scripts/review/roof-sign-corrections.json', 'utf8')),
       retailReview: JSON.parse(fs.readFileSync('scripts/review/retail-priority-source-review.json', 'utf8')),
+      floorRows: JSON.parse(fs.readFileSync('scripts/review/floor-row-corrections.json', 'utf8')),
     });
     const entry = caseById(caseId);
     assert.equal(JSON.stringify(entry.candidateObservations), JSON.stringify(fresh.candidateObservations), `${caseId} candidate out of sync; re-run scripts/review/refresh-reviewed-frontage.ts --case=${caseId}`);

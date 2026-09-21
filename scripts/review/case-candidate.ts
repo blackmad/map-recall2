@@ -16,6 +16,7 @@
 import {compileFacadePatches,facadeWallFrame,FACADE_PATCH_COLOURS} from '../../src/canalRecall/cityAppearanceFacadeRecipes.ts';
 import {applyRetailSourceCorrections} from './retail-source-corrections.ts';
 import {registeredFrontageWallSurface} from '../../src/canalRecall/facade/registeredFrontage.ts';
+import {applyFloorRowCorrections} from '../../src/canalRecall/facade/floorRowCorrections.ts';
 
 export interface CaseCandidateParams {
   caseId: string;
@@ -28,10 +29,15 @@ export interface CaseCandidateParams {
   spatial: any;
   signReferences: any;
   retailReview: any;
+  floorRows?: any;
 }
 
 export function buildCaseCandidate(params: CaseCandidateParams) {
-  const {caseId, owner, original, complete, references, corrections, spatial, signReferences, retailReview} = params;
+  const {caseId, owner, original, complete, references, corrections, spatial, signReferences, retailReview, floorRows} = params;
+  // A reviewed floor-row correction is source-bound and idempotent by feature
+  // id, so it is safe to apply to each cloned target and again to the stored
+  // shape features without duplicating a row.
+  const floorRowFix=(tier:'full'|'ground',features:any[],im:any)=>applyFloorRowCorrections(floorRows?.cases?.[caseId]?.[tier],{features,cropSha256:im.sha256,captureDate:im.date});
   // The registered observation frontage is the extraction's own wall line. When
   // 3DBAG fragments it into slivers/skewed pieces so no surface gives a usable
   // frame, draw on a synthetic rectangle along that registered line instead of
@@ -136,6 +142,7 @@ export function buildCaseCandidate(params: CaseCandidateParams) {
      const secondary=tier==='full'?signRef.sign.secondaryFullFasciaBoundsPx:signRef.sign.secondaryGroundFasciaBoundsPx;
      features.push({id:`${tier}:review:moeders-secondary`,kind:'fascia',bounds:secondary,text:'moeders',physicalSignId:'moeders:rozengracht-251:awning-valance',colour:signRef.sign.background,textColour:signRef.sign.colour,signFont:'italic bold 82px Georgia',disposition:'agent-inspected'});
     }
+    features=floorRowFix(tier,features,im);
     shapeFeatures[tier]=applyRetailSourceCorrections(caseId,tier,{features,width:im.width,height:im.height,cropSha256:im.sha256,captureDate:im.date},retailReview);
     features=shapeFeatures[tier].features;
     if(Math.max(off(left),off(right))>.18){omissions.push(`${tier}/surface ${index}: noncoplanar source abstained`);continue;}
@@ -153,6 +160,7 @@ export function buildCaseCandidate(params: CaseCandidateParams) {
   input.features=input.features.filter((f:any)=>!fix.remove?.includes(f.id)).map((f:any)=>{const update=fix.update?.[f.id];const out={...f,...update,...(update?{disposition:'agent-inspected',correctionEvidenceDisposition:update.disposition}: {})};for(const key of Object.keys(out))if(out[key]===null)delete out[key];return out;});
   for(const added of fix.add??[])if(!input.features.some((f:any)=>f.id===added.id))input.features.push({...added,disposition:'agent-inspected'});
  }}
+ for(const tier of ['full','ground']){const input=shapeFeatures[tier];if(input&&floorRows?.cases?.[caseId]?.[tier])input.features=floorRowFix(tier,input.features,{sha256:input.cropSha256,date:input.captureDate});}
  for(const tier of ['full','ground'])if(shapeFeatures[tier])shapeFeatures[tier]=applyRetailSourceCorrections(caseId,tier,shapeFeatures[tier],retailReview);
  return {frame,candidateObservations,patches,omissions,analyzedTiers,shapeFeatures};
 }
