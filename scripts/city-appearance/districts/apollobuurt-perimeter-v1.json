@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "id": "apollobuurt-perimeter-v1",
+  "name": "Zuid perimeter blocks (Apollobuurt sample)",
+  "areas": [
+    { "id": "apollobuurt-v1", "district": "Zuid", "config": "../areas/apollobuurt-v1.json", "priority": 10 }
+  ],
+  "boundary": [[[4.86636,52.34399],[4.88629,52.34399],[4.88629,52.35225],[4.86636,52.35225],[4.86636,52.34399]]],
+  "boundarySource": { "name": "Operational bbox around the municipal Apollobuurt boundary", "revision": "operational-bbox-v1", "retrievedAt": "2026-09-21T00:00:00Z" },
+  "budgets": { "buildingTiles": 12, "contextTiles": 16, "detailBufferMB": 11 },
+  "spendLimitUsd": 2
+}

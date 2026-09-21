@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "id": "tuindorp-nieuwendam-v1",
+  "bbox": [4.93553, 52.38636, 4.95175, 52.39459],
+  "origin": [4.94364, 52.390475],
+  "cacheRoot": ".cache/city-appearance/areas/tuindorp-nieuwendam-v1/raw",
+  "outputRoot": ".cache/city-appearance/areas/tuindorp-nieuwendam-v1/staging",
+  "panorama": { "center": [4.94364, 52.390475], "radiusM": 850, "after": "2022-01-01" },
+  "concurrency": 2
+}
