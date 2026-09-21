@@ -23,8 +23,11 @@
  *    into three near-collinear-but-skewed pieces (#2 1.27 m, #4 2.11 m, #5
  *    1.12 m; off-plane 0.01/0.46/0.70 m, angles 0.1/12.8/12.6 deg). Only #4
  *    clears the `surfaceMatches` overlap gate, so the release binds 2.11 m of a
- *    4.43 m frontage. The preview's 0.18 m non-coplanarity guard then abstains
- *    and the candidate renders as a blank monolith with zero observed patches.
+ *    4.43 m frontage. The preview's 0.18 m non-coplanarity guard used to abstain
+ *    and the candidate rendered as a blank monolith. It is now delivered: the
+ *    registered frontage is coplanar with the crop plane (0.0000 m), so the
+ *    shared builder draws the whole facade there (see
+ *    `check-reviewed-frontage-fallback.ts`).
  *
  * This check pins those measured facts so the framing lane cannot regress
  * silently and so a future crop regeneration / surface rebinding can assert the
@@ -155,14 +158,16 @@ async function cropRun(caseId: string) {
   assert.ok(walls.find(w => w.index === 0)!.maxDist > 5, 'case-30 collinear rear wall must stay far off-plane');
   assert.deepEqual(releaseBinding('case-30'), [4], 'case-30 release binding changed');
   const entry = caseById('case-30');
-  assert.equal(entry.patches.length, 0, 'case-30 has no observed patches because the preview abstains');
+  // Fixed by the registered-frontage fallback (see
+  // check-reviewed-frontage-fallback.ts): the preview no longer abstains on the
+  // skewed surface #4; it draws on the coplanar registered frontage instead, so
+  // the candidate is the whole 4.43 m facade rather than a blank monolith.
+  assert.ok(entry.patches.length > 0, 'case-30 must render on its registered frontage, not abstain');
+  near(entry.frame.width, frontage, 0.01, 'case-30 must draw on the full registered frontage');
   const omitted = (entry.omissions ?? []).join(' ');
-  assert.ok(
-    omitted.includes('full/surface 4: noncoplanar source abstained') && omitted.includes('ground/surface 4: noncoplanar source abstained'),
-    `case-30 must record the non-coplanarity abstention, got: ${omitted || '(none)'}`,
-  );
+  assert.ok(!/noncoplanar source abstained/.test(omitted), `case-30 must no longer abstain as non-coplanar, got: ${omitted || '(none)'}`);
 }
 
 console.log(
-  'Reviewed framing regression passed: case-06 clips its next-building slice at the crop edge; case-20 splits a 6.05 m frontage across coplanar #8 + #9; case-30 binds 2.11 m of a fragmented 4.43 m frontage and abstains to a blank candidate.',
+  'Reviewed framing regression passed: case-06 clips its next-building slice at the crop edge; case-20 splits a 6.05 m frontage across coplanar #8 + #9; case-30 binds 2.11 m of a fragmented 4.43 m frontage but now draws the full facade on its coplanar registered frontage instead of abstaining.',
 );

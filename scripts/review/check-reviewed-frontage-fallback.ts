@@ -12,9 +12,22 @@
  * `registeredFrontageWallSurface` + `buildCaseCandidate` now build a synthetic
  * rectangle along that registered frontage when no surface supplies a usable
  * frame, and `refresh-reviewed-frontage.ts` republished only case-09's candidate
- * (packet `297054a…` -> `4d57571…`). This pins the delivered candidate, that a
- * rebuild reproduces it, and that the fallback stays off for case-30 (which has
- * a usable but non-coplanar surface and must keep abstaining).
+ * (packet `297054a…` -> `4d57571…`).
+ *
+ * The same fallback now also covers case-30 Rozengracht 212, the owner's
+ * explicit framing ask ("registration slightly off; we could have inferred the
+ * right fit"). Its 4.43 m frontage is fragmented into skewed pieces whose only
+ * overlap-passing surface (#4) is 0.71 m off the crop plane, so the compiler
+ * abstained and the candidate was a blank monolith. The registered frontage is
+ * exactly coplanar with the crop plane (0.0000 m), so when every usable declared
+ * frame is non-coplanar (> the compiler's own 0.18 m guard) the builder draws on
+ * the registered frontage instead. `refresh-reviewed-frontage.ts` republished
+ * only case-30 (packet `4d57571…` -> `dd1fd2e…`).
+ *
+ * This pins both delivered candidates, that a rebuild reproduces them, and the
+ * threshold boundary: case-19 (declared offset 0.166 m, inside the guard) keeps
+ * its declared surface, so the fallback does not silently replace coplanar
+ * frames.
  *
  * Run: npx tsx scripts/review/check-reviewed-frontage-fallback.ts
  */
@@ -112,39 +125,78 @@ const near = (actual: number, expected: number, tolerance: number, label: string
   assert.deepEqual(matches, [], 'case-09 must have no wall surface covering the registered frontage');
 }
 
-// --- 4. The stored candidate is exactly a fresh shared-builder compile -----
+// --- 4. The stored candidates are exactly fresh shared-builder compiles ----
 {
-  const { c, owner, original } = ownerFor('case-09');
   const cache = JSON.parse(fs.readFileSync('.cache/city-appearance/fidelity-extraction/analysis-results.json', 'utf8'));
   const index = JSON.parse(fs.readFileSync('.cache/city-appearance/fidelity-extraction/development-analysis-index.json', 'utf8'));
   const manifest = fs.readFileSync('scripts/review/facade-regression-analysis-manifest.json');
   assert.equal(index.manifestSha256, crypto.createHash('sha256').update(manifest).digest('hex'), 'stale analysis manifest');
   const keys = new Set(index.cases.map((row: any) => row.key));
   const complete = cache.results.filter((row: any) => keys.has(row.key) && row.status === 'complete' && row.proposal);
-  const fresh = buildCaseCandidate({
-    caseId: 'case-09',
-    owner,
-    original,
-    bindingSurfaceIndices: c.binding?.surfaceIndices,
-    complete,
-    references: JSON.parse(fs.readFileSync('scripts/review/window-shape-reference.json', 'utf8')),
-    corrections: JSON.parse(fs.readFileSync('scripts/review/development-photo-corrections.json', 'utf8')),
-    spatial: JSON.parse(fs.readFileSync('scripts/review/spatial-source-corrections.json', 'utf8')),
-    signReferences: JSON.parse(fs.readFileSync('scripts/review/roof-sign-corrections.json', 'utf8')),
-    retailReview: JSON.parse(fs.readFileSync('scripts/review/retail-priority-source-review.json', 'utf8')),
-  });
-  const entry = caseById('case-09');
-  assert.equal(JSON.stringify(entry.candidateObservations), JSON.stringify(fresh.candidateObservations), 'case-09 candidate out of sync; re-run scripts/review/refresh-reviewed-frontage.ts');
-  assert.equal(JSON.stringify(entry.patches), JSON.stringify(fresh.patches), 'case-09 patches out of sync');
-  assert.equal(JSON.stringify(entry.frame), JSON.stringify(fresh.frame), 'case-09 frame out of sync');
-  assert.equal(JSON.stringify(entry.omissions), JSON.stringify(fresh.omissions), 'case-09 omissions out of sync');
+  for (const caseId of ['case-09', 'case-30']) {
+    const { c, owner, original } = ownerFor(caseId);
+    const fresh = buildCaseCandidate({
+      caseId,
+      owner,
+      original,
+      bindingSurfaceIndices: c.binding?.surfaceIndices,
+      complete,
+      references: JSON.parse(fs.readFileSync('scripts/review/window-shape-reference.json', 'utf8')),
+      corrections: JSON.parse(fs.readFileSync('scripts/review/development-photo-corrections.json', 'utf8')),
+      spatial: JSON.parse(fs.readFileSync('scripts/review/spatial-source-corrections.json', 'utf8')),
+      signReferences: JSON.parse(fs.readFileSync('scripts/review/roof-sign-corrections.json', 'utf8')),
+      retailReview: JSON.parse(fs.readFileSync('scripts/review/retail-priority-source-review.json', 'utf8')),
+    });
+    const entry = caseById(caseId);
+    assert.equal(JSON.stringify(entry.candidateObservations), JSON.stringify(fresh.candidateObservations), `${caseId} candidate out of sync; re-run scripts/review/refresh-reviewed-frontage.ts --case=${caseId}`);
+    assert.equal(JSON.stringify(entry.patches), JSON.stringify(fresh.patches), `${caseId} patches out of sync`);
+    assert.equal(JSON.stringify(entry.frame), JSON.stringify(fresh.frame), `${caseId} frame out of sync`);
+    assert.equal(JSON.stringify(entry.omissions), JSON.stringify(fresh.omissions), `${caseId} omissions out of sync`);
+  }
 }
 
-// --- 5. The fallback stays off when a surface is usable but non-coplanar ---
+// --- 5. case-30 recovers on its registered frontage instead of abstaining --
 {
   const entry = caseById('case-30');
-  assert.equal(entry.patches.length, 0, 'case-30 must keep abstaining (usable but non-coplanar surface)');
-  assert.ok((entry.omissions ?? []).some((value: string) => /noncoplanar source abstained/.test(value)), 'case-30 must keep its non-coplanarity omission');
+  assert.ok(entry.patches.length > 0, 'case-30 must compile observed patches, not a blank monolith');
+  assert.deepEqual(entry.counts, { door: 5, window: 8, awning: 0, material: 3 }, 'case-30 recovered counts changed');
+  assert.ok(!(entry.omissions ?? []).some((value: string) => /noncoplanar source abstained/.test(value)), 'case-30 must no longer abstain as non-coplanar');
+  assert.match(entry.status, /2\/2 image tiers analyzed/, 'case-30 must analyze both tiers');
+  const { original } = ownerFor('case-30');
+  const frontage = Math.hypot(original.localEnd[0] - original.localStart[0], original.localEnd[1] - original.localStart[1]);
+  near(frontage, 4.43, 0.02, 'case-30 registered frontage');
+  near(entry.frame.width, frontage, 0.01, 'case-30 frame width');
+  near(entry.frame.a[0], original.localStart[0], 0.01, 'case-30 frame start x');
+  near(entry.frame.a[1], original.localStart[1], 0.01, 'case-30 frame start z');
+  // The registered frontage is coplanar with the crop plane even though the
+  // only overlap-passing declared surface (#4) is not.
+  const origin = ownerFor('case-30').owner.geometry.frame.originRD;
+  const local = (p: any) => [p.x - origin.x, origin.y - p.y];
+  const s = original.localStart, e = original.localEnd;
+  const ux = (e[0] - s[0]) / frontage, uz = (e[1] - s[1]) / frontage;
+  const offFrontage = (p: number[]) => Math.abs((p[0] - s[0]) * uz - (p[1] - s[1]) * ux);
+  for (const tier of ['full', 'ground']) {
+    const plane = original.images[tier].plane;
+    assert.ok(Math.max(offFrontage(local(plane.start)), offFrontage(local(plane.end))) < 0.01, `case-30 ${tier} plane must be coplanar with the registered frontage`);
+  }
+  const four = ownerFor('case-30').owner.geometry.building.surfaces[4];
+  const frameFour = facadeWallFrame(four, ownerFor('case-30').owner, [ownerFor('case-30').owner]);
+  assert.ok(frameFour, 'case-30 declared surface #4 must stay usable');
+  const offFour = (p: number[]) => Math.abs((p[0] - frameFour!.a[0]) * frameFour!.u[1] - (p[1] - frameFour!.a[1]) * frameFour!.u[0]);
+  const plane = original.images.full.plane;
+  assert.ok(
+    Math.max(offFour(local(plane.start)), offFour(local(plane.end))) > 0.18,
+    'case-30 declared surface #4 must stay non-coplanar (the reason the fallback fires)',
+  );
 }
 
-console.log('Reviewed frontage fallback passed: case-09 draws on its registered frontage (door recovered) and is reproducible; case-30 keeps abstaining.');
+// --- 6. The fallback stays off for a declared surface inside the guard -----
+{
+  const entry = caseById('case-19');
+  const { original } = ownerFor('case-19');
+  const frontage = Math.hypot(original.localEnd[0] - original.localStart[0], original.localEnd[1] - original.localStart[1]);
+  assert.ok(entry.frame.width < frontage - 1, 'case-19 must keep its declared surface frame, not the registered frontage');
+  assert.ok(Math.abs(entry.frame.a[0] - original.localStart[0]) > 0.5, 'case-19 frame must not sit on the registered frontage start');
+}
+
+console.log('Reviewed frontage fallback passed: case-09 and case-30 draw on their registered frontages (door recovered, blank monolith recovered) and are reproducible; a coplanar declared surface (case-19) still wins.');
