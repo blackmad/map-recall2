@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "id": "slotervaart-v1",
+  "bbox": [4.81874, 52.35190, 4.83360, 52.37004],
+  "origin": [4.82617, 52.36097],
+  "cacheRoot": ".cache/city-appearance/areas/slotervaart-v1/raw",
+  "outputRoot": ".cache/city-appearance/areas/slotervaart-v1/staging",
+  "panorama": { "center": [4.82617, 52.36097], "radiusM": 1200, "after": "2022-01-01" },
+  "concurrency": 2
+}

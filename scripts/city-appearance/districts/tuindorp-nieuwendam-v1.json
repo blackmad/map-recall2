@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "id": "tuindorp-nieuwendam-v1",
+  "name": "Noord low-rise (Tuindorp Nieuwendam sample)",
+  "areas": [
+    { "id": "tuindorp-nieuwendam-v1", "district": "Noord", "config": "../areas/tuindorp-nieuwendam-v1.json", "priority": 10 }
+  ],
+  "boundary": [[[4.93553,52.38636],[4.95175,52.38636],[4.95175,52.39459],[4.93553,52.39459],[4.93553,52.38636]]],
+  "boundarySource": { "name": "Operational bbox around the municipal Tuindorp Nieuwendam boundary", "revision": "operational-bbox-v1", "retrievedAt": "2026-09-21T00:00:00Z" },
+  "budgets": { "buildingTiles": 12, "contextTiles": 16, "detailBufferMB": 11 },
+  "spendLimitUsd": 2
+}
