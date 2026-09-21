@@ -25,9 +25,11 @@
  * only case-30 (packet `4d57571…` -> `dd1fd2e…`).
  *
  * This pins both delivered candidates, that a rebuild reproduces them, and the
- * threshold boundary: case-19 (declared offset 0.166 m, inside the guard) keeps
- * its declared surface, so the fallback does not silently replace coplanar
- * frames.
+ * threshold boundary: case-23 (declared frame short of the frontage by 1.38 m,
+ * below the coverage gap threshold) keeps its declared surface, so the fallback
+ * does not silently replace a coplanar declared frame that still spans the
+ * frontage. (case-19, formerly the boundary case, is now recovered by the
+ * coverage-gap rule - see `check-reviewed-frontage-coverage.ts`.)
  *
  * Run: npx tsx scripts/review/check-reviewed-frontage-fallback.ts
  */
@@ -190,13 +192,13 @@ const near = (actual: number, expected: number, tolerance: number, label: string
   );
 }
 
-// --- 6. The fallback stays off for a declared surface inside the guard -----
+// --- 6. The fallback stays off for a declared frame inside the coverage guard --
 {
-  const entry = caseById('case-19');
-  const { original } = ownerFor('case-19');
+  const entry = caseById('case-23');
+  const { original } = ownerFor('case-23');
   const frontage = Math.hypot(original.localEnd[0] - original.localStart[0], original.localEnd[1] - original.localStart[1]);
-  assert.ok(entry.frame.width < frontage - 1, 'case-19 must keep its declared surface frame, not the registered frontage');
-  assert.ok(Math.abs(entry.frame.a[0] - original.localStart[0]) > 0.5, 'case-19 frame must not sit on the registered frontage start');
+  assert.ok(entry.frame.width < frontage - 1, 'case-23 must keep its declared surface frame, not the registered frontage');
+  assert.ok(Math.abs(entry.frame.a[0] - original.localStart[0]) > 0.5, 'case-23 frame must not sit on the registered frontage start');
 }
 
-console.log('Reviewed frontage fallback passed: case-09 and case-30 draw on their registered frontages (door recovered, blank monolith recovered) and are reproducible; a coplanar declared surface (case-19) still wins.');
+console.log('Reviewed frontage fallback passed: case-09 and case-30 draw on their registered frontages (door recovered, blank monolith recovered) and are reproducible; a declared frame below the coverage-gap threshold (case-23) still wins.');

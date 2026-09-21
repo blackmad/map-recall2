@@ -50,9 +50,38 @@ export function buildCaseCandidate(params: CaseCandidateParams) {
   // fragments the frontage into skewed pieces), the registered frontage is the
   // defensible plane.
   const declaredCoplanar=declaredTargets.length>0&&Math.min(...declaredTargets.map((target:any)=>cropPlaneOffset(target.frame)))<=.18;
-  const frontageSurface=declaredCoplanar?null:registeredFrontageWallSurface(original.localStart,original.localEnd,owner.geometry.building.surfaces);
+  // Even a coplanar declared frame can be shorter than the registered frontage:
+  // 3DBAG sometimes binds only one of two collinear frontage segments (case-02)
+  // or splits it into pieces with gaps between them. The crop plane spans the
+  // registered frontage, so anything the declared frames do not cover is clipped
+  // rather than drawn. Measure the union coverage along the crop-plane axis and
+  // treat a material gap as "no usable frame for this frontage", the same
+  // condition the frontage fallback already handles.
+  const frontageCoverage=(()=>{
+    const plane=original.images?.full?.plane??original.images?.ground?.plane;
+    if(!plane||!declaredTargets.length)return{length:0,gap:Infinity};
+    const start=[plane.start.x-sourceOrigin.x,sourceOrigin.y-plane.start.y];
+    const end=[plane.end.x-sourceOrigin.x,sourceOrigin.y-plane.end.y];
+    const dx=end[0]-start[0],dz=end[1]-start[1],length=Math.hypot(dx,dz);
+    if(!(length>0))return{length:0,gap:Infinity};
+    const ux=dx/length,uz=dz/length;
+    const project=(point:number[])=>(point[0]-start[0])*ux+(point[1]-start[1])*uz;
+    const intervals=declaredTargets.map((target:any)=>{
+      const frameA=target.frame.a,frameB=[frameA[0]+target.frame.u[0]*target.frame.width,frameA[1]+target.frame.u[1]*target.frame.width];
+      const a=project(frameA),b=project(frameB);
+      return [Math.min(a,b),Math.max(a,b)] as [number,number];
+    }).sort((left:number[],right:number[])=>left[0]-right[0]);
+    let covered=0,cursor=0;
+    for(const [a,b] of intervals){const lo=Math.max(a,cursor),hi=Math.min(b,length);if(hi>lo)covered+=hi-lo;cursor=Math.max(cursor,b);}
+    return{length,gap:Math.max(0,length-covered)};
+  })();
+  // A gap larger than 1.5 m or 15% of the frontage is a missing segment, not
+  // crop-margin rounding: below that a coplanar declared frame still owns the
+  // frontage and only a handful of pixels are trimmed.
+  const declaredCoversFrontage=declaredTargets.length>0&&frontageCoverage.gap<=Math.max(1.5,.15*frontageCoverage.length);
+  const frontageSurface=declaredCoplanar&&declaredCoversFrontage?null:registeredFrontageWallSurface(original.localStart,original.localEnd,owner.geometry.building.surfaces);
   const frontageFrame=frontageSurface?facadeWallFrame(frontageSurface,owner,[owner]):null;
-  const useFrontage=!declaredCoplanar&&frontageFrame!=null&&cropPlaneOffset(frontageFrame)<=.18;
+  const useFrontage=(!declaredCoplanar||!declaredCoversFrontage)&&frontageFrame!=null&&cropPlaneOffset(frontageFrame)<=.18;
   const renderTargets=useFrontage?[{index:declaredIndices[0]??0,surface:frontageSurface!,frame:frontageFrame!}]:declaredTargets.length?declaredTargets:(frontageSurface&&frontageFrame?[{index:declaredIndices[0]??0,surface:frontageSurface,frame:frontageFrame}]:[]);
   const frame=renderTargets[0]?.frame??null;
   const shapeFeatures:any={};const candidateObservations:any[]=[];const patches:any[]=[];const omissions:string[]=[];let analyzedTiers=0;
