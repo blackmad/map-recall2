@@ -82,6 +82,11 @@ const CHECKS: readonly ReviewedCheck[] = [
     cases: 'case-11/18',
     script: 'scripts/review/check-reviewed-glazing.ts',
   },
+  {
+    lane: 'inferred upper-floor row delivery',
+    cases: 'case-12',
+    script: 'scripts/review/check-reviewed-floor-rows.ts',
+  },
 ];
 
 const root = process.cwd();

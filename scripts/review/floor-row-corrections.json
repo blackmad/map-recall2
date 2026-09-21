@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "scope": "Reviewed 25-case development set. Source-bound inferred upper-floor rows only; never a metric registration or an accepted extraction fact.",
+  "coordinateConvention": "source-pixel bounds [x0,y0,x1,y1] in the cached full-tier crop, pixel-edge, origin top-left. Values are measured on the named cropSha256 and are not transferable to another crop.",
+  "cases": {
+    "case-12": {
+      "full": {
+        "source": {
+          "cropSha256": "2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660",
+          "captureDate": "2023-03-13T11:32:17.314580Z"
+        },
+        "anchorRowIds": ["full:window-2", "full:window-3", "full:window-4"],
+        "pitchPx": 80,
+        "groundBandTopPx": 385.065,
+        "inferred": [
+          { "id": "full:inferred:row-1:bay-1", "kind": "window", "bounds": [48, 279, 96, 343], "head": "rectangular", "frameColour": "#ffffff" },
+          { "id": "full:inferred:row-1:bay-2", "kind": "window", "bounds": [132, 279, 180, 343], "head": "rectangular", "frameColour": "#ffffff" },
+          { "id": "full:inferred:row-1:bay-3", "kind": "window", "bounds": [215, 279, 262, 343], "head": "rectangular", "frameColour": "#ffffff" }
+        ],
+        "reason": "The extraction reported openingsComplete:true but returned only one of the two clear upper rows below the gable (full:window-2/3/4, glass y164-230). The crop shows a second row of three framed windows whose glazing measures x48-96 / x132-180 / x215-262, y279-343, between the anchor row and the Heineken fascia at y385. The anchor-to-fascia gap (155 px) is nearly two storeys against the observed 80 px pitch, so a whole floor is unaccounted for. Bounds were measured from the crop's bright frame components and cross-checked against the left window's frame outline x40-104 / y271-351. This is a declared development observation, not a measurement."
+      }
+    }
+  }
+}
