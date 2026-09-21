@@ -14,9 +14,11 @@
  * architecture). `scripts/review/refresh-reviewed-glazing.ts` republished only
  * case-11's metric patches and full source-shape study.
  *
- * This pins the guard on synthetic features (boundary included), the delivered
- * case-11 packet (stored gap preserved, neutral glazing rendered, study equal to
- * a fresh guarded compile), and that case-18 still carries the gap.
+ * This pins the guard on synthetic features (boundary included) and both
+ * delivered cases: each keeps its stored near-white extraction gap while
+ * rendering neutral glazing, and each stored full study equals a fresh guarded
+ * compile. case-18's recolour is partial (white frames stay), so its ground
+ * study is left untouched to preserve a delivered raised-entrance correction.
  *
  * Run: npx tsx scripts/review/check-reviewed-glazing.ts
  */
@@ -118,11 +120,27 @@ const doorPatches = (study: any) => (study.patches ?? []).filter((patch: any) =>
   assert.equal(JSON.stringify(stored), JSON.stringify(fresh), 'case-11 stored study is out of sync; re-run scripts/review/refresh-reviewed-glazing.ts');
 }
 
-// case-18 is the other case with the extraction gap; the guard applies there too.
+// case-18 is the other case with the extraction gap; the guard applies there
+// too. Its four windows declare both a near-white glass and a near-white frame,
+// so the recolour is partial: the glazing turns neutral while the white frame
+// patches legitimately stay. The ground study is left byte-identical because it
+// carries a delivered raised-entrance correction that a plain
+// `compileSourceShapePreview` does not reproduce.
 {
   const entry = caseById('case-18');
   const windows = (entry.shapeFeatures?.full?.features ?? []).filter((feature: any) => feature.kind === 'window');
   assert.ok(windows.length > 0 && windows.every((feature: any) => feature.colour === '#ffffff'), 'case-18 near-white window gap changed');
+  const metricColours = new Set((entry.patches ?? []).filter((patch: any) => patch.featureKind === 'observed-window').map((patch: any) => patch.colour));
+  assert.ok(metricColours.has(GLASS), 'case-18 metric glazing must be neutral glass');
+  assert.ok(metricColours.has('#ffffff'), 'case-18 white frame patches must be preserved');
+  const stored = entry.shapeStudy.full;
+  const storedColours = new Set(windowPatches(stored).map((patch: any) => patch.colour));
+  assert.ok(storedColours.has(GLASS), 'case-18 full study must render neutral glazing');
+  const fresh = compileSourceShapePreview({ width: entry.shapeFeatures.full.width, height: entry.shapeFeatures.full.height, cropSha256: entry.shapeFeatures.full.cropSha256, captureDate: entry.shapeFeatures.full.captureDate, features: entry.shapeFeatures.full.features });
+  if (Array.isArray(stored.omissions)) fresh.omissions = stored.omissions;
+  assert.equal(JSON.stringify(stored), JSON.stringify(fresh), 'case-18 stored full study is out of sync; re-run scripts/review/refresh-reviewed-glazing.ts --case=case-18 --tier=full');
+  const ground = entry.shapeStudy.ground;
+  assert.ok(Array.isArray(ground?.omissions) && ground.omissions.some((note: string) => /raised-entrance/.test(note)), 'case-18 ground raised-entrance correction must be preserved');
 }
 
 fs.writeFileSync(
@@ -134,8 +152,10 @@ fs.writeFileSync(
       generatedAt: new Date().toISOString(),
       packet: { path: CASES, sha256: createHash('sha256').update(bytes).digest('hex') },
       guard: { nearWhiteMinChannel: 235, windowFallback: GLASS, doorLeavesExcluded: true },
-      delivered: { 'case-11': { nearWhiteWindows: 12, metricGlazing: GLASS, studyTiers: ['full'] } },
-      unrefreshed: { 'case-18': 'declares near-white windows; packet artifacts not refreshed this pass' },
+      delivered: {
+        'case-11': { nearWhiteWindows: 12, metricGlazing: GLASS, studyTiers: ['full'] },
+        'case-18': { nearWhiteWindows: 4, metricGlazing: GLASS, studyTiers: ['full'], groundTier: 'preserved (raised-entrance correction; plain compile does not reproduce it)' },
+      },
     },
     null,
     2,
@@ -143,6 +163,6 @@ fs.writeFileSync(
 );
 
 console.log(
-  'Reviewed glazing regression passed: near-white window colours fall back to neutral glass (#526a6b), real glass and white doors are kept, ' +
-    'and case-11 delivers 12 neutral-glazed windows with its extraction gap preserved.',
+  'Reviewed glazing regression passed: near-white window colours fall back to neutral glass (#526a6b), real glass, white frames and white doors are kept, ' +
+    'and case-11 (12 windows) and case-18 (4 windows) render neutral glazing with their extraction gaps preserved.',
 );
