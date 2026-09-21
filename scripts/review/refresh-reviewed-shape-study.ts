@@ -33,7 +33,7 @@ import { publishPreviewRevision } from './publish-preview-revision.ts';
 const CASES = 'public/data/facade-repair-preview/cases.json';
 const OUT = 'review-data/shape-study-refresh.json';
 const TRIM = new Set(['accent', 'band', 'surround', 'plinth']);
-const COVERAGE_CASES = new Set(['case-01', 'case-04', 'case-09']);
+const COVERAGE_CASES = new Set(['case-01', 'case-04', 'case-09', 'case-27']);
 
 const read = (file: string) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const nextSource = read('scripts/review/next-stage-source-review.json');
