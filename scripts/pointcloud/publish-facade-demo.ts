@@ -114,6 +114,7 @@ for (const source of TILES) {
       vertices: scene.obj.split('\n').filter((line) => line.startsWith('v ')).length,
       faces: scene.obj.split('\n').filter((line) => line.startsWith('f ')).length,
       groups: scene.groups,
+      threeDBag: measured.threeDBag,
     };
     const tileDir = path.join(outputDir, source.id);
     await mkdir(tileDir, { recursive: true });
@@ -144,6 +145,7 @@ const manifest = {
     geometryLicence: 'CC BY 4.0 — 3DBAG, TU Delft',
     crs: 'EPSG:7415 / NAP',
   },
+  threeDBag: tiles[0]?.threeDBag,
   totals: {
     tiles: tiles.length,
     measuredWalls: tiles.reduce((sum, tile) => sum + tile.scannedWalls, 0),
