@@ -1,0 +1,12 @@
+# Roofline task A1 — segmentation venv (mask2former, Mapillary Vistas semantic).
+# Local inference only (Apple MPS or CPU); no hosted inference. Recreate with:
+#   uv venv "$ROOFLINE_CACHE/roofline-eval/venv" --python 3.11
+#   uv pip install --python "$ROOFLINE_CACHE/roofline-eval/venv/bin/python" -r scripts/roofline-eval/requirements.txt
+torch==2.14.0
+torchvision==0.29.0
+transformers==5.17.0
+pillow==12.3.0
+numpy==2.4.6
+scipy==1.17.1
+huggingface_hub==1.32.0
+safetensors==0.8.0
