@@ -173,3 +173,48 @@ export function clearsThresholds(score: OpeningScore, thresholds: DecisionThresh
     centreError: score.medianCentreErrorM !== null && score.medianCentreErrorM <= thresholds.centreErrorM,
   };
 }
+
+export interface ShiftProbe extends OpeningScore {
+  shiftAlongM: number;
+  shiftUpM: number;
+  flipped: boolean;
+}
+
+/**
+ * Diagnostic: the best score reachable by translating (and optionally mirroring)
+ * every prediction by a small amount. This separates "the model is wrong" from
+ * "the crop and the measured geometry are not registered": if recall jumps at a
+ * plausible shift, the problem is alignment, not detection. It is a probe, not a
+ * score — the plan's rule is applied to the unshifted result.
+ */
+export function probeBestShift(
+  measured: readonly WallRect[],
+  predictions: readonly ScoredBox[],
+  options: { maxShiftM?: number; stepM?: number; wallWidthM?: number; iouThreshold?: number; kinds?: readonly string[] } = {},
+): ShiftProbe {
+  const maxShiftM = options.maxShiftM ?? 1;
+  const stepM = options.stepM ?? 0.1;
+  const iouThreshold = options.iouThreshold ?? 0.5;
+  const shifts: number[] = [];
+  for (let shift = -maxShiftM; shift <= maxShiftM + 1e-9; shift += stepM) shifts.push(Number(shift.toFixed(3)));
+
+  let best: ShiftProbe | null = null;
+  const consider = (alongM: number, upM: number, flipped: boolean) => {
+    const moved = predictions.map((box) => ({
+      ...box,
+      along: flipped && options.wallWidthM ? options.wallWidthM - (box.along + box.width) : box.along,
+      up: box.up,
+    })).map((box) => ({ ...box, along: box.along + alongM, up: box.up + upM }));
+    const score = scoreOpenings(measured, moved, { iouThreshold, kinds: options.kinds });
+    const candidate: ShiftProbe = { ...score, shiftAlongM: alongM, shiftUpM: upM, flipped };
+    if (!best
+      || candidate.truePositives > best.truePositives
+      || (candidate.truePositives === best.truePositives && (candidate.recall ?? 0) > (best.recall ?? 0))) {
+      best = candidate;
+    }
+  };
+
+  for (const alongM of shifts) for (const upM of shifts) consider(alongM, upM, false);
+  if (options.wallWidthM) for (const alongM of shifts) for (const upM of shifts) consider(alongM, upM, true);
+  return best ?? { ...scoreOpenings(measured, predictions, { iouThreshold }), shiftAlongM: 0, shiftUpM: 0, flipped: false };
+}
