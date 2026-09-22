@@ -1,0 +1,2456 @@
+{
+  "schemaVersion": 1,
+  "kind": "facade-model-gold/measured",
+  "generatedAt": "2026-09-22T11:04:36.940Z",
+  "frame": "along = metres from plane.start; up = metres above plane.baseZ",
+  "source": {
+    "crops": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid/manifest.json",
+    "openings": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/pointcloud-facades/v1/*/manifest.json walls[].openingRects",
+    "note": "openings are point-cloud measurements (recesses behind the wall plane), not model predictions"
+  },
+  "counts": {
+    "walls": 60,
+    "openings": 70,
+    "dropped": 4
+  },
+  "walls": [
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012153094",
+      "surfaceId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:3",
+      "group": "NL_IMBAG_Pand_0363100012153094_0_lod22_wall_3",
+      "wallWidthM": 1.5,
+      "wallHeightM": 14.06,
+      "plane": {
+        "start": {
+          "x": 119892.55529999999,
+          "y": 485254.052875
+        },
+        "end": {
+          "x": 119891.9727,
+          "y": 485255.435125
+        },
+        "baseZ": 0.12900000000000045,
+        "topZ": 14.187000000000001
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012153094_0_lod22_wall_3.jpg",
+        "sha256": "d2d74fb2f23671551ddb8d1ddd845854fe948944d3e5050ad4708823576924fd",
+        "width": 68,
+        "height": 633
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.017,
+      "obliquity": 10.194,
+      "panoramaId": "TMX7316010203-002456_pano_0002_000776",
+      "panoramaDate": "2022-03-21T09:18:16.242750Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012064873",
+      "surfaceId": "NL.IMBAG.Pand.0363100012064873-0:lod22:wall:5",
+      "group": "NL_IMBAG_Pand_0363100012064873_0_lod22_wall_5",
+      "wallWidthM": 6.24,
+      "wallHeightM": 14.58,
+      "plane": {
+        "start": {
+          "x": 119894.983616,
+          "y": 485248.30816799996
+        },
+        "end": {
+          "x": 119892.554384,
+          "y": 485254.055832
+        },
+        "baseZ": 0.1509999999999998,
+        "topZ": 14.735
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012064873_0_lod22_wall_5.jpg",
+        "sha256": "50831e242b592697ce255c38ba4bfc9b40c861c28a61bac39ba4dfd1994ccb61",
+        "width": 281,
+        "height": 656
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.183,
+      "obliquity": 3.68,
+      "panoramaId": "TMX7316010203-002456_pano_0002_000777",
+      "panoramaDate": "2022-03-21T09:18:16.962770Z",
+      "openings": [
+        {
+          "along": 4.75195176697857,
+          "up": 0.5499999999999998,
+          "width": 0.8999908649620387,
+          "height": 0.25
+        },
+        {
+          "along": 2.751972067066998,
+          "up": 1.6000000000000005,
+          "width": 0.9499903574469242,
+          "height": 1.85
+        },
+        {
+          "along": 2.751972067066998,
+          "up": 4.550000000000001,
+          "width": 0.9499903574469242,
+          "height": 0.6
+        },
+        {
+          "along": 2.751972067066998,
+          "up": 5.9,
+          "width": 0.9499903574469242,
+          "height": 0.75
+        },
+        {
+          "along": 4.75195176697857,
+          "up": 9.4,
+          "width": 0.8999908649620387,
+          "height": 0.6
+        },
+        {
+          "along": 2.751972067066998,
+          "up": 10.125,
+          "width": 0.9499903574469242,
+          "height": 0.525
+        },
+        {
+          "along": 4.75195176697857,
+          "up": 10.125,
+          "width": 0.8999908649620387,
+          "height": 0.525
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012074448",
+      "surfaceId": "NL.IMBAG.Pand.0363100012074448-0:lod22:wall:4",
+      "group": "NL_IMBAG_Pand_0363100012074448_0_lod22_wall_4",
+      "wallWidthM": 6.37,
+      "wallHeightM": 14.71,
+      "plane": {
+        "start": {
+          "x": 119878.086512,
+          "y": 485269.736097
+        },
+        "end": {
+          "x": 119872.511488,
+          "y": 485272.817903
+        },
+        "baseZ": 0.08099999999999952,
+        "topZ": 14.792
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012074448_0_lod22_wall_4.jpg",
+        "sha256": "aab023526c562950ce0132490f4918a1229158cd409cacaf7823c52dc99267b8",
+        "width": 287,
+        "height": 662
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.168,
+      "obliquity": 7.014,
+      "panoramaId": "TMX7316010203-002412_pano_0001_000030",
+      "panoramaDate": "2022-01-11T11:14:03.793510Z",
+      "openings": [
+        {
+          "along": 5.550104006013166,
+          "up": 0.7000000000000002,
+          "width": 0.8500159288708717,
+          "height": 2.7
+        },
+        {
+          "along": 1.6500309206968489,
+          "up": 4.35,
+          "width": 1.0500196768178147,
+          "height": 2.05
+        },
+        {
+          "along": 3.02505668795618,
+          "up": 4.35,
+          "width": 0.7000131178742981,
+          "height": 2.05
+        },
+        {
+          "along": 1.6500309206968489,
+          "up": 8.35,
+          "width": 1.0500196768178147,
+          "height": 1.8
+        },
+        {
+          "along": 3.02505668795618,
+          "up": 8.35,
+          "width": 0.7000131178742981,
+          "height": 1.8
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012153094",
+      "surfaceId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:14",
+      "group": "NL_IMBAG_Pand_0363100012153094_0_lod22_wall_14",
+      "wallWidthM": 2.54,
+      "wallHeightM": 16.2,
+      "plane": {
+        "start": {
+          "x": 119892.071379,
+          "y": 485255.20131399995
+        },
+        "end": {
+          "x": 119891.086621,
+          "y": 485257.542686
+        },
+        "baseZ": 0.1280000000000001,
+        "topZ": 16.332
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012153094_0_lod22_wall_14.jpg",
+        "sha256": "25fcb5fd11dc2c2697f6643be05029dbf071a8aab9f945bc5cee5f375f007942",
+        "width": 114,
+        "height": 729
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.016,
+      "obliquity": 0.823,
+      "panoramaId": "TMX7316010203-002456_pano_0002_000776",
+      "panoramaDate": "2022-03-21T09:18:16.242750Z",
+      "openings": [
+        {
+          "along": 1.6040212769355238,
+          "up": 2.450000000000001,
+          "width": 0.9500126016598354,
+          "height": 1
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012153094",
+      "surfaceId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:15",
+      "group": "NL_IMBAG_Pand_0363100012153094_0_lod22_wall_15",
+      "wallWidthM": 1.73,
+      "wallHeightM": 16.2,
+      "plane": {
+        "start": {
+          "x": 119890.9877065,
+          "y": 485257.778816
+        },
+        "end": {
+          "x": 119890.3162935,
+          "y": 485259.373184
+        },
+        "baseZ": 0.12899999999999956,
+        "topZ": 16.333
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012153094_0_lod22_wall_15.jpg",
+        "sha256": "2dda772b567dfd79255553e1e14480354798f0527f26a2047a9c5efe00c4621e",
+        "width": 78,
+        "height": 729
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.482,
+      "obliquity": 15.488,
+      "panoramaId": "TMX7316010203-002456_pano_0002_000775",
+      "panoramaDate": "2022-03-21T09:18:15.492790Z",
+      "openings": [
+        {
+          "along": -0.001999968123431431,
+          "up": 2.45,
+          "width": 0.6999888594130484,
+          "height": 0.95
+        },
+        {
+          "along": -0.001999968123431431,
+          "up": 6.35,
+          "width": 0.6999888594130484,
+          "height": 0.95
+        },
+        {
+          "along": -0.001999968123431431,
+          "up": 8.8,
+          "width": 0.6999888594130484,
+          "height": 0.75
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012155815",
+      "surfaceId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:1",
+      "group": "NL_IMBAG_Pand_0363100012155815_0_lod22_wall_1",
+      "wallWidthM": 2.84,
+      "wallHeightM": 14.69,
+      "plane": {
+        "start": {
+          "x": 119886.6065,
+          "y": 485265.02543599997
+        },
+        "end": {
+          "x": 119884.12150000001,
+          "y": 485266.400564
+        },
+        "baseZ": 0.0860000000000003,
+        "topZ": 14.774000000000001
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012155815_0_lod22_wall_1.jpg",
+        "sha256": "415643fe239396c64647b6a74f92c8913606bea8bd1da14ee0da5ff0360ccb21",
+        "width": 128,
+        "height": 661
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.126,
+      "obliquity": 7.367,
+      "panoramaId": "TMX7316010203-002412_pano_0001_000032",
+      "panoramaDate": "2022-01-11T11:14:05.583520Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012156186",
+      "surfaceId": "NL.IMBAG.Pand.0363100012156186-0:lod22:wall:8",
+      "group": "NL_IMBAG_Pand_0363100012156186_0_lod22_wall_8",
+      "wallWidthM": 5.8,
+      "wallHeightM": 14.59,
+      "plane": {
+        "start": {
+          "x": 119848.9023,
+          "y": 485285.99009000004
+        },
+        "end": {
+          "x": 119854.1977,
+          "y": 485288.35591
+        },
+        "baseZ": -0.34299999999999997,
+        "topZ": 14.244
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012156186_0_lod22_wall_8.jpg",
+        "sha256": "fe26b644dacab7c923d7ecded20f19e15cbac661a1387a54076a965bc5e8839e",
+        "width": 261,
+        "height": 656
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.967,
+      "obliquity": 6.587,
+      "panoramaId": "TMX7316010203-001061_pano_0001_001019",
+      "panoramaDate": "2019-01-17T11:58:02.212330Z",
+      "openings": [
+        {
+          "along": 2.8489307826899006,
+          "up": 2.3,
+          "width": 0.9249775268423805,
+          "height": 1.35
+        },
+        {
+          "along": 4.373893732377014,
+          "up": 2.3,
+          "width": 0.9499769194665646,
+          "height": 1.35
+        },
+        {
+          "along": 1.298968440402347,
+          "up": 2.3,
+          "width": 0.3499914966455766,
+          "height": 1.35
+        },
+        {
+          "along": 2.8489307826899006,
+          "up": 2.3,
+          "width": 0.9249775268423805,
+          "height": 1.35
+        },
+        {
+          "along": 4.373893732377014,
+          "up": 2.3,
+          "width": 0.9499769194665646,
+          "height": 1.35
+        },
+        {
+          "along": 3.473915598121787,
+          "up": 4.949999999999999,
+          "width": 1.1749714530548228,
+          "height": 1.7
+        },
+        {
+          "along": 3.473915598121787,
+          "up": 6.7,
+          "width": 1.1749714530548228,
+          "height": 0.9
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012155815",
+      "surfaceId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:23",
+      "group": "NL_IMBAG_Pand_0363100012155815_0_lod22_wall_23",
+      "wallWidthM": 1.37,
+      "wallHeightM": 14.51,
+      "plane": {
+        "start": {
+          "x": 119890.3161635,
+          "y": 485259.37343
+        },
+        "end": {
+          "x": 119889.78583650001,
+          "y": 485260.63657000003
+        },
+        "baseZ": 0.08599999999999941,
+        "topZ": 14.597999999999999
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012155815_0_lod22_wall_23.jpg",
+        "sha256": "7f038dacb4d44065665318ce871f1eb6ba10e7feedc246d92feeae8834d6cb84",
+        "width": 62,
+        "height": 653
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.48,
+      "obliquity": 5.469,
+      "panoramaId": "TMX7316010203-002456_pano_0002_000775",
+      "panoramaDate": "2022-03-21T09:18:15.492790Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012155815",
+      "surfaceId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:2",
+      "group": "NL_IMBAG_Pand_0363100012155815_0_lod22_wall_2",
+      "wallWidthM": 2.4,
+      "wallHeightM": 12.06,
+      "plane": {
+        "start": {
+          "x": 119888.456,
+          "y": 485264.00195999997
+        },
+        "end": {
+          "x": 119886.356,
+          "y": 485265.16404
+        },
+        "baseZ": 0.08699999999999974,
+        "topZ": 12.146999999999998
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012155815_0_lod22_wall_2.jpg",
+        "sha256": "64ea53349594237348175be5400e2d2100a2fec535e2419e1ce9955f1716581d",
+        "width": 108,
+        "height": 543
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.405,
+      "obliquity": 2.077,
+      "panoramaId": "TMX7316010203-002456_pano_0002_000773",
+      "panoramaDate": "2022-03-21T09:18:13.902800Z",
+      "openings": [
+        {
+          "along": 1.4260532173471405,
+          "up": 4.95,
+          "width": 0.9000335873655325,
+          "height": 2.3
+        },
+        {
+          "along": 1.4260532173471405,
+          "up": 8.45,
+          "width": 0.9000335873655325,
+          "height": 2.3
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012156790",
+      "surfaceId": "NL.IMBAG.Pand.0363100012156790-0:lod22:wall:2",
+      "group": "NL_IMBAG_Pand_0363100012156790_0_lod22_wall_2",
+      "wallWidthM": 3.04,
+      "wallHeightM": 15.35,
+      "plane": {
+        "start": {
+          "x": 119860.34978399999,
+          "y": 485291.105904
+        },
+        "end": {
+          "x": 119863.126216,
+          "y": 485292.34409599996
+        },
+        "baseZ": 0.3819999999999997,
+        "topZ": 15.735
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012156790_0_lod22_wall_2.jpg",
+        "sha256": "f2071e5c412fb79347b9b87101ae23c8306caa383cea774456e3a51b9cf8d302",
+        "width": 137,
+        "height": 691
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.675,
+      "obliquity": 19.958,
+      "panoramaId": "TMX7316010203-001061_pano_0001_001016",
+      "panoramaDate": "2019-01-17T11:57:59.452320Z",
+      "openings": [
+        {
+          "along": 1.1500058534821598,
+          "up": 1.875,
+          "width": 0.35000178150611205,
+          "height": 0.85
+        },
+        {
+          "along": 1.600008143962513,
+          "up": 1.875,
+          "width": 0.5500027995153007,
+          "height": 0.85
+        },
+        {
+          "along": 1.600008143962513,
+          "up": 6.8,
+          "width": 0.5500027995153007,
+          "height": 0.7
+        },
+        {
+          "along": 1.600008143962513,
+          "up": 7.5,
+          "width": 0.5500027995153007,
+          "height": 0.75
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012156232",
+      "surfaceId": "NL.IMBAG.Pand.0363100012156232-0:lod22:wall:16",
+      "group": "NL_IMBAG_Pand_0363100012156232_0_lod22_wall_16",
+      "wallWidthM": 1.87,
+      "wallHeightM": 15.01,
+      "plane": {
+        "start": {
+          "x": 119854.425907,
+          "y": 485266.6000695
+        },
+        "end": {
+          "x": 119852.72009300001,
+          "y": 485265.8339305
+        },
+        "baseZ": -0.3259999999999996,
+        "topZ": 14.681000000000001
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012156232_0_lod22_wall_16.jpg",
+        "sha256": "06d76d0b91fe183ed0ae01a68c2df12bf945b729dce7ccc86747ead67c52c3c2",
+        "width": 84,
+        "height": 675
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.402,
+      "obliquity": 2.833,
+      "panoramaId": "TMX7316010203-002920_pano_0006_000029",
+      "panoramaDate": "2023-01-10T09:10:48.086640Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012156232",
+      "surfaceId": "NL.IMBAG.Pand.0363100012156232-0:lod22:wall:15",
+      "group": "NL_IMBAG_Pand_0363100012156232_0_lod22_wall_15",
+      "wallWidthM": 2.25,
+      "wallHeightM": 16.69,
+      "plane": {
+        "start": {
+          "x": 119852.71733750001,
+          "y": 485265.8328
+        },
+        "end": {
+          "x": 119850.6646625,
+          "y": 485264.9112
+        },
+        "baseZ": -0.3250000000000002,
+        "topZ": 16.368000000000002
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012156232_0_lod22_wall_15.jpg",
+        "sha256": "135a5b28aa99835268ce4a8ce231a792e486fa2c019462cf11907c9621d79bac",
+        "width": 101,
+        "height": 751
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.361,
+      "obliquity": 9.411,
+      "panoramaId": "TMX7316010203-001496_pano_0000_000171",
+      "panoramaDate": "2019-12-06T08:57:17.083190Z",
+      "openings": [
+        {
+          "along": 0.998031661049429,
+          "up": 1.2000000000000002,
+          "width": 0.6000190347094733,
+          "height": 0.35
+        },
+        {
+          "along": 0.998031661049429,
+          "up": 2.4000000000000004,
+          "width": 0.6000190347094733,
+          "height": 0.75
+        },
+        {
+          "along": 0.998031661049429,
+          "up": 2.4000000000000004,
+          "width": 0.6000190347094733,
+          "height": 0.75
+        },
+        {
+          "along": 0.998031661049429,
+          "up": 2.4000000000000004,
+          "width": 0.6000190347094733,
+          "height": 0.75
+        },
+        {
+          "along": 0.998031661049429,
+          "up": 4.750000000000001,
+          "width": 0.6000190347094733,
+          "height": 1.3
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012156790",
+      "surfaceId": "NL.IMBAG.Pand.0363100012156790-0:lod22:wall:6",
+      "group": "NL_IMBAG_Pand_0363100012156790_0_lod22_wall_6",
+      "wallWidthM": 2.11,
+      "wallHeightM": 15.28,
+      "plane": {
+        "start": {
+          "x": 119863.1264385,
+          "y": 485292.343081
+        },
+        "end": {
+          "x": 119863.67356149999,
+          "y": 485294.380919
+        },
+        "baseZ": 0.3810000000000002,
+        "topZ": 15.658000000000001
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012156790_0_lod22_wall_6.jpg",
+        "sha256": "0966e6651e82f7df5cf5467b03e4306aa3389d92a6c927114cc175584e49889c",
+        "width": 95,
+        "height": 687
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.372,
+      "obliquity": 10.968,
+      "panoramaId": "TMX7316010203-001061_pano_0001_001015",
+      "panoramaDate": "2019-01-17T11:57:58.407320Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012158539",
+      "surfaceId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:3",
+      "group": "NL_IMBAG_Pand_0363100012158539_0_lod22_wall_3",
+      "wallWidthM": 1.88,
+      "wallHeightM": 15.02,
+      "plane": {
+        "start": {
+          "x": 119856.142656,
+          "y": 485267.37083599996
+        },
+        "end": {
+          "x": 119854.42734400001,
+          "y": 485266.601164
+        },
+        "baseZ": -0.3069999999999995,
+        "topZ": 14.717
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012158539_0_lod22_wall_3.jpg",
+        "sha256": "0cd405ed89496befe3bad5bee3eb1272e8425d1192f5fb3981a99882f511649d",
+        "width": 85,
+        "height": 676
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.423,
+      "obliquity": 3.907,
+      "panoramaId": "TMX7316010203-002412_pano_0001_000024",
+      "panoramaDate": "2022-01-11T11:13:58.238580Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012158539",
+      "surfaceId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:10",
+      "group": "NL_IMBAG_Pand_0363100012158539_0_lod22_wall_10",
+      "wallWidthM": 1.97,
+      "wallHeightM": 16.66,
+      "plane": {
+        "start": {
+          "x": 119859.814714,
+          "y": 485269.01925899996
+        },
+        "end": {
+          "x": 119858.017286,
+          "y": 485268.212741
+        },
+        "baseZ": -0.30600000000000005,
+        "topZ": 16.355
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012158539_0_lod22_wall_10.jpg",
+        "sha256": "da4e1b7aaa294b9924e7b585734af4026c6efc17b7cf82c258f570e821c7475b",
+        "width": 89,
+        "height": 750
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.344,
+      "obliquity": 2.824,
+      "panoramaId": "TMX7316010203-002920_pano_0006_000030",
+      "panoramaDate": "2023-01-10T09:10:49.051730Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012158539",
+      "surfaceId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:11",
+      "group": "NL_IMBAG_Pand_0363100012158539_0_lod22_wall_11",
+      "wallWidthM": 2.06,
+      "wallHeightM": 16.66,
+      "plane": {
+        "start": {
+          "x": 119858.02046300001,
+          "y": 485268.214197
+        },
+        "end": {
+          "x": 119856.141537,
+          "y": 485267.369803
+        },
+        "baseZ": -0.30600000000000005,
+        "topZ": 16.355
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012158539_0_lod22_wall_11.jpg",
+        "sha256": "32b00b4cdab07e532deb85f36a8066464692edcd2cb359120bdc5e99efcff6e0",
+        "width": 93,
+        "height": 750
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.343,
+      "obliquity": 9.419,
+      "panoramaId": "TMX7316010203-002920_pano_0006_000030",
+      "panoramaDate": "2023-01-10T09:10:49.051730Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012161771",
+      "surfaceId": "NL.IMBAG.Pand.0363100012161771-0:lod22:wall:2",
+      "group": "NL_IMBAG_Pand_0363100012161771_0_lod22_wall_2",
+      "wallWidthM": 2.22,
+      "wallHeightM": 14.9,
+      "plane": {
+        "start": {
+          "x": 119872.509139,
+          "y": 485272.81853800005
+        },
+        "end": {
+          "x": 119870.566861,
+          "y": 485273.893462
+        },
+        "baseZ": -0.17999999999999972,
+        "topZ": 14.716000000000001
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012161771_0_lod22_wall_2.jpg",
+        "sha256": "345307d50e2141a00bfc7fea69d4387e9b93a81f397ad7c90ee54a84d4f6e563",
+        "width": 100,
+        "height": 670
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.247,
+      "obliquity": 2.565,
+      "panoramaId": "TMX7316010203-002412_pano_0001_000029",
+      "panoramaDate": "2022-01-11T11:14:02.998590Z",
+      "openings": [
+        {
+          "along": -0.0019998996617116424,
+          "up": 0.9500000000000002,
+          "width": 0.34998243831123876,
+          "height": 2.65
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012161771",
+      "surfaceId": "NL.IMBAG.Pand.0363100012161771-0:lod22:wall:23",
+      "group": "NL_IMBAG_Pand_0363100012161771_0_lod22_wall_23",
+      "wallWidthM": 11.73,
+      "wallHeightM": 15,
+      "plane": {
+        "start": {
+          "x": 119870.5146395,
+          "y": 485273.82330399996
+        },
+        "end": {
+          "x": 119859.8133605,
+          "y": 485269.018696
+        },
+        "baseZ": -0.17999999999999972,
+        "topZ": 14.821000000000002
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012161771_0_lod22_wall_23.jpg",
+        "sha256": "420ac54fd4bae15646961471540951a469f357198e4e4f9777510ac420a12504",
+        "width": 528,
+        "height": 675
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.858,
+      "obliquity": 15.907,
+      "panoramaId": "TMX7316010203-002920_pano_0006_000032",
+      "panoramaDate": "2023-01-10T09:10:51.056590Z",
+      "openings": [
+        {
+          "along": 5.313168552233515,
+          "up": 1.7000000000000002,
+          "width": 1.225038862512064,
+          "height": 2.3
+        },
+        {
+          "along": 0.6500206209089832,
+          "up": 1.7000000000000002,
+          "width": 1.2000380694189465,
+          "height": 2.3
+        },
+        {
+          "along": 3.3751070701828096,
+          "up": 1.7000000000000002,
+          "width": 1.0750341038287345,
+          "height": 2.3
+        },
+        {
+          "along": 8.0002537959708,
+          "up": 1.7000000000000002,
+          "width": 1.2500396556184565,
+          "height": 2.3
+        },
+        {
+          "along": 9.85031248629873,
+          "up": 1.7000000000000002,
+          "width": 1.2000380693818293,
+          "height": 2.3
+        },
+        {
+          "along": 5.313168552233515,
+          "up": 1.7000000000000002,
+          "width": 1.225038862512064,
+          "height": 2.3
+        },
+        {
+          "along": 0.6500206209089832,
+          "up": 6,
+          "width": 1.2000380694189465,
+          "height": 1.65
+        },
+        {
+          "along": 3.3751070701828096,
+          "up": 6,
+          "width": 1.0750341038287345,
+          "height": 1.65
+        },
+        {
+          "along": 5.313168552233515,
+          "up": 6,
+          "width": 1.225038862512064,
+          "height": 1.65
+        },
+        {
+          "along": 3.3751070701828096,
+          "up": 6,
+          "width": 1.0750341038287345,
+          "height": 1.65
+        },
+        {
+          "along": 5.313168552233515,
+          "up": 6,
+          "width": 1.225038862512064,
+          "height": 1.65
+        },
+        {
+          "along": 0.6500206209089832,
+          "up": 8.5,
+          "width": 1.2000380694189465,
+          "height": 1.25
+        },
+        {
+          "along": 3.3751070701828096,
+          "up": 9.85,
+          "width": 1.0750341038287345,
+          "height": 0.5
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012163440",
+      "surfaceId": "NL.IMBAG.Pand.0363100012163440-0:lod22:wall:18",
+      "group": "NL_IMBAG_Pand_0363100012163440_0_lod22_wall_18",
+      "wallWidthM": 2.21,
+      "wallHeightM": 14.69,
+      "plane": {
+        "start": {
+          "x": 119858.1322455,
+          "y": 485290.113939
+        },
+        "end": {
+          "x": 119860.1497545,
+          "y": 485291.016061
+        },
+        "baseZ": 0.3439999999999994,
+        "topZ": 15.032
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012163440_0_lod22_wall_18.jpg",
+        "sha256": "ffad95c83e78ba7dd89a9a8c636e3e01a3e7eb8cac4191529966c46b759128bd",
+        "width": 99,
+        "height": 661
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.962,
+      "obliquity": 4.824,
+      "panoramaId": "TMX7316010203-001061_pano_0001_001017",
+      "panoramaDate": "2019-01-17T11:58:00.422320Z",
+      "openings": [
+        {
+          "along": 0.9720066338680731,
+          "up": 4.1000000000000005,
+          "width": 0.8500058012429128,
+          "height": 1.75
+        },
+        {
+          "along": 0.9720066338680731,
+          "up": 5.950000000000001,
+          "width": 0.8500058012429128,
+          "height": 0.9
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012166039",
+      "surfaceId": "NL.IMBAG.Pand.0363100012166039-0:lod22:wall:8",
+      "group": "NL_IMBAG_Pand_0363100012166039_0_lod22_wall_8",
+      "wallWidthM": 5.66,
+      "wallHeightM": 14.84,
+      "plane": {
+        "start": {
+          "x": 119883.535099,
+          "y": 485266.72512899997
+        },
+        "end": {
+          "x": 119878.58090100001,
+          "y": 485269.462871
+        },
+        "baseZ": -0.0519999999999996,
+        "topZ": 14.787
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012166039_0_lod22_wall_8.jpg",
+        "sha256": "47d7799dab1eee6e5d0400f4028c8e55a70fd5db111d49394fee113c1dc23a14",
+        "width": 255,
+        "height": 668
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7,
+      "obliquity": 6.916,
+      "panoramaId": "TMX7316010203-002412_pano_0001_000031",
+      "panoramaDate": "2022-01-11T11:14:04.613620Z",
+      "openings": [
+        {
+          "along": 3.766218007436398,
+          "up": 4.5,
+          "width": 0.7750448634428362,
+          "height": 2.05
+        },
+        {
+          "along": 3.766218007436398,
+          "up": 8.525,
+          "width": 0.7750448634428362,
+          "height": 1.625
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012070059",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:2",
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_2",
+      "wallWidthM": 0.66,
+      "wallHeightM": 16.35,
+      "plane": {
+        "start": {
+          "x": 119316.461864,
+          "y": 485126.971346
+        },
+        "end": {
+          "x": 119316.58013599999,
+          "y": 485127.62065399997
+        },
+        "baseZ": 0.43400000000000105,
+        "topZ": 16.786
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_2.jpg",
+        "sha256": "3917ce4460b28b798b8d0650f63c071753712b753a4d16292cb923ad0bcf80c4",
+        "width": 30,
+        "height": 736
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.344,
+      "obliquity": 17.535,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001069",
+      "panoramaDate": "2022-03-22T08:41:02.927030Z",
+      "openings": [
+        {
+          "along": 0.3009962494997749,
+          "up": 0.7489999999999988,
+          "width": 0.24999688499236394,
+          "height": 1.55
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012070059",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:3",
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_3",
+      "wallWidthM": 0.66,
+      "wallHeightM": 16.18,
+      "plane": {
+        "start": {
+          "x": 119316.580467,
+          "y": 485127.61972899997
+        },
+        "end": {
+          "x": 119316.679533,
+          "y": 485128.272271
+        },
+        "baseZ": 0.4330000000000016,
+        "topZ": 16.615000000000002
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_3.jpg",
+        "sha256": "c0450db28cb71404584a4d40807dd79dcaaae15567253e0ba527135742f05d6b",
+        "width": 30,
+        "height": 728
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.427,
+      "obliquity": 12.446,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001069",
+      "panoramaDate": "2022-03-22T08:41:02.927030Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "museumkwartier",
+      "buildingId": "bag:0363100012166039",
+      "surfaceId": "NL.IMBAG.Pand.0363100012166039-0:lod22:wall:9",
+      "group": "NL_IMBAG_Pand_0363100012166039_0_lod22_wall_9",
+      "wallWidthM": 0.95,
+      "wallHeightM": 12.67,
+      "plane": {
+        "start": {
+          "x": 119883.872815,
+          "y": 485266.5384325
+        },
+        "end": {
+          "x": 119883.041185,
+          "y": 485266.9975675
+        },
+        "baseZ": -0.0519999999999996,
+        "topZ": 12.622
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012166039_0_lod22_wall_9.jpg",
+        "sha256": "fa980ae77a510218b34fa17076e3423b5d8942bc3c88d57fa94deedbfe899201",
+        "width": 43,
+        "height": 570
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.124,
+      "obliquity": 10.068,
+      "panoramaId": "TMX7316010203-002412_pano_0001_000032",
+      "panoramaDate": "2022-01-11T11:14:05.583520Z",
+      "openings": [
+        {
+          "along": 0.04799769713865055,
+          "up": 1.6500000000000004,
+          "width": 0.3999808095510369,
+          "height": 1.35
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012070059",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:4",
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_4",
+      "wallWidthM": 0.37,
+      "wallHeightM": 16.53,
+      "plane": {
+        "start": {
+          "x": 119316.863042,
+          "y": 485130.488074
+        },
+        "end": {
+          "x": 119316.872958,
+          "y": 485130.857926
+        },
+        "baseZ": 0.43299999999999983,
+        "topZ": 16.964
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_4.jpg",
+        "sha256": "b17b0efeae77797a7f41bd60545762a016860b294d75f483cca5ee65253dcd73",
+        "width": 17,
+        "height": 744
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.874,
+      "obliquity": 19.913,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001068",
+      "panoramaDate": "2022-03-22T08:41:02.067040Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012070059",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:8",
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_8",
+      "wallWidthM": 1.32,
+      "wallHeightM": 15.97,
+      "plane": {
+        "start": {
+          "x": 119316.75882,
+          "y": 485128.922782
+        },
+        "end": {
+          "x": 119316.85518,
+          "y": 485130.23921800003
+        },
+        "baseZ": 0.43400000000000016,
+        "topZ": 16.401
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_8.jpg",
+        "sha256": "c1719fcedcd25cef4eb0200a7a8639448b7d606ae7c53c5069d542c6a92f3197",
+        "width": 59,
+        "height": 719
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.516,
+      "obliquity": 0.966,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001069",
+      "panoramaDate": "2022-03-22T08:41:02.927030Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012070059",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:6",
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_6",
+      "wallWidthM": 0.66,
+      "wallHeightM": 16.05,
+      "plane": {
+        "start": {
+          "x": 119316.678872,
+          "y": 485128.270442
+        },
+        "end": {
+          "x": 119316.75912799999,
+          "y": 485128.925558
+        },
+        "baseZ": 0.4339999999999993,
+        "topZ": 16.487000000000002
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_6.jpg",
+        "sha256": "c991211524e16485d7ed0c2de57420b2c62a5a8c30cbc643c3087bea1f9cb858",
+        "width": 30,
+        "height": 722
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.479,
+      "obliquity": 7.298,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001069",
+      "panoramaDate": "2022-03-22T08:41:02.927030Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012070059",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:9",
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_9",
+      "wallWidthM": 1.32,
+      "wallHeightM": 16.31,
+      "plane": {
+        "start": {
+          "x": 119316.873538,
+          "y": 485131.552792
+        },
+        "end": {
+          "x": 119316.808462,
+          "y": 485132.871208
+        },
+        "baseZ": 0.43299999999999983,
+        "topZ": 16.741999999999997
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_9.jpg",
+        "sha256": "f98142c068ceeb854cada2ab064bb63ef0314e00aebd2ca1bd13ee63e7fe4e89",
+        "width": 59,
+        "height": 734
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.069,
+      "obliquity": 7.215,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001068",
+      "panoramaDate": "2022-03-22T08:41:02.067040Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012070059",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:10",
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_10",
+      "wallWidthM": 0.59,
+      "wallHeightM": 16.15,
+      "plane": {
+        "start": {
+          "x": 119316.807789,
+          "y": 485132.87229800003
+        },
+        "end": {
+          "x": 119316.752211,
+          "y": 485133.459702
+        },
+        "baseZ": 0.4330000000000016,
+        "topZ": 16.587000000000003
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_10.jpg",
+        "sha256": "35c2ce83ae129d53af0f2ae43408a6e97e31fa9c35110ee987d47f237902cc16",
+        "width": 27,
+        "height": 727
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.088,
+      "obliquity": 0.523,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001068",
+      "panoramaDate": "2022-03-22T08:41:02.067040Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012070059",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:11",
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_11",
+      "wallWidthM": 0.66,
+      "wallHeightM": 16.95,
+      "plane": {
+        "start": {
+          "x": 119316.754623,
+          "y": 485133.458508
+        },
+        "end": {
+          "x": 119316.67337700001,
+          "y": 485134.11349200003
+        },
+        "baseZ": 0.4339999999999993,
+        "topZ": 17.381
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_11.jpg",
+        "sha256": "0dd93848c2afaf7f625af2c7d70cb4904fa6d2c3d3f545593f6d8b4030b6312a",
+        "width": 30,
+        "height": 763
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.068,
+      "obliquity": 5.953,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001068",
+      "panoramaDate": "2022-03-22T08:41:02.067040Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012143972",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:10",
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_10",
+      "wallWidthM": 1.06,
+      "wallHeightM": 17.91,
+      "plane": {
+        "start": {
+          "x": 119344.27579700001,
+          "y": 485148.465854
+        },
+        "end": {
+          "x": 119344.864203,
+          "y": 485147.58414600004
+        },
+        "baseZ": 0.33999999999999986,
+        "topZ": 18.252
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_10.jpg",
+        "sha256": "12ba6a8c13289fb3d7151636caabfbebbcff63bddc217eced59a4d1913562545",
+        "width": 48,
+        "height": 806
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.144,
+      "obliquity": 6.922,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001176",
+      "panoramaDate": "2022-03-22T08:43:08.046340Z",
+      "openings": [
+        {
+          "along": 0.3990054363040367,
+          "up": 2.8499999999999996,
+          "width": 0.5000068124710972,
+          "height": 0.8
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012143972",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:11",
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_11",
+      "wallWidthM": 1.06,
+      "wallHeightM": 17.91,
+      "plane": {
+        "start": {
+          "x": 119344.865809,
+          "y": 485147.583067
+        },
+        "end": {
+          "x": 119345.496191,
+          "y": 485146.730933
+        },
+        "baseZ": 0.33999999999999986,
+        "topZ": 18.252
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_11.jpg",
+        "sha256": "04302c3bf906cf1792c1542d891491ab9cce870cb5120ea561829db0305ff99c",
+        "width": 48,
+        "height": 806
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.167,
+      "obliquity": 1.878,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001176",
+      "panoramaDate": "2022-03-22T08:43:08.046340Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012070059",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:38",
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_38",
+      "wallWidthM": 1.47,
+      "wallHeightM": 18.9,
+      "plane": {
+        "start": {
+          "x": 119315.709337,
+          "y": 485138.486628
+        },
+        "end": {
+          "x": 119315.188663,
+          "y": 485139.861372
+        },
+        "baseZ": 0.4339999999999993,
+        "topZ": 19.335
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_38.jpg",
+        "sha256": "100ffd43988911d93b95c8d752eece2fdb3670b4f79701265dc869c26a59b8cf",
+        "width": 66,
+        "height": 851
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.533,
+      "obliquity": 10.618,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001066",
+      "panoramaDate": "2022-03-22T08:41:00.352040Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012143972",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:12",
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_12",
+      "wallWidthM": 0.51,
+      "wallHeightM": 17.91,
+      "plane": {
+        "start": {
+          "x": 119345.497441,
+          "y": 485146.72869049996
+        },
+        "end": {
+          "x": 119345.814559,
+          "y": 485146.3293095
+        },
+        "baseZ": 0.3409999999999993,
+        "topZ": 18.252
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_12.jpg",
+        "sha256": "e27af162596ecee9de234e050d74fb587efef6e9917a198d16da76bde9dcd53d",
+        "width": 23,
+        "height": 806
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.131,
+      "obliquity": 8.199,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001176",
+      "panoramaDate": "2022-03-22T08:43:08.046340Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012143972",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:13",
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_13",
+      "wallWidthM": 0.34,
+      "wallHeightM": 17.91,
+      "plane": {
+        "start": {
+          "x": 119345.837964,
+          "y": 485146.30308900005
+        },
+        "end": {
+          "x": 119346.066036,
+          "y": 485146.050911
+        },
+        "baseZ": 0.33999999999999986,
+        "topZ": 18.25
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_13.jpg",
+        "sha256": "be1463074fdd82acd791d5279b3b6cf1dd0b7c9f85b94fd0e98a5ab6431381b5",
+        "width": 15,
+        "height": 806
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.001,
+      "obliquity": 14.357,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001176",
+      "panoramaDate": "2022-03-22T08:43:08.046340Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012143972",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:22",
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_22",
+      "wallWidthM": 1.13,
+      "wallHeightM": 17.91,
+      "plane": {
+        "start": {
+          "x": 119347.391996,
+          "y": 485144.596002
+        },
+        "end": {
+          "x": 119348.230004,
+          "y": 485143.83799800003
+        },
+        "baseZ": 0.3409999999999993,
+        "topZ": 18.246
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_22.jpg",
+        "sha256": "ebf96dd34c5670b2bddd9f84e7f344253765ee25f0832f2c3afb415462a0a54d",
+        "width": 51,
+        "height": 806
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.747,
+      "obliquity": 6.914,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001175",
+      "panoramaDate": "2022-03-22T08:43:07.181090Z",
+      "openings": [
+        {
+          "along": -0.01299963083211627,
+          "up": 1.5,
+          "width": 0.5999829597570701,
+          "height": 0.5
+        },
+        {
+          "along": -0.01299963083211627,
+          "up": 2.9000000000000004,
+          "width": 0.5999829597570701,
+          "height": 0.9
+        },
+        {
+          "along": -0.01299963083211627,
+          "up": 4.5,
+          "width": 0.5999829597570701,
+          "height": 0.75
+        },
+        {
+          "along": -0.01299963083211627,
+          "up": 5.3500000000000005,
+          "width": 0.5999829597570701,
+          "height": 1.7
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012143972",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:23",
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_23",
+      "wallWidthM": 1.1,
+      "wallHeightM": 14.15,
+      "plane": {
+        "start": {
+          "x": 119348.14634,
+          "y": 485143.913215
+        },
+        "end": {
+          "x": 119348.96166,
+          "y": 485143.174785
+        },
+        "baseZ": 0.33999999999999986,
+        "topZ": 14.487
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_23.jpg",
+        "sha256": "921ceda686cc744a0e197b2c802a801b71645ca3f6244408d7d27b25683f9998",
+        "width": 50,
+        "height": 637
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.749,
+      "obliquity": 12.057,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001175",
+      "panoramaDate": "2022-03-22T08:43:07.181090Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012143972",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:20",
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_20",
+      "wallWidthM": 0.56,
+      "wallHeightM": 17.91,
+      "plane": {
+        "start": {
+          "x": 119346.89759600001,
+          "y": 485145.12704
+        },
+        "end": {
+          "x": 119347.272404,
+          "y": 485144.71096
+        },
+        "baseZ": 0.3409999999999993,
+        "topZ": 18.247
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_20.jpg",
+        "sha256": "5e62d885e40420481aaa71995523033af2bd458b2ed3a9021b1f0468d8746165",
+        "width": 25,
+        "height": 806
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.755,
+      "obliquity": 4.304,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001175",
+      "panoramaDate": "2022-03-22T08:43:07.181090Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012164118",
+      "surfaceId": "NL.IMBAG.Pand.0363100012164118-0:lod22:wall:3",
+      "group": "NL_IMBAG_Pand_0363100012164118_0_lod22_wall_3",
+      "wallWidthM": 3.2,
+      "wallHeightM": 14.27,
+      "plane": {
+        "start": {
+          "x": 119311.9016,
+          "y": 485147.64736
+        },
+        "end": {
+          "x": 119309.6824,
+          "y": 485149.95264
+        },
+        "baseZ": 0.2469999999999999,
+        "topZ": 14.517
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012164118_0_lod22_wall_3.jpg",
+        "sha256": "d10f176079749db1a9a12aae5be725a955f31287c70fcac8c973faec5030a6b3",
+        "width": 144,
+        "height": 642
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 5.614,
+      "obliquity": 46.364,
+      "panoramaId": "TMX7316010203-002457_pano_0000_000731",
+      "panoramaDate": "2022-03-21T09:40:19.567510Z",
+      "openings": [
+        {
+          "along": 0.5519774806726514,
+          "up": 0.7999999999999998,
+          "width": 2.3499041298255086,
+          "height": 0.25
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:5",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_5",
+      "wallWidthM": 1.22,
+      "wallHeightM": 18.38,
+      "plane": {
+        "start": {
+          "x": 119303.832181,
+          "y": 485111.400288
+        },
+        "end": {
+          "x": 119304.93981899999,
+          "y": 485111.91171200003
+        },
+        "baseZ": 0.5239999999999991,
+        "topZ": 18.902
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_5.jpg",
+        "sha256": "0cff95c53f433db528992043276b13ca1167523c5248a5cc7a2caa96f9f70a34",
+        "width": 55,
+        "height": 827
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 6.977,
+      "obliquity": 11.385,
+      "panoramaId": "TMX7316010203-001061_pano_0001_000679",
+      "panoramaDate": "2019-01-17T11:53:05.205150Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012164118",
+      "surfaceId": "NL.IMBAG.Pand.0363100012164118-0:lod22:wall:15",
+      "group": "NL_IMBAG_Pand_0363100012164118_0_lod22_wall_15",
+      "wallWidthM": 8.43,
+      "wallHeightM": 14.35,
+      "plane": {
+        "start": {
+          "x": 119315.1879745,
+          "y": 485139.862415
+        },
+        "end": {
+          "x": 119311.86402549999,
+          "y": 485147.60958499997
+        },
+        "baseZ": 0.24599999999999955,
+        "topZ": 14.591999999999999
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012164118_0_lod22_wall_15.jpg",
+        "sha256": "d475d21aeee5f78aeb777f36e7e09948bd78625e5d13a75d89b71040c0d91c75",
+        "width": 379,
+        "height": 646
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.517,
+      "obliquity": 10.894,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001065",
+      "panoramaDate": "2022-03-22T08:40:59.412030Z",
+      "openings": [
+        {
+          "along": 6.398107133613134,
+          "up": 0.7999999999999998,
+          "width": 1.6500276290098732,
+          "height": 0.25
+        },
+        {
+          "along": 4.598076992872484,
+          "up": 2.3,
+          "width": 1.050017582098234,
+          "height": 0.35
+        },
+        {
+          "along": 0.5480091761568303,
+          "up": 4.5,
+          "width": 0.25000418621796383,
+          "height": 1.175
+        },
+        {
+          "along": 3.7480627597486196,
+          "up": 4.5,
+          "width": 0.35000586069941164,
+          "height": 1.175
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:6",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_6",
+      "wallWidthM": 0.69,
+      "wallHeightM": 19.15,
+      "plane": {
+        "start": {
+          "x": 119304.9396745,
+          "y": 485111.91229999997
+        },
+        "end": {
+          "x": 119305.5523255,
+          "y": 485112.2297
+        },
+        "baseZ": 0.5240000000000009,
+        "topZ": 19.678
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_6.jpg",
+        "sha256": "33ce90053d0f0a1ab26db95d8bba9e194d4002bf3f7a96e1f3cedd31c23a0ad2",
+        "width": 31,
+        "height": 862
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.371,
+      "obliquity": 0.427,
+      "panoramaId": "TMX7316010203-002920_pano_0005_000131",
+      "panoramaDate": "2023-01-10T09:02:03.746380Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:9",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_9",
+      "wallWidthM": 1.29,
+      "wallHeightM": 19.01,
+      "plane": {
+        "start": {
+          "x": 119307.28926050001,
+          "y": 485113.27035149996
+        },
+        "end": {
+          "x": 119308.3407395,
+          "y": 485114.0176485
+        },
+        "baseZ": 0.5229999999999997,
+        "topZ": 19.532
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_9.jpg",
+        "sha256": "9d2526d646d50b9c4bbabcd84e0245f7940d887bb33cdebf23b77d1e19f9864c",
+        "width": 58,
+        "height": 855
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.456,
+      "obliquity": 12.652,
+      "panoramaId": "TMX7316010203-001061_pano_0001_000680",
+      "panoramaDate": "2019-01-17T11:53:06.055170Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:11",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_11",
+      "wallWidthM": 1.26,
+      "wallHeightM": 15.78,
+      "plane": {
+        "start": {
+          "x": 119309.417934,
+          "y": 485114.887002
+        },
+        "end": {
+          "x": 119310.348066,
+          "y": 485115.73699799995
+        },
+        "baseZ": 0.524,
+        "topZ": 16.305
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_11.jpg",
+        "sha256": "7b9c6c4576ebefb8dec0aa83fd26a8fee47c9912f196322a5d69b3db7b799e88",
+        "width": 57,
+        "height": 710
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.817,
+      "obliquity": 23.69,
+      "panoramaId": "TMX7316010203-001038_pano_0000_000250",
+      "panoramaDate": "2019-01-04T12:20:49.424950Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:12",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_12",
+      "wallWidthM": 0.63,
+      "wallHeightM": 15.93,
+      "plane": {
+        "start": {
+          "x": 119308.93558399999,
+          "y": 485114.48364399996
+        },
+        "end": {
+          "x": 119309.418416,
+          "y": 485114.888356
+        },
+        "baseZ": 0.5229999999999997,
+        "topZ": 16.448999999999998
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_12.jpg",
+        "sha256": "10c1370a2d24c7f45ec27eda4fcca9256cdb49b9440bc750222c2d093b196e88",
+        "width": 28,
+        "height": 717
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.93,
+      "obliquity": 15.158,
+      "panoramaId": "TMX7316010203-001038_pano_0000_000250",
+      "panoramaDate": "2019-01-04T12:20:49.424950Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:14",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_14",
+      "wallWidthM": 1.13,
+      "wallHeightM": 15.6,
+      "plane": {
+        "start": {
+          "x": 119310.347517,
+          "y": 485115.7365165
+        },
+        "end": {
+          "x": 119311.136483,
+          "y": 485116.5454835
+        },
+        "baseZ": 0.524,
+        "topZ": 16.124
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_14.jpg",
+        "sha256": "11a30f428dac8a1db62d38303e8212e068a9f2ee08d2d8ed6307b8e04e1204ac",
+        "width": 51,
+        "height": 702
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.758,
+      "obliquity": 13.736,
+      "panoramaId": "TMX7316010203-001061_pano_0001_000681",
+      "panoramaDate": "2019-01-17T11:53:06.940090Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:15",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_15",
+      "wallWidthM": 0.63,
+      "wallHeightM": 15.59,
+      "plane": {
+        "start": {
+          "x": 119311.137076,
+          "y": 485116.5460495
+        },
+        "end": {
+          "x": 119311.558924,
+          "y": 485117.01395050006
+        },
+        "baseZ": 0.5229999999999997,
+        "topZ": 16.113
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_15.jpg",
+        "sha256": "2e0a2c36e4de72b8dc1f7c7198836d57cf6a1e49461c53e6ca871264109209da",
+        "width": 28,
+        "height": 702
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.645,
+      "obliquity": 21.257,
+      "panoramaId": "TMX7316010203-001061_pano_0001_000681",
+      "panoramaDate": "2019-01-17T11:53:06.940090Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:16",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_16",
+      "wallWidthM": 0.76,
+      "wallHeightM": 15.67,
+      "plane": {
+        "start": {
+          "x": 119311.5569,
+          "y": 485117.011604
+        },
+        "end": {
+          "x": 119312.0471,
+          "y": 485117.59239600005
+        },
+        "baseZ": 0.524,
+        "topZ": 16.195
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_16.jpg",
+        "sha256": "e2cc438c62969c24fab8b99c02f3f60f6fd7813f909bf6c2538ec6449219693e",
+        "width": 34,
+        "height": 705
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.521,
+      "obliquity": 26.965,
+      "panoramaId": "TMX7316010203-001061_pano_0001_000681",
+      "panoramaDate": "2019-01-17T11:53:06.940090Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:17",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_17",
+      "wallWidthM": 1.26,
+      "wallHeightM": 15.92,
+      "plane": {
+        "start": {
+          "x": 119312.044645,
+          "y": 485117.59003200004
+        },
+        "end": {
+          "x": 119312.811355,
+          "y": 485118.589968
+        },
+        "baseZ": 0.524,
+        "topZ": 16.448999999999998
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_17.jpg",
+        "sha256": "7a622086035881851a3636def92260c86cd159276e768cbb7df4d3bef958e919",
+        "width": 57,
+        "height": 717
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 9.043,
+      "obliquity": 24.736,
+      "panoramaId": "TMX7316010203-001038_pano_0000_000249",
+      "panoramaDate": "2019-01-04T12:20:48.244980Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:18",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_18",
+      "wallWidthM": 0.75,
+      "wallHeightM": 16.15,
+      "plane": {
+        "start": {
+          "x": 119312.8118375,
+          "y": 485118.5911625
+        },
+        "end": {
+          "x": 119313.24016249999,
+          "y": 485119.2068375
+        },
+        "baseZ": 0.5229999999999997,
+        "topZ": 16.669
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_18.jpg",
+        "sha256": "23cdd777f2368f957ffc9ec22c4f9d5710c386de342dc9336e3b144815348ac7",
+        "width": 34,
+        "height": 727
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.812,
+      "obliquity": 32.374,
+      "panoramaId": "TMX7316010203-001038_pano_0000_000249",
+      "panoramaDate": "2019-01-04T12:20:48.244980Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:19",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_19",
+      "wallWidthM": 0.63,
+      "wallHeightM": 16.37,
+      "plane": {
+        "start": {
+          "x": 119313.241388,
+          "y": 485119.206841
+        },
+        "end": {
+          "x": 119313.584612,
+          "y": 485119.73515900003
+        },
+        "baseZ": 0.5239999999999991,
+        "topZ": 16.892
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_19.jpg",
+        "sha256": "55f43f03f16c390d5e5fd37c250f959f156e10f90c6d4337e747f1a49b2c70a9",
+        "width": 28,
+        "height": 737
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.617,
+      "obliquity": 37.253,
+      "panoramaId": "TMX7316010203-001038_pano_0000_000249",
+      "panoramaDate": "2019-01-04T12:20:48.244980Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:22",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_22",
+      "wallWidthM": 0.91,
+      "wallHeightM": 16.77,
+      "plane": {
+        "start": {
+          "x": 119313.5839065,
+          "y": 485119.7344715
+        },
+        "end": {
+          "x": 119314.0440935,
+          "y": 485120.5195285
+        },
+        "baseZ": 0.5229999999999997,
+        "topZ": 17.289
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_22.jpg",
+        "sha256": "8b1d47eb392c9655b3c8ece13a45d968f0a5768da318768dd12fe95daebba5a1",
+        "width": 41,
+        "height": 754
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 8.293,
+      "obliquity": 42.919,
+      "panoramaId": "TMX7316010203-001038_pano_0000_000249",
+      "panoramaDate": "2019-01-04T12:20:48.244980Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:24",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_24",
+      "wallWidthM": 0.76,
+      "wallHeightM": 19.09,
+      "plane": {
+        "start": {
+          "x": 119314.21907199999,
+          "y": 485120.81769999996
+        },
+        "end": {
+          "x": 119314.572928,
+          "y": 485121.4903
+        },
+        "baseZ": 0.5229999999999997,
+        "topZ": 19.613999999999997
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_24.jpg",
+        "sha256": "b7f1de6756df940423dfca017e8deba92ef55bd4a2e3d18b02748e6b8bcb0ab0",
+        "width": 34,
+        "height": 859
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 11.077,
+      "obliquity": 13.195,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001071",
+      "panoramaDate": "2022-03-22T08:41:04.552000Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:28",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_28",
+      "wallWidthM": 0.63,
+      "wallHeightM": 19.67,
+      "plane": {
+        "start": {
+          "x": 119315.1543315,
+          "y": 485122.743625
+        },
+        "end": {
+          "x": 119315.39366850001,
+          "y": 485123.32637499995
+        },
+        "baseZ": 0.5239999999999991,
+        "topZ": 20.197
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_28.jpg",
+        "sha256": "4401ae16b8f2fcfd1cfba9388046d35a6fd868ca4723657de980dc671b78e443",
+        "width": 28,
+        "height": 885
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 11.175,
+      "obliquity": 2.768,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001071",
+      "panoramaDate": "2022-03-22T08:41:04.552000Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:29",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_29",
+      "wallWidthM": 1.13,
+      "wallHeightM": 18.9,
+      "plane": {
+        "start": {
+          "x": 119315.3946175,
+          "y": 485123.325787
+        },
+        "end": {
+          "x": 119315.7793825,
+          "y": 485124.388213
+        },
+        "baseZ": 0.5239999999999991,
+        "topZ": 19.423000000000002
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_29.jpg",
+        "sha256": "e8264ceae77d8b9d11e5552bc9e0ba32323d95b0ac81c6059f07375aa2486469",
+        "width": 51,
+        "height": 850
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.612,
+      "obliquity": 17.444,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001070",
+      "panoramaDate": "2022-03-22T08:41:03.757000Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:34",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_34",
+      "wallWidthM": 0.38,
+      "wallHeightM": 17.51,
+      "plane": {
+        "start": {
+          "x": 119315.779494,
+          "y": 485124.390588
+        },
+        "end": {
+          "x": 119315.89250599999,
+          "y": 485124.75341199996
+        },
+        "baseZ": 0.5239999999999991,
+        "topZ": 18.033
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_34.jpg",
+        "sha256": "1d1e198daa105d237706c5dbc04f6a8efc8a0af08f5bd95e25567e3d4a5818bc",
+        "width": 17,
+        "height": 788
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.728,
+      "obliquity": 11.012,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001070",
+      "panoramaDate": "2022-03-22T08:41:03.757000Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:31",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_31",
+      "wallWidthM": 0.37,
+      "wallHeightM": 18.22,
+      "plane": {
+        "start": {
+          "x": 119315.881796,
+          "y": 485124.720436
+        },
+        "end": {
+          "x": 119315.99220400001,
+          "y": 485125.073564
+        },
+        "baseZ": 0.5229999999999997,
+        "topZ": 18.741999999999997
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_31.jpg",
+        "sha256": "49631c86b1b5ebb6b6c70e74d972970cb4e4ebb5e6131f35f94eb2407e139a89",
+        "width": 17,
+        "height": 820
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.726,
+      "obliquity": 9.339,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001070",
+      "panoramaDate": "2022-03-22T08:41:03.757000Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:36",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_36",
+      "wallWidthM": 0.63,
+      "wallHeightM": 18.22,
+      "plane": {
+        "start": {
+          "x": 119316.003517,
+          "y": 485125.109529
+        },
+        "end": {
+          "x": 119316.172483,
+          "y": 485125.716471
+        },
+        "baseZ": 0.5229999999999997,
+        "topZ": 18.743
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_36.jpg",
+        "sha256": "1c998f4911026b7ba798d62e58f0f3f849370131fd0aa77a7eb399a631a96b7b",
+        "width": 28,
+        "height": 820
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.77,
+      "obliquity": 4.673,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001070",
+      "panoramaDate": "2022-03-22T08:41:03.757000Z",
+      "openings": [
+        {
+          "along": 0.050001769935287634,
+          "up": 5.25,
+          "width": 0.6000212396720538,
+          "height": 1.65
+        },
+        {
+          "along": 0.050001769935287634,
+          "up": 8.75,
+          "width": 0.6000212396720538,
+          "height": 1.65
+        },
+        {
+          "along": 0.050001769935287634,
+          "up": 12.149999999999999,
+          "width": 0.6000212396720538,
+          "height": 1.5
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:39",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_39",
+      "wallWidthM": 1.29,
+      "wallHeightM": 18.22,
+      "plane": {
+        "start": {
+          "x": 119316.173262,
+          "y": 485125.7154475
+        },
+        "end": {
+          "x": 119316.462738,
+          "y": 485126.97255249997
+        },
+        "baseZ": 0.5240000000000009,
+        "topZ": 18.744
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_39.jpg",
+        "sha256": "26df78fe1f25a06f9b091652a5b9d1afe393fb85bdc9863ff022b24542f8883e",
+        "width": 58,
+        "height": 820
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.783,
+      "obliquity": 2.977,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001070",
+      "panoramaDate": "2022-03-22T08:41:03.757000Z",
+      "openings": [
+        {
+          "along": 0.0010000027768838167,
+          "up": 5.85,
+          "width": 0.3500009817529396,
+          "height": 1
+        },
+        {
+          "along": 0.0010000027768838167,
+          "up": 8.75,
+          "width": 0.3500009817529396,
+          "height": 1.6
+        },
+        {
+          "along": 0.0010000027768838167,
+          "up": 12.1,
+          "width": 0.3500009817529396,
+          "height": 1.55
+        }
+      ],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:40",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_40",
+      "wallWidthM": 0.35,
+      "wallHeightM": 18.15,
+      "plane": {
+        "start": {
+          "x": 119314.0252925,
+          "y": 485120.48815000005
+        },
+        "end": {
+          "x": 119314.20270750001,
+          "y": 485120.78985
+        },
+        "baseZ": 0.5230000000000015,
+        "topZ": 18.674
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_40.jpg",
+        "sha256": "aec61d0c42aadf16be576f33aaa147b96c90b83ceac20603c155eb6cb6d4fc57",
+        "width": 16,
+        "height": 817
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 10.924,
+      "obliquity": 18.735,
+      "panoramaId": "TMX7316010203-002463_pano_0003_001071",
+      "panoramaDate": "2022-03-22T08:41:04.552000Z",
+      "openings": [],
+      "spotCheck": "pending"
+    },
+    {
+      "tile": "willemspark",
+      "buildingId": "bag:0363100012237178",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:54",
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_54",
+      "wallWidthM": 0.59,
+      "wallHeightM": 17.58,
+      "plane": {
+        "start": {
+          "x": 119308.3897465,
+          "y": 485114.056103
+        },
+        "end": {
+          "x": 119308.8542535,
+          "y": 485114.419897
+        },
+        "baseZ": 0.5239999999999991,
+        "topZ": 18.102
+      },
+      "crop": {
+        "file": "crops/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_54.jpg",
+        "sha256": "826f50a63dd8681ae24ac603688ffa85658b6581b88818debff359d345657d91",
+        "width": 27,
+        "height": 791
+      },
+      "pixelsPerMetre": 45,
+      "standoff": 7.341,
+      "obliquity": 22.36,
+      "panoramaId": "TMX7316010203-001061_pano_0001_000680",
+      "panoramaDate": "2019-01-17T11:53:06.055170Z",
+      "openings": [],
+      "spotCheck": "pending"
+    }
+  ],
+  "dropped": [
+    {
+      "group": "NL_IMBAG_Pand_0363100012153094_0_lod22_wall_14",
+      "reason": "2 opening(s) fell outside the crop frame"
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012155815_0_lod22_wall_1",
+      "reason": "1 opening(s) fell outside the crop frame"
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012166039_0_lod22_wall_8",
+      "reason": "3 opening(s) fell outside the crop frame"
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_20",
+      "reason": "1 opening(s) fell outside the crop frame"
+    }
+  ]
+}
