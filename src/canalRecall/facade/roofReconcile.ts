@@ -102,6 +102,15 @@ export interface RoofReconcileInput {
   toleranceM?: number;
   /** Gable screen thickness, metres. Default 0.30 (plan §7). */
   screenThicknessM?: number;
+  /**
+   * Depth behind the facade plane `S(along)` is read from, for the relation
+   * classes and the gable screen's bottom. Default `FACADE_TOP_DEPTH_M`
+   * (0.15 m — the facade's own top edge). Widening this conflates "3DBAG has
+   * no gable" with "this roof happens to be pitched" — see `computeSection`.
+   */
+  sectionDepthM?: number;
+  /** Depth for the diagnostic-only slab section returned as `sectionSlab`. Default `SLAB_DEPTH_M` (1 m, plan §7's original definition). */
+  diagnosticSectionDepthM?: number;
   /** Optional G2 fit. When absent, `rises` spans use the raw profile as the screen top. */
   gable?: FittedGable | null;
 }
@@ -140,11 +149,15 @@ export interface Provenance {
   buildingId: string;
   toleranceM: number;
   screenThicknessM: number;
+  sectionDepthM: number;
   gable: { type: GableType; method: GableFitMethod } | null;
 }
 
 export interface RoofReconcileResult {
+  /** S(along) at `sectionDepthM` (default: facade-top, 0.15 m) — the basis for relationSpans and the screen bottom. */
   section: ProfileSample[];
+  /** S(along) at `diagnosticSectionDepthM` (default: the 1 m slab) — diagnostic only, not used for classification. */
+  sectionSlab: ProfileSample[];
   relationSpans: RelationSpan[];
   patch: Surface[] | null;
   conflicts: Conflict[];
@@ -181,7 +194,16 @@ export function deriveInwardNormal(surfaces: readonly BuildingPartSurface[], pla
 
 // --- S(along): the highest 3DBAG surface point within 1 m behind the plane ---
 
-const BEHIND_DEPTH_M = 1;
+/** Diagnostic-only "slab" depth (plan §7's original 1 m) — a pitched roof lifts this by its own rise. */
+export const SLAB_DEPTH_M = 1;
+/**
+ * Default depth for the relation classes: the 3DBAG facade's own top edge
+ * (wall top, plus whatever roof sliver sits immediately behind it), not the
+ * full roof slab. A wider slab conflates "3DBAG has no gable" with "this
+ * roof happens to be pitched," which isn't what `rises`/`agree`/`below`
+ * should be asking.
+ */
+export const FACADE_TOP_DEPTH_M = 0.15;
 const DEPTH_EPS = 0.02;
 
 /** Fan-triangulate a (near-)convex polygon from its first vertex. Adequate for LoD2.2 wall/roof polygons. */
@@ -201,11 +223,18 @@ const toPlaneFrame = (p: Point3, start: Point2, tangent: Point2, inward: Point2)
 
 /**
  * `S(along)`: highest point of any given surface within `[0, width]` along
- * and `[0, 1]` m depth behind the plane, binned to the same 0.10 m columns as
- * the profile. Triangles are sampled at a barycentric grid fine enough to not
- * skip a column — flat CityJSON polygons make this exact up to sampling
- * resolution, and the resolution is bounded so a handful of building-sized
- * polygons stays fast.
+ * and `[0, depthM]` m depth behind the plane, binned to the same 0.10 m
+ * columns as the profile. Triangles are sampled at a barycentric grid fine
+ * enough to not skip a column — flat CityJSON polygons make this exact up to
+ * sampling resolution, and the resolution is bounded so a handful of
+ * building-sized polygons stays fast.
+ *
+ * `depthM` matters: on a pitched roof that starts right at the eave, a full
+ * 1 m slab picks up the roof surface climbing away from the facade, lifting
+ * `S` by up to ~1 m even where 3DBAG has no gable at all. `FACADE_TOP_DEPTH_M`
+ * (0.15 m) instead reads only the 3DBAG facade's own top edge — the wall's
+ * top plus whatever roof sliver sits immediately behind it — which is what
+ * "does 3DBAG already show this gable" should be asking.
  */
 export function computeSection(
   surfaces: readonly BuildingPartSurface[],
@@ -214,6 +243,7 @@ export function computeSection(
   inward: Point2,
   alongs: readonly number[],
   sampleM: number,
+  depthM: number = FACADE_TOP_DEPTH_M,
 ): (number | null)[] {
   const n = alongs.length;
   const maxUp: (number | null)[] = new Array(n).fill(null);
@@ -231,7 +261,7 @@ export function computeSection(
       const trDepthMin = Math.min(...proj.map((p) => p.depth));
       const trDepthMax = Math.max(...proj.map((p) => p.depth));
       if (trAlongMax < alongMin || trAlongMin > alongMax) continue;
-      if (trDepthMax < -DEPTH_EPS || trDepthMin > BEHIND_DEPTH_M + DEPTH_EPS) continue;
+      if (trDepthMax < -DEPTH_EPS || trDepthMin > depthM + DEPTH_EPS) continue;
 
       // Resolution is driven by the triangle's own extent in (along, depth) —
       // the axes columns are actually binned on — not its raw 3D edge length:
@@ -247,7 +277,7 @@ export function computeSection(
           const w = 1 - u - v;
           const along = u * proj[0].along + v * proj[1].along + w * proj[2].along;
           const depth = u * proj[0].depth + v * proj[1].depth + w * proj[2].depth;
-          if (depth < -DEPTH_EPS || depth > BEHIND_DEPTH_M + DEPTH_EPS) continue;
+          if (depth < -DEPTH_EPS || depth > depthM + DEPTH_EPS) continue;
           if (along < alongMin || along > alongMax) continue;
           const up = u * proj[0].up + v * proj[1].up + w * proj[2].up;
           const col = Math.round((along - alongs[0]) / sampleM);
@@ -510,6 +540,8 @@ export function reconcile(input: RoofReconcileInput): RoofReconcileResult {
   const sampleM = input.sampleM ?? 0.1;
   const toleranceM = input.toleranceM ?? 0.3;
   const thicknessM = input.screenThicknessM ?? 0.3;
+  const sectionDepthM = input.sectionDepthM ?? FACADE_TOP_DEPTH_M;
+  const diagnosticSectionDepthM = input.diagnosticSectionDepthM ?? SLAB_DEPTH_M;
   const plane = input.plane;
 
   const tangent = normalize2(sub2(plane.end, plane.start));
@@ -517,7 +549,11 @@ export function reconcile(input: RoofReconcileInput): RoofReconcileResult {
 
   const alongs = input.profile.map((s) => s.along);
   const profileUp = input.profile.map((s) => s.up);
-  const section = computeSection(input.surfaces, plane, tangent, inward, alongs, sampleM);
+  const section = computeSection(input.surfaces, plane, tangent, inward, alongs, sampleM, sectionDepthM);
+  const sectionSlab =
+    diagnosticSectionDepthM === sectionDepthM
+      ? section
+      : computeSection(input.surfaces, plane, tangent, inward, alongs, sampleM, diagnosticSectionDepthM);
 
   const relations = classifyRelations(profileUp, section, toleranceM);
   const relationSpans = mergeSpans(alongs, relations);
@@ -577,6 +613,7 @@ export function reconcile(input: RoofReconcileInput): RoofReconcileResult {
 
   return {
     section: alongs.map((along, i) => ({ along, up: section[i] })),
+    sectionSlab: alongs.map((along, i) => ({ along, up: sectionSlab[i] })),
     relationSpans,
     patch: patchSurfaces.length ? patchSurfaces : null,
     conflicts,
@@ -584,6 +621,7 @@ export function reconcile(input: RoofReconcileInput): RoofReconcileResult {
       buildingId: input.buildingId,
       toleranceM,
       screenThicknessM: thicknessM,
+      sectionDepthM,
       gable: input.gable ? { type: input.gable.type, method: input.gable.method } : null,
     },
   };
