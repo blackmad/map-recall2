@@ -1,0 +1,3444 @@
+{
+  "schemaVersion": 1,
+  "kind": "signage/sample",
+  "generatedAt": "2026-09-22T20:34:27.964Z",
+  "reader": "apple-vision (bytefer/macos-vision-ocr) on the ground tier",
+  "strata": {
+    "A-text": "36 frontages where Vision read a sign",
+    "B-retail-no-text": "25 retail-street frontages where Vision read nothing (misses)",
+    "C-residential-no-text": "15 residential-street frontages where Vision read nothing (invented signs)"
+  },
+  "note": "B and C are separated by street character, not a shopfront classifier, which does not exist yet.",
+  "counts": {
+    "pool": 2746,
+    "sample": 76
+  },
+  "entries": [
+    {
+      "id": "0363100012117496:e:0rc4xt5",
+      "stratum": "A-text",
+      "area": "apollobuurt-v1",
+      "group": "apollobuurt",
+      "character": "mixed",
+      "buildingId": "0363100012117496",
+      "street": "Corellistraat",
+      "address": "Corellistraat 25 / Corellistraat 27",
+      "crop": "0363100012117496_e_0rc4xt5-ground.jpg",
+      "widthPx": 1040,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.04594532301552,
+      "nativeCeilingPxPerM": 177.4,
+      "standoffM": 7.149209081563565,
+      "obliquityDeg": 5.090930265257575,
+      "panoramaId": "recording_2025-07-15_11-16-59_01611",
+      "captureDate": "2025-07-15T12:04:23Z",
+      "visionSigns": [
+        {
+          "text": "P / vergunning / bouderi / autodelen / Greenstetil",
+          "confidence": 0.56,
+          "boxWallM": {
+            "along": 0.19991649474611606,
+            "up": 2.758518517157407,
+            "width": 0.4907041352626291,
+            "height": 1.2885185169557616
+          }
+        },
+        {
+          "text": "¡Ear'",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 4.18007223149481,
+            "up": 2.9762962982623455,
+            "width": 0.5088783583586336,
+            "height": 0.2359259259259252
+          }
+        },
+        {
+          "text": "¡Ear'",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 5.2887000787868,
+            "up": 2.976296295489712,
+            "width": 0.4907041312743958,
+            "height": 0.21777777777777763
+          }
+        },
+        {
+          "text": "¡Ear'",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 1.9628165262659267,
+            "up": 2.9581481464629626,
+            "width": 0.5270525854428694,
+            "height": 0.2359259259259261
+          }
+        },
+        {
+          "text": "lEar'",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.071444381098057,
+            "up": 2.9762962987916666,
+            "width": 0.4907041312743954,
+            "height": 0.1996296296296296
+          }
+        },
+        {
+          "text": "TEar",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 6.306456801138077,
+            "up": 2.994444446259259,
+            "width": 0.47252990419015806,
+            "height": 0.18148148148148158
+          }
+        },
+        {
+          "text": "iEar'",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 7.7785691929621,
+            "up": 2.9762962942999995,
+            "width": 0.45435567710592206,
+            "height": 0.1996296296296296
+          }
+        },
+        {
+          "text": "FOCAL",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 4.105775302668573,
+            "up": 1.0828207410849697,
+            "width": 0.6029495204808946,
+            "height": 0.1754696270271583
+          }
+        },
+        {
+          "text": "Sonus faber",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 2.9987474592061654,
+            "up": 1.1433333351481485,
+            "width": 0.617923720864054,
+            "height": 0.10888888888888903
+          }
+        },
+        {
+          "text": "INKEF",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 5.325048538710446,
+            "up": 1.107037037944444,
+            "width": 0.36348454168473765,
+            "height": 0.14518518518518486
+          }
+        },
+        {
+          "text": "DYNAUDIO",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 6.2337598823963845,
+            "up": 1.1614814808009257,
+            "width": 0.5997494937798171,
+            "height": 0.09074074074074057
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012145146:e:11zdx7s",
+      "stratum": "A-text",
+      "area": "apollobuurt-v1",
+      "group": "apollobuurt",
+      "character": "mixed",
+      "buildingId": "0363100012145146",
+      "street": "Apollolaan",
+      "address": "Apollolaan 87",
+      "crop": "0363100012145146_e_11zdx7s-ground.jpg",
+      "widthPx": 1046,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.98894238018148,
+      "nativeCeilingPxPerM": 100.1,
+      "standoffM": 12.562927766344473,
+      "obliquityDeg": 8.907652491887616,
+      "panoramaId": "recording_2025-07-15_11-16-59_01245",
+      "captureDate": "2025-07-15T11:55:28Z",
+      "visionSigns": [
+        {
+          "text": "BEET.",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 9.291843139716839,
+            "up": 4.391851853666666,
+            "width": 0.20002010678451576,
+            "height": 0.10888888888888903
+          }
+        },
+        {
+          "text": "SPAE, / RIB! / CLAIM NIP / EERLIJK EMANL / GREM / SPAST / CLAIMIOF / BERLUJKEN.N",
+          "confidence": 0.7,
+          "boxWallM": {
+            "along": 8.546313661702916,
+            "up": 0.18148148306944428,
+            "width": 0.8546313515844108,
+            "height": 3.0078195123455918
+          }
+        },
+        {
+          "text": "GRAMS / \"SPARE. / RIBS 4 / CLAIM NU OPI / EERLIJK ETEN.NL / GRAUS / SPARE / RIBS / CLAIM / EERLIJK!",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.382560296227663,
+            "up": 0.14518518609259232,
+            "width": 1.091018764279184,
+            "height": 2.9944444432608703
+          }
+        },
+        {
+          "text": "DE KRANT / DIE GEEN DAG / EEN BLAD / VOOR DE / MOND NEEMT",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0.23638738947166074,
+            "up": 2.3774074066296293,
+            "width": 0.9455495985400798,
+            "height": 0.7622222213666667
+          }
+        },
+        {
+          "text": "GRATIS / SPARE, / RIBS / CLAIM HU OP / EERLIJK ETEN.NL / GRATIS / SPARE / RIBS / LAIM NU OP / LIJKETEN.NL",
+          "confidence": 0.95,
+          "boxWallM": {
+            "along": 6.1997407870270065,
+            "up": 0.10888888979629706,
+            "width": 1.110084944099123,
+            "height": 3.0148532767503164
+          }
+        },
+        {
+          "text": "WONDR",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 5.0914208946962685,
+            "up": 1.6877777770518516,
+            "width": 0.5273257360682733,
+            "height": 0.1451851851851853
+          }
+        },
+        {
+          "text": "TONDE",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 2.7093632678996973,
+            "up": 1.6151851862740738,
+            "width": 0.5091420899969523,
+            "height": 0.10888888888888859
+          }
+        },
+        {
+          "text": "MONDR",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.873116606599533,
+            "up": 1.5788888879814815,
+            "width": 0.5273257360682724,
+            "height": 0.14518518518518553
+          }
+        },
+        {
+          "text": "LONDO",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 1.5274262643084686,
+            "up": 1.5970370365833333,
+            "width": 0.45459115178299325,
+            "height": 0.10888888888888903
+          }
+        },
+        {
+          "text": "DE KRANT / DIE JE / METEEN PAKT / JF OCHTEND",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0.2727546812506274,
+            "up": 0.7787575076463672,
+            "width": 1.0731352274302128,
+            "height": 0.6212362613895502
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012067032:e:05obd85",
+      "stratum": "A-text",
+      "area": "apollobuurt-v1",
+      "group": "apollobuurt",
+      "character": "mixed",
+      "buildingId": "0363100012067032",
+      "street": "Beethovenstraat",
+      "address": "Beethovenstraat 64 / Beethovenstraat 62",
+      "crop": "0363100012067032_e_05obd85-ground.jpg",
+      "widthPx": 1364,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.02791955559051,
+      "nativeCeilingPxPerM": 96.2,
+      "standoffM": 13.23998329221572,
+      "obliquityDeg": 0.48418542245882973,
+      "panoramaId": "recording_2025-07-15_11-16-59_01297",
+      "captureDate": "2025-07-15T11:56:17Z",
+      "visionSigns": [
+        {
+          "text": "VILLAÑOVA",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.1798443641302905,
+            "up": 3.76526316339338,
+            "width": 3.047559671626888,
+            "height": 0.5673684028342918
+          }
+        },
+        {
+          "text": "IVESSEM",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 4.270781263240439,
+            "up": 3.009070487792936,
+            "width": 0.583394143224095,
+            "height": 0.15222939279344372
+          }
+        },
+        {
+          "text": "E BAKKERU VESSEM",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 1.635401579529156,
+            "up": 2.936675094846858,
+            "width": 1.3098523664962283,
+            "height": 0.22442759248945476
+          }
+        },
+        {
+          "text": "BAKKER! VESSEM",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 5.598578991781314,
+            "up": 3.0125925916851846,
+            "width": 1.163341091215755,
+            "height": 0.14518518518518508
+          }
+        },
+        {
+          "text": "P",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.5627320893236383,
+            "up": 2.5951851843786007,
+            "width": 0.4544301137561546,
+            "height": 0.5081481481481482
+          }
+        },
+        {
+          "text": "ALE / O SIE OB",
+          "confidence": 0.65,
+          "boxWallM": {
+            "along": 9.50667798263517,
+            "up": 2.359259258533333,
+            "width": 0.7270881820098456,
+            "height": 0.5081481512074073
+          }
+        },
+        {
+          "text": "SATE",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 7.161818599808202,
+            "up": 2.577037038074074,
+            "width": 0.9815690457132931,
+            "height": 0.29037037037037017
+          }
+        },
+        {
+          "text": "62",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 10.361006591095512,
+            "up": 2.214074073166667,
+            "width": 0.2544808637034457,
+            "height": 0.1633333333333331
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012112655:e:0cdl10b",
+      "stratum": "A-text",
+      "area": "apollobuurt-v1",
+      "group": "apollobuurt",
+      "character": "mixed",
+      "buildingId": "0363100012112655",
+      "street": "Beethovenstraat",
+      "address": "Beethovenstraat 90 / Beethovenstraat 92 / Beethovenstraat 94 / Beethovenstraat 86 / Beethovenstraat 88",
+      "crop": "0363100012112655_e_0cdl10b-ground.jpg",
+      "widthPx": 2742,
+      "heightPx": 511,
+      "pixelsPerMetre": 104.19574633044796,
+      "nativeCeilingPxPerM": 169.6,
+      "standoffM": 7.501703361450944,
+      "obliquityDeg": 2.5601462764037644,
+      "panoramaId": "recording_2025-07-15_11-16-59_01317",
+      "captureDate": "2025-07-15T11:56:36Z",
+      "visionSigns": [
+        {
+          "text": "the bowl",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 8.222584464459,
+            "up": 4.368619530440097,
+            "width": 2.585736063736787,
+            "height": 0.5115109406411644
+          }
+        },
+        {
+          "text": "THE - / PHONE / -LAB / Zuidas / Amstelveen / volg",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 5.470887725832665,
+            "up": 2.4704166653776474,
+            "width": 1.8263359314287815,
+            "height": 2.391690008635181
+          }
+        },
+        {
+          "text": "SHET ZWARTE FIETSENPLAN",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 20.34055873037848,
+            "up": 4.410000010756258,
+            "width": 4.808884481983565,
+            "height": 0.32730467654764617
+          }
+        },
+        {
+          "text": "HARTMAN CIGARS",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 15.961404249685867,
+            "up": 4.507617186164844,
+            "width": 2.3532838175432893,
+            "height": 0.21054687500000036
+          }
+        },
+        {
+          "text": "THE - / PHONE / - LAB / inkoop, verkoop en repraties van telefoons, tablets e",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 1.268727143239204,
+            "up": 3.450416672555212,
+            "width": 4.051740869339041,
+            "height": 1.2668932193694342
+          }
+        },
+        {
+          "text": "90",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 13.955996981646031,
+            "up": 2.8379166673832676,
+            "width": 0.184170046171932,
+            "height": 0.14291666727513075
+          }
+        },
+        {
+          "text": "R",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 17.741714639471653,
+            "up": 2.817500004671617,
+            "width": 0.1432433641599964,
+            "height": 0.12249999269843093
+          }
+        },
+        {
+          "text": "the bowl",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.407728627293725,
+            "up": 1.7762499987145812,
+            "width": 1.166410268014996,
+            "height": 0.2245833382010458
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012145146:e:008oalf",
+      "stratum": "A-text",
+      "area": "apollobuurt-v1",
+      "group": "apollobuurt",
+      "character": "mixed",
+      "buildingId": "0363100012145146",
+      "street": "Apollolaan",
+      "address": "Apollolaan 87",
+      "crop": "0363100012145146_e_008oalf-ground.jpg",
+      "widthPx": 1443,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.99001231558043,
+      "nativeCeilingPxPerM": 112.6,
+      "standoffM": 11.15079179469783,
+      "obliquityDeg": 9.6199965301148,
+      "panoramaId": "recording_2025-07-15_08-32-06_01354",
+      "captureDate": "2025-07-15T08:48:25Z",
+      "visionSigns": [
+        {
+          "text": "DOCKVRD / ARTEAT",
+          "confidence": 0.4,
+          "boxWallM": {
+            "along": 4.900487947262526,
+            "up": 2.8678294597353386,
+            "width": 0.7250327054649208,
+            "height": 0.43781240001200716
+          }
+        },
+        {
+          "text": "BRTBAT",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 6.121102818898166,
+            "up": 2.8678294597353386,
+            "width": 0.30510168765249013,
+            "height": 0.09496123366885678
+          }
+        },
+        {
+          "text": "S",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0.09534428320962372,
+            "up": 2.5829457403018328,
+            "width": 0.13348199051410198,
+            "height": 0.13294573059788473
+          }
+        },
+        {
+          "text": "VERBODEN TOEGANG / VOOR ONBEVOEGDEN / * VAN DE KLOK",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.1889587948811,
+            "up": 1.4244186084796995,
+            "width": 1.6971281700590408,
+            "height": 0.934840652502819
+          }
+        },
+        {
+          "text": "gen / or Veiligheid",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0,
+            "up": 1.330179775587826,
+            "width": 1.547990207025201,
+            "height": 0.5310605253659804
+          }
+        },
+        {
+          "text": "BEZOEKERS MELDEN BU / REALISATIEMANAGER",
+          "confidence": 0.75,
+          "boxWallM": {
+            "along": 7.436853905506421,
+            "up": 0.6267441900793307,
+            "width": 1.201337949285115,
+            "height": 0.18992247854319377
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012074701:e:0r7yg48",
+      "stratum": "A-text",
+      "area": "apollobuurt-v1",
+      "group": "apollobuurt",
+      "character": "mixed",
+      "buildingId": "0363100012074701",
+      "street": "Brahmsstraat",
+      "address": "Brahmsstraat 19 / Brahmsstraat 17 / Beethovenstraat 41 / Beethovenstraat 49 / Beethovenstraat 51",
+      "crop": "0363100012074701_e_0r7yg48-ground.jpg",
+      "widthPx": 2230,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.98388409441048,
+      "nativeCeilingPxPerM": 110.7,
+      "standoffM": 11.412608985073016,
+      "obliquityDeg": 7.14377801764712,
+      "panoramaId": "recording_2025-07-15_11-16-59_01132",
+      "captureDate": "2025-07-15T11:53:31Z",
+      "visionSigns": [
+        {
+          "text": "kemuls",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 9.015176776057075,
+            "up": 4.056348235637942,
+            "width": 2.06358163967122,
+            "height": 0.5278955367759419
+          }
+        },
+        {
+          "text": "Lerete",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 0.9002328256313209,
+            "up": 4.103749996937499,
+            "width": 1.7390860504112116,
+            "height": 0.42874999999999996
+          }
+        },
+        {
+          "text": "alager m",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 4.501164091309964,
+            "up": 4.042500001020833,
+            "width": 2.5779392238543206,
+            "height": 0.46958333333333346
+          }
+        },
+        {
+          "text": "W CHINA CITY",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 16.347409200848467,
+            "up": 3.0624999989791664,
+            "width": 2.516559936539096,
+            "height": 0.32666666666666666
+          }
+        },
+        {
+          "text": "Hergo",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.7542779842095895,
+            "up": 0.7350000016333335,
+            "width": 0.388736873695648,
+            "height": 0.16333333333333333
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012074701:e:1y4w50n",
+      "stratum": "A-text",
+      "area": "apollobuurt-v1",
+      "group": "apollobuurt",
+      "character": "mixed",
+      "buildingId": "0363100012074701",
+      "street": "Brahmsstraat",
+      "address": "Brahmsstraat 19 / Brahmsstraat 17 / Beethovenstraat 41 / Beethovenstraat 49 / Beethovenstraat 51",
+      "crop": "0363100012074701_e_1y4w50n-ground.jpg",
+      "widthPx": 1581,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01075455491092,
+      "nativeCeilingPxPerM": 119.2,
+      "standoffM": 10.675554409459124,
+      "obliquityDeg": 2.260208629191955,
+      "panoramaId": "recording_2025-07-15_11-16-59_01137",
+      "captureDate": "2025-07-15T11:53:35Z",
+      "visionSigns": [
+        {
+          "text": "FLEUR DE LYS",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 5.867097430746272,
+            "up": 3.9381481471273143,
+            "width": 2.514470229537544,
+            "height": 0.30851851851851864
+          }
+        },
+        {
+          "text": "AÇAI",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 3.4752841797772804,
+            "up": 3.7566666682999994,
+            "width": 0.3884141052872132,
+            "height": 0.1633333333333331
+          }
+        },
+        {
+          "text": "HOTEL BETOVEN",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 11.713751962602098,
+            "up": 3.491250001458333,
+            "width": 1.7989706439778903,
+            "height": 0.2472685185185184
+          }
+        },
+        {
+          "text": "Chrissed",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 6.112411588080971,
+            "up": 1.0412500018375002,
+            "width": 0.5315140223991435,
+            "height": 0.18374999999999986
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012117496:e:0kxbyrr",
+      "stratum": "A-text",
+      "area": "apollobuurt-v1",
+      "group": "apollobuurt",
+      "character": "mixed",
+      "buildingId": "0363100012117496",
+      "street": "Corellistraat",
+      "address": "Corellistraat 25 / Corellistraat 27",
+      "crop": "0363100012117496_e_0kxbyrr-ground.jpg",
+      "widthPx": 481,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.02029140104982,
+      "nativeCeilingPxPerM": 164.7,
+      "standoffM": 7.248707347927127,
+      "obliquityDeg": 20.31730271354129,
+      "panoramaId": "recording_2025-07-15_11-16-59_01609",
+      "captureDate": "2025-07-15T12:04:20Z",
+      "visionSigns": [
+        {
+          "text": "CORELLISTRAAT",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 2.9750830212815043,
+            "up": 4.192222221314815,
+            "width": 0.6167855065431889,
+            "height": 0.09074074074074101
+          }
+        },
+        {
+          "text": "iEar",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 1.2698525214330443,
+            "up": 3.520740741648148,
+            "width": 1.4331192652032911,
+            "height": 0.5988888888888884
+          }
+        },
+        {
+          "text": "27",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.9184020430527355,
+            "up": 2.976296297286195,
+            "width": 0.3265335034640411,
+            "height": 0.2540740740740737
+          }
+        },
+        {
+          "text": "iEaE",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 2.068045519671333,
+            "up": 2.1959259275138883,
+            "width": 0.5805040061582947,
+            "height": 0.2540740740740741
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012065001:e:16v68q9",
+      "stratum": "A-text",
+      "area": "apollobuurt-v1",
+      "group": "apollobuurt",
+      "character": "mixed",
+      "buildingId": "0363100012065001",
+      "street": "Bernard Zweerskade",
+      "address": "Bernard Zweerskade 24 / Beethovenstraat 119",
+      "crop": "0363100012065001_e_16v68q9-ground.jpg",
+      "widthPx": 957,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.0452802710345,
+      "nativeCeilingPxPerM": 257.3,
+      "standoffM": 4.745310840577544,
+      "obliquityDeg": 16.4574932941294,
+      "panoramaId": "recording_2024-09-03_05-50-47_00593",
+      "captureDate": "2024-09-03T06:11:13Z",
+      "visionSigns": [
+        {
+          "text": "BEETHO",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 8.29606431776127,
+            "up": 4.153055562564786,
+            "width": 0.38313837509830684,
+            "height": 0.1327777620598125
+          }
+        },
+        {
+          "text": "TAND",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 2.505440485829709,
+            "up": 1.8329629640972218,
+            "width": 0.49019487646348825,
+            "height": 0.16333333333333333
+          }
+        },
+        {
+          "text": "SEN",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.30427657036791,
+            "up": 1.8511111099768516,
+            "width": 0.344951950103936,
+            "height": 0.12703703703703684
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012069555:e:06z2j1j",
+      "stratum": "A-text",
+      "area": "apollobuurt-v1",
+      "group": "apollobuurt",
+      "character": "mixed",
+      "buildingId": "0363100012069555",
+      "street": "Gerrit van der Veenstraat",
+      "address": "Gerrit van der Veenstraat 106",
+      "crop": "0363100012069555_e_06z2j1j-ground.jpg",
+      "widthPx": 1479,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.97906856249409,
+      "nativeCeilingPxPerM": 101.2,
+      "standoffM": 12.480111255352295,
+      "obliquityDeg": 7.0614156143173386,
+      "panoramaId": "recording_2025-07-29_12-06-07_00845",
+      "captureDate": "2025-07-29T12:25:02Z",
+      "visionSigns": [
+        {
+          "text": "P",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 10.359661566582224,
+            "up": 2.5573705262699034,
+            "width": 0.41047716385295985,
+            "height": 0.4685258844163682
+          }
+        },
+        {
+          "text": "7 / PAB / for mend!",
+          "confidence": 0.767,
+          "boxWallM": {
+            "along": 6.061691397340712,
+            "up": 0.5537775212358074,
+            "width": 1.188839479239963,
+            "height": 1.3203260628862126
+          }
+        },
+        {
+          "text": "ISFL",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 7.279516444526509,
+            "up": 0.9920935114529816,
+            "width": 1.1089960723484928,
+            "height": 0.742503944679543
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012170126:e:04gcn7d",
+      "stratum": "A-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012170126",
+      "street": "Elandsgracht",
+      "address": "Elandsgracht 65",
+      "crop": "0363100012170126_e_04gcn7d-ground.jpg",
+      "widthPx": 375,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.88411974544452,
+      "nativeCeilingPxPerM": 187.6,
+      "standoffM": 6.719022640524182,
+      "obliquityDeg": 8.12939874952658,
+      "panoramaId": "recording_2025-06-30_05-16-46_00588",
+      "captureDate": "2025-06-30T05:28:24Z",
+      "visionSigns": [
+        {
+          "text": "TATTO(",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 3.0496343226972282,
+            "up": 3.302962964626543,
+            "width": 0.34489911970909626,
+            "height": 0.1996296296296296
+          }
+        },
+        {
+          "text": "Helyngad Sl(gank / TAT TOO",
+          "confidence": 0.4,
+          "boxWallM": {
+            "along": 1.4149708450429916,
+            "up": 2.740370371277778,
+            "width": 1.399610690143968,
+            "height": 0.4226296709812134
+          }
+        },
+        {
+          "text": "65",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0.6171879009984205,
+            "up": 2.921851852759259,
+            "width": 0.3085939492134022,
+            "height": 0.21777777777777763
+          }
+        },
+        {
+          "text": "1 / A",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 1.089155092128788e-9,
+            "up": 2.4318518493111108,
+            "width": 0.23598360909938834,
+            "height": 0.5262962998956793
+          }
+        },
+        {
+          "text": "H500",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 2.940718757490177,
+            "up": 1.2340740856888888,
+            "width": 0.25413629733978693,
+            "height": 1.1614814814814813
+          }
+        },
+        {
+          "text": "CLOBED",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 2.3779886640189907,
+            "up": 1.5244444437185183,
+            "width": 0.34489911970909626,
+            "height": 0.1451851851851853
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012168373:e:0610vpv",
+      "stratum": "A-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012168373",
+      "street": "Rozengracht",
+      "address": "Rozengracht 221 / Rozengracht 225 / Rozengracht 219 / Rozengracht 223",
+      "crop": "0363100012168373_e_0610vpv-ground.jpg",
+      "widthPx": 2273,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01107255699003,
+      "nativeCeilingPxPerM": 177.1,
+      "standoffM": 7.068281591945609,
+      "obliquityDeg": 10.559646229516717,
+      "panoramaId": "TMX7316010203-003006_pano_0003_000162",
+      "captureDate": "2023-03-20T11:11:46.013910Z",
+      "visionSigns": [
+        {
+          "text": "225",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 13.692624040587512,
+            "up": 2.9808333323125,
+            "width": 0.2861145344684548,
+            "height": 0.26541666666666686
+          }
+        },
+        {
+          "text": "221",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 6.478450477187491,
+            "up": 2.7970833355451385,
+            "width": 0.24524103202012792,
+            "height": 0.26541666666666686
+          }
+        },
+        {
+          "text": "WEA / WELCOME",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 11.71025908163009,
+            "up": 1.9804166676875,
+            "width": 0.9605273595261838,
+            "height": 0.32666666768749986
+          }
+        },
+        {
+          "text": "ERS",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 12.34379840183935,
+            "up": 2.1233333312916662,
+            "width": 0.3269880195866186,
+            "height": 0.16333333333333355
+          }
+        },
+        {
+          "text": "WEATHERS / WELCOME",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.8477129150790645,
+            "up": 1.9395833343541666,
+            "width": 1.001400827314182,
+            "height": 0.3266666669218743
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012170152:e:144bc2c",
+      "stratum": "A-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012170152",
+      "street": "Rozengracht",
+      "address": "Rozengracht 77 / Rozengracht 79",
+      "crop": "0363100012170152_e_144bc2c-ground.jpg",
+      "widthPx": 862,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.04820529798609,
+      "nativeCeilingPxPerM": 133.8,
+      "standoffM": 9.29611123568973,
+      "obliquityDeg": 12.307371835004353,
+      "panoramaId": "b_20250120_0926_Track14_Sphere_00074",
+      "captureDate": "2025-01-20T10:12:04Z",
+      "visionSigns": [
+        {
+          "text": "P / Ultsluitend / opladen / elektrische / voertuigen",
+          "confidence": 0.86,
+          "boxWallM": {
+            "along": 5.815633222886483,
+            "up": 2.613333334240741,
+            "width": 0.8541711552266458,
+            "height": 1.6514814829619868
+          }
+        },
+        {
+          "text": "HAND& FOOT",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0.19991240457242218,
+            "up": 2.8311111121999994,
+            "width": 1.2176482082298188,
+            "height": 0.18148148148148113
+          }
+        },
+        {
+          "text": "TREA",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 1.5629514380471918,
+            "up": 2.8674074078611107,
+            "width": 0.5270417617711156,
+            "height": 0.14518518518518464
+          }
+        },
+        {
+          "text": "MENT",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 2.162688603013097,
+            "up": 2.8492592583518515,
+            "width": 0.5633894694794681,
+            "height": 0.1633333333333331
+          }
+        },
+        {
+          "text": "STORE",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 2.835121197435009,
+            "up": 2.831111109296296,
+            "width": 0.7087803003128799,
+            "height": 0.18148148148148202
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012165428:e:09sa6x8",
+      "stratum": "A-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012165428",
+      "street": "Elandsgracht",
+      "address": "Elandsgracht 76 / Hazenstraat 67",
+      "crop": "0363100012165428_e_09sa6x8-ground.jpg",
+      "widthPx": 1203,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.02439661562077,
+      "nativeCeilingPxPerM": 377.4,
+      "standoffM": 3.3717140681688766,
+      "obliquityDeg": 1.99541483061009,
+      "panoramaId": "recording_2025-07-03_10-00-02_00529",
+      "captureDate": "2025-07-03T10:28:43Z",
+      "visionSigns": [
+        {
+          "text": "HAZENSTRAAT",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 9.117669760347038,
+            "up": 3.684074072259259,
+            "width": 0.5993687286887592,
+            "height": 0.10888888888888903
+          }
+        },
+        {
+          "text": "TENE DE NÎMES / Shoe Store",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 6.066338047510607,
+            "up": 2.903703704351851,
+            "width": 1.652804676081126,
+            "height": 0.4355555572666665
+          }
+        },
+        {
+          "text": "NG",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 1.5135573595939047e-9,
+            "up": 3.212222222978395,
+            "width": 0.18162688748144232,
+            "height": 0.12703703703703662
+          }
+        },
+        {
+          "text": "EST. 200°",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 8.409324884260874,
+            "up": 2.667777778231481,
+            "width": 0.49039259619989295,
+            "height": 0.18148148148148158
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012174521:e:0ur6ste",
+      "stratum": "A-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012174521",
+      "street": "Lauriergracht",
+      "address": "Lauriergracht 71",
+      "crop": "0363100012174521_e_0ur6ste-ground.jpg",
+      "widthPx": 728,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.9283867563967,
+      "nativeCeilingPxPerM": 345,
+      "standoffM": 3.3452688836608964,
+      "obliquityDeg": 24.99868743444391,
+      "panoramaId": "recording_2025-07-03_08-35-58_01716",
+      "captureDate": "2025-07-03T09:52:48Z",
+      "visionSigns": [
+        {
+          "text": "LAURIERGRACHT",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0.6913591749061512,
+            "up": 4.645925925018518,
+            "width": 0.673165523332798,
+            "height": 0.09074074074074101
+          }
+        },
+        {
+          "text": "71",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 5.221581219162203,
+            "up": 3.302962965685185,
+            "width": 0.3820669186483441,
+            "height": 0.27222222222222214
+          }
+        },
+        {
+          "text": "W / du",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 1.473686687225803,
+            "up": 1.8148148152685188,
+            "width": 0.7095528510914864,
+            "height": 0.8892592560833321
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012253926:e:15uoj4q",
+      "stratum": "A-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012253926",
+      "street": "Lauriergracht",
+      "address": "Lauriergracht 15 / Lauriergracht 17",
+      "crop": "0363100012253926_e_15uoj4q-ground.jpg",
+      "widthPx": 1170,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.03589433106305,
+      "nativeCeilingPxPerM": 344.9,
+      "standoffM": 3.394082222221373,
+      "obliquityDeg": 23.16051515104564,
+      "panoramaId": "recording_2025-07-03_08-35-58_01651",
+      "captureDate": "2025-07-03T09:49:54Z",
+      "visionSigns": [
+        {
+          "text": "LONG R / TIRED L / DRINK.",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 10.031271119994313,
+            "up": 2.698083752255989,
+            "width": 0.5888433687881314,
+            "height": 0.5154145118419136
+          }
+        },
+        {
+          "text": "D BATLE IT UP / IS THE WATTO",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 8.765668713893334,
+            "up": 0.5978136374035693,
+            "width": 1.2794352158778288,
+            "height": 1.302386741423021
+          }
+        },
+        {
+          "text": "AMSTER / LONGES / STREET, / GOT JUI",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 10.050290886595688,
+            "up": 0.9074074083148145,
+            "width": 0.5654019393840422,
+            "height": 0.619909843577721
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012236815:e:0zv81ra",
+      "stratum": "A-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012236815",
+      "street": "De Clercqstraat",
+      "address": "De Clercqstraat 1 / De Clercqstraat 3 / De Clercqstraat 5",
+      "crop": "0363100012236815_e_0zv81ra-ground.jpg",
+      "widthPx": 1558,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01931760541503,
+      "nativeCeilingPxPerM": 293.2,
+      "standoffM": 3.8362777641686447,
+      "obliquityDeg": 27.95258060816337,
+      "panoramaId": "recording_2025-07-03_10-58-37_00750",
+      "captureDate": "2025-07-03T11:26:40Z",
+      "visionSigns": [
+        {
+          "text": "7 dagen per wek GEOPEND",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.622090647996243,
+            "up": 3.61148148318287,
+            "width": 2.7995344395517705,
+            "height": 0.29037037037037017
+          }
+        },
+        {
+          "text": "_wijnen STERK champagne",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.6577861523507567,
+            "up": 3.611481478623148,
+            "width": 2.840403616198617,
+            "height": 0.29037037037037017
+          }
+        },
+        {
+          "text": "haket",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 13.384636216114167,
+            "up": 3.6954166692187496,
+            "width": 0.4291257306783045,
+            "height": 0.2041666666666666
+          }
+        },
+        {
+          "text": "-vers b",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 11.655883074921157,
+            "up": 3.671485639762096,
+            "width": 0.6390446015009825,
+            "height": 0.2150444251519663
+          }
+        },
+        {
+          "text": "od en banket",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 2.6451723972410405e-8,
+            "up": 3.634166667559896,
+            "width": 1.4304191022610202,
+            "height": 0.22458333333333247
+          }
+        },
+        {
+          "text": "BUKO",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 13.098552387414825,
+            "up": 3.144166666326388,
+            "width": 0.2656492668017574,
+            "height": 0.081666666666667
+          }
+        },
+        {
+          "text": "DISCOVER YOUR LOCAL / AFL BEENS INSIDE / ELXER / AMSTERDAM",
+          "confidence": 0.875,
+          "boxWallM": {
+            "along": 1.0217280025536644,
+            "up": 1.4087499986388885,
+            "width": 1.1239006976249835,
+            "height": 1.5312500020416666
+          }
+        },
+        {
+          "text": "MOET & CHANDON",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 5.864718485676921,
+            "up": 2.7766666676874996,
+            "width": 0.960424264281821,
+            "height": 0.10208333333333286
+          }
+        },
+        {
+          "text": "vish / Orange / Spritz / KRIJGBIAR",
+          "confidence": 0.825,
+          "boxWallM": {
+            "along": 8.255561853167796,
+            "up": 1.3474999967673613,
+            "width": 1.2873772613808718,
+            "height": 1.2862500041076388
+          }
+        },
+        {
+          "text": "THE NEW / HARD ICEN TEA / 4.5% AL",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 12.301604609647796,
+            "up": 1.7762500010208335,
+            "width": 1.226073496410601,
+            "height": 0.8084938473292891
+          }
+        },
+        {
+          "text": "vish / owberry Va",
+          "confidence": 0.4,
+          "boxWallM": {
+            "along": 9.393481480829621,
+            "up": 1.6526486967653393,
+            "width": 0.7216252740028519,
+            "height": 0.5523513035749374
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012236262:e:08gco44",
+      "stratum": "A-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012236262",
+      "street": "De Clercqstraat",
+      "address": "De Clercqstraat 16 / De Clercqstraat 18",
+      "crop": "0363100012236262_e_08gco44-ground.jpg",
+      "widthPx": 2050,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.97325655829677,
+      "nativeCeilingPxPerM": 124,
+      "standoffM": 10.267106713796206,
+      "obliquityDeg": 0.8892963100175056,
+      "panoramaId": "recording_2025-07-03_08-35-58_00410",
+      "captureDate": "2025-07-03T08:52:18Z",
+      "visionSigns": [
+        {
+          "text": "12063 / P",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 17.618543517213602,
+            "up": 3.59333333673611,
+            "width": 0.8010130312907755,
+            "height": 1.038511939455797
+          }
+        },
+        {
+          "text": "manoto",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.3943161356567733,
+            "up": 3.6016018483153833,
+            "width": 3.401451191476608,
+            "height": 0.6980462985568567
+          }
+        },
+        {
+          "text": "DASTA / KOSHER STREETF000",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 12.502291173995907,
+            "up": 3.572916667223484,
+            "width": 1.084486768496797,
+            "height": 0.6533333333333338
+          }
+        },
+        {
+          "text": "Restaur",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 2.1280495491798828,
+            "up": 3.71583333078125,
+            "width": 0.7980185982217001,
+            "height": 0.40833333333333366
+          }
+        },
+        {
+          "text": "loto",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0,
+            "up": 3.4061082991024736,
+            "width": 0.53360174616612,
+            "height": 0.2519500725357622
+          }
+        },
+        {
+          "text": "Restaurant",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.1617052453378065,
+            "up": 2.8991666733754666,
+            "width": 1.0231007171432065,
+            "height": 0.14291665801295483
+          }
+        },
+        {
+          "text": "Manoto",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 8.20526801239265,
+            "up": 2.8991666733754666,
+            "width": 0.7161705297502436,
+            "height": 0.14291665801295483
+          }
+        },
+        {
+          "text": "Restaurant Manoto",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 2.516827907887427,
+            "up": 2.8764814825023146,
+            "width": 1.7597331946363144,
+            "height": 0.14518518518518508
+          }
+        },
+        {
+          "text": "Restaurant Manoto",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 10.292393599479452,
+            "up": 2.6950000008506945,
+            "width": 1.7597331946363148,
+            "height": 0.1837499999999994
+          }
+        },
+        {
+          "text": "PASTA",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 14.568954682853985,
+            "up": 1.7966666631504626,
+            "width": 1.0231007171432047,
+            "height": 0.6329166666666666
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012236441:e:00bs3qn",
+      "stratum": "A-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012236441",
+      "street": "Da Costakade",
+      "address": "Da Costakade 170 / Kinkerstraat 56 / Kinkerstraat 58 / Kinkerstraat 60 / Kinkerstraat 62",
+      "crop": "0363100012236441_e_00bs3qn-ground.jpg",
+      "widthPx": 1690,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.98184320753612,
+      "nativeCeilingPxPerM": 187.7,
+      "standoffM": 6.290004499057462,
+      "obliquityDeg": 21.99629265297751,
+      "panoramaId": "recording_2025-07-31_10-53-44_00669",
+      "captureDate": "2025-07-31T11:09:59Z",
+      "visionSigns": [
+        {
+          "text": "DA COSTAKADE",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0.4501408857569946,
+            "up": 4.328333334694444,
+            "width": 0.6752113272733051,
+            "height": 0.12249999999999961
+          }
+        },
+        {
+          "text": "TEM BA RAMEN & BYOOOOZA",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 1.1253522578134563,
+            "up": 3.879166672014355,
+            "width": 1.6164149073051104,
+            "height": 0.14291665801295572
+          }
+        },
+        {
+          "text": "O TEM BA",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.140871225739904,
+            "up": 3.8179166676874994,
+            "width": 0.7161332069769539,
+            "height": 0.18374999999999986
+          }
+        },
+        {
+          "text": "O TEM BA",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 5.769987630093941,
+            "up": 3.8791666659010415,
+            "width": 0.4092189704604312,
+            "height": 0.10435185185185158
+          }
+        },
+        {
+          "text": "RAMEN 5 GY000G",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.89792633047554,
+            "up": 3.8564814794398146,
+            "width": 0.8388989154574773,
+            "height": 0.12703703703703706
+          }
+        },
+        {
+          "text": "O TEM FA C",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 11.867350463994974,
+            "up": 3.856481482247106,
+            "width": 0.5933674984964288,
+            "height": 0.10435185185185158
+          }
+        },
+        {
+          "text": "TEM / BA",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0,
+            "up": 3.3483333323124995,
+            "width": 0.3682970867617979,
+            "height": 0.5308333362256943
+          }
+        },
+        {
+          "text": "ZONE",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 6.465659907788948,
+            "up": 3.4912500001701385,
+            "width": 0.4910627645525176,
+            "height": 0.3470833333333334
+          }
+        },
+        {
+          "text": "P / autodate",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 8.776960515625111,
+            "up": 2.8541393041872523,
+            "width": 0.6358626803281577,
+            "height": 0.9433606988752472
+          }
+        },
+        {
+          "text": "TEM / BA / RANEN",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 4.6650963785380135,
+            "up": 2.327499999234375,
+            "width": 0.2659923394704782,
+            "height": 0.5104166664114578
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012167348:e:01hkquq",
+      "stratum": "A-text",
+      "area": "da-costa-expansion-550m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012167348",
+      "street": "Bilderdijkstraat",
+      "address": "Bilderdijkstraat 66 / Bilderdijkstraat 68 / Bilderdijkstraat 70 / Ter Haarstraat 9",
+      "crop": "0363100012167348_e_01hkquq-ground.jpg",
+      "widthPx": 1945,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.02219092503849,
+      "nativeCeilingPxPerM": 134.6,
+      "standoffM": 9.411811896357742,
+      "obliquityDeg": 5.593172563781672,
+      "panoramaId": "recording_2025-07-31_08-46-40_01846",
+      "captureDate": "2025-07-31T09:46:23Z",
+      "visionSigns": [
+        {
+          "text": "m. U.V. / gebruikers / OV-baan",
+          "confidence": 0.833,
+          "boxWallM": {
+            "along": 5.252382339721517,
+            "up": 3.064156527198744,
+            "width": 0.8788032661502125,
+            "height": 1.0600101391762555
+          }
+        },
+        {
+          "text": "SOFACOMPANY / GRAND / OPENING / DO 2(0)",
+          "confidence": 0.65,
+          "boxWallM": {
+            "along": 1.2057998985589051,
+            "up": 1.3475000010208333,
+            "width": 3.2904028767818723,
+            "height": 1.837500000340277
+          }
+        },
+        {
+          "text": "SOFACOMPANY / GRAND / OPENING",
+          "confidence": 0.767,
+          "boxWallM": {
+            "along": 14.346974344702781,
+            "up": 1.9765819464751402,
+            "width": 2.3911624027399885,
+            "height": 1.2084180547158312
+          }
+        },
+        {
+          "text": "WIN EEN BANK!",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 9.217215673871591,
+            "up": 2.164166665815972,
+            "width": 1.655420146299532,
+            "height": 0.18601851851851858
+          }
+        },
+        {
+          "text": "DISCOVER A NEW 11",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 6.846490621463721,
+            "up": 1.5312500010208328,
+            "width": 0.8992405433503912,
+            "height": 0.10208333333333353
+          }
+        },
+        {
+          "text": "RSIVE EXPERIENCI",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 4.51664011031793,
+            "up": 1.5516666673472221,
+            "width": 0.837928642441347,
+            "height": 0.08166666666666678
+          }
+        },
+        {
+          "text": "SOFACOMPANT",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 8.39716966905393,
+            "up": 1.097014934712885,
+            "width": 3.3146722214291557,
+            "height": 0.4388059587831854
+          }
+        },
+        {
+          "text": "From 12",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.357422753502368,
+            "up": 0.8166666676874998,
+            "width": 0.40874568262058464,
+            "height": 0.10208333333333341
+          }
+        },
+        {
+          "text": "f July",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 4.5575146513196865,
+            "up": 0.8166666674322914,
+            "width": 0.3065592619654378,
+            "height": 0.10208333333333297
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012159268:e:1ptgn5v",
+      "stratum": "A-text",
+      "area": "da-costa-expansion-550m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012159268",
+      "street": "Bilderdijkstraat",
+      "address": "Bilderdijkstraat 48 / De Clercqstraat 46",
+      "crop": "0363100012159268_e_1ptgn5v-ground.jpg",
+      "widthPx": 1866,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.98116751856686,
+      "nativeCeilingPxPerM": 124.3,
+      "standoffM": 9.877203083978932,
+      "obliquityDeg": 15.437462426281913,
+      "panoramaId": "recording_2025-06-18_08-56-14_00951",
+      "captureDate": "2025-06-18T09:19:20Z",
+      "visionSigns": [
+        {
+          "text": "BESTSEL / MAGAZINES CLEANS",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 4.029553510291248,
+            "up": 4.124166669525,
+            "width": 2.262205509045499,
+            "height": 0.7758333227792216
+          }
+        },
+        {
+          "text": "BESTSELLE / MAGAZINES GIFTS BOO",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.883907028620566,
+            "up": 2.9399999977031244,
+            "width": 2.2894608937840077,
+            "height": 0.510416667715857
+          }
+        },
+        {
+          "text": "BES / MAGAZ",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 8.013113400251934,
+            "up": 2.9400000012249996,
+            "width": 0.7563397646508871,
+            "height": 0.49000000163333324
+          }
+        },
+        {
+          "text": "SELLER / GIFTS BOOKS",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 9.09651907661382,
+            "up": 2.939999998775,
+            "width": 1.3695881806663852,
+            "height": 0.490000004083333
+          }
+        },
+        {
+          "text": "BOOKS",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 1.6146222026946524,
+            "up": 2.959286023411153,
+            "width": 0.6955458133309858,
+            "height": 0.1655946173491305
+          }
+        },
+        {
+          "text": "BEST'S",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 11.549512951061553,
+            "up": 2.7358333346093744,
+            "width": 0.5928068189361948,
+            "height": 0.1837500000000003
+          }
+        },
+        {
+          "text": "BLER",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 12.305852715395865,
+            "up": 2.7562500006805553,
+            "width": 0.4497155333621148,
+            "height": 0.16333333333333355
+          }
+        },
+        {
+          "text": "LET OP",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0.5988460854215489,
+            "up": 0.8476746408283631,
+            "width": 1.3976658223723821,
+            "height": 0.515316173058969
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012160810:e:19qqf19",
+      "stratum": "A-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012160810",
+      "street": "Da Costakade",
+      "address": "Da Costakade 172 / Kinkerstraat 49",
+      "crop": "0363100012160810_e_19qqf19-ground.jpg",
+      "widthPx": 519,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.94234091106802,
+      "nativeCeilingPxPerM": 245.1,
+      "standoffM": 5.137670248568308,
+      "obliquityDeg": 8.54919496702055,
+      "panoramaId": "recording_2025-07-31_08-46-40_01618",
+      "captureDate": "2025-07-31T09:39:49Z",
+      "visionSigns": [
+        {
+          "text": "SENER",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 0.6717856932716159,
+            "up": 4.0833333298851855,
+            "width": 0.9078185117817931,
+            "height": 0.34481481481481424
+          }
+        },
+        {
+          "text": "BIODIVERS",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.3589284957973367,
+            "up": 4.101481483296296,
+            "width": 0.817036660603613,
+            "height": 0.2540740740740741
+          }
+        },
+        {
+          "text": "CONGA",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 3.0139574062619428,
+            "up": 1.6514814882870374,
+            "width": 0.2541892871904863,
+            "height": 1.0888888888888881
+          }
+        },
+        {
+          "text": "real",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 3.6131176756205905,
+            "up": 2.5951851840962963,
+            "width": 0.3449710344770818,
+            "height": 0.10888888888888903
+          }
+        },
+        {
+          "text": "ANNES / COMS]",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 4.212277893480373,
+            "up": 0.7077777843564811,
+            "width": 0.3449710689330283,
+            "height": 1.2340740684725784
+          }
+        },
+        {
+          "text": "s meo",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 3.486023087602413,
+            "up": 1.1614814834777778,
+            "width": 0.4539092558908968,
+            "height": 0.1996296296296296
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012168373:e:0610vpv",
+      "stratum": "A-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012168373",
+      "street": "Rozengracht",
+      "address": "Rozengracht 221 / Rozengracht 225 / Rozengracht 219 / Rozengracht 223",
+      "crop": "0363100012168373_e_0610vpv-ground.jpg",
+      "widthPx": 2273,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01107255699003,
+      "nativeCeilingPxPerM": 177.1,
+      "standoffM": 7.068281591945609,
+      "obliquityDeg": 10.559646229516717,
+      "panoramaId": "TMX7316010203-003006_pano_0003_000162",
+      "captureDate": "2023-03-20T11:11:46.013910Z",
+      "visionSigns": [
+        {
+          "text": "225",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 13.692624040587512,
+            "up": 2.9808333323125,
+            "width": 0.2861145344684548,
+            "height": 0.26541666666666686
+          }
+        },
+        {
+          "text": "221",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 6.478450477187491,
+            "up": 2.7970833355451385,
+            "width": 0.24524103202012792,
+            "height": 0.26541666666666686
+          }
+        },
+        {
+          "text": "WEA / WELCOME",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 11.71025908163009,
+            "up": 1.9804166676875,
+            "width": 0.9605273595261838,
+            "height": 0.32666666768749986
+          }
+        },
+        {
+          "text": "ERS",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 12.34379840183935,
+            "up": 2.1233333312916662,
+            "width": 0.3269880195866186,
+            "height": 0.16333333333333355
+          }
+        },
+        {
+          "text": "WEATHERS / WELCOME",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.8477129150790645,
+            "up": 1.9395833343541666,
+            "width": 1.001400827314182,
+            "height": 0.3266666669218743
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012168373:e:0610vpv",
+      "stratum": "A-text",
+      "area": "da-costa-expansion-550m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012168373",
+      "street": "Rozengracht",
+      "address": "Rozengracht 221 / Rozengracht 225 / Rozengracht 219 / Rozengracht 223",
+      "crop": "0363100012168373_e_0610vpv-ground.jpg",
+      "widthPx": 2273,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01107255699003,
+      "nativeCeilingPxPerM": 177.1,
+      "standoffM": 7.068281591945609,
+      "obliquityDeg": 10.559646229516717,
+      "panoramaId": "TMX7316010203-003006_pano_0003_000162",
+      "captureDate": "2023-03-20T11:11:46.013910Z",
+      "visionSigns": [
+        {
+          "text": "225",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 13.692624040587512,
+            "up": 2.9808333323125,
+            "width": 0.2861145344684548,
+            "height": 0.26541666666666686
+          }
+        },
+        {
+          "text": "221",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 6.478450477187491,
+            "up": 2.7970833355451385,
+            "width": 0.24524103202012792,
+            "height": 0.26541666666666686
+          }
+        },
+        {
+          "text": "WEA / WELCOME",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 11.71025908163009,
+            "up": 1.9804166676875,
+            "width": 0.9605273595261838,
+            "height": 0.32666666768749986
+          }
+        },
+        {
+          "text": "ERS",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 12.34379840183935,
+            "up": 2.1233333312916662,
+            "width": 0.3269880195866186,
+            "height": 0.16333333333333355
+          }
+        },
+        {
+          "text": "WEATHERS / WELCOME",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.8477129150790645,
+            "up": 1.9395833343541666,
+            "width": 1.001400827314182,
+            "height": 0.3266666669218743
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012161572:e:1j49qgz",
+      "stratum": "A-text",
+      "area": "da-costa-expansion-550m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012161572",
+      "street": "Frederik Hendrikstraat",
+      "address": "Frederik Hendrikstraat 154",
+      "crop": "0363100012161572_e_1j49qgz-ground.jpg",
+      "widthPx": 956,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.97519640863052,
+      "nativeCeilingPxPerM": 104.2,
+      "standoffM": 12.213833367722035,
+      "obliquityDeg": 1.4666756803588599,
+      "panoramaId": "recording_2024-09-11_10-46-56_00669",
+      "captureDate": "2024-09-11T11:07:59Z",
+      "visionSigns": [
+        {
+          "text": "DERDE HUGO DE GROOTSTRAAT",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 6.928835091614657,
+            "up": 3.4481481493580244,
+            "width": 1.1093410512920503,
+            "height": 0.14518518518518553
+          }
+        },
+        {
+          "text": "P / AUTODATE",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.091606207609536,
+            "up": 2.577037037248765,
+            "width": 0.5455775662092055,
+            "height": 0.9074074096154323
+          }
+        },
+        {
+          "text": "N.",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 5.9467954706311525,
+            "up": 1.633333336125356,
+            "width": 0.41827613409372333,
+            "height": 0.7259259259259259
+          }
+        },
+        {
+          "text": "er",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 7.401668983520046,
+            "up": 1.252222223129629,
+            "width": 0.27278878310460364,
+            "height": 0.1996296296296296
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012160703:e:11jm8u0",
+      "stratum": "A-text",
+      "area": "da-costa-tranche-400m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012160703",
+      "street": "Tweede Hugo de Grootstraat",
+      "address": "Tweede Hugo de Grootstraat 7 / Tweede Hugo de Grootstraat 9",
+      "crop": "0363100012160703_e_11jm8u0-ground.jpg",
+      "widthPx": 1173,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01318688068727,
+      "nativeCeilingPxPerM": 145.5,
+      "standoffM": 8.481047326177006,
+      "obliquityDeg": 14.2386902028101,
+      "panoramaId": "recording_2025-06-17_08-04-10_02086",
+      "captureDate": "2025-06-17T08:29:47Z",
+      "visionSigns": [
+        {
+          "text": "itelji.nl",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 0,
+            "up": 4.228518520673611,
+            "width": 0.5812529112011039,
+            "height": 0.34481481481481424
+          }
+        },
+        {
+          "text": "Paveli o.",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 0.6529445954247626,
+            "up": 2.373558637562293,
+            "width": 1.8728377047763365,
+            "height": 0.4795494146700259
+          }
+        },
+        {
+          "text": "CALVO",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 8.007961291528902,
+            "up": 1.3905943427561813,
+            "width": 1.0583817922084915,
+            "height": 0.39473724506519425
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012080599:e:1gr53pm",
+      "stratum": "A-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012080599",
+      "street": "De Egmondenstraat",
+      "address": "De Egmondenstraat 137 / De Egmondenstraat 138 / De Egmondenstraat 139 / De Egmondenstraat 140 / De Egmondenstraat 141 / De Egmondenstraat 142 / De Egmondenstraat 143",
+      "crop": "0363100012080599_e_1gr53pm-ground.jpg",
+      "widthPx": 1504,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.9922026059499,
+      "nativeCeilingPxPerM": 173.6,
+      "standoffM": 6.9513763571440865,
+      "obliquityDeg": 18.625023420889626,
+      "panoramaId": "recording_2024-08-29_07-07-12_02958",
+      "captureDate": "2024-08-29T07:51:25Z",
+      "visionSigns": [
+        {
+          "text": "DE RGMONDENSTRAAT",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 0.3179929487117832,
+            "up": 3.610526318473984,
+            "width": 0.794982319769886,
+            "height": 0.11902833867956097
+          }
+        },
+        {
+          "text": "137",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 5.604625623506093,
+            "up": 3.4914979785354427,
+            "width": 0.29811836124332647,
+            "height": 0.1587044458036071
+          }
+        },
+        {
+          "text": "143",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 5.16738532051175,
+            "up": 3.491497977224349,
+            "width": 0.23849469939911838,
+            "height": 0.1388663922415847
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012089249:e:1hhtrkm",
+      "stratum": "A-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012089249",
+      "street": "De Egmondenstraat",
+      "address": "De Egmondenstraat 22 / De Egmondenstraat 23 / De Egmondenstraat 24 / De Egmondenstraat 25 / De Egmondenstraat 26 / De Egmondenstraat 27 / De Egmondenstraat 28",
+      "crop": "0363100012089249_e_1hhtrkm-ground.jpg",
+      "widthPx": 1817,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.98085923658297,
+      "nativeCeilingPxPerM": 85.9,
+      "standoffM": 13.010130222638082,
+      "obliquityDeg": 28.668028790903954,
+      "panoramaId": "recording_2025-09-24_12-05-52_00370",
+      "captureDate": "2025-09-24T12:16:10Z",
+      "visionSigns": [
+        {
+          "text": "10271",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 12.506258492767172,
+            "up": 3.8048603984555895,
+            "width": 0.9966343580152888,
+            "height": 0.2908269747981316
+          }
+        },
+        {
+          "text": "2224",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.1972919816252094,
+            "up": 2.776666667143055,
+            "width": 0.32714963557798704,
+            "height": 0.1429166666666668
+          }
+        },
+        {
+          "text": "Hartog",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 4.844960089000458,
+            "up": 0.343559957918597,
+            "width": 0.983336679670785,
+            "height": 0.27246341846607386
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012094004:e:0fkgnyh",
+      "stratum": "A-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012094004",
+      "street": "Groetstraat",
+      "address": "Groetstraat 110 / Groetstraat 111 / Groetstraat 112 / Groetstraat 114 / Groetstraat 115 / Groetstraat 117 / Groetstraat 116 / Groetstraat 113",
+      "crop": "0363100012094004_e_0fkgnyh-ground.jpg",
+      "widthPx": 1334,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.9884847896692,
+      "nativeCeilingPxPerM": 152.9,
+      "standoffM": 8.067180696277122,
+      "obliquityDeg": 14.394074252329467,
+      "panoramaId": "recording_2025-09-24_12-05-52_01217",
+      "captureDate": "2025-09-24T12:37:13Z",
+      "visionSigns": [
+        {
+          "text": "P / opladen / elektrische / voertuigen",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 4.491379265104805,
+            "up": 3.538888889237892,
+            "width": 0.4727767685392159,
+            "height": 0.7440740755398854
+          }
+        },
+        {
+          "text": "GROETS RAAT",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 10.964784197125105,
+            "up": 3.6296296298564807,
+            "width": 0.5273279299275142,
+            "height": 0.10888888888888992
+          }
+        },
+        {
+          "text": "1 (ote",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 10.437456263522966,
+            "up": 1.7603703723364192,
+            "width": 1.200125633628133,
+            "height": 0.47185185185185197
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012099632:e:1e6cf7d",
+      "stratum": "A-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012099632",
+      "street": "Hensbroekerstraat",
+      "address": "Hensbroekerstraat 17",
+      "crop": "0363100012099632_e_1e6cf7d-ground.jpg",
+      "widthPx": 597,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.95238940340313,
+      "nativeCeilingPxPerM": 82.1,
+      "standoffM": 12.782653946275373,
+      "obliquityDeg": 34.46493123026949,
+      "panoramaId": "recording_2025-09-24_14-41-27_01275",
+      "captureDate": "2025-09-24T15:12:31Z",
+      "visionSigns": [
+        {
+          "text": "PONERGRIS",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 0.7906191423040253,
+            "up": 2.4361577755553636,
+            "width": 1.1578721741244404,
+            "height": 0.49497709556862146
+          }
+        },
+        {
+          "text": "hUtU",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 4.194792165732392,
+            "up": 0.8711110449061112,
+            "width": 0.7990081061692846,
+            "height": 0.39925939771864116
+          }
+        },
+        {
+          "text": "U",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 2.941802284960151,
+            "up": 0.7440740405934876,
+            "width": 0.30870771989148604,
+            "height": 0.29037043960006126
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012100560:e:1fthvg3",
+      "stratum": "A-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012100560",
+      "street": "Groetstraat",
+      "address": "Groetstraat 118 / Groetstraat 119 / Groetstraat 120 / Groetstraat 121 / Groetstraat 122 / Groetstraat 123 / Groetstraat 124 / Groetstraat 125",
+      "crop": "0363100012100560_e_1fthvg3-ground.jpg",
+      "widthPx": 1820,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.9887156260448,
+      "nativeCeilingPxPerM": 161.2,
+      "standoffM": 7.578217849886908,
+      "obliquityDeg": 16.360996500844642,
+      "panoramaId": "recording_2025-09-24_12-05-52_01464",
+      "captureDate": "2025-09-24T12:42:52Z",
+      "visionSigns": [
+        {
+          "text": "95- NNJ",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 8.201987605917289,
+            "up": 2.9399999989791668,
+            "width": 0.42953049425432965,
+            "height": 0.10208333333333286
+          }
+        },
+        {
+          "text": "1118-1",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 9.306494656356449,
+            "up": 2.6133333326953117,
+            "width": 0.2045383471128357,
+            "height": 0.10208333333333419
+          }
+        },
+        {
+          "text": "koomen / installatie",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.7831100263310606,
+            "up": 0.17935333633253836,
+            "width": 1.5147681908353068,
+            "height": 0.5571579501380769
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012102266:e:0wzt0c2",
+      "stratum": "A-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012102266",
+      "street": "Katrijpstraat",
+      "address": "Katrijpstraat 57 / Katrijpstraat 58 / Katrijpstraat 59 / Katrijpstraat 60 / Katrijpstraat 61 / Katrijpstraat 62 / Katrijpstraat 63",
+      "crop": "0363100012102266_e_0wzt0c2-ground.jpg",
+      "widthPx": 1834,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01845554211664,
+      "nativeCeilingPxPerM": 169.4,
+      "standoffM": 7.508900080486699,
+      "obliquityDeg": 2.2003381844025562,
+      "panoramaId": "recording_2025-09-24_12-05-52_00976",
+      "captureDate": "2025-09-24T12:31:52Z",
+      "visionSigns": [
+        {
+          "text": "KATRIPSTRAAT",
+          "confidence": 0.3,
+          "boxWallM": {
+            "along": 15.708597036137606,
+            "up": 3.389166669048611,
+            "width": 0.6136170583121956,
+            "height": 0.18374999999999986
+          }
+        },
+        {
+          "text": "60-651",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 8.979263147095253,
+            "up": 2.6541666676874995,
+            "width": 0.3068085291560969,
+            "height": 0.12250000000000005
+          }
+        },
+        {
+          "text": "57-59",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.056596318171079,
+            "up": 2.6337500019449105,
+            "width": 0.3068085291560987,
+            "height": 0.14291665801295572
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012132577:e:0qq1gyb",
+      "stratum": "A-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012132577",
+      "street": "Avenhornstraat",
+      "address": "Avenhornstraat 23 / Avenhornstraat 24",
+      "crop": "0363100012132577_e_0qq1gyb-ground.jpg",
+      "widthPx": 915,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.03351558911581,
+      "nativeCeilingPxPerM": 263.1,
+      "standoffM": 4.839256594578364,
+      "obliquityDeg": 0.9152737401677262,
+      "panoramaId": "recording_2025-09-24_14-41-27_00580",
+      "captureDate": "2025-09-24T14:58:04Z",
+      "visionSigns": [
+        {
+          "text": "3.",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 3.9944161395003817,
+            "up": 4.57333333551111,
+            "width": 0.1634079330166993,
+            "height": 0.21777777777777807
+          }
+        },
+        {
+          "text": ",3m",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 4.103354761148386,
+            "up": 4.537037038851851,
+            "width": 0.27234655502783145,
+            "height": 0.18148148148148113
+          }
+        },
+        {
+          "text": "ZONE / 30",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.008384681747867,
+            "up": 3.0488888896148145,
+            "width": 0.3268158660333986,
+            "height": 0.47185185140949093
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012139187:e:04miq8c",
+      "stratum": "A-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012139187",
+      "street": "Beemsterstraat",
+      "address": "Beemsterstraat 284 / Beemsterstraat 286 / Beemsterstraat 288 / Beemsterstraat 290 / Beemsterstraat 292 / Beemsterstraat 294 / Beemsterstraat 296",
+      "crop": "0363100012139187_e_04miq8c-ground.jpg",
+      "widthPx": 1814,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01585603312178,
+      "nativeCeilingPxPerM": 194.9,
+      "standoffM": 6.089905435400095,
+      "obliquityDeg": 21.204581596319933,
+      "panoramaId": "recording_2025-09-24_12-05-52_01273",
+      "captureDate": "2025-09-24T12:38:55Z",
+      "visionSigns": [
+        {
+          "text": "Vinais",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 11.251479890319265,
+            "up": 2.5316666697291663,
+            "width": 0.8796611311568174,
+            "height": 0.3674999999999997
+          }
+        },
+        {
+          "text": "292-296",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.078203712835619,
+            "up": 2.7358333341840275,
+            "width": 0.42960195825711534,
+            "height": 0.14291666666666636
+          }
+        },
+        {
+          "text": "286290",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 8.856734304764773,
+            "up": 2.731316735833203,
+            "width": 0.43209984343682706,
+            "height": 0.13153319394146923
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012061385:e:02uqtxa",
+      "stratum": "A-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012061385",
+      "street": "Alkmaarstraat",
+      "address": "Alkmaarstraat 71 / Alkmaarstraat 79 / Alkmaarstraat 81 / Alkmaarstraat 83 / Groetstraat 217 / Alkmaarstraat 73 / Alkmaarstraat 77 / Alkmaarstraat 75",
+      "crop": "0363100012061385_e_02uqtxa-ground.jpg",
+      "widthPx": 1350,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.97859764478501,
+      "nativeCeilingPxPerM": 126.6,
+      "standoffM": 10.035070607087524,
+      "obliquityDeg": 3.6563066373354456,
+      "panoramaId": "recording_2025-09-24_12-05-52_01194",
+      "captureDate": "2025-09-24T12:36:41Z",
+      "visionSigns": [
+        {
+          "text": "GROETSTRAAT",
+          "confidence": 0.5,
+          "boxWallM": {
+            "along": 0.29096569910225073,
+            "up": 3.2848148134537034,
+            "width": 0.5091899805894227,
+            "height": 0.10888888888888903
+          }
+        },
+        {
+          "text": "212",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 5.182826586020712,
+            "up": 2.885555557672839,
+            "width": 0.16366820804659987,
+            "height": 0.12703703703703662
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012067754:e:1injpkj",
+      "stratum": "A-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012067754",
+      "street": "Katrijpstraat",
+      "address": "Katrijpstraat 50 / Katrijpstraat 51 / Katrijpstraat 52 / Katrijpstraat 53 / Katrijpstraat 54 / Katrijpstraat 55 / Katrijpstraat 56",
+      "crop": "0363100012067754_e_1injpkj-ground.jpg",
+      "widthPx": 1815,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.9895794085077,
+      "nativeCeilingPxPerM": 153.5,
+      "standoffM": 8.197334449489995,
+      "obliquityDeg": 8.746537232994411,
+      "panoramaId": "recording_2025-09-24_12-05-52_00973",
+      "captureDate": "2025-09-24T12:31:49Z",
+      "visionSigns": [
+        {
+          "text": "50-53",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 7.146891474228799,
+            "up": 2.625663828464707,
+            "width": 0.328788203033354,
+            "height": 0.16090830379062204
+          }
+        },
+        {
+          "text": "54:561",
+          "confidence": 1,
+          "boxWallM": {
+            "along": 9.078926981266042,
+            "up": 2.6541666678916664,
+            "width": 0.28627247487220053,
+            "height": 0.12250000000000005
+          }
+        }
+      ]
+    },
+    {
+      "id": "0363100012061963:e:1evm7i7",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-expansion-550m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012061963",
+      "street": "Bilderdijkstraat",
+      "address": "Bilderdijkstraat 13",
+      "crop": "0363100012061963_e_1evm7i7-ground.jpg",
+      "widthPx": 686,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.93149194704769,
+      "nativeCeilingPxPerM": 119.4,
+      "standoffM": 10.361055419157186,
+      "obliquityDeg": 13.650684280056634,
+      "panoramaId": "recording_2025-06-18_08-56-14_00978",
+      "captureDate": "2025-06-18T09:19:39Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012062260:e:1vze6ea",
+      "stratum": "B-retail-no-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012062260",
+      "street": "Da Costakade",
+      "address": "Da Costakade 130",
+      "crop": "0363100012062260_e_1vze6ea-ground.jpg",
+      "widthPx": 723,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.96069023973966,
+      "nativeCeilingPxPerM": 186.5,
+      "standoffM": 6.8265309994722285,
+      "obliquityDeg": 0.11429067163955282,
+      "panoramaId": "recording_2025-07-31_10-53-44_00647",
+      "captureDate": "2025-07-31T11:09:23Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012064444:e:1l92znq",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-expansion-550m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012064444",
+      "street": "Bilderdijkstraat",
+      "address": "Bilderdijkstraat 76",
+      "crop": "0363100012064444_e_1l92znq-ground.jpg",
+      "widthPx": 708,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.02374785188867,
+      "nativeCeilingPxPerM": 124.9,
+      "standoffM": 10.160114898266546,
+      "obliquityDeg": 4.881661570925373,
+      "panoramaId": "recording_2025-07-31_08-46-40_01851",
+      "captureDate": "2025-07-31T09:46:27Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012067309:e:1c8xhxm",
+      "stratum": "B-retail-no-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012067309",
+      "street": "Da Costakade",
+      "address": "Da Costakade 139 / Da Costakade 141 / Da Costakade 143 / Da Costakade 145 / Da Costakade 147 / Da Costakade 149 / Da Costakade 151 / Da Costakade 153 / Da Costakade 155",
+      "crop": "0363100012067309_e_1c8xhxm-ground.jpg",
+      "widthPx": 3276,
+      "heightPx": 427,
+      "pixelsPerMetre": 87.22118383164326,
+      "nativeCeilingPxPerM": 191.7,
+      "standoffM": 6.596703100396757,
+      "obliquityDeg": 6.713797618706498,
+      "panoramaId": "recording_2025-07-03_10-58-37_00933",
+      "captureDate": "2025-07-03T11:32:10Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012075765:e:1m6m0zn",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-tranche-400m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012075765",
+      "street": "Van Houweningenstraat",
+      "address": "Van Houweningenstraat 161 / Van Houweningenstraat 163 / Van Houweningenstraat 165 / Van Houweningenstraat 167 / Van Houweningenstraat 169 / Van Houweningenstraat 171 / Van Houweningenstraat 173 / Van Houweningenstraat 175 / Van Houweningenstraat 177",
+      "crop": "0363100012075765_e_1m6m0zn-ground.jpg",
+      "widthPx": 1661,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.02970095019027,
+      "nativeCeilingPxPerM": 339.5,
+      "standoffM": 3.560093522813619,
+      "obliquityDeg": 18.329420040861244,
+      "panoramaId": "TMX7316010203-002551_pano_0000_001332",
+      "captureDate": "2022-04-29T11:04:47.334330Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012076749:e:11kqtxq",
+      "stratum": "B-retail-no-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012076749",
+      "street": "De Clercqstraat",
+      "address": "De Clercqstraat 80",
+      "crop": "0363100012076749_e_11kqtxq-ground.jpg",
+      "widthPx": 679,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.92695738345748,
+      "nativeCeilingPxPerM": 127.7,
+      "standoffM": 9.94918221409465,
+      "obliquityDeg": 3.600699784250381,
+      "panoramaId": "recording_2025-06-18_08-56-14_02655",
+      "captureDate": "2025-06-18T10:05:27Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012080836:e:1hhuir5",
+      "stratum": "B-retail-no-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012080836",
+      "street": "De Clercqstraat",
+      "address": "De Clercqstraat 88",
+      "crop": "0363100012080836_e_1hhuir5-ground.jpg",
+      "widthPx": 929,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01044870605426,
+      "nativeCeilingPxPerM": 286.3,
+      "standoffM": 4.237506107516321,
+      "obliquityDeg": 17.66632282771961,
+      "panoramaId": "b_20241211_0838_Track40_Sphere_00083",
+      "captureDate": "2024-12-11T11:15:58Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012094649:e:16jqzp7",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-tranche-400m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012094649",
+      "street": "Van Houweningenstraat",
+      "address": "Van Houweningenstraat 197 / Van Houweningenstraat 199 / Van Houweningenstraat 201 / Van Houweningenstraat 203 / Van Houweningenstraat 205 / Van Houweningenstraat 207 / Van Houweningenstraat 209 / Van Houweningenstraat 211 / Van Houweningenstraat 213",
+      "crop": "0363100012094649_e_16jqzp7-ground.jpg",
+      "widthPx": 1661,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.0197032668547,
+      "nativeCeilingPxPerM": 207.4,
+      "standoffM": 5.890906227641721,
+      "obliquityDeg": 16.354259394136825,
+      "panoramaId": "recording_2024-09-11_10-46-56_00650",
+      "captureDate": "2024-09-11T11:07:39Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012113175:e:13l1yr0",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-expansion-550m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012113175",
+      "street": "Frederik Hendrikstraat",
+      "address": "Frederik Hendrikstraat 117 / Frederik Hendrikstraat 119",
+      "crop": "0363100012113175_e_13l1yr0-ground.jpg",
+      "widthPx": 544,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.99998164576104,
+      "nativeCeilingPxPerM": 139.9,
+      "standoffM": 9.037000785672578,
+      "obliquityDeg": 6.693680474183535,
+      "panoramaId": "recording_2025-06-18_08-56-14_01025",
+      "captureDate": "2025-06-18T09:20:07Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012113175:e:1xmqquv",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-expansion-550m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012113175",
+      "street": "Frederik Hendrikstraat",
+      "address": "Frederik Hendrikstraat 117 / Frederik Hendrikstraat 119",
+      "crop": "0363100012113175_e_1xmqquv-ground.jpg",
+      "widthPx": 617,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.94081028230569,
+      "nativeCeilingPxPerM": 148.7,
+      "standoffM": 8.512362634611765,
+      "obliquityDeg": 6.374407373851753,
+      "panoramaId": "recording_2025-06-18_08-56-14_01027",
+      "captureDate": "2025-06-18T09:20:08Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012125327:e:03pngle",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-tranche-400m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012125327",
+      "street": "Da Costastraat",
+      "address": "Da Costastraat 14",
+      "crop": "0363100012125327_e_03pngle-ground.jpg",
+      "widthPx": 746,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.00695321108924,
+      "nativeCeilingPxPerM": 214.1,
+      "standoffM": 5.9437111678099654,
+      "obliquityDeg": 1.9438524752909727,
+      "panoramaId": "recording_2025-07-03_10-58-37_00588",
+      "captureDate": "2025-07-03T11:21:00Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012144845:e:1le2s9k",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-expansion-550m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012144845",
+      "street": "Hugo de Grootkade",
+      "address": "Hugo de Grootkade 62 / Hugo de Grootkade 64 / Hugo de Grootkade 66",
+      "crop": "0363100012144845_e_1le2s9k-ground.jpg",
+      "widthPx": 2563,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.99523377785367,
+      "nativeCeilingPxPerM": 181.6,
+      "standoffM": 6.760256895058494,
+      "obliquityDeg": 15.345836536371001,
+      "panoramaId": "recording_2025-06-18_08-56-14_02445",
+      "captureDate": "2025-06-18T10:00:13Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012144845:e:1le2s9k",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-tranche-400m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012144845",
+      "street": "Hugo de Grootkade",
+      "address": "Hugo de Grootkade 62 / Hugo de Grootkade 64 / Hugo de Grootkade 66",
+      "crop": "0363100012144845_e_1le2s9k-ground.jpg",
+      "widthPx": 2563,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.99523377785367,
+      "nativeCeilingPxPerM": 181.6,
+      "standoffM": 6.760256895058494,
+      "obliquityDeg": 15.345836536371001,
+      "panoramaId": "recording_2025-06-18_08-56-14_02445",
+      "captureDate": "2025-06-18T10:00:13Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012153291:e:0apgoy6",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-tranche-400m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012153291",
+      "street": "Van Reigersbergenstraat",
+      "address": "Van Reigersbergenstraat 43 / Van Reigersbergenstraat 45",
+      "crop": "0363100012153291_e_0apgoy6-ground.jpg",
+      "widthPx": 495,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.02046122834035,
+      "nativeCeilingPxPerM": 218.4,
+      "standoffM": 5.7801050629046395,
+      "obliquityDeg": 7.536742473433501,
+      "panoramaId": "recording_2025-06-18_08-56-14_02207",
+      "captureDate": "2025-06-18T09:52:46Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012162796:e:13u2mzl",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-tranche-400m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012162796",
+      "street": "Allard Piersonstraat",
+      "address": "Allard Piersonstraat 2",
+      "crop": "0363100012162796_e_13u2mzl-ground.jpg",
+      "widthPx": 687,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.07566558050192,
+      "nativeCeilingPxPerM": 147.4,
+      "standoffM": 8.637070610889419,
+      "obliquityDeg": 0.10898760892483163,
+      "panoramaId": "recording_2025-07-03_10-58-37_00572",
+      "captureDate": "2025-07-03T11:20:40Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012166929:e:1yny2ra",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-tranche-400m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012166929",
+      "street": "Van Oldenbarneveldtstraat",
+      "address": "Van Oldenbarneveldtstraat 91",
+      "crop": "0363100012166929_e_1yny2ra-ground.jpg",
+      "widthPx": 504,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.89902383745368,
+      "nativeCeilingPxPerM": 191.9,
+      "standoffM": 6.36701111492075,
+      "obliquityDeg": 16.337894116105215,
+      "panoramaId": "recording_2025-06-18_08-56-14_01201",
+      "captureDate": "2025-06-18T09:24:11Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012167868:e:1i2bjkw",
+      "stratum": "B-retail-no-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012167868",
+      "street": "Lauriergracht",
+      "address": "Lauriergracht 53 / Lauriergracht 55 / Lauriergracht 57 / Lauriergracht 59 / Lauriergracht 61 / Lauriergracht 63",
+      "crop": "0363100012167868_e_1i2bjkw-ground.jpg",
+      "widthPx": 2985,
+      "heightPx": 469,
+      "pixelsPerMetre": 95.7352831043179,
+      "nativeCeilingPxPerM": 354.5,
+      "standoffM": 3.108175880359842,
+      "obliquityDeg": 30.071574350186918,
+      "panoramaId": "TMX7316010203-002995_pano_0002_000005",
+      "captureDate": "2023-03-13T08:54:34.867030Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012167875:e:03ydc4q",
+      "stratum": "B-retail-no-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012167875",
+      "street": "Rozengracht",
+      "address": "Rozengracht 145 / Rozengracht 143",
+      "crop": "0363100012167875_e_03ydc4q-ground.jpg",
+      "widthPx": 465,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01503282422763,
+      "nativeCeilingPxPerM": 135.7,
+      "standoffM": 9.310296488256956,
+      "obliquityDeg": 6.9997936697403595,
+      "panoramaId": "TMX7316010203-002939_pano_0000_000261",
+      "captureDate": "2023-01-16T11:28:03.702830Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012167878:e:07hebf3",
+      "stratum": "B-retail-no-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012167878",
+      "street": "Rozengracht",
+      "address": "Rozengracht 158",
+      "crop": "0363100012167878_e_07hebf3-ground.jpg",
+      "widthPx": 399,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.99792597167013,
+      "nativeCeilingPxPerM": 176.7,
+      "standoffM": 6.224932541341386,
+      "obliquityDeg": 30.235153528161796,
+      "panoramaId": "TMX7316010203-002542_pano_0006_000029",
+      "captureDate": "2022-04-25T10:21:38.037840Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012168366:e:0e5mi9z",
+      "stratum": "B-retail-no-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012168366",
+      "street": "Rozengracht",
+      "address": "Rozengracht 229 / Rozengracht 231",
+      "crop": "0363100012168366_e_0e5mi9z-ground.jpg",
+      "widthPx": 479,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.93070855553235,
+      "nativeCeilingPxPerM": 393.8,
+      "standoffM": 3.232372109213947,
+      "obliquityDeg": 1.3361792901810814,
+      "panoramaId": "recording_2025-07-03_08-35-58_01291",
+      "captureDate": "2025-07-03T09:37:04Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012168366:e:0e5mi9z",
+      "stratum": "B-retail-no-text",
+      "area": "da-costa-expansion-550m-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012168366",
+      "street": "Rozengracht",
+      "address": "Rozengracht 229 / Rozengracht 231",
+      "crop": "0363100012168366_e_0e5mi9z-ground.jpg",
+      "widthPx": 479,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.93070855553235,
+      "nativeCeilingPxPerM": 393.8,
+      "standoffM": 3.232372109213947,
+      "obliquityDeg": 1.3361792901810814,
+      "panoramaId": "recording_2025-07-03_08-35-58_01291",
+      "captureDate": "2025-07-03T09:37:04Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012168547:e:169kl2o",
+      "stratum": "B-retail-no-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012168547",
+      "street": "Lauriergracht",
+      "address": "Lauriergracht 99 / Lauriergracht 105 / Lauriergracht 101 / Lauriergracht 103 / Elandsstraat 154 / Elandsstraat 152",
+      "crop": "0363100012168547_e_169kl2o-ground.jpg",
+      "widthPx": 2762,
+      "heightPx": 507,
+      "pixelsPerMetre": 103.42275312298328,
+      "nativeCeilingPxPerM": 347.6,
+      "standoffM": 3.031175474431812,
+      "obliquityDeg": 34.145404298045776,
+      "panoramaId": "recording_2025-07-03_10-31-52_00032",
+      "captureDate": "2025-07-03T10:34:25Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012168881:e:03vrmcz",
+      "stratum": "B-retail-no-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012168881",
+      "street": "Elandsgracht",
+      "address": "Elandsgracht 38 / Elandsgracht 58 / Elandsgracht 46 / Elandsgracht 40 / Elandsgracht 54 / Elandsgracht 56 / Elandsgracht 42 / Elandsgracht 52 / Elandsgracht 48 / Elandsgracht 50 / Elandsgracht 44",
+      "crop": "0363100012168881_e_03vrmcz-ground.jpg",
+      "widthPx": 845,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.97008454308934,
+      "nativeCeilingPxPerM": 185,
+      "standoffM": 6.877041620900149,
+      "obliquityDeg": 2.007914393229406,
+      "panoramaId": "recording_2025-07-03_10-31-52_00147",
+      "captureDate": "2025-07-03T10:39:13Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012168920:e:1wuvrh6",
+      "stratum": "B-retail-no-text",
+      "area": "jordaan-sample-v1",
+      "group": "jordaan",
+      "character": "retail",
+      "buildingId": "0363100012168920",
+      "street": "Elandsgracht",
+      "address": "Elandsgracht 148",
+      "crop": "0363100012168920_e_1wuvrh6-ground.jpg",
+      "widthPx": 604,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.97221158066878,
+      "nativeCeilingPxPerM": 175.9,
+      "standoffM": 6.675326474803555,
+      "obliquityDeg": 22.784066783719766,
+      "panoramaId": "recording_2025-07-03_10-31-52_00193",
+      "captureDate": "2025-07-03T10:40:12Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012174210:e:15cjfhe",
+      "stratum": "B-retail-no-text",
+      "area": "da-costabuurt-v1",
+      "group": "da-costa",
+      "character": "retail",
+      "buildingId": "0363100012174210",
+      "street": "Lauriergracht",
+      "address": "Lauriergracht 164",
+      "crop": "0363100012174210_e_15cjfhe-ground.jpg",
+      "widthPx": 685,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.96148392538552,
+      "nativeCeilingPxPerM": 377,
+      "standoffM": 3.329633318743164,
+      "obliquityDeg": 9.681296071178235,
+      "panoramaId": "TMX7316010203-002979_pano_0014_000133",
+      "captureDate": "2023-02-20T11:41:30.883830Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012061195:e:0v46s2h",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012061195",
+      "street": "Enkhuizerstraat",
+      "address": "Enkhuizerstraat 9",
+      "crop": "0363100012061195_e_0v46s2h-ground.jpg",
+      "widthPx": 600,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.92970119504916,
+      "nativeCeilingPxPerM": 170.3,
+      "standoffM": 7.181763298080929,
+      "obliquityDeg": 16.128482962919747,
+      "panoramaId": "recording_2025-09-24_14-41-27_01667",
+      "captureDate": "2025-09-24T15:24:12Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012061385:e:0jpohtv",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012061385",
+      "street": "Alkmaarstraat",
+      "address": "Alkmaarstraat 71 / Alkmaarstraat 79 / Alkmaarstraat 81 / Alkmaarstraat 83 / Groetstraat 217 / Alkmaarstraat 73 / Alkmaarstraat 77 / Alkmaarstraat 75",
+      "crop": "0363100012061385_e_0jpohtv-ground.jpg",
+      "widthPx": 1505,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.03512837578012,
+      "nativeCeilingPxPerM": 111.7,
+      "standoffM": 11.233872746469554,
+      "obliquityDeg": 9.646857881679816,
+      "panoramaId": "recording_2025-09-24_12-05-52_00080",
+      "captureDate": "2025-09-24T12:11:31Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012061485:e:0so8blg",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012061485",
+      "street": "Medemblikstraat",
+      "address": "Medemblikstraat 35",
+      "crop": "0363100012061485_e_0so8blg-ground.jpg",
+      "widthPx": 586,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.98004239798837,
+      "nativeCeilingPxPerM": 160.4,
+      "standoffM": 7.753251319019045,
+      "obliquityDeg": 12.4560141237623,
+      "panoramaId": "recording_2025-09-24_14-41-27_01047",
+      "captureDate": "2025-09-24T15:07:56Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012061485:e:1uj75rk",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012061485",
+      "street": "Medemblikstraat",
+      "address": "Medemblikstraat 35",
+      "crop": "0363100012061485_e_1uj75rk-ground.jpg",
+      "widthPx": 869,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.97484241384012,
+      "nativeCeilingPxPerM": 213,
+      "standoffM": 5.972846486904963,
+      "obliquityDeg": 2.411855514951918,
+      "panoramaId": "recording_2025-09-24_14-41-27_01171",
+      "captureDate": "2025-09-24T15:10:38Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012061937:e:0pnxkew",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012061937",
+      "street": "Hoornsestraat",
+      "address": "Hoornsestraat 45",
+      "crop": "0363100012061937_e_0pnxkew-ground.jpg",
+      "widthPx": 602,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.07093603093006,
+      "nativeCeilingPxPerM": 177,
+      "standoffM": 7.032019718610218,
+      "obliquityDeg": 12.13612393563162,
+      "panoramaId": "recording_2025-09-24_14-41-27_02132",
+      "captureDate": "2025-09-24T15:33:14Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012062131:e:1pfztkr",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012062131",
+      "street": "Beemsterstraat",
+      "address": "Beemsterstraat 13",
+      "crop": "0363100012062131_e_1pfztkr-ground.jpg",
+      "widthPx": 600,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.01515373071753,
+      "nativeCeilingPxPerM": 129.2,
+      "standoffM": 9.841532866783911,
+      "obliquityDeg": 2.8610177858781816,
+      "panoramaId": "recording_2025-09-24_14-13-19_00015",
+      "captureDate": "2025-09-24T14:13:58Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012062302:e:0alb39l",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012062302",
+      "street": "Hoornsestraat",
+      "address": "Hoornsestraat 34",
+      "crop": "0363100012062302_e_0alb39l-ground.jpg",
+      "widthPx": 850,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.02671499754936,
+      "nativeCeilingPxPerM": 201.2,
+      "standoffM": 5.916616678925979,
+      "obliquityDeg": 20.77438465715665,
+      "panoramaId": "recording_2025-09-24_14-41-27_01747",
+      "captureDate": "2025-09-24T15:26:22Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012062820:e:01n2n3s",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012062820",
+      "street": "Blokkerstraat",
+      "address": "Blokkerstraat 30",
+      "crop": "0363100012062820_e_01n2n3s-ground.jpg",
+      "widthPx": 608,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.04522341857958,
+      "nativeCeilingPxPerM": 133.3,
+      "standoffM": 9.55053679763084,
+      "obliquityDeg": 0.9523181032141291,
+      "panoramaId": "recording_2025-09-24_13-13-47_02215",
+      "captureDate": "2025-09-24T14:01:34Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012063708:e:0xbuzyu",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012063708",
+      "street": "Enkhuizerplein",
+      "address": "Enkhuizerplein 10",
+      "crop": "0363100012063708_e_0xbuzyu-ground.jpg",
+      "widthPx": 716,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.05915337337389,
+      "nativeCeilingPxPerM": 177.9,
+      "standoffM": 7.084013176126294,
+      "obliquityDeg": 8.224244255737911,
+      "panoramaId": "recording_2025-09-24_14-41-27_01647",
+      "captureDate": "2025-09-24T15:23:48Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012064029:e:1fc04ed",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012064029",
+      "street": "Andijkstraat",
+      "address": "Andijkstraat 18",
+      "crop": "0363100012064029_e_1fc04ed-ground.jpg",
+      "widthPx": 618,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.91215953634381,
+      "nativeCeilingPxPerM": 161.7,
+      "standoffM": 7.6184211560454,
+      "obliquityDeg": 14.64691990038291,
+      "panoramaId": "recording_2025-09-24_14-41-27_01693",
+      "captureDate": "2025-09-24T15:24:42Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012064354:e:0l5u557",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012064354",
+      "street": "Ilpendammerstraat",
+      "address": "Ilpendammerstraat 9",
+      "crop": "0363100012064354_e_0l5u557-ground.jpg",
+      "widthPx": 589,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.97116908209146,
+      "nativeCeilingPxPerM": 131.6,
+      "standoffM": 9.650137552324397,
+      "obliquityDeg": 3.8630768516466776,
+      "panoramaId": "recording_2025-09-24_14-41-27_01472",
+      "captureDate": "2025-09-24T15:19:22Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012064361:e:0l1m4pt",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012064361",
+      "street": "Groetstraat",
+      "address": "Groetstraat 210 / Groetstraat 211 / Groetstraat 212 / Groetstraat 213 / Groetstraat 214 / Groetstraat 215 / Groetstraat 216",
+      "crop": "0363100012064361_e_0l1m4pt-ground.jpg",
+      "widthPx": 1836,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.99128570479805,
+      "nativeCeilingPxPerM": 127.5,
+      "standoffM": 9.83764096430369,
+      "obliquityDeg": 9.917642903919665,
+      "panoramaId": "recording_2025-09-24_12-05-52_01191",
+      "captureDate": "2025-09-24T12:36:37Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012064527:e:1hnhr1s",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012064527",
+      "street": "Bovenkarspelstraat",
+      "address": "Bovenkarspelstraat 3",
+      "crop": "0363100012064527_e_1hnhr1s-ground.jpg",
+      "widthPx": 642,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.00517680436538,
+      "nativeCeilingPxPerM": 191.6,
+      "standoffM": 5.959450159474336,
+      "obliquityDeg": 26.248696222520262,
+      "panoramaId": "TMX7316010203-002563_pano_0002_000477",
+      "captureDate": "2022-05-09T08:49:37.719520Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012064575:e:0uhpdfp",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012064575",
+      "street": "Graftdijkerstraat",
+      "address": "Graftdijkerstraat 16",
+      "crop": "0363100012064575_e_0uhpdfp-ground.jpg",
+      "widthPx": 515,
+      "heightPx": 539,
+      "pixelsPerMetre": 109.91199440722727,
+      "nativeCeilingPxPerM": 241.4,
+      "standoffM": 5.11530440646407,
+      "obliquityDeg": 14.142651324892517,
+      "panoramaId": "recording_2025-09-24_13-13-47_01557",
+      "captureDate": "2025-09-24T13:46:54Z",
+      "visionSigns": []
+    },
+    {
+      "id": "0363100012064887:e:0v4a95c",
+      "stratum": "C-residential-no-text",
+      "area": "tuindorp-nieuwendam-v1",
+      "group": "tuindorp-nieuwendam",
+      "character": "residential",
+      "buildingId": "0363100012064887",
+      "street": "Enkhuizerstraat",
+      "address": "Enkhuizerstraat 22",
+      "crop": "0363100012064887_e_0v4a95c-ground.jpg",
+      "widthPx": 603,
+      "heightPx": 539,
+      "pixelsPerMetre": 110.03881020254639,
+      "nativeCeilingPxPerM": 167.3,
+      "standoffM": 7.366564293150285,
+      "obliquityDeg": 14.556574444468433,
+      "panoramaId": "recording_2025-09-24_14-41-27_01672",
+      "captureDate": "2025-09-24T15:24:17Z",
+      "visionSigns": []
+    }
+  ]
+}
