@@ -16,6 +16,7 @@ public/canal-drive/google-tiles-config.json
 .cache/
 public/canal-drive/facade-registration-review/local/
 public/canal-drive/facade-photo-review/local/
+public/canal-drive/roofline-review/local/
 public/data/extracts/*/staging/
 firebase-debug.log
 dist-canalrecall/

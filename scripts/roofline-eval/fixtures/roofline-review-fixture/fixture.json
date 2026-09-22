@@ -1,0 +1,16 @@
+{
+  "fixture": true,
+  "schema": "roofline-profile/v1 (A2 output format)",
+  "generatedBy": "A6 fixture generator, hand-authored",
+  "generatedAt": "2026-09-22",
+  "note": "Hand-made coarse/snapped rows and profiles for developing the roofline grading page. A2 has not landed. The strip JPEGs are real (strips-roofline-v1, A0); the profile numbers are plausible placeholders, not measurements. Do not use for scoring.",
+  "stripsDir": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-building-twin/.cache/facade-twin/strips-roofline-v1",
+  "sourceManifest": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-building-twin/.cache/facade-twin/strips-roofline-v1/manifest.json",
+  "pandIds": [
+    "0363100012164991",
+    "0363100012167657",
+    "0363100012167686",
+    "0363100012167733",
+    "0363100012167727"
+  ]
+}
