@@ -1,8 +1,11 @@
 # Shop signage and notable street detail: exploration plan
 
-Status: plan, written 2026-09-22; owner direction added the same day (§1a). Not started. Roofs
-(`ROOFLINE_FROM_PHOTOS_PLAN.md`) have priority; this runs when the owner says so.
-It is a task spec under `public/canal-drive/TODO.md` item 10.
+Status: plan, written 2026-09-22; owner direction added the same day (§1a);
+**v2 amendments added 2026-09-22 evening (§9) after recon and the owner's
+"signage next" call. §9 supersedes the reader list in §1/§5 S2 and the sample
+pool in §4; everything else stands.** Signage now runs ahead of
+`ROOFLINE_FROM_PHOTOS_PLAN.md`. It is a task spec under
+`public/canal-drive/TODO.md` item 10.
 
 ## 1. The question and the decisions it feeds
 
@@ -213,3 +216,116 @@ Everything is local except the optional hosted reader.
   frame; if not, add a crop with side margin.
 - **Dated signs.** A correct 2021 reading of a shop that closed in 2024 is still
   a wrong landmark. The capture date is shown with the sign, and the newest view wins.
+
+---
+
+## 9. v2 amendments (2026-09-22 evening)
+
+Recon (§2 corrections), the owner's reader decision, and a verified local OCR run.
+**These supersede §1/§5 S2 (readers), §4 (sample pool) and §2 (facts); the
+decision rules in §6 and the owner direction in §1a are unchanged.**
+
+### 9.1 Reader line-up (replaces the unnamed "local OCR" options)
+
+| id | reader | what it is | status |
+| --- | --- | --- | --- |
+| **R-ocr** | **`bytefer/macos-vision-ocr`** (MIT, 315★) | Apple Vision via a single-file Swift CLI. Emits `observations[{text, confidence, quad}]` with a 4-corner quad normalised to the image, y already flipped top-down. `--img-dir --merge` batch, `--debug` draws boxes. Vendored as source at `scripts/facade-eval/vision-ocr/` (source + `Package.swift` + MIT `LICENSE`); build with `swift build -c release --arch arm64`. | **verified working** (§9.2) |
+| **R-ocr2** | easyocr 1.7.2 + python-doctr 1.1.0 | already installed in the rf-probe venv; Dutch and English | ready |
+| **R-vlm-local** | Qwen2.5-VL / Florence-2 via the installed `transformers` 5.15.1 | text + box + colour + a font guess in one pass | ready |
+| **R-ocr+ocr2** | the pair | where both agree on text, accept; where they disagree, abstain | scored as its own reader |
+| **R-gemini** | the existing `machineRoutingProposal.signText` | 259 `signTextEligible:'yes'` frontages; **reference point only**, not a candidate (owner §1a) | on disk |
+
+Rejected: `ksturner/swift-ocr-cli` (prints text only, **no boxes**);
+`dielect/mac-ocr-cli` (a FastAPI server around `ocrmac`; call `ocrmac` directly
+if the Python route is ever wanted).
+
+### 9.2 Verified 2026-09-22 (measured, not estimated)
+
+- **Vision supports `nl-NL`** on this machine (macOS 26.6.2, Swift 6.4, full Xcode).
+  `--lang` prints 30 languages including `nl-NL`, `en-US`, `de-DE`, `fr-FR`.
+  The upstream README's 16-language list is incomplete. **Run with
+  `--rec-langs "nl-NL,en-US"`.**
+- **First real run on our crops** (`da-costabuurt-v1` ground tier, 110 px/m):
+  `NINA'S` / `Exclusieve` / `Handwork Boutiqur` (conf 1.00), `Schoonenberg` /
+  `HoorSupport`, `123`. Three of six crops returned nothing — no sign, or too
+  small. So the reader works on the imagery we already have, with boxes.
+- **Amsterdam signage is heavily English**, and mixed: `Handwork Boutique`,
+  `HoorSupport`, `OPEN`, `ICE CREAM`, `ABOUT LIFESTYLE`, `Tweewielers Fiets
+  Reparatie`, `IJscuypje`, `Bakkerij Wolf`. **Scoring must accept a correct
+  English reading of an English sign**, and must not treat a Dutch↔English
+  variant as an invention. Both languages are always requested.
+- **Resolution:** ground crops are **110 px/m, 4.9 m tall (539 px)**; the GROUND
+  pose native ceiling is **median 142 px/m**; an R1 re-render beats the cached
+  crop on **63.8 %** of frontages; native is **below 110 px/m on 28.6 %**, where
+  the cached crop is already interpolating. A 0.5 m letter band is 55 px at 110,
+  ~71 px at native.
+- **Pool:** **2,746 ground crops across six areas** (apollobuurt 943, tuindorp
+  999, jordaan 333, da-costa 277+170+24), each with pose + plane in its evidence
+  manifest — not the release's 585.
+- **Sign text already on disk:** 307 rendered bands; **259 `signTextEligible:'yes'`**
+  in the 598 observations; 66 unique strings in the da-costa neighbourhood; 138
+  across snapshots.
+- **OCR capability was installed but unwired:** easyocr, python-doctr,
+  transformers, and system `tesseract` at `/opt/homebrew/bin/tesseract`.
+- **The retail lane is not wired to the renderer** (TODO:433, HISTORY:867), but
+  `facadeSignMaterial.ts` (`createFacadeSignMaterial`, `signQuadUv`) already
+  draws a source-bound sign, and `cityAppearanceFacadeRecipes.ts` already builds
+  fascia/awning `sign` descriptors.
+- **Licence resolved:** municipal panoramas are **CC BY 4.0**
+  (`amsterdamPanorama.ts:41-42`, `NOTICE.md`) → **D2 option C (photo decal) is
+  permitted with attribution**; S0's "if unclear, stop" no longer applies.
+- **No signage infrastructure:** `review-data/signage/` does not exist, there is
+  no signage check, and `check:canal` runs neither `test:machine-signs` nor any
+  retail check.
+
+### 9.3 Sample pool (§4 superseded)
+
+Draw from the **full 2,746 ground crops across six areas**, same stratification
+(40 with text, 25 storefront-without-text, 15 residential/unknown), ≤2 per street
+segment, retail cases 03/21/29 excluded, **Moeders + Dijkman + Bakkerij Wolf**
+fixed in. Crops cut at **`min(150, 0.9 × native)`** px/m, the cached 110 px/m crop
+kept alongside; record where native < 110 so interpolated detail is known.
+
+### 9.4 Sign taxonomy — new task S0b (does not exist anywhere today)
+
+```ts
+type SignType = 'fascia' | 'blade' | 'window' | 'awning' | 'logo' | 'gevelsteen';
+type SignFontClass = 'serif' | 'sans' | 'script' | 'display' | 'unknown';
+interface SignObservation {
+  text: string; type: SignType;
+  boxWallM: { along: number; up: number; width: number; height: number };
+  quadWallM?: [number, number][];   // from the Vision quad
+  fg?: string; bg?: string;         // sampled from the crop inside the quad
+  case?: 'upper' | 'lower' | 'mixed';
+  fontClass: SignFontClass;         // 'unknown' unless a reader justifies it
+  confidence: number; reader: string; captureDate?: string;
+}
+```
+Typed module in `src/canalRecall/facade/signObservation.ts` + a test. Vision
+gives no colours, so fg/bg are sampled deterministically from the crop; font
+class stays `unknown` rather than invented.
+
+### 9.5 New task S5 — wire and gate
+
+Land the `retailPatches` → renderer wiring through `facadeSignMaterial.ts`; add
+`test:signage` to `check:canal`; fix the **Moeders sign-tile residency bug**
+(`CITY_RECONSTRUCTION_REVIEW.md`) — an isolated render does not prove a sign
+reaches the game.
+
+### 9.6 Risks added
+
+- **Vision returns text *lines*, not signs.** The first run returned the same
+  sign twice (`NINA'S` at x=0.10 and 0.37). Merging lines into one sign by
+  proximity is our logic and needs its own test.
+- **Mixed Dutch/English** (§9.2) — scoring must not count a correct English
+  reading as an error, nor a Dutch/English variant as an invention.
+- **Font class is the weakest field** — ship `unknown`.
+- **Blade signs project off the wall plane** and can fall outside a rectified crop.
+- **Dated signs** — newest view wins, older kept as history.
+
+### 9.7 Verification
+
+A pinned frontage per reader as a named regression (the `NINA'S` /
+`Schoonenberg` crops above are the first candidates); the per-frontage
+gold-vs-reader overlay; the invention rate measured on the 15 residential
+frontages; and `test:signage` in `check:canal`.
