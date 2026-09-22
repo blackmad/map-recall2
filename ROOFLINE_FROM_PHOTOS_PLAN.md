@@ -5,6 +5,94 @@ item 10. Companion docs: [AMSTERDAM_FACADE_GEOMETRY_DESIGN.md](AMSTERDAM_FACADE_
 (point-cloud tasks T0–T9), [FACADE_MODEL_EVALUATION_PLAN.md](FACADE_MODEL_EVALUATION_PLAN.md)
 (openings; its lessons are applied here).
 
+## 0. Start here: the segmented canal-belt strips (tasks A0–A3)
+
+The owner's direction (2026-09-22): **start from the existing segmented panorama
+strips**, not from new models. They are already in the canal belt, leaf-off, and
+the segmentation is judged "not bad". The order is: strips → roofline profile →
+reconcile into 3DBAG (§7) → render → owner review. The scan comparison (§1–§6)
+becomes the *validation* of that same model, not the starting point.
+
+What exists (verified 2026-09-22):
+- **Strips:** 91 rectified facade strips at
+  `/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-building-twin/.cache/facade-twin/strips-confident/`,
+  named `<Address>__<pandId>__<date>.jpg` (Herengracht, Keizersgracht,
+  Prinsengracht, Brouwersgracht…).
+- **Segmenter:** Roboflow `amsterdam-facade/2` (CC BY 4.0), 5 classes
+  `background, building, door, sky, window`, run locally through ONNX by
+  `scripts/facade-rebuild/extract-strip-features.py`. Weights sha256
+  `c3c08d7bb4354ac828efe00fc94d0fff4c6f2b88f429899d027e287532f7def5`.
+  **The only copy found is in `/tmp/cache/models-cache/v2-amsterdam-facade-2-…/`,
+  which is lost on reboot.**
+- **Existing mask runs:** about 30 runs in
+  `public/canal-drive/facade-photo-review/local/*/` (`*.mask.png` plus
+  `manifest.json`), covering only about 9 buildings. Each record carries
+  `source` (`pandId`, `panoramaId`, `wallWidthM`, `wallFacingDeg`, `groundZ`,
+  `topZ`, `leafOff`, `standoffM`, `obliquityDeg`) and `frame`
+  (`metresPerPixelX/Y`, `leftM`, `topM`).
+- **Known limits, from the manifests themselves:** the strip extent is
+  ground − 0.8 m to `topZ` + 0.5 m with a 1.06 horizontal margin, and its scale is
+  "provisional, not surveyed accuracy". `registration: "unreviewed"`. Sky covers
+  only 1–12 % of the sampled strips, so **some gables will be cut off at the
+  top edge**. A0 measures how many.
+
+### A0: Secure the model and segment all strips (DeepSeek; wave 1)
+1. Copy the model directory from `/tmp/cache/models-cache/` to
+   `$ROOFLINE_CACHE/models/amsterdam-facade-2/` and verify the weights sha256
+   above. Mismatch or missing → stop and report (it needs the owner's Roboflow key).
+2. Run `extract-strip-features.py` (unchanged, using the building-twin
+   `.venv-vision` Python) over **all 91** strips into a new immutable run dir
+   `$ROOFLINE_CACHE/roofline-eval/strip-masks/amsterdam-facade-2-v1/`.
+3. Per strip, report: the share of columns with a clean building → sky transition,
+   the share of columns clipped (building in the top row, so the roofline is
+   above the strip), and the share with `background` at the transition.
+Done when: a table of all 91 strips with those three numbers, plus a contact
+sheet PNG of masks. **If more than 40 % of strips are mostly clipped, stop:
+the strips need regenerating with ≥ 6 m headroom first** (the generator lives in
+the building-twin worktree; the integrator decides).
+
+### A1: Strip mask → roofline profile (DeepSeek; wave 1, after A0)
+1. `src/canalRecall/facade/stripRoofline.ts`: for each strip column, walk down
+   from the top row and find the first run (≥ 4 px) of `building ∪ window ∪ door`
+   with `sky` directly above it. Return `null` if the top row is already
+   building (clipped), if `background` touches the transition (±3 px), or if
+   there's no sky in the column.
+2. Convert pixels to the §3 frame using the record's `frame`: `along` =
+   `leftM + x · metresPerPixelX` (metres along the wall from its start),
+   `up` = `topM − y · metresPerPixelY`. Check whether `topM` is NAP or local and
+   convert to NAP. Stop and report if it can't be determined.
+3. Resample to 0.10 m and label the shape with the §3 rule.
+4. Tests on synthetic masks: a step gable, clipped columns, a tree-occluded
+   side, and a `background` roof behind.
+Done when: profiles for all usable strips, and an overlay per strip (profile on
+the photo) in `$ROOFLINE_CACHE/roofline-eval/strip-profiles/overlays/`.
+
+### A2: Wall geometry and 3DBAG for the strip buildings (DeepSeek; wave 1)
+1. For each strip's pand, recover the photographed wall's **RD endpoints**
+   (`plane.start`/`end`), matching `wallWidthM` and `wallFacingDeg`, from the
+   building-twin registry (`.cache/facade-twin/amsterdam-grachtengordel-west-registry.json`
+   and its massing file). Record which endpoint is the strip's left edge.
+   Ambiguous → mark it and exclude it; don't guess.
+2. Fetch the LoD2.2 CityJSONFeatures for those pand IDs into an offline cache
+   (same pattern as T3, `scripts/pointcloud/` 3DBAG cache) and pin the 3DBAG
+   version.
+Done when: a table of pand → wall endpoints → 3DBAG feature, with the excluded
+ones and why.
+
+### A3: Reconcile, render, review (G1–G4 in §7, on the canal-belt strips)
+Run G2 → G1 on the A1 profiles with the A2 geometry, then G3 render, then the
+G4 owner yes/no review, **on these canal-belt buildings first**. Report the
+relation counts (`agree` / `rises` / `below` / `unknown`) across all strips.
+A high `below` count points at a vertical scale or datum error in the strip
+mapping, not at 3DBAG.
+
+### Validation of the same model against the scan (§1–§6)
+In parallel, run **`amsterdam-facade/2` as method S1** on the Oud-Zuid views (R2
+with headroom → R4 → R5) against the scan gold. This gives a measured error for
+the exact model used in the canal belt. The other models (Mask2Former,
+SegFormer, SAM 3) run **only if `amsterdam-facade/2` fails the §1 rule**. The
+luminance `skyline.ts` stays S0, the floor.
+
 ## 1. Question, decision, rule
 
 **Question:** can street-panorama segmentation recover a facade's roofline
@@ -83,9 +171,10 @@ the openings run):
 | ID | Method | Notes |
 | --- | --- | --- |
 | **S0 baseline** | Existing in-repo heuristic: `src/canalRecall/facade/skyline.ts` (`skyline`, a luminance-based sky/building boundary per column, added 2026-09-03 for registration). | A zero-cost floor. A model that can't beat a brightness threshold isn't worth adopting. |
-| S1 | Mask2Former, Mapillary Vistas semantic (`facebook/mask2former-swin-large-mapillary-vistas-semantic`) | Trained on street-level images; has sky / building / vegetation / pole classes. |
-| S2 | SegFormer ADE20K (`nvidia/segformer-b5-finetuned-ade-640-640`) | Cheap second opinion. |
-| S3 | SAM 3 with the text prompts "sky" and "building" | Sharp edges. Weights may be gated on Hugging Face. **If gated, stop and report; a human accepts the licence.** |
+| **S1** | **Roboflow `amsterdam-facade/2`**, the strip segmenter (§0) | The method in use. Classes: `sky` → 1, `building`/`window`/`door` → 2, `background` → 255. |
+| S2 | Mask2Former, Mapillary Vistas semantic (`facebook/mask2former-swin-large-mapillary-vistas-semantic`) | **Only if S1 fails.** Trained on street-level images; has sky / building / vegetation / pole classes. |
+| S3 | SegFormer ADE20K (`nvidia/segformer-b5-finetuned-ade-640-640`) | **Only if S1 fails.** Cheap second opinion. |
+| S4 | SAM 3 with the text prompts "sky" and "building" | **Only if S1 fails.** Sharp edges. Weights may be gated on Hugging Face. **If gated, stop and report; a human accepts the licence.** |
 | aux | Depth Anything V2 (small) | Only in R6, as a tie-breaker for set-back edges. It is not a roofline source. |
 
 Confirm every Hugging Face ID with a real download before hardcoding it
@@ -248,7 +337,7 @@ verdict with its numbers and diagnostics into `HISTORY.md`, and move `TODO.md`.
 
 | Wave | Tasks (parallel) | Agent |
 | --- | --- | --- |
-| 0 | Commit this doc; confirm `npm run lint` passes at the base commit; confirm S0 with the owner. | integrator |
+| 0 | Superseded by the execution plan at the end of §7. | |
 | 1 | R1 gold · R2 views · R3 adapters · R5 scorer code | Sonnet · DeepSeek · DeepSeek · DeepSeek |
 | 1→2 gate | Integrator merges and **reviews R1 and R2 overlays**; marks `spotCheck`. Stop here if R2 shows misregistration. | integrator |
 | 2 | R4 projection | Sonnet |
@@ -388,14 +477,15 @@ panorama view of the same facade.
    and compare the patch with the scan-derived patch for the same elevation.
    Same thresholds as §1 on the patched section.
 
-### Updated execution plan
+### Execution plan (supersedes the §6 table)
 
-| Wave | Photo evaluation | Reconciliation |
-| --- | --- | --- |
-| 1 | R1 (Sonnet) · R2, R3, R5 code (DeepSeek) | G1 (Sonnet, after R1's schema lands) · G2 (Sonnet) |
-| 2 | R4 (Sonnet) | G3 (integrator) |
-| 3 | R6 (Sonnet) · R7 (DeepSeek) · R5 run | G4 parts 1–2 |
-| 4 | R8 decision | G4 part 3 if R8 passes |
+| Wave | Canal-belt strips (§0) | Reconciliation (§7) | Validation against the scan (§1–§6) |
+| --- | --- | --- | --- |
+| 1 | A0 secure model and segment all 91 (DeepSeek) · A2 walls and 3DBAG (DeepSeek) | G2 gable fitting (Sonnet) | R1 gold (Sonnet) · R2 views (DeepSeek) · R5 scorer code (DeepSeek) |
+| gate | Integrator reviews the A0 table: stop if strips are mostly clipped | | Integrator reviews R1/R2 overlays and marks `spotCheck` |
+| 2 | A1 strip profiles (DeepSeek) | G1 reconcile core (Sonnet) | R3 S1 adapter only, R4 projection (Sonnet) |
+| 3 | A3: G1 on the strips, relation counts | G3 render (integrator) | R5 run for S0 and S1 |
+| 4 | G4 owner review on canal-belt buildings | | R8 verdict for S1; S2–S4 only if S1 fails |
 
 The reconciliation lane can succeed even if every photo method fails: then the
 result is "gables from the scan where we have scans", which is still the first
