@@ -15,8 +15,22 @@
  * A column abstains (`null`) rather than guessing whenever the mask can't
  * support a clean answer: the top row is already building (the strip didn't
  * clear the roof — a headroom problem, not a model problem), an occluder or
- * unknown pixel sits within 3 px of the chosen transition, or the column has
- * no sky pixels to anchor a boundary against.
+ * unknown pixel sits within 3 px of the chosen transition, the column has no
+ * sky pixels to anchor a boundary against, or anything other than sky sits
+ * above the chosen transition (see `coarseColumnBoundary` below).
+ *
+ * That last rule exists because of a failure the first version of this module
+ * had: a winter tree in front of a roofline is not a solid occluder block, it
+ * is *mostly* sky with the canopy's silhouette mixed in, and a window several
+ * storeys down can show a sky reflection that also reads as "sky" to the
+ * model. Scanning down a column and taking the first run of ≥4 building
+ * pixels after what *looked* like open sky would walk straight through the
+ * canopy — reading its gaps as open sky and its branches as too short a
+ * "building" run to count — and land on a solid building run at a window
+ * frame, metres below the real roof. The fix is not to trust "sky" as a
+ * floor; it must be *unbroken* sky from the strip's own top row down to the
+ * boundary (a small tolerance for mask speckle right at the edge itself),
+ * or the column abstains rather than reporting a confident, wrong, low line.
  */
 import { classifyRoofline, type RooflineShape } from '../../../scripts/pointcloud/measure-tile.ts';
 import type { StripFrame } from './stripFrame.ts';
@@ -39,7 +53,17 @@ export interface Luma {
 }
 
 export type BoundaryMethod = 'coarse' | 'snapped';
-export type NullReason = 'clipped' | 'no-sky' | 'no-run' | 'occluder-near-transition';
+export type NullReason =
+  | 'clipped' | 'no-sky' | 'no-run' | 'occluder-near-transition'
+  | 'not-open-sky-above' | 'below-3dbag-eave';
+
+export const NULL_REASONS: readonly NullReason[] = [
+  'clipped', 'no-sky', 'no-run', 'occluder-near-transition', 'not-open-sky-above', 'below-3dbag-eave',
+];
+
+export function emptyNullReasonTotals(): Record<NullReason, number> {
+  return { clipped: 0, 'no-sky': 0, 'no-run': 0, 'occluder-near-transition': 0, 'not-open-sky-above': 0, 'below-3dbag-eave': 0 };
+}
 
 export interface ColumnBoundary {
   /** Row of the chosen boundary, or null when the column abstains. */
@@ -53,15 +77,25 @@ export interface ColumnBoundary {
 /**
  * The coarse boundary: the first run of ≥ `runLength` building-labelled
  * pixels reading down a column, i.e. the topmost place the mask commits to
- * "building" after (not necessarily immediately after) sky. A run shorter
- * than `runLength` is segmentation noise and is skipped, not accepted.
+ * "building" after (not necessarily immediately after) sky — *provisionally*.
+ *
+ * The candidate is then held to "only open sky above it": every pixel from
+ * row 0 to the candidate (minus a small `openSkyToleranceAbovePx` right at
+ * the edge, for ordinary mask speckle at the soft boundary) must be sky. Any
+ * building, occluder, unknown or "other" pixel further up — a tree canopy, a
+ * neighbour's roof, a stray mislabel — disqualifies the candidate outright:
+ * the scan does not fall back to continuing past it in search of a later run,
+ * because a later run found *underneath* an obstruction is exactly the false
+ * low roofline this rule exists to prevent (see the module doc).
  */
 export function coarseColumnBoundary(
-  labels: Uint8Array, width: number, height: number, x: number, runLength = 4,
+  labels: Uint8Array, width: number, height: number, x: number,
+  runLength = 4, openSkyToleranceAbovePx = 2,
 ): { y: number } | { nullReason: NullReason } {
   const at = (y: number) => labels[y * width + x];
   if (at(0) === LABEL.BUILDING) return { nullReason: 'clipped' };
   let sawSky = false;
+  let candidate: number | null = null;
   let y = 0;
   while (y < height) {
     const label = at(y);
@@ -69,14 +103,21 @@ export function coarseColumnBoundary(
     if (label === LABEL.BUILDING) {
       let end = y;
       while (end < height && at(end) === LABEL.BUILDING) end++;
-      if (end - y >= runLength) return { y };
+      if (end - y >= runLength) { candidate = y; break; }
       y = end;
       continue;
     }
-    // Occluder, unknown or "other": not a building run, keep scanning past it.
+    // Occluder, unknown or "other": not a building run, keep scanning past it
+    // to find where the provisional candidate would be.
     y++;
   }
-  return { nullReason: sawSky ? 'no-run' : 'no-sky' };
+  if (candidate === null) return { nullReason: sawSky ? 'no-run' : 'no-sky' };
+  for (let row = 0; row < candidate; row++) {
+    if (at(row) === LABEL.SKY) continue;
+    if (candidate - row <= openSkyToleranceAbovePx) continue; // speckle right at the edge
+    return { nullReason: 'not-open-sky-above' };
+  }
+  return { y: candidate };
 }
 
 /**
@@ -149,7 +190,7 @@ export function stripBoundaries(
   const coarsePx: Array<number | null> = new Array(mask.width).fill(null);
   const snappedPx: Array<number | null> = new Array(mask.width).fill(null);
   const rowPx: Array<number | null> = new Array(mask.width).fill(null);
-  const nullReasons: Record<NullReason, number> = { clipped: 0, 'no-sky': 0, 'no-run': 0, 'occluder-near-transition': 0 };
+  const nullReasons = emptyNullReasonTotals();
   for (let x = 0; x < mask.width; x++) {
     const column = columnBoundary(mask, luma, x, opts);
     coarsePx[x] = column.coarsePx;
@@ -166,6 +207,28 @@ export function pixelToWorld(frame: StripFrame, x: number, y: number): { along: 
     along: x / frame.pixelsPerMetreX - frame.marginM,
     up: frame.topNap - y / frame.pixelsPerMetreY,
   };
+}
+
+/**
+ * The 3DBAG plausibility gate: a column whose resolved `up` falls more than
+ * `marginM` below the matched LoD2.2 wall surface's own eave is rejected. A
+ * roofline below its own building's known eave height is not a gable or a
+ * cornice above the eave (what this measures) — it is the same false-low
+ * failure `coarseColumnBoundary`'s purity rule targets, caught here by an
+ * independent, model-free signal for the columns that rule doesn't reach.
+ */
+export function applyEaveGate(
+  frame: StripFrame, rowPx: Array<number | null>, eaveNap: number, marginM = 1.0,
+): { rowPx: Array<number | null>; gated: number } {
+  const gated: Array<number | null> = rowPx.slice();
+  let gatedCount = 0;
+  for (let x = 0; x < gated.length; x++) {
+    const y = gated[x];
+    if (y === null) continue;
+    const { up } = pixelToWorld(frame, x, y);
+    if (up < eaveNap - marginM) { gated[x] = null; gatedCount++; }
+  }
+  return { rowPx: gated, gated: gatedCount };
 }
 
 /**
@@ -203,43 +266,53 @@ export function resampleProfile(
   return profile;
 }
 
+export interface ConsensusResult {
+  profile: Array<[number, number | null]>;
+  /** Parallel to `profile`: true where exactly one view resolved that sample. */
+  singleView: boolean[];
+}
+
 /**
  * Multi-view consensus (R6, done here for strips): at each `along` sample,
- * keep the value where ≥ 2 views agree within `toleranceM` (their median);
- * otherwise `null`. A single view's profile is returned unchanged — there is
- * nothing to agree or disagree with.
+ *
+ * - 0 views resolve it: `null`.
+ * - exactly 1 view resolves it: kept, flagged `singleView: true` — there is
+ *   nothing to disagree with, and a strip is expensive enough that discarding
+ *   its only measurement of a column is not free.
+ * - ≥ 2 views resolve it: kept as their median when they agree within
+ *   `toleranceM`, otherwise `null` — they disagree, and averaging in an
+ *   outlier would hide that rather than report it honestly.
  */
 export function consensusProfile(
   profiles: Array<Array<[number, number | null]>>, toleranceM = 0.25, sampleM = 0.10,
-): Array<[number, number | null]> {
+): ConsensusResult {
   const usable = profiles.filter(p => p.length > 0);
-  if (usable.length === 0) return [];
-  if (usable.length === 1) return usable[0];
+  if (usable.length === 0) return { profile: [], singleView: [] };
   const byAlong = new Map<number, number[]>();
+  let minKey = Infinity, maxKey = -Infinity;
   for (const profile of usable) {
     for (const [along, up] of profile) {
-      if (up === null) continue;
       const key = Math.round(along / sampleM);
+      if (key < minKey) minKey = key;
+      if (key > maxKey) maxKey = key;
+      if (up === null) continue;
       const list = byAlong.get(key);
       if (list) list.push(up); else byAlong.set(key, [up]);
     }
   }
-  let minKey = Infinity, maxKey = -Infinity;
-  for (const profile of usable) for (const [along] of profile) {
-    const key = Math.round(along / sampleM);
-    if (key < minKey) minKey = key;
-    if (key > maxKey) maxKey = key;
-  }
   const median = (values: number[]) => { const s = [...values].sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
-  const out: Array<[number, number | null]> = [];
+  const profile: Array<[number, number | null]> = [];
+  const singleView: boolean[] = [];
   for (let key = minKey; key <= maxKey; key++) {
     const along = Math.round(key * sampleM * 1e6) / 1e6;
     const values = byAlong.get(key) ?? [];
-    if (values.length < 2) { out.push([along, null]); continue; }
+    if (values.length === 0) { profile.push([along, null]); singleView.push(false); continue; }
+    if (values.length === 1) { profile.push([along, Math.round(values[0] * 1000) / 1000]); singleView.push(true); continue; }
     const spread = Math.max(...values) - Math.min(...values);
-    out.push([along, spread <= toleranceM ? Math.round(median(values) * 1000) / 1000 : null]);
+    profile.push([along, spread <= toleranceM ? Math.round(median(values) * 1000) / 1000 : null]);
+    singleView.push(false);
   }
-  return out;
+  return { profile, singleView };
 }
 
 /** §3 shape rule, reusing the point-cloud gold's classifier rather than a second definition. */
