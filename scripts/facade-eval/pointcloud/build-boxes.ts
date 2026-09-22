@@ -286,7 +286,15 @@ const main = async () => {
     if (!walls.length) throw new Error(`no gold walls for tile "${job.name}"`);
     const tile = await loadLazTile(job.laz);
     const labels = readUint8(readNpy(await readFile(job.preds)));
-    const confidence = readFloat16(readNpy(await readFile(`${job.preds}.conf.npy`)));
+    // Confidence is optional: the DGCNN lane writes `<preds>.conf.npy`, the PTv1
+    // lane does not. A missing file becomes a constant, which only affects the
+    // reported per-box score, never which points are openings.
+    let confidence: Float32Array;
+    try {
+      confidence = readFloat16(readNpy(await readFile(`${job.preds}.conf.npy`)));
+    } catch {
+      confidence = new Float32Array(labels.length).fill(1);
+    }
     if (labels.length !== tile.count) {
       throw new Error(`prediction length ${labels.length} != tile points ${tile.count} for ${job.name}`);
     }
