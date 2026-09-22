@@ -39,6 +39,16 @@ export interface GableFitResult {
   method: GableFitMethod;
   /** Closed (along, up) outline: first point repeats as the last. */
   outline: Array<readonly [number, number]>;
+  /**
+   * The open trace this outline was closed from: left base point to right
+   * base point, without the synthetic closing corners `closeOutline` adds
+   * when the trace's own ends aren't already at its minimum height. Consumers
+   * that want "the roofline shape" rather than "a simple closed polygon" (for
+   * example G1's gable screen, whose top must follow the actual measured or
+   * fitted rise, not an artificial drop back to the outline's own floor) should
+   * use this instead of `outline`.
+   */
+  trace: Array<readonly [number, number]>;
   /** Fitted template parameters, or null when the polyline fallback was used. */
   params: Record<string, number> | null;
   /** RMS error of the chosen fit against the non-null columns, in metres. */
@@ -553,6 +563,8 @@ export interface GableTemplateFit {
   type: GableType;
   params: Record<string, number>;
   outline: Array<readonly [number, number]>;
+  /** See `GableFitResult.trace`: the open trace `outline` was closed from. */
+  trace: Array<readonly [number, number]>;
   fitErrorM: number;
   eaveUp: number;
   mirroredSide: 'left' | 'right' | null;
@@ -575,6 +587,7 @@ export function fitGableTemplate(input: GableFitInput): GableTemplateFit | null 
     type,
     params: fit.params,
     outline: closeOutline(fit.trace, start, end),
+    trace: fit.trace,
     fitErrorM: rmsError(nonNull, fit.predict),
     eaveUp,
     mirroredSide,
@@ -601,7 +614,7 @@ export function fitGable(input: GableFitInput): GableFitResult {
   const rawProfile = input.profile;
 
   if (rawProfile.length < 2) {
-    return { type, method: 'polyline', outline: [], params: null, fitErrorM: 0, polylineErrorM: 0, mirroredSide: null, eaveUp: 0 };
+    return { type, method: 'polyline', outline: [], trace: [], params: null, fitErrorM: 0, polylineErrorM: 0, mirroredSide: null, eaveUp: 0 };
   }
 
   const { start, end, eaveUp, nonNull, mirroredSide } = prepareProfile(type, rawProfile);
@@ -614,6 +627,7 @@ export function fitGable(input: GableFitInput): GableFitResult {
     type,
     method: 'polyline',
     outline: polylineOutline,
+    trace: polylinePoints,
     params: null,
     fitErrorM: polylineErrorM,
     polylineErrorM,
@@ -646,6 +660,7 @@ export function fitGable(input: GableFitInput): GableFitResult {
     type,
     method: 'template',
     outline: closeOutline(fit.trace, start, end),
+    trace: fit.trace,
     params: fit.params,
     fitErrorM: templateErrorM,
     polylineErrorM,
