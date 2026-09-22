@@ -27,13 +27,14 @@ const arg = (n: string) => process.argv.find(v => v.startsWith(`--${n}=`))?.slic
 const BEFORE = path.resolve(arg('before') ?? '.cache/facade-twin/strips-confident');
 const AFTER = path.resolve(arg('after') ?? '.cache/facade-twin/strips-roofline-v1');
 const OUT = path.resolve(arg('out') ?? AFTER);
-const SHEET = path.resolve(arg('sheet') ?? path.join(OUT, 'contact-sheet-roofline-v1.png'));
+const SHEET = path.resolve(arg('sheet') ?? path.join(OUT, 'contact-sheet-roofline.png'));
 
 interface StripRecord {
   file: string;
   pandId: string;
   address: string | null;
   viewIndex?: number;
+  sourceMeanLuma?: number;
 }
 interface Manifest {
   metadata: any;
@@ -43,25 +44,29 @@ interface Manifest {
 const readManifest = async (dir: string): Promise<Manifest> =>
   JSON.parse(await readFile(path.join(dir, 'manifest.json'), 'utf8'));
 
-async function shareOf(dir: string, strip: StripRecord): Promise<number | null> {
+interface Measured { strip: StripRecord; share: number; meanLuma: number }
+
+async function measure(dir: string, strip: StripRecord): Promise<Measured> {
   try {
     const image = jpeg.decode(await readFile(path.join(dir, strip.file)), { useTArray: true, formatAsRGBA: true });
-    return topClippedShare({ width: image.width, height: image.height, data: Uint8ClampedArray.from(image.data) });
-  } catch { return null; }
+    const data = Uint8ClampedArray.from(image.data);
+    let sum = 0, count = 0;
+    for (let i = 0; i < data.length; i += 4 * 31) {
+      sum += 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+      count++;
+    }
+    return {
+      strip,
+      share: topClippedShare({ width: image.width, height: image.height, data }),
+      meanLuma: count ? sum / count : 0,
+    };
+  } catch { return { strip, share: 0, meanLuma: 0 }; }
 }
 
-interface Measured { strip: StripRecord; share: number | null }
-
-function pool(measured: Measured[]): { share: number | null; measurable: number; total: number } {
-  // The pooled share is over measurable strips only; a strip whose sky
-  // reference cannot be read is not a zero.
-  const known = measured.filter(m => m.share !== null);
-  if (!known.length) return { share: null, measurable: 0, total: measured.length };
-  // Weight each strip's share by its own column count via the strip's share of
-  // the measured weight. Without the per-strip column counts here, an unweighted
-  // mean is the honest summary; it is labelled as such.
-  const mean = known.reduce((sum, m) => sum + (m.share as number), 0) / known.length;
-  return { share: mean, measurable: known.length, total: measured.length };
+function pool(measured: Measured[]): { share: number | null; strips: number } {
+  if (!measured.length) return { share: null, strips: 0 };
+  const mean = measured.reduce((sum, m) => sum + m.share, 0) / measured.length;
+  return { share: mean, strips: measured.length };
 }
 
 const pct = (value: number | null) => (value === null ? 'n/a' : `${(value * 100).toFixed(1)}%`);
@@ -71,8 +76,8 @@ const afterManifest = await readManifest(AFTER);
 
 const before: Measured[] = [];
 const after: Measured[] = [];
-for (const strip of beforeManifest.strips) before.push({ strip, share: await shareOf(BEFORE, strip) });
-for (const strip of afterManifest.strips) after.push({ strip, share: await shareOf(AFTER, strip) });
+for (const strip of beforeManifest.strips) before.push(await measure(BEFORE, strip));
+for (const strip of afterManifest.strips) after.push(await measure(AFTER, strip));
 
 const beforePands = new Set(before.map(m => m.strip.pandId));
 const matchedBefore = before.filter(m => afterManifest.strips.some(s => s.pandId === m.strip.pandId));
@@ -100,8 +105,20 @@ const report = {
     after: pool(matchedAfter),
   },
   strips: {
-    before: before.map(m => ({ file: m.strip.file, pandId: m.strip.pandId, share: m.share })),
-    after: after.map(m => ({ file: m.strip.file, pandId: m.strip.pandId, viewIndex: m.strip.viewIndex ?? 1, share: m.share })),
+    before: before.map(m => ({ file: m.strip.file, pandId: m.strip.pandId, share: m.share, meanLuma: m.meanLuma })),
+    after: after.map(m => ({ file: m.strip.file, pandId: m.strip.pandId, viewIndex: m.strip.viewIndex ?? 1, share: m.share, meanLuma: m.meanLuma })),
+  },
+  // A strip is "garbage" when both it and the frame it was cut from are dark:
+  // the render is then mostly JPEG grain, which no geometry gate can see. Both
+  // conditions are needed — a canal panorama is dark overall because of the
+  // water in the nadir while its façade is perfectly exposed, and a dark strip
+  // can be a genuinely dark building on a bright frame.
+  garbageSuspects: {
+    thresholds: { stripMeanLuma: 70, sourceMeanLuma: 80 },
+    before: before.filter(m => m.meanLuma < 70 && (m.strip.sourceMeanLuma ?? Infinity) < 80)
+      .map(m => ({ file: m.strip.file, address: m.strip.address, sourceMeanLuma: m.strip.sourceMeanLuma ?? null, stripMeanLuma: Number(m.meanLuma.toFixed(1)) })),
+    after: after.filter(m => m.meanLuma < 70 && (m.strip.sourceMeanLuma ?? Infinity) < 80)
+      .map(m => ({ file: m.strip.file, address: m.strip.address, viewIndex: m.strip.viewIndex ?? 1, sourceMeanLuma: m.strip.sourceMeanLuma ?? null, stripMeanLuma: Number(m.meanLuma.toFixed(1)) })),
   },
 };
 
@@ -153,9 +170,13 @@ try {
 const drop = afterManifest.metadata?.dropOuts;
 if (drop) console.log(`after run drop-outs: ${JSON.stringify(drop)}`);
 console.log(`strips: before ${beforeManifest.strips.length}, after ${afterManifest.strips.length} (montage tiles ${tiles})`);
-console.log(`clipped columns (pooled, ${report.method}):`);
-console.log(`  before  ${pct(report.before.pooled.share)} over ${report.before.pooled.measurable}/${report.before.pooled.total} strips`);
-console.log(`  after   ${pct(report.after.pooled.share)} over ${report.after.pooled.measurable}/${report.after.pooled.total} strips`);
+console.log(`clipped columns (mean per strip, ${report.method}):`);
+console.log(`  before  ${pct(report.before.pooled.share)} over ${report.before.pooled.strips} strips`);
+console.log(`  after   ${pct(report.after.pooled.share)} over ${report.after.pooled.strips} strips`);
 console.log(`  matched ${report.matched.pands} walls: ${pct(report.matched.before.share)} → ${pct(report.matched.after.share)}`);
+const g = report.garbageSuspects;
+console.log(`  garbage suspects (strip luma < ${g.thresholds.stripMeanLuma} and source luma < ${g.thresholds.sourceMeanLuma}): `
+  + `before ${g.before.length}, after ${g.after.length}`);
+for (const s of g.after) console.log(`    after  ${s.address} v${s.viewIndex}  source luma ${s.sourceMeanLuma}  strip luma ${s.stripMeanLuma}`);
 if (sheetWritten) console.log(`→ ${SHEET}`);
 console.log(`→ ${reportPath}`);

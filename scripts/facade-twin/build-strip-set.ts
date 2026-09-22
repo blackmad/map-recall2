@@ -45,7 +45,7 @@ import { AMSTERDAM_CAMERA, hasUsableGeometry, lensHeightNap } from '../../src/ca
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
 import { isAtLeastApart, pickDistinctViews, stripFrame } from '../../src/canalRecall/facade/stripFrame.ts';
 import { loadTrackOffsets, rectifyWall } from './panorama-render.ts';
-import { blockedFraction, buildProbe, chooseFrontage, rankViews, verticalPixelsPerMetre, horizontalPixelsPerMetre } from './frontage.ts';
+import { blockedFraction, buildProbe, chooseFrontage, rankViews, verticalPixelsPerMetre } from './frontage.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
 const CACHE = path.resolve('.cache/facade-twin');
@@ -71,6 +71,10 @@ const MIN_CLEAR_VIEWS = 30;
 const MAX_BLOCKED = 0.12;
 const MIN_PIXELS_PER_M = 34;
 const MAX_OBLIQUITY = 25;
+/** Where the density gate is evaluated: the wall top, above the eave. */
+const WALL_TOP_OFFSET_M = 0.5;
+/** The survey lens height `rankViews` assumes when it scores sampling. */
+const LENS_HEIGHT_M = 2.4;
 
 const read = async (p: string, fallback: any = null) => { try { return JSON.parse(await readFile(p, 'utf8')); } catch { return fallback; } };
 const registry = (await read(path.join(CACHE, `${AREA.areaId}-registry.json`))).data as Array<{ buildingId: string; footprintLngLat: LngLat[] }>;
@@ -112,22 +116,45 @@ function standardDeviation(encoded: Buffer): number | null {
 }
 
 let downloads = 0;
+/**
+ * Why a panorama could not be produced, so "no image" is a count per cause
+ * rather than one number that hides whether the network, the budget or the
+ * source file is at fault.
+ */
+const imageFailure = { budget: 0, noUrl: 0, download: 0, undecodable: 0 };
+/** Source-frame mean luma per panorama, for flagging underexposed renders. */
+const sourceMeanLuma = new Map<string, number>();
 async function panorama(id: string) {
   const file = path.join(CACHE, 'panoramas', `${id}.jpg`);
   if (!existsSync(file)) {
-    if (downloads >= DOWNLOAD_BUDGET) return null;
+    if (downloads >= DOWNLOAD_BUDGET) { imageFailure.budget++; return null; }
     const view = byId.get(id);
-    if (!view?.imageUrl) return null;
+    if (!view?.imageUrl) { imageFailure.noUrl++; return null; }
     try {
       const response = await fetch(view.imageUrl, { signal: AbortSignal.timeout(120_000) });
-      if (!response.ok) return null;
+      if (!response.ok) { imageFailure.download++; return null; }
       const bytes = Buffer.from(await response.arrayBuffer());
-      if (bytes.length < 100_000) return null;
+      if (bytes.length < 100_000) { imageFailure.download++; return null; }
       await writeFile(file, bytes);
       downloads++;
-    } catch { return null; }
+    } catch { imageFailure.download++; return null; }
   }
-  try { return jpeg.decode(await readFile(file), { useTArray: true, formatAsRGBA: true }); } catch { return null; }
+  try {
+    const image = jpeg.decode(await readFile(file), { useTArray: true, formatAsRGBA: true });
+    /**
+     * The source frame's own brightness, so a strip cut from an underexposed
+     * frame can be flagged rather than shipped as noise. Geometry, occlusion
+     * and resolution gates are all blind to exposure: a dark frame scores as
+     * well as a bright one and rectifies into mostly JPEG grain.
+     */
+    let sum = 0, count = 0;
+    for (let i = 0; i < image.data.length; i += 4 * 997) {
+      sum += (image.data[i] + image.data[i + 1] + image.data[i + 2]) / 3;
+      count++;
+    }
+    sourceMeanLuma.set(id, count ? sum / count : 0);
+    return image;
+  } catch { imageFailure.undecodable++; return null; }
 }
 
 // Re-cutting "exactly these pand IDs" is a promise, so an unnamed pand list
@@ -144,7 +171,7 @@ if (PANDS_FROM) {
 
 await mkdir(OUT, { recursive: true });
 const manifest: any[] = [];
-let considered = 0, missing = 0, noFrontage = 0, noViewGeometry = 0, densityDropped = 0, ppmTooLow = 0, noRender = 0, tooClose = 0;
+let considered = 0, missing = 0, noFrontage = 0, noViewGeometry = 0, ppmTooLow = 0, noRender = 0, tooClose = 0;
 const renderDrop = { image: 0, lens: 0, strip: 0, blank: 0 };
 
 for (const pandId of pandIds) {
@@ -175,30 +202,24 @@ for (const pandId of pandIds) {
   const topNap = top + HEADROOM_M;
 
   /**
-   * The vertical density gate is evaluated at the *new* top.
+   * The density gate is pinned to the wall top, and the headroom band above it
+   * never disqualifies a wall.
    *
-   * The worst sampling on a wall is at its highest point, so adding headroom
-   * makes the gate harder in exactly the way the strip got taller. Ranking at
-   * the old ridge while rendering to the new top would certify detail the
-   * picture no longer has — which is the failure the gate exists to prevent.
-   * The same candidate list is also scored at the old top, so the number of
-   * walls that fail *because of* the headroom is a difference rather than a
-   * claim.
+   * The gate exists to stop a wall being resampled at more detail than its
+   * source carries, and the wall is what has to be resolved. Headroom is empty
+   * sky added for the roofline work, so letting it veto the wall would throw
+   * away buildings whose façades are perfectly well photographed. Instead the
+   * gate is evaluated at `top + 0.5` — the height the strip's top edge sat at
+   * before headroom existed — for every run, and the headroom band carries its
+   * own number, `roofBandPixelsPerMetre`, so the roofline step can abstain on a
+   * band that is too coarse without the strip being refused outright.
    */
-  const ranked = rankViews(wall, pandId, probe, posed, { wallHeightM: topNap - ground });
+  const gateTopNap = top + WALL_TOP_OFFSET_M;
+  const ranked = rankViews(wall, pandId, probe, posed, { wallHeightM: gateTopNap - ground });
   const eligible = ranked.filter(r => r.obliquityDeg <= MAX_OBLIQUITY && r.blockedFraction <= MAX_BLOCKED);
   if (!eligible.length) { noViewGeometry++; continue; }
-  const oldTopAboveLens = Math.max(1, (top - ground) - 2.4);
-  const oldTopPixelsPerMetre = (r: typeof ranked[number]) => Math.min(
-    verticalPixelsPerMetre(r.standoffM, oldTopAboveLens),
-    horizontalPixelsPerMetre(r.standoffM, r.obliquityDeg),
-  ) * (1 - r.blockedFraction);
   const qualifying = eligible.filter(r => r.worstPixelsPerMetre >= MIN_PIXELS_PER_M);
-  if (!qualifying.length) {
-    if (eligible.some(r => oldTopPixelsPerMetre(r) >= MIN_PIXELS_PER_M)) densityDropped++;
-    else ppmTooLow++;
-    continue;
-  }
+  if (!qualifying.length) { ppmTooLow++; continue; }
 
   // One view is the original path, unchanged. More than one draws its
   // candidates from a set whose members are all at least three metres apart,
@@ -265,8 +286,16 @@ for (const pandId of pandIds) {
       obliquityDeg: Number(candidate.obliquityDeg.toFixed(1)),
       blockedFraction: Number(candidate.blockedFraction.toFixed(2)),
       sourcePixelsPerMetre: Number(candidate.worstPixelsPerMetre.toFixed(1)),
+      // Vertical source sampling at the top of the headroom band. The wall gate
+      // does not look here, so a coarse band travels as a number the roofline
+      // step can abstain on rather than as a reason to refuse the strip.
+      roofBandPixelsPerMetre: Number(verticalPixelsPerMetre(
+        candidate.standoffM, Math.max(1, (topNap - ground) - LENS_HEIGHT_M)).toFixed(1)),
       renderedPixelsPerMetre: ppm,
       leafOff: candidate.leafOff,
+      // The source frame's own brightness; low values are underexposed frames
+      // that rectify into noise, which no geometry gate can see.
+      sourceMeanLuma: Number((sourceMeanLuma.get(candidate.view.panoramaId) ?? 0).toFixed(1)),
       groundZ: Number(ground.toFixed(2)), topZ: Number(top.toFixed(2)),
       wallBowM: wall.maxDeviationM ?? 0,
       heightInferred: lens.inferred,
@@ -291,7 +320,7 @@ for (const pandId of pandIds) {
 }
 process.stdout.write('\r');
 
-const dropOuts = { missing, noFrontage, noViewGeometry, densityDropped, ppmTooLow, noRender, tooClose, renderDrop };
+const dropOuts = { missing, noFrontage, noViewGeometry, ppmTooLow, noRender, tooClose, renderDrop, imageFailure };
 await writeFile(path.join(OUT, 'manifest.json'), JSON.stringify({
   metadata: {
     generatedAt: new Date().toISOString(),
@@ -318,13 +347,16 @@ const walls = new Set(manifest.map(m => m.pandId)).size;
 console.log(`${manifest.length} strips from ${considered} panden considered (${walls} walls rendered)`);
 console.log(`  drop-outs: ${noFrontage} no frontage with ${MIN_CLEAR_VIEWS}+ clear views, `
   + `${noViewGeometry} no view through the obliquity/occlusion gates, `
-  + `${densityDropped} density gate at the new top (+${HEADROOM_M} m), ${ppmTooLow} source too coarse, `
-  + `${noRender} no renderable view`);
-console.log(`  render failures: ${renderDrop.image} image, ${renderDrop.lens} lens, ${renderDrop.strip} strip, ${renderDrop.blank} blank`
+  + `${ppmTooLow} wall top too coarse for ${MIN_PIXELS_PER_M} px/m, ${noRender} no renderable view`);
+console.log(`  render failures: ${renderDrop.image} image `
+  + `(budget ${imageFailure.budget}, no url ${imageFailure.noUrl}, download ${imageFailure.download}, undecodable ${imageFailure.undecodable}), `
+  + `${renderDrop.lens} lens, ${renderDrop.strip} strip, ${renderDrop.blank} blank`
   + `${tooClose ? `, ${tooClose} candidate views within ${MIN_VIEW_SEPARATION_M} m` : ''}`);
 console.log(`  ${downloads} panoramas downloaded, ${missing} pands missing footprint/massing`);
 if (manifest.length) {
   console.log(`  source px/m   median ${q(manifest.map(m => m.sourcePixelsPerMetre), 0.5)}   min ${q(manifest.map(m => m.sourcePixelsPerMetre), 0)}`);
+  const band = manifest.map(m => m.roofBandPixelsPerMetre);
+  console.log(`  roof band px/m  p10 ${q(band, 0.1)}  median ${q(band, 0.5)}  p90 ${q(band, 0.9)}  min ${q(band, 0)}`);
   console.log(`  standoff      median ${q(manifest.map(m => m.standoffM), 0.5)} m`);
   console.log(`  obliquity     median ${q(manifest.map(m => m.obliquityDeg), 0.5)}°`);
   console.log(`  leaf-off      ${manifest.filter(m => m.leafOff).length} of ${manifest.length}`);
