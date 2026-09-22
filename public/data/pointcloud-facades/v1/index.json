@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-22T05:58:39.112Z",
+  "source": {
+    "name": "Gemeente Amsterdam puntenwolk (UPCP demo tiles)",
+    "licence": "open data (Gemeente Amsterdam)",
+    "geometry": "3DBAG LoD2.2 WallSurface and RoofSurface",
+    "geometryLicence": "CC BY 4.0 — 3DBAG, TU Delft",
+    "crs": "EPSG:7415 / NAP"
+  },
+  "totals": {
+    "tiles": 2,
+    "measuredWalls": 60,
+    "vertices": 5639,
+    "faces": 1531
+  },
+  "tiles": [
+    {
+      "id": "museumkwartier",
+      "label": "Museumkwartier",
+      "path": "museumkwartier",
+      "points": 10854907,
+      "scannedWalls": 21,
+      "shapedRooflines": 7,
+      "openings": 59,
+      "gables": 6,
+      "demoPoints": 201017
+    },
+    {
+      "id": "willemspark",
+      "label": "Willemspark",
+      "path": "willemspark",
+      "points": 7165726,
+      "scannedWalls": 39,
+      "shapedRooflines": 5,
+      "openings": 18,
+      "gables": 6,
+      "demoPoints": 204736
+    }
+  ]
+}
