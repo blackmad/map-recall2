@@ -107,7 +107,14 @@ export type ThreeDBagMetadata = {
 type PagedFeature = { metadata: any; feature: any };
 
 const THREEDBAG_COLLECTION_URL = 'https://api.3dbag.nl/collections/pand';
-export const POINTCLOUD_CACHE_DIR = path.resolve('.cache/pointcloud');
+/**
+ * `ROOFLINE_CACHE` lets a worktree that doesn't have its own `.cache/pointcloud`
+ * (the roofline-eval leaf worktrees) read the shared 3DBAG cache by absolute
+ * path instead of needing it copied in. Unset, behaviour is unchanged.
+ */
+export const POINTCLOUD_CACHE_DIR = path.resolve(
+  process.env.ROOFLINE_CACHE ? path.join(process.env.ROOFLINE_CACHE, 'pointcloud') : '.cache/pointcloud',
+);
 
 const fetchJson = async (url: string): Promise<any> => {
   const response = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(30_000) });
