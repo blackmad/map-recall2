@@ -1,0 +1,11 @@
+# Lane D (DGCNN, scripts/facade-eval/pointcloud/) — pinned Python dependencies.
+# Install:
+#   uv venv .cache/facade-eval/venv-dgcnn --python 3.11
+#   uv pip install --python .cache/facade-eval/venv-dgcnn/bin/python -r scripts/facade-eval/requirements-dgcnn.txt
+# DGCNN is pure PyTorch: no spconv / torch-geometric / pointops / ocnn needed.
+torch==2.14.0
+numpy==2.4.6
+PyYAML==6.0.3
+tqdm==4.70.1
+# fetch-only: Google Drive download of the upstream code + weights
+gdown==6.4.0
