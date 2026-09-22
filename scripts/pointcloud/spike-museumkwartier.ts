@@ -195,7 +195,7 @@ const writePlanSvg = (measurements: WallMeasurement[], tileBounds: { minX: numbe
   return parts.join('\n');
 };
 
-const { tile, buildings, exteriorWalls, eligibleWalls, walls, roofs, measurements } = await measureTile(tilePath);
+const { tile, buildings, exteriorWalls, eligibleWalls, walls, roofs, measurements, threeDBag } = await measureTile(tilePath);
 const scanned = measurements.filter(isWellScanned);
 const comparable = scanned.filter((measurement) => measurement.riseAboveDeclaredRoofMax != null);
 const gables = comparable.filter((measurement) => (measurement.riseAboveDeclaredRoofMax as number) > GABLE_MARGIN);
@@ -216,6 +216,7 @@ const summary = {
     geometryLicence: 'CC BY 4.0 — 3DBAG, TU Delft',
     crs: 'EPSG:7415 / NAP',
   },
+  threeDBag,
   buildings,
   exteriorWalls,
   eligibleWalls,

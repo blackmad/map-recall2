@@ -1,3 +1,5 @@
+import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import path from 'node:path';
 import { extractFacadeWallPlanes, extractRoofPlanes, type FacadeWallPlane, type RoofPlane } from '../../src/canalRecall/building/facadePointCloud.ts';
 import {
   classifyWallRaster,
@@ -87,7 +89,22 @@ export type TileMeasurement = {
   walls: FacadeWallPlane[];
   roofs: RoofPlane[];
   measurements: WallMeasurement[];
+  threeDBag: ThreeDBagMetadata;
 };
+
+/** Which 3DBAG data release a measurement was joined against, and where it came from. */
+export type ThreeDBagMetadata = {
+  api: string | null;
+  collection: string | null;
+  collectionUrl: string;
+  fetchedAt: string | null;
+  fromCache: boolean;
+};
+
+type PagedFeature = { metadata: any; feature: any };
+
+const THREEDBAG_COLLECTION_URL = 'https://api.3dbag.nl/collections/pand';
+export const POINTCLOUD_CACHE_DIR = path.resolve('.cache/pointcloud');
 
 const fetchJson = async (url: string): Promise<any> => {
   const response = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(30_000) });
@@ -97,30 +114,69 @@ const fetchJson = async (url: string): Promise<any> => {
 
 const numberOrNull = (value: unknown) => (typeof value === 'number' && Number.isFinite(value) ? value : null);
 
-/** All 3DBAG pand features whose bbox intersects the tile, paged via the server's own next link. */
-export const fetchBuildings = async (bounds: LazTile['bounds']) => {
-  const features: any[] = [];
+const readBuildingAttributes = (features: readonly PagedFeature[]) => {
   const attributes = new Map<string, BuildingAttributes>();
-  let url: string | null = `https://api.3dbag.nl/collections/pand/items?bbox=${Math.floor(bounds.minX)},${Math.floor(bounds.minY)},${Math.ceil(bounds.maxX)},${Math.ceil(bounds.maxY)}&limit=100`;
+  for (const { feature } of features) {
+    for (const object of Object.values(feature.CityObjects ?? {}) as any[]) {
+      if (object.type !== 'Building') continue;
+      const a = object.attributes ?? {};
+      attributes.set((feature.id as string).replace(/^NL\.IMBAG\.Pand\./, 'bag:'), {
+        groundNAP: numberOrNull(a.b3_h_maaiveld),
+        roofNAP50: numberOrNull(a.b3_h_dak_50p),
+        roofNAPMax: numberOrNull(a.b3_h_dak_max),
+        storeys: numberOrNull(a.b3_bouwlagen),
+        rmse: numberOrNull(a.b3_rmse_lod22),
+      });
+    }
+  }
+  return attributes;
+};
+
+/**
+ * All 3DBAG pand features whose bbox intersects the tile, paged via the server's
+ * own next link, cached by tile bbox. The regression must run offline, so a
+ * warm cache is read in preference to the network; `--refresh-3dbag` forces a
+ * refetch and rewrites it.
+ */
+export const fetchBuildings = async (bounds: LazTile['bounds']): Promise<{ features: PagedFeature[]; attributes: Map<string, BuildingAttributes>; threeDBag: ThreeDBagMetadata }> => {
+  const bbox = [Math.floor(bounds.minX), Math.floor(bounds.minY), Math.ceil(bounds.maxX), Math.ceil(bounds.maxY)];
+  const cacheFile = path.join(POINTCLOUD_CACHE_DIR, `3dbag-${bbox.join('_')}.json`);
+  const refresh = process.argv.includes('--refresh-3dbag');
+  if (!refresh) {
+    try {
+      const cached = JSON.parse(await readFile(cacheFile, 'utf8')) as { schemaVersion?: number; features?: PagedFeature[]; threeDBag?: Omit<ThreeDBagMetadata, 'fromCache'> };
+      if (cached.schemaVersion === 1 && Array.isArray(cached.features)) {
+        return {
+          features: cached.features,
+          attributes: readBuildingAttributes(cached.features),
+          threeDBag: { ...(cached.threeDBag ?? {}), fromCache: true } as ThreeDBagMetadata,
+        };
+      }
+    } catch {
+      // No usable cache: fall through and fetch.
+    }
+  }
+  const collection = await fetchJson(THREEDBAG_COLLECTION_URL).catch(() => null);
+  const version = collection?.version ?? {};
+  const features: PagedFeature[] = [];
+  let url: string | null = `https://api.3dbag.nl/collections/pand/items?bbox=${bbox.join(',')}&limit=100`;
   while (url) {
     const payload = await fetchJson(url);
-    for (const feature of payload.features ?? []) {
-      features.push({ metadata: payload.metadata, feature });
-      for (const object of Object.values(feature.CityObjects ?? {}) as any[]) {
-        if (object.type !== 'Building') continue;
-        const a = object.attributes ?? {};
-        attributes.set((feature.id as string).replace(/^NL\.IMBAG\.Pand\./, 'bag:'), {
-          groundNAP: numberOrNull(a.b3_h_maaiveld),
-          roofNAP50: numberOrNull(a.b3_h_dak_50p),
-          roofNAPMax: numberOrNull(a.b3_h_dak_max),
-          storeys: numberOrNull(a.b3_bouwlagen),
-          rmse: numberOrNull(a.b3_rmse_lod22),
-        });
-      }
-    }
+    for (const feature of payload.features ?? []) features.push({ metadata: payload.metadata, feature });
     url = (payload.links ?? []).find((link: any) => link.rel === 'next')?.href ?? null;
   }
-  return { features, attributes };
+  const generatedAt = new Date().toISOString();
+  const threeDBag: ThreeDBagMetadata = {
+    api: typeof version.api === 'string' ? version.api : null,
+    collection: typeof version.collection === 'string' ? version.collection : null,
+    collectionUrl: THREEDBAG_COLLECTION_URL,
+    fetchedAt: generatedAt,
+    fromCache: false,
+  };
+  await mkdir(POINTCLOUD_CACHE_DIR, { recursive: true });
+  await writeFile(`${cacheFile}.tmp`, `${JSON.stringify({ schemaVersion: 1, generatedAt, bbox, threeDBag, features })}\n`);
+  await rename(`${cacheFile}.tmp`, cacheFile);
+  return { features, attributes: readBuildingAttributes(features), threeDBag };
 };
 
 const wallBounds = (wall: FacadeWallPlane, upwardSearch: number) => {
@@ -196,7 +252,7 @@ export const measureWall = (
 export const measureTile = async (tilePath: string): Promise<TileMeasurement> => {
   const tile = await loadLazTile(tilePath);
   const selectPoints = createPointSelector(tile, 5);
-  const { features, attributes } = await fetchBuildings(tile.bounds);
+  const { features, attributes, threeDBag } = await fetchBuildings(tile.bounds);
   const walls: FacadeWallPlane[] = [];
   const roofs: RoofPlane[] = [];
   for (const response of features) {
@@ -210,7 +266,7 @@ export const measureTile = async (tilePath: string): Promise<TileMeasurement> =>
     if (!measurement || measurement.height < MINIMUM_WALL_HEIGHT) continue;
     measurements.push(measurement);
   }
-  return { tile, buildings: features.length, exteriorWalls: walls.length, eligibleWalls: eligible.length, walls, roofs, measurements };
+  return { tile, buildings: features.length, exteriorWalls: walls.length, eligibleWalls: eligible.length, walls, roofs, measurements, threeDBag };
 };
 
 export const median = (values: number[]): number => {
