@@ -115,6 +115,40 @@ first**. Report the relation counts (`agree` / `rises` / `below` / `unknown`). A
 high `below` count points at a vertical datum error in the strips, not at
 3DBAG.
 
+### A6: Owner grading at scale (DeepSeek; wave 2) and more strips
+Decision 2026-09-22: **the owner grades the photo rooflines directly.** That
+makes grading, not the scan answer key, the acceptance test, so coverage is no
+longer capped by the ~10 scan buildings. The scan check (A5) stays as a coarse
+check for systematic bias only.
+
+1. **Grading page** `public/canal-drive/roofline-review.html`, modelled on the
+   existing registration review desk (`public/canal-drive/facade-registration-review/index.html`,
+   commit `97146d8`): one wall at a time, showing each view's strip with the coarse
+   (thin) and snapped (thick) roofline, the consensus profile, and the fitted gable
+   outline (G2) when present. Grades: **1 right · 2 close · 3 wrong · 4 can't
+   tell**, an optional note, and a "wrong because" chip (clipped / tree / neighbour
+   / set back / other). Keyboard-driven (number keys, ←/→), so one grade takes
+   seconds. State is kept in localStorage with **Export / Import JSON**; the
+   export is bound to the profile hash, so a grade can't be applied to a changed
+   profile. The owner commits exported grades to `review-data/roofline-grades/`.
+2. **Data builder** `scripts/roofline-eval/build-review-data.ts` copies
+   thumbnails and profile JSON from the cache into
+   `public/canal-drive/roofline-review/local/` (gitignored) so the dev server can
+   serve them. Until A2 lands, it accepts a fixture in the A2 output format.
+3. A later pass adds a second stage per wall: the in-game render (G3) next to the
+   photo, graded the same way. That is the G4 recognition test.
+4. **More strips:** after A0 v2 is accepted, rerun the cutter without
+   `--pands-from` and with `--count=400` (the area registry has 5,757 buildings),
+   same headroom and views flags, into `strips-roofline-v3`.
+Done when: the page loads on port 5197 with the fixture, grading 10 walls by
+keyboard takes under a minute, and export → import round-trips.
+
+**A2 output format (so A6 can build against it now):**
+`$ROOFLINE_CACHE/roofline-eval/strip-profiles/<pandId>.json` =
+`{ pandId, address, wall: {start, end}, views: [{ file, panoramaId, capturedAt,
+coarsePx: (number|null)[], snappedPx: (number|null)[], profile: [along, upNap|null][] }],
+consensus: [along, upNap|null][], shape, profileSha256 }`.
+
 ### A5: Validation against the scan (Oud-Zuid)
 The building-twin cutter is scoped to grachtengordel-west. For Oud-Zuid, apply
 the same headroom change to `scripts/facade-eval/panos/fetch-oudzuid-crops.ts`
