@@ -14,6 +14,7 @@ import {
   ADOPTION_THRESHOLDS,
   clearsThresholds,
   poolScores,
+  probeBestShift,
   scoreOpenings,
   type OpeningScore,
   type ScoredBox,
@@ -47,18 +48,35 @@ const lane = argument('lane') || path.basename(predPath).replace(/\.json$/, '');
 const kinds = argument('kinds')?.split(',').filter(Boolean);
 const iouThreshold = Number(argument('iou') || 0.5);
 const write = process.argv.includes('--write');
+const probe = process.argv.includes('--probe');
+const minWallWidthM = Number(argument('min-wall-width') || 0);
+const minOpeningWidthM = Number(argument('min-opening-width') || 0);
+const minOpeningHeightM = Number(argument('min-opening-height') || 0);
 
 const gold = JSON.parse(await readFile(goldPath, 'utf8')) as { walls: GoldWall[]; counts: { walls: number; openings: number } };
 const prediction = JSON.parse(await readFile(path.resolve(predPath), 'utf8')) as { setting?: string; model?: string; records: PredRecord[] };
 const byElevation = new Map(prediction.records.map((record) => [record.elevationId ?? record.surfaceId ?? '', record]));
 
+// The measured set is dominated by thin 3DBAG wall slices with no openings; a
+// façade test set is walls wide enough to be a frontage that carry at least one
+// window-sized opening.
+const inScope = gold.walls.filter((wall) =>
+  wall.wallWidthM >= minWallWidthM
+  && wall.openings.some((opening) => opening.width >= minOpeningWidthM && opening.height >= minOpeningHeightM));
+
 const perWall: Array<{ gold: GoldWall; score: OpeningScore }> = [];
+const probeInput: Array<{ measured: WallRect[]; predictions: ScoredBox[]; wallWidthM: number }> = [];
 let missingPredictions = 0;
-for (const wall of gold.walls) {
+for (const wall of inScope) {
   const record = byElevation.get(wall.surfaceId);
   if (!record) missingPredictions += 1;
   const boxes = (record?.boxes ?? []).map(toWallRect).filter((box): box is ScoredBox => box !== null);
-  perWall.push({ gold: wall, score: scoreOpenings(wall.openings, boxes, { iouThreshold, kinds }) });
+  const measured = wall.openings.filter((opening) =>
+    minOpeningWidthM || minOpeningHeightM
+      ? opening.width >= minOpeningWidthM && opening.height >= minOpeningHeightM
+      : true);
+  perWall.push({ gold: wall, score: scoreOpenings(measured, boxes, { iouThreshold, kinds }) });
+  probeInput.push({ measured, predictions: boxes, wallWidthM: wall.wallWidthM });
 }
 const pooled = poolScores(perWall.map((entry) => entry.score));
 const verdict = clearsThresholds(pooled, ADOPTION_THRESHOLDS);
@@ -71,9 +89,10 @@ const wallsWithPredictions = perWall.filter((entry) => entry.score.predicted > 0
 process.stdout.write([
   `lane ${lane}${prediction.setting ? ` (${prediction.setting})` : ''}${kinds ? ` kinds=[${kinds.join(',')}]` : ' all kinds'} vs measured gold`,
   `model ${prediction.model ?? '?'} · IoU >= ${iouThreshold}`,
+  `scope walls>=${minWallWidthM} m with a >=${minOpeningWidthM}x${minOpeningHeightM} m opening -> ${inScope.length}/${gold.walls.length} walls`,
   '',
-  `measured openings   ${pooled.measured} across ${wallsWithOpenings}/${gold.walls.length} walls`,
-  `predicted boxes     ${pooled.predicted} across ${wallsWithPredictions}/${gold.walls.length} walls`,
+  `measured openings   ${pooled.measured} across ${wallsWithOpenings}/${inScope.length} walls`,
+  `predicted boxes     ${pooled.predicted} across ${wallsWithPredictions}/${inScope.length} walls`,
   `matched             ${pooled.truePositives}   fp ${pooled.falsePositives}   fn ${pooled.falseNegatives}`,
   `precision           ${pct(pooled.precision)}   (${pooled.truePositives}/${pooled.predicted})`,
   `recall              ${pct(pooled.recall)}   (${pooled.truePositives}/${pooled.measured})`,
@@ -82,8 +101,28 @@ process.stdout.write([
   `adoption rule (recall>=${ADOPTION_THRESHOLDS.recall}, precision>=${ADOPTION_THRESHOLDS.precision}, centre<=${ADOPTION_THRESHOLDS.centreErrorM} m):`,
   `  recall ${verdict.recall ? 'PASS' : 'FAIL'} · precision ${verdict.precision ? 'PASS' : 'FAIL'} · centre ${verdict.centreError ? 'PASS' : 'FAIL'}`,
   `  => ${Object.values(verdict).every(Boolean) ? 'CLEARS the absolute thresholds' : 'does NOT clear the absolute thresholds'}`,
-  missingPredictions ? `\nwarning: ${missingPredictions} gold walls had no prediction record` : '',
+  missingPredictions ? `\nwarning: ${missingPredictions} in-scope walls had no prediction record` : '',
 ].filter(Boolean).join('\n') + '\n');
+
+if (probe) {
+  const shifts = probeInput.map((entry) => probeBestShift(entry.measured, entry.predictions, {
+    maxShiftM: 1, stepM: 0.1, wallWidthM: entry.wallWidthM, iouThreshold, kinds,
+  }));
+  const best = poolScores(shifts);
+  const flipShare = shifts.filter((shift) => shift.flipped).length;
+  const shiftsAlong = shifts.filter((shift) => shift.truePositives > 0).map((shift) => shift.shiftAlongM);
+  process.stdout.write([
+    '',
+    'alignment probe (allows a global translate of up to +/-1 m, and a mirror):',
+    `  best pooled recall    ${pct(best.recall)}   (${best.truePositives}/${best.measured})`,
+    `  best pooled precision ${pct(best.precision)}`,
+    `  walls needing a mirror ${flipShare}/${shifts.length}`,
+    `  median along shift    ${metres(shiftsAlong.length ? shiftsAlong.sort((a, b) => a - b)[Math.floor(shiftsAlong.length / 2)] : null)}`,
+    best.recall !== null && pooled.recall !== null && best.recall - pooled.recall > 0.15
+      ? '  => recall jumps under a plausible shift: the crop and the measured geometry are probably not registered'
+      : '  => recall does not jump under a plausible shift: alignment is not the explanation',
+  ].join('\n') + '\n');
+}
 
 if (write) {
   const resultsPath = path.join(path.dirname(goldPath), 'results.json');

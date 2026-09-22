@@ -1,7 +1,7 @@
 {
   "version": "v1",
-  "generatedAt": "2026-09-22T14:03:47.694Z",
-  "note": "Measured openings are point-cloud geometry. Model boxes are predictions. Green = measured, red = model window, amber = model other.",
+  "generatedAt": "2026-09-22T15:47:45.121Z",
+  "note": "Measured openings are point-cloud geometry. Model boxes are predictions. Green = measured, others per model.",
   "gold": {
     "walls": 60,
     "openings": 70,
@@ -10,11 +10,68 @@
   "predictions": [
     {
       "id": "rfdetr-R0",
-      "label": "RF-DETR-seg-2XL (building-facade-segmentation-instance/4)"
+      "file": "rfdetr-oudzuid-R0.json",
+      "label": "RF-DETR-seg-2XL",
+      "model": "building-facade-segmentation-instance/4",
+      "kind": "photo",
+      "door": false,
+      "roof": false,
+      "sky": false,
+      "licence": "CC BY 4.0 (uploader-asserted)",
+      "notes": "instance masks; the one we already had cached",
+      "records": 60
+    },
+    {
+      "id": "rsjek-R0",
+      "file": "rsjek-oudzuid-R0.json",
+      "label": "YOLO26x-seg",
+      "model": "facade-rsjek/5",
+      "kind": "photo",
+      "door": true,
+      "roof": false,
+      "sky": false,
+      "licence": "CC BY 4.0 (uploader-asserted)",
+      "notes": "has an `entrance` class — the only photo model with doors",
+      "records": 60
     },
     {
       "id": "windet-R0",
-      "label": "win_det_heatmaps (ResNet18, zju_facade)"
+      "file": "windet-oudzuid-R0.json",
+      "label": "win_det_heatmaps",
+      "model": "lck1201/win_det_heatmaps",
+      "kind": "photo",
+      "door": false,
+      "roof": false,
+      "sky": false,
+      "licence": "MIT",
+      "notes": "window corners and grid rhythm",
+      "records": 60
+    },
+    {
+      "id": "ptv1-R0",
+      "file": "ptv1-R0.json",
+      "label": "UnderOneFacade PTv1",
+      "model": "PT_lofg3_xyz.pth (global)",
+      "kind": "cloud",
+      "door": true,
+      "roof": true,
+      "sky": false,
+      "licence": "MIT code / CC BY 4.0 weights",
+      "notes": "point-cloud model; GPU run, $0.04",
+      "records": 60
+    },
+    {
+      "id": "dgcnn-R0",
+      "file": "dgcnn-oudzuid-lofg3.json",
+      "label": "UnderOneFacade DGCNN",
+      "model": "DGCNN_lofg3_xyz.pth (global)",
+      "kind": "cloud",
+      "door": true,
+      "roof": true,
+      "sky": false,
+      "licence": "MIT code / CC BY 4.0 weights",
+      "notes": "point-cloud model; local CPU/MPS",
+      "records": 60
     }
   ]
 }
