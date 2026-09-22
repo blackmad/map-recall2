@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="260" viewBox="0 0 640 260">
+<title>willemspark:bag:0363100012164118:e:1fd7dnt</title>
+
+    <rect x="0" y="0" width="640" height="260" fill="#ffffff" stroke="#ccc" />
+    <line x1="46.0" y1="10" x2="46.0" y2="240" stroke="#eee" stroke-width="1" />
+<line x1="228.5" y1="10" x2="228.5" y2="240" stroke="#eee" stroke-width="1" />
+<line x1="411.0" y1="10" x2="411.0" y2="240" stroke="#eee" stroke-width="1" />
+<line x1="593.5" y1="10" x2="593.5" y2="240" stroke="#eee" stroke-width="1" />
+    <polyline points="46.0,212.0 80.1,207.5 114.1,198.4 148.2,181.3 182.3,154.9 216.3,120.6 250.4,81.6 425.6,81.6 459.7,120.6 493.7,154.9 527.8,181.3 561.9,198.4 595.9,207.5 630.0,212.0" fill="none" stroke="#33a02c" stroke-width="1.4" />
+    <polyline points="46.0,30.4 64.3,30.3 82.5,30.3 100.8,30.3 119.0,30.3 137.3,30.2 155.5,30.2 173.8,30.2 192.0,30.2 210.3,30.2 228.5,30.1 246.8,30.1 265.0,30.1 283.3,30.1 301.5,30.0 319.8,30.0 338.0,30.0 356.3,30.0 374.5,29.9 392.7,29.9 411.0,29.9 429.3,29.9 447.5,29.8 465.7,29.8 484.0,29.8 502.3,29.8 520.5,29.8 538.8,29.7 557.0,29.7 575.2,29.7 593.5,29.7 611.8,29.6 630.0,29.6" fill="none" stroke="#1f78b4" stroke-width="2" />
+    <polyline points="46.0,196.3 64.3,196.3 82.5,196.3 100.8,196.3 119.0,193.6 137.3,193.6 155.5,191.0 173.8,191.0 192.0,189.5 210.3,185.1 228.5,139.0 246.8,89.2 265.0,84.5 283.3,84.5 301.5,80.2 319.8,80.2 338.0,80.2 356.3,80.2 374.5,80.2 392.7,80.2 411.0,80.2 429.3,83.3 447.5,83.6 465.7,86.4 484.0,86.6 502.3,105.3 520.5,155.4 538.8,201.1 557.0,204.0 575.2,220.4 593.5,220.4 611.8,220.4 630.0,220.4" fill="none" stroke="#e31a1c" stroke-width="1.6" stroke-dasharray="4,2" />
+    
+    
+    <rect x="470" y="4" width="10" height="3" fill="#1f78b4" /><text x="484" y="9" font-size="9" fill="#333">3DBAG section S</text>
+    <rect x="470" y="14" width="10" height="3" fill="#e31a1c" /><text x="484" y="19" font-size="9" fill="#333">scan profile P</text>
+    <rect x="470" y="24" width="10" height="3" fill="#33a02c" /><text x="484" y="29" font-size="9" fill="#333">fitted outline</text>
+    <rect x="470" y="34" width="10" height="3" fill="#ff7f00" /><text x="484" y="39" font-size="9" fill="#333">patch top/bottom</text>
+  
+    <text x="46" y="256" font-size="9" fill="#333">along (m), 0..3.2</text>
+  
+</svg>
