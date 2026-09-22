@@ -232,6 +232,8 @@ const summary = {
   medianBays: median(withOpenings.map((mesh) => mesh.bayCount)),
   totalOpenings: compiled.reduce((sum, mesh) => sum + mesh.openings.length, 0),
   totalGables: compiled.filter((mesh) => mesh.gable).length,
+  coplanarNeighbours: measurements.reduce((sum, measurement) => sum + measurement.coplanarNeighbours.length, 0),
+  wallsWithCoplanarNeighbours: measurements.filter((measurement) => measurement.coplanarNeighbours.length > 0).length,
   medianRiseAboveDeclaredRoofMax: median(gables.map((measurement) => measurement.riseAboveDeclaredRoofMax as number)),
   walls: measurements.map(({ raster, measured, ...rest }) => rest),
 };
@@ -263,6 +265,7 @@ process.stdout.write([
   `${shaped.length}/${scanned.length} well-scanned walls have a shaped (non-monotonic) roofline, ${sloped.length} sloped, ${flat.length} flat; median shaped range ${summary.medianRooflineRange.toFixed(2)} m`,
   `of those, ${gables.length}/${comparable.length} rise >${GABLE_MARGIN} m above 3DBAG's own maximum roof height`,
   `compiled ${compiled.length} walls: ${summary.totalOpenings} openings, ${summary.totalGables} gables, median ${summary.medianStoreys} storeys x ${summary.medianBays} bays`,
+  `coplanar neighbour walls: ${summary.coplanarNeighbours} across ${summary.wallsWithCoplanarNeighbours} measured walls`,
   `median coverage ${(summary.medianCoverageScanned * 100).toFixed(0)}%`,
   `wrote ${outputDir}`,
 ].join('\n') + '\n');

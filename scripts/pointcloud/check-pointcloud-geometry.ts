@@ -32,9 +32,10 @@ assert.ok(Math.abs(tile.bounds.minX - 119850) < 1 && Math.abs(tile.bounds.minY -
 assert.ok(tile.bounds.minZ < 0 && tile.bounds.maxZ > 20, 'tile is in NAP (below and above street level)');
 assert.ok(buildings >= 10, `3DBAG returns the tile's buildings, got ${buildings}`);
 assert.ok(scanned.length >= 15, `at least 15 street façades are well-scanned, got ${scanned.length}`);
-assert.ok(shaped.length >= 5, `at least 5 street façades have a shaped roofline, got ${shaped.length}`);
-// Openings moved 59 -> 58 when positions went from Float32 to Float64 (T2):
-// the sharper coordinates flip a marginal reveal cell. Pin the measured floor.
+// Shaped rooflines moved 7 -> 9 once neighbour returns stopped leaking into the
+// edge columns (T4): two walls that read as a slope were a gable plus a leak.
+assert.ok(shaped.length >= 7, `at least 7 street façades have a shaped roofline, got ${shaped.length}`);
+// Openings moved 59 -> 58 (T2, float64) -> 57 (T4, no edge leak). Pin the floor.
 assert.ok(openings >= 50, `at least 50 openings are measured on the scanned walls, got ${openings}`);
 assert.ok(
   shaped.every((measurement) => measurement.rooflineRange > SHAPED_ROOFLINE_RANGE),
@@ -74,7 +75,10 @@ if (secondCached) {
     .map((measurement) => compileFacade(measurement.raster, measurement.measured, { minimumPointsPerCell: 3 }))
     .reduce((sum, mesh) => sum + mesh.openings.length, 0);
   assert.ok(scanned2.length >= 30, `Willemspark has at least 30 scanned walls, got ${scanned2.length}`);
-  assert.ok(shaped2.length >= 4, `Willemspark has at least 4 shaped rooflines, got ${shaped2.length}`);
+  // Dense terraced rows: dropping neighbour edge returns (T4) moved Willemspark
+  // shaped rooflines 6 -> 10, and scanned/opening counts down as neighbour
+  // gables stopped flattering the edge columns.
+  assert.ok(shaped2.length >= 6, `Willemspark has at least 6 shaped rooflines, got ${shaped2.length}`);
   assert.ok(openings2 >= 12, `Willemspark measures at least 12 openings, got ${openings2}`);
   process.stdout.write(`Willemspark: ${scanned2.length} scanned walls, ${shaped2.length} shaped rooflines, ${openings2} openings.\n`);
 } else {

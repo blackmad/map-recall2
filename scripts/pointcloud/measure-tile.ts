@@ -4,6 +4,7 @@ import { extractFacadeWallPlanes, extractRoofPlanes, type FacadeWallPlane, type 
 import {
   classifyWallRaster,
   rasteriseWall,
+  wallMetricFrame,
   wallSilhouette,
   type WallRaster,
   type WallSilhouette,
@@ -77,6 +78,8 @@ export type WallMeasurement = {
   shapedRoofline: boolean;
   silhouetteVertices: number;
   silhouette: Array<readonly [number, number]>;
+  /** Other-pand walls sharing this wall's plane and meeting it along the wall. */
+  coplanarNeighbours: string[];
   raster: WallRaster;
   measured: WallSilhouette;
 };
@@ -179,6 +182,40 @@ export const fetchBuildings = async (bounds: LazTile['bounds']): Promise<{ featu
   return { features, attributes: readBuildingAttributes(features), threeDBag };
 };
 
+const dot3 = (a: readonly number[], b: readonly number[]) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+
+/**
+ * Other-pand walls that share this wall's plane: nearly parallel normals
+ * (|dot| > 0.99), within 0.3 m of the same plane, and meeting it along the wall
+ * (along-gap < 0.5 m). These are the returns that can contaminate a wall's end
+ * columns, so the spike reports how many exist per tile.
+ */
+export const coplanarNeighbourSurfaceIds = (wall: FacadeWallPlane, walls: readonly FacadeWallPlane[]): string[] => {
+  const frame = wallMetricFrame(wall);
+  if (!frame) return [];
+  const alongOf = (vertex: readonly number[]) => dot3([
+    vertex[0] - frame.origin[0],
+    vertex[1] - frame.origin[1],
+    vertex[2] - frame.origin[2],
+  ], frame.u);
+  const ids: string[] = [];
+  for (const other of walls) {
+    if (other.surfaceId === wall.surfaceId || other.buildingId === wall.buildingId) continue;
+    if (Math.abs(dot3(wall.normal, other.normal)) <= 0.99) continue;
+    const offset = [
+      other.vertices[0][0] - wall.vertices[0][0],
+      other.vertices[0][1] - wall.vertices[0][1],
+      other.vertices[0][2] - wall.vertices[0][2],
+    ];
+    if (Math.abs(dot3(offset, wall.normal)) >= 0.3) continue;
+    const alongs = other.vertices.map(alongOf);
+    const gap = Math.max(0, Math.max(frame.minAlong, Math.min(...alongs)) - Math.min(frame.maxAlong, Math.max(...alongs)));
+    if (gap >= 0.5) continue;
+    ids.push(other.surfaceId);
+  }
+  return ids;
+};
+
 const wallBounds = (wall: FacadeWallPlane, upwardSearch: number) => {
   const xs = wall.vertices.map((vertex) => vertex[0]);
   const ys = wall.vertices.map((vertex) => vertex[1]);
@@ -198,6 +235,7 @@ export const measureWall = (
   wall: FacadeWallPlane,
   selectPoints: ReturnType<typeof createPointSelector>,
   attributes: BuildingAttributes | null,
+  coplanarNeighbours: string[] = [],
 ): WallMeasurement | null => {
   if (wall.vertices.length < 3) return null;
   const points = selectPoints(wallBounds(wall, UPWARD_SEARCH));
@@ -244,6 +282,7 @@ export const measureWall = (
     shapedRoofline: rooflineShape === 'shaped',
     silhouetteVertices: measured.simplified.length,
     silhouette: measured.simplified,
+    coplanarNeighbours,
     raster,
     measured,
   };
@@ -262,7 +301,7 @@ export const measureTile = async (tilePath: string): Promise<TileMeasurement> =>
   const eligible = walls.filter((wall) => wall.areaSquareMetres >= MINIMUM_WALL_AREA);
   const measurements: WallMeasurement[] = [];
   for (const wall of eligible) {
-    const measurement = measureWall(wall, selectPoints, attributes.get(wall.buildingId) ?? null);
+    const measurement = measureWall(wall, selectPoints, attributes.get(wall.buildingId) ?? null, coplanarNeighbourSurfaceIds(wall, walls));
     if (!measurement || measurement.height < MINIMUM_WALL_HEIGHT) continue;
     measurements.push(measurement);
   }
