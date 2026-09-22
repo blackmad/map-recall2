@@ -167,7 +167,7 @@ const writeElevationSvg = (measurement: WallMeasurement, scale = 46) => {
   return parts.join('\n');
 };
 
-const writePlanSvg = (measurements: WallMeasurement[], tileBounds: { minX: number; minY: number; maxX: number; maxY: number }, positions: Float32Array, count: number, scale = 8) => {
+const writePlanSvg = (measurements: WallMeasurement[], tileBounds: { minX: number; minY: number; maxX: number; maxY: number }, positions: Float64Array, count: number, scale = 8) => {
   const width = tileBounds.maxX - tileBounds.minX;
   const height = tileBounds.maxY - tileBounds.minY;
   const parts: string[] = [

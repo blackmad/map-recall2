@@ -19,7 +19,12 @@ export interface LazTile {
   bytes: number;
   count: number;
   bounds: Bounds3;
-  positions: Float32Array;
+  /**
+   * Absolute RD/NAP positions. Float64 because the sheet coordinates are ~1.2e5
+   * and ~4.85e5: Float32 resolves to about 0.8 cm there, which is a large
+   * fraction of the 5 cm measurement cell and biases the plane offset.
+   */
+  positions: Float64Array;
   colours: Uint8Array | null;
   intensities: Uint16Array | null;
 }
@@ -30,8 +35,8 @@ export interface LazTile {
  */
 export async function loadLazTile(file: string): Promise<LazTile> {
   const bytes = await readFile(file);
-  const data = await parse(bytes, LASLoader, { las: { fp64: false, colorDepth: 'auto' } });
-  const positions = data.attributes.POSITION?.value as Float32Array | undefined;
+  const data = await parse(bytes, LASLoader, { las: { fp64: true, colorDepth: 'auto' } });
+  const positions = data.attributes.POSITION?.value as Float64Array | undefined;
   if (!positions) throw new Error(`no POSITION attribute in ${file}`);
   const count = (data.loaderData?.pointsCount as number) ?? positions.length / 3;
   const colourAttribute = data.attributes.COLOR_0?.value as Uint8Array | undefined;
@@ -53,7 +58,7 @@ export async function loadLazTile(file: string): Promise<LazTile> {
   };
 }
 
-const scanBounds = (positions: Float32Array, count: number): Bounds3 => {
+const scanBounds = (positions: Float64Array, count: number): Bounds3 => {
   const bounds: Bounds3 = { minX: Infinity, minY: Infinity, minZ: Infinity, maxX: -Infinity, maxY: -Infinity, maxZ: -Infinity };
   for (let index = 0; index < count; index += 1) {
     const x = positions[index * 3];
