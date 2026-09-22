@@ -132,6 +132,103 @@ const median = (values: number[]) => {
   return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
 };
 
+/** Median of the outer 1/8 of non-null heights on each side — the flanks, i.e. the eave, per gable.ts's convention. */
+export const eaveHeight = (heights: readonly number[]): number => {
+  if (!heights.length) return NaN;
+  const span = Math.max(1, Math.floor(heights.length / 8));
+  return median([...heights.slice(0, span), ...heights.slice(-span)]);
+};
+
+/** Structuring width for the dip-closing pass: a coverage hole or sag narrower than this is filled. */
+export const CLOSING_WIDTH_M = 0.5;
+/** A run narrower than this that stands well above both neighbours is treated as leaked/noisy, not a roofline. */
+export const SPIKE_WIDTH_M = 0.4;
+/** How far above its neighbours a narrow run must stand to be rejected as a spike. */
+export const SPIKE_HEIGHT_M = 1.0;
+/** How far below the eave a column may read before it's treated as a hole rather than a roofline. */
+export const HOLE_DEPTH_BELOW_EAVE_M = 1.5;
+/** Two samples within this height of each other are considered part of the same run for spike detection. */
+const RUN_TOLERANCE_M = 0.15;
+
+const NEG = -1e9;
+
+/**
+ * Grayscale morphological closing (dilate then erode with a flat window of
+ * `widthM`) of the upper envelope: fills a dip — including a coverage hole —
+ * narrower than `widthM`, but leaves a dip at least that wide untouched. A
+ * real gap wider than `widthM` that never gets bridged by dilation stays
+ * `null` after erosion.
+ */
+export function closeDips(heights: ReadonlyArray<number | null>, sampleM: number, widthM = CLOSING_WIDTH_M): Array<number | null> {
+  const radius = Math.max(1, Math.round(widthM / sampleM / 2));
+  const values = heights.map((value) => (value == null ? NEG : value));
+  const windowExtreme = (source: number[], pick: (a: number, b: number) => number) => {
+    const out = new Array<number>(source.length);
+    for (let i = 0; i < source.length; i += 1) {
+      let best = source[i];
+      for (let offset = -radius; offset <= radius; offset += 1) {
+        const j = i + offset;
+        if (j < 0 || j >= source.length) continue;
+        best = pick(best, source[j]);
+      }
+      out[i] = best;
+    }
+    return out;
+  };
+  const dilated = windowExtreme(values, Math.max);
+  const eroded = windowExtreme(dilated, Math.min);
+  return eroded.map((value) => (value <= NEG / 2 ? null : value));
+}
+
+/**
+ * Reject narrow spikes: a maximal run of near-constant-height samples
+ * (within `RUN_TOLERANCE_M`) shorter than `widthM` that stands more than
+ * `heightM` above BOTH its immediate non-null neighbours becomes `null`. A
+ * run touching either end of the profile (no neighbour on that side) is left
+ * alone — there's nothing to compare it against.
+ */
+export function rejectSpikes(heights: ReadonlyArray<number | null>, sampleM: number, widthM = SPIKE_WIDTH_M, heightM = SPIKE_HEIGHT_M): Array<number | null> {
+  const out = [...heights];
+  let index = 0;
+  while (index < out.length) {
+    if (out[index] == null) { index += 1; continue; }
+    let end = index;
+    while (end + 1 < out.length && out[end + 1] != null && Math.abs((out[end + 1] as number) - (out[index] as number)) <= RUN_TOLERANCE_M) end += 1;
+    const runWidthM = (end - index) * sampleM;
+    const left = index > 0 ? out[index - 1] : null;
+    const right = end < out.length - 1 ? out[end + 1] : null;
+    if (runWidthM < widthM && left != null && right != null) {
+      const runValues = out.slice(index, end + 1) as number[];
+      const runHeight = runValues.reduce((sum, value) => sum + value, 0) / runValues.length;
+      if (runHeight - left > heightM && runHeight - right > heightM) {
+        for (let i = index; i <= end; i += 1) out[i] = null;
+      }
+    }
+    index = end + 1;
+  }
+  return out;
+}
+
+/** Null out any column that reads more than `depthM` below the eave — a hole, not a measured roofline. */
+export function nullBelowEave(heights: ReadonlyArray<number | null>, eaveUp: number, depthM = HOLE_DEPTH_BELOW_EAVE_M): Array<number | null> {
+  return heights.map((value) => (value != null && value < eaveUp - depthM ? null : value));
+}
+
+/**
+ * The full R1 cleaning pipeline over a resampled profile: close narrow dips
+ * (including coverage holes), reject narrow spikes, then null anything that
+ * still reads as a deep hole below the eave. `eaveEstimate` should come from
+ * the *raw* profile (median of the outer flanks), so the hole cut isn't
+ * biased by the cleaning it's gating.
+ */
+export function cleanProfile(rawPoints: readonly CanonicalProfilePoint[], sampleM: number, eaveEstimate: number): CanonicalProfilePoint[] {
+  const raw = rawPoints.map((point) => point.up);
+  const closed = closeDips(raw, sampleM);
+  const despiked = rejectSpikes(closed, sampleM);
+  const holed = nullBelowEave(despiked, eaveEstimate);
+  return rawPoints.map((point, index) => ({ along: point.along, up: holed[index] }));
+}
+
 /** Re-derive a canonical profile sample's raster (along, up), for drawing on the wall-frame image. */
 export function toRasterPoint(frame: Parameters<typeof projectToWall>[0], plane: ElevationPlane, along: number, up: number) {
   const dx = plane.end.x - plane.start.x;

@@ -2,7 +2,14 @@ import assert from 'node:assert/strict';
 import type { FacadeWallPlane } from '../building/facadePointCloud.ts';
 import { buildElevations } from './elevations.ts';
 import { buildFootprintRings, elevationSurfaceIds } from './footprintRings.ts';
-import { canonicaliseProfile, rasteriseElevation, type ElevationPlane } from './elevationRoofline.ts';
+import {
+  canonicaliseProfile,
+  cleanProfile,
+  eaveHeight,
+  rasteriseElevation,
+  type CanonicalProfilePoint,
+  type ElevationPlane,
+} from './elevationRoofline.ts';
 import type { CloudPoint } from './pointCloudGeometry.ts';
 
 let checks = 0;
@@ -89,5 +96,44 @@ const nearEnd = profile.points.find((point) => point.along >= 7 && point.along <
 check(nearStart != null && Math.abs(nearStart - 6) < 0.3, `flank near start reads ~6 m absolute NAP, got ${nearStart}`);
 check(nearEnd != null && Math.abs(nearEnd - 6) < 0.3, `flank near end reads ~6 m absolute NAP, got ${nearEnd}`);
 check(nearCentre != null && nearCentre > 7.3, `step centre reads well above the flanks, got ${nearCentre}`);
+
+// 4. Profile cleaning: a step gable with a 0.3 m coverage hole keeps its
+// steps and loses the hole.
+const sampleM = 0.1;
+const makePoints = (heights: ReadonlyArray<number | null>): CanonicalProfilePoint[] =>
+  heights.map((up, index) => ({ along: Number((index * sampleM).toFixed(2)), up }));
+
+const stepWithHole: Array<number | null> = [];
+for (let along = 0; along <= 8 + 1e-9; along += sampleM) {
+  if (along >= 3.9 && along <= 4.2) { stepWithHole.push(null); continue; }
+  stepWithHole.push(along >= 2 && along <= 6 ? 8 : 6);
+}
+const eaveEstimate1 = eaveHeight(stepWithHole.filter((value): value is number => value != null));
+const cleanedHole = cleanProfile(makePoints(stepWithHole), sampleM, eaveEstimate1);
+const atHole = cleanedHole.find((point) => Math.abs(point.along - 4.0) < 1e-6)!;
+check(atHole.up != null && Math.abs(atHole.up - 8) < 0.05, `the 0.3 m hole is closed back to the step height, got ${atHole.up}`);
+const stillAStep = cleanedHole.find((point) => Math.abs(point.along - 3.0) < 1e-6)!;
+check(stillAStep.up != null && Math.abs(stillAStep.up - 8) < 1e-6, 'the step itself is untouched away from the hole');
+const stillAFlank = cleanedHole.find((point) => Math.abs(point.along - 1.0) < 1e-6)!;
+check(stillAFlank.up != null && Math.abs(stillAFlank.up - 6) < 1e-6, 'the flank is untouched');
+
+// 5. A 0.2 m-wide, 1.5 m-tall spike on a flat roof is removed.
+const spike: Array<number | null> = [];
+for (let along = 0; along <= 8 + 1e-9; along += sampleM) spike.push(along >= 4.0 && along <= 4.2 ? 7.5 : 6);
+const eaveEstimate2 = eaveHeight(spike.filter((value): value is number => value != null));
+const cleanedSpike = cleanProfile(makePoints(spike), sampleM, eaveEstimate2);
+const atSpike = cleanedSpike.find((point) => Math.abs(point.along - 4.1) < 1e-6)!;
+check(atSpike.up == null || atSpike.up < 6.5, `the narrow spike is rejected, got ${atSpike.up}`);
+const farFromSpike = cleanedSpike.find((point) => Math.abs(point.along - 1.0) < 1e-6)!;
+check(farFromSpike.up != null && Math.abs(farFromSpike.up - 6) < 0.05, 'the flat roof away from the spike is unchanged');
+
+// 6. A real 0.8 m-wide, 1.5 m-tall step survives (it's wider than both the
+// 0.5 m closing width and the 0.4 m spike-rejection width).
+const realStep: Array<number | null> = [];
+for (let along = 0; along <= 8 + 1e-9; along += sampleM) realStep.push(along >= 3.5 && along <= 4.3 ? 7.5 : 6);
+const eaveEstimate3 = eaveHeight(realStep.filter((value): value is number => value != null));
+const cleanedStep = cleanProfile(makePoints(realStep), sampleM, eaveEstimate3);
+const atStepCentre = cleanedStep.find((point) => Math.abs(point.along - 3.9) < 1e-6)!;
+check(atStepCentre.up != null && atStepCentre.up > 7.0, `the real 0.8 m step survives cleaning, got ${atStepCentre.up}`);
 
 process.stdout.write(`Elevation roofline checks passed (${checks} assertions).\n`);
