@@ -4,6 +4,7 @@
  * judged by eye rather than trusted from a coverage percentage.
  *
  * Run: npx tsx scripts/roofline-eval/build-strip-roofline-sheet.ts [--count=24] [--out=FILE]
+ *      [--pandIds=id,id,...] [--caption="..."]
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -39,10 +40,12 @@ for (const strip of manifest.strips) {
   if (list) list.push(strip); else byWall.set(strip.pandId, [strip]);
 }
 // Deterministic, spread-out sample rather than the first N alphabetically,
-// so the sheet isn't just every Herengracht house in a row.
+// so the sheet isn't just every Herengracht house in a row. An explicit
+// --pandIds list (e.g. "biggest coverage change") overrides the sample.
 const wallIds = [...byWall.keys()].sort();
+const explicitIds = args.get('pandIds')?.split(',').map(s => s.trim()).filter(Boolean);
 const stride = Math.max(1, Math.floor(wallIds.length / count));
-const sampled = wallIds.filter((_, i) => i % stride === 0).slice(0, count);
+const sampled = explicitIds ?? wallIds.filter((_, i) => i % stride === 0).slice(0, count);
 
 async function loadLuma(file: string): Promise<Luma> {
   const { data, info } = await sharp(path.join(stripsDir, file)).greyscale().raw().toBuffer({ resolveWithObject: true });
@@ -120,9 +123,14 @@ for (let r = 0; r < rows; r++) {
 }
 const totalH = y + gap;
 
+const defaultCaption = 'A2 roofline sheet: yellow=coarse (thin), magenta=snapped (thick). Label: address, consensus-eligible column coverage.';
+const caption = args.get('caption') ?? defaultCaption;
+const subCaption = explicitIds
+  ? `${sampled.length} explicitly-selected walls, one view each (first view in the manifest).`
+  : `${sampled.length} of ${wallIds.length} walls, one view each (first view in the manifest).`;
 const header = `<svg width="${sheetW}" height="40"><rect width="100%" height="100%" fill="white"/>
-<text x="10" y="18" font-size="14" font-family="monospace" fill="black">A2 roofline sheet: yellow=coarse (thin), magenta=snapped (thick). Label: address, consensus-eligible column coverage.</text>
-<text x="10" y="34" font-size="11" font-family="monospace" fill="#555">${sampled.length} of ${wallIds.length} walls, one view each (first view in the manifest).</text></svg>`;
+<text x="10" y="18" font-size="14" font-family="monospace" fill="black">${caption.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</text>
+<text x="10" y="34" font-size="11" font-family="monospace" fill="#555">${subCaption}</text></svg>`;
 
 await mkdir(path.dirname(outFile), { recursive: true });
 const sheet = await sharp({ create: { width: sheetW, height: totalH, channels: 3, background: { r: 255, g: 255, b: 255 } } })

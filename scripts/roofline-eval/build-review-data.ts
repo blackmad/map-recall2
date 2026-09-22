@@ -116,6 +116,7 @@ for (const file of profileFiles.sort()) {
     fixture: fixtureMode,
     views,
     consensus: profile.consensus,
+    consensusSingleView: profile.consensusSingleView ?? null,
     gable: profile.gable ?? null,
   };
   materialised.push(entry);

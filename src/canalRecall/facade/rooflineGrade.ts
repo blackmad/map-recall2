@@ -54,6 +54,13 @@ export interface RooflineProfile {
   profileSha256: string;
   /** Optional G2 fitted gable outline: [along M, NAP M]. */
   gable?: { type: string; points: Array<[number, number]> } | null;
+  /**
+   * Parallel to `consensus`: true where exactly one non-underexposed view
+   * resolved that sample (kept rather than discarded — see A2's consensus
+   * rule). Materialisation-only, like `imageUrl`/`fixture` below: not hashed,
+   * so a change to this diagnostic alone doesn't invalidate an owner grade.
+   */
+  consensusSingleView?: boolean[];
   /** Materialisation-only extras, never hashed. */
   imageUrl?: string;
   fixture?: boolean;
