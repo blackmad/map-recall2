@@ -31,28 +31,36 @@ export interface Strip {
  * a column with no transition has no roofline to report and guessing one would
  * invent a step where none exists.
  */
-export function skyline(strip: Strip, { runLength = 4 }: { runLength?: number } = {}): Array<number | null> {
-  const { width, height, data } = strip;
-  const luma = (index: number) => 0.299 * data[index] + 0.587 * data[index + 1] + 0.114 * data[index + 2];
+const lumaAt = (data: Readonly<Uint8ClampedArray | Uint8Array>, index: number) =>
+  0.299 * data[index] + 0.587 * data[index + 1] + 0.114 * data[index + 2];
 
-  /**
-   * Sky is anything *at least as bright* as the sky above it — a floor, not a
-   * band.
-   *
-   * The obvious test, "close to the median sky colour", is wrong in a way that
-   * silently ruins the measurement: a white cloud is brighter than median blue
-   * sky, so a symmetric band classifies cloud as building and plants a
-   * roofline halfway up the sky. On a part-cloudy January morning that happens
-   * across most of the frame. Both blue sky and cloud are brighter than brick
-   * and far brighter than a slate roof, so the floor separates them cleanly and
-   * the ceiling was never doing useful work.
-   */
-  const band = Math.max(2, Math.floor(height * 0.04));
+const quantile = (values: number[], q: number) => {
+  const s = [...values].sort((a, b) => a - b);
+  return s[Math.floor((s.length - 1) * q)];
+};
+
+/**
+ * The luminance below which a pixel reads as building rather than sky, or
+ * `null` when the frame has no usable sky reference.
+ *
+ * Sky is anything *at least as bright* as the sky above it — a floor, not a
+ * band.
+ *
+ * The obvious test, "close to the median sky colour", is wrong in a way that
+ * silently ruins the measurement: a white cloud is brighter than median blue
+ * sky, so a symmetric band classifies cloud as building and plants a
+ * roofline halfway up the sky. On a part-cloudy January morning that happens
+ * across most of the frame. Both blue sky and cloud are brighter than brick
+ * and far brighter than a slate roof, so the floor separates them cleanly and
+ * the ceiling was never doing useful work.
+ */
+export function skyFloor(strip: Strip, { bandFraction = 0.04 }: { bandFraction?: number } = {}): number | null {
+  const { width, height, data } = strip;
+  const band = Math.max(2, Math.floor(height * bandFraction));
   const lumas: number[] = [];
   for (let y = 0; y < band; y++) {
-    for (let x = 0; x < width; x++) lumas.push(luma((y * width + x) * 4));
+    for (let x = 0; x < width; x++) lumas.push(lumaAt(data, (y * width + x) * 4));
   }
-  const quantile = (values: number[], q: number) => { const s = [...values].sort((a, b) => a - b); return s[Math.floor((s.length - 1) * q)]; };
   // An upper quantile, not the median. The top band is mostly sky but not
   // always only sky: a taller building on the block behind can fill part of it,
   // and a median then reports brick as "sky", which drags the floor below every
@@ -60,16 +68,22 @@ export function skyline(strip: Strip, { runLength = 4 }: { runLength?: number } 
   // survives a top band that is a third obstructed.
   const skyLuma = quantile(lumas, 0.8);
   const spread = quantile(lumas.map(v => Math.abs(v - skyLuma)), 0.5) * 1.4826 || 8;
+  // If the band is so dark that the floor sits in brick territory, there is no
+  // usable sky reference and every column would be reported as sky. Say so
+  // rather than reporting a wrong one.
+  if (skyLuma < 60) return null;
   // Deep enough below the sky to survive a shaded patch of sky, well above the
   // brightest brick.
-  const floor = skyLuma - Math.max(30, spread * 3.5);
+  return skyLuma - Math.max(30, spread * 3.5);
+}
 
-  // If the band is so dark that the floor sits in brick territory, there is no
-  // usable sky reference and every column would be reported as sky. Say so by
-  // reporting no roofline rather than reporting a wrong one.
-  if (skyLuma < 60) return new Array(width).fill(null);
+export function skyline(strip: Strip, { runLength = 4 }: { runLength?: number } = {}): Array<number | null> {
+  const { width, height, data } = strip;
+  const floor = skyFloor(strip);
 
-  const isSky = (index: number) => luma(index) >= floor;
+  if (floor === null) return new Array(width).fill(null);
+
+  const isSky = (index: number) => lumaAt(data, index) >= floor;
 
   const result: Array<number | null> = new Array(width).fill(null);
   for (let x = 0; x < width; x++) {
@@ -80,6 +94,53 @@ export function skyline(strip: Strip, { runLength = 4 }: { runLength?: number } 
     }
   }
   return result;
+}
+
+export interface ClippedOptions {
+  /** Rows below the top edge that must all read as building. */
+  runLength?: number;
+  /** Absolute luma a sky pixel must reach. */
+  skyLuma?: number;
+  /** How much redder than blue a sky pixel may be (white cloud is neutral). */
+  warmMargin?: number;
+}
+
+/**
+ * Is each column's very top row building rather than sky?
+ *
+ * This is the question A0 turns on. A strip cut at the building's real top
+ * cannot show a roof, and the share of columns that are brick right up to the
+ * top edge is the direct measure of how much roofline the cut destroyed.
+ *
+ * It is deliberately crude, and deliberately **absolute**. The `skyline` floor
+ * is derived from the strip's own top band, which is exactly the wrong move
+ * here: on a clipped strip that band is brick, the floor lands below the brick,
+ * and every column reads as sky — the measure would report the defect it exists
+ * to find as a clean picture. So sky is pinned to a fixed, conservative
+ * luminance and colour instead: bright, and not redder than blue (Amsterdam
+ * brick and most roofs are warm; blue and white cloud are not). Any per-column
+ * mistake this makes is made identically before and after, so the *difference*
+ * the re-cut is judged on survives.
+ */
+export function topClippedColumns(strip: Strip, { runLength = 4, skyLuma = 140, warmMargin = 10 }: ClippedOptions = {}): boolean[] {
+  const { width, height, data } = strip;
+  const depth = Math.min(height, Math.max(1, runLength));
+  const result: boolean[] = new Array(width).fill(true);
+  for (let x = 0; x < width; x++) {
+    for (let y = 0; y < depth; y++) {
+      const i = (y * width + x) * 4;
+      const luma = lumaAt(data, i);
+      if (luma >= skyLuma && data[i + 2] >= data[i] - warmMargin) { result[x] = false; break; }
+    }
+  }
+  return result;
+}
+
+/** Share of columns whose top row is building, 0 to 1. */
+export function topClippedShare(strip: Strip, opts: ClippedOptions = {}): number {
+  const columns = topClippedColumns(strip, opts);
+  if (!columns.length) return 0;
+  return columns.filter(Boolean).length / columns.length;
 }
 
 /**

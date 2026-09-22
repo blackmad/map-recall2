@@ -24,24 +24,47 @@
  *
  * Usage:
  *   npx tsx scripts/facade-twin/build-strip-set.ts [--count=80] [--downloads=150]
+ *     [--headroom-m=0.5] [--views-per-wall=1] [--out=<dir>] [--pands-from=<manifest.json>]
+ *
+ * `--headroom-m` replaces the fixed half-metre of sky above the roof, so a
+ * roofline has room to be found above the 3DBAG ridge. `--views-per-wall` keeps
+ * the best *n* qualifying views per wall instead of stopping at the first, and
+ * requires them to be at least three metres apart so the extra views are
+ * genuinely different rather than the same pass twice. `--pands-from` re-cuts
+ * exactly the pand IDs named by an earlier manifest, which is how a set is
+ * re-rendered with a different frame without re-selecting the buildings.
  */
+import { execSync } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import jpeg from 'jpeg-js';
 import { AMSTERDAM_GRACHTENGORDEL_WEST as AREA } from '../../src/canalRecall/facade/areas.ts';
 import { AMSTERDAM_CAMERA, hasUsableGeometry, lensHeightNap } from '../../src/canalRecall/facade/sources/amsterdamPanorama.ts';
 import { RD_NEW } from '../../src/canalRecall/facade/sources/netherlands.ts';
+import { isAtLeastApart, pickDistinctViews, stripFrame } from '../../src/canalRecall/facade/stripFrame.ts';
 import { loadTrackOffsets, rectifyWall } from './panorama-render.ts';
-import { blockedFraction, buildProbe, chooseFrontage, rankViews } from './frontage.ts';
+import { blockedFraction, buildProbe, chooseFrontage, rankViews, verticalPixelsPerMetre, horizontalPixelsPerMetre } from './frontage.ts';
 import type { LngLat, PanoramaView, ProjectedPoint } from '../../src/canalRecall/facade/sources.ts';
 
 const CACHE = path.resolve('.cache/facade-twin');
 const STAGING = path.resolve('public/data/extracts/amsterdam/staging/facade-twin', AREA.areaId);
-const OUT = path.join(CACHE, 'strips-confident');
 const arg = (n: string) => process.argv.find(v => v.startsWith(`--${n}=`))?.slice(n.length + 3);
-const WANT = Number(arg('count') ?? 80);
+// Defaults preserve the original run exactly: half a metre above the ridge,
+// one view per wall, into strips-confident.
+const HEADROOM_M = Number(arg('headroom-m') ?? 0.5);
+const VIEWS_PER_WALL = Math.max(1, Math.floor(Number(arg('views-per-wall') ?? 1)));
+const MIN_VIEW_SEPARATION_M = 3;
+const PANDS_FROM = arg('pands-from');
+const OUT = arg('out') ? path.resolve(arg('out')!) : path.join(CACHE, 'strips-confident');
+const WANT = arg('count') !== undefined ? Number(arg('count'))
+  : PANDS_FROM ? Number.POSITIVE_INFINITY : 80;
 const DOWNLOAD_BUDGET = Number(arg('downloads') ?? 150);
+const GENERATOR_SHA = (() => {
+  try { return execSync('git rev-parse HEAD', { cwd: path.dirname(fileURLToPath(import.meta.url)) }).toString().trim(); }
+  catch { return null; }
+})();
 
 // Gates. Every one is knowable before rendering.
 const MIN_CLEAR_VIEWS = 30;
@@ -89,7 +112,6 @@ function standardDeviation(encoded: Buffer): number | null {
 }
 
 let downloads = 0;
-let blank = 0;
 async function panorama(id: string) {
   const file = path.join(CACHE, 'panoramas', `${id}.jpg`);
   if (!existsSync(file)) {
@@ -108,33 +130,89 @@ async function panorama(id: string) {
   try { return jpeg.decode(await readFile(file), { useTArray: true, formatAsRGBA: true }); } catch { return null; }
 }
 
+// Re-cutting "exactly these pand IDs" is a promise, so an unnamed pand list
+// removes the count cap rather than letting `--count` quietly truncate it.
+let pandIds = Object.keys(store).sort();
+if (PANDS_FROM) {
+  const source = path.resolve(PANDS_FROM);
+  if (!existsSync(source)) { console.error(`--pands-from=${PANDS_FROM} does not exist`); process.exit(1); }
+  const old = await read(source, { strips: [] });
+  const wanted = new Set<string>((old?.strips ?? []).map((s: any) => s.pandId).filter(Boolean));
+  pandIds = [...wanted].filter(id => footprints.has(id) && massing.has(id)).sort();
+  console.log(`${pandIds.length} of ${wanted.size} pands named by ${path.relative(process.cwd(), source)} have a footprint and massing`);
+}
+
 await mkdir(OUT, { recursive: true });
 const manifest: any[] = [];
-let considered = 0, noFrontage = 0, noView = 0;
+let considered = 0, missing = 0, noFrontage = 0, noViewGeometry = 0, densityDropped = 0, ppmTooLow = 0, noRender = 0, tooClose = 0;
+const renderDrop = { image: 0, lens: 0, strip: 0, blank: 0 };
 
-for (const pandId of Object.keys(store).sort()) {
+for (const pandId of pandIds) {
   if (manifest.length >= WANT) break;
   const ring = footprints.get(pandId), mass = massing.get(pandId), record = store[pandId];
-  if (!ring || !record || !Number.isFinite(mass?.groundLevel)) continue;
+  /**
+   * A named pand is authoritative; the measured-facade record is not a gate.
+   *
+   * The record carries only an old wall *proposal*, and `chooseFrontage` does
+   * not use the proposal to choose — it is compared afterwards and reported as
+   * `frontageChangedByVisibility`. Requiring it therefore narrows a re-cut to
+   * whichever pands happen to survive in the latest `measured-facades.json`,
+   * which is a property of that file's generation, not of the building. When
+   * this run is handed an explicit pand list, the footprint and massing are
+   * what it needs, and the proposal is a bonus.
+   */
+  if (!ring || (!PANDS_FROM && !record) || !Number.isFinite(mass?.groundLevel)) { missing++; continue; }
   considered++;
 
   const choice = chooseFrontage(ring, pandId, probe,
-    { proposal: record.wall, addressPoints: addressesOf.get(pandId) ?? [] });
+    { proposal: record?.wall ?? null, addressPoints: addressesOf.get(pandId) ?? [] });
   if (!choice.elevation || choice.clearViews < MIN_CLEAR_VIEWS) { noFrontage++; continue; }
   const wall = choice.elevation;
 
   const ground = mass.groundLevel;
   const top = Math.max(mass.ridgeHeight ?? 0, mass.eavesHeight ?? 0, ground + 8);
-  const ranked = rankViews(wall, pandId, probe, posed, { wallHeightM: top - ground })
-    .filter(r => r.obliquityDeg <= MAX_OBLIQUITY
-      && r.worstPixelsPerMetre >= MIN_PIXELS_PER_M
-      && r.blockedFraction <= MAX_BLOCKED);
-  if (!ranked.length) { noView++; continue; }
+  const bottomNap = ground - 0.8;
+  const topNap = top + HEADROOM_M;
 
-  let made = false;
-  for (const candidate of ranked.slice(0, 4)) {
+  /**
+   * The vertical density gate is evaluated at the *new* top.
+   *
+   * The worst sampling on a wall is at its highest point, so adding headroom
+   * makes the gate harder in exactly the way the strip got taller. Ranking at
+   * the old ridge while rendering to the new top would certify detail the
+   * picture no longer has — which is the failure the gate exists to prevent.
+   * The same candidate list is also scored at the old top, so the number of
+   * walls that fail *because of* the headroom is a difference rather than a
+   * claim.
+   */
+  const ranked = rankViews(wall, pandId, probe, posed, { wallHeightM: topNap - ground });
+  const eligible = ranked.filter(r => r.obliquityDeg <= MAX_OBLIQUITY && r.blockedFraction <= MAX_BLOCKED);
+  if (!eligible.length) { noViewGeometry++; continue; }
+  const oldTopAboveLens = Math.max(1, (top - ground) - 2.4);
+  const oldTopPixelsPerMetre = (r: typeof ranked[number]) => Math.min(
+    verticalPixelsPerMetre(r.standoffM, oldTopAboveLens),
+    horizontalPixelsPerMetre(r.standoffM, r.obliquityDeg),
+  ) * (1 - r.blockedFraction);
+  const qualifying = eligible.filter(r => r.worstPixelsPerMetre >= MIN_PIXELS_PER_M);
+  if (!qualifying.length) {
+    if (eligible.some(r => oldTopPixelsPerMetre(r) >= MIN_PIXELS_PER_M)) densityDropped++;
+    else ppmTooLow++;
+    continue;
+  }
+
+  // One view is the original path, unchanged. More than one draws its
+  // candidates from a set whose members are all at least three metres apart,
+  // so a second view is a second position and not a second frame.
+  const candidates = VIEWS_PER_WALL === 1
+    ? qualifying.slice(0, 4)
+    : pickDistinctViews(qualifying, VIEWS_PER_WALL * 6, MIN_VIEW_SEPARATION_M);
+
+  const chosen: typeof ranked = [];
+  for (const candidate of candidates) {
+    if (chosen.length >= VIEWS_PER_WALL) break;
+    if (VIEWS_PER_WALL > 1 && chosen.some(c => !isAtLeastApart(c, candidate, MIN_VIEW_SEPARATION_M))) { tooClose++; continue; }
     const image = await panorama(candidate.view.panoramaId);
-    if (!image) continue;
+    if (!image) { renderDrop.image++; continue; }
     // Render at what the source carries, never above it: a blurry enlargement
     // is a worse picture that looks like a better one.
     const ppm = Math.min(48, Math.max(20, Math.round(candidate.worstPixelsPerMetre)));
@@ -150,13 +228,14 @@ for (const pandId of Object.keys(store).sort()) {
      * the extra metre of vertical uncertainty travels with the picture.
      */
     const lens = lensHeightNap(candidate.view, ground);
-    if (!lens) continue;
+    if (!lens) { renderDrop.lens++; continue; }
+    const track = trackOffset(candidate.view);
+    const heightOffsetM = lens.inferred ? 0 : track.offsetM;
     const strip = rectifyWall(image, candidate.view, AMSTERDAM_CAMERA,
-      [wall.start.x, wall.start.y, wall.end.x, wall.end.y], ground - 0.8, top + 0.5,
+      [wall.start.x, wall.start.y, wall.end.x, wall.end.y], bottomNap, topNap,
       { pixelsPerMetre: ppm, margin: 1.06, maxWidth: 1400, quality: 92,
-        heightOffsetM: lens.inferred ? 0 : trackOffset(candidate.view).offsetM,
-        lensZNap: lens.inferred ? lens.z : null });
-    if (!strip) continue;
+        heightOffsetM, lensZNap: lens.inferred ? lens.z : null });
+    if (!strip) { renderDrop.strip++; continue; }
     /**
      * A last look at the pixels before the strip counts as a strip.
      *
@@ -167,15 +246,20 @@ for (const pandId of Object.keys(store).sort()) {
      * whole class rather than the one cause that prompted it.
      */
     const flat = standardDeviation(strip.jpeg);
-    if (flat !== null && flat < 8) { blank++; continue; }
-    const name = `${(label.get(pandId) ?? pandId).replace(/[^A-Za-z0-9]+/g, '-')}__${pandId}__${candidate.view.capturedAt.slice(0, 10)}.jpg`;
+    if (flat !== null && flat < 8) { renderDrop.blank++; continue; }
+    // A second view of one wall keeps the same address and date, so it needs a
+    // suffix; the first view (and every single-view strip) keeps its old name.
+    const suffix = chosen.length ? `__v${chosen.length + 1}` : '';
+    const name = `${(label.get(pandId) ?? pandId).replace(/[^A-Za-z0-9]+/g, '-')}__${pandId}__${candidate.view.capturedAt.slice(0, 10)}${suffix}.jpg`;
     await writeFile(path.join(OUT, name), strip.jpeg);
     manifest.push({
       file: name, pandId, address: label.get(pandId) ?? null,
       capturedAt: candidate.view.capturedAt.slice(0, 10), panoramaId: candidate.view.panoramaId,
+      viewIndex: chosen.length + 1, viewsOnWall: VIEWS_PER_WALL,
       wallWidthM: Number(wall.lengthM.toFixed(2)),
       wallFacingDeg: Number(wall.facingDeg.toFixed(0)),
-      frontageChangedByVisibility: choice.changed,
+      // Null where there was no proposal to differ from (a named re-cut).
+      frontageChangedByVisibility: record ? choice.changed : null,
       clearViews: choice.clearViews,
       standoffM: Number(candidate.standoffM.toFixed(1)),
       obliquityDeg: Number(candidate.obliquityDeg.toFixed(1)),
@@ -188,23 +272,40 @@ for (const pandId of Object.keys(store).sort()) {
       heightInferred: lens.inferred,
       pixelStdDev: flat === null ? null : Number(flat.toFixed(1)),
       size: `${strip.width}x${strip.height}`,
+      frame: stripFrame({
+        wallStart: wall.start, wallEnd: wall.end, bottomNap, topNap,
+        marginFactor: 1.06, requestedPixelsPerMetre: ppm,
+        renderedWidth: strip.width, renderedHeight: strip.height,
+      }),
+      lensVerdict: {
+        inferred: lens.inferred, lensZNap: Number(lens.z.toFixed(3)),
+        offsetM: Number(heightOffsetM.toFixed(3)),
+        offsetSource: lens.inferred ? 'inferred' : track.source,
+      },
+      generatorGitSha: GENERATOR_SHA,
     });
-    made = true;
-    process.stdout.write(`\r  ${manifest.length}/${WANT} strips, ${downloads} downloads`);
-    break;
+    chosen.push(candidate);
+    process.stdout.write(`\r  ${manifest.length} strips, ${downloads} downloads`);
   }
-  if (!made) noView++;
+  if (!chosen.length) noRender++;
 }
 process.stdout.write('\r');
 
+const dropOuts = { missing, noFrontage, noViewGeometry, densityDropped, ppmTooLow, noRender, tooClose, renderDrop };
 await writeFile(path.join(OUT, 'manifest.json'), JSON.stringify({
   metadata: {
     generatedAt: new Date().toISOString(),
     generator: 'scripts/facade-twin/build-strip-set.ts',
+    generatorGitSha: GENERATOR_SHA,
     cameraModel: AMSTERDAM_CAMERA.id,
+    headroomM: HEADROOM_M,
+    viewsPerWall: VIEWS_PER_WALL,
+    minViewSeparationM: MIN_VIEW_SEPARATION_M,
+    pandsFrom: PANDS_FROM ? path.resolve(PANDS_FROM) : null,
     gates: { minClearViews: MIN_CLEAR_VIEWS, maxBlockedFraction: MAX_BLOCKED,
       minSourcePixelsPerMetre: MIN_PIXELS_PER_M, maxObliquityDeg: MAX_OBLIQUITY,
       minRenderedStdDev: 8 },
+    dropOuts,
     note: 'Selected on geometry and source quality, never on cross-view agreement — that '
       + 'measures image similarity rather than registration. Rendered at the rate the source '
       + 'carries, so nothing is upsampled. Street imagery © Gemeente Amsterdam, CC BY 4.0.',
@@ -213,9 +314,15 @@ await writeFile(path.join(OUT, 'manifest.json'), JSON.stringify({
 }, null, 1));
 
 const q = (xs: number[], p: number) => [...xs].sort((a, b) => a - b)[Math.floor(p * (xs.length - 1))];
-console.log(`${manifest.length} strips from ${considered} panden considered`);
-console.log(`  ${noFrontage} had no frontage with ${MIN_CLEAR_VIEWS}+ clear views, ${noView} no view meeting the gates`);
-console.log(`  ${downloads} panoramas downloaded`);
+const walls = new Set(manifest.map(m => m.pandId)).size;
+console.log(`${manifest.length} strips from ${considered} panden considered (${walls} walls rendered)`);
+console.log(`  drop-outs: ${noFrontage} no frontage with ${MIN_CLEAR_VIEWS}+ clear views, `
+  + `${noViewGeometry} no view through the obliquity/occlusion gates, `
+  + `${densityDropped} density gate at the new top (+${HEADROOM_M} m), ${ppmTooLow} source too coarse, `
+  + `${noRender} no renderable view`);
+console.log(`  render failures: ${renderDrop.image} image, ${renderDrop.lens} lens, ${renderDrop.strip} strip, ${renderDrop.blank} blank`
+  + `${tooClose ? `, ${tooClose} candidate views within ${MIN_VIEW_SEPARATION_M} m` : ''}`);
+console.log(`  ${downloads} panoramas downloaded, ${missing} pands missing footprint/massing`);
 if (manifest.length) {
   console.log(`  source px/m   median ${q(manifest.map(m => m.sourcePixelsPerMetre), 0.5)}   min ${q(manifest.map(m => m.sourcePixelsPerMetre), 0)}`);
   console.log(`  standoff      median ${q(manifest.map(m => m.standoffM), 0.5)} m`);
