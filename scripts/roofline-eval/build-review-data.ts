@@ -105,6 +105,9 @@ for (const file of profileFiles.sort()) {
       coarsePx: view.coarsePx,
       snappedPx: view.snappedPx,
       profile: view.profile,
+      consensusPx: view.consensusPx ?? null,
+      viewBiasM: view.viewBiasM ?? 0,
+      rescuedSkyFraction: view.rescuedSkyFraction ?? 0,
     });
   }
   const entry = {
@@ -117,6 +120,10 @@ for (const file of profileFiles.sort()) {
     views,
     consensus: profile.consensus,
     consensusSingleView: profile.consensusSingleView ?? null,
+    maxViewBiasM: profile.maxViewBiasM ?? 0,
+    alignmentNote: profile.alignmentNote ?? null,
+    reasonSummary: profile.reasonSummary ?? null,
+    medianOffsetVs3dbagMaxM: profile.medianOffsetVs3dbagMaxM ?? null,
     gable: profile.gable ?? null,
   };
   materialised.push(entry);

@@ -33,10 +33,14 @@
     .fixture-banner { padding: 9px 18px; background: repeating-linear-gradient(135deg, #4a2f05 0 14px, #5a3a08 14px 28px); color: #ffe6a8; font: 700 .74rem/1.3 "JetBrains Mono", monospace; border-bottom: 1px solid rgba(255,230,168,.4); }
     .workspace { min-height: 0; display: grid; grid-template-columns: minmax(240px, 18vw) minmax(430px, 1fr) minmax(320px, 25vw); }
     aside, main { min-width: 0; min-height: 0; }
-    .queue { border-right: 1px solid var(--hairline); background: #081733; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+    .queue { border-right: 1px solid var(--hairline); background: #081733; display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; }
     .queue-head { padding: 15px 16px 11px; }
     .queue-head h2 { margin: 0 0 5px; font: 700 1.1rem/1 var(--font-plaque); letter-spacing: .025em; text-transform: uppercase; }
     .queue-head p { margin: 0; color: var(--muted); font-size: .74rem; }
+    .queue-tabs { display: flex; gap: 6px; padding: 0 16px 11px; }
+    .qtab { flex: 1; border: 1px solid var(--hairline); border-radius: 6px; background: rgba(255,255,255,.05); padding: 7px 6px; cursor: pointer; font: 700 .62rem/1.2 "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .02em; }
+    .qtab.active { border-color: var(--rivet); background: var(--rivet); color: #061128; }
+    .queue-empty { margin: 14px 10px; color: var(--muted); font-size: .78rem; }
     .queue-list { min-height: 0; overflow: auto; padding: 0 8px 10px; display: grid; align-content: start; gap: 4px; }
     .wall { width: 100%; display: grid; grid-template-columns: 9px 1fr auto; gap: 10px; align-items: center; border: 0; border-radius: 8px; background: transparent; padding: 10px 10px; text-align: left; cursor: pointer; }
     .wall:hover { background: rgba(255,255,255,.06); }
@@ -54,6 +58,8 @@
     .stage-bar h2 { margin: 0; font: 700 1.18rem/1 var(--font-plaque); letter-spacing: .02em; text-transform: uppercase; }
     .stage-bar code { color: var(--muted); font: 500 .64rem/1.5 "JetBrains Mono", monospace; overflow-wrap: anywhere; }
     .hash-pill { color: var(--warning); font: 700 .62rem/1 "JetBrains Mono", monospace; white-space: nowrap; }
+    .reason-summary { margin: 0 16px 10px; padding: 8px 11px; border-radius: 7px; background: rgba(255,157,144,.1); border: 1px solid rgba(255,157,144,.35); color: #ffd0ca; font: 600 .74rem/1.35 "JetBrains Mono", monospace; }
+    .reason-summary:empty { display: none; }
     .viewer { min-height: 0; overflow: auto; padding: 12px 16px 4px; text-align: center; }
     .tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 10px; }
     .tab { border: 1px solid var(--hairline); border-radius: 6px; background: rgba(255,255,255,.05); padding: 5px 9px; cursor: pointer; font: 600 .64rem/1 "JetBrains Mono", monospace; }
@@ -135,7 +141,7 @@
       </div>
       <div class="headline">
         <h1>Grade the photo roofline</h1>
-        <p>Does the thin coarse line and the thick snapped line trace the real roofline? Grade each wall, add a reason if it is wrong, then export. Your names are not collected.</p>
+        <p>Does the bold magenta line — the consensus, aligned onto this photo — trace the real roofline? Grade each wall, add a reason if it is wrong, then export. Your names are not collected.</p>
       </div>
       <div class="counter" id="counter">LOADING</div>
     </header>
@@ -152,7 +158,20 @@
       const escapeHtml = value => String(value == null ? '' : value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
       const sha = value => String(value || '').slice(0, 12);
 
-      const state = { data: null, profiles: [], selected: 0, view: 0, grades: [] };
+      const state = { data: null, profiles: [], selected: 0, view: 0, grades: [], queueFilter: 'has-roofline' };
+      const HAS_ROOFLINE_COVERAGE = 0.10;
+      function coverageOf(profile) {
+        const points = (profile.consensus || []);
+        if (!points.length) return 0;
+        return points.filter(point => point[1] != null).length / points.length;
+      }
+      const hasRoofline = profile => coverageOf(profile) >= HAS_ROOFLINE_COVERAGE;
+      function queueIndices() {
+        return state.profiles
+          .map((profile, index) => ({ profile, index }))
+          .filter(entry => state.queueFilter === 'has-roofline' ? hasRoofline(entry.profile) : !hasRoofline(entry.profile))
+          .map(entry => entry.index);
+      }
 
       // ---- grade state (mirrors src/canalRecall/facade/rooflineGrade.ts) ----
       const isValidGrade = value => value === 1 || value === 2 || value === 3 || value === 4;
@@ -214,16 +233,26 @@
         }
         return d;
       }
+      // Graded from the photo, not the chart — so these are bold, and chosen
+      // for contrast against both bright overcast sky and dark brick: a
+      // magenta/pink consensus line and a cyan view-detection line, each with
+      // a dark halo stroke underneath so a thin bright segment never
+      // disappears against a same-toned patch of sky or stone.
       function drawStrip(profile, view) {
         const overlay = $('#overlay');
         const img = $('#strip');
-        const columns = Math.max(view.coarsePx.length, view.snappedPx.length);
+        const consensusPx = view.consensusPx || [];
+        const columns = Math.max(view.coarsePx.length, view.snappedPx.length, consensusPx.length);
         const render = () => {
           const height = img.naturalHeight || 1;
           overlay.setAttribute('viewBox', '0 0 ' + columns + ' ' + height);
+          const haloWidth = w => (w + 2.5);
+          const line = (points, color, width) =>
+            '<path d="' + polylinePath(points) + '" fill="none" stroke="#04122c" stroke-width="' + haloWidth(width) + '" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/>'
+            + '<path d="' + polylinePath(points) + '" fill="none" stroke="' + color + '" stroke-width="' + width + '" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/>';
           overlay.innerHTML =
-            '<path d="' + polylinePath(view.coarsePx) + '" fill="none" stroke="' + '#e6c46b' + '" stroke-width="1.4" vector-effect="non-scaling-stroke"/>' +
-            '<path d="' + polylinePath(view.snappedPx) + '" fill="none" stroke="' + '#ffffff' + '" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>';
+            line(view.snappedPx, '#38e6ff', 3.4)     // this view's own detected roofline (cyan)
+            + line(consensusPx, '#ff2e9a', 5.2);      // the graded line: the consensus, aligned onto this view (magenta)
         };
         if (img.complete && img.naturalHeight) render(); else img.onload = render;
       }
@@ -274,15 +303,30 @@
         if (!record) return 'new';
         return record.profileSha256 === profile.profileSha256 ? 'graded' : 'stale';
       }
+      function renderQueueTabs() {
+        const hasCount = state.profiles.filter(hasRoofline).length;
+        const noneCount = state.profiles.length - hasCount;
+        $('#queue-tabs').innerHTML =
+          '<button class="qtab ' + (state.queueFilter === 'has-roofline' ? 'active' : '') + '" data-filter="has-roofline">Has a roofline (' + hasCount + ')</button>'
+          + '<button class="qtab ' + (state.queueFilter === 'nothing-found' ? 'active' : '') + '" data-filter="nothing-found">Nothing found (' + noneCount + ')</button>';
+        document.querySelectorAll('.qtab').forEach(button => button.addEventListener('click', () => {
+          state.queueFilter = button.dataset.filter;
+          const indices = queueIndices();
+          if (indices.length && indices.indexOf(state.selected) === -1) state.selected = indices[0];
+          render();
+        }));
+      }
       function renderQueue() {
-        $('#queue').innerHTML = state.profiles.map((profile, index) => {
+        const indices = queueIndices();
+        $('#queue').innerHTML = indices.map(index => {
+          const profile = state.profiles[index];
           const status = statusOf(profile);
           const record = currentRecord(profile);
           const badge = status === 'graded' ? (record.grade + ' ' + GRADE_LABELS[record.grade]).toUpperCase() : status === 'stale' ? 'STALE' : 'TO DO';
           return '<button class="wall ' + (index === state.selected ? 'active' : '') + '" data-index="' + index + '" data-state="' + status + '">'
             + '<span class="dot"></span><span><strong>' + escapeHtml(profile.address) + '</strong>'
-            + '<small>' + escapeHtml(profile.pandId) + ' · ' + escapeHtml(profile.shape) + '</small></span><b>' + badge + '</b></button>';
-        }).join('');
+            + '<small>' + escapeHtml(profile.pandId) + ' · ' + escapeHtml(profile.shape) + ' · ' + Math.round(coverageOf(profile) * 100) + '% covered</small></span><b>' + badge + '</b></button>';
+        }).join('') || '<p class="queue-empty">No walls in this list.</p>';
         document.querySelectorAll('.wall').forEach(button => button.addEventListener('click', () => select(Number(button.dataset.index))));
       }
       function renderStage() {
@@ -295,16 +339,24 @@
           + ' · shape ' + escapeHtml(profile.shape)
           + '<br>' + escapeHtml(view.panoramaId) + ' · ' + escapeHtml(view.capturedAt);
         $('#hash-pill').textContent = 'sha ' + sha(profile.profileSha256);
+        $('#reason-summary').textContent = profile.reasonSummary || '';
         $('#view-tabs').innerHTML = profile.views.length > 1
-          ? profile.views.map((item, index) => '<button class="tab ' + (index === state.view ? 'active' : '') + '" data-view="' + index + '">view ' + (index + 1) + '</button>').join('')
+          ? profile.views.map((item, index) => '<button class="tab ' + (index === state.view ? 'active' : '') + '" data-view="' + index + '">view ' + (index + 1)
+              + (item.viewBiasM ? ' (' + (item.viewBiasM > 0 ? '+' : '') + item.viewBiasM.toFixed(2) + 'm)' : '') + '</button>').join('')
           : '';
         document.querySelectorAll('.tab').forEach(button => button.addEventListener('click', () => { state.view = Number(button.dataset.view); renderStage(); }));
         const img = $('#strip');
         img.onload = null;
         img.src = view.imageUrl;
         img.alt = 'Rectified street panorama strip of ' + profile.address;
-        $('#strip-note').textContent = 'Strip ' + view.file + ' — thin ' + (view.coarsePx.filter(value => value != null).length) + ' / ' + view.coarsePx.length
-          + ' coarse columns, ' + (view.snappedPx.filter(value => value != null).length) + ' snapped columns.';
+        const consensusPx = view.consensusPx || [];
+        const consensusCount = consensusPx.filter(value => value != null).length;
+        const ownCount = view.snappedPx.filter(value => value != null).length;
+        $('#strip-note').innerHTML = 'Strip ' + escapeHtml(view.file)
+          + ' — <span style="color:#ff2e9a">graded line</span> ' + consensusCount + ' / ' + consensusPx.length + ' columns'
+          + ', <span style="color:#38e6ff">this view’s own detection</span> ' + ownCount + ' / ' + view.snappedPx.length + ' columns'
+          + (view.viewBiasM ? ' · aligned ' + (view.viewBiasM > 0 ? '+' : '') + view.viewBiasM.toFixed(2) + ' m onto the reference view' : '')
+          + (view.rescuedSkyFraction ? ' · ' + (view.rescuedSkyFraction * 100).toFixed(1) + '% of the mask rescued from overcast/occluder' : '');
         drawStrip(profile, view);
         drawChart(profile);
       }
@@ -343,19 +395,27 @@
           + '<dt>Wrong</dt><dd>' + byValue[3] + '</dd><dt>Can\u2019t tell</dt><dd>' + byValue[4] + '</dd>'
           + '<dt>Stale (rebind)</dt><dd>' + stale + '</dd></dl>';
       }
-      function render() { renderQueue(); renderStage(); renderInspector(); renderCounter(); }
+      function render() { renderQueueTabs(); renderQueue(); renderStage(); renderInspector(); renderCounter(); }
 
       function select(index) {
         state.selected = Math.max(0, Math.min(state.profiles.length - 1, index));
         state.view = 0;
         render();
       }
+      /** Move by `delta` positions within the *currently visible* queue (has-roofline or nothing-found), not the whole list. */
+      function moveSelection(delta) {
+        const indices = queueIndices();
+        if (!indices.length) return;
+        const at = indices.indexOf(state.selected);
+        const next = at === -1 ? 0 : Math.max(0, Math.min(indices.length - 1, at + delta));
+        select(indices[next]);
+      }
       function gradeCurrent(grade, advance) {
         const profile = currentProfile();
         if (!profile) return;
         setGrade(profile, { grade: grade });
         renderInspector(); renderQueue(); renderCounter();
-        if (advance && state.selected < state.profiles.length - 1) select(state.selected + 1);
+        if (advance) moveSelection(1);
       }
       function toggleReason(reason) {
         const profile = currentProfile();
@@ -409,8 +469,8 @@
         const tag = (event.target && event.target.tagName || '').toLowerCase();
         if (tag === 'textarea' || tag === 'input' || tag === 'select') return;
         if (event.key >= '1' && event.key <= '4') { event.preventDefault(); gradeCurrent(Number(event.key), true); }
-        else if (event.key === 'ArrowRight') { event.preventDefault(); select(state.selected + 1); }
-        else if (event.key === 'ArrowLeft') { event.preventDefault(); select(state.selected - 1); }
+        else if (event.key === 'ArrowRight') { event.preventDefault(); moveSelection(1); }
+        else if (event.key === 'ArrowLeft') { event.preventDefault(); moveSelection(-1); }
       });
 
       // ---- shell ----
@@ -418,18 +478,20 @@
         $('#app').innerHTML =
           '<aside class="queue">'
           + '<div class="queue-head"><h2>Walls to grade</h2><p>One wall at a time. Grade the roofline, then move on.</p></div>'
+          + '<div class="queue-tabs" id="queue-tabs"></div>'
           + '<nav class="queue-list" id="queue" aria-label="Walls"></nav>'
-          + '<div class="queue-foot">thin = coarse boundary<br>thick = edge-snapped boundary</div>'
+          + '<div class="queue-foot"><span style="color:#ff2e9a">graded line</span> = consensus, aligned onto this view<br><span style="color:#38e6ff">thin</span> = this view’s own detection</div>'
           + '</aside>'
           + '<main class="stage">'
           + '<div class="stage-bar"><div><h2 id="wall-title">—</h2><code id="wall-sub"></code></div><div class="hash-pill" id="hash-pill"></div></div>'
+          + '<p class="reason-summary" id="reason-summary"></p>'
           + '<div class="viewer"><div class="tabs" id="view-tabs"></div><div class="strip-wrap"><img id="strip" alt=""><svg id="overlay" preserveAspectRatio="none"></svg></div><p class="strip-note" id="strip-note"></p></div>'
           + '<div class="under"><section class="chart"><div class="chart-head"><h3>Roofline profile</h3><span>NAP metres above ground · along the wall</span></div><svg id="chart" viewBox="0 0 640 240" preserveAspectRatio="xMidYMid meet"></svg>'
           + '<div class="chart-legend"><span class="swatch" style="color:#80d8ae"><i></i>consensus</span><span class="swatch" style="color:rgba(185,215,255,.6)"><i></i>view profile</span><span class="swatch" style="color:#b9d7ff"><i></i>fitted gable (G2)</span></div></section></div>'
           + '</main>'
           + '<aside class="inspector">'
           + '<section class="section"><h3>Grade this roofline</h3><div class="grade-buttons" id="grade-buttons"></div><div class="reason-row" id="reason-row"></div>'
-          + '<p class="notice" style="margin-top:12px">Wrong because: pick one reason when the roofline is wrong. Keys only grade; chips are a click.</p>'
+          + '<p class="notice" style="margin-top:12px">Grade only the line as drawn on the photo. A short or broken line is an honest abstention on the rest of the wall, not a wrong answer by itself — grade what is there, and use “clipped” / “tree” / … if what <em>is</em> drawn is also wrong.</p>'
           + '<label class="field-label" for="note">Note (optional)</label><textarea id="note" placeholder="What is right or wrong? e.g. tree hides the left shoulder"></textarea>'
           + '<p class="grade-status" id="grade-status"></p></section>'
           + '<section class="section"><h3>Keyboard</h3><ul class="keys"><li><kbd>1</kbd><span>right — and next</span></li><li><kbd>2</kbd><span>close — and next</span></li><li><kbd>3</kbd><span>wrong — and next</span></li><li><kbd>4</kbd><span>can\u2019t tell — and next</span></li><li><kbd>← →</kbd><span>previous / next wall</span></li></ul></section>'
@@ -464,7 +526,9 @@
             banner.textContent = 'FIXTURE DATA — ' + (payload.source && payload.source.note ? payload.source.note : 'hand-made profiles for developing this page; not measurements. Do not use for scoring.');
           }
           shell();
-          select(0);
+          const defaultQueue = queueIndices();
+          state.queueFilter = defaultQueue.length ? 'has-roofline' : 'nothing-found';
+          select((defaultQueue.length ? defaultQueue : queueIndices())[0] || 0);
         })
         .catch(error => {
           $('#counter').textContent = 'DATA UNAVAILABLE';

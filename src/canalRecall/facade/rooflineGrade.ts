@@ -40,6 +40,25 @@ export interface RooflineProfileView {
   snappedPx: Array<number | null>;
   /** Resampled to 0.10 m: [along M, NAP M | null]. */
   profile: Array<[number, number | null]>;
+  /**
+   * The final consensus (post bias-alignment), converted back into this
+   * view's own pixel rows so the review page can draw it directly on this
+   * photo without doing any metre/pixel conversion client-side — "the pixel
+   * rows already in the data". Parallel to `coarsePx`/`snappedPx`; null
+   * where the consensus itself is null at that column's `along` position.
+   * Materialisation-only: derived from `consensus` + this view's own frame,
+   * not an independent measurement, so it is never hashed.
+   */
+  consensusPx?: Array<number | null>;
+  /**
+   * This view's own vertical offset from the wall's reference view, in
+   * metres, estimated *before* consensus (see `estimateViewBias` in
+   * `stripRoofline.ts`) — positive means this view read higher than the
+   * reference. 0 for the reference view itself. Materialisation-only.
+   */
+  viewBiasM?: number;
+  /** Fraction of this view's mask pixels the sky rescue pass relabelled to sky. Materialisation-only. */
+  rescuedSkyFraction?: number;
 }
 
 export interface RooflineProfile {
@@ -61,6 +80,29 @@ export interface RooflineProfile {
    * so a change to this diagnostic alone doesn't invalidate an owner grade.
    */
   consensusSingleView?: boolean[];
+  /**
+   * Largest |viewBiasM| among this wall's views (0 for a single-view wall).
+   * A wall-level flag for "these views disagree about height, not shape" —
+   * see the distribution reported by `extract-strip-rooflines.ts`.
+   */
+  maxViewBiasM?: number;
+  /**
+   * Median of (consensus `up` − pand's own 3DBAG `b3_h_dak_max`), post
+   * bias-alignment, over resolved columns: how far this wall's roofline
+   * reads above the airborne-lidar roof max. A large, consistently positive
+   * value across many walls is a calibration finding; a lumpy one on a few
+   * walls is more likely set-back objects the `above-3dbag-max` gate should
+   * already have removed most of. Null when nothing resolved.
+   */
+  medianOffsetVs3dbagMaxM?: number | null;
+  /**
+   * States which view's absolute NAP `consensus` is expressed in, so nobody
+   * mistakes the aligned consensus for a new, invented datum: alignment only
+   * ever shifts other views onto one view's own scale.
+   */
+  alignmentNote?: string;
+  /** A one-line, human-readable reason for the wall's grading queue — see `reasonSummary` in `extract-strip-rooflines.ts`. */
+  reasonSummary?: string;
   /** Materialisation-only extras, never hashed. */
   imageUrl?: string;
   fixture?: boolean;

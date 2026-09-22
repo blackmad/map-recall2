@@ -7,8 +7,8 @@
  */
 import assert from 'node:assert/strict';
 import {
-  applyEaveGate, columnBoundary, consensusProfile, LABEL, pixelToWorld, profileShape,
-  resampleProfile, stripBoundaries, type Luma, type Mask,
+  applyEaveGate, applyRoofMaxGate, applyViewBias, columnBoundary, consensusProfile, estimateViewBias, LABEL,
+  medianOffset, pixelToWorld, profileShape, rescueSky, resampleProfile, stripBoundaries, type Luma, type Mask,
 } from './stripRoofline.ts';
 import type { StripFrame } from './stripFrame.ts';
 
@@ -292,6 +292,146 @@ check('the frame conversion round-trips against a real manifest record (Herengra
   const topLeft = pixelToWorld(frame, 0, 0);
   assert.ok(Math.abs(topLeft.along - (-frame.marginM)) < 1e-9);
   assert.equal(topLeft.up, frame.topNap);
+});
+
+check('estimateViewBias: a constant offset between two views is recovered and the busier view is the reference', () => {
+  const reference: Array<[number, number | null]> = [[0, 20], [0.1, 20.5], [0.2, 21], [0.3, 21.5], [0.4, 22]];
+  // Same shape, shifted up 1.2 m, and missing one column (still more resolved on `reference`).
+  const shifted: Array<[number, number | null]> = [[0, 21.2], [0.1, 21.7], [0.2, null], [0.3, 22.7], [0.4, 23.2]];
+  const { biasesM, referenceIndex } = estimateViewBias([reference, shifted]);
+  assert.equal(referenceIndex, 0);
+  assert.equal(biasesM[0], 0);
+  assert.ok(Math.abs(biasesM[1] - 1.2) < 1e-6, `bias ${biasesM[1]}`);
+});
+
+check('estimateViewBias: with 3 views, the middle one by height is the reference, not the busiest', () => {
+  const low: Array<[number, number | null]> = [[0, 10], [0.1, 10], [0.2, 10], [0.3, 10]];
+  const mid: Array<[number, number | null]> = [[0, 11], [0.1, 11]]; // fewer columns, but the true middle
+  const high: Array<[number, number | null]> = [[0, 12], [0.1, 12], [0.2, 12]];
+  const { referenceIndex } = estimateViewBias([low, mid, high]);
+  assert.equal(referenceIndex, 1);
+});
+
+check('estimateViewBias: too little overlap leaves a view unaligned (bias 0) rather than guessing', () => {
+  const reference: Array<[number, number | null]> = [[0, 20], [0.1, 20], [0.2, 20], [0.3, 20], [0.4, 20]];
+  const barelyOverlapping: Array<[number, number | null]> = [[0, 25], [0.1, null], [0.2, null], [0.3, null], [0.4, null]];
+  const { biasesM } = estimateViewBias([reference, barelyOverlapping], 0.1, 3);
+  assert.equal(biasesM[1], 0);
+});
+
+check('applyViewBias shifts a profile onto the reference scale', () => {
+  const profile: Array<[number, number | null]> = [[0, 21.2], [0.1, null], [0.2, 22.7]];
+  const aligned = applyViewBias(profile, 1.2);
+  assert.equal(aligned[0][1], 20);
+  assert.equal(aligned[1][1], null);
+  assert.ok(Math.abs((aligned[2][1] ?? NaN) - 21.5) < 1e-6);
+});
+
+check('bias correction rescues consensus: two views of the same gable, offset 1.2 m, agree once aligned', () => {
+  const a: Array<[number, number | null]> = [[0, 20], [0.1, 21], [0.2, 22], [0.3, 21], [0.4, 20]];
+  const b: Array<[number, number | null]> = [[0, 21.2], [0.1, 22.2], [0.2, 23.2], [0.3, 22.2], [0.4, 21.2]];
+  const naive = consensusProfile([a, b], 0.25);
+  assert.ok(naive.profile.every(([, up]) => up === null), 'naive consensus should null everything: 1.2 m > 0.25 m tolerance');
+  const { biasesM, referenceIndex } = estimateViewBias([a, b]);
+  const aligned = [a, b].map((p, i) => applyViewBias(p, biasesM[i]));
+  const fixed = consensusProfile(aligned, 0.25);
+  assert.ok(fixed.profile.every(([, up]) => up !== null), 'aligned consensus should resolve every column');
+  // Absolute NAP is kept on the reference view's own scale, not invented.
+  assert.equal(fixed.profile[2][1], a[2][1]); // reference is `a` (both have 5/5 resolved; ties keep the first)
+  assert.equal(referenceIndex, 0);
+});
+
+/** Build a width x height mask/luma pair from a row-major label grid and luma grid. */
+function grid(labels: number[][], lumaRows: number[][]): { mask: Mask; luma: Luma } {
+  const height = labels.length, width = labels[0].length;
+  const flatLabels = new Uint8Array(width * height);
+  const flatLuma = new Uint8Array(width * height);
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+    flatLabels[y * width + x] = labels[y][x];
+    flatLuma[y * width + x] = lumaRows[y][x];
+  }
+  return {
+    mask: { width, height, labels: flatLabels },
+    luma: { width, height, values: flatLuma },
+  };
+}
+
+check('rescueSky: a bright, smooth overcast sky mislabelled as occluder is rescued around a dark branch, not through it', () => {
+  const width = 9, height = 7;
+  // Rows 0-4: overcast "sky", mislabelled occluder (3) end to end by the
+  // segmentation model, except a single dark branch column (x=4) partway down.
+  // Rows 5-6: building.
+  const isBranch = (x: number, y: number) => x === 4 && y >= 1 && y <= 3;
+  const labels: number[][] = [];
+  const lumaRows: number[][] = [];
+  for (let y = 0; y < height; y++) {
+    const labelRow: number[] = [];
+    const lumaRow: number[] = [];
+    for (let x = 0; x < width; x++) {
+      if (y < 5) { labelRow.push(LABEL.OCCLUDER); lumaRow.push(isBranch(x, y) ? 40 : 200); }
+      else { labelRow.push(LABEL.BUILDING); lumaRow.push(60); }
+    }
+    labels.push(labelRow);
+    lumaRows.push(lumaRow);
+  }
+  const { mask, luma } = grid(labels, lumaRows);
+  const result = rescueSky(mask, luma);
+  // Columns well clear of the branch's own 5x5 window (>= windowRadius+1 away),
+  // and rows well clear of the building band below, are rescued on both sides
+  // of the branch — the rescue reaches past it rather than stopping at it.
+  for (const x of [0, 1, 7, 8]) for (let y = 0; y < 3; y++) {
+    assert.equal(result.labels[y * width + x], LABEL.SKY, `(${x},${y}) should be rescued`);
+  }
+  // The branch itself survives as an occluder, not overwritten by the rescue
+  // that reaches all around it.
+  assert.equal(result.labels[2 * width + 4], LABEL.OCCLUDER);
+  assert.ok(result.rescuedSkyFraction > 0);
+});
+
+check('rescueSky: a bright smooth wall below the roofline is NOT rescued — it is not connected to the top edge', () => {
+  const width = 3, height = 6;
+  const labels: number[][] = [];
+  const lumaRows: number[][] = [];
+  for (let y = 0; y < height; y++) {
+    const labelRow: number[] = [];
+    const lumaRow: number[] = [];
+    for (let x = 0; x < width; x++) {
+      if (y === 0) { labelRow.push(LABEL.SKY); lumaRow.push(220); }
+      else if (y === 1) { labelRow.push(LABEL.BUILDING); lumaRow.push(60); } // a hard stop: the roofline itself
+      else { labelRow.push(LABEL.OCCLUDER); lumaRow.push(200); } // a bright, smooth (sunlit) wall below — looks like sky, isn't reachable
+    }
+    labels.push(labelRow); lumaRows.push(lumaRow);
+  }
+  const { mask, luma } = grid(labels, lumaRows);
+  const result = rescueSky(mask, luma);
+  for (let y = 2; y < height; y++) for (let x = 0; x < width; x++) {
+    assert.equal(result.labels[y * width + x], LABEL.OCCLUDER, `(${x},${y}) below the roofline must stay unrescued`);
+  }
+  assert.equal(result.rescuedSkyFraction, 0);
+});
+
+check('applyRoofMaxGate: a boundary 2 m above the pand roof max is rejected, 1 m above is kept', () => {
+  const profile: Array<[number, number | null]> = [[0, 20], [0.1, 21], [0.2, 22], [0.3, null]];
+  const roofMaxNap = 20; // 1 m margin: up to 21 kept, above rejected
+  const result = applyRoofMaxGate(profile, roofMaxNap, 1.0);
+  assert.equal(result.profile[0][1], 20);
+  assert.equal(result.profile[1][1], 21); // exactly at the margin: kept (not `>`)
+  assert.equal(result.profile[2][1], null); // 2 m above: rejected
+  assert.equal(result.profile[3][1], null); // already null: untouched
+  assert.equal(result.gated, 1);
+});
+
+check('medianOffset: the median of up - reference, or null with nothing resolved', () => {
+  const profile: Array<[number, number | null]> = [[0, 10], [0.1, null], [0.2, 12], [0.3, 14]];
+  assert.equal(medianOffset(profile, 10), 2); // median of [0, 2, 4] is 2
+  assert.equal(medianOffset([[0, null]], 10), null);
+});
+
+check('rescueSky leaves the original mask untouched', () => {
+  const { mask, luma } = grid([[LABEL.OCCLUDER, LABEL.OCCLUDER], [LABEL.BUILDING, LABEL.BUILDING]], [[200, 200], [60, 60]]);
+  const before = Uint8Array.from(mask.labels);
+  rescueSky(mask, luma);
+  assert.deepEqual(mask.labels, before);
 });
 
 if (!process.exitCode) console.log(`stripRoofline: ${checks} checks passed`);
