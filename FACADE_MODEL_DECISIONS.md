@@ -115,9 +115,60 @@ project/version form, or semantic segmentation may need the hosted route.
 ---
 
 ## D6 — Sky and roof are not model questions here
-
 **Recorded 2026-09-22.** No photo model we have carries a roof or sky class,
 because a street-level crop rarely contains either. The pipeline already computes
 `skyRowFraction` per crop in `review-data/crop-preflight.json`, and the roofline
 is measured from the point cloud. **Decision:** do not chase a sky model; use the
 existing classical sky fraction, and keep roofs on the geometry side.
+
+---
+
+## D7 — Sign *text* works locally; sign *font* does not
+
+**Recorded 2026-09-22.** Two separate findings from the same evening.
+
+### Text: adopt Apple Vision as the local reader (R-ocr)
+
+`bytefer/macos-vision-ocr` (MIT, vendored as source at
+`scripts/facade-eval/vision-ocr/`) is verified working on our own crops.
+Measured:
+
+- **`nl-NL` is supported** on this machine (macOS 26.6.2, Swift 6.4) — `--lang`
+  lists 30 languages; the upstream README's 16-language list is incomplete. Run
+  with `--rec-langs "nl-NL,en-US"`.
+- Full `da-costabuurt-v1` ground tier: **277 crops -> 302 signs, 0 errors, 70 s**
+  (0.25 s/crop); 134 crops carried at least one sign; median confidence 1.00.
+- Real readings on our imagery: `NINA'S / Exclusieve / Handwork BoutiquR`,
+  `Schoonenberg / HoorSupport`, `DE FIETSENMAKER`, `DORUS`, `SNACKBAR`,
+  `De Nieuwe Liefd`, `Hendrix`.
+- **Amsterdam signage is heavily English and mixed** (`Handwork Boutique`,
+  `HoorSupport`, `OPEN`, `ICE CREAM`, `ABOUT LIFESTYLE`). Scoring must accept a
+  correct English reading and must never translate a Dutch/English variant.
+- **Vision returns text lines, not signs.** The first run returned the same
+  fascia twice (`NINA'S` at x=0.10 and x=0.37), so `mergeLinesIntoSigns` is our
+  logic and is tested (`signObservation.test.ts`).
+
+### Font: reject the Google-Fonts family classifier
+
+Three candidates were assessed for the schema's `fontClass` field:
+
+| option | licence | result |
+| --- | --- | --- |
+| `storia/font-classify-onnx` (EfficientNet-B3, 3,473 variants) | MIT | **rejected — measured unusable** |
+| `mixfont/lens` (ResNet18, 1000+ families) | **non-commercial only, commercial use prohibited** | rejected on licence |
+| `Create-Inc/font-model` (DINOv2+LoRA, 394 variants/32 families) | **none stated** | not shippable |
+
+`storia/font-classify-onnx` was wired and run: 302 signs classified in 15 s, but
+the output is **confidently wrong**. On a clean 171x75 px sign it returns
+`Redacted-Regular` at **73 %** — "Redacted" is the font that renders as black
+censor boxes — and across the run the top families were
+`LibreBarcode39Extended`, `AksaraBaliGalang`, `Khmer`, `Wavefont`, with negative
+logits. The model is trained on synthetic clean renders; our inputs are real
+45-110 px sign crops. Aspect-preserving padding made it worse, not better.
+
+**Decision:** `fontClass` stays `'unknown'`. Do not ship a font family from this
+model. If font character is wanted for the styled-sign look (D2 option B), get it
+from a *coarse* source instead: ask the local VLM one question — serif, sans,
+script or display — which is a category judgement a VLM can make, rather than a
+3,473-way family identification it cannot. That is a candidate for the S4
+bake-off, not a solved field. `run_font_classify.py` is kept as the evidence.
