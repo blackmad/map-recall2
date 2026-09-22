@@ -32,7 +32,6 @@ import argparse
 import hashlib
 import json
 import os
-import platform
 import time
 from pathlib import Path
 
@@ -181,7 +180,7 @@ class VistasSegmenter:
             region = ~assigned[y0:y1, x0:x1]
             labels[y0:y1, x0:x1] = np.where(region, tile_labels,
                                             labels[y0:y1, x0:x1])
-            assigned[y0:y1, x0:x1] |= True
+            assigned[y0:y1, x0:x1] = True
         return labels, len(tiles)
 
 
@@ -391,7 +390,6 @@ def main() -> None:
                     help="Source tile long side in px.")
     ap.add_argument("--tile-overlap", type=int, default=128)
     ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--force", action="store_true")
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     if args.method == "s1":
