@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reconstruction status · Map Recall</title>
+<style>
+:root{--bg:#0f1419;--panel:#161c22;--line:#2a333c;--ink:#e8ecef;--dim:#93a4b1;--good:#7fd4a0;--warn:#f0b46b;--acc:#78c8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:28px 20px 64px}
+h1{margin:0 0 4px;font-size:24px}h2{margin:34px 0 12px;font-size:17px;color:var(--acc)}
+.sub{color:var(--dim);margin:0 0 18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .n{font-size:26px;font-weight:700}.card .l{color:var(--dim);font-size:13px}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);font-size:14px}
+th{color:var(--dim);font-weight:600}tr:last-child td{border-bottom:none}
+.badge{display:inline-block;border-radius:999px;padding:1px 9px;font-size:12px;font-weight:600}
+.ok{background:rgba(127,212,160,.15);color:var(--good);border:1px solid rgba(127,212,160,.4)}
+.no{background:rgba(240,180,107,.13);color:var(--warn);border:1px solid rgba(240,180,107,.4)}
+a.btn{display:inline-block;background:#1d6f4a;border:1px solid #2a8f61;color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:600;margin:4px 8px 4px 0}
+a.btn.alt{background:#22303a;border-color:#37474f}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.gallery figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.gallery img{display:block;width:100%;height:150px;object-fit:contain;background:#000}
+.gallery figcaption{padding:6px 8px;font-size:12px;color:var(--dim)}
+code{background:#1c242b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px}
+ul{color:var(--ink)}li{margin:4px 0}
+.note{background:var(--panel);border-left:4px solid var(--warn);border-radius:6px;padding:12px 14px;color:var(--dim);margin:14px 0}
+</style>
+</head>
+<body>
+<main>
+  <h1>Reconstruction status</h1>
+  <p class="sub">Measured state of the pano→3DBAG pipeline. Reports only; nothing here certifies fidelity.</p>
+  <a class="btn" href="./pano-anchor.html?task=expanded">Open the anchor tool (12 panos / 56 markers)</a>
+  <a class="btn alt" href="./reconstruction-workbench.html">Open the workbench</a>
+  <a class="btn alt" href="./pointcloud-facades.html">Point-cloud façades (measured MLS)</a>
+  <a class="btn alt" href="./facade-model-eval.html">Façade model evaluation (measured vs predicted)</a>
+
+  <h2>Panorama boresight calibration</h2>
+  <p class="sub">Held-out residual fits the boresight on a calibration split and measures the validation split, so it is not fitted on itself.</p>
+  <table>
+    <thead><tr><th>Panorama</th><th>Anchors</th><th>In-sample median</th><th>Held-out median</th><th>Held-out px</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>b_20241129_0829_Track29_Sphere</code></td>
+        <td>4</td>
+        <td>0.033 m</td>
+        <td>0.085 m</td>
+        <td>15.98</td>
+        <td><span class="badge ok">correspondence-verified</span></td>
+      </tr><tr>
+        <td><code>TMX7316010203-002928_pano_0012</code></td>
+        <td>2</td>
+        <td>0.12 m</td>
+        <td>0.234 m</td>
+        <td>44.15</td>
+        <td><span class="badge no">below threshold</span></td>
+      </tr><tr>
+        <td><code>TMX7316010203-003006_pano_0003</code></td>
+        <td>6</td>
+        <td>0.1 m</td>
+        <td>0.073 m</td>
+        <td>5.61</td>
+        <td><span class="badge ok">correspondence-verified</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Crop usability preflight</h2>
+  <div class="cards">
+    <div class="card"><div class="n">2344</div><div class="l">cached crops</div></div>
+    <div class="card"><div class="n" style="color:var(--good)">2259</div><div class="l">usable</div></div>
+    <div class="card"><div class="n" style="color:var(--warn)">85</div><div class="l">unusable</div></div>
+    <div class="card"><div class="n" style="color:var(--warn)">71</div><div class="l">mostly sky</div></div>
+  </div>
+  <div class="note"><b>71 crops are mostly sky</b> because the crop plane's top uses the BAG <b>ridge</b> height.
+  Using the matched 3DBAG <b>eave</b> (<code>wallTop.ts</code>) would reclaim them. A minor lever (~3%), not applied.</div>
+  <div class="gallery">
+    <figure><img loading="lazy" src="/data/city-expansion/evidence/0226d1dfb9d26194ef76cd80f0ab8b49dae7897d7fc6bd9ccefb313bd6fa2916.jpg" alt=""><figcaption>sky 69% · 0226d1dfb9</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/062a494d0527474a9ad3b1225a434c1b687099b2ba551cf5ecf6f4c955595798.jpg" alt=""><figcaption>sky 61% · 062a494d05</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/0d9a4db56f5fb1da8339a7a8c8f15d87a9af5af5e791e24fb2f4b75e7709a19e.jpg" alt=""><figcaption>sky 64% · 0d9a4db56f</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/0e249799a08600658db14520d7550133ce0957ec96bc13465e4118506a6f0e2f.jpg" alt=""><figcaption>sky 79% · 0e249799a0</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/12b67706e9a127ae99b0e6391a00e747d4c38b13f17651aefc1dcfb4f8079305.jpg" alt=""><figcaption>sky 60% · 12b67706e9</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/1472b4dbdc3850f40511d493ffa07e960813d231108d0c665da5fb92b5d56f93.jpg" alt=""><figcaption>sky 63% · 1472b4dbdc</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/15677c10bd8a02aee5ae14137e2cabee69b1a9b3798bf966082087dc4c90e953.jpg" alt=""><figcaption>sky 52% · 15677c10bd</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/16215d49d442a99fb869e03cf6648f35613a16b0a13372bff9b4070dbc658f14.jpg" alt=""><figcaption>sky 78% · 16215d49d4</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/16e3e11e963e1460bc11d1026317567f222c1b902a7421cc3bad572cde628022.jpg" alt=""><figcaption>sky 67% · 16e3e11e96</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/275034ba7adfc6c9eee51f277b52192ea9568f56ad67298646863ad59e48219d.jpg" alt=""><figcaption>sky 69% · 275034ba7a</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/2f703072bd78bd5246b2c37c56afff94c92ab0d24879e1fca56a81f647c3f450.jpg" alt=""><figcaption>sky 58% · 2f703072bd</figcaption></figure><figure><img loading="lazy" src="/data/city-expansion/evidence/301476c734aa26c9373b95439a08b5c8672cebb6daec9bae06d5615c31858d1b.jpg" alt=""><figcaption>sky 75% · 301476c734</figcaption></figure>
+  </div>
+
+  <h2>What shipped this session</h2>
+  <ul>
+    <li><b>correspondence-verified</b> status, accepted by the paid fidelity gate, with required median/p95 residual — not a bypass.</li>
+    <li><b>Measured boresight</b> applied in the camera model; auto-estimate constrained by a GPS-track prior and the real eave.</li>
+    <li><b>Anchor tool</b> with undo, help, mini-map, and an auto-selected expanded task.</li>
+    <li><b>Retail lane</b>: storefront assembly → metric patches (display glass, entrance, fascia, awning).</li>
+    <li>Modules: blockfaces, silhouette compiler, appearance score, corrections registry, crop preflight, boresight fit + cross-validation.</li>
+  </ul>
+</main>
+</body>
+</html>
