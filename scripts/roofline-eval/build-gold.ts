@@ -4,7 +4,9 @@
  * Rebuilds wall measurements the way `measure-tile.ts` does (reused, not
  * forked), merges the well-scanned walls of each pand into elevations with
  * `buildElevations`, rasterises the cloud fresh against each elevation's own
- * plane, and writes the §3-frame profile plus an overlay PNG per elevation.
+ * plane, cleans the resampled silhouette (closes narrow coverage holes,
+ * rejects narrow spikes, drops deep holes below the eave), and writes the
+ * §3-frame profile plus an overlay PNG per elevation and a contact sheet.
  *
  * Usage: npx tsx scripts/roofline-eval/build-gold.ts
  * Reads tiles from `$ROOFLINE_CACHE/pointcloud/*.laz` (default: the
@@ -13,18 +15,26 @@
 import { createHash } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import sharp from 'sharp';
 import { classifyRoofline, isWellScanned, measureTile, SHAPED_ROOFLINE_RANGE, type WallMeasurement } from '../pointcloud/measure-tile.ts';
 import { createPointSelector } from '../pointcloud/load-laz-tile.ts';
 import { renderFacadeImage } from '../pointcloud/facade-image.ts';
 import { encodePng } from '../pointcloud/png.ts';
-import { buildFootprintRings, elevationSurfaceIds, type FootprintRing } from '../../src/canalRecall/facade/footprintRings.ts';
-import { buildElevations, type Elevation } from '../../src/canalRecall/facade/elevations.ts';
+import { buildFootprintRings, elevationSurfaceIds } from '../../src/canalRecall/facade/footprintRings.ts';
+import { buildElevations } from '../../src/canalRecall/facade/elevations.ts';
 import {
   canonicaliseProfile,
+  cleanProfile,
+  eaveHeight,
   rasteriseElevation,
   toRasterPoint,
   SAMPLE_M,
+  CLOSING_WIDTH_M,
+  SPIKE_WIDTH_M,
+  SPIKE_HEIGHT_M,
+  HOLE_DEPTH_BELOW_EAVE_M,
   type ElevationPlane,
+  type CanonicalProfilePoint,
 } from '../../src/canalRecall/facade/elevationRoofline.ts';
 
 const ROOFLINE_CACHE = process.env.ROOFLINE_CACHE || '/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache';
@@ -34,24 +44,12 @@ const OVERLAY_DIR = path.join(OUT_DIR, 'overlays');
 const UPWARD_SEARCH = 8;
 const MIN_WIDTH_M = 2.5;
 const MIN_COVERAGE = 0.7;
+const PIXELS_PER_METRE = 40;
 
 const TILES = [
   { id: 'museumkwartier', file: 'filtered_2397_9705.laz', label: 'Museumkwartier' },
   { id: 'willemspark', file: 'filtered_2386_9702.laz', label: 'Willemspark' },
 ];
-
-const median = (values: number[]) => {
-  const sorted = [...values].sort((a, b) => a - b);
-  const middle = Math.floor(sorted.length / 2);
-  return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
-};
-
-/** Median of the outer 1/8 of non-null heights on each side, matching gable.ts's "eaves" convention. */
-const eaveHeight = (heights: number[]): number => {
-  if (!heights.length) return NaN;
-  const span = Math.max(1, Math.floor(heights.length / 8));
-  return median([...heights.slice(0, span), ...heights.slice(-span)]);
-};
 
 type ElevationRecord = {
   id: string;
@@ -60,17 +58,23 @@ type ElevationRecord = {
   widthM: number;
   plane: { start: { x: number; y: number }; end: { x: number; y: number }; baseZ: number; topZ: number };
   surfaceIds: string[];
+  /** Cleaned: closed dips, rejected spikes, deep holes nulled. This is the profile to score against. */
   profile: Array<{ along: number; up: number | null }>;
+  /** Resampled straight off the cloud, no cleaning — kept so cleaning is auditable. */
+  rawProfile: Array<{ along: number; up: number | null }>;
   shape: string;
   peakUp: number;
   eaveUp: number;
+  /** Coverage of the cleaned profile (the gate is applied to this, not the raw coverage). */
   coverage: number;
+  rawCoverage: number;
   spotCheck: 'pending';
 };
 
 const dropped: Array<{ tile: string; buildingId: string; elevationId?: string; reason: string }> = [];
 const elevations: ElevationRecord[] = [];
 const perTileCounts: Array<{ id: string; wallsScanned: number; elevationsMerged: number; elevationsKept: number; shaped: number }> = [];
+const overlays: Array<{ id: string; tile: string; widthM: number; shape: string; coverage: number; png: Buffer }> = [];
 
 for (const tile of TILES) {
   const tilePath = path.join(POINTCLOUD_DIR, tile.file);
@@ -102,8 +106,6 @@ for (const tile of TILES) {
       const plane: ElevationPlane = { start: elevation.start, end: elevation.end, baseZ, topZ };
 
       const margin = 0.6;
-      const dx = plane.end.x - plane.start.x;
-      const dy = plane.end.y - plane.start.y;
       const points = selectPoints({
         minX: Math.min(plane.start.x, plane.end.x) - margin,
         maxX: Math.max(plane.start.x, plane.end.x) + margin,
@@ -117,17 +119,23 @@ for (const tile of TILES) {
         dropped.push({ tile: tile.id, buildingId: ring.buildingId, elevationId: elevation.elevationId, reason: 'no cloud returns in the elevation slab' });
         continue;
       }
-      const profile = canonicaliseProfile(rasterised.silhouette.profile, rasterised.raster.frame, plane, SAMPLE_M);
-      if (profile.widthM < MIN_WIDTH_M) {
-        dropped.push({ tile: tile.id, buildingId: ring.buildingId, elevationId: elevation.elevationId, reason: `too narrow (${profile.widthM.toFixed(2)} m < ${MIN_WIDTH_M} m)` });
-        continue;
-      }
-      if (profile.coverage < MIN_COVERAGE) {
-        dropped.push({ tile: tile.id, buildingId: ring.buildingId, elevationId: elevation.elevationId, reason: `coverage ${(profile.coverage * 100).toFixed(0)}% below ${MIN_COVERAGE * 100}%` });
+      const rawProfile = canonicaliseProfile(rasterised.silhouette.profile, rasterised.raster.frame, plane, SAMPLE_M);
+      if (rawProfile.widthM < MIN_WIDTH_M) {
+        dropped.push({ tile: tile.id, buildingId: ring.buildingId, elevationId: elevation.elevationId, reason: `too narrow (${rawProfile.widthM.toFixed(2)} m < ${MIN_WIDTH_M} m)` });
         continue;
       }
 
-      const heights = profile.points.filter((point) => point.up != null).map((point) => point.up as number);
+      const rawHeights = rawProfile.points.filter((point) => point.up != null).map((point) => point.up as number);
+      const eaveEstimate = eaveHeight(rawHeights);
+      const cleanedPoints: CanonicalProfilePoint[] = cleanProfile(rawProfile.points, SAMPLE_M, eaveEstimate);
+      const cleanedCoverage = cleanedPoints.length ? cleanedPoints.filter((point) => point.up != null).length / cleanedPoints.length : 0;
+
+      if (cleanedCoverage < MIN_COVERAGE) {
+        dropped.push({ tile: tile.id, buildingId: ring.buildingId, elevationId: elevation.elevationId, reason: `cleaned coverage ${(cleanedCoverage * 100).toFixed(0)}% below ${MIN_COVERAGE * 100}% (raw was ${(rawProfile.coverage * 100).toFixed(0)}%)` });
+        continue;
+      }
+
+      const heights = cleanedPoints.filter((point) => point.up != null).map((point) => point.up as number);
       const shape = classifyRoofline(heights);
       const peakUp = Math.max(...heights);
       const eaveUp = eaveHeight(heights);
@@ -139,7 +147,7 @@ for (const tile of TILES) {
         id,
         tile: tile.id,
         buildingId: ring.buildingId,
-        widthM: Number(profile.widthM.toFixed(2)),
+        widthM: Number(rawProfile.widthM.toFixed(2)),
         plane: {
           start: { x: Number(plane.start.x.toFixed(3)), y: Number(plane.start.y.toFixed(3)) },
           end: { x: Number(plane.end.x.toFixed(3)), y: Number(plane.end.y.toFixed(3)) },
@@ -147,17 +155,21 @@ for (const tile of TILES) {
           topZ: Number(plane.topZ.toFixed(3)),
         },
         surfaceIds,
-        profile: profile.points.map((point) => ({ along: Number(point.along.toFixed(2)), up: point.up == null ? null : Number(point.up.toFixed(3)) })),
+        profile: cleanedPoints.map((point) => ({ along: Number(point.along.toFixed(2)), up: point.up == null ? null : Number(point.up.toFixed(3)) })),
+        rawProfile: rawProfile.points.map((point) => ({ along: Number(point.along.toFixed(2)), up: point.up == null ? null : Number(point.up.toFixed(3)) })),
         shape,
         peakUp: Number(peakUp.toFixed(3)),
         eaveUp: Number(eaveUp.toFixed(3)),
-        coverage: Number(profile.coverage.toFixed(3)),
+        coverage: Number(cleanedCoverage.toFixed(3)),
+        rawCoverage: Number(rawProfile.coverage.toFixed(3)),
         spotCheck: 'pending',
       });
 
-      // Overlay: the point-cloud elevation image with the profile drawn on it.
+      // Overlay: the point-cloud elevation image with the raw profile (thin
+      // grey) underneath and the cleaned profile (yellow) drawn on top, so a
+      // reviewer can see exactly what cleaning changed.
       const fakeMeasurement = { raster: rasterised.raster } as unknown as WallMeasurement;
-      const image = renderFacadeImage(fakeMeasurement, { pixelsPerMetre: 40, upwardSearch: UPWARD_SEARCH });
+      const image = renderFacadeImage(fakeMeasurement, { pixelsPerMetre: PIXELS_PER_METRE, upwardSearch: UPWARD_SEARCH });
       const top = rasterised.raster.frame.maxUp + UPWARD_SEARCH;
       const drawPixel = (x: number, y: number, colour: readonly [number, number, number]) => {
         if (x < 0 || y < 0 || x >= image.width || y >= image.height) return;
@@ -169,28 +181,35 @@ for (const tile of TILES) {
       const toPixel = (along: number, up: number) => {
         const raster = toRasterPoint(rasterised.raster.frame, plane, along, up);
         return {
-          x: Math.round((raster.along - rasterised.raster.frame.minAlong) * 40),
-          y: Math.round((top - raster.up) * 40),
+          x: Math.round((raster.along - rasterised.raster.frame.minAlong) * PIXELS_PER_METRE),
+          y: Math.round((top - raster.up) * PIXELS_PER_METRE),
         };
       };
-      let previous: { x: number; y: number } | null = null;
-      for (const point of profile.points) {
-        if (point.up == null) { previous = null; continue; }
-        const pixel = toPixel(point.along, point.up);
-        if (previous) {
-          const steps = Math.max(1, Math.max(Math.abs(pixel.x - previous.x), Math.abs(pixel.y - previous.y)));
-          for (let step = 0; step <= steps; step += 1) {
-            const x = Math.round(previous.x + (pixel.x - previous.x) * (step / steps));
-            const y = Math.round(previous.y + (pixel.y - previous.y) * (step / steps));
-            drawPixel(x, y, [255, 209, 102]);
-            drawPixel(x, y - 1, [255, 209, 102]);
+      const drawLine = (profilePoints: Array<{ along: number; up: number | null }>, colour: readonly [number, number, number], thick: boolean) => {
+        let previous: { x: number; y: number } | null = null;
+        for (const point of profilePoints) {
+          if (point.up == null) { previous = null; continue; }
+          const pixel = toPixel(point.along, point.up);
+          if (previous) {
+            const steps = Math.max(1, Math.max(Math.abs(pixel.x - previous.x), Math.abs(pixel.y - previous.y)));
+            for (let step = 0; step <= steps; step += 1) {
+              const x = Math.round(previous.x + (pixel.x - previous.x) * (step / steps));
+              const y = Math.round(previous.y + (pixel.y - previous.y) * (step / steps));
+              drawPixel(x, y, colour);
+              if (thick) drawPixel(x, y - 1, colour);
+            }
           }
+          previous = pixel;
         }
-        previous = pixel;
-      }
+      };
+      drawLine(rawProfile.points, [150, 158, 168], false);
+      drawLine(cleanedPoints, [255, 209, 102], true);
+
       await mkdir(OVERLAY_DIR, { recursive: true });
       const overlayPng = encodePng(image.width, image.height, image.rgb);
-      await writeFile(path.join(OVERLAY_DIR, `${id.replace(/[^A-Za-z0-9._-]+/g, '_')}.png`), overlayPng);
+      const fileName = `${id.replace(/[^A-Za-z0-9._-]+/g, '_')}.png`;
+      await writeFile(path.join(OVERLAY_DIR, fileName), overlayPng);
+      overlays.push({ id, tile: tile.id, widthM: rawProfile.widthM, shape, coverage: cleanedCoverage, png: overlayPng });
     }
   }
 
@@ -203,7 +222,7 @@ const totalElevationsKept = perTileCounts.reduce((sum, tile) => sum + tile.eleva
 const totalShaped = perTileCounts.reduce((sum, tile) => sum + tile.shaped, 0);
 
 const output = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   kind: 'roofline-gold/measured',
   generatedAt: new Date().toISOString(),
   frame: `along = metres from plane.start towards plane.end; up = absolute NAP metres; sampled every ${SAMPLE_M} m; null = missing column`,
@@ -214,6 +233,13 @@ const output = {
   sampleM: SAMPLE_M,
   minWidthM: MIN_WIDTH_M,
   minCoverage: MIN_COVERAGE,
+  cleaning: {
+    note: 'profile is rawProfile after: (1) morphological closing of dips/holes, (2) narrow-spike rejection, (3) nulling columns below eaveUp - holeDepthBelowEaveM. The >=70% coverage gate is applied to the cleaned profile.',
+    closingWidthM: CLOSING_WIDTH_M,
+    spikeWidthM: SPIKE_WIDTH_M,
+    spikeHeightM: SPIKE_HEIGHT_M,
+    holeDepthBelowEaveM: HOLE_DEPTH_BELOW_EAVE_M,
+  },
   counts: {
     perTile: perTileCounts,
     totalWallsScanned,
@@ -232,11 +258,49 @@ await writeFile(path.join(OUT_DIR, 'measured.json'), json);
 const sha256 = createHash('sha256').update(json).digest('hex');
 await writeFile(path.join(OUT_DIR, 'measured.sha256'), `${sha256}\n`);
 
+// Contact sheet: every elevation's overlay, thumbnailed into a grid with a label bar.
+if (overlays.length) {
+  const cellWidth = 190;
+  const cellImageHeight = 260;
+  const labelHeight = 34;
+  const cellHeight = cellImageHeight + labelHeight;
+  const columns = Math.min(7, overlays.length);
+  const rows = Math.ceil(overlays.length / columns);
+  const escapeXml = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  const composites: sharp.OverlayOptions[] = [];
+  for (const [index, overlay] of overlays.entries()) {
+    const column = index % columns;
+    const row = Math.floor(index / columns);
+    const left = column * cellWidth;
+    const top = row * cellHeight;
+    const thumbnail = await sharp(overlay.png)
+      .resize(cellWidth, cellImageHeight, { fit: 'contain', background: '#0b0f14' })
+      .png()
+      .toBuffer();
+    composites.push({ input: thumbnail, left, top });
+    const shortId = overlay.id.split(':').slice(1).join(':');
+    const labelSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${cellWidth}" height="${labelHeight}">
+      <rect width="100%" height="100%" fill="#12161c"/>
+      <text x="4" y="13" fill="#e8edf2" font-family="monospace" font-size="9">${escapeXml(`${overlay.tile === 'museumkwartier' ? 'MK' : 'WP'} ${shortId}`)}</text>
+      <text x="4" y="26" fill="#93a1b1" font-family="monospace" font-size="9">${overlay.widthM.toFixed(1)}m ${overlay.shape} ${(overlay.coverage * 100).toFixed(0)}%</text>
+    </svg>`;
+    const labelPng = await sharp(Buffer.from(labelSvg)).png().toBuffer();
+    composites.push({ input: labelPng, left, top: top + cellImageHeight });
+  }
+  const sheet = await sharp({ create: { width: columns * cellWidth, height: rows * cellHeight, channels: 3, background: '#05070a' } })
+    .composite(composites)
+    .png()
+    .toBuffer();
+  await writeFile(path.join(OVERLAY_DIR, '_sheet.png'), sheet);
+}
+
 process.stdout.write([
   `wrote ${elevations.length} elevations to ${path.join(OUT_DIR, 'measured.json')}`,
-  `walls (scanned) -> elevations (merged, any-scanned-constituent) -> elevations (kept: >=${MIN_WIDTH_M}m, >=${MIN_COVERAGE * 100}% coverage):`,
+  `walls (scanned) -> elevations (merged, any-scanned-constituent) -> elevations (kept: >=${MIN_WIDTH_M}m wide, cleaned coverage >=${MIN_COVERAGE * 100}%):`,
   `  total: ${totalWallsScanned} -> ${totalElevationsMerged} -> ${totalElevationsKept}, shaped: ${totalShaped}`,
   ...perTileCounts.map((tile) => `  ${tile.id}: ${tile.wallsScanned} -> ${tile.elevationsMerged} -> ${tile.elevationsKept}, shaped: ${tile.shaped}`),
   `dropped: ${dropped.length}`,
+  `contact sheet: ${path.join(OVERLAY_DIR, '_sheet.png')}`,
   `sha256: ${sha256}`,
 ].join('\n') + '\n');
