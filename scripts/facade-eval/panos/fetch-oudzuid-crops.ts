@@ -359,7 +359,8 @@ async function main() {
     boundsByTile[tile.id] = { ...manifest.bounds };
     walls.push(...toTileWalls(tile.id, manifest));
     const listing = await panoListing(tile, manifest.bounds);
-    listings[tile.id] = listing.meta;
+    const dates = listing.panoramas.map((pano) => pano.timestamp).sort();
+    listings[tile.id] = { ...listing.meta, panoramaDateRange: dates.length ? { min: dates[0], max: dates[dates.length - 1] } : null };
     listingByTile.set(tile.id, listing.panoramas);
     console.log(`${tile.id}: ${manifest.walls.length} walls, ${listing.panoramas.length} panoramas listed (${listing.meta.pages} pages)`);
   }
@@ -482,6 +483,7 @@ async function main() {
       wallsTotal: walls.length,
       cropped: records.length,
       omitted: omitted.length,
+      panoramasUsed: new Set(records.map((record) => record.panoramaId)).size,
       panoramasDownloadedThisRun: downloads,
       cropsReused: reusedCrops,
       panoramaDateRange: dateRange,
