@@ -22,6 +22,8 @@ import {
   reconcile,
   fittedGableFrom,
   fittedGableFromTemplate,
+  FACADE_TOP_DEPTH_M,
+  SLAB_DEPTH_M,
   type BuildingPartSurface,
   type ProfileSample,
   type Relation,
@@ -95,7 +97,23 @@ function fillNullsLinear(profile: readonly (number | null)[]): number[] {
   return filled as number[];
 }
 
-function fitGableForElevation(e: GoldElevation, sampleM: number): { type: GableType; method: string; fitErrorM: number | null; fitted: FittedGable } {
+/**
+ * A template is only worth trusting when it actually tracks the measured
+ * profile. `fitGableTemplate`/`fitGable`'s own 30%-margin check (in
+ * `gableFit.ts`) only asks "does the template beat a polyline, adjusted for
+ * vertex count" — it says nothing about the *absolute* error, so a template
+ * can "win" that contest while still being a poor fit in metres (case in
+ * point: `0pc8wr2`'s halsgevel, 2.14 m RMS error, visibly wrong on the
+ * contact sheet). This is G1's own gate on top of G2's: reject a template
+ * fit whose absolute error exceeds this and fall back to the profile
+ * polyline instead.
+ */
+const MAX_TEMPLATE_FIT_ERROR_M = 0.3;
+
+function fitGableForElevation(
+  e: GoldElevation,
+  sampleM: number,
+): { type: GableType; method: string; fitErrorM: number | null; fitted: FittedGable; templateRejected: { type: GableType; fitErrorM: number } | null } {
   const heights = fillNullsLinear(e.profile.map((s) => s.up));
   const reading = classifyGable(gableFeatures({ profile: heights, plotWidthM: e.widthM, sampleM }));
   const samples: GableProfileSample[] = e.profile.map((s) => [s.along, s.up]);
@@ -103,13 +121,24 @@ function fitGableForElevation(e: GoldElevation, sampleM: number): { type: GableT
   if (reading.type !== 'unknown') {
     const templateFit = fitGableTemplate({ profile: samples, type: reading.type, sampleM });
     if (templateFit) {
-      return { type: templateFit.type, method: 'template', fitErrorM: templateFit.fitErrorM, fitted: fittedGableFromTemplate(templateFit) };
+      if (templateFit.fitErrorM <= MAX_TEMPLATE_FIT_ERROR_M) {
+        return { type: templateFit.type, method: 'template', fitErrorM: templateFit.fitErrorM, fitted: fittedGableFromTemplate(templateFit), templateRejected: null };
+      }
+      // Fall through to the polyline fallback below, but record the rejection.
+      const polyFit = fitGable({ profile: samples, type: reading.type, sampleM });
+      return {
+        type: polyFit.type,
+        method: polyFit.method,
+        fitErrorM: polyFit.fitErrorM,
+        fitted: fittedGableFrom(polyFit),
+        templateRejected: { type: templateFit.type, fitErrorM: templateFit.fitErrorM },
+      };
     }
   }
   // Unknown/ambiguous type, or the template fit couldn't be computed: the
   // polyline fallback (fitGable always returns a usable outline).
   const polyFit = fitGable({ profile: samples, type: reading.type, sampleM });
-  return { type: polyFit.type, method: polyFit.method, fitErrorM: polyFit.fitErrorM, fitted: fittedGableFrom(polyFit) };
+  return { type: polyFit.type, method: polyFit.method, fitErrorM: polyFit.fitErrorM, fitted: fittedGableFrom(polyFit), templateRejected: null };
 }
 
 // --- reconcile each elevation --------------------------------------------------
@@ -119,7 +148,10 @@ type Row = {
   gableMethod: string;
   fitErrorM: number | null;
   fitted: FittedGable;
+  templateRejected: { type: GableType; fitErrorM: number } | null;
   result: RoofReconcileResult;
+  /** Diagnostic-only: relationSpans/conflicts reclassified against the 1 m slab section instead of facade-top. Not used to build patches. */
+  resultSlab: RoofReconcileResult;
 };
 
 const rows: Row[] = [];
@@ -142,7 +174,7 @@ for (const e of gold.elevations) {
     ...roofs.map((r) => ({ id: r.surfaceId, vertices: r.vertices })),
   ];
 
-  const { type, method, fitErrorM, fitted } = fitGableForElevation(e, gold.sampleM);
+  const { type, method, fitErrorM, fitted, templateRejected } = fitGableForElevation(e, gold.sampleM);
   const profile: ProfileSample[] = e.profile;
   const result = reconcile({
     buildingId: e.buildingId,
@@ -151,8 +183,26 @@ for (const e of gold.elevations) {
     profile,
     sampleM: gold.sampleM,
     gable: fitted,
+    sectionDepthM: FACADE_TOP_DEPTH_M,
   });
-  rows.push({ elevation: e, gableType: type, gableMethod: method, fitErrorM, fitted, result });
+  // Diagnostic-only run: classify against the 1 m slab instead, to show how
+  // much of the `below`/`rises` split above is really "a pitched roof lifts
+  // the slab" rather than "3DBAG has no gable here."
+  const resultSlab = reconcile({
+    buildingId: e.buildingId,
+    surfaces,
+    plane: { start: e.plane.start, end: e.plane.end },
+    profile,
+    sampleM: gold.sampleM,
+    gable: fitted,
+    sectionDepthM: SLAB_DEPTH_M,
+  });
+  rows.push({ elevation: e, gableType: type, gableMethod: method, fitErrorM, fitted, templateRejected, result, resultSlab });
+  if (templateRejected) {
+    process.stdout.write(
+      `  ${e.id}: rejected ${templateRejected.type} template (fit ${templateRejected.fitErrorM.toFixed(2)} m > ${MAX_TEMPLATE_FIT_ERROR_M} m gate) — using the polyline fallback instead\n`,
+    );
+  }
 }
 
 // --- report ---------------------------------------------------------------------
@@ -184,6 +234,18 @@ for (const row of rows) {
 }
 process.stdout.write(`${'TOTAL'.padEnd(46)} ${''.padEnd(12)} ${relationOrder.map((r) => String(totals[r]).padStart(7)).join(' ')} ${String(totalTriangles).padStart(10)} ${String(totalConflicts).padStart(10)}\n`);
 
+// Diagnostic: the same relation table, but against the 1 m slab section
+// instead of the facade-top (0.15 m) section used above.
+process.stdout.write(`\ndiagnostic — same relation counts against the ${SLAB_DEPTH_M} m slab section (not used for patches):\n`);
+process.stdout.write(`${'elevation'.padEnd(46)} ${relationOrder.map((r) => r.padStart(7)).join(' ')}\n`);
+const totalsSlab: Record<Relation, number> = { agree: 0, rises: 0, below: 0, unknown: 0 };
+for (const row of rows) {
+  const counts = countsByRelation(row.resultSlab);
+  for (const r of relationOrder) totalsSlab[r] += counts[r];
+  process.stdout.write(`${row.elevation.id.padEnd(46)} ${relationOrder.map((r) => String(counts[r]).padStart(7)).join(' ')}\n`);
+}
+process.stdout.write(`${'TOTAL'.padEnd(46)} ${relationOrder.map((r) => String(totalsSlab[r]).padStart(7)).join(' ')}\n`);
+
 for (const row of rows) {
   for (const conflict of row.result.conflicts) {
     process.stdout.write(`  conflict ${row.elevation.id} [${conflict.fromAlong.toFixed(2)}, ${conflict.toAlong.toFixed(2)}] ${conflict.kind}: ${conflict.note}\n`);
@@ -198,6 +260,7 @@ function svgElevation(row: Row, width: number, height: number): { body: string; 
   const allUps = [
     ...elevation.profile.map((s) => s.up).filter((v): v is number => v != null),
     ...result.section.map((s) => s.up).filter((v): v is number => v != null),
+    ...row.resultSlab.section.map((s) => s.up).filter((v): v is number => v != null),
   ];
   const minUp = Math.min(...allUps) - 0.3;
   const maxUp = Math.max(...allUps) + 0.3;
@@ -226,6 +289,7 @@ function svgElevation(row: Row, width: number, height: number): { body: string; 
   };
 
   const sectionLine = polyline(result.section.map((s) => [s.along, s.up]), '#1f78b4', 2);
+  const sectionSlabLine = polyline(row.resultSlab.section.map((s) => [s.along, s.up]), '#a6cee3', 1, '2,2');
   const profileLine = polyline(elevation.profile.map((s) => [s.along, s.up]), '#e31a1c', 1.6, '4,2');
   const outlineLine = polyline(row.fitted.trace.map((p) => [p[0], p[1]] as [number, number | null]), '#33a02c', 1.4);
 
@@ -259,16 +323,18 @@ function svgElevation(row: Row, width: number, height: number): { body: string; 
     axisTicks.push(`<line x1="${xOf(a).toFixed(1)}" y1="${marginT}" x2="${xOf(a).toFixed(1)}" y2="${marginT + plotH}" stroke="#eee" stroke-width="1" />`);
   }
   const legend = `
-    <rect x="${width - 170}" y="4" width="10" height="3" fill="#1f78b4" /><text x="${width - 156}" y="9" font-size="9" fill="#333">3DBAG section S</text>
-    <rect x="${width - 170}" y="14" width="10" height="3" fill="#e31a1c" /><text x="${width - 156}" y="19" font-size="9" fill="#333">scan profile P</text>
-    <rect x="${width - 170}" y="24" width="10" height="3" fill="#33a02c" /><text x="${width - 156}" y="29" font-size="9" fill="#333">fitted outline</text>
-    <rect x="${width - 170}" y="34" width="10" height="3" fill="#ff7f00" /><text x="${width - 156}" y="39" font-size="9" fill="#333">patch top/bottom</text>
+    <rect x="${width - 170}" y="4" width="10" height="3" fill="#1f78b4" /><text x="${width - 156}" y="9" font-size="9" fill="#333">3DBAG S (facade-top 0.15m)</text>
+    <rect x="${width - 170}" y="14" width="10" height="3" fill="#a6cee3" /><text x="${width - 156}" y="19" font-size="9" fill="#333">3DBAG S (1m slab, diagnostic)</text>
+    <rect x="${width - 170}" y="24" width="10" height="3" fill="#e31a1c" /><text x="${width - 156}" y="29" font-size="9" fill="#333">scan profile P</text>
+    <rect x="${width - 170}" y="34" width="10" height="3" fill="#33a02c" /><text x="${width - 156}" y="39" font-size="9" fill="#333">fitted outline</text>
+    <rect x="${width - 170}" y="44" width="10" height="3" fill="#ff7f00" /><text x="${width - 156}" y="49" font-size="9" fill="#333">patch top/bottom</text>
   `;
 
   const body = `
     <rect x="0" y="0" width="${width}" height="${height}" fill="#ffffff" stroke="#ccc" />
     ${axisTicks.join('\n')}
     ${outlineLine}
+    ${sectionSlabLine}
     ${sectionLine}
     ${profileLine}
     ${patchLines}
