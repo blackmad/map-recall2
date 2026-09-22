@@ -41,7 +41,7 @@
   <body>
     <header>
       <h1>Façade model comparison — Amsterdam</h1>
-      <p class="sub">Five models on the same rectified crops, scored against point-cloud-measured openings in wall metres. The rule was fixed before any model ran: recall ≥ 0.80, precision ≥ 0.80, median centre error ≤ 0.30 m.</p>
+      <p class="sub">Seven models on the same rectified crops, scored against point-cloud-measured openings in wall metres. The rule was fixed before any model ran: recall ≥ 0.80, precision ≥ 0.80, median centre error ≤ 0.30 m. Decision D1 is the union of RF-DETR and YOLO26x-seg, with doors winning over overlapping windows.</p>
     </header>
     <main>
       <h2>What each model can see</h2>
@@ -71,7 +71,7 @@
     </main>
     <script>
       const BASE = '/data/facade-model-eval/v1';
-      const COLOURS = { measured:'#00e676', 'rfdetr-R0':'#ff2d55', 'rsjek-R0':'#ffb300', 'windet-R0':'#b388ff', 'ptv1-R0':'#00e5ff', 'dgcnn-R0':'#ff8a65' };
+      const COLOURS = { measured:'#00e676', 'rfdetr-R0':'#ff2d55', 'rsjek-R0':'#ffb300', 'amsseg-R0':'#00e5ff', 'union-R0':'#7cf67c', 'windet-R0':'#b388ff', 'ptv1-R0':'#ff8a65', 'dgcnn-R0':'#ffd166' };
       const pct = (v) => v === null || v === undefined ? 'n/a' : (v * 100).toFixed(1) + '%';
       const m = (v) => v === null || v === undefined ? 'n/a' : v.toFixed(3) + ' m';
       const el = (id) => document.getElementById(id);
@@ -79,10 +79,10 @@
       Promise.all([
         fetch(`${BASE}/scores.json`).then(r => r.json()),
         fetch(`${BASE}/measured.json`).then(r => r.json()),
-        ...['rfdetr-R0','rsjek-R0','windet-R0','ptv1-R0','dgcnn-R0'].map(id =>
+        ...['rfdetr-R0','rsjek-R0','amsseg-R0','union-R0','windet-R0','ptv1-R0','dgcnn-R0'].map(id =>
           fetch(`${BASE}/predictions/${id}.json`).then(r => r.json()).catch(() => ({ records: [] }))),
       ]).then(([scores, gold, ...preds]) => {
-        const laneIds = ['rfdetr-R0','rsjek-R0','windet-R0','ptv1-R0','dgcnn-R0'];
+        const laneIds = ['rfdetr-R0','rsjek-R0','amsseg-R0','union-R0','windet-R0','ptv1-R0','dgcnn-R0'];
         const predictions = Object.fromEntries(laneIds.map((id, i) => [id, preds[i]]));
         const lanes = scores.lanes;
         const enabled = new Set(laneIds);
@@ -132,21 +132,24 @@
         renderScores();
 
         el('finding').innerHTML = `<b>No model clears the rule, and the checks say why.</b>
-          Allowing every model a global ±1 m translate <i>and</i> a mirror lifts the best recall to
-          ${pct(scores.scores['rsjek-R0'].all.probe.recall)} — so the crops and the measured geometry are
-          not badly registered; the models genuinely miss most scan-found openings. The measured set is
-          also a lower bound: the scan records an opening only where it can measure a reveal, so precision
-          here is a floor. Both point-cloud models (PTv1 on a rented A4000, DGCNN locally) return
-          <b>zero</b> openings — they label façades as wall/roof/terrain, which matches their own
-          cross-domain numbers (PTv1's checkpoint: val mIoU 0.158 vs train 0.66).`;
+          The <b>union</b> (D1) is the best on recall at ${pct(scores.scores['union-R0'].all.pooled.recall)},
+          and the <b>Amsterdam-specific</b> model is the best on centre error at
+          ${m(scores.scores['amsseg-R0'].all.pooled.medianCentreErrorM)} — it draws true outlines from a
+          mask, not boxes — but neither clears the rule. Allowing every model a global ±1 m translate
+          <i>and</i> a mirror lifts the best probe recall to ${pct(scores.scores['union-R0'].all.probe.recall)},
+          so the crops and the measured geometry are not badly registered: the models genuinely miss most
+          scan-found openings. The measured set is also a lower bound — the scan records an opening only
+          where it can measure a reveal — so precision here is a floor. Both point-cloud models return
+          <b>zero</b> openings, matching their own cross-domain numbers (PTv1's checkpoint: val mIoU 0.158
+          vs train 0.66).`;
 
         // ---- legend ----
-        el('legend').innerHTML = `<span><i class="sw" style="border-color:${COLOURS.measured}"></i> measured (point cloud)</span>` +
-          lanes.map(l => `<label><input type="checkbox" data-lane="${l.id}" checked /> <i class="sw" style="border-color:${COLOURS[l.id]}"></i> ${l.label}</label>`).join('');
+        el('legend').innerHTML = lanes.map(l => `<label><input type="checkbox" data-lane="${l.id}" checked /> <i class="sw" style="border-color:${COLOURS[l.id]}"></i> ${l.label}</label>`).join('');
 
         // ---- per-wall ----
         const boxesFor = (record, showOther) => (record?.boxes || []).filter(b => showOther || b.kind === 'window' || b.kind === 'door');
-        const overlay = (wall, record, colour, showOther) => boxesFor(record, showOther).map(b => {
+        // A box with a polygon is drawn as its real outline instead of a rectangle.
+        const overlay = (wall, record, colour, showOther) => boxesFor(record, showOther).filter(b => !b.polygon).map(b => {
           const left = (b.along / wall.wallWidthM) * 100;
           const top = (1 - (b.up + (b.height ?? b.heightM)) / wall.wallHeightM) * 100;
           const w = ((b.width ?? b.widthM) / wall.wallWidthM) * 100;
@@ -154,11 +157,13 @@
           if (left < -3 || left > 103 || top < -3 || top > 103) return '';
           return `<div class="box" style="left:${left}%;top:${top}%;width:${w}%;height:${h}%;border-color:${colour}"></div>`;
         }).join('');
-        const measuredOverlay = (wall) => wall.openings.map(o => {
-          const left = (o.along / wall.wallWidthM) * 100;
-          const top = (1 - (o.up + o.height) / wall.wallHeightM) * 100;
-          return `<div class="box" style="left:${left}%;top:${top}%;width:${(o.width / wall.wallWidthM) * 100}%;height:${(o.height / wall.wallHeightM) * 100}%;border-color:${COLOURS.measured}"></div>`;
-        }).join('');
+        const polygonLayer = (wall, record, colour, showOther) => {
+          const shapes = boxesFor(record, showOther).filter(b => b.polygon && b.polygon.length >= 3);
+          if (!shapes.length) return '';
+          const stroke = Math.max(0.015, wall.wallWidthM * 0.004);
+          const body = shapes.map(b => `<polygon points="${b.polygon.map(([a, u]) => `${a},${wall.wallHeightM - u}`).join(' ')}" fill="${colour}22" stroke="${colour}" stroke-width="${stroke}"/>`).join('');
+          return `<svg viewBox="0 0 ${wall.wallWidthM} ${wall.wallHeightM}" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">${body}</svg>`;
+        };
 
         const renderWalls = () => {
           const onlyOpenings = el('onlyOpenings').checked;
@@ -171,17 +176,16 @@
             if (onlyOpenings && !wall.openings.length) continue;
             const windowSized = wall.openings.some(o => o.width >= 0.6 && o.height >= 0.9);
             if (facadesOnly && !(wall.wallWidthM >= 4 && windowSized)) continue;
-            const shot = (colour, record) => `<div class="shot"><img src="${BASE}/crops/${wall.group}.jpg" loading="lazy" alt="${wall.surfaceId}" />${measuredOverlay(wall)}${record ? overlay(wall, record, colour, showOther) : ''}</div>`;
+            const shot = (colour, record) => `<div class="shot"><img src="${BASE}/crops/${wall.group}.jpg" loading="lazy" alt="${wall.surfaceId}" />${record ? overlay(wall, record, colour, showOther) + polygonLayer(wall, record, colour, showOther) : ''}</div>`;
             const panels = sideBySide
-              ? `<div class="panel"><div class="cap">measured · ${wall.openings.length}</div>${shot(COLOURS.measured, null)}</div>` +
-                [...enabled].map(id => {
+              ? [...enabled].map(id => {
                   const record = byLane[id].get(wall.surfaceId);
                   const count = boxesFor(record, showOther).length;
                   return `<div class="panel"><div class="cap" style="color:${COLOURS[id]}">${lanes.find(l => l.id === id).label} · ${count}</div>${shot(COLOURS[id], record)}</div>`;
                 }).join('')
-              : `<div class="panel"><div class="cap">all enabled models</div><div class="shot"><img src="${BASE}/crops/${wall.group}.jpg" loading="lazy" alt="${wall.surfaceId}" />${measuredOverlay(wall)}${[...enabled].map(id => overlay(wall, byLane[id].get(wall.surfaceId), COLOURS[id], showOther)).join('')}</div></div>`;
+              : `<div class="panel"><div class="cap">all enabled models</div><div class="shot"><img src="${BASE}/crops/${wall.group}.jpg" loading="lazy" alt="${wall.surfaceId}" />${[...enabled].map(id => overlay(wall, byLane[id].get(wall.surfaceId), COLOURS[id], showOther) + polygonLayer(wall, byLane[id].get(wall.surfaceId), COLOURS[id], showOther)).join('')}</div></div>`;
             cards.push(`<div class="wall">
-              <div class="wallhead"><span><b>${wall.buildingId.replace('bag:','')}</b> · ${wall.wallWidthM.toFixed(1)} × ${wall.wallHeightM.toFixed(1)} m · ${wall.tile || ''}</span><span>measured ${wall.openings.length}</span></div>
+              <div class="wallhead"><span><b>${wall.buildingId.replace('bag:','')}</b> · ${wall.wallWidthM.toFixed(1)} × ${wall.wallHeightM.toFixed(1)} m · ${wall.tile || ''}</span></div>
               <div class="panels">${panels}</div>
             </div>`);
           }
