@@ -276,9 +276,135 @@ the same prompt, in its own worktree.
 Budget: local compute only, no paid inference. Expected runtime per wave: under
 an hour. Anything longer means a stop-and-report.
 
-## 7. Out of scope
+## 7. Reconciling a roofline into 3DBAG geometry (tasks G1–G4)
+
+Finding the skyline is half the job. The output that matters is **3DBAG
+geometry with the right gable on it**, which the game can render. This stage
+takes a roofline profile from any source (scan, photo method or consensus) and
+produces a derived runtime copy of the 3DBAG building. It is independent of the
+photo evaluation: **it starts now on scan profiles**, and the photo methods feed
+the same code once R8 passes.
+
+### What exists and what doesn't
+- 3DBAG LoD2.2 per building is cached offline as CityJSONFeatures with
+  `WallSurface` / `RoofSurface` / `GroundSurface` semantics
+  (`.cache/pointcloud/3dbag-<bbox>.json`, T3).
+- It has no gables: `wallTop == roofTop` on 0 of 895 canal-belt buildings.
+- `facadeMeshCompiler.ts` already turns a scan silhouette into a closed
+  `gable` polygon above `wallTop` (with `minimumGableRise` 0.3 m). It doesn't
+  attach it to anything.
+- The per-case gable work (case-12 halsgevel, case-21 klokgevel, case-27
+  roof coverage in `scripts/review/roof-coverage-corrections.*` and
+  `apply-source-silhouette.ts`) draws a **hand-traced pixel silhouette onto a
+  synthetic study model and deliberately never touches 3DBAG**. It doesn't
+  scale, and it is the thing this stage replaces.
+- The game keeps source roofs only through `selectCompatibleSourceRoof`
+  (`src/canalRecall/cityAppearanceRoofs.ts`) and otherwise renders one wall
+  height per building. `wallTop.ts` gives the real eave per wall.
+
+### Principles
+1. **Additive only in v1.** Never cut, move or re-triangulate a 3DBAG surface.
+   A gable is a new surface added in front of or on top of the source. If a
+   profile says 3DBAG is *too high* at the facade, record a conflict and abstain.
+   Cutting the roof is a v2 decision that needs its own evidence.
+2. **Source geometry stays untouched.** The output is a derived copy plus an
+   additive patch with provenance (profile source and hash, 3DBAG ID and
+   version, gable class, confidence). It is revocable through the existing
+   revocation registry pattern, and revocation never recreates a gable from a
+   prior.
+3. **Snap to Amsterdam gable types, not raw polylines.** A clean low-poly
+   klokgevel of the right width and height beats a noisy trace at game distance.
+4. **Scan beats photo** when both exist for a wall. The photo is for walls the
+   scan doesn't cover.
+
+### Relation classes (per contiguous span along the facade)
+Compare the profile `P(along)` with the 3DBAG section `S(along)`: the highest
+3DBAG surface point within 1 m behind the facade plane in each column.
+
+| Relation | Meaning | Action |
+| --- | --- | --- |
+| `agree` (\|P − S\| ≤ 0.30 m) | 3DBAG already has this edge, e.g. a tuitgevel where the gable follows the roof pitch | No change |
+| `rises` (P above S by > 0.30 m) | False-front gable: trap-, hals-, klok-, or a raised lijstgevel parapet | Add a **gable screen**: front face coplanar with the 3DBAG wall, 0.30 m thick, top following the fitted gable, bottom closed onto S |
+| `below` (P under S by > 0.30 m) | 3DBAG roof at the facade is higher than measured: a setback, generalisation or a bad profile | **Abstain** and record the conflict. No change in v1 |
+| `unknown` | Profile is `null` there | No change |
+
+### G1: Section and reconcile core (Sonnet; wave 1)
+Depends on: the cached 3DBAG features; R1's gold schema (it uses scan
+profiles, so no photo tasks are needed).
+1. `src/canalRecall/facade/roofReconcile.ts`. Input: a 3DBAG LoD2.2
+   `BuildingPart` (with the CityJSON transform applied, RD/NAP), an elevation
+   plane (`start`, `end`), a profile at 0.10 m in the §3 frame, and a fitted
+   gable (G2). Output: `{ relationSpans, patch: Surface[] | null, conflicts, provenance }`.
+2. Compute `S(along)` from the LoD2.2 surfaces. Classify the spans and build
+   the gable screen for `rises` spans.
+3. Validity checks, each with a test: the screen's front face is coplanar
+   with the 3DBAG wall within 1 cm; its along-range stays inside the elevation
+   (never over a neighbour's plot); the peak is ≤ 6 m above the 3DBAG ridge;
+   it's closed (no gaps where it meets S); ≤ 80 triangles per gable; no
+   degenerate triangles.
+4. Tests on synthetic buildings: a flat-topped box plus a step-gable profile →
+   a screen with the right steps; a pitched box whose section already matches
+   → `agree`, no patch; a profile below the roof → conflict, no patch.
+Done when: tests pass and it runs over every R1 gold elevation using **scan**
+profiles, reporting counts per relation class. Overlay: an elevation view of
+3DBAG plus the patch for each gold elevation.
+
+### G2: Gable-type fitting (Sonnet; wave 1)
+Depends on: nothing.
+1. `src/canalRecall/facade/gableFit.ts`. Given a profile and the
+   `classifyGable` result (`gable.ts`), fit a parametric template per
+   type: `lijstgevel` (flat cornice, optional parapet), `puntgevel` / `tuitgevel`
+   (triangle, apex and eave), `trapgevel` (staircase: step count, rise, run),
+   `halsgevel` (neck width and height, shoulders), `klokgevel` (bell: neck plus
+   curved shoulders as ≤ 6 segments). Fit by least squares on the non-null
+   columns. Fall back to a Douglas–Peucker polyline (0.15 m) when the fit
+   error beats no template by less than 30 %, or the type is `unknown`.
+2. Enforce left/right symmetry for types that are symmetric in practice (all
+   except `unknown`), but only when one side is occluded (`null`). A measured
+   asymmetry wins.
+3. Tests: each template recovers its own parameters from noisy samples
+   (σ 0.1 m); a half-occluded klokgevel is completed by mirroring.
+Done when: the table of fit errors per gold elevation is in the report.
+
+### G3: Game render path (integrator; wave 2)
+Depends on: G1.
+Wire the patch into the city renderer (`cityAppearanceThree.ts`) and the
+source-to-owner preview, behind a flag that's off by default. The patch
+surfaces go through the same material path as walls. This touches shared
+bundles, so the integrator owns it.
+Done when: the Museumkwartier gold buildings render with their scan-derived
+gables at gameplay camera distance, captured on desktop and phone, next to the
+panorama view of the same facade.
+
+### G4: Reconciliation evaluation (integrator + owner; wave 3)
+1. **Geometric fidelity:** section the patched mesh at the facade plane and
+   compare it to the input profile. Median error ≤ 0.15 m on scan inputs
+   (this tests G1 and G2, not the photos).
+2. **Recognition (the one that matters):** for each gold elevation, show the owner
+   the panorama view next to the in-game render. Question: *is this the right
+   gable?* Yes/no per building. Adopt the reconciler for scan inputs if ≥ 80 %
+   are yes. The owner answers; an agent doesn't.
+3. **Photo chain (after R8 passes):** run the adopted photo method → G2 → G1
+   and compare the patch with the scan-derived patch for the same elevation.
+   Same thresholds as §1 on the patched section.
+
+### Updated execution plan
+
+| Wave | Photo evaluation | Reconciliation |
+| --- | --- | --- |
+| 1 | R1 (Sonnet) · R2, R3, R5 code (DeepSeek) | G1 (Sonnet, after R1's schema lands) · G2 (Sonnet) |
+| 2 | R4 (Sonnet) | G3 (integrator) |
+| 3 | R6 (Sonnet) · R7 (DeepSeek) · R5 run | G4 parts 1–2 |
+| 4 | R8 decision | G4 part 3 if R8 passes |
+
+The reconciliation lane can succeed even if every photo method fails: then the
+result is "gables from the scan where we have scans", which is still the first
+3DBAG-compatible gable in the game.
+
+## 8. Out of scope
 
 - Windows, doors and openings (see FACADE_MODEL_EVALUATION_PLAN.md).
 - Training or fine-tuning. Revisit only if a method nearly passes and the
   failure is a specific Amsterdam class.
 - Canal-belt runs before R8 passes.
+- Cutting or re-triangulating 3DBAG roofs (the `below` class). That is v2, after G4.
