@@ -1,0 +1,1272 @@
+{
+  "generatedAt": "2026-09-22T20:04:32.842Z",
+  "source": {
+    "stripProfiles": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/roofline-eval/strip-profiles",
+    "bagCache": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/roofline-eval/3dbag/3dbag-strips.json"
+  },
+  "anyViewBiasMField": false,
+  "sectionDepthM": 0.15,
+  "totals": {
+    "agree": 10,
+    "rises": 2741,
+    "below": 7,
+    "unknown": 4785
+  },
+  "matchCount": 89,
+  "wallCount": 89,
+  "distribution": {
+    "mean": 4.6244124298835745,
+    "stddev": 1.9462951493584673,
+    "median": 4.741529198197547,
+    "p10": 2.4339652362366913,
+    "p90": 6.1382964776244755
+  },
+  "rows": [
+    {
+      "pandId": "0363100012164991",
+      "address": "Herengracht 242",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 40,
+        "below": 0,
+        "unknown": 23
+      },
+      "resolvedColumns": 40,
+      "medianDiffM": 4.9279118040303,
+      "meanDiffM": 4.939762601029343
+    },
+    {
+      "pandId": "0363100012164995",
+      "address": "Bloemstraat 3",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 79,
+        "below": 0,
+        "unknown": 95
+      },
+      "resolvedColumns": 79,
+      "medianDiffM": 4.3162579424494005,
+      "meanDiffM": 4.903180568877012
+    },
+    {
+      "pandId": "0363100012164996",
+      "address": "Prinsengracht 285",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 1,
+        "rises": 0,
+        "below": 7,
+        "unknown": 53
+      },
+      "resolvedColumns": 8,
+      "medianDiffM": -0.5543667075908267,
+      "meanDiffM": -0.5840414863518877
+    },
+    {
+      "pandId": "0363100012165018",
+      "address": "Prinsengracht 138",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 97,
+        "below": 0,
+        "unknown": 37
+      },
+      "resolvedColumns": 97,
+      "medianDiffM": 4.7373961242675815,
+      "meanDiffM": 4.75945391339543
+    },
+    {
+      "pandId": "0363100012165019",
+      "address": "Keizersgracht 179",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 55,
+        "below": 0,
+        "unknown": 6
+      },
+      "resolvedColumns": 55,
+      "medianDiffM": 4.20073063754192,
+      "meanDiffM": 4.205403364814646
+    },
+    {
+      "pandId": "0363100012165021",
+      "address": "Keizersgracht 177",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 123,
+        "below": 0,
+        "unknown": 236
+      },
+      "resolvedColumns": 123,
+      "medianDiffM": 4.921951124267579,
+      "meanDiffM": 5.473129402432506
+    },
+    {
+      "pandId": "0363100012165022",
+      "address": "Herengracht 178",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 2,
+        "below": 0,
+        "unknown": 51
+      },
+      "resolvedColumns": 2,
+      "medianDiffM": 3.2856930939645537,
+      "meanDiffM": 3.2595037000251583
+    },
+    {
+      "pandId": "0363100012165023",
+      "address": "Keizersgracht 140",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 43,
+        "below": 0,
+        "unknown": 79
+      },
+      "resolvedColumns": 43,
+      "medianDiffM": 4.376116124267581,
+      "meanDiffM": 4.3467778875050005
+    },
+    {
+      "pandId": "0363100012165024",
+      "address": "Keizersgracht 162",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 60,
+        "below": 0,
+        "unknown": 40
+      },
+      "resolvedColumns": 60,
+      "medianDiffM": 4.894685444655924,
+      "meanDiffM": 4.9195118379261675
+    },
+    {
+      "pandId": "0363100012165025",
+      "address": "Keizersgracht 160",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 20,
+        "below": 0,
+        "unknown": 41
+      },
+      "resolvedColumns": 20,
+      "medianDiffM": 2.878196124267582,
+      "meanDiffM": 2.691479951212994
+    },
+    {
+      "pandId": "0363100012165026",
+      "address": "Keizersgracht 136",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 36,
+        "below": 0,
+        "unknown": 26
+      },
+      "resolvedColumns": 36,
+      "medianDiffM": 5.0978800528390025,
+      "meanDiffM": 5.521521828762336
+    },
+    {
+      "pandId": "0363100012165027",
+      "address": "Keizersgracht 134",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 16,
+        "below": 0,
+        "unknown": 49
+      },
+      "resolvedColumns": 16,
+      "medianDiffM": 6.222536664808121,
+      "meanDiffM": 9.556531152717081
+    },
+    {
+      "pandId": "0363100012165029",
+      "address": "Keizersgracht 127",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 144,
+        "below": 0,
+        "unknown": 66
+      },
+      "resolvedColumns": 144,
+      "medianDiffM": 5.964444522844094,
+      "meanDiffM": 6.662510922222051
+    },
+    {
+      "pandId": "0363100012165056",
+      "address": "Prinsengracht 60",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 2,
+        "rises": 21,
+        "below": 0,
+        "unknown": 26
+      },
+      "resolvedColumns": 23,
+      "medianDiffM": 1.9274038840304613,
+      "meanDiffM": 1.7771466783636318
+    },
+    {
+      "pandId": "0363100012165061",
+      "address": "Prinsengracht 193",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 62
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012165082",
+      "address": "Koningsplein 12",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 2,
+        "rises": 65,
+        "below": 0,
+        "unknown": 17
+      },
+      "resolvedColumns": 67,
+      "medianDiffM": 0.5264342647454718,
+      "meanDiffM": 0.6018398985199167
+    },
+    {
+      "pandId": "0363100012165113",
+      "address": "Singel 299",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 20,
+        "below": 0,
+        "unknown": 31
+      },
+      "resolvedColumns": 20,
+      "medianDiffM": 4.609734368954065,
+      "meanDiffM": 4.705128072983486
+    },
+    {
+      "pandId": "0363100012167493",
+      "address": "Herengracht 62",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 36,
+        "below": 0,
+        "unknown": 3
+      },
+      "resolvedColumns": 36,
+      "medianDiffM": 15.728142048427035,
+      "meanDiffM": 13.583358370915276
+    },
+    {
+      "pandId": "0363100012167494",
+      "address": "Herengracht 56",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 75
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167495",
+      "address": "Herengracht 58",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 22,
+        "below": 0,
+        "unknown": 60
+      },
+      "resolvedColumns": 22,
+      "medianDiffM": 4.5122970636246045,
+      "meanDiffM": 5.292444856837194
+    },
+    {
+      "pandId": "0363100012167496",
+      "address": "Blauwburgwal 17",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 27,
+        "below": 0,
+        "unknown": 154
+      },
+      "resolvedColumns": 27,
+      "medianDiffM": 3.86635824172928,
+      "meanDiffM": 3.8612530801962843
+    },
+    {
+      "pandId": "0363100012167497",
+      "address": "Singel 108",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 6,
+        "below": 0,
+        "unknown": 92
+      },
+      "resolvedColumns": 6,
+      "medianDiffM": 4.146605490496778,
+      "meanDiffM": 4.26009495377039
+    },
+    {
+      "pandId": "0363100012167619",
+      "address": "Singel 285",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 6,
+        "below": 0,
+        "unknown": 40
+      },
+      "resolvedColumns": 6,
+      "medianDiffM": 4.633528370643731,
+      "meanDiffM": 4.617319225361823
+    },
+    {
+      "pandId": "0363100012167620",
+      "address": "Singel 279",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 34,
+        "below": 0,
+        "unknown": 36
+      },
+      "resolvedColumns": 34,
+      "medianDiffM": 5.3494985198974625,
+      "meanDiffM": 5.3055639803303
+    },
+    {
+      "pandId": "0363100012167621",
+      "address": "Singel 273",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 35,
+        "below": 0,
+        "unknown": 13
+      },
+      "resolvedColumns": 35,
+      "medianDiffM": 4.986870612920718,
+      "meanDiffM": 5.050902101454873
+    },
+    {
+      "pandId": "0363100012167622",
+      "address": "Singel 283",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 64,
+        "below": 0,
+        "unknown": 17
+      },
+      "resolvedColumns": 64,
+      "medianDiffM": 3.9413105499726484,
+      "meanDiffM": 4.288081024335639
+    },
+    {
+      "pandId": "0363100012167625",
+      "address": "Spuistraat 226",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 5,
+        "rises": 15,
+        "below": 0,
+        "unknown": 36
+      },
+      "resolvedColumns": 20,
+      "medianDiffM": 1.1470955348228333,
+      "meanDiffM": 0.9147355729204752
+    },
+    {
+      "pandId": "0363100012167626",
+      "address": "Singel 316",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 49,
+        "below": 0,
+        "unknown": 62
+      },
+      "resolvedColumns": 49,
+      "medianDiffM": 4.188704094810355,
+      "meanDiffM": 4.518143321116569
+    },
+    {
+      "pandId": "0363100012167628",
+      "address": "Herengracht 221",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 57
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167629",
+      "address": "Herengracht 219",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 33,
+        "below": 0,
+        "unknown": 27
+      },
+      "resolvedColumns": 33,
+      "medianDiffM": 5.882388022659891,
+      "meanDiffM": 5.854270708557525
+    },
+    {
+      "pandId": "0363100012167634",
+      "address": "Herengracht 203",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 51,
+        "below": 0,
+        "unknown": 41
+      },
+      "resolvedColumns": 51,
+      "medianDiffM": 5.573191488505994,
+      "meanDiffM": 6.561650074251932
+    },
+    {
+      "pandId": "0363100012167642",
+      "address": "Leliegracht 5",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 8,
+        "below": 0,
+        "unknown": 53
+      },
+      "resolvedColumns": 8,
+      "medianDiffM": 2.4339652362366913,
+      "meanDiffM": 2.2435346860436427
+    },
+    {
+      "pandId": "0363100012167643",
+      "address": "Leliegracht 7",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 55,
+        "below": 0,
+        "unknown": 5
+      },
+      "resolvedColumns": 55,
+      "medianDiffM": 4.741529198197547,
+      "meanDiffM": 4.597576850574566
+    },
+    {
+      "pandId": "0363100012167644",
+      "address": "Herengracht 160",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 81
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167645",
+      "address": "Herengracht 158",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 13,
+        "below": 0,
+        "unknown": 80
+      },
+      "resolvedColumns": 13,
+      "medianDiffM": 4.146720004864598,
+      "meanDiffM": 4.151544344703861
+    },
+    {
+      "pandId": "0363100012167646",
+      "address": "Herengracht 162",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 81
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167647",
+      "address": "Keizersgracht 149",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 24,
+        "below": 0,
+        "unknown": 60
+      },
+      "resolvedColumns": 24,
+      "medianDiffM": 4.605583221041776,
+      "meanDiffM": 4.609878723713456
+    },
+    {
+      "pandId": "0363100012167648",
+      "address": "Keizersgracht 147",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 36,
+        "below": 0,
+        "unknown": 4
+      },
+      "resolvedColumns": 36,
+      "medianDiffM": 4.464132487903946,
+      "meanDiffM": 4.469616431506638
+    },
+    {
+      "pandId": "0363100012167649",
+      "address": "Leliegracht 11",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 1,
+        "below": 0,
+        "unknown": 65
+      },
+      "resolvedColumns": 1,
+      "medianDiffM": 4.5951389814104395,
+      "meanDiffM": 4.5951389814104395
+    },
+    {
+      "pandId": "0363100012167650",
+      "address": "Leliegracht 22",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 15,
+        "below": 0,
+        "unknown": 46
+      },
+      "resolvedColumns": 15,
+      "medianDiffM": 2.9982616109932465,
+      "meanDiffM": 3.091685960867902
+    },
+    {
+      "pandId": "0363100012167651",
+      "address": "Keizersgracht 145",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 4,
+        "below": 0,
+        "unknown": 54
+      },
+      "resolvedColumns": 4,
+      "medianDiffM": 5.649454068192817,
+      "meanDiffM": 5.463110610248892
+    },
+    {
+      "pandId": "0363100012167652",
+      "address": "Keizersgracht 143",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 35,
+        "below": 0,
+        "unknown": 35
+      },
+      "resolvedColumns": 35,
+      "medianDiffM": 4.988512253299842,
+      "meanDiffM": 4.801024172539835
+    },
+    {
+      "pandId": "0363100012167656",
+      "address": "Leliegracht 3",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 30,
+        "below": 0,
+        "unknown": 16
+      },
+      "resolvedColumns": 30,
+      "medianDiffM": 2.0561451925905647,
+      "meanDiffM": 2.092277745161094
+    },
+    {
+      "pandId": "0363100012167657",
+      "address": "Leliegracht 1",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 21,
+        "below": 0,
+        "unknown": 38
+      },
+      "resolvedColumns": 21,
+      "medianDiffM": 6.227475576322378,
+      "meanDiffM": 6.206088100784216
+    },
+    {
+      "pandId": "0363100012167660",
+      "address": "Herengracht 165",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 14,
+        "below": 0,
+        "unknown": 50
+      },
+      "resolvedColumns": 14,
+      "medianDiffM": 4.925379457600911,
+      "meanDiffM": 5.042140480153373
+    },
+    {
+      "pandId": "0363100012167664",
+      "address": "Leliegracht 20",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 35,
+        "below": 0,
+        "unknown": 29
+      },
+      "resolvedColumns": 35,
+      "medianDiffM": 4.899106293759104,
+      "meanDiffM": 5.097488618214314
+    },
+    {
+      "pandId": "0363100012167665",
+      "address": "Leliegracht 18",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 62
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167667",
+      "address": "Leliegracht 16",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 4,
+        "below": 0,
+        "unknown": 58
+      },
+      "resolvedColumns": 4,
+      "medianDiffM": 3.9848275849417405,
+      "meanDiffM": 3.8689493077881827
+    },
+    {
+      "pandId": "0363100012167668",
+      "address": "Herengracht 163",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 59,
+        "below": 0,
+        "unknown": 4
+      },
+      "resolvedColumns": 59,
+      "medianDiffM": 6.26937348275815,
+      "meanDiffM": 5.847660674773935
+    },
+    {
+      "pandId": "0363100012167669",
+      "address": "Herengracht 169",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 63
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167670",
+      "address": "Keizersgracht 133",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 23,
+        "below": 0,
+        "unknown": 70
+      },
+      "resolvedColumns": 23,
+      "medianDiffM": 5.313792531453213,
+      "meanDiffM": 5.359698817694958
+    },
+    {
+      "pandId": "0363100012167679",
+      "address": "Herengracht 161",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 15,
+        "below": 0,
+        "unknown": 50
+      },
+      "resolvedColumns": 15,
+      "medianDiffM": 5.64256003404202,
+      "meanDiffM": 5.935787481972189
+    },
+    {
+      "pandId": "0363100012167680",
+      "address": "Herengracht 159",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 5,
+        "below": 0,
+        "unknown": 55
+      },
+      "resolvedColumns": 5,
+      "medianDiffM": 5.896487352337758,
+      "meanDiffM": 5.859792615495652
+    },
+    {
+      "pandId": "0363100012167681",
+      "address": "Herengracht 157",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 61,
+        "below": 0,
+        "unknown": 5
+      },
+      "resolvedColumns": 61,
+      "medianDiffM": 5.6077329663728435,
+      "meanDiffM": 5.468564166317332
+    },
+    {
+      "pandId": "0363100012167683",
+      "address": "Herengracht 155",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 26,
+        "below": 0,
+        "unknown": 44
+      },
+      "resolvedColumns": 26,
+      "medianDiffM": 4.9814518204701095,
+      "meanDiffM": 5.062321416295715
+    },
+    {
+      "pandId": "0363100012167684",
+      "address": "Singel 176",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 1,
+        "below": 0,
+        "unknown": 41
+      },
+      "resolvedColumns": 1,
+      "medianDiffM": 1.2688728365963495,
+      "meanDiffM": 1.2688728365963495
+    },
+    {
+      "pandId": "0363100012167686",
+      "address": "Herengracht 129",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 4,
+        "below": 0,
+        "unknown": 51
+      },
+      "resolvedColumns": 4,
+      "medianDiffM": 4.646847609416097,
+      "meanDiffM": 4.437528302485402
+    },
+    {
+      "pandId": "0363100012167688",
+      "address": "Keizersgracht 108",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 63
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167689",
+      "address": "Keizersgracht 112",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 39,
+        "below": 0,
+        "unknown": 20
+      },
+      "resolvedColumns": 39,
+      "medianDiffM": 4.829636124267584,
+      "meanDiffM": 4.495688286234116
+    },
+    {
+      "pandId": "0363100012167691",
+      "address": "Keizersgracht 106",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 49
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167694",
+      "address": "Keizersgracht 121",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 193,
+        "below": 0,
+        "unknown": 48
+      },
+      "resolvedColumns": 193,
+      "medianDiffM": 5.366618640823873,
+      "meanDiffM": 5.232144054547609
+    },
+    {
+      "pandId": "0363100012167704",
+      "address": "Herenstraat 40",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 56,
+        "below": 0,
+        "unknown": 22
+      },
+      "resolvedColumns": 56,
+      "medianDiffM": 2.260402628332624,
+      "meanDiffM": 2.2862209839268934
+    },
+    {
+      "pandId": "0363100012167705",
+      "address": "Keizersgracht 91",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 38,
+        "below": 0,
+        "unknown": 53
+      },
+      "resolvedColumns": 38,
+      "medianDiffM": 3.7795834258548844,
+      "meanDiffM": 3.7901988125001584
+    },
+    {
+      "pandId": "0363100012167706",
+      "address": "Keizersgracht 93",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 62
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167707",
+      "address": "Keizersgracht 98",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 61,
+        "below": 0,
+        "unknown": 66
+      },
+      "resolvedColumns": 61,
+      "medianDiffM": 3.977149350074029,
+      "meanDiffM": 4.139524148525014
+    },
+    {
+      "pandId": "0363100012167709",
+      "address": "Herengracht 106",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 12,
+        "below": 0,
+        "unknown": 53
+      },
+      "resolvedColumns": 12,
+      "medianDiffM": 4.192546124267583,
+      "meanDiffM": 4.3877332829209985
+    },
+    {
+      "pandId": "0363100012167710",
+      "address": "Herengracht 100",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 14,
+        "below": 0,
+        "unknown": 79
+      },
+      "resolvedColumns": 14,
+      "medianDiffM": 8.186549065444053,
+      "meanDiffM": 8.860394995065901
+    },
+    {
+      "pandId": "0363100012167714",
+      "address": "Herengracht 96",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 27,
+        "below": 0,
+        "unknown": 66
+      },
+      "resolvedColumns": 27,
+      "medianDiffM": 5.100170037311056,
+      "meanDiffM": 5.459107659143416
+    },
+    {
+      "pandId": "0363100012167717",
+      "address": "Keizersgracht 87",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 37,
+        "below": 0,
+        "unknown": 115
+      },
+      "resolvedColumns": 37,
+      "medianDiffM": 4.523769975857686,
+      "meanDiffM": 6.31149700714099
+    },
+    {
+      "pandId": "0363100012167718",
+      "address": "Keizersgracht 83",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 57,
+        "below": 0,
+        "unknown": 22
+      },
+      "resolvedColumns": 57,
+      "medianDiffM": 6.1382964776244755,
+      "meanDiffM": 6.150462629468893
+    },
+    {
+      "pandId": "0363100012167719",
+      "address": "Prinsengracht 153",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 62
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167722",
+      "address": "Prinsengracht 133",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 56,
+        "below": 0,
+        "unknown": 66
+      },
+      "resolvedColumns": 56,
+      "medianDiffM": 5.768394126490543,
+      "meanDiffM": 5.63017665894347
+    },
+    {
+      "pandId": "0363100012167724",
+      "address": "Keizersgracht 60",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 10,
+        "below": 0,
+        "unknown": 55
+      },
+      "resolvedColumns": 10,
+      "medianDiffM": 5.083226662375708,
+      "meanDiffM": 4.771335674233417
+    },
+    {
+      "pandId": "0363100012167725",
+      "address": "Keizersgracht 58",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 45,
+        "below": 0,
+        "unknown": 17
+      },
+      "resolvedColumns": 45,
+      "medianDiffM": 5.1493826581309285,
+      "meanDiffM": 5.452885626246347
+    },
+    {
+      "pandId": "0363100012167727",
+      "address": "Keizersgracht 56",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 26,
+        "below": 0,
+        "unknown": 35
+      },
+      "resolvedColumns": 26,
+      "medianDiffM": 4.674401350432749,
+      "meanDiffM": 4.6486098723030365
+    },
+    {
+      "pandId": "0363100012167730",
+      "address": "Prinsengracht 39",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 17,
+        "below": 0,
+        "unknown": 43
+      },
+      "resolvedColumns": 17,
+      "medianDiffM": 2.8972631691759965,
+      "meanDiffM": 3.014430256133264
+    },
+    {
+      "pandId": "0363100012167731",
+      "address": "Prinsengracht 41",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 62
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167733",
+      "address": "Prinsengracht 111",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 40,
+        "below": 0,
+        "unknown": 23
+      },
+      "resolvedColumns": 40,
+      "medianDiffM": 4.891169200969193,
+      "meanDiffM": 4.619842703327684
+    },
+    {
+      "pandId": "0363100012167734",
+      "address": "Keizersgracht 24",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 12,
+        "below": 0,
+        "unknown": 52
+      },
+      "resolvedColumns": 12,
+      "medianDiffM": 5.156556532505579,
+      "meanDiffM": 5.196573199172247
+    },
+    {
+      "pandId": "0363100012167735",
+      "address": "Keizersgracht 44",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 39,
+        "below": 0,
+        "unknown": 141
+      },
+      "resolvedColumns": 39,
+      "medianDiffM": 7.028512047876287,
+      "meanDiffM": 6.890554865131668
+    },
+    {
+      "pandId": "0363100012167736",
+      "address": "Keizersgracht 36",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 175,
+        "below": 0,
+        "unknown": 69
+      },
+      "resolvedColumns": 175,
+      "medianDiffM": 4.968343701025685,
+      "meanDiffM": 5.795226293023891
+    },
+    {
+      "pandId": "0363100012167737",
+      "address": "Keizersgracht 54",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 2,
+        "below": 0,
+        "unknown": 119
+      },
+      "resolvedColumns": 2,
+      "medianDiffM": 5.568499389648437,
+      "meanDiffM": 4.912710327148437
+    },
+    {
+      "pandId": "0363100012167738",
+      "address": "Prinsengracht 37",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 19,
+        "below": 0,
+        "unknown": 40
+      },
+      "resolvedColumns": 19,
+      "medianDiffM": 3.110749389648438,
+      "meanDiffM": 3.3644497348852727
+    },
+    {
+      "pandId": "0363100012167741",
+      "address": "Keizersgracht 20",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 3,
+        "below": 0,
+        "unknown": 59
+      },
+      "resolvedColumns": 3,
+      "medianDiffM": 6.351777167426217,
+      "meanDiffM": 5.9864253155743645
+    },
+    {
+      "pandId": "0363100012167743",
+      "address": "Keizersgracht 18",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 4,
+        "below": 0,
+        "unknown": 118
+      },
+      "resolvedColumns": 4,
+      "medianDiffM": 4.447772116921165,
+      "meanDiffM": 3.9604801588792062
+    },
+    {
+      "pandId": "0363100012167746",
+      "address": "Noordermarkt 14",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 0,
+        "below": 0,
+        "unknown": 52
+      },
+      "resolvedColumns": 0,
+      "medianDiffM": null,
+      "meanDiffM": null
+    },
+    {
+      "pandId": "0363100012167748",
+      "address": "Noordermarkt 15",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 13,
+        "below": 0,
+        "unknown": 31
+      },
+      "resolvedColumns": 13,
+      "medianDiffM": 3.937489389648439,
+      "meanDiffM": 4.296442568197714
+    },
+    {
+      "pandId": "0363100012167751",
+      "address": "Brouwersgracht 115",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 56,
+        "below": 0,
+        "unknown": 109
+      },
+      "resolvedColumns": 56,
+      "medianDiffM": 5.72985233082491,
+      "meanDiffM": 5.481162846043953
+    },
+    {
+      "pandId": "0363100012167752",
+      "address": "Lindengracht 25",
+      "wallMatch": "match",
+      "counts": {
+        "agree": 0,
+        "rises": 2,
+        "below": 0,
+        "unknown": 63
+      },
+      "resolvedColumns": 2,
+      "medianDiffM": 1.7048882785373234,
+      "meanDiffM": 1.5798216118706572
+    }
+  ]
+}
