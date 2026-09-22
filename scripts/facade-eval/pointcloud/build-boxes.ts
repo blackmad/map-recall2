@@ -1,233 +1,321 @@
 /**
- * Turn PTv1 point-cloud predictions into opening boxes in the wall-metric frame.
+ * Turn DGCNN per-point façade labels into opening boxes in the wall-metric
+ * frame, for the frozen measured gold set.
  *
- * PTv1 predicts a class per point. We treat predicted `window` and `door` points
- * as the opening mask (instead of the depth heuristic `compileFacade` uses),
- * rasterise them on the wall's own metric grid with `rasteriseWall` /
- * `clusterCells` / `regulariseOpenings`, and emit the shared lane JSON contract.
- * Boxes are in the crop frame: `along` = metres from `plane.start` (0 at the
- * low-`u` edge), `up` = metres above `plane.baseZ`.
+ * Reuse, not reimplementation:
+ *   - the tile is decoded by `scripts/pointcloud/load-laz-tile.ts`;
+ *   - the wall frame and raster come from
+ *     `src/canalRecall/facade/pointCloudGeometry.ts` (`wallMetricFrame`,
+ *     `rasteriseWall`, `projectToWall`, `wallSilhouette`);
+ *   - the opening clustering/refinement/regularisation comes from
+ *     `src/canalRecall/facade/facadeMeshCompiler.ts` (`compileFacade`).
  *
- * The wall frames are rebuilt from the gold planes with `wallMetricFrame` so
- * they are identical to the measured pipeline's frame for the same wall.
+ * The only swap versus the measured pipeline is the opening *mask*: instead of
+ * `classifyWallRaster`'s depth heuristic (`meanDepth <= -0.25 m`), we feed
+ * `rasteriseWall` only the points the model predicted as `window`/`door`
+ * (LoFG3) or `opening` (LoFG2). Every solid cell is therefore a model opening,
+ * and `compileFacade` is called with `minimumRecessDepth` set far negative so
+ * its own depth test passes every cell. Its `clusterCells` -> `refineCluster`
+ * -> `regulariseOpenings` path then produces the boxes.
+ *
+ * Boxes are converted from the raster's centroid-relative frame to the shared
+ * crop frame the lanes use: `along` = metres from `plane.start`, `up` = metres
+ * above `plane.baseZ` (see scripts/facade-eval/build-gold-set.ts).
  *
  * Usage:
  *   npx tsx scripts/facade-eval/pointcloud/build-boxes.ts \
- *     [--gold=public/data/facade-model-eval/v1/measured.json] \
- *     [--labels=.cache/underonefacade/preds] [--out=...]
+ *     --tile=.cache/pointcloud/filtered_2397_9705.laz \
+ *     --preds=.cache/facade-eval/dgcnn/preds/filtered_2397_9705.lofg3.npy \
+ *     --lofg=lofg3 --tile-name=museumkwartier \
+ *     --out=.cache/facade-eval/dgcnn-oudzuid-lofg3.json
  */
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { readFileSync } from 'node:fs';
-import { wallMetricFrame, type CloudPoint, type Vec3 } from '../../../src/canalRecall/facade/pointCloudGeometry.ts';
-import { clusterCells, regulariseOpenings, type FacadeRect } from '../../../src/canalRecall/facade/facadeMeshCompiler.ts';
+import {
+  projectToWall,
+  rasteriseWall,
+  wallMetricFrame,
+  wallSilhouette,
+  type WallMetricFrame,
+} from '../../../src/canalRecall/facade/pointCloudGeometry.ts';
+import { compileFacade } from '../../../src/canalRecall/facade/facadeMeshCompiler.ts';
+import type { FacadeWallPlane, Point3 } from '../../../src/canalRecall/building/facadePointCloud.ts';
 import { loadLazTile } from '../../pointcloud/load-laz-tile.ts';
 
-// LoFG3 class names (config.yaml labels.lofg3.names).
-const OPENING_CLASSES = new Set([1, 2]); // window, door
-
-const CELL_SIZE = 0.05;
-const MIN_POINTS_PER_CELL = 3;
-const OPENING_POINT_FRACTION = 0.5;
-const MINIMUM_OPENING_AREA = 0.25;
-const MINIMUM_OPENING_WIDTH = 0.25;
-const MINIMUM_OPENING_HEIGHT = 0.25;
-
-const TILES = [
-  { id: 'museumkwartier', laz: '.cache/pointcloud/filtered_2397_9705.laz', labels: 'filtered_2397_9705.pred.npy' },
-  { id: 'willemspark', laz: '.cache/pointcloud/filtered_2386_9702.laz', labels: 'filtered_2386_9702.pred.npy' },
-];
-
-interface GoldWall {
+type Plane = { start: { x: number; y: number }; end: { x: number; y: number }; baseZ: number; topZ: number };
+type GoldOpening = { along: number; up: number; width: number; height: number };
+type GoldWall = {
   tile: string;
   buildingId: string;
   surfaceId: string;
   group: string;
   wallWidthM: number;
   wallHeightM: number;
-  plane: { start: { x: number; y: number }; end: { x: number; y: number }; baseZ: number; topZ: number };
-  crop: { file: string; width: number; height: number; sha256: string };
+  plane: Plane;
+  crop: { file: string; sha256: string; width: number; height: number };
   pixelsPerMetre: number;
-}
-
-const argument = (name: string) => process.argv.find((value) => value.startsWith(`--${name}=`))?.slice(name.length + 3);
-const goldPath = path.resolve(argument('gold') || 'public/data/facade-model-eval/v1/measured.json');
-const labelsDir = path.resolve(argument('labels') || '.cache/underonefacade/preds');
-const outPath = path.resolve(argument('out') || 'review-data/facade-model-eval/ptv1-R0.json');
-
-const dot = (a: Vec3, b: Vec3) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-const sub = (a: Vec3, b: Vec3): Vec3 => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
-
-/** NumPy v1.0 reader for the little-endian int8 arrays the inference writes. */
-export const readNpyInt8 = (bytes: Buffer): Int8Array => {
-  const magic = bytes.subarray(0, 6).toString('latin1');
-  if (magic !== '\x93NUMPY') throw new Error(`not a .npy file (magic ${JSON.stringify(magic)})`);
-  const major = bytes[6];
-  const headerLength = major === 1 ? bytes.readUInt16LE(8) : bytes.readUInt32LE(8);
-  const headerOffset = major === 1 ? 10 : 12;
-  const header = bytes.subarray(headerOffset, headerOffset + headerLength).toString('latin1');
-  if (!header.includes("'|i1'")) {
-    throw new Error(`expected int8 ('|i1') payload, got: ${header.slice(0, 120)}`);
-  }
-  return new Int8Array(bytes.buffer, bytes.byteOffset + headerOffset + headerLength, bytes.length - headerOffset - headerLength);
+  openings: GoldOpening[];
 };
 
-/** Rebuild the wall's frame from its gold plane, matching the measured pipeline. */
-export const planeFrame = (plane: GoldWall['plane']) => {
-  const start: Vec3 = [plane.start.x, plane.start.y, plane.baseZ];
-  const end: Vec3 = [plane.end.x, plane.end.y, plane.baseZ];
-  const topZ = plane.topZ;
-  const vertices: Vec3[] = [start, end, [end[0], end[1], topZ], [start[0], start[1], topZ]];
-  const edge = sub(end, start);
-  const horizontal = Math.hypot(edge[0], edge[1]) || 1;
-  const normal: Vec3 = [-edge[1] / horizontal, edge[0] / horizontal, 0];
-  return wallMetricFrame({ vertices, normal });
+const argument = (name: string) =>
+  process.argv.find((value) => value.startsWith(`--${name}=`))?.slice(name.length + 3);
+
+interface Npy {
+  descr: string;
+  shape: number[];
+  data: ArrayBuffer;
+}
+
+const readNpy = (buffer: Buffer): Npy => {
+  if (buffer.toString('latin1', 0, 6) !== '\x93NUMPY') throw new Error('not a .npy file');
+  const major = buffer.readUInt8(6);
+  const headerLength = major === 1 ? buffer.readUInt16LE(8) : buffer.readUInt32LE(8);
+  const headerStart = major === 1 ? 10 : 12;
+  const header = buffer.toString('latin1', headerStart, headerStart + headerLength);
+  const descr = /'descr':\s*'([^']+)'/.exec(header)?.[1] ?? '';
+  const shape = (/\(([^)]*)\)/.exec(header)?.[1] ?? '')
+    .split(',')
+    .map((value) => Number(value.trim()))
+    .filter((value) => Number.isFinite(value));
+  const dataStart = headerStart + headerLength;
+  return { descr, shape, data: buffer.buffer.slice(buffer.byteOffset + dataStart, buffer.byteOffset + buffer.byteLength) };
+};
+
+const HALF = (value: number) => {
+  const sign = value & 0x8000 ? -1 : 1;
+  const exponent = (value & 0x7c00) >> 10;
+  const fraction = value & 0x03ff;
+  if (exponent === 0) return sign * 2 ** -14 * (fraction / 1024);
+  if (exponent === 31) return fraction ? NaN : sign * Infinity;
+  return sign * 2 ** (exponent - 15) * (1 + fraction / 1024);
+};
+
+const readFloat16 = (npy: Npy): Float32Array => {
+  const raw = new Uint16Array(npy.data);
+  const out = new Float32Array(raw.length);
+  for (let index = 0; index < raw.length; index += 1) out[index] = HALF(raw[index]);
+  return out;
+};
+
+const readUint8 = (npy: Npy): Uint8Array => new Uint8Array(npy.data);
+
+const dot2 = (ax: number, ay: number, bx: number, by: number) => ax * bx + ay * by;
+
+/** A synthetic wall polygon from the crop plane, so `wallMetricFrame` accepts it. */
+const wallFromPlane = (wall: GoldWall): FacadeWallPlane => {
+  const { start, end, baseZ, topZ } = wall.plane;
+  const length = Math.hypot(end.x - start.x, end.y - start.y) || 1;
+  const ux = (end.x - start.x) / length;
+  const uy = (end.y - start.y) / length;
+  const vertices: Point3[] = [
+    [start.x, start.y, baseZ],
+    [end.x, end.y, baseZ],
+    [end.x, end.y, topZ],
+    [start.x, start.y, topZ],
+  ];
+  return {
+    buildingId: wall.buildingId,
+    surfaceId: wall.surfaceId,
+    exterior: true,
+    vertices,
+    normal: [uy, -ux, 0],
+    areaSquareMetres: length * (topZ - baseZ),
+  };
 };
 
 /**
- * Rasterise model-predicted opening points onto the wall grid and cluster them
- * into rectangles. A cell is solid with enough returns; a cell is an opening
- * when a majority of its points are predicted window/door.
+ * Raster-frame (along, up) -> crop-frame (along, up):
+ *   - along: project the raster-frame XY point onto the plane.start->end axis;
+ *   - up: NAP height minus plane.baseZ.
  */
-export const buildOpeningBoxes = (
-  frame: NonNullable<ReturnType<typeof wallMetricFrame>>,
-  points: readonly CloudPoint[],
-  labels: readonly number[],
-): { boxes: FacadeRect[]; openingPoints: number } => {
-  const topLimit = frame.maxUp + 0.3;
-  const bottomLimit = frame.minUp - 0.3;
-  const columns = Math.max(1, Math.ceil((frame.maxAlong - frame.minAlong) / CELL_SIZE));
-  const rows = Math.max(1, Math.ceil((topLimit - bottomLimit) / CELL_SIZE));
-  const accumulate = new Map<number, { count: number; opening: number; height: number }>();
-  let openingPoints = 0;
-  for (let index = 0; index < points.length; index += 1) {
-    const point = points[index];
-    const offset = sub([point.x, point.y, point.z], frame.origin);
-    const along = dot(offset, frame.u);
-    if (along < frame.minAlong || along > frame.maxAlong) continue;
-    const up = dot(offset, frame.v);
-    if (up < bottomLimit || up > topLimit) continue;
-    const column = Math.min(columns - 1, Math.max(0, Math.floor((along - frame.minAlong) / CELL_SIZE)));
-    const row = Math.min(rows - 1, Math.max(0, Math.floor((up - bottomLimit) / CELL_SIZE)));
-    const key = row * columns + column;
-    const accumulator = accumulate.get(key) || { count: 0, opening: 0, height: up };
-    accumulator.count += 1;
-    if (OPENING_CLASSES.has(labels[index])) {
-      accumulator.opening += 1;
-      openingPoints += 1;
-    }
-    accumulator.height = Math.max(accumulator.height, up);
-    accumulate.set(key, accumulator);
-  }
-  const cells = [...accumulate.entries()].map(([key, accumulator]) => ({
-    column: key % columns,
-    row: Math.floor(key / columns),
-    count: accumulator.count,
-    meanDepth: 0,
-    minDepth: 0,
-    maxDepth: 0,
-    height: accumulator.height,
-    rgb: null,
-  }));
-  const openings = cells.filter((cell) => {
-    if (cell.count < MIN_POINTS_PER_CELL) return false;
-    const accumulator = accumulate.get(cell.row * columns + cell.column)!;
-    return accumulator.opening / accumulator.count >= OPENING_POINT_FRACTION;
-  });
-  const raster = { frame, cellSize: CELL_SIZE, columns, rows, bottomUp: bottomLimit, planeOffset: 0, pointCount: points.length, cells, byIndex: new Map() };
-  const rects: FacadeRect[] = [];
-  for (const cluster of clusterCells(openings, raster)) {
-    const along = cluster.minColumn * CELL_SIZE + frame.minAlong;
-    const up = cluster.minRow * CELL_SIZE + bottomLimit;
-    const width = (cluster.maxColumn - cluster.minColumn + 1) * CELL_SIZE;
-    const height = (cluster.maxRow - cluster.minRow + 1) * CELL_SIZE;
-    if (width * height < MINIMUM_OPENING_AREA || width < MINIMUM_OPENING_WIDTH || height < MINIMUM_OPENING_HEIGHT) continue;
-    rects.push({ along, up, width, height, kind: 'opening' });
-  }
-  return { boxes: regulariseOpenings(rects), openingPoints };
+const convertBox = (frame: WallMetricFrame, plane: Plane, cropUx: number, cropUy: number, rect: { along: number; up: number; width: number; height: number }) => {
+  const toCropAlong = (along: number) => {
+    const x = frame.origin[0] + frame.u[0] * along;
+    const y = frame.origin[1] + frame.u[1] * along;
+    return dot2(x - plane.start.x, y - plane.start.y, cropUx, cropUy);
+  };
+  const alongA = toCropAlong(rect.along);
+  const alongB = toCropAlong(rect.along + rect.width);
+  const along = Math.min(alongA, alongB);
+  const width = Math.abs(alongB - alongA);
+  const up = frame.origin[2] + rect.up - plane.baseZ;
+  return { along, up, width, height: rect.height };
 };
 
-export const buildRecords = async (goldWalls: readonly GoldWall[], labelsFor: (tile: string) => Int8Array, tileFor: (tile: string) => { count: number; positions: Float64Array }) => {
-  const records: any[] = [];
-  for (const wall of goldWalls) {
-    const labels = labelsFor(wall.tile);
-    const tile = tileFor(wall.tile);
-    const frame = planeFrame(wall.plane);
-    if (!frame) continue;
-    const { start, end } = wall.plane;
-    const pad = 0.6;
-    const minX = Math.min(start.x, end.x) - pad;
-    const maxX = Math.max(start.x, end.x) + pad;
-    const minY = Math.min(start.y, end.y) - pad;
-    const maxY = Math.max(start.y, end.y) + pad;
-    const points: CloudPoint[] = [];
-    const pointLabels: number[] = [];
-    for (let index = 0; index < tile.count; index += 1) {
-      const x = tile.positions[index * 3];
-      const y = tile.positions[index * 3 + 1];
-      if (x < minX || x > maxX || y < minY || y > maxY) continue;
-      const z = tile.positions[index * 3 + 2];
-      if (z < wall.plane.baseZ - 0.6 || z > wall.plane.topZ + 0.6) continue;
-      points.push({ x, y, z });
-      pointLabels.push(labels[index]);
-    }
-    const { boxes, openingPoints } = buildOpeningBoxes(frame, points, pointLabels);
-    records.push({
-      buildingId: wall.buildingId,
-      elevationId: wall.surfaceId,
-      surfaceId: wall.group,
-      wallWidthM: wall.wallWidthM,
-      wallHeightM: wall.wallHeightM,
-      cropFile: wall.crop.file,
-      cropWidthPx: wall.crop.width,
-      cropHeightPx: wall.crop.height,
-      pixelsPerMetre: wall.pixelsPerMetre,
-      tiles: 1,
-      predictedPoints: points.length,
-      predictedOpeningPoints: openingPoints,
-      boxes: boxes.map((box) => ({
-        kind: 'window',
-        score: 1,
-        along: Number(box.along.toFixed(3)),
-        up: Number(box.up.toFixed(3)),
-        widthM: Number(box.width.toFixed(3)),
-        heightM: Number(box.height.toFixed(3)),
-      })),
-    });
+const median = (values: number[]): number => {
+  if (!values.length) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+};
+
+interface TileJob { name: string; laz: string; preds: string }
+
+const buildWallRecord = (
+  wall: GoldWall,
+  tile: Awaited<ReturnType<typeof loadLazTile>>,
+  labels: Uint8Array,
+  confidence: Float32Array,
+  openingPointIndices: number[],
+  openingClasses: number[],
+  doorClass: number,
+  cropsDir: string,
+) => {
+  const facadeWall = wallFromPlane(wall);
+  const frame = wallMetricFrame(facadeWall);
+  const length = Math.hypot(wall.plane.end.x - wall.plane.start.x, wall.plane.end.y - wall.plane.start.y) || 1;
+  const cropUx = (wall.plane.end.x - wall.plane.start.x) / length;
+  const cropUy = (wall.plane.end.y - wall.plane.start.y) / length;
+
+  const record = {
+    buildingId: wall.buildingId,
+    elevationId: wall.surfaceId,
+    surfaceId: wall.surfaceId,
+    wallWidthM: Number(wall.wallWidthM.toFixed(4)),
+    wallHeightM: Number(wall.wallHeightM.toFixed(4)),
+    cropFile: path.join(cropsDir, path.basename(wall.crop.file)),
+    cropWidthPx: wall.crop.width,
+    cropHeightPx: wall.crop.height,
+    pixelsPerMetre: wall.pixelsPerMetre,
+    tiles: 1,
+    boxes: [] as Array<{ kind: string; score: number; along: number; up: number; widthM: number; heightM: number }>,
+  };
+  if (!frame) return record;
+
+  // Opening points near this wall. `rasteriseWall` does the slab filtering.
+  const dx = Math.max(0.75, wall.wallWidthM / 2 + 0.5);
+  const z0 = Math.min(wall.plane.baseZ, wall.plane.topZ) - 0.5;
+  const z1 = Math.max(wall.plane.baseZ, wall.plane.topZ) + 0.5;
+  const cx = (wall.plane.start.x + wall.plane.end.x) / 2;
+  const cy = (wall.plane.start.y + wall.plane.end.y) / 2;
+  const points: Array<{ x: number; y: number; z: number; confidence: number; door: boolean }> = [];
+  for (const index of openingPointIndices) {
+    const x = tile.positions[index * 3];
+    const y = tile.positions[index * 3 + 1];
+    const z = tile.positions[index * 3 + 2];
+    if (Math.abs(x - cx) > dx || Math.abs(y - cy) > dx) continue;
+    if (z < z0 || z > z1) continue;
+    points.push({ x, y, z, confidence: confidence[index], door: doorClass >= 0 && labels[index] === doorClass });
   }
-  return records;
+  if (points.length < 1) return record;
+
+  const raster = rasteriseWall(points, facadeWall, {
+    cellSize: 0.05,
+    maxPlaneDistance: 0.6,
+    upwardSearch: 0.1,
+    marginAlong: 0.15,
+    marginUp: 0.15,
+  });
+  if (!raster) return record;
+  const silhouette = wallSilhouette(raster, { minimumPointsPerCell: 1, tolerance: 0.08, minimumRun: 2, smoothWindow: 3 });
+  // Every solid cell is a model opening: push the recess threshold far negative.
+  const mesh = compileFacade(raster, silhouette, {
+    minimumRecessDepth: -1_000_000,
+    minimumPointsPerCell: 1,
+    minimumOpeningArea: 0.02,
+    minimumOpeningWidth: 0.12,
+    minimumOpeningHeight: 0.12,
+    minimumProtrusionArea: 1e9,
+    minimumGableRise: 1e9,
+  });
+
+  // `regulariseOpenings` snaps raw rects onto a shared storey/bay grid, so
+  // several source clusters can land on one box. Deduplicate before scoring.
+  const openings: typeof mesh.openings = [];
+  const seen = new Set<string>();
+  for (const rect of mesh.openings) {
+    const key = [rect.along, rect.up, rect.width, rect.height].map((value) => value.toFixed(4)).join(',');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    openings.push(rect);
+  }
+
+  // Per-box score/kind from the opening points that fall inside the box.
+  const scores: number[][] = openings.map(() => []);
+  const doors: number[] = openings.map(() => 0);
+  for (const point of points) {
+    const projection = projectToWall(frame, point);
+    for (let b = 0; b < openings.length; b += 1) {
+      const rect = openings[b];
+      if (projection.along >= rect.along && projection.along <= rect.along + rect.width
+        && projection.up >= rect.up && projection.up <= rect.up + rect.height) {
+        scores[b].push(point.confidence);
+        if (point.door) doors[b] += 1;
+      }
+    }
+  }
+  record.boxes = openings.map((rect, b) => {
+    const converted = convertBox(frame, wall.plane, cropUx, cropUy, rect);
+    return {
+      kind: doors[b] > scores[b].length / 2 ? 'door' : 'window',
+      score: Number(median(scores[b]).toFixed(4)),
+      along: Number(converted.along.toFixed(4)),
+      up: Number(converted.up.toFixed(4)),
+      widthM: Number(converted.width.toFixed(4)),
+      heightM: Number(converted.height.toFixed(4)),
+    };
+  });
+  return record;
 };
 
 const main = async () => {
-  const gold = JSON.parse(await readFile(goldPath, 'utf8')) as { walls: GoldWall[] };
-  const labelCache = new Map<string, Int8Array>();
-  const tileCache = new Map<string, { count: number; positions: Float64Array }>();
+  const lofg = argument('lofg') || 'lofg3';
+  const outPath = path.resolve(argument('out') || `.cache/facade-eval/dgcnn-oudzuid-${lofg}.json`);
+  const goldPath = path.resolve(argument('gold') || 'public/data/facade-model-eval/v1/measured.json');
+  const cropsDir = path.resolve(argument('crops') || 'public/data/facade-model-eval/v1/crops');
+  const openingClasses = (argument('opening-classes') || (lofg === 'lofg2' ? '1' : '1,2'))
+    .split(',').map(Number);
+  const doorClass = lofg === 'lofg2' ? -1 : 2;
 
-  // Load tiles once.
-  for (const entry of TILES) {
-    const loaded = await loadLazTile(path.resolve(entry.laz));
-    tileCache.set(entry.id, { count: loaded.count, positions: loaded.positions });
-    const bytes = readFileSync(path.join(labelsDir, entry.labels));
-    labelCache.set(entry.id, readNpyInt8(bytes));
+  const tilesArg = argument('tiles');
+  const jobs: TileJob[] = tilesArg
+    ? tilesArg.split(',').map((entry) => {
+      const [name, laz, preds] = entry.split(':');
+      return { name, laz: path.resolve(laz), preds: path.resolve(preds) };
+    })
+    : [{
+      name: argument('tile-name') || path.basename(argument('tile') || 'filtered_2397_9705').replace(/\.laz$/, ''),
+      laz: path.resolve(argument('tile') || ''),
+      preds: path.resolve(argument('preds') || ''),
+    }];
+
+  const gold = JSON.parse(await readFile(goldPath, 'utf8')) as { walls: GoldWall[] };
+  const records: ReturnType<typeof buildWallRecord>[] = [];
+  for (const job of jobs) {
+    const walls = gold.walls.filter((wall) => wall.tile === job.name);
+    if (!walls.length) throw new Error(`no gold walls for tile "${job.name}"`);
+    const tile = await loadLazTile(job.laz);
+    const labels = readUint8(readNpy(await readFile(job.preds)));
+    const confidence = readFloat16(readNpy(await readFile(`${job.preds}.conf.npy`)));
+    if (labels.length !== tile.count) {
+      throw new Error(`prediction length ${labels.length} != tile points ${tile.count} for ${job.name}`);
+    }
+    const openingPointIndices: number[] = [];
+    for (let index = 0; index < labels.length; index += 1) {
+      if (openingClasses.includes(labels[index])) openingPointIndices.push(index);
+    }
+    process.stdout.write(`tile ${job.name}: ${tile.count.toLocaleString()} points, ${openingPointIndices.length} opening-labelled\n`);
+    for (const wall of walls) {
+      records.push(buildWallRecord(wall, tile, labels, confidence, openingPointIndices, openingClasses, doorClass, cropsDir));
+    }
   }
 
-  const records = await buildRecords(gold.walls, (tile) => labelCache.get(tile)!, (tile) => tileCache.get(tile)!);
-  const wallsWithBoxes = records.filter((record) => record.boxes.length > 0).length;
   const payload = {
     schemaVersion: 1,
-    lane: 'ptv1',
-    model: 'UnderOneFacade PTv1 (Point Transformer v1), PT_lofg3_xyz.pth',
-    setting: 'R0',
-    agreement: 'predicted window/door points -> opening cells -> connected components -> regularised rectangles',
-    boxConvention: 'axis-aligned wall-metre box: along is the min edge in metres from plane.start; up is the min edge in metres above plane.baseZ.',
-    count: records.length,
-    wallsWithBoxes,
-    totalBoxes: records.reduce((sum, record) => sum + record.boxes.length, 0),
+    lane: 'dgcnn',
+    model: `UnderOneFacade/DGCNN (${lofg}, xyz; UnderOneFacade ECCV'26 weights on Google Drive folder 1HFn20b8olrwabYFvEl6-W9NYIYrPjozK)`,
+    setting: 'pointcloud',
+    note: 'Opening mask is DGCNN window/door points projected onto the wall plane; no image crop was read.',
+    openingClasses,
     records,
   };
-  await mkdir(path.dirname(outPath), { recursive: true });
   await writeFile(outPath, `${JSON.stringify(payload, null, 2)}\n`);
-  process.stdout.write(`ptv1: ${records.length} walls, ${wallsWithBoxes} with boxes, ${payload.totalBoxes} boxes -> ${outPath}\n`);
+  const withBoxes = records.filter((record) => record.boxes.length > 0).length;
+  const boxes = records.reduce((sum, record) => sum + record.boxes.length, 0);
+  process.stdout.write([
+    `walls ${records.length}, walls with boxes ${withBoxes}, boxes ${boxes}`,
+    `wrote ${outPath}`,
+  ].join('\n') + '\n');
 };
 
-if (import.meta.url === `file://${process.argv[1]}`) await main();
+await main();
