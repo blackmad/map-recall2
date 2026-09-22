@@ -1,6 +1,6 @@
 # Shop signage and notable street detail: exploration plan
 
-Status: plan, written 2026-09-22. Not started. Roofs
+Status: plan, written 2026-09-22; owner direction added the same day (§1a). Not started. Roofs
 (`ROOFLINE_FROM_PHOTOS_PLAN.md`) have priority; this runs when the owner says so.
 It is a task spec under `public/canal-drive/TODO.md` item 10.
 
@@ -16,8 +16,27 @@ false landmark.
 | # | Decision | Options |
 | --- | --- | --- |
 | D1 | **Reader:** what reads sign text and position from the photos | keep the current Gemini call · a local OCR · a local VLM · a stronger hosted VLM · none |
-| D2 | **Look:** how a sign appears in the game | current generic band · styled band (measured colours, case, font class, size, position) · rectified photo decal |
+| D2 | **Look:** how a sign appears in the game | current generic band (baseline) · styled sign (measured colours, case, font class, size, position, shape) · rectified photo decal |
 | D3 | **Policy:** can signs stay on by default, unreviewed | yes · only after owner approval per sign · off |
+
+## 1a. Owner direction (2026-09-22). These override the options above
+
+- **D1: local.** Only local readers compete: R-ocr, R-vlm-local and their
+  combination. The hosted VLM is dropped. The existing Gemini text is scored only
+  as a reference point, not as a candidate.
+- **D2: capture a rough sense of the real signage.** The goal is that a sign
+  looks like *that* shop, not like a generic label: its colours, lettering
+  character, placement and shape. The owner's reference shops are **Moeders**
+  (Rozengracht 251, already a repair case, with "Moeders sign absent" in its
+  self-review), **Dijkman** and **Bakkerij Wolf** (addresses to come from the owner;
+  neither is in our data yet). These three are fixed members of the S4 bake-off and
+  must be in the S0 sample. The generic Arial band (option A) stays only as the
+  baseline to beat.
+- **D3: unreviewed.** Signs ship without per-sign review, with provenance and the
+  existing revocation registry. Owner labels exist **to test and choose the
+  models**, not to gate each sign. §6's D3 rule is replaced by this. The invention
+  rate is still measured and reported, and it becomes a D1 threshold (a reader that
+  invents signs cannot be adopted), not a policy switch.
 
 ## 2. What exists today (verified 2026-09-22)
 
@@ -75,7 +94,8 @@ which were tuned by hand.
 own ground truth). A labelling page shows the ground crop for each frontage. For
 every sign, the owner draws a box and types the text exactly as it appears, then
 tags type (fascia / blade / window / awning / logo / gevelsteen) and "readable at
-street distance?" (y/n). "No sign" is a valid answer. Estimate: 20–25 minutes
+street distance?" (y/n), and clicks once on the sign's background and once on its
+lettering to sample the two colours. "No sign" is a valid answer. Estimate: 20–25 minutes
 for 80 frontages. Frozen with a sha256 before scoring.
 
 ## 5. Tasks
@@ -86,7 +106,9 @@ typed logic in `src/` with a test, no edits to `package.json` / `TODO.md` /
 stop on a false premise.
 
 ### S0: Sample, crops, licence check (DeepSeek)
-1. Build the stratified sample (§4) from the release records; write
+1. Build the stratified sample (§4) from the release records, **plus Moeders
+   (Rozengracht 251), Dijkman and Bakkerij Wolf** (cut fresh strips for any that
+   aren't in the release, using the strip cutter); write
    `review-data/signage/v1/sample.json` with the seed.
 2. For each frontage, cut a sign-band crop at native resolution (≈140 px/m;
    ground to 5 m up, with margins) using the existing rectifier. Keep the 110 px/m
@@ -112,7 +134,7 @@ fontClass (serif / sans / script / display), confidence }]`, or an explicit
 - **R-vlm-local (Sonnet):** Qwen2.5-VL-7B, or Florence-2-large OCR-with-region, run
   locally (MLX or MPS). Ask for signs with boxes, colours and font class in a
   strict schema. Local.
-- **R-vlm-hosted (optional, needs owner OK on spend):** one stronger hosted VLM
+- **R-vlm-hosted: dropped by the owner (§1a, D1 is local).** Was: one stronger hosted VLM
   on the 80 frontages only, same schema, through the existing budget ledger. At
   roughly a cent per frontage, under $1.
 - **Two readers together:** where R-ocr and a VLM agree on text, accept it;
@@ -131,8 +153,8 @@ diacritics, punctuation) before comparing:
 Overlay: the crop with the gold and reader boxes and texts, per frontage.
 
 ### S4: Look bake-off (integrator + owner)
-Pick 12 frontages with correct text from the best reader, including at least 2
-blade signs and 2 awnings. Render each 3 ways in the real game path (not an
+Pick 12 frontages with correct text from the best reader: **Moeders, Dijkman and
+Bakkerij Wolf**, plus at least 2 blade signs and 2 awnings. Render each 3 ways in the real game path (not an
 isolated page, because of the Moeders bug): **A** the current generic band,
 **B** a styled band (measured position, size, colours, case, font class), **C** a
 rectified photo decal (only if S0's licence allows). Capture them at gameplay
@@ -143,32 +165,28 @@ frontage.
 
 ## 6. Decision rules (fixed now; don't change them after seeing results)
 
-**D1, reader:** adopt the **cheapest** reader that meets all of:
+**D1, reader:** adopt the **cheapest local** reader (or local pair) that meets all of:
 
 | Metric | Threshold |
 | --- | --- |
 | Main-name accuracy | ≥ 85 % |
 | Invention rate | ≤ 3 % |
 | Miss rate (readable signs) | ≤ 25 % |
-| Box IoU ≥ 0.5 | ≥ 80 % of signs (**R-gemini is exempt only if D2 picks A**) |
+| Box IoU ≥ 0.5 | ≥ 80 % of signs |
+| Colour (fg/bg) within ΔE 15 of the owner-sampled colour | ≥ 70 % of signs (needed for D2's styled sign) |
 
-If none meets all, adopt the two-reader combination if it does. Otherwise no
-reader ships text unreviewed (see D3).
+If none meets all, no reader is adopted: the existing text stays as it is, and the
+next step is a local fine-tune on the owner's labels, planned separately.
 
 **D2, look:** adopt the option with the most "yes, helps me recognise" grades.
 C wins over B only if it beats B by ≥ 20 percentage points, since a decal costs
 texture memory and ties the look to one capture date. A is kept only if B
 and C don't beat it.
 
-**D3, policy:**
-- The adopted reader's invention rate is ≤ 1 % → signs stay on by default,
-  unreviewed, as today, with provenance.
-- ≤ 3 % → on by default, but a per-sign owner review queue with revocation
-  (the existing revocation registry) is required before the next release.
-- Above 3 %, or no reader adopted → **the current 307 unreviewed bands are turned
-  off** until reviewed. A game that teaches a false landmark is a P0 by the TODO rule.
+**D3, policy:** decided by the owner (§1a): unreviewed, with provenance and
+revocation. The labels are for choosing and testing models.
 
-Whatever D3 says, the result is recorded in `HISTORY.md` with the numbers.
+The D1 and D2 results are recorded in `HISTORY.md` with the numbers.
 
 ## 7. Routing and effort
 
@@ -178,7 +196,6 @@ Whatever D3 says, the result is recorded in `HISTORY.md` with the numbers.
 | S1 labelling page | DeepSeek | ~20–25 min labelling |
 | S2 R-ocr | DeepSeek | — |
 | S2 R-vlm-local | Sonnet | — |
-| S2 R-vlm-hosted | integrator | approve < $1 or skip |
 | S3 scoring | DeepSeek | — |
 | S4 bake-off renders | integrator (touches shared bundles) | ~10 min grading |
 | Decisions D1–D3 | integrator, with owner sign-off | — |
