@@ -82,7 +82,7 @@ the openings run):
 
 | ID | Method | Notes |
 | --- | --- | --- |
-| **S0 baseline** | Existing in-repo segmentation: `src/canalRecall/facade/skyline.ts` (`skyline`, luminance sky floor with a run-length test). If the integrator names a different existing segmenter, it becomes S0 as well. | Already rated "not bad" by the owner. It is the method every other one must beat. |
+| **S0 baseline** | Existing in-repo heuristic: `src/canalRecall/facade/skyline.ts` (`skyline`, a luminance-based sky/building boundary per column, added 2026-09-03 for registration). | A zero-cost floor. A model that can't beat a brightness threshold isn't worth adopting. |
 | S1 | Mask2Former, Mapillary Vistas semantic (`facebook/mask2former-swin-large-mapillary-vistas-semantic`) | Trained on street-level images; has sky / building / vegetation / pole classes. |
 | S2 | SegFormer ADE20K (`nvidia/segformer-b5-finetuned-ade-640-640`) | Cheap second opinion. |
 | S3 | SAM 3 with the text prompts "sky" and "building" | Sharp edges. Weights may be gated on Hugging Face. **If gated, stop and report; a human accepts the licence.** |
