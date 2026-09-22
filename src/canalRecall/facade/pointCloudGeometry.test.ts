@@ -97,4 +97,21 @@ const flatSilhouette = wallSilhouette(flatRaster!, { minimumPointsPerCell: 2, to
 check(flatSilhouette.riseAboveWallTop < 0.5, `spike rejected by smoothing, got ${flatSilhouette.riseAboveWallTop.toFixed(2)}`);
 check(flatSilhouette.rawProfile.some((point) => point[1] > 7), 'the raw envelope still records the spike');
 
+// 7. A coplanar neighbour's taller gable must not leak into this wall's edge
+// column. A is flat and spans y 0..4; B is coplanar, starts at y 4 (0 m gap)
+// and its 3 m gable's near-edge returns sit inside A's 0.3 m margin band, so a
+// clamp-into-the-edge-column raster would import them.
+const wallA: Wall = { vertices: [[0, 0, 0], [0, 4, 0], [0, 4, 8], [0, 0, 8]], normal: [1, 0, 0] };
+const adjacency: CloudPoint[] = [];
+for (let y = 0.025; y < 4; y += 0.05) for (let z = 0.025; z < 8; z += 0.05) adjacency.push({ x: 0, y, z });
+for (let y = 4; y < 8; y += 0.05) for (let z = 0.025; z < 8; z += 0.05) adjacency.push({ x: 0, y, z });
+for (let y = 4.05; y <= 4.25; y += 0.05) for (let z = 8; z <= 11; z += 0.05) adjacency.push({ x: 0, y, z });
+const adjacencyRaster = rasteriseWall(adjacency, wallA, { cellSize: 0.1 });
+check(adjacencyRaster !== null, 'coplanar-neighbour raster built');
+const adjacencySilhouette = wallSilhouette(adjacencyRaster!, { minimumPointsPerCell: 2, tolerance: 0.05, minimumRun: 3, smoothWindow: 9 });
+check(adjacencySilhouette.riseAboveWallTop < 0.1, `neighbour gable does not raise A's roofline, got ${adjacencySilhouette.riseAboveWallTop.toFixed(2)}`);
+const edgeCells = adjacencyRaster!.cells.filter((cell) => cell.column === adjacencyRaster!.columns - 1);
+check(edgeCells.length > 0, 'A has its own returns in the edge column');
+check(edgeCells.every((cell) => cell.height <= adjacencyRaster!.frame.maxUp + 0.05), 'the edge column carries no return from B');
+
 process.stdout.write(`Point-cloud geometry checks passed (${checks} assertions).\n`);

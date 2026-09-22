@@ -170,6 +170,10 @@ export function rasteriseWall(
   const byIndex = new Map<number, WallRasterCell>();
   const sums = new Map<number, { count: number; sumDepth: number; minDepth: number; maxDepth: number; height: number; r: number; g: number; b: number; rgb: number }>();
   for (const sample of slab) {
+    // The margin band is kept only to place the plane offset (modalBin). A point
+    // outside the wall's own along extent is a coplanar neighbour's return, and
+    // clamping it into the edge column would raise this wall's roofline.
+    if (sample.along < frame.minAlong || sample.along > frame.maxAlong) continue;
     const column = Math.min(columns - 1, Math.max(0, Math.floor((sample.along - frame.minAlong) / cellSize)));
     const row = Math.min(rows - 1, Math.max(0, Math.floor((sample.up - bottomLimit) / cellSize)));
     const index = row * columns + column;
