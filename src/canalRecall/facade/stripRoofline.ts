@@ -268,6 +268,34 @@ export function medianOffset(profile: Array<[number, number | null]>, referenceN
 }
 
 /**
+ * Convert a final consensus profile back into one view's own pixel rows, for
+ * drawing on that view's own photo.
+ *
+ * `consensus` is expressed in the REFERENCE view's datum: `estimateViewBias`/
+ * `applyViewBias` shift every usable view's profile by `up - biasM` before
+ * consensus, so consensus already lives on the reference view's own scale.
+ * A non-reference view's own photo is still in its own, unshifted scale, so
+ * drawing the consensus on it must undo that shift first: `viewBiasM` is
+ * *this* view's own offset from the reference (what `applyViewBias`
+ * subtracted to align it), so adding it back recovers this view's own NAP
+ * before converting to its own pixel rows. For the reference view itself
+ * `viewBiasM` is 0, so this is a no-op there.
+ */
+export function consensusToViewPx(
+  frame: StripFrame, consensus: Array<[number, number | null]>, width: number, viewBiasM = 0, sampleM = 0.10,
+): Array<number | null> {
+  const byKey = new Map<number, number | null>();
+  for (const [along, up] of consensus) byKey.set(Math.round(along / sampleM), up);
+  const out: Array<number | null> = new Array(width).fill(null);
+  for (let x = 0; x < width; x++) {
+    const along = x / frame.pixelsPerMetreX - frame.marginM;
+    const up = byKey.get(Math.round(along / sampleM));
+    out[x] = up == null ? null : (frame.topNap - (up + viewBiasM)) * frame.pixelsPerMetreY;
+  }
+  return out;
+}
+
+/**
  * Resample a per-column boundary (image pixels) onto a 0.10 m `along` grid,
  * in the §3 frame. Each bin takes the median `up` of the columns landing in
  * it; an empty bin is `null`.

@@ -7,7 +7,7 @@
  */
 import assert from 'node:assert/strict';
 import {
-  applyEaveGate, applyRoofMaxGate, applyViewBias, columnBoundary, consensusProfile, estimateViewBias, LABEL,
+  applyEaveGate, applyRoofMaxGate, applyViewBias, columnBoundary, consensusProfile, consensusToViewPx, estimateViewBias, LABEL,
   medianOffset, pixelToWorld, profileShape, rescueSky, resampleProfile, stripBoundaries, type Luma, type Mask,
 } from './stripRoofline.ts';
 import type { StripFrame } from './stripFrame.ts';
@@ -432,6 +432,36 @@ check('rescueSky leaves the original mask untouched', () => {
   const before = Uint8Array.from(mask.labels);
   rescueSky(mask, luma);
   assert.deepEqual(mask.labels, before);
+});
+
+check('consensusToViewPx: a non-reference view with a known bias round-trips onto its own pixel rows', () => {
+  // Two views of the same wall, both 10 px/m, 10 m wide, top at NAP 20.
+  // View A is the reference (bias 0); view B reads 1 m higher than A, so
+  // estimateViewBias/applyViewBias would report viewBiasM = 1 for B and shift
+  // B's profile down by 1 m before consensus. Consensus therefore lives on
+  // A's (the reference's) own scale. A column at consensus up=15 (A's own
+  // scale) must draw on B's own photo at B's own up=16 (15 + viewBiasM),
+  // since that is what B's camera actually saw before alignment.
+  const frameA: StripFrame = {
+    start: { x: 0, y: 0 }, end: { x: 10, y: 0 }, leftEdge: 'start',
+    bottomNap: 0, topNap: 20, marginFactor: 1, marginM: 0,
+    requestedPixelsPerMetre: 10, pixelsPerMetreX: 10, pixelsPerMetreY: 10,
+  };
+  const frameB = { ...frameA }; // same physical frame; the bias is B's own reading error, not a different render
+  const consensus: Array<[number, number | null]> = [[5, 15]]; // along=5m, up=15 (A's/reference's own scale)
+  const viewBiasM = 1; // B read 1 m higher than the reference before alignment
+
+  // A is the reference: viewBiasM=0, so its own pixel row is a plain NAP->px conversion.
+  const pxA = consensusToViewPx(frameA, consensus, 100, 0);
+  const rowAt5mA = Math.round(5 * frameA.pixelsPerMetreX);
+  assert.equal(pxA[rowAt5mA], (frameA.topNap - 15) * frameA.pixelsPerMetreY); // (20-15)*10 = 50
+
+  // B is non-reference: the drawn row must be B's OWN up (15 + 1 = 16), not
+  // the raw consensus value of 15 — the bug being fixed here.
+  const pxB = consensusToViewPx(frameB, consensus, 100, viewBiasM);
+  const rowAt5mB = Math.round(5 * frameB.pixelsPerMetreX);
+  assert.equal(pxB[rowAt5mB], (frameB.topNap - 16) * frameB.pixelsPerMetreY); // (20-16)*10 = 40, not (20-15)*10 = 50
+  assert.notEqual(pxB[rowAt5mB], pxA[rowAt5mA]); // the two views must NOT draw the same row for the same wall-metre
 });
 
 if (!process.exitCode) console.log(`stripRoofline: ${checks} checks passed`);

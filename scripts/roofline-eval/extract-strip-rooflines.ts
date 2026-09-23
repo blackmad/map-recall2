@@ -16,7 +16,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 import {
-  applyEaveGate, applyRoofMaxGate, applyViewBias, consensusProfile, emptyNullReasonTotals, estimateViewBias,
+  applyEaveGate, applyRoofMaxGate, applyViewBias, consensusProfile, consensusToViewPx, emptyNullReasonTotals, estimateViewBias,
   medianOffset, NULL_REASONS, profileShape, rescueSky, resampleProfile, stripBoundaries,
   type Luma, type Mask, type NullReason,
 } from '../../src/canalRecall/facade/stripRoofline.ts';
@@ -124,19 +124,6 @@ function roofMaxNapFor(pandId: string, fallbackTopZ: number): number {
     if (typeof value === 'number' && Number.isFinite(value)) return value;
   }
   return fallbackTopZ;
-}
-
-/** Convert the final consensus back into one view's own pixel rows, for drawing on its photo. */
-function consensusToViewPx(frame: StripFrame, consensus: Array<[number, number | null]>, width: number, sampleM = SAMPLE_M): Array<number | null> {
-  const byKey = new Map<number, number | null>();
-  for (const [along, up] of consensus) byKey.set(Math.round(along / sampleM), up);
-  const out: Array<number | null> = new Array(width).fill(null);
-  for (let x = 0; x < width; x++) {
-    const along = x / frame.pixelsPerMetreX - frame.marginM;
-    const up = byKey.get(Math.round(along / sampleM));
-    out[x] = up == null ? null : (frame.topNap - up) * frame.pixelsPerMetreY;
-  }
-  return out;
 }
 
 const byWall = new Map<string, ManifestStrip[]>();
@@ -382,7 +369,7 @@ for (const [pandId, strips] of [...byWall.entries()].sort(([a], [b]) => a < b ? 
       coarsePx: v.coarsePx,
       snappedPx: v.snappedPx,
       profile: v.profile,
-      consensusPx: consensusToViewPx(v.strip.frame, consensus, v.width),
+      consensusPx: consensusToViewPx(v.strip.frame, consensus, v.width, viewBiasM),
       viewBiasM,
       rescuedSkyFraction: v.rescuedSkyFraction,
       // Materialisation-only extras (see rooflineGrade.ts: never hashed).

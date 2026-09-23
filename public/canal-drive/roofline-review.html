@@ -158,7 +158,11 @@
       const escapeHtml = value => String(value == null ? '' : value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
       const sha = value => String(value || '').slice(0, 12);
 
-      const state = { data: null, profiles: [], selected: 0, view: 0, grades: [], queueFilter: 'has-roofline' };
+      const state = { data: null, profiles: [], selected: 0, view: 0, grades: [], queueFilter: 'has-roofline', overlayMode: 'both' };
+      // Cycles both lines -> consensus only -> the bare photo -> both. The
+      // owner needs the unmarked photo to judge without the drawn line
+      // anchoring their eye. Persists across wall/view changes ('o' key).
+      const OVERLAY_MODES = ['both', 'consensus', 'none'];
       const HAS_ROOFLINE_COVERAGE = 0.10;
       function coverageOf(profile) {
         const points = (profile.consensus || []);
@@ -250,9 +254,10 @@
           const line = (points, color, width) =>
             '<path d="' + polylinePath(points) + '" fill="none" stroke="#04122c" stroke-width="' + haloWidth(width) + '" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/>'
             + '<path d="' + polylinePath(points) + '" fill="none" stroke="' + color + '" stroke-width="' + width + '" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/>';
+          const mode = state.overlayMode;
           overlay.innerHTML =
-            line(view.snappedPx, '#38e6ff', 3.4)     // this view's own detected roofline (cyan)
-            + line(consensusPx, '#ff2e9a', 5.2);      // the graded line: the consensus, aligned onto this view (magenta)
+            (mode === 'both' ? line(view.snappedPx, '#38e6ff', 3.4) : '')     // this view's own detected roofline (cyan)
+            + (mode === 'both' || mode === 'consensus' ? line(consensusPx, '#ff2e9a', 5.2) : ''); // the graded line: the consensus, aligned onto this view (magenta)
         };
         if (img.complete && img.naturalHeight) render(); else img.onload = render;
       }
@@ -352,11 +357,13 @@
         const consensusPx = view.consensusPx || [];
         const consensusCount = consensusPx.filter(value => value != null).length;
         const ownCount = view.snappedPx.filter(value => value != null).length;
+        const overlayLabel = { both: 'both lines', consensus: 'graded line only', none: 'bare photo' }[state.overlayMode];
         $('#strip-note').innerHTML = 'Strip ' + escapeHtml(view.file)
           + ' — <span style="color:#ff2e9a">graded line</span> ' + consensusCount + ' / ' + consensusPx.length + ' columns'
           + ', <span style="color:#38e6ff">this view’s own detection</span> ' + ownCount + ' / ' + view.snappedPx.length + ' columns'
           + (view.viewBiasM ? ' · aligned ' + (view.viewBiasM > 0 ? '+' : '') + view.viewBiasM.toFixed(2) + ' m onto the reference view' : '')
-          + (view.rescuedSkyFraction ? ' · ' + (view.rescuedSkyFraction * 100).toFixed(1) + '% of the mask rescued from overcast/occluder' : '');
+          + (view.rescuedSkyFraction ? ' · ' + (view.rescuedSkyFraction * 100).toFixed(1) + '% of the mask rescued from overcast/occluder' : '')
+          + ' · showing ' + overlayLabel + ' (<kbd>o</kbd> to cycle)';
         drawStrip(profile, view);
         drawChart(profile);
       }
@@ -471,6 +478,11 @@
         if (event.key >= '1' && event.key <= '4') { event.preventDefault(); gradeCurrent(Number(event.key), true); }
         else if (event.key === 'ArrowRight') { event.preventDefault(); moveSelection(1); }
         else if (event.key === 'ArrowLeft') { event.preventDefault(); moveSelection(-1); }
+        else if (event.key === 'o' || event.key === 'O') {
+          event.preventDefault();
+          state.overlayMode = OVERLAY_MODES[(OVERLAY_MODES.indexOf(state.overlayMode) + 1) % OVERLAY_MODES.length];
+          renderStage();
+        }
       });
 
       // ---- shell ----
@@ -494,7 +506,7 @@
           + '<p class="notice" style="margin-top:12px">Grade only the line as drawn on the photo. A short or broken line is an honest abstention on the rest of the wall, not a wrong answer by itself — grade what is there, and use “clipped” / “tree” / … if what <em>is</em> drawn is also wrong.</p>'
           + '<label class="field-label" for="note">Note (optional)</label><textarea id="note" placeholder="What is right or wrong? e.g. tree hides the left shoulder"></textarea>'
           + '<p class="grade-status" id="grade-status"></p></section>'
-          + '<section class="section"><h3>Keyboard</h3><ul class="keys"><li><kbd>1</kbd><span>right — and next</span></li><li><kbd>2</kbd><span>close — and next</span></li><li><kbd>3</kbd><span>wrong — and next</span></li><li><kbd>4</kbd><span>can\u2019t tell — and next</span></li><li><kbd>← →</kbd><span>previous / next wall</span></li></ul></section>'
+          + '<section class="section"><h3>Keyboard</h3><ul class="keys"><li><kbd>1</kbd><span>right — and next</span></li><li><kbd>2</kbd><span>close — and next</span></li><li><kbd>3</kbd><span>wrong — and next</span></li><li><kbd>4</kbd><span>can\u2019t tell — and next</span></li><li><kbd>← →</kbd><span>previous / next wall</span></li><li><kbd>o</kbd><span>cycle overlay: both lines → consensus only → bare photo</span></li></ul></section>'
           + '<section class="section"><h3>Export &amp; import</h3><div class="button-row"><button class="button primary" id="export">Export grades JSON</button><label class="button">Import grades JSON<input id="import" type="file" accept="application/json" hidden></label></div>'
           + '<p class="notice" style="margin-top:10px">Grades are bound to a profile\u2019s SHA-256. A grade for a changed profile is rejected on import. Commit exports to <code>review-data/roofline-grades/</code>.</p>'
           + '<p class="io-status" id="io-status"></p></section>'
