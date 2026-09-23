@@ -51,6 +51,24 @@ export interface RooflineProfileView {
    */
   consensusPx?: Array<number | null>;
   /**
+   * Parallel to `consensusPx`: for each drawn column, `'own'` when this
+   * view's own (gated, pre-alignment) profile resolved it itself, `'filled'`
+   * when the drawn value came only from another view (including the
+   * single-view carve-out), or `null` when nothing is drawn there at all
+   * (`consensusPx` is also null). Without this, a `'filled'` column looks
+   * identical to an `'own'` one on this view's own photo — the review page
+   * draws `'own'` solid and `'filled'` dashed/faint so a grader is never
+   * shown a line this view never actually confirmed. See
+   * `consensusProvenancePx` in `stripRoofline.ts`. Materialisation-only.
+   */
+  consensusProvenancePx?: Array<'own' | 'filled' | null>;
+  /**
+   * Fraction of this view's DRAWN consensus columns that are `'filled'`
+   * rather than `'own'` — see `consensusProvenancePx`. Null when nothing is
+   * drawn for this view. Materialisation-only.
+   */
+  unresolvedFraction?: number | null;
+  /**
    * This view's own vertical offset from the wall's reference view, in
    * metres, estimated *before* consensus (see `estimateViewBias` in
    * `stripRoofline.ts`) — positive means this view read higher than the
@@ -95,6 +113,13 @@ export interface RooflineProfile {
    * already have removed most of. Null when nothing resolved.
    */
   medianOffsetVs3dbagMaxM?: number | null;
+  /**
+   * Largest per-view `unresolvedFraction` among this wall's views — the
+   * worst case of "this view's drawn line is mostly filled from another
+   * view, not its own detection". Null when nothing is drawn on any view.
+   * See the distribution reported by `extract-strip-rooflines.ts`.
+   */
+  maxUnresolvedFraction?: number | null;
   /**
    * States which view's absolute NAP `consensus` is expressed in, so nobody
    * mistakes the aligned consensus for a new, invented datum: alignment only

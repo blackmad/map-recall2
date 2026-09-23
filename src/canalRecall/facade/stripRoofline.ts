@@ -295,6 +295,67 @@ export function consensusToViewPx(
   return out;
 }
 
+export type ColumnProvenance = 'own' | 'filled';
+
+/**
+ * Per drawn consensus column (matched by `along`, not by pixel — see
+ * `consensusProvenancePx` for the pixel-column version this feeds): whether
+ * the given view's own (gated, pre-alignment) profile resolved that column
+ * itself (`'own'`), or the drawn value came only from another view
+ * (`'filled'` — including the single-view-consensus carve-out, where exactly
+ * one *other* view supplied it), or the column isn't drawn at all
+ * (`consensus` itself null there, returned as `null`).
+ *
+ * This exists because a view's own null columns still get a consensus value
+ * whenever another view (or the single-view carve-out) resolved them, and
+ * drawing that value on THIS view's photo with no distinction looks like the
+ * line is "drawing all the outlines at once" — a real grading hazard the
+ * owner hit that a bias fix alone does not address.
+ */
+export function consensusProvenance(
+  consensus: Array<[number, number | null]>, ownProfile: Array<[number, number | null]>, sampleM = 0.10,
+): Array<ColumnProvenance | null> {
+  const ownByKey = new Map<number, number | null>();
+  for (const [along, up] of ownProfile) ownByKey.set(Math.round(along / sampleM), up);
+  return consensus.map(([along, up]) => {
+    if (up === null) return null;
+    const own = ownByKey.get(Math.round(along / sampleM));
+    return own != null ? 'own' : 'filled';
+  });
+}
+
+/** The pixel-column version of `consensusProvenance`, in one view's own frame, for drawing. */
+export function consensusProvenancePx(
+  frame: StripFrame, consensus: Array<[number, number | null]>, ownProfile: Array<[number, number | null]>, width: number, sampleM = 0.10,
+): Array<ColumnProvenance | null> {
+  const consensusByKey = new Map<number, number | null>();
+  for (const [along, up] of consensus) consensusByKey.set(Math.round(along / sampleM), up);
+  const ownByKey = new Map<number, number | null>();
+  for (const [along, up] of ownProfile) ownByKey.set(Math.round(along / sampleM), up);
+  const out: Array<ColumnProvenance | null> = new Array(width).fill(null);
+  for (let x = 0; x < width; x++) {
+    const key = Math.round((x / frame.pixelsPerMetreX - frame.marginM) / sampleM);
+    const up = consensusByKey.get(key);
+    if (up == null) continue;
+    const own = ownByKey.get(key);
+    out[x] = own != null ? 'own' : 'filled';
+  }
+  return out;
+}
+
+/**
+ * Fraction of a view's DRAWN consensus columns (`'own'` + `'filled'`) that
+ * were `'filled'` — the view did not resolve them itself. Null when nothing
+ * is drawn for this view at all (not 0: "nothing drawn" and "everything
+ * self-resolved" are different findings).
+ */
+export function unresolvedFraction(provenance: Array<ColumnProvenance | null>): number | null {
+  const drawn = provenance.filter((p): p is ColumnProvenance => p !== null);
+  if (drawn.length === 0) return null;
+  const filled = drawn.filter(p => p === 'filled').length;
+  return Math.round((filled / drawn.length) * 1000) / 1000;
+}
+
 /**
  * Resample a per-column boundary (image pixels) onto a 0.10 m `along` grid,
  * in the §3 frame. Each bin takes the median `up` of the columns landing in

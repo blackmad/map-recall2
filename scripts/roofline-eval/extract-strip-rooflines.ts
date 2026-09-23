@@ -16,9 +16,9 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 import {
-  applyEaveGate, applyRoofMaxGate, applyViewBias, consensusProfile, consensusToViewPx, emptyNullReasonTotals, estimateViewBias,
-  medianOffset, NULL_REASONS, profileShape, rescueSky, resampleProfile, stripBoundaries,
-  type Luma, type Mask, type NullReason,
+  applyEaveGate, applyRoofMaxGate, applyViewBias, consensusProfile, consensusProvenance, consensusProvenancePx, consensusToViewPx,
+  emptyNullReasonTotals, estimateViewBias, medianOffset, NULL_REASONS, profileShape, rescueSky, resampleProfile, stripBoundaries,
+  unresolvedFraction, type Luma, type Mask, type NullReason,
 } from '../../src/canalRecall/facade/stripRoofline.ts';
 import { profileContentHash, type RooflineProfile, type RooflineProfileView } from '../../src/canalRecall/facade/rooflineGrade.ts';
 import type { StripFrame } from '../../src/canalRecall/facade/stripFrame.ts';
@@ -157,6 +157,12 @@ const roofMaxOffsetBeforeDistribution: number[] = [];
 const roofMaxOffsetAfterDistribution: number[] = [];
 const relationCounts: Partial<Record<WallSurfaceRelation, number>> = {};
 const biasDistributionM: number[] = [];
+// Per-VIEW unresolvedFraction (one entry per non-null view across all 254
+// views), and per-WALL max-over-views (one entry per wall with any drawn
+// consensus) -- see the comment above viewUnresolvedFractions below.
+const unresolvedFractionDistribution: number[] = [];
+const wallMaxUnresolvedFractionDistribution: number[] = [];
+let wallsWithHighUnresolvedFraction = 0;
 const wallReports: Array<{
   pandId: string; address: string | null; views: number;
   consensusCoverageStrict: number; consensusCoverageWithSingle: number; shape: string;
@@ -164,6 +170,7 @@ const wallReports: Array<{
   maxViewBiasM: number; referenceView: number | null; recoveredBySkyRescue: boolean;
   medianOffsetVs3dbagMaxBeforeAlignmentM: number | null; medianOffsetVs3dbagMaxAfterAlignmentM: number | null;
   columnsGatedByRoofMaxBeforeAlignment: number; columnsGatedByRoofMaxAfterAlignment: number;
+  maxUnresolvedFraction: number | null;
   reasonSummary: string;
 }> = [];
 
@@ -320,6 +327,19 @@ for (const [pandId, strips] of [...byWall.entries()].sort(([a], [b]) => a < b ? 
   if (coverageStrict >= 0.5) wallsWithConsensus50Strict++;
   if (coverageWithSingle >= 0.5) wallsWithConsensus50WithSingle++;
 
+  // Provenance: per view, which of the DRAWN consensus columns it resolved
+  // itself vs. inherited from another view (or the single-view carve-out).
+  // Computed against each view's own (gated, pre-alignment) profile, matched
+  // by `along` — the bias shift doesn't change which columns are null, so
+  // provenance is unaffected by which view is the reference.
+  const viewUnresolvedFractions: Array<number | null> = viewData.map(v => unresolvedFraction(consensusProvenance(consensus, v.profile)));
+  for (const f of viewUnresolvedFractions) if (f !== null) unresolvedFractionDistribution.push(f);
+  const maxUnresolvedFraction = viewUnresolvedFractions.some(f => f !== null)
+    ? Math.max(...viewUnresolvedFractions.filter((f): f is number => f !== null))
+    : null;
+  if (maxUnresolvedFraction !== null) wallMaxUnresolvedFractionDistribution.push(maxUnresolvedFraction);
+  if (maxUnresolvedFraction !== null && maxUnresolvedFraction > 0.25) wallsWithHighUnresolvedFraction++;
+
   // One reason string for the grading queue. A large bias that alignment
   // could not fully recover from (coverage is still poor) is reported ahead
   // of any per-column reason — it is the more actionable, wall-level finding.
@@ -345,6 +365,12 @@ for (const [pandId, strips] of [...byWall.entries()].sort(([a], [b]) => a < b ? 
   if (medianOffsetAfterAlignmentM !== null && Math.abs(medianOffsetAfterAlignmentM) >= 0.3) {
     reasonSummary += ` · ${medianOffsetAfterAlignmentM > 0 ? '+' : ''}${medianOffsetAfterAlignmentM.toFixed(2)} m vs 3DBAG roof max`;
   }
+  // A view whose drawn line is mostly filled in from another view is not
+  // showing what it saw -- flag it plainly so a grader isn't misled into
+  // thinking a view confirmed a roofline it never actually resolved.
+  if (maxUnresolvedFraction !== null && maxUnresolvedFraction > 0.25) {
+    reasonSummary += ` · ${Math.round(maxUnresolvedFraction * 100)}% of the graded line on its worst view is filled from another view`;
+  }
 
   const alignmentNote = referenceViewIndex !== null
     ? `Absolute NAP is view ${referenceViewIndex + 1} of ${strips.length}'s own scale (the reference for bias alignment); no independent datum was invented.`
@@ -356,6 +382,7 @@ for (const [pandId, strips] of [...byWall.entries()].sort(([a], [b]) => a < b ? 
     shape, threeDBagRelation: relation, eaveNap, roofMaxNap, maxViewBiasM, referenceView: referenceViewIndex, recoveredBySkyRescue,
     medianOffsetVs3dbagMaxBeforeAlignmentM: medianOffsetBeforeAlignmentM, medianOffsetVs3dbagMaxAfterAlignmentM: medianOffsetAfterAlignmentM,
     columnsGatedByRoofMaxBeforeAlignment: columnsGatedBeforeAlignment, columnsGatedByRoofMaxAfterAlignment: columnsGatedAfterAlignment,
+    maxUnresolvedFraction,
     reasonSummary,
   });
 
@@ -370,6 +397,8 @@ for (const [pandId, strips] of [...byWall.entries()].sort(([a], [b]) => a < b ? 
       snappedPx: v.snappedPx,
       profile: v.profile,
       consensusPx: consensusToViewPx(v.strip.frame, consensus, v.width, viewBiasM),
+      consensusProvenancePx: consensusProvenancePx(v.strip.frame, consensus, v.profile, v.width),
+      unresolvedFraction: viewUnresolvedFractions[i],
       viewBiasM,
       rescuedSkyFraction: v.rescuedSkyFraction,
       // Materialisation-only extras (see rooflineGrade.ts: never hashed).
@@ -388,7 +417,7 @@ for (const [pandId, strips] of [...byWall.entries()].sort(([a], [b]) => a < b ? 
   const profileSha256 = await profileContentHash(profileWithoutHash as RooflineProfile);
   const output: RooflineProfile = {
     ...profileWithoutHash, profileSha256, consensusSingleView, maxViewBiasM, alignmentNote, reasonSummary,
-    medianOffsetVs3dbagMaxM: medianOffsetAfterAlignmentM,
+    medianOffsetVs3dbagMaxM: medianOffsetAfterAlignmentM, maxUnresolvedFraction,
   };
   await writeFile(path.join(outDir, `${pandId}.json`), `${JSON.stringify(output, null, 2)}\n`);
   wallsWritten++;
@@ -406,6 +435,13 @@ const roofMaxOffsetSummary = (sorted: number[]) => ({
   min: sorted[0] ?? 0, p10: roofMaxQuantile(sorted, 0.1), median: roofMaxQuantile(sorted, 0.5),
   p90: roofMaxQuantile(sorted, 0.9), max: sorted[sorted.length - 1] ?? 0, n: sorted.length,
 });
+const sortedUnresolvedByView = [...unresolvedFractionDistribution].sort((a, b) => a - b);
+const sortedUnresolvedByWallMax = [...wallMaxUnresolvedFractionDistribution].sort((a, b) => a - b);
+const fractionQuantile = (sorted: number[], p: number) => sorted.length ? sorted[Math.min(sorted.length - 1, Math.floor(p * (sorted.length - 1)))] : 0;
+const fractionSummary = (sorted: number[]) => ({
+  min: sorted[0] ?? 0, p10: fractionQuantile(sorted, 0.1), median: fractionQuantile(sorted, 0.5),
+  p90: fractionQuantile(sorted, 0.9), max: sorted[sorted.length - 1] ?? 0, n: sorted.length,
+});
 
 console.log(`Walls written: ${wallsWritten} (of ${byWall.size} groups), ${totalViews} views (${underexposedViews} underexposed, excluded from consensus).`);
 console.log(`3DBAG match: ${wallsMatched3dbag} walls matched (eave gate applied), ${wallsNo3dbagMatch} no match (ungated). Relations: ${JSON.stringify(relationCounts)}`);
@@ -419,6 +455,8 @@ console.log(`Per-view bias |max| distribution (m) across ${wallReports.length} w
 console.log(`Above-3DBAG-max gate (DIAGNOSTIC ONLY, NOT applied to consensus -- see comment above consensusInput): would gate ${roofMaxColumnsGatedBeforeTotal} columns BEFORE bias alignment (${roofMaxWallsGatedBefore} / ${wallsWritten} walls affected), ${roofMaxColumnsGatedAfterTotal} columns AFTER alignment (${roofMaxWallsGatedAfter} / ${wallsWritten} walls affected). This is ${(100 * roofMaxWallsGatedAfter / wallsWritten).toFixed(0)}% of walls -- fires nearly everywhere, so it is NOT wired into the pipeline; see the report JSON's aboveThreeDBagMaxGate.note.`);
 console.log(`Median(consensus up - 3DBAG roof max) per wall, BEFORE alignment (m): ${JSON.stringify(roofMaxOffsetSummary(sortedRoofMaxBefore))}`);
 console.log(`Median(consensus up - 3DBAG roof max) per wall, AFTER alignment (m): ${JSON.stringify(roofMaxOffsetSummary(sortedRoofMaxAfter))}`);
+console.log(`Unresolved-fraction (drawn consensus columns a view did NOT resolve itself, filled from elsewhere) distribution across ${sortedUnresolvedByView.length} views: ${JSON.stringify(fractionSummary(sortedUnresolvedByView))}`);
+console.log(`Unresolved-fraction, worst view per wall, across ${sortedUnresolvedByWallMax.length} walls: ${JSON.stringify(fractionSummary(sortedUnresolvedByWallMax))}. ${wallsWithHighUnresolvedFraction} / ${wallsWritten} walls have a view where > 25% of its drawn line is filled from another view.`);
 console.log(`Output: ${outDir}`);
 
 await writeFile(path.join(path.dirname(outDir), 'strip-profiles-report.json'), `${JSON.stringify({
@@ -440,6 +478,15 @@ await writeFile(path.join(path.dirname(outDir), 'strip-profiles-report.json'), `
     wallsGatedBeforeAlignment: roofMaxWallsGatedBefore, wallsGatedAfterAlignment: roofMaxWallsGatedAfter,
     perWallMedianOffsetBeforeAlignmentM: roofMaxOffsetSummary(sortedRoofMaxBefore),
     perWallMedianOffsetAfterAlignmentM: roofMaxOffsetSummary(sortedRoofMaxAfter),
+  },
+  unresolvedFraction: {
+    note: 'Fraction of a view\'s DRAWN consensus columns that view did not resolve itself (filled from another '
+      + 'view, or the single-view carve-out). Routinely high values mean single-view acceptance is drawing lines '
+      + 'on photos that do not confirm them -- see byView for the raw distribution and byWallWorstView for whether '
+      + 'it concentrates on a few bad walls or is pervasive.',
+    byView: fractionSummary(sortedUnresolvedByView),
+    byWallWorstView: fractionSummary(sortedUnresolvedByWallMax),
+    wallsOver25pct: wallsWithHighUnresolvedFraction,
   },
   wallReports,
 }, null, 2)}\n`);
