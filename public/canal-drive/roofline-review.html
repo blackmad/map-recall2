@@ -246,18 +246,32 @@
         const overlay = $('#overlay');
         const img = $('#strip');
         const consensusPx = view.consensusPx || [];
+        const provenance = view.consensusProvenancePx || [];
         const columns = Math.max(view.coarsePx.length, view.snappedPx.length, consensusPx.length);
         const render = () => {
           const height = img.naturalHeight || 1;
           overlay.setAttribute('viewBox', '0 0 ' + columns + ' ' + height);
           const haloWidth = w => (w + 2.5);
-          const line = (points, color, width) =>
-            '<path d="' + polylinePath(points) + '" fill="none" stroke="#04122c" stroke-width="' + haloWidth(width) + '" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/>'
-            + '<path d="' + polylinePath(points) + '" fill="none" stroke="' + color + '" stroke-width="' + width + '" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/>';
+          const line = (points, color, width, opts) => {
+            opts = opts || {};
+            const dashAttr = opts.dash ? (' stroke-dasharray="' + opts.dash + '"') : '';
+            const opacityAttr = opts.opacity != null ? (' stroke-opacity="' + opts.opacity + '"') : '';
+            return '<path d="' + polylinePath(points) + '" fill="none" stroke="#04122c" stroke-width="' + haloWidth(width) + '" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"' + opacityAttr + '/>'
+              + '<path d="' + polylinePath(points) + '" fill="none" stroke="' + color + '" stroke-width="' + width + '" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"' + dashAttr + opacityAttr + '/>';
+          };
+          // Provenance splits the graded line: 'own' columns (this view
+          // resolved them itself) draw solid; 'filled' columns (inherited
+          // from another view, or the single-view carve-out) draw dashed and
+          // faint, so a grader never mistakes a line this view never
+          // actually confirmed for one it did. Missing/old data (no
+          // provenance array) falls back to solid everywhere.
+          const ownPx = consensusPx.map((v, i) => (provenance[i] === 'filled' ? null : v));
+          const filledPx = consensusPx.map((v, i) => (provenance[i] === 'filled' ? v : null));
           const mode = state.overlayMode;
           overlay.innerHTML =
             (mode === 'both' ? line(view.snappedPx, '#38e6ff', 3.4) : '')     // this view's own detected roofline (cyan)
-            + (mode === 'both' || mode === 'consensus' ? line(consensusPx, '#ff2e9a', 5.2) : ''); // the graded line: the consensus, aligned onto this view (magenta)
+            + (mode === 'both' || mode === 'consensus' ? line(ownPx, '#ff2e9a', 5.2) : '')                       // graded line, this view's own columns (solid magenta)
+            + (mode === 'both' || mode === 'consensus' ? line(filledPx, '#ff2e9a', 5.2, { dash: '5 5', opacity: 0.55 }) : ''); // graded line, filled from another view (dashed, faint)
         };
         if (img.complete && img.naturalHeight) render(); else img.onload = render;
       }
@@ -358,8 +372,9 @@
         const consensusCount = consensusPx.filter(value => value != null).length;
         const ownCount = view.snappedPx.filter(value => value != null).length;
         const overlayLabel = { both: 'both lines', consensus: 'graded line only', none: 'bare photo' }[state.overlayMode];
+        const filledNote = view.unresolvedFraction ? ' (' + Math.round(view.unresolvedFraction * 100) + '% dashed, filled from another view)' : '';
         $('#strip-note').innerHTML = 'Strip ' + escapeHtml(view.file)
-          + ' — <span style="color:#ff2e9a">graded line</span> ' + consensusCount + ' / ' + consensusPx.length + ' columns'
+          + ' — <span style="color:#ff2e9a">graded line</span> ' + consensusCount + ' / ' + consensusPx.length + ' columns' + filledNote
           + ', <span style="color:#38e6ff">this view’s own detection</span> ' + ownCount + ' / ' + view.snappedPx.length + ' columns'
           + (view.viewBiasM ? ' · aligned ' + (view.viewBiasM > 0 ? '+' : '') + view.viewBiasM.toFixed(2) + ' m onto the reference view' : '')
           + (view.rescuedSkyFraction ? ' · ' + (view.rescuedSkyFraction * 100).toFixed(1) + '% of the mask rescued from overcast/occluder' : '')
@@ -492,7 +507,7 @@
           + '<div class="queue-head"><h2>Walls to grade</h2><p>One wall at a time. Grade the roofline, then move on.</p></div>'
           + '<div class="queue-tabs" id="queue-tabs"></div>'
           + '<nav class="queue-list" id="queue" aria-label="Walls"></nav>'
-          + '<div class="queue-foot"><span style="color:#ff2e9a">graded line</span> = consensus, aligned onto this view<br><span style="color:#38e6ff">thin</span> = this view’s own detection</div>'
+          + '<div class="queue-foot"><span style="color:#ff2e9a">solid graded line</span> = consensus, this view’s own column<br><span style="color:#ff2e9a; opacity:.55">dashed graded line</span> = filled in from another view<br><span style="color:#38e6ff">thin</span> = this view’s own detection</div>'
           + '</aside>'
           + '<main class="stage">'
           + '<div class="stage-bar"><div><h2 id="wall-title">—</h2><code id="wall-sub"></code></div><div class="hash-pill" id="hash-pill"></div></div>'

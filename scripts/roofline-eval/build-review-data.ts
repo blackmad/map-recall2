@@ -106,6 +106,8 @@ for (const file of profileFiles.sort()) {
       snappedPx: view.snappedPx,
       profile: view.profile,
       consensusPx: view.consensusPx ?? null,
+      consensusProvenancePx: view.consensusProvenancePx ?? null,
+      unresolvedFraction: view.unresolvedFraction ?? null,
       viewBiasM: view.viewBiasM ?? 0,
       rescuedSkyFraction: view.rescuedSkyFraction ?? 0,
     });
@@ -124,6 +126,7 @@ for (const file of profileFiles.sort()) {
     alignmentNote: profile.alignmentNote ?? null,
     reasonSummary: profile.reasonSummary ?? null,
     medianOffsetVs3dbagMaxM: profile.medianOffsetVs3dbagMaxM ?? null,
+    maxUnresolvedFraction: profile.maxUnresolvedFraction ?? null,
     gable: profile.gable ?? null,
   };
   materialised.push(entry);

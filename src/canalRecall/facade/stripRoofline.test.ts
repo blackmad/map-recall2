@@ -7,8 +7,9 @@
  */
 import assert from 'node:assert/strict';
 import {
-  applyEaveGate, applyRoofMaxGate, applyViewBias, columnBoundary, consensusProfile, consensusToViewPx, estimateViewBias, LABEL,
-  medianOffset, pixelToWorld, profileShape, rescueSky, resampleProfile, stripBoundaries, type Luma, type Mask,
+  applyEaveGate, applyRoofMaxGate, applyViewBias, columnBoundary, consensusProfile, consensusProvenance, consensusProvenancePx,
+  consensusToViewPx, estimateViewBias, LABEL, medianOffset, pixelToWorld, profileShape, rescueSky, resampleProfile,
+  stripBoundaries, unresolvedFraction, type Luma, type Mask,
 } from './stripRoofline.ts';
 import type { StripFrame } from './stripFrame.ts';
 
@@ -462,6 +463,37 @@ check('consensusToViewPx: a non-reference view with a known bias round-trips ont
   const rowAt5mB = Math.round(5 * frameB.pixelsPerMetreX);
   assert.equal(pxB[rowAt5mB], (frameB.topNap - 16) * frameB.pixelsPerMetreY); // (20-16)*10 = 40, not (20-15)*10 = 50
   assert.notEqual(pxB[rowAt5mB], pxA[rowAt5mA]); // the two views must NOT draw the same row for the same wall-metre
+});
+
+check('consensusProvenance: own vs filled vs not-drawn', () => {
+  // along 0: this view resolved it itself -> 'own'.
+  // along 0.1: consensus has a value but this view's own profile is null there -> 'filled' (came from elsewhere).
+  // along 0.2: consensus itself is null -> not drawn at all -> null provenance.
+  const consensus: Array<[number, number | null]> = [[0, 10], [0.1, 11], [0.2, null]];
+  const ownProfile: Array<[number, number | null]> = [[0, 10], [0.1, null], [0.2, null]];
+  const provenance = consensusProvenance(consensus, ownProfile);
+  assert.deepEqual(provenance, ['own', 'filled', null]);
+  assert.equal(unresolvedFraction(provenance), 0.5); // 1 of 2 drawn columns is filled
+});
+
+check('unresolvedFraction: null (not 0) when nothing is drawn for this view', () => {
+  assert.equal(unresolvedFraction([null, null]), null);
+});
+
+check('consensusProvenancePx: pixel-column provenance matches consensusToViewPx\'s pixel mapping', () => {
+  const frame: StripFrame = {
+    start: { x: 0, y: 0 }, end: { x: 10, y: 0 }, leftEdge: 'start',
+    bottomNap: 0, topNap: 20, marginFactor: 1, marginM: 0,
+    requestedPixelsPerMetre: 10, pixelsPerMetreX: 10, pixelsPerMetreY: 10,
+  };
+  const consensus: Array<[number, number | null]> = [[5, 15]]; // along=5m -> pixel column 50
+  const ownResolved: Array<[number, number | null]> = [[5, 15]]; // this view resolved it itself
+  const ownUnresolved: Array<[number, number | null]> = [[5, null]]; // this view did not
+  const pxOwn = consensusProvenancePx(frame, consensus, ownResolved, 100);
+  const pxFilled = consensusProvenancePx(frame, consensus, ownUnresolved, 100);
+  assert.equal(pxOwn[50], 'own');
+  assert.equal(pxFilled[50], 'filled');
+  assert.equal(pxOwn[0], null); // no consensus drawn there
 });
 
 if (!process.exitCode) console.log(`stripRoofline: ${checks} checks passed`);
