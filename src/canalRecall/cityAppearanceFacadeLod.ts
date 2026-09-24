@@ -18,7 +18,7 @@ export function facadeBatchVisible(kind: string, zoom: number): boolean {
   const lod = facadeDisplayLod(zoom);
   if (lod === 'hidden') return false;
   if (lod === 'joinery') return true;
-  return kind.startsWith('windowGlass') || kind === 'shopGlass';
+  return kind.startsWith('windowGlass') || kind === 'shopGlass' || kind === 'doorWood' || kind.startsWith('#') || kind.startsWith('brick:');
 }
 
 export function facadeBatchOpacity(kind: string, zoom: number): number {
