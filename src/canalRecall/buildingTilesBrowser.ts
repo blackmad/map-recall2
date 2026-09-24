@@ -198,7 +198,10 @@ export class BuildingTileStreamer {
 
   private update(): void {
     if (!this.available || this.disposed) return;
-    const plan = planTiles(this.bounds(), this.cache.heldKeys, { zoom: this.zoom });
+    // The LoD1 city is the gap-free fallback beneath optional detail. At game
+    // zoom the viewport itself covers every required z14 tile; a neighbour
+    // ring only multiplies residency during low-pitch clearance adjustments.
+    const plan = planTiles(this.bounds(), this.cache.heldKeys, { zoom: this.zoom, margin: 0, budget: 12 });
     const wantedKeys = new Set(plan.wanted);
 
     let changed = false;

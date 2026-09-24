@@ -51,7 +51,14 @@ export interface CameraPose {
 export type YawConvention = 'centre' | 'edge';
 
 /** Named publisher convention; legacy yaw values still mean vehicle-aligned. */
-export interface CameraModel { id: string; usesOrientation: boolean; yaw: YawConvention }
+export interface CameraModel {
+  id: string;
+  usesOrientation: boolean;
+  yaw: YawConvention;
+  /** Per-capture boresight error of the stitched panorama, measured from anchors. */
+  boresightYawDeg?: number;
+  boresightPitchDeg?: number;
+}
 export const AMSTERDAM_WORLD_ALIGNED: CameraModel = Object.freeze({
   id: 'amsterdam-world-aligned/v1', usesOrientation: false, yaw: 'centre',
 });
@@ -118,6 +125,30 @@ export function directionToPixel(
 }
 
 /**
+ * Apply a measured per-capture boresight error to a world direction.
+ *
+ * The municipal panorama is stitched from several cameras; its absolute
+ * orientation can be a few degrees off even though it is world-aligned. Anchor
+ * measurements showed a constant horizontal shift per panorama, i.e. a yaw
+ * offset. Positive yaw increases the bearing; positive pitch looks up.
+ */
+function applyBoresight(direction: [number, number, number], yawDeg: number, pitchDeg: number): [number, number, number] {
+  const yaw = toRadians(yawDeg), pitch = toRadians(pitchDeg);
+  let [x, y, z] = direction;
+  if (yaw) {
+    const x1 = x * Math.cos(yaw) - y * Math.sin(yaw);
+    y = x * Math.sin(yaw) + y * Math.cos(yaw);
+    x = x1;
+  }
+  if (pitch) {
+    const y1 = y * Math.cos(pitch) + z * Math.sin(pitch);
+    z = -y * Math.sin(pitch) + z * Math.cos(pitch);
+    y = y1;
+  }
+  return [x, y, z];
+}
+
+/**
  * Project an RD/NAP world point into the original equirectangular source.
  *
  * Registration review needs this direction independently of rectification: a
@@ -132,8 +163,12 @@ export function worldToEquirectangularPixel(
   camera: YawConvention | CameraModel = 'centre',
 ): [number, number] {
   const direction: [number, number, number] = [point.x - pose.x, point.y - pose.y, point.z - pose.z];
-  const model = typeof camera === 'string' ? { usesOrientation: true, yaw: camera } : camera;
-  return directionToPixel(model.usesOrientation ? toCameraFrame(...direction, pose) : direction, image, model.yaw);
+  const model: CameraModel = typeof camera === 'string' ? { id: `legacy-yaw-${camera}`, usesOrientation: true, yaw: camera } : camera;
+  let directed = model.usesOrientation ? toCameraFrame(...direction, pose) : direction;
+  if (model.boresightYawDeg || model.boresightPitchDeg) {
+    directed = applyBoresight(directed, model.boresightYawDeg ?? 0, model.boresightPitchDeg ?? 0);
+  }
+  return directionToPixel(directed, image, model.yaw);
 }
 
 /** Bilinear sample, wrapping horizontally because the panorama is a cylinder. */

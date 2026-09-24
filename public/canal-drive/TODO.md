@@ -43,6 +43,71 @@ one drive-through as mastery. Pairs naturally with item 5: the same data answers
 
 ## P2 — Weight and reach
 
+**8a. Close one measure → accept → render loop, then repeat it.**
+*Opened 2026-09-24. Plan: "Close one loop, then repeat it."* The appearance
+programme has never once completed the chain, for any property, for any
+building, and the reason is not extraction quality:
+
+- **The renderer never draws measured evidence.**
+  `scripts/city-appearance/publish-area-geometry-demo.ts:107` colours all 7,395
+  district buildings from `contextualBuildingPalette(id, year)` — a hash-seeded
+  invented palette — and never reads the 598 observation records that exist for
+  buildings in that same district. `facade/wallColourSample.ts` measures real
+  wall colour from pixels, is tested, and is imported only by its own test and
+  two review scripts. `classifyGable` in `facade/gable.ts` has no caller
+  outside its own test.
+- **No acceptance state exists.** Across the repo the only
+  `appearancePublication` values ever written are
+  `candidate-registration-preview`, `quarantined-machine-preview`,
+  `withheld-source-audit-only` and `revoked-machine-observation`. There is no
+  accepted or canonical value. `reviewed: 0, accepted: 0` is an unimplemented
+  feature, not a backlog — a grading desk today has nothing to write into. The
+  same line hard-codes `roofShape: 'unknown'`, which is why 598 of 598
+  observations carry no roof shape.
+- **Coverage:** 7,566 of 342,993 buildings citywide (2.2 %) have any appearance
+  data; 501 of 7,395 (6.8 %) in the target district have an observation.
+
+Owner decisions (2026-09-24): **ship only what is measured**; first target
+**Da Costabuurt + Jordaan**, the one district where `StudyRoofs`/`StudyFacades`
+already draw. Order: wall colour → signage → retail streetfronts → roof shape.
+
+Open sub-items:
+1. `scripts/facade-eval/measure-wall-colour.ts` — run `sampleWallColour` over
+   the district's existing crops. Publish the pixel sample, never
+   `effectiveProposal.wallColour` (a model guess whose failures are documented
+   in `wallColourSample.ts`'s own header). Two known gaps to close while there:
+   it returns one colour per crop, so a two-tone facade or a crop straddling a
+   party wall blends; and it masks the trim out and discards it, when white
+   trim on dark brick is much of what makes a street read as Amsterdam.
+2. Grading desk, modelled on the working `signage-review.html` +
+   `scripts/facade-eval/build-signage-sample.ts`. Queue sorted by `lumaSpread`
+   descending so ambiguous crops get human eyes first. ~500 decisions ≈ 30 min.
+3. **The keystone:** add an accepted state and the code that writes it. Grades
+   must bind to `sourceSha256` with a hard assertion, copying the staleness
+   check in `scripts/review/refresh-reviewed-wall-colour.ts` — without it a
+   re-measure silently re-keys grades onto pixels the owner never saw.
+4. Render: `publish-area-geometry-demo.ts:107` consults the accepted set;
+   `buildingTilesBrowser.ts` carries `sideColourSource` per building and
+   `decorateBuildingFeature:67` stops hard-coding the label.
+   `buildingStyle.ts:buildingColorExpression` needs no change.
+5. **Owner decision outstanding:** what the 93 % unobserved buildings render
+   as. Recommendation: keep the hash palette but label it truthfully per
+   building, plus a coverage-view toggle so observed and contextual can never
+   be confused while riding.
+
+**8c. Fill the openings the detectors cannot see.**
+*Opened 2026-09-24.* The owner reviewed `facade/openingMerge.ts`'s union of the
+detector lanes and found it good; its one real failure is **missing** openings,
+where a van, tree or shadow hides windows. Detecting harder cannot fix this —
+the evidence is not in the image. `facade/openingLattice.ts` (in progress,
+branch `feat/facade-lattice`) infers them from the rhythm of what was found:
+rows clustered first and trusted most, horizontal spacing estimated *within*
+each row because Amsterdam bays are irregular and window heights shrink by
+storey, ground floor excluded by default, and abstention rather than invention
+when a row is too sparse or its spacing inconsistent. This supersedes the
+framing in item 10 below: the union is the working part, and the gold set's
+role is now to score imputation rather than to adjudicate the detectors.
+
 **8b. Finish typing the game subsystems.**
 Measured 2026-08-31: ~21,000 lines of TypeScript against ~6,100 lines of
 hand-written JavaScript in `public/canal-drive/js/` (the other ~1,300 JS lines
@@ -123,6 +188,19 @@ Commands: `npx tsx scripts/facade-eval/build-gold-set.ts`,
 prerequisites T0–T4 have landed (`npm run test:point-cloud-geometry`,
 `test:facade-mesh-compiler`, `test:point-cloud-spike`). The 100-building sweep
 (plan task 9) stays parked until a model is adopted.
+
+*Amended 2026-09-24 — read the verdict above as narrower than it sounds.* The
+owner has reviewed the **union** of the lanes (`facade/openingMerge.ts`) on real
+walls and calls it excellent; the per-lane precision figures above are scored
+against a gold set this same item already admits is a lower bound, so a lane
+finding a real window the MLS missed is counted as a false positive. The
+practical failure is not precision but **missing** openings behind vans, trees
+and shadows, which no detector can recover because the evidence is not in the
+image. That gap is now item 8c (`facade/openingLattice.ts`). The hand-labelled
+gold set is still wanted, but its job has changed: score **imputation** — did
+the lattice put a window where one really is — rather than re-adjudicate the
+detectors. Sizing the labelling job waits on the lattice's first real output;
+confirming imputed boxes may be far cheaper than drawing every box by hand.
 
 *The geometry channel is open: point cloud measures rooflines and gables
 (2026-09-21).* 3DBAG carries no gable — **0 of 895** canal-belt buildings in

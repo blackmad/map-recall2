@@ -22,6 +22,8 @@ export type AppearanceStreamOptions<G, O> = {
   createResource(owners: AppearanceTile<G, O>['owners']): AppearanceTileResource;
   budget?: number;
   concurrency?: number;
+  /** Source-comparison focus remains inside the same resident budget. */
+  priorityTiles?: string[];
   onError?: (key: string, error: unknown) => void;
   /** Multiplies camera distance before LOD selection; >1 reduces far-area detail. */
   lodDistanceMultiplier?: number;
@@ -90,7 +92,8 @@ export class CityAppearanceStreamer<G = unknown, O = unknown> {
     // Retain discovered references even if a tiny budget evicts the reference
     // tile itself; forgetting them would ping-pong between it and its owner.
     const dependencies = visible.flatMap(key => this.visibleDependencies.get(key) ?? []).filter(key => this.published.has(key));
-    const all = [...new Set([...dependencies, ...base])];
+    const priority=(this.options.priorityTiles??[]).filter(key=>this.published.has(key));
+    const all = [...new Set([...priority, ...dependencies, ...base])];
     this.constrained = all.length > this.cache.budget;
     this.wanted = new Set(all.slice(0, this.cache.budget));
     for (const [key, controller] of this.controllers) if (!this.wanted.has(key)) controller.abort();

@@ -1,5 +1,60 @@
 # Canal Recall — what is built
 
+## 2026-09-24 — the canal-belt roofline is 3 m high because of the track-datum correction
+
+Canal-belt rooflines read a median **+3.2 m above `b3_h_dak_max`**, with the
+*shape* traced well — step gables, bell gables and cornices all correct. Four
+theories were measured and killed before the real one: it does not scale with
+building height (corr 0.02), does not track the per-panorama lens correction
+(corr −0.11), is not set-back objects (the gate would fire on 78 of 89 walls),
+and is not stale massing (`groundZ_used − b3_h_maaiveld` = 0.00 on all 89;
+corr 0.261; the "correction" made the offset worse, 3.66 m).
+
+**It is the camera pose.** `resolveLens` in
+`scripts/facade-twin/panorama-render.ts:119` sets `pose.z = lens.z − offsetM`,
+where `lens.z` is the published camera height minus the geoid separation and
+`offsetM` is the per-run/per-segment vertical datum correction from
+`solve-track-datum.ts`. An A/B test (`scripts/roofline-eval/ab-test-renderer.ts`,
+`ab-score.ts`) rendered the same wall plane and extent through both
+`rectifyWall` (with the correction) and `rectifyFacade` (without):
+
+| wall | with correction | vs 3DBAG | without | vs 3DBAG | that wall's `offsetM` |
+| --- | --- | --- | --- | --- | --- |
+| Herengracht 203 | 22.11 | +3.71 | 17.97 | −0.42 | −4.146 |
+| Singel 279 | 21.54 | +2.94 | 17.45 | −1.14 | −4.064 |
+| Keizersgracht 149 | 22.46 | +3.50 | 18.48 | −0.48 | −3.968 |
+
+The height change equals that wall's own `offsetM` to within **3 cm**. That is
+not a correlation but an identity, and it is expected: for a point on the wall
+plane, a vertical camera error transfers 1:1 into the recovered height,
+independent of standoff. Median offset across the five test walls: **+3.71 m**
+with the correction, **−0.42 m** without.
+
+**Visible without any reference data.** In the corrected render of Herengracht
+203 the frame's claimed ground row (`bottomNap` 0.001, i.e. `b3_h_maaiveld`)
+shows *the canal and a moored boat*; the uncorrected render shows the pavement
+and parked cars where street level belongs. Rays at the nominal ground line are
+about 4 m too steep, which is the same error seen from the other end.
+
+70 % of the 144 views in this set carry a run-level `offsetM` between −4.0 and
+−4.26 m, which is why the population median lands near +3.2 m. Note the
+correction is *not* uniformly wrong: on the two test walls with small positive
+offsets (Herengracht 163, Singel 273) it lands the lens at 2.7–3.0 m above
+ground — right for a survey vehicle — and removing it puts the camera at 4.4 m.
+So `solve-track-datum.ts` is right for some runs and badly wrong for the
+dominant 2021 band, and the HISTORY note claiming that campaign publishes
+heights ~4.2 m off is what is now in doubt.
+
+**Not fixed, deliberately.** Gable *shape* is unaffected — the offset is
+constant per run, so a profile normalised to its own eave and width is
+invariant — and shape is what the game needs. Absolute height is a later,
+tractable correction. Two cautions for whoever picks this up: the A5 comparison
+that made the photo method look broken was scored against scan elevations that
+are themselves unreliable (cyan reference lines sitting mid-facade), and the R1
+gold set's `spotCheck` gate was specified and never applied, so "the photo is
+wrong" was partly "the reference is wrong" — the same mistake that produced the
+2026-09-22 façade-model rejection above.
+
 ## 2026-09-22 — the measured gold set says "none", and why that is not the whole answer
 
 Built the façade-model evaluation's gold set and scorer, ran the two candidate
