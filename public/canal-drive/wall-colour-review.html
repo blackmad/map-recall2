@@ -1,0 +1,294 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wall colour review</title>
+<!--
+  Grade a measured wall colour against the crop it was measured from.
+
+  One keypress per wall. The question is narrow on purpose: does this colour
+  match this wall. Not "is it pretty", not "what should the building look like".
+
+  Two candidates are offered because the estimator has a known bias. The
+  dominant cluster lands close to the mean of the building pixels, which on
+  brick includes mortar, shadowed reveals and window frames, so it reads darker
+  than the brick face. The brighter candidate is the same pixels weighted up.
+  Picking between them is the calibration: if one wins consistently, the bias is
+  a constant and can be folded into the estimator; if it splits per facade, no
+  constant would have fixed it and the grader's choice is the only answer.
+
+  Grades bind to the crop's sha256 and the sample's sha256. Re-measuring
+  invalidates them rather than inheriting them — see
+  src/canalRecall/facade/appearancePublication.ts.
+-->
+<style>
+  :root { color-scheme: light dark; --bg:#f6f5f2; --fg:#16150f; --dim:#6b675c; --line:#d8d4c8; --card:#fffefb; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16150f; --fg:#f1efe6; --dim:#9a958a; --line:#33312a; --card:#1d1c16; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:14px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  header { display:flex; gap:16px; align-items:baseline; flex-wrap:wrap;
+           padding:12px 16px; border-bottom:1px solid var(--line); position:sticky;
+           top:env(safe-area-inset-top, 0px); background:var(--bg); z-index:2; }
+  h1 { font-size:15px; margin:0; font-weight:650; }
+  .dim { color:var(--dim); }
+  main { display:grid; grid-template-columns: minmax(0,1fr) 320px; gap:20px; padding:16px; align-items:start; }
+  @media (max-width: 780px) { main { grid-template-columns: 1fr; } }
+  .stage { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px;
+           display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:stretch; }
+  /* The crop is the evidence, so it gets the room. Height-driven so tall narrow
+     facade strips fill the stage rather than sitting postage-stamp sized. */
+  .crop { height:72vh; width:auto; max-width:100%; object-fit:contain;
+          border-radius:6px; display:block; image-rendering:auto; }
+  .swatches { display:flex; flex-direction:column; gap:8px; min-width:120px; }
+  .sw { flex:1; border-radius:6px; border:1px solid var(--line); position:relative;
+        display:flex; align-items:flex-end; padding:8px; cursor:pointer; min-height:70px; }
+  .sw b { font:600 12px ui-monospace, monospace; background:#fffd; color:#111;
+          padding:2px 5px; border-radius:4px; }
+  .sw.pick { outline:3px solid #2f7; outline-offset:2px; }
+  aside { display:flex; flex-direction:column; gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px; }
+  .row { display:flex; justify-content:space-between; gap:10px; }
+  .row + .row { margin-top:4px; }
+  .warn { color:#c2410c; font-weight:600; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  .chip { border:1px solid var(--line); background:transparent; color:var(--fg);
+          border-radius:999px; padding:3px 9px; font-size:12px; cursor:pointer; }
+  .chip[aria-pressed="true"] { background:var(--fg); color:var(--bg); }
+  kbd { font:600 11px ui-monospace, monospace; border:1px solid var(--line);
+        border-bottom-width:2px; border-radius:4px; padding:1px 5px; }
+  .keys { display:grid; gap:5px; }
+  .keys div { display:flex; gap:8px; align-items:center; }
+  button.act { font:inherit; padding:7px 12px; border-radius:7px; border:1px solid var(--line);
+               background:transparent; color:var(--fg); cursor:pointer; }
+  progress { width:100%; height:6px; }
+  [hidden] { display:none !important; }
+</style>
+
+<header>
+  <h1>Wall colour review</h1>
+  <span class="dim" id="pos">loading…</span>
+  <span class="dim" id="tally"></span>
+  <span style="flex:1"></span>
+  <button class="act" id="export">Export grades</button>
+  <button class="act" id="import">Import</button>
+</header>
+
+<main>
+  <div class="stage">
+    <div class="swatches">
+      <div class="sw" id="swA" data-pick="cluster"><b id="hexA">—</b></div>
+      <div class="sw" id="swB" data-pick="bright"><b id="hexB">—</b></div>
+    </div>
+    <img class="crop" id="crop" alt="facade crop">
+  </div>
+
+  <aside>
+    <div class="card">
+      <div class="row"><strong id="addr">—</strong></div>
+      <div class="row dim"><span id="meta"></span></div>
+      <div class="row"><span>cluster share</span><span id="share">—</span></div>
+      <div class="row"><span>runner-up</span><span id="runner">—</span></div>
+      <div class="row"><span>building pixels</span><span id="bfrac">—</span></div>
+      <div class="row"><span>campaign cast (B−R)</span><span id="cast">—</span></div>
+      <div class="row" id="flags" hidden><span class="warn" id="flagtext"></span></div>
+      <progress id="bar" max="100" value="0"></progress>
+    </div>
+
+    <div class="card">
+      <div class="keys">
+        <div><kbd>1</kbd> accept — the selected swatch matches</div>
+        <div><kbd>2</kbd> adjust — neither; type a hex</div>
+        <div><kbd>3</kbd> unusable — can't read this wall</div>
+        <div><kbd>4</kbd> skip</div>
+        <div><kbd>A</kbd>/<kbd>B</kbd> choose swatch · <kbd>←</kbd><kbd>→</kbd> move</div>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </aside>
+</main>
+
+<div class="card" id="out" hidden
+     style="position:fixed; inset:auto 16px 16px 16px; max-width:760px; margin:0 auto; z-index:3;
+            box-shadow:0 8px 40px #0006;">
+  <div class="row">
+    <strong>Exported grades</strong>
+    <button class="act" id="outClose">Close</button>
+  </div>
+  <div class="dim" id="outNote" style="margin:4px 0 8px"></div>
+  <textarea id="outText" readonly rows="8"
+            style="width:100%; font:12px ui-monospace, monospace; background:var(--bg);
+                   color:var(--fg); border:1px solid var(--line); border-radius:6px; padding:8px;"></textarea>
+</div>
+
+<script type="module">
+const REASONS = ['occluded','shadow','mixed-materials','wrong-wall','scaffolding','construction','painted-since'];
+const $ = id => document.getElementById(id);
+const state = { entries: [], i: 0, sha: '', grades: {}, pick: 'cluster', reasons: new Set() };
+const KEY = 'wall-colour-review-draft';
+
+/** The brighter candidate: the cluster colour lifted toward the light, which is
+ *  where the brick face sits relative to the mortar-and-shadow mean. */
+const brighten = (hex, amount = 0.28) => {
+  const n = parseInt(hex.slice(1), 16);
+  const c = [(n >> 16) & 255, (n >> 8) & 255, n & 255]
+    .map(v => Math.round(v + (255 - v) * amount));
+  return '#' + c.map(v => v.toString(16).padStart(2, '0')).join('');
+};
+
+const load = async () => {
+  const res = await fetch('/data/wall-colour/v1/sample.json');
+  const doc = await res.json();
+  state.entries = doc.entries;
+  state.sha = doc.sha256;
+  try {
+    const draft = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (draft && draft.sampleSha256 === state.sha) {
+      state.grades = draft.grades || {};
+      state.i = Math.min(draft.at || 0, state.entries.length - 1);
+    }
+  } catch { /* a blocked or private store is not a reason to fail */ }
+  render();
+};
+
+const save = () => {
+  try {
+    localStorage.setItem(KEY, JSON.stringify({ sampleSha256: state.sha, at: state.i, grades: state.grades }));
+  } catch { /* ignore */ }
+};
+
+const render = () => {
+  const e = state.entries[state.i];
+  if (!e) return;
+  $('crop').src = e.crop;
+  $('addr').textContent = e.address || e.buildingId;
+  $('meta').textContent = [e.street, e.capturedAt?.slice(0, 10), e.year ? `built ${e.year}` : null,
+                           e.family, e.material].filter(Boolean).join(' · ');
+  $('share').textContent = e.share == null ? '—' : `${Math.round(e.share * 100)}%`;
+  $('runner').textContent = e.runnerUpHex ? `${e.runnerUpHex} at ${Math.round(e.runnerUpShare * 100)}%` : '—';
+  $('bfrac').textContent = e.buildingFraction == null ? '—' : `${Math.round(e.buildingFraction * 100)}%`;
+  $('cast').textContent = e.castBlueMinusRed == null ? '—' : String(e.castBlueMinusRed);
+
+  const flags = [...(e.review || [])];
+  if (!e.reliable) flags.unshift('unreliable');
+  if (e.estimatorGap != null && e.estimatorGap > 60) flags.push(`estimators disagree by ${e.estimatorGap}`);
+  $('flags').hidden = flags.length === 0;
+  $('flagtext').textContent = flags.join(' · ');
+
+  const a = e.hex || '#888888';
+  $('swA').style.background = a;
+  $('hexA').textContent = a;
+  const b = brighten(a);
+  $('swB').style.background = b;
+  $('hexB').textContent = b;
+
+  const g = state.grades[e.observationId];
+  state.pick = g?.pick || 'cluster';
+  state.reasons = new Set(g?.reasons || []);
+  $('swA').classList.toggle('pick', state.pick === 'cluster');
+  $('swB').classList.toggle('pick', state.pick === 'bright');
+
+  const done = Object.keys(state.grades).length;
+  $('pos').textContent = `${state.i + 1} of ${state.entries.length}`;
+  $('tally').textContent = `${done} graded` + (g ? ` · this one: ${g.verdict}` : '');
+  $('bar').value = (done / state.entries.length) * 100;
+  drawChips();
+};
+
+const drawChips = () => {
+  $('chips').replaceChildren(...REASONS.map(r => {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.textContent = r;
+    b.setAttribute('aria-pressed', String(state.reasons.has(r)));
+    b.onclick = () => {
+      state.reasons.has(r) ? state.reasons.delete(r) : state.reasons.add(r);
+      const g = state.grades[state.entries[state.i].observationId];
+      if (g) g.reasons = [...state.reasons];
+      save();
+      drawChips();
+    };
+    return b;
+  }));
+};
+
+const grade = (verdict, correctedHex) => {
+  const e = state.entries[state.i];
+  const chosen = state.pick === 'bright' ? brighten(e.hex || '#888888') : e.hex;
+  state.grades[e.observationId] = {
+    observationId: e.observationId,
+    verdict,
+    pick: state.pick,
+    // What the grader actually endorsed. `accept` on the brighter swatch is an
+    // adjustment in substance, so it is recorded as the corrected colour.
+    correctedHex: verdict === 'adjust' ? correctedHex
+                : (verdict === 'accept' && state.pick === 'bright') ? chosen : undefined,
+    reasons: [...state.reasons],
+    sourceSha256: e.sourceSha256,
+    gradedAt: new Date().toISOString(),
+    grader: 'owner',
+  };
+  save();
+  if (state.i < state.entries.length - 1) state.i += 1;
+  render();
+};
+
+addEventListener('keydown', ev => {
+  if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+  const k = ev.key.toLowerCase();
+  if (k === 'a' || k === 'b') { state.pick = k === 'a' ? 'cluster' : 'bright'; render(); return; }
+  if (k === 'arrowright') { state.i = Math.min(state.i + 1, state.entries.length - 1); render(); return; }
+  if (k === 'arrowleft') { state.i = Math.max(state.i - 1, 0); render(); return; }
+  if (k === '1') { grade('accept'); return; }
+  if (k === '2') {
+    const hex = prompt('Replacement colour, as #rrggbb');
+    if (hex && /^#[0-9a-f]{6}$/i.test(hex.trim())) grade('adjust', hex.trim().toLowerCase());
+    return;
+  }
+  if (k === '3') { grade('unusable'); return; }
+  if (k === '4') { grade('skip'); return; }
+});
+
+for (const el of [$('swA'), $('swB')]) {
+  el.onclick = () => { state.pick = el.dataset.pick; render(); };
+}
+
+$('export').onclick = () => {
+  const payload = {
+    sampleSha256: state.sha,
+    gradedAt: new Date().toISOString(),
+    grader: 'owner',
+    grades: state.grades,
+  };
+  // Page-initiated downloads are blocked and a popup is fragile, so the payload
+  // is put on the page, selected, and also pushed to the clipboard.
+  const text = JSON.stringify(payload, null, 1);
+  $('outText').value = text;
+  $('out').hidden = false;
+  $('outText').focus();
+  $('outText').select();
+  navigator.clipboard?.writeText(text).then(
+    () => { $('outNote').textContent = `${Object.keys(state.grades).length} grades — copied to the clipboard.`; },
+    () => { $('outNote').textContent = `${Object.keys(state.grades).length} grades — select and copy.`; },
+  );
+};
+$('outClose').onclick = () => { $('out').hidden = true; };
+
+$('import').onclick = () => {
+  const text = prompt('Paste an exported grade payload');
+  if (!text) return;
+  try {
+    const doc = JSON.parse(text);
+    if (doc.sampleSha256 !== state.sha) {
+      alert('That export was made against a different sample. Importing it would attach grades to crops they were not given for.');
+      return;
+    }
+    state.grades = doc.grades || {};
+    save();
+    render();
+  } catch { alert('Could not parse that.'); }
+};
+
+load();
+</script>
