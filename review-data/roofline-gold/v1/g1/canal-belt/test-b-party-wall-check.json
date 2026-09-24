@@ -1,0 +1,148 @@
+{
+  "generatedAt": "2026-09-22T20:09:32.105Z",
+  "source": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/roofline-eval/3dbag/3dbag-strips.json",
+  "thresholds": {
+    "OWN_ROOF_TOLERANCE_M": 0.3,
+    "SELF_RISE_TOLERANCE_M": 0.3,
+    "INHERITED_ABOVE_OWN_M": 0.5,
+    "INHERITED_NEIGHBOUR_TOLERANCE_M": 0.3,
+    "NEIGHBOUR_EDGE_DISTANCE_M": 0.5,
+    "NEIGHBOUR_CENTROID_DISTANCE_M": 15,
+    "EXPECTED_HEIGHT_EXCESS_M": 2,
+    "FLOOR_HEIGHT_M": 3,
+    "ATTIC_ALLOWANCE_M": 2.5
+  },
+  "limitation": "neighbours are drawn only from the 90 cached canal-belt panden, not the full canal-belt context; case (c) undercounts inheritance from an uncached neighbour. Test B2 is supplementary (not literally requested): it substitutes b3_bouwlagen for \"own expected height\" because wallTop==ownRoofMax holds structurally in LoD2.2, so the literal wall-vs-own-roof test cannot see a uniformly-too-tall roof.",
+  "buildingCount": 90,
+  "wallCount": 1767,
+  "counts": {
+    "normal": 1767,
+    "self-rise": 0,
+    "inherited": 0,
+    "unclassified": 0
+  },
+  "inherited": [],
+  "selfRiseOnly": [],
+  "b2Candidates": [
+    {
+      "pandId": "0363100012167644",
+      "ownRoofMax": 20.845003875732417,
+      "expectedRoofMax": 18.383000016212463,
+      "excessM": 2.462003859519953,
+      "bouwlagen": 5,
+      "neighbourPandId": "0363100012167646",
+      "neighbourRoofMax": 20.71600387573242,
+      "neighbourDiffM": 0.12899999999999778
+    },
+    {
+      "pandId": "0363100012167709",
+      "ownRoofMax": 22.57400387573242,
+      "expectedRoofMax": 12.299000024795532,
+      "excessM": 10.275003850936887,
+      "bouwlagen": 3,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    },
+    {
+      "pandId": "0363100012167714",
+      "ownRoofMax": 21.49700387573242,
+      "expectedRoofMax": 17.23600000143051,
+      "excessM": 4.26100387430191,
+      "bouwlagen": 5,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    },
+    {
+      "pandId": "0363100012167722",
+      "ownRoofMax": 12.921500610351563,
+      "expectedRoofMax": 9.013999998569489,
+      "excessM": 3.9075006117820745,
+      "bouwlagen": 2,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    },
+    {
+      "pandId": "0363100012167743",
+      "ownRoofMax": 21.46750061035156,
+      "expectedRoofMax": 17.578000001609325,
+      "excessM": 3.8895006087422352,
+      "bouwlagen": 5,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    },
+    {
+      "pandId": "0363100012165025",
+      "ownRoofMax": 20.468003875732418,
+      "expectedRoofMax": 17.447999998927116,
+      "excessM": 3.0200038768053012,
+      "bouwlagen": 5,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    },
+    {
+      "pandId": "0363100012164996",
+      "ownRoofMax": 18.10900387573242,
+      "expectedRoofMax": 15.401000022888184,
+      "excessM": 2.708003852844236,
+      "bouwlagen": 4,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    },
+    {
+      "pandId": "0363100012167679",
+      "ownRoofMax": 17.723003875732417,
+      "expectedRoofMax": 15.20200002193451,
+      "excessM": 2.5210038537979074,
+      "bouwlagen": 4,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    },
+    {
+      "pandId": "0363100012167683",
+      "ownRoofMax": 20.598003875732417,
+      "expectedRoofMax": 18.110000014305115,
+      "excessM": 2.488003861427302,
+      "bouwlagen": 5,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    },
+    {
+      "pandId": "0363100012167737",
+      "ownRoofMax": 16.88950061035156,
+      "expectedRoofMax": 14.456000000238419,
+      "excessM": 2.4335006101131427,
+      "bouwlagen": 4,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    },
+    {
+      "pandId": "0363100012167710",
+      "ownRoofMax": 20.50700387573242,
+      "expectedRoofMax": 18.205999970436096,
+      "excessM": 2.301003905296323,
+      "bouwlagen": 5,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    },
+    {
+      "pandId": "0363100012167684",
+      "ownRoofMax": 17.700003875732417,
+      "expectedRoofMax": 15.449000000953674,
+      "excessM": 2.2510038747787426,
+      "bouwlagen": 4,
+      "neighbourPandId": null,
+      "neighbourRoofMax": null,
+      "neighbourDiffM": null
+    }
+  ]
+}
