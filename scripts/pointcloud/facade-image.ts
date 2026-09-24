@@ -9,6 +9,8 @@ export interface FacadeImage {
   metresPerPixel: number;
   /** (along, up) in the wall frame of the image's top-left corner. */
   origin: readonly [number, number];
+  /** The raw RGB buffer (row-major, 3 bytes/pixel), for a caller that wants to draw an overlay before encoding. */
+  rgb: Uint8Array;
 }
 
 const background = [24, 30, 38] as const;
@@ -58,5 +60,6 @@ export const renderFacadeImage = (
     height,
     metresPerPixel,
     origin: [raster.frame.minAlong, top],
+    rgb,
   };
 };
