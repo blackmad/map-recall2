@@ -40,6 +40,43 @@ export interface RooflineProfileView {
   snappedPx: Array<number | null>;
   /** Resampled to 0.10 m: [along M, NAP M | null]. */
   profile: Array<[number, number | null]>;
+  /**
+   * The final consensus (post bias-alignment), converted back into this
+   * view's own pixel rows so the review page can draw it directly on this
+   * photo without doing any metre/pixel conversion client-side — "the pixel
+   * rows already in the data". Parallel to `coarsePx`/`snappedPx`; null
+   * where the consensus itself is null at that column's `along` position.
+   * Materialisation-only: derived from `consensus` + this view's own frame,
+   * not an independent measurement, so it is never hashed.
+   */
+  consensusPx?: Array<number | null>;
+  /**
+   * Parallel to `consensusPx`: for each drawn column, `'own'` when this
+   * view's own (gated, pre-alignment) profile resolved it itself, `'filled'`
+   * when the drawn value came only from another view (including the
+   * single-view carve-out), or `null` when nothing is drawn there at all
+   * (`consensusPx` is also null). Without this, a `'filled'` column looks
+   * identical to an `'own'` one on this view's own photo — the review page
+   * draws `'own'` solid and `'filled'` dashed/faint so a grader is never
+   * shown a line this view never actually confirmed. See
+   * `consensusProvenancePx` in `stripRoofline.ts`. Materialisation-only.
+   */
+  consensusProvenancePx?: Array<'own' | 'filled' | null>;
+  /**
+   * Fraction of this view's DRAWN consensus columns that are `'filled'`
+   * rather than `'own'` — see `consensusProvenancePx`. Null when nothing is
+   * drawn for this view. Materialisation-only.
+   */
+  unresolvedFraction?: number | null;
+  /**
+   * This view's own vertical offset from the wall's reference view, in
+   * metres, estimated *before* consensus (see `estimateViewBias` in
+   * `stripRoofline.ts`) — positive means this view read higher than the
+   * reference. 0 for the reference view itself. Materialisation-only.
+   */
+  viewBiasM?: number;
+  /** Fraction of this view's mask pixels the sky rescue pass relabelled to sky. Materialisation-only. */
+  rescuedSkyFraction?: number;
 }
 
 export interface RooflineProfile {
@@ -54,6 +91,43 @@ export interface RooflineProfile {
   profileSha256: string;
   /** Optional G2 fitted gable outline: [along M, NAP M]. */
   gable?: { type: string; points: Array<[number, number]> } | null;
+  /**
+   * Parallel to `consensus`: true where exactly one non-underexposed view
+   * resolved that sample (kept rather than discarded — see A2's consensus
+   * rule). Materialisation-only, like `imageUrl`/`fixture` below: not hashed,
+   * so a change to this diagnostic alone doesn't invalidate an owner grade.
+   */
+  consensusSingleView?: boolean[];
+  /**
+   * Largest |viewBiasM| among this wall's views (0 for a single-view wall).
+   * A wall-level flag for "these views disagree about height, not shape" —
+   * see the distribution reported by `extract-strip-rooflines.ts`.
+   */
+  maxViewBiasM?: number;
+  /**
+   * Median of (consensus `up` − pand's own 3DBAG `b3_h_dak_max`), post
+   * bias-alignment, over resolved columns: how far this wall's roofline
+   * reads above the airborne-lidar roof max. A large, consistently positive
+   * value across many walls is a calibration finding; a lumpy one on a few
+   * walls is more likely set-back objects the `above-3dbag-max` gate should
+   * already have removed most of. Null when nothing resolved.
+   */
+  medianOffsetVs3dbagMaxM?: number | null;
+  /**
+   * Largest per-view `unresolvedFraction` among this wall's views — the
+   * worst case of "this view's drawn line is mostly filled from another
+   * view, not its own detection". Null when nothing is drawn on any view.
+   * See the distribution reported by `extract-strip-rooflines.ts`.
+   */
+  maxUnresolvedFraction?: number | null;
+  /**
+   * States which view's absolute NAP `consensus` is expressed in, so nobody
+   * mistakes the aligned consensus for a new, invented datum: alignment only
+   * ever shifts other views onto one view's own scale.
+   */
+  alignmentNote?: string;
+  /** A one-line, human-readable reason for the wall's grading queue — see `reasonSummary` in `extract-strip-rooflines.ts`. */
+  reasonSummary?: string;
   /** Materialisation-only extras, never hashed. */
   imageUrl?: string;
   fixture?: boolean;
