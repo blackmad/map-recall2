@@ -1,0 +1,1332 @@
+{
+  "version": 1,
+  "cameraModelId": "amsterdam-world-aligned/v1",
+  "updatedAt": "2026-09-21T06:32:54.325Z",
+  "anchors": [
+    {
+      "panoramaId": "b_20241129_0829_Track26_Sphere_00047",
+      "markerId": "b_20241129_0829_Track26_Sphere_00047#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012147021",
+      "address": "Da Costakade 184",
+      "world": {
+        "x": 120009.5999,
+        "y": 486703.3993,
+        "z": 8.689,
+        "datum": "NAP"
+      },
+      "predicted": [
+        788.6,
+        1162.8
+      ],
+      "pixel": [
+        780.8171475529589,
+        1162.836646636829
+      ],
+      "residualPx": 7.78,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:31.853Z"
+    },
+    {
+      "panoramaId": "b_20241129_0829_Track26_Sphere_00047",
+      "markerId": "b_20241129_0829_Track26_Sphere_00047#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012147021",
+      "address": "Da Costakade 184",
+      "world": {
+        "x": 120007.2699,
+        "y": 486708.7593,
+        "z": 8.689,
+        "datum": "NAP"
+      },
+      "predicted": [
+        1802,
+        1087
+      ],
+      "pixel": [
+        1817.7170525219638,
+        1079.4631116495166
+      ],
+      "residualPx": 17.43,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:31.853Z"
+    },
+    {
+      "panoramaId": "b_20241129_0829_Track26_Sphere_00047",
+      "markerId": "b_20241129_0829_Track26_Sphere_00047#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012162897",
+      "address": "Da Costakade 182",
+      "world": {
+        "x": 120005.0099,
+        "y": 486714.1893,
+        "z": 8.776,
+        "datum": "NAP"
+      },
+      "predicted": [
+        2562.4,
+        1302.5
+      ],
+      "pixel": [
+        2592.7107726400977,
+        1312.1971429732337
+      ],
+      "residualPx": 31.82,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:31.853Z"
+    },
+    {
+      "panoramaId": "b_20241129_0829_Track26_Sphere_00047",
+      "markerId": "b_20241129_0829_Track26_Sphere_00047#3",
+      "kind": "wall-end",
+      "buildingId": "0363100012156275",
+      "address": "Da Costakade 186",
+      "world": {
+        "x": 120011.9079,
+        "y": 486697.8683,
+        "z": 8.936,
+        "datum": "NAP"
+      },
+      "predicted": [
+        240.3,
+        1387.9
+      ],
+      "pixel": [
+        240.3,
+        1387.9
+      ],
+      "residualPx": 0,
+      "status": "accepted",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:31.853Z"
+    },
+    {
+      "panoramaId": "b_20241129_0829_Track29_Sphere_00016",
+      "markerId": "b_20241129_0829_Track29_Sphere_00016#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012157742",
+      "address": "Da Costakade 73",
+      "world": {
+        "x": 119932.5909,
+        "y": 487102.9503,
+        "z": 8.829,
+        "datum": "NAP"
+      },
+      "predicted": [
+        5337.7,
+        1188.2
+      ],
+      "pixel": [
+        5337.7,
+        1188.2
+      ],
+      "residualPx": 0,
+      "status": "accepted",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:32:54.325Z"
+    },
+    {
+      "panoramaId": "b_20241129_0829_Track29_Sphere_00016",
+      "markerId": "b_20241129_0829_Track29_Sphere_00016#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012157742",
+      "address": "Da Costakade 73",
+      "world": {
+        "x": 119932.2009,
+        "y": 487096.9743,
+        "z": 8.829,
+        "datum": "NAP"
+      },
+      "predicted": [
+        6363,
+        1090.3
+      ],
+      "pixel": [
+        6343.069960409744,
+        1090.946266974161
+      ],
+      "residualPx": 19.94,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:32:54.325Z"
+    },
+    {
+      "panoramaId": "b_20241129_0829_Track29_Sphere_00016",
+      "markerId": "b_20241129_0829_Track29_Sphere_00016#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012161828",
+      "address": "Da Costakade 75",
+      "world": {
+        "x": 119931.7899,
+        "y": 487090.9323,
+        "z": 8.863,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7156.4,
+        1315.7
+      ],
+      "pixel": [
+        7145.432905505209,
+        1290.766864761903
+      ],
+      "residualPx": 27.24,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:32:54.325Z"
+    },
+    {
+      "panoramaId": "b_20241129_0829_Track29_Sphere_00016",
+      "markerId": "b_20241129_0829_Track29_Sphere_00016#3",
+      "kind": "wall-end",
+      "buildingId": "0363100012161828",
+      "address": "Da Costakade 75",
+      "world": {
+        "x": 119931.7899,
+        "y": 487090.9323,
+        "z": 8.863,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7156.4,
+        1315.7
+      ],
+      "pixel": [
+        7142.195614456417,
+        1316.2289308285067
+      ],
+      "residualPx": 14.21,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-20T18:49:46.118Z"
+    },
+    {
+      "panoramaId": "b_20241216_0911_Track02_Sphere_00086",
+      "markerId": "b_20241216_0911_Track02_Sphere_00086#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012253787",
+      "address": "Rozengracht 204",
+      "world": {
+        "x": 120271.8169,
+        "y": 487322.2803,
+        "z": 5.659,
+        "datum": "NAP"
+      },
+      "predicted": [
+        4192.1,
+        1741.9
+      ],
+      "pixel": [
+        4280.8624621658855,
+        1749.427287218827
+      ],
+      "residualPx": 89.08,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:04.804Z"
+    },
+    {
+      "panoramaId": "b_20241216_0911_Track02_Sphere_00086",
+      "markerId": "b_20241216_0911_Track02_Sphere_00086#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012174565",
+      "address": "Rozengracht 217",
+      "world": {
+        "x": 120268.3799,
+        "y": 487290.8183,
+        "z": 9.749,
+        "datum": "NAP"
+      },
+      "predicted": [
+        106.8,
+        1597
+      ],
+      "pixel": [
+        106.8,
+        1597
+      ],
+      "residualPx": 0,
+      "status": "accepted",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:04.804Z"
+    },
+    {
+      "panoramaId": "b_20241216_0911_Track02_Sphere_00086",
+      "markerId": "b_20241216_0911_Track02_Sphere_00086#3",
+      "kind": "wall-end",
+      "buildingId": "0363100012174565",
+      "address": "Rozengracht 217",
+      "world": {
+        "x": 120260.7959,
+        "y": 487287.8263,
+        "z": 9.749,
+        "datum": "NAP"
+      },
+      "predicted": [
+        490.6,
+        1670.6
+      ],
+      "pixel": [
+        490.6,
+        1670.6
+      ],
+      "residualPx": 0,
+      "status": "accepted",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:04.804Z"
+    },
+    {
+      "panoramaId": "recording_2025-07-03_08-35-58_00383",
+      "markerId": "recording_2025-07-03_08-35-58_00383#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012169812",
+      "address": "Rozengracht 247",
+      "world": {
+        "x": 120130.1269,
+        "y": 487236.6703,
+        "z": 8.239,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7239.4,
+        1702.9
+      ],
+      "pixel": [
+        7222.576386691229,
+        1708.4058267346738
+      ],
+      "residualPx": 17.7,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:33.735Z"
+    },
+    {
+      "panoramaId": "recording_2025-07-03_08-35-58_00383",
+      "markerId": "recording_2025-07-03_08-35-58_00383#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012169812",
+      "address": "Rozengracht 247",
+      "world": {
+        "x": 120124.2949,
+        "y": 487234.5383,
+        "z": 8.239,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7710.5,
+        1696.2
+      ],
+      "pixel": [
+        7701.503342041019,
+        1703.9721255399834
+      ],
+      "residualPx": 11.89,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:33.735Z"
+    },
+    {
+      "panoramaId": "recording_2025-07-03_08-35-58_00383",
+      "markerId": "recording_2025-07-03_08-35-58_00383#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012169814",
+      "address": "Rozengracht 245",
+      "world": {
+        "x": 120135.9499,
+        "y": 487238.7983,
+        "z": 8.154,
+        "datum": "NAP"
+      },
+      "predicted": [
+        6840.5,
+        1744.7
+      ],
+      "pixel": [
+        6836.847031318909,
+        1745.7010297063036
+      ],
+      "residualPx": 3.79,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:33.735Z"
+    },
+    {
+      "panoramaId": "recording_2025-07-03_08-35-58_00383",
+      "markerId": "recording_2025-07-03_08-35-58_00383#3",
+      "kind": "wall-end",
+      "buildingId": "0363100012169816",
+      "address": "Rozengracht 251",
+      "world": {
+        "x": 120119.1339,
+        "y": 487232.7793,
+        "z": 9.068,
+        "datum": "NAP"
+      },
+      "predicted": [
+        99.4,
+        1663.6
+      ],
+      "pixel": [
+        92.28953806762696,
+        1665.0623588145445
+      ],
+      "residualPx": 7.26,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:33.735Z"
+    },
+    {
+      "panoramaId": "recording_2025-07-03_08-35-58_00383",
+      "markerId": "recording_2025-07-03_08-35-58_00383#4",
+      "kind": "wall-end",
+      "buildingId": "0363100012169816",
+      "address": "Rozengracht 251",
+      "world": {
+        "x": 120113.4699,
+        "y": 487230.7093,
+        "z": 9.068,
+        "datum": "NAP"
+      },
+      "predicted": [
+        431.7,
+        1712.8
+      ],
+      "pixel": [
+        427.77255010116573,
+        1714.172986986389
+      ],
+      "residualPx": 4.16,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:33.735Z"
+    },
+    {
+      "panoramaId": "recording_2025-07-03_08-35-58_00383",
+      "markerId": "recording_2025-07-03_08-35-58_00383#5",
+      "kind": "wall-end",
+      "buildingId": "0363100012169815",
+      "address": "Rozengracht 243",
+      "world": {
+        "x": 120141.7909,
+        "y": 487240.9333,
+        "z": 8.131,
+        "datum": "NAP"
+      },
+      "predicted": [
+        6551.6,
+        1787.6
+      ],
+      "pixel": [
+        6547.075428436127,
+        1788.706835717926
+      ],
+      "residualPx": 4.66,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:33.735Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002860_pano_0005_000032",
+      "markerId": "TMX7316010203-002860_pano_0005_000032#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012169826",
+      "address": "Rozengracht 236",
+      "world": {
+        "x": 120110.4179,
+        "y": 487260.9743,
+        "z": 10.456,
+        "datum": "NAP"
+      },
+      "predicted": [
+        3574.7,
+        1631.2
+      ],
+      "pixel": [
+        3574.7,
+        1631.2
+      ],
+      "residualPx": 0,
+      "status": "accepted",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:27:30.299Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002860_pano_0005_000032",
+      "markerId": "TMX7316010203-002860_pano_0005_000032#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012169826",
+      "address": "Rozengracht 236",
+      "world": {
+        "x": 120116.1429,
+        "y": 487263.0563,
+        "z": 10.456,
+        "datum": "NAP"
+      },
+      "predicted": [
+        3912.5,
+        1644.8
+      ],
+      "pixel": [
+        3912.5,
+        1644.8
+      ],
+      "residualPx": 0,
+      "status": "accepted",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:27:30.299Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002860_pano_0005_000032",
+      "markerId": "TMX7316010203-002860_pano_0005_000032#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012169825",
+      "address": "Rozengracht 238",
+      "world": {
+        "x": 120102.8709,
+        "y": 487258.2293,
+        "z": 7.404,
+        "datum": "NAP"
+      },
+      "predicted": [
+        3133,
+        1807.2
+      ],
+      "pixel": [
+        3118.3330258769274,
+        1809.8455383231337
+      ],
+      "residualPx": 14.9,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:27:30.299Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002860_pano_0005_000032",
+      "markerId": "TMX7316010203-002860_pano_0005_000032#3",
+      "kind": "wall-end",
+      "buildingId": "0363100012186296",
+      "address": "Rozengracht 234",
+      "world": {
+        "x": 120121.6959,
+        "y": 487265.0743,
+        "z": 10.522,
+        "datum": "NAP"
+      },
+      "predicted": [
+        4198.4,
+        1671.9
+      ],
+      "pixel": [
+        4198.4,
+        1671.9
+      ],
+      "residualPx": 0,
+      "status": "accepted",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:27:30.299Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0014_000187",
+      "markerId": "TMX7316010203-002921_pano_0014_000187#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012103503",
+      "address": "De Clercqstraat 71",
+      "world": {
+        "x": 119719.7599,
+        "y": 487090.2333,
+        "z": 9.703,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7090.2,
+        1586.1
+      ],
+      "pixel": [
+        7063.279762787402,
+        1592.9161678060177
+      ],
+      "residualPx": 27.77,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:28:13.753Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0014_000187",
+      "markerId": "TMX7316010203-002921_pano_0014_000187#3",
+      "kind": "wall-end",
+      "buildingId": "0363100012236266",
+      "address": "De Clercqstraat 69",
+      "world": {
+        "x": 119725.5229,
+        "y": 487092.2923,
+        "z": 9.267,
+        "datum": "NAP"
+      },
+      "predicted": [
+        6726.2,
+        1670.4
+      ],
+      "pixel": [
+        6695.243237881002,
+        1672.7868672724974
+      ],
+      "residualPx": 31.05,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:28:13.753Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0014_000187",
+      "markerId": "TMX7316010203-002921_pano_0014_000187#4",
+      "kind": "wall-end",
+      "buildingId": "0363100012236003",
+      "address": "De Clercqstraat 67",
+      "world": {
+        "x": 119731.1699,
+        "y": 487094.3103,
+        "z": 9.284,
+        "datum": "NAP"
+      },
+      "predicted": [
+        6476.4,
+        1723.6
+      ],
+      "pixel": [
+        6458.767395693298,
+        1735.6249768918221
+      ],
+      "residualPx": 21.34,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:28:13.753Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000279",
+      "markerId": "TMX7316010203-002921_pano_0015_000279#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012571959",
+      "address": "De Clercqstraat 23 / De Clercqstraat 25",
+      "world": {
+        "x": 119969.9199,
+        "y": 487180.6033,
+        "z": 9.522,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7201.6,
+        1517.3
+      ],
+      "pixel": [
+        7180.953836283658,
+        1535.93772485138
+      ],
+      "residualPx": 27.81,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:09.034Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000279",
+      "markerId": "TMX7316010203-002921_pano_0015_000279#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012571959",
+      "address": "De Clercqstraat 23 / De Clercqstraat 25",
+      "world": {
+        "x": 119964.2569,
+        "y": 487178.5973,
+        "z": 9.522,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7778.7,
+        1505
+      ],
+      "pixel": [
+        7778.7,
+        1505
+      ],
+      "residualPx": 0,
+      "status": "accepted",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:09.034Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000279",
+      "markerId": "TMX7316010203-002921_pano_0015_000279#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012157989",
+      "address": "De Clercqstraat 21",
+      "world": {
+        "x": 119975.5549,
+        "y": 487182.8123,
+        "z": 9.492,
+        "datum": "NAP"
+      },
+      "predicted": [
+        6728.9,
+        1591.9
+      ],
+      "pixel": [
+        6697.062157106053,
+        1602.5049990466205
+      ],
+      "residualPx": 33.56,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:09.034Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000279",
+      "markerId": "TMX7316010203-002921_pano_0015_000279#3",
+      "kind": "wall-end",
+      "buildingId": "0363100012153066",
+      "address": "De Clercqstraat 20 / De Clercqstraat 22",
+      "world": {
+        "x": 119965.1409,
+        "y": 487210.4403,
+        "z": 9.325,
+        "datum": "NAP"
+      },
+      "predicted": [
+        4211.2,
+        1662.7
+      ],
+      "pixel": [
+        4219.995615323026,
+        1666.6614537584749
+      ],
+      "residualPx": 9.65,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:09.034Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000279",
+      "markerId": "TMX7316010203-002921_pano_0015_000279#4",
+      "kind": "wall-end",
+      "buildingId": "0363100012153066",
+      "address": "De Clercqstraat 20 / De Clercqstraat 22",
+      "world": {
+        "x": 119968.6909,
+        "y": 487206.8703,
+        "z": 9.325,
+        "datum": "NAP"
+      },
+      "predicted": [
+        4526,
+        1616.4
+      ],
+      "pixel": [
+        4526,
+        1616.4
+      ],
+      "residualPx": 0,
+      "status": "accepted",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:09.034Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000279",
+      "markerId": "TMX7316010203-002921_pano_0015_000279#5",
+      "kind": "wall-end",
+      "buildingId": "0363100012166189",
+      "address": "De Clercqstraat 19",
+      "world": {
+        "x": 119981.2469,
+        "y": 487184.8633,
+        "z": 9.378,
+        "datum": "NAP"
+      },
+      "predicted": [
+        6426,
+        1679.4
+      ],
+      "pixel": [
+        6400.6046597582435,
+        1688.5200250310447
+      ],
+      "residualPx": 26.98,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:29:09.034Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000299",
+      "markerId": "TMX7316010203-002921_pano_0015_000299#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012167013",
+      "address": "De Clercqstraat 35",
+      "world": {
+        "x": 119871.6509,
+        "y": 487144.8103,
+        "z": 9.223,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7420.4,
+        1607.9
+      ],
+      "pixel": [
+        7385.111087255577,
+        1462.7134858941236
+      ],
+      "residualPx": 149.41,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:24.483Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000299",
+      "markerId": "TMX7316010203-002921_pano_0015_000299#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012167013",
+      "address": "De Clercqstraat 35",
+      "world": {
+        "x": 119866.7309,
+        "y": 487143.0403,
+        "z": 9.223,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7786.3,
+        1611.4
+      ],
+      "pixel": [
+        7812.423623150265,
+        1616.3624951048944
+      ],
+      "residualPx": 26.59,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:24.483Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000299",
+      "markerId": "TMX7316010203-002921_pano_0015_000299#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012236194",
+      "address": "De Clercqstraat 37",
+      "world": {
+        "x": 119866.0009,
+        "y": 487142.9503,
+        "z": 9.235,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7837.3,
+        1610.3
+      ],
+      "pixel": [
+        7810.520803036839,
+        1603.9190815544753
+      ],
+      "residualPx": 27.53,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:24.483Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000299",
+      "markerId": "TMX7316010203-002921_pano_0015_000299#3",
+      "kind": "wall-end",
+      "buildingId": "0363100012236194",
+      "address": "De Clercqstraat 37",
+      "world": {
+        "x": 119860.7519,
+        "y": 487141.0553,
+        "z": 9.235,
+        "datum": "NAP"
+      },
+      "predicted": [
+        183.7,
+        1645.9
+      ],
+      "pixel": [
+        183.7,
+        1645.9
+      ],
+      "residualPx": 0,
+      "status": "accepted",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:24.483Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000299",
+      "markerId": "TMX7316010203-002921_pano_0015_000299#4",
+      "kind": "wall-end",
+      "buildingId": "0363100012237291",
+      "address": "De Clercqstraat 39",
+      "world": {
+        "x": 119854.8309,
+        "y": 487138.9003,
+        "z": 9.251,
+        "datum": "NAP"
+      },
+      "predicted": [
+        481.9,
+        1696.8
+      ],
+      "pixel": [
+        461.24346513182866,
+        1699.4699733470688
+      ],
+      "residualPx": 20.83,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:24.483Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002921_pano_0015_000299",
+      "markerId": "TMX7316010203-002921_pano_0015_000299#5",
+      "kind": "wall-end",
+      "buildingId": "0363100012236836",
+      "address": "De Clercqstraat 41",
+      "world": {
+        "x": 119853.9209,
+        "y": 487138.5903,
+        "z": 9.288,
+        "datum": "NAP"
+      },
+      "predicted": [
+        519.8,
+        1702.5
+      ],
+      "pixel": [
+        671.9723953854626,
+        1733.8944038272612
+      ],
+      "residualPx": 155.38,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:24.483Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000041",
+      "markerId": "TMX7316010203-002928_pano_0012_000041#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012160415",
+      "address": "Da Costakade 91",
+      "world": {
+        "x": 119947.5529,
+        "y": 486995.9523,
+        "z": 8.877,
+        "datum": "NAP"
+      },
+      "predicted": [
+        5135,
+        1114.1
+      ],
+      "pixel": [
+        5169.0552139861975,
+        1107.868865554823
+      ],
+      "residualPx": 34.62,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:53.902Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000041",
+      "markerId": "TMX7316010203-002928_pano_0012_000041#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012159032",
+      "address": "Da Costakade 91",
+      "world": {
+        "x": 119945.3109,
+        "y": 487001.4703,
+        "z": 8.885,
+        "datum": "NAP"
+      },
+      "predicted": [
+        4399.2,
+        1347.7
+      ],
+      "pixel": [
+        4452.745511249231,
+        1344.1283790237198
+      ],
+      "residualPx": 53.66,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:53.902Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000069",
+      "markerId": "TMX7316010203-002928_pano_0012_000069#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012163843",
+      "address": "Da Costakade 65",
+      "world": {
+        "x": 119936.0519,
+        "y": 487126.8443,
+        "z": 9.244,
+        "datum": "NAP"
+      },
+      "predicted": [
+        5676.7,
+        1104.5
+      ],
+      "pixel": [
+        5588.814448718081,
+        1129.421958855336
+      ],
+      "residualPx": 91.35,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:40.440Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000069",
+      "markerId": "TMX7316010203-002928_pano_0012_000069#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012163843",
+      "address": "Da Costakade 65",
+      "world": {
+        "x": 119935.0069,
+        "y": 487120.8653,
+        "z": 9.244,
+        "datum": "NAP"
+      },
+      "predicted": [
+        6756.5,
+        1102.8
+      ],
+      "pixel": [
+        6634.915349501881,
+        1110.5461340183288
+      ],
+      "residualPx": 121.83,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:40.440Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000069",
+      "markerId": "TMX7316010203-002928_pano_0012_000069#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012166084",
+      "address": "Da Costakade 67",
+      "world": {
+        "x": 119934.0249,
+        "y": 487114.9423,
+        "z": 9.374,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7399.7,
+        1343.3
+      ],
+      "pixel": [
+        7327.608195135428,
+        1344.5833192812413
+      ],
+      "residualPx": 72.1,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:30:40.440Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000070",
+      "markerId": "TMX7316010203-002928_pano_0012_000070#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012159131",
+      "address": "Da Costakade 63",
+      "world": {
+        "x": 119937.2839,
+        "y": 487132.6263,
+        "z": 9.252,
+        "datum": "NAP"
+      },
+      "predicted": [
+        5534.8,
+        1169
+      ],
+      "pixel": [
+        5447.996581080293,
+        1175.1339193649571
+      ],
+      "residualPx": 87.02,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-20T18:48:39.888Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000070",
+      "markerId": "TMX7316010203-002928_pano_0012_000070#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012159131",
+      "address": "Da Costakade 63",
+      "world": {
+        "x": 119936.0519,
+        "y": 487126.8443,
+        "z": 9.252,
+        "datum": "NAP"
+      },
+      "predicted": [
+        6553.5,
+        1075.4
+      ],
+      "pixel": [
+        6423.420151317225,
+        1084.5630832635657
+      ],
+      "residualPx": 130.4,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-20T18:48:39.888Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000186",
+      "markerId": "TMX7316010203-002928_pano_0012_000186#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012102399",
+      "address": "Da Costakade 132",
+      "world": {
+        "x": 119945.3739,
+        "y": 486857.9983,
+        "z": 9.155,
+        "datum": "NAP"
+      },
+      "predicted": [
+        744.1,
+        1182.7
+      ],
+      "pixel": [
+        724.7620344453268,
+        1180.9417158183487
+      ],
+      "residualPx": 19.42,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:53.362Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000186",
+      "markerId": "TMX7316010203-002928_pano_0012_000186#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012102399",
+      "address": "Da Costakade 132",
+      "world": {
+        "x": 119942.9629,
+        "y": 486863.8403,
+        "z": 9.155,
+        "datum": "NAP"
+      },
+      "predicted": [
+        1699.6,
+        1072.8
+      ],
+      "pixel": [
+        1716.903277050117,
+        1080.1174099332422
+      ],
+      "residualPx": 18.79,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:53.362Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000186",
+      "markerId": "TMX7316010203-002928_pano_0012_000186#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012062260",
+      "address": "Da Costakade 130",
+      "world": {
+        "x": 119940.5509,
+        "y": 486869.6843,
+        "z": 9.221,
+        "datum": "NAP"
+      },
+      "predicted": [
+        2495.6,
+        1268.4
+      ],
+      "pixel": [
+        2515.9052913817036,
+        1273.3269170395715
+      ],
+      "residualPx": 20.89,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:53.362Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000186",
+      "markerId": "TMX7316010203-002928_pano_0012_000186#3",
+      "kind": "wall-end",
+      "buildingId": "0363100012149258",
+      "address": "Da Costakade 134",
+      "world": {
+        "x": 119947.8059,
+        "y": 486852.1063,
+        "z": 9.273,
+        "datum": "NAP"
+      },
+      "predicted": [
+        243.5,
+        1404.3
+      ],
+      "pixel": [
+        226.41214527460326,
+        1409.1018331090886
+      ],
+      "residualPx": 17.75,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-21T06:31:53.362Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-003006_pano_0003_000165",
+      "markerId": "TMX7316010203-003006_pano_0003_000165#0",
+      "kind": "wall-end",
+      "buildingId": "0363100012174563",
+      "address": "Rozengracht 214",
+      "world": {
+        "x": 120255.4619,
+        "y": 487315.7643,
+        "z": 8.862,
+        "datum": "NAP"
+      },
+      "predicted": [
+        3574.4,
+        1570.7
+      ],
+      "pixel": [
+        3551.338284040563,
+        1570.2315435972832
+      ],
+      "residualPx": 23.07,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-20T18:49:38.224Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-003006_pano_0003_000165",
+      "markerId": "TMX7316010203-003006_pano_0003_000165#1",
+      "kind": "wall-end",
+      "buildingId": "0363100012174563",
+      "address": "Rozengracht 214",
+      "world": {
+        "x": 120259.1849,
+        "y": 487317.2513,
+        "z": 8.862,
+        "datum": "NAP"
+      },
+      "predicted": [
+        3872.3,
+        1585.8
+      ],
+      "pixel": [
+        3839.603775703974,
+        1590.122290267936
+      ],
+      "residualPx": 32.98,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-20T18:49:38.224Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-003006_pano_0003_000165",
+      "markerId": "TMX7316010203-003006_pano_0003_000165#2",
+      "kind": "wall-end",
+      "buildingId": "0363100012174564",
+      "address": "Rozengracht 212",
+      "world": {
+        "x": 120259.1849,
+        "y": 487317.2513,
+        "z": 8.807,
+        "datum": "NAP"
+      },
+      "predicted": [
+        3872.3,
+        1589.5
+      ],
+      "pixel": [
+        3838.9539622040115,
+        1595.178908653991
+      ],
+      "residualPx": 33.83,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-20T18:49:38.224Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-003006_pano_0003_000165",
+      "markerId": "TMX7316010203-003006_pano_0003_000165#3",
+      "kind": "wall-end",
+      "buildingId": "0363100012174564",
+      "address": "Rozengracht 212",
+      "world": {
+        "x": 120263.2969,
+        "y": 487318.8953,
+        "z": 8.807,
+        "datum": "NAP"
+      },
+      "predicted": [
+        4160.2,
+        1624.2
+      ],
+      "pixel": [
+        4126.5057898918485,
+        1621.870636040166
+      ],
+      "residualPx": 33.77,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-20T18:49:38.224Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-003006_pano_0003_000165",
+      "markerId": "TMX7316010203-003006_pano_0003_000165#4",
+      "kind": "wall-end",
+      "buildingId": "0363100012174566",
+      "address": "Rozengracht 215",
+      "world": {
+        "x": 120274.2629,
+        "y": 487293.1393,
+        "z": 6.067,
+        "datum": "NAP"
+      },
+      "predicted": [
+        6609.2,
+        1746.7
+      ],
+      "pixel": [
+        6568.057907870512,
+        1756.8689153187368
+      ],
+      "residualPx": 42.38,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-20T18:49:38.224Z"
+    },
+    {
+      "panoramaId": "TMX7316010203-003006_pano_0003_000165",
+      "markerId": "TMX7316010203-003006_pano_0003_000165#5",
+      "kind": "wall-end",
+      "buildingId": "0363100012174566",
+      "address": "Rozengracht 215",
+      "world": {
+        "x": 120268.3799,
+        "y": 487290.8183,
+        "z": 6.067,
+        "datum": "NAP"
+      },
+      "predicted": [
+        7135,
+        1681.9
+      ],
+      "pixel": [
+        7112.3747277016555,
+        1693.4241024376863
+      ],
+      "residualPx": 25.39,
+      "status": "corrected",
+      "cameraModelId": "amsterdam-world-aligned/v1",
+      "reviewedAt": "2026-09-20T18:49:38.224Z"
+    }
+  ]
+}
