@@ -79,6 +79,24 @@ interface Measurement {
   sample: WallColourSample | null;
   /** The estimator whose answer is offered to the grader. */
   dominant: DominantWallColour | null;
+  /**
+   * What an image row means in metres. Without this a consumer can only reason
+   * in fractions of the crop, and a fraction means something different on a
+   * two-storey building than on a five-storey one — which is why a fractional
+   * search window fails across a mixed street. An Amsterdam shopfront boundary
+   * sits about 2.5–6 m above the pavement whatever is stacked above it.
+   *
+   * Row 0 is the top of the crop. NAP at row r is
+   * `topZ - (r / cropHeightPx) * (topZ - baseZ)`, and metres above the pavement
+   * is that minus `groundNAP`.
+   */
+  metricFrame: {
+    baseZ: number;
+    topZ: number;
+    groundNAP: number | null;
+    cropHeightPx: number;
+    metresPerPixel: number;
+  } | null;
   /** Fraction of the crop the segmentation calls building. */
   buildingFraction: number | null;
   /** Mean (blue − red) over building pixels: the campaign's colour cast. */
@@ -145,7 +163,7 @@ for (const payload of observations) {
     machineWallColour: payload.machineRoutingProposal?.wallColour ?? null,
   };
 
-  const empty = { sample: null, dominant: null, buildingFraction: null, castBlueMinusRed: null };
+  const empty = { sample: null, dominant: null, buildingFraction: null, castBlueMinusRed: null, metricFrame: null };
   const file = image?.sha256 ? path.join(EVIDENCE, `${image.sha256}.jpg`) : null;
   if (!file || !existsSync(file)) {
     measurements.push({ ...base, ...empty, status: 'unusable', reason: 'crop not on disk' });
@@ -155,6 +173,19 @@ for (const payload of observations) {
 
   const { data, info } = await sharp(file).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const rgb: RgbImage = { data, width: info.width, height: info.height, channels: 3 };
+
+  // Rows to metres. Taken from the decoded height, not the recorded one, so a
+  // resized crop still converts correctly.
+  const plane = image.plane;
+  const metricFrame = plane && Number.isFinite(plane.baseZ) && Number.isFinite(plane.topZ)
+    ? {
+      baseZ: plane.baseZ,
+      topZ: plane.topZ,
+      groundNAP: payload.groundNAP ?? null,
+      cropHeightPx: info.height,
+      metresPerPixel: (plane.topZ - plane.baseZ) / info.height,
+    }
+    : null;
 
   // The segmentation mask, resized to the crop if the segmenter tiled it at a
   // different scale. 1 marks a pixel the estimator may use.
@@ -185,12 +216,12 @@ for (const payload of observations) {
   const sample = sampleWallColour(rgb, []);
   const dominant = dominantWallColour(rgb, mask);
   if (!sample && !dominant) {
-    measurements.push({ ...base, ...empty, buildingFraction, castBlueMinusRed: cast,
+    measurements.push({ ...base, ...empty, buildingFraction, castBlueMinusRed: cast, metricFrame,
       status: 'unusable', reason: 'no estimator found a usable wall' });
     unusable += 1;
     continue;
   }
-  measurements.push({ ...base, status: 'measured', sample, dominant, buildingFraction, castBlueMinusRed: cast });
+  measurements.push({ ...base, status: 'measured', sample, dominant, buildingFraction, castBlueMinusRed: cast, metricFrame });
   measured += 1;
 }
 
