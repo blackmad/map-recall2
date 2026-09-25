@@ -1,5 +1,46 @@
 # Canal Recall — what is built
 
+## 2026-09-25 — the OCR reads every sign more than once, and that is the fix
+
+The reported failure was partial words — `Handwork Boutiqur`, `JOHNNIL`,
+`GRAMS` — blamed on shadow and occlusion, which was the right diagnosis. Two
+things followed from measuring it that were not expected.
+
+**Resolution was already spent.** `run_vision_ocr.ts` has defaulted to the
+ground tier all along: 110 px/m over a 4.9 m band, against 45 px/m for the whole
+facade. A 45-storefront A/B puts the full tier at 11 storefronts read and the
+ground tier at 33, so that win was banked long ago and the partial words occur
+*at* the higher resolution. Preparing the crops (3x Lanczos, CLAHE, sharpen)
+reaches 38 storefronts and 158 lines against 104 — but reading the output rather
+than the totals, most of the gain is more fragments, not better ones: on
+De Clercqstraat 70 `Handwork Boutiqur` became `Handwork Boutique` while a second
+reading of the same fascia degraded to `Handwork Borfiaue`.
+
+**Which is the finding.** A single crop already contains several readings of one
+sign — the fascia, a window decal, an awning valance, repeated copies along a
+hoarding — and their errors are independent, because what differs between them
+is the occlusion. One Bilderdijkstraat hoarding came back as `WONDR`, `MONDR`,
+`TONDE` and `LONDO`; one billboard was read three times, none correctly. The
+redundancy needed to correct the reader was in every crop already, and taking
+the first reading threw it away. Cross-year capture is the same signal with a
+longer baseline, which is why persistence doubles as the notability ranking.
+
+`facade/signConsensus.ts` votes across readings and recovers `CLAIM NU OP`,
+`EERLIJK ETEN.NL`, `DOUGLAS` and `MAGAZINES GIFTS BOOKS` from sets where no
+single reading was right.
+
+**It is not yet a net win on text, and is deliberately not wired to anything.**
+Over 1,980 cached reader lines it changes 24 of 1,340 strings, several for the
+worse — `Scopes fentre` beat `ScooterCentre` because that crop renders the wrong
+word larger and the glyph-height weighting believed it. The blocking fact is
+that `agreement` does not separate good changes from bad: `Licherie` and
+`Exclusive` are both wrong at 1.00 while the correct `MAGAZINES GIFTS BOOKS`
+scores 0.79, so no confidence threshold makes the rewrite safe. What ships is
+`support` / `views` / `years`, which are trustworthy now. The text rewrite waits
+on a hand-transcribed reference set, because tuning against no ground truth is
+exactly how the roofline and opening-detector lanes produced confident wrong
+verdicts.
+
 ## 2026-09-24 — the canal-belt roofline is 3 m high because of the track-datum correction
 
 Canal-belt rooflines read a median **+3.2 m above `b3_h_dak_max`**, with the

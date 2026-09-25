@@ -147,14 +147,41 @@ imagery. Answer it before building the crop publisher, not after.
 
 ## Order of work
 
-**S1. Fragment consensus.** *Reordered ahead of the invention measurement after §1a: the failure the
-owner sees is fragmentation, not fabrication, and consensus is the direct answer to it.* Group the
-readings within a crop by rectangle proximity and string similarity, then vote per character
-position, weighted by per-reading confidence and glyph height. `Handwork Boutiqur` + `Handwork
-Boutique` + `Handwork Borfiaue` should resolve to `Handwork Boutique` and drop the rest, and a
-fragment agreeing with nothing should be discarded rather than published. Score against a small
-hand-transcribed set of the same 45 De Clercqstraat crops — the transcription is minutes of work and
-gives every later step a reference. Run over prepared crops, since preparation exists to feed this.
+**S1. Fragment consensus — built, measured, and only half a success.**
+*Reordered ahead of the invention measurement after §1a: the failure the owner sees is fragmentation,
+not fabrication.* `src/canalRecall/facade/signConsensus.ts` clusters readings by string similarity
+and glyph height, aligns them onto the longest, and votes per character weighted by confidence and
+letter size. Placement stays per rectangle so two `Hotel` signs on one frontage remain two signs.
+
+On the cases it was built for it is exactly right, recovering strings no single reading contained:
+
+| readings | voted |
+| --- | --- |
+| `CLAIM NU OPI` · `CLAIM HU OP` · `LAIM NU OP` · `CLAIM NIP` · `CLAIMIOF` | `CLAIM NU OP` |
+| `EERLIJK ETEN.NL` · `EERLIJK EMANL` · `LIJKETEN.NL` | `EERLIJK ETEN.NL` |
+| `MAGAZINES GIFTS BIOKS` · `MAGAZINES GIFTS BOO` · `GIFTS BOOKS` | `MAGAZINES GIFTS BOOKS` |
+| `DOUGLAS` · `FOUCLAS®` · `UGLAS` | `DOUGLAS` |
+| `184` ×3 · `184H` ×3 | `184` |
+
+**But over the whole cached corpus it is not yet a net win on text, and should not ship as an
+automatic rewriter.** Across 1,980 reader lines from 559 buildings it emits 1,340 signs, of which 434
+(32%) are corroborated by a second reading and 29 by a second view. It changes 24 strings: most are
+improvements, several are regressions — `Scopes fentre` beat `ScooterCentre` because that crop
+renders the wrong word larger, and the glyph-height weighting believed it.
+
+The finding that matters for sequencing: **`agreement` does not separate the good changes from the
+bad.** `Licherie` and `Exclusive` are both wrong at agreement 1.00, while the correct
+`MAGAZINES GIFTS BOOKS` scores 0.79. So there is no confidence threshold that makes the rewrite safe,
+and tuning further against no reference is how the earlier lanes in this project went wrong.
+
+What to use it for now: **corroboration, not correction.** `support`, `views` and `years` are
+trustworthy immediately and are precisely what S2 and the invention filter consume. Gate the text
+rewrite behind S1c.
+
+**S1c. The reference set that unblocks the rewrite.** Hand-transcribe the 45 De Clercqstraat ground
+crops. Minutes of work, and it is the missing piece: it turns every choice above — pivot by length,
+ties to a character over a deletion, the six-character fragment floor, height weighting — from an
+argued default into a measured one. Until it exists, the vote's text output is a proposal.
 
 **S1b. Measure the invention rate**, once consensus is in place, against the three reference shops on
 Rozengracht and then the transcribed set. It still has never been measured and 307 unreviewed signs
