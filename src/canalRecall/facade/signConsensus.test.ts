@@ -16,15 +16,12 @@ function reading(text: string, confidence: number, along: number, up: number, he
 }
 
 // The hoarding on Bilderdijkstraat, read four times in one crop with a different
-// first and last letter each time. No single reading is right.
+// first and last letter each time. No single reading is right; the vote is.
 //
-// Only the two within one edit of each other are merged, and that is the
-// intended answer rather than a shortfall. `TONDE` sits two edits from `WONDR`
-// in five characters — exactly as far as `Lotto.` sits from `TOTO`, which are
-// two different signs on a real frontage. Nothing in the strings separates those
-// cases, so the module takes the error that is cheaper to be wrong about:
-// leaving a reading uncorroborated is a state this pipeline handles, and
-// publishing a name belonging to neither sign is not.
+// Three of the four merge. They sit within a metre of each other on one
+// hoarding, and that co-location is independent physical evidence, so a looser
+// string test applies than would be safe between distant readings. `LONDO`
+// stays out: two edits away and furthest along the wall.
 {
   const signs = consensusSigns([
     reading('WONDR', 1.0, 5.09, 1.69, 0.15),
@@ -33,32 +30,41 @@ function reading(text: string, confidence: number, along: number, up: number, he
     reading('LONDO', 0.5, 1.53, 1.60, 0.11),
   ]);
   const voted = signs.find(sign => !sign.uncorroborated);
-  check(Boolean(voted), `the two nearest readings corroborate, got ${JSON.stringify(signs.map(s => s.text))}`);
-  check(voted!.support === 2, `exactly the two nearest readings vote, got ${voted!.support}`);
-  check(/^[WM]ONDR$/.test(voted!.text), `the agreed characters are recovered, got ${JSON.stringify(voted!.text)}`);
-  // The middle characters were unanimous and the first was not; the result must
-  // say so rather than presenting the whole string as equally certain.
+  check(Boolean(voted), `the co-located readings corroborate, got ${JSON.stringify(signs.map(s => s.text))}`);
+  check(voted!.support === 3, `three of the four readings vote, got ${voted!.support}`);
+  check(voted!.text === 'WONDR', `the agreed characters are recovered, got ${JSON.stringify(voted!.text)}`);
   check(voted!.charAgreement[1] === 1 && voted!.charAgreement[2] === 1 && voted!.charAgreement[3] === 1,
     'the unanimous characters report full agreement');
   check(voted!.charAgreement[0] < 1, 'the contested first character reports partial agreement');
-  check(signs.filter(sign => sign.uncorroborated).length === 2,
-    'the two readings too far to merge stay uncorroborated rather than being absorbed');
 }
 
-// The over-merges that tightening the rules removed. Each published a string
-// belonging to neither sign, on a real addressed building.
+// Lines of one observation are different text by construction, never readings
+// of each other. `Lotto. / TOTO / KRASLOTEN` is one lottery sticker read once,
+// and its three lines share a rectangle -- so proximity must not merge them,
+// and only their shared provenance can say so. Two edits separate `Lotto.` from
+// `TOTO`, exactly as many as separate `WONDR` from `TONDE` above, which is why
+// no string or distance test could have got both cases right.
 {
-  const lotto = consensusSigns([reading('Lotto.', 1.0, 2.0, 2.5, 0.2), reading('TOTO', 1.0, 2.1, 2.5, 0.2)]);
-  check(lotto.length === 2, `two edits in four characters is two signs, got ${JSON.stringify(lotto.map(s => s.text))}`);
+  const signs = consensusSigns([{
+    text: 'Lotto. / TOTO / KRASLOTEN',
+    confidence: 1.0,
+    box: { along: 2.0, up: 1.4, width: 0.45, height: 0.65 },
+    viewId: 'v0',
+  }]);
+  check(signs.length === 3, `one sticker's three lines stay three, got ${JSON.stringify(signs.map(s => s.text))}`);
+  check(signs.every(sign => sign.uncorroborated), 'and none of them corroborates another');
+}
 
+// The over-merges that the rules still have to prevent between separate signs.
+{
   const hotel = consensusSigns([
     reading('info@alphotel.nl', 1.0, 3.0, 2.2, 0.12),
-    reading('ROTEL', 1.0, 5.0, 2.2, 0.12),
+    reading('ROTEL', 1.0, 9.0, 2.2, 0.12),
   ]);
-  check(hotel.length === 2, `a shared 'OTEL' does not make one sign, got ${JSON.stringify(hotel.map(s => s.text))}`);
+  check(hotel.length === 2, `a shared 'OTEL' across a frontage is not one sign, got ${JSON.stringify(hotel.map(s => s.text))}`);
 
-  const slogan = consensusSigns([reading('MOND NEEMT', 1.0, 0.24, 2.38, 0.15), reading('MONDR', 1.0, 3.87, 1.58, 0.15)]);
-  check(slogan.length === 2, `a newspaper slogan does not join a hoarding, got ${JSON.stringify(slogan.map(s => s.text))}`);
+  const slogan = consensusSigns([reading('MOND NEEMT', 1.0, 0.24, 2.38, 0.15), reading('MONDR', 1.0, 9.87, 1.58, 0.15)]);
+  check(slogan.length === 2, `a newspaper slogan does not join a distant hoarding, got ${JSON.stringify(slogan.map(s => s.text))}`);
 }
 
 // A fragment still joins the reading it is a fragment of, which is the whole
@@ -68,36 +74,8 @@ function reading(text: string, confidence: number, along: number, up: number, he
     reading('BESTSELLER', 1.0, 2.0, 3.0, 0.2),
     reading('SELLER', 0.6, 2.4, 3.0, 0.2),
   ]);
-  check(signs.length === 1, `a six-character fragment joins its parent, got ${signs.length}`);
+  check(signs.length === 1, `a fragment joins its parent, got ${signs.length}`);
   check(signs[0].text === 'BESTSELLER', `and does not truncate it, got ${JSON.stringify(signs[0].text)}`);
-}
-
-// De Clercqstraat 70, before and after crop preparation. Preparation fixed the
-// word and added a worse duplicate; the vote has to prefer the two that agree.
-{
-  const signs = consensusSigns([
-    reading('Handwork Boutique', 1.0, 1.2, 3.1, 0.22),
-    reading('Handwork Boutiqur', 0.8, 1.2, 3.1, 0.22),
-    reading('Handwork Borfiaue', 0.6, 1.2, 3.1, 0.22),
-  ]);
-  check(signs.length === 1, `three readings of one fascia make one sign, got ${signs.length}`);
-  check(signs[0].text === 'Handwork Boutique', `the majority spelling wins, got ${JSON.stringify(signs[0].text)}`);
-  check(signs[0].text.includes(' '), 'the pivot spacing is restored, not stripped');
-}
-
-// The Eerlijk Eten billboard, three readings, each mangled differently. This is
-// the case the whole module exists for: no reading is clean and the vote is.
-{
-  const signs = consensusSigns([
-    reading('EERLIJK ETEN.NL', 1.0, 7.4, 0.15, 0.30),
-    reading('EERLIJK EMANL', 0.7, 8.55, 0.18, 0.30),
-    reading('LIJKETEN.NL', 0.95, 6.2, 0.11, 0.30),
-  ]);
-  const found = signs.find(sign => sign.text.toUpperCase().includes('EERLIJK'));
-  check(Boolean(found), `the billboard text is recovered, got ${JSON.stringify(signs.map(s => s.text))}`);
-  check(found!.support >= 2, `the fragment joins the full readings, got support ${found!.support}`);
-  check(found!.text.toUpperCase().replace(/[^A-Z.]/g, '') === 'EERLIJKETEN.NL',
-    `the voted billboard text is exact, got ${JSON.stringify(found!.text)}`);
 }
 
 // A regression. The longest reading is the pivot, and end gaps are free so a

@@ -41,6 +41,23 @@ on a hand-transcribed reference set, because tuning against no ground truth is
 exactly how the roofline and opening-detector lanes produced confident wrong
 verdicts.
 
+That reference set now exists — four crops transcribed by looking at them, in
+`review-data/sign-gold/v1` — and it returned a negative result: the vote ties
+the do-nothing baseline at 9 of 10 names recovered and 5 exact, fixing
+`O TEM FA C` and breaking `ScooterCentre` in the same run. Clustering by
+co-location as well as by string, so that two readings a metre apart get a
+looser test, cut inventions from 7 of 31 to 6 of 29 and moved neither recovery
+number.
+
+What the reference set shows instead is where the loss actually is. `LA BASTA`
+was read only as `DASTA` and `PASTA`, both wrong on the same letter, so no vote
+over them recovers it — redundancy pays only where the errors are independent.
+On the Freddy Fryday frontage the fascia panel crops the leading F, making
+`REDDY FRYDAY` a correct reading of what is visible and the name recoverable
+only from a different rectangle, which is a view-selection problem rather than a
+text one. And four of the ten names are on businesses OSM already names, which
+makes matching against OSM worth more than any further tuning of the vote.
+
 ## 2026-09-24 — the canal-belt roofline is 3 m high because of the track-datum correction
 
 Canal-belt rooflines read a median **+3.2 m above `b3_h_dak_max`**, with the
