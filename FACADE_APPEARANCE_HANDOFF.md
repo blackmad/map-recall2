@@ -139,6 +139,48 @@ explain *why*, including why a gradient is not a two-tone facade.
 
 ---
 
+## 3a. First pass result, and the two things the spec above got wrong
+
+A first implementation of §3 was built and scored honestly. **It does not work on the district's
+crops: 11 of 46.** Specifically: 1 of 36 `differs` detected, 10 of 10 `same` correct, 0 of 12
+`obscured` abstained. Both failures trace to errors in the specification above, not to the
+implementation. Fix these before rebuilding.
+
+**Error 1 — do not reuse `dominantWallColour` per band.** That module exists to find *masonry*, and
+it rejects blue/reflecting glass and near-white joinery by design. A glass or painted shopfront under
+a brick wall is therefore thrown away, and the band collapses back to the upper wall's brick, which
+reads as one-tone. That is precisely the 36-building population the module is supposed to find.
+
+Instead: compare bands on **raw colour statistics of whatever is actually there** — the whole usable
+population per band, with no masonry rejection — because the question is "does the lower facade
+differ from the upper", not "what masonry is each band". Classify material only *after* a split is
+found, and only on the side where it makes sense. A shopfront is defined by not being the upper wall.
+
+**Error 2 — the mask handed over was binary, and threw the answer away.**
+`scripts/facade-eval/measure-wall-colour.ts` collapses the segmentation to `building == 2`, so the
+occluder class was invisible. Read the **full Vistas label map** instead (`0` other, `1` sky,
+`2` building, `3` occluder — vegetation, vehicle, person, `255` unknown). Measured over the gold set,
+occluder fraction in the lowest 28% of the building span separates the classes:
+
+| gold label | n | median occluder fraction |
+| --- | --- | --- |
+| `obscured` | 12 | **0.333** |
+| `same` | 10 | 0.107 |
+| `differs` | 36 | 0.086 |
+
+A threshold needs fitting (0.15 catches 10 of 12 obscured but also 15 of 46 others), but the signal
+is real. Abstention should be driven by this, not inferred from coverage ratios.
+
+**Also weak, per the first pass:** the within-side variation gate rejects true two-tones, because the
+variation it measures includes windows and shadow. On Rozengracht 38 the genuine split is 37.3
+against a within-side spread of 45.9. Compare against a *smoothed* band-to-band step, or use a proper
+change-point statistic, rather than raw spread.
+
+**Known-hard cases to expect and report rather than paper over:** crops straddling two abutting
+houses (band means mix neighbours); a single-band rendered plinth (too thin for a minimum-bands
+rule); and the argmax split landing on a near-top roof/shadow line around 0.83 instead of the
+shopfront.
+
 ## 4. How to score it (do this before claiming it works)
 
 The gold set at `review-data/wall-colour-gold/v1/vision-labels.json` has 60 entries keyed by
