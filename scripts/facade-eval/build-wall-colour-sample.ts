@@ -58,6 +58,11 @@ interface Entry {
   estimatorGap: number | null;
   buildingFraction: number | null;
   castBlueMinusRed: number | null;
+  /** Rows to metres above the pavement; see `measure-wall-colour.ts`. */
+  metricFrame: {
+    baseZ: number; topZ: number; groundNAP: number | null;
+    cropHeightPx: number; metresPerPixel: number;
+  } | null;
 }
 
 const doc = JSON.parse(await readFile(IN, 'utf8')) as { measurements: any[] };
@@ -88,6 +93,7 @@ for (const m of doc.measurements) {
     estimatorGap: gap === null ? null : Math.round(gap),
     buildingFraction: m.buildingFraction,
     castBlueMinusRed: m.castBlueMinusRed === null ? null : Math.round(m.castBlueMinusRed),
+    metricFrame: m.metricFrame ?? null,
   });
 }
 
