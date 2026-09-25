@@ -43,6 +43,40 @@ one drive-through as mastery. Pairs naturally with item 5: the same data answers
 
 ## P2 — Weight and reach
 
+**8d. Sign text: use the vote for corroboration, not correction — and get the
+reference set.**
+*Opened 2026-09-25. Plan: `SIGN_PHOTOGRAPHY_PLAN.md` S1/S1c.* The owner reported
+the OCR as terrible, with partial words from shadow and occlusion. Two
+assumptions turned out to be wrong when measured, and the correction matters
+more than the complaint:
+
+- `run_vision_ocr.ts` **already defaults to the ground tier** (110 px/m over a
+  4.9 m band). The tighter crop is not an improvement waiting to be made; it is
+  what produces today's output, and the full tier is far worse — 11 of 45
+  storefronts read against the ground tier's 33. The partial words happen at the
+  higher resolution, so more pixels will not fix them.
+- Preprocessing (`scripts/facade-eval/prep-ocr-crops.ts`, 3x Lanczos + CLAHE +
+  sharpen) reaches 38 of 45 storefronts and 158 lines against 104, but the gain
+  is mostly *more fragments*, not cleaner ones.
+
+`src/canalRecall/facade/signConsensus.ts` votes across readings and is right on
+the cases it was built for, recovering `CLAIM NU OP`, `EERLIJK ETEN.NL` and
+`MAGAZINES GIFTS BOOKS` from readings where no single one was correct. Over the
+full cached corpus, though, it changes 24 of 1,340 strings with several
+regressions, **and `agreement` does not separate the good changes from the bad**
+— two wrong strings score 1.00 while a correct one scores 0.79.
+
+So: ship `support` / `views` / `years`, which are trustworthy now and are what
+the persistence and invention filters consume. **Do not wire the rewritten text
+to anything yet.**
+
+*Blocked on, and the whole point of, the next step:* hand-transcribe the 45 De
+Clercqstraat ground crops. Minutes of work, and it converts every default in the
+voter — pivot by length, ties to a character over a deletion, the six-character
+fragment floor, glyph-height weighting — from an argued choice into a measured
+one. Tuning further without it is how the roofline and opening-detector lanes
+went wrong: good signal, no trustworthy reference.
+
 **8a. Close one measure → accept → render loop, then repeat it.**
 *Opened 2026-09-24. Plan: "Close one loop, then repeat it."* The appearance
 programme has never once completed the chain, for any property, for any
