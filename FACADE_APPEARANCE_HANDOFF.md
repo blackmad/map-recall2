@@ -181,6 +181,38 @@ houses (band means mix neighbours); a single-band rendered plinth (too thin for 
 rule); and the argmax split landing on a near-top roof/shadow line around 0.83 instead of the
 shopfront.
 
+## 3b. Pass two, and the actual task for pass three
+
+Pass two (`b823966`) fixed the occlusion half — 11 of 12 obscured bases now abstain, against 0 before
+— and left the ground-floor half unchanged at 8 of 36. Raw band colour did work as intended (a glass
+shopfront under brick is now visible where pass one measured one-tone). The remaining failure is
+single and was correctly identified: **the split objective is wrong.**
+
+Both `differs` and `same` crops peak at 0.75–0.83 height, on a cornice, storey line or roof line.
+Asking for the largest colour step gets you the highest-contrast line on the building, which on
+Amsterdam facades is almost never the shopfront. A threshold sweep cannot fix an objective error, and
+the sweep confirmed it: the whole family sits on one trade-off line with nothing above 11 strict.
+
+Pass three should change two things, and neither is a smoother:
+
+1. **Test against the upper wall, one-sided — do not look for a symmetric change-point.** A ground
+   floor is not "where the biggest change is"; it is "the bottom region whose material is unlike the
+   rest of the building". Establish the upper-wall colour from the top ~60% of the span, which is
+   reliably masonry, then scan upward from the base for the highest row below which the colour stays
+   persistently unlike it. A cornice does not satisfy that test, because the material above *and*
+   below it is the same brick.
+
+2. **Search in metres, not image fractions.** The observation carries `height`, `groundNAP` and the
+   crop's plane `baseZ`/`topZ`, so image rows convert to metres above ground. An Amsterdam shopfront
+   boundary sits roughly 2.5–6 m above pavement almost without exception; a five-storey building's
+   fascia is at a completely different image fraction from a two-storey one's, which is why a
+   fractional window fails across the mix. This is an architectural prior grounded in the data we
+   already carry, not a tuning constant.
+
+Also unresolved and worth stating plainly: the occluder class cannot tell a van *in front of* a
+shopfront from a tree *beside* one, which is what the 14 false abstentions are. That needs a
+wall-versus-not-wall notion or a crop tight to a single frontage, not another threshold.
+
 ## 4. How to score it (do this before claiming it works)
 
 The gold set at `review-data/wall-colour-gold/v1/vision-labels.json` has 60 entries keyed by
