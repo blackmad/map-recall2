@@ -70,12 +70,31 @@ So: ship `support` / `views` / `years`, which are trustworthy now and are what
 the persistence and invention filters consume. **Do not wire the rewritten text
 to anything yet.**
 
-*Blocked on, and the whole point of, the next step:* hand-transcribe the 45 De
-Clercqstraat ground crops. Minutes of work, and it converts every default in the
-voter — pivot by length, ties to a character over a deletion, the six-character
-fragment floor, glyph-height weighting — from an argued choice into a measured
-one. Tuning further without it is how the roofline and opening-detector lanes
-went wrong: good signal, no trustworthy reference.
+*The reference set now exists* — `review-data/sign-gold/v1/transcriptions.json`,
+four crops transcribed by looking at them, scored by
+`scripts/facade-eval/score-sign-consensus.ts` — and it settles the question
+against the vote: **9/10 names recovered and 5/10 exact, identical to the
+do-nothing baseline.** The vote fixes `O TEM FA C` and breaks `ScooterCentre` in
+the same run. Clustering by co-location as well as string cut inventions from
+7/31 to 6/29 and moved neither recovery number. Do not tune this further without
+a larger reference set; a tie is the answer, not an invitation.
+
+**Next, in this order, because the reference set says where the loss is:**
+
+1. **Match against OSM `name`.** Four of the ten names are on businesses OSM
+   already names. Where the identity is known, the reader only has to confirm a
+   sign is there and locate its rectangle — a fuzzy match against a one-element
+   candidate list, which tolerates far more character error than free reading.
+   Highest value remaining, and it needs no new imagery.
+2. **View selection (plan §3).** On the Freddy Fryday frontage the fascia panel
+   crops the leading F, so `REDDY FRYDAY` is a *correct* reading of what is
+   visible; the name exists only on the hanging sign and the chip-cone. That is
+   a choice-of-rectangle problem, not a text problem, and no amount of voting
+   reaches it.
+3. Leave the vote where it is, publishing `support`/`views`/`years` only.
+   `LA BASTA` read as `DASTA` and `PASTA` — both wrong on the same letter — is
+   the shape of what voting cannot fix: redundancy pays only where the errors
+   are independent.
 
 **8a. Close one measure → accept → render loop, then repeat it.**
 *Opened 2026-09-24. Plan: "Close one loop, then repeat it."* The appearance

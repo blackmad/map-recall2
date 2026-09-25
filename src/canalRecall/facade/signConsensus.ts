@@ -163,6 +163,17 @@ export interface ConsensusOptions {
    * in a pair no second witness could exist.
    */
   minCharReadings?: number;
+  /**
+   * How far apart, in metres on the wall, two readings may sit and still count
+   * as the same patch of wall. A shop's own fascia, its window decal and its
+   * hanging sign are all within a metre or so of each other; the next shop's
+   * fascia is not.
+   */
+  nearSlackM?: number;
+  /** The looser string thresholds that co-location buys. */
+  nearEditFraction?: number;
+  nearFragmentMinChars?: number;
+  nearFragmentMinShare?: number;
 }
 
 const DEFAULTS: Required<ConsensusOptions> = {
@@ -174,12 +185,28 @@ const DEFAULTS: Required<ConsensusOptions> = {
   minConfidence: 0.3,
   minChars: 3,
   minCharReadings: 2,
+  nearSlackM: 1.0,
+  nearEditFraction: 0.45,
+  nearFragmentMinChars: 4,
+  nearFragmentMinShare: 0.45,
 };
 
+/**
+ * One exploded line, carrying which observation it was a line of.
+ *
+ * The provenance matters: `Lotto. / TOTO / KRASLOTEN` is one reading of one
+ * lottery sticker, and its three lines share a rectangle. They are simultaneous
+ * lines of different text, not three readings of the same words, so they must
+ * never vote on each other however close or similar they look.
+ */
+interface Line extends SignReading { origin: number }
+
 /** Split the reader's line joins, and drop what is too short to be a sign. */
-function explode(readings: readonly SignReading[], options: Required<ConsensusOptions>): SignReading[] {
-  const out: SignReading[] = [];
+function explode(readings: readonly SignReading[], options: Required<ConsensusOptions>): Line[] {
+  const out: Line[] = [];
+  let origin = 0;
   for (const reading of readings) {
+    origin += 1;
     if (reading.confidence < options.minConfidence) continue;
     const lines = reading.text.split(' / ').map(line => line.trim()).filter(Boolean);
     // A joined observation covers all its lines, so each line's own height is
@@ -187,7 +214,7 @@ function explode(readings: readonly SignReading[], options: Required<ConsensusOp
     const lineHeight = lines.length > 1 ? reading.box.height / lines.length : reading.box.height;
     for (const line of lines) {
       if (compactOf(line).length < options.minChars) continue;
-      out.push({ ...reading, text: line, box: { ...reading.box, height: lineHeight } });
+      out.push({ ...reading, text: line, box: { ...reading.box, height: lineHeight }, origin });
     }
   }
   return out;
@@ -231,17 +258,38 @@ function longestCommonSubstring(a: string, b: string): number {
   return best;
 }
 
-/** Whether two readings are readings of the same words. */
-function sameWords(a: string, b: string, options: Required<ConsensusOptions>): boolean {
+/**
+ * Whether two readings are readings of the same words.
+ *
+ * `near` says the two rectangles sit on the same patch of wall, which is
+ * independent physical evidence and buys a looser string test. This is what
+ * separates the two cases that no string test can: `cooler Centre` a few
+ * centimetres from `ScooterCentre` is one fascia read twice, while `Lotto.`
+ * and `TOTO` — the same edit distance apart — are two signs at opposite ends
+ * of a frontage. Without it the tight thresholds needed to keep those apart
+ * also stop a sign's own fragments from finding each other, which measured as
+ * eight published signs on a frontage carrying three.
+ */
+function sameWords(a: string, b: string, options: Required<ConsensusOptions>, near: boolean): boolean {
   if (!a.length || !b.length) return false;
   const longer = Math.max(a.length, b.length);
   const shorter = Math.min(a.length, b.length);
-  const allowed = Math.floor(options.editFraction * longer);
+  const fraction = near ? options.nearEditFraction : options.editFraction;
+  const allowed = near ? Math.round(fraction * longer) : Math.floor(fraction * longer);
   if (levenshtein(a, b) <= allowed) return true;
   // A fragment of a longer reading: a shadow cut the sign in half, so the part
   // that was read is correct as far as it goes.
   const common = longestCommonSubstring(a, b);
-  return common >= options.fragmentMinChars && common >= options.fragmentMinShare * shorter;
+  const minChars = near ? options.nearFragmentMinChars : options.fragmentMinChars;
+  const minShare = near ? options.nearFragmentMinShare : options.fragmentMinShare;
+  return common >= minChars && common >= minShare * shorter;
+}
+
+/** Whether two readings sit on the same patch of wall, in metres. */
+function nearby(a: SignBox, b: SignBox, slack: number): boolean {
+  const alongGap = Math.max(a.along - (b.along + b.width), b.along - (a.along + a.width), 0);
+  const upGap = Math.max(a.up - (b.up + b.height), b.up - (a.up + a.height), 0);
+  return alongGap <= slack && upGap <= slack;
 }
 
 function compatibleHeight(a: SignBox, b: SignBox, ratio: number): boolean {
@@ -538,12 +586,14 @@ export function consensusSigns(
   const ordered = [...candidates].sort((a, b) =>
     weightOf(b, settings) * compactOf(b.text).length - weightOf(a, settings) * compactOf(a.text).length);
 
-  const clusters: SignReading[][] = [];
+  const clusters: Line[][] = [];
   for (const reading of ordered) {
     const compact = compactOf(reading.text);
     const cluster = clusters.find(group => group.some(other =>
-      compatibleHeight(other.box, reading.box, settings.heightRatio)
-      && sameWords(compactOf(other.text), compact, settings)));
+      other.origin !== reading.origin
+      && compatibleHeight(other.box, reading.box, settings.heightRatio)
+      && sameWords(compactOf(other.text), compact, settings,
+        nearby(other.box, reading.box, settings.nearSlackM))));
     if (cluster) cluster.push(reading);
     else clusters.push([reading]);
   }

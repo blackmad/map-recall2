@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "area": "da-costabuurt-v1",
+  "method": "A vision model was shown each ground-tier crop and transcribed what is legible on it. No reader output was consulted while transcribing, so the reference is independent of the thing it scores.",
+  "note": "`names` are the shop and business names a sign pipeline is meant to recover, which is what the game renders. `alsoLegible` records other real text in the crop -- street signs, house numbers, window decals -- so a reading matching one of those is scored as correct-but-not-a-name rather than as an invention. Anything matching neither is an invention.",
+  "crops": [
+    {
+      "surfaceId": "0363100012236681_e_0f0740u",
+      "names": ["ScooterCentre", "WEST", "i Boenda"],
+      "alsoLegible": ["Verkoop - Inkoop - Onderhoud - Onderdelen", "Reparatie-Schadetaxatie", "10", "8"],
+      "comment": "ScooterCentre appears three times: the main fascia and two small logos. i Boenda appears on the pink fascia and again in the window."
+    },
+    {
+      "surfaceId": "0363100012236262_e_08gco44",
+      "names": ["Restaurant Manoto", "LA BASTA", "KOSHER STREETFOOD"],
+      "alsoLegible": ["12063", "P"],
+      "comment": "Restaurant Manoto appears on the fascia and on three window decals. LA BASTA appears on the fascia and in the window."
+    },
+    {
+      "surfaceId": "0363100012083793_e_1m3tfu8",
+      "names": ["FREDDY FRYDAY", "SNACKBAR", "FRIETEN"],
+      "alsoLegible": ["87"],
+      "comment": "The fascia panel crops the leading F, showing REDDY FRYDAY; the hanging sign and the chip-cone both show FREDDY FRYDAY, so the name is Freddy Fryday."
+    },
+    {
+      "surfaceId": "0363100012236441_e_00bs3qn",
+      "names": ["O TEM BA"],
+      "alsoLegible": ["DA COSTAKADE", "ZONE", "autodate", "RAMEN"],
+      "comment": "O TEM BA appears five times along the awning and once in the window. The subtitle after it is not legible at this resolution -- it is a ramen and gyoza line -- so it is deliberately not transcribed."
+    }
+  ]
+}

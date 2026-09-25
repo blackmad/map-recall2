@@ -178,10 +178,39 @@ What to use it for now: **corroboration, not correction.** `support`, `views` an
 trustworthy immediately and are precisely what S2 and the invention filter consume. Gate the text
 rewrite behind S1c.
 
-**S1c. The reference set that unblocks the rewrite.** Hand-transcribe the 45 De Clercqstraat ground
-crops. Minutes of work, and it is the missing piece: it turns every choice above — pivot by length,
-ties to a character over a deletion, the six-character fragment floor, height weighting — from an
-argued default into a measured one. Until it exists, the vote's text output is a proposal.
+**S1c. The reference set — built, and it returned a negative result.**
+`review-data/sign-gold/v1/transcriptions.json` holds four Da Costabuurt ground crops transcribed by
+looking at them, without consulting reader output, so reference and subject are independent.
+`scripts/facade-eval/score-sign-consensus.ts` scores against it, always reporting the vote *and* the
+baseline a pipeline without a vote would publish — the longest reading in each cluster.
+
+```
+4 transcribed crops, 10 names to recover
+  baseline   recovered  9/10   exact  5/10   invented  6/29
+  consensus  recovered  9/10   exact  5/10   invented  6/29
+```
+
+**The vote ties the baseline.** It fixes `O TEM FA C` → `O TEM BA` and breaks
+`ScooterCentre` → `Scopesfentre`, and those cancel. Co-location clustering — two readings within a
+metre of each other get a looser string test, since where they sit is evidence independent of what
+they say — merged more of each sign's fragments and cut inventions from 7 to 6, but moved neither
+recovery number.
+
+So the conclusion stands and is now measured rather than suspected: **ship `support` / `views` /
+`years`, do not ship the rewritten text.** The honest reading of a tie is that the vote is not the
+lever here.
+
+Three things the reference set shows about where the real loss is, which matter more than tuning:
+
+- **The reader misses whole signs.** `LA BASTA` came back only as `DASTA` and `PASTA` — both wrong on
+  the same letter, so no vote over them can recover it. Redundancy only helps where errors are
+  independent, and two readings of one small logo under one light are not.
+- **The crop is often the limit, not the reader.** On the Freddy Fryday frontage the fascia panel
+  crops the leading F, so `REDDY FRYDAY` is a *correct* reading of what is visible; the name is only
+  recoverable from the hanging sign and the chip-cone, which are different rectangles. That is a view
+  selection problem (§3), not a text problem.
+- **OSM would have answered most of this outright.** Four of the ten names are on businesses OSM
+  names. S2a is now the highest-value remaining step, not more voting.
 
 **S1b. Measure the invention rate**, once consensus is in place, against the three reference shops on
 Rozengracht and then the transcribed set. It still has never been measured and 307 unreviewed signs
