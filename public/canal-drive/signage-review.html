@@ -37,12 +37,17 @@
       .vision { font-size:12px; color:var(--dim); background:#101820; border-left:3px solid #4da3ff; padding:6px 8px; border-radius:4px; margin:6px 0; }
       .done { color:#57d98a; }
       a { color:#6db2ff; }
+      @media (max-width: 760px) {
+        main { grid-template-columns:1fr; height:auto; }
+        #stage { min-height:180px; padding:10px; }
+        aside { border-left:0; border-top:1px solid var(--line); }
+      }
     </style>
   </head>
   <body>
     <header>
       <h1>Signage review</h1>
-      <span class="sub">Drag a box around each sign, type its text exactly, pick the type, and click the sign's background then its lettering. "No sign" is a valid answer. <span id="progress"></span></span>
+      <span class="sub">Model-reviewed sign boxes, text and sampled colours load automatically. Unreadable or obscured details stay uncertain; no labelling is required. <span id="progress"></span></span>
     </header>
     <main>
       <div id="stage"><div id="wrap"><img id="crop" alt="" /><div id="boxes"></div></div></div>
