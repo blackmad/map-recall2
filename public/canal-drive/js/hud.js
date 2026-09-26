@@ -3,6 +3,13 @@
 // ============================================================
 class HUD {
   constructor() {
+    // Canvas text never triggers a web-font download, so ask for the HUD faces
+    // up front; until they land the fallbacks in hudSurface draw.
+    if (document.fonts && document.fonts.load) {
+      for (const face of ['700 12px "JetBrains Mono"', '500 12px "JetBrains Mono"', '800 16px "Barlow Condensed"']) {
+        document.fonts.load(face).catch(() => {});
+      }
+    }
     this._minimapCache = null;
     this._minimapTrack = null;
     this._time = 0; // game time in seconds, updated each frame
@@ -38,12 +45,12 @@ class HUD {
   }
 
 
-  /** Speed and odometer as one string. Lives on the plaque's second line on
-   *  every viewport; the desktop used to spend a fifth card on it. */
-  tripText(speed, distancePx) {
+  /** Distance travelled. Speed used to lead this line, but the toy physics
+   *  put a canal boat at 200+ km/h and a bike at 62 — a false number in a game
+   *  whose promise is true geography, and speed is not what it teaches. */
+  tripText(_speed, distancePx) {
     const kilometres = distancePx / PIXELS_PER_METER / 1000;
-    const kmh = Math.round(Math.abs(speed) / PIXELS_PER_METER * 3.6);
-    return `${kmh} km/h · ${kilometres < 10 ? kilometres.toFixed(2) : kilometres.toFixed(1)} km`;
+    return `${kilometres < 10 ? kilometres.toFixed(2) : kilometres.toFixed(1)} km`;
   }
 
   /** Screen-space heading to the finish, or null when close enough that an
@@ -206,7 +213,7 @@ class HUD {
 
   drawStreetName(ctx, name) {
     if (!name) return;
-    ctx.font = 'bold 13px monospace';
+    ctx.font = `700 13px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'center';
     const tw = ctx.measureText(name).width;
     const pw = tw + 20, ph = 24;
@@ -314,7 +321,7 @@ class HUD {
     roundRect(ctx, CANVAS_W - 160, 15, 145, 40, 6);
     ctx.fill();
     ctx.fillStyle = '#FFF';
-    ctx.font = 'bold 16px monospace';
+    ctx.font = `700 16px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'right';
     ctx.fillText(`LAP  ${Math.min(currentLap + 1, totalLaps)} / ${totalLaps}`, CANVAS_W - 25, 42);
   }
@@ -341,7 +348,7 @@ class HUD {
 
     // Label
     ctx.fillStyle = '#FFF';
-    ctx.font = 'bold 12px monospace';
+    ctx.font = `700 12px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'right';
     ctx.fillText(`${Math.round(pct * 100)}% COMPLETE`, CANVAS_W - 25, 50);
   }
@@ -353,11 +360,11 @@ class HUD {
     const suffix = position === 1 ? 'st' : position === 2 ? 'nd' : position === 3 ? 'rd' : 'th';
     const colors = { 1: '#FFD700', 2: '#C0C0C0', 3: '#CD7F32' };
     ctx.fillStyle = colors[position] || '#FFF';
-    ctx.font = 'bold 22px monospace';
+    ctx.font = `700 22px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'right';
     ctx.fillText(`${position}${suffix}`, CANVAS_W - 60, 90);
     ctx.fillStyle = '#AAA';
-    ctx.font = '14px monospace';
+    ctx.font = `14px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.fillText(`/ ${total}`, CANVAS_W - 25, 90);
   }
 
@@ -516,7 +523,7 @@ class HUD {
       c.lineWidth = 1;
       c.stroke();
       c.fillStyle = '#FFF';
-      c.font = 'bold 9px monospace';
+      c.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       c.textAlign = 'center';
       c.textBaseline = 'middle';
       c.fillText('S', spx, spy);
@@ -540,7 +547,7 @@ class HUD {
       c.stroke();
       // "F" label
       c.fillStyle = '#000';
-      c.font = 'bold 8px monospace';
+      c.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       c.textAlign = 'center';
       c.textBaseline = 'middle';
       c.fillText('F', fpx, fpy);

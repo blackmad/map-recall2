@@ -71,6 +71,13 @@ HUD / briefing / finish / notice states compile in Storybook. Still open:
 automated screenshot diffs for those states (not just `build-storybook`).
 
 
+**29. Destination names can contain the answer.** Boat routes can target a
+landmark such as *Keizersgrachtkerk* while you ride the Keizersgracht; the
+destination card then says the canal name the quiz is about to ask
+(UI review 2026-09-26). Options: exclude destinations whose name contains a
+quiz-eligible name on the route (`poiNameSpoils` already exists), or mask the
+matching part of the destination label until answered.
+
 **28. Map Quest onto the daylight palette.** Canal Recall moved off the
 all-cobalt chrome on 2026-09-26 (`--day-*` tokens, see HISTORY/DESIGN.md);
 Map Quest still uses the cobalt enamel tokens and ~150 cobalt-assuming class

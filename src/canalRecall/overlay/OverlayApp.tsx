@@ -936,7 +936,7 @@ export function OverlayApp({
               type="button"
               onClick={() => callbacks.onNewRoute()}
             >
-              New route
+              Route setup
             </button>
             <button className="utility-close enamel-plaque enamel-framed enamel-start" type="button" onClick={() => callbacks.onCloseSettings()}>Done</button>
           </div>

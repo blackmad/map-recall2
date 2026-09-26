@@ -823,10 +823,14 @@ class VectorBasemap {
   /** Names the game may ask about. Orientation labels that would say one of
    *  them are dropped: a tram stop called "Nassaukade" on Nassaukade answers
    *  the question before it is asked. See `orientationPois.ts`. */
-  setSpoilerNames(names) {
+  setSpoilerNames(names, source = 'extract') {
     const lib = window.CanalRecallOrientationPois;
     if (!lib || !lib.buildSpoilerIndex) return;
-    this._spoilerIndex = lib.buildSpoilerIndex(names || []);
+    // Keyed by source: the extract's knowledge files, and the route's own
+    // track (every street a bike ride can ask, not only the curated subset).
+    this._spoilerSources = this._spoilerSources || new Map();
+    this._spoilerSources.set(source, names || []);
+    this._spoilerIndex = lib.buildSpoilerIndex([].concat(...this._spoilerSources.values()));
     this._applyBasemapSpoilerFilter();
     if (this._pendingPlaces) this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
     if (this._rawBrandedPois) this.setBrandedPois(this._rawBrandedPois);

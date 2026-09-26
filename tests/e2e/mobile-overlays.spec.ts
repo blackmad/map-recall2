@@ -218,3 +218,26 @@ test('a wrong answer marks the right choice and puts readable feedback under the
   expect(layout.afterHeading && layout.beforeChoices, 'feedback sits between the question and the choices').toBe(true);
   expect(layout.colour, 'feedback is the dark copper ink, not the old amber').toBe('rgb(138, 74, 24)');
 });
+
+// Named regression (UI review 2026-09-26): the phone HUD could latch the
+// pre-settle 980 px layout and draw everything at ~47% (5 px text), and the
+// pause card was 78% black with an invisible "New route" caption.
+test('the phone HUD lays out for the real screen, and pause is a paper card', async ({ page }) => {
+  await drive(page);
+  const sizes = await page.evaluate(() => ({
+    viewportCss: (window.canalRecallGame.viewport as unknown as { cssWidth: number }).cssWidth,
+    inner: window.innerWidth,
+  }));
+  expect(sizes.viewportCss, 'the HUD is laid out for the settled window width').toBe(sizes.inner);
+
+  const centre = await page.evaluate(() => {
+    const game = window.canalRecallGame as unknown as { state: number; canvas: HTMLCanvasElement; _render(): void };
+    game.state = (window as unknown as { GameState?: { PAUSED: number } }).GameState?.PAUSED
+      ?? (0, eval)('GameState.PAUSED');
+    game._render();
+    const ctx = game.canvas.getContext('2d')!;
+    const [r, g, b] = ctx.getImageData(Math.round(game.canvas.width / 2), Math.round(game.canvas.height / 2) - 20, 1, 1).data;
+    return (r + g + b) / 3;
+  });
+  expect(centre, 'the pause card is light paper, not a black plate').toBeGreaterThan(200);
+});
