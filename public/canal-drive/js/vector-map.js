@@ -26,6 +26,9 @@ class VectorBasemap {
     this._studyFacadeAreas = [];
     this._studyTreeAreas = [];
     this._studyPublicRealmAreas = [];
+    this._activeAppearanceAreaId = null;
+    this._studyLayersAllowed = true;
+    this._studyResidencyListener = null;
     this._appearanceAreas = [];
     this._appearanceAreaFailures = [];
     this._appearanceOsmIds = [];
@@ -44,6 +47,9 @@ class VectorBasemap {
     this._playerBike = null;
     this._playerBoat = null;
     this._labelsVisible = false;
+    this._lastCameraClearance = { constrained: false, reason: 'not-synchronised' };
+    this._cameraClearanceCheck = null;
+    this._cameraClearanceRequest = null;
     if (!container || typeof maplibregl === 'undefined') return;
 
     this.map = new maplibregl.Map({
@@ -571,6 +577,13 @@ class VectorBasemap {
     this._styleCompleteCity();
     this._completeCity.attach(() => {
       if (this.map.getLayer('building-3d')) this.map.setLayoutProperty('building-3d', 'visibility', 'none');
+      // A camera check made before the newly requested z14 tile arrived only
+      // saw the previous district's footprints. Re-run the same request after
+      // every streamed collection update so a late opaque mass cannot appear
+      // between the physical camera and the route centre.
+      if (this._cameraClearanceRequest) this._clearCameraFromBuildingFootprints(
+        this._cameraClearanceRequest.center, this._cameraClearanceRequest.view,
+      );
     }, (features) => {
       this._syncPyramidalRoofs(features);
     });
@@ -586,6 +599,11 @@ class VectorBasemap {
         const Constructor = kind.api && kind.api[kind.ctor];
         if (!Constructor) continue;
         const renderer = new Constructor(this.map, maplibregl, area.id);
+        // Loading an index normally starts its tile requests immediately. Keep
+        // every catalog entry cold until the viewport-wide selector chooses
+        // one area, otherwise N overlapping areas each claim their own 12-tile
+        // cache during startup.
+        renderer.setEnabled(false);
         try {
           await renderer.load(area.pointerUrl);
           kind.list.push(renderer);
@@ -595,6 +613,11 @@ class VectorBasemap {
           this._appearanceAreaFailures.push({ id: area.id, layer: kind.ctor, message: String(error && error.message || error) });
           console.warn(`Optional ${kind.label} unavailable for ${area.id}.`, error);
         }
+      }
+      this._updateStudyAreaResidency();
+      if (!this._studyResidencyListener) {
+        this._studyResidencyListener = () => this._updateStudyAreaResidency();
+        this.map.on('moveend', this._studyResidencyListener);
       }
     }
 
@@ -860,7 +883,69 @@ class VectorBasemap {
       this._refreshBuildingSuppression();
     }
     if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !google);
-    for (const renderer of [...this._studyRoofAreas, ...this._studyFacadeAreas, ...this._studyTreeAreas, ...this._studyPublicRealmAreas]) renderer.setEnabled(!detailed && !google);
+    this._studyLayersAllowed = !detailed && !google;
+    this._updateStudyAreaResidency();
+  }
+
+  /**
+   * Keep one catalog area's detail streams resident for the whole viewport.
+   *
+   * Every area publishes the same z16 owner/context tile keys. Selecting from
+   * those keys is stricter than selecting the nearest area origin: outside all
+   * published coverage every optional stream is cleared and the complete-city
+   * building source remains the visual fallback. At overlaps, distance to the
+   * viewport centre gives a deterministic owner and prevents four independent
+   * renderers per area from multiplying their cache budgets.
+   */
+  _updateStudyAreaResidency() {
+    if (!this.map) return;
+    const groups = [this._studyRoofAreas, this._studyFacadeAreas, this._studyTreeAreas, this._studyPublicRealmAreas];
+    const layers = groups.flat();
+    if (!layers.length) return;
+    const bounds = this.map.getBounds();
+    const zoom = 16, scale = 2 ** zoom;
+    const x = lng => Math.floor((lng + 180) / 360 * scale);
+    const y = lat => {
+      const clipped = Math.max(-85.05112878, Math.min(85.05112878, lat));
+      const radians = clipped * Math.PI / 180;
+      return Math.floor((1 - Math.asinh(Math.tan(radians)) / Math.PI) / 2 * scale);
+    };
+    const west = x(bounds.getWest()), east = x(bounds.getEast());
+    const north = y(bounds.getNorth()), south = y(bounds.getSouth());
+    const wanted = new Set();
+    for (let tileX = west - 1; tileX <= east + 1; tileX++) for (let tileY = north - 1; tileY <= south + 1; tileY++) wanted.add(`${zoom}/${tileX}/${tileY}`);
+    const center = this.map.getCenter(), centerX = x(center.lng), centerY = y(center.lat);
+    const candidates = new Map();
+    for (const layer of layers) {
+      const areaId = layer.areaId || '';
+      if (!areaId || !layer.metas) continue;
+      let distance = Infinity;
+      for (const key of layer.metas.keys()) {
+        if (!wanted.has(key)) continue;
+        const [, tileX, tileY] = key.split('/').map(Number);
+        distance = Math.min(distance, (tileX - centerX) ** 2 + (tileY - centerY) ** 2);
+      }
+      if (Number.isFinite(distance)) candidates.set(areaId, Math.min(candidates.get(areaId) ?? Infinity, distance));
+    }
+    const active = this._studyLayersAllowed
+      ? [...candidates].sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0]))[0]?.[0] || null
+      : null;
+    this._activeAppearanceAreaId = active;
+    for (const layer of layers) {
+      if (typeof layer.setTileBudget === 'function') layer.setTileBudget(6);
+      const enabled = Boolean(active && layer.areaId === active);
+      // A viewport change is also the shared eviction boundary. Rebuild the
+      // active working set from visible tiles instead of retaining a separate
+      // hysteresis tail in each roof/tree/public-realm cache.
+      if (enabled && layer.enabled) layer.setEnabled(false);
+      if (layer.enabled !== enabled) layer.setEnabled(enabled);
+    }
+    for (const [list, alias] of [
+      [this._studyRoofAreas, '_studyRoofs'],
+      [this._studyFacadeAreas, '_studyFacades'],
+      [this._studyTreeAreas, '_studyTrees'],
+      [this._studyPublicRealmAreas, '_studyPublicRealm'],
+    ]) this[alias] = list.find(layer => layer.areaId === active) || list[0] || null;
   }
 
   setPlayerBike(player, loader, visible) {
@@ -1138,7 +1223,25 @@ class VectorBasemap {
     // a diagram. The canvas overlay then has to project through MapLibre so it
     // keeps sitting exactly on the basemap.
     const pitch = cockpit ? 72 : chase ? 58 : TOPDOWN_TILT_DEGREES;
-    this.map.jumpTo({ center: [lon, lat], zoom: cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom, bearing, pitch });
+    const mapZoom = cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom;
+    const previousCheck = this._cameraClearanceCheck;
+    const movedMetres = previousCheck ? Math.hypot(
+      (lon - previousCheck.center[0]) * metersPerDegreeLng,
+      (lat - previousCheck.center[1]) * metersPerDegreeLat,
+    ) : Infinity;
+    const bearingChange = previousCheck ? Math.abs(Math.atan2(
+      Math.sin((bearing - previousCheck.bearing) * Math.PI / 180),
+      Math.cos((bearing - previousCheck.bearing) * Math.PI / 180),
+    ) * 180 / Math.PI) : Infinity;
+    const needsClearanceCheck = pitch > 0 && (!previousCheck || movedMetres > 8 || bearingChange > 8
+      || Math.abs(mapZoom - previousCheck.zoom) > 0.05 || performance.now() - previousCheck.at > 1000);
+    const appliedPitch = needsClearanceCheck ? pitch
+      : Math.min(pitch, this._lastCameraClearance.safePitch ?? pitch);
+    this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
+    if (needsClearanceCheck) {
+      this._clearCameraFromBuildingFootprints([lon, lat], { zoom: mapZoom, bearing, pitch });
+      this._cameraClearanceCheck = { center: [lon, lat], zoom: mapZoom, bearing, at: performance.now() };
+    }
     this._lastCameraZoom = camera.zoom;
     // Building tiles follow the driving camera, not the style's Damrak default.
     // followCamera no-ops until the centre tile / zoom bucket changes.
@@ -1149,6 +1252,145 @@ class VectorBasemap {
     camera.projector = pitch > 0
       ? (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas)
       : null;
+  }
+
+  _pointInRing(point, ring) {
+    let inside = false;
+    for (let index = 0, previous = ring.length - 1; index < ring.length; previous = index++) {
+      const a = ring[index], b = ring[previous];
+      if (!Array.isArray(a) || !Array.isArray(b)) continue;
+      const crosses = (a[1] > point[1]) !== (b[1] > point[1]);
+      if (crosses && point[0] < (b[0] - a[0]) * (point[1] - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+    }
+    return inside;
+  }
+
+  _pointInBuildingGeometry(point, geometry) {
+    const polygons = geometry && geometry.type === 'Polygon' ? [geometry.coordinates]
+      : geometry && geometry.type === 'MultiPolygon' ? geometry.coordinates : [];
+    return polygons.some(rings => Array.isArray(rings) && rings.length && this._pointInRing(point, rings[0])
+      && !rings.slice(1).some(ring => this._pointInRing(point, ring)));
+  }
+
+  _cameraBlockingFeature(point, altitude, residentFeatures) {
+    if (!this._completeCity || typeof this._completeCity.sampleFeatures !== 'function') return null;
+    const features = residentFeatures || this._completeCity.sampleFeatures(20_000);
+    return features.find(feature => {
+      const properties = feature.properties || {};
+      const top = Number(properties.roofEavesHeightM ?? properties.height ?? 5);
+      return Number.isFinite(top) && altitude < top + 0.75
+        && this._pointInBuildingGeometry(point, feature.geometry);
+    }) || null;
+  }
+
+  _cameraSightlineBlocker(from, center, cameraAltitude) {
+    const metresPerDegreeLat = 111320;
+    const metresPerDegreeLng = 111320 * Math.cos(center[1] * Math.PI / 180);
+    const east = (center[0] - from[0]) * metresPerDegreeLng;
+    const north = (center[1] - from[1]) * metresPerDegreeLat;
+    const distance = Math.hypot(east, north);
+    if (!distance) return null;
+    const residentFeatures = this._completeCity && this._completeCity.sampleFeatures
+      ? this._completeCity.sampleFeatures(20_000) : [];
+    // Ignore the final 2 m around the route centre: the player is on the road
+    // and rounding differences at a kerb must not make the camera oscillate.
+    for (let travelled = 1; travelled < distance - 2; travelled += 1) {
+      const t = travelled / distance;
+      const point = [from[0] + east * t / metresPerDegreeLng, from[1] + north * t / metresPerDegreeLat];
+      const rayAltitude = cameraAltitude * (1 - t);
+      const blocker = this._cameraBlockingFeature(point, rayAltitude, residentFeatures);
+      if (blocker) return blocker;
+    }
+    return null;
+  }
+
+  /**
+   * MapLibre's pitched camera sits behind the route centre. On a narrow street
+   * that physical camera can land inside a building even though the player is
+   * correctly on the road, turning the opaque mass into a full-screen cutaway
+   * (especially in a portrait viewport). Reduce pitch until the complete
+   * camera-to-road sightline clears resident measured footprints. Keeping the
+   * route centre fixed also keeps the canvas overlays registered.
+   */
+  _clearCameraFromBuildingFootprints(center, view) {
+    this._cameraClearanceRequest = { center: [...center], view: { ...view } };
+    // This MapLibre release predates Mapbox's public free-camera API. Its
+    // transform exposes the same calculated camera location and altitude.
+    const transform = this.map && this.map.transform;
+    const cameraLngLat = transform && transform.getCameraLngLat && transform.getCameraLngLat();
+    const altitude = transform && transform.getCameraAltitude && transform.getCameraAltitude();
+    if (!cameraLngLat || !Number.isFinite(altitude)) return;
+    const before = [cameraLngLat.lng, cameraLngLat.lat];
+    let finalCamera = before, finalAltitude = altitude;
+    let blocker = this._cameraSightlineBlocker(finalCamera, center, finalAltitude);
+    let safePitch = view.pitch;
+    // Lower pitch raises the physical camera and its sightline without moving
+    // the route centre. Four-degree steps avoid a visible framing jump while
+    // a 17-degree floor still gives buildings readable sides while remaining
+    // close enough to plan view to clear the tightest portrait approaches.
+    while (blocker && safePitch > 17) {
+      safePitch = Math.max(17, safePitch - 4);
+      this.map.jumpTo({ ...view, center, pitch: safePitch });
+      const nextCamera = transform.getCameraLngLat();
+      finalCamera = [nextCamera.lng, nextCamera.lat];
+      finalAltitude = transform.getCameraAltitude();
+      blocker = this._cameraSightlineBlocker(finalCamera, center, finalAltitude);
+    }
+    this._lastCameraClearance = {
+      constrained: safePitch !== view.pitch,
+      requestedPitch: view.pitch,
+      safePitch,
+      cameraBefore: before,
+      cameraAfter: finalCamera,
+      altitudeBefore: altitude,
+      altitudeAfter: finalAltitude,
+      center,
+      clear: !blocker,
+      blockingBuildingId: blocker && blocker.properties && blocker.properties.id || null,
+    };
+  }
+
+  appearanceRenderStatus() {
+    const groups = {
+      roofs: this._studyRoofAreas,
+      facades: this._studyFacadeAreas,
+      trees: this._studyTreeAreas,
+      publicRealm: this._studyPublicRealmAreas,
+    };
+    const layers = Object.values(groups).flat();
+    const city = this._completeCity && this._completeCity.status ? this._completeCity.status() : null;
+    const pending = (city ? city.inFlight + city.queued : 0) + layers.reduce(
+      (sum, layer) => sum + (layer.inFlight || 0) + (layer.queue ? layer.queue.length : 0), 0,
+    );
+    const detailBytes = layers.reduce((sum, layer) => sum + (layer.debugGeometryBytes || 0), 0);
+    const residents = Object.fromEntries(Object.entries(groups).map(([name, entries]) => [
+      name, entries.reduce((sum, layer) => sum + (layer.debugResident || 0), 0),
+    ]));
+    const painted = layers.every(layer => !layer.debugRenderable || (layer.debugResident > 0 && layer.debugPaints > 0));
+    const mapReady = Boolean(this.map && this.map.loaded && this.map.loaded() && (!this.map.isMoving || !this.map.isMoving()));
+    return {
+      ready: Boolean(city && city.features > 0 && pending === 0 && painted && mapReady && detailBytes <= 11_000_000),
+      mapReady, pending, painted, detailBytes, residents,
+      withinBudget: detailBytes <= 11_000_000,
+      cameraClearance: this._lastCameraClearance,
+    };
+  }
+
+  whenAppearanceRenderReady(timeoutMs = 30_000) {
+    const started = performance.now();
+    const layers = [this._studyRoofAreas, this._studyFacadeAreas, this._studyTreeAreas, this._studyPublicRealmAreas].flat();
+    const baseline = new Map(layers.map(layer => [layer, layer.debugPaints || 0]));
+    return new Promise((resolve, reject) => {
+      const check = () => {
+        const status = this.appearanceRenderStatus();
+        const paintedAfterCall = layers.every(layer => !layer.debugRenderable || (layer.debugPaints || 0) > (baseline.get(layer) || 0));
+        if (status.ready && paintedAfterCall) return resolve(status);
+        if (performance.now() - started > timeoutMs) return reject(new Error(`Appearance render readiness timed out: ${JSON.stringify(status)}`));
+        this.map.triggerRepaint();
+        requestAnimationFrame(check);
+      };
+      check();
+    });
   }
 
   projectWorld(worldX, worldY, loader, canvas) {

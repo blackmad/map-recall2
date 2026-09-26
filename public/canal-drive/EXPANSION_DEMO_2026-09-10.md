@@ -1,3 +1,5 @@
+Current combined-district release: see [Da Costabuurt + Jordaan pipeline and launch instructions](./DISTRICT_PIPELINE.md) and the [source/render evaluation gallery](./district-evaluation.html). The report below describes the earlier expansion milestone.
+
 # Da Costa 550 m expansion demo — 10 September 2026
 
 Open the [825-building 3D expansion](./city-appearance.html?area=expansion), then the
@@ -77,7 +79,7 @@ atomic-journaled routing run returned 20/20 schema-valid suggestions for $0.0144
 shows these as quarantined machine routes. No suggestion is copied into published appearance and
 no human review is synthesized. Four partial walls were withheld from inference.
 
-The current immutable release is `9e40bcce…`, built from cached run `16288822…`: 156 source files
+The current immutable release is `f226994d…`, built from cached run `16288822…`: 156 source files
 feed four restartable stages, producing 825
 buildings, 968 candidate frontages and 3,166 context owners without imagery or paid inference.
 The inner 400 m audit remains a separately hashed evidence area, so the wider geometry cannot
@@ -229,3 +231,8 @@ tiles avoid duplicate geometry; source hashes bind evidence and releases; loader
 concurrency/residency and explicit disposal; appearance promotion remains a separate calibrated
 gate. The next genuine scale risks are representative human calibration, physical-phone profiling,
 route-scale memory measurement and a source-rights decision for photographic redistribution.
+
+The original `9e40bcce…` release exposed an evidence-frame binding defect: all 24 audited
+frontages missed the expansion-frame walls. Release `f226994d…` translates and preserves those
+coordinates, binding 24/24 evidence records (36 record-to-surface links), including all 20
+quarantined machine previews.

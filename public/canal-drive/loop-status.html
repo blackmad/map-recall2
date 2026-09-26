@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loop status · Map Recall</title>
+<style>
+:root{--bg:#0f1419;--panel:#161c22;--line:#2a333c;--ink:#e8ecef;--dim:#93a4b1;--good:#7fd4a0;--warn:#f0b46b;--acc:#78c8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:26px 20px 64px}
+h1{margin:0 0 4px;font-size:24px}h2{margin:30px 0 12px;font-size:17px;color:var(--acc)}h3{margin:0 0 10px;font-size:15px;font-weight:600}
+.sub{color:var(--dim);margin:0 0 16px}
+.stamp{color:var(--dim);font-size:12.5px;margin-top:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:14px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .n{font-size:26px;font-weight:700}.card .l{color:var(--dim);font-size:13px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.pair figure{margin:0;background:#0b0f12;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pair img{display:block;width:100%;height:auto;background:#000}
+.pair figcaption{padding:5px 8px;font-size:12px;color:var(--dim)}
+section.card{margin:14px 0}
+img.wide{display:block;width:100%;height:auto;background:#000}
+figure{margin:0}figcaption{padding:5px 8px;font-size:12px;color:var(--dim)}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+th{color:var(--dim)}tr:last-child td{border-bottom:none}
+code{background:#1c242b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:12.5px}
+a.btn{display:inline-block;background:#1d6f4a;border:1px solid #2a8f61;color:#fff;text-decoration:none;padding:9px 15px;border-radius:8px;font-weight:600;margin:4px 8px 4px 0}
+a.btn.alt{background:#22303a;border-color:#37474f}
+.ok{color:var(--good)}.warn{color:var(--warn)}
+</style></head><body><main>
+<h1>Reconstruction loop — status</h1>
+<p class="sub">Autonomous all-day loop over the 25-case review and three new districts. Measured components only; nothing here certifies fidelity.</p>
+<div class="stamp">generated 2026-09-21 17:31Z · regenerate with <code>npm run build:loop-status</code></div>
+<div style="margin:12px 0"><a class="btn" href="./reconstruction-status.html">Calibration + crop dashboard</a>
+<a class="btn alt" href="./pano-anchor.html?task=expanded">Anchor tool</a>
+<a class="btn alt" href="./reconstruction-workbench.html">Workbench</a></div>
+
+<div class="cards">
+  <div class="card"><div class="n">15</div><div class="l">passes completed</div></div>
+  <div class="card"><div class="n ok">6</div><div class="l">components delivered (with before/after)</div></div>
+  <div class="card"><div class="n warn">2</div><div class="l">live blockers (parked)</div></div>
+  <div class="card"><div class="n">running</div><div class="l">loop status</div></div>
+  <div class="card"><div class="n" style="font-size:15px">2026-09-22 08:00</div><div class="l">deadline</div></div>
+</div>
+
+<h2>Delivered (before → after)</h2>
+<section class="card"><h3><code>case-12</code> Rozengracht 160 — missing upper-floor row reconciled from the observed rhythm</h3><div class="pair"><figure><img src="./loop-status/case-12-before.png" alt="case-12 before"><figcaption>before</figcaption></figure><figure><img src="./loop-status/case-12-after.png" alt="case-12 after"><figcaption>after</figcaption></figure></div></section>
+<section class="card"><h3><code>case-02</code> De Clercqstraat 20/22 — short declared frontage recovered (missing shop window)</h3><div class="pair"><figure><img src="./loop-status/case-02-before.png" alt="case-02 before"><figcaption>before</figcaption></figure><figure><img src="./loop-status/case-02-after.png" alt="case-02 after"><figcaption>after</figcaption></figure></div></section>
+<section class="card"><h3><code>case-30</code> Rozengracht 212 — recovered from its registered frontage (blank monolith → full facade)</h3><div class="pair"><figure><img src="./loop-status/case-30-before.png" alt="case-30 before"><figcaption>before</figcaption></figure><figure><img src="./loop-status/case-30-after.png" alt="case-30 after"><figcaption>after</figcaption></figure></div></section>
+<section class="card"><h3><code>case-27</code> De Clercqstraat 79 — source-bound roof coverage added</h3><div class="pair"><figure><img src="./loop-status/case-27-before.png" alt="case-27 before"><figcaption>before</figcaption></figure><figure><img src="./loop-status/case-27-after.png" alt="case-27 after"><figcaption>after</figcaption></figure></div></section>
+<section class="card"><h3><code>case-18</code> Near-white window glazing recoloured instead of blank white panes</h3><div class="pair"><figure><img src="./loop-status/case-18-before.png" alt="case-18 before"><figcaption>before</figcaption></figure><figure><img src="./loop-status/case-18-after.png" alt="case-18 after"><figcaption>after</figcaption></figure></div></section>
+<section class="card"><h3><code>case-05</code> Lauriergracht 67/69 — window-frame overlap reduced</h3><div class="pair"><figure><img src="./loop-status/case-05-before.png" alt="case-05 before"><figcaption>before</figcaption></figure><figure><img src="./loop-status/case-05-after.png" alt="case-05 after"><figcaption>after</figcaption></figure></div></section>
+
+<h2>Live blockers (parked with evidence — not failures)</h2>
+<table><thead><tr><th>Queue</th><th>Item</th><th>Reason</th></tr></thead><tbody><tr><td><code>DEPTH #3</code></td><td>Roof vertical geometry (case-01/05/19/27)</td><td>Measured, not vibes, but not safely fixable in one pass.</td></tr><tr><td><code>DEPTH #2 residual</code></td><td>case-21 portrait shop display glazing</td><td>The retail lane admits display glazing only when width &gt; height, so case-21's Fietsenmaker full-height portrait displays still return null.</td></tr></tbody></table>
+
+<h2>Residuals of delivered items</h2>
+<p class="sub">Components whose primary defect was fixed but which still carry a known, recorded remainder.</p>
+<table><thead><tr><th>Queue</th><th>Item</th><th>Residual</th></tr></thead><tbody><tr><td><code>DEPTH #1</code></td><td>Inferred upper floors (case-12/13/16/17)</td><td>PARTIAL (2026-09-21, pass 16): case-12 Rozengracht 160's missing whole upper row is DELIVERED.</td></tr><tr><td><code>DEPTH #5 residual</code></td><td>case-08 declared brick with no colour field</td><td>PARTIAL (2026-09-21, pass 10): case-14 is a compiler delivery (pass 4/7) and case-08's source-shape study now paints the declared source colours.</td></tr><tr><td><code>DEPTH #4</code></td><td>Framing / centering / overlap (case-06/20/30)</td><td>PARTIAL (2026-09-21, pass 12): case-30 is DELIVERED.</td></tr><tr><td><code>DEPTH #3 residual</code></td><td>case-19 Elandsgracht 69 missing roof</td><td>PARTIAL (2026-09-21, pass 9): case-27 is delivered (see depth-3 roof coverage below / the case-27 history entry).</td></tr><tr><td><code>DEPTH #3</code></td><td>case-27 De Clercqstraat 79 missing roof (DELIVERED)</td><td>DELIVERED (2026-09-21, pass 9): the source-bound roof-coverage correction for case-27 was added to roof-coverage-corrections.json and published into the packet (1a969c0… → 11305a4…).</td></tr><tr><td><code>DEPTH #5 residual</code></td><td>Near-white window glazing guard — live bundle and threshold residual</td><td>DELIVERED (2026-09-21, passes 14-15): the compiler treats a near-white window colour (all channels &gt;= 235) as undeclared and falls back to neutral glass.</td></tr><tr><td><code>DEPTH #2/#4 residual</code></td><td>Incomplete declared frontage coverage (case-02/13/19/22/29) (DELIVERED)</td><td>DELIVERED (2026-09-21, pass 13): a coplanar declared 3DBAG frame can still be shorter than the registered frontage, so `clipTrianglesToFace` silently removed observed openings (case-02 De Clercqstraat 20/22 bound 5.10 m of an 8.09 m frontage and lost its entra</td></tr><tr><td><code>DEPTH #2/#4 residual</code></td><td>case-05 window-frame overlap — study delivered, metric/game rule parked</td><td>PARTIAL (2026-09-21, pass 17): the review's 'windows opverlapping too much' is measured.</td></tr><tr><td><code>DEPTH #2 residual</code></td><td>case-05 full-study entrance door — delivered study-only, approximate recess</td><td>PARTIAL (2026-09-21, pass 19): the review's case-05 'no door' is DELIVERED in the full source-shape study.</td></tr></tbody></table>
+
+<h2>Districts</h2>
+<p class="sub">Zuid perimeter (Apollobuurt), Nieuw-West (Slotervaart), Noord (Tuindorp Nieuwendam).
+Apollobuurt (2,343 buildings) and Tuindorp compiled geometry; their evidence/inference was blocked by the $5 spend ceiling, now raised to $25.
+Rendered with the zero-activation path (<code>npm run render:district -- --area=&lt;id&gt;</code>), which reads compiled tiles directly and never touches <code>current.json</code> or a release. These are geometry-only (no appearance yet).</p>
+<section class="card"><h3>Zuid perimeter (Apollobuurt)</h3><figure style="margin:0"><img class="wide" src="./loop-status/district-apollobuurt-v1.png" alt="Zuid perimeter (Apollobuurt)"><figcaption>compiled massing render · zero activation</figcaption></figure></section>
+<section class="card"><h3>Noord low-rise (Tuindorp Nieuwendam)</h3><figure style="margin:0"><img class="wide" src="./loop-status/district-tuindorp-nieuwendam-v1.png" alt="Noord low-rise (Tuindorp Nieuwendam)"><figcaption>compiled massing render · zero activation</figcaption></figure></section>
+</main></body></html>

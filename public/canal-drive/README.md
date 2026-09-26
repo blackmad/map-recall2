@@ -1,3 +1,11 @@
+Start implementation from [RECONSTRUCTION_HANDOFF.md](../../RECONSTRUCTION_HANDOFF.md) or open the [reconstruction workbench](reconstruction-workbench.html).
+
+For the current Map Recall reconstruction project, start with the
+[city review and delivery guide](../../CITY_RECONSTRUCTION_REVIEW.md) and
+[district runbook](DISTRICT_PIPELINE.md). The upstream game's README follows
+as historical documentation; its startup and gameplay instructions describe
+the original project.
+
 # Smokeys and the Bandit
 
 A browser-based arcade racing game where you play as **the Bandit**, racing through real-world city streets while evading police cars. Built with vanilla JavaScript and HTML5 Canvas — no build tools, no frameworks, just open `index.html` and go.

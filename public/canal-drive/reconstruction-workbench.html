@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reconstruction review · Map Recall</title>
+  <style>
+    :root{font:14px/1.4 system-ui,sans-serif;color:#243b31;background:#efefe6}*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0}a{color:#284c3b;text-underline-offset:3px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;background:#fafaf4;border-bottom:1px solid #ccd2c3}h1{font:400 22px/1.2 Georgia,serif;margin:0}h2{font:400 24px/1.2 Georgia,serif;margin:0 0 8px}h3{font-size:15px;margin:0 0 8px}p{margin:6px 0 10px}main{max-width:1640px;margin:auto;padding:12px 16px 40px}.muted,figcaption{font-size:12px;color:#586852}.links{display:flex;gap:16px;flex-wrap:wrap}.case-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}.case-picker{flex:1;min-width:160px;max-width:540px}.focus-tools{display:flex;gap:4px}button,select,textarea{font:inherit;color:inherit;background:#fafaf4;border:1px solid #aebda4;border-radius:5px}button,select{padding:7px 10px;min-height:38px}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}select{min-width:0;max-width:100%}button:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #bb7c33;outline-offset:2px}.focus-tools [aria-pressed=true],.primary{background:#284c3b;color:#fff}.case-heading{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.case-heading h2{margin:0;font-size:23px}.identity{font-size:11px;color:#586852}.review-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start;margin-top:10px}.comparison{min-width:0}.evidence{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.evidence figure{margin:0;min-width:0}.evidence img,#current-preview{display:block;width:100%;height:clamp(270px,calc(100dvh - 280px),530px);object-fit:contain;background:#dfe3d8;border:1px solid #ccd2c3}figcaption{margin-top:6px;overflow-wrap:anywhere}#current-preview{background:#f4f2ed}.panel{padding:14px;background:#fafaf4;border:1px solid #d2d8ca;border-radius:6px}.note-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.note-heading h3{font-size:14px;margin:0}#repair-note-status{font-size:12px;max-width:135px}textarea{display:block;width:100%;height:148px;min-height:90px;padding:10px;margin:8px 0;resize:vertical}.note-actions{display:flex;flex-wrap:wrap;gap:8px}.note-actions .primary{flex:1}#repair-note-message{min-height:20px;font-size:12px;overflow-wrap:anywhere;margin:8px 0}.shortcuts{font-size:11px;color:#586852;margin:8px 0}kbd{font:11px ui-monospace,monospace;padding:1px 3px;background:#e7ebdf;border-radius:3px}.quick-issues{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}.quick-issues button{font-size:11px;min-height:30px;padding:4px 7px}.roof-summary{font-size:12px;color:#586852;margin:6px 0 0}.roof-summary strong{color:#284c3b}.roof-checklist{padding-left:18px;font-size:12px;margin:8px 0}.roof-checklist li{margin:3px 0}#review-prompt{font-size:12px;margin:6px 0;color:#586852}#original-note,#repair-note-history{white-space:pre-wrap;font-size:12px;overflow-wrap:anywhere}#repair-note-history:empty{display:none}#repair-note-history{border-top:1px solid #d2d8ca;padding-top:8px;margin-top:10px;max-height:160px;overflow:auto}.review-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}.review-footer p{margin:0}.review-footer button{font-size:12px}details{margin-top:14px}summary{cursor:pointer;font-size:13px}#previous-image{display:block;max-width:100%;max-height:480px;margin-top:12px}.auxiliary{margin-top:18px;border-top:1px solid #ccd2c3;padding-top:12px}.status{padding:8px 12px;background:#e1e8d9;font-size:12px}.error{background:#f3dfd5;color:#7b3829}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}.metric{background:#fafaf4;border:1px solid #d2d8ca;padding:12px}.metric span{font-size:12px}.metric strong{display:block;font-size:22px;margin-top:6px}.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px}td,th{padding:8px;border-bottom:1px solid #d2d8ca;text-align:left;vertical-align:top}li{overflow-wrap:anywhere}#date-warning{color:#79572d;font-size:12px}
+    @media(max-width:1050px){.review-layout{grid-template-columns:minmax(0,1fr) 280px}.focus-tools button{padding:7px}.evidence{gap:8px}}
+    @media(max-width:760px){header{padding:8px 12px}h1{font-size:19px}.links{gap:10px;font-size:12px}main{padding:10px}.case-tools{gap:6px}.case-picker{max-width:none;min-width:150px}.focus-tools{margin-right:auto}.case-heading h2{font-size:20px}.review-layout{grid-template-columns:1fr;gap:10px}.evidence img,#current-preview{height:240px}.panel{padding:12px}textarea{height:86px;min-height:72px}.quick-issues{margin-top:6px}.roof-checklist{display:none}.roof-summary{font-size:11px}.note-heading{margin-bottom:4px}.shortcuts{display:none}.review-footer{align-items:flex-start}.metrics{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}.identity{display:none}#repair-note-message{margin:5px 0}.case-heading{gap:6px}#review-prompt{font-size:11px}}
+    @media(max-width:400px){header .links a:not(:last-child){display:none}.evidence img,#current-preview{height:205px}.panel textarea{height:76px;min-height:68px}.case-tools label{font-size:11px}#queue-select{max-width:135px;font-size:12px}.focus-tools button{font-size:12px}.quick-issues button{min-height:26px}}
+    .photo-view{display:block;overflow:hidden}.comparison-tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 8px}.comparison-tools label{font-size:12px;color:#586852}.comparison-tools input[type=range]{width:110px;accent-color:#284c3b}.comparison-status{font-size:11px;color:#79572d;flex-basis:100%}body[data-review-focus="roof"] #full-image{transform:scale(2);transform-origin:50% 0}
+  </style>
+</head>
+<body>
+  <header><h1>Reconstruction review</h1><nav class="links" aria-label="Project tools"><a href="./district-evaluation.html">District</a><a href="./city-appearance.html?area=expansion">Route</a><a id="show-project" href="#project-overview">Project status</a></nav></header>
+  <main>
+    <p id="preview-error" role="status"></p>
+    <section id="case-review" aria-labelledby="case-title">
+      <div class="case-tools">
+        <button id="prev-case" type="button" aria-label="Save and previous case">←</button>
+        <select id="case-select" class="case-picker" aria-label="Review case"></select>
+        <button id="next-case" type="button" aria-label="Save and next case">→</button>
+        <div class="focus-tools" role="group" aria-label="Review focus"><button data-review-focus="roof" aria-pressed="true">Roofs</button><button data-review-focus="facade" aria-pressed="false">Full façade</button><button data-review-focus="ground" aria-pressed="false">Ground</button></div>
+        <label for="queue-select" class="muted">Queue</label><select id="queue-select"><option value="all">All cases</option><option value="roofs">Roof priorities</option></select>
+      </div>
+      <div class="case-heading"><h2 id="case-title">Loading review…</h2><span id="case-position" class="muted"></span><span id="case-identity" class="identity"></span></div>
+      <p id="review-prompt">Compare the roofline, gable, dormers and chimneys with the photograph.</p>
+      <div class="review-layout">
+        <div class="comparison">
+          <div class="comparison-tools" role="group" aria-label="Candidate comparison">
+            <label for="candidate-variant">Candidate</label><select id="candidate-variant"><option value="baseline">Baseline</option><option value="roof-planes">Roof planes experiment</option></select>
+            <label for="comparison-mode">View</label><select id="comparison-mode"><option value="source-aligned">Source aligned</option><option value="model-view">Model view</option></select>
+            <label for="overlay-opacity">Photo overlay</label><input id="overlay-opacity" type="range" min="0" max="100" step="5" value="0" aria-label="Source aligned photo overlay opacity"><output id="overlay-opacity-value">0%</output>
+            <span id="comparison-status" class="comparison-status" hidden>Source aligned overlay · camera matched depth is not measured.</span>
+          </div>
+          <div class="evidence">
+            <figure id="full-panel"><a id="full-link" class="photo-view" target="_blank" rel="noopener"><img id="full-image" alt="Full façade and roof source photograph"></a><figcaption><span id="full-view-label">Roof / upper floors</span> · <span id="full-date"></span></figcaption></figure>
+            <figure id="ground-panel" hidden><a id="ground-link" class="photo-view" target="_blank" rel="noopener"><img id="ground-image" alt="Ground-floor source photograph"></a><figcaption>Ground floor · <span id="ground-date"></span></figcaption></figure>
+            <figure class="candidate"><iframe id="current-preview" title="Review candidate · placement unverified"></iframe><figcaption><strong>Review candidate · placement unverified.</strong> <a id="open-preview" target="_blank" rel="noopener">Full viewer ↗</a></figcaption></figure>
+          </div>
+          <div id="roof-summary" class="roof-summary"></div>
+          <p id="case-limitations" class="muted"></p>
+        </div>
+        <section id="repair-feedback" class="panel" aria-labelledby="repair-note-label">
+          <div class="note-heading"><h3 id="repair-note-label">Your review</h3><select id="repair-note-status" aria-label="Review status" disabled><option value="unreviewed">Not reviewed</option><option value="needs-work">Needs work</option><option value="looks-good">Looks good</option></select></div>
+          <textarea id="repair-note" aria-labelledby="repair-note-label" placeholder="Roofline, gable, dormers, chimney: what differs from the photo?" disabled></textarea>
+          <div class="note-actions"><button id="save-next" class="primary" type="button" disabled>Save & next →</button><button id="repair-note-save" type="button" disabled>Save</button></div>
+          <p id="repair-note-message" role="status">Connecting to saved reviews…</p>
+          <p class="shortcuts"><kbd>Tab</kbd> → <kbd>Enter</kbd> or <kbd>⌘/Ctrl Enter</kbd>: save & next. <kbd>⌘/Ctrl S</kbd>: save. <kbd>Esc</kbd>: leave textbox; <kbd>J</kbd>/<kbd>K</kbd>: next/previous; <kbd>N</kbd>: edit.</p>
+          <div id="roof-issues" class="quick-issues" aria-label="Roof note starters"><button type="button" data-roof-issue="Roofline">Roofline</button><button type="button" data-roof-issue="Dormer">Dormer</button><button type="button" data-roof-issue="Chimney">Chimney</button><button type="button" data-roof-issue="Not visible">Not visible</button></div>
+          <ul id="roof-checklist" class="roof-checklist"></ul>
+        </section>
+      </div>
+      <div class="review-footer"><p class="muted">Notes save to this candidate. “Looks good” records your review.</p><button id="repair-notes-ready" type="button" disabled>Ready for repair pass</button></div>
+      <details id="case-background"><summary>Original feedback and source details</summary><p id="original-note"></p><p id="date-warning"></p></details>
+      <details id="previous-release"><summary>Older release screenshot — before these repairs</summary><img id="previous-image" alt="Historical release screenshot before the current repairs"></details>
+    </section>
+    <details id="project-overview" class="auxiliary"><summary>Project status, costs and source diagnostics</summary>
+      <p id="status" class="status" role="status">Reading current project artifacts…</p>
+      <div id="metrics" class="metrics" aria-label="Coverage"></div><p class="muted">Processing counts and compiled features do not measure reconstruction accuracy.</p><p id="release-status" class="identity"></p>
+      <div class="split"><section class="panel"><h2>Next work</h2><ul id="findings"></ul><ul id="actions"></ul></section><section class="panel"><h2>Cost and saved reviews</h2><p id="cost-status"></p><p id="snapshot-status"></p><p class="muted">Snapshots preserve saved labels and available binding manifests, and record missing historical bindings. Unsaved browser drafts still need saving.</p></section></div>
+      <section><h2>Source-image diagnostics</h2><p id="quality-status"></p><details><summary>Reference comparisons</summary><div class="table-wrap"><table><thead><tr><th>Reference case</th><th>Analysis binding</th><th>Localized features</th><th>Partial references</th><th>Limits</th><th></th></tr></thead><tbody id="diagnostics"></tbody></table></div></details></section>
+    </details>
+  </main>
+  <script type="module" src="./js/reconstruction-workbench.bundle.js"></script>
+</body>
+</html>
