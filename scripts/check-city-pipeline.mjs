@@ -47,11 +47,11 @@ await assert.rejects(acquirePages({ name: 'panoramas', url: 'https://example.inv
 await assert.rejects(acquirePages({ name: 'bag', url: 'https://example.invalid/', get: async () => fake({ features: [], numberReturned: 3 }) }), /returned count/);
 const cityObjects = await acquirePages({ name: '3dbag', url: 'https://example.invalid/', countUnit: 'cityobjects', get: async () => fake({ features: [{ id: 'building', CityObjects: { building: { type: 'Building' }, part: { type: 'BuildingPart' } } }], numberReturned: 2, numberMatched: 2 }) });
 assert.equal(cityObjects.completeness.receivedUnits,2);
-const cityEnvelopeOverflow = await acquirePages({ name: '3dbag', url: 'https://example.invalid/', countUnit: 'cityobjects', get: async () => fake({ features: [{ id: 'a', CityObjects: { a: {}, ap: {} } }, { id: 'b', CityObjects: { b: {}, bp: {} } }], numberReturned: 3, numberMatched: 4 }) });
+const cityEnvelopeOverflow = await acquirePages({ name: '3dbag', url: 'https://example.invalid/', countUnit: 'cityobjects', get: async () => fake({ features: [{ id: 'a', CityObjects: { a: {}, ap: {} } }, { id: 'b', CityObjects: { b: {}, bp: {} } }], numberReturned: 4, numberMatched: 4 }) });
 assert.equal(cityEnvelopeOverflow.completeness.receivedUnits,4,'complete CityJSON envelopes may cross the provider page cursor while the final advertised total remains exact');
-assert.equal(cityEnvelopeOverflow.completeness.method,'advertised-count');assert.equal(cityEnvelopeOverflow.completeness.advertisedOverflow,0);
+assert.equal(cityEnvelopeOverflow.completeness.method,'advertised-page-counts-with-envelope-expansion');assert.equal(cityEnvelopeOverflow.completeness.advertisedOverflow,0);
 const boundedOverflow=await acquirePages({name:'3dbag',url:'https://example.invalid/',countUnit:'cityobjects',get:async()=>fake({features:[{id:'a',CityObjects:{a:{},ap:{}}},{id:'b',CityObjects:{b:{},bp:{}}}],numberReturned:3,numberMatched:3})});assert.equal(boundedOverflow.completeness.advertisedOverflow,1);
-await assert.rejects(acquirePages({name:'3dbag',url:'https://example.invalid/',countUnit:'cityobjects',get:async()=>fake({features:[{id:'a',CityObjects:{a:{},ap:{}}},{id:'b',CityObjects:{b:{},bp:{}}}],numberReturned:1,numberMatched:1})}),/incomplete result/,'provider discrepancy larger than one complete envelope remains a hard failure');
+await assert.rejects(acquirePages({name:'3dbag',url:'https://example.invalid/',countUnit:'cityobjects',get:async()=>fake({features:[{id:'a',CityObjects:{a:{},ap:{}}},{id:'b',CityObjects:{b:{},bp:{}}}],numberReturned:1,numberMatched:1})}),/more CityJSONFeature envelopes/,'the exporter cannot create more hierarchy envelopes than selected seed rows');
 assert.equal(cityObjects.completeness.received, 1); assert.equal(cityObjects.completeness.receivedUnits, 2);
 
 const cacheRoot = path.join(root, 'sources');

@@ -77,6 +77,30 @@ const sideBySide = mergeLinesIntoSigns([
 ]);
 check(sideBySide.length === 2, `side-by-side signs stay separate, got ${sideBySide.length}`);
 
+// Regression: De Clercqstraat 70 letters the same fascia on two window panes, so
+// Apple Vision returns `NINA'S / Exclusieve / Handwork Boutique` twice (once per
+// pane, the far one truncated by scaffolding). They are one business and must
+// collapse, or every per-sign count — including the invention rate — doubles.
+const named = (along: number, up: number, width: number, height: number, text: string): { boxWallM: WallRect; text: string } =>
+  ({ boxWallM: { along, up, width, height }, text });
+const panes = mergeLinesIntoSigns([
+  named(1.00, 3.40, 2.20, 0.30, 'NINAS'),
+  named(1.05, 3.05, 2.30, 0.25, 'Exclusieve'),
+  named(1.05, 2.75, 2.40, 0.25, 'Handwork Boutiqur'),
+  named(3.00, 3.40, 1.60, 0.30, "NINA'S"),
+  named(3.00, 3.05, 1.60, 0.25, 'Exclusive'),
+  named(2.90, 2.75, 1.70, 0.25, 'Handwork Bo'),
+]);
+check(panes.length === 1, `two panes of one name collapse to one sign, got ${panes.length}`);
+check(panes[0]?.lines.some((entry) => entry.text === 'Handwork Boutiqur'), 'the more complete reading of the repeated sign wins');
+
+// The same name genuinely far apart is a second sign, not a repeat.
+const branches = mergeLinesIntoSigns([
+  named(0.5, 3.4, 1.5, 0.3, "NINA'S"),
+  named(9.0, 3.4, 1.5, 0.3, "NINA'S"),
+]);
+check(branches.length === 2, `repeated name beyond the repeat gap stays separate, got ${branches.length}`);
+
 // Reading order is top-to-bottom then left-to-right.
 const order = mergeLinesIntoSigns([line(4.0, 1.0, 1.0, 0.3), line(0.5, 3.0, 1.0, 0.3), line(3.0, 3.0, 1.0, 0.3)]);
 close(order[0].boxWallM.along, 0.5, 'top row left first');

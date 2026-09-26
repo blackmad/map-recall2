@@ -1,4 +1,7 @@
 import compression from 'compression';
+import {districtNotesRouter,facadePreviewNotesRouter} from './scripts/review/district-notes.js';
+import { reconstructionWorkbenchRouter } from './scripts/review/reconstruction-workbench-router.js';
+import { panoAnchorRouter } from './scripts/review/pano-anchor-router.js';
 import express from 'express';
 import { promises as fs } from 'node:fs';
 import { randomUUID } from 'node:crypto';
@@ -88,6 +91,11 @@ async function startServer() {
   // was compressing it.
   app.use(compression());
   app.use(express.json());
+
+  app.use('/api/district-evaluation/notes',districtNotesRouter());
+  app.use('/api/facade-repair/notes',facadePreviewNotesRouter());
+  app.use('/api/reconstruction',reconstructionWorkbenchRouter());
+  app.use('/api/pano-anchor',panoAnchorRouter());
 
   // API routes
   app.get('/api/health', (_req, res) => {

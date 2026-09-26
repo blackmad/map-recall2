@@ -115,3 +115,15 @@ await assert.rejects(() => appearanceHttpLoader('/appearance', async () => new R
 const htmlLoader = appearanceHttpLoader('/missing', async () => new Response('<html>SPA fallback</html>'));
 await assert.rejects(() => htmlLoader(sample.key, new AbortController().signal), SyntaxError);
 console.log('City appearance streamer: bounded concurrent loading, tile crossings, halo ownership, LOD updates, stale cancellation, retry isolation and exact disposal passed.');
+
+// A source-comparison deep link must retain its owner without enlarging the viewport budget.
+const priorityTiles=[appearanceOwner(far)],focusedOwners=new Set<string>();
+const focused=new CityAppearanceStreamer({index,budget:1,priorityTiles,
+  loadTile:async key=>tiles.get(key)!,
+  createResource:owners=>{
+    for(const owner of owners)focusedOwners.add(owner.id);
+    return {setLod(){},dispose(){for(const owner of owners)focusedOwners.delete(owner.id);}};
+  }
+});
+focused.update(camera(a));await focused.whenIdle();assert.deepEqual([...focusedOwners],['far']);assert.equal(focused.status.resident,1);
+priorityTiles.length=0;focused.update(camera(a));await focused.whenIdle();assert.ok(!focusedOwners.has('far'),'leaving focus evicts the distant pinned owner');assert.equal(focused.status.resident,1);focused.dispose();

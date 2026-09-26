@@ -1,7 +1,12 @@
 # Amsterdam gameplay map — reconstruction plan
 
+Current delivery guide: [City reconstruction review, 13 September 2026](CITY_RECONSTRUCTION_REVIEW.md).
+Read it first for the current releases, cost evidence, code map, review-loop
+proposal and next milestones. This document retains the detailed technical
+design and its dated implementation history; its September 5 status is historical.
+
 Updated 2026-09-05 after auditing `feat/amsterdam-facade-rebuild` at `683d06b`
-and the five untracked external-identity files. This is the single forward plan
+and the five untracked external-identity files. This is the detailed design
 for building identity, appearance, geometry and validation. The game work board
 is [TODO.md](public/canal-drive/TODO.md); commands live in
 [EXTRACT_PIPELINE.md](public/canal-drive/EXTRACT_PIPELINE.md).

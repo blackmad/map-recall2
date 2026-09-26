@@ -42,6 +42,11 @@ const glassTones=new Set(['tone-a','tone-b','tone-c','tone-d','tone-e','tone-f']
 const normal = bind(owner, [record('home', 0, 5), record('shop', 7, 12, 'yes')]);
 const sourceSnapshot = JSON.stringify(normal);
 const generated = recipes(normal);
+const triangleArea=(values:number[])=>{let total=0;for(let i=0;i<values.length;i+=9){const a=new THREE.Vector3(...values.slice(i,i+3)),b=new THREE.Vector3(...values.slice(i+3,i+6)),c=new THREE.Vector3(...values.slice(i+6,i+9));total+=b.sub(a).cross(c.sub(a)).length()/2;}return total;};
+for(const patches of [generated,contextual])for(const glass of patches.filter(p=>(p.colour.startsWith('windowGlass')||p.colour==='shopGlass')&&p.featureKind!=='contextual-door-prior')){
+  const surround=patches.find(p=>p.featureId===glass.featureId&&p.colour.startsWith('windowFrame'))!;
+  assert.ok(triangleArea(surround.triangles)<triangleArea(glass.triangles),'raised frame is an open border rather than an opaque panel covering recessed glazing');
+}
 assert.ok(kinds(generated, 'window-prior').length > 0);
 assert.ok(kinds(generated, 'shopfront-prior').length > 0);
 assert.equal(kinds(generated, 'reviewed-awning-prior').length, 0, 'no canopy from unreviewed yes label');
@@ -137,6 +142,6 @@ const real = createCityAppearanceThreeAdapter({ parent: scene, targetOriginRD: b
 for (const owner of realOwners) real.setLod(owner.id, 'detail'); real.flush();
 assert.ok(real.stats.windows > 100 && real.stats.storefronts > 10);
 assert.equal(real.stats.awnings, 0, 'no fabricated human awning approvals in current data');
-assert.ok(real.stats.meshes <= 5);
+assert.ok(real.stats.meshes <= 6, 'shared door material adds one batch');
 console.log(`City facade recipes passed: ${real.stats.windows} synthetic windows, ${real.stats.storefronts} supported storefronts (${real.stats.storefrontPatches} wall patches), ${real.stats.awnings} awnings; ${real.stats.meshes} palette meshes. Opening counts are display priors, not measured.`);
 real.dispose(); assert.equal(scene.children.length, 0);

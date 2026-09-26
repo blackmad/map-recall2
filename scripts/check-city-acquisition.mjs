@@ -6,6 +6,29 @@ import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { AREA_PRESETS, loadAreaConfig } from './da-costa-block/area-config.mjs';
 import { atomicJson, digest, readJson } from './da-costa-block/pipeline-state.mjs';
+import { acquirePages } from './da-costa-block/source-acquisition.mjs';
+
+const page = data => ({ data, source: {}, artifacts: [] });
+const expandedPages = new Map([
+  ['https://example.invalid/3dbag?offset=1', page({ numberMatched: 5, numberReturned: 3, features: [
+    { id: 'a', CityObjects: { a: {}, 'a-part': {} } },
+    { id: 'b', CityObjects: { b: {}, 'b-part': {} } },
+  ], links: [{ rel: 'next', href: '?offset=4' }] })],
+  ['https://example.invalid/3dbag?offset=4', page({ numberMatched: 5, numberReturned: 2, features: [
+    { id: 'c', CityObjects: { c: {}, 'c-part': {} } },
+  ] })],
+]);
+const expanded = await acquirePages({ name: '3dbag', url: 'https://example.invalid/3dbag?offset=1', countUnit: 'cityobjects', get: async (_, url) => expandedPages.get(url) });
+assert.equal(expanded.completeness.providerReturnedUnits, 5);
+assert.equal(expanded.completeness.receivedUnits, 6);
+assert.equal(expanded.completeness.envelopeExpansionUnits, 1);
+assert.equal(expanded.completeness.method, 'advertised-page-counts-with-envelope-expansion');
+await assert.rejects(acquirePages({ name: '3dbag', url: 'https://example.invalid/', countUnit: 'cityobjects', get: async () => page({ numberMatched: 5, numberReturned: 3, features: [{ id: 'a', CityObjects: { a: {}, p: {} } }] }) }), /incomplete provider page coverage/);
+await assert.rejects(acquirePages({ name: '3dbag', url: 'https://example.invalid/', countUnit: 'cityobjects', get: async () => page({ numberMatched: 1, numberReturned: 1, features: [{ id: 'a', CityObjects: { a: {} } }, { id: 'b', CityObjects: { b: {} } }] }) }), /more CityJSONFeature envelopes/);
+let duplicatePage = 0;
+await assert.rejects(acquirePages({ name: '3dbag', url: 'https://example.invalid/duplicate', countUnit: 'cityobjects', get: async () => page(duplicatePage++ ? { numberMatched: 2, numberReturned: 1, features: [{ id: 'b', CityObjects: { b: {}, shared: {} } }] } : { numberMatched: 2, numberReturned: 1, features: [{ id: 'a', CityObjects: { a: {}, shared: {} } }], links: [{ rel: 'next', href: '?page=2' }] }) }), /duplicate CityObject shared/);
+let changedCountPage = 0;
+await assert.rejects(acquirePages({ name: '3dbag', url: 'https://example.invalid/changed', countUnit: 'cityobjects', get: async () => page(changedCountPage++ ? { numberMatched: 3, numberReturned: 1, features: [{ id: 'b', CityObjects: { b: {} } }] } : { numberMatched: 2, numberReturned: 1, features: [{ id: 'a', CityObjects: { a: {} } }], links: [{ rel: 'next', href: '?page=2' }] }) }), /source changed its count/);
 
 const root = await fs.mkdtemp(path.join(os.tmpdir(), 'city-acquisition-test-'));
 const sourceRoot = '.cache/da-costa-block', cacheRoot = path.join(root, '.cache/da-costa-block');
