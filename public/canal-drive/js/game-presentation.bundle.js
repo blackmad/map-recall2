@@ -642,7 +642,7 @@
         return;
       }
       if (this.state === GameState.MAP_SELECT) {
-        ctx.fillStyle = "#111";
+        ctx.fillStyle = "#f4efe5";
         ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
         return;
       }

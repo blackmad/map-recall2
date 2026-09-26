@@ -779,13 +779,6 @@ HUD / briefing / finish / notice states compile in Storybook. Still open:
 automated screenshot diffs for those states (not just `build-storybook`).
 
 
-**28. Map Quest onto the daylight palette.** Canal Recall moved off the
-all-cobalt chrome on 2026-09-26 (`--day-*` tokens, see HISTORY/DESIGN.md);
-Map Quest still uses the cobalt enamel tokens and ~150 cobalt-assuming class
-uses in `src/index.css` and components. Migrate it so the product reads as one
-family, then retire the unused cobalt semantic aliases. Also still dark:
-the legacy canvas attract menu in `presentationRuntime._renderMenu` (hidden
-while setup is open) and map-select fill.
 ---
 
 ## P3 — Bets worth a spike, on their own branch

@@ -1784,6 +1784,32 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Map Quest joins the daylight palette — 2026-09-26
+
+TODO #28. Canal Recall left the all-cobalt chrome earlier the same day; Map
+Quest still ran it, so the product read as two families. Map Quest is now warm
+paper and ink with copper for action and selection. Enamel stays for the Map
+Recall title plaque and the street plaques the map draws for revealed answers.
+
+Its components were written dark-on-blue in about 400 Tailwind colour
+utilities. Tailwind v4 resolves each through a `--color-*` variable, so
+`src/index.css` remaps the palette on `#root`: `text-white` becomes ink,
+`text-white/60` ink at 60%, `bg-white/10` a faint ink fill, and the slate ramp
+runs paper to ink. Enamel plaques and Leaflet markers get the stock values
+back. The remap was chosen over rewriting each class, which would have been a
+400-line diff for the same result, and new work should use the named classes
+and `--day-*`. Hard-coded rivet gold (`#c4a35a`, about 2.3:1 on paper) became
+copper ink, and the cobalt scrims became the warm day scrim.
+
+The shared semantic tokens now publish as daylight values from `hudTheme.ts`,
+and the cobalt-era aliases (`--paper`, `--moss`, `--terracotta`, `--ochre`,
+`--primary`) are retired. Two smaller fixes shipped with it:
+
+- The locate button's `z-[900]` leaked out of the map and drew over the
+  options modal on phones. The map viewport is now `isolate`.
+- The canvas map-select state filled black between two paper screens. It now
+  fills with paper.
+
 ## The UI review's leftovers, closed — 2026-09-26
 
 TODO #30, the smaller findings from the UI review:

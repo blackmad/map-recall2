@@ -93,7 +93,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
               <div className="space-y-0.5 sm:space-y-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <span className="enamel-chip px-2 py-0.5 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
-                    <span className="text-[#c4a35a]">{badge.icon}</span>
+                    <span className="text-[#8a4a18]">{badge.icon}</span>
                     <span>{badge.label}</span>
                   </span>
                   <span className="hidden sm:inline text-xs text-white/70 font-semibold uppercase tracking-wider">
@@ -123,7 +123,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                   onClick={() => onSelectGuess(option)}
                   className="enamel-tile px-2.5 py-2 sm:px-3 sm:py-3 font-bold text-xs sm:text-sm text-left flex items-center gap-2 sm:gap-2.5 transition cursor-pointer group"
                 >
-                  <span className="w-6 h-6 rounded-md bg-white/15 text-white/80 group-hover:bg-[#c4a35a] group-hover:text-[#071430] text-xs font-mono font-bold flex items-center justify-center flex-shrink-0 transition-colors">
+                  <span className="w-6 h-6 rounded-md bg-white/15 text-white/80 group-hover:bg-[#b4682c] group-hover:text-[#fbf8f2] text-xs font-mono font-bold flex items-center justify-center flex-shrink-0 transition-colors">
                     {idx + 1}
                   </span>
                   <span className="truncate leading-tight">{option}</span>
@@ -149,7 +149,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 <div
                   className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border ${
                     isCorrect
-                      ? 'bg-[#c4a35a] border-[#e2c98a] text-[#071430]'
+                      ? 'bg-[#b4682c] border-[#8a4a18] text-[#fbf8f2]'
                       : 'bg-white/10 border-white/25 text-white'
                   }`}
                 >
@@ -158,7 +158,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
 
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5">
-                    <h2 className={`enamel-brand text-base sm:text-lg truncate ${isCorrect ? 'text-[#e2c98a]' : 'text-white'}`}>
+                    <h2 className={`enamel-brand text-base sm:text-lg truncate ${isCorrect ? 'text-[#8a4a18]' : 'text-white'}`}>
                       {wasSkipped ? 'Skipped' : isCorrect ? 'Correct' : 'Not quite'}
                     </h2>
                   </div>
@@ -171,7 +171,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
               {/* Score & Next Round CTA */}
               <div className="flex items-center gap-3 flex-shrink-0">
                 <div className="text-right">
-                  <div className="text-sm sm:text-base font-black text-[#c4a35a] tracking-tight">
+                  <div className="text-sm sm:text-base font-black text-[#8a4a18] tracking-tight">
                     {isCorrect ? '+5,000' : '+0'}{' '}
                     <span className="text-xs font-normal text-white/70">PTS</span>
                   </div>
