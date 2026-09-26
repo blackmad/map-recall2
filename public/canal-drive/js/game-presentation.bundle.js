@@ -418,6 +418,48 @@
     return "No cycling in real life";
   }
 
+  // src/canalRecall/orientationPois.ts
+  var SPOILER_MIN_LENGTH = 5;
+  function normaliseSpoilerName(name) {
+    return name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+  function maskSpoiledName(label, names, fallback = "your destination") {
+    if (!label) return label;
+    const chars = [];
+    const origin = [];
+    for (let i = 0; i < label.length; i++) {
+      const base = normaliseSpoilerName(label[i]);
+      if (base) {
+        chars.push(base);
+        origin.push(i);
+      } else if (chars.length && chars[chars.length - 1] !== " ") {
+        chars.push(" ");
+        origin.push(i);
+      }
+    }
+    const text = chars.join("");
+    const spans = [];
+    for (const raw of new Set(names)) {
+      const name = raw ? normaliseSpoilerName(raw) : "";
+      if (name.length < SPOILER_MIN_LENGTH) continue;
+      for (let at = text.indexOf(name); at !== -1; at = text.indexOf(name, at + 1)) {
+        if (at > 0 && text[at - 1] !== " ") continue;
+        spans.push([origin[at], origin[at + name.length - 1] + 1]);
+      }
+    }
+    if (!spans.length) return label;
+    spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
+    let out = "";
+    let cursor = 0;
+    for (const [start, end] of spans) {
+      if (end <= cursor) continue;
+      out += label.slice(cursor, Math.max(cursor, start)) + "\u2026";
+      cursor = end;
+    }
+    out += label.slice(cursor);
+    return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
   var INK = "#1f1c17";
   var MUTED = "#5f584d";
@@ -562,6 +604,19 @@
     }
     _cityDisplayName() {
       return this._activeCity().name || "Amsterdam";
+    }
+    /** The destination as the ride may show it: with any street or water name
+     *  from this track hidden, so "Keizersgrachtkerk" cannot answer the
+     *  Keizersgracht question. The arrival card still shows the real name. */
+    _destinationLabel() {
+      const name = this.routeTo?.name || "";
+      const segments = this.track?.segments || [];
+      const key = `${name}|${segments.length}`;
+      if (this._destinationLabelKey !== key) {
+        this._destinationLabelKey = key;
+        this._destinationLabelText = maskSpoiledName(name, segments.map((segment) => segment.name).filter((n) => !!n));
+      }
+      return this._destinationLabelText || name;
     }
     /** Re-layout when the window no longer matches the last layout. Phones can
      *  settle their width after load (980 → 390 in iPhone emulation) without a
@@ -718,7 +773,7 @@
       ) : null;
       this.hud.drawDestination(
         ctx,
-        this.routeTo.name,
+        this._destinationLabel(),
         this.track.getDistanceToFinish(player.x, player.y),
         this._routeLearningPlan?.expectedNovelty ?? null,
         finishAngle
@@ -1540,7 +1595,7 @@
       const due = this.recall && typeof this.recall.dueReviews === "function" ? this.recall.dueReviews() : [];
       const hasCold = due.some((place) => place.cityId === (this.cityId || "amsterdam") && place.dueAt <= Date.now());
       return missionBrief({
-        destinationName: this.routeTo?.name || "",
+        destinationName: this._destinationLabel(),
         travelMode: isBoat(this.travelMode) ? "boat" : isTransit(this.travelMode) ? "transit" : "car",
         routePattern: this.routePattern === "home" ? "home" : this.routePattern === "here" ? "here" : "surprise",
         cityName: this._cityDisplayName(),

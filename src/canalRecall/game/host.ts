@@ -328,6 +328,9 @@ export interface PresentationHost extends GameCoreHost {
   _answerReveal?: { name: string; segmentIndex: number; pointIndex: number } | null;
   /** Window size the HUD was last laid out for; see `_syncViewportSize`. */
   _viewportKey?: string;
+  /** Cache for `_destinationLabel`: the masked name and what it was built from. */
+  _destinationLabelKey?: string;
+  _destinationLabelText?: string;
   _resize?(): void;
 
   learnedNames: Set<string>;

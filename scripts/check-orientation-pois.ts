@@ -7,6 +7,7 @@ import {
   buildSpoilerIndex,
   DEFAULT_CELL_METRES,
   poiNameSpoils,
+  maskSpoiledName,
   thinOrientationPois,
 } from '../src/canalRecall/orientationPois';
 
@@ -102,6 +103,21 @@ assert.equal(
   const literal = JSON.stringify(filter);
   assert.ok(literal.includes('"sint-jacobsstraat"'), 'raw lower-cased names reach the basemap filter');
   assert.ok(literal.includes('"nassaukade"'));
+}
+
+// Named regression (UI review 2026-09-26): a boat route to Keizersgrachtkerk
+// along the Keizersgracht put the canal's name in the destination card.
+{
+  const route = ['Keizersgracht', 'Leliegracht', 'Nieuwe Herengracht', 'Dam'];
+  assert.equal(maskSpoiledName('Keizersgrachtkerk', route), '…kerk', 'a compound keeps its tail');
+  assert.equal(maskSpoiledName('Keizersgracht 123', route), '… 123');
+  assert.equal(maskSpoiledName('Hotel Nieuwe Herengracht', route), 'Hotel …', 'multi-word names match across spaces');
+  assert.equal(maskSpoiledName('Westerkerk', route), 'Westerkerk', 'an unrelated landmark is untouched');
+  assert.equal(maskSpoiledName('Damrak', route), 'Damrak', 'names under 5 letters are ignored');
+  assert.equal(maskSpoiledName('Oude Keizersgracht', route), 'Oude …', 'matches start at a word, anywhere');
+  assert.equal(maskSpoiledName('Prinsenkeizersgracht', route), 'Prinsenkeizersgracht', 'mid-word containment is not a start');
+  assert.equal(maskSpoiledName('Leliegracht', route), 'your destination', 'nothing left falls back');
+  assert.equal(maskSpoiledName('Café Lelieg\u0072acht', route), 'Café …', 'accents and escapes normalise');
 }
 
 process.stdout.write(

@@ -184,3 +184,49 @@ export function basemapSpoilerFilter(original: unknown, index: SpoilerIndex): un
   ];
   return original ? ['all', original, exclude] : exclude;
 }
+
+/**
+ * A destination label with any quiz name inside it hidden. Destinations are
+ * landmarks, and Dutch compounds them onto the street or water they stand on:
+ * riding to "Keizersgrachtkerk" along the Keizersgracht tells you the answer
+ * (review 2026-09-26). Word n-grams miss a compound, so this matches each name
+ * wherever a word *starts* with it, and replaces the span with an ellipsis:
+ * "Keizersgrachtkerk" → "…kerk", which still says what you are riding to.
+ * Returns `fallback` when nothing of the label would be left.
+ */
+export function maskSpoiledName(
+  label: string,
+  names: Iterable<string>,
+  fallback = 'your destination',
+): string {
+  if (!label) return label;
+  // Normalised characters, each pointing back at its index in `label`.
+  const chars: string[] = [];
+  const origin: number[] = [];
+  for (let i = 0; i < label.length; i++) {
+    const base = normaliseSpoilerName(label[i]);
+    if (base) { chars.push(base); origin.push(i); }
+    else if (chars.length && chars[chars.length - 1] !== ' ') { chars.push(' '); origin.push(i); }
+  }
+  const text = chars.join('');
+  const spans: Array<[number, number]> = [];
+  for (const raw of new Set(names)) {
+    const name = raw ? normaliseSpoilerName(raw) : '';
+    if (name.length < SPOILER_MIN_LENGTH) continue;
+    for (let at = text.indexOf(name); at !== -1; at = text.indexOf(name, at + 1)) {
+      if (at > 0 && text[at - 1] !== ' ') continue;
+      spans.push([origin[at], origin[at + name.length - 1] + 1]);
+    }
+  }
+  if (!spans.length) return label;
+  spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
+  let out = '';
+  let cursor = 0;
+  for (const [start, end] of spans) {
+    if (end <= cursor) continue;
+    out += label.slice(cursor, Math.max(cursor, start)) + '…';
+    cursor = end;
+  }
+  out += label.slice(cursor);
+  return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
+}

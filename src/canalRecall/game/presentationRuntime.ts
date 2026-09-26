@@ -39,6 +39,7 @@ import type { PresentationHost } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
 import { bicycleRestrictionNotice } from '../routing/bikeAccess';
+import { maskSpoiledName } from '../orientationPois';
 
 /** One measured band of the arrival card. Each block reports its own height so
  *  the card measures itself, instead of keeping a stack of hand-tuned offsets
@@ -185,6 +186,20 @@ export class GamePresentationRuntime {
 
   _cityDisplayName(): string {
     return this._activeCity().name || 'Amsterdam';
+  }
+
+  /** The destination as the ride may show it: with any street or water name
+   *  from this track hidden, so "Keizersgrachtkerk" cannot answer the
+   *  Keizersgracht question. The arrival card still shows the real name. */
+  _destinationLabel(): string {
+    const name = this.routeTo?.name || '';
+    const segments = this.track?.segments || [];
+    const key = `${name}|${segments.length}`;
+    if (this._destinationLabelKey !== key) {
+      this._destinationLabelKey = key;
+      this._destinationLabelText = maskSpoiledName(name, segments.map(segment => segment.name).filter((n): n is string => !!n));
+    }
+    return this._destinationLabelText || name;
   }
 
   /** Re-layout when the window no longer matches the last layout. Phones can
@@ -365,7 +380,7 @@ export class GamePresentationRuntime {
       ? this.hud.finishDirection(player.x, player.y,
         this.track.finishPoint.x, this.track.finishPoint.y, this.camera)
       : null;
-    this.hud.drawDestination(ctx, this.routeTo.name,
+    this.hud.drawDestination(ctx, this._destinationLabel(),
       this.track.getDistanceToFinish(player.x, player.y),
       this._routeLearningPlan?.expectedNovelty ?? null, finishAngle);
 
@@ -1275,7 +1290,7 @@ export class GamePresentationRuntime {
     const hasCold = due.some((place) => place.cityId === (this.cityId || 'amsterdam')
       && place.dueAt <= Date.now());
     return missionBrief({
-      destinationName: this.routeTo?.name || '',
+      destinationName: this._destinationLabel(),
       travelMode: isBoat(this.travelMode) ? 'boat'
         : isTransit(this.travelMode) ? 'transit' : 'car',
       routePattern: this.routePattern === 'home' ? 'home'
