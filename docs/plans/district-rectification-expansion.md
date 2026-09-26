@@ -100,7 +100,12 @@ withheld all five uncertain cases on the corrected development reference, but
 colour-family agreement remains below the rollout gate. This brick-heavy sample
 does not validate performance on plaster, stone or concrete. The reference itself
 required direct native-image correction; the original accuracy score is withdrawn.
-A diverse 100-source test and obstruction masks are the next checks.
+A 100-source conservative run has now completed with 100 valid responses: median
+2.980 seconds, p90 3.704 seconds. Material names agree with 88 of 89 existing
+known-material assessments, but those assessments are not independent ground
+truth. Nine formerly unknown cases received proposals and need native-image review.
+The model is not being trained; existing local Qwen and pinned Mask2Former weights
+provide classification and obstruction masks respectively.
 Local inference has no per-image API fee; it still consumes machine time/power.
 Source: https://ollama.com/library/qwen3.5:9b .
 
@@ -109,3 +114,33 @@ Go rates make its reported 0.00247575 consistent with the off-peak USD token-rat
 usage equivalent (12,057 input at $0.15/M plus 1,112 output/reasoning at $0.60/M).
 Actual quota/cash charge remains unverified; Go subscription usage is not marginal
 cash paid. Source: https://dev.opencode.ai/docs/go/ .
+
+
+## Overnight diagnostic loop (2026-09-26)
+
+The local worker consumes completed, hash-verified 4K rectification batches. It
+classifies each crop with conservative Qwen3.5:9b, segments the original crop with
+pinned Mask2Former, and measures dominant upper-wall photo RGB inside building
+masks. Masks remove vegetation and vehicles, but the building class still includes
+windows and roof; dark/weak clusters require review. Photo RGB is not lighting-free
+material colour. No diagnostic result publishes a game appearance automatically.
+
+```sh
+# Read-only queue summary
+node --import tsx scripts/city-appearance/run-district-material-review.ts
+# Bounded overnight watch: max 44 new batches and eight hours
+node --import tsx scripts/city-appearance/run-district-material-review.ts --run --watch
+```
+
+Progress lives in `.cache/city-appearance/district-material-review/progress.json`.
+Each completed job binds model/code/source revisions and hashes of classifier,
+segmentation and colour outputs. Resume verifies those outputs before skipping
+work. Transient failures retry three times; permanent errors remain recorded until
+explicit `--retry-failed`. The worker retains a 4 GiB disk reserve. Its deadline is
+checked between jobs, so an in-flight batch may finish after eight hours.
+
+The opt-in `material-demo.html?scope=cohort` extends the default ten-case renderer
+experiment to 85 supported source assessments. Eleven unknown cases and four
+explicitly unsupported assessments keep their original appearance. This expands
+comparison coverage, not visual acceptance; full render review is still pending.
+The default game and ten-case review scope remain unchanged.

@@ -88,7 +88,11 @@ export async function measureLocalWallColours(args:string[]=process.argv.slice(2
       withheld('mask-must-be-opaque-single-channel',evidence.maskSha256);continue;}
     if(maskMeta.width!==width||maskMeta.height!==height||evidence.width!==width||evidence.height!==height){
       withheld('mask-dimensions-mismatch',evidence.maskSha256);continue;}
-    const labels=(await sharp(maskBytes).raw().toBuffer()),fullMask=new Uint8Array(width*height);
+    // Sharp expands grayscale PNGs to three raw channels unless the output
+    // colourspace is explicit. Indexing that buffer as labels shifts the mask.
+    const decodedMask=await sharp(maskBytes).toColourspace('b-w').raw().toBuffer({resolveWithObject:true});
+    if(decodedMask.info.channels!==1||decodedMask.data.length!==width*height)throw Error('Decoded mask has unexpected channel layout');
+    const labels=decodedMask.data,fullMask=new Uint8Array(width*height);
     let fullPixels=0;for(let i=0;i<fullMask.length;i++)if(labels[i]===BUILDING_LABEL){fullMask[i]=1;fullPixels++;}
     if(!fullPixels){withheld('no-building-label-2-pixels',evidence.maskSha256);continue;}
     const rgb:RgbImage={data:imageRaw.data,width,height,channels:3};

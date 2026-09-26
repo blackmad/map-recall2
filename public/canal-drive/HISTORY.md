@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## 2026-09-26 — local overnight colour diagnostics and broader opt-in demo
+
+The conservative local Qwen run produced 100 valid responses at 2.980 seconds
+median per image (3.704 seconds p90). Agreement with existing material names is
+88/89 known cases, not independent accuracy. Native-image auditing identified
+uncertain old labels, so no bulk appearance acceptance follows from that number.
+
+The resumable district worker now binds every batch to source/model/code hashes,
+records material proposals, applies pinned local segmentation, and measures upper
+wall photo colour. Resume verifies artifacts; transient retries and disk/time/work
+limits bound unattended runs. A nonuniform-mask regression caught Sharp expanding
+greyscale masks to RGB; decoding now explicitly preserves one label per pixel.
+
+An opt-in cohort demo adds 85 supported source-assessed owners while retaining
+original appearance for eleven unknown and four unsupported cases. The default
+ten-case experiment and default game remain unchanged. Focused worker, mask,
+rectification retry and scope checks pass; complete render acceptance remains open.
+
+
 ## 2026-09-26 — exhaustive district rectification and local material benchmark
 
 The former five-street source sample is replaced by an exact municipal-boundary

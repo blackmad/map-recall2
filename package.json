@@ -350,7 +350,12 @@
     "test:panorama-file-cache": "tsx scripts/da-costa-block/panorama-file-cache.test.ts",
     "review:district-materials": "tsx scripts/review/build-district-material-report.ts",
     "benchmark:local-materials": "node scripts/city-appearance/benchmark-local-materials.mjs",
-    "test:local-materials": "node scripts/city-appearance/benchmark-local-materials.test.mjs"
+    "test:local-materials": "node scripts/city-appearance/benchmark-local-materials.test.mjs",
+    "test:local-wall-colours": "tsx scripts/city-appearance/measure-local-wall-colours.test.ts",
+    "test:rectification-resume": "node --import tsx scripts/city-appearance/run-district-rectification.test.mjs",
+    "evaluate:local-materials": "node scripts/city-appearance/evaluate-local-materials.mjs",
+    "review:district-materials:worker": "node --import tsx scripts/city-appearance/run-district-material-review.ts",
+    "test:district-materials:worker": "node --import tsx --test scripts/city-appearance/run-district-material-review.test.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

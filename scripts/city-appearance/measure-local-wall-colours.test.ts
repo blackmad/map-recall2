@@ -50,6 +50,15 @@ try{
   assert.equal(accepted.rows[0].full.buildingPixels,width*height);
   assert.equal(accepted.rows[0].sourceIdentityUnverified,true);
 
+  // A uniform mask cannot detect Sharp's implicit grayscale-to-RGB expansion.
+  // Only the top eleven rows are building; every other row is an occluder.
+  const spatialMask=Buffer.alloc(width*height,3);spatialMask.fill(2,0,width*11);
+  await writeMask(spatialMask);
+  const spatial=await run();
+  assert.equal(spatial.rows[0].full.buildingPixels,width*11);
+  assert.equal(spatial.rows[0].upper.buildingPixels,width*11);
+  assert.equal(spatial.rows[0].upper.buildingFraction,11/28);
+
   await fs.rm(maskFile);
   const missing=await run();
   assert.equal(missing.rows[0].status,'withheld');

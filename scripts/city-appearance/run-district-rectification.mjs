@@ -111,7 +111,28 @@ export async function runDistrictRectification(plan) {
 
 async function main() {
   const args = process.argv.slice(2), plan = await planDistrictRectification(args);
-  console.log(JSON.stringify(args.includes('--run') || args.includes('--resume') ? await runDistrictRectification(plan) : plan, null, 2));
+  const retries=integer(flag(args,'retry-transient')??0,'Transient retries',0,6);
+  console.log(JSON.stringify(args.includes('--run') || args.includes('--resume')
+    ? await withTransientRetries(()=>runDistrictRectification(plan),retries)
+    : plan, null, 2));
+}
+
+export function isTransientRectificationError(error) {
+  const message=String(error?.message??error);
+  if(/hash mismatch|integrity|disk-space-reserve|ENOSPC|EACCES|config changed|queue changed/i.test(message))return false;
+  return /panorama-http-(429|5\d\d)|fetch failed|TimeoutError|UND_ERR_CONNECT_TIMEOUT|ECONNRESET|ETIMEDOUT|EAI_AGAIN/.test(message);
+}
+
+export async function withTransientRetries(run,retries,wait=ms=>new Promise(resolve=>setTimeout(resolve,ms))) {
+  for(let attempt=0;;attempt++){
+    try{return await run();}
+    catch(error){
+      if(attempt>=retries||!isTransientRectificationError(error))throw error;
+      const delay=Math.min(300000,30000*2**attempt);
+      process.stderr.write(`Transient rectification failure; resuming verified evidence in ${delay/1000}s (${attempt+1}/${retries})\n`);
+      await wait(delay);
+    }
+  }
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href)
   main().catch(error => { process.stderr.write(`${error.stack ?? error.message}\n`); process.exitCode = 1; });
