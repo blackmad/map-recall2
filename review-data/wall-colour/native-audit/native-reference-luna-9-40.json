@@ -1,0 +1,181 @@
+{
+  "schema": "native-wall-reference-audit/v1",
+  "reviewer": "gpt-6-luna",
+  "sourceSet": {
+    "path": "public/data/wall-materials/assignments.json",
+    "sampleSha256": "5711c358649d7f8d0309150bc05629f6846a65e0c617a459452bbf40b820134c"
+  },
+  "method": "Independent visual inspection of the exact full native crop named by each source assignment. Each crop SHA-256 was recomputed and matched to the bound source hash. No Qwen predictions were inspected. Colour labels describe visible photograph appearance only, not measured paint/albedo or rendered colour; obscured and unresolved substrate are stated explicitly.",
+  "entries": [
+    {
+      "index": 9,
+      "buildingId": "0363100012170186",
+      "observationId": "0363100012170186_e_09fw20r",
+      "sourceSha256": "3630ec30fb87cf536e3f92536d256c5578c84144fbdb4cc52c8567718488e200",
+      "sourceCrop": "public/data/city-expansion/evidence/3630ec30fb87cf536e3f92536d256c5578c84144fbdb4cc52c8567718488e200.jpg",
+      "address": "Elandsgracht 88",
+      "publishedAssessment": { "materialFamily": "unknown", "colourFamily": "red-brown", "materialId": "unknown-neutral", "visiblySupported": false },
+      "independentVisual": {
+        "materialFamily": "fired-clay brick",
+        "colourFamily": "red-brown",
+        "visibility": "partly-obscured",
+        "confidence": "medium",
+        "nativeViewReason": "The exposed wall strips between upper windows show regular brick courses and a muted red-brown face. Bare branches cover much of the upper wall and the crop is motion-blurred, so this supports a cautious visible-brick reading but not fine texture or exact colour."
+      },
+      "comparison": { "material": "more-specific-than-reference", "colour": "agrees", "note": "The reference abstained on substrate; some exposed brick bond is still visible through the branches." }
+    },
+    {
+      "index": 10,
+      "buildingId": "0363100012168920",
+      "observationId": "0363100012168920_e_0bxls2d",
+      "sourceSha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
+      "sourceCrop": "public/data/city-expansion/evidence/c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767.jpg",
+      "address": "Elandsgracht 148",
+      "publishedAssessment": { "materialFamily": "unknown", "colourFamily": "blue-grey", "materialId": "unknown-neutral", "visiblySupported": false },
+      "independentVisual": {
+        "materialFamily": "unknown masonry",
+        "colourFamily": "dark blue-grey",
+        "visibility": "visible-with-obstructions",
+        "confidence": "medium",
+        "nativeViewReason": "The large dark wall planes are plainly visible around the lettering and windows, with fine regular horizontal lines that may be brick or facing units. The image does not resolve the substrate well enough to call brick, render, or concrete. Street signs, bins and lettering obscure portions of the lower wall."
+      },
+      "comparison": { "material": "agrees-that-substrate-is-unresolved", "colour": "agrees", "note": "Do not turn the faint horizontal courses into a definite brick claim." }
+    },
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "sourceCrop": "public/data/city-expansion/evidence/9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30.jpg",
+      "address": "Frederik Hendrikstraat 200–220",
+      "publishedAssessment": { "materialFamily": "render-plaster", "colourFamily": "buff", "materialId": "cream-render", "visiblySupported": true },
+      "independentVisual": {
+        "materialFamily": "render-plaster",
+        "colourFamily": "ochre-buff",
+        "visibility": "clear-upper-facade",
+        "confidence": "high",
+        "nativeViewReason": "Broad upper wall fields are visible between the windows and balconies. They have a nearly continuous fine-grained rendered surface in a warm ochre-buff tone; there is no convincing brick bond on those fields. The darker grey brickwork is a distinct ground-floor plinth and should not set the upper-wall label."
+      },
+      "comparison": { "material": "agrees", "colour": "agrees", "note": "The cream-render palette name is lighter than the photograph's ochre-buff appearance; retain buff as the safer broad colour family." }
+    },
+    {
+      "index": 13,
+      "buildingId": "0363100012173914",
+      "observationId": "0363100012173914_e_1un6nri",
+      "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+      "sourceCrop": "public/data/city-expansion/evidence/6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114.jpg",
+      "address": "Lauriergracht 29",
+      "publishedAssessment": { "materialFamily": "render-plaster", "colourFamily": "buff", "materialId": "cream-render", "visiblySupported": true },
+      "independentVisual": {
+        "materialFamily": "unknown light wall",
+        "colourFamily": "pale cream-white",
+        "visibility": "clear-wall-face",
+        "confidence": "high",
+        "nativeViewReason": "A large pale wall plane is unobstructed, so its light cream-white appearance is clear. The face has regularly spaced horizontal joints or scoring, but at this resolution they do not distinguish rendered/plastered masonry from another light masonry or panel surface. Keep the substrate unknown rather than calling smooth render."
+      },
+      "comparison": { "material": "unresolved-reference-overstates-certainty", "colour": "partially-agrees", "note": "The visible tone is very light cream-white; the published buff label reads too saturated, and its render-plaster certainty is not supported by this crop." }
+    },
+    {
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "observationId": "0363100012094649_e_16jqzp7",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "sourceCrop": "public/data/city-expansion/evidence/a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee.jpg",
+      "address": "Van Houweningenstraat 197–213",
+      "publishedAssessment": { "materialFamily": "render-plaster", "colourFamily": "buff", "materialId": "cream-render", "visiblySupported": true },
+      "independentVisual": {
+        "materialFamily": "render-plaster",
+        "colourFamily": "pale yellow-buff",
+        "visibility": "clear-upper-facade",
+        "confidence": "high",
+        "nativeViewReason": "The extensive upper facade is in clear view with a continuous fine stippled render and no brick coursing. Its apparent colour is pale yellow-beige/buff. The dark brick base is separate; parked cars and the small sign do not block the sampled upper wall."
+      },
+      "comparison": { "material": "agrees", "colour": "agrees", "note": "The photo supports light warm render; the broad buff family is safer than an exact cream shade." }
+    },
+    {
+      "index": 30,
+      "buildingId": "0363100012236796",
+      "observationId": "0363100012236796_e_1wk1kml",
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "sourceCrop": "public/data/city-expansion/evidence/fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91.jpg",
+      "address": "Da Costakade 102",
+      "publishedAssessment": { "materialFamily": "render-plaster", "colourFamily": "off-white", "materialId": "white-render", "visiblySupported": true },
+      "independentVisual": {
+        "materialFamily": "render-plaster",
+        "colourFamily": "off-white",
+        "visibility": "clear-upper-partly-foliated-lower",
+        "confidence": "high",
+        "nativeViewReason": "The wall around the upper arched window and the side fields are plainly visible as pale off-white rendered/plastered surfaces, with smooth decorative mouldings. Foliage covers much of the lower facade, but not the large upper wall field; it is not evidence that the entire building is foliage or that the wall is unobservable."
+      },
+      "comparison": { "material": "agrees", "colour": "agrees", "note": "Upper-wall material and broad colour are supported; lower hidden areas remain unassessed." }
+    },
+    {
+      "index": 33,
+      "buildingId": "0363100012169621",
+      "observationId": "0363100012169621_e_17b6ps7",
+      "sourceSha256": "073e168197dffe1f6c671e4db4a5e5f9101d65aef8c3d50bc3e8c52b95ece31c",
+      "sourceCrop": "public/data/city-expansion/evidence/073e168197dffe1f6c671e4db4a5e5f9101d65aef8c3d50bc3e8c52b95ece31c.jpg",
+      "address": "Elandsgracht 51",
+      "publishedAssessment": { "materialFamily": "unknown", "colourFamily": "charcoal", "materialId": "unknown-neutral", "visiblySupported": false },
+      "independentVisual": {
+        "materialFamily": "unknown dark masonry",
+        "colourFamily": "charcoal",
+        "visibility": "visible-upper-facade",
+        "confidence": "medium",
+        "nativeViewReason": "The near-black upper facade is visible around all the upper windows, and faint horizontal courses suggest masonry. At this small, dark crop the courses and any coating are not distinct enough to choose fired brick, painted brick, or another masonry finish. The lit shopfront is much brighter and must not be sampled as wall colour."
+      },
+      "comparison": { "material": "agrees-that-substrate-is-unresolved", "colour": "agrees", "note": "Charcoal wall appearance is visible; keeping a neutral/unknown substrate is appropriate." }
+    },
+    {
+      "index": 36,
+      "buildingId": "0363100012174520",
+      "observationId": "0363100012174520_e_1vmewhe",
+      "sourceSha256": "6cc0e9a5f2607c50375b66abefb4a1100ba26a55d4d2c874564ea47d13c96310",
+      "sourceCrop": "public/data/city-expansion/evidence/6cc0e9a5f2607c50375b66abefb4a1100ba26a55d4d2c874564ea47d13c96310.jpg",
+      "address": "Lauriergracht 73",
+      "publishedAssessment": { "materialFamily": "unknown", "colourFamily": "brown", "materialId": "unknown-neutral", "visiblySupported": false },
+      "independentVisual": {
+        "materialFamily": "unknown dark facade",
+        "colourFamily": "deep brown-charcoal",
+        "visibility": "mostly-visible-shadowed",
+        "confidence": "medium",
+        "nativeViewReason": "Most upper wall fields are visible around the white window surrounds, but the facade is very dark and fine detail is lost in shadow and image softness. The surface looks mottled and may be brick, but this crop does not show reliable bond joints. Treat the apparent deep brown-charcoal tone as directional only."
+      },
+      "comparison": { "material": "agrees-that-substrate-is-unresolved", "colour": "partially-agrees", "note": "Brown is directionally right, but the image is near-black in shadow and does not support a brighter or more precise brown target." }
+    },
+    {
+      "index": 38,
+      "buildingId": "0363100012175000",
+      "observationId": "0363100012175000_e_1opro3y",
+      "sourceSha256": "b4dff4b80c1c864ade6e924313bae0fbee188dcf621de70a5d5c57b2d60cec31",
+      "sourceCrop": "public/data/city-expansion/evidence/b4dff4b80c1c864ade6e924313bae0fbee188dcf621de70a5d5c57b2d60cec31.jpg",
+      "address": "Rozengracht 115",
+      "publishedAssessment": { "materialFamily": "unknown", "colourFamily": "charcoal", "materialId": "unknown-neutral", "visiblySupported": false },
+      "independentVisual": {
+        "materialFamily": "unknown dark masonry",
+        "colourFamily": "dark brown-charcoal",
+        "visibility": "visible-with-signage",
+        "confidence": "medium",
+        "nativeViewReason": "The upper gabled facade around the two main windows is exposed; its dark face has mottled horizontal marks but the small, low-light crop does not resolve brick joints with confidence. Store lettering and bright shop windows contaminate the lower portion. Keep substrate unknown and exclude the sign and glazing from any colour reading."
+      },
+      "comparison": { "material": "agrees-that-substrate-is-unresolved", "colour": "partially-agrees", "note": "Charcoal is close, but the exposed wall reads warmer brown-black than neutral grey; deep shadow limits the distinction." }
+    },
+    {
+      "index": 40,
+      "buildingId": "0363100012154205",
+      "observationId": "0363100012154205_e_1aluzx5",
+      "sourceSha256": "45cbef0ded656258d6e09e1f4ae48bfbbd0b11c85ecc495198af94b22486273f",
+      "sourceCrop": "public/data/city-expansion/evidence/45cbef0ded656258d6e09e1f4ae48bfbbd0b11c85ecc495198af94b22486273f.jpg",
+      "address": "Da Costakade 77",
+      "publishedAssessment": { "materialFamily": "unknown", "colourFamily": "blue-grey", "materialId": "unknown-neutral", "visiblySupported": false },
+      "independentVisual": {
+        "materialFamily": "fired-clay brick",
+        "colourFamily": "red-brown",
+        "visibility": "clear-brick-facade",
+        "confidence": "high",
+        "nativeViewReason": "The facade has a distinct, repeated brick bond, including curved brick arches over the windows and projecting brickwork around the upper opening. The wall itself reads earthy red-brown despite a strong cool/cyan cast in the sky and shadowed parts of the photo. Windows, dark frames and balcony rails should not drive the colour label."
+      },
+      "comparison": { "material": "reference-is-too-conservative", "colour": "disagrees", "note": "The native crop provides direct evidence of brick and a warm red-brown wall; blue-grey is not representative of the exposed wall face." }
+    }
+  ]
+}
