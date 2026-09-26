@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { loadAreaConfig } from '../da-costa-block/area-config.mjs';
-import { chooseAuditRecords, chooseCoverageRecords, DEFAULT_AREA, selectPanoramaAudit } from './select-panorama-audit.mjs';
+import { chooseAuditRecords, chooseCoverageRecords, chooseDistrictCoverageRecords, districtCoverageBatch, DEFAULT_AREA, selectPanoramaAudit } from './select-panorama-audit.mjs';
 
 const buildings = [
   { id: 'old', year: 1880 }, { id: 'a', year: 1890 }, { id: 'b', year: 1910 },
@@ -25,6 +25,17 @@ assert.deepEqual(coverageFirst.map(record => record.id), ['a-1', 'a-2', 'd-1', '
 assert(!coverageFirst.some(record => record.buildingId === 'old'));
 assert(coverageFirst.every(record => ['A', 'D'].includes(record.street)));
 assert.throws(() => chooseCoverageRecords(records, buildings, { cap: 1001 }), /1–1000/);
+
+const districtOwners = new Set(['a', 'b', 'c', 'd', 'e']);
+const districtRecords = chooseDistrictCoverageRecords(records, buildings, districtOwners);
+assert.deepEqual(districtRecords.map(record => record.id), ['a-1', 'a-2', 'b-1', 'c-1', 'd-1', 'e-1']);
+assert.deepEqual(districtRecords, chooseDistrictCoverageRecords([...records].reverse(), [...buildings].reverse(), districtOwners));
+const parts = [0, 1, 2].map(index => districtCoverageBatch(districtRecords, 2, index));
+assert(parts.every(part => part.batches === 3));
+assert.deepEqual(parts.flatMap(part => part.records), districtRecords, 'batches must cover every eligible frontage exactly once');
+assert.throws(() => districtCoverageBatch(districtRecords, 2, 3), /outside/);
+assert.throws(() => districtCoverageBatch(districtRecords, 251, 0), /1–250/);
+assert.throws(() => chooseDistrictCoverageRecords([...records, records[0]], buildings, districtOwners), /Duplicate district frontage/);
 
 try {
   await fs.access(path.resolve('.cache/city-appearance/areas/da-costa-tranche-400m-v1/runs'));

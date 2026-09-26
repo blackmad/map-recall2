@@ -9,7 +9,7 @@ import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { loadAreaConfig } from '../da-costa-block/area-config.mjs';
 import { atomicJson, digest } from '../da-costa-block/pipeline-state.mjs';
-import { DEFAULT_AREA, selectPanoramaAudit, selectPanoramaCoverage } from './select-panorama-audit.mjs';
+import { DEFAULT_AREA, selectPanoramaFromArgs } from './select-panorama-audit.mjs';
 
 async function reusePool(){
   const pool=path.resolve('.cache/city-appearance/shared-panoramas');await fs.mkdir(pool,{recursive:true});
@@ -55,16 +55,11 @@ export async function auditEvidence(selection, evidenceRoot) {
 async function main() {
   const area = await loadAreaConfig([`--area-config=${path.resolve(flag('area-config') ?? DEFAULT_AREA)}`]);
   const mode = flag('mode') ?? 'audit';
-  if (!['audit', 'coverage'].includes(mode)) throw Error('Mode must be audit or coverage');
-  const streets = flag('streets')?.split(',').map(value => value.trim()).filter(Boolean);
-  const cap = Number(flag('cap') ?? (mode === 'coverage' ? 1000 : 24));
-  const selected = mode === 'coverage'
-    ? await selectPanoramaCoverage(area, { streets, cap, includeBaseline:process.argv.includes('--include-baseline') })
-    : await selectPanoramaAudit(area, { cap });
+  const selected = await selectPanoramaFromArgs(area, process.argv.slice(2));
   const selection = selected.report;
   const evidenceRoot = path.join(selected.destination, 'evidence');
   if (!process.argv.includes('--run')) {
-    console.log(JSON.stringify({ mode: 'dry-run', selectionHash: selection.selectionHash, frontages: selection.cap,
+    console.log(JSON.stringify({ mode: 'dry-run', selectionHash: selection.selectionHash, frontages: selection.records.length,
       maxPanoramaDownloads: selection.uniqueProposedPanoramas, evidenceRoot, paidCalls: 0 }, null, 2)); return;
   }
   const pipeline = JSON.parse(await fs.readFile(path.join('.cache/city-appearance/areas', area.id, 'runs', selection.runHash, 'pipeline.json')));
