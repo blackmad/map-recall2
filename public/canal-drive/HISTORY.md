@@ -6,6 +6,28 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Help that explains the game; copy that says what it means — 2026-09-26
+
+From the 2026-09-26 UI review. "?" opened a keyboard table, even on phones,
+and nothing explained the thumbstick, spaced review or "% new". Help is now
+"How to play": Ride (touch readers get the stick, pointer readers the keys),
+Name it, Remember it; the keyboard table shows only on fine pointers. The ⚙/?
+buttons were Unicode glyphs with no accessible names; they are drawn SVG with
+labels, and they stay hidden while a route loads.
+
+Plain language: "fog map" → "keep your progress on every device", "Space
+reviews" → "Due names only", "Game-y features" → "Scores & streaks" (the name
+setup already used). View names match between setup and settings ("North up",
+"Heading up", "Chase", "Cockpit"), and the current view sits beside its row
+label instead of stranded at the rail's edge. A mission line no longer tells
+you to "make Dam Square Victims 7 mei 1945 feel like home". The first question
+of a ride no longer claims "You made a turn" when none happened (the start
+street itself is given on purpose and never asked).
+
+The overview minimap stroked every segment separately, so translucent ink
+stacked wherever segments met; in bike mode that is everywhere and it read as
+solid black. Each layer is now one path, stroked once (`strokeLayer`).
+
 ## Keyboard and small-screen access — 2026-09-26
 
 From the 2026-09-26 UI review. `input.js` called `preventDefault` on Tab for

@@ -268,7 +268,7 @@
     const detail = bits.length ? `That knowledge sticks on your ${cityName} map.` : "A clean ride \u2014 review something overdue next time.";
     const passport = newPassportStamps.length ? `Passport: ${newPassportStamps.slice(0, 3).join(", ")}${newPassportStamps.length > 3 ? "\u2026" : ""}` : null;
     const streak = placeStreakLabel(placeStreak);
-    const guestTease = !input.signedIn && input.recallAvailable ? "Sign in to sync your fog map across devices" : null;
+    const guestTease = !input.signedIn && input.recallAvailable ? "Sign in to keep your progress on every device" : null;
     return { headline, detail, passport, streak, guestTease };
   }
 
@@ -281,7 +281,9 @@
   var BIKE = [
     (d) => `Ride toward ${d}`,
     (d) => `Pedal to ${d} \u2014 learn the turns`,
-    (d) => `Make ${d} feel like home`
+    // Neutral on purpose: destinations include memorials ("Make Dam Square
+    // Victims 7 mei 1945 feel like home" was the review's example).
+    (d) => `Learn the way to ${d}`
   ];
   var TRANSIT = [
     (d) => `Ride the line toward ${d}`,
@@ -484,7 +486,9 @@
       const ctx = this.ctx;
       ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
       const utility = document.getElementById("utility-buttons");
-      if (utility) utility.style.display = this.state === GameState.FINISHED ? "none" : "";
+      if (utility) {
+        utility.style.display = this.state === GameState.FINISHED || this.state === GameState.LOADING ? "none" : "";
+      }
       if (this.state === GameState.MENU) {
         this._renderMenu();
         return;

@@ -135,7 +135,10 @@ export class GamePresentationRuntime {
     // The arrival card is a full-screen modal; on a phone the settings and help
     // buttons sat on top of its actions in the bottom-right corner.
     const utility = document.getElementById('utility-buttons');
-    if (utility) utility.style.display = this.state === GameState.FINISHED ? 'none' : '';
+    // Nor while loading: there is nothing yet to configure or explain.
+    if (utility) {
+      utility.style.display = this.state === GameState.FINISHED || this.state === GameState.LOADING ? 'none' : '';
+    }
 
     if (this.state === GameState.MENU) { this._renderMenu(); return; }
     if (this.state === GameState.MAP_SELECT) {
