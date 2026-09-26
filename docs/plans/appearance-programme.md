@@ -33,6 +33,10 @@ The owner explicitly requests **no human-in-the-loop** (2026-09-26). Agents must
   and place reviewed signs subsequently. Routine visual decisions stay with agents.
 - Generated releases and photographic evidence remain local; source commits do not
   constitute deployment of these assets to a remote demo.
+- Validation after integrating current main: `check:canal`, clean-checkout
+  typechecking, the named roof regression, and eight desktop/iPhone-emulation
+  appearance checks all pass. Browser checks cover the real study route, repeated
+  camera updates, reviewed-only coverage and Da Costakade 13's full-height colour.
 
 ## Earlier demo implementation status — 2026-09-26
 

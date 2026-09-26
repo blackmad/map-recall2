@@ -11,6 +11,11 @@ local evidence. Local release
 `3d4551a8716c6b60dc59ba0d5de9b851628e62f4ae3eef2c6be7a5bd4ab7c9da`
 contains these colours; 7,023 other district buildings still use contextual defaults.
 
+After merging current main, the full `check:canal` gate, clean-checkout typecheck,
+named roof regression and eight desktop/iPhone appearance checks pass. The latter
+exercise the real route, repeated live camera updates, colour coverage mode and
+Da Costakade 13. Generated release assets and photographic evidence stay local.
+
 The owner's panning screenshots exposed a live-loop regression that frozen route
 checkpoints missed. Every camera `jumpTo` could emit `moveend`, and shared residency
 then disabled every active detail layer, disposed its meshes and fetched it again.
