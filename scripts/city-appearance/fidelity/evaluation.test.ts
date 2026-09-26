@@ -1,0 +1,56 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import {activateCandidate} from './activate.js';
+import {computeEvaluation,verifyEvaluationArtifact,digest,jsonDigest} from './evaluation.js';
+const root=await fs.mkdtemp(path.join(os.tmpdir(),'facade-evaluation-'));
+try {
+  const blob=Buffer.from('fixture image'), sha=digest(blob);await fs.writeFile(path.join(root,'source.jpg'),blob);
+  const image={path:'source.jpg',sha256:sha}, artifacts=[image], compilerHash=jsonDigest([sha]);
+  const candidate={releaseId:sha,compilerHash,recordsSha256:sha,artifactsSha256:jsonDigest(artifacts)};
+  const cases=Array.from({length:44},(_,i)=>({id:`c${i}`,buildingId:`b${i}`,district:i<29?'Da Costabuurt':'Jordaan',role:i<12?'development':i<14?'named':'held-out',sources:{ground:{path:'source.jpg',cropSha256:sha,captureDate:'2025-01-01'}}}));
+  const opening=(kind:'door'|'window')=>({id:kind,kind,head:'rectangular',bounds:[kind==='door'?0:3,0,kind==='door'?1:4,2],visible:true});
+  const refs=cases.map(c=>({caseId:c.id,tier:'ground',cropSha256:sha,captureDate:'2025-01-01',disposition:'agent-inspected',inspectedBeforePrediction:'2026-09-01',openings:[opening('door'),opening('window')],assertions:[{id:'awnings',expected:[]},{id:'materials',expected:[]},{id:'physicalSigns',expected:[]}]}));
+  const predictions={compilerHash,recordsSha256:sha,extractionVersion:'fixture-v1',entries:refs.map(r=>({...r,generatedAt:'2026-09-02',registration:{status:'registered',uncertaintyM:.05},assertions:[{id:'awnings',actual:[]},{id:'materials',actual:[]},{id:'physicalSigns',actual:[]}]}))};
+  const references={disposition:'independent-source-annotations',entries:refs,primaryStrata:Object.fromEntries(cases.filter(c=>c.role==='held-out').map((c,i)=>[c.id,['residential-entrances','residential-entrances','residential-entrances','curved-openings','curved-openings','shop-assemblies','shop-assemblies','shop-assemblies','extended-awning','retracted-awning','contrasting-finishes-or-accents','contrasting-finishes-or-accents','obscured-or-unknown','obscured-or-unknown','obscured-or-unknown'][i%15]]))};
+  const run={version:1,activeDevelopmentSetId:jsonDigest(cases.filter(c=>c.role==='development')),heldOutSetId:jsonDigest(cases.filter(c=>c.role==='held-out')),extractionVersion:'fixture-v1',compilerHash,cases,namedCases:{'Fuoco Vivo':['c12'],'Engels Verf':['c13']},runtimeCameraIds:Array.from({length:14},(_,i)=>`camera${i}`)};
+  const compiled={candidate,root:'.',compilerRoot:root,compilerInputs:[image],manifest:image,artifacts};
+  const contacts={entries:cases.slice(0,14).map(c=>({caseId:c.id,kind:'pavement-base',tier:'ground',cropSha256:sha,captureDate:'2025-01-01',gapM:.01,uncertaintyM:.01}))};
+  const captures={entries:cases.slice(0,14).flatMap(c=>['tight-ground-floor','full-facade','oblique-game'].map(view=>({caseId:c.id,viewer:view==='oblique-game'?'game':'appearance',view,releaseId:sha,image,sourceImage:image,targetHighlighted:true,unrelatedLabels:0,inspectorVisible:false,inspection:{disposition:'agent-inspected',findings:['Fixture visual inspection'],mismatches:[],referenceSha256:jsonDigest(references),predictionsSha256:jsonDigest(predictions)}})))};
+  const runtime={releaseId:sha,compilerHash,artifactsSha256:candidate.artifactsSha256,checkpoints:run.runtimeCameraIds.flatMap(cameraId=>['desktop','phone'].map(layout=>({cameraId,layout,geometryBytes:8_000_000,textureBytes:1_000_000,cameraBlocked:false,sightlineBlocked:false,ready:true,capture:image}))),disposal:{residentAfter:0,rehydratedBytes:9_000_000},compileFirstSha256:sha,compileRepeatSha256:sha};
+  const ledger={baselineUsd:1,entries:[{id:'prior',status:'settled',actualUsd:1,reservedUsd:1},{id:'dev',status:'settled',actualUsd:.2,reservedUsd:.2,fidelityPhase:'development'}]};
+  const docs:any={run,references,predictions,compiled,captures,contacts,runtime,ledger};
+  async function save(){const evidence:any={};for(const [name,value] of Object.entries(docs)){const bytes=JSON.stringify(value);await fs.writeFile(path.join(root,`${name}.json`),bytes);evidence[name]={path:`${name}.json`,sha256:digest(bytes)};}await fs.writeFile(path.join(root,'index.json'),JSON.stringify({version:1,candidate,evidence}));}
+  const evaluate=()=>computeEvaluation(path.join(root,'index.json'),candidate);
+  await save();assert.deepEqual((await evaluate()).failures,[]);
+  await assert.rejects(()=>verifyEvaluationArtifact(path.join(root,'index.json'),{...candidate,releaseId:'0'.repeat(64)}),/different candidate/);
+  predictions.entries[14].registration.status='abstained';await save();let result=await evaluate();assert.equal(result.abstentions,1);assert.equal(result.accuracy.door.fn,1,'missed visible doors count as FN on abstention');predictions.entries[14].registration.status='registered';
+  runtime.checkpoints[0].textureBytes=4_000_000;await save();assert.ok((await evaluate()).failures.includes('runtime:camera0/desktop'));runtime.checkpoints[0].textureBytes=1_000_000;
+  runtime.releaseId='0'.repeat(64);await save();assert.ok((await evaluate()).failures.includes('runtime-candidate-binding'));runtime.releaseId=sha;
+  contacts.entries[0].kind='door-threshold';await save();assert.ok((await evaluate()).failures.includes('missing-contact:c0'));contacts.entries[0].kind='pavement-base';
+  predictions.entries[0].captureDate='2024-01-01';await save();assert.ok((await evaluate()).failures.includes('invalid-or-stale-prediction:c0/ground'));predictions.entries[0].captureDate='2025-01-01';
+  ledger.entries[1].status='pending';await save();await assert.rejects(()=>verifyEvaluationArtifact(path.join(root,'index.json'),candidate),/unresolved-cost-ledger/);ledger.entries[1].status='settled';
+  refs[0].openings=[];await save();assert.ok((await evaluate()).failures.includes('development-openings:c0/ground'));refs[0].openings=[opening('door'),opening('window')];
+  // Exercise atomic activation against a staged fixture and a separate cost journal.
+  const outputRoot=path.join(root,'published'),releaseRoot=path.join(outputRoot,'releases',sha);
+  await fs.mkdir(releaseRoot,{recursive:true});await fs.writeFile(path.join(releaseRoot,'source.jpg'),blob);
+  const manifestBytes=Buffer.from(JSON.stringify({releaseId:sha,compilerHash,candidate}));
+  await fs.writeFile(path.join(releaseRoot,'manifest.json'),manifestBytes);
+  compiled.root=releaseRoot;compiled.manifest={path:'manifest.json',sha256:digest(manifestBytes)};
+  await fs.writeFile(path.join(releaseRoot,'candidate.json'),JSON.stringify(compiled));
+  const prior=Buffer.from('{"releaseId":"preserved"}');await fs.writeFile(path.join(outputRoot,'current.json'),prior);
+  const ledgerFile=path.join(root,'live-ledger.json');await fs.writeFile(ledgerFile,JSON.stringify({version:1,entries:ledger.entries}));
+  const activate=()=>activateCandidate({releaseRoot,outputRoot,evaluationIndex:path.join(root,'index.json'),ledgerFile,legacyLedgers:[]});
+  runtime.checkpoints.pop();await save();await assert.rejects(activate,/runtime-camera-coverage/);
+  assert.deepEqual(await fs.readFile(path.join(outputRoot,'current.json')),prior,'incomplete evidence cannot change release pointer');
+  runtime.checkpoints.push({cameraId:'camera13',layout:'phone',geometryBytes:8_000_000,textureBytes:1_000_000,cameraBlocked:false,sightlineBlocked:false,ready:true,capture:image});
+  await save();await activate();
+  assert.deepEqual(await fs.readFile(path.join(outputRoot,'current.json')),manifestBytes);
+  assert.deepEqual(await fs.readFile(path.join(outputRoot,'rollback',`${digest(prior)}.json`)),prior);
+  await fs.writeFile(ledgerFile,JSON.stringify({version:1,entries:[...ledger.entries,{id:'unknown',key:'unknown',status:'unknown',reservedUsd:.04}]}));
+  await assert.rejects(activate,/Live cost ledger changed/);
+  await save();await fs.writeFile(path.join(root,'runtime.json'),'{}');await assert.rejects(evaluate,/Stale\/corrupt evidence/);
+  await save();await fs.writeFile(path.join(root,'source.jpg'),'changed');await assert.rejects(evaluate,/Stale\/corrupt evidence/);
+  console.log('Computed evaluation: candidate identity, hash corruption, per-kind accuracy, abstention false negatives, mixed dates, contact types, textures and unresolved charges passed.');
+} finally {await fs.rm(root,{recursive:true,force:true});}

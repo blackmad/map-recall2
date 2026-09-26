@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "id": "da-costa-jordaan-v1",
+  "name": "Da Costabuurt + Jordaan",
+  "areas": [
+    { "id": "da-costabuurt-v1", "district": "Da Costabuurt", "config": "../areas/da-costabuurt-v1.json", "priority": 10, "boundary": { "sourceFeatureIds": ["03630980000159", "03630980000164"], "sourceFeatureHashes": ["366286deb0bbfd3a478d6b8476413c8725511a9862a433f38cdd1d13bcb8e776", "4246c1407181b5f890d0f4796b2ee2cdb3d21a46c92e7c79c97f3d051552b8aa"], "geometryHash": "d2e89b8c4334b8b1837fc198ebb49572cbbf1f5ae8dc7baf25949a0ce92cbf8c", "simplification": "none in source acquisition; district display ring is a coarse operational outline" } },
+    { "id": "jordaan-sample-v1", "district": "Jordaan", "config": "../areas/jordaan-sample-v1.json", "priority": 20, "boundary": { "sourceFeatureIds": ["03630980000026", "03630980000027", "03630980000029", "03630980000031", "03630980000034", "03630980000035"], "sourceFeatureHashes": ["cdd02ff6f13455f052d398141bff60859b30a2ee6cd2c7f1b5cf8e068762e757", "2e328b00fa0904c91b6291aebb3333dfd1465b47e74a146ecc6c8c2e83598a1d", "44ac7fdae908fd4001ee6f4daf7205f1835c465e02095c34aa0bd67fc4558c07", "bb7c8d9d90af973046a2c54822fb257a54cfdfbeea49cf4256351dba74ef0f4b", "115d49f5605613930b174c701c2a3a6ef0fdc28dd096ec88a590d065ccbe9c96", "c2d9b03d0c9187fea345ecc6aea8ed1efbcdc8513b30426af36e813acff504ca"], "geometryHash": "4d6192dbf89e60566e1924c62a8123895a218b5157480218d2b4367722e39a92" } }
+  ],
+  "boundary": [[[4.867399795952647,52.371794922274304],[4.871978712709087,52.365145483562195],[4.87751272183099,52.36677026038059],[4.877082759020611,52.368105926302746],[4.875481454909949,52.37340840552959],[4.869638966788993,52.37224202910445],[4.867399795952647,52.371794922274304]],[[4.880907781876498,52.365491736213876],[4.882792763939564,52.36617532678928],[4.88260888451093,52.36892990988176],[4.88314976742786,52.3747503040478],[4.884773773039359,52.37652841378139],[4.888430726182581,52.38052016755573],[4.882959117228857,52.38365058073888],[4.877597591739214,52.37520431676595],[4.876173334224242,52.371901025442426],[4.879069917512346,52.36774328739],[4.880907781876498,52.365491736213876]]],
+  "boundarySource": { "name": "Gemeente Amsterdam Datapunt gebieden: buurten GeoJSON", "revision": "2024-01-25T20:36:51 feature registration timestamp", "retrievedAt": "2026-09-12T11:08:55Z", "url": "https://api.data.amsterdam.nl/v1/gebieden/buurten?_format=geojson", "snapshot": "amsterdam-buurten-da-costa-jordaan-2024-01-25.geojson", "snapshotSha256": "6c8be63b47a96645b10f9dde2323dd8647103d734ba939fc41ccbb51311aec5d", "snapshotScope": "eight exact municipal features cached from the live public endpoint; public geometry acquisition is separately recorded in each area cache" },
+  "route": "../routes/da-costa-jordaan-v1.json",
+  "budgets": { "buildingTiles": 12, "contextTiles": 16, "detailBufferMB": 11 },
+  "spendLimitUsd": 1
+}

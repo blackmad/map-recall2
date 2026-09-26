@@ -1,9 +1,12 @@
+import { jsonDigest } from './fidelity/evaluation.js';
+import { activateCandidate } from './fidelity/activate.js';
+import { sourceToRenderHeight } from '../../src/canalRecall/appearanceHeight.js';
 /** Publish an immutable geometry-only release from a completed area pipeline.
  * No appearance evidence, inference, review mutation, or acquisition occurs.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { loadAreaConfig } from '../da-costa-block/area-config.mjs';
 import { compileBlockAppearance, sha256 } from './compile-block-tiles.js';
@@ -11,15 +14,16 @@ import { selectPanoramaAudit } from './select-panorama-audit.mjs';
 import { surfaceMatches } from '../../public/canal-drive/da-costa-block/evidence.js';
 import { compileContextTiles } from '../../src/canalRecall/cityAppearanceContextTiles.js';
 import { compileAreaRoute } from '../../src/canalRecall/cityAppearanceRoute.js';
+import { machineSignPlacementsForGame, GAME_SIGN_RELIEF_OFFSET_M } from '../../src/canalRecall/cityAppearanceMachineSigns.js';
 import { contextualBuildingPalette } from '../../src/canalRecall/cityAppearancePalette.js';
-import { contextualFacadePatches, FACADE_PATCH_COLOURS } from '../../src/canalRecall/cityAppearanceFacadeRecipes.js';
+import { compileFacadePatches, facadeRecipeRecords, FACADE_PATCH_COLOURS } from '../../src/canalRecall/cityAppearanceFacadeRecipes.js';
 import { PUBLIC_REALM_SIMPLIFICATION_TOLERANCE_M, publicRealmVertexCount, simplifyPublicRealmFeature } from '../../src/canalRecall/cityAppearancePublicRealm.js';
 import { selectCompatibleSourceRoof, SOURCE_ROOF_SELECTION_POLICY } from '../../src/canalRecall/cityAppearanceRoofs.js';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.js';
 
 const flag=(name:string)=>process.argv.find(value=>value.startsWith(`--${name}=`))?.slice(name.length+3);
 const encode=(value:unknown)=>Buffer.from(JSON.stringify(value));
-async function completeRun(areaId:string){
+export async function completeRun(areaId:string){
   const root=path.resolve('.cache/city-appearance/areas',areaId,'runs'),runs=[] as any[];
   for(const name of await fs.readdir(root)){if(!/^[a-f0-9]{64}$/.test(name))continue;try{const state=JSON.parse(await fs.readFile(path.join(root,name,'pipeline.json'),'utf8'));if(['compile','inventory','tiles','context-tiles'].every(id=>state.jobs?.[id]?.status==='complete'))runs.push({name,state,completedAt:Math.max(...Object.values(state.jobs).map((job:any)=>Date.parse(job.completedAt)||0))});}catch(error:any){if(error.code!=='ENOENT')throw error;}}
   if(!runs.length)throw Error('No complete area pipeline run with context tiles');runs.sort((a,b)=>a.completedAt-b.completedAt||a.name.localeCompare(b.name));return runs.at(-1);
@@ -31,30 +35,72 @@ async function routingResults(auditRoot:string){
   if(!candidates.length)throw Error('No completed compact routing experiment');
   candidates.sort((a,b)=>a.value.inputSetHash.localeCompare(b.value.inputSetHash));return candidates.at(-1);
 }
+const validOrigin=(value:any)=>value&&[value.x,value.y].every(Number.isFinite);
+const assertSameOrigin=(label:string,a:any,b:any)=>{if(!validOrigin(a)||!validOrigin(b)||Math.hypot(a.x-b.x,a.y-b.y)>.01)throw Error(`${label} origin mismatch`);};
+const translateLocalPoint=(point:any,evidenceOrigin:any,targetOrigin:any,label:string):[number,number]=>{
+  if(!Array.isArray(point)||point.length!==2||!point.every(Number.isFinite))throw Error(`Invalid evidence-frame ${label}`);
+  return [evidenceOrigin.x+point[0]-targetOrigin.x,targetOrigin.y-(evidenceOrigin.y-point[1])];
+};
+/** Textured game-plane form of an explicitly identified façade sign. The same
+ * compiled sign polygon replaces its flat-colour batch, so valance/fascia text
+ * is neither lost nor duplicated by the game exporter. */
+export function observedPhysicalSignForGame(owner:any,patch:any,records:any[]){
+  const sign=patch?.sign,record=records.find((candidate:any)=>candidate.id===patch.observationId);
+  if(!sign?.text?.trim()||!sign?.physicalSignId?.trim()||!record||!Array.isArray(patch.triangles)||patch.triangles.length%9||!Array.isArray(sign.uv)||sign.uv.length!==patch.triangles.length/3*2)return null;
+  const image=record.images?.ground??record.images?.full;
+  if(!image||!/^[a-f0-9]{64}$/i.test(image.sha256??'')||!Number.isFinite(Date.parse(image.date??image.capturedAt??'')))return null;
+  const center=owner.geometry.building.center,ground=Number(owner.geometry.building.groundNAP);
+  if(!Array.isArray(center)||!Number.isFinite(ground))return null;
+  const triangles:number[]=[];for(let offset=0;offset<patch.triangles.length;offset+=3){const east=patch.triangles[offset],height=patch.triangles[offset+1],south=patch.triangles[offset+2],dx=east-center[0],dz=south-center[1],length=Math.hypot(dx,dz)||1;triangles.push(...[east+dx/length*.18,-(south+dz/length*.18),sourceToRenderHeight(height,owner.geometry.frame.heightDatum,ground)].map(value=>Math.round(value*1000)/1000));}
+  return {kind:'observed-physical-sign',text:sign.text.trim(),background:sign.background,colour:sign.colour,font:sign.font,physicalSignId:sign.physicalSignId.trim(),triangles,uv:sign.uv,observationId:record.id,captureDate:String(image.date??image.capturedAt),sourceSha256:image.sha256,provenance:'source-bound physical façade sign'};
+}
 
-export async function publishAreaGeometryDemo(){
-  const areaFile=path.resolve(flag('area-config')??'scripts/city-appearance/areas/da-costa-tranche-400m-v1.json'),area=await loadAreaConfig([`--area-config=${areaFile}`]);
-  const evidenceAreaFile=path.resolve(flag('evidence-area-config')??areaFile),evidenceArea=await loadAreaConfig([`--area-config=${evidenceAreaFile}`]);
-  const run=await completeRun(area.id),blockPath=run.state.jobs.compile.output.blockPath,blockBytes=await fs.readFile(blockPath),block=JSON.parse(blockBytes.toString());
+export async function publishAreaGeometryDemo(options:any={}){
+  const stageOnly=options.stageOnly===true||process.argv.includes('--stage-only');
+  if(options.candidateBlockPath&&(!stageOnly||options.developmentCandidate!==true))throw Error('Additional source geometry is restricted to staged development candidates');
+  const areaFile=path.resolve(flag('area-config')??'scripts/city-appearance/areas/da-costa-tranche-400m-v1.json'),area=options.area??await loadAreaConfig([`--area-config=${areaFile}`]);
+  const evidenceAreaFile=path.resolve(options.evidenceAreaFile??flag('evidence-area-config')??areaFile),evidenceArea=await loadAreaConfig([`--area-config=${evidenceAreaFile}`]);
+  const run=options.run??await completeRun(area.id),blockPath=options.candidateBlockPath??run.state.jobs.compile.output.blockPath,blockBytes=await fs.readFile(blockPath),block=JSON.parse(blockBytes.toString());
+  if(options.candidateBlockPath&&sha256(blockBytes)!==options.candidateBlockSha256)throw Error('Candidate source geometry hash mismatch');
   if(block.areaConfigHash!==area.configHash)throw Error('Compiled block does not match area config');
+  const evidenceRun=evidenceArea.id===area.id?run:await completeRun(evidenceArea.id),evidenceBlockPath=evidenceRun.state.jobs.compile.output.blockPath,evidenceBlockBytes=evidenceBlockPath===blockPath?blockBytes:await fs.readFile(evidenceBlockPath),evidenceBlock=JSON.parse(evidenceBlockBytes.toString());
+  if(evidenceBlock.areaConfigHash!==evidenceArea.configHash)throw Error('Compiled evidence block does not match evidence area config');
+  assertSameOrigin('Target block/config',block.origin,lngLatToRd(area.origin));
+  assertSameOrigin('Evidence block/config',evidenceBlock.origin,lngLatToRd(evidenceArea.origin));
   const selected=await selectPanoramaAudit(evidenceArea,{cap:24}),auditManifestPath=path.join(selected.destination,'evidence/manifest.json'),auditPath=path.join(selected.destination,'agent-visual-audit.json');
   const [auditManifestBytes,auditBytes,routing]=await Promise.all([fs.readFile(auditManifestPath),fs.readFile(auditPath),routingResults(selected.destination)]),auditManifest=JSON.parse(auditManifestBytes.toString()),audit=JSON.parse(auditBytes.toString());
+  assertSameOrigin('Evidence manifest/block',auditManifest.origin,evidenceBlock.origin);
   const assessments=new Map(audit.assessments.map((item:any)=>[item.id,item]));
   const proposals=new Map(routing.value.results.filter((item:any)=>item.status==='ok').map((item:any)=>[item.id,item.proposal]));
-  const records=auditManifest.records.map((record:any)=>{const assessment:any=assessments.get(record.id),proposal:any=proposals.get(record.id),building=block.buildings.find((item:any)=>item.id===record.buildingId);if(!assessment||!building)throw Error(`Missing source audit/building: ${record.id}`);return {...record,
+  const records=auditManifest.records.filter((record:any)=>block.buildings.some((b:any)=>b.id===record.buildingId)).map((record:any)=>{const assessment:any=assessments.get(record.id),proposal:any=proposals.get(record.id),building=block.buildings.find((item:any)=>item.id===record.buildingId);if(!assessment||!building)throw Error(`Missing source audit/building: ${record.id}`);const translated={...record,
+    evidenceAreaId:evidenceArea.id,evidenceOrigin:{x:evidenceBlock.origin.x,y:evidenceBlock.origin.y},evidenceLocalStart:[...record.localStart],evidenceLocalEnd:[...record.localEnd],evidenceMid:[...record.mid],
+    localStart:translateLocalPoint(record.localStart,evidenceBlock.origin,block.origin,'localStart'),localEnd:translateLocalPoint(record.localEnd,evidenceBlock.origin,block.origin,'localEnd'),mid:translateLocalPoint(record.mid,evidenceBlock.origin,block.origin,'mid')};
+    return {...translated,
     renderBuildingId:record.buildingId,evidenceKey:sha256(encode({selectionHash:selected.report.selectionHash,derivationKey:record.derivationKey,assessment})),
-    renderSurfaceIndices:surfaceMatches(building,record),agentSourceAudit:assessment,machineRoutingProposal:proposal??null,
-    effectiveProposal:{family:proposal?.family??'unknown',wallMaterial:proposal?.wallMaterial??'unknown',wallColour:proposal?.wallColour??'unknown',wholeUsable:proposal?.upperUsable??'unknown',groundUsable:proposal?.groundUsable??(assessment.disposition==='usable'?'yes':'partial'),shopfront:['storefront','mixed'].includes(proposal?.groundType)?'yes':proposal?.groundType==='residential'?'no':'unknown',awning:'unknown',roofShape:'unknown',facadeTop:'unknown'},
+    renderSurfaceIndices:surfaceMatches(building,translated),sourceIdentityReview:audit.visualSourceIdentity??'not-reviewed',agentSourceAudit:assessment,machineRoutingProposal:proposal??null,
+    effectiveProposal:{family:proposal?.family??'unknown',wallMaterial:proposal?.wallMaterial??'unknown',wallColour:proposal?.wallColour??'unknown',wholeUsable:proposal?.upperUsable??'unknown',groundUsable:proposal?.groundUsable??(assessment.disposition==='usable'?'yes':'partial'),shopfront:['storefront','mixed'].includes(proposal?.groundType)?'yes':proposal?.groundType==='residential'?'no':'unknown',signText:proposal?.signText??'',signTextEligible:proposal?.signTextEligible??'unknown',awning:'unknown',roofShape:'unknown',facadeTop:'unknown'},
     appearancePublication:proposal?'quarantined-machine-preview':'withheld-source-audit-only'};});
-  const streetsPath=path.resolve('public/data/extracts/amsterdam/streets-routing.json'),streetsBytes=await fs.readFile(streetsPath),guidedRoute=compileAreaRoute(JSON.parse(streetsBytes.toString()),area.bbox,lngLatToRd(area.origin));
-  const compilerFiles=[new URL('./publish-area-geometry-demo.ts',import.meta.url),new URL('./compile-block-tiles.ts',import.meta.url),new URL('./select-panorama-audit.mjs',import.meta.url),new URL('../../src/canalRecall/cityAppearanceTiles.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceContextTiles.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceRoute.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearancePalette.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceFacadeRecipes.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceFacadeLod.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearancePublicRealm.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceRoofs.ts',import.meta.url),new URL('../../src/canalRecall/studyRoofsBrowser.ts',import.meta.url),new URL('../../src/canalRecall/studyFacadesBrowser.ts',import.meta.url),new URL('../../src/canalRecall/studyTreesBrowser.ts',import.meta.url),new URL('../../src/canalRecall/studyPublicRealmBrowser.ts',import.meta.url),new URL('../../public/canal-drive/da-costa-block/tree-typology.js',import.meta.url),new URL('../../public/canal-drive/da-costa-block/evidence.js',import.meta.url),new URL('../../public/canal-drive/da-costa-block/wall-intervals.js',import.meta.url),new URL('../../public/canal-drive/da-costa-block/face-containment.js',import.meta.url)];
+  const unboundRecords=records.filter((record:any)=>!record.renderSurfaceIndices.length);
+  console.log(`Evidence surface binding: ${records.length-unboundRecords.length}/${records.length} records bound; unbound: ${unboundRecords.map((record:any)=>record.id).join(', ')||'none'}`);
+  if(options.records){const extra=options.records(block),ids=new Set(extra.map((r:any)=>r.id));for(let i=records.length-1;i>=0;i--)if(ids.has(records[i].id))records.splice(i,1);records.push(...extra);}
+  const hasObservedFacades=records.some((record:any)=>record.facadeDescription);
+  const evidenceFiles=new Map<string,Buffer>();
+  for(const record of records)for(const image of Object.values(record.images??{}) as any[]){
+    if(!['full','ground'].some(kind=>record.images[kind]===image))continue;
+    const file=options.evidenceFiles?.get(image.sha256)??path.join(selected.destination,'evidence/images',image.file);
+    const bytes=await fs.readFile(file);if(sha256(bytes)!==image.sha256)throw Error(`Changed source comparison image: ${image.file}`);
+    image.publicUrl=`/data/city-expansion/evidence/${image.sha256}.jpg`;evidenceFiles.set(image.sha256,bytes);
+  }
+  const streetsPath=path.resolve('public/data/extracts/amsterdam/streets-routing.json'),streetsBytes=await fs.readFile(streetsPath),guidedRoute=compileAreaRoute(JSON.parse(streetsBytes.toString()),area.bbox,lngLatToRd(area.origin),options.waypoints);
+  const compilerFiles=[...['appearanceHeight.ts','facadeDescription.ts','facadeDoorHeuristics.ts','facadeOpeningLayout.ts','appearanceBrickMaterial.ts','cityAppearanceThree.ts','cityAppearanceViewer.ts'].map(file=>new URL(`../../src/canalRecall/${file}`,import.meta.url)),new URL('./fidelity/gates.ts',import.meta.url),new URL('./fidelity/evaluation.ts',import.meta.url),new URL('./fidelity/activate.ts',import.meta.url),...['city-appearance-viewer.bundle.js','study-facades.bundle.js','facade-opening-layout.bundle.js'].map(file=>new URL(`../../public/canal-drive/js/${file}`,import.meta.url)),new URL('./publish-area-geometry-demo.ts',import.meta.url),new URL('./compile-block-tiles.ts',import.meta.url),new URL('./select-panorama-audit.mjs',import.meta.url),new URL('../../src/canalRecall/cityAppearanceTiles.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceContextTiles.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceRoute.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearancePalette.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceFacadeRecipes.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceMachineSigns.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceFacadeLod.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearancePublicRealm.ts',import.meta.url),new URL('../../src/canalRecall/cityAppearanceRoofs.ts',import.meta.url),new URL('../../src/canalRecall/studyRoofsBrowser.ts',import.meta.url),new URL('../../src/canalRecall/studyFacadesBrowser.ts',import.meta.url),new URL('../../src/canalRecall/studyTreesBrowser.ts',import.meta.url),new URL('../../src/canalRecall/studyPublicRealmBrowser.ts',import.meta.url),new URL('../../public/canal-drive/da-costa-block/tree-typology.js',import.meta.url),new URL('../../public/canal-drive/da-costa-block/evidence.js',import.meta.url),new URL('../../public/canal-drive/da-costa-block/wall-intervals.js',import.meta.url),new URL('../../public/canal-drive/da-costa-block/face-containment.js',import.meta.url)];
   const compiled=compileBlockAppearance(block,{records},{zoom:16,halo:1}),compilerHash=sha256(encode(await Promise.all(compilerFiles.map(async file=>sha256(await fs.readFile(file))))));
-  const sourceHashes={block:sha256(blockBytes),auditManifest:sha256(auditManifestBytes),agentVisualAudit:sha256(auditBytes),machineRouting:sha256(routing.bytes),streetsRouting:sha256(streetsBytes)};
-  const releaseId=sha256(encode({version:1,areaConfigHash:area.configHash,evidenceAreaConfigHash:evidenceArea.configHash,runHash:run.name,sourceHashes,compilerHash}));
+  const sourceHashes={block:sha256(blockBytes),evidenceBlock:sha256(evidenceBlockBytes),auditManifest:sha256(auditManifestBytes),agentVisualAudit:sha256(auditBytes),machineRouting:sha256(routing.bytes),streetsRouting:sha256(streetsBytes)};
+  const recordsSha256=jsonDigest(records);
+  const releaseId=sha256(encode({version:1,recordsSha256,areaConfigHash:area.configHash,evidenceAreaConfigHash:evidenceArea.configHash,runHash:run.name,sourceHashes,compilerHash,district:options.district??null,additionalEvidence:options.additionalEvidenceHashes??null}));
   const outputRoot=path.resolve(flag('out')??'public/data/city-expansion'),publicBase=flag('public-base')??'/data/city-expansion',base=`${publicBase}/releases/${releaseId}`;
   if(!/^\/[a-zA-Z0-9/_-]+$/.test(publicBase))throw Error('Invalid public base');
   const releaseRoot=path.join(outputRoot,'releases',releaseId),contextTiles=compileContextTiles(block,16);
-  const context={...block,buildings:[],anchors:[],references:[],layers:Object.fromEntries(Object.keys(block.layers??{}).map(key=>[key,[]])),trees:[],guidedRoute,
+  const context={...block,overviewMassing:{source:'source-footprint-extrusions-overview-only',buildings:block.buildings.map((building:any)=>({id:building.id,footprint:building.footprint,height:building.height,colour:contextualBuildingPalette(building.id,building.year).wall}))},buildings:[],anchors:[],references:[],layers:Object.fromEntries(Object.keys(block.layers??{}).map(key=>[key,[]])),trees:[],guidedRoute,
     streamedContext:{zoom:contextTiles.zoom,features:contextTiles.buildings,sourceLayerCounts:Object.fromEntries(Object.entries(block.layers??{}).map(([key,value]:any)=>[key,value.length])),trees:block.trees?.length??0}};
   const routePoi=(point:[number,number],id:string,name:string)=>{const [lng,lat]=rdToLngLat({x:block.origin.x+point[0],y:block.origin.y-point[1]});return{id,name,lat,lng};},firstStreet=guidedRoute.legs.find(leg=>leg.streetName)?.streetName??'Da Costa study start',lastStreet=[...guidedRoute.legs].reverse().find(leg=>leg.streetName)?.streetName??'Da Costa study finish';
   const sourceRoofs=new Map(block.buildings.map((building:any)=>[building.id,selectCompatibleSourceRoof(building)]).filter((entry:any)=>entry[1])),slantedRoofCandidates=block.buildings.filter((building:any)=>building.roofType==='slanted').length;
@@ -62,14 +108,16 @@ export async function publishAreaGeometryDemo(){
   const [originLng,originLat]=rdToLngLat(block.origin),owners=compiled.tiles.flatMap(tile=>tile.owners),windowIds=new Set<string>(),doorIds=new Set<string>(),trimIds=new Set<string>(),artifacts=new Map<string,Buffer>([['context.json',contextBytes],['maplibre-appearance.json',maplibreBytes]]),roofTiles=[] as any[];let roofBuildingCount=0,roofSurfaceCount=0;
   for(const tile of compiled.tiles){const buildings=tile.owners.flatMap((owner:any)=>{const building=owner.geometry.building,roof:any=sourceRoofs.get(building.id);if(!roof)return[];const palette=contextualBuildingPalette(building.id,building.year);return[{id:building.id.startsWith('NL.IMBAG.Pand.')?building.id:`NL.IMBAG.Pand.${building.id}`,colour:palette.roof,surfaces:roof.surfaces}];});if(!buildings.length)continue;const payload={version:1,key:tile.key,buildings},payloadBytes=encode(payload),relative=`study-roofs/${tile.key}.json.gz`,bytes=gzipSync(payloadBytes);artifacts.set(relative,bytes);const surfaces=buildings.reduce((sum:number,building:any)=>sum+building.surfaces.length,0);roofBuildingCount+=buildings.length;roofSurfaceCount+=surfaces;roofTiles.push({key:tile.key,url:`${base}/${relative}`,bytes:bytes.length,encoding:'gzip',sha256:sha256(bytes),contentSha256:sha256(payloadBytes),buildings:buildings.length,surfaces});}
   const studyRoofs={version:2,zoom:compiled.zoom,releaseId,areaId:area.id,sourceBlockSha256:sourceHashes.block,geometrySource:'3dbag-lod22-roof-surfaces',selectionPolicy:SOURCE_ROOF_SELECTION_POLICY,delivery:'owner-tiles-v1',origin:{lng:originLng,lat:originLat},candidateSlantedBuildings:slantedRoofCandidates,withheldSlantedBuildings:slantedRoofCandidates-roofBuildingCount,buildings:roofBuildingCount,surfaces:roofSurfaceCount,tileList:roofTiles.map(tile=>tile.key),tiles:roofTiles,compressedBytes:roofTiles.reduce((sum,tile)=>sum+tile.bytes,0)};
-  const facadeTiles=[] as any[];
+  const facadeTiles=[] as any[],storefrontObservationIds=new Set<string>(),signObservationIds=new Set<string>();
   for(const tile of compiled.tiles){
-    const batches=new Map<string,number[]>();
-    for(const owner of tile.owners){const ground=Number(owner.geometry.building.groundNAP),center=owner.geometry.building.center;if(!Number.isFinite(ground)||!owner.geometry.building.surfaces?.length||!Array.isArray(center))continue;owner.geometry.building.surfaces.forEach((surface:any,index:number)=>{for(const patch of contextualFacadePatches(owner,surface,index,owners)){const batch=batches.get(patch.colour)??[];for(let offset=0;offset<patch.triangles.length;offset+=3){const east=patch.triangles[offset],south=patch.triangles[offset+2],dx=east-center[0],dz=south-center[1],length=Math.hypot(dx,dz)||1;batch.push(...[east+dx/length*.18,-(south+dz/length*.18),patch.triangles[offset+1]-ground].map(value=>Math.round(value*1000)/1000));}batches.set(patch.colour,batch);if(patch.featureKind==='contextual-window-prior')windowIds.add(patch.featureId);if(patch.featureKind==='contextual-door-prior')doorIds.add(patch.featureId);if(patch.featureKind==='contextual-trim-prior')trimIds.add(patch.featureId);}});}
-    if(!batches.size)continue;
-    const payload={version:1,key:tile.key,batches:[...batches].map(([kind,triangles])=>({kind,colour:FACADE_PATCH_COLOURS[kind as keyof typeof FACADE_PATCH_COLOURS],triangles}))},payloadBytes=encode(payload),relative=`study-facades/${tile.key}.json.gz`,bytes=gzipSync(payloadBytes);artifacts.set(relative,bytes);facadeTiles.push({key:tile.key,url:`${base}/${relative}`,bytes:bytes.length,encoding:'gzip',sha256:sha256(bytes),contentSha256:sha256(payloadBytes),triangles:payload.batches.reduce((sum,batch)=>sum+batch.triangles.length/9,0)});
+    const batches=new Map<string,number[]>(),recipeRecords=facadeRecipeRecords(tile.owners as any),physicalSigns=new Map<string,any>();
+    for(const owner of tile.owners){const ground=Number(owner.geometry.building.groundNAP),center=owner.geometry.building.center;if(!Number.isFinite(ground)||!owner.geometry.building.surfaces?.length||!Array.isArray(center))continue;owner.geometry.building.surfaces.forEach((surface:any,index:number)=>{const recipes=compileFacadePatches(owner as any,surface,index,recipeRecords,owners as any,{procedural:true,contextual:true,candidateRegistrationPreview:options.developmentCandidate===true});for(const patch of recipes){if(patch.featureKind==='shopfront-prior'&&patch.observationId)storefrontObservationIds.add(patch.observationId);const physical=observedPhysicalSignForGame(owner,patch,recipeRecords);if(physical){const key=`${physical.physicalSignId}:${physical.sourceSha256}:${physical.captureDate}`;const prior=physicalSigns.get(key);physicalSigns.set(key,prior?{...prior,triangles:[...prior.triangles,...physical.triangles],uv:[...prior.uv,...physical.uv]}:physical);continue;}const batchKey=patch.material==='brick'?`brick:${patch.colour}`:patch.colour;const batch=batches.get(batchKey)??[];for(let offset=0;offset<patch.triangles.length;offset+=3){const east=patch.triangles[offset],south=patch.triangles[offset+2],dx=east-center[0],dz=south-center[1],length=Math.hypot(dx,dz)||1;batch.push(...[east+dx/length*.18,-(south+dz/length*.18),sourceToRenderHeight(patch.triangles[offset+1],owner.geometry.frame.heightDatum,ground)].map(value=>Math.round(value*1000)/1000));}batches.set(batchKey,batch);if(['contextual-window-prior','window-prior','observed-window'].includes(patch.featureKind))windowIds.add(patch.featureId);if(['contextual-door-prior','observed-door'].includes(patch.featureKind))doorIds.add(patch.featureId);if(patch.featureKind==='contextual-trim-prior')trimIds.add(patch.featureId);}});}
+    if(!batches.size&&!physicalSigns.size)continue;
+    const observedSigns=[...physicalSigns.values()],observedKeys=new Set(observedSigns.map(sign=>sign.physicalSignId));
+    const machineSigns=machineSignPlacementsForGame(tile.owners as any).filter(sign=>!sign.physicalSignId||!observedKeys.has(sign.physicalSignId));for(const sign of [...observedSigns,...machineSigns])signObservationIds.add(sign.observationId);
+    const signs=[...observedSigns,...machineSigns],payload={version:1,key:tile.key,signs,batches:[...batches].map(([kind,triangles])=>({kind,colour:kind.startsWith('brick:')?kind.slice(6):kind.startsWith('#')?kind:FACADE_PATCH_COLOURS[kind as keyof typeof FACADE_PATCH_COLOURS],triangles}))},payloadBytes=encode(payload),relative=`study-facades/${tile.key}.json.gz`,bytes=gzipSync(payloadBytes);artifacts.set(relative,bytes);facadeTiles.push({key:tile.key,url:`${base}/${relative}`,bytes:bytes.length,encoding:'gzip',sha256:sha256(bytes),contentSha256:sha256(payloadBytes),signs:signs.length,triangles:payload.batches.reduce((sum,batch)=>sum+batch.triangles.length/9,0)});
   }
-  const studyFacades={version:1,zoom:compiled.zoom,releaseId,areaId:area.id,sourceBlockSha256:sourceHashes.block,styleSource:'procedural-prior-not-measured',geometrySource:'3dbag-lod22-wall-surfaces',openingStyle:'era-rhythm-recessed-sash-entrance-v3',reliefOffsetM:.18,origin:{lng:originLng,lat:originLat},windows:windowIds.size,doors:doorIds.size,trims:trimIds.size,tileList:facadeTiles.map(tile=>tile.key),tiles:facadeTiles};
+  const studyFacades={version:1,zoom:compiled.zoom,releaseId,areaId:area.id,sourceBlockSha256:sourceHashes.block,styleSource:'procedural-prior-not-measured',geometrySource:'3dbag-lod22-wall-surfaces',openingStyle:'era-rhythm-recessed-sash-entrance-v3',reliefOffsetM:.18,origin:{lng:originLng,lat:originLat},machineSignReliefOffsetM:GAME_SIGN_RELIEF_OFFSET_M,machineObservationPolicy:'machine signs remain unreviewed; explicitly identified source-bound fascia and dated-awning-valance signs retain their compiled text geometry; no other tenant text is inferred',storefrontObservationIds:[...storefrontObservationIds].sort(),signObservationIds:[...signObservationIds].sort(),signs:facadeTiles.reduce((sum,tile)=>sum+(tile.signs??0),0),windows:windowIds.size,doors:doorIds.size,trims:trimIds.size,tileList:facadeTiles.map(tile=>tile.key),tiles:facadeTiles};
   const treeTiles=[] as any[];let treeCount=0;
   for(const tile of contextTiles.tiles){const trees=tile.owners.filter((owner:any)=>owner.geometry.kind==='tree').map((owner:any)=>owner.geometry.tree);if(!trees.length)continue;const payload={version:1,key:tile.key,trees},payloadBytes=encode(payload),relative=`study-trees/${tile.key}.json.gz`,bytes=gzipSync(payloadBytes);artifacts.set(relative,bytes);treeCount+=trees.length;treeTiles.push({key:tile.key,url:`${base}/${relative}`,bytes:bytes.length,encoding:'gzip',sha256:sha256(bytes),contentSha256:sha256(payloadBytes),trees:trees.length});}
   const studyTrees={version:1,zoom:contextTiles.zoom,releaseId,areaId:area.id,sourceContextSha256:sha256(contextBytes),positionSource:'municipal-tree-inventory',typology:'inventory-crown-priors/v1',trunkGeometry:'tapered-z-cylinder-v2',origin:{lng:originLng,lat:originLat},trees:treeCount,tileList:treeTiles.map(tile=>tile.key),tiles:treeTiles};
@@ -81,14 +129,35 @@ export async function publishAreaGeometryDemo(){
   const contextTileList=[] as any[];for(const tile of contextTiles.tiles){const relative=`context-tiles/${tile.key}.json.gz`,payloadBytes=encode(tile),bytes=gzipSync(payloadBytes);artifacts.set(relative,bytes);contextTileList.push({key:tile.key,url:`${base}/${relative}`,bytes:bytes.length,encoding:'gzip',sha256:sha256(bytes),contentSha256:sha256(payloadBytes),owners:tile.owners.length,haloReferences:tile.halo.length});}
   const manifest={version:1,zoom:compiled.zoom,releaseId,publication:'experimental-city-demo',areaId:area.id,areaConfigHash:area.configHash,evidenceAreaId:evidenceArea.id,evidenceAreaConfigHash:evidenceArea.configHash,runHash:run.name,
     pipeline:{jobs:Object.fromEntries(['compile','inventory','tiles','context-tiles'].map(id=>[id,{inputKey:run.state.jobs[id].inputKey,outputKey:run.state.jobs[id].outputKey,completedAt:run.state.jobs[id].completedAt}]))},
-    sourceHashes,compilerHash,reviewed:0,accepted:0,buildings:compiled.buildings,observations:compiled.observations,
+    district:options.district??null,additionalEvidenceHashes:options.additionalEvidenceHashes??null,observationIndex:compiled.tiles.flatMap(tile=>tile.owners.flatMap(owner=>owner.observations.map((o:any)=>({id:o.id,buildingId:owner.id,tile:tile.key,mid:o.payload.mid})))),sourceHashes,compilerHash,reviewed:0,accepted:0,buildings:compiled.buildings,observations:compiled.observations,
     context:{url:`${base}/context.json`,sha256:sha256(contextBytes)},maplibreAppearance:{url:`${base}/maplibre-appearance.json`,sha256:sha256(maplibreBytes),buildings:maplibreAppearance.buildings.length,styleSource:maplibreAppearance.styleSource},studyRoofs,studyFacades:{...studyFacades,compressedBytes:facadeTiles.reduce((sum,tile)=>sum+tile.bytes,0),triangles:facadeTiles.reduce((sum,tile)=>sum+tile.triangles,0)},studyTrees:{...studyTrees,compressedBytes:treeTiles.reduce((sum,tile)=>sum+tile.bytes,0)},studyPublicRealm:{...studyPublicRealm,compressedBytes:publicRealmTiles.reduce((sum,tile)=>sum+tile.bytes,0)},contextTiles:{version:1,zoom:contextTiles.zoom,tileList:contextTiles.tiles.map(tile=>tile.key),tiles:contextTileList},tileList:tiles.map(tile=>tile.key),tiles,
     sourceAudit:{selectionHash:selected.report.selectionHash,frontages:audit.summary.frontages,usable:audit.summary.usable,partial:audit.summary.partial,usableFacadeLengthM:audit.summary.usableFacadeLengthM},
     machinePreview:{inputSetHash:routing.value.inputSetHash,model:routing.value.model,frontages:proposals.size,observedUsd:routing.value.results.reduce((sum:number,item:any)=>sum+(item.usage?.cost??0),0),status:'quarantined-not-canonical'},
-    appearanceCoverage:{geometryBuildings:compiled.buildings,contextualPriorBuildings:compiled.buildings,auditedFrontages:audit.summary.frontages,machinePreviewFrontages:proposals.size,humanConfirmedFrontages:0},
+    appearanceCoverage:{geometryBuildings:compiled.buildings,contextualPriorBuildings:compiled.buildings,auditedFrontages:records.filter((r:any)=>r.sourceIdentityReview==='agent-photo-first-reviewed').length,machinePreviewFrontages:records.filter((r:any)=>r.machineRoutingProposal).length,humanConfirmedFrontages:0,...(options.appearanceCoverage??{})},
     policy:'Source geometry plus reversible, provenance-labelled machine preview. No inferred field is canonical or human-reviewed.',downloads:0,paidCalls:0};
+  const artifactInventory=[...artifacts].map(([path,bytes])=>({path,sha256:sha256(bytes)})).sort((a,b)=>a.path.localeCompare(b.path));
+  const candidate={releaseId,compilerHash,recordsSha256,artifactsSha256:jsonDigest(artifactInventory)};
+  Object.assign(manifest,{candidate,hasObservedFacades,observedFacades:hasObservedFacades,developmentCandidate:options.developmentCandidate===true,candidateRegistrationPreview:options.candidateRegistrationPreview??null});
   const manifestBytes=encode(manifest);artifacts.set('manifest.json',manifestBytes);
-  if(!process.argv.includes('--dry-run')){for(const [relative,bytes]of artifacts)await writeImmutable(path.join(releaseRoot,relative),bytes);await fs.mkdir(outputRoot,{recursive:true});const temporary=path.join(outputRoot,`current-${process.pid}.tmp`);await fs.writeFile(temporary,manifestBytes,{flag:'wx'});await fs.rename(temporary,path.join(outputRoot,'current.json'));}
+  const compilerInputs=await Promise.all(compilerFiles.map(async file=>({path:path.relative(releaseRoot,fileURLToPath(file)),sha256:sha256(await fs.readFile(file))})));
+  if(jsonDigest(compilerInputs.map(input=>input.sha256))!==compilerHash)throw Error('Compiler inputs changed during staging');
+  artifacts.set('candidate.json',encode({version:1,candidate,root:'.',compilerInputs,manifest:{path:'manifest.json',sha256:sha256(manifestBytes)},artifacts:artifactInventory}));
+  // Staging permits candidate-specific captures without touching the live pointer.
+  // Activation recomputes every gate after immutable bytes have been checked.
+  if(hasObservedFacades && !stageOnly && !options.evaluationIndex)throw Error('Richer facade publication requires a computed evaluation index bound to this candidate');
+  if(!process.argv.includes('--dry-run')&&!options.dryRun){
+    for(const [hash,bytes]of evidenceFiles)await writeImmutable(path.join(outputRoot,'evidence',`${hash}.jpg`),bytes);
+    for(const [relative,bytes]of artifacts)await writeImmutable(path.join(releaseRoot,relative),bytes);
+    if(!stageOnly){
+      if(options.beforeActivate)await options.beforeActivate(manifest,releaseRoot);
+      if(hasObservedFacades){await activateCandidate({releaseRoot,evaluationIndex:options.evaluationIndex,outputRoot});return manifest;}
+      await fs.mkdir(outputRoot,{recursive:true});
+      // Retain the previous exact pointer as a rollback artifact before activation.
+      try{const prior=await fs.readFile(path.join(outputRoot,'current.json'));await writeImmutable(path.join(outputRoot,'rollback',`${sha256(prior)}.json`),prior);}catch(error:any){if(error.code!=='ENOENT')throw error;}
+      const temporary=path.join(outputRoot,`current-${process.pid}.tmp`);
+      await fs.writeFile(temporary,manifestBytes,{flag:'wx'});await fs.rename(temporary,path.join(outputRoot,'current.json'));
+    }
+  }
   return manifest;
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href)publishAreaGeometryDemo().then(value=>console.log(JSON.stringify(value,null,2))).catch(error=>{console.error(error.message);process.exitCode=1;});

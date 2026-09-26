@@ -1,0 +1,1317 @@
+{
+  "version": 1,
+  "kind": "facade-registration-artifact",
+  "sourceManifestSha256": "198ae6e2b2b3a503208d7a226b42c806beb15fe495c280bede3b6ff8b88d2614",
+  "canonicalDatum": "surface-base",
+  "pixelConvention": "pixel-edge",
+  "cases": [
+    {
+      "id": "replacement-entrance-01",
+      "buildingId": "0363100012152464",
+      "geometryRevision": "44078454e9ab1ba3304c9d78330ab5badb92dc4a88886e048b5042d7492375e6",
+      "evidenceKey": "0b340f87825cd2bbb79c823439254ac7f5b69b9450794039af7f0a87b117d9e9",
+      "frontage": [
+        [
+          47.832770348046324,
+          -326.93624823348364
+        ],
+        [
+          45.640770311205415,
+          -321.47124821232865
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "968156f2684dd82ed3833a2936aca29a7f57820e58f2d381ccc5a2d543aea237",
+          "captureDate": "2024-12-11T12:18:21Z",
+          "width": 276,
+          "height": 816,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022187481133263902,
+              0,
+              -0.11776432293529163,
+              0,
+              -0.022223039248994752,
+              17.834000027179716,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.37226894905872754,
+              -0.9281248997665729
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 5.307692307566048,
+              "top": 0,
+              "right": 5.307692307566128,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "b73bfde1efd5029e26bd0f6c34b850f07c9388e55220570a20bfa96bbc05ca9e",
+          "captureDate": "2023-01-12T10:59:29.172750Z",
+          "width": 674,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009085674766737146,
+              0,
+              -0.11776432293529163,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.37226894905872754,
+              -0.9281248997665729
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 12.96153846123013,
+              "top": 0,
+              "right": 12.961538461230361,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-entrance-02",
+      "buildingId": "0363100012152562",
+      "geometryRevision": "a0303b151779c4533d00db148dc02dabf7d55e4f029d3a5e192bb8e7691c0f0b",
+      "evidenceKey": "350cf2ce616ff35d5b126df356cd4ffd01752292d09114d4d763c4f9a67c9ee4",
+      "frontage": [
+        [
+          -0.5472305501898518,
+          -203.24124774622032
+        ],
+        [
+          -2.1152306141448207,
+          -197.9942477273289
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "9a7d896592d2b20354c8372fa6c28f6c7b0e0da171711607e28f2a1ae5897c71",
+          "captureDate": "2023-01-12T09:12:24.183340Z",
+          "width": 256,
+          "height": 875,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022247384073007682,
+              0,
+              -0.10952558314552377,
+              0,
+              -0.022226285698754445,
+              19.147999986410138,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.28632580976497385,
+              -0.9581323137554811
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 4.92307692383524,
+              "top": 0,
+              "right": 4.92307692383514,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "34789bab2ed89c68a452605cc6774d9275079fe5cbf4686a89e4e1c658aa3281",
+          "captureDate": "2025-07-03T11:25:40Z",
+          "width": 626,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009097971761485569,
+              0,
+              -0.10952558314552377,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.28632580976497385,
+              -0.9581323137554811
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 12.038461540315861,
+              "top": 0,
+              "right": 12.038461540315666,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-entrance-03",
+      "buildingId": "0363100012157610",
+      "geometryRevision": "6d03b442a19fcb5a8ffb8a3db5e2237e278ee0a393e21a6204992b71ad7da253",
+      "evidenceKey": "be4f06a0deac78418df8c08b728421d83e115340857b5a2f44fae15355b9fd57",
+      "frontage": [
+        [
+          54.50777046123403,
+          -343.6192483003251
+        ],
+        [
+          52.361770424002316,
+          -338.2282482771552
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "9c0b4ffaf1b8eaab18c749afe4eaf1c414b17896950480fdc3cc90de51fbff95",
+          "captureDate": "2024-12-11T12:18:19Z",
+          "width": 272,
+          "height": 827,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022185762919289358,
+              0,
+              -0.11604860602125558,
+              0,
+              -0.022214026609672165,
+              18.07100000619888,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.3698450348452224,
+              -0.9290934561174868
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 5.230769229953205,
+              "top": 0,
+              "right": 5.230769229953239,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "12eef603e43f27680e279c87962c5f23b3682dabdf4e956280f71709a5de2163",
+          "captureDate": "2023-01-12T10:59:26.477770Z",
+          "width": 664,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009088143846455881,
+              0,
+              -0.11604860602125558,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.3698450348452224,
+              -0.9290934561174868
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 12.769230767238707,
+              "top": 0,
+              "right": 12.76923076723881,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-entrance-04",
+      "buildingId": "0363100012170198",
+      "geometryRevision": "fb942c93c795f369cfdd4c187e5b07ce3a042c3f6b085f4da1bc71eb8b006979",
+      "evidenceKey": "d51fd59d394805db2e4416ca8805adcd527963ce0e3cb98d1b4a60db4ac2b407",
+      "frontage": [
+        [
+          -93.4075578218617,
+          523.5736795978737
+        ],
+        [
+          -88.33755801725783,
+          520.9336795602576
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "d2efba4dadeddcd808f19cdd8570e3c1a1df08482cd5480f89eb1cbbb3203fb7",
+          "captureDate": "2024-12-16T09:30:18Z",
+          "width": 268,
+          "height": 712,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.02218211786988965,
+              0,
+              -0.11432322286607162,
+              0,
+              -0.022231741554281686,
+              15.528999986648559,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 1,
+            "wallDirection": [
+              0.8869588658219195,
+              0.46184842788505215
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 5.153846153764052,
+              "top": 0,
+              "right": 5.153846153764107,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "1a794b21cfd27f0976160790e678b3f53438475c149a735ccfed942ab0a25e48",
+          "captureDate": "2024-12-16T09:30:17Z",
+          "width": 654,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009089919861055697,
+              0,
+              -0.11432322286607162,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 1,
+            "wallDirection": [
+              0.8869588658219195,
+              0.46184842788505215
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 12.576923076722723,
+              "top": 0,
+              "right": 12.576923076722778,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-curved-01",
+      "buildingId": "0363100012163064",
+      "geometryRevision": "7a34d0685d4c3e5e443f3738a8e8cf66bb4b3737abf7471f663ce02b32ce7e7d",
+      "evidenceKey": "d37dbc2725c99d5b10fc97bcb8f955c1633f8a8a98ffefb2b61a273816a5ff70",
+      "frontage": [
+        [
+          7.161773412342882,
+          -358.8682480522548
+        ],
+        [
+          -0.048226009734207764,
+          -365.76824802334886
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "105a7a024e1f8825dedb993d6dc7c2e3ef0d2442395755a2fed2732f2faa2f0f",
+          "captureDate": "2024-12-11T12:18:14Z",
+          "width": 467,
+          "height": 962,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.02222456377567702,
+              0,
+              -0.19959367850566356,
+              0,
+              -0.022216216236538796,
+              21.07200001955032,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 4,
+            "wallDirection": [
+              -0.72246771294298,
+              0.6914046599169984
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 8.98076922995009,
+              "top": 0,
+              "right": 8.98076922995017,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "2204002d89c7ee79315e4e416f190676f8791a306d43510446b9e2861fcdfbfd",
+          "captureDate": "2022-04-29T11:03:12.870280Z",
+          "width": 1142,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009088328619300498,
+              0,
+              -0.19959367850566356,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 4,
+            "wallDirection": [
+              -0.72246771294298,
+              0.6914046599169984
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 21.961538459535337,
+              "top": 0,
+              "right": 21.96153845953563,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-curved-02",
+      "buildingId": "0363100012154294",
+      "geometryRevision": "0ee1798ec24e06a5effde1dadb3c02a652c4f110eaf1ca5b1d9e8fd1c8626ece",
+      "evidenceKey": "1f5380e393b4ba670e891ae22df436a7518e96072b7cc3b4cc1cb5eb3030192d",
+      "frontage": [
+        [
+          -2.0392267392307986,
+          -336.02524796221405
+        ],
+        [
+          0.17077329705352895,
+          -341.51124798116507
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "b5db86a2097da3106ca145d4b6ffa6c0389738639374d9514ab53a2792541e17",
+          "captureDate": "2024-12-11T11:11:46Z",
+          "width": 277,
+          "height": 864,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022205743174461473,
+              0,
+              -0.11828828573862966,
+              0,
+              -0.022221064804880706,
+              18.89899999141693,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 1,
+            "wallDirection": [
+              0.37366338046776204,
+              0.9275643794893185
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 5.326923076128857,
+              "top": 0,
+              "right": 5.326923076128821,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "973fbcf06fe53ea304d5cf1e79ee1c7272b675ed243e34b8c7de88f3af1a4fcc",
+          "captureDate": "2024-12-11T11:11:47Z",
+          "width": 677,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009085658580983497,
+              0,
+              -0.11828828573862966,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 1,
+            "wallDirection": [
+              0.37366338046776204,
+              0.9275643794893185
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 13.01923076728966,
+              "top": 0,
+              "right": 13.019230767289628,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-contact-01",
+      "buildingId": "0363100012155777",
+      "geometryRevision": "e5dcbc59cafca73036649ba2cc2b8fa7cfd8f8a29e54eda10789f836d6ee071a",
+      "evidenceKey": "4ddbee3ef2242e3ceef67e335394c9a6b91f492bdd88046c02e17c08ad034450",
+      "frontage": [
+        [
+          50.046770385233685,
+          -332.4552482549334
+        ],
+        [
+          47.832770348046324,
+          -326.93624823348364
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "d573acfc2ad60e16586c5e83a5912853c9a0db41f313e5eacfe9b6697ab032ec",
+          "captureDate": "2024-12-11T12:18:20Z",
+          "width": 278,
+          "height": 867,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022245992121892544,
+              0,
+              -0.11893049634926267,
+              0,
+              -0.022211072652535177,
+              18.956999989748,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.37231830443019465,
+              -0.9281051019072273
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 5.346153846392032,
+              "top": 0,
+              "right": 5.346153846391985,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "76c177306cc2b834ddc8176fe8b04547b44a39bebefafcbe6f028cf867434ffe",
+          "captureDate": "2023-01-12T10:59:27.907740Z",
+          "width": 680,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009094685014538422,
+              0,
+              -0.11893049634926267,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.37231830443019465,
+              -0.9281051019072273
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 13.076923077505691,
+              "top": 0,
+              "right": 13.076923077505512,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-awning-extended",
+      "buildingId": "0363100012166975",
+      "geometryRevision": "f4b1334ccc5577e4eaa392be175706622d6700ccd73a7e177256e7afec555eac",
+      "evidenceKey": "d0b85751aba401d10101b25e177af15fcd6528c87cc44ca9b1b9a3db57260744",
+      "frontage": [
+        [
+          7.801769676181721,
+          -227.12824783404358
+        ],
+        [
+          3.4227695749432314,
+          -215.2232477889047
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "da657ca77d4796b02daa83d2c46b4d4bd59fc682cfa57d26938baf996b9024f5",
+          "captureDate": "2023-01-10T10:53:17.921060Z",
+          "width": 594,
+          "height": 911,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022209113115505056,
+              0,
+              -0.25369640750172034,
+              0,
+              -0.02222392976742021,
+              19.94600001811981,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 2,
+            "wallDirection": [
+              -0.3452157753577252,
+              -0.938523344645281
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 11.423076922626185,
+              "top": 0,
+              "right": 11.423076922626365,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "a132fb579d21a71b9c376198748b79dbf09f8d57e2b4c2f1d8d9b01e8346e875",
+          "captureDate": "2024-11-29T09:42:29Z",
+          "width": 1451,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.00909180785017919,
+              0,
+              -0.25369640750172034,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 2,
+            "wallDirection": [
+              -0.3452157753577252,
+              -0.938523344645281
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 27.90384615274511,
+              "top": 0,
+              "right": 27.903846152745245,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-awning-retracted",
+      "buildingId": "0363100012169358",
+      "geometryRevision": "cfdd33a13ca0988da4c49270a59d2d1c061fd949b88c721c711ba329bd9bc15d",
+      "evidenceKey": "5c8d4e6be71d5c9f0fa68f9bd5fe539a6b7a45de53e6a041052343e3ce820cbc",
+      "frontage": [
+        [
+          -72.89555949086207,
+          544.1526795118116
+        ],
+        [
+          -75.88155937803094,
+          545.7916795336641
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "c4081d0d2548556380a170a27444f9e81de1c85eceff00cad5c9b2aafb38ffa4",
+          "captureDate": "2024-12-16T09:30:13Z",
+          "width": 159,
+          "height": 732,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022279852452726814,
+              0,
+              -0.06812493345643365,
+              0,
+              -0.022209016387579873,
+              15.956999995708465,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.8766246762971585,
+              -0.4811747883117962
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 3.0576923074773723,
+              "top": 0,
+              "right": 3.057692307477339,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "56e4c29f7499e9b3305e4a5552aab065a9cf8ac45fb981332c6afe8a6e4f68c4",
+          "captureDate": "2025-06-30T05:28:39Z",
+          "width": 390,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009083324461496317,
+              0,
+              -0.06812493345643365,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.8766246762971585,
+              -0.4811747883117962
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 7.4999999994728,
+              "top": 0,
+              "right": 7.4999999994727204,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-finish-01",
+      "buildingId": "0363100012168881",
+      "geometryRevision": "bf3f24609d047234e140b8cd7c4133d1e1b1a3b4ec0fb3709d70d6e5176b250d",
+      "evidenceKey": "52d1933e6401f9213ea9fc3400617adbe133ae5927e0943939aa86e993314eb5",
+      "frontage": [
+        [
+          -63.975558944337536,
+          507.8036794019281
+        ],
+        [
+          -57.472559191664914,
+          504.29667935328325
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "5bf68575dfad40bc5c9056595fb6da99ea3a41641104ac4626993c28dda451d2",
+          "captureDate": "2024-12-16T09:29:34Z",
+          "width": 346,
+          "height": 712,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022207826264196307,
+              0,
+              -0.14776745936143398,
+              0,
+              -0.022207865139071862,
+              15.511999979019166,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 2,
+            "wallDirection": [
+              0.8801666862557527,
+              0.47466472841951035
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 6.653846153311558,
+              "top": 0,
+              "right": 6.653846153311633,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "017585ec0b5e2d39b21dd2921c8fac42fc04400803f90f7256231acec9ad010f",
+          "captureDate": "2025-07-03T10:39:13Z",
+          "width": 845,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009093382115280381,
+              0,
+              -0.14776745936143398,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 2,
+            "wallDirection": [
+              0.8801666862557527,
+              0.47466472841951035
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 16.24999999869441,
+              "top": 0,
+              "right": 16.249999998694534,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-finish-02",
+      "buildingId": "0363100012170202",
+      "geometryRevision": "95d2f3aafae27f88f60ed178bf3be1aa12c448b1d29004669a03b9f0a798fa27",
+      "evidenceKey": "692bd5dc346ab89d2bff2ea5b04842c87cab9c9de9908972e4ef3b1dc0779ce5",
+      "frontage": [
+        [
+          -100.40055755677167,
+          527.3806796430727
+        ],
+        [
+          -94.00855780136772,
+          523.981679598859
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "0997128a207133072b178f3206ea13373aca2f05c428c5998708d7b40db8190c",
+          "captureDate": "2024-12-16T09:28:20Z",
+          "width": 339,
+          "height": 865,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022209781864769785,
+              0,
+              -0.14479069330526687,
+              0,
+              -0.02222658959013878,
+              18.925999995470043,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 2,
+            "wallDirection": [
+              0.882929642677732,
+              0.46950532060986533
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 6.5192307689856595,
+              "top": 0,
+              "right": 6.519230768985608,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "6174679a0a547ac520d889ef8f5ccee2b16196fd883e91971ea68805ebe1bfd6",
+          "captureDate": "2024-12-16T09:30:19Z",
+          "width": 828,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009093135328691977,
+              0,
+              -0.14479069330526687,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 2,
+            "wallDirection": [
+              0.882929642677732,
+              0.46950532060986533
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 15.923076922478245,
+              "top": 0,
+              "right": 15.923076922478117,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    },
+    {
+      "id": "replacement-masonry-01",
+      "buildingId": "0363100012169410",
+      "geometryRevision": "ec11a8242a83107e065febdb35a72779a47ace1ee493120f008e8107f862031d",
+      "evidenceKey": "b97a1154269ce78d003f9b3234d0b14d8411689639ac9516252a7d024cd9ee8b",
+      "frontage": [
+        [
+          -47.847559561618255,
+          499.2436792937224
+        ],
+        [
+          -43.537559727352345,
+          496.9836792618735
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "cropSha256": "2e00078735c91447a3d06a0365afe5e4ef9b0197a2625d9324daec36149c4b12",
+          "captureDate": "2024-12-16T09:29:43Z",
+          "width": 228,
+          "height": 799,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022198480930093384,
+              0,
+              -0.09733180100135407,
+              0,
+              -0.022212765950882087,
+              17.447999994754788,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 1,
+            "wallDirection": [
+              0.8856303469025555,
+              0.46439087915812793
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 4.3846153846232845,
+              "top": 0,
+              "right": 4.38461538462326,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        },
+        "ground": {
+          "cropSha256": "cd71db98d24c79c3806c9fe558e4f70bfb82ca6f3a52ffce73992bdb6e41770a",
+          "captureDate": "2024-12-16T09:30:07Z",
+          "width": 557,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009086631332246485,
+              0,
+              -0.09733180100135407,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 1,
+            "wallDirection": [
+              0.8856303469025555,
+              0.46439087915812793
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 10.711538461557762,
+              "top": 0,
+              "right": 10.71153846155778,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": false,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          }
+        }
+      }
+    }
+  ]
+}

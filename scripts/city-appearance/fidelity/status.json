@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "publication": "baseline-preserved-no-new-release",
+  "processingCoverage": {
+    "reportedPercent": 96.4,
+    "meaning": "prior processing coverage, not measured reconstruction fidelity"
+  },
+  "reconstructionFidelity": {
+    "precision": null,
+    "recall": null,
+    "registrationFailures": null,
+    "abstentions": null,
+    "status": "not-evaluated"
+  },
+  "development": {
+    "requiredScreenshots": 12,
+    "resolvedScreenshots": 0,
+    "status": "missing attachments and observation identities"
+  },
+  "unseen": {
+    "frozenCandidates": 30,
+    "perDistrict": 15,
+    "referenceAnnotations": 0,
+    "status": "exclusion certification and feature stratification pending"
+  },
+  "namedCompatibility": "dated sources recovered and agent-inspected; fitted assemblies remain unverified",
+  "automatedChecks": {
+    "typescript": true,
+    "facadeRecipes": true,
+    "fidelityEngineering": true,
+    "signs": true,
+    "openingLayout": true,
+    "webglSynthetic": true,
+    "webglSourceSmoke": true,
+    "budgetResumeInfrastructure": true,
+    "gameCameras": 14,
+    "layouts": [
+      "desktop",
+      "phone"
+    ],
+    "gameCamerasScope": "preserved release",
+    "observedMaxDetailMB": 6.56
+  },
+  "additionalInferenceUsd": 0,
+  "cumulativeInferenceUsd": 1.705205502,
+  "additionalAuthorizedUsd": 3,
+  "cumulativeCeilingUsd": 5,
+  "routeExpansion": false,
+  "gatesPassed": false,
+  "omissions": [
+    "twelve source-bound development assertions",
+    "independently annotated unseen features and measured IoU",
+    "dated per-frontage contact checks and any evidenced plinth correction",
+    "paid extraction and repaired registrations",
+    "source-bound before/after comparisons in both viewers",
+    "new immutable appearance release"
+  ],
+  "historicalEngineeringPass": true,
+  "latestReport": "repair-report.json",
+  "currentPipelineDocumentation": "PIPELINE.md"
+}

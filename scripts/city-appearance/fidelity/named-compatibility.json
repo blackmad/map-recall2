@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Fuoco Vivo",
+    "buildingIds": [
+      "0363100012159182"
+    ],
+    "records": [
+      {
+        "id": "0363100012159182_e_0nqcs47",
+        "buildingId": "0363100012159182",
+        "surfaceIndices": [
+          4
+        ],
+        "frontage": [
+          [
+            -15.393657416279893,
+            62.25709495320916
+          ],
+          [
+            -9.61265766483848,
+            60.14309491595486
+          ]
+        ],
+        "images": {
+          "full": {
+            "file": "0363100012159182_e_0nqcs47-full.jpg",
+            "sha256": "3ebffa1679909575e0f469549d20366df1a91a3d9ab0b16da50bbba4e2407b57",
+            "date": "2023-01-10T10:53:07.751160Z"
+          },
+          "ground": {
+            "file": "0363100012159182_e_0nqcs47-ground.jpg",
+            "sha256": "73ae1b58205eacc50f458c7109e117e5bdfc55fd6e9c2889ae74431f0ef876c8",
+            "date": "2025-07-03T08:52:15Z"
+          }
+        }
+      }
+    ],
+    "status": "dated-source-inspected; registered-assembly-not-yet-restored",
+    "inspection": {
+      "disposition": "agent-inspected",
+      "cropSha256": "73ae1b58205eacc50f458c7109e117e5bdfc55fd6e9c2889ae74431f0ef876c8",
+      "captureDate": "2025-07-03T08:52:15Z",
+      "notes": "Dark painted ground frontage, separate side doors and central display window, red branded valance beneath rolled fabric/housing. Parking signs and scooters obscure portions. Do not infer the hidden sign letters or door thresholds. Registration and exact source-plane opening bounds remain unverified."
+    }
+  },
+  {
+    "name": "Engels Verf",
+    "buildingIds": [
+      "0363100012174146",
+      "0363100012174549"
+    ],
+    "records": [],
+    "status": "dated-panorama-recovered; current-frontage-registration-missing",
+    "legacySource": {
+      "block": "public/data/elandsgracht/block.json",
+      "panorama": {
+        "name": "engels",
+        "id": "recording_2025-06-30_05-16-46_00577",
+        "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_00577/equirectangular/panorama_4000.jpg",
+        "timestamp": "2025-06-30T05:28:15Z",
+        "position": [
+          4.879460638782967,
+          52.36914172765036,
+          0
+        ],
+        "heading": 0,
+        "distanceM": 2,
+        "positionLocal": [
+          -77.95,
+          50.45
+        ],
+        "label": "Engels Verf \u00b7 June 2025"
+      },
+      "imagePath": ".cache/elandsgracht/engels.jpg",
+      "imageSha256": "0eee021f821f6778159de659d0d7955635479cd9f9406fab57529c8d7b89155c"
+    },
+    "inspection": {
+      "disposition": "agent-inspected",
+      "notes": "Panorama shows rainbow fascia, pale display surrounds and dark door assemblies. It crosses the panorama seam; wrapping duplicate pixels are not evidence of another physical sign. Legacy address anchors span two BAG buildings. Exact current wall intervals and dated rectified crops must be recovered before restoring assemblies."
+    }
+  }
+]
