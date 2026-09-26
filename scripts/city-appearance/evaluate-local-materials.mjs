@@ -17,6 +17,7 @@ const add = (matrix,row,col) => { matrix[row]??={};matrix[row][col]=(matrix[row]
 const known = value => value && value!=='unknown';
 
 export function evaluateLocalMaterials(reference, receipts, experiment) {
+  if(reference?.status==='withdrawn')throw Error('Withdrawn visual reference set cannot be evaluated');
   if(reference?.version!==1||!Array.isArray(reference.entries)||reference.sourceIdentityUnverified!==true)
     throw Error('Expected versioned, identity-unverified visual reference set');
   if(!sha(experiment?.experimentHash)||!modelDigest(experiment?.experiment?.modelDigest))throw Error('Benchmark report lacks frozen model digest and experiment hash');
@@ -102,6 +103,7 @@ export async function runEvaluation(args=process.argv.slice(2)) {
   const referenceFile=path.resolve(flag(args,'reference')??'review-data/district-rectification/local-material-reference.json');
   const benchmarkDir=flag(args,'benchmark');if(!benchmarkDir)throw Error('--benchmark=<output-directory> is required');
   const benchmark=path.resolve(benchmarkDir),referenceBytes=await fs.readFile(referenceFile),reference=JSON.parse(referenceBytes);
+  if(reference?.status==='withdrawn')throw Error('Withdrawn visual reference set cannot be evaluated');
   for(const entry of reference.entries??[]){
     const source=entry.source;if(!source?.path||!sha(source.sha256))throw Error('Unbound reference source');
     const actual=hash(await fs.readFile(path.resolve(source.path)));

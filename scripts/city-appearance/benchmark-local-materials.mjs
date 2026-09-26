@@ -29,6 +29,7 @@ export function validateLabel(value) {
   if (!MATERIAL_FAMILIES.includes(value.materialFamily) || !COLOUR_FAMILIES.includes(value.colourFamily) ||
       !VISIBILITY.includes(value.visibility) || typeof value.abstain !== 'boolean') return { valid:false, reason:'schema-enum' };
   if (value.abstain && (value.materialFamily !== 'unknown' || value.colourFamily !== 'unknown')) return { valid:false, reason:'abstain-must-be-unknown' };
+  if (!value.abstain && (value.materialFamily === 'unknown' || value.colourFamily === 'unknown')) return { valid:false, reason:'unknown-must-abstain' };
   if (value.visibility === 'occluded' && !value.abstain) return { valid:false, reason:'occluded-must-abstain' };
   return { valid:true, reason:null };
 }

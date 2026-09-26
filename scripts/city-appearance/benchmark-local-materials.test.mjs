@@ -11,6 +11,8 @@ const sha256 = value => crypto.createHash('sha256').update(value).digest('hex');
 assert.deepEqual(validateLabel({materialFamily:'brick',colourFamily:'red',visibility:'clear',abstain:false}),{valid:true,reason:null});
 assert.equal(validateLabel({materialFamily:'brick',colourFamily:'red',visibility:'occluded',abstain:false}).valid,false);
 assert.equal(validateLabel({materialFamily:'brick',colourFamily:'unknown',visibility:'partial',abstain:true}).valid,false);
+assert.deepEqual(validateLabel({materialFamily:'brick',colourFamily:'unknown',visibility:'partial',abstain:false}),{valid:false,reason:'unknown-must-abstain'});
+assert.deepEqual(validateLabel({materialFamily:'unknown',colourFamily:'brown',visibility:'partial',abstain:false}),{valid:false,reason:'unknown-must-abstain'});
 assert.deepEqual(speedSummary([{status:'dry-run'},{status:'error',clientLatencyMs:300},{status:'ok',schema:{valid:true},clientLatencyMs:100,server:{loadDurationMs:10}}]).excludedErrors,1);
 
 const root=await fs.mkdtemp(path.join(os.tmpdir(),'local-material-benchmark-'));
