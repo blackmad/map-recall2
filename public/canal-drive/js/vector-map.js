@@ -501,11 +501,13 @@ class VectorBasemap {
 
   _refreshColoredBuildingFilter() {
     if (!this.map) return;
-    const hide = this._signatureSuppressOsmIds();
+    const hide = this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds();
     const helpers = window.CanalRecallBuildings;
     for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
       if (!this.map.getLayer(id)) continue;
-      const base = this._coloredBuildingBaseFilter(id);
+      const original = this._coloredBuildingBaseFilter(id);
+      const measured = ['==', ['get', 'sideColourSource'], 'measured-accepted'];
+      const base = this._measuredColoursOnly ? (original ? ['all', original, measured] : measured) : original;
       const filter = helpers && helpers.coloredBuildingLayerFilter
         ? helpers.coloredBuildingLayerFilter(base, hide)
         : base;
@@ -865,24 +867,30 @@ class VectorBasemap {
     el.style.display = text ? 'block' : 'none';
   }
 
+  setMeasuredColoursOnly(enabled) {
+    this._measuredColoursOnly = !!enabled;
+    this._refreshColoredBuildingFilter();
+    this._syncDetailedBuildingLayers();
+  }
+
   _syncDetailedBuildingLayers() {
     if (!this.map) return;
     const google = this._googleTilesActive;
     // 3DBAG and Google must never draw together: they are the same buildings
     // twice, z-fighting into a shimmer.
-    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google);
-    const detailed = !google && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
+    if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google && !this._measuredColoursOnly);
+    const detailed = !this._measuredColoursOnly && !google && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     for (const id of ['building-3d', 'osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
-      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google) ? 'none' : 'visible');
+      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google || (id === 'building-3d' && (this._measuredColoursOnly || this._buildingsFromTiles))) ? 'none' : 'visible');
     }
     // Signature models are the LoD1 replacement for a handful of landmarks.
     // Hide them under photoreal/3DBAG the same way the extrusions hide, so two
     // representations of Centraal never occupy the same air.
     if (this._signatureLandmarks) {
-      this._signatureLandmarks.setEnabled(!detailed && !google);
+      this._signatureLandmarks.setEnabled(!detailed && !google && !this._measuredColoursOnly);
       this._refreshBuildingSuppression();
     }
-    if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !google);
+    if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !google && !this._measuredColoursOnly);
     this._studyLayersAllowed = !detailed && !google;
     this._updateStudyAreaResidency();
   }
@@ -933,7 +941,8 @@ class VectorBasemap {
     this._activeAppearanceAreaId = active;
     for (const layer of layers) {
       if (typeof layer.setTileBudget === 'function') layer.setTileBudget(6);
-      const enabled = Boolean(active && layer.areaId === active);
+      const buildingDetail = this._studyRoofAreas.includes(layer) || this._studyFacadeAreas.includes(layer);
+      const enabled = Boolean(active && layer.areaId === active && !(this._measuredColoursOnly && buildingDetail));
       // A viewport change is also the shared eviction boundary. Rebuild the
       // active working set from visible tiles instead of retaining a separate
       // hysteresis tail in each roof/tree/public-realm cache.

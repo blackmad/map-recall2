@@ -102,7 +102,8 @@ class GameRouteRuntime {
     this.routePattern = prefs.routePattern;
     this.vectorMap.setTreesVisible(prefs.trees && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setDetailedBuildingsVisible(prefs.detailed3d && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
-    this.vectorMap.setGoogleTilesEnabled(!!prefs.googleTiles);
+    this.vectorMap.setGoogleTilesEnabled(!!prefs.googleTiles && !prefs.measuredColoursOnly);
+    this.vectorMap.setMeasuredColoursOnly(!!prefs.measuredColoursOnly);
     if (applySound) this._setSoundEnabled(prefs.sound);
     if (persist) this._savePreferences();
   }

@@ -41,7 +41,7 @@
   </head>
   <body>
     <header>
-      <h1>Signage labelling</h1>
+      <h1>Signage review</h1>
       <span class="sub">Drag a box around each sign, type its text exactly, pick the type, and click the sign's background then its lettering. "No sign" is a valid answer. <span id="progress"></span></span>
     </header>
     <main>
@@ -70,8 +70,10 @@
       const BASE = '/data/signage/v1';
       const TYPES = ['fascia','blade','window','awning','logo','gevelsteen'];
       const el = (id) => document.getElementById(id);
-      let sample = null, index = 0;
-      let labels = JSON.parse(localStorage.getItem('signage-labels') || '{}');
+      let sample = null, index = 0, sampleSha256 = null;
+      let storageKey = null;
+      let labels = {};
+      const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
       let selected = -1;
       let sampling = null; // 'bg' | 'fg'
 
@@ -79,7 +81,7 @@
       const keyOf = (entry) => entry.id;
 
       const save = () => {
-        localStorage.setItem('signage-labels', JSON.stringify(labels));
+        if (storageKey) localStorage.setItem(storageKey, JSON.stringify(labels));
         el('savestate').textContent = `draft saved · ${Object.keys(labels).length} frontages labelled`;
       };
 
@@ -110,7 +112,7 @@
         const entry = current();
         const img = el('crop');
         const sx = img.clientWidth / entry.widthPx, sy = img.clientHeight / entry.heightPx;
-        const box = (b, i, sel) => `<div class="box${sel ? ' sel' : ''}" style="left:${b.left*sx}px;top:${b.top*sy}px;width:${b.width*sx}px;height:${b.height*sy}px"><span class="lbl">${b.text || '(no text)'}</span></div>`;
+        const box = (b, i, sel) => `<div class="box${sel ? ' sel' : ''}" style="left:${b.left*sx}px;top:${b.top*sy}px;width:${b.width*sx}px;height:${b.height*sy}px"><span class="lbl">${escapeHtml(b.text || '(no text)')}</span></div>`;
         el('boxes').innerHTML = entryLabels().signs.map((b, i) => box(b, i, i === selected)).join('');
       }
 
@@ -119,7 +121,7 @@
         el('signs').innerHTML = (data.signs.length ? data.signs.map((b, i) => `
           <div class="sign${i === selected ? ' sel' : ''}" data-i="${i}">
             <div class="head"><span>sign ${i + 1}</span><span>${Math.round(b.width)}×${Math.round(b.height)} px</span></div>
-            <input type="text" data-field="text" data-i="${i}" placeholder="text exactly as it appears" value="${(b.text || '').replace(/"/g,'&quot;')}" />
+            <input type="text" data-field="text" data-i="${i}" placeholder="text exactly as it appears" value="${escapeHtml(b.text)}" />
             <div class="row">
               <select data-field="type" data-i="${i}">${TYPES.map((t) => `<option${b.type === t ? ' selected' : ''}>${t}</option>`).join('')}</select>
               <label class="sub"><input type="checkbox" data-field="readable" data-i="${i}"${b.readable ? ' checked' : ''} /> readable</label>
@@ -130,10 +132,10 @@
               <button data-del="${i}" class="warn">delete</button>
             </div>
           </div>`).join('') : '<p class="sub">no signs drawn yet</p>')
-          + `<p class="sub">${data.noSign ? '<span class="done">marked: no sign on this frontage</span>' : ''}</p>`;
+          + `<p class="sub">${data.noSign ? '<span class="done">No permanent sign visible in this crop</span>' : ''}${data.uncertain ? ' · uncertain / occluded' : ''}</p>`;
       }
 
-      function renderAll() { renderMeta(); renderBoxes(); renderSigns(); el('nosign').textContent = entryLabels().noSign ? 'unmark no-sign' : 'no sign here'; }
+      function renderAll() { renderMeta(); renderBoxes(); renderSigns(); const review = entryLabels(); if (review.reviewOrigin === 'model-visual-review') el('savestate').textContent = `Model visual review · ${review.reviewer} · ${review.notes || ''}`; el('nosign').textContent = entryLabels().noSign ? 'unmark no-sign' : 'no sign here'; }
 
       const imagePixel = (event) => {
         const img = el('crop');
@@ -211,7 +213,7 @@
       });
 
       el('export').addEventListener('click', () => {
-        const payload = { schemaVersion: 1, kind: 'signage/labels', sampleSha256: sample.sha256, labelledAt: new Date().toISOString(), labels };
+        const payload = { schemaVersion: 1, kind: 'signage/labels', sampleSha256, labelledAt: new Date().toISOString(), labels };
         const blob = new Blob([JSON.stringify(payload, null, 1)], { type: 'application/json' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
@@ -222,15 +224,29 @@
       el('importFile').addEventListener('change', async (event) => {
         const file = event.target.files[0]; if (!file) return;
         const payload = JSON.parse(await file.text());
+        if (payload.sampleSha256 !== sampleSha256) throw Error('Labels refer to a different sample');
         labels = payload.labels || {};
         save(); renderAll();
       });
 
-      fetch(`${BASE}/sample.json`).then((r) => r.json()).then((data) => {
-        sample = data;
+      (async () => {
+        const response = await fetch(`${BASE}/sample.json`);
+        if (!response.ok) throw Error('Sample unavailable');
+        const bytes = await response.arrayBuffer();
+        sampleSha256 = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(n => n.toString(16).padStart(2, '0')).join('');
+        sample = JSON.parse(new TextDecoder().decode(bytes));
+        storageKey = `signage-labels:${sampleSha256}`;
+        const reviewed = await fetch(`${BASE}/model-review.json`);
+        if (reviewed.ok && reviewed.headers.get('content-type')?.includes('json')) {
+          const payload = await reviewed.json();
+          if (payload.sampleSha256 !== sampleSha256) throw Error('Published review is stale');
+          labels = payload.labels || {};
+        }
+        // Keep edits to this exact sample, without overwriting model provenance.
+        Object.assign(labels, JSON.parse(localStorage.getItem(storageKey) || '{}'));
         el('crop').src = `${BASE}/crops/${current().crop}`;
         renderAll();
-      }).catch((error) => { el('savestate').textContent = `failed to load sample: ${error.message}`; });
+      })().catch((error) => { el('savestate').textContent = `failed to load review: ${error.message}`; });
     </script>
   </body>
 </html>

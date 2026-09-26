@@ -350,6 +350,8 @@ export function OverlayApp({
                 <Check id="reduced-motion" checked={prefs.reducedMotion} onChange={reducedMotion => patch({ reducedMotion })}> Reduced motion</Check>
                 <Check id="detailed-3d" checked={prefs.detailed3d} onChange={detailed3d => patch({ detailed3d })}> Detailed 3D beta</Check>
                 <Check id="google-tiles" checked={prefs.googleTiles} onChange={googleTiles => patch({ googleTiles })}> Google photoreal (overview)</Check>
+                <Check id="measured-colours-only" checked={prefs.measuredColoursOnly} onChange={measuredColoursOnly => patch({ measuredColoursOnly }, true)}> Colour coverage: reviewed buildings only</Check>
+                {prefs.measuredColoursOnly && <p role="status">Buildings without reviewed wall colours are hidden. Coverage may be empty.</p>}
                 <Check id="sound-enabled" checked={prefs.sound} onChange={sound => patch({ sound })}> Sound</Check>
               </div>
               <button
