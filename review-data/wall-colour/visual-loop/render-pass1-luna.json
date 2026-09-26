@@ -11,9 +11,9 @@
       "observationId": "0363100012166570_e_0wwk20u",
       "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
       "materialId": "redbrick",
-      "verdict": "revise",
+      "verdict": "unresolved",
       "dimensions": {
-        "buildingIdentity": "source SHA and building/address assignment agree; target wall is visible in both captures",
+        "buildingIdentity": "Not independently established from this pass: captures have no owner-face outline/identity marker and show dense, repeated block geometry. Apparent facade defects below are observations of candidate walls, not confirmed owner-wall findings.",
         "materialColourFamily": "red-brown brick family is plausible, though trial is somewhat more saturated/terracotta than the dark shaded source photo",
         "brightness": "trial wall reads brighter and redder than source; photo is deeply shaded so exact luminance is uncertain",
         "textureScale": "courses are conspicuously large/coarse for this small, many-storey frontage; reduce scale and contrast",
@@ -22,7 +22,7 @@
         "obliqueView": "same course pattern/top-face leak is visible obliquely",
         "occlusion": "front view has street-tree overlap at lower wall; upper exposed wall remains sufficient to assess"
       },
-      "reasons": "The red-brown family is supported, but the trial is too terracotta/bright against the dark photo and its masonry courses are oversized. Pattern is also mapped onto the extrusion top in both views; restrict the pattern to vertical wall faces.",
+      "reasons": "Owner-face identity is not independently confirmed in these unmarked, dense map captures. The apparent course-scale and extrusion-top issues on candidate facades are useful leads, but cannot be attributed to the assigned building from this pass. Keep unresolved pending identity-marked capture.",
       "evidence": {
         "front": {
           "file": "000-preview-front.png",
@@ -40,9 +40,9 @@
       "observationId": "0363100012162796_e_13u2mzl",
       "sourceSha256": "e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262",
       "materialId": "brownbrick",
-      "verdict": "revise",
+      "verdict": "unresolved",
       "dimensions": {
-        "buildingIdentity": "source SHA and address assignment agree; target is a brown-brick frontage, but several adjacent facades crowd the view",
+        "buildingIdentity": "Not independently established from this pass: captures have no owner-face outline/identity marker and show dense, repeated block geometry. Apparent facade defects below are observations of candidate walls, not confirmed owner-wall findings.",
         "materialColourFamily": "brown brick family is reasonable; avoid inferring color from the blown-out cream neighbor",
         "brightness": "source upper facade is overexposed and trial target is distant; brightness comparison is weak",
         "textureScale": "course scale is not resolved on the target front at this zoom; the oblique view shows visibly coarse masonry on an upward-facing roof/extrusion plane",
@@ -51,7 +51,7 @@
         "obliqueView": "coarse pattern is visible on roof/extrusion surfaces in oblique view; target frontage itself is too small for reliable course-scale judgment",
         "occlusion": "crowded street block and source crop includes a blown-out neighbor; judge only the brown frontage identified in the source assessment"
       },
-      "reasons": "Revise to prevent masonry texture on upward-facing extrusion tops. Brown family is plausible, but crowding and overexposure prevent a confident brightness/scale match for the target wall itself.",
+      "reasons": "Owner-face identity is not independently confirmed in these unmarked, dense map captures. The apparent course-scale and extrusion-top issues on candidate facades are useful leads, but cannot be attributed to the assigned building from this pass. Keep unresolved pending identity-marked capture.",
       "evidence": {
         "front": {
           "file": "001-preview-front.png",
@@ -69,9 +69,9 @@
       "observationId": "0363100012162897_e_0c4e2gf",
       "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
       "materialId": "buffbrick",
-      "verdict": "revise",
+      "verdict": "unresolved",
       "dimensions": {
-        "buildingIdentity": "source SHA and address assignment agree; rendered block is visible, although the surrounding roofscape makes exact facade correspondence less crisp",
+        "buildingIdentity": "Not independently established from this pass: captures have no owner-face outline/identity marker and show dense, repeated block geometry. Apparent facade defects below are observations of candidate walls, not confirmed owner-wall findings.",
         "materialColourFamily": "warm buff/ochre family is broadly plausible; trial appears more muted brown than the sunlit yellow-buff source",
         "brightness": "rendered surfaces appear darker/more neutral than the sunlit source facade; lighting differs, so magnitude is uncertain",
         "textureScale": "brick lines are too coarse on the visible facade and much too apparent across an upward-facing top plane",
@@ -80,7 +80,7 @@
         "obliqueView": "oblique view clearly shows patterned top face as well as coarse wall courses",
         "occlusion": "no major source occlusion, but building context is dense; top plane remains clearly visible"
       },
-      "reasons": "The source supports warm buff/ochre brick, while the trial reads browner and more subdued. More clearly, the courses are too coarse and leak across an extrusion top in both views. Preserve the buff family, reduce course scale, and limit the material to wall faces.",
+      "reasons": "Owner-face identity is not independently confirmed in these unmarked, dense map captures. The apparent course-scale and extrusion-top issues on candidate facades are useful leads, but cannot be attributed to the assigned building from this pass. Keep unresolved pending identity-marked capture.",
       "evidence": {
         "front": {
           "file": "003-preview-front.png",
@@ -100,7 +100,7 @@
       "materialId": "greybrick",
       "verdict": "unresolved",
       "dimensions": {
-        "buildingIdentity": "address/hash match, but the target facade is difficult to isolate among similar grey blocks in these map-scale views",
+        "buildingIdentity": "Not independently established from this pass: captures have no owner-face outline/identity marker and show dense, repeated block geometry. Apparent facade defects below are observations of candidate walls, not confirmed owner-wall findings.",
         "materialColourFamily": "source supports a grey masonry appearance; substrate/finish remains ambiguous",
         "brightness": "render appears dark grey-brown at this scale; capture is insufficient to distinguish lighting from material mismatch",
         "textureScale": "front and oblique views do not resolve courses on the target wall well enough to approve scale",
@@ -109,7 +109,7 @@
         "obliqueView": "target wall remains crowded/small; no reliable texture-scale comparison",
         "occlusion": "street trees and adjacent blocks compete with the target; source lower facade also has foreground car/vegetation"
       },
-      "reasons": "The source is grey masonry with ambiguous substrate. These two trial views do not isolate enough target-wall detail to determine whether its grey family, brightness, or texture scale is correct; retain no material approval from this review.",
+      "reasons": "The source is grey masonry with ambiguous substrate. No owner-face identity marker is present, and map-scale views do not isolate the target enough to determine grey family, brightness, or texture scale. Candidate nearby walls show no reliably attributable defect. Keep unresolved pending identity-marked capture.",
       "evidence": {
         "front": {
           "file": "004-preview-front.png",
@@ -127,18 +127,19 @@
       "observationId": "0363100012168920_e_0bxls2d",
       "sourceSha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
       "materialId": "unknownneutral",
-      "verdict": "accept",
+      "verdict": "unresolved",
       "dimensions": {
-        "buildingIdentity": "source SHA and Elandsgracht address agree; broad side-wall mass is visible in both captures, but lettering itself is outside the material trial",
+        "buildingIdentity": "Not independently established from this pass: captures have no owner-face outline/identity marker and show dense, repeated block geometry. Apparent facade defects below are observations of candidate walls, not confirmed owner-wall findings.",
         "materialColourFamily": "conservative neutral grey/blue-grey family is consistent with the source wall",
         "brightness": "trial neutral wall appears slightly lighter/less blue than the photo, but the scene lighting and distant render make this low confidence",
         "textureScale": "source wall is smooth; trial wall remains visually smooth at both captured views, with no unsupported brick-course pattern",
         "extrusionTopCoverage": "visible tops remain plain; no masonry pattern spill apparent",
         "frontView": "flat neutral wall treatment is appropriate at this view; no false course texture visible",
         "obliqueView": "oblique capture also shows a plain neutral wall plane, no false courses",
-        "occlusion": "source lettering is prominent but fine graphic detail is not modeled; this review concerns wall material only"
+        "occlusion": "source lettering is prominent but fine graphic detail is not modeled; this review concerns wall material only",
+        "trialParticipation": "unknown-neutral was not eligible for the textured-layer trial; apparent smoothness cannot be credited as a trial acceptance."
       },
-      "reasons": "The conservative unknown-neutral treatment preserves the source’s smooth blue-grey wall character without inventing brick courses. The trial’s slightly lighter/less blue appearance is uncertain at this view, but does not justify a material-family revision.",
+      "reasons": "The source supports a smooth blue-grey wall, but this pass does not independently identify the owner face, and unknown-neutral retained the original game material rather than participating in the textured-material trial. Treat as unresolved; do not count as an acceptance. Lettering remains outside the material trial.",
       "evidence": {
         "front": {
           "file": "010-preview-front.png",
