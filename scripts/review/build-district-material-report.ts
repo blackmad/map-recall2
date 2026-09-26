@@ -52,11 +52,25 @@ export function workerBindingMatches(job:WorkerJob['job'],record:any,manifestPat
   record.sourceManifestSha256===manifestSha256&&path.resolve(record.sourceManifestPath)===path.resolve(manifestPath);
 }
 
+/** Reference benchmarks bind to the reviewed selection JSON, not its evidence manifest. */
+export function manualBindingMatches(binding:any,sourcePath:string,manifestPath:string,manifestSha256:string,
+ referencePath:string,referenceSha256:string|null,referenceEntry:any){
+ if(!binding||binding.imageKind!=='full'||path.resolve(binding.imagePath??'')!==path.resolve(sourcePath))return false;
+ if(binding.sourceManifestSha256===manifestSha256&&
+    path.resolve(binding.sourceManifestPath??'')===path.resolve(manifestPath))return true;
+ return Boolean(referenceEntry&&referenceSha256&&binding.sourceManifestSha256===referenceSha256&&
+  path.resolve(binding.sourceManifestPath??'')===path.resolve(referencePath)&&
+  path.resolve(referenceEntry.source?.path??'')===path.resolve(sourcePath)&&
+  binding.buildingId===referenceEntry.source?.buildingId&&binding.elevationId===referenceEntry.source?.elevationId&&
+  binding.sourceSha256===referenceEntry.source?.sha256);
+}
+
 async function build(){
  const names=(await fs.readdir(progressDir)).filter(n=>n.endsWith('-material-4000-batch-100.json'));
  if(names.length!==1)throw Error('Expected exactly one district 4K progress report');
  const progress=await read(path.join(progressDir,names[0]));
  const reference=await optional(referenceFile);
+ const referenceSha256=reference?sha(await fs.readFile(referenceFile)):null;
  const refs=new Map<string,any>((reference?.entries??[]).map((e:any)=>[identity(e.source.buildingId,e.source.elevationId,e.source.sha256),e]));
  const predictions=new Map<string,any>();
  const worker=await loadWorkerArtifacts(workerStateFile);
@@ -157,7 +171,7 @@ async function build(){
    const sourcePath=path.resolve(path.dirname(file),'images',source.file);
    const workerPrediction=workerPredictions.get(sourceIdentity(record.buildingId,record.elevationId,source.sha256,manifestSha256));
    const p=(workerPrediction?.binding?.imagePath&&path.resolve(workerPrediction.binding.imagePath)===sourcePath?workerPrediction:null)??
-    (manual?.binding?.sourceManifestSha256===manifestSha256?manual:null);
+    (manualBindingMatches(manual?.binding,sourcePath,file,manifestSha256,referenceFile,referenceSha256,ref)?manual:null);
    const workerMeasured=workerColours.get(sourceIdentity(record.buildingId,record.elevationId,source.sha256,manifestSha256));
    const measured=workerMeasured?.imagePath&&path.resolve(workerMeasured.imagePath)===sourcePath?workerMeasured:null;
    try{
