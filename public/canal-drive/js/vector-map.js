@@ -1121,10 +1121,9 @@ class VectorBasemap {
       if (typeof layer.setTileBudget === 'function') layer.setTileBudget(6);
       const buildingDetail = this._studyRoofAreas.includes(layer) || this._studyFacadeAreas.includes(layer);
       const enabled = Boolean(active && layer.areaId === active && !(this._measuredColoursOnly && buildingDetail));
-      // A viewport change is also the shared eviction boundary. Rebuild the
-      // active working set from visible tiles instead of retaining a separate
-      // hysteresis tail in each roof/tree/public-realm cache.
-      if (enabled && layer.enabled) layer.setEnabled(false);
+      // Resident streamers already update and evict on moveend. Re-enabling an
+      // active layer here clears every mesh on every camera sync, even when the
+      // viewport and selected area have not changed.
       if (layer.enabled !== enabled) layer.setEnabled(enabled);
     }
     for (const [list, alias] of [
