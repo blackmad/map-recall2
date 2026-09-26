@@ -362,7 +362,7 @@ for (const counterfactual of counterfactuals) {
   const facadeImputed = run.records
     .filter((record) => facadeWalls.has(record.surfaceId ?? ''))
     .flatMap((record) => record.boxes.filter((box) => box.origin === 'imputed')
-      .map((box) => `${(box.along + (box.widthM ?? 0) / 2).toFixed(2)}@up${(box.up + (box.heightM ?? 0) / 2).toFixed(2)}`));
+      .map((box) => `wall:${(record.surfaceId ?? '').split('wall:').pop()}=${(box.along + (box.widthM ?? 0) / 2).toFixed(2)}@up${(box.up + (box.heightM ?? 0) / 2).toFixed(2)}`));
   if (facadeImputed.length) lines.push(`    imputed boxes on facade walls: ${facadeImputed.join(', ')}`);
 }
 process.stdout.write(`${lines.join('\n')}\n`);
