@@ -22,6 +22,7 @@ const entries=[
   {source:source('e','e.jpg'),label:label('brick','buff')},
 ];
 const reference={version:1,sourceIdentityUnverified:true,reviewer:'model-reference',entries};
+assert.throws(()=>evaluateLocalMaterials({...reference,status:'withdrawn'},[],experiment),/Withdrawn visual reference/);
 const receipts=[
   receipt(entries[0].source,predict('brick','red'), 'ok',100,20),
   receipt(entries[1].source,predict('unknown','unknown','partial',true),'ok',200,1500),
@@ -53,6 +54,9 @@ try {
   await fs.mkdir(path.join(benchmark,'receipts'),{recursive:true});await fs.writeFile(referenceFile,JSON.stringify(ref));
   await fs.writeFile(path.join(benchmark,'report.json'),JSON.stringify(experiment));
   await fs.writeFile(path.join(benchmark,'receipts',`${receipts[0].key}.json`),JSON.stringify(receipts[0]));
+  await fs.writeFile(referenceFile,JSON.stringify({...ref,status:'withdrawn'}));
+  await assert.rejects(runEvaluation([`--reference=${referenceFile}`,`--benchmark=${benchmark}`]),/Withdrawn visual reference/);
+  await fs.writeFile(referenceFile,JSON.stringify(ref));
   const output=await runEvaluation([`--reference=${referenceFile}`,`--benchmark=${benchmark}`]);
   assert.equal(output.gate.status,'pass');assert.equal(JSON.parse(await fs.readFile(output.output)).referenceSha256,sha(await fs.readFile(referenceFile)));
   await fs.writeFile(image,'changed');await assert.rejects(runEvaluation([`--reference=${referenceFile}`,`--benchmark=${benchmark}`]),/Reference image changed/);
