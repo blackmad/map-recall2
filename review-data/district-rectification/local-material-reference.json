@@ -1,0 +1,684 @@
+{
+  "version": 1,
+  "reviewer": "gpt-5.6-terra",
+  "scope": "Independent local source-bound material/colour reference set from inspected rectified full-facade crops. Labels describe only visible wall evidence; they do not establish source-to-owner identity or unseen wall properties.",
+  "permittedLabels": {
+    "materialFamily": [
+      "brick",
+      "painted-brick",
+      "render",
+      "stone",
+      "concrete",
+      "other",
+      "unknown"
+    ],
+    "colourFamily": [
+      "red",
+      "brown",
+      "buff",
+      "cream",
+      "white",
+      "grey",
+      "black",
+      "other",
+      "unknown"
+    ],
+    "visibility": [
+      "clear",
+      "partial",
+      "occluded"
+    ]
+  },
+  "sourceIdentityUnverified": true,
+  "selectionSources": [
+    {
+      "selectionHash": "61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5",
+      "sourceProfile": "default-8000",
+      "manifestSha256": "2ec636d3cf7fe87b45bf996208edf21b1a3751b5c7d3485818703e6dbd2d12e7"
+    },
+    {
+      "selectionHash": "c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f",
+      "sourceProfile": "material-4000",
+      "manifestSha256": "b882f1733d09811c95c0d634236a207e31f4341d08486bdf2f3eba6fdb3b04f9"
+    }
+  ],
+  "counts": {
+    "entries": 30,
+    "clear": 12,
+    "partial": 13,
+    "occluded": 5,
+    "abstentions": 6
+  },
+  "entries": [
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012089614_e_10gr7g5-full.jpg",
+        "sha256": "f843dcf98573b1ef1f565ac235cc72a6c42955ed1fb0269d414dd1673ceab6f1",
+        "buildingId": "0363100012089614",
+        "elevationId": "0363100012089614:e:10gr7g5",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "red",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Visible pink-red masonry fields around the balcony and windows; shrub and blown sky-side upper wall are excluded.",
+      "uncertainty": "Upper facade is overexposed and vegetation obscures lower wall."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012087403_e_1375xp9-full.jpg",
+        "sha256": "46eb8001ffaa8efbfda2d518d27706911f6e202d19a3e37fc52e3884a453bd51",
+        "buildingId": "0363100012087403",
+        "elevationId": "0363100012087403:e:1375xp9",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Visible dark brown masonry fields between repeated white window surrounds.",
+      "uncertainty": "Low contrast limits any claim beyond broad family."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012085290_e_1div8td-full.jpg",
+        "sha256": "73d2afe99f2a3910b296eeccd01214653cee7a35a7d249c4545d5ac9eff8edfe",
+        "buildingId": "0363100012085290",
+        "elevationId": "0363100012085290:e:1div8td",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Visible brown masonry across the narrow facade; glass, trim and balcony are excluded.",
+      "uncertainty": "Source-to-owner correspondence is unverified."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012068330_e_029h1m9-full.jpg",
+        "sha256": "4feebca682fbbbe7ca380d398fcd553b06cbeab4b8139e452dcc1704dc6df8c6",
+        "buildingId": "0363100012068330",
+        "elevationId": "0363100012068330:e:029h1m9",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Dark brown wall is visible around the windows, with some branch/shadow interference.",
+      "uncertainty": "Low illumination can shift the apparent colour darker."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012084449_e_10j1k0z-full.jpg",
+        "sha256": "7e8055c410bc8333cb793bd270cab8423110ff1d73b10cc30097fd8a9f7c5a56",
+        "buildingId": "0363100012084449",
+        "elevationId": "0363100012084449:e:10j1k0z",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "red",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Exposed red-brown masonry is visible across the facade above the ground floor.",
+      "uncertainty": "Fine course detail is not a label target."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012063298_e_0neqgrr-full.jpg",
+        "sha256": "be61b185b8e1b1923185cdcca6dc8c3d38cdee3cfa2262928788e006871657be",
+        "buildingId": "0363100012063298",
+        "elevationId": "0363100012063298:e:0neqgrr",
+        "imageKind": "full",
+        "sourceDimensions": [
+          4000,
+          2000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "buff",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Sunlit ochre-buff masonry is broadly visible around the stacked balconies.",
+      "uncertainty": "Sunlight changes brightness but not the visible warm buff family."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012102062_e_1d1zzj4-full.jpg",
+        "sha256": "e4fdd7221a4eaf91a7b38970c0502ed72065c531b05d4dfc9c2b97e7f64035c7",
+        "buildingId": "0363100012102062",
+        "elevationId": "0363100012102062:e:1d1zzj4",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "buff",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Warm buff/brown masonry is visible, while foliage and adjacent facade fragments are excluded.",
+      "uncertainty": "Vegetation crosses part of the wall field."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012069469_e_0oi7wxe-full.jpg",
+        "sha256": "52d5e392614165ad6c9d24a260d4ec96fa3142a29223214f14a6c418188deb43",
+        "buildingId": "0363100012069469",
+        "elevationId": "0363100012069469:e:0oi7wxe",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "red",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "The large visible facade is red-brown masonry; windows and balcony recesses are excluded.",
+      "uncertainty": "The rectified plane covers multiple addressed parts, so no owner-specific claim is made."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012100554_e_1282syt-full.jpg",
+        "sha256": "5844fdeff87b436d4a8c44b96ab3480c36b1c7ad00e392d3467699acc237d750",
+        "buildingId": "0363100012100554",
+        "elevationId": "0363100012100554:e:1282syt",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "red",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Visible apartment facade has muted red-brown masonry fields.",
+      "uncertainty": "Wide crop includes multiple facade bays; identity is unverified."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012065903_e_1wkrapb-full.jpg",
+        "sha256": "6a873dab0c455f9d3136d6b41fe91b4b7af4c6f04e1b87c2924e145d4b237dcc",
+        "buildingId": "0363100012065903",
+        "elevationId": "0363100012065903:e:1wkrapb",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "grey",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "A broad grey brick wall is visible above the glazed lower storey.",
+      "uncertainty": "Lamp post and flat lighting reduce confidence; label is broad only."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012065903_e_07n48hj-full.jpg",
+        "sha256": "6e616b97dcb286a1bbab0d5a4f2c6bb51d4d92db45df61da79e60c52454b3d81",
+        "buildingId": "0363100012065903",
+        "elevationId": "0363100012065903:e:07n48hj",
+        "imageKind": "full",
+        "sourceDimensions": [
+          4000,
+          2000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "grey",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "A broad grey brick wall remains visibly exposed above the glazed lower storey.",
+      "uncertainty": "Bare branches are limited and do not hide the representative wall field."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012065903_e_1o3cxjx-full.jpg",
+        "sha256": "935de883a4b611f2865334c48c57faf2777d9149eb6eecc4a60010da1ac1ddb8",
+        "buildingId": "0363100012065903",
+        "elevationId": "0363100012065903:e:1o3cxjx",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "unknown",
+        "colourFamily": "unknown",
+        "visibility": "occluded"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Only a narrow, blurred, branch-crossed light facade field is visible.",
+      "uncertainty": "Insufficient exposed wall to distinguish painted/rendered surface from masonry."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012078290_e_1ni8nqv-full.jpg",
+        "sha256": "1fcc8607c0622d491ffd2e2913787762d7cb419953b1d68e6ca2d3929b5b458f",
+        "buildingId": "0363100012078290",
+        "elevationId": "0363100012078290:e:1ni8nqv",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "unknown",
+        "colourFamily": "unknown",
+        "visibility": "occluded"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Dense foliage covers the selected rectified plane.",
+      "uncertainty": "Do not infer wall material or colour through vegetation."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012063077_e_11in59c-full.jpg",
+        "sha256": "aa876245d5466884bbd2f5d55c347a07a990546a000402b61a0127cb52639900",
+        "buildingId": "0363100012063077",
+        "elevationId": "0363100012063077:e:11in59c",
+        "imageKind": "full",
+        "sourceDimensions": [
+          4000,
+          2000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Ornate facade retains broad brown masonry fields around its window openings.",
+      "uncertainty": "Decorative trim is excluded from the label."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012061963_e_1evm7i7-full.jpg",
+        "sha256": "793ba0fe8ec6f6a0a5a9a93e007f1c87815977c549e8d9f4bfa2a22d11b26b5e",
+        "buildingId": "0363100012061963",
+        "elevationId": "0363100012061963:e:1evm7i7",
+        "imageKind": "full",
+        "sourceDimensions": [
+          4000,
+          2000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Dark brown masonry remains visible around windows behind leafless branches.",
+      "uncertainty": "Branches and shade make this a partial-visibility example."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012065764_e_16kbln1-full.jpg",
+        "sha256": "fbed644418ec574f5631e540cc2ef4a5cd0b194f02a5f69471f3180027d26bb0",
+        "buildingId": "0363100012065764",
+        "elevationId": "0363100012065764:e:16kbln1",
+        "imageKind": "full",
+        "sourceDimensions": [
+          4000,
+          2000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Visible brown masonry dominates the facade between windows.",
+      "uncertainty": "No fine texture or exact owner identity is asserted."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012064444_e_1l92znq-full.jpg",
+        "sha256": "7572aa41618321a4a33a7be5438088890f498ca65ed6ac533779a81498a44a7e",
+        "buildingId": "0363100012064444",
+        "elevationId": "0363100012064444:e:1l92znq",
+        "imageKind": "full",
+        "sourceDimensions": [
+          4000,
+          2000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Visible warm-dark brown masonry occupies the main facade field.",
+      "uncertainty": "Ground-floor signage/glazing is excluded."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012087959_e_0yg0z5c-full.jpg",
+        "sha256": "d2473b419adcefe2c4af2f2112bcf401052acd5d92b3c00881cc2a76930f6766",
+        "buildingId": "0363100012087959",
+        "elevationId": "0363100012087959:e:0yg0z5c",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "buff",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Sunlit warm ochre/buff masonry is visible at upper levels.",
+      "uncertainty": "Tree foliage and bright sun reduce usable wall area."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012081167_e_0c21yw2-full.jpg",
+        "sha256": "ececf49eb5818a241a841fe0bba219c045b50819598f0cf45cc90676517b51d7",
+        "buildingId": "0363100012081167",
+        "elevationId": "0363100012081167:e:0c21yw2",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Broad muted brown masonry is visible above the construction barrier.",
+      "uncertainty": "Barrier obscures lower wall; the crop includes neighbouring facade portions."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012073508_e_0vmx9l7-full.jpg",
+        "sha256": "8581ab026af56453a493a8181cacd306f71dc1c5cdd17bae3f921e4ec787a61d",
+        "buildingId": "0363100012073508",
+        "elevationId": "0363100012073508:e:0vmx9l7",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Visible multi-bay facade presents muted brown masonry.",
+      "uncertainty": "Several building/address segments share the crop, so it is not owner-specific evidence."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012091205_e_0ijvd6s-full.jpg",
+        "sha256": "b54119e22b97964d76274f16d0b5c49e649161d93ffaa402428caf2397fbf542",
+        "buildingId": "0363100012091205",
+        "elevationId": "0363100012091205:e:0ijvd6s",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Brown masonry fields are visible between white-framed windows.",
+      "uncertainty": "Use as broad colour/material evidence only."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012062260_e_1vze6ea-full.jpg",
+        "sha256": "88ca39a28d355596c8224ad1466175263afbff06ea53b86a86333b4dc1c64850",
+        "buildingId": "0363100012062260",
+        "elevationId": "0363100012062260:e:1vze6ea",
+        "imageKind": "full",
+        "sourceDimensions": [
+          4000,
+          2000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Visible brown masonry across the narrow facade supports the broad label.",
+      "uncertainty": "Fine texture and assignment to a specific owner remain out of scope."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012084787_e_1flwaw8-full.jpg",
+        "sha256": "3ef11dc40a5868a856bcefda47ee2459ef5e75cd3e6beff2e2fc05c5f5c6b6f5",
+        "buildingId": "0363100012084787",
+        "elevationId": "0363100012084787:e:1flwaw8",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "unknown",
+        "colourFamily": "white",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "A light smooth wall is visible, but intense sun exposure removes substrate detail.",
+      "uncertainty": "Do not decide render versus painted masonry from the blown light field."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012075947_e_15snmls-full.jpg",
+        "sha256": "91dd2f952500d14ab84dc0782870a8bb47bd902a5891ef8a071f6ff96590494e",
+        "buildingId": "0363100012075947",
+        "elevationId": "0363100012075947:e:15snmls",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Exposed dark brown masonry is visible around repeated windows.",
+      "uncertainty": "Shadow affects brightness, not the broad brown label."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012065246_e_1k9wdlf-full.jpg",
+        "sha256": "3ca2873139c1ec9fe55d67fd5f1304d49cf531aa733c4ab87b5064eea7502b45",
+        "buildingId": "0363100012065246",
+        "elevationId": "0363100012065246:e:1k9wdlf",
+        "imageKind": "full",
+        "sourceDimensions": [
+          4000,
+          2000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Dark brown masonry is visibly exposed over most of the selected plane.",
+      "uncertainty": "Windows, shopfront and trim are excluded."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012088841_e_0sk9mfq-full.jpg",
+        "sha256": "8827aaf02598c0d5f232f143106dad93fe1d57a611306235903315bbf541edb4",
+        "buildingId": "0363100012088841",
+        "elevationId": "0363100012088841:e:0sk9mfq",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "render",
+        "colourFamily": "cream",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "The visible broad light facade is smooth and cream-white, without discernible masonry joints.",
+      "uncertainty": "Strong sunlight and distance limit confidence; label is broad surface appearance only."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012064291_e_06e507d-full.jpg",
+        "sha256": "11386d3af3a632f6a4b51d8ef48d2016329719a26096c9e939854ab6bf48a4b8",
+        "buildingId": "0363100012064291",
+        "elevationId": "0363100012064291:e:06e507d",
+        "imageKind": "full",
+        "sourceDimensions": [
+          4000,
+          2000
+        ]
+      },
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "partial"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Upper facade retains visible brown masonry despite the roadside sign and dark lower storefront.",
+      "uncertainty": "The sign blocks lower wall and reduces usable area."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012061715_e_06bu361-full.jpg",
+        "sha256": "927589cd418b789259210825343e10e18e8cb44a042bb95d6036e54ba57ebf74",
+        "buildingId": "0363100012061715",
+        "elevationId": "0363100012061715:e:06bu361",
+        "imageKind": "full",
+        "sourceDimensions": [
+          4000,
+          2000
+        ]
+      },
+      "label": {
+        "materialFamily": "unknown",
+        "colourFamily": "unknown",
+        "visibility": "occluded"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "A 30-zone sign dominates the full crop and masks the representative wall field.",
+      "uncertainty": "No material or colour label is justified."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012083574_e_1v9rr7u-full.jpg",
+        "sha256": "60bfc993618bc18a2b51593a590be1772204dde963937f4ca251160dc6006d5c",
+        "buildingId": "0363100012083574",
+        "elevationId": "0363100012083574:e:1v9rr7u",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "unknown",
+        "colourFamily": "unknown",
+        "visibility": "occluded"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "Construction covering and foreground obstruction dominate the selected crop.",
+      "uncertainty": "No exposed representative wall field is available."
+    },
+    {
+      "source": {
+        "path": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/images/0363100012094907_e_198zava-full.jpg",
+        "sha256": "9f7639b6f9db74b5ffde1191a9e93545b3e241d97da41efbed1b86cf42f4cf35",
+        "buildingId": "0363100012094907",
+        "elevationId": "0363100012094907:e:198zava",
+        "imageKind": "full",
+        "sourceDimensions": [
+          8000,
+          4000
+        ]
+      },
+      "label": {
+        "materialFamily": "unknown",
+        "colourFamily": "unknown",
+        "visibility": "occluded"
+      },
+      "sourceIdentityUnverified": true,
+      "reason": "A large tree trunk and foliage conceal the available facade field.",
+      "uncertainty": "No wall material or colour can be read."
+    }
+  ]
+}
