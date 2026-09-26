@@ -16,7 +16,10 @@
       },
       "reason": "central bays from first-floor arches through upper-storey brick; exclude white stone arches, window frames, cables and leafless branches",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 1,
@@ -31,9 +34,12 @@
         "scaleConfidence": "medium",
         "notes": "muted red-brown brick; observed in the stated exposed wall field."
       },
-      "reason": "right-hand facade around the balcony and upper windows; left half is blown out by direct sun and the ground floor is in shadow",
+      "reason": "right-hand brown-brick facade around the balcony and upper windows; the bright cream upper area belongs to the adjacent building, while the ground floor is in shadow",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Use only the right-hand building: brick fields flanking the balcony and its upper windows. The bright cream area at upper left is the adjacent facade, not this owner.",
+      "materialId": "brown-brick",
+      "visiblySupported": true,
+      "uncertainty": "The right-hand building is visibly brown brick; the blown-out cream upper facade belongs to the adjacent building at left."
     },
     {
       "index": 2,
@@ -50,7 +56,10 @@
       },
       "reason": "broad central wall fields between the tall windows; exclude dark ground-floor garage, windows and balcony railings",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 3,
@@ -67,7 +76,10 @@
       },
       "reason": "sunlit upper brick pilasters and fields above the shopfront; exclude cream base, glazing and dark window recesses",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "buff-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 4,
@@ -75,16 +87,19 @@
       "observationId": "0363100012165154_e_16tobqf",
       "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
       "targetHex": "#787b78",
-      "material": "painted-brick",
+      "material": "unknown",
       "materialColourFamily": "grey",
       "texture": {
         "pattern": "brick-courses",
-        "scaleConfidence": "high",
-        "notes": "cool mid-grey painted render; observed in the stated exposed wall field."
+        "scaleConfidence": "medium",
+        "notes": "Grey facade has visible horizontal courses, but the crop cannot establish whether it is fired, painted, or render over masonry."
       },
       "reason": "continuous wall strips beside upper windows; exclude white window trim, balcony metal and the shaded base",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "grey-brick",
+      "visiblySupported": true,
+      "uncertainty": "Brick courses are visible, but surface finish and substrate cannot be determined from the image."
     },
     {
       "index": 5,
@@ -101,7 +116,10 @@
       },
       "reason": "upper facade either side of the bay windows; tree trunk and the shadowed lower storey make the reference darker than a clean wall",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "brown-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 6,
@@ -118,7 +136,10 @@
       },
       "reason": "second and third-storey wall panels between windows; facade is evenly overcast but softened by distance",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "brown-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 7,
@@ -135,7 +156,10 @@
       },
       "reason": "central brick bands around the paired upper windows; exclude the black shop awning and window recesses",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 8,
@@ -152,7 +176,10 @@
       },
       "reason": "upper facade around the arched attic window and balcony; cool daylight and white signage affect the lower crop",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "grey-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 9,
@@ -160,16 +187,19 @@
       "observationId": "0363100012170186_e_09fw20r",
       "sourceSha256": "3630ec30fb87cf536e3f92536d256c5578c84144fbdb4cc52c8567718488e200",
       "targetHex": "#77584b",
-      "material": "fired-clay-brick",
+      "material": "unknown",
       "materialColourFamily": "red-brown",
       "texture": {
-        "pattern": "brick-courses",
+        "pattern": "unknown",
         "scaleConfidence": "low",
-        "notes": "muted red-brown brick; observed in the stated exposed wall field."
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "small visible wall strips between upper windows; motion blur and branches prevent a clean representative patch",
       "confidence": "low",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "unknown-neutral",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 10,
@@ -177,16 +207,19 @@
       "observationId": "0363100012168920_e_0bxls2d",
       "sourceSha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
       "targetHex": "#474d50",
-      "material": "painted-brick",
+      "material": "unknown",
       "materialColourFamily": "blue-grey",
       "texture": {
-        "pattern": "brick-courses",
-        "scaleConfidence": "high",
-        "notes": "blue-charcoal painted render; observed in the stated exposed wall field."
+        "pattern": "unknown",
+        "scaleConfidence": "low",
+        "notes": "Smooth blue-grey side wall has no visible courses; photograph cannot distinguish paint, render, or concrete."
       },
-      "reason": "large plain side-wall field around the lettering; exclude white letters, windows, sign and bins",
+      "reason": "smooth blue-grey side wall around the lettering; no visible courses, so it is held as unknown-neutral rather than a brick process claim",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Large smooth blue-grey side-wall field around the lettering; exclude letters, windows, sign, bins and pavement.",
+      "materialId": "unknown-neutral",
+      "visiblySupported": false,
+      "uncertainty": "The smooth side wall supports only a neutral blue-grey appearance; no substrate or course pattern is visible."
     },
     {
       "index": 11,
@@ -203,7 +236,10 @@
       },
       "reason": "broad sunless central facade panels; exclude grey brick plinth, white frames and balcony shadows",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "cream-render",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 12,
@@ -220,7 +256,10 @@
       },
       "reason": "repeating wall panels between the many narrow windows; exclude dark window recesses and the pale parapet",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 13,
@@ -237,7 +276,10 @@
       },
       "reason": "large uninterrupted upper wall field left of the central windows; exclude deep window shadows and streetlamp cable",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "cream-render",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 14,
@@ -254,7 +296,10 @@
       },
       "reason": "upper facade fields around the paired windows; cool shade and tree branches cover part of the wall",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "brown-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 15,
@@ -271,7 +316,10 @@
       },
       "reason": "visible vertical brick strips beside upper windows; street-level retail and cables are excluded",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 16,
@@ -288,7 +336,10 @@
       },
       "reason": "broad wall fields behind the white window surrounds; exclude white trim, shop sign and balcony rails",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 17,
@@ -305,7 +356,10 @@
       },
       "reason": "central upper wall plane and side strips between windows; exclude balcony void, glazing and blue sky",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "cream-render",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 18,
@@ -313,16 +367,19 @@
       "observationId": "0363100012166397_e_08rpzbw",
       "sourceSha256": "92836709b5ce82d22da4e187bd4963cbbad3c0de6284f0c976545234cc932b42",
       "targetHex": "#714d38",
-      "material": "fired-clay-brick",
+      "material": "unknown",
       "materialColourFamily": "brown",
       "texture": {
-        "pattern": "brick-courses",
+        "pattern": "unknown",
         "scaleConfidence": "low",
-        "notes": "warm dark-brown brick; observed in the stated exposed wall field."
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "right-side upper wall area between windows; most of the left facade is obscured by sunlit foliage",
       "confidence": "low",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "brown-brick",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 19,
@@ -339,7 +396,10 @@
       },
       "reason": "upper floors around the white window frames; exclude balcony railings and the highly shaded ground floor",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "brown-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 20,
@@ -356,7 +416,10 @@
       },
       "reason": "brick wall fields between the stacked windows and balconies; exclude black railings and storefront",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "brown-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 21,
@@ -373,7 +436,10 @@
       },
       "reason": "central upper wall panels between windows; foliage covers the left side and the ground floor is commercial",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 22,
@@ -390,7 +456,10 @@
       },
       "reason": "upper floor brick bands behind bare branches; the facade is underexposed, so avoid using the near-black recesses",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "dark-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 23,
@@ -398,16 +467,19 @@
       "observationId": "0363100012168929_e_0a506dn",
       "sourceSha256": "3fbf4e5a698ef605c90a8dc4d3392e07907114d3d0585a651763add7284070c9",
       "targetHex": "#513d36",
-      "material": "fired-clay-brick",
+      "material": "unknown",
       "materialColourFamily": "brown",
       "texture": {
-        "pattern": "brick-courses",
+        "pattern": "unknown",
         "scaleConfidence": "low",
-        "notes": "dark umber brick; observed in the stated exposed wall field."
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "right-side facade strips around the windows; misted/underexposed crop and a construction skip block much of the wall",
       "confidence": "low",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "dark-brick",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 24,
@@ -424,7 +496,10 @@
       },
       "reason": "wide uninterrupted wall areas on the long elevation; exclude repeated dark window openings and the pale sky",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 25,
@@ -441,7 +516,10 @@
       },
       "reason": "upper and middle wall fields visible either side of the tree; exclude trunk, window frames, canal-side vehicles and bright sky",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 26,
@@ -458,7 +536,10 @@
       },
       "reason": "central wall area above the shopfront and between windows; avoid shadowed tree branches and lower glazing",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "dark-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 27,
@@ -475,7 +556,10 @@
       },
       "reason": "upper facade to the right of the tree trunk; branches and the dark storefront limit clean sampling",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "dark-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 28,
@@ -492,7 +576,10 @@
       },
       "reason": "central brick planes between white window trim; exclude pale cornice, balcony and black shop sign",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 29,
@@ -509,7 +596,10 @@
       },
       "reason": "the two stepped-gable wall fields away from the white central bays; exclude windows, balcony rails and deep entry shadows",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "dark-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 30,
@@ -526,7 +616,10 @@
       },
       "reason": "large plain facade field around the arched upper window; exclude teal window glazing, foliage and cornice shadow",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "white-render",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 31,
@@ -543,7 +636,10 @@
       },
       "reason": "upper brick panels around the dormers and across the wide facade; exclude cream shopfront, signs and white trim",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 32,
@@ -560,7 +656,10 @@
       },
       "reason": "wide central upper wall plane between the vertically stacked windows; exclude dark storefront canopy and window recesses",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "brown-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 33,
@@ -568,16 +667,19 @@
       "observationId": "0363100012169621_e_17b6ps7",
       "sourceSha256": "073e168197dffe1f6c671e4db4a5e5f9101d65aef8c3d50bc3e8c52b95ece31c",
       "targetHex": "#343633",
-      "material": "painted-brick",
+      "material": "unknown",
       "materialColourFamily": "charcoal",
       "texture": {
-        "pattern": "brick-courses",
-        "scaleConfidence": "medium",
-        "notes": "near-black painted render; observed in the stated exposed wall field."
+        "pattern": "unknown",
+        "scaleConfidence": "low",
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "plain upper facade surrounding the white windows; preserve its dark charcoal appearance, excluding lit shopfront and window glass",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "unknown-neutral",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 34,
@@ -594,7 +696,10 @@
       },
       "reason": "upper wall fields between white window surrounds; side illumination is uneven and the lower shopfront is excluded",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "dark-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 35,
@@ -611,7 +716,10 @@
       },
       "reason": "upper brick field visible between branches and white window trim; foliage partially obscures the center",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 36,
@@ -619,16 +727,19 @@
       "observationId": "0363100012174520_e_1vmewhe",
       "sourceSha256": "6cc0e9a5f2607c50375b66abefb4a1100ba26a55d4d2c874564ea47d13c96310",
       "targetHex": "#342f2d",
-      "material": "painted-brick",
+      "material": "unknown",
       "materialColourFamily": "brown",
       "texture": {
-        "pattern": "brick-courses",
-        "scaleConfidence": "high",
-        "notes": "very dark brown painted facade; observed in the stated exposed wall field."
+        "pattern": "unknown",
+        "scaleConfidence": "low",
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "flat wall strips around the stacked white windows; exclude black shop sign, glazing and brightly lit doorway",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "unknown-neutral",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 37,
@@ -645,7 +756,10 @@
       },
       "reason": "small wall portions beside the central windows; tree trunk and large branches dominate the crop",
       "confidence": "low",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "brown-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 38,
@@ -653,16 +767,19 @@
       "observationId": "0363100012175000_e_1opro3y",
       "sourceSha256": "b4dff4b80c1c864ade6e924313bae0fbee188dcf621de70a5d5c57b2d60cec31",
       "targetHex": "#2d2925",
-      "material": "painted-brick",
+      "material": "unknown",
       "materialColourFamily": "charcoal",
       "texture": {
-        "pattern": "brick-courses",
-        "scaleConfidence": "high",
-        "notes": "black-brown painted facade; observed in the stated exposed wall field."
+        "pattern": "unknown",
+        "scaleConfidence": "low",
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "broad dark upper facade surrounding the white windows; exclude the illuminated signage and window reflections",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "unknown-neutral",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 39,
@@ -670,16 +787,19 @@
       "observationId": "0363100012163064_e_068m6ak",
       "sourceSha256": "105a7a024e1f8825dedb993d6dc7c2e3ef0d2442395755a2fed2732f2faa2f0f",
       "targetHex": "#94705d",
-      "material": "fired-clay-brick",
+      "material": "unknown",
       "materialColourFamily": "red-brown",
       "texture": {
-        "pattern": "brick-courses",
+        "pattern": "unknown",
         "scaleConfidence": "low",
-        "notes": "warm weathered red brick; observed in the stated exposed wall field."
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "visible upper and side wall patches between branches; heavy foliage and compression soften the brick colour",
       "confidence": "low",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 40,
@@ -687,16 +807,19 @@
       "observationId": "0363100012154205_e_1aluzx5",
       "sourceSha256": "45cbef0ded656258d6e09e1f4ae48bfbbd0b11c85ecc495198af94b22486273f",
       "targetHex": "#47605f",
-      "material": "painted-brick",
+      "material": "unknown",
       "materialColourFamily": "blue-grey",
       "texture": {
-        "pattern": "brick-courses",
-        "scaleConfidence": "high",
-        "notes": "blue-green dark brick; observed in the stated exposed wall field."
+        "pattern": "unknown",
+        "scaleConfidence": "low",
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "central facade wall around the upper windows; retain the cool teal cast while excluding window glass and balcony rails",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "unknown-neutral",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 41,
@@ -713,7 +836,10 @@
       },
       "reason": "upper wall fields beside the tall windows; crop is shaded and shopfront/railings are excluded",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "brown-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 42,
@@ -730,7 +856,10 @@
       },
       "reason": "brick panels between white-trimmed upper windows; exclude white trim, roof dormer and shop fascia",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 43,
@@ -747,7 +876,10 @@
       },
       "reason": "left and central wall fields away from the bright sun flare; direct sun washes the right side and branches cross the facade",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "dark-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 44,
@@ -755,16 +887,19 @@
       "observationId": "0363100012168980_e_1o2cn0o",
       "sourceSha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
       "targetHex": "#373834",
-      "material": "fired-clay-brick",
+      "material": "unknown",
       "materialColourFamily": "charcoal",
       "texture": {
-        "pattern": "brick-courses",
-        "scaleConfidence": "high",
-        "notes": "charcoal painted facade; observed in the stated exposed wall field."
+        "pattern": "unknown",
+        "scaleConfidence": "low",
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "uninterrupted upper wall panels surrounding the white sash windows; exclude reflective glazing, lower storefront and roof",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "dark-brick",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 45,
@@ -772,16 +907,19 @@
       "observationId": "0363100012173929_e_0dk14yr",
       "sourceSha256": "5eece14f926b008abbdd81785ccabead61e76b8ffc839dfa51d1762bbc1bdc27",
       "targetHex": "#776057",
-      "material": "painted-brick",
+      "material": "unknown",
       "materialColourFamily": "brown",
       "texture": {
-        "pattern": "brick-courses",
-        "scaleConfidence": "medium",
-        "notes": "warm taupe-brown brick; observed in the stated exposed wall field."
+        "pattern": "unknown",
+        "scaleConfidence": "low",
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "upper facade wall strips around the paired windows; trunk and branches cover the center, so avoid their shadow",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "unknown-neutral",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 46,
@@ -798,7 +936,10 @@
       },
       "reason": "plain middle facade around the broad windows; overcast shade and the parked van affect the lower portion",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "brown-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 47,
@@ -806,16 +947,19 @@
       "observationId": "0363100012174000_e_1626xz1",
       "sourceSha256": "d865fc4c1a3bc849874f149818fc8942804719e22e2d0680ab3cf1cef3266470",
       "targetHex": "#70442e",
-      "material": "painted-brick",
+      "material": "unknown",
       "materialColourFamily": "red-brown",
       "texture": {
-        "pattern": "brick-courses",
-        "scaleConfidence": "medium",
-        "notes": "dark warm red-brown brick; observed in the stated exposed wall field."
+        "pattern": "unknown",
+        "scaleConfidence": "low",
+        "notes": "Visible wall colour is usable as an apparent family only; the crop does not support a substrate or texture claim."
       },
       "reason": "upper brick field around the chimney and windows; golden sun only strikes the top, so use the shaded middle wall",
       "confidence": "medium",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "unknown-neutral",
+      "visiblySupported": false,
+      "uncertainty": "Occlusion, blur, shadow, or a smooth plane leaves the underlying material and/or course pattern indeterminate."
     },
     {
       "index": 48,
@@ -832,7 +976,10 @@
       },
       "reason": "right-side brick strips between white window frames; exclude the dark balcony rails and sky",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "red-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     },
     {
       "index": 49,
@@ -849,7 +996,10 @@
       },
       "reason": "right-side wall strips between white frames and balcony rails; exclude reflective glazing, dark metalwork and sky",
       "confidence": "high",
-      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects.",
+      "materialId": "grey-brick",
+      "visiblySupported": true,
+      "uncertainty": "Exposed wall field clearly shows the assigned apparent material family and texture."
     }
   ]
 }
