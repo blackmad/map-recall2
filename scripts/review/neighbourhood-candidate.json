@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-12T22:39:58.171Z",
+  "districtId": "da-costa-jordaan-v1",
+  "candidateReleaseId": "fac7ca8437179b1b2c74a69deed04288dc5772256a36c558fc68981e54323791",
+  "viewerUrl": "/canal-drive/city-appearance.html?area=expansion&release=fac7ca8437179b1b2c74a69deed04288dc5772256a36c558fc68981e54323791",
+  "preservedRelease": {
+    "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+    "pointerSha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9",
+    "unchanged": true
+  },
+  "inputs": {
+    "cases": {
+      "path": "public/data/facade-repair-preview/cases.json",
+      "sha256": "dc9789137abd3179c4c25d3312a0c5957a2998effb4095799c9d3a14da363df1"
+    },
+    "cachedDistrictBlock": {
+      "path": ".cache/city-appearance/districts/da-costa-jordaan-v1/e7a51599312c472206b3f4e202f9196166aae1584b579df1ba26f43a46cbbfa7/block.json",
+      "sha256": "e7a51599312c472206b3f4e202f9196166aae1584b579df1ba26f43a46cbbfa7"
+    },
+    "costLedger": {
+      "sha256": "306a150000ee695590c3cd77721283c092a96cbaf55fd3705c826c0001387be6",
+      "changed": false,
+      "paidCalls": 0
+    }
+  },
+  "coverage": {
+    "geometryBuildings": 7395,
+    "baselineObservations": 598,
+    "candidateObservations": 608,
+    "candidatePreviewCases": 25,
+    "candidatePreviewBuildings": 25,
+    "candidatePreviewWallObservations": 35,
+    "candidatePreviewSourceTiers": 70,
+    "compiledFacadeFeatures": {
+      "baseline": {
+        "windows": 117246,
+        "doors": 5513,
+        "signs": 307
+      },
+      "candidate": {
+        "windows": 117124,
+        "doors": 5612,
+        "signs": 229
+      },
+      "delta": {
+        "windows": -122,
+        "doors": 99,
+        "signs": -78
+      }
+    }
+  },
+  "evidenceStatus": {
+    "geometry": "district-wide cached source geometry",
+    "candidateFacades": "source-hash/date/dimension-bound native crop-plane preview",
+    "metricRegistrationAccepted": 0,
+    "photographicFidelity": "not accepted"
+  },
+  "omissions": [
+    {
+      "caseId": "case-09",
+      "address": "Rozengracht 228",
+      "reason": "No usable published facade surface"
+    },
+    {
+      "caseId": "case-26",
+      "address": "Elandsgracht 150",
+      "reason": "No usable published facade surface"
+    },
+    {
+      "caseId": "case-30",
+      "address": "Rozengracht 212",
+      "sourceObservationId": "0363100012174564_e_14yoqnp",
+      "reason": "candidate-description-has-no-usable-source-tier"
+    }
+  ],
+  "blockedGates": [
+    "metric registration: 0 accepted",
+    "held-out precision/recall not evaluated",
+    "photographic visual acceptance not passed",
+    "14-camera candidate runtime not completed",
+    "original twelve image-numbered examples remain outstanding"
+  ],
+  "publication": {
+    "stagedOnly": true,
+    "activated": false,
+    "releasePath": "public/data/city-expansion/releases/fac7ca8437179b1b2c74a69deed04288dc5772256a36c558fc68981e54323791/manifest.json"
+  }
+}

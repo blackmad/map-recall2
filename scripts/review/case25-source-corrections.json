@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "coordinateConvention": "Native full-crop pixel edges; origin at top left. Approximate visual measurements from the dated source photograph.",
+  "cases": [
+    {
+      "caseId": "case-25",
+      "tier": "full",
+      "source": {
+        "sha256": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+        "captureDate": "2025-07-03T08:57:54Z",
+        "width": 255,
+        "height": 697
+      },
+      "silhouetteTopPx": [[0,66],[128,66],[255,66]],
+      "replace": {
+        "full:w1": {"head":"rectangular","archRise":null,"transom":0.4,"mullionScope":"below-transom","mullions":[0.5],"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2},
+        "full:w2": {"head":"rectangular","archRise":null,"transom":0.4,"mullionScope":"below-transom","mullions":[0.5],"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2},
+        "full:w3": {"head":"rectangular","archRise":null,"transom":0.4,"mullionScope":"below-transom","mullions":[0.5],"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2},
+        "full:w4": {"head":"rectangular","archRise":null,"transom":0.31,"mullionScope":"below-transom","mullions":[0.5],"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2},
+        "full:w5": {"head":"rectangular","archRise":null,"transom":0.31,"mullionScope":"below-transom","mullions":[0.5],"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2},
+        "full:w6": {"head":"rectangular","archRise":null,"transom":0.31,"mullionScope":"below-transom","mullions":[0.5],"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2},
+        "full:w7": {"head":"rectangular","archRise":null,"transom":0.31,"mullionScope":"below-transom","mullions":[0.5],"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2},
+        "full:w8": {"head":"rectangular","archRise":null,"transom":0.31,"mullionScope":"below-transom","mullions":[0.5],"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2},
+        "full:w9": {"head":"rectangular","archRise":null,"transom":0.31,"mullionScope":"below-transom","mullions":[0.5],"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2}
+      },
+      "add": [
+        {"id":"full:review:cornice","kind":"material","bounds":[0,69,255,116],"material":"paint","region":"cornice","colour":"#c8cabd"},
+        {"id":"full:review:band-1-left","kind":"material","bounds":[0,143,34,152],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-1-middle-a","kind":"material","bounds":[76,143,110,152],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-1-middle-b","kind":"material","bounds":[152,143,186,152],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-1-right","kind":"material","bounds":[228,143,255,152],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-2-left","kind":"material","bounds":[0,280,34,290],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-2-middle-a","kind":"material","bounds":[76,280,110,290],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-2-middle-b","kind":"material","bounds":[152,280,186,290],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-2-right","kind":"material","bounds":[228,280,255,290],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-3-left","kind":"material","bounds":[0,429,34,439],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-3-middle-a","kind":"material","bounds":[76,429,110,439],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-3-middle-b","kind":"material","bounds":[152,429,186,439],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:band-3-right","kind":"material","bounds":[228,429,255,439],"material":"paint","region":"masonry-band","colour":"#c8cabd"},
+        {"id":"full:review:sill-1a","kind":"material","bounds":[31,211,80,220],"material":"paint","region":"sill","colour":"#c8cabd"},
+        {"id":"full:review:sill-1b","kind":"material","bounds":[107,211,157,220],"material":"paint","region":"sill","colour":"#c8cabd"},
+        {"id":"full:review:sill-1c","kind":"material","bounds":[183,211,233,220],"material":"paint","region":"sill","colour":"#c8cabd"},
+        {"id":"full:review:sill-2a","kind":"material","bounds":[31,357,80,367],"material":"paint","region":"sill","colour":"#c8cabd"},
+        {"id":"full:review:sill-2b","kind":"material","bounds":[107,357,157,367],"material":"paint","region":"sill","colour":"#c8cabd"},
+        {"id":"full:review:sill-2c","kind":"material","bounds":[183,357,233,367],"material":"paint","region":"sill","colour":"#c8cabd"},
+        {"id":"full:review:sill-3a","kind":"material","bounds":[31,504,80,514],"material":"paint","region":"sill","colour":"#c8cabd"},
+        {"id":"full:review:sill-3b","kind":"material","bounds":[107,504,157,514],"material":"paint","region":"sill","colour":"#c8cabd"},
+        {"id":"full:review:sill-3c","kind":"material","bounds":[183,504,233,514],"material":"paint","region":"sill","colour":"#c8cabd"}
+      ],
+      "reason": "The photographed roof is flat behind a pale cornice; no gable is inferred. The observed wall top is a flat line near y66; the higher cropped cornice at the far right belongs to the neighbouring building and is excluded. Pale rendered masonry comprises the upper cornice, interrupted horizontal belt courses that stop at glazing, and individual sill ledges. The visible upper three rows of glazing have rectangular heads; the shallow segmental forms above them are brick arches outside the window openings. Source-space study only; no metric placement or depth claim."
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "kind": "next-stage-release-readiness",
+  "generatedAt": "2026-09-12T22:04:00Z",
+  "status": "blocked",
+  "scope": "bounded development evidence; no release activation or route expansion",
+  "candidate": {
+    "releaseId": null,
+    "previewOnly": true,
+    "cases": {
+      "path": "public/data/facade-repair-preview/cases.json",
+      "sha256": "3fa8f98ebfe5f73e6c1cd450aa35936bcb16a20d9e3e13939d7c6ef45617616b",
+      "reviewedCases": 28,
+      "analyzedCases": 27,
+      "analyzedTiers": 54,
+      "sourceIdentityAbstentions": ["case-26"]
+    },
+    "checks": {
+      "path": "public/data/facade-repair-preview/checks.json",
+      "sha256": "ad22775fc2e234d2c2505a365eab7788cea1d1a1f5f57103b511aebf0b8aa61a",
+      "candidateDataSha256": "3fa8f98ebfe5f73e6c1cd450aa35936bcb16a20d9e3e13939d7c6ef45617616b"
+    },
+    "compiledSourceStudies": {
+      "containerPath": "public/data/facade-repair-preview/cases.json",
+      "containerSha256": "3fa8f98ebfe5f73e6c1cd450aa35936bcb16a20d9e3e13939d7c6ef45617616b",
+      "jsonPointers": "/cases/*/shapeStudy",
+      "canonicalSha256": "b0ac6d4671c876711e040321c6f133c15c14488dbbff831dfd05ad2b5ab06ffc",
+      "canonicalization": "SHA-256 of UTF-8 JSON for [{caseId,shapeStudy}], keys recursively sorted, compact separators, Unicode preserved",
+      "tierCount": 54,
+      "featureCounts": {
+        "door": 68,
+        "window": 340,
+        "awning": 10,
+        "material": 90,
+        "fascia": 8,
+        "total": 516
+      },
+      "status": "source-space-development-preview"
+    },
+    "captures": {
+      "path": "public/data/facade-repair-preview/captures.json",
+      "sha256": "066e635dfd60ce15cbaa3d571de759cfa242a26053ce4538e6d8ea0fea36de52",
+      "candidateDataSha256": "3fa8f98ebfe5f73e6c1cd450aa35936bcb16a20d9e3e13939d7c6ef45617616b",
+      "count": 94,
+      "errors": 0,
+      "scope": "local development preview only"
+    },
+    "provenance": {
+      "path": "public/data/facade-repair-preview/provenance.json",
+      "sha256": "9ac3b77c8b449a555d3e0c0b245961850a2d8b990577bd3133f5941d83f80f1f"
+    }
+  },
+  "evidence": {
+    "frozenUserNotes": {
+      "path": ".cache/city-appearance/review-notes/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d.json",
+      "sha256": "e92aedf0191fb1912a5c34129e335d8bc0146a38b71401d4c036892cec59bad1",
+      "noteCount": 28
+    },
+    "independentGroundReferences": {
+      "path": "scripts/city-appearance/fidelity/independent-reference-measurements.json",
+      "sha256": "23940be99a7e04cef71c3284c2cc2908f267848488adaf39538f9e661f8d6aee",
+      "scope": "partial ground-tier agent annotations; not full-facade certification"
+    },
+    "developmentShapeReference": {
+      "path": "scripts/review/window-shape-reference.json",
+      "sha256": "3342871ec78aed9203776492dd6e0bbf396e9ec76a12581831977defbdc451e8"
+    },
+    "nextStageSourceReview": {
+      "path": "scripts/review/next-stage-source-review.json",
+      "sha256": "b122527198ee86f6df4a797c9fa46891b85ab58effc939d6dc92cda759dae46c"
+    },
+    "nextStageRegistration": {
+      "path": "scripts/review/next-stage-registration.json",
+      "sha256": "a1f2f8a388f5611cf4517c39eda9e46c22632c590c28f827be0323742e5b408b",
+      "diagnosticCases": 5,
+      "diagnosticTiers": 10,
+      "acceptedMetricRegistrations": 0,
+      "maximumAcceptedUncertaintyM": 0.15
+    },
+    "case17TemporalComposite": {
+      "path": "scripts/review/next-stage-temporal.json",
+      "sha256": "b407b4b275f0bc1e69b53fa5395360b7ac3162f41dac3fa3f2d04b18413f3508",
+      "sourceSpaceAccepted": true,
+      "metricAccepted": false,
+      "previewOnly": true,
+      "stableFeatures": 12
+    },
+    "visualReview": {
+      "path": "public/data/facade-repair-preview/next-stage-visual-review.json",
+      "sha256": "b52e53a086e1ef272b0de05330408439d923d57219bb8f4966fb43b99757259c",
+      "candidateDataSha256": "3fa8f98ebfe5f73e6c1cd450aa35936bcb16a20d9e3e13939d7c6ef45617616b",
+      "inspectedComparisons": 5,
+      "accepted": false
+    },
+    "heldoutExclusions": {
+      "path": "scripts/review/facade-regression-heldout-exclusions.json",
+      "sha256": "20f1d7847cce702d4c80fe8802a6d08f3af444e4d15f03f90fcdbfb71ff3940a",
+      "excludedReviewedBuildings": 28,
+      "actualPriorOverlapCount": 1,
+      "remainingCandidates": 29,
+      "certification": "not-certified"
+    }
+  },
+  "cost": {
+    "globalLedger": {
+      "path": ".cache/city-appearance/spend.json",
+      "sha256": "306a150000ee695590c3cd77721283c092a96cbaf55fd3705c826c0001387be6",
+      "settledEntries": 1053,
+      "unresolvedEntries": 0,
+      "settledUsd": 1.8065436345
+    },
+    "extractionPhaseLedger": {
+      "path": ".cache/city-appearance/fidelity-extraction/phase-budget.json",
+      "sha256": "53108b8a390ab117f1355dc2980b7f54f00cbb2c8b0abec06711526f5300179c",
+      "settledEntries": 59,
+      "unresolvedEntries": 0,
+      "developmentSettledUsd": 0.1013381325
+    },
+    "additionalAuthorizationUsd": 3,
+    "additionalAuthorizationRemainingUsd": 2.8986618675,
+    "cumulativeCeilingUsd": 5,
+    "cumulativeCeilingRemainingUsd": 3.1934563655,
+    "nextStageAdditionalSpendUsd": 0
+  },
+  "preservedRelease": {
+    "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+    "pointer": {
+      "path": "public/data/city-expansion/current.json",
+      "sha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9"
+    },
+    "manifest": {
+      "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/manifest.json",
+      "sha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9"
+    },
+    "activatedCandidate": false
+  },
+  "gates": {
+    "metricRegistration": {
+      "passed": false,
+      "accepted": 0,
+      "reason": "No diagnostic tier has a verified registration certificate, resolved datum and camera height with uncertainty at or below 0.15 m."
+    },
+    "heldoutEvaluation": {
+      "passed": false,
+      "certified": false,
+      "reason": "The one overlapping reviewed building was retired, leaving 29 candidates; the thirty-case held-out set has not been replenished and certified."
+    },
+    "photographicFidelity": {
+      "passed": false,
+      "quantitativePrecisionRecallClaimed": false,
+      "reason": "All five current agent-inspected comparisons explicitly fail photographic acceptance."
+    },
+    "bothViewers": {
+      "passed": false,
+      "reason": "The 94 captures exercise the development preview surface and do not constitute inspected captures from both production viewers."
+    },
+    "candidateRuntime14Cameras": {
+      "passed": false,
+      "completed": false,
+      "reason": "The new candidate has not completed the required fourteen desktop/phone camera run with texture-inclusive memory, clearance, deterministic compilation and disposal/rehydration checks."
+    },
+    "publication": {
+      "passed": false,
+      "activated": false
+    },
+    "routeExpansion": {
+      "passed": false,
+      "started": false
+    }
+  },
+  "nextStageChanges": {
+    "case17": "A source-hash/date/dimension-bound architecture composite recovers stable source-space openings; metric placement remains blocked.",
+    "case20": "A source-informed dormer silhouette is present in the full source study; roof surround, balconies and masonry detail remain incomplete.",
+    "case22": "A source-informed stepped gable silhouette is present; masonry piers/window surrounds still merge and balconies are missing."
+  },
+  "originalTwelve": {
+    "status": "outstanding",
+    "replacementCasesReproduceOriginals": false
+  },
+  "decision": {
+    "publish": false,
+    "expand": false,
+    "retainPreservedRelease": true
+  }
+}

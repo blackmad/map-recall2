@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "reviewType": "source-first-photograph-inspection",
+  "reviewer": "agent source inspection",
+  "reviewedBeforeRenderInspection": true,
+  "paidExtraction": false,
+  "precisionPolicy": "Pixel bounds are recorded only for the requested roof studies where the silhouette is visibly recoverable; other observations remain qualitative.",
+  "cases": [
+    {
+      "caseId": "case-13",
+      "address": "Da Costakade 116",
+      "sources": {
+        "full": {"sha256": "1b487142a5367681040c06dae3c6f3ae75f2db1e73a65badd1199b171f27474c", "captureDate": "2023-01-12T09:08:43.325110Z", "width": 296, "height": 984},
+        "ground": {"sha256": "2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce", "captureDate": "2025-07-31T11:09:12Z", "width": 723, "height": 539}
+      },
+      "visible": ["Full crop shows a narrow brick frontage with a central gable or raised roof detail, repeated tall white-trimmed windows, and a lower entrance/shop zone partly hidden by trees and vehicles.", "Ground crop shows two adjacent dark entrance doors at left, a small lower window partly hidden by a tree, one large white-trimmed window at right, and stone base/plinth."],
+      "inferred": ["The ground crop may be the lower part of the full frontage, but the tree and different framing prevent a confident tier-to-tier opening correspondence."],
+      "unresolved": ["Exact three-column upper layout and whether the visible ground doors belong to the same photographed interval remain unresolved."]
+    },
+    {
+      "caseId": "case-18",
+      "address": "Rozengracht 230",
+      "sources": {
+        "full": {"sha256": "cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6", "captureDate": "2022-12-15T09:04:08.001450Z", "width": 277, "height": 914},
+        "ground": {"sha256": "14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d", "captureDate": "2022-05-02T06:43:16.723290Z", "width": 677, "height": 539}
+      },
+      "visible": ["Full crop shows a bright yellow/orange ornate gabled building with arched window heads and circular façade details, partly blocked by a transit sign and a dark foreground structure.", "Ground crop shows a brick frontage under construction fencing, with a recessed dark door at left, a broad pale painted/stone lower band, large dark windows, and a small numbered plaque."],
+      "inferred": ["The ground crop could be a lower frontage view, but no unique full-crop ornament is visible in it."],
+      "unresolved": ["Full and ground identity cannot be certified from these two crops alone; the apparent façade material and construction state differ substantially."]
+    },
+    {
+      "caseId": "case-21",
+      "address": "Lauriergracht 50",
+      "sources": {
+        "full": {"sha256": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5", "captureDate": "2023-02-13T10:59:09.853930Z", "width": 266, "height": 864},
+        "ground": {"sha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9", "captureDate": "2025-07-03T09:50:55Z", "width": 650, "height": 539}
+      },
+      "visible": ["Full crop shows a narrow yellow brick building with a rounded stepped/crowned top, one small upper window, three repeated rows of white-trimmed windows, a ground-level shop/display and a door.", "Ground crop shows a grey-brick recessed storefront with two dark side doors, a wide central dark glazed opening, and a projecting sign reading De Fietsenmaker."],
+      "inferred": ["The ground opening arrangement is compatible with a shopfront interval, but the full crop's yellow brick and crown are not visible in the ground crop."],
+      "unresolved": ["Do not bind the full and ground tiers as one frontage without additional identity evidence."]
+    },
+    {
+      "caseId": "case-24",
+      "address": "Da Costakade 113",
+      "sources": {
+        "full": {"sha256": "d41fbad9b2cab955a11725296c74f17d65e9e36907763f86eaf1396467186ebb", "captureDate": "2023-01-10T10:49:47.057940Z", "width": 213, "height": 721},
+        "ground": {"sha256": "59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0", "captureDate": "2025-07-03T11:32:36Z", "width": 521, "height": 539}
+      },
+      "visible": ["Full crop shows a narrow red-brick stepped/gabled frontage, decorative brickwork, vertically stacked white-trimmed windows, and two dark ground-level doors flanking a shop/display bay.", "Ground crop shows the lower shop bay with a carved wood door at left, a broad glazed display opening, a black door at right, pale trim, and upper white-trimmed windows."],
+      "inferred": ["The ground crop is consistent with the lower portion of the full crop because the paired doors, central display, brick/white trim, and narrow frontage repeat."],
+      "unresolved": ["Upper roof ornament is partly outside the ground crop; exact tier alignment remains unmeasured."]
+    },
+    {
+      "caseId": "case-17",
+      "address": "De Clercqstraat 90",
+      "sources": {
+        "full": {"sha256": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5", "captureDate": "2023-01-10T10:44:05.176090Z", "width": 377, "height": 893},
+        "ground": {"sha256": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071", "captureDate": "2024-12-11T11:16:00Z", "width": 922, "height": 539}
+      },
+      "visible": ["Full crop shows a brick upper frontage with repeated rectangular bay windows, projecting balconies, a roof-level dormer/gable, and a lower shop zone.", "Ground crop shows a dark shopfront with one broad display pane, a recessed door at right, a deep fascia/awning band, and one large upper window row."],
+      "inferred": ["The lower crop supports one broad ground glazing feature rather than a subdivided window grid."],
+      "unresolved": ["Balcony and upper-window correspondence is not recoverable from the ground crop."]
+    },
+    {
+      "caseId": "case-20",
+      "address": "De Clercqstraat 74",
+      "sources": {
+        "full": {"sha256": "c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0", "captureDate": "2023-01-12T09:15:50.506690Z", "width": 283, "height": 811},
+        "ground": {"sha256": "26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119", "captureDate": "2025-06-18T10:05:19Z", "width": 692, "height": 539}
+      },
+      "visible": ["Full crop shows a dark brick frontage with three vertical rows of tall rectangular windows, stacked balconies at the centre, a projecting dormer/gable at the roofline, and a ground shop window flanked by doors.", "Ground crop shows two side doors and a broad central glazed shop opening, with a raised threshold/base."],
+      "roofStudy": {"silhouette": "visible but partly cropped/occluded", "frontSilhouettePxApprox": [[0,184],[68,184],[73,138],[126,99],[169,133],[153,184],[263,184]], "mainRoofLowerFillPxApprox": [0,148,263,188], "dormerGableSurroundPxApprox": [[73,138],[126,99],[169,133],[153,184],[68,184]], "dormerOpeningBoundsPxApprox": [94,148,143,183], "dormerHead": "pitched/triangular surround with a visible opening; lower glazing partly obscured", "confidence": "root-verified and agent-reviewed source-pixel approximation; not a metric registration", "excludedArtifacts": ["crane/sky/neighbor elements outside the frontage silhouette"]},
+      "inferred": ["The dormer is a roof-level projecting element, not another façade window; balconies should remain separate from opening counts."],
+      "unresolved": ["Exact roof edge behind tree/sky noise and the full shop-door widths are not measurable from this crop."]
+    },
+    {
+      "caseId": "case-22",
+      "address": "Da Costakade 118",
+      "sources": {
+        "full": {"sha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70", "captureDate": "2023-01-12T09:08:29.970310Z", "width": 296, "height": 936},
+        "ground": {"sha256": "e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d", "captureDate": "2025-07-31T11:09:13Z", "width": 723, "height": 539}
+      },
+      "roofStudy": {"silhouette": "clearly visible stepped gable", "stepOutlinePxApprox": [[0,210],[26,210],[28,168],[53,168],[57,125],[72,125],[75,94],[132,96],[129,128],[149,128],[146,174],[176,174],[171,217],[207,220],[204,247],[296,251]], "topWindowBoundsPxApprox": [75,205,128,249], "topWindowHead": "rectangular", "confidence": "root-verified and agent-reviewed source-pixel approximation; not a metric registration"},
+      "fullOpeningCorrections": {
+        "coordinateSpace": "native full crop pixels, origin top-left, approximate visible bounds",
+        "sourceInspection": "agent source inspection; opening rectangles are approximate because of blur, tree/vehicle occlusion, balconies, and shadow",
+        "topWindow": {"kind": "window", "boundsPxApprox": [75,205,128,249], "head": "rectangular", "glazing": "flat visible pane"},
+        "leftThreeBayRows": [
+          {"level": "upper", "yRangeApprox": [286,377], "openings": [
+            {"position": "left", "kind": "window", "boundsPxApprox": [35,287,70,378], "head": "flat/obscured by blind"},
+            {"position": "centre", "kind": "window", "boundsPxApprox": [76,286,132,380], "head": "flat/obscured by balcony"},
+            {"position": "right", "kind": "window", "boundsPxApprox": [145,286,178,378], "head": "flat/obscured by blind"}
+          ]},
+          {"level": "middle", "yRangeApprox": [425,554], "openings": [
+            {"position": "left", "kind": "window", "boundsPxApprox": [35,425,70,555], "head": "flat/obscured by blind"},
+            {"position": "centre", "kind": "window", "boundsPxApprox": [76,425,132,555], "head": "flat/obscured by balcony"},
+            {"position": "right", "kind": "window", "boundsPxApprox": [145,425,178,555], "head": "flat/obscured by blind"}
+          ]},
+          {"level": "lower", "yRangeApprox": [586,715], "openings": [
+            {"position": "left", "kind": "window", "boundsPxApprox": [35,586,70,715], "head": "flat"},
+            {"position": "centre", "kind": "window", "boundsPxApprox": [76,586,132,715], "head": "flat/obscured by balcony"},
+            {"position": "right", "kind": "window", "boundsPxApprox": [145,586,178,715], "head": "flat"}
+          ]},
+          {"level": "ground", "yRangeApprox": [747,871], "openings": [
+            {"position": "left", "kind": "door-or-window", "boundsPxApprox": [35,747,72,870], "head": "flat", "classification": "uncertain behind shadow"},
+            {"position": "centre", "kind": "window-or-shop-glazing", "boundsPxApprox": [76,747,133,870], "head": "flat", "classification": "glazing visible; entrance function uncertain"},
+            {"position": "right", "kind": "window-or-sidelight", "boundsPxApprox": [145,747,179,870], "head": "flat", "classification": "uncertain behind shadow"}
+          ]}
+        ],
+        "rightBayRows": [
+          {"level": "upper", "kind": "window", "boundsPxApprox": [216,286,270,378], "head": "segmental masonry surround; flat glazing"},
+          {"level": "middle", "kind": "window", "boundsPxApprox": [216,425,270,555], "head": "segmental masonry surround; flat glazing"},
+          {"level": "lower", "kind": "window", "boundsPxApprox": [216,586,270,715], "head": "segmental masonry surround; flat glazing"},
+          {"level": "ground", "kind": "door", "boundsPxApprox": [211,746,273,873], "head": "segmental masonry surround", "classification": "single dark entrance leaf visible; surrounding arch is masonry, not glazing"}
+        ],
+        "masonryHeadRule": "Segmental brick/masonry arches above the right-bay windows and entrance are head shapes, not additional openings; central balconies obscure portions of the flat window rectangles."
+      },
+      "visible": ["Full crop shows a stepped brick gable, a small rectangular top window, repeated vertical windows with arched masonry heads on the right bay, balconies on the central bay, and a ground door/display zone.", "Ground crop shows a red-brick lower frontage with three tall glazed openings and a paired dark entrance at right, with a raised grey base."],
+      "inferred": ["The stepped gable and top window are distinct roof/upper-wall features and should not be reconstructed as a flat window grid."],
+      "unresolved": ["The ground crop does not expose the stepped roof or enough upper façade to verify all full-crop opening correspondence."]
+    },
+    {
+      "caseId": "case-14",
+      "address": "Elandsgracht 19",
+      "sources": {
+        "full": {"sha256": "db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558", "captureDate": "2024-12-16T09:30:08Z", "width": 263, "height": 782},
+        "ground": {"sha256": "5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115", "captureDate": "2025-06-30T05:28:42Z", "width": 643, "height": 539}
+      },
+      "visible": ["Full crop is a narrow red-brick ornate gabled frontage seen through heavy tree branches, with repeated white-trimmed windows and a lower shop/entrance zone.", "Ground crop is a wider blue-grey/stone-trimmed frontage with four upper windows, two black doors, and a projecting horizontal ledge."],
+      "identityAssessment": "unresolved-likely-mixed-frontage",
+      "inferred": ["The two crops share no reliable visible façade marker; same address label alone is insufficient to bind them."],
+      "unresolved": ["Seek another dated crop or wall-interval evidence before using these tiers together for geometry or source annotation."]
+    }
+  ]
+}

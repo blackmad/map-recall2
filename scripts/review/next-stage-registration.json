@@ -1,0 +1,1287 @@
+{
+  "version": 1,
+  "kind": "next-stage-registration-diagnostic",
+  "maxAcceptedUncertaintyM": 0.15,
+  "canonicalDatum": "surface-base",
+  "pixelConvention": "pixel-edge",
+  "generatedAt": "2026-09-12T21:42:41.602Z",
+  "cases": [
+    {
+      "caseId": "case-13",
+      "buildingId": "0363100012156117",
+      "geometryRevision": "89e8821653ad0edae36c08339a4b9d81b6ec0ead2474ced228fbf50336d2d463",
+      "sourceIdentity": {
+        "full": {
+          "resolved": true,
+          "manifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+          "observationId": "0363100012156117_e_0qekj2q",
+          "buildingId": "0363100012156117",
+          "hash": "1b487142a5367681040c06dae3c6f3ae75f2db1e73a65badd1199b171f27474c",
+          "fileHashVerified": true
+        },
+        "ground": {
+          "resolved": true,
+          "manifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+          "observationId": "0363100012156117_e_0qekj2q",
+          "buildingId": "0363100012156117",
+          "hash": "2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce",
+          "fileHashVerified": true
+        }
+      },
+      "tiers": {
+        "full": {
+          "status": "ambiguous",
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022208509679287475,
+              0,
+              -0.12641767048352698,
+              0,
+              -0.022225609755340388,
+              21.56999999925494,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 2,
+            "wallDirection": [
+              -0.38143397173001886,
+              0.9243960867562472
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": true,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          },
+          "source": {
+            "cropSha256": "1b487142a5367681040c06dae3c6f3ae75f2db1e73a65badd1199b171f27474c",
+            "captureDate": "2023-01-12T09:08:43.325110Z",
+            "dimensions": {
+              "width": 296,
+              "height": 984
+            },
+            "plane": {
+              "start": {
+                "x": 119926.13115342775,
+                "y": 486904.6234346891
+              },
+              "end": {
+                "x": 119923.62371373201,
+                "y": 486910.70015468344
+              },
+              "baseZ": -0.24999999925494193,
+              "topZ": 21.619999999999997
+            },
+            "pose": {
+              "x": 119941.04486829163,
+              "y": 486948.9162497055,
+              "z": 3.8745744600891996,
+              "headingDeg": 246.608865851466,
+              "pitchDeg": 0.716027612013724,
+              "rollDeg": -0.900736835550849
+            },
+            "datum": "published-minus-43.5m; track-unsolved",
+            "heightInferred": false,
+            "standoffM": 30.680964009959474,
+            "obliquityDeg": 46.17747685542592
+          },
+          "geometryBinding": {
+            "directEndpointErrorM": 0,
+            "reverseEndpointErrorM": 6.320883524102038,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0
+          },
+          "planeVsNativeWall": {
+            "directEndpointErrorM": 0.12641767048352695,
+            "reverseEndpointErrorM": 6.447301194585565,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0.12641767048352695
+          },
+          "derivation": {
+            "wallDirection": [
+              -0.38143397173001886,
+              0.9243960867562472
+            ],
+            "wallLengthM": 6.320883524102038,
+            "planeAlongM": [
+              -0.12641767048352698,
+              6.447301194585565
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "missingEvidence": [
+            "independent pixel boundary correspondences",
+            "independent roofline correspondence",
+            "resolved camera height / vertical datum",
+            "measured registration uncertainty at or below 0.15 m"
+          ],
+          "visualReview": "Tree canopy masks the roofline and left wall boundary; native full pose datum is track-unsolved."
+        },
+        "ground": {
+          "status": "ambiguous",
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009092280587924056,
+              0,
+              -0.12641767048352698,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 2,
+            "wallDirection": [
+              -0.38143397173001886,
+              0.9243960867562472
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": true,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          },
+          "source": {
+            "cropSha256": "2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce",
+            "captureDate": "2025-07-31T11:09:12Z",
+            "dimensions": {
+              "width": 723,
+              "height": 539
+            },
+            "plane": {
+              "start": {
+                "x": 119926.13115342775,
+                "y": 486904.6234346891
+              },
+              "end": {
+                "x": 119923.62371373201,
+                "y": 486910.70015468344
+              },
+              "baseZ": -0.24999999925494193,
+              "topZ": 4.650000000745058
+            },
+            "pose": {
+              "x": 119930.77093335707,
+              "y": 486910.9002947272,
+              "z": 2.4000000008940696,
+              "headingDeg": 0,
+              "pitchDeg": 0,
+              "rollDeg": 0
+            },
+            "datum": "ground-plus-2.44m; approximate",
+            "heightInferred": true,
+            "standoffM": 6.683202064377578,
+            "obliquityDeg": 6.366423701859756
+          },
+          "geometryBinding": {
+            "directEndpointErrorM": 0,
+            "reverseEndpointErrorM": 6.320883524102038,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0
+          },
+          "planeVsNativeWall": {
+            "directEndpointErrorM": 0.12641767048352695,
+            "reverseEndpointErrorM": 6.447301194585565,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0.12641767048352695
+          },
+          "derivation": {
+            "wallDirection": [
+              -0.38143397173001886,
+              0.9243960867562472
+            ],
+            "wallLengthM": 6.320883524102038,
+            "planeAlongM": [
+              -0.12641767048352698,
+              6.447301194585565
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "missingEvidence": [
+            "independent pixel boundary correspondences",
+            "independent roofline correspondence",
+            "resolved camera height / vertical datum",
+            "measured registration uncertainty at or below 0.15 m"
+          ],
+          "visualReview": "Tree and lamp mask designated wall/pavement correspondences; camera height is inferred."
+        }
+      }
+    },
+    {
+      "caseId": "case-14",
+      "buildingId": "0363100012173872",
+      "geometryRevision": "1b94e5da5925c8c6e0deea6c2c200585934689c3df3d119d0e3dd205e2b9bbb6",
+      "sourceIdentity": {
+        "full": {
+          "resolved": true,
+          "manifest": ".cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/manifest.json",
+          "observationId": "0363100012173872_e_0te7ad0",
+          "buildingId": "0363100012173872",
+          "hash": "db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558",
+          "fileHashVerified": true
+        },
+        "ground": {
+          "resolved": true,
+          "manifest": ".cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/manifest.json",
+          "observationId": "0363100012173872_e_0te7ad0",
+          "buildingId": "0363100012173872",
+          "hash": "5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115",
+          "fileHashVerified": true
+        }
+      },
+      "tiers": {
+        "full": {
+          "status": "ambiguous",
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022240804263070502,
+              0,
+              -0.11248714464909779,
+              0,
+              -0.02222890027191328,
+              17.083000012636184,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.8854344778131918,
+              -0.46476422570985426
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": true,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          },
+          "source": {
+            "cropSha256": "db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558",
+            "captureDate": "2024-12-16T09:30:08Z",
+            "dimensions": {
+              "width": 263,
+              "height": 782
+            },
+            "plane": {
+              "start": {
+                "x": 120563.72550207475,
+                "y": 486996.60257851344
+              },
+              "end": {
+                "x": 120558.54630227375,
+                "y": 486993.88401847804
+              },
+              "baseZ": 0.15699998736381532,
+              "topZ": 17.54
+            },
+            "pose": {
+              "x": 120570.68190250218,
+              "y": 487024.9912986046,
+              "z": 3.1549999737739562,
+              "headingDeg": -118.4016469597489,
+              "pitchDeg": 1.5056389192776887,
+              "rollDeg": -0.049962606274817745
+            },
+            "datum": "ground-plus-2.44m; approximate",
+            "heightInferred": true,
+            "standoffM": 21.903265491296146,
+            "obliquityDeg": 45.48616783134097
+          },
+          "geometryBinding": {
+            "directEndpointErrorM": 0,
+            "reverseEndpointErrorM": 5.624357231889346,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0
+          },
+          "planeVsNativeWall": {
+            "directEndpointErrorM": 0.11248714464909777,
+            "reverseEndpointErrorM": 5.736844376538444,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0.11248714464909777
+          },
+          "derivation": {
+            "wallDirection": [
+              -0.8854344778131918,
+              -0.46476422570985426
+            ],
+            "wallLengthM": 5.624357231889346,
+            "planeAlongM": [
+              -0.11248714464909779,
+              5.7368443765384445
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "missingEvidence": [
+            "independent pixel boundary correspondences",
+            "independent roofline correspondence",
+            "resolved camera height / vertical datum",
+            "measured registration uncertainty at or below 0.15 m"
+          ],
+          "visualReview": "Identity resolved by exact source hash, but source registration remains unverified."
+        },
+        "ground": {
+          "status": "ambiguous",
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.00909693860215792,
+              0,
+              -0.11248714464909779,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 3,
+            "wallDirection": [
+              -0.8854344778131918,
+              -0.46476422570985426
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": true,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          },
+          "source": {
+            "cropSha256": "5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115",
+            "captureDate": "2025-06-30T05:28:42Z",
+            "dimensions": {
+              "width": 643,
+              "height": 539
+            },
+            "plane": {
+              "start": {
+                "x": 120563.72550207475,
+                "y": 486996.60257851344
+              },
+              "end": {
+                "x": 120558.54630227375,
+                "y": 486993.88401847804
+              },
+              "baseZ": 0.15699998736381532,
+              "topZ": 5.056999987363815
+            },
+            "pose": {
+              "x": 120556.86690254722,
+              "y": 487000.44529847766,
+              "z": 2.8359999978542327,
+              "headingDeg": 0,
+              "pitchDeg": 0,
+              "rollDeg": 0
+            },
+            "datum": "ground-plus-2.44m; approximate",
+            "heightInferred": true,
+            "standoffM": 6.590108443761329,
+            "obliquityDeg": 11.678907522357573
+          },
+          "geometryBinding": {
+            "directEndpointErrorM": 0,
+            "reverseEndpointErrorM": 5.624357231889346,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0
+          },
+          "planeVsNativeWall": {
+            "directEndpointErrorM": 0.11248714464909777,
+            "reverseEndpointErrorM": 5.736844376538444,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0.11248714464909777
+          },
+          "derivation": {
+            "wallDirection": [
+              -0.8854344778131918,
+              -0.46476422570985426
+            ],
+            "wallLengthM": 5.624357231889346,
+            "planeAlongM": [
+              -0.11248714464909779,
+              5.7368443765384445
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "missingEvidence": [
+            "independent pixel boundary correspondences",
+            "independent roofline correspondence",
+            "resolved camera height / vertical datum",
+            "measured registration uncertainty at or below 0.15 m"
+          ],
+          "visualReview": "Identity resolved by exact source hash, but source registration remains unverified."
+        }
+      }
+    },
+    {
+      "caseId": "case-18",
+      "buildingId": "0363100012169823",
+      "geometryRevision": "00fb42b7a405fd68e10be2618d1ee5eacca2aec3b1140667a99d4812a3c04104",
+      "sourceIdentity": {
+        "full": {
+          "resolved": true,
+          "manifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+          "observationId": "0363100012169823_e_0i7d2wr",
+          "buildingId": "0363100012169823",
+          "hash": "cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6",
+          "fileHashVerified": true
+        },
+        "ground": {
+          "resolved": true,
+          "manifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+          "observationId": "0363100012169823_e_0i7d2wr",
+          "buildingId": "0363100012169823",
+          "hash": "14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d",
+          "fileHashVerified": true
+        }
+      },
+      "tiers": {
+        "full": {
+          "status": "ambiguous",
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.02222580865375229,
+              0,
+              -0.11839517301982277,
+              0,
+              -0.022229759364472433,
+              20.018000059127804,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 1,
+            "wallDirection": [
+              0.9397342169709251,
+              0.3419058371160725
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": true,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          },
+          "source": {
+            "cropSha256": "cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6",
+            "captureDate": "2022-12-15T09:04:08.001450Z",
+            "dimensions": {
+              "width": 277,
+              "height": 914
+            },
+            "plane": {
+              "start": {
+                "x": 120127.13967290634,
+                "y": 487267.05381646316
+              },
+              "end": {
+                "x": 120132.92519265738,
+                "y": 487269.1587765017
+              },
+              "baseZ": 0.8619999408721923,
+              "topZ": 21.179999999999996
+            },
+            "pose": {
+              "x": 120117.73797805484,
+              "y": 487239.8786431442,
+              "z": 3.800723452120998,
+              "headingDeg": 245.622527923113,
+              "pitchDeg": 0.371148760102178,
+              "rollDeg": -2.23784265003609
+            },
+            "datum": "published-minus-43.5m; track-unsolved",
+            "heightInferred": false,
+            "standoffM": 22.322945871397085,
+            "obliquityDeg": 43.52839389254601
+          },
+          "geometryBinding": {
+            "directEndpointErrorM": 0,
+            "reverseEndpointErrorM": 5.91975865104974,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0
+          },
+          "planeVsNativeWall": {
+            "directEndpointErrorM": 0.11839517301982279,
+            "reverseEndpointErrorM": 6.038153824069562,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0.11839517301982279
+          },
+          "derivation": {
+            "wallDirection": [
+              0.9397342169709251,
+              0.3419058371160725
+            ],
+            "wallLengthM": 5.91975865104974,
+            "planeAlongM": [
+              -0.11839517301982277,
+              6.038153824069562
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "missingEvidence": [
+            "independent pixel boundary correspondences",
+            "independent roofline correspondence",
+            "resolved camera height / vertical datum",
+            "measured registration uncertainty at or below 0.15 m"
+          ],
+          "visualReview": "Foreground bus/sign blocks the lower façade contact and the native full pose datum is track-unsolved."
+        },
+        "ground": {
+          "status": "ambiguous",
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.00909386853336689,
+              0,
+              -0.11839517301982277,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 1,
+            "wallDirection": [
+              0.9397342169709251,
+              0.3419058371160725
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": true,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          },
+          "source": {
+            "cropSha256": "14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d",
+            "captureDate": "2022-05-02T06:43:16.723290Z",
+            "dimensions": {
+              "width": 677,
+              "height": 539
+            },
+            "plane": {
+              "start": {
+                "x": 120127.13967290634,
+                "y": 487267.05381646316
+              },
+              "end": {
+                "x": 120132.92519265738,
+                "y": 487269.1587765017
+              },
+              "baseZ": 0.8619999408721923,
+              "topZ": 5.761999940872192
+            },
+            "pose": {
+              "x": 120132.24926464981,
+              "y": 487259.4652490505,
+              "z": 3.198346005752697,
+              "headingDeg": 64.9752305721566,
+              "pitchDeg": -1.19274857062021,
+              "rollDeg": -0.661220454654439
+            },
+            "datum": "published-minus-43.5m; track-unsolved",
+            "heightInferred": false,
+            "standoffM": 8.878235697798086,
+            "obliquityDeg": 5.6043029400261
+          },
+          "geometryBinding": {
+            "directEndpointErrorM": 0,
+            "reverseEndpointErrorM": 5.91975865104974,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0
+          },
+          "planeVsNativeWall": {
+            "directEndpointErrorM": 0.11839517301982279,
+            "reverseEndpointErrorM": 6.038153824069562,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0.11839517301982279
+          },
+          "derivation": {
+            "wallDirection": [
+              0.9397342169709251,
+              0.3419058371160725
+            ],
+            "wallLengthM": 5.91975865104974,
+            "planeAlongM": [
+              -0.11839517301982277,
+              6.038153824069562
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "missingEvidence": [
+            "independent pixel boundary correspondences",
+            "independent roofline correspondence",
+            "resolved camera height / vertical datum",
+            "measured registration uncertainty at or below 0.15 m"
+          ],
+          "visualReview": "Ground crop may show entrance detail but no independently surveyed camera height or roofline anchor."
+        }
+      }
+    },
+    {
+      "caseId": "case-21",
+      "buildingId": "0363100012173919",
+      "geometryRevision": "dfd18f9c8f4c0a146aaef25b9812035cc388cb16c2fd671cda7019949afcc28e",
+      "sourceIdentity": {
+        "full": {
+          "resolved": true,
+          "manifest": ".cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/manifest.json",
+          "observationId": "0363100012173919_e_1wb5lrz",
+          "buildingId": "0363100012173919",
+          "hash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+          "fileHashVerified": true
+        },
+        "ground": {
+          "resolved": true,
+          "manifest": ".cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/manifest.json",
+          "observationId": "0363100012173919_e_1wb5lrz",
+          "buildingId": "0363100012173919",
+          "hash": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+          "fileHashVerified": true
+        }
+      },
+      "tiers": {
+        "full": {
+          "status": "ambiguous",
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.02221829799422896,
+              0,
+              -0.11365513973096002,
+              0,
+              -0.02222106482419703,
+              18.89900000810623,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 1,
+            "wallDirection": [
+              0.9106494967886231,
+              0.4131797357066626
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": true,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          },
+          "source": {
+            "cropSha256": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "captureDate": "2023-02-13T10:59:09.853930Z",
+            "dimensions": {
+              "width": 266,
+              "height": 864
+            },
+            "plane": {
+              "start": {
+                "x": 120568.5314080228,
+                "y": 487217.5053389278
+              },
+              "end": {
+                "x": 120573.913407805,
+                "y": 487219.94725895894
+              },
+              "baseZ": 0.07099999189376832,
+              "topZ": 19.27
+            },
+            "pose": {
+              "x": 120562.04195228667,
+              "y": 487189.74187302025,
+              "z": 3.907450914382899,
+              "headingDeg": 245.340989568718,
+              "pitchDeg": -0.387808312018315,
+              "rollDeg": 0.785163962537697
+            },
+            "datum": "published-minus-43.5m; track-unsolved",
+            "heightInferred": false,
+            "standoffM": 22.60147465189697,
+            "obliquityDeg": 41.97968707571337
+          },
+          "geometryBinding": {
+            "directEndpointErrorM": 0,
+            "reverseEndpointErrorM": 5.682756987002983,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0
+          },
+          "planeVsNativeWall": {
+            "directEndpointErrorM": 0.11365513973096,
+            "reverseEndpointErrorM": 5.7964121267339435,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0.11365513973096
+          },
+          "derivation": {
+            "wallDirection": [
+              0.9106494967886231,
+              0.4131797357066626
+            ],
+            "wallLengthM": 5.682756987002983,
+            "planeAlongM": [
+              -0.11365513973096002,
+              5.7964121267339435
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "missingEvidence": [
+            "independent pixel boundary correspondences",
+            "independent roofline correspondence",
+            "resolved camera height / vertical datum",
+            "measured registration uncertainty at or below 0.15 m"
+          ],
+          "visualReview": "Distant crop shows a different date and lacks a ground contact anchor; no independent camera-height solution."
+        },
+        "ground": {
+          "status": "ambiguous",
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009092411179176774,
+              0,
+              -0.11365513973096002,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 1,
+            "wallDirection": [
+              0.9106494967886231,
+              0.4131797357066626
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": true,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          },
+          "source": {
+            "cropSha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+            "captureDate": "2025-07-03T09:50:55Z",
+            "dimensions": {
+              "width": 650,
+              "height": 539
+            },
+            "plane": {
+              "start": {
+                "x": 120568.5314080228,
+                "y": 487217.5053389278
+              },
+              "end": {
+                "x": 120573.913407805,
+                "y": 487219.94725895894
+              },
+              "baseZ": 0.07099999189376832,
+              "topZ": 4.970999991893768
+            },
+            "pose": {
+              "x": 120571.71890778249,
+              "y": 487214.9902989387,
+              "z": 2.805000009536743,
+              "headingDeg": 0,
+              "pitchDeg": 0,
+              "rollDeg": 0
+            },
+            "datum": "ground-plus-2.44m; approximate",
+            "heightInferred": true,
+            "standoffM": 3.6073302087557937,
+            "obliquityDeg": 16.834709471484555
+          },
+          "geometryBinding": {
+            "directEndpointErrorM": 0,
+            "reverseEndpointErrorM": 5.682756987002983,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0
+          },
+          "planeVsNativeWall": {
+            "directEndpointErrorM": 0.11365513973096,
+            "reverseEndpointErrorM": 5.7964121267339435,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0.11365513973096
+          },
+          "derivation": {
+            "wallDirection": [
+              0.9106494967886231,
+              0.4131797357066626
+            ],
+            "wallLengthM": 5.682756987002983,
+            "planeAlongM": [
+              -0.11365513973096002,
+              5.7964121267339435
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "missingEvidence": [
+            "independent pixel boundary correspondences",
+            "independent roofline correspondence",
+            "resolved camera height / vertical datum",
+            "measured registration uncertainty at or below 0.15 m"
+          ],
+          "visualReview": "Recess perspective has multiple planes, so a single planar wall transform would be invalid without surface-specific anchors."
+        }
+      }
+    },
+    {
+      "caseId": "case-24",
+      "buildingId": "0363100012155539",
+      "geometryRevision": "be28c92aa70acc224822cc33964769b1098df641ed49094330f38580915fb24d",
+      "sourceIdentity": {
+        "full": {
+          "resolved": true,
+          "manifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+          "observationId": "0363100012155539_e_19ytu7e",
+          "buildingId": "0363100012155539",
+          "hash": "d41fbad9b2cab955a11725296c74f17d65e9e36907763f86eaf1396467186ebb",
+          "fileHashVerified": true
+        },
+        "ground": {
+          "resolved": true,
+          "manifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+          "observationId": "0363100012155539_e_19ytu7e",
+          "buildingId": "0363100012155539",
+          "hash": "59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0",
+          "fileHashVerified": true
+        }
+      },
+      "tiers": {
+        "full": {
+          "status": "ambiguous",
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.022221599944180225,
+              0,
+              -0.09102309206723362,
+              0,
+              -0.022214979192916304,
+              15.716999998092653,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 0,
+            "wallDirection": [
+              0.3851769366354982,
+              -0.9228427425537317
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": true,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          },
+          "source": {
+            "cropSha256": "d41fbad9b2cab955a11725296c74f17d65e9e36907763f86eaf1396467186ebb",
+            "captureDate": "2023-01-10T10:49:47.057940Z",
+            "dimensions": {
+              "width": 213,
+              "height": 721
+            },
+            "plane": {
+              "start": {
+                "x": 119984.99387033226,
+                "y": 486906.04529503355
+              },
+              "end": {
+                "x": 119986.81699011232,
+                "y": 486901.6772950372
+              },
+              "baseZ": 0.7230000019073486,
+              "topZ": 16.740000000000002
+            },
+            "pose": {
+              "x": 119978.03171203766,
+              "y": 486905.4240568342,
+              "z": 2.3674066057429,
+              "headingDeg": 154.748541953663,
+              "pitchDeg": -0.930642826733231,
+              "rollDeg": -0.533617122465294
+            },
+            "datum": "published-minus-43.5m; track-unsolved",
+            "heightInferred": false,
+            "standoffM": 6.664263881220281,
+            "obliquityDeg": 33.88079668690683
+          },
+          "geometryBinding": {
+            "directEndpointErrorM": 0,
+            "reverseEndpointErrorM": 4.551154603975921,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0
+          },
+          "planeVsNativeWall": {
+            "directEndpointErrorM": 0.09102309206723364,
+            "reverseEndpointErrorM": 4.642177696043154,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0.09102309206723364
+          },
+          "derivation": {
+            "wallDirection": [
+              0.3851769366354982,
+              -0.9228427425537317
+            ],
+            "wallLengthM": 4.551154603975921,
+            "planeAlongM": [
+              -0.09102309206723362,
+              4.642177696043154
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "missingEvidence": [
+            "independent pixel boundary correspondences",
+            "independent roofline correspondence",
+            "resolved camera height / vertical datum",
+            "measured registration uncertainty at or below 0.15 m"
+          ],
+          "visualReview": "Roof and frontage are visible, but the supplied plane remains derived from a track-unsolved pose; no independent pixel-to-roof/boundary fit is saved."
+        },
+        "ground": {
+          "status": "ambiguous",
+          "registration": {
+            "status": "ambiguous",
+            "uncertaintyM": null,
+            "imageToWall": [
+              0.009084838364895178,
+              0,
+              -0.09102309206723362,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "surfaceIndex": 0,
+            "wallDirection": [
+              0.3851769366354982,
+              -0.9228427425537317
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge",
+            "cropMarginsPx": {
+              "left": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0
+            },
+            "alignment": {
+              "wallIdentity": "ambiguous",
+              "boundaryEvidence": false,
+              "rooflineEvidence": false,
+              "cameraHeightResolved": false,
+              "orientationVerified": true,
+              "uncertaintyM": null
+            },
+            "abstention": "registration-uncertainty"
+          },
+          "source": {
+            "cropSha256": "59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0",
+            "captureDate": "2025-07-03T11:32:36Z",
+            "dimensions": {
+              "width": 521,
+              "height": 539
+            },
+            "plane": {
+              "start": {
+                "x": 119984.99387033226,
+                "y": 486906.04529503355
+              },
+              "end": {
+                "x": 119986.81699011232,
+                "y": 486901.6772950372
+              },
+              "baseZ": 0.7230000019073486,
+              "topZ": 5.623000001907348
+            },
+            "pose": {
+              "x": 119979.26293051461,
+              "y": 486901.6792949904,
+              "z": 3.4630000019073486,
+              "headingDeg": 0,
+              "pitchDeg": 0,
+              "rollDeg": 0
+            },
+            "datum": "ground-plus-2.44m; approximate",
+            "heightInferred": true,
+            "standoffM": 6.970438740695563,
+            "obliquityDeg": 4.469849064577156
+          },
+          "geometryBinding": {
+            "directEndpointErrorM": 0,
+            "reverseEndpointErrorM": 4.551154603975921,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0
+          },
+          "planeVsNativeWall": {
+            "directEndpointErrorM": 0.09102309206723364,
+            "reverseEndpointErrorM": 4.642177696043154,
+            "signedDirection": 1,
+            "bestEndpointErrorM": 0.09102309206723364
+          },
+          "derivation": {
+            "wallDirection": [
+              0.3851769366354982,
+              -0.9228427425537317
+            ],
+            "wallLengthM": 4.551154603975921,
+            "planeAlongM": [
+              -0.09102309206723362,
+              4.642177696043154
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "missingEvidence": [
+            "independent pixel boundary correspondences",
+            "independent roofline correspondence",
+            "resolved camera height / vertical datum",
+            "measured registration uncertainty at or below 0.15 m"
+          ],
+          "visualReview": "Vehicle occludes pavement contact; camera height is inferred despite low obliquity."
+        }
+      }
+    }
+  ],
+  "case24Overlay": {
+    "path": "scripts/review/next-stage-registration-case24-overlay.jpg",
+    "rawPanorama": {
+      "path": ".cache/city-appearance/shared-panoramas/TMX7316010203-002921_pano_0015_000129.jpg",
+      "panoramaId": "TMX7316010203-002921_pano_0015_000129",
+      "dimensions": {
+        "width": 8000,
+        "height": 4000
+      },
+      "sha256": "5f22c168c244a0505e9120d1f08fcaca08c41d0c2029dc7ecaed433ce27a4286"
+    },
+    "cameraModel": {
+      "id": "amsterdam-world-aligned/v1",
+      "usesOrientation": false,
+      "yaw": "centre"
+    },
+    "landmarks": [
+      {
+        "id": "wall-start-ground",
+        "world": {
+          "point": {
+            "x": 119985.02893032803,
+            "y": 486905.96129503363
+          },
+          "z": 1.0230000019073486
+        },
+        "predicted": [
+          5902.433580830298,
+          2240.995470221059
+        ],
+        "observedPixel": null,
+        "residualPx": null,
+        "residualM": null,
+        "measurementStatus": "not-measured; overlay supplies candidate only"
+      },
+      {
+        "id": "wall-end-ground",
+        "world": {
+          "point": {
+            "x": 119986.78193011654,
+            "y": 486901.7612950371
+          },
+          "z": 1.0230000019073486
+        },
+        "predicted": [
+          6504.749837797871,
+          2179.2585072507927
+        ],
+        "observedPixel": null,
+        "residualPx": null,
+        "residualM": null,
+        "measurementStatus": "not-measured; overlay supplies candidate only"
+      },
+      {
+        "id": "wall-start-plane-top",
+        "world": {
+          "point": {
+            "x": 119985.02893032803,
+            "y": 486905.96129503363
+          },
+          "z": 16.740000000000002
+        },
+        "predicted": [
+          5902.433580830298,
+          578.3380090779675
+        ],
+        "observedPixel": null,
+        "residualPx": null,
+        "residualM": null,
+        "measurementStatus": "not-measured; overlay supplies candidate only"
+      },
+      {
+        "id": "wall-end-plane-top",
+        "world": {
+          "point": {
+            "x": 119986.78193011654,
+            "y": 486901.7612950371
+          },
+          "z": 16.740000000000002
+        },
+        "predicted": [
+          6504.749837797871,
+          742.7723483266218
+        ],
+        "observedPixel": null,
+        "residualPx": null,
+        "residualM": null,
+        "measurementStatus": "not-measured; overlay supplies candidate only"
+      }
+    ],
+    "reviewRequirement": "Record at least three source-pixel correspondences on the raw panorama, then solve residuals with a calibrated camera height and datum before considering <=0.15m acceptance."
+  }
+}

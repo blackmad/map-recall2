@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "id": "case20-dormer-and-glazed-balcony-doors-source-owner-v2",
+  "caseId": "case-20",
+  "buildingId": "0363100012096164",
+  "observationId": "0363100012096164_e_1qqj2dv",
+  "source": {
+    "cropSha256": "c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0",
+    "dimensions": { "width": 283, "height": 811 },
+    "captureDate": "2023-01-12T09:15:50.506690Z",
+    "plane": {
+      "start": { "x": 119703.64681108974, "y": 487111.10003376193 },
+      "end": { "x": 119709.58209083222, "y": 487113.19355380005 },
+      "baseZ": 1.3440000534057617,
+      "topZ": 19.36
+    },
+    "localToNAPOffsetM": 0.65
+  },
+  "facadeBoundsPx": { "left": 0, "right": 263, "bottom": 811 },
+  "silhouetteTopPx": [[0, 184], [68, 184], [73, 138], [126, 99], [169, 133], [153, 184], [263, 184]],
+  "scopeNote": "Source-bound appearance correction for the two stored elevated central balcony-door records while retaining the reviewed dormer candidate. Both doors keep their original source bounds and identities; pale paired framing and near-full glazing are explicit. Curtains and balcony rails are not converted into opaque structural panels. Every window, the dormer, both ground entrances, the display window, and native owner geometry remain unchanged inputs.",
+  "sourceFeatureOverrides": [
+    {
+      "source": "full", "sourceCropSha256": "c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0", "featureId": "full:door-1",
+      "expectedFeatureSha256": "e786f6b2cf01760abb6f3699534c798f57468d900b287c46721ddcba4877f29e", "expectedResultFeatureSha256": "e75120488d4186d152394101126c44b90133954230220fbc6facce18c8df123c",
+      "set": { "doorStyle": "glazed", "doorGlazingRatio": 0.95, "paired": true, "doorFurniture": "none", "disposition": "agent-inspected", "sourceFrameWidthPx": 4, "sourceJoineryWidthPx": 2 },
+      "basis": "The exact 2023 crop shows this central elevated opening behind a balcony rail as pale paired window-like leaves. Curtains obscure the interior but do not support an opaque door panel; the original rail-obscured bounds remain unchanged."
+    },
+    {
+      "source": "full", "sourceCropSha256": "c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0", "featureId": "full:door-2",
+      "expectedFeatureSha256": "3dbcf4956774ff5a0550a6efab3a624755665f06500e61a672bcb4a0bf3c21bf", "expectedResultFeatureSha256": "884ae96d0478d880437393f7937f2711e10201b21dec0b5a7ab98babd0031ee6",
+      "set": { "doorStyle": "glazed", "doorGlazingRatio": 0.95, "paired": true, "doorFurniture": "none", "disposition": "agent-inspected", "sourceFrameWidthPx": 4, "sourceJoineryWidthPx": 2 },
+      "basis": "The exact 2023 crop clearly shows paired pale frames and dark glazing in the lower elevated central opening. The balcony rail obscures its base, so the original bounds are retained and no opaque lower panel is asserted."
+    }
+  ],
+  "componentSurfaces": [
+    {
+      "name": "dormer-front",
+      "type": "wall",
+      "role": "dormer-front",
+      "colour": "#c6c5b8",
+      "basis": "The frontal gabled surround is visible in the dated 2023 crop and independently visible in the cached 2025 panorama; 0.18m is an explicitly inferred display projection.",
+      "vertices": [{"x":73,"y":184,"normalOffsetM":0.18},{"x":161,"y":184,"normalOffsetM":0.18},{"x":161,"y":139,"normalOffsetM":0.18},{"x":126,"y":99,"normalOffsetM":0.18},{"x":73,"y":138,"normalOffsetM":0.18}]
+    },
+    {
+      "name": "dormer-left-return",
+      "type": "roof",
+      "role": "dormer-side",
+      "colour": "#414940",
+      "basis": "A shallow projecting dormer mass is visible in both cached dates; its numeric depth remains inferred.",
+      "vertices": [{"x":73,"y":184,"normalOffsetM":0.18},{"x":73,"y":138,"normalOffsetM":0.18},{"x":73,"y":138,"normalOffsetM":0},{"x":73,"y":184,"normalOffsetM":0}]
+    },
+    {
+      "name": "dormer-right-return",
+      "type": "roof",
+      "role": "dormer-side",
+      "colour": "#414940",
+      "basis": "A shallow projecting dormer mass is visible in both cached dates; its numeric depth remains inferred.",
+      "vertices": [{"x":161,"y":184,"normalOffsetM":0.18},{"x":161,"y":139,"normalOffsetM":0.18},{"x":161,"y":139,"normalOffsetM":0},{"x":161,"y":184,"normalOffsetM":0}]
+    },
+    {
+      "name": "dormer-cap-left",
+      "type": "roof",
+      "role": "dormer-cap",
+      "colour": "#353d37",
+      "basis": "The projecting pitched cap is visible in both cached dates; its numeric depth remains inferred.",
+      "vertices": [{"x":73,"y":138,"normalOffsetM":0.18},{"x":126,"y":99,"normalOffsetM":0.18},{"x":126,"y":99,"normalOffsetM":0},{"x":73,"y":138,"normalOffsetM":0}]
+    },
+    {
+      "name": "dormer-cap-right",
+      "type": "roof",
+      "role": "dormer-cap",
+      "colour": "#353d37",
+      "basis": "The projecting pitched cap is visible in both cached dates; its numeric depth remains inferred.",
+      "vertices": [{"x":126,"y":99,"normalOffsetM":0.18},{"x":161,"y":139,"normalOffsetM":0.18},{"x":161,"y":139,"normalOffsetM":0},{"x":126,"y":99,"normalOffsetM":0}]
+    },
+    {
+      "name": "dormer-opening",
+      "type": "roof",
+      "role": "dormer-opening",
+      "colour": "#6d7775",
+      "basis": "The rectangular dual-light opening follows the reviewed 2023 bounds and is independently visible in 2025.",
+      "vertices": [{"x":94,"y":183,"normalOffsetM":0.185},{"x":143,"y":183,"normalOffsetM":0.185},{"x":143,"y":148,"normalOffsetM":0.185},{"x":94,"y":148,"normalOffsetM":0.185}]
+    },
+    {
+      "name": "dormer-frame-left",
+      "type": "wall",
+      "role": "dormer-frame",
+      "colour": "#c6c5b8",
+      "basis": "The pale opening frame is visible in both cached dates.",
+      "vertices": [{"x":94,"y":183,"normalOffsetM":0.19},{"x":98,"y":183,"normalOffsetM":0.19},{"x":98,"y":148,"normalOffsetM":0.19},{"x":94,"y":148,"normalOffsetM":0.19}]
+    },
+    {
+      "name": "dormer-frame-right",
+      "type": "wall",
+      "role": "dormer-frame",
+      "colour": "#c6c5b8",
+      "basis": "The pale opening frame is visible in both cached dates.",
+      "vertices": [{"x":139,"y":183,"normalOffsetM":0.19},{"x":143,"y":183,"normalOffsetM":0.19},{"x":143,"y":148,"normalOffsetM":0.19},{"x":139,"y":148,"normalOffsetM":0.19}]
+    },
+    {
+      "name": "dormer-frame-top",
+      "type": "wall",
+      "role": "dormer-frame",
+      "colour": "#c6c5b8",
+      "basis": "The pale opening frame is visible in both cached dates.",
+      "vertices": [{"x":94,"y":152,"normalOffsetM":0.19},{"x":143,"y":152,"normalOffsetM":0.19},{"x":143,"y":148,"normalOffsetM":0.19},{"x":94,"y":148,"normalOffsetM":0.19}]
+    },
+    {
+      "name": "dormer-frame-sill",
+      "type": "wall",
+      "role": "dormer-frame",
+      "colour": "#c6c5b8",
+      "basis": "The slightly broad pale sill is visible in both cached dates and covers the coplanar legacy opening trim in this preview.",
+      "vertices": [{"x":90,"y":188,"normalOffsetM":0.19},{"x":147,"y":188,"normalOffsetM":0.19},{"x":147,"y":180,"normalOffsetM":0.19},{"x":90,"y":180,"normalOffsetM":0.19}]
+    },
+    {
+      "name": "dormer-frame-mullion",
+      "type": "wall",
+      "role": "dormer-frame",
+      "colour": "#c6c5b8",
+      "basis": "The central divider between the two rectangular lights is independently visible in the cached 2025 panorama.",
+      "vertices": [{"x":117,"y":181,"normalOffsetM":0.19},{"x":120,"y":181,"normalOffsetM":0.19},{"x":120,"y":150,"normalOffsetM":0.19},{"x":117,"y":150,"normalOffsetM":0.19}]
+    }
+  ],
+  "extractionVersion": "source-facade-owner-candidate/v1",
+  "sourceNote": "Agent-inspected exact 2023 full crop, SHA-256 c85f193a…72b672c0. The visible eave and frontal dormer outline are retained. Only full:door-1 and full:door-2 receive appearance overrides; curtains remain interior occlusion rather than structural panels. The projecting hoist arm is excluded. The single crop does not establish dormer side depth, roof pitch or a rear join.",
+  "placement": {
+    "status": "inferred",
+    "reason": "The dated crop sampling plane is reused to place the source study on the selected owner. Registration and vertical datum are unverified; the 0.18m dormer projection is an explicit display inference, not a measurement."
+  }
+}

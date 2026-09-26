@@ -1,0 +1,404 @@
+{
+  "version": 1,
+  "scope": "direct staged candidate frontage/source captures; ambiguous registration preview only",
+  "releaseId": "6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b",
+  "baseUrl": "http://127.0.0.1:5195",
+  "createdAt": "2026-09-12T23:33:04.541Z",
+  "captures": [
+    {
+      "index": 1,
+      "observationId": "0363100012168431_e_1tp2fiv",
+      "buildingId": "0363100012168431",
+      "street": "Rozengracht",
+      "tile": "16/33655/21536",
+      "role": "retail-or-mixed",
+      "source": {
+        "tier": "ground",
+        "sha256": "47261dbdedb21f0b1af68b9638861285e2ad1cfc5949f1df649076f6d1906a3e",
+        "captureDate": "2023-03-20T11:11:52.178190Z",
+        "width": 509,
+        "height": 539,
+        "originalPath": ".cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/images/0363100012168431_e_1tp2fiv-ground.jpg",
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b/01-0363100012168431_e_1tp2fiv-source.jpg",
+        "sha256Copied": "47261dbdedb21f0b1af68b9638861285e2ad1cfc5949f1df649076f6d1906a3e"
+      },
+      "streetCapture": {
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b/01-0363100012168431_e_1tp2fiv-street.png",
+        "sha256": "2c0317140c39e4f2344cfa7ab053a4d97e23edfa7cc9c09d3036f2977ac8c200",
+        "cameraPosition": [
+          314.7389355641313,
+          11.53431000090506,
+          -347.6023876303371
+        ],
+        "cameraTarget": [
+          307.09975766055874,
+          7.965,
+          -366.83524979578215
+        ],
+        "view": "frontage",
+        "facadeWindows": 1297,
+        "facadeDoors": 133,
+        "intervalPaintedWalls": 108
+      },
+      "features": [
+        {
+          "id": "ground:door-1",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:door-2",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:fascia-1",
+          "kind": "fascia",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material-1",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material-2",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:window-1",
+          "kind": "window",
+          "head": "rounded",
+          "state": null
+        }
+      ],
+      "inspectorVisible": false
+    },
+    {
+      "index": 2,
+      "observationId": "0363100012064291_e_06e507d",
+      "buildingId": "0363100012064291",
+      "street": "De Clercqstraat",
+      "tile": "16/33654/21537",
+      "role": "retail-or-mixed",
+      "source": {
+        "tier": "ground",
+        "sha256": "922c156b81b806e475fab03de79ce36e1e322383712acb210ffe8f9ec15342e9",
+        "captureDate": "2025-06-18T10:05:17Z",
+        "width": 685,
+        "height": 539,
+        "originalPath": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012064291_e_06e507d-ground.jpg",
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b/02-0363100012064291_e_06e507d-source.jpg",
+        "sha256Copied": "922c156b81b806e475fab03de79ce36e1e322383712acb210ffe8f9ec15342e9"
+      },
+      "streetCapture": {
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b/02-0363100012064291_e_06e507d-street.png",
+        "sha256": "3340518ac34229e5c760fdd5ebe2903fa7374bcecbed7ea8d55cfe26c3440479",
+        "cameraPosition": [
+          -217.67241764558815,
+          11.569310000905062,
+          -150.05284707370672
+        ],
+        "cameraTarget": [
+          -224.58471955653658,
+          8,
+          -169.5587463969714
+        ],
+        "view": "frontage",
+        "facadeWindows": 1095,
+        "facadeDoors": 192,
+        "intervalPaintedWalls": 144
+      },
+      "features": [
+        {
+          "id": "ground:door_01",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:fascia_01",
+          "kind": "fascia",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material_01",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material_02",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:window_01",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        }
+      ],
+      "inspectorVisible": false
+    },
+    {
+      "index": 3,
+      "observationId": "0363100012062260_e_1vze6ea",
+      "buildingId": "0363100012062260",
+      "street": "Da Costakade",
+      "tile": "16/33654/21538",
+      "role": "residential",
+      "source": {
+        "tier": "ground",
+        "sha256": "38f7657c019aeac20ab492f573a92b5d9da4da0674cf605ff959e601f66622f7",
+        "captureDate": "2025-07-31T11:09:23Z",
+        "width": 723,
+        "height": 539,
+        "originalPath": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012062260_e_1vze6ea-ground.jpg",
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b/03-0363100012062260_e_1vze6ea-source.jpg",
+        "sha256Copied": "38f7657c019aeac20ab492f573a92b5d9da4da0674cf605ff959e601f66622f7"
+      },
+      "streetCapture": {
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b/03-0363100012062260_e_1vze6ea-street.png",
+        "sha256": "55ce042829ccc009f6b63490ee2b1c8107210e5c208181c31d54fec874de9f76",
+        "cameraPosition": [
+          18.336946875475974,
+          12.464310000905062,
+          71.96454576580352
+        ],
+        "cameraTarget": [
+          -0.7922384948324179,
+          8.895,
+          79.85975274129305
+        ],
+        "view": "frontage",
+        "facadeWindows": 1114,
+        "facadeDoors": 101,
+        "intervalPaintedWalls": 77
+      },
+      "features": [
+        {
+          "id": "ground:door-1",
+          "kind": "door",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "ground:door-2",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:material-1",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material-2",
+          "kind": "material",
+          "head": null,
+          "state": null
+        }
+      ],
+      "inspectorVisible": false
+    },
+    {
+      "index": 4,
+      "observationId": "0363100012063298_e_0neqgrr",
+      "buildingId": "0363100012063298",
+      "street": "Bilderdijkkade",
+      "tile": "16/33654/21537",
+      "role": "residential",
+      "source": {
+        "tier": "ground",
+        "sha256": "2bce0284651b66a7fde5088d3e69479c45f7db5567d0e0601804b994775bb101",
+        "captureDate": "2025-07-31T09:44:27Z",
+        "width": 1034,
+        "height": 539,
+        "originalPath": ".cache/city-appearance/supplemental-1000/broader-staging/images/0363100012063298_e_0neqgrr-ground.jpg",
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b/04-0363100012063298_e_0neqgrr-source.jpg",
+        "sha256Copied": "2bce0284651b66a7fde5088d3e69479c45f7db5567d0e0601804b994775bb101"
+      },
+      "streetCapture": {
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b/04-0363100012063298_e_0neqgrr-street.png",
+        "sha256": "0510030861e55448182781b4fe67cd2011b6ce772096df66d6b2ce1660de68ad",
+        "cameraPosition": [
+          -206.55446436398708,
+          11.75931000090506,
+          30.17939927292451
+        ],
+        "cameraTarget": [
+          -187.44222692902986,
+          8.19,
+          22.243253713066224
+        ],
+        "view": "frontage",
+        "facadeWindows": 1094,
+        "facadeDoors": 153,
+        "intervalPaintedWalls": 115
+      },
+      "features": [
+        {
+          "id": "ground:door-1",
+          "kind": "door",
+          "head": "rounded",
+          "state": null
+        },
+        {
+          "id": "ground:door-2",
+          "kind": "door",
+          "head": "rounded",
+          "state": null
+        },
+        {
+          "id": "ground:material-1",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material-2",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:window-1",
+          "kind": "window",
+          "head": "rounded",
+          "state": null
+        },
+        {
+          "id": "ground:window-2",
+          "kind": "window",
+          "head": "rounded",
+          "state": null
+        },
+        {
+          "id": "ground:window-3",
+          "kind": "window",
+          "head": "rounded",
+          "state": null
+        }
+      ],
+      "inspectorVisible": false
+    },
+    {
+      "index": 5,
+      "observationId": "0363100012065246_e_1k9wdlf",
+      "buildingId": "0363100012065246",
+      "street": "Da Costastraat",
+      "tile": "16/33655/21537",
+      "role": "residential",
+      "source": {
+        "tier": "ground",
+        "sha256": "a80b3140e5b9c1e04ff60ebc56d43fc2a845e108639e46af95f0b7cd211eee97",
+        "captureDate": "2025-07-03T11:24:40Z",
+        "width": 675,
+        "height": 539,
+        "originalPath": ".cache/city-appearance/supplemental-1000/staging/images/0363100012065246_e_1k9wdlf-ground.jpg",
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b/05-0363100012065246_e_1k9wdlf-source.jpg",
+        "sha256Copied": "a80b3140e5b9c1e04ff60ebc56d43fc2a845e108639e46af95f0b7cd211eee97"
+      },
+      "streetCapture": {
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/6bc7233ac8f1849129b9d9bbc45c7d807bb35adceacff7d288d52d5600e69b2b/05-0363100012065246_e_1k9wdlf-street.png",
+        "sha256": "c56ef958c087123fb9ed512b49cc3ad1607f9f9cc7592958ab4db5254f3aa9b9",
+        "cameraPosition": [
+          80.58317036464058,
+          10.584699373020293,
+          -79.23469356546313
+        ],
+        "cameraTarget": [
+          67.40426226132696,
+          8.255000000000003,
+          -76.27424792177045
+        ],
+        "view": "frontage",
+        "facadeWindows": 1657,
+        "facadeDoors": 149,
+        "intervalPaintedWalls": 95
+      },
+      "features": [
+        {
+          "id": "ground:door-1",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:door-2",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:material-1",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material-2",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:window-1",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:window-2",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        }
+      ],
+      "inspectorVisible": false
+    }
+  ],
+  "visualReview": {
+    "status": "agent visual inspection completed",
+    "result": "fails visual acceptance for expansion: all five frontages are visible, but no sample reaches faithful source comparison",
+    "notes": [
+      {
+        "observationId": "0363100012168431_e_1tp2fiv",
+        "review": "Visible and placed at the intended frontage: the central shallow arch and flanking dark bays are recognisable. The ornate black surround, fanlights, window lettering, and fine shop detail collapse to plain blocks; no source awning is present."
+      },
+      {
+        "observationId": "0363100012064291_e_06e507d",
+        "review": "Wide ground-floor shop placement is visible. The photographed scaffold/tarpaulin and Nina’s lettering are absent, and the façade reads as a flat, generic black band with little storefront depth."
+      },
+      {
+        "observationId": "0363100012062260_e_1vze6ea",
+        "review": "The source’s narrow timber door beside a large dark carriage/garage opening is not recognisable in the selected frontage view. This is a material placement/composition failure, despite emitted door features."
+      },
+      {
+        "observationId": "0363100012063298_e_0neqgrr",
+        "review": "The three observed arched bays are in the right count and rough positions, but the two windows/doors render as empty pale apertures. Their dark glazing, frames, brick arch treatment, and garden/raised-contact context are missing."
+      },
+      {
+        "observationId": "0363100012065246_e_1k9wdlf",
+        "review": "The frontage is present, but the broad left window and paired dark entrance doors lose their distinct proportions and brick-arch context. Rendered panes remain flat and do not convey source depth."
+      }
+    ],
+    "limitations": [
+      "candidate-registration preview only; zero metric registrations accepted",
+      "frontage camera includes neighbouring geometry, so comparison is visual placement rather than an IoU measurement"
+    ]
+  },
+  "sourceHashesBound": true,
+  "metricRegistrationAccepted": 0
+}

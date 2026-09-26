@@ -1,0 +1,2645 @@
+{
+  "version": 2,
+  "phase": "neighbourhood-1000-preview",
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "analysisOnly": true,
+  "publicationBlocked": true,
+  "userAuthorizedPreviewScale": 1000,
+  "batchAuthorization": {
+    "path": "authorization.json",
+    "sha256": "eeb87fd984cd921c5df6e1317b5234a87df31f8babe6d2cb84f0306a71122c50"
+  },
+  "activeDevelopmentSet": {
+    "id": "thousand-building-full-c228048ed630-853673ef-12",
+    "status": "validated",
+    "kind": "source-bound-neighborhood-preview",
+    "sha256": "238f3479c4bc3431abdc248e1daac2044a20e0137e748ca44b7bf56e52179ed3"
+  },
+  "cases": [
+    {
+      "id": "supplemental-0363100012173869-full",
+      "observationId": "0363100012173869_e_0j7aoco",
+      "buildingId": "0363100012173869",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120558.64590226993,
+          486993.93629847874
+        ],
+        [
+          120554.3339024368,
+          486991.71129844995
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173869_e_0j7aoco-full.jpg",
+          "cropSha256": "1365d97a25b827e1b1a756fd7296c0b7a5fc64dba7e033cccdb99d4f3640a4ca",
+          "captureDate": "2024-12-16T09:30:17Z",
+          "width": 227,
+          "height": 678,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173873-full",
+      "observationId": "0363100012173873_e_085qzjc",
+      "buildingId": "0363100012173873",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120560.23090309315,
+          487026.25029854703
+        ],
+        [
+          120564.59090292755,
+          487028.610298574
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173873_e_085qzjc-full.jpg",
+          "cropSha256": "d27b39d270fcc9bd9a273e73d2a5e7909fc2e0cdeee18b7636ccc2516356ec43",
+          "captureDate": "2024-12-16T09:29:37Z",
+          "width": 232,
+          "height": 811,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173875-full",
+      "observationId": "0363100012173875_e_06snyl1",
+      "buildingId": "0363100012173875",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120604.3769005179,
+          487018.14229878096
+        ],
+        [
+          120600.52590066666,
+          487016.14829875785
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173875_e_06snyl1-full.jpg",
+          "cropSha256": "b6cec0e44f145262c89837394680fa43234bb71f1a2beb0ca56f552ae94e79d8",
+          "captureDate": "2024-12-16T09:29:43Z",
+          "width": 203,
+          "height": 657,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173889-full",
+      "observationId": "0363100012173889_e_1xqy1k1",
+      "buildingId": "0363100012173889",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120605.43490135958,
+          487050.1162988462
+        ],
+        [
+          120609.72790119385,
+          487052.3442988744
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173889_e_1xqy1k1-full.jpg",
+          "cropSha256": "374119376f39a1d75d8b9c6cd89136e704e0188ef0b34a67a4869e812de187be",
+          "captureDate": "2023-02-20T10:58:05.725680Z",
+          "width": 226,
+          "height": 805,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173890-full",
+      "observationId": "0363100012173890_e_1mfx7q6",
+      "buildingId": "0363100012173890",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120609.68890119795,
+          487052.41829887056
+        ],
+        [
+          120614.09790103152,
+          487054.837298903
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173890_e_1mfx7q6-full.jpg",
+          "cropSha256": "5d2e68ad85a12265dcd85715d1627cd7b52c03e7eb9c27ab427b6af5c18032c2",
+          "captureDate": "2023-02-20T10:58:05.725680Z",
+          "width": 235,
+          "height": 859,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173910-full",
+      "observationId": "0363100012173910_e_15gaiap",
+      "buildingId": "0363100012173910",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120600.43290585506,
+          487200.73329907795
+        ],
+        [
+          120595.099906074,
+          487198.43029904447
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173910_e_15gaiap-full.jpg",
+          "cropSha256": "1e2880d3179fcdbc47f59278dd2ca93fc6270ff1392954c47f5e504aaf4ab2bb",
+          "captureDate": "2023-03-13T08:55:13.221750Z",
+          "width": 272,
+          "height": 803,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173913-full",
+      "observationId": "0363100012173913_e_1qtx4kt",
+      "buildingId": "0363100012173913",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120585.63790646842,
+          487194.55629898375
+        ],
+        [
+          120581.82690662399,
+          487192.8752989601
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173913_e_1qtx4kt-full.jpg",
+          "cropSha256": "bae6e5d814d80b8bed91bfbd73efa080b68deeb68a89ef9d421ee453d50f4aca",
+          "captureDate": "2023-03-13T08:55:15.621740Z",
+          "width": 195,
+          "height": 647,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173916-full",
+      "observationId": "0363100012173916_e_0m9hurp",
+      "buildingId": "0363100012173916",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120615.75390607936,
+          487237.74429922947
+        ],
+        [
+          120619.47090592499,
+          487239.2832992559
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173916_e_0m9hurp-full.jpg",
+          "cropSha256": "c335db5d4744c07dded859bf0ade7e7040101b7463524dadeb1e0bb25a2f5892",
+          "captureDate": "2023-02-20T10:57:38.095950Z",
+          "width": 188,
+          "height": 601,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173918-full",
+      "observationId": "0363100012173918_e_03s3688",
+      "buildingId": "0363100012173918",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120564.51490819,
+          487215.8532988967
+        ],
+        [
+          120568.6349080186,
+          487217.5522989284
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173918_e_03s3688-full.jpg",
+          "cropSha256": "062a494d0527474a9ad3b1225a434c1b687099b2ba551cf5ecf6f4c955595798",
+          "captureDate": "2023-02-13T10:59:14.064090Z",
+          "width": 209,
+          "height": 802,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173920-full",
+      "observationId": "0363100012173920_e_0lbre2v",
+      "buildingId": "0363100012173920",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120557.30490848792,
+          487212.8072988522
+        ],
+        [
+          120560.39490836134,
+          487214.1542988742
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173920_e_0lbre2v-full.jpg",
+          "cropSha256": "6c0f05c11cfea19f6ec26c92a615aebd6bdf3f21a5c257c39ffd8426478eb440",
+          "captureDate": "2023-02-13T10:59:09.258970Z",
+          "width": 158,
+          "height": 581,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173922-full",
+      "observationId": "0363100012173922_e_1h64jk6",
+      "buildingId": "0363100012173922",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120624.92990483981,
+          487210.96929923975
+        ],
+        [
+          120620.77990501556,
+          487209.37029921217
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173922_e_1h64jk6-full.jpg",
+          "cropSha256": "b5cec6ce06fb7382d5c06c3e92a4f169ba24c8f74d78875549d0d95539241efb",
+          "captureDate": "2023-03-13T08:55:08.242040Z",
+          "width": 208,
+          "height": 697,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173926-full",
+      "observationId": "0363100012173926_e_1b2i50t",
+      "buildingId": "0363100012173926",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120612.84190534514,
+          487206.0782991594
+        ],
+        [
+          120608.94590550632,
+          487204.43829913385
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173926_e_1b2i50t-full.jpg",
+          "cropSha256": "294b029d72ea7c8f8079422ab57b50ab95b509768abb56083b4e76b1bcf227e0",
+          "captureDate": "2023-03-13T08:55:13.221750Z",
+          "width": 198,
+          "height": 555,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173927-full",
+      "observationId": "0363100012173927_e_023fr62",
+      "buildingId": "0363100012173927",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120616.80490518095,
+          487207.736299184
+        ],
+        [
+          120612.84190534514,
+          487206.0782991594
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173927_e_023fr62-full.jpg",
+          "cropSha256": "9138a92901658023ace68f3c1d74bc43b84b48b88e92c5fe7947d169b2616d34",
+          "captureDate": "2023-03-13T08:55:13.221750Z",
+          "width": 201,
+          "height": 592,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173928-full",
+      "observationId": "0363100012173928_e_1o9nhk8",
+      "buildingId": "0363100012173928",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120620.77990501556,
+          487209.37029921217
+        ],
+        [
+          120616.80490518095,
+          487207.736299184
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173928_e_1o9nhk8-full.jpg",
+          "cropSha256": "a688f453e72007c16b1d4b811b456c2fc063ca99023a22a19e0275c211104295",
+          "captureDate": "2023-03-13T08:55:13.836770Z",
+          "width": 201,
+          "height": 617,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173929-full",
+      "observationId": "0363100012173929_e_0dk14yr",
+      "buildingId": "0363100012173929",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120604.71590568009,
+          487202.61429910944
+        ],
+        [
+          120600.4049058579,
+          487200.78129907686
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173929_e_0dk14yr-full.jpg",
+          "cropSha256": "5eece14f926b008abbdd81785ccabead61e76b8ffc839dfa51d1762bbc1bdc27",
+          "captureDate": "2023-03-13T08:55:13.221750Z",
+          "width": 219,
+          "height": 597,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173930-full",
+      "observationId": "0363100012173930_e_1c8qzkz",
+      "buildingId": "0363100012173930",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120608.9259055072,
+          487204.4302991364
+        ],
+        [
+          120604.69090568306,
+          487202.6732991045
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173930_e_1c8qzkz-full.jpg",
+          "cropSha256": "4484f064eff95284779f1384cb48d22b4baa45b96a31381929aab08e11be4d98",
+          "captureDate": "2023-03-13T08:55:15.621740Z",
+          "width": 215,
+          "height": 553,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173933-full",
+      "observationId": "0363100012173933_e_1r8xwwq",
+      "buildingId": "0363100012173933",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120574.14990693676,
+          487189.4742989099
+        ],
+        [
+          120569.72890712567,
+          487187.82429888245
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173933_e_1r8xwwq-full.jpg",
+          "cropSha256": "88687d7533d17b83ddd5a83ff7980d9acd8015116418b55589027aae025b66a7",
+          "captureDate": "2023-03-13T08:55:22.056670Z",
+          "width": 221,
+          "height": 881,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173934-full",
+      "observationId": "0363100012173934_e_0j0cv1q",
+      "buildingId": "0363100012173934",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120569.72890712567,
+          487187.82429888245
+        ],
+        [
+          120565.98990727987,
+          487186.23929885624
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173934_e_0j0cv1q-full.jpg",
+          "cropSha256": "72502f3813d9fee778613d9852f62ea683c204739d94121b55ec3af884f637bf",
+          "captureDate": "2023-03-13T08:55:16.216720Z",
+          "width": 190,
+          "height": 891,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173982-full",
+      "observationId": "0363100012173982_e_1nnzmi2",
+      "buildingId": "0363100012173982",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120634.90391067223,
+          487437.630299681
+        ],
+        [
+          120631.55491081273,
+          487436.2912996612
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173982_e_1nnzmi2-full.jpg",
+          "cropSha256": "e0f45c8e17bdc9c891fb0f58d432209576e06fd19413d9bbee404a118f53b97d",
+          "captureDate": "2025-01-20T10:12:21Z",
+          "width": 169,
+          "height": 607,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173988-full",
+      "observationId": "0363100012173988_e_04od6rf",
+      "buildingId": "0363100012173988",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120617.38491140911,
+          487430.684299571
+        ],
+        [
+          120613.97091154638,
+          487429.10429955117
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173988_e_04od6rf-full.jpg",
+          "cropSha256": "fbef9dce0aa891247116087360cd3f23dbf731fc4bcb274752c2665aaf435298",
+          "captureDate": "2025-01-20T10:12:17Z",
+          "width": 176,
+          "height": 631,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173989-full",
+      "observationId": "0363100012173989_e_0zlabh2",
+      "buildingId": "0363100012173989",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120620.88091126006,
+          487431.9972995936
+        ],
+        [
+          120617.41991140512,
+          487430.60829957016
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173989_e_0zlabh2-full.jpg",
+          "cropSha256": "5e35c7d2390f78999590abec7a8d1aa5b3ddae43e51a2c8ea0b28b7ee059d6f6",
+          "captureDate": "2025-01-20T10:12:20Z",
+          "width": 175,
+          "height": 651,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173991-full",
+      "observationId": "0363100012173991_e_1qwbv4n",
+      "buildingId": "0363100012173991",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120604.69891193374,
+          487425.3382994876
+        ],
+        [
+          120599.9469121313,
+          487423.3662994576
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173991_e_1qwbv4n-full.jpg",
+          "cropSha256": "0e9014b5327f3bae2314bcd4dd983855202301b33ca3beb6d9d542007f430839",
+          "captureDate": "2024-12-16T09:18:09Z",
+          "width": 241,
+          "height": 793,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173992-full",
+      "observationId": "0363100012173992_e_0r0hglp",
+      "buildingId": "0363100012173992",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120624.3449111153,
+          487433.4082996171
+        ],
+        [
+          120620.88091126006,
+          487431.9972995936
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173992_e_0r0hglp-full.jpg",
+          "cropSha256": "d273921716d9b2561dd6bf61e24c29a13cbda739175402f5a9af06b17e68a53a",
+          "captureDate": "2025-01-20T10:12:20Z",
+          "width": 175,
+          "height": 736,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173994-full",
+      "observationId": "0363100012173994_e_0e0c9bx",
+      "buildingId": "0363100012173994",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120610.25891170408,
+          487427.69229952275
+        ],
+        [
+          120604.67091193711,
+          487425.4062994885
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173994_e_0e0c9bx-full.jpg",
+          "cropSha256": "30bfd700868e5baaa9080089646efdc79b7cc60e44287727a8bf34e4c0888226",
+          "captureDate": "2025-01-20T10:12:18Z",
+          "width": 283,
+          "height": 840,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012173995-full",
+      "observationId": "0363100012173995_e_0p4wqcn",
+      "buildingId": "0363100012173995",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120614.01291154143,
+          487429.0122995459
+        ],
+        [
+          120610.29191169984,
+          487427.6042995251
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173995_e_0p4wqcn-full.jpg",
+          "cropSha256": "7b978ab71b1adb61eabe72a93e438889fefe703ffbc195d30b38d90d15101dc2",
+          "captureDate": "2025-01-20T10:12:20Z",
+          "width": 186,
+          "height": 710,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174000-full",
+      "observationId": "0363100012174000_e_1626xz1",
+      "buildingId": "0363100012174000",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120556.84291393957,
+          487406.10529917927
+        ],
+        [
+          120552.02791413949,
+          487404.10629914893
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174000_e_1626xz1-full.jpg",
+          "cropSha256": "d865fc4c1a3bc849874f149818fc8942804719e22e2d0680ab3cf1cef3266470",
+          "captureDate": "2025-01-20T10:12:09Z",
+          "width": 244,
+          "height": 751,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174001-full",
+      "observationId": "0363100012174001_e_1y4nlnq",
+      "buildingId": "0363100012174001",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120562.00891372857,
+          487408.3762992141
+        ],
+        [
+          120556.97591393741,
+          487406.2852991801
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174001_e_1y4nlnq-full.jpg",
+          "cropSha256": "a86c6570dedee5308bd9de55fd1dd4d30b2e9fbe8a3e530c25c1f339ad4ab147",
+          "captureDate": "2025-01-20T10:12:10Z",
+          "width": 255,
+          "height": 700,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174002-full",
+      "observationId": "0363100012174002_e_1b4ju3y",
+      "buildingId": "0363100012174002",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120567.51291349702,
+          487410.562299249
+        ],
+        [
+          120563.27891367252,
+          487408.7892992225
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174002_e_1b4ju3y-full.jpg",
+          "cropSha256": "1b3dc4ba43ef759f6a8d4437bd9aa1d4e7452cccc89a730a6ec0319b982685d7",
+          "captureDate": "2024-12-16T09:18:19Z",
+          "width": 215,
+          "height": 866,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174004-full",
+      "observationId": "0363100012174004_e_0qczsol",
+      "buildingId": "0363100012174004",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120631.55491081273,
+          487436.2912996612
+        ],
+        [
+          120624.3449111153,
+          487433.4082996171
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174004_e_0qczsol-full.jpg",
+          "cropSha256": "0058991cbb58923be415a3ed247be1108e78d16541e6ea87790f119bea81fa92",
+          "captureDate": "2024-12-16T09:18:06Z",
+          "width": 363,
+          "height": 820,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174005-full",
+      "observationId": "0363100012174005_e_05cqfsn",
+      "buildingId": "0363100012174005",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120593.33091240564,
+          487420.60629941814
+        ],
+        [
+          120589.64291255941,
+          487419.09829938994
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174005_e_05cqfsn-full.jpg",
+          "cropSha256": "de8a826c392abc7116afdb69cbdb4bea4d79530a6fb03703f95bc0239f0c2632",
+          "captureDate": "2025-01-20T10:12:16Z",
+          "width": 186,
+          "height": 771,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174006-full",
+      "observationId": "0363100012174006_e_118hujl",
+      "buildingId": "0363100012174006",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120589.64291255941,
+          487419.09829938994
+        ],
+        [
+          120586.09891270734,
+          487417.64929937024
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174006_e_118hujl-full.jpg",
+          "cropSha256": "9c19de3a89a94fb131f129ad4140f5d6c30d742064c0c6f120bf46f7f318f6bd",
+          "captureDate": "2025-01-20T10:12:16Z",
+          "width": 179,
+          "height": 749,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174007-full",
+      "observationId": "0363100012174007_e_0l04h2s",
+      "buildingId": "0363100012174007",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120585.86091271724,
+          487417.55229936796
+        ],
+        [
+          120575.40091316197,
+          487413.5722992991
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174007_e_0l04h2s-full.jpg",
+          "cropSha256": "2bf2ea215994cb59b44286ba72d17b3639500d3ff459b8eaad39314b9337003b",
+          "captureDate": "2025-01-20T10:12:15Z",
+          "width": 524,
+          "height": 807,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174008-full",
+      "observationId": "0363100012174008_e_1uls0ed",
+      "buildingId": "0363100012174008",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120575.40091316197,
+          487413.5722992991
+        ],
+        [
+          120571.87491331127,
+          487412.2062992777
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174008_e_1uls0ed-full.jpg",
+          "cropSha256": "38cb2f2c542cc8169abe3b61577a21e512d614ef5709f85fc437dde7ac233f91",
+          "captureDate": "2025-01-20T10:12:14Z",
+          "width": 177,
+          "height": 679,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174009-full",
+      "observationId": "0363100012174009_e_1vp8yhy",
+      "buildingId": "0363100012174009",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120571.86191331263,
+          487412.23529927654
+        ],
+        [
+          120567.50891349756,
+          487410.5722992481
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174009_e_1vp8yhy-full.jpg",
+          "cropSha256": "29e1c8c562ed185c7bb2cb7ffe95cf597ae4459101c6d953891f136c6672ac0a",
+          "captureDate": "2022-12-15T09:30:20.057010Z",
+          "width": 218,
+          "height": 727,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174012-full",
+      "observationId": "0363100012174012_e_0u181jq",
+      "buildingId": "0363100012174012",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120610.76591250402,
+          487457.15429957723
+        ],
+        [
+          120615.86391228982,
+          487459.1772996108
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174012_e_0u181jq-full.jpg",
+          "cropSha256": "c2041ca378f0793730fac52bef925b4a0148e9b5e7e9a7f5030057b522e81c7f",
+          "captureDate": "2025-01-20T10:12:20Z",
+          "width": 257,
+          "height": 762,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174039-full",
+      "observationId": "0363100012174039_e_1s3rr97",
+      "buildingId": "0363100012174039",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120630.64591167719,
+          487465.3622997073
+        ],
+        [
+          120637.32991140065,
+          487468.1792997494
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174039_e_1s3rr97-full.jpg",
+          "cropSha256": "3dd800dfd48ca6073a955514ccd4cf82575c317efcd33c303cd82d511d47bfeb",
+          "captureDate": "2025-01-20T10:12:21Z",
+          "width": 339,
+          "height": 734,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174074-full",
+      "observationId": "0363100012174074_e_1qqt96y",
+      "buildingId": "0363100012174074",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120374.10192160963,
+          487332.9692980036
+        ],
+        [
+          120369.6499217962,
+          487331.1762979722
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174074_e_1qqt96y-full.jpg",
+          "cropSha256": "aa762e62933f7df72665c6ca6926887bbc8db741029016edb75c106fd30fe3d1",
+          "captureDate": "2025-01-20T10:11:20Z",
+          "width": 225,
+          "height": 716,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174089-full",
+      "observationId": "0363100012174089_e_0xdd3ge",
+      "buildingId": "0363100012174089",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120386.31192194443,
+          487368.03129813
+        ],
+        [
+          120401.63492130327,
+          487374.2422982315
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174089_e_0xdd3ge-full.jpg",
+          "cropSha256": "9b1d24b33f370266c132e642ce8bc439c711766e660065d6d645c2b620944914",
+          "captureDate": "2024-12-16T09:18:36Z",
+          "width": 774,
+          "height": 502,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174100-full",
+      "observationId": "0363100012174100_e_023a1el",
+      "buildingId": "0363100012174100",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120305.16791893935,
+          487107.2712972235
+        ],
+        [
+          120308.96391878146,
+          487108.84429724613
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174100_e_023a1el-full.jpg",
+          "cropSha256": "bfc0e650f940a3c5f7ff7f6f282ff6befdf10b992b7a0b29678367788c0bd49b",
+          "captureDate": "2024-12-17T08:53:17Z",
+          "width": 192,
+          "height": 729,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174145-full",
+      "observationId": "0363100012174145_e_1hud63g",
+      "buildingId": "0363100012174145",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120406.36490809606,
+          486912.9862974619
+        ],
+        [
+          120401.29390829422,
+          486910.43729743117
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174145_e_1hud63g-full.jpg",
+          "cropSha256": "41d1e9f7ba13db2edf3e3e56eb64e47b4a1bfc0c1aabfca9111f20bcce3c3d96",
+          "captureDate": "2022-01-27T08:55:13.891300Z",
+          "width": 266,
+          "height": 862,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174146-full",
+      "observationId": "0363100012174146_e_1xugoif",
+      "buildingId": "0363100012174146",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120411.45490790278,
+          486915.7492974951
+        ],
+        [
+          120406.36490809606,
+          486912.9862974619
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174146_e_1xugoif-full.jpg",
+          "cropSha256": "e678e59a4ccd95fb94e78ac0f92bfc188a3a0d74401ad9cdae85ee882826c7bf",
+          "captureDate": "2023-01-16T09:28:47.937320Z",
+          "width": 271,
+          "height": 929,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174152-full",
+      "observationId": "0363100012174152_e_0m52v6l",
+      "buildingId": "0363100012174152",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120359.88690985809,
+          486887.6872971513
+        ],
+        [
+          120362.50990954049,
+          486881.35029715433
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174152_e_0m52v6l-full.jpg",
+          "cropSha256": "5c0a7bdcc9e7ebeb024a4671c9e2ccd9e3f1b020768a6dfea2940f1138e7e146",
+          "captureDate": "2023-02-13T11:13:57.891920Z",
+          "width": 321,
+          "height": 855,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174153-full",
+      "observationId": "0363100012174153_e_14l6jep",
+      "buildingId": "0363100012174153",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120382.56090900837,
+          486900.38429730554
+        ],
+        [
+          120376.63290923969,
+          486897.39529726474
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174153_e_14l6jep-full.jpg",
+          "cropSha256": "27a1e894c4049d986b0c092313b6268be1bcf75181c7f84c55b848c7d37b62f0",
+          "captureDate": "2023-01-16T09:28:00.972770Z",
+          "width": 311,
+          "height": 594,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174155-full",
+      "observationId": "0363100012174155_e_03nisvn",
+      "buildingId": "0363100012174155",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120380.86490997137,
+          486931.44629734795
+        ],
+        [
+          120386.67590974829,
+          486934.5112973883
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174155_e_03nisvn-full.jpg",
+          "cropSha256": "a9770c5ce68a30ece54083f2c5b8057adf227fad53a843c11eb34d470213103d",
+          "captureDate": "2023-01-16T09:27:59.117860Z",
+          "width": 307,
+          "height": 773,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174156-full",
+      "observationId": "0363100012174156_e_04dr7wi",
+      "buildingId": "0363100012174156",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120386.67590974829,
+          486934.5112973883
+        ],
+        [
+          120392.2899095329,
+          486937.47329742386
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174156_e_04dr7wi-full.jpg",
+          "cropSha256": "7a0c7195ab910c4326b441484fa1f475f47f5d97fa9086966e6cd9b389e1cec0",
+          "captureDate": "2023-01-16T09:28:03.387770Z",
+          "width": 297,
+          "height": 744,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174157-full",
+      "observationId": "0363100012174157_e_1mpqmhu",
+      "buildingId": "0363100012174157",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120371.76291032073,
+          486926.644297288
+        ],
+        [
+          120375.52691017631,
+          486928.63029731344
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174157_e_1mpqmhu-full.jpg",
+          "cropSha256": "ed7982a4b610915bba6d9335a3acbf06a314b25389cc5dd861a7778f59dda0fe",
+          "captureDate": "2023-01-16T09:27:58.202780Z",
+          "width": 199,
+          "height": 799,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174158-full",
+      "observationId": "0363100012174158_e_1ejs321",
+      "buildingId": "0363100012174158",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120375.52691017631,
+          486928.63029731344
+        ],
+        [
+          120380.86490997137,
+          486931.44629734795
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174158_e_1ejs321-full.jpg",
+          "cropSha256": "cbe31fc958bd4d67013d1aeae618d61707512fb200693d7f9dcb9f34f6f84bf6",
+          "captureDate": "2023-01-16T09:27:58.202780Z",
+          "width": 282,
+          "height": 829,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174161-full",
+      "observationId": "0363100012174161_e_19sfn4b",
+      "buildingId": "0363100012174161",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120429.47890722174,
+          486925.63229761744
+        ],
+        [
+          120433.685906778,
+          486917.80929762695
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174161_e_19sfn4b-full.jpg",
+          "cropSha256": "ae06b808d63edd3b5a939fb3251c5159ec5e24458b0364d1d82597b5082b9196",
+          "captureDate": "2022-01-27T08:55:10.391340Z",
+          "width": 416,
+          "height": 817,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174167-full",
+      "observationId": "0363100012174167_e_1ea8uo3",
+      "buildingId": "0363100012174167",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120408.54292101006,
+          487376.89129827725
+        ],
+        [
+          120412.39092084765,
+          487378.4022983009
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174167_e_1ea8uo3-full.jpg",
+          "cropSha256": "0e55b46a1b48d62118b1079863aa0d3db3c57438a14ec1285aa994ac461435e1",
+          "captureDate": "2022-12-15T09:29:59.802150Z",
+          "width": 193,
+          "height": 769,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174169-full",
+      "observationId": "0363100012174169_e_1w30ns5",
+      "buildingId": "0363100012174169",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120380.78292217135,
+          487365.6332980942
+        ],
+        [
+          120385.48692197513,
+          487367.5652981265
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174169_e_1w30ns5-full.jpg",
+          "cropSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
+          "captureDate": "2025-01-20T10:11:49Z",
+          "width": 238,
+          "height": 791,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174196-full",
+      "observationId": "0363100012174196_e_1pgb2yl",
+      "buildingId": "0363100012174196",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120317.93291840857,
+          487112.56029730383
+        ],
+        [
+          120322.41391822213,
+          487114.4162973313
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174196_e_1pgb2yl-full.jpg",
+          "cropSha256": "80a448aa15729246e82ebc0d609d858ca55b85224f09041cfe0bc1686db3008f",
+          "captureDate": "2024-12-17T08:53:09Z",
+          "width": 227,
+          "height": 778,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174198-full",
+      "observationId": "0363100012174198_e_057tydi",
+      "buildingId": "0363100012174198",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120313.46091859447,
+          487110.70729727444
+        ],
+        [
+          120317.93291840857,
+          487112.56029730383
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174198_e_057tydi-full.jpg",
+          "cropSha256": "7ee3a52730fd5a65841f1c9a2cc8ade17c8091fe5d97c10a2a30596b76eb8e16",
+          "captureDate": "2024-12-17T08:53:09Z",
+          "width": 227,
+          "height": 771,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174200-full",
+      "observationId": "0363100012174200_e_0nwnsxh",
+      "buildingId": "0363100012174200",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120334.00091688643,
+          487088.8172973547
+        ],
+        [
+          120328.44891711649,
+          487086.49029732106
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174200_e_0nwnsxh-full.jpg",
+          "cropSha256": "1a57a2d92f164250ee7382d49848df0a6a5d43bfd147181b505b2ad1f6211c6d",
+          "captureDate": "2023-03-06T11:16:03.527070Z",
+          "width": 282,
+          "height": 830,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174203-full",
+      "observationId": "0363100012174203_e_1xsw9l0",
+      "buildingId": "0363100012174203",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120328.44891711649,
+          487086.49029732106
+        ],
+        [
+          120323.64291731568,
+          487084.4762972873
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174203_e_1xsw9l0-full.jpg",
+          "cropSha256": "edc9b705a12cf8bc2bc00a79fe555b52344ffdb9cb179eae191910320ae2f7d9",
+          "captureDate": "2023-03-06T11:16:04.552010Z",
+          "width": 244,
+          "height": 804,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174204-full",
+      "observationId": "0363100012174204_e_1r4mm2h",
+      "buildingId": "0363100012174204",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120314.78991768265,
+          487080.76529723144
+        ],
+        [
+          120309.50091790178,
+          487078.54829719453
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174204_e_1r4mm2h-full.jpg",
+          "cropSha256": "8fc212b8156a2987502234e4dfc291b4329d07981dc90e682d3db242932305e3",
+          "captureDate": "2023-03-06T11:16:15.951960Z",
+          "width": 268,
+          "height": 802,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174207-full",
+      "observationId": "0363100012174207_e_0y0y7um",
+      "buildingId": "0363100012174207",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120285.04991891526,
+          487068.29929703317
+        ],
+        [
+          120287.73891858946,
+          487061.7942970437
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174207_e_0y0y7um-full.jpg",
+          "cropSha256": "126f84ef92e8306d055b979dcd1b5275769a6de731a26439931fbb93e6a72b40",
+          "captureDate": "2024-12-16T10:23:26Z",
+          "width": 329,
+          "height": 765,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174208-full",
+      "observationId": "0363100012174208_e_1qzmpef",
+      "buildingId": "0363100012174208",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120287.73891858946,
+          487061.7942970437
+        ],
+        [
+          120289.53391837186,
+          487057.45129704336
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174208_e_1qzmpef-full.jpg",
+          "cropSha256": "f475e78b1fd05d14fe3b7998c833c83ae84147bf5c98e4387c40031d3075ee33",
+          "captureDate": "2024-12-16T10:23:26Z",
+          "width": 220,
+          "height": 748,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174209-full",
+      "observationId": "0363100012174209_e_1ldpyte",
+      "buildingId": "0363100012174209",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120289.53391837186,
+          487057.45129704336
+        ],
+        [
+          120291.29091815875,
+          487053.20029704575
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174209_e_1ldpyte-full.jpg",
+          "cropSha256": "ea2caeacb85f12c2b7e4aff3757fe4d53bc2e2485643fbe4fc9694e2a9dd8b98",
+          "captureDate": "2024-12-16T10:23:26Z",
+          "width": 215,
+          "height": 764,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174210-full",
+      "observationId": "0363100012174210_e_15cjfhe",
+      "buildingId": "0363100012174210",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120285.53091975597,
+          487099.1362970964
+        ],
+        [
+          120291.06491952584,
+          487101.4282971275
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012174210_e_15cjfhe-full.jpg",
+          "cropSha256": "40db5d1feadabfaa26e185586532bcaadc166bb75d46cbfbc7e67b58742d2f01",
+          "captureDate": "2024-12-17T08:53:17Z",
+          "width": 280,
+          "height": 880,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174211-full",
+      "observationId": "0363100012174211_e_0a5dx7g",
+      "buildingId": "0363100012174211",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120296.90491928294,
+          487103.8482971675
+        ],
+        [
+          120300.96091911424,
+          487105.52829719195
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174211_e_0a5dx7g-full.jpg",
+          "cropSha256": "0d9a4db56f5fb1da8339a7a8c8f15d87a9af5af5e791e24fb2f4b75e7709a19e",
+          "captureDate": "2024-12-17T08:53:17Z",
+          "width": 205,
+          "height": 722,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174212-full",
+      "observationId": "0363100012174212_e_1e45knu",
+      "buildingId": "0363100012174212",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120281.71191991484,
+          487097.5542970699
+        ],
+        [
+          120285.53091975597,
+          487099.1362970964
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012174212_e_1e45knu-full.jpg",
+          "cropSha256": "0755dde44e9e5f2b35e65d4928518408ffb1fd367ac17e4f021f6f0aad571487",
+          "captureDate": "2024-12-17T08:53:17Z",
+          "width": 193,
+          "height": 773,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174214-full",
+      "observationId": "0363100012174214_e_11c0jzl",
+      "buildingId": "0363100012174214",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120331.7549178336,
+          487118.28629739146
+        ],
+        [
+          120336.07791765392,
+          487120.0772974201
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174214_e_11c0jzl-full.jpg",
+          "cropSha256": "eec87d459cd1dbd9ec42fbf40c2e597d2b927329ed55aea9646a3b0bd34e9e1d",
+          "captureDate": "2024-12-17T08:53:08Z",
+          "width": 219,
+          "height": 713,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174216-full",
+      "observationId": "0363100012174216_e_0fo2nad",
+      "buildingId": "0363100012174216",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120322.41391822213,
+          487114.4162973313
+        ],
+        [
+          120326.7649180412,
+          487116.21929735906
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174216_e_0fo2nad-full.jpg",
+          "cropSha256": "90204dc85d6a691d153188eb09f57ccbd24d913e6816af2fe0a9d4dbe77f7b8a",
+          "captureDate": "2023-03-06T11:16:07.542010Z",
+          "width": 220,
+          "height": 866,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174271-full",
+      "observationId": "0363100012174271_e_1ujbmrr",
+      "buildingId": "0363100012174271",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120275.86992398527,
+          487231.38529726386
+        ],
+        [
+          120280.53792379181,
+          487233.34829729324
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174271_e_1ujbmrr-full.jpg",
+          "cropSha256": "a01219a5a6738404a2cb4368ee35931133568d32041c586ad21efec89b592ba7",
+          "captureDate": "2024-12-16T10:27:17Z",
+          "width": 237,
+          "height": 704,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174272-full",
+      "observationId": "0363100012174272_e_0rlk8j1",
+      "buildingId": "0363100012174272",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120259.25392435727,
+          487213.14429713576
+        ],
+        [
+          120255.13192452914,
+          487211.448297114
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174272_e_0rlk8j1-full.jpg",
+          "cropSha256": "0226d1dfb9d26194ef76cd80f0ab8b49dae7897d7fc6bd9ccefb313bd6fa2916",
+          "captureDate": "2024-12-16T10:27:22Z",
+          "width": 209,
+          "height": 738,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174273-full",
+      "observationId": "0363100012174273_e_0av5h9l",
+      "buildingId": "0363100012174273",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120268.4469239744,
+          487216.9282971964
+        ],
+        [
+          120264.21792415036,
+          487215.18129716924
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174273_e_0av5h9l-full.jpg",
+          "cropSha256": "76e206fef3f1aee7f14d2191ecf0597ff151e47cade0d7046ec2be766cecfabd",
+          "captureDate": "2024-12-16T10:27:21Z",
+          "width": 214,
+          "height": 753,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174275-full",
+      "observationId": "0363100012174275_e_1m7kehw",
+      "buildingId": "0363100012174275",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120266.07192439598,
+          487227.44029719656
+        ],
+        [
+          120275.86992398527,
+          487231.38529726386
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174275_e_1m7kehw-full.jpg",
+          "cropSha256": "4fb00d2e86e8605c0f6124c1f1a5fc059e6e294818f45d24d96c89dcaa732e45",
+          "captureDate": "2024-12-16T10:27:18Z",
+          "width": 494,
+          "height": 570,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174281-full",
+      "observationId": "0363100012174281_e_1tbd3v2",
+      "buildingId": "0363100012174281",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120334.37292327048,
+          487316.8102977462
+        ],
+        [
+          120331.21992340256,
+          487315.5392977278
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174281_e_1tbd3v2-full.jpg",
+          "cropSha256": "690069a93939eb7c1dbb85547755ed587f3c4b65e9a65e41d9e7e907de3af276",
+          "captureDate": "2024-12-16T10:24:37Z",
+          "width": 159,
+          "height": 683,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174285-full",
+      "observationId": "0363100012174285_e_1x4nmp4",
+      "buildingId": "0363100012174285",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120305.3209244933,
+          487305.29029755865
+        ],
+        [
+          120300.77892468488,
+          487303.5092975288
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174285_e_1x4nmp4-full.jpg",
+          "cropSha256": "8ed56c4653e1e5dc3025bd93d22a51687a36fa4a8a801e0d92d671e1b13298e6",
+          "captureDate": "2024-12-16T09:18:53Z",
+          "width": 228,
+          "height": 848,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174289-full",
+      "observationId": "0363100012174289_e_0cj0mg6",
+      "buildingId": "0363100012174289",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120308.96391878146,
+          487108.84429724613
+        ],
+        [
+          120313.46091859447,
+          487110.70729727444
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174289_e_0cj0mg6-full.jpg",
+          "cropSha256": "1ec8121b7324cea73458b1442a86d2e476a74886c87bc5490e998ccbc1c22e65",
+          "captureDate": "2023-03-06T11:16:09.577010Z",
+          "width": 228,
+          "height": 751,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174290-full",
+      "observationId": "0363100012174290_e_1bvk8pj",
+      "buildingId": "0363100012174290",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120266.21292120029,
+          487113.9492970071
+        ],
+        [
+          120267.78892101276,
+          487110.255297007
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174290_e_1bvk8pj-full.jpg",
+          "cropSha256": "2527577194227bf476f15123c9a010acd22d9d780e9759e9be0dcf07dfd96086",
+          "captureDate": "2024-12-16T10:23:33Z",
+          "width": 188,
+          "height": 812,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174291-full",
+      "observationId": "0363100012174291_e_0j61j83",
+      "buildingId": "0363100012174291",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120255.12492253582,
+          487140.4752969875
+        ],
+        [
+          120257.29292226801,
+          487135.0482969916
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174291_e_0j61j83-full.jpg",
+          "cropSha256": "6f1e89543eb8e341e87f55d575d951a32881b956db57761d9c340abc3c0cd6e1",
+          "captureDate": "2024-12-16T10:23:33Z",
+          "width": 274,
+          "height": 720,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174294-full",
+      "observationId": "0363100012174294_e_1lpv776",
+      "buildingId": "0363100012174294",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120257.29292226801,
+          487135.0482969916
+        ],
+        [
+          120261.72492174337,
+          487124.7722970004
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174294_e_1lpv776-full.jpg",
+          "cropSha256": "6ba9b48a3acdd84700aa681cf1979a06ddcb9cdb98cab5c956c4731340b2a906",
+          "captureDate": "2024-12-16T10:23:35Z",
+          "width": 524,
+          "height": 724,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174299-full",
+      "observationId": "0363100012174299_e_0v1eiid",
+      "buildingId": "0363100012174299",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120287.77992179128,
+          487175.85029723804
+        ],
+        [
+          120293.5279215508,
+          487178.1792972748
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174299_e_0v1eiid-full.jpg",
+          "cropSha256": "d7ab3c9ccc50479d9f339486e707f5ed4e6fad1b2c0fb20396f3b62dd1020015",
+          "captureDate": "2024-12-16T10:46:04Z",
+          "width": 290,
+          "height": 631,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012174301-full",
+      "observationId": "0363100012174301_e_0va7fzr",
+      "buildingId": "0363100012174301",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120264.2199227653,
+          487165.88029708515
+        ],
+        [
+          120270.65992249473,
+          487168.4482971292
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012174301_e_0va7fzr-full.jpg",
+          "cropSha256": "0bc0fe4e351436120f797ab6bf96d817fe014b07860e6b1a8ac3cedd72f3073c",
+          "captureDate": "2024-12-16T10:45:28Z",
+          "width": 324,
+          "height": 816,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "reconciledAt": "2026-09-12T23:10:37.748Z",
+  "analysisKey": "d98eac6d0c8585af1b83282703d528249b87df30631ae9b67dd60635176b6eba",
+  "cropSha256": "228fc904dbf5e14dde3893a1f944673e5857ca1278b1d72bdd7de486dc3bc794",
+  "requestStartedAt": "2026-09-12T23:07:41.252Z",
+  "providerLookup": {
+    "generationId": null,
+    "result": "not-queryable-without-generation-id",
+    "activityApi": "current UTC day unavailable"
+  },
+  "resolution": "charged-abstention-at-full-reservation",
+  "accountedUsd": 0.015,
+  "neverRetry": true,
+  "globalReservation": "request:e05d8dadfd50d1e4364d4a3decd0493908329d868bc8427ed1aac57816a1fbd7",
+  "phaseReservation": "phase:ff204c8880ef8770d5719deb53c4a749bc38f69e26005428cb9854be54e3dd09",
+  "globalTotalUsd": 2.1375464370000006,
+  "phaseTotalUsd": 0.3310028025,
+  "providerActualUsd": null,
+  "budgetAccountedUsd": 0.015,
+  "upperBoundBasis": "Configured per-request RESERVED_USD ceiling covering the complete image/text input and at most 4,000 output tokens; provider actual charge is unknown because no generation ID or saved response exists."
+}

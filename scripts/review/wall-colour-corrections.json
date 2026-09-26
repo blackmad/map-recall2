@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "kind": "declared-source-wall-colour-correction",
+  "state": "needs-review",
+  "scope": "development review packet only",
+  "inspector": "reconstruction loop pass 10",
+  "note": "Declared source-bound wall-colour observations for reviewed cases whose extraction carries an upper-wall material with no colour field. These are NOT accepted extraction materials and they are NOT consumed by the production compiler; a targeted refresh applies them to the review packet's source-shape study only. The underlying extraction gap is left intact so a future extraction that supplies the colour is still noticed. The colour derives from the masked crop sample (review-data/case-wall-colour.json, masked-crop-percentile) cross-checked against the dated source crop by eye.",
+  "cases": [
+    {
+      "caseId": "case-08",
+      "address": "Rozengracht 251",
+      "source": {
+        "tier": "full",
+        "sha256": "6b9d07c1aa7d65cd81e920c54cb2ce3f72d06fbd7dc6b711d2aac71a8d14eb73",
+        "captureDate": "2025-07-03T08:51:51Z"
+      },
+      "observation": {
+        "basis": "masked-crop-percentile + agent inspection",
+        "sampleHex": "#594e48",
+        "sampleFamily": "brick",
+        "sampleState": "needs-review",
+        "finding": "The 2025 source is a dark, desaturated brown-grey brick upper wall with cream painted bands and a cream top cornice. The extraction declares region 'upper-wall' material 'brick' with no colour, so the compiler emits no material patch and the workbench shows the neutral render base (#d7d0c7) instead of the brick."
+      },
+      "features": [
+        {
+          "id": "full:mat-brick",
+          "colour": "#594e48",
+          "reason": "Whole-crop upper-wall brick. Masked crop sample #594e48 (review-data/case-wall-colour.json); the visible brick gaps between the cream bands average #514943, so the warm sample is the better mask than the neutral render base."
+        },
+        {
+          "id": "full:mat-accent",
+          "colour": "#e8e8e8",
+          "reason": "The extraction's thin accent band [0,90.6,282,98.15] is the cream painted cornice at the top of the same source; declare it cream instead of leaving the trim unpainted."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "id": "case22-stepped-gable-source-owner-v1",
+  "caseId": "case-22",
+  "buildingId": "0363100012165927",
+  "observationId": "0363100012165927_e_0xxqmsr",
+  "source": {
+    "cropSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+    "dimensions": { "width": 296, "height": 936 },
+    "captureDate": "2023-01-12T09:08:29.970310Z",
+    "plane": {
+      "start": { "x": 119928.54317313504, "y": 486898.78043469705 },
+      "end": { "x": 119926.03469343946, "y": 486904.85715468886 },
+      "baseZ": -0.253999999910593,
+      "topZ": 20.54
+    },
+    "localToNAPOffsetM": 0.65
+  },
+  "facadeBoundsPx": { "left": 0, "right": 296, "bottom": 936 },
+  "silhouetteTopPx": [[0, 210], [26, 210], [28, 168], [53, 168], [57, 125], [72, 125], [75, 94], [132, 96], [132, 128], [149, 128], [149, 174], [176, 174], [176, 217], [207, 220], [207, 247], [296, 251]],
+  "extractionVersion": "source-facade-owner-candidate/v1",
+  "scopeNote": "Approximate source-plane facade with preserved brick, balcony fronts, masonry heads, windows and paired entrance, plus an explicit triangular-facet roof hypothesis. Each roof facet follows the observed front steps and exact native A-C contact; hidden depth and completion remain inferred, not recovered measurements.",
+  "concaveMaterialPreview": {
+    "sourceCropSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+    "featureIds": ["full:mat-1"]
+  },
+  "sourceFeatureOverrides": [
+    {
+      "source": "full",
+      "sourceCropSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+      "featureId": "full:review:row-0-right",
+      "expectedFeatureSha256": "2f32cbb4565a8a5e0d24fd71de90f622375c21fdeb55568a1e90da70b0632430",
+      "set": {
+        "lintelHead": "rectangular",
+        "surroundColour": "#765852",
+        "classificationNote": "2023 full crop shows a broad flat masonry lintel above rectangular glazing"
+      },
+      "remove": ["lintelRise"],
+      "basis": "The 2023 full crop shows a horizontal glazing head and broad flat masonry lintel at the highest right opening; the previous generic segmental lintel interpretation is overridden only for this feature."
+    },
+    {
+      "source": "full",
+      "sourceCropSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+      "featureId": "full:review:row-1-right",
+      "expectedFeatureSha256": "351d0d17c9eab80a8dda5c47d419c303dad7b2ee761961254d464347bdcaa7a9",
+      "set": {
+        "surroundColour": "#765852",
+        "classificationNote": "2023 full crop shows a shallow masonry arch above a separate horizontal rectangular glazing head"
+      },
+      "basis": "The 2023 full crop directly separates the shallow dark masonry arch from the rectangular glazing below; the arch is trim, not curved glass."
+    },
+    {
+      "source": "full",
+      "sourceCropSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+      "featureId": "full:review:row-2-right",
+      "expectedFeatureSha256": "99686955334998d2dd6fa7fa29afb5763aeb25f1bfbb8774be5738670adfba66",
+      "set": {
+        "surroundColour": "#765852",
+        "classificationNote": "2023 full crop shows a shallow masonry arch above a separate horizontal rectangular glazing head"
+      },
+      "basis": "The 2023 full crop directly separates the shallow dark masonry arch from the rectangular glazing below; the arch is trim, not curved glass."
+    }
+  ],
+  "nativeTopologyBinding": {
+    "geometryRevision": "6564ac37d9725497ad3d0dc1b8ea4c4732e58fd6d5b94c07c52222a70d8fa42d",
+    "surfaceSha256": {
+      "5": "7b63b041403a75e416ec2a31c03971cb6de03dc67f06908760bbc461178b296f",
+      "22": "6c845a5c9eaab6df97ec24111167fa64863ed3bde56d68babe0ee41060690b16",
+      "24": "383e71ff740f4b1b84f5169e0747a7f77ab39e38d0c325834910220d2c39cdf4",
+      "25": "37a9663cef57abcf0f3560d1cca095e15d943143b89fcce51422dbecb7fe663d",
+      "31": "669f0c20eedb3531b5018b09b8a97d9356b6dd08b5368668a8963da3d2f0c41c",
+      "32": "4f1fd50791895ca4c8e4f65b72f528167e817ff18d5daef0a71d649681e895c4"
+    }
+  },
+  "nativeTopologyJoins": [
+    {
+      "name": "trim-native-side-wall-apex", "type": "wall", "role": "front-wall-topology-derived", "colour": "#6b574a", "replaceSurfaceIndex": 5,
+      "vertices": [
+        { "native": { "surfaceIndex": 5, "ringIndex": 0, "vertexIndex": 1 } },
+        { "native": { "surfaceIndex": 5, "ringIndex": 0, "vertexIndex": 2 } },
+        { "native": { "surfaceIndex": 5, "ringIndex": 0, "vertexIndex": 3 } },
+        { "native": { "surfaceIndex": 5, "ringIndex": 0, "vertexIndex": 4 } }
+      ],
+      "basis": "Native wall 5 rises to the conflicting roof apex. Its retained four vertices already meet roof 31 and wall 6, so this inferred candidate removes only the apex while preserving the original in the baseline."
+    },
+    {
+      "name": "trim-native-contact-wall-apex", "type": "wall", "role": "front-wall-topology-derived", "colour": "#6b574a", "replaceSurfaceIndex": 25,
+      "vertices": [
+        { "native": { "surfaceIndex": 25, "ringIndex": 0, "vertexIndex": 0 } },
+        { "source": { "x": 132, "y": 96, "normalOffsetM": 0 } },
+        { "native": { "surfaceIndex": 31, "ringIndex": 0, "vertexIndex": 0 } },
+        { "native": { "surfaceIndex": 25, "ringIndex": 0, "vertexIndex": 2 } }
+      ],
+      "basis": "The inferred replacement closes the exact rear A contact to the source-supported highest step and retained roof-31 edge, preserving the lower wall-22 contact while omitting the conflicting native apex."
+    },
+    {
+      "name": "stepped-front-explicit-roof-facets", "type": "roof", "role": "roof-join-explicit-triangular-facets", "colour": "#655f57", "replaceSurfaceIndex": 32,
+      "facets": [
+        [{ "native": { "surfaceIndex": 32, "ringIndex": 0, "vertexIndex": 0 } }, { "source": { "x": 132, "y": 96, "normalOffsetM": 0 } }, { "source": { "x": 132, "y": 128, "normalOffsetM": 0 } }],
+        [{ "native": { "surfaceIndex": 32, "ringIndex": 0, "vertexIndex": 0 } }, { "source": { "x": 132, "y": 128, "normalOffsetM": 0 } }, { "source": { "x": 149, "y": 128, "normalOffsetM": 0 } }],
+        [{ "native": { "surfaceIndex": 32, "ringIndex": 0, "vertexIndex": 0 } }, { "source": { "x": 149, "y": 128, "normalOffsetM": 0 } }, { "source": { "x": 149, "y": 174, "normalOffsetM": 0 } }],
+        [{ "native": { "surfaceIndex": 32, "ringIndex": 0, "vertexIndex": 0 } }, { "source": { "x": 149, "y": 174, "normalOffsetM": 0 } }, { "source": { "x": 176, "y": 174, "normalOffsetM": 0 } }],
+        [{ "native": { "surfaceIndex": 32, "ringIndex": 0, "vertexIndex": 0 } }, { "source": { "x": 176, "y": 174, "normalOffsetM": 0 } }, { "source": { "x": 176, "y": 217, "normalOffsetM": 0 } }],
+        [{ "native": { "surfaceIndex": 32, "ringIndex": 0, "vertexIndex": 0 } }, { "source": { "x": 176, "y": 217, "normalOffsetM": 0 } }, { "source": { "x": 207, "y": 220, "normalOffsetM": 0 } }],
+        [{ "native": { "surfaceIndex": 32, "ringIndex": 0, "vertexIndex": 0 } }, { "source": { "x": 207, "y": 220, "normalOffsetM": 0 } }, { "source": { "x": 207, "y": 247, "normalOffsetM": 0 } }],
+        [{ "native": { "surfaceIndex": 32, "ringIndex": 0, "vertexIndex": 0 } }, { "source": { "x": 207, "y": 247, "normalOffsetM": 0 } }, { "source": { "x": 228, "y": 248, "normalOffsetM": 0 } }],
+        [{ "native": { "surfaceIndex": 32, "ringIndex": 0, "vertexIndex": 0 } }, { "source": { "x": 228, "y": 248, "normalOffsetM": 0 } }, { "native": { "surfaceIndex": 32, "ringIndex": 0, "vertexIndex": 2 } }]
+      ],
+      "basis": "Bounded hypothesis from the pass7 diagnostic: nine explicit triangles retain native rear A and lower-front C while following every observed descending front step. Separate triangle surfaces prevent renderer Earcut chords across a nonplanar ring. Street sources do not reveal the rear, so depth and completion remain inferred."
+    }
+  ],
+  "componentSurfaces": [
+    {
+      "name": "highest-right-flat-masonry-head",
+      "type": "wall",
+      "role": "masonry-head-observed-outline-inferred-relief",
+      "colour": "#4d3836",
+      "vertices": [
+        { "x": 201, "y": 303, "normalOffsetM": 0.04 },
+        { "x": 255, "y": 303, "normalOffsetM": 0.04 },
+        { "x": 255, "y": 295, "normalOffsetM": 0.04 },
+        { "x": 201, "y": 295, "normalOffsetM": 0.04 }
+      ],
+      "basis": "The magnified 2023 full crop shows a dark flat masonry strip at approximately x201..255, y295..303 above the highest right rectangular glazing. The broader fascia begins higher and is excluded; opening-top placement remains parked. The 0.04m relief is an inferred preview offset, not measured projection."
+    },
+    {
+      "name": "middle-right-arched-masonry-head",
+      "type": "wall",
+      "role": "masonry-head-observed-outline-inferred-relief",
+      "colour": "#4d3836",
+      "vertices": [
+        { "x": 201, "y": 455, "normalOffsetM": 0.04 },
+        { "x": 255, "y": 455, "normalOffsetM": 0.04 },
+        { "x": 255, "y": 447, "normalOffsetM": 0.04 },
+        { "x": 250, "y": 442, "normalOffsetM": 0.04 },
+        { "x": 245, "y": 438, "normalOffsetM": 0.04 },
+        { "x": 237, "y": 436, "normalOffsetM": 0.04 },
+        { "x": 228, "y": 435, "normalOffsetM": 0.04 },
+        { "x": 219, "y": 436, "normalOffsetM": 0.04 },
+        { "x": 212, "y": 437, "normalOffsetM": 0.04 },
+        { "x": 206, "y": 441, "normalOffsetM": 0.04 },
+        { "x": 201, "y": 445, "normalOffsetM": 0.04 }
+      ],
+      "basis": "The 2023 full crop shows a substantial shallow arched masonry zone at approximately x201..255, y429..455, ending above the horizontal glazing head. The darker inner tympanum is sampled as the broader rounded profile y435..455 rather than forcing the approximate outer-brick top into a pointed apex; 0.04m relief is inferred preview layering."
+    },
+    {
+      "name": "lower-right-arched-masonry-head",
+      "type": "wall",
+      "role": "masonry-head-observed-outline-inferred-relief",
+      "colour": "#4d3836",
+      "vertices": [
+        { "x": 201, "y": 606, "normalOffsetM": 0.04 },
+        { "x": 255, "y": 606, "normalOffsetM": 0.04 },
+        { "x": 255, "y": 598, "normalOffsetM": 0.04 },
+        { "x": 250, "y": 593, "normalOffsetM": 0.04 },
+        { "x": 245, "y": 589, "normalOffsetM": 0.04 },
+        { "x": 237, "y": 587, "normalOffsetM": 0.04 },
+        { "x": 228, "y": 586, "normalOffsetM": 0.04 },
+        { "x": 219, "y": 587, "normalOffsetM": 0.04 },
+        { "x": 212, "y": 588, "normalOffsetM": 0.04 },
+        { "x": 206, "y": 592, "normalOffsetM": 0.04 },
+        { "x": 201, "y": 596, "normalOffsetM": 0.04 }
+      ],
+      "basis": "The 2023 full crop shows a substantial shallow arched masonry zone at approximately x201..255, y580..606, ending above the horizontal glazing head. The darker inner tympanum is sampled as the broader rounded profile y586..606 rather than forcing the approximate outer-brick top into a pointed apex; 0.04m relief is inferred preview layering."
+    }
+  ],
+  "componentAssemblies": [
+    {
+      "name": "upper-balcony",
+      "type": "balcony",
+      "boundsPx": [66, 348, 143, 402],
+      "projectionM": 0.1,
+      "slabThicknessPx": 6,
+      "verticalRailCount": 10,
+      "railWidthPx": 2.2,
+      "railColour": "#292725",
+      "slabColour": "#817970",
+      "observedBasis": "The 2023 full crop directly shows this balcony's frontal extent, top/bottom rails and repeated vertical iron rhythm; pixel bounds are approximate visual readings.",
+      "inferredDepthBasis": "The source shows an oblique side and underside but does not measure projection; 0.10m is an explicitly conservative shallow preview depth chosen to keep the observed front near its source-plane placement."
+    },
+    {
+      "name": "middle-balcony",
+      "type": "balcony",
+      "boundsPx": [73, 506, 148, 556],
+      "projectionM": 0.1,
+      "slabThicknessPx": 6,
+      "verticalRailCount": 10,
+      "railWidthPx": 2.2,
+      "railColour": "#292725",
+      "slabColour": "#817970",
+      "observedBasis": "The 2023 full crop directly shows this balcony's frontal extent, top/bottom rails and repeated vertical iron rhythm; pixel bounds are approximate visual readings.",
+      "inferredDepthBasis": "The source shows an oblique side and underside but does not measure projection; 0.10m is an explicitly conservative shallow preview depth chosen to keep the observed front near its source-plane placement."
+    },
+    {
+      "name": "lower-balcony",
+      "type": "balcony",
+      "boundsPx": [76, 675, 149, 716],
+      "projectionM": 0.1,
+      "slabThicknessPx": 6,
+      "verticalRailCount": 10,
+      "railWidthPx": 2.2,
+      "railColour": "#292725",
+      "slabColour": "#817970",
+      "observedBasis": "The 2023 full crop directly shows this balcony's frontal extent, top/bottom rails and repeated vertical iron rhythm; pixel bounds are approximate visual readings.",
+      "inferredDepthBasis": "The source shows an oblique side and underside but does not measure projection; 0.10m is an explicitly conservative shallow preview depth chosen to keep the observed front near its source-plane placement."
+    }
+  ],
+  "sourceNote": "Agent-inspected 2023 full crop: asymmetric stepped tower at left and lower flat/parapet bay at right; the projecting hoist beam is excluded from the silhouette. Pixel positions are approximate visual estimates."
+}

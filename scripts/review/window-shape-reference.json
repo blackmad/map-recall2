@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "scope": "Independent source-specific shape references for six difficult examples, plus mandatory shape audit for every reviewed case. Not metric registration certification.",
+  "coordinateConvention": "source pixel edges; archRise fraction of opening height; topCornerRadius fraction of smaller opening dimension",
+  "mandatoryAcrossReviewedSet": [
+    "glazing-head-shape",
+    "masonry-lintel-separate-from-glazing",
+    "arch-rise-and-curvature",
+    "frame-follows-profile",
+    "transom-and-mullion-placement",
+    "no-invented-curves-for-rectangular-glazing"
+  ],
+  "entries": [
+    {
+      "caseId": "case-04",
+      "tier": "ground",
+      "cropSha256": "b71b27fbdf7bdb257b04802748284608c89972418cae83a99d7d568c147368c0",
+      "captureDate": "2022-04-29T09:13:24.563450Z",
+      "sourceImage": "/data/city-expansion/evidence/b71b27fbdf7bdb257b04802748284608c89972418cae83a99d7d568c147368c0.jpg",
+      "inspector": "primary-agent",
+      "disposition": "agent-inspected-independent-reference",
+      "inspectedAt": "2026-09-12T17:56:57.906148+00:00",
+      "method": "individual original-resolution photo inspection; manually estimated pixel assembly boxes and arch-rise ranges",
+      "features": [
+        {
+          "id": "broad-ground-window",
+          "kind": "window",
+          "head": "segmental",
+          "bounds": [
+            332,
+            197,
+            600,
+            446
+          ],
+          "archRiseRange": [
+            0.085,
+            0.15
+          ],
+          "transomRange": [
+            0.3,
+            0.4
+          ],
+          "mullions": [
+            0.24,
+            0.71
+          ],
+          "lintelHead": "segmental"
+        },
+        {
+          "id": "paired-entrance",
+          "kind": "door",
+          "head": "segmental",
+          "bounds": [
+            105,
+            202,
+            282,
+            515
+          ],
+          "archRiseRange": [
+            0.07,
+            0.13
+          ],
+          "paired": true
+        }
+      ],
+      "notes": "Ground glazing follows a broad shallow curve, with separate brick lintel. Door pair shares one shallow curved transom outline. Upper small windows have taller curves than broad multi-panel windows; do not assign one rise to all."
+    },
+    {
+      "caseId": "case-11",
+      "tier": "ground",
+      "cropSha256": "e52e266d8ff29413f9c2795261699ef45ee097167e23711778aac18049d3cc30",
+      "captureDate": "2025-07-03T08:52:45Z",
+      "sourceImage": "/data/city-expansion/evidence/e52e266d8ff29413f9c2795261699ef45ee097167e23711778aac18049d3cc30.jpg",
+      "inspector": "primary-agent",
+      "disposition": "agent-inspected-independent-reference",
+      "inspectedAt": "2026-09-12T17:56:57.906148+00:00",
+      "method": "individual original-resolution photo inspection; manually estimated pixel assembly boxes and arch-rise ranges",
+      "features": [
+        {
+          "id": "shop-display",
+          "kind": "window",
+          "head": "rectangular",
+          "bounds": [
+            181,
+            48,
+            502,
+            357
+          ],
+          "topCornerRadiusRange": [
+            0.05,
+            0.1
+          ]
+        }
+      ],
+      "notes": "Shop display has a straight central top and rounded top corners. This is not a continuous segmental arch. Upper window glazing is rectangular beneath arched masonry and infill. Large display bottom is partly occluded by bench."
+    },
+    {
+      "caseId": "case-19",
+      "tier": "ground",
+      "cropSha256": "3865a2dc283c93dc6f4af6ff826bdf3ac5f8f9cc035216285b3119452478d816",
+      "captureDate": "2025-06-30T05:28:22Z",
+      "sourceImage": "/data/city-expansion/evidence/3865a2dc283c93dc6f4af6ff826bdf3ac5f8f9cc035216285b3119452478d816.jpg",
+      "inspector": "primary-agent",
+      "disposition": "agent-inspected-independent-reference",
+      "inspectedAt": "2026-09-12T17:56:57.906148+00:00",
+      "method": "individual original-resolution photo inspection; manually estimated pixel assembly boxes and arch-rise ranges",
+      "features": [
+        {
+          "id": "basement-window",
+          "kind": "window",
+          "head": "segmental",
+          "bounds": [
+            54,
+            226,
+            166,
+            466
+          ],
+          "archRiseRange": [
+            0.025,
+            0.08
+          ]
+        },
+        {
+          "id": "basement-door",
+          "kind": "door",
+          "head": "segmental",
+          "bounds": [
+            178,
+            227,
+            288,
+            468
+          ],
+          "archRiseRange": [
+            0.025,
+            0.08
+          ]
+        }
+      ],
+      "notes": "Two shallow separate glazing arches beneath a broader common white masonry arch. Preserve the raised entrance and steps on the right; do not move all entrance bottoms to one level."
+    },
+    {
+      "caseId": "case-22",
+      "tier": "ground",
+      "cropSha256": "e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d",
+      "captureDate": "2025-07-31T11:09:13Z",
+      "sourceImage": "/data/city-expansion/evidence/e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d.jpg",
+      "inspector": "primary-agent",
+      "disposition": "agent-inspected-independent-reference",
+      "inspectedAt": "2026-09-12T17:56:57.906148+00:00",
+      "method": "individual original-resolution photo inspection; manually estimated pixel assembly boxes and arch-rise ranges",
+      "features": [
+        {
+          "id": "ground-window-group",
+          "kind": "window",
+          "head": "rectangular",
+          "bounds": [
+            148,
+            94,
+            475,
+            355
+          ]
+        },
+        {
+          "id": "door-pair",
+          "kind": "door",
+          "head": "segmental",
+          "bounds": [
+            546,
+            94,
+            695,
+            403
+          ],
+          "archRiseRange": [
+            0.025,
+            0.08
+          ],
+          "paired": true
+        }
+      ],
+      "notes": "Broad window group has rectangular heads; the narrow entrance pair has a separate shallow arched transom. Source brick lintels must not be confused with glazing silhouette."
+    },
+    {
+      "caseId": "case-25",
+      "tier": "ground",
+      "cropSha256": "fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9",
+      "captureDate": "2022-12-15T09:04:08.001450Z",
+      "sourceImage": "/data/city-expansion/evidence/fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9.jpg",
+      "inspector": "primary-agent",
+      "disposition": "agent-inspected-independent-reference",
+      "inspectedAt": "2026-09-12T17:56:57.906148+00:00",
+      "method": "individual original-resolution photo inspection; manually estimated pixel assembly boxes and arch-rise ranges",
+      "features": [
+        {
+          "id": "broad-ground-window",
+          "kind": "window",
+          "head": "segmental",
+          "bounds": [
+            246,
+            136,
+            520,
+            432
+          ],
+          "archRiseRange": [
+            0.085,
+            0.15
+          ],
+          "transomRange": [
+            0.3,
+            0.4
+          ],
+          "lintelHead": "segmental"
+        },
+        {
+          "id": "left-entrance",
+          "kind": "door",
+          "head": "rectangular",
+          "bounds": [
+            77,
+            176,
+            173,
+            471
+          ],
+          "lintelHead": "segmental"
+        }
+      ],
+      "notes": "The broad window glazing really curves. The left door has rectangular glazing/assembly beneath curved masonry and opaque fill. Do not arch both simply because the brick lintels curve."
+    },
+    {
+      "caseId": "case-30",
+      "tier": "ground",
+      "cropSha256": "b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4",
+      "captureDate": "2023-02-13T09:46:47.281620Z",
+      "sourceImage": "/data/city-expansion/evidence/b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4.jpg",
+      "inspector": "primary-agent",
+      "disposition": "agent-inspected-independent-reference",
+      "inspectedAt": "2026-09-12T17:56:57.906148+00:00",
+      "method": "individual original-resolution photo inspection; manually estimated pixel assembly boxes and arch-rise ranges",
+      "features": [
+        {
+          "id": "central-display",
+          "kind": "window",
+          "head": "segmental",
+          "bounds": [
+            116,
+            79,
+            344,
+            431
+          ],
+          "archRiseRange": [
+            0.105,
+            0.18
+          ],
+          "transomRange": [
+            0.16,
+            0.24
+          ]
+        }
+      ],
+      "notes": "Broad low curved display head with white joinery against black surround. Side shell-shaped pediments are ornamental masonry/decoration, not curved windows. Side door transoms remain rectangular; central mullions are not supported by this large display pane."
+    }
+  ]
+}
