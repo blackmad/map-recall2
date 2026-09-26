@@ -1,0 +1,35 @@
+{
+  "reviewer": "gpt-6-sol",
+  "reviewOrigin": "model-visual-review",
+  "gradedAt": "2026-09-26T18:39:57.167Z",
+  "pass": "material-trial-4",
+  "captureManifestSha256": "2982800a212b60dee538f0d5ca6c20818f7fee7eb2c40c0e505e8861b29eadfb",
+  "entries": [
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "materialId": "creamrender",
+      "verdict": "accept-family-only",
+      "reason": "The magenta target mask identifies the narrow facade left of the larger ochre neighbour. The native source crop shows a continuous warm cream-ochre wall without resolvable masonry joints; the focused target and both game views show a smooth pale cream wall on that same owner. Broad smooth render/cream family is supported. The game wall is paler and less ochre than the photograph, and the simplified windows, roof and ground-floor shapes are not accepted by this review.",
+      "imageSha256": {
+        "current-front": "edece8a7be034f1c00cdc02ac31e920f1aadc42d07925b40df294d71628a8cd1",
+        "current-oblique": "e1607800987c433efbd9ab66c3d758fc4ce85cedd6a55497728443e1d9f559bc",
+        "preview-front": "e7ff1fcb772a92db623598d898cd2bcb676fc05ff8bb2602c8a8474d45b17e72",
+        "preview-oblique": "dee862f929133e814c630c42083a7bbb1a614ce9a35af3a4afcebbc0a59d5c61",
+        "identity": "68cc00a96cc99a87a6542b0c80a9737512a0db4209df6ae55ab86a9f17c0103a",
+        "panel": "b22c6b2fd046e8d5920f1a8db62c0b931a147e7dc253952728896058c8c5a696",
+        "focused-target": "add43c45034600914f38501ce3c67cc3f5c82a504255292491097014c6d17305"
+      },
+      "dimensions": {
+        "identity": "magenta mask confirms the narrow curved-front owner immediately left of the larger ochre building",
+        "materialFamily": "smooth cream/ochre render supported in source and game",
+        "colour": "broad warm cream family only; game appears paler and less ochre, exact colour not accepted",
+        "texture": "no visible brick courses in source; smooth visual class only, no measured texture",
+        "front": "target facade exposed; focused crop excludes much of the distracting neighbour",
+        "oblique": "same target remains visible and smooth; not a geometry acceptance"
+      }
+    }
+  ]
+}
