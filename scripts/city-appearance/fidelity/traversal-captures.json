@@ -1,0 +1,118 @@
+{
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "scope": "unchanged release traversal after runtime edits; not photo fidelity acceptance",
+  "captures": [
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-01-desktop.png",
+      "sha256": "3ece7dfbdcf4bc741d13d4eaddae22cb25f1c3dd145534ae0c0a13cf182a79cc"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-01-iphone.png",
+      "sha256": "e23b79220b74d428dfaa5d6cbf1f1b702f81c473ce771cafd3877f00a13bbadf"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-02-desktop.png",
+      "sha256": "de16bb5eb85c35e167bffb38a1a67a39a5a9c4f03229d9bdf1f92760e1257292"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-02-iphone.png",
+      "sha256": "59fe379050c7937832120c9b766f603e7ab6ec53d56d65e81f5f4de251990ce6"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-03-desktop.png",
+      "sha256": "9a2f5d30e7f48709c90016400c5431fedea2362982ba8bc3072c02cc46bf5f14"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-03-iphone.png",
+      "sha256": "50ed7ed3d231e6abedc433932f47314d8147924be80318e7669acce1da97c69d"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-04-desktop.png",
+      "sha256": "01afad3563a543ddf185163aae905d89504bdf165c52d05b2faa1a90d40450d3"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-04-iphone.png",
+      "sha256": "1e8a3858dcb97413ae26110464eb79e44b91431c142763354f71618cf2147339"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-05-desktop.png",
+      "sha256": "15ac85d338332b203842ff102ab7b6c530f478e4045e4fa82515c8964876efd0"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-05-iphone.png",
+      "sha256": "ac9cd8132ecdb886bd91fd7b28a3be22eed9dcba2fbe1db233bc79f4b7ec8146"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-06-desktop.png",
+      "sha256": "1f56047f596f7dbe5d6ac0c9b4b0ea5f5e6479d6c2c6721c1605ab4b7e832253"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-06-iphone.png",
+      "sha256": "95683968ba2439a45d672ab7a84c4769fdb471a9806bbdd7839d96192d2a60c3"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-07-desktop.png",
+      "sha256": "9636cc0a3e744c530e9109b84a5c850c42154ef1a4ce4689a416abd5743b4e0f"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-07-iphone.png",
+      "sha256": "3fbf2030f17497246a5987cf5ac6f92c56769fbf83775eb850480cc968844118"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-08-desktop.png",
+      "sha256": "0a7352c785917ca16ff0df1683d3b01ead354f9d6a8a11c5045d8e2b4bfb4476"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-08-iphone.png",
+      "sha256": "e6aa0aa4f0405ba4e23b64e34312cafd80db12ff69e408f340f535262cc65652"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-09-desktop.png",
+      "sha256": "20627dd277aff2cae9f56993c1cd10e99938f1ca904f5f67e6e1b45a37c8ba73"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-09-iphone.png",
+      "sha256": "4599c090343cb131f30fbc2c24c6e5824be0cc8becb769efdcc777d767eac442"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-10-desktop.png",
+      "sha256": "e227136b4a354fc011cbd5cfc6eb4a1517c332c498d0b444b8a81812b1fe2c01"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-10-iphone.png",
+      "sha256": "4c27fcbe742a2a543f0f3e59b1c47d08a7da581b70dab2bcc873b0af5c556d2a"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-11-desktop.png",
+      "sha256": "d426776ab02f9913d283a45a5e24bf0b863fafe645bd2fecc1933f8d5772ead2"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-11-iphone.png",
+      "sha256": "004498df648a3cc5209768fb17758732472fa2da2a87f429b85e921e799cc9ae"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-12-desktop.png",
+      "sha256": "7aa48697c7d5b760b6f71f284b3eb2122f68c7816f84135c2a9cc19ee45f6dee"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-12-iphone.png",
+      "sha256": "2a1b6abf2ac0b140a203683b0632f08ca23720f83a61ac6b0ba699493c4eaf13"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-13-desktop.png",
+      "sha256": "fa0ffd164965aa4ef0bc12ae9b1b4f6a11140b2936c48de2a4cd60310267821f"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-13-iphone.png",
+      "sha256": "9ce3b1208fd0eb79be3ab75290f3a8856348756b154366091eac576c833d7a7a"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-14-desktop.png",
+      "sha256": "7e68a38f69732ca48b32f73289d0a208f8cf41e1ffffad520004ad4324aeea47"
+    },
+    {
+      "file": ".cache/city-appearance/fidelity-baseline/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/map-recall-evaluation-14-iphone.png",
+      "sha256": "c8cf4bfef4ad4f8a14cbeb93ab1771d661dcc5ea923f1bd21a20ff3eb5da9b41"
+    }
+  ]
+}

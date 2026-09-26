@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "id": "oosterpark-extensibility-v1",
+  "name": "Oosterpark nonadjacent pipeline sample",
+  "areas": [
+    { "id": "oosterpark-sample-v1", "district": "Oosterpark", "config": "../areas/oosterpark-sample-v1.json", "priority": 10 }
+  ],
+  "boundary": [[[4.9140,52.3570],[4.9250,52.3570],[4.9250,52.3650],[4.9140,52.3650],[4.9140,52.3570]]],
+  "boundarySource": { "name": "Nonadjacent configuration interface sample", "revision": "operational-bbox-v1", "retrievedAt": "2026-09-12T00:00:00Z" },
+  "budgets": { "buildingTiles": 12, "contextTiles": 16, "detailBufferMB": 11 },
+  "spendLimitUsd": 0
+}

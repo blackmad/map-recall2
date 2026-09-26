@@ -5,26 +5,32 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 import { pathToFileURL } from 'node:url';
-import { DEFAULT_AREA, selectPanoramaAudit } from './select-panorama-audit.mjs';
+import { DEFAULT_AREA, selectPanoramaAudit, selectPanoramaCoverage } from './select-panorama-audit.mjs';
 import { loadAreaConfig } from '../da-costa-block/area-config.mjs';
 import { atomicJson, digest } from '../da-costa-block/pipeline-state.mjs';
 import { globalBudget } from '../da-costa-block/global-budget.mjs';
 
-const PREPROCESSING='fit-inside-512-jpeg85-no-upscale/v1', COST_CEILING=0.04;
+const PREPROCESSING='fit-inside-512-jpeg85-no-upscale/v1';
 const flag=(name,args)=>args.find(value=>value.startsWith(`--${name}=`))?.slice(name.length+3);
 const readJson=async file=>JSON.parse(await fs.readFile(file,'utf8'));
 
 export async function planRoutingInputs(args=process.argv.slice(2)){
   const areaFile=path.resolve(flag('area-config',args)??DEFAULT_AREA),area=await loadAreaConfig([`--area-config=${areaFile}`]);
-  const selected=await selectPanoramaAudit(area,{cap:Number(flag('cap',args)??24)}),auditPath=path.join(selected.destination,'agent-visual-audit.json');
+  const mode=flag('mode',args)??'audit';if(!['audit','coverage'].includes(mode))throw Error('Mode must be audit or coverage');
+  const streets=flag('streets',args)?.split(',').map(value=>value.trim()).filter(Boolean);
+  const cap=Number(flag('cap',args)??(mode==='coverage'?1000:24));
+  const plannedCostCeilingUsd=Number(flag('budget-usd',args)??.04);
+  if(!Number.isFinite(plannedCostCeilingUsd)||plannedCostCeilingUsd<=0)throw Error('Budget must be positive');
+  const selected=mode==='coverage'?await selectPanoramaCoverage(area,{streets,cap,includeBaseline:args.includes('--include-baseline')}):await selectPanoramaAudit(area,{cap}),auditPath=path.join(selected.destination,mode==='coverage'?'automated-preflight.json':'agent-visual-audit.json');
   const [selectionBytes,auditBytes,manifestBytes]=await Promise.all([fs.readFile(path.join(selected.destination,'selection.json')),fs.readFile(auditPath),fs.readFile(path.join(selected.destination,'evidence/manifest.json'))]);
-  const audit=JSON.parse(auditBytes),manifest=JSON.parse(manifestBytes),accepted=new Set(audit.assessments.filter(item=>item.disposition==='usable').map(item=>item.id));
+  const audit=JSON.parse(auditBytes),manifest=JSON.parse(manifestBytes),accepted=new Set(audit.assessments.filter(item=>item.disposition===(mode==='coverage'?'preflight-passed':'usable')).map(item=>item.id));
   const records=manifest.records.filter(record=>accepted.has(record.id));
-  if(records.length!==audit.summary.usable)throw Error('Usable audit decisions do not match evidence manifest');
+  if(records.length!==(mode==='coverage'?audit.summary.preflightPassed:audit.summary.usable))throw Error('Usable audit decisions do not match evidence manifest');
+  if(mode==='coverage' && audit.visualSourceIdentity!=='not-reviewed')throw Error('Coverage requires explicitly unreviewed automated preflight');
   const sourcePins=records.flatMap(record=>['full','ground'].map(kind=>({id:record.id,kind,file:record.images[kind].file,sha256:record.images[kind].sha256})));
-  const identity={version:'city-routing-inputs/1',areaId:area.id,areaConfigHash:area.configHash,selectionSha256:digest(selectionBytes),auditSha256:digest(auditBytes),manifestSha256:digest(manifestBytes),preprocessing:PREPROCESSING,sourcePins};
+  const identity={version:'city-routing-inputs/1',areaId:area.id,areaConfigHash:area.configHash,selectionSha256:digest(selectionBytes),auditSha256:digest(auditBytes),manifestSha256:digest(manifestBytes),preprocessing:PREPROCESSING,visualSourceIdentity:audit.visualSourceIdentity,sourcePins};
   const inputSetHash=digest(identity),outputRoot=path.join(selected.destination,'routing-inputs',inputSetHash);
-  return {area,selected,audit,manifest,records,identity,inputSetHash,outputRoot,paidCalls:0,plannedCostCeilingUsd:COST_CEILING};
+  return {area,selected,audit,manifest,records,identity,inputSetHash,outputRoot,paidCalls:0,plannedCostCeilingUsd};
 }
 
 async function writeImmutable(file,bytes){
@@ -53,7 +59,11 @@ export async function executeRoutingInputs(plan){
 }
 
 async function main(){
-  const args=process.argv.slice(2),plan=await planRoutingInputs(args),budget=globalBudget({ceiling:5}),snapshot=await budget.snapshot();
+  const args=process.argv.slice(2),plan=await planRoutingInputs(args);
+  // Honour the recorded inference authorization; fall back to the original $5 cap.
+  let authorization=null;try{authorization=JSON.parse(await fs.readFile('.cache/city-appearance/district-route-authorization.json','utf8'));}catch{}
+  const ceiling=authorization&&Number.isFinite(authorization.cumulativeLimitUsd)&&authorization.cumulativeLimitUsd>5?authorization.cumulativeLimitUsd:5;
+  const budget=globalBudget({ceiling,authorization:authorization?{id:authorization.id??authorization.scope??'authorized-inference',maxCeilingUsd:ceiling}:null}),snapshot=await budget.snapshot();
   const budgetPlan={journal:budget.file,currentObservedOrReservedUsd:snapshot.observedOrReservedCostUsd,authorizedUsd:snapshot.ceilingUsd,
     unresolved:snapshot.entries.filter(entry=>entry.status==='unknown').length,plannedRunCeilingUsd:plan.plannedCostCeilingUsd,
     fitsAuthorization:snapshot.observedOrReservedCostUsd+plan.plannedCostCeilingUsd<=snapshot.ceilingUsd};

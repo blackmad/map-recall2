@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {summarizeDistrictInputs,costFromEntries} from './build-district-evaluation-report.js';
+const fixture=(id:string,width:number,label:string,district='A')=>({id,buildingId:id,district,street:'Route Street',wallWidthM:width,evidenceKey:`e-${id}`,derivationKey:`d-${id}`,images:{ground:{date:'2026-09-01',sha256:'a'.repeat(64),panoramaSha256:'b'.repeat(64)}},effectiveProposal:{shopfront:label==='positive'?'yes':label==='negative'?'no':'unknown'},machineRoutingProposal:label==='legacy'?{}:{groundType:label==='positive'?'storefront':label==='negative'?'residential':'unknown',signText:label==='positive'?'OBSERVED SHOP':'',signTextEligible:label==='positive'?'yes':label==='negative'?'no':'unknown'},renderSurfaceIndices:[0]});
+const p=fixture('p',4,'positive'),n=fixture('n',6,'negative'),unknown=fixture('u',100,'unknown');
+const report=summarizeDistrictInputs({routeStreets:['Route Street'],records:[p,p,n,{...unknown,street:'elsewhere'}],buildings:['p','n','missing','missing'],renderRecords:[p],releaseId:'fixture'});
+assert.equal(report.coverage.candidateFrontages,2);assert.equal(report.coverage.frontageMetres,10);assert.equal(report.coverage.routeBuildings,3);assert.equal(report.coverage.processedFrontageMetres,4);assert.equal(report.coverage.processedEligibleFrontageRatio,.4);assert.deepEqual(report.coverage.missingImageryBuildings,['missing']);assert.equal(report.coverage.missingImageryFrontageMetres,null);
+const onlySource=summarizeDistrictInputs({routeStreets:['Route Street'],records:[p],buildings:['p']});assert.equal(onlySource.coverage.processedFrontages,0,'preflight source does not count as rendered or inferred');
+const records=Array.from({length:48},(_,i)=>fixture(`case${i}`,i+1,['positive','negative','unknown'][i%3],i%2?'A':'B'));
+const packet=summarizeDistrictInputs({routeStreets:['Route Street'],records,renderRecords:records,buildings:records.map(r=>r.id),releaseId:'fixture',packetLimit:30}).packet;
+assert.equal(packet.cases.length,30);assert.ok(packet.summary.classes.positive>0&&packet.summary.classes.negative>0&&packet.summary.classes.unknown>0);assert.equal(packet.humanReviewSeparate,true);
+assert.deepEqual(packet,summarizeDistrictInputs({routeStreets:['Route Street'],records:[...records].reverse(),renderRecords:records,buildings:records.map(r=>r.id),releaseId:'fixture',packetLimit:30}).packet);
+const costs=costFromEntries([{actualUsd:1,status:'settled'},{actualUsd:.4,status:'settled'},{reservedUsd:2,status:'unknown'}],{baselineUsd:1,additionalLimitUsd:.5});
+assert.ok(Math.abs(costs.additionalActualUsd-.4)<1e-10);assert.equal(costs.pendingUsd,2,'full unresolved liability must never be capped away');assert.equal(costs.unresolvedCharges,1);assert.equal(costs.exceedsAdditionalLimit,true);
+console.log('District evaluation: independent render denominator, duplicate exclusion, unknown missing frontage, deterministic 30 cases, and uncapped charge reconciliation passed.');

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "pointerSha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9",
+  "sourceHashes": {
+    "block": "e7a51599312c472206b3f4e202f9196166aae1584b579df1ba26f43a46cbbfa7",
+    "evidenceBlock": "7f5075bc91a6dc5a33a9a2b8575b67043b0ea626c6bc4eb2fe1831ef7eff5eec",
+    "auditManifest": "d4dd5737a9c756c26b3dfd121275b1c07772eb4e8a5b6067d739b88db18ea027",
+    "agentVisualAudit": "6a57f416bf3f5575d75d455e268a70242a555667e83db51f92b47161e886bb70",
+    "machineRouting": "d489713ae63ae0edac82e8b3fe75ed70568b2518cd57626ac937d5904b103c8e",
+    "streetsRouting": "55c0f958736628077599d9f1bd938ce6b821281477fb7f289f340410e997e5db"
+  },
+  "additionalLimitUsd": 3,
+  "cumulativeLimitUsd": 5,
+  "allocationUsd": {
+    "development": 1,
+    "unseen": 0.5,
+    "expansion": 1.5
+  },
+  "suppliedExamples": {
+    "status": "missing-attachments-and-observation-mapping",
+    "count": 12
+  },
+  "routeExpansion": "blocked-until-development-and-unseen-gates-pass",
+  "inferenceBaselineUsd": 1.705205502,
+  "inferenceBaselineEntries": 994,
+  "inferenceJournalSha256": "4e4c9b215fc425fae86fba92d70cd507cd2bb98e432543a8ee1889de77f33c1e"
+}

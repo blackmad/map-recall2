@@ -50,7 +50,7 @@ export async function acquirePages({ name, url, get, embedded = false, wfs = fal
   if (!['features', 'cityobjects'].includes(countUnit)) throw Error('Unsupported source count unit');
   const features = [], sources = [], artifacts = [], seenUrls = new Set(), seenIds = new Set();
   const seenObjects = new Set();
-  let expectedCount, page = 0, receivedUnits = 0, maxEnvelopeUnits = 0;
+  let expectedCount, page = 0, receivedUnits = 0, providerReturnedUnits = 0;
   while (url) {
     if (seenUrls.has(url)) throw Error(`${name}: pagination cycle`);
     if (page >= maxPages) throw Error(`${name}: pagination safety limit; completeness not established`);
@@ -64,20 +64,28 @@ export async function acquirePages({ name, url, get, embedded = false, wfs = fal
       if (expectedCount !== undefined && expectedCount !== Number(count)) throw Error(`${name}: source changed its count during pagination`);
       expectedCount = Number(count);
     }
-    // 3DBAG counts CityObjects (Building + BuildingPart), not CityJSONFeature envelopes.
+    // 3DBAG paginates selected CityObject IDs, then its exporter groups those
+    // seeds into CityJSONFeature hierarchy envelopes. Count the expanded objects
+    // for duplicate/output checks, but use the provider's page counters to prove
+    // that every selected seed row was traversed.
     const batchUnits = countUnit === 'cityobjects' ? batch.reduce((sum, feature) => {
       if (!feature.CityObjects || typeof feature.CityObjects !== 'object') throw Error(`${name}: missing CityObjects`);
-      const objectIds=Object.keys(feature.CityObjects);maxEnvelopeUnits=Math.max(maxEnvelopeUnits,objectIds.length);
+      const objectIds = Object.keys(feature.CityObjects);
+      if (!objectIds.length) throw Error(`${name}: empty CityObjects envelope`);
+      if (feature.id !== undefined && !Object.hasOwn(feature.CityObjects, String(feature.id))) throw Error(`${name}: envelope id missing from CityObjects: ${feature.id}`);
       for (const id of objectIds) { if (seenObjects.has(id)) throw Error(`${name}: duplicate CityObject ${id}`); seenObjects.add(id); }
       return sum + objectIds.length;
     }, 0) : batch.length;
     receivedUnits += batchUnits;
-    // 3DBAG documents this endpoint as not yet OGC-compliant. Its pagination
-    // cursor may split at a CityObject limit while returning the complete
-    // CityJSONFeature envelope, so a page can legitimately contain 102 objects
-    // with numberReturned=100. Unique IDs plus the final numberMatched total
-    // still prove completeness; ordinary feature endpoints remain page-exact.
-    if (countUnit === 'features' && data.numberReturned !== undefined && Number(data.numberReturned) !== batchUnits) throw Error(`${name}: returned count mismatch (${countUnit})`);
+    if (data.numberReturned !== undefined) {
+      const returned = Number(data.numberReturned);
+      if (!Number.isInteger(returned) || returned < 0) throw Error(`${name}: invalid returned count`);
+      if (countUnit === 'features' && returned !== batchUnits) throw Error(`${name}: returned count mismatch (${countUnit})`);
+      if (countUnit === 'cityobjects' && batch.length > returned) throw Error(`${name}: more CityJSONFeature envelopes than selected seed rows`);
+      providerReturnedUnits += returned;
+    } else if (countUnit === 'cityobjects' && expectedCount !== undefined) {
+      throw Error(`${name}: missing provider page count; completeness not established`);
+    }
     for (const feature of batch) {
       const id = embedded ? feature.pano_id : feature.id ?? feature.properties?.identificatie;
       if (id !== undefined) {
@@ -100,7 +108,9 @@ export async function acquirePages({ name, url, get, embedded = false, wfs = fal
     }
     url = next;
   }
-  const overflow=expectedCount===undefined?0:receivedUnits-expectedCount;
-  if (expectedCount !== undefined && (overflow<0 || countUnit==='features'&&overflow!==0 || countUnit==='cityobjects'&&overflow>maxEnvelopeUnits)) throw Error(`${name}: incomplete result ${receivedUnits}/${expectedCount} ${countUnit}`);
-  return { features, sources, artifacts, completeness: { pages: page, received: features.length, receivedUnits, countUnit, expected: expectedCount ?? null, advertisedOverflow:overflow, method: expectedCount === undefined ? (wfs ? 'exhausted-wfs-pages' : 'exhausted-next-links') : overflow?'advertised-count-envelope-overflow':'advertised-count' } };
+  const providerCount = countUnit === 'cityobjects' ? providerReturnedUnits : receivedUnits;
+  const envelopeExpansionUnits = countUnit === 'cityobjects' ? receivedUnits - providerReturnedUnits : 0;
+  if (expectedCount !== undefined && providerCount !== expectedCount) throw Error(`${name}: incomplete provider page coverage ${providerCount}/${expectedCount} ${countUnit}`);
+  if (countUnit === 'cityobjects' && expectedCount !== undefined && receivedUnits < expectedCount) throw Error(`${name}: incomplete expanded result ${receivedUnits}/${expectedCount} ${countUnit}`);
+  return { features, sources, artifacts, completeness: { pages: page, received: features.length, receivedUnits, countUnit, expected: expectedCount ?? null, providerReturnedUnits: countUnit === 'cityobjects' ? providerReturnedUnits : null, envelopeExpansionUnits, advertisedOverflow: expectedCount === undefined ? 0 : receivedUnits - expectedCount, method: expectedCount === undefined ? (wfs ? 'exhausted-wfs-pages' : 'exhausted-next-links') : countUnit === 'cityobjects' ? 'advertised-page-counts-with-envelope-expansion' : 'advertised-count' } };
 }
