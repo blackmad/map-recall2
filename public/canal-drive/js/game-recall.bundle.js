@@ -552,7 +552,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
           overlay.store.setAccount({
             visible: true,
             label: "Playing as guest",
-            note: "Sign in to sync your fog map across devices",
+            note: "Sign in to keep your progress on every device",
             buttonLabel: "Sign in"
           });
         }
@@ -757,7 +757,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         name: decision.name,
         subject: routeBridge ? "bridge" : profile.quizRouteSubject,
         question: routeBridge ? "Which bridge are you on?" : profile.quizRouteQuestion,
-        context: routeBridge ? "Crossing a waterway" : isTransit(this.travelMode) ? "Riding the corridor" : "You made a turn",
+        context: routeBridge ? "Crossing a waterway" : isTransit(this.travelMode) ? "Riding the corridor" : this.quizCurrentName ? "You made a turn" : "Where you set off",
         choices: routeBridge && bridgeAlternatives.length >= 2 ? [decision.name, ...bridgeAlternatives] : lineChoices,
         segmentIndex: quizRoad ? quizRoad.segIdx : -1,
         pointIndex: quizRoad ? quizRoad.ptIdx : 0

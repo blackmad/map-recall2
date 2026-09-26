@@ -204,8 +204,8 @@ const BIKE_SKIN_OPTIONS: Choice<CanalPreferences['bikeSkin']>[] = BIKE_SKIN_IDS.
 }));
 
 const VIEW: Choice<CanalPreferences['viewMode']>[] = [
-  { value: 'north', title: 'North', hint: 'Flat map, north at top' },
-  { value: 'heading', title: 'Heading', hint: 'Flat map, turns with you' },
+  { value: 'north', title: 'North up', hint: 'Flat map, north at top' },
+  { value: 'heading', title: 'Heading up', hint: 'Flat map, turns with you' },
   { value: 'chase', title: 'Chase', hint: 'High 3D, behind the vehicle' },
   { value: 'cockpit', title: 'Cockpit', hint: 'Low 3D, over the bumper' },
 ];
@@ -781,7 +781,7 @@ export function OverlayApp({
                       callbacks.onSkipMastered(event.target.checked);
                     }}
                   />
-                  <span><strong>Space reviews</strong><small>Only names due</small></span>
+                  <span><strong>Due names only</strong><small>Ask only names due for review</small></span>
                 </label>
                 <label className="master-toggle">
                   <input id="gamey-features" type="checkbox" checked={prefs.gamey} onChange={event => patch({ gamey: event.target.checked })} />
@@ -876,7 +876,7 @@ export function OverlayApp({
           <div className="utility-scroll">
           <label className="master-toggle">
             <input id="live-gamey" type="checkbox" checked={prefs.gamey} onChange={event => patch({ gamey: event.target.checked }, true)} />
-            <span><strong>Game-y features</strong><small>Streaks, multipliers, points, and route ribbons.</small></span>
+            <span><strong>Scores &amp; streaks</strong><small>Points, streaks and route ribbons.</small></span>
           </label>
           <div className="assist-options">
             <Check id="live-line" checked={prefs.line} onChange={line => patch({ line }, true)}> Route line</Check>
@@ -893,10 +893,10 @@ export function OverlayApp({
             <option value="absolute">Absolute — compass directions</option>
           </Field>
           <Field label="VIEW" id="live-view" value={prefs.viewMode} onChange={value => patch({ viewMode: value as CanalPreferences['viewMode'] }, true)}>
-            <option value="north">2D — north up</option>
-            <option value="heading">2D — heading up</option>
-            <option value="chase">3D — chase (high / behind)</option>
-            <option value="cockpit">3D — cockpit (low / bumper)</option>
+            <option value="north">North up (2D)</option>
+            <option value="heading">Heading up (2D)</option>
+            <option value="chase">Chase (3D, behind)</option>
+            <option value="cockpit">Cockpit (3D, low)</option>
           </Field>
           {(prefs.viewMode === 'chase' || prefs.viewMode === 'cockpit') ? (
             <>

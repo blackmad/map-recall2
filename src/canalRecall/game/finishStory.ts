@@ -55,7 +55,7 @@ export function finishStory(input: FinishStoryInput): FinishStory {
   const streak = placeStreakLabel(placeStreak);
 
   const guestTease = !input.signedIn && input.recallAvailable
-    ? 'Sign in to sync your fog map across devices'
+    ? 'Sign in to keep your progress on every device'
     : null;
 
   return { headline, detail, passport, streak, guestTease };
