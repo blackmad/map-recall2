@@ -19,10 +19,8 @@ function stableVariant(id:string,values:ContextualBuildingColour[]):ContextualBu
  * year or facade material was observed. */
 export function citywideBuildingWallPrior(id:string):string{return CONTEXTUAL_BUILDING_COLOURS[stableVariant(id,['priorBrickRed','priorBrickBrown','priorBrickBrown','priorBrickBuff','priorPlaster','priorModernLight','priorModernGrey'])];}
 export function citywideBuildingRoofPrior(id:string):string{return CONTEXTUAL_BUILDING_COLOURS[stableVariant(`${id}:roof`,['roof','priorRoofWarm','priorRoofDark'])];}
-/** A darker base band anchors otherwise unclassified citywide masses at
- * street level. It is assigned only alongside the unknown-wall fallback, so
- * it never overwrites an OSM material/colour or an area release. */
-export function citywideBuildingGroundPrior(id:string):string{return CONTEXTUAL_BUILDING_COLOURS[stableVariant(`${id}:ground`,['priorBrickBrown','priorBrickRed','priorRoofWarm','priorModernGrey'])];}
+/** Without ground-floor evidence, continue the wall colour to street level. */
+export function citywideBuildingGroundPrior(id:string):string{return citywideBuildingWallPrior(id);}
 
 export function contextualBuildingPalette(id:string,constructionYear?:number|null){
   const year=Number(constructionYear),wall=Number.isFinite(year)&&year<1925
@@ -31,10 +29,7 @@ export function contextualBuildingPalette(id:string,constructionYear?:number|nul
       ?stableVariant(id,['priorBrickRed','priorBrickBrown','priorBrickBuff','priorModernGrey'])
       :stableVariant(id,['priorBrickBuff','priorModernLight','priorModernGrey','priorPlaster']);
   const roof=stableVariant(id,['roof','priorRoofWarm','priorRoofDark']);
-  // A restrained darker street storey gives the MapLibre massing a readable
-  // base without pretending that a shopfront or material was observed.
-  const ground=Number.isFinite(year)&&year<1925
-    ?stableVariant(`${id}:ground`,['priorBrickBrown','priorBrickRed','priorRoofWarm'])
-    :stableVariant(`${id}:ground`,['priorModernGrey','priorBrickBuff','priorRoofWarm']);
+  // A separate base colour would invent a material change without evidence.
+  const ground=wall;
   return{wallKey:wall,roofKey:roof,groundKey:ground,wall:CONTEXTUAL_BUILDING_COLOURS[wall],roof:CONTEXTUAL_BUILDING_COLOURS[roof],ground:CONTEXTUAL_BUILDING_COLOURS[ground]};
 }

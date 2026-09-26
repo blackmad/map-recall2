@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "kind": "wall-colour/model-demo-grades",
+  "sampleSha256": "5711c358649d7f8d0309150bc05629f6846a65e0c617a459452bbf40b820134c",
+  "reviewOrigin": "model-visual-review",
+  "reviewer": "gpt-6-astra",
+  "grades": {
+    "0363100012166570_e_0wwk20u": {
+      "observationId": "0363100012166570_e_0wwk20u",
+      "buildingId": "0363100012166570",
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "verdict": "adjust",
+      "correctedHex": "#6d5e55",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-astra",
+      "gradedAt": "2026-09-26T17:24:32.846Z",
+      "reasons": [
+        "exposed-brick-region",
+        "owner-reference-corroborates-material"
+      ],
+      "notes": "Existing 2024 crop confirms warm dark brick and flat frontage; raw estimate is contaminated by shadow/vegetation. Corrected colour is the median of an exposed brick patch in the owner-provided 2020 reference screenshot, preserving image-lighting limitations. Brick continues to ground floor; only a low stone plinth is visible.",
+      "supportingReference": {
+        "kind": "owner-provided-street-view-screenshot",
+        "sourceSha256": "6c0db8c12191df982eb151e446e82ce5b78b256f9a4db25e4d6360c610f7b69f",
+        "crop": "/data/city-expansion/evidence/6c0db8c12191df982eb151e446e82ce5b78b256f9a4db25e4d6360c610f7b69f.png",
+        "sampleRegionPx": {
+          "left": 1070,
+          "top": 790,
+          "width": 70,
+          "height": 70
+        },
+        "regionMedianHex": "#6d5e55"
+      }
+    },
+    "0363100012166570_e_0zsnalx": {
+      "observationId": "0363100012166570_e_0zsnalx",
+      "buildingId": "0363100012166570",
+      "sourceSha256": "d363f99e3eee450314b2c3d17f1d6d876c08ef367c3ab1387c19b0f7aef07b56",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-astra",
+      "gradedAt": "2026-09-26T17:24:32.847Z",
+      "reasons": [
+        "obscured-or-neighbouring-frontage"
+      ],
+      "notes": "Peaked-gable frontage with different balcony/window geometry appears to be neighbouring building; cannot establish target wall colour."
+    },
+    "0363100012166570_e_1qj7liw": {
+      "observationId": "0363100012166570_e_1qj7liw",
+      "buildingId": "0363100012166570",
+      "sourceSha256": "abffbd5ae3ef126abbca29a1041f66b6e6c9569487d681b37e336d103f9aa996",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-astra",
+      "gradedAt": "2026-09-26T17:24:32.847Z",
+      "reasons": [
+        "obscured-or-neighbouring-frontage"
+      ],
+      "notes": "Oblique wall is covered by climbing branches and deep shade; not a reliable wall sample."
+    }
+  }
+}

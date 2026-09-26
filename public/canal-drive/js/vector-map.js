@@ -344,7 +344,7 @@ class VectorBasemap {
     const flatRoofFilter = this._coloredBuildingBaseFilter('osm-colored-building-roofs');
     this.map.addLayer({
       id: 'osm-colored-building-ground-floors', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
-      filter: ['has', 'groundColour'],
+      filter: this._coloredBuildingBaseFilter('osm-colored-building-ground-floors'),
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'groundColour']],
         'fill-extrusion-base': MIN_HEIGHT,
@@ -356,7 +356,7 @@ class VectorBasemap {
       id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['coalesce', ['get', 'sideColour'], ['get', 'colour']]],
-        'fill-extrusion-base': ['case', ['has', 'groundColour'], GROUND_TOP, MIN_HEIGHT],
+        'fill-extrusion-base': ['case', this._coloredBuildingBaseFilter('osm-colored-building-ground-floors'), GROUND_TOP, MIN_HEIGHT],
         'fill-extrusion-height': WALL_TOP,
         'fill-extrusion-opacity': 1
       }
@@ -661,7 +661,7 @@ class VectorBasemap {
   // with `null`, capped every building in the city, and the lid z-fought the
   // roof under it. Both layers therefore always go through one composer.
   _coloredBuildingBaseFilter(id) {
-    if (id === 'osm-colored-building-ground-floors') return ['has', 'groundColour'];
+    if (id === 'osm-colored-building-ground-floors') return ['all', ['has', 'groundColour'], ['!=', ['get', 'groundAppearanceStyleSource'], 'wall-inherited-not-independently-measured']];
     if (id !== 'osm-colored-building-roofs') return null;
     const helpers = window.CanalRecallBuildings;
     return helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'];
@@ -858,7 +858,7 @@ class VectorBasemap {
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', themeColor
     ]);
     this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-height', height);
-    this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', ['case', ['has', 'groundColour'], groundTop, minHeight]);
+    this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', ['case', this._coloredBuildingBaseFilter('osm-colored-building-ground-floors'), groundTop, minHeight]);
     this._refreshColoredBuildingFilter();
     this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-color', [
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['to-color', ['get', 'roofColour'], '#B09999']

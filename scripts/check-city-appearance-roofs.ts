@@ -28,6 +28,7 @@ for (const malformed of [
 
 const manifest=JSON.parse(await fs.readFile('public/data/city-expansion/current.json','utf8')),realBuildings=[];
 assert.equal(manifest.studyRoofs.selectionPolicy,SOURCE_ROOF_SELECTION_POLICY,'study-roof policy version matches the compiler that generated the release');
+if(manifest.sourceHashes.block==='e7a51599312c472206b3f4e202f9196166aae1584b579df1ba26f43a46cbbfa7') assert.deepEqual([manifest.studyRoofs.buildings,manifest.studyRoofs.surfaces,manifest.studyRoofs.withheldSlantedBuildings,manifest.studyRoofs.tiles.length],[1,1,6661,1],'Da Costa–Jordaan v4 withholds intersecting source roofs instead of rendering shards');
 for(const tile of manifest.tiles){const payload=JSON.parse(gunzipSync(await fs.readFile(`public${tile.url}`)).toString());for(const owner of payload.owners)realBuildings.push(owner.geometry.building);}
 assert.equal(realBuildings.length,manifest.buildings);assert.equal(new Set(realBuildings.map(building=>building.id)).size,manifest.buildings,'published owner tiles contain each source building once');
 let buildings=0,surfaces=0;

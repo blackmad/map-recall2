@@ -9,7 +9,32 @@ cited path. Written 2026-09-26 against `feat/amsterdam-facade-rebuild` @ `406130
 
 The owner explicitly requests **no human-in-the-loop** (2026-09-26). Agents must inspect imagery and answer review questions themselves, retaining `model-visual-review` provenance, crop hashes, uncertainty, and abstentions. Model judgements are authorized review evidence, never relabelled as human ground truth. This supersedes owner-review gates below for visual judgement. External licensing/storage constraints remain distinct.
 
-## Demo implementation status — 2026-09-26
+## Current execution status — 2026-09-26 (supersedes the earlier batch below)
+
+- Autonomous visual review covers all 598 available observations across 501 buildings.
+  The Sol, Terra, Luna and primary-agent reviews promote 372 building wall colours,
+  up from 16. Six conflicting groups were resolved by visual re-review; four remain
+  withheld because a single wall colour would misrepresent their facades. Abstentions
+  remain explicit. This is model review, not human ground truth.
+- `npm run promote:wall-colours:model` verifies source-image hashes, combines the
+  committed review files, resolves duplicate observations and writes promotion input.
+  Local release `3d4551a8716c6b60dc59ba0d5de9b851628e62f4ae3eef2c6be7a5bd4ab7c9da`
+  includes those 372 colours among 7,395 buildings. The other 7,023 retain labelled
+  contextual defaults; the review is complete for existing imagery, not the district.
+- Da Costakade 13 is corrected using the supplied brick reference. Unmeasured bases
+  inherit the wall and render as a single extrusion, removing invented grey bands.
+- Fixed the camera-update loop that destroyed and reloaded visible detail meshes.
+  The live-camera regression failed with 360 lost layer frames before the fix.
+- Roof v4 withholds intersecting source roofs as whole buildings: one safe roof
+  remains and 6,661 slanted buildings use flat fallback. This removes shards but
+  does **not** complete rooflines or gables.
+- Priority: verify stable rendering and the expanded colours, then build closed
+  upper/gable walls with an atomic fallback replacement. Extend evidence coverage
+  and place reviewed signs subsequently. Routine visual decisions stay with agents.
+- Generated releases and photographic evidence remain local; source commits do not
+  constitute deployment of these assets to a remote demo.
+
+## Earlier demo implementation status — 2026-09-26
 
 - Source integration includes current main, source-bound wall-colour promotion and
   browser provenance, measured-colour coverage mode, end-to-end semantic tag
