@@ -1,0 +1,3017 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-26T15:11:32.956Z",
+  "prediction": "public/data/facade-model-eval/v1/predictions/union-R0.json",
+  "output": "public/data/facade-model-eval/v1/predictions/union-R0-lattice.json",
+  "totals": {
+    "walls": 60,
+    "rows": 284,
+    "accepted": 22,
+    "refused": 262,
+    "acceptedWithImputation": 0,
+    "acceptedAllRejected": 11,
+    "acceptedNoCandidate": 11,
+    "imputed": 0,
+    "rejectedCandidates": 40,
+    "reasons": {
+      "ground": 60,
+      "tooFew": 201,
+      "noGap": 0,
+      "irregularPitch": 1
+    }
+  },
+  "records": [
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012064873-0:lod22:wall:5",
+      "wallWidthM": 6.2399,
+      "wallHeightM": 14.584,
+      "kinds": {
+        "window": 14,
+        "door": 1,
+        "other": 13
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.3668,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.9279126829268294,
+          "detected": 5,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 4.3907,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 6.336038850174217,
+          "detected": 7,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        },
+        {
+          "row": 4,
+          "centreUp": 7.66995,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 9.950283101045297,
+          "detected": 7,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        },
+        {
+          "row": 6,
+          "centreUp": 13.589106300813008,
+          "detected": 6,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:10",
+      "wallWidthM": 0.59,
+      "wallHeightM": 16.154,
+      "kinds": {
+        "window": 3,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.211,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 6.44375,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 9.604625,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 13.2987,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:11",
+      "wallWidthM": 0.66,
+      "wallHeightM": 16.947,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.4442,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.44325,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.64105,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 8.5068,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 9.9505,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 13.171100000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:2",
+      "wallWidthM": 0.66,
+      "wallHeightM": 16.352,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 3.47705,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 6.759641304347826,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.176,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 10.0867,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 13.20825,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:3",
+      "wallWidthM": 0.66,
+      "wallHeightM": 16.182,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 3.612,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 6.646199999999999,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 7.9354,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 9.602500000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 12.7256,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:38",
+      "wallWidthM": 1.47,
+      "wallHeightM": 18.901,
+      "kinds": {
+        "window": 6,
+        "door": 0,
+        "other": 6
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.5182333333333333,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.6092,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 7.007350000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 8.245600969447711,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 10.39445,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 11.68265,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 6,
+          "centreUp": 13.509426351351351,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 7,
+          "centreUp": 16.4801,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:4",
+      "wallWidthM": 0.37,
+      "wallHeightM": 16.531,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.0443,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 6.23245,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.265500000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 10.18745,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 13.287049999999999,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:6",
+      "wallWidthM": 0.66,
+      "wallHeightM": 16.053,
+      "kinds": {
+        "window": 5,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.3224,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 1.6231,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 3.4351499999999997,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 6.5813,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 8.2377,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 10.02755,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 6,
+          "centreUp": 13.1626,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:8",
+      "wallWidthM": 1.32,
+      "wallHeightM": 15.967,
+      "kinds": {
+        "window": 1,
+        "door": 0,
+        "other": 5
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.0964619436717664,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 7.57265,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 9.9377,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:9",
+      "wallWidthM": 1.32,
+      "wallHeightM": 16.309,
+      "kinds": {
+        "window": 7,
+        "door": 0,
+        "other": 8
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.88875,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.0442,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.3491767370572205,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 9.64764370572207,
+          "detected": 5,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 13.179778337874659,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012074448-0:lod22:wall:4",
+      "wallWidthM": 6.3701,
+      "wallHeightM": 14.711,
+      "kinds": {
+        "window": 18,
+        "door": 1,
+        "other": 8
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.37775,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.1110906722054383,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 5.611043590850238,
+          "detected": 7,
+          "imputed": 0,
+          "rejected": 6,
+          "abstained": null
+        },
+        {
+          "row": 3,
+          "centreUp": 7.61105,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 9.169786253776437,
+          "detected": 7,
+          "imputed": 0,
+          "rejected": 6,
+          "abstained": null
+        },
+        {
+          "row": 5,
+          "centreUp": 11.871327988778594,
+          "detected": 7,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row gaps are not one pitch (residual 0.41 of 1.46 m)"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:10",
+      "wallWidthM": 1.06,
+      "wallHeightM": 17.912,
+      "kinds": {
+        "window": 5,
+        "door": 0,
+        "other": 4
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 2.12235,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 5.878075558312655,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 9.32637770885029,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 12.117276116625309,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 15.3674,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:11",
+      "wallWidthM": 1.06,
+      "wallHeightM": 17.912,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.5667499999999999,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.811300248138958,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.800450000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 10.406125000000001,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 15.5563,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:12",
+      "wallWidthM": 0.51,
+      "wallHeightM": 17.911,
+      "kinds": {
+        "window": 0,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 7.5555,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:13",
+      "wallWidthM": 0.34,
+      "wallHeightM": 17.91,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.8999000000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 5.1886,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.399474999999999,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 12.1881,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:20",
+      "wallWidthM": 0.56,
+      "wallHeightM": 17.906,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 2.2327500000000002,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 5.1874,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.947425,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 15.28455,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:22",
+      "wallWidthM": 1.13,
+      "wallHeightM": 17.905,
+      "kinds": {
+        "window": 5,
+        "door": 0,
+        "other": 5
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 2.57135,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 5.135279363110008,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.423036972704713,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 12.151401054590572,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:23",
+      "wallWidthM": 1.1,
+      "wallHeightM": 14.147,
+      "kinds": {
+        "window": 2,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.6324,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 7.454762454212454,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:14",
+      "wallWidthM": 2.54,
+      "wallHeightM": 16.204,
+      "kinds": {
+        "window": 7,
+        "door": 0,
+        "other": 7
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.86685,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.1090849794238684,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.412699759945131,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 8.535449999999999,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 10.246980612711477,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 13.48853340192044,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:15",
+      "wallWidthM": 1.73,
+      "wallHeightM": 16.204,
+      "kinds": {
+        "window": 8,
+        "door": 0,
+        "other": 7
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.4779,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.0452000000000004,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.632766666666666,
+          "detected": 5,
+          "imputed": 0,
+          "rejected": 9,
+          "abstained": null
+        },
+        {
+          "row": 3,
+          "centreUp": 8.196475,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 10.124743941472337,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 12.53645,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 6,
+          "centreUp": 13.62555,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:3",
+      "wallWidthM": 1.5,
+      "wallHeightM": 14.058,
+      "kinds": {
+        "window": 3,
+        "door": 0,
+        "other": 3
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.4886,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 6.945709834123223,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 10.48797298578199,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 13.736,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:1",
+      "wallWidthM": 2.8401,
+      "wallHeightM": 14.688,
+      "kinds": {
+        "window": 7,
+        "door": 0,
+        "other": 9
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.49995,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.099870234493192,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 5.858933913262734,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 7.2551000000000005,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 8.7587,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 10.132718040847202,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 6,
+          "centreUp": 12.3437,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:2",
+      "wallWidthM": 2.4001,
+      "wallHeightM": 12.06,
+      "kinds": {
+        "window": 2,
+        "door": 0,
+        "other": 5
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.82175,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 6.463101933701657,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.2399,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 9.683507734806629,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 10.8496,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:23",
+      "wallWidthM": 1.37,
+      "wallHeightM": 14.512,
+      "kinds": {
+        "window": 1,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 7.1671,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 10.82288514548239,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012156186-0:lod22:wall:8",
+      "wallWidthM": 5.7999,
+      "wallHeightM": 14.587,
+      "kinds": {
+        "window": 17,
+        "door": 1,
+        "other": 8
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.98059,
+          "detected": 5,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.954660670731707,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 4.72515,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 6.163161178861789,
+          "detected": 6,
+          "imputed": 0,
+          "rejected": 2,
+          "abstained": null
+        },
+        {
+          "row": 4,
+          "centreUp": 7.2935,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 9.578278734756099,
+          "detected": 6,
+          "imputed": 0,
+          "rejected": 2,
+          "abstained": null
+        },
+        {
+          "row": 6,
+          "centreUp": 12.793283333333335,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012156232-0:lod22:wall:15",
+      "wallWidthM": 2.2501,
+      "wallHeightM": 16.693,
+      "kinds": {
+        "window": 7,
+        "door": 0,
+        "other": 6
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.9558,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.5598968264536177,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 5.516173324456282,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 8.953324247669773,
+          "detected": 5,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 12.5586,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012156232-0:lod22:wall:16",
+      "wallWidthM": 1.87,
+      "wallHeightM": 15.007,
+      "kinds": {
+        "window": 3,
+        "door": 1,
+        "other": 8
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.7948000000000001,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.3682377777777783,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.530790555555555,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 8.2372,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 10.143618518518519,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 13.13205,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012156790-0:lod22:wall:2",
+      "wallWidthM": 3.04,
+      "wallHeightM": 15.353,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 5
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.66655,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.644004341534009,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 7.476510419681621,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 10.581571997105643,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 13.71435,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012156790-0:lod22:wall:6",
+      "wallWidthM": 2.11,
+      "wallHeightM": 15.277,
+      "kinds": {
+        "window": 1,
+        "door": 0,
+        "other": 6
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.3113,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.1904000000000003,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 3.335589519650655,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 7.58292347161572,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 10.495988355167395,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 12.197139010189229,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:10",
+      "wallWidthM": 1.9701,
+      "wallHeightM": 16.661,
+      "kinds": {
+        "window": 5,
+        "door": 0,
+        "other": 8
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.905225,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.20995,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.501503111111112,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 9.707797,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 13.078885000000001,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 16.027900000000002,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:11",
+      "wallWidthM": 2.0599,
+      "wallHeightM": 16.661,
+      "kinds": {
+        "window": 6,
+        "door": 0,
+        "other": 7
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.97745,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.98785,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.431142222222223,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 9.941078333333333,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 13.262141,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:3",
+      "wallWidthM": 1.8801,
+      "wallHeightM": 15.024,
+      "kinds": {
+        "window": 2,
+        "door": 0,
+        "other": 6
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.4778,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 5.8617992603550295,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 7.83425,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 9.806710059171598,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 13.201581065088757,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012161771-0:lod22:wall:2",
+      "wallWidthM": 2.2199,
+      "wallHeightM": 14.896,
+      "kinds": {
+        "window": 5,
+        "door": 1,
+        "other": 7
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.6503,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.4530094527363184,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.397498507462687,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 9.993652985074627,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 12.517100000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012161771-0:lod22:wall:23",
+      "wallWidthM": 11.7304,
+      "wallHeightM": 15.001,
+      "kinds": {
+        "window": 14,
+        "door": 5,
+        "other": 12
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.9223000000000001,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.09326212962963,
+          "detected": 8,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.637468827160494,
+          "detected": 6,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        },
+        {
+          "row": 3,
+          "centreUp": 8.1561,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 9.845094444444443,
+          "detected": 6,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        },
+        {
+          "row": 5,
+          "centreUp": 12.81938425925926,
+          "detected": 6,
+          "imputed": 0,
+          "rejected": 5,
+          "abstained": null
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012163440-0:lod22:wall:18",
+      "wallWidthM": 2.21,
+      "wallHeightM": 14.688,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 8
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.3110186333837621,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 5.444091830559758,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.768905975794251,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 12.699216666666667,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012164118-0:lod22:wall:15",
+      "wallWidthM": 8.4301,
+      "wallHeightM": 14.346,
+      "kinds": {
+        "window": 13,
+        "door": 2,
+        "other": 17
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.2670553663570692,
+          "detected": 9,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.95136,
+          "detected": 5,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 4.5969,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 6.165315479876161,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 1,
+          "abstained": null
+        },
+        {
+          "row": 4,
+          "centreUp": 8.139050000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 9.59917198142415,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        },
+        {
+          "row": 6,
+          "centreUp": 12.745457142857143,
+          "detected": 7,
+          "imputed": 0,
+          "rejected": 5,
+          "abstained": null
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012164118-0:lod22:wall:3",
+      "wallWidthM": 3.1999,
+      "wallHeightM": 14.27,
+      "kinds": {
+        "window": 10,
+        "door": 0,
+        "other": 6
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.4112,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.778413395638629,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.757133385254413,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 10.172211882510013,
+          "detected": 7,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        },
+        {
+          "row": 4,
+          "centreUp": 13.458683333333333,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012166039-0:lod22:wall:8",
+      "wallWidthM": 5.6603,
+      "wallHeightM": 14.839,
+      "kinds": {
+        "window": 14,
+        "door": 1,
+        "other": 13
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.53315,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.054786190119761,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 5.57018233532934,
+          "detected": 8,
+          "imputed": 0,
+          "rejected": 2,
+          "abstained": null
+        },
+        {
+          "row": 3,
+          "centreUp": 7.76375,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 9.341019910179641,
+          "detected": 7,
+          "imputed": 0,
+          "rejected": 1,
+          "abstained": null
+        },
+        {
+          "row": 5,
+          "centreUp": 12.554120701454236,
+          "detected": 7,
+          "imputed": 0,
+          "rejected": 1,
+          "abstained": null
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012166039-0:lod22:wall:9",
+      "wallWidthM": 0.95,
+      "wallHeightM": 12.674,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 3
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.50025,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 5.977546491228069,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 9.372093274853802,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:11",
+      "wallWidthM": 1.26,
+      "wallHeightM": 15.781,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 4
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.45565,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.3228999999999997,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 6.334604577464788,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 7.84605,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 9.613073943661972,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 10.7911,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:12",
+      "wallWidthM": 0.63,
+      "wallHeightM": 15.926,
+      "kinds": {
+        "window": 2,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 5.4975000000000005,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 7.702,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:14",
+      "wallWidthM": 1.13,
+      "wallHeightM": 15.6,
+      "kinds": {
+        "window": 3,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 2.5222249999999997,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 6.949999999999999,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.96665,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:15",
+      "wallWidthM": 0.63,
+      "wallHeightM": 15.59,
+      "kinds": {
+        "window": 2,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 2.8981500000000002,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 7.5729,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 9.2718,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:16",
+      "wallWidthM": 0.76,
+      "wallHeightM": 15.671,
+      "kinds": {
+        "window": 7,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 2.6452,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.4454000000000002,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 4.9792000000000005,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 7.1019749999999995,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 7.95775,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 10.358450000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 6,
+          "centreUp": 13.3481,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:17",
+      "wallWidthM": 1.26,
+      "wallHeightM": 15.925,
+      "kinds": {
+        "window": 2,
+        "door": 0,
+        "other": 0
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 5.386050000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 9.21735,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:18",
+      "wallWidthM": 0.75,
+      "wallHeightM": 16.146,
+      "kinds": {
+        "window": 6,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 2.7539,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 7.5844,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 10.8325,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 13.769649999999999,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:19",
+      "wallWidthM": 0.63,
+      "wallHeightM": 16.368,
+      "kinds": {
+        "window": 3,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.4880499999999999,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 6.5294,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.09515,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 9.91625,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 13.06995,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:22",
+      "wallWidthM": 0.91,
+      "wallHeightM": 16.766,
+      "kinds": {
+        "window": 6,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.9956749999999999,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 7.4046,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.360750000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 10.7289,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 13.853100000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:24",
+      "wallWidthM": 0.76,
+      "wallHeightM": 19.091,
+      "kinds": {
+        "window": 2,
+        "door": 0,
+        "other": 5
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.5112500000000002,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.5058197322467985,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 10.09,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 12.87925,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 16.22395,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 18.702,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:28",
+      "wallWidthM": 0.63,
+      "wallHeightM": 19.673,
+      "kinds": {
+        "window": 5,
+        "door": 0,
+        "other": 3
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.50045,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.323325,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 5.635125,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 9.873566666666667,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:29",
+      "wallWidthM": 1.13,
+      "wallHeightM": 18.899,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.9894,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 3.65755,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 5.2917,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 8.815850000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 10.30545,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 13.98525,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:31",
+      "wallWidthM": 0.37,
+      "wallHeightM": 18.219,
+      "kinds": {
+        "window": 3,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 9.224283333333334,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 12.7533,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:34",
+      "wallWidthM": 0.38,
+      "wallHeightM": 17.509,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 7.3325,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 8.5434,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 10.8098,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 13.876100000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:36",
+      "wallWidthM": 0.63,
+      "wallHeightM": 18.22,
+      "kinds": {
+        "window": 0,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 2.1886,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 8.565600000000002,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:39",
+      "wallWidthM": 1.29,
+      "wallHeightM": 18.22,
+      "kinds": {
+        "window": 5,
+        "door": 0,
+        "other": 9
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.52215,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 1.95535,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 2.69965,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 6.388109756097561,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 7.376900000000001,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 5,
+          "centreUp": 9.198881707317074,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 6,
+          "centreUp": 10.776446036585366,
+          "detected": 4,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": null
+        },
+        {
+          "row": 7,
+          "centreUp": 12.698451219512195,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:40",
+      "wallWidthM": 0.35,
+      "wallHeightM": 18.151,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 2.45495,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 5.4431,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.931075,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 11.37485,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:5",
+      "wallWidthM": 1.22,
+      "wallHeightM": 18.378,
+      "kinds": {
+        "window": 3,
+        "door": 0,
+        "other": 3
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 2.7222,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 6.305625,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 8.970482124143492,
+          "detected": 3,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:54",
+      "wallWidthM": 0.59,
+      "wallHeightM": 17.578,
+      "kinds": {
+        "window": 1,
+        "door": 0,
+        "other": 0
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 1.26665,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:6",
+      "wallWidthM": 0.69,
+      "wallHeightM": 19.154,
+      "kinds": {
+        "window": 4,
+        "door": 0,
+        "other": 1
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 3.76635,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 8.738150000000001,
+          "detected": 2,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 2 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 9.577,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 12.398950000000001,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    },
+    {
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:9",
+      "wallWidthM": 1.29,
+      "wallHeightM": 19.009,
+      "kinds": {
+        "window": 3,
+        "door": 0,
+        "other": 2
+      },
+      "rows": [
+        {
+          "row": 0,
+          "centreUp": 0.2779,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "ground row left as detected (shopfront rhythm is not assumed)"
+        },
+        {
+          "row": 1,
+          "centreUp": 2.7235,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 2,
+          "centreUp": 9.63785,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 0 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 3,
+          "centreUp": 14.91815,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        },
+        {
+          "row": 4,
+          "centreUp": 16.7301,
+          "detected": 1,
+          "imputed": 0,
+          "rejected": 0,
+          "abstained": "row has 1 window(s), fewer than the 3 required"
+        }
+      ]
+    }
+  ]
+}

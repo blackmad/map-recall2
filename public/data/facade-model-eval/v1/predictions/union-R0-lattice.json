@@ -1,0 +1,7889 @@
+{
+ "schemaVersion": 1,
+ "lane": "union-R0-lattice",
+ "model": "union(RF-DETR-seg-2XL, YOLO26x-seg) — doors win over windows (D1) + opening lattice (imputed boxes marked origin=imputed)",
+ "setting": "R0",
+ "boxConvention": "along = metres from plane.start; up = metres above plane.baseZ (min edge)",
+ "mergeRule": "union of windows; doors from facade-rsjek entrance; a window a door overlaps or mostly covers is dropped",
+ "totals": {
+  "windows": 304,
+  "doors": 13,
+  "other": 261,
+  "boxes": 578,
+  "imputed": 0
+ },
+ "records": [
+  {
+   "buildingId": "bag:0363100012064873",
+   "elevationId": "NL.IMBAG.Pand.0363100012064873-0:lod22:wall:5",
+   "surfaceId": "NL.IMBAG.Pand.0363100012064873-0:lod22:wall:5",
+   "wallWidthM": 6.2399,
+   "wallHeightM": 14.584,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012064873_0_lod22_wall_5.jpg",
+   "cropWidthPx": 281,
+   "cropHeightPx": 656,
+   "pixelsPerMetre": 45.033,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "door",
+     "score": 0.7869504690170288,
+     "along": 3.330927044679069,
+     "up": 1.3783658536585366,
+     "widthM": 1.5766388011480927,
+     "heightM": 3.134670731707317,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9501341581344604,
+     "along": 3.4863703067640923,
+     "up": 5.446768292682926,
+     "widthM": 1.310164637573767,
+     "heightM": 2.467719512195122,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9499,
+     "along": 3.5419,
+     "up": 8.9705,
+     "widthM": 1.1325,
+     "heightM": 2.3121,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9466,
+     "along": 0.0111,
+     "up": 12.3719,
+     "widthM": 0.9105,
+     "heightM": 2.2009,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9461,
+     "along": 0.0111,
+     "up": 2.1009,
+     "widthM": 0.9549,
+     "heightM": 2.3343,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.945,
+     "along": 0.0111,
+     "up": 8.926,
+     "widthM": 0.9327,
+     "heightM": 2.3566,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.94,
+     "along": 0.0111,
+     "up": 5.4357,
+     "widthM": 0.9327,
+     "heightM": 2.401,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9366,
+     "along": 3.4309,
+     "up": 12.4609,
+     "widthM": 1.2213,
+     "heightM": 2.112,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9357,
+     "along": 1.4767,
+     "up": 8.9705,
+     "widthM": 1.2658,
+     "heightM": 2.2676,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.934,
+     "along": 1.4323,
+     "up": 12.4386,
+     "widthM": 1.2658,
+     "heightM": 2.1342,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9336731433868408,
+     "along": 1.4878140799566508,
+     "up": 5.446768292682926,
+     "widthM": 1.2879584572759066,
+     "heightM": 2.445487804878049,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9202,
+     "along": 1.5211,
+     "up": 2.0564,
+     "widthM": 1.2435,
+     "heightM": 2.401,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8791,
+     "along": 5.7847,
+     "up": 8.8371,
+     "widthM": 0.4441,
+     "heightM": 2.7345,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8662,
+     "along": 5.8069,
+     "up": 4.7909,
+     "widthM": 0.4219,
+     "heightM": 3.1791,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5992,
+     "along": 6.0068,
+     "up": 13.3501,
+     "widthM": 0.2221,
+     "heightM": 0.8003,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8203,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 6.2177,
+     "heightM": 0.7114,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9675,
+     "along": 0.0111,
+     "up": 0.767,
+     "widthM": 6.2177,
+     "heightM": 13.8059,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9262,
+     "along": 0.8327,
+     "up": 8.9483,
+     "widthM": 2.3094,
+     "heightM": 1.0894,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9414,
+     "along": 0.8549,
+     "up": 5.1022,
+     "widthM": 2.2872,
+     "heightM": 1.1116,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7958,
+     "along": 2.7869,
+     "up": 1.9453,
+     "widthM": 0.5996,
+     "heightM": 0.4002,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4344,
+     "along": 5.385,
+     "up": 13.239,
+     "widthM": 0.8438,
+     "heightM": 1.3339,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8145,
+     "along": 5.8735,
+     "up": 3.746,
+     "widthM": 0.3553,
+     "heightM": 1.2894,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9257686138153076,
+     "along": 0.02220618029786046,
+     "up": 4.913207317073171,
+     "widthM": 5.418307992677952,
+     "heightM": 3.646,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9053223133087158,
+     "along": 0,
+     "up": 1.067121951219512,
+     "widthM": 5.484926533571533,
+     "heightM": 3.912780487804878,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9032942056655884,
+     "along": 0.8438348513186975,
+     "up": 4.957670731707317,
+     "widthM": 2.287236570679627,
+     "heightM": 1.2672073170731706,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8901033401489258,
+     "along": 0.8438348513186975,
+     "up": 8.470280487804878,
+     "widthM": 2.287236570679627,
+     "heightM": 1.5784512195121951,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8080672025680542,
+     "along": 0,
+     "up": 8.470280487804878,
+     "widthM": 5.373895632082231,
+     "heightM": 3.779390243902439,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4772191643714905,
+     "along": 0,
+     "up": 12.182975609756097,
+     "widthM": 5.351689451784371,
+     "heightM": 2.4010243902439026,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012070059",
+   "elevationId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:10",
+   "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:10",
+   "wallWidthM": 0.59,
+   "wallHeightM": 16.154,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_10.jpg",
+   "cropWidthPx": 27,
+   "cropHeightPx": 727,
+   "pixelsPerMetre": 45.761,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8964,
+     "along": 0.0109,
+     "up": 5.255,
+     "widthM": 0.5682,
+     "heightM": 2.3775,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7802,
+     "along": 0.0109,
+     "up": 8.8325,
+     "widthM": 0.5682,
+     "heightM": 2.3775,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5281,
+     "along": 0.0109,
+     "up": 11.9655,
+     "widthM": 0.5682,
+     "heightM": 2.6664,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9521,
+     "along": 0.0109,
+     "up": 0.0111,
+     "widthM": 0.5682,
+     "heightM": 2.3998,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7447,
+     "along": 0.0109,
+     "up": 2.2331,
+     "widthM": 0.5682,
+     "heightM": 13.9098,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012070059",
+   "elevationId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:11",
+   "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:11",
+   "wallWidthM": 0.66,
+   "wallHeightM": 16.947,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_11.jpg",
+   "cropWidthPx": 30,
+   "cropHeightPx": 763,
+   "pixelsPerMetre": 45.454,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.7708,
+     "along": 0.011,
+     "up": 5.1418,
+     "widthM": 0.352,
+     "heightM": 2.9985,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7533,
+     "along": 0.011,
+     "up": 12.1827,
+     "widthM": 0.044,
+     "heightM": 1.9768,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.678,
+     "along": 0.011,
+     "up": 8.7622,
+     "widthM": 0.044,
+     "heightM": 2.3766,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6602,
+     "along": 0.011,
+     "up": 0.7663,
+     "widthM": 0.638,
+     "heightM": 3.3539,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5361,
+     "along": 0.011,
+     "up": 0.0111,
+     "widthM": 0.638,
+     "heightM": 0.8662,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5087,
+     "along": 0.011,
+     "up": 0.0777,
+     "widthM": 0.638,
+     "heightM": 16.8582,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012070059",
+   "elevationId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:2",
+   "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:2",
+   "wallWidthM": 0.66,
+   "wallHeightM": 16.352,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_2.jpg",
+   "cropWidthPx": 30,
+   "cropHeightPx": 736,
+   "pixelsPerMetre": 45.455,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8961,
+     "along": 0.517,
+     "up": 5.3655,
+     "widthM": 0.132,
+     "heightM": 2.555,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8347,
+     "along": 0.275,
+     "up": 2.8772,
+     "widthM": 0.374,
+     "heightM": 1.1997,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6481,
+     "along": 0.517,
+     "up": 11.9641,
+     "widthM": 0.132,
+     "heightM": 2.4883,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5404,
+     "along": 0.495,
+     "up": 8.8092,
+     "widthM": 0.154,
+     "heightM": 2.555,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6905,
+     "along": 0.011,
+     "up": 0.0111,
+     "widthM": 0.638,
+     "heightM": 16.3298,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4088076949119568,
+     "along": 0,
+     "up": 5.154434782608696,
+     "widthM": 0.6599917763402704,
+     "heightM": 3.443695652173913,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012070059",
+   "elevationId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:3",
+   "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:3",
+   "wallWidthM": 0.66,
+   "wallHeightM": 16.182,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_3.jpg",
+   "cropWidthPx": 30,
+   "cropHeightPx": 728,
+   "pixelsPerMetre": 45.453,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9297,
+     "along": 0.011,
+     "up": 5.5459,
+     "widthM": 0.638,
+     "heightM": 2.2006,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9009,
+     "along": 0.011,
+     "up": 8.8801,
+     "widthM": 0.638,
+     "heightM": 1.4448,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8677,
+     "along": 0.011,
+     "up": 11.9476,
+     "widthM": 0.638,
+     "heightM": 1.556,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8253,
+     "along": 0.011,
+     "up": 2.6562,
+     "widthM": 0.638,
+     "heightM": 1.9116,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7419,
+     "along": 0.011,
+     "up": 0.0111,
+     "widthM": 0.638,
+     "heightM": 15.8486,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012070059",
+   "elevationId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:38",
+   "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:38",
+   "wallWidthM": 1.47,
+   "wallHeightM": 18.901,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_38.jpg",
+   "cropWidthPx": 66,
+   "cropHeightPx": 851,
+   "pixelsPerMetre": 44.897,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9373,
+     "along": 0.0111,
+     "up": 5.8524,
+     "widthM": 0.4677,
+     "heightM": 2.3099,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9327,
+     "along": 0.0111,
+     "up": 9.2506,
+     "widthM": 0.4677,
+     "heightM": 2.2877,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8758,
+     "along": 0.0111,
+     "up": 2.9429,
+     "widthM": 1.1582,
+     "heightM": 1.3326,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8555,
+     "along": 0.6571,
+     "up": 4.8974,
+     "widthM": 0.3118,
+     "heightM": 6.6409,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.834,
+     "along": 0.0111,
+     "up": 12.7154,
+     "widthM": 0.0668,
+     "heightM": 1.5325,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5096,
+     "along": 0.0111,
+     "up": 15.6028,
+     "widthM": 0.0891,
+     "heightM": 1.7546,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4935,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 0.5346,
+     "heightM": 0.4442,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8895,
+     "along": 0.0111,
+     "up": 4.6531,
+     "widthM": 1.4478,
+     "heightM": 14.0591,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8615,
+     "along": 1.058,
+     "up": 0.5886,
+     "widthM": 0.4009,
+     "heightM": 0.9106,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5611,
+     "along": 1.2139,
+     "up": 0.0111,
+     "widthM": 0.245,
+     "heightM": 0.533,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.70537930727005,
+     "along": 0,
+     "up": 11.815901292596946,
+     "widthM": 1.4700416592373124,
+     "heightM": 3.4426028202115164,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6001883149147034,
+     "along": 0,
+     "up": 4.841854289071682,
+     "widthM": 1.4700416592373124,
+     "heightM": 6.862995299647475,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012070059",
+   "elevationId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:4",
+   "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:4",
+   "wallWidthM": 0.37,
+   "wallHeightM": 16.531,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_4.jpg",
+   "cropWidthPx": 17,
+   "cropHeightPx": 744,
+   "pixelsPerMetre": 45.948,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.6674,
+     "along": 0.0109,
+     "up": 11.8539,
+     "widthM": 0.3482,
+     "heightM": 2.8663,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6421,
+     "along": 0.0109,
+     "up": 8.8321,
+     "widthM": 0.3482,
+     "heightM": 2.7107,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.527,
+     "along": 0.0109,
+     "up": 4.766,
+     "widthM": 0.3482,
+     "heightM": 2.9329,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4103,
+     "along": 0.0109,
+     "up": 0.0111,
+     "widthM": 0.3482,
+     "heightM": 2.0664,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9005,
+     "along": 0.0109,
+     "up": 0.0111,
+     "widthM": 0.3482,
+     "heightM": 16.5088,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012070059",
+   "elevationId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:6",
+   "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:6",
+   "wallWidthM": 0.66,
+   "wallHeightM": 16.053,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_6.jpg",
+   "cropWidthPx": 30,
+   "cropHeightPx": 722,
+   "pixelsPerMetre": 45.454,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8931,
+     "along": 0.011,
+     "up": 2.6792,
+     "widthM": 0.638,
+     "heightM": 1.5119,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8824,
+     "along": 0.011,
+     "up": 12.062,
+     "widthM": 0.374,
+     "heightM": 2.2012,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8784,
+     "along": 0.011,
+     "up": 5.414,
+     "widthM": 0.374,
+     "heightM": 2.3346,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7729,
+     "along": 0.011,
+     "up": 0.7004,
+     "widthM": 0.638,
+     "heightM": 1.8454,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.697,
+     "along": 0.011,
+     "up": 8.9492,
+     "widthM": 0.352,
+     "heightM": 2.1567,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6871,
+     "along": 0.011,
+     "up": 0.0111,
+     "widthM": 0.638,
+     "heightM": 0.6226,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8027,
+     "along": 0.011,
+     "up": 0.5447,
+     "widthM": 0.638,
+     "heightM": 15.386,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012070059",
+   "elevationId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:8",
+   "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:8",
+   "wallWidthM": 1.32,
+   "wallHeightM": 15.967,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_8.jpg",
+   "cropWidthPx": 59,
+   "cropHeightPx": 719,
+   "pixelsPerMetre": 44.698,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.4249,
+     "along": 1.2417,
+     "up": 6.8287,
+     "widthM": 0.0671,
+     "heightM": 1.4879,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7624,
+     "along": 0.0112,
+     "up": 1.2769,
+     "widthM": 0.358,
+     "heightM": 0.6884,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6756,
+     "along": 0.0112,
+     "up": 4.0306,
+     "widthM": 1.2976,
+     "heightM": 11.8142,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5814,
+     "along": 0.3691,
+     "up": 0.0111,
+     "widthM": 0.4027,
+     "heightM": 0.755,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4851,
+     "along": 0.7718,
+     "up": 0.0111,
+     "widthM": 0.5369,
+     "heightM": 2.2873,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8598991632461548,
+     "along": 0.7606537343487882,
+     "up": 0.0444144645340751,
+     "widthM": 0.5593042164329325,
+     "heightM": 2.35396662030598,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012070059",
+   "elevationId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:9",
+   "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:9",
+   "wallWidthM": 1.32,
+   "wallHeightM": 16.309,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012070059_0_lod22_wall_9.jpg",
+   "cropWidthPx": 59,
+   "cropHeightPx": 734,
+   "pixelsPerMetre": 44.696,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9529,
+     "along": 0.8837,
+     "up": 8.8544,
+     "widthM": 0.4251,
+     "heightM": 2.0886,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9454,
+     "along": 0.0112,
+     "up": 8.8988,
+     "widthM": 0.2014,
+     "heightM": 2.022,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9432,
+     "along": 0.8837,
+     "up": 12.0318,
+     "widthM": 0.4251,
+     "heightM": 1.9775,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9271,
+     "along": 0.0112,
+     "up": 12.054,
+     "widthM": 0.2014,
+     "heightM": 2.0886,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9078,
+     "along": 0.839,
+     "up": 5.1882,
+     "widthM": 0.4698,
+     "heightM": 2.4663,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9041,
+     "along": 0.0112,
+     "up": 5.1216,
+     "widthM": 0.2014,
+     "heightM": 2.533,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4869,
+     "along": 0.6153,
+     "up": 1.8109,
+     "widthM": 0.6936,
+     "heightM": 0.4666,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7701,
+     "along": 0.0112,
+     "up": 0.0111,
+     "widthM": 1.2976,
+     "heightM": 1.7553,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4983,
+     "along": 0.0112,
+     "up": 0.0111,
+     "widthM": 1.2976,
+     "heightM": 1.7553,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5367,
+     "along": 0.0112,
+     "up": 1.8331,
+     "widthM": 1.2976,
+     "heightM": 14.4204,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8579,
+     "along": 0.0112,
+     "up": 4.8105,
+     "widthM": 1.2976,
+     "heightM": 1.7553,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5171,
+     "along": 0.7942,
+     "up": 8.81,
+     "widthM": 0.5146,
+     "heightM": 0.6666,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9320833086967468,
+     "along": 0,
+     "up": 11.865130790190733,
+     "widthM": 1.3200210736263494,
+     "heightM": 3.110708446866485,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9296960830688477,
+     "along": 0,
+     "up": 8.732202997275202,
+     "widthM": 1.3200210736263494,
+     "heightM": 3.021831062670299,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9205042719841003,
+     "along": 0,
+     "up": 5.021572207084468,
+     "widthM": 1.3200210736263494,
+     "heightM": 3.755069482288828,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012074448",
+   "elevationId": "NL.IMBAG.Pand.0363100012074448-0:lod22:wall:4",
+   "surfaceId": "NL.IMBAG.Pand.0363100012074448-0:lod22:wall:4",
+   "wallWidthM": 6.3701,
+   "wallHeightM": 14.711,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012074448_0_lod22_wall_4.jpg",
+   "cropWidthPx": 287,
+   "cropHeightPx": 662,
+   "pixelsPerMetre": 45.054,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "door",
+     "score": 0.8860265612602234,
+     "along": 5.415711243655349,
+     "up": 0.7555498489425982,
+     "widthM": 0.9544081290048361,
+     "heightM": 2.511092145015106,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9482,
+     "along": 1.7867,
+     "up": 7.8333,
+     "widthM": 0.9988,
+     "heightM": 2.2,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.948,
+     "along": 3.0519,
+     "up": 7.8333,
+     "widthM": 0.9544,
+     "heightM": 2.2,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9425,
+     "along": 6.0039,
+     "up": 4.3444,
+     "widthM": 0.3551,
+     "heightM": 3.1333,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9408984184265137,
+     "along": 1.6868608791713382,
+     "up": 7.755496978851964,
+     "widthM": 2.4193136293378403,
+     "heightM": 2.422203927492447,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9396923184394836,
+     "along": 1.6868608791713382,
+     "up": 3.977747734138973,
+     "widthM": 2.463704705105507,
+     "heightM": 3.066643504531722,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9298,
+     "along": 1.7645,
+     "up": 4.0777,
+     "widthM": 1.0432,
+     "heightM": 2.8222,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.928,
+     "along": 3.1185,
+     "up": 11.2777,
+     "widthM": 0.8878,
+     "heightM": 1.6,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9259,
+     "along": 3.0297,
+     "up": 4.0777,
+     "widthM": 1.0432,
+     "heightM": 2.8444,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9185,
+     "along": 1.698,
+     "up": 11.2332,
+     "widthM": 0.91,
+     "heightM": 1.7111,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9166,
+     "along": 0.0111,
+     "up": 4.0333,
+     "widthM": 0.222,
+     "heightM": 2.9555,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9073,
+     "along": 0.0111,
+     "up": 7.8333,
+     "widthM": 0.1998,
+     "heightM": 2.2666,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8963,
+     "along": 0.0111,
+     "up": 11.2777,
+     "widthM": 0.1554,
+     "heightM": 1.7111,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8946,
+     "along": 5.2936,
+     "up": 8.3444,
+     "widthM": 0.2663,
+     "heightM": 2.5555,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8866,
+     "along": 5.2714,
+     "up": 4.2777,
+     "widthM": 0.2885,
+     "heightM": 3,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7115,
+     "along": 0.0111,
+     "up": 1.1444,
+     "widthM": 0.2442,
+     "heightM": 1.7778,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7025,
+     "along": 6.0261,
+     "up": 8.5222,
+     "widthM": 0.3329,
+     "heightM": 2.6444,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5718,
+     "along": 6.0705,
+     "up": 10.3221,
+     "widthM": 0.2885,
+     "heightM": 0.8222,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4727290868759155,
+     "along": 1.6868608791713382,
+     "up": 1.088880664652568,
+     "widthM": 2.4859002429893406,
+     "heightM": 2.311093655589124,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.906,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 6.3479,
+     "heightM": 0.7333,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9783,
+     "along": 0.0111,
+     "up": 0.5222,
+     "widthM": 6.3479,
+     "heightM": 14.1777,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9218,
+     "along": 4.9607,
+     "up": 11.1888,
+     "widthM": 1.3983,
+     "heightM": 1.6,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7779753804206848,
+     "along": 0.9766036668886694,
+     "up": 0.48888519637462236,
+     "widthM": 3.950805743322345,
+     "heightM": 3.333308157099698,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6987407803535461,
+     "along": 0.022195537883833397,
+     "up": 3.799971299093656,
+     "widthM": 4.8830183344433475,
+     "heightM": 3.5555287009063448,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5808870792388916,
+     "along": 0.022195537883833397,
+     "up": 10.622141993957705,
+     "widthM": 4.838627258675681,
+     "heightM": 3.19997583081571,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5107176303863525,
+     "along": 0,
+     "up": 7.133279456193354,
+     "widthM": 4.8830183344433475,
+     "heightM": 3.5777507552870094,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.44257625937461853,
+     "along": 4.949604948094848,
+     "up": 10.933250755287009,
+     "widthM": 1.4205144245653374,
+     "heightM": 1.8444305135951664,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012143972",
+   "elevationId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:10",
+   "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:10",
+   "wallWidthM": 1.06,
+   "wallHeightM": 17.912,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_10.jpg",
+   "cropWidthPx": 48,
+   "cropHeightPx": 806,
+   "pixelsPerMetre": 45.282,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9243,
+     "along": 0.011,
+     "up": 8.0115,
+     "widthM": 0.7288,
+     "heightM": 3.0001,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9225,
+     "along": 0.011,
+     "up": 14.8118,
+     "widthM": 0.4417,
+     "heightM": 1.1112,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9058,
+     "along": 0.011,
+     "up": 4.5669,
+     "widthM": 0.7067,
+     "heightM": 2.4668,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8001,
+     "along": 0.011,
+     "up": 11.5006,
+     "widthM": 0.5521,
+     "heightM": 1.6445,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6837,
+     "along": 0.1877,
+     "up": 1.0334,
+     "widthM": 0.6183,
+     "heightM": 2.1779,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9285,
+     "along": 0.011,
+     "up": 0.0111,
+     "widthM": 1.0379,
+     "heightM": 17.8898,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5123952627182007,
+     "along": 0,
+     "up": 11.000545905707195,
+     "widthM": 0.9937635397269944,
+     "heightM": 1.8223126550868485,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5026473999023438,
+     "along": 0,
+     "up": 3.6890719602977664,
+     "widthM": 0.9054290028623727,
+     "heightM": 4.533558312655087,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.42459091544151306,
+     "along": 0,
+     "up": 7.533707196029776,
+     "widthM": 0.9495962712946836,
+     "heightM": 3.9557518610421836,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012143972",
+   "elevationId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:11",
+   "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:11",
+   "wallWidthM": 1.06,
+   "wallHeightM": 17.912,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_11.jpg",
+   "cropWidthPx": 48,
+   "cropHeightPx": 806,
+   "pixelsPerMetre": 45.285,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.4594,
+     "along": 0.9385,
+     "up": 0.6778,
+     "widthM": 0.1104,
+     "heightM": 1.7779,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4524,
+     "along": 0.5631,
+     "up": 9.5005,
+     "widthM": 0.1987,
+     "heightM": 1.8668,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4507,
+     "along": 0.4969,
+     "up": 14.6785,
+     "widthM": 0.2208,
+     "heightM": 1.7556,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4087,
+     "along": 0.7839,
+     "up": 9.3894,
+     "widthM": 0.0662,
+     "heightM": 1.9779,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9684,
+     "along": 0.011,
+     "up": 0.0111,
+     "widthM": 1.0379,
+     "heightM": 17.5787,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.40450742840766907,
+     "along": 0,
+     "up": 0.48891315136476426,
+     "widthM": 1.0599593482579044,
+     "heightM": 6.644774193548387,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012143972",
+   "elevationId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:12",
+   "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:12",
+   "wallWidthM": 0.51,
+   "wallHeightM": 17.911,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_12.jpg",
+   "cropWidthPx": 23,
+   "cropHeightPx": 806,
+   "pixelsPerMetre": 45.101,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "other",
+     "score": 0.8991,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 0.4878,
+     "heightM": 15.0888,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012143972",
+   "elevationId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:13",
+   "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:13",
+   "wallWidthM": 0.34,
+   "wallHeightM": 17.91,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_13.jpg",
+   "cropWidthPx": 15,
+   "cropHeightPx": 806,
+   "pixelsPerMetre": 44.116,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9035,
+     "along": 0.0113,
+     "up": 7.2551,
+     "widthM": 0.3173,
+     "heightM": 2.9998,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8222,
+     "along": 0.0113,
+     "up": 3.8109,
+     "widthM": 0.3173,
+     "heightM": 2.7554,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7781,
+     "along": 0.0113,
+     "up": 0.2111,
+     "widthM": 0.3173,
+     "heightM": 3.3776,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6626,
+     "along": 0.0113,
+     "up": 11.2104,
+     "widthM": 0.3173,
+     "heightM": 1.9554,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9038,
+     "along": 0.0113,
+     "up": 0.0111,
+     "widthM": 0.3173,
+     "heightM": 16.0657,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012143972",
+   "elevationId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:20",
+   "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:20",
+   "wallWidthM": 0.56,
+   "wallHeightM": 17.906,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_20.jpg",
+   "cropWidthPx": 25,
+   "cropHeightPx": 806,
+   "pixelsPerMetre": 44.643,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.7966,
+     "along": 0.0112,
+     "up": 7.6089,
+     "widthM": 0.5376,
+     "heightM": 2.7326,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6466,
+     "along": 0.0112,
+     "up": 3.9211,
+     "widthM": 0.5376,
+     "heightM": 2.5326,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6003,
+     "along": 0.0112,
+     "up": 14.1182,
+     "widthM": 0.5376,
+     "heightM": 2.3327,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5142,
+     "along": 0.1904,
+     "up": 1.0775,
+     "widthM": 0.3584,
+     "heightM": 2.3105,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6181,
+     "along": 0.0112,
+     "up": 0.0111,
+     "widthM": 0.5376,
+     "heightM": 17.8171,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012143972",
+   "elevationId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:22",
+   "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:22",
+   "wallWidthM": 1.13,
+   "wallHeightM": 17.905,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_22.jpg",
+   "cropWidthPx": 51,
+   "cropHeightPx": 806,
+   "pixelsPerMetre": 45.134,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9385,
+     "along": 0.0111,
+     "up": 7.8084,
+     "widthM": 0.3323,
+     "heightM": 2.1548,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9024,
+     "along": 0.0111,
+     "up": 4.0542,
+     "widthM": 0.3323,
+     "heightM": 2.4214,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7571,
+     "along": 0.0111,
+     "up": 11.2517,
+     "widthM": 0.3767,
+     "heightM": 1.6661,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6696,
+     "along": 0.0111,
+     "up": 1.033,
+     "widthM": 0.3767,
+     "heightM": 2.3325,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5216,
+     "along": 0.0111,
+     "up": 2.5436,
+     "widthM": 0.3767,
+     "heightM": 0.7997,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9016,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 1.1078,
+     "heightM": 15.2615,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7658,
+     "along": 0.0111,
+     "up": 3.832,
+     "widthM": 0.9306,
+     "heightM": 1.5772,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9000037312507629,
+     "along": 0,
+     "up": 7.219758064516129,
+     "widthM": 1.1299679075009559,
+     "heightM": 3.0434057071960297,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8092759251594543,
+     "along": 0,
+     "up": 10.329807692307693,
+     "widthM": 1.1299679075009559,
+     "heightM": 3.7764888337468983,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5050123333930969,
+     "along": 0,
+     "up": 3.6432009925558315,
+     "widthM": 1.1299679075009559,
+     "heightM": 3.7542741935483877,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012143972",
+   "elevationId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:23",
+   "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:23",
+   "wallWidthM": 1.1,
+   "wallHeightM": 14.147,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012143972_0_lod22_wall_23.jpg",
+   "cropWidthPx": 50,
+   "cropHeightPx": 637,
+   "pixelsPerMetre": 45.454,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.5189,
+     "along": 0.341,
+     "up": 0.6552,
+     "widthM": 0.616,
+     "heightM": 1.9544,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4539,
+     "along": 0.363,
+     "up": 5.9853,
+     "widthM": 0.726,
+     "heightM": 3.2647,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8771,
+     "along": 0.011,
+     "up": 0.0111,
+     "widthM": 1.078,
+     "heightM": 14.1248,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5460725426673889,
+     "along": 0,
+     "up": 5.907538461538462,
+     "widthM": 1.1000116214522746,
+     "heightM": 3.531197802197802,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012153094",
+   "elevationId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:14",
+   "surfaceId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:14",
+   "wallWidthM": 2.54,
+   "wallHeightM": 16.204,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012153094_0_lod22_wall_14.jpg",
+   "cropWidthPx": 114,
+   "cropHeightPx": 729,
+   "pixelsPerMetre": 44.881,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9185,
+     "along": 0.5682,
+     "up": 2.4339,
+     "widthM": 0.9804,
+     "heightM": 1.6226,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9185,
+     "along": 2.1278,
+     "up": 2.4339,
+     "widthM": 0.4011,
+     "heightM": 1.5782,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8705,
+     "along": 2.0833,
+     "up": 12.6365,
+     "widthM": 0.4456,
+     "heightM": 1.756,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8697,
+     "along": 0.479,
+     "up": 4.8123,
+     "widthM": 2.0499,
+     "heightM": 3.1119,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8641,
+     "along": 0.5236,
+     "up": 12.6809,
+     "widthM": 0.9804,
+     "heightM": 1.6671,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8241790533065796,
+     "along": 0.44561994612775185,
+     "up": 8.802172839506174,
+     "widthM": 2.094413746800434,
+     "heightM": 2.8229190672153637,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4867,
+     "along": 0.5236,
+     "up": 8.9689,
+     "widthM": 0.5125,
+     "heightM": 2.245,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8358,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 2.5178,
+     "heightM": 1.7115,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9728,
+     "along": 0.0111,
+     "up": 0.878,
+     "widthM": 2.5178,
+     "heightM": 15.3149,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.845432698726654,
+     "along": 0,
+     "up": 12.158556927297669,
+     "widthM": 2.5400336929281857,
+     "heightM": 2.5561865569272975,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5960805416107178,
+     "along": 0,
+     "up": 8.579895747599451,
+     "widthM": 2.5400336929281857,
+     "heightM": 3.7120274348422497,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.498714417219162,
+     "along": 0,
+     "up": 4.578908093278464,
+     "widthM": 2.5400336929281857,
+     "heightM": 3.756482853223594,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4758945107460022,
+     "along": 0,
+     "up": 0.8001975308641975,
+     "widthM": 2.5400336929281857,
+     "heightM": 3.867621399176955,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4017464816570282,
+     "along": 0.5347439353533022,
+     "up": 2.3561371742112485,
+     "widthM": 1.0917688680129922,
+     "heightM": 1.7559890260631001,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012153094",
+   "elevationId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:15",
+   "surfaceId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:15",
+   "wallWidthM": 1.73,
+   "wallHeightM": 16.204,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012153094_0_lod22_wall_15.jpg",
+   "cropWidthPx": 78,
+   "cropHeightPx": 729,
+   "pixelsPerMetre": 45.087,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9194,
+     "along": 0.0111,
+     "up": 2.4117,
+     "widthM": 0.2218,
+     "heightM": 1.6449,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9176,
+     "along": 0.0111,
+     "up": 4.9457,
+     "widthM": 0.2218,
+     "heightM": 2.6896,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9138,
+     "along": 0.0111,
+     "up": 12.792,
+     "widthM": 0.1996,
+     "heightM": 1.6671,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9102,
+     "along": 1.4971,
+     "up": 9.4357,
+     "widthM": 0.2218,
+     "heightM": 2.6673,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8403,
+     "along": 0.0111,
+     "up": 9.0356,
+     "widthM": 0.2218,
+     "heightM": 2.1561,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6289,
+     "along": 1.608,
+     "up": 1.7893,
+     "widthM": 0.1109,
+     "heightM": 2.1339,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.612,
+     "along": 1.4084,
+     "up": 5.7681,
+     "widthM": 0.3105,
+     "heightM": 1.9783,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5874,
+     "along": 1.6967,
+     "up": 5.8348,
+     "widthM": 0.0222,
+     "heightM": 1.5559,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5682,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 1.7078,
+     "heightM": 0.9336,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.963,
+     "along": 0.0111,
+     "up": 0.6335,
+     "widthM": 1.7078,
+     "heightM": 15.5594,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4599,
+     "along": 0.0111,
+     "up": 8.88,
+     "widthM": 1.7078,
+     "heightM": 7.3129,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5728,
+     "along": 0.987,
+     "up": 7.124,
+     "widthM": 0.7319,
+     "heightM": 1.7115,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6674728393554688,
+     "along": 1.0424193069647187,
+     "up": 5.7569766803840885,
+     "widthM": 0.6875531599128996,
+     "heightM": 3.1118792866941014,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.44450443983078003,
+     "along": 0,
+     "up": 7.779698216735254,
+     "widthM": 1.7299724668776184,
+     "heightM": 3.423067215363512,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.43056631088256836,
+     "along": 0,
+     "up": 4.601135802469136,
+     "widthM": 1.7299724668776184,
+     "heightM": 3.178562414266118,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012153094",
+   "elevationId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:3",
+   "surfaceId": "NL.IMBAG.Pand.0363100012153094-0:lod22:wall:3",
+   "wallWidthM": 1.5,
+   "wallHeightM": 14.058,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012153094_0_lod22_wall_3.jpg",
+   "cropWidthPx": 68,
+   "cropHeightPx": 633,
+   "pixelsPerMetre": 45.333,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9376,
+     "along": 0.011,
+     "up": 8.8723,
+     "widthM": 0.5735,
+     "heightM": 2.6206,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8715841770172119,
+     "along": 0,
+     "up": 4.841459715639811,
+     "widthM": 0.6176522501335143,
+     "heightM": 3.17581990521327,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8026,
+     "along": 0.011,
+     "up": 13.4251,
+     "widthM": 0.4191,
+     "heightM": 0.6218,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6469,
+     "along": 0.011,
+     "up": 0.0111,
+     "widthM": 1.478,
+     "heightM": 0.955,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9696,
+     "along": 0.011,
+     "up": 0.8772,
+     "widthM": 1.478,
+     "heightM": 13.1697,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8505927920341492,
+     "along": 0,
+     "up": 8.372616113744076,
+     "widthM": 1.5000126074671063,
+     "heightM": 4.841459715639811,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012155815",
+   "elevationId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:1",
+   "surfaceId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:1",
+   "wallWidthM": 2.8401,
+   "wallHeightM": 14.688,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012155815_0_lod22_wall_1.jpg",
+   "cropWidthPx": 128,
+   "cropHeightPx": 661,
+   "pixelsPerMetre": 45.069,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.914,
+     "along": 0.0111,
+     "up": 4.7664,
+     "widthM": 0.6656,
+     "heightM": 1.911,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9076,
+     "along": 1.2315,
+     "up": 12.1215,
+     "widthM": 0.3106,
+     "heightM": 0.4889,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9071,
+     "along": 2.2965,
+     "up": 4.7442,
+     "widthM": 0.5325,
+     "heightM": 1.9777,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8808,
+     "along": 0.7211,
+     "up": 12.1437,
+     "widthM": 0.3106,
+     "heightM": 0.4222,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8729,
+     "along": 0.0111,
+     "up": 7.8995,
+     "widthM": 0.6213,
+     "heightM": 2.1554,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8568,
+     "along": 1.7418,
+     "up": 12.1437,
+     "widthM": 0.3106,
+     "heightM": 0.4444,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5954,
+     "along": 2.2965,
+     "up": 7.8995,
+     "widthM": 0.5325,
+     "heightM": 2.1332,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6498,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 2.8179,
+     "heightM": 0.9777,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.951,
+     "along": 0.0111,
+     "up": 3.0998,
+     "widthM": 2.8179,
+     "heightM": 10.466,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6269,
+     "along": 1.8971,
+     "up": 10.0994,
+     "widthM": 0.9319,
+     "heightM": 0.7777,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6962,
+     "along": 1.9193,
+     "up": 6.9218,
+     "widthM": 0.9097,
+     "heightM": 0.6666,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7012,
+     "along": 2.4296,
+     "up": 0.3,
+     "widthM": 0.3994,
+     "heightM": 2.7109,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5256,
+     "along": 2.4296,
+     "up": 12.1437,
+     "widthM": 0.3994,
+     "heightM": 0.2889,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9499486684799194,
+     "along": 0,
+     "up": 7.755086232980334,
+     "widthM": 2.8401059868310803,
+     "heightM": 4.04419969742814,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9240047931671143,
+     "along": 0,
+     "up": 4.5997216338880484,
+     "widthM": 2.8401059868310803,
+     "heightM": 3.0442602118003026,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.47383981943130493,
+     "along": 0,
+     "up": 0.5110801815431165,
+     "widthM": 2.8401059868310803,
+     "heightM": 4.066420574886536,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012155815",
+   "elevationId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:2",
+   "surfaceId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:2",
+   "wallWidthM": 2.4001,
+   "wallHeightM": 12.06,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012155815_0_lod22_wall_2.jpg",
+   "cropWidthPx": 108,
+   "cropHeightPx": 543,
+   "pixelsPerMetre": 44.998,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.935,
+     "along": 0.6111,
+     "up": 5.497,
+     "widthM": 0.9556,
+     "heightM": 1.8878,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8761,
+     "along": 0.6111,
+     "up": 8.5841,
+     "widthM": 0.9556,
+     "heightM": 1.8434,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9099,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 2.3779,
+     "heightM": 1.6213,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8717,
+     "along": 0.0111,
+     "up": 4.4309,
+     "widthM": 2.3779,
+     "heightM": 7.618,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.656,
+     "along": 0.2111,
+     "up": 10.2277,
+     "widthM": 1.689,
+     "heightM": 1.2438,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8934953808784485,
+     "along": 0,
+     "up": 4.686298342541436,
+     "widthM": 2.4000895663523405,
+     "heightM": 3.5980110497237567,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8868131041526794,
+     "along": 0,
+     "up": 8.195469613259668,
+     "widthM": 2.4000895663523405,
+     "heightM": 3.3314917127071824,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012155815",
+   "elevationId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:23",
+   "surfaceId": "NL.IMBAG.Pand.0363100012155815-0:lod22:wall:23",
+   "wallWidthM": 1.37,
+   "wallHeightM": 14.512,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012155815_0_lod22_wall_23.jpg",
+   "cropWidthPx": 62,
+   "cropHeightPx": 653,
+   "pixelsPerMetre": 45.257,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8007,
+     "along": 0.011,
+     "up": 6.4337,
+     "widthM": 1.0385,
+     "heightM": 1.4668,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5682361125946045,
+     "along": 0,
+     "up": 9.267234303215927,
+     "widthM": 1.3699523300646639,
+     "heightM": 3.111301684532925,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012156186",
+   "elevationId": "NL.IMBAG.Pand.0363100012156186-0:lod22:wall:8",
+   "surfaceId": "NL.IMBAG.Pand.0363100012156186-0:lod22:wall:8",
+   "wallWidthM": 5.7999,
+   "wallHeightM": 14.587,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012156186_0_lod22_wall_8.jpg",
+   "cropWidthPx": 261,
+   "cropHeightPx": 656,
+   "pixelsPerMetre": 45.001,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "door",
+     "score": 0.9017477631568909,
+     "along": 0.555542058167582,
+     "up": 1.4898307926829266,
+     "widthM": 1.1777491633152737,
+     "heightM": 2.534935975609756,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9549844264984131,
+     "along": 2.8221536554913165,
+     "up": 4.736327743902439,
+     "widthM": 2.5332717852441737,
+     "heightM": 2.868480182926829,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9452,
+     "along": 3.4777,
+     "up": 8.4831,
+     "widthM": 1.2889,
+     "heightM": 2.1569,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9449,
+     "along": 0.6555,
+     "up": 8.3942,
+     "widthM": 1.1111,
+     "heightM": 2.2459,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9436599016189575,
+     "along": 2.8443753378180197,
+     "up": 8.383077743902438,
+     "widthM": 2.57771514989758,
+     "heightM": 2.401518292682927,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9376,
+     "along": 0.6778,
+     "up": 4.8364,
+     "widthM": 0.9778,
+     "heightM": 2.6461,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9344,
+     "along": 2.8555,
+     "up": 8.4609,
+     "widthM": 0.5111,
+     "heightM": 1.9346,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9262,
+     "along": 3.4555,
+     "up": 4.9476,
+     "widthM": 1.2222,
+     "heightM": 2.5572,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9209,
+     "along": 4.8554,
+     "up": 8.4609,
+     "widthM": 0.4889,
+     "heightM": 1.9346,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9183,
+     "along": 2.811,
+     "up": 2.3682,
+     "widthM": 1.0222,
+     "heightM": 1.4898,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9161,
+     "along": 4.3221,
+     "up": 2.3682,
+     "widthM": 0.9778,
+     "heightM": 1.4676,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9151,
+     "along": 4.411,
+     "up": 11.8186,
+     "widthM": 0.9778,
+     "heightM": 1.7567,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9132,
+     "along": 2.8333,
+     "up": 4.8586,
+     "widthM": 0.4667,
+     "heightM": 2.4238,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9101,
+     "along": 2.8777,
+     "up": 11.8186,
+     "widthM": 1.0222,
+     "heightM": 1.7344,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8637,
+     "along": 4.8332,
+     "up": 4.8364,
+     "widthM": 0.4667,
+     "heightM": 2.4682,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8374,
+     "along": 4.2999,
+     "up": 1.2563,
+     "widthM": 0.9555,
+     "heightM": 0.4447,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8215,
+     "along": 2.811,
+     "up": 1.1229,
+     "widthM": 0.9778,
+     "heightM": 0.6004,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7287,
+     "along": 0.7889,
+     "up": 12.5746,
+     "widthM": 0.8666,
+     "heightM": 0.845,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9681,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 5.7776,
+     "heightM": 14.5648,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9622,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 2.2444,
+     "heightM": 1.7344,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8963,
+     "along": 1.0555,
+     "up": 1.2563,
+     "widthM": 4.7332,
+     "heightM": 6.9377,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4315,
+     "along": 1.8555,
+     "up": 0.0111,
+     "widthM": 1.3111,
+     "heightM": 0.9562,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9534,
+     "along": 3.0333,
+     "up": 0.0111,
+     "widthM": 2.7555,
+     "heightM": 1.2452,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9376689791679382,
+     "along": 0.06666504698010983,
+     "up": 4.380547256097561,
+     "widthM": 5.710972357962742,
+     "heightM": 3.8024039634146343,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9178933501243591,
+     "along": 0.02222168232670328,
+     "up": 1.3341768292682927,
+     "widthM": 5.777637404942852,
+     "heightM": 3.024134146341463,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8772666454315186,
+     "along": 0.08888672930681311,
+     "up": 8.16071493902439,
+     "widthM": 5.688750675636039,
+     "heightM": 3.580041158536585,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012156232",
+   "elevationId": "NL.IMBAG.Pand.0363100012156232-0:lod22:wall:15",
+   "surfaceId": "NL.IMBAG.Pand.0363100012156232-0:lod22:wall:15",
+   "wallWidthM": 2.2501,
+   "wallHeightM": 16.693,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012156232_0_lod22_wall_15.jpg",
+   "cropWidthPx": 101,
+   "cropHeightPx": 751,
+   "pixelsPerMetre": 44.887,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9296,
+     "along": 1.6152,
+     "up": 1.8116,
+     "widthM": 0.5347,
+     "heightM": 1.5115,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9282788634300232,
+     "along": 0.9579511816398127,
+     "up": 8.0019707057257,
+     "widthM": 0.5123924925050162,
+     "heightM": 2.222769640479361,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9118099808692932,
+     "along": 1.559455411971788,
+     "up": 8.024198402130493,
+     "widthM": 0.6906159681589348,
+     "heightM": 2.5561850865512654,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9118099808692932,
+     "along": 1.581733346428528,
+     "up": 4.067668442077231,
+     "widthM": 0.6683380337021949,
+     "heightM": 3.067422103861518,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9043130874633789,
+     "along": 0.9133953127263332,
+     "up": 4.045440745672437,
+     "widthM": 0.5346704269617559,
+     "heightM": 2.711778961384821,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8922,
+     "along": 0.9914,
+     "up": 1.7893,
+     "widthM": 0.4901,
+     "heightM": 1.4448,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6018,
+     "along": 0.9023,
+     "up": 11.6584,
+     "widthM": 1.1139,
+     "heightM": 1.8004,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9413,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 2.2278,
+     "heightM": 16.6708,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8215,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 2.2278,
+     "heightM": 1.8894,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8294,
+     "along": 0.0111,
+     "up": 1.4115,
+     "widthM": 2.2278,
+     "heightM": 14.8481,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9241418242454529,
+     "along": 0,
+     "up": 3.734252996005327,
+     "widthM": 2.250071380130723,
+     "heightM": 3.6231145139813585,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9187722206115723,
+     "along": 0,
+     "up": 7.157318242343543,
+     "widthM": 2.250071380130723,
+     "heightM": 4.0232130492676434,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4756966531276703,
+     "along": 0,
+     "up": 1.4670279627163783,
+     "widthM": 2.250071380130723,
+     "heightM": 2.2672250332889483,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012156232",
+   "elevationId": "NL.IMBAG.Pand.0363100012156232-0:lod22:wall:16",
+   "surfaceId": "NL.IMBAG.Pand.0363100012156232-0:lod22:wall:16",
+   "wallWidthM": 1.87,
+   "wallHeightM": 15.007,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012156232_0_lod22_wall_16.jpg",
+   "cropWidthPx": 84,
+   "cropHeightPx": 675,
+   "pixelsPerMetre": 44.921,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "door",
+     "score": 0.4497853219509125,
+     "along": 0.7346292403992617,
+     "up": 2.378887407407408,
+     "widthM": 0.9572441617323713,
+     "heightM": 2.0676311111111114,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9467,
+     "along": 0.7235,
+     "up": 8.7485,
+     "widthM": 0.9795,
+     "heightM": 2.29,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9307,
+     "along": 0.7235,
+     "up": 5.0801,
+     "widthM": 1.0018,
+     "heightM": 2.8235,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4972,
+     "along": 0.6345,
+     "up": 12.7504,
+     "widthM": 1.1353,
+     "heightM": 1.2228,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4112,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 0.3562,
+     "heightM": 0.4891,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9545,
+     "along": 0.0111,
+     "up": 1.4785,
+     "widthM": 1.8477,
+     "heightM": 13.5174,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6958,
+     "along": 0.0111,
+     "up": 10.2381,
+     "widthM": 1.8477,
+     "heightM": 4.7578,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8005,
+     "along": 0.0111,
+     "up": 12.7059,
+     "widthM": 1.8477,
+     "heightM": 1.4229,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9205,
+     "along": 0.3005,
+     "up": 0.0111,
+     "widthM": 1.5583,
+     "heightM": 2.6457,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9314625263214111,
+     "along": 0,
+     "up": 4.646611851851852,
+     "widthM": 1.8699653391981208,
+     "heightM": 3.846238518518519,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7527403235435486,
+     "along": 0,
+     "up": 8.337222222222223,
+     "widthM": 1.8699653391981208,
+     "heightM": 4.11302962962963,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4675140976905823,
+     "along": 0.17809193706648768,
+     "up": 1.8453051851851854,
+     "widthM": 1.691873402131633,
+     "heightM": 2.956934814814815,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012156790",
+   "elevationId": "NL.IMBAG.Pand.0363100012156790-0:lod22:wall:2",
+   "surfaceId": "NL.IMBAG.Pand.0363100012156790-0:lod22:wall:2",
+   "wallWidthM": 3.04,
+   "wallHeightM": 15.353,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012156790_0_lod22_wall_2.jpg",
+   "cropWidthPx": 137,
+   "cropHeightPx": 691,
+   "pixelsPerMetre": 45.066,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9595351815223694,
+     "along": 1.0651149104432436,
+     "up": 5.932345875542692,
+     "widthM": 1.242634062183784,
+     "heightM": 2.377382054992764,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9377830028533936,
+     "along": 1.0651149104432436,
+     "up": 9.1762503617945,
+     "widthM": 1.2648239561513515,
+     "heightM": 2.310726483357453,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9,
+     "along": 1.3647,
+     "up": 13.4755,
+     "widthM": 0.3328,
+     "heightM": 0.4666,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8929,
+     "along": 1.8529,
+     "up": 13.4755,
+     "widthM": 0.3328,
+     "heightM": 0.4888,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7355,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 3.0178,
+     "heightM": 1.3109,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.981,
+     "along": 0.0111,
+     "up": 0.6554,
+     "widthM": 3.0178,
+     "heightM": 14.6864,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9149009585380554,
+     "along": 0.13313936380540545,
+     "up": 5.710160636758322,
+     "widthM": 2.884686215783784,
+     "heightM": 3.199467438494935,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8647679686546326,
+     "along": 0.155329257772973,
+     "up": 0.44437047756874093,
+     "widthM": 2.8624963218162165,
+     "heightM": 4.399267727930535,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8296300768852234,
+     "along": 0.13313936380540545,
+     "up": 8.909628075253256,
+     "widthM": 2.906876109751352,
+     "heightM": 3.8438046309696094,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012156790",
+   "elevationId": "NL.IMBAG.Pand.0363100012156790-0:lod22:wall:6",
+   "surfaceId": "NL.IMBAG.Pand.0363100012156790-0:lod22:wall:6",
+   "wallWidthM": 2.11,
+   "wallHeightM": 15.277,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012156790_0_lod22_wall_6.jpg",
+   "cropWidthPx": 95,
+   "cropHeightPx": 687,
+   "pixelsPerMetre": 45.024,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.5765,
+     "along": 0.4775,
+     "up": 1.59,
+     "widthM": 0.8662,
+     "heightM": 1.2008,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7244,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 2.0878,
+     "heightM": 0.6004,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.907,
+     "along": 0.0111,
+     "up": 0.3892,
+     "widthM": 2.0878,
+     "heightM": 14.8767,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8214741349220276,
+     "along": 0,
+     "up": 6.293145560407569,
+     "widthM": 2.1100064671288647,
+     "heightM": 2.0903027656477438,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7427950501441956,
+     "along": 0.044421188781660306,
+     "up": 11.518902474526929,
+     "widthM": 2.0655852783472044,
+     "heightM": 1.3564730713245998,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.48008260130882263,
+     "along": 0,
+     "up": 1.556608442503639,
+     "widthM": 2.1100064671288647,
+     "heightM": 3.557962154294032,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.47964075207710266,
+     "along": 0,
+     "up": 9.539786026200874,
+     "widthM": 2.1100064671288647,
+     "heightM": 1.9124046579330425,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012158539",
+   "elevationId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:10",
+   "surfaceId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:10",
+   "wallWidthM": 1.9701,
+   "wallHeightM": 16.661,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012158539_0_lod22_wall_10.jpg",
+   "cropWidthPx": 89,
+   "cropHeightPx": 750,
+   "pixelsPerMetre": 45.176,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9486,
+     "along": 1.4942,
+     "up": 8.8081,
+     "widthM": 0.4649,
+     "heightM": 2.2215,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9438,
+     "along": 1.4942,
+     "up": 5.0983,
+     "widthM": 0.4649,
+     "heightM": 2.7324,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9415467381477356,
+     "along": 0.907565352216205,
+     "up": 12.040349333333335,
+     "widthM": 1.0403797940039423,
+     "heightM": 1.7549586666666668,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9346341490745544,
+     "along": 0.8854296119182488,
+     "up": 5.064944000000001,
+     "widthM": 0.48698628655503684,
+     "heightM": 2.5102573333333336,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9167,
+     "along": 0.9408,
+     "up": 8.7637,
+     "widthM": 0.4427,
+     "heightM": 1.9549,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4404,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 0.487,
+     "heightM": 1.4217,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9735,
+     "along": 0.0111,
+     "up": 1.4328,
+     "widthM": 1.9479,
+     "heightM": 15.217,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6923,
+     "along": 0.0111,
+     "up": 15.4059,
+     "widthM": 1.8594,
+     "heightM": 1.244,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8773,
+     "along": 0.2324,
+     "up": 1.4328,
+     "widthM": 1.7266,
+     "heightM": 3.5543,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7768,
+     "along": 0.5202,
+     "up": 0.0111,
+     "widthM": 1.4388,
+     "heightM": 2.1548,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9122800230979919,
+     "along": 0,
+     "up": 4.798368,
+     "widthM": 1.9700808865181036,
+     "heightM": 3.8431373333333334,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8946054577827454,
+     "along": 0,
+     "up": 8.3305,
+     "widthM": 1.9700808865181036,
+     "heightM": 3.5987760000000004,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6980207562446594,
+     "along": 0,
+     "up": 11.440553333333334,
+     "widthM": 1.9700808865181036,
+     "heightM": 3.5987760000000004,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012158539",
+   "elevationId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:11",
+   "surfaceId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:11",
+   "wallWidthM": 2.0599,
+   "wallHeightM": 16.661,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012158539_0_lod22_wall_11.jpg",
+   "cropWidthPx": 93,
+   "cropHeightPx": 750,
+   "pixelsPerMetre": 45.147,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9553,
+     "along": 0.0111,
+     "up": 5.0983,
+     "widthM": 0.7088,
+     "heightM": 2.7324,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9543,
+     "along": 0.0111,
+     "up": 8.7415,
+     "widthM": 0.7309,
+     "heightM": 2.2659,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9394,
+     "along": 0.8528,
+     "up": 5.0538,
+     "widthM": 0.4208,
+     "heightM": 2.4436,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9334,
+     "along": 0.8528,
+     "up": 8.7637,
+     "widthM": 0.4208,
+     "heightM": 1.9327,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8984,
+     "along": 0.3655,
+     "up": 12.0292,
+     "widthM": 0.9524,
+     "heightM": 1.7772,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6621,
+     "along": 2.0046,
+     "up": 12.7623,
+     "widthM": 0.0443,
+     "heightM": 1.1774,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.771,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 2.0378,
+     "heightM": 1.9327,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7615,
+     "along": 0.0111,
+     "up": 3.7876,
+     "widthM": 2.0378,
+     "heightM": 12.8623,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6059,
+     "along": 0.0111,
+     "up": 11.1184,
+     "widthM": 2.0378,
+     "heightM": 5.5315,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6867,
+     "along": 0.9635,
+     "up": 2.2992,
+     "widthM": 0.7088,
+     "heightM": 1.3773,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9497627019882202,
+     "along": 0,
+     "up": 4.576221333333334,
+     "widthM": 2.0599427518148223,
+     "heightM": 3.954210666666667,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9078037738800049,
+     "along": 0,
+     "up": 8.263856,
+     "widthM": 2.0599427518148223,
+     "heightM": 3.354414666666667,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8877896666526794,
+     "along": 0,
+     "up": 11.462768,
+     "widthM": 2.0377928297522976,
+     "heightM": 2.865692,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012158539",
+   "elevationId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:3",
+   "surfaceId": "NL.IMBAG.Pand.0363100012158539-0:lod22:wall:3",
+   "wallWidthM": 1.8801,
+   "wallHeightM": 15.024,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012158539_0_lod22_wall_3.jpg",
+   "cropWidthPx": 85,
+   "cropHeightPx": 676,
+   "pixelsPerMetre": 45.211,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.952,
+     "along": 0.6967,
+     "up": 8.2565,
+     "widthM": 1.0838,
+     "heightM": 2.467,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9385,
+     "along": 0.7189,
+     "up": 4.3894,
+     "widthM": 1.0838,
+     "heightM": 2.9559,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7076,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 1.858,
+     "heightM": 0.9334,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9218,
+     "along": 0.0111,
+     "up": 0.6556,
+     "widthM": 1.858,
+     "heightM": 14.3573,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5898,
+     "along": 0.2765,
+     "up": 12.4793,
+     "widthM": 1.5925,
+     "heightM": 1.4446,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9281486868858337,
+     "along": 0,
+     "up": 3.6671005917159767,
+     "widthM": 1.880077191188261,
+     "heightM": 4.3782958579881655,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7529220581054688,
+     "along": 0,
+     "up": 7.978721893491125,
+     "widthM": 1.880077191188261,
+     "heightM": 4.289396449704142,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4086897075176239,
+     "along": 0,
+     "up": 12.156994082840237,
+     "widthM": 1.880077191188261,
+     "heightM": 2.089136094674556,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012161771",
+   "elevationId": "NL.IMBAG.Pand.0363100012161771-0:lod22:wall:2",
+   "surfaceId": "NL.IMBAG.Pand.0363100012161771-0:lod22:wall:2",
+   "wallWidthM": 2.2199,
+   "wallHeightM": 14.896,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012161771_0_lod22_wall_2.jpg",
+   "cropWidthPx": 100,
+   "cropHeightPx": 670,
+   "pixelsPerMetre": 45.047,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "door",
+     "score": 0.843508780002594,
+     "along": 0,
+     "up": 0.9337791044776119,
+     "widthM": 0.4439777217372931,
+     "heightM": 2.556776119402985,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9457,
+     "along": 0.0111,
+     "up": 8.7486,
+     "widthM": 0.1998,
+     "heightM": 2.6235,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9294,
+     "along": 0.0111,
+     "up": 4.5466,
+     "widthM": 0.222,
+     "heightM": 3.1793,
+     "sources": [
+      "rfdetr",
+      "rsjek",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9141,
+     "along": 0.6327,
+     "up": 8.6597,
+     "widthM": 0.1554,
+     "heightM": 2.4678,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8884,
+     "along": 0.6327,
+     "up": 4.5911,
+     "widthM": 0.1554,
+     "heightM": 2.957,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8166,
+     "along": 0.5439,
+     "up": 2.1899,
+     "widthM": 0.1776,
+     "heightM": 0.956,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8069,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 1.7093,
+     "heightM": 0.9338,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8924,
+     "along": 0.0111,
+     "up": 0.5447,
+     "widthM": 2.1977,
+     "heightM": 13.2285,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8658,
+     "along": 0.0111,
+     "up": 11.9724,
+     "widthM": 1.0433,
+     "heightM": 1.0894,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7928,
+     "along": 1.7204,
+     "up": 0.0111,
+     "widthM": 0.4884,
+     "heightM": 1.623,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9099069833755493,
+     "along": 0,
+     "up": 4.113074626865672,
+     "widthM": 2.2198886086864653,
+     "heightM": 4.224238805970149,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9091032147407532,
+     "along": 0,
+     "up": 8.137217910447761,
+     "widthM": 2.2198886086864653,
+     "heightM": 3.779582089552239,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.675336480140686,
+     "along": 0,
+     "up": 0.6002865671641792,
+     "widthM": 2.2198886086864653,
+     "heightM": 3.7573492537313435,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012161771",
+   "elevationId": "NL.IMBAG.Pand.0363100012161771-0:lod22:wall:23",
+   "surfaceId": "NL.IMBAG.Pand.0363100012161771-0:lod22:wall:23",
+   "wallWidthM": 11.7304,
+   "wallHeightM": 15.001,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012161771_0_lod22_wall_23.jpg",
+   "cropWidthPx": 528,
+   "cropHeightPx": 675,
+   "pixelsPerMetre": 45.011,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "door",
+     "score": 0.8560919761657715,
+     "along": 0.844231327418294,
+     "up": 1.7556725925925927,
+     "widthM": 1.2219137633685835,
+     "heightM": 2.844634074074074,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "door",
+     "score": 0.7989721894264221,
+     "along": 3.243625626396603,
+     "up": 1.3334222222222223,
+     "widthM": 1.2885636050068698,
+     "heightM": 3.17798962962963,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "door",
+     "score": 0.782163679599762,
+     "along": 7.70916501616179,
+     "up": 1.9334622222222224,
+     "widthM": 1.1108306939714394,
+     "heightM": 2.5335022222222223,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "door",
+     "score": 0.7474316954612732,
+     "along": 4.932088281233192,
+     "up": 1.9556859259259258,
+     "widthM": 1.4440799021628712,
+     "heightM": 2.5335022222222223,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "door",
+     "score": 0.5691343545913696,
+     "along": 9.397627670998377,
+     "up": 2.2445940740740746,
+     "widthM": 1.044180852333153,
+     "heightM": 2.1779229629629633,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.946,
+     "along": 3.2992,
+     "up": 8.4561,
+     "widthM": 1.133,
+     "heightM": 2.4224,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9446,
+     "along": 5.2098,
+     "up": 8.4339,
+     "widthM": 1.0886,
+     "heightM": 2.4446,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9429286122322083,
+     "along": 5.154254420027479,
+     "up": 5.378136296296296,
+     "widthM": 1.1996971494891546,
+     "heightM": 2.377936296296297,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9421,
+     "along": 9.7864,
+     "up": 8.745,
+     "widthM": 1.1108,
+     "heightM": 2.5779,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9411,
+     "along": 0.922,
+     "up": 8.4561,
+     "widthM": 1.1108,
+     "heightM": 2.4446,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9411,
+     "along": 3.2992,
+     "up": 5.4337,
+     "widthM": 1.133,
+     "heightM": 2.2446,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9408,
+     "along": 7.9869,
+     "up": 8.7673,
+     "widthM": 1.1108,
+     "heightM": 2.5335,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9399,
+     "along": 0.9442,
+     "up": 5.4337,
+     "widthM": 1.0886,
+     "heightM": 2.2668,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9371,
+     "along": 9.7864,
+     "up": 5.4781,
+     "widthM": 1.1108,
+     "heightM": 2.4446,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9281,
+     "along": 7.9647,
+     "up": 5.4781,
+     "widthM": 1.1997,
+     "heightM": 2.4891,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9244,
+     "along": 4.8321,
+     "up": 12.612,
+     "widthM": 0.6443,
+     "heightM": 0.9556,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9183,
+     "along": 3.9879,
+     "up": 12.6342,
+     "widthM": 0.6665,
+     "heightM": 0.9334,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9055,
+     "along": 1.0775,
+     "up": 12.6564,
+     "widthM": 0.7109,
+     "heightM": 0.8889,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7647,
+     "along": 7.7425,
+     "up": 12.1453,
+     "widthM": 1.9551,
+     "heightM": 1.7557,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9428,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 2.8437,
+     "heightM": 1.8446,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9678,
+     "along": 0.0111,
+     "up": 1.3223,
+     "widthM": 11.7082,
+     "heightM": 13.6676,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8212,
+     "along": 2.0328,
+     "up": 1.589,
+     "widthM": 0.5776,
+     "heightM": 3.1558,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4889,
+     "along": 2.766,
+     "up": 0.0111,
+     "widthM": 2.155,
+     "heightM": 0.3334,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8891,
+     "along": 4.4322,
+     "up": 0.3889,
+     "widthM": 0.5554,
+     "heightM": 4.1336,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7968,
+     "along": 4.721,
+     "up": 0.0111,
+     "widthM": 6.9982,
+     "heightM": 2.0224,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8481,
+     "along": 7.1426,
+     "up": 11.6563,
+     "widthM": 4.5766,
+     "heightM": 1.2223,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5399,
+     "along": 8.3423,
+     "up": 0.8112,
+     "widthM": 3.3769,
+     "heightM": 1.489,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9308364987373352,
+     "along": 0.2665993665531455,
+     "up": 5.089228148148148,
+     "widthM": 11.37490630626754,
+     "heightM": 3.244660740740741,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9290551543235779,
+     "along": 0.2888159804325742,
+     "up": 8.200546666666666,
+     "widthM": 11.37490630626754,
+     "heightM": 3.6002400000000003,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8409132957458496,
+     "along": 7.220399510814356,
+     "up": 11.867457777777778,
+     "widthM": 4.443322775885758,
+     "heightM": 0.9333955555555556,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6293190717697144,
+     "along": 0.2221661387942879,
+     "up": 1.4000933333333334,
+     "widthM": 11.330473078508682,
+     "heightM": 3.7335822222222226,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012163440",
+   "elevationId": "NL.IMBAG.Pand.0363100012163440-0:lod22:wall:18",
+   "surfaceId": "NL.IMBAG.Pand.0363100012163440-0:lod22:wall:18",
+   "wallWidthM": 2.21,
+   "wallHeightM": 14.688,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012163440_0_lod22_wall_18.jpg",
+   "cropWidthPx": 99,
+   "cropHeightPx": 661,
+   "pixelsPerMetre": 44.796,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9465966820716858,
+     "along": 0.7813184637561833,
+     "up": 7.710644478063541,
+     "widthM": 1.205462772652397,
+     "heightM": 2.466517397881997,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9373,
+     "along": 0.7702,
+     "up": 4.0775,
+     "widthM": 1.1385,
+     "heightM": 2.7998,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9345,
+     "along": 0.9711,
+     "up": 11.9437,
+     "widthM": 0.3349,
+     "heightM": 0.7111,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9315,
+     "along": 1.4622,
+     "up": 11.9437,
+     "widthM": 0.3349,
+     "heightM": 0.7111,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4366,
+     "along": 0.0112,
+     "up": 0.0111,
+     "widthM": 2.1877,
+     "heightM": 0.9555,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5753,
+     "along": 0.0112,
+     "up": 0.1222,
+     "widthM": 2.1877,
+     "heightM": 2.7998,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9267,
+     "along": 0.0112,
+     "up": 2.8998,
+     "widthM": 2.1877,
+     "heightM": 11.7771,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4321,
+     "along": 0.7702,
+     "up": 7.7884,
+     "widthM": 1.2055,
+     "heightM": 0.3333,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4287,
+     "along": 2.0426,
+     "up": 13.2103,
+     "widthM": 0.1563,
+     "heightM": 0.5777,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9507778882980347,
+     "along": 0,
+     "up": 3.48867776096823,
+     "widthM": 2.2100150831960614,
+     "heightM": 3.8442118003025723,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9071478247642517,
+     "along": 0.022323384678748098,
+     "up": 7.132901664145235,
+     "widthM": 2.1876916985173134,
+     "heightM": 4.510838124054463,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.508063554763794,
+     "along": 0,
+     "up": 0.39997579425113466,
+     "widthM": 2.2100150831960614,
+     "heightM": 3.0442602118003026,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012164118",
+   "elevationId": "NL.IMBAG.Pand.0363100012164118-0:lod22:wall:15",
+   "surfaceId": "NL.IMBAG.Pand.0363100012164118-0:lod22:wall:15",
+   "wallWidthM": 8.4301,
+   "wallHeightM": 14.346,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012164118_0_lod22_wall_15.jpg",
+   "cropWidthPx": 379,
+   "cropHeightPx": 646,
+   "pixelsPerMetre": 44.958,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "door",
+     "score": 0.7910149693489075,
+     "along": 0.5783210293884108,
+     "up": 0.7772600619195047,
+     "widthM": 0.911967777112494,
+     "heightM": 2.265157894736842,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "door",
+     "score": 0.6940953731536865,
+     "along": 4.671054468137164,
+     "up": 0.6662229102167183,
+     "widthM": 1.112155825746944,
+     "heightM": 2.309572755417957,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9475,
+     "along": 0.7896,
+     "up": 8.2501,
+     "widthM": 1.1566,
+     "heightM": 2.465,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9474,
+     "along": 3.8592,
+     "up": 8.2723,
+     "widthM": 1.1789,
+     "heightM": 2.5094,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9474,
+     "along": 5.9055,
+     "up": 8.3167,
+     "widthM": 1.2011,
+     "heightM": 2.4872,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9473,
+     "along": 0.7451,
+     "up": 11.7366,
+     "widthM": 1.2011,
+     "heightM": 1.8654,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9381,
+     "along": 5.9055,
+     "up": 4.8523,
+     "widthM": 1.1789,
+     "heightM": 2.6427,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9281,
+     "along": 0.7896,
+     "up": 4.8301,
+     "widthM": 1.1566,
+     "heightM": 2.6205,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9176,
+     "along": 3.8592,
+     "up": 4.9189,
+     "widthM": 1.1789,
+     "heightM": 2.5316,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8658,
+     "along": 4.6377,
+     "up": 12.3362,
+     "widthM": 0.3114,
+     "heightM": 0.7773,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8607,
+     "along": 5.1048,
+     "up": 12.3362,
+     "widthM": 0.2892,
+     "heightM": 0.7773,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7837,
+     "along": 5.6831,
+     "up": 12.3362,
+     "widthM": 0.2669,
+     "heightM": 0.8217,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7699,
+     "along": 6.217,
+     "up": 12.3584,
+     "widthM": 0.2669,
+     "heightM": 0.8217,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6778,
+     "along": 6.773,
+     "up": 12.3806,
+     "widthM": 0.3336,
+     "heightM": 0.8217,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6556,
+     "along": 7.2401,
+     "up": 12.3806,
+     "widthM": 0.2892,
+     "heightM": 0.8217,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9248,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 2.6024,
+     "heightM": 8.1501,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6075,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 8.4079,
+     "heightM": 0.7773,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7239,
+     "along": 0.0111,
+     "up": 0.5663,
+     "widthM": 0.5561,
+     "heightM": 1.1992,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5553,
+     "along": 0.0111,
+     "up": 1.6767,
+     "widthM": 0.2892,
+     "heightM": 3.7086,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9392,
+     "along": 0.0111,
+     "up": 1.9432,
+     "widthM": 8.4079,
+     "heightM": 12.3917,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4821,
+     "along": 1.0121,
+     "up": 0.0555,
+     "widthM": 7.407,
+     "heightM": 4.9078,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8453,
+     "along": 2.102,
+     "up": 0.8328,
+     "widthM": 0.9342,
+     "heightM": 0.8883,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7201,
+     "along": 2.9917,
+     "up": 0.0111,
+     "widthM": 1.5348,
+     "heightM": 1.8876,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6217,
+     "along": 3.748,
+     "up": 1.8543,
+     "widthM": 0.8452,
+     "heightM": 1.0437,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.447,
+     "along": 3.9037,
+     "up": 4.9189,
+     "widthM": 1.1344,
+     "heightM": 0.3775,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7316,
+     "along": 4.4597,
+     "up": 0.0111,
+     "widthM": 0.6006,
+     "heightM": 5.3076,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4138,
+     "along": 4.571,
+     "up": 0.0111,
+     "widthM": 3.8481,
+     "heightM": 0.6218,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4493,
+     "along": 5.1493,
+     "up": 3.2312,
+     "widthM": 0.8675,
+     "heightM": 0.8883,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.781,
+     "along": 6.0835,
+     "up": 0.6107,
+     "widthM": 1.0454,
+     "heightM": 2.2207,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.819,
+     "along": 7.8185,
+     "up": 1.499,
+     "widthM": 0.5561,
+     "heightM": 0.6662,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9461008310317993,
+     "along": 0.2224311651493888,
+     "up": 7.950260061919504,
+     "widthM": 8.185466877497507,
+     "heightM": 3.75305572755418,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9367494583129883,
+     "along": 0.1334586990896333,
+     "up": 4.374863777089784,
+     "widthM": 8.274439343557262,
+     "heightM": 3.575396284829721,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012164118",
+   "elevationId": "NL.IMBAG.Pand.0363100012164118-0:lod22:wall:3",
+   "surfaceId": "NL.IMBAG.Pand.0363100012164118-0:lod22:wall:3",
+   "wallWidthM": 3.1999,
+   "wallHeightM": 14.27,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012164118_0_lod22_wall_3.jpg",
+   "cropWidthPx": 144,
+   "cropHeightPx": 642,
+   "pixelsPerMetre": 45.002,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9378969073295593,
+     "along": 0.9332952572157514,
+     "up": 5.312352024922118,
+     "widthM": 2.1110249865594373,
+     "heightM": 2.7561993769470403,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9312127232551575,
+     "along": 0.866631310271769,
+     "up": 8.84651090342679,
+     "widthM": 2.1332463022074313,
+     "heightM": 2.622834890965732,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9149,
+     "along": 1.4777,
+     "up": 13.2142,
+     "widthM": 0.4222,
+     "heightM": 0.4668,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9073,
+     "along": 2.0333,
+     "up": 13.2142,
+     "widthM": 0.4222,
+     "heightM": 0.4445,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5733,
+     "along": 1.4999,
+     "up": 8.9243,
+     "widthM": 1.0444,
+     "heightM": 2.3561,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4856,
+     "along": 0.9444,
+     "up": 8.9465,
+     "widthM": 0.4222,
+     "heightM": 2.3783,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.483,
+     "along": 0.9888,
+     "up": 5.4346,
+     "widthM": 0.4,
+     "heightM": 2.5117,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.478,
+     "along": 0.9888,
+     "up": 10.6358,
+     "widthM": 0.3333,
+     "heightM": 0.6446,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4627,
+     "along": 0.7444,
+     "up": 13.2364,
+     "widthM": 0.3778,
+     "heightM": 0.5112,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4403,
+     "along": 2.6554,
+     "up": 8.9021,
+     "widthM": 0.3111,
+     "heightM": 2.3339,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9413,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 3.1776,
+     "heightM": 0.8002,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4717,
+     "along": 0.0111,
+     "up": 0.8335,
+     "widthM": 3.1776,
+     "heightM": 3.8898,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9053,
+     "along": 0.0111,
+     "up": 3.812,
+     "widthM": 3.1776,
+     "heightM": 10.4469,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9509603977203369,
+     "along": 0,
+     "up": 4.956713395638629,
+     "widthM": 3.1998694533111474,
+     "heightM": 3.8675700934579433,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9159594178199768,
+     "along": 0.022221315647994077,
+     "up": 8.757601246105919,
+     "widthM": 3.1776481376631533,
+     "heightM": 3.978707165109034,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6933691501617432,
+     "along": 0,
+     "up": 0.7335046728971962,
+     "widthM": 3.1998694533111474,
+     "heightM": 4.089844236760124,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012166039",
+   "elevationId": "NL.IMBAG.Pand.0363100012166039-0:lod22:wall:8",
+   "surfaceId": "NL.IMBAG.Pand.0363100012166039-0:lod22:wall:8",
+   "wallWidthM": 5.6603,
+   "wallHeightM": 14.839,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012166039_0_lod22_wall_8.jpg",
+   "cropWidthPx": 255,
+   "cropHeightPx": 668,
+   "pixelsPerMetre": 45.05,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "door",
+     "score": 0.6864751577377319,
+     "along": 1.3762365261615577,
+     "up": 1.0884895209580838,
+     "widthM": 0.7325129897311518,
+     "heightM": 1.6882694610778444,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9569571614265442,
+     "along": 1.2652497095356257,
+     "up": 8.619059880239522,
+     "widthM": 0.8878945330074566,
+     "heightM": 2.5768323353293416,
+     "sources": [
+      "rsjek",
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9524,
+     "along": 5.0721,
+     "up": 8.0304,
+     "widthM": 0.5771,
+     "heightM": 2.1992,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9478,
+     "along": 5.1831,
+     "up": 11.4291,
+     "widthM": 0.4661,
+     "heightM": 1.6216,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9453,
+     "along": 3.829,
+     "up": 8.0082,
+     "widthM": 0.9989,
+     "heightM": 2.1992,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9415,
+     "along": 5.0277,
+     "up": 4.254,
+     "widthM": 0.6215,
+     "heightM": 2.8656,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9342,
+     "along": 3.7625,
+     "up": 11.4069,
+     "widthM": 0.8879,
+     "heightM": 1.6661,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9262,
+     "along": 1.3429,
+     "up": 4.5428,
+     "widthM": 0.7991,
+     "heightM": 3.11,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9143,
+     "along": 3.7847,
+     "up": 4.254,
+     "widthM": 1.0877,
+     "heightM": 2.8212,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8975,
+     "along": 2.5194,
+     "up": 8.5413,
+     "widthM": 0.1998,
+     "heightM": 2.3769,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.889,
+     "along": 2.5416,
+     "up": 4.4317,
+     "widthM": 0.1998,
+     "heightM": 3.0433,
+     "sources": [
+      "rfdetr",
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6517,
+     "along": 2.4528,
+     "up": 1.4106,
+     "widthM": 0.333,
+     "heightM": 1.3106,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6295,
+     "along": 0.0111,
+     "up": 4.8316,
+     "widthM": 0.1554,
+     "heightM": 2.6213,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5651187300682068,
+     "along": 3.7735517652816903,
+     "up": 7.9082095808383235,
+     "widthM": 1.8867758826408452,
+     "heightM": 2.3991197604790417,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4666,
+     "along": 1.7203,
+     "up": 12.7398,
+     "widthM": 0.333,
+     "heightM": 0.3332,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7963,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 5.6381,
+     "heightM": 1.0441,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9509,
+     "along": 0.0111,
+     "up": 0.6997,
+     "widthM": 5.6381,
+     "heightM": 14.1281,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4506,
+     "along": 0.2775,
+     "up": 12.8731,
+     "widthM": 0.333,
+     "heightM": 0.6664,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8764,
+     "along": 0.6326,
+     "up": 11.5846,
+     "widthM": 2.3307,
+     "heightM": 1.3773,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9102,
+     "along": 1.1876,
+     "up": 8.5635,
+     "widthM": 0.9989,
+     "heightM": 0.5998,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8695,
+     "along": 1.2098,
+     "up": 4.4983,
+     "widthM": 0.9767,
+     "heightM": 0.5109,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8581,
+     "along": 1.232,
+     "up": 1.3217,
+     "widthM": 0.5771,
+     "heightM": 1.1551,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4822,
+     "along": 3.8068,
+     "up": 4.2762,
+     "widthM": 1.0433,
+     "heightM": 0.4221,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9367494583129883,
+     "along": 0.7103156264059652,
+     "up": 3.643107784431138,
+     "widthM": 4.950012021516571,
+     "heightM": 4.265101796407186,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9066531658172607,
+     "along": 0.6659208997555924,
+     "up": 7.663854790419163,
+     "widthM": 4.994406748166943,
+     "heightM": 3.754178143712575,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8856314420700073,
+     "along": 0.6215261731052196,
+     "up": 0.7997065868263473,
+     "widthM": 5.0388014748173156,
+     "heightM": 3.0433278443113774,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5994850993156433,
+     "along": 0.6215261731052196,
+     "up": 11.062607784431139,
+     "widthM": 5.0388014748173156,
+     "heightM": 3.287682634730539,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.571049153804779,
+     "along": 0.6215261731052196,
+     "up": 11.662387724550898,
+     "widthM": 2.2863284224942007,
+     "heightM": 1.2884161676646708,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012166039",
+   "elevationId": "NL.IMBAG.Pand.0363100012166039-0:lod22:wall:9",
+   "surfaceId": "NL.IMBAG.Pand.0363100012166039-0:lod22:wall:9",
+   "wallWidthM": 0.95,
+   "wallHeightM": 12.674,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012166039_0_lod22_wall_9.jpg",
+   "cropWidthPx": 43,
+   "cropHeightPx": 570,
+   "pixelsPerMetre": 45.265,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9202,
+     "along": 0.011,
+     "up": 4.9251,
+     "widthM": 0.1105,
+     "heightM": 2.2013,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9005,
+     "along": 0.011,
+     "up": 8.038,
+     "widthM": 0.0884,
+     "heightM": 2.2235,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6187227964401245,
+     "along": 0,
+     "up": 4.847249122807018,
+     "widthM": 0.28719552313065766,
+     "heightM": 2.3346842105263157,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5259775519371033,
+     "along": 0,
+     "up": 7.960161403508771,
+     "widthM": 0.2651035598129148,
+     "heightM": 2.4458596491228066,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8552,
+     "along": 0.011,
+     "up": 0.0111,
+     "widthM": 0.9279,
+     "heightM": 0.9783,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8283842206001282,
+     "along": 0,
+     "up": 4.002315789473684,
+     "widthM": 0.9499544226629446,
+     "heightM": 3.7799649122807013,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7631309032440186,
+     "along": 0,
+     "up": 7.782280701754386,
+     "widthM": 0.9278624593452016,
+     "heightM": 4.002315789473684,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:11",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:11",
+   "wallWidthM": 1.26,
+   "wallHeightM": 15.781,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_11.jpg",
+   "cropWidthPx": 57,
+   "cropHeightPx": 710,
+   "pixelsPerMetre": 45.238,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.7619,
+     "along": 0.0111,
+     "up": 10.3021,
+     "widthM": 0.0663,
+     "heightM": 0.978,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6805,
+     "along": 0.21,
+     "up": 2.2338,
+     "widthM": 0.9063,
+     "heightM": 2.1782,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.56,
+     "along": 0.0111,
+     "up": 7.2126,
+     "widthM": 0.0442,
+     "heightM": 0.6668,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4298,
+     "along": 0.2321,
+     "up": 5.101,
+     "widthM": 0.9726,
+     "heightM": 2.9117,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6699,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 1.2379,
+     "heightM": 0.8891,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9097,
+     "along": 0.0111,
+     "up": 0.6557,
+     "widthM": 1.2379,
+     "heightM": 14.9808,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8623517155647278,
+     "along": 0,
+     "up": 8.423942253521126,
+     "widthM": 1.2600153718763256,
+     "heightM": 2.3782633802816897,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6365790963172913,
+     "along": 0,
+     "up": 4.912114084507041,
+     "widthM": 1.2600153718763256,
+     "heightM": 2.4004901408450703,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:12",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:12",
+   "wallWidthM": 0.63,
+   "wallHeightM": 15.926,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_12.jpg",
+   "cropWidthPx": 28,
+   "cropHeightPx": 717,
+   "pixelsPerMetre": 44.443,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9065,
+     "along": 0.3263,
+     "up": 4.9644,
+     "widthM": 0.2925,
+     "heightM": 1.0662,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5765,
+     "along": 0.5288,
+     "up": 6.8302,
+     "widthM": 0.09,
+     "heightM": 1.3549,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9132,
+     "along": 0.0113,
+     "up": 0.0111,
+     "widthM": 0.6075,
+     "heightM": 15.7705,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:14",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:14",
+   "wallWidthM": 1.13,
+   "wallHeightM": 15.6,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_14.jpg",
+   "cropWidthPx": 51,
+   "cropHeightPx": 702,
+   "pixelsPerMetre": 45.133,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9067,
+     "along": 0.6758,
+     "up": 1.7667,
+     "widthM": 0.4431,
+     "heightM": 1.8444,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5494,
+     "along": 0.6536,
+     "up": 8.2111,
+     "widthM": 0.4653,
+     "heightM": 1.5111,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5122,
+     "along": 0.0111,
+     "up": 1.5889,
+     "widthM": 0.1551,
+     "heightM": 1.5333,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4532,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 1.1078,
+     "heightM": 14.6444,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8587,
+     "along": 0.0111,
+     "up": 3.6778,
+     "widthM": 1.1078,
+     "heightM": 5.7778,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:15",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:15",
+   "wallWidthM": 0.63,
+   "wallHeightM": 15.59,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_15.jpg",
+   "cropWidthPx": 28,
+   "cropHeightPx": 702,
+   "pixelsPerMetre": 44.445,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.7334,
+     "along": 0.0112,
+     "up": 8.1392,
+     "widthM": 0.6075,
+     "heightM": 2.2652,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6538,
+     "along": 0.0112,
+     "up": 1.6101,
+     "widthM": 0.6075,
+     "heightM": 2.5761,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7675,
+     "along": 0.0112,
+     "up": 0.0111,
+     "widthM": 0.6075,
+     "heightM": 15.1236,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:16",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:16",
+   "wallWidthM": 0.76,
+   "wallHeightM": 15.671,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_16.jpg",
+   "cropWidthPx": 34,
+   "cropHeightPx": 705,
+   "pixelsPerMetre": 44.736,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8793,
+     "along": 0.0112,
+     "up": 6.324,
+     "widthM": 0.2682,
+     "heightM": 1.1559,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8542,
+     "along": 0.0112,
+     "up": 9.5471,
+     "widthM": 0.2682,
+     "heightM": 1.6227,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7389,
+     "along": 0.0112,
+     "up": 12.5701,
+     "widthM": 0.2459,
+     "heightM": 1.556,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6269,
+     "along": 0.5924,
+     "up": 4.5235,
+     "widthM": 0.1565,
+     "heightM": 0.9114,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4397,
+     "along": 0.3688,
+     "up": 1.5449,
+     "widthM": 0.38,
+     "heightM": 2.2006,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4298,
+     "along": 0.7265,
+     "up": 7.302,
+     "widthM": 0.0224,
+     "heightM": 1.3115,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4036,
+     "along": 0.0112,
+     "up": 2.8119,
+     "widthM": 0.2459,
+     "heightM": 1.267,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.752,
+     "along": 0.0112,
+     "up": 0.0111,
+     "widthM": 0.7377,
+     "heightM": 14.5818,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:17",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:17",
+   "wallWidthM": 1.26,
+   "wallHeightM": 15.925,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_17.jpg",
+   "cropWidthPx": 57,
+   "cropHeightPx": 717,
+   "pixelsPerMetre": 45.236,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.5501,
+     "along": 0.0111,
+     "up": 4.8752,
+     "widthM": 0.0442,
+     "heightM": 1.0217,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4662,
+     "along": 0.9174,
+     "up": 3.4537,
+     "widthM": 0.3316,
+     "heightM": 11.5273,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:18",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:18",
+   "wallWidthM": 0.75,
+   "wallHeightM": 16.146,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_18.jpg",
+   "cropWidthPx": 34,
+   "cropHeightPx": 727,
+   "pixelsPerMetre": 45.333,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.7969,
+     "along": 0.2757,
+     "up": 10.2051,
+     "widthM": 0.4632,
+     "heightM": 1.2659,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7645,
+     "along": 0.011,
+     "up": 1.7878,
+     "widthM": 0.3971,
+     "heightM": 1.9322,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7328,
+     "along": 0.011,
+     "up": 7.0958,
+     "widthM": 0.0882,
+     "heightM": 0.7551,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.73,
+     "along": 0.011,
+     "up": 13.1589,
+     "widthM": 0.1103,
+     "heightM": 1.2215,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7228,
+     "along": 0.011,
+     "up": 10.4938,
+     "widthM": 0.0882,
+     "heightM": 0.6663,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4115,
+     "along": 0.2537,
+     "up": 6.7849,
+     "widthM": 0.4853,
+     "heightM": 1.2437,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8862,
+     "along": 0.011,
+     "up": 0.0111,
+     "widthM": 0.728,
+     "heightM": 15.724,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:19",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:19",
+   "wallWidthM": 0.63,
+   "wallHeightM": 16.368,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_19.jpg",
+   "cropWidthPx": 28,
+   "cropHeightPx": 737,
+   "pixelsPerMetre": 44.443,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.9256,
+     "along": 0.0113,
+     "up": 8.7392,
+     "widthM": 0.6075,
+     "heightM": 2.3541,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.9009,
+     "along": 0.0113,
+     "up": 5.2968,
+     "widthM": 0.6075,
+     "heightM": 2.4652,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8771,
+     "along": 0.0113,
+     "up": 11.9151,
+     "widthM": 0.6075,
+     "heightM": 2.3097,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9252,
+     "along": 0.0113,
+     "up": 0.0111,
+     "widthM": 0.6075,
+     "heightM": 16.1681,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5213,
+     "along": 0.0113,
+     "up": 1.1216,
+     "widthM": 0.6075,
+     "heightM": 0.7329,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:22",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:22",
+   "wallWidthM": 0.91,
+   "wallHeightM": 16.766,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_22.jpg",
+   "cropWidthPx": 41,
+   "cropHeightPx": 754,
+   "pixelsPerMetre": 45.055,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8973,
+     "along": 0.0111,
+     "up": 6.7264,
+     "widthM": 0.4439,
+     "heightM": 1.3564,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8635,
+     "along": 0.0111,
+     "up": 10.1952,
+     "widthM": 0.4217,
+     "heightM": 1.2675,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.567,
+     "along": 0.0111,
+     "up": 12.9303,
+     "widthM": 0.4883,
+     "heightM": 1.8456,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4774,
+     "along": 0.8323,
+     "up": 0.7449,
+     "widthM": 0.0666,
+     "heightM": 2.6239,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4189,
+     "along": 0.1221,
+     "up": 0.7671,
+     "widthM": 0.6658,
+     "heightM": 2.3348,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4092,
+     "along": 0.6104,
+     "up": 9.9951,
+     "widthM": 0.2885,
+     "heightM": 1.2675,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9683,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 0.8878,
+     "heightM": 16.6993,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:24",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:24",
+   "wallWidthM": 0.76,
+   "wallHeightM": 19.091,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_24.jpg",
+   "cropWidthPx": 34,
+   "cropHeightPx": 859,
+   "pixelsPerMetre": 44.737,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.7842,
+     "along": 0.0112,
+     "up": 1.8113,
+     "widthM": 0.2235,
+     "heightM": 1.4668,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.434,
+     "along": 0.0112,
+     "up": 15.2572,
+     "widthM": 0.7377,
+     "heightM": 1.9335,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4742,
+     "along": 0.0112,
+     "up": 0.0111,
+     "widthM": 0.7377,
+     "heightM": 3.0003,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4165,
+     "along": 0.0112,
+     "up": 1.6335,
+     "widthM": 0.7377,
+     "heightM": 16.913,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4631,
+     "along": 0.0112,
+     "up": 12.2125,
+     "widthM": 0.7377,
+     "heightM": 1.3335,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5319,
+     "along": 0.0112,
+     "up": 18.3242,
+     "widthM": 0.7377,
+     "heightM": 0.7556,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4865526258945465,
+     "along": 0,
+     "up": 1.8668731082654249,
+     "widthM": 0.26823641535438797,
+     "heightM": 1.2001327124563446,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:28",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:28",
+   "wallWidthM": 0.63,
+   "wallHeightM": 19.673,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_28.jpg",
+   "cropWidthPx": 28,
+   "cropHeightPx": 885,
+   "pixelsPerMetre": 44.446,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8671,
+     "along": 0.5287,
+     "up": 1.7228,
+     "widthM": 0.09,
+     "heightM": 2.2896,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7795,
+     "along": 0.0112,
+     "up": 9.5253,
+     "widthM": 0.2025,
+     "heightM": 1.9562,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7638,
+     "along": 0.4162,
+     "up": 4.9905,
+     "widthM": 0.2025,
+     "heightM": 1.9784,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5866,
+     "along": 0.0112,
+     "up": 2.9899,
+     "widthM": 0.1125,
+     "heightM": 1.5783,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5432,
+     "along": 0.4162,
+     "up": 8.525,
+     "widthM": 0.2025,
+     "heightM": 1.8006,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5179,
+     "along": 0.0112,
+     "up": 0.0111,
+     "widthM": 0.6075,
+     "heightM": 2.9787,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5296,
+     "along": 0.0112,
+     "up": 0.0778,
+     "widthM": 0.6075,
+     "heightM": 19.2284,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5781,
+     "along": 0.0112,
+     "up": 2.9676,
+     "widthM": 0.5625,
+     "heightM": 4.6459,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:29",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:29",
+   "wallWidthM": 1.13,
+   "wallHeightM": 18.899,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_29.jpg",
+   "cropWidthPx": 51,
+   "cropHeightPx": 850,
+   "pixelsPerMetre": 45.135,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8358,
+     "along": 0.0111,
+     "up": 8.3267,
+     "widthM": 0.5982,
+     "heightM": 0.9783,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6992,
+     "along": 0.0111,
+     "up": 13.1737,
+     "widthM": 0.3767,
+     "heightM": 1.6231,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4989,
+     "along": 0.0111,
+     "up": 4.7692,
+     "widthM": 0.6425,
+     "heightM": 1.045,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4093,
+     "along": 0.0111,
+     "up": 2.9016,
+     "widthM": 0.6868,
+     "heightM": 1.5119,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9306,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 1.1078,
+     "heightM": 1.9566,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6383,
+     "along": 0.0111,
+     "up": 1.7231,
+     "widthM": 1.1078,
+     "heightM": 17.1647,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:31",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:31",
+   "wallWidthM": 0.37,
+   "wallHeightM": 18.219,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_31.jpg",
+   "cropWidthPx": 17,
+   "cropHeightPx": 820,
+   "pixelsPerMetre": 45.948,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.5856,
+     "along": 0.0109,
+     "up": 8.7651,
+     "widthM": 0.0435,
+     "heightM": 2.0885,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5559,
+     "along": 0.0109,
+     "up": 7.5431,
+     "widthM": 0.3482,
+     "heightM": 3.5105,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4659,
+     "along": 0.0109,
+     "up": 11.1647,
+     "widthM": 0.3482,
+     "heightM": 3.1772,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9211,
+     "along": 0.0109,
+     "up": 0.0111,
+     "widthM": 0.3482,
+     "heightM": 17.1081,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:34",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:34",
+   "wallWidthM": 0.38,
+   "wallHeightM": 17.509,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_34.jpg",
+   "cropWidthPx": 17,
+   "cropHeightPx": 788,
+   "pixelsPerMetre": 44.735,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8559,
+     "along": 0.19,
+     "up": 13.2095,
+     "widthM": 0.1788,
+     "heightM": 1.3332,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.8418,
+     "along": 0.0112,
+     "up": 6.677,
+     "widthM": 0.3577,
+     "heightM": 1.311,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6808,
+     "along": 0.0112,
+     "up": 10.0988,
+     "widthM": 0.3577,
+     "heightM": 1.4221,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6136,
+     "along": 0.19,
+     "up": 10.1654,
+     "widthM": 0.1788,
+     "heightM": 1.2887,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9519,
+     "along": 0.0112,
+     "up": 0.0111,
+     "widthM": 0.3577,
+     "heightM": 17.0646,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:36",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:36",
+   "wallWidthM": 0.63,
+   "wallHeightM": 18.22,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_36.jpg",
+   "cropWidthPx": 28,
+   "cropHeightPx": 820,
+   "pixelsPerMetre": 44.443,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "other",
+     "score": 0.9412,
+     "along": 0.0113,
+     "up": 0.0111,
+     "widthM": 0.6075,
+     "heightM": 17.109,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4096,
+     "along": 0.0113,
+     "up": 0.0111,
+     "widthM": 0.6075,
+     "heightM": 4.355,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:39",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:39",
+   "wallWidthM": 1.29,
+   "wallHeightM": 18.22,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_39.jpg",
+   "cropWidthPx": 58,
+   "cropHeightPx": 820,
+   "pixelsPerMetre": 44.961,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8129,
+     "along": 0.3892,
+     "up": 10.1432,
+     "widthM": 0.089,
+     "heightM": 1.0888,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7533,
+     "along": 0.0111,
+     "up": 6.8992,
+     "widthM": 0.1557,
+     "heightM": 1.1332,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6528,
+     "along": 0.0111,
+     "up": 10.2765,
+     "widthM": 0.1334,
+     "heightM": 1.1554,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.6286,
+     "along": 0.3892,
+     "up": 6.7214,
+     "widthM": 0.0667,
+     "heightM": 1.1332,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4644,
+     "along": 0.0111,
+     "up": 10.1876,
+     "widthM": 0.3336,
+     "heightM": 1.2665,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4895,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 1.2678,
+     "heightM": 1.0221,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5641,
+     "along": 0.0111,
+     "up": 0.611,
+     "widthM": 1.2678,
+     "heightM": 4.1773,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9301,
+     "along": 0.0111,
+     "up": 0.8777,
+     "widthM": 1.2678,
+     "heightM": 16.2202,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5609,
+     "along": 0.0111,
+     "up": 1.5665,
+     "widthM": 0.5783,
+     "heightM": 0.7777,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.6759784817695618,
+     "along": 0,
+     "up": 11.865219512195122,
+     "widthM": 0.2224144169680695,
+     "heightM": 1.6664634146341462,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.586641252040863,
+     "along": 0,
+     "up": 5.043829268292683,
+     "widthM": 1.290003618414803,
+     "heightM": 3.2440487804878044,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5180128216743469,
+     "along": 0,
+     "up": 5.199365853658536,
+     "widthM": 0.2224144169680695,
+     "heightM": 1.822,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.508124589920044,
+     "along": 0,
+     "up": 8.510073170731708,
+     "widthM": 0.2224144169680695,
+     "heightM": 1.799780487804878,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.4620179235935211,
+     "along": 0,
+     "up": 9.932121951219512,
+     "widthM": 0.5115531590265598,
+     "heightM": 1.6220243902439022,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:40",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:40",
+   "wallWidthM": 0.35,
+   "wallHeightM": 18.151,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_40.jpg",
+   "cropWidthPx": 16,
+   "cropHeightPx": 817,
+   "pixelsPerMetre": 45.714,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.6184,
+     "along": 0.0109,
+     "up": 8.1868,
+     "widthM": 0.3281,
+     "heightM": 1.1997,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4908,
+     "along": 0.0109,
+     "up": 4.1212,
+     "widthM": 0.3281,
+     "heightM": 2.6438,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4136,
+     "along": 0.1203,
+     "up": 1.5885,
+     "widthM": 0.2187,
+     "heightM": 1.7329,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4058,
+     "along": 0.0109,
+     "up": 10.7417,
+     "widthM": 0.3281,
+     "heightM": 1.2663,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.9321,
+     "along": 0.0109,
+     "up": 0.0111,
+     "widthM": 0.3281,
+     "heightM": 18.1288,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:5",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:5",
+   "wallWidthM": 1.22,
+   "wallHeightM": 18.378,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_5.jpg",
+   "cropWidthPx": 55,
+   "cropHeightPx": 827,
+   "pixelsPerMetre": 45.082,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8884,
+     "along": 0.7431,
+     "up": 5.2556,
+     "widthM": 0.4658,
+     "heightM": 2.1778,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7979,
+     "along": 0.6987,
+     "up": 8.3223,
+     "widthM": 0.5102,
+     "heightM": 1.9556,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.781,
+     "along": 0.61,
+     "up": 1.8111,
+     "widthM": 0.5102,
+     "heightM": 1.8222,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7633,
+     "along": 0.0111,
+     "up": 0.0778,
+     "widthM": 1.1978,
+     "heightM": 17.2891,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.628,
+     "along": 0.0111,
+     "up": 3.8556,
+     "widthM": 0.7098,
+     "heightM": 4.8223,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.41851866245269775,
+     "along": 0.5989123998720723,
+     "up": 7.533424425634825,
+     "widthM": 0.621094340608075,
+     "heightM": 2.7111438935912937,
+     "sources": [
+      "rsjek"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:54",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:54",
+   "wallWidthM": 0.59,
+   "wallHeightM": 17.578,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_54.jpg",
+   "cropWidthPx": 27,
+   "cropHeightPx": 791,
+   "pixelsPerMetre": 45.762,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.4484,
+     "along": 0.0109,
+     "up": 0.0111,
+     "widthM": 0.5682,
+     "heightM": 2.5111,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:6",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:6",
+   "wallWidthM": 0.69,
+   "wallHeightM": 19.154,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_6.jpg",
+   "cropWidthPx": 31,
+   "cropHeightPx": 862,
+   "pixelsPerMetre": 44.928,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.8926,
+     "along": 0.5008,
+     "up": 8.0771,
+     "widthM": 0.1558,
+     "heightM": 1.1777,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.855,
+     "along": 0.4785,
+     "up": 11.7879,
+     "widthM": 0.2003,
+     "heightM": 1.2221,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.7081,
+     "along": 0.0111,
+     "up": 2.6331,
+     "widthM": 0.2448,
+     "heightM": 2.2665,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5271,
+     "along": 0.0111,
+     "up": 8.4104,
+     "widthM": 0.4006,
+     "heightM": 0.7999,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.8495,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 0.6677,
+     "heightM": 19.1318,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  },
+  {
+   "buildingId": "bag:0363100012237178",
+   "elevationId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:9",
+   "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:9",
+   "wallWidthM": 1.29,
+   "wallHeightM": 19.009,
+   "cropFile": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-eval/oudzuid-eval/images/NL_IMBAG_Pand_0363100012237178_0_lod22_wall_9.jpg",
+   "cropWidthPx": 58,
+   "cropHeightPx": 855,
+   "pixelsPerMetre": 44.962,
+   "tiles": 1,
+   "boxes": [
+    {
+     "kind": "window",
+     "score": 0.6843,
+     "along": 0.0111,
+     "up": 14.5958,
+     "widthM": 0.1557,
+     "heightM": 0.6447,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.5313,
+     "along": 0.9008,
+     "up": 15.9742,
+     "widthM": 0.1334,
+     "heightM": 1.5118,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "window",
+     "score": 0.4229,
+     "along": 0.1446,
+     "up": 1.7897,
+     "widthM": 0.556,
+     "heightM": 1.8676,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.5909,
+     "along": 0.0111,
+     "up": 0.0111,
+     "widthM": 1.2677,
+     "heightM": 0.5336,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    },
+    {
+     "kind": "other",
+     "score": 0.7564,
+     "along": 0.0111,
+     "up": 0.4335,
+     "widthM": 1.2677,
+     "heightM": 18.4087,
+     "sources": [
+      "rfdetr"
+     ],
+     "origin": "detected"
+    }
+   ]
+  }
+ ],
+ "method": "fillOpeningLattice over each wall with default options; detected boxes unchanged"
+}
