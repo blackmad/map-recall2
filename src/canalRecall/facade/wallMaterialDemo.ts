@@ -1,5 +1,6 @@
 /** Opt-in laboratory. No default-game appearance or source measurements change. */
 import {WALL_MATERIALS,createWallMaterialSprite,type WallMaterialId} from './wallMaterialLibrary.js';
+import {selectMaterialDemoEntries,type MaterialDemoScope} from './wallMaterialDemoScope.js';
 declare global { interface Window { wallMaterialDemo:any; maplibregl:any } }
 const $=(id:string)=>document.getElementById(id)!;
 const iframe=$('game') as HTMLIFrameElement;
@@ -8,13 +9,18 @@ const spriteRatio=32; // Experimental scale, validated at gameplay zooms before 
 const sleep=(ms:number)=>new Promise(resolve=>setTimeout(resolve,ms));
 const material=(id:string)=>WALL_MATERIALS.find(m=>m.id===id)!;
 async function main(){
+ const params=new URLSearchParams(location.search),scope:MaterialDemoScope=params.get('scope')==='cohort'?'cohort':'ten';
  const response=await fetch('/data/wall-materials/assignments.json');if(!response.ok)throw Error('Material assignments unavailable');const data=await response.json();
  const colourResponse=await fetch('/data/wall-materials/colour-trials.json');if(!colourResponse.ok)throw Error('Colour trial assignments unavailable');const colourTrials=await colourResponse.json();
  for(const trial of colourTrials.entries){const e=data.entries[trial.index];if(!e||e.buildingId!==trial.buildingId||e.sourceSha256!==trial.sourceSha256||e.materialId!==trial.baseMaterialId||!data.gate.includes(e.index)||material(e.materialId).materialFamily!==material(trial.renderMaterialId)?.materialFamily)throw Error('Invalid colour trial source binding');e.renderMaterialId=trial.renderMaterialId;e.colourTrial=trial;}
  const entries=data.entries;let selected=0,mode='preview',oblique=false,isolated=false,v:any,m:any,originalLight:any,libraryMap:any;
- const eligible=entries.filter((e:any)=>data.gate.includes(e.index)&&e.materialId!=='unknownneutral');
+ const eligible=selectMaterialDemoEntries(data,scope),eligibleIndices=new Set(eligible.map(e=>e.index));
  const ids=eligible.map((e:any)=>`NL.IMBAG.Pand.${e.buildingId}`);
- const selector=$('owner') as HTMLSelectElement;for(const e of entries){const o=document.createElement('option');o.value=String(e.index);o.textContent=`${e.index+1}. ${e.address}${data.gate.includes(e.index)?' · trial':''}`;selector.append(o);}
+ $('trial-scope').textContent=scope==='cohort'?`100-building source-assessed experiment; render review incomplete · ${eligible.length} material trials`:'100 source assessments · ten-building rendering trial · no texture claimed as measured';
+ const scopeLink=$('scope-link') as HTMLAnchorElement;scopeLink.textContent=scope==='cohort'?'Return to ten-building trial':'Try source-assessed cohort';
+ const nextQuery=new URLSearchParams(params);if(scope==='cohort')nextQuery.delete('scope');else nextQuery.set('scope','cohort');
+ scopeLink.href=`material-demo.html${nextQuery.size?`?${nextQuery}`:''}`;
+ const selector=$('owner') as HTMLSelectElement;for(const e of entries){const o=document.createElement('option');o.value=String(e.index);o.textContent=`${e.index+1}. ${e.address}${eligibleIndices.has(e.index)?' · trial':''}`;selector.append(o);}
  const addSprites=(map:any)=>{for(const p of WALL_MATERIALS){const id=`wall-trial-${p.id}`;if(!map.hasImage(id))map.addImage(id,createWallMaterialSprite(p.id),{pixelRatio:spriteRatio});}};
  const buildingLayers=['osm-colored-buildings','osm-colored-building-ground-floors','osm-colored-building-roofs'];
  const baseFilters=new Map<string,any>();
@@ -47,16 +53,16 @@ async function main(){
   ($('reference') as HTMLImageElement).src=e.crop;($('source') as HTMLAnchorElement).href=e.crop;$('address').textContent=e.address;
   $('material').textContent=`${p.label} · ${e.assessment.confidence} confidence · ${e.assessment.texture.pattern}`;
   $('reason').textContent=e.assessment.reason+(e.colourTrial?' Colour variant trial: '+e.colourTrial.reason:'');$('uncertainty').textContent=e.assessment.uncertainty??e.assessment.texture.notes;
-  $('badge').textContent=e.materialId==='unknownneutral'?'Material unresolved — existing appearance retained':data.gate.includes(index)?'Rendering trial — visual acceptance pending':'Reference assessed — renderer trial not yet expanded';
+  $('badge').textContent=e.materialId==='unknownneutral'?'Material unresolved — existing appearance retained':e.assessment?.visiblySupported===false?'Material visually unsupported — existing appearance retained':eligibleIndices.has(index)?'Rendering trial — visual acceptance pending':'Reference assessed — renderer trial not yet expanded';
   if(!v)return;
   const view=preserveCamera?{center:m.getCenter().toArray(),zoom:m.getZoom(),pitch:m.getPitch(),bearing:m.getBearing()}:{center:e.center,zoom:Math.max(18,Math.min(19.35,19.35-Math.log2(Math.max(1,e.height/18,e.width/15))))-(angle?.25:0),pitch:55,bearing:e.bearing+(angle?30:0)};
   if(!preserveCamera)m.jumpTo(view);v._completeCity.followCamera();apply();
   const deadline=performance.now()+20000;while(performance.now()<deadline){const f=v._completeCity.sampleFeatures(10000).find((f:any)=>f.properties.id===`NL.IMBAG.Pand.${e.buildingId}`);if(f&&m.isSourceLoaded('osm-building-appearance'))break;await sleep(100);}
   await sleep(500);apply();m.triggerRepaint();await new Promise<void>(resolve=>m.once('render',()=>resolve()));
-  $('status').textContent=`${isolated?'Diagnostic isolation — exact BAG owner only; custom detail streams disabled':'Normal district view'} · ${mode==='preview'?'Shared materials + neutral diffuse light':'Current game materials + original light'} · ${e.address} · ${angle?'oblique':'front'} · source ${e.sourceSha256.slice(0,10)}`;
+  $('status').textContent=`${scope==='cohort'?'100-building source-assessed experiment; render review incomplete':'Ten-building rendering trial'} · ${isolated?'Diagnostic isolation — exact BAG owner only; custom detail streams disabled':'Normal district view'} · ${mode==='preview'?'Shared materials + neutral diffuse light':'Current game materials + original light'} · ${e.address} · ${angle?'oblique':'front'} · source ${e.sourceSha256.slice(0,10)}`;
   return{index,mode,isolated,view,material:e.materialId,renderMaterial:e.renderMaterialId??e.materialId,rendered:eligible.some((x:any)=>x.index===index),sourceSha256:e.sourceSha256};
  };
- selector.onchange=()=>void show(Number(selector.value),oblique);$('previous').onclick=()=>void show((selected+99)%100,oblique);$('next').onclick=()=>void show((selected+1)%100,oblique);
+ selector.onchange=()=>void show(Number(selector.value),oblique);$('previous').onclick=()=>void show((selected+entries.length-1)%entries.length,oblique);$('next').onclick=()=>void show((selected+1)%entries.length,oblique);
  $('current').onclick=()=>{mode='current';void show(selected,oblique);};$('preview').onclick=()=>{mode='preview';void show(selected,oblique);};$('angle').onclick=()=>void show(selected,!oblique);
  $('gallery').onclick=()=>{const open=$('library').classList.toggle('open');if(!open)return;if(libraryMap){libraryMap.resize();return;}
   const features=WALL_MATERIALS.map((p,i)=>{const x=4.873+(i%4)*.0003,y=52.372-Math.floor(i/4)*.00023;return{type:'Feature',properties:{material:p.id},geometry:{type:'Polygon',coordinates:[[[x,y],[x+.00017,y],[x+.00017,y+.0001],[x,y+.0001],[x,y]]]}};});
@@ -78,7 +84,7 @@ async function main(){
  const updateResidency=v._updateStudyAreaResidency.bind(v);v._updateStudyAreaResidency=()=>{if(isolated){setStudyRenderers(false);return;}updateResidency();};
  const setIsolation=async(value:boolean)=>{isolated=Boolean(value);if(isolated)setStudyRenderers(false);else v._updateStudyAreaResidency();return show(selected,oblique,true);};
  $('isolate').onclick=()=>void setIsolation(!isolated);
- window.wallMaterialDemo={identity,data,colourTrials,ready:false,map:m,vectorMap:v,show,setIsolation,setMode:async(value:string)=>{mode=value;return show(selected,oblique);},state:()=>({selected,mode,oblique,isolated,eligible:ids.length,spriteRatio}),light};
- const params=new URLSearchParams(location.search),requested=Number(params.get('owner')??0);await show(Number.isInteger(requested)&&requested>=0&&requested<entries.length?requested:0);if(params.get('isolated')==='1')await setIsolation(true);window.wallMaterialDemo.ready=true;
+ window.wallMaterialDemo={identity,data,colourTrials,ready:false,map:m,vectorMap:v,show,setIsolation,setMode:async(value:string)=>{mode=value;return show(selected,oblique);},state:()=>({selected,mode,oblique,isolated,scope,eligible:ids.length,spriteRatio}),light};
+ const requested=Number(params.get('owner')??0);await show(Number.isInteger(requested)&&requested>=0&&requested<entries.length?requested:0);if(params.get('isolated')==='1')await setIsolation(true);window.wallMaterialDemo.ready=true;
 }
 main().catch(error=>{$('status').textContent=`Preview unavailable: ${String(error)}`;console.error(error);});
