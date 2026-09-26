@@ -885,6 +885,9 @@ class GameRouteRuntime {
     // Absolute steering is screen-relative, so the player reads the camera's
     // rotation each frame.
     this.player.camera = this.camera;
+    if (this.vectorMap.setSpoilerNames) {
+      this.vectorMap.setSpoilerNames(this.track.segments.map(segment => segment.name).filter(Boolean), 'track');
+    }
     this.player.isBoat = this.travelMode === 'boat';
     if (this.player.isBoat) {
       this.player.turnRate *= 1.18;

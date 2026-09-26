@@ -281,7 +281,9 @@ export const OVERVIEW_COLORS: OverviewColors = {
   background: 'rgba(255,253,248,0.94)',
   border: 'rgba(97,89,74,0.30)',
   area: 'rgba(53,102,83,0.13)',
-  network: 'rgba(36,50,43,0.16)',
+  // Every street in the city in bike mode. Layers are stroked as one path
+  // (`strokeLayer`), so this alpha no longer stacks into black at junctions.
+  network: 'rgba(36,50,43,0.14)',
   waterNetwork: 'rgba(8,90,130,0.14)',
   learningNetwork: 'rgba(53,102,83,0.32)',
   learningWater: 'rgba(20,110,150,0.34)',
@@ -318,6 +320,27 @@ function strokePath(
   ctx.stroke();
 }
 
+/** One path, one stroke, for a whole layer. Stroking each segment on its own
+ *  stacks the alpha wherever segments meet or overlap — in bike mode that is
+ *  everywhere, and a 9% ink read as solid black (review 2026-09-26). */
+function strokeLayer(
+  ctx: CanvasRenderingContext2D,
+  segments: readonly (readonly WorldPoint[])[],
+  projection: Projection,
+): void {
+  ctx.beginPath();
+  for (const points of segments) {
+    if (points.length < 2) continue;
+    const first = project(projection, points[0]);
+    ctx.moveTo(first.x, first.y);
+    for (let i = 1; i < points.length; i++) {
+      const point = project(projection, points[i]);
+      ctx.lineTo(point.x, point.y);
+    }
+  }
+  ctx.stroke();
+}
+
 /** The static half: areas, network and route. Cheap enough to render into an
  *  offscreen canvas once per route and blit thereafter. */
 export function drawOverviewStatic(
@@ -331,50 +354,50 @@ export function drawOverviewStatic(
   ctx.lineCap = 'round';
 
   ctx.strokeStyle = colors.network;
-  ctx.lineWidth = 0.6;
-  for (const segment of layers.network) strokePath(ctx, segment, projection);
+  ctx.lineWidth = 0.5;
+  strokeLayer(ctx, layers.network, projection);
 
   ctx.strokeStyle = colors.waterNetwork;
   ctx.lineWidth = 0.7;
-  for (const segment of layers.waterNetwork) strokePath(ctx, segment, projection);
+  strokeLayer(ctx, layers.waterNetwork, projection);
 
   ctx.strokeStyle = colors.learningNetwork;
   ctx.lineWidth = 0.9;
-  for (const segment of layers.learningNetwork) strokePath(ctx, segment, projection);
+  strokeLayer(ctx, layers.learningNetwork, projection);
 
   ctx.strokeStyle = colors.learningWater;
   ctx.lineWidth = 1.0;
-  for (const segment of layers.learningWater) strokePath(ctx, segment, projection);
+  strokeLayer(ctx, layers.learningWater, projection);
 
   ctx.strokeStyle = colors.knownNetwork;
   ctx.lineWidth = 1.1;
-  for (const segment of layers.knownNetwork) strokePath(ctx, segment, projection);
+  strokeLayer(ctx, layers.knownNetwork, projection);
 
   ctx.strokeStyle = colors.knownWater;
   ctx.lineWidth = 1.2;
-  for (const segment of layers.knownWater) strokePath(ctx, segment, projection);
+  strokeLayer(ctx, layers.knownWater, projection);
 
   ctx.strokeStyle = colors.masteredNetwork;
   ctx.lineWidth = 1.35;
-  for (const segment of layers.masteredNetwork) strokePath(ctx, segment, projection);
+  strokeLayer(ctx, layers.masteredNetwork, projection);
 
   ctx.strokeStyle = colors.masteredWater;
   ctx.lineWidth = 1.4;
-  for (const segment of layers.masteredWater) strokePath(ctx, segment, projection);
+  strokeLayer(ctx, layers.masteredWater, projection);
 
   // Due ink sits above mastery bands so overdue places stay visible even when
   // they would otherwise paint as known/mastered green.
   ctx.strokeStyle = colors.reviewDueNetwork;
   ctx.lineWidth = 1.5;
-  for (const segment of layers.reviewDueNetwork) strokePath(ctx, segment, projection);
+  strokeLayer(ctx, layers.reviewDueNetwork, projection);
 
   ctx.strokeStyle = colors.reviewDueWater;
   ctx.lineWidth = 1.55;
-  for (const segment of layers.reviewDueWater) strokePath(ctx, segment, projection);
+  strokeLayer(ctx, layers.reviewDueWater, projection);
 
   ctx.strokeStyle = colors.area;
   ctx.lineWidth = 0.8;
-  for (const ring of layers.areas) strokePath(ctx, ring, projection);
+  strokeLayer(ctx, layers.areas, projection);
 
   ctx.strokeStyle = colors.route;
   ctx.lineWidth = 2;

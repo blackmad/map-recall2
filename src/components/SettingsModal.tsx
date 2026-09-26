@@ -92,7 +92,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-[rgba(7,20,48,0.82)] backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
+    <div className="fixed inset-0 bg-[rgba(28,24,18,0.38)] backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
       <div
         id="settings-modal-dialog"
         role="dialog"
@@ -103,7 +103,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-white/15">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl border border-white/40 bg-white/10 flex items-center justify-center text-[#c4a35a]">
+            <div className="w-8 h-8 rounded-xl border border-white/40 bg-white/10 flex items-center justify-center text-[#8a4a18]">
               <Layers className="w-4 h-4" />
             </div>
             <h3 id="settings-modal-title" className="text-lg font-bold text-white">Quiz & Map Configuration</h3>
@@ -124,10 +124,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="enamel-chip p-3.5 space-y-2.5">
             <div className="flex items-center justify-between">
               <div className="font-semibold text-white flex items-center gap-2">
-                <Compass className="w-4 h-4 text-[#c4a35a]" />
+                <Compass className="w-4 h-4 text-[#8a4a18]" />
                 <span>Location Quiz Scope</span>
               </div>
-              <span className="text-xs text-[#c4a35a] font-semibold uppercase tracking-wider">
+              <span className="text-xs text-[#8a4a18] font-semibold uppercase tracking-wider">
                 {locationScope === 'neighborhood' ? '🏘️ Neighborhood' : locationScope === 'region' ? '🗺️ Region' : '🏙️ City'}
               </span>
             </div>
@@ -187,7 +187,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           {administrativeAreas.length > 0 && (
             <div className="enamel-chip p-3.5 space-y-2.5">
               <div className="font-semibold text-white flex items-center gap-2">
-                <Map className="w-4 h-4 text-[#c4a35a]" />
+                <Map className="w-4 h-4 text-[#8a4a18]" />
                 <span>Administrative Boundary</span>
               </div>
               <p className="text-xs text-white/60">
@@ -211,10 +211,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="enamel-chip p-3.5 space-y-2.5">
             <div className="flex items-center justify-between">
               <div className="font-semibold text-white flex items-center gap-2">
-                <Ruler className="w-4 h-4 text-[#c4a35a]" />
+                <Ruler className="w-4 h-4 text-[#8a4a18]" />
                 <span>Search Radius</span>
               </div>
-              <span className="text-xs text-[#c4a35a] font-semibold">
+              <span className="text-xs text-[#8a4a18] font-semibold">
                 {(searchRadiusMeters / 1000).toFixed(1)} km
               </span>
             </div>
@@ -242,10 +242,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="enamel-chip p-3.5 space-y-2.5">
             <div className="flex items-center justify-between">
               <div className="font-semibold text-white flex items-center gap-2">
-                <Filter className="w-4 h-4 text-[#c4a35a]" />
+                <Filter className="w-4 h-4 text-[#8a4a18]" />
                 <span>Feature Type Focus ({currentCity.name})</span>
               </div>
-              <span className="text-xs text-[#c4a35a] font-medium">
+              <span className="text-xs text-[#8a4a18] font-medium">
                 {categoryCounts[selectedCategory] || 0} features available
               </span>
             </div>
@@ -280,7 +280,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       {cat.id !== 'all' && (
                         <span
                           className={`text-xs font-mono font-bold px-1.5 py-0.5 rounded-full ${
-                            isSelected ? 'bg-[#c4a35a]/25 text-[#e2c98a]' : 'bg-white/10 text-white/60'
+                            isSelected ? 'bg-[#b4682c]/15 text-[#8a4a18]' : 'bg-white/10 text-white/60'
                           }`}
                         >
                           {count}
@@ -300,7 +300,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="flex items-center justify-between enamel-chip p-3.5">
             <div className="space-y-0.5 pr-3">
               <div className="font-semibold text-white flex items-center gap-2">
-                <EyeOff className="w-4 h-4 text-[#c4a35a]" />
+                <EyeOff className="w-4 h-4 text-[#8a4a18]" />
                 <span>Label-less Base Map (Default)</span>
               </div>
               <p className="text-xs text-white/60">
@@ -311,11 +311,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               id="toggle-blind-map-switch"
               onClick={onToggleBlindMap}
               className={`w-12 h-6 rounded-full transition-colors relative flex items-center p-1 cursor-pointer flex-shrink-0 ${
-                blindMapMode ? 'bg-[#c4a35a]' : 'bg-white/20'
+                blindMapMode ? 'bg-[#b4682c]' : 'bg-white/20'
               }`}
             >
               <div
-                className={`w-4 h-4 rounded-full bg-white transition-transform ${
+                className={`w-4 h-4 rounded-full bg-[#fbf8f2] shadow transition-transform ${
                   blindMapMode ? 'translate-x-6' : 'translate-x-0'
                 }`}
               />
@@ -325,7 +325,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           {/* Map Tile Theme */}
           <div className="enamel-chip p-3.5 space-y-2">
             <div className="font-semibold text-white flex items-center gap-2">
-              <Map className="w-4 h-4 text-[#c4a35a]" />
+              <Map className="w-4 h-4 text-[#8a4a18]" />
               <span>Map Style Theme</span>
             </div>
             <div className="grid grid-cols-2 gap-2">
@@ -356,7 +356,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="flex items-center justify-between enamel-chip p-3.5">
             <div className="space-y-0.5">
               <div className="font-semibold text-white flex items-center gap-2">
-                <Ruler className="w-4 h-4 text-[#c4a35a]" />
+                <Ruler className="w-4 h-4 text-[#8a4a18]" />
                 <span>Distance Units</span>
               </div>
               <p className="text-xs text-white/60">Metric (m / km) or Imperial (ft / mi)</p>
@@ -385,7 +385,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="flex items-center justify-between enamel-chip p-3.5">
             <div className="space-y-0.5">
               <div className="font-semibold text-white flex items-center gap-2">
-                <Volume2 className="w-4 h-4 text-[#c4a35a]" />
+                <Volume2 className="w-4 h-4 text-[#8a4a18]" />
                 <span>Sound Effects</span>
               </div>
               <p className="text-xs text-white/60">Audio chimes on bullseyes & placements</p>
@@ -393,11 +393,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <button
               onClick={onToggleMute}
               className={`w-12 h-6 rounded-full transition-colors relative flex items-center p-1 cursor-pointer flex-shrink-0 ${
-                !isMuted ? 'bg-[#c4a35a]' : 'bg-white/20'
+                !isMuted ? 'bg-[#b4682c]' : 'bg-white/20'
               }`}
             >
               <div
-                className={`w-4 h-4 rounded-full bg-white transition-transform ${
+                className={`w-4 h-4 rounded-full bg-[#fbf8f2] shadow transition-transform ${
                   !isMuted ? 'translate-x-6' : 'translate-x-0'
                 }`}
               />
@@ -430,10 +430,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="enamel-chip p-3.5 space-y-2">
             <div className="flex items-center justify-between">
               <div className="font-semibold text-white flex items-center gap-2">
-                <HardDrive className="w-4 h-4 text-[#c4a35a]" />
+                <HardDrive className="w-4 h-4 text-[#8a4a18]" />
                 <span>Offline Feature Cache</span>
               </div>
-              <span className="enamel-chip text-xs font-mono font-bold text-[#c4a35a] px-2 py-0.5">
+              <span className="enamel-chip text-xs font-mono font-bold text-[#8a4a18] px-2 py-0.5">
                 {cacheStats.formattedSize}
               </span>
             </div>

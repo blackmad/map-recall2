@@ -295,6 +295,13 @@ export class GameLandmarkRuntime {
         streetKnowledge, streetFeatures, waterFeatures,
         (name) => this._normaliseCanalName(name),
       );
+      // Everything the game can ask about, so no orientation label says it
+      // first. Stops join in transit mode, where a stop name is the answer.
+      const transitStops = (this.osmLoader as { transitLoad?: { stops?: Array<{ name?: string }> } })
+        ?.transitLoad?.stops || [];
+      this.vectorMap.setSpoilerNames([
+        ...streetFeatures, ...waterFeatures, ...bridgeFeatures, ...transitStops,
+      ].map(item => (item as { name?: string }).name || '').filter(Boolean));
       this.vectorMap.setPlaces(features, boundaries);
       this.vectorMap.setBrandedPois(brandedPois);
 

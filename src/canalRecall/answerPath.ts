@@ -102,6 +102,8 @@ export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
 
   return {
     attempts, correct, points, streak, bestStreak, wasCorrect, feedback,
-    feedbackColor: wasCorrect ? '#4ade80' : noIdea ? '#7DD3FC' : '#fbbf24',
+    // Ink tones for the daylight paper card (all ≥ 5:1 on #fbf8f2). The old
+    // neon green/amber/sky were built for a navy plate and fell under 2:1.
+    feedbackColor: wasCorrect ? '#2f6f47' : noIdea ? '#3a5a86' : '#8a4a18',
   };
 }

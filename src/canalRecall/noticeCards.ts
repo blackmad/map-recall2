@@ -11,6 +11,8 @@
 // check can run it with a stub and assert what the player would read. That is
 // the part worth testing; the paint pass is just `ctx` calls in order.
 
+import { hudSurface } from './hudTheme.ts';
+
 export interface TextMeasurer {
   (text: string, font: string): number;
 }
@@ -60,9 +62,12 @@ const IMAGE_HEIGHT = 110;
 const PAD_X = 20;
 /** Right inset so wrapped body does not kiss the plate edge. */
 const PAD_RIGHT = 20;
-const BADGE_FONT = 'bold 9px monospace';
-const NAME_FONT = 'bold 15px monospace';
-const BODY_FONT = '11px monospace';
+// Measured in the faces `renderer.drawLandmarkCard` actually draws with; these
+// were bare `monospace`, so wrapping and badge widths were computed for Courier
+// while the card drew system-ui and Barlow.
+const BADGE_FONT = `700 11px ${hudSurface.fontMono}`;
+const NAME_FONT = `800 16px ${hudSurface.fontPlaque}`;
+const BODY_FONT = `500 11px ${hudSurface.fontUi}`;
 /** Body lines on a bare encyclopedia/street card — enough for a full short
  *  lede sentence without turning into an article. */
 const BARE_BODY_LINES = 3;

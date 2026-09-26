@@ -100,3 +100,133 @@ export function thinOrientationPois<T extends OrientationPoi>(
 
   return passthrough.concat([...best.values()]);
 }
+
+// ---------------------------------------------------------------------------
+// Answer spoilers.
+//
+// Orientation cues must never name the thing the game is about to ask. A tram
+// stop called "Nassaukade" on the corner of Nassaukade, a café called "De
+// Prinsengracht", or a memorial labelled "Majoor Bosshardt" beside the
+// Majoor Bosshardtbrug each pre-teach the answer (review 2026-09-26). Match on
+// word n-grams, so containment costs a few Set lookups per label, and on
+// Dutch-suffix stems, so the bare person/place a bridge or street is named
+// after counts as its name.
+// ---------------------------------------------------------------------------
+
+const SPOILER_MIN_LENGTH = 5;
+const SPOILER_MAX_WORDS = 5;
+/** Longest first, so "dwarsstraat" strips before "straat". */
+const DUTCH_NAME_SUFFIXES = [
+  'dwarsstraat', 'burgwal', 'gracht', 'straat', 'kanaal', 'sloot', 'steeg',
+  'plein', 'kade', 'brug', 'laan', 'dijk', 'weg', 'pad', 'hof',
+];
+
+export interface SpoilerIndex {
+  /** Normalised quiz-eligible names, plus their suffix stems. */
+  names: Set<string>;
+  /** Lower-cased raw names, for the basemap's exact-match filter, which can
+   *  only `downcase` (not strip punctuation or accents). */
+  lowerRaw: Set<string>;
+}
+
+export function normaliseSpoilerName(name: string): string {
+  return name
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+/** Every quiz-eligible name, and the stem left when a Dutch street/water/bridge
+ *  suffix comes off the end ("majoor bosshardtbrug" → "majoor bosshardt"). */
+export function buildSpoilerIndex(names: Iterable<string>): SpoilerIndex {
+  const index = new Set<string>();
+  const lowerRaw = new Set<string>();
+  for (const raw of names) {
+    if (!raw) continue;
+    const name = normaliseSpoilerName(raw);
+    if (name.length >= SPOILER_MIN_LENGTH) lowerRaw.add(raw.trim().toLowerCase());
+    if (name.length < SPOILER_MIN_LENGTH) continue;
+    index.add(name);
+    for (const suffix of DUTCH_NAME_SUFFIXES) {
+      if (!name.endsWith(suffix)) continue;
+      const stem = name.slice(0, -suffix.length).trim();
+      if (stem.length >= SPOILER_MIN_LENGTH) index.add(stem);
+      break;
+    }
+  }
+  return { names: index, lowerRaw };
+}
+
+/** True when any run of 1–5 consecutive words in the label is a quiz name or
+ *  its stem. */
+export function poiNameSpoils(label: string | null | undefined, index: SpoilerIndex | null): boolean {
+  if (!label || !index || index.names.size === 0) return false;
+  const words = normaliseSpoilerName(label).split(' ').filter(Boolean);
+  for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words.length); size++) {
+    for (let start = 0; start + size <= words.length; start++) {
+      if (index.names.has(words.slice(start, start + size).join(' '))) return true;
+    }
+  }
+  return false;
+}
+
+/** A MapLibre filter that keeps a basemap POI layer's own filter and drops any
+ *  feature whose name is exactly a quiz name. The basemap is vector tiles, so
+ *  containment is left to exact match; stops are named exactly after streets. */
+export function basemapSpoilerFilter(original: unknown, index: SpoilerIndex): unknown {
+  const exclude = [
+    '!',
+    ['in',
+      ['downcase', ['to-string', ['coalesce', ['get', 'name:latin'], ['get', 'name'], '']]],
+      ['literal', [...new Set([...index.names, ...index.lowerRaw])]]],
+  ];
+  return original ? ['all', original, exclude] : exclude;
+}
+
+/**
+ * A destination label with any quiz name inside it hidden. Destinations are
+ * landmarks, and Dutch compounds them onto the street or water they stand on:
+ * riding to "Keizersgrachtkerk" along the Keizersgracht tells you the answer
+ * (review 2026-09-26). Word n-grams miss a compound, so this matches each name
+ * wherever a word *starts* with it, and replaces the span with an ellipsis:
+ * "Keizersgrachtkerk" → "…kerk", which still says what you are riding to.
+ * Returns `fallback` when nothing of the label would be left.
+ */
+export function maskSpoiledName(
+  label: string,
+  names: Iterable<string>,
+  fallback = 'your destination',
+): string {
+  if (!label) return label;
+  // Normalised characters, each pointing back at its index in `label`.
+  const chars: string[] = [];
+  const origin: number[] = [];
+  for (let i = 0; i < label.length; i++) {
+    const base = normaliseSpoilerName(label[i]);
+    if (base) { chars.push(base); origin.push(i); }
+    else if (chars.length && chars[chars.length - 1] !== ' ') { chars.push(' '); origin.push(i); }
+  }
+  const text = chars.join('');
+  const spans: Array<[number, number]> = [];
+  for (const raw of new Set(names)) {
+    const name = raw ? normaliseSpoilerName(raw) : '';
+    if (name.length < SPOILER_MIN_LENGTH) continue;
+    for (let at = text.indexOf(name); at !== -1; at = text.indexOf(name, at + 1)) {
+      if (at > 0 && text[at - 1] !== ' ') continue;
+      spans.push([origin[at], origin[at + name.length - 1] + 1]);
+    }
+  }
+  if (!spans.length) return label;
+  spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
+  let out = '';
+  let cursor = 0;
+  for (const [start, end] of spans) {
+    if (end <= cursor) continue;
+    out += label.slice(cursor, Math.max(cursor, start)) + '…';
+    cursor = end;
+  }
+  out += label.slice(cursor);
+  return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
+}

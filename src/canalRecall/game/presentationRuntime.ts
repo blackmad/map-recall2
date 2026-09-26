@@ -39,6 +39,7 @@ import type { PresentationHost } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
 import { bicycleRestrictionNotice } from '../routing/bikeAccess';
+import { maskSpoiledName } from '../orientationPois';
 
 /** One measured band of the arrival card. Each block reports its own height so
  *  the card measures itself, instead of keeping a stack of hand-tuned offsets
@@ -187,20 +188,50 @@ export class GamePresentationRuntime {
     return this._activeCity().name || 'Amsterdam';
   }
 
+  /** The destination as the ride may show it: with any street or water name
+   *  from this track hidden, so "Keizersgrachtkerk" cannot answer the
+   *  Keizersgracht question. The arrival card still shows the real name. */
+  _destinationLabel(): string {
+    const name = this.routeTo?.name || '';
+    const segments = this.track?.segments || [];
+    const key = `${name}|${segments.length}`;
+    if (this._destinationLabelKey !== key) {
+      this._destinationLabelKey = key;
+      this._destinationLabelText = maskSpoiledName(name, segments.map(segment => segment.name).filter((n): n is string => !!n));
+    }
+    return this._destinationLabelText || name;
+  }
+
+  /** Re-layout when the window no longer matches the last layout. Phones can
+   *  settle their width after load (980 → 390 in iPhone emulation) without a
+   *  resize event reaching the game, which left the whole HUD drawn at ~47%
+   *  scale with 5 px text (UI review 2026-09-26). One comparison per frame. */
+  _syncViewportSize(): void {
+    const key = `${window.innerWidth}x${window.innerHeight}@${window.devicePixelRatio || 1}`;
+    if (key === this._viewportKey) return;
+    this._viewportKey = key;
+    if (typeof this._resize === 'function') this._resize();
+  }
+
   // ---- The frame ----
 
   _render(): void {
+    this._syncViewportSize();
     const ctx = this.ctx;
     ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
 
     // The arrival card is a full-screen modal; on a phone the settings and help
     // buttons sat on top of its actions in the bottom-right corner.
     const utility = document.getElementById('utility-buttons');
-    if (utility) utility.style.display = this.state === GameState.FINISHED ? 'none' : '';
+    // Nor while loading: there is nothing yet to configure or explain.
+    if (utility) {
+      utility.style.display = this.state === GameState.FINISHED || this.state === GameState.LOADING ? 'none' : '';
+    }
 
     if (this.state === GameState.MENU) { this._renderMenu(); return; }
     if (this.state === GameState.MAP_SELECT) {
-      ctx.fillStyle = '#111';
+      // Paper, like the setup it sits between; it flashed black before.
+      ctx.fillStyle = '#f4efe5';
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       return;
     }
@@ -237,17 +268,24 @@ export class GamePresentationRuntime {
       this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground);
     }
     this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
+    // While a question is open this is the feature being asked about; for the
+    // answer hold it is the feature just answered, so a miss shows where the
+    // right one runs.
+    const reveal = this.quizPromptName ? null : this._answerReveal;
+    const litName = this.quizPromptName || reveal?.name || '';
+    const litSegment = this.quizPromptName ? this.quizPromptSegmentIndex : (reveal?.segmentIndex ?? -1);
+    const litPoint = this.quizPromptName ? this.quizPromptPointIndex : (reveal?.pointIndex ?? 0);
     if (!byBoat) {
       this.vectorMap.setStreetHighlights(
         this.track, this.osmLoader, this.learnedNames,
-        this.quizPromptName, this.quizPromptSegmentIndex);
+        litName, litSegment);
     }
 
     this.renderer.drawTrack(this.camera, this.track);
     if (byBoat) {
       this.renderer.drawQuestionFeature(
-        this.camera, this.track, this.quizPromptName,
-        this.quizPromptSegmentIndex, this.quizPromptPointIndex, this.raceTime);
+        this.camera, this.track, litName,
+        litSegment, litPoint, this.raceTime);
     }
     this.renderer.drawSkidMarks(this.particles, this.camera);
 
@@ -343,7 +381,7 @@ export class GamePresentationRuntime {
       ? this.hud.finishDirection(player.x, player.y,
         this.track.finishPoint.x, this.track.finishPoint.y, this.camera)
       : null;
-    this.hud.drawDestination(ctx, this.routeTo.name,
+    this.hud.drawDestination(ctx, this._destinationLabel(),
       this.track.getDistanceToFinish(player.x, player.y),
       this._routeLearningPlan?.expectedNovelty ?? null, finishAngle);
 
@@ -607,7 +645,7 @@ export class GamePresentationRuntime {
     roundRect(ctx, cx - 200, CANVAS_H / 2 + 120, 400, 28, 6);
     ctx.fill();
     ctx.fillStyle = 'rgba(255,255,255,0.85)';
-    ctx.font = '11px monospace';
+    ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'center';
     ctx.fillText(`${this._cityDisplayName()}: ${parts.join(' · ')} · ${exploration.totalRoutes} routes`,
       cx, CANVAS_H / 2 + 138);
@@ -665,7 +703,7 @@ export class GamePresentationRuntime {
     ctx.restore();
 
     ctx.fillStyle = 'rgba(255,255,255,0.15)';
-    ctx.font = '11px monospace';
+    ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'center';
     ['RICHMOND', 'CHICAGO', 'NEW YORK', 'LONDON', 'PARIS']
       .forEach((name, index) => ctx.fillText(name, 130 + index * 230, CANVAS_H - 50));
@@ -674,7 +712,7 @@ export class GamePresentationRuntime {
   _renderMenuFooter(cx: number): void {
     const ctx = this.ctx;
     ctx.fillStyle = 'rgba(255,255,255,0.35)';
-    ctx.font = '11px monospace';
+    ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'center';
     const creditText = 'Vibe coded by Alan and Claude — ';
     const linkText = 'alan.is';
@@ -689,12 +727,12 @@ export class GamePresentationRuntime {
     this._alanLinkBounds = { x: startX + creditWidth, y: CANVAS_H - 26, w: linkWidth, h: 16 };
 
     ctx.fillStyle = 'rgba(255,255,255,0.25)';
-    ctx.font = '10px monospace';
+    ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'right';
     ctx.fillText(`v${GAME_VERSION}`, CANVAS_W - 10, 15);
 
     const ghText = 'GitHub';
-    ctx.font = '11px monospace';
+    ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
     const ghWidth = ctx.measureText(ghText).width;
     const ghX = cx - ghWidth / 2;
     ctx.fillStyle = 'rgba(100,180,255,0.6)';
@@ -720,13 +758,13 @@ export class GamePresentationRuntime {
     type PauseAction = { id: 'resume' | 'route' | 'copy'; key: string; caption: string };
     const actions: PauseAction[] = [
       { id: 'resume', key: 'P / ESC', caption: 'Resume' },
-      { id: 'route', key: 'M', caption: 'New route' },
+      { id: 'route', key: 'M', caption: 'Route setup' },
     ];
     if (this._shareUrl) {
       actions.push({
         id: 'copy',
         key: 'C',
-        caption: this._copiedTimer > 0 ? 'Link copied' : 'Copy race link',
+        caption: this._copiedTimer > 0 ? 'Link copied' : 'Share this route',
       });
     }
 
@@ -740,14 +778,15 @@ export class GamePresentationRuntime {
     const cardH = 20 + titleH + actionsH + statsH + 18;
     const cardY = (CANVAS_H - cardH) / 2;
 
-    ctx.fillStyle = 'rgba(0,0,0,0.78)';
-    roundRect(ctx, cardX, cardY, cardW, cardH, 12);
-    ctx.fill();
+    // The same paper plate as the arrival card. This was the last surface of
+    // the old arcade skin: 78% black, yellow Courier, and ink captions that
+    // vanished on it ("New route" was invisible on a phone).
+    this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH }, { solid: true, radius: 12 });
 
-    ctx.fillStyle = '#FFD700';
-    ctx.font = compact ? 'bold 32px monospace' : 'bold 40px monospace';
+    ctx.fillStyle = INK;
+    ctx.font = `800 ${compact ? 30 : 36}px ${window.CanalRecallUi.hudSurface.fontPlaque}`;
     ctx.textAlign = 'center';
-    ctx.fillText('PAUSED', cx, cardY + (compact ? 38 : 44));
+    ctx.fillText('PAUSED', cx, cardY + (compact ? 40 : 46));
 
     const pauseButtons: NonNullable<typeof this._pauseButtonBounds> = [];
     this._pauseButtonBounds = pauseButtons;
@@ -775,7 +814,7 @@ export class GamePresentationRuntime {
       ctx.textAlign = 'left';
       let ax = cardX + padX;
       for (const action of actions) {
-        ctx.font = 'bold 11px monospace';
+        ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
         const keyW = ctx.measureText(action.key).width + 14;
         ctx.fillStyle = 'rgba(31,28,23,.08)';
         roundRect(ctx, ax, y + 2, keyW, 20, 5);
@@ -800,12 +839,13 @@ export class GamePresentationRuntime {
     }
 
     ctx.textAlign = 'center';
-    ctx.font = '12px monospace';
-    ctx.fillStyle = '#AAA';
-    const miles = this._playerDistancePx() / PIXELS_PER_METER / 1609.344;
-    const progress = (this.player as unknown as { raceProgress?: number })?.raceProgress ?? 0;
+    ctx.font = `500 12px ${window.CanalRecallUi.hudSurface.fontUi}`;
+    ctx.fillStyle = MUTED;
+    // Kilometres, like every other readout, and names rather than an
+    // unlabelled percentage: what you learned is the progress.
+    const kilometres = this._playerDistancePx() / PIXELS_PER_METER / 1000;
     ctx.fillText(
-      `Time: ${this.hud.formatTime(this.raceTime)}  ·  ${miles.toFixed(2)} mi  ·  ${Math.round(progress * 100)}%`,
+      `${this.hud.formatTime(this.raceTime)}  ·  ${kilometres.toFixed(2)} km  ·  ${this.quizCorrect} of ${this.quizAttempts} named`,
       cx,
       y + 18,
     );
@@ -862,7 +902,7 @@ export class GamePresentationRuntime {
 
     blocks.push({ height: 74, draw: (top) => {
       ctx.textAlign = 'left';
-      ctx.fillStyle = ACCENT; ctx.font = 'bold 10px monospace';
+      ctx.fillStyle = ACCENT; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.fillText('ARRIVED', cardX + padX, top + 11);
       ctx.fillStyle = INK; ctx.font = '800 26px system-ui, sans-serif';
       ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
@@ -890,7 +930,7 @@ export class GamePresentationRuntime {
           ctx.restore();
         }
         ctx.textAlign = 'left';
-        ctx.fillStyle = MUTED; ctx.font = 'bold 9px monospace';
+        ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
         const kind = String(landmark.type || 'landmark').toUpperCase();
         ctx.fillText(landmark.wikipediaUrl ? `${kind}  ·  W  WIKIPEDIA` : kind, textX, top + 10);
         ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
@@ -902,13 +942,16 @@ export class GamePresentationRuntime {
     const profile = travelProfile(this.travelMode);
     const recallNoun = profile.recallNoun;
     const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
-    const stats = [
+    // A ride with no questions ends on what was covered, not on "0% recall".
+    const stats = this.quizAttempts > 0 ? [
       { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
       { label: 'Recall', value: `${accuracy}%` },
+    ] : [];
+    stats.push(
       { label: 'Time', value: this.hud.formatTime(this.raceTime).slice(0, -2) },
       { label: 'Distance', value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
-    ];
-    if (gamey) stats.splice(2, 0, { label: 'Points', value: String(this.quizPoints) });
+    );
+    if (gamey && this.quizAttempts > 0) stats.splice(2, 0, { label: 'Points', value: String(this.quizPoints) });
 
     const footerBits = [
       this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
@@ -933,7 +976,7 @@ export class GamePresentationRuntime {
         const column = innerW / inRow;
         const sx = cardX + padX + column * ((index % statsPerRow) + 0.5);
         const sy = top + row * ROW_H;
-        ctx.fillStyle = INK; ctx.font = `bold ${compact ? 19 : 21}px monospace`;
+        ctx.fillStyle = INK; ctx.font = `700 ${compact ? 19 : 21}px ${window.CanalRecallUi.hudSurface.fontMono}`;
         ctx.fillText(stat.value, sx, sy + 24);
         ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
         ctx.fillText(stat.label, sx, sy + 42);
@@ -980,7 +1023,7 @@ export class GamePresentationRuntime {
         + 10;
       blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
         ctx.textAlign = 'left';
-        ctx.fillStyle = MUTED; ctx.font = 'bold 9px monospace';
+        ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
         ctx.fillText('CITY KNOWLEDGE', cardX + padX, top + 12);
         ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
         if (knowledgeStacked) {
@@ -1021,11 +1064,13 @@ export class GamePresentationRuntime {
     // with 44 px targets, hit-tested against `_finishButtonBounds`.
     type FinishAction = { id: 'again' | 'route' | 'copy'; key: string; caption: string };
     const actions: FinishAction[] = [
-      { id: 'again', key: 'ENTER', caption: 'Continue' },
-      { id: 'route', key: 'ESC', caption: 'Finish' },
+      // Say what happens: 'again' deals another route with these settings,
+      // 'route' goes back to setup. "Continue" / "Finish" said neither.
+      { id: 'again', key: 'ENTER', caption: 'Next route' },
+      { id: 'route', key: 'ESC', caption: 'Route setup' },
     ];
     if (this._shareUrl) {
-      actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? 'Link copied' : 'Copy race link' });
+      actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? 'Link copied' : 'Share this route' });
     }
     const BUTTON_H = 44, BUTTON_GAP = 8;
     const finishButtons: NonNullable<typeof this._finishButtonBounds> = [];
@@ -1058,7 +1103,7 @@ export class GamePresentationRuntime {
         ctx.textAlign = 'left';
         let ax = cardX + padX;
         for (const action of actions) {
-          ctx.font = 'bold 11px monospace';
+          ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           const keyW = ctx.measureText(action.key).width + 14;
           ctx.fillStyle = 'rgba(31,28,23,.08)';
           roundRect(ctx, ax, top + 4, keyW, 20, 5);
@@ -1159,7 +1204,7 @@ export class GamePresentationRuntime {
     ctx.strokeStyle = ribbon.color;
     ctx.stroke();
     ctx.fillStyle = ribbon.color;
-    ctx.font = 'bold 18px monospace';
+    ctx.font = `700 18px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(ribbon.id === 'none' ? '·' : ribbon.label[0], medalX, medalY + 1);
@@ -1168,11 +1213,11 @@ export class GamePresentationRuntime {
     const textX = boxX + 76;
     ctx.textAlign = 'left';
     ctx.fillStyle = ribbon.color;
-    ctx.font = 'bold 19px monospace';
+    ctx.font = `700 19px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.fillText(ribbon.label, textX, boxY + 26);
     const labelWidth = ctx.measureText(ribbon.label).width;
     ctx.fillStyle = '#94A3B8';
-    ctx.font = '11px monospace';
+    ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.fillText(`${Math.round(ribbon.score * 100)}%`, textX + labelWidth + 12, boxY + 26);
 
     const axes = ribbon.axes;
@@ -1181,7 +1226,7 @@ export class GamePresentationRuntime {
       const x = textX + index * trackW;
       const w = trackW - 14;
       ctx.fillStyle = '#94A3B8';
-      ctx.font = '10px monospace';
+      ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.fillText(`${axis.label} ${Math.round(axis.score * 100)}%`, x, boxY + 45);
       ctx.fillStyle = 'rgba(148,163,184,.25)';
       roundRect(ctx, x, boxY + 52, w, 7, 3.5);
@@ -1246,7 +1291,7 @@ export class GamePresentationRuntime {
     const hasCold = due.some((place) => place.cityId === (this.cityId || 'amsterdam')
       && place.dueAt <= Date.now());
     return missionBrief({
-      destinationName: this.routeTo?.name || '',
+      destinationName: this._destinationLabel(),
       travelMode: isBoat(this.travelMode) ? 'boat'
         : isTransit(this.travelMode) ? 'transit' : 'car',
       routePattern: this.routePattern === 'home' ? 'home'

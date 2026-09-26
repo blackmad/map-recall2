@@ -452,3 +452,29 @@ test('the first neighborhood entered also gets a postcard', async ({ page }) => 
   expect(notice.kinds).toContain('quarter');
   expect(notice.kinds).toContain('suburb');
 });
+
+// Named regression (UI review 2026-09-26): input.js swallowed Tab everywhere,
+// so keyboard focus stuck on the first control; and the route setup stayed in
+// the tab order behind the full-screen knowledge review.
+test('keyboard focus moves through setup and the knowledge review', async ({ page }) => {
+  await page.goto('/canal-drive/');
+  await expect(page.locator('#route-card')).toBeVisible();
+  await page.locator('#knowledge-button').focus();
+  await page.keyboard.press('Tab');
+  expect(await page.evaluate(() => document.activeElement?.id), 'Tab leaves the Knowledge button').not.toBe('knowledge-button');
+
+  await page.locator('#knowledge-button').click();
+  await expect(page.locator('#knowledge-review')).toBeVisible();
+  expect(await page.evaluate(() => document.activeElement?.classList.contains('knowledge-back')),
+    'the knowledge review takes focus').toBe(true);
+  expect(await page.evaluate(() => (document.getElementById('route-setup') as HTMLElement & { inert: boolean }).inert),
+    'the covered setup is inert').toBe(true);
+  for (let step = 0; step < 6; step++) {
+    await page.keyboard.press('Tab');
+    const insideSetup = await page.evaluate(() => !!document.activeElement?.closest('#route-setup'));
+    expect(insideSetup, 'Tab never lands on the covered setup').toBe(false);
+  }
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#knowledge-review')).toBeHidden();
+  await expect.poll(() => page.evaluate(() => document.activeElement?.id)).toBe('knowledge-button');
+});

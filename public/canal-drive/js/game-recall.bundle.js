@@ -553,7 +553,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
           overlay.store.setAccount({
             visible: true,
             label: "Playing as guest",
-            note: "Sign in to sync your fog map across devices",
+            note: "Sign in to keep your progress on every device",
             buttonLabel: "Sign in"
           });
         }
@@ -758,7 +758,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         name: decision.name,
         subject: routeBridge ? "bridge" : profile.quizRouteSubject,
         question: routeBridge ? "Which bridge are you on?" : profile.quizRouteQuestion,
-        context: routeBridge ? "Crossing a waterway" : isTransit(this.travelMode) ? "Riding the corridor" : "You made a turn",
+        context: routeBridge ? "Crossing a waterway" : isTransit(this.travelMode) ? "Riding the corridor" : this.quizCurrentName ? "You made a turn" : "Where you set off",
         choices: routeBridge && bridgeAlternatives.length >= 2 ? [decision.name, ...bridgeAlternatives] : lineChoices,
         segmentIndex: quizRoad ? quizRoad.segIdx : -1,
         pointIndex: quizRoad ? quizRoad.ptIdx : 0
@@ -1047,6 +1047,9 @@ Learned names, exploration collection, personal bests, route settings and the ho
       this.quizPromptSegmentIndex = segmentIndex;
       this.quizPromptPointIndex = pointIndex;
       this.quizFeedback = "";
+      this._answerReveal = null;
+      document.getElementById("canal-card")?.classList.remove("answered");
+      if (this._promptFeedback) this._promptFeedback.textContent = "";
       this._clearLandmarkNotice();
       this._neighborhoodNotice = null;
       this._neighborhoodNoticeTimer = 0;
@@ -1171,10 +1174,26 @@ Learned names, exploration collection, personal bests, route settings and the ho
         const key = document.createElement("span");
         key.className = "canal-choice-key";
         key.textContent = String(index + 1);
+        button.dataset.name = name;
         button.append(key, document.createTextNode(name));
         button.addEventListener("click", () => this._submitCanalAnswer(name));
         return button;
       }));
+    }
+    /** Turn the choice buttons into the correction: the right one marked, a
+     *  wrong pick struck through, and every button inert for the hold. */
+    _markAnsweredChoices(correctName, answer, correct) {
+      const card = document.getElementById("canal-card");
+      if (card) card.classList.add("answered");
+      if (!this._promptChoices) return;
+      const normalise = (value) => (value || "").trim().toLowerCase();
+      for (const node of Array.from(this._promptChoices.children)) {
+        const button = node;
+        const name = button.dataset.name || "";
+        button.disabled = true;
+        button.classList.toggle("is-correct", name === correctName);
+        button.classList.toggle("is-wrong", !correct && !!answer && normalise(name) === normalise(answer) && name !== correctName);
+      }
     }
     /** 1-4 answer the open multiple-choice question without reaching for the
      *  mouse; 0 says so when you do not know it, which is a real answer of its
@@ -1286,6 +1305,12 @@ Learned names, exploration collection, personal bests, route settings and the ho
       this.quizFeedback = result.feedback;
       this._promptFeedback.textContent = result.feedback;
       this._promptFeedback.style.color = result.feedbackColor;
+      this._markAnsweredChoices(correctName, answer, correct);
+      this._answerReveal = {
+        name: correctName,
+        segmentIndex: this.quizPromptSegmentIndex,
+        pointIndex: this.quizPromptPointIndex
+      };
       this._clearLandmarkNotice();
       this._neighborhoodNotice = null;
       this._neighborhoodNoticeTimer = 0;
@@ -1317,6 +1342,8 @@ Learned names, exploration collection, personal bests, route settings and the ho
       const learnedRouteType = isStreetQuiz ? "street" : profile.learnedKind === "street" ? "street" : profile.learnedKind === "transit" ? "line" : "water";
       setTimeout(() => {
         this._prompt.style.display = "none";
+        document.getElementById("canal-card")?.classList.remove("answered");
+        this._answerReveal = null;
         this.quizFeedback = "";
         if (typeof this._reclaimKeyboardFocus === "function") this._reclaimKeyboardFocus();
         else this.canvas.focus();

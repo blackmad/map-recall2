@@ -294,7 +294,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             >
               <span className="text-white font-bold whitespace-nowrap font-mono">
                 {totalScore.toLocaleString()}
-                <span className="hidden sm:inline text-xs font-normal text-[#c4a35a]"> pts</span>
+                <span className="hidden sm:inline text-xs font-normal text-[#8a4a18]"> pts</span>
               </span>
             </div>
             )}
@@ -339,7 +339,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       {isSearchAreaOpen && searchRadiusMeters && (
         <div className="app-dialog fixed top-14 sm:top-16 left-2 sm:left-1/2 sm:-translate-x-1/2 z-50 w-[calc(100%-1rem)] sm:w-80 p-3.5 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-bold flex items-center gap-2"><Ruler className="w-4 h-4 text-[#c4a35a]" />Search area</span>
+            <span className="text-sm font-bold flex items-center gap-2"><Ruler className="w-4 h-4 text-[#8a4a18]" />Search area</span>
             <button onClick={() => setIsSearchAreaOpen(false)} className="text-white/60 hover:text-white cursor-pointer"><X className="w-4 h-4" /></button>
           </div>
           <form
@@ -392,7 +392,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             onClick={onToggleSearchBoundary}
             className="enamel-chip w-full flex items-center justify-between px-3 py-2 text-xs cursor-pointer"
           >
-            <span>Show boundary on map</span><span className={showSearchBoundary ? 'text-[#c4a35a] font-bold' : 'text-white/50'}>{showSearchBoundary ? 'On' : 'Off'}</span>
+            <span>Show boundary on map</span><span className={showSearchBoundary ? 'text-[#8a4a18] font-bold' : 'text-white/50'}>{showSearchBoundary ? 'On' : 'Off'}</span>
           </button>
         </div>
       )}
@@ -401,7 +401,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       {isMenuOpen && (
         <div
           id="header-overflow-backdrop"
-          className="fixed inset-0 bg-[rgba(7,20,48,0.82)] backdrop-blur-sm z-50 flex items-start justify-end p-2 sm:p-4 animate-fadeIn"
+          className="fixed inset-0 bg-[rgba(28,24,18,0.38)] backdrop-blur-sm z-50 flex items-start justify-end p-2 sm:p-4 animate-fadeIn"
         >
           <div
             id="header-overflow-panel"
@@ -427,7 +427,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {/* Account and cloud progress */}
             <div className="enamel-chip p-3">
               <div className="mb-2 flex items-center gap-2">
-                <Cloud className={`h-4 w-4 ${accountEmail ? 'text-[#c4a35a]' : 'text-white/60'}`} />
+                <Cloud className={`h-4 w-4 ${accountEmail ? 'text-[#8a4a18]' : 'text-white/60'}`} />
                 <div className="min-w-0">
                   <div className="truncate text-xs font-semibold text-white">{accountEmail || 'Guest progress'}</div>
                   <div className="text-xs text-white/60">{accountEmail ? 'Progress sync is active' : 'Reviews are saved on this device'}</div>
@@ -448,10 +448,10 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             <div className="hidden">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-white/70 flex items-center gap-1.5">
-                  <Compass className="w-3 h-3 text-[#c4a35a]" />
+                  <Compass className="w-3 h-3 text-[#8a4a18]" />
                   <span>Location Scope</span>
                 </label>
-                <span className="text-xs text-[#c4a35a] font-semibold uppercase">
+                <span className="text-xs text-[#8a4a18] font-semibold uppercase">
                   {locationScope === 'neighborhood' ? 'Neighborhood' : locationScope === 'region' ? 'Region' : 'City'}
                 </span>
               </div>
@@ -497,7 +497,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-white/70 flex items-center gap-1.5">
-                  <Filter className="w-3 h-3 text-[#c4a35a]" />
+                  <Filter className="w-3 h-3 text-[#8a4a18]" />
                   <span>Question pool</span>
                 </label>
                 <span className="text-xs text-white/70 font-medium">
@@ -607,7 +607,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                       onLocateUser();
                       setIsMenuOpen(false);
                     }}
-                    className="text-xs text-[#c4a35a] hover:text-white flex items-center gap-1 font-semibold cursor-pointer"
+                    className="text-xs text-[#8a4a18] hover:text-white flex items-center gap-1 font-semibold cursor-pointer"
                   >
                     <LocateFixed className="w-3 h-3" />
                     <span>{isLocating ? 'Locating...' : 'Use My Location'}</span>
@@ -634,7 +634,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             <div className="hidden">
               <div className="space-y-0.5 pr-2">
                 <div className="font-semibold text-xs text-white flex items-center gap-1.5">
-                  <EyeOff className="w-3.5 h-3.5 text-[#c4a35a]" />
+                  <EyeOff className="w-3.5 h-3.5 text-[#8a4a18]" />
                   <span>Label-less Base Map</span>
                 </div>
                 <p className="text-xs text-white/60">Hides text labels on map tiles (Default: Active)</p>
@@ -646,7 +646,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 }`}
               >
                 <div
-                  className={`w-4 h-4 rounded-full bg-white transition-transform ${
+                  className={`w-4 h-4 rounded-full bg-[#fbf8f2] shadow transition-transform ${
                     blindMapMode ? 'translate-x-6' : 'translate-x-0'
                   }`}
                 />
@@ -681,7 +681,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             {/* Distance Unit Toggle */}
             <div className="hidden">
               <div className="font-semibold text-xs text-white flex items-center gap-1.5">
-                <Ruler className="w-3.5 h-3.5 text-[#c4a35a]" />
+                <Ruler className="w-3.5 h-3.5 text-[#8a4a18]" />
                 <span>Units</span>
               </div>
               <div className="enamel-segment flex">
@@ -712,7 +712,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 }}
                 className="hidden"
               >
-                <Database className="w-3.5 h-3.5 text-[#c4a35a]" />
+                <Database className="w-3.5 h-3.5 text-[#8a4a18]" />
                 <span>Debug Loaded Places ({categoryCounts['all'] || currentCity.features.length})</span>
               </button>
             )}

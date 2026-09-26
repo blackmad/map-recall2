@@ -30,7 +30,7 @@ export interface OverlayState {
 export const GUEST_ACCOUNT: AccountState = {
   visible: true,
   label: 'Playing as guest',
-  note: 'Sign in to sync your fog map across devices',
+  note: 'Sign in to keep your progress on every device',
   buttonLabel: 'Sign in',
   busy: false,
 };

@@ -214,6 +214,8 @@ export interface RecallHost extends GameCoreHost {
   quizPromptKind: QuizPromptKind;
   quizPromptSegmentIndex: number;
   quizPromptPointIndex: number;
+  /** The just-answered feature, kept lit on the map through the answer hold. */
+  _answerReveal?: { name: string; segmentIndex: number; pointIndex: number } | null;
   quizCorrect: number;
   quizAttempts: number;
   quizPoints: number;
@@ -323,6 +325,13 @@ export interface PresentationHost extends GameCoreHost {
   _transitLineStickyAt: number | null;
   quizPromptSegmentIndex: number;
   quizPromptPointIndex: number;
+  _answerReveal?: { name: string; segmentIndex: number; pointIndex: number } | null;
+  /** Window size the HUD was last laid out for; see `_syncViewportSize`. */
+  _viewportKey?: string;
+  /** Cache for `_destinationLabel`: the masked name and what it was built from. */
+  _destinationLabelKey?: string;
+  _destinationLabelText?: string;
+  _resize?(): void;
 
   learnedNames: Set<string>;
   learnedStopNames: Set<string>;

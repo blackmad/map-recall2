@@ -6,7 +6,7 @@
 <title>Amsterdam Canal Recall</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link href="css/enamel.css" rel="stylesheet">
 <link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet">
 <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
@@ -95,7 +95,7 @@ canvas { display: block; position: relative; z-index: 2; }
   pointer-events: auto;
 }
 #canal-card { position: relative; }
-.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 8px; padding: 4px 10px 4px 7px; border: 1px solid var(--day-line-strong); border-radius: 999px; background: var(--day-fill); color: var(--day-accent-ink); font: 800 10px/1 var(--font-plaque); letter-spacing: .14em; text-transform: uppercase; }
+.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 8px; padding: 4px 10px 4px 7px; border: 1px solid var(--day-line-strong); border-radius: 999px; background: var(--day-fill); color: var(--day-accent-ink); font: 800 12px/1 var(--font-plaque); letter-spacing: .14em; text-transform: uppercase; }
 .prompt-kind .prompt-kind-icon { display: grid; place-items: center; width: 18px; height: 18px; line-height: 1; letter-spacing: 0; }
 .prompt-kind .prompt-kind-icon svg { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .prompt-kind .prompt-kind-icon svg.filled { fill: currentColor; stroke: none; }
@@ -104,8 +104,23 @@ canvas { display: block; position: relative; z-index: 2; }
 #canal-card h2 { color: var(--ink); margin-bottom: 4px; font: 800 22px/1.15 var(--font-plaque); letter-spacing: .02em; text-transform: uppercase; }
 #canal-card p { color: var(--enamel-muted); margin-bottom: 12px; font-size: 12px; }
 #canal-answer { width: 100%; margin-bottom: 10px; padding: 12px 14px; border: 1px solid var(--day-line-strong); border-radius: var(--radius-sm); background: var(--day-fill); color: var(--ink); font: 16px var(--font-ui); }
-#canal-submit { width: 100%; padding: 11px; border: 0; border-radius: var(--radius-sm); background: linear-gradient(180deg, var(--enamel-copper-mid), var(--enamel-copper) 45%, var(--enamel-copper-deep)); color: var(--ink); font: 800 15px/1 var(--font-plaque); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
-#canal-feedback { min-height: 20px; margin-top: 10px; font-weight: 700; font-size: 13px; color: var(--day-accent-ink); }
+#canal-submit { width: 100%; padding: 11px; border: 0; border-radius: var(--radius-sm); background: linear-gradient(180deg, #e0ad6c, #c9844a 55%, #bd7a3c); color: var(--ink); font: 800 15px/1 var(--font-plaque); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+#canal-feedback { margin: 0 0 10px; font: 700 15px/1.3 var(--font-ui); color: var(--day-accent-ink); }
+#canal-feedback:empty { display: none; }
+/* After an answer the choices become the lesson: the right one turns green
+   with a tick, a wrong pick is struck through, the rest step back. */
+#canal-card.answered .canal-choice { cursor: default; opacity: .55; }
+#canal-card.answered .canal-choice.is-correct,
+#canal-card.answered .canal-choice.is-wrong { opacity: 1; }
+.canal-choice.is-correct { border-color: #2f6f47; background: rgba(47,111,71,.12); color: #1f4d31; box-shadow: inset 0 0 0 1px #2f6f47; }
+.canal-choice.is-correct::after {
+  content: ''; display: inline-block; width: 14px; height: 14px; margin-left: 6px; vertical-align: -2px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12.5l5 5L20 6.5' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12.5l5 5L20 6.5' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.canal-choice.is-wrong { border-color: var(--day-accent); background: var(--day-accent-soft); color: var(--day-accent-ink); text-decoration: line-through; text-decoration-thickness: 2px; }
+#canal-card.answered #canal-no-idea { visibility: hidden; }
 #canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
 #canal-no-idea { width: 100%; margin-top: 6px; padding: 9px 8px; border: 1px dashed var(--day-line-strong); border-radius: var(--radius-sm); background: transparent; color: var(--enamel-muted); font-weight: 600; cursor: pointer; font-size: 13px; }
 #canal-no-idea:hover { background: var(--day-fill); color: var(--ink); }
@@ -115,18 +130,18 @@ canvas { display: block; position: relative; z-index: 2; }
 .canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: var(--day-fill-hover); color: var(--enamel-muted); font-size: 11px; font-weight: bold; }
 
 /* ---- Shared form components (both themes) ---- */
-.setup-section-title { margin: 24px 0 10px; color: var(--accent-ink); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+.setup-section-title { margin: 24px 0 10px; color: var(--accent-ink); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; }
 .setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.setup-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 12px 13px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-sunk); color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.setup-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 12px 13px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-sunk); color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .08em; }
 .setup-field:focus-within { border-color: var(--line-strong); background: var(--surface-sunk-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
 .setup-field select, .setup-field input[type="text"] { width: 100%; padding: 0 24px 0 0; border: 0; border-radius: 0; outline: 0; background: transparent; color: var(--ink); font: 600 14px/1.3 var(--font-ui); }
 .preference-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
 .master-toggle { display: flex; align-items: flex-start; gap: 10px; margin: 0; padding: 13px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-sunk); color: var(--ink); font-size: 13px; cursor: pointer; }
 .master-toggle input { margin-top: 2px; accent-color: var(--accent); }
 .master-toggle small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; font-weight: normal; line-height: 1.45; }
-.assist-options { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; color: var(--ink-dim); font-size: 13px; }
-.assist-options label { display: flex; align-items: center; gap: 6px; }
-.assist-options input { accent-color: var(--accent); }
+.assist-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px; margin: 18px 0; color: var(--ink-dim); font-size: 13px; }
+.assist-options label { display: flex; align-items: center; gap: 8px; min-height: 32px; }
+.assist-options input { accent-color: var(--accent); flex: none; }
 .account-button { padding: 7px 14px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--accent-soft); color: var(--ink); font: inherit; font-size: 12px; cursor: pointer; }
 .account-button:hover { background: var(--accent-soft); filter: brightness(1.35); }
 .advanced-options { margin: 16px 0; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
@@ -140,7 +155,9 @@ canvas { display: block; position: relative; z-index: 2; }
 .setup-choice-label {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  /* The current choice reads with its row label ("VIEW · NORTH UP"), not
+     stranded at the far edge of the rail. */
+  justify-content: flex-start;
   gap: 10px;
   margin: 0 0 6px;
   color: var(--day-ink-muted);
@@ -149,7 +166,7 @@ canvas { display: block; position: relative; z-index: 2; }
   text-transform: uppercase;
 }
 .setup-choice-current {
-  color: var(--ink);
+  color: var(--day-accent-ink);
   font: 650 12px/1 var(--font-plaque);
   letter-spacing: .06em;
   opacity: .92;
@@ -210,6 +227,29 @@ canvas { display: block; position: relative; z-index: 2; }
 .setup-choice-row.strip + .setup-choice-row.icons { margin-top: 8px; }
 .setup-choice-row.icons + .setup-choice-row.strip { margin-top: 12px; }
 
+/* On/off settings share the choice tile: a check mark leads, copper when on.
+   The checkbox itself is visually hidden but still focusable. */
+.setup-choice-row.toggles .setup-choice-options { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.toggle-tile { position: relative; min-height: 44px; padding: 8px 10px; gap: 9px; }
+.toggle-tile .setup-choice-text strong { font-size: 12px; letter-spacing: .05em; }
+.toggle-tile .setup-choice-text small { font-size: 11px; }
+.toggle-tile-input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.toggle-tile-mark {
+  flex: none; width: 16px; height: 16px;
+  border: 1.5px solid var(--day-line-strong); border-radius: 4px;
+  background: var(--day-paper);
+}
+.toggle-tile.active .toggle-tile-mark {
+  border-color: var(--day-accent-ink);
+  background: var(--day-accent-ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fbf8f2' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+.toggle-tile:has(.toggle-tile-input:focus-visible) { outline: 2px solid var(--day-accent-ink); outline-offset: 2px; }
+.range-row { display: block; }
+.range-row input[type="range"] { display: block; width: 100%; margin: 2px 0 0; accent-color: var(--day-accent); }
+@media (hover: none) and (pointer: coarse) { .key-hint { display: none; } }
+
 .setup-city-select {
   margin: 10px 0 0;
   gap: 4px;
@@ -262,9 +302,8 @@ canvas { display: block; position: relative; z-index: 2; }
   display: block; margin-top: 2px;
   color: var(--enamel-muted);
   font: 12px/1.35 var(--font-ui);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Wraps rather than truncating mid-sentence; phones hide it entirely. */
+  text-wrap: pretty;
 }
 .setup-account-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
 .account-button.enamel-quiet {
@@ -356,6 +395,22 @@ canvas { display: block; position: relative; z-index: 2; }
 }
 @keyframes setup-cue-nudge { 50% { transform: translateY(3px); } }
 @media (prefers-reduced-motion: reduce) { .setup-scroll-cue { animation: none; } }
+/* Destructive actions, fenced and labelled; both still confirm first. */
+.setup-danger { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--day-line); display: grid; gap: 8px; }
+.setup-danger-title { margin: 0; color: var(--day-ink-muted); font: 700 12px/1 var(--font-plaque); letter-spacing: .12em; text-transform: uppercase; }
+.account-button.setup-danger-button { width: 100%; min-height: 44px; color: var(--day-danger); border-color: rgba(168,50,31,.35); background: transparent; }
+.account-button.setup-danger-button:hover { background: rgba(168,50,31,.07); }
+/* Keycap badges document keyboard shortcuts; a finger has no digit keys. */
+@media (hover: none) and (pointer: coarse) {
+  .canal-choice-key { display: none; }
+}
+/* Grow hit areas to 44 px without growing the visual controls — the phone
+   setup has no spare height, and the account buttons and compact tiles are
+   deliberately small. */
+.account-button.enamel-quiet,
+.setup-choice-row.compact .setup-choice { position: relative; }
+.account-button.enamel-quiet::after { content: ''; position: absolute; inset: -8px -3px; }
+.setup-choice-row.compact .setup-choice::after { content: ''; position: absolute; inset: -2px 0; }
 .enamel-setup-footer {
   flex-shrink: 0;
   display: flex;
@@ -442,11 +497,13 @@ canvas { display: block; position: relative; z-index: 2; }
   text-transform: uppercase;
   /* Night ink on copper — white-on-copper failed WCAG (~3.1:1). */
   color: var(--night);
+  /* Every stop keeps ink at >= 4.8:1. The old bottom stop (#8a5524) put the
+     lower half of the label at 2.8:1. */
   background:
-    linear-gradient(180deg, var(--enamel-copper-hi), var(--enamel-copper) 42%, var(--enamel-copper-deep));
+    linear-gradient(180deg, #e0ad6c, #c9844a 55%, #bd7a3c);
   box-shadow:
     0 1px 0 rgba(255,255,255,.28) inset,
-    0 8px 20px rgba(0,0,0,.32);
+    0 6px 16px rgba(31,28,23,.22);
 }
 .enamel-start.enamel-framed::before { border-color: rgba(31,28,23,.4); }
 .enamel-start:hover { filter: brightness(1.04); }
@@ -494,6 +551,7 @@ body.setup-open #utility-buttons { display: none; }
 .utility-card td:first-child { width: 88px; color: var(--day-accent-ink); font-weight: bold; white-space: nowrap; }
 .utility-scroll { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .utility-actions { flex: none; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.utility-actions-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .utility-actions .utility-close,
 .utility-actions button { width: 100%; margin-top: 0; padding: 12px; cursor: pointer; }
 .utility-actions .enamel-secondary {
@@ -516,13 +574,24 @@ body.setup-open #utility-buttons { display: none; }
 }
 .enamel-utility .setup-field select,
 .enamel-utility .setup-field input { color: var(--ink); }
+.help-section { margin: 0 0 14px; }
+.utility-card h3 { margin: 0 0 4px; color: var(--day-ink); font: 750 15px/1.2 var(--font-plaque); letter-spacing: .06em; text-transform: uppercase; }
+.help-section p { margin: 0; color: var(--day-ink); font: 14px/1.5 var(--font-ui); max-width: 60ch; }
+.help-section em { font-style: normal; font-weight: 700; }
+/* Touch readers get the thumbstick, pointer readers the keys; neither needs
+   the other's instructions. */
+.help-touch { display: none; }
+@media (hover: none) and (pointer: coarse) {
+  .help-touch { display: block; }
+  .help-pointer { display: none; }
+}
 .help-credits { margin: 12px 0 0; color: var(--enamel-muted); font: 12px/1.45 var(--font-ui); }
 .help-credits a { color: var(--day-accent-ink); }
 /* The landmark panel is the card's expanded form: the full extract, at length,
    with real scrolling. The canvas card is a glance; this is the read. */
 #landmark-panel .utility-card { display: flex; flex-direction: column; width: min(100%, 640px); max-height: min(86dvh, 760px); }
 #landmark-panel-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-#landmark-panel-badges span { padding: 3px 7px; border-radius: 3px; background: rgba(183,129,37,.18); color: #7a5514; font-size: 10px; font-weight: bold; letter-spacing: .04em; }
+#landmark-panel-badges span { padding: 3px 7px; border-radius: 3px; background: rgba(183,129,37,.18); color: #7a5514; font-size: 11px; font-weight: bold; letter-spacing: .04em; }
 #landmark-panel-badges span[data-kind="lang"] { background: rgba(104,116,110,.16); color: #54605a; }
 #landmark-panel-badges span[data-kind="fact"] { background: rgba(94,74,124,.15); color: #5b4a7c; }
 #landmark-panel h2 { margin-bottom: 12px; }
@@ -531,7 +600,7 @@ body.setup-open #utility-buttons { display: none; }
 #landmark-panel-body { font-size: 13px; line-height: 1.65; white-space: pre-wrap; }
 #landmark-panel-link { display: inline-block; margin-top: 14px; color: var(--day-accent-ink); font-size: 12px; }
 @media (max-width: 760px) { #landmark-panel-image { float: none; width: 100%; margin: 0 0 12px; } }
-input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); background: transparent; }
+input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); background: transparent; }
 #utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 12; display: flex; gap: 8px; }
 /* Same paper plate as the canvas readouts (hudSurface.card). */
 #utility-buttons button {
@@ -541,8 +610,10 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   font-size: 18px; cursor: pointer;
   box-shadow: 0 2px 10px rgba(31,28,23,.18);
 }
+#utility-buttons button { display: grid; place-items: center; }
+#utility-buttons svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 #utility-buttons button:hover { background: var(--day-paper-raised); border-color: var(--day-line-strong); }
-#map-attribution { position: fixed; left: 10px; bottom: 6px; z-index: 10; max-width: min(42vw, 220px); color: var(--day-ink-muted); font: 9px/1.3 var(--font-ui); text-shadow: 0 0 3px rgba(251,248,242,.9); pointer-events: none; }
+#map-attribution { position: fixed; left: 10px; bottom: 6px; z-index: 10; max-width: min(42vw, 220px); color: var(--day-ink-muted); font: 10px/1.3 var(--font-ui); text-shadow: 0 0 3px rgba(251,248,242,.9); pointer-events: none; }
 #map-attribution a { color: inherit; pointer-events: auto; text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---- Knowledge review ------------------------------------------------ *
@@ -613,13 +684,21 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   min-height: 48px; padding: 13px 16px;
   border: 0; cursor: pointer;
   color: var(--night);
-  background: linear-gradient(180deg, var(--enamel-copper-hi), var(--enamel-copper-deep));
+  background: linear-gradient(180deg, #e0ad6c, #c9844a 55%, #bd7a3c);
   font: 750 14px/1 var(--font-plaque);
   letter-spacing: .055em; text-transform: uppercase;
 }
 .knowledge-plan svg { width: 18px; height: 18px; }
 .knowledge-plan:hover:not(:disabled) { filter: brightness(1.06); }
-.knowledge-plan:disabled { cursor: default; opacity: .58; filter: saturate(.55); }
+.knowledge-plan:disabled {
+  cursor: default;
+  background: transparent;
+  color: var(--day-ink-muted);
+  box-shadow: inset 0 0 0 1px var(--day-line-strong);
+  filter: none;
+}
+.knowledge-plan:disabled::before,
+.knowledge-plan:disabled::after { display: none; }
 
 .knowledge-layout {
   flex: 1; min-height: 0;
@@ -759,7 +838,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   min-width: 20px; padding: 3px 5px;
   border-radius: 10px;
   color: var(--ink); background: var(--day-fill-hover);
-  font: 700 10px/1 var(--font-ui);
+  font: 700 11px/1 var(--font-ui);
   font-variant-numeric: tabular-nums;
 }
 .knowledge-items {
@@ -871,7 +950,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   border-radius: 2px 2px 0 0;
   background: var(--day-accent-ink);
 }
-.knowledge-activity small { color: var(--enamel-muted); font: 10px/1 var(--font-ui); text-transform: uppercase; }
+.knowledge-activity small { color: var(--enamel-muted); font: 11px/1 var(--font-ui); text-transform: uppercase; }
 .knowledge-cities { margin-top: 8px; }
 .knowledge-cities > div {
   display: grid; grid-template-columns: 1fr auto; gap: 4px 10px;
@@ -952,11 +1031,11 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
     margin: 0;
   }
   .knowledge-stat-list div { padding: 6px 0; }
-  .knowledge-stat-list dt { font-size: 10px; }
+  .knowledge-stat-list dt { font-size: 12px; }
   .knowledge-stat-list dd { font-size: 16px; }
   .knowledge-legend { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 2px; }
   .knowledge-legend h2 { width: 100%; font-size: 13px; }
-  .knowledge-legend div { margin: 0; font-size: 10px; }
+  .knowledge-legend div { margin: 0; font-size: 12px; }
   .knowledge-queue {
     min-height: 460px;
     margin-top: 22px;
@@ -1025,9 +1104,17 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   .setup-choice-row.strip .setup-choice-text strong { font-size: 11px; }
   .setup-choice-row.icons .enamel-icon { width: 20px; height: 20px; }
   .setup-choice-row.strip + .setup-choice-row.icons { margin-top: 6px; }
-  .setup-city-select { margin: 6px 0 0; padding: 7px 10px; }
-  .setup-city-select select { font-size: 15px; min-height: 28px; }
-  .advanced-options > summary { padding: 8px 0; font-size: 12px; }
+  /* One 44px row, and the select covers all of it: the label only shows
+     through on the left, so a tap anywhere on the field opens the picker. */
+  #route-card .setup-city-select { position: relative; flex-direction: row; align-items: center; min-height: 44px; margin: 6px 0 0; padding: 0 12px; }
+  #route-card .setup-city-select select,
+  .setup-city-select select {
+    position: absolute; inset: 0; width: 100%; min-height: 44px;
+    padding: 0 34px 0 64px; font-size: 16px;
+    background-position: right 12px center;
+  }
+  .advanced-options > summary { padding: 8px 0; font-size: 12px; min-height: 44px; line-height: 28px; }
+  .enamel-utility .setup-field select { min-height: 44px; }
   .route-surprise { grid-template-columns: 40px minmax(0,1fr); }
   .route-chip { display: none; }
   /* Tap targets: 44px is the smallest reliably hittable control. */
@@ -1075,6 +1162,18 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   #mission-brief { display: none; }
   #utility-buttons { top: calc(10px + var(--safe-top)); bottom: auto; left: 50%; right: auto; transform: translateX(-50%); }
   #utility-buttons button { width: 40px; height: 40px; }
+  /* The quiz card docks to the side away from the vehicle, as on desktop: at
+     the bottom it took half of a 390px-tall screen, most of the corridor. */
+  #canal-prompt, #canal-prompt.dock-left {
+    align-items: center;
+    padding: calc(8px + var(--safe-top)) calc(10px + env(safe-area-inset-right, 0px)) calc(8px + var(--safe-bottom)) calc(10px + env(safe-area-inset-left, 0px));
+  }
+  #canal-prompt { justify-content: flex-end; background: linear-gradient(90deg, transparent 45%, rgba(28,24,18,0.19)); }
+  #canal-prompt.dock-left { justify-content: flex-start; background: linear-gradient(270deg, transparent 45%, rgba(28,24,18,0.19)); }
+  #canal-card { width: min(46vw, 400px); max-height: calc(100dvh - 16px - var(--safe-top) - var(--safe-bottom)); padding: 12px 14px; }
+  #canal-card h2 { font-size: 17px; }
+  #canal-card p { margin-bottom: 8px; }
+  .canal-choice, #canal-submit, #canal-no-idea { min-height: 44px; }
 }
 </style>
 </head>
@@ -1084,11 +1183,25 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
 <select id="route-from" hidden></select>
 <select id="route-to" hidden></select>
 <div id="canal-overlay-root"></div>
-<div id="utility-buttons"><button id="open-settings" title="Settings (G)">⚙</button><button id="open-help" title="Keyboard shortcuts (?)">?</button></div>
+<div id="utility-buttons"><button id="open-settings" title="Settings (G)" aria-label="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button><button id="open-help" title="How to play (?)" aria-label="How to play"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></button></div>
 <div id="help-panel" class="utility-panel enamel-utility"><div class="utility-card enamel-plaque enamel-framed enamel-panel">
-  <h2>Keyboard shortcuts</h2>
+  <h2>How to play</h2>
   <div class="utility-scroll">
-    <table>
+    <section class="help-section">
+      <h3>Ride</h3>
+      <p class="help-touch">Hold the ring at the bottom of the screen and slide. Sideways steers, up goes faster, back brakes. In compass mode, point where you want to go.</p>
+      <p class="help-pointer">Arrow keys or WASD steer. In compass mode they point the way instead: → rides east on a north-up map.</p>
+    </section>
+    <section class="help-section">
+      <h3>Name it</h3>
+      <p>Turn onto a new canal or street and the ride stops to ask its name. Pick it, type it, or choose <em>No idea</em> — either way the answer is shown, and the right one lights up on the map. Nothing on screen names it before you answer.</p>
+    </section>
+    <section class="help-section">
+      <h3>Remember it</h3>
+      <p>Names you get right come back later, just before you would forget them (spaced review). <em>Knowledge</em> on the setup screen shows what is due. “% new” on the destination card is how much of the route you have not ridden before.</p>
+    </section>
+    <h3 class="help-pointer">Keyboard</h3>
+    <table class="help-pointer">
       <tr><td>Arrows</td><td>Steer and accelerate / brake</td></tr>
       <tr><td>Space</td><td>Handbrake</td></tr>
       <tr><td>M / Tab</td><td>Minimap</td></tr>
@@ -1104,7 +1217,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
       <tr><td>G</td><td>Settings</td></tr>
       <tr><td>N</td><td>Sound</td></tr>
       <tr><td>P / Esc</td><td>Pause</td></tr>
-      <tr><td>M (paused)</td><td>New route</td></tr>
+      <tr><td>M (paused)</td><td>Route setup</td></tr>
       <tr><td>− / +</td><td>Zoom (or pinch)</td></tr>
       <tr><td>Drag / IJKU</td><td>Pan camera</td></tr>
       <tr><td>R</td><td>Recenter</td></tr>
@@ -1129,11 +1242,13 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
     <span id="canal-kind" class="prompt-kind" data-kind="water"><span class="prompt-kind-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span><span id="canal-kind-label">Waterway</span></span>
     <h2>Which waterway are you on now?</h2>
     <p>You made a turn</p>
+    <!-- Directly under the question: a correction below the choices sat under
+         the card's scroll fold in landscape, and it is the lesson. -->
+    <div id="canal-feedback" aria-live="polite"></div>
     <input id="canal-answer" autocomplete="off" autocapitalize="words" aria-label="Waterway name">
     <div id="canal-choices"></div>
     <button id="canal-submit" type="submit">Submit answer</button>
     <button id="canal-no-idea" type="button">No idea — tell me <span class="canal-choice-key">0</span></button>
-    <div id="canal-feedback" aria-live="polite"></div>
   </form>
 </div>
 <div id="map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> · © CARTO</div>

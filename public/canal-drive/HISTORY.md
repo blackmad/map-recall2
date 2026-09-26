@@ -1816,6 +1816,181 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Map Quest joins the daylight palette — 2026-09-26
+
+TODO #28. Canal Recall left the all-cobalt chrome earlier the same day; Map
+Quest still ran it, so the product read as two families. Map Quest is now warm
+paper and ink with copper for action and selection. Enamel stays for the Map
+Recall title plaque and the street plaques the map draws for revealed answers.
+
+Its components were written dark-on-blue in about 400 Tailwind colour
+utilities. Tailwind v4 resolves each through a `--color-*` variable, so
+`src/index.css` remaps the palette on `#root`: `text-white` becomes ink,
+`text-white/60` ink at 60%, `bg-white/10` a faint ink fill, and the slate ramp
+runs paper to ink. Enamel plaques and Leaflet markers get the stock values
+back. The remap was chosen over rewriting each class, which would have been a
+400-line diff for the same result, and new work should use the named classes
+and `--day-*`. Hard-coded rivet gold (`#c4a35a`, about 2.3:1 on paper) became
+copper ink, and the cobalt scrims became the warm day scrim.
+
+The shared semantic tokens now publish as daylight values from `hudTheme.ts`,
+and the cobalt-era aliases (`--paper`, `--moss`, `--terracotta`, `--ochre`,
+`--primary`) are retired. Two smaller fixes shipped with it:
+
+- The locate button's `z-[900]` leaked out of the map and drew over the
+  options modal on phones. The map viewport is now `isolate`.
+- The canvas map-select state filled black between two paper screens. It now
+  fills with paper.
+
+## The UI review's leftovers, closed — 2026-09-26
+
+TODO #30, the smaller findings from the UI review:
+
+- **Landmark names.** "foam", "waterdraagster" and Rotterdam's "weggeefwinkel"
+  were lowercase, and "Dam Square Victims 7 mei 1945" and "Rembrandt van Rijn
+  statue" were half-translated. `landmarkNames.ts` repairs the form, not the
+  language: a lowercase first letter gets a capital (a stylised ".zip" and an
+  owner's own "de Gooyer" stay), and a name with both English and Dutch marker
+  words takes its Dutch Wikipedia title, because the Dutch name is what the
+  street says. `scripts/normalise-landmark-names.ts --write` applied it to the
+  published extracts: the name, the facts entry and every distractor that
+  quoted the old one. The old name stays as `osmName`. `test:landmark-data`
+  fails if any extract needs the pass again. Someone who had "foam" in their
+  knowledge will see "Foam" as a new name.
+- **Phone city field.** It is now one 44px row, and the select covers all of
+  it, so a tap anywhere on the field opens the picker. It takes no more height
+  than before.
+- **Knowledge mid-ride.** Ride settings has a "Your knowledge" button. The
+  review's back button says "Back to ride". While the review is up it owns the
+  keyboard (`input.js`), so its Escape does not also close the settings under
+  it, and focus returns to the button that opened it.
+- **Landscape quiz card.** On a landscape phone the card docks to the side
+  away from the vehicle, as on desktop, instead of a bottom sheet over half the
+  screen.
+- **`game.js` cap.** Already fixed on `main` (673 lines). The structure check's
+  remaining failure was a stale `route-selection.bundle.js` that differed only
+  in minified names; it is rebuilt.
+
+All pinned in `mobile-overlays.spec.ts` and `test:landmark-data`.
+
+## A destination no longer names the canal you are on — 2026-09-26
+
+TODO #29, from the UI review: boat routes could head for *Keizersgrachtkerk*
+along the Keizersgracht, so the destination card said the canal before the quiz
+asked it. `poiNameSpoils` could not catch it, because it matches whole words and
+Dutch compounds the street onto the landmark. `maskSpoiledName`
+(`orientationPois.ts`) matches a quiz name wherever a word *starts* with it and
+swaps the span for an ellipsis ("…kerk"), so the card still says what you are
+riding to. It uses this ride's track names. The ride HUD and the start briefing
+use the masked label via `_destinationLabel()`; the arrival card shows the real
+name. We masked instead of re-rolling the destination because the route, and so
+its names, only exist after the destination is picked. Pinned in
+`test:orientation-pois`.
+
+## Ride settings share route setup's tiles — 2026-09-26
+
+The owner: "fix this settings to use buttons same as the opening screen,
+ideally share the opening screen". The in-ride panel was a column of native
+selects, sliders in boxes and bare checkboxes, while setup used paper tiles, so
+the same preference looked like two different controls. Both now render one
+`RideOptions` component in `OverlayApp.tsx`: choice tiles for view, controls
+(Steer / Point), answers (Choose / Type), bicycle and map style, and on/off
+`ToggleTile`s (a real checkbox inside the tile, so ids and Space still work)
+grouped as "On the map" and "Comfort & detail". `live` prefixes ids and
+`data-choice` names so both copies coexist. Answer mode moved into it, so it is
+now settable mid-ride (`_readLiveSettings` already applied it). The panel reuses
+the setup rail's scroll fade and "More" cue. Pinned in `mobile-overlays.spec.ts`
+("ride settings use the same tile buttons as route setup").
+
+## Help that explains the game; copy that says what it means — 2026-09-26
+
+From the 2026-09-26 UI review. "?" opened a keyboard table, even on phones,
+and nothing explained the thumbstick, spaced review or "% new". Help is now
+"How to play": Ride (touch readers get the stick, pointer readers the keys),
+Name it, Remember it; the keyboard table shows only on fine pointers. The ⚙/?
+buttons were Unicode glyphs with no accessible names; they are drawn SVG with
+labels, and they stay hidden while a route loads.
+
+Plain language: "fog map" → "keep your progress on every device", "Space
+reviews" → "Due names only", "Game-y features" → "Scores & streaks" (the name
+setup already used). View names match between setup and settings ("North up",
+"Heading up", "Chase", "Cockpit"), and the current view sits beside its row
+label instead of stranded at the rail's edge. A mission line no longer tells
+you to "make Dam Square Victims 7 mei 1945 feel like home". The first question
+of a ride no longer claims "You made a turn" when none happened (the start
+street itself is given on purpose and never asked).
+
+The overview minimap stroked every segment separately, so translucent ink
+stacked wherever segments met; in bike mode that is everywhere and it read as
+solid black. Each layer is now one path, stroked once (`strokeLayer`).
+
+## Keyboard and small-screen access — 2026-09-26
+
+From the 2026-09-26 UI review. `input.js` called `preventDefault` on Tab for
+every non-field target, so keyboard focus stuck on the first control of setup
+and the knowledge screen. Tab is now the browser's whenever an HTML surface is
+up or focus sits on a control; it still toggles the minimap while driving.
+The knowledge review takes focus, leaves on Escape, returns focus to the
+Knowledge button, and makes the covered setup `inert` (it had stayed in the
+tab order and accessibility tree behind the full-screen view).
+
+No UI text under 11 px (settings labels, quiz kind chip, legend, card badges,
+tab counts; the map credit is 10 px). Canvas card measurement used bare
+`monospace` while drawing system-ui/Barlow, so wraps and badge widths were
+computed for the wrong face; `noticeCards.ts` now measures in the drawn fonts.
+Hit areas reach 44 px without growing the tight phone setup (pseudo-element
+insets on account buttons and compact tiles; More options and settings selects
+get real 44 px). Keycap digit badges hide on coarse pointers. Reset knowledge
+and Clear all data are fenced under "Your saved data" in danger ink.
+
+## The last arcade surfaces go to paper; speed leaves the HUD — 2026-09-26
+
+From the 2026-09-26 UI review. The pause card was still the old skin — 78%
+black, yellow bold Courier "PAUSED", ink captions invisible on it, miles and
+an unlabelled percentage. It is now the arrival card's paper plate with
+kilometres and "n of m named". Canvas numerals asked for bare `monospace` (or
+`ui-monospace`, which canvas ignores) and drew in Courier; JetBrains Mono is
+loaded, preloaded for canvas, and every canvas mono string goes through
+`hudSurface.fontMono`, at no less than 11 px. Copper stamps were 2.8:1 at the
+gradient's bottom stop; every stop is now ≥ 4.8:1 with ink. The disabled
+"Nothing due now" is a quiet outline instead of a greyed plaque.
+
+Speed is gone from the HUD (owner: hide speed, keep points). The toy physics
+put a canal boat at 200+ km/h and a bike at 62 — a false number in a game
+whose promise is true geography. Distance stays. "Copy race link" is "Share
+this route"; the arrival actions say what they do ("Next route" / "Route
+setup", not "Continue" / "Finish"); a ride with no questions no longer ends on
+"0% recall"; ribbon colours are ink tones that read on paper.
+
+The phone HUD could latch the pre-settle 980 px layout and draw at ~47% (5 px
+text): `_syncViewportSize` re-lays out whenever the window stops matching the
+last layout. The spoiler index also takes the route's own track names, since a
+bike ride can ask any street, not only the curated knowledge subset.
+
+## A miss is the lesson, and labels cannot say the answer — 2026-09-26
+
+From the 2026-09-26 UI review. A wrong answer was one line of amber
+(#fbbf24, ~1.7:1 on the new paper card) printed *below* the choices — under
+the card's scroll fold in landscape — and the buttons never showed which was
+right. Now the feedback sits directly under the question in ink tones (all
+≥ 5:1: copper-ink miss, green hit, blue "no idea"), the right choice turns
+green with a drawn tick, a wrong pick is struck through, the rest step back,
+and the answered feature stays highlighted on the map through the hold
+(`_answerReveal`) so a miss shows *where* the right canal runs.
+
+Orientation labels could pre-teach answers: a "Nassaukade" tram stop on
+Nassaukade, a "Majoor Bosshardt" label beside the Majoor Bosshardtbrug. While a
+question is open every label layer was already hidden, but between questions
+they were not. `orientationPois.ts` now builds a spoiler index from every
+street, water, bridge (and, in transit, stop) name — plus Dutch-suffix stems —
+and matches labels by word n-grams; our own POI sources drop matches in JS and
+the basemap `poi` layers get an exact-name MapLibre filter. Pinned in
+`test:orientation-pois` and a wrong-answer e2e.
+
+Also found: `playwright.config.ts` reuses any server on :4173, and another
+worktree's dev server was on it, so e2e silently tested that checkout. Run
+with a private port when other sessions are live.
+
 ## Amsterdam façade rebuild: identity before pixels
 
 The first clean-rebuild checkpoint implements phases 0–2 of
@@ -1842,6 +2017,7 @@ checkpoint while retaining reviewer, timestamp, and verdict provenance;
 source-pixel points remain an optional advanced control and can be removed
 individually, undone in reverse order, or cleared together with a guarded
 two-click action.
+
 ## Daylight paper replaces the cobalt chrome — 2026-09-26
 
 The owner called the navy/cobalt-on-blue theme "way too heavy". Every surface

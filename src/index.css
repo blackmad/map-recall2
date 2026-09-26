@@ -12,6 +12,71 @@ body,
   overscroll-behavior: none;
 }
 
+/* ---- Daylight paper (hudTheme.ts `daylightTheme`, published as --day-*) ----
+ * Map Quest moved off the all-cobalt chrome with Canal Recall (TODO #28,
+ * 2026-09-26): warm paper, near-black ink, one copper accent, and enamel kept
+ * literal to the title plaque and the map's own street plaques.
+ *
+ * The components were written dark-on-blue in Tailwind utilities (~400 of
+ * them). Tailwind v4 resolves every colour utility through a --color-* var, so
+ * instead of rewriting each class the palette is remapped here for the app:
+ * `text-white` is ink, `text-white/60` ink at 60%, `bg-white/10` a faint ink
+ * fill, and the slate ramp runs paper-to-ink instead of ink-to-paper. Enamel
+ * plaques and Leaflet markers get the stock values back below.
+ * -------------------------------------------------------------------------- */
+#root {
+  --ink: var(--day-ink);
+  --ink-dim: var(--day-ink);
+  --ink-muted: var(--day-ink-muted);
+  --muted: var(--day-ink-muted);
+  --enamel-muted: var(--day-ink-muted);
+  --line: var(--day-line);
+  --night: var(--day-paper);
+
+  --color-white: #1f1c17;
+  --color-slate-50: #1f1c17;
+  --color-slate-100: #26221c;
+  --color-slate-200: #2e2a23;
+  --color-slate-300: #4a443a;
+  --color-slate-400: #5f584d;
+  --color-slate-500: #6f675b;
+  --color-slate-600: #9a9285;
+  --color-slate-700: #d9d2c5;
+  --color-slate-800: #e8e2d6;
+  --color-slate-900: #f4efe5;
+  --color-slate-950: #fbf8f2;
+  --color-emerald-300: #2f6f47;
+  --color-emerald-400: #2f6f47;
+  --color-emerald-500: #3d8a5a;
+  --color-emerald-950: #e3efe6;
+  --color-rose-300: #a8321f;
+  --color-rose-400: #a8321f;
+  --color-rose-500: #c0492f;
+  --color-rose-800: #e2b3a7;
+  --color-rose-950: #f6e3dd;
+  --color-amber-300: #8a4a18;
+  --color-amber-400: #8a4a18;
+  --color-blue-100: #fbf8f2;
+  --color-blue-300: #8a4a18;
+  --color-blue-400: #8a4a18;
+  --color-blue-500: #b4682c;
+  --color-blue-600: #8a4a18;
+  --color-blue-700: #6e3a12;
+  --color-indigo-300: #3a5a86;
+  --color-indigo-400: #3a5a86;
+  --color-cyan-300: #2f5d6b;
+  --color-cyan-500: #2f5d6b;
+}
+/* Enamel stays enamel: white on cobalt. Leaflet markers keep their stock
+   white rims and green/red fills on the map. */
+#root .enamel-plaque,
+#root .leaflet-marker-icon {
+  --color-white: #fff;
+  --color-emerald-300: oklch(84.5% 0.143 164.978);
+  --color-emerald-600: oklch(59.6% 0.145 163.225);
+  --color-rose-500: oklch(64.5% 0.246 16.439);
+}
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -19,8 +84,8 @@ body {
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
-  background: var(--night);
-  color: var(--enamel-ink);
+  background: var(--day-paper);
+  color: var(--day-ink);
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
@@ -29,172 +94,157 @@ button:focus-visible,
 select:focus-visible,
 input:focus-visible,
 a:focus-visible {
-  outline: 3px solid rgb(196 163 90 / 0.45);
+  outline: 2px solid var(--day-accent-ink);
   outline-offset: 2px;
 }
 
-/* ---- Map Quest–only enamel chrome -----------------------------------
+/* ---- Map Quest–only chrome ----------------------------------------------
  * Shared plaque/tile/brand live in enamel-chrome.css (also linked by Canal).
  * These classes are quiz-surface only: dialogs, chips, segment, float.
  * Plain unlayered rules beat Tailwind @layer utilities — no !important.
- * Copper is reserved for the primary CTA.
+ * Copper is reserved for the primary CTA and the selected state.
  * --------------------------------------------------------------------- */
 .app-dialog,
 .quiz-card,
 .quiz-result-card {
-  color: var(--enamel-ink);
-  background: linear-gradient(165deg, var(--enamel-bright) 0%, var(--enamel) 42%, var(--enamel-deep) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--day-ink);
+  background: var(--day-paper-raised);
+  border: 1px solid var(--day-line);
   border-radius: 10px;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.16) inset,
-    0 14px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Legacy utility colours inside enamel surfaces. Dark-on-blue is unreadable,
- * so every gray/stone/green text shade collapses to ink or muted ink. */
-.app-dialog :is([class*="text-slate-"], [class*="text-stone-"], [class*="text-gray-"], [class*="text-emerald-8"], [class*="text-emerald-7"], [class*="text-emerald-9"]),
-.quiz-card :is([class*="text-slate-"], [class*="text-stone-"], [class*="text-gray-"], [class*="text-emerald-8"], [class*="text-emerald-7"], [class*="text-emerald-9"]),
-.quiz-result-card :is([class*="text-slate-"], [class*="text-stone-"], [class*="text-gray-"], [class*="text-emerald-8"], [class*="text-emerald-7"], [class*="text-emerald-9"]) {
-  color: var(--ink-muted);
-}
-.app-dialog :is(.text-slate-100, .text-slate-200, .text-stone-800, .text-stone-900, .text-slate-900, .text-white),
-.quiz-card :is(.text-slate-100, .text-slate-200, .text-stone-800, .text-stone-900, .text-slate-900, .text-white),
-.quiz-result-card :is(.text-slate-100, .text-slate-200, .text-stone-800, .text-stone-900, .text-slate-900, .text-white) {
-  color: var(--enamel-ink);
-}
-.app-dialog :is([class*="bg-slate-"], [class*="bg-stone-"], [class*="bg-white"]),
-.quiz-card :is([class*="bg-slate-"], [class*="bg-stone-"], [class*="bg-white"]),
-.quiz-result-card :is([class*="bg-slate-"], [class*="bg-stone-"], [class*="bg-white"]) {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--enamel-ink);
-}
-.app-dialog :is([class*="border-slate-"], [class*="border-stone-"]),
-.quiz-card :is([class*="border-slate-"], [class*="border-stone-"]),
-.quiz-result-card :is([class*="border-slate-"], [class*="border-stone-"]) {
-  border-color: var(--line);
-}
-.app-dialog :is([class*="text-amber-"], [class*="text-emerald-4"]),
-.quiz-card :is([class*="text-amber-"], [class*="text-emerald-4"]),
-.quiz-result-card :is([class*="text-amber-"], [class*="text-emerald-4"]) {
-  color: var(--rivet);
+  box-shadow: 0 1px 2px rgba(31, 28, 23, 0.08), 0 14px 40px rgba(31, 28, 23, 0.22);
 }
 
 .button-primary {
-  color: #fff;
-  background: linear-gradient(180deg, var(--enamel-copper-mid), var(--enamel-copper) 48%, var(--enamel-copper-deep));
+  color: #1f1c17;
+  background: linear-gradient(180deg, #e0ad6c, #c9844a 55%, #bd7a3c);
   border: 0;
   border-radius: 8px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.22) inset, 0 6px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35) inset, 0 4px 12px rgba(138, 74, 24, 0.25);
   font-family: var(--font-plaque);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.button-primary:hover { filter: brightness(1.05); }
+.button-primary:hover { filter: brightness(1.04); }
 .button-primary:active { transform: translateY(1px); }
 /* Disabled is "not yet", not "faded": full-contrast label on a dashed ghost. */
 .button-primary:disabled {
-  color: rgba(255,255,255,.85);
+  color: var(--day-ink-muted);
   background: transparent;
-  border: 1px dashed rgba(255,255,255,.4);
+  border: 1px dashed var(--day-line-strong);
   box-shadow: none;
   filter: none;
 }
 
 .button-secondary {
-  color: var(--enamel-ink);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--day-ink);
+  background: var(--day-fill);
+  border: 1px solid var(--day-line);
   border-radius: 8px;
   box-shadow: none;
 }
-.button-secondary:hover { background: rgba(255, 255, 255, 0.14); }
+.button-secondary:hover { background: var(--day-fill-hover); }
 
 /* Hint / detail blocks reuse tile hover language. */
 .answer-detail-card {
-  color: var(--enamel-ink);
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--day-ink);
+  background: var(--day-paper-raised);
+  border: 1px solid var(--day-line);
   border-radius: 7px;
   box-shadow: none;
   transition: background 160ms ease-out, border-color 160ms ease-out;
 }
-.answer-detail-card:hover { background: rgba(255, 255, 255, 0.13); border-color: rgba(255, 255, 255, 0.3); }
+.answer-detail-card:hover { border-color: var(--day-line-strong); }
+
+/* Tiles: raised paper, copper when chosen — the same as Canal's setup rail. */
+#root .enamel-tile {
+  color: var(--day-ink);
+  background: var(--day-paper-raised);
+  border: 1px solid var(--day-line);
+  border-radius: 6px;
+  box-shadow: 0 1px 1px rgba(31, 28, 23, 0.05);
+}
+#root .enamel-tile:hover { border-color: var(--day-line-strong); }
+#root .enamel-tile.active {
+  background: var(--day-accent-soft);
+  border-color: var(--day-accent);
+  box-shadow: inset 0 0 0 1px var(--day-accent);
+  color: var(--day-accent-ink);
+}
 
 /* Small header control: select, toggle, icon button. */
 .enamel-chip {
-  color: var(--enamel-ink);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--day-ink);
+  background: var(--day-paper-raised);
+  border: 1px solid var(--day-line);
   border-radius: 6px;
   box-shadow: none;
   transition: background 140ms ease-out, border-color 140ms ease-out;
 }
-.enamel-chip:hover { background: rgba(255, 255, 255, 0.14); border-color: rgba(255, 255, 255, 0.28); }
+.enamel-chip:hover { background: var(--day-paper-raised); border-color: var(--day-line-strong); }
 .enamel-chip.active {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(196, 163, 90, 0.75);
+  background: var(--day-accent-soft);
+  border-color: var(--day-accent);
 }
-.enamel-chip option { background: var(--enamel-deep); color: var(--enamel-ink); }
+.enamel-chip option { background: var(--day-paper-raised); color: var(--day-ink); }
 
 /* Segmented control (game mode). */
 .enamel-segment {
   padding: 2px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--day-line);
   border-radius: 7px;
-  background: rgba(7, 20, 48, 0.35);
+  background: var(--day-fill);
 }
 .enamel-segment button {
-  color: var(--ink-muted);
+  color: var(--day-ink-muted);
   background: transparent;
   border: 0;
   border-radius: 5px;
   transition: background 140ms ease-out, color 140ms ease-out;
 }
-.enamel-segment button:hover { color: var(--enamel-ink); background: rgba(255, 255, 255, 0.08); }
+.enamel-segment button:hover { color: var(--day-ink); background: var(--day-fill-hover); }
 .enamel-segment button[aria-pressed="true"] {
-  color: var(--enamel-ink);
-  background: rgba(255, 255, 255, 0.16);
-  box-shadow: inset 0 0 0 1px rgba(196, 163, 90, 0.7);
+  color: var(--day-accent-ink);
+  background: var(--day-paper-raised);
+  box-shadow: inset 0 0 0 1px var(--day-accent);
 }
 
 #app-game-header {
-  color: var(--enamel-ink);
-  background: linear-gradient(180deg, rgba(20, 80, 184, 0.96), rgba(11, 58, 140, 0.96));
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.14) inset, 0 6px 22px rgba(0, 0, 0, 0.35);
+  color: var(--day-ink);
+  background: rgba(251, 248, 242, 0.96);
+  border-color: var(--day-line);
+  box-shadow: 0 1px 2px rgba(31, 28, 23, 0.06), 0 6px 18px rgba(31, 28, 23, 0.12);
 }
 
-/* Floating chips over the map (toast, Canal Recall link). */
+/* Floating chips over the map (toast, Canal Recall link, locate). */
 .enamel-float {
-  color: var(--enamel-ink);
-  background: rgba(11, 58, 140, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--day-ink);
+  background: rgba(251, 248, 242, 0.94);
+  border: 1px solid var(--day-line);
   border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 14px rgba(31, 28, 23, 0.18);
   backdrop-filter: blur(6px);
 }
-.enamel-float:hover { background: rgba(20, 80, 184, 0.94); }
+.enamel-float:hover { background: var(--day-paper-raised); border-color: var(--day-line-strong); }
 
 /* Loading bar */
-.enamel-progress { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); }
-.enamel-progress > div { background: linear-gradient(90deg, var(--rivet), #e0c988); }
+.enamel-progress { background: var(--day-fill); border: 1px solid var(--day-line); }
+.enamel-progress > div { background: linear-gradient(90deg, #c9844a, #b4682c); }
 
 .leaflet-container {
   width: 100%;
   height: 100%;
-  background-color: #0a1a36 !important;
+  background-color: #efe9dd !important;
   font-family: inherit;
 }
 .leaflet-control-zoom a {
-  color: var(--enamel-ink) !important;
-  background: var(--enamel) !important;
-  border-color: var(--line) !important;
+  color: var(--day-ink) !important;
+  background: var(--day-paper-raised) !important;
+  border-color: var(--day-line) !important;
 }
 .leaflet-control-attribution {
-  color: var(--ink-muted) !important;
-  background: rgb(11 58 140 / 0.8) !important;
+  color: var(--day-ink-muted) !important;
+  background: rgba(251, 248, 242, 0.85) !important;
 }
 
 @media (max-width: 640px) {
@@ -251,13 +301,13 @@ input {
 }
 
 .leaflet-popup-content-wrapper {
-  background: var(--enamel);
-  color: var(--enamel-ink);
+  background: var(--day-paper-raised);
+  color: var(--day-ink);
   border-radius: 10px;
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
-  border: 1px solid var(--line);
+  box-shadow: 0 10px 25px -5px rgb(31 28 23 / 0.3);
+  border: 1px solid var(--day-line);
 }
 
 .leaflet-popup-tip {
-  background: var(--enamel);
+  background: var(--day-paper-raised);
 }
