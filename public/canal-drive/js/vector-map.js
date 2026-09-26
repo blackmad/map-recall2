@@ -12,6 +12,9 @@ class VectorBasemap {
     this._pendingTrees = [];
     this._pendingPlaces = { landmarks: [], boundaries: [] };
     this._pendingBrandedPois = [];
+    // Prefs apply during Game construction, before MapLibre's style load.
+    // Stash corridor paint until `load` so addSource does not throw and kill boot.
+    this._pendingTransitNetwork = null;
     this._treesVisible = false;
     this._detailedBuildings = null;
     this._completeCity = null;
@@ -50,6 +53,9 @@ class VectorBasemap {
     this._lastCameraClearance = { constrained: false, reason: 'not-synchronised' };
     this._cameraClearanceCheck = null;
     this._cameraClearanceRequest = null;
+    this._extractPath = '../data/extracts/amsterdam';
+    this._cameraTilt = 0;
+    this._pitchSmoothed = null;
     if (!container || typeof maplibregl === 'undefined') return;
 
     this.map = new maplibregl.Map({
@@ -67,6 +73,7 @@ class VectorBasemap {
       this._captureBasePaint();
       this._ensureRouteLayer();
       this._ensureStreetOverlayLayers();
+      this._ensureTransitOverlayLayers();
       this._ensureTreeLayers();
       this._ensureBuildingAppearanceLayers();
       this._ensurePlaceLayers();
@@ -86,15 +93,44 @@ class VectorBasemap {
       // live game: thirteen meshopt models were too expensive on the shared
       // MapLibre/Three canvas (see TODO item 22).
       if (window.CanalRecallVehicles) {
-        const { PlayerBike3D, PlayerBoat3D } = window.CanalRecallVehicles;
-        if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl);
+        const { PlayerBike3D, PlayerBoat3D, PlayerTransit3D } = window.CanalRecallVehicles;
+        const Prefs = window.CanalRecallPreferences;
+        let bikeSkin = 'omafiets';
+        try {
+          if (Prefs?.readPreferences) {
+            bikeSkin = Prefs.readPreferences(localStorage, { min: 0.2, max: 1.5, defaultZoom: 0.5 }).bikeSkin || 'omafiets';
+          }
+        } catch (_) { /* ignore */ }
+        if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl, bikeSkin);
         if (PlayerBoat3D) this._playerBoat = new PlayerBoat3D(this.map, maplibregl);
+        if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
       this.ready = true;
       // Theme setup can run before the asynchronous style load. Reapply it
       // now so OSM building colours replace Liberty's uniform gray default.
       this.applyTheme(this.theme);
+      if (this._pendingTransitNetwork) {
+        const pending = this._pendingTransitNetwork;
+        this._pendingTransitNetwork = null;
+        this.setTransitNetwork(pending.load, pending.visible);
+      }
     });
+  }
+
+  /** Point building / tile fetches at the active city's extract root. */
+  setExtractRoot(path) {
+    if (!path || path === this._extractPath) return;
+    this._extractPath = path;
+    // Drop the previous city's tile streamer so the next probe uses the new root.
+    if (this._completeCity && typeof this._completeCity.dispose === 'function') {
+      try { this._completeCity.dispose(); } catch (_) { /* ignore */ }
+    }
+    this._completeCity = null;
+    this._buildingsFromTiles = false;
+  }
+
+  _extractFile(name) {
+    return `${this._extractPath || '../data/extracts/amsterdam'}/${name}`;
   }
 
   _ensureRouteLayer() {
@@ -113,6 +149,138 @@ class VectorBasemap {
     for (const layer of window.CanalRecallStreets.streetOverlayLayers()) {
       this.map.addLayer(layer, layer.type === 'symbol' ? undefined : before);
     }
+  }
+
+  _ensureTransitOverlayLayers() {
+    const Transit = window.CanalRecallTransit;
+    // MapLibre throws "Style is not done loading" on addSource before `load`.
+    if (!this.map || !Transit || typeof this.map.isStyleLoaded === 'function' && !this.map.isStyleLoaded()) return;
+    if (this.map.getSource(Transit.TRANSIT_OVERLAY_SOURCE_ID || 'transit-network')) return;
+    const sourceId = Transit.TRANSIT_OVERLAY_SOURCE_ID || 'transit-network';
+    this.map.addSource(sourceId, {
+      type: 'geojson',
+      data: { type: 'FeatureCollection', features: [] },
+    });
+    const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
+    const under = typeof Transit.transitOverlayUnderBuildingLayers === 'function'
+      ? Transit.transitOverlayUnderBuildingLayers()
+      : [];
+    for (const layer of under) this.map.addLayer(layer, before);
+    const above = typeof Transit.transitOverlayAboveBuildingLayers === 'function'
+      ? Transit.transitOverlayAboveBuildingLayers()
+      : [];
+    // Tunnel callouts sit above extrusions so metro through buildings stays legible.
+    for (const layer of above) this.map.addLayer(layer);
+  }
+
+  /**
+   * Paint every driveable GTFS corridor. Metro is treated as underground
+   * (dashed, above buildings); tram stays a bold surface ribbon.
+   */
+  setTransitNetwork(load, visible) {
+    const Transit = window.CanalRecallTransit;
+    if (!this.map || !Transit) return;
+    // Called from prefs during Game construction — before style `load`. Defer
+    // rather than throw; blank boot was "Style is not done loading" here.
+    if (!this.ready) {
+      this._pendingTransitNetwork = { load, visible: !!visible };
+      return;
+    }
+    this._pendingTransitNetwork = null;
+    this._ensureTransitOverlayLayers();
+    const sourceId = Transit.TRANSIT_OVERLAY_SOURCE_ID || 'transit-network';
+    const source = this.map.getSource(sourceId);
+    if (!source) return;
+    const lines = [];
+    if (load && load.ways && load.ways.length) {
+      for (const way of load.ways) {
+        if (!way.nodes || way.nodes.length < 2) continue;
+        const meta = load.featureMeta && way.tags && way.tags.name
+          ? load.featureMeta.get(way.tags.name)
+          : null;
+        lines.push({
+          name: (way.tags && way.tags.name) || way.id || 'line',
+          mode: way.highway || (meta && meta.mode) || 'tram',
+          color: meta && meta.color,
+          coordinates: way.nodes.map(node => [node.lon, node.lat]),
+        });
+      }
+    }
+    const collection = typeof Transit.transitOverlayCollection === 'function'
+      ? Transit.transitOverlayCollection(lines)
+      : { type: 'FeatureCollection', features: [] };
+    source.setData(collection);
+    const show = visible ? 'visible' : 'none';
+    for (const id of (Transit.TRANSIT_OVERLAY_LAYER_IDS || [])) {
+      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', show);
+    }
+    this._emphasizeTransitBasemap(!!visible);
+  }
+
+  /** Widen / recolour Liberty rail layers while transit mode is active. */
+  _emphasizeTransitBasemap(on) {
+    if (!this.map) return;
+    try {
+      for (const layer of this.map.getStyle().layers || []) {
+        if (layer.type !== 'line') continue;
+        const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
+        if (!/rail|transit|subway|tram/.test(identity) && !/transportation/.test(identity)) continue;
+        // Only touch layers that look like rails, not every road.
+        const isRail = /rail|transit|subway|tram|railway/.test(identity);
+        if (!isRail) continue;
+        if (!this._basePaint.has(`${layer.id}:line-width`)) {
+          try {
+            this._basePaint.set(`${layer.id}:line-width`, this.map.getPaintProperty(layer.id, 'line-width'));
+            this._basePaint.set(`${layer.id}:line-color`, this.map.getPaintProperty(layer.id, 'line-color'));
+            this._basePaint.set(`${layer.id}:line-opacity`, this.map.getPaintProperty(layer.id, 'line-opacity'));
+          } catch (_) { /* ignore */ }
+        }
+        if (on) {
+          this.map.setPaintProperty(layer.id, 'line-color', '#F59E0B');
+          this.map.setPaintProperty(layer.id, 'line-opacity', 0.55);
+          this.map.setPaintProperty(layer.id, 'line-width', [
+            'interpolate', ['linear'], ['zoom'], 13, 2.5, 18, 7,
+          ]);
+        } else {
+          const width = this._basePaint.get(`${layer.id}:line-width`);
+          const color = this._basePaint.get(`${layer.id}:line-color`);
+          const opacity = this._basePaint.get(`${layer.id}:line-opacity`);
+          if (width != null) this.map.setPaintProperty(layer.id, 'line-width', width);
+          if (color != null) this.map.setPaintProperty(layer.id, 'line-color', color);
+          if (opacity != null) this.map.setPaintProperty(layer.id, 'line-opacity', opacity);
+        }
+      }
+    } catch (_) { /* style may still be loading */ }
+  }
+
+  setCameraTilt(degrees) {
+    const value = Number(degrees);
+    const prefs = window.CanalRecallPreferences;
+    const min = prefs && Number.isFinite(prefs.CAMERA_TILT_MIN) ? prefs.CAMERA_TILT_MIN : -36;
+    const max = prefs && Number.isFinite(prefs.CAMERA_TILT_MAX) ? prefs.CAMERA_TILT_MAX : 36;
+    this._cameraTilt = Number.isFinite(value) ? Math.max(min, Math.min(max, value)) : 0;
+  }
+
+  pitchForViewMode(viewMode) {
+    const chase = viewMode === 'chase';
+    const cockpit = viewMode === 'cockpit';
+    const base = cockpit
+      ? (typeof COCKPIT_PITCH_DEGREES === 'number' ? COCKPIT_PITCH_DEGREES : 82)
+      : chase
+        ? (typeof CHASE_PITCH_DEGREES === 'number' ? CHASE_PITCH_DEGREES : 42)
+        : (typeof TOPDOWN_TILT_DEGREES === 'number' ? TOPDOWN_TILT_DEGREES : 14);
+    if (!chase && !cockpit) return base;
+    return Math.max(0, Math.min(85, base + (this._cameraTilt || 0)));
+  }
+
+  zoomOffsetForViewMode(viewMode) {
+    if (viewMode === 'cockpit') {
+      return typeof COCKPIT_ZOOM_OFFSET === 'number' ? COCKPIT_ZOOM_OFFSET : 1.65;
+    }
+    if (viewMode === 'chase') {
+      return typeof CHASE_ZOOM_OFFSET === 'number' ? CHASE_ZOOM_OFFSET : 0.55;
+    }
+    return 0;
   }
 
   _ensureTreeLayers() {
@@ -226,7 +394,7 @@ class VectorBasemap {
     const hideIdsPromise = this._loadBasemapHideIds();
     let data;
     try {
-      const response = await fetch('../data/extracts/amsterdam/buildings-colored.geojson');
+      const response = await fetch(this._extractFile('buildings-colored.geojson'));
       if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
       data = await response.json();
     } catch (error) {
@@ -254,7 +422,7 @@ class VectorBasemap {
 
   async _loadBasemapHideIds() {
     try {
-      const response = await fetch('../data/extracts/amsterdam/basemap-hide-ids.json');
+      const response = await fetch(this._extractFile('basemap-hide-ids.json'));
       if (!response.ok) return;
       const payload = await response.json();
       const ids = payload && Array.isArray(payload.encodedIds) ? payload.encodedIds : [];
@@ -541,7 +709,7 @@ class VectorBasemap {
     const runtime = window.CanalRecallBuildingTiles;
     if (!runtime || !runtime.BuildingTileStreamer) return false;
     this._completeCity = new runtime.BuildingTileStreamer(
-      this.map, 'osm-building-appearance', '../data/extracts/amsterdam'
+      this.map, 'osm-building-appearance', this._extractPath || '../data/extracts/amsterdam'
     );
     let available = false;
     try {
@@ -576,7 +744,10 @@ class VectorBasemap {
     this._recreateBuildingSourceWithStableIds();
     this._styleCompleteCity();
     this._completeCity.attach(() => {
-      if (this.map.getLayer('building-3d')) this.map.setLayoutProperty('building-3d', 'visibility', 'none');
+      // A streamed tile becomes the render owner. Keep this state so later
+      // settings synchronisation cannot revive the overlapping basemap copy.
+      this._completeCityHasBuildings = true;
+      this._syncDetailedBuildingLayers();
       // A camera check made before the newly requested z14 tile arrived only
       // saw the previous district's footprints. Re-run the same request after
       // every streamed collection update so a late opaque mass cannot appear
@@ -584,9 +755,10 @@ class VectorBasemap {
       if (this._cameraClearanceRequest) this._clearCameraFromBuildingFootprints(
         this._cameraClearanceRequest.center, this._cameraClearanceRequest.view,
       );
-    }, (features) => {
-      this._syncPyramidalRoofs(features);
-    });
+    }, (features) => this._syncPyramidalRoofs(features));
+    // Loading may already have aimed at the route start before the probe
+    // finished; apply that aim now so tiles stream under the overlay.
+    this._applyPendingAim();
 
     if (this._appearanceAreas.length && this._completeCity.setAppearancePriors) {
       const optional = [
@@ -620,7 +792,6 @@ class VectorBasemap {
         this.map.on('moveend', this._studyResidencyListener);
       }
     }
-
     return true;
   }
 
@@ -872,7 +1043,14 @@ class VectorBasemap {
     // twice, z-fighting into a shimmer.
     if (this._detailedBuildings) this._detailedBuildings.setEnabled(this._detailedBuildingsVisible && !google);
     const detailed = !google && !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
-    for (const id of ['building-3d', 'osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
+    // The streamed complete city owns every building once its first real tile
+    // lands. Never resurrect the basemap copy during a later settings/readiness
+    // sync; before that first tile, keep it as the no-empty-city fallback.
+    const hideBasemap = detailed || google || !!this._completeCityHasBuildings;
+    if (this.map.getLayer('building-3d')) {
+      this.map.setLayoutProperty('building-3d', 'visibility', hideBasemap ? 'none' : 'visible');
+    }
+    for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google) ? 'none' : 'visible');
     }
     // Signature models are the LoD1 replacement for a handful of landmarks.
@@ -956,11 +1134,33 @@ class VectorBasemap {
     );
   }
 
+  setBikeSkin(skinId) {
+    if (!this._playerBike || typeof this._playerBike.setSkin !== 'function') return;
+    this._playerBike.setSkin(skinId);
+  }
+
+  setBikeBabySeat(visible) {
+    if (!this._playerBike || typeof this._playerBike.setBabySeatVisible !== 'function') return;
+    this._playerBike.setBabySeatVisible(visible);
+  }
+
   setPlayerBoat(player, loader, visible) {
     if (!this._playerBoat || !player || !loader) return;
     this._playerBoat.update(
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
       player.steerInput || 0
+    );
+  }
+
+  setPlayerTransit(player, loader, visible, underground = false) {
+    if (!this._playerTransit || !player || !loader) return;
+    if (typeof this._playerTransit.setAltitude === 'function') {
+      // Metro GTFS shapes are ground projections of tunnels — drop the mesh so
+      // it does not sit inside extruded buildings along the corridor.
+      this._playerTransit.setAltitude(underground ? -9 : 0.22);
+    }
+    this._playerTransit.update(
+      this.worldToLngLat(player.x, player.y, loader), player.angle, visible
     );
   }
 
@@ -970,6 +1170,10 @@ class VectorBasemap {
 
   isPlayerBoatReady() {
     return !!(this._playerBoat && this._playerBoat.ready);
+  }
+
+  isPlayerTransitReady() {
+    return !!(this._playerTransit && this._playerTransit.ready);
   }
 
   inspectBuilding(cssX, cssY, canvasRect) {
@@ -994,7 +1198,7 @@ class VectorBasemap {
         const coordinates = poi.geometry && poi.geometry.type === 'Point' ? poi.geometry.coordinates : [lngLat.lng, lngLat.lat];
         poiResult = { id: poi.properties.id, name: poi.properties.name, lngLat: coordinates, poi: true };
       }
-    }
+  }
     const layers = this.map.getStyle().layers.filter(layer => layer.type === 'fill-extrusion' && !layer.id.startsWith('active-landmark')).map(layer => layer.id);
     const feature = this.map.queryRenderedFeatures(pixel, layers.length ? { layers } : undefined)
       .find(candidate => candidate.layer && candidate.layer.type === 'fill-extrusion');
@@ -1140,6 +1344,17 @@ class VectorBasemap {
     this.applyTheme(this.theme);
   }
 
+  _setBasemapOrientationPoisVisible(visible) {
+    if (!this.map || !this.map.getStyle()) return;
+    const pickLayers = window.CanalRecallOrientationPois
+      && window.CanalRecallOrientationPois.basemapOrientationPoiLayerIds;
+    if (!pickLayers) return;
+    const ids = pickLayers(this.map.getStyle().layers || []);
+    for (const id of ids) {
+      try { this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none'); } catch (_) {}
+    }
+  }
+
   _hideLabels() {
     if (!this.map || !this.map.getStyle()) return;
     this._labelsVisible = false;
@@ -1147,6 +1362,9 @@ class VectorBasemap {
       if (layer.type !== 'symbol') continue;
       try { this.map.setLayoutProperty(layer.id, 'visibility', 'none'); } catch (_) {}
     }
+    // Liberty already carries ranked, icon-backed OSM places. Keep that sparse
+    // orientation layer while hiding roads and waterways that can spoil recall.
+    this._setBasemapOrientationPoisVisible(!this._quizQuietMap);
   }
 
   _showLabels() {
@@ -1172,6 +1390,7 @@ class VectorBasemap {
   setQuizQuietMap(quiet) {
     if (!this.map || !this.map.getStyle()) return;
     this._quizQuietMap = !!quiet;
+    this._setBasemapOrientationPoisVisible(!this._quizQuietMap);
     const ids = ['poi-labels', 'brand-poi-labels', 'local-food-labels', 'neighborhood-labels'];
     for (const id of ids) {
       if (!this.map.getLayer(id)) continue;
@@ -1214,16 +1433,23 @@ class VectorBasemap {
     const displayScale = canvas.getBoundingClientRect().width / CANVAS_W;
     const pixelsPerMeter = PIXELS_PER_METER * camera.zoom * displayScale;
     const zoom = Math.log2(Math.cos(lat * Math.PI / 180) * 156543.03392 * pixelsPerMeter);
-    const chase = camera.viewMode === 'chase';
-    const cockpit = camera.viewMode === 'cockpit';
+    const viewMode = camera.viewMode || 'north';
     const bearing = camera.rotation * 180 / Math.PI;
     // Even the flat map gets a few degrees of tilt. It is not enough to make
     // the plan view hard to read, and it is enough for buildings to acquire
     // sides, which is what makes a top-down city look like a place rather than
     // a diagram. The canvas overlay then has to project through MapLibre so it
     // keeps sitting exactly on the basemap.
-    const pitch = cockpit ? 72 : chase ? 58 : TOPDOWN_TILT_DEGREES;
-    const mapZoom = cockpit ? zoom + 0.9 : chase ? zoom + 0.35 : zoom;
+    const targetPitch = this.pitchForViewMode(viewMode);
+    // Ease pitch when entering chase/cockpit so the load-to-race handoff is
+    // not a hard snap, then apply the appearance branch's clearance guard.
+    if (this._pitchSmoothed == null || camera.reducedMotion) this._pitchSmoothed = targetPitch;
+    else {
+      this._pitchSmoothed += (targetPitch - this._pitchSmoothed) * 0.12;
+      if (Math.abs(targetPitch - this._pitchSmoothed) < 0.15) this._pitchSmoothed = targetPitch;
+    }
+    const pitch = this._pitchSmoothed;
+    const mapZoom = zoom + this.zoomOffsetForViewMode(viewMode);
     const previousCheck = this._cameraClearanceCheck;
     const movedMetres = previousCheck ? Math.hypot(
       (lon - previousCheck.center[0]) * metersPerDegreeLng,
@@ -1392,6 +1618,37 @@ class VectorBasemap {
       check();
     });
   }
+  /**
+   * Jump the basemap to a world point and start loading building tiles there.
+   * Call during loading once the route start is known — otherwise the map sits
+   * on Damrak until the first racing frame, and the spawn neighbourhood only
+   * begins downloading after the player can already see the hitch.
+   *
+   * Safe to call before the tile streamer has probed: the aim is remembered
+   * and applied again when `_ensureCompleteCity` finishes attach.
+   */
+  aimAtWorld(worldX, worldY, loader, options = {}) {
+    this._pendingAim = { worldX, worldY, loader, options };
+    this._applyPendingAim();
+  }
+
+  _applyPendingAim() {
+    const pending = this._pendingAim;
+    if (!pending || !this.ready || !this.map) return;
+    const { worldX, worldY, loader, options } = pending;
+    if (!loader || loader._lastCenterLat == null) return;
+    const metersPerDegreeLat = 111320;
+    const metersPerDegreeLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180);
+    const lon = loader._lastCenterLng + (worldX - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER);
+    const lat = loader._lastCenterLat - (worldY - loader._lastOffsetY) / (metersPerDegreeLat * PIXELS_PER_METER);
+    const zoom = Number.isFinite(options.zoom) ? options.zoom : (this.map.getZoom() || 17);
+    const bearing = Number.isFinite(options.bearing) ? options.bearing : 0;
+    const pitch = Number.isFinite(options.pitch) ? options.pitch : TOPDOWN_TILT_DEGREES;
+    this.map.jumpTo({ center: [lon, lat], zoom, bearing, pitch });
+    if (this._completeCity && typeof this._completeCity.followCamera === 'function') {
+      this._completeCity.followCamera();
+    }
+  }
 
   projectWorld(worldX, worldY, loader, canvas) {
     const metersPerDegreeLat = 111320;
@@ -1433,7 +1690,7 @@ class VectorBasemap {
     try {
       if (palette) {
         for (const layer of this.map.getStyle().layers || []) {
-          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('active-street') || layer.id.startsWith('learned-street') || layer.id.startsWith('navigation-route') || layer.id.startsWith('osm-colored-building') || layer.id.startsWith('tree-') || layer.id.startsWith('poi-') || layer.id.startsWith('neighborhood-')) continue;
+          if (layer.id.startsWith('active-landmark') || layer.id.startsWith('active-street') || layer.id.startsWith('learned-street') || layer.id.startsWith('navigation-route') || layer.id.startsWith('transit-network') || layer.id.startsWith('osm-colored-building') || layer.id.startsWith('tree-') || layer.id.startsWith('poi-') || layer.id.startsWith('neighborhood-')) continue;
           const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
           const isWater = /water|ocean|river|canal/.test(identity);
           const isRoad = /road|street|transportation|bridge|tunnel|path/.test(identity);

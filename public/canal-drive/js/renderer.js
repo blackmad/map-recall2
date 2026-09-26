@@ -336,7 +336,7 @@ class Renderer {
     ctx.stroke();
 
     if (image) {
-      const ix = x + 10, iy = y + 10;
+      const ix = x + 12, iy = y + 12;
       ctx.save();
       roundRect(ctx, ix, iy, card.imageWidth, card.imageHeight, 6);
       ctx.clip();
@@ -346,17 +346,19 @@ class Renderer {
       ctx.restore();
     }
 
-    // Light ink on the navy plate. The kinds stay visually distinct — the
-    // category and the kind of fact are different axes and must not read as one
-    // label — but only the category gets the gold; the rest are white tints.
+    // Ink on the paper plate. The kinds stay visually distinct — the category
+    // and the kind of fact are different axes and must not read as one label —
+    // but only the category and "more" get copper; the rest are ink tints.
     const badgeColors = {
-      category: ['rgba(196,163,90,.22)', '#e2c98a'],
-      lang: ['rgba(255,255,255,.12)', 'rgba(255,255,255,.78)'],
-      article: ['rgba(255,255,255,.12)', 'rgba(255,255,255,.78)'],
-      more: ['rgba(208,138,74,.22)', '#f0b98a'],
-      fact: ['rgba(255,255,255,.12)', 'rgba(255,255,255,.78)'],
+      category: ['rgba(180,104,44,.14)', '#8a4a18'],
+      lang: ['rgba(31,28,23,.07)', '#5f584d'],
+      article: ['rgba(31,28,23,.07)', '#5f584d'],
+      more: ['rgba(180,104,44,.14)', '#8a4a18'],
+      fact: ['rgba(31,28,23,.07)', '#5f584d'],
     };
-    let textY = y + 22;
+    // Keep in step with `measureLandmarkCard` height: top air, badge row, name,
+    // body line step, then bottom air so the last glyph is not flush to the plate.
+    let textY = y + 18;
     ctx.font = `700 9px ${surface.fontMono}`;
     ctx.textAlign = 'left';
     for (const badge of card.badges) {
@@ -367,18 +369,18 @@ class Renderer {
       ctx.fillStyle = ink;
       ctx.fillText(badge.label, x + badge.x + 5, textY);
     }
-    if (card.badges.length) textY += 17;
+    if (card.badges.length) textY += 18;
 
     ctx.fillStyle = surface.ink;
     ctx.font = `800 16px ${surface.fontPlaque}`;
     ctx.fillText(card.displayName.toUpperCase(), x + card.textLeft, textY);
-    textY += 18;
+    textY += 20;
 
     ctx.fillStyle = surface.inkMuted;
     ctx.font = `500 11px ${surface.fontUi}`;
     for (const line of card.lines) {
       ctx.fillText(line, x + card.textLeft, textY);
-      textY += 14;
+      textY += 15;
     }
   }
 
@@ -396,10 +398,10 @@ class Renderer {
         image.naturalWidth, image.naturalHeight, photoW, card.height);
       ctx.drawImage(image, crop.sx, crop.sy, crop.sw, crop.sh, x, y, photoW, card.height);
       // Fade inside the photo into the cream card — never past the photo edge,
-      // and never into the leftover navy that used to sit under the name.
+      // and never into a leftover band under the name.
       const fade = 48;
       const shade = ctx.createLinearGradient(x + photoW - fade, 0, x + photoW, 0);
-      shade.addColorStop(0, 'rgba(7,20,48,0)');
+      shade.addColorStop(0, 'rgba(251,248,242,0)');
       shade.addColorStop(1, window.CanalRecallUi.hudSurface.cardSolid);
       ctx.fillStyle = shade;
       ctx.fillRect(x + photoW - fade, y, fade, card.height);

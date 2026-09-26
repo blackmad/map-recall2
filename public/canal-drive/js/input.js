@@ -9,25 +9,24 @@ class InputManager {
     this._touchActive = false;
     this._viewport = null;
     this._dpad = null;
-    this._padActive = false;
-    this._touches = new Map();
+    this._stickTouch = null;
     // The hint is a one-line "steer with the pad" nudge now, not a diagram of
     // an invisible scheme; the pad itself is the documentation.
     this._showTouchHint = this._isMobile;
     this._touchHintTimer = 6; // seconds to show hint
     this._suppressTapEnter = false;
 
-    // Keyboard input
+    // Keyboard input. Form fields keep their own shortcuts while they are the
+    // real focus target; a leftover focus on a hidden quiz input or a settings
+    // gear button must not swallow Enter/Esc on the finish card.
     window.addEventListener('keydown', e => {
-      const target = e.target;
-      if (target instanceof HTMLElement && (target.matches('input, textarea, select, button') || target.isContentEditable)) return;
+      if (this._shouldIgnoreKeyboardTarget(e.target)) return;
       if (!this.keys[e.code]) this.justPressed[e.code] = true;
       this.keys[e.code] = true;
-      if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','Enter','Minus','Equal','NumpadAdd','NumpadSubtract','Tab'].includes(e.code)) e.preventDefault();
+      if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','Enter','Escape','Minus','Equal','NumpadAdd','NumpadSubtract','Tab'].includes(e.code)) e.preventDefault();
     });
     window.addEventListener('keyup', e => {
-      const target = e.target;
-      if (target instanceof HTMLElement && (target.matches('input, textarea, select, button') || target.isContentEditable)) return;
+      if (this._shouldIgnoreKeyboardTarget(e.target)) return;
       this.keys[e.code] = false;
     });
 
@@ -37,14 +36,34 @@ class InputManager {
     }
   }
 
+  /**
+   * True when the event target is an editable field that should keep the key.
+   * Buttons are excluded: focus often sticks on the settings gear or a quiz
+   * choice after the panel closes, and Enter/Esc must still drive the game.
+   */
+  _shouldIgnoreKeyboardTarget(target) {
+    if (!(target instanceof HTMLElement)) return false;
+    if (target.isContentEditable) return true;
+    if (!target.matches('input, textarea, select')) return false;
+    // A focused field inside a display:none prompt still receives events;
+    // treat that as abandoned focus so the game can hear Enter/Esc again.
+    let node = target;
+    while (node) {
+      const style = window.getComputedStyle(node);
+      if (style.display === 'none' || style.visibility === 'hidden') return false;
+      node = node.parentElement;
+    }
+    return true;
+  }
+
   /** Called by Game._resize: the pad's geometry follows the logical canvas. */
   setViewport(viewport) {
     this._viewport = viewport;
     this._dpad = window.CanalRecallUi.dpadLayout(viewport);
   }
 
-  /** The pad rectangle, for the renderer and for the camera-pan gesture, which
-   *  must not steal touches that belong to the controls. */
+  /** The stick's activation zone, for the renderer and for the camera-pan
+   *  gesture, which must not steal touches that belong to the controls. */
   get dpad() { return this._dpad || null; }
 
   /** Logical canvas coordinates for a touch. The canvas is CSS-scaled, so
@@ -58,41 +77,26 @@ class InputManager {
     };
   }
 
-  // Driving used to be an invisible gesture: the left half of the screen
-  // steered and applied throttle, the right half was gas above and brake
-  // below. It could not be discovered, it forced the throttle on whenever you
-  // steered, and it covered the same pixels as the camera-pan drag, so panning
-  // the map also drove the boat.
-  //
-  // Now a drawn d-pad owns its own rectangle and nothing else. Touches outside
-  // it are left alone for the pan gesture.
+  // Driving used to be an invisible gesture, then a binary 3×3 d-pad. The pad
+  // made due east/west unreachable in absolute mode (auto-throttle turned
+  // "right" into right+up) and dropped the thumb the moment it slid off the
+  // edge. Now the pad's rectangle is only the *activation zone* of an analog
+  // stick: the origin floats under the thumb, and the touch stays captured
+  // until it lifts, wherever it wanders. Touches that start outside the zone
+  // are left alone for the pan gesture.
   _setupTouch() {
     const canvas = document.getElementById('gameCanvas');
     if (!canvas) return;
 
-    this._touches = new Map();
-
-    const processTouches = () => {
-      const ui = window.CanalRecallUi;
-      const points = [...this._touches.values()];
-      const pressed = ui.dpadKeysAt(points, this._dpad);
-      // Auto-throttle: the vehicle rolls forward unless the player brakes, so
-      // a learner spends their attention on the city rather than on a pedal.
-      const keys = this._padHasFocus(points) ? ui.applyAutoThrottle(pressed) : ui.noKeys();
-      this.keys['ArrowUp'] = keys.ArrowUp;
-      this.keys['ArrowDown'] = keys.ArrowDown;
-      this.keys['ArrowLeft'] = keys.ArrowLeft;
-      this.keys['ArrowRight'] = keys.ArrowRight;
-      this._padActive = ui.isInsideDpad(points[0] || { x: -1, y: -1 }, this._dpad)
-        || points.some(point => ui.isInsideDpad(point, this._dpad));
-    };
+    this._stickTouch = null; // { id, origin, point }
 
     canvas.addEventListener('touchstart', (e) => {
       let claimed = false;
       for (const touch of e.changedTouches) {
+        if (this._stickTouch) break;
         const point = this._canvasPoint(touch, canvas);
         if (window.CanalRecallUi.isInsideDpad(point, this._dpad)) {
-          this._touches.set(touch.identifier, point);
+          this._stickTouch = { id: touch.identifier, origin: point, point };
           claimed = true;
         }
       }
@@ -100,31 +104,29 @@ class InputManager {
       // pan and pinch.
       if (claimed) e.preventDefault();
       this._touchActive = true;
-      this._showTouchHint = false;
+      if (claimed) this._showTouchHint = false;
       // A tap restarts the finished screen. It must not fire while driving,
       // where it used to press Enter on every single touch.
       if (!claimed && !this._suppressTapEnter) {
         this.justPressed['Enter'] = true;
         this.keys['Enter'] = true;
       }
-      processTouches();
     }, { passive: false });
 
     canvas.addEventListener('touchmove', (e) => {
-      let claimed = false;
+      if (!this._stickTouch) return;
       for (const touch of e.changedTouches) {
-        if (!this._touches.has(touch.identifier)) continue;
-        this._touches.set(touch.identifier, this._canvasPoint(touch, canvas));
-        claimed = true;
+        if (touch.identifier !== this._stickTouch.id) continue;
+        this._stickTouch.point = this._canvasPoint(touch, canvas);
+        e.preventDefault();
       }
-      if (claimed) e.preventDefault();
-      processTouches();
     }, { passive: false });
 
     const release = (e) => {
-      for (const touch of e.changedTouches) this._touches.delete(touch.identifier);
-      if (this._touches.size === 0) this._touchActive = false;
-      processTouches();
+      for (const touch of e.changedTouches) {
+        if (this._stickTouch && touch.identifier === this._stickTouch.id) this._stickTouch = null;
+      }
+      if (e.touches.length === 0) this._touchActive = false;
       this.keys['Enter'] = false;
     };
     canvas.addEventListener('touchend', release, { passive: false });
@@ -134,14 +136,31 @@ class InputManager {
   /** A tap on the map restarts a finished route; while driving it must not. */
   setTapRestartEnabled(enabled) { this._suppressTapEnter = !enabled; }
 
-  /** True while at least one touch is on the pad. */
-  _padHasFocus(points) {
-    return points.some(point => window.CanalRecallUi.isInsideDpad(point, this._dpad));
+  /** The touch id the stick owns, so the pan gesture can ignore it even after
+   *  the thumb has wandered out of the zone. */
+  get stickTouchId() { return this._stickTouch ? this._stickTouch.id : null; }
+
+  /** True while a thumb is on the stick (even inside the dead zone). */
+  get stickHeld() { return !!this._stickTouch; }
+
+  /** Screen-space deflection, or null when idle or inside the dead zone. */
+  get stick() {
+    if (!this._stickTouch || !this._dpad) return null;
+    const ui = window.CanalRecallUi;
+    return ui.stickVector(this._stickTouch.origin, this._stickTouch.point, ui.stickRadius(this._dpad));
   }
 
-  /** Which directions are lit, for drawing the pad. */
-  get padKeys() {
-    return window.CanalRecallUi.dpadKeysAt([...(this._touches?.values() ?? [])], this._dpad);
+  /** What the HUD draws: the floating origin and thumb, or null when idle. */
+  get stickView() {
+    if (!this._stickTouch || !this._dpad) return null;
+    const ui = window.CanalRecallUi;
+    const radius = ui.stickRadius(this._dpad);
+    return {
+      origin: this._stickTouch.origin,
+      point: this._stickTouch.point,
+      radius,
+      vector: ui.stickVector(this._stickTouch.origin, this._stickTouch.point, radius),
+    };
   }
 
   isDown(code) { return !!this.keys[code]; }

@@ -530,6 +530,17 @@ check('an opening sentence frames trivia from the same article', () => {
   assert.equal(chosen.text.detail, `${openingSentence(opening)} ${trivia}`);
 });
 
+check('bridge no. is not treated as the end of the opening sentence', () => {
+  const lede = 'The Nieuwe-Wercksbrug (bridge no. 221) is a bridge in Amsterdam-Centrum.';
+  assert.equal(
+    openingSentence(lede),
+    'The Nieuwe-Wercksbrug (bridge no. 221) is a bridge in Amsterdam-Centrum.',
+  );
+  assert.ok(
+    openingSentence('Named after St. Antonius, the chapel stood nearby until 1890.').startsWith('Named after St. Antonius'),
+  );
+});
+
 check('a near-duplicate opening is not prepended twice', () => {
   const text = 'The Magere Brug is a bridge over the Amstel.';
   assert.equal(composeFactWithOpening(text, text).detail, text);

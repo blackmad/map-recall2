@@ -37,6 +37,34 @@ export const enamelTheme = {
 } as const;
 
 /**
+ * Daylight paper — Canal Recall's surfaces since 2026-09-26.
+ *
+ * The all-cobalt/navy chrome read as heavy blue-on-blue over a mostly-water
+ * map. Canal now runs on warm paper with near-black ink and exactly one accent:
+ * copper, spent on action and selection. Cobalt enamel survives only where it
+ * is literal — the title plaque, echoing Amsterdam's real street signs.
+ * Map Quest still uses the cobalt tokens above; it has not been migrated.
+ */
+export const daylightTheme = {
+  paper: '#f4efe5',
+  paperRaised: '#fbf8f2',
+  paperSunk: '#ebe4d6',
+  ink: '#1f1c17',
+  /** 6.3:1 on paper — secondary copy. */
+  inkMuted: '#5f584d',
+  line: 'rgba(31,28,23,0.14)',
+  lineStrong: 'rgba(31,28,23,0.26)',
+  fill: 'rgba(31,28,23,0.045)',
+  fillHover: 'rgba(31,28,23,0.085)',
+  accent: '#b4682c',
+  /** Copper dark enough for text on paper (≈6:1). */
+  accentInk: '#8a4a18',
+  accentSoft: 'rgba(180,104,44,0.13)',
+  scrim: 'rgba(28,24,18,0.38)',
+  danger: '#a8321f',
+} as const;
+
+/**
  * @deprecated Prefer `enamelTheme`. Kept so older callers (`moss`, `terracotta`,
  * `paper`) keep compiling; values mirror enamelTheme.
  */
@@ -60,30 +88,33 @@ export type EnamelTheme = typeof enamelTheme;
 /** Card fills carry alpha so the map stays legible underneath. A HUD card that
  *  is fully opaque hides the corridor it is supposed to be annotating.
  *
- *  The in-drive HUD is deep navy, not cobalt: the basemap is mostly water and
- *  cobalt cards over blue canals read as blue-on-blue. Cobalt stays on the
- *  surfaces you stop at (setup, prompt, panels); the readouts over the map get
- *  the dark plate, white type and one gold accent. */
+ *  Daylight paper plates with near-black ink (2026-09-26). The earlier navy
+ *  plates avoided cobalt-on-canal, but the whole drive still read as a dark
+ *  blue skin over a light map. Paper sits naturally on the CARTO basemap;
+ *  copper is the single accent (distance, streak, selected), and the finish
+ *  arrow stays copper so it reads as "go there". */
 export const hudSurface = {
   /** Always-on readouts sitting directly on the map. */
-  card: 'rgba(7,20,48,0.84)',
+  card: 'rgba(251,248,242,0.9)',
   /** Cards you stop and read: the trivia card, the postcard. */
-  cardSolid: 'rgba(7,20,48,0.94)',
+  cardSolid: 'rgba(251,248,242,0.97)',
   /** Hairline border. */
-  border: 'rgba(255,255,255,0.22)',
-  borderStrong: 'rgba(196,163,90,0.65)',
+  border: 'rgba(31,28,23,0.14)',
+  borderStrong: 'rgba(180,104,44,0.6)',
   /** Drop shadow under a card that floats over the map. */
-  shadow: 'rgba(4,12,28,0.45)',
-  /** The d-pad, which sits over the map and must not hide it. */
-  control: 'rgba(7,20,48,0.72)',
-  controlPressed: 'rgba(196,163,90,0.92)',
-  controlInk: 'rgba(255,255,255,0.88)',
-  /** Type on the navy plate. */
-  ink: enamelTheme.ink,
-  inkMuted: 'rgba(255,255,255,0.68)',
-  accent: enamelTheme.rivet,
-  /** Only the finish arrow is copper, so it reads as "go there". */
-  arrow: '#d08a4a',
+  shadow: 'rgba(31,28,23,0.22)',
+  /** The thumbstick, which sits over the map and must not hide it. */
+  control: 'rgba(251,248,242,0.72)',
+  controlPressed: daylightTheme.accent,
+  controlInk: 'rgba(31,28,23,0.62)',
+  /** Thumbstick knob at rest. */
+  controlKnob: 'rgba(31,28,23,0.2)',
+  /** Type on the paper plate. */
+  ink: daylightTheme.ink,
+  inkMuted: daylightTheme.inkMuted,
+  accent: daylightTheme.accentInk,
+  /** Only the finish arrow is copper-bright, so it reads as "go there". */
+  arrow: daylightTheme.accent,
   fontPlaque: enamelTheme.fontPlaque,
   fontMono: 'ui-monospace, "JetBrains Mono", Menlo, monospace',
   fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif',
@@ -123,6 +154,22 @@ export function enamelCssVariables(): Record<string, string> {
     '--ochre': enamelTheme.rivet,
     '--accent': enamelTheme.copper,
     '--primary': enamelTheme.copper,
+    /* Daylight paper (Canal Recall). Canal's own :root maps its semantic
+       tokens onto these; Map Quest ignores them. */
+    '--day-paper': daylightTheme.paper,
+    '--day-paper-raised': daylightTheme.paperRaised,
+    '--day-paper-sunk': daylightTheme.paperSunk,
+    '--day-ink': daylightTheme.ink,
+    '--day-ink-muted': daylightTheme.inkMuted,
+    '--day-line': daylightTheme.line,
+    '--day-line-strong': daylightTheme.lineStrong,
+    '--day-fill': daylightTheme.fill,
+    '--day-fill-hover': daylightTheme.fillHover,
+    '--day-accent': daylightTheme.accent,
+    '--day-accent-ink': daylightTheme.accentInk,
+    '--day-accent-soft': daylightTheme.accentSoft,
+    '--day-scrim': daylightTheme.scrim,
+    '--day-danger': daylightTheme.danger,
   };
 }
 

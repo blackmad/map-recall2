@@ -1,7 +1,10 @@
 name: Deploy to GitHub Pages
 
+# Ship only after Canal CI is green on main. Manual runs still work.
 on:
-  push:
+  workflow_run:
+    workflows: ["Canal CI"]
+    types: [completed]
     branches: [main]
   workflow_dispatch:
 
@@ -16,9 +19,15 @@ concurrency:
 
 jobs:
   build:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -41,6 +50,10 @@ jobs:
           path: dist
 
   deploy:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push')
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

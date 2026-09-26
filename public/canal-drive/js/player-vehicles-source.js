@@ -2,8 +2,22 @@
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 
 const assetUrl = path => new URL(path, window.location.href).href;
-const BIKE_MODEL_URL = assetUrl('./carbon-frame-bike-runtime.glb');
+
+/** Keep in sync with `src/canalRecall/game/bikeSkins.ts`. */
+const BIKE_SKINS = {
+  omafiets: { id: 'omafiets', file: 'omafiets-runtime.glb', widthScale: 1.35, motion: true, babySeat: true, label: 'Omafiets' },
+  pink: { id: 'pink', file: 'pink-city-bicycle-runtime.glb', widthScale: 1.2, motion: true, babySeat: false, label: 'City bike' },
+  swapfiets: { id: 'swapfiets', file: 'swapfiets-runtime.glb', widthScale: 1.3, motion: true, babySeat: false, label: 'Swapfiets' },
+};
+const DEFAULT_BIKE_SKIN = 'omafiets';
+
+function bikeSkin(id) {
+  return BIKE_SKINS[id] || BIKE_SKINS[DEFAULT_BIKE_SKIN];
+}
+
 const BOAT_MODEL_URL = assetUrl('./canal-boat-runtime.glb');
+/** Demo chase mesh for transit mode — GVB metro 51 lookalike from mini-amsterdam-3d. */
+const TRANSIT_MODEL_URL = assetUrl('./gvb-metro-51-runtime.glb');
 
 /**
  * Chase mode sees the world from tens of metres up. A literal-size bicycle
@@ -11,25 +25,27 @@ const BOAT_MODEL_URL = assetUrl('./canal-boat-runtime.glb');
  * piece rather than reverting to a screen-space icon. The boat is a far bigger
  * object seen over open water, so it needs much less exaggeration.
  */
-const BIKE_GAME_SCALE = 3.6;
+const BIKE_GAME_SCALE = 4.5;
 const BOAT_GAME_SCALE = 1.5;
+/** Metro car is ~6 m long; exaggerate more than boat so it reads cartoony at chase altitude. */
+const TRANSIT_GAME_SCALE = 3.4;
 
 /**
- * Measured off each model, not assumed. The bicycle's named front wheel is on
- * its native -X. The canal sloop's bow is also on -X — its transom and motor
- * bracket are the squared-off +X end — so unlike the motor boat it replaced,
- * which pointed the other way, it takes the same offset as the bicycle. This is
- * exactly the value `boat-model.spec.ts` pins, because a boat sailing
- * stern-first looks very nearly right in a still image.
+ * Measured off each model, not assumed. The authored omafiets points its blue
+ * front tyre along native +X. The canal sloop's
+ * bow is on -X — its transom and motor bracket are the squared-off +X end — so
+ * it still takes Math.PI. That boat value is exactly what `boat-model.spec.ts`
+ * pins, because a boat sailing stern-first looks very nearly right in a still.
  */
-const BIKE_HEADING_OFFSET = Math.PI;
+const BIKE_HEADING_OFFSET = 0;
 const BOAT_HEADING_OFFSET = Math.PI;
+/** Metro-51 source is long on +X; same convention as the bike. Flip to Math.PI if playtests show it reverse. */
+const TRANSIT_HEADING_OFFSET = 0;
 
 /** Radians of bar travel at full lock — a bicycle, not a shopping trolley. */
 const MAX_STEER = 0.42;
-// Measured by aligning the named front and rear wheel axles in model space.
-// The source steering pivot is authored mid-turn around its own local Z axis.
-const AUTHORED_STEER_OFFSET = 2.43976;
+// Omafiets is authored straight: `Lenker` is upright (+Y), wheel axles are +Z.
+const AUTHORED_STEER_OFFSET = 0;
 const STEER_EASING = 0.18;
 const WHEEL_RADIUS_M = 0.35;
 /** The world scale the game uses; kept local so the bundle stays standalone. */
@@ -62,9 +78,9 @@ function paintBoatMesh(geometry, hull, seat, gunwale) {
   geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 }
 
-// Reused so a per-frame pose costs no allocation.
-const STEER_AXIS = new THREE.Vector3(0, 0, 1);
-const WHEEL_AXIS = new THREE.Vector3(0, 1, 0);
+// Y-up omafiets: steer about vertical (+Y), roll wheels about the axle (+Z).
+const STEER_AXIS = new THREE.Vector3(0, 1, 0);
+const WHEEL_AXIS = new THREE.Vector3(0, 0, 1);
 const SCRATCH_QUAT = new THREE.Quaternion();
 
 /**
@@ -83,8 +99,16 @@ class Vehicle3D {
     this.lngLat = null;
     this.angle = 0;
     this.parts = {};
+    this._scene = null;
+    this._modelRoot = null;
+    this.altitudeM = 0.22;
     this.layer = this._makeLayer();
     map.addLayer(this.layer);
+  }
+
+  setAltitude(metres) {
+    const value = Number(metres);
+    this.altitudeM = Number.isFinite(value) ? value : 0.22;
   }
 
   update(lngLat, angle, visible) {
@@ -100,70 +124,113 @@ class Vehicle3D {
   /** Subclasses claim named nodes here, once the model has loaded. */
   _bind() {}
 
+  _mountGltf(gltf) {
+    const { gameScale, normaliseTo, widthScale = 1 } = this.options;
+    const imported = gltf.scene;
+    const bounds = new THREE.Box3().setFromObject(imported);
+    const size = bounds.getSize(new THREE.Vector3());
+    const uniform = normaliseTo / Math.max(size.x, size.z, 0.001);
+    imported.scale.set(uniform, uniform, uniform * widthScale);
+    imported.updateMatrixWorld(true);
+    const scaledBounds = new THREE.Box3().setFromObject(imported);
+    const scaledCenter = scaledBounds.getCenter(new THREE.Vector3());
+    imported.position.set(-scaledCenter.x, -scaledBounds.min.y, -scaledCenter.z);
+
+    const presentationMeshes = [];
+    imported.traverse(child => {
+      const materialNames = (Array.isArray(child.material) ? child.material : [child.material])
+        .filter(Boolean).map(material => material.name || '').join(' ');
+      if (/shadow/i.test(`${child.name || ''} ${materialNames}`)) {
+        presentationMeshes.push(child);
+        return;
+      }
+      if (!child.isMesh) return;
+      child.castShadow = false;
+      child.receiveShadow = false;
+    });
+    for (const child of presentationMeshes) child.parent?.remove(child);
+
+    imported.traverse(child => {
+      if (!child.isMesh || !child.material) return;
+      const mats = Array.isArray(child.material) ? child.material : [child.material];
+      for (const mat of mats) {
+        if (!mat) continue;
+        mat.side = THREE.DoubleSide;
+        mat.transparent = false;
+        mat.depthWrite = true;
+      }
+    });
+
+    if (this._modelRoot && this._scene) {
+      this._scene.remove(this._modelRoot);
+    }
+    const model = new THREE.Group();
+    model.add(imported);
+    this._bind(imported);
+    model.scale.setScalar(gameScale);
+    this._scene.add(model);
+    this._modelRoot = model;
+    this.model = model;
+    this.ready = true;
+    this.map.triggerRepaint();
+  }
+
+  _loadModel(url) {
+    if (!this._scene) return;
+    this.ready = false;
+    const loader = new GLTFLoader();
+    if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
+    const { label } = this.options;
+    loader.load(
+      url,
+      gltf => this._mountGltf(gltf),
+      undefined,
+      error => console.warn(`3D ${label} unavailable; retaining canvas marker.`, error),
+    );
+  }
+
   _makeLayer() {
     const owner = this;
-    const { id, modelUrl, gameScale, headingOffset, normaliseTo, label } = this.options;
-    let camera, scene, renderer, model;
+    const { id, modelUrl, headingOffset, label } = this.options;
+    let camera, renderer, occlusionMaterial;
     return {
       id,
       type: 'custom',
       renderingMode: '3d',
       onAdd(map, gl) {
         camera = new THREE.Camera();
-        scene = new THREE.Scene();
-        scene.add(new THREE.HemisphereLight(0xffffff, 0x59636a, 3.2));
+        owner._scene = new THREE.Scene();
+        owner._scene.add(new THREE.HemisphereLight(0xffffff, 0x59636a, 3.2));
         const sun = new THREE.DirectionalLight(0xffffff, 4.2);
         sun.position.set(-3, -4, 8);
-        scene.add(sun);
+        owner._scene.add(sun);
+        if (owner.options.occlusionColor != null) {
+          // A second depth pass paints only model fragments that failed the
+          // normal pass because nearer map geometry covered them. The bike
+          // stays depth-correct in the open, while a building turns it into a
+          // restrained cartoon x-ray instead of making the whole city glassy.
+          occlusionMaterial = new THREE.MeshBasicMaterial({
+            color: owner.options.occlusionColor,
+            opacity: 0.82,
+            transparent: true,
+            depthTest: true,
+            depthWrite: false,
+            depthFunc: THREE.GreaterDepth,
+            side: THREE.DoubleSide,
+            toneMapped: false,
+          });
+        }
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
-
-        const loader = new GLTFLoader();
-        // The vehicle GLBs are EXT_meshopt_compression. Without the decoder the
-        // load fails outright and the 3D vehicle silently never appears — the
-        // failure the steering and boat specs catch.
-        if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
-        loader.load(modelUrl, (gltf) => {
-          const imported = gltf.scene;
-          const bounds = new THREE.Box3().setFromObject(imported);
-          const size = bounds.getSize(new THREE.Vector3());
-          imported.scale.setScalar(normaliseTo / Math.max(size.x, size.z, 0.001));
-          imported.updateMatrixWorld(true);
-          const scaledBounds = new THREE.Box3().setFromObject(imported);
-          const scaledCenter = scaledBounds.getCenter(new THREE.Vector3());
-          // Centre horizontally and sit the model on the ground plane.
-          imported.position.set(-scaledCenter.x, -scaledBounds.min.y, -scaledCenter.z);
-
-          // Baked shadow quads are presentation for a lit studio render; here
-          // they read as a dark slab following the vehicle around.
-          const presentationMeshes = [];
-          imported.traverse(child => {
-            const materialNames = (Array.isArray(child.material) ? child.material : [child.material])
-              .filter(Boolean).map(material => material.name || '').join(' ');
-            if (/shadow/i.test(`${child.name || ''} ${materialNames}`)) {
-              presentationMeshes.push(child);
-              return;
-            }
-            if (!child.isMesh) return;
-            child.castShadow = false;
-            child.receiveShadow = false;
-          });
-          for (const child of presentationMeshes) child.parent?.remove(child);
-
-          model = new THREE.Group();
-          model.add(imported);
-          owner._bind(imported);
-          model.scale.setScalar(gameScale);
-          scene.add(model);
-          owner.model = model;
-          owner.ready = true;
-          map.triggerRepaint();
-        }, undefined, error => console.warn(`3D ${label} unavailable; retaining canvas marker.`, error));
+        owner._loadModel(modelUrl);
       },
       render(_gl, args) {
-        if (!owner.ready || !owner.visible || !owner.lngLat || !model) return;
-        owner._pose(model);
-        const coordinate = owner.maplibregl.MercatorCoordinate.fromLngLat(owner.lngLat, 0.22);
+        if (!owner.ready || !owner.visible || !owner.lngLat || !owner._modelRoot) return;
+        owner._pose(owner._modelRoot);
+        const coordinate = owner.maplibregl.MercatorCoordinate.fromLngLat(
+          owner.lngLat,
+          Number.isFinite(owner.altitudeM) ? owner.altitudeM : 0.22,
+        );
         const units = coordinate.meterInMercatorCoordinateUnits();
         const transform = new THREE.Matrix4()
           .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
@@ -172,7 +239,12 @@ class Vehicle3D {
           .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
         camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(transform);
         renderer.resetState();
-        renderer.render(scene, camera);
+        renderer.render(owner._scene, camera);
+        if (occlusionMaterial) {
+          owner._scene.overrideMaterial = occlusionMaterial;
+          renderer.render(owner._scene, camera);
+          owner._scene.overrideMaterial = null;
+        }
         owner.map.triggerRepaint();
       },
     };
@@ -180,44 +252,81 @@ class Vehicle3D {
 }
 
 export class PlayerBike3D extends Vehicle3D {
-  constructor(map, maplibregl) {
+  constructor(map, maplibregl, skinId = DEFAULT_BIKE_SKIN) {
+    const skin = bikeSkin(skinId);
     super(map, maplibregl, {
-      id: 'player-bike-3d', modelUrl: BIKE_MODEL_URL, label: 'bicycle model',
-      gameScale: BIKE_GAME_SCALE, headingOffset: BIKE_HEADING_OFFSET, normaliseTo: 2.15,
+      id: 'player-bike-3d',
+      modelUrl: assetUrl(`./${skin.file}`),
+      label: `bicycle (${skin.label})`,
+      gameScale: BIKE_GAME_SCALE,
+      headingOffset: BIKE_HEADING_OFFSET,
+      normaliseTo: 2.15,
+      widthScale: skin.widthScale,
+      occlusionColor: 0xffd21f,
     });
+    this.skinId = skin.id || DEFAULT_BIKE_SKIN;
     this.steerAngle = 0;
     this.wheelSpin = 0;
+    this.babySeatVisible = false;
   }
 
-  // The asset was authored mid-turn, so the front wheel sat visibly cocked
-  // against the frame and never moved. Rather than zero it, give it something
-  // to do: `Lenker` carries the whole front assembly (fork, wheel, bars), so
-  // steering is that node's rotation, and both wheels are discs whose thin
-  // local axis is Y, so rolling is a spin about their own Y.
+  /** Swap chase bicycle GLB at runtime (preferences bikeSkin). */
+  setSkin(skinId) {
+    const next = typeof skinId === 'string' ? skinId : DEFAULT_BIKE_SKIN;
+    if (next === this.skinId) return;
+    const skin = bikeSkin(next);
+    this.skinId = skin.id || DEFAULT_BIKE_SKIN;
+    this.options.modelUrl = assetUrl(`./${skin.file}`);
+    this.options.widthScale = skin.widthScale;
+    this.options.label = `bicycle (${skin.label})`;
+    this.parts = {};
+    this._loadModel(this.options.modelUrl);
+  }
+
+  /** Show/hide named `BabySeat` when the active skin includes one. */
+  setBabySeatVisible(visible) {
+    this.babySeatVisible = !!visible;
+    this._applyBabySeatVisibility();
+  }
+
+  _applyBabySeatVisibility() {
+    const seat = this.parts && this.parts.babySeat;
+    if (!seat) return;
+    const skin = bikeSkin(this.skinId);
+    seat.visible = !!(skin.babySeat && this.babySeatVisible);
+  }
+
+  // Named `Lenker` / `RadVorn` / `RadHinten` empties. Missing parts must not
+  // throw — chase mode still needs the grounded bicycle if a rebuild drops a node.
   _bind(imported) {
     this.parts = {
       steer: imported.getObjectByName('Lenker') || null,
       frontWheel: imported.getObjectByName('RadVorn') || null,
       rearWheel: imported.getObjectByName('RadHinten') || null,
+      babySeat: imported.getObjectByName('BabySeat') || null,
     };
     for (const part of Object.values(this.parts)) {
-      if (part) part.userData.restQuaternion = part.quaternion.clone();
+      if (part && part.quaternion) part.userData.restQuaternion = part.quaternion.clone();
     }
-    if (this.parts.steer) {
+    if (this.parts.steer && AUTHORED_STEER_OFFSET) {
       this.parts.steer.userData.restQuaternion
         .multiply(SCRATCH_QUAT.setFromAxisAngle(STEER_AXIS, AUTHORED_STEER_OFFSET));
     }
+    this._applyBabySeatVisibility();
   }
 
   update(lngLat, angle, visible, steerInput = 0, distancePx = 0) {
     super.update(lngLat, angle, visible);
-    // Ease toward the held direction so the bars settle instead of snapping;
-    // the rider is not a servo.
-    const target = Math.max(-1, Math.min(1, steerInput || 0)) * MAX_STEER;
+    const skin = bikeSkin(this.skinId);
+    const input = skin.motion ? steerInput : 0;
+    // Keyboard/right-pad: +1 = turn right. With the bike facing +X and steer
+    // about +Y, a positive angle yaws the fork toward +Z (the bike's left).
+    // Negate so the bars and front wheel follow the turn the rider asked for.
+    const target = -Math.max(-1, Math.min(1, input || 0)) * MAX_STEER;
     this.steerAngle += (target - this.steerAngle) * STEER_EASING;
-    // Roll the wheels by the distance actually travelled, so they stop when the
-    // bike stops and never look like they are driving the movement.
-    this.wheelSpin = (distancePx || 0) / (PIXELS_PER_METER_FALLBACK * WHEEL_RADIUS_M);
+    this.wheelSpin = skin.motion
+      ? (distancePx || 0) / (PIXELS_PER_METER_FALLBACK * WHEEL_RADIUS_M)
+      : 0;
   }
 
   _pose() {
@@ -276,5 +385,22 @@ export class PlayerBoat3D extends Vehicle3D {
   _pose(model) {
     model.rotation.set(0, 0, 0);
     model.rotateX(this.heel);
+  }
+}
+
+/**
+ * Transit chase vehicle. Rigid hull (no bellows animation) — demo stand-in
+ * using the GVB metro 51 mesh. Look-only; no wheel spin yet.
+ */
+export class PlayerTransit3D extends Vehicle3D {
+  constructor(map, maplibregl) {
+    super(map, maplibregl, {
+      id: 'player-transit-3d',
+      modelUrl: TRANSIT_MODEL_URL,
+      label: 'transit model',
+      gameScale: TRANSIT_GAME_SCALE,
+      headingOffset: TRANSIT_HEADING_OFFSET,
+      normaliseTo: 6.1,
+    });
   }
 }

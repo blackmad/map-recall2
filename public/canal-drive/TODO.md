@@ -9,6 +9,10 @@ in a way that a plain-looking one is not.** So correctness of what the game
 teaches outranks the depth of what it teaches, which outranks how it looks.
 Within a tier, cheap-and-blocking comes before expensive-and-isolated.
 
+Building / façade / 3D mesh work is owned by other agents — do not queue it
+here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
+`HISTORY.md`.
+
 ---
 
 ## P0 — Red, or actively teaching something false
@@ -20,24 +24,27 @@ belongs here before anything below it.*
 
 ## P1 — The learning model itself
 
-**16. Review and refine the published Randstad trivia.** The owner approved the
-complete v10 automatically grounded batch, publishing 4,263 facts across 1,456
-features in Amsterdam, Rotterdam, Den Haag and Utrecht. Trivia Lab now has a
-**Human review** view: approve / reject / strike / note, local draft, load an
-existing `facts-review*.json`, and download a version-matched review file for
-`npm run facts:publish`. Cards now frame each rotated fact with a same-article
-opening (`facts:attach-openings` / next `facts:build`). Remaining: work through
-a stratified audit prioritising dates, quantities, Dutch translations and
-model-verifier disagreements. Corrections that change wording must retain exact
-Wikipedia evidence and go back through the normal publication gate — the lab
-does not rewrite staged sentences in place.
+**Delight loop (thin slice shipped 2026-09-06).** Mission punchlines, finish
+knowledge story, place-day streak, passport stamps, know-this-corner wink,
+correct-only encyclopedia. Cold-open review is **disabled** (2026-09-07) until
+a due name is on/near the route or shown (highlight/camera) — see HISTORY.
+Still open: rival-route novelty bias, landmark scavenger stop-to-look,
+transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
+weather/time mood. Location-honest cold-open is the reopen condition.
 
-**6. City knowledge review map.**
-A full-city review screen colour-coding every learned road and waterway by
-mastery and review state, with a fog-of-war layer over the rest. Derive it from
-nearby learned features, visits, answer history and recency rather than treating
-one drive-through as mastery. Pairs naturally with item 5: the same data answers
-"what do I know" and "where should I be sent next".
+**16. Review and refine the published Randstad trivia.**
+v11 is published (4,052 facts / 1,628 features). Trivia Lab’s **Human review**
+view is the audit path: approve / reject / strike / note, then
+`npm run facts:publish`. Still worth a pass: dates, quantities, Dutch
+translations, and model-verifier disagreements. Corrections must keep exact
+Wikipedia evidence.
+
+**6. Due-aware “where next” routing.**
+The full-city mastery map and dedicated knowledge review screen are shipped.
+Still open: let **Plan review** choose a location-honest route near overdue
+names, with a bounded detour, instead of only enabling due-only questions.
+Home-base routes already grow an expanding learning radius from the address
+(HUD/briefing readout + soft path bias inside the ring).
 
 ---
 
@@ -789,95 +796,82 @@ coverage for pedestrian/cycleway corridors is pinned in
 street name from any future "can't bike here" report so a junction-level miss
 does not hide behind the highway-class fix.
 
+**11b. Optional Amsterdam extract refresh (not broken).**
+Published Amsterdam is check-green (~47k routing ways, motorway/trunk classes,
+`city-profile.json`, bridge crossings aligned, Potgieterstraat present). Last
+structural rebuild 2026-08-31. A new `refresh:amsterdam` is worthwhile for
+pipeline currency (dab-follow enrich, English rename-refusal handling) but will
+churn encyclopedia blurbs — stage, diff coverage, publish only after review.
+Do not treat this as a red routing bug.
+
+**11c. Thicken thin English ledes; prune translation cache.**
+English publish gates are green. `--prune-stale` on
+`translate-extracts-to-english.ts` now drops orphaned cache entries against
+**all** Randstad extracts (shared cache; one-city prune would delete live
+siblings) — 322 orphans removed → 1,422 kept. Remaining thin cards are mostly
+Wikidata description floors (~400 distinct); upgrade-from-original is sparse
+and `trn` still rename-refuses many. Re-run `enrich:*-english` after refresh.
+
+**14. Storybook visual regressions.**
+HUD / briefing / finish / notice states compile in Storybook. Still open:
+automated screenshot diffs for those states (not just `build-storybook`).
+
+
+**28. Map Quest onto the daylight palette.** Canal Recall moved off the
+all-cobalt chrome on 2026-09-26 (`--day-*` tokens, see HISTORY/DESIGN.md);
+Map Quest still uses the cobalt enamel tokens and ~150 cobalt-assuming class
+uses in `src/index.css` and components. Migrate it so the product reads as one
+family, then retire the unused cobalt semantic aliases. Also still dark:
+the legacy canvas attract menu in `presentationRuntime._renderMenu` (hidden
+while setup is open) and map-select fill.
 ---
 
 ## P3 — Bets worth a spike, on their own branch
 
-**17. Public transit mode.** Amsterdam as a network of tram, metro, bus and
-ferry lines: stops, line numbers and colours, direction and terminus, transfers.
-Its own routing and recall model rather than a vehicle skin — a trip is a
-sequence of services and walking connections, and questions must distinguish the
-stop from the line from the destination. Live disruption data stays optional so
-the learning game still works from a cached, versioned extract. *Large.*
+**17. Public transit mode.** Tram / metro / ferry as its own routing and
+recall model, not a vehicle skin. *Large.* **GTFS-first** (OVapi → GVB). Plan:
+[`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md). **Phases A–E + play polish shipped:**
+tram+metro drive, termini pool, metro 52 pin, sibling/hub distractors,
+active-line stop scope, transfers, two-leg planner + second-leg drive, surprise
+pairing biased toward teachable transfers (~70%), second-leg plaque clear,
+named Noord→Isolatorweg two-leg pin. **2026-09-06 playtest:** chase≠cockpit +
+tilt slider; bold corridor overlay (metro dashed above buildings); orientation
+grace before line/transfer asks; map idle settle on load. Still open: bus,
+GTFS-RT, dedicated mesh, OSM tunnel tagging in extract, GTFS `transfers.txt`
+merge when cached. Canal-belt teaching streets via `amsterdam-curation` +
+`ensure:amsterdam-teaching-streets`. Pedestrian `bicycle=no` corridors
+(Kalverstraat) playable with `bicycleRestricted`. Ferry water hops stay out of
+scope.
 
-**18. A SimCity 2000-style isometric view.** The detailed-buildings extrusion
-data and the roof-colour sampler already carry most of what an isometric
-renderer needs, and it is a very different feel from the top-down map without
-touching routing physics.
+**25. Large-letter postcard compositor (standalone).**
+Craft board: [`LARGE_LETTER_CRAFT.md`](LARGE_LETTER_CRAFT.md). **Check loop:**
+`test:large-letter-craft` → `render:large-letter-craft -- --round=N` (gallery +
+pixel P0 on Jordaan: no top ink, cream ring ≤14px) → vision. Three themed
+rounds + a fill bump (span ~64%H). Remaining: true vanishing-point side faces,
+tighter Waterloo greeting nest, place props, game pop-in.
 
-**19. Structured Wikidata, and a city-hall advisor.** The enrichment passes take
-a lede and an image and stop. Wikidata also has the sitting mayor, opening
-dates, architects, who a bridge is named after, what a building used to be. An
-advisor card in the SimCity 2000 register — "the mayor would like you to learn
-the Jordaan's bridges this week" — could turn that into assignments and give the
-route generator a *reason* to pick a route instead of surprise-me. Needs a tone
-that stays informative rather than cute, and it must not become another card
-competing with the driving corridor.
+**19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
+architects, opening dates — without another card competing with the corridor.
 
-**20. Better 3D trees.** Instanced trunk/canopy geometry with deterministic
-variation from OSM species tags, distance LOD, kept out of 2D, never obscuring
-navigation or quiz targets.
-
-**21. Measured façade colours.** Pilot Amsterdam's open RGB point cloud against
-BAG/PDOK LoD 2.2 façade planes on a few representative blocks; reject sparse,
-shadowed or mixed samples and compare a muted median wall colour against the
-current OSM-tag fallback before attempting a citywide pass. Straight-down roof
-imagery cannot measure building sides.
-
-**22. Signature landmark models — re-enable once cheap enough, then finish the set.**
-Thirteen buildings are built and placed; the demo page still draws them. They are
-**disabled in the live game** after a playtest: thirteen meshopt GLBs on the
-shared MapLibre/Three canvas were too slow, and Centraal arrived with its
-SketchUp ground plane still attached. Licence follow-up stays parked by owner
-decision. Remaining work:
-
-*Re-enable behind a measured gate.* Load one model (Palace or Centraal) first,
-strip residual ground planes in the build, measure desktop and mobile frame
-time, then widen.
-
-*Facade bearings are unverified.* `FACADE_BEARINGS` records which way each
-building faces and only the Palace's was checked. They do not affect placement —
-a surveyed model arrives correctly turned — but they are reported in the UI as
-fact. Pin them against each footprint's long axis in a check script. That check
-is the one `package.json` used to *claim*: a `test:signature-landmarks` entry
-pointed at `scripts/check-signature-landmarks.ts`, which has never existed in
-any branch. The dead entry is gone; write the check it promised.
-
-*Widen the set.* `search-3dwarehouse-landmarks.ts` lists 46 further landmarks
-with published coordinates across the four cities — Euromast, Dom Tower,
-Rietveld Schröder House, Binnenhof — so finishing the set is mostly mechanical
-once cost is acceptable.
-
-**25. Google's photorealistic mesh for the distant skyline only.** The spike in
-`google-tiles-spike.html` settled the main question — Google's tiles are
-unusable at 1.7 m and lose the building semantics the game teaches with, so the
-near corridor stays 3DBAG (see `HISTORY.md`). What it did not settle is whether
-the mesh earns its place *above* the corridor: city overview, route preview and
-the far skyline, where it looked excellent and where nothing needs to be
-clickable. That would keep highlightable geometry where the player interacts and
-buy free realism where they only look. Blocked on wanting it: it makes the core
-view a metered, online-only dependency that Google's terms forbid caching,
-against the standing preference for versioned local extracts. Re-run the spike
-with `npm run build:google-tiles-spike` before costing it.
-
-**23. Authentic retro rendering**, and **24. the optional arcade layer.**
-Both are large presentation bets with long-form design notes preserved at the
-end of `HISTORY.md`. Neither is queued; both are deliberately parked.
+**23 / 24. Authentic retro rendering and the optional arcade layer.**
+Parked; design notes at the end of `HISTORY.md`.
 
 ---
 
 ## Ongoing reliability work
 
-Not milestones — standing obligations, each with a live guard already in place.
+Not milestones — standing obligations with live guards.
 
-- Refine boat shoreline response and bridge traversal across more route
-  geometries. The current guard rolls the hull inward and preserves
-  canal-tangent movement instead of leaving it stuck against a quay.
-- Keep rejecting distant or ambiguous home-address-to-waterway snaps after exact
-  BAG address resolution.
-- Keep auditing route topology around docks, broad water polygons, bridges and
-  disconnected OSM path fragments. Closed water/shore rings are already excluded
-  from the navigable graph; named open paths and graph junctions still want
-  checking.
-- Keep tuning neighborhood postcard scale and long-name typography on mobile
-  against real in-game screenshots.
+- `Canal CI` must stay green: `check:canal`, boot smoke, full Playwright.
+  Deploys wait on that workflow. Local: `prepare` installs pre-commit (`lint`)
+  and pre-push (`lint` + `test:e2e:smoke`).
+- Name every reported geographic failure in `scripts/check-canal-car.ts` (or
+  the reachability / city-extract harness) before calling it fixed. Bike
+  corridor pins: Zeedijk in, Kalverstraat out (`check-city-extract`).
+- Prefer city-qualified Wikipedia dab follows (`pickDisambiguationTarget`,
+  score ≥45); keep `check:encyclopedia-disambiguation` green.
+- Refine boat shoreline response and bridge traversal on more geometries.
+- Keep rejecting distant or ambiguous home-address-to-waterway snaps.
+- Audit route topology at docks, broad water polygons, bridges, and split OSM
+  fragments.
+- Tune neighborhood postcard scale and long-name typography on mobile.

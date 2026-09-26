@@ -75,8 +75,16 @@ export function unionBounds(a: Bounds | null, b: Bounds | null): Bounds | null {
  * Uniform matters more here than filling the box: Amsterdam stretched to a
  * 180×140 rectangle is not a map of Amsterdam, and the canal ring is only
  * recognisable while it is still round.
+ *
+ * `zoom` > 1 tightens the framing after the fit (cropping a little rim) so the
+ * overview can sit a notch closer without losing the city's shape.
  */
-export function fitProjection(bounds: Bounds, rect: Rect, padding = 6): Projection {
+export function fitProjection(
+  bounds: Bounds,
+  rect: Rect,
+  padding = 6,
+  zoom = 1,
+): Projection {
   const usableWidth = Math.max(1, rect.width - padding * 2);
   const usableHeight = Math.max(1, rect.height - padding * 2);
   const spanX = bounds.maxX - bounds.minX;
@@ -84,9 +92,10 @@ export function fitProjection(bounds: Bounds, rect: Rect, padding = 6): Projecti
   // A single point, or a perfectly straight line of them, has no extent on one
   // axis; fall back to a scale that puts it in the middle rather than dividing
   // by zero and projecting everything to NaN.
-  const scale = spanX <= 0 && spanY <= 0
+  const fitted = spanX <= 0 && spanY <= 0
     ? 1
     : Math.min(spanX > 0 ? usableWidth / spanX : Infinity, spanY > 0 ? usableHeight / spanY : Infinity);
+  const scale = fitted * Math.max(0.01, zoom);
   const centreX = (bounds.minX + bounds.maxX) / 2;
   const centreY = (bounds.minY + bounds.maxY) / 2;
   return {
@@ -128,8 +137,22 @@ export interface OverviewStaticLayers {
   /** Neighborhood outlines: the city's structure, and the only thing that makes
    *  a 260 px map of Amsterdam recognisable as Amsterdam. */
   areas: WorldPoint[][];
-  /** The loaded network — canals by boat, streets by car. */
+  /** Unpractised fog — streets and other land corridors. */
   network: WorldPoint[][];
+  /** Unpractised fog — canals / rivers when present on the track. */
+  waterNetwork: WorldPoint[][];
+  /** Early practice (mastery mid band). */
+  learningNetwork: WorldPoint[][];
+  learningWater: WorldPoint[][];
+  /** Comfortable recall. */
+  knownNetwork: WorldPoint[][];
+  knownWater: WorldPoint[][];
+  /** Strong mastery. */
+  masteredNetwork: WorldPoint[][];
+  masteredWater: WorldPoint[][];
+  /** Practised places whose spaced-review interval has elapsed. */
+  reviewDueNetwork: WorldPoint[][];
+  reviewDueWater: WorldPoint[][];
   /** The planned route, start to finish. */
   route: WorldPoint[];
   start: WorldPoint | null;
@@ -139,9 +162,37 @@ export interface OverviewStaticLayers {
 export interface OverviewSources {
   areaRings: readonly (readonly WorldPoint[])[];
   networkSegments: readonly (readonly WorldPoint[])[];
+  waterNetworkSegments?: readonly (readonly WorldPoint[])[];
+  learningNetworkSegments?: readonly (readonly WorldPoint[])[];
+  learningWaterSegments?: readonly (readonly WorldPoint[])[];
+  knownNetworkSegments?: readonly (readonly WorldPoint[])[];
+  knownWaterSegments?: readonly (readonly WorldPoint[])[];
+  masteredNetworkSegments?: readonly (readonly WorldPoint[])[];
+  masteredWaterSegments?: readonly (readonly WorldPoint[])[];
+  reviewDueNetworkSegments?: readonly (readonly WorldPoint[])[];
+  reviewDueWaterSegments?: readonly (readonly WorldPoint[])[];
   route: readonly WorldPoint[];
   start: WorldPoint | null;
   finish: WorldPoint | null;
+}
+
+/** Mastery bands for the knowledge tint (still unnamed — no quiz leak). */
+export const OVERVIEW_MASTERY_LEARNING = 0.25;
+export const OVERVIEW_MASTERY_KNOWN = 0.45;
+export const OVERVIEW_MASTERY_MASTERED = 0.75;
+
+export function isWaterSegmentType(type: string | null | undefined): boolean {
+  const t = String(type || '').toLowerCase();
+  return t === 'canal' || t === 'river' || t === 'dock' || t === 'stream' || t === 'drain';
+}
+
+export type OverviewMasteryBand = 'fog' | 'learning' | 'known' | 'mastered';
+
+export function overviewMasteryBand(mastery: number): OverviewMasteryBand {
+  if (mastery >= OVERVIEW_MASTERY_MASTERED) return 'mastered';
+  if (mastery >= OVERVIEW_MASTERY_KNOWN) return 'known';
+  if (mastery >= OVERVIEW_MASTERY_LEARNING) return 'learning';
+  return 'fog';
 }
 
 /**
@@ -152,7 +203,13 @@ export interface OverviewSources {
  * something the player knows rather than something they re-read each time. The
  * route and its endpoints are unioned in so a trip that runs past the mapped
  * areas cannot fall off the edge.
+ *
+ * `OVERVIEW_ZOOM` pulls in from a pure fit-to-city framing: the canal ring
+ * stays readable and the player mark is easier to find in the 260×200 box.
+ * 1.35 crops a bit more empty rim than the original 1.18 notch.
  */
+export const OVERVIEW_ZOOM = 1.35;
+
 export function buildOverview(
   sources: OverviewSources,
   rect: Rect,
@@ -164,14 +221,26 @@ export function buildOverview(
     boundsOf([sources.route, endpoints]),
   );
   if (!bounds) return null;
-  const projection = fitProjection(bounds, rect, padding);
+  const projection = fitProjection(bounds, rect, padding, OVERVIEW_ZOOM);
+  const thin = (segments: readonly (readonly WorldPoint[])[] | undefined) =>
+    (segments || [])
+      .map(segment => simplifyForScale(segment, projection.scale))
+      .filter(segment => segment.length >= 2);
+
   return {
     projection,
     layers: {
       areas: sources.areaRings.map(ring => simplifyForScale(ring, projection.scale)),
-      network: sources.networkSegments
-        .map(segment => simplifyForScale(segment, projection.scale))
-        .filter(segment => segment.length >= 2),
+      network: thin(sources.networkSegments),
+      waterNetwork: thin(sources.waterNetworkSegments),
+      learningNetwork: thin(sources.learningNetworkSegments),
+      learningWater: thin(sources.learningWaterSegments),
+      knownNetwork: thin(sources.knownNetworkSegments),
+      knownWater: thin(sources.knownWaterSegments),
+      masteredNetwork: thin(sources.masteredNetworkSegments),
+      masteredWater: thin(sources.masteredWaterSegments),
+      reviewDueNetwork: thin(sources.reviewDueNetworkSegments),
+      reviewDueWater: thin(sources.reviewDueWaterSegments),
       route: simplifyForScale(sources.route, projection.scale),
       start: sources.start,
       finish: sources.finish,
@@ -186,6 +255,15 @@ export interface OverviewColors {
   border: string;
   area: string;
   network: string;
+  waterNetwork: string;
+  learningNetwork: string;
+  learningWater: string;
+  knownNetwork: string;
+  knownWater: string;
+  masteredNetwork: string;
+  masteredWater: string;
+  reviewDueNetwork: string;
+  reviewDueWater: string;
   route: string;
   start: string;
   finish: string;
@@ -197,11 +275,24 @@ export interface OverviewColors {
 // sky-blue canals and a gold route, which read as a different product sitting
 // in the corner of the one you were playing. The route stays the strongest mark
 // on it, because "where am I going" is what the overview is for.
+// Knowledge tints: land stays green-olive; waterways use cool blue so canal
+// practice does not read as the same ink as streets.
 export const OVERVIEW_COLORS: OverviewColors = {
   background: 'rgba(255,253,248,0.94)',
   border: 'rgba(97,89,74,0.30)',
   area: 'rgba(53,102,83,0.13)',
   network: 'rgba(36,50,43,0.16)',
+  waterNetwork: 'rgba(8,90,130,0.14)',
+  learningNetwork: 'rgba(53,102,83,0.32)',
+  learningWater: 'rgba(20,110,150,0.34)',
+  knownNetwork: 'rgba(53,102,83,0.55)',
+  knownWater: 'rgba(15,100,140,0.55)',
+  masteredNetwork: 'rgba(28,82,58,0.82)',
+  masteredWater: 'rgba(8,78,120,0.78)',
+  // Warm copper — distinct from green mastery and blue waterways so “due for
+  // review” reads at a glance on the city overview.
+  reviewDueNetwork: 'rgba(176,96,28,0.82)',
+  reviewDueWater: 'rgba(150,78,36,0.78)',
   route: '#c75f43',
   start: '#356653',
   finish: '#c75f43',
@@ -242,6 +333,44 @@ export function drawOverviewStatic(
   ctx.strokeStyle = colors.network;
   ctx.lineWidth = 0.6;
   for (const segment of layers.network) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.waterNetwork;
+  ctx.lineWidth = 0.7;
+  for (const segment of layers.waterNetwork) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.learningNetwork;
+  ctx.lineWidth = 0.9;
+  for (const segment of layers.learningNetwork) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.learningWater;
+  ctx.lineWidth = 1.0;
+  for (const segment of layers.learningWater) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.knownNetwork;
+  ctx.lineWidth = 1.1;
+  for (const segment of layers.knownNetwork) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.knownWater;
+  ctx.lineWidth = 1.2;
+  for (const segment of layers.knownWater) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.masteredNetwork;
+  ctx.lineWidth = 1.35;
+  for (const segment of layers.masteredNetwork) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.masteredWater;
+  ctx.lineWidth = 1.4;
+  for (const segment of layers.masteredWater) strokePath(ctx, segment, projection);
+
+  // Due ink sits above mastery bands so overdue places stay visible even when
+  // they would otherwise paint as known/mastered green.
+  ctx.strokeStyle = colors.reviewDueNetwork;
+  ctx.lineWidth = 1.5;
+  for (const segment of layers.reviewDueNetwork) strokePath(ctx, segment, projection);
+
+  ctx.strokeStyle = colors.reviewDueWater;
+  ctx.lineWidth = 1.55;
+  for (const segment of layers.reviewDueWater) strokePath(ctx, segment, projection);
 
   ctx.strokeStyle = colors.area;
   ctx.lineWidth = 0.8;

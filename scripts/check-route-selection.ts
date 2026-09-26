@@ -7,16 +7,29 @@ import assert from 'node:assert/strict';
 
 import {
   advanceLiveRoute,
+  GPS_ORIGIN_ID,
+  GpsOriginError,
+  HOME_RADIUS_KNOWN_TO_EXPAND,
+  HOME_RADIUS_MAX_KM,
+  HOME_RADIUS_MIN_KM,
+  homeLearningRadiusKm,
+  isTeachableRouteDestination,
   kmBetween,
   LIVE_ROUTE_OFF_ROUTE_DIST,
   LIVE_ROUTE_REROUTE_INTERVAL,
   nearestRouteIndex,
   nearestSnappableDestination,
   pickDestinationNear,
+  pickHomeDestination,
+  pointInGeocodeViewbox,
   rankRetargetCandidates,
+  resolveGpsOrigin,
+  browserGpsReader,
   routeAhead,
   ROUTE_POI_MAX_PAIR_KM,
+  scoreHomeDestination,
   type LiveRouteState,
+  type MasterySample,
   type RoutePoi,
 } from '../src/canalRecall/game/routeSelection';
 import type { WorldPoint } from '../src/canalRecall/game/worldTypes';
@@ -34,6 +47,24 @@ const PALACE: RoutePoi = { id: 'palace', name: 'Royal Palace', lat: 52.373258, l
 const RIJKS: RoutePoi = { id: 'rijks', name: 'Rijksmuseum', lat: 52.3598672, lng: 4.8864162 };
 const WEESP: RoutePoi = { id: 'weesp', name: 'Weesp Fort', lat: 52.3080, lng: 5.0410 };
 const POIS = [CENTRAL, PALACE, RIJKS, WEESP];
+
+check('route destinations have something to teach on arrival', () => {
+  assert.equal(isTeachableRouteDestination({
+    funFact: '',
+    wikipediaExtract: '',
+    wikipediaImageUrl: '',
+    wikipediaUrl: '',
+  }), false, 'UvA PC Hoofthuis-style bare OSM features are not destination rewards');
+  assert.equal(isTeachableRouteDestination({
+    wikipediaExtract: 'The building was designed by Theo Bosch and Aldo van Eyck.',
+  }), true, 'an encyclopedia description makes the destination teachable');
+  assert.equal(isTeachableRouteDestination({
+    wikipediaImageUrl: 'https://example.invalid/place.jpg',
+  }), true, 'a photograph gives the arrival card something to show');
+  assert.equal(isTeachableRouteDestination({
+    wikipediaUrl: 'https://en.wikipedia.org/wiki/Example',
+  }), true, 'an article can be fetched and opened even before its extract is cached');
+});
 
 check('kmBetween is right at city scale', () => {
   assert.equal(kmBetween(CENTRAL, CENTRAL), 0);
@@ -74,6 +105,60 @@ check('an excluded destination is not offered', () => {
   for (let i = 0; i < 6; i++) {
     const chosen = pickDestinationNear(POIS, CENTRAL, () => i % 3, 'palace');
     assert.notEqual(chosen?.id, 'palace');
+  }
+});
+
+// ---- Home expanding radius ----
+
+const HOME = { id: 'home', lat: 52.373258, lng: 4.8918222 }; // near the Palace
+
+check('a fresh home ring starts at the minimum radius', () => {
+  assert.equal(homeLearningRadiusKm(HOME, []), HOME_RADIUS_MIN_KM);
+});
+
+check('practised nearby places expand the home ring', () => {
+  const samples: MasterySample[] = [];
+  for (let i = 0; i < HOME_RADIUS_KNOWN_TO_EXPAND; i++) {
+    samples.push({
+      lat: HOME.lat + 0.002 * (i + 1), // ~0.2 km steps north
+      lng: HOME.lng,
+      mastery: 0.8,
+    });
+  }
+  const radius = homeLearningRadiusKm(HOME, samples);
+  assert.ok(radius > HOME_RADIUS_MIN_KM,
+    `expected expansion beyond ${HOME_RADIUS_MIN_KM}, got ${radius}`);
+  assert.ok(radius <= HOME_RADIUS_MAX_KM);
+});
+
+check('a fresh home pick stays inside the learning ring (not Weesp)', () => {
+  const picks = new Set<string>();
+  for (let i = 0; i < 12; i++) {
+    const chosen = pickHomeDestination(POIS, HOME, [], () => (i + 0.5) / 12);
+    assert.ok(chosen, 'home must still produce a destination');
+    picks.add(chosen.poi.id);
+    assert.notEqual(chosen.poi.id, 'weesp', 'Weesp is outside a fresh 1 km ring');
+    assert.equal(chosen.radiusKm, HOME_RADIUS_MIN_KM);
+  }
+  assert.ok(picks.has('palace') || picks.has('central') || picks.has('rijks'));
+});
+
+check('home scoring prefers a closer novel landmark over a familiar far one', () => {
+  // Palace is ~0 km from HOME; Rijks ~1.6 km. With high familiarity at Rijks,
+  // palace should score higher inside the min ring... Palace is too close to
+  // HOME (< HOME_MIN_TRIP). Use Central (~0.7 km) vs a mid-ring familiar POI.
+  const nearNovel = scoreHomeDestination(CENTRAL, HOME, HOME_RADIUS_MIN_KM, []);
+  const nearFamiliar = scoreHomeDestination(CENTRAL, HOME, HOME_RADIUS_MIN_KM, [
+    { lat: CENTRAL.lat, lng: CENTRAL.lng, mastery: 1 },
+  ]);
+  assert.ok(nearNovel > nearFamiliar,
+    `novel corridor should beat a mastered one (${nearNovel} vs ${nearFamiliar})`);
+});
+
+check('home pick excludes the previous destination on the next outbound leg', () => {
+  for (let i = 0; i < 8; i++) {
+    const chosen = pickHomeDestination(POIS, HOME, [], () => (i + 0.5) / 8, 'palace');
+    assert.notEqual(chosen?.poi.id, 'palace');
   }
 });
 
@@ -167,6 +252,39 @@ check('routeAhead trims passed vertices and never returns a stub', () => {
   assert.deepEqual(routeAhead(ROUTE, ROUTE.length - 1, FINISH), [{ x: 400, y: 0 }, FINISH]);
   assert.deepEqual(routeAhead([], 0, FINISH), [FINISH]);
 });
+
+const AMSTERDAM_BOX = [4.72, 52.43, 5.02, 52.27] as const;
+
+check('GPS origin stays inside the city viewbox', () => {
+  assert.equal(pointInGeocodeViewbox(52.373, 4.892, AMSTERDAM_BOX), true);
+  assert.equal(pointInGeocodeViewbox(40.71, -74.01, AMSTERDAM_BOX), false);
+});
+
+const gpsOrigin = await resolveGpsOrigin({
+  cityName: 'Amsterdam',
+  viewbox: AMSTERDAM_BOX,
+  readFix: async () => ({ lat: 52.373, lng: 4.892 }),
+});
+assert.equal(gpsOrigin.id, GPS_ORIGIN_ID);
+assert.equal(gpsOrigin.name, 'Here');
+assert.equal(gpsOrigin.lat, 52.373);
+checks.push('resolveGpsOrigin uses a live fix as Here, not a geocoded home');
+
+await assert.rejects(
+  () => resolveGpsOrigin({
+    cityName: 'Amsterdam',
+    viewbox: AMSTERDAM_BOX,
+    readFix: async () => ({ lat: 52.09, lng: 5.12 }),
+  }),
+  (error: unknown) => error instanceof GpsOriginError && error.code === 'outside-city',
+);
+checks.push('resolveGpsOrigin refuses a fix outside the chosen city');
+
+await assert.rejects(
+  () => browserGpsReader(undefined, false)(),
+  (error: unknown) => error instanceof GpsOriginError && error.code === 'unsupported',
+);
+checks.push('GPS start needs a secure context');
 
 console.log(`Route selection OK: ${checks.length} checks.`);
 for (const name of checks) console.log(`  · ${name}`);

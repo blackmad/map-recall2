@@ -5,12 +5,14 @@ const localChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrom
 
 export default defineConfig({
   testDir: './tests/e2e',
-  timeout: 20_000,
+  // Canal route boots fetch OSM extracts; openRoute alone needs ~60–90s.
+  timeout: 120_000,
   expect: { timeout: 10_000 },
   fullyParallel: false,
   workers: process.env.CI ? 2 : 1,
   forbidOnly: Boolean(process.env.CI),
-  retries: process.env.CI ? 2 : 0,
+  // One retry is enough once hidden-select helpers stop burning the job budget.
+  retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['html', { open: 'never' }], ['github']] : 'list',
   use: {
     baseURL: 'http://127.0.0.1:4173',

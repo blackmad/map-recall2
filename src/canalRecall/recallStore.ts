@@ -11,8 +11,11 @@
  */
 import { ReviewState, scheduleReview } from '../spacedRepetition';
 import { getFeatureKey } from '../utils/featureIdentity';
+import { getTransitLineKey, getTransitStopKey } from './transit/identity';
+import type { TransitMode } from './transit/network';
 import { RoundResult, StreetFeature } from '../types';
 import { LatLon, chunkCenter, isKnownNear, isSuppressedNear } from './recallChunks';
+import { belongsToKnowledgeItem } from './knowledgeReview';
 
 export { RECALL_LOCAL_RADIUS_METERS, RECALL_CHUNK_METERS } from './recallChunks';
 
@@ -44,6 +47,14 @@ const stateId = (state: Pick<ReviewState, 'featureKey' | 'mode'>) => `${state.fe
 const routeNameKey = (name: string): string => name.normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
+const LINE_NAME_RE = /^(tram|metro|ferry)\s+(.+)$/i;
+
+function parseLineDisplayName(name: string): { mode: TransitMode; ref: string } | null {
+  const match = name.trim().match(LINE_NAME_RE);
+  if (!match) return null;
+  return { mode: match[1].toLowerCase() as TransitMode, ref: match[2].trim() };
+}
+
 /** Collapse place-local review chunks into a conservative per-name routing prior. */
 export function routeMasteryFromStates(
   states: readonly ReviewState[], cityId: string, now = Date.now(),
@@ -52,12 +63,32 @@ export function routeMasteryFromStates(
   for (const state of states) {
     const feature = state.featureSnapshot;
     if (state.mode !== 'guess_name' || feature.cityId !== cityId
-      || !['street', 'canal'].includes(feature.type)) continue;
+      || !['street', 'canal', 'line'].includes(feature.type)) continue;
     const key = routeNameKey(feature.name);
     if (!key || state.repetitions <= 0) continue;
     const practiced = Math.min(1, state.repetitions / 3);
     const current = state.dueAt > now ? practiced : practiced * 0.5;
     result[key] = Math.max(result[key] ?? 0, current);
+  }
+  return result;
+}
+
+/**
+ * Practised street/canal/line names whose review interval has elapsed.
+ * The overview paints these with a warm “due” tint so spaced review is visible
+ * on the knowledge map, not only in the cold-open hop.
+ */
+export function routeReviewDueFromStates(
+  states: readonly ReviewState[], cityId: string, now = Date.now(),
+): Record<string, true> {
+  const result: Record<string, true> = {};
+  for (const state of states) {
+    const feature = state.featureSnapshot;
+    if (state.mode !== 'guess_name' || feature.cityId !== cityId
+      || !['street', 'canal', 'line'].includes(feature.type)) continue;
+    const key = routeNameKey(feature.name);
+    if (!key || state.repetitions <= 0 || state.dueAt > now) continue;
+    result[key] = true;
   }
   return result;
 }
@@ -175,6 +206,25 @@ class RecallStore {
   }
 
   keyFor(feature: RecallFeature): string {
+    if (feature.type === 'stop') {
+      return getTransitStopKey({
+        cityId: feature.cityId,
+        name: feature.name,
+        center: feature.center,
+      });
+    }
+    if (feature.type === 'line') {
+      const parsed = parseLineDisplayName(feature.name);
+      if (parsed) {
+        return getTransitLineKey({
+          cityId: feature.cityId,
+          mode: parsed.mode,
+          ref: parsed.ref,
+          name: feature.name,
+          center: feature.center,
+        });
+      }
+    }
     return getFeatureKey(feature as unknown as StreetFeature);
   }
 
@@ -191,7 +241,7 @@ class RecallStore {
   /**
    * True when the rider has actually got this name right near here and is still
    * inside its review interval. The stricter bar, for places where a wrong
-   * answer must not read as knowledge — such as the water under a bridge.
+   * answer must not read as knowledge — such as the waterway at a bridge.
    * Deliberately independent of `enabled`: turning off "skip what I know" asks
    * more questions, it does not claim the rider knows less.
    */
@@ -226,9 +276,127 @@ class RecallStore {
       .map((state) => ({ name: state.featureSnapshot.name, center: state.featureSnapshot.center as LatLon }));
   }
 
+  /**
+   * Places whose review interval has elapsed — candidates for a cold-open hop.
+   * Includes any practised guess_name chunk that is due (wrong or right).
+   */
+  dueReviews(now = Date.now()): Array<{
+    name: string;
+    type: string;
+    cityId: string;
+    center: [number, number];
+    dueAt: number;
+  }> {
+    const out: Array<{
+      name: string;
+      type: string;
+      cityId: string;
+      center: [number, number];
+      dueAt: number;
+    }> = [];
+    for (const state of Object.values(this.states)) {
+      if (state.mode !== 'guess_name' || state.repetitions <= 0) continue;
+      if (state.dueAt > now) continue;
+      const snap = state.featureSnapshot;
+      const [lat, lng] = snap.center || [];
+      if (!snap.name || !Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+      out.push({
+        name: snap.name,
+        type: snap.type,
+        cityId: snap.cityId,
+        center: [lat, lng],
+        dueAt: state.dueAt,
+      });
+    }
+    return out;
+  }
+
   /** Per-name familiarity used only as a small route preference. */
   routeMastery(cityId: string, now = Date.now()): Record<string, number> {
     return routeMasteryFromStates(Object.values(this.states), cityId, now);
+  }
+
+  /** Per-name flags for overview “review due” ink (and any future routing bias). */
+  routeReviewDue(cityId: string, now = Date.now()): Record<string, true> {
+    return routeReviewDueFromStates(Object.values(this.states), cityId, now);
+  }
+
+  /**
+   * Practised street/canal places with coordinates — used to grow the home
+   * learning radius and prefer destinations that still have unfamiliar corridors.
+   */
+  homeMasterySamples(
+    cityId: string,
+    now = Date.now(),
+  ): Array<{ lat: number; lng: number; mastery: number }> {
+    const out: Array<{ lat: number; lng: number; mastery: number }> = [];
+    for (const state of Object.values(this.states)) {
+      const feature = state.featureSnapshot;
+      if (state.mode !== 'guess_name' || feature.cityId !== cityId) continue;
+      if (!['street', 'canal'].includes(feature.type)) continue;
+      if (state.repetitions <= 0) continue;
+      const [lat, lng] = feature.center;
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+      const practiced = Math.min(1, state.repetitions / 3);
+      const mastery = state.dueAt > now ? practiced : practiced * 0.5;
+      out.push({ lat, lng, mastery });
+    }
+    return out;
+  }
+
+  /**
+   * Put every local chunk for a named item back into the due queue. This is a
+   * self-reported practice request, not a quiz result, so it deliberately does
+   * not create an event, increment lapses, or change recall-rate statistics.
+   */
+  queueForPractice(itemKey: string, now = Date.now()): number {
+    let changed = 0;
+    for (const [key, state] of Object.entries(this.states)) {
+      if (!belongsToKnowledgeItem(state, itemKey) || state.dueAt <= now) continue;
+      const queued = { ...state, dueAt: now };
+      this.states[key] = queued;
+      changed += 1;
+      if (this.uid && this.db) void this.push(queued);
+    }
+    if (changed > 0) write(STATES_KEY, this.states);
+    return changed;
+  }
+
+  /**
+   * Erase every place-local chunk of one named item — locally always, and in
+   * the signed-in cloud copy too — so the next encounter schedules it like a
+   * brand-new name. Unlike queueForPractice this is a hard reset: repetitions,
+   * ease, and lapses go with the states. The review-event log stays, because
+   * those reviews really happened and forgetting a street should not rewrite
+   * recall-rate or activity history.
+   */
+  forgetItem(itemKey: string): number {
+    const forgotten: ReviewState[] = [];
+    for (const [key, state] of Object.entries(this.states)) {
+      if (!belongsToKnowledgeItem(state, itemKey)) continue;
+      forgotten.push(state);
+      delete this.states[key];
+    }
+    if (forgotten.length > 0) {
+      write(STATES_KEY, this.states);
+      if (this.uid && this.db) void this.deleteFromCloud(forgotten);
+    }
+    return forgotten.length;
+  }
+
+  /** Cloud half of forgetItem. Without it, the next pull() merges the states
+   *  straight back, undoing the forget on every reload. */
+  private async deleteFromCloud(states: readonly ReviewState[]): Promise<void> {
+    try {
+      const { doc, writeBatch } = await import('firebase/firestore');
+      const batch = writeBatch(this.db!);
+      for (const state of states) {
+        batch.delete(doc(this.db!, 'users', this.uid!, 'reviewStates', stateId(state)));
+      }
+      await batch.commit();
+    } catch (reason) {
+      console.warn('Could not forget cloud recall progress:', reason);
+    }
   }
 
   /**
@@ -250,13 +418,15 @@ class RecallStore {
     return scheduled.state;
   }
 
-  private async push(state: ReviewState, event: unknown): Promise<void> {
+  private async push(state: ReviewState, event?: unknown): Promise<void> {
     try {
       const { doc, writeBatch } = await import('firebase/firestore');
       const clean = <T,>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
       const batch = writeBatch(this.db!);
       batch.set(doc(this.db!, 'users', this.uid!, 'reviewStates', stateId(state)), clean(state));
-      batch.set(doc(this.db!, 'users', this.uid!, 'reviewEvents', (event as { id: string }).id), clean(event));
+      if (event) {
+        batch.set(doc(this.db!, 'users', this.uid!, 'reviewEvents', (event as { id: string }).id), clean(event));
+      }
       await batch.commit();
     } catch (reason) {
       console.warn('Could not sync recall progress:', reason);

@@ -340,10 +340,59 @@
   function openingSentence(text, maxChars = 160) {
     const trimmed = (text || "").replace(/\s+/g, " ").trim();
     if (!trimmed) return "";
-    const match = trimmed.match(/^(.+?[.!?])(?:\s|$)/);
-    const sentence = (match?.[1] || trimmed).trim();
+    const abbreviations = /* @__PURE__ */ new Set([
+      "st",
+      "sint",
+      "ste",
+      "mr",
+      "mrs",
+      "ms",
+      "dr",
+      "prof",
+      "ir",
+      "ing",
+      "drs",
+      "jr",
+      "sr",
+      "nr",
+      "no",
+      "vs",
+      "ca",
+      "ong",
+      "bijv",
+      "nl",
+      "oa",
+      "dwz",
+      "zgn",
+      "etc",
+      "incl",
+      "excl",
+      "eeuw",
+      "eeuwse"
+    ]);
+    const isSentenceEnd = (index) => {
+      if (trimmed[index] !== ".") return true;
+      const before = /([\p{L}]+)$/u.exec(trimmed.slice(0, index));
+      if (!before) return true;
+      const word = before[1];
+      if (word.length === 1) return false;
+      return !abbreviations.has(word.toLocaleLowerCase());
+    };
+    let end = -1;
+    for (const match of trimmed.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) {
+        end = match.index + 1;
+        break;
+      }
+    }
+    const sentence = (end > 0 ? trimmed.slice(0, end) : trimmed).trim();
     if (sentence.length <= maxChars) return sentence;
     const window2 = sentence.slice(0, maxChars);
+    let boundary = -1;
+    for (const match of window2.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) boundary = match.index + 1;
+    }
+    if (boundary > maxChars * 0.5) return window2.slice(0, boundary).trim();
     const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
     return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
   }
@@ -439,6 +488,71 @@
     return enabled && !input.utilityOpen;
   }
 
+  // src/canalRecall/game/modes.ts
+  function isTransit(mode) {
+    return mode === "transit";
+  }
+
+  // src/canalRecall/transit/corridorStreets.ts
+  function pointToSegDist(px, py, ax, ay, bx, by) {
+    const dx = bx - ax;
+    const dy = by - ay;
+    const len2 = dx * dx + dy * dy;
+    if (len2 <= 1e-9) return Math.hypot(px - ax, py - ay);
+    let t = ((px - ax) * dx + (py - ay) * dy) / len2;
+    t = Math.max(0, Math.min(1, t));
+    return Math.hypot(px - (ax + t * dx), py - (ay + t * dy));
+  }
+  function buildCorridorStreetIndex(streets, project) {
+    const segments = [];
+    const names = [];
+    const distractorsByName = /* @__PURE__ */ new Map();
+    const seen = /* @__PURE__ */ new Set();
+    for (const street of streets) {
+      if (!street.name) continue;
+      if (!seen.has(street.name)) {
+        seen.add(street.name);
+        names.push(street.name);
+        if (street.distractors && street.distractors.length) {
+          distractorsByName.set(street.name, street.distractors);
+        }
+      }
+      for (const path of street.paths) {
+        if (!path || path.length < 2) continue;
+        let prev = null;
+        for (const [lat, lng] of path) {
+          const point = project(lat, lng);
+          if (!point) {
+            prev = null;
+            continue;
+          }
+          if (prev) {
+            segments.push({
+              name: street.name,
+              ax: prev.x,
+              ay: prev.y,
+              bx: point.x,
+              by: point.y
+            });
+          }
+          prev = point;
+        }
+      }
+    }
+    return { segments, names, distractorsByName };
+  }
+  function distanceToPath(path, x, y) {
+    if (!path.length) return Infinity;
+    if (path.length === 1) return Math.hypot(path[0].x - x, path[0].y - y);
+    let best = Infinity;
+    for (let i = 1; i < path.length; i += 1) {
+      const a = path[i - 1];
+      const b = path[i];
+      best = Math.min(best, pointToSegDist(x, y, a.x, a.y, b.x, b.y));
+    }
+    return best;
+  }
+
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
   var CLICK_SELECT_RADIUS = 120;
@@ -495,6 +609,7 @@
       this._landmarkNoticeHold = hold;
       this._landmarkNoticeState = openNotice();
       this._landmarkNoticeAlpha = 0;
+      this._ensureLandmarkImage(this._landmarkNotice);
     }
     /**
      * Replace the card's lede with the next fact in this feature's rotation,
@@ -565,6 +680,7 @@
      * with an NL badge).
      */
     _showStreetKnowledge(name, type = "street", replaceOpenCard = false) {
+      if (type === "line") return;
       const key = this._normaliseCanalName(name);
       const entry = routeKnowledgeFor(
         this.streetKnowledge,
@@ -590,6 +706,7 @@
         type: "street",
         detail: split.detail,
         longDetail: split.longDetail,
+        imageUrl: entry.wikipediaImageUrl || "",
         wikipediaUrl: entry.wikipediaUrl || "",
         extractLang: entry.wikipediaExtractLang || "en"
       }, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
@@ -597,8 +714,10 @@
     // ---- Loading the extract ----
     async _loadLandmarks(centerLat, centerLng, segments) {
       try {
+        const Prefs = window.CanalRecallPreferences;
+        const city = Prefs && Prefs.cityById ? Prefs.cityById(this.cityId || Prefs.DEFAULT_CITY_ID || "amsterdam") : { extractPath: "../data/extracts/amsterdam" };
         const base = window.location.href;
-        const url = (name) => new URL(`../data/extracts/amsterdam/${name}`, base);
+        const url = (name) => new URL(`${city.extractPath}/${name}`, base);
         const [
           landmarkResponse,
           boundaryResponse,
@@ -660,23 +779,37 @@
         );
         this.vectorMap.setPlaces(features, boundaries);
         this.vectorMap.setBrandedPois(brandedPois);
-        this.landmarks = buildLandmarks(features, (lat, lng) => this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false));
-        this._landmarkImages = /* @__PURE__ */ new Map();
-        this._landmarkImageRequests = /* @__PURE__ */ new Set();
         const metersPerDegreeLat = 111320;
         const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
         const toWorld = ([lat, lng]) => ({
           x: (lng - centerLng) * metersPerDegreeLng * PIXELS_PER_METER + this.osmLoader._lastOffsetX,
           y: -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this.osmLoader._lastOffsetY
         });
+        this.landmarks = buildLandmarks(features, (lat, lng) => isTransit(this.travelMode) ? toWorld([lat, lng]) : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false));
+        this._landmarkImages = /* @__PURE__ */ new Map();
+        this._landmarkImageRequests = /* @__PURE__ */ new Set();
         this.neighborhoods = buildNeighborhoods(boundaries, neighborhoodEnriched, toWorld);
         this.bridges = buildBridges(bridgeFeatures, crossingIndex, toWorld);
+        if (isTransit(this.travelMode)) {
+          const corridorStreets = streetFeatures.map((street) => ({
+            name: street.name,
+            paths: (street.paths || (street.path ? [street.path] : [])).map((path) => path.map(([lat, lng]) => [lat, lng])),
+            distractors: street.distractors
+          }));
+          this._corridorStreetIndex = buildCorridorStreetIndex(
+            corridorStreets,
+            (lat, lng) => toWorld([lat, lng])
+          );
+        } else {
+          this._corridorStreetIndex = null;
+        }
         this._neighborhoodImages = /* @__PURE__ */ new Map();
         this._neighborhoodLetterArt = /* @__PURE__ */ new Map();
         this._neighborhoodImageRequests = /* @__PURE__ */ new Set();
       } catch (error) {
         console.warn("Landmark notes unavailable:", error);
         this.landmarks = [];
+        this._corridorStreetIndex = null;
       }
     }
     // ---- Per-frame ----
@@ -718,11 +851,16 @@
       }
       let nearest = null;
       let nearestDistance = DRIVE_BY_RADIUS;
+      const routePath = this.routePath;
+      const landmarkRouteRadiusPx = isTransit(this.travelMode) ? (window.CanalRecallTransit?.TRANSIT_LANDMARK_ROUTE_RADIUS_M ?? 120) * PIXELS_PER_METER : Infinity;
       for (const landmark of this.landmarks) {
         const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
         if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
         if (this._seenLandmarks.has(landmark.id)) continue;
         if (!isWorthACard(landmark)) continue;
+        if (isTransit(this.travelMode) && routePath && routePath.length >= 2) {
+          if (distanceToPath(routePath, landmark.x, landmark.y) > landmarkRouteRadiusPx) continue;
+        }
         if (distance < nearestDistance) {
           nearest = landmark;
           nearestDistance = distance;
@@ -788,7 +926,11 @@
       };
       const card = cards.measureLandmarkCard({
         name: lm.name,
-        body: lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood),
+        body: lm.longDetail || lm.detail || cards.placeOnlyDetail(
+          lm.type,
+          this.currentNeighborhood,
+          this._cityDisplayName()
+        ),
         category: lm.type ? lm.type.toUpperCase() : "",
         factKind: lm.factKind,
         extractLang: lm.extractLang,
@@ -817,7 +959,7 @@
       this._landmarkCardBounds = { x: cardX, y: cardY, w: card.width, h: card.height };
     }
     /**
-     * The expanded card. `measureLandmarkCard` cuts the body to two or four
+     * The expanded card. `measureLandmarkCard` cuts the body to three or four
      * lines so the driving corridor stays visible; this is where the rest of the
      * extract lives, in HTML, where it can scroll and carry a real link.
      *
@@ -829,7 +971,7 @@
       const panel = this._landmarkPanel;
       if (!lm || !panel) return false;
       const cards = window.CanalRecallCards;
-      const body = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join("\n\n") : "") || lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood);
+      const body = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join("\n\n") : "") || lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood, this._cityDisplayName());
       const badges = panel.querySelector("#landmark-panel-badges");
       badges.textContent = "";
       const pushBadge = (label, kind) => {
@@ -880,8 +1022,16 @@
         ctx.font = font;
         return ctx.measureText(text).width;
       };
+      const city = typeof this._activeCity === "function" ? this._activeCity() : null;
       const card = window.CanalRecallCards.measurePostcard(
-        { name: hood.name, kind: hood.kind, imageArea: hood.imageArea, hasImage },
+        {
+          name: hood.name,
+          kind: hood.kind,
+          imageArea: hood.imageArea,
+          hasImage,
+          cityName: city?.name || this._cityDisplayName?.() || "Amsterdam",
+          provinceCaption: city?.provinceCaption || ""
+        },
         measure,
         window.CanalRecallUi.postcardWidth(this.viewport)
       );

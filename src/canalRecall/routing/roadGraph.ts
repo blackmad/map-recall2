@@ -54,6 +54,16 @@ export type LearningRouteOptions<TMetadata = unknown> = Readonly<{
   familiarityPenalty?: number;
   /** Maximum extra physical distance accepted. Defaults to 12%. */
   maxDetourRatio?: number;
+  /**
+   * Soft home-ring bias: edges whose midpoint sits outside `radius` (world px)
+   * pay up to `outsidePenalty` extra (default 25%). Omitted = no geo bias.
+   */
+  homeBias?: Readonly<{
+    x: number;
+    y: number;
+    radius: number;
+    outsidePenalty?: number;
+  }>;
 }>;
 
 export type LearningRoutePlan = Readonly<{
@@ -126,6 +136,31 @@ export function buildRoadGraph<TMetadata = unknown>(
     `${Math.round(point.x / mergeSize)},${Math.round(point.y / mergeSize)}`;
   const nodeFor = (point: RoadGraphPoint): RoadGraphNode<TMetadata> => {
     const key = keyFor(point);
+    let node = nodes.get(key);
+    if (!node) {
+      node = { key, x: point.x, y: point.y, edges: [] };
+      nodes.set(key, node);
+    }
+    return node;
+  };
+  const projectionNodeFor = (
+    point: RoadGraphPoint,
+    span: IndexedSpan,
+  ): RoadGraphNode<TMetadata> => {
+    // A junction projection must retain its exact place on the through
+    // centreline. Reusing the normal quantized node can merge it with the side
+    // street endpoint we are trying to connect, putting the "junction" several
+    // metres off the through road and recreating the diagonal corner cut.
+    const key = [
+      'junction',
+      span.segmentIndex,
+      span.a.x,
+      span.a.y,
+      span.b.x,
+      span.b.y,
+      point.x,
+      point.y,
+    ].join(':');
     let node = nodes.get(key);
     if (!node) {
       node = { key, x: point.x, y: point.y, edges: [] };
@@ -212,10 +247,22 @@ export function buildRoadGraph<TMetadata = unknown>(
       if (!from) continue;
       for (const span of spansNear(endpoint)) {
         if (span.segmentIndex === segmentIndex) continue;
-        if (closestPointOnSegment(endpoint, span.a, span.b).distance > junctionStitchRadius) continue;
-        const nearer = distanceBetween(endpoint, span.a) <= distanceBetween(endpoint, span.b) ? span.a : span.b;
-        const target = nodes.get(keyFor(nearer));
-        if (target) link(from, target, span.segmentIndex, 'junction-stitch');
+        const projection = closestPointOnSegment(endpoint, span.a, span.b);
+        if (projection.distance > junctionStitchRadius) continue;
+        // Split the through span at the actual projected junction. Linking the
+        // side street straight to the nearer *endpoint* of a long simplified
+        // span made route paths cut diagonally across corners and buildings.
+        const spanStart = nodes.get(keyFor(span.a));
+        const spanEnd = nodes.get(keyFor(span.b));
+        if (!spanStart || !spanEnd) continue;
+        const target = distanceBetween(projection, span.a) < 1e-6
+          ? spanStart
+          : distanceBetween(projection, span.b) < 1e-6
+            ? spanEnd
+            : projectionNodeFor(projection, span);
+        link(spanStart, target, span.segmentIndex, 'centreline');
+        link(target, spanEnd, span.segmentIndex, 'centreline');
+        link(from, target, span.segmentIndex, 'junction-stitch');
       }
     }
   });
@@ -389,9 +436,22 @@ export function planLearningRoadRoute<TMetadata>(
     if (!names.length) return 0;
     return Math.max(...names.map((name) => Math.max(0, Math.min(1, options.masteryForName(name) || 0))));
   };
+  const homeBias = options.homeBias;
+  const outsidePenalty = homeBias?.outsidePenalty ?? 0.25;
+  if (homeBias && (!(homeBias.radius > 0) || !(outsidePenalty >= 0))) {
+    throw new RangeError('homeBias.radius must be positive and outsidePenalty non-negative');
+  }
+  const homeOutside = (from: RoadGraphNode<TMetadata>, to: RoadGraphNode<TMetadata>): number => {
+    if (!homeBias) return 0;
+    const midX = (from.x + to.x) * 0.5;
+    const midY = (from.y + to.y) * 0.5;
+    const dist = Math.hypot(midX - homeBias.x, midY - homeBias.y);
+    return Math.max(0, Math.min(1, dist / homeBias.radius - 1));
+  };
   const preferred = shortestRoadPaths(graph, startPoint, {
     stopAt: finish,
-    edgeCost: ({ edge, distance }) => distance * (1 + familiarityPenalty * mastery(edge)),
+    edgeCost: ({ edge, distance, from, to }) =>
+      distance * (1 + familiarityPenalty * mastery(edge) + outsidePenalty * homeOutside(from, to)),
   });
   const shortestNodes = nodePath(shortest.previous, finish);
   const preferredNodes = preferred?.distances.has(finish.key) ? nodePath(preferred.previous, finish) : shortestNodes;

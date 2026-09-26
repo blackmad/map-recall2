@@ -7,6 +7,10 @@ import {
   boundsOf,
   buildOverview,
   fitProjection,
+  isWaterSegmentType,
+  overviewMasteryBand,
+  OVERVIEW_MASTERY_KNOWN,
+  OVERVIEW_MASTERY_MASTERED,
   project,
   simplifyForScale,
   unionBounds,
@@ -125,8 +129,25 @@ check('a route running past the mapped areas is still framed', () => {
   }, RECT);
   assert.ok(built);
   const finish = project(built.projection, { x: 5000, y: 5000 });
-  assert.ok(finish.x <= RECT.x + RECT.width && finish.y <= RECT.y + RECT.height,
-    'the destination cannot fall off the edge of its own map');
+  // Zoomed framing may clip a little rim; the destination still stays near the
+  // box rather than flying off into empty canvas.
+  assert.ok(
+    finish.x > RECT.x - 40 && finish.x < RECT.x + RECT.width + 40
+    && finish.y > RECT.y - 40 && finish.y < RECT.y + RECT.height + 40,
+    'the destination cannot fall far off the edge of its own map');
+});
+
+check('the overview sits a notch closer than a pure fit-to-city framing', () => {
+  const areaRings = [[
+    { x: 0, y: 0 }, { x: 2000, y: 0 }, { x: 2000, y: 2000 }, { x: 0, y: 2000 }, { x: 0, y: 0 },
+  ]];
+  const built = buildOverview({
+    areaRings, networkSegments: [], route: [], start: null, finish: null,
+  }, RECT);
+  assert.ok(built);
+  const fitted = fitProjection({ minX: 0, minY: 0, maxX: 2000, maxY: 2000 }, RECT, 6, 1);
+  assert.ok(built.projection.scale > fitted.scale * 1.25,
+    `expected ~35% tighter framing, got ${built.projection.scale / fitted.scale}`);
 });
 
 check('an empty world produces no overview rather than a broken one', () => {
@@ -143,6 +164,42 @@ check('degenerate network segments are dropped, not drawn', () => {
   }, RECT);
   assert.ok(built);
   assert.equal(built.layers.network.length, 1, 'a one-vertex way is not a line');
+});
+
+check('mastery bands and water types split the knowledge tint', () => {
+  assert.equal(overviewMasteryBand(0), 'fog');
+  assert.equal(overviewMasteryBand(OVERVIEW_MASTERY_KNOWN), 'known');
+  assert.equal(overviewMasteryBand(OVERVIEW_MASTERY_MASTERED), 'mastered');
+  assert.ok(isWaterSegmentType('canal'));
+  assert.ok(isWaterSegmentType('river'));
+  assert.ok(!isWaterSegmentType('residential'));
+
+  const built = buildOverview({
+    areaRings: [[{ x: 0, y: 0 }, { x: 100, y: 0 }, { x: 100, y: 100 }]],
+    networkSegments: [[{ x: 0, y: 0 }, { x: 10, y: 0 }]],
+    waterNetworkSegments: [[{ x: 0, y: 20 }, { x: 10, y: 20 }]],
+    learningNetworkSegments: [[{ x: 0, y: 40 }, { x: 10, y: 40 }]],
+    masteredWaterSegments: [[{ x: 0, y: 60 }, { x: 10, y: 60 }]],
+    route: [], start: null, finish: null,
+  }, RECT);
+  assert.ok(built);
+  assert.equal(built.layers.waterNetwork.length, 1);
+  assert.equal(built.layers.learningNetwork.length, 1);
+  assert.equal(built.layers.masteredWater.length, 1);
+  assert.equal(built.layers.reviewDueNetwork.length, 0);
+});
+
+check('review-due layers carry overdue practice separately from mastery bands', () => {
+  const built = buildOverview({
+    areaRings: [[{ x: 0, y: 0 }, { x: 100, y: 0 }, { x: 100, y: 100 }]],
+    networkSegments: [],
+    reviewDueNetworkSegments: [[{ x: 0, y: 0 }, { x: 10, y: 0 }]],
+    reviewDueWaterSegments: [[{ x: 0, y: 20 }, { x: 10, y: 20 }]],
+    route: [], start: null, finish: null,
+  }, RECT);
+  assert.ok(built);
+  assert.equal(built.layers.reviewDueNetwork.length, 1);
+  assert.equal(built.layers.reviewDueWater.length, 1);
 });
 
 console.log(`City overview OK: ${checks.length} checks.`);
