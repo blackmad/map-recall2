@@ -87,15 +87,37 @@ export interface MergeLineOptions {
   maximumGapM?: number;
   /** …provided they overlap horizontally by at least this fraction. */
   minimumOverlap?: number;
+  /** Collapse one business name read on more than one pane of the same frontage. */
+  dedupeRepeatedSigns?: boolean;
+  /** Repeated instances further apart than this along the wall are separate signs. */
+  maximumRepeatGapM?: number;
 }
+
+/** Punctuation-free key for deciding whether two readings are the same sign. */
+const signIdentityKey = (text: string | null): string | null =>
+  text === null ? null : (text.replace(/[^A-Z0-9]/g, '') || null);
+
+/** Same name, allowing the shorter reading to be a truncation of the longer. */
+const sameSignIdentity = (a: string, b: string): boolean => {
+  if (a === b) return true;
+  const [shorter, longer] = a.length <= b.length ? [a, b] : [b, a];
+  return shorter.length >= 4 && longer.startsWith(shorter);
+};
 
 /**
  * Group a reader's text lines into signs. Lines are attached to a sign when they
  * overlap horizontally and sit within `maximumGapM` of it vertically, so a
  * stacked fascia collapses to one sign while a separate blade sign does not.
  * Returned in reading order (top to bottom, then left to right).
+ *
+ * A shop can letter the same fascia on several panes, and a reader returns each
+ * instance: the De Clercqstraat 70 crop yields `NINA'S / Exclusieve / Handwork
+ * Boutique` twice, once per window. Those are one business, so after stacking,
+ * groups whose main line is the same name and which sit close together collapse
+ * to the most complete reading. Counting them separately would both double the
+ * sign and inflate any invention rate computed per sign.
  */
-export function mergeLinesIntoSigns<T extends { boxWallM: WallRect }>(
+export function mergeLinesIntoSigns<T extends { boxWallM: WallRect; text: string }>(
   lines: readonly T[],
   options: MergeLineOptions = {},
 ): Array<{ boxWallM: WallRect; lines: T[] }> {
@@ -122,7 +144,29 @@ export function mergeLinesIntoSigns<T extends { boxWallM: WallRect }>(
     const top = Math.max(group.boxWallM.up + group.boxWallM.height, line.boxWallM.up + line.boxWallM.height);
     group.boxWallM = { along: left, up: bottom, width: right - left, height: top - bottom };
   }
-  return groups;
+  if (options.dedupeRepeatedSigns === false) return groups;
+
+  const maximumRepeatGapM = options.maximumRepeatGapM ?? 3;
+  const kept: typeof groups = [];
+  for (const group of groups) {
+    const key = signIdentityKey(mainSignLine(group.lines));
+    const existingIndex = key
+      ? kept.findIndex((candidate) => {
+        const other = signIdentityKey(mainSignLine(candidate.lines));
+        if (other === null || !sameSignIdentity(key, other)) return false;
+        const alongGap = Math.max(candidate.boxWallM.along, group.boxWallM.along)
+          - Math.min(candidate.boxWallM.along + candidate.boxWallM.width, group.boxWallM.along + group.boxWallM.width);
+        const upGap = Math.max(candidate.boxWallM.up, group.boxWallM.up)
+          - Math.min(candidate.boxWallM.up + candidate.boxWallM.height, group.boxWallM.up + group.boxWallM.height);
+        return alongGap <= maximumRepeatGapM && upGap <= maximumGapM;
+      })
+      : -1;
+    if (existingIndex < 0) { kept.push(group); continue; }
+    const existing = kept[existingIndex];
+    const existingKey = signIdentityKey(mainSignLine(existing.lines));
+    if (key !== null && (existingKey === null || key.length > existingKey.length)) kept[existingIndex] = group;
+  }
+  return kept;
 }
 
 /**

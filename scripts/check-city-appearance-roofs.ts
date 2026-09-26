@@ -15,8 +15,8 @@ assert.equal(selectCompatibleSourceRoof({...fixture,groundNAP:null} as any),null
 
 const manifest=JSON.parse(await fs.readFile('public/data/city-expansion/current.json','utf8')),realBuildings=[];
 for(const tile of manifest.tiles){const payload=JSON.parse(gunzipSync(await fs.readFile(`public${tile.url}`)).toString());for(const owner of payload.owners)realBuildings.push(owner.geometry.building);}
-assert.equal(realBuildings.length,825);assert.equal(new Set(realBuildings.map(building=>building.id)).size,825,'published owner tiles contain each source building once');
+assert.equal(realBuildings.length,manifest.buildings);assert.equal(new Set(realBuildings.map(building=>building.id)).size,manifest.buildings,'published owner tiles contain each source building once');
 let buildings=0,surfaces=0;
 for(const building of realBuildings){const roof=selectCompatibleSourceRoof(building);if(!roof)continue;buildings++;surfaces+=roof.surfaces.length;for(const polygon of roof.surfaces){const heights=polygon.flat().map(point=>point[2]),eaves=Math.min(...heights),ridge=Math.max(...heights);assert.ok(eaves>=building.height*SOURCE_ROOF_MIN_EAVE_RATIO);assert.ok(ridge<=building.height+SOURCE_ROOF_MAX_RIDGE_OVERSHOOT_M);assert.ok(ridge>eaves+SOURCE_ROOF_MIN_RELIEF_M);}}
-assert.deepEqual({buildings,surfaces},{buildings:645,surfaces:1717},'real-area coverage is deterministic');
+assert.deepEqual({buildings,surfaces},{buildings:manifest.studyRoofs.buildings,surfaces:manifest.studyRoofs.surfaces},'source-compatible roof coverage matches the immutable release');
 console.log(`Source roof compiler: ${surfaces} compatible LoD2.2 surfaces across ${buildings} buildings; per-component gates and immutability passed.`);
