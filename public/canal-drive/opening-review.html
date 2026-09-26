@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opening proposal review · Canal Drive</title>
+  <style>
+    :root{font:15px/1.45 system-ui,sans-serif;color:#24342e;background:#f1efe8}
+    *{box-sizing:border-box}body{margin:0}main{max-width:1440px;margin:auto;padding:18px}
+    h1{margin:0;font-size:29px}p{margin:7px 0}.muted{color:#65716a}.notice{padding:12px;background:#fff1d7;border-left:4px solid #a87019;border-radius:5px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:17px 0}.toolbar input[type=search]{min-width:250px;flex:1}
+    input,select,button{font:inherit;padding:8px;border:1px solid #bfc7bd;border-radius:7px;background:#fff}button{cursor:pointer}
+    .summary{display:flex;gap:8px;flex-wrap:wrap}.metric{background:#fff;border:1px solid #d6d9d1;border-radius:8px;padding:7px 11px}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:16px}.card{background:#fff;border:1px solid #d6d9d1;border-radius:12px;overflow:hidden}
+    .card-head{padding:12px 14px}.card h2{margin:0;font-size:17px;overflow-wrap:anywhere}.card small{color:#66746a}
+    .image-wrap{position:relative;background:#dfded7;line-height:0}.image-wrap img{width:100%;height:auto;display:block}.image-wrap svg{position:absolute;inset:0;width:100%;height:100%}
+    .opening{fill:#2b926022;stroke:#217b52;stroke-width:2;cursor:pointer;vector-effect:non-scaling-stroke}.opening.door{fill:#2a68b933;stroke:#22549b}
+    .opening.review{fill:#de853144;stroke:#ae531b}.opening.active{stroke:#e81971;stroke-width:4}.opening.legacy{stroke:#6e5cb0;fill:#6e5cb022}
+    .label{font:bold 17px system-ui,sans-serif;fill:#182c26;paint-order:stroke;stroke:#fff;stroke-width:4;pointer-events:none}
+    .details{padding:10px 14px 14px}.details ul{padding-left:20px;margin:7px 0}.details li{margin:5px 0}.details button{border:0;background:none;padding:0;text-align:left;color:#175d47;text-decoration:underline}
+    .details .warning{color:#9a4f23}.details a{color:#175d47}.source-note{font-size:12px;overflow-wrap:anywhere}
+    .error{color:#8f332c;padding:14px;background:#fff}.empty{padding:25px;color:#65716a}
+    @media(max-width:850px){.cards{grid-template-columns:1fr}main{padding:10px}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Opening proposal review</h1>
+  <p class="muted">Pinned Oud-Zuid R0 photo model predictions on 60 wall crops.</p>
+  <p class="notice"><strong>Review evidence only.</strong> The original model files recorded crop paths, without crop SHA hashes. Each image here is hashed from its current local bytes, so historical prediction-to-image binding remains unverified. Numbered boxes are proposals, not accepted windows or doors.</p>
+  <div id="summary" class="summary"></div>
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search wall or building ID" aria-label="Search wall or building ID">
+    <label>Overlay <select id="overlay"><option value="adjudicated">Evidence-aware proposals</option><option value="legacy">Original D1 union</option></select></label>
+    <label><input id="conflicts" type="checkbox"> Conflicts only</label>
+  </div>
+  <p id="state" class="muted">Loading local report…</p>
+  <div id="cards" class="cards"></div>
+</main>
+<script type="module">
+  const $=selector=>document.querySelector(selector);
+  const ns='http://www.w3.org/2000/svg';
+  const state={report:null};
+  const readable=value=>Number(value).toLocaleString();
+  const make=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!=null)node.textContent=text;return node};
+  function entryCard(entry){
+    const card=make('article','card');
+    const head=make('div','card-head');head.append(make('h2','',entry.elevationId));
+    head.append(make('small','',`${entry.buildingId} · ${entry.wall.widthM.toFixed(2)} × ${entry.wall.heightM.toFixed(2)} m`));card.append(head);
+    const wrap=make('div','image-wrap'),image=document.createElement('img');
+    image.src=`/data/facade-review-galleries/openings/${entry.crop.url}`;image.alt=`Current crop of ${entry.elevationId}`;image.loading='lazy';wrap.append(image);
+    const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox',`0 0 ${entry.crop.widthPx} ${entry.crop.heightPx}`);svg.setAttribute('aria-label','Numbered opening proposal boxes');wrap.append(svg);card.append(wrap);
+    const details=make('div','details');const count=make('p','muted');details.append(count);
+    const list=make('ul');details.append(list);
+    const source=make('p','source-note');source.textContent=`Current crop SHA-256: ${entry.crop.sha256Now}. Original prediction crop SHA: not recorded.`;details.append(source);
+    const sourceLink=make('a','', 'Open current source crop ↗');sourceLink.href=image.src;sourceLink.target='_blank';sourceLink.rel='noopener';details.append(sourceLink);
+    card.append(details);
+    const boxes=$('#overlay').value==='legacy'?(entry.legacyUnion||[]).filter(box=>box.kind==='window'||box.kind==='door').map((box,index)=>({id:String(index+1),kind:box.kind,box,sources:box.sources,status:'legacy'})):
+      entry.proposals.map((proposal,index)=>({...proposal,id:String(index+1)}));
+    count.textContent=`${boxes.length} ${$('#overlay').value==='legacy'?'D1 union openings':'evidence-aware proposals'} · ${entry.conflicts.length} door/window conflicts · ${entry.rejected.length} rejected raw boxes`;
+    let activeIndex=-1;
+    const highlight=index=>{activeIndex=index;svg.querySelectorAll('.opening').forEach((node,i)=>node.classList.toggle('active',i===index));list.querySelectorAll('button').forEach((node,i)=>node.setAttribute('aria-current',String(i===index)))};
+    const geometry=[];
+    boxes.forEach((proposal,index)=>{
+      const box=proposal.box,x=box.along/entry.wall.widthM*entry.crop.widthPx,
+        y=(entry.wall.heightM-box.up-box.height)/entry.wall.heightM*entry.crop.heightPx,
+        w=box.width/entry.wall.widthM*entry.crop.widthPx,h=box.height/entry.wall.heightM*entry.crop.heightPx;
+      const rect=document.createElementNS(ns,'rect');rect.setAttribute('x',String(x));rect.setAttribute('y',String(y));rect.setAttribute('width',String(w));rect.setAttribute('height',String(h));
+      geometry.push({x,y,w,h});
+      rect.setAttribute('class',`opening ${proposal.kind} ${proposal.status==='needs-review'?'review':''} ${proposal.status==='legacy'?'legacy':''}`);
+      rect.setAttribute('tabindex','0');rect.setAttribute('role','button');rect.setAttribute('aria-label',`Box ${index+1}: ${proposal.kind}, ${proposal.status}`);
+      rect.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();highlight(index)}});svg.append(rect);
+      const label=document.createElementNS(ns,'text');label.setAttribute('x',String(x+Math.min(14,w/2)));label.setAttribute('y',String(y+Math.min(22,h/2)));label.setAttribute('class','label');label.textContent=String(index+1);svg.append(label);
+      const item=make('li',proposal.status==='needs-review'?'warning':'');const button=make('button','',`${index+1}. ${proposal.kind} · ${proposal.status}`);button.addEventListener('click',()=>highlight(index));item.append(button);
+      const sources=proposal.sources?.map(source=>typeof source==='string'?source:`${source.lane} (${source.evidence})`).join(', ')||'unknown';
+      item.append(make('small','',` · ${sources}${proposal.reasons?.length?` · ${proposal.reasons.join(', ')}`:''}`));list.append(item);
+    });
+    svg.addEventListener('click',event=>{
+      const point=svg.createSVGPoint();point.x=event.clientX;point.y=event.clientY;
+      const local=point.matrixTransform(svg.getScreenCTM().inverse());
+      const hits=geometry.map((box,index)=>local.x>=box.x&&local.x<=box.x+box.w&&local.y>=box.y&&local.y<=box.y+box.h?index:-1).filter(index=>index>=0);
+      if(!hits.length)return;
+      const current=hits.indexOf(activeIndex);
+      highlight(current<0?hits.at(-1):hits[(current+1)%hits.length]);
+    });
+    return card;
+  }
+  function render(){
+    if(!state.report)return;
+    const query=$('#search').value.trim().toLowerCase(),conflictsOnly=$('#conflicts').checked;
+    const entries=state.report.entries.filter(entry=>(!query||`${entry.elevationId} ${entry.buildingId}`.toLowerCase().includes(query))&&(!conflictsOnly||entry.conflicts.length||entry.proposals.some(p=>p.reasons.includes('multi-overlap-bridge'))));
+    $('#cards').replaceChildren(...entries.map(entryCard));
+    $('#state').textContent=`Showing ${entries.length} of ${state.report.entries.length} walls. Orange boxes need review; blue are doors; green are windows. Purple shows the original D1 union.`;
+  }
+  try{
+    const response=await fetch('/data/facade-review-galleries/openings/report.json',{cache:'no-store'});
+    if(!response.ok)throw Error(`Report HTTP ${response.status}`);
+    const report=await response.json();if(report.kind!=='opening-proposal-review'||!Array.isArray(report.entries))throw Error('Unexpected report format');
+    state.report=report;const summary=report.summary;
+    $('#summary').replaceChildren(...[
+      `${readable(summary.walls)} walls`,`${readable(summary.rawCandidates)} raw candidates`,
+      `${readable(summary.legacyOpenings)} D1 openings`,`${readable(summary.proposals)} opt-in proposals`,
+      `${readable(summary.conflicts)} door/window conflicts`,`${readable(summary.bridgeAmbiguities)} bridge ambiguities`
+    ].map(label=>make('div','metric',label)));render();
+  }catch(error){$('#state').className='error';$('#state').textContent=`Could not load the local opening report: ${error.message}`}
+  for(const selector of ['#search','#overlay','#conflicts'])$(selector).addEventListener('input',render);
+</script>
+</body>
+</html>
