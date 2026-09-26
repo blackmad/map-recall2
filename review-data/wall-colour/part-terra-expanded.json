@@ -5,8 +5,8 @@
   "sampleFileSha256": "8285fb0c96e76749dfaab2760561e2fe44203e129133bcd81e2f03b118a0bb06",
   "measurementsSha256": "175371b180d48cbd1be9faf76bc809c480335c3d875f6a1a4e5740526bb38591",
   "reviewOrigin": "model-visual-review",
-  "reviewer": "gpt-6-terra",
-  "gradedAt": "2026-09-26T18:15:00.000Z",
+  "reviewer": "gpt-5.6-terra",
+  "gradedAt": "2026-09-26T17:29:14.000Z",
   "policy": "Autonomous visual review of dated source crops. Accept only a legible, representative main wall whose measurement agrees with the visible facade; abstain where trees, glare, shadow, crop framing, or mixed/neighbouring surfaces prevent that judgment. Ground-floor bands and trim are excluded.",
   "grades": {
     "0363100012156171_e_191dpbo": {
@@ -15,8 +15,8 @@
       "sourceSha256": "ee90d131a505678290603f51227c801b67f6182f3262154d51560c875f8bebb3",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -30,8 +30,8 @@
       "sourceSha256": "c342ac69f7996c47c80002c970c05b25748feb32cc9af4d03f662dc35ccd1955",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -45,8 +45,8 @@
       "sourceSha256": "cffe005cfe3f5b4452364929f97b2ab0eb20cf4f0074b2c6bdc0c98703bc2021",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -60,8 +60,8 @@
       "sourceSha256": "2bc474e13b02a790b9cd3cfb8850cabfa67a5a8aa4a7c834e8a5842a3b77cf96",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -75,8 +75,8 @@
       "sourceSha256": "73d10fce1f16776523169a02f9d5da5095bfc4658e0b1fc595064a16aac98414",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -90,8 +90,8 @@
       "sourceSha256": "5c903e0bb23483873414542f783383353d94618e9e9e4165fd8dc43f33034feb",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -105,8 +105,8 @@
       "sourceSha256": "f9169d71e958ac4e294802e142089dc110319b5390c34cf07645d71f7aaaa40a",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -120,8 +120,8 @@
       "sourceSha256": "655559aee956a435e56a4845483cf2c92611428a6929be7aad5f1fbcfd4638cf",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -135,8 +135,8 @@
       "sourceSha256": "94a111105e64377c7a467ea1de4e48a310c8901e37f8ca2fa45d264940597082",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -150,8 +150,8 @@
       "sourceSha256": "f6b4960a8149461716e2d31246f8d4fc90e0d4c4871320e20104c68458b21bf7",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -165,8 +165,8 @@
       "sourceSha256": "1e2880d3179fcdbc47f59278dd2ca93fc6270ff1392954c47f5e504aaf4ab2bb",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -180,8 +180,8 @@
       "sourceSha256": "d699a7ab6e4d7e9f01d712350bc388cb17e1dddccd5f674ac5275b7828e0cfb7",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -195,8 +195,8 @@
       "sourceSha256": "5dc145353dfc45eb8f0f6c9a0859f8728a4052ff66ebed9a03ec0d8c4918fa3d",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -210,8 +210,8 @@
       "sourceSha256": "f804e8586bafcb665f530f458b1454d3075f09f6626ffbbb5c683f3dc9ada4cf",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -225,8 +225,8 @@
       "sourceSha256": "570c78e108f2c2fdf9facf65e2103b7a0b64b0dfff5ed8e0714b3e0f5ffb4d07",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -240,8 +240,8 @@
       "sourceSha256": "1f9611c8de10ff4a3629ee5931639206c13a6c79d6b2a76fbea54c41c9077f61",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -255,8 +255,8 @@
       "sourceSha256": "2ae2bcb3f6429d27bc0a7c9c20e86934b3ab0854c579692627ca503272807e6d",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -270,8 +270,8 @@
       "sourceSha256": "e0ae8368f387570630d395b4408ee546e782534cbf5d37f4f63be0afa594688f",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -285,8 +285,8 @@
       "sourceSha256": "c04ace935edfc066c0857082c49a5872649907a09dd996e308e8c213a6506fbe",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -300,8 +300,8 @@
       "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -315,8 +315,8 @@
       "sourceSha256": "fb90a562c12a2acb1e564dc0af127c436b9b5b3bc0aa3fadb6390d0026c365f2",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -330,8 +330,8 @@
       "sourceSha256": "e054d353e964e217957ca4926798ac5cc539c34a127e93b65507add15f19cb23",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "mixed-or-neighbouring-wall",
         "source-crop-visual-review"
@@ -345,8 +345,8 @@
       "sourceSha256": "bca49052c141dcc4af1d676e9acffcc9c15b421a5c3ddab26df32eb7d598c04c",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -360,8 +360,8 @@
       "sourceSha256": "a299cb91b4185c643eca0fd81830a0a8c0061323d465f79debfdddd116ddad93",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -375,8 +375,8 @@
       "sourceSha256": "574e74e134aaab70c7a79929166241f7303554ec0fb9f70721cfe638a5a7faff",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -390,8 +390,8 @@
       "sourceSha256": "87fd75fbe57229bf671ca23c5a5fde43a3355a186d9840c31503bea797d34b3d",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -405,8 +405,8 @@
       "sourceSha256": "c0302aa23d60a24df7cabdc8d1a90053cd4238c979d7cb3380a8b7911e81adbe",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -420,8 +420,8 @@
       "sourceSha256": "5175333fc0049c0ddda7d37eba78be9025ca29e1d2804e44205ef13e9a97376e",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -435,8 +435,8 @@
       "sourceSha256": "7b06d986182515d5a05878348400a7b7e54a2292d1224aa34a9005d59750631c",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -450,8 +450,8 @@
       "sourceSha256": "912fe7622df2b356ff8afd4c5078369dc3e9b0bf320fae915f1af497a94a1048",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -465,8 +465,8 @@
       "sourceSha256": "2683304b0cbe75c04ce8cc8473487624f52c5a45a2d72e34a8d2681d82c97d50",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -480,8 +480,8 @@
       "sourceSha256": "91ed0d3a99148d43e3ca0a4499aa9711328150d0e1264ebfa41ce1baf84fdffc",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -495,8 +495,8 @@
       "sourceSha256": "228129118dd7302bfa56f944dd06aafad93965912bbb31dacfca151b9fa95c7f",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -510,8 +510,8 @@
       "sourceSha256": "f6d3f41ae144cf5944a6e4917e806e6637dca57e05f41abca12113ba7cba23a3",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -525,8 +525,8 @@
       "sourceSha256": "2d11d5e7480b5efb713cdf28b4725151384edda649c1eac230a0f2a695d68dd4",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -540,8 +540,8 @@
       "sourceSha256": "75bffeb6e69291b0d4341f78328bd9b97be7a50a36e0b0307481021d0d473b46",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -555,8 +555,8 @@
       "sourceSha256": "59b9e1f2128021780c9e90d82017bc20df09bd76189e43a03119438f28862d08",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -570,8 +570,8 @@
       "sourceSha256": "3cfeb831bffb0ed7fba3ae1e5d6c32088a0ca1ba7cd3959bc4d82215df339327",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -585,8 +585,8 @@
       "sourceSha256": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -600,8 +600,8 @@
       "sourceSha256": "083356b8aa3406a64d68ae35b7dd4e473b190e45c43d9b0e6b2d59677d176d02",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -615,8 +615,8 @@
       "sourceSha256": "3d62d50d25e6e484ff3f9767177db07067ec043c8b4af035438cf2d54ac722b3",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -630,8 +630,8 @@
       "sourceSha256": "7858319ff1d34c5cbcd4cad6c41a2db7cc106278228768e80c83605afedf05c7",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -645,8 +645,8 @@
       "sourceSha256": "0b96480c8bed0707087d881098e7e9b554c125bbfa6d393ced6028ec69907c5d",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -660,8 +660,8 @@
       "sourceSha256": "6d1b41260e87c82dceb7d93ab102e008803ef48d44cea870004aea64627d37c2",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -675,8 +675,8 @@
       "sourceSha256": "ab17767a6d0592b6a9cc96a41ca8f2280b7572923cd0ef93a22d96a781938fc4",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -690,8 +690,8 @@
       "sourceSha256": "cbe31fc958bd4d67013d1aeae618d61707512fb200693d7f9dcb9f34f6f84bf6",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -705,8 +705,8 @@
       "sourceSha256": "03c396dd041dc7242cdae3d7ae2539a9fd545a79e4ceec5b0dd3658d7bf410f0",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -720,8 +720,8 @@
       "sourceSha256": "339065f688ca3a72a7eb52ff2a74a63a218f992e9b0b540320f5a6208b364476",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -735,8 +735,8 @@
       "sourceSha256": "951fa586580fba2883e666d3ac23480d2fb00b61ad00ca6652be321b6c4d0b30",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -750,8 +750,8 @@
       "sourceSha256": "d89d47567a33252524a1a9cd59868fc808ff9861b717d4c5eb466a90c20a0563",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -765,8 +765,8 @@
       "sourceSha256": "ba01fc7526676de6bf2e4a2731af58e94527d0469b7f78e902dee6aba18e39d1",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -780,8 +780,8 @@
       "sourceSha256": "3223287c23e5334519608af0c3ae7da2b6b2d22a2873e05da670d004fed5880f",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -795,8 +795,8 @@
       "sourceSha256": "a64b21c32819c31ac57beaf42900e5e356d8aef91d9ab792eb93073cdce7395b",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -810,8 +810,8 @@
       "sourceSha256": "872f21fed4de5cb4633fc800d906c3ed7492eaa4e1142f738fc75c1184f56b62",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -825,8 +825,8 @@
       "sourceSha256": "87ad884a275a575023683461637a991c3e68cfd53b9d35b9e4f7b3d47d2a95ee",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -840,8 +840,8 @@
       "sourceSha256": "b72d12f24cc9eba01f2eb0efd6ff4d1e108bdda2c40f775921d8ef0c9b4ffbf5",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -855,8 +855,8 @@
       "sourceSha256": "8d970c75e961b9ea134de64df311e45e06ee485ddcc91b9d7d2af0a28cd1d6e8",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -870,8 +870,8 @@
       "sourceSha256": "0755dde44e9e5f2b35e65d4928518408ffb1fd367ac17e4f021f6f0aad571487",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -885,8 +885,8 @@
       "sourceSha256": "e4e9ae57e11d4a91126323be9b975027921ca80b93cd33dc98c3e9edf5857a84",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -900,8 +900,8 @@
       "sourceSha256": "c335db5d4744c07dded859bf0ade7e7040101b7463524dadeb1e0bb25a2f5892",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -915,8 +915,8 @@
       "sourceSha256": "422e969bb87280e2de3837fac38fd6fbc1628b23e8ec5d63304c5b462750a10d",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -930,8 +930,8 @@
       "sourceSha256": "d778911878b02072227aa1e5798f179da1e6873415d708b3db4288d8638ec227",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -945,8 +945,8 @@
       "sourceSha256": "1945163b64b288f177f1ecc22d0eea22ba821e492bad1e2856182cce79a61e17",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -960,8 +960,8 @@
       "sourceSha256": "10d215ba9fca35d846f8b8af002852d807dc818ba868bad518e9921ec6a99d87",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -975,8 +975,8 @@
       "sourceSha256": "cb0f66e828b485b7ba2c3f6e6bc48457ec007b01dfe06521195e8bdbb42db346",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -990,8 +990,8 @@
       "sourceSha256": "e9334db29c6374f4153462c49daf3805f2db8eb5bda928a00383b8caf2179e64",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1005,8 +1005,8 @@
       "sourceSha256": "8f91540efbcb0fa80d48fface1d138c174bc0cf8bbcfd3e324e902ac65f7365d",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1020,8 +1020,8 @@
       "sourceSha256": "a2e3da90156cda9fa3cf66ab4b2d12140b8b3248de39eb4a2e6be6370c289be4",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1035,8 +1035,8 @@
       "sourceSha256": "528c28c2368d1f65d61fabf2be89c0f78442b2fdd9cb5df4b5db7d3a67919246",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1050,8 +1050,8 @@
       "sourceSha256": "ff035befde9ca1ea9c90bd6a3e35495d5be239a6420744c7f2e11d03f556978c",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1065,8 +1065,8 @@
       "sourceSha256": "22fe3111942a8b56d7510bfb1e1549aa5d65c6686314f345c962e105915eefd8",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1080,8 +1080,8 @@
       "sourceSha256": "0c8c0ec188c1d5546e76689aeacbac222dbfc78212bc3ba5d7c5faca2f367a07",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1095,8 +1095,8 @@
       "sourceSha256": "58a0fb7439ad4c2920cbc9844270f51b0eb72c483f1424920aa02a4306066618",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1110,8 +1110,8 @@
       "sourceSha256": "9f90fba5e089e5eaec6feeb24b243207a464e5eb9bf8778e84c8fee06aa5d7f4",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1125,8 +1125,8 @@
       "sourceSha256": "0d9a4db56f5fb1da8339a7a8c8f15d87a9af5af5e791e24fb2f4b75e7709a19e",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1140,8 +1140,8 @@
       "sourceSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1155,8 +1155,8 @@
       "sourceSha256": "b632e642bb84927b77c5d59f22dd21058ac0072a61200d4c5c70cc6db04d274f",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1170,8 +1170,8 @@
       "sourceSha256": "3ebffa1679909575e0f469549d20366df1a91a3d9ab0b16da50bbba4e2407b57",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1185,8 +1185,8 @@
       "sourceSha256": "4e03512b58c9e4affd8298382f766293b0ce1aac4933f29b3761f18002f98264",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "mixed-or-neighbouring-wall",
         "source-crop-visual-review"
@@ -1200,8 +1200,8 @@
       "sourceSha256": "9814549cf28aa9765137e9973ee1e67f3c2615ad7aa09d14552fbb19317e1105",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1215,8 +1215,8 @@
       "sourceSha256": "552c929d89ece7832298a689dccf4efcd1283d6de456a8a14734003e4a09d69c",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1230,8 +1230,8 @@
       "sourceSha256": "b61002d76b8e7f9d68df1fdb51919aa0fe5ac061b6fe2f78bb9e1dc73a04843a",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1245,8 +1245,8 @@
       "sourceSha256": "bc5da6b6fff2aba1a39c22ea26bf400346a4c2cc4532f8320b87906f0e97eaba",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1260,8 +1260,8 @@
       "sourceSha256": "bfac4b50161eee1aff74bdde786568b6e57ee1e75c5876eef151df42d4ce4b0e",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1275,8 +1275,8 @@
       "sourceSha256": "35ed6497ef6b9bea8e8dd8fe99c6f656cba8436a951ebb797798b0fe98a4ea2c",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1290,8 +1290,8 @@
       "sourceSha256": "568035c81f5060a120ca7035caebef50bcbba8de2cfbfd37cf28a52ef9ecb810",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1305,8 +1305,8 @@
       "sourceSha256": "a44189e3675830975848beec23f89bfaaa2bfdeb5b378e702fe2c07f52112d99",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1320,8 +1320,8 @@
       "sourceSha256": "cb8c9708a1a7720623ec4583cd106cdfa004dbb72b8964c8d13c7324059dbb06",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1335,8 +1335,8 @@
       "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1350,8 +1350,8 @@
       "sourceSha256": "7a0c7195ab910c4326b441484fa1f475f47f5d97fa9086966e6cd9b389e1cec0",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1365,8 +1365,8 @@
       "sourceSha256": "56b7f6e9ec21a4e322ed903ecaa51f95a1f59ba0547856bb8bf95c7061785f6d",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1380,8 +1380,8 @@
       "sourceSha256": "f769443d01ef2ab38783d9ceea1fe96a25c734e99bcfb5816b3b8ada966b6c8d",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1395,8 +1395,8 @@
       "sourceSha256": "40db5d1feadabfaa26e185586532bcaadc166bb75d46cbfbc7e67b58742d2f01",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1410,8 +1410,8 @@
       "sourceSha256": "27a1e894c4049d986b0c092313b6268be1bcf75181c7f84c55b848c7d37b62f0",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1425,8 +1425,8 @@
       "sourceSha256": "27f91a4953409ff6bed64cdf9e88157b13c26ce756a0dcf558775dedff60a2a7",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1440,8 +1440,8 @@
       "sourceSha256": "823540a5d0f31c98d234d4a66bc135df94e93fdc16ff8277cca0a34bc518e481",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1455,8 +1455,8 @@
       "sourceSha256": "eb77dd9f91e341da8698493ea59c6a96ae04120f70fd91bd2327ba191277e3b3",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1470,8 +1470,8 @@
       "sourceSha256": "1c08d38e3a4277519976357c9ad1d874bc42704fb989e7cb5ee3ebeab69b789e",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1485,8 +1485,8 @@
       "sourceSha256": "44590ed277645e3df88416c5454d61fac57336ad292067b6621aeb8766c330ff",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1500,8 +1500,8 @@
       "sourceSha256": "1d087a0299ebbb41f7c01011c45817127404699addd2b1d1e5b4aa9c4a321815",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1515,8 +1515,8 @@
       "sourceSha256": "247ee554eba220ac4b5367340f2df3fae681fd28f89685c3b9ef555f0f77ae09",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1530,8 +1530,8 @@
       "sourceSha256": "1f2c95eb1b6eba766ca16a1dfc4411259ebfe5f3b24d13ce1f89950af2261726",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1545,8 +1545,8 @@
       "sourceSha256": "487eeb298a419a66497d6910f5eb0de4bf2c14992030bddfff2e2dc682bb62f9",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1560,8 +1560,8 @@
       "sourceSha256": "2f00a485630348d2e101b71559deaf4827b4d1dc2059ee21ebf4edf69be1ec4b",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1575,8 +1575,8 @@
       "sourceSha256": "a7e838292afa04aa6d5a5d1736c4b9a54ac88d6d63ad5fadc3fd718664f8defb",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1590,8 +1590,8 @@
       "sourceSha256": "c8f97a4ab54dc5bb7743f33a763c8f03db3a82b568ebc6e3e20bd6a7e33d7de2",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1605,8 +1605,8 @@
       "sourceSha256": "96166d032006d8ae076c173b60dfbe983db75e14893076838da45cd5eab71d87",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1620,8 +1620,8 @@
       "sourceSha256": "fb88b43dc5cfbc2c92bd39b843a7b92de2a0df76eeae9823a4674a172e5e1220",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1635,8 +1635,8 @@
       "sourceSha256": "edc9b705a12cf8bc2bc00a79fe555b52344ffdb9cb179eae191910320ae2f7d9",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1650,8 +1650,8 @@
       "sourceSha256": "0d5a96074112cc2927269430f3eaff4b27ccbbf3dfbacc6c0d6bc6f024363f39",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1665,8 +1665,8 @@
       "sourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1680,8 +1680,8 @@
       "sourceSha256": "aa7c9e506e7d99731bf1ff3284c760afb4856677317358b47d7657a3ecd1e5bd",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1695,8 +1695,8 @@
       "sourceSha256": "93d0b2e0e73cb9bb15528b533bddabd4b47d5562ecac61044de9bd3d120adbcd",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1710,8 +1710,8 @@
       "sourceSha256": "ce731ff5d2e92e473fa0d6841820deb2265fd80d20b20e7fdb9ba8537de0e324",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1725,8 +1725,8 @@
       "sourceSha256": "84b1cc9ead8877173102a7caa693dea504818589fec454a22deb26a59c138911",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1740,8 +1740,8 @@
       "sourceSha256": "d6c3411c7aa9ae00e99f4aaba51e1e4f1477f9fd230d4066a9b5272457f20d17",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1755,8 +1755,8 @@
       "sourceSha256": "40bdf77e1a4226856d4c4564bf899e93b3af792cd39ebd57a5898424dc58f08a",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1770,8 +1770,8 @@
       "sourceSha256": "b8809993855ea06c8720a76c8bbf5be4e9ef957663574bfa774b81c7c1af3530",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1785,8 +1785,8 @@
       "sourceSha256": "9783e36116b99630ab1c4910cfb2ffd6d363623b27ac7a0f987522c93332dc6d",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1800,8 +1800,8 @@
       "sourceSha256": "2fae091b5bfafaab1db7e3cdd9be3cd004fbdbd4cdde08ad440d815c92cc2204",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1815,8 +1815,8 @@
       "sourceSha256": "d4b216dc43b07ccf78fe365cbd0ea77ffe683c8418c1db20f26af9a695ff30bb",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1830,8 +1830,8 @@
       "sourceSha256": "5c87c3274ca8d1b65c12e87c6106afa23c69f103be342fec6e0ed65c69802b6d",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1845,8 +1845,8 @@
       "sourceSha256": "ac8924387ea8f6d928dfd57e7a2dbbf7ab9a553f02338b0f109d5a824b5be8fe",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1860,8 +1860,8 @@
       "sourceSha256": "52884b040724aa85c09b5f005813cff89d2213d32f91fd31e63d4e7fa11b3970",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1875,8 +1875,8 @@
       "sourceSha256": "b3d0bb0d666651ff00de3c2bea198b8e47dfc003fd7ac93614a77b6573580eca",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1890,8 +1890,8 @@
       "sourceSha256": "e6e26b5726cb917ceaeca466490d3e16425b00530f11c956a2ddeb13b5e6f991",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1905,8 +1905,8 @@
       "sourceSha256": "63e084dfdafcff9c462c994750fb0d61b940d5c7dda4b61f17480b8f28cb926a",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -1920,8 +1920,8 @@
       "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1935,8 +1935,8 @@
       "sourceSha256": "a4b4d7f65b424fa4a25d035077e310e23db74e985cbfdaebb08eef401c6cf573",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1950,8 +1950,8 @@
       "sourceSha256": "e386aae7e4d0f31399b99db8f502dd11b4c668352cb0c75dcae296b624a7e5cc",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1965,8 +1965,8 @@
       "sourceSha256": "f32476894ad79fcaa465e1f3afcdc1dab700bfc26557c13448db4e9d9b19c55c",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1980,8 +1980,8 @@
       "sourceSha256": "30a2ed88fa5350e91da145e93674ace033e7e5f8ec9320fd11ce24e7fa4a30c1",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -1995,8 +1995,8 @@
       "sourceSha256": "1070ef2e9fb40ff4b2aadaad33fefeb9aa7180864a64a3e0208727464141e689",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2010,8 +2010,8 @@
       "sourceSha256": "481f7b2e3e8119e24aadcdef0e8d5883a72828d339ff9064ce006747d3006ba0",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2025,8 +2025,8 @@
       "sourceSha256": "a096e0c0ddd2ddaecdb51494c58743fc8d96be9e941550330a1289f0d2bd1fb2",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2040,8 +2040,8 @@
       "sourceSha256": "4d473021fbeb741e5d86ecf1a186d549b461982a141dc6b2dfe92086ce9832dd",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2055,8 +2055,8 @@
       "sourceSha256": "e5a1453c73646d3e3c3c66c3e04e7034e6499e12b6d45a69fff6f706dd3116cd",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2070,8 +2070,8 @@
       "sourceSha256": "fd25edf5d0d8709d1ce9d0182e4d64c969b8d019a4c5fe1fa70db1b5946f3e26",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2085,8 +2085,8 @@
       "sourceSha256": "a436c71626789f85af2375f23b992f89a22bd6cdcac1d2ba64c00662e8e3c6ce",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2100,8 +2100,8 @@
       "sourceSha256": "9dcf580a421679e1e50047744eea8a7b2deadd781fcc454f3efdba7730ade0da",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2115,8 +2115,8 @@
       "sourceSha256": "363152fc9af294b0c1126cd1f4dad950e3cac14cf945ef0d3c0b16e3b63188e6",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2130,8 +2130,8 @@
       "sourceSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2145,8 +2145,8 @@
       "sourceSha256": "690069a93939eb7c1dbb85547755ed587f3c4b65e9a65e41d9e7e907de3af276",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2160,8 +2160,8 @@
       "sourceSha256": "06102bc1ce6b1fc2596bf0caa0d72f704c67a21e1f5f0f702ac8ce24c136d2a5",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2175,8 +2175,8 @@
       "sourceSha256": "cd423479a71ccd6cb1e7c0ab00f4b49e60b2bfce764d8d63e2a58b20936940b8",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2190,8 +2190,8 @@
       "sourceSha256": "41d1e9f7ba13db2edf3e3e56eb64e47b4a1bfc0c1aabfca9111f20bcce3c3d96",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2205,8 +2205,8 @@
       "sourceSha256": "ed100d60e057537f68ba22e5bc47c143d7b74db718268448607bc44b9f66cc5d",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2220,8 +2220,8 @@
       "sourceSha256": "ececf49eb5818a241a841fe0bba219c045b50819598f0cf45cc90676517b51d7",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "mixed-or-neighbouring-wall",
         "source-crop-visual-review"
@@ -2235,8 +2235,8 @@
       "sourceSha256": "b54119e22b97964d76274f16d0b5c49e649161d93ffaa402428caf2397fbf542",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2250,8 +2250,8 @@
       "sourceSha256": "c6522a2e18c857d9ed9bc9028dfb15b5558515ae8d03b96844422409800cf8d8",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2265,8 +2265,8 @@
       "sourceSha256": "fba696aad30dfe3ed83068212f9bcbb9ff690a4d324a06ceda36c85ebd0e9546",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2280,8 +2280,8 @@
       "sourceSha256": "afa76ca5ecf17dbf65d35e1aa516d2f15922d01a1afff325657a044bad9d0dfe",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2295,8 +2295,8 @@
       "sourceSha256": "f9cd16c53828ddef2bc6e235b6edc04e266ce6e6d751326968c63c2f1714f8fe",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2310,8 +2310,8 @@
       "sourceSha256": "aa8c34949d5c3a14382084752d54513ce26163a5869f7ff934bf53cb486e2fc4",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2325,8 +2325,8 @@
       "sourceSha256": "e1d67b7cd7aaed3f0d9ae936832b70af72425045928c8a9b43d37787e71dab1a",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2340,8 +2340,8 @@
       "sourceSha256": "eca1b8a50efd6b7d9a5ce8a30ddb7a0d240244647e479088310f59708e400293",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2355,8 +2355,8 @@
       "sourceSha256": "9a7d896592d2b20354c8372fa6c28f6c7b0e0da171711607e28f2a1ae5897c71",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2370,8 +2370,8 @@
       "sourceSha256": "69ea507ab72dc3e495dc8aadba1873d8dd8a554c22967268b1cea3af95555036",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2385,8 +2385,8 @@
       "sourceSha256": "a9770c5ce68a30ece54083f2c5b8057adf227fad53a843c11eb34d470213103d",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2400,8 +2400,8 @@
       "sourceSha256": "d84cfe39fa2aa4fe66eedc165864959383a3964b36db0446b4a6e87ea41d1780",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2415,8 +2415,8 @@
       "sourceSha256": "71e099916e4ee06101670b6cbcdd59a797f6565062337963cb7415f9a3489836",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2430,8 +2430,8 @@
       "sourceSha256": "9b8f341bb1c1c94e15b6df3f178a4c3aa3e6251d57671cebdb080a56312a576e",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2445,8 +2445,8 @@
       "sourceSha256": "a35c6ffa113571bf6946604700fbfcf5509921e1c52615d165534a92a2abed61",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2460,8 +2460,8 @@
       "sourceSha256": "dc3c043fde5160613f7f31334e05ffaacfd28adb2bbdee19db81752dfef542b6",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2475,8 +2475,8 @@
       "sourceSha256": "084a18b2fa58dee6df93d78c7d4b0458e14f7383f11fb2e4e772ff91ef5ade46",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2490,8 +2490,8 @@
       "sourceSha256": "7550e523321f6b5c024817fd40b9b4389aee4674e207469a9d6233c4bf063995",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2505,8 +2505,8 @@
       "sourceSha256": "f48dd8138842c94ff6f01c9ab53069362163251a9e6b4677244537c6331eecde",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2520,8 +2520,8 @@
       "sourceSha256": "fd3c48bb503e8174e10cc919d80adbe13dcadb1249622909dc93a6bad7bcdf72",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2535,8 +2535,8 @@
       "sourceSha256": "785d3ce1bd539e18856abffebc492977bd8f3bf9af09c16bd87877fb82a9fa5d",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2550,8 +2550,8 @@
       "sourceSha256": "051da7d52b9006200a9ece780d34bf0d12acfca51e626389b32bb02809d878e5",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2565,8 +2565,8 @@
       "sourceSha256": "65a7f4c151916ed2f2f78cca91b889bce13fba0842411d4f92d101c91579dfa5",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2580,8 +2580,8 @@
       "sourceSha256": "7ad9af9edc5b321c8760edcef9dbf7209536edf16417d9eaa74c06fd5b20b73f",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2595,8 +2595,8 @@
       "sourceSha256": "53d52ff0b56df309b66351c974c5b8f1db9ffccf0383a45537a2db98af0749d6",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2610,8 +2610,8 @@
       "sourceSha256": "ed7982a4b610915bba6d9335a3acbf06a314b25389cc5dd861a7778f59dda0fe",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2625,8 +2625,8 @@
       "sourceSha256": "bffdef301842c23d528161b86fe426ecdb8a2911dd9771928f791b67ba5830a4",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2640,8 +2640,8 @@
       "sourceSha256": "9b733dcb807ab5708f01a061a315f1a7d1805b1f7060ea8b7387b1a894ce8e34",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2655,8 +2655,8 @@
       "sourceSha256": "a78a96df6928d7d3fecc09fae1ee7ef1c8ec75b10d26edcb690cd97afe9ebae7",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2670,8 +2670,8 @@
       "sourceSha256": "3fbf4e5a698ef605c90a8dc4d3392e07907114d3d0585a651763add7284070c9",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2685,8 +2685,8 @@
       "sourceSha256": "bb2b229106260e7b5354ede1ea35d237effc10a6eaf01ca44ad32233feb57850",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2700,8 +2700,8 @@
       "sourceSha256": "e678e59a4ccd95fb94e78ac0f92bfc188a3a0d74401ad9cdae85ee882826c7bf",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2715,8 +2715,8 @@
       "sourceSha256": "ae06b808d63edd3b5a939fb3251c5159ec5e24458b0364d1d82597b5082b9196",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2730,8 +2730,8 @@
       "sourceSha256": "9585767f7360620e7439d1fcc08ddb2177635673169db28891774f8b20c3b886",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2745,8 +2745,8 @@
       "sourceSha256": "882549047d737293c8754dfd12c21cca2130e3f83a5b641bd403764d061c60e3",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2760,8 +2760,8 @@
       "sourceSha256": "c62fe68961af5e39f6acaac7ec21cd6d68f8d008d02ac1fb910bb3a810fac96e",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2775,8 +2775,8 @@
       "sourceSha256": "bbe1972b32959acdc06fe5a3199d567e3abc82560d667af672ae020ecde0975f",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2790,8 +2790,8 @@
       "sourceSha256": "c4e8666358b0c7893f5e1b3adb61382d6a1f7358ad1774bae9973a95f72a80a6",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2805,8 +2805,8 @@
       "sourceSha256": "4348d8cf5137b9ccb07265f67f1cf4fe925c0b5199f01b214d6fb9ac14bde3fc",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2820,8 +2820,8 @@
       "sourceSha256": "a06725013ecc326635b7a3ed37e14ad4a6a7857673470888621bddd857964a3f",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2835,8 +2835,8 @@
       "sourceSha256": "da70dc3fbf3466fc2491e7d9764831401aee67e044bc3faf0897632318297cea",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "mixed-or-neighbouring-wall",
         "source-crop-visual-review"
@@ -2850,8 +2850,8 @@
       "sourceSha256": "334fbbadaa8d549002449ec7db616f1d163afd8077a796ba15029d360b48192a",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2865,8 +2865,8 @@
       "sourceSha256": "94de67d298fa9ceabfe3f4950a1dd871fc32a2db7fc88a51eaa5424f21df571e",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2880,8 +2880,8 @@
       "sourceSha256": "19ebe66f15ee5f03bc247a1c495d367cc666dd2e5b6157bcdaf064fd648f7ef6",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2895,8 +2895,8 @@
       "sourceSha256": "740bad2de6a46bb113d43c1bfd36f144679265f156bdddd9964e172c2f05f245",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
@@ -2910,8 +2910,8 @@
       "sourceSha256": "f21a4ef031ffbfbdddcf8a0b1f72b6e9844c825731e3029f0bb107eacf64a1d3",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2925,8 +2925,8 @@
       "sourceSha256": "5f96e08d832c4d95b583e597f1bb06827f66b0d16dc44b379f8adab001b85715",
       "verdict": "accept",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "visible-main-wall",
         "source-crop-visual-review"
@@ -2940,8 +2940,8 @@
       "sourceSha256": "014e7290ab6dde156bee4f8791c0bd74b56bc332aa22677ff055864884be0071",
       "verdict": "unusable",
       "reviewOrigin": "model-visual-review",
-      "grader": "gpt-6-terra",
-      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "grader": "gpt-5.6-terra",
+      "gradedAt": "2026-09-26T17:29:14.000Z",
       "reasons": [
         "occluded-or-mixed-wall",
         "source-crop-visual-review"
