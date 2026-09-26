@@ -36,22 +36,25 @@
       outline: 3px solid #6ba987; outline-offset: 2px;
     }
     .shell { max-width: 1500px; margin: auto; padding: clamp(16px, 3vw, 34px); }
-    .masthead { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
-    .eyebrow { margin: 0 0 4px; color: var(--green); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    h1 { margin: 0; font-size: clamp(27px, 4vw, 42px); line-height: 1.1; letter-spacing: -.035em; }
-    .subhead { max-width: 850px; margin: 12px 0 0; color: var(--muted); }
-    .header-links { display: flex; flex-wrap: wrap; gap: 8px 16px; padding-top: 5px; white-space: nowrap; }
-    .notice { margin: 24px 0 18px; padding: 14px 16px; border-left: 4px solid #b7812b; border-radius: 8px; background: #fbf5e7; color: #514729; }
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .titleline { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 14px; }
+    .eyebrow { margin: 0; color: var(--green); font-size: 11px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(23px, 3vw, 32px); line-height: 1.1; letter-spacing: -.035em; }
+    .subhead { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+    .header-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 14px; white-space: nowrap; font-size: 13px; }
+    .notice { margin: 12px 0 10px; padding: 7px 11px; border-left: 3px solid #b7812b; border-radius: 5px; background: #fbf5e7; color: #514729; font-size: 12px; }
     .notice strong { color: #352f20; }
-    .section-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 24px 0 10px; }
-    .section-label h2 { margin: 0; font-size: 17px; }
-    .section-label p { margin: 0; color: var(--muted); font-size: 13px; }
-    .metrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
-    .metric { min-height: 102px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: var(--shadow); }
-    .metric .value { display: block; font-size: clamp(23px, 3vw, 32px); line-height: 1.15; font-weight: 760; font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
-    .metric .label { display: block; margin-top: 5px; color: var(--muted); font-size: 13px; }
-    .metric.model { border-top: 3px solid #c3a05d; }
-    .coverage-note { margin: 8px 1px 0; color: var(--muted); font-size: 13px; }
+    .section-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 8px 0 4px; }
+    .section-label h2 { margin: 0; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .section-label p { margin: 0; color: var(--muted); font-size: 11px; }
+    .metrics { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+    .metric { min-width: 0; min-height: 53px; display: flex; flex-direction: column; justify-content: center; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+    .metric .value { display: block; font-size: 17px; line-height: 1.1; font-weight: 760; font-variant-numeric: tabular-nums; letter-spacing: -.02em; overflow-wrap: anywhere; }
+    .metric .label { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; line-height: 1.2; }
+    .metric.model { border-top: 2px solid #c3a05d; }
+    .metric.danger { border-color: #d9aaa2; background: var(--red-soft); }
+    .metric.danger .value, .metric.danger .label { color: var(--red); }
+    .coverage-note { margin: 4px 1px 0; color: var(--muted); font-size: 11px; }
     .overview { margin-top: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
     .overview summary { cursor: pointer; padding: 13px 16px; font-weight: 700; }
     .overview-inner { padding: 0 16px 15px; }
@@ -60,13 +63,13 @@
     .plot-dot { cursor: pointer; stroke: #fffdf8; stroke-width: 1.3; opacity: .83; }
     .plot-dot:hover, .plot-dot:focus { stroke: #26362f; stroke-width: 2.5; opacity: 1; }
     .plot-caption { margin: 7px 0 0; color: var(--muted); font-size: 12px; }
-    .toolbar { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(150px, 210px) minmax(150px, 210px) auto auto; align-items: end; gap: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+    .toolbar { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(150px, 210px) minmax(150px, 210px) auto auto; align-items: end; gap: 8px; padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
     .field { display: grid; gap: 4px; color: var(--muted); font-size: 12px; font-weight: 700; }
     .field input, .field select { width: 100%; color: var(--ink); font-size: 14px; font-weight: 450; }
     .toggle { display: flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 6px; white-space: nowrap; font-weight: 600; }
     .toggle input { width: 18px; height: 18px; accent-color: var(--green); }
     .refresh-state { margin: 8px 2px 0; color: var(--muted); font-size: 12px; }
-    .list-head { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin: 20px 1px 10px; }
+    .list-head { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin: 11px 1px 7px; }
     .list-head h2 { margin: 0; font-size: 20px; }
     .pagination { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; }
     .pagination button { min-height: 36px; padding: 5px 11px; }
@@ -108,28 +111,30 @@
     footer { margin: 30px 0 5px; color: var(--muted); font-size: 12px; }
     footer a { margin-right: 12px; }
     @media (max-width: 900px) {
-      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .toolbar .search { grid-column: 1 / -1; }
       .toolbar button { width: 100%; }
       .cards { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
-      .shell { padding: 15px 12px 28px; }
+      .shell { padding: 11px 10px 24px; }
       .masthead { display: block; }
-      .header-links { margin-top: 13px; white-space: normal; }
-      .notice { margin-top: 17px; }
-      .metrics { gap: 7px; }
-      .metric { min-height: 90px; padding: 11px 12px; }
-      .metric .label { font-size: 12px; }
-      .toolbar { grid-template-columns: 1fr; padding: 11px; }
-      .toolbar .search { grid-column: auto; }
+      .titleline { gap: 3px 10px; }
+      .header-links { justify-content: flex-start; margin-top: 7px; white-space: normal; font-size: 12px; }
+      .notice { margin-top: 8px; }
+      .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
+      .metric { min-height: 48px; padding: 5px 8px; }
+      .metric .value { font-size: 15px; }
+      .metric .label { font-size: 9px; }
+      .toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 8px; }
+      .toolbar .search { grid-column: 1 / -1; }
       .toolbar .toggle { padding-left: 2px; }
       .list-head { align-items: flex-start; flex-direction: column; }
       .assessment { grid-template-columns: 1fr; }
       .source-frame { min-height: 170px; }
       .provenance dl { grid-template-columns: 105px minmax(0, 1fr); }
-      .section-label { align-items: flex-start; flex-direction: column; gap: 2px; }
+      .section-label { align-items: flex-start; flex-direction: column; gap: 1px; }
     }
   </style>
 </head>
@@ -137,9 +142,8 @@
   <main class="shell">
     <header class="masthead">
       <div>
-        <p class="eyebrow">Canal Drive · source evidence</p>
-        <h1>District wall materials</h1>
-        <p class="subhead">Rectified street photographs and provisional material classifications for the Da Costabuurt and Jordaan frontage queue.</p>
+        <div class="titleline"><p class="eyebrow">Canal Drive</p><h1>District wall materials</h1></div>
+        <p class="subhead">Street photographs and provisional classifier results for Da Costabuurt and Jordaan.</p>
       </div>
       <nav class="header-links" aria-label="Related pages">
         <a href="material-demo.html">Material demo</a>
@@ -148,25 +152,17 @@
       </nav>
     </header>
 
-    <aside class="notice"><strong>Model results are proposals.</strong> A label or colour-family swatch does not verify the building identity, wall visibility, actual wall colour, or rendered appearance. No acceptance controls are provided here; source evidence and model outputs remain separate.</aside>
+    <aside class="notice"><strong>Classifier results are proposals.</strong> Material-family swatches are illustrative; neither source identity nor actual or rendered wall colour is verified here.</aside>
 
     <section aria-labelledby="coverage-title">
-      <div class="section-label"><h2 id="coverage-title">Evidence coverage</h2><p>Counts describe owner/frontage processing, not model accuracy.</p></div>
+      <div class="section-label"><h2 id="coverage-title">Evidence coverage</h2><p>Owner and frontage processing</p></div>
       <div id="coverageMetrics" class="metrics" aria-live="polite"></div>
     </section>
     <section aria-labelledby="model-title">
-      <div class="section-label"><h2 id="model-title">Classifier review</h2><p>Separate from imagery and rectification coverage.</p></div>
+      <div class="section-label"><h2 id="model-title">Classifier check</h2><p>Scored separately from source coverage</p></div>
       <div id="modelMetrics" class="metrics"></div>
       <p id="modelCaption" class="coverage-note"></p>
     </section>
-
-    <details class="overview" id="overview">
-      <summary>Evidence overview · source positions, no basemap</summary>
-      <div class="overview-inner">
-        <svg id="plot" class="plot" viewBox="0 0 900 260" role="img" aria-label="Source frontage positions coloured by proposed colour family"></svg>
-        <p class="plot-caption">Dots use the reported RD coordinates. Colour indicates a model proposal when available, not a measured wall colour. Select a dot to find its record in the current filtered list.</p>
-      </div>
-    </details>
 
     <div class="section-label"><h2>Source photographs</h2><p>Search and filter without changing evidence or review state.</p></div>
     <section class="toolbar" aria-label="Filter source records">
@@ -182,6 +178,14 @@
     <div id="cards" class="cards"></div>
     <div id="empty" class="empty" hidden>No frontage records match these filters.</div>
     <div id="loadError" class="error" hidden></div>
+
+    <details class="overview" id="overview">
+      <summary>Evidence overview · source positions, no basemap</summary>
+      <div class="overview-inner">
+        <svg id="plot" class="plot" viewBox="0 0 900 260" role="img" aria-label="Source frontage positions coloured by proposed colour family"></svg>
+        <p class="plot-caption">Dots use the reported RD coordinates. Colour indicates a model proposal when available, not a measured wall colour. Select a dot to find its record in the current filtered list.</p>
+      </div>
+    </details>
 
     <footer>
       <a href="material-report.html">Prior reviewed material trial</a>
@@ -211,7 +215,7 @@
       listTitle: $('#listTitle'), pageState: $('#pageState'), previous: $('#previous'), next: $('#next'),
       plot: $('#plot'), updated: $('#updatedAt')
     };
-    const number = value => Number.isFinite(Number(value)) ? Number(value).toLocaleString() : '—';
+    const number = value => value != null && value !== '' && Number.isFinite(Number(value)) ? Number(value).toLocaleString() : '—';
     const ratio = (a, b) => Number.isFinite(Number(a)) && Number(b) > 0 ? `${(100 * Number(a) / Number(b)).toFixed(1)}%` : '—';
     const escAttr = value => String(value ?? '').replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
     const text = (node, value) => { node.textContent = value == null || value === '' ? '—' : String(value); };
@@ -233,18 +237,23 @@
       if (!s) return;
       elements.coverage.innerHTML = [
         metric(number(s.districtOwners), 'District owners'),
-        metric(`${number(s.eligibleOwners)} · ${ratio(s.eligibleOwners, s.districtOwners)}`, 'Owners with eligible source frontage'),
-        metric(`${number(s.rectifiedFrontages)} / ${number(s.eligibleFrontages)}`, 'Rectified frontages'),
-        metric(number(s.noCandidateOwners), 'Owners without a panorama candidate'),
-        metric(`${number(s.pendingFrontages)} pending · ${number(s.omittedFrontages)} omitted`, 'Rectification queue')
+        metric(`${number(s.eligibleOwners)} · ${ratio(s.eligibleOwners, s.districtOwners)}`, 'Eligible owners'),
+        metric(number(s.eligibleFrontages), 'Eligible frontages'),
+        metric(number(s.noCandidateOwners), 'No panorama candidate'),
+        metric(number(s.rectifiedFrontages), 'Rectified'),
+        metric(`${number(s.pendingFrontages)} · ${number(s.omittedFrontages)}`, 'Pending · omitted')
       ].join('');
+      const agreement = s.agreement == null ? '—' : typeof s.agreement === 'number' ? `${(s.agreement <= 1 ? s.agreement * 100 : s.agreement).toFixed(1)}%` : s.agreement;
+      const falseAcceptances = Number.isFinite(Number(s.falseAcceptances)) ? Number(s.falseAcceptances) : null;
       elements.model.innerHTML = [
         metric(number(s.classified), 'Classified proposals', 'model'),
         metric(number(s.abstained), 'Model abstentions', 'model'),
-        metric(number(s.reviewed), 'Compared with source review', 'model'),
-        metric(s.agreement == null ? '—' : typeof s.agreement === 'number' ? `${(s.agreement <= 1 ? s.agreement * 100 : s.agreement).toFixed(1)}%` : s.agreement, 'Reported agreement', 'model')
+        metric(number(s.reviewed), 'Compared references', 'model'),
+        metric(agreement, `Material + colour match · n=${number(s.agreementDenominator)}`, 'model'),
+        metric(number(s.referenceAbstentions), 'Reference abstentions', 'model'),
+        metric(falseAcceptances == null ? '—' : number(falseAcceptances), 'False accepts · reviewed mismatch', `model${falseAcceptances > 0 ? ' danger' : ''}`)
       ].join('');
-      elements.modelCaption.textContent = `Current model: ${s.model || 'not reported'} · median ${s.speedMedianSeconds == null ? '—' : `${s.speedMedianSeconds}s`}/image. Agreement is only over the report’s reviewed subset; it does not certify identity or appearance.`;
+      elements.modelCaption.textContent = `Model: ${s.model || 'not reported'} · median ${s.speedMedianSeconds == null ? '—' : `${s.speedMedianSeconds}s`}/image. Match rate is joint material and colour-family agreement among non-abstaining known references.`;
     }
 
     function statusLabel(status) {
