@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## 2026-09-26 — exhaustive district rectification and local material benchmark
+
+The former five-street source sample is replaced by an exact municipal-boundary
+queue: 4,339 eligible frontages across 3,472 of 4,155 district owners. A native
+4000px panorama profile keeps bulk evidence affordable on disk, shares immutable
+panoramas with hardlinks and checkpoints each batch. Byte hashes and resolution
+profiles prevent accidental cache mixing. Blank crops remain explicit omissions;
+network/decode/resource failures stop for retry instead of becoming permanent gaps.
+
+The independent first ten-image resolution review accepted seven for broad
+colour/material triage, limited two, and rejected a sign-obscured wall. A second
+30-image reference set was audited against every native image after incorrect
+visual descriptions were found. Its corrected development revision has five
+material-abstention cases; the original accuracy report is withdrawn. The new local-only Ollama
+benchmark binds source hashes and model digest, captures real image latency and
+raw responses, and preserves failed attempts on resume. These are evidence and
+evaluation tools; neither successful rectification nor model agreement certifies
+owner identity, exact wall colour or measured texture.
+
+The coverage-gap audit identifies 355 owners failing address/height eligibility
+and 328 passing those initial gates without an inventory frontage. The 49
+addressless owners taller than five metres form a possible isolated next test;
+no nearest-building identity guess or blanket height relaxation was introduced.
+
 
 ## 2026-09-26 — materials-first wall demo and identity-bound visual review
 

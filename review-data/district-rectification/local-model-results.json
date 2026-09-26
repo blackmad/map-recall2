@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "reference": "review-data/district-rectification/local-material-reference.json",
+  "referenceRevision": 2,
+  "scope": "Development evaluation after direct native-image re-audit; not held-out, and known subset is brick-heavy. No game publication.",
+  "experiments": [
+    {
+      "reference": {
+        "entries": 30,
+        "known": 25,
+        "unknown": 5,
+        "reviewer": "root-codex-native-image-audit",
+        "sourceIdentityUnverified": true
+      },
+      "benchmark": {
+        "model": "qwen3.5:9b",
+        "modelDigest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "experimentHash": "49f7e59c8b021c0dabef72f9d7542bc80e1b9f73b3d8020f07bb0f4db24f88ce",
+        "imageSize": 768
+      },
+      "counts": {
+        "missing": 0,
+        "error": 0,
+        "invalid": 0,
+        "modelAbstain": 0,
+        "accepted": 30
+      },
+      "agreement": {
+        "material": {
+          "correct": 25,
+          "predictionsOnKnownReference": 25,
+          "exactRate": 1
+        },
+        "colour": {
+          "correct": 23,
+          "predictionsOnKnownReference": 28,
+          "exactRate": 0.8214285714285714
+        },
+        "jointAmongAcceptedOnKnown": {
+          "correct": 21,
+          "acceptedOnKnownReference": 25,
+          "precision": 0.84
+        },
+        "modelAcceptance": {
+          "all": 30,
+          "allRate": 1,
+          "knownReference": 25,
+          "knownReferenceRate": 1
+        },
+        "falseAcceptReferenceUnknown": 5
+      },
+      "speed": {
+        "basis": "valid schema receipts only; failed and invalid samples excluded",
+        "clientLatencyMs": {
+          "count": 30,
+          "median": 2375,
+          "p90": 3760,
+          "min": 1800,
+          "max": 7250
+        },
+        "clientExcludingServerLoadMs": {
+          "count": 30,
+          "median": 2319.3207920000004,
+          "p90": 3495.003458,
+          "min": 1799.126875,
+          "max": 4131.692334
+        },
+        "serverLoadDurationMs": {
+          "count": 30,
+          "median": 0.942875,
+          "p90": 1.996542,
+          "min": 0.666667,
+          "max": 4930.679208
+        },
+        "coldLoadAtLeast1000Ms": {
+          "count": 1,
+          "median": 4930.679208,
+          "p90": 4930.679208,
+          "min": 4930.679208,
+          "max": 4930.679208
+        }
+      },
+      "gate": {
+        "targetJointPrecision": 0.95,
+        "targetFalseAcceptReferenceUnknown": 0,
+        "status": "fail",
+        "scope": "model-review agreement on broad visible-wall labels only; no source identity, texture or game-render acceptance"
+      },
+      "referenceSha256": "161d36930babc19d71348718f209e826fbbac9df1ad4025570a06c8591ab7c03"
+    },
+    {
+      "reference": {
+        "entries": 30,
+        "known": 25,
+        "unknown": 5,
+        "reviewer": "root-codex-native-image-audit",
+        "sourceIdentityUnverified": true
+      },
+      "benchmark": {
+        "model": "qwen3.5:9b",
+        "modelDigest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "experimentHash": "f12aeebdf8cdf7e43fbd68fc39cf013f00dda5b3b7f9ad341ac5249745625aad",
+        "imageSize": 768
+      },
+      "counts": {
+        "missing": 0,
+        "error": 0,
+        "invalid": 0,
+        "modelAbstain": 5,
+        "accepted": 25
+      },
+      "agreement": {
+        "material": {
+          "correct": 25,
+          "predictionsOnKnownReference": 25,
+          "exactRate": 1
+        },
+        "colour": {
+          "correct": 16,
+          "predictionsOnKnownReference": 25,
+          "exactRate": 0.64
+        },
+        "jointAmongAcceptedOnKnown": {
+          "correct": 16,
+          "acceptedOnKnownReference": 25,
+          "precision": 0.64
+        },
+        "modelAcceptance": {
+          "all": 25,
+          "allRate": 0.8333333333333334,
+          "knownReference": 25,
+          "knownReferenceRate": 1
+        },
+        "falseAcceptReferenceUnknown": 0
+      },
+      "speed": {
+        "basis": "valid schema receipts only; failed and invalid samples excluded",
+        "clientLatencyMs": {
+          "count": 30,
+          "median": 2656,
+          "p90": 4029,
+          "min": 2312,
+          "max": 4544
+        },
+        "clientExcludingServerLoadMs": {
+          "count": 30,
+          "median": 2655.232792,
+          "p90": 4028.146541,
+          "min": 2311.242709,
+          "max": 4543.08
+        },
+        "serverLoadDurationMs": {
+          "count": 30,
+          "median": 0.8395,
+          "p90": 1.035708,
+          "min": 0.688666,
+          "max": 2.385375
+        },
+        "coldLoadAtLeast1000Ms": {
+          "count": 0,
+          "median": null,
+          "p90": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "gate": {
+        "targetJointPrecision": 0.95,
+        "targetFalseAcceptReferenceUnknown": 0,
+        "status": "fail",
+        "scope": "model-review agreement on broad visible-wall labels only; no source identity, texture or game-render acceptance"
+      },
+      "referenceSha256": "161d36930babc19d71348718f209e826fbbac9df1ad4025570a06c8591ab7c03"
+    }
+  ],
+  "thinkingTrial": {
+    "status": "stopped",
+    "receipts": 6,
+    "validJSON": 0,
+    "reason": "512 output tokens exhausted by reasoning; do not count as speed/accuracy success."
+  },
+  "referenceCorrection": "Initial Terra references had incorrect visual descriptions. Root individually viewed all30 hash-bound native files, corrected gross labels and visibility, and archived v1 as withdrawn.",
+  "segmentation": {
+    "model": "facebook/mask2former-swin-large-mapillary-vistas-semantic",
+    "local": true,
+    "inputs": 30,
+    "provenance": ".cache/city-appearance/local-material-benchmark/segmentation-reference/s1.provenance.json",
+    "status": "diagnostic only; building masks include windows and do not prove wall material"
+  }
+}

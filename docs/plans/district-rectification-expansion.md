@@ -78,7 +78,7 @@ progress remain local in `.cache/city-appearance/`. The profile-specific progres
 report is under `districts/da-costa-jordaan-v1/rectification/`; it records selected,
 rectified, omitted and pending frontages. A failed batch stops with a durable error. Temporary HTTP/network, decode, cache
 and resource failures stop the batch for retry; only blank crops and explicitly
-unavailable panorama resolution become durable source omissions.
+unavailable panorama resolution (including HTTP 404/410) become durable source omissions.
 No paid model call, appearance publication, or default game change is part of this
 worker. Metadata/data changes invalidate the frozen selection rather than silently
 reassigning a batch to different buildings.
@@ -90,11 +90,17 @@ The remaining batches are in progress; no bulk visual acceptance is implied.
 
 ## Classification after coverage
 
-Qwen3.5-9B is a plausible local vision candidate, not yet evaluated on these crops.
+Qwen3.5-9B has now been run locally on 30 source-bound crops. See
+`review-data/district-rectification/local-model-results.json` for measured results.
 The current machine is an M4 Pro with 48 GB RAM and Ollama installed. The official
 Ollama 9B Q4 model is about 6.6 GB; memory fits, but disk competes with new imagery.
-No model was downloaded as part of this rectification work. Benchmark against
-source-bound references and explicit occlusion/abstention cases before adoption.
+The 6.6 GB model is installed. Baseline median latency was 2.375 seconds/image
+(p90 3.760 seconds). It overaccepted uncertain views. A conservative prompt
+withheld all five uncertain cases on the corrected development reference, but
+colour-family agreement remains below the rollout gate. This brick-heavy sample
+does not validate performance on plaster, stone or concrete. The reference itself
+required direct native-image correction; the original accuracy score is withdrawn.
+A diverse 100-source test and obstruction masks are the next checks.
 Local inference has no per-image API fee; it still consumes machine time/power.
 Source: https://ollama.com/library/qwen3.5:9b .
 

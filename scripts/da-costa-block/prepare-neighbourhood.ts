@@ -180,7 +180,7 @@ for(const target of targets.slice(0,limit)){
   }catch(e){
     // Only deterministic source-quality failures may become durable omissions.
     // Network, cache, decode and resource failures must remain retryable on resume.
-    if(!(e instanceof Error)||!['blank-crop','panorama-resolution-unavailable'].includes(e.message))throw e;
+    if(!(e instanceof Error)||!['blank-crop','panorama-resolution-unavailable','panorama-http-404','panorama-http-410'].includes(e.message))throw e;
     omitted.push({elevationId:wall.elevationId,buildingId:b.id,reason:String(e)});console.log(`omit ${b.id}: ${e}`);
   }
   await fs.writeFile(path.join(root,'manifest.json'),JSON.stringify({version:VERSION,visibility:VISIBILITY_VERSION,sourceHash,sourceProfile,camera:AMSTERDAM_WORLD_ALIGNED,generatedAt,origin:block.origin,bounds:block.bounds,records,omitted,candidates:targets.length,downloads:sourceDownloads+downloads},null,2));
