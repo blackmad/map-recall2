@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "sampleSha256": "5711c358649d7f8d0309150bc05629f6846a65e0c617a459452bbf40b820134c",
+  "resolutions": {
+    "0363100012237236": {
+      "selectedObservationId": "0363100012237236_e_07oi4ua",
+      "reason": "The 2025 crop clearly shows the same broad frontage painted pale blue-white; the 2023 grey-brown observation reflects the older appearance. Select the newer unobstructed wall.",
+      "reviewer": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "gradedAt": "2026-09-26T17:50:13.534Z",
+      "sourceSha256": "769c58df33953cac54e174af017fab3bda718cdf0a132d042f49b4d36913d9ff"
+    },
+    "0363100012174168": {
+      "selectedObservationId": null,
+      "reason": "The two simultaneous crops show different constituent street facades of a four-address building: dark brown lower/side brick versus light upper wall. A single colour would conflate distinct surfaces.",
+      "reviewer": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "gradedAt": "2026-09-26T17:50:13.534Z"
+    },
+    "0363100012174295": {
+      "selectedObservationId": "0363100012174295_e_1gfas67",
+      "reason": "The later daylight crop exposes the buff brick frontage; the earlier narrow image is severely underexposed and its near-black sampled patch does not represent the daylight wall.",
+      "reviewer": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "gradedAt": "2026-09-26T17:50:13.534Z",
+      "sourceSha256": "c6885c0ecf5b8c4d31b2f5692474a49078d208570018cdf5f6489506846480b9"
+    },
+    "0363100012169605": {
+      "selectedObservationId": null,
+      "reason": "The observations show a dark front facade and a light buff side facade of the same property. Both are visible wall materials, so neither single colour represents the building as a whole.",
+      "reviewer": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "gradedAt": "2026-09-26T17:50:13.534Z"
+    },
+    "0363100012152830": {
+      "selectedObservationId": "0363100012152830_e_136cly5",
+      "reason": "The 2025 image shows a broad, exposed neutral-grey brick frontage despite a central pole. The older image is substantially darker and warmer under overcast light; use the newer sampled wall.",
+      "reviewer": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "gradedAt": "2026-09-26T17:50:13.534Z",
+      "sourceSha256": "d82cf9f54c6b3fd6572b72fdb27ccb812eb209298b9e6c134752491c2d2cd33e"
+    },
+    "0363100012168967": {
+      "selectedObservationId": "0363100012168967_e_0dwlhlt",
+      "reason": "The second crop exposes a large continuous warm red-brown brick wall. The first is a narrow, tree- and arch-obscured slice whose dark olive sample is not representative.",
+      "reviewer": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "gradedAt": "2026-09-26T17:50:13.534Z",
+      "sourceSha256": "7d72679c43b555ccc41169b67a03bbab7a0f183cb59028b4081536e72fad766e"
+    },
+    "0363100012170202": {
+      "selectedObservationId": "0363100012170202_e_0xpak8i",
+      "reason": "The 2024-12-17 crop shows the broader continuous red-brown brick frontage in even light. The prior narrow gabled view is bright and pale; its measured value is not as representative.",
+      "reviewer": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "gradedAt": "2026-09-26T17:50:13.534Z",
+      "sourceSha256": "c917c60d5e52d4f84a7261d97232acd9dc44e2f4c5f21b657622f17acca7feac"
+    },
+    "0363100012173863": {
+      "selectedObservationId": null,
+      "reason": "The building spans many street addresses and the crops depict materially different dark and pale brick frontages. No single approved observation represents all visible facades safely.",
+      "reviewer": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "gradedAt": "2026-09-26T17:50:13.534Z"
+    },
+    "0363100012174521": {
+      "selectedObservationId": "0363100012174521_e_06zkfqe",
+      "reason": "The newer crop presents the dark exposed brick wall clearly. The older crop has strong sun flare across the wall and yields an implausibly pale measurement.",
+      "reviewer": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "gradedAt": "2026-09-26T17:50:13.534Z",
+      "sourceSha256": "8be947148cb64b71cc6dc5cdb47bc82c7f5c81c8a8ec20963923252820e9a1c8"
+    },
+    "0363100012174562": {
+      "selectedObservationId": null,
+      "reason": "The narrow front wall is grey-green while the side wall is a broad warm orange brick plane. These are distinct visible facades, so one colour cannot represent the whole building.",
+      "reviewer": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "gradedAt": "2026-09-26T17:50:13.534Z"
+    }
+  }
+}
