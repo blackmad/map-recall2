@@ -345,7 +345,9 @@
     "review:wall-materials:report": "tsx scripts/review/build-wall-material-report.ts",
     "review:wall-materials:focus": "tsx scripts/review/focus-wall-material-captures.ts",
     "review:wall-materials:cohort": "tsx scripts/review/wall-colour-visual-loop.ts",
-    "review:wall-materials:city-audit": "tsx scripts/review/audit-city-wall-material-readiness.ts"
+    "review:wall-materials:city-audit": "tsx scripts/review/audit-city-wall-material-readiness.ts",
+    "rectify:district": "node --import tsx scripts/city-appearance/run-district-rectification.mjs",
+    "test:panorama-file-cache": "tsx scripts/da-costa-block/panorama-file-cache.test.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

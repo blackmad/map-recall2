@@ -123,14 +123,15 @@ export async function planDistrictCoverageQueue(area, { districtConfigFile = 'sc
     noEligibleImageryOwners:[...ownerIds].filter(id => !frontageOwnerIds.has(id)).sort() };
 }
 
-export async function selectPanoramaDistrictCoverage(area, { districtConfigFile, batchSize = 100, batchIndex = 0 } = {}) {
+export async function selectPanoramaDistrictCoverage(area, { districtConfigFile, batchSize = 100, batchIndex = 0, sourceProfile = 'full' } = {}) {
+  if(!['full','material-4000'].includes(sourceProfile))throw Error('Unknown panorama source profile');
   const queue = await planDistrictCoverageQueue(area, { districtConfigFile });
   const { records, batches } = districtCoverageBatch(queue.records, batchSize, batchIndex);
   const identity = { version:'panorama-source-district-coverage-selection/1', mode:'district-coverage',
     areaId:area.id, areaConfigHash:area.configHash, runHash:queue.source.runHash,
     blockSha256:queue.source.blockSha256, inventorySha256:queue.source.inventorySha256,
     districtId:queue.district.id, districtConfigHash:queue.district.configHash, queueHash:queue.queueHash,
-    batchSize, batchIndex, batches, eligibleFrontages:queue.eligibleFrontages, districtOwners:queue.districtOwners,
+    ...(sourceProfile==='full'?{}:{sourceProfile}),batchSize, batchIndex, batches, eligibleFrontages:queue.eligibleFrontages, districtOwners:queue.districtOwners,
     frontageOwners:queue.frontageOwners,
     elevationIds:records.map(record => record.id) };
   const report = { ...identity, selectionHash:digest(identity), cap:records.length, records,
@@ -148,7 +149,7 @@ export async function selectPanoramaFromArgs(area, args) {
   const flag = name => args.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
   const mode = flag('mode') ?? 'audit';
   if (mode === 'district-coverage') return selectPanoramaDistrictCoverage(area, {
-    districtConfigFile:flag('district-config'), batchSize:Number(flag('batch-size') ?? 100), batchIndex:Number(flag('batch-index') ?? 0),
+    sourceProfile:flag('source-profile')??'full', districtConfigFile:flag('district-config'), batchSize:Number(flag('batch-size') ?? 100), batchIndex:Number(flag('batch-index') ?? 0),
   });
   if (!['audit', 'coverage'].includes(mode)) throw Error('Mode must be audit, coverage, or district-coverage');
   const streets = flag('streets')?.split(',').map(value => value.trim()).filter(Boolean);

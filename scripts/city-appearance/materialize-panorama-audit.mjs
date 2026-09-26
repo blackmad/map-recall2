@@ -11,11 +11,11 @@ import { loadAreaConfig } from '../da-costa-block/area-config.mjs';
 import { atomicJson, digest } from '../da-costa-block/pipeline-state.mjs';
 import { DEFAULT_AREA, selectPanoramaFromArgs } from './select-panorama-audit.mjs';
 
-async function reusePool(){
-  const pool=path.resolve('.cache/city-appearance/shared-panoramas');await fs.mkdir(pool,{recursive:true});
-  const roots=['.cache/da-costa-neighbourhood/panoramas'];
+async function reusePool(sourceProfile='full'){
+  const pool=path.resolve(sourceProfile==='full'?'.cache/city-appearance/shared-panoramas':'.cache/city-appearance/shared-panoramas-material-4000');await fs.mkdir(pool,{recursive:true});
+  const roots=sourceProfile==='full'?['.cache/da-costa-neighbourhood/panoramas']:[];
   const areaRoot='.cache/city-appearance/areas';
-  for(const name of await fs.readdir(areaRoot)){const root=path.join(areaRoot,name,'panorama-audit');let selections;try{selections=await fs.readdir(root);}catch(e){if(e.code==='ENOENT')continue;throw e;}for(const selection of selections)roots.push(path.join(root,selection,'evidence/panoramas'));}
+  for(const name of await fs.readdir(areaRoot)){const root=path.join(areaRoot,name,'panorama-audit');let selections;try{selections=await fs.readdir(root);}catch(e){if(e.code==='ENOENT')continue;throw e;}for(const selection of selections){const manifest=await fs.readFile(path.join(root,selection,'selection.json'),'utf8').then(JSON.parse).catch(e=>{if(e.code==='ENOENT')return null;throw e;});if((manifest?.sourceProfile??'full')===sourceProfile)roots.push(path.join(root,selection,'evidence/panoramas'));}}
   for(const root of roots){let names;try{names=await fs.readdir(root);}catch(e){if(e.code==='ENOENT')continue;throw e;}for(const name of names.filter(n=>n.endsWith('.jpg'))){try{await fs.link(path.join(root,name),path.join(pool,name));}catch(e){if(e.code!=='EEXIST')throw e;}}}
   return pool;
 }
@@ -24,6 +24,7 @@ const flag = name => process.argv.find(value => value.startsWith(`--${name}=`))?
 
 export async function auditEvidence(selection, evidenceRoot) {
   const manifestPath = path.join(evidenceRoot, 'manifest.json'), bytes = await fs.readFile(manifestPath), manifest = JSON.parse(bytes);
+  if((selection.sourceProfile??'full')!==(manifest.sourceProfile??'full'))throw Error('Evidence panorama source profile mismatch');
   const expected = new Set(selection.records.map(record => record.id)), actual = new Set(manifest.records.map(record => record.id));
   const omitted = new Set(manifest.omitted.map(record => record.elevationId.replaceAll(':', '_')));
   if (actual.size !== manifest.records.length || omitted.size !== manifest.omitted.length ||
@@ -67,7 +68,7 @@ async function main() {
   await fs.writeFile(elevationFile, `${selection.elevationIds.join('\n')}\n`);
   const args = ['--import', 'tsx', 'scripts/da-costa-block/prepare-neighbourhood.ts', `--area-config=${path.resolve(flag('area-config') ?? DEFAULT_AREA)}`,
     `--block=${pipeline.jobs.compile.output.blockPath}`, `--out=${evidenceRoot}`, `--limit=${selection.cap}`,
-    `--downloads=${selection.uniqueProposedPanoramas}`, `--reuse-panoramas=${await reusePool()}`, `--elevation-file=${elevationFile}`];
+    `--downloads=${selection.uniqueProposedPanoramas}`, `--reuse-panoramas=${await reusePool(selection.sourceProfile??'full')}`, `--elevation-file=${elevationFile}`,`--source-profile=${selection.sourceProfile??'full'}`];
   await execFileAsync(process.execPath, args, { cwd: process.cwd(), maxBuffer: 8 * 1024 * 1024 });
   const report = await auditEvidence(selection, evidenceRoot);
   await atomicJson(path.join(selected.destination, 'source-audit.json'), report);

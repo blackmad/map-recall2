@@ -1,0 +1,286 @@
+{
+  "version": 1,
+  "reviewer": "gpt-5.6-terra",
+  "scope": "Native 4000px full/context compared with corresponding 8000px crops; broad triage suitability only",
+  "selectionHash": "c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f",
+  "manifestSha256": "b882f1733d09811c95c0d634236a207e31f4341d08486bdf2f3eba6fdb3b04f9",
+  "counts": {
+    "broad-triage-usable": 7,
+    "limited": 2,
+    "reject-obstructed": 1
+  },
+  "sourceIdentityVerified": false,
+  "fineTextureAccepted": false,
+  "entries": [
+    {
+      "id": "0363100012063298_e_0neqgrr",
+      "buildingId": "0363100012063298",
+      "address": "Bilderdijkkade 23",
+      "verdict": "broad-triage-usable",
+      "reason": "Broad wall hue/material readable; fine texture and exact source-to-owner identity are not established.",
+      "images": {
+        "full": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012063298_e_0neqgrr-full.jpg",
+          "sha256": "be61b185b8e1b1923185cdcca6dc8c3d38cdee3cfa2262928788e006871657be",
+          "panoramaSha256": "68bc990d7fe998a0fb90c70982cef2d405e9d29d496c285a8437b826d0b7690a",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        },
+        "context": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012063298_e_0neqgrr-context.jpg",
+          "sha256": "f4116c9c73e02e793842aea25298c06835de6b53a471da4f1011de598403c230",
+          "panoramaSha256": "68bc990d7fe998a0fb90c70982cef2d405e9d29d496c285a8437b826d0b7690a",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        }
+      }
+    },
+    {
+      "id": "0363100012065903_e_07n48hj",
+      "buildingId": "0363100012065903",
+      "address": "Bilderdijkpark 18",
+      "verdict": "limited",
+      "reason": "Branches or shadow limit judgement to broad neutral/dark family.",
+      "images": {
+        "full": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012065903_e_07n48hj-full.jpg",
+          "sha256": "6e616b97dcb286a1bbab0d5a4f2c6bb51d4d92db45df61da79e60c52454b3d81",
+          "panoramaSha256": "45133fbdc840b63de796842822873e831da5282f138e3bfc228aef06d3fb7e92",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        },
+        "context": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012065903_e_07n48hj-context.jpg",
+          "sha256": "31410a0112809d0c8c40473cdde6a954687b1b30be7c271ff3fbb45ccf18d705",
+          "panoramaSha256": "45133fbdc840b63de796842822873e831da5282f138e3bfc228aef06d3fb7e92",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        }
+      }
+    },
+    {
+      "id": "0363100012063077_e_11in59c",
+      "buildingId": "0363100012063077",
+      "address": "Bilderdijkpark 13",
+      "verdict": "broad-triage-usable",
+      "reason": "Broad wall hue/material readable; fine texture and exact source-to-owner identity are not established.",
+      "images": {
+        "full": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012063077_e_11in59c-full.jpg",
+          "sha256": "aa876245d5466884bbd2f5d55c347a07a990546a000402b61a0127cb52639900",
+          "panoramaSha256": "943c3605b18329caa49f3fdde64fd19b95ef5d46330f15a204d00cb6be8d4657",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        },
+        "context": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012063077_e_11in59c-context.jpg",
+          "sha256": "64b99cd4b39326f75a3d93f565d16b44353066dcdf787e2f382218a1ef6f5cdf",
+          "panoramaSha256": "943c3605b18329caa49f3fdde64fd19b95ef5d46330f15a204d00cb6be8d4657",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        }
+      }
+    },
+    {
+      "id": "0363100012061963_e_1evm7i7",
+      "buildingId": "0363100012061963",
+      "address": "Bilderdijkstraat 13",
+      "verdict": "limited",
+      "reason": "Branches or shadow limit judgement to broad neutral/dark family.",
+      "images": {
+        "full": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012061963_e_1evm7i7-full.jpg",
+          "sha256": "793ba0fe8ec6f6a0a5a9a93e007f1c87815977c549e8d9f4bfa2a22d11b26b5e",
+          "panoramaSha256": "97b8ee8383cd97c4d8cc950b93daf727ed45cb75e5e8b5eef2ce9fe9d9016acd",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        },
+        "context": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012061963_e_1evm7i7-context.jpg",
+          "sha256": "65de0d1b62681510a2f74cadc053ddf6ccc15d84c7b64cbb335291fa7ef08aad",
+          "panoramaSha256": "97b8ee8383cd97c4d8cc950b93daf727ed45cb75e5e8b5eef2ce9fe9d9016acd",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        }
+      }
+    },
+    {
+      "id": "0363100012065764_e_16kbln1",
+      "buildingId": "0363100012065764",
+      "address": "Bilderdijkstraat 44",
+      "verdict": "broad-triage-usable",
+      "reason": "Broad wall hue/material readable; fine texture and exact source-to-owner identity are not established.",
+      "images": {
+        "full": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012065764_e_16kbln1-full.jpg",
+          "sha256": "fbed644418ec574f5631e540cc2ef4a5cd0b194f02a5f69471f3180027d26bb0",
+          "panoramaSha256": "8655b659fc7e45758b30b8e33972bcaaf911e445a751a90baa2c2d82f2362859",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        },
+        "context": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012065764_e_16kbln1-context.jpg",
+          "sha256": "8e4a66f2d80cc5bee7f8386aa96c6dd82aaade1177646da98e061a491fdf2e10",
+          "panoramaSha256": "8655b659fc7e45758b30b8e33972bcaaf911e445a751a90baa2c2d82f2362859",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        }
+      }
+    },
+    {
+      "id": "0363100012064444_e_1l92znq",
+      "buildingId": "0363100012064444",
+      "address": "Bilderdijkstraat 76",
+      "verdict": "broad-triage-usable",
+      "reason": "Broad wall hue/material readable; fine texture and exact source-to-owner identity are not established.",
+      "images": {
+        "full": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012064444_e_1l92znq-full.jpg",
+          "sha256": "7572aa41618321a4a33a7be5438088890f498ca65ed6ac533779a81498a44a7e",
+          "panoramaSha256": "ca6d982071a833e1956cf50e863859474fb632998ead42636870df25c72af73e",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        },
+        "context": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012064444_e_1l92znq-context.jpg",
+          "sha256": "8625c914a6330ff5e7376cc1b91cb96b375905fa57d96362ca8dfaf8b559eb82",
+          "panoramaSha256": "ca6d982071a833e1956cf50e863859474fb632998ead42636870df25c72af73e",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        }
+      }
+    },
+    {
+      "id": "0363100012062260_e_1vze6ea",
+      "buildingId": "0363100012062260",
+      "address": "Da Costakade 130",
+      "verdict": "broad-triage-usable",
+      "reason": "Broad wall hue/material readable; fine texture and exact source-to-owner identity are not established.",
+      "images": {
+        "full": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012062260_e_1vze6ea-full.jpg",
+          "sha256": "88ca39a28d355596c8224ad1466175263afbff06ea53b86a86333b4dc1c64850",
+          "panoramaSha256": "88ba75279633bd4c7ce6629fb20c6b43c4dad04cd838d260d847ec6e47762b71",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        },
+        "context": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012062260_e_1vze6ea-context.jpg",
+          "sha256": "74adf04b58f08eb7b15bb440d7a16cb0579a48a629f3bd126b3a0201d0a1035b",
+          "panoramaSha256": "88ba75279633bd4c7ce6629fb20c6b43c4dad04cd838d260d847ec6e47762b71",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        }
+      }
+    },
+    {
+      "id": "0363100012065246_e_1k9wdlf",
+      "buildingId": "0363100012065246",
+      "address": "Da Costastraat 28",
+      "verdict": "broad-triage-usable",
+      "reason": "Broad wall hue/material readable; fine texture and exact source-to-owner identity are not established.",
+      "images": {
+        "full": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012065246_e_1k9wdlf-full.jpg",
+          "sha256": "3ca2873139c1ec9fe55d67fd5f1304d49cf531aa733c4ab87b5064eea7502b45",
+          "panoramaSha256": "68e4edfff249b25f02eeb8588ed5129566ac531b089fde5a32a107b060b6b9bb",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        },
+        "context": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012065246_e_1k9wdlf-context.jpg",
+          "sha256": "2af4b74e158ef7cc818001354f4e270d3e4e97fdb7a279b8b233cb3194d0d26f",
+          "panoramaSha256": "68e4edfff249b25f02eeb8588ed5129566ac531b089fde5a32a107b060b6b9bb",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        }
+      }
+    },
+    {
+      "id": "0363100012064291_e_06e507d",
+      "buildingId": "0363100012064291",
+      "address": "De Clercqstraat 70",
+      "verdict": "broad-triage-usable",
+      "reason": "Broad wall hue/material readable; fine texture and exact source-to-owner identity are not established.",
+      "images": {
+        "full": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012064291_e_06e507d-full.jpg",
+          "sha256": "11386d3af3a632f6a4b51d8ef48d2016329719a26096c9e939854ab6bf48a4b8",
+          "panoramaSha256": "276344be4198947d853d5fa379517050ded2ce2120754923eb4be98cae8dd300",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        },
+        "context": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012064291_e_06e507d-context.jpg",
+          "sha256": "96e09b48bd46a36550856d1b885ecfb6ae506d5f1cdd27ce57e58e88002e398f",
+          "panoramaSha256": "276344be4198947d853d5fa379517050ded2ce2120754923eb4be98cae8dd300",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        }
+      }
+    },
+    {
+      "id": "0363100012061715_e_06bu361",
+      "buildingId": "0363100012061715",
+      "address": "Kwakersplein 10",
+      "verdict": "reject-obstructed",
+      "reason": "Road signs dominate the target wall; no representative wall region for colour.",
+      "images": {
+        "full": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012061715_e_06bu361-full.jpg",
+          "sha256": "927589cd418b789259210825343e10e18e8cb44a042bb95d6036e54ba57ebf74",
+          "panoramaSha256": "b862c3b237ef1001416de0941291d7dfdafbbc5fe68d1826ec4a70a82748c9ad",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        },
+        "context": {
+          "file": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/images/0363100012061715_e_06bu361-context.jpg",
+          "sha256": "7cc7e9f4e5d9d5671dc8c59e60521d6e4d0046a2d8e088b5f02ee12ed7fd8210",
+          "panoramaSha256": "b862c3b237ef1001416de0941291d7dfdafbbc5fe68d1826ec4a70a82748c9ad",
+          "sourceDimensions": [
+            4000,
+            2000
+          ]
+        }
+      }
+    }
+  ]
+}
