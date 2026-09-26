@@ -1,0 +1,137 @@
+{
+  "reviewer": "gpt-5.6-terra",
+  "pass": "material-trial-3",
+  "captureManifestSha256": "c8cabbc8176be002b392f29a636b8c7c0e26fe375aed8fff3a3493bd00378a76",
+  "entries": [
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "materialId": "creamrender",
+      "verdict": "revise",
+      "reason": "Magenta confirms the narrow left-hand facade is the owner. Its trial material reads a muted dark grey-olive/brown at both angles, while the source facade is a pale cream-ochre render. This is a broad family and brightness mismatch, independent of texture detail.",
+      "imageSha256": {
+        "current-front": "6eb661903940048b5b6b9d64782037818b0f23f057b0a1684f3b2ff132c2096d",
+        "current-oblique": "45c60bf22439aaa401b7e22e4049f82e96c0fe6e9c205bccef806f8571f8dbf9",
+        "preview-front": "ddf08f607995e88bbe17a386f9b42609411ded3d017873fcc3370013fb30c7fd",
+        "preview-oblique": "f3088442b5fc6b05d154f8e8c7aa10b066cbb7202c77dda610b20a2a034f33e8",
+        "identity": "87846a44b65192008aec09ccf00a32011e4acaad19abfe470fdf544ab75cb972",
+        "panel": "22a0cb146e99bbe1be4f6c38d63a0fe41a218067f8b02bfb03708b8bb4797555"
+      },
+      "dimensions": {
+        "identity": "verified by the magenta owner overlay; it is the narrow facade immediately left of the larger golden neighbour.",
+        "colourFamily": "trial is grey-olive/brown; source is pale cream-ochre.",
+        "brightness": "trial is substantially darker than the source facade.",
+        "texture": "smooth broad material is acceptable in principle; capture scale cannot assess finer surface detail.",
+        "front": "owner is visible beside the golden neighbour and its dark neutral material is legible.",
+        "oblique": "owner remains distinguishable and retains the too-dark neutral reading.",
+        "occlusion": "low-to-moderate; a tree is nearby but does not block the marked facade."
+      }
+    },
+    {
+      "index": 15,
+      "buildingId": "0363100012174169",
+      "observationId": "0363100012174169_e_1w30ns5",
+      "sourceSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
+      "materialId": "redbrick",
+      "verdict": "unresolved",
+      "reason": "Magenta identifies a very narrow owner behind a tall dark foreground mass. The normal trial views do not expose enough of its wall to evaluate broad material family after the pass-2 changes.",
+      "imageSha256": {
+        "current-front": "f4d5bba3ee16186933b1c5efb8c7776fd43e52d88b6d4333631bd488096487a1",
+        "current-oblique": "301ddd17479bca8ffc7e4bfe2b702733b029e803b8cd1e43736ec3374845398e",
+        "preview-front": "6984142b359b755879c43b553aa723142aa1776dad3d84c273b17beff9c726dd",
+        "preview-oblique": "1ed4af34c1179734cb035698a289d7edb4e0a62fef2f78078097483a41e534f3",
+        "identity": "fdb8827baccd37b2cf075d6147d60cae8b79bbce1385dff982d6efbe92f3057c",
+        "panel": "d56a895fa5c7bd9b8d940443362daaee3f5e5ce4278f86ccc2c4a32559412dd0"
+      },
+      "dimensions": {
+        "identity": "verified by the magenta strip, but the selected extrusion is mostly occluded in normal views.",
+        "colourFamily": "not assessable: normal material surface is not sufficiently exposed.",
+        "brightness": "not assessable.",
+        "texture": "not assessable; the refined course ratio is below usable visibility here.",
+        "front": "foreground dark mass leaves only a sliver of the owner.",
+        "oblique": "oblique camera still does not reveal a source-comparable wall area.",
+        "occlusion": "high: foreground LoD1 mass hides most of the marked owner."
+      }
+    },
+    {
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "observationId": "0363100012094649_e_16jqzp7",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "materialId": "creamrender",
+      "verdict": "unresolved",
+      "reason": "Magenta confirms the owner, but it sits behind tree crowns and intervening roofs. Neither normal view supplies an exposed wall patch for a broad cream-render judgment.",
+      "imageSha256": {
+        "current-front": "00af6885684f00194731c291c99a741c2752087f9674bcb148a60640d2e21e2b",
+        "current-oblique": "18fbfdcdaa2dca2e3b924d905045b1ea6f4c32a9697e1757441e0ab6bbedb5b8",
+        "preview-front": "3c65f09fc8e3ed504d817e02086b23fc400e1321bcc68b5c20b13b3f2fd29863",
+        "preview-oblique": "2c1fee57142915f52ea064daf8a26093082b06d38a12725e2c6206aa8c9858b4",
+        "identity": "9b5ac3cc6d9b6ec3eabeacfe36ae9334968e23e83ebff01a9e0ed94bbb545f86",
+        "panel": "d91823c9e0d7b29e2de919645ba6a8a34ceeff456487d49d64add0cc5edb3711"
+      },
+      "dimensions": {
+        "identity": "verified by magenta overlay beneath/behind the two foreground trees.",
+        "colourFamily": "not assessable.",
+        "brightness": "not assessable.",
+        "texture": "not assessable.",
+        "front": "tree crowns and roof planes cover the marked owner.",
+        "oblique": "overhead oblique view still shows roofs/neighbours rather than target wall.",
+        "occlusion": "high: the identity-marked extrusion is obscured by trees and adjacent masses."
+      }
+    },
+    {
+      "index": 30,
+      "buildingId": "0363100012236796",
+      "observationId": "0363100012236796_e_1wk1kml",
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "materialId": "whiterender",
+      "verdict": "accepted-material-family",
+      "reason": "Magenta confirms the central owner. In both normal views it renders as a clean near-white smooth facade, consistent with the source building\u2019s broad white-render family. This accepts only broad material quality, not detailed facade or geometry equivalence.",
+      "imageSha256": {
+        "current-front": "7f88dd933294ddc3389d662d398f0fc675c270c1004c95624dcd065362d1beec",
+        "current-oblique": "6085996b19005ba5f499feab5b0a42e54e6f9496d43e6989c5eb485983b5bde9",
+        "preview-front": "79820f7111bf95fd0dc756277b468f8625dc356c96bf54bc21387cc3a1e235cf",
+        "preview-oblique": "c62539ca4404b456ed3d8b749306b34339b91cf30e6c3ce442f605555d10618d",
+        "identity": "1e5e53ab59b268495182783dd0f02671b9b601c0836102e66750f799b4659e29",
+        "panel": "4a7111943ee03be09fd5653ea840f423f410bde8b6d1f1a19d63c0b452dbe7e6"
+      },
+      "dimensions": {
+        "identity": "verified by magenta overlay on the central canal-side facade.",
+        "colourFamily": "near-white neutral, consistent with source.",
+        "brightness": "bright but retains separation from the pale ground and sky/water context.",
+        "texture": "smooth render has no fabricated brick-course pattern.",
+        "front": "distinct white facade is legible between darker neighbours.",
+        "oblique": "near-white smooth reading remains stable from oblique view.",
+        "occlusion": "low; street-edge trees cover only small portions."
+      }
+    },
+    {
+      "index": 64,
+      "buildingId": "0363100012157926",
+      "observationId": "0363100012157926_e_012eimg",
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "materialId": "brownbrick",
+      "verdict": "accepted-material-family",
+      "reason": "Magenta verifies the centrally visible owner. The pass-3 trial reads as a restrained warm brown facade in both normal views, which is consistent with the source\u2019s broad brown-brick family. The distance cannot validate individual course fidelity, so acceptance is limited to family, not measured texture.",
+      "imageSha256": {
+        "current-front": "d42e7650c5701144977b41139b96185fe114e3071192faaf385cafb3382fc74e",
+        "current-oblique": "a14883ece485d4ef377c1af9aef417411bdd8c11235aa48e3eeeb1bceb787103",
+        "preview-front": "04c80b6ac43a9059210718e4f8c38eb382e0f4313c21417b4f76722db42e916d",
+        "preview-oblique": "6e2f8f6a8a729f6b87082ce530c05cde389746c904595739be1eeae212f43d97",
+        "identity": "172b1483014680a27e25e6c870ab416a682b6950a2e672ed22c83ae6e65211d3",
+        "panel": "d47d6f19a51925745d81a1df5d40e2c540789767a252e739f3d3599041d93ec2"
+      },
+      "dimensions": {
+        "identity": "verified by magenta overlay on the central mid-height facade.",
+        "colourFamily": "restrained warm brown, consistent with source broad family.",
+        "brightness": "trial is close to the source\u2019s mid-dark brown reading at district scale.",
+        "texture": "no oversized course artifact is legible at this camera distance after the pass-2 scale change; no measured texture claim is made.",
+        "front": "marked owner has a readable brown material against grey and cream neighbours.",
+        "oblique": "brown family remains stable in the oblique district view.",
+        "occlusion": "moderate; tree/adjacent masses limit detail but not broad colour-family reading."
+      }
+    }
+  ]
+}
