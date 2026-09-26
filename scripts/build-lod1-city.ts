@@ -73,6 +73,17 @@ const reportFile = path.join(stagingDir, 'lod1-city.report.json');
 type Geometry = FootprintGeometry;
 type Feature = { properties: Record<string, unknown>; geometry: Geometry };
 
+/**
+ * Semantic labels stay tied to the matched OSM footprint.  They do not inherit
+ * from paint donors, because a surrounding coloured outline is no evidence
+ * that this BAG mass is a church, museum, or heritage building.
+ */
+const semanticTags = (properties: Record<string, unknown> | undefined): Record<string, string> =>
+  Object.fromEntries(
+    (['building', 'amenity', 'tourism', 'heritage'] as const)
+      .flatMap(key => typeof properties?.[key] === 'string' && properties[key] !== '' ? [[key, properties[key]]] : []),
+  );
+
 if (!(await stat(bagFile).catch(() => null))) {
   process.stderr.write(`${bagFile} is missing — run \`npm run build:bag-buildings\` first\n`);
   process.exit(1);
@@ -223,6 +234,7 @@ for await (const rawLine of reader) {
       // from a coloured outline that contains this pand when the matched way
       // itself has no paint (Oosterdokskade office).
       osmId: matched?.osmId ?? null,
+      ...semanticTags(matched?.properties),
       colour: inherited.colour ?? matched?.properties.colour ?? null,
       roofColour: inherited.roofColour ?? matched?.properties.roofColour ?? null,
       roofShape: inherited.roofShape ?? matched?.properties.roofShape ?? null,
