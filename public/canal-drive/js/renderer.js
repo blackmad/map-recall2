@@ -451,6 +451,12 @@ class Renderer {
     ctx.scale(z, z);
     ctx.rotate(screenAngle);
 
+    if (!isPitched3d) {
+      this._drawTopDownBike(ctx);
+      ctx.restore();
+      return;
+    }
+
     // A compact top-down omafiets and rider, with a deliberately distinct
     // front (handlebars, lamp and the rider's head). It stays screen-sized so
     // it remains navigation-readable among tall buildings.
@@ -485,9 +491,73 @@ class Renderer {
     }
     ctx.fillStyle = '#F2C7A5';
     ctx.beginPath(); ctx.arc(9, 0, 4.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = '#F4C542'; ctx.strokeStyle = '#553E00'; ctx.lineWidth = 1.2;
-    ctx.beginPath(); ctx.arc(18, 0, 2.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
     ctx.restore();
+  }
+
+  /** Overhead silhouette, facing +X. Tires are seen edge-on; the rider's
+   * shoulders and swept handlebars make the front readable at map scale. */
+  _drawTopDownBike(ctx) {
+    const ink = '#203638';
+    const paper = '#FFFCF4';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = 'rgba(19,37,39,.18)';
+    ctx.beginPath();
+    ctx.ellipse(1, 3, 25, 10, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Outline the actual silhouette rather than putting a badge over it.
+    const stroke = (points, color, width) => {
+      ctx.beginPath();
+      points.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.stroke();
+    };
+    stroke([[-22, 0], [23, 0]], paper, 9);
+    stroke([[-22, 0], [-12, 0]], ink, 5);
+    stroke([[13, 0], [23, 0]], ink, 5);
+    stroke([[-12, 0], [13, 0]], '#B85E45', 4);
+    stroke([[-20, 0], [-13, 0]], '#829897', 1);
+    stroke([[16, 0], [22, 0]], '#829897', 1);
+
+    const bars = [[10, -10], [14, -8], [14, 8], [10, 10]];
+    stroke(bars, paper, 6);
+    stroke(bars, ink, 3);
+
+    // Legs flank the frame, with a small rear saddle visible behind the coat.
+    stroke([[-10, -3], [-3, -7], [2, -5]], paper, 6);
+    stroke([[-10, 3], [-3, 7], [2, 5]], paper, 6);
+    stroke([[-10, -3], [-3, -7], [2, -5]], ink, 3.5);
+    stroke([[-10, 3], [-3, 7], [2, 5]], ink, 3.5);
+    ctx.fillStyle = ink;
+    ctx.beginPath(); ctx.ellipse(-9, 0, 4, 3, 0, 0, Math.PI * 2); ctx.fill();
+
+    // Bent arms connect the broad shoulders to the grips.
+    for (const side of [-1, 1]) {
+      const arm = [[2, side * 5], [6, side * 9], [10, side * 9]];
+      stroke(arm, paper, 6);
+      stroke(arm, '#187D86', 3.5);
+    }
+    ctx.beginPath();
+    ctx.moveTo(-8, -3);
+    ctx.quadraticCurveTo(-2, -7, 3, -6);
+    ctx.quadraticCurveTo(6, 0, 3, 6);
+    ctx.quadraticCurveTo(-2, 7, -8, 3);
+    ctx.closePath();
+    ctx.fillStyle = '#187D86';
+    ctx.strokeStyle = paper;
+    ctx.lineWidth = 1.5;
+    ctx.fill(); ctx.stroke();
+    stroke([[-5, -2], [0, -3]], '#63B8B8', 1.5);
+
+    // An elongated cream helmet has a clear front, without a yellow dot.
+    ctx.beginPath(); ctx.ellipse(7, 0, 5, 4, 0, 0, Math.PI * 2);
+    ctx.fillStyle = paper; ctx.strokeStyle = ink; ctx.lineWidth = 1.5;
+    ctx.fill(); ctx.stroke();
+    stroke([[5, 0], [9, 0]], '#829897', 1.2);
   }
 
 
