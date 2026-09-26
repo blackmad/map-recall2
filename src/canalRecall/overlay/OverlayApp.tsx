@@ -445,6 +445,7 @@ function KnowledgeReviewScreen({
   review,
   now,
   onClose,
+  backLabel,
   onPlanReview,
   onPracticeAgain,
   onForgetItem,
@@ -452,6 +453,7 @@ function KnowledgeReviewScreen({
   review: KnowledgeReview;
   now: number;
   onClose: () => void;
+  backLabel: string;
   onPlanReview: () => void;
   onPracticeAgain: (itemKey: string) => void;
   onForgetItem: (itemKey: string, name: string) => void;
@@ -478,7 +480,7 @@ function KnowledgeReviewScreen({
       <header className="knowledge-header">
         <button type="button" className="knowledge-back" onClick={onClose} ref={backRef}>
           <ArrowLeft aria-hidden="true" />
-          Route setup
+          {backLabel}
         </button>
         <div>
           <h1 id="knowledge-review-title">Your city knowledge</h1>
@@ -708,13 +710,17 @@ export function OverlayApp({
     callbacks.onStart();
   };
 
+  // Knowledge opens from route setup or, mid-ride, from settings; closing
+  // returns focus to whichever button opened it.
+  const knowledgeOpener = useRef('knowledge-button');
   const closeKnowledge = useCallback(() => {
     store.setKnowledgeOpen(false);
     // Back to where the player came from, not to the top of the document.
-    requestAnimationFrame(() => document.getElementById('knowledge-button')?.focus());
+    requestAnimationFrame(() => document.getElementById(knowledgeOpener.current)?.focus());
   }, [store]);
 
-  const openKnowledge = () => {
+  const openKnowledge = (opener = 'knowledge-button') => {
+    knowledgeOpener.current = opener;
     setKnowledgeRefresh(value => value + 1);
     store.setKnowledgeOpen(true);
   };
@@ -752,7 +758,7 @@ export function OverlayApp({
                   id="knowledge-button"
                   type="button"
                   className="account-button enamel-quiet"
-                  onClick={openKnowledge}
+                  onClick={() => openKnowledge()}
                 >
                   Knowledge
                 </button>
@@ -983,6 +989,7 @@ export function OverlayApp({
           review={knowledgeReview}
           now={knowledgeNow}
           onClose={closeKnowledge}
+          backLabel={state.setupOpen ? 'Route setup' : 'Back to ride'}
           onPlanReview={planReview}
           onPracticeAgain={practiceAgain}
           onForgetItem={forgetItem}
@@ -1007,13 +1014,23 @@ export function OverlayApp({
             ) : null}
           </div>
           <div className="utility-actions">
-            <button
-              className="enamel-plaque enamel-framed enamel-secondary"
+            <div className="utility-actions-row">
+              <button
+                id="live-knowledge-button"
+                className="enamel-plaque enamel-framed enamel-secondary"
+                type="button"
+                onClick={() => openKnowledge('live-knowledge-button')}
+              >
+                Your knowledge
+              </button>
+              <button
+                className="enamel-plaque enamel-framed enamel-secondary"
               type="button"
               onClick={() => callbacks.onNewRoute()}
             >
-              Route setup
-            </button>
+                Route setup
+              </button>
+            </div>
             <button className="utility-close enamel-plaque enamel-framed enamel-start" type="button" onClick={() => callbacks.onCloseSettings()}>Done</button>
           </div>
         </div>

@@ -779,20 +779,6 @@ HUD / briefing / finish / notice states compile in Storybook. Still open:
 automated screenshot diffs for those states (not just `build-storybook`).
 
 
-**30. UI review leftovers (2026-09-26).** Fixed items are in HISTORY. Still open:
-- Destination and landmark names mix Dutch and English ("Dam Square Victims
-  7 mei 1945"), and some arrive lowercase ("foam"). Fix in the extract
-  pipeline, not the HUD.
-- The phone city select is 30 px tall. It clears WCAG's 24 px minimum but not
-  44 px, and the setup has no spare height. Consider making the whole field
-  the select.
-- There's no mid-drive shortcut to the knowledge review.
-- Landscape phones: the quiz card still docks to the bottom at 46dvh. The
-  feedback now sits under the question, so a miss is visible, but side
-  docking would show more of the corridor.
-- `game.js` is over its 800-line decomposition cap (812 before this session),
-  so `test:canal-game-structure` fails on `main`. Split a subsystem out.
-
 **28. Map Quest onto the daylight palette.** Canal Recall moved off the
 all-cobalt chrome on 2026-09-26 (`--day-*` tokens, see HISTORY/DESIGN.md);
 Map Quest still uses the cobalt enamel tokens and ~150 cobalt-assuming class

@@ -21,6 +21,9 @@ class InputManager {
     // gear button must not swallow Enter/Esc on the finish card.
     window.addEventListener('keydown', e => {
       if (this._shouldIgnoreKeyboardTarget(e.target)) return;
+      // The knowledge screen can open mid-ride; while it is up it owns the
+      // keyboard (its own Escape closes it, not the settings under it).
+      if (document.getElementById('knowledge-review')) return;
       // Tab toggles the minimap while driving, but it is also the only way a
       // keyboard moves between buttons. It used to be swallowed everywhere, so
       // focus stuck on the first control of setup and the knowledge screen.

@@ -260,3 +260,48 @@ test('the phone HUD lays out for the real screen, and pause is a paper card', as
   });
   expect(centre, 'the pause card is light paper, not a black plate').toBeGreaterThan(200);
 });
+
+// Named regressions (UI review leftovers, 2026-09-26).
+test('the city field is one 44px tap target', async ({ page }) => {
+  await page.goto('/canal-drive/');
+  const field = page.locator('.setup-city-select');
+  await expect(field).toBeVisible();
+  const fieldBox = (await field.boundingBox())!;
+  const selectBox = (await page.locator('#city-id').boundingBox())!;
+  expect(fieldBox.height).toBeGreaterThanOrEqual(44);
+  expect(selectBox.height, 'the select covers the whole field').toBeGreaterThanOrEqual(fieldBox.height - 2);
+  expect(selectBox.width).toBeGreaterThanOrEqual(fieldBox.width - 2);
+});
+
+test('the knowledge review opens mid-ride and returns to the ride', async ({ page }) => {
+  await drive(page);
+  await page.locator('#open-settings').click();
+  await page.locator('#live-knowledge-button').click();
+  const review = page.locator('#knowledge-review');
+  await expect(review).toBeVisible();
+  await expect(review.locator('.knowledge-back')).toHaveText(/Back to ride/);
+  await page.keyboard.press('Escape');
+  await expect(review).toHaveCount(0);
+  // Its Escape belongs to it: the settings under it stay open.
+  await expect(page.locator('#settings-panel')).toBeVisible();
+  await expect(page.locator('#live-knowledge-button')).toBeFocused();
+});
+
+test('a landscape phone docks the question beside the vehicle, not under it', async ({ page }) => {
+  await page.setViewportSize({ width: 844, height: 390 });
+  await drive(page);
+  await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    game.routeOptions.answerMode = 'multiple';
+    game._openQuizPrompt({
+      kind: 'route', name: 'Prinsengracht', subject: 'water',
+      question: 'Which canal are you on?', context: '',
+      choices: ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Brouwersgracht'],
+    });
+  });
+  const card = (await page.locator('#canal-card').boundingBox())!;
+  expect(card.width, 'a side card, not a full-width sheet').toBeLessThanOrEqual(844 * 0.5);
+  const centreX = 844 / 2;
+  expect(card.x >= centreX || card.x + card.width <= centreX, 'the card clears the vehicle at the centre').toBe(true);
+  expect(card.y + card.height).toBeLessThanOrEqual(391);
+});
