@@ -1,0 +1,1512 @@
+{
+  "version": 1,
+  "packetType": "source-render-comparison",
+  "seed": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "limit": 30,
+  "createdFrom": "f6170e8a116bfc4f84e3ac53969abdeda0f84fe45e44a7525830aadef88e7744",
+  "humanReviewSeparate": true,
+  "cases": [
+    {
+      "caseId": "case-01",
+      "district": "Jordaan",
+      "label": "unknown",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012167878_e_07hebf3",
+          "buildingId": "0363100012167878",
+          "renderBuildingId": "0363100012167878",
+          "evidenceKey": "3c58743aa0866a89d99c1a17d9e692b163a28e1c46bc6fed7b70516dc792819d",
+          "derivationKey": "bc29acdba172dd514b071d005de774bed63c12390b8eecdc50530764cd36e1b3",
+          "panoramaId": "TMX7316010203-002542_pano_0006_000029",
+          "captureDate": "2022-04-25T10:21:38.037840Z",
+          "sourceSha256": "7e196cad154d968e28034988e60464c45b7797c90853e70a01d209f4b94b2429",
+          "cropSha256": "d19bec5045a7dca3205d18a5c372de45de736980bda1059415566abdccbf50e2"
+        },
+        "render": {
+          "observationId": "0363100012167878_e_07hebf3",
+          "buildingId": "0363100012167878",
+          "renderBuildingId": "0363100012167878",
+          "evidenceKey": "3c58743aa0866a89d99c1a17d9e692b163a28e1c46bc6fed7b70516dc792819d",
+          "derivationKey": "bc29acdba172dd514b071d005de774bed63c12390b8eecdc50530764cd36e1b3",
+          "panoramaId": "TMX7316010203-002542_pano_0006_000029",
+          "captureDate": "2022-04-25T10:21:38.037840Z",
+          "sourceSha256": "7e196cad154d968e28034988e60464c45b7797c90853e70a01d209f4b94b2429",
+          "cropSha256": "d19bec5045a7dca3205d18a5c372de45de736980bda1059415566abdccbf50e2"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5.jpg",
+        "ground": "/data/city-expansion/evidence/d19bec5045a7dca3205d18a5c372de45de736980bda1059415566abdccbf50e2.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012167878_e_07hebf3",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-01.png",
+      "screenshotSha256": "00be4c931ca493eb3ff1fba0d823f77e82d5d6269150d2214424ffda293346b1",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-02",
+      "district": "Da Costabuurt",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012153066_e_1djhs5u",
+          "buildingId": "0363100012153066",
+          "renderBuildingId": "0363100012153066",
+          "evidenceKey": "9064959f068c840f72df27ad3270cae3141537b7e864080b2df3d610fc90ac44",
+          "derivationKey": "3c158625417a16c78d3b5d25cb376ba7ad9ec95084b7d7f5680c9d7fc77d25e3",
+          "panoramaId": "recording_2025-07-03_08-35-58_00414",
+          "captureDate": "2025-07-03T08:52:21Z",
+          "sourceSha256": "83538b9b590848f433eced033ed86255d2c4435a83e5c5a26c9b0ae0f2a1577c",
+          "cropSha256": "15feb3db2655f683552b3b34f3b0c0d2520470197e5a4555438eeaa61999f0af"
+        },
+        "render": {
+          "observationId": "0363100012153066_e_1djhs5u",
+          "buildingId": "0363100012153066",
+          "renderBuildingId": "0363100012153066",
+          "evidenceKey": "9064959f068c840f72df27ad3270cae3141537b7e864080b2df3d610fc90ac44",
+          "derivationKey": "3c158625417a16c78d3b5d25cb376ba7ad9ec95084b7d7f5680c9d7fc77d25e3",
+          "panoramaId": "recording_2025-07-03_08-35-58_00414",
+          "captureDate": "2025-07-03T08:52:21Z",
+          "sourceSha256": "83538b9b590848f433eced033ed86255d2c4435a83e5c5a26c9b0ae0f2a1577c",
+          "cropSha256": "15feb3db2655f683552b3b34f3b0c0d2520470197e5a4555438eeaa61999f0af"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/10d215ba9fca35d846f8b8af002852d807dc818ba868bad518e9921ec6a99d87.jpg",
+        "ground": "/data/city-expansion/evidence/15feb3db2655f683552b3b34f3b0c0d2520470197e5a4555438eeaa61999f0af.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012153066_e_1djhs5u",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-02.png",
+      "screenshotSha256": "ec2e50d5a92cd2ec433833ae6f2a8d0015de6e03b482e3867acca73e11646af4",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-03",
+      "district": "Jordaan",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012168954_e_1i374do",
+          "buildingId": "0363100012168954",
+          "renderBuildingId": "0363100012168954",
+          "evidenceKey": "c1ef8567f3e3aca18afc1335a763ba337a75a6aaa92d662b04c9bff9ce47584d",
+          "derivationKey": "d5bfe64c12651bc3e55c9aca43156f18cb1957ffde07080d81403ff2cfa67921",
+          "panoramaId": "recording_2025-07-03_10-31-52_00170",
+          "captureDate": "2025-07-03T10:39:46Z",
+          "sourceSha256": "b3059483781e8f699d4b4895c849da212ce9a80854fb8f7b75fa0546f54663f9",
+          "cropSha256": "a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758"
+        },
+        "render": {
+          "observationId": "0363100012168954_e_1i374do",
+          "buildingId": "0363100012168954",
+          "renderBuildingId": "0363100012168954",
+          "evidenceKey": "c1ef8567f3e3aca18afc1335a763ba337a75a6aaa92d662b04c9bff9ce47584d",
+          "derivationKey": "d5bfe64c12651bc3e55c9aca43156f18cb1957ffde07080d81403ff2cfa67921",
+          "panoramaId": "recording_2025-07-03_10-31-52_00170",
+          "captureDate": "2025-07-03T10:39:46Z",
+          "sourceSha256": "b3059483781e8f699d4b4895c849da212ce9a80854fb8f7b75fa0546f54663f9",
+          "cropSha256": "a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/0d9ef2fc124a0a2f403df39ef1801e091139543cb38925d4dba985ab90d56b82.jpg",
+        "ground": "/data/city-expansion/evidence/a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012168954_e_1i374do",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-03.png",
+      "screenshotSha256": "b0c695f272d265f6c9cad9d4acade5c02af4bc4c1bbfd41007079d8a187dc2de",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-04",
+      "district": "Da Costabuurt",
+      "label": "negative",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012166335_e_0sr4r03",
+          "buildingId": "0363100012166335",
+          "renderBuildingId": "0363100012166335",
+          "evidenceKey": "5f2ef0db131f4da50741c1a3a49980531a6be0b352ffba04ff39e6f715f97bee",
+          "derivationKey": "db1784795bd071d282246e50e99d0a67ae86419be582004d7bc07cda8e99c0ed",
+          "panoramaId": "TMX7316010203-002550_pano_0000_002290",
+          "captureDate": "2022-04-29T09:13:24.563450Z",
+          "sourceSha256": "02b5d83884e95126d0bc5e54c941139188f70ed591e1b2405b61299de5982e34",
+          "cropSha256": "b71b27fbdf7bdb257b04802748284608c89972418cae83a99d7d568c147368c0"
+        },
+        "render": {
+          "observationId": "0363100012166335_e_0sr4r03",
+          "buildingId": "0363100012166335",
+          "renderBuildingId": "0363100012166335",
+          "evidenceKey": "5f2ef0db131f4da50741c1a3a49980531a6be0b352ffba04ff39e6f715f97bee",
+          "derivationKey": "db1784795bd071d282246e50e99d0a67ae86419be582004d7bc07cda8e99c0ed",
+          "panoramaId": "TMX7316010203-002550_pano_0000_002290",
+          "captureDate": "2022-04-29T09:13:24.563450Z",
+          "sourceSha256": "02b5d83884e95126d0bc5e54c941139188f70ed591e1b2405b61299de5982e34",
+          "cropSha256": "b71b27fbdf7bdb257b04802748284608c89972418cae83a99d7d568c147368c0"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/4def1337d462b838f2a733f59bfd6d4c375bf18b31480449894f3fc50473471f.jpg",
+        "ground": "/data/city-expansion/evidence/b71b27fbdf7bdb257b04802748284608c89972418cae83a99d7d568c147368c0.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012166335_e_0sr4r03",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-04.png",
+      "screenshotSha256": "6fa41e3582f7acff908640a45d754c775f94f6a9b4fc62f16c5b94ae3c76ff35",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-05",
+      "district": "Jordaan",
+      "label": "negative",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012168980_e_1o2cn0o",
+          "buildingId": "0363100012168980",
+          "renderBuildingId": "0363100012168980",
+          "evidenceKey": "1d432c3afcbb0913a1f348aee165be1094cfabad196f649b62a0816d4a6a4a9e",
+          "derivationKey": "e4508df0bf10f332157303e869cd307d638899b59ca84c13f0d1f16e226ed18c",
+          "panoramaId": "recording_2025-07-03_08-35-58_01620",
+          "captureDate": "2025-07-03T09:49:09Z",
+          "sourceSha256": "67a6cab08eb0b31a014394dc6947ede71407e4c821c82b97bd1d8f6d746be5b3",
+          "cropSha256": "9cf6eb7e4114fcb745b4b8bc5c2f08b19a5704f48b5e22dd3c5927daaf18ddcf"
+        },
+        "render": {
+          "observationId": "0363100012168980_e_1o2cn0o",
+          "buildingId": "0363100012168980",
+          "renderBuildingId": "0363100012168980",
+          "evidenceKey": "1d432c3afcbb0913a1f348aee165be1094cfabad196f649b62a0816d4a6a4a9e",
+          "derivationKey": "e4508df0bf10f332157303e869cd307d638899b59ca84c13f0d1f16e226ed18c",
+          "panoramaId": "recording_2025-07-03_08-35-58_01620",
+          "captureDate": "2025-07-03T09:49:09Z",
+          "sourceSha256": "67a6cab08eb0b31a014394dc6947ede71407e4c821c82b97bd1d8f6d746be5b3",
+          "cropSha256": "9cf6eb7e4114fcb745b4b8bc5c2f08b19a5704f48b5e22dd3c5927daaf18ddcf"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4.jpg",
+        "ground": "/data/city-expansion/evidence/9cf6eb7e4114fcb745b4b8bc5c2f08b19a5704f48b5e22dd3c5927daaf18ddcf.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012168980_e_1o2cn0o",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-05.png",
+      "screenshotSha256": "470c91475dd9880f6d768c4695cf2e36faaced23b5d9fef6db812670841b3e8d",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-06",
+      "district": "Da Costabuurt",
+      "label": "unknown",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012163422_e_0ovix3v",
+          "buildingId": "0363100012163422",
+          "renderBuildingId": "0363100012163422",
+          "evidenceKey": "f8e7722dcbaf8fef54bce876c4ede46b4b209b8e44654ac6c0b2262f9d7ec9c2",
+          "derivationKey": "1b032ac6a7a1ff14517b201fb8403ddc26c6cbd293c926fbf71164dcf300c6e3",
+          "panoramaId": "recording_2025-07-31_08-46-40_01643",
+          "captureDate": "2025-07-31T09:40:33Z",
+          "sourceSha256": "612c4c7a5d55f863ac78d35a0757f9ef786beb484c933e41bf2353a57ad5a26f",
+          "cropSha256": "666ae072fd3bd414c7f375308e6b2d5ad8fb9a0610918ae8ac0d2da70b28c9db"
+        },
+        "render": {
+          "observationId": "0363100012163422_e_0ovix3v",
+          "buildingId": "0363100012163422",
+          "renderBuildingId": "0363100012163422",
+          "evidenceKey": "f8e7722dcbaf8fef54bce876c4ede46b4b209b8e44654ac6c0b2262f9d7ec9c2",
+          "derivationKey": "1b032ac6a7a1ff14517b201fb8403ddc26c6cbd293c926fbf71164dcf300c6e3",
+          "panoramaId": "recording_2025-07-31_08-46-40_01643",
+          "captureDate": "2025-07-31T09:40:33Z",
+          "sourceSha256": "612c4c7a5d55f863ac78d35a0757f9ef786beb484c933e41bf2353a57ad5a26f",
+          "cropSha256": "666ae072fd3bd414c7f375308e6b2d5ad8fb9a0610918ae8ac0d2da70b28c9db"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/999b7440fb549ec82a7685cb59a33d5d93c4cd119e1551a79e6c3f888794c4ca.jpg",
+        "ground": "/data/city-expansion/evidence/666ae072fd3bd414c7f375308e6b2d5ad8fb9a0610918ae8ac0d2da70b28c9db.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012163422_e_0ovix3v",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-06.png",
+      "screenshotSha256": "6ecce99b9492d4eb89f036542f68fe569b730ea7fc0cc633096ed1aea6b48063",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-07",
+      "district": "acquisition-halo",
+      "label": "negative",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012169814_e_0p3k9vt",
+          "buildingId": "0363100012169814",
+          "renderBuildingId": "0363100012169814",
+          "evidenceKey": "95e23c36db37990bc52a077796786fd1c46e918d930d8d8cc4805d92d81dac09",
+          "derivationKey": "26cc9582b684ca421059ab3b03e05520ada044efed062e75cee391d0ae487597",
+          "panoramaId": "TMX7316010203-002553_pano_0000_000322",
+          "captureDate": "2022-05-02T06:42:55.448450Z",
+          "sourceSha256": "ddb1f54e8d3454d3a64330e9ec7a941ec9ee3334eb15f17e48e8406a7e0908e0",
+          "cropSha256": "9c998694c64fabb8470c03bfb209f5f7cde0ba77fdf1cc96d98285fa48a23fd9"
+        },
+        "render": {
+          "observationId": "0363100012169814_e_0p3k9vt",
+          "buildingId": "0363100012169814",
+          "renderBuildingId": "0363100012169814",
+          "evidenceKey": "95e23c36db37990bc52a077796786fd1c46e918d930d8d8cc4805d92d81dac09",
+          "derivationKey": "26cc9582b684ca421059ab3b03e05520ada044efed062e75cee391d0ae487597",
+          "panoramaId": "TMX7316010203-002553_pano_0000_000322",
+          "captureDate": "2022-05-02T06:42:55.448450Z",
+          "sourceSha256": "ddb1f54e8d3454d3a64330e9ec7a941ec9ee3334eb15f17e48e8406a7e0908e0",
+          "cropSha256": "9c998694c64fabb8470c03bfb209f5f7cde0ba77fdf1cc96d98285fa48a23fd9"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/be32e0b88a5cb1c699c88e10110d4a74b326ae96b199660cd038537a5f32b4d7.jpg",
+        "ground": "/data/city-expansion/evidence/9c998694c64fabb8470c03bfb209f5f7cde0ba77fdf1cc96d98285fa48a23fd9.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012169814_e_0p3k9vt",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-07.png",
+      "screenshotSha256": "0fa1061cb5e7a111a4648c002f4c43fd276e5b1d899091ce1c87d3ade9b85e6c",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-08",
+      "district": "acquisition-halo",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012169816_e_1rko4tl",
+          "buildingId": "0363100012169816",
+          "renderBuildingId": "0363100012169816",
+          "evidenceKey": "caae2f2b42abe09f72c326ccf4292bb86265f62abab5e3796a380f8573b9ae37",
+          "derivationKey": "237495e450f123ca6cc414e7b043840c3ffc774f3eca718210deb14a1a8b021a",
+          "panoramaId": "TMX7316010203-002860_pano_0005_000031",
+          "captureDate": "2022-12-15T09:04:06.631420Z",
+          "sourceSha256": "a2563f3d905fbd227c5f751e93472c23dec702c128495212a7ba54a2c283dcc3",
+          "cropSha256": "ecd02b733f241cf5d1af1daec2d6df3511b762b673bb7881d1b34eafe41749fc"
+        },
+        "render": {
+          "observationId": "0363100012169816_e_1rko4tl",
+          "buildingId": "0363100012169816",
+          "renderBuildingId": "0363100012169816",
+          "evidenceKey": "caae2f2b42abe09f72c326ccf4292bb86265f62abab5e3796a380f8573b9ae37",
+          "derivationKey": "237495e450f123ca6cc414e7b043840c3ffc774f3eca718210deb14a1a8b021a",
+          "panoramaId": "TMX7316010203-002860_pano_0005_000031",
+          "captureDate": "2022-12-15T09:04:06.631420Z",
+          "sourceSha256": "a2563f3d905fbd227c5f751e93472c23dec702c128495212a7ba54a2c283dcc3",
+          "cropSha256": "ecd02b733f241cf5d1af1daec2d6df3511b762b673bb7881d1b34eafe41749fc"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/6b9d07c1aa7d65cd81e920c54cb2ce3f72d06fbd7dc6b711d2aac71a8d14eb73.jpg",
+        "ground": "/data/city-expansion/evidence/ecd02b733f241cf5d1af1daec2d6df3511b762b673bb7881d1b34eafe41749fc.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012169816_e_1rko4tl",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-08.png",
+      "screenshotSha256": "c4a553980585d3fb7f6487f3a63232dc177511a4148b3a2c2fdb8d4cc2dfdc67",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-09",
+      "district": "acquisition-halo",
+      "label": "unknown",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012169827_e_0dsqvgr",
+          "buildingId": "0363100012169827",
+          "renderBuildingId": "0363100012169827",
+          "evidenceKey": "dceb8f8eaca539eec0f1251bdf57f724b3d67c0df0b8b5bbe293c96aefe5b2d1",
+          "derivationKey": "e421d962c2a7daa4743adc3dbc3be762674f9dc6ce34734e6f2a294c6f95f353",
+          "panoramaId": "TMX7316010203-002553_pano_0000_000342",
+          "captureDate": "2022-05-02T06:43:15.808300Z",
+          "sourceSha256": "04807511208d642b9a01f13036f92b114a87c7a5f2e502ec4e1952c6e46e7dfa",
+          "cropSha256": "1a2cb8c916e1603b7a6cb7e81dbdbbd4d5af7d760f7226f8ec57213922573ed1"
+        },
+        "render": {
+          "observationId": "0363100012169827_e_0dsqvgr",
+          "buildingId": "0363100012169827",
+          "renderBuildingId": "0363100012169827",
+          "evidenceKey": "dceb8f8eaca539eec0f1251bdf57f724b3d67c0df0b8b5bbe293c96aefe5b2d1",
+          "derivationKey": "e421d962c2a7daa4743adc3dbc3be762674f9dc6ce34734e6f2a294c6f95f353",
+          "panoramaId": "TMX7316010203-002553_pano_0000_000342",
+          "captureDate": "2022-05-02T06:43:15.808300Z",
+          "sourceSha256": "04807511208d642b9a01f13036f92b114a87c7a5f2e502ec4e1952c6e46e7dfa",
+          "cropSha256": "1a2cb8c916e1603b7a6cb7e81dbdbbd4d5af7d760f7226f8ec57213922573ed1"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/9585767f7360620e7439d1fcc08ddb2177635673169db28891774f8b20c3b886.jpg",
+        "ground": "/data/city-expansion/evidence/1a2cb8c916e1603b7a6cb7e81dbdbbd4d5af7d760f7226f8ec57213922573ed1.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012169827_e_0dsqvgr",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-09.png",
+      "screenshotSha256": "35fa94ad38b5e785ddacded823bd72e40faad959246e472337ab9772e070a876",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-10",
+      "district": "Jordaan",
+      "label": "unknown",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012185685_e_0pzsj4w",
+          "buildingId": "0363100012185685",
+          "renderBuildingId": "0363100012185685",
+          "evidenceKey": "5dbeaca8ea00dcf7fb48543b84b2f73d00c31d3091de83e4b8e6261d4bfea327",
+          "derivationKey": "be7e9ecdc18062abf5058829f62b0df4273b46bedced2af12332ea6fab5fca3a",
+          "panoramaId": "recording_2025-07-03_08-35-58_00583",
+          "captureDate": "2025-07-03T09:01:36Z",
+          "sourceSha256": "d95315d27184e56aa94c32dc42e62164add642b241683a8a94f3eec63d82f6ff",
+          "cropSha256": "c5f9c6d63903f55a22291093dc1f6fad43ee07301015696eb969733490a037d4"
+        },
+        "render": {
+          "observationId": "0363100012185685_e_0pzsj4w",
+          "buildingId": "0363100012185685",
+          "renderBuildingId": "0363100012185685",
+          "evidenceKey": "5dbeaca8ea00dcf7fb48543b84b2f73d00c31d3091de83e4b8e6261d4bfea327",
+          "derivationKey": "be7e9ecdc18062abf5058829f62b0df4273b46bedced2af12332ea6fab5fca3a",
+          "panoramaId": "recording_2025-07-03_08-35-58_00583",
+          "captureDate": "2025-07-03T09:01:36Z",
+          "sourceSha256": "d95315d27184e56aa94c32dc42e62164add642b241683a8a94f3eec63d82f6ff",
+          "cropSha256": "c5f9c6d63903f55a22291093dc1f6fad43ee07301015696eb969733490a037d4"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/80e3ef3dbfee632b910e5bf07c63e1c32b8dbae34f9349c7b2bff024d067eb2c.jpg",
+        "ground": "/data/city-expansion/evidence/c5f9c6d63903f55a22291093dc1f6fad43ee07301015696eb969733490a037d4.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012185685_e_0pzsj4w",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-10.png",
+      "screenshotSha256": "33d3c586b533688cdb94ea59f322b280f3577a47d145c78f54e6824b82cfa2c6",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-11",
+      "district": "Da Costabuurt",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012156993_e_1tt83o3",
+          "buildingId": "0363100012156993",
+          "renderBuildingId": "0363100012156993",
+          "evidenceKey": "580790fa6bdd612c18670582dc9347e75e8656102cb88672353eb6fffdf99eb3",
+          "derivationKey": "42e9b83168423c1d6835e6568503bb4b5dd7b12398dd54fc28c3f8f714c1ba6a",
+          "panoramaId": "recording_2025-07-03_08-35-58_00432",
+          "captureDate": "2025-07-03T08:52:45Z",
+          "sourceSha256": "32331770f96fa3b346f4856c141ee867463967a240c633c5897588fbf812311d",
+          "cropSha256": "e52e266d8ff29413f9c2795261699ef45ee097167e23711778aac18049d3cc30"
+        },
+        "render": {
+          "observationId": "0363100012156993_e_1tt83o3",
+          "buildingId": "0363100012156993",
+          "renderBuildingId": "0363100012156993",
+          "evidenceKey": "580790fa6bdd612c18670582dc9347e75e8656102cb88672353eb6fffdf99eb3",
+          "derivationKey": "42e9b83168423c1d6835e6568503bb4b5dd7b12398dd54fc28c3f8f714c1ba6a",
+          "panoramaId": "recording_2025-07-03_08-35-58_00432",
+          "captureDate": "2025-07-03T08:52:45Z",
+          "sourceSha256": "32331770f96fa3b346f4856c141ee867463967a240c633c5897588fbf812311d",
+          "cropSha256": "e52e266d8ff29413f9c2795261699ef45ee097167e23711778aac18049d3cc30"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/ed59adb27156705f150248cbe6e9e988d1d48fb671f581965ce12f5f388f11fb.jpg",
+        "ground": "/data/city-expansion/evidence/e52e266d8ff29413f9c2795261699ef45ee097167e23711778aac18049d3cc30.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012156993_e_1tt83o3",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-11.png",
+      "screenshotSha256": "b72c9eb98c591bfd1bfe4d75eaf0c587c59718bb1637c95deeff121aa55ea98f",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-12",
+      "district": "Jordaan",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012167877_e_1dcf5va",
+          "buildingId": "0363100012167877",
+          "renderBuildingId": "0363100012167877",
+          "evidenceKey": "9120d2c52f4127815e1c8dfa4826e1b373ed9be6dc8a18df8ece51a915b41eed",
+          "derivationKey": "9693559a8052a039523896444e94c29557596162287bc25cf1bb926606eef7b7",
+          "panoramaId": "TMX7316010203-002967_pano_0005_000045",
+          "captureDate": "2023-02-13T09:46:38.181700Z",
+          "sourceSha256": "9705e3275ea34fba36c68a0f2c6e2ae317c174d4fd9a64a21afbfa7517e2dd60",
+          "cropSha256": "f7cbba0528efe8f9960f4421af6e8932a39889291b0e32c1e0d8322d29e1e7d0"
+        },
+        "render": {
+          "observationId": "0363100012167877_e_1dcf5va",
+          "buildingId": "0363100012167877",
+          "renderBuildingId": "0363100012167877",
+          "evidenceKey": "9120d2c52f4127815e1c8dfa4826e1b373ed9be6dc8a18df8ece51a915b41eed",
+          "derivationKey": "9693559a8052a039523896444e94c29557596162287bc25cf1bb926606eef7b7",
+          "panoramaId": "TMX7316010203-002967_pano_0005_000045",
+          "captureDate": "2023-02-13T09:46:38.181700Z",
+          "sourceSha256": "9705e3275ea34fba36c68a0f2c6e2ae317c174d4fd9a64a21afbfa7517e2dd60",
+          "cropSha256": "f7cbba0528efe8f9960f4421af6e8932a39889291b0e32c1e0d8322d29e1e7d0"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660.jpg",
+        "ground": "/data/city-expansion/evidence/f7cbba0528efe8f9960f4421af6e8932a39889291b0e32c1e0d8322d29e1e7d0.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012167877_e_1dcf5va",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-12.png",
+      "screenshotSha256": "a36ecd4165a33b47a8ff6a16d3423b08bbdbaf100942eb185d737a02a0f5e602",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-13",
+      "district": "Da Costabuurt",
+      "label": "negative",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012156117_e_0qekj2q",
+          "buildingId": "0363100012156117",
+          "renderBuildingId": "0363100012156117",
+          "evidenceKey": "b14b9bd383c53a1be54471e4d137d0c1cdaa9299b8fd9151dec48029d9273f1a",
+          "derivationKey": "444d56470447081ef0620b1e99cdf70b18519916d492e3bbcc3535d2c9f9dbba",
+          "panoramaId": "recording_2025-07-31_10-53-44_00638",
+          "captureDate": "2025-07-31T11:09:12Z",
+          "sourceSha256": "32a812aad61b18b3569ce441a61c0ae85c3de25df08d5b8cd267aab2b8c4f425",
+          "cropSha256": "2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce"
+        },
+        "render": {
+          "observationId": "0363100012156117_e_0qekj2q",
+          "buildingId": "0363100012156117",
+          "renderBuildingId": "0363100012156117",
+          "evidenceKey": "b14b9bd383c53a1be54471e4d137d0c1cdaa9299b8fd9151dec48029d9273f1a",
+          "derivationKey": "444d56470447081ef0620b1e99cdf70b18519916d492e3bbcc3535d2c9f9dbba",
+          "panoramaId": "recording_2025-07-31_10-53-44_00638",
+          "captureDate": "2025-07-31T11:09:12Z",
+          "sourceSha256": "32a812aad61b18b3569ce441a61c0ae85c3de25df08d5b8cd267aab2b8c4f425",
+          "cropSha256": "2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/1b487142a5367681040c06dae3c6f3ae75f2db1e73a65badd1199b171f27474c.jpg",
+        "ground": "/data/city-expansion/evidence/2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012156117_e_0qekj2q",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-13.png",
+      "screenshotSha256": "84ba214c0cebcf3fdcd4d705c989b6c3da75bdb7462f5ea9875d4b981543cbd0",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-14",
+      "district": "Jordaan",
+      "label": "negative",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012173872_e_0te7ad0",
+          "buildingId": "0363100012173872",
+          "renderBuildingId": "0363100012173872",
+          "evidenceKey": "c22d469d0b435689da4b107d8d008dc2b180e00c9216243f4ab56421cb6b9e16",
+          "derivationKey": "327a899074bffd87cb6af4354696f3bb58328d4143ab8e10d89958dfc79a8447",
+          "panoramaId": "recording_2025-06-30_05-16-46_00608",
+          "captureDate": "2025-06-30T05:28:42Z",
+          "sourceSha256": "7f2bee4061658623590417da62abf85fd908d9fead2de68c4d0db08e699e8470",
+          "cropSha256": "5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115"
+        },
+        "render": {
+          "observationId": "0363100012173872_e_0te7ad0",
+          "buildingId": "0363100012173872",
+          "renderBuildingId": "0363100012173872",
+          "evidenceKey": "c22d469d0b435689da4b107d8d008dc2b180e00c9216243f4ab56421cb6b9e16",
+          "derivationKey": "327a899074bffd87cb6af4354696f3bb58328d4143ab8e10d89958dfc79a8447",
+          "panoramaId": "recording_2025-06-30_05-16-46_00608",
+          "captureDate": "2025-06-30T05:28:42Z",
+          "sourceSha256": "7f2bee4061658623590417da62abf85fd908d9fead2de68c4d0db08e699e8470",
+          "cropSha256": "5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558.jpg",
+        "ground": "/data/city-expansion/evidence/5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012173872_e_0te7ad0",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-14.png",
+      "screenshotSha256": "d2fbb3a4162a310361eabe40d40922c96da60e11f2f0629283b745681c19d30a",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-15",
+      "district": "Da Costabuurt",
+      "label": "unknown",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012236381_e_0v97fd9",
+          "buildingId": "0363100012236381",
+          "renderBuildingId": "0363100012236381",
+          "evidenceKey": "e7c6c578d882facd20455d805b76c52bc67a2959a79481c8f391beb656facf1b",
+          "derivationKey": "1593e43d38f53997c14c2a7a3420f36d438a15ccd6aca3869ea19594eaccf608",
+          "panoramaId": "recording_2025-07-31_10-53-44_00635",
+          "captureDate": "2025-07-31T11:09:09Z",
+          "sourceSha256": "a9f6ca1daa8204d5492ac7d0f70d234688d9a275cf0120f6de67b54b7c85c9db",
+          "cropSha256": "3da7a56602c14d1dd05a9f12906d2c39b7dc778eaceb7659928cfba020f30148"
+        },
+        "render": {
+          "observationId": "0363100012236381_e_0v97fd9",
+          "buildingId": "0363100012236381",
+          "renderBuildingId": "0363100012236381",
+          "evidenceKey": "e7c6c578d882facd20455d805b76c52bc67a2959a79481c8f391beb656facf1b",
+          "derivationKey": "1593e43d38f53997c14c2a7a3420f36d438a15ccd6aca3869ea19594eaccf608",
+          "panoramaId": "recording_2025-07-31_10-53-44_00635",
+          "captureDate": "2025-07-31T11:09:09Z",
+          "sourceSha256": "a9f6ca1daa8204d5492ac7d0f70d234688d9a275cf0120f6de67b54b7c85c9db",
+          "cropSha256": "3da7a56602c14d1dd05a9f12906d2c39b7dc778eaceb7659928cfba020f30148"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/27f91a4953409ff6bed64cdf9e88157b13c26ce756a0dcf558775dedff60a2a7.jpg",
+        "ground": "/data/city-expansion/evidence/3da7a56602c14d1dd05a9f12906d2c39b7dc778eaceb7659928cfba020f30148.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012236381_e_0v97fd9",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-15.png",
+      "screenshotSha256": "1f09493c5db96d8dd094bf2617e54f9160edce80e7cbf08f31173c1dc99d85ae",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-16",
+      "district": "acquisition-halo",
+      "label": "negative",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012169812_e_0il89qt",
+          "buildingId": "0363100012169812",
+          "renderBuildingId": "0363100012169812",
+          "evidenceKey": "dcb0318614b5cd09c2536b73719d2fef8a5d805dc84577648a118302de0e01a3",
+          "derivationKey": "3330eb3f09c39ef7c227ca4edd464c9dee22ba7b2928cb82e0300e399cf3dfa5",
+          "panoramaId": "TMX7316010203-002860_pano_0005_000032",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "sourceSha256": "5e961d5ea35ca091bd71860ee695c04bda32170d2e3b41592811c96148174ba4",
+          "cropSha256": "b930b8d6f2750d40468a9d05ebcb6982abe50ab73a52ed532a55edbb2c456a12"
+        },
+        "render": {
+          "observationId": "0363100012169812_e_0il89qt",
+          "buildingId": "0363100012169812",
+          "renderBuildingId": "0363100012169812",
+          "evidenceKey": "dcb0318614b5cd09c2536b73719d2fef8a5d805dc84577648a118302de0e01a3",
+          "derivationKey": "3330eb3f09c39ef7c227ca4edd464c9dee22ba7b2928cb82e0300e399cf3dfa5",
+          "panoramaId": "TMX7316010203-002860_pano_0005_000032",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "sourceSha256": "5e961d5ea35ca091bd71860ee695c04bda32170d2e3b41592811c96148174ba4",
+          "cropSha256": "b930b8d6f2750d40468a9d05ebcb6982abe50ab73a52ed532a55edbb2c456a12"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/917cdd7c7a3abc321a24fa67fdcf7a092c5a0c90cb1a40b83be19eb435b63b00.jpg",
+        "ground": "/data/city-expansion/evidence/b930b8d6f2750d40468a9d05ebcb6982abe50ab73a52ed532a55edbb2c456a12.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012169812_e_0il89qt",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-16.png",
+      "screenshotSha256": "640804d4a57af939a91141203314e4984a1d2b41a00267c549bedbfc136ae8d4",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-17",
+      "district": "acquisition-halo",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012107485_e_1py60r0",
+          "buildingId": "0363100012107485",
+          "renderBuildingId": "0363100012107485",
+          "evidenceKey": "2799a09cbd80a13f8b7e8d745470e87a24b185acc6f1b517052adf972cff37ab",
+          "derivationKey": "8c965893ba6c9478d0540dc596acc0ee7ab9c36d1d5e77c4561af49155978b1e",
+          "panoramaId": "b_20241211_0838_Track40_Sphere_00085",
+          "captureDate": "2024-12-11T11:16:00Z",
+          "sourceSha256": "1b3f1aca3d7a38ca60278dc9bea5e882713013f3df4af1af55fb0d7677b71142",
+          "cropSha256": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071"
+        },
+        "render": {
+          "observationId": "0363100012107485_e_1py60r0",
+          "buildingId": "0363100012107485",
+          "renderBuildingId": "0363100012107485",
+          "evidenceKey": "2799a09cbd80a13f8b7e8d745470e87a24b185acc6f1b517052adf972cff37ab",
+          "derivationKey": "8c965893ba6c9478d0540dc596acc0ee7ab9c36d1d5e77c4561af49155978b1e",
+          "panoramaId": "b_20241211_0838_Track40_Sphere_00085",
+          "captureDate": "2024-12-11T11:16:00Z",
+          "sourceSha256": "1b3f1aca3d7a38ca60278dc9bea5e882713013f3df4af1af55fb0d7677b71142",
+          "cropSha256": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5.jpg",
+        "ground": "/data/city-expansion/evidence/844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012107485_e_1py60r0",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-17.png",
+      "screenshotSha256": "5c9e2488ed0f7e835185a0481fea20f816406fcecd3c74a5a40ad0b89c89ddf2",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-18",
+      "district": "acquisition-halo",
+      "label": "unknown",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012169823_e_0i7d2wr",
+          "buildingId": "0363100012169823",
+          "renderBuildingId": "0363100012169823",
+          "evidenceKey": "453c9b3b463a68973ce2616701bf0b281d17a2fc68c22b4a3059172d6b31918b",
+          "derivationKey": "b0c08716d45e22ee38e4c2ef6d47a91cc3570d68cc33484b44bf8dc261140a98",
+          "panoramaId": "TMX7316010203-002553_pano_0000_000343",
+          "captureDate": "2022-05-02T06:43:16.723290Z",
+          "sourceSha256": "436a4eb2d4ce5f62992f83a27c220d3e0ac3a253d006dd393c5790aa199a92d6",
+          "cropSha256": "14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d"
+        },
+        "render": {
+          "observationId": "0363100012169823_e_0i7d2wr",
+          "buildingId": "0363100012169823",
+          "renderBuildingId": "0363100012169823",
+          "evidenceKey": "453c9b3b463a68973ce2616701bf0b281d17a2fc68c22b4a3059172d6b31918b",
+          "derivationKey": "b0c08716d45e22ee38e4c2ef6d47a91cc3570d68cc33484b44bf8dc261140a98",
+          "panoramaId": "TMX7316010203-002553_pano_0000_000343",
+          "captureDate": "2022-05-02T06:43:16.723290Z",
+          "sourceSha256": "436a4eb2d4ce5f62992f83a27c220d3e0ac3a253d006dd393c5790aa199a92d6",
+          "cropSha256": "14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6.jpg",
+        "ground": "/data/city-expansion/evidence/14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012169823_e_0i7d2wr",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-18.png",
+      "screenshotSha256": "48f35e496f3e37c2345b7c3e455d599e54cfb97e02878a2fae786e3ecba8951a",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-19",
+      "district": "Jordaan",
+      "label": "unknown",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012170124_e_1xs268y",
+          "buildingId": "0363100012170124",
+          "renderBuildingId": "0363100012170124",
+          "evidenceKey": "657863bbd206bb78d72b5fa91bd32e1910e5312f2420ffa214550c9f6775a54a",
+          "derivationKey": "5f2f52e5f2be5f5ae28fb0493458369f865d634ba05e2e8824cf970d49123afa",
+          "panoramaId": "recording_2025-06-30_05-16-46_00586",
+          "captureDate": "2025-06-30T05:28:22Z",
+          "sourceSha256": "45072499c6f60fca5f97c3587efced82b4880e2dfb6e6c8ed56566d163701922",
+          "cropSha256": "3865a2dc283c93dc6f4af6ff826bdf3ac5f8f9cc035216285b3119452478d816"
+        },
+        "render": {
+          "observationId": "0363100012170124_e_1xs268y",
+          "buildingId": "0363100012170124",
+          "renderBuildingId": "0363100012170124",
+          "evidenceKey": "657863bbd206bb78d72b5fa91bd32e1910e5312f2420ffa214550c9f6775a54a",
+          "derivationKey": "5f2f52e5f2be5f5ae28fb0493458369f865d634ba05e2e8824cf970d49123afa",
+          "panoramaId": "recording_2025-06-30_05-16-46_00586",
+          "captureDate": "2025-06-30T05:28:22Z",
+          "sourceSha256": "45072499c6f60fca5f97c3587efced82b4880e2dfb6e6c8ed56566d163701922",
+          "cropSha256": "3865a2dc283c93dc6f4af6ff826bdf3ac5f8f9cc035216285b3119452478d816"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/785d3ce1bd539e18856abffebc492977bd8f3bf9af09c16bd87877fb82a9fa5d.jpg",
+        "ground": "/data/city-expansion/evidence/3865a2dc283c93dc6f4af6ff826bdf3ac5f8f9cc035216285b3119452478d816.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012170124_e_1xs268y",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-19.png",
+      "screenshotSha256": "1f5b965be747fbb670b1624d9abaf2354a5a8cc55a0f45d82ceaf67da0ccfe1d",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-20",
+      "district": "Da Costabuurt",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012096164_e_1qqj2dv",
+          "buildingId": "0363100012096164",
+          "renderBuildingId": "0363100012096164",
+          "evidenceKey": "f40750369ab94068bdd3f04f0f6f12ab506d20f43b629b14d60a2ea67935a3ce",
+          "derivationKey": "c5f5e53a23435dcce908342d123c6d55e9507a18ce8a85e7f572cf0036a4db9c",
+          "panoramaId": "recording_2025-06-18_08-56-14_02651",
+          "captureDate": "2025-06-18T10:05:19Z",
+          "sourceSha256": "29956f27299cbbd5c769e63d064c36bd4be96631fab831fca16296952d9a8a92",
+          "cropSha256": "26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119"
+        },
+        "render": {
+          "observationId": "0363100012096164_e_1qqj2dv",
+          "buildingId": "0363100012096164",
+          "renderBuildingId": "0363100012096164",
+          "evidenceKey": "f40750369ab94068bdd3f04f0f6f12ab506d20f43b629b14d60a2ea67935a3ce",
+          "derivationKey": "c5f5e53a23435dcce908342d123c6d55e9507a18ce8a85e7f572cf0036a4db9c",
+          "panoramaId": "recording_2025-06-18_08-56-14_02651",
+          "captureDate": "2025-06-18T10:05:19Z",
+          "sourceSha256": "29956f27299cbbd5c769e63d064c36bd4be96631fab831fca16296952d9a8a92",
+          "cropSha256": "26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0.jpg",
+        "ground": "/data/city-expansion/evidence/26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012096164_e_1qqj2dv",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-20.png",
+      "screenshotSha256": "54489bf1f1f8676dfa873306279499889f2eda56addfba10fe78584da1fa4856",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-21",
+      "district": "Jordaan",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012173919_e_1wb5lrz",
+          "buildingId": "0363100012173919",
+          "renderBuildingId": "0363100012173919",
+          "evidenceKey": "5b468f98824e2369207306f639c6626965d2011fcddfb329dde575e4c9769d81",
+          "derivationKey": "94091058a17ff42626477d169b139ad880e610cbe43fdf39a55c3c587c8d585d",
+          "panoramaId": "recording_2025-07-03_08-35-58_01679",
+          "captureDate": "2025-07-03T09:50:55Z",
+          "sourceSha256": "d68948b5b4feba587ef144d9f6eecc62871b29112bdc125b5ce59ef279bd0878",
+          "cropSha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9"
+        },
+        "render": {
+          "observationId": "0363100012173919_e_1wb5lrz",
+          "buildingId": "0363100012173919",
+          "renderBuildingId": "0363100012173919",
+          "evidenceKey": "5b468f98824e2369207306f639c6626965d2011fcddfb329dde575e4c9769d81",
+          "derivationKey": "94091058a17ff42626477d169b139ad880e610cbe43fdf39a55c3c587c8d585d",
+          "panoramaId": "recording_2025-07-03_08-35-58_01679",
+          "captureDate": "2025-07-03T09:50:55Z",
+          "sourceSha256": "d68948b5b4feba587ef144d9f6eecc62871b29112bdc125b5ce59ef279bd0878",
+          "cropSha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5.jpg",
+        "ground": "/data/city-expansion/evidence/9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012173919_e_1wb5lrz",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-21.png",
+      "screenshotSha256": "e73589f04493325cb0cfbc3942bdf8fcc7fefb888dc0a7a0a619f70ae743b3ff",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-22",
+      "district": "Da Costabuurt",
+      "label": "negative",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012165927_e_0xxqmsr",
+          "buildingId": "0363100012165927",
+          "renderBuildingId": "0363100012165927",
+          "evidenceKey": "11e65aeba0efd9e1a9653c2f2b4b1763527d159ea5d968b40663a776ee0a6d1a",
+          "derivationKey": "47f98bf7b1933107c980e21c83b8f519b5f3f7d1cef20314bfc6f55046b99393",
+          "panoramaId": "recording_2025-07-31_10-53-44_00639",
+          "captureDate": "2025-07-31T11:09:13Z",
+          "sourceSha256": "8df634b91b924e91137977b38591a2c6b850d040a50c215cabbfb2f8ab046f0b",
+          "cropSha256": "e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d"
+        },
+        "render": {
+          "observationId": "0363100012165927_e_0xxqmsr",
+          "buildingId": "0363100012165927",
+          "renderBuildingId": "0363100012165927",
+          "evidenceKey": "11e65aeba0efd9e1a9653c2f2b4b1763527d159ea5d968b40663a776ee0a6d1a",
+          "derivationKey": "47f98bf7b1933107c980e21c83b8f519b5f3f7d1cef20314bfc6f55046b99393",
+          "panoramaId": "recording_2025-07-31_10-53-44_00639",
+          "captureDate": "2025-07-31T11:09:13Z",
+          "sourceSha256": "8df634b91b924e91137977b38591a2c6b850d040a50c215cabbfb2f8ab046f0b",
+          "cropSha256": "e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70.jpg",
+        "ground": "/data/city-expansion/evidence/e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012165927_e_0xxqmsr",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-22.png",
+      "screenshotSha256": "cc2591c1f050724c1b2a908a2a75266cce533e0636d7cc308baf2e8be1f763d6",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-23",
+      "district": "Jordaan",
+      "label": "negative",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012169605_e_0b82q5f",
+          "buildingId": "0363100012169605",
+          "renderBuildingId": "0363100012169605",
+          "evidenceKey": "04eab6576731683106d5210625ae6966add708a61a452000889f37f102976688",
+          "derivationKey": "54974385bdb27691907ea32581808cc5da440682988988e4f9baf97758b05e7c",
+          "panoramaId": "b_20241216_0911_Track21_Sphere_00076",
+          "captureDate": "2024-12-16T10:48:39Z",
+          "sourceSha256": "ee459acea022217da9dc468a465afd9b89cb7a58fa57c28f26a1031f161a0bc2",
+          "cropSha256": "589d8e04917bb6bd98b0fab335f3be64f39091b2fbd2f6805752d67422b6c6b0"
+        },
+        "render": {
+          "observationId": "0363100012169605_e_0b82q5f",
+          "buildingId": "0363100012169605",
+          "renderBuildingId": "0363100012169605",
+          "evidenceKey": "04eab6576731683106d5210625ae6966add708a61a452000889f37f102976688",
+          "derivationKey": "54974385bdb27691907ea32581808cc5da440682988988e4f9baf97758b05e7c",
+          "panoramaId": "b_20241216_0911_Track21_Sphere_00076",
+          "captureDate": "2024-12-16T10:48:39Z",
+          "sourceSha256": "ee459acea022217da9dc468a465afd9b89cb7a58fa57c28f26a1031f161a0bc2",
+          "cropSha256": "589d8e04917bb6bd98b0fab335f3be64f39091b2fbd2f6805752d67422b6c6b0"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+        "ground": "/data/city-expansion/evidence/589d8e04917bb6bd98b0fab335f3be64f39091b2fbd2f6805752d67422b6c6b0.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012169605_e_0b82q5f",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-23.png",
+      "screenshotSha256": "c98b2e8dc5a67157325b97a11b128aff6cb2539a1d65cead8b834347dab2b456",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-24",
+      "district": "Da Costabuurt",
+      "label": "unknown",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012155539_e_19ytu7e",
+          "buildingId": "0363100012155539",
+          "renderBuildingId": "0363100012155539",
+          "evidenceKey": "c5722960215dd3145ba8d482c4bad34921832a19481a5b5d64d62877b001abb5",
+          "derivationKey": "cbb92b92b8f04d7f1c9093b7369e42300a5a4e4221034f20e810251352881fda",
+          "panoramaId": "recording_2025-07-03_10-58-37_00949",
+          "captureDate": "2025-07-03T11:32:36Z",
+          "sourceSha256": "edc0aa1f1c3a211bf1cf024601c11a1d61b89bdf24e1334ba28659460bff3c44",
+          "cropSha256": "59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0"
+        },
+        "render": {
+          "observationId": "0363100012155539_e_19ytu7e",
+          "buildingId": "0363100012155539",
+          "renderBuildingId": "0363100012155539",
+          "evidenceKey": "c5722960215dd3145ba8d482c4bad34921832a19481a5b5d64d62877b001abb5",
+          "derivationKey": "cbb92b92b8f04d7f1c9093b7369e42300a5a4e4221034f20e810251352881fda",
+          "panoramaId": "recording_2025-07-03_10-58-37_00949",
+          "captureDate": "2025-07-03T11:32:36Z",
+          "sourceSha256": "edc0aa1f1c3a211bf1cf024601c11a1d61b89bdf24e1334ba28659460bff3c44",
+          "cropSha256": "59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/d41fbad9b2cab955a11725296c74f17d65e9e36907763f86eaf1396467186ebb.jpg",
+        "ground": "/data/city-expansion/evidence/59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012155539_e_19ytu7e",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-24.png",
+      "screenshotSha256": "051e77e34928d3013dfafeb04af41451863b920a614ad4267a1dcafdba0d2a7d",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-25",
+      "district": "acquisition-halo",
+      "label": "negative",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012169813_e_1i9q96x",
+          "buildingId": "0363100012169813",
+          "renderBuildingId": "0363100012169813",
+          "evidenceKey": "59f4ee93b995cb395878b9b8c4d07b5d1afd971a88f29f8e7e1a43ea9a5839fb",
+          "derivationKey": "5288ae7ea9ae8989ba01274699896acc34239deb07690a864c3a13fbefed7456",
+          "panoramaId": "TMX7316010203-002860_pano_0005_000032",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "sourceSha256": "5e961d5ea35ca091bd71860ee695c04bda32170d2e3b41592811c96148174ba4",
+          "cropSha256": "fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9"
+        },
+        "render": {
+          "observationId": "0363100012169813_e_1i9q96x",
+          "buildingId": "0363100012169813",
+          "renderBuildingId": "0363100012169813",
+          "evidenceKey": "59f4ee93b995cb395878b9b8c4d07b5d1afd971a88f29f8e7e1a43ea9a5839fb",
+          "derivationKey": "5288ae7ea9ae8989ba01274699896acc34239deb07690a864c3a13fbefed7456",
+          "panoramaId": "TMX7316010203-002860_pano_0005_000032",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "sourceSha256": "5e961d5ea35ca091bd71860ee695c04bda32170d2e3b41592811c96148174ba4",
+          "cropSha256": "fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d.jpg",
+        "ground": "/data/city-expansion/evidence/fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012169813_e_1i9q96x",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-25.png",
+      "screenshotSha256": "a790fa4d671fdc54ea8a5532ff90c05afef626d0211305275fb93f4d5154097a",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-26",
+      "district": "acquisition-halo",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "shopfront",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012571031_e_1oyjob7",
+          "buildingId": "0363100012571031",
+          "renderBuildingId": "0363100012571031",
+          "evidenceKey": "efa1aec22338ac792e2ff6a9b4d988f823bf05f88412c314396fe0cbcb2efb7e",
+          "derivationKey": "f240806129740ef868e155435a98a51ce3d55cbaa19e508cb703ddfe167be988",
+          "panoramaId": "TMX7316010203-002637_pano_0000_000004",
+          "captureDate": "2022-06-28T06:27:12.221910Z",
+          "sourceSha256": "6ae8a122414c1d322fd67504889404e37e8ea4e187819bc433e6b75d335d1a2b",
+          "cropSha256": "526a2085f78788c1e48cca055d18ba1cd0c26cc212e5549e8cba657407a7e86c"
+        },
+        "render": {
+          "observationId": "0363100012571031_e_1oyjob7",
+          "buildingId": "0363100012571031",
+          "renderBuildingId": "0363100012571031",
+          "evidenceKey": "efa1aec22338ac792e2ff6a9b4d988f823bf05f88412c314396fe0cbcb2efb7e",
+          "derivationKey": "f240806129740ef868e155435a98a51ce3d55cbaa19e508cb703ddfe167be988",
+          "panoramaId": "TMX7316010203-002637_pano_0000_000004",
+          "captureDate": "2022-06-28T06:27:12.221910Z",
+          "sourceSha256": "6ae8a122414c1d322fd67504889404e37e8ea4e187819bc433e6b75d335d1a2b",
+          "cropSha256": "526a2085f78788c1e48cca055d18ba1cd0c26cc212e5549e8cba657407a7e86c"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/97ed0241182bff727bf552a6db88c419328582d67cdb798a0c50039c2bafd32a.jpg",
+        "ground": "/data/city-expansion/evidence/526a2085f78788c1e48cca055d18ba1cd0c26cc212e5549e8cba657407a7e86c.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012571031_e_1oyjob7",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-26.png",
+      "screenshotSha256": "8884428a5f48ccc314bfa3333fc6bfbc3b99c893510881c31b54d6bb32621d00",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-27",
+      "district": "acquisition-halo",
+      "label": "unknown",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012086076_e_103xrxl",
+          "buildingId": "0363100012086076",
+          "renderBuildingId": "0363100012086076",
+          "evidenceKey": "4bb9310f1f1287335fde48cad3fada153ee205e18ac04dfcf0d5581010e34b6d",
+          "derivationKey": "045e4723c75b49272d282c989cb0f474cdd5c74ae8c7804335c234b1c1d9b0de",
+          "panoramaId": "recording_2025-07-31_10-03-10_00898",
+          "captureDate": "2025-07-31T10:31:11Z",
+          "sourceSha256": "0ec8fc30020860bb611e6d433926cc3297e42785e13b1c6fa4a72f829c493bbc",
+          "cropSha256": "772f505a78cf4f6f9410d10395558719f75566af3b93560105dcdc3308c059e6"
+        },
+        "render": {
+          "observationId": "0363100012086076_e_103xrxl",
+          "buildingId": "0363100012086076",
+          "renderBuildingId": "0363100012086076",
+          "evidenceKey": "4bb9310f1f1287335fde48cad3fada153ee205e18ac04dfcf0d5581010e34b6d",
+          "derivationKey": "045e4723c75b49272d282c989cb0f474cdd5c74ae8c7804335c234b1c1d9b0de",
+          "panoramaId": "recording_2025-07-31_10-03-10_00898",
+          "captureDate": "2025-07-31T10:31:11Z",
+          "sourceSha256": "0ec8fc30020860bb611e6d433926cc3297e42785e13b1c6fa4a72f829c493bbc",
+          "cropSha256": "772f505a78cf4f6f9410d10395558719f75566af3b93560105dcdc3308c059e6"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/c1dd427ffac468359ef9b9ae3b7341fd81b20f77d779a4227bea06d5f4b91b73.jpg",
+        "ground": "/data/city-expansion/evidence/772f505a78cf4f6f9410d10395558719f75566af3b93560105dcdc3308c059e6.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012086076_e_103xrxl",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-27.png",
+      "screenshotSha256": "883521efb8d301c2a0ecf0467bf94f4cef4f9d05dcc8a3e9577f239c801dd0c7",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-28",
+      "district": "Jordaan",
+      "label": "unknown",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [
+        "signText",
+        "shopfront",
+        "storefront-not-rendered",
+        "literal-sign-not-rendered"
+      ],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012168936_e_0iuuqcm",
+          "buildingId": "0363100012168936",
+          "renderBuildingId": "0363100012168936",
+          "evidenceKey": "40231d8100da208c5601b61b065238340cf03aac3ae525472e1eb43f1619d8f9",
+          "derivationKey": "d2903244ca7ce44693fffffe8c76c14e01df048650732945fa96b62c80eb8135",
+          "panoramaId": "TMX7316010203-002939_pano_0002_000017",
+          "captureDate": "2023-01-16T11:40:21.160720Z",
+          "sourceSha256": "93ab8bf207d9755fd222a17e18797cfa4ac65f7efc443c77f943af0af5fdd48c",
+          "cropSha256": "3a06f34d7b1d09462a16d094d1c35e52482179dca2b7f5ab1a6db1288a3a035b"
+        },
+        "render": {
+          "observationId": "0363100012168936_e_0iuuqcm",
+          "buildingId": "0363100012168936",
+          "renderBuildingId": "0363100012168936",
+          "evidenceKey": "40231d8100da208c5601b61b065238340cf03aac3ae525472e1eb43f1619d8f9",
+          "derivationKey": "d2903244ca7ce44693fffffe8c76c14e01df048650732945fa96b62c80eb8135",
+          "panoramaId": "TMX7316010203-002939_pano_0002_000017",
+          "captureDate": "2023-01-16T11:40:21.160720Z",
+          "sourceSha256": "93ab8bf207d9755fd222a17e18797cfa4ac65f7efc443c77f943af0af5fdd48c",
+          "cropSha256": "3a06f34d7b1d09462a16d094d1c35e52482179dca2b7f5ab1a6db1288a3a035b"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/4313d74a76b0967003900f09b8cab9fa78fd197839ba8521b290d710adfccde4.jpg",
+        "ground": "/data/city-expansion/evidence/3a06f34d7b1d09462a16d094d1c35e52482179dca2b7f5ab1a6db1288a3a035b.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012168936_e_0iuuqcm",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-28.png",
+      "screenshotSha256": "6c1a43126f73541e2d7cf22e267e403d80071d0693fb14ad86c8f17c0b6f3143",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-29",
+      "district": "Da Costabuurt",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012157746_e_04nemym",
+          "buildingId": "0363100012157746",
+          "renderBuildingId": "0363100012157746",
+          "evidenceKey": "7421e042bcf0ae6f1c48915dc1fc8a80f6f19420831f7d9b273d5670a6cb059f",
+          "derivationKey": "deade5a2025ed84207ef21097ade18978aa35504659d9473a24b3c982a53578a",
+          "panoramaId": "recording_2025-07-03_08-35-58_00478",
+          "captureDate": "2025-07-03T08:55:44Z",
+          "sourceSha256": "0f6a4c723e5f7e460836f01e6cb0c3f43ba9e0cafb5b7ac97690a05f04e0985e",
+          "cropSha256": "788c84eae23e26305288ef67492c5095ee2f540151b4971c1b9473cd38127f49"
+        },
+        "render": {
+          "observationId": "0363100012157746_e_04nemym",
+          "buildingId": "0363100012157746",
+          "renderBuildingId": "0363100012157746",
+          "evidenceKey": "7421e042bcf0ae6f1c48915dc1fc8a80f6f19420831f7d9b273d5670a6cb059f",
+          "derivationKey": "deade5a2025ed84207ef21097ade18978aa35504659d9473a24b3c982a53578a",
+          "panoramaId": "recording_2025-07-03_08-35-58_00478",
+          "captureDate": "2025-07-03T08:55:44Z",
+          "sourceSha256": "0f6a4c723e5f7e460836f01e6cb0c3f43ba9e0cafb5b7ac97690a05f04e0985e",
+          "cropSha256": "788c84eae23e26305288ef67492c5095ee2f540151b4971c1b9473cd38127f49"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/cb0f66e828b485b7ba2c3f6e6bc48457ec007b01dfe06521195e8bdbb42db346.jpg",
+        "ground": "/data/city-expansion/evidence/788c84eae23e26305288ef67492c5095ee2f540151b4971c1b9473cd38127f49.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012157746_e_04nemym",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-29.png",
+      "screenshotSha256": "fc80539d667c383c7cfc147e8293de0b149cfd30c58e4bf91b756d9453a698f1",
+      "cameraOmission": null
+    },
+    {
+      "caseId": "case-30",
+      "district": "Jordaan",
+      "label": "positive",
+      "sourceTier": "machine-observed-unreviewed",
+      "omissions": [],
+      "comparison": {
+        "source": {
+          "observationId": "0363100012174564_e_14yoqnp",
+          "buildingId": "0363100012174564",
+          "renderBuildingId": "0363100012174564",
+          "evidenceKey": "a29cb75aa23b66c4fb05abd4881827e265e8213d7faa6262b7b7ae73c4465b5d",
+          "derivationKey": "bbef3f1c75a16497974f5cb75f327749f4288e35d1efe0fd842355c353450509",
+          "panoramaId": "TMX7316010203-002967_pano_0005_000062",
+          "captureDate": "2023-02-13T09:46:47.281620Z",
+          "sourceSha256": "46cbe68d5ebf682e1b008709a34ddd858626c6c9fdc264f973f99aff8980e959",
+          "cropSha256": "b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4"
+        },
+        "render": {
+          "observationId": "0363100012174564_e_14yoqnp",
+          "buildingId": "0363100012174564",
+          "renderBuildingId": "0363100012174564",
+          "evidenceKey": "a29cb75aa23b66c4fb05abd4881827e265e8213d7faa6262b7b7ae73c4465b5d",
+          "derivationKey": "bbef3f1c75a16497974f5cb75f327749f4288e35d1efe0fd842355c353450509",
+          "panoramaId": "TMX7316010203-002967_pano_0005_000062",
+          "captureDate": "2023-02-13T09:46:47.281620Z",
+          "sourceSha256": "46cbe68d5ebf682e1b008709a34ddd858626c6c9fdc264f973f99aff8980e959",
+          "cropSha256": "b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4"
+        },
+        "synchronized": true,
+        "reason": null
+      },
+      "humanReview": {
+        "status": "pending",
+        "decision": null,
+        "reviewer": null,
+        "notes": null
+      },
+      "images": {
+        "full": "/data/city-expansion/evidence/410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7.jpg",
+        "ground": "/data/city-expansion/evidence/b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4.jpg"
+      },
+      "renderUrl": "/canal-drive/city-appearance.html?area=expansion&release=c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d&frontage=0363100012174564_e_14yoqnp",
+      "screenshotUrl": "/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-30.png",
+      "screenshotSha256": "bb713ad479aeca4a083b0d121924b4e0990e850dd46b5722fcaeeb6a4df87270",
+      "cameraOmission": null
+    }
+  ],
+  "summary": {
+    "requested": 30,
+    "selected": 30,
+    "synchronized": 30,
+    "classes": {
+      "positive": 11,
+      "negative": 9,
+      "unknown": 10
+    },
+    "districts": [
+      "Da Costabuurt",
+      "Jordaan",
+      "acquisition-halo"
+    ]
+  },
+  "excludedDevelopmentExamples": [
+    "0363100012168438_e_1lrqzc2",
+    "0363100012237236_e_07oi4ua"
+  ]
+}

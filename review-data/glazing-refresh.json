@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "kind": "reviewed-glazing-refresh",
+  "generatedAt": "2026-09-21T14:45:49.530Z",
+  "sourcePacket": {
+    "path": "public/data/facade-repair-preview/cases.json",
+    "sha256": "168fc6df832b17c113305848d95d291424044ee82bb28ed5de2b991d83040032"
+  },
+  "caseId": "case-18",
+  "nearWhiteWindowFeatures": [
+    "full:window-1",
+    "full:window-2",
+    "full:window-3",
+    "full:window-4"
+  ],
+  "changed": [
+    "patches",
+    "full"
+  ],
+  "studyTiers": [
+    "full"
+  ],
+  "note": "Near-white window glazing recoloured through the guarded compiler. Metric patches, frame, owners and every other case are left byte-identical; prior packet bytes are archived by the publisher.",
+  "published": {
+    "currentSha256": "168fc6df832b17c113305848d95d291424044ee82bb28ed5de2b991d83040032",
+    "proposedSha256": "924bece7b6b934d97171ba2906a17ac955e846fc388dc7a3ee8482e77cb83216",
+    "currentArchived": false,
+    "proposedArchived": true,
+    "casesPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/facade-repair-preview/cases.json"
+  }
+}

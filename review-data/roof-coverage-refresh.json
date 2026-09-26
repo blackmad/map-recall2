@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "kind": "reviewed-roof-coverage-refresh",
+  "generatedAt": "2026-09-21T18:14:35.853Z",
+  "sourcePacket": {
+    "path": "public/data/facade-repair-preview/cases.json",
+    "sha256": "9ddc545c1a17603f1b7dad9d7aa42af31a989c85d78c341c89607983248f0fd4"
+  },
+  "refreshed": [
+    {
+      "caseId": "case-12",
+      "reviewFeatures": [],
+      "silhouettePoints": 24,
+      "patches": 117
+    }
+  ],
+  "skipped": [
+    {
+      "caseId": "case-01",
+      "reason": "already-current"
+    },
+    {
+      "caseId": "case-04",
+      "reason": "already-current"
+    },
+    {
+      "caseId": "case-09",
+      "reason": "already-current"
+    },
+    {
+      "caseId": "case-27",
+      "reason": "already-current"
+    },
+    {
+      "caseId": "case-21",
+      "reason": "already-current"
+    }
+  ],
+  "note": "Targeted roof-coverage revision through publishPreviewRevision. Metric patches, frames, owners and every other case are left byte-identical; prior packet bytes are archived by the publisher.",
+  "published": {
+    "currentSha256": "9ddc545c1a17603f1b7dad9d7aa42af31a989c85d78c341c89607983248f0fd4",
+    "proposedSha256": "7a261e5bf4f83683346c9864283431ad55b31b56d465be3814a0d0336ab68614",
+    "currentArchived": false,
+    "proposedArchived": true,
+    "casesPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/facade-repair-preview/cases.json"
+  }
+}

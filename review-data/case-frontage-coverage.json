@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "kind": "case-frontage-coverage",
+  "generatedAt": "2026-09-21T19:13:56.700Z",
+  "packet": {
+    "path": "public/data/facade-repair-preview/cases.json",
+    "sha256": "7a261e5bf4f83683346c9864283431ad55b31b56d465be3814a0d0336ab68614"
+  },
+  "threshold": "max(1.5 m, 15% of the crop-plane length)",
+  "switched": {
+    "case-02": {
+      "gapM": 3.31
+    },
+    "case-13": {
+      "gapM": 2.94
+    },
+    "case-19": {
+      "gapM": 2.21
+    },
+    "case-22": {
+      "gapM": 4
+    },
+    "case-29": {
+      "gapM": 2.04
+    }
+  },
+  "alreadySwitched": [
+    "case-09",
+    "case-30"
+  ],
+  "keptDeclared": {
+    "case-05": {
+      "gapM": 0.93
+    },
+    "case-15": {
+      "gapM": 1.75
+    },
+    "case-23": {
+      "gapM": 2.23
+    },
+    "case-27": {
+      "gapM": 2.38
+    }
+  }
+}

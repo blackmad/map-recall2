@@ -1,0 +1,582 @@
+{
+  "version": 1,
+  "kind": "declared-wall-colour-observation",
+  "generatedAt": "2026-09-21T19:13:55.502Z",
+  "basis": "masked-crop-percentile",
+  "state": "needs-review",
+  "note": "Diagnostic wall-colour samples. Masked openings and localized trim, skipped crop margins, excluded near-white joinery. Unreliable on occluded/shadowed crops; the declared extraction material is the fallback, not this sample.",
+  "renderBase": "#d7d0c7",
+  "samples": [
+    {
+      "caseId": "case-01",
+      "status": "measured",
+      "sourceSha256": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+      "sample": {
+        "rgb": [
+          68,
+          65,
+          82
+        ],
+        "hex": "#444152",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 27.34,
+        "sampledPixels": 42936,
+        "wallFraction": 0.364,
+        "lumaSpread": 89.7,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-02",
+      "status": "measured",
+      "sourceSha256": "10d215ba9fca35d846f8b8af002852d807dc818ba868bad518e9921ec6a99d87",
+      "sample": {
+        "rgb": [
+          95,
+          85,
+          83
+        ],
+        "hex": "#5f5553",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 12.25,
+        "sampledPixels": 135419,
+        "wallFraction": 0.448,
+        "lumaSpread": 31,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-03",
+      "status": "measured",
+      "sourceSha256": "0d9ef2fc124a0a2f403df39ef1801e091139543cb38925d4dba985ab90d56b82",
+      "sample": {
+        "rgb": [
+          86,
+          80,
+          48
+        ],
+        "hex": "#565030",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 31.51,
+        "sampledPixels": 96206,
+        "wallFraction": 0.542,
+        "lumaSpread": 114.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-04",
+      "status": "measured",
+      "sourceSha256": "4def1337d462b838f2a733f59bfd6d4c375bf18b31480449894f3fc50473471f",
+      "sample": {
+        "rgb": [
+          89,
+          74,
+          71
+        ],
+        "hex": "#594a47",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 17.32,
+        "sampledPixels": 79419,
+        "wallFraction": 0.315,
+        "lumaSpread": 38.7,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-05",
+      "status": "measured",
+      "sourceSha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+      "sample": {
+        "rgb": [
+          138,
+          127,
+          107
+        ],
+        "hex": "#8a7f6b",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 16.21,
+        "sampledPixels": 159153,
+        "wallFraction": 0.369,
+        "lumaSpread": 108.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-06",
+      "status": "measured",
+      "sourceSha256": "999b7440fb549ec82a7685cb59a33d5d93c4cd119e1551a79e6c3f888794c4ca",
+      "sample": {
+        "rgb": [
+          71,
+          70,
+          66
+        ],
+        "hex": "#474642",
+        "family": "paint",
+        "material": "painted-black",
+        "materialDistance": 9.6,
+        "sampledPixels": 119534,
+        "wallFraction": 0.481,
+        "lumaSpread": 90.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-08",
+      "status": "measured",
+      "sourceSha256": "6b9d07c1aa7d65cd81e920c54cb2ce3f72d06fbd7dc6b711d2aac71a8d14eb73",
+      "sample": {
+        "rgb": [
+          89,
+          78,
+          72
+        ],
+        "hex": "#594e48",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 14.76,
+        "sampledPixels": 78079,
+        "wallFraction": 0.367,
+        "lumaSpread": 93.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-09",
+      "status": "measured",
+      "sourceSha256": "9585767f7360620e7439d1fcc08ddb2177635673169db28891774f8b20c3b886",
+      "sample": {
+        "rgb": [
+          66,
+          45,
+          26
+        ],
+        "hex": "#422d1a",
+        "family": "paint",
+        "material": "painted-black",
+        "materialDistance": 28.33,
+        "sampledPixels": 95445,
+        "wallFraction": 0.464,
+        "lumaSpread": 23,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-10",
+      "status": "measured",
+      "sourceSha256": "80e3ef3dbfee632b910e5bf07c63e1c32b8dbae34f9349c7b2bff024d067eb2c",
+      "sample": {
+        "rgb": [
+          69,
+          68,
+          64
+        ],
+        "hex": "#454440",
+        "family": "paint",
+        "material": "painted-black",
+        "materialDistance": 9,
+        "sampledPixels": 56532,
+        "wallFraction": 0.293,
+        "lumaSpread": 60.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-11",
+      "status": "measured",
+      "sourceSha256": "ed59adb27156705f150248cbe6e9e988d1d48fb671f581965ce12f5f388f11fb",
+      "sample": {
+        "rgb": [
+          134,
+          134,
+          126
+        ],
+        "hex": "#86867e",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 6.95,
+        "sampledPixels": 98993,
+        "wallFraction": 0.41,
+        "lumaSpread": 73.7,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-12",
+      "status": "measured",
+      "sourceSha256": "2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660",
+      "sample": {
+        "rgb": [
+          95,
+          87,
+          74
+        ],
+        "hex": "#5f574a",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 14.37,
+        "sampledPixels": 73546,
+        "wallFraction": 0.455,
+        "lumaSpread": 118.7,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-13",
+      "status": "measured",
+      "sourceSha256": "1b487142a5367681040c06dae3c6f3ae75f2db1e73a65badd1199b171f27474c",
+      "sample": {
+        "rgb": [
+          63,
+          52,
+          50
+        ],
+        "hex": "#3f3432",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 22.68,
+        "sampledPixels": 145929,
+        "wallFraction": 0.501,
+        "lumaSpread": 111,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-14",
+      "status": "measured",
+      "sourceSha256": "db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558",
+      "sample": {
+        "rgb": [
+          121,
+          133,
+          131
+        ],
+        "hex": "#798583",
+        "family": "paint",
+        "material": "painted-grey",
+        "materialDistance": 11.74,
+        "sampledPixels": 100229,
+        "wallFraction": 0.487,
+        "lumaSpread": 119.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-15",
+      "status": "measured",
+      "sourceSha256": "27f91a4953409ff6bed64cdf9e88157b13c26ce756a0dcf558775dedff60a2a7",
+      "sample": {
+        "rgb": [
+          74,
+          64,
+          55
+        ],
+        "hex": "#4a4037",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 19.63,
+        "sampledPixels": 295258,
+        "wallFraction": 0.551,
+        "lumaSpread": 65,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-16",
+      "status": "measured",
+      "sourceSha256": "917cdd7c7a3abc321a24fa67fdcf7a092c5a0c90cb1a40b83be19eb435b63b00",
+      "sample": {
+        "rgb": [
+          82,
+          72,
+          62
+        ],
+        "hex": "#52483e",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 17.49,
+        "sampledPixels": 95517,
+        "wallFraction": 0.441,
+        "lumaSpread": 76,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-17",
+      "status": "measured",
+      "sourceSha256": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+      "sample": {
+        "rgb": [
+          88,
+          77,
+          73
+        ],
+        "hex": "#584d49",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 14.86,
+        "sampledPixels": 146415,
+        "wallFraction": 0.435,
+        "lumaSpread": 59.7,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-18",
+      "status": "measured",
+      "sourceSha256": "cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6",
+      "sample": {
+        "rgb": [
+          128,
+          124,
+          95
+        ],
+        "hex": "#807c5f",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 24.06,
+        "sampledPixels": 146868,
+        "wallFraction": 0.58,
+        "lumaSpread": 145.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-19",
+      "status": "measured",
+      "sourceSha256": "785d3ce1bd539e18856abffebc492977bd8f3bf9af09c16bd87877fb82a9fa5d",
+      "sample": {
+        "rgb": [
+          64,
+          57,
+          51
+        ],
+        "hex": "#403933",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 21.01,
+        "sampledPixels": 71490,
+        "wallFraction": 0.385,
+        "lumaSpread": 98,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-20",
+      "status": "measured",
+      "sourceSha256": "c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0",
+      "sample": {
+        "rgb": [
+          52,
+          45,
+          39
+        ],
+        "hex": "#342d27",
+        "family": "paint",
+        "material": "painted-black",
+        "materialDistance": 9.25,
+        "sampledPixels": 103250,
+        "wallFraction": 0.45,
+        "lumaSpread": 85,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-21",
+      "status": "measured",
+      "sourceSha256": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+      "sample": {
+        "rgb": [
+          248,
+          218,
+          168
+        ],
+        "hex": "#f8daa8",
+        "family": "brick",
+        "material": "brick-yellow",
+        "materialDistance": 23.93,
+        "sampledPixels": 91178,
+        "wallFraction": 0.397,
+        "lumaSpread": 102.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-22",
+      "status": "measured",
+      "sourceSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+      "sample": {
+        "rgb": [
+          63,
+          62,
+          60
+        ],
+        "hex": "#3f3e3c",
+        "family": "paint",
+        "material": "painted-black",
+        "materialDistance": 6.61,
+        "sampledPixels": 111947,
+        "wallFraction": 0.404,
+        "lumaSpread": 34.7,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-23",
+      "status": "measured",
+      "sourceSha256": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+      "sample": {
+        "rgb": [
+          82,
+          76,
+          80
+        ],
+        "hex": "#524c50",
+        "family": "paint",
+        "material": "painted-black",
+        "materialDistance": 14.1,
+        "sampledPixels": 461929,
+        "wallFraction": 0.451,
+        "lumaSpread": 156.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-24",
+      "status": "measured",
+      "sourceSha256": "d41fbad9b2cab955a11725296c74f17d65e9e36907763f86eaf1396467186ebb",
+      "sample": {
+        "rgb": [
+          100,
+          80,
+          71
+        ],
+        "hex": "#645047",
+        "family": "brick",
+        "material": "brick-purple-brown",
+        "materialDistance": 17.47,
+        "sampledPixels": 64512,
+        "wallFraction": 0.42,
+        "lumaSpread": 34.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-25",
+      "status": "measured",
+      "sourceSha256": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+      "sample": {
+        "rgb": [
+          91,
+          90,
+          95
+        ],
+        "hex": "#5b5a5f",
+        "family": "paint",
+        "material": "painted-black",
+        "materialDistance": 17.11,
+        "sampledPixels": 85322,
+        "wallFraction": 0.48,
+        "lumaSpread": 86.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-26",
+      "status": "no-crop"
+    },
+    {
+      "caseId": "case-27",
+      "status": "measured",
+      "sourceSha256": "c1dd427ffac468359ef9b9ae3b7341fd81b20f77d779a4227bea06d5f4b91b73",
+      "sample": {
+        "rgb": [
+          74,
+          61,
+          53
+        ],
+        "hex": "#4a3d35",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 20.93,
+        "sampledPixels": 522306,
+        "wallFraction": 0.661,
+        "lumaSpread": 93.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-29",
+      "status": "measured",
+      "sourceSha256": "cb0f66e828b485b7ba2c3f6e6bc48457ec007b01dfe06521195e8bdbb42db346",
+      "sample": {
+        "rgb": [
+          64,
+          49,
+          52
+        ],
+        "hex": "#403134",
+        "family": "brick",
+        "material": "brick-grey",
+        "materialDistance": 25.17,
+        "sampledPixels": 125527,
+        "wallFraction": 0.541,
+        "lumaSpread": 49.3,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    },
+    {
+      "caseId": "case-30",
+      "status": "measured",
+      "sourceSha256": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+      "sample": {
+        "rgb": [
+          117,
+          111,
+          115
+        ],
+        "hex": "#756f73",
+        "family": "paint",
+        "material": "painted-grey",
+        "materialDistance": 19.28,
+        "sampledPixels": 64261,
+        "wallFraction": 0.389,
+        "lumaSpread": 111.7,
+        "basis": "masked-crop-percentile",
+        "state": "needs-review"
+      }
+    }
+  ]
+}

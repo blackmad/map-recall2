@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "kind": "case-glazing",
+  "generatedAt": "2026-09-21T19:13:56.811Z",
+  "packet": {
+    "path": "public/data/facade-repair-preview/cases.json",
+    "sha256": "7a261e5bf4f83683346c9864283431ad55b31b56d465be3814a0d0336ab68614"
+  },
+  "guard": {
+    "nearWhiteMinChannel": 235,
+    "windowFallback": "#526a6b",
+    "doorLeavesExcluded": true
+  },
+  "delivered": {
+    "case-11": {
+      "nearWhiteWindows": 12,
+      "metricGlazing": "#526a6b",
+      "studyTiers": [
+        "full"
+      ]
+    },
+    "case-18": {
+      "nearWhiteWindows": 4,
+      "metricGlazing": "#526a6b",
+      "studyTiers": [
+        "full"
+      ],
+      "groundTier": "preserved (raised-entrance correction; plain compile does not reproduce it)"
+    }
+  }
+}
