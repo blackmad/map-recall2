@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "kind": "pano-anchor-fit",
+  "generatedAt": "2026-09-20T18:58:07.011Z",
+  "cameraModelId": "amsterdam-world-aligned/v1",
+  "panos": [
+    {
+      "panoramaId": "b_20241129_0829_Track29_Sphere_00016",
+      "count": 4,
+      "rawResidualPx": {
+        "median": 15.4,
+        "max": 18.5
+      },
+      "yawOffsetPx": -15.4,
+      "yawOffsetDeg": -0.693,
+      "pitchOffsetPx": 0.7,
+      "correctedResidualPx": {
+        "median": 3.3,
+        "max": 15.4
+      }
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000070",
+      "count": 2,
+      "rawResidualPx": {
+        "median": 108.7,
+        "max": 130.4
+      },
+      "yawOffsetPx": -108.4,
+      "yawOffsetDeg": -4.88,
+      "pitchOffsetPx": 7.6,
+      "correctedResidualPx": {
+        "median": 21.7,
+        "max": 21.7
+      }
+    },
+    {
+      "panoramaId": "TMX7316010203-003006_pano_0003_000165",
+      "count": 6,
+      "rawResidualPx": {
+        "median": 33.4,
+        "max": 42.4
+      },
+      "yawOffsetPx": -33,
+      "yawOffsetDeg": -1.486,
+      "pitchOffsetPx": 5,
+      "correctedResidualPx": {
+        "median": 8.5,
+        "max": 12.3
+      }
+    }
+  ],
+  "summary": {
+    "anchors": 12,
+    "rawResidualPx": {
+      "median": 29.2,
+      "p95": 130.4
+    },
+    "correctedResidualPx": {
+      "median": 8.5,
+      "p95": 21.7
+    },
+    "note": "A per-pano constant shift is a boresight (yaw/pitch) offset. Corrected residual is the spread the offset cannot explain; part of it is BAG footprint error (~0.2 m) and reviewer click precision."
+  }
+}

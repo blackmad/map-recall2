@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "kind": "reviewed-opening-frame-refresh",
+  "generatedAt": "2026-09-21T16:14:15.267Z",
+  "sourcePacket": {
+    "path": "public/data/facade-repair-preview/cases.json",
+    "sha256": "cf5b0da474b323aa9b10a5c1684a6443e738cfda330ce37adeb0b738740f6099"
+  },
+  "refreshed": [
+    {
+      "caseId": "case-05",
+      "tier": "full",
+      "clearances": [
+        "full:window-r1-b3",
+        "full:window-r1-b4",
+        "full:window-r2-b3",
+        "full:window-r2-b4",
+        "full:window-r3-b3",
+        "full:window-r3-b4"
+      ],
+      "patches": 180
+    }
+  ],
+  "skipped": [],
+  "note": "Targeted source-shape-study revision through publishPreviewRevision. Metric patches, frames, owners and every other case are left byte-identical; prior packet bytes are archived by the publisher.",
+  "published": {
+    "currentSha256": "cf5b0da474b323aa9b10a5c1684a6443e738cfda330ce37adeb0b738740f6099",
+    "proposedSha256": "ad09c342566df73db1c8cc585933df32a7e55932859cd6103d582a969126db91",
+    "currentArchived": false,
+    "proposedArchived": true,
+    "casesPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/facade-repair-preview/cases.json"
+  }
+}
