@@ -425,6 +425,99 @@
   var COPPER = "#c9844a";
   var RULE = "rgba(31,28,23,0.16)";
   var GamePresentationRuntime = class {
+    /** Return focus to the canvas after a card action so keyboard driving resumes. */
+    _reclaimKeyboardFocus() {
+      const active = document.activeElement;
+      if (active instanceof HTMLElement && active !== this.canvas) active.blur();
+      try {
+        this.canvas.focus({ preventScroll: true });
+      } catch {
+        this.canvas.focus();
+      }
+    }
+    /** Logical canvas coordinates shared by mouse, pointer, and touch input. */
+    _eventPoint(event) {
+      const rect = this.canvas.getBoundingClientRect();
+      if (!rect.width || !rect.height) return { x: 0, y: 0 };
+      return { x: (event.clientX - rect.left) * CANVAS_W / rect.width, y: (event.clientY - rect.top) * CANVAS_H / rect.height };
+    }
+    /** Canvas camera controls and card hit targets belong with the presentation layer. */
+    _setupCameraGestures() {
+      let dragging = false, moved = false, lastX = 0, lastY = 0, downX = 0, downY = 0, pinchDistance = 0;
+      const livePinch = /* @__PURE__ */ new Map();
+      const syncZoom = () => {
+        this._cameraZoom.value = this._liveZoom.value = String(this.camera.zoom);
+      };
+      this.canvas.addEventListener("wheel", (event) => {
+        if (this.state === GameState.MENU) return;
+        event.preventDefault();
+        if (event.ctrlKey) {
+          this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * Math.exp(-event.deltaY * 2e-3)));
+          this._zoomTouchedByPlayer = true;
+        } else this.camera.pan(event.deltaX, event.deltaY);
+        syncZoom();
+      }, { passive: false });
+      this.canvas.addEventListener("touchstart", (event) => {
+        for (const touch of event.changedTouches) {
+          const point = this._eventPoint(touch);
+          if (!window.CanalRecallUi.isInsideDpad(point, this.input.dpad)) livePinch.set(touch.identifier, point);
+        }
+        const points = [...livePinch.values()];
+        if (points.length === 2) pinchDistance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+      }, { passive: true });
+      this.canvas.addEventListener("touchmove", (event) => {
+        let changed = false;
+        for (const touch of event.changedTouches) if (livePinch.has(touch.identifier)) {
+          livePinch.set(touch.identifier, this._eventPoint(touch));
+          changed = true;
+        }
+        const points = [...livePinch.values()];
+        if (!changed || points.length !== 2) return;
+        event.preventDefault();
+        const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+        if (pinchDistance > 0 && distance > 0) {
+          this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * distance / pinchDistance));
+          this._zoomTouchedByPlayer = true;
+          syncZoom();
+        }
+        pinchDistance = distance;
+      }, { passive: false });
+      const endPinch = (event) => {
+        for (const touch of event.changedTouches) livePinch.delete(touch.identifier);
+        if (livePinch.size < 2) pinchDistance = 0;
+      };
+      this.canvas.addEventListener("touchend", endPinch, { passive: true });
+      this.canvas.addEventListener("touchcancel", endPinch, { passive: true });
+      this.canvas.addEventListener("pointerdown", (event) => {
+        if (event.button !== 0 || this.state === GameState.MENU || livePinch.size >= 2 || window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) return;
+        dragging = true;
+        moved = false;
+        downX = lastX = event.clientX;
+        downY = lastY = event.clientY;
+        this.canvas.setPointerCapture(event.pointerId);
+      });
+      this.canvas.addEventListener("pointermove", (event) => {
+        if (!dragging) return;
+        if (Math.hypot(event.clientX - downX, event.clientY - downY) > 6) moved = true;
+        this.camera.pan(lastX - event.clientX, lastY - event.clientY);
+        lastX = event.clientX;
+        lastY = event.clientY;
+      });
+      this.canvas.addEventListener("pointerup", (event) => {
+        if (dragging && !moved) {
+          const { x, y } = this._eventPoint(event);
+          const hit = (bounds) => x >= bounds.x && x <= bounds.x + bounds.w && y >= bounds.y && y <= bounds.y + bounds.h;
+          const finish = this.state === GameState.FINISHED && this._finishButtonBounds?.find(hit);
+          const pause = this.state === GameState.PAUSED && this._pauseButtonBounds?.find(hit);
+          if (finish) this._runFinishAction(finish.id);
+          else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
+          else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this.camera.resetPan();
+          else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
+          else this._inspectBuildingAt(event.clientX, event.clientY);
+        }
+        dragging = false;
+      });
+    }
     /** True while a DOM overlay owns the screen — quiz, utility, or article. */
     _overlayOpen() {
       if (this._utilityOpen) return true;

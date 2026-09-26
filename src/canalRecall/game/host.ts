@@ -344,11 +344,18 @@ export interface PresentationHost extends GameCoreHost {
   _menuQuote: { text: string; character: string } | null;
   _debugMode: boolean;
   _lastZoomShown: number | null;
+  _zoomTouchedByPlayer: boolean;
+  _cameraZoom: HTMLInputElement;
+  _liveZoom: HTMLInputElement;
 
   /** Canvas hit targets, recomputed as they are drawn. */
   _alanLinkBounds: LinkBounds | null;
   _githubLinkBounds: LinkBounds | null;
   _recenterBtnBounds: LinkBounds | null;
+  _landmarkCardBounds: LinkBounds | null;
+  _runFinishAction(id: 'again' | 'route' | 'copy'): void;
+  _expandLandmarkNotice(): void;
+  _inspectBuildingAt(clientX: number, clientY: number): void;
 
   /** Owned by other subsystems. */
   _renderBridgeLabels(): void;
