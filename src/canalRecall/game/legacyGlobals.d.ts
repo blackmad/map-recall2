@@ -82,6 +82,8 @@ interface Window {
   CanalRecallCards: typeof import('../noticeCards');
   CanalRecallUi: typeof import('../gameUi');
   CanalRecallOverlay?: typeof import('../overlay/mount');
+  CanalRecallTransit?: typeof import('../transit/browser');
+  CanalRecallPreferences?: typeof import('./preferences');
   /** Subsystem classes queued for installation onto `Game.prototype`. */
   CanalRecallGameModules?: Array<new () => unknown>;
 }

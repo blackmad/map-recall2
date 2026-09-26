@@ -24,7 +24,7 @@ const MINIMAP: Rect = { x: 15, y: CANVAS_H - 200 - 15, width: 260, height: 200 }
 // at three heights — name only, name plus two lines, and the taller card that
 // carries a photo.
 const TRIP_WIDTHS = [132, 152, 180];
-const LANDMARK_HEIGHTS = [50, 80, 130];
+const LANDMARK_HEIGHTS = [52, 85, 104, 136];
 
 function onScreen(rect: Rect): boolean {
   return rect.x >= 0 && rect.y >= 0

@@ -1737,6 +1737,990 @@ checkpoint while retaining reviewer, timestamp, and verdict provenance;
 source-pixel points remain an optional advanced control and can be removed
 individually, undone in reverse order, or cleared together with a guarded
 two-click action.
+## Daylight paper replaces the cobalt chrome — 2026-09-26
+
+The owner called the navy/cobalt-on-blue theme "way too heavy". Every surface
+you stop at was a cobalt plaque and every HUD readout a navy plate, over a map
+that is mostly light land and blue water. Canal now runs on warm paper
+(`daylightTheme` in `hudTheme.ts`, published as `--day-*`): near-black ink,
+exactly one accent — copper, for action and selection — and cobalt enamel only
+on the title plaque, where it is literal (Amsterdam street signs). Selected
+setup tiles take a copper border + tint; the quiz card, settings/help panels,
+knowledge review, arrival/pause cards, loading screen and canvas HUD are
+paper. Contrast: ink 14.8:1, muted 6.1:1, copper text 6.0:1 on paper; ink on
+the arrival button's copper-mid 5.6:1 (the darker accent was 4.0:1). Canal's
+`:root` overrides the shared semantic tokens, so Map Quest keeps cobalt until
+it is migrated (TODO #28). DESIGN.md records the new system.
+
+## Phone route setup fits, and says when it scrolls — 2026-09-26
+
+On an iPhone 13 (390×664) the setup rail's scroll box was 329px for 445px of
+content, and it happened to clip exactly at the Difficulty label — the list
+looked finished. The `setup-backdrop.jpg` vista spent 14–16dvh below Start.
+Phones now drop the vista, the account sub-line and the choice glosses, which
+fits City → Difficulty above Start on a 390×664 and a 375×667 SE. Where it
+still overflows (360×640, landscape, More options open) `useScrollEdges` in
+`OverlayApp.tsx` fades the clipped edge and shows a **More** cue that scrolls
+on and disappears at the end. Landscape slims the title plaque and hides the
+briefing line. Pinned in `tests/e2e/mobile-overlays.spec.ts`.
+
+## Touch drives with an analog thumbstick — 2026-09-26
+
+Reported on a phone: "impossible to turn, even in absolute mode I can't
+reliably go east". Three causes, all in the d-pad path:
+
+- **Auto-throttle made due east/west unreachable.** Touch held ArrowUp unless
+  braking, and absolute mode resolved `atan2(vertical, horizontal)` — so
+  "right" was right+up, i.e. north-east.
+- **Absolute headings were world compass angles under a turning camera.**
+  With a heading-up view, "right" on the pad was not right on screen, and
+  moved every time the vehicle turned.
+- **A thumb sliding off the 160px pad dropped every key**, mid-turn.
+
+The pad's rectangle is now only the *activation zone* of an analog stick
+(`touchControls.ts`: `stickVector`, `relativeCommand`, `absoluteCommand`,
+`assistedHeading`, `cruiseThrottle`). The origin floats under the thumb and the
+touch stays captured until it lifts. Absolute mode is screen-relative (the
+pointed direction is rotated by `camera.rotation`, keyboard too), holds the
+camera still (`camera.holdHeading`, else pointing right spins forever), swings
+the heading at a bounded rate, and follows the street/canal tangent when the
+pointed direction is within 55° of it — `getNearestRoad(x, y, target)` already
+picks the cross street at junctions. Relative mode is analog steer, cruising at
+62% of top speed so junction turns are makeable; forward pushes to full speed,
+pulling back brakes. Measured with CDP touch drags on iPhone 13: absolute bike
+east 0°/west 180°, boat follows the canal; relative turns ~55°/s at full lock.
+Pinned in `test:mobile-hud`.
+
+## The knowledge screen can forget a name entirely — 2026-09-08
+
+**Practice again** (below) intentionally keeps mastery and only makes chunks
+due; a player who wants a genuinely clean slate for one street had no control
+short of **Reset knowledge…** wiping everything. Each row now also has a
+quieter **Forget** button: after a `window.confirm` (the same pattern as the
+global resets), `RecallStore.forgetItem` erases every place-local chunk of
+that city/type/name — locally and, when signed in, the matching Firestore
+`reviewStates` docs, because otherwise the next `pull()` would merge them
+straight back. The review-event log is kept: those reviews happened, and a
+forget should not rewrite recall-rate or activity history. Pinned by
+`test:recall-forget` (in `check:canal`).
+
+## City knowledge has a dedicated review screen — 2026-09-08
+
+The setup account row now opens a full knowledge review view built from the
+same local spaced-repetition states and events as the game. It collapses
+place-local chunks into one city/type/name row, then shows due, learning, known,
+and mastered status; mastery, review history, seven-day activity, city totals,
+search, and status filters. Empty and populated states have desktop and phone
+Storybook scenarios. **Plan review** returns to setup with “Space reviews”
+enabled; choosing a location-honest route near overdue names remains a separate
+routing task rather than pretending the current route already covers them.
+Each non-due row also has **Practice again**, which makes all of that name's
+place-local chunks due immediately without inventing a wrong answer or changing
+recall-rate statistics. That session ended abruptly after the commit, so the
+store half shipped untested; `test:recall-practice` (in `check:canal`) now pins
+it: matching chunks go due and stop reading as known, already-due chunks,
+other names, and non-name modes are untouched, no review event is invented,
+and the review screen's diacritic-folded item key matches the store's.
+
+## “No idea” no longer produces a mastery wink — 2026-09-07
+
+The scheduler already handled “No idea” correctly as a miss and scheduled it
+again in ten minutes, but the route HUD treated every temporarily suppressed
+question as known. Re-entering that corridor during the ten-minute wait could
+therefore say “You know …” even though the stored review state said the
+opposite. Route decisions now distinguish a recent miss (`learning`) from
+proved knowledge (`known`): both avoid an immediate repeat, but only proved
+knowledge earns the mastery wink, learned-name set, and map treatment.
+
+## Occluded bikes get a depth-aware cartoon silhouette — 2026-09-08
+
+Tall foreground buildings could completely hide the bicycle in pitched chase
+views. Making all buildings translucent was rejected: MapLibre cannot reliably
+depth-sort overlapping transparent extrusions, and fading the whole city would
+weaken its legibility. The bicycle now gets a second, gold x-ray pass using the
+inverse depth test. It paints only fragments that are behind nearer map
+geometry, so an occluding building shows a compact cartoon bike silhouette
+while an unobstructed bicycle and every building remain fully depth-correct.
+
+## Street mode stops at the canal edge — 2026-09-08
+
+Street corridors were arcade-wide: a residential road allowed the bike centre
+10 m from its centreline, then granted another 4 m of edge tolerance. On canal
+quays that made several metres of visible water count as driveable shoulder.
+Road-class half-widths now reflect the physical corridor (6 m for residential,
+3 m for cycleways), and street edge tolerance is ~1.3 m. Intersections remain
+the union of every meeting corridor and bridge centrelines remain driveable, so
+tightening a quay does not close its junctions or crossings. A named
+Keizersgracht-style rollback test pins the canal edge.
+
+## Junction routes no longer cut through buildings — 2026-09-08
+
+A Homomonument / Westermarkt playtest showed the bike disappearing into a
+building near a junction. Camera pitch was a tempting symptom-level fix, but
+the routing graph contained the underlying geometry error: when a side-street
+endpoint sat near the middle of a simplified through-street span, the stitch
+jumped diagonally to one of that span's distant endpoints. Junction stitches
+now split the span at the actual centreline projection, so the route reaches
+the intersection before turning. A named Westermarkt-style regression keeps
+the connector on the two source centrelines. The 42° chase camera is unchanged.
+
+## Active street highlights start under the rider — 2026-09-07
+
+Road-name detection remains heading-aware at junctions, but the answer overlay
+no longer reapplies that heading preference when choosing among parallel
+same-name OSM spans. On a bend, the old second selection could prefer a
+slightly straighter line beside the rider and make the blue answer look offset
+from the visible road. Once the quiz name has settled, its overlay now starts
+from the closest span carrying that exact name; the connected-run rule still
+controls how its end-to-end fragments are stitched.
+
+## Let the basemap name the shops — 2026-09-07
+
+AH was visible because it had a bespoke icon layer; the other 1,944 extracted
+food venues were text-only, aggressively thinned, and lost after the first
+quiet quiz. Meanwhile OpenFreeMap Liberty already shipped ranked, icon-backed
+OSM POI layers, but `_hideLabels()` hid every symbol indiscriminately. The map
+now restores Liberty's `source-layer=poi` symbols as sparse orientation cues
+while continuing to hide street and water names. It discovers the source layer
+rather than pinning today's `poi_r*` ids. Landmark quizzes still hide those
+labels, and the D toggle still controls the complete basemap label set.
+
+## Route-end actions say Continue / Finish — 2026-09-07
+
+The arrival card called Escape “New route,” but it actually returns to route
+setup, making the end-of-trip decision feel misleading. Its two actions now
+read **Continue** (Enter, replay this route or start the next home leg) and
+**Finish** (Escape, leave the trip and return to setup).
+
+## 3D camera tilt and orbit controls — 2026-09-07
+
+The `[` / `]` camera controls stopped at ±18° and moved only 3° per press, so
+their adjustment remained subtle even at the limit. Chase and cockpit views now
+allow ±36° of extra pitch and move 6° per keypress. The settings slider shares
+the same exported bounds, keeping keyboard, saved preferences, and live UI in
+sync. Shift + `[` / `]` now orbits the camera around the vehicle in 15° steps,
+and a labeled 3D spin slider makes the same control discoverable on touch
+devices. The chosen angle is saved with the other camera preferences.
+
+## Empty landmarks are no longer route destinations — 2026-09-07
+
+The prominence-ranked landmark pool included named OSM features with no fact,
+encyclopedia article, or image. That let a full trip end at places such as UvA
+PC Hoofthuis with only the generic “A place to remember” filler. Extract-added
+destinations now use the same content floor as landmark cards: each must have
+real text, a photograph, or an article that can be fetched and opened. Curated
+city anchors remain deliberate exceptions.
+
+## Streamed buildings keep sole ownership — 2026-09-07
+
+The LoD1 tile stream hid OpenFreeMap's duplicate `building-3d` extrusion when
+its first tile landed, but detailed-building readiness and settings changes
+later ran a shared visibility sync that blindly made all extrusion layers
+visible again. That restored two coplanar versions of every building and the
+citywide façade/roof shimmer. Complete-city ownership is now persistent state:
+the basemap remains as the empty-city fallback until a real tile lands, then no
+later layer sync may resurrect it. The browser regression deliberately runs
+that later sync after loading tiles.
+
+## Bridge-named bike routes ask about the bridge — 2026-09-07
+
+Amsterdam's routing extract includes 77 named bridges as rideable ways. The
+generic route quiz called every one a street, so an answer such as “Blauwbrug”
+could appear under “Which street are you on?” Bike route questions now
+cross-check the loaded bridge catalog, ask “Which bridge are you on?”, offer
+bridge distractors, and file the answer as bridge knowledge. The Blauwbrug
+overlap is the named regression.
+
+## Active street overlay is one centreline — 2026-09-07
+
+The active street highlight now uses one MapLibre line layer instead of a
+casing/glow/line stack. The stacked strokes were visually read as multiple
+parallel street lines when a named feature contained several connected OSM
+segments, even though those segments had already been stitched into one
+geometry. The stitched geometry remains intact; only the presentation is
+reduced to one unambiguous centreline. A deterministic, offline MapLibre
+Storybook workbench now exercises single, connected, duplicate/reversed, and
+genuinely disconnected segment fixtures at a fixed oblique camera angle.
+
+## Start from GPS (Here) — 2026-09-07
+
+Home geocode is a saved address, not live location. Route strip now has
+**Here**: browser geolocation, city viewbox check, snap to the mapped network
+(same generous snap as home). Surprise still picks landmarks; Home still
+geocodes the typed address. Errors name permission, HTTPS, outside-city, and
+unsnappable fixes instead of silently swapping the origin to a POI.
+
+## Cold-open killed until location-honest — 2026-09-07
+
+Playtest: cold-open asked “what is this place called?” about a due SRS name
+that was not under the bike — no highlight, no hop. That teaches a false
+pairing. `COLD_OPEN_ENABLED` is off; the picker remains for a later hop that
+only asks dues on/near the route or shows the place. Copy was not the fix.
+
+## Large-letter fill bump — 2026-09-06
+
+User: still too much linen around the word. Wave AABB used 1.15× archPad so
+fit thought faces were full while photo ink sat mid-card (span 44%). Honest
+cap metrics + a taller comfort band (target ~74%, fill 60–78%) + less greeting
+reserve. Jordaan pixel span 44%→64%, reach 71%→75%; no top-ink clip.
+
+## Large-letter vision rounds (stop the size circle) — 2026-09-06
+
+The fill/clip/wave pendulum was chasing the wrong gap. Authentic Indiana /
+Waterloo / Alaska cards have a **chunky solid shelf**; ours had ~9px of color
+that read as a cyan outline. Three frozen-theme vision rounds against a 6-card
+gallery (no new fill/span asserts):
+
+1. Solid back-silhouette extrusion (~23–31px single-line) + black/white die-cut.
+2. Script may overlap left crests (no more shove-the-billboard); caption kept
+   chrome-yellow. Nest vs Waterloo is still only partial.
+3. Litho punch on letter windows, quieter scenic wash, stronger paper linen so
+   the four style presets read as different recipes.
+
+True vanishing-point mesh and place props stay open — those were how the last
+session burned tokens.
+
+## Vertical stretch restored — 2026-09-06
+
+Clip/size clamps left paintScaleY≈0.77 with sx≈1 — pancake letters (IJBURG).
+Raise face-fill comfort (~50–64%), keep sy with sx, let facePullY be the stretch.
+
+## Two-line planes + OUD WEST clip — 2026-09-06
+
+Per-glyph extrusion→face ordering let the top line's shelf cut halfway through
+WEST (hard seam / "different planes"). Draw each line as a unit; shorten
+two-line shelf + font; desert outline was a 9px tire.
+
+## Top/left clip (IJBURG rise-coastal) — 2026-09-06
+
+Rise + leftward extrusion soft-spilled past the paper: greeting loops and the
+"I"/crest were clipped. Hard side/top clearance pass, tilt-aware greeting top,
+milder rise pathAmount.
+
+## Billboard size comfort band (NOORD too big) — 2026-09-06
+
+Face AABB used 0.64em/0.03em while Archivo+pathWarp ink spans ~0.78/0.18em —
+fill caps thought NOORD was fine while pixels hit ~90%H. Honest metrics +
+MAX_FACE_FILL ~42–52%, and second paint-fit may only shrink (never re-expand).
+
+## Top crest clip → stair-step wave — 2026-09-06
+
+Aggressive 2nd-harmonic wave + grow-to-frame shoved mid-letter tops into the
+paper clip; clipped crests read as a flat stair-step ("fucked up the top").
+Fix: smooth Indiana rise+bow (no zig-zag harmonic), reserved greeting band
+above the billboard, hard `TOP_INK_CLEAR` shove-down, greeting stays above
+the crest.
+
+## Two-line eye-wave (Sloterdijk Centrum) — 2026-09-06
+
+Dual full arches on SLOTERDIJK + CENTRUM opened a lens/"eye" gap and parked
+"Greetings from" over the wrong end. Fix: top line carries the wave, line 2
+gets ~16% path; greeting pockets against the top line's left only; hyphen
+breaks no longer paint a trailing "-".
+
+## Stronger Indiana wave + greeting pocket — 2026-09-06
+
+Wave `pathAmount` 0.22→0.38 with hotter harmonics so letter-to-letter lift
+reads on the card; script parks in the left wave pocket (not mid-word), nests
+into the tops, and tilts with the local slope.
+
+## Billboard fill was lying — grow until the frame — 2026-09-06
+
+CENTRUM (and friends) still looked like a top strip over a linen desert while
+AABB “face fill” asserts passed. Root causes: (1) grow loop capped at
+`MIN_FACE_FILL * 1.15` so it refused to use the bottom of the card; (2) a second
+`fitLetterPaintScale` pass crushed the grown `paintScaleY`; (3) bounds overstated
+descenders. Fix: always binary-search sy to the frame, keep the grown scale,
+tighter cap ink bounds, caption tucked under faces, and a **pixel** letter-reach
+assert (≥70%H) in `render:large-letter-craft`.
+
+## Billboard fill + Indiana wave / Waterloo rise — 2026-09-06
+
+Empty linen under JORDAAN was a measurement bug: face AABB used ~0.18em
+descent on all-caps, so fit thought the word already filled the frame. Tightened
+cap bounds, target face height 74%, grow-until-fill assert, and stop top-parking
+short words. Multi-line (OUD WEST): shared path envelope + per-line band stretch
+(Atlantic City) so stacked lines stay coplanar and width-full. Path vocabulary:
+`wave` (Indiana undulation, now default `linen-arch`) and stronger `rise`
+(Waterloo slant).
+
+## Greeting vs name hierarchy (Monterey) — 2026-09-06
+
+Authentic linen refs (Monterey / Alaska / Athletics): script is ~15–25% of
+letter face height with a *thin* stroke, parked in arch slack — not a fixed
+corner sticker. Ours was ~28% of the em with a 2.1px outline and always
+left-top. Now: size from painted face AABB (~20%), stroke 1.15, pocket scorer
+picks left/mid/right headroom relative to the place name; region caption
+nudged heavier than the script.
+
+## New route from pause / settings — 2026-09-06
+
+Playtest: mid-ride there was no reliable way back to route setup. Pause’s
+`M — back to menu` and finish’s “Choose route” both wrote
+`this._routeSetup.style.display` on a never-assigned field, so they often did
+nothing. Now `_openRouteSetup()` opens the enamel rail via
+`overlay.store.setSetupOpen(true)`. Pause shows Resume + **New route** (touch
+targets on phone; `M` on keyboard), settings has a New route button, help
+lists `M (paused)`. Finish caption matches (“New route”).
+
+## Bridge water quiz: no more “under” flip — 2026-09-06
+
+Playtest: on a bike deck, “Which water is under this bridge?” forced a mental
+inversion (look *down* through the structure) while attention is on crossing.
+Street/car mode now asks “Which waterway are you crossing?” — same WATER chip
++ “Crossing a bridge” caption, answer still the canal. Boat keeps “Which water
+are you on?” / “Passing under a bridge” (hull *is* on the water).
+
+## City overview tighter + review-due tint — 2026-09-06
+
+Playtest: the city overview sat in too much empty rim (`OVERVIEW_ZOOM` 1.18 →
+1.35). Same city-fixed framing — just a notch closer so the canal ring and
+player mark read more easily.
+
+P1 #6 follow-on: overdue spaced-review streets/canals paint warm copper on the
+overview (`routeReviewDue` → `reviewDueNetwork` / `reviewDueWater`), above the
+green mastery bands. Cache key includes due-count so answering a due place
+repaints without changing the track. Dedicated review screen still open.
+
+
+## Border + top-clip P0 — 2026-09-06
+
+User catch: fat cream mat + greeting/letter tops sliced by the paper clip —
+those are blockers, not polish. Fixes: `BORDER_INSET` 4–6 hairline, full-bleed
+backdrop (no inset photo panel), hard top in `fitLetterPaintScale` (no soft
+spill above frame), arch/fisheye pad in painted AABB, greeting baseline lowered
+for Pacifico loops, craft asserts + **pixel P0** in `render:large-letter-craft`
+(`topInk` on y=0, left cream ring ≤14px). Vision often re-reports the old clip;
+trust pixels.
+
+## Tall linen craft loop (keep iterating) — 2026-09-06
+
+More vision passes after the baseline re-anchor: solid-ish blue wall + short
+orange tip (no candy ribs), die-cut black/white/keyline, down-right shelf with
+paint order that matches shelf direction, fisheye center boost in path warp,
+settle-down into leftover bottom air, punchier letter photos. Craft assert
+effective face ≥58% card H. Still not true vanishing-point 3D sides.
+
+## Tall linen letters (baseline re-anchor) — 2026-09-06
+
+Vision loop: faces sat ~35% of card because glyphs were parked under the
+greeting, then `facePullY` blew tops off-paper and `paintScaleY` crushed them
+back. Fix: compute pull first, shift baselines so pulled faces land in the
+vertical frame, pivot from face mid, soft-clip extrusion into the caption
+pad. Effective JORDAAN mass ≥55% card H (craft assert); arch pathAmount 0.26.
+
+## 3D tilt keyboard — 2026-09-06
+
+Tilt slider was easy to miss: Settings (G) → View = Chase/Cockpit → **3D TILT**.
+`[` / `]` now nudge ±3° (clamped −18…+18), sync the live slider, and persist.
+Help card documents it.
+
+## Bike steer animation sign — 2026-09-06
+
+Omafiets / city-bike / Swapfiets fork yaw followed the wrong side of the turn:
+`steerInput +1` is right, but +Y rotation on a +X-facing bike yaws the bars
+left. Negate the steer target in `PlayerBike3D.update` so `Lenker` / front
+wheel track the pad. Frame physics were already correct; only the mesh pose.
+
+## Chase closer, cockpit less forward — 2026-09-06
+
+Playtest: chase (high/behind) sat too far out; cockpit nudged past the bumper.
+`CHASE_ZOOM_OFFSET` 0.05 → 0.55 (~1.5× closer on the log zoom scale). Cockpit
+lookahead 240 → 160 px (`COCKPIT_LOOKAHEAD`). Pitch unchanged (42° / 82°).
+
+## CI unblocked for blank-boot ship — 2026-09-06
+
+Firebase stayed on `055ce32` because Canal CI failed after the blank-boot
+gate. Fixes: shrink `game.js` under the decomposition line cap (overlay /
+teaching / city helpers → presentation runtime; drop duplicate ribbon
+constants); restore stretch-local `_recallFeatureAt` centres for streets so
+one answer does not suppress the far end; refresh e2e for enamel HUD,
+omafiets heading, flat-roof filter, Map Quest start copy, knowledge keys,
+and a 120s Playwright budget so `openRoute` can finish. Also unmasked unit
+stubs (`_tryColdOpenReview`, postcard province caption) that never ran while
+the line-count assert failed first.
+
+## Large-letter postcard compositor (standalone) — 2026-09-06
+
+An earlier HISTORY line claimed vintage large-letter neighborhood postcards had
+shipped. That was aspirational: live `drawPostcard` is still the compact HUD
+strip (photo left, name right). The real compositor is now
+`src/canalRecall/largeLetterPostcard.ts` — pure measure + canvas paint, no AI.
+Letters are Barlow Condensed with a dark extrusion and outline; Wikimedia-style
+photos are cover-cropped and clipped with `destination-in` (one image spans the
+word, or N images become equal strips). Zero images get a solid typographic
+fill on sun-faded paper. Storybook hosts the states; `test:large-letter-postcard`
+guards fit / two-line split / caption. Game wiring is a later pop-in overlay —
+not a replacement for the bottom-band entry strip.
+
+## Play delight: missions, finish story, cold-open, passport — 2026-09-06
+
+Fun that still teaches the city:
+
+1. **Mission punchlines** on the setup footer and race open — destination /
+   home intent only; never the start corridor (removed `Starting on …`).
+2. **Finish knowledge story** uses real `explorationGain` (first-ever names /
+   hoods / landmarks), place-day streak, passport stamps, and a guest fog-map
+   sync tease.
+3. **Cold-open review** asks one overdue SRS place in the first minute when
+   due reviews exist (`RecallStore.dueReviews`).
+4. **“You know …” wink** on mastered re-entry instead of an encyclopedia card.
+5. **Encyclopedia postcards** open only after a *correct* answer (not wrong /
+   adopt drive-throughs).
+6. **Neighborhood passport** stamps visited hoods once the city collection is
+   thick enough (≥8 names).
+
+Typed modules: `missionBrief`, `finishStory`, `coldOpenReview`, `placeStreak`,
+`neighborhoodPassport`. Check: `npm run test:play-delight`.
+
+## Blank boot from transit overlay before MapLibre load — 2026-09-06
+
+This morning's corridor-overlay work called `setTransitNetwork` from
+`_applyPrefsToRuntime` during `new Game()`, before MapLibre's style `load`.
+`addSource` threw `Style is not done loading`, so `window.canalRecallGame`
+never stuck and Start Route left a navy blank with gear/help only.
+
+Fix: stash the pending network when `!ready`, create layers only once
+`isStyleLoaded()`, and flush on `load` (same pattern as pending trees/places).
+
+**CI / hooks (same day):** Playwright CI had been timing out for weeks because
+setup-rail selects are `hidden` and helpers used unforced `selectOption`. Deploy
+also shipped on every `main` push without waiting for e2e or `check:canal`.
+Now: shared `tests/e2e/helpers.ts` (`force: true`); `Canal CI` workflow runs
+`check:canal` + boot smoke + full e2e; Firebase/Pages deploy only after a green
+CI `workflow_run` on `main`; `prepare` installs pre-commit (`lint`) and
+pre-push (`lint` + `test:e2e:smoke`). Host type holes for transit transfers /
+home learning radius are filled so `tsc` (and therefore `check:canal`) is green
+again — it had been red on main since those fields landed without declaration-
+merge updates.
+
+## Transit 3D camera, corridor callout, quiz pacing — 2026-09-06
+
+Playtest notes from a Waterlooplein / Academie van Bouwkunst metro hop:
+
+1. **Chase ≠ cockpit.** Chase is high (42° + 0.55 zoom); cockpit is bumper-
+   close (82°, +1.65 zoom, 160 px lookahead). Live **3D tilt** slider (−18…+18°)
+   offsets either mode. Pitch eases in so load→race is not a hard snap.
+2. **Tracks through buildings.** GTFS metro shapes and Liberty rails are ground
+   projections of tunnels — they are not OSM `tunnel=*` tagged in our extract.
+   Treatment: paint all driveable corridors; tram is a bold surface ribbon under
+   buildings; metro is a dashed amber tunnel drawn *above* extrusions; the 3D
+   metro mesh drops to −9 m altitude on `type=metro`.
+3. **Quiz pacing.** 18 s orientation grace before any transit ask; line settle
+   2.4 s; transfers wait 32 s after the line is sticky so hub spawn does not
+   stack “which metro” → “what can you transfer to”.
+4. **Load settle.** Aim with the active view pitch, then wait for MapLibre
+   `idle` (cap ~2.8 s) before racing so the first frames are not a Damrak hitch.
+
+## Setup rail distill — city select, strips, view icons — 2026-09-06
+
+Route setup was stacking wide two-line tiles (City grid, Travel captions,
+“change View in More options”). Distilled to scan faster while keeping enamel
+tiles: City is one `#city-id` dropdown; Travel / Route are equal one-word
+strips; View is an icon-only strip on the primary rail (tooltip/aria keep the
+mode name; camera select removed from More). Follow-up pass tightened vertical
+rhythm, dropped the City gloss, and paired View under Travel.
+
+## Teachable transit pairs, graded knowledge map, hub polish — 2026-09-06
+
+1. **Surprise transfers:** `pickTeachableTransitPair` biases ~70% of transit
+   surprise hops toward two-leg plans so changing lines is normal play, not a
+   hand-picked Noord→Isolatorweg demo.
+2. **Knowledge map slice 2:** overview mastery bands (fog / learning / known /
+   mastered) with separate blue tints for canal/river/dock vs land green.
+3. **Playtest polish:** line-quiz distractors prefer other lines at the nearest
+   hub; second-leg plaque stays blank until the new corridor is answered;
+   named check pins Noord→Isolatorweg as a two-leg hop.
+
+## Transit second-leg drive after hub change — 2026-09-06
+
+Phase E planner/quiz landed without boarding the next corridor. Now:
+
+- **Corridor lock:** `setPreferredCorridor` + `pickRoadContactPreferName` keep the
+  road guard on the active leg’s line name at overlapping hubs.
+- **Hub is the first finish:** two-leg hops retarget `finishPoint` to the
+  transfer stop; arriving advances to leg 2 (`Change to Metro …`), restores the
+  real destination, and replans — race does not end at the hub.
+- Stop quizzes scope to the **current leg**’s from→to stops.
+
+## Transit Phase D hardening + Phase E transfers — 2026-09-06
+
+Phase D was driveable but still taught like a single-line thin slice.
+
+- **Metro 52 pin:** end-to-end reachability + Noord/Centraal stop pins beside
+  tram 2 in `check:transit-routing`.
+- **Termini surprise pool:** `transitRouteAnchors` adds every driveable line’s
+  first/last stop (Isolatorweg, Gein, …) on top of curated hubs — 34 anchors.
+- **Active-line stop scope:** destination-scoped stop quizzes resolve the
+  corridor from `_activeTransitLine` / covering stops, not `lines[0]`.
+- **Sibling distractors:** line quizzes prefer corridors that share stops so
+  “which line am I on” is a real discrimination task at hubs.
+- **Phase E transfers:** `transit-transfers.json` (94 edges from parent
+  stations + proximity; GTFS `transfers.txt` merged when cached).
+  `planTransitConnection` caps at two rides; hub quiz asks which line you can
+  change to.
+
+## Home radius polish, knowledge tint, transit Phase D, English prune — 2026-09-05
+
+Four follow-ons after the expanding home-learning radius landed:
+
+1. **Home polish.** Persist `canalRecall.homeLearningRadius.v1`; HUD plaque and
+   briefing note show `Learning near home · ~X.X km` when there is no quiz
+   feedback. Soft `homeBias` on `planLearningRoadRoute` prefers paths that stay
+   inside the ring so surprise hops inside the radius do not swing across the
+   city for a few metres of novelty.
+2. **Knowledge overview (first slice of P1 #6).** City overview splits network
+   segments into fog vs known (`routeMastery ≥ 0.45`) and paints known in a
+   quieter green. Cache key includes known-count so answering a street updates
+   the map without changing the track. Graded colours / waterways / review-due
+   remain on the board.
+3. **Transit Phase D.** Playable modes are tram + metro (`TRANSIT_DRIVEABLE_MODES`);
+   `playableRefs: []` loads every line in those modes. Anchors broadened beyond
+   tram 2. Thin-slice pins stay in `check:transit-routing` for Dam / Centraal→
+   Museumplein regressions. Ferries still excluded until water hops are designed.
+4. **English cache prune.** `--prune-stale` drops orphaned
+   `english-translations.json` entries, scanning **all** city extracts so a
+   one-directory run cannot delete live Utrecht/Rotterdam/Den Haag hashes.
+   322 orphans removed. Thickening remaining Wikidata floors is still blocked
+   by sparse originals + rename-refusal on `trn`.
+
+## Pedestrian bicycle=no is playable, flagged restricted — 2026-09-05
+
+Kalverstraat (and similar shopping streets) are `highway=pedestrian` +
+`bicycle=no` in OSM. The bike graph used to exclude them on purpose. Street
+mode now keeps those corridors **playable** and stores `bicycleRestricted`
+(+ OSM `bicycle` value) on the routing way / road segment. The left plaque
+shows a rivet-accent line (“No cycling in real life” / “Walk bikes…”) while
+you are on one — never the street name, so it cannot answer a quiz. Sidewalk
+`footway`s still need an explicit bicycle tag. Named check: Kalverstraat must
+be in `streets-routing` with the restriction flag.
+
+## Canal-belt streets survive the quiz extract — 2026-09-05
+
+`streets.json` was capped at 300 and scored mostly on OSM wiki tags + length,
+so Coen Tunnel outranked Leidsestraat / Damrak. Two fixes: streets cap → 500
+in the builder; `amsterdam-curation.json` scoreBoosts for canal-belt and tram
+corridor names. Published extract patched now via
+`ensure:amsterdam-teaching-streets` (pull geometry from `streets-routing`,
+42 names added → 342 streets). Tram-2 corridor hits within 80 m: 12 → 25.
+Kalverstraat still missing — not in bike routing (pedestrian-only OSM).
+
+## Tram lock + along-route teaching — 2026-09-05
+
+Phase C playtest: the line vanished from the plaque as soon as a stop question
+opened (or after a brief shape gap), and the ride only asked line + any nearby
+stop — not streets, landmarks, or stops toward the destination.
+
+- **Sticky line plaque:** once Tram 2 is answered/adopted, keep it on the HUD
+  for the hop. Only a line question (or pre-answer settle) blanks it; stop and
+  street prompts leave the line visible. Do not pre-reveal the line at spawn.
+- **Stronger corridor lock:** wider tram/metro envelopes + firmer soft-pull so
+  noisy GTFS shapes feel locked, not grazable.
+- **Dest-scoped stops:** quiz only intermediate (+ destination) stops on the
+  ordered line between `routeFrom` and `routeTo`, and only while still ahead
+  toward the finish.
+- **Corridor streets:** read-only index from curated `streets.json` paths —
+  never driveable. Secondary “which street is the tram on?” quizzes along the
+  rails; encyclopedia via existing street knowledge.
+- **Landmarks:** pure lat/lng projection in transit (no snap-onto-rails), and
+  prefer cards within ~120 m of `routePath`.
+
+## Home routes expand from nearby (2026-09-05)
+
+Home-base destination picks were a flat random within 6 km. They now use a
+learning ring that starts at ~1 km and steps outward as practised street/canal
+answers accumulate near home, scoring closer + less-familiar landmarks first.
+Surprise pairing is unchanged. Prefs copy: “Nearby first, expands as you learn.”
+
+## Transit chase scale bumped (2026-09-05)
+
+Metro stand-in read as a speck in the yellow tram corridor at chase altitude
+(`TRANSIT_GAME_SCALE` 2.2). Experiment: 3.4 — still below bike’s 4.5, above
+boat’s 1.5 — for a slightly cartoony read without filling the lane.
+
+## Pedals joined to crank arms (2026-09-05)
+
+Top-down showed floating pedal bricks with a gap past the arm tips. Cranks now
+run spindle → arm → pedal spindle → platform with overlaps on omafiets and
+Swapfiets. Preview `?v=10` / `?v=4`.
+
+## Omafiets BB junction cleaned (2026-09-05)
+
+Same floating rear stub as Swapfiets had: step-through Bézier started behind
+the seat tube. U now starts mid seat-tube with a BB shell + trough join.
+Preview `?v=9`.
+
+## Swapfiets Original silhouette pass (2026-09-05)
+
+Authored skin was still a recolored omafiets. Reshaped toward PatrickGoud /
+real Original cues: double parallel step-through, chrome high-rise bars with
+black grips + bell, front carrier only (no rear rack), ring lock on the seat
+tube, fuller chain case, spring coils under the saddle, ~42 mm tyres, vivid
+red + iconic blue. Clearance assert still green. Preview `?v=3`.
+
+## Swapfiets BB junction cleaned (2026-09-05)
+
+Side close-up showed a floating red stub behind the bottom bracket — the
+step-through Bézier started rear of the seat tube and looped into a dead end,
+plus a separate BB→U cylinder stacked on top. U now starts mid seat-tube, dips
+ahead of the BB, and a short BB shell + trough join replace the stub. Preview
+`?v=2`.
+
+## Swapfiets authored from scratch (2026-09-05)
+
+PatrickGoud’s Sketchfab body never yielded clean wheel/steer splits — cuts
+tore bars/seat/tyres, and the `×1.7` lateral bake ovalled the discs. Replaced
+the look-only preview with a procedural twin of the omafiets geometry:
+red frame, blue front tyre, black rear, cargo front rack, real
+`Lenker` / `RadVorn` / `RadHinten`. `scripts/build-swapfiets-bike.py` →
+`swapfiets-runtime.glb`; skin `motion: true`, `widthScale: 1.3`. Front-tyre
+clearance assert green (~9cm Frame / ~11cm Fork). Sketchfab GLB removed from
+ship; omafiets stays the dark-green distinct livery.
+
+## Mama-chari: solid frame, metre-scale (2026-09-05)
+
+Preview showed floating seat/wheels/basket. Three stacked causes: (1) strip used
+`abs(x)<0.012` through the front-wheel disc and ate the ±0.02-wide midplane
+spine — now annulus-only, and only isolated tyre-island verts (frame joints
+kept); (2) root×scale left body/handle at object scale ~15 while wheels were 1,
+plus leftover Sketchfab/FBX empties — bake mesh scales and prune before export;
+(3) preview `widthScale=1.65` non-uniform Z exploded the multi-node rig — set to
+1. Prefer standalone/zip `.glb` over FBX. Uniform root scale targets wheelbase
+≈ 1.08 m. Asserts strip count, body X span, and midplane gap. Preview `?v=8`.
+
+## Transit mode thin slice (tram 2) — 2026-09-05
+
+Phases A–C of [`TRANSIT_SPIKE.md`](TRANSIT_SPIKE.md) on `spike/canal-transit`.
+
+- **Why GTFS, not OSM relations:** stop/line/headsign identity is timetable
+  catalog, not basemap geometry. OVapi → GVB filter →
+  `transit-network.json`; OSM stays secondary for walk connectors later.
+- **Why a travel profile:** binary `isCar` could not absorb a third mode
+  without another sprawl of boat/bike forks. `travelProfile.ts` owns extract
+  file, quiz nouns, motion, and road-constrain flags; legacy `isCar` /
+  `isBoat` remain thin wrappers.
+- **Why tram 2 only:** one corridor teaches stop + line quizzes before the
+  full 32-line surface drowns surprise routing. `TRANSIT_THIN_SLICE_REFS`
+  unlocks Phase D later without rewiring mastery.
+- **Why separate line keys:** ask-point SRS would fragment mastery along the
+  shape; lines key on mode+ref+city, stops on extract centres.
+- Gate: `npm run check:transit` (extract pins, tram 2 reachability, prefs,
+  overlay). Boat/bike regression: `test:canal-car`.
+- **Demo chase mesh:** `gvb-metro-51-runtime.glb` (~3k tris, meshopt) from
+  mini-amsterdam-3d’s mirror of UiGoku’s Sketchfab metro 51. Licence not
+  cleared — stand-in only; street-tram asset still wanted.
+
+## Mama-chari retired (2026-09-05)
+
+Gave up. Sketchfab mama-chari never yielded a chase-clean steerable skin
+(welded front tyre, handle/body seam, strip/copy hacks made it worse). Removed
+from `bikeSkins`, preview, NOTICE, and deleted `mama-chari-runtime.glb` +
+`scripts/rig-mama-chari-bike.py`. Stored pref `bikeSkin=mama` falls back to
+omafiets. Keep omafiets + pink (motion) and Swapfiets (look-only).
+
+## Swapfiets: unskewed look-only body (2026-09-05)
+
+The earlier `×1.7` lateral bake ovalled the wheels. Cutting verts for real
+steer/spin still tears PatrickGoud’s mesh into floating bars/seat/tyres (tried
+again with `stylize-swapfiets-bike.py`). Preview GLB is intact + leveled, no
+lateral bake; motion stays off. Steerable skins: omafiets / pink / mama.
+
+## Mama-chari: stop inventing a front disc (2026-09-05)
+
+Prior rigs searched a “front hub” on the body and pasted a rear-disc copy
+there — that parked a stray wheel mid-frame and, with the midplane strip,
+hollowed the bike. Front tyre/fork/basket live on the handle mesh. Rig now
+keeps the handle intact under `Lenker` (steer), spins only the rear disc, uses
+the standalone `.glb`, scales to ~1.08 m wheelbase, and forces preview
+`widthScale=1` (non-uniform Z exploded the hierarchy). Head-tube seam is the
+source’s two-mesh join (~1 cm), not an exploded transform.
+
+## Omafiets: chain case clear of frame (2026-09-05)
+
+Gray chain case was punching through the green stay/U. Moved outboard/lower
+(`Y≈−0.18`). Preview `?v=8`.
+
+## Pink city bike: front fender concentric (2026-09-05)
+
+Side/3/4 shots still showed an uneven tyre↔mudguard gap and a slight lean —
+`front_mudguard` sat ~10° off the wheel plane and ~15° pitched after handle
+straighten. Rig now PCA-aligns the fender onto +Y about the hub, searches
+pitch for min radial spread, and snaps midplane. Asserts thin↔Y < 2° and
+midΔY < 3cm. Preview `?v=19`.
+
+## Omafiets: curved step-through, bars, saddle (2026-09-05)
+
+Side/top screenshots showed a kinked U (few straight cylinders), angular
+three-segment bars, and a floating flat seat tablet. Rebuild uses sparse
+auto-handle Bézier controls + bevelled tubes for the step-through and
+handlebars (smooth-shaded), stacked ellipsoids for a flush spring saddle,
+and seat stays routed outside the rear tyre. Preview `?v=6`. Front clearance
+assert still green (~9cm Frame / ~11cm Fork). OpenRouter side+top QA: PASS.
+
+## Mama-chari: front wheel spin + straight track (2026-09-05)
+
+Same class of bug as the pink city bike: the front tyre was welded into
+`MamaChariBody`, so `RadVorn` was an empty (no spin) and the authored tyre sat
+cocked vs the frame. There is no clean loose front disc — cutting “roundish”
+parts tore mid-frame tubes earlier. Rig now strips the welded front-tyre verts,
+mounts a copy of the rear disc under `RadVorn`, PCA-bakes axle → +Y, and puts
+both hubs on one midplane. Preview `?v=6`. Steer couples bars+wheel; spin
+verified via frame diffs (solid disc is hard to see by eye).
+
+## Pink city bike: track centering (2026-09-05)
+
+Front hub sat ~6cm beside the rear after straighten, and the basket was
+another ~8cm offline — top-down looked off-centre / slightly wobbly even
+with a true spin axle. Rig now snaps the front assembly onto the rear
+midplane, nudges the basket onto the hub track, and recentres so hubs sit
+on Y=0. Preview `?v=18`. Ortho-top + spin QA: PASS.
+
+## Pink city bike: front wheel spin axle (2026-09-05)
+
+After rest-steer straighten, AABB “thin=Y” still left the front disc ~10°
+tilted, so +Z spin looked wobbly. `bake_wheel_to_pivot` now aligns the
+min-variance axle onto +Y (residual 0°; thickness matches the rear). Preview
+`?v=15`.
+
+## Omafiets: front tyre no longer eats the frame (2026-09-05)
+
+The authored step-through U and a BB→head diagonal ran through the front
+tyre volume (~3cm penetration). Rebuild pulls the U back/up behind the wheel,
+drops the long diagonal for a short BB→U join, shortens the head tube, nudges
+the front hub forward, and bows the fork out wider (`AXLE_HALF` 0.12) so side
+views do not read as tubes through rubber. Build asserts Frame/Fork mesh gaps
+before export. Preview `?v=3`. OpenRouter chase-angle QA: PASS.
+
+## Pink city bike: rest steer + stray cables (2026-09-05)
+
+Kin Chen’s CC0 pink city bike shipped with bars/fork/fender yawed ~50° while
+the game spin pivot forced the front tyre upright, so the wheel sat beside
+the fender. Brake-cable meshes (`*剎車線*`, `煞車TL*`) also floated once the
+bars moved under `Lenker`.
+
+`scripts/rig-pink-city-bike.py` now: deletes those cable objects; searches the
+Z rotation that minimizes front-wheel lateral span (mudguard AABB was a bad
+proxy); places `Lenker`/`RadVorn` *after* straighten at the mesh hub so the
+tyre is not left at the pre-yaw hub; puts `Lenker` on the hub’s lateral
+midplane so steer does not orbit the wheel sideways. Preview cache `?v=14`.
+OpenRouter vision QA on side/front/chase/steer screenshots: PASS.
+
+## Board cleanup (2026-09-05): 8b closed, 11b demoted
+
+**8b** (type the decision half) is finished: no un-migrated decision logic left
+under that item. Rule kept in CLAUDE.md — decisions in TypeScript, paint in
+JavaScript; `game.js` and renderers stay JS on purpose.
+
+**11b** was describing a failed staging rebuild (network halved, bridge ids
+desynced). That never shipped. Published Amsterdam on `main` is healthy
+(`check-city-extract` / bridge crossings green; ~47k ways; city profile
+present). The board item is now an optional currency refresh, not a red bug.
+
+## Mama-chari skin (optional baby seat)
+
+pokoponmaru’s Sketchfab “City Bike (mama-chari)” (CC BY 4.0) is rigged from
+the downloaded FBX zip by `scripts/rig-mama-chari-bike.py`. Loose parts split
+into `BabySeat`, handle → `Lenker`, and the one true circular rear disc →
+`RadHinten`. The front tyre is welded into the body (cutting “wheel-like”
+mid-frame tubes made them spin and split the bike), so only the rear spins.
+Pref skin id `mama`; baby seat uses the shared `bikeBabySeat` toggle.
+
+## Optional baby seat on omafiets
+
+Authored omafiets ships a named `BabySeat` on the rear rack. Pref
+`bikeBabySeat` (default off) and the preview checkbox show/hide it. Skins
+advertise support via `bikeSkins.babySeat`. Mama-chari can reuse the same
+node + pref once Sketchfab download is available.
+
+## Bike skins are pickable (omafiets / city / Swapfiets)
+
+`bikeSkin` lives in preferences. Street-mode chase loads
+`omafiets-runtime.glb`, `pink-city-bicycle-runtime.glb`, or the Sketchfab
+Swapfiets body. Setup shows a Bicycle row when Travel is Bike; live settings
+have the same control. Swapfiets is look-only (no spin). Catalog:
+`src/canalRecall/game/bikeSkins.ts`.
+
+Omafiets livery is dark-green Dutch roadster (not red+blue) so it stays
+distinct from Swapfiets. Chaincase thinned, rear rack has stays, tires
+slightly slimmer, saddle tapered. Swapfiets body bakes ~1.7× lateral width
+for chase parity. Pink city bike is decimated and its wheel axles are baked
+onto the game spin axis (+Z after glTF). Preview: `bike-preview.html`.
+`swapfiets-runtime.glb` is no longer a copy of omafiets.
+
+## Free pink city bike in preview (CC0, real pivots)
+
+Downloaded Kin Chen’s BlenderKit “Pink city bicycle” (CC0 via MorfVision) —
+step-through + basket with separate `handle` / `front_wheelset` /
+`back_wheelset`. Rigged to `Lenker` / `RadVorn` / `RadHinten` in
+`scripts/rig-pink-city-bike.py` and added to `bike-preview.html`. Closest free
+non-Dutch city-bike candidate with working spin/steer; game still uses authored
+omafiets until taste-pass decides.
+
+## Clear all data (item 12)
+
+**Reset knowledge…** stays the soft wipe (spaced repetition + fact rotation).
+**Clear all data…** sits beside it under Advanced: knowledge, exploration
+collection, personal bests, preferences (UI resets to defaults), and the
+home-address geocode cache. Sign-in stays. Helpers live next to the storage
+keys; `test:canal-clear-all` pins them.
+
+## One RD New transform (façade alignment)
+
+`rdCoordinates.ts` is now a thin tuple wrapper over `facade/rdNew.ts`, so
+3DBAG callers use the same NSGI-aligned polynomials as the façade pipeline
+(~1 cm vs PDOK). `test:rd-coordinates` expects the aligned Amersfoort origin.
+
+## Building / façade / 3D work left the board
+
+Items 8a, 10, 10b, 10c, 18, 20, 20b, 21, 22 and 25 are owned by other agents.
+Design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`; this board no
+longer tracks them.
+
+## Disambiguation follow on Rotterdam and Den Haag
+
+Same city-qualified dab follow as Utrecht: each city re-enrich followed 1
+page to a confident `Name (City)` article; English pass ran for water/streets;
+`check:encyclopedia-disambiguation` and `check:extract-english` green.
+
+## Disambiguation pages follow a city-qualified article when score ≥45
+
+Silence alone dropped real places whose OSM sitelink pointed at a dab page
+(`Nieuwegracht` → list). Enrich and live title discovery now fetch the dab
+wikitext, score link targets with `pickDisambiguationTarget` (exact
+`Name (City)` = 100; Den Haag aliases; refuse rename traps), and refetch the
+summary only when confident. Utrecht re-enrich followed 15 pages; English pass
+restored ledes for Nieuwegracht, Leidseweg, Amsterdamsestraatweg, and peers.
+Ambiguous leftovers (Middelwetering, Bijleveld, …) stay empty. 16 checks in
+`test:street-wikipedia`.
+
+## Disambiguation pages never become cards; curated POIs for every Randstad city
+
+Title discovery was accepting Wikipedia list pages (`Nieuwegracht can refer
+to…`, `Vecht may refer to…`) and publishing them as place encyclopedia — silence
+is better than that. `isDisambiguationExtract` rejects them in enrich and title
+discovery, `scrub:disambiguation` cleared 86 published offenders across the four
+cities, and `check:encyclopedia-disambiguation` is a publish gate. Title lookup
+now passes the city's own name (`Nieuwegracht (Utrecht)` before the bare title).
+Surprise routes for Utrecht, Rotterdam and Den Haag get curated landmark
+anchors so prominence no longer sends every trip to a university campus.
+
+## Utrecht full refresh published (2026-09-05)
+
+`npm run refresh:utrecht` finally ran end-to-end against the cached BBBike PBF.
+Published extract now has `street-knowledge.json` and English card blurbs:
+streets 0→91 ledes, water 2→41, landmarks 125, bridges 66 (0 leftover `nl`).
+Two pipeline hardenings landed with it: rename-refusal leftovers clear Dutch
+instead of failing the English gate, and `build-bridge-railways` retries Overpass
+mirrors so a 504 does not throw away a finished enrich.
+
+## Swapfiets overlay tyres removed (looked broken)
+
+Tyre overlays on the Sketchfab Swapfiets preview were ~3× too thick and sat on
+top of the painted wheels — double-wheel donuts through the frame. Dropped them;
+`swapfiets-sketchfab-preview.glb` is an intact body + pivot empties only.
+Steer/spin stay on the authored `omafiets-runtime.glb`. A free game-ready Dutch
+bike with real wheel splits is still the path to Sketchfab motion.
+
+## Omafiets authored; Swapfiets reference is body-only
+
+Hand-built `omafiets-runtime.glb` is the game bike (deep step-through, blue
+front tyre, `Lenker`/`RadVorn`/`RadHinten`). Sketchfab Swapfiets native meshes
+are not clean wheel/frame splits; cutting verts tore fenders and bars apart.
+Preview keeps the intact baked body for look comparison only.
+
+
+## Street-mode bicycle is a Swapfiets omafiets
+
+The Carbon Frame Bike GLB read as a sport road bike from chase altitude — wrong
+for Amsterdam street mode, which is cycling presentation. It is replaced by
+PatrickGoud’s Sketchfab “Swapfiets” (CC BY 4.0): step-through frame, upright
+bars, blue front tyre. `scripts/stylize-swapfiets-bike.py` levels the mesh
+(yaw/pitch/roll so both wheel contacts share a ground plane), grounds it at
+Y = 0, and splits `Lenker` / `RadVorn` / `RadHinten` for steer about +Y and
+wheel roll about +Z. Runtime is `swapfiets-runtime.glb` (~1.4 MB, meshopt +
+1024² WebP, hierarchy preserved). Heading offset is `0` (+X forward). An
+earlier 0.15 simplify pass and voxel remesh were rejected for crushing thin
+tubes. Credit in `NOTICE.md`.
+
+## Full city selector (Amsterdam / Utrecht / Rotterdam / Den Haag)
+
+The briefing City row writes `cityId` into preferences. A typed catalog in
+`src/canalRecall/game/cities.ts` owns centre, extract path, geocode suffix /
+viewbox, province caption, and Amsterdam's curated route POIs. Loaders,
+recall keys, home geocode, postcard captions, and the basemap extract root
+all follow that id — so a Utrecht answer cannot stamp an Amsterdam mastery
+key. Selecting a city on the briefing jumps the map to that centre and
+refetches the landmark destination pool. Cities without curated POIs start
+from the prominence-ranked landmark extract. Remaining content gaps stay on
+the board as optional extract refresh (11b) and thin-lede polish (11c), not as
+a blocked play path.
+
+## Randstad refresh reuses OSM and Wikimedia caches
+
+`npm run refresh:randstad` is the one command for Amsterdam, Rotterdam, Den
+Haag and Utrecht. BBBike city PBFs and the shared Zuid-Holland province file
+now live in `.cache/osm-source/` (Amsterdam/Utrecht used to re-download every
+run). Municipality cuts for Rotterdam and Den Haag are cached against the
+province mtime. Enrichment still hits `.cache/wikimedia/` and
+`english-translations.json`. `REFRESH_FORCE_DOWNLOAD`, `REFRESH_FORCE_CUT`, and
+`REFRESH_OFFLINE` control cache behaviour.
+
+## Finish card hears Enter and Esc again
+
+Arrival actions were painted with ENTER / ESC shortcuts, but the keys often
+did nothing: quiz focus stayed on a hidden `#canal-answer` or a settings
+button, `InputManager` ignored those targets, and a stale `_utilityOpen`
+flag returned before the FINISHED handler. The canvas is now focusable, finish
+reclaims focus and clears utilities, and keyboard ignore no longer treats
+buttons or hidden fields as live form focus.
+
+## Street/water cards show their Wikipedia photos
+
+Amstel and many other route names already had `wikipediaImageUrl` in the
+extract, but `_showStreetKnowledge` never put it on the notice — only
+landmarks did. Street and water encyclopedia cards now pass the image through
+and kick the same on-demand loader landmarks use when the card opens.
+
+## Borough postcards: Centrum and the other stadsdelen
+
+OSM names districts `Centrum` / `Noord` / … while Wikidata labels them
+`Amsterdam-Centrum`. Boroughs also use instance-of `borough of Amsterdam`
+(Q15079751), which the neighborhood SPARQL omitted. Aliases plus that type
+bring the seven boroughs into `neighborhoods-enriched.json` with photos
+(Centrum now has a Jordaan canal Commons image).
+
+## Utrecht English ledes via trn
+
+`enrich:utrecht-english` now skips a missing `street-knowledge.json` and
+honours an explicit `--translator=` over the script’s `--ollama` default.
+A `trn` pass translated 141 Utrecht blurbs (6 rename refusals).
+
+## Published v11 Randstad trivia (opening then second beat)
+
+Owner blanket-approved the `facts-v11-opening-then-trivia` OpenRouter
+`qwen/qwen3.5-flash-02-23` staging catalogs on 2026-09-05. Shipped
+`facts.json` for Amsterdam (948 / 2,354), Rotterdam (270 / 652), Den Haag
+(199 / 540) and Utrecht (211 / 506) — 1,628 features, 4,052 facts, every
+feature carrying an article-lede opening. Review sheets were rewritten for the
+new generator version; v10 labels do not carry over across generator bumps.
+
+## Boat top speed raised
+
+Canal mode felt capped on long straight canals. Base `CAR_MAX_SPEED` is 260
+px/s (was 205) with matching `CAR_ACCEL` 120 so the boat still reaches the new
+cap promptly. Street mode still multiplies on top via `PLAYER_CAR_SPEED_MULT`.
+
+## Trivia cards open with who/what, then a second beat
+
+Rotated facts used to replace the Wikipedia lede entirely, so a people or
+history punchline could land without saying who the namesake was. Cards now
+pair an **opening** sentence from the same article (catalog `opening`, or the
+feature’s published encyclopedia lede) with the chosen trivia sentence.
+`facts:build` records openings from the article lede; `facts:attach-openings`
+backfills them onto an already-published catalog without regenerating facts
+(`--force` rewrites after splitter fixes). The writer prompt treats trivia as
+the second beat after that opening. `openingSentence` skips abbreviation
+periods (`no.`, `St.`) the same way the English extract trimmer does.
 
 ## Shared enamel CSS from one hudTheme source
 
@@ -1808,6 +2792,16 @@ caption-less tiles, tighter rows) keeps Travel → Difficulty in the first view.
 Start is night-ink on copper (~WCAG AA) instead of white-on-copper (~3.1:1), and
 secondary type floors at 12px. View’s four cameras stay; only captions hide on
 phone.
+
+## Load aims at the boat and coalesces building-tile setData
+
+Two regressions after the nearest-first tile streamer: the map stayed on Damrak
+for the whole loading screen (tiles only started on the first racing `sync`),
+and every tile arrival deep-cloned the resident FeatureCollection into
+`setData`, so two concurrent finishes hitch the main thread. Loading now calls
+`aimAtWorld` once the start point is known (and again from `_setupRace`), the
+streamer coalesces flushes to one per animation frame, and concurrency stays
+at 1 until the first tile lands so the spawn neighbourhood wins the pipe.
 
 ## Building tiles load the spawn neighbourhood first
 
@@ -3997,7 +4991,11 @@ Completed and being refined:
 - Trackpad and keyboard camera controls, remembered preferences, sound-off default, and absolute/relative vehicle controls.
 - Recall streaks and combo multipliers: consecutive correct answers build a streak (up to 2× at 10), displayed in the HUD with per-answer point feedback; best streak and accuracy percentage shown on the finish screen.
 - Landmark trivia cards: passing a notable place shows an expanded card with Wikipedia thumbnail, category badge (MUSEUM/BRIDGE/etc.), and multi-line description; the top 50 landmarks by prominence are image-preloaded at route start.
-- Vintage "Greetings from…" neighborhood postcards: entering a neighborhood now uses the classic large-letter travel-card composition—script heading, oversized outlined neighborhood name with Wikimedia photography clipped inside the letters, sun-faded paper, and an Amsterdam location line. A SPARQL-based enrichment script supplies images for 27 of 42 neighborhoods, with a typographic fallback for the rest. Continue tuning mobile scale and long-name typography against in-game screenshots.
+- Neighborhood entry postcards (compact HUD strip: photo + name + caption). A
+  contemporaneous note claimed classic large-letter composition; that look did
+  not land in `drawPostcard`. The real compositor arrived later — see
+  “Large-letter postcard compositor (standalone)” at the top of this file.
+  SPARQL enrichment still supplies Wikimedia thumbs for many neighborhoods.
 - Bridge recall: driving over a bridge, or passing under one by boat, asks which bridge it is. Backed by the 300-entry `bridges.json` extract, which supplies geometry and ready-made distractors, so the multiple-choice options are real neighbouring bridges rather than nearby street names.
 - Route destinations come from the landmark extract (245 reachable POIs) rather than 11 hand-written coordinates. Candidates are capped by distance from the centre and from each other so both ends fall inside one fetch window; an unsnappable endpoint is swapped for the nearest one that snaps, an unreachable destination is retargeted using a single Dijkstra pass over the whole pool, and an origin stranded in a disconnected component (typically across the IJ) re-rolls the pair.
 - Landmark cards show a Wikipedia affordance and `W` opens the article; the extract's `wikipediaUrl` and `wikidata` are carried onto the runtime record.

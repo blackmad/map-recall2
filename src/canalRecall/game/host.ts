@@ -15,7 +15,7 @@ import type {
 } from './collaborators';
 import type { StreetKnowledgeEntry } from './extracts';
 import type {
-  AnswerMode, QuizPromptKind, RouteDifficulty, TravelMode, ViewMode,
+  AnswerMode, QuizPromptKind, RouteDifficulty, RoutePattern, TravelMode, ViewMode,
 } from './modes';
 import type { Exploration } from './progressStore';
 import type { RibbonAid, RouteRibbon } from './routeRibbon';
@@ -51,12 +51,27 @@ export interface GameCoreHost {
   raceTime: number;
   currentNeighborhood: string;
   travelMode: TravelMode;
+  /** 'relative' (car-style) or 'absolute' (screen directions) steering. */
+  controlMode: string;
+  /** Active extract city — stamps recall keys and extract URLs. */
+  cityId: string;
+  _cityDisplayName(): string;
+  _activeCity(): { name: string; provinceCaption?: string; extractPath?: string; center?: { lat: number; lng: number } };
 
   /** Non-empty while a recall question is open. The HUD must not cover it, and
    *  nothing may reveal a name while it is up. */
   quizPromptName: string;
+  /** Subject of the open prompt (`line` / `stop` / `street` / …). Transit uses
+   *  this so stop/street questions do not blank the sticky line plaque. */
+  quizPromptSubject: string;
+  /** Line display name kept on the plaque after the first transit line answer. */
+  _activeTransitLine: string;
+  /** Race time when `_activeTransitLine` became sticky (transfer pacing). */
+  _transitLineStickyAt: number | null;
   /** True while a settings or debug panel is open over the canvas. */
   _utilityOpen: boolean;
+  /** The live canal-prompt DOM card (display toggled while a question is open). */
+  _prompt: HTMLElement;
   /** The expanded landmark card. Owned by the route/DOM half of the game. */
   _landmarkPanel: HTMLElement | null;
   _toggleUtilityPanel(panel: HTMLElement): void;
@@ -73,6 +88,10 @@ export interface GameCoreHost {
   _teachingGate(): import('./teachingSurface.ts').TeachingGateInput;
   /** Tap targets for the arrival card's actions, on touch. */
   _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' }>;
+  /** Tap targets for the pause card (resume / new route / copy). */
+  _pauseButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'resume' | 'route' | 'copy' }>;
+  _runPauseAction?(id: 'resume' | 'route' | 'copy'): void;
+  _openRouteSetup?(): void;
 
   /** Owned by the recall subsystem; landmarks needs it to join street names to
    *  the knowledge extract by the same normalisation the quiz uses. */
@@ -89,6 +108,9 @@ export interface LandmarkHost extends GameCoreHost {
   neighborhoods: Neighborhood[];
   bridges: Bridge[];
   streetKnowledge: Map<string, StreetKnowledgeEntry>;
+  routePath: WorldPoint[] | null;
+  /** Read-only street centreline index for corridor street quizzes. */
+  _corridorStreetIndex: import('../transit/corridorStreets.ts').CorridorStreetIndex | null;
 
   _landmarkNotice: LandmarkNotice | null;
   /** Why the current card is up, and how far through its life it is. */
@@ -138,7 +160,21 @@ export interface RecallStore extends AnswerRecallStore {
   signOut(): Promise<unknown>;
   onUserChange(listener: (user: { label: string } | null) => void): void;
   knownPlaces(): Array<{ name: string; center: LatLon }>;
+  dueReviews?(): Array<{
+    name: string;
+    type: string;
+    cityId: string;
+    center: [number, number];
+    dueAt: number;
+  }>;
   routeMastery(cityId: string): Record<string, number>;
+  routeReviewDue?(cityId: string): Record<string, true>;
+  homeMasterySamples?(cityId: string): Array<{ lat: number; lng: number; mastery: number }>;
+  /** Makes every place-local chunk for one named item due without logging a quiz result. */
+  queueForPractice(itemKey: string): number;
+  /** Erases every place-local chunk for one named item (local and cloud) so it
+   *  schedules like a brand-new name; returns how many chunks were removed. */
+  forgetItem(itemKey: string): number;
   isKnownHere(feature: RecallFeature): boolean;
   isSuppressedHere(feature: RecallFeature): boolean;
   /** Wipes local and signed-in review memory; returns how many were cleared. */
@@ -163,10 +199,14 @@ export interface RecallHost extends GameCoreHost {
    *  next drive does not re-tell the facts they just wiped. */
   _factRotation: RotationState;
 
+  routeFrom: { id: string; name: string };
+  routeTo: { id: string; name: string };
   routeOptions: { answerMode: AnswerMode };
   routeDifficulty: RouteDifficulty;
   gameyFeatures: boolean;
   _routeMastery: Record<string, number>;
+  /** Normalised names due for spaced review — overview warm tint. */
+  _routeReviewDue: Record<string, true>;
 
   quizCurrentName: string;
   quizCandidateName: string;
@@ -182,6 +222,8 @@ export interface RecallHost extends GameCoreHost {
   quizFeedback: string;
 
   learnedNames: Set<string>;
+  /** Stop names answered on a transit run. */
+  learnedStopNames: Set<string>;
   revealedNames: Set<string>;
   _mapLabelNames: Set<string>;
   /** name -> world points where the store says this name is already known.
@@ -194,10 +236,24 @@ export interface RecallHost extends GameCoreHost {
   _learnedBridges: Map<string, { name: string; labelPoint?: WorldPoint }>;
   _pendingCrossing: PendingCrossing | null;
   _lastBridgeQuizAt: number;
+  _lastTransitStopQuizAt: number;
+  _lastTransitLineQuizAt: number;
+  _lastTransitStreetQuizAt: number;
+  _lastTransitTransferQuizAt: number;
+  _quizzedTransitStops: Set<string>;
+  _quizzedTransitStreets: Set<string>;
+  _quizzedTransitTransfers: Set<string>;
+  /** True after the cold-open window has been considered this race. */
+  _coldOpenDone: boolean;
+  /** Multi-leg surprise plan when the hop changes lines at a hub. */
+  _transitConnectionPlan: import('../transit/transfers').TransitConnectionPlan | null;
+  /** 0-based leg on `_transitConnectionPlan` while driving a transfer hop. */
+  _transitLegIndex: number;
+  /** Read-only street centreline index for corridor street quizzes. */
+  _corridorStreetIndex: import('../transit/corridorStreets.ts').CorridorStreetIndex | null;
   _choiceOrder?: string[];
   _pendingSkipMastered?: boolean;
 
-  _prompt: HTMLElement;
   _promptInput: HTMLInputElement;
   _promptFeedback: HTMLElement;
   _promptChoices: HTMLElement;
@@ -212,10 +268,12 @@ export interface RecallHost extends GameCoreHost {
   /** Owned by other subsystems. */
   _savePreferences(): void;
   _setRouteError(message: string): void;
-  _showStreetKnowledge(name: string, type?: 'street' | 'water', replaceOpenCard?: boolean): void;
+  _showStreetKnowledge(name: string, type?: 'street' | 'water' | 'line', replaceOpenCard?: boolean): void;
   _clearLandmarkNotice(): void;
   _neighborhoodNotice: { name: string; kind?: string; imageArea?: string } | null;
   _neighborhoodNoticeTimer: number;
+  _explorationSnapshot?: Exploration | null;
+  _reclaimKeyboardFocus?(): void;
 }
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
@@ -226,6 +284,7 @@ export interface PresentationHost extends GameCoreHost {
   hud: Hud;
   particles: ParticleSystem;
   loadingScreen: LoadingScreen;
+  recall: RecallStore | null;
 
   loadingMessage: string;
   loadingProgress: number;
@@ -233,6 +292,11 @@ export interface PresentationHost extends GameCoreHost {
   gameyFeatures: boolean;
   viewMode: ViewMode;
   routeDifficulty: RouteDifficulty;
+  routePattern: RoutePattern;
+  /** Expanding home-base learning ring, km; 0 when not on a home route. */
+  _homeLearningRadiusKm: number;
+  /** 0-based leg while driving a multi-line transit hop. */
+  _transitLegIndex: number;
   routeOptions: { answerMode: AnswerMode; line: boolean; arrow: boolean; minimap: boolean };
 
   routeFrom: { id: string; name: string };
@@ -254,16 +318,24 @@ export interface PresentationHost extends GameCoreHost {
   quizFeedback: string;
   quizCurrentName: string;
   quizCandidateName: string;
+  quizPromptSubject: string;
+  _activeTransitLine: string;
+  _transitLineStickyAt: number | null;
   quizPromptSegmentIndex: number;
   quizPromptPointIndex: number;
 
   learnedNames: Set<string>;
+  learnedStopNames: Set<string>;
   _mapLabelNames: Set<string>;
   _visitedNeighborhoods: Set<string>;
   _seenLandmarkNames: Set<string>;
 
   _ribbon: RouteRibbon | null;
   _explorationSnapshot: Exploration | null;
+  /** First-ever gains from the route that just finished. */
+  _explorationRouteGain: import('./progressStore').ExplorationGain | null;
+  _finishPassportFresh: string[];
+  _finishPlaceStreakLabel: string | null;
   _assistUsage: Partial<Record<RibbonAid, boolean>>;
 
   _raceKey: string | null;

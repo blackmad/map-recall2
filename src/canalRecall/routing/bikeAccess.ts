@@ -6,8 +6,11 @@
  * basemap still draws — Zeedijk, Nieuwendijk, and most of the separated cycle
  * network — so the router refused streets a bike can legally use.
  *
- * Sidewalks stay out unless OSM explicitly tags bicycle access: pulling in
- * every `footway` would double the graph with kerb-parallel clones.
+ * Pedestrian streets that OSM marks `bicycle=no` / `dismount` are still
+ * *playable* here: the game teaches the corridor, and the extract stores
+ * `bicycleRestricted` so we can later tell the player bikes are banned in
+ * real life. Sidewalks stay out unless OSM explicitly tags bicycle access —
+ * pulling in every `footway` would double the graph with kerb-parallel clones.
  */
 
 /** Car-oriented highways the extract has always treated as drivable. */
@@ -20,12 +23,34 @@ export const CAR_ROUTING_HIGHWAYS = new Set([
 const BICYCLE_ALLOWED = new Set(['yes', 'designated', 'permissive', 'official']);
 const BICYCLE_DENIED = new Set(['no', 'dismount', 'private', 'customers']);
 
+/** OSM tags a bike ban / dismount on this way. */
+export function isBicycleRestricted(
+  tags: Readonly<Record<string, string | undefined>>,
+): boolean {
+  return BICYCLE_DENIED.has(tags.bicycle || '') || tags.bicycleRestricted === 'yes';
+}
+
 /**
- * True when this way should be a centreline in the cycling routing graph.
+ * Short HUD copy for a playable corridor that forbids bikes in real life.
+ * Never includes the street name — the plaque must not answer a quiz.
+ */
+export function bicycleRestrictionNotice(
+  tags: Readonly<Record<string, string | undefined>>,
+): string | null {
+  if (!isBicycleRestricted(tags)) return null;
+  const bicycle = tags.bicycle || '';
+  if (bicycle === 'dismount') return 'Walk bikes in real life';
+  if (bicycle === 'private' || bicycle === 'customers') return 'Private — no public cycling';
+  return 'No cycling in real life';
+}
+
+/**
+ * True when this way should be a centreline in the playable cycling graph.
  *
  * Car highways stay in (including `bicycle=use_sidepath` roads — the parallel
  * cycleway is added separately when present). Pedestrian streets are included
- * unless bikes are denied. Untagged footways/paths are not.
+ * even when bikes are denied in real life (see `isBicycleRestricted`). Untagged
+ * footways/paths are not.
  */
 export function isBikeRoutingHighway(tags: Readonly<Record<string, string | undefined>>): boolean {
   const highway = tags.highway;
@@ -34,7 +59,8 @@ export function isBikeRoutingHighway(tags: Readonly<Record<string, string | unde
 
   const bicycle = tags.bicycle || '';
   if (highway === 'cycleway') return !BICYCLE_DENIED.has(bicycle);
-  if (highway === 'pedestrian') return !BICYCLE_DENIED.has(bicycle);
+  // Playable even when bicycle=no — restriction is recorded separately.
+  if (highway === 'pedestrian') return true;
   if (highway === 'path' || highway === 'footway') return BICYCLE_ALLOWED.has(bicycle);
   return false;
 }

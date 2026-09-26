@@ -36,6 +36,28 @@ export interface ThinOptions {
   cellMetres?: number;
 }
 
+export interface BasemapStyleLayer {
+  id?: string;
+  type?: string;
+  'source-layer'?: string;
+}
+
+/**
+ * OpenFreeMap's Liberty style already contains ranked OSM POIs with icons and
+ * collision-aware labels. The game used to hide those along with road names.
+ * Identify them by their source layer instead of Liberty's current `poi_r*`
+ * ids so a harmless upstream style rename does not blank the cues again.
+ */
+export function basemapOrientationPoiLayerIds(
+  layers: readonly BasemapStyleLayer[],
+): string[] {
+  return layers
+    .filter(layer => layer.id
+      && layer.type === 'symbol'
+      && layer['source-layer'] === 'poi')
+    .map(layer => layer.id as string);
+}
+
 /**
  * Keep the strongest cue in each cell of ground, dropping the rest.
  *

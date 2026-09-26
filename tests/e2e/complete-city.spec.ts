@@ -49,6 +49,9 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
 
   const loaded = await page.evaluate(() => {
     const map = (window as any).canalRecallGame.vectorMap;
+    // Reproduce the settings/readiness sync that used to resurrect OpenFreeMap's
+    // duplicate extrusion after the streamed city had hidden it.
+    map.setDetailedBuildingsVisible(false);
     return {
       status: map._completeCity.status(),
       appearanceAreas: map._appearanceAreas,
@@ -72,6 +75,14 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
   // The current filter allows flat/unspecified roofs, so it excludes pyramids
   // without spelling out every non-flat shape. Check the runtime wiring.
   expect(loaded.roofFilter, 'the renderer uses the tested flat-roof cap filter').toEqual(flatRoofFilter());
+  expect(loaded.basemapVisibility, 'the basemap extrusion stays hidden after a layer sync').toBe('none');
+  expect(loaded.wallsVisible, 'the merged source is what draws').toBe('visible');
+  expect(loaded.roofFilter?.[0], 'the roof cap is a filter, not a paint').toBe('all');
+  // Flat lids are an allowlist of flat/untagged shapes; pyramidal parts are
+  // meshed separately and must not appear in the fill-extrusion filter.
+  const roofFilterJson = JSON.stringify(loaded.roofFilter);
+  expect(roofFilterJson, 'only flat / untagged shapes get lids').toContain('flat');
+  expect(roofFilterJson, 'shaped roofs never get a flat lid').not.toMatch(/gabled|pyramidal|skillion/);
 
   // Read the rendered source back: every feature must resolve to an identity or
   // picking cannot return a BuildingHit for it, and a measured height is the

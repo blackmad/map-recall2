@@ -21,6 +21,7 @@ export interface OverlayState {
   prefs: CanalPreferences;
   setupOpen: boolean;
   settingsOpen: boolean;
+  knowledgeOpen: boolean;
   advancedOpen: boolean;
   routeError: string;
   account: AccountState;
@@ -29,7 +30,7 @@ export interface OverlayState {
 export const GUEST_ACCOUNT: AccountState = {
   visible: true,
   label: 'Playing as guest',
-  note: 'Sign in to sync learned streets',
+  note: 'Sign in to sync your fog map across devices',
   buttonLabel: 'Sign in',
   busy: false,
 };
@@ -39,6 +40,7 @@ export function createOverlayStore(initial: CanalPreferences) {
     prefs: initial,
     setupOpen: true,
     settingsOpen: false,
+    knowledgeOpen: false,
     advancedOpen: false,
     routeError: '',
     account: { ...GUEST_ACCOUNT },
@@ -68,6 +70,10 @@ export function createOverlayStore(initial: CanalPreferences) {
     },
     setSettingsOpen(settingsOpen: boolean): void {
       state = { ...state, settingsOpen };
+      emit();
+    },
+    setKnowledgeOpen(knowledgeOpen: boolean): void {
+      state = { ...state, knowledgeOpen };
       emit();
     },
     setAdvancedOpen(advancedOpen: boolean): void {

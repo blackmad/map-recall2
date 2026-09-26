@@ -62,16 +62,32 @@
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.16) inset;
 }
 
-/* Canal setup rail sits on cobalt — tiles need a denser wash, not white frost. */
+/* Canal setup rail sits on daylight paper (--day-* tokens): tiles are raised
+   paper with an ink hairline; the selected tile takes the one accent, copper. */
 .enamel-setup .enamel-tile,
 .setup-choice.enamel-tile {
   border-radius: 6px;
-  background: rgba(11, 58, 140, 0.55);
+  border-color: var(--day-line);
+  background: var(--day-paper-raised);
+  color: var(--day-ink);
+  box-shadow: 0 1px 1px rgba(31, 28, 23, 0.05);
 }
 .enamel-setup .enamel-tile:hover,
 .setup-choice.enamel-tile:hover {
-  background: rgba(20, 80, 184, 0.62);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: var(--day-paper-raised);
+  border-color: var(--day-line-strong);
+}
+.enamel-setup .enamel-tile.active,
+.setup-choice.enamel-tile.active {
+  background: var(--day-accent-soft);
+  border-color: var(--day-accent);
+  box-shadow: inset 0 0 0 1px var(--day-accent);
+}
+.setup-choice.enamel-tile.active .enamel-icon,
+.setup-choice.enamel-tile.active strong { color: var(--day-accent-ink); }
+.setup-choice.enamel-tile:focus-visible {
+  outline: 2px solid var(--day-accent-ink);
+  outline-offset: 2px;
 }
 
 /* Condensed plaque type (titles, mode labels). */

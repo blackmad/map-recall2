@@ -17,27 +17,36 @@ class OSMLoader {
   // Load the curated Amsterdam waterways shipped with Map Recall. The return
   // shape intentionally matches Smokey's Overpass road loader so the original
   // game engine can remain unchanged.
-  async fetchRoads(lat, lng, radiusMeters, travelMode = 'boat') {
+  async fetchRoads(lat, lng, radiusMeters, travelMode = 'boat', cityId = 'amsterdam') {
+    const Prefs = window.CanalRecallPreferences;
+    const city = Prefs && Prefs.cityById ? Prefs.cityById(cityId) : { id: cityId || 'amsterdam', extractPath: `../data/extracts/${cityId || 'amsterdam'}`, name: cityId || 'amsterdam' };
     try {
       // Quiz partitions stay deliberately compact. Driving needs the complete
       // connected street component or visible bridge approaches can have no
       // underlying centerline and the road guard will correctly refuse them.
+      // Transit loads a GTFS-derived network object and adapts it to ways.
+      if (travelMode === 'transit') {
+        return this._fetchTransitWays(city);
+      }
       const dataset = travelMode === 'car' ? 'streets-routing' : 'water';
-      const dataUrl = new URL(`../data/extracts/amsterdam/${dataset}.json`, window.location.href);
+      const dataUrl = new URL(`${city.extractPath}/${dataset}.json`, window.location.href);
       const response = await fetch(dataUrl);
-      if (!response.ok) throw new Error(`Amsterdam water data: HTTP ${response.status}`);
+      if (!response.ok) throw new Error(`${city.name} ${dataset}: HTTP ${response.status}`);
       const features = await response.json();
       const ways = [];
       // Stable per-name identity for the spaced-repetition store. The review
       // key hashes the feature's centre, so it has to come from the extract
       // rather than from wherever the player happens to be standing.
       this.featureMeta = this.featureMeta || new Map();
+      this.cityId = city.id;
+      this.transitLoad = null;
+      this.transitTransfers = null;
       for (const feature of features) {
         if (feature.name && feature.center && !this.featureMeta.has(feature.name)) {
           this.featureMeta.set(feature.name, {
             name: feature.name,
             type: feature.type || (travelMode === 'car' ? 'street' : 'canal'),
-            cityId: feature.cityId || 'amsterdam',
+            cityId: feature.cityId || city.id,
             center: feature.center,
           });
         }
@@ -61,15 +70,24 @@ class OSMLoader {
           const highway = travelMode === 'car'
             ? (feature.highway || (feature.type === 'avenue' ? 'secondary' : 'residential'))
             : (feature.type === 'canal' ? 'canal' : 'river');
+          const tags = {
+            name: feature.name,
+            [travelMode === 'car' ? 'highway' : 'waterway']: highway,
+          };
+          // Real-world bike ban on a playable pedestrian corridor (Kalverstraat).
+          if (travelMode === 'car' && feature.bicycleRestricted) {
+            tags.bicycleRestricted = 'yes';
+            tags.bicycle = feature.bicycle || 'no';
+          }
           ways.push({
             id: `${feature.id}:${pathIndex}`,
             nodes: path.map(([pathLat, pathLon]) => ({ lat: pathLat, lon: pathLon })),
-            tags: { name: feature.name, [travelMode === 'car' ? 'highway' : 'waterway']: highway },
+            tags,
             highway
           });
         }
       }
-      console.log(`Loaded ${ways.length} curated Amsterdam ${dataset} paths`);
+      console.log(`Loaded ${ways.length} curated ${city.name} ${dataset} paths`);
       return ways;
     } catch (localError) {
       console.warn('Curated water data unavailable; falling back to Overpass:', localError);
@@ -224,6 +242,43 @@ class OSMLoader {
   _latToTileY(lat, z) { return Math.floor(PROJECT.latToTileY(lat, z)); }
   _tileXToLng(x, z) { return PROJECT.tileXToLng(x, z); }
   _tileYToLat(y, z) { return PROJECT.tileYToLat(y, z); }
+
+  async _fetchTransitWays(city) {
+    const Transit = window.CanalRecallTransit;
+    if (!Transit || typeof Transit.adaptTransitNetwork !== 'function') {
+      throw new Error('Transit adapter not loaded');
+    }
+    if (city.id !== 'amsterdam') {
+      throw new Error('Transit mode is Amsterdam-only for now');
+    }
+    const dataUrl = new URL(`${city.extractPath}/transit-network.json`, window.location.href);
+    const response = await fetch(dataUrl);
+    if (!response.ok) throw new Error(`${city.name} transit-network: HTTP ${response.status}`);
+    const network = await response.json();
+    const load = Transit.adaptTransitNetwork(network, {
+      playableRefs: [],
+      playableModes: Transit.TRANSIT_DRIVEABLE_MODES,
+      cityId: city.id,
+    });
+    this.featureMeta = new Map(load.featureMeta);
+    this.cityId = city.id;
+    this.transitLoad = load;
+    this.transitTransfers = null;
+    try {
+      const transferUrl = new URL(`${city.extractPath}/transit-transfers.json`, window.location.href);
+      const transferResponse = await fetch(transferUrl);
+      if (transferResponse.ok) {
+        this.transitTransfers = await transferResponse.json();
+        console.log(
+          `Loaded ${this.transitTransfers.counts?.transfers || 0} transit transfers for ${city.name}`,
+        );
+      }
+    } catch (error) {
+      console.warn('Transit transfers unavailable:', error);
+    }
+    console.log(`Loaded ${load.ways.length} transit corridors (${load.stops.length} stops) for ${city.name}`);
+    return load.ways;
+  }
 
   // Convert ways to game-coordinate road segments. The arithmetic — projection,
   // simplification, widths, recentring — lives in `roadProjection.ts`; what

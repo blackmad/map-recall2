@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 # Rebuild every Randstad city the pipeline supports.
 #
-# Amsterdam and Utrecht come from their BBBike city extracts, which contain
-# their whole municipality. Rotterdam and Den Haag come from the Zuid-Holland
-# province file instead: BBBike's Rotterdam bbox cuts the municipality relation,
-# and the fourth argument now accepts any PBF URL, so the smaller Randstad
-# cities (Leiden, Haarlem, Delft, Dordrecht, Almere, Amersfoort) can be added
-# the same way once someone picks their centres.
+#   npm run refresh:randstad
+#
+# Amsterdam and Utrecht come from cached BBBike city extracts. Rotterdam and
+# Den Haag share a cached Zuid-Holland province PBF; each city's cut of that
+# file is also cached. Wikimedia/Wikipedia responses live in .cache/wikimedia/,
+# and English ledes reuse scripts/english-translations.json.
+#
+# Environment:
+#   REFRESH_FORCE_DOWNLOAD=1  re-fetch OSM source PBFs
+#   REFRESH_FORCE_CUT=1       redo municipality cuts from a wide PBF
+#   REFRESH_OFFLINE=1         fail on a missing OSM cache instead of downloading
 #
 # Each city is independent: one failing must not stop the rest, and each only
 # publishes if its own build and checks pass. The exit code reports whether
@@ -14,6 +19,9 @@
 set -uo pipefail
 
 ZUID_HOLLAND="https://download.geofabrik.de/europe/netherlands/zuid-holland-latest.osm.pbf"
+
+echo "Randstad refresh — OSM sources from .cache/osm-source/ when present"
+echo "  FORCE_DOWNLOAD=${REFRESH_FORCE_DOWNLOAD:-0}  FORCE_CUT=${REFRESH_FORCE_CUT:-0}  OFFLINE=${REFRESH_OFFLINE:-0}"
 
 failed=()
 run_city() {

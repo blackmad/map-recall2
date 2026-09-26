@@ -8,6 +8,8 @@
 
 export const LEADERBOARD_STORAGE_KEY = 'satb_bestTimes';
 export const EXPLORATION_STORAGE_KEY = 'canalRecall.exploration.v1';
+/** Nominatim cache for the home-address field; cleared with “Clear all data”. */
+export const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v2';
 /** Personal bests are capped and evicted oldest-first. */
 export const LEADERBOARD_MAX_ENTRIES = 50;
 
@@ -15,6 +17,16 @@ export const LEADERBOARD_MAX_ENTRIES = 50;
 export interface KeyValueStore {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
+  removeItem?(key: string): void;
+}
+
+function removeKey(store: KeyValueStore, key: string): void {
+  try {
+    if (store.removeItem) store.removeItem(key);
+    else store.setItem(key, '');
+  } catch {
+    /* private mode */
+  }
 }
 
 function readJson<T>(store: KeyValueStore, key: string, fallback: T): T {
@@ -93,6 +105,8 @@ export function pixelsToMiles(distancePx: number, pixelsPerMeter: number): numbe
 export interface Exploration {
   learnedWaterways: string[];
   learnedStreets: string[];
+  learnedTransitLines: string[];
+  learnedTransitStops: string[];
   visitedNeighborhoods: string[];
   seenLandmarks: string[];
   totalRoutes: number;
@@ -103,6 +117,7 @@ export interface Exploration {
 export function emptyExploration(): Exploration {
   return {
     learnedWaterways: [], learnedStreets: [],
+    learnedTransitLines: [], learnedTransitStops: [],
     visitedNeighborhoods: [], seenLandmarks: [],
     totalRoutes: 0, totalCorrect: 0, totalAttempts: 0,
   };
@@ -116,6 +131,8 @@ export function readExploration(store: KeyValueStore): Exploration {
   return {
     learnedWaterways: stored.learnedWaterways ?? base.learnedWaterways,
     learnedStreets: stored.learnedStreets ?? base.learnedStreets,
+    learnedTransitLines: stored.learnedTransitLines ?? base.learnedTransitLines,
+    learnedTransitStops: stored.learnedTransitStops ?? base.learnedTransitStops,
     visitedNeighborhoods: stored.visitedNeighborhoods ?? base.visitedNeighborhoods,
     seenLandmarks: stored.seenLandmarks ?? base.seenLandmarks,
     totalRoutes: stored.totalRoutes ?? base.totalRoutes,
@@ -126,9 +143,11 @@ export function readExploration(store: KeyValueStore): Exploration {
 
 export interface RouteContribution {
   /** Waterways are collected separately from streets: they are two bodies of
-   *  knowledge and the finish screen counts them apart. */
-  byBoat: boolean;
+   *  knowledge and the finish screen counts them apart. Transit adds a third. */
+  learnedKind: 'water' | 'street' | 'transit';
   learnedNames: Iterable<string>;
+  /** Stop names answered on a transit run (ignored for boat/bike). */
+  learnedStopNames?: Iterable<string>;
   visitedNeighborhoods: Iterable<string>;
   seenLandmarkNames: Iterable<string>;
   correct: number;
@@ -146,13 +165,20 @@ export function mergeExploration(
   current: Exploration,
   contribution: RouteContribution,
 ): Exploration {
+  const kind = contribution.learnedKind;
   return {
-    learnedWaterways: contribution.byBoat
+    learnedWaterways: kind === 'water'
       ? addUnique(current.learnedWaterways, contribution.learnedNames)
       : current.learnedWaterways,
-    learnedStreets: contribution.byBoat
-      ? current.learnedStreets
-      : addUnique(current.learnedStreets, contribution.learnedNames),
+    learnedStreets: kind === 'street'
+      ? addUnique(current.learnedStreets, contribution.learnedNames)
+      : current.learnedStreets,
+    learnedTransitLines: kind === 'transit'
+      ? addUnique(current.learnedTransitLines, contribution.learnedNames)
+      : current.learnedTransitLines,
+    learnedTransitStops: kind === 'transit'
+      ? addUnique(current.learnedTransitStops, contribution.learnedStopNames || [])
+      : current.learnedTransitStops,
     visitedNeighborhoods: addUnique(current.visitedNeighborhoods, contribution.visitedNeighborhoods),
     seenLandmarks: addUnique(current.seenLandmarks, contribution.seenLandmarkNames),
     totalRoutes: current.totalRoutes + 1,
@@ -165,6 +191,21 @@ export function saveExploration(store: KeyValueStore, exploration: Exploration):
   store.setItem(EXPLORATION_STORAGE_KEY, JSON.stringify(exploration));
 }
 
+/** Wipe the exploration collection (not spaced-repetition knowledge). */
+export function clearExploration(store: KeyValueStore): void {
+  removeKey(store, EXPLORATION_STORAGE_KEY);
+}
+
+/** Wipe personal-best times. */
+export function clearBestTimes(store: KeyValueStore): void {
+  removeKey(store, LEADERBOARD_STORAGE_KEY);
+}
+
+/** Wipe the home-address geocode cache. */
+export function clearHomeGeocodeCache(store: KeyValueStore): void {
+  removeKey(store, HOME_GEOCODE_CACHE_KEY);
+}
+
 /** How much of this route was new — what the finish screen celebrates. */
 export interface ExplorationGain {
   newNames: number;
@@ -173,9 +214,12 @@ export interface ExplorationGain {
 }
 
 export function explorationGain(before: Exploration, after: Exploration): ExplorationGain {
+  const beforeNames = before.learnedWaterways.length + before.learnedStreets.length
+    + before.learnedTransitLines.length + before.learnedTransitStops.length;
+  const afterNames = after.learnedWaterways.length + after.learnedStreets.length
+    + after.learnedTransitLines.length + after.learnedTransitStops.length;
   return {
-    newNames: (after.learnedWaterways.length + after.learnedStreets.length)
-      - (before.learnedWaterways.length + before.learnedStreets.length),
+    newNames: afterNames - beforeNames,
     newNeighborhoods: after.visitedNeighborhoods.length - before.visitedNeighborhoods.length,
     newLandmarks: after.seenLandmarks.length - before.seenLandmarks.length,
   };

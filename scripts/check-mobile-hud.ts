@@ -8,13 +8,16 @@
 //
 // The properties asserted here are the ones that were false before: the canvas
 // fills a phone screen, every HUD rectangle is on screen and disjoint in
-// portrait as well as landscape, and the d-pad reports the direction a thumb is
-// actually touching.
+// portrait as well as landscape, and the thumbstick drives the direction a
+// thumb is actually pointing.
 
 import assert from 'node:assert/strict';
 import { resolveViewport, DESIGN_WIDTH, DESIGN_HEIGHT, type Viewport } from '../src/canalRecall/viewport.ts';
 import { hudLayout, hudBand, rectsIntersect, type Rect } from '../src/canalRecall/hudLayout.ts';
-import { dpadLayout, dpadKeysAt, isInsideDpad, applyAutoThrottle, noKeys } from '../src/canalRecall/touchControls.ts';
+import {
+  dpadLayout, isInsideDpad, noKeys, stickRadius, stickVector, relativeCommand, absoluteCommand,
+  keysScreenAngle, assistedHeading, turnToward, cruiseThrottle, normalizeAngle, STICK_CRUISE_FRACTION,
+} from '../src/canalRecall/touchControls.ts';
 
 let checks = 0;
 const ok = (condition: boolean, message: string): void => { assert.ok(condition, message); checks++; };
@@ -232,62 +235,82 @@ for (const phone of PHONES) {
   ok(desktop.dpad === null, 'the desktop gets no d-pad');
 }
 
-// --- D-pad hit testing ------------------------------------------------------
+// --- Thumbstick -------------------------------------------------------------
+//
+// Named regression (2026-09-26, reported on a phone): "impossible to turn; even
+// in absolute mode I can't reliably go east". Auto-throttle held ArrowUp, so
+// absolute-mode "right" resolved to north-east; the camera turned with the
+// vehicle so "right" was not right on screen; and a thumb sliding off the pad
+// dropped all input mid-turn.
+
+const near = (a: number, b: number, eps = 1e-9) => Math.abs(normalizeAngle(a - b)) <= eps;
 
 {
   const viewport = resolveViewport({ windowWidth: 390, windowHeight: 844, touch: true, safeBottom: 34 });
   const pad = dpadLayout(viewport)!;
-  const { cx, cy, cell } = pad;
-  const at = (dx: number, dy: number) => dpadKeysAt([{ x: cx + dx, y: cy + dy }], pad);
+  const radius = stickRadius(pad);
+  const origin = { x: pad.cx, y: pad.cy };
 
-  assert.deepEqual(at(-cell, 0), { ...noKeys(), ArrowLeft: true }, 'left cell steers left');
-  assert.deepEqual(at(cell, 0), { ...noKeys(), ArrowRight: true }, 'right cell steers right');
-  assert.deepEqual(at(0, -cell), { ...noKeys(), ArrowUp: true }, 'top cell is throttle');
-  assert.deepEqual(at(0, cell), { ...noKeys(), ArrowDown: true }, 'bottom cell brakes');
-  assert.deepEqual(at(0, 0), noKeys(), 'the dead centre steers nowhere');
-  checks += 5;
+  ok(isInsideDpad(origin, pad), 'the stick zone contains its own centre');
+  ok(!isInsideDpad({ x: pad.cx, y: pad.cy - pad.bounds.height }, pad),
+    'a touch above the zone is a camera pan, not a stick touch');
 
-  // Corners give diagonals, which is how you brake into a turn.
-  assert.deepEqual(at(-cell, cell), { ...noKeys(), ArrowLeft: true, ArrowDown: true },
-    'the bottom-left corner brakes and steers left');
-  checks++;
+  ok(stickVector(origin, { x: origin.x + radius * 0.1, y: origin.y }, radius) === null,
+    'the dead zone reads as no deflection');
+  const east = stickVector(origin, { x: origin.x + radius, y: origin.y }, radius)!;
+  ok(east.magnitude === 1 && near(east.screenAngle, 0), 'full right is magnitude 1 at angle 0');
 
-  // A touch outside the pad is a camera pan, not a steering input.
-  const outside = { x: cx, y: cy - pad.bounds.height };
-  assert.equal(isInsideDpad(outside, pad), false, 'a touch above the pad is not a pad touch');
-  assert.deepEqual(dpadKeysAt([outside], pad), noKeys(), 'and drives nothing');
-  checks += 2;
+  // Captured thumb that has wandered far outside the zone still steers, clamped.
+  const wandered = { x: origin.x + radius * 4, y: origin.y + 1 };
+  ok(!isInsideDpad(wandered, pad), 'the wandered thumb really is outside the zone');
+  const far = stickVector(origin, wandered, radius)!;
+  ok(far.magnitude === 1 && far.x > 0.99, 'a thumb past the rim reads as full deflection, not as released');
 
-  // Two thumbs on the pad combine rather than fight.
-  assert.deepEqual(
-    dpadKeysAt([{ x: cx - cell, y: cy }, { x: cx, y: cy - cell }], pad),
-    { ...noKeys(), ArrowLeft: true, ArrowUp: true },
-    'two touches combine',
-  );
-  checks++;
+  // Absolute: screen directions become world headings through the camera.
+  ok(near(absoluteCommand(east, 0)!.targetAngle, 0), 'north-up: stick right drives due east');
+  const west = stickVector(origin, { x: origin.x - radius, y: origin.y }, radius)!;
+  ok(near(absoluteCommand(west, 0)!.targetAngle, Math.PI), 'north-up: stick left drives due west');
+  ok(near(absoluteCommand(east, Math.PI / 2)!.targetAngle, Math.PI / 2),
+    'map turned 90°: stick right drives the world direction that is right on screen');
+
+  // Keyboard absolute: pure right is exactly east (no phantom throttle key).
+  ok(keysScreenAngle({ ...noKeys(), ArrowRight: true }) === 0, 'the right arrow alone is angle 0');
+  ok(keysScreenAngle({ ...noKeys(), ArrowLeft: true, ArrowRight: true }) === null, 'cancelling keys point nowhere');
+
+  // Relative: analog, signed, pull back brakes, forward runs faster than cruise.
+  const halfRight = stickVector(origin, { x: origin.x + radius * 0.6, y: origin.y }, radius)!;
+  const halfLeft = stickVector(origin, { x: origin.x - radius * 0.6, y: origin.y }, radius)!;
+  const r = relativeCommand(halfRight), l = relativeCommand(halfLeft);
+  ok(r.steer > 0 && r.steer < 1 && l.steer < 0 && Math.abs(r.steer + l.steer) < 1e-9, 'relative steer is analog and signed');
+  ok(relativeCommand(east).steer === 1, 'the rim is full lock');
+  const back = stickVector(origin, { x: origin.x, y: origin.y + radius }, radius)!;
+  ok(relativeCommand(back).brake === 1 && relativeCommand(back).speedFraction === 0, 'pulling back brakes');
+  const up = stickVector(origin, { x: origin.x, y: origin.y - radius }, radius)!;
+  ok(relativeCommand(up).speedFraction === 1, 'pushing forward is full speed');
+  ok(relativeCommand(null).speedFraction === STICK_CRUISE_FRACTION && relativeCommand(null).steer === 0,
+    'a thumb resting in the dead zone cruises straight');
 }
 
-// --- Auto-throttle ----------------------------------------------------------
-
+// Road assist and heading helpers.
 {
-  assert.deepEqual(applyAutoThrottle(noKeys()), { ...noKeys(), ArrowUp: true },
-    'the vehicle rolls forward with no input, so steering is the only job');
-  assert.deepEqual(
-    applyAutoThrottle({ ...noKeys(), ArrowLeft: true }),
-    { ...noKeys(), ArrowLeft: true, ArrowUp: true },
-    'steering keeps the throttle on');
-  assert.deepEqual(
-    applyAutoThrottle({ ...noKeys(), ArrowDown: true }),
-    { ...noKeys(), ArrowDown: true },
-    'braking overrides auto-throttle, or you could never stop');
-  checks += 3;
+  const streetAngle = (20 * Math.PI) / 180; // an east-north-east street
+  ok(near(assistedHeading(0, streetAngle), streetAngle), 'pushing east on a slanted street follows the street');
+  ok(near(assistedHeading(Math.PI, streetAngle), streetAngle + Math.PI), 'pushing west follows it the other way');
+  ok(near(assistedHeading(-Math.PI / 2, streetAngle), -Math.PI / 2),
+    'pushing north across the street is not bent onto it');
+  ok(near(assistedHeading(0.3, null), 0.3), 'no road means no assist');
+  ok(near(turnToward(0, Math.PI / 2, 0.1), 0.1), 'turning is rate-limited');
+  ok(near(turnToward(3.1, -3.1, 0.2), -3.1), 'turning crosses ±π the short way');
+  ok(cruiseThrottle(0, 100, 300) === 1, 'cruise floors it from a standstill');
+  ok(cruiseThrottle(200, 100, 300) > 0 && cruiseThrottle(200, 100, 300) < 0.1,
+    'over cruise speed it eases off without triggering lift-off braking');
 }
 
 // A desktop viewport has no d-pad to hit-test against.
 {
   const desktop = resolveViewport({ windowWidth: 1440, windowHeight: 900 });
   assert.equal(dpadLayout(desktop), null);
-  assert.deepEqual(dpadKeysAt([{ x: 100, y: 100 }], null), noKeys());
+  assert.equal(isInsideDpad({ x: 100, y: 100 }, null), false);
   checks += 2;
 }
 

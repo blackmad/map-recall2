@@ -6,7 +6,10 @@
  * show "who / what" context from the same Wikipedia article without waiting
  * for a full facts:build regen. Does not change fact texts or review status.
  *
- * Usage: npm run facts:attach-openings [-- --directory=public/data/extracts/amsterdam]
+ * Usage: npm run facts:attach-openings [-- --directory=…] [-- --file=…] [-- --force]
+ *
+ * By default only fills missing openings. `--force` rewrites every opening from
+ * the current encyclopedia extract (use after fixing openingSentence).
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -24,6 +27,7 @@ const factsPath = path.resolve(
   targetArg || path.join(directory, 'facts.json'),
 );
 const dryRun = process.argv.includes('--dry-run');
+const force = process.argv.includes('--force');
 
 interface ExtractFeature {
   id?: string;
@@ -59,27 +63,34 @@ const facts = JSON.parse(await readFile(factsPath, 'utf8')) as FactsFile;
 const extracts = await loadExtractIndex();
 let attached = 0;
 let kept = 0;
+let rewritten = 0;
 let missing = 0;
 
 for (const feature of facts.features || []) {
-  if (feature.opening?.trim()) {
-    kept++;
-    continue;
-  }
-  const opening = openingSentence(extracts.get(feature.id));
-  if (!opening) {
+  const next = openingSentence(extracts.get(feature.id));
+  if (!next) {
     missing++;
     continue;
   }
-  feature.opening = opening;
-  attached++;
+  if (!force && feature.opening?.trim()) {
+    kept++;
+    continue;
+  }
+  if (force && feature.opening?.trim() === next) {
+    kept++;
+    continue;
+  }
+  if (force && feature.opening?.trim()) rewritten++;
+  else attached++;
+  feature.opening = next;
 }
 
 process.stdout.write(
-  `openings: attached ${attached}, already present ${kept}, no extract ${missing}\n`
+  `openings: attached ${attached}, rewritten ${rewritten}, unchanged ${kept}, no extract ${missing}`
+  + `${force ? ' (--force)' : ''}\n`
   + `  ${path.relative(process.cwd(), factsPath)}\n`,
 );
 
-if (!dryRun && attached) {
+if (!dryRun && (attached || rewritten)) {
   await writeFile(factsPath, `${JSON.stringify(facts, null, 2)}\n`);
 }

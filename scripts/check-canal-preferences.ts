@@ -32,6 +32,30 @@ const memory = () => {
   assert.equal(prefs.gamey, true);
   assert.equal(prefs.sound, false);
   assert.equal(prefs.zoom, 0.5);
+  assert.equal(prefs.cameraTilt, 0);
+}
+
+{
+  const prefs = parsePreferences({ cameraTilt: 12 }, zoom);
+  assert.equal(prefs.cameraTilt, 12);
+  const clamped = parsePreferences({ cameraTilt: 99 }, zoom);
+  assert.equal(clamped.cameraTilt, 36);
+}
+
+{
+  const prefs = parsePreferences({ cameraBearing: 225 }, zoom);
+  assert.equal(prefs.cameraBearing, -135);
+  assert.equal(parsePreferences({ cameraBearing: Number.NaN }, zoom).cameraBearing, 0);
+}
+
+{
+  const prefs = parsePreferences({ travelMode: 'transit' }, zoom);
+  assert.equal(prefs.travelMode, 'transit', 'transit travel mode parses');
+}
+
+{
+  const prefs = parsePreferences({ routePattern: 'here' }, zoom);
+  assert.equal(prefs.routePattern, 'here');
 }
 
 {
@@ -72,12 +96,18 @@ const memory = () => {
 }
 
 {
-  const prefs = parsePreferences({ gamey: false, trees: false, skipMastered: false, sound: true }, zoom);
-  assert.equal(prefs.gamey, false);
-  assert.equal(prefs.trees, false);
-  assert.equal(prefs.skipMastered, false);
-  assert.equal(prefs.sound, true);
+  const prefs = parsePreferences({ bikeSkin: 'pink' }, zoom);
+  assert.equal(prefs.bikeSkin, 'pink');
+  const retiredMama = parsePreferences({ bikeSkin: 'mama', bikeBabySeat: true }, zoom);
+  assert.equal(retiredMama.bikeSkin, 'omafiets', 'retired mama skin falls back');
+  assert.equal(retiredMama.bikeBabySeat, true);
+  const bad = parsePreferences({ bikeSkin: 'unicycle' }, zoom);
+  assert.equal(bad.bikeSkin, 'omafiets', 'unknown bike skin falls back');
+  assert.equal(prefs.bikeBabySeat, false);
+  const withSeat = parsePreferences({ bikeBabySeat: true }, zoom);
+  assert.equal(withSeat.bikeBabySeat, true);
 }
+
 
 {
   const store = memory();
@@ -116,9 +146,6 @@ const memory = () => {
 }
 
 {
-  // A live form can still say "medium" while the player has flipped assists —
-  // the change handler usually moves to custom, but save must not rewrite the
-  // snapshot back to the medium preset.
   const live = coercePreferences({
     difficulty: 'medium', answerMode: 'typing', line: true, arrow: false, minimap: false,
   }, zoom);
@@ -126,6 +153,14 @@ const memory = () => {
   assert.equal(live.answerMode, 'typing');
   assert.equal(live.line, true);
   assert.equal(live.arrow, false);
+}
+
+{
+  assert.equal(defaultPreferences(zoom).cityId, 'amsterdam');
+  assert.equal(parsePreferences({ cityId: 'utrecht' }, zoom).cityId, 'utrecht');
+  assert.equal(parsePreferences({ cityId: 'den-haag' }, zoom).cityId, 'den-haag');
+  assert.equal(parsePreferences({ cityId: 'paris' }, zoom).cityId, 'amsterdam');
+  assert.equal(parsePreferences({}, zoom).cityId, 'amsterdam');
 }
 
 console.log('canal preferences: checks passed');

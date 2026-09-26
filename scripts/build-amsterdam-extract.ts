@@ -2,7 +2,7 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { FeatureCategory, FeatureType, StreetFeature } from '../src/types.ts';
 import { pickNearestDistractors } from '../src/canalRecall/bridgeDistractors.ts';
-import { isBikeRoutingHighway } from '../src/canalRecall/routing/bikeAccess.ts';
+import { isBikeRoutingHighway, isBicycleRestricted } from '../src/canalRecall/routing/bikeAccess.ts';
 import { findMunicipality, hasAreaGeometry } from './lib/municipality.ts';
 
 type Position = [number, number];
@@ -26,11 +26,16 @@ if (center.length !== 2 || !center.every(Number.isFinite)) {
 }
 const curationFile = path.resolve(`scripts/${cityId}-curation.json`);
 const maximumPerCategory = 300;
-// Landmarks carries museums, monuments, places of worship and now the civic
-// venues, and it is the only category where the cap actually bites (795
-// available against 300 kept). The extra budget is roughly the size of the
-// civic classes, so adding them does not evict the existing tail.
-const maximumFor = (category: FeatureCategory) => (category === 'landmarks' ? 420 : maximumPerCategory);
+// Landmarks carries museums, monuments, places of worship and civic venues
+// (795 available); the extra budget keeps civic classes from evicting the
+// existing tail. Streets need their own headroom: a hard 300 + wiki/length
+// scoring kept Coen Tunnel and dropped Leidsestraat / Damrak — the names a
+// canal-belt or tram hop actually teaches.
+const maximumFor = (category: FeatureCategory) => (
+  category === 'landmarks' ? 420
+    : category === 'streets' ? 500
+      : maximumPerCategory
+);
 
 function pointInRing([lat, lon]: [number, number], ring: Position[]): boolean {
   let inside = false;
@@ -311,11 +316,20 @@ for (const item of source.features) {
     ? tags['bridge:name']
     : roadOrPlaceName).trim();
   if (tags.highway && isBikeRoutingHighway(tags) && paths.length) {
-    const routingFeature: StreetFeature & { bridge?: boolean } = {
+    const routingFeature: StreetFeature & {
+      bridge?: boolean;
+      bicycleRestricted?: boolean;
+      bicycle?: string;
+    } = {
       id: `routing_${routingRoadCandidates.length}`, name: roadOrPlaceName, type: majorHighways.has(tags.highway) ? 'avenue' : 'street',
       cityId, center: featureCenter, funFact: '', clues: [], distractors: [], difficulty: 'hard', highway: tags.highway, railway: tags.railway,
     };
     if (tags.bridge === 'yes') routingFeature.bridge = true;
+    // Real-world bike ban / dismount — still playable; teach later from this flag.
+    if (isBicycleRestricted(tags)) {
+      routingFeature.bicycleRestricted = true;
+      if (tags.bicycle) routingFeature.bicycle = tags.bicycle;
+    }
     routingRoadCandidates.push({
       category: 'streets', paths, score: 0,
       feature: routingFeature,
@@ -583,6 +597,11 @@ for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'land
       if (lines.length > 1) entry.paths = lines;
       if ((feature as { bridge?: boolean }).bridge) entry.bridge = true;
       if (feature.railway) entry.railway = feature.railway;
+      if ((feature as { bicycleRestricted?: boolean }).bicycleRestricted) {
+        entry.bicycleRestricted = true;
+        const bicycle = (feature as { bicycle?: string }).bicycle;
+        if (bicycle) entry.bicycle = bicycle;
+      }
       return entry;
     });
     await writeFile(path.join(outputDirectory, 'streets-routing.json'), JSON.stringify(routing));
