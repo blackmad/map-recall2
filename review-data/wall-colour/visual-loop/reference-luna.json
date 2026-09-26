@@ -1,0 +1,1105 @@
+{
+  "reviewer": "gpt-6-luna",
+  "entries": [
+    {
+      "index": 50,
+      "buildingId": "0363100012237236",
+      "observationId": "0363100012237236_e_07oi4ua",
+      "sourceSha256": "769c58df33953cac54e174af017fab3bda718cdf0a132d042f49b4d36913d9ff",
+      "targetHex": "#cbd0cc",
+      "material": "render-plaster",
+      "materialId": "unknown-neutral",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "smooth",
+        "scaleConfidence": 0.88,
+        "notes": "Mostly smooth rendered wall plane with slight surface grain; facade scale is clear but fine texture scale is not resolved."
+      },
+      "reason": "Cool daylight adds a slight cyan cast; treat this as a pale grey plaster/render target, not brick.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Broad pale upper façade wall field, excluding glazing, metal trim and the shop canopy."
+        }
+      ]
+    },
+    {
+      "index": 51,
+      "buildingId": "0363100012173889",
+      "observationId": "0363100012173889_e_1xqy1k1",
+      "sourceSha256": "374119376f39a1d75d8b9c6cd89136e704e0188ef0b34a67a4869e812de187be",
+      "targetHex": "#4e453d",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.88,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Dark warm-brown fired brick is plainly visible across the narrow frontage.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper front wall between window openings; trim and ground-floor sign excluded."
+        }
+      ]
+    },
+    {
+      "index": 52,
+      "buildingId": "0363100012174204",
+      "observationId": "0363100012174204_e_1r4mm2h",
+      "sourceSha256": "8fc212b8156a2987502234e4dfc291b4329d07981dc90e682d3db242932305e3",
+      "targetHex": "#533b39",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.9,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The exposed field is red-brown brick with regular courses.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper wall between windows; white lintels and deep window shadows excluded."
+        }
+      ]
+    },
+    {
+      "index": 53,
+      "buildingId": "0363100012173932",
+      "observationId": "0363100012173932_e_0ec1tw7",
+      "sourceSha256": "6a61d36d8bd4372603a1bc1a3eb3b656b3460eb4534ce544ac7dc11d38db3e6f",
+      "targetHex": "#51443a",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.72,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The façade is mostly dark fired brick with conspicuous pale rendered bands; target the brick field.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Dark brick fields flanking the pale central window surrounds; white render and glass excluded."
+        }
+      ]
+    },
+    {
+      "index": 54,
+      "buildingId": "0363100012167878",
+      "observationId": "0363100012167878_e_07hebf3",
+      "sourceSha256": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+      "targetHex": "#504432",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.88,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Dark brown brick dominates; pale trim and glazing are not part of the target.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper façade brick fields between the window bays."
+        }
+      ]
+    },
+    {
+      "index": 55,
+      "buildingId": "0363100012169813",
+      "observationId": "0363100012169813_e_1i9q96x",
+      "sourceSha256": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+      "targetHex": "#5c5148",
+      "material": "fired-clay-brick",
+      "materialId": "brown-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.86,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Cool capture light shifts the brick toward grey; the underlying visible wall reads muted brown, not blue-grey paint.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Exposed brick between the pale horizontal bands and window frames."
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "buildingId": "0363100012160170",
+      "observationId": "0363100012160170_e_0og2rd7",
+      "sourceSha256": "a4b4d7f65b424fa4a25d035077e310e23db74e985cbfdaebb08eef401c6cf573",
+      "targetHex": "#4b423e",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.9,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "A consistent dark brown brick field is visible.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Central upper brick wall planes between windows."
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "buildingId": "0363100012236332",
+      "observationId": "0363100012236332_e_0blaami",
+      "sourceSha256": "a3ec97dd0a84cfc1a3c9dbfc1a9aab7f4abb9a8a4a499d0e51fa585121dc5200",
+      "targetHex": "#aa977a",
+      "material": "fired-clay-brick",
+      "materialId": "buff-brick",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.7,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The main wall is pale buff/yellow brick despite dense ivy at the left edge.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Buff brick piers around the central windows; ivy, balcony rails and deep plant shadow excluded."
+        }
+      ]
+    },
+    {
+      "index": 58,
+      "buildingId": "0363100012157989",
+      "observationId": "0363100012157989_e_015txxo",
+      "sourceSha256": "70d891ad35ee4f33209a2a235616c1f06ee0fa1ed5b27eb8fc29d5f2b078126a",
+      "targetHex": "#494039",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.87,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Muted dark-brown brick covers the upper façade.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper wall field between window openings, away from the dark storefront."
+        }
+      ]
+    },
+    {
+      "index": 59,
+      "buildingId": "0363100012170196",
+      "observationId": "0363100012170196_e_1k62i7a",
+      "sourceSha256": "04f1092089650c377922fadc4ce1424a3463435c78032e061281be9b9e390b25",
+      "targetHex": "#9b8668",
+      "material": "fired-clay-brick",
+      "materialId": "buff-brick",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.74,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Warm sun brightens the buff-brown brick; this target represents the wall, not the overexposed highlights.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Lit upper brick wall between window openings; white trim and shopfront excluded."
+        }
+      ]
+    },
+    {
+      "index": 60,
+      "buildingId": "0363100012173930",
+      "observationId": "0363100012173930_e_1c8qzkz",
+      "sourceSha256": "4484f064eff95284779f1384cb48d22b4baa45b96a31381929aab08e11be4d98",
+      "targetHex": "#564d48",
+      "material": "fired-clay-brick",
+      "materialId": "brown-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.75,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Shadowed brown brick remains visible; roof and pale trim excluded.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Dark upper gable and wall field between windows."
+        }
+      ]
+    },
+    {
+      "index": 61,
+      "buildingId": "0363100012168552",
+      "observationId": "0363100012168552_e_02n3874",
+      "sourceSha256": "0babebef1dbde103a05ddd67c703f78e8cf52b754e959d9fad88f41dd1818377",
+      "targetHex": "#554e4b",
+      "material": "fired-clay-brick",
+      "materialId": "brown-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.86,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The building reads as charcoal-brown brick in the cool daylight.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Broad front wall fields between the rows of windows."
+        }
+      ]
+    },
+    {
+      "index": 62,
+      "buildingId": "0363100012170144",
+      "observationId": "0363100012170144_e_1n3e2zb",
+      "sourceSha256": "89b783ddf4edfd0441141029292be25d0b79b12656e35060a3a51588158d7fe2",
+      "targetHex": "#b49a74",
+      "material": "fired-clay-brick",
+      "materialId": "buff-brick",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.7,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The dominant wall is buff/yellow brick; the very bright roofline is clipped by sunlight.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Sunlit wall between windows on the upper floors, avoiding cornice and white trim."
+        }
+      ]
+    },
+    {
+      "index": 63,
+      "buildingId": "0363100012168642",
+      "observationId": "0363100012168642_e_1c4u1cb",
+      "sourceSha256": "f804e8586bafcb665f530f458b1454d3075f09f6626ffbbb5c683f3dc9ada4cf",
+      "targetHex": "#434c40",
+      "material": "fired-clay-brick",
+      "materialId": "grey-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.73,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The shaded masonry reads charcoal with a green cast; brick courses remain visible.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Dark wall fields between the pale window frames and sign band."
+        }
+      ]
+    },
+    {
+      "index": 64,
+      "buildingId": "0363100012157926",
+      "observationId": "0363100012157926_e_012eimg",
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "targetHex": "#5f554c",
+      "material": "fired-clay-brick",
+      "materialId": "brown-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.88,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Muted brown brick is visible over a large, unobstructed area.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper brick wall between window groups; cream trim excluded."
+        }
+      ]
+    },
+    {
+      "index": 65,
+      "buildingId": "0363100012164499",
+      "observationId": "0363100012164499_e_0krqk0t",
+      "sourceSha256": "520281fa8da3e02b09f3dd68fac03c03c4e3fc63c127f915acf0d763e3485b8a",
+      "targetHex": "#664d41",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.88,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The facade is warm red-brown brick; the source cluster is too cool/dark to represent the exposed wall.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Central upper brick field between the arched window surrounds."
+        }
+      ]
+    },
+    {
+      "index": 66,
+      "buildingId": "0363100012236141",
+      "observationId": "0363100012236141_e_041dz1t",
+      "sourceSha256": "face6caa50336664aad5f58ea966055a7e36923589b79310df356d7d9da565eb",
+      "targetHex": "#4d4843",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.85,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "A consistent dark, warm grey-brown brick field is visible.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper wall between windows, excluding white arch details and storefront."
+        }
+      ]
+    },
+    {
+      "index": 67,
+      "buildingId": "0363100012170198",
+      "observationId": "0363100012170198_e_1wjd1ln",
+      "sourceSha256": "d2efba4dadeddcd808f19cdd8570e3c1a1df08482cd5480f89eb1cbbb3203fb7",
+      "targetHex": "#ad8060",
+      "material": "fired-clay-brick",
+      "materialId": "buff-brick",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.78,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Sunlit buff-to-orange brick; choose the wall tone rather than the bright cream cap.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Exposed brick between upper window bays; white cornice and street-level shopfront excluded."
+        }
+      ]
+    },
+    {
+      "index": 68,
+      "buildingId": "0363100012174289",
+      "observationId": "0363100012174289_e_0cj0mg6",
+      "sourceSha256": "1ec8121b7324cea73458b1442a86d2e476a74886c87bc5490e998ccbc1c22e65",
+      "targetHex": "#826d68",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.8,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The muted red-brown brick is slightly pink under the source lighting.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper brick fields beside windows and balconies."
+        }
+      ]
+    },
+    {
+      "index": 69,
+      "buildingId": "0363100012173927",
+      "observationId": "0363100012173927_e_023fr62",
+      "sourceSha256": "9138a92901658023ace68f3c1d74bc43b84b48b88e92c5fe7947d169b2616d34",
+      "targetHex": "#4e443f",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.72,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Low-light source makes the brick nearly charcoal; visible courses support brick rather than smooth paint.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Dark brick wall between the white window frames; branches and roof tiles excluded."
+        }
+      ]
+    },
+    {
+      "index": 70,
+      "buildingId": "0363100012168649",
+      "observationId": "0363100012168649_e_00c6tmy",
+      "sourceSha256": "a3f1c5172ff1ae96227cd7659ffad871fa044b7cf3c41cdc20d8da0b0765cbe0",
+      "targetHex": "#9d9378",
+      "material": "fired-clay-brick",
+      "materialId": "buff-brick",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.84,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The wall is clearly light buff/yellow brick.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper buff brick wall between windows; pale trim and tree shadow excluded."
+        }
+      ]
+    },
+    {
+      "index": 71,
+      "buildingId": "0363100012169770",
+      "observationId": "0363100012169770_e_0k9436g",
+      "sourceSha256": "b96acbf197f4c91f2f071f5d27bc7627c8d755b72d07b6795d30ffa182536853",
+      "targetHex": "#716963",
+      "material": "fired-clay-brick",
+      "materialId": "grey-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.58,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The side elevation is low-contrast and distant; fine brick texture is only weakly visible, so hue and texture scale are approximate.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Broad grey-brown side-wall masonry, avoiding the adjacent red-brown frontage and shop sign."
+        }
+      ]
+    },
+    {
+      "index": 72,
+      "buildingId": "0363100012236381",
+      "observationId": "0363100012236381_e_0v97fd9",
+      "sourceSha256": "27f91a4953409ff6bed64cdf9e88157b13c26ce756a0dcf558775dedff60a2a7",
+      "targetHex": "#493f3a",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.88,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Dark brown brick dominates the large façade.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper wall plane between windows; branches and roofline excluded."
+        }
+      ]
+    },
+    {
+      "index": 73,
+      "buildingId": "0363100012159112",
+      "observationId": "0363100012159112_e_0xfdv8v",
+      "sourceSha256": "3c804a561288aa625e33b462780ee5a0b30a76daa218305df60c13240efb599c",
+      "targetHex": "#677377",
+      "material": "painted-brick",
+      "materialId": "grey-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.7,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The wall is cool grey-blue in the source, with masonry course pattern still visible beneath the finish.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Grey painted wall fields between windows and balconies; bright trim, glazing and car roof excluded."
+        }
+      ]
+    },
+    {
+      "index": 74,
+      "buildingId": "0363100012571959",
+      "observationId": "0363100012571959_e_0plh212",
+      "sourceSha256": "f297a34355f601a20402f2429834d4cece94b3800ee1e7589effd149d1931c2f",
+      "targetHex": "#4f423e",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.87,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The dark brown brick is consistent across the gabled frontage.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper brick wall between window openings."
+        }
+      ]
+    },
+    {
+      "index": 75,
+      "buildingId": "0363100012173864",
+      "observationId": "0363100012173864_e_13ehydk",
+      "sourceSha256": "3c2ced81de03a084e6c7155dc16f146cee6a51a233f17f06762f898157bec3a1",
+      "targetHex": "#a98b71",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.6,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Warm brick is visible, but tree cover and glare lower confidence.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Visible upper brick strips around the central tree; foliage, windows and strong sunlight excluded."
+        }
+      ]
+    },
+    {
+      "index": 76,
+      "buildingId": "0363100012169607",
+      "observationId": "0363100012169607_e_1p1xb85",
+      "sourceSha256": "80a0dd052b27182155a117fec0fb50f6c0d75bf6eece460542b207ab95662d95",
+      "targetHex": "#96826d",
+      "material": "fired-clay-brick",
+      "materialId": "brown-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.83,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The wall reads medium warm brown; ornamental pale stone is separate.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Main upper brick façade between the white window surrounds."
+        }
+      ]
+    },
+    {
+      "index": 77,
+      "buildingId": "0363100012173928",
+      "observationId": "0363100012173928_e_1o9nhk8",
+      "sourceSha256": "a688f453e72007c16b1d4b811b456c2fc063ca99023a22a19e0275c211104295",
+      "targetHex": "#51453d",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.68,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Shadowed brick appears dark warm brown, not neutral grey as the raw cluster suggests.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Upper wall between white window frames; deep street-level shade excluded."
+        }
+      ]
+    },
+    {
+      "index": 78,
+      "buildingId": "0363100012168644",
+      "observationId": "0363100012168644_e_0kxn3w7",
+      "sourceSha256": "771d6bb33004042e398858d48cf811406fcb4cbe1fe29ae68f42eac37be13923",
+      "targetHex": "#c4c3b6",
+      "material": "render-plaster",
+      "materialId": "unknown-neutral",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "smooth",
+        "scaleConfidence": 0.83,
+        "notes": "Mostly smooth rendered wall plane with slight surface grain; facade scale is clear but fine texture scale is not resolved."
+      },
+      "reason": "Most of the façade field is smooth pale grey-green render/plaster; the brick courses are accent bands.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Pale wall panels between brick bands and window surrounds; red-brown bands excluded."
+        }
+      ]
+    },
+    {
+      "index": 79,
+      "buildingId": "0363100012152724",
+      "observationId": "0363100012152724_e_1cjcooe",
+      "sourceSha256": "8f471468285f05c4975596a28e60ba0556abc1bcb15dcc18d455de5618df9a8c",
+      "targetHex": "#413a2a",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.86,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Deep brown fired brick is visible across the broad building face.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper brick plane between windows; roof and dark ground-floor shop excluded."
+        }
+      ]
+    },
+    {
+      "index": 80,
+      "buildingId": "0363100012148915",
+      "observationId": "0363100012148915_e_1w53m9k",
+      "sourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+      "targetHex": "#4f4744",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.87,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Dark brown-grey brick is consistent across the visible frontage.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper façade fields between windows and balconies."
+        }
+      ]
+    },
+    {
+      "index": 81,
+      "buildingId": "0363100012168950",
+      "observationId": "0363100012168950_e_1b8u2ic",
+      "sourceSha256": "3eab160877b6733ce8cae206d17dc931d3226add33d99263f0c9754d8f218375",
+      "targetHex": "#453c38",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.86,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Dark red-brown brick dominates the upper façade.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper wall fields between the windows; storefront excluded."
+        }
+      ]
+    },
+    {
+      "index": 82,
+      "buildingId": "0363100012174100",
+      "observationId": "0363100012174100_e_023a1el",
+      "sourceSha256": "bfc0e650f940a3c5f7ff7f6f282ff6befdf10b992b7a0b29678367788c0bd49b",
+      "targetHex": "#dfb07c",
+      "material": "fired-clay-brick",
+      "materialId": "buff-brick",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.58,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The source is strongly overexposed, but the wall reads warm buff/orange rather than near-white.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Exposed brick wall between windows; overbright cornice, tree branches and window trim excluded."
+        }
+      ]
+    },
+    {
+      "index": 83,
+      "buildingId": "0363100012168639",
+      "observationId": "0363100012168639_e_0jih76e",
+      "sourceSha256": "d50b534484a94ef2d66da304b02f2ebea5244886491f8895771b87de3a89f3ba",
+      "targetHex": "#4d483b",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.62,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The façade is dark brown brick; shadow and foliage contaminate some pixels.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Dark wall field between window openings; tree branches and deep shadow treated cautiously."
+        }
+      ]
+    },
+    {
+      "index": 84,
+      "buildingId": "0363100012164186",
+      "observationId": "0363100012164186_e_091x9bq",
+      "sourceSha256": "a2e3da90156cda9fa3cf66ab4b2d12140b8b3248de39eb4a2e6be6370c289be4",
+      "targetHex": "#4f463d",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.88,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "A stable dark brown brick tone is visible.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper wall between windows, excluding pale lintels and gable trim."
+        }
+      ]
+    },
+    {
+      "index": 85,
+      "buildingId": "0363100012080836",
+      "observationId": "0363100012080836_e_1hhuir5",
+      "sourceSha256": "e9334db29c6374f4153462c49daf3805f2db8eb5bda928a00383b8caf2179e64",
+      "targetHex": "#4a4642",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.87,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The façade is dark warm grey-brown brick.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper brick fields between windows; roof and deep lower shadow excluded."
+        }
+      ]
+    },
+    {
+      "index": 86,
+      "buildingId": "0363100012174351",
+      "observationId": "0363100012174351_e_1hhumoz",
+      "sourceSha256": "ec475100577e52fe5641d201f2c4990c2f239c09651c8f5f0da159ca341b46bd",
+      "targetHex": "#5b5048",
+      "material": "fired-clay-brick",
+      "materialId": "brown-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.65,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Strong glare washes the upper edge; shaded wall still reads dark warm brown.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Brick field below the bright glare and between the upper windows."
+        }
+      ]
+    },
+    {
+      "index": 87,
+      "buildingId": "0363100012173913",
+      "observationId": "0363100012173913_e_1anh9vq",
+      "sourceSha256": "4e24f59fb04c821f0242f4c23abe5a232660d5b4333636b766b56379a7cbdb7c",
+      "targetHex": "#584f50",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.82,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The façade is muted red-brown brick under overcast light.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper brick field around the window openings, away from the ground floor."
+        }
+      ]
+    },
+    {
+      "index": 88,
+      "buildingId": "0363100012167875",
+      "observationId": "0363100012167875_e_03ydc4q",
+      "sourceSha256": "19b64774c4e98bd0a28370d10a877ae6c696c4b3e41c92616d5e544db413f704",
+      "targetHex": "#49483c",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.72,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The wall reads dark olive-brown brick; pale masonry accents are not the base colour.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Dark brick field between pale stone lintels and windows; street-level glazing excluded."
+        }
+      ]
+    },
+    {
+      "index": 89,
+      "buildingId": "0363100012166335",
+      "observationId": "0363100012166335_e_0sr4r03",
+      "sourceSha256": "4def1337d462b838f2a733f59bfd6d4c375bf18b31480449894f3fc50473471f",
+      "targetHex": "#5c514c",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.86,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Muted red-brown brick is visible across the tall frontage.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper wall between the rows of windows."
+        }
+      ]
+    },
+    {
+      "index": 90,
+      "buildingId": "0363100012125896",
+      "observationId": "0363100012125896_e_0x3o5y0",
+      "sourceSha256": "3d62d50d25e6e484ff3f9767177db07067ec043c8b4af035438cf2d54ac722b3",
+      "targetHex": "#4a413c",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.86,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The source shows dark brown brick with regular courses.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper brick field between windows, away from street-level signs."
+        }
+      ]
+    },
+    {
+      "index": 91,
+      "buildingId": "0363100012174350",
+      "observationId": "0363100012174350_e_0v2t5yf",
+      "sourceSha256": "3427cb784a57d1b746a775d78b80acb1ad410b701b427c662ada6ee4b4979dcb",
+      "targetHex": "#ab8469",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.58,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The photo is very bright, but the wall is warm orange-red brick rather than pale cream.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Exposed upper brick between white-framed windows; blown highlights and car excluded."
+        }
+      ]
+    },
+    {
+      "index": 92,
+      "buildingId": "0363100012174821",
+      "observationId": "0363100012174821_e_19molap",
+      "sourceSha256": "a465a8c056040e5f1657f6446dd6dfa493e02a74d68ea6b491a693a04df3a293",
+      "targetHex": "#c8a47a",
+      "material": "fired-clay-brick",
+      "materialId": "buff-brick",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.72,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The surface is light buff/yellow brick; direct sun raises apparent brightness.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Sunlit buff brick between the windows, avoiding branches and pale stone trim."
+        }
+      ]
+    },
+    {
+      "index": 93,
+      "buildingId": "0363100012572098",
+      "observationId": "0363100012572098_e_1t4wcbf",
+      "sourceSha256": "0ffe63aa1333aabb17f4f6ba3219ff4facd68e26972e1b91c3f5c21fe3d0e331",
+      "targetHex": "#463d37",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.83,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "A dark red-brown brick target is representative of the visible upper wall.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper red-brown brick field between windows; roof and deep storefront shade excluded."
+        }
+      ]
+    },
+    {
+      "index": 94,
+      "buildingId": "0363100012156171",
+      "observationId": "0363100012156171_e_191dpbo",
+      "sourceSha256": "ee90d131a505678290603f51227c801b67f6182f3262154d51560c875f8bebb3",
+      "targetHex": "#54433d",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.86,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "The façade has dark red-brown brick; balconies and window glass are excluded.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper wall between the balcony openings."
+        }
+      ]
+    },
+    {
+      "index": 95,
+      "buildingId": "0363100012236194",
+      "observationId": "0363100012236194_e_00dx8kl",
+      "sourceSha256": "8446b3360954c8545a5f8c9aa3a78ea9cbf2bd5da2b47b31e410411d7196d6f0",
+      "targetHex": "#504741",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.86,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Muted dark brown brick is visible over multiple floors.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Central upper brick field between windows."
+        }
+      ]
+    },
+    {
+      "index": 96,
+      "buildingId": "0363100012170202",
+      "observationId": "0363100012170202_e_0xpak8i",
+      "sourceSha256": "c917c60d5e52d4f84a7261d97232acd9dc44e2f4c5f21b657622f17acca7feac",
+      "targetHex": "#64584a",
+      "material": "fired-clay-brick",
+      "materialId": "brown-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.84,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Warm mid-brown brick is representative; strong highlights and shopfront excluded.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper façade brick between white window trim."
+        }
+      ]
+    },
+    {
+      "index": 97,
+      "buildingId": "0363100012174531",
+      "observationId": "0363100012174531_e_0hh8b2x",
+      "sourceSha256": "9a8cceca03269103081658f86b609189159517607ef658690d081fb372b9842f",
+      "targetHex": "#d0916e",
+      "material": "fired-clay-brick",
+      "materialId": "red-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.52,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Strong overexposure lightens the red-orange brick; target is an approximate wall tone.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Upper brick patches on either side of the large windows; white arches, car and highlights excluded."
+        }
+      ]
+    },
+    {
+      "index": 98,
+      "buildingId": "0363100012174005",
+      "observationId": "0363100012174005_e_05cqfsn",
+      "sourceSha256": "de8a826c392abc7116afdb69cbdb4bea4d79530a6fb03703f95bc0239f0c2632",
+      "targetHex": "#504739",
+      "material": "fired-clay-brick",
+      "materialId": "dark-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": 0.86,
+        "notes": "Regular visible brick courses support a brick-pattern reference; scale is judged from facade-level imagery."
+      },
+      "reason": "Dark brown brick is clearly visible across the frontage.",
+      "confidence": "high",
+      "regions": [
+        {
+          "description": "Upper brick field between windows; pale lintels excluded."
+        }
+      ]
+    },
+    {
+      "index": 99,
+      "buildingId": "0363100012073508",
+      "observationId": "0363100012073508_e_0vmx9l7",
+      "sourceSha256": "8581ab026af56453a493a8181cacd306f71dc1c5cdd17bae3f921e4ec787a61d",
+      "targetHex": "#655d54",
+      "material": "mixed",
+      "materialId": "unknown-neutral",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "unknown",
+        "scaleConfidence": 0.38,
+        "notes": "The source crop mixes surface types or does not support a confident texture-scale claim."
+      },
+      "reason": "This broad crop mixes brick, balcony structure and modern infill; target applies only to the visible brown-grey brick panel.",
+      "confidence": "medium",
+      "regions": [
+        {
+          "description": "Right-hand brick wall field only; metal balcony frame, glazing and lighter infill on the left excluded."
+        }
+      ]
+    }
+  ]
+}
