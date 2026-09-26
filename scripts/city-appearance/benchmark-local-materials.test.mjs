@@ -32,7 +32,8 @@ try {
     if(req.url==='/api/tags'){res.end(JSON.stringify({models:[{name:'qwen3.5:9b',digest:'c'.repeat(64)}]}));return;}
     if(req.url==='/api/chat'){
       chats++;let body='';for await(const chunk of req)body+=chunk;request=JSON.parse(body);
-      res.end(JSON.stringify({message:{content:JSON.stringify({materialFamily:'brick',colourFamily:'brown',visibility:'clear',abstain:false})},
+      res.end(JSON.stringify({message:{content:JSON.stringify({materialFamily:'brick',colourFamily:'brown',visibility:'clear',abstain:false}),
+        ...(request.think?{thinking:'Checked whether a representative wall is visible.'}:{})},
         total_duration:120000000,load_duration:20000000,prompt_eval_duration:30000000,eval_duration:70000000,prompt_eval_count:90,eval_count:18,done_reason:'stop'}));return;
     }
     res.statusCode=404;res.end('{}');
@@ -50,6 +51,18 @@ try {
   await runBenchmark([...args,'--rerun']);
   assert.equal(chats,2);const rerun=JSON.parse(await fs.readFile(path.join(root,'out','receipts',`${first.receipts[0].key}.json`)));
   assert.equal(rerun.attempt,2);assert.equal(rerun.previousAttempts[0].rawOutput,receipt.rawOutput);
+  const baselineDry=await runBenchmark([...args,'--dry-run','--image-size=512']);
+  assert.equal(baselineDry.experimentHash,'1e9b3196ff736ce7474d16717f6963ad77ce98168802858da93227c40478f278',
+    'the original base profile must keep its exact experiment hash');
+  const variantArgs=[...args.filter(arg=>!arg.startsWith('--out=')),`--out=${path.join(root,'variant')}`,'--prompt-profile=conservative','--think=true','--max-output-tokens=512'];
+  const variant=await runBenchmark(variantArgs);
+  assert.equal(chats,3);assert.equal(request.think,true);assert.equal(request.options.num_ctx,4096);
+  assert.equal(request.options.num_predict,512);assert.match(request.messages[0].content,/representative field/);
+  assert.notEqual(variant.experimentHash,first.experimentHash);
+  const variantReceipt=JSON.parse(await fs.readFile(path.join(root,'variant','receipts',`${variant.receipts[0].key}.json`)));
+  assert.equal(variantReceipt.rawReasoning,'Checked whether a representative wall is visible.');
+  assert.equal(variantReceipt.rawOutput,variantReceipt.response.message.content);
+  await assert.rejects(runBenchmark([...variantArgs.filter(arg=>!arg.startsWith('--out=')),`--out=${path.join(root,'out')}`]),/different benchmark experiment/);
   await fs.writeFile(path.join(images,imageName),'changed');
   await assert.rejects(runBenchmark(args),/Source image hash changed/);
   console.log('Local material benchmark: bindings, local request, timing, response and resume passed');
