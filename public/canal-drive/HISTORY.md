@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## 2026-09-26 — model-reviewed local demo
+
+All 72 unique signage frontages (76 sample entries) have model visual reviews:
+73 sign regions, with 17 sampled sign backgrounds, explicit uncertain crops and
+reviewer provenance. The responsive signage desk loads these without owner input.
+These new labels are review evidence; their game placement is still pending.
+Sixteen visually reviewed wall colours now complete the measurement → promotion →
+publication → browser loop, labelled as model review rather than human judgement.
+
+The local district release is
+`6ee345158a1091e6c9c56dd8ac095440023492379fc534fb1bfbd7d475b228c4`:
+6,036 roof-bearing buildings, 19,973 source surfaces, 26 roof tiles and 626
+withheld slanted buildings under the NAP-corrected v3 policy. Coverage metadata
+counts measured and contextual colours separately. Evidence/release files remain
+local; source commits do not point remote users at unpublished release assets.
+An eave-cut experiment was withheld after visual review found missing gable-end
+walls, incomplete roof coverage and unsafe fallback during tile loading.
+
+Render readiness now samples MapLibre's render event: a separate animation-frame
+poll could repeatedly see a dirty map immediately before a fully ready paint.
+The loaded/painted/budget gates remain intact. Waiting for the completed paint
+also restores feature picking across all fourteen mobile views; the existing
+extrusion-visibility assertions remain unchanged.
+
 ## 2026-09-26 — source-bound appearance and autonomous review
 
 The owner explicitly removed routine human-in-the-loop review. Visual model reviews retain

@@ -21,6 +21,10 @@ assert.equal(selectCompatibleSourceRoof({...fixture,groundNAP:null} as any),null
 
 const manifest=JSON.parse(await fs.readFile('public/data/city-expansion/current.json','utf8')),realBuildings=[];
 assert.equal(manifest.studyRoofs.selectionPolicy,SOURCE_ROOF_SELECTION_POLICY,'study-roof policy version matches the compiler that generated the release');
+if(manifest.sourceHashes.block==='e7a51599312c472206b3f4e202f9196166aae1584b579df1ba26f43a46cbbfa7'){
+  assert.deepEqual({buildings:manifest.studyRoofs.buildings,surfaces:manifest.studyRoofs.surfaces,withheld:manifest.studyRoofs.withheldSlantedBuildings,tiles:manifest.studyRoofs.tiles.length},
+    {buildings:6036,surfaces:19973,withheld:626,tiles:26},'Da Costa–Jordaan v3 datum regeneration stays pinned to its source block');
+}
 for(const tile of manifest.tiles){const payload=JSON.parse(gunzipSync(await fs.readFile(`public${tile.url}`)).toString());for(const owner of payload.owners)realBuildings.push(owner.geometry.building);}
 assert.equal(realBuildings.length,manifest.buildings);assert.equal(new Set(realBuildings.map(building=>building.id)).size,manifest.buildings,'published owner tiles contain each source building once');
 let buildings=0,surfaces=0;
