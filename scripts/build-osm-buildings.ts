@@ -50,6 +50,17 @@ const canonicalOsmId = (id?: string | number): string => {
 const isBuilding = (tags: Record<string, string | undefined>): boolean =>
   Boolean(tags.building || tags['building:part']);
 
+/**
+ * OSM semantic tags are source labels, not defaults.  In particular, do not
+ * write empty placeholders: downstream stages use property presence to tell a
+ * mapper-supplied class from an absent one.
+ */
+const semanticTags = (tags: Record<string, string | undefined>): Record<string, string> =>
+  Object.fromEntries(
+    (['building', 'amenity', 'tourism', 'heritage'] as const)
+      .flatMap(key => typeof tags[key] === 'string' && tags[key] !== '' ? [[key, tags[key]!]] : []),
+  );
+
 function toOutputFeature(feature: SourceFeature): object | null {
   if (!feature.geometry || !['Polygon', 'MultiPolygon'].includes(feature.geometry.type)) return null;
   const tags = feature.properties || {};
@@ -69,8 +80,8 @@ function toOutputFeature(feature: SourceFeature): object | null {
       minHeight,
       roofShape: tags['roof:shape'] || '',
       roofHeight: numeric(tags['roof:height']) ?? 0,
-      building: tags.building || '',
       buildingPart: tags['building:part'] || '',
+      ...semanticTags(tags),
     },
     geometry: feature.geometry,
   };

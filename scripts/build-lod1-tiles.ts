@@ -81,6 +81,12 @@ const renderProperties = (properties: Record<string, unknown>): Record<string, u
   for (const key of ['colour', 'roofColour', 'roofShape'] as const) {
     if (properties[key] !== null && properties[key] !== undefined && properties[key] !== '') rendered[key] = properties[key];
   }
+  // Keep OSM's semantic labels for a later source-backed landmark renderer.
+  // They are deliberately not style instructions here: tag absence stays
+  // absent, and a church or museum tag does not establish appearance data.
+  for (const key of ['building', 'amenity', 'tourism', 'heritage'] as const) {
+    if (properties[key] !== null && properties[key] !== undefined && properties[key] !== '') rendered[key] = properties[key];
+  }
   // Procedural pyramidal roofs need the cone thickness on the wire, or walls
   // extrude to the apex and the mesh has nothing to sit on.
   const roofHeight = properties.roofHeight;
