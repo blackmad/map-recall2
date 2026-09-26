@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+const data=JSON.parse(await fs.readFile('public/data/facade-repair-preview/cases.json','utf8'));
+const c=data.cases.find((item:any)=>item.caseId==='case-24'),input=c.shapeFeatures.ground;
+const features=['ground:door_left','ground:window_display','ground:door_right'].map(id=>input.features.find((f:any)=>f.id===id));
+assert.ok(features.every(Boolean));
+const tops=features.map(f=>f.bounds[1]);
+assert.ok(Math.max(...tops)-Math.min(...tops)<=1,'visible common beam aligns all three opening heads');
+const doors=features.filter(f=>f.kind==='door');
+assert.ok(doors.every(f=>f.paired===false),'single door leaves must not acquire a central paired-door divider');
+const bars=doors.map(f=>f.bounds[1]+f.transom*(f.bounds[3]-f.bounds[1]));
+assert.ok(Math.abs(bars[0]-bars[1])<=1,'aligned door transoms survive opening-height correction');
+assert.equal(doors[0].visibility.occluder,'parked-red-car','hidden threshold remains explicit inference');
+for(const feature of features)assert.ok(c.shapeStudy.ground.patches.some((p:any)=>p.featureId.endsWith(feature.id)),'corrected opening must reach compiled geometry');
+console.log('Case 24: common opening heads, aligned transoms, single door leaves and occluded threshold provenance passed.');

@@ -1,0 +1,2631 @@
+{
+  "version": 1,
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "role": "user-reviewed-development",
+  "status": "notes-frozen; pixel-reference-annotations-pending",
+  "reviewedCases": 28,
+  "bindings": {
+    "notes": {
+      "path": ".cache/city-appearance/review-notes/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d.json",
+      "sha256": "e92aedf0191fb1912a5c34129e335d8bc0146a38b71401d4c036892cec59bad1"
+    },
+    "packet": {
+      "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/comparison-packet.json",
+      "sha256": "571c3cbf374a998b46778e1995de7ad6cfef47e5828f4b15d09d98c1539c74c6"
+    },
+    "release": {
+      "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/manifest.json",
+      "sha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9"
+    }
+  },
+  "cases": [
+    {
+      "caseId": "case-01",
+      "role": "development-from-user-review",
+      "reviewStatus": "needs-work",
+      "userNote": {
+        "caseId": "case-01",
+        "text": "render is missing door, missing small awkning, missing shape of window, missing first floor being white ",
+        "status": "needs-work",
+        "issues": [
+          "doors",
+          "windows",
+          "awnings",
+          "materials"
+        ],
+        "revision": 7,
+        "updatedAt": "2026-09-12T17:46:17.821Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "bd1cd068c60a4760c6075d92eaf95ceebdddba349ff5dc4a1952f61ea7f69300",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5.jpg",
+          "sha256": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+          "captureDate": "2025-01-20T10:11:20Z",
+          "width": 163,
+          "height": 723
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/d19bec5045a7dca3205d18a5c372de45de736980bda1059415566abdccbf50e2.jpg",
+          "sha256": "d19bec5045a7dca3205d18a5c372de45de736980bda1059415566abdccbf50e2",
+          "captureDate": "2022-04-25T10:21:38.037840Z",
+          "width": 399,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-01.png",
+        "sha256": "00be4c931ca493eb3ff1fba0d823f77e82d5d6269150d2214424ffda293346b1"
+      },
+      "binding": {
+        "buildingId": "0363100012167878",
+        "observationId": "0363100012167878_e_07hebf3",
+        "geometryRevision": "74abfa6aa50b578d07a286fb3495c5d88f47920ea05ee13e3666c95355c85083",
+        "evidenceKey": "3c58743aa0866a89d99c1a17d9e692b163a28e1c46bc6fed7b70516dc792819d",
+        "frontage": [
+          [
+            406.6607534754148,
+            -406.5282504389179
+          ],
+          [
+            409.90875333819713,
+            -407.7992504584254
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33656/21536",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33656/21536.json.gz",
+          "sha256": "20f6d02bb1368d11ca7f878978d84b3afe75362694439dc8f0bed8332235f38f",
+          "contentSha256": "1dc9c658c173d2f54d81b7432c1ad35257c2c616d4e994f9d7d73365b085f2e2"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "awning-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "awning",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "awning-size",
+          "kind": "source-proportion",
+          "expected": {
+            "feature": "awning",
+            "comparison": "match-source"
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "window-form",
+          "kind": "source-shape",
+          "expected": {
+            "feature": "window",
+            "comparison": "match-source",
+            "curvatureExplicit": false
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "render is missing door, missing small awkning, missing shape of window, missing first floor being white "
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 3,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": [
+          "0363100012167878:1:0363100012167878_e_07hebf3:shop",
+          "0363100012167878:1:0363100012167878_e_07hebf3:window:1:0",
+          "0363100012167878:1:0363100012167878_e_07hebf3:window:2:0",
+          "0363100012167878:1:0363100012167878_e_07hebf3:window:3:0"
+        ]
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-02",
+      "role": "development-from-user-review",
+      "reviewStatus": "needs-work",
+      "userNote": {
+        "caseId": "case-02",
+        "text": "missing white floor, green awning, white door",
+        "status": "needs-work",
+        "issues": [
+          "doors",
+          "awnings",
+          "materials"
+        ],
+        "revision": 5,
+        "updatedAt": "2026-09-12T17:46:20.351Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "85aaeb2c97174731c508cd345f9dfe7168d0ef78a9b8932d5ef19fa71efdafed",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/10d215ba9fca35d846f8b8af002852d807dc818ba868bad518e9921ec6a99d87.jpg",
+          "sha256": "10d215ba9fca35d846f8b8af002852d807dc818ba868bad518e9921ec6a99d87",
+          "captureDate": "2023-01-10T10:53:09.351170Z",
+          "width": 379,
+          "height": 797
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/15feb3db2655f683552b3b34f3b0c0d2520470197e5a4555438eeaa61999f0af.jpg",
+          "sha256": "15feb3db2655f683552b3b34f3b0c0d2520470197e5a4555438eeaa61999f0af",
+          "captureDate": "2025-07-03T08:52:21Z",
+          "width": 926,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-02.png",
+        "sha256": "ec2e50d5a92cd2ec433833ae6f2a8d0015de6e03b482e3867acca73e11646af4"
+      },
+      "binding": {
+        "buildingId": "0363100012153066",
+        "observationId": "0363100012153066_e_1djhs5u",
+        "geometryRevision": "c53074247566bbb355e1e1c015df03f3f14420d153753da149572bc619f4e247",
+        "evidenceKey": "9064959f068c840f72df27ad3270cae3141537b7e864080b2df3d610fc90ac44",
+        "frontage": [
+          [
+            26.141769629874034,
+            -260.24824799608905
+          ],
+          [
+            33.72176930581918,
+            -263.0882480451837
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21537.json.gz",
+          "sha256": "6b4b9a17f328cbe9494fcdc2276b5684556f19eae56e44e1d7be673d0cb3baa8",
+          "contentSha256": "31781a13ddd020338630a16889dcf2122f04f57c6e712d2881dd0d89d9181dcd"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "awning-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "awning",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "awning-colour",
+          "kind": "source-appearance",
+          "expected": {
+            "feature": "awning",
+            "colourName": "green"
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing white floor, green awning, white door"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 3,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": [
+          "0363100012153066:1:0363100012153066_e_0fejqhr:shop",
+          "0363100012153066:1:0363100012153066_e_0fejqhr:window:1:0",
+          "0363100012153066:1:0363100012153066_e_0fejqhr:window:2:0",
+          "0363100012153066:1:0363100012153066_e_0fejqhr:window:3:0"
+        ]
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-03",
+      "role": "development-from-user-review",
+      "reviewStatus": "needs-work",
+      "userNote": {
+        "caseId": "case-03",
+        "text": "missing black awning",
+        "status": "needs-work",
+        "issues": [
+          "awnings"
+        ],
+        "revision": 3,
+        "updatedAt": "2026-09-12T17:46:30.026Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "c40d628dc78468c948b7f543624e9573bb0aab7a58cea8b7400867767ab28131",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/0d9ef2fc124a0a2f403df39ef1801e091139543cb38925d4dba985ab90d56b82.jpg",
+          "sha256": "0d9ef2fc124a0a2f403df39ef1801e091139543cb38925d4dba985ab90d56b82",
+          "captureDate": "2024-12-16T09:28:07Z",
+          "width": 188,
+          "height": 944
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758.jpg",
+          "sha256": "a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758",
+          "captureDate": "2025-07-03T10:39:46Z",
+          "width": 460,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-03.png",
+        "sha256": "b0c695f272d265f6c9cad9d4acade5c02af4bc4c1bbfd41007079d8a187dc2de"
+      },
+      "binding": {
+        "buildingId": "0363100012168954",
+        "observationId": "0363100012168954_e_1i374do",
+        "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+        "evidenceKey": "c1ef8567f3e3aca18afc1335a763ba337a75a6aaa92d662b04c9bff9ce47584d",
+        "frontage": [
+          [
+            511.4867371379805,
+            -23.451250382349826
+          ],
+          [
+            515.0417370017967,
+            -25.337250405165832
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33656/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33656/21537.json.gz",
+          "sha256": "08b3d1b32197147fcb794fc4ca7cba0bc25a83f15db611e503f5d89344f4f1bc",
+          "contentSha256": "65e370525d75bb7bd1912556350e590ee30aaaa5d7cb726912465526428869f5"
+        }
+      },
+      "assertions": [
+        {
+          "id": "awning-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "awning",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "awning-colour",
+          "kind": "source-appearance",
+          "expected": {
+            "feature": "awning",
+            "colourName": "black"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-04",
+      "role": "development-from-user-review",
+      "reviewStatus": "needs-work",
+      "userNote": {
+        "caseId": "case-04",
+        "text": "missing door, curved shape of windows",
+        "status": "needs-work",
+        "issues": [
+          "doors",
+          "windows"
+        ],
+        "revision": 3,
+        "updatedAt": "2026-09-12T17:46:42.651Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "cd940502c103a327ea630b6d9830870da7241367fb89c50c807439afc024b722",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/4def1337d462b838f2a733f59bfd6d4c375bf18b31480449894f3fc50473471f.jpg",
+          "sha256": "4def1337d462b838f2a733f59bfd6d4c375bf18b31480449894f3fc50473471f",
+          "captureDate": "2023-01-10T10:50:10.042960Z",
+          "width": 270,
+          "height": 934
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/b71b27fbdf7bdb257b04802748284608c89972418cae83a99d7d568c147368c0.jpg",
+          "sha256": "b71b27fbdf7bdb257b04802748284608c89972418cae83a99d7d568c147368c0",
+          "captureDate": "2022-04-29T09:13:24.563450Z",
+          "width": 660,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-04.png",
+        "sha256": "6fa41e3582f7acff908640a45d754c775f94f6a9b4fc62f16c5b94ae3c76ff35"
+      },
+      "binding": {
+        "buildingId": "0363100012166335",
+        "observationId": "0363100012166335_e_0sr4r03",
+        "geometryRevision": "5de763ec27f1b75ccec4c3b4517560ab3d694b09eb0b20205276f7a09e703c8a",
+        "evidenceKey": "5f2ef0db131f4da50741c1a3a49980531a6be0b352ffba04ff39e6f715f97bee",
+        "frontage": [
+          [
+            -2.3622341576847248,
+            -71.45124750898685
+          ],
+          [
+            -0.7222344004694605,
+            -65.92124751105439
+          ]
+        ],
+        "surfaceIndices": [
+          0
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21537.json.gz",
+          "sha256": "6b4b9a17f328cbe9494fcdc2276b5684556f19eae56e44e1d7be673d0cb3baa8",
+          "contentSha256": "31781a13ddd020338630a16889dcf2122f04f57c6e712d2881dd0d89d9181dcd"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "window-form",
+          "kind": "source-shape",
+          "expected": {
+            "feature": "window",
+            "comparison": "match-source",
+            "curvatureExplicit": true
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-05",
+      "role": "development-from-user-review",
+      "reviewStatus": "needs-work",
+      "userNote": {
+        "caseId": "case-05",
+        "text": "missing door",
+        "status": "needs-work",
+        "issues": [
+          "doors"
+        ],
+        "revision": 3,
+        "updatedAt": "2026-09-12T17:46:54.598Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "6c3ba548fb70ed9e0630a6aa39b154c0425a0bbe89ea1d67168ad23fc6ee8715",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4.jpg",
+          "sha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+          "captureDate": "2023-02-27T10:59:42.189530Z",
+          "width": 477,
+          "height": 903
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/9cf6eb7e4114fcb745b4b8bc5c2f08b19a5704f48b5e22dd3c5927daaf18ddcf.jpg",
+          "sha256": "9cf6eb7e4114fcb745b4b8bc5c2f08b19a5704f48b5e22dd3c5927daaf18ddcf",
+          "captureDate": "2025-07-03T09:49:09Z",
+          "width": 1166,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-05.png",
+        "sha256": "470c91475dd9880f6d768c4695cf2e36faaced23b5d9fef6db812670841b3e8d"
+      },
+      "binding": {
+        "buildingId": "0363100012168980",
+        "observationId": "0363100012168980_e_1o2cn0o",
+        "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+        "evidenceKey": "1d432c3afcbb0913a1f348aee165be1094cfabad196f649b62a0816d4a6a4a9e",
+        "frontage": [
+          [
+            507.0857420656248,
+            -190.54225064936327
+          ],
+          [
+            497.69074245437514,
+            -186.58725058677373
+          ]
+        ],
+        "surfaceIndices": [
+          7
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33656/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33656/21537.json.gz",
+          "sha256": "08b3d1b32197147fcb794fc4ca7cba0bc25a83f15db611e503f5d89344f4f1bc",
+          "contentSha256": "65e370525d75bb7bd1912556350e590ee30aaaa5d7cb726912465526428869f5"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-06",
+      "role": "development-from-user-review",
+      "reviewStatus": "needs-work",
+      "userNote": {
+        "caseId": "case-06",
+        "text": "missing color contrast red first floor, missing door, window style is wrong",
+        "status": "needs-work",
+        "issues": [
+          "doors",
+          "windows",
+          "materials"
+        ],
+        "revision": 4,
+        "updatedAt": "2026-09-12T17:47:13.580Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "9f4a0a2481c14e0391e9beb3bb9d6f9468d80b8169ef80bd63aa5f79891ad531",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/999b7440fb549ec82a7685cb59a33d5d93c4cd119e1551a79e6c3f888794c4ca.jpg",
+          "sha256": "999b7440fb549ec82a7685cb59a33d5d93c4cd119e1551a79e6c3f888794c4ca",
+          "captureDate": "2024-11-29T09:34:09Z",
+          "width": 347,
+          "height": 716
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/666ae072fd3bd414c7f375308e6b2d5ad8fb9a0610918ae8ac0d2da70b28c9db.jpg",
+          "sha256": "666ae072fd3bd414c7f375308e6b2d5ad8fb9a0610918ae8ac0d2da70b28c9db",
+          "captureDate": "2025-07-31T09:40:33Z",
+          "width": 848,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-06.png",
+        "sha256": "6ecce99b9492d4eb89f036542f68fe569b730ea7fc0cc633096ed1aea6b48063"
+      },
+      "binding": {
+        "buildingId": "0363100012163422",
+        "observationId": "0363100012163422_e_0ovix3v",
+        "geometryRevision": "6dcea484fe53aa2483b8a84b91173fdccf33be15fa3b030b4d87a2d91f0f2158",
+        "evidenceKey": "f8e7722dcbaf8fef54bce876c4ede46b4b209b8e44654ac6c0b2262f9d7ec9c2",
+        "frontage": [
+          [
+            98.9647493827797,
+            322.0457525960519
+          ],
+          [
+            92.20074965746608,
+            325.0827526389039
+          ]
+        ],
+        "surfaceIndices": [
+          3
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21538",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21538.json.gz",
+          "sha256": "2eeb9f165a574ecd779726c41c68807a0f4631cbac27b5d3a9243aa5cf84879f",
+          "contentSha256": "a1368f896af2d010fa81a72b2417c249ba742f3e199d776db9212b7492bb45ba"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "window-form",
+          "kind": "source-shape",
+          "expected": {
+            "feature": "window",
+            "comparison": "match-source",
+            "curvatureExplicit": false
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing color contrast red first floor, missing door, window style is wrong"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-08",
+      "role": "development-from-user-review",
+      "reviewStatus": "needs-work",
+      "userNote": {
+        "caseId": "case-08",
+        "text": "missing first floor black brick, white door",
+        "status": "needs-work",
+        "issues": [
+          "doors",
+          "materials"
+        ],
+        "revision": 5,
+        "updatedAt": "2026-09-12T17:47:34.643Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "41e4e7b013a80984b29bd06d6e2928bf6cd3a3b95cc8de0e9ec399a05361c1dd",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/6b9d07c1aa7d65cd81e920c54cb2ce3f72d06fbd7dc6b711d2aac71a8d14eb73.jpg",
+          "sha256": "6b9d07c1aa7d65cd81e920c54cb2ce3f72d06fbd7dc6b711d2aac71a8d14eb73",
+          "captureDate": "2025-07-03T08:51:51Z",
+          "width": 282,
+          "height": 755
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/ecd02b733f241cf5d1af1daec2d6df3511b762b673bb7881d1b34eafe41749fc.jpg",
+          "sha256": "ecd02b733f241cf5d1af1daec2d6df3511b762b673bb7881d1b34eafe41749fc",
+          "captureDate": "2022-12-15T09:04:06.631420Z",
+          "width": 690,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-08.png",
+        "sha256": "c4a553980585d3fb7f6487f3a63232dc177511a4148b3a2c2fdb8d4cc2dfdc67"
+      },
+      "binding": {
+        "buildingId": "0363100012169816",
+        "observationId": "0363100012169816_e_1rko4tl",
+        "geometryRevision": "c9824291db77c94346466b17079941815ffd9dd51f72b09ab4c0e8b887c45e2e",
+        "evidenceKey": "caae2f2b42abe09f72c326ccf4292bb86265f62abab5e3796a380f8573b9ae37",
+        "frontage": [
+          [
+            176.58476234406407,
+            -286.15724890719866
+          ],
+          [
+            170.9207625875424,
+            -284.0872488722089
+          ]
+        ],
+        "surfaceIndices": [
+          3
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21537.json.gz",
+          "sha256": "6b4b9a17f328cbe9494fcdc2276b5684556f19eae56e44e1d7be673d0cb3baa8",
+          "contentSha256": "31781a13ddd020338630a16889dcf2122f04f57c6e712d2881dd0d89d9181dcd"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing first floor black brick, white door"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-09",
+      "role": "development-from-user-review",
+      "reviewStatus": "needs-work",
+      "userNote": {
+        "caseId": "case-09",
+        "text": "missing white accent floor, missing door",
+        "status": "needs-work",
+        "issues": [
+          "doors",
+          "materials"
+        ],
+        "revision": 5,
+        "updatedAt": "2026-09-12T17:47:48.775Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "0013272621dbd2d4a1ff2a1f182c62eb7ba672ae482bb866e3c4cde184482769",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/9585767f7360620e7439d1fcc08ddb2177635673169db28891774f8b20c3b886.jpg",
+          "sha256": "9585767f7360620e7439d1fcc08ddb2177635673169db28891774f8b20c3b886",
+          "captureDate": "2024-12-16T09:19:38Z",
+          "width": 225,
+          "height": 914
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/1a2cb8c916e1603b7a6cb7e81dbdbbd4d5af7d760f7226f8ec57213922573ed1.jpg",
+          "sha256": "1a2cb8c916e1603b7a6cb7e81dbdbbd4d5af7d760f7226f8ec57213922573ed1",
+          "captureDate": "2022-05-02T06:43:15.808300Z",
+          "width": 550,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-09.png",
+        "sha256": "35fa94ad38b5e785ddacded823bd72e40faad959246e472337ab9772e070a876"
+      },
+      "binding": {
+        "buildingId": "0363100012169827",
+        "observationId": "0363100012169827_e_0dsqvgr",
+        "geometryRevision": "35a2ca659f37034d58bc817b0841afc3f243863ea1207b153da7c1f375944454",
+        "evidenceKey": "dceb8f8eaca539eec0f1251bdf57f724b3d67c0df0b8b5bbe293c96aefe5b2d1",
+        "frontage": [
+          [
+            190.26476263639051,
+            -322.4962490455946
+          ],
+          [
+            194.78176244207134,
+            -324.1372490757494
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21536",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21536.json.gz",
+          "sha256": "4ab7bcbfb7436276a4f27881c7348390d7a18367ebd72cc2dae2c4592c955421",
+          "contentSha256": "3fa58ebcd023a31ea764191358a03f487d804ff66544af960fb0e808ec3d132c"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing white accent floor, missing door"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-10",
+      "role": "development-from-user-review",
+      "reviewStatus": "needs-work",
+      "userNote": {
+        "caseId": "case-10",
+        "text": "windows should be interpreted as doors",
+        "status": "needs-work",
+        "issues": [
+          "doors",
+          "windows"
+        ],
+        "revision": 5,
+        "updatedAt": "2026-09-12T17:48:08.795Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "f27ab10e30f21425be06feb319a675b06f4810ff094741f33fac66e971a5ab2e",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/80e3ef3dbfee632b910e5bf07c63e1c32b8dbae34f9349c7b2bff024d067eb2c.jpg",
+          "sha256": "80e3ef3dbfee632b910e5bf07c63e1c32b8dbae34f9349c7b2bff024d067eb2c",
+          "captureDate": "2022-01-27T09:04:13.101590Z",
+          "width": 232,
+          "height": 832
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/c5f9c6d63903f55a22291093dc1f6fad43ee07301015696eb969733490a037d4.jpg",
+          "sha256": "c5f9c6d63903f55a22291093dc1f6fad43ee07301015696eb969733490a037d4",
+          "captureDate": "2025-07-03T09:01:36Z",
+          "width": 567,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-10.png",
+        "sha256": "33d3c586b533688cdb94ea59f322b280f3577a47d145c78f54e6824b82cfa2c6"
+      },
+      "binding": {
+        "buildingId": "0363100012185685",
+        "observationId": "0363100012185685_e_0pzsj4w",
+        "geometryRevision": "0b68e1c783295bda6f7bed66e3a94f717d89ff25f91355fcc5fb64b0c098d74c",
+        "evidenceKey": "5dbeaca8ea00dcf7fb48543b84b2f73d00c31d3091de83e4b8e6261d4bfea327",
+        "frontage": [
+          [
+            447.01375323720276,
+            -474.532250784745
+          ],
+          [
+            442.39775343207293,
+            -472.7222507519182
+          ]
+        ],
+        "surfaceIndices": [
+          10
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33656/21536",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33656/21536.json.gz",
+          "sha256": "20f6d02bb1368d11ca7f878978d84b3afe75362694439dc8f0bed8332235f38f",
+          "contentSha256": "1dc9c658c173d2f54d81b7432c1ad35257c2c616d4e994f9d7d73365b085f2e2"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "door-window-classification",
+          "kind": "feature-classification",
+          "expected": {
+            "visibleAssemblies": "door",
+            "forbiddenClassification": "window"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-11",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-11",
+        "text": "missing doors",
+        "status": "unreviewed",
+        "issues": [
+          "doors"
+        ],
+        "revision": 3,
+        "updatedAt": "2026-09-12T17:48:16.936Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "827090f4c395b7386faeca602b060b2390b1fb129c37af3a819ca68479cf711b",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/ed59adb27156705f150248cbe6e9e988d1d48fb671f581965ce12f5f388f11fb.jpg",
+          "sha256": "ed59adb27156705f150248cbe6e9e988d1d48fb671f581965ce12f5f388f11fb",
+          "captureDate": "2025-07-03T08:55:32Z",
+          "width": 281,
+          "height": 860
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/e52e266d8ff29413f9c2795261699ef45ee097167e23711778aac18049d3cc30.jpg",
+          "sha256": "e52e266d8ff29413f9c2795261699ef45ee097167e23711778aac18049d3cc30",
+          "captureDate": "2025-07-03T08:52:45Z",
+          "width": 686,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-11.png",
+        "sha256": "b72c9eb98c591bfd1bfe4d75eaf0c587c59718bb1637c95deeff121aa55ea98f"
+      },
+      "binding": {
+        "buildingId": "0363100012156993",
+        "observationId": "0363100012156993_e_1tt83o3",
+        "geometryRevision": "4724b14fb5614ed8503be1e961a61a96f3a7adb3e2b19c62f4fec5087309b539",
+        "evidenceKey": "580790fa6bdd612c18670582dc9347e75e8656102cb88672353eb6fffdf99eb3",
+        "frontage": [
+          [
+            -56.71022680582246,
+            -229.9892474692897
+          ],
+          [
+            -51.080227047845256,
+            -232.0532475016662
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33654/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33654/21537.json.gz",
+          "sha256": "0c9f507e47c1f1a9b03592f27ebfcdbca3a1007ea7a67fb36273fde01a0187ca",
+          "contentSha256": "0b823d2c2e1e5a6503005d80f931aa60fe569f1c86530cf779132e6effa6a7ac"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-12",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-12",
+        "text": "missing awning",
+        "status": "unreviewed",
+        "issues": [
+          "awnings"
+        ],
+        "revision": 2,
+        "updatedAt": "2026-09-12T17:48:24.688Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "df292d26838950aae8e76dc428a49958d794ec952abf9be540a79e398efc9bfb",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660.jpg",
+          "sha256": "2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660",
+          "captureDate": "2023-03-13T11:32:17.314580Z",
+          "width": 271,
+          "height": 597
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/f7cbba0528efe8f9960f4421af6e8932a39889291b0e32c1e0d8322d29e1e7d0.jpg",
+          "sha256": "f7cbba0528efe8f9960f4421af6e8932a39889291b0e32c1e0d8322d29e1e7d0",
+          "captureDate": "2023-02-13T09:46:38.181700Z",
+          "width": 663,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-12.png",
+        "sha256": "a36ecd4165a33b47a8ff6a16d3423b08bbdbaf100942eb185d737a02a0f5e602"
+      },
+      "binding": {
+        "buildingId": "0363100012167877",
+        "observationId": "0363100012167877_e_1dcf5va",
+        "geometryRevision": "29c2098a257b717d79bc5ed16d40574d9c2fac6f0e8f59236e5d1ee66efd563a",
+        "evidenceKey": "9120d2c52f4127815e1c8dfa4826e1b373ed9be6dc8a18df8ece51a915b41eed",
+        "frontage": [
+          [
+            395.7027539278788,
+            -401.8702503670356
+          ],
+          [
+            401.01075371089973,
+            -404.2072503991658
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33656/21536",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33656/21536.json.gz",
+          "sha256": "20f6d02bb1368d11ca7f878978d84b3afe75362694439dc8f0bed8332235f38f",
+          "contentSha256": "1dc9c658c173d2f54d81b7432c1ad35257c2c616d4e994f9d7d73365b085f2e2"
+        }
+      },
+      "assertions": [
+        {
+          "id": "awning-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "awning",
+            "minimum": 1
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-13",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-13",
+        "text": "missing door, render only has one column of windows - real one has three columns",
+        "status": "unreviewed",
+        "issues": [
+          "doors"
+        ],
+        "revision": 4,
+        "updatedAt": "2026-09-12T17:48:45.921Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "c538ef3d8fef1ec5604ada46efb72c0d62d71fdae2340d8f9f9b08a234245f32",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/1b487142a5367681040c06dae3c6f3ae75f2db1e73a65badd1199b171f27474c.jpg",
+          "sha256": "1b487142a5367681040c06dae3c6f3ae75f2db1e73a65badd1199b171f27474c",
+          "captureDate": "2023-01-12T09:08:43.325110Z",
+          "width": 296,
+          "height": 984
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce.jpg",
+          "sha256": "2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce",
+          "captureDate": "2025-07-31T11:09:12Z",
+          "width": 723,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-13.png",
+        "sha256": "84ba214c0cebcf3fdcd4d705c989b6c3da75bdb7462f5ea9875d4b981543cbd0"
+      },
+      "binding": {
+        "buildingId": "0363100012156117",
+        "observationId": "0363100012156117_e_0qekj2q",
+        "geometryRevision": "89e8821653ad0edae36c08339a4b9d81b6ec0ead2474ced228fbf50336d2d463",
+        "evidenceKey": "b14b9bd383c53a1be54471e4d137d0c1cdaa9299b8fd9151dec48029d9273f1a",
+        "frontage": [
+          [
+            -16.46623659216857,
+            41.88175276637776
+          ],
+          [
+            -18.87723629960965,
+            36.0387527718558
+          ]
+        ],
+        "surfaceIndices": [
+          2
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33654/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33654/21537.json.gz",
+          "sha256": "0c9f507e47c1f1a9b03592f27ebfcdbca3a1007ea7a67fb36273fde01a0187ca",
+          "contentSha256": "0b823d2c2e1e5a6503005d80f931aa60fe569f1c86530cf779132e6effa6a7ac"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "upper-window-columns",
+          "kind": "opening-layout",
+          "expected": {
+            "upperColumns": 3,
+            "comparison": "exact"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-14",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-14",
+        "text": "missing door, contrast color first floor",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 2,
+        "updatedAt": "2026-09-12T17:48:56.857Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "6c1a237cf2ed91e146d073b2906d5941ccd22e6df12ff9546cf6147caa574f37",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558.jpg",
+          "sha256": "db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558",
+          "captureDate": "2024-12-16T09:30:08Z",
+          "width": 263,
+          "height": 782
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115.jpg",
+          "sha256": "5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115",
+          "captureDate": "2025-06-30T05:28:42Z",
+          "width": 643,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-14.png",
+        "sha256": "d2fbb3a4162a310361eabe40d40922c96da60e11f2f0629283b745681c19d30a"
+      },
+      "binding": {
+        "buildingId": "0363100012173872",
+        "observationId": "0363100012173872_e_0te7ad0",
+        "geometryRevision": "1b94e5da5925c8c6e0deea6c2c200585934689c3df3d119d0e3dd205e2b9bbb6",
+        "evidenceKey": "c22d469d0b435689da4b107d8d008dc2b180e00c9216243f4ab56421cb6b9e16",
+        "frontage": [
+          [
+            621.0767320528103,
+            -49.92825105733937
+          ],
+          [
+            616.0967322441575,
+            -47.314251023344696
+          ]
+        ],
+        "surfaceIndices": [
+          3
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33656/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33656/21537.json.gz",
+          "sha256": "08b3d1b32197147fcb794fc4ca7cba0bc25a83f15db611e503f5d89344f4f1bc",
+          "contentSha256": "65e370525d75bb7bd1912556350e590ee30aaaa5d7cb726912465526428869f5"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing door, contrast color first floor"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-15",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-15",
+        "text": "missing white brick accent, door",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 1,
+        "updatedAt": "2026-09-12T17:49:02.692Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "39a22c2e26065fc7347715e4cc73ab1e08974e0041bfaebc99422fb3d1941ad3",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/27f91a4953409ff6bed64cdf9e88157b13c26ce756a0dcf558775dedff60a2a7.jpg",
+          "sha256": "27f91a4953409ff6bed64cdf9e88157b13c26ce756a0dcf558775dedff60a2a7",
+          "captureDate": "2023-01-12T09:08:40.615120Z",
+          "width": 653,
+          "height": 821
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/3da7a56602c14d1dd05a9f12906d2c39b7dc778eaceb7659928cfba020f30148.jpg",
+          "sha256": "3da7a56602c14d1dd05a9f12906d2c39b7dc778eaceb7659928cfba020f30148",
+          "captureDate": "2025-07-31T11:09:09Z",
+          "width": 1595,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-15.png",
+        "sha256": "1f09493c5db96d8dd094bf2617e54f9160edce80e7cbf08f31173c1dc99d85ae"
+      },
+      "binding": {
+        "buildingId": "0363100012236381",
+        "observationId": "0363100012236381_e_0v97fd9",
+        "geometryRevision": "227ca908735797c539633c12543a2d1610dc943507c8fc91b9f43bc6469c7b6a",
+        "evidenceKey": "e7c6c578d882facd20455d805b76c52bc67a2959a79481c8f391beb656facf1b",
+        "frontage": [
+          [
+            -20.823236063224613,
+            31.322752770443913
+          ],
+          [
+            -26.141235417337157,
+            18.43375277717132
+          ]
+        ],
+        "surfaceIndices": [
+          2
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33654/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33654/21537.json.gz",
+          "sha256": "0c9f507e47c1f1a9b03592f27ebfcdbca3a1007ea7a67fb36273fde01a0187ca",
+          "contentSha256": "0b823d2c2e1e5a6503005d80f931aa60fe569f1c86530cf779132e6effa6a7ac"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing white brick accent, door"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-16",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-16",
+        "text": "missing white masonry accents, door",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 1,
+        "updatedAt": "2026-09-12T17:49:10.464Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "0d73b9c34bed099f7e29661e694179756227214a16a23d1cf462523d17196829",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/917cdd7c7a3abc321a24fa67fdcf7a092c5a0c90cb1a40b83be19eb435b63b00.jpg",
+          "sha256": "917cdd7c7a3abc321a24fa67fdcf7a092c5a0c90cb1a40b83be19eb435b63b00",
+          "captureDate": "2025-07-03T08:51:51Z",
+          "width": 291,
+          "height": 745
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/b930b8d6f2750d40468a9d05ebcb6982abe50ab73a52ed532a55edbb2c456a12.jpg",
+          "sha256": "b930b8d6f2750d40468a9d05ebcb6982abe50ab73a52ed532a55edbb2c456a12",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "width": 710,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-16.png",
+        "sha256": "640804d4a57af939a91141203314e4984a1d2b41a00267c549bedbfc136ae8d4"
+      },
+      "binding": {
+        "buildingId": "0363100012169812",
+        "observationId": "0363100012169812_e_0il89qt",
+        "geometryRevision": "31d91041d314aa51d2e68cdf6d284d3f8752bd8eff6ef16bc5f99cff082b3647",
+        "evidenceKey": "dcb0318614b5cd09c2536b73719d2fef8a5d805dc84577648a118302de0e01a3",
+        "frontage": [
+          [
+            187.57776186791307,
+            -290.04824897664366
+          ],
+          [
+            181.74576211860403,
+            -287.91624894051347
+          ]
+        ],
+        "surfaceIndices": [
+          3
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21537.json.gz",
+          "sha256": "6b4b9a17f328cbe9494fcdc2276b5684556f19eae56e44e1d7be673d0cb3baa8",
+          "contentSha256": "31781a13ddd020338630a16889dcf2122f04f57c6e712d2881dd0d89d9181dcd"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing white masonry accents, door"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-17",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-17",
+        "text": "missing first floor contrast, window is one big pane",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 2,
+        "updatedAt": "2026-09-12T17:49:20.443Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "014577e38c1e2f11a38be9d62e0bdd90247578e25a2e8b3c6e90bdf19c9aa0be",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5.jpg",
+          "sha256": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "captureDate": "2023-01-10T10:44:05.176090Z",
+          "width": 377,
+          "height": 893
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071.jpg",
+          "sha256": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071",
+          "captureDate": "2024-12-11T11:16:00Z",
+          "width": 922,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-17.png",
+        "sha256": "5c9e2488ed0f7e835185a0481fea20f816406fcecd3c74a5a40ad0b89c89ddf2"
+      },
+      "binding": {
+        "buildingId": "0363100012107485",
+        "observationId": "0363100012107485_e_1py60r0",
+        "geometryRevision": "0941d85c54e762873f1090102408fc50c3a9448e2d302f254d1cc4278033e095",
+        "evidenceKey": "2799a09cbd80a13f8b7e8d745470e87a24b185acc6f1b517052adf972cff37ab",
+        "frontage": [
+          [
+            -342.31821446096,
+            -127.51824564632261
+          ],
+          [
+            -334.7482147865376,
+            -130.2882456946536
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33654/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33654/21537.json.gz",
+          "sha256": "0c9f507e47c1f1a9b03592f27ebfcdbca3a1007ea7a67fb36273fde01a0187ca",
+          "contentSha256": "0b823d2c2e1e5a6503005d80f931aa60fe569f1c86530cf779132e6effa6a7ac"
+        }
+      },
+      "assertions": [
+        {
+          "id": "window-pane-layout",
+          "kind": "opening-division",
+          "expected": {
+            "panes": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing first floor contrast, window is one big pane"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-18",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-18",
+        "text": "missing white contrast floor, doors",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 1,
+        "updatedAt": "2026-09-12T17:49:26.076Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "4c00860dfcb83763808cb1c8a67f7d75eebdf8cb698824e9b08f31a91dbb394f",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6.jpg",
+          "sha256": "cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "width": 277,
+          "height": 914
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d.jpg",
+          "sha256": "14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d",
+          "captureDate": "2022-05-02T06:43:16.723290Z",
+          "width": 677,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-18.png",
+        "sha256": "48f35e496f3e37c2345b7c3e455d599e54cfb97e02878a2fae786e3ecba8951a"
+      },
+      "binding": {
+        "buildingId": "0363100012169823",
+        "observationId": "0363100012169823_e_0i7d2wr",
+        "geometryRevision": "00fb42b7a405fd68e10be2618d1ee5eacca2aec3b1140667a99d4812a3c04104",
+        "evidenceKey": "453c9b3b463a68973ce2616701bf0b281d17a2fc68c22b4a3059172d6b31918b",
+        "frontage": [
+          [
+            184.70176287578943,
+            -320.4722490084823
+          ],
+          [
+            190.26476263639051,
+            -322.4962490455946
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21536",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21536.json.gz",
+          "sha256": "4ab7bcbfb7436276a4f27881c7348390d7a18367ebd72cc2dae2c4592c955421",
+          "contentSha256": "3fa58ebcd023a31ea764191358a03f487d804ff66544af960fb0e808ec3d132c"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing white contrast floor, doors"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 4,
+        "awnings": 0,
+        "materials": 1,
+        "featureIds": [
+          "0363100012169823:1:context-trim:street-datum",
+          "0363100012169823:1:context-window:0:0",
+          "0363100012169823:1:context-window:1:0",
+          "0363100012169823:1:context-window:2:0",
+          "0363100012169823:1:context-window:3:0"
+        ]
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-19",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-19",
+        "text": "missing white, doors",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 2,
+        "updatedAt": "2026-09-12T17:49:32.187Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "c1945ff5619b52551287abbef550a8b83864e47cd4f8d81ee51405790e4df0fe",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/785d3ce1bd539e18856abffebc492977bd8f3bf9af09c16bd87877fb82a9fa5d.jpg",
+          "sha256": "785d3ce1bd539e18856abffebc492977bd8f3bf9af09c16bd87877fb82a9fa5d",
+          "captureDate": "2022-01-27T08:55:05.151310Z",
+          "width": 210,
+          "height": 884
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/3865a2dc283c93dc6f4af6ff826bdf3ac5f8f9cc035216285b3119452478d816.jpg",
+          "sha256": "3865a2dc283c93dc6f4af6ff826bdf3ac5f8f9cc035216285b3119452478d816",
+          "captureDate": "2025-06-30T05:28:22Z",
+          "width": 513,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-19.png",
+        "sha256": "1f5b965be747fbb670b1624d9abaf2354a5a8cc55a0f45d82ceaf67da0ccfe1d"
+      },
+      "binding": {
+        "buildingId": "0363100012170124",
+        "observationId": "0363100012170124_e_1xs268y",
+        "geometryRevision": "b7655ddab1ce597bc47e6f5fcac216a631d3defff810db2a00d1712f43e5c916",
+        "evidenceKey": "657863bbd206bb78d72b5fa91bd32e1910e5312f2420ffa214550c9f6775a54a",
+        "frontage": [
+          [
+            523.2207357978477,
+            2.0387495966861024
+          ],
+          [
+            519.2537359500129,
+            4.124749624577817
+          ]
+        ],
+        "surfaceIndices": [
+          3
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33656/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33656/21537.json.gz",
+          "sha256": "08b3d1b32197147fcb794fc4ca7cba0bc25a83f15db611e503f5d89344f4f1bc",
+          "contentSha256": "65e370525d75bb7bd1912556350e590ee30aaaa5d7cb726912465526428869f5"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing white, doors"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 1,
+        "windows": 7,
+        "awnings": 0,
+        "materials": 2,
+        "featureIds": [
+          "0363100012170124:3:context-door",
+          "0363100012170124:3:context-trim:facade-top",
+          "0363100012170124:3:context-trim:street-datum",
+          "0363100012170124:3:context-window:0:0",
+          "0363100012170124:3:context-window:1:0",
+          "0363100012170124:3:context-window:1:1",
+          "0363100012170124:3:context-window:2:0",
+          "0363100012170124:3:context-window:2:1",
+          "0363100012170124:3:context-window:3:0",
+          "0363100012170124:3:context-window:3:1"
+        ]
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-20",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-20",
+        "text": "wrong window style, no doors",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 1,
+        "updatedAt": "2026-09-12T17:49:37.530Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "89565e12e9201a681d67d62cb3a26e539e70448f8b8d2ba1468d7a9226a2a2d9",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0.jpg",
+          "sha256": "c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0",
+          "captureDate": "2023-01-12T09:15:50.506690Z",
+          "width": 283,
+          "height": 811
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119.jpg",
+          "sha256": "26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119",
+          "captureDate": "2025-06-18T10:05:19Z",
+          "width": 692,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-20.png",
+        "sha256": "54489bf1f1f8676dfa873306279499889f2eda56addfba10fe78584da1fa4856"
+      },
+      "binding": {
+        "buildingId": "0363100012096164",
+        "observationId": "0363100012096164_e_1qqj2dv",
+        "geometryRevision": "fb904f08d02871b54575830baa41952d5061a2d16aecf047aceac7bdd8e404ca",
+        "evidenceKey": "f40750369ab94068bdd3f04f0f6f12ab506d20f43b629b14d60a2ea67935a3ce",
+        "frontage": [
+          [
+            -238.78821894098655,
+            -164.5182463072706
+          ],
+          [
+            -233.0812191885925,
+            -166.5312463439186
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33654/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33654/21537.json.gz",
+          "sha256": "0c9f507e47c1f1a9b03592f27ebfcdbca3a1007ea7a67fb36273fde01a0187ca",
+          "contentSha256": "0b823d2c2e1e5a6503005d80f931aa60fe569f1c86530cf779132e6effa6a7ac"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "window-form",
+          "kind": "source-shape",
+          "expected": {
+            "feature": "window",
+            "comparison": "match-source",
+            "curvatureExplicit": false
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-21",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-21",
+        "text": "missing doors",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 1,
+        "updatedAt": "2026-09-12T17:49:41.063Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "586d74bcc4c8db57ce533b87870065a771a8e40886b8dbe8f2122065586a5cb0",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5.jpg",
+          "sha256": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+          "captureDate": "2023-02-13T10:59:09.853930Z",
+          "width": 266,
+          "height": 864
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9.jpg",
+          "sha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+          "captureDate": "2025-07-03T09:50:55Z",
+          "width": 650,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-21.png",
+        "sha256": "e73589f04493325cb0cfbc3942bdf8fcc7fefb888dc0a7a0a619f70ae743b3ff"
+      },
+      "binding": {
+        "buildingId": "0363100012173919",
+        "observationId": "0363100012173919_e_1wb5lrz",
+        "geometryRevision": "dfd18f9c8f4c0a146aaef25b9812035cc388cb16c2fd671cda7019949afcc28e",
+        "evidenceKey": "5b468f98824e2369207306f639c6626965d2011fcddfb329dde575e4c9769d81",
+        "frontage": [
+          [
+            626.0857379928348,
+            -270.93025147297885
+          ],
+          [
+            631.2607377834211,
+            -273.27825150295394
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33656/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33656/21537.json.gz",
+          "sha256": "08b3d1b32197147fcb794fc4ca7cba0bc25a83f15db611e503f5d89344f4f1bc",
+          "contentSha256": "65e370525d75bb7bd1912556350e590ee30aaaa5d7cb726912465526428869f5"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 3,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": [
+          "0363100012173919:1:0363100012173919_e_1wb5lrz:shop",
+          "0363100012173919:1:0363100012173919_e_1wb5lrz:window:1:0",
+          "0363100012173919:1:0363100012173919_e_1wb5lrz:window:2:0",
+          "0363100012173919:1:0363100012173919_e_1wb5lrz:window:3:0"
+        ]
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-22",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-22",
+        "text": "missing doors",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 2,
+        "updatedAt": "2026-09-12T17:49:52.969Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "28cb55bcbda55920a398e4f5e96fd953c4ad0afe1eb739c863ab0ecab9dc9bb1",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70.jpg",
+          "sha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+          "captureDate": "2023-01-12T09:08:29.970310Z",
+          "width": 296,
+          "height": 936
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d.jpg",
+          "sha256": "e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d",
+          "captureDate": "2025-07-31T11:09:13Z",
+          "width": 723,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-22.png",
+        "sha256": "cc2591c1f050724c1b2a908a2a75266cce533e0636d7cc308baf2e8be1f763d6"
+      },
+      "binding": {
+        "buildingId": "0363100012165927",
+        "observationId": "0363100012165927_e_0xxqmsr",
+        "geometryRevision": "6564ac37d9725497ad3d0dc1b8ea4c4732e58fd6d5b94c07c52222a70d8fa42d",
+        "evidenceKey": "11e65aeba0efd9e1a9653c2f2b4b1763527d159ea5d968b40663a776ee0a6d1a",
+        "frontage": [
+          [
+            -14.05423688486917,
+            47.724752758513205
+          ],
+          [
+            -16.46623659216857,
+            41.88175276637776
+          ]
+        ],
+        "surfaceIndices": [
+          3
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33654/21538",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33654/21538.json.gz",
+          "sha256": "a981c099e6b544eb96d0c9348128ee122289500541b4553c8da9935f4bd2930a",
+          "contentSha256": "2e77ac64949157f3925563b1fe788124dbc6c26c5c3132b307ab9ebd4bd69518"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-23",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-23",
+        "text": "missing doors",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 1,
+        "updatedAt": "2026-09-12T17:49:57.301Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "378587a0f9c538cf289f444d1670100a8b1f13a5d76b9fbb26ac8c4b021c34d8",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+          "sha256": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+          "captureDate": "2023-03-13T08:55:21.331730Z",
+          "width": 990,
+          "height": 1034
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/589d8e04917bb6bd98b0fab335f3be64f39091b2fbd2f6805752d67422b6c6b0.jpg",
+          "sha256": "589d8e04917bb6bd98b0fab335f3be64f39091b2fbd2f6805752d67422b6c6b0",
+          "captureDate": "2024-12-16T10:48:39Z",
+          "width": 2421,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-23.png",
+        "sha256": "c98b2e8dc5a67157325b97a11b128aff6cb2539a1d65cead8b834347dab2b456"
+      },
+      "binding": {
+        "buildingId": "0363100012169605",
+        "observationId": "0363100012169605_e_0b82q5f",
+        "geometryRevision": "a6894daad4aa3de37825094f939fcc775aa6b0ab96cb1b92e87d48c599c31331",
+        "evidenceKey": "04eab6576731683106d5210625ae6966add708a61a452000889f37f102976688",
+        "frontage": [
+          [
+            612.7917376920232,
+            -235.03825133288046
+          ],
+          [
+            593.336738493148,
+            -226.71525120618753
+          ]
+        ],
+        "surfaceIndices": [
+          11
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33656/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33656/21537.json.gz",
+          "sha256": "08b3d1b32197147fcb794fc4ca7cba0bc25a83f15db611e503f5d89344f4f1bc",
+          "contentSha256": "65e370525d75bb7bd1912556350e590ee30aaaa5d7cb726912465526428869f5"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-24",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-24",
+        "text": "missing white color",
+        "status": "unreviewed",
+        "issues": [
+          "materials"
+        ],
+        "revision": 2,
+        "updatedAt": "2026-09-12T17:50:03.506Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "d635916b0432565f394cec25caba7e89c82b2e2f99075a74188d33754ac6f5b7",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/d41fbad9b2cab955a11725296c74f17d65e9e36907763f86eaf1396467186ebb.jpg",
+          "sha256": "d41fbad9b2cab955a11725296c74f17d65e9e36907763f86eaf1396467186ebb",
+          "captureDate": "2023-01-10T10:49:47.057940Z",
+          "width": 213,
+          "height": 721
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0.jpg",
+          "sha256": "59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0",
+          "captureDate": "2025-07-03T11:32:36Z",
+          "width": 521,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-24.png",
+        "sha256": "051e77e34928d3013dfafeb04af41451863b920a614ad4267a1dcafdba0d2a7d"
+      },
+      "binding": {
+        "buildingId": "0363100012155539",
+        "observationId": "0363100012155539_e_19ytu7e",
+        "geometryRevision": "be28c92aa70acc224822cc33964769b1098df641ed49094330f38580915fb24d",
+        "evidenceKey": "c5722960215dd3145ba8d482c4bad34921832a19481a5b5d64d62877b001abb5",
+        "frontage": [
+          [
+            42.47976030225982,
+            40.66075242176885
+          ],
+          [
+            44.23276009077381,
+            44.86075241828803
+          ]
+        ],
+        "surfaceIndices": [
+          0
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21537.json.gz",
+          "sha256": "6b4b9a17f328cbe9494fcdc2276b5684556f19eae56e44e1d7be673d0cb3baa8",
+          "contentSha256": "31781a13ddd020338630a16889dcf2122f04f57c6e712d2881dd0d89d9181dcd"
+        }
+      },
+      "assertions": [
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing white color"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 6,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": [
+          "0363100012155539:0:0363100012155539_e_19ytu7e:shop",
+          "0363100012155539:0:0363100012155539_e_19ytu7e:window:1:0",
+          "0363100012155539:0:0363100012155539_e_19ytu7e:window:1:1",
+          "0363100012155539:0:0363100012155539_e_19ytu7e:window:2:0",
+          "0363100012155539:0:0363100012155539_e_19ytu7e:window:2:1",
+          "0363100012155539:0:0363100012155539_e_19ytu7e:window:3:0",
+          "0363100012155539:0:0363100012155539_e_19ytu7e:window:3:1"
+        ]
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-25",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-25",
+        "text": "wrong window and door shape, missing door",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 1,
+        "updatedAt": "2026-09-12T17:50:11.426Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "bb3198f6658256c75e50ec1ad32dd615fcf6ffff28ef03e1e598205e5007975f",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d.jpg",
+          "sha256": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+          "captureDate": "2025-07-03T08:57:54Z",
+          "width": 255,
+          "height": 697
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9.jpg",
+          "sha256": "fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "width": 624,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-25.png",
+        "sha256": "a790fa4d671fdc54ea8a5532ff90c05afef626d0211305275fb93f4d5154097a"
+      },
+      "binding": {
+        "buildingId": "0363100012169813",
+        "observationId": "0363100012169813_e_1i9q96x",
+        "geometryRevision": "85c58506971767aa54c4020e80c2c998766799da921ea9f947c3eb1b91e51724",
+        "evidenceKey": "59f4ee93b995cb395878b9b8c4d07b5d1afd971a88f29f8e7e1a43ea9a5839fb",
+        "frontage": [
+          [
+            181.74576211860403,
+            -287.91624894051347
+          ],
+          [
+            176.62576233863365,
+            -286.0452489045565
+          ]
+        ],
+        "surfaceIndices": [
+          3
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21537.json.gz",
+          "sha256": "6b4b9a17f328cbe9494fcdc2276b5684556f19eae56e44e1d7be673d0cb3baa8",
+          "contentSha256": "31781a13ddd020338630a16889dcf2122f04f57c6e712d2881dd0d89d9181dcd"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "window-form",
+          "kind": "source-shape",
+          "expected": {
+            "feature": "window",
+            "comparison": "match-source",
+            "curvatureExplicit": false
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 8,
+        "awnings": 0,
+        "materials": 2,
+        "featureIds": [
+          "0363100012169813:3:context-trim:facade-top",
+          "0363100012169813:3:context-trim:street-datum",
+          "0363100012169813:3:context-window:0:0",
+          "0363100012169813:3:context-window:0:1",
+          "0363100012169813:3:context-window:1:0",
+          "0363100012169813:3:context-window:1:1",
+          "0363100012169813:3:context-window:2:0",
+          "0363100012169813:3:context-window:2:1",
+          "0363100012169813:3:context-window:3:0",
+          "0363100012169813:3:context-window:3:1"
+        ]
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-26",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-26",
+        "text": "dunno what this is",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 1,
+        "updatedAt": "2026-09-12T17:50:17.075Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "9ee2ac46feccd09bb4fd815a15d5de3dc346ceb322d1d366b7d57bcfc974effa",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/97ed0241182bff727bf552a6db88c419328582d67cdb798a0c50039c2bafd32a.jpg",
+          "sha256": "97ed0241182bff727bf552a6db88c419328582d67cdb798a0c50039c2bafd32a",
+          "captureDate": "2022-06-28T06:27:12.221910Z",
+          "width": 220,
+          "height": 518
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/526a2085f78788c1e48cca055d18ba1cd0c26cc212e5549e8cba657407a7e86c.jpg",
+          "sha256": "526a2085f78788c1e48cca055d18ba1cd0c26cc212e5549e8cba657407a7e86c",
+          "captureDate": "2022-06-28T06:27:12.221910Z",
+          "width": 537,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-26.png",
+        "sha256": "8884428a5f48ccc314bfa3333fc6bfbc3b99c893510881c31b54d6bb32621d00"
+      },
+      "binding": {
+        "buildingId": "0363100012571031",
+        "observationId": "0363100012571031_e_1oyjob7",
+        "geometryRevision": "60f3795f2c3764a67a2c4278b5ce20722f7df2d3cba21a4658d82bfe5f4a6b55",
+        "evidenceKey": "efa1aec22338ac792e2ff6a9b4d988f823bf05f88412c314396fe0cbcb2efb7e",
+        "frontage": [
+          [
+            349.247744207154,
+            32.188750648347195
+          ],
+          [
+            344.9157443869917,
+            33.99275067693088
+          ]
+        ],
+        "surfaceIndices": [],
+        "ambiguity": "published observation has no recoverable wall surface",
+        "tile": {
+          "key": "16/33655/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21537.json.gz",
+          "sha256": "6b4b9a17f328cbe9494fcdc2276b5684556f19eae56e44e1d7be673d0cb3baa8",
+          "contentSha256": "31781a13ddd020338630a16889dcf2122f04f57c6e712d2881dd0d89d9181dcd"
+        }
+      },
+      "assertions": [
+        {
+          "id": "source-ambiguity",
+          "kind": "source-ambiguity",
+          "expected": {
+            "status": "requires-clarification",
+            "prohibitsFeatureInference": true
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "source-ambiguous-not-measurable",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-27",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-27",
+        "text": "missing white accent color, awning, door",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 1,
+        "updatedAt": "2026-09-12T17:50:23.886Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "f24a07fbc50e2b61cb3dfe998e527bea11390ffb97b5f26b8649da825b3b327a",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/c1dd427ffac468359ef9b9ae3b7341fd81b20f77d779a4227bea06d5f4b91b73.jpg",
+          "sha256": "c1dd427ffac468359ef9b9ae3b7341fd81b20f77d779a4227bea06d5f4b91b73",
+          "captureDate": "2023-01-12T09:18:55.710230Z",
+          "width": 954,
+          "height": 828
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/772f505a78cf4f6f9410d10395558719f75566af3b93560105dcdc3308c059e6.jpg",
+          "sha256": "772f505a78cf4f6f9410d10395558719f75566af3b93560105dcdc3308c059e6",
+          "captureDate": "2025-07-31T10:31:11Z",
+          "width": 2331,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-27.png",
+        "sha256": "883521efb8d301c2a0ecf0467bf94f4cef4f9d05dcc8a3e9577f239c801dd0c7"
+      },
+      "binding": {
+        "buildingId": "0363100012086076",
+        "observationId": "0363100012086076_e_103xrxl",
+        "geometryRevision": "71687b785009b546001015540e1e32b984ba1f7dd4598f8c1f707b52f3d9df49",
+        "evidenceKey": "4bb9310f1f1287335fde48cad3fada153ee205e18ac04dfcf0d5581010e34b6d",
+        "frontage": [
+          [
+            -295.8282178467198,
+            -95.26824585953727
+          ],
+          [
+            -303.56821690408105,
+            -114.11824584874557
+          ]
+        ],
+        "surfaceIndices": [
+          3
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33654/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33654/21537.json.gz",
+          "sha256": "0c9f507e47c1f1a9b03592f27ebfcdbca3a1007ea7a67fb36273fde01a0187ca",
+          "contentSha256": "0b823d2c2e1e5a6503005d80f931aa60fe569f1c86530cf779132e6effa6a7ac"
+        }
+      },
+      "assertions": [
+        {
+          "id": "door-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "door",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "awning-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "awning",
+            "minimum": 1
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "missing white accent color, awning, door"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-29",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-29",
+        "text": "missing awning",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 1,
+        "updatedAt": "2026-09-12T17:50:30.290Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "0af33bf2c68425a25ee51d04127da8f16408d3fe025a71d81d22932f41dd7c54",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/cb0f66e828b485b7ba2c3f6e6bc48457ec007b01dfe06521195e8bdbb42db346.jpg",
+          "sha256": "cb0f66e828b485b7ba2c3f6e6bc48457ec007b01dfe06521195e8bdbb42db346",
+          "captureDate": "2023-01-12T09:12:21.403370Z",
+          "width": 288,
+          "height": 805
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/788c84eae23e26305288ef67492c5095ee2f540151b4971c1b9473cd38127f49.jpg",
+          "sha256": "788c84eae23e26305288ef67492c5095ee2f540151b4971c1b9473cd38127f49",
+          "captureDate": "2025-07-03T08:55:44Z",
+          "width": 704,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-29.png",
+        "sha256": "fc80539d667c383c7cfc147e8293de0b149cfd30c58e4bf91b756d9453a698f1"
+      },
+      "binding": {
+        "buildingId": "0363100012157746",
+        "observationId": "0363100012157746_e_04nemym",
+        "geometryRevision": "ee66b0cb96c2656285d322c9f1b078bfcd8d1db1950daa5da3d4718f095e2d64",
+        "evidenceKey": "7421e042bcf0ae6f1c48915dc1fc8a80f6f19420831f7d9b273d5670a6cb059f",
+        "frontage": [
+          [
+            16.030769317614613,
+            -229.96924788848264
+          ],
+          [
+            10.231769569043536,
+            -227.91824784886558
+          ]
+        ],
+        "surfaceIndices": [
+          3
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21537",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21537.json.gz",
+          "sha256": "6b4b9a17f328cbe9494fcdc2276b5684556f19eae56e44e1d7be673d0cb3baa8",
+          "contentSha256": "31781a13ddd020338630a16889dcf2122f04f57c6e712d2881dd0d89d9181dcd"
+        }
+      },
+      "assertions": [
+        {
+          "id": "awning-presence",
+          "kind": "feature-count",
+          "expected": {
+            "feature": "awning",
+            "minimum": 1
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 1,
+        "windows": 11,
+        "awnings": 0,
+        "materials": 2,
+        "featureIds": [
+          "0363100012157746:3:context-door",
+          "0363100012157746:3:context-trim:facade-top",
+          "0363100012157746:3:context-trim:street-datum",
+          "0363100012157746:3:context-window:0:0",
+          "0363100012157746:3:context-window:0:2",
+          "0363100012157746:3:context-window:1:0",
+          "0363100012157746:3:context-window:1:1",
+          "0363100012157746:3:context-window:1:2",
+          "0363100012157746:3:context-window:2:0",
+          "0363100012157746:3:context-window:2:1",
+          "0363100012157746:3:context-window:2:2",
+          "0363100012157746:3:context-window:3:0",
+          "0363100012157746:3:context-window:3:1",
+          "0363100012157746:3:context-window:3:2"
+        ]
+      },
+      "pixelReferenceAnnotations": null
+    },
+    {
+      "caseId": "case-30",
+      "role": "development-from-user-review",
+      "reviewStatus": "unreviewed",
+      "userNote": {
+        "caseId": "case-30",
+        "text": "wrong window style, mising white and black accent colors",
+        "status": "unreviewed",
+        "issues": [],
+        "revision": 2,
+        "updatedAt": "2026-09-12T17:50:41.463Z",
+        "origin": "user-entered-review"
+      },
+      "noteSha256": "1c9c6f215c66e70ff39e1957c47bc6b9dbc7c8f599ca37ac32e6aaa64992f77c",
+      "source": {
+        "full": {
+          "path": "public/data/city-expansion/evidence/410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7.jpg",
+          "sha256": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+          "captureDate": "2023-03-20T11:11:48.788250Z",
+          "width": 207,
+          "height": 799
+        },
+        "ground": {
+          "path": "public/data/city-expansion/evidence/b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4.jpg",
+          "sha256": "b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4",
+          "captureDate": "2023-02-13T09:46:47.281620Z",
+          "width": 507,
+          "height": 539
+        }
+      },
+      "render": {
+        "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/case-30.png",
+        "sha256": "bb713ad479aeca4a083b0d121924b4e0990e850dd46b5722fcaeeb6a4df87270"
+      },
+      "binding": {
+        "buildingId": "0363100012174564",
+        "observationId": "0363100012174564_e_14yoqnp",
+        "geometryRevision": "bf8576feba216baf768086e2ec7068d0ad3e16dc2edff15623cf4113bee3ae9e",
+        "evidenceKey": "a29cb75aa23b66c4fb05abd4881827e265e8213d7faa6262b7b7ae73c4465b5d",
+        "frontage": [
+          [
+            316.6357572595298,
+            -370.6292498613475
+          ],
+          [
+            320.74775708664674,
+            -372.27324988209875
+          ]
+        ],
+        "surfaceIndices": [
+          1
+        ],
+        "ambiguity": null,
+        "tile": {
+          "key": "16/33655/21536",
+          "path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/tiles/16/33655/21536.json.gz",
+          "sha256": "4ab7bcbfb7436276a4f27881c7348390d7a18367ebd72cc2dae2c4592c955421",
+          "contentSha256": "3fa58ebcd023a31ea764191358a03f487d804ff66544af960fb0e808ec3d132c"
+        }
+      },
+      "assertions": [
+        {
+          "id": "window-form",
+          "kind": "source-shape",
+          "expected": {
+            "feature": "window",
+            "comparison": "match-source",
+            "curvatureExplicit": false
+          },
+          "source": "user-note"
+        },
+        {
+          "id": "material-contrast",
+          "kind": "source-appearance",
+          "expected": {
+            "comparison": "match-source",
+            "noteText": "wrong window style, mising white and black accent colors"
+          },
+          "source": "user-note"
+        }
+      ],
+      "baselineRenderedFeatureCoverage": {
+        "measurementStatus": "measured-from-preserved-release-compiler",
+        "doors": 0,
+        "windows": 0,
+        "awnings": 0,
+        "materials": 0,
+        "featureIds": []
+      },
+      "pixelReferenceAnnotations": null
+    }
+  ]
+}

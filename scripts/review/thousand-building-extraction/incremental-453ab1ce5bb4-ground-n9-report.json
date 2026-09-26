@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "kind": "immutable-incremental-source-snapshot",
+  "tier": "ground",
+  "sourceSha256": "453ab1ce5bb4b65d66de812e7fe9f153b1e05a0a82f5642d9f3d8d67d1d1489a",
+  "sourceRecords": 621,
+  "previouslyQueuedBuildings": 1000,
+  "newUniqueBuildings": 9,
+  "heldoutExcluded": 30,
+  "developmentExcluded": 28,
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "releasePointerSha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9",
+  "casesSha256": "dc9789137abd3179c4c25d3312a0c5957a2998effb4095799c9d3a14da363df1",
+  "authorizationSha256": "eeb87fd984cd921c5df6e1317b5234a87df31f8babe6d2cb84f0306a71122c50",
+  "manifests": [
+    {
+      "file": "scripts/review/thousand-building-extraction/incremental-453ab1ce5bb4-ground-n9-01.json",
+      "buildings": 9,
+      "first": "0363100012169795",
+      "last": "0363100012174379"
+    }
+  ]
+}

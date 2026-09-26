@@ -1,0 +1,995 @@
+{
+  "version": 1,
+  "scope": "Source-hash-bound development corrections and preview-only spatial entrance annotations made after inspecting cached photographs. These are training repairs, not independent evaluation references or metric registrations.",
+  "coordinateConvention": "Feature and visibility bounds use source pixel edges [left,top,right,bottom]. Entrance access evidence uses source-image pixel Y coordinates; metric placement and depth must be inferred only after registration/projection.",
+  "inspector": "extraction-agent-original-resolution-source-inspection",
+  "cases": {
+    "case-05": {
+      "address": "Lauriergracht 67 / Lauriergracht 69",
+      "ground": {
+        "source": {
+          "cropSha256": "9cf6eb7e4114fcb745b4b8bc5c2f08b19a5704f48b5e22dd3c5927daaf18ddcf",
+          "captureDate": "2025-07-03T09:49:09Z",
+          "width": 1166,
+          "height": 539
+        },
+        "update": {
+          "ground:door-1": {
+            "bounds": [
+              469,
+              211,
+              544,
+              398
+            ],
+            "head": "rectangular",
+            "colour": "#38271f",
+            "frameColour": "#312d29"
+          }
+        },
+        "entranceAssemblies": [
+          {
+            "sourceDisposition": "door and recessed jambs visible; metric depth and access dimensions inferred for preview",
+            "visibleOpeningBounds": [
+              458,
+              196,
+              557,
+              414
+            ],
+            "id": "case-05-recessed-door",
+            "featureId": "ground:door-1",
+            "sourceAccess": {
+              "openingBottomPixelY": 398,
+              "pavementPixelY": 470,
+              "accessKind": "stairs",
+              "visibleStepCount": 2,
+              "visibleAccessBounds": [
+                458,
+                398,
+                557,
+                470
+              ],
+              "measurementDisposition": "agent-inspected-source-pixel-approximation"
+            },
+            "projectionIntent": {
+              "recess": true,
+              "inferMetricDepth": true
+            }
+          }
+        ],
+        "reason": "The residential door is set behind dark side jambs and reached above the path. The source establishes a recess and stepped approach; preview depths and step dimensions remain inferred."
+      }
+    },
+    "case-09": {
+      "address": "Rozengracht 228",
+      "addressNote": "The user referred to Rozengracht 230; the frozen observation and crop are bound to Rozengracht 228.",
+      "ground": {
+        "source": {
+          "cropSha256": "1a2cb8c916e1603b7a6cb7e81dbdbbd4d5af7d760f7226f8ec57213922573ed1",
+          "captureDate": "2022-05-02T06:43:15.808300Z",
+          "width": 550,
+          "height": 539
+        },
+        "update": {
+          "ground:door-ground-1": {
+            "head": "rectangular",
+            "frameColour": "#deded4"
+          }
+        },
+        "entranceAssemblies": [
+          {
+            "sourceDisposition": "raised entrance and basement relation visible; lower access obscured by construction fence, dimensions inferred for preview",
+            "visibleOpeningBounds": [
+              47,
+              278,
+              135,
+              468
+            ],
+            "occlusion": {
+              "kind": "construction-fence",
+              "region": [
+                0,
+                332,
+                550,
+                539
+              ]
+            },
+            "id": "case-09-raised-entrance",
+            "featureId": "ground:door-ground-1",
+            "sourceAccess": {
+              "openingBottomPixelY": 468,
+              "pavementPixelY": null,
+              "accessKind": "stairs",
+              "pavementDisposition": "not visible behind construction fence",
+              "measurementDisposition": "contact-unresolved-no-pixel-invented"
+            },
+            "projectionIntent": {
+              "recess": true,
+              "inferMetricDepth": true
+            }
+          }
+        ],
+        "reason": "The door sits above basement level. The fence prevents a defensible pixel trace of individual treads, so no step count or measured rise is asserted."
+      }
+    },
+    "case-13": {
+      "address": "Da Costakade 116",
+      "ground": {
+        "source": {
+          "cropSha256": "2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce",
+          "captureDate": "2025-07-31T11:09:12Z",
+          "width": 723,
+          "height": 539
+        },
+        "update": {
+          "ground:door-1": {
+            "bounds": [
+              126,
+              211,
+              206,
+              411
+            ],
+            "head": "rectangular",
+            "paired": false,
+            "colour": "#18201d"
+          },
+          "ground:door-2": {
+            "bounds": [
+              220,
+              211,
+              300,
+              411
+            ],
+            "head": "rectangular",
+            "paired": false,
+            "colour": "#18201d"
+          },
+          "ground:window-1": {
+            "bounds": [
+              539,
+              99,
+              669,
+              357
+            ],
+            "head": "rectangular",
+            "archRise": null,
+            "lintelHead": "segmental",
+            "lintelRise": 0.08,
+            "frameColour": "#d8d9cd"
+          }
+        },
+        "add": [
+          {
+            "id": "ground:review:center-window",
+            "kind": "window",
+            "bounds": [
+              335,
+              100,
+              495,
+              362
+            ],
+            "head": "rectangular",
+            "lintelHead": "segmental",
+            "lintelRise": 0.08,
+            "frameColour": "#d8d9cd",
+            "disposition": "agent-inspected-development-inferred-extent",
+            "visibility": {
+              "visibleBounds": [
+                337,
+                273,
+                493,
+                362
+              ],
+              "inferredEdges": [
+                "top",
+                "upper-left",
+                "upper-right"
+              ],
+              "occluder": "tree"
+            }
+          }
+        ],
+        "visibility": {
+          "ground:door-1": {
+            "visibleBounds": [
+              126,
+              258,
+              206,
+              411
+            ],
+            "inferredEdges": [
+              "top"
+            ],
+            "occluder": "tree"
+          },
+          "ground:door-2": {
+            "visibleBounds": [
+              220,
+              259,
+              300,
+              411
+            ],
+            "inferredEdges": [
+              "top"
+            ],
+            "occluder": "tree"
+          }
+        },
+        "reason": "The crop supports two equal dark door leaves and two ground windows. Tree foliage hides the centre window's upper extent and the upper portions of both leaves. The right glazing is rectangular beneath a curved brick lintel."
+      }
+    },
+    "case-14": {
+      "address": "Elandsgracht 19",
+      "tierConsistencyWarning": {
+        "status": "unresolved",
+        "reason": "The full and ground crops differ in date and may frame different frontage intervals; the distant full-crop ground floor is also partly blocked. Do not transfer the ground treatment into a full-facade white region or assume tier correspondence without registration."
+      },
+      "ground": {
+        "source": {
+          "cropSha256": "5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115",
+          "captureDate": "2025-06-30T05:28:42Z",
+          "width": 643,
+          "height": 539
+        },
+        "update": {
+          "ground:d1": {
+            "bounds": [
+              413,
+              211,
+              494,
+              475
+            ],
+            "head": "rectangular",
+            "archRise": null,
+            "paired": false,
+            "colour": "#171a19",
+            "disposition": "agent-inspected-development-visible"
+          },
+          "ground:d2": {
+            "bounds": [
+              503,
+              211,
+              586,
+              475
+            ],
+            "head": "rectangular",
+            "archRise": null,
+            "paired": false,
+            "colour": "#171a19",
+            "disposition": "agent-inspected-development-visible"
+          }
+        },
+        "reason": "The two adjacent black doors have matching rectangular outer heads. Curved motifs are confined to the leaf panels and must not turn either opening into an arch."
+      }
+    },
+    "case-15": {
+      "address": "Da Costakade 112 / Potgieterstraat 49",
+      "ground": {
+        "source": {
+          "cropSha256": "3da7a56602c14d1dd05a9f12906d2c39b7dc778eaceb7659928cfba020f30148",
+          "captureDate": "2025-07-31T11:09:09Z",
+          "width": 1595,
+          "height": 539
+        },
+        "add": [
+          {
+            "id": "ground:review:white-band-upper",
+            "kind": "material",
+            "bounds": [
+              86,
+              35,
+              985,
+              60
+            ],
+            "material": "paint",
+            "region": "band",
+            "colour": "#e1e4d9",
+            "disposition": "agent-inspected-development-visible"
+          },
+          {
+            "id": "ground:review:white-band-middle",
+            "kind": "material",
+            "bounds": [
+              86,
+              109,
+              985,
+              136
+            ],
+            "material": "paint",
+            "region": "band",
+            "colour": "#e1e4d9",
+            "disposition": "agent-inspected-development-visible"
+          },
+          {
+            "id": "ground:review:white-band-lower",
+            "kind": "material",
+            "bounds": [
+              86,
+              267,
+              985,
+              291
+            ],
+            "material": "paint",
+            "region": "band",
+            "colour": "#e1e4d9",
+            "disposition": "agent-inspected-development-visible"
+          },
+          {
+            "id": "ground:review:door-lintel-keystone",
+            "kind": "material",
+            "bounds": [
+              182,
+              132,
+              210,
+              167
+            ],
+            "material": "stone",
+            "region": "accent",
+            "colour": "#e1e4d9",
+            "disposition": "agent-inspected-development-visible"
+          },
+          {
+            "id": "ground:review:left-window-keystone",
+            "kind": "material",
+            "bounds": [
+              501,
+              24,
+              532,
+              58
+            ],
+            "material": "stone",
+            "region": "accent",
+            "colour": "#e1e4d9",
+            "disposition": "agent-inspected-development-visible"
+          },
+          {
+            "id": "ground:review:right-window-keystone",
+            "kind": "material",
+            "bounds": [
+              803,
+              23,
+              834,
+              57
+            ],
+            "material": "stone",
+            "region": "accent",
+            "colour": "#e1e4d9",
+            "disposition": "agent-inspected-development-visible"
+          },
+          {
+            "id": "ground:review:left-corner-accent",
+            "kind": "material",
+            "bounds": [
+              104,
+              142,
+              137,
+              181
+            ],
+            "material": "stone",
+            "region": "accent",
+            "colour": "#e1e4d9",
+            "disposition": "agent-inspected-development-visible"
+          },
+          {
+            "id": "ground:review:right-corner-accent",
+            "kind": "material",
+            "bounds": [
+              245,
+              142,
+              274,
+              181
+            ],
+            "material": "stone",
+            "region": "accent",
+            "colour": "#e1e4d9",
+            "disposition": "agent-inspected-development-visible"
+          }
+        ],
+        "reason": "The brick frontage has repeated white horizontal masonry bands, pale lintel keystones, and pale corner blocks. Bounds describe visible rectangular components only; they do not imply a continuous white fa\u00e7ade region."
+      }
+    },
+    "case-16": {
+      "address": "Rozengracht 247",
+      "ground": {
+        "source": {
+          "cropSha256": "b930b8d6f2750d40468a9d05ebcb6982abe50ab73a52ed532a55edbb2c456a12",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "width": 710,
+          "height": 539
+        },
+        "update": {
+          "ground:door-1": {
+            "bounds": [
+              195,
+              103,
+              251,
+              316
+            ],
+            "head": "rectangular",
+            "colour": "#202722",
+            "frameColour": "#9a9c91"
+          }
+        },
+        "entranceAssemblies": [
+          {
+            "sourceDisposition": "back door, full jamb opening and threshold visible; preview depth/access dimensions inferred",
+            "visibleOpeningBounds": [
+              137,
+              42,
+              278,
+              333
+            ],
+            "backDoorBounds": [
+              195,
+              103,
+              251,
+              316
+            ],
+            "id": "case-16-left-recess",
+            "featureId": "ground:door-1",
+            "sourceAccess": {
+              "openingBottomPixelY": 316,
+              "pavementPixelY": 366,
+              "accessKind": "stairs",
+              "visibleStepCount": 2,
+              "visibleAccessBounds": [
+                137,
+                316,
+                278,
+                366
+              ],
+              "measurementDisposition": "agent-inspected-source-pixel-approximation"
+            },
+            "projectionIntent": {
+              "recess": true,
+              "inferMetricDepth": true
+            }
+          }
+        ],
+        "reason": "The narrow dark rectangle is the back door of a wider recessed opening. Preserve both jamb side planes and the shallow stepped threshold."
+      }
+    },
+    "case-17": {
+      "address": "De Clercqstraat 90",
+      "ground": {
+        "source": {
+          "cropSha256": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071",
+          "captureDate": "2024-12-11T11:16:00Z",
+          "width": 922,
+          "height": 539
+        },
+        "remove": [
+          "ground:door-01",
+          "ground:door-02"
+        ],
+        "add": [
+          {
+            "id": "ground:review:rear-right-door",
+            "kind": "door",
+            "bounds": [
+              657,
+              242,
+              758,
+              456
+            ],
+            "head": "rectangular",
+            "colour": "#2f1f19",
+            "frameColour": "#3b2921",
+            "disposition": "agent-inspected-development-visible"
+          }
+        ],
+        "entranceAssemblies": [
+          {
+            "sourceDisposition": "flat left return, angled right return and rear door visible; metric depth inferred for preview",
+            "visibleOpeningBounds": [
+              568,
+              226,
+              806,
+              474
+            ],
+            "backDoorBounds": [
+              657,
+              242,
+              758,
+              456
+            ],
+            "sidePlanes": [
+              "left-flat-return",
+              "right-angled-return"
+            ],
+            "id": "case-17-side-rear-recess",
+            "featureId": "ground:review:rear-right-door",
+            "sourceAccess": {
+              "openingBottomPixelY": 456,
+              "pavementPixelY": 493,
+              "accessKind": "landing",
+              "visibleAccessBounds": [
+                568,
+                456,
+                806,
+                493
+              ],
+              "measurementDisposition": "agent-inspected-source-pixel-approximation"
+            },
+            "projectionIntent": {
+              "recess": true,
+              "inferMetricDepth": true
+            }
+          }
+        ],
+        "reason": "The two predicted front-plane doors are the side and rear surfaces of one recessed entrance. Keep the large left display window flat, the right return angled, and one rear door."
+      }
+    },
+    "case-18": {
+      "address": "Rozengracht 230",
+      "ground": {
+        "source": {
+          "cropSha256": "14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d",
+          "captureDate": "2022-05-02T06:43:16.723290Z",
+          "width": 677,
+          "height": 539
+        },
+        "update": {
+          "ground:door_entrance": {
+            "bounds": [
+              53,
+              72,
+              210,
+              203
+            ],
+            "head": "rectangular",
+            "paired": true,
+            "disposition": "agent-inspected-development-visible"
+          }
+        },
+        "entranceAssemblies": [
+          {
+            "id": "case-18-raised-entrance",
+            "featureId": "ground:door_entrance",
+            "sourceDisposition": "paired entrance and stair run visible; lower pavement contact partly screened by construction fencing",
+            "visibleOpeningBounds": [
+              53,
+              72,
+              210,
+              203
+            ],
+            "sourceAccess": {
+              "openingBottomPixelY": 203,
+              "visibleAccessBounds": [
+                43,
+                199,
+                215,
+                321
+              ],
+              "pavementPixelY": null,
+              "accessKind": "stairs",
+              "pavementDisposition": "contact line partly obscured by construction fence",
+              "measurementDisposition": "contact-unresolved-no-pixel-invented"
+            },
+            "projectionIntent": {
+              "recess": true,
+              "inferMetricDepth": true
+            }
+          }
+        ],
+        "reason": "This is the distinct Rozengracht 230 crop. The paired entrance is raised over a clearly visible stair run; the fence prevents claiming an exact pavement-contact pixel."
+      }
+    },
+    "case-19": {
+      "address": "Elandsgracht 69",
+      "addressNote": "The user referred to Elandsgracht 19; the frozen observation and crop are bound to Elandsgracht 69.",
+      "ground": {
+        "source": {
+          "cropSha256": "3865a2dc283c93dc6f4af6ff826bdf3ac5f8f9cc035216285b3119452478d816",
+          "captureDate": "2025-06-30T05:28:22Z",
+          "width": 513,
+          "height": 539
+        },
+        "update": {
+          "ground:door-main": {
+            "bounds": [
+              337,
+              0,
+              445,
+              280
+            ],
+            "head": "rectangular",
+            "archRise": null,
+            "paired": true,
+            "mullions": [
+              0.5
+            ],
+            "transom": 0.27,
+            "colour": "#252c28",
+            "frameColour": "#615f4d",
+            "disposition": "agent-inspected-development-inferred-extent",
+            "visibility": {
+              "visibleBounds": [
+                337,
+                78,
+                445,
+                280
+              ],
+              "inferredEdges": [
+                "top"
+              ],
+              "occluder": "crop-edge"
+            }
+          }
+        },
+        "entranceAssemblies": [
+          {
+            "sourceDisposition": "seven stair fronts and paired rectangular entrance leaves visible; top clipped by crop",
+            "visibleOpeningBounds": [
+              337,
+              78,
+              445,
+              280
+            ],
+            "id": "case-19-raised-pair",
+            "featureId": "ground:door-main",
+            "sourceAccess": {
+              "openingBottomPixelY": 280,
+              "pavementPixelY": 470,
+              "accessKind": "stairs",
+              "visibleStepCount": 7,
+              "visibleAccessBounds": [
+                337,
+                280,
+                445,
+                470
+              ],
+              "measurementDisposition": "agent-inspected-source-pixel-approximation"
+            },
+            "projectionIntent": {
+              "recess": true,
+              "inferMetricDepth": true
+            }
+          }
+        ],
+        "reason": "The raised entrance occupies x=337..445 and has two matching rectangular leaves within that jamb. The x=445..513 region is a brick pier, not a second door. Curves in the solid panels are ornament rather than arched glazing. Keep the separate basement openings under the broad white masonry arch."
+      }
+    },
+    "case-20": {
+      "address": "De Clercqstraat 74",
+      "ground": {
+        "source": {
+          "cropSha256": "26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119",
+          "captureDate": "2025-06-18T10:05:19Z",
+          "width": 692,
+          "height": 539
+        },
+        "update": {
+          "ground:door-left": {
+            "bounds": [
+              70,
+              34,
+              151,
+              422
+            ],
+            "head": "rectangular",
+            "transom": 0.36,
+            "colour": "#80532f",
+            "frameColour": "#e7e8df"
+          },
+          "ground:window-display": {
+            "bounds": [
+              157,
+              34,
+              505,
+              376
+            ],
+            "head": "rectangular",
+            "frameColour": "#191c1b"
+          },
+          "ground:door-right": {
+            "bounds": [
+              512,
+              35,
+              608,
+              424
+            ],
+            "head": "rectangular",
+            "transom": 0.34,
+            "colour": "#80532f",
+            "frameColour": "#3a3128"
+          }
+        },
+        "reason": "ABOUT LIFESTYLE has three non-overlapping assemblies aligned to real stiles: a left wooden door with a tall white-framed transom, a central wide black-framed display, and a right glazed wooden-framed door with its own upper transom. Shared stiles are represented once."
+      }
+    },
+    "case-21": {
+      "address": "Lauriergracht 50",
+      "ground": {
+        "source": {
+          "cropSha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+          "captureDate": "2025-07-03T09:50:55Z",
+          "width": 650,
+          "height": 539
+        },
+        "update": {
+          "ground:door-main": {
+            "bounds": [
+              226,
+              158,
+              357,
+              413
+            ],
+            "head": "rectangular",
+            "colour": "#24453d",
+            "frameColour": "#24453d"
+          },
+          "ground:window-display-left": {
+            "colour": "#344746",
+            "frameColour": "#dedcc6"
+          },
+          "ground:window-display-right": {
+            "colour": "#344746",
+            "frameColour": "#dedcc6"
+          }
+        },
+        "entranceAssemblies": [
+          {
+            "sourceDisposition": "deep bicycle-shop recess: open left leaf, rear paired entrance, angled right glazed return and front glazing are visible; depth is preview-only inferred.",
+            "visibleOpeningBounds": [
+              91,
+              137,
+              529,
+              449
+            ],
+            "sidePlanes": [
+              "left-door-return",
+              "right-glazed-angled-return"
+            ],
+            "backDoorBounds": [
+              226,
+              158,
+              357,
+              413
+            ],
+            "id": "case-21-bike-shop-recess",
+            "featureId": "ground:door-main",
+            "sourceAccess": {
+              "openingBottomPixelY": 413,
+              "pavementPixelY": 468,
+              "accessKind": "landing",
+              "visibleAccessBounds": [
+                91,
+                413,
+                363,
+                468
+              ],
+              "measurementDisposition": "agent-inspected-source-pixel-approximation"
+            },
+            "projectionIntent": {
+              "recess": true,
+              "inferMetricDepth": true
+            },
+            "perspectiveRecess": {
+              "apertureBounds": [
+                91,
+                137,
+                563,
+                449
+              ],
+              "backDoorBounds": [
+                226,
+                158,
+                357,
+                413
+              ],
+              "leftDoorBounds": [
+                91,
+                143,
+                163,
+                449
+              ],
+              "rightGlazedReturnBounds": [
+                375.7,
+                144.991,
+                460.2,
+                357.896
+              ],
+              "rightFrontGlazingBounds": [
+                475.15,
+                137.984,
+                553.15,
+                363.825
+              ],
+              "landingBottomPixelY": 468,
+              "depthDisposition": "preview-only inferred from the visible side/rear planes; no metric registration or contact certification",
+              "trimDisposition": "white source pixels are painted trim and excluded from glazing",
+              "replaceFlatFeatureIds": [
+                "ground:door-left",
+                "ground:window-display-left",
+                "ground:window-display-right"
+              ],
+              "corniceBounds": [
+                83,
+                112,
+                565,
+                137
+              ]
+            }
+          }
+        ],
+        "reason": "The bicycle shop entrance is a deep recess. Preserve the left return, rear paired door, and angled glazed right return instead of flattening them into overlapping front-plane openings."
+      }
+    },
+    "case-22": {
+      "address": "Da Costakade 118",
+      "ground": {
+        "source": {
+          "cropSha256": "e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d",
+          "captureDate": "2025-07-31T11:09:13Z",
+          "width": 723,
+          "height": 539
+        },
+        "remove": [
+          "ground:window_01",
+          "ground:review:ground-window-group",
+          "ground:door_01",
+          "ground:review:door-pair"
+        ],
+        "add": [
+          {
+            "id": "ground:review:window-left",
+            "componentGroup": "ground-window-group",
+            "kind": "window",
+            "bounds": [
+              146,
+              91,
+              226,
+              348
+            ],
+            "head": "rectangular",
+            "frameColour": "#d9dbcf",
+            "disposition": "agent-inspected-development-visible"
+          },
+          {
+            "id": "ground:review:window-centre",
+            "componentGroup": "ground-window-group",
+            "kind": "window",
+            "bounds": [
+              244,
+              90,
+              375,
+              348
+            ],
+            "head": "rectangular",
+            "frameColour": "#d9dbcf",
+            "disposition": "agent-inspected-development-visible"
+          },
+          {
+            "id": "ground:review:window-right",
+            "componentGroup": "ground-window-group",
+            "kind": "window",
+            "bounds": [
+              396,
+              91,
+              466,
+              348
+            ],
+            "head": "rectangular",
+            "frameColour": "#d9dbcf",
+            "disposition": "agent-inspected-development-visible"
+          },
+          {
+            "id": "ground:review:door-pair-assembly",
+            "componentGroup": "door-pair",
+            "kind": "door",
+            "bounds": [
+              541,
+              93,
+              690,
+              392
+            ],
+            "head": "segmental",
+            "archRise": 0.055,
+            "paired": true,
+            "transom": 0.29,
+            "mullions": [
+              0.5
+            ],
+            "colour": "#222824",
+            "frameColour": "#cfd1c6",
+            "disposition": "agent-inspected-development-visible"
+          }
+        ],
+        "entranceAssemblies": [
+          {
+            "sourceDisposition": "paired leaves, common shallow curved transom, divider and two-step approach visible; metric dimensions inferred",
+            "visibleOpeningBounds": [
+              541,
+              93,
+              690,
+              392
+            ],
+            "id": "case-22-shared-head-pair",
+            "featureId": "ground:review:door-pair-assembly",
+            "sourceAccess": {
+              "openingBottomPixelY": 392,
+              "pavementPixelY": 448,
+              "accessKind": "stairs",
+              "visibleStepCount": 2,
+              "visibleAccessBounds": [
+                541,
+                392,
+                690,
+                448
+              ],
+              "measurementDisposition": "agent-inspected-source-pixel-approximation"
+            },
+            "projectionIntent": {
+              "recess": true,
+              "inferMetricDepth": true
+            }
+          }
+        ],
+        "reason": "The left group is three separate rectangular window bays divided by brick piers. The right entrance has two leaves under one shallow curved upper transom with a real centre divider and a stepped approach."
+      }
+    },
+    "case-24": {
+      "address": "Da Costakade 113",
+      "ground": {
+        "source": {
+          "cropSha256": "59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0",
+          "captureDate": "2025-07-03T11:32:36Z",
+          "width": 521,
+          "height": 539
+        },
+        "update": {
+          "ground:door_left": {
+            "bounds": [
+              51,
+              163,
+              128,
+              423
+            ],
+            "head": "rectangular",
+            "transom": 0.18846153846153846,
+            "colour": "#5c4033",
+            "disposition": "agent-inspected-development-inferred-extent",
+            "visibility": {
+              "visibleBounds": [
+                51,
+                163,
+                128,
+                358
+              ],
+              "inferredEdges": [
+                "bottom"
+              ],
+              "occluder": "parked-red-car",
+              "inferenceBasis": "extend the jambs to a plausible threshold aligned with the adjacent entrance rather than stopping at the vehicle boundary"
+            },
+            "paired": false,
+            "mullions": []
+          },
+          "ground:door_right": {
+            "bounds": [
+              386,
+              163,
+              450,
+              423
+            ],
+            "head": "rectangular",
+            "transom": 0.18846153846153846,
+            "paired": false,
+            "mullions": [],
+            "colour": "#1a241a"
+          },
+          "ground:window_display": {
+            "bounds": [
+              142,
+              163,
+              370,
+              365
+            ],
+            "head": "rectangular"
+          }
+        },
+        "reason": "The red car cuts across the wooden door. Its lower bound is an explicit symmetry-based inference to the likely threshold, not a visible pixel edge or a ground-contact measurement. User head-alignment correction: all three ground openings meet the same visible beam at y=163; the right upper transom was previously omitted from its opening bounds. Door leaves are single, not pairs. Source transom bars align at y=212; inferred lower door extent remains separately labelled."
+      }
+    }
+  }
+}

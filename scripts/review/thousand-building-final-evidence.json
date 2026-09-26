@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "releaseId": "0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9",
+  "bindings": [
+    {
+      "path": "scripts/review/thousand-building-extraction/independent-summary.json",
+      "sha256": "8f0973e3ec5287e6e082eab893667c0b5e84ce537741e2f3911afe9f854906de"
+    },
+    {
+      "path": "scripts/review/thousand-building-candidate-report.json",
+      "sha256": "2bf44cd9a36e3bf09b1d9cf83a7dbd9030a4079da37d71e0284576d046897dad"
+    },
+    {
+      "path": ".cache/city-appearance/thousand-building-final-runtime/manifest.json",
+      "sha256": "4add96df5882e38c90970d9cb11e2ec20a7e94f8d4cc0a88969967fb1fc59234"
+    },
+    {
+      "path": "scripts/review/thousand-building-frontage-gallery-final.json",
+      "sha256": "f3a77189e97193143d1bfe7d73f649fea1d85fa0f7a042e80774dfe221134ab0"
+    },
+    {
+      "path": ".cache/city-appearance/thousand-building-game-smoke/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final-maplibre-sign-tile/failure.json",
+      "sha256": "66b862fc6a9a275a08b4e730f2154463946e47ef950ce8bcfcbdfbf92a06896f"
+    },
+    {
+      "path": "scripts/review/THOUSAND_BUILDING_REPORT.md",
+      "sha256": "961291b00c943ba73a18a42212f30950cea6ef64d8a4dea170339569d675bd9e"
+    }
+  ],
+  "decision": "retain previous release; candidate-only delivery",
+  "failedGates": [
+    "photographic-fidelity",
+    "metric-registration",
+    "ground-contact-not-complete",
+    "maplibre-moeders-facade-residency"
+  ],
+  "originalTwelveOutstanding": true
+}

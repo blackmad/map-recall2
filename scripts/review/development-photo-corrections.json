@@ -1,0 +1,195 @@
+{
+  "version": 1,
+  "scope": "Development corrections after inspecting raw predictions; never independent evaluation references.",
+  "inspector": "primary-agent",
+  "cases": {
+    "case-04": {
+      "ground": {
+        "update": {
+          "ground:review:broad-ground-window": {
+            "surroundColour": "#897565",
+            "lintelRise": 0.14
+          },
+          "ground:review:paired-entrance": {
+            "colour": "#563c2b",
+            "frameColour": "#bdb8a2"
+          }
+        }
+      }
+    },
+    "case-19": {
+      "ground": {
+        "remove": [
+          "ground:door-secondary"
+        ],
+        "update": {
+          "ground:door-main": {
+            "bounds": [
+              337,
+              0,
+              445,
+              280
+            ],
+            "head": "rectangular",
+            "archRise": null,
+            "paired": true,
+            "transom": 0.27,
+            "frameColour": "#615f4d",
+            "colour": "#252c28"
+          },
+          "ground:review:basement-window": {
+            "lintelHead": null,
+            "lintelRise": null,
+            "frameColour": "#d4d3bd"
+          },
+          "ground:review:basement-door": {
+            "frameColour": "#d4d3bd",
+            "colour": "#25332d"
+          }
+        },
+        "reason": "The raised entrance has a flat head with a clipped top transom; the curves on the solid door panels are ornament, not glazing arches. Preserve its raised threshold."
+      }
+    },
+    "case-25": {
+      "ground": {
+        "remove": [
+          "ground:material-band"
+        ],
+        "update": {
+          "ground:review:left-entrance": {
+            "surroundColour": "#866a58",
+            "lintelRise": 0.1,
+            "frameColour": "#a6a795",
+            "colour": "#303c30"
+          },
+          "ground:review:broad-ground-window": {
+            "surroundColour": "#866a58",
+            "frameColour": "#c9c8b4"
+          }
+        },
+        "reason": "Opaque masonry above the flat door transom is not a white panel or curved glazing."
+      }
+    },
+    "case-20": {
+      "full": {
+        "source": {
+          "cropSha256": "c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0",
+          "captureDate": "2023-01-12T09:15:50.506690Z"
+        },
+        "update": {
+          "full:door-1": { "doorStyle": "glazed", "doorGlazingRatio": 0.95, "paired": true, "doorFurniture": "none", "sourceFrameWidthPx": 4, "sourceJoineryWidthPx": 2 },
+          "full:door-2": { "doorStyle": "glazed", "doorGlazingRatio": 0.95, "paired": true, "doorFurniture": "none", "sourceFrameWidthPx": 4, "sourceJoineryWidthPx": 2 }
+        },
+        "reason": "The exact 2023 crop shows the two stored central elevated door records as pale paired glazed balcony doors. Curtains and rails obscure parts of the glass but do not support opaque structural panels; original bounds remain unchanged."
+      }
+    },
+    "case-30": {
+      "full": {
+        "source": {
+          "cropSha256": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+          "captureDate": "2023-03-20T11:11:48.788250Z"
+        },
+        "update": {
+          "full:door_1": { "doorStyle": "glazed", "doorGlazingRatio": 0.95, "paired": true, "doorFurniture": "none", "sourceFrameWidthPx": 4, "sourceJoineryWidthPx": 2 },
+          "full:door_2": { "doorStyle": "glazed", "doorGlazingRatio": 0.95, "paired": true, "doorFurniture": "none", "sourceFrameWidthPx": 4, "sourceJoineryWidthPx": 2 },
+          "full:door_3": { "doorStyle": "glazed", "doorGlazingRatio": 0.95, "paired": true, "doorFurniture": "none", "sourceFrameWidthPx": 4, "sourceJoineryWidthPx": 2 }
+        },
+        "reason": "The exact 2023 full crop shows three repeated elevated center balcony/French doors with pale paired framing and near-full-height glazing. Balcony rails obscure the bases, so no opaque lower panel is asserted."
+      },
+      "ground": {
+        "update": {
+          "ground:door-1": {
+            "paired": false,
+            "frameColour": "#c6c6b2",
+            "colour": "#343b36"
+          },
+          "ground:door-2": {
+            "paired": false,
+            "frameColour": "#c6c6b2",
+            "colour": "#343b36"
+          },
+          "ground:review:central-display": {
+            "frameColour": "#d6d4bc",
+            "surroundColour": "#343b36",
+            "lintelHead": "segmental",
+            "lintelRise": 0.17
+          }
+        },
+        "reason": "Pale central joinery follows the shallow arch; side pediments are ornament, not extra curved glazing."
+      }
+    },
+    "case-11": {
+      "ground": {
+        "update": {
+          "ground:door-1": {
+            "colour": "#273832"
+          },
+          "ground:door-2": {
+            "colour": "#d9dcd0"
+          }
+        },
+        "reason": "The left entrance is dark; the right entrance joinery is pale. Do not apply generic brown wood to both."
+      }
+    },
+    "case-03": {
+      "ground": {
+        "update": {
+          "ground:awning_01": {
+            "colour": "#3c4a53",
+            "awningProfile": "sloped",
+            "valance": "scalloped"
+          }
+        },
+        "reason": "User supplied extended charcoal canopy with visible scalloped hanging valance; thin olive fascia is incorrect."
+      }
+    },
+    "case-29": {
+      "ground": {
+        "update": {
+          "ground:awning-main": {
+            "colour": "#bca56e",
+            "stripeColour": "#dddccd",
+            "stripeCount": 24,
+            "awningProfile": "curved",
+            "valance": "straight"
+          }
+        },
+        "reason": "User supplied deployed curved yellow/cream striped Dorus canopy; preserve visible canopy height and hanging valance."
+      }
+    },
+    "case-08": {
+      "full": {
+        "update": {
+          "full:awning-main": {
+            "bounds": [
+              77,
+              541,
+              278,
+              549
+            ],
+            "state": "retracted",
+            "installation": "roller",
+            "colour": "#242628"
+          }
+        },
+        "reason": "Direct inspection: Moeders roller is retracted in each dated source; preserve casing without extended fabric."
+      },
+      "ground": {
+        "update": {
+          "ground:awning-1": {
+            "bounds": [
+              149,
+              69,
+              624,
+              87
+            ],
+            "state": "retracted",
+            "installation": "roller",
+            "colour": "#242628"
+          }
+        },
+        "reason": "Direct inspection: Moeders roller is retracted in each dated source; preserve casing without extended fabric."
+      }
+    }
+  }
+}

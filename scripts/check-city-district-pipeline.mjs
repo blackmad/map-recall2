@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import { planDistrictPipeline } from './city-appearance/run-district-pipeline.ts';
+import { loadDistrictConfig, validateDistrictConfig } from './city-appearance/district-config.mjs';
+
+const config = await loadDistrictConfig('scripts/city-appearance/districts/da-costa-jordaan-v1.json');
+assert.equal(config.id, 'da-costa-jordaan-v1');
+assert.equal(config.areas.length, 2);
+assert.equal(config.areas[0].district, 'Da Costabuurt');
+assert.equal(config.areas[1].district, 'Jordaan');
+assert.equal(config.route.value.targetEligibleFrontageCoverage, .9);
+assert.equal(config.budgets.detailBufferMB, 11);
+assert.throws(() => validateDistrictConfig({ ...config, route: null, boundarySource: undefined }), /provenance/);
+assert.throws(() => validateDistrictConfig({ ...config, route: null, budgets: { ...config.budgets, buildingTiles: 13 } }), /building tile/);
+const plan = await planDistrictPipeline(['--district-config=scripts/city-appearance/districts/da-costa-jordaan-v1.json', '--stages=geometry,evidence,compilation']);
+assert.deepEqual(plan.stages, ['geometry', 'evidence', 'compilation']);
+assert.equal(plan.downloads, 0); assert.equal(plan.paidCalls, 0);
+assert(['ready', 'awaiting-acquisition'].includes(plan.areas.find(area => area.id === 'da-costabuurt-v1').status));
+assert(['ready', 'awaiting-acquisition'].includes(plan.areas.find(area => area.id === 'jordaan-sample-v1').status));
+if (plan.areas.find(area => area.id === 'jordaan-sample-v1').status === 'awaiting-acquisition') assert.match(plan.areas.find(area => area.id === 'jordaan-sample-v1').error, /geometry-cache|manifest/);
+assert.match(plan.district.boundaryHash, /^[a-f0-9]{64}$/);
+assert.equal(plan.combinedArea.members.length, 2);
+assert.equal(plan.inference.allowed, false);
+await fs.access(config.route.file);
+const extension = await planDistrictPipeline(['--district-config=scripts/city-appearance/districts/oosterpark-extensibility-v1.json']);
+assert.equal(extension.areas.length, 1);
+assert.equal(extension.areas[0].district, 'Oosterpark');
+console.log('District coordinator: municipal boundary provenance, stage selection, bounded budgets, cache readiness, third-area extensibility and no paid/download work passed.');

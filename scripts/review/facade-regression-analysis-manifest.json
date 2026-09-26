@@ -1,0 +1,1257 @@
+{
+  "version": 2,
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "phase": "development",
+  "analysisOnly": true,
+  "status": "source-identities-validated; registrations-abstained",
+  "analysisPriority": [
+    "case-04:ground",
+    "case-11:ground",
+    "case-19:ground",
+    "case-22:ground",
+    "case-25:ground",
+    "case-30:ground"
+  ],
+  "activeDevelopmentSet": {
+    "id": "user-reviewed-c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+    "status": "validated",
+    "kind": "user-reviewed-development",
+    "originalTwelveOutstanding": true,
+    "sha256": "e21c329d1616d8737abc92559aa502aff8d6b3363e67b812c851a6f428557f6f"
+  },
+  "notesSha256": "e92aedf0191fb1912a5c34129e335d8bc0146a38b71401d4c036892cec59bad1",
+  "regressionArtifactSha256": "9d0719cdfd4a4795513039f6ea329afd251cab10bc877f8aa5fa5609133b7717",
+  "cases": [
+    {
+      "id": "case-01",
+      "observationId": "0363100012167878_e_07hebf3",
+      "buildingId": "0363100012167878",
+      "geometryRevision": "74abfa6aa50b578d07a286fb3495c5d88f47920ea05ee13e3666c95355c85083",
+      "evidenceKey": "3c58743aa0866a89d99c1a17d9e692b163a28e1c46bc6fed7b70516dc792819d",
+      "frontage": [
+        [
+          406.6607534754148,
+          -406.5282504389179
+        ],
+        [
+          409.90875333819713,
+          -407.7992504584254
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5.jpg",
+          "cropSha256": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+          "captureDate": "2025-01-20T10:11:20Z",
+          "width": 163,
+          "height": 723,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/d19bec5045a7dca3205d18a5c372de45de736980bda1059415566abdccbf50e2.jpg",
+          "cropSha256": "d19bec5045a7dca3205d18a5c372de45de736980bda1059415566abdccbf50e2",
+          "captureDate": "2022-04-25T10:21:38.037840Z",
+          "width": 399,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-02",
+      "observationId": "0363100012153066_e_1djhs5u",
+      "buildingId": "0363100012153066",
+      "geometryRevision": "c53074247566bbb355e1e1c015df03f3f14420d153753da149572bc619f4e247",
+      "evidenceKey": "9064959f068c840f72df27ad3270cae3141537b7e864080b2df3d610fc90ac44",
+      "frontage": [
+        [
+          26.141769629874034,
+          -260.24824799608905
+        ],
+        [
+          33.72176930581918,
+          -263.0882480451837
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/10d215ba9fca35d846f8b8af002852d807dc818ba868bad518e9921ec6a99d87.jpg",
+          "cropSha256": "10d215ba9fca35d846f8b8af002852d807dc818ba868bad518e9921ec6a99d87",
+          "captureDate": "2023-01-10T10:53:09.351170Z",
+          "width": 379,
+          "height": 797,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/15feb3db2655f683552b3b34f3b0c0d2520470197e5a4555438eeaa61999f0af.jpg",
+          "cropSha256": "15feb3db2655f683552b3b34f3b0c0d2520470197e5a4555438eeaa61999f0af",
+          "captureDate": "2025-07-03T08:52:21Z",
+          "width": 926,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-03",
+      "observationId": "0363100012168954_e_1i374do",
+      "buildingId": "0363100012168954",
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "evidenceKey": "c1ef8567f3e3aca18afc1335a763ba337a75a6aaa92d662b04c9bff9ce47584d",
+      "frontage": [
+        [
+          511.4867371379805,
+          -23.451250382349826
+        ],
+        [
+          515.0417370017967,
+          -25.337250405165832
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/0d9ef2fc124a0a2f403df39ef1801e091139543cb38925d4dba985ab90d56b82.jpg",
+          "cropSha256": "0d9ef2fc124a0a2f403df39ef1801e091139543cb38925d4dba985ab90d56b82",
+          "captureDate": "2024-12-16T09:28:07Z",
+          "width": 188,
+          "height": 944,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758.jpg",
+          "cropSha256": "a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758",
+          "captureDate": "2025-07-03T10:39:46Z",
+          "width": 460,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-04",
+      "observationId": "0363100012166335_e_0sr4r03",
+      "buildingId": "0363100012166335",
+      "geometryRevision": "5de763ec27f1b75ccec4c3b4517560ab3d694b09eb0b20205276f7a09e703c8a",
+      "evidenceKey": "5f2ef0db131f4da50741c1a3a49980531a6be0b352ffba04ff39e6f715f97bee",
+      "frontage": [
+        [
+          -2.3622341576847248,
+          -71.45124750898685
+        ],
+        [
+          -0.7222344004694605,
+          -65.92124751105439
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/4def1337d462b838f2a733f59bfd6d4c375bf18b31480449894f3fc50473471f.jpg",
+          "cropSha256": "4def1337d462b838f2a733f59bfd6d4c375bf18b31480449894f3fc50473471f",
+          "captureDate": "2023-01-10T10:50:10.042960Z",
+          "width": 270,
+          "height": 934,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/b71b27fbdf7bdb257b04802748284608c89972418cae83a99d7d568c147368c0.jpg",
+          "cropSha256": "b71b27fbdf7bdb257b04802748284608c89972418cae83a99d7d568c147368c0",
+          "captureDate": "2022-04-29T09:13:24.563450Z",
+          "width": 660,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-05",
+      "observationId": "0363100012168980_e_1o2cn0o",
+      "buildingId": "0363100012168980",
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "evidenceKey": "1d432c3afcbb0913a1f348aee165be1094cfabad196f649b62a0816d4a6a4a9e",
+      "frontage": [
+        [
+          507.0857420656248,
+          -190.54225064936327
+        ],
+        [
+          497.69074245437514,
+          -186.58725058677373
+        ]
+      ],
+      "surfaceIndices": [
+        7
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4.jpg",
+          "cropSha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+          "captureDate": "2023-02-27T10:59:42.189530Z",
+          "width": 477,
+          "height": 903,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/9cf6eb7e4114fcb745b4b8bc5c2f08b19a5704f48b5e22dd3c5927daaf18ddcf.jpg",
+          "cropSha256": "9cf6eb7e4114fcb745b4b8bc5c2f08b19a5704f48b5e22dd3c5927daaf18ddcf",
+          "captureDate": "2025-07-03T09:49:09Z",
+          "width": 1166,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-06",
+      "observationId": "0363100012163422_e_0ovix3v",
+      "buildingId": "0363100012163422",
+      "geometryRevision": "6dcea484fe53aa2483b8a84b91173fdccf33be15fa3b030b4d87a2d91f0f2158",
+      "evidenceKey": "f8e7722dcbaf8fef54bce876c4ede46b4b209b8e44654ac6c0b2262f9d7ec9c2",
+      "frontage": [
+        [
+          98.9647493827797,
+          322.0457525960519
+        ],
+        [
+          92.20074965746608,
+          325.0827526389039
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/999b7440fb549ec82a7685cb59a33d5d93c4cd119e1551a79e6c3f888794c4ca.jpg",
+          "cropSha256": "999b7440fb549ec82a7685cb59a33d5d93c4cd119e1551a79e6c3f888794c4ca",
+          "captureDate": "2024-11-29T09:34:09Z",
+          "width": 347,
+          "height": 716,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/666ae072fd3bd414c7f375308e6b2d5ad8fb9a0610918ae8ac0d2da70b28c9db.jpg",
+          "cropSha256": "666ae072fd3bd414c7f375308e6b2d5ad8fb9a0610918ae8ac0d2da70b28c9db",
+          "captureDate": "2025-07-31T09:40:33Z",
+          "width": 848,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-08",
+      "observationId": "0363100012169816_e_1rko4tl",
+      "buildingId": "0363100012169816",
+      "geometryRevision": "c9824291db77c94346466b17079941815ffd9dd51f72b09ab4c0e8b887c45e2e",
+      "evidenceKey": "caae2f2b42abe09f72c326ccf4292bb86265f62abab5e3796a380f8573b9ae37",
+      "frontage": [
+        [
+          176.58476234406407,
+          -286.15724890719866
+        ],
+        [
+          170.9207625875424,
+          -284.0872488722089
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/6b9d07c1aa7d65cd81e920c54cb2ce3f72d06fbd7dc6b711d2aac71a8d14eb73.jpg",
+          "cropSha256": "6b9d07c1aa7d65cd81e920c54cb2ce3f72d06fbd7dc6b711d2aac71a8d14eb73",
+          "captureDate": "2025-07-03T08:51:51Z",
+          "width": 282,
+          "height": 755,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/ecd02b733f241cf5d1af1daec2d6df3511b762b673bb7881d1b34eafe41749fc.jpg",
+          "cropSha256": "ecd02b733f241cf5d1af1daec2d6df3511b762b673bb7881d1b34eafe41749fc",
+          "captureDate": "2022-12-15T09:04:06.631420Z",
+          "width": 690,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-09",
+      "observationId": "0363100012169827_e_0dsqvgr",
+      "buildingId": "0363100012169827",
+      "geometryRevision": "35a2ca659f37034d58bc817b0841afc3f243863ea1207b153da7c1f375944454",
+      "evidenceKey": "dceb8f8eaca539eec0f1251bdf57f724b3d67c0df0b8b5bbe293c96aefe5b2d1",
+      "frontage": [
+        [
+          190.26476263639051,
+          -322.4962490455946
+        ],
+        [
+          194.78176244207134,
+          -324.1372490757494
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/9585767f7360620e7439d1fcc08ddb2177635673169db28891774f8b20c3b886.jpg",
+          "cropSha256": "9585767f7360620e7439d1fcc08ddb2177635673169db28891774f8b20c3b886",
+          "captureDate": "2024-12-16T09:19:38Z",
+          "width": 225,
+          "height": 914,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/1a2cb8c916e1603b7a6cb7e81dbdbbd4d5af7d760f7226f8ec57213922573ed1.jpg",
+          "cropSha256": "1a2cb8c916e1603b7a6cb7e81dbdbbd4d5af7d760f7226f8ec57213922573ed1",
+          "captureDate": "2022-05-02T06:43:15.808300Z",
+          "width": 550,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-10",
+      "observationId": "0363100012185685_e_0pzsj4w",
+      "buildingId": "0363100012185685",
+      "geometryRevision": "0b68e1c783295bda6f7bed66e3a94f717d89ff25f91355fcc5fb64b0c098d74c",
+      "evidenceKey": "5dbeaca8ea00dcf7fb48543b84b2f73d00c31d3091de83e4b8e6261d4bfea327",
+      "frontage": [
+        [
+          447.01375323720276,
+          -474.532250784745
+        ],
+        [
+          442.39775343207293,
+          -472.7222507519182
+        ]
+      ],
+      "surfaceIndices": [
+        10
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/80e3ef3dbfee632b910e5bf07c63e1c32b8dbae34f9349c7b2bff024d067eb2c.jpg",
+          "cropSha256": "80e3ef3dbfee632b910e5bf07c63e1c32b8dbae34f9349c7b2bff024d067eb2c",
+          "captureDate": "2022-01-27T09:04:13.101590Z",
+          "width": 232,
+          "height": 832,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/c5f9c6d63903f55a22291093dc1f6fad43ee07301015696eb969733490a037d4.jpg",
+          "cropSha256": "c5f9c6d63903f55a22291093dc1f6fad43ee07301015696eb969733490a037d4",
+          "captureDate": "2025-07-03T09:01:36Z",
+          "width": 567,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-11",
+      "observationId": "0363100012156993_e_1tt83o3",
+      "buildingId": "0363100012156993",
+      "geometryRevision": "4724b14fb5614ed8503be1e961a61a96f3a7adb3e2b19c62f4fec5087309b539",
+      "evidenceKey": "580790fa6bdd612c18670582dc9347e75e8656102cb88672353eb6fffdf99eb3",
+      "frontage": [
+        [
+          -56.71022680582246,
+          -229.9892474692897
+        ],
+        [
+          -51.080227047845256,
+          -232.0532475016662
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/ed59adb27156705f150248cbe6e9e988d1d48fb671f581965ce12f5f388f11fb.jpg",
+          "cropSha256": "ed59adb27156705f150248cbe6e9e988d1d48fb671f581965ce12f5f388f11fb",
+          "captureDate": "2025-07-03T08:55:32Z",
+          "width": 281,
+          "height": 860,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/e52e266d8ff29413f9c2795261699ef45ee097167e23711778aac18049d3cc30.jpg",
+          "cropSha256": "e52e266d8ff29413f9c2795261699ef45ee097167e23711778aac18049d3cc30",
+          "captureDate": "2025-07-03T08:52:45Z",
+          "width": 686,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-12",
+      "observationId": "0363100012167877_e_1dcf5va",
+      "buildingId": "0363100012167877",
+      "geometryRevision": "29c2098a257b717d79bc5ed16d40574d9c2fac6f0e8f59236e5d1ee66efd563a",
+      "evidenceKey": "9120d2c52f4127815e1c8dfa4826e1b373ed9be6dc8a18df8ece51a915b41eed",
+      "frontage": [
+        [
+          395.7027539278788,
+          -401.8702503670356
+        ],
+        [
+          401.01075371089973,
+          -404.2072503991658
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660.jpg",
+          "cropSha256": "2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660",
+          "captureDate": "2023-03-13T11:32:17.314580Z",
+          "width": 271,
+          "height": 597,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/f7cbba0528efe8f9960f4421af6e8932a39889291b0e32c1e0d8322d29e1e7d0.jpg",
+          "cropSha256": "f7cbba0528efe8f9960f4421af6e8932a39889291b0e32c1e0d8322d29e1e7d0",
+          "captureDate": "2023-02-13T09:46:38.181700Z",
+          "width": 663,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-13",
+      "observationId": "0363100012156117_e_0qekj2q",
+      "buildingId": "0363100012156117",
+      "geometryRevision": "89e8821653ad0edae36c08339a4b9d81b6ec0ead2474ced228fbf50336d2d463",
+      "evidenceKey": "b14b9bd383c53a1be54471e4d137d0c1cdaa9299b8fd9151dec48029d9273f1a",
+      "frontage": [
+        [
+          -16.46623659216857,
+          41.88175276637776
+        ],
+        [
+          -18.87723629960965,
+          36.0387527718558
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/1b487142a5367681040c06dae3c6f3ae75f2db1e73a65badd1199b171f27474c.jpg",
+          "cropSha256": "1b487142a5367681040c06dae3c6f3ae75f2db1e73a65badd1199b171f27474c",
+          "captureDate": "2023-01-12T09:08:43.325110Z",
+          "width": 296,
+          "height": 984,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce.jpg",
+          "cropSha256": "2392baad40cccc5d96fb81b2e2aae1b96f356f4ec20152591dec71cc49cbd0ce",
+          "captureDate": "2025-07-31T11:09:12Z",
+          "width": 723,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-14",
+      "observationId": "0363100012173872_e_0te7ad0",
+      "buildingId": "0363100012173872",
+      "geometryRevision": "1b94e5da5925c8c6e0deea6c2c200585934689c3df3d119d0e3dd205e2b9bbb6",
+      "evidenceKey": "c22d469d0b435689da4b107d8d008dc2b180e00c9216243f4ab56421cb6b9e16",
+      "frontage": [
+        [
+          621.0767320528103,
+          -49.92825105733937
+        ],
+        [
+          616.0967322441575,
+          -47.314251023344696
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558.jpg",
+          "cropSha256": "db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558",
+          "captureDate": "2024-12-16T09:30:08Z",
+          "width": 263,
+          "height": 782,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115.jpg",
+          "cropSha256": "5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115",
+          "captureDate": "2025-06-30T05:28:42Z",
+          "width": 643,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-15",
+      "observationId": "0363100012236381_e_0v97fd9",
+      "buildingId": "0363100012236381",
+      "geometryRevision": "227ca908735797c539633c12543a2d1610dc943507c8fc91b9f43bc6469c7b6a",
+      "evidenceKey": "e7c6c578d882facd20455d805b76c52bc67a2959a79481c8f391beb656facf1b",
+      "frontage": [
+        [
+          -20.823236063224613,
+          31.322752770443913
+        ],
+        [
+          -26.141235417337157,
+          18.43375277717132
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/27f91a4953409ff6bed64cdf9e88157b13c26ce756a0dcf558775dedff60a2a7.jpg",
+          "cropSha256": "27f91a4953409ff6bed64cdf9e88157b13c26ce756a0dcf558775dedff60a2a7",
+          "captureDate": "2023-01-12T09:08:40.615120Z",
+          "width": 653,
+          "height": 821,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/3da7a56602c14d1dd05a9f12906d2c39b7dc778eaceb7659928cfba020f30148.jpg",
+          "cropSha256": "3da7a56602c14d1dd05a9f12906d2c39b7dc778eaceb7659928cfba020f30148",
+          "captureDate": "2025-07-31T11:09:09Z",
+          "width": 1595,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-16",
+      "observationId": "0363100012169812_e_0il89qt",
+      "buildingId": "0363100012169812",
+      "geometryRevision": "31d91041d314aa51d2e68cdf6d284d3f8752bd8eff6ef16bc5f99cff082b3647",
+      "evidenceKey": "dcb0318614b5cd09c2536b73719d2fef8a5d805dc84577648a118302de0e01a3",
+      "frontage": [
+        [
+          187.57776186791307,
+          -290.04824897664366
+        ],
+        [
+          181.74576211860403,
+          -287.91624894051347
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/917cdd7c7a3abc321a24fa67fdcf7a092c5a0c90cb1a40b83be19eb435b63b00.jpg",
+          "cropSha256": "917cdd7c7a3abc321a24fa67fdcf7a092c5a0c90cb1a40b83be19eb435b63b00",
+          "captureDate": "2025-07-03T08:51:51Z",
+          "width": 291,
+          "height": 745,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/b930b8d6f2750d40468a9d05ebcb6982abe50ab73a52ed532a55edbb2c456a12.jpg",
+          "cropSha256": "b930b8d6f2750d40468a9d05ebcb6982abe50ab73a52ed532a55edbb2c456a12",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "width": 710,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-17",
+      "observationId": "0363100012107485_e_1py60r0",
+      "buildingId": "0363100012107485",
+      "geometryRevision": "0941d85c54e762873f1090102408fc50c3a9448e2d302f254d1cc4278033e095",
+      "evidenceKey": "2799a09cbd80a13f8b7e8d745470e87a24b185acc6f1b517052adf972cff37ab",
+      "frontage": [
+        [
+          -342.31821446096,
+          -127.51824564632261
+        ],
+        [
+          -334.7482147865376,
+          -130.2882456946536
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5.jpg",
+          "cropSha256": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "captureDate": "2023-01-10T10:44:05.176090Z",
+          "width": 377,
+          "height": 893,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071.jpg",
+          "cropSha256": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071",
+          "captureDate": "2024-12-11T11:16:00Z",
+          "width": 922,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-18",
+      "observationId": "0363100012169823_e_0i7d2wr",
+      "buildingId": "0363100012169823",
+      "geometryRevision": "00fb42b7a405fd68e10be2618d1ee5eacca2aec3b1140667a99d4812a3c04104",
+      "evidenceKey": "453c9b3b463a68973ce2616701bf0b281d17a2fc68c22b4a3059172d6b31918b",
+      "frontage": [
+        [
+          184.70176287578943,
+          -320.4722490084823
+        ],
+        [
+          190.26476263639051,
+          -322.4962490455946
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6.jpg",
+          "cropSha256": "cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "width": 277,
+          "height": 914,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d.jpg",
+          "cropSha256": "14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d",
+          "captureDate": "2022-05-02T06:43:16.723290Z",
+          "width": 677,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-19",
+      "observationId": "0363100012170124_e_1xs268y",
+      "buildingId": "0363100012170124",
+      "geometryRevision": "b7655ddab1ce597bc47e6f5fcac216a631d3defff810db2a00d1712f43e5c916",
+      "evidenceKey": "657863bbd206bb78d72b5fa91bd32e1910e5312f2420ffa214550c9f6775a54a",
+      "frontage": [
+        [
+          523.2207357978477,
+          2.0387495966861024
+        ],
+        [
+          519.2537359500129,
+          4.124749624577817
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/785d3ce1bd539e18856abffebc492977bd8f3bf9af09c16bd87877fb82a9fa5d.jpg",
+          "cropSha256": "785d3ce1bd539e18856abffebc492977bd8f3bf9af09c16bd87877fb82a9fa5d",
+          "captureDate": "2022-01-27T08:55:05.151310Z",
+          "width": 210,
+          "height": 884,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/3865a2dc283c93dc6f4af6ff826bdf3ac5f8f9cc035216285b3119452478d816.jpg",
+          "cropSha256": "3865a2dc283c93dc6f4af6ff826bdf3ac5f8f9cc035216285b3119452478d816",
+          "captureDate": "2025-06-30T05:28:22Z",
+          "width": 513,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-20",
+      "observationId": "0363100012096164_e_1qqj2dv",
+      "buildingId": "0363100012096164",
+      "geometryRevision": "fb904f08d02871b54575830baa41952d5061a2d16aecf047aceac7bdd8e404ca",
+      "evidenceKey": "f40750369ab94068bdd3f04f0f6f12ab506d20f43b629b14d60a2ea67935a3ce",
+      "frontage": [
+        [
+          -238.78821894098655,
+          -164.5182463072706
+        ],
+        [
+          -233.0812191885925,
+          -166.5312463439186
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0.jpg",
+          "cropSha256": "c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0",
+          "captureDate": "2023-01-12T09:15:50.506690Z",
+          "width": 283,
+          "height": 811,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119.jpg",
+          "cropSha256": "26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119",
+          "captureDate": "2025-06-18T10:05:19Z",
+          "width": 692,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-21",
+      "observationId": "0363100012173919_e_1wb5lrz",
+      "buildingId": "0363100012173919",
+      "geometryRevision": "dfd18f9c8f4c0a146aaef25b9812035cc388cb16c2fd671cda7019949afcc28e",
+      "evidenceKey": "5b468f98824e2369207306f639c6626965d2011fcddfb329dde575e4c9769d81",
+      "frontage": [
+        [
+          626.0857379928348,
+          -270.93025147297885
+        ],
+        [
+          631.2607377834211,
+          -273.27825150295394
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5.jpg",
+          "cropSha256": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+          "captureDate": "2023-02-13T10:59:09.853930Z",
+          "width": 266,
+          "height": 864,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9.jpg",
+          "cropSha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+          "captureDate": "2025-07-03T09:50:55Z",
+          "width": 650,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-22",
+      "observationId": "0363100012165927_e_0xxqmsr",
+      "buildingId": "0363100012165927",
+      "geometryRevision": "6564ac37d9725497ad3d0dc1b8ea4c4732e58fd6d5b94c07c52222a70d8fa42d",
+      "evidenceKey": "11e65aeba0efd9e1a9653c2f2b4b1763527d159ea5d968b40663a776ee0a6d1a",
+      "frontage": [
+        [
+          -14.05423688486917,
+          47.724752758513205
+        ],
+        [
+          -16.46623659216857,
+          41.88175276637776
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70.jpg",
+          "cropSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+          "captureDate": "2023-01-12T09:08:29.970310Z",
+          "width": 296,
+          "height": 936,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d.jpg",
+          "cropSha256": "e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d",
+          "captureDate": "2025-07-31T11:09:13Z",
+          "width": 723,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-23",
+      "observationId": "0363100012169605_e_0b82q5f",
+      "buildingId": "0363100012169605",
+      "geometryRevision": "a6894daad4aa3de37825094f939fcc775aa6b0ab96cb1b92e87d48c599c31331",
+      "evidenceKey": "04eab6576731683106d5210625ae6966add708a61a452000889f37f102976688",
+      "frontage": [
+        [
+          612.7917376920232,
+          -235.03825133288046
+        ],
+        [
+          593.336738493148,
+          -226.71525120618753
+        ]
+      ],
+      "surfaceIndices": [
+        11
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+          "cropSha256": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+          "captureDate": "2023-03-13T08:55:21.331730Z",
+          "width": 990,
+          "height": 1034,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/589d8e04917bb6bd98b0fab335f3be64f39091b2fbd2f6805752d67422b6c6b0.jpg",
+          "cropSha256": "589d8e04917bb6bd98b0fab335f3be64f39091b2fbd2f6805752d67422b6c6b0",
+          "captureDate": "2024-12-16T10:48:39Z",
+          "width": 2421,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-24",
+      "observationId": "0363100012155539_e_19ytu7e",
+      "buildingId": "0363100012155539",
+      "geometryRevision": "be28c92aa70acc224822cc33964769b1098df641ed49094330f38580915fb24d",
+      "evidenceKey": "c5722960215dd3145ba8d482c4bad34921832a19481a5b5d64d62877b001abb5",
+      "frontage": [
+        [
+          42.47976030225982,
+          40.66075242176885
+        ],
+        [
+          44.23276009077381,
+          44.86075241828803
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/d41fbad9b2cab955a11725296c74f17d65e9e36907763f86eaf1396467186ebb.jpg",
+          "cropSha256": "d41fbad9b2cab955a11725296c74f17d65e9e36907763f86eaf1396467186ebb",
+          "captureDate": "2023-01-10T10:49:47.057940Z",
+          "width": 213,
+          "height": 721,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0.jpg",
+          "cropSha256": "59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0",
+          "captureDate": "2025-07-03T11:32:36Z",
+          "width": 521,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-25",
+      "observationId": "0363100012169813_e_1i9q96x",
+      "buildingId": "0363100012169813",
+      "geometryRevision": "85c58506971767aa54c4020e80c2c998766799da921ea9f947c3eb1b91e51724",
+      "evidenceKey": "59f4ee93b995cb395878b9b8c4d07b5d1afd971a88f29f8e7e1a43ea9a5839fb",
+      "frontage": [
+        [
+          181.74576211860403,
+          -287.91624894051347
+        ],
+        [
+          176.62576233863365,
+          -286.0452489045565
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d.jpg",
+          "cropSha256": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+          "captureDate": "2025-07-03T08:57:54Z",
+          "width": 255,
+          "height": 697,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9.jpg",
+          "cropSha256": "fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9",
+          "captureDate": "2022-12-15T09:04:08.001450Z",
+          "width": 624,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-26",
+      "observationId": "0363100012571031_e_1oyjob7",
+      "buildingId": "0363100012571031",
+      "geometryRevision": "60f3795f2c3764a67a2c4278b5ce20722f7df2d3cba21a4658d82bfe5f4a6b55",
+      "evidenceKey": "efa1aec22338ac792e2ff6a9b4d988f823bf05f88412c314396fe0cbcb2efb7e",
+      "frontage": [
+        [
+          349.247744207154,
+          32.188750648347195
+        ],
+        [
+          344.9157443869917,
+          33.99275067693088
+        ]
+      ],
+      "surfaceIndices": [],
+      "analysisExcludedReason": "User review identifies source ambiguity; features must not be inferred until the target frontage is clarified.",
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/97ed0241182bff727bf552a6db88c419328582d67cdb798a0c50039c2bafd32a.jpg",
+          "cropSha256": "97ed0241182bff727bf552a6db88c419328582d67cdb798a0c50039c2bafd32a",
+          "captureDate": "2022-06-28T06:27:12.221910Z",
+          "width": 220,
+          "height": 518,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/526a2085f78788c1e48cca055d18ba1cd0c26cc212e5549e8cba657407a7e86c.jpg",
+          "cropSha256": "526a2085f78788c1e48cca055d18ba1cd0c26cc212e5549e8cba657407a7e86c",
+          "captureDate": "2022-06-28T06:27:12.221910Z",
+          "width": 537,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-27",
+      "observationId": "0363100012086076_e_103xrxl",
+      "buildingId": "0363100012086076",
+      "geometryRevision": "71687b785009b546001015540e1e32b984ba1f7dd4598f8c1f707b52f3d9df49",
+      "evidenceKey": "4bb9310f1f1287335fde48cad3fada153ee205e18ac04dfcf0d5581010e34b6d",
+      "frontage": [
+        [
+          -295.8282178467198,
+          -95.26824585953727
+        ],
+        [
+          -303.56821690408105,
+          -114.11824584874557
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/c1dd427ffac468359ef9b9ae3b7341fd81b20f77d779a4227bea06d5f4b91b73.jpg",
+          "cropSha256": "c1dd427ffac468359ef9b9ae3b7341fd81b20f77d779a4227bea06d5f4b91b73",
+          "captureDate": "2023-01-12T09:18:55.710230Z",
+          "width": 954,
+          "height": 828,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/772f505a78cf4f6f9410d10395558719f75566af3b93560105dcdc3308c059e6.jpg",
+          "cropSha256": "772f505a78cf4f6f9410d10395558719f75566af3b93560105dcdc3308c059e6",
+          "captureDate": "2025-07-31T10:31:11Z",
+          "width": 2331,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-29",
+      "observationId": "0363100012157746_e_04nemym",
+      "buildingId": "0363100012157746",
+      "geometryRevision": "ee66b0cb96c2656285d322c9f1b078bfcd8d1db1950daa5da3d4718f095e2d64",
+      "evidenceKey": "7421e042bcf0ae6f1c48915dc1fc8a80f6f19420831f7d9b273d5670a6cb059f",
+      "frontage": [
+        [
+          16.030769317614613,
+          -229.96924788848264
+        ],
+        [
+          10.231769569043536,
+          -227.91824784886558
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/cb0f66e828b485b7ba2c3f6e6bc48457ec007b01dfe06521195e8bdbb42db346.jpg",
+          "cropSha256": "cb0f66e828b485b7ba2c3f6e6bc48457ec007b01dfe06521195e8bdbb42db346",
+          "captureDate": "2023-01-12T09:12:21.403370Z",
+          "width": 288,
+          "height": 805,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/788c84eae23e26305288ef67492c5095ee2f540151b4971c1b9473cd38127f49.jpg",
+          "cropSha256": "788c84eae23e26305288ef67492c5095ee2f540151b4971c1b9473cd38127f49",
+          "captureDate": "2025-07-03T08:55:44Z",
+          "width": 704,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    },
+    {
+      "id": "case-30",
+      "observationId": "0363100012174564_e_14yoqnp",
+      "buildingId": "0363100012174564",
+      "geometryRevision": "bf8576feba216baf768086e2ec7068d0ad3e16dc2edff15623cf4113bee3ae9e",
+      "evidenceKey": "a29cb75aa23b66c4fb05abd4881827e265e8213d7faa6262b7b7ae73c4465b5d",
+      "frontage": [
+        [
+          316.6357572595298,
+          -370.6292498613475
+        ],
+        [
+          320.74775708664674,
+          -372.27324988209875
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../public/data/city-expansion/evidence/410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7.jpg",
+          "cropSha256": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+          "captureDate": "2023-03-20T11:11:48.788250Z",
+          "width": 207,
+          "height": 799,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        },
+        "ground": {
+          "path": "../../public/data/city-expansion/evidence/b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4.jpg",
+          "cropSha256": "b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4",
+          "captureDate": "2023-02-13T09:46:47.281620Z",
+          "width": 507,
+          "height": 539,
+          "registration": {
+            "status": "ambiguous"
+          },
+          "registrationAbstention": "Image analysis is authorized independently; wall registration remains unverified and cannot be materialized."
+        }
+      }
+    }
+  ]
+}

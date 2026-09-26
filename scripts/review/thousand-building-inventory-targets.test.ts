@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {prepareInventoryTargetsFromOwners} from './thousand-building-inventory-targets.ts';
+const sha=(x:string)=>x.repeat(64),raw=(tier:string)=>({path:`cache/${tier}.jpg`,sha256:sha(tier==='full'?'a':'b'),captureDate:'2025-01-02T10:00:00Z',width:100,height:80,plane:{start:{x:100,y:200},end:{x:104,y:200},baseZ:1,topZ:tier==='full'?12:5}});
+const owner:any={id:'building-1',geometryRevision:'g-1',geometry:{frame:{originRD:{x:100,y:200},heightDatum:'NAP'},building:{id:'building-1',footprint:{type:'Polygon',coordinates:[[[0,-2],[4,-2],[4,0],[0,0],[0,-2]]]},surfaces:[{type:'wall',rings:[[[0,0,0],[0,10,0],[4,10,0],[4,0,0]]]}]}}};
+const item={observationId:'obs-1',sourceObservationId:'obs-1',buildingId:'building-1',renderBuildingId:'building-1',wall:{start:{x:100,y:200},end:{x:104,y:200},normal:{x:0,y:1}},sources:{full:raw('full'),ground:raw('ground')}};
+const prepared=prepareInventoryTargetsFromOwners({version:1,trancheObservationIds:['obs-1'],records:[item]},[owner]);
+assert.equal(prepared.targetRecords.length,1);assert.equal(prepared.candidateSources.length,2);assert.equal(prepared.targetRecords[0].geometryRevision,'g-1');assert.equal(prepared.targetRecords[0].renderSurfaceIndices[0],0,'selected by plane-face fit, not a raw wall index');
+assert.equal(prepared.candidateSources[0].abstention.includes('unresolved'),true);assert.equal(prepared.candidateSources[0].imageToWall[0],.04);assert.equal(prepared.candidateSources[0].imageToWall[5],12,'NAP transform is relative to actual surface base');
+assert.equal(prepared.evidenceFiles.get(sha('a')),'cache/full.jpg');assert.deepEqual(prepared.targetRecords[0].normal,[0,-1],'global RD normal converts to owner local x/z axes for frontage framing');
+const off=structuredClone(item);off.sources.ground.plane.start.y=201;off.sources.ground.plane.end.y=201;assert.equal(prepareInventoryTargetsFromOwners({version:1,records:[off]},[owner]).omissions[0].reason,'source-plane-does-not-match-a-single-wall-within-tolerance');
+assert.equal(prepared.targetRecords[0].wallWidthM,4);assert.equal(prepared.targetRecords[0].height,10);
+console.log('thousand-building inventory targets passed');
