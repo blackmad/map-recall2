@@ -1,0 +1,159 @@
+{
+  "reviewer": "gpt-6-luna",
+  "run": "pass-3",
+  "assignmentSha256": "f69ba60fa78b034f8a3fb16251bcd86d39f5d8506f9b51228f160ee7498598ca",
+  "bundleSha256": "d3605ad945a0b8a27606c09a2315619e93c1d573bb78ea7381c3d84664669939",
+  "baselineReleaseId": "3d4551a8716c6b60dc59ba0d5de9b851628e62f4ae3eef2c6be7a5bd4ab7c9da",
+  "entries": [
+    {
+      "index": 0,
+      "buildingId": "0363100012166570",
+      "observationId": "0363100012166570_e_0wwk20u",
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "materialId": "redbrick",
+      "verdict": "accepted-material-family",
+      "dimensions": {
+        "identity": "Magenta overlay isolates the assigned Da Costakade 13 block; same block is visible in both game views.",
+        "family": "Source and trial both read as red-brown fired brick. The game wall is a little warmer/brighter than the deeply shaded photo, but family is supported.",
+        "brightness": "Slightly lighter/warmer in the game view; source is strongly shaded, so do not treat this as a calibrated mismatch.",
+        "texture": "Low-contrast brick pattern remains on the vertical wall in front and oblique views. It is now much finer than pass 1 and not obviously oversized at these views; no claim of measured course scale.",
+        "caps": "Top cap is plain grey in the front and oblique views; no brick pattern spill visible.",
+        "limitations": "Material-family review only. Facade detail/geometry and exact texture scale are not validated."
+      },
+      "evidence": {
+        "identity": {
+          "file": "000-identity.png",
+          "sha256": "20343e8d0c863d9be3649e85337ad76183c3b39665d864d8eeb42fd83e2dcee1"
+        },
+        "front": {
+          "file": "000-preview-front.png",
+          "sha256": "415797c0b95c26cf82c7859376382ae0a98da7b1b2351fc80a613c62cc6237c4"
+        },
+        "oblique": {
+          "file": "000-preview-oblique.png",
+          "sha256": "7aef4b798713eab8e70aaf2137bc0efdbae0778850273f4ad6495e34675c58c6"
+        }
+      }
+    },
+    {
+      "index": 1,
+      "buildingId": "0363100012162796",
+      "observationId": "0363100012162796_e_13u2mzl",
+      "sourceSha256": "e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262",
+      "materialId": "brownbrick",
+      "verdict": "unresolved",
+      "dimensions": {
+        "identity": "Magenta overlay identifies the selected building, but its owner-facing wall is a thin strip in the block view.",
+        "family": "Source supports brown/red-brown brick. The rendered strip is too narrow at this capture scale to confirm that the wall treatment has the same family rather than a neighboring facade color.",
+        "brightness": "Unresolved because the selected wall occupies few pixels and the source upper portion is severely overexposed; do not infer a brightness defect.",
+        "texture": "Course pattern is not legible enough on the selected thin wall in either view to assess scale. No exact scale claim.",
+        "caps": "The selected building has a plain top cap; no clear top-face pattern leak.",
+        "limitations": "Identity is marked, but apparent wall pixels are too thin for confident source-to-render material comparison. Hold pending a closer view."
+      },
+      "evidence": {
+        "identity": {
+          "file": "001-identity.png",
+          "sha256": "40ce8d1d709e71c1ef095df817a192db54d4fc8f95b6c74ac54516fae7f5602a"
+        },
+        "front": {
+          "file": "001-preview-front.png",
+          "sha256": "3ef4e30eb576e3ecf6a732e805405cd06f3449c1b856c24db9260ba8c1e340ba"
+        },
+        "oblique": {
+          "file": "001-preview-oblique.png",
+          "sha256": "600069db1cf3f28d2edb0a339e01be246798af075c9394e3aaca1653302cf66c"
+        }
+      }
+    },
+    {
+      "index": 3,
+      "buildingId": "0363100012162897",
+      "observationId": "0363100012162897_e_0c4e2gf",
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "materialId": "buffbrick",
+      "verdict": "accepted-material-family",
+      "dimensions": {
+        "identity": "Magenta overlay isolates the assigned Da Costakade 182 facade in the front view; the same volume is visible from the oblique angle.",
+        "family": "Source is warm buff/ochre brick; the trial retains a muted buff/ochre family rather than changing it to red or grey.",
+        "brightness": "Trial reads somewhat duller/browner than the sunlit source photo. Scene lighting and source sun make absolute brightness uncertain; this does not overturn family acceptance.",
+        "texture": "Wall courses are subtle at this zoom and look finer than pass 1; these captures do not establish an exact physical course scale.",
+        "caps": "Top cap appears plain and untextured in both views.",
+        "limitations": "Accepts the broad wall-material family only; no full geometry or exact scale claim."
+      },
+      "evidence": {
+        "identity": {
+          "file": "003-identity.png",
+          "sha256": "0a1ca23b6098e939da1d3599ca71634533773d7f33a7feaff7b772c57e54b459"
+        },
+        "front": {
+          "file": "003-preview-front.png",
+          "sha256": "98b258eac2226a7e14519c5be8192b4786e911110cef4b7b8617204e72535317"
+        },
+        "oblique": {
+          "file": "003-preview-oblique.png",
+          "sha256": "1bd1535b20a45dcdef3223314ca3dc3449964e347140ef9b95694237c79cbcb1"
+        }
+      }
+    },
+    {
+      "index": 4,
+      "buildingId": "0363100012165154",
+      "observationId": "0363100012165154_e_16tobqf",
+      "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "materialId": "greybrick",
+      "verdict": "accepted-material-family",
+      "dimensions": {
+        "identity": "Magenta overlay isolates Da Costakade 40 frontage; target is traceable in the front and oblique views.",
+        "family": "Source and trial both read as grey masonry/brick. The source does not distinguish substrate or finish, and this verdict does not assert either.",
+        "brightness": "Trial is mildly warmer/darker than the grey source impression; cloud/light differences and small wall area make this uncertain.",
+        "texture": "No courses are clearly resolved on this target at either view. Cannot accept or reject exact texture scale from these captures.",
+        "caps": "Visible cap is plain; no clear brick texture on the upward face.",
+        "limitations": "Accepts only the broad grey material family; exact substrate, texture scale, and full geometry are not assessed."
+      },
+      "evidence": {
+        "identity": {
+          "file": "004-identity.png",
+          "sha256": "c415789e375afacfcf3d922761626d8232137cfe9692663d44e09d387d5f1fbc"
+        },
+        "front": {
+          "file": "004-preview-front.png",
+          "sha256": "580929543667660be9a90a853488a0f3cef515882fcf28d247cb651395bfb8d5"
+        },
+        "oblique": {
+          "file": "004-preview-oblique.png",
+          "sha256": "093c0b78ff0b5a3a67860f5deb7607e60b99cf85ac065bdc3889ca1646e05be7"
+        }
+      }
+    },
+    {
+      "index": 10,
+      "buildingId": "0363100012168920",
+      "observationId": "0363100012168920_e_0bxls2d",
+      "sourceSha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
+      "materialId": "unknownneutral",
+      "verdict": "unresolved",
+      "dimensions": {
+        "identity": "Magenta overlay identifies the Elandsgracht 148 wall in both views.",
+        "family": "Source supports a smooth dark blue-grey wall, but `unknown-neutral` did not participate in the material-texture trial.",
+        "brightness": "The existing render is visible but is not a trial treatment, so it cannot validate the material palette brightness.",
+        "texture": "The source is smooth and the existing game wall remains plain; this is not evidence of trial texture behavior.",
+        "caps": "Not applicable to material-trial acceptance.",
+        "limitations": "Explicitly ineligible: unknown-neutral retains original game material. Do not count as acceptance; lettering/graphics are outside this trial."
+      },
+      "evidence": {
+        "identity": {
+          "file": "010-identity.png",
+          "sha256": "60c6e8f9eb2606a22cf2c2b25f89ce3295280db3a1259d5280601681b0b7378e"
+        },
+        "front": {
+          "file": "010-preview-front.png",
+          "sha256": "1d3b36703767dc7b2340fac8651bdf45b956b50b9a8ac95a819455a80817e8b0"
+        },
+        "oblique": {
+          "file": "010-preview-oblique.png",
+          "sha256": "c9278e50d26c96ad935da190679072278e435e2fc91bb8e6714493f2e30ce0f0"
+        }
+      }
+    }
+  ]
+}
