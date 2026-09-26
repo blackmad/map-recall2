@@ -95,7 +95,7 @@ canvas { display: block; position: relative; z-index: 2; }
   pointer-events: auto;
 }
 #canal-card { position: relative; }
-.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 8px; padding: 4px 10px 4px 7px; border: 1px solid var(--day-line-strong); border-radius: 999px; background: var(--day-fill); color: var(--day-accent-ink); font: 800 10px/1 var(--font-plaque); letter-spacing: .14em; text-transform: uppercase; }
+.prompt-kind { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 8px; padding: 4px 10px 4px 7px; border: 1px solid var(--day-line-strong); border-radius: 999px; background: var(--day-fill); color: var(--day-accent-ink); font: 800 12px/1 var(--font-plaque); letter-spacing: .14em; text-transform: uppercase; }
 .prompt-kind .prompt-kind-icon { display: grid; place-items: center; width: 18px; height: 18px; line-height: 1; letter-spacing: 0; }
 .prompt-kind .prompt-kind-icon svg { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .prompt-kind .prompt-kind-icon svg.filled { fill: currentColor; stroke: none; }
@@ -130,9 +130,9 @@ canvas { display: block; position: relative; z-index: 2; }
 .canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: var(--day-fill-hover); color: var(--enamel-muted); font-size: 11px; font-weight: bold; }
 
 /* ---- Shared form components (both themes) ---- */
-.setup-section-title { margin: 24px 0 10px; color: var(--accent-ink); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+.setup-section-title { margin: 24px 0 10px; color: var(--accent-ink); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; }
 .setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.setup-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 12px 13px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-sunk); color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.setup-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 12px 13px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-sunk); color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .08em; }
 .setup-field:focus-within { border-color: var(--line-strong); background: var(--surface-sunk-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
 .setup-field select, .setup-field input[type="text"] { width: 100%; padding: 0 24px 0 0; border: 0; border-radius: 0; outline: 0; background: transparent; color: var(--ink); font: 600 14px/1.3 var(--font-ui); }
 .preference-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
@@ -371,6 +371,22 @@ canvas { display: block; position: relative; z-index: 2; }
 }
 @keyframes setup-cue-nudge { 50% { transform: translateY(3px); } }
 @media (prefers-reduced-motion: reduce) { .setup-scroll-cue { animation: none; } }
+/* Destructive actions, fenced and labelled; both still confirm first. */
+.setup-danger { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--day-line); display: grid; gap: 8px; }
+.setup-danger-title { margin: 0; color: var(--day-ink-muted); font: 700 12px/1 var(--font-plaque); letter-spacing: .12em; text-transform: uppercase; }
+.account-button.setup-danger-button { width: 100%; min-height: 44px; color: var(--day-danger); border-color: rgba(168,50,31,.35); background: transparent; }
+.account-button.setup-danger-button:hover { background: rgba(168,50,31,.07); }
+/* Keycap badges document keyboard shortcuts; a finger has no digit keys. */
+@media (hover: none) and (pointer: coarse) {
+  .canal-choice-key { display: none; }
+}
+/* Grow hit areas to 44 px without growing the visual controls — the phone
+   setup has no spare height, and the account buttons and compact tiles are
+   deliberately small. */
+.account-button.enamel-quiet,
+.setup-choice-row.compact .setup-choice { position: relative; }
+.account-button.enamel-quiet::after { content: ''; position: absolute; inset: -8px -3px; }
+.setup-choice-row.compact .setup-choice::after { content: ''; position: absolute; inset: -2px 0; }
 .enamel-setup-footer {
   flex-shrink: 0;
   display: flex;
@@ -539,7 +555,7 @@ body.setup-open #utility-buttons { display: none; }
    with real scrolling. The canvas card is a glance; this is the read. */
 #landmark-panel .utility-card { display: flex; flex-direction: column; width: min(100%, 640px); max-height: min(86dvh, 760px); }
 #landmark-panel-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-#landmark-panel-badges span { padding: 3px 7px; border-radius: 3px; background: rgba(183,129,37,.18); color: #7a5514; font-size: 10px; font-weight: bold; letter-spacing: .04em; }
+#landmark-panel-badges span { padding: 3px 7px; border-radius: 3px; background: rgba(183,129,37,.18); color: #7a5514; font-size: 11px; font-weight: bold; letter-spacing: .04em; }
 #landmark-panel-badges span[data-kind="lang"] { background: rgba(104,116,110,.16); color: #54605a; }
 #landmark-panel-badges span[data-kind="fact"] { background: rgba(94,74,124,.15); color: #5b4a7c; }
 #landmark-panel h2 { margin-bottom: 12px; }
@@ -559,7 +575,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   box-shadow: 0 2px 10px rgba(31,28,23,.18);
 }
 #utility-buttons button:hover { background: var(--day-paper-raised); border-color: var(--day-line-strong); }
-#map-attribution { position: fixed; left: 10px; bottom: 6px; z-index: 10; max-width: min(42vw, 220px); color: var(--day-ink-muted); font: 9px/1.3 var(--font-ui); text-shadow: 0 0 3px rgba(251,248,242,.9); pointer-events: none; }
+#map-attribution { position: fixed; left: 10px; bottom: 6px; z-index: 10; max-width: min(42vw, 220px); color: var(--day-ink-muted); font: 10px/1.3 var(--font-ui); text-shadow: 0 0 3px rgba(251,248,242,.9); pointer-events: none; }
 #map-attribution a { color: inherit; pointer-events: auto; text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---- Knowledge review ------------------------------------------------ *
@@ -784,7 +800,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   min-width: 20px; padding: 3px 5px;
   border-radius: 10px;
   color: var(--ink); background: var(--day-fill-hover);
-  font: 700 10px/1 var(--font-ui);
+  font: 700 11px/1 var(--font-ui);
   font-variant-numeric: tabular-nums;
 }
 .knowledge-items {
@@ -896,7 +912,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   border-radius: 2px 2px 0 0;
   background: var(--day-accent-ink);
 }
-.knowledge-activity small { color: var(--enamel-muted); font: 10px/1 var(--font-ui); text-transform: uppercase; }
+.knowledge-activity small { color: var(--enamel-muted); font: 11px/1 var(--font-ui); text-transform: uppercase; }
 .knowledge-cities { margin-top: 8px; }
 .knowledge-cities > div {
   display: grid; grid-template-columns: 1fr auto; gap: 4px 10px;
@@ -977,11 +993,11 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
     margin: 0;
   }
   .knowledge-stat-list div { padding: 6px 0; }
-  .knowledge-stat-list dt { font-size: 10px; }
+  .knowledge-stat-list dt { font-size: 12px; }
   .knowledge-stat-list dd { font-size: 16px; }
   .knowledge-legend { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 2px; }
   .knowledge-legend h2 { width: 100%; font-size: 13px; }
-  .knowledge-legend div { margin: 0; font-size: 10px; }
+  .knowledge-legend div { margin: 0; font-size: 12px; }
   .knowledge-queue {
     min-height: 460px;
     margin-top: 22px;
@@ -1052,7 +1068,8 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   .setup-choice-row.strip + .setup-choice-row.icons { margin-top: 6px; }
   .setup-city-select { margin: 6px 0 0; padding: 7px 10px; }
   .setup-city-select select { font-size: 15px; min-height: 28px; }
-  .advanced-options > summary { padding: 8px 0; font-size: 12px; }
+  .advanced-options > summary { padding: 8px 0; font-size: 12px; min-height: 44px; line-height: 28px; }
+  .enamel-utility .setup-field select { min-height: 44px; }
   .route-surprise { grid-template-columns: 40px minmax(0,1fr); }
   .route-chip { display: none; }
   /* Tap targets: 44px is the smallest reliably hittable control. */

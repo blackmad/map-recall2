@@ -21,6 +21,10 @@ class InputManager {
     // gear button must not swallow Enter/Esc on the finish card.
     window.addEventListener('keydown', e => {
       if (this._shouldIgnoreKeyboardTarget(e.target)) return;
+      // Tab toggles the minimap while driving, but it is also the only way a
+      // keyboard moves between buttons. It used to be swallowed everywhere, so
+      // focus stuck on the first control of setup and the knowledge screen.
+      if (e.code === 'Tab' && this._domOwnsTab(e.target)) return;
       if (!this.keys[e.code]) this.justPressed[e.code] = true;
       this.keys[e.code] = true;
       if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','Enter','Escape','Minus','Equal','NumpadAdd','NumpadSubtract','Tab'].includes(e.code)) e.preventDefault();
@@ -54,6 +58,18 @@ class InputManager {
       node = node.parentElement;
     }
     return true;
+  }
+
+  /** True when an HTML surface is up (setup, knowledge review, a panel, the
+   *  quiz) or focus sits on a control: then Tab is the browser's. */
+  _domOwnsTab(target) {
+    const body = document.body;
+    if (body.classList.contains('setup-open')) return true;
+    if (document.querySelector('.knowledge-review')) return true;
+    for (const panel of document.querySelectorAll('.utility-panel, #canal-prompt')) {
+      if (window.getComputedStyle(panel).display !== 'none') return true;
+    }
+    return target instanceof HTMLElement && target !== body && target.id !== 'gameCanvas';
   }
 
   /** Called by Game._resize: the pad's geometry follows the logical canvas. */

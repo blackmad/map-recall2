@@ -359,7 +359,7 @@ class Renderer {
     // Keep in step with `measureLandmarkCard` height: top air, badge row, name,
     // body line step, then bottom air so the last glyph is not flush to the plate.
     let textY = y + 18;
-    ctx.font = `700 9px ${surface.fontMono}`;
+    ctx.font = `700 11px ${surface.fontMono}`;
     ctx.textAlign = 'left';
     for (const badge of card.badges) {
       const [fill, ink] = badgeColors[badge.kind];
