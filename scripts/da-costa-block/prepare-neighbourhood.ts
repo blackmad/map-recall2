@@ -8,6 +8,7 @@ import { AMSTERDAM_WORLD_ALIGNED, rectifyFacade, worldToEquirectangularPixel } f
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { VERSION, VISIBILITY_VERSION, VERTICAL_EXTENT_VERSION, sha, lensFor, inside, footprintOcclusion, wallVerticalExtent } from './neighbourhood-core.ts';
 import { loadAreaConfig } from './area-config.mjs';
+import { requireDiskSpace, reusePanoramaFile, storePanoramaFile } from './panorama-file-cache.js';
 
 const arg=(n:string,d:string)=>process.argv.find(v=>v.startsWith(`--${n}=`))?.slice(n.length+3)??d;
 const area=await loadAreaConfig(),custom=!area.referencePreset;
@@ -20,6 +21,10 @@ const selectedElevations=new Set([
   ...onlyElevation.split(',').filter(Boolean),
   ...(elevationFile?(await fs.readFile(elevationFile,'utf8')).split(/\r?\n|,/).map(value=>value.trim()).filter(Boolean):[]),
 ]);
+const sourceProfile=arg('source-profile','full');
+if(!['full','material-4000'].includes(sourceProfile))throw Error('Unknown panorama source profile');
+const nativeRaster=sourceProfile==='material-4000';
+const panoramaLink=nativeRaster?'equirectangular_medium':'equirectangular_full';
 const useWallHeights=process.argv.includes('--wall-heights');
 const reusePanoramas=arg('reuse-panoramas','.cache/da-costa-neighbourhood/panoramas');
 if(!inventoryOnly&&path.resolve(root)===path.resolve('.cache/da-costa-neighbourhood')&&!process.argv.includes('--allow-active-write'))
@@ -31,7 +36,7 @@ const block=await read(arg('block',path.join(area.outputRoot,'block.json')));
 if(custom&&block.areaConfigHash!==area.configHash)throw Error('Compiled block does not match area configuration');
 const bag=await read(path.join(area.cacheRoot,'bag.json'));
 const panos=(await read(path.join(area.cacheRoot,'panoramas.json'))).filter((p:any)=>p.surface_type==='L');
-const sourceHash=sha(JSON.stringify({block,bag,panos,version:VERSION,visibility:VISIBILITY_VERSION,...(useWallHeights?{verticalExtent:VERTICAL_EXTENT_VERSION}:{}),camera:AMSTERDAM_WORLD_ALIGNED}));
+const sourceHash=sha(JSON.stringify({block,bag,panos,version:VERSION,visibility:VISIBILITY_VERSION,...(useWallHeights?{verticalExtent:VERTICAL_EXTENT_VERSION}:{}),camera:AMSTERDAM_WORLD_ALIGNED,...(nativeRaster?{sourceProfile,rasterCodec:sharp.versions}: {})}));
 if(!inventoryOnly){await fs.mkdir(path.join(root,'images'),{recursive:true});await fs.mkdir(path.join(root,'panoramas'),{recursive:true});}
 const registry=new Map(bag.map((f:any)=>[f.properties.identificatie,f]));
 const toLocal=(p:any)=>[p.x-block.origin.x,block.origin.y-p.y];
@@ -119,16 +124,21 @@ async function reusableRecord(id:string){const record=reusable.get(id);if(!recor
 async function panorama(p:any){
   if(decoded.has(p.pano_id))return decoded.get(p.pano_id);
   const file=path.join(root,'panoramas',p.pano_id+'.jpg');let bytes;
-  try{bytes=await fs.readFile(file);}catch{
-    try{bytes=await fs.readFile(path.join(reusePanoramas,p.pano_id+'.jpg'));await fs.writeFile(file,bytes);}catch{}
+  try{bytes=await fs.readFile(file);}catch(error:any){
+    if(error.code!=='ENOENT')throw error;
+    try{await reusePanoramaFile(path.join(reusePanoramas,p.pano_id+'.jpg'),file);bytes=await fs.readFile(file);}
+    catch(reuseError:any){if(reuseError.code!=='ENOENT')throw reuseError;}
   }
   if(!bytes){
     if(downloads>=downloadLimit)throw Error('download-cap');
-    const url=p._links.equirectangular_full.href;
+    await requireDiskSpace(path.dirname(file),40*1024**2);
+    const url=p._links[panoramaLink]?.href;if(!url)throw Error('panorama-resolution-unavailable');
     const r=await fetch(url,{signal:AbortSignal.timeout(45000)});if(!r.ok)throw Error(`panorama-http-${r.status}`);
-    bytes=Buffer.from(await r.arrayBuffer());downloads++;await fs.writeFile(file,bytes);
+    bytes=Buffer.from(await r.arrayBuffer());downloads++;await storePanoramaFile(file,bytes);
   }
-  const image=jpeg.decode(bytes,{useTArray:true,formatAsRGBA:true});
+  const raw=nativeRaster?await sharp(bytes).ensureAlpha().raw().toBuffer({resolveWithObject:true}):null;
+  const image=raw?{data:raw.data,width:raw.info.width,height:raw.info.height}:jpeg.decode(bytes,{useTArray:true,formatAsRGBA:true});
+  if(nativeRaster&&(image.width!==4000||image.height!==2000))throw Error('unexpected-medium-panorama-dimensions');
   const value={image,hash:sha(bytes)};decoded.set(p.pano_id,value);
   // Decoded 8K panoramas are large. Keep only a small reuse window.
   if(decoded.size>3)decoded.delete(decoded.keys().next().value!);
@@ -139,6 +149,7 @@ for(const target of targets.slice(0,limit)){
   try{
     const id=wall.elevationId.replaceAll(':','_');
     const cached=await reusableRecord(id);if(cached){records.push(cached);continue;}
+    await requireDiskSpace(root);
     const images:any={};
     for(const kind of ['full','ground','roof','context']){
       const v=kind==='ground'?detail:full;const {image,hash}=await panorama(v.p);
@@ -148,13 +159,13 @@ for(const target of targets.slice(0,limit)){
       const dx=wall.end.x-wall.start.x,dy=wall.end.y-wall.start.y;
       const plane={start:{x:wall.start.x-dx*margin,y:wall.start.y-dy*margin},end:{x:wall.end.x+dx*margin,y:wall.end.y+dy*margin},baseZ:kind==='roof'?Math.max(ground,top-7):ground-.3,topZ:kind==='ground'?ground+4.6:top+1.2};
       const rect=rectifyFacade(image,v.lens.pose,plane,{camera:AMSTERDAM_WORLD_ALIGNED,pixelsPerMetre:kind==='ground'?110:45,maxPixels:1400000});
-      const file=`${id}-${kind}.jpg`;const bytes=jpeg.encode({width:rect.width,height:rect.height,data:Buffer.from(rect.data)},89).data;
+      const file=`${id}-${kind}.jpg`;const bytes=nativeRaster?await sharp(Buffer.from(rect.data),{raw:{width:rect.width,height:rect.height,channels:4}}).jpeg({quality:89}).toBuffer():jpeg.encode({width:rect.width,height:rect.height,data:Buffer.from(rect.data)},89).data;
       const stats=await sharp(bytes).stats();
       if(stats.channels.slice(0,3).every(c=>c.stdev<6))throw Error('blank-crop');
       await fs.writeFile(path.join(root,'images',file),bytes);
-      images[kind]={file,sha256:sha(bytes),panoramaId:v.p.pano_id,panoramaSha256:hash,date:v.p.timestamp,url:v.p._links.equirectangular_full.href,visibility:{version:VISIBILITY_VERSION,hiddenFraction:v.hidden,rayBlockers:v.rayBlockers},...(useWallHeights?{verticalExtent}:{}),
+      images[kind]={file,sha256:sha(bytes),panoramaId:v.p.pano_id,panoramaSha256:hash,date:v.p.timestamp,url:v.p._links[panoramaLink].href,sourceProfile,visibility:{version:VISIBILITY_VERSION,hiddenFraction:v.hidden,rayBlockers:v.rayBlockers},...(useWallHeights?{verticalExtent}:{}),
         pose:v.lens.pose,heightInferred:v.lens.inferred,datum:v.lens.datum,plane,width:rect.width,height:rect.height,sourceDimensions:[image.width,image.height],standoff:v.standoff,obliquity:v.angle};
-      if(kind==='full'&&records.length<6){
+      if(kind==='full'&&records.length<6&&!nativeRaster){
         const legacy=rectifyFacade(image,v.lens.pose,plane,{yaw:'centre',pixelsPerMetre:45,maxPixels:1400000});
         await fs.writeFile(path.join(root,'images',id+'-legacy.jpg'),jpeg.encode({width:legacy.width,height:legacy.height,data:Buffer.from(legacy.data)},85).data);
         const quad=[wall.start,wall.end].flatMap(p=>[worldToEquirectangularPixel({...p,z:ground},v.lens.pose,image,AMSTERDAM_WORLD_ALIGNED),worldToEquirectangularPixel({...p,z:top},v.lens.pose,image,AMSTERDAM_WORLD_ALIGNED)]);
@@ -166,8 +177,13 @@ for(const target of targets.slice(0,limit)){
       groundNAP:b.groundNAP,roofGeometry:b.roofType,images,
       derivationKey:sha(JSON.stringify({sourceHash,wall,images})),placement:'unreviewed',metricEligible:false});
     console.log(`${records.length}/${Math.min(limit,targets.length)} ${b.addresses[0]} ${wall.lengthM.toFixed(1)}m`);
-  }catch(e){omitted.push({elevationId:wall.elevationId,buildingId:b.id,reason:String(e)});console.log(`omit ${b.id}: ${e}`);}
-  await fs.writeFile(path.join(root,'manifest.json'),JSON.stringify({version:VERSION,visibility:VISIBILITY_VERSION,sourceHash,camera:AMSTERDAM_WORLD_ALIGNED,generatedAt,origin:block.origin,bounds:block.bounds,records,omitted,candidates:targets.length,downloads:sourceDownloads+downloads},null,2));
+  }catch(e){
+    // Only deterministic source-quality failures may become durable omissions.
+    // Network, cache, decode and resource failures must remain retryable on resume.
+    if(!(e instanceof Error)||!['blank-crop','panorama-resolution-unavailable'].includes(e.message))throw e;
+    omitted.push({elevationId:wall.elevationId,buildingId:b.id,reason:String(e)});console.log(`omit ${b.id}: ${e}`);
+  }
+  await fs.writeFile(path.join(root,'manifest.json'),JSON.stringify({version:VERSION,visibility:VISIBILITY_VERSION,sourceHash,sourceProfile,camera:AMSTERDAM_WORLD_ALIGNED,generatedAt,origin:block.origin,bounds:block.bounds,records,omitted,candidates:targets.length,downloads:sourceDownloads+downloads},null,2));
 }
-await fs.writeFile(path.join(root,'manifest.json'),JSON.stringify({version:VERSION,visibility:VISIBILITY_VERSION,sourceHash,camera:AMSTERDAM_WORLD_ALIGNED,generatedAt,origin:block.origin,bounds:block.bounds,records,omitted,candidates:targets.length,downloads:sourceDownloads+downloads},null,2));
+await fs.writeFile(path.join(root,'manifest.json'),JSON.stringify({version:VERSION,visibility:VISIBILITY_VERSION,sourceHash,sourceProfile,camera:AMSTERDAM_WORLD_ALIGNED,generatedAt,origin:block.origin,bounds:block.bounds,records,omitted,candidates:targets.length,downloads:sourceDownloads+downloads},null,2));
 console.log(JSON.stringify({frontages:records.length,buildings:new Set(records.map(r=>r.buildingId)).size,omitted:omitted.length,downloads}));

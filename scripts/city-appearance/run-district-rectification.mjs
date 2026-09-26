@@ -24,10 +24,11 @@ export async function planDistrictRectification(args = process.argv.slice(2)) {
   const batchSize = integer(flag(args, 'batch-size') ?? 100, 'Batch size', 1, 250);
   const fromBatch = integer(flag(args, 'from-batch') ?? 0, 'First batch', 0, 1000000);
   const maxBatches = integer(flag(args, 'max-batches') ?? 1000000, 'Maximum batches', 1, 1000000);
+  const sourceProfile=flag(args,'source-profile')??'full';if(!['full','material-4000'].includes(sourceProfile))throw Error('Unknown panorama source profile');
   const areaId = flag(args, 'area-id');
   if (areaId && !district.areas.some(entry => entry.id === areaId)) throw Error(`Unknown district area: ${areaId}`);
   const areas = [];
-  const sharedPool = new Set(await fs.readdir('.cache/city-appearance/shared-panoramas').catch(error => {
+  const sharedPool = new Set(await fs.readdir(sourceProfile==='full'?'.cache/city-appearance/shared-panoramas':'.cache/city-appearance/shared-panoramas-material-4000').catch(error => {
     if (error.code === 'ENOENT') return []; throw error;
   }));
   const allPanoramas = new Set();
@@ -45,12 +46,12 @@ export async function planDistrictRectification(args = process.argv.slice(2)) {
   }
   const missingPanoramas = [...allPanoramas].filter(id => !sharedPool.has(`${id}.jpg`)).length;
   return { version:1, mode:'plan', districtId:district.id, districtConfigHash:district.configHash,
-    configFile, batchSize, fromBatch, maxBatches, areas,
+    configFile, sourceProfile, batchSize, fromBatch, maxBatches, areas,
     eligibleFrontages:areas.reduce((sum, area) => sum + area.eligibleFrontages, 0),
     districtOwners:areas.reduce((sum, area) => sum + area.districtOwners, 0),
     frontageOwners:areas.reduce((sum, area) => sum + area.frontageOwners, 0),
     uniqueProposedPanoramas:allPanoramas.size, missingFromSharedPool:missingPanoramas,
-    estimatedMissingPanoramaBytesAt3Point1MB:Math.round(missingPanoramas * 3.1 * 1024 * 1024),
+    storageEstimate:{assumedMeanPanoramaBytes:sourceProfile==='full'?3.1*1024*1024:908454,missingPanoramaBytes:Math.round(missingPanoramas*(sourceProfile==='full'?3.1*1024*1024:908454)),basis:sourceProfile==='full'?'approximate cached full-panorama mean':'first 20 native 4000px panoramas; forecast only; excludes crops and variance'},
     sourceIdentity:'frozen municipal polygons and publisher owner assignment',
     outputs:'local rectified source crops and automated byte preflight only', paidCalls:0, publication:'none' };
 }
@@ -63,7 +64,7 @@ async function completed(selection) {
     if (report.selectionHash !== selection.report.selectionHash || report.manifestSha256 !== digest(bytes) ||
         preflight.selectionHash !== selection.report.selectionHash || preflight.manifestSha256 !== digest(bytes) ||
         preflight.visualSourceIdentity !== 'not-reviewed' ||
-        preflight.summary.frontages !== selection.report.records.length) return false;
+        preflight.summary.frontages !== report.frontages || report.frontages+report.omitted !== selection.report.records.length) return false;
     await auditEvidence(selection.report, path.join(root, 'evidence'));
     return true;
   } catch (error) { if (error.code === 'ENOENT') return false; throw error; }
@@ -72,20 +73,21 @@ async function completed(selection) {
 export async function runDistrictRectification(plan) {
   const district = await loadDistrictConfig(plan.configFile);
   if (district.configHash !== plan.districtConfigHash) throw Error('District config changed since planning');
-  const output = path.resolve('.cache/city-appearance/districts', plan.districtId, 'rectification', `${plan.districtConfigHash}-batch-${plan.batchSize}.json`);
+  const output = path.resolve('.cache/city-appearance/districts', plan.districtId, 'rectification', `${plan.districtConfigHash}-${plan.sourceProfile}-batch-${plan.batchSize}.json`);
   const report = { ...plan, mode:'run', generatedAt:new Date().toISOString(), batches:[], paidCalls:0, publication:'none' };
+  const checkpoint=async()=>{const completed=report.batches.filter(row=>Number.isInteger(row.rectifiedFrontages));report.progress={completedBatches:completed.length,rectifiedFrontages:completed.reduce((n,row)=>n+row.rectifiedFrontages,0),omittedFrontages:completed.reduce((n,row)=>n+row.omittedFrontages,0),pendingFrontages:plan.eligibleFrontages-completed.reduce((n,row)=>n+row.frontages,0),visuallyAcceptedFrontages:0};await atomicJson(output,report);};
   const launch = async (script, args) => exec(process.execPath, ['--import', 'tsx', script, ...args], { cwd:process.cwd(), maxBuffer:8 * 1024 * 1024 });
   let processed = 0;
   for (const area of plan.areas) for (let index=plan.fromBatch; index<area.batches && processed<plan.maxBatches; index++) {
     const member = district.areas.find(entry => entry.id === area.id);
     if (!member) throw Error(`District area changed: ${area.id}`);
-    const selected = await selectPanoramaDistrictCoverage({ ...member.area, configHash:member.configHash }, { districtConfigFile:plan.configFile, batchSize:plan.batchSize, batchIndex:index });
+    const selected = await selectPanoramaDistrictCoverage({ ...member.area, configHash:member.configHash }, { districtConfigFile:plan.configFile, batchSize:plan.batchSize, batchIndex:index, sourceProfile:plan.sourceProfile });
     if (selected.report.queueHash !== area.queueHash) throw Error(`District queue changed: ${area.id}`);
     const args = [`--area-config=${area.areaConfig}`, '--mode=district-coverage', `--district-config=${plan.configFile}`,
-      `--batch-size=${plan.batchSize}`, `--batch-index=${index}`];
+      `--batch-size=${plan.batchSize}`, `--batch-index=${index}`,`--source-profile=${plan.sourceProfile}`];
     const row = { areaId:area.id, batchIndex:index, selectionHash:selected.report.selectionHash,
       frontages:selected.report.records.length, status:'running' };
-    report.batches.push(row); await atomicJson(output, report);
+    report.batches.push(row); await checkpoint();
     try {
       if (await completed(selected)) row.status = 'reused-verified';
       else {
@@ -96,12 +98,12 @@ export async function runDistrictRectification(plan) {
       }
       const sourceAudit = await read(path.join(selected.destination, 'source-audit.json'));
       row.rectifiedFrontages = sourceAudit.frontages;
-      row.omittedFrontages = sourceAudit.omitted;
+      row.omittedFrontages = sourceAudit.omitted;if(sourceAudit.omitted)row.status='rectified-with-recorded-omissions';
       row.uniquePanoramas = sourceAudit.uniquePanoramas;
       processed++;
-      await atomicJson(output, report);
+      await checkpoint();
     } catch (error) {
-      row.status = 'failed'; row.error = String(error.message ?? error); await atomicJson(output, report); throw error;
+      row.status = 'failed'; row.error = String(error.message ?? error); await checkpoint(); throw error;
     }
   }
   return { ...report, reportPath:output, processedBatches:processed };

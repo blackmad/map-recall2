@@ -6,6 +6,8 @@ establish exact colour for every ten-case example before any wider experiment.
 The owner accepts the current colour direction. Expand a labelled experiment;
 do not silently turn uncertain assignments into verified matches.
 
+Immediate scope updated: [complete Jordaan/Da Costabuurt rectification first](district-rectification-expansion.md).
+
 ## Decision
 
 Prioritise colour and material coverage. Leave windows, rooflines and gables out
