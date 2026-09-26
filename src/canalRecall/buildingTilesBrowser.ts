@@ -99,6 +99,7 @@ export class BuildingTileStreamer {
   private onFirstBuildings?: () => void;
   private onFeatures?: (features: BuildingFeature[]) => void;
   private available = false;
+  private attached = false;
   private disposed = false;
   private appearancePriors=new Map<string,BuildingAppearancePrior>();
   private styledFeatures=0;
@@ -167,6 +168,7 @@ export class BuildingTileStreamer {
    */
   attach(onFirstBuildings?: () => void, onFeatures?: (features: BuildingFeature[]) => void): void {
     if (!this.available) return;
+    this.attached = true;
     this.onFirstBuildings = onFirstBuildings;
     this.onFeatures = onFeatures;
     this.map.on('moveend', () => this.followCamera());
@@ -180,7 +182,10 @@ export class BuildingTileStreamer {
    * start point, not the style's default centre.
    */
   followCamera(): void {
-    if (!this.available || this.disposed) return;
+    // The caller replaces its GeoJSON source after probing and loading priors.
+    // Loading before attach would populate the old source, then leave the new
+    // source empty while the cache/signature incorrectly say it is current.
+    if (!this.available || !this.attached || this.disposed) return;
     const centre = this.map.getCenter();
     const tile = tileFor(centre.lng, centre.lat, this.zoom);
     const zoomBucket = Math.round(this.map.getZoom() * 2) / 2;

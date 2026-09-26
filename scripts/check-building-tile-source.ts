@@ -11,7 +11,7 @@ import assert from 'node:assert/strict';
 import {
   BuildingTileCache, BUILDING_TILE_ZOOM, DEFAULT_BUDGET, planTiles, tileUrl
 } from '../src/canalRecall/buildingTileSource.js';
-import { decorateBuildingFeature, loadVerifiedAppearanceCatalog, loadVerifiedAppearancePriors, loadVerifiedAppearanceRelease } from '../src/canalRecall/buildingTilesBrowser.js';
+import { BuildingTileStreamer, decorateBuildingFeature, loadVerifiedAppearanceCatalog, loadVerifiedAppearancePriors, loadVerifiedAppearanceRelease } from '../src/canalRecall/buildingTilesBrowser.js';
 import { tileFor, tileKey } from '../src/canalRecall/slippyTiles.js';
 
 /** A camera over the Nieuwmarkt, roughly what a driving viewport spans. */
@@ -115,5 +115,40 @@ const corrupt=(async(input:RequestInfo|URL)=>new Response(String(input).includes
 const crossAreaPointer={...pointer,areaId:'jordaan-study'},crossArea=(async(input:RequestInfo|URL)=>new Response(String(input).includes('appearance.json')?appearanceBytes:JSON.stringify(crossAreaPointer)))as typeof fetch;await assert.rejects(loadVerifiedAppearanceRelease('/current.json',crossArea),/release binding mismatch/,'an immutable artifact cannot be mounted into a different study area');
 const catalog={version:1,areas:[{id:'da-costa-study',name:'Da Costa study',pointerUrl:'/current.json',lesson:true,priority:100}]},catalogFetcher=(async(input:RequestInfo|URL)=>new Response(String(input)==='/areas.json'?JSON.stringify(catalog):String(input).includes('appearance.json')?appearanceBytes:JSON.stringify(pointer)))as typeof fetch,catalogRelease=await loadVerifiedAppearanceCatalog('/areas.json',catalogFetcher);assert.equal(catalogRelease.entries[0].studyRoute.from.name,'Hugo de Grootkade');assert.equal(catalogRelease.priors.size,1);assert.equal(catalogRelease.entries[0].pointerUrl,'/current.json');
 const partialCatalog={...catalog,areas:[...catalog.areas,{...catalog.areas[0],id:'second-study',name:'Second study',pointerUrl:'/second.json',priority:90}]},partialFetcher=(async(input:RequestInfo|URL)=>new Response(String(input)==='/areas.json'?JSON.stringify(partialCatalog):String(input).includes('appearance.json')?appearanceBytes:JSON.stringify(String(input)==='/second.json'?{...pointer,areaId:'second-study'}:pointer)))as typeof fetch,partial=await loadVerifiedAppearanceCatalog('/areas.json',partialFetcher);assert.equal(partial.entries.length,1,'one corrupt district does not erase independently verified areas');assert.deepEqual(partial.failures.map(item=>item.id),['second-study']);
+
+// Da Costa startup: probe succeeds while the appearance catalog is still
+// loading. A game camera tick must not populate the soon-to-be-replaced source.
+const originalFetch = globalThis.fetch;
+let tileFetches = 0, writes = 0, announced = 0;
+let written: any;
+const fakeMap = {
+  getSource: () => ({ setData: (data: unknown) => { writes++; written = data; } }),
+  getCenter: () => ({ lng: 4.871752, lat: 52.372835 }),
+  getZoom: () => 19.55,
+  getBounds: () => ({ getWest: () => 4.8717, getEast: () => 4.8718, getSouth: () => 52.3728, getNorth: () => 52.3729 }),
+  on: () => {},
+};
+const streamer = new BuildingTileStreamer(fakeMap, 'buildings', '/test');
+try {
+  globalThis.fetch = (async (input: RequestInfo | URL) => {
+    if (String(input).includes('index-z')) return Response.json({ zoom: 14, tileList: ['test'] });
+    tileFetches++;
+    return Response.json({ type: 'FeatureCollection', features: [raw] });
+  }) as typeof fetch;
+  assert.equal(await streamer.probe(), true);
+  streamer.followCamera();
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(tileFetches, 0, 'Da Costa camera ticks before source attachment cannot fetch into the old source');
+  assert.equal(writes, 0);
+  streamer.attach(() => { announced++; });
+  streamer.followCamera();
+  for (let turn = 0; turn < 30 && !writes; turn++) await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(tileFetches, 1, 'the unchanged camera loads after the replacement source is attached');
+  assert.equal(written?.features.length, 1, 'the replacement source receives the resident building');
+  assert.equal(announced, 1, 'the visible-building callback runs against the attached source');
+} finally {
+  streamer.dispose();
+  globalThis.fetch = originalFetch;
+}
 
 process.stdout.write(`Building tile source checks passed (z${BUILDING_TILE_ZOOM}, ${fresh.load.length} tiles for a viewport, budget ${DEFAULT_BUDGET})\n`);
