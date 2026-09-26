@@ -6,6 +6,18 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Phone route setup fits, and says when it scrolls — 2026-09-26
+
+On an iPhone 13 (390×664) the setup rail's scroll box was 329px for 445px of
+content, and it happened to clip exactly at the Difficulty label — the list
+looked finished. The `setup-backdrop.jpg` vista spent 14–16dvh below Start.
+Phones now drop the vista, the account sub-line and the choice glosses, which
+fits City → Difficulty above Start on a 390×664 and a 375×667 SE. Where it
+still overflows (360×640, landscape, More options open) `useScrollEdges` in
+`OverlayApp.tsx` fades the clipped edge and shows a **More** cue that scrolls
+on and disappears at the end. Landscape slims the title plaque and hides the
+briefing line. Pinned in `tests/e2e/mobile-overlays.spec.ts`.
+
 ## Touch drives with an analog thumbstick — 2026-09-26
 
 Reported on a phone: "impossible to turn, even in absolute mode I can't

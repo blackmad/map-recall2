@@ -280,11 +280,19 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           game.hud.drawDestination(ctx, 'Westerkerk', 1860, 0.42, -Math.PI / 3);
           game.hud.drawCompass(ctx, game.camera);
           game.hud.drawCityOverview(ctx, game);
-          const steering = scenario === 'touch-hud-steering';
-          game.hud.drawDpad(ctx, {
-            ArrowUp: false, ArrowDown: false, ArrowLeft: steering, ArrowRight: false,
-          });
-          if (scenario === 'touch-hud') game.hud.drawTouchHint(ctx);
+          // Steering: a thumb that landed in the zone and slid up-left, as a
+          // held stick draws it. Idle: the faint ring that says "drive here".
+          const pad = game.hud.layout?.dpad;
+          const ui = (window as unknown as { CanalRecallUi: { stickRadius: (p: unknown) => number; stickVector: (o: unknown, p: unknown, r: number) => unknown } }).CanalRecallUi;
+          if (scenario === 'touch-hud-steering' && pad) {
+            const radius = ui.stickRadius(pad);
+            const origin = { x: pad.cx + 8, y: pad.cy + 6 };
+            const point = { x: origin.x - radius * 0.7, y: origin.y - radius * 0.35 };
+            game.hud.drawStick(ctx, { origin, point, radius, vector: ui.stickVector(origin, point, radius) });
+          } else {
+            game.hud.drawStick(ctx, null);
+          }
+          if (scenario === 'touch-hud') game.hud.drawTouchHint(ctx, 'relative');
           return;
         }
         const image = new Image();

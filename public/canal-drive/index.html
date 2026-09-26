@@ -319,6 +319,43 @@ canvas { display: block; position: relative; z-index: 2; }
   /* Keep Difficulty / More options clear of the pinned Start footer. */
   scroll-padding-bottom: 12px;
 }
+.enamel-setup-scroll-wrap {
+  position: relative;
+  flex: 1; min-height: 0;
+  display: flex; flex-direction: column;
+}
+/* When the rail scrolls, say so: fade the clipped edge and offer a cue. A list
+   that ended exactly on a row label used to look finished. */
+.enamel-setup-scroll[data-more-below] {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 44px), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 44px), transparent);
+}
+.enamel-setup-scroll[data-more-above] {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18px);
+  mask-image: linear-gradient(to bottom, transparent, #000 18px);
+}
+.enamel-setup-scroll[data-more-above][data-more-below] {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18px, #000 calc(100% - 44px), transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 18px, #000 calc(100% - 44px), transparent);
+}
+.setup-scroll-cue {
+  position: absolute; left: 50%; bottom: 2px; z-index: 2;
+  transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 4px;
+  min-height: 30px; padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface-raised, var(--surface));
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(0,0,0,.14);
+  cursor: pointer;
+  font: 650 12px/1 var(--font-plaque);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  animation: setup-cue-nudge 1.8s ease-in-out 2;
+}
+@keyframes setup-cue-nudge { 50% { transform: translate(-50%, 3px); } }
+@media (prefers-reduced-motion: reduce) { .setup-scroll-cue { animation: none; } }
 .enamel-setup-footer {
   flex-shrink: 0;
   display: flex;
@@ -944,18 +981,16 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
     flex: 1; min-height: 0;
     padding: calc(10px + var(--safe-top)) 14px calc(8px + var(--safe-bottom));
   }
-  /* Keep vista as atmosphere, not a second panel — rail owns the first thumb zone. */
-  .enamel-setup-vista {
-    min-height: 14dvh; max-height: 16dvh; flex: none;
-    background:
-      linear-gradient(0deg, rgba(7,20,48,.5), transparent 50%),
-      url('assets/media/setup-backdrop.jpg') center / cover no-repeat;
-    background-color: #071430;
-  }
+  /* The backdrop photo cost a sixth of the phone screen below Start, and
+     pushed Difficulty below the fold. The rail owns the whole phone. */
+  .enamel-setup-vista { display: none; }
   #route-card { flex: 1; width: 100%; min-width: 0; min-height: 0; max-height: none; overflow: hidden; display: flex; flex-direction: column; }
   .enamel-title { padding: 10px 12px; font-size: clamp(20px, 6vw, 24px); }
   .setup-account { margin: 6px 0 4px; min-height: 36px; gap: 8px; }
-  .setup-account-copy small { font-size: 12px; }
+  /* One line: who you are plus the two actions. The sync pitch lives on the
+     Sign in button itself. */
+  .setup-account-copy small { display: none; }
+  .setup-choice-gloss { display: none; }
   .setup-grid, .preference-grid { grid-template-columns: minmax(0,1fr); }
   /* Fit Travel → Difficulty above Start without scrolling; captions stay on desktop. */
   .setup-choice-row { margin: 8px 0 0; }
@@ -1025,6 +1060,11 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
    so the utility buttons take the gap between the score and destination rows
    instead of sitting on top of the card. */
 @media (max-height: 460px) and (orientation: landscape) {
+  /* A rotated phone has ~390px of height: the title plaque and briefing line
+     left room for one row of options. Slim both; Start stays full size. */
+  .enamel-title { padding: 5px 12px; font-size: 18px; }
+  .enamel-setup-rail { padding-top: calc(6px + var(--safe-top)); }
+  #mission-brief { display: none; }
   #utility-buttons { top: calc(10px + var(--safe-top)); bottom: auto; left: 50%; right: auto; transform: translateX(-50%); }
   #utility-buttons button { width: 40px; height: 40px; }
 }

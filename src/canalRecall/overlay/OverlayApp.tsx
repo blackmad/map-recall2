@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
-import { ArrowLeft, BookOpenCheck, Clock3, Search } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
+import { ArrowLeft, BookOpenCheck, ChevronDown, Clock3, Search } from 'lucide-react';
 import {
   BIKE_SKINS,
   BIKE_SKIN_IDS,
@@ -482,6 +482,44 @@ function KnowledgeReviewScreen({
   );
 }
 
+/** Which edges of a scroll box still hide content. On a phone the setup rail
+ *  scrolls, and a list that happens to end exactly at a row label gives no
+ *  hint that more sits below — so the rail fades and offers a "More" cue. */
+function useScrollEdges(active: boolean) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [edges, setEdges] = useState({ above: false, below: false });
+  const measure = useCallback(() => {
+    const node = ref.current;
+    if (!node) return;
+    const above = node.scrollTop > 4;
+    const below = node.scrollTop + node.clientHeight < node.scrollHeight - 4;
+    setEdges(previous => (previous.above === above && previous.below === below ? previous : { above, below }));
+  }, []);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node || !active) return;
+    measure();
+    node.addEventListener('scroll', measure, { passive: true });
+    const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(measure) : null;
+    observer?.observe(node);
+    for (const child of Array.from(node.children)) observer?.observe(child);
+    const mutations = typeof MutationObserver === 'function' ? new MutationObserver(measure) : null;
+    mutations?.observe(node, { childList: true, subtree: true, attributes: true, attributeFilter: ['open', 'style'] });
+    window.addEventListener('resize', measure);
+    return () => {
+      node.removeEventListener('scroll', measure);
+      observer?.disconnect();
+      mutations?.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, [active, measure]);
+  const scrollOn = useCallback(() => {
+    const node = ref.current;
+    if (node) node.scrollBy({ top: Math.max(120, node.clientHeight * 0.7), behavior: 'smooth' });
+  }, []);
+  return { ref, edges, scrollOn };
+}
+
 export function OverlayApp({
   store,
   callbacks,
@@ -499,6 +537,7 @@ export function OverlayApp({
   );
   const cityName = CITY_OPTIONS.find(option => option.value === prefs.cityId)?.title
     || prefs.cityId;
+  const setupScroll = useScrollEdges(state.setupOpen);
 
   useEffect(() => {
     document.body.classList.toggle('setup-open', state.setupOpen);
@@ -567,7 +606,13 @@ export function OverlayApp({
               </div>
             </div>
 
-            <div className="enamel-setup-scroll">
+            <div className="enamel-setup-scroll-wrap">
+            <div
+              className="enamel-setup-scroll"
+              ref={setupScroll.ref}
+              data-more-above={setupScroll.edges.above ? '' : undefined}
+              data-more-below={setupScroll.edges.below ? '' : undefined}
+            >
             {/* Hidden selects keep Playwright and any legacy getElementById wiring working.
                 City uses the visible #city-id select below. */}
             <select id="travel-mode" hidden value={prefs.travelMode} onChange={event => patch({ travelMode: event.target.value as CanalPreferences['travelMode'] })}>
@@ -778,6 +823,12 @@ export function OverlayApp({
                 Clear all data…
               </button>
             </details>
+            </div>
+            {setupScroll.edges.below ? (
+              <button type="button" className="setup-scroll-cue" onClick={setupScroll.scrollOn} aria-label="Scroll for more options">
+                More <ChevronDown aria-hidden="true" size={14} strokeWidth={2.5} />
+              </button>
+            ) : null}
             </div>
             <div className="enamel-setup-footer">
               <p className="enamel-field-note" id="mission-brief" style={{ margin: '0 0 8px', textAlign: 'center' }}>
