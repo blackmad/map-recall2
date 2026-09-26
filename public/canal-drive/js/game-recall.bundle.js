@@ -316,6 +316,7 @@
       routePattern: "surprise",
       homeAddress: "",
       trees: true,
+      measuredColoursOnly: false,
       detailed3d: false,
       googleTiles: false,
       reducedMotion: false,
