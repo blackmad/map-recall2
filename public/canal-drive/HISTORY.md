@@ -6,6 +6,25 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Keyboard and small-screen access — 2026-09-26
+
+From the 2026-09-26 UI review. `input.js` called `preventDefault` on Tab for
+every non-field target, so keyboard focus stuck on the first control of setup
+and the knowledge screen. Tab is now the browser's whenever an HTML surface is
+up or focus sits on a control; it still toggles the minimap while driving.
+The knowledge review takes focus, leaves on Escape, returns focus to the
+Knowledge button, and makes the covered setup `inert` (it had stayed in the
+tab order and accessibility tree behind the full-screen view).
+
+No UI text under 11 px (settings labels, quiz kind chip, legend, card badges,
+tab counts; the map credit is 10 px). Canvas card measurement used bare
+`monospace` while drawing system-ui/Barlow, so wraps and badge widths were
+computed for the wrong face; `noticeCards.ts` now measures in the drawn fonts.
+Hit areas reach 44 px without growing the tight phone setup (pseudo-element
+insets on account buttons and compact tiles; More options and settings selects
+get real 44 px). Keycap digit badges hide on coarse pointers. Reset knowledge
+and Clear all data are fenced under "Your saved data" in danger ink.
+
 ## The last arcade surfaces go to paper; speed leaves the HUD — 2026-09-26
 
 From the 2026-09-26 UI review. The pause card was still the old skin — 78%

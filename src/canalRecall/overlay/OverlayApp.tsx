@@ -319,11 +319,19 @@ function KnowledgeReviewScreen({
       && (!term || item.name.toLocaleLowerCase().includes(term) || cityLabel(item.cityId).toLocaleLowerCase().includes(term)));
   }, [filter, query, review.items]);
   const maxActivity = Math.max(1, ...review.activity.map(day => day.reviews));
+  // A full-screen view takes focus, and Escape leaves it, like any dialog.
+  const backRef = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    backRef.current?.focus();
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
 
   return (
     <section id="knowledge-review" className="knowledge-review" aria-labelledby="knowledge-review-title">
       <header className="knowledge-header">
-        <button type="button" className="knowledge-back" onClick={onClose}>
+        <button type="button" className="knowledge-back" onClick={onClose} ref={backRef}>
           <ArrowLeft aria-hidden="true" />
           Route setup
         </button>
@@ -554,6 +562,12 @@ export function OverlayApp({
     callbacks.onStart();
   };
 
+  const closeKnowledge = useCallback(() => {
+    store.setKnowledgeOpen(false);
+    // Back to where the player came from, not to the top of the document.
+    requestAnimationFrame(() => document.getElementById('knowledge-button')?.focus());
+  }, [store]);
+
   const openKnowledge = () => {
     setKnowledgeRefresh(value => value + 1);
     store.setKnowledgeOpen(true);
@@ -575,7 +589,9 @@ export function OverlayApp({
 
   return (
     <>
-      <div id="route-setup" className="enamel-setup" style={{ display: state.setupOpen ? 'flex' : 'none' }}>
+      {/* Covered by the knowledge screen: out of the tab order and the
+          accessibility tree, not just out of sight. */}
+      <div id="route-setup" className="enamel-setup" inert={state.knowledgeOpen} style={{ display: state.setupOpen ? 'flex' : 'none' }}>
         <div className="enamel-setup-rail">
           <form id="route-card" className="enamel-setup-form" onSubmit={start}>
             <h1 className="enamel-plaque enamel-framed enamel-title">Canal Recall</h1>
@@ -802,26 +818,29 @@ export function OverlayApp({
                 <Check id="google-tiles" checked={prefs.googleTiles} onChange={googleTiles => patch({ googleTiles })}> Google photoreal (overview)</Check>
                 <Check id="sound-enabled" checked={prefs.sound} onChange={sound => patch({ sound })}> Sound</Check>
               </div>
-              <button
-                id="clear-knowledge-button"
-                type="button"
-                className="account-button quiet enamel-quiet"
-                disabled={state.account.busy}
-                onClick={() => callbacks.onClearKnowledge()}
-                style={{ marginTop: 10, width: '100%' }}
-              >
-                Reset knowledge…
-              </button>
-              <button
-                id="clear-all-data-button"
-                type="button"
-                className="account-button quiet enamel-quiet"
-                disabled={state.account.busy}
-                onClick={() => callbacks.onClearAllData()}
-                style={{ marginTop: 8, width: '100%' }}
-              >
-                Clear all data…
-              </button>
+              {/* Destructive, so fenced off and labelled rather than sitting as
+                  two more quiet buttons just above Start. Both still confirm. */}
+              <div className="setup-danger" role="group" aria-labelledby="setup-danger-title">
+                  <p id="setup-danger-title" className="setup-danger-title">Your saved data</p>
+                <button
+                  id="clear-knowledge-button"
+                  type="button"
+                  className="account-button quiet enamel-quiet setup-danger-button"
+                  disabled={state.account.busy}
+                  onClick={() => callbacks.onClearKnowledge()}
+                >
+                  Reset knowledge…
+                </button>
+                <button
+                  id="clear-all-data-button"
+                  type="button"
+                  className="account-button quiet enamel-quiet setup-danger-button"
+                  disabled={state.account.busy}
+                  onClick={() => callbacks.onClearAllData()}
+                >
+                  Clear all data…
+                </button>
+              </div>
             </details>
             </div>
             {setupScroll.edges.below ? (
@@ -845,7 +864,7 @@ export function OverlayApp({
         <KnowledgeReviewScreen
           review={knowledgeReview}
           now={knowledgeNow}
-          onClose={() => store.setKnowledgeOpen(false)}
+          onClose={closeKnowledge}
           onPlanReview={planReview}
           onPracticeAgain={practiceAgain}
           onForgetItem={forgetItem}
