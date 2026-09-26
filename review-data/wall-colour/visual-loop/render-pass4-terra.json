@@ -1,0 +1,57 @@
+{
+  "reviewer": "gpt-5.6-terra",
+  "pass": "material-trial-4",
+  "captureManifestSha256": "2982800a212b60dee538f0d5ca6c20818f7fee7eb2c40c0e505e8861b29eadfb",
+  "entries": [
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "materialId": "creamrender",
+      "verdict": "revise",
+      "reason": "Magenta again verifies the narrow owner. The pass-4 cream correction moves it lighter, but its exposed normal-view facade still reads a muted dark grey-beige against the source\u2019s clearly pale cream-ochre wall. Broad material family/brightness remains insufficiently close; this is not an owner-specific colour request.",
+      "imageSha256": {
+        "current-front": "edece8a7be034f1c00cdc02ac31e920f1aadc42d07925b40df294d71628a8cd1",
+        "current-oblique": "e1607800987c433efbd9ab66c3d758fc4ce85cedd6a55497728443e1d9f559bc",
+        "preview-front": "e7ff1fcb772a92db623598d898cd2bcb676fc05ff8bb2602c8a8474d45b17e72",
+        "preview-oblique": "dee862f929133e814c630c42083a7bbb1a614ce9a35af3a4afcebbc0a59d5c61",
+        "identity": "68cc00a96cc99a87a6542b0c80a9737512a0db4209df6ae55ab86a9f17c0103a",
+        "panel": "b22c6b2fd046e8d5920f1a8db62c0b931a147e7dc253952728896058c8c5a696"
+      },
+      "dimensions": {
+        "identity": "verified by magenta overlay: narrow facade immediately left of the larger golden neighbour.",
+        "colourFamily": "source is pale cream-ochre; trial remains a darker grey-beige at the exposed wall.",
+        "brightness": "improved relative to pass 3 but remains visibly darker than source in the available normal view.",
+        "front": "owner is visible and can be compared, although its width is narrow.",
+        "oblique": "same darkened grey-beige reading persists in oblique view.",
+        "occlusion": "low-to-moderate; nearby tree does not prevent broad comparison."
+      }
+    },
+    {
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "observationId": "0363100012094649_e_16jqzp7",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "materialId": "creamrender",
+      "verdict": "unresolved",
+      "reason": "The shared preset changed, but the magenta-verified owner is still hidden behind trees and intervening roof/mass geometry in both normal views. No exposed target wall supports material acceptance or revision.",
+      "imageSha256": {
+        "current-front": "b9e150f64811a5d38777e550b640e038260fcc73f3ed3c7f8b7269eba2f91d9e",
+        "current-oblique": "c6ddc2234abb46b10e7dbe2e29f61dbcee3f1538cf01348354369bdfb017f73c",
+        "preview-front": "18848923c9091104e99462f1bde196c539f0bde00423db02a79edf7812e819ca",
+        "preview-oblique": "e33e701e503dec345de2ab05cfbaaae11eafa7af824fa5cb8522c9175777eba8",
+        "identity": "b412fda0063f02295ecc2cd3755bbd83b7dce2a907caa4e154728a771e48edbf",
+        "panel": "8fe5bef712aac3a13745d6b14502959ff551fd2da755307d8eaecd0aea695cfe"
+      },
+      "dimensions": {
+        "identity": "verified by magenta overlay beneath/behind the foreground trees.",
+        "colourFamily": "not assessable from an exposed owner surface.",
+        "brightness": "not assessable.",
+        "front": "tree crowns and intervening mass conceal the target wall.",
+        "oblique": "oblique view remains roof-dominant and does not expose the owner facade.",
+        "occlusion": "high."
+      }
+    }
+  ]
+}
