@@ -11,6 +11,7 @@ export const VISIBILITY = ['clear', 'partial', 'occluded'];
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const validHash = value => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
 const PROMPT = 'Inspect the selected building facade in this rectified Amsterdam street photograph. Classify only the dominant visible UPPER WALL, excluding glass, roof, shopfront, signs, trees and neighbouring buildings. Choose the broad material family and colour family from the JSON schema. Visibility is clear, partial, or occluded for the target wall. If representative wall is too dark, cropped, obstructed or ambiguous, set abstain true and both families unknown. Do not infer hidden surfaces or a precise colour. Return only JSON.';
+const CONSERVATIVE_PROMPT = 'Inspect the selected building facade in this rectified Amsterdam street photograph. First decide whether a substantial, representative field of the TARGET UPPER WALL is visibly exposed. Ignore glass, roof, shopfront, signs, trees, cars, shadows, sky and neighbouring buildings. A narrow gap through foliage, a sliver beside a window, trim, or a neighbouring facade is not representative wall evidence. If the target wall is mostly hidden, overexposed, too dark, cropped, or its broad material OR hue remains uncertain, set abstain true and BOTH materialFamily and colourFamily to unknown. Use visibility occluded when most target wall is hidden, partial when some substantial wall remains, clear when most is exposed. Only when a representative wall field is visible, classify its dominant material family and broad hue; if two hue bins remain plausible under lighting, abstain instead of guessing. Return only the required JSON.';
 const SCHEMA = { type:'object', additionalProperties:false, required:['materialFamily','colourFamily','visibility','abstain'], properties:{
   materialFamily:{type:'string',enum:MATERIAL_FAMILIES}, colourFamily:{type:'string',enum:COLOUR_FAMILIES},
   visibility:{type:'string',enum:VISIBILITY}, abstain:{type:'boolean'},
@@ -142,6 +143,11 @@ const atomicJson=async(file,value)=>{await fs.mkdir(path.dirname(file),{recursiv
 export async function runBenchmark(args=process.argv.slice(2)) {
   const model=flag(args,'model')??'qwen3.5:9b',imageSize=bounded(flag(args,'image-size')??768,'Image size',512,768);
   if(![512,768].includes(imageSize))throw Error('Image size must be 512 or 768');
+  const promptProfile=flag(args,'prompt-profile')??'base';if(!['base','conservative'].includes(promptProfile))throw Error('Prompt profile must be base or conservative');
+  const thinkFlag=flag(args,'think')??'false';if(!['true','false'].includes(thinkFlag))throw Error('Think must be true or false');
+  const think=thinkFlag==='true',maxOutputTokens=bounded(flag(args,'max-output-tokens')??(think?512:160),'Max output tokens',64,1024);
+  const prompt=promptProfile==='base'?PROMPT:CONSERVATIVE_PROMPT;
+  const options={...OPTIONS,num_predict:maxOutputTokens,num_ctx:think?4096:OPTIONS.num_ctx};
   const limit=bounded(flag(args,'limit')??20,'Limit',1,500),offset=bounded(flag(args,'offset')??0,'Offset',0,1000000);
   const timeoutMs=bounded(flag(args,'timeout-ms')??90000,'Timeout',1000,300000);
   const base=new URL(flag(args,'base-url')??'http://127.0.0.1:11434');
@@ -151,9 +157,18 @@ export async function runBenchmark(args=process.argv.slice(2)) {
   if(!selected.length)throw Error(`Offset ${offset} is past ${sources.length} available sources`);
   const dryRun=args.includes('--dry-run');
   const digest=dryRun?null:await modelDigest(base.origin,model,Math.min(timeoutMs,10000));
-  const experiment={version:1,model,modelDigest:digest,prompt:PROMPT,schema:SCHEMA,think:false,
-    options:OPTIONS,imageEncoding:'sharp-fit-inside-no-upscale-jpeg85',imageSize,timeoutMs,provider:'ollama-local-only'};
+  const experiment={version:1,model,modelDigest:digest,prompt,schema:SCHEMA,think,
+    options,imageEncoding:'sharp-fit-inside-no-upscale-jpeg85',imageSize,timeoutMs,provider:'ollama-local-only',
+    ...(promptProfile==='base'?{}:{promptProfile})};
   const experimentHash=hash(JSON.stringify(experiment)),out=path.resolve(flag(args,'out')??`.cache/city-appearance/local-material-benchmark/${experimentHash}`);
+  if(!dryRun){try{const prior=JSON.parse(await fs.readFile(path.join(out,'report.json'),'utf8'));
+    if(prior.experimentHash!==experimentHash)throw Error('Output directory contains a different benchmark experiment; choose a new --out');
+  }catch(error){if(error.code!=='ENOENT')throw error;}
+    await fs.mkdir(out,{recursive:true});const configFile=path.join(out,'experiment.json');
+    try{await fs.writeFile(configFile,JSON.stringify({experimentHash,experiment},null,2),{flag:'wx'});}
+    catch(error){if(error.code!=='EEXIST')throw error;const prior=JSON.parse(await fs.readFile(configFile,'utf8'));
+      if(prior.experimentHash!==experimentHash)throw Error('Output directory contains a different benchmark experiment; choose a new --out');}
+  }
   const receipts=[];
   for(const source of selected){
     const bytes=await fs.readFile(source.imagePath);if(hash(bytes)!==source.sourceSha256)throw Error(`Source image hash changed: ${source.imagePath}`);
@@ -173,8 +188,8 @@ export async function runBenchmark(args=process.argv.slice(2)) {
     const previousAttempts=priorReceipt?[...(priorReceipt.previousAttempts??[]),Object.fromEntries(Object.entries(priorReceipt).filter(([field])=>field!=='previousAttempts'))]:[];
     const receipt={version:1,key,experimentHash,model,modelDigest:digest,binding,previousAttempts,attempt:previousAttempts.length+1,
       startedAt:new Date().toISOString(),status:'error'};
-    const request={model,stream:false,think:false,format:SCHEMA,keep_alive:'10m',options:OPTIONS,
-      messages:[{role:'user',content:PROMPT,images:[image.toString('base64')]}]};
+    const request={model,stream:false,think,format:SCHEMA,keep_alive:'10m',options,
+      messages:[{role:'user',content:prompt,images:[image.toString('base64')]}]};
     const started=performance.now();
     try {
       const response=await fetch(`${base.origin}/api/chat`,{method:'POST',signal:AbortSignal.timeout(timeoutMs),headers:{'content-type':'application/json'},body:JSON.stringify(request)});
@@ -182,6 +197,7 @@ export async function runBenchmark(args=process.argv.slice(2)) {
       const responseText=await response.text();receipt.responseText=responseText;
       if(!response.ok)throw Error(`Local Ollama chat HTTP ${response.status}`);
       const value=JSON.parse(responseText);receipt.response=value;receipt.rawOutput=value.message?.content??null;
+      receipt.rawReasoning=value.message?.thinking??null;
       let label;try{label=JSON.parse(receipt.rawOutput);}catch{label=null;}
       receipt.label=label;receipt.schema=validateLabel(label);
       receipt.server={totalDurationMs:value.total_duration/1e6,loadDurationMs:value.load_duration/1e6,
