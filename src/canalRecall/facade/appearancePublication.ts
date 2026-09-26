@@ -27,7 +27,7 @@
 /**
  * Publication states, ordered from least to most permissive.
  *
- * Only `accepted-human-reviewed` may be drawn as measured. Everything else is
+ * Only accepted visual reviews may be drawn as measured. Everything else is
  * some flavour of "not yet", and the distinctions between them are about *why*,
  * because a reader deciding whether to spend review effort needs to know
  * whether the evidence was never looked at, looked at and rejected, or
@@ -42,12 +42,14 @@ export type AppearancePublication =
   | 'candidate-registration-preview'
   /** A person looked and rejected it, or it was withdrawn after publication. */
   | 'revoked-machine-observation'
-  /** A person looked at this evidence and agreed. The only drawable state. */
-  | 'accepted-human-reviewed';
+  /** A person looked at this evidence and agreed. */
+  | 'accepted-human-reviewed'
+  /** A model visually reviewed the source crop and agreed. */
+  | 'accepted-model-reviewed';
 
-/** The only state whose appearance may render as measured. */
+/** Accepted visual reviews are the only drawable measured states. */
 export const isDrawableAsMeasured = (publication: AppearancePublication): boolean =>
-  publication === 'accepted-human-reviewed';
+  publication === 'accepted-human-reviewed' || publication === 'accepted-model-reviewed';
 
 export type GradeVerdict =
   /** The measurement matches the evidence as-is. */
@@ -97,6 +99,8 @@ export interface ResolveInput {
   sourceSha256: string;
   /** The measured colour this run produced, if any. */
   measuredHex?: string;
+  /** Defaults to the legacy human grading desk when absent. */
+  reviewOrigin?: 'human-visual-review' | 'model-visual-review';
 }
 
 /**
@@ -108,6 +112,7 @@ export interface ResolveInput {
  */
 export function resolvePublication(input: ResolveInput): PublicationDecision {
   const { current, grade, sourceSha256, measuredHex } = input;
+  const acceptedState = input.reviewOrigin === 'model-visual-review' ? 'accepted-model-reviewed' : 'accepted-human-reviewed';
 
   if (!grade) {
     return { publication: current, reason: 'no grade recorded', stale: false };
@@ -117,7 +122,7 @@ export function resolvePublication(input: ResolveInput): PublicationDecision {
   // pixels is not a weaker grade, it is not a grade.
   if (!grade.sourceSha256 || grade.sourceSha256 !== sourceSha256) {
     return {
-      publication: current === 'accepted-human-reviewed' ? 'quarantined-machine-preview' : current,
+      publication: isDrawableAsMeasured(current) ? 'quarantined-machine-preview' : current,
       reason: `grade was given against crop ${grade.sourceSha256.slice(0, 12) || '(none)'}…, evidence is now ${sourceSha256.slice(0, 12)}…`,
       stale: true,
     };
@@ -146,7 +151,7 @@ export function resolvePublication(input: ResolveInput): PublicationDecision {
         };
       }
       return {
-        publication: 'accepted-human-reviewed',
+        publication: acceptedState,
         reason: `grader corrected the measurement to ${hex.toLowerCase()}`,
         hex: hex.toLowerCase(),
         stale: false,
@@ -162,7 +167,7 @@ export function resolvePublication(input: ResolveInput): PublicationDecision {
         };
       }
       return {
-        publication: 'accepted-human-reviewed',
+        publication: acceptedState,
         reason: 'grader confirmed the measurement against the source crop',
         hex: measuredHex.toLowerCase(),
         stale: false,
@@ -184,7 +189,7 @@ export function tallyPublications(decisions: readonly PublicationDecision[]): Pu
   const tally: PublicationTally = { accepted: 0, revoked: 0, quarantined: 0, stale: 0, ungraded: 0 };
   for (const decision of decisions) {
     if (decision.stale) tally.stale += 1;
-    if (decision.publication === 'accepted-human-reviewed') tally.accepted += 1;
+    if (isDrawableAsMeasured(decision.publication)) tally.accepted += 1;
     else if (decision.publication === 'revoked-machine-observation') tally.revoked += 1;
     else if (decision.reason === 'no grade recorded') tally.ungraded += 1;
     else tally.quarantined += 1;

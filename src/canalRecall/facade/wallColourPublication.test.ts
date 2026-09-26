@@ -3,11 +3,11 @@ import { acceptedWallColours, promoteWallColour, wallColourForBuilding, type Wal
 
 const H = 'a'.repeat(64), M = 'b'.repeat(64);
 const measurements: WallMeasurement[] = [{ id: 'obs-1', buildingId: '123', sourceSha256: H, status: 'measured', dominant: { hex: '#654321' } }];
-const grade: WallGrade = { observationId: 'obs-1', buildingId: '123', sourceSha256: H, verdict: 'accept', gradedAt: '2026-09-26T00:00:00Z', grader: 'owner' };
+const grade: WallGrade = { observationId: 'obs-1', buildingId: '123', sourceSha256: H, verdict: 'accept', gradedAt: '2026-09-26T00:00:00Z', grader: 'owner', reviewOrigin: 'human-visual-review' };
 const set = promoteWallColour(measurements, { 'obs-1': grade }, M);
 assert.deepEqual(set.accepted.map(item => item.hex), ['#654321']);
 const accepted = acceptedWallColours(set, measurements, M);
-assert.deepEqual(wallColourForBuilding('123', '#eeeeee', accepted), { sideColour: '#654321', sideColourSource: 'measured-accepted', sideColourObservationId: 'obs-1', sideColourSourceSha256: H });
+assert.deepEqual(wallColourForBuilding('123', '#eeeeee', accepted), { sideColour: '#654321', sideColourSource: 'measured-accepted', sideColourObservationId: 'obs-1', sideColourSourceSha256: H, sideColourReviewOrigin: 'human-visual-review', sideColourReviewer: 'owner' });
 assert.deepEqual(wallColourForBuilding('456', '#eeeeee', accepted), { sideColour: '#eeeeee', sideColourSource: 'procedural-prior-not-measured' });
 assert.throws(() => promoteWallColour(measurements, { 'obs-1': { ...grade, sourceSha256: 'c'.repeat(64) } }, M), /Stale/);
 assert.throws(() => promoteWallColour(measurements, { 'obs-1': { ...grade, buildingId: '456' } }, M), /identity/);
@@ -20,4 +20,9 @@ assert.throws(() => acceptedWallColours({ ...set, accepted: [...set.accepted, { 
 const corrected = promoteWallColour(measurements, { 'obs-1': { ...grade, correctedHex: '#abcdef' } }, M);
 assert.equal(corrected.accepted[0].hex, '#abcdef');
 assert.deepEqual(promoteWallColour(measurements, { 'obs-1': { ...grade, verdict: 'unusable' } }, M).accepted, []);
-console.log('wallColourPublication: 13 assertions passed');
+const model = promoteWallColour(measurements, { 'obs-1': { ...grade, reviewOrigin: 'model-visual-review', grader: 'gpt-6-sol', verdict: 'adjust', correctedHex: '#abcdef' } }, M);
+assert.equal(model.accepted[0].reviewOrigin, 'model-visual-review');
+assert.equal(model.accepted[0].reviewer, 'gpt-6-sol');
+assert.equal(wallColourForBuilding('123', '#eeeeee', acceptedWallColours(model, measurements, M)).sideColourSource, 'measured-accepted');
+assert.throws(() => promoteWallColour(measurements, { 'obs-1': { ...grade, reviewOrigin: undefined as any } }, M), /provenance/);
+console.log('wallColourPublication: 17 assertions passed');
