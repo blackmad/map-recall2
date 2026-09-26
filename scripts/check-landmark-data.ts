@@ -28,6 +28,7 @@ import type {
   LatLng,
   NeighborhoodEnrichment,
 } from '../src/canalRecall/game/extracts';
+import { capitaliseLowercaseName, isMixedLanguageName, landmarkRename } from '../src/canalRecall/landmarkNames';
 import type { BuildingHit, Landmark, WorldPoint } from '../src/canalRecall/game/worldTypes';
 import {
   buildRouteKnowledgeIndex,
@@ -411,6 +412,28 @@ check('the shipped Amsterdam extract builds a usable world', () => {
     'every nameable bridge has at least one crossing to ask about');
   assert.ok(bridges.every(b => b.crossings.every(c => Number.isFinite(c.x) && Number.isFinite(c.y))),
     'every crossing projected to a finite point');
+});
+
+// Named regressions (UI review 2026-09-26): "foam" and "waterdraagster"
+// arrived lowercase, and "Dam Square Victims 7 mei 1945" half-translated.
+check('landmark names are cleaned at extract time, not in the HUD', () => {
+  assert.equal(capitaliseLowercaseName('foam'), 'Foam');
+  assert.equal(capitaliseLowercaseName('de Gooyer'), 'de Gooyer', 'an owner\'s own capitals stay');
+  assert.equal(capitaliseLowercaseName('.zip'), '.zip', 'a stylised brand stays');
+  assert.ok(isMixedLanguageName('Dam Square Victims 7 mei 1945'));
+  assert.ok(!isMixedLanguageName('Plaquette 7 mei 1945'), 'all-Dutch is fine');
+  assert.ok(!isMixedLanguageName('Royal Palace'), 'all-English is fine');
+  assert.deepEqual(
+    landmarkRename({ name: 'Dam Square Victims 7 mei 1945', wikipedia: 'nl:Monument voor Damslachtoffers 7 mei 1945' }),
+    { from: 'Dam Square Victims 7 mei 1945', to: 'Monument voor Damslachtoffers 7 mei 1945', reason: 'mixed-language' },
+  );
+  for (const city of fs.readdirSync(path.resolve('public/data/extracts'))) {
+    const file = path.resolve('public/data/extracts', city, 'landmarks.json');
+    if (!fs.existsSync(file)) continue;
+    const features = JSON.parse(fs.readFileSync(file, 'utf8')) as Array<{ name: string; wikipedia?: string }>;
+    const pending = features.map(landmarkRename).filter(Boolean);
+    assert.deepEqual(pending, [], `${city}: run npx tsx scripts/normalise-landmark-names.ts --write`);
+  }
 });
 
 console.log(`Landmark data OK: ${checks.length} checks.`);

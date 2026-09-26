@@ -1784,6 +1784,37 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## The UI review's leftovers, closed — 2026-09-26
+
+TODO #30, the smaller findings from the UI review:
+
+- **Landmark names.** "foam", "waterdraagster" and Rotterdam's "weggeefwinkel"
+  were lowercase, and "Dam Square Victims 7 mei 1945" and "Rembrandt van Rijn
+  statue" were half-translated. `landmarkNames.ts` repairs the form, not the
+  language: a lowercase first letter gets a capital (a stylised ".zip" and an
+  owner's own "de Gooyer" stay), and a name with both English and Dutch marker
+  words takes its Dutch Wikipedia title, because the Dutch name is what the
+  street says. `scripts/normalise-landmark-names.ts --write` applied it to the
+  published extracts: the name, the facts entry and every distractor that
+  quoted the old one. The old name stays as `osmName`. `test:landmark-data`
+  fails if any extract needs the pass again. Someone who had "foam" in their
+  knowledge will see "Foam" as a new name.
+- **Phone city field.** It is now one 44px row, and the select covers all of
+  it, so a tap anywhere on the field opens the picker. It takes no more height
+  than before.
+- **Knowledge mid-ride.** Ride settings has a "Your knowledge" button. The
+  review's back button says "Back to ride". While the review is up it owns the
+  keyboard (`input.js`), so its Escape does not also close the settings under
+  it, and focus returns to the button that opened it.
+- **Landscape quiz card.** On a landscape phone the card docks to the side
+  away from the vehicle, as on desktop, instead of a bottom sheet over half the
+  screen.
+- **`game.js` cap.** Already fixed on `main` (673 lines). The structure check's
+  remaining failure was a stale `route-selection.bundle.js` that differed only
+  in minified names; it is rebuilt.
+
+All pinned in `mobile-overlays.spec.ts` and `test:landmark-data`.
+
 ## A destination no longer names the canal you are on — 2026-09-26
 
 TODO #29, from the UI review: boat routes could head for *Keizersgrachtkerk*

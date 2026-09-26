@@ -551,6 +551,7 @@ body.setup-open #utility-buttons { display: none; }
 .utility-card td:first-child { width: 88px; color: var(--day-accent-ink); font-weight: bold; white-space: nowrap; }
 .utility-scroll { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .utility-actions { flex: none; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.utility-actions-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .utility-actions .utility-close,
 .utility-actions button { width: 100%; margin-top: 0; padding: 12px; cursor: pointer; }
 .utility-actions .enamel-secondary {
@@ -1103,8 +1104,15 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   .setup-choice-row.strip .setup-choice-text strong { font-size: 11px; }
   .setup-choice-row.icons .enamel-icon { width: 20px; height: 20px; }
   .setup-choice-row.strip + .setup-choice-row.icons { margin-top: 6px; }
-  .setup-city-select { margin: 6px 0 0; padding: 7px 10px; }
-  .setup-city-select select { font-size: 15px; min-height: 28px; }
+  /* One 44px row, and the select covers all of it: the label only shows
+     through on the left, so a tap anywhere on the field opens the picker. */
+  #route-card .setup-city-select { position: relative; flex-direction: row; align-items: center; min-height: 44px; margin: 6px 0 0; padding: 0 12px; }
+  #route-card .setup-city-select select,
+  .setup-city-select select {
+    position: absolute; inset: 0; width: 100%; min-height: 44px;
+    padding: 0 34px 0 64px; font-size: 16px;
+    background-position: right 12px center;
+  }
   .advanced-options > summary { padding: 8px 0; font-size: 12px; min-height: 44px; line-height: 28px; }
   .enamel-utility .setup-field select { min-height: 44px; }
   .route-surprise { grid-template-columns: 40px minmax(0,1fr); }
@@ -1154,6 +1162,18 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
   #mission-brief { display: none; }
   #utility-buttons { top: calc(10px + var(--safe-top)); bottom: auto; left: 50%; right: auto; transform: translateX(-50%); }
   #utility-buttons button { width: 40px; height: 40px; }
+  /* The quiz card docks to the side away from the vehicle, as on desktop: at
+     the bottom it took half of a 390px-tall screen, most of the corridor. */
+  #canal-prompt, #canal-prompt.dock-left {
+    align-items: center;
+    padding: calc(8px + var(--safe-top)) calc(10px + env(safe-area-inset-right, 0px)) calc(8px + var(--safe-bottom)) calc(10px + env(safe-area-inset-left, 0px));
+  }
+  #canal-prompt { justify-content: flex-end; background: linear-gradient(90deg, transparent 45%, rgba(28,24,18,0.19)); }
+  #canal-prompt.dock-left { justify-content: flex-start; background: linear-gradient(270deg, transparent 45%, rgba(28,24,18,0.19)); }
+  #canal-card { width: min(46vw, 400px); max-height: calc(100dvh - 16px - var(--safe-top) - var(--safe-bottom)); padding: 12px 14px; }
+  #canal-card h2 { font-size: 17px; }
+  #canal-card p { margin-bottom: 8px; }
+  .canal-choice, #canal-submit, #canal-no-idea { min-height: 44px; }
 }
 </style>
 </head>
