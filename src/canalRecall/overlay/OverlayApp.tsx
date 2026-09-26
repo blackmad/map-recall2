@@ -41,37 +41,63 @@ export interface OverlayCallbacks {
   onNewRoute: () => void;
 }
 
-function Field({
-  label, id, value, onChange, children,
-}: {
-  label: string;
-  id: string;
-  value: string;
-  onChange: (value: string) => void;
-  children: ReactNode;
-}) {
-  return (
-    <label className="setup-field">{label}
-      <select id={id} value={value} onChange={event => onChange(event.target.value)}>
-        {children}
-      </select>
-    </label>
-  );
-}
-
-function Check({
-  id, checked, onChange, children, hidden,
+/** An on/off setting drawn as the same paper tile as a choice. A real
+    checkbox sits inside so ids, `.checked` and Space keep working. */
+function ToggleTile({
+  id, checked, onChange, title, hint, hidden,
 }: {
   id: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
-  children: ReactNode;
+  title: string;
+  hint?: string;
   hidden?: boolean;
 }) {
   return (
-    <label style={hidden ? { display: 'none' } : undefined}>
-      <input id={id} type="checkbox" checked={checked} onChange={event => onChange(event.target.checked)} />
-      {children}
+    <label
+      className={`setup-choice enamel-tile toggle-tile${checked ? ' active' : ''}`}
+      style={hidden ? { display: 'none' } : undefined}
+      title={hint || title}
+    >
+      <input id={id} type="checkbox" className="toggle-tile-input" checked={checked} onChange={event => onChange(event.target.checked)} />
+      <span className="toggle-tile-mark" aria-hidden="true" />
+      <span className="setup-choice-text">
+        <strong>{title}</strong>
+        {hint ? <small>{hint}</small> : null}
+      </span>
+    </label>
+  );
+}
+
+function ToggleGroup({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div className="setup-choice-row toggles" role="group" aria-label={label}>
+      <div className="setup-choice-label"><span>{label}</span></div>
+      <div className="setup-choice-options">{children}</div>
+    </div>
+  );
+}
+
+function RangeRow({
+  label, keys, id, min, max, step, value, onChange,
+}: {
+  label: string;
+  /** Keyboard shortcut, shown only to pointer players. */
+  keys?: string;
+  id: string;
+  min: number | string;
+  max: number | string;
+  step: number | string;
+  value: number;
+  onChange: (value: number) => void;
+}) {
+  return (
+    <label className="setup-choice-row range-row">
+      <span className="setup-choice-label">
+        <span>{label}</span>
+        {keys ? <span className="setup-choice-current key-hint">{keys}</span> : null}
+      </span>
+      <input id={id} type="range" min={min} max={max} step={step} value={value} onChange={event => onChange(Number(event.target.value))} />
     </label>
   );
 }
@@ -204,8 +230,8 @@ const BIKE_SKIN_OPTIONS: Choice<CanalPreferences['bikeSkin']>[] = BIKE_SKIN_IDS.
 }));
 
 const VIEW: Choice<CanalPreferences['viewMode']>[] = [
-  { value: 'north', title: 'North', hint: 'Flat map, north at top' },
-  { value: 'heading', title: 'Heading', hint: 'Flat map, turns with you' },
+  { value: 'north', title: 'North up', hint: 'Flat map, north at top' },
+  { value: 'heading', title: 'Heading up', hint: 'Flat map, turns with you' },
   { value: 'chase', title: 'Chase', hint: 'High 3D, behind the vehicle' },
   { value: 'cockpit', title: 'Cockpit', hint: 'Low 3D, over the bumper' },
 ];
@@ -216,6 +242,124 @@ const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
   { value: 'study', title: 'Da Costa study', hint: 'Styled street lesson' },
   { value: 'here', title: 'Here', hint: 'Start from where you are now' },
 ];
+
+const CONTROLS: Choice<CanalPreferences['controlMode']>[] = [
+  { value: 'relative', title: 'Steer', hint: 'Left and right turn the vehicle' },
+  { value: 'absolute', title: 'Point', hint: 'Push the way you want to go' },
+];
+
+const ANSWERS: Choice<CanalPreferences['answerMode']>[] = [
+  { value: 'multiple', title: 'Choose', hint: 'Pick from a few names' },
+  { value: 'typing', title: 'Type', hint: 'Spell the name yourself' },
+];
+
+const THEMES: Choice<CanalPreferences['themeMode']>[] = [
+  { value: 'clean', title: 'Clean' },
+  { value: '8bit', title: '8-bit' },
+  { value: '16bit', title: '16-bit' },
+  { value: 'psx', title: 'PSX' },
+  { value: 'cyberpunk', title: 'Cyber' },
+];
+
+/**
+ * The ride options, drawn once and used by both route setup ("More options")
+ * and the in-ride settings panel, so the two never drift into different
+ * controls for the same preference. `live` pushes each change into the ride
+ * and prefixes ids so both copies can sit in the DOM together.
+ */
+function RideOptions({
+  prefs,
+  patch,
+  live = false,
+}: {
+  prefs: CanalPreferences;
+  patch: (next: Partial<CanalPreferences>, live?: boolean) => void;
+  live?: boolean;
+}) {
+  const set = (next: Partial<CanalPreferences>) => patch(next, live);
+  const id = (setupId: string, liveId: string) => (live ? liveId : setupId);
+  const name = (base: string) => (live ? `live-${base}` : base);
+  const threeD = prefs.viewMode === 'chase' || prefs.viewMode === 'cockpit';
+  return (
+    <>
+      {live ? (
+        <ChoiceRow
+          label="View"
+          name={name('view')}
+          value={prefs.viewMode}
+          onChange={value => set({ viewMode: value })}
+          options={VIEW}
+          icons={VIEW_ICONS}
+          layout="icons"
+          showCurrent
+        />
+      ) : null}
+      {live && threeD ? (
+        <>
+          <RangeRow label="3D tilt" keys="[ ]" id="live-tilt" min={CAMERA_TILT_MIN} max={CAMERA_TILT_MAX} step="1"
+            value={prefs.cameraTilt} onChange={cameraTilt => set({ cameraTilt })} />
+          <RangeRow label="3D spin" keys="Shift + [ ]" id="live-bearing" min="-180" max="180" step="5"
+            value={prefs.cameraBearing} onChange={cameraBearing => set({ cameraBearing })} />
+        </>
+      ) : null}
+      <RangeRow label="Zoom" id={id('camera-zoom', 'live-zoom')} min="0.35" max="1.3" step="0.05"
+        value={prefs.zoom} onChange={zoom => set({ zoom })} />
+      <ChoiceRow
+        label="Controls"
+        name={name('controls')}
+        value={prefs.controlMode}
+        onChange={value => set({ controlMode: value })}
+        options={CONTROLS}
+      />
+      <ChoiceRow
+        label="Answers"
+        name={name('answers')}
+        value={prefs.answerMode}
+        onChange={value => set({ answerMode: value })}
+        options={ANSWERS}
+      />
+      {live && prefs.travelMode === 'car' ? (
+        <>
+          <ChoiceRow
+            label="Bicycle"
+            name={name('bike-skin')}
+            value={prefs.bikeSkin}
+            onChange={value => set({ bikeSkin: value })}
+            options={BIKE_SKIN_OPTIONS}
+            compact
+          />
+          {BIKE_SKINS[prefs.bikeSkin]?.babySeat ? (
+            <ToggleGroup label="Bicycle extras">
+              <ToggleTile id="live-bike-baby-seat" checked={prefs.bikeBabySeat} onChange={bikeBabySeat => set({ bikeBabySeat })}
+                title="Baby seat" hint="Rear child seat" />
+            </ToggleGroup>
+          ) : null}
+        </>
+      ) : null}
+      <ToggleGroup label="On the map">
+        <ToggleTile id={id('assist-line', 'live-line')} checked={prefs.line} onChange={line => set({ line })} title="Route line" />
+        <ToggleTile id={id('assist-arrow', 'live-arrow')} checked={prefs.arrow} onChange={arrow => set({ arrow })} title="Arrow" hint="Points at the destination" />
+        <ToggleTile id={id('assist-minimap', 'live-minimap')} checked={prefs.minimap} onChange={minimap => set({ minimap })} title="Minimap" />
+        <ToggleTile id={id('gamey-features', 'live-gamey')} checked={prefs.gamey} onChange={gamey => set({ gamey })} title="Scores" hint="Points, streaks and ribbons" />
+      </ToggleGroup>
+      <ToggleGroup label="Comfort & detail">
+        <ToggleTile id={id('sound-enabled', 'live-sound')} checked={prefs.sound} onChange={sound => set({ sound })} title="Sound" />
+        <ToggleTile id={id('reduced-motion', 'live-reduced-motion')} checked={prefs.reducedMotion} onChange={reducedMotion => set({ reducedMotion })} title="Less motion" />
+        <ToggleTile id={id('detailed-3d', 'live-detailed-3d')} checked={prefs.detailed3d} onChange={detailed3d => set({ detailed3d })} title="Detailed 3D" hint="Beta" />
+        <ToggleTile id={id('google-tiles', 'live-google-tiles')} checked={prefs.googleTiles} onChange={googleTiles => set({ googleTiles })} title="Photoreal" hint="Google 3D, overview only" />
+        <ToggleTile id={id('trees-enabled', 'live-trees')} checked={prefs.trees} onChange={trees => set({ trees })} title="Trees in 3D" hidden />
+      </ToggleGroup>
+      <ChoiceRow
+        label="Map style"
+        name={name('theme')}
+        value={prefs.themeMode}
+        onChange={value => set({ themeMode: value })}
+        options={THEMES}
+        compact
+      />
+    </>
+  );
+}
 
 const HOME_RADIUS_STORAGE_KEY = 'canalRecall.homeLearningRadius.v1';
 
@@ -301,6 +445,7 @@ function KnowledgeReviewScreen({
   review,
   now,
   onClose,
+  backLabel,
   onPlanReview,
   onPracticeAgain,
   onForgetItem,
@@ -308,6 +453,7 @@ function KnowledgeReviewScreen({
   review: KnowledgeReview;
   now: number;
   onClose: () => void;
+  backLabel: string;
   onPlanReview: () => void;
   onPracticeAgain: (itemKey: string) => void;
   onForgetItem: (itemKey: string, name: string) => void;
@@ -320,13 +466,21 @@ function KnowledgeReviewScreen({
       && (!term || item.name.toLocaleLowerCase().includes(term) || cityLabel(item.cityId).toLocaleLowerCase().includes(term)));
   }, [filter, query, review.items]);
   const maxActivity = Math.max(1, ...review.activity.map(day => day.reviews));
+  // A full-screen view takes focus, and Escape leaves it, like any dialog.
+  const backRef = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    backRef.current?.focus();
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
 
   return (
     <section id="knowledge-review" className="knowledge-review" aria-labelledby="knowledge-review-title">
       <header className="knowledge-header">
-        <button type="button" className="knowledge-back" onClick={onClose}>
+        <button type="button" className="knowledge-back" onClick={onClose} ref={backRef}>
           <ArrowLeft aria-hidden="true" />
-          Route setup
+          {backLabel}
         </button>
         <div>
           <h1 id="knowledge-review-title">Your city knowledge</h1>
@@ -539,6 +693,7 @@ export function OverlayApp({
   const cityName = CITY_OPTIONS.find(option => option.value === prefs.cityId)?.title
     || prefs.cityId;
   const setupScroll = useScrollEdges(state.setupOpen);
+  const settingsScroll = useScrollEdges(state.settingsOpen);
 
   useEffect(() => {
     document.body.classList.toggle('setup-open', state.setupOpen);
@@ -555,7 +710,17 @@ export function OverlayApp({
     callbacks.onStart();
   };
 
-  const openKnowledge = () => {
+  // Knowledge opens from route setup or, mid-ride, from settings; closing
+  // returns focus to whichever button opened it.
+  const knowledgeOpener = useRef('knowledge-button');
+  const closeKnowledge = useCallback(() => {
+    store.setKnowledgeOpen(false);
+    // Back to where the player came from, not to the top of the document.
+    requestAnimationFrame(() => document.getElementById(knowledgeOpener.current)?.focus());
+  }, [store]);
+
+  const openKnowledge = (opener = 'knowledge-button') => {
+    knowledgeOpener.current = opener;
     setKnowledgeRefresh(value => value + 1);
     store.setKnowledgeOpen(true);
   };
@@ -576,7 +741,9 @@ export function OverlayApp({
 
   return (
     <>
-      <div id="route-setup" className="enamel-setup" style={{ display: state.setupOpen ? 'flex' : 'none' }}>
+      {/* Covered by the knowledge screen: out of the tab order and the
+          accessibility tree, not just out of sight. */}
+      <div id="route-setup" className="enamel-setup" inert={state.knowledgeOpen} style={{ display: state.setupOpen ? 'flex' : 'none' }}>
         <div className="enamel-setup-rail">
           <form id="route-card" className="enamel-setup-form" onSubmit={start}>
             <h1 className="enamel-plaque enamel-framed enamel-title">Canal Recall</h1>
@@ -591,7 +758,7 @@ export function OverlayApp({
                   id="knowledge-button"
                   type="button"
                   className="account-button enamel-quiet"
-                  onClick={openKnowledge}
+                  onClick={() => openKnowledge()}
                 >
                   Knowledge
                 </button>
@@ -758,76 +925,46 @@ export function OverlayApp({
                 icons={DIFFICULTY_ICONS}
                 gloss="Expert hides assists. Custom appears when you tweak assists below."
               />
-              <div className="preference-grid">
-                <label className="master-toggle">
-                  <input
-                    id="skip-mastered"
-                    type="checkbox"
-                    checked={prefs.skipMastered}
-                    onChange={event => {
-                      patch({ skipMastered: event.target.checked });
-                      callbacks.onSkipMastered(event.target.checked);
-                    }}
-                  />
-                  <span><strong>Space reviews</strong><small>Only names due</small></span>
-                </label>
-                <label className="master-toggle">
-                  <input id="gamey-features" type="checkbox" checked={prefs.gamey} onChange={event => patch({ gamey: event.target.checked })} />
-                  <span><strong>Scores & streaks</strong><small>Points and ribbons</small></span>
-                </label>
+              <ToggleGroup label="Review">
+                <ToggleTile
+                  id="skip-mastered"
+                  checked={prefs.skipMastered}
+                  onChange={skipMastered => {
+                    patch({ skipMastered });
+                    callbacks.onSkipMastered(skipMastered);
+                  }}
+                  title="Due names only"
+                  hint="Ask only names due for review"
+                />
+                <ToggleTile id="measured-colours-only" checked={prefs.measuredColoursOnly}
+                  onChange={measuredColoursOnly => patch({ measuredColoursOnly }, true)}
+                  title="Reviewed colours" hint="Only buildings with checked wall colours" />
+              </ToggleGroup>
+              {prefs.measuredColoursOnly && <p className="setup-choice-gloss" role="status">Buildings without reviewed wall colours are hidden. Coverage may be empty.</p>}
+              <RideOptions prefs={prefs} patch={patch} />
+              {/* Destructive, so fenced off and labelled rather than sitting as
+                  two more quiet buttons just above Start. Both still confirm. */}
+              <div className="setup-danger" role="group" aria-labelledby="setup-danger-title">
+                  <p id="setup-danger-title" className="setup-danger-title">Your saved data</p>
+                <button
+                  id="clear-knowledge-button"
+                  type="button"
+                  className="account-button quiet enamel-quiet setup-danger-button"
+                  disabled={state.account.busy}
+                  onClick={() => callbacks.onClearKnowledge()}
+                >
+                  Reset knowledge…
+                </button>
+                <button
+                  id="clear-all-data-button"
+                  type="button"
+                  className="account-button quiet enamel-quiet setup-danger-button"
+                  disabled={state.account.busy}
+                  onClick={() => callbacks.onClearAllData()}
+                >
+                  Clear all data…
+                </button>
               </div>
-              <div className="setup-grid">
-                <Field label="ANSWERS" id="answer-mode" value={prefs.answerMode} onChange={value => patch({ answerMode: value as CanalPreferences['answerMode'] })}>
-                  <option value="multiple">Multiple choice</option>
-                  <option value="typing">Type the name</option>
-                </Field>
-                <Field label="CONTROLS" id="control-mode" value={prefs.controlMode} onChange={value => patch({ controlMode: value as CanalPreferences['controlMode'] })}>
-                  <option value="relative">Relative — steer vehicle</option>
-                  <option value="absolute">Absolute — compass directions</option>
-                </Field>
-                <Field label="THEME" id="theme-mode" value={prefs.themeMode} onChange={value => patch({ themeMode: value as CanalPreferences['themeMode'] })}>
-                  <option value="clean">Clean map</option>
-                  <option value="8bit">8-bit arcade</option>
-                  <option value="16bit">16-bit</option>
-                  <option value="psx">PSX</option>
-                  <option value="cyberpunk">Cyberpunk</option>
-                </Field>
-                <label className="setup-field">CAMERA ZOOM
-                  <input id="camera-zoom" type="range" min="0.35" max="1.3" step="0.05" value={prefs.zoom} onChange={event => patch({ zoom: Number(event.target.value) })} />
-                </label>
-              </div>
-              <div className="assist-options">
-                <Check id="assist-line" checked={prefs.line} onChange={line => patch({ line })}> Route line</Check>
-                <Check id="assist-arrow" checked={prefs.arrow} onChange={arrow => patch({ arrow })}> Destination arrow</Check>
-                <Check id="assist-minimap" checked={prefs.minimap} onChange={minimap => patch({ minimap })}> Minimap</Check>
-                <Check id="trees-enabled" checked={prefs.trees} onChange={trees => patch({ trees })} hidden> Trees in 3D</Check>
-                <Check id="reduced-motion" checked={prefs.reducedMotion} onChange={reducedMotion => patch({ reducedMotion })}> Reduced motion</Check>
-                <Check id="detailed-3d" checked={prefs.detailed3d} onChange={detailed3d => patch({ detailed3d })}> Detailed 3D beta</Check>
-                <Check id="google-tiles" checked={prefs.googleTiles} onChange={googleTiles => patch({ googleTiles })}> Google photoreal (overview)</Check>
-                <Check id="measured-colours-only" checked={prefs.measuredColoursOnly} onChange={measuredColoursOnly => patch({ measuredColoursOnly }, true)}> Colour coverage: reviewed buildings only</Check>
-                {prefs.measuredColoursOnly && <p role="status">Buildings without reviewed wall colours are hidden. Coverage may be empty.</p>}
-                <Check id="sound-enabled" checked={prefs.sound} onChange={sound => patch({ sound })}> Sound</Check>
-              </div>
-              <button
-                id="clear-knowledge-button"
-                type="button"
-                className="account-button quiet enamel-quiet"
-                disabled={state.account.busy}
-                onClick={() => callbacks.onClearKnowledge()}
-                style={{ marginTop: 10, width: '100%' }}
-              >
-                Reset knowledge…
-              </button>
-              <button
-                id="clear-all-data-button"
-                type="button"
-                className="account-button quiet enamel-quiet"
-                disabled={state.account.busy}
-                onClick={() => callbacks.onClearAllData()}
-                style={{ marginTop: 8, width: '100%' }}
-              >
-                Clear all data…
-              </button>
             </details>
             </div>
             {setupScroll.edges.below ? (
@@ -851,7 +988,8 @@ export function OverlayApp({
         <KnowledgeReviewScreen
           review={knowledgeReview}
           now={knowledgeNow}
-          onClose={() => store.setKnowledgeOpen(false)}
+          onClose={closeKnowledge}
+          backLabel={state.setupOpen ? 'Route setup' : 'Back to ride'}
           onPlanReview={planReview}
           onPracticeAgain={practiceAgain}
           onForgetItem={forgetItem}
@@ -859,91 +997,40 @@ export function OverlayApp({
       ) : null}
       <div id="settings-panel" className="utility-panel enamel-utility" style={{ display: state.settingsOpen ? 'flex' : 'none' }}>
         <div className="utility-card enamel-plaque enamel-framed enamel-panel">
-          <h2>Navigation settings</h2>
-          <div className="utility-scroll">
-          <label className="master-toggle">
-            <input id="live-gamey" type="checkbox" checked={prefs.gamey} onChange={event => patch({ gamey: event.target.checked }, true)} />
-            <span><strong>Game-y features</strong><small>Streaks, multipliers, points, and route ribbons.</small></span>
-          </label>
-          <div className="assist-options">
-            <Check id="live-line" checked={prefs.line} onChange={line => patch({ line }, true)}> Route line</Check>
-            <Check id="live-arrow" checked={prefs.arrow} onChange={arrow => patch({ arrow }, true)}> Destination arrow</Check>
-            <Check id="live-minimap" checked={prefs.minimap} onChange={minimap => patch({ minimap }, true)}> Minimap</Check>
-            <Check id="live-trees" checked={prefs.trees} onChange={trees => patch({ trees }, true)} hidden> Trees in 3D</Check>
-            <Check id="live-reduced-motion" checked={prefs.reducedMotion} onChange={reducedMotion => patch({ reducedMotion }, true)}> Reduced motion</Check>
-            <Check id="live-detailed-3d" checked={prefs.detailed3d} onChange={detailed3d => patch({ detailed3d }, true)}> Detailed 3D beta</Check>
-            <Check id="live-google-tiles" checked={prefs.googleTiles} onChange={googleTiles => patch({ googleTiles }, true)}> Google photoreal (overview)</Check>
-            <Check id="live-sound" checked={prefs.sound} onChange={sound => patch({ sound }, true)}> Sound</Check>
-          </div>
-          <Field label="CONTROLS" id="live-controls" value={prefs.controlMode} onChange={value => patch({ controlMode: value as CanalPreferences['controlMode'] }, true)}>
-            <option value="relative">Relative — steer vehicle</option>
-            <option value="absolute">Absolute — compass directions</option>
-          </Field>
-          <Field label="VIEW" id="live-view" value={prefs.viewMode} onChange={value => patch({ viewMode: value as CanalPreferences['viewMode'] }, true)}>
-            <option value="north">2D — north up</option>
-            <option value="heading">2D — heading up</option>
-            <option value="chase">3D — chase (high / behind)</option>
-            <option value="cockpit">3D — cockpit (low / bumper)</option>
-          </Field>
-          {(prefs.viewMode === 'chase' || prefs.viewMode === 'cockpit') ? (
-            <>
-              <label className="setup-field">3D TILT ([ / ])
-                <input
-                  id="live-tilt"
-                  type="range"
-                  min={CAMERA_TILT_MIN}
-                  max={CAMERA_TILT_MAX}
-                  step="1"
-                  value={prefs.cameraTilt}
-                  onChange={event => patch({ cameraTilt: Number(event.target.value) }, true)}
-                />
-              </label>
-              <label className="setup-field">3D SPIN (SHIFT + [ / ])
-                <input
-                  id="live-bearing"
-                  type="range"
-                  min="-180"
-                  max="180"
-                  step="5"
-                  value={prefs.cameraBearing}
-                  onChange={event => patch({ cameraBearing: Number(event.target.value) }, true)}
-                />
-              </label>
-            </>
-          ) : null}
-          {prefs.travelMode === 'car' ? (
-            <>
-              <Field label="BICYCLE" id="live-bike-skin" value={prefs.bikeSkin} onChange={value => patch({ bikeSkin: value as CanalPreferences['bikeSkin'] }, true)}>
-                {BIKE_SKIN_OPTIONS.map(option => (
-                  <option key={option.value} value={option.value}>{option.title}</option>
-                ))}
-              </Field>
-              {BIKE_SKINS[prefs.bikeSkin]?.babySeat ? (
-                <Check id="live-bike-baby-seat" checked={prefs.bikeBabySeat} onChange={bikeBabySeat => patch({ bikeBabySeat }, true)}>
-                  {' '}Baby seat
-                </Check>
-              ) : null}
-            </>
-          ) : null}
-          <Field label="THEME" id="live-theme" value={prefs.themeMode} onChange={value => patch({ themeMode: value as CanalPreferences['themeMode'] }, true)}>
-            <option value="clean">Clean map</option>
-            <option value="8bit">8-bit arcade</option>
-            <option value="16bit">16-bit</option>
-            <option value="psx">PSX</option>
-            <option value="cyberpunk">Cyberpunk</option>
-          </Field>
-          <label className="setup-field">CAMERA ZOOM
-            <input id="live-zoom" type="range" min="0.35" max="1.3" step="0.05" value={prefs.zoom} onChange={event => patch({ zoom: Number(event.target.value) }, true)} />
-          </label>
+          <h2>Ride settings</h2>
+          <div className="enamel-setup-scroll-wrap">
+            <div
+              className="utility-scroll enamel-setup-scroll"
+              ref={settingsScroll.ref}
+              data-more-above={settingsScroll.edges.above ? '' : undefined}
+              data-more-below={settingsScroll.edges.below ? '' : undefined}
+            >
+              <RideOptions prefs={prefs} patch={patch} live />
+            </div>
+            {settingsScroll.edges.below ? (
+              <button type="button" className="setup-scroll-cue" onClick={settingsScroll.scrollOn} aria-label="Scroll for more settings">
+                More <ChevronDown aria-hidden="true" size={14} strokeWidth={2.5} />
+              </button>
+            ) : null}
           </div>
           <div className="utility-actions">
-            <button
-              className="enamel-plaque enamel-framed enamel-secondary"
+            <div className="utility-actions-row">
+              <button
+                id="live-knowledge-button"
+                className="enamel-plaque enamel-framed enamel-secondary"
+                type="button"
+                onClick={() => openKnowledge('live-knowledge-button')}
+              >
+                Your knowledge
+              </button>
+              <button
+                className="enamel-plaque enamel-framed enamel-secondary"
               type="button"
               onClick={() => callbacks.onNewRoute()}
             >
-              New route
-            </button>
+                Route setup
+              </button>
+            </div>
             <button className="utility-close enamel-plaque enamel-framed enamel-start" type="button" onClick={() => callbacks.onCloseSettings()}>Done</button>
           </div>
         </div>

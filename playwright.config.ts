@@ -2,6 +2,10 @@ import { defineConfig, devices } from '@playwright/test';
 import { existsSync } from 'node:fs';
 
 const localChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// Worktrees each run a dev server, and `reuseExistingServer` will silently test
+// whichever checkout already owns the port. Give each session its own:
+// `PW_PORT=4388 npx playwright test …`.
+const port = process.env.PW_PORT || '4173';
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -15,7 +19,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['html', { open: 'never' }], ['github']] : 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: `http://127.0.0.1:${port}`,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     launchOptions: existsSync(localChrome) ? { executablePath: localChrome } : undefined,
@@ -26,9 +30,9 @@ export default defineConfig({
   ],
   webServer: {
     command: 'npm run dev',
-    url: 'http://127.0.0.1:4173',
+    url: `http://127.0.0.1:${port}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
-    env: { PORT: '4173' },
+    env: { PORT: port },
   },
 });

@@ -23,15 +23,16 @@ export interface RibbonTier {
    */
   minRecall: number;
   color: string;
+  /** Ink tones: the arrival card is daylight paper, so these must read on it. */
   dim: string;
 }
 
 /** Ordered best-first; the first tier the trip clears wins. */
 export const ROUTE_RIBBON_TIERS: readonly RibbonTier[] = [
-  { id: 'gold', label: 'GOLD RIBBON', min: 0.85, minRecall: 0.80, color: '#FACC15', dim: 'rgba(250,204,21,.16)' },
-  { id: 'silver', label: 'SILVER RIBBON', min: 0.68, minRecall: 0.55, color: '#CBD5E1', dim: 'rgba(203,213,225,.14)' },
-  { id: 'bronze', label: 'BRONZE RIBBON', min: 0.50, minRecall: 0.25, color: '#D8964A', dim: 'rgba(216,150,74,.16)' },
-  { id: 'none', label: 'ROUTE COMPLETE', min: -Infinity, minRecall: -Infinity, color: '#7DD3FC', dim: 'rgba(56,189,248,.12)' },
+  { id: 'gold', label: 'GOLD RIBBON', min: 0.85, minRecall: 0.80, color: '#7a5d0f', dim: 'rgba(196,150,30,.16)' },
+  { id: 'silver', label: 'SILVER RIBBON', min: 0.68, minRecall: 0.55, color: '#4f5864', dim: 'rgba(79,88,100,.12)' },
+  { id: 'bronze', label: 'BRONZE RIBBON', min: 0.50, minRecall: 0.25, color: '#8a4a18', dim: 'rgba(180,104,44,.14)' },
+  { id: 'none', label: 'ROUTE COMPLETE', min: -Infinity, minRecall: -Infinity, color: '#3a5a86', dim: 'rgba(58,90,134,.1)' },
 ];
 
 /** Typing the name back is a harder recall task than picking from four

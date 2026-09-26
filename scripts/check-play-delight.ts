@@ -67,7 +67,7 @@ assert.match(story.headline, /NEMO/);
 assert.match(story.headline, /2 new names/);
 assert.match(story.passport || '', /Jordaan/);
 assert.match(story.streak || '', /3-day/);
-assert.match(story.guestTease || '', /fog map/);
+assert.match(story.guestTease || '', /keep your progress/);
 
 assert.match(knowThisCornerFeedback('Prinsengracht'), /Prinsengracht/);
 

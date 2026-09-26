@@ -30,7 +30,9 @@ const BOAT = [
 const BIKE = [
   (d: string) => `Ride toward ${d}`,
   (d: string) => `Pedal to ${d} — learn the turns`,
-  (d: string) => `Make ${d} feel like home`,
+  // Neutral on purpose: destinations include memorials ("Make Dam Square
+  // Victims 7 mei 1945 feel like home" was the review's example).
+  (d: string) => `Learn the way to ${d}`,
 ];
 const TRANSIT = [
   (d: string) => `Ride the line toward ${d}`,

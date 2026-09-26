@@ -78,7 +78,8 @@ class VectorBasemap {
       this._ensureBuildingAppearanceLayers();
       this._ensurePlaceLayers();
       this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
-      this.setBrandedPois(this._pendingBrandedPois);
+      this.setBrandedPois(this._rawBrandedPois || this._pendingBrandedPois);
+      this._applyBasemapSpoilerFilter();
       this.setTrees(this._pendingTrees);
       this._ensureLandmarkLayers();
       this._styleLandmarks();
@@ -904,13 +905,46 @@ class VectorBasemap {
     image.src = url;
   }
 
+  /** Names the game may ask about. Orientation labels that would say one of
+   *  them are dropped: a tram stop called "Nassaukade" on Nassaukade answers
+   *  the question before it is asked. See `orientationPois.ts`. */
+  setSpoilerNames(names, source = 'extract') {
+    const lib = window.CanalRecallOrientationPois;
+    if (!lib || !lib.buildSpoilerIndex) return;
+    // Keyed by source: the extract's knowledge files, and the route's own
+    // track (every street a bike ride can ask, not only the curated subset).
+    this._spoilerSources = this._spoilerSources || new Map();
+    this._spoilerSources.set(source, names || []);
+    this._spoilerIndex = lib.buildSpoilerIndex([].concat(...this._spoilerSources.values()));
+    this._applyBasemapSpoilerFilter();
+    if (this._pendingPlaces) this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
+    if (this._rawBrandedPois) this.setBrandedPois(this._rawBrandedPois);
+  }
+
+  _spoils(name) {
+    const lib = window.CanalRecallOrientationPois;
+    return !!(this._spoilerIndex && lib && lib.poiNameSpoils(name, this._spoilerIndex));
+  }
+
+  _applyBasemapSpoilerFilter() {
+    const lib = window.CanalRecallOrientationPois;
+    if (!this.map || !this.map.getStyle() || !this._spoilerIndex || !lib || !lib.basemapSpoilerFilter) return;
+    this._basemapPoiFilters = this._basemapPoiFilters || new Map();
+    for (const id of lib.basemapOrientationPoiLayerIds(this.map.getStyle().layers || [])) {
+      if (!this._basemapPoiFilters.has(id)) this._basemapPoiFilters.set(id, this.map.getFilter(id) || null);
+      try { this.map.setFilter(id, lib.basemapSpoilerFilter(this._basemapPoiFilters.get(id), this._spoilerIndex)); } catch (_) {}
+    }
+  }
+
   setBrandedPois(pois) {
+    this._rawBrandedPois = pois || [];
     // The extract carries every named food venue in the city. Drawn all at
     // once they bury the driving corridor, so only the best cue on each patch
     // of ground is handed to the map.
     const thin = window.CanalRecallOrientationPois
       && window.CanalRecallOrientationPois.thinOrientationPois;
-    this._pendingBrandedPois = thin ? thin(pois || []) : (pois || []);
+    const safe = (pois || []).filter(poi => !this._spoils(poi.name));
+    this._pendingBrandedPois = thin ? thin(safe) : safe;
     if (!this.map) return;
     const source = this.map.getSource('branded-pois');
     if (!source) return;
@@ -929,7 +963,7 @@ class VectorBasemap {
   setPlaces(landmarks, boundaries) {
     this._pendingPlaces = { landmarks: landmarks || [], boundaries: boundaries || [] };
     if (!this.map || !this.map.getSource('amsterdam-pois')) return;
-    const pois = this._pendingPlaces.landmarks.filter(item => item.center && (item.prominenceScore || 0) >= 220).map(item => ({ type: 'Feature', properties: { id: item.id, name: item.name }, geometry: { type: 'Point', coordinates: [item.center[1], item.center[0]] } }));
+    const pois = this._pendingPlaces.landmarks.filter(item => item.center && (item.prominenceScore || 0) >= 220 && !this._spoils(item.name)).map(item => ({ type: 'Feature', properties: { id: item.id, name: item.name }, geometry: { type: 'Point', coordinates: [item.center[1], item.center[0]] } }));
     const polygons = [], labels = [];
     for (const boundary of this._pendingPlaces.boundaries.filter(item => item.kind === 'neighbourhood' && item.geometry)) {
       for (const polygon of boundary.geometry) {

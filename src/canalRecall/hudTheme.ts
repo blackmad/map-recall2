@@ -1,5 +1,6 @@
 /**
- * One palette for the whole product: enamel street-plaque chrome.
+ * One palette for the whole product: daylight paper, with enamel street-plaque
+ * chrome kept literal to title plaques and the map's own plaques.
  *
  * Route setup, settings/help panels, Map Quest dialogs, and the canvas HUD
  * share these values. Floating HUD cards stay translucent so the driving
@@ -116,7 +117,9 @@ export const hudSurface = {
   /** Only the finish arrow is copper-bright, so it reads as "go there". */
   arrow: daylightTheme.accent,
   fontPlaque: enamelTheme.fontPlaque,
-  fontMono: 'ui-monospace, "JetBrains Mono", Menlo, monospace',
+  /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
+   *  through to Courier/Menlo. index.html loads JetBrains Mono. */
+  fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
   fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif',
 } as const;
 
@@ -130,12 +133,15 @@ export function enamelCssVariables(): Record<string, string> {
     '--enamel-deep': enamelTheme.enamelDeep,
     '--enamel-ink': enamelTheme.ink,
     '--enamel-muted': enamelTheme.inkMuted,
-    '--ink-muted': enamelTheme.inkMuted,
-    '--ink-dim': enamelTheme.inkDim,
-    '--ink': enamelTheme.ink,
-    '--muted': enamelTheme.inkMuted,
-    '--line': enamelTheme.line,
-    '--night': enamelTheme.night,
+    /* Semantic tokens are daylight in both products since 2026-09-26 (TODO
+       #28). The cobalt-era aliases (--paper, --moss, --terracotta, --ochre,
+       --primary …) are retired; enamel is only --enamel* now. */
+    '--ink-muted': daylightTheme.inkMuted,
+    '--ink-dim': daylightTheme.ink,
+    '--ink': daylightTheme.ink,
+    '--muted': daylightTheme.inkMuted,
+    '--line': daylightTheme.line,
+    '--night': daylightTheme.paper,
     '--rivet': enamelTheme.rivet,
     '--rivet-deep': enamelTheme.rivetDeep,
     '--enamel-copper': enamelTheme.copper,
@@ -143,19 +149,8 @@ export function enamelCssVariables(): Record<string, string> {
     '--enamel-copper-mid': enamelTheme.copperMid,
     '--enamel-copper-deep': enamelTheme.copperDeep,
     '--font-plaque': enamelTheme.fontPlaque,
-    /* Historical aliases — same hexes; prefer --enamel* in new CSS. */
-    '--paper': enamelTheme.enamel,
-    '--paper-raised': enamelTheme.enamelBright,
-    '--paper-muted': enamelTheme.enamelDeep,
-    '--moss': enamelTheme.enamelBright,
-    '--moss-dark': enamelTheme.enamelDeep,
-    '--moss-soft': paperTheme.mossSoft,
-    '--terracotta': enamelTheme.copper,
-    '--ochre': enamelTheme.rivet,
-    '--accent': enamelTheme.copper,
-    '--primary': enamelTheme.copper,
-    /* Daylight paper (Canal Recall). Canal's own :root maps its semantic
-       tokens onto these; Map Quest ignores them. */
+    '--accent': daylightTheme.accent,
+    /* Daylight paper, the surface for both products. */
     '--day-paper': daylightTheme.paper,
     '--day-paper-raised': daylightTheme.paperRaised,
     '--day-paper-sunk': daylightTheme.paperSunk,

@@ -130,6 +130,25 @@ test('the settings panel keeps its Done button on screen', async ({ page }) => {
   await expect(page.locator('#settings-panel')).toBeHidden();
 });
 
+// Named regression (2026-09-26): in-ride settings were a column of native
+// selects and bare checkboxes, unlike the tile buttons of route setup. Both now
+// render the same RideOptions, so the panel has tiles and no dropdowns.
+test('ride settings use the same tile buttons as route setup', async ({ page }) => {
+  await drive(page);
+  await page.locator('#open-settings').click();
+  const panel = page.locator('#settings-panel');
+  await expect(panel.locator('select')).toHaveCount(0);
+  const point = panel.locator('[data-choice="live-controls:absolute"]');
+  await point.click();
+  await expect(point).toHaveClass(/active/);
+  await expect(page.locator('#route-setup [data-choice="controls:absolute"]')).toHaveClass(/active/);
+  const minimap = panel.locator('label.toggle-tile', { has: page.locator('#live-minimap') });
+  const wasOn = await page.locator('#live-minimap').isChecked();
+  await minimap.click();
+  await expect(page.locator('#live-minimap')).toBeChecked({ checked: !wasOn });
+  await expect(minimap).toHaveClass(wasOn ? /^(?!.*active)/ : /active/);
+});
+
 // Named regression (2026-09-26): on a phone the setup rail clipped Difficulty
 // exactly at its label, so nothing said the list went on — and the backdrop
 // photo spent a sixth of the screen below Start.
@@ -137,7 +156,7 @@ test('phone setup shows every main choice above Start, and says when it scrolls'
   await page.goto('/canal-drive/');
   await expect(page.locator('#route-card')).toBeVisible();
   const fits = await page.evaluate(() => {
-    const scroll = document.querySelector('.enamel-setup-scroll')!.getBoundingClientRect();
+    const scroll = document.querySelector('#route-setup .enamel-setup-scroll')!.getBoundingClientRect();
     const hard = document.querySelector('[data-choice="difficulty:hard"]')!.getBoundingClientRect();
     return { hardBottom: hard.bottom, scrollBottom: scroll.bottom };
   });
@@ -146,9 +165,9 @@ test('phone setup shows every main choice above Start, and says when it scrolls'
 
   // A shorter phone overflows: the cue appears and goes away at the end.
   await page.setViewportSize({ width: 360, height: 560 });
-  const cue = page.locator('.setup-scroll-cue');
+  const cue = page.locator('#route-setup .setup-scroll-cue');
   await expect(cue).toBeVisible();
-  await page.locator('.enamel-setup-scroll').evaluate(node => { node.scrollTop = node.scrollHeight; });
+  await page.locator('#route-setup .enamel-setup-scroll').evaluate(node => { node.scrollTop = node.scrollHeight; });
   await expect(cue).toBeHidden();
 });
 
@@ -182,4 +201,107 @@ test('absolute mode: holding the stick right drives due east', async ({ page }) 
   // Road assist may bend it along a street within 55° of east; never north-east
   // by construction, and never a quarter-turn off.
   expect(Math.abs(heading), `heading ${heading.toFixed(2)} rad is eastward`).toBeLessThan((55 * Math.PI) / 180);
+});
+
+// Named regression (UI review 2026-09-26): a wrong answer was one amber line
+// (~1.7:1 on paper) below the choices — under the fold in landscape — and the
+// buttons never showed which was right. The miss is the lesson.
+test('a wrong answer marks the right choice and puts readable feedback under the question', async ({ page }) => {
+  await drive(page);
+  await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    game.routeOptions.answerMode = 'multiple';
+    game._openQuizPrompt({
+      kind: 'route', name: 'Prinsengracht', subject: 'water',
+      question: 'Which canal are you on?', context: 'Following it since the Westerkerk.',
+      choices: ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Brouwersgracht'],
+    });
+  });
+  await page.locator('#canal-choices button', { hasText: 'Keizersgracht' }).click();
+  await expect(page.locator('#canal-card')).toHaveClass(/answered/);
+  await expect(page.locator('#canal-choices button.is-correct')).toHaveText(/Prinsengracht/);
+  await expect(page.locator('#canal-choices button.is-wrong')).toHaveText(/Keizersgracht/);
+  const layout = await page.evaluate(() => {
+    const feedback = document.querySelector('#canal-feedback')!;
+    const heading = document.querySelector('#canal-card h2')!;
+    const choices = document.querySelector('#canal-choices')!;
+    const colour = getComputedStyle(feedback).color;
+    return {
+      text: feedback.textContent,
+      colour,
+      afterHeading: heading.getBoundingClientRect().bottom <= feedback.getBoundingClientRect().top,
+      beforeChoices: feedback.getBoundingClientRect().bottom <= choices.getBoundingClientRect().top,
+    };
+  });
+  expect(layout.text).toContain('Prinsengracht');
+  expect(layout.afterHeading && layout.beforeChoices, 'feedback sits between the question and the choices').toBe(true);
+  expect(layout.colour, 'feedback is the dark copper ink, not the old amber').toBe('rgb(138, 74, 24)');
+});
+
+// Named regression (UI review 2026-09-26): the phone HUD could latch the
+// pre-settle 980 px layout and draw everything at ~47% (5 px text), and the
+// pause card was 78% black with an invisible "New route" caption.
+test('the phone HUD lays out for the real screen, and pause is a paper card', async ({ page }) => {
+  await drive(page);
+  const sizes = await page.evaluate(() => ({
+    viewportCss: (window.canalRecallGame.viewport as unknown as { cssWidth: number }).cssWidth,
+    inner: window.innerWidth,
+  }));
+  expect(sizes.viewportCss, 'the HUD is laid out for the settled window width').toBe(sizes.inner);
+
+  const centre = await page.evaluate(() => {
+    const game = window.canalRecallGame as unknown as { state: number; canvas: HTMLCanvasElement; _render(): void };
+    game.state = (window as unknown as { GameState?: { PAUSED: number } }).GameState?.PAUSED
+      ?? (0, eval)('GameState.PAUSED');
+    game._render();
+    const ctx = game.canvas.getContext('2d')!;
+    const [r, g, b] = ctx.getImageData(Math.round(game.canvas.width / 2), Math.round(game.canvas.height / 2) - 20, 1, 1).data;
+    return (r + g + b) / 3;
+  });
+  expect(centre, 'the pause card is light paper, not a black plate').toBeGreaterThan(200);
+});
+
+// Named regressions (UI review leftovers, 2026-09-26).
+test('the city field is one 44px tap target', async ({ page }) => {
+  await page.goto('/canal-drive/');
+  const field = page.locator('.setup-city-select');
+  await expect(field).toBeVisible();
+  const fieldBox = (await field.boundingBox())!;
+  const selectBox = (await page.locator('#city-id').boundingBox())!;
+  expect(fieldBox.height).toBeGreaterThanOrEqual(44);
+  expect(selectBox.height, 'the select covers the whole field').toBeGreaterThanOrEqual(fieldBox.height - 2);
+  expect(selectBox.width).toBeGreaterThanOrEqual(fieldBox.width - 2);
+});
+
+test('the knowledge review opens mid-ride and returns to the ride', async ({ page }) => {
+  await drive(page);
+  await page.locator('#open-settings').click();
+  await page.locator('#live-knowledge-button').click();
+  const review = page.locator('#knowledge-review');
+  await expect(review).toBeVisible();
+  await expect(review.locator('.knowledge-back')).toHaveText(/Back to ride/);
+  await page.keyboard.press('Escape');
+  await expect(review).toHaveCount(0);
+  // Its Escape belongs to it: the settings under it stay open.
+  await expect(page.locator('#settings-panel')).toBeVisible();
+  await expect(page.locator('#live-knowledge-button')).toBeFocused();
+});
+
+test('a landscape phone docks the question beside the vehicle, not under it', async ({ page }) => {
+  await page.setViewportSize({ width: 844, height: 390 });
+  await drive(page);
+  await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    game.routeOptions.answerMode = 'multiple';
+    game._openQuizPrompt({
+      kind: 'route', name: 'Prinsengracht', subject: 'water',
+      question: 'Which canal are you on?', context: '',
+      choices: ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Brouwersgracht'],
+    });
+  });
+  const card = (await page.locator('#canal-card').boundingBox())!;
+  expect(card.width, 'a side card, not a full-width sheet').toBeLessThanOrEqual(844 * 0.5);
+  const centreX = 844 / 2;
+  expect(card.x >= centreX || card.x + card.width <= centreX, 'the card clears the vehicle at the centre').toBe(true);
+  expect(card.y + card.height).toBeLessThanOrEqual(391);
 });

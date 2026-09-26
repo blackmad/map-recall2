@@ -44,6 +44,9 @@ working behavior, and leave it easier for the next session to continue.
   commands are `npm run lint`, `npm run test:canal-car`,
   `npm run test:reachability`, `npm run test:canal-streets`, and focused
   Playwright specs.
+- Playwright reuses any server already on its port, and other worktrees run
+  dev servers. Set a private port (`PW_PORT=4388 npx playwright test …`) so
+  e2e exercises this checkout, not someone else's.
 - `npm run check:canal` is the aggregate pre-integration gate for typed checks,
   named driving/reachability regressions, and the production Storybook build.
 - Use Storybook for deterministic visual states that are expensive to reach by

@@ -24,7 +24,7 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
   return (
     <div
       id="loading-progress-modal-backdrop"
-      className="fixed inset-0 bg-[rgba(7,20,48,0.82)] backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
+      className="fixed inset-0 bg-[rgba(28,24,18,0.38)] backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
     >
       <div
         id="loading-progress-card"
@@ -40,7 +40,7 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
                 Preparing your quiz
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-white/60 font-medium">
-                <MapPin className="w-3.5 h-3.5 text-[#c4a35a]" />
+                <MapPin className="w-3.5 h-3.5 text-[#8a4a18]" />
                 <span>{locationName || 'Current Location'}</span>
                 <span>•</span>
                 <span className="enamel-chip capitalize px-1.5 py-0.5 font-semibold text-xs">
@@ -64,7 +64,7 @@ export const LoadingProgressModal: React.FC<LoadingProgressModalProps> = ({
         <div className="enamel-chip space-y-1.5 p-3.5">
           <div className="flex items-center justify-between text-xs font-semibold">
             <span className="text-white">{progress.message}</span>
-            <span className="text-[#c4a35a] font-mono font-bold">{Math.round(percent)}%</span>
+            <span className="text-[#8a4a18] font-mono font-bold">{Math.round(percent)}%</span>
           </div>
 
           <div className="enamel-progress w-full h-3 rounded-full overflow-hidden p-0.5">
