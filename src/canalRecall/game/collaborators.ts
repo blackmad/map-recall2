@@ -17,11 +17,11 @@ export interface Camera {
 
 export interface InputManager {
   readonly isMobile: boolean;
-  /** True while the one-line "steer with the pad" nudge is still showing. */
+  /** True while the one-line "hold here to drive" nudge is still showing. */
   readonly showTouchHint: boolean;
-  /** Which d-pad directions are held, for drawing the pad lit. */
-  readonly padKeys: import('../touchControls.ts').DpadKeys;
-  /** The pad's rectangle, or null on a pointer device. */
+  /** The held thumbstick for drawing, or null when idle. */
+  readonly stickView: import('../touchControls.ts').StickView | null;
+  /** The stick's activation zone, or null on a pointer device. */
   readonly dpad: import('../touchControls.ts').DpadLayout | null;
   /** True once for the frame in which a key went down — the edge, not the
    *  level, so holding `1` does not answer every question in a row. */
@@ -160,8 +160,8 @@ export interface Hud {
   /** Always-on north rose that tracks camera rotation. */
   drawCompass(ctx: CanvasRenderingContext2D, camera: Camera): void;
   drawCityOverview(ctx: CanvasRenderingContext2D, game: unknown): void;
-  drawTouchHint(ctx: CanvasRenderingContext2D): void;
-  drawDpad(ctx: CanvasRenderingContext2D, pressed: import('../touchControls.ts').DpadKeys): void;
+  drawTouchHint(ctx: CanvasRenderingContext2D, controlMode: string): void;
+  drawStick(ctx: CanvasRenderingContext2D, view: import('../touchControls.ts').StickView | null): void;
 }
 
 export interface Renderer {

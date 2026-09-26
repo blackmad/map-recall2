@@ -104,6 +104,7 @@ class GameRouteRuntime {
     this.viewMode = prefs.viewMode;
     this.camera.viewMode = this.viewMode;
     this.camera.northUp = this.viewMode === 'north';
+    this.camera.holdHeading = this.controlMode === 'absolute';
     this.themeMode = prefs.themeMode;
     this.vectorMap.applyTheme(this.themeMode);
     const city = this._activeCity();

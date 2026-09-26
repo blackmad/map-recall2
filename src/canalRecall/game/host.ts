@@ -51,6 +51,8 @@ export interface GameCoreHost {
   raceTime: number;
   currentNeighborhood: string;
   travelMode: TravelMode;
+  /** 'relative' (car-style) or 'absolute' (screen directions) steering. */
+  controlMode: string;
   /** Active extract city — stamps recall keys and extract URLs. */
   cityId: string;
   _cityDisplayName(): string;

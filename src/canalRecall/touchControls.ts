@@ -6,15 +6,11 @@
 // only way to learn it was a hint card; and because "touch anywhere on the left
 // to steer" overlapped the camera-pan drag, panning the map also drove the boat.
 //
-// What it is now: one visible d-pad with auto-throttle. The vehicle rolls
-// forward on its own, left/right steer, down brakes, and up is an explicit
-// push. A single pad keeps one thumb free, keeps the middle of the screen — the
-// driving corridor — clear, and gives the pan gesture somewhere unambiguous to
-// live: anything outside the pad pans the camera.
-//
-// The pad is a 3×3 grid rather than four wedges so the corners give diagonals
-// (steer while braking) and so a thumb that lands slightly off still reads as
-// the direction the player meant.
+// What it is now: one visible control zone (still called the "d-pad" in the
+// layout code, since the HUD budgets around its rectangle) that hosts an analog
+// thumbstick — see below. One zone keeps a thumb free, keeps the middle of the
+// screen — the driving corridor — clear, and gives the pan gesture somewhere
+// unambiguous to live: a touch that starts outside the zone pans the camera.
 
 import type { Viewport } from './viewport.ts';
 import { HUD_MAX_WIDTH_COMPACT, HUD_MAX_WIDTH_DESKTOP } from './viewport.ts';
@@ -84,29 +80,153 @@ export function isInsideDpad(point: TouchPoint, layout: DpadLayout | null): bool
   return point.x >= x && point.x <= x + width && point.y >= y && point.y <= y + height;
 }
 
-/** Which directions a set of live touches is holding down.
- *
- *  Column/row 0 is left/up, 1 is the dead centre, 2 is right/down — so a corner
- *  touch returns two directions and the middle cell returns none. */
-export function dpadKeysAt(points: readonly TouchPoint[], layout: DpadLayout | null): DpadKeys {
-  const keys = noKeys();
-  if (!layout) return keys;
-  for (const point of points) {
-    if (!isInsideDpad(point, layout)) continue;
-    const column = Math.min(2, Math.max(0, Math.floor((point.x - layout.bounds.x) / layout.cell)));
-    const row = Math.min(2, Math.max(0, Math.floor((point.y - layout.bounds.y) / layout.cell)));
-    if (column === 0) keys.ArrowLeft = true;
-    if (column === 2) keys.ArrowRight = true;
-    if (row === 0) keys.ArrowUp = true;
-    if (row === 2) keys.ArrowDown = true;
-  }
-  return keys;
+// ---------------------------------------------------------------------------
+// Analog thumbstick.
+//
+// The d-pad above was binary and had three faults that together made phones
+// feel undriveable:
+//   * auto-throttle held ArrowUp, so in absolute mode "right" was really
+//     right+up and resolved to north-east — due east/west was unreachable;
+//   * absolute headings were world compass angles while the default camera
+//     turns with the vehicle, so "right" on the pad was not right on screen;
+//   * a thumb that slid off the 160px pad dropped every key mid-turn.
+//
+// The stick keeps the pad's rectangle as its *activation zone* (so the HUD
+// layout budget is unchanged), floats its origin under wherever the thumb
+// lands, and keeps the touch captured until it lifts. Directions are screen
+// directions; the player converts them to world angles through the camera.
+// ---------------------------------------------------------------------------
+
+/** Fraction of full deflection ignored around the origin. */
+export const STICK_DEAD_ZONE = 0.18;
+/** Relative mode cruises below top speed so junction turns are makeable. */
+export const STICK_CRUISE_FRACTION = 0.62;
+/** Absolute mode: how fast the heading swings to the pointed direction. */
+export const ABSOLUTE_TURN_RATE = 5.5; // rad/s
+/** Absolute mode: follow the road when the pointed direction is this close. */
+export const ROAD_ASSIST_TOLERANCE = (55 * Math.PI) / 180;
+
+export type StickVector = {
+  /** Screen-space deflection after the dead zone, each in -1..1. */
+  x: number;
+  y: number;
+  /** 0..1 after the dead zone. */
+  magnitude: number;
+  /** Screen angle of the deflection: 0 is right, +π/2 is down. */
+  screenAngle: number;
+};
+
+export type StickView = {
+  origin: TouchPoint;
+  point: TouchPoint;
+  radius: number;
+  vector: StickVector | null;
+};
+
+/** Thumb travel for full deflection, sized from the zone. */
+export function stickRadius(layout: DpadLayout): number {
+  return Math.round(Math.min(64, Math.max(46, layout.bounds.width * 0.34)));
 }
 
-/** The keys the car actually sees. Auto-throttle means the vehicle rolls
- *  forward unless the player is braking, so a learner can spend their whole
- *  attention on steering and on the city rather than on holding a pedal. */
-export function applyAutoThrottle(keys: DpadKeys): DpadKeys {
-  if (keys.ArrowDown) return keys;
-  return { ...keys, ArrowUp: true };
+/** Deflection of a captured thumb, or null inside the dead zone. The point may
+ *  be anywhere on screen: past the rim it simply reads as full deflection. */
+export function stickVector(origin: TouchPoint, point: TouchPoint, radius: number): StickVector | null {
+  const dx = point.x - origin.x;
+  const dy = point.y - origin.y;
+  const raw = Math.min(1, Math.hypot(dx, dy) / Math.max(1, radius));
+  if (raw <= STICK_DEAD_ZONE) return null;
+  const magnitude = (raw - STICK_DEAD_ZONE) / (1 - STICK_DEAD_ZONE);
+  const screenAngle = Math.atan2(dy, dx);
+  return { x: Math.cos(screenAngle) * magnitude, y: Math.sin(screenAngle) * magnitude, magnitude, screenAngle };
+}
+
+export type RelativeCommand = {
+  /** Analog steer, -1 (left) .. 1 (right). */
+  steer: number;
+  /** 0..1 brake. */
+  brake: number;
+  /** Target speed as a fraction of max speed (0 while braking). */
+  speedFraction: number;
+};
+
+/** Relative (car-style) steering from a held stick. Holding the stick at all
+ *  means "drive": it cruises, sideways steers in proportion, pulling back
+ *  brakes, pushing forward runs at full speed. */
+export function relativeCommand(vector: StickVector | null): RelativeCommand {
+  if (!vector) return { steer: 0, brake: 0, speedFraction: STICK_CRUISE_FRACTION };
+  // A gentle curve: small deflections make fine corrections, the rim is full lock.
+  const steer = Math.sign(vector.x) * Math.min(1, Math.abs(vector.x) ** 0.8 * 1.15);
+  const back = vector.y;
+  if (back > 0.45 && back > Math.abs(vector.x) * 0.8) {
+    return { steer, brake: Math.min(1, (back - 0.45) / 0.35), speedFraction: 0 };
+  }
+  const forward = Math.max(0, -vector.y);
+  const speedFraction = STICK_CRUISE_FRACTION + (1 - STICK_CRUISE_FRACTION) * Math.min(1, forward / 0.8);
+  return { steer, brake: 0, speedFraction };
+}
+
+export type AbsoluteCommand = {
+  /** World heading to steer toward. */
+  targetAngle: number;
+  /** Target speed as a fraction of max speed. */
+  speedFraction: number;
+};
+
+/** A screen direction converted into a world heading. `cameraRotation` is the
+ *  rotation the camera applies (world = screen rotated by it), so pointing
+ *  right means screen-right whether the map is north-up or turned. */
+export function screenToWorldAngle(screenAngle: number, cameraRotation: number): number {
+  return normalizeAngle(screenAngle + cameraRotation);
+}
+
+export function absoluteCommand(vector: StickVector | null, cameraRotation: number): AbsoluteCommand | null {
+  if (!vector) return null;
+  return {
+    targetAngle: screenToWorldAngle(vector.screenAngle, cameraRotation),
+    speedFraction: 0.35 + 0.65 * vector.magnitude,
+  };
+}
+
+/** Keyboard arrows in absolute mode, as a screen angle. Null when nothing (or
+ *  two cancelling keys) is held. Pure horizontal is exactly 0 or π. */
+export function keysScreenAngle(keys: DpadKeys): number | null {
+  const horizontal = (keys.ArrowRight ? 1 : 0) - (keys.ArrowLeft ? 1 : 0);
+  const vertical = (keys.ArrowDown ? 1 : 0) - (keys.ArrowUp ? 1 : 0);
+  if (!horizontal && !vertical) return null;
+  return Math.atan2(vertical, horizontal);
+}
+
+/** Pick the heading to actually drive: the road/canal tangent nearest to the
+ *  pointed direction when it is within tolerance, else the pointed direction.
+ *  So "push east" on a street running east-north-east follows the street
+ *  instead of steering into the kerb. */
+export function assistedHeading(
+  targetAngle: number,
+  roadAngle: number | null | undefined,
+  tolerance: number = ROAD_ASSIST_TOLERANCE,
+): number {
+  if (roadAngle == null || !Number.isFinite(roadAngle)) return targetAngle;
+  const forward = normalizeAngle(roadAngle - targetAngle);
+  const backward = normalizeAngle(roadAngle + Math.PI - targetAngle);
+  const delta = Math.abs(forward) <= Math.abs(backward) ? forward : backward;
+  return Math.abs(delta) <= tolerance ? normalizeAngle(targetAngle + delta) : targetAngle;
+}
+
+/** Swing `current` toward `target` by at most `maxStep` radians. */
+export function turnToward(current: number, target: number, maxStep: number): number {
+  const delta = normalizeAngle(target - current);
+  if (Math.abs(delta) <= maxStep) return target;
+  return current + Math.sign(delta) * maxStep;
+}
+
+/** Throttle that holds a target speed without the lift-off braking a bang-bang
+ *  controller would trigger every other frame. */
+export function cruiseThrottle(speed: number, targetSpeed: number, maxSpeed: number): number {
+  if (targetSpeed <= 0) return 0;
+  const band = Math.max(1, maxSpeed * 0.12);
+  return Math.max(0.05, Math.min(1, (targetSpeed - speed) / band + 0.35));
+}
+
+export function normalizeAngle(angle: number): number {
+  return Math.atan2(Math.sin(angle), Math.cos(angle));
 }

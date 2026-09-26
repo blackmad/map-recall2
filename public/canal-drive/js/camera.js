@@ -9,6 +9,10 @@ class Camera {
     this.minZoom = CAMERA_ZOOM_MIN;
     this.maxZoom = CAMERA_ZOOM_MAX;
     this.northUp = true;
+    // Absolute steering points in screen directions. A camera that turned
+    // with the heading would move "right" every time the vehicle turned
+    // right — a feedback spin — so absolute mode holds the map still.
+    this.holdHeading = false;
     this.rotation = 0;
     this.bearingOffset = 0;
     this.viewMode = 'north';
@@ -45,7 +49,7 @@ class Camera {
     const is3d = this.viewMode === 'chase' || this.viewMode === 'cockpit';
     const wantedRotation = this.detached
       ? this.rotation
-      : (this.northUp ? 0 : target.angle + Math.PI / 2) + (is3d ? this.bearingOffset : 0);
+      : (this.northUp || this.holdHeading ? 0 : target.angle + Math.PI / 2) + (is3d ? this.bearingOffset : 0);
     const delta = Math.atan2(Math.sin(wantedRotation - this.rotation), Math.cos(wantedRotation - this.rotation));
     const rotationRate = this.reducedMotion ? CAMERA_REDUCED_ROTATION_SMOOTHING : CAMERA_ROTATION_SMOOTHING;
     this.rotation += delta * Math.min(1, this.smoothing * rotationRate);

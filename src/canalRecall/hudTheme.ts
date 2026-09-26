@@ -77,6 +77,8 @@ export const hudSurface = {
   /** The d-pad, which sits over the map and must not hide it. */
   control: 'rgba(7,20,48,0.72)',
   controlPressed: 'rgba(196,163,90,0.92)',
+  /** Thumbstick knob at rest. */
+  controlKnob: 'rgba(255,255,255,0.32)',
   controlInk: 'rgba(255,255,255,0.88)',
   /** Type on the navy plate. */
   ink: enamelTheme.ink,
