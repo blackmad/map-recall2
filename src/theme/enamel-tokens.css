@@ -31,4 +31,18 @@
   --ochre: #c4a35a;
   --accent: #b87333;
   --primary: #b87333;
+  --day-paper: #f4efe5;
+  --day-paper-raised: #fbf8f2;
+  --day-paper-sunk: #ebe4d6;
+  --day-ink: #1f1c17;
+  --day-ink-muted: #5f584d;
+  --day-line: rgba(31,28,23,0.14);
+  --day-line-strong: rgba(31,28,23,0.26);
+  --day-fill: rgba(31,28,23,0.045);
+  --day-fill-hover: rgba(31,28,23,0.085);
+  --day-accent: #b4682c;
+  --day-accent-ink: #8a4a18;
+  --day-accent-soft: rgba(180,104,44,0.13);
+  --day-scrim: rgba(28,24,18,0.38);
+  --day-danger: #a8321f;
 }

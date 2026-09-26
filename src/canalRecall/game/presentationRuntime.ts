@@ -50,15 +50,16 @@ interface CardBlock {
   draw(top: number): void;
 }
 
-// Arrival-card type on enamel plaques (white ink / rivet / copper). Card fill
+// Arrival-card type on the daylight paper plate (ink / copper). Card fill
 // itself comes from `hud.paperCard` → `hudSurface`.
-const INK = '#ffffff';
-const MUTED = 'rgba(255,255,255,0.72)';
-const BODY = 'rgba(255,255,255,0.88)';
-const ACCENT = '#c4a35a';
-const GOOD = '#c4a35a';
-const COPPER = '#b87333';
-const RULE = 'rgba(255,255,255,0.22)';
+const INK = '#1f1c17';
+const MUTED = '#5f584d';
+const BODY = '#2e2a23';
+const ACCENT = '#8a4a18';
+const GOOD = '#8a4a18';
+// Button fill under ink text: copper-mid, 5.6:1 with INK (the darker accent was 4.0:1).
+const COPPER = '#c9844a';
+const RULE = 'rgba(31,28,23,0.16)';
 
 export interface GamePresentationRuntime extends PresentationHost {}
 
@@ -392,7 +393,7 @@ export class GamePresentationRuntime {
     const setup = document.getElementById('route-setup');
     const setupOpen = !!setup && setup.style.display !== 'none';
     if (setupOpen) {
-      ctx.fillStyle = '#071430';
+      ctx.fillStyle = '#f4efe5';
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       return;
     }
@@ -640,7 +641,7 @@ export class GamePresentationRuntime {
     const padX = compact ? 18 : 28;
     const cardX = cx - cardW / 2;
 
-    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    ctx.fillStyle = 'rgba(28,24,18,0.34)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
     type PauseAction = { id: 'resume' | 'route' | 'copy'; key: string; caption: string };
@@ -683,7 +684,7 @@ export class GamePresentationRuntime {
       for (const action of actions) {
         const primary = action.id === 'resume';
         const bounds = { x: cardX + padX, y, w: cardW - padX * 2, h: BUTTON_H };
-        ctx.fillStyle = primary ? COPPER : 'rgba(255,255,255,.08)';
+        ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
         roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
         ctx.fill();
         if (!primary) {
@@ -691,7 +692,7 @@ export class GamePresentationRuntime {
           ctx.lineWidth = 1;
           ctx.stroke();
         }
-        ctx.fillStyle = primary ? '#ffffff' : (action.caption === 'Link copied' ? GOOD : INK);
+        ctx.fillStyle = primary ? '#1f1c17' : (action.caption === 'Link copied' ? GOOD : INK);
         ctx.font = '700 14px system-ui, sans-serif';
         ctx.fillText(action.caption, bounds.x + bounds.w / 2, y + 28);
         pauseButtons.push({ ...bounds, id: action.id });
@@ -703,7 +704,7 @@ export class GamePresentationRuntime {
       for (const action of actions) {
         ctx.font = 'bold 11px monospace';
         const keyW = ctx.measureText(action.key).width + 14;
-        ctx.fillStyle = 'rgba(255,255,255,.14)';
+        ctx.fillStyle = 'rgba(31,28,23,.08)';
         roundRect(ctx, ax, y + 2, keyW, 20, 5);
         ctx.fill();
         ctx.fillStyle = INK;
@@ -749,7 +750,7 @@ export class GamePresentationRuntime {
    */
   _renderFinish(): void {
     const ctx = this.ctx;
-    ctx.fillStyle = 'rgba(7,20,48,.55)';
+    ctx.fillStyle = 'rgba(28,24,18,.34)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
     const cx = CANVAS_W / 2;
@@ -965,14 +966,14 @@ export class GamePresentationRuntime {
           for (const action of actions) {
             const primary = action.id === 'again';
             const bounds = { x: cardX + padX, y: by, w: cardW - padX * 2, h: BUTTON_H };
-            ctx.fillStyle = primary ? COPPER : 'rgba(255,255,255,.08)';
+            ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
             roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
             ctx.fill();
             if (!primary) {
               ctx.strokeStyle = RULE; ctx.lineWidth = 1; ctx.stroke();
             }
             ctx.textAlign = 'center';
-            ctx.fillStyle = primary ? '#ffffff' : (action.caption === 'Link copied' ? GOOD : INK);
+            ctx.fillStyle = primary ? '#1f1c17' : (action.caption === 'Link copied' ? GOOD : INK);
             ctx.font = '700 14px system-ui, sans-serif';
             ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
             finishButtons.push({ ...bounds, id: action.id });
@@ -986,7 +987,7 @@ export class GamePresentationRuntime {
         for (const action of actions) {
           ctx.font = 'bold 11px monospace';
           const keyW = ctx.measureText(action.key).width + 14;
-          ctx.fillStyle = 'rgba(255,255,255,.14)';
+          ctx.fillStyle = 'rgba(31,28,23,.08)';
           roundRect(ctx, ax, top + 4, keyW, 20, 5);
           ctx.fill();
           ctx.fillStyle = INK;
