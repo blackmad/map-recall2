@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — OccFacade local inference and visual rejection of ground-only use
+
+Added a source-hashed ENPC2014 inference runner using the upstream architecture
+on Apple MPS. Active checkpoint keys load strictly; the inactive legacy
+window-convolution branch is explicitly recorded. Twenty existing source crops
+completed at 0.815 seconds median forward, with a local source/mask/overlay/wall
+gallery verified at desktop and mobile sizes. A failing ground crop gives
+identical CPU and MPS labels. Full facades offer useful upper-window proposals,
+but doors, close-ups and occluders fail visibly, so no game output was promoted.
+The pilot report records provenance, limitations and the next validation gate.
+
 ## 2026-09-26 — local overnight colour diagnostics and broader opt-in demo
 
 The conservative local Qwen run produced 100 valid responses at 2.980 seconds
