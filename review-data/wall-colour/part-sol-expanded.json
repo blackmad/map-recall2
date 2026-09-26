@@ -1,0 +1,3484 @@
+{
+  "version": 1,
+  "kind": "wall-colour/model-expanded-grades",
+  "sampleSha256": "5711c358649d7f8d0309150bc05629f6846a65e0c617a459452bbf40b820134c",
+  "sampleFileSha256": "8285fb0c96e76749dfaab2760561e2fe44203e129133bcd81e2f03b118a0bb06",
+  "measurementsSha256": "175371b180d48cbd1be9faf76bc809c480335c3d875f6a1a4e5740526bb38591",
+  "reviewOrigin": "model-visual-review",
+  "reviewer": "gpt-6-sol",
+  "gradedAt": "2026-09-26T17:44:30.507Z",
+  "policy": "Model visual review of assigned sample indexes 0–199. Main wall only; small native-pixel medians for accepted corrections. Explicit abstentions remain unpublished. No human-review claim.",
+  "grades": {
+    "0363100012154294_e_1y3j89u": {
+      "observationId": "0363100012154294_e_1y3j89u",
+      "buildingId": "0363100012154294",
+      "sourceSha256": "b5db86a2097da3106ca145d4b6ffa6c0389738639374d9514ab53a2792541e17",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 0,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "scaffold-or-construction-cover"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012237383_e_0m4pgcv": {
+      "observationId": "0363100012237383_e_0m4pgcv",
+      "buildingId": "0363100012237383",
+      "sourceSha256": "590c33e6ee3608fad1e31c87c00c17d4ceb8eeb086fddfe40b78ab6d80a2ea10",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 1,
+      "verdict": "adjust",
+      "correctedHex": "#595d53",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 194,
+        "top": 457,
+        "width": 20,
+        "height": 21
+      },
+      "regionMedianHex": "#595d53",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012165919_e_0ca7kp7": {
+      "observationId": "0363100012165919_e_0ca7kp7",
+      "buildingId": "0363100012165919",
+      "sourceSha256": "cb4e87f1cda8b47c91ccf4fc78d062823840a774f5d3a4078aae2cb30d89cc14",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 2,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012161866_e_0l8097q": {
+      "observationId": "0363100012161866_e_0l8097q",
+      "buildingId": "0363100012161866",
+      "sourceSha256": "1161914187de2f278c6aba6acae8b49d6da5724c51f6b099e3357ff05ddc9814",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 3,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012168881_e_0t0dgyv": {
+      "observationId": "0363100012168881_e_0t0dgyv",
+      "buildingId": "0363100012168881",
+      "sourceSha256": "6cc4c84c306dd1a67c5e8dea240012c805a98080da1664493c940a93f91156ef",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 6,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012156960_e_01sgr7k": {
+      "observationId": "0363100012156960_e_01sgr7k",
+      "buildingId": "0363100012156960",
+      "sourceSha256": "d30bf3ed25f707aa2040fe0d6f67f64260a7b47389a2fb1464aaf3c06c613688",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 7,
+      "verdict": "adjust",
+      "correctedHex": "#745f3f",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 104,
+        "top": 377,
+        "width": 14,
+        "height": 22
+      },
+      "regionMedianHex": "#745f3f",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012241810_e_029kjrg": {
+      "observationId": "0363100012241810_e_029kjrg",
+      "buildingId": "0363100012241810",
+      "sourceSha256": "b10448169c8a438fc6863d3fb801182c3f959338e05d5da412a23ac044549eff",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 9,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012174168_e_1x37anp": {
+      "observationId": "0363100012174168_e_1x37anp",
+      "buildingId": "0363100012174168",
+      "sourceSha256": "59c2333cda1ef84a5fc7a5ae21afa35fc22d89457cb8d39fb0c8f6654455b6a1",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 10,
+      "verdict": "adjust",
+      "correctedHex": "#59493d",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 191,
+        "top": 620,
+        "width": 15,
+        "height": 23
+      },
+      "regionMedianHex": "#59493d",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012236332_e_0blaami": {
+      "observationId": "0363100012236332_e_0blaami",
+      "buildingId": "0363100012236332",
+      "sourceSha256": "a3ec97dd0a84cfc1a3c9dbfc1a9aab7f4abb9a8a4a499d0e51fa585121dc5200",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 11,
+      "verdict": "adjust",
+      "correctedHex": "#787165",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 171,
+        "top": 207,
+        "width": 15,
+        "height": 18
+      },
+      "regionMedianHex": "#787165",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012236016_e_1g5hiht": {
+      "observationId": "0363100012236016_e_1g5hiht",
+      "buildingId": "0363100012236016",
+      "sourceSha256": "d97fd02b4289e22aba38a7d6a8891170539692cd563b598428c8be57d3dd5f63",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 14,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012236796_e_11bsna7": {
+      "observationId": "0363100012236796_e_11bsna7",
+      "buildingId": "0363100012236796",
+      "sourceSha256": "024b1220b34edb0bdc5ce348fd8270358b2b85b0adfd1138205607ec3f92bb43",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 15,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012162796_e_13u2mzl": {
+      "observationId": "0363100012162796_e_13u2mzl",
+      "buildingId": "0363100012162796",
+      "sourceSha256": "e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 16,
+      "verdict": "adjust",
+      "correctedHex": "#71675e",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 203,
+        "top": 395,
+        "width": 15,
+        "height": 18
+      },
+      "regionMedianHex": "#71675e",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169401_e_0vserg6": {
+      "observationId": "0363100012169401_e_0vserg6",
+      "buildingId": "0363100012169401",
+      "sourceSha256": "8fa8aefc35b9d68c225fb1e821e01b9c8784a59c235793b1d36c4568745e3c04",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 17,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169621_e_17b6ps7": {
+      "observationId": "0363100012169621_e_17b6ps7",
+      "buildingId": "0363100012169621",
+      "sourceSha256": "073e168197dffe1f6c671e4db4a5e5f9101d65aef8c3d50bc3e8c52b95ece31c",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 18,
+      "verdict": "adjust",
+      "correctedHex": "#323734",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 131,
+        "top": 252,
+        "width": 13,
+        "height": 15
+      },
+      "regionMedianHex": "#323734",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012236381_e_119j81z": {
+      "observationId": "0363100012236381_e_119j81z",
+      "buildingId": "0363100012236381",
+      "sourceSha256": "d8380539ad082992c5dedb9f136a0a87177a8072da4e8da3acbc9f85b60b5196",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 19,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012186296_e_1c58etq": {
+      "observationId": "0363100012186296_e_1c58etq",
+      "buildingId": "0363100012186296",
+      "sourceSha256": "5349295d338f5d5b4fbdcbc006f6f639ba7e04244ae9d2abd307794a642f8212",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 20,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169822_e_0p2u9ee": {
+      "observationId": "0363100012169822_e_0p2u9ee",
+      "buildingId": "0363100012169822",
+      "sourceSha256": "3ef4fad97ae200f6f69ac25e261d6ce182b514cf83d202f19f29e8122fa07f07",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 22,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012170144_e_1n3e2zb": {
+      "observationId": "0363100012170144_e_1n3e2zb",
+      "buildingId": "0363100012170144",
+      "sourceSha256": "89b783ddf4edfd0441141029292be25d0b79b12656e35060a3a51588158d7fe2",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 23,
+      "verdict": "adjust",
+      "correctedHex": "#897f66",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 110,
+        "top": 465,
+        "width": 14,
+        "height": 21
+      },
+      "regionMedianHex": "#897f66",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012173920_e_0lbre2v": {
+      "observationId": "0363100012173920_e_0lbre2v",
+      "buildingId": "0363100012173920",
+      "sourceSha256": "6c0f05c11cfea19f6ec26c92a615aebd6bdf3f21a5c257c39ffd8426478eb440",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 24,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012165428_e_09sa6x8": {
+      "observationId": "0363100012165428_e_09sa6x8",
+      "buildingId": "0363100012165428",
+      "sourceSha256": "c61b93288a8c54bdaf05525524378330f9fd9f902abeec89f4589977029b6049",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 25,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169942_e_1n230fl": {
+      "observationId": "0363100012169942_e_1n230fl",
+      "buildingId": "0363100012169942",
+      "sourceSha256": "e73d9f33d7c443c5458ac8ab6310dc3cf3e1784118dc3b130a939aa1a744d6ee",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 27,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012166375_e_08klotg": {
+      "observationId": "0363100012166375_e_08klotg",
+      "buildingId": "0363100012166375",
+      "sourceSha256": "4896013f9ccc201dd1b87f256ca73bc57880ef98d9f53cec84cb1da834f99488",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 28,
+      "verdict": "adjust",
+      "correctedHex": "#8e8e8d",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 182,
+        "top": 346,
+        "width": 16,
+        "height": 24
+      },
+      "regionMedianHex": "#8e8e8d",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012174568_e_1s3xu0l": {
+      "observationId": "0363100012174568_e_1s3xu0l",
+      "buildingId": "0363100012174568",
+      "sourceSha256": "95d4c4d5cd6061baa468971df3ed4a632d4d19bee6810a78dbb3c2dcb836f1c2",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 30,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012173991_e_1qwbv4n": {
+      "observationId": "0363100012173991_e_1qwbv4n",
+      "buildingId": "0363100012173991",
+      "sourceSha256": "0e9014b5327f3bae2314bcd4dd983855202301b33ca3beb6d9d542007f430839",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 31,
+      "verdict": "adjust",
+      "correctedHex": "#dd996e",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 97,
+        "top": 331,
+        "width": 13,
+        "height": 20
+      },
+      "regionMedianHex": "#dd996e",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012170148_e_1me01b1": {
+      "observationId": "0363100012170148_e_1me01b1",
+      "buildingId": "0363100012170148",
+      "sourceSha256": "740bfe81dc8dac08cafcb24c50d712fef559e59d03b116ec132f3e8a675fd17b",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 32,
+      "verdict": "adjust",
+      "correctedHex": "#6c6c5d",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 30,
+        "top": 215,
+        "width": 8,
+        "height": 14
+      },
+      "regionMedianHex": "#6c6c5d",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012168989_e_0p01u0e": {
+      "observationId": "0363100012168989_e_0p01u0e",
+      "buildingId": "0363100012168989",
+      "sourceSha256": "932c6e01058b8438aa9d0f7a319e03b6cd63455a986e19dbc8e0bb8ad08533d9",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 35,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012173994_e_0e0c9bx": {
+      "observationId": "0363100012173994_e_0e0c9bx",
+      "buildingId": "0363100012173994",
+      "sourceSha256": "30bfd700868e5baaa9080089646efdc79b7cc60e44287727a8bf34e4c0888226",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 36,
+      "verdict": "adjust",
+      "correctedHex": "#8b967d",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 148,
+        "top": 309,
+        "width": 16,
+        "height": 21
+      },
+      "regionMedianHex": "#8b967d",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012170127_e_1f6xsa1": {
+      "observationId": "0363100012170127_e_1f6xsa1",
+      "buildingId": "0363100012170127",
+      "sourceSha256": "d790f3abeac059bc63d2f04ab96cdf94d2ade0874a33a348021f8042660349a8",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 37,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169621_e_06bkb7x": {
+      "observationId": "0363100012169621_e_06bkb7x",
+      "buildingId": "0363100012169621",
+      "sourceSha256": "9de03fe192da5586acdf192ac41c353e126fd220de6ddeaa7814cbb8ff6f55d5",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 38,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012170140_e_15oraqx": {
+      "observationId": "0363100012170140_e_15oraqx",
+      "buildingId": "0363100012170140",
+      "sourceSha256": "bf04c77b335595ca7f1b027c07ea86a08f5711ab4d1938222e6c52eac23649ed",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 39,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012173995_e_0p4wqcn": {
+      "observationId": "0363100012173995_e_0p4wqcn",
+      "buildingId": "0363100012173995",
+      "sourceSha256": "7b978ab71b1adb61eabe72a93e438889fefe703ffbc195d30b38d90d15101dc2",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 40,
+      "verdict": "adjust",
+      "correctedHex": "#20231c",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 62,
+        "top": 332,
+        "width": 10,
+        "height": 18
+      },
+      "regionMedianHex": "#20231c",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012175000_e_1opro3y": {
+      "observationId": "0363100012175000_e_1opro3y",
+      "buildingId": "0363100012175000",
+      "sourceSha256": "b4dff4b80c1c864ade6e924313bae0fbee188dcf621de70a5d5c57b2d60cec31",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 41,
+      "verdict": "adjust",
+      "correctedHex": "#232622",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 59,
+        "top": 311,
+        "width": 12,
+        "height": 19
+      },
+      "regionMedianHex": "#232622",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012168441_e_0tvbqs6": {
+      "observationId": "0363100012168441_e_0tvbqs6",
+      "buildingId": "0363100012168441",
+      "sourceSha256": "7cc6d9e9092500c03e099b8dbb6c2b2250e86c98b13ada80e2d0a117a3e83d0c",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 42,
+      "verdict": "adjust",
+      "correctedHex": "#89978a",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 43,
+        "top": 412,
+        "width": 12,
+        "height": 18
+      },
+      "regionMedianHex": "#89978a",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012174527_e_070l82f": {
+      "observationId": "0363100012174527_e_070l82f",
+      "buildingId": "0363100012174527",
+      "sourceSha256": "8699081dc0050909d5c7ab02738729f37644049d44b52e20bf9bdd69990de556",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 46,
+      "verdict": "adjust",
+      "correctedHex": "#f0d19f",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 79,
+        "top": 371,
+        "width": 11,
+        "height": 20
+      },
+      "regionMedianHex": "#f0d19f",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012168366_e_0e5mi9z": {
+      "observationId": "0363100012168366_e_0e5mi9z",
+      "buildingId": "0363100012168366",
+      "sourceSha256": "3d8f680c81755434cbc89d3b6cd1a584bd66c9be4f5707bb8816e0db9bb1ee23",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 48,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012173862_e_0fqf2h3": {
+      "observationId": "0363100012173862_e_0fqf2h3",
+      "buildingId": "0363100012173862",
+      "sourceSha256": "bdc1c28e1599948ae5e9a6d0a626691ff6e83164789e2894e1865956e3415d15",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 49,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012168978_e_15abdtl": {
+      "observationId": "0363100012168978_e_15abdtl",
+      "buildingId": "0363100012168978",
+      "sourceSha256": "7f42e0d19f9c9d67477aecc585ca411c7916876593f407bcd586c8ffb7816e77",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 51,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012174296_e_0m9u5ri": {
+      "observationId": "0363100012174296_e_0m9u5ri",
+      "buildingId": "0363100012174296",
+      "sourceSha256": "cb3dcdb1f79cb44a8ce8929bc303a305cc4d458b34efd32de3073ed604c5b15b",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 52,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012168984_e_0mvm5ol": {
+      "observationId": "0363100012168984_e_0mvm5ol",
+      "buildingId": "0363100012168984",
+      "sourceSha256": "3b768a20fa5288e2f3edfbb1641f2aa8fb71f7277c50f42794ae204b78f5ba77",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 53,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169890_e_003scki": {
+      "observationId": "0363100012169890_e_003scki",
+      "buildingId": "0363100012169890",
+      "sourceSha256": "c9d47dcda1ba68529f4f2d6900e5f0699b43fc377d62080c026be080f29c6673",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 54,
+      "verdict": "adjust",
+      "correctedHex": "#cda685",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 75,
+        "top": 378,
+        "width": 13,
+        "height": 22
+      },
+      "regionMedianHex": "#cda685",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012168914_e_1i3rc0l": {
+      "observationId": "0363100012168914_e_1i3rc0l",
+      "buildingId": "0363100012168914",
+      "sourceSha256": "2887083c6dd3ac679d77e10faeb260e2db9a48c6044ed061bf713da62aeab919",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 56,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012162190_e_0a4g17x": {
+      "observationId": "0363100012162190_e_0a4g17x",
+      "buildingId": "0363100012162190",
+      "sourceSha256": "1744c58efe3817e08aa3f6dd71f7e330b4d0450f97e94c7a68676f4d17de9996",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 57,
+      "verdict": "adjust",
+      "correctedHex": "#424441",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 52,
+        "top": 310,
+        "width": 15,
+        "height": 17
+      },
+      "regionMedianHex": "#424441",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169815_e_0w279ft": {
+      "observationId": "0363100012169815_e_0w279ft",
+      "buildingId": "0363100012169815",
+      "sourceSha256": "8e1390a7c6d392b2eb5e3760fa41a78d99b810a1ab30c3787ad273a12e78cf3d",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 58,
+      "verdict": "adjust",
+      "correctedHex": "#494847",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 56,
+        "top": 319,
+        "width": 16,
+        "height": 19
+      },
+      "regionMedianHex": "#494847",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012173914_e_1uxjdsp": {
+      "observationId": "0363100012173914_e_1uxjdsp",
+      "buildingId": "0363100012173914",
+      "sourceSha256": "37b3678a073ec0ac220f186dc4de80919052eae4b268c9fa6e1cd69aa1acd366",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 59,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169814_e_0p3k9vt": {
+      "observationId": "0363100012169814_e_0p3k9vt",
+      "buildingId": "0363100012169814",
+      "sourceSha256": "be32e0b88a5cb1c699c88e10110d4a74b326ae96b199660cd038537a5f32b4d7",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 60,
+      "verdict": "adjust",
+      "correctedHex": "#34363a",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 131,
+        "top": 364,
+        "width": 16,
+        "height": 19
+      },
+      "regionMedianHex": "#34363a",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012173913_e_1qtx4kt": {
+      "observationId": "0363100012173913_e_1qtx4kt",
+      "buildingId": "0363100012173913",
+      "sourceSha256": "bae6e5d814d80b8bed91bfbd73efa080b68deeb68a89ef9d421ee453d50f4aca",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 61,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169770_e_0k9436g": {
+      "observationId": "0363100012169770_e_0k9436g",
+      "buildingId": "0363100012169770",
+      "sourceSha256": "b96acbf197f4c91f2f071f5d27bc7627c8d755b72d07b6795d30ffa182536853",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 62,
+      "verdict": "adjust",
+      "correctedHex": "#8a8f8f",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 101,
+        "top": 419,
+        "width": 12,
+        "height": 24
+      },
+      "regionMedianHex": "#8a8f8f",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012152724_e_1s86ki9": {
+      "observationId": "0363100012152724_e_1s86ki9",
+      "buildingId": "0363100012152724",
+      "sourceSha256": "b2f9b44a501a9f229fb9f29ccf9cd66c856df1161342d768eb8ae38cffc935f2",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 63,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012168547_e_169kl2o": {
+      "observationId": "0363100012168547_e_169kl2o",
+      "buildingId": "0363100012168547",
+      "sourceSha256": "d75a204611b0c62e1cc7a0bb1aacc52df464d91bc9ccddf84400839328e3ba15",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 64,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "scaffold-or-construction-cover"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012236441_e_00bs3qn": {
+      "observationId": "0363100012236441_e_00bs3qn",
+      "buildingId": "0363100012236441",
+      "sourceSha256": "b2ddcb25b3b95922b25c4561a183f91f7903d0a8afea8f71cd315fa97dbca3f9",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 65,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012253926_e_15uoj4q": {
+      "observationId": "0363100012253926_e_15uoj4q",
+      "buildingId": "0363100012253926",
+      "sourceSha256": "c384c52f10355f8b63419dafa2a3cb51ff8ddde86e8e8b2302acfa5378d585d5",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 66,
+      "verdict": "adjust",
+      "correctedHex": "#443a3b",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 207,
+        "top": 399,
+        "width": 26,
+        "height": 20
+      },
+      "regionMedianHex": "#443a3b",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012164219_e_0xe584t": {
+      "observationId": "0363100012164219_e_0xe584t",
+      "buildingId": "0363100012164219",
+      "sourceSha256": "36a509a4ac17009959b6e642b83d3ff825882a22538aa7f6db94c147bcea1af1",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 67,
+      "verdict": "adjust",
+      "correctedHex": "#514e4b",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 77,
+        "top": 279,
+        "width": 15,
+        "height": 17
+      },
+      "regionMedianHex": "#514e4b",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012166889_e_1mt8pt7": {
+      "observationId": "0363100012166889_e_1mt8pt7",
+      "buildingId": "0363100012166889",
+      "sourceSha256": "87a75ed5e03384d7407b8982a11550ea8baad6a505ac160bdcf93bd0f2fb214f",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 68,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012174295_e_1bv2qah": {
+      "observationId": "0363100012174295_e_1bv2qah",
+      "buildingId": "0363100012174295",
+      "sourceSha256": "00222a45ba37b63f4ae76fbec8e62dc9185c538efd9850dc734fd31c785ff618",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 69,
+      "verdict": "adjust",
+      "correctedHex": "#302815",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 60,
+        "top": 432,
+        "width": 8,
+        "height": 20
+      },
+      "regionMedianHex": "#302815",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012150400_e_118w6u4": {
+      "observationId": "0363100012150400_e_118w6u4",
+      "buildingId": "0363100012150400",
+      "sourceSha256": "b969c48199a8b3bd6277ae2e02c5ff1d6111d0b68e91a7cf0d23247ba33ac8af",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 70,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012243198_e_0d7oqid": {
+      "observationId": "0363100012243198_e_0d7oqid",
+      "buildingId": "0363100012243198",
+      "sourceSha256": "e0e382884875b57a1d3cceb65cdd496560e1daf25675eeacf76b075ad11f87a1",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 71,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012068916_e_13664ad": {
+      "observationId": "0363100012068916_e_13664ad",
+      "buildingId": "0363100012068916",
+      "sourceSha256": "849f5d3705f5528d5ace7f8a7b3a31a6f1478b8261eae1f2fa3dca95b630d68b",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 72,
+      "verdict": "adjust",
+      "correctedHex": "#3e392a",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 142,
+        "top": 590,
+        "width": 20,
+        "height": 24
+      },
+      "regionMedianHex": "#3e392a",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012154205_e_1aluzx5": {
+      "observationId": "0363100012154205_e_1aluzx5",
+      "buildingId": "0363100012154205",
+      "sourceSha256": "45cbef0ded656258d6e09e1f4ae48bfbbd0b11c85ecc495198af94b22486273f",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 73,
+      "verdict": "adjust",
+      "correctedHex": "#414644",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 66,
+        "top": 354,
+        "width": 18,
+        "height": 21
+      },
+      "regionMedianHex": "#414644",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012164129_e_0dxl37o": {
+      "observationId": "0363100012164129_e_0dxl37o",
+      "buildingId": "0363100012164129",
+      "sourceSha256": "2a844daceb5cc4bdd431d6977e26b5ac65412a628ce52d7e822ac73683b37fa9",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 74,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012572096_e_1fuq7zv": {
+      "observationId": "0363100012572096_e_1fuq7zv",
+      "buildingId": "0363100012572096",
+      "sourceSha256": "97240ec130bef6a80dc776b776eb804fe0d392ef0b7ed43bf0f4e5f9b176bcc3",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 75,
+      "verdict": "adjust",
+      "correctedHex": "#48403c",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 116,
+        "top": 398,
+        "width": 16,
+        "height": 23
+      },
+      "regionMedianHex": "#48403c",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012157618_e_0w0gh94": {
+      "observationId": "0363100012157618_e_0w0gh94",
+      "buildingId": "0363100012157618",
+      "sourceSha256": "df6f140a938575f25041b98bc676169c4de1241a5759976e558246fa7b9a2a3e",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 76,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012160388_e_0u70mtk": {
+      "observationId": "0363100012160388_e_0u70mtk",
+      "buildingId": "0363100012160388",
+      "sourceSha256": "87d144149d830c6d07bd3d5c1ef4e68922970fa12440ef4c59d22913d206746f",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 77,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012164050_e_1feg4qw": {
+      "observationId": "0363100012164050_e_1feg4qw",
+      "buildingId": "0363100012164050",
+      "sourceSha256": "32d3566def82f0d696a7b224bb083f372d33b6c80fb4dace000d32890776aff5",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 78,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012166778_e_1q4o54r": {
+      "observationId": "0363100012166778_e_1q4o54r",
+      "buildingId": "0363100012166778",
+      "sourceSha256": "10ab0f9a93e588f865745bb7ecb4fb96673ee7367bc99d63629112740a2b6824",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 79,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012153164_e_1bsgh4p": {
+      "observationId": "0363100012153164_e_1bsgh4p",
+      "buildingId": "0363100012153164",
+      "sourceSha256": "3d4024c8de11c0b2f3a3894c71d4de7e294ca4f9ce7bcb0a462357eeb64cf03f",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 80,
+      "verdict": "adjust",
+      "correctedHex": "#6f553d",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 78,
+        "top": 401,
+        "width": 13,
+        "height": 21
+      },
+      "regionMedianHex": "#6f553d",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012160810_e_19qqf19": {
+      "observationId": "0363100012160810_e_19qqf19",
+      "buildingId": "0363100012160810",
+      "sourceSha256": "a942a69f3c61bcdbc89a8d39fc484b5a814ed89a80592518e3ed9896d1c18853",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 81,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169827_e_17x8h4o": {
+      "observationId": "0363100012169827_e_17x8h4o",
+      "buildingId": "0363100012169827",
+      "sourceSha256": "7578c6270a436a4739c570a5ff271b3e9cfb561d297b04a0dd8dcca9f3abd599",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 82,
+      "verdict": "adjust",
+      "correctedHex": "#3d2b19",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 56,
+        "top": 418,
+        "width": 20,
+        "height": 23
+      },
+      "regionMedianHex": "#3d2b19",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012236441_e_0xxtbct": {
+      "observationId": "0363100012236441_e_0xxtbct",
+      "buildingId": "0363100012236441",
+      "sourceSha256": "a68da6c2aaf6f7854fd642cc272f000eb37fe5e3301c7ce0bc86edc005d822b3",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 83,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012174568_e_0x8lkrs": {
+      "observationId": "0363100012174568_e_0x8lkrs",
+      "buildingId": "0363100012174568",
+      "sourceSha256": "5af402760fe4e61530e393112319d00871fffc1c93300792465a091505a734e4",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 84,
+      "verdict": "adjust",
+      "correctedHex": "#3d332e",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 58,
+        "top": 521,
+        "width": 11,
+        "height": 25
+      },
+      "regionMedianHex": "#3d332e",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012170150_e_1mn096l": {
+      "observationId": "0363100012170150_e_1mn096l",
+      "buildingId": "0363100012170150",
+      "sourceSha256": "dce615f7999ca8bee251d41157d3a17c8a8d1964bfb53c9bb3d89da667399634",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 85,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012174168_e_0cyg3fm": {
+      "observationId": "0363100012174168_e_0cyg3fm",
+      "buildingId": "0363100012174168",
+      "sourceSha256": "7a7aaecddebc13c2e3c556fd09fb1ef613e6e73647eead3447b1ba9554ccb7ee",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 86,
+      "verdict": "adjust",
+      "correctedHex": "#ebe3ca",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 55,
+        "top": 494,
+        "width": 17,
+        "height": 23
+      },
+      "regionMedianHex": "#ebe3ca",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169944_e_05hl4zn": {
+      "observationId": "0363100012169944_e_05hl4zn",
+      "buildingId": "0363100012169944",
+      "sourceSha256": "f14c1561cd6b4836f069a05ee14eed4cc42873a0eb2e4c43627bcbd7bfd2a014",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 87,
+      "verdict": "adjust",
+      "correctedHex": "#b5ae99",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 62,
+        "top": 421,
+        "width": 13,
+        "height": 17
+      },
+      "regionMedianHex": "#b5ae99",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169823_e_0i7d2wr": {
+      "observationId": "0363100012169823_e_0i7d2wr",
+      "buildingId": "0363100012169823",
+      "sourceSha256": "cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 88,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012572098_e_1t4wcbf": {
+      "observationId": "0363100012572098_e_1t4wcbf",
+      "buildingId": "0363100012572098",
+      "sourceSha256": "0ffe63aa1333aabb17f4f6ba3219ff4facd68e26972e1b91c3f5c21fe3d0e331",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 89,
+      "verdict": "adjust",
+      "correctedHex": "#46362f",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 136,
+        "top": 293,
+        "width": 19,
+        "height": 16
+      },
+      "regionMedianHex": "#46362f",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012168979_e_0lkmzwz": {
+      "observationId": "0363100012168979_e_0lkmzwz",
+      "buildingId": "0363100012168979",
+      "sourceSha256": "357c2d7a88f276210beab1ecd233ee511f9f52231a4a6c2bf71b2de02af1d2e5",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 90,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012165428_e_1inqros": {
+      "observationId": "0363100012165428_e_1inqros",
+      "buildingId": "0363100012165428",
+      "sourceSha256": "be6e629718898939ca111091fc0d232bb97e859b9cb37533a1149c3923b83276",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 91,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012174886_e_0hlwydw": {
+      "observationId": "0363100012174886_e_0hlwydw",
+      "buildingId": "0363100012174886",
+      "sourceSha256": "7b7b4262cebf5f1a6911d94dc6dfa12e53554499f50280a66281c2b24ecc668a",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 92,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012236815_e_1dzux39": {
+      "observationId": "0363100012236815_e_1dzux39",
+      "buildingId": "0363100012236815",
+      "sourceSha256": "6ede408d73f5fe35bafe7264c85266c8d60422689da279ba99069d2bf5b61eb8",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 93,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "mixed-owners-or-materials"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012170151_e_12e8rrx": {
+      "observationId": "0363100012170151_e_12e8rrx",
+      "buildingId": "0363100012170151",
+      "sourceSha256": "67b83e14a25508feec04a7e9ccf5c29f65872a8cb9a0f54f91485164311153e4",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 94,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012168986_e_1uojyra": {
+      "observationId": "0363100012168986_e_1uojyra",
+      "buildingId": "0363100012168986",
+      "sourceSha256": "ab83f225d3c58500a32a5f1c9b760b15fed0f0040e3569f6f9b273cd1855ebba",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 95,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012236332_e_1atergf": {
+      "observationId": "0363100012236332_e_1atergf",
+      "buildingId": "0363100012236332",
+      "sourceSha256": "bd26ced9d8849a5feb0c86fbb5519bebb1a34cb592f5b23ef41a304615dadc6a",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 96,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012156275_e_022bkco": {
+      "observationId": "0363100012156275_e_022bkco",
+      "buildingId": "0363100012156275",
+      "sourceSha256": "e3b759fed8b3c32d49c21f768067214883732de4504b5ed8c486bf2631e545c8",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 97,
+      "verdict": "adjust",
+      "correctedHex": "#878b72",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 32,
+        "top": 502,
+        "width": 15,
+        "height": 23
+      },
+      "regionMedianHex": "#878b72",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012236332_e_1607gug": {
+      "observationId": "0363100012236332_e_1607gug",
+      "buildingId": "0363100012236332",
+      "sourceSha256": "1d2112c55f6aadb9e0f8dffe084a5b7f02008fc5185ce31ae135089395c750b9",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 98,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012156454_e_12agwal": {
+      "observationId": "0363100012156454_e_12agwal",
+      "buildingId": "0363100012156454",
+      "sourceSha256": "432096e76bd0b4a796df0f0112b8f3f95ed379de4600d0f0e626340df80f5611",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 99,
+      "verdict": "adjust",
+      "correctedHex": "#91744d",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 97,
+        "top": 399,
+        "width": 14,
+        "height": 22
+      },
+      "regionMedianHex": "#91744d",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169894_e_1b99ler": {
+      "observationId": "0363100012169894_e_1b99ler",
+      "buildingId": "0363100012169894",
+      "sourceSha256": "abb4ae73ce2690c935c7dd550d758ae937ca575f5ed2c90b0bf470aaa2b55ebd",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 100,
+      "verdict": "adjust",
+      "correctedHex": "#95866e",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 132,
+        "top": 271,
+        "width": 29,
+        "height": 18
+      },
+      "regionMedianHex": "#95866e",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012084787_e_1flwaw8": {
+      "observationId": "0363100012084787_e_1flwaw8",
+      "buildingId": "0363100012084787",
+      "sourceSha256": "3ef11dc40a5868a856bcefda47ee2459ef5e75cd3e6beff2e2fc05c5f5c6b6f5",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 101,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169955_e_03qxrur": {
+      "observationId": "0363100012169955_e_03qxrur",
+      "buildingId": "0363100012169955",
+      "sourceSha256": "d366e660de2eee552128e1f0ddaf63779f843ee484030473980ae29be9a3b75f",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 102,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "mixed-owners-or-materials"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012153145_e_0sx4sax": {
+      "observationId": "0363100012153145_e_0sx4sax",
+      "buildingId": "0363100012153145",
+      "sourceSha256": "c497bc1c357f25d57a985ba2321c709f064076bd75d3dd3a12791d5d684f8d84",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 103,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012572095_e_0ght00e": {
+      "observationId": "0363100012572095_e_0ght00e",
+      "buildingId": "0363100012572095",
+      "sourceSha256": "99d0b59c2ea1620b507f977c45d2d920e83d5ee5109c253ab59d58cd511986a4",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 104,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "mixed-owners-or-materials"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012174821_e_19molap": {
+      "observationId": "0363100012174821_e_19molap",
+      "buildingId": "0363100012174821",
+      "sourceSha256": "a465a8c056040e5f1657f6446dd6dfa493e02a74d68ea6b491a693a04df3a293",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 105,
+      "verdict": "adjust",
+      "correctedHex": "#c8a47a",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 97,
+        "top": 456,
+        "width": 16,
+        "height": 21
+      },
+      "regionMedianHex": "#c8a47a",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012168983_e_0eo7ssy": {
+      "observationId": "0363100012168983_e_0eo7ssy",
+      "buildingId": "0363100012168983",
+      "sourceSha256": "3efec002ca1f19cb76a8ccda8f2b9b35f7ab36e7924572a5ba49ef5485098187",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 106,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012174152_e_0m52v6l": {
+      "observationId": "0363100012174152_e_0m52v6l",
+      "buildingId": "0363100012174152",
+      "sourceSha256": "5c0a7bdcc9e7ebeb024a4671c9e2ccd9e3f1b020768a6dfea2940f1138e7e146",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 107,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169825_e_1csyqdj": {
+      "observationId": "0363100012169825_e_1csyqdj",
+      "buildingId": "0363100012169825",
+      "sourceSha256": "9fd061469352fcf1a6868b7775534c1ca88fa49047a172f1e5eb59676e7ad781",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 108,
+      "verdict": "adjust",
+      "correctedHex": "#755e51",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 144,
+        "top": 506,
+        "width": 21,
+        "height": 24
+      },
+      "regionMedianHex": "#755e51",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012153010_e_0t1g4df": {
+      "observationId": "0363100012153010_e_0t1g4df",
+      "buildingId": "0363100012153010",
+      "sourceSha256": "48b1bdc3737b16137edb45e357aed9800f3745feefbf022e2c33a0cb6c8da474",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 109,
+      "verdict": "adjust",
+      "correctedHex": "#666c71",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 105,
+        "top": 274,
+        "width": 9,
+        "height": 18
+      },
+      "regionMedianHex": "#666c71",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169824_e_06b2vi1": {
+      "observationId": "0363100012169824_e_06b2vi1",
+      "buildingId": "0363100012169824",
+      "sourceSha256": "ac5ffd42e7c33ba3b4625d746fd66d4dbed8b7f03e0a73b4ee019a67fab8412c",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 110,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012170194_e_1v850yu": {
+      "observationId": "0363100012170194_e_1v850yu",
+      "buildingId": "0363100012170194",
+      "sourceSha256": "569db5c236ba9345d38d37827c4eb74ac656e5fe87c7184e7e4e3e2df4ca869d",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 111,
+      "verdict": "adjust",
+      "correctedHex": "#485b52",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 75,
+        "top": 249,
+        "width": 10,
+        "height": 13
+      },
+      "regionMedianHex": "#485b52",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012174822_e_1klgmit": {
+      "observationId": "0363100012174822_e_1klgmit",
+      "buildingId": "0363100012174822",
+      "sourceSha256": "f7480645ab60e5a9b0db846ded48163cde632bb63263350e27551290e85b5454",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 112,
+      "verdict": "adjust",
+      "correctedHex": "#8f8a73",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 221,
+        "top": 475,
+        "width": 15,
+        "height": 21
+      },
+      "regionMedianHex": "#8f8a73",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169826_e_0cpyqkc": {
+      "observationId": "0363100012169826_e_0cpyqkc",
+      "buildingId": "0363100012169826",
+      "sourceSha256": "b305b9e8c1af39596933e42c8144f42aa2d671d90673f41f1d024107c5df68d6",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 113,
+      "verdict": "adjust",
+      "correctedHex": "#5f4c46",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 83,
+        "top": 606,
+        "width": 16,
+        "height": 23
+      },
+      "regionMedianHex": "#5f4c46",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012173864_e_13ehydk": {
+      "observationId": "0363100012173864_e_13ehydk",
+      "buildingId": "0363100012173864",
+      "sourceSha256": "3c2ced81de03a084e6c7155dc16f146cee6a51a233f17f06762f898157bec3a1",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 114,
+      "verdict": "adjust",
+      "correctedHex": "#b89a7f",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 223,
+        "top": 381,
+        "width": 16,
+        "height": 22
+      },
+      "regionMedianHex": "#b89a7f",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012163422_e_1wc57v0": {
+      "observationId": "0363100012163422_e_1wc57v0",
+      "buildingId": "0363100012163422",
+      "sourceSha256": "5912311cce2d6cfc9b8de8553987eb37b77ea57b4d679501cd33d9e4c80607c1",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 115,
+      "verdict": "adjust",
+      "correctedHex": "#4c3c21",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 79,
+        "top": 299,
+        "width": 13,
+        "height": 18
+      },
+      "regionMedianHex": "#4c3c21",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169948_e_0cg9q7q": {
+      "observationId": "0363100012169948_e_0cg9q7q",
+      "buildingId": "0363100012169948",
+      "sourceSha256": "18d8144cac4e94e1ae839e4cd2b2dca096233782e9f206fd1d0798e74cd0e693",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 116,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012170188_e_1x9mghy": {
+      "observationId": "0363100012170188_e_1x9mghy",
+      "buildingId": "0363100012170188",
+      "sourceSha256": "269d8dc880501d693b7bad4c1d43340f24c4343d062a79b35ac9d9036fad6715",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 117,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012173993_e_0hww2rk": {
+      "observationId": "0363100012173993_e_0hww2rk",
+      "buildingId": "0363100012173993",
+      "sourceSha256": "4015d86c0a46e114d93cfb3f909a7fbe7b802dcda5b23908c1a072a7b78c1382",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 118,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169605_e_0b82q5f": {
+      "observationId": "0363100012169605_e_0b82q5f",
+      "buildingId": "0363100012169605",
+      "sourceSha256": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 119,
+      "verdict": "adjust",
+      "correctedHex": "#4a4747",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 419,
+        "top": 473,
+        "width": 54,
+        "height": 26
+      },
+      "regionMedianHex": "#4a4747",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012170192_e_07axj0i": {
+      "observationId": "0363100012170192_e_07axj0i",
+      "buildingId": "0363100012170192",
+      "sourceSha256": "a184261b3438ca665791b6944492771f15060b261a96a9a19c66169e0ea768c6",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 120,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012168954_e_1i374do": {
+      "observationId": "0363100012168954_e_1i374do",
+      "buildingId": "0363100012168954",
+      "sourceSha256": "0d9ef2fc124a0a2f403df39ef1801e091139543cb38925d4dba985ab90d56b82",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 121,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012167877_e_1dcf5va": {
+      "observationId": "0363100012167877_e_1dcf5va",
+      "buildingId": "0363100012167877",
+      "sourceSha256": "2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 122,
+      "verdict": "adjust",
+      "correctedHex": "#5a524d",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 52,
+        "top": 231,
+        "width": 15,
+        "height": 15
+      },
+      "regionMedianHex": "#5a524d",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012172580_e_0lzqo91": {
+      "observationId": "0363100012172580_e_0lzqo91",
+      "buildingId": "0363100012172580",
+      "sourceSha256": "2ab1de5321756b63a44da60562d13010f1cf0ca03a81a7e2ac0e249ab7efcde6",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 123,
+      "verdict": "adjust",
+      "correctedHex": "#b4b39a",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 195,
+        "top": 446,
+        "width": 26,
+        "height": 27
+      },
+      "regionMedianHex": "#b4b39a",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012152464_e_10yua55": {
+      "observationId": "0363100012152464_e_10yua55",
+      "buildingId": "0363100012152464",
+      "sourceSha256": "968156f2684dd82ed3833a2936aca29a7f57820e58f2d381ccc5a2d543aea237",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 124,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012147021_e_0opzw13": {
+      "observationId": "0363100012147021_e_0opzw13",
+      "buildingId": "0363100012147021",
+      "sourceSha256": "f0b3073c4d142df7b3146744bc600aac3bba300aa32773d590cbc40315a3e5fe",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 125,
+      "verdict": "adjust",
+      "correctedHex": "#8c684e",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 97,
+        "top": 372,
+        "width": 15,
+        "height": 22
+      },
+      "regionMedianHex": "#8c684e",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012173918_e_03s3688": {
+      "observationId": "0363100012173918_e_03s3688",
+      "buildingId": "0363100012173918",
+      "sourceSha256": "062a494d0527474a9ad3b1225a434c1b687099b2ba551cf5ecf6f4c955595798",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 126,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169895_e_0o7vbad": {
+      "observationId": "0363100012169895_e_0o7vbad",
+      "buildingId": "0363100012169895",
+      "sourceSha256": "f48ffc9fa3d42af398760c33b95cf2b12ea3b06dbac3baf25c4cdefa983d731d",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 127,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012168644_e_0imly7m": {
+      "observationId": "0363100012168644_e_0imly7m",
+      "buildingId": "0363100012168644",
+      "sourceSha256": "731f5a1eefa2869d39e780ceba1a365fe446b9563856fcc8d646aac2d387f607",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 128,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012174159_e_1scn3au": {
+      "observationId": "0363100012174159_e_1scn3au",
+      "buildingId": "0363100012174159",
+      "sourceSha256": "a05913333dcff4a12c1c86d3c105548b98cf8151a820bee1a19db0d25b0a9ad4",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 129,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012162897_e_0c4e2gf": {
+      "observationId": "0363100012162897_e_0c4e2gf",
+      "buildingId": "0363100012162897",
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 130,
+      "verdict": "adjust",
+      "correctedHex": "#967e62",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 89,
+        "top": 364,
+        "width": 15,
+        "height": 22
+      },
+      "regionMedianHex": "#967e62",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012161162_e_0tl4kpf": {
+      "observationId": "0363100012161162_e_0tl4kpf",
+      "buildingId": "0363100012161162",
+      "sourceSha256": "c050b74b218f69cdb26110e80f495209ec5bc5814bbade1916394e87bef39389",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 131,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012089603_e_1cvhymq": {
+      "observationId": "0363100012089603_e_1cvhymq",
+      "buildingId": "0363100012089603",
+      "sourceSha256": "415df37042996ed93a1429444d59dfd646ab05f1caf69b41e32dbb8e10718f1a",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 132,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012173982_e_1nnzmi2": {
+      "observationId": "0363100012173982_e_1nnzmi2",
+      "buildingId": "0363100012173982",
+      "sourceSha256": "e0f45c8e17bdc9c891fb0f58d432209576e06fd19413d9bbee404a118f53b97d",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 133,
+      "verdict": "adjust",
+      "correctedHex": "#252c25",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 38,
+        "top": 241,
+        "width": 9,
+        "height": 15
+      },
+      "regionMedianHex": "#252c25",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169621_e_04o2y5t": {
+      "observationId": "0363100012169621_e_04o2y5t",
+      "buildingId": "0363100012169621",
+      "sourceSha256": "1350212d9b6492bbf54ed9e2962526375b0f33f4911122fa65899a96625a7236",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 134,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012173872_e_0te7ad0": {
+      "observationId": "0363100012173872_e_0te7ad0",
+      "buildingId": "0363100012173872",
+      "sourceSha256": "db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 135,
+      "verdict": "adjust",
+      "correctedHex": "#9f865f",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 98,
+        "top": 490,
+        "width": 14,
+        "height": 20
+      },
+      "regionMedianHex": "#9f865f",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012094649_e_16jqzp7": {
+      "observationId": "0363100012094649_e_16jqzp7",
+      "buildingId": "0363100012094649",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 136,
+      "verdict": "adjust",
+      "correctedHex": "#cacdaf",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 138,
+        "top": 383,
+        "width": 37,
+        "height": 17
+      },
+      "regionMedianHex": "#cacdaf",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012161678_e_1pmrkb3": {
+      "observationId": "0363100012161678_e_1pmrkb3",
+      "buildingId": "0363100012161678",
+      "sourceSha256": "36f83a497ceaf359d5745c99ec7b21c63dd50c19c2e1219bc014d205351cba13",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 137,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169609_e_0roj1jc": {
+      "observationId": "0363100012169609_e_0roj1jc",
+      "buildingId": "0363100012169609",
+      "sourceSha256": "3fc0d9b84f94ffa428970458ef7675ef7abe67b6a0be8716a7b386c253702247",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 138,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012174207_e_0y0y7um": {
+      "observationId": "0363100012174207_e_0y0y7um",
+      "buildingId": "0363100012174207",
+      "sourceSha256": "126f84ef92e8306d055b979dcd1b5275769a6de731a26439931fbb93e6a72b40",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 139,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169356_e_0uxfazw": {
+      "observationId": "0363100012169356_e_0uxfazw",
+      "buildingId": "0363100012169356",
+      "sourceSha256": "dd4daf7c5c8bd213ec53f3e47b7b0dd4f322e9cf00dfcbf190286a1c28e58b58",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 140,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169608_e_0dgss1y": {
+      "observationId": "0363100012169608_e_0dgss1y",
+      "buildingId": "0363100012169608",
+      "sourceSha256": "ba096aa9b27da8f403dbd0c4d88b495ff662599c8fb89d3746791650092d5314",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 141,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012155777_e_0ggdhqa": {
+      "observationId": "0363100012155777_e_0ggdhqa",
+      "buildingId": "0363100012155777",
+      "sourceSha256": "d573acfc2ad60e16586c5e83a5912853c9a0db41f313e5eacfe9b6697ab032ec",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 142,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012571031_e_0ckihf0": {
+      "observationId": "0363100012571031_e_0ckihf0",
+      "buildingId": "0363100012571031",
+      "sourceSha256": "a85d1978143a15060bb52dac4c3317cfa3596793e2724d9ade9c34442f586260",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 143,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012168936_e_1fuf4fr": {
+      "observationId": "0363100012168936_e_1fuf4fr",
+      "buildingId": "0363100012168936",
+      "sourceSha256": "ee8774a20823ed497d6ef40237056395966d46f82743afa8be67f33beeafc656",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 144,
+      "verdict": "adjust",
+      "correctedHex": "#574e49",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 118,
+        "top": 402,
+        "width": 17,
+        "height": 25
+      },
+      "regionMedianHex": "#574e49",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012168936_e_0iuuqcm": {
+      "observationId": "0363100012168936_e_0iuuqcm",
+      "buildingId": "0363100012168936",
+      "sourceSha256": "4313d74a76b0967003900f09b8cab9fa78fd197839ba8521b290d710adfccde4",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 145,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169410_e_1h0uyal": {
+      "observationId": "0363100012169410_e_1h0uyal",
+      "buildingId": "0363100012169410",
+      "sourceSha256": "2e00078735c91447a3d06a0365afe5e4ef9b0197a2625d9324daec36149c4b12",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 146,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012168546_e_14gtuhn": {
+      "observationId": "0363100012168546_e_14gtuhn",
+      "buildingId": "0363100012168546",
+      "sourceSha256": "d91a0066dae8eb14982e557969fa373e4a64dcdd23ce7dc104237689a0bbf9f1",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 147,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012168936_e_1xhq914": {
+      "observationId": "0363100012168936_e_1xhq914",
+      "buildingId": "0363100012168936",
+      "sourceSha256": "fe6b418d90755f763258beb4aee86c41e899aba5c5438706c693449e096812cd",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 148,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012160388_e_02w9vqn": {
+      "observationId": "0363100012160388_e_02w9vqn",
+      "buildingId": "0363100012160388",
+      "sourceSha256": "d83ecdc0442bc41b4fa2ab2c3193783cf831e456e4d93908ad40d6dfb39ea6f2",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 149,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "mixed-owners-or-materials"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169411_e_139uowc": {
+      "observationId": "0363100012169411_e_139uowc",
+      "buildingId": "0363100012169411",
+      "sourceSha256": "9104e290ce3f7bc8271b442db6341f39022395bf9e114b93b7d97364a3048cf6",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 150,
+      "verdict": "adjust",
+      "correctedHex": "#f7fcfa",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 45,
+        "top": 445,
+        "width": 14,
+        "height": 20
+      },
+      "regionMedianHex": "#f7fcfa",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169952_e_0dlrjf9": {
+      "observationId": "0363100012169952_e_0dlrjf9",
+      "buildingId": "0363100012169952",
+      "sourceSha256": "05729a070a0b878be1ae691da6760fcb84e5c89fe16143fbd073293a0e95aac4",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 151,
+      "verdict": "adjust",
+      "correctedHex": "#b9ac8a",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 68,
+        "top": 395,
+        "width": 12,
+        "height": 18
+      },
+      "regionMedianHex": "#b9ac8a",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012161865_e_1wq84jv": {
+      "observationId": "0363100012161865_e_1wq84jv",
+      "buildingId": "0363100012161865",
+      "sourceSha256": "f0f68a97e2cb90e0c5fd69dde429cd177fe6e4c95378664c6ae454b81d016708",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 152,
+      "verdict": "adjust",
+      "correctedHex": "#6b6966",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 94,
+        "top": 346,
+        "width": 16,
+        "height": 18
+      },
+      "regionMedianHex": "#6b6966",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012165211_e_15djkoz": {
+      "observationId": "0363100012165211_e_15djkoz",
+      "buildingId": "0363100012165211",
+      "sourceSha256": "992fd4a012d69239945eb45290ad158a02b1c6730ee0a8d3ec321d4fd0196275",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 153,
+      "verdict": "adjust",
+      "correctedHex": "#443d2f",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 56,
+        "top": 349,
+        "width": 16,
+        "height": 20
+      },
+      "regionMedianHex": "#443d2f",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012167875_e_03ydc4q": {
+      "observationId": "0363100012167875_e_03ydc4q",
+      "buildingId": "0363100012167875",
+      "sourceSha256": "19b64774c4e98bd0a28370d10a877ae6c696c4b3e41c92616d5e544db413f704",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 154,
+      "verdict": "adjust",
+      "correctedHex": "#596867",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 35,
+        "top": 230,
+        "width": 10,
+        "height": 16
+      },
+      "regionMedianHex": "#596867",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169611_e_1w0t9mn": {
+      "observationId": "0363100012169611_e_1w0t9mn",
+      "buildingId": "0363100012169611",
+      "sourceSha256": "9f726e51c4492a5b3978997e4a879bdc74d1accf7705d51d6b63d0e6dbe258c7",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 155,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012163719_e_1py328g": {
+      "observationId": "0363100012163719_e_1py328g",
+      "buildingId": "0363100012163719",
+      "sourceSha256": "6f8f01b745ca5d8e0982b3712c1dabfecc3f6a22914acd4c865b491dd7ef47a8",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 156,
+      "verdict": "adjust",
+      "correctedHex": "#5f5a54",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 101,
+        "top": 383,
+        "width": 17,
+        "height": 18
+      },
+      "regionMedianHex": "#5f5a54",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012168645_e_057r263": {
+      "observationId": "0363100012168645_e_057r263",
+      "buildingId": "0363100012168645",
+      "sourceSha256": "d376efbb3a676c3914e6be1984a2177e59f4545d99230915056a66cb58ecc32c",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 157,
+      "verdict": "adjust",
+      "correctedHex": "#566152",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 47,
+        "top": 369,
+        "width": 13,
+        "height": 20
+      },
+      "regionMedianHex": "#566152",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012170140_e_0qbwret": {
+      "observationId": "0363100012170140_e_0qbwret",
+      "buildingId": "0363100012170140",
+      "sourceSha256": "983edf933bdf4f016cdf402c994fc238072d1404297237d1c86b8562106ef3d4",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 158,
+      "verdict": "adjust",
+      "correctedHex": "#504e47",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 55,
+        "top": 338,
+        "width": 9,
+        "height": 20
+      },
+      "regionMedianHex": "#504e47",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169889_e_0x9a0w6": {
+      "observationId": "0363100012169889_e_0x9a0w6",
+      "buildingId": "0363100012169889",
+      "sourceSha256": "cb25cb3b56ff8d1ea0701e3d0f44009227a3ef46c78b8c6761b27a5f0cfb5048",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 159,
+      "verdict": "adjust",
+      "correctedHex": "#fad7ae",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 102,
+        "top": 360,
+        "width": 14,
+        "height": 18
+      },
+      "regionMedianHex": "#fad7ae",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012173869_e_0j7aoco": {
+      "observationId": "0363100012173869_e_0j7aoco",
+      "buildingId": "0363100012173869",
+      "sourceSha256": "1365d97a25b827e1b1a756fd7296c0b7a5fc64dba7e033cccdb99d4f3640a4ca",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 160,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012114021_e_1ewzxj9": {
+      "observationId": "0363100012114021_e_1ewzxj9",
+      "buildingId": "0363100012114021",
+      "sourceSha256": "5b2750cf739e44ec1ee148315ad563f2892716726125fe7e2622012f85603ac7",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 161,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012156057_e_1qwmq6j": {
+      "observationId": "0363100012156057_e_1qwmq6j",
+      "buildingId": "0363100012156057",
+      "sourceSha256": "9ad1e92293cd81284985fc98955dbbfb87bc9f58e99868adbf2ed6c85862081f",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 162,
+      "verdict": "adjust",
+      "correctedHex": "#545550",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 119,
+        "top": 319,
+        "width": 15,
+        "height": 21
+      },
+      "regionMedianHex": "#545550",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169416_e_1o662ut": {
+      "observationId": "0363100012169416_e_1o662ut",
+      "buildingId": "0363100012169416",
+      "sourceSha256": "d13a7bae4570044968e10b287a6f91af4312268c92880e594483c10790f3ca15",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 163,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012153713_e_0261pti": {
+      "observationId": "0363100012153713_e_0261pti",
+      "buildingId": "0363100012153713",
+      "sourceSha256": "1afba8569d4125a8117498fd6dbd4b0ab933053588b239cff89e58ace91ed633",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 164,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169607_e_1p1xb85": {
+      "observationId": "0363100012169607_e_1p1xb85",
+      "buildingId": "0363100012169607",
+      "sourceSha256": "80a0dd052b27182155a117fec0fb50f6c0d75bf6eece460542b207ab95662d95",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 165,
+      "verdict": "adjust",
+      "correctedHex": "#96826d",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 134,
+        "top": 254,
+        "width": 12,
+        "height": 15
+      },
+      "regionMedianHex": "#96826d",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012173863_e_0m2s9zc": {
+      "observationId": "0363100012173863_e_0m2s9zc",
+      "buildingId": "0363100012173863",
+      "sourceSha256": "1f75eadef647b664aa7583913a9e7595f5848c218a80ce8b5caaa8017ef46bb8",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 166,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012156054_e_0u23hyv": {
+      "observationId": "0363100012156054_e_0u23hyv",
+      "buildingId": "0363100012156054",
+      "sourceSha256": "d32a3366abfba39c08260662a2356ab0bb1805aec38ae6e94d99d24f0e916fa3",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 167,
+      "verdict": "adjust",
+      "correctedHex": "#9c9993",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 118,
+        "top": 314,
+        "width": 17,
+        "height": 19
+      },
+      "regionMedianHex": "#9c9993",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012174564_e_14yoqnp": {
+      "observationId": "0363100012174564_e_14yoqnp",
+      "buildingId": "0363100012174564",
+      "sourceSha256": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 168,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012168936_e_0e7ftn6": {
+      "observationId": "0363100012168936_e_0e7ftn6",
+      "buildingId": "0363100012168936",
+      "sourceSha256": "a88985f6950da51ee0606d69a341dbc0d6f87f64ab5c23f10fa987ae10a5af1c",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 169,
+      "verdict": "adjust",
+      "correctedHex": "#585355",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 113,
+        "top": 373,
+        "width": 16,
+        "height": 25
+      },
+      "regionMedianHex": "#585355",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012155995_e_1warf82": {
+      "observationId": "0363100012155995_e_1warf82",
+      "buildingId": "0363100012155995",
+      "sourceSha256": "f26b3cc113c6eb8ef61b06572d3518d5a552744a0f047d6bfa9a39f5ab89cf67",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 170,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012168605_e_0tles79": {
+      "observationId": "0363100012168605_e_0tles79",
+      "buildingId": "0363100012168605",
+      "sourceSha256": "3a340a78d961d796bd1dad6bc28eaabc5229edab4b43e8b62f656fb6fdb31c70",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 171,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169892_e_0pklugu": {
+      "observationId": "0363100012169892_e_0pklugu",
+      "buildingId": "0363100012169892",
+      "sourceSha256": "9b93ec70a8f4a92434089a09e385ef2e8c01ad36d5ad38d3ff35a9588e8333e2",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 172,
+      "verdict": "adjust",
+      "correctedHex": "#535143",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 61,
+        "top": 359,
+        "width": 12,
+        "height": 17
+      },
+      "regionMedianHex": "#535143",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012152665_e_0xe8qma": {
+      "observationId": "0363100012152665_e_0xe8qma",
+      "buildingId": "0363100012152665",
+      "sourceSha256": "967c45cd977d3df3a29d63a71c5b0cbcdd6c710d068197a193d7aada1d5451ca",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 173,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012157075_e_0udbbkk": {
+      "observationId": "0363100012157075_e_0udbbkk",
+      "buildingId": "0363100012157075",
+      "sourceSha256": "3e01100dae5b284dabef10f22a07830b44ef657221c1e83db65462b74511e023",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 174,
+      "verdict": "adjust",
+      "correctedHex": "#2e291a",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 88,
+        "top": 394,
+        "width": 15,
+        "height": 21
+      },
+      "regionMedianHex": "#2e291a",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012157610_e_0sr2d2k": {
+      "observationId": "0363100012157610_e_0sr2d2k",
+      "buildingId": "0363100012157610",
+      "sourceSha256": "9c0b4ffaf1b8eaab18c749afe4eaf1c414b17896950480fdc3cc90de51fbff95",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 175,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169407_e_0ckembc": {
+      "observationId": "0363100012169407_e_0ckembc",
+      "buildingId": "0363100012169407",
+      "sourceSha256": "afe842491d2ca94ada48d36f25e632a46c5cb6833568ee337e621830be0e5580",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 176,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169943_e_0gv8eb3": {
+      "observationId": "0363100012169943_e_0gv8eb3",
+      "buildingId": "0363100012169943",
+      "sourceSha256": "ea96df30e62754e7287aaedb885032a15d4fd6a92266efdb0566e13d45ce70db",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 177,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012173865_e_1ur95va": {
+      "observationId": "0363100012173865_e_1ur95va",
+      "buildingId": "0363100012173865",
+      "sourceSha256": "fcae20a798786cb2d0f63613133ab88976b6b56fa913517a3331ed05404fc1c2",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 178,
+      "verdict": "adjust",
+      "correctedHex": "#997f5e",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 96,
+        "top": 304,
+        "width": 15,
+        "height": 16
+      },
+      "regionMedianHex": "#997f5e",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012163943_e_0ymzd7o": {
+      "observationId": "0363100012163943_e_0ymzd7o",
+      "buildingId": "0363100012163943",
+      "sourceSha256": "5dea524de6f33c73faed8066ded5e97b566a36615219da6c4fd58fedd0ec64f7",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 179,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012163989_e_0h86uas": {
+      "observationId": "0363100012163989_e_0h86uas",
+      "buildingId": "0363100012163989",
+      "sourceSha256": "b83d26ea0d9575bf97bd8578d14678998f4a7cefa5bc250a3cd7df55b68ba783",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 180,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012152830_e_136cly5": {
+      "observationId": "0363100012152830_e_136cly5",
+      "buildingId": "0363100012152830",
+      "sourceSha256": "d82cf9f54c6b3fd6572b72fdb27ccb812eb209298b9e6c134752491c2d2cd33e",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 181,
+      "verdict": "adjust",
+      "correctedHex": "#7e7e79",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 65,
+        "top": 324,
+        "width": 25,
+        "height": 21
+      },
+      "regionMedianHex": "#7e7e79",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169816_e_1lsl5d8": {
+      "observationId": "0363100012169816_e_1lsl5d8",
+      "buildingId": "0363100012169816",
+      "sourceSha256": "f5fdca7198eefd22cb370b68d8fefe79e559d7d0de15449360f5e524be1d6ba2",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 182,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012169610_e_0vyhjoh": {
+      "observationId": "0363100012169610_e_0vyhjoh",
+      "buildingId": "0363100012169610",
+      "sourceSha256": "275034ba7adfc6c9eee51f277b52192ea9568f56ad67298646863ad59e48219d",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 183,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "blown-highlights-or-strong-mixed-light"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012157171_e_1dr654d": {
+      "observationId": "0363100012157171_e_1dr654d",
+      "buildingId": "0363100012157171",
+      "sourceSha256": "c66c97f1f8d22b5d73d8349d9f6917a19e44e4baed490dfb9fb5344e175adaf3",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 184,
+      "verdict": "adjust",
+      "correctedHex": "#563d2a",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 59,
+        "top": 334,
+        "width": 16,
+        "height": 20
+      },
+      "regionMedianHex": "#563d2a",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012170203_e_1wdki1a": {
+      "observationId": "0363100012170203_e_1wdki1a",
+      "buildingId": "0363100012170203",
+      "sourceSha256": "6648cdb0ea923b7d0989d8267a928de1ee37e9d20b5cd4dcf6c084b1589f87bb",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 185,
+      "verdict": "adjust",
+      "correctedHex": "#675746",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 60,
+        "top": 319,
+        "width": 9,
+        "height": 16
+      },
+      "regionMedianHex": "#675746",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012152517_e_0tk0zau": {
+      "observationId": "0363100012152517_e_0tk0zau",
+      "buildingId": "0363100012152517",
+      "sourceSha256": "15dbc7ab031b7e21fa38c60bb5c6c16d589fdf5b853f39cb9b0d3b9c2205bf77",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 186,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012168990_e_188j7fd": {
+      "observationId": "0363100012168990_e_188j7fd",
+      "buildingId": "0363100012168990",
+      "sourceSha256": "d8aa6e9f7fb34bebde69078d5465e1c34ddaa17dc25b643dc129b44e9289f3d9",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 187,
+      "verdict": "adjust",
+      "correctedHex": "#7b6753",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 73,
+        "top": 328,
+        "width": 13,
+        "height": 18
+      },
+      "regionMedianHex": "#7b6753",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012169414_e_11ytrog": {
+      "observationId": "0363100012169414_e_11ytrog",
+      "buildingId": "0363100012169414",
+      "sourceSha256": "83891214d7058e2801a8d836f0e4deb1b8462203404c927c0c088e53d730c316",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 188,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012174216_e_0fo2nad": {
+      "observationId": "0363100012174216_e_0fo2nad",
+      "buildingId": "0363100012174216",
+      "sourceSha256": "90204dc85d6a691d153188eb09f57ccbd24d913e6816af2fe0a9d4dbe77f7b8a",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 189,
+      "verdict": "adjust",
+      "correctedHex": "#a19c9c",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 34,
+        "top": 335,
+        "width": 12,
+        "height": 22
+      },
+      "regionMedianHex": "#a19c9c",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012168644_e_0kxn3w7": {
+      "observationId": "0363100012168644_e_0kxn3w7",
+      "buildingId": "0363100012168644",
+      "sourceSha256": "771d6bb33004042e398858d48cf811406fcb4cbe1fe29ae68f42eac37be13923",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 190,
+      "verdict": "adjust",
+      "correctedHex": "#545e58",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 62,
+        "top": 324,
+        "width": 12,
+        "height": 18
+      },
+      "regionMedianHex": "#545e58",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012572097_e_1f4kk40": {
+      "observationId": "0363100012572097_e_1f4kk40",
+      "buildingId": "0363100012572097",
+      "sourceSha256": "50d804cbf85d654a1df566aa2fe31c6953d6169ea2a7df852333e0c945f97bd7",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 191,
+      "verdict": "adjust",
+      "correctedHex": "#42403c",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 65,
+        "top": 274,
+        "width": 11,
+        "height": 16
+      },
+      "regionMedianHex": "#42403c",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012236681_e_0f0740u": {
+      "observationId": "0363100012236681_e_0f0740u",
+      "buildingId": "0363100012236681",
+      "sourceSha256": "3ffb7bf396508fe231c5bf7fe83400d7b39c13c7b06d5841e73235fc304ef381",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 192,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "mixed-owners-or-materials"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169356_e_1fhq7vs": {
+      "observationId": "0363100012169356_e_1fhq7vs",
+      "buildingId": "0363100012169356",
+      "sourceSha256": "862b05204f9721c67c9413e2643ac9b1ffe2ee69fad77cd41a6b7a18d5a3fb7e",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 193,
+      "verdict": "unusable",
+      "reasons": [
+        "source-crop-visual-review",
+        "vegetation-or-street-object-occlusion"
+      ],
+      "notes": "Visible crop interference prevents a reliable main-wall colour assertion; abstained."
+    },
+    "0363100012169946_e_132aqfo": {
+      "observationId": "0363100012169946_e_132aqfo",
+      "buildingId": "0363100012169946",
+      "sourceSha256": "ea02a2ca8a4dc17e849e03b5f3f9cacf9833d8919503712df25268cb7b8758d9",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 194,
+      "verdict": "adjust",
+      "correctedHex": "#cea07f",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 118,
+        "top": 364,
+        "width": 16,
+        "height": 21
+      },
+      "regionMedianHex": "#cea07f",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012152724_e_1cjcooe": {
+      "observationId": "0363100012152724_e_1cjcooe",
+      "buildingId": "0363100012152724",
+      "sourceSha256": "8f471468285f05c4975596a28e60ba0556abc1bcb15dcc18d455de5618df9a8c",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 195,
+      "verdict": "adjust",
+      "correctedHex": "#413a2a",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 212,
+        "top": 394,
+        "width": 36,
+        "height": 21
+      },
+      "regionMedianHex": "#413a2a",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012168936_e_0lk61y1": {
+      "observationId": "0363100012168936_e_0lk61y1",
+      "buildingId": "0363100012168936",
+      "sourceSha256": "7858faec123bd62dbba1d4ffa513e10a3c77b9ba08eb17a8eeca9b732c674f01",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 196,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    },
+    "0363100012168967_e_1fakpw3": {
+      "observationId": "0363100012168967_e_1fakpw3",
+      "buildingId": "0363100012168967",
+      "sourceSha256": "1f5557468a214d243ed8c7e6498ea5688a47c115a8869e4fe9a3b8e677325579",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 197,
+      "verdict": "adjust",
+      "correctedHex": "#766d4a",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 96,
+        "top": 309,
+        "width": 8,
+        "height": 19
+      },
+      "regionMedianHex": "#766d4a",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012174214_e_11c0jzl": {
+      "observationId": "0363100012174214_e_11c0jzl",
+      "buildingId": "0363100012174214",
+      "sourceSha256": "eec87d459cd1dbd9ec42fbf40c2e597d2b927329ed55aea9646a3b0bd34e9e1d",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 198,
+      "verdict": "adjust",
+      "correctedHex": "#efac78",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review",
+        "pixel-region-median"
+      ],
+      "sampleRegionPx": {
+        "left": 82,
+        "top": 333,
+        "width": 12,
+        "height": 18
+      },
+      "regionMedianHex": "#efac78",
+      "notes": "Exposed main façade wall patch selected visually in the dated crop; RGB channel medians of that native-pixel rectangle. Ground-floor, windows, trim, and roof are excluded."
+    },
+    "0363100012130131_e_04trqsv": {
+      "observationId": "0363100012130131_e_04trqsv",
+      "buildingId": "0363100012130131",
+      "sourceSha256": "737ca5000ff68919682851295a818fd00ee337b63b75bedcfda15d49a2115c2a",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T17:44:30.507Z",
+      "sampleIndex": 199,
+      "verdict": "skip",
+      "reasons": [
+        "source-crop-visual-review",
+        "no-confident-isolated-wall-colour"
+      ],
+      "notes": "Visual inspection did not establish a representative, isolated main-wall colour confidently enough to publish; abstained."
+    }
+  }
+}
