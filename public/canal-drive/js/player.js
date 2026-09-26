@@ -9,8 +9,7 @@ class PlayerCar extends Car {
   // Touch drives through an analog stick (input.stick); the keyboard keeps
   // its arrows. Absolute mode is screen-relative in both: the pointed
   // direction is rotated by the camera, so "right" is right on screen whether
-  // the map is north-up or turned. `screenRotation` is set by the game from
-  // the camera every frame.
+  // the map is north-up or turned. `camera` is attached by the route setup.
   handleInput(input) {
     const ui = window.CanalRecallUi;
     this._headingTarget = null;
@@ -24,7 +23,7 @@ class PlayerCar extends Car {
     };
     const stickHeld = !!input.stickHeld;
     const stick = stickHeld ? input.stick : null;
-    const rotation = this.screenRotation || 0;
+    const rotation = (this.camera && this.camera.rotation) || 0;
 
     if (this.controlMode === 'absolute') {
       let command = null;
