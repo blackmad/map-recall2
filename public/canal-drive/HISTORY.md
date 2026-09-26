@@ -6,6 +6,33 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Touch drives with an analog thumbstick — 2026-09-26
+
+Reported on a phone: "impossible to turn, even in absolute mode I can't
+reliably go east". Three causes, all in the d-pad path:
+
+- **Auto-throttle made due east/west unreachable.** Touch held ArrowUp unless
+  braking, and absolute mode resolved `atan2(vertical, horizontal)` — so
+  "right" was right+up, i.e. north-east.
+- **Absolute headings were world compass angles under a turning camera.**
+  With a heading-up view, "right" on the pad was not right on screen, and
+  moved every time the vehicle turned.
+- **A thumb sliding off the 160px pad dropped every key**, mid-turn.
+
+The pad's rectangle is now only the *activation zone* of an analog stick
+(`touchControls.ts`: `stickVector`, `relativeCommand`, `absoluteCommand`,
+`assistedHeading`, `cruiseThrottle`). The origin floats under the thumb and the
+touch stays captured until it lifts. Absolute mode is screen-relative (the
+pointed direction is rotated by `camera.rotation`, keyboard too), holds the
+camera still (`camera.holdHeading`, else pointing right spins forever), swings
+the heading at a bounded rate, and follows the street/canal tangent when the
+pointed direction is within 55° of it — `getNearestRoad(x, y, target)` already
+picks the cross street at junctions. Relative mode is analog steer, cruising at
+62% of top speed so junction turns are makeable; forward pushes to full speed,
+pulling back brakes. Measured with CDP touch drags on iPhone 13: absolute bike
+east 0°/west 180°, boat follows the canal; relative turns ~55°/s at full lock.
+Pinned in `test:mobile-hud`.
+
 ## The knowledge screen can forget a name entirely — 2026-09-08
 
 **Practice again** (below) intentionally keeps mastery and only makes chunks

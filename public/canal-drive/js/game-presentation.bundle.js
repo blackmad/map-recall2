@@ -621,8 +621,8 @@
       if (this._debugMode) this._renderDebug();
       this._renderControlsHint();
       if (this.state === GameState.RACING && !this._overlayOpen()) {
-        this.hud.drawDpad(ctx, this.input.padKeys);
-        if (this.input.showTouchHint) this.hud.drawTouchHint(ctx);
+        this.hud.drawStick(ctx, this.input.stickView);
+        if (this.input.showTouchHint) this.hud.drawTouchHint(ctx, this.controlMode);
       }
       if (this.state === GameState.PAUSED) this._renderPaused();
       if (this.state === GameState.FINISHED) this._renderFinish();

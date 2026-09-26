@@ -609,6 +609,9 @@ class Game {
     // Player boat update (Smokey's original vehicle controller)
     const previousPlayerPosition = { x: this.player.x, y: this.player.y };
     this.sound.resume();
+    // Absolute steering is screen-relative: the player rotates the pointed
+    // direction by the camera, so hand it the camera's current rotation.
+    this.player.screenRotation = this.camera.rotation;
     this.player.handleInput(this.input);
     this.player.update(dt, this.track);
     if (this.travelMode === 'car' || this.travelMode === 'transit') {

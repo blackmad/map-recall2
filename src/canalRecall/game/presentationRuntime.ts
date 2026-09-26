@@ -286,9 +286,9 @@ export class GamePresentationRuntime {
     if (this.state === GameState.RACING && !this._overlayOpen()) {
       // Last, so nothing can be drawn over the only way to steer — but not at
       // all while a question or panel owns the screen: the vehicle is stopped,
-      // the card covers the pad, and a pad drawn under a card is dead controls.
-      this.hud.drawDpad(ctx, this.input.padKeys);
-      if (this.input.showTouchHint) this.hud.drawTouchHint(ctx);
+      // the card covers the stick, and a stick drawn under a card is dead controls.
+      this.hud.drawStick(ctx, this.input.stickView);
+      if (this.input.showTouchHint) this.hud.drawTouchHint(ctx, this.controlMode);
     }
     if (this.state === GameState.PAUSED) this._renderPaused();
     if (this.state === GameState.FINISHED) this._renderFinish();
