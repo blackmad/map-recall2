@@ -18,8 +18,11 @@
  *    3DBAG.
  * 3. `case-05` Lauriergracht 67/69 has a source vertex 2.38 m above its own BAG
  *    ridge (`.cache/reconstruction-loop-20260921/pass-3-report.md`), which is the
- *    "roof too high into the sky" spike. It sits inside the 3 m overshoot gate,
- *    so the policy keeps it.
+ *    "roof too high into the sky" spike. It sits inside the 3 m overshoot gate.
+ * 4. The v4 stopgap only admits a complete source roof whose lowest point is at
+ *    or above the uncut LoD1 top. Its conservative whole-roof requirement
+ *    withholds cases 05, 19, and 27: their v3-compatible candidate surfaces
+ *    cannot replace the flat LoD1 mass without cut-through artifacts.
  *
  * This pins the measured facts so the roof lane cannot regress silently and so
  * a future regeneration can assert the corrected behaviour. It does not change
@@ -34,6 +37,8 @@ import {
   SOURCE_ROOF_MAX_RIDGE_OVERSHOOT_M,
   SOURCE_ROOF_MIN_EAVE_RATIO,
   SOURCE_ROOF_MIN_RELIEF_M,
+  SOURCE_ROOF_MIN_CLEARANCE_ABOVE_LOD1_M,
+  SOURCE_ROOF_SELECTION_POLICY,
 } from '../../src/canalRecall/cityAppearanceRoofs.ts';
 
 const LEGACY_DATUM = 'legacy-block-NAP-minus-0.65m';
@@ -56,7 +61,10 @@ interface RoofFacts {
   height: number;
   sceneEave: number;
   sceneRidge: number;
+  wholeRoofEave: number;
   selectedSceneEave: number;
+  candidateEave: number;
+  candidateComponents: number;
   relief: number;
   overshootAboveBagRidge: number;
   publishedEaves: number | null;
@@ -98,7 +106,10 @@ function factsFor(caseId: string): RoofFacts {
     height: building.height,
     sceneEave,
     sceneRidge,
+    wholeRoofEave: sourceRoofUpAboveGroundNAP(sceneEave, building.groundNAP),
     selectedSceneEave: selected.length ? Math.min(...selected.map((c: any) => c.rawEave)) : NaN,
+    candidateEave: selected.length ? Math.min(...selected.map((c: any) => c.eaves)) : NaN,
+    candidateComponents: selected.length,
     relief: sceneRidge - sceneEave,
     overshootAboveBagRidge: sceneRidge + SCENE_TO_NAP_OFFSET_M - (building.groundNAP + building.height),
     publishedEaves: selection?.eaves ?? null,
@@ -107,22 +118,21 @@ function factsFor(caseId: string): RoofFacts {
 }
 
 // --- 1. The scene-to-NAP correction is systematic and measurable ----------
-for (const caseId of ['case-01', 'case-05', 'case-19', 'case-27']) {
+for (const caseId of ['case-05', 'case-19', 'case-27']) {
   const facts = factsFor(caseId);
-  if (facts.publishedEaves === null) continue;
-  // Published eaves first convert scene-local `up` to NAP, then subtract NAP
-  // ground. Pin the selected value and the explicit 0.65 m correction.
+  // These are v3-compatible candidate surfaces. Pin their corrected NAP eaves
+  // even though v4 deliberately withholds the complete roof below.
   near(
-    facts.publishedEaves,
+    facts.candidateEave,
     facts.selectedSceneEave + SCENE_TO_NAP_OFFSET_M - facts.groundNAP,
     0.01,
-    `${caseId} published eave uses corrected NAP datum`,
+    `${caseId} candidate eave uses corrected NAP datum`,
   );
   near(
-    facts.publishedEaves - (facts.selectedSceneEave - facts.groundNAP),
+    facts.candidateEave - (facts.selectedSceneEave - facts.groundNAP),
     SCENE_TO_NAP_OFFSET_M,
     0.01,
-    `${caseId} publication raises eave by the scene-to-NAP offset`,
+    `${caseId} candidate conversion raises eave by the scene-to-NAP offset`,
   );
 }
 
@@ -147,20 +157,40 @@ for (const caseId of ['case-01', 'case-05', 'case-19', 'case-27']) {
     facts.overshootAboveBagRidge > 2,
     'case-05 "roof too high into the sky" is a real source overshoot, not a display error',
   );
-  assert.ok((facts.publishedEaves ?? 0) > 0, 'case-05 still publishes a compatible source roof');
-  assert.equal(facts.selectedComponents, 6, 'case-05 selected roof-component count changed');
+  near(facts.candidateEave, 13.61, 0.02, 'case-05 corrected v3 candidate eave');
+  assert.equal(facts.candidateComponents, 6, 'case-05 v3 candidate roof-component count changed');
 }
 
-// --- 4. case-19 / case-27 publish roofs, and pin their measured eaves -----
+// --- 4. case-19 / case-27 retain measured v3 candidate eaves --------------
 {
   const nineteen = factsFor('case-19');
-  near(nineteen.publishedEaves ?? NaN, 14.77, 0.02, 'case-19 corrected published eave');
+  near(nineteen.candidateEave, 14.77, 0.02, 'case-19 corrected v3 candidate eave');
   near(nineteen.overshootAboveBagRidge, 0.41, 0.03, 'case-19 overshoot above BAG ridge');
   const twentySeven = factsFor('case-27');
-  near(twentySeven.publishedEaves ?? NaN, 11.45, 0.05, 'case-27 corrected published eave');
+  near(twentySeven.candidateEave, 11.45, 0.05, 'case-27 corrected v3 candidate eave');
   near(twentySeven.overshootAboveBagRidge, 0.16, 0.03, 'case-27 overshoot above BAG ridge');
 }
 
+// --- 5. v4 chooses the complete roof or none of it ------------------------
+assert.equal(
+  SOURCE_ROOF_SELECTION_POLICY,
+  'whole-source-roof-above-uncut-lod1-v4-nap-corrected',
+  'the explicit final selection policy changed; re-review the named regressions',
+);
+for (const caseId of ['case-05', 'case-19', 'case-27']) {
+  const facts = factsFor(caseId);
+  assert.ok(
+    facts.wholeRoofEave < facts.height + SOURCE_ROOF_MIN_CLEARANCE_ABOVE_LOD1_M,
+    `${caseId} complete source roof must cut through the uncut LoD1 top`,
+  );
+  assert.equal(
+    facts.publishedEaves,
+    null,
+    `${caseId} is withheld by v4 rather than publishing cut-through roof shards`,
+  );
+  assert.equal(facts.selectedComponents, 0, `${caseId} cannot admit a partial roof under v4`);
+}
+
 console.log(
-  'Reviewed roof vertical regression passed: v3 converts scene-local roof heights to NAP before ground-relative publication; case-01 is withheld for 0.14 m relief; case-05 overshoots its BAG ridge by 2.38 m; case-19/27 corrected heights pinned.',
+  'Reviewed roof vertical regression passed: v3 candidate heights use the corrected NAP datum; case-01 is withheld for 0.14 m relief; case-05 overshoots its BAG ridge by 2.38 m; v4 withholds cases 05/19/27 because their complete source roofs cut through the uncut LoD1 top.',
 );
