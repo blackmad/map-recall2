@@ -91,7 +91,7 @@
     .context-wrap[hidden] { display: none; }
     .context-wrap img { display: block; width: 100%; max-height: 300px; object-fit: contain; background: #e9e6dd; }
     .context-label { margin: 0 0 6px; color: var(--muted); font-size: 11px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
-    .assessment { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; padding: 14px 16px 15px; }
+    .assessment { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 14px 16px 15px; }
     .assess-box { min-width: 0; padding: 11px 12px; border: 1px solid #e4e3da; border-radius: 10px; background: #fffefa; }
     .assess-box h4 { margin: 0 0 7px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .07em; }
     .family { display: flex; align-items: center; gap: 8px; font-weight: 720; overflow-wrap: anywhere; }
@@ -152,7 +152,7 @@
       </nav>
     </header>
 
-    <aside class="notice"><strong>Classifier results are proposals.</strong> Material-family swatches are illustrative; neither source identity nor actual or rendered wall colour is verified here.</aside>
+    <aside class="notice"><strong>Diagnostic evidence only.</strong> Classifier swatches are illustrative. Photo colour is a measured source-image RGB cluster; it is not calibrated albedo, accepted wall colour, or the rendered game colour. Source identity remains unverified.</aside>
 
     <section aria-labelledby="coverage-title">
       <div class="section-label"><h2 id="coverage-title">Evidence coverage</h2><p>Owner and frontage processing</p></div>
@@ -230,6 +230,7 @@
       for (const [candidate, colour] of Object.entries(familySwatches)) if (key.includes(candidate)) return colour;
       return '#a4a79d';
     };
+    const photoHex = value => typeof value === 'string' && /^#[0-9a-fA-F]{6}$/.test(value) ? value : null;
     const metric = (value, label, className = '') => `<div class="metric ${className}"><span class="value">${escAttr(value)}</span><span class="label">${escAttr(label)}</span></div>`;
 
     function renderMetrics() {
@@ -253,7 +254,7 @@
         metric(number(s.referenceAbstentions), 'Reference abstentions', 'model'),
         metric(falseAcceptances == null ? '—' : number(falseAcceptances), 'False accepts · reviewed mismatch', `model${falseAcceptances > 0 ? ' danger' : ''}`)
       ].join('');
-      elements.modelCaption.textContent = `Model: ${s.model || 'not reported'} · median ${s.speedMedianSeconds == null ? '—' : `${s.speedMedianSeconds}s`}/image. Match rate is joint material and colour-family agreement among non-abstaining known references.`;
+      elements.modelCaption.textContent = `Model: ${s.model || 'not reported'} · median ${s.speedMedianSeconds == null ? '—' : `${s.speedMedianSeconds}s`}/image. Photo RGB: ${number(s.measuredPhotoColours)} provisional, ${number(s.photoColoursNeedingReview)} need review, ${number(s.photoColoursWithheld)} withheld. Match rate is joint material and colour-family agreement among non-abstaining known references.`;
     }
 
     function statusLabel(status) {
@@ -286,6 +287,14 @@
       const colour = reference.colourFamily || 'Unknown colour';
       return `<div class="family"><span class="swatch" style="background:${familyColor(colour)}"></span><span>${escAttr(material)}</span></div><div class="family-sub">${escAttr(colour)}${reference.visibility ? ` · ${escAttr(reference.visibility)}` : ''}</div>${reference.reason ? `<p class="reason">${escAttr(reference.reason)}</p>` : ''}`;
     }
+    function photoColourBox(measurement) {
+      if (!measurement) return '<div class="family-sub">No verified local photo measurement yet</div>';
+      const colour = photoHex(measurement.photoHex);
+      const status = ({ 'measured-provisional': 'Provisional photo RGB', 'needs-review': 'Needs visual review', withheld: 'Withheld' })[measurement.status] || 'Unavailable';
+      const swatch = colour ? `<span class="swatch" style="background:${colour}"></span>` : '';
+      const fraction = Number.isFinite(measurement.upperBuildingFraction) ? ` · ${(measurement.upperBuildingFraction * 100).toFixed(1)}% upper mask` : '';
+      return `<div class="family">${swatch}<span>${colour ? escAttr(colour) : 'No colour estimate'}</span></div><div class="family-sub">${escAttr(status)}${fraction}</div>${measurement.reason ? `<p class="reason">${escAttr(measurement.reason)}</p>` : ''}`;
+    }
     function card(entry, index) {
       const photo = safeUrl(entry.photo);
       const contextPhoto = safeUrl(entry.contextPhoto);
@@ -311,6 +320,7 @@
         </div>
         <div class="assessment">
           <section class="assess-box"><h4>Classifier output</h4>${proposalBox(classification)}</section>
+          <section class="assess-box"><h4>Source photo RGB · diagnostic</h4>${photoColourBox(entry.photoColour)}</section>
           <section class="assess-box"><h4>Source reference</h4>${referenceBox(entry.reference)}</section>
         </div>
         <details class="provenance"><summary>Evidence provenance</summary><dl>
@@ -321,6 +331,7 @@
           <dt>Source SHA-256</dt><dd>${escAttr(sha)}</dd>
           <dt>Model</dt><dd>${escAttr(classification?.model || state.report?.summary?.model || 'Not classified')}</dd>
           <dt>Visibility</dt><dd>${escAttr(classification?.visibility || entry.reference?.visibility || 'Not recorded')}</dd>
+          <dt>Photo mask SHA-256</dt><dd>${escAttr(entry.photoColour?.maskSha256 || 'Not measured')}</dd>
           <dt>Source position</dt><dd>${Array.isArray(entry.point) && entry.point.length >= 2 ? `${Number(entry.point[0]).toFixed(2)}, ${Number(entry.point[1]).toFixed(2)} RD` : 'Not recorded'}</dd>
         </dl></details>
         ${photo ? `<a class="image-link" href="${escAttr(photo)}" target="_blank" rel="noopener">Open source image at native size ↗</a>` : ''}`;

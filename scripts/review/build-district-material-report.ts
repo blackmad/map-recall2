@@ -2,6 +2,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {createHash,randomUUID} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
 import {validateLabel} from '../city-appearance/benchmark-local-materials.mjs';
 
 const args=process.argv.slice(2);
@@ -13,10 +14,43 @@ const root=path.resolve(values('out')[0]??'public/data/district-materials');
 const progressDir='.cache/city-appearance/districts/da-costa-jordaan-v1/rectification';
 const referenceFile=values('reference')[0]??'review-data/district-rectification/local-material-reference.json';
 const benchmarks=values('benchmark');
+const workerStateFile=path.resolve(values('worker-state')[0]??'.cache/city-appearance/district-material-review/progress.json');
 const publicRoot=path.resolve('public');
 if(!root.startsWith(publicRoot+path.sep))throw Error('Gallery output must be inside public');
 const urlRoot='/'+path.relative(publicRoot,root).split(path.sep).join('/');
 const identity=(b:string,e:string,h:string)=>`${b}:${e}:${h}`;
+const sourceIdentity=(b:string,e:string,h:string,m:string)=>`${identity(b,e,h)}:${m}`;
+const validHash=(value:unknown)=>typeof value==='string'&&/^[a-f0-9]{64}$/.test(value);
+
+type WorkerJob={job:{manifest:string;manifestSha256:string};outputs:Record<string,{path:string;sha256:string}>;status:string;key:string};
+async function verifiedJson(output:{path:string;sha256:string}){
+ if(!output||typeof output.path!=='string'||!validHash(output.sha256))throw Error('Worker output receipt is incomplete');
+ const bytes=await fs.readFile(output.path);
+ if(sha(bytes)!==output.sha256)throw Error(`Worker output hash mismatch: ${output.path}`);
+ return JSON.parse(bytes.toString());
+}
+export async function loadWorkerArtifacts(file:string){
+ const state=await optional(file);
+ if(!state)return {jobs:[] as {row:WorkerJob;benchmark:any;colours:any}[],errors:[] as any[]};
+ if(state.version!==2||!state.jobs||typeof state.jobs!=='object'||Array.isArray(state.jobs))throw Error(`Invalid worker state: ${file}`);
+ const jobs:{row:WorkerJob;benchmark:any;colours:any}[]=[],errors:any[]=[];
+ for(const [key,row] of Object.entries(state.jobs) as [string,WorkerJob][]){
+  if(row.status!=='complete')continue;
+  try{
+   if(row.key!==key||!validHash(row.job?.manifestSha256))throw Error('Worker job binding mismatch');
+   const [benchmark,colours]=await Promise.all([verifiedJson(row.outputs?.benchmark),verifiedJson(row.outputs?.wallColours)]);
+   if(!Array.isArray(benchmark.receipts)||!Array.isArray(colours.rows)||colours.kind!=='source-photo-wall-colour-diagnostic')
+    throw Error('Worker output schema mismatch');
+   jobs.push({row,benchmark,colours});
+  }catch(error:any){errors.push({workerJob:key,error:String(error?.message??error)});}
+ }
+ return {jobs,errors};
+}
+
+export function workerBindingMatches(job:WorkerJob['job'],record:any,manifestPath:string,manifestSha256:string){
+ return path.resolve(job.manifest)===path.resolve(manifestPath)&&job.manifestSha256===manifestSha256&&
+  record.sourceManifestSha256===manifestSha256&&path.resolve(record.sourceManifestPath)===path.resolve(manifestPath);
+}
 
 async function build(){
  const names=(await fs.readdir(progressDir)).filter(n=>n.endsWith('-material-4000-batch-100.json'));
@@ -25,6 +59,44 @@ async function build(){
  const reference=await optional(referenceFile);
  const refs=new Map<string,any>((reference?.entries??[]).map((e:any)=>[identity(e.source.buildingId,e.source.elevationId,e.source.sha256),e]));
  const predictions=new Map<string,any>();
+ const worker=await loadWorkerArtifacts(workerStateFile);
+ const workerPredictions=new Map<string,any>();
+ const workerColours=new Map<string,any>();
+ const workerErrors=[...worker.errors];
+ for(const {row,benchmark,colours} of worker.jobs){
+  const manifest=path.resolve(row.job.manifest);
+  let manifestBytes:Buffer;
+  try{manifestBytes=await fs.readFile(manifest);}catch(e:any){workerErrors.push({workerJob:row.key,error:String(e?.message??e)});continue;}
+  if(sha(manifestBytes)!==row.job.manifestSha256){workerErrors.push({workerJob:row.key,error:'Source manifest changed'});continue;}
+  const reportDir=path.dirname(row.outputs.benchmark.path);
+  for(const summary of benchmark.receipts){
+   try{
+    if(!validHash(summary.key)||summary.sourceManifestSha256!==row.job.manifestSha256)throw Error('Classifier summary binding mismatch');
+    const receiptFile=path.join(reportDir,'receipts',`${summary.key}.json`);
+    const receipt=await verifiedJson(row.outputs[`receipt:${summary.key}`]);
+    if(path.resolve(row.outputs[`receipt:${summary.key}`].path)!==path.resolve(receiptFile))throw Error('Classifier receipt path mismatch');
+    const b=receipt.binding;
+    if(receipt.key!==summary.key||receipt.experimentHash!==benchmark.experimentHash||
+      b?.sourceSha256!==summary.sourceSha256||b?.buildingId!==summary.buildingId||
+      b?.elevationId!==summary.elevationId||b?.imageKind!=='full'||
+      !workerBindingMatches(row.job,b,manifest,row.job.manifestSha256))throw Error('Classifier receipt binding mismatch');
+    if(receipt.status!=='ok'||!receipt.schema?.valid||!validateLabel(receipt.label).valid)continue;
+    const key=sourceIdentity(b.buildingId,b.elevationId,b.sourceSha256,row.job.manifestSha256);
+    workerPredictions.set(key,receipt);
+   }catch(e:any){workerErrors.push({workerJob:row.key,receipt:summary.key,error:String(e?.message??e)});}
+  }
+  if(colours.provenanceSha256!==row.outputs.segmentation?.sha256){
+   workerErrors.push({workerJob:row.key,error:'Colour provenance does not match segmentation'});continue;
+  }
+  for(const measured of colours.rows){
+   if(!workerBindingMatches(row.job,measured,manifest,row.job.manifestSha256)||!validHash(measured.sourceSha256)||
+      !['measured-provisional','needs-review','withheld'].includes(measured.status)){
+    workerErrors.push({workerJob:row.key,error:'Colour row binding mismatch'});continue;
+   }
+   const key=sourceIdentity(measured.buildingId,measured.elevationId,measured.sourceSha256,row.job.manifestSha256);
+   workerColours.set(key,measured);
+  }
+ }
  const experiments=new Set<string>();
  for(const directory of benchmarks){
   let files:string[];try{files=await fs.readdir(path.join(directory,'receipts'));}catch(e:any){if(e.code==='ENOENT')continue;throw e;}
@@ -49,7 +121,7 @@ async function build(){
  }
  const entries:any[]=[];const seen=new Set<string>();
  const rectifiedIds=new Set<string>(),omittedIds=new Set<string>();
- const errors:any[]=[];
+ const errors:any[]=[...workerErrors];
  await fs.mkdir(path.join(root,'images'),{recursive:true});
  const copied=new Set<string>();
  async function publishImage(directory:string,image:any){
@@ -69,8 +141,11 @@ async function build(){
   return `${urlRoot}/images/${image.sha256}.jpg`;
  }
  const queuePaths=new Set((progress.batches??[]).map((b:any)=>path.resolve('.cache/city-appearance/areas',b.areaId,'panorama-audit',b.selectionHash,'evidence/manifest.json')));
- for(const [file,district] of manifests){
-  const manifest=await optional(file);if(!manifest)continue;
+ const workerManifestPaths=new Set(worker.jobs.map(({row})=>path.resolve(row.job.manifest)));
+ const orderedManifests=[...manifests.entries()].sort((a,b)=>Number(workerManifestPaths.has(b[0]))-Number(workerManifestPaths.has(a[0])));
+ for(const [file,district] of orderedManifests){
+  let manifestBytes:Buffer;try{manifestBytes=await fs.readFile(file);}catch(e:any){if(e.code==='ENOENT')continue;throw e;}
+  const manifest=JSON.parse(manifestBytes.toString()),manifestSha256=sha(manifestBytes);
   if(queuePaths.has(file))for(const o of manifest.omitted??[])omittedIds.add(`${o.buildingId}:${o.elevationId}`);
   for(const record of manifest.records){
    const source=record.images?.full;if(!source)continue;
@@ -78,7 +153,13 @@ async function build(){
    // Other-profile manifests contribute only the explicitly selected reference cases.
    if(!queuePaths.has(file)&&!refs.has(key))continue;
    if(seen.has(key))continue;seen.add(key);
-   const ref=refs.get(key),p=predictions.get(key);
+   const ref=refs.get(key),manual=predictions.get(key);
+   const sourcePath=path.resolve(path.dirname(file),'images',source.file);
+   const workerPrediction=workerPredictions.get(sourceIdentity(record.buildingId,record.elevationId,source.sha256,manifestSha256));
+   const p=(workerPrediction?.binding?.imagePath&&path.resolve(workerPrediction.binding.imagePath)===sourcePath?workerPrediction:null)??
+    (manual?.binding?.sourceManifestSha256===manifestSha256?manual:null);
+   const workerMeasured=workerColours.get(sourceIdentity(record.buildingId,record.elevationId,source.sha256,manifestSha256));
+   const measured=workerMeasured?.imagePath&&path.resolve(workerMeasured.imagePath)===sourcePath?workerMeasured:null;
    try{
     const photo=await publishImage(path.dirname(file),source);
     const contextPhoto=await publishImage(path.dirname(file),record.images.context);
@@ -90,6 +171,9 @@ async function build(){
      photo,contextPhoto,sourceSha256:source.sha256,sourceDate:source.date,sourceProfile:manifest.sourceProfile??'full',
      point:record.wall?.midpoint?[record.wall.midpoint.x,record.wall.midpoint.y]:null,
      classification:p?{...p.label,seconds:p.clientLatencyMs/1000,model:p.model,modelDigest:p.modelDigest}:null,
+     photoColour:measured?{status:measured.status,photoHex:measured.photoHex,reason:measured.reason,
+       upperBuildingFraction:measured.upper?.buildingFraction??null,sourceManifestSha256:measured.sourceManifestSha256,
+       maskSha256:measured.maskSha256}:null,
      reference:ref?{...ref.label,reason:ref.reason,uncertainty:ref.uncertainty}:null,
      comparison,sourceIdentityUnverified:true});
    }catch(e:any){errors.push({id:key,error:e.message});}
@@ -109,15 +193,20 @@ async function build(){
   referenceAbstentions:reviewed.filter(e=>e.reference.materialFamily==='unknown').length,
   correctAbstentions:reviewed.filter(e=>e.reference.materialFamily==='unknown'&&e.classification.abstain).length,
   falseAcceptances:reviewed.filter(e=>e.reference.materialFamily==='unknown'&&!e.classification.abstain).length,
+  measuredPhotoColours:entries.filter(e=>e.photoColour?.status==='measured-provisional').length,
+  photoColoursNeedingReview:entries.filter(e=>e.photoColour?.status==='needs-review').length,
+  photoColoursWithheld:entries.filter(e=>e.photoColour?.status==='withheld').length,
   model:[...new Set(classified.map(e=>e.classification.model))].join(', ')||null,speedMedianSeconds:times.length?times[Math.floor(times.length/2)]:null};
  const report={version:1,generatedAt:new Date().toISOString(),summary,entries,errors,
-  policy:'Model classifications are proposals. Reference agreement is not source-to-owner verification or rendered colour acceptance. Swatches are illustrative colour families, not measured albedo.',
-  provenance:{rectificationReport:path.join(progressDir,names[0]),benchmarkDirectories:benchmarks,referenceFile,visuallyAcceptedFrontages:0}};
+  policy:'Model classifications are proposals. Photo RGB clusters are diagnostic source measurements, not calibrated albedo or accepted/rendered wall colour. Reference agreement is not source-to-owner verification.',
+  provenance:{rectificationReport:path.join(progressDir,names[0]),benchmarkDirectories:benchmarks,workerStateFile,referenceFile,visuallyAcceptedFrontages:0}};
  const temp=path.join(root,`report.${process.pid}.${randomUUID()}.tmp`);await fs.writeFile(temp,JSON.stringify(report)+'\n');await fs.rename(temp,path.join(root,'report.json'));
  console.log(JSON.stringify({at:report.generatedAt,...summary,entries:entries.length,errors:errors.length}));
 }
-await build();
-if(args.includes('--watch')){
- const next=()=>setTimeout(async()=>{try{await build();}catch(e){console.error(String(e));}next();},60000);
- next();
+if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
+ await build();
+ if(args.includes('--watch')){
+  const next=()=>setTimeout(async()=>{try{await build();}catch(e){console.error(String(e));}next();},60000);
+  next();
+ }
 }
