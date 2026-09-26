@@ -6,13 +6,12 @@
  * measuring the four reviewed owners shows three separate, source-measured
  * defects rather than one:
  *
- * 1. `selectCompatibleSourceRoof` publishes roof heights as `up - groundNAP`,
- *    but `up` is the owner's scene-local axis (`NAP - 0.65 m`, per
- *    `wallVerticalExtent` / `wallTopNAP`), while `groundNAP` is NAP. Every
- *    published eave/ridge is therefore 0.65 m too low. The module's own fixture
- *    treats `up` as NAP, so its unit test cannot see the mix-up. Fixing this
- *    changes the selected component set on 674 of 7,395 released buildings, so
- *    it needs a versioned study-roof regeneration, not a silent edit.
+ * 1. The v2 release subtracted NAP ground directly from the owner's scene-local
+ *    `up` axis (`NAP - 0.65 m`, per `wallVerticalExtent` / `wallTopNAP`). That
+ *    made every published roof height 0.65 m too low. The v3 compiler converts
+ *    `up` into NAP first and requires a versioned study-roof regeneration. On
+ *    the exact 7,395-building source block pinned by the current release, this
+ *    changes selected roof components on 682 buildings.
  * 2. `case-01` Rozengracht 158 has a near-flat 3DBAG roof (relief 0.14 m, below
  *    `SOURCE_ROOF_MIN_RELIEF_M` 0.25), so the whole roof is withheld and the
  *    render is a flat cap. That is a data limitation: the source gable is not in
@@ -30,13 +29,15 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {
   selectCompatibleSourceRoof,
+  sourceRoofUpAboveGroundNAP,
+  SOURCE_ROOF_SCENE_TO_NAP_OFFSET_M,
   SOURCE_ROOF_MAX_RIDGE_OVERSHOOT_M,
   SOURCE_ROOF_MIN_EAVE_RATIO,
   SOURCE_ROOF_MIN_RELIEF_M,
 } from '../../src/canalRecall/cityAppearanceRoofs.ts';
 
 const LEGACY_DATUM = 'legacy-block-NAP-minus-0.65m';
-const LEGACY_OFFSET_M = 0.65;
+const SCENE_TO_NAP_OFFSET_M = SOURCE_ROOF_SCENE_TO_NAP_OFFSET_M;
 
 const data = JSON.parse(fs.readFileSync('public/data/facade-repair-preview/cases.json', 'utf8'));
 const caseById = (id: string) => {
@@ -77,12 +78,12 @@ function factsFor(caseId: string): RoofFacts {
   const ups = components.flat();
   const sceneEave = Math.min(...ups);
   const sceneRidge = Math.max(...ups);
-  // Replicate the v2 gates on the exact values the module sees, so the selected
-  // eave (not the global roof eave) is what this check pins.
+  // Replicate the v3 gates on the converted values, so the selected eave (not
+  // the global roof eave) is what this check pins.
   const selected = components
     .map((component: number[]) => {
-      const eaves = Math.min(...component) - building.groundNAP;
-      const ridge = Math.max(...component) - building.groundNAP;
+      const eaves = sourceRoofUpAboveGroundNAP(Math.min(...component), building.groundNAP);
+      const ridge = sourceRoofUpAboveGroundNAP(Math.max(...component), building.groundNAP);
       return { eaves, ridge, rawEave: Math.min(...component) };
     })
     .filter(
@@ -99,29 +100,29 @@ function factsFor(caseId: string): RoofFacts {
     sceneRidge,
     selectedSceneEave: selected.length ? Math.min(...selected.map((c: any) => c.rawEave)) : NaN,
     relief: sceneRidge - sceneEave,
-    overshootAboveBagRidge: sceneRidge + LEGACY_OFFSET_M - (building.groundNAP + building.height),
+    overshootAboveBagRidge: sceneRidge + SCENE_TO_NAP_OFFSET_M - (building.groundNAP + building.height),
     publishedEaves: selection?.eaves ?? null,
     selectedComponents: selection?.surfaces.length ?? 0,
   };
 }
 
-// --- 1. The datum mix-up is systematic and measurable ---------------------
+// --- 1. The scene-to-NAP correction is systematic and measurable ----------
 for (const caseId of ['case-01', 'case-05', 'case-19', 'case-27']) {
   const facts = factsFor(caseId);
   if (facts.publishedEaves === null) continue;
-  // v2 subtracts NAP ground from a scene-local `up`. The published eave is the
-  // selected scene-local eave minus `groundNAP`, i.e. exactly one datum low.
+  // Published eaves first convert scene-local `up` to NAP, then subtract NAP
+  // ground. Pin the selected value and the explicit 0.65 m correction.
   near(
     facts.publishedEaves,
-    facts.selectedSceneEave - facts.groundNAP,
+    facts.selectedSceneEave + SCENE_TO_NAP_OFFSET_M - facts.groundNAP,
     0.01,
-    `${caseId} published eave is the uncorrected v2 value`,
+    `${caseId} published eave uses corrected NAP datum`,
   );
   near(
-    facts.selectedSceneEave + LEGACY_OFFSET_M - facts.groundNAP - facts.publishedEaves,
-    LEGACY_OFFSET_M,
+    facts.publishedEaves - (facts.selectedSceneEave - facts.groundNAP),
+    SCENE_TO_NAP_OFFSET_M,
     0.01,
-    `${caseId} v2 eave is one datum offset below the ground-relative eave`,
+    `${caseId} publication raises eave by the scene-to-NAP offset`,
   );
 }
 
@@ -153,13 +154,13 @@ for (const caseId of ['case-01', 'case-05', 'case-19', 'case-27']) {
 // --- 4. case-19 / case-27 publish roofs, and pin their measured eaves -----
 {
   const nineteen = factsFor('case-19');
-  near(nineteen.publishedEaves ?? NaN, 14.12, 0.02, 'case-19 published eave');
+  near(nineteen.publishedEaves ?? NaN, 14.77, 0.02, 'case-19 corrected published eave');
   near(nineteen.overshootAboveBagRidge, 0.41, 0.03, 'case-19 overshoot above BAG ridge');
   const twentySeven = factsFor('case-27');
-  near(twentySeven.publishedEaves ?? NaN, 10.8, 0.05, 'case-27 published eave');
+  near(twentySeven.publishedEaves ?? NaN, 11.45, 0.05, 'case-27 corrected published eave');
   near(twentySeven.overshootAboveBagRidge, 0.16, 0.03, 'case-27 overshoot above BAG ridge');
 }
 
 console.log(
-  'Reviewed roof vertical regression passed: v2 publishes eaves one legacy 0.65 m datum low on the reviewed cases; case-01 is withheld for 0.14 m relief; case-05 overshoots its BAG ridge by 2.38 m; case-19/27 heights pinned.',
+  'Reviewed roof vertical regression passed: v3 converts scene-local roof heights to NAP before ground-relative publication; case-01 is withheld for 0.14 m relief; case-05 overshoots its BAG ridge by 2.38 m; case-19/27 corrected heights pinned.',
 );
