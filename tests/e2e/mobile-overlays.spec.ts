@@ -130,6 +130,25 @@ test('the settings panel keeps its Done button on screen', async ({ page }) => {
   await expect(page.locator('#settings-panel')).toBeHidden();
 });
 
+// Named regression (2026-09-26): in-ride settings were a column of native
+// selects and bare checkboxes, unlike the tile buttons of route setup. Both now
+// render the same RideOptions, so the panel has tiles and no dropdowns.
+test('ride settings use the same tile buttons as route setup', async ({ page }) => {
+  await drive(page);
+  await page.locator('#open-settings').click();
+  const panel = page.locator('#settings-panel');
+  await expect(panel.locator('select')).toHaveCount(0);
+  const point = panel.locator('[data-choice="live-controls:absolute"]');
+  await point.click();
+  await expect(point).toHaveClass(/active/);
+  await expect(page.locator('#route-setup [data-choice="controls:absolute"]')).toHaveClass(/active/);
+  const minimap = panel.locator('label.toggle-tile', { has: page.locator('#live-minimap') });
+  const wasOn = await page.locator('#live-minimap').isChecked();
+  await minimap.click();
+  await expect(page.locator('#live-minimap')).toBeChecked({ checked: !wasOn });
+  await expect(minimap).toHaveClass(wasOn ? /^(?!.*active)/ : /active/);
+});
+
 // Named regression (2026-09-26): on a phone the setup rail clipped Difficulty
 // exactly at its label, so nothing said the list went on — and the backdrop
 // photo spent a sixth of the screen below Start.
@@ -137,7 +156,7 @@ test('phone setup shows every main choice above Start, and says when it scrolls'
   await page.goto('/canal-drive/');
   await expect(page.locator('#route-card')).toBeVisible();
   const fits = await page.evaluate(() => {
-    const scroll = document.querySelector('.enamel-setup-scroll')!.getBoundingClientRect();
+    const scroll = document.querySelector('#route-setup .enamel-setup-scroll')!.getBoundingClientRect();
     const hard = document.querySelector('[data-choice="difficulty:hard"]')!.getBoundingClientRect();
     return { hardBottom: hard.bottom, scrollBottom: scroll.bottom };
   });
@@ -146,9 +165,9 @@ test('phone setup shows every main choice above Start, and says when it scrolls'
 
   // A shorter phone overflows: the cue appears and goes away at the end.
   await page.setViewportSize({ width: 360, height: 560 });
-  const cue = page.locator('.setup-scroll-cue');
+  const cue = page.locator('#route-setup .setup-scroll-cue');
   await expect(cue).toBeVisible();
-  await page.locator('.enamel-setup-scroll').evaluate(node => { node.scrollTop = node.scrollHeight; });
+  await page.locator('#route-setup .enamel-setup-scroll').evaluate(node => { node.scrollTop = node.scrollHeight; });
   await expect(cue).toBeHidden();
 });
 
