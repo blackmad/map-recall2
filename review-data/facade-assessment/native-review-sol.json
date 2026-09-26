@@ -1,0 +1,335 @@
+{
+  "version": 1,
+  "kind": "native-image-field-review",
+  "reviewer": "sol-native-image-review",
+  "reviewDate": "2026-09-27",
+  "cohort": {
+    "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/cohort.json",
+    "fileSha256": "14dceb93c6bd092a7d7a1da1e30b9b32eb40a5e79685b2a9d970df930ffd566b",
+    "cohortSha256": "f69ba60fa78b034f8a3fb16251bcd86d39f5d8506f9b51228f160ee7498598ca",
+    "releaseId": "3d4551a8716c6b60dc59ba0d5de9b851628e62f4ae3eef2c6be7a5bd4ab7c9da"
+  },
+  "policy": "Manual image-level diagnostic grades only. No accepted model labels, owner identity certification, measured geometry or game publication. Diffuse wall material and opening counts were not graded.",
+  "indices": [
+    3,
+    10,
+    17,
+    52,
+    64
+  ],
+  "entries": [
+    {
+      "index": 3,
+      "buildingId": "0363100012162897",
+      "observationId": "0363100012162897_e_0c4e2gf",
+      "address": "Da Costakade 182",
+      "images": [
+        {
+          "kind": "full",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb.jpg",
+          "sha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+          "capturedAt": "2024-11-29T09:33:51Z",
+          "width": 275,
+          "height": 892
+        },
+        {
+          "kind": "ground",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/489795cbf1171feef4abbad2a19a2e67352cc353afd4689cdb4efd8afe68f5b2.jpg",
+          "sha256": "489795cbf1171feef4abbad2a19a2e67352cc353afd4689cdb4efd8afe68f5b2",
+          "capturedAt": "2025-07-31T09:39:58Z",
+          "width": 673,
+          "height": 539
+        }
+      ],
+      "receipt": {
+        "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/pilot-v1/receipts/5931a93e06fd9dd99d77c1b20569e13063ea9013af3e539e798c20da0a3188f8.json",
+        "sha256": "e3cc325631a65cbfd37d74f04708bb8e2391f17b6a181ef3f774611481aa62f8",
+        "key": "5931a93e06fd9dd99d77c1b20569e13063ea9013af3e539e798c20da0a3188f8",
+        "status": "ok",
+        "schemaValid": true,
+        "schemaReason": null
+      },
+      "fieldObservations": {
+        "entrance": {
+          "visible": "yes",
+          "evidence": "ground",
+          "description": "A recessed arched passage at right contains a dark doorway and stair; a clear entrance is visible.",
+          "model": "visible",
+          "grade": "supported"
+        },
+        "retail": {
+          "displayGlazing": "uncertain",
+          "fascia": "absent",
+          "awning": "absent",
+          "signText": "none identified",
+          "description": "A broad ground-floor glazed bay with curtains is visible; it resembles display glazing but commercial use is not established.",
+          "modelGrade": "display-glazing absence is overconfident; retail use remains unknown"
+        },
+        "roofline": {
+          "visible": "partial",
+          "description": "A straight cornice/parapet top is visible; the roof behind it is outside the crop.",
+          "model": "unknown",
+          "grade": "appropriate for roof shape"
+        }
+      },
+      "modelMistakes": [
+        "The receipt calls displayGlazing absent despite the broad ground-level glazed bay; whether that bay is commercial remains uncertain."
+      ],
+      "uncertainty": [
+        "Full and ground crops have different capture dates; do not infer unchanged entrance or use across dates.",
+        "Roof form behind the parapet cannot be identified."
+      ]
+    },
+    {
+      "index": 10,
+      "buildingId": "0363100012168920",
+      "observationId": "0363100012168920_e_0bxls2d",
+      "address": "Elandsgracht 148",
+      "images": [
+        {
+          "kind": "full",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767.jpg",
+          "sha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
+          "capturedAt": "2023-03-13T08:49:46.949240Z",
+          "width": 388,
+          "height": 577
+        },
+        {
+          "kind": "ground",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/0c88f6a476cd73af99d862752f290753de8f225a198200abb839847003505444.jpg",
+          "sha256": "0c88f6a476cd73af99d862752f290753de8f225a198200abb839847003505444",
+          "capturedAt": "2025-07-03T09:54:48Z",
+          "width": 948,
+          "height": 539
+        }
+      ],
+      "receipt": {
+        "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/pilot-v1/receipts/f67b157080928066afa8b84b4c348803d87c47559f56a5e23946f4459b2072db.json",
+        "sha256": "1d083e1aa8b60a4af3414c574cd5966d1a1a3819b32f68be0676276e74799cd0",
+        "key": "f67b157080928066afa8b84b4c348803d87c47559f56a5e23946f4459b2072db",
+        "status": "ok",
+        "schemaValid": true,
+        "schemaReason": null
+      },
+      "fieldObservations": {
+        "entrance": {
+          "visible": "yes-in-ground",
+          "evidence": "ground",
+          "description": "A dark door is visible on the left of the ground crop; target-owner assignment remains uncertain.",
+          "model": "unknown",
+          "grade": "overcautious for image visibility"
+        },
+        "retail": {
+          "displayGlazing": "present-in-ground",
+          "fascia": "absent",
+          "awning": "present-short-hoods",
+          "signText": "Hair LOOK; ZONDER AFSPRAAK (other lettering partly obscured)",
+          "description": "Two large salon display windows carry hair-service lettering, with short projecting hoods above them.",
+          "modelGrade": "missed clear ground-crop retail components"
+        },
+        "roofline": {
+          "visible": "unknown",
+          "description": "The roof edge is clipped by the full crop; no reliable roof form.",
+          "model": "unknown",
+          "grade": "supported"
+        }
+      },
+      "modelMistakes": [
+        "All retail fields were set unknown although salon windows, text and projecting hoods are readable in the ground crop.",
+        "Entrance visibility was set unknown despite a visible door in the ground crop."
+      ],
+      "uncertainty": [
+        "Full and ground captures differ in date and apparent facade state; observed ground features are not certified as belonging to this owner.",
+        "The small number plate by the ground door is hard to read, so address binding is unresolved."
+      ]
+    },
+    {
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "observationId": "0363100012094649_e_16jqzp7",
+      "address": "Van Houweningenstraat 197 / Van Houweningenstraat 199 / Van Houweningenstraat 201 / Van Houweningenstraat 203 / Van Houweningenstraat 205 / Van Houweningenstraat 207 / Van Houweningenstraat 209 / Van Houweningenstraat 211 / Van Houweningenstraat 213",
+      "images": [
+        {
+          "kind": "full",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee.jpg",
+          "sha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+          "capturedAt": "2024-09-11T11:07:40Z",
+          "width": 679,
+          "height": 699
+        },
+        {
+          "kind": "ground",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/d90c32e6c1ec1e69a3bc8342e5271ea759f89e373823f26f2b8c1029af2a85d2.jpg",
+          "sha256": "d90c32e6c1ec1e69a3bc8342e5271ea759f89e373823f26f2b8c1029af2a85d2",
+          "capturedAt": "2024-09-11T11:07:39Z",
+          "width": 1661,
+          "height": 539
+        }
+      ],
+      "receipt": {
+        "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/pilot-v1/receipts/58f68a54036c39474033e4ccf450b8b173cc2a511e91ded9dd864f4d8c410554.json",
+        "sha256": "58989ec0d63b98714e9bca92fb9d66955c605eb1163cf3971e372143f5a85295",
+        "key": "58f68a54036c39474033e4ccf450b8b173cc2a511e91ded9dd864f4d8c410554",
+        "status": "invalid-schema",
+        "schemaValid": false,
+        "schemaReason": "hidden-material"
+      },
+      "fieldObservations": {
+        "entrance": {
+          "visible": "yes",
+          "evidence": "full+ground",
+          "description": "A central glazed shared entrance is visible under the balconies; a separate metal service door is at left.",
+          "model": "visible",
+          "grade": "supported"
+        },
+        "retail": {
+          "displayGlazing": "absent",
+          "fascia": "absent",
+          "awning": "absent",
+          "signText": "none identified",
+          "description": "Ground level reads as residential windows and entrances, with no obvious retail assembly.",
+          "modelGrade": "supported for visible components"
+        },
+        "roofline": {
+          "visible": "straight-parapet",
+          "description": "The full crop clearly shows a straight horizontal parapet edge; the roof surface behind it is not visible.",
+          "model": "unknown",
+          "grade": "understates visible parapet, but roof type remains unknown"
+        }
+      },
+      "modelMistakes": [
+        "The caution says the roofline is obscured by trees and sky, but the straight parapet edge is plainly visible.",
+        "Receipt is invalid-schema (hidden-material); its material assertions should not be used."
+      ],
+      "uncertainty": [
+        "A parapet edge does not establish the roof structure behind it."
+      ]
+    },
+    {
+      "index": 52,
+      "buildingId": "0363100012174204",
+      "observationId": "0363100012174204_e_1r4mm2h",
+      "address": "Lauriergracht 119",
+      "images": [
+        {
+          "kind": "full",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/8fc212b8156a2987502234e4dfc291b4329d07981dc90e682d3db242932305e3.jpg",
+          "sha256": "8fc212b8156a2987502234e4dfc291b4329d07981dc90e682d3db242932305e3",
+          "capturedAt": "2023-03-06T11:16:15.951960Z",
+          "width": 268,
+          "height": 802
+        },
+        {
+          "kind": "ground",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/c10a3abd7b934cbabbe057ae35eb34169d9b18f611762a9535271c9f640434f1.jpg",
+          "sha256": "c10a3abd7b934cbabbe057ae35eb34169d9b18f611762a9535271c9f640434f1",
+          "capturedAt": "2025-07-03T09:53:25Z",
+          "width": 656,
+          "height": 539
+        }
+      ],
+      "receipt": {
+        "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/pilot-v1/receipts/47f904f589fa6b063a6d7b74dd47bcf55c4cecebaa6a94ffc3e95397bbc57521.json",
+        "sha256": "934e49f4aaca82b50c21aa724efcba5a31a0f839699c6e8aacb14e82d81d1f21",
+        "key": "47f904f589fa6b063a6d7b74dd47bcf55c4cecebaa6a94ffc3e95397bbc57521",
+        "status": "ok",
+        "schemaValid": true,
+        "schemaReason": null
+      },
+      "fieldObservations": {
+        "entrance": {
+          "visible": "yes",
+          "evidence": "full+ground",
+          "description": "Two black ground doors are visible; the right door is beside a 119 plaque and is the clearer target entrance.",
+          "model": "unknown",
+          "grade": "missed visible entrance"
+        },
+        "retail": {
+          "displayGlazing": "absent",
+          "fascia": "absent",
+          "awning": "absent",
+          "signText": "none identified",
+          "description": "The broad centre window has curtains and reads as residential glazing, not an obvious shop display.",
+          "modelGrade": "supported for visible components"
+        },
+        "roofline": {
+          "visible": "sloped-with-dormer",
+          "description": "A sloping dark roof and at least one dormer are visible above this facade through branches. Fine geometry is obscured.",
+          "model": "unknown",
+          "grade": "missed broad roof form"
+        }
+      },
+      "modelMistakes": [
+        "Entrance was left unknown despite the clearly visible 119 doorway.",
+        "Roof shape was left unknown although the broad sloped roof with dormer is discernible."
+      ],
+      "uncertainty": [
+        "Trees and low resolution prevent precise dormer dimensions or a fully traced roofline.",
+        "Full and ground captures differ in date; owner identity is not certified by this visual review."
+      ]
+    },
+    {
+      "index": 64,
+      "buildingId": "0363100012157926",
+      "observationId": "0363100012157926_e_012eimg",
+      "address": "Da Costakade 167 / Kinkerstraat 49",
+      "images": [
+        {
+          "kind": "full",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e.jpg",
+          "sha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+          "capturedAt": "2023-01-10T10:49:21.163240Z",
+          "width": 353,
+          "height": 798
+        },
+        {
+          "kind": "ground",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/ff2cf03630d321695dfe1e870881c2384b5111271031105fd0cdd526e7e46be0.jpg",
+          "sha256": "ff2cf03630d321695dfe1e870881c2384b5111271031105fd0cdd526e7e46be0",
+          "capturedAt": "2025-07-31T11:12:20Z",
+          "width": 862,
+          "height": 539
+        }
+      ],
+      "receipt": {
+        "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/pilot-v1/receipts/8eb925dd7a0e25ce405002a907b3a7a9956c67dfa43a1c6277b775680ceb632d.json",
+        "sha256": "497461d25dc67b9facf0f15424244569349bd5c6ac440861ff81a3b7f1cf1ff6",
+        "key": "8eb925dd7a0e25ce405002a907b3a7a9956c67dfa43a1c6277b775680ceb632d",
+        "status": "invalid-schema",
+        "schemaValid": false,
+        "schemaReason": "hidden-material"
+      },
+      "fieldObservations": {
+        "entrance": {
+          "visible": "yes-in-ground",
+          "evidence": "ground",
+          "description": "A dark recessed door at right sits beside a visible 167 plaque.",
+          "model": "unknown",
+          "grade": "missed visible ground entrance"
+        },
+        "retail": {
+          "displayGlazing": "present-in-ground",
+          "fascia": "absent",
+          "awning": "absent",
+          "signText": "STOMERIJ; BORDUUR SERVICE; GORDIJNEN OP MAAT (partially legible)",
+          "description": "A large left display window carries dry-cleaning/embroidery/curtain-service lettering; a centre bay is blank or closed.",
+          "modelGrade": "missed clear ground-crop retail components"
+        },
+        "roofline": {
+          "visible": "partial-sloped",
+          "description": "The left upper facade has a dark sloped tiled roof band; the ornate gable at right appears to belong to a neighbour.",
+          "model": "unknown",
+          "grade": "cautious attribution appropriate; left roof slope visible"
+        }
+      },
+      "modelMistakes": [
+        "Entrance, display glazing and sign legibility were all unknown despite clear evidence in the ground crop.",
+        "Receipt is invalid-schema (hidden-material); its material assertions should not be used."
+      ],
+      "uncertainty": [
+        "The full crop includes an adjacent ornate gable; do not assign that gable to the target building.",
+        "The 2023 full and 2025 ground captures may represent different facade states; exact owner alignment is unverified."
+      ]
+    }
+  ]
+}
