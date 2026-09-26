@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "scope": "Opt-in colour variants under visual review; not measured albedo or accepted production assignments",
+  "entries": [
+    {
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "baseMaterialId": "creamrender",
+      "renderMaterialId": "palecreamrender",
+      "verdict": "improved-direction-only",
+      "reason": "The exposed source upper wall is pale yellow-green rather than ochre. Same-light isolated front and oblique comparisons support a lighter, less tan reusable render colour. Exact colour remains unaccepted."
+    }
+  ]
+}
