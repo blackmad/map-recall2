@@ -13,6 +13,10 @@ export interface Camera {
   /** How far the player has dragged the view off the vehicle. */
   panX: number;
   panY: number;
+  minZoom: number;
+  maxZoom: number;
+  pan(deltaX: number, deltaY: number): void;
+  resetPan(): void;
 }
 
 export interface InputManager {
