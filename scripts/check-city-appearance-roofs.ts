@@ -20,6 +20,11 @@ const complete={roofType:'slanted',groundNAP:1,height:10,surfaces:[surface(10.35
 const completeRoof=selectCompatibleSourceRoof(complete as any);
 assert.equal(completeRoof?.surfaces.length,2,'every source roof component is retained together once the full set clears the LoD1 top');
 assert.equal(completeRoof?.eaves,10,'the lowest admitted source eave sits at the uncut LoD1 height before the renderer safety lift');
+for (const malformed of [
+  { ...complete, surfaces: [{ type:'roof', rings:[[[0,10.35,0],[0,Number.NaN,2],[2,11.7,2]]] }] },
+  { ...complete, surfaces: [{ type:'roof', rings:[] }] },
+  { ...complete, surfaces: [{ type:'roof', rings:[[[0,10.35,0],[2,11.7,2]]] }] },
+]) assert.equal(selectCompatibleSourceRoof(malformed as any),null,'non-finite, empty, and short source roof rings are withheld before numeric admission');
 
 const manifest=JSON.parse(await fs.readFile('public/data/city-expansion/current.json','utf8')),realBuildings=[];
 assert.equal(manifest.studyRoofs.selectionPolicy,SOURCE_ROOF_SELECTION_POLICY,'study-roof policy version matches the compiler that generated the release');
