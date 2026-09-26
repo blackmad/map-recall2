@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "opencode-go/deepseek-v4-flash-vision-exp",
+  "sample": "cohort entries0\u20139 contact sheet",
+  "wallTimeSeconds": 11.25,
+  "reportedCost": 0.00247575,
+  "currency": "unverified",
+  "tokens": {
+    "total": 13169,
+    "input": 12057,
+    "output": 595,
+    "reasoning": 517,
+    "cache": {
+      "write": 0,
+      "read": 0
+    }
+  },
+  "assessment": "Triage only: one apparent target-wall identity error and sensitivity to photographic shadow; not a validated automatic colour estimator. No training performed.",
+  "output": "```json\n[\n  {\n    \"index\": 0,\n    \"finish\": \"brick-courses\",\n    \"upper_wall_hex\": \"#453b33\",\n    \"confidence\": \"low\",\n    \"reason\": \"dark facade, faint horizontal banding but shadows obscure joints\"\n  },\n  {\n    \"index\": 1,\n    \"finish\": \"smooth\",\n    \"upper_wall_hex\": \"#d6c8ae\",\n    \"confidence\": \"medium\",\n    \"reason\": \"sunlit flat wall with no visible courses, likely plaster\"\n  },\n  {\n    \"index\": 2,\n    \"finish\": \"brick-courses\",\n    \"upper_wall_hex\": \"#4a3b33\",\n    \"confidence\": \"medium\",\n    \"reason\": \"dark brown wall with discernible horizontal course lines\"\n  },\n  {\n    \"index\": 3,\n    \"finish\": \"brick-courses\",\n    \"upper_wall_hex\": \"#7c5c47\",\n    \"confidence\": \"high\",\n    \"reason\": \"clearly coursed reddish-brown masonry across upper storeys\"\n  },\n  {\n    \"index\": 4,\n    \"finish\": \"uncertain\",\n    \"upper_wall_hex\": \"#6b635a\",\n    \"confidence\": \"low\",\n    \"reason\": \"grey-brown wall, mortar joints not resolvable at this scale\"\n  },\n  {\n    \"index\": 5,\n    \"finish\": \"brick-courses\",\n    \"upper_wall_hex\": \"#5a4a3e\",\n    \"confidence\": \"medium\",\n    \"reason\": \"dark brown upper wall with faint horizontal coursing\"\n  },\n  {\n    \"index\": 6,\n    \"finish\": \"brick-courses\",\n    \"upper_wall_hex\": \"#6b5343\",\n    \"confidence\": \"medium\",\n    \"reason\": \"brown wall showing subtle course banding\"\n  },\n  {\n    \"index\": 7,\n    \"finish\": \"brick-courses\",\n    \"upper_wall_hex\": \"#4c4038\",\n    \"confidence\": \"medium\",\n    \"reason\": \"dark brown upper wall with visible horizontal banding\"\n  },\n  {\n    \"index\": 8,\n    \"finish\": \"uncertain\",\n    \"upper_wall_hex\": \"#8d8d89\",\n    \"confidence\": \"low\",\n    \"reason\": \"grey wall, joints obscured by lighting and compression\"\n  },\n  {\n    \"index\": 9,\n    \"finish\": \"brick-courses\",\n    \"upper_wall_hex\": \"#8a6a55\",\n    \"confidence\": \"medium\",\n    \"reason\": \"warm brown wall with faint horizontal course lines\"\n  }\n]\n```"
+}

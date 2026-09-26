@@ -1,0 +1,873 @@
+{
+  "version": 1,
+  "scope": "Broad wall material family in reference-bound game views; not exact texture reconstruction or building-wide accuracy",
+  "baselineReleaseId": "3d4551a8716c6b60dc59ba0d5de9b851628e62f4ae3eef2c6be7a5bd4ab7c9da",
+  "assignmentSha256": "f69ba60fa78b034f8a3fb16251bcd86d39f5d8506f9b51228f160ee7498598ca",
+  "currentBundleSha256": "736f334b8bf8c52369c721eba00f252547c3ad8d42c149660051832a62f78382",
+  "sourceAssessments": 100,
+  "unresolvedSourceMaterials": 11,
+  "summary": {
+    "accepted-material-family": 6,
+    "revise": 0,
+    "unresolved": 4
+  },
+  "defaultGameChanged": false,
+  "cases": [
+    {
+      "reviewerFocusedImage": null,
+      "focused": {
+        "index": 0,
+        "buildingId": "0363100012166570",
+        "identitySha256": "20343e8d0c863d9be3649e85337ad76183c3b39665d864d8eeb42fd83e2dcee1",
+        "normalSha256": "415797c0b95c26cf82c7859376382ae0a98da7b1b2351fc80a613c62cc6237c4",
+        "bounds": {
+          "left": 453,
+          "top": 185,
+          "width": 181,
+          "height": 259
+        },
+        "visibleWallPixels": 24241,
+        "medianGameRGB": [
+          114,
+          80,
+          67
+        ],
+        "focusedFile": "000-focused-front.png",
+        "focusedSha256": "1c50e7b9dff7d9ea4236d8d137767385e9f799661ca8337e26a2fa2bd5ec9608",
+        "policy": "Identity-bound crop with original screenshot RGB, including contextual occluders within bounds; diagnostic only, not automatic acceptance",
+        "url": "/data/wall-materials/review-images/1c50e7b9dff7d9ea4236d8d137767385e9f799661ca8337e26a2fa2bd5ec9608.png"
+      },
+      "reviewHistory": [],
+      "index": 0,
+      "buildingId": "0363100012166570",
+      "observationId": "0363100012166570_e_0wwk20u",
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "materialId": "redbrick",
+      "verdict": "accepted-material-family",
+      "dimensions": {
+        "identity": "Magenta overlay isolates the assigned Da Costakade 13 block; same block is visible in both game views.",
+        "family": "Source and trial both read as red-brown fired brick. The game wall is a little warmer/brighter than the deeply shaded photo, but family is supported.",
+        "brightness": "Slightly lighter/warmer in the game view; source is strongly shaded, so do not treat this as a calibrated mismatch.",
+        "texture": "Low-contrast brick pattern remains on the vertical wall in front and oblique views. It is now much finer than pass 1 and not obviously oversized at these views; no claim of measured course scale.",
+        "caps": "Top cap is plain grey in the front and oblique views; no brick pattern spill visible.",
+        "limitations": "Material-family review only. Facade detail/geometry and exact texture scale are not validated."
+      },
+      "evidence": {
+        "identity": {
+          "file": "000-identity.png",
+          "sha256": "20343e8d0c863d9be3649e85337ad76183c3b39665d864d8eeb42fd83e2dcee1"
+        },
+        "front": {
+          "file": "000-preview-front.png",
+          "sha256": "415797c0b95c26cf82c7859376382ae0a98da7b1b2351fc80a613c62cc6237c4"
+        },
+        "oblique": {
+          "file": "000-preview-oblique.png",
+          "sha256": "7aef4b798713eab8e70aaf2137bc0efdbae0778850273f4ad6495e34675c58c6"
+        }
+      },
+      "address": "Da Costakade 13",
+      "crop": "/data/city-expansion/evidence/7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64.jpg",
+      "reviewer": "gpt-6-luna",
+      "run": "pass-3",
+      "reviewFile": "review-data/wall-colour/visual-loop/render-pass3-luna.json",
+      "reviewFileSha256": "a2f639f3d60ad5535218cb5dd03ba68774e3ebfdc6bb9a1bd92414d8007b3171",
+      "captureManifestSha256": "c8cabbc8176be002b392f29a636b8c7c0e26fe375aed8fff3a3493bd00378a76",
+      "bundleSha256": "d3605ad945a0b8a27606c09a2315619e93c1d573bb78ea7381c3d84664669939",
+      "panel": "/data/wall-materials/review-images/0721ce7aa670ad214b47baab9174f328b8fbc5c483e1e77a640e72701517ad2d.png",
+      "images": {
+        "current-front": {
+          "url": "/data/wall-materials/review-images/10359aa19fff60c92aa815368e37b50a09afd4c52f347b2563e3a1eab79945ef.png",
+          "sha256": "10359aa19fff60c92aa815368e37b50a09afd4c52f347b2563e3a1eab79945ef"
+        },
+        "current-oblique": {
+          "url": "/data/wall-materials/review-images/8dde6504e92a2aef96f5c75da062d44f5e8ef290388af353d8f534bc855783c0.png",
+          "sha256": "8dde6504e92a2aef96f5c75da062d44f5e8ef290388af353d8f534bc855783c0"
+        },
+        "preview-front": {
+          "url": "/data/wall-materials/review-images/415797c0b95c26cf82c7859376382ae0a98da7b1b2351fc80a613c62cc6237c4.png",
+          "sha256": "415797c0b95c26cf82c7859376382ae0a98da7b1b2351fc80a613c62cc6237c4"
+        },
+        "preview-oblique": {
+          "url": "/data/wall-materials/review-images/7aef4b798713eab8e70aaf2137bc0efdbae0778850273f4ad6495e34675c58c6.png",
+          "sha256": "7aef4b798713eab8e70aaf2137bc0efdbae0778850273f4ad6495e34675c58c6"
+        },
+        "identity": {
+          "url": "/data/wall-materials/review-images/20343e8d0c863d9be3649e85337ad76183c3b39665d864d8eeb42fd83e2dcee1.png",
+          "sha256": "20343e8d0c863d9be3649e85337ad76183c3b39665d864d8eeb42fd83e2dcee1"
+        }
+      }
+    },
+    {
+      "reviewerFocusedImage": null,
+      "focused": {
+        "index": 1,
+        "buildingId": "0363100012162796",
+        "identitySha256": "40ce8d1d709e71c1ef095df817a192db54d4fc8f95b6c74ac54516fae7f5602a",
+        "normalSha256": "3ef4e30eb576e3ecf6a732e805405cd06f3449c1b856c24db9260ba8c1e340ba",
+        "bounds": {
+          "left": 553,
+          "top": 259,
+          "width": 92,
+          "height": 118
+        },
+        "visibleWallPixels": 8108,
+        "medianGameRGB": [
+          97,
+          78,
+          68
+        ],
+        "focusedFile": "001-focused-front.png",
+        "focusedSha256": "e631573b8159772addffba127ff3d993a7fa85a09e6eeae73e3260fea9804f5c",
+        "policy": "Identity-bound crop with original screenshot RGB, including contextual occluders within bounds; diagnostic only, not automatic acceptance",
+        "url": "/data/wall-materials/review-images/e631573b8159772addffba127ff3d993a7fa85a09e6eeae73e3260fea9804f5c.png"
+      },
+      "reviewHistory": [],
+      "index": 1,
+      "buildingId": "0363100012162796",
+      "observationId": "0363100012162796_e_13u2mzl",
+      "sourceSha256": "e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262",
+      "materialId": "brownbrick",
+      "verdict": "unresolved",
+      "dimensions": {
+        "identity": "Magenta overlay identifies the selected building, but its owner-facing wall is a thin strip in the block view.",
+        "family": "Source supports brown/red-brown brick. The rendered strip is too narrow at this capture scale to confirm that the wall treatment has the same family rather than a neighboring facade color.",
+        "brightness": "Unresolved because the selected wall occupies few pixels and the source upper portion is severely overexposed; do not infer a brightness defect.",
+        "texture": "Course pattern is not legible enough on the selected thin wall in either view to assess scale. No exact scale claim.",
+        "caps": "The selected building has a plain top cap; no clear top-face pattern leak.",
+        "limitations": "Identity is marked, but apparent wall pixels are too thin for confident source-to-render material comparison. Hold pending a closer view."
+      },
+      "evidence": {
+        "identity": {
+          "file": "001-identity.png",
+          "sha256": "40ce8d1d709e71c1ef095df817a192db54d4fc8f95b6c74ac54516fae7f5602a"
+        },
+        "front": {
+          "file": "001-preview-front.png",
+          "sha256": "3ef4e30eb576e3ecf6a732e805405cd06f3449c1b856c24db9260ba8c1e340ba"
+        },
+        "oblique": {
+          "file": "001-preview-oblique.png",
+          "sha256": "600069db1cf3f28d2edb0a339e01be246798af075c9394e3aaca1653302cf66c"
+        }
+      },
+      "address": "Allard Piersonstraat 2",
+      "crop": "/data/city-expansion/evidence/e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262.jpg",
+      "reviewer": "gpt-6-luna",
+      "run": "pass-3",
+      "reviewFile": "review-data/wall-colour/visual-loop/render-pass3-luna.json",
+      "reviewFileSha256": "a2f639f3d60ad5535218cb5dd03ba68774e3ebfdc6bb9a1bd92414d8007b3171",
+      "captureManifestSha256": "c8cabbc8176be002b392f29a636b8c7c0e26fe375aed8fff3a3493bd00378a76",
+      "bundleSha256": "d3605ad945a0b8a27606c09a2315619e93c1d573bb78ea7381c3d84664669939",
+      "panel": "/data/wall-materials/review-images/942af955e5aa212aac679f4da64d44c5dadef3af54ae5e6dbcfb3f28426d2a45.png",
+      "images": {
+        "current-front": {
+          "url": "/data/wall-materials/review-images/52cfcc5d70e1de36de10fe5eb0c22d02d9d0a09f4aa10c23303f3114e504cb40.png",
+          "sha256": "52cfcc5d70e1de36de10fe5eb0c22d02d9d0a09f4aa10c23303f3114e504cb40"
+        },
+        "current-oblique": {
+          "url": "/data/wall-materials/review-images/13cb9ddbc3e2f90eac5105c5d99c848f4834e445ba7b1084255c7a3991a22088.png",
+          "sha256": "13cb9ddbc3e2f90eac5105c5d99c848f4834e445ba7b1084255c7a3991a22088"
+        },
+        "preview-front": {
+          "url": "/data/wall-materials/review-images/3ef4e30eb576e3ecf6a732e805405cd06f3449c1b856c24db9260ba8c1e340ba.png",
+          "sha256": "3ef4e30eb576e3ecf6a732e805405cd06f3449c1b856c24db9260ba8c1e340ba"
+        },
+        "preview-oblique": {
+          "url": "/data/wall-materials/review-images/600069db1cf3f28d2edb0a339e01be246798af075c9394e3aaca1653302cf66c.png",
+          "sha256": "600069db1cf3f28d2edb0a339e01be246798af075c9394e3aaca1653302cf66c"
+        },
+        "identity": {
+          "url": "/data/wall-materials/review-images/40ce8d1d709e71c1ef095df817a192db54d4fc8f95b6c74ac54516fae7f5602a.png",
+          "sha256": "40ce8d1d709e71c1ef095df817a192db54d4fc8f95b6c74ac54516fae7f5602a"
+        }
+      }
+    },
+    {
+      "reviewerFocusedImage": null,
+      "focused": {
+        "index": 3,
+        "buildingId": "0363100012162897",
+        "identitySha256": "0a1ca23b6098e939da1d3599ca71634533773d7f33a7feaff7b772c57e54b459",
+        "normalSha256": "98b258eac2226a7e14519c5be8192b4786e911110cef4b7b8617204e72535317",
+        "bounds": {
+          "left": 552,
+          "top": 224,
+          "width": 91,
+          "height": 221
+        },
+        "visibleWallPixels": 17725,
+        "medianGameRGB": [
+          150,
+          125,
+          91
+        ],
+        "focusedFile": "003-focused-front.png",
+        "focusedSha256": "facf265fcf0d5c87bf08756b8e9e49709e0801ceb152b7b7b95f8445fd79cc0e",
+        "policy": "Identity-bound crop with original screenshot RGB, including contextual occluders within bounds; diagnostic only, not automatic acceptance",
+        "url": "/data/wall-materials/review-images/facf265fcf0d5c87bf08756b8e9e49709e0801ceb152b7b7b95f8445fd79cc0e.png"
+      },
+      "reviewHistory": [],
+      "index": 3,
+      "buildingId": "0363100012162897",
+      "observationId": "0363100012162897_e_0c4e2gf",
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "materialId": "buffbrick",
+      "verdict": "accepted-material-family",
+      "dimensions": {
+        "identity": "Magenta overlay isolates the assigned Da Costakade 182 facade in the front view; the same volume is visible from the oblique angle.",
+        "family": "Source is warm buff/ochre brick; the trial retains a muted buff/ochre family rather than changing it to red or grey.",
+        "brightness": "Trial reads somewhat duller/browner than the sunlit source photo. Scene lighting and source sun make absolute brightness uncertain; this does not overturn family acceptance.",
+        "texture": "Wall courses are subtle at this zoom and look finer than pass 1; these captures do not establish an exact physical course scale.",
+        "caps": "Top cap appears plain and untextured in both views.",
+        "limitations": "Accepts the broad wall-material family only; no full geometry or exact scale claim."
+      },
+      "evidence": {
+        "identity": {
+          "file": "003-identity.png",
+          "sha256": "0a1ca23b6098e939da1d3599ca71634533773d7f33a7feaff7b772c57e54b459"
+        },
+        "front": {
+          "file": "003-preview-front.png",
+          "sha256": "98b258eac2226a7e14519c5be8192b4786e911110cef4b7b8617204e72535317"
+        },
+        "oblique": {
+          "file": "003-preview-oblique.png",
+          "sha256": "1bd1535b20a45dcdef3223314ca3dc3449964e347140ef9b95694237c79cbcb1"
+        }
+      },
+      "address": "Da Costakade 182",
+      "crop": "/data/city-expansion/evidence/57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb.jpg",
+      "reviewer": "gpt-6-luna",
+      "run": "pass-3",
+      "reviewFile": "review-data/wall-colour/visual-loop/render-pass3-luna.json",
+      "reviewFileSha256": "a2f639f3d60ad5535218cb5dd03ba68774e3ebfdc6bb9a1bd92414d8007b3171",
+      "captureManifestSha256": "c8cabbc8176be002b392f29a636b8c7c0e26fe375aed8fff3a3493bd00378a76",
+      "bundleSha256": "d3605ad945a0b8a27606c09a2315619e93c1d573bb78ea7381c3d84664669939",
+      "panel": "/data/wall-materials/review-images/31ac3822cbd35a98d5741c2ad4a631a7a0d20ad2bd12fdbb6a8cfb6732dd85ed.png",
+      "images": {
+        "current-front": {
+          "url": "/data/wall-materials/review-images/c471046b8d05fa77829ceaef88d0649d6deed96911a7190e6b79c11c42e29fa6.png",
+          "sha256": "c471046b8d05fa77829ceaef88d0649d6deed96911a7190e6b79c11c42e29fa6"
+        },
+        "current-oblique": {
+          "url": "/data/wall-materials/review-images/3f0478091c542b26785ac42a49429d60865429fbd3b7d361a3d786de859cc15a.png",
+          "sha256": "3f0478091c542b26785ac42a49429d60865429fbd3b7d361a3d786de859cc15a"
+        },
+        "preview-front": {
+          "url": "/data/wall-materials/review-images/98b258eac2226a7e14519c5be8192b4786e911110cef4b7b8617204e72535317.png",
+          "sha256": "98b258eac2226a7e14519c5be8192b4786e911110cef4b7b8617204e72535317"
+        },
+        "preview-oblique": {
+          "url": "/data/wall-materials/review-images/1bd1535b20a45dcdef3223314ca3dc3449964e347140ef9b95694237c79cbcb1.png",
+          "sha256": "1bd1535b20a45dcdef3223314ca3dc3449964e347140ef9b95694237c79cbcb1"
+        },
+        "identity": {
+          "url": "/data/wall-materials/review-images/0a1ca23b6098e939da1d3599ca71634533773d7f33a7feaff7b772c57e54b459.png",
+          "sha256": "0a1ca23b6098e939da1d3599ca71634533773d7f33a7feaff7b772c57e54b459"
+        }
+      }
+    },
+    {
+      "reviewerFocusedImage": null,
+      "focused": {
+        "index": 4,
+        "buildingId": "0363100012165154",
+        "identitySha256": "c415789e375afacfcf3d922761626d8232137cfe9692663d44e09d387d5f1fbc",
+        "normalSha256": "580929543667660be9a90a853488a0f3cef515882fcf28d247cb651395bfb8d5",
+        "bounds": {
+          "left": 535,
+          "top": 171,
+          "width": 110,
+          "height": 274
+        },
+        "visibleWallPixels": 11766,
+        "medianGameRGB": [
+          107,
+          103,
+          97
+        ],
+        "focusedFile": "004-focused-front.png",
+        "focusedSha256": "2a1c494425bceb440f6c713011392490214a0fc48b62a834e8b8d29f8e24f61f",
+        "policy": "Identity-bound crop with original screenshot RGB, including contextual occluders within bounds; diagnostic only, not automatic acceptance",
+        "url": "/data/wall-materials/review-images/2a1c494425bceb440f6c713011392490214a0fc48b62a834e8b8d29f8e24f61f.png"
+      },
+      "reviewHistory": [],
+      "index": 4,
+      "buildingId": "0363100012165154",
+      "observationId": "0363100012165154_e_16tobqf",
+      "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "materialId": "greybrick",
+      "verdict": "accepted-material-family",
+      "dimensions": {
+        "identity": "Magenta overlay isolates Da Costakade 40 frontage; target is traceable in the front and oblique views.",
+        "family": "Source and trial both read as grey masonry/brick. The source does not distinguish substrate or finish, and this verdict does not assert either.",
+        "brightness": "Trial is mildly warmer/darker than the grey source impression; cloud/light differences and small wall area make this uncertain.",
+        "texture": "No courses are clearly resolved on this target at either view. Cannot accept or reject exact texture scale from these captures.",
+        "caps": "Visible cap is plain; no clear brick texture on the upward face.",
+        "limitations": "Accepts only the broad grey material family; exact substrate, texture scale, and full geometry are not assessed."
+      },
+      "evidence": {
+        "identity": {
+          "file": "004-identity.png",
+          "sha256": "c415789e375afacfcf3d922761626d8232137cfe9692663d44e09d387d5f1fbc"
+        },
+        "front": {
+          "file": "004-preview-front.png",
+          "sha256": "580929543667660be9a90a853488a0f3cef515882fcf28d247cb651395bfb8d5"
+        },
+        "oblique": {
+          "file": "004-preview-oblique.png",
+          "sha256": "093c0b78ff0b5a3a67860f5deb7607e60b99cf85ac065bdc3889ca1646e05be7"
+        }
+      },
+      "address": "Da Costakade 40",
+      "crop": "/data/city-expansion/evidence/049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1.jpg",
+      "reviewer": "gpt-6-luna",
+      "run": "pass-3",
+      "reviewFile": "review-data/wall-colour/visual-loop/render-pass3-luna.json",
+      "reviewFileSha256": "a2f639f3d60ad5535218cb5dd03ba68774e3ebfdc6bb9a1bd92414d8007b3171",
+      "captureManifestSha256": "c8cabbc8176be002b392f29a636b8c7c0e26fe375aed8fff3a3493bd00378a76",
+      "bundleSha256": "d3605ad945a0b8a27606c09a2315619e93c1d573bb78ea7381c3d84664669939",
+      "panel": "/data/wall-materials/review-images/096b721958e357b38171c9351ba56e02425e40bd349eb9f622601481ec2b0346.png",
+      "images": {
+        "current-front": {
+          "url": "/data/wall-materials/review-images/384729494eff5f61d7c7aaf2218ca952585e00b0f3978501098921b02d6212ee.png",
+          "sha256": "384729494eff5f61d7c7aaf2218ca952585e00b0f3978501098921b02d6212ee"
+        },
+        "current-oblique": {
+          "url": "/data/wall-materials/review-images/2dd4fde552f6ebb135efe61e9ad7948aaaf97cbc9fedde035927b4fb6f988729.png",
+          "sha256": "2dd4fde552f6ebb135efe61e9ad7948aaaf97cbc9fedde035927b4fb6f988729"
+        },
+        "preview-front": {
+          "url": "/data/wall-materials/review-images/580929543667660be9a90a853488a0f3cef515882fcf28d247cb651395bfb8d5.png",
+          "sha256": "580929543667660be9a90a853488a0f3cef515882fcf28d247cb651395bfb8d5"
+        },
+        "preview-oblique": {
+          "url": "/data/wall-materials/review-images/093c0b78ff0b5a3a67860f5deb7607e60b99cf85ac065bdc3889ca1646e05be7.png",
+          "sha256": "093c0b78ff0b5a3a67860f5deb7607e60b99cf85ac065bdc3889ca1646e05be7"
+        },
+        "identity": {
+          "url": "/data/wall-materials/review-images/c415789e375afacfcf3d922761626d8232137cfe9692663d44e09d387d5f1fbc.png",
+          "sha256": "c415789e375afacfcf3d922761626d8232137cfe9692663d44e09d387d5f1fbc"
+        }
+      }
+    },
+    {
+      "reviewerFocusedImage": null,
+      "focused": {
+        "index": 10,
+        "buildingId": "0363100012168920",
+        "identitySha256": "60c6e8f9eb2606a22cf2c2b25f89ce3295280db3a1259d5280601681b0b7378e",
+        "normalSha256": "1d3b36703767dc7b2340fac8651bdf45b956b50b9a8ac95a819455a80817e8b0",
+        "bounds": {
+          "left": 531,
+          "top": 301,
+          "width": 124,
+          "height": 141
+        },
+        "visibleWallPixels": 11081,
+        "medianGameRGB": [
+          66,
+          69,
+          73
+        ],
+        "focusedFile": "010-focused-front.png",
+        "focusedSha256": "ad2372477d2e89cd168cece118733d4b07fee6b686196e4d1f5d418603ae664a",
+        "policy": "Identity-bound crop with original screenshot RGB, including contextual occluders within bounds; diagnostic only, not automatic acceptance",
+        "url": "/data/wall-materials/review-images/ad2372477d2e89cd168cece118733d4b07fee6b686196e4d1f5d418603ae664a.png"
+      },
+      "reviewHistory": [],
+      "index": 10,
+      "buildingId": "0363100012168920",
+      "observationId": "0363100012168920_e_0bxls2d",
+      "sourceSha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
+      "materialId": "unknownneutral",
+      "verdict": "unresolved",
+      "dimensions": {
+        "identity": "Magenta overlay identifies the Elandsgracht 148 wall in both views.",
+        "family": "Source supports a smooth dark blue-grey wall, but `unknown-neutral` did not participate in the material-texture trial.",
+        "brightness": "The existing render is visible but is not a trial treatment, so it cannot validate the material palette brightness.",
+        "texture": "The source is smooth and the existing game wall remains plain; this is not evidence of trial texture behavior.",
+        "caps": "Not applicable to material-trial acceptance.",
+        "limitations": "Explicitly ineligible: unknown-neutral retains original game material. Do not count as acceptance; lettering/graphics are outside this trial."
+      },
+      "evidence": {
+        "identity": {
+          "file": "010-identity.png",
+          "sha256": "60c6e8f9eb2606a22cf2c2b25f89ce3295280db3a1259d5280601681b0b7378e"
+        },
+        "front": {
+          "file": "010-preview-front.png",
+          "sha256": "1d3b36703767dc7b2340fac8651bdf45b956b50b9a8ac95a819455a80817e8b0"
+        },
+        "oblique": {
+          "file": "010-preview-oblique.png",
+          "sha256": "c9278e50d26c96ad935da190679072278e435e2fc91bb8e6714493f2e30ce0f0"
+        }
+      },
+      "address": "Elandsgracht 148",
+      "crop": "/data/city-expansion/evidence/c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767.jpg",
+      "reviewer": "gpt-6-luna",
+      "run": "pass-3",
+      "reviewFile": "review-data/wall-colour/visual-loop/render-pass3-luna.json",
+      "reviewFileSha256": "a2f639f3d60ad5535218cb5dd03ba68774e3ebfdc6bb9a1bd92414d8007b3171",
+      "captureManifestSha256": "c8cabbc8176be002b392f29a636b8c7c0e26fe375aed8fff3a3493bd00378a76",
+      "bundleSha256": "d3605ad945a0b8a27606c09a2315619e93c1d573bb78ea7381c3d84664669939",
+      "panel": "/data/wall-materials/review-images/4493aae090c86a94c2d4b8169c58f3b46ccbbba80ab72271d1b7cca9080f534e.png",
+      "images": {
+        "current-front": {
+          "url": "/data/wall-materials/review-images/6a5443bb1a4cc087051d393727c82a87a81e1d685d9963dba24aaf4baba6d43b.png",
+          "sha256": "6a5443bb1a4cc087051d393727c82a87a81e1d685d9963dba24aaf4baba6d43b"
+        },
+        "current-oblique": {
+          "url": "/data/wall-materials/review-images/9dc6336037c56075e45fdac2e34d755503642031c88a34c05438e9e0e5829eb4.png",
+          "sha256": "9dc6336037c56075e45fdac2e34d755503642031c88a34c05438e9e0e5829eb4"
+        },
+        "preview-front": {
+          "url": "/data/wall-materials/review-images/1d3b36703767dc7b2340fac8651bdf45b956b50b9a8ac95a819455a80817e8b0.png",
+          "sha256": "1d3b36703767dc7b2340fac8651bdf45b956b50b9a8ac95a819455a80817e8b0"
+        },
+        "preview-oblique": {
+          "url": "/data/wall-materials/review-images/c9278e50d26c96ad935da190679072278e435e2fc91bb8e6714493f2e30ce0f0.png",
+          "sha256": "c9278e50d26c96ad935da190679072278e435e2fc91bb8e6714493f2e30ce0f0"
+        },
+        "identity": {
+          "url": "/data/wall-materials/review-images/60c6e8f9eb2606a22cf2c2b25f89ce3295280db3a1259d5280601681b0b7378e.png",
+          "sha256": "60c6e8f9eb2606a22cf2c2b25f89ce3295280db3a1259d5280601681b0b7378e"
+        }
+      }
+    },
+    {
+      "reviewerFocusedImage": {
+        "url": "/data/wall-materials/review-images/add43c45034600914f38501ce3c67cc3f5c82a504255292491097014c6d17305.png",
+        "sha256": "add43c45034600914f38501ce3c67cc3f5c82a504255292491097014c6d17305",
+        "transform": "identity-bound crop resized to 600px high, without colour adjustment"
+      },
+      "focused": {
+        "index": 11,
+        "buildingId": "0363100012127485",
+        "identitySha256": "68cc00a96cc99a87a6542b0c80a9737512a0db4209df6ae55ab86a9f17c0103a",
+        "normalSha256": "e7ff1fcb772a92db623598d898cd2bcb676fc05ff8bb2602c8a8474d45b17e72",
+        "bounds": {
+          "left": 425,
+          "top": 216,
+          "width": 280,
+          "height": 229
+        },
+        "visibleWallPixels": 40745,
+        "medianGameRGB": [
+          183,
+          172,
+          149
+        ],
+        "focusedFile": "011-focused-front.png",
+        "focusedSha256": "92a55a599e3160ce6359a05eb230173346c126523f5510b60b5e44770857e188",
+        "policy": "Identity-bound crop with original screenshot RGB, including contextual occluders within bounds; diagnostic only, not automatic acceptance",
+        "url": "/data/wall-materials/review-images/92a55a599e3160ce6359a05eb230173346c126523f5510b60b5e44770857e188.png"
+      },
+      "reviewHistory": [
+        {
+          "reviewer": "gpt-5.6-terra",
+          "run": "pass-3",
+          "verdict": "revise",
+          "reason": "Magenta confirms the narrow left-hand facade is the owner. Its trial material reads a muted dark grey-olive/brown at both angles, while the source facade is a pale cream-ochre render. This is a broad family and brightness mismatch, independent of texture detail.",
+          "reviewFile": "review-data/wall-colour/visual-loop/render-pass3-terra.json"
+        },
+        {
+          "reviewer": "gpt-5.6-terra",
+          "run": "pass-4",
+          "verdict": "revise",
+          "reason": "Magenta again verifies the narrow owner. The pass-4 cream correction moves it lighter, but its exposed normal-view facade still reads a muted dark grey-beige against the source’s clearly pale cream-ochre wall. Broad material family/brightness remains insufficiently close; this is not an owner-specific colour request.",
+          "reviewFile": "review-data/wall-colour/visual-loop/render-pass4-terra.json"
+        }
+      ],
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "materialId": "creamrender",
+      "verdict": "accepted-material-family",
+      "reason": "The magenta target mask identifies the narrow facade left of the larger ochre neighbour. The native source crop shows a continuous warm cream-ochre wall without resolvable masonry joints; the focused target and both game views show a smooth pale cream wall on that same owner. Broad smooth render/cream family is supported. The game wall is paler and less ochre than the photograph, and the simplified windows, roof and ground-floor shapes are not accepted by this review.",
+      "imageSha256": {
+        "current-front": "edece8a7be034f1c00cdc02ac31e920f1aadc42d07925b40df294d71628a8cd1",
+        "current-oblique": "e1607800987c433efbd9ab66c3d758fc4ce85cedd6a55497728443e1d9f559bc",
+        "preview-front": "e7ff1fcb772a92db623598d898cd2bcb676fc05ff8bb2602c8a8474d45b17e72",
+        "preview-oblique": "dee862f929133e814c630c42083a7bbb1a614ce9a35af3a4afcebbc0a59d5c61",
+        "identity": "68cc00a96cc99a87a6542b0c80a9737512a0db4209df6ae55ab86a9f17c0103a",
+        "panel": "b22c6b2fd046e8d5920f1a8db62c0b931a147e7dc253952728896058c8c5a696",
+        "focused-target": "add43c45034600914f38501ce3c67cc3f5c82a504255292491097014c6d17305"
+      },
+      "dimensions": {
+        "identity": "magenta mask confirms the narrow curved-front owner immediately left of the larger ochre building",
+        "materialFamily": "smooth cream/ochre render supported in source and game",
+        "colour": "broad warm cream family only; game appears paler and less ochre, exact colour not accepted",
+        "texture": "no visible brick courses in source; smooth visual class only, no measured texture",
+        "front": "target facade exposed; focused crop excludes much of the distracting neighbour",
+        "oblique": "same target remains visible and smooth; not a geometry acceptance"
+      },
+      "address": "Frederik Hendrikstraat 202 / Frederik Hendrikstraat 204 / Frederik Hendrikstraat 206 / Frederik Hendrikstraat 208 / Frederik Hendrikstraat 210 / Frederik Hendrikstraat 216 / Frederik Hendrikstraat 212 / Frederik Hendrikstraat 200 / Frederik Hendrikstraat 214 / Frederik Hendrikstraat 218 / Frederik Hendrikstraat 220",
+      "crop": "/data/city-expansion/evidence/9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30.jpg",
+      "reviewer": "gpt-6-sol",
+      "run": "pass-4",
+      "reviewFile": "review-data/wall-colour/visual-loop/render-pass4-sol.json",
+      "reviewFileSha256": "8abbe02b081eff8ee516afc8264aab26eaa0038f3f640e26cd24804aa017afa6",
+      "captureManifestSha256": "2982800a212b60dee538f0d5ca6c20818f7fee7eb2c40c0e505e8861b29eadfb",
+      "bundleSha256": "736f334b8bf8c52369c721eba00f252547c3ad8d42c149660051832a62f78382",
+      "panel": "/data/wall-materials/review-images/b22c6b2fd046e8d5920f1a8db62c0b931a147e7dc253952728896058c8c5a696.png",
+      "images": {
+        "current-front": {
+          "url": "/data/wall-materials/review-images/edece8a7be034f1c00cdc02ac31e920f1aadc42d07925b40df294d71628a8cd1.png",
+          "sha256": "edece8a7be034f1c00cdc02ac31e920f1aadc42d07925b40df294d71628a8cd1"
+        },
+        "current-oblique": {
+          "url": "/data/wall-materials/review-images/e1607800987c433efbd9ab66c3d758fc4ce85cedd6a55497728443e1d9f559bc.png",
+          "sha256": "e1607800987c433efbd9ab66c3d758fc4ce85cedd6a55497728443e1d9f559bc"
+        },
+        "preview-front": {
+          "url": "/data/wall-materials/review-images/e7ff1fcb772a92db623598d898cd2bcb676fc05ff8bb2602c8a8474d45b17e72.png",
+          "sha256": "e7ff1fcb772a92db623598d898cd2bcb676fc05ff8bb2602c8a8474d45b17e72"
+        },
+        "preview-oblique": {
+          "url": "/data/wall-materials/review-images/dee862f929133e814c630c42083a7bbb1a614ce9a35af3a4afcebbc0a59d5c61.png",
+          "sha256": "dee862f929133e814c630c42083a7bbb1a614ce9a35af3a4afcebbc0a59d5c61"
+        },
+        "identity": {
+          "url": "/data/wall-materials/review-images/68cc00a96cc99a87a6542b0c80a9737512a0db4209df6ae55ab86a9f17c0103a.png",
+          "sha256": "68cc00a96cc99a87a6542b0c80a9737512a0db4209df6ae55ab86a9f17c0103a"
+        }
+      }
+    },
+    {
+      "reviewerFocusedImage": null,
+      "focused": {
+        "index": 15,
+        "buildingId": "0363100012174169",
+        "identitySha256": "fdb8827baccd37b2cf075d6147d60cae8b79bbce1385dff982d6efbe92f3057c",
+        "normalSha256": "6984142b359b755879c43b553aa723142aa1776dad3d84c273b17beff9c726dd",
+        "bounds": {
+          "left": 560,
+          "top": 127,
+          "width": 78,
+          "height": 316
+        },
+        "visibleWallPixels": 15492,
+        "medianGameRGB": [
+          126,
+          89,
+          75
+        ],
+        "focusedFile": "015-focused-front.png",
+        "focusedSha256": "810c3f11f4e81592e2f9199ec75a75da9d69462f518ce96d6bacb9b622d9fd53",
+        "policy": "Identity-bound crop with original screenshot RGB, including contextual occluders within bounds; diagnostic only, not automatic acceptance",
+        "url": "/data/wall-materials/review-images/810c3f11f4e81592e2f9199ec75a75da9d69462f518ce96d6bacb9b622d9fd53.png"
+      },
+      "reviewHistory": [],
+      "index": 15,
+      "buildingId": "0363100012174169",
+      "observationId": "0363100012174169_e_1w30ns5",
+      "sourceSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
+      "materialId": "redbrick",
+      "verdict": "unresolved",
+      "reason": "Magenta identifies a very narrow owner behind a tall dark foreground mass. The normal trial views do not expose enough of its wall to evaluate broad material family after the pass-2 changes.",
+      "imageSha256": {
+        "current-front": "f4d5bba3ee16186933b1c5efb8c7776fd43e52d88b6d4333631bd488096487a1",
+        "current-oblique": "301ddd17479bca8ffc7e4bfe2b702733b029e803b8cd1e43736ec3374845398e",
+        "preview-front": "6984142b359b755879c43b553aa723142aa1776dad3d84c273b17beff9c726dd",
+        "preview-oblique": "1ed4af34c1179734cb035698a289d7edb4e0a62fef2f78078097483a41e534f3",
+        "identity": "fdb8827baccd37b2cf075d6147d60cae8b79bbce1385dff982d6efbe92f3057c",
+        "panel": "d56a895fa5c7bd9b8d940443362daaee3f5e5ce4278f86ccc2c4a32559412dd0"
+      },
+      "dimensions": {
+        "identity": "verified by the magenta strip, but the selected extrusion is mostly occluded in normal views.",
+        "colourFamily": "not assessable: normal material surface is not sufficiently exposed.",
+        "brightness": "not assessable.",
+        "texture": "not assessable; the refined course ratio is below usable visibility here.",
+        "front": "foreground dark mass leaves only a sliver of the owner.",
+        "oblique": "oblique camera still does not reveal a source-comparable wall area.",
+        "occlusion": "high: foreground LoD1 mass hides most of the marked owner."
+      },
+      "address": "Rozengracht 142",
+      "crop": "/data/city-expansion/evidence/7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d.jpg",
+      "reviewer": "gpt-5.6-terra",
+      "run": "pass-3",
+      "reviewFile": "review-data/wall-colour/visual-loop/render-pass3-terra.json",
+      "reviewFileSha256": "2c008c771b14da8a23846f1daae66aed46483cf28bf18eb631a742efc0520018",
+      "captureManifestSha256": "c8cabbc8176be002b392f29a636b8c7c0e26fe375aed8fff3a3493bd00378a76",
+      "bundleSha256": "d3605ad945a0b8a27606c09a2315619e93c1d573bb78ea7381c3d84664669939",
+      "panel": "/data/wall-materials/review-images/d56a895fa5c7bd9b8d940443362daaee3f5e5ce4278f86ccc2c4a32559412dd0.png",
+      "images": {
+        "current-front": {
+          "url": "/data/wall-materials/review-images/f4d5bba3ee16186933b1c5efb8c7776fd43e52d88b6d4333631bd488096487a1.png",
+          "sha256": "f4d5bba3ee16186933b1c5efb8c7776fd43e52d88b6d4333631bd488096487a1"
+        },
+        "current-oblique": {
+          "url": "/data/wall-materials/review-images/301ddd17479bca8ffc7e4bfe2b702733b029e803b8cd1e43736ec3374845398e.png",
+          "sha256": "301ddd17479bca8ffc7e4bfe2b702733b029e803b8cd1e43736ec3374845398e"
+        },
+        "preview-front": {
+          "url": "/data/wall-materials/review-images/6984142b359b755879c43b553aa723142aa1776dad3d84c273b17beff9c726dd.png",
+          "sha256": "6984142b359b755879c43b553aa723142aa1776dad3d84c273b17beff9c726dd"
+        },
+        "preview-oblique": {
+          "url": "/data/wall-materials/review-images/1ed4af34c1179734cb035698a289d7edb4e0a62fef2f78078097483a41e534f3.png",
+          "sha256": "1ed4af34c1179734cb035698a289d7edb4e0a62fef2f78078097483a41e534f3"
+        },
+        "identity": {
+          "url": "/data/wall-materials/review-images/fdb8827baccd37b2cf075d6147d60cae8b79bbce1385dff982d6efbe92f3057c.png",
+          "sha256": "fdb8827baccd37b2cf075d6147d60cae8b79bbce1385dff982d6efbe92f3057c"
+        }
+      }
+    },
+    {
+      "reviewerFocusedImage": null,
+      "focused": {
+        "index": 17,
+        "buildingId": "0363100012094649",
+        "identitySha256": "b412fda0063f02295ecc2cd3755bbd83b7dce2a907caa4e154728a771e48edbf",
+        "normalSha256": "18848923c9091104e99462f1bde196c539f0bde00423db02a79edf7812e819ca",
+        "bounds": {
+          "left": 480,
+          "top": 268,
+          "width": 218,
+          "height": 99
+        },
+        "visibleWallPixels": 7809,
+        "medianGameRGB": [
+          187,
+          176,
+          152
+        ],
+        "focusedFile": "017-focused-front.png",
+        "focusedSha256": "4bb56de05b7c9bcbbf26fd2af9176f99a1c786cdd1cea77615b60db366c49d8e",
+        "policy": "Identity-bound crop with original screenshot RGB, including contextual occluders within bounds; diagnostic only, not automatic acceptance",
+        "url": "/data/wall-materials/review-images/4bb56de05b7c9bcbbf26fd2af9176f99a1c786cdd1cea77615b60db366c49d8e.png"
+      },
+      "reviewHistory": [
+        {
+          "reviewer": "gpt-5.6-terra",
+          "run": "pass-3",
+          "verdict": "unresolved",
+          "reason": "Magenta confirms the owner, but it sits behind tree crowns and intervening roofs. Neither normal view supplies an exposed wall patch for a broad cream-render judgment.",
+          "reviewFile": "review-data/wall-colour/visual-loop/render-pass3-terra.json"
+        }
+      ],
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "observationId": "0363100012094649_e_16jqzp7",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "materialId": "creamrender",
+      "verdict": "unresolved",
+      "reason": "The shared preset changed, but the magenta-verified owner is still hidden behind trees and intervening roof/mass geometry in both normal views. No exposed target wall supports material acceptance or revision.",
+      "imageSha256": {
+        "current-front": "b9e150f64811a5d38777e550b640e038260fcc73f3ed3c7f8b7269eba2f91d9e",
+        "current-oblique": "c6ddc2234abb46b10e7dbe2e29f61dbcee3f1538cf01348354369bdfb017f73c",
+        "preview-front": "18848923c9091104e99462f1bde196c539f0bde00423db02a79edf7812e819ca",
+        "preview-oblique": "e33e701e503dec345de2ab05cfbaaae11eafa7af824fa5cb8522c9175777eba8",
+        "identity": "b412fda0063f02295ecc2cd3755bbd83b7dce2a907caa4e154728a771e48edbf",
+        "panel": "8fe5bef712aac3a13745d6b14502959ff551fd2da755307d8eaecd0aea695cfe"
+      },
+      "dimensions": {
+        "identity": "verified by magenta overlay beneath/behind the foreground trees.",
+        "colourFamily": "not assessable from an exposed owner surface.",
+        "brightness": "not assessable.",
+        "front": "tree crowns and intervening mass conceal the target wall.",
+        "oblique": "oblique view remains roof-dominant and does not expose the owner facade.",
+        "occlusion": "high."
+      },
+      "address": "Van Houweningenstraat 197 / Van Houweningenstraat 199 / Van Houweningenstraat 201 / Van Houweningenstraat 203 / Van Houweningenstraat 205 / Van Houweningenstraat 207 / Van Houweningenstraat 209 / Van Houweningenstraat 211 / Van Houweningenstraat 213",
+      "crop": "/data/city-expansion/evidence/a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee.jpg",
+      "reviewer": "gpt-5.6-terra",
+      "run": "pass-4",
+      "reviewFile": "review-data/wall-colour/visual-loop/render-pass4-terra.json",
+      "reviewFileSha256": "c403b6018af6dd03965d9bbc6655211c0c6cfa73ac857ff00ec7ae8713e6a955",
+      "captureManifestSha256": "2982800a212b60dee538f0d5ca6c20818f7fee7eb2c40c0e505e8861b29eadfb",
+      "bundleSha256": "736f334b8bf8c52369c721eba00f252547c3ad8d42c149660051832a62f78382",
+      "panel": "/data/wall-materials/review-images/8fe5bef712aac3a13745d6b14502959ff551fd2da755307d8eaecd0aea695cfe.png",
+      "images": {
+        "current-front": {
+          "url": "/data/wall-materials/review-images/b9e150f64811a5d38777e550b640e038260fcc73f3ed3c7f8b7269eba2f91d9e.png",
+          "sha256": "b9e150f64811a5d38777e550b640e038260fcc73f3ed3c7f8b7269eba2f91d9e"
+        },
+        "current-oblique": {
+          "url": "/data/wall-materials/review-images/c6ddc2234abb46b10e7dbe2e29f61dbcee3f1538cf01348354369bdfb017f73c.png",
+          "sha256": "c6ddc2234abb46b10e7dbe2e29f61dbcee3f1538cf01348354369bdfb017f73c"
+        },
+        "preview-front": {
+          "url": "/data/wall-materials/review-images/18848923c9091104e99462f1bde196c539f0bde00423db02a79edf7812e819ca.png",
+          "sha256": "18848923c9091104e99462f1bde196c539f0bde00423db02a79edf7812e819ca"
+        },
+        "preview-oblique": {
+          "url": "/data/wall-materials/review-images/e33e701e503dec345de2ab05cfbaaae11eafa7af824fa5cb8522c9175777eba8.png",
+          "sha256": "e33e701e503dec345de2ab05cfbaaae11eafa7af824fa5cb8522c9175777eba8"
+        },
+        "identity": {
+          "url": "/data/wall-materials/review-images/b412fda0063f02295ecc2cd3755bbd83b7dce2a907caa4e154728a771e48edbf.png",
+          "sha256": "b412fda0063f02295ecc2cd3755bbd83b7dce2a907caa4e154728a771e48edbf"
+        }
+      }
+    },
+    {
+      "reviewerFocusedImage": null,
+      "focused": {
+        "index": 30,
+        "buildingId": "0363100012236796",
+        "identitySha256": "1e5e53ab59b268495182783dd0f02671b9b601c0836102e66750f799b4659e29",
+        "normalSha256": "79820f7111bf95fd0dc756277b468f8625dc356c96bf54bc21387cc3a1e235cf",
+        "bounds": {
+          "left": 373,
+          "top": 114,
+          "width": 294,
+          "height": 332
+        },
+        "visibleWallPixels": 33147,
+        "medianGameRGB": [
+          180,
+          178,
+          169
+        ],
+        "focusedFile": "030-focused-front.png",
+        "focusedSha256": "be771a3fa9efb3f98bbdd2c9a55deea7422179c2a897670b14602f79979a8464",
+        "policy": "Identity-bound crop with original screenshot RGB, including contextual occluders within bounds; diagnostic only, not automatic acceptance",
+        "url": "/data/wall-materials/review-images/be771a3fa9efb3f98bbdd2c9a55deea7422179c2a897670b14602f79979a8464.png"
+      },
+      "reviewHistory": [],
+      "index": 30,
+      "buildingId": "0363100012236796",
+      "observationId": "0363100012236796_e_1wk1kml",
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "materialId": "whiterender",
+      "verdict": "accepted-material-family",
+      "reason": "Magenta confirms the central owner. In both normal views it renders as a clean near-white smooth facade, consistent with the source building’s broad white-render family. This accepts only broad material quality, not detailed facade or geometry equivalence.",
+      "imageSha256": {
+        "current-front": "7f88dd933294ddc3389d662d398f0fc675c270c1004c95624dcd065362d1beec",
+        "current-oblique": "6085996b19005ba5f499feab5b0a42e54e6f9496d43e6989c5eb485983b5bde9",
+        "preview-front": "79820f7111bf95fd0dc756277b468f8625dc356c96bf54bc21387cc3a1e235cf",
+        "preview-oblique": "c62539ca4404b456ed3d8b749306b34339b91cf30e6c3ce442f605555d10618d",
+        "identity": "1e5e53ab59b268495182783dd0f02671b9b601c0836102e66750f799b4659e29",
+        "panel": "4a7111943ee03be09fd5653ea840f423f410bde8b6d1f1a19d63c0b452dbe7e6"
+      },
+      "dimensions": {
+        "identity": "verified by magenta overlay on the central canal-side facade.",
+        "colourFamily": "near-white neutral, consistent with source.",
+        "brightness": "bright but retains separation from the pale ground and sky/water context.",
+        "texture": "smooth render has no fabricated brick-course pattern.",
+        "front": "distinct white facade is legible between darker neighbours.",
+        "oblique": "near-white smooth reading remains stable from oblique view.",
+        "occlusion": "low; street-edge trees cover only small portions."
+      },
+      "address": "Da Costakade 102",
+      "crop": "/data/city-expansion/evidence/fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91.jpg",
+      "reviewer": "gpt-5.6-terra",
+      "run": "pass-3",
+      "reviewFile": "review-data/wall-colour/visual-loop/render-pass3-terra.json",
+      "reviewFileSha256": "2c008c771b14da8a23846f1daae66aed46483cf28bf18eb631a742efc0520018",
+      "captureManifestSha256": "c8cabbc8176be002b392f29a636b8c7c0e26fe375aed8fff3a3493bd00378a76",
+      "bundleSha256": "d3605ad945a0b8a27606c09a2315619e93c1d573bb78ea7381c3d84664669939",
+      "panel": "/data/wall-materials/review-images/4a7111943ee03be09fd5653ea840f423f410bde8b6d1f1a19d63c0b452dbe7e6.png",
+      "images": {
+        "current-front": {
+          "url": "/data/wall-materials/review-images/7f88dd933294ddc3389d662d398f0fc675c270c1004c95624dcd065362d1beec.png",
+          "sha256": "7f88dd933294ddc3389d662d398f0fc675c270c1004c95624dcd065362d1beec"
+        },
+        "current-oblique": {
+          "url": "/data/wall-materials/review-images/6085996b19005ba5f499feab5b0a42e54e6f9496d43e6989c5eb485983b5bde9.png",
+          "sha256": "6085996b19005ba5f499feab5b0a42e54e6f9496d43e6989c5eb485983b5bde9"
+        },
+        "preview-front": {
+          "url": "/data/wall-materials/review-images/79820f7111bf95fd0dc756277b468f8625dc356c96bf54bc21387cc3a1e235cf.png",
+          "sha256": "79820f7111bf95fd0dc756277b468f8625dc356c96bf54bc21387cc3a1e235cf"
+        },
+        "preview-oblique": {
+          "url": "/data/wall-materials/review-images/c62539ca4404b456ed3d8b749306b34339b91cf30e6c3ce442f605555d10618d.png",
+          "sha256": "c62539ca4404b456ed3d8b749306b34339b91cf30e6c3ce442f605555d10618d"
+        },
+        "identity": {
+          "url": "/data/wall-materials/review-images/1e5e53ab59b268495182783dd0f02671b9b601c0836102e66750f799b4659e29.png",
+          "sha256": "1e5e53ab59b268495182783dd0f02671b9b601c0836102e66750f799b4659e29"
+        }
+      }
+    },
+    {
+      "reviewerFocusedImage": null,
+      "focused": {
+        "index": 64,
+        "buildingId": "0363100012157926",
+        "identitySha256": "172b1483014680a27e25e6c870ab416a682b6950a2e672ed22c83ae6e65211d3",
+        "normalSha256": "04c80b6ac43a9059210718e4f8c38eb382e0f4313c21417b4f76722db42e916d",
+        "bounds": {
+          "left": 467,
+          "top": 235,
+          "width": 184,
+          "height": 208
+        },
+        "visibleWallPixels": 24097,
+        "medianGameRGB": [
+          100,
+          80,
+          70
+        ],
+        "focusedFile": "064-focused-front.png",
+        "focusedSha256": "8ca2a9ba8b258afae8b2a17e35ad1755460e5b312dba8bfce5b1ecd0027d7547",
+        "policy": "Identity-bound crop with original screenshot RGB, including contextual occluders within bounds; diagnostic only, not automatic acceptance",
+        "url": "/data/wall-materials/review-images/8ca2a9ba8b258afae8b2a17e35ad1755460e5b312dba8bfce5b1ecd0027d7547.png"
+      },
+      "reviewHistory": [],
+      "index": 64,
+      "buildingId": "0363100012157926",
+      "observationId": "0363100012157926_e_012eimg",
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "materialId": "brownbrick",
+      "verdict": "accepted-material-family",
+      "reason": "Magenta verifies the centrally visible owner. The pass-3 trial reads as a restrained warm brown facade in both normal views, which is consistent with the source’s broad brown-brick family. The distance cannot validate individual course fidelity, so acceptance is limited to family, not measured texture.",
+      "imageSha256": {
+        "current-front": "d42e7650c5701144977b41139b96185fe114e3071192faaf385cafb3382fc74e",
+        "current-oblique": "a14883ece485d4ef377c1af9aef417411bdd8c11235aa48e3eeeb1bceb787103",
+        "preview-front": "04c80b6ac43a9059210718e4f8c38eb382e0f4313c21417b4f76722db42e916d",
+        "preview-oblique": "6e2f8f6a8a729f6b87082ce530c05cde389746c904595739be1eeae212f43d97",
+        "identity": "172b1483014680a27e25e6c870ab416a682b6950a2e672ed22c83ae6e65211d3",
+        "panel": "d47d6f19a51925745d81a1df5d40e2c540789767a252e739f3d3599041d93ec2"
+      },
+      "dimensions": {
+        "identity": "verified by magenta overlay on the central mid-height facade.",
+        "colourFamily": "restrained warm brown, consistent with source broad family.",
+        "brightness": "trial is close to the source’s mid-dark brown reading at district scale.",
+        "texture": "no oversized course artifact is legible at this camera distance after the pass-2 scale change; no measured texture claim is made.",
+        "front": "marked owner has a readable brown material against grey and cream neighbours.",
+        "oblique": "brown family remains stable in the oblique district view.",
+        "occlusion": "moderate; tree/adjacent masses limit detail but not broad colour-family reading."
+      },
+      "address": "Da Costakade 167 / Kinkerstraat 49",
+      "crop": "/data/city-expansion/evidence/c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e.jpg",
+      "reviewer": "gpt-5.6-terra",
+      "run": "pass-3",
+      "reviewFile": "review-data/wall-colour/visual-loop/render-pass3-terra.json",
+      "reviewFileSha256": "2c008c771b14da8a23846f1daae66aed46483cf28bf18eb631a742efc0520018",
+      "captureManifestSha256": "c8cabbc8176be002b392f29a636b8c7c0e26fe375aed8fff3a3493bd00378a76",
+      "bundleSha256": "d3605ad945a0b8a27606c09a2315619e93c1d573bb78ea7381c3d84664669939",
+      "panel": "/data/wall-materials/review-images/d47d6f19a51925745d81a1df5d40e2c540789767a252e739f3d3599041d93ec2.png",
+      "images": {
+        "current-front": {
+          "url": "/data/wall-materials/review-images/d42e7650c5701144977b41139b96185fe114e3071192faaf385cafb3382fc74e.png",
+          "sha256": "d42e7650c5701144977b41139b96185fe114e3071192faaf385cafb3382fc74e"
+        },
+        "current-oblique": {
+          "url": "/data/wall-materials/review-images/a14883ece485d4ef377c1af9aef417411bdd8c11235aa48e3eeeb1bceb787103.png",
+          "sha256": "a14883ece485d4ef377c1af9aef417411bdd8c11235aa48e3eeeb1bceb787103"
+        },
+        "preview-front": {
+          "url": "/data/wall-materials/review-images/04c80b6ac43a9059210718e4f8c38eb382e0f4313c21417b4f76722db42e916d.png",
+          "sha256": "04c80b6ac43a9059210718e4f8c38eb382e0f4313c21417b4f76722db42e916d"
+        },
+        "preview-oblique": {
+          "url": "/data/wall-materials/review-images/6e2f8f6a8a729f6b87082ce530c05cde389746c904595739be1eeae212f43d97.png",
+          "sha256": "6e2f8f6a8a729f6b87082ce530c05cde389746c904595739be1eeae212f43d97"
+        },
+        "identity": {
+          "url": "/data/wall-materials/review-images/172b1483014680a27e25e6c870ab416a682b6950a2e672ed22c83ae6e65211d3.png",
+          "sha256": "172b1483014680a27e25e6c870ab416a682b6950a2e672ed22c83ae6e65211d3"
+        }
+      }
+    }
+  ]
+}

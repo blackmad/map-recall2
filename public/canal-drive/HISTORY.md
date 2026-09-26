@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+
+## 2026-09-26 — materials-first wall demo and identity-bound visual review
+
+The photo-colour promotion was not adequate visual validation: Da Costakade 13
+still read as charcoal after its sampled colour loaded correctly. The new opt-in
+`material-demo.html` compares source photographs with the real game, a shared
+12-material library, neutral diffuse lighting and a fixed material-block gallery.
+It preserves current-game mode and never changes default game appearance.
+
+The fixed 100-owner cohort spans 12 streets. Source assessments include material,
+colour family, visible texture, uncertainty and crop hashes; eleven assignments
+remain unknown. The ten-case rendering gate substitutes nine supported materials
+and withholds its unknown case. Independent reviewers accepted six broad material
+families and left four cases unresolved. Exact colour, metric texture scale,
+ground floors and building geometry are not accepted by that result.
+
+The loop rejected and corrected oversized brick courses, overly orange shared
+brick, texture-wrapped caps and a dark shared cream preset. Magenta owner identity
+renders and exact target crops prevented neighbouring buildings from being judged
+as the target. A cream-facade disagreement required an independent focused-image
+review; the earlier verdicts remain visible in the audit trail. The checked report
+at `material-report.html` verifies source and capture hashes and exposes native
+reference/current/trial/identity evidence. Generated imagery stays local.
+
+A ten-image cheap-vision pilot is recorded with observed timing/tokens/reported
+cost. It made a target-identity error and remains triage, not a trained or validated
+citywide classifier. The next work and reproduction commands are in
+`docs/plans/wall-material-demo.md`. The full `check:canal` gate, library checks, TypeScript lint and four isolated
+port desktop/phone demo/report checks pass.
+
 ## 2026-09-26 — stable camera detail and reviewed colour expansion
 
 Autonomous visual review now covers all 598 existing observations (501 buildings).

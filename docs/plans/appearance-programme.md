@@ -9,7 +9,18 @@ cited path. Written 2026-09-26 against `feat/amsterdam-facade-rebuild` @ `406130
 
 The owner explicitly requests **no human-in-the-loop** (2026-09-26). Agents must inspect imagery and answer review questions themselves, retaining `model-visual-review` provenance, crop hashes, uncertainty, and abstentions. Model judgements are authorized review evidence, never relabelled as human ground truth. This supersedes owner-review gates below for visual judgement. External licensing/storage constraints remain distinct.
 
-## Current execution status — 2026-09-26 (supersedes the earlier batch below)
+## Current priority — material and colour validation, 2026-09-26
+
+The owner has narrowed this phase to accurate colour/material matching, ahead of
+roof/gable work. The execution plan and honest results are in
+[wall-material-demo.md](wall-material-demo.md). A working opt-in game demo and
+hashed visual report cover a ten-case gate drawn from 100 source assessments.
+Six broad material families are accepted; four cases remain unresolved. None of
+this establishes 100 exact colour/texture matches. Default game appearance is
+unchanged. Do not resume gable work or expand texture assignment until the
+material gate and its explicit outstanding work are addressed.
+
+## Earlier source-colour execution status — 2026-09-26
 
 - Autonomous visual review covers all 598 available observations across 501 buildings.
   The Sol, Terra, Luna and primary-agent reviews promote 372 building wall colours,
