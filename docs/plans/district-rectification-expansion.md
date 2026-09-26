@@ -160,3 +160,12 @@ measured brick size, bond pattern, or exact facade detail from each photograph.
 The 683 owners without eligible sources remain a separate recovery queue; 26 of
 the address-only exclusions gained candidates in an isolated diagnostic, not in
 production coverage.
+
+
+The first batch's 79 colour review flags break down into 76 dark clusters and
+three insufficient/ambiguous clusters. This is the immediate colour-estimation
+priority: distinguish exposed masonry from glass/shadow within the building mask,
+then evaluate lighting correction against independently inspected wall patches.
+Do not simply brighten every measured colour or promote the cluster as albedo;
+that would repeat the grey/dark-wall failure. The existing shared-material demo
+remains the rendering comparison while those measurements are assessed.
