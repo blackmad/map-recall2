@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## 2026-09-26 — stable camera detail and reviewed colour expansion
+
+Autonomous visual review now covers all 598 existing observations (501 buildings).
+372 building colours are promoted, up from 16. Six conflicting observation groups
+were resolved by model re-review; four remain withheld. Source hashes, reviewer
+identity, abstentions and the reference-bound correction are retained in committed
+review records. `npm run promote:wall-colours:model` reproduces the selection using
+local evidence. Local release
+`3d4551a8716c6b60dc59ba0d5de9b851628e62f4ae3eef2c6be7a5bd4ab7c9da`
+contains these colours; 7,023 other district buildings still use contextual defaults.
+
+The owner's panning screenshots exposed a live-loop regression that frozen route
+checkpoints missed. Every camera `jumpTo` could emit `moveend`, and shared residency
+then disabled every active detail layer, disposed its meshes and fetched it again.
+Visible roof/facade/tree/public-realm tiles now retain their geometry; only tiles
+outside the viewport are evicted. The new 90-frame small-pan/stationary regression
+failed with 360 lost layer frames before the fix and passes on desktop and iPhone.
+
+The grey roof shards were measured facets intersecting uncut LoD1 tops. v4 admission
+now withholds the entire roof if any component cuts through that top, rejecting
+malformed geometry first. The current district has only one safely admitted small
+roof, with 6,661 slanted buildings withheld. This is a clean fallback stopgap, not
+completed gable reconstruction; a proper replacement needs closed upper walls and
+an atomic handoff from the fallback mass. Named datum/eave regression facts remain.
+
+Da Costakade 13 (Pand `0363100012166570`) had three photo observations but no accepted
+wall colour: the sand facade and grey base were generated from its ID. Model review
+now binds its correction to the clearer crop and the owner's supplied reference
+photograph, sampling exposed warm brick as `#6d5e55`. No invented contrasting base
+is rendered: unreviewed bases inherit the wall, and use one uninterrupted extrusion
+to avoid a false lighting seam between two otherwise identically coloured layers.
+
 ## 2026-09-26 — model-reviewed local demo
 
 All 72 unique signage frontages (76 sample entries) have model visual reviews:

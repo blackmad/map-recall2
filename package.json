@@ -335,7 +335,9 @@
     "test:wall-colour-publication": "tsx src/canalRecall/facade/wallColourPublication.test.ts",
     "test:lod1-semantic-tags": "tsx scripts/check-lod1-semantic-tags.ts",
     "profile:driving-appearance": "node scripts/review/profile-driving-appearance.mjs",
-    "publish:signage-model-review": "node scripts/review/publish-signage-model-review.mjs review-data/signage-model-review/part-root.json review-data/signage-model-review/part-sol.json"
+    "publish:signage-model-review": "node scripts/review/publish-signage-model-review.mjs review-data/signage-model-review/part-root.json review-data/signage-model-review/part-sol.json",
+    "review:wall-colours:combine": "tsx scripts/review/combine-wall-colour-reviews.ts review-data/wall-colour/model-demo-grades.json review-data/wall-colour/part-root-da-costakade-13.json review-data/wall-colour/part-sol-expanded.json review-data/wall-colour/part-luna-expanded.json review-data/wall-colour/part-terra-expanded.json",
+    "promote:wall-colours:model": "npm run review:wall-colours:combine && tsx scripts/city-appearance/promote-wall-colour.ts --grades=review-data/wall-colour/combined-model-grades.json"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

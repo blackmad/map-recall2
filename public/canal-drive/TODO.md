@@ -137,11 +137,13 @@ a larger reference set; a tie is the answer, not an invitation.
    are independent.
 
 **8a. Extend reviewed appearance coverage.**
-The first wall-colour loop is complete for 16 district buildings; see HISTORY.
+The source-bound wall-colour loop and autonomous review expansion are documented in HISTORY.
 Remaining work:
 
-- Review more district crops autonomously, preserving model identity, crop hashes
-  and uncertainty. Separate two-tone walls and trim instead of blending colours.
+- Resolve withheld or conflicting wall observations using better visible wall
+  regions. Separate two-tone walls and trim instead of blending colours; do not
+  invent a contrasting ground floor. Expand photo coverage beyond the 501 owners
+  represented in the current review sample.
 - Wire the 72 unique frontage signage reviews into source-bound game sign placement;
   the review page already loads them, but generic game signs do not consume this set.
 - Collect stronger source profiles before enabling parametric gables. Lowering
