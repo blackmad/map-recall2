@@ -3,6 +3,8 @@
 Updated 2026-09-26. Owner asks for a demo or accurate updated plan by morning;
 no routine owner visual-review gate. Scope is wall colour and material appearance.
 
+City-wide follow-up: [rollout plan and measured coverage](citywide-wall-colour-texture-rollout.md).
+
 ## Result of this batch
 
 A working opt-in demo is at `/canal-drive/material-demo.html`; the checked

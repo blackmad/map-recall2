@@ -344,7 +344,8 @@
     "review:wall-materials:capture": "tsx scripts/review/capture-wall-material-demo.ts",
     "review:wall-materials:report": "tsx scripts/review/build-wall-material-report.ts",
     "review:wall-materials:focus": "tsx scripts/review/focus-wall-material-captures.ts",
-    "review:wall-materials:cohort": "tsx scripts/review/wall-colour-visual-loop.ts"
+    "review:wall-materials:cohort": "tsx scripts/review/wall-colour-visual-loop.ts",
+    "review:wall-materials:city-audit": "tsx scripts/review/audit-city-wall-material-readiness.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
