@@ -9,15 +9,35 @@ const sleep=(ms:number)=>new Promise(resolve=>setTimeout(resolve,ms));
 const material=(id:string)=>WALL_MATERIALS.find(m=>m.id===id)!;
 async function main(){
  const response=await fetch('/data/wall-materials/assignments.json');if(!response.ok)throw Error('Material assignments unavailable');const data=await response.json();
- const entries=data.entries;let selected=0,mode='preview',oblique=false,v:any,m:any,originalLight:any,libraryMap:any;
+ const entries=data.entries;let selected=0,mode='preview',oblique=false,isolated=false,v:any,m:any,originalLight:any,libraryMap:any;
  const eligible=entries.filter((e:any)=>data.gate.includes(e.index)&&e.materialId!=='unknownneutral');
  const ids=eligible.map((e:any)=>`NL.IMBAG.Pand.${e.buildingId}`);
  const selector=$('owner') as HTMLSelectElement;for(const e of entries){const o=document.createElement('option');o.value=String(e.index);o.textContent=`${e.index+1}. ${e.address}${data.gate.includes(e.index)?' · trial':''}`;selector.append(o);}
  const addSprites=(map:any)=>{for(const p of WALL_MATERIALS){const id=`wall-trial-${p.id}`;if(!map.hasImage(id))map.addImage(id,createWallMaterialSprite(p.id),{pixelRatio:spriteRatio});}};
- const filterTrial=()=>{if(mode==='preview'){for(const layer of ['osm-colored-buildings','osm-colored-building-ground-floors','osm-colored-building-roofs']){const original=m.getFilter(layer);m.setFilter(layer,['all',...(original?[original]:[]),['!', ['in',['get','id'],['literal',ids]]]]);}}};
+ const buildingLayers=['osm-colored-buildings','osm-colored-building-ground-floors','osm-colored-building-roofs'];
+ const baseFilters=new Map<string,any>();
+ const selectedId=()=>`NL.IMBAG.Pand.${entries[selected].buildingId}`;
+ const rememberBaseFilters=()=>{for(const layer of buildingLayers)baseFilters.set(layer,m.getFilter(layer));};
+ const composeFilter=(base:any,clauses:any[])=>clauses.length?['all',...(base?[base]:[]),...clauses]:base;
+ // The vector-map refresh owns the normal filters.  Capture its fresh result
+ // first, then add this demo's reversible trial/isolation clauses once.
+ const applyFilters=()=>{for(const layer of buildingLayers){const clauses:any[]=[];
+   // In preview the trial layer is the only selected owner.  The original
+   // extrusion layers get the exact-owner clause too, followed by their normal
+   // trial exclusion, leaving no neighbouring building extrusion behind it.
+   if(isolated)clauses.push(['==',['get','id'],selectedId()]);
+   if(mode==='preview')clauses.push(['!', ['in',['get','id'],['literal',ids]]]);
+   m.setFilter(layer,composeFilter(baseFilters.get(layer),clauses));
+  }
+  const trialFilter=isolated?['==',['get','id'],selectedId()]:['in',['get','id'],['literal',ids]];
+  m.setFilter('wall-material-trial',trialFilter);m.setFilter('wall-material-trial-caps',trialFilter);
+ };
+ const studyRenderers=()=>['_studyRoofAreas','_studyFacadeAreas','_studyTreeAreas','_studyPublicRealmAreas'].flatMap(key=>Array.isArray(v?.[key])?v[key]:[]);
+ const setStudyRenderers=(enabled:boolean)=>{for(const renderer of studyRenderers())if(renderer?.enabled!==enabled)renderer.setEnabled(enabled);};
  const apply=()=>{if(!m)return;const on=mode==='preview';v._refreshColoredBuildingFilter();
   m.setLayoutProperty('wall-material-trial','visibility',on?'visible':'none');m.setLayoutProperty('wall-material-trial-caps','visibility',on?'visible':'none');m.setLight(on?light:originalLight);
   $('current').setAttribute('aria-pressed',String(!on));$('preview').setAttribute('aria-pressed',String(on));
+  $('isolate').setAttribute('aria-pressed',String(isolated));$('isolate').textContent=isolated?'Exit isolated owner':'Isolate selected owner';
  };
  const show=async(index:number,angle=oblique)=>{
   selected=index;oblique=angle;selector.value=String(index);const e=entries[index],p=material(e.materialId);
@@ -30,11 +50,11 @@ async function main(){
   m.jumpTo(view);v._completeCity.followCamera();apply();
   const deadline=performance.now()+20000;while(performance.now()<deadline){const f=v._completeCity.sampleFeatures(10000).find((f:any)=>f.properties.id===`NL.IMBAG.Pand.${e.buildingId}`);if(f&&m.isSourceLoaded('osm-building-appearance'))break;await sleep(100);}
   await sleep(500);apply();m.triggerRepaint();await new Promise<void>(resolve=>m.once('render',()=>resolve()));
-  $('status').textContent=`${mode==='preview'?'Shared materials + neutral diffuse light':'Current game materials + original light'} · ${e.address} · ${angle?'oblique':'front'} · source ${e.sourceSha256.slice(0,10)}`;
-  return{index,mode,view,material:e.materialId,rendered:eligible.some((x:any)=>x.index===index),sourceSha256:e.sourceSha256};
+  $('status').textContent=`${isolated?'Diagnostic isolation — exact BAG owner only; custom detail streams disabled':'Normal district view'} · ${mode==='preview'?'Shared materials + neutral diffuse light':'Current game materials + original light'} · ${e.address} · ${angle?'oblique':'front'} · source ${e.sourceSha256.slice(0,10)}`;
+  return{index,mode,isolated,view,material:e.materialId,rendered:eligible.some((x:any)=>x.index===index),sourceSha256:e.sourceSha256};
  };
- selector.onchange=()=>void show(Number(selector.value));$('previous').onclick=()=>void show((selected+99)%100);$('next').onclick=()=>void show((selected+1)%100);
- $('current').onclick=()=>{mode='current';void show(selected);};$('preview').onclick=()=>{mode='preview';void show(selected);};$('angle').onclick=()=>void show(selected,!oblique);
+ selector.onchange=()=>void show(Number(selector.value),oblique);$('previous').onclick=()=>void show((selected+99)%100,oblique);$('next').onclick=()=>void show((selected+1)%100,oblique);
+ $('current').onclick=()=>{mode='current';void show(selected,oblique);};$('preview').onclick=()=>{mode='preview';void show(selected,oblique);};$('angle').onclick=()=>void show(selected,!oblique);
  $('gallery').onclick=()=>{const open=$('library').classList.toggle('open');if(!open)return;if(libraryMap){libraryMap.resize();return;}
   const features=WALL_MATERIALS.map((p,i)=>{const x=4.873+(i%4)*.0003,y=52.372-Math.floor(i/4)*.00023;return{type:'Feature',properties:{material:p.id},geometry:{type:'Polygon',coordinates:[[[x,y],[x+.00017,y],[x+.00017,y+.0001],[x,y+.0001],[x,y]]]}};});
   libraryMap=new window.maplibregl.Map({container:'library-map',style:{version:8,sources:{blocks:{type:'geojson',data:{type:'FeatureCollection',features}}},layers:[{id:'background',type:'background',paint:{'background-color':'#e7e7dd'}}]},center:[4.8735,52.37185],zoom:18.9,pitch:55,bearing:-20,attributionControl:false});
@@ -51,8 +71,11 @@ async function main(){
  const highlight=new Uint8Array(16*16*4);for(let i=0;i<highlight.length;i+=4){highlight[i]=255;highlight[i+2]=255;highlight[i+3]=255;}m.addImage('wall-trial-identity',{width:16,height:16,data:highlight});
  const trialPattern=m.getPaintProperty('wall-material-trial','fill-extrusion-pattern'),wallPaint=m.getPaintProperty('osm-colored-buildings','fill-extrusion-color');
  const identity=async(on:boolean)=>{const id=`NL.IMBAG.Pand.${entries[selected].buildingId}`;m.setPaintProperty('wall-material-trial','fill-extrusion-pattern',on?['case',['==',['get','id'],id],'wall-trial-identity',trialPattern]:trialPattern);m.setPaintProperty('osm-colored-buildings','fill-extrusion-color',on?['case',['==',['get','id'],id],'#ff00ff',wallPaint]:wallPaint);m.triggerRepaint();await sleep(350);};
- const refresh=v._refreshColoredBuildingFilter.bind(v);v._refreshColoredBuildingFilter=()=>{refresh();filterTrial();};
- window.wallMaterialDemo={identity,data,ready:true,map:m,vectorMap:v,show,setMode:async(value:string)=>{mode=value;return show(selected);},state:()=>({selected,mode,oblique,eligible:ids.length,spriteRatio}),light};
+ const refresh=v._refreshColoredBuildingFilter.bind(v);v._refreshColoredBuildingFilter=()=>{refresh();rememberBaseFilters();applyFilters();};
+ const updateResidency=v._updateStudyAreaResidency.bind(v);v._updateStudyAreaResidency=()=>{if(isolated){setStudyRenderers(false);return;}updateResidency();};
+ const setIsolation=async(value:boolean)=>{isolated=Boolean(value);if(isolated)setStudyRenderers(false);else v._updateStudyAreaResidency();return show(selected,oblique);};
+ $('isolate').onclick=()=>void setIsolation(!isolated);
+ window.wallMaterialDemo={identity,data,ready:true,map:m,vectorMap:v,show,setIsolation,setMode:async(value:string)=>{mode=value;return show(selected,oblique);},state:()=>({selected,mode,oblique,isolated,eligible:ids.length,spriteRatio}),light};
  await show(0);
 }
 main().catch(error=>{$('status').textContent=`Preview unavailable: ${String(error)}`;console.error(error);});
