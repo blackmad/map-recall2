@@ -213,6 +213,8 @@ export interface VectorMap {
   setActiveLandmark(landmark: LandmarkNotice | null): void;
   setPlaces(landmarks: unknown, boundaries: unknown): void;
   setBrandedPois(pois: unknown): void;
+  /** Quiz-eligible names; orientation labels that say one are dropped. */
+  setSpoilerNames(names: string[]): void;
   /** Hide dense place labels while a quiz owns the corridor. */
   setQuizQuietMap(quiet: boolean): void;
 }

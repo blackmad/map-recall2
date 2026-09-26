@@ -105,7 +105,22 @@ canvas { display: block; position: relative; z-index: 2; }
 #canal-card p { color: var(--enamel-muted); margin-bottom: 12px; font-size: 12px; }
 #canal-answer { width: 100%; margin-bottom: 10px; padding: 12px 14px; border: 1px solid var(--day-line-strong); border-radius: var(--radius-sm); background: var(--day-fill); color: var(--ink); font: 16px var(--font-ui); }
 #canal-submit { width: 100%; padding: 11px; border: 0; border-radius: var(--radius-sm); background: linear-gradient(180deg, var(--enamel-copper-mid), var(--enamel-copper) 45%, var(--enamel-copper-deep)); color: var(--ink); font: 800 15px/1 var(--font-plaque); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
-#canal-feedback { min-height: 20px; margin-top: 10px; font-weight: 700; font-size: 13px; color: var(--day-accent-ink); }
+#canal-feedback { margin: 0 0 10px; font: 700 15px/1.3 var(--font-ui); color: var(--day-accent-ink); }
+#canal-feedback:empty { display: none; }
+/* After an answer the choices become the lesson: the right one turns green
+   with a tick, a wrong pick is struck through, the rest step back. */
+#canal-card.answered .canal-choice { cursor: default; opacity: .55; }
+#canal-card.answered .canal-choice.is-correct,
+#canal-card.answered .canal-choice.is-wrong { opacity: 1; }
+.canal-choice.is-correct { border-color: #2f6f47; background: rgba(47,111,71,.12); color: #1f4d31; box-shadow: inset 0 0 0 1px #2f6f47; }
+.canal-choice.is-correct::after {
+  content: ''; display: inline-block; width: 14px; height: 14px; margin-left: 6px; vertical-align: -2px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12.5l5 5L20 6.5' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12.5l5 5L20 6.5' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.canal-choice.is-wrong { border-color: var(--day-accent); background: var(--day-accent-soft); color: var(--day-accent-ink); text-decoration: line-through; text-decoration-thickness: 2px; }
+#canal-card.answered #canal-no-idea { visibility: hidden; }
 #canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
 #canal-no-idea { width: 100%; margin-top: 6px; padding: 9px 8px; border: 1px dashed var(--day-line-strong); border-radius: var(--radius-sm); background: transparent; color: var(--enamel-muted); font-weight: 600; cursor: pointer; font-size: 13px; }
 #canal-no-idea:hover { background: var(--day-fill); color: var(--ink); }
@@ -1129,11 +1144,13 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--moss); back
     <span id="canal-kind" class="prompt-kind" data-kind="water"><span class="prompt-kind-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span><span id="canal-kind-label">Waterway</span></span>
     <h2>Which waterway are you on now?</h2>
     <p>You made a turn</p>
+    <!-- Directly under the question: a correction below the choices sat under
+         the card's scroll fold in landscape, and it is the lesson. -->
+    <div id="canal-feedback" aria-live="polite"></div>
     <input id="canal-answer" autocomplete="off" autocapitalize="words" aria-label="Waterway name">
     <div id="canal-choices"></div>
     <button id="canal-submit" type="submit">Submit answer</button>
     <button id="canal-no-idea" type="button">No idea — tell me <span class="canal-choice-key">0</span></button>
-    <div id="canal-feedback" aria-live="polite"></div>
   </form>
 </div>
 <div id="map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> · © CARTO</div>

@@ -511,13 +511,17 @@
         this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground);
       }
       this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
+      const reveal = this.quizPromptName ? null : this._answerReveal;
+      const litName = this.quizPromptName || reveal?.name || "";
+      const litSegment = this.quizPromptName ? this.quizPromptSegmentIndex : reveal?.segmentIndex ?? -1;
+      const litPoint = this.quizPromptName ? this.quizPromptPointIndex : reveal?.pointIndex ?? 0;
       if (!byBoat) {
         this.vectorMap.setStreetHighlights(
           this.track,
           this.osmLoader,
           this.learnedNames,
-          this.quizPromptName,
-          this.quizPromptSegmentIndex
+          litName,
+          litSegment
         );
       }
       this.renderer.drawTrack(this.camera, this.track);
@@ -525,9 +529,9 @@
         this.renderer.drawQuestionFeature(
           this.camera,
           this.track,
-          this.quizPromptName,
-          this.quizPromptSegmentIndex,
-          this.quizPromptPointIndex,
+          litName,
+          litSegment,
+          litPoint,
           this.raceTime
         );
       }

@@ -3,7 +3,10 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import {
   basemapOrientationPoiLayerIds,
+  basemapSpoilerFilter,
+  buildSpoilerIndex,
   DEFAULT_CELL_METRES,
+  poiNameSpoils,
   thinOrientationPois,
 } from '../src/canalRecall/orientationPois';
 
@@ -76,6 +79,30 @@ assert.equal(
   all.filter((item: { kind: string }) => item.kind === 'albert-heijn').length,
   'branded wayfinding stores are never thinned',
 );
+
+// --- Answer spoilers --------------------------------------------------------
+// Named regressions (UI review 2026-09-26): a "Nassaukade" tram stop at the
+// corner of Nassaukade, and a "Majoor Bosshardt" label beside the
+// Majoor Bosshardtbrug, both named the answer before the question.
+{
+  const index = buildSpoilerIndex([
+    'Nassaukade', 'Prinsengracht', 'Majoor Bosshardtbrug', 'Leidsegracht',
+    'Sint-Jacobsstraat', 'Kerkstraat', 'Dam',
+  ]);
+  assert.ok(poiNameSpoils('Nassaukade', index), 'a stop named exactly after the street spoils it');
+  assert.ok(poiNameSpoils('Café de Prinsengracht', index), 'a venue containing the canal name spoils it');
+  assert.ok(poiNameSpoils('Majoor Bosshardt', index), 'the person a bridge is named after spoils the bridge');
+  assert.ok(poiNameSpoils('Sint Jacobsstraat 12', index), 'punctuation and house numbers do not hide a match');
+  assert.ok(!poiNameSpoils('Leidseplein', index), 'Leidseplein is not Leidsegracht');
+  assert.ok(!poiNameSpoils('Westerkerk', index), 'an unrelated landmark stays');
+  assert.ok(!poiNameSpoils('Dampkring', index), 'names shorter than 5 letters are not indexed, so Dam spoils nothing');
+  assert.ok(!poiNameSpoils('Kerk', index), 'a bare stem shorter than 5 letters is not a spoiler');
+  const filter = basemapSpoilerFilter(['==', ['get', 'class'], 'bus'], index) as unknown[];
+  assert.equal(filter[0], 'all', 'the basemap layer keeps its own filter');
+  const literal = JSON.stringify(filter);
+  assert.ok(literal.includes('"sint-jacobsstraat"'), 'raw lower-cased names reach the basemap filter');
+  assert.ok(literal.includes('"nassaukade"'));
+}
 
 process.stdout.write(
   `Orientation POI checks passed (${food(all)} → ${food(thinned)} city-wide, `
