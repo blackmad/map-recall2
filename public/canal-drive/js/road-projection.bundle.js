@@ -54,6 +54,12 @@ var CanalRecallRoadProjection = (() => {
     return false;
   }
 
+  // src/canalRecall/routing/bikeAccess.ts
+  var BICYCLE_DENIED = /* @__PURE__ */ new Set(["no", "dismount", "private", "customers"]);
+  function isBicycleRestricted(tags) {
+    return BICYCLE_DENIED.has(tags.bicycle || "") || tags.bicycleRestricted === "yes";
+  }
+
   // src/canalRecall/osm/roadProjection.ts
   var PIXELS_PER_METER = 3;
   var METRES_PER_DEGREE_LAT = 111320;
@@ -142,7 +148,9 @@ var CanalRecallRoadProjection = (() => {
         type: way.highway,
         oneway: way.tags.oneway === "yes",
         name: way.tags.name || "",
-        separatedCycleTrack: hasSeparatedCycleTrack(way.tags)
+        separatedCycleTrack: hasSeparatedCycleTrack(way.tags),
+        bicycleRestricted: way.tags.bicycleRestricted === "yes" || isBicycleRestricted(way.tags),
+        bicycle: isBicycleRestricted(way.tags) || way.tags.bicycleRestricted === "yes" ? way.tags.bicycle || "no" : void 0
       });
     }
     const offset = centringOffset(segments);

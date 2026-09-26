@@ -25,8 +25,12 @@ export function install(container: HTMLElement | null): CanalOverlayHandle {
     onLiveChange: noop,
     onAccountClick: noop,
     onClearKnowledge: noop,
+    onClearAllData: noop,
+    onPracticeAgain: noop,
+    onForgetItem: noop,
     onSkipMastered: noop,
     onCloseSettings: noop,
+    onNewRoute: noop,
   };
   const store = createOverlayStore(defaultPreferences(FALLBACK_ZOOM));
   root = createRoot(container);

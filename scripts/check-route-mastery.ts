@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import type { ReviewState } from '../src/spacedRepetition.ts';
-import { routeMasteryFromStates } from '../src/canalRecall/recallStore.ts';
+import {
+  routeMasteryFromStates,
+  routeReviewDueFromStates,
+} from '../src/canalRecall/recallStore.ts';
 
 const now = 1_000_000;
 const state = (name: string, repetitions: number, dueAt: number, overrides = {}): ReviewState => ({
@@ -27,5 +30,21 @@ assert.equal(mastery.weteringschans, 1, 'the best-known local chunk supplies nam
 assert.equal(mastery.nes, 0.5, 'overdue knowledge is weakened rather than forgotten');
 assert.equal(mastery.utrechtseweg, undefined, 'another city cannot influence this route');
 assert.equal(mastery.rijksmuseum, undefined, 'landmark reviews do not bias road routing');
+
+const due = routeReviewDueFromStates([
+  state('Nes', 3, now - 1),
+  state('Weteringschans', 2, now + 1),
+  state('Singel', 2, now - 10, {
+    featureSnapshot: { name: 'Singel', type: 'canal', cityId: 'amsterdam', center: [52.37, 4.89] },
+  }),
+  state('Utrechtseweg', 3, now - 1, {
+    featureSnapshot: { name: 'Utrechtseweg', type: 'street', cityId: 'utrecht', center: [52.1, 5.1] },
+  }),
+], 'amsterdam', now);
+
+assert.equal(due.nes, true, 'overdue streets flag for review-due ink');
+assert.equal(due.singel, true, 'overdue canals flag too');
+assert.equal(due.weteringschans, undefined, 'fresh knowledge is not due');
+assert.equal(due.utrechtseweg, undefined, 'another city cannot paint this overview');
 
 process.stdout.write('Route mastery checks passed.\n');

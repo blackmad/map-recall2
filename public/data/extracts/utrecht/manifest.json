@@ -1,7 +1,7 @@
 {
   "cityId": "utrecht",
   "source": "OpenStreetMap / BBBike Utrecht extract",
-  "generatedAt": "2026-08-31T12:33:02.851Z",
+  "generatedAt": "2026-09-05T07:49:13.567Z",
   "center": [
     52.0907374,
     5.1214201
@@ -18,16 +18,16 @@
     "streets": {
       "file": "streets.json",
       "count": 300,
-      "availableCount": 3236,
-      "bytes": 591271,
-      "availableLinkedCount": 39,
-      "linkedCount": 27
+      "availableCount": 3555,
+      "bytes": 724703,
+      "availableLinkedCount": 43,
+      "linkedCount": 31
     },
     "bridges": {
       "file": "bridges.json",
       "count": 300,
       "availableCount": 405,
-      "bytes": 177651,
+      "bytes": 183003,
       "availableLinkedCount": 67,
       "linkedCount": 67
     },
@@ -58,10 +58,10 @@
     "all": {
       "file": "all.json",
       "count": 391,
-      "availableCount": 4360,
-      "bytes": 629751,
-      "availableLinkedCount": 290,
-      "linkedCount": 223
+      "availableCount": 4679,
+      "bytes": 689328,
+      "availableLinkedCount": 294,
+      "linkedCount": 227
     }
   },
   "boundaries": {

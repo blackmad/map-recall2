@@ -5,10 +5,12 @@ import {
   Crosshair,
   Gauge,
   Home,
+  LocateFixed,
   Navigation2,
   Ship,
   Shuffle,
   SlidersHorizontal,
+  Train,
 } from 'lucide-react';
 import type { CanalPreferences } from '../game/preferences.ts';
 
@@ -22,6 +24,7 @@ export function EnamelIcon({ icon: Icon, label }: { icon: LucideIcon; label: str
 export const TRAVEL_ICONS: Record<CanalPreferences['travelMode'], LucideIcon> = {
   boat: Ship,
   car: Bike,
+  transit: Train,
 };
 
 export const VIEW_ICONS: Record<CanalPreferences['viewMode'], LucideIcon> = {
@@ -35,6 +38,7 @@ export const ROUTE_ICONS: Record<CanalPreferences['routePattern'], LucideIcon> =
   surprise: Shuffle,
   home: Home,
   study: Navigation2,
+  here: LocateFixed,
 };
 
 export const DIFFICULTY_ICONS: Record<CanalPreferences['difficulty'], LucideIcon | null> = {

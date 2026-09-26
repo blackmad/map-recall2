@@ -226,6 +226,47 @@ export function pickRoadContact(
   return aligned ?? nearest;
 }
 
+/**
+ * Prefer a named corridor (transit leg) when its centreline is nearby.
+ * Falls back to ordinary heading pick only when that corridor is absent from
+ * the contact set — never steals a far-away preferred line over a near one.
+ */
+export function pickRoadContactPreferName(
+  contacts: readonly RoadContact[],
+  segmentNameAt: (segIdx: number) => string,
+  preferredName: string,
+  preferredAngle: number | null = null,
+  maxPreferDist = 90,
+): RoadContact | null {
+  const named = contacts.filter((contact) =>
+    segmentNameAt(contact.segIdx) === preferredName
+    && contact.dist <= maxPreferDist);
+  if (named.length) return pickRoadContact(named, preferredAngle);
+  return pickRoadContact(contacts, preferredAngle);
+}
+
+/**
+ * The closest centreline carrying a known name.
+ *
+ * Route-name detection needs heading to avoid adopting a cross street at a
+ * junction. Once that name has settled, however, the highlight seed should be
+ * the same-name span directly under the player. Reapplying the heading rule can
+ * pick a parallel, slightly straighter span at a bend and draw the answer along
+ * the edge of the visible road instead of its centre.
+ */
+export function pickNearestRoadContactForName(
+  contacts: readonly RoadContact[],
+  segmentNameAt: (segIdx: number) => string,
+  name: string,
+): RoadContact | null {
+  let nearest: RoadContact | null = null;
+  for (const contact of contacts) {
+    if (segmentNameAt(contact.segIdx) !== name) continue;
+    if (!nearest || contact.dist < nearest.dist) nearest = contact;
+  }
+  return nearest;
+}
+
 /** px — how far from a road's centreline its name still applies. */
 export const NAME_WIDTH_SLACK = 20;
 

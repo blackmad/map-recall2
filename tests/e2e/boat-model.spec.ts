@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { openRoute } from './helpers';
 
 // The bicycle's front wheel is on its native -X and the boat's bow is on +X, so
 // the two vehicles need opposite heading offsets. Swapping them makes the boat
@@ -7,12 +8,7 @@ import { test, expect } from '@playwright/test';
 // actually reaches the mesh and stops drawing the canvas glyph.
 test('boat mode draws the boat, facing forward', async ({ page }) => {
   test.setTimeout(180000);
-  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
-  await page.goto('/canal-drive/');
-  await expect(page.locator('#route-card')).toBeVisible();
-  await page.locator('#view-mode').selectOption('chase');
-  await page.locator('#route-card').evaluate((f: HTMLFormElement) => f.requestSubmit());
-  await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.player?.x)), { timeout: 90000 }).toBe(true);
+  await openRoute(page, { travelMode: 'boat', viewMode: 'chase', seedRandom: false });
   await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.vectorMap?.isPlayerBoatReady?.())), { timeout: 90000 }).toBe(true);
 
   const report = await page.evaluate(() => {
@@ -41,11 +37,9 @@ test('boat mode draws the boat, facing forward', async ({ page }) => {
   expect(report.travelMode).not.toBe('car');
   expect(report.boatLayer).toBe(true);
   expect(report.bikeLayer).toBe(true);
-  // The canal sloop's bow is on -X, like the bicycle's front wheel. The motor
-  // boat it replaced pointed the other way, so this value is not incidental:
-  // it is the thing that changes when the model changes.
+  // Sloop bow is on -X (π offset). Omafiets front wheel is on +X (no offset).
   expect(report.boatHeading).toBeCloseTo(Math.PI, 5);
-  expect(report.bikeHeading).toBeCloseTo(Math.PI, 5);
+  expect(report.bikeHeading).toBeCloseTo(0, 5);
   // A held turn leans the hull; letting go brings it back upright.
   expect(Math.abs(report.heeled)).toBeGreaterThan(0.1);
   expect(Math.abs(report.righted)).toBeLessThan(0.01);

@@ -44,8 +44,8 @@ const GRID_CELL = 200;                         // px — collision grid cell siz
 // --- Car Physics ---
 const CAR_WIDTH = 24;                          // px — car width
 const CAR_LENGTH = 56;                         // px — car length
-const CAR_MAX_SPEED = 205;                     // px/s — fast arcade boat pace
-const CAR_ACCEL = 98;                          // px/s² — reach the higher cap promptly
+const CAR_MAX_SPEED = 260;                     // px/s — arcade boat top speed
+const CAR_ACCEL = 120;                         // px/s² — reach the higher cap promptly
 const CAR_BRAKE_FORCE = 75;                    // px/s² / reverse thrust
 const CAR_TURN_RATE = 1.45;                    // rad/s
 const PLAYER_CAR_TURN_MULT = 1.45;             // tighter street-mode steering
@@ -96,7 +96,10 @@ const COLLISION_PUSH_MAX = 20;                 // px — max push per frame
 const COLLISION_SPEED_DECAY = 0.93;            // speed multiplier on grass collision
 const OFF_ROAD_PUSH_SPEED = 1.5;              // px — curb correction push
 const OFF_ROAD_SPEED_DECAY = 0.98;             // speed multiplier on curb
-const CAR_ROAD_EDGE_TOLERANCE = 12;            // px beyond mapped road width before rollback
+// Bike centre may only leave the mapped road edge by ~1.3 m. The old 4 m
+// tolerance, added to oversized road half-widths, let street mode ride several
+// metres into Amsterdam's canals before rollback.
+const CAR_ROAD_EDGE_TOLERANCE = 4;
 const MIN_START_FINISH_DIST = 200;             // px — minimum distance between start and finish
 const MAX_SNAP_DIST = 800;                     // px — POIs may sit a short walk from the water
 const HOME_MAX_SNAP_DIST = 240;                // px (~80 m) — never teleport a home launch across the neighborhood
@@ -176,17 +179,30 @@ const QUIZ_ICONS = {
   street: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>',
   water: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>',
   bridge: '<svg class="filled" viewBox="0 0 576 512" aria-hidden="true"><path d="M32 32C14.3 32 0 46.3 0 64S14.3 96 32 96h40v64H0v128c53 0 96 43 96 96v64c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32v-64c0-53 43-96 96-96s96 43 96 96v64c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32v-64c0-53 43-96 96-96V160h-72V96h40c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zm424 64v64h-80V96h80zm-128 0v64h-80V96h80zm-128 0v64h-80V96h80z"/></svg>',
+  line: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15h16"/><path d="M4 9h16"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/></svg>',
+  stop: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>',
 };
 const QUIZ_SUBJECTS = {
   street:   { kind: 'street', icon: QUIZ_ICONS.street, label: 'Street',   placeholder: 'Street name' },
   waterway: { kind: 'water',  icon: QUIZ_ICONS.water,  label: 'Waterway', placeholder: 'Waterway name' },
   water:    { kind: 'water',  icon: QUIZ_ICONS.water,  label: 'Water',    placeholder: 'Canal or river name' },
   bridge:   { kind: 'bridge', icon: QUIZ_ICONS.bridge, label: 'Bridge',   placeholder: 'Bridge name' },
+  line:     { kind: 'line',   icon: QUIZ_ICONS.line,   label: 'Line',     placeholder: 'Line name' },
+  stop:     { kind: 'stop',   icon: QUIZ_ICONS.stop,   label: 'Stop',     placeholder: 'Stop name' },
 };
 // Degrees of tilt in the 2D views. Enough for buildings to show a face and for
 // the city to read as a city; not enough to lose the plan-view legibility the
 // map quiz depends on.
 const TOPDOWN_TILT_DEGREES = 14;
+// Chase stays high and readable; cockpit drops in close over the bumper so the
+// two 3D modes no longer share nearly the same frustum.
+// Chase was reading as a distant aerial — bump zoom so the vehicle fills the
+// frame. Cockpit lookahead is a soft lead ahead of the bumper, not a far shove.
+const CHASE_PITCH_DEGREES = 42;
+const COCKPIT_PITCH_DEGREES = 82;
+const CHASE_ZOOM_OFFSET = 0.55;
+const COCKPIT_ZOOM_OFFSET = 1.65;
+const COCKPIT_LOOKAHEAD = 160; // px — camera centre ahead of the vehicle
 const FINISH_RADIUS = 80;                      // px — proximity to finish point to complete race
 
 // --- Road Widths (px) ---
@@ -196,19 +212,26 @@ const ROAD_WIDTHS = {
   dock: 50,
   motorway: 55, motorway_link: 45,
   trunk: 50, trunk_link: 40,
-  primary: 45, primary_link: 35,
-  secondary: 40, secondary_link: 32,
-  tertiary: 35, tertiary_link: 28,
-  residential: 30,
-  unclassified: 28,
-  // Bike-first centrelines: narrower than a residential carriageway.
-  living_street: 28,
-  service: 24,
-  busway: 32,
-  cycleway: 22,
-  pedestrian: 26,
-  footway: 18,
-  path: 20,
+  primary: 30, primary_link: 24,
+  secondary: 26, secondary_link: 22,
+  tertiary: 21, tertiary_link: 18,
+  // These are playable half-widths, not cartographic stroke sizes. At 3 px/m,
+  // 18 px gives a residential corridor a realistic six metres from centreline
+  // to edge and keeps parallel canal water out of the street surface.
+  residential: 18,
+  unclassified: 17,
+  living_street: 16,
+  service: 13,
+  busway: 18,
+  cycleway: 9,
+  pedestrian: 14,
+  footway: 7,
+  path: 8,
+  // Transit corridors (GTFS shapes) — wider than a cycleway so the road guard
+  // keeps the vehicle locked to noisy GTFS alignments.
+  tram: 38,
+  metro: 40,
+  ferry: 34,
 };
 const DEFAULT_ROAD_WIDTH = 32;
 

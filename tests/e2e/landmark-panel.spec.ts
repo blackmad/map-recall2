@@ -50,9 +50,13 @@ test('the drawn card is a hit target, and clicking it opens the panel', async ({
   expect(bounds).not.toBeNull();
 
   const box = (await page.locator('canvas').first().boundingBox())!;
+  const logical = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    return { w: game.viewport.width, h: game.viewport.height };
+  });
   await page.mouse.click(
-    box.x + (bounds.x + bounds.w / 2) * (box.width / 1280),
-    box.y + (bounds.y + bounds.h / 2) * (box.height / 720));
+    box.x + (bounds.x + bounds.w / 2) * (box.width / logical.w),
+    box.y + (bounds.y + bounds.h / 2) * (box.height / logical.h));
 
   await expect(page.locator('#landmark-panel')).toBeVisible();
   expect(errors).toEqual([]);

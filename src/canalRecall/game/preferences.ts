@@ -8,6 +8,26 @@
  * `game-route.js` call into this module; it has no `document`.
  */
 
+export {
+  ANSWER_MODES,
+  CONTROL_MODES,
+  parseMode,
+  ROUTE_DIFFICULTIES,
+  ROUTE_PATTERNS,
+  THEME_MODES,
+  TRAVEL_MODES,
+  VIEW_MODES,
+  isBoat,
+  isCar,
+  isTransit,
+  type AnswerMode,
+  type ControlMode,
+  type RouteDifficulty,
+  type RoutePattern,
+  type ThemeMode,
+  type TravelMode,
+  type ViewMode,
+} from './modes.ts';
 import {
   ANSWER_MODES,
   CONTROL_MODES,
@@ -25,10 +45,60 @@ import {
   type TravelMode,
   type ViewMode,
 } from './modes.ts';
+export {
+  travelProfile,
+  usesRoadConstraint,
+  usesWaterTest,
+  type TravelProfile,
+  type LearnedKind,
+  type MotionKind,
+  type VehicleKind,
+} from './travelProfile.ts';
 import type { KeyValueStore } from './progressStore.ts';
+import {
+  BIKE_SKIN_IDS,
+  DEFAULT_BIKE_SKIN,
+  parseBikeSkin,
+  type BikeSkinId,
+} from './bikeSkins.ts';
+import {
+  DEFAULT_CITY_ID,
+  parseCityId,
+  type CanalCityId,
+} from './cities.ts';
+
+export {
+  BIKE_SKIN_IDS,
+  BIKE_SKINS,
+  DEFAULT_BIKE_SKIN,
+  bikeSkinById,
+  parseBikeSkin,
+  type BikeSkin,
+  type BikeSkinId,
+} from './bikeSkins.ts';
+
+export {
+  CANAL_CITIES,
+  CANAL_CITY_IDS,
+  DEFAULT_CITY_ID,
+  cityById,
+  extractPath,
+  extractUrl,
+  parseCityId,
+  playableCities,
+  type CanalCity,
+  type CanalCityId,
+} from './cities.ts';
 
 export const PREFERENCES_STORAGE_KEY = 'canalRecall.preferences.v1';
 export const ZOOM_DEFAULT_VERSION = 2 as const;
+/** Degrees of extra pitch the live tilt slider may add or subtract. */
+export const CAMERA_TILT_MIN = -36;
+export const CAMERA_TILT_MAX = 36;
+/** Degrees moved by each keyboard tilt nudge. */
+export const CAMERA_TILT_KEY_STEP = 6;
+/** Degrees moved by each Shift+[ / Shift+] orbit nudge. */
+export const CAMERA_BEARING_KEY_STEP = 15;
 /** Pre-v2 default; saved `0.65` without a version flag is migrated to the new default. */
 export const LEGACY_ZOOM_DEFAULT = 0.65;
 
@@ -47,6 +117,7 @@ export const DIFFICULTY_PRESETS: Record<Exclude<RouteDifficulty, 'custom'>, Diff
 };
 
 export interface CanalPreferences {
+  cityId: CanalCityId;
   difficulty: RouteDifficulty;
   answerMode: AnswerMode;
   travelMode: TravelMode;
@@ -66,8 +137,18 @@ export interface CanalPreferences {
   skipMastered: boolean;
   gamey: boolean;
   sound: boolean;
+  bikeSkin: BikeSkinId;
+  /** Show rear child seat when the active skin has a `BabySeat` node. */
+  bikeBabySeat: boolean;
   zoom: number;
   zoomDefaultVersion: typeof ZOOM_DEFAULT_VERSION;
+  /**
+   * Extra MapLibre pitch (degrees) on top of the view-mode default.
+   * Chase/cockpit use this as a live tilt control; 2D modes ignore it.
+   */
+  cameraTilt: number;
+  /** Orbit angle around the vehicle in chase/cockpit view, in degrees. */
+  cameraBearing: number;
 }
 
 export interface ZoomClamp {
@@ -80,6 +161,7 @@ export interface ZoomClamp {
 /** Medium difficulty plus the product defaults for everything else. */
 export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
   return {
+    cityId: DEFAULT_CITY_ID,
     difficulty: 'medium',
     ...DIFFICULTY_PRESETS.medium,
     travelMode: 'boat',
@@ -96,8 +178,12 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     skipMastered: true,
     gamey: true,
     sound: false,
+    bikeSkin: DEFAULT_BIKE_SKIN,
+    bikeBabySeat: false,
     zoom: zoom.defaultZoom,
     zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
+    cameraTilt: 0,
+    cameraBearing: 0,
   };
 }
 
@@ -113,6 +199,16 @@ function parseBoolean(value: unknown, fallback: boolean): boolean {
 
 function clampZoom(value: number, zoom: ZoomClamp): number {
   return Math.min(zoom.max, Math.max(zoom.min, value));
+}
+
+function clampTilt(value: unknown, fallback: number): number {
+  if (typeof value !== 'number' || !Number.isFinite(value)) return fallback;
+  return Math.min(CAMERA_TILT_MAX, Math.max(CAMERA_TILT_MIN, value));
+}
+
+function wrapBearing(value: unknown, fallback: number): number {
+  if (typeof value !== 'number' || !Number.isFinite(value)) return fallback;
+  return ((value + 180) % 360 + 360) % 360 - 180;
 }
 
 function parseZoom(raw: Record<string, unknown>, zoom: ZoomClamp): number {
@@ -132,6 +228,7 @@ function fillPreferences(
 ): CanalPreferences {
   return {
     ...base,
+    cityId: parseCityId(source.cityId, base.cityId),
     answerMode: parseMode(ANSWER_MODES, source.answerMode, base.answerMode),
     travelMode: parseMode(TRAVEL_MODES, source.travelMode, base.travelMode),
     controlMode: parseMode(CONTROL_MODES, source.controlMode, base.controlMode),
@@ -150,8 +247,12 @@ function fillPreferences(
     skipMastered: parseBoolean(source.skipMastered, base.skipMastered),
     gamey: parseBoolean(source.gamey, base.gamey),
     sound: parseBoolean(source.sound, base.sound),
+    bikeSkin: parseBikeSkin(source.bikeSkin, base.bikeSkin),
+    bikeBabySeat: parseBoolean(source.bikeBabySeat, base.bikeBabySeat),
     zoom: parseZoom(source, zoom),
     zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
+    cameraTilt: clampTilt(source.cameraTilt, base.cameraTilt),
+    cameraBearing: wrapBearing(source.cameraBearing, base.cameraBearing),
   };
 }
 
@@ -200,6 +301,17 @@ export function writePreferences(store: KeyValueStore, prefs: CanalPreferences):
   } catch {
     /* private mode */
   }
+}
+
+/** Remove stored preferences and return a fresh default snapshot for the UI. */
+export function clearPreferences(store: KeyValueStore, zoom: ZoomClamp): CanalPreferences {
+  try {
+    if (store.removeItem) store.removeItem(PREFERENCES_STORAGE_KEY);
+    else store.setItem(PREFERENCES_STORAGE_KEY, '');
+  } catch {
+    /* private mode */
+  }
+  return defaultPreferences(zoom);
 }
 
 /** Overlay a named difficulty onto a preferences object. `custom` is a no-op. */

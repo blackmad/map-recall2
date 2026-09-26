@@ -85,20 +85,39 @@ async function loadOsmBridgeWays(): Promise<OsmWay[]> {
   }
   const query = `[out:json][timeout:120];way["bridge"]["name"](${BBOX});out tags center;`;
   console.log(`Querying Overpass for named bridge ways in ${BBOX}…`);
-  // Overpass answers 406 to a client that does not identify itself.
-  const response = await fetch('https://overpass-api.de/api/interpreter', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'User-Agent': 'map-recall/1.0 (Canal Recall extract builder)',
-    },
-    body: new URLSearchParams({ data: query }),
-  });
-  if (!response.ok) throw new Error(`Overpass returned ${response.status}`);
-  const payload = await response.json();
-  mkdirSync(dirname(cachePath), { recursive: true });
-  writeFileSync(cachePath, JSON.stringify(payload));
-  return payload.elements as OsmWay[];
+  // Overpass answers 406 to a client that does not identify itself. Mirrors and
+  // a short retry absorb the 504/429 blips that otherwise fail a full refresh
+  // after every other stage has already succeeded.
+  const endpoints = [
+    'https://overpass-api.de/api/interpreter',
+    'https://overpass.kumi.systems/api/interpreter',
+    'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
+  ];
+  let lastError: Error | null = null;
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const endpoint = endpoints[attempt % endpoints.length];
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'User-Agent': 'map-recall/1.0 (Canal Recall extract builder)',
+        },
+        body: new URLSearchParams({ data: query }),
+      });
+      if (!response.ok) throw new Error(`Overpass returned ${response.status} from ${endpoint}`);
+      const payload = await response.json();
+      mkdirSync(dirname(cachePath), { recursive: true });
+      writeFileSync(cachePath, JSON.stringify(payload));
+      return payload.elements as OsmWay[];
+    } catch (error) {
+      lastError = error as Error;
+      const waitMs = 2_000 * (attempt + 1);
+      console.warn(`  ${lastError.message}; retry in ${waitMs}ms…`);
+      await new Promise(resolve => setTimeout(resolve, waitMs));
+    }
+  }
+  throw lastError || new Error('Overpass unavailable');
 }
 
 const bridges = JSON.parse(readFileSync(publishedPath, 'utf8')) as BridgeFeature[];

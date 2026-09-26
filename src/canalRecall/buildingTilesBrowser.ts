@@ -107,6 +107,12 @@ export class BuildingTileStreamer {
   private contextualRoofs=0;
   /** Last camera signature we planned for — avoids re-planning every jumpTo frame. */
   private lastFollowSignature = '';
+  /** Coalesce adopts into one setData per animation frame. Two tiles finishing
+   *  in the same frame used to each deep-clone the resident set and hitch. */
+  private flushDirty = false;
+  private flushScheduled = false;
+  /** Keep the pipe to one tile until the camera tile has landed, then open up. */
+  private firstTileLanded = false;
 
   constructor(
     private readonly map: MapLike,
@@ -224,14 +230,15 @@ export class BuildingTileStreamer {
       return !this.empty.has(key) && !this.cache.has(key) && !inFlightKeys.has(key);
     });
 
-    if (changed) this.flush();
+    if (changed) this.scheduleFlush();
     this.pump();
   }
 
   private pump(): void {
+    const limit = this.firstTileLanded ? BUILDING_TILE_LOAD_CONCURRENCY : 1;
     while (
       !this.disposed
-      && this.inFlight < BUILDING_TILE_LOAD_CONCURRENCY
+      && this.inFlight < limit
       && this.queue.length > 0
     ) {
       const tile = this.queue.shift();
@@ -266,7 +273,8 @@ export class BuildingTileStreamer {
         geometry: feature.geometry && JSON.parse(JSON.stringify(feature.geometry)),
       }));
       this.cache.adopt(key, features);
-      if (!this.disposed) this.flush();
+      this.firstTileLanded = true;
+      if (!this.disposed) this.scheduleFlush();
     } catch (error) {
       if ((error as Error)?.name === 'AbortError') return;
       this.empty.add(key);
@@ -277,9 +285,26 @@ export class BuildingTileStreamer {
     }
   }
 
+  /** Ask for a flush on the next animation frame; repeated calls coalesce. */
+  private scheduleFlush(): void {
+    this.flushDirty = true;
+    if (this.flushScheduled) return;
+    this.flushScheduled = true;
+    const run = () => {
+      this.flushScheduled = false;
+      if (!this.flushDirty || this.disposed) return;
+      this.flushDirty = false;
+      this.flush();
+    };
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run);
+    else queueMicrotask(run);
+  }
+
   private flush(): void {
     const source = this.cache.collection(),features=source.features.map(feature=>decorateBuildingFeature(feature,this.appearancePriors)),collection={...source,features};this.styledFeatures=features.filter(feature=>feature.properties.appearanceStyleSource==='procedural-prior-not-measured').length;this.contextualFeatures=features.filter(feature=>feature.properties.appearanceStyleSource==='citywide-identity-palette-v2-not-measured').length;this.contextualGrounds=features.filter(feature=>feature.properties.groundAppearanceStyleSource==='citywide-ground-storey-palette-v1-not-measured').length;this.contextualRoofs=features.filter(feature=>feature.properties.roofAppearanceStyleSource==='citywide-flat-cap-palette-v2-not-measured').length;
     this.onFeatures?.(collection.features);
+    // Deep-clone for MapLibre: the GeoJSON source may rewrite rings in place.
+    // Coalescing via scheduleFlush keeps this to once per frame during a burst.
     this.map.getSource(this.sourceId)?.setData(JSON.parse(JSON.stringify(collection)));
     if (collection.features.length > 0 && this.onFirstBuildings) {
       const announce = this.onFirstBuildings;

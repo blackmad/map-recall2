@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+# Rebuild one city's versioned extract under public/data/extracts/<id>/.
+#
+# Downloads land in .cache/osm-source/ and are reused across cities and runs.
+# Wikimedia / Wikipedia enrichments reuse .cache/wikimedia/. English ledes reuse
+# scripts/english-translations.json. Set REFRESH_FORCE_DOWNLOAD=1 to re-fetch
+# OSM sources; REFRESH_FORCE_CUT=1 to redo a municipality cut from a wide PBF;
+# REFRESH_OFFLINE=1 to fail instead of downloading on a cache miss.
 set -euo pipefail
 
 city_id="${1:-amsterdam}"
@@ -9,7 +16,36 @@ source_pbf="${5:-}"
 output_dir="public/data/extracts/$city_id"
 work_dir="$(mktemp -d "/tmp/map-recall-${city_id}.XXXXXX")"
 build_dir="$work_dir/output"
+cache_dir=".cache/osm-source"
+mkdir -p "$cache_dir" "$build_dir"
 trap 'rm -rf "$work_dir"' EXIT
+
+source_mtime() {
+  local file="$1"
+  if stat -f %m "$file" >/dev/null 2>&1; then
+    stat -f %m "$file"
+  else
+    stat -c %Y "$file"
+  fi
+}
+
+# Fetch `$url` into `$dest` unless a usable cache already exists.
+download_cached() {
+  local url="$1"
+  local dest="$2"
+  if [[ -s "$dest" && "${REFRESH_FORCE_DOWNLOAD:-}" != 1 ]]; then
+    echo "Using cached source $dest"
+    return 0
+  fi
+  if [[ "${REFRESH_OFFLINE:-}" == 1 ]]; then
+    echo "REFRESH_OFFLINE=1 and missing/forced cache: $dest" >&2
+    echo "  (would download $url)" >&2
+    exit 2
+  fi
+  echo "Downloading $url"
+  curl -L --fail --retry 3 -o "$dest.part" "$url"
+  mv "$dest.part" "$dest"
+}
 
 # The fourth argument is either a BBBike city name or a full URL to any PBF.
 # A URL is how a city whose municipality is larger than its BBBike extract gets
@@ -27,19 +63,16 @@ elif [[ "$bbbike_name" == http*://* ]]; then
   # Province-sized downloads are cached and shared: Rotterdam and Den Haag are
   # both in Zuid-Holland, and re-fetching 200 MB per city per run is the kind
   # of cost that stops anyone from running the pipeline.
-  mkdir -p .cache/osm-source
-  source_file=".cache/osm-source/$(basename "$bbbike_name")"
-  if [[ -s "$source_file" ]]; then
-    echo "Using cached source $source_file"
-  else
-    curl -L --fail --retry 3 -o "$source_file.part" "$bbbike_name"
-    mv "$source_file.part" "$source_file"
-  fi
+  source_file="$cache_dir/$(basename "$bbbike_name")"
+  download_cached "$bbbike_name" "$source_file"
   wide_source=1
 else
-  source_file="$work_dir/city.osm.pbf"
-  curl -L --fail --retry 3 -o "$source_file" \
-    "https://download.bbbike.org/osm/bbbike/${bbbike_name}/${bbbike_name}.osm.pbf"
+  # BBBike city extracts are also cached. Amsterdam and Utrecht used to
+  # re-download ~100–140 MB on every refresh even when nothing upstream changed.
+  source_file="$cache_dir/${bbbike_name}.osm.pbf"
+  download_cached \
+    "https://download.bbbike.org/osm/bbbike/${bbbike_name}/${bbbike_name}.osm.pbf" \
+    "$source_file"
   wide_source=0
 fi
 
@@ -47,12 +80,30 @@ if [[ "$wide_source" == 1 ]]; then
   # Cut the source down to the city, but only after reading the boundary out of
   # it. A bbox guessed before the boundary is read is what slices a relation in
   # half; reading first means the cut is derived from the city's own extent.
-  osmium tags-filter "$source_file" r/boundary=administrative -o "$work_dir/admin.osm.pbf"
-  osmium export "$work_dir/admin.osm.pbf" -o "$work_dir/admin.geojson"
-  city_bbox="$(node --import tsx scripts/select-municipality-bbox.ts "$work_dir/admin.geojson" "$city_name")"
-  echo "Cutting $city_id out of $(basename "$source_file") at $city_bbox"
-  city_pbf="$work_dir/city.osm.pbf"
-  osmium extract -b "$city_bbox" "$source_file" -o "$city_pbf"
+  #
+  # The cut itself is cached against the source file's mtime so Rotterdam and
+  # Den Haag do not re-slice the same province PBF on every Randstad rebuild.
+  cut_name="${city_id}-from-$(basename "$source_file" .osm.pbf).osm.pbf"
+  cut_cache="$cache_dir/$cut_name"
+  cut_stamp="$cut_cache.source-mtime"
+  src_mtime="$(source_mtime "$source_file")"
+  if [[ -s "$cut_cache" \
+      && -f "$cut_stamp" \
+      && "$(cat "$cut_stamp")" == "$src_mtime" \
+      && "${REFRESH_FORCE_CUT:-}" != 1 \
+      && "${REFRESH_FORCE_DOWNLOAD:-}" != 1 ]]; then
+    echo "Using cached city cut $cut_cache"
+    city_pbf="$cut_cache"
+  else
+    osmium tags-filter "$source_file" r/boundary=administrative -o "$work_dir/admin.osm.pbf"
+    osmium export "$work_dir/admin.osm.pbf" -o "$work_dir/admin.geojson"
+    city_bbox="$(node --import tsx scripts/select-municipality-bbox.ts "$work_dir/admin.geojson" "$city_name")"
+    echo "Cutting $city_id out of $(basename "$source_file") at $city_bbox"
+    city_pbf="$cut_cache"
+    rm -f "$cut_cache" "$cut_stamp"
+    osmium extract -b "$city_bbox" "$source_file" -o "$city_pbf"
+    printf '%s\n' "$src_mtime" > "$cut_stamp"
+  fi
 else
   city_pbf="$source_file"
 fi
@@ -91,6 +142,12 @@ osmium export "$work_dir/place-boundaries.osm.pbf" -o "$work_dir/place-boundarie
 
 node --import tsx scripts/build-amsterdam-extract.ts "$work_dir/features.geojson" "$work_dir/boundaries.geojson" \
   "$work_dir/place-boundaries.geojson" "$build_dir" "$city_id" "$city_name" "$city_center"
+# Amsterdam: force-include canal-belt / tram-corridor teaching streets even if
+# a future scoring tweak drops them again. No-op for other cities (no boosts).
+if [[ "$city_id" == "amsterdam" ]]; then
+  # ensure reads/writes under public/… by default; point it at the staging dir.
+  EXTRACT_DIR="$build_dir" node --import tsx scripts/ensure-amsterdam-teaching-streets.ts
+fi
 node --import tsx scripts/build-osm-building-appearance.ts "$work_dir/building-appearance.geojson" "$build_dir/buildings-colored.geojson"
 node --import tsx scripts/build-basemap-hide-ids.ts "$build_dir/buildings-colored.geojson" "$build_dir/basemap-hide-ids.json"
 node --import tsx scripts/build-osm-buildings.ts "$work_dir/buildings-osm.geojson" "$build_dir/buildings-osm.geojson"
@@ -102,6 +159,7 @@ node --import tsx scripts/enrich-amsterdam-wikipedia-extracts.ts "--directory=$b
 node --import tsx scripts/build-street-knowledge.ts "$build_dir"
 node --import tsx scripts/translate-extracts-to-english.ts "--directory=$build_dir"
 node --import tsx scripts/check-extract-english.ts "$build_dir"
+node --import tsx scripts/check-encyclopedia-disambiguation.ts "$build_dir"
 node --import tsx scripts/enrich-city-profile.ts "--directory=$build_dir" "--name=$city_name"
 node --import tsx scripts/enrich-brand-identifiers.ts "--directory=$build_dir"
 node --import tsx scripts/apply-wikimedia-image-overrides.ts "$build_dir"
@@ -124,3 +182,12 @@ mkdir -p "$output_dir"
 # after it had already copied everything — the worst kind of failure, because
 # the data is published and the pipeline says it broke.
 find "$build_dir" -maxdepth 1 -type f -exec cp {} "$output_dir"/ \;
+
+# Borough postcards (Centrum, Noord, …) are Amsterdam-only Wikidata enrichment.
+# Run after publish so a SPARQL blip cannot block the rest of the extract, and
+# so the enricher reads the boundaries that just landed.
+if [[ "$city_id" == "amsterdam" ]]; then
+  node --import tsx scripts/enrich-amsterdam-neighborhoods.ts || {
+    echo "Warning: neighborhood enrichment failed; extract published without refreshed postcards." >&2
+  }
+fi

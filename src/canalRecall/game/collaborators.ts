@@ -17,11 +17,11 @@ export interface Camera {
 
 export interface InputManager {
   readonly isMobile: boolean;
-  /** True while the one-line "steer with the pad" nudge is still showing. */
+  /** True while the one-line "hold here to drive" nudge is still showing. */
   readonly showTouchHint: boolean;
-  /** Which d-pad directions are held, for drawing the pad lit. */
-  readonly padKeys: import('../touchControls.ts').DpadKeys;
-  /** The pad's rectangle, or null on a pointer device. */
+  /** The held thumbstick for drawing, or null when idle. */
+  readonly stickView: import('../touchControls.ts').StickView | null;
+  /** The stick's activation zone, or null on a pointer device. */
   readonly dpad: import('../touchControls.ts').DpadLayout | null;
   /** True once for the frame in which a key went down — the edge, not the
    *  level, so holding `1` does not answer every question in a row. */
@@ -38,12 +38,22 @@ export interface RoadSegment {
   type?: string;
   /** Physically separated cycle track beside this carriageway. */
   separatedCycleTrack?: boolean;
+  /** Real-world bike ban on a still-playable corridor. */
+  bicycleRestricted?: boolean;
+  /** OSM bicycle tag when restricted. */
+  bicycle?: string;
 }
 
 /** What the network knows about a name, beyond its geometry. */
 export interface FeatureMeta {
+  name?: string;
   type?: string;
   cityId?: string;
+  /** Stable extract centre `[lat, lng]` when available. */
+  center?: [number, number];
+  ref?: string;
+  mode?: string;
+  color?: string | null;
 }
 
 export interface OsmLoader {
@@ -55,6 +65,10 @@ export interface OsmLoader {
   _lastCenterLat?: number;
   _lastCenterLng?: number;
   featureMeta?: Map<string, FeatureMeta>;
+  /** Sidecar from `CanalRecallTransit.adaptTransitNetwork` when travelMode is transit. */
+  transitLoad?: import('../transit/segments').TransitPlayLoad | null;
+  /** Hub graph from Phase E transfer extract, when published. */
+  transitTransfers?: import('../transit/transfers').TransitTransfers | null;
   /**
    * Project a lat/lng and snap it to the nearest loaded road point. Pass
    * `false` for `maxSnapDist` to mean "no limit" — the landmark pass wants a
@@ -86,6 +100,8 @@ export interface Track {
   /** Prefer `preferredAngle` at junctions so the cross street is not named. */
   getRoadName(x: number, y: number, preferredAngle?: number | null): string;
   getNearestRoad(x: number, y: number, preferredAngle?: number | null): NearestRoad | null;
+  /** Closest centreline carrying an already-settled quiz name. */
+  getNearestRoadForName(x: number, y: number, name: string): NearestRoad | null;
   getDistanceToFinish(x: number, y: number): number;
   /**
    * `isKnown` decides per label *and per place*, not per name: knowing the
@@ -129,6 +145,8 @@ export interface Hud {
     routeName?: string; neighborhood?: string; answerHidden?: boolean;
     correct?: number; attempts?: number; points?: number; streak?: number; gamey?: boolean;
     trip?: string; feedback?: string;
+    /** Real-world bike ban on this corridor (no street name). */
+    restrictionNote?: string;
   }): void;
   /** Destination card; the finish arrow draws inside it when `arrowAngle` is set. */
   drawDestination(
@@ -142,8 +160,8 @@ export interface Hud {
   /** Always-on north rose that tracks camera rotation. */
   drawCompass(ctx: CanvasRenderingContext2D, camera: Camera): void;
   drawCityOverview(ctx: CanvasRenderingContext2D, game: unknown): void;
-  drawTouchHint(ctx: CanvasRenderingContext2D): void;
-  drawDpad(ctx: CanvasRenderingContext2D, pressed: import('../touchControls.ts').DpadKeys): void;
+  drawTouchHint(ctx: CanvasRenderingContext2D, controlMode: string): void;
+  drawStick(ctx: CanvasRenderingContext2D, view: import('../touchControls.ts').StickView | null): void;
 }
 
 export interface Renderer {
@@ -176,11 +194,15 @@ export interface Renderer {
 
 export interface VectorMap {
   ready?: boolean;
+  /** Point building/tile fetches at the active city's extract root. */
+  setExtractRoot?(path: string): void;
   sync(camera: Camera, loader: OsmLoader, canvas: HTMLCanvasElement): void;
   setPlayerBike(player: unknown, loader: OsmLoader, visible: boolean): void;
   setPlayerBoat(player: unknown, loader: OsmLoader, visible: boolean): void;
+  setPlayerTransit?(player: unknown, loader: OsmLoader, visible: boolean, underground?: boolean): void;
   isPlayerBikeReady(): boolean;
   isPlayerBoatReady(): boolean;
+  isPlayerTransitReady?(): boolean;
   setRoute(routePath: readonly WorldPoint[] | null, loader: OsmLoader, visible: boolean): void;
   setStreetHighlights(
     track: Track, loader: OsmLoader, learnedNames: Set<string>,
