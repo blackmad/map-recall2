@@ -1,0 +1,855 @@
+{
+  "reviewer": "gpt-5.6-terra",
+  "entries": [
+    {
+      "index": 0,
+      "buildingId": "0363100012166570",
+      "observationId": "0363100012166570_e_0wwk20u",
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "targetHex": "#745042",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "warm red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "central bays from first-floor arches through upper-storey brick; exclude white stone arches, window frames, cables and leafless branches",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 1,
+      "buildingId": "0363100012162796",
+      "observationId": "0363100012162796_e_13u2mzl",
+      "sourceSha256": "e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262",
+      "targetHex": "#825e50",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "muted red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "right-hand facade around the balcony and upper windows; left half is blown out by direct sun and the ground floor is in shadow",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 2,
+      "buildingId": "0363100012164917",
+      "observationId": "0363100012164917_e_0345gt3",
+      "sourceSha256": "2683304b0cbe75c04ce8cc8473487624f52c5a45a2d72e34a8d2681d82c97d50",
+      "targetHex": "#70483e",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "deep red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "broad central wall fields between the tall windows; exclude dark ground-floor garage, windows and balcony railings",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 3,
+      "buildingId": "0363100012162897",
+      "observationId": "0363100012162897_e_0c4e2gf",
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "targetHex": "#a77f57",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "ochre yellow-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "sunlit upper brick pilasters and fields above the shopfront; exclude cream base, glazing and dark window recesses",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 4,
+      "buildingId": "0363100012165154",
+      "observationId": "0363100012165154_e_16tobqf",
+      "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "targetHex": "#787b78",
+      "material": "painted-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "cool mid-grey painted render; observed in the stated exposed wall field."
+      },
+      "reason": "continuous wall strips beside upper windows; exclude white window trim, balcony metal and the shaded base",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 5,
+      "buildingId": "0363100012109707",
+      "observationId": "0363100012109707_e_06lf7lp",
+      "sourceSha256": "9f90fba5e089e5eaec6feeb24b243207a464e5eb9bf8778e84c8fee06aa5d7f4",
+      "targetHex": "#59483e",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "dark brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper facade either side of the bay windows; tree trunk and the shadowed lower storey make the reference darker than a clean wall",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 6,
+      "buildingId": "0363100012125327",
+      "observationId": "0363100012125327_e_03pngle",
+      "sourceSha256": "ac8924387ea8f6d928dfd57e7a2dbbf7ab9a553f02338b0f109d5a824b5be8fe",
+      "targetHex": "#665247",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "warm grey-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "second and third-storey wall panels between windows; facade is evenly overcast but softened by distance",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 7,
+      "buildingId": "0363100012159182",
+      "observationId": "0363100012159182_e_0nqcs47",
+      "sourceSha256": "3ebffa1679909575e0f469549d20366df1a91a3d9ab0b16da50bbba4e2407b57",
+      "targetHex": "#57463c",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "dark red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "central brick bands around the paired upper windows; exclude the black shop awning and window recesses",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 8,
+      "buildingId": "0363100012166409",
+      "observationId": "0363100012166409_e_0azpu0d",
+      "sourceSha256": "3efae179aee5aae24762ffdd984c023f8e014018772f949e50e94a2d3dd3401b",
+      "targetHex": "#817c78",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "weathered grey-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper facade around the arched attic window and balcony; cool daylight and white signage affect the lower crop",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 9,
+      "buildingId": "0363100012170186",
+      "observationId": "0363100012170186_e_09fw20r",
+      "sourceSha256": "3630ec30fb87cf536e3f92536d256c5578c84144fbdb4cc52c8567718488e200",
+      "targetHex": "#77584b",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "low",
+        "notes": "muted red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "small visible wall strips between upper windows; motion blur and branches prevent a clean representative patch",
+      "confidence": "low",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 10,
+      "buildingId": "0363100012168920",
+      "observationId": "0363100012168920_e_0bxls2d",
+      "sourceSha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
+      "targetHex": "#474d50",
+      "material": "painted-brick",
+      "materialColourFamily": "blue-grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "blue-charcoal painted render; observed in the stated exposed wall field."
+      },
+      "reason": "large plain side-wall field around the lettering; exclude white letters, windows, sign and bins",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "targetHex": "#b39a67",
+      "material": "render-plaster",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "smooth",
+        "scaleConfidence": "high",
+        "notes": "ochre painted render; observed in the stated exposed wall field."
+      },
+      "reason": "broad sunless central facade panels; exclude grey brick plinth, white frames and balcony shadows",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 12,
+      "buildingId": "0363100012144845",
+      "observationId": "0363100012144845_e_1le2s9k",
+      "sourceSha256": "94de67d298fa9ceabfe3f4950a1dd871fc32a2db7fc88a51eaa5424f21df571e",
+      "targetHex": "#7c4f40",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "matte red brick; observed in the stated exposed wall field."
+      },
+      "reason": "repeating wall panels between the many narrow windows; exclude dark window recesses and the pale parapet",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 13,
+      "buildingId": "0363100012173914",
+      "observationId": "0363100012173914_e_1un6nri",
+      "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+      "targetHex": "#d0c7ae",
+      "material": "render-plaster",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "smooth",
+        "scaleConfidence": "high",
+        "notes": "pale cream painted render; observed in the stated exposed wall field."
+      },
+      "reason": "large uninterrupted upper wall field left of the central windows; exclude deep window shadows and streetlamp cable",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 14,
+      "buildingId": "0363100012173926",
+      "observationId": "0363100012173926_e_1b2i50t",
+      "sourceSha256": "294b029d72ea7c8f8079422ab57b50ab95b509768abb56083b4e76b1bcf227e0",
+      "targetHex": "#625348",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "dark warm-grey brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper facade fields around the paired windows; cool shade and tree branches cover part of the wall",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 15,
+      "buildingId": "0363100012174169",
+      "observationId": "0363100012174169_e_1w30ns5",
+      "sourceSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
+      "targetHex": "#6e5143",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "aged red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "visible vertical brick strips beside upper windows; street-level retail and cables are excluded",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 16,
+      "buildingId": "0363100012169812",
+      "observationId": "0363100012169812_e_0il89qt",
+      "sourceSha256": "917cdd7c7a3abc321a24fa67fdcf7a092c5a0c90cb1a40b83be19eb435b63b00",
+      "targetHex": "#5c4740",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "dark red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "broad wall fields behind the white window surrounds; exclude white trim, shop sign and balcony rails",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "observationId": "0363100012094649_e_16jqzp7",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "targetHex": "#b9b58d",
+      "material": "render-plaster",
+      "materialColourFamily": "buff",
+      "texture": {
+        "pattern": "smooth",
+        "scaleConfidence": "high",
+        "notes": "pale yellow painted render; observed in the stated exposed wall field."
+      },
+      "reason": "central upper wall plane and side strips between windows; exclude balcony void, glazing and blue sky",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 18,
+      "buildingId": "0363100012166397",
+      "observationId": "0363100012166397_e_08rpzbw",
+      "sourceSha256": "92836709b5ce82d22da4e187bd4963cbbad3c0de6284f0c976545234cc932b42",
+      "targetHex": "#714d38",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "low",
+        "notes": "warm dark-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "right-side upper wall area between windows; most of the left facade is obscured by sunlit foliage",
+      "confidence": "low",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 19,
+      "buildingId": "0363100012156057",
+      "observationId": "0363100012156057_e_1qwmq6j",
+      "sourceSha256": "9ad1e92293cd81284985fc98955dbbfb87bc9f58e99868adbf2ed6c85862081f",
+      "targetHex": "#61584f",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "muted grey-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper floors around the white window frames; exclude balcony railings and the highly shaded ground floor",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 20,
+      "buildingId": "0363100012064291",
+      "observationId": "0363100012064291_e_06e507d",
+      "sourceSha256": "dcf6a3bd48cb4145487ed2baeb08d2744e5c3a52909aa8bd3e0e69921fc07c2b",
+      "targetHex": "#574942",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "dark brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "brick wall fields between the stacked windows and balconies; exclude black railings and storefront",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 21,
+      "buildingId": "0363100012164219",
+      "observationId": "0363100012164219_e_0xe584t",
+      "sourceSha256": "36a509a4ac17009959b6e642b83d3ff825882a22538aa7f6db94c147bcea1af1",
+      "targetHex": "#68545a",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "dusky mauve-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "central upper wall panels between windows; foliage covers the left side and the ground floor is commercial",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 22,
+      "buildingId": "0363100012170054",
+      "observationId": "0363100012170054_e_0by4u0f",
+      "sourceSha256": "71e099916e4ee06101670b6cbcdd59a797f6565062337963cb7415f9a3489836",
+      "targetHex": "#58473e",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "very dark brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper floor brick bands behind bare branches; the facade is underexposed, so avoid using the near-black recesses",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 23,
+      "buildingId": "0363100012168929",
+      "observationId": "0363100012168929_e_0a506dn",
+      "sourceSha256": "3fbf4e5a698ef605c90a8dc4d3392e07907114d3d0585a651763add7284070c9",
+      "targetHex": "#513d36",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "low",
+        "notes": "dark umber brick; observed in the stated exposed wall field."
+      },
+      "reason": "right-side facade strips around the windows; misted/underexposed crop and a construction skip block much of the wall",
+      "confidence": "low",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 24,
+      "buildingId": "0363100012150400",
+      "observationId": "0363100012150400_e_0i6ny76",
+      "sourceSha256": "0d5a96074112cc2927269430f3eaff4b27ccbbf3dfbacc6c0d6bc6f024363f39",
+      "targetHex": "#8b604c",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "warm red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "wide uninterrupted wall areas on the long elevation; exclude repeated dark window openings and the pale sky",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 25,
+      "buildingId": "0363100012169894",
+      "observationId": "0363100012169894_e_1b99ler",
+      "sourceSha256": "abb4ae73ce2690c935c7dd550d758ae937ca575f5ed2c90b0bf470aaa2b55ebd",
+      "targetHex": "#bd8b6d",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "light salmon-red brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper and middle wall fields visible either side of the tree; exclude trunk, window frames, canal-side vehicles and bright sky",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 26,
+      "buildingId": "0363100012173922",
+      "observationId": "0363100012173922_e_1h64jk6",
+      "sourceSha256": "b5cec6ce06fb7382d5c06c3e92a4f169ba24c8f74d78875549d0d95539241efb",
+      "targetHex": "#50434b",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "deep purplish-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "central wall area above the shopfront and between windows; avoid shadowed tree branches and lower glazing",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 27,
+      "buildingId": "0363100012170088",
+      "observationId": "0363100012170088_e_0idr2lr",
+      "sourceSha256": "3223287c23e5334519608af0c3ae7da2b6b2d22a2873e05da670d004fed5880f",
+      "targetHex": "#4c4035",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "dark brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper facade to the right of the tree trunk; branches and the dark storefront limit clean sampling",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 28,
+      "buildingId": "0363100012169816",
+      "observationId": "0363100012169816_e_1rko4tl",
+      "sourceSha256": "6b9d07c1aa7d65cd81e920c54cb2ce3f72d06fbd7dc6b711d2aac71a8d14eb73",
+      "targetHex": "#8a6254",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "muted red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "central brick planes between white window trim; exclude pale cornice, balcony and black shop sign",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 29,
+      "buildingId": "0363100012236235",
+      "observationId": "0363100012236235_e_1njqk8h",
+      "sourceSha256": "d89d47567a33252524a1a9cd59868fc808ff9861b717d4c5eb466a90c20a0563",
+      "targetHex": "#5e453e",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "dark red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "the two stepped-gable wall fields away from the white central bays; exclude windows, balcony rails and deep entry shadows",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 30,
+      "buildingId": "0363100012236796",
+      "observationId": "0363100012236796_e_1wk1kml",
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "targetHex": "#e0e0d6",
+      "material": "render-plaster",
+      "materialColourFamily": "off-white",
+      "texture": {
+        "pattern": "smooth",
+        "scaleConfidence": "high",
+        "notes": "off-white painted render; observed in the stated exposed wall field."
+      },
+      "reason": "large plain facade field around the arched upper window; exclude teal window glazing, foliage and cornice shadow",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 31,
+      "buildingId": "0363100012236815",
+      "observationId": "0363100012236815_e_0zv81ra",
+      "sourceSha256": "b91842f6d2d13b5ed7caf3319c048aa248c5d812dcd2bb68c54651fcdc1def1f",
+      "targetHex": "#a97759",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "warm orange-red brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper brick panels around the dormers and across the wide facade; exclude cream shopfront, signs and white trim",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 32,
+      "buildingId": "0363100012157068",
+      "observationId": "0363100012157068_e_1j6rs7l",
+      "sourceSha256": "8d970c75e961b9ea134de64df311e45e06ee485ddcc91b9d7d2af0a28cd1d6e8",
+      "targetHex": "#75594b",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "medium brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "wide central upper wall plane between the vertically stacked windows; exclude dark storefront canopy and window recesses",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 33,
+      "buildingId": "0363100012169621",
+      "observationId": "0363100012169621_e_17b6ps7",
+      "sourceSha256": "073e168197dffe1f6c671e4db4a5e5f9101d65aef8c3d50bc3e8c52b95ece31c",
+      "targetHex": "#343633",
+      "material": "painted-brick",
+      "materialColourFamily": "charcoal",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "near-black painted render; observed in the stated exposed wall field."
+      },
+      "reason": "plain upper facade surrounding the white windows; preserve its dark charcoal appearance, excluding lit shopfront and window glass",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 34,
+      "buildingId": "0363100012174152",
+      "observationId": "0363100012174152_e_1l1l429",
+      "sourceSha256": "b9cce0baa74834587e5073184fcbaa7e5e9a75375d77b3abaa58215c0b3b66ec",
+      "targetHex": "#433f3b",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "dark grey-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper wall fields between white window surrounds; side illumination is uneven and the lower shopfront is excluded",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 35,
+      "buildingId": "0363100012253909",
+      "observationId": "0363100012253909_e_0rpyd19",
+      "sourceSha256": "45d5e93c8b4b84473df8aafebdb59588493ec318b350a3823d287b86d2164390",
+      "targetHex": "#8b5e52",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "muted red brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper brick field visible between branches and white window trim; foliage partially obscures the center",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 36,
+      "buildingId": "0363100012174520",
+      "observationId": "0363100012174520_e_1vmewhe",
+      "sourceSha256": "6cc0e9a5f2607c50375b66abefb4a1100ba26a55d4d2c874564ea47d13c96310",
+      "targetHex": "#342f2d",
+      "material": "painted-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "very dark brown painted facade; observed in the stated exposed wall field."
+      },
+      "reason": "flat wall strips around the stacked white windows; exclude black shop sign, glazing and brightly lit doorway",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 37,
+      "buildingId": "0363100012170146",
+      "observationId": "0363100012170146_e_15sat8c",
+      "sourceSha256": "052697332e686dd4d8cb05ad7acded0a93280657d078b45c8fe971959fae510c",
+      "targetHex": "#6d5549",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "low",
+        "notes": "brown-red brick; observed in the stated exposed wall field."
+      },
+      "reason": "small wall portions beside the central windows; tree trunk and large branches dominate the crop",
+      "confidence": "low",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 38,
+      "buildingId": "0363100012175000",
+      "observationId": "0363100012175000_e_1opro3y",
+      "sourceSha256": "b4dff4b80c1c864ade6e924313bae0fbee188dcf621de70a5d5c57b2d60cec31",
+      "targetHex": "#2d2925",
+      "material": "painted-brick",
+      "materialColourFamily": "charcoal",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "black-brown painted facade; observed in the stated exposed wall field."
+      },
+      "reason": "broad dark upper facade surrounding the white windows; exclude the illuminated signage and window reflections",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 39,
+      "buildingId": "0363100012163064",
+      "observationId": "0363100012163064_e_068m6ak",
+      "sourceSha256": "105a7a024e1f8825dedb993d6dc7c2e3ef0d2442395755a2fed2732f2faa2f0f",
+      "targetHex": "#94705d",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "low",
+        "notes": "warm weathered red brick; observed in the stated exposed wall field."
+      },
+      "reason": "visible upper and side wall patches between branches; heavy foliage and compression soften the brick colour",
+      "confidence": "low",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 40,
+      "buildingId": "0363100012154205",
+      "observationId": "0363100012154205_e_1aluzx5",
+      "sourceSha256": "45cbef0ded656258d6e09e1f4ae48bfbbd0b11c85ecc495198af94b22486273f",
+      "targetHex": "#47605f",
+      "material": "painted-brick",
+      "materialColourFamily": "blue-grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "blue-green dark brick; observed in the stated exposed wall field."
+      },
+      "reason": "central facade wall around the upper windows; retain the cool teal cast while excluding window glass and balcony rails",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 41,
+      "buildingId": "0363100012236418",
+      "observationId": "0363100012236418_e_0ypeler",
+      "sourceSha256": "d3151f09f92a2169aed1d52e0c3f95f806f9bdb89441d4925d01921334a734f0",
+      "targetHex": "#513f36",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "dark red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper wall fields beside the tall windows; crop is shaded and shopfront/railings are excluded",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 42,
+      "buildingId": "0363100012162190",
+      "observationId": "0363100012162190_e_0a4g17x",
+      "sourceSha256": "1744c58efe3817e08aa3f6dd71f7e330b4d0450f97e94c7a68676f4d17de9996",
+      "targetHex": "#876657",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "muted red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "brick panels between white-trimmed upper windows; exclude white trim, roof dormer and shop fascia",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 43,
+      "buildingId": "0363100012169418",
+      "observationId": "0363100012169418_e_0sx4moe",
+      "sourceSha256": "0261f915b2673b7a77eb8b82b7ecb13ccd7991f882ef0e53d49ef9690a790a65",
+      "targetHex": "#5b473b",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "dark warm-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "left and central wall fields away from the bright sun flare; direct sun washes the right side and branches cross the facade",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 44,
+      "buildingId": "0363100012168980",
+      "observationId": "0363100012168980_e_1o2cn0o",
+      "sourceSha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+      "targetHex": "#373834",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "charcoal",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "charcoal painted facade; observed in the stated exposed wall field."
+      },
+      "reason": "uninterrupted upper wall panels surrounding the white sash windows; exclude reflective glazing, lower storefront and roof",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 45,
+      "buildingId": "0363100012173929",
+      "observationId": "0363100012173929_e_0dk14yr",
+      "sourceSha256": "5eece14f926b008abbdd81785ccabead61e76b8ffc839dfa51d1762bbc1bdc27",
+      "targetHex": "#776057",
+      "material": "painted-brick",
+      "materialColourFamily": "brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "warm taupe-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper facade wall strips around the paired windows; trunk and branches cover the center, so avoid their shadow",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 46,
+      "buildingId": "0363100012167877",
+      "observationId": "0363100012167877_e_1dcf5va",
+      "sourceSha256": "2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660",
+      "targetHex": "#475047",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "blue-grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "dark green-grey painted render; observed in the stated exposed wall field."
+      },
+      "reason": "plain middle facade around the broad windows; overcast shade and the parked van affect the lower portion",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 47,
+      "buildingId": "0363100012174000",
+      "observationId": "0363100012174000_e_1626xz1",
+      "sourceSha256": "d865fc4c1a3bc849874f149818fc8942804719e22e2d0680ab3cf1cef3266470",
+      "targetHex": "#70442e",
+      "material": "painted-brick",
+      "materialColourFamily": "red-brown",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "medium",
+        "notes": "dark warm red-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "upper brick field around the chimney and windows; golden sun only strikes the top, so use the shaded middle wall",
+      "confidence": "medium",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 48,
+      "buildingId": "0363100012163422",
+      "observationId": "0363100012163422_e_1wc57v0",
+      "sourceSha256": "5912311cce2d6cfc9b8de8553987eb37b77ea57b4d679501cd33d9e4c80607c1",
+      "targetHex": "#6a6259",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "weathered grey-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "right-side brick strips between white window frames; exclude the dark balcony rails and sky",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    },
+    {
+      "index": 49,
+      "buildingId": "0363100012153010",
+      "observationId": "0363100012153010_e_0t1g4df",
+      "sourceSha256": "48b1bdc3737b16137edb45e357aed9800f3745feefbf022e2c33a0cb6c8da474",
+      "targetHex": "#686058",
+      "material": "fired-clay-brick",
+      "materialColourFamily": "grey",
+      "texture": {
+        "pattern": "brick-courses",
+        "scaleConfidence": "high",
+        "notes": "weathered grey-brown brick; observed in the stated exposed wall field."
+      },
+      "reason": "right-side wall strips between white frames and balcony rails; exclude reflective glazing, dark metalwork and sky",
+      "confidence": "high",
+      "regions": "Representative exposed wall field between window openings; material target excludes glazing, trim, mortar highlights, vegetation, signage and street objects."
+    }
+  ]
+}
