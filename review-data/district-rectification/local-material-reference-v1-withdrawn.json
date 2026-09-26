@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewer": "root-codex-native-image-audit",
+  "reviewer": "gpt-5.6-terra",
   "scope": "Independent local source-bound material/colour reference set from inspected rectified full-facade crops. Labels describe only visible wall evidence; they do not establish source-to-owner identity or unseen wall properties.",
   "permittedLabels": {
     "materialFamily": [
@@ -44,10 +44,10 @@
   ],
   "counts": {
     "entries": 30,
-    "clear": 15,
+    "clear": 12,
     "partial": 13,
-    "occluded": 2,
-    "abstentions": 5
+    "occluded": 5,
+    "abstentions": 6
   },
   "entries": [
     {
@@ -69,12 +69,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Visible pink-red masonry fields around the balcony and windows; shrub and blown sky-side upper wall are excluded.",
-      "uncertainty": "Upper facade is overexposed and vegetation obscures lower wall.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "f843dcf98573b1ef1f565ac235cc72a6c42955ed1fb0269d414dd1673ceab6f1"
-      }
+      "uncertainty": "Upper facade is overexposed and vegetation obscures lower wall."
     },
     {
       "source": {
@@ -91,21 +86,11 @@
       "label": {
         "materialFamily": "brick",
         "colourFamily": "brown",
-        "visibility": "partial"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Dark brown brick corner facade with leafless branches crossing upper wall; white window frames excluded.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "brick",
-        "colourFamily": "brown",
         "visibility": "clear"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "46eb8001ffaa8efbfda2d518d27706911f6e202d19a3e37fc52e3884a453bd51"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Visible dark brown masonry fields between repeated white window surrounds.",
+      "uncertainty": "Low contrast limits any claim beyond broad family."
     },
     {
       "source": {
@@ -126,12 +111,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Visible brown masonry across the narrow facade; glass, trim and balcony are excluded.",
-      "uncertainty": "Source-to-owner correspondence is unverified.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "73d2afe99f2a3910b296eeccd01214653cee7a35a7d249c4545d5ac9eff8edfe"
-      }
+      "uncertainty": "Source-to-owner correspondence is unverified."
     },
     {
       "source": {
@@ -148,21 +128,11 @@
       "label": {
         "materialFamily": "brick",
         "colourFamily": "brown",
-        "visibility": "clear"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Soft-focus warm red-brown masonry above orange shop awning; the awning is excluded. Brown versus red is ambiguous under low exposure.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "brick",
-        "colourFamily": "brown",
         "visibility": "partial"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "4feebca682fbbbe7ca380d398fcd553b06cbeab4b8139e452dcc1704dc6df8c6"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Dark brown wall is visible around the windows, with some branch/shadow interference.",
+      "uncertainty": "Low illumination can shift the apparent colour darker."
     },
     {
       "source": {
@@ -183,12 +153,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Exposed red-brown masonry is visible across the facade above the ground floor.",
-      "uncertainty": "Fine course detail is not a label target.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "7e8055c410bc8333cb793bd270cab8423110ff1d73b10cc30097fd8a9f7c5a56"
-      }
+      "uncertainty": "Fine course detail is not a label target."
     },
     {
       "source": {
@@ -204,22 +169,12 @@
       },
       "label": {
         "materialFamily": "brick",
-        "colourFamily": "brown",
-        "visibility": "clear"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Warm red-brown brick around stacked projecting balconies. Yellow sunlight and pale mortar do not establish buff brick.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "brick",
         "colourFamily": "buff",
         "visibility": "clear"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "be61b185b8e1b1923185cdcca6dc8c3d38cdee3cfa2262928788e006871657be"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Sunlit ochre-buff masonry is broadly visible around the stacked balconies.",
+      "uncertainty": "Sunlight changes brightness but not the visible warm buff family."
     },
     {
       "source": {
@@ -235,22 +190,12 @@
       },
       "label": {
         "materialFamily": "brick",
-        "colourFamily": "red",
-        "visibility": "partial"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Blurred but broadly exposed warm red-brown masonry around balconies; foliage covers the lower facade. Sunlit patch is warmer than shadow.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "brick",
         "colourFamily": "buff",
         "visibility": "partial"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "e4fdd7221a4eaf91a7b38970c0502ed72065c531b05d4dfc9c2b97e7f64035c7"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Warm buff/brown masonry is visible, while foliage and adjacent facade fragments are excluded.",
+      "uncertainty": "Vegetation crosses part of the wall field."
     },
     {
       "source": {
@@ -271,12 +216,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "The large visible facade is red-brown masonry; windows and balcony recesses are excluded.",
-      "uncertainty": "The rectified plane covers multiple addressed parts, so no owner-specific claim is made.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "52d5e392614165ad6c9d24a260d4ec96fa3142a29223214f14a6c418188deb43"
-      }
+      "uncertainty": "The rectified plane covers multiple addressed parts, so no owner-specific claim is made."
     },
     {
       "source": {
@@ -293,21 +233,11 @@
       "label": {
         "materialFamily": "brick",
         "colourFamily": "red",
-        "visibility": "clear"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Red masonry apartment facade with metal balcony stacks; ground-floor van excluded.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "brick",
-        "colourFamily": "red",
         "visibility": "partial"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "5844fdeff87b436d4a8c44b96ab3480c36b1c7ad00e392d3467699acc237d750"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Visible apartment facade has muted red-brown masonry fields.",
+      "uncertainty": "Wide crop includes multiple facade bays; identity is unverified."
     },
     {
       "source": {
@@ -324,21 +254,11 @@
       "label": {
         "materialFamily": "brick",
         "colourFamily": "grey",
-        "visibility": "clear"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Broad grey side-wall masonry has visible horizontal joints; drainpipe and glazed lower storey excluded.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "brick",
-        "colourFamily": "grey",
         "visibility": "partial"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "6a873dab0c455f9d3136d6b41fe91b4b7af4c6f04e1b87c2924e145d4b237dcc"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "A broad grey brick wall is visible above the glazed lower storey.",
+      "uncertainty": "Lamp post and flat lighting reduce confidence; label is broad only."
     },
     {
       "source": {
@@ -353,23 +273,13 @@
         ]
       },
       "label": {
-        "materialFamily": "unknown",
-        "colourFamily": "grey",
-        "visibility": "partial"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Blurred grey-brown upper plane behind leafless branches. Broad colour is visible but joints/substrate are not sufficiently resolved to certify brick versus render.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
         "materialFamily": "brick",
         "colourFamily": "grey",
         "visibility": "clear"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "6e616b97dcb286a1bbab0d5a4f2c6bb51d4d92db45df61da79e60c52454b3d81"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "A broad grey brick wall remains visibly exposed above the glazed lower storey.",
+      "uncertainty": "Bare branches are limited and do not hide the representative wall field."
     },
     {
       "source": {
@@ -385,22 +295,12 @@
       },
       "label": {
         "materialFamily": "unknown",
-        "colourFamily": "cream",
-        "visibility": "partial"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Narrow pale cream-grey facade behind thin branches; visible wall fields exist but blur prevents a supported substrate determination.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "unknown",
         "colourFamily": "unknown",
         "visibility": "occluded"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "935de883a4b611f2865334c48c57faf2777d9149eb6eecc4a60010da1ac1ddb8"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Only a narrow, blurred, branch-crossed light facade field is visible.",
+      "uncertainty": "Insufficient exposed wall to distinguish painted/rendered surface from masonry."
     },
     {
       "source": {
@@ -415,23 +315,13 @@
         ]
       },
       "label": {
-        "materialFamily": "brick",
-        "colourFamily": "brown",
-        "visibility": "clear"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Clearly exposed brown brick house with three black balcony fronts and white window trim. No dense foliage obscures the wall; original reference description was wrong.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
         "materialFamily": "unknown",
         "colourFamily": "unknown",
         "visibility": "occluded"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "1fcc8607c0622d491ffd2e2913787762d7cb419953b1d68e6ca2d3929b5b458f"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Dense foliage covers the selected rectified plane.",
+      "uncertainty": "Do not infer wall material or colour through vegetation."
     },
     {
       "source": {
@@ -452,12 +342,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Ornate facade retains broad brown masonry fields around its window openings.",
-      "uncertainty": "Decorative trim is excluded from the label.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "aa876245d5466884bbd2f5d55c347a07a990546a000402b61a0127cb52639900"
-      }
+      "uncertainty": "Decorative trim is excluded from the label."
     },
     {
       "source": {
@@ -478,12 +363,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Dark brown masonry remains visible around windows behind leafless branches.",
-      "uncertainty": "Branches and shade make this a partial-visibility example.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "793ba0fe8ec6f6a0a5a9a93e007f1c87815977c549e8d9f4bfa2a22d11b26b5e"
-      }
+      "uncertainty": "Branches and shade make this a partial-visibility example."
     },
     {
       "source": {
@@ -500,21 +380,11 @@
       "label": {
         "materialFamily": "brick",
         "colourFamily": "brown",
-        "visibility": "partial"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Muted brown brick facade visible around central bare tree trunk and branches; not an unobstructed view.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "brick",
-        "colourFamily": "brown",
         "visibility": "clear"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "fbed644418ec574f5631e540cc2ef4a5cd0b194f02a5f69471f3180027d26bb0"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Visible brown masonry dominates the facade between windows.",
+      "uncertainty": "No fine texture or exact owner identity is asserted."
     },
     {
       "source": {
@@ -535,12 +405,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Visible warm-dark brown masonry occupies the main facade field.",
-      "uncertainty": "Ground-floor signage/glazing is excluded.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "7572aa41618321a4a33a7be5438088890f498ca65ed6ac533779a81498a44a7e"
-      }
+      "uncertainty": "Ground-floor signage/glazing is excluded."
     },
     {
       "source": {
@@ -556,22 +421,12 @@
       },
       "label": {
         "materialFamily": "brick",
-        "colourFamily": "brown",
-        "visibility": "partial"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Brown masonry above Thai Thara shopfront. Golden foliage and sunlight are excluded; the original buff label described the lighting rather than the main wall.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "brick",
         "colourFamily": "buff",
         "visibility": "partial"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "d2473b419adcefe2c4af2f2112bcf401052acd5d92b3c00881cc2a76930f6766"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Sunlit warm ochre/buff masonry is visible at upper levels.",
+      "uncertainty": "Tree foliage and bright sun reduce usable wall area."
     },
     {
       "source": {
@@ -588,21 +443,11 @@
       "label": {
         "materialFamily": "brick",
         "colourFamily": "brown",
-        "visibility": "clear"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Broad brown brick facade, pale horizontal bands and white openings; construction barrier affects ground level only.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "brick",
-        "colourFamily": "brown",
         "visibility": "partial"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "ececf49eb5818a241a841fe0bba219c045b50819598f0cf45cc90676517b51d7"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Broad muted brown masonry is visible above the construction barrier.",
+      "uncertainty": "Barrier obscures lower wall; the crop includes neighbouring facade portions."
     },
     {
       "source": {
@@ -619,21 +464,11 @@
       "label": {
         "materialFamily": "brick",
         "colourFamily": "brown",
-        "visibility": "clear"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Brown brick apartment facade behind open metal balcony framing; wall fields visible at right.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "brick",
-        "colourFamily": "brown",
         "visibility": "partial"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "8581ab026af56453a493a8181cacd306f71dc1c5cdd17bae3f921e4ec787a61d"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Visible multi-bay facade presents muted brown masonry.",
+      "uncertainty": "Several building/address segments share the crop, so it is not owner-specific evidence."
     },
     {
       "source": {
@@ -654,12 +489,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Brown masonry fields are visible between white-framed windows.",
-      "uncertainty": "Use as broad colour/material evidence only.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "b54119e22b97964d76274f16d0b5c49e649161d93ffaa402428caf2397fbf542"
-      }
+      "uncertainty": "Use as broad colour/material evidence only."
     },
     {
       "source": {
@@ -680,12 +510,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Visible brown masonry across the narrow facade supports the broad label.",
-      "uncertainty": "Fine texture and assignment to a specific owner remain out of scope.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "88ca39a28d355596c8224ad1466175263afbff06ea53b86a86333b4dc1c64850"
-      }
+      "uncertainty": "Fine texture and assignment to a specific owner remain out of scope."
     },
     {
       "source": {
@@ -706,12 +531,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "A light smooth wall is visible, but intense sun exposure removes substrate detail.",
-      "uncertainty": "Do not decide render versus painted masonry from the blown light field.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "3ef11dc40a5868a856bcefda47ee2459ef5e75cd3e6beff2e2fc05c5f5c6b6f5"
-      }
+      "uncertainty": "Do not decide render versus painted masonry from the blown light field."
     },
     {
       "source": {
@@ -732,12 +552,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Exposed dark brown masonry is visible around repeated windows.",
-      "uncertainty": "Shadow affects brightness, not the broad brown label.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "91dd2f952500d14ab84dc0782870a8bb47bd902a5891ef8a071f6ff96590494e"
-      }
+      "uncertainty": "Shadow affects brightness, not the broad brown label."
     },
     {
       "source": {
@@ -758,12 +573,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Dark brown masonry is visibly exposed over most of the selected plane.",
-      "uncertainty": "Windows, shopfront and trim are excluded.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "3ca2873139c1ec9fe55d67fd5f1304d49cf531aa733c4ab87b5064eea7502b45"
-      }
+      "uncertainty": "Windows, shopfront and trim are excluded."
     },
     {
       "source": {
@@ -778,23 +588,13 @@
         ]
       },
       "label": {
-        "materialFamily": "brick",
-        "colourFamily": "brown",
-        "visibility": "partial"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Brown brick apartment block with visible small masonry courses, recessed balconies, and a large central bare tree. Original cream-render reference was attached incorrectly.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
         "materialFamily": "render",
         "colourFamily": "cream",
         "visibility": "partial"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "8827aaf02598c0d5f232f143106dad93fe1d57a611306235903315bbf541edb4"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "The visible broad light facade is smooth and cream-white, without discernible masonry joints.",
+      "uncertainty": "Strong sunlight and distance limit confidence; label is broad surface appearance only."
     },
     {
       "source": {
@@ -815,12 +615,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "Upper facade retains visible brown masonry despite the roadside sign and dark lower storefront.",
-      "uncertainty": "The sign blocks lower wall and reduces usable area.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "11386d3af3a632f6a4b51d8ef48d2016329719a26096c9e939854ab6bf48a4b8"
-      }
+      "uncertainty": "The sign blocks lower wall and reduces usable area."
     },
     {
       "source": {
@@ -841,12 +636,7 @@
       },
       "sourceIdentityUnverified": true,
       "reason": "A 30-zone sign dominates the full crop and masks the representative wall field.",
-      "uncertainty": "No material or colour label is justified.",
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "927589cd418b789259210825343e10e18e8cb44a042bb95d6036e54ba57ebf74"
-      }
+      "uncertainty": "No material or colour label is justified."
     },
     {
       "source": {
@@ -861,23 +651,13 @@
         ]
       },
       "label": {
-        "materialFamily": "brick",
-        "colourFamily": "brown",
-        "visibility": "partial"
-      },
-      "sourceIdentityUnverified": true,
-      "reason": "Brown brick house above white van with fine bare branches crossing the wall. Exposed upper masonry supports classification; no construction covering dominates.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
         "materialFamily": "unknown",
         "colourFamily": "unknown",
         "visibility": "occluded"
       },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "60bfc993618bc18a2b51593a590be1772204dde963937f4ca251160dc6006d5c"
-      }
+      "sourceIdentityUnverified": true,
+      "reason": "Construction covering and foreground obstruction dominate the selected crop.",
+      "uncertainty": "No exposed representative wall field is available."
     },
     {
       "source": {
@@ -897,21 +677,10 @@
         "visibility": "occluded"
       },
       "sourceIdentityUnverified": true,
-      "reason": "A broad tree trunk and yellow construction mesh obscure the facade. Neither mesh colour nor a glimpse at the edge supports the target material.",
-      "uncertainty": "Exact colour/albedo and source-to-owner registration remain unverified.",
-      "previousLabel": {
-        "materialFamily": "unknown",
-        "colourFamily": "unknown",
-        "visibility": "occluded"
-      },
-      "audit": {
-        "reviewer": "root-codex",
-        "method": "Viewed this exact native image individually with its path and index; material/colour assessed from visible wall fields.",
-        "sourceSha256": "9f7639b6f9db74b5ffde1191a9e93545b3e241d97da41efbed1b86cf42f4cf35"
-      }
+      "reason": "A large tree trunk and foliage conceal the available facade field.",
+      "uncertainty": "No wall material or colour can be read."
     }
   ],
-  "revision": 2,
-  "supersedesSha256": "1004cdd6349718aace1e451a458f118c4354ea58ae1945d9b053108593303a1f",
-  "reviewCaveat": "Development reference re-audited after seeing aggregate errors, not a pristine held-out test. Almost all supported cases are brick; material diversity must be expanded before any district quality claim."
+  "status": "withdrawn",
+  "withdrawalReason": "Direct native-image audit found incorrect visual descriptions attached to valid source hashes; v1 accuracy claims are invalid."
 }
