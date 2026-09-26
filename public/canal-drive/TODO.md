@@ -50,6 +50,14 @@ Home-base routes already grow an expanding learning radius from the address
 
 ## P2 — Weight and reach
 
+**Wall material demo: finish the visual gate before expanding.**
+The colour/texture focus supersedes new roof work for this appearance batch.
+See `docs/plans/wall-material-demo.md` and `/canal-drive/material-report.html`.
+100 owners have reference assessments; the ten-case trial has six broad-family
+passes and four unresolved cases. Resolve source-facing visibility and material
+uncertainty, verify colour beyond family labels and texture scale across zooms,
+then review the remaining 90. No default-game texture rollout yet.
+
 **8e. Ground-floor colour band: three passes, and the statistic is wrong.**
 *Opened 2026-09-26. See `FACADE_BANDS_REPORT.md` at the repo root.* 36 of 46
 visible bases differ from the wall above, so one wall colour per building is

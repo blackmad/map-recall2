@@ -27,14 +27,14 @@ const smooth = (id: WallMaterialId, label:string, family: WallMaterialPreset['ma
   ({ id, label, materialFamily: family, baseColour, mortarColour: null, courseWidthM: null, courseHeightM: null, patternKind: 'smooth', seed });
 
 export const WALL_MATERIALS: readonly WallMaterialPreset[] = Object.freeze([
-  brick('redbrick', 'Red brick', 'brick', '#965f4d', '#896357', 101),
-  brick('brownbrick', 'Brown brick', 'brick', '#765648', '#70594f', 103),
+  brick('redbrick', 'Red brick', 'brick', '#8c6252', '#836458', 101),
+  brick('brownbrick', 'Brown brick', 'brick', '#6b554a', '#6b584e', 103),
   brick('darkbrick', 'Dark brick', 'brick', '#514641', '#514a45', 107),
   brick('buffbrick', 'Buff brick', 'brick', '#b8996f', '#a9997e', 109),
   brick('greybrick', 'Grey brick', 'brick', '#827d76', '#807d77', 113),
   brick('paintedcreambrick', 'Cream painted brick', 'painted-brick', '#c9bea5', '#c3bba9', 127),
   brick('paintedwhitebrick', 'White painted brick', 'painted-brick', '#d9d8ce', '#d0d0ca', 131),
-  smooth('creamrender', 'Cream render', 'render', '#c8b99a', 137),
+  smooth('creamrender', 'Cream render', 'render', '#dfd2b6', 137),
   smooth('whiterender', 'White render', 'render', '#dbd9ce', 139),
   { id: 'greystone', label:'Grey stone', materialFamily: 'stone', baseColour: '#99968e', mortarColour: '#89877f', courseWidthM: .48, courseHeightM: .24, patternKind: 'stone-blocks', seed: 149 },
   smooth('concrete', 'Concrete', 'concrete', '#aaa9a2', 151),
