@@ -6,6 +6,21 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Daylight paper replaces the cobalt chrome — 2026-09-26
+
+The owner called the navy/cobalt-on-blue theme "way too heavy". Every surface
+you stop at was a cobalt plaque and every HUD readout a navy plate, over a map
+that is mostly light land and blue water. Canal now runs on warm paper
+(`daylightTheme` in `hudTheme.ts`, published as `--day-*`): near-black ink,
+exactly one accent — copper, for action and selection — and cobalt enamel only
+on the title plaque, where it is literal (Amsterdam street signs). Selected
+setup tiles take a copper border + tint; the quiz card, settings/help panels,
+knowledge review, arrival/pause cards, loading screen and canvas HUD are
+paper. Contrast: ink 14.8:1, muted 6.1:1, copper text 6.0:1 on paper; ink on
+the arrival button's copper-mid 5.6:1 (the darker accent was 4.0:1). Canal's
+`:root` overrides the shared semantic tokens, so Map Quest keeps cobalt until
+it is migrated (TODO #28). DESIGN.md records the new system.
+
 ## Phone route setup fits, and says when it scrolls — 2026-09-26
 
 On an iPhone 13 (390×664) the setup rail's scroll box was 329px for 445px of

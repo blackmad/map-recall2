@@ -69,7 +69,7 @@ class HUD {
     return `${cut.trimEnd()}…`;
   }
 
-  /** Always-on north rose. The north half is the one gold accent on the HUD;
+  /** Always-on north rose. The north half is the one copper accent on the HUD;
    *  the south half is dim so the needle has a front. */
   drawCompass(ctx, camera) {
     const ui = window.CanalRecallUi;
@@ -90,7 +90,7 @@ class HUD {
 
     ctx.save();
     ctx.translate(cx, cy);
-    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+    ctx.strokeStyle = surface.border;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.arc(0, 0, radius + 4, 0, Math.PI * 2);
@@ -105,7 +105,7 @@ class HUD {
     ctx.lineTo(-radius * 0.45, radius * 0.42);
     ctx.closePath();
     ctx.fill();
-    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.fillStyle = surface.controlKnob;
     ctx.beginPath();
     ctx.moveTo(-radius * 0.18, 0);
     ctx.lineTo(-radius * 0.45, -radius * 0.42);
@@ -114,7 +114,7 @@ class HUD {
     ctx.closePath();
     ctx.fill();
     // "N" sits on the needle, inside the chip so a round card does not clip it.
-    ctx.fillStyle = '#071430';
+    ctx.fillStyle = '#fbf8f2';
     ctx.font = this._font(800, Math.max(9, Math.round(size * 0.24)), surface.fontPlaque);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
