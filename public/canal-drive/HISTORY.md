@@ -1,5 +1,45 @@
 # Canal Recall — what is built
 
+## 2026-09-26 — source-bound appearance and autonomous review
+
+The owner explicitly removed routine human-in-the-loop review. Visual model reviews retain
+model identity, exact crop hashes and uncertainty; they are never called human gold.
+The signage desk now loads published model reviews without requiring owner labelling.
+Duplicate sample IDs are reviewed once; occluded frontages abstain rather than claim absence.
+
+Accepted wall-colour publication now binds building, observation, crop and measurement hashes;
+unaccepted buildings retain explicit procedural provenance. The colour-coverage switch hides
+unreviewed building masses and optional building details while retaining streets and trees.
+OSM building/amenity/tourism/heritage survive staging, matched-footprint merging and LoD1 tiles;
+these tags do not invent architectural details. Production tag tiles need the missing staging input.
+
+DeepSeek through OpenCode audited the lattice evaluator: raw union input imputes zero boxes;
+262 of 284 rows abstain and all 40 candidate fills fail overlap checks. Windows/doors-only
+input adds 20 boxes (11 facade scope), recovering zero of 12 missing measured facade openings.
+This is not evidence that every proposal is false: the point-cloud reference undercounts windows.
+See `scripts/facade-eval/OPENING_LATTICE_UNION_R0_REPORT.md`.
+
+Driving-scale baseline, Chrome 153.0.8010.53: fixed Da Costa camera
+[4.874284, 52.371787], pitch 65°, bearing −18.12°, 3 seconds settling, 30 warm-up
+frames, 120 sampled frames per baseline/ablation. Results are frame intervals and paired
+layer-ablation deltas, **not isolated GPU timings**. Phone width uses desktop hardware.
+The refresh-rate ceiling masks small costs; negative deltas are noise. This establishes a
+16.8 ms observed baseline, not proof of spare GPU capacity, so joinery gates stay unchanged.
+
+| Viewport (DPR 1) | Zoom | Frame p50 / p95 ms | Building / facade / roof / pyramid marginal p95 ms |
+| --- | --- | --- | --- |
+| 1440 × 900 | 17.1 | 16.7 / 16.7 | 0.0 / 0.0 / 0.0 / 0.0 |
+| 1440 × 900 | 17.5 | 16.7 / 16.7 | -0.1 / -0.1 / -0.1 / -0.0 |
+| 1440 × 900 | 18 | 16.7 / 16.7 | 0.0 / -0.1 / 0.0 / -0.1 |
+| 390 × 844 | 17.1 | 16.7 / 16.7 | 0.0 / 0.0 / -0.1 / -0.1 |
+| 390 × 844 | 17.5 | 16.7 / 16.7 | -0.1 / -0.1 / 0.0 / -0.0 |
+| 390 × 844 | 18 | 16.7 / 16.7 | 0.0 / 0.0 / 0.0 / 0.0 |
+
+Reproduce with `npm run profile:driving-appearance`; images/raw measurements are local under
+`.cache/appearance-programme/profile`. Clean-checkout lint passed; clean aggregate requires
+ignored panorama evidence. Evidence-rich aggregate exposed a stale positional roof assertion,
+which must test behaviour rather than assume pyramid priority before measured eaves.
+
 ## 2026-09-25 — the OCR reads every sign more than once, and that is the fix
 
 The reported failure was partial words — `Handwork Boutiqur`, `JOHNNIL`,

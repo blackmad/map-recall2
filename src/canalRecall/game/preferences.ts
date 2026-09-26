@@ -59,6 +59,7 @@ export interface CanalPreferences {
   arrow: boolean;
   minimap: boolean;
   trees: boolean;
+  measuredColoursOnly: boolean;
   detailed3d: boolean;
   googleTiles: boolean;
   reducedMotion: boolean;
@@ -88,6 +89,7 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     routePattern: 'surprise',
     homeAddress: '',
     trees: true,
+    measuredColoursOnly: false,
     detailed3d: false,
     googleTiles: false,
     reducedMotion: false,
@@ -141,6 +143,7 @@ function fillPreferences(
     arrow: parseBoolean(source.arrow, base.arrow),
     minimap: parseBoolean(source.minimap, base.minimap),
     trees: parseBoolean(source.trees, base.trees),
+    measuredColoursOnly: parseBoolean(source.measuredColoursOnly, base.measuredColoursOnly),
     detailed3d: parseBoolean(source.detailed3d, base.detailed3d),
     googleTiles: parseBoolean(source.googleTiles, base.googleTiles),
     reducedMotion: parseBoolean(source.reducedMotion, base.reducedMotion),

@@ -134,22 +134,14 @@ a larger reference set; a tie is the answer, not an invitation.
 programme has never once completed the chain, for any property, for any
 building, and the reason is not extraction quality:
 
-- **The renderer never draws measured evidence.**
-  `scripts/city-appearance/publish-area-geometry-demo.ts:107` colours all 7,395
-  district buildings from `contextualBuildingPalette(id, year)` — a hash-seeded
-  invented palette — and never reads the 598 observation records that exist for
-  buildings in that same district. `facade/wallColourSample.ts` measures real
-  wall colour from pixels, is tested, and is imported only by its own test and
-  two review scripts. `classifyGable` in `facade/gable.ts` has no caller
-  outside its own test.
-- **No acceptance state exists.** Across the repo the only
-  `appearancePublication` values ever written are
-  `candidate-registration-preview`, `quarantined-machine-preview`,
-  `withheld-source-audit-only` and `revoked-machine-observation`. There is no
-  accepted or canonical value. `reviewed: 0, accepted: 0` is an unimplemented
-  feature, not a backlog — a grading desk today has nothing to write into. The
-  same line hard-codes `roofShape: 'unknown'`, which is why 598 of 598
-  observations carry no roof shape.
+- **Populate accepted appearance evidence.** Source-bound wall-colour promotion,
+  publication and browser provenance now exist, with a coverage toggle. Run model
+  visual review of the wall-colour sample and extend promotion to preserve model
+  reviewer identity distinctly; never call model decisions human gold. Publish
+  accepted observations after validating exact crop and measurement hashes.
+- **Gable detail:** `classifyGable` has a non-test caller in
+  `scripts/roofline-eval/reconcile-gold.ts`, but no dedicated test; collect stronger
+  source profiles before enabling parametric gables in the game.
 - **Coverage:** 7,566 of 342,993 buildings citywide (2.2 %) have any appearance
   data; 501 of 7,395 (6.8 %) in the target district have an observation.
 
@@ -285,7 +277,7 @@ and shadows, which no detector can recover because the evidence is not in the
 image. That gap is now item 8c (`facade/openingLattice.ts`). The hand-labelled
 gold set is still wanted, but its job has changed: score **imputation** — did
 the lattice put a window where one really is — rather than re-adjudicate the
-detectors. Sizing the labelling job waits on the lattice's first real output;
+detectors. The first lattice run recovered 0/12 missing measured facade openings; score its 11 facade-scope proposals against visually reviewed photos (retain model-review provenance);
 confirming imputed boxes may be far cheaper than drawing every box by hand.
 
 *The geometry channel is open: point cloud measures rooflines and gables
