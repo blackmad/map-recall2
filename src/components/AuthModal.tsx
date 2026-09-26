@@ -33,7 +33,7 @@ export function AuthModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-[80] bg-[rgba(7,20,48,0.82)] backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-[80] bg-[rgba(28,24,18,0.38)] backdrop-blur-sm flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
@@ -100,7 +100,7 @@ export function AuthModal({ onClose }: { onClose: () => void }) {
         </form>
         <button
           onClick={() => setCreating((value) => !value)}
-          className="mt-3 w-full text-xs text-[#c4a35a] hover:text-white"
+          className="mt-3 w-full text-xs text-[#8a4a18] hover:text-white"
         >
           {creating ? 'Already have an account? Sign in' : 'New here? Create an account'}
         </button>

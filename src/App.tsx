@@ -803,7 +803,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col w-screen h-screen overflow-hidden bg-[#071430] text-white font-sans select-none">
+    <div className="flex flex-col w-screen h-screen overflow-hidden bg-[#f4efe5] text-white font-sans select-none">
       {/* Top App Header (Strict Single Line) */}
       <GameHeader
         cities={allCities}
@@ -867,7 +867,7 @@ export default function App() {
             <button
               type="button"
               onClick={returnToStart}
-              className="font-semibold text-[#e2c98a] underline underline-offset-2 cursor-pointer"
+              className="font-semibold text-[#8a4a18] underline underline-offset-2 cursor-pointer"
             >
               Back to start
             </button>
@@ -938,7 +938,7 @@ export default function App() {
               className="pointer-events-auto relative flex min-h-0 w-full max-w-none flex-1 flex-col border-white/15 lg:max-w-sm lg:border-r"
               style={{
                 background:
-                  'linear-gradient(165deg, rgba(20,80,184,0.94) 0%, rgba(11,58,140,0.96) 42%, rgba(7,20,48,0.98) 100%)',
+                  'linear-gradient(180deg, #fbf8f2 0%, #f4efe5 100%)',
               }}
             >
               <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-4 py-4 sm:gap-5 sm:px-5 sm:py-6">
@@ -963,7 +963,7 @@ export default function App() {
                       }}
                       className="enamel-tile flex items-center gap-3 px-3.5 py-3.5 text-left cursor-pointer sm:py-4"
                     >
-                      <span className="text-xl text-[#c4a35a]">{category.icon}</span>
+                      <span className="text-xl text-[#8a4a18]">{category.icon}</span>
                       <span className="min-w-0">
                         <span className="enamel-brand block text-lg text-white">{category.shortLabel}</span>
                         <span className="block text-xs text-white/65 font-normal mt-0.5">{category.description}</span>
@@ -1030,7 +1030,7 @@ export default function App() {
             <div
               className="mq-setup-vista relative h-[18dvh] shrink-0 lg:h-auto lg:min-h-0 lg:flex-1"
               style={{
-                backgroundImage: `linear-gradient(0deg, rgba(7,20,48,0.45) 0%, transparent 55%), linear-gradient(90deg, rgba(7,20,48,0.55) 0%, transparent 40%), url(${import.meta.env.BASE_URL}canal-drive/assets/media/setup-backdrop.jpg)`,
+                backgroundImage: `url(${import.meta.env.BASE_URL}canal-drive/assets/media/setup-backdrop.jpg)`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}

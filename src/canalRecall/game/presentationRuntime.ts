@@ -230,7 +230,8 @@ export class GamePresentationRuntime {
 
     if (this.state === GameState.MENU) { this._renderMenu(); return; }
     if (this.state === GameState.MAP_SELECT) {
-      ctx.fillStyle = '#111';
+      // Paper, like the setup it sits between; it flashed black before.
+      ctx.fillStyle = '#f4efe5';
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       return;
     }

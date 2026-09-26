@@ -549,7 +549,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
   return (
     <div
       id="map-viewport-container"
-      className={`w-full h-full relative overflow-hidden select-none ${
+      className={`w-full h-full relative isolate overflow-hidden select-none ${
         (gameMode === 'pinpoint' || gameMode === 'guess_neighborhood') && !isRoundComplete && !isGameOver ? 'cursor-crosshair' : 'cursor-grab'
       }`}
     >
@@ -564,9 +564,9 @@ export const MapComponent: React.FC<MapComponentProps> = ({
         className="enamel-float absolute bottom-20 right-2.5 z-[900] p-2.5 flex items-center justify-center cursor-pointer transition hover:scale-105 active:scale-95"
       >
         {isLocating ? (
-          <Loader2 className="w-4 h-4 text-[#c4a35a] animate-spin" />
+          <Loader2 className="w-4 h-4 text-[#8a4a18] animate-spin" />
         ) : (
-          <LocateFixed className="w-4 h-4 text-[#c4a35a]" />
+          <LocateFixed className="w-4 h-4 text-[#8a4a18]" />
         )}
       </button>
       )}
