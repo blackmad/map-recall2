@@ -1,0 +1,244 @@
+import { createHash, randomUUID } from 'node:crypto';
+import { promises as fs, constants } from 'node:fs';
+import path from 'node:path';
+const ROOTS = ['.cache/city-appearance/review-notes', '.cache/city-appearance/repair-preview-notes'];
+const sha = (b: Buffer) => createHash('sha256').update(b).digest('hex');
+const canon = (x: unknown) => JSON.stringify(x, (k, v) => v && typeof v === 'object' && !Array.isArray(v) ? Object.fromEntries(Object.keys(v).sort().map(a => [a, v[a]])) : v);
+export interface SnapshotEntry {
+    path: string;
+    sha256: string;
+    bytes: number;
+}
+export interface SnapshotManifest {
+    schemaVersion: 1;
+    snapshotSha256: string;
+    createdAt: string;
+    entries: SnapshotEntry[];
+    missingBindings: string[];
+}
+function safe(p: string) { if (!p || p.includes('\\') || path.isAbsolute(p) || path.posix.normalize(p) !== p || p.split('/').some(x => !x || x === '.' || x === '..'))
+    throw Error(`unsafe path: ${p}`); }
+function under(base: string, p: string) { const r = path.relative(base, p); return r === '' || (!r.startsWith('..') && !path.isAbsolute(r)); }
+async function noSymlinkParents(base: string, p: string) { let cur = base; try {
+    if ((await fs.lstat(cur)).isSymbolicLink())
+        throw Error(`symlink path component: ${cur}`);
+}
+catch (e: any) {
+    if (e.code !== 'ENOENT')
+        throw e;
+} for (const part of path.relative(base, p).split(path.sep)) {
+    if (!part)
+        continue;
+    cur = path.join(cur, part);
+    try {
+        if ((await fs.lstat(cur)).isSymbolicLink())
+            throw Error(`symlink path component: ${cur}`);
+    }
+    catch (e: any) {
+        if (e.code !== 'ENOENT')
+            throw e;
+    }
+} }
+async function walk(root: string, dir: string) { const out: string[] = []; async function go(d: string) { await noSymlinkParents(root, d); let es; try {
+    es = await fs.readdir(d, { withFileTypes: true });
+}
+catch (e: any) {
+    if (e.code === 'ENOENT')
+        return;
+    throw e;
+} for (const e of es.sort((a, b) => a.name.localeCompare(b.name))) {
+    const p = path.join(d, e.name);
+    if (e.isSymbolicLink())
+        throw Error(`symlink source: ${p}`);
+    if (e.isDirectory())
+        await go(p);
+    else if (e.isFile() && e.name.endsWith('.json'))
+        out.push(p);
+} } await go(path.resolve(root, dir)); return out; }
+async function sources(root: string) { const out: string[] = []; for (const d of ROOTS)
+    out.push(...await walk(root, d)); const missing: string[] = []; const extra: string[] = ['public/data/city-expansion/current.json', 'scripts/review/thousand-building-candidate-report.json', '.cache/facade-rebuild/router-review/labels.json']; for (const p of out) {
+    let x: any;
+    try {
+        x = JSON.parse(await fs.readFile(p, 'utf8'));
+    }
+    catch {
+        continue;
+    }
+    const rel = path.relative(root, p).replaceAll(path.sep, '/'), packet = typeof x.packetSha256 === 'string' && /^[a-f0-9]{64}$/.test(x.packetSha256) ? x.packetSha256 : null, release = typeof x.releaseId === 'string' && /^[a-f0-9]{64}$/.test(x.releaseId) ? x.releaseId : null;
+    if (rel.includes('/review-notes/')) {
+        const q = release && packet ? `public/data/city-expansion/evaluations/${release}/comparison-packet.json` : '';
+        try {
+            await noSymlinkParents(root, path.resolve(root, q));
+            const b = await fs.readFile(path.resolve(root, q));
+            if (sha(b) === packet)
+                extra.push(q);
+            else
+                missing.push(`${rel}: packet hash mismatch for ${q}`);
+        }
+        catch {
+            missing.push(`${rel}: missing comparison packet ${q || '(releaseId or packetSha256)'}`);
+        }
+    }
+    else if (rel.includes('/repair-preview-notes/')) {
+        const q = 'public/data/facade-repair-preview/cases.json';
+        try {
+            await noSymlinkParents(root, path.resolve(root, q));
+            const b = await fs.readFile(path.resolve(root, q));
+            if (packet && sha(b) === packet)
+                extra.push(q);
+            else if (packet) {
+                const archive = `public/data/facade-repair-preview/revisions/${packet}.json`;
+                try {
+                    await noSymlinkParents(root, path.resolve(root, archive));
+                    const archived = await fs.readFile(path.resolve(root, archive));
+                    if (sha(archived) === packet)
+                        extra.push(archive);
+                    else
+                        missing.push(`${rel}: corrupt preview revision archive ${archive}`);
+                }
+                catch {
+                    missing.push(`${rel}: preview cases hash mismatch and missing revision archive ${archive}`);
+                }
+            }
+            else
+                missing.push(`${rel}: preview cases hash mismatch`);
+        }
+        catch {
+            missing.push(`${rel}: missing preview cases.json`);
+        }
+    }
+} const lp = path.resolve(root, '.cache/facade-rebuild/router-review/labels.json'), mp = path.resolve(root, '.cache/facade-rebuild/router-review/manifest.json'); try {
+    await noSymlinkParents(root, lp);
+    await noSymlinkParents(root, mp);
+    const l = JSON.parse(await fs.readFile(lp, 'utf8')), m = JSON.parse(await fs.readFile(mp, 'utf8'));
+    const allowed = new Set(['schemaVersion', 'datasetId', 'generatedAt', 'tasks', 'items', 'attribution', 'note']);
+    if (typeof l.datasetId === 'string' && /^[a-f0-9]{64}$/.test(l.datasetId) && l.datasetId === m.datasetId && Object.keys(m).every(k => allowed.has(k)) && [m.schemaVersion, m.datasetId, m.generatedAt, m.tasks, m.items, m.attribution, m.note].every(x => x !== undefined))
+        extra.push('.cache/facade-rebuild/router-review/manifest.json');
+    else
+        missing.push('router labels/manifest datasetId or schema mismatch');
+}
+catch {
+    missing.push('router manifest missing or unreadable');
+} for (const p of [...out, ...extra]) {
+    try {
+        await noSymlinkParents(root, path.resolve(root, p));
+        if ((await fs.lstat(path.resolve(root, p))).isFile())
+            out.push(path.resolve(root, p));
+    }
+    catch (e: any) {
+        if (e.code !== 'ENOENT')
+            throw e;
+    }
+} return { paths: [...new Set(out)].sort(), missing }; }
+async function read(root: string) { const s = await sources(root), bytes = new Map<string, Buffer>(), entries: SnapshotEntry[] = []; for (const p of s.paths) {
+    await noSymlinkParents(root, p);
+    const b = await fs.readFile(p), r = path.relative(root, p).replaceAll(path.sep, '/');
+    bytes.set(r, b);
+    entries.push({ path: r, sha256: sha(b), bytes: b.length });
+} return { entries, bytes, missingBindings: s.missing }; }
+function hash(entries: SnapshotEntry[], missing: string[] = []) { return sha(Buffer.from(canon({ entries, missingBindings: [...missing].sort() }))); }
+function validate(es: any) { if (!Array.isArray(es))
+    throw Error('invalid entries'); const seen = new Set; for (const e of es) {
+    if (!e || typeof e.path !== 'string' || seen.has(e.path) || !/^[a-f0-9]{64}$/.test(e.sha256) || !Number.isInteger(e.bytes) || e.bytes < 0)
+        throw Error('invalid entry');
+    seen.add(e.path);
+    safe(e.path);
+} }
+export async function planReviewSnapshot(root = process.cwd()) { const x = await read(path.resolve(root)); return { snapshotSha256: hash(x.entries, x.missingBindings), entries: x.entries, missingBindings: x.missingBindings }; }
+export async function verifyReviewSnapshot(directory: string) { try {
+    const d = path.resolve(directory);
+    await noSymlinkParents(d, path.join(d, 'manifest.json'));
+    const m = JSON.parse(await fs.readFile(path.join(d, 'manifest.json'), 'utf8'));
+    validate(m.entries);
+    if (m.schemaVersion !== 1 || !Array.isArray(m.missingBindings) || m.missingBindings.some((x: any) => typeof x !== 'string') || m.snapshotSha256 !== hash(m.entries, m.missingBindings))
+        throw Error('manifest hash mismatch');
+    for (const e of m.entries) {
+        const p = path.join(d, 'files', e.path);
+        if (!under(path.join(d, 'files'), p))
+            throw Error('path traversal');
+        await noSymlinkParents(path.join(d, 'files'), p);
+        const b = await fs.readFile(p);
+        if (b.length !== e.bytes || sha(b) !== e.sha256)
+            throw Error(`hash mismatch: ${e.path}`);
+    }
+    return { valid: true, manifest: m as SnapshotManifest };
+}
+catch (e: any) {
+    return { valid: false, error: e.message ?? String(e) };
+} }
+export async function createReviewSnapshot(root = process.cwd(), destination?: string) { root = path.resolve(root); const x = await read(root), id = hash(x.entries, x.missingBindings), d = path.resolve(root, destination ?? `review-data/snapshots/${id}`); if (under(path.resolve(root, '.cache'), d) || under(path.resolve(root, 'public'), d))
+    throw Error('destination must be outside .cache and public'); await noSymlinkParents(path.parse(d).root, d); const old = await verifyReviewSnapshot(d); if (old.valid && old.manifest?.snapshotSha256 === id)
+    return { directory: d, manifest: old.manifest }; try {
+    await fs.lstat(d);
+    throw Error('destination exists');
+}
+catch (e: any) {
+    if (e.code !== 'ENOENT')
+        throw e;
+} const stage = path.join(path.dirname(d), `.snapshot-${randomUUID()}`); try {
+    await fs.mkdir(path.join(stage, 'files'), { recursive: true });
+    for (const e of x.entries) {
+        const p = path.join(stage, 'files', e.path);
+        await fs.mkdir(path.dirname(p), { recursive: true });
+        await fs.writeFile(p, x.bytes.get(e.path)!, { flag: 'wx' });
+    }
+    const y = await read(root);
+    if (hash(y.entries, y.missingBindings) !== id)
+        throw Error('sources changed during snapshot');
+    const m: SnapshotManifest = { schemaVersion: 1, snapshotSha256: id, createdAt: new Date().toISOString(), entries: x.entries, missingBindings: x.missingBindings };
+    await fs.writeFile(path.join(stage, 'manifest.json'), JSON.stringify(m, null, 2) + '\n', { flag: 'wx' });
+    const v = await verifyReviewSnapshot(stage);
+    if (!v.valid)
+        throw Error(v.error);
+    await fs.mkdir(path.dirname(d), { recursive: true });
+    await fs.rename(stage, d);
+    return { directory: d, manifest: m };
+}
+catch (e) {
+    await fs.rm(stage, { recursive: true, force: true });
+    throw e;
+} }
+export async function restoreReviewSnapshot(directory: string, destination: string) { const v = await verifyReviewSnapshot(directory); if (!v.valid || !v.manifest)
+    throw Error(v.error); const d = path.resolve(destination); await noSymlinkParents(path.parse(d).root, d); try {
+    if ((await fs.readdir(d)).length)
+        throw Error('restore destination must be empty');
+}
+catch (e: any) {
+    if (e.code !== 'ENOENT')
+        throw e;
+} await fs.mkdir(d, { recursive: true }); for (const e of v.manifest.entries) {
+    const p = path.join(d, e.path);
+    await noSymlinkParents(d, p);
+    await fs.mkdir(path.dirname(p), { recursive: true });
+    await fs.copyFile(path.join(path.resolve(directory), 'files', e.path), p, constants.COPYFILE_EXCL);
+} return v.manifest; }
+export const snapshotReviewData = createReviewSnapshot, verifySnapshot = verifyReviewSnapshot, restoreSnapshot = restoreReviewSnapshot;
+async function main() { const a = process.argv.slice(2), cmd = ['plan', 'write', 'verify', 'restore'].includes(a[0]) ? a.shift()! : 'plan'; let root = process.cwd(), out: string | undefined, snap: string | undefined; for (let i = 0; i < a.length; i++) {
+    if (a[i] === '--root' && a[i + 1])
+        root = a[++i];
+    else if (a[i] === '--out' && a[i + 1])
+        out = a[++i];
+    else if (a[i] === '--snapshot' && a[i + 1])
+        snap = a[++i];
+    else
+        throw Error(`unknown argument: ${a[i]}`);
+} if (cmd === 'plan') {
+    console.log(JSON.stringify(await planReviewSnapshot(root), null, 2));
+    return;
+} if (cmd === 'write') {
+    if (!out)
+        throw Error('write requires --out');
+    console.log(JSON.stringify(await createReviewSnapshot(root, out), null, 2));
+    return;
+} if (cmd === 'verify') {
+    if (!snap && !out)
+        throw Error('verify requires --snapshot');
+    const v = await verifyReviewSnapshot(snap ?? out!);
+    console.log(JSON.stringify(v, null, 2));
+    if (!v.valid)
+        process.exitCode = 1;
+    return;
+} if (!snap || !out)
+    throw Error('restore requires --snapshot and --out'); await restoreReviewSnapshot(snap, out); }
+if (import.meta.url === `file://${process.argv[1]}`)
+    main().catch(e => { console.error(e.message); process.exitCode = 1; });

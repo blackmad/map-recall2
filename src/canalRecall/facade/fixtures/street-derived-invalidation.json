@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "invalidatedAt": "2026-09-04T00:00:00+02:00",
+  "reason": "The pre-rebuild Amsterdam panorama registration used conflicting implicit yaw conventions and did not prove pand/elevation identity.",
+  "knownRegression": {
+    "pandId": "0363100012164989",
+    "address": "Herengracht 270, Amsterdam",
+    "panoramaId": "TMX7316010203-001543_pano_0000_003628"
+  },
+  "invalidArtifactClasses": [
+    "rectified facade strips",
+    "opening rectangles and masks",
+    "storey and bay measurements",
+    "street-derived colours and materials",
+    "photographic textures",
+    "facade review labels and evidence strips",
+    "registration offsets and party-wall correlations",
+    "renderer facade extracts"
+  ],
+  "forbiddenInputs": [
+    ".cache/facade-twin/measured/**",
+    "public/canal-drive/facade-review/**",
+    "public/data/extracts/amsterdam/staging/facade-twin/**/measured-facades.json"
+  ],
+  "reuseRule": "No invalid artifact may enter the rebuild. Only allowlisted source records and original panorama bytes may be migrated, and every downstream artifact requires a complete derivation key after the registration gate exists."
+}

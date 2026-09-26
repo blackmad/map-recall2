@@ -43,18 +43,25 @@ export interface CameraPose {
  * produces a confident, well-formed picture of whatever stands behind the
  * camera.
  *
- * Amsterdam's panoramas are `centre`: the heading direction sits at the
- * horizontal middle of the frame. That was settled by slicing one panorama into
- * eight 45° bands and finding which band held the wall known to be 4.2 m away —
- * it fell at u≈0.3, and `centre` predicts 0.305 while `edge` predicts 0.805.
- *
- * Worth recording how nearly the wrong answer won. Both conventions render
- * upright, plausible, entirely convincing canal frontages, because in Amsterdam
- * every direction is one. Judging by eye picked `edge`, and it was wrong. Only
- * a prediction checked against geometry known independently — where is the wall
- * we already measured — could tell them apart.
+ * These legacy values describe vehicle-aligned sources. Amsterdam municipal
+ * imagery instead uses AMSTERDAM_WORLD_ALIGNED: geographic north is at centre
+ * and published vehicle heading/pitch/roll must not be applied again. Merely
+ * choosing `centre` does not enable that publisher convention.
  */
 export type YawConvention = 'centre' | 'edge';
+
+/** Named publisher convention; legacy yaw values still mean vehicle-aligned. */
+export interface CameraModel {
+  id: string;
+  usesOrientation: boolean;
+  yaw: YawConvention;
+  /** Per-capture boresight error of the stitched panorama, measured from anchors. */
+  boresightYawDeg?: number;
+  boresightPitchDeg?: number;
+}
+export const AMSTERDAM_WORLD_ALIGNED: CameraModel = Object.freeze({
+  id: 'amsterdam-world-aligned/v1', usesOrientation: false, yaw: 'centre',
+});
 
 export interface FacadePlane {
   /** Wall ends, in RD metres, ordered so the wall's outward normal is to the right. */
@@ -117,6 +124,53 @@ export function directionToPixel(
   return [u * image.width, v * image.height];
 }
 
+/**
+ * Apply a measured per-capture boresight error to a world direction.
+ *
+ * The municipal panorama is stitched from several cameras; its absolute
+ * orientation can be a few degrees off even though it is world-aligned. Anchor
+ * measurements showed a constant horizontal shift per panorama, i.e. a yaw
+ * offset. Positive yaw increases the bearing; positive pitch looks up.
+ */
+function applyBoresight(direction: [number, number, number], yawDeg: number, pitchDeg: number): [number, number, number] {
+  const yaw = toRadians(yawDeg), pitch = toRadians(pitchDeg);
+  let [x, y, z] = direction;
+  if (yaw) {
+    const x1 = x * Math.cos(yaw) - y * Math.sin(yaw);
+    y = x * Math.sin(yaw) + y * Math.cos(yaw);
+    x = x1;
+  }
+  if (pitch) {
+    const y1 = y * Math.cos(pitch) + z * Math.sin(pitch);
+    z = -y * Math.sin(pitch) + z * Math.cos(pitch);
+    y = y1;
+  }
+  return [x, y, z];
+}
+
+/**
+ * Project an RD/NAP world point into the original equirectangular source.
+ *
+ * Registration review needs this direction independently of rectification: a
+ * target-wall overlay on the panorama can reveal a convincing rectification of
+ * the wrong wall. Keeping the transform here prevents review tooling from
+ * acquiring a second yaw/pitch/roll convention.
+ */
+export function worldToEquirectangularPixel(
+  point: ProjectedPoint & { z: number },
+  pose: CameraPose,
+  image: { width: number; height: number },
+  camera: YawConvention | CameraModel = 'centre',
+): [number, number] {
+  const direction: [number, number, number] = [point.x - pose.x, point.y - pose.y, point.z - pose.z];
+  const model: CameraModel = typeof camera === 'string' ? { id: `legacy-yaw-${camera}`, usesOrientation: true, yaw: camera } : camera;
+  let directed = model.usesOrientation ? toCameraFrame(...direction, pose) : direction;
+  if (model.boresightYawDeg || model.boresightPitchDeg) {
+    directed = applyBoresight(directed, model.boresightYawDeg ?? 0, model.boresightPitchDeg ?? 0);
+  }
+  return directionToPixel(directed, image, model.yaw);
+}
+
 /** Bilinear sample, wrapping horizontally because the panorama is a cylinder. */
 function sample(image: EquirectangularImage, u: number, v: number, out: number[]): void {
   const x0 = Math.floor(u), y0 = Math.floor(v);
@@ -138,6 +192,7 @@ export interface RectifyOptions {
   /** Output resolution, in pixels per metre of wall. */
   pixelsPerMetre?: number;
   yaw?: YawConvention;
+  camera?: CameraModel;
   /** Cap on output size, so a long warehouse wall cannot allocate unboundedly. */
   maxPixels?: number;
 }
@@ -170,7 +225,7 @@ export function rectifyFacade(
   options: RectifyOptions = {},
 ): RectifiedFacade {
   const pixelsPerMetre = options.pixelsPerMetre ?? 60;
-  const yaw = options.yaw ?? 'centre';
+  const camera = options.camera ?? options.yaw ?? 'centre';
   const maxPixels = options.maxPixels ?? 12e6;
 
   const wallWidthM = Math.hypot(plane.end.x - plane.start.x, plane.end.y - plane.start.y);
@@ -196,9 +251,8 @@ export function rectifyFacade(
       const worldX = plane.start.x + ux * along;
       const worldY = plane.start.y + uy * along;
 
-      const direction = toCameraFrame(worldX - pose.x, worldY - pose.y, worldZ - pose.z, pose);
-      if (!Number.isFinite(direction[0])) { missing++; continue; }
-      const [su, sv] = directionToPixel(direction, image, yaw);
+      const [su, sv] = worldToEquirectangularPixel({ x: worldX, y: worldY, z: worldZ }, pose, image, camera);
+      if (!Number.isFinite(su) || !Number.isFinite(sv)) { missing++; continue; }
       if (sv < 0 || sv >= image.height) { missing++; continue; }
       sample(image, su, sv, rgb);
 

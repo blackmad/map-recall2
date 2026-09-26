@@ -1,0 +1,468 @@
+{
+  "version": 1,
+  "kind": "case17-source-space-temporal-architecture-composite",
+  "generatedBy": "scripts/review/next-stage-temporal.ts",
+  "candidate": {
+    "features": [
+      {
+        "id": "full:w1",
+        "disposition": "machine-observed-unreviewed",
+        "kind": "window",
+        "bounds": [
+          6.786,
+          281.295,
+          58.435,
+          387.562
+        ],
+        "head": "segmental",
+        "row": 3,
+        "bay": 1,
+        "archRise": 0.15,
+        "sourceEvidence": {
+          "tier": "full",
+          "sourceFeatureId": "full:w1",
+          "sourceHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "sourceDate": "2023-01-10T10:44:05.176090Z",
+          "transfer": "same-date"
+        }
+      },
+      {
+        "id": "full:w2",
+        "disposition": "machine-observed-unreviewed",
+        "kind": "window",
+        "bounds": [
+          82.186,
+          281.295,
+          133.835,
+          387.562
+        ],
+        "head": "segmental",
+        "row": 3,
+        "bay": 2,
+        "archRise": 0.15,
+        "sourceEvidence": {
+          "tier": "full",
+          "sourceFeatureId": "full:w2",
+          "sourceHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "sourceDate": "2023-01-10T10:44:05.176090Z",
+          "transfer": "same-date"
+        }
+      },
+      {
+        "id": "full:w3",
+        "disposition": "machine-observed-unreviewed",
+        "kind": "window",
+        "bounds": [
+          186.615,
+          263.435,
+          289.536,
+          387.562
+        ],
+        "head": "segmental",
+        "row": 3,
+        "bay": 3,
+        "archRise": 0.15,
+        "mullions": [
+          0.33,
+          0.66
+        ],
+        "sourceEvidence": {
+          "tier": "full",
+          "sourceFeatureId": "full:w3",
+          "sourceHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "sourceDate": "2023-01-10T10:44:05.176090Z",
+          "transfer": "same-date"
+        }
+      },
+      {
+        "id": "full:w4",
+        "disposition": "machine-observed-unreviewed",
+        "kind": "window",
+        "bounds": [
+          6.786,
+          424.175,
+          58.435,
+          530.442
+        ],
+        "head": "segmental",
+        "row": 2,
+        "bay": 1,
+        "archRise": 0.15,
+        "sourceEvidence": {
+          "tier": "full",
+          "sourceFeatureId": "full:w4",
+          "sourceHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "sourceDate": "2023-01-10T10:44:05.176090Z",
+          "transfer": "same-date"
+        }
+      },
+      {
+        "id": "full:w5",
+        "disposition": "machine-observed-unreviewed",
+        "kind": "window",
+        "bounds": [
+          82.186,
+          424.175,
+          133.835,
+          530.442
+        ],
+        "head": "segmental",
+        "row": 2,
+        "bay": 2,
+        "archRise": 0.15,
+        "sourceEvidence": {
+          "tier": "full",
+          "sourceFeatureId": "full:w5",
+          "sourceHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "sourceDate": "2023-01-10T10:44:05.176090Z",
+          "transfer": "same-date"
+        }
+      },
+      {
+        "id": "full:w6",
+        "disposition": "machine-observed-unreviewed",
+        "kind": "window",
+        "bounds": [
+          186.615,
+          424.175,
+          289.536,
+          548.302
+        ],
+        "head": "segmental",
+        "row": 2,
+        "bay": 3,
+        "archRise": 0.15,
+        "mullions": [
+          0.33,
+          0.66
+        ],
+        "sourceEvidence": {
+          "tier": "full",
+          "sourceFeatureId": "full:w6",
+          "sourceHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "sourceDate": "2023-01-10T10:44:05.176090Z",
+          "transfer": "same-date"
+        }
+      },
+      {
+        "id": "full:w7",
+        "disposition": "machine-observed-unreviewed",
+        "kind": "window",
+        "bounds": [
+          6.786,
+          570.627,
+          58.435,
+          676.894
+        ],
+        "head": "segmental",
+        "row": 1,
+        "bay": 1,
+        "archRise": 0.15,
+        "sourceEvidence": {
+          "tier": "full",
+          "sourceFeatureId": "full:w7",
+          "sourceHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "sourceDate": "2023-01-10T10:44:05.176090Z",
+          "transfer": "same-date"
+        }
+      },
+      {
+        "id": "full:w8",
+        "disposition": "machine-observed-unreviewed",
+        "kind": "window",
+        "bounds": [
+          82.186,
+          570.627,
+          133.835,
+          676.894
+        ],
+        "head": "segmental",
+        "row": 1,
+        "bay": 2,
+        "archRise": 0.15,
+        "sourceEvidence": {
+          "tier": "full",
+          "sourceFeatureId": "full:w8",
+          "sourceHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "sourceDate": "2023-01-10T10:44:05.176090Z",
+          "transfer": "same-date"
+        }
+      },
+      {
+        "id": "full:w9",
+        "disposition": "machine-observed-unreviewed",
+        "kind": "window",
+        "bounds": [
+          186.615,
+          570.627,
+          289.536,
+          676.894
+        ],
+        "head": "segmental",
+        "row": 1,
+        "bay": 3,
+        "archRise": 0.15,
+        "mullions": [
+          0.33,
+          0.66
+        ],
+        "sourceEvidence": {
+          "tier": "full",
+          "sourceFeatureId": "full:w9",
+          "sourceHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "sourceDate": "2023-01-10T10:44:05.176090Z",
+          "transfer": "same-date"
+        }
+      },
+      {
+        "id": "full:w10",
+        "disposition": "machine-observed-unreviewed",
+        "kind": "window",
+        "bounds": [
+          197.925,
+          129.485,
+          254.475,
+          227.715
+        ],
+        "head": "rectangular",
+        "row": 4,
+        "bay": 3,
+        "sourceEvidence": {
+          "tier": "full",
+          "sourceFeatureId": "full:w10",
+          "sourceHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "sourceDate": "2023-01-10T10:44:05.176090Z",
+          "transfer": "same-date"
+        }
+      },
+      {
+        "id": "full:temporal:ground-display",
+        "disposition": "agent-inspected",
+        "kind": "window",
+        "bounds": [
+          39.585,
+          766.858,
+          229.216,
+          856.613
+        ],
+        "head": "rectangular",
+        "row": 1,
+        "bay": 1,
+        "temporalEvidence": {
+          "sourceTier": "ground",
+          "sourceFeatureId": "ground:window-01",
+          "sourceHash": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071",
+          "sourceDate": "2024-12-11T11:16:00Z",
+          "targetTier": "full",
+          "targetHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "targetDate": "2023-01-10T10:44:05.176090Z",
+          "coordinateMapping": "shared-crop-plane-plus-inspected-landmarks",
+          "structuralOnly": true
+        }
+      },
+      {
+        "id": "full:temporal:rear-right-door",
+        "disposition": "agent-inspected",
+        "kind": "door",
+        "bounds": [
+          268.643,
+          771.485,
+          309.941,
+          859.041
+        ],
+        "head": "rectangular",
+        "temporalEvidence": {
+          "sourceTier": "ground",
+          "sourceFeatureId": "ground:review:rear-right-door",
+          "sourceHash": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071",
+          "sourceDate": "2024-12-11T11:16:00Z",
+          "targetTier": "full",
+          "targetHash": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+          "targetDate": "2023-01-10T10:44:05.176090Z",
+          "coordinateMapping": "shared-crop-plane-plus-inspected-landmarks",
+          "structuralOnly": true
+        }
+      }
+    ],
+    "width": 377,
+    "height": 893,
+    "cropSha256": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+    "captureDate": "2023-01-10T10:44:05.176090Z",
+    "provenance": {
+      "version": 1,
+      "caseId": "case-17",
+      "buildingId": "0363100012107485",
+      "sourceGround": {
+        "cropSha256": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071",
+        "captureDate": "2024-12-11T11:16:00Z",
+        "width": 922,
+        "height": 539
+      },
+      "targetFull": {
+        "cropSha256": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+        "captureDate": "2023-01-10T10:44:05.176090Z",
+        "width": 377,
+        "height": 893
+      },
+      "groundToFull": {
+        "kind": "shared-crop-plane-affine",
+        "matrix": [
+          0.4088937093275488,
+          0,
+          0,
+          0,
+          0.4091413071281013,
+          672.4728354579534,
+          0,
+          0,
+          1
+        ],
+        "directionDot": 1,
+        "maxPerpendicularSeparationM": 0,
+        "landmarks": [
+          {
+            "id": "left-window-lower-right",
+            "ground": [
+              144,
+              60
+            ],
+            "full": [
+              59,
+              696
+            ],
+            "projectedFull": [
+              58.881,
+              697.021
+            ],
+            "residualPx": 1.028
+          },
+          {
+            "id": "middle-window-lower-right",
+            "ground": [
+              331,
+              60
+            ],
+            "full": [
+              134,
+              696
+            ],
+            "projectedFull": [
+              135.344,
+              697.021
+            ],
+            "residualPx": 1.688
+          },
+          {
+            "id": "broad-bay-lower-left",
+            "ground": [
+              456,
+              60
+            ],
+            "full": [
+              187,
+              696
+            ],
+            "projectedFull": [
+              186.456,
+              697.021
+            ],
+            "residualPx": 1.157
+          },
+          {
+            "id": "brick-to-fascia-seam",
+            "ground": [
+              461,
+              70
+            ],
+            "full": [
+              188,
+              703
+            ],
+            "projectedFull": [
+              188.5,
+              701.113
+            ],
+            "residualPx": 1.952
+          }
+        ],
+        "maxLandmarkResidualPx": 1.952,
+        "maximumAcceptedLandmarkResidualPx": 3,
+        "landmarkDisposition": "agent-inspected approximate pixel edges"
+      },
+      "sourceSpaceTransferGate": {
+        "accepted": true,
+        "boundsFit": true,
+        "reason": "exact source identities, crop planes and inspected landmarks agree"
+      },
+      "sourceSpaceAssemblies": [
+        {
+          "id": "full:temporal:side-rear-recess",
+          "featureId": "full:temporal:rear-right-door",
+          "bounds": [
+            232.252,
+            764.939,
+            329.568,
+            866.406
+          ],
+          "backDoorBounds": [
+            268.643,
+            771.485,
+            309.941,
+            859.041
+          ],
+          "sidePlanes": [
+            "left-flat-return",
+            "right-angled-return"
+          ],
+          "sourceEvidence": {
+            "sourceHash": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071",
+            "sourceDate": "2024-12-11T11:16:00Z",
+            "disposition": "agent-inspected-development-visible"
+          },
+          "metricDepth": "omitted-unregistered"
+        }
+      ],
+      "cropEndpointMarginM": 0.16121761110758875,
+      "cropEndpointMarginNote": "Intentional native crop margin beyond authoritative wall endpoints; this is not registration uncertainty.",
+      "metricGate": {
+        "accepted": false,
+        "maximumUncertaintyM": 0.15,
+        "checks": {
+          "sourceRegistrationCertificate": false,
+          "targetRegistrationCertificate": false,
+          "canonicalDatumVerified": false,
+          "cameraHeightResolved": false
+        },
+        "reason": "registration certificates, canonical datum verification and resolved camera height are absent"
+      },
+      "excludedDatedFields": [
+        "colour",
+        "frameColour",
+        "surroundColour",
+        "doorStyle",
+        "doorFurniture",
+        "material",
+        "region",
+        "awningProfile",
+        "stripeColour",
+        "stripeCount",
+        "valance",
+        "installation",
+        "state",
+        "text",
+        "physicalSignId"
+      ]
+    },
+    "omissions": [
+      "tenant identity, sign text, fascia appearance, materials, colours, furniture and awning state are not transferred",
+      "metric placement and recess depth omitted until a verified registration is available"
+    ],
+    "previewOnly": true
+  },
+  "budget": {
+    "ledgerPath": ".cache/city-appearance/fidelity-extraction/phase-budget.json",
+    "settledUsd": 0.1013381325,
+    "unresolvedReservations": 0,
+    "additionalSpendUsd": 0
+  }
+}

@@ -11,6 +11,7 @@ import assert from 'node:assert/strict';
 import {
   BuildingTileCache, BUILDING_TILE_ZOOM, DEFAULT_BUDGET, planTiles, tileUrl
 } from '../src/canalRecall/buildingTileSource.js';
+import { BuildingTileStreamer, decorateBuildingFeature, loadVerifiedAppearanceCatalog, loadVerifiedAppearancePriors, loadVerifiedAppearanceRelease } from '../src/canalRecall/buildingTilesBrowser.js';
 import { tileFor, tileKey } from '../src/canalRecall/slippyTiles.js';
 
 /** A camera over the Nieuwmarkt, roughly what a driving viewport spans. */
@@ -105,5 +106,49 @@ assert.equal(cacheStore.collection().features.length, 2, 'the source is every he
 cacheStore.drop('14/1/1');
 assert.equal(cacheStore.collection().features.length, 1, 'dropping a tile removes its features');
 assert.ok(!cacheStore.has('14/1/1') && cacheStore.has('14/1/2'), 'the cache knows what it holds');
+
+// --- immutable appearance bridge into the game ------------------------------
+const appearance={version:1,releaseId:'release-a',areaId:'da-costa-study',sourceBlockSha256:'b'.repeat(64),styleSource:'procedural-prior-not-measured',studyRoute:{id:'study',distanceM:790.93,source:'guided-route-source-graph',from:{id:'from',name:'Hugo de Grootkade',lat:52.37,lng:4.87},to:{id:'to',name:'Rozengracht',lat:52.375,lng:4.88}},buildings:[{id:'NL.IMBAG.Pand.0363100012085345',sourceId:'0363100012085345',geometryRevision:'a'.repeat(64),constructionYear:1900,sideColour:'#806451',roofColour:'#756b66',groundColour:'#9a624c',groundFloorHeightM:3.6,roofShape:'source-slanted',roofEavesHeightM:9.5,roofGeometrySource:'3dbag-lod22-roof-surfaces'}]},appearanceBytes=new TextEncoder().encode(JSON.stringify(appearance)),appearanceHash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',appearanceBytes))].map(value=>value.toString(16).padStart(2,'0')).join(''),pointer={version:1,releaseId:'release-a',areaId:'da-costa-study',sourceHashes:{block:'b'.repeat(64)},maplibreAppearance:{url:'/appearance.json',sha256:appearanceHash,buildings:1}},fetcher=(async(input:RequestInfo|URL)=>new Response(String(input).includes('appearance.json')?appearanceBytes:JSON.stringify(pointer)))as typeof fetch;
+const priors=await loadVerifiedAppearancePriors('/current.json',fetcher);assert.equal(priors.size,1);const release=await loadVerifiedAppearanceRelease('/current.json',fetcher);assert.equal(release.studyRoute.from.name,'Hugo de Grootkade');assert.equal(release.studyRoute.to.name,'Rozengracht');const raw={type:'Feature' as const,properties:{id:'NL.IMBAG.Pand.0363100012085345',height:12},geometry:null},decorated=decorateBuildingFeature(raw,priors);assert.equal(decorated.properties.sideColour,'#806451');assert.equal(decorated.properties.groundColour,'#9a624c');assert.equal(decorated.properties.groundFloorHeightM,3.6);assert.equal(decorated.properties.roofShape,'source-slanted');assert.equal(decorated.properties.roofEavesHeightM,9.5);assert.equal(decorated.properties.appearanceStyleSource,'procedural-prior-not-measured');assert.equal((raw.properties as any).sideColour,undefined,'game decoration never mutates cached complete-city geometry');assert.equal(decorateBuildingFeature({type:'Feature',properties:{id:'outside'},geometry:null},priors).properties.sideColour,undefined,'outside-area buildings retain neutral fallback');
+const citywide={type:'Feature' as const,properties:{id:'NL.IMBAG.Pand.0363100099999999',height:11},geometry:null};const citywideDecorated=decorateBuildingFeature(citywide,priors);assert.match(String(citywideDecorated.properties.sideColour),/^#[a-f0-9]{6}$/i);assert.match(String(citywideDecorated.properties.groundColour),/^#[a-f0-9]{6}$/i);assert.match(String(citywideDecorated.properties.roofColour),/^#[a-f0-9]{6}$/i);assert.equal(citywideDecorated.properties.groundFloorHeightM,3.2);assert.equal(citywideDecorated.properties.appearanceStyleSource,'citywide-identity-palette-v2-not-measured');assert.equal(citywideDecorated.properties.groundAppearanceStyleSource,'citywide-ground-storey-palette-v1-not-measured');assert.equal(citywideDecorated.properties.roofAppearanceStyleSource,'citywide-flat-cap-palette-v2-not-measured');assert.equal(decorateBuildingFeature(citywide,priors).properties.sideColour,citywideDecorated.properties.sideColour,'citywide wall palette is stable by BAG identity');assert.equal(decorateBuildingFeature(citywide,priors).properties.groundColour,citywideDecorated.properties.groundColour,'citywide ground palette is stable by BAG identity');assert.equal(decorateBuildingFeature(citywide,priors).properties.roofColour,citywideDecorated.properties.roofColour,'citywide roof palette is stable by BAG identity');assert.equal((citywide.properties as any).sideColour,undefined,'citywide decoration does not mutate cached geometry');const observed={...citywide,properties:{...citywide.properties,colour:'#123456',roofColour:'#654321'}};assert.equal(decorateBuildingFeature(observed,priors),observed,'observed tile colours outrank all citywide display priors');const gabled=decorateBuildingFeature({...citywide,properties:{...citywide.properties,roofShape:'gabled'}},priors);assert.equal(gabled.properties.roofColour,undefined,'unsupported shaped roofs do not receive an invented cap colour');
+const corrupt=(async(input:RequestInfo|URL)=>new Response(String(input).includes('appearance.json')?'{}':JSON.stringify(pointer)))as typeof fetch;await assert.rejects(loadVerifiedAppearancePriors('/current.json',corrupt),/hash mismatch/);
+const crossAreaPointer={...pointer,areaId:'jordaan-study'},crossArea=(async(input:RequestInfo|URL)=>new Response(String(input).includes('appearance.json')?appearanceBytes:JSON.stringify(crossAreaPointer)))as typeof fetch;await assert.rejects(loadVerifiedAppearanceRelease('/current.json',crossArea),/release binding mismatch/,'an immutable artifact cannot be mounted into a different study area');
+const catalog={version:1,areas:[{id:'da-costa-study',name:'Da Costa study',pointerUrl:'/current.json',lesson:true,priority:100}]},catalogFetcher=(async(input:RequestInfo|URL)=>new Response(String(input)==='/areas.json'?JSON.stringify(catalog):String(input).includes('appearance.json')?appearanceBytes:JSON.stringify(pointer)))as typeof fetch,catalogRelease=await loadVerifiedAppearanceCatalog('/areas.json',catalogFetcher);assert.equal(catalogRelease.entries[0].studyRoute.from.name,'Hugo de Grootkade');assert.equal(catalogRelease.priors.size,1);assert.equal(catalogRelease.entries[0].pointerUrl,'/current.json');
+const partialCatalog={...catalog,areas:[...catalog.areas,{...catalog.areas[0],id:'second-study',name:'Second study',pointerUrl:'/second.json',priority:90}]},partialFetcher=(async(input:RequestInfo|URL)=>new Response(String(input)==='/areas.json'?JSON.stringify(partialCatalog):String(input).includes('appearance.json')?appearanceBytes:JSON.stringify(String(input)==='/second.json'?{...pointer,areaId:'second-study'}:pointer)))as typeof fetch,partial=await loadVerifiedAppearanceCatalog('/areas.json',partialFetcher);assert.equal(partial.entries.length,1,'one corrupt district does not erase independently verified areas');assert.deepEqual(partial.failures.map(item=>item.id),['second-study']);
+
+// Da Costa startup: probe succeeds while the appearance catalog is still
+// loading. A game camera tick must not populate the soon-to-be-replaced source.
+const originalFetch = globalThis.fetch;
+let tileFetches = 0, writes = 0, announced = 0;
+let written: any;
+const fakeMap = {
+  getSource: () => ({ setData: (data: unknown) => { writes++; written = data; } }),
+  getCenter: () => ({ lng: 4.871752, lat: 52.372835 }),
+  getZoom: () => 19.55,
+  getBounds: () => ({ getWest: () => 4.8717, getEast: () => 4.8718, getSouth: () => 52.3728, getNorth: () => 52.3729 }),
+  on: () => {},
+};
+const streamer = new BuildingTileStreamer(fakeMap, 'buildings', '/test');
+try {
+  globalThis.fetch = (async (input: RequestInfo | URL) => {
+    if (String(input).includes('index-z')) return Response.json({ zoom: 14, tileList: ['test'] });
+    tileFetches++;
+    return Response.json({ type: 'FeatureCollection', features: [raw] });
+  }) as typeof fetch;
+  assert.equal(await streamer.probe(), true);
+  streamer.followCamera();
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(tileFetches, 0, 'Da Costa camera ticks before source attachment cannot fetch into the old source');
+  assert.equal(writes, 0);
+  streamer.attach(() => { announced++; });
+  streamer.followCamera();
+  for (let turn = 0; turn < 30 && !writes; turn++) await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(tileFetches, 1, 'the unchanged camera loads after the replacement source is attached');
+  assert.equal(written?.features.length, 1, 'the replacement source receives the resident building');
+  assert.equal(announced, 1, 'the visible-building callback runs against the attached source');
+} finally {
+  streamer.dispose();
+  globalThis.fetch = originalFetch;
+}
 
 process.stdout.write(`Building tile source checks passed (z${BUILDING_TILE_ZOOM}, ${fresh.load.length} tiles for a viewport, budget ${DEFAULT_BUDGET})\n`);

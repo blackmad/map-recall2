@@ -213,6 +213,7 @@ const VIEW: Choice<CanalPreferences['viewMode']>[] = [
 const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
   { value: 'surprise', title: 'Surprise', hint: 'Landmark to landmark' },
   { value: 'home', title: 'Home', hint: 'Nearby first, expands as you learn' },
+  { value: 'study', title: 'Da Costa study', hint: 'Styled street lesson' },
   { value: 'here', title: 'Here', hint: 'Start from where you are now' },
 ];
 
@@ -645,6 +646,7 @@ export function OverlayApp({
             <select id="route-pattern" hidden value={prefs.routePattern} onChange={event => patch({ routePattern: event.target.value as CanalPreferences['routePattern'] })}>
               <option value="surprise">Surprise</option>
               <option value="home">Home</option>
+              <option value="study">Da Costa study</option>
               <option value="here">Here</option>
             </select>
             <select id="route-difficulty" hidden value={prefs.difficulty} onChange={event => patch({ difficulty: event.target.value as CanalPreferences['difficulty'] })}>
@@ -711,7 +713,9 @@ export function OverlayApp({
               label="Route"
               name="route"
               value={prefs.routePattern}
-              onChange={value => patch({ routePattern: value })}
+              onChange={value => patch(value === 'study'
+                ? { routePattern: value, travelMode: 'car', viewMode: 'chase', zoom: 0.8 }
+                : { routePattern: value })}
               options={ROUTE}
               icons={ROUTE_ICONS}
               layout="strip"
@@ -816,6 +820,8 @@ export function OverlayApp({
                 <Check id="reduced-motion" checked={prefs.reducedMotion} onChange={reducedMotion => patch({ reducedMotion })}> Reduced motion</Check>
                 <Check id="detailed-3d" checked={prefs.detailed3d} onChange={detailed3d => patch({ detailed3d })}> Detailed 3D beta</Check>
                 <Check id="google-tiles" checked={prefs.googleTiles} onChange={googleTiles => patch({ googleTiles })}> Google photoreal (overview)</Check>
+                <Check id="measured-colours-only" checked={prefs.measuredColoursOnly} onChange={measuredColoursOnly => patch({ measuredColoursOnly }, true)}> Colour coverage: reviewed buildings only</Check>
+                {prefs.measuredColoursOnly && <p role="status">Buildings without reviewed wall colours are hidden. Coverage may be empty.</p>}
                 <Check id="sound-enabled" checked={prefs.sound} onChange={sound => patch({ sound })}> Sound</Check>
               </div>
               {/* Destructive, so fenced off and labelled rather than sitting as

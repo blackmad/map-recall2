@@ -1,0 +1,346 @@
+{
+  "version": 1,
+  "id": "case22-stepped-gable-source-owner-v1",
+  "caseId": "case-22",
+  "buildingId": "0363100012165927",
+  "observationId": "0363100012165927_e_0xxqmsr",
+  "source": {
+    "cropSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+    "dimensions": {
+      "width": 296,
+      "height": 936
+    },
+    "captureDate": "2023-01-12T09:08:29.970310Z",
+    "plane": {
+      "start": {
+        "x": 119928.54317313504,
+        "y": 486898.78043469705
+      },
+      "end": {
+        "x": 119926.03469343946,
+        "y": 486904.85715468886
+      },
+      "baseZ": -0.253999999910593,
+      "topZ": 20.54
+    },
+    "localToNAPOffsetM": 0.65
+  },
+  "facadeBoundsPx": {
+    "left": 0,
+    "right": 296,
+    "bottom": 936
+  },
+  "silhouetteTopPx": [
+    [
+      0,
+      210
+    ],
+    [
+      26,
+      210
+    ],
+    [
+      28,
+      168
+    ],
+    [
+      53,
+      168
+    ],
+    [
+      57,
+      125
+    ],
+    [
+      72,
+      125
+    ],
+    [
+      75,
+      94
+    ],
+    [
+      132,
+      96
+    ],
+    [
+      132,
+      128
+    ],
+    [
+      149,
+      128
+    ],
+    [
+      149,
+      174
+    ],
+    [
+      176,
+      174
+    ],
+    [
+      176,
+      217
+    ],
+    [
+      207,
+      220
+    ],
+    [
+      207,
+      247
+    ],
+    [
+      296,
+      251
+    ]
+  ],
+  "extractionVersion": "source-facade-owner-candidate/v1",
+  "scopeNote": "Approximate source-plane facade with source-observed stepped outline, brick, openings, three balcony rail fronts and one topology-derived narrow roof join. Balcony projection and hidden roof depth are inferred; fine iron ornament and metric placement remain unresolved.",
+  "concaveMaterialPreview": {
+    "sourceCropSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+    "featureIds": [
+      "full:mat-1"
+    ]
+  },
+  "nativeTopologyBinding": {
+    "geometryRevision": "6564ac37d9725497ad3d0dc1b8ea4c4732e58fd6d5b94c07c52222a70d8fa42d",
+    "surfaceSha256": {
+      "5": "7b63b041403a75e416ec2a31c03971cb6de03dc67f06908760bbc461178b296f",
+      "22": "6c845a5c9eaab6df97ec24111167fa64863ed3bde56d68babe0ee41060690b16",
+      "24": "383e71ff740f4b1b84f5169e0747a7f77ab39e38d0c325834910220d2c39cdf4",
+      "25": "37a9663cef57abcf0f3560d1cca095e15d943143b89fcce51422dbecb7fe663d",
+      "31": "669f0c20eedb3531b5018b09b8a97d9356b6dd08b5368668a8963da3d2f0c41c",
+      "32": "4f1fd50791895ca4c8e4f65b72f528167e817ff18d5daef0a71d649681e895c4"
+    }
+  },
+  "componentAssemblies": [
+    {
+      "name": "upper-balcony",
+      "type": "balcony",
+      "boundsPx": [
+        66,
+        348,
+        143,
+        402
+      ],
+      "projectionM": 0.1,
+      "slabThicknessPx": 6,
+      "verticalRailCount": 10,
+      "railWidthPx": 2.2,
+      "railColour": "#292725",
+      "slabColour": "#817970",
+      "observedBasis": "The 2023 full crop directly shows this balcony's frontal extent, top/bottom rails and repeated vertical iron rhythm; pixel bounds are approximate visual readings.",
+      "inferredDepthBasis": "The source shows an oblique side and underside but does not measure projection; 0.10m is an explicitly conservative shallow preview depth chosen to keep the observed front near its source-plane placement."
+    },
+    {
+      "name": "middle-balcony",
+      "type": "balcony",
+      "boundsPx": [
+        73,
+        506,
+        148,
+        556
+      ],
+      "projectionM": 0.1,
+      "slabThicknessPx": 6,
+      "verticalRailCount": 10,
+      "railWidthPx": 2.2,
+      "railColour": "#292725",
+      "slabColour": "#817970",
+      "observedBasis": "The 2023 full crop directly shows this balcony's frontal extent, top/bottom rails and repeated vertical iron rhythm; pixel bounds are approximate visual readings.",
+      "inferredDepthBasis": "The source shows an oblique side and underside but does not measure projection; 0.10m is an explicitly conservative shallow preview depth chosen to keep the observed front near its source-plane placement."
+    },
+    {
+      "name": "lower-balcony",
+      "type": "balcony",
+      "boundsPx": [
+        76,
+        675,
+        149,
+        716
+      ],
+      "projectionM": 0.1,
+      "slabThicknessPx": 6,
+      "verticalRailCount": 10,
+      "railWidthPx": 2.2,
+      "railColour": "#292725",
+      "slabColour": "#817970",
+      "observedBasis": "The 2023 full crop directly shows this balcony's frontal extent, top/bottom rails and repeated vertical iron rhythm; pixel bounds are approximate visual readings.",
+      "inferredDepthBasis": "The source shows an oblique side and underside but does not measure projection; 0.10m is an explicitly conservative shallow preview depth chosen to keep the observed front near its source-plane placement."
+    }
+  ],
+  "nativeTopologyJoins": [
+    {
+      "name": "trim-native-side-wall-apex",
+      "type": "wall",
+      "role": "front-wall-topology-derived",
+      "colour": "#6b574a",
+      "replaceSurfaceIndex": 5,
+      "vertices": [
+        {
+          "native": {
+            "surfaceIndex": 5,
+            "ringIndex": 0,
+            "vertexIndex": 1
+          }
+        },
+        {
+          "native": {
+            "surfaceIndex": 5,
+            "ringIndex": 0,
+            "vertexIndex": 2
+          }
+        },
+        {
+          "native": {
+            "surfaceIndex": 5,
+            "ringIndex": 0,
+            "vertexIndex": 3
+          }
+        },
+        {
+          "native": {
+            "surfaceIndex": 5,
+            "ringIndex": 0,
+            "vertexIndex": 4
+          }
+        }
+      ],
+      "basis": "Native wall 5 rises to the rejected triangular roof apex. Its remaining four vertices already meet retained roof surface 31 and adjacent wall 6, so the candidate removes only that apex vertex. Walls 6 and 23 retain their exact source topology."
+    },
+    {
+      "name": "trim-native-contact-wall-apex",
+      "type": "wall",
+      "role": "front-wall-topology-derived",
+      "colour": "#6b574a",
+      "replaceSurfaceIndex": 25,
+      "vertices": [
+        {
+          "native": {
+            "surfaceIndex": 25,
+            "ringIndex": 0,
+            "vertexIndex": 0
+          }
+        },
+        {
+          "source": {
+            "x": 132,
+            "y": 96,
+            "normalOffsetM": 0
+          }
+        },
+        {
+          "native": {
+            "surfaceIndex": 31,
+            "ringIndex": 0,
+            "vertexIndex": 0
+          }
+        },
+        {
+          "native": {
+            "surfaceIndex": 25,
+            "ringIndex": 0,
+            "vertexIndex": 2
+          }
+        }
+      ],
+      "basis": "Native wall 25 closed the old triangular apex to roof surface 31. The replacement closes its exact rear A contact to the source-supported highest right step and retained roof-31 edge, while preserving the lower wall-22 contact and omitting the rejected apex."
+    },
+    {
+      "name": "stepped-front-narrow-roof-join",
+      "type": "roof",
+      "role": "roof-join-topology-derived",
+      "colour": "#655f57",
+      "replaceSurfaceIndex": 32,
+      "vertices": [
+        {
+          "native": {
+            "surfaceIndex": 32,
+            "ringIndex": 0,
+            "vertexIndex": 0
+          }
+        },
+        {
+          "source": {
+            "x": 132,
+            "y": 96,
+            "normalOffsetM": 0
+          }
+        },
+        {
+          "source": {
+            "x": 132,
+            "y": 128,
+            "normalOffsetM": 0
+          }
+        },
+        {
+          "source": {
+            "x": 149,
+            "y": 128,
+            "normalOffsetM": 0
+          }
+        },
+        {
+          "source": {
+            "x": 149,
+            "y": 174,
+            "normalOffsetM": 0
+          }
+        },
+        {
+          "source": {
+            "x": 176,
+            "y": 174,
+            "normalOffsetM": 0
+          }
+        },
+        {
+          "source": {
+            "x": 176,
+            "y": 217,
+            "normalOffsetM": 0
+          }
+        },
+        {
+          "source": {
+            "x": 207,
+            "y": 220,
+            "normalOffsetM": 0
+          }
+        },
+        {
+          "source": {
+            "x": 207,
+            "y": 247,
+            "normalOffsetM": 0
+          }
+        },
+        {
+          "source": {
+            "x": 228,
+            "y": 248,
+            "normalOffsetM": 0
+          }
+        },
+        {
+          "native": {
+            "surfaceIndex": 32,
+            "ringIndex": 0,
+            "vertexIndex": 2
+          }
+        }
+      ],
+      "basis": "The 2023 and independent 2025 sources confirm the stepped front and exclude the native triangular projection above it. The rear roof is hidden, so this provisional folded fan retains native roof-32 rear vertex A and lower-front vertex C, follows the observed descending right steps between them, and keeps native wall 24 as the exact A-C side boundary. Candidate surface 32 replaces the conflicting triangle while the packet baseline retains it unchanged."
+    }
+  ],
+  "sourceNote": "Agent-inspected 2023 full crop: asymmetric stepped tower at left and lower flat/parapet bay at right; the projecting hoist beam is excluded from the silhouette. Pixel positions are approximate visual estimates.",
+  "reviewDisposition": {
+    "status": "rejected-for-delivery",
+    "reason": "Dark diagonal roof crosses photographed steps in source0/50 and broad oblique wedge remains. Contract fixture only; not used by the active builder.",
+    "reviewManifest": "review-data/visual-audits/2026-09-20-day-pass7/iteration3-case22-topology-repair2/manifest.json",
+    "reviewManifestSha256": "5d179f00dd7264d5afc107a37f0d8fc1eb67072b8fe74dc866f0e32753131d42"
+  }
+}

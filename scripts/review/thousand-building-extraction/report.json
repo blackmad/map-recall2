@@ -1,0 +1,2655 @@
+{
+  "version": 1,
+  "requestedBuildings": 1000,
+  "availableSourceBoundBuildings": 427,
+  "sourceShortfall": 573,
+  "excludedDevelopmentBuildings": 28,
+  "excludedHeldoutBuildings": 30,
+  "sourceReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "sourceReleasePointerSha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9",
+  "casesSha256": "dc9789137abd3179c4c25d3312a0c5957a2998effb4095799c9d3a14da363df1",
+  "sourceInventorySha256": "c86d52de69dd0ebddd92ea8d9ff4f74893690b0eadb4e96c3e2beb05465f4c92",
+  "analysisOnly": true,
+  "publicationBlocked": true,
+  "budgetAuthorization": {
+    "id": "neighbourhood-1000-preview-2026-09-13",
+    "sha256": "eeb87fd984cd921c5df6e1317b5234a87df31f8babe6d2cb84f0306a71122c50",
+    "maxAdditionalUsd": 10
+  },
+  "buildings": [
+    {
+      "buildingId": "0363100012062260",
+      "observationId": "0363100012062260_e_1vze6ea",
+      "tier": "ground",
+      "cropSha256": "38f7657c019aeac20ab492f573a92b5d9da4da0674cf605ff959e601f66622f7"
+    },
+    {
+      "buildingId": "0363100012064291",
+      "observationId": "0363100012064291_e_06e507d",
+      "tier": "ground",
+      "cropSha256": "922c156b81b806e475fab03de79ce36e1e322383712acb210ffe8f9ec15342e9"
+    },
+    {
+      "buildingId": "0363100012067309",
+      "observationId": "0363100012067309_e_1c8xhxm",
+      "tier": "ground",
+      "cropSha256": "25318c3efed41adec00bd238a606f1d217ab35bd795b297f1a7ee732ca9eb427"
+    },
+    {
+      "buildingId": "0363100012068916",
+      "observationId": "0363100012068916_e_13664ad",
+      "tier": "ground",
+      "cropSha256": "8e9153029da40c10ae8b8f8675bfe06db6d2b86b7904343976798d21b56dea4c"
+    },
+    {
+      "buildingId": "0363100012073508",
+      "observationId": "0363100012073508_e_0vmx9l7",
+      "tier": "ground",
+      "cropSha256": "02289817862b28e06dcdd8f8930ee292b1302120fa6ed102841949f40026c2fa"
+    },
+    {
+      "buildingId": "0363100012076749",
+      "observationId": "0363100012076749_e_11kqtxq",
+      "tier": "ground",
+      "cropSha256": "d518da186fe0b5eb3f1cb761c6edf0d795f63cea89a854a77ec0610a1601d3bc"
+    },
+    {
+      "buildingId": "0363100012077976",
+      "observationId": "0363100012077976_e_1v7y4pu",
+      "tier": "ground",
+      "cropSha256": "56e84814ffd17eade4bda063d45aeae919d3bc928e913d25300d00c155e44acc"
+    },
+    {
+      "buildingId": "0363100012077995",
+      "observationId": "0363100012077995_e_0pmykc4",
+      "tier": "ground",
+      "cropSha256": "71f351dfcce1b1a646face6ec23d91ff2dbcae6ec8a57387ad0f46872a27959a"
+    },
+    {
+      "buildingId": "0363100012079850",
+      "observationId": "0363100012079850_e_1id8q3w",
+      "tier": "ground",
+      "cropSha256": "1597dca07ca1f62f9d2aea3c3161a75bb2439324db343ad9280a01a54989b671"
+    },
+    {
+      "buildingId": "0363100012080836",
+      "observationId": "0363100012080836_e_1hhuir5",
+      "tier": "ground",
+      "cropSha256": "6ba87871619f4bd50525ae246b625426925e0e62379c0c3ba1ba360062dd0d75"
+    },
+    {
+      "buildingId": "0363100012081167",
+      "observationId": "0363100012081167_e_0c21yw2",
+      "tier": "ground",
+      "cropSha256": "34295a30a7f33ae0aaefbb9328c35f70638e896d8f1edb4a6973d0a6576ccba3"
+    },
+    {
+      "buildingId": "0363100012081848",
+      "observationId": "0363100012081848_e_14td103",
+      "tier": "ground",
+      "cropSha256": "d172e7c05e4bbccbc3e4ac43fbb17e7bbfeffbefb7e11fdb8bafa88bce5f5ad5"
+    },
+    {
+      "buildingId": "0363100012083793",
+      "observationId": "0363100012083793_e_1m3tfu8",
+      "tier": "ground",
+      "cropSha256": "5c4d010697641dad962774ef03de3449c984c209d8df467ddec6b434ccb1cb81"
+    },
+    {
+      "buildingId": "0363100012084787",
+      "observationId": "0363100012084787_e_1flwaw8",
+      "tier": "ground",
+      "cropSha256": "56ce3b727c31ebe399fd152077a95916c543aa6d9392a5d6151fe7b68cd26aa3"
+    },
+    {
+      "buildingId": "0363100012086480",
+      "observationId": "0363100012086480_e_0ju4i6k",
+      "tier": "ground",
+      "cropSha256": "2b480f10aee18a44d6849238807746751303d8c2cbfb72066bbcf1b812f79bbc"
+    },
+    {
+      "buildingId": "0363100012088573",
+      "observationId": "0363100012088573_e_19r86lf",
+      "tier": "ground",
+      "cropSha256": "503b4a398e218287e33e7b7117db05f828a96b85386519eb2f004ba3faff81f8"
+    },
+    {
+      "buildingId": "0363100012089603",
+      "observationId": "0363100012089603_e_1cvhymq",
+      "tier": "ground",
+      "cropSha256": "9e294e074dc9b14c5daf232fd344d7f29af3ea228c15e602dae57a68978107a7"
+    },
+    {
+      "buildingId": "0363100012089902",
+      "observationId": "0363100012089902_e_0omhvd8",
+      "tier": "ground",
+      "cropSha256": "fef61f907a1af1b385ff3b621a9faaee6bb5e206ad793104e9cdc3a6d1e334dc"
+    },
+    {
+      "buildingId": "0363100012091205",
+      "observationId": "0363100012091205_e_0ijvd6s",
+      "tier": "ground",
+      "cropSha256": "fe81222487474e7a60d04f2264fc69be131e765b8397c97902ad594d1f488c69"
+    },
+    {
+      "buildingId": "0363100012093049",
+      "observationId": "0363100012093049_e_0fmegew",
+      "tier": "ground",
+      "cropSha256": "da8e643a06bd0851b32a7cff5f06fd3c4d95365a7fe1eab79d884f9a84c3d547"
+    },
+    {
+      "buildingId": "0363100012094649",
+      "observationId": "0363100012094649_e_16jqzp7",
+      "tier": "ground",
+      "cropSha256": "d90c32e6c1ec1e69a3bc8342e5271ea759f89e373823f26f2b8c1029af2a85d2"
+    },
+    {
+      "buildingId": "0363100012096066",
+      "observationId": "0363100012096066_e_07856qc",
+      "tier": "ground",
+      "cropSha256": "49cae18322615e4982f53b092004e914ddf2d71672ee8d29723485b56c3c949f"
+    },
+    {
+      "buildingId": "0363100012099292",
+      "observationId": "0363100012099292_e_0jkdde1",
+      "tier": "ground",
+      "cropSha256": "8510ae47b26124ab8f7cd9d98eb528408a9ec375e2b5bed9e570e5140022b2b5"
+    },
+    {
+      "buildingId": "0363100012102399",
+      "observationId": "0363100012102399_e_1jehud3",
+      "tier": "ground",
+      "cropSha256": "1650e2d2a726c2913498db7873d5514b49b73dd81cc77d0f6ab7c8651934a618"
+    },
+    {
+      "buildingId": "0363100012103503",
+      "observationId": "0363100012103503_e_1czbg4h",
+      "tier": "ground",
+      "cropSha256": "14d75c2cd1e30806c6eccec395e498d1dc681faf87fb22cb01d0fb3a6e249ab3"
+    },
+    {
+      "buildingId": "0363100012109420",
+      "observationId": "0363100012109420_e_1uqwy9c",
+      "tier": "ground",
+      "cropSha256": "a9c351a68036e56a523b5141993972237afdd39db32a64524255e1c1438b5793"
+    },
+    {
+      "buildingId": "0363100012109707",
+      "observationId": "0363100012109707_e_06lf7lp",
+      "tier": "ground",
+      "cropSha256": "a78c3b11120febbfb1921eb2cbfbcc49f0d96298c19354433d4572396841f2e0"
+    },
+    {
+      "buildingId": "0363100012114021",
+      "observationId": "0363100012114021_e_1ewzxj9",
+      "tier": "ground",
+      "cropSha256": "1ad799921b3281cbb34d208ae94ef05223d34de0b6c2a4169feef95489426cae"
+    },
+    {
+      "buildingId": "0363100012114631",
+      "observationId": "0363100012114631_e_161qed9",
+      "tier": "ground",
+      "cropSha256": "49e119032b67f07f9c29bc76a1a4450f858842b0540b59d76833206c505ce804"
+    },
+    {
+      "buildingId": "0363100012125327",
+      "observationId": "0363100012125327_e_03pngle",
+      "tier": "ground",
+      "cropSha256": "fe4c890ee98f6e801c92be2560d3368e16a0fcadf0f64a091af67b86e5bc0f12"
+    },
+    {
+      "buildingId": "0363100012125896",
+      "observationId": "0363100012125896_e_0x3o5y0",
+      "tier": "ground",
+      "cropSha256": "3ad30afc56d24ca34b73d631be07ae6af578c04cd91fba2f0a390f952e3a865d"
+    },
+    {
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "tier": "ground",
+      "cropSha256": "b0b79ea50578bdf9f6853ced109582edb30762210103769d8006f69fc552e9a1"
+    },
+    {
+      "buildingId": "0363100012129992",
+      "observationId": "0363100012129992_e_1ejkc4i",
+      "tier": "ground",
+      "cropSha256": "33cdd796d334787772e938e20413ab42d2660a92fc3b8a1b5e61354ed3aa1e2b"
+    },
+    {
+      "buildingId": "0363100012130131",
+      "observationId": "0363100012130131_e_04trqsv",
+      "tier": "ground",
+      "cropSha256": "fb8179b09192139d8769a33b0af1f4291118fd959a79d290c36b89f2176e1c64"
+    },
+    {
+      "buildingId": "0363100012130345",
+      "observationId": "0363100012130345_e_1hy7vhw",
+      "tier": "ground",
+      "cropSha256": "92e502b375f52183b2bf772687c91961be3f4f6a4b72fd3aec23465a9b1bed61"
+    },
+    {
+      "buildingId": "0363100012131737",
+      "observationId": "0363100012131737_e_0vkn6sw",
+      "tier": "ground",
+      "cropSha256": "d1c026ca70a5c9c5cf05f428be9f03c4a39f9cb706320fe3da52128ff418630b"
+    },
+    {
+      "buildingId": "0363100012135474",
+      "observationId": "0363100012135474_e_12n7e7v",
+      "tier": "ground",
+      "cropSha256": "b1365fb2e3b8d8fab0dece4d734e7fb9f18d597a21472edecf39b5f7dd34ca75"
+    },
+    {
+      "buildingId": "0363100012138402",
+      "observationId": "0363100012138402_e_17vjjm8",
+      "tier": "ground",
+      "cropSha256": "642c3295cb0a3759c27e541cf8d512bfd2e291f9a047e89d4f41c95e93814c84"
+    },
+    {
+      "buildingId": "0363100012141698",
+      "observationId": "0363100012141698_e_13h8zj6",
+      "tier": "ground",
+      "cropSha256": "0e7316f8bc78a31170f62130ecae0d7ec11b3af2eb221a6ea20fdb6725fc988d"
+    },
+    {
+      "buildingId": "0363100012144845",
+      "observationId": "0363100012144845_e_1le2s9k",
+      "tier": "ground",
+      "cropSha256": "8b72c70c4b125992c0771a02d1eb9f68072db4eae210e7eec9f02eced4797beb"
+    },
+    {
+      "buildingId": "0363100012147021",
+      "observationId": "0363100012147021_e_0opzw13",
+      "tier": "ground",
+      "cropSha256": "41fd56751394994102e0c05ab1d89068c8bd0575383aa733791058c98a308a3f"
+    },
+    {
+      "buildingId": "0363100012148915",
+      "observationId": "0363100012148915_e_1w53m9k",
+      "tier": "ground",
+      "cropSha256": "63c191bd8d2909c48c1040a65f4e2359d1c0930fdd9f7aaf1b59cf3a3c3634cf"
+    },
+    {
+      "buildingId": "0363100012149258",
+      "observationId": "0363100012149258_e_0fwjo11",
+      "tier": "ground",
+      "cropSha256": "afb89fbeef55c8606c9b9b24788a9eace71ac1f262edf40688d8484bba301ea1"
+    },
+    {
+      "buildingId": "0363100012150400",
+      "observationId": "0363100012150400_e_0i6ny76",
+      "tier": "ground",
+      "cropSha256": "9f8d45444e085071cea6afef1ca4dd57725ef57aac4944a44891211840969b3c"
+    },
+    {
+      "buildingId": "0363100012150550",
+      "observationId": "0363100012150550_e_0y9b5ou",
+      "tier": "ground",
+      "cropSha256": "21fb06566bab2507d5da35be8f4b23868bae3da75ad968a9d73c8b0f064b9298"
+    },
+    {
+      "buildingId": "0363100012152349",
+      "observationId": "0363100012152349_e_0hxwth0",
+      "tier": "ground",
+      "cropSha256": "2fa4727b9b5efa52d98c45d393d8fcd6b1e879547c43ad16a0df9e0e40dbafb4"
+    },
+    {
+      "buildingId": "0363100012152388",
+      "observationId": "0363100012152388_e_02zsljq",
+      "tier": "ground",
+      "cropSha256": "a6e8f0201a88cb83b50ef4bef4a3be0ade1721d901d21c982bdee75c4e86ffb2"
+    },
+    {
+      "buildingId": "0363100012152464",
+      "observationId": "0363100012152464_e_10yua55",
+      "tier": "ground",
+      "cropSha256": "b73bfde1efd5029e26bd0f6c34b850f07c9388e55220570a20bfa96bbc05ca9e"
+    },
+    {
+      "buildingId": "0363100012152517",
+      "observationId": "0363100012152517_e_0tk0zau",
+      "tier": "ground",
+      "cropSha256": "24291aab424332b87fbdf03106a047a9f9bb6adeb4ec059664574c32333cb300"
+    },
+    {
+      "buildingId": "0363100012152562",
+      "observationId": "0363100012152562_e_17jq9cd",
+      "tier": "ground",
+      "cropSha256": "34789bab2ed89c68a452605cc6774d9275079fe5cbf4686a89e4e1c658aa3281"
+    },
+    {
+      "buildingId": "0363100012152665",
+      "observationId": "0363100012152665_e_0kc8pyy",
+      "tier": "ground",
+      "cropSha256": "957d4e7f1122956ab665e5cfbaf0ac41cc04f4c39e3e8917cda67f891abde2b4"
+    },
+    {
+      "buildingId": "0363100012152709",
+      "observationId": "0363100012152709_e_1lkariz",
+      "tier": "ground",
+      "cropSha256": "ca541f18c69d1a546c978e4a381fa22d5dfd1e124404f696510536587aa3e9da"
+    },
+    {
+      "buildingId": "0363100012152830",
+      "observationId": "0363100012152830_e_136cly5",
+      "tier": "ground",
+      "cropSha256": "2600495c5627225f2f5b6cb71131fc240cf27d516147f959fc54b35c62a90d58"
+    },
+    {
+      "buildingId": "0363100012153010",
+      "observationId": "0363100012153010_e_0t1g4df",
+      "tier": "ground",
+      "cropSha256": "bfcdbf13d87693bd59e06c3b6c41efbcfc590fbd7ef377ea042086059bbe7e0c"
+    },
+    {
+      "buildingId": "0363100012153145",
+      "observationId": "0363100012153145_e_0sx4sax",
+      "tier": "ground",
+      "cropSha256": "c20d635c3ee1668d5eee3f50cee898b49efad51c52875374c685df0c60a772c8"
+    },
+    {
+      "buildingId": "0363100012153164",
+      "observationId": "0363100012153164_e_1bsgh4p",
+      "tier": "ground",
+      "cropSha256": "dcf2b440c8bbd860bec76722f558b9e78f572f757b687889cae13f64096a9f3b"
+    },
+    {
+      "buildingId": "0363100012153283",
+      "observationId": "0363100012153283_e_15ek8bl",
+      "tier": "ground",
+      "cropSha256": "3e6444c6985854bb6fe1cc133e683655f6eff295ba925e966f5db49663d089d7"
+    },
+    {
+      "buildingId": "0363100012153319",
+      "observationId": "0363100012153319_e_0l4t2kx",
+      "tier": "ground",
+      "cropSha256": "e803f4c5a243ef221fe54be87243e7f864e09bdc2fef9caf53395c2a38a48189"
+    },
+    {
+      "buildingId": "0363100012153600",
+      "observationId": "0363100012153600_e_0k6kkgh",
+      "tier": "ground",
+      "cropSha256": "703df442626a6eb1ada597a13474f7fec0c442ca3f5c7fc5c76fca07de0bd9e5"
+    },
+    {
+      "buildingId": "0363100012153713",
+      "observationId": "0363100012153713_e_0261pti",
+      "tier": "ground",
+      "cropSha256": "fe08c6a18d7ed2d067ed79e2867dad3deaa33bc6a1a1f9721f43bbdb5a561668"
+    },
+    {
+      "buildingId": "0363100012154205",
+      "observationId": "0363100012154205_e_1aluzx5",
+      "tier": "ground",
+      "cropSha256": "bfb9606ae842d410deaa4ec5fa2fd81b1da798d13d70b6a7b8edfa68f2aeea0e"
+    },
+    {
+      "buildingId": "0363100012154294",
+      "observationId": "0363100012154294_e_1y3j89u",
+      "tier": "ground",
+      "cropSha256": "973fbcf06fe53ea304d5cf1e79ee1c7272b675ed243e34b8c7de88f3af1a4fcc"
+    },
+    {
+      "buildingId": "0363100012155538",
+      "observationId": "0363100012155538_e_1e95kee",
+      "tier": "ground",
+      "cropSha256": "b2b65c2734725110d4a6249e3511ddf7d1ab6c707b847c41ccbffe32dc31cd8c"
+    },
+    {
+      "buildingId": "0363100012155777",
+      "observationId": "0363100012155777_e_0ggdhqa",
+      "tier": "ground",
+      "cropSha256": "76c177306cc2b834ddc8176fe8b04547b44a39bebefafcbe6f028cf867434ffe"
+    },
+    {
+      "buildingId": "0363100012155995",
+      "observationId": "0363100012155995_e_1warf82",
+      "tier": "ground",
+      "cropSha256": "6ec5c77b039920ac0c86c31c0106a011805187ecd4928056259e0fa8a2fe663b"
+    },
+    {
+      "buildingId": "0363100012156057",
+      "observationId": "0363100012156057_e_1qwmq6j",
+      "tier": "ground",
+      "cropSha256": "9b86a6799966513e4787a1bfc520a0181ed5dbfe1076e2c4efd724e0af0faab8"
+    },
+    {
+      "buildingId": "0363100012156116",
+      "observationId": "0363100012156116_e_0raxmqq",
+      "tier": "ground",
+      "cropSha256": "7eaafcffcb80993d2e06b7c9067d664b10a4d720ffc73a930461e41ae8b011a5"
+    },
+    {
+      "buildingId": "0363100012156157",
+      "observationId": "0363100012156157_e_0b3hub9",
+      "tier": "ground",
+      "cropSha256": "7d4b7c7f593fcd9934bcc4d08f1ad19b688a04217ea0ee2141fb1ff6865f5876"
+    },
+    {
+      "buildingId": "0363100012156171",
+      "observationId": "0363100012156171_e_191dpbo",
+      "tier": "ground",
+      "cropSha256": "e6fc4181bd35a32f05d944d49ba95f58a3b391b1e04766546aa77be6f4b2f608"
+    },
+    {
+      "buildingId": "0363100012156172",
+      "observationId": "0363100012156172_e_0aj8zt5",
+      "tier": "ground",
+      "cropSha256": "9de190c0043ef9be1e713fa0f69ff0c24bc427ef9142c1588db7a4360b2977ad"
+    },
+    {
+      "buildingId": "0363100012156275",
+      "observationId": "0363100012156275_e_022bkco",
+      "tier": "ground",
+      "cropSha256": "b1f19a60f339ddd02100cf050cefd6c7f69a165200b1bbc090c381bf8e741094"
+    },
+    {
+      "buildingId": "0363100012156454",
+      "observationId": "0363100012156454_e_12agwal",
+      "tier": "ground",
+      "cropSha256": "5bc5184d40f4215a1f7194ec496bc91ee4b3316671e7fb354ce97727b246728d"
+    },
+    {
+      "buildingId": "0363100012156735",
+      "observationId": "0363100012156735_e_1tuelzc",
+      "tier": "ground",
+      "cropSha256": "799fcf3165e346d3d600e94e50a571a32eafadb5a419155925363bac1a11b13c"
+    },
+    {
+      "buildingId": "0363100012156758",
+      "observationId": "0363100012156758_e_0jeog86",
+      "tier": "ground",
+      "cropSha256": "6ee9f0cca04ff62c6e2354acc74b240a072b46d6cf96fa24ebdb00c36f15be0d"
+    },
+    {
+      "buildingId": "0363100012156920",
+      "observationId": "0363100012156920_e_0khzxj2",
+      "tier": "ground",
+      "cropSha256": "b8c95c86184ce280a0ecd35423f666fa7fec5ed577c00c745b4d472b26bf7d81"
+    },
+    {
+      "buildingId": "0363100012156960",
+      "observationId": "0363100012156960_e_01sgr7k",
+      "tier": "ground",
+      "cropSha256": "a50c5df99245b9aec3c6567d53dea28730db388a752921e95e4261646674af16"
+    },
+    {
+      "buildingId": "0363100012157022",
+      "observationId": "0363100012157022_e_0ylqx8d",
+      "tier": "ground",
+      "cropSha256": "8a01fcf3c58dd53aa54d0857f6cb6d09a8268814764840c88e528d930f51de8a"
+    },
+    {
+      "buildingId": "0363100012157068",
+      "observationId": "0363100012157068_e_1j6rs7l",
+      "tier": "ground",
+      "cropSha256": "b8d40d8d7d47fd48537afb58ba392b9cc0ead2383ac96eecb843c13c6d587030"
+    },
+    {
+      "buildingId": "0363100012157075",
+      "observationId": "0363100012157075_e_0udbbkk",
+      "tier": "ground",
+      "cropSha256": "2422e705003424f6d6769235d35bf51de0a8019dc3e1088b76ee2b848096fa2f"
+    },
+    {
+      "buildingId": "0363100012157171",
+      "observationId": "0363100012157171_e_1dr654d",
+      "tier": "ground",
+      "cropSha256": "80803eea37fff489f2ca46c9deb6766143696e6b92a7254e9527e5829f50fb63"
+    },
+    {
+      "buildingId": "0363100012157610",
+      "observationId": "0363100012157610_e_0sr2d2k",
+      "tier": "ground",
+      "cropSha256": "12eef603e43f27680e279c87962c5f23b3682dabdf4e956280f71709a5de2163"
+    },
+    {
+      "buildingId": "0363100012157618",
+      "observationId": "0363100012157618_e_0w0gh94",
+      "tier": "ground",
+      "cropSha256": "d867ca23c2d98568df1ebabec9f18669e49d3619fd441120d9b79cc48d4a22ef"
+    },
+    {
+      "buildingId": "0363100012157700",
+      "observationId": "0363100012157700_e_0q44jlm",
+      "tier": "ground",
+      "cropSha256": "5028b94dd67ca889c2a8dbe239c7c2092eff1d92233da1c2c9b53a506d983dd6"
+    },
+    {
+      "buildingId": "0363100012157742",
+      "observationId": "0363100012157742_e_11zk6wp",
+      "tier": "ground",
+      "cropSha256": "73b2477783bcb2260de937d9c11a003041ff8aa757dd4f1eef742dba127f059e"
+    },
+    {
+      "buildingId": "0363100012157926",
+      "observationId": "0363100012157926_e_012eimg",
+      "tier": "ground",
+      "cropSha256": "ff2cf03630d321695dfe1e870881c2384b5111271031105fd0cdd526e7e46be0"
+    },
+    {
+      "buildingId": "0363100012157952",
+      "observationId": "0363100012157952_e_1s4qwd4",
+      "tier": "ground",
+      "cropSha256": "c65932ecfc5fe3cd35f20a3b26450da1d23a6c25adfa91141844a8a28544b82d"
+    },
+    {
+      "buildingId": "0363100012157989",
+      "observationId": "0363100012157989_e_015txxo",
+      "tier": "ground",
+      "cropSha256": "f622262764f1988a2a2183317e7143972aa5095f5d0f53ae1a82081381c0d814"
+    },
+    {
+      "buildingId": "0363100012158443",
+      "observationId": "0363100012158443_e_19uyu9t",
+      "tier": "ground",
+      "cropSha256": "5ec9011b3c1be677e4b873837cf7e0c48985d921992342fc659bc5280765cf3a"
+    },
+    {
+      "buildingId": "0363100012158490",
+      "observationId": "0363100012158490_e_1h52g2o",
+      "tier": "ground",
+      "cropSha256": "4bc6db673c20171deb6b9831575366e91813da791d635d056824d04e44b07d45"
+    },
+    {
+      "buildingId": "0363100012158603",
+      "observationId": "0363100012158603_e_1np4ems",
+      "tier": "ground",
+      "cropSha256": "9e8df64ea49d7cd55af11918a29b3f6ec4fa3b2d1cf9290ffbdd16360cb10ce9"
+    },
+    {
+      "buildingId": "0363100012158667",
+      "observationId": "0363100012158667_e_1x1b0sg",
+      "tier": "ground",
+      "cropSha256": "fbd04a604a825751499d5a1868e2807f2be59a3e8308ca1176a521f73f60cd20"
+    },
+    {
+      "buildingId": "0363100012158909",
+      "observationId": "0363100012158909_e_0u03o2h",
+      "tier": "ground",
+      "cropSha256": "bdf9f6f1e67ff374072d15c08e0fed81f0da476a375210a89e37659663560a3a"
+    },
+    {
+      "buildingId": "0363100012159032",
+      "observationId": "0363100012159032_e_13atps5",
+      "tier": "ground",
+      "cropSha256": "f0725d768e87786c417c0cc04096b5c575fea4235975f3587cf66fc54c297cbf"
+    },
+    {
+      "buildingId": "0363100012159112",
+      "observationId": "0363100012159112_e_0xfdv8v",
+      "tier": "ground",
+      "cropSha256": "4678e5b94f0a39ea439a9ff48e59232f9fe2efb9b1d7b8c9f6939f13cb0baf46"
+    },
+    {
+      "buildingId": "0363100012159114",
+      "observationId": "0363100012159114_e_1dienwb",
+      "tier": "ground",
+      "cropSha256": "28c116542d22aeecab97ecbe27d90f708b81b7f826451f99f922216a5c47d094"
+    },
+    {
+      "buildingId": "0363100012159131",
+      "observationId": "0363100012159131_e_0fguf7w",
+      "tier": "ground",
+      "cropSha256": "461595054afad47397c80df2372adbe2721a513b48d393c1d32bc77818f9b012"
+    },
+    {
+      "buildingId": "0363100012159173",
+      "observationId": "0363100012159173_e_1ikilx4",
+      "tier": "ground",
+      "cropSha256": "bf9e7b60b2d5bc4872a122aaac223c8e78eb9b8c460c20be67156f9f88a6aec6"
+    },
+    {
+      "buildingId": "0363100012159182",
+      "observationId": "0363100012159182_e_0nqcs47",
+      "tier": "ground",
+      "cropSha256": "73ae1b58205eacc50f458c7109e117e5bdfc55fd6e9c2889ae74431f0ef876c8"
+    },
+    {
+      "buildingId": "0363100012159537",
+      "observationId": "0363100012159537_e_1ebeacq",
+      "tier": "ground",
+      "cropSha256": "6ba7d2495ebd4f1d7b385d9e3ce0f2d124afbd4c53c8c9d215bfae0b1367bbc7"
+    },
+    {
+      "buildingId": "0363100012159615",
+      "observationId": "0363100012159615_e_1woykk8",
+      "tier": "ground",
+      "cropSha256": "9f2dfe70272e975b85c85b7d4aa0ab1fdeec06a5523a94149f5ab9421ff943bd"
+    },
+    {
+      "buildingId": "0363100012160115",
+      "observationId": "0363100012160115_e_0pmfd27",
+      "tier": "ground",
+      "cropSha256": "26c1b7060a39c907106120798c54a820d2daafa853f6ef52dbab8607dd084d05"
+    },
+    {
+      "buildingId": "0363100012160351",
+      "observationId": "0363100012160351_e_0qons61",
+      "tier": "ground",
+      "cropSha256": "5b51c6858a398f3e8628c56a4c0ed228a6b3607aaab730497461c812cbf1fa86"
+    },
+    {
+      "buildingId": "0363100012160388",
+      "observationId": "0363100012160388_e_02w9vqn",
+      "tier": "ground",
+      "cropSha256": "dd784cb02c6d8644926cc90e3142271e99b653635f6e0ee478017981b3194f33"
+    },
+    {
+      "buildingId": "0363100012160415",
+      "observationId": "0363100012160415_e_0tvlxuq",
+      "tier": "ground",
+      "cropSha256": "e887a9e134a5b0fdaf7ea82ce1146632e205e8813b5f25301b8421486305fe98"
+    },
+    {
+      "buildingId": "0363100012160431",
+      "observationId": "0363100012160431_e_0eaxt9m",
+      "tier": "ground",
+      "cropSha256": "3731e570b7d64e81a1520ac5e6d7c12c4aacd779519cb40a324af08b862bca22"
+    },
+    {
+      "buildingId": "0363100012160443",
+      "observationId": "0363100012160443_e_066lker",
+      "tier": "ground",
+      "cropSha256": "233483f10815e6da440ab451a3757e9ab15bdee405d9a4e59523514550540cc6"
+    },
+    {
+      "buildingId": "0363100012160456",
+      "observationId": "0363100012160456_e_12vot3d",
+      "tier": "ground",
+      "cropSha256": "dcd87f76193d4543ac9ef5896370689e54a2ca0e3fab2117307d03fd3a58c2ed"
+    },
+    {
+      "buildingId": "0363100012160810",
+      "observationId": "0363100012160810_e_0h02e94",
+      "tier": "ground",
+      "cropSha256": "e2b8fc6edc58623cbc924ba1036f7253d932342cb0da10303c6c2552a77a687a"
+    },
+    {
+      "buildingId": "0363100012160912",
+      "observationId": "0363100012160912_e_16v7ts4",
+      "tier": "ground",
+      "cropSha256": "76b3e0750b6063baed13cf451f7d594d253f0e9c0eed3410c4c6cb3285184895"
+    },
+    {
+      "buildingId": "0363100012161143",
+      "observationId": "0363100012161143_e_1e2et62",
+      "tier": "ground",
+      "cropSha256": "ca69fd4cc2e64bde700b6d6f06e74785c1a59d7d06336c61064c7fba45491002"
+    },
+    {
+      "buildingId": "0363100012161162",
+      "observationId": "0363100012161162_e_0tl4kpf",
+      "tier": "ground",
+      "cropSha256": "b52576c7d38fee9dfe1ec8f0ffe6fe3f992d4d25d852b45290c7c4dbcd67c51e"
+    },
+    {
+      "buildingId": "0363100012161223",
+      "observationId": "0363100012161223_e_17l8758",
+      "tier": "ground",
+      "cropSha256": "ff2ce85d42291eb94055d45efec6a26d6a175d7728c54aeaa74eb51eebbad46a"
+    },
+    {
+      "buildingId": "0363100012161277",
+      "observationId": "0363100012161277_e_14zdtpr",
+      "tier": "ground",
+      "cropSha256": "be25515070dfadd1adcc8ee572ae76d5a085bef5c17b23536600b589b3541643"
+    },
+    {
+      "buildingId": "0363100012161304",
+      "observationId": "0363100012161304_e_08038az",
+      "tier": "ground",
+      "cropSha256": "851d03eeb8f2e406d3eaf812e5c490ea718d59855c84fd37ba40f603a5809998"
+    },
+    {
+      "buildingId": "0363100012161678",
+      "observationId": "0363100012161678_e_1pmrkb3",
+      "tier": "ground",
+      "cropSha256": "c51ec3e963a3d9427ac77c521c178ebb6cfee8cb8c4f545dddb2f2974123718d"
+    },
+    {
+      "buildingId": "0363100012161818",
+      "observationId": "0363100012161818_e_0fno8wc",
+      "tier": "ground",
+      "cropSha256": "87a2273dbf8c61181e4e98276ba8cb51b34219a3552ef9ebeb3b01dca066b6cf"
+    },
+    {
+      "buildingId": "0363100012161828",
+      "observationId": "0363100012161828_e_155wly3",
+      "tier": "ground",
+      "cropSha256": "7f59dda96576cd8858fec55502e6f30e09969efc4b7cd9c9b14fc38266bbdf2e"
+    },
+    {
+      "buildingId": "0363100012161830",
+      "observationId": "0363100012161830_e_1b5udka",
+      "tier": "ground",
+      "cropSha256": "4a8459e8823073a86d10be6c44132b64640fb415ef14895cbc34dc21b0f64945"
+    },
+    {
+      "buildingId": "0363100012161865",
+      "observationId": "0363100012161865_e_1wq84jv",
+      "tier": "ground",
+      "cropSha256": "0a15e73448c24def9dfb501c04763ff23aaee0659906a87d758386149d68879c"
+    },
+    {
+      "buildingId": "0363100012161866",
+      "observationId": "0363100012161866_e_0l8097q",
+      "tier": "ground",
+      "cropSha256": "4bb1bd470b5b3e663f1c89993b9fbe0962916f0a5fa4898af9ce9cf44809a299"
+    },
+    {
+      "buildingId": "0363100012162190",
+      "observationId": "0363100012162190_e_0a4g17x",
+      "tier": "ground",
+      "cropSha256": "229e85d6326a016352318b99aee95f14a3a03492e60bba63377b7f7dc0123637"
+    },
+    {
+      "buildingId": "0363100012162280",
+      "observationId": "0363100012162280_e_1cfdjoq",
+      "tier": "ground",
+      "cropSha256": "fdf9a25d658d8d9f3a91503a998e93fc70d58fbc88036e833a18c6e72cd04b2c"
+    },
+    {
+      "buildingId": "0363100012162674",
+      "observationId": "0363100012162674_e_0s8rpyw",
+      "tier": "ground",
+      "cropSha256": "6ecb0009bdcd5c4a8ee3eb68c39ace800b47894064cd3508540185215334b831"
+    },
+    {
+      "buildingId": "0363100012162796",
+      "observationId": "0363100012162796_e_13u2mzl",
+      "tier": "ground",
+      "cropSha256": "618e8e92b08f013f85fb3f45cebedf971f04176e04c93794960f75d8b22f59a8"
+    },
+    {
+      "buildingId": "0363100012162897",
+      "observationId": "0363100012162897_e_0c4e2gf",
+      "tier": "ground",
+      "cropSha256": "489795cbf1171feef4abbad2a19a2e67352cc353afd4689cdb4efd8afe68f5b2"
+    },
+    {
+      "buildingId": "0363100012163064",
+      "observationId": "0363100012163064_e_068m6ak",
+      "tier": "ground",
+      "cropSha256": "2204002d89c7ee79315e4e416f190676f8791a306d43510446b9e2861fcdfbfd"
+    },
+    {
+      "buildingId": "0363100012163083",
+      "observationId": "0363100012163083_e_1hrf56x",
+      "tier": "ground",
+      "cropSha256": "6115b849c9971d1f48f97896bb34c32f07a0ca8c922c20e0a0cb842e14ff203d"
+    },
+    {
+      "buildingId": "0363100012163719",
+      "observationId": "0363100012163719_e_1py328g",
+      "tier": "ground",
+      "cropSha256": "b0e0ea3221bc5a031902673cd31d61637b80bc19771a0f1129394b80e9178338"
+    },
+    {
+      "buildingId": "0363100012163836",
+      "observationId": "0363100012163836_e_0dm7sz5",
+      "tier": "ground",
+      "cropSha256": "73a00952ac21c04d711e34bc6f0108db541b424ed333b4cd9770f45c24762446"
+    },
+    {
+      "buildingId": "0363100012163843",
+      "observationId": "0363100012163843_e_0jot5w7",
+      "tier": "ground",
+      "cropSha256": "46fb85e94b2313c4d4f40010dcf4a188dd43c8bfce04e33e893a44d3e7efe18c"
+    },
+    {
+      "buildingId": "0363100012163943",
+      "observationId": "0363100012163943_e_0ymzd7o",
+      "tier": "ground",
+      "cropSha256": "8af0cd1d60790d8cc53dc1da3c56cc61222c51e0837e82b390771e4bd21881b8"
+    },
+    {
+      "buildingId": "0363100012163989",
+      "observationId": "0363100012163989_e_0h86uas",
+      "tier": "ground",
+      "cropSha256": "038833156facad1d4c619a1028c2193645dcc1f30d0c2a9506189e42becb5f19"
+    },
+    {
+      "buildingId": "0363100012164014",
+      "observationId": "0363100012164014_e_1440muj",
+      "tier": "ground",
+      "cropSha256": "a213f9acc9b679d98f5a19337601b35e6df51a06654cf9dc6b2101590086f172"
+    },
+    {
+      "buildingId": "0363100012164050",
+      "observationId": "0363100012164050_e_1feg4qw",
+      "tier": "ground",
+      "cropSha256": "9175d98db806c69495bf03138b3e90ecae958cb4a88b09ea4bcda0fadc99034d"
+    },
+    {
+      "buildingId": "0363100012164129",
+      "observationId": "0363100012164129_e_0dxl37o",
+      "tier": "ground",
+      "cropSha256": "25c7203af461d850c6fac1aa88f621b66b03c74e2bc4cb4887e4210a8b04a5a9"
+    },
+    {
+      "buildingId": "0363100012164186",
+      "observationId": "0363100012164186_e_091x9bq",
+      "tier": "ground",
+      "cropSha256": "11895b0bf9a55afe066a2e134a1b4fd69df15db2336a310b7fcda62b69747cce"
+    },
+    {
+      "buildingId": "0363100012164219",
+      "observationId": "0363100012164219_e_0xe584t",
+      "tier": "ground",
+      "cropSha256": "9048a36d5a3b0824ca9b0ff49ad7041196cf21fd97c8c403131b38098c7e6945"
+    },
+    {
+      "buildingId": "0363100012164499",
+      "observationId": "0363100012164499_e_0krqk0t",
+      "tier": "ground",
+      "cropSha256": "27f78529b017caf8aae94c12f9189b3ebadb985fd811cc931b8f191110b97b35"
+    },
+    {
+      "buildingId": "0363100012164571",
+      "observationId": "0363100012164571_e_00e1xvi",
+      "tier": "ground",
+      "cropSha256": "9efb164e401f7a8b935cac7010608ffde761d81152c82239d431e90b19ba5afb"
+    },
+    {
+      "buildingId": "0363100012164753",
+      "observationId": "0363100012164753_e_18gac44",
+      "tier": "ground",
+      "cropSha256": "ca92b4f87a2bdf956fc66ee7ba37d1d6003526b0ce2c5beaca9e0b406b0f047c"
+    },
+    {
+      "buildingId": "0363100012164917",
+      "observationId": "0363100012164917_e_0345gt3",
+      "tier": "ground",
+      "cropSha256": "0ef612e7e1c07f0c04f6092017e3098801148c65896bcd45cef062d37fc2c71d"
+    },
+    {
+      "buildingId": "0363100012165154",
+      "observationId": "0363100012165154_e_16tobqf",
+      "tier": "ground",
+      "cropSha256": "d1908d614f1f1d11c29adc8057211f4771d8238a34675a98c5a99ca5c585cb24"
+    },
+    {
+      "buildingId": "0363100012165428",
+      "observationId": "0363100012165428_e_09sa6x8",
+      "tier": "ground",
+      "cropSha256": "b9143bd0e8b8336cf73b6470b1d4038bbb4cff1c925bc4c622a8ef9b71cb0665"
+    },
+    {
+      "buildingId": "0363100012165523",
+      "observationId": "0363100012165523_e_1l2zcfu",
+      "tier": "ground",
+      "cropSha256": "b9dcf3c6bff0bdc0bda925e461ae655abf45f38da207fe3cafc5bc182034b9f3"
+    },
+    {
+      "buildingId": "0363100012166084",
+      "observationId": "0363100012166084_e_1badpfl",
+      "tier": "ground",
+      "cropSha256": "39a566f4a225f08105236b4c3ef4c70ce4026259bf34c169a54eafd089e4e8a3"
+    },
+    {
+      "buildingId": "0363100012166189",
+      "observationId": "0363100012166189_e_0b6kngg",
+      "tier": "ground",
+      "cropSha256": "bc19aa66ba9083e96eec88c1efad36cec7e81c23c402bab2c2338c8106d59efd"
+    },
+    {
+      "buildingId": "0363100012166311",
+      "observationId": "0363100012166311_e_1tsr40i",
+      "tier": "ground",
+      "cropSha256": "05a39a45fba9c402cffc171bcae104304879685973848f1954511fc027dde988"
+    },
+    {
+      "buildingId": "0363100012166375",
+      "observationId": "0363100012166375_e_08klotg",
+      "tier": "ground",
+      "cropSha256": "c95f6980ed1ad2862edbb88f1163224a69bd5a3fc237c959758d7d9cd3a4fcff"
+    },
+    {
+      "buildingId": "0363100012166397",
+      "observationId": "0363100012166397_e_08rpzbw",
+      "tier": "ground",
+      "cropSha256": "24f9f9bc638a833c1fb176175fc121bc50cfd51a56fa72b1ffadc2d6ea8a477f"
+    },
+    {
+      "buildingId": "0363100012166409",
+      "observationId": "0363100012166409_e_0azpu0d",
+      "tier": "ground",
+      "cropSha256": "f09f1d7171073de495c5098ead7abd8994ecd57e1913674d51b9d192b50935c9"
+    },
+    {
+      "buildingId": "0363100012166516",
+      "observationId": "0363100012166516_e_097ccbz",
+      "tier": "ground",
+      "cropSha256": "7f8fd133162f0a76fc446f7485bd7356cadb219f58f6d67088799b06cf21b38f"
+    },
+    {
+      "buildingId": "0363100012166570",
+      "observationId": "0363100012166570_e_0wwk20u",
+      "tier": "ground",
+      "cropSha256": "603e13b8074ddf0b5da30d36da4a0a5b86e0fb9051b5b1c4e7c41bbe941e61f8"
+    },
+    {
+      "buildingId": "0363100012166736",
+      "observationId": "0363100012166736_e_1ys1lcb",
+      "tier": "ground",
+      "cropSha256": "800397dd9e92510f503f0f19e1ad7841e4c340c11902944a0c06376bd436fc58"
+    },
+    {
+      "buildingId": "0363100012166778",
+      "observationId": "0363100012166778_e_1q4o54r",
+      "tier": "ground",
+      "cropSha256": "23620b35d23d0233cbac7f02e8ab8c2d18c7cb4702f8d35d7630e3cc00f23ed9"
+    },
+    {
+      "buildingId": "0363100012166889",
+      "observationId": "0363100012166889_e_1mt8pt7",
+      "tier": "ground",
+      "cropSha256": "b8d9f526404fb48c111b8c3a6b501e8ab21fdf6fa985a792aa3b928117df123f"
+    },
+    {
+      "buildingId": "0363100012166933",
+      "observationId": "0363100012166933_e_0whh8ln",
+      "tier": "ground",
+      "cropSha256": "7d158bb2c912bc20b325d5ffa17f61e83538133ba498165437bf46c56e484810"
+    },
+    {
+      "buildingId": "0363100012166934",
+      "observationId": "0363100012166934_e_0m3kh1t",
+      "tier": "ground",
+      "cropSha256": "5bb0f8bdf5916a06567f9aeb92e57b47dbcaa5eb95aa349c04c508632bee1a00"
+    },
+    {
+      "buildingId": "0363100012166975",
+      "observationId": "0363100012166975_e_1bab2bg",
+      "tier": "ground",
+      "cropSha256": "a132fb579d21a71b9c376198748b79dbf09f8d57e2b4c2f1d8d9b01e8346e875"
+    },
+    {
+      "buildingId": "0363100012167013",
+      "observationId": "0363100012167013_e_0p7lv5i",
+      "tier": "ground",
+      "cropSha256": "76e189c1545272da96bc8c7dbf72f1ebbd417ea0c8187eb4c91236fad9583496"
+    },
+    {
+      "buildingId": "0363100012167295",
+      "observationId": "0363100012167295_e_1ntzq60",
+      "tier": "ground",
+      "cropSha256": "29bddede62ae43e03d00bf07a2c9196b07fecedef6abd45dd2e9afcc4709b939"
+    },
+    {
+      "buildingId": "0363100012167334",
+      "observationId": "0363100012167334_e_0gv1ofj",
+      "tier": "ground",
+      "cropSha256": "1f44dfbe17b433caa5bb7ccd3d9cee44dcd1e108d55520463ca37a86f299ece4"
+    },
+    {
+      "buildingId": "0363100012167868",
+      "observationId": "0363100012167868_e_1i2bjkw",
+      "tier": "ground",
+      "cropSha256": "7336f73b6e669118d70707de6d3a341f53d05015f1cf67cfa93ff860c974c241"
+    },
+    {
+      "buildingId": "0363100012167869",
+      "observationId": "0363100012167869_e_1v1qnlk",
+      "tier": "ground",
+      "cropSha256": "aa23b8ec92d2f3d8317880a0b6ad4f8809108864b5644a7a3df23c769e0c8582"
+    },
+    {
+      "buildingId": "0363100012167876",
+      "observationId": "0363100012167876_e_0x6r1el",
+      "tier": "ground",
+      "cropSha256": "f97d1437436fec62d42e52411ef411cdc946ebcf0735c985fb1dc3aefe54c600"
+    },
+    {
+      "buildingId": "0363100012167939",
+      "observationId": "0363100012167939_e_0ytbhzx",
+      "tier": "ground",
+      "cropSha256": "acde5302609873f112463a7547debff34f024b675dd384527a3485f8c5136f3a"
+    },
+    {
+      "buildingId": "0363100012168366",
+      "observationId": "0363100012168366_e_0e5mi9z",
+      "tier": "ground",
+      "cropSha256": "1534b2b97f12dca4ae91f3623d7e3c92533787093a4c13300963f5a086feafb8"
+    },
+    {
+      "buildingId": "0363100012168373",
+      "observationId": "0363100012168373_e_0610vpv",
+      "tier": "ground",
+      "cropSha256": "e81267d73d33c5e812d50a03d2189c3b7ce500cc8e67c74f7a34c4577f5f7f81"
+    },
+    {
+      "buildingId": "0363100012168431",
+      "observationId": "0363100012168431_e_1tp2fiv",
+      "tier": "ground",
+      "cropSha256": "47261dbdedb21f0b1af68b9638861285e2ad1cfc5949f1df649076f6d1906a3e"
+    },
+    {
+      "buildingId": "0363100012168438",
+      "observationId": "0363100012168438_e_1lrqzc2",
+      "tier": "ground",
+      "cropSha256": "d145f3a1fac530adee932e4a2268a65c21c69b7de57dd051477e52af84e49c81"
+    },
+    {
+      "buildingId": "0363100012168439",
+      "observationId": "0363100012168439_e_0gzgo97",
+      "tier": "ground",
+      "cropSha256": "aa76f18e34ab2d86ceb2ead5efab95f4951d06dca3762730c7a7e9382c74b617"
+    },
+    {
+      "buildingId": "0363100012168440",
+      "observationId": "0363100012168440_e_1is5w40",
+      "tier": "ground",
+      "cropSha256": "009bc96a7448ab479665fa8519ff76d9390eb4aa59e00b2c6d1fe0d7a4677d66"
+    },
+    {
+      "buildingId": "0363100012168441",
+      "observationId": "0363100012168441_e_0tvbqs6",
+      "tier": "ground",
+      "cropSha256": "3e673fa69e05e2cb76e3da059cbb68535b701c4e9c91e9a522f64f51a486c569"
+    },
+    {
+      "buildingId": "0363100012168442",
+      "observationId": "0363100012168442_e_0ohmojs",
+      "tier": "ground",
+      "cropSha256": "ba85f8e97e4732ecc1fb73e256c742ed4072e92eecd06cd60dd7c9ec34322742"
+    },
+    {
+      "buildingId": "0363100012168546",
+      "observationId": "0363100012168546_e_14gtuhn",
+      "tier": "ground",
+      "cropSha256": "7e6d3a8d6a289716695a92d43a94ce52bdae46e2faa319e6c4270e1eb385816c"
+    },
+    {
+      "buildingId": "0363100012168547",
+      "observationId": "0363100012168547_e_169kl2o",
+      "tier": "ground",
+      "cropSha256": "349aec68166521f3665cdffc0ccc99939135ea5f972fc21d1ba79245693635e5"
+    },
+    {
+      "buildingId": "0363100012168550",
+      "observationId": "0363100012168550_e_1lcwlbf",
+      "tier": "ground",
+      "cropSha256": "45444c6e51f3707da8357b6b189419f6119dfc87189bb331c9ae873b3e384cf0"
+    },
+    {
+      "buildingId": "0363100012168552",
+      "observationId": "0363100012168552_e_02n3874",
+      "tier": "ground",
+      "cropSha256": "9cb0b99b7cf8ba8272aee1e0c0bf89d9e2135a131af4217b2c38d95a38d55ba4"
+    },
+    {
+      "buildingId": "0363100012168603",
+      "observationId": "0363100012168603_e_0b7aroz",
+      "tier": "ground",
+      "cropSha256": "725ea17c1873f1242e0e3e58f79ae565657327578e6ada42630ac3c8d5e8337d"
+    },
+    {
+      "buildingId": "0363100012168604",
+      "observationId": "0363100012168604_e_0fjfal3",
+      "tier": "ground",
+      "cropSha256": "1472b4dbdc3850f40511d493ffa07e960813d231108d0c665da5fb92b5d56f93"
+    },
+    {
+      "buildingId": "0363100012168605",
+      "observationId": "0363100012168605_e_0tles79",
+      "tier": "ground",
+      "cropSha256": "9c7a18b3f6f76139b3dddd59c5dc89bba43bd6194b0c74424880bcb06c11bb35"
+    },
+    {
+      "buildingId": "0363100012168612",
+      "observationId": "0363100012168612_e_0hswsvd",
+      "tier": "ground",
+      "cropSha256": "2f5b7527d0a8f9b7d6731746dd92ee5225259dbe4b1aac0a12e1b7f3974238ca"
+    },
+    {
+      "buildingId": "0363100012168613",
+      "observationId": "0363100012168613_e_18jsd29",
+      "tier": "ground",
+      "cropSha256": "3f70051f3b961bed34abb1af3b00268c5571aed0e0a84e8d3b1941dff88575d7"
+    },
+    {
+      "buildingId": "0363100012168639",
+      "observationId": "0363100012168639_e_0jih76e",
+      "tier": "ground",
+      "cropSha256": "fe884c5f55c882ac38514aa13692c7853ad8a0d303b6d13e8bef3f171d11a7e8"
+    },
+    {
+      "buildingId": "0363100012168640",
+      "observationId": "0363100012168640_e_0f1a9vu",
+      "tier": "ground",
+      "cropSha256": "7a13eb4f7ed9066ce6241273b0ffb9a13fb94ce7e02f01b532383f965b54add6"
+    },
+    {
+      "buildingId": "0363100012168644",
+      "observationId": "0363100012168644_e_0imly7m",
+      "tier": "ground",
+      "cropSha256": "75143a771ae9391e50953a562b76dc142913856e373585723174e70564caa625"
+    },
+    {
+      "buildingId": "0363100012168645",
+      "observationId": "0363100012168645_e_057r263",
+      "tier": "ground",
+      "cropSha256": "7395c3ff5116ed4bde86188fbeeda54d205a5f19f3f8420b824094c2424fd0f3"
+    },
+    {
+      "buildingId": "0363100012168646",
+      "observationId": "0363100012168646_e_1ec9ais",
+      "tier": "ground",
+      "cropSha256": "e601ab509b7942226d6708f9351875418e2b2f1a5dfbec7b0ce11d14efc2cda4"
+    },
+    {
+      "buildingId": "0363100012168881",
+      "observationId": "0363100012168881_e_03vrmcz",
+      "tier": "ground",
+      "cropSha256": "017585ec0b5e2d39b21dd2921c8fac42fc04400803f90f7256231acec9ad010f"
+    },
+    {
+      "buildingId": "0363100012168906",
+      "observationId": "0363100012168906_e_0sln1w5",
+      "tier": "ground",
+      "cropSha256": "3c45ed1bf9c38f8c28300e4560d3d5a5c7b80ba78fe9a744a50bfb2396bf01b2"
+    },
+    {
+      "buildingId": "0363100012168914",
+      "observationId": "0363100012168914_e_1i3rc0l",
+      "tier": "ground",
+      "cropSha256": "9dbbc5c1237e68b6596a6d8bf0c31ba86a768c8f59c6b581a8622dae546dc1fe"
+    },
+    {
+      "buildingId": "0363100012168920",
+      "observationId": "0363100012168920_e_0bxls2d",
+      "tier": "ground",
+      "cropSha256": "0c88f6a476cd73af99d862752f290753de8f225a198200abb839847003505444"
+    },
+    {
+      "buildingId": "0363100012168926",
+      "observationId": "0363100012168926_e_1vlfyxw",
+      "tier": "ground",
+      "cropSha256": "41ac9bab0900721501b5688b53c26b8e291f246d530f98b7a2b323c8729527e5"
+    },
+    {
+      "buildingId": "0363100012168927",
+      "observationId": "0363100012168927_e_1uh6rnh",
+      "tier": "ground",
+      "cropSha256": "1a7f62f774e1d4aa8c8de213d73d81294d15e79dccb647e30fcb509c4358f801"
+    },
+    {
+      "buildingId": "0363100012168929",
+      "observationId": "0363100012168929_e_0a506dn",
+      "tier": "ground",
+      "cropSha256": "260a9caf52307776571318e7b3537748ea5b5b6ab7e72968fbf3e0f76801079b"
+    },
+    {
+      "buildingId": "0363100012168930",
+      "observationId": "0363100012168930_e_1wh29rq",
+      "tier": "ground",
+      "cropSha256": "72f640e4ebab7804d8778e9f95a2101c3331ce4268095fa38d892b74a2c7a1a7"
+    },
+    {
+      "buildingId": "0363100012168933",
+      "observationId": "0363100012168933_e_10z24m6",
+      "tier": "ground",
+      "cropSha256": "dba3bca8ea67a18502d3b2961e71ede10b9805e2ea0a797574f1c78317e83afd"
+    },
+    {
+      "buildingId": "0363100012168935",
+      "observationId": "0363100012168935_e_0xr85sx",
+      "tier": "ground",
+      "cropSha256": "de7d01d18f78002dc3cea12d33187b74ae6401ce42e958ad9d8f88425ef0af22"
+    },
+    {
+      "buildingId": "0363100012168936",
+      "observationId": "0363100012168936_e_0e7ftn6",
+      "tier": "ground",
+      "cropSha256": "5ecb7281fbd6c7698f9b55b7332ca532d725f8d602311783218a145002af3a6b"
+    },
+    {
+      "buildingId": "0363100012168949",
+      "observationId": "0363100012168949_e_0t04baz",
+      "tier": "ground",
+      "cropSha256": "a7f4084daf062da6a1fc55413b07b42ea99e7448a2d3b4ee82960d083f28c398"
+    },
+    {
+      "buildingId": "0363100012168950",
+      "observationId": "0363100012168950_e_1b8u2ic",
+      "tier": "ground",
+      "cropSha256": "c7c6405adf812ee70c7dc9beb9412e8fc5277877f68d8d52112f217de4a5bc8c"
+    },
+    {
+      "buildingId": "0363100012168951",
+      "observationId": "0363100012168951_e_0tp0g0g",
+      "tier": "ground",
+      "cropSha256": "fc8142e5b0952cf8809b433660f17fbd7bc394d005ac850d6f7bd4dbcef5de92"
+    },
+    {
+      "buildingId": "0363100012168952",
+      "observationId": "0363100012168952_e_14xqjkm",
+      "tier": "ground",
+      "cropSha256": "49ee2c482529764e3f8c12c663b439703c81b038d892a251ce5e34c9e413b2eb"
+    },
+    {
+      "buildingId": "0363100012168953",
+      "observationId": "0363100012168953_e_0ljsklq",
+      "tier": "ground",
+      "cropSha256": "6ad2f2b76f000f7ef09f496000660b58edf50dc20b3619463ab4997b18199047"
+    },
+    {
+      "buildingId": "0363100012168956",
+      "observationId": "0363100012168956_e_10yhos8",
+      "tier": "ground",
+      "cropSha256": "4f090bcc6ce451429b1c715e68721c849925defeb3bcc65c05ebe260341e9152"
+    },
+    {
+      "buildingId": "0363100012168966",
+      "observationId": "0363100012168966_e_1y6jkwc",
+      "tier": "ground",
+      "cropSha256": "c9c4e695374cad420970393634901e657505414d0a634314937115acd4687490"
+    },
+    {
+      "buildingId": "0363100012168967",
+      "observationId": "0363100012168967_e_0dwlhlt",
+      "tier": "ground",
+      "cropSha256": "5cf753136883a67308894f51983f3ad966dc9acc4c0d60f61aa1b04ee01db8e6"
+    },
+    {
+      "buildingId": "0363100012168978",
+      "observationId": "0363100012168978_e_15abdtl",
+      "tier": "ground",
+      "cropSha256": "1b0cd8f700e6582f1f81a44cf49e5dbea567f7e48d1282c1744d7a382acd998c"
+    },
+    {
+      "buildingId": "0363100012168979",
+      "observationId": "0363100012168979_e_0lkmzwz",
+      "tier": "ground",
+      "cropSha256": "1529ce9c6d33fa7cec1234c836dbf1eb77c77dc48b700d56309e20bdfd41ebad"
+    },
+    {
+      "buildingId": "0363100012168983",
+      "observationId": "0363100012168983_e_0eo7ssy",
+      "tier": "ground",
+      "cropSha256": "d18112c116e28caf7d6d05c12d14dcfe9d77666eec3784dd706369b470aa2a30"
+    },
+    {
+      "buildingId": "0363100012168984",
+      "observationId": "0363100012168984_e_0mvm5ol",
+      "tier": "ground",
+      "cropSha256": "228fc904dbf5e14dde3893a1f944673e5857ca1278b1d72bdd7de486dc3bc794"
+    },
+    {
+      "buildingId": "0363100012168986",
+      "observationId": "0363100012168986_e_1uojyra",
+      "tier": "ground",
+      "cropSha256": "76b49ddd1555e1b2a050fc6b6a3c2fb1b78a7232fc810927892e91e1404c1e89"
+    },
+    {
+      "buildingId": "0363100012168989",
+      "observationId": "0363100012168989_e_0p01u0e",
+      "tier": "ground",
+      "cropSha256": "7767f64a4ab01ec6f795d5aced42a878dd669a0ce01aae30b8732615668be265"
+    },
+    {
+      "buildingId": "0363100012168990",
+      "observationId": "0363100012168990_e_188j7fd",
+      "tier": "ground",
+      "cropSha256": "c7eacb97aa94801d0b7ce241351c9a618a6e28881188cfc98cc3dd922f6ef685"
+    },
+    {
+      "buildingId": "0363100012169004",
+      "observationId": "0363100012169004_e_1klya09",
+      "tier": "ground",
+      "cropSha256": "a8eddf16f1a31a8190700303cf489c40456ac92b8bf877644878ca6949a27761"
+    },
+    {
+      "buildingId": "0363100012169356",
+      "observationId": "0363100012169356_e_0uxfazw",
+      "tier": "ground",
+      "cropSha256": "a8606ca9cc1da24e1a607e979feb3760c4c332f46bf4312731d0aae71c5e873f"
+    },
+    {
+      "buildingId": "0363100012169357",
+      "observationId": "0363100012169357_e_0mrltwz",
+      "tier": "ground",
+      "cropSha256": "341f8d244d2e218073db42241a2a08649a8f97b3dd03d05bedbfa91558171847"
+    },
+    {
+      "buildingId": "0363100012169358",
+      "observationId": "0363100012169358_e_03ogtfj",
+      "tier": "ground",
+      "cropSha256": "56e4c29f7499e9b3305e4a5552aab065a9cf8ac45fb981332c6afe8a6e4f68c4"
+    },
+    {
+      "buildingId": "0363100012169401",
+      "observationId": "0363100012169401_e_0vserg6",
+      "tier": "ground",
+      "cropSha256": "8f0dc0c7ce6b187762c21e2e7c985ce46032919653fd15dc1e040ff5b440f018"
+    },
+    {
+      "buildingId": "0363100012169407",
+      "observationId": "0363100012169407_e_0ckembc",
+      "tier": "ground",
+      "cropSha256": "b7ccc3115e780a401d19dbd1336ef8ca2bf2faf8c09d9c4b669504e9737d0c07"
+    },
+    {
+      "buildingId": "0363100012169410",
+      "observationId": "0363100012169410_e_1h0uyal",
+      "tier": "ground",
+      "cropSha256": "cd71db98d24c79c3806c9fe558e4f70bfb82ca6f3a52ffce73992bdb6e41770a"
+    },
+    {
+      "buildingId": "0363100012169416",
+      "observationId": "0363100012169416_e_1o662ut",
+      "tier": "ground",
+      "cropSha256": "b63f520309b083f4b2166c8c45b06ff469592bcb96a27b5297f3e8bee475e001"
+    },
+    {
+      "buildingId": "0363100012169418",
+      "observationId": "0363100012169418_e_0sx4moe",
+      "tier": "ground",
+      "cropSha256": "3d7f92e37db3d8d0f7274a605b16d2fa44d46156181b13650ec07bcc6eec3bae"
+    },
+    {
+      "buildingId": "0363100012169598",
+      "observationId": "0363100012169598_e_1mdylvv",
+      "tier": "ground",
+      "cropSha256": "b78d4a04f4e0e90531023fff5a343481690adc12bd6bedfbde270d616c56d933"
+    },
+    {
+      "buildingId": "0363100012169607",
+      "observationId": "0363100012169607_e_1p1xb85",
+      "tier": "ground",
+      "cropSha256": "d1d71e47f9778b9987d2cce7f193ee6140918649264748ac0c5b8a2c7fc863e2"
+    },
+    {
+      "buildingId": "0363100012169608",
+      "observationId": "0363100012169608_e_0dgss1y",
+      "tier": "ground",
+      "cropSha256": "c97a13b2ce6ceb9bac2fe1fffbe7f1bc83bea1498b6a4da7792e87ebb98d4044"
+    },
+    {
+      "buildingId": "0363100012169609",
+      "observationId": "0363100012169609_e_0roj1jc",
+      "tier": "ground",
+      "cropSha256": "d9bacdeddd0fee5d0cd6577b3fa216da86d8fe86af465575d12e69defb59680c"
+    },
+    {
+      "buildingId": "0363100012169610",
+      "observationId": "0363100012169610_e_0vyhjoh",
+      "tier": "ground",
+      "cropSha256": "6e0a89ed73ad3596a7ed2ccfbe1af8464ec353970755f7348b2901443401f7cf"
+    },
+    {
+      "buildingId": "0363100012169611",
+      "observationId": "0363100012169611_e_1w0t9mn",
+      "tier": "ground",
+      "cropSha256": "5dc2cdbf6009747204cfc42e97f4083e9345aae87adba25a728bc4740db8889a"
+    },
+    {
+      "buildingId": "0363100012169621",
+      "observationId": "0363100012169621_e_04o2y5t",
+      "tier": "ground",
+      "cropSha256": "6fcad46125516f2f3cd00abc90e4099092fe0a4dee25586794e37f01334523dc"
+    },
+    {
+      "buildingId": "0363100012169714",
+      "observationId": "0363100012169714_e_1k4jn9e",
+      "tier": "ground",
+      "cropSha256": "36214eea5b9d15547c48b4bb1051edf02dbeae3905d9a5eac1d3ba60f9ee37fe"
+    },
+    {
+      "buildingId": "0363100012169770",
+      "observationId": "0363100012169770_e_0k9436g",
+      "tier": "ground",
+      "cropSha256": "cb6700a35e9224043446d9024f46443fd70f034398478318b7e88a6b0c2fbb56"
+    },
+    {
+      "buildingId": "0363100012169778",
+      "observationId": "0363100012169778_e_00n44x4",
+      "tier": "ground",
+      "cropSha256": "6d6217f1a135b1b5bbca03be396acb0d9decc4eb0676846975df70696e7d7963"
+    },
+    {
+      "buildingId": "0363100012169780",
+      "observationId": "0363100012169780_e_0rbhvp2",
+      "tier": "ground",
+      "cropSha256": "4c8b7a378ba6d92ed069b16854b39ab071b43e484adef80377069ed2ad7b673b"
+    },
+    {
+      "buildingId": "0363100012169814",
+      "observationId": "0363100012169814_e_0p3k9vt",
+      "tier": "ground",
+      "cropSha256": "9c998694c64fabb8470c03bfb209f5f7cde0ba77fdf1cc96d98285fa48a23fd9"
+    },
+    {
+      "buildingId": "0363100012169815",
+      "observationId": "0363100012169815_e_0w279ft",
+      "tier": "ground",
+      "cropSha256": "dd4be6a5d2782c2992b1362d720f1086d18e2a7c9ae6c06728aa80964ebb514a"
+    },
+    {
+      "buildingId": "0363100012169822",
+      "observationId": "0363100012169822_e_0p2u9ee",
+      "tier": "ground",
+      "cropSha256": "f8d89100761fc83156395bbd8fad096a226d3494c4f82b721a8af10bc064cab8"
+    },
+    {
+      "buildingId": "0363100012169824",
+      "observationId": "0363100012169824_e_06b2vi1",
+      "tier": "ground",
+      "cropSha256": "c6a5661a7c9cdfcc740c60bf258dbd520bbaa1d51e16f70b8a1ac8508cde382d"
+    },
+    {
+      "buildingId": "0363100012169825",
+      "observationId": "0363100012169825_e_1csyqdj",
+      "tier": "ground",
+      "cropSha256": "5b8dcb3efe715c70be4d68d7d27fad2dd8221f32c94b4c7bc67d786f553ca292"
+    },
+    {
+      "buildingId": "0363100012169826",
+      "observationId": "0363100012169826_e_0cpyqkc",
+      "tier": "ground",
+      "cropSha256": "94e54f6d901c166cb5e21526cc54520fc2f76619204d9799f14284097d3b249b"
+    },
+    {
+      "buildingId": "0363100012169889",
+      "observationId": "0363100012169889_e_0x9a0w6",
+      "tier": "ground",
+      "cropSha256": "b08656ebca93fac220456d501a21051ee321fa0e7b186cf27f9c519a6e9e97da"
+    },
+    {
+      "buildingId": "0363100012169890",
+      "observationId": "0363100012169890_e_003scki",
+      "tier": "ground",
+      "cropSha256": "b4156acb1f8f60c5b4708d98922f549fbc8f1442b0d5db4c0a7ab1fa98d3801c"
+    },
+    {
+      "buildingId": "0363100012169891",
+      "observationId": "0363100012169891_e_0ppkg9p",
+      "tier": "ground",
+      "cropSha256": "ba03ee79779738e767f2f82a8e8251f8f5561e5ee594425ec7991f8664e9018b"
+    },
+    {
+      "buildingId": "0363100012169893",
+      "observationId": "0363100012169893_e_06vneqj",
+      "tier": "ground",
+      "cropSha256": "a7205ac69afa233495469a65d161bb8d9bd001962dc0d973b0ee03f07e8e5e88"
+    },
+    {
+      "buildingId": "0363100012169894",
+      "observationId": "0363100012169894_e_1b99ler",
+      "tier": "ground",
+      "cropSha256": "24eb0deb250c183418f8844e0095925f3f1220af5a58b38b5bf6511bd14c9501"
+    },
+    {
+      "buildingId": "0363100012169895",
+      "observationId": "0363100012169895_e_0o7vbad",
+      "tier": "ground",
+      "cropSha256": "510090b7c65f9ad791ff7045c49530efd2d222c98b23231138e481b1771e0808"
+    },
+    {
+      "buildingId": "0363100012169942",
+      "observationId": "0363100012169942_e_1n230fl",
+      "tier": "ground",
+      "cropSha256": "3cb02e82d52a7f792a5e7c413e02a5a00853b361c14d5dc6fa19cdd555127744"
+    },
+    {
+      "buildingId": "0363100012169943",
+      "observationId": "0363100012169943_e_0gv8eb3",
+      "tier": "ground",
+      "cropSha256": "c2d5858d9a21b320fd3e856a1c58ae1f8f3e5187399b3586002b497da4c61556"
+    },
+    {
+      "buildingId": "0363100012169944",
+      "observationId": "0363100012169944_e_05hl4zn",
+      "tier": "ground",
+      "cropSha256": "47f89e35c177da3c4d43393d1b4e17bf4b8bb520ecf57af0a26df364f862d8dc"
+    },
+    {
+      "buildingId": "0363100012169946",
+      "observationId": "0363100012169946_e_132aqfo",
+      "tier": "ground",
+      "cropSha256": "9b230a75b76c07b3295b98e4c4fb249625e0d137666fa4c4c4d07ec3ea76fed9"
+    },
+    {
+      "buildingId": "0363100012169952",
+      "observationId": "0363100012169952_e_0dlrjf9",
+      "tier": "ground",
+      "cropSha256": "fb5ae6ff01ede38265521b9c85f77567df4eaf050911c48bfee2bad240371919"
+    },
+    {
+      "buildingId": "0363100012169955",
+      "observationId": "0363100012169955_e_03qxrur",
+      "tier": "ground",
+      "cropSha256": "b4a58436ad6ec889fe3295ef21f3fc5bd15297bd0bc98668dd0eb701a6ad08e0"
+    },
+    {
+      "buildingId": "0363100012170054",
+      "observationId": "0363100012170054_e_0by4u0f",
+      "tier": "ground",
+      "cropSha256": "e769d52cfb0f0feb7ffbc4e152e53a21492fdcdc0875592b76c11d3cd90f62f6"
+    },
+    {
+      "buildingId": "0363100012170084",
+      "observationId": "0363100012170084_e_13tyxi0",
+      "tier": "ground",
+      "cropSha256": "99100260bf41227e49a37e8b656c53f4c18d11fa66ed3a0115866108be5d4d32"
+    },
+    {
+      "buildingId": "0363100012170085",
+      "observationId": "0363100012170085_e_1kaezg2",
+      "tier": "ground",
+      "cropSha256": "4f212668de799401c81c88a170eb3c343152c25e0461e6218c47d22c06ef0722"
+    },
+    {
+      "buildingId": "0363100012170086",
+      "observationId": "0363100012170086_e_0vdsp7f",
+      "tier": "ground",
+      "cropSha256": "3f6efd61697256e5f6281d5f51ada054afa3d8b90fd0d5cb635423e79f3a7b00"
+    },
+    {
+      "buildingId": "0363100012170088",
+      "observationId": "0363100012170088_e_0idr2lr",
+      "tier": "ground",
+      "cropSha256": "3d94e3c1e9b8e41e3d109088f6e461f7461b329d5c333c44db1588549334f4b7"
+    },
+    {
+      "buildingId": "0363100012170089",
+      "observationId": "0363100012170089_e_11518wm",
+      "tier": "ground",
+      "cropSha256": "19d3e8ae66f742fc5e466ea17c7691082bbf0d49f10638a5be134ae1a355009a"
+    },
+    {
+      "buildingId": "0363100012170090",
+      "observationId": "0363100012170090_e_0pdu7u6",
+      "tier": "ground",
+      "cropSha256": "dbab6429e6c59cfd637623ba60bd746439cf110678fffbbf920f628f692b303a"
+    },
+    {
+      "buildingId": "0363100012170091",
+      "observationId": "0363100012170091_e_1leemar",
+      "tier": "ground",
+      "cropSha256": "b44232c0ed885de3f8a2aa35fa8b12e2f253f66bbfc2e95d669c773c3fd24ef7"
+    },
+    {
+      "buildingId": "0363100012170092",
+      "observationId": "0363100012170092_e_0ensw55",
+      "tier": "ground",
+      "cropSha256": "830ce0f847b7075941a769958e763ac24281d33228e6d643a63a0bb7c93cef41"
+    },
+    {
+      "buildingId": "0363100012170125",
+      "observationId": "0363100012170125_e_0paqtzn",
+      "tier": "ground",
+      "cropSha256": "66bd93b67f3d1cb00fb8d3f8dbd0b16dffa37f18a909b5a6f109f5088cd0157b"
+    },
+    {
+      "buildingId": "0363100012170126",
+      "observationId": "0363100012170126_e_04gcn7d",
+      "tier": "ground",
+      "cropSha256": "2e6e37cf35b68f719ac23755f6d81324897aaee2a0ec1553510465adae58c767"
+    },
+    {
+      "buildingId": "0363100012170129",
+      "observationId": "0363100012170129_e_1p6l4ni",
+      "tier": "ground",
+      "cropSha256": "ac314bda9d25c47f3f41e3dad1d3830b818350600a3951ea98dac62d3f41e9f5"
+    },
+    {
+      "buildingId": "0363100012170140",
+      "observationId": "0363100012170140_e_0qbwret",
+      "tier": "ground",
+      "cropSha256": "9fecd6cc16b652e9ae3d556a42549775d18f61c7bae59a6746353b064f878b5e"
+    },
+    {
+      "buildingId": "0363100012170141",
+      "observationId": "0363100012170141_e_00qav8o",
+      "tier": "ground",
+      "cropSha256": "b707b2a44693adab86edd1c16f88b64fc3b5bcb71113a0b2906bce40fff76c71"
+    },
+    {
+      "buildingId": "0363100012170143",
+      "observationId": "0363100012170143_e_1ejszmn",
+      "tier": "ground",
+      "cropSha256": "569dc39e3694c6ac4ac1f0700825459d3bf3f003fa237ffa12519d555b06b1ba"
+    },
+    {
+      "buildingId": "0363100012170144",
+      "observationId": "0363100012170144_e_1n3e2zb",
+      "tier": "ground",
+      "cropSha256": "23fae5a696896946f6c01128b43f7d7265633c88d11d37d40871ae2616d84ed1"
+    },
+    {
+      "buildingId": "0363100012170145",
+      "observationId": "0363100012170145_e_0v6exvh",
+      "tier": "ground",
+      "cropSha256": "4794de8ef266166ad5e9d04531ec513cb86de5f6730470beab627763989ec0fd"
+    },
+    {
+      "buildingId": "0363100012170146",
+      "observationId": "0363100012170146_e_15sat8c",
+      "tier": "ground",
+      "cropSha256": "42adc98665626275d71d38734bb77c9ac5087b846a5eaeb477b76ec103f0aa07"
+    },
+    {
+      "buildingId": "0363100012170147",
+      "observationId": "0363100012170147_e_15pj3a8",
+      "tier": "ground",
+      "cropSha256": "c0ab6fce41299e2ca65c13b402645ae6dce94f0f4bcf94e4b14dbe8486e904be"
+    },
+    {
+      "buildingId": "0363100012170148",
+      "observationId": "0363100012170148_e_1me01b1",
+      "tier": "ground",
+      "cropSha256": "8e1d289360ba68bb3c96b3f7aad016730ab498007267d4b8b4f42a2e6264f040"
+    },
+    {
+      "buildingId": "0363100012170149",
+      "observationId": "0363100012170149_e_1qubcpv",
+      "tier": "ground",
+      "cropSha256": "d9aa5658b73d023399d1b72ef08bea878c1a7ff77cf4136238f7b45124e09acc"
+    },
+    {
+      "buildingId": "0363100012170150",
+      "observationId": "0363100012170150_e_11tsz83",
+      "tier": "ground",
+      "cropSha256": "e73b02badaf88df2fc80ed7059e50465e1d209423b6572a7207c9697b85f542e"
+    },
+    {
+      "buildingId": "0363100012170151",
+      "observationId": "0363100012170151_e_12e8rrx",
+      "tier": "ground",
+      "cropSha256": "85cbef25e3e3559ef2a6c7baa987cd0e656634da1274b86b5696981473fa070c"
+    },
+    {
+      "buildingId": "0363100012170153",
+      "observationId": "0363100012170153_e_1grayxj",
+      "tier": "ground",
+      "cropSha256": "d2f9f0d74f505c41a33fd6855339a3357cccec3951f84498dc34d7399d83824b"
+    },
+    {
+      "buildingId": "0363100012170154",
+      "observationId": "0363100012170154_e_1najs9a",
+      "tier": "ground",
+      "cropSha256": "94838b2b538562937e2ad5d9c828ead6193cc4afc8daf702d4afd9b271c508b8"
+    },
+    {
+      "buildingId": "0363100012170186",
+      "observationId": "0363100012170186_e_09fw20r",
+      "tier": "ground",
+      "cropSha256": "9bac07194309c562436713bcaec20148150e8e5842b7538b94ee10ba8ef3f7fe"
+    },
+    {
+      "buildingId": "0363100012170187",
+      "observationId": "0363100012170187_e_0xf930m",
+      "tier": "ground",
+      "cropSha256": "29446b0cd2a8162fe1b4648c37af9a9d09be762e643de27e4ab5dbba432c80ad"
+    },
+    {
+      "buildingId": "0363100012170189",
+      "observationId": "0363100012170189_e_1n8ly47",
+      "tier": "ground",
+      "cropSha256": "e8118a26d6bdb2ddfb9c051cf5222f56dccd96ea7cd848e50714a22a2a46b197"
+    },
+    {
+      "buildingId": "0363100012170191",
+      "observationId": "0363100012170191_e_10sksq1",
+      "tier": "ground",
+      "cropSha256": "b9d052e5c99f2754ec1dba16e12b6f818217d730952c8d383a6811887162bedc"
+    },
+    {
+      "buildingId": "0363100012170192",
+      "observationId": "0363100012170192_e_07axj0i",
+      "tier": "ground",
+      "cropSha256": "b7b09adb2dc9f57e5f991137d3ee0ab817ca2d48e7fa878e0672c4f2d8591a26"
+    },
+    {
+      "buildingId": "0363100012170194",
+      "observationId": "0363100012170194_e_1v850yu",
+      "tier": "ground",
+      "cropSha256": "4acd77c04da3b969781d37b1b9b213a950a2f57b9a7d4e9e5d2110ad76082cac"
+    },
+    {
+      "buildingId": "0363100012170196",
+      "observationId": "0363100012170196_e_1k62i7a",
+      "tier": "ground",
+      "cropSha256": "1f36aa58c26751364af442c677896fb752e47aae07a487da4596529c2b437d74"
+    },
+    {
+      "buildingId": "0363100012170197",
+      "observationId": "0363100012170197_e_028dobe",
+      "tier": "ground",
+      "cropSha256": "27d2116293d91b79a7db3e546031b3a4e7bddaf993dadfbedbd2556ca4fb9176"
+    },
+    {
+      "buildingId": "0363100012170198",
+      "observationId": "0363100012170198_e_1wjd1ln",
+      "tier": "ground",
+      "cropSha256": "1a794b21cfd27f0976160790e678b3f53438475c149a735ccfed942ab0a25e48"
+    },
+    {
+      "buildingId": "0363100012170202",
+      "observationId": "0363100012170202_e_04beeuu",
+      "tier": "ground",
+      "cropSha256": "6174679a0a547ac520d889ef8f5ccee2b16196fd883e91971ea68805ebe1bfd6"
+    },
+    {
+      "buildingId": "0363100012170796",
+      "observationId": "0363100012170796_e_0g3bjyb",
+      "tier": "ground",
+      "cropSha256": "5daf039108dc5feb464886c1532894554899ad658ba36a94a8d3e3882779e9ed"
+    },
+    {
+      "buildingId": "0363100012172578",
+      "observationId": "0363100012172578_e_0we1kb2",
+      "tier": "ground",
+      "cropSha256": "464b419c71cd7de802ee8a91f1c650a9751a13282bc35e14b9ca757cb3b5d907"
+    },
+    {
+      "buildingId": "0363100012172580",
+      "observationId": "0363100012172580_e_0lzqo91",
+      "tier": "ground",
+      "cropSha256": "a5e3ac8bd0ef6d4b20ffd234b24838c8c607321e24068a0e58ae05fd5e9722d3"
+    },
+    {
+      "buildingId": "0363100012173857",
+      "observationId": "0363100012173857_e_0c1pyoq",
+      "tier": "ground",
+      "cropSha256": "8f25603680e1be5c407e85975a0b26fd78dfdc44236b176f958fe01d89c7eb30"
+    },
+    {
+      "buildingId": "0363100012173862",
+      "observationId": "0363100012173862_e_0fqf2h3",
+      "tier": "ground",
+      "cropSha256": "e96c845c88a658d7d07c0aff6541d9e285afcfb29202f50159b0e7c164e6a21e"
+    },
+    {
+      "buildingId": "0363100012173863",
+      "observationId": "0363100012173863_e_05hdyw7",
+      "tier": "ground",
+      "cropSha256": "1a92c58e2581d9aa0900349dd9382fb61af84d88371dce3384f3cc56d0b24d60"
+    },
+    {
+      "buildingId": "0363100012173864",
+      "observationId": "0363100012173864_e_13ehydk",
+      "tier": "ground",
+      "cropSha256": "ec2968f0745970bfdba923daec20ccc8e0c8c55c0715570ca7270746bdc9aafa"
+    },
+    {
+      "buildingId": "0363100012173865",
+      "observationId": "0363100012173865_e_1ur95va",
+      "tier": "ground",
+      "cropSha256": "51595d01e1d583fc6f1f873b0277064e14aa797e8c07300c5da8422ec5ba2d84"
+    },
+    {
+      "buildingId": "0363100012173869",
+      "observationId": "0363100012173869_e_0j7aoco",
+      "tier": "ground",
+      "cropSha256": "d06d7413b4ecb0f5c7c8206c7d06d0875665f22d929804304fa8fff264635637"
+    },
+    {
+      "buildingId": "0363100012173873",
+      "observationId": "0363100012173873_e_085qzjc",
+      "tier": "ground",
+      "cropSha256": "b97c2a8d2296e4148f611ad02523fa6843879ec5064fbb2c13d9d9d30fa37e58"
+    },
+    {
+      "buildingId": "0363100012173875",
+      "observationId": "0363100012173875_e_06snyl1",
+      "tier": "ground",
+      "cropSha256": "17b3e78e4975948999037209f064694a9079e5b86196c7b045bc569aba91ed6d"
+    },
+    {
+      "buildingId": "0363100012173889",
+      "observationId": "0363100012173889_e_1xqy1k1",
+      "tier": "ground",
+      "cropSha256": "68360cd70c11f67b2e9de7d75d313d63fe2072199f98c3db1a0bbd1872dfbcba"
+    },
+    {
+      "buildingId": "0363100012173890",
+      "observationId": "0363100012173890_e_1mfx7q6",
+      "tier": "ground",
+      "cropSha256": "7cfab7048b60f645224e2ded379d75d178bee1cdc37547ed2fa64d2eb5ddd767"
+    },
+    {
+      "buildingId": "0363100012173910",
+      "observationId": "0363100012173910_e_15gaiap",
+      "tier": "ground",
+      "cropSha256": "94ca8c40fb8742a81fc982a0942d475e07d715b312f9ab21d17294a39488c02c"
+    },
+    {
+      "buildingId": "0363100012173913",
+      "observationId": "0363100012173913_e_1anh9vq",
+      "tier": "ground",
+      "cropSha256": "c0a1763cd23a83bc504a6a940af8642e228dfdd972f92498cd147571685b2bba"
+    },
+    {
+      "buildingId": "0363100012173916",
+      "observationId": "0363100012173916_e_0m9hurp",
+      "tier": "ground",
+      "cropSha256": "9f0fa4d26a9c011a5c6c588bb15eda7fe95334db7d9f7232924ce6721efb8814"
+    },
+    {
+      "buildingId": "0363100012173918",
+      "observationId": "0363100012173918_e_03s3688",
+      "tier": "ground",
+      "cropSha256": "908d18dc5e18b518ff8fe7c843bf7eaaf8d296315fb061c5f94effbd3b647e36"
+    },
+    {
+      "buildingId": "0363100012173920",
+      "observationId": "0363100012173920_e_0lbre2v",
+      "tier": "ground",
+      "cropSha256": "22035b36e6faf42aab99c8421cb13379fe12a840d32458cc64f679666fe0eea0"
+    },
+    {
+      "buildingId": "0363100012173922",
+      "observationId": "0363100012173922_e_1h64jk6",
+      "tier": "ground",
+      "cropSha256": "e7eca8eab9ca4acf52f9cefe53277c2a10d5293b148a035d8484d5e1427a3b5e"
+    },
+    {
+      "buildingId": "0363100012173926",
+      "observationId": "0363100012173926_e_1b2i50t",
+      "tier": "ground",
+      "cropSha256": "549d32f2f2abfcb2c3a05dae51f38f12118fcaafc6714557c5830daa7816235a"
+    },
+    {
+      "buildingId": "0363100012173927",
+      "observationId": "0363100012173927_e_023fr62",
+      "tier": "ground",
+      "cropSha256": "6683db2272a0a77fa86068d7555f75bab6c61c2bc0625a74ed22f0ed580b8108"
+    },
+    {
+      "buildingId": "0363100012173928",
+      "observationId": "0363100012173928_e_1o9nhk8",
+      "tier": "ground",
+      "cropSha256": "514de211ed5d0100b01773330c6dca4345d367f05dce333963f057819c9f042a"
+    },
+    {
+      "buildingId": "0363100012173929",
+      "observationId": "0363100012173929_e_0dk14yr",
+      "tier": "ground",
+      "cropSha256": "5eb28d038c4c5fb16d2f17c8318d6d7df83ef5bb6e35b4e0a967de09e05958ae"
+    },
+    {
+      "buildingId": "0363100012173930",
+      "observationId": "0363100012173930_e_1c8qzkz",
+      "tier": "ground",
+      "cropSha256": "516e074cb12842a2888c5be2e7e12934106608bf1fd5f75b0db96f670d5b1d36"
+    },
+    {
+      "buildingId": "0363100012173933",
+      "observationId": "0363100012173933_e_1r8xwwq",
+      "tier": "ground",
+      "cropSha256": "0c0dd43271a7b191138d521a27964327408f178d73fce13992991d0ed50d911c"
+    },
+    {
+      "buildingId": "0363100012173934",
+      "observationId": "0363100012173934_e_0j0cv1q",
+      "tier": "ground",
+      "cropSha256": "2b7611517d5e8bf0cb0f0d0168d1f423186b4f4e7615fb30945cfe483e1909f4"
+    },
+    {
+      "buildingId": "0363100012173982",
+      "observationId": "0363100012173982_e_1nnzmi2",
+      "tier": "ground",
+      "cropSha256": "db33a888c45048247abe876dc3d278633334a5720f669e39c0af9aae079e6568"
+    },
+    {
+      "buildingId": "0363100012173988",
+      "observationId": "0363100012173988_e_04od6rf",
+      "tier": "ground",
+      "cropSha256": "550db14b0813794b463173e50d594c4ea95dfedc1920c3ef8299244f9f417dbe"
+    },
+    {
+      "buildingId": "0363100012173989",
+      "observationId": "0363100012173989_e_0zlabh2",
+      "tier": "ground",
+      "cropSha256": "a2fb9e6d9dfdb14b97cc9d80c8c9f73e34d694905845b6fef7287d3c10f6595f"
+    },
+    {
+      "buildingId": "0363100012173991",
+      "observationId": "0363100012173991_e_1qwbv4n",
+      "tier": "ground",
+      "cropSha256": "94629501329dded349d7e4620ec2194b8b6d9739ae548f466d675288f1c56df1"
+    },
+    {
+      "buildingId": "0363100012173992",
+      "observationId": "0363100012173992_e_0r0hglp",
+      "tier": "ground",
+      "cropSha256": "fdd98f1d3c665e8e8a445320021749a01840885e11f5ea8e6bf332fce9ea19e1"
+    },
+    {
+      "buildingId": "0363100012173994",
+      "observationId": "0363100012173994_e_0e0c9bx",
+      "tier": "ground",
+      "cropSha256": "9f1ae11014dea5b0a3cd4c304d20ddfe5b4968bf1d885c54604b0e2264306568"
+    },
+    {
+      "buildingId": "0363100012173995",
+      "observationId": "0363100012173995_e_0p4wqcn",
+      "tier": "ground",
+      "cropSha256": "a9d05c37601bd1a8461971dffa4f5b8a8ca608d5ac187cb2ee9e464300668710"
+    },
+    {
+      "buildingId": "0363100012174000",
+      "observationId": "0363100012174000_e_1626xz1",
+      "tier": "ground",
+      "cropSha256": "55f715f7c2a8db604873036bcb5b82c96401719477302a3053e4b49c15bbfc8d"
+    },
+    {
+      "buildingId": "0363100012174001",
+      "observationId": "0363100012174001_e_1y4nlnq",
+      "tier": "ground",
+      "cropSha256": "0b40d61bdea075ed79582031ab830037b167d9567fb19077ebdac67bd43ff5e5"
+    },
+    {
+      "buildingId": "0363100012174002",
+      "observationId": "0363100012174002_e_1b4ju3y",
+      "tier": "ground",
+      "cropSha256": "2e8bb085da5410b705cf75035bcbb74501bb66173457996267e3f1a445bdb95e"
+    },
+    {
+      "buildingId": "0363100012174004",
+      "observationId": "0363100012174004_e_0qczsol",
+      "tier": "ground",
+      "cropSha256": "c462f8102924a90d7c2a18dfe28ec460ceaae7367de04fcdd3573283ae2e153e"
+    },
+    {
+      "buildingId": "0363100012174005",
+      "observationId": "0363100012174005_e_05cqfsn",
+      "tier": "ground",
+      "cropSha256": "8d446bc3f0deb74be70a24c555075eac857a335fc78854711387c4b3b8e6963f"
+    },
+    {
+      "buildingId": "0363100012174006",
+      "observationId": "0363100012174006_e_118hujl",
+      "tier": "ground",
+      "cropSha256": "92b50230af0cdbd19a7f919cf9ed4e7831441ab04fb1c6e9edea9cec32459653"
+    },
+    {
+      "buildingId": "0363100012174007",
+      "observationId": "0363100012174007_e_0l04h2s",
+      "tier": "ground",
+      "cropSha256": "0a34aa5190a0d7daa9bf8f926ef199946c6542cd9e51193b26095bcb6c8d1846"
+    },
+    {
+      "buildingId": "0363100012174008",
+      "observationId": "0363100012174008_e_1uls0ed",
+      "tier": "ground",
+      "cropSha256": "206b8561bc3c63b0a69927d46159bfcbf4108f7d70e8ee0ae322a6c6c98198cb"
+    },
+    {
+      "buildingId": "0363100012174009",
+      "observationId": "0363100012174009_e_1vp8yhy",
+      "tier": "ground",
+      "cropSha256": "e922674c077cd2bdd0eeea95e8c96572e0e7fbf517842efb6cf2bbe3c12dab1f"
+    },
+    {
+      "buildingId": "0363100012174012",
+      "observationId": "0363100012174012_e_0u181jq",
+      "tier": "ground",
+      "cropSha256": "fd6fa8d3de26962071182d5e51a2bdc810b82d7fd0ed2293496a5c744761c854"
+    },
+    {
+      "buildingId": "0363100012174039",
+      "observationId": "0363100012174039_e_1s3rr97",
+      "tier": "ground",
+      "cropSha256": "02353ff81f79ca72d5b496861254bdc03a8f7226ad8154741f70b4624b629229"
+    },
+    {
+      "buildingId": "0363100012174074",
+      "observationId": "0363100012174074_e_1qqt96y",
+      "tier": "ground",
+      "cropSha256": "e33c15cfd330a16902a70a33ac25f27a65fdf5c4f1843d3002258c5b7b799186"
+    },
+    {
+      "buildingId": "0363100012174089",
+      "observationId": "0363100012174089_e_0xdd3ge",
+      "tier": "ground",
+      "cropSha256": "283752062d5b763572e283016412fc9a8c984ccabbc8d52d9376ade365e9c567"
+    },
+    {
+      "buildingId": "0363100012174100",
+      "observationId": "0363100012174100_e_023a1el",
+      "tier": "ground",
+      "cropSha256": "2849168a4b79e7d477f3e1d20a3ecaf0de68071aaa31abd4ff4e5310f6a3f026"
+    },
+    {
+      "buildingId": "0363100012174145",
+      "observationId": "0363100012174145_e_1hud63g",
+      "tier": "ground",
+      "cropSha256": "9dbb7292986237aa1833d5aabd16180ac37542a69c200d2a77f3afddd4f7d729"
+    },
+    {
+      "buildingId": "0363100012174146",
+      "observationId": "0363100012174146_e_1xugoif",
+      "tier": "ground",
+      "cropSha256": "106abc92acdfc9d821c3bf2e4d6b06acce95af37dc2303dc46fc3d5237be1be2"
+    },
+    {
+      "buildingId": "0363100012174152",
+      "observationId": "0363100012174152_e_0m52v6l",
+      "tier": "ground",
+      "cropSha256": "023df20a563d2e75fad5099424cde9fc71ab64d1bb749bc2e3403b7fa5e91961"
+    },
+    {
+      "buildingId": "0363100012174153",
+      "observationId": "0363100012174153_e_14l6jep",
+      "tier": "ground",
+      "cropSha256": "0e76ee4acc116c3c3eb6981af73eaac009281372cdbfbd65ea72e3435633f03e"
+    },
+    {
+      "buildingId": "0363100012174155",
+      "observationId": "0363100012174155_e_03nisvn",
+      "tier": "ground",
+      "cropSha256": "a047ca69423ad696209333994423618050205be1d03292b56c49025d7df01f05"
+    },
+    {
+      "buildingId": "0363100012174156",
+      "observationId": "0363100012174156_e_04dr7wi",
+      "tier": "ground",
+      "cropSha256": "6e8057f24b9f71ab30125a92586b6e492b00222996cf605d7713184f1f16c653"
+    },
+    {
+      "buildingId": "0363100012174157",
+      "observationId": "0363100012174157_e_1mpqmhu",
+      "tier": "ground",
+      "cropSha256": "b7f1134ef808a802085b82e005e93342075408393b60540953bd957fb5d3956a"
+    },
+    {
+      "buildingId": "0363100012174158",
+      "observationId": "0363100012174158_e_1ejs321",
+      "tier": "ground",
+      "cropSha256": "43d312b8e977705ec8d37c97ab0835e81709a5792e4d13d621e949bbafe3a1df"
+    },
+    {
+      "buildingId": "0363100012174161",
+      "observationId": "0363100012174161_e_19sfn4b",
+      "tier": "ground",
+      "cropSha256": "c57c4d31338ca2250d0db36d9dfab8b88b4d5543de434fc3b3962e027d9d90e0"
+    },
+    {
+      "buildingId": "0363100012174167",
+      "observationId": "0363100012174167_e_1ea8uo3",
+      "tier": "ground",
+      "cropSha256": "726cb378434290f0ae246d097477feecbd4088ec8abb212e05e3b5161c0c441d"
+    },
+    {
+      "buildingId": "0363100012174169",
+      "observationId": "0363100012174169_e_1w30ns5",
+      "tier": "ground",
+      "cropSha256": "26947ced670e35f245a5a3061bba3fbcb9b424ae029728a258ea4b835a03d3f6"
+    },
+    {
+      "buildingId": "0363100012174196",
+      "observationId": "0363100012174196_e_1pgb2yl",
+      "tier": "ground",
+      "cropSha256": "d79b7c584560e9366d9b1e69c33cd40df54a88c42959d1e1afc95f0d1bb829a4"
+    },
+    {
+      "buildingId": "0363100012174198",
+      "observationId": "0363100012174198_e_057tydi",
+      "tier": "ground",
+      "cropSha256": "8c3a157eb0aa9d68e573af26a7a7559a028169873ac5d132bb856adfb4d7e1d0"
+    },
+    {
+      "buildingId": "0363100012174200",
+      "observationId": "0363100012174200_e_0nwnsxh",
+      "tier": "ground",
+      "cropSha256": "0bb58b9fa5d93cad1bad4b22fe4af1d40c74f61458c54f3ff838e73c7819c3ca"
+    },
+    {
+      "buildingId": "0363100012174203",
+      "observationId": "0363100012174203_e_1xsw9l0",
+      "tier": "ground",
+      "cropSha256": "99d0e19f5e2840e941a5227650d366b3c9816d9a6b09c53f159288b09c7bf807"
+    },
+    {
+      "buildingId": "0363100012174204",
+      "observationId": "0363100012174204_e_1r4mm2h",
+      "tier": "ground",
+      "cropSha256": "c10a3abd7b934cbabbe057ae35eb34169d9b18f611762a9535271c9f640434f1"
+    },
+    {
+      "buildingId": "0363100012174207",
+      "observationId": "0363100012174207_e_0y0y7um",
+      "tier": "ground",
+      "cropSha256": "3d930b485ee036839f7f1b09c5f8ffc23ca9bd79dec4126dd9d84314d280f5bd"
+    },
+    {
+      "buildingId": "0363100012174210",
+      "observationId": "0363100012174210_e_15cjfhe",
+      "tier": "ground",
+      "cropSha256": "10c0517d16abc1053008e897f59dd42673d54f1d5b46eb6a26e1637ef687fa7d"
+    },
+    {
+      "buildingId": "0363100012174211",
+      "observationId": "0363100012174211_e_0a5dx7g",
+      "tier": "ground",
+      "cropSha256": "e6112d5f58cc80c7ea869291ede1c74286a3ccdc7073267372bff2293f0c625a"
+    },
+    {
+      "buildingId": "0363100012174212",
+      "observationId": "0363100012174212_e_1e45knu",
+      "tier": "ground",
+      "cropSha256": "d6d7bbe15400619f73b15dd72f773f90a170942837ebce8e4f3d7c89082fccc6"
+    },
+    {
+      "buildingId": "0363100012174214",
+      "observationId": "0363100012174214_e_11c0jzl",
+      "tier": "ground",
+      "cropSha256": "bc074a943bbb3c535474d9433aee063bac5e23df1948ab45071c638587a8eeca"
+    },
+    {
+      "buildingId": "0363100012174216",
+      "observationId": "0363100012174216_e_0fo2nad",
+      "tier": "ground",
+      "cropSha256": "c27e227756e2c110988178c423985c250c5b91e078f500f208f24b79f310f2dd"
+    },
+    {
+      "buildingId": "0363100012174281",
+      "observationId": "0363100012174281_e_1208fs2",
+      "tier": "ground",
+      "cropSha256": "c65e059ec262ab8c4f171c101f503372e5bf2167a6ccfe887b99145720adf1d2"
+    },
+    {
+      "buildingId": "0363100012174285",
+      "observationId": "0363100012174285_e_1x4nmp4",
+      "tier": "ground",
+      "cropSha256": "1074910b39a47a2565cdeaffec5f92c3a03ebc60d42785567a535580420f0af0"
+    },
+    {
+      "buildingId": "0363100012174289",
+      "observationId": "0363100012174289_e_0cj0mg6",
+      "tier": "ground",
+      "cropSha256": "9ae637e866787c0a75dc36c89d53487d160d4675f8c8e5731ed5e2ca0736ba86"
+    },
+    {
+      "buildingId": "0363100012174296",
+      "observationId": "0363100012174296_e_0m9u5ri",
+      "tier": "ground",
+      "cropSha256": "a6b214d5bea4f5b6b4bc62ad56d522c38861664ecde34653719a952b252dc366"
+    },
+    {
+      "buildingId": "0363100012174346",
+      "observationId": "0363100012174346_e_0p3mrsg",
+      "tier": "ground",
+      "cropSha256": "af103cd2e57cdfecf6059f30a3db5cd21c57e6ab2ac011744f5c511b29926807"
+    },
+    {
+      "buildingId": "0363100012174347",
+      "observationId": "0363100012174347_e_040beao",
+      "tier": "ground",
+      "cropSha256": "fb4d40547ee31f3e7b32ec3225f7155bec4f2fef2f20bffc69d6eec4699f9243"
+    },
+    {
+      "buildingId": "0363100012174349",
+      "observationId": "0363100012174349_e_1qllxd7",
+      "tier": "ground",
+      "cropSha256": "2d577d5d6d869c339e40bd79f9bb1877451a30e6a849fd77633ebd369ce1ccda"
+    },
+    {
+      "buildingId": "0363100012174350",
+      "observationId": "0363100012174350_e_0v2t5yf",
+      "tier": "ground",
+      "cropSha256": "92c04e2396252adc61606167276a91f006632a10f367252d598381a3210c9b1b"
+    },
+    {
+      "buildingId": "0363100012174351",
+      "observationId": "0363100012174351_e_1hhumoz",
+      "tier": "ground",
+      "cropSha256": "e4ec5f9f37194921653b53e97ff76e01909f059d9c09d39048a61abbb087d91d"
+    },
+    {
+      "buildingId": "0363100012174352",
+      "observationId": "0363100012174352_e_0vzdubh",
+      "tier": "ground",
+      "cropSha256": "473841a3cd1d1635d9172cbe56a81662e41d2e1e10df609bf0518adb000fcafd"
+    },
+    {
+      "buildingId": "0363100012174357",
+      "observationId": "0363100012174357_e_0mu2iav",
+      "tier": "ground",
+      "cropSha256": "9d7c63d7bcd0f7ea4cf33f9d04c3fb959cafb1ffdebb0ccf43015cffe878511f"
+    },
+    {
+      "buildingId": "0363100012174359",
+      "observationId": "0363100012174359_e_0jjpsa8",
+      "tier": "ground",
+      "cropSha256": "c754a0c5fb30870f5d533de0c53719a2fed78123f16790ea33ea495e52dccc4d"
+    },
+    {
+      "buildingId": "0363100012174360",
+      "observationId": "0363100012174360_e_1bqfvl3",
+      "tier": "ground",
+      "cropSha256": "d7571c6152a819d6479d0ecf80bc1e103728225917f688e04ae5ccbf25ea016a"
+    },
+    {
+      "buildingId": "0363100012174442",
+      "observationId": "0363100012174442_e_0smyxbz",
+      "tier": "ground",
+      "cropSha256": "35f8842c8a2a26753149c42c4f842a05e354681e417b1e65bb0a7c5cb8ff12e5"
+    },
+    {
+      "buildingId": "0363100012174519",
+      "observationId": "0363100012174519_e_0vbmo8g",
+      "tier": "ground",
+      "cropSha256": "693b4ea0047554434b11e5eb512dcfe393da96d6ea9fd0fe8d0a72e961767ac6"
+    },
+    {
+      "buildingId": "0363100012174520",
+      "observationId": "0363100012174520_e_1vmewhe",
+      "tier": "ground",
+      "cropSha256": "f3de231c5a2569fb1d5bfb447005b9beef47895f2d8a8c94530f6e79ae532776"
+    },
+    {
+      "buildingId": "0363100012174521",
+      "observationId": "0363100012174521_e_06zkfqe",
+      "tier": "ground",
+      "cropSha256": "d02dfa28d8df5171c71f29c485169f014a4028d843106c6d636738a03a60b515"
+    },
+    {
+      "buildingId": "0363100012174527",
+      "observationId": "0363100012174527_e_070l82f",
+      "tier": "ground",
+      "cropSha256": "98e07daa4e6155ab2f80bb8d10f4d06c7127745820cd68d8cbc823cad44fb5a0"
+    },
+    {
+      "buildingId": "0363100012174549",
+      "observationId": "0363100012174549_e_0brqvmp",
+      "tier": "ground",
+      "cropSha256": "c393ccf669178e0844f8b6200efa7b4927db382db7fc66901f1ed1146a6dc269"
+    },
+    {
+      "buildingId": "0363100012174552",
+      "observationId": "0363100012174552_e_11xd5yb",
+      "tier": "ground",
+      "cropSha256": "48d30c8ebf97dfb0115dd829fe878c8fa6ecc32adac89848bb8e0571dea5e9cd"
+    },
+    {
+      "buildingId": "0363100012174554",
+      "observationId": "0363100012174554_e_077rlll",
+      "tier": "ground",
+      "cropSha256": "0e19bf9f50852551ffc948add70c6ac40c8b62566ceb141773d31e0e6765708b"
+    },
+    {
+      "buildingId": "0363100012174555",
+      "observationId": "0363100012174555_e_0etw0xy",
+      "tier": "ground",
+      "cropSha256": "ea610bf154fca086489e271508099c72cd84d872d8d6df4a25d7bb5136254440"
+    },
+    {
+      "buildingId": "0363100012174559",
+      "observationId": "0363100012174559_e_02r6hbf",
+      "tier": "ground",
+      "cropSha256": "651e37792343458c4edf56e9d0ac7bcc17204a55b29b52a87d90a43d8585f93c"
+    },
+    {
+      "buildingId": "0363100012174561",
+      "observationId": "0363100012174561_e_17dg2bs",
+      "tier": "ground",
+      "cropSha256": "2d41dbe054ad4ad60d1872ca3f4f2eea48f385284e7f5c1dd453c1b69b947d4d"
+    },
+    {
+      "buildingId": "0363100012174562",
+      "observationId": "0363100012174562_e_0id24bt",
+      "tier": "ground",
+      "cropSha256": "ad0194511ca33815b0ea17342f4e5acfdd8235a2138d8f249e145af4b52347b4"
+    },
+    {
+      "buildingId": "0363100012174563",
+      "observationId": "0363100012174563_e_07m7e00",
+      "tier": "ground",
+      "cropSha256": "7157b7d8ad09daca7dfd8fc63d74edf723f6585557ef1aa7f1d6585f0de3c3f4"
+    },
+    {
+      "buildingId": "0363100012174565",
+      "observationId": "0363100012174565_e_0f5lign",
+      "tier": "ground",
+      "cropSha256": "37aebb2a75b363d54ffc68c316f4a8b8444b6880dd7957bd7c38dec734cf63c5"
+    },
+    {
+      "buildingId": "0363100012174566",
+      "observationId": "0363100012174566_e_0f96m8v",
+      "tier": "ground",
+      "cropSha256": "4ab8f04bdca27a6b2782b5e7e7b91624325db5d4d065a9400305f1f5de36b56a"
+    },
+    {
+      "buildingId": "0363100012174567",
+      "observationId": "0363100012174567_e_07lfkw8",
+      "tier": "ground",
+      "cropSha256": "ad228eff83d46a97646dac80909d25e392d046b245ffec08f51fec33c4399ba8"
+    },
+    {
+      "buildingId": "0363100012174568",
+      "observationId": "0363100012174568_e_0x8lkrs",
+      "tier": "ground",
+      "cropSha256": "c22c27dc56149a3fdf1bf1fab72970d5b6ef51557f64af81532f57174dc373d9"
+    },
+    {
+      "buildingId": "0363100012174820",
+      "observationId": "0363100012174820_e_007m5ol",
+      "tier": "ground",
+      "cropSha256": "cad6df3de8299194d9101f80799f7864ec90f4ba107f6faa9e7a848132c47c6a"
+    },
+    {
+      "buildingId": "0363100012174821",
+      "observationId": "0363100012174821_e_19molap",
+      "tier": "ground",
+      "cropSha256": "8917522994b3c80449267d27a479938630ecf2143515c9c55b61727913da252d"
+    },
+    {
+      "buildingId": "0363100012174822",
+      "observationId": "0363100012174822_e_1klgmit",
+      "tier": "ground",
+      "cropSha256": "a45a660d7210261ba7c275a1d6b0e3f39e6ae6919d9b2cc1431c595b124dbb9e"
+    },
+    {
+      "buildingId": "0363100012174886",
+      "observationId": "0363100012174886_e_0hlwydw",
+      "tier": "ground",
+      "cropSha256": "4f617ee4fec1abe040d128860423ec8b2b85cc0ddcf6ba33007c2c7c342cd268"
+    },
+    {
+      "buildingId": "0363100012174999",
+      "observationId": "0363100012174999_e_0f7aj85",
+      "tier": "ground",
+      "cropSha256": "02cd4a9d43fdbfd714c02f9be38328341962dba673bfc7c2ea3244f49d0b860e"
+    },
+    {
+      "buildingId": "0363100012175000",
+      "observationId": "0363100012175000_e_1opro3y",
+      "tier": "ground",
+      "cropSha256": "1a1902bad1c5964dd1b11b0f6e719b715351872c773a2bf5eeb0c33233af8063"
+    },
+    {
+      "buildingId": "0363100012185684",
+      "observationId": "0363100012185684_e_0qn149y",
+      "tier": "ground",
+      "cropSha256": "79e21ed4885bcb8cefe2f1613cf5ce9cad579ce25ab4063e4730c965830b83ff"
+    },
+    {
+      "buildingId": "0363100012186094",
+      "observationId": "0363100012186094_e_0a0a5bl",
+      "tier": "ground",
+      "cropSha256": "e480ab7bae58fbd6837e8c1a251d491f922b85582b3b3ee13ec40238dea64cea"
+    },
+    {
+      "buildingId": "0363100012186296",
+      "observationId": "0363100012186296_e_1c58etq",
+      "tier": "ground",
+      "cropSha256": "ae2cb2c1b7a69caaa04e9e213b8b4604047f764635a3017511ae3788ea1543dc"
+    },
+    {
+      "buildingId": "0363100012236003",
+      "observationId": "0363100012236003_e_0k0u3th",
+      "tier": "ground",
+      "cropSha256": "4571addfb503d9dc457841068d21fc832626e0d28f6481f13e2b122f33ba4c19"
+    },
+    {
+      "buildingId": "0363100012236016",
+      "observationId": "0363100012236016_e_1g5hiht",
+      "tier": "ground",
+      "cropSha256": "a5379e711dc45aa447e080660014144095150bc9b39eb030124937e04a646ee7"
+    },
+    {
+      "buildingId": "0363100012236121",
+      "observationId": "0363100012236121_e_0pbjzjk",
+      "tier": "ground",
+      "cropSha256": "92c256033b82c6d400f3953ea3f51cc94a637f0ca5128cb67003cf1ffccd2cc1"
+    },
+    {
+      "buildingId": "0363100012236141",
+      "observationId": "0363100012236141_e_041dz1t",
+      "tier": "ground",
+      "cropSha256": "6130ce75d7a8c70ac7fe8cf54cd308d0cdb4c8fde9f547ceb834ed950d0e563f"
+    },
+    {
+      "buildingId": "0363100012236194",
+      "observationId": "0363100012236194_e_00dx8kl",
+      "tier": "ground",
+      "cropSha256": "bffddf8e1778aac399b6511e640173b63cd92bf07e28c8bcbeda95af027a087a"
+    },
+    {
+      "buildingId": "0363100012236235",
+      "observationId": "0363100012236235_e_1njqk8h",
+      "tier": "ground",
+      "cropSha256": "d88a448acfe040a24a349d2f7c122245ce16266b678540a25ebff027b63e9b11"
+    },
+    {
+      "buildingId": "0363100012236262",
+      "observationId": "0363100012236262_e_08gco44",
+      "tier": "ground",
+      "cropSha256": "647c832229e6d568cfd8d78e2ae3229d4d08048ab63da63ceda696466d6523d0"
+    },
+    {
+      "buildingId": "0363100012236266",
+      "observationId": "0363100012236266_e_0qd9ev0",
+      "tier": "ground",
+      "cropSha256": "791a36c34b9ffc7e2463057c22100239daf523f59b0689e47adfa1dcfc920404"
+    },
+    {
+      "buildingId": "0363100012236332",
+      "observationId": "0363100012236332_e_0blaami",
+      "tier": "ground",
+      "cropSha256": "2257c9b0a1d1b9c1e941c35ffd4f603cb6ed8d5313310248d5b8c0a8cb4f08a4"
+    },
+    {
+      "buildingId": "0363100012236397",
+      "observationId": "0363100012236397_e_0d2np4j",
+      "tier": "ground",
+      "cropSha256": "e55c253fc4ea3fcb64eeeaee889d381ea412af5216f033d9932d753b55cadecd"
+    },
+    {
+      "buildingId": "0363100012236418",
+      "observationId": "0363100012236418_e_0ypeler",
+      "tier": "ground",
+      "cropSha256": "e360cbfd0976f560d102014310ac9ca08013857c359abfea49a78699b5a2fec2"
+    },
+    {
+      "buildingId": "0363100012236432",
+      "observationId": "0363100012236432_e_1esti5p",
+      "tier": "ground",
+      "cropSha256": "8d47825df995318e07e5c276f3fbacc74b15c951eada267693d5c168ad464201"
+    },
+    {
+      "buildingId": "0363100012236441",
+      "observationId": "0363100012236441_e_00bs3qn",
+      "tier": "ground",
+      "cropSha256": "171e0b3db5464d2c6b5a8116411d953ab8c5eff60184fc622f0d9c505334a239"
+    },
+    {
+      "buildingId": "0363100012236521",
+      "observationId": "0363100012236521_e_030nf28",
+      "tier": "ground",
+      "cropSha256": "0b2ba9b7b9a505145c3747a2eb5fac90f7478202315c0afc15b7c81bbf737038"
+    },
+    {
+      "buildingId": "0363100012236681",
+      "observationId": "0363100012236681_e_0f0740u",
+      "tier": "ground",
+      "cropSha256": "3cecd4d03222ab8afb300aaf9cd48512f9640244d0420b83e6e0c138960d39b3"
+    },
+    {
+      "buildingId": "0363100012236815",
+      "observationId": "0363100012236815_e_0zv81ra",
+      "tier": "ground",
+      "cropSha256": "1fc5974f66dfab6092ebe476df029ee687cdddbd4d3871d9a62d9f6840e2b065"
+    },
+    {
+      "buildingId": "0363100012236836",
+      "observationId": "0363100012236836_e_1vubnn3",
+      "tier": "ground",
+      "cropSha256": "02668351630f631d80533fccd76c45bf1a00020767b74afb38e57448960e2b8e"
+    },
+    {
+      "buildingId": "0363100012236917",
+      "observationId": "0363100012236917_e_0q8kr8n",
+      "tier": "ground",
+      "cropSha256": "5281f2767ba54e6c93181b658c3fd4f0ab4c78cd3a912f379fe2c970dcee6f0a"
+    },
+    {
+      "buildingId": "0363100012237100",
+      "observationId": "0363100012237100_e_1l4m54o",
+      "tier": "ground",
+      "cropSha256": "311818709b805dd918b8bf2e7ea71b233e0099d74072a098016b471cae0fda5e"
+    },
+    {
+      "buildingId": "0363100012237236",
+      "observationId": "0363100012237236_e_07oi4ua",
+      "tier": "ground",
+      "cropSha256": "b96ce8bb31fc3e849bf4c0c76dd4206f442578d0d815bdb80bc0cf7847181d3e"
+    },
+    {
+      "buildingId": "0363100012237291",
+      "observationId": "0363100012237291_e_1yq41ov",
+      "tier": "ground",
+      "cropSha256": "aa693258d6cda61e0cdb560e970f0ba2a2a2aa7597dfa36c9e3a7c4827737075"
+    },
+    {
+      "buildingId": "0363100012237383",
+      "observationId": "0363100012237383_e_0m4pgcv",
+      "tier": "ground",
+      "cropSha256": "f3d8f79f393dde0eabfff81fe236d406ec57d4d5fadf29a770846ae8d9783a3c"
+    },
+    {
+      "buildingId": "0363100012241810",
+      "observationId": "0363100012241810_e_029kjrg",
+      "tier": "ground",
+      "cropSha256": "018669642766b2c0302305364b00386b8753d8826860841995f0af6f7113b3e4"
+    },
+    {
+      "buildingId": "0363100012243198",
+      "observationId": "0363100012243198_e_0d7oqid",
+      "tier": "ground",
+      "cropSha256": "3837a029ca45bfdf1c9f4a5d2d824daf621595b2c1b524ed726171fb68e6d005"
+    },
+    {
+      "buildingId": "0363100012253787",
+      "observationId": "0363100012253787_e_1xnhprh",
+      "tier": "ground",
+      "cropSha256": "e1d5e88e6d98fcbc368ad3e93fb70434da0c8715c328a9986d28e73989be0a67"
+    },
+    {
+      "buildingId": "0363100012253909",
+      "observationId": "0363100012253909_e_0rpyd19",
+      "tier": "ground",
+      "cropSha256": "0b144b6d566eaf0d829866aefc5229ad134cf505d76ae62dc7881b84037b2b99"
+    },
+    {
+      "buildingId": "0363100012253926",
+      "observationId": "0363100012253926_e_15uoj4q",
+      "tier": "ground",
+      "cropSha256": "4fe9001c6078c471ca7081bb92cf76b370af336e22d7854f9fa51cf18a961fa7"
+    },
+    {
+      "buildingId": "0363100012254021",
+      "observationId": "0363100012254021_e_1oi3qvf",
+      "tier": "ground",
+      "cropSha256": "0d4f9a0c4bb24f571b2640b9dc6b37679bdfc84e54e0dab058a60ec8dbac267c"
+    },
+    {
+      "buildingId": "0363100012571959",
+      "observationId": "0363100012571959_e_0plh212",
+      "tier": "ground",
+      "cropSha256": "ccc21750cf606df76326ea9ff1fa53ff36ddde668f5d0bbf0c82035275dcd1c3"
+    },
+    {
+      "buildingId": "0363100012572095",
+      "observationId": "0363100012572095_e_0ght00e",
+      "tier": "ground",
+      "cropSha256": "baa46336e2f0568533bb2e393991fb77d9bbf09103a21e99f0fa2d458e9e596c"
+    },
+    {
+      "buildingId": "0363100012572096",
+      "observationId": "0363100012572096_e_1fuq7zv",
+      "tier": "ground",
+      "cropSha256": "aa5446e40d352afa4927a58a2cf36e42c9eddddd5e67d0bc922fe96a7f54bdb2"
+    },
+    {
+      "buildingId": "0363100012572097",
+      "observationId": "0363100012572097_e_1f4kk40",
+      "tier": "ground",
+      "cropSha256": "c0378407d073d81f47f039266b4dbc480d9080f95e2796ac05125cfeb3b954b4"
+    },
+    {
+      "buildingId": "0363100012572098",
+      "observationId": "0363100012572098_e_1t4wcbf",
+      "tier": "ground",
+      "cropSha256": "79bee19555117abcfdafca46167bcc4a69417e530d0f22aff6b6f152619120a3"
+    }
+  ],
+  "batches": [
+    {
+      "file": "scripts/review/thousand-building-extraction/batch-01.json",
+      "buildings": 100,
+      "first": "0363100012062260",
+      "last": "0363100012159615"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/batch-02.json",
+      "buildings": 75,
+      "first": "0363100012160115",
+      "last": "0363100012168547"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/batch-03.json",
+      "buildings": 75,
+      "first": "0363100012168550",
+      "last": "0363100012169952"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/batch-04.json",
+      "buildings": 75,
+      "first": "0363100012169955",
+      "last": "0363100012174006"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/batch-05.json",
+      "buildings": 75,
+      "first": "0363100012174007",
+      "last": "0363100012236235"
+    },
+    {
+      "file": "scripts/review/thousand-building-extraction/batch-06.json",
+      "buildings": 27,
+      "first": "0363100012236262",
+      "last": "0363100012572098"
+    }
+  ],
+  "batchedBuildings": 427,
+  "supplemental": {
+    "sourceSha256": "689c76f8294420fb47580a130663c15df54e4852f596f03780bfa9e323668004",
+    "sourceRecords": 287,
+    "uniqueAfterAllExclusions": 287,
+    "batches": [
+      {
+        "file": "scripts/review/thousand-building-extraction/supplemental-01.json",
+        "buildings": 75,
+        "first": "0363100012063298",
+        "last": "0363100012152728"
+      },
+      {
+        "file": "scripts/review/thousand-building-extraction/supplemental-02.json",
+        "buildings": 75,
+        "first": "0363100012153126",
+        "last": "0363100012165505"
+      },
+      {
+        "file": "scripts/review/thousand-building-extraction/supplemental-03.json",
+        "buildings": 75,
+        "first": "0363100012165578",
+        "last": "0363100012170730"
+      },
+      {
+        "file": "scripts/review/thousand-building-extraction/supplemental-04.json",
+        "buildings": 62,
+        "first": "0363100012170731",
+        "last": "0363100012253927"
+      }
+    ]
+  },
+  "totalQueuedUniqueBuildings": 714,
+  "remainingRequestedGap": 286
+}

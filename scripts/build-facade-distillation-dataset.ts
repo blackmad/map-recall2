@@ -1,4 +1,6 @@
 /** Package panorama crops and two-teacher grammar labels for later vision-model distillation. */
+import { rejectLegacyStreetInputs } from './lib/legacy-street-inputs.ts';
+rejectLegacyStreetInputs('build-facade-distillation-dataset.ts');
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';

@@ -1,0 +1,162 @@
+{
+  "acquiredAt": "2026-09-08T03:15:51.189Z",
+  "bbox": [
+    4.87165,
+    52.37115,
+    4.87545,
+    52.37365
+  ],
+  "sources": [
+    {
+      "name": "bgt-collections",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections?f=json",
+      "bytes": 164750,
+      "sha256": "0940388f5495645916b8c60486f36eafb01a54aa2701ae77bcc2d8cd3691b93c"
+    },
+    {
+      "name": "bgt-begroeidterreindeel-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/begroeidterreindeel/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 74670,
+      "sha256": "11f263058e109a0fd16a3510262c5382ddd9946349831342cad1e664b7e2c28a"
+    },
+    {
+      "name": "bgt-waterdeel-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/waterdeel/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 669299,
+      "sha256": "33a571b61f0947a885ef946d2b76c5fd4ecb691e011c9450b5730f25f4188df1"
+    },
+    {
+      "name": "bgt-ondersteunendwegdeel-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/ondersteunendwegdeel/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 1239063,
+      "sha256": "59e12b6a237a6ae547550de840ee73b8be5c3f68d507ede61c089437250dda76"
+    },
+    {
+      "name": "bgt-wegdeel-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/wegdeel/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 5272184,
+      "sha256": "c3677bef1bb5e05025ba9ea093687b5db0ee695acf9cca48445d81e139329d73"
+    },
+    {
+      "name": "bgt-scheiding_lijn-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/scheiding_lijn/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 99357,
+      "sha256": "d9f0ec472ed30c00cd751f240b6e3f05b2e838a59ebaaa402e23c896aafcca43"
+    },
+    {
+      "name": "bgt-overbruggingsdeel-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/overbruggingsdeel/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 34541,
+      "sha256": "c4e4b464d418fbc5f2851d2275b5fa508fdd49463cf5e019bb9e211b4a8080d9"
+    },
+    {
+      "name": "bgt-spoor-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/spoor/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 122676,
+      "sha256": "07b3b7b12d482edc0f4ce17c7bd0fc1af34326708323640806f58b7110a123ea"
+    },
+    {
+      "name": "bgt-onbegroeidterreindeel-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/onbegroeidterreindeel/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 822090,
+      "sha256": "934fb92f26fd5f0d4a362548ef8d4e225be38b62749749e40565f1bf54d65f58"
+    },
+    {
+      "name": "bgt-straatmeubilair-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/straatmeubilair/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 3940,
+      "sha256": "5620975f67b5b137054820849e9149febd519c67a79ec335c9726d5ac9863f24"
+    },
+    {
+      "name": "bgt-paal-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/paal/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 73136,
+      "sha256": "2bdf01ef52e2385e3507b300a69afd8e0844f52be4bf5ccde74bb8a02620dbb9"
+    },
+    {
+      "name": "bgt-vegetatieobject_punt-0",
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/vegetatieobject_punt/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 117719,
+      "sha256": "bfe3ec8cb09a8ba1e8d6a95ca29ee7af621be559fbea574e4357c7e7cdd56c63"
+    },
+    {
+      "name": "bag-0",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 259138,
+      "sha256": "ee547087f95adc80efa4893039131a09c5690b91d82390b08edb111df9e2add6"
+    },
+    {
+      "name": "trees-0",
+      "url": "https://api.data.amsterdam.nl/v1/wfs/bomen/v1?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=app:stamgegevens&COUNT=1000&OUTPUTFORMAT=application/json&BBOX=4.87165,52.37115,4.87545,52.37365,urn:ogc:def:crs:OGC::CRS84&SRSNAME=urn:ogc:def:crs:OGC::CRS84",
+      "bytes": 88363,
+      "sha256": "ed915ac9a84b2c3993eff23162aa0bbf961779a813a68115ffcd8a1bfbb916a1"
+    },
+    {
+      "name": "3dbag-0",
+      "url": "https://api.3dbag.nl/collections/pand/items?bbox=119889.54577793028,487155.0708571174,120150.29586536865,487431.39397072146&limit=100",
+      "bytes": 321775,
+      "sha256": "04ae19a1efa99044ccb35f2cd55a3401e35e9ebc97d7de3f1d5d0fdd9aa9d3d7"
+    },
+    {
+      "name": "panoramas-0",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.87365,52.3724&radius=180&srid=4326&page_size=500&timestamp_after=2022-01-01",
+      "bytes": 823898,
+      "sha256": "b50cbc619113a589e89ae2ebbfbddae7d740d4168184ead4696583fc55a2315f"
+    },
+    {
+      "name": "3dbag-1",
+      "url": "https://api.3dbag.nl/collections/pand/items?bbox=119889.54577793028,487155.0708571174,120150.29586536865,487431.39397072146&offset=101&limit=100",
+      "bytes": 275992,
+      "sha256": "dc4d20b2e957fb87f7a4cd496c53020a8a1ffe457bc42eeee2db794db70b88b1"
+    },
+    {
+      "name": "addresses-0",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 899020,
+      "sha256": "82b360f2521e30416a2f7a8f14dbfb2f563671349d785de14a58e8031f37d944"
+    },
+    {
+      "name": "3dbag-2",
+      "url": "https://api.3dbag.nl/collections/pand/items?bbox=119889.54577793028,487155.0708571174,120150.29586536865,487431.39397072146&offset=201&limit=100",
+      "bytes": 307331,
+      "sha256": "fa4874e71d40c30d07dd71fd2721624944046a2678296876a8d325ef9d9ae5e8"
+    },
+    {
+      "name": "3dbag-3",
+      "url": "https://api.3dbag.nl/collections/pand/items?bbox=119889.54577793028,487155.0708571174,120150.29586536865,487431.39397072146&offset=301&limit=100",
+      "bytes": 120458,
+      "sha256": "38c09615fc2b37b852e692823923e0d61cdf586f3cb73a4d4c1fec5ea1fc5e59"
+    },
+    {
+      "name": "panoramas-1",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.87365%2C52.3724&page=2&page_size=500&radius=180&srid=4326&timestamp_after=2022-01-01",
+      "bytes": 823234,
+      "sha256": "c9e5b79b5c29152c6e9ee46be09335c3b748fc30b119135b8bb39f48aa98e871"
+    },
+    {
+      "name": "panoramas-2",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.87365%2C52.3724&page=3&page_size=500&radius=180&srid=4326&timestamp_after=2022-01-01",
+      "bytes": 824409,
+      "sha256": "7378251b52e1a567bf9ef266c143e370b04b859429feec98861659da9252de5b"
+    },
+    {
+      "name": "panoramas-3",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.87365%2C52.3724&page=4&page_size=500&radius=180&srid=4326&timestamp_after=2022-01-01",
+      "bytes": 826536,
+      "sha256": "8708e86e6cf5c6cd3d1976e0b1ff39f7d66c2ed34c003d81edcd86153b479b17"
+    },
+    {
+      "name": "panoramas-4",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.87365%2C52.3724&page=5&page_size=500&radius=180&srid=4326&timestamp_after=2022-01-01",
+      "bytes": 26897,
+      "sha256": "cc963c89ff97d52f15da718a6a7be95f7ee170f21e3a559db6e7831586a83111"
+    },
+    {
+      "name": "moorings-0",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/ligplaats/items?bbox=4.87165,52.37115,4.87545,52.37365&limit=1000&f=json",
+      "bytes": 53056,
+      "sha256": "dd79bd0a4bd27a7f8ca865473a41109acbf38ef6d349fa737a333518b13a0e00"
+    }
+  ],
+  "errors": []
+}

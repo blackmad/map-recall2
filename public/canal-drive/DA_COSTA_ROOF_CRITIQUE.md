@@ -1,0 +1,60 @@
+# Da Costa roof-image critique — 9 September 2026
+
+The stronger model is useful as a **roof-hypothesis extractor**, not an oracle that can safely rewrite roof geometry. It usually separates a decorative facade from the flat-dominated volume behind it, but it still overstates roof material, overlooks small pitched sections, and mislabels facade tops.
+
+This is an agent's visual critique of ten selected buildings, not human ground truth, a blinded evaluation, or an accuracy estimate. I inspected each building's tight aerial crop, wider aerial context and street-roof crop; I also inspected street context for Sterk, Da Costakade 27 and Nassaukade 129. Selection intentionally favoured difficult cases. Model outputs were available before inspection, so anchoring is a limitation. No human labels, renderer data or paid requests were changed by this review.
+
+## Evidence and model identity
+
+Inputs are source-hashed in `.cache/da-costa-neighbourhood/manifest.json` and `aerial.json`; the aerial source is the explicit `2025_orthoHR` layer. Image files are in `.cache/da-costa-neighbourhood/images/`:
+
+- `{buildingId}-aerial.jpg`: tight crop with yellow BAG footprint.
+- `{buildingId}-aerial-context.jpg`: wider context with the same footprint.
+- `{recordId}-roof.jpg` and `{recordId}-context.jpg`: rectified street views.
+
+“Strong” below means `google/gemini-3.1-pro-preview`, `mode=roof`, with `contextSha256` present in `spend.json`. “Cheap” means the corresponding `google/gemini-3.1-flash-lite` ablation, not an older full-facade run. This distinction matters: selecting the last roof result without filtering its model confuses the two experiments. Older strong runs without aerial context are not the comparison here.
+
+## Ten cases
+
+Links open the local review application when served by the neighbourhood server. The assessment column is a visual hypothesis, not a replacement label.
+
+| Building / review record | Observed evidence and assessment | Challenge / tomorrow question |
+| --- | --- | --- |
+| [Da Costakade 13](neighbourhood-review.html#0363100012166570_e_0zsnalx), `0363100012166570` | Pointed brick facade; aerial shows a terrace-like flat area with objects, not a clear ridge across the roof. Strong `flat` is more defensible than cheap `pitched-gable`. Mesh has 54% flat roof area and several steep perimeter planes. | “Completely flat” is too categorical. Confirm the steep edge sections and whether they form a meaningful pitched volume; do not flatten the mesh. |
+| [Da Costakade 15](neighbourhood-review.html#0363100012152665_e_0xe8qma), `0363100012152665` | Pointed facade and flat-dominated rooftop with installations. Strong `flat` describes the dominant surface; mesh has 72% flat area plus a substantial steep plane. | Flat with pitched section remains plausible. The street crop shows the facade, not the hidden roof behind it. |
+| [Da Costakade 2 / Hugo de Grootkade 1](neighbourhood-review.html#0363100012163064_e_1ckybaa), `0363100012163064` | Wider context clearly places a terrace-like surface on the corner building. It is not a dock. Strong `flat` is a useful dominant-surface hypothesis; mesh also contains substantial steep perimeter planes. | Earlier “dock” interpretation was a context failure, not proof that coordinates were wrong. Terrace finish cannot safely be called bitumen from these pixels. |
+| [Amsta, Hugo de Grootkade 20](neighbourhood-review.html#0363100012237064_e_12fpdwm), `0363100012237064` | Visible wings are flat-dominated with extensive panel/grid-like rooftop structures; mesh is effectively all flat. Gemini strong and cheap agree on flat. The selected street-roof crop is actually an oblique facade fragment. | Aerial footprint extends beyond the top of both displayed crops: coverage is incomplete. Grid-like structures are not conclusively identified as solar panels versus glazing by this inspection; see GPT comparison below. |
+| [Da Costakade 4](neighbourhood-review.html#0363100012236521_e_030nf28), `0363100012236521` | Dark, flat-dominated aerial surface; mesh is 71% flat with a roughly 60-degree plane. Street silhouette has a raised asymmetric section. | Strong “completely flat” and generic `straight` omit structure. Resolve hybrid volume and facade silhouette separately. |
+| [Da Costakade 6](neighbourhood-review.html#0363100012154294_e_1y3j89u), `0363100012154294` | Red/orange street-side roof band plus broad flatter rear; mesh also suggests flat with pitched section. Scaffolding prevents facade-top reading. | Strong `flat-with-front-pitch` / unknown facade is reasonable. `tile-red` describes only the visible front band, not the whole roof. |
+| [Da Costakade 27](neighbourhood-review.html#0363100012165211_e_15djkoz), `0363100012165211` | Flat-looking central rooftop, decorative/dormer-like raised front element. Mesh is entirely near-flat. | Strong infers a dark tiled front pitch, but the crop does not clearly demonstrate its slope or material. A raised front window alone is insufficient evidence. |
+| [Nassaukade 129](neighbourhood-review.html#0363100012236088_e_1di83j8), `0363100012236088` | Aerial appears to contain several differently oriented facets. Mesh has only 16% flat area and substantial planes facing four directions, mostly around 20–32 degrees. Street crop shows one roof face with a dormer. | Strong `flat-with-front-pitch` and cheap `mansard` are both unproven. Prioritise target correspondence and hipped/complex versus hybrid; no clear two-slope mansard break is established. |
+| [Nassaukade 147](neighbourhood-review.html#0363100012160273_e_0lylmki), `0363100012160273` | Aerial shows a terrace with objects; mesh is flat. Strong `flat` fits better than cheap `mansard`. Street facade has an angular, clipped outline. | Strong `bell` facade is questionable: visible edges are polygonal, not obviously bell-curved. Keep roof-volume and facade-top decisions separate. |
+| [Sterk, De Clercqstraat 7](neighbourhood-review.html#0363100012236141_e_041dz1t), `0363100012236141` | Large flat-dominated roof and a narrow front roof zone around upper windows; mesh classifies flat. Street context clearly exposes a raised central neck-like gable with curved shoulders above the independently readable STERK entrance. | Strong `flat-with-front-pitch` is plausible, but its `straight` facade top misses a conspicuous landmark feature. `bitumen` is not established for the pitched front strip. |
+
+## Alignment, colour and taxonomy
+
+Several yellow **ground footprints do not coincide with visible roof edges**, particularly the small canal-side buildings. Building relief displacement is a plausible explanation, but this inspection does not establish the cause or a global correction. Portions of footprint masks include very dark surroundings or edge structures. Wider context prevents gross semantic mistakes, but it does not solve pixel-level roof registration.
+
+For the coarse demo, the current median colour blended toward neutral is acceptable only as explicitly provisional appearance. It is not a material measurement. Keep a neutral fallback for missing or clipped evidence; do not use one median to colour individually inferred tile, terrace and flat-roof sections. Before material evaluation or colour-sensitive rendering, compare masks against roof edges and measure sensitivity to mask erosion/translation. Do not silently apply a single guessed offset to all buildings.
+
+The taxonomy should preserve separate fields for dominant roof volume, subsidiary pitched sections, facade silhouette, and material per visible section. `flat` and `flat-with-front-pitch` frequently differ by a narrow perimeter surface, not by disagreement about the dominant volume. `mansard` needs evidence of distinct pitch regimes; a dormer, a decorative gable, or one steep apron is insufficient. A model's confident rationale is not extra evidence.
+
+## Recommended role in the pipeline
+
+For this small neighbourhood, using the strong model as the **primary image-based roof proposal stage** is reasonable to experiment with: its inspected outputs avoid several obvious cheap-model gable/mansard errors. That is not yet a validated production decision. Keep independent geometry evidence, source-coverage checks, explicit unknowns and human conflict review. Do not let a stronger model overwrite geometry merely by disagreeing with it.
+
+At larger scale, evaluate cheap-first/selective-strong routing against strong-for-all on the same held-out human labels. Disagreement, incomplete image coverage, and geometry conflicts are useful routing signals; unanimous but correlated errors must still be sampled. The coding agent/ChatGPT is especially valuable for source critique, taxonomy design and adversarial spot checks like these. Manual chat inspection is not yet a reproducible, versioned extraction service, and agent judgements must not be relabelled as human training truth.
+
+Tomorrow's first six roof cases should be Nassaukade 129, Da Costakade 15, Da Costakade 4, Da Costakade 27, Sterk 7 and Nassaukade 147. Ask first what is actually visible and whether the correct building is targeted, then ask for roof volume and facade top separately. Add ordinary flat-roof controls to avoid evaluating only difficult disagreements.
+
+## Follow-up: GPT API comparison
+
+A separate `openai/gpt-5.6-sol` run used the same neutral roof prompt and image bundle on 12 spread cases, with low reasoning. All 12 completed for **$0.0619641** in recorded API cost. Roof-shape outputs match the corresponding Gemini Pro run on **8/12**; GPT returns material `unknown` on **9/12**. These are output-agreement and abstention counts, not accuracy. This paragraph evaluates the five overlapping buildings already inspected above; it does not claim visual validation of all twelve.
+
+- **Da Costakade 13:** GPT's `flat-with-front-pitch` usefully preserves a subsidiary pitched-section hypothesis that Gemini's categorical `flat` loses, consistent with the independent mesh having substantial steep planes. However, GPT calls the front window a dormer: the street crop chiefly shows a brick gable facade, so that rationale does not itself establish a pitched apron. Hybrid versus complex perimeter remains a human question. Material `unknown` is better calibrated to these unresolved pixels than a definitive bitumen label.
+- **Corner Da Costakade 2:** GPT also proposes a hybrid, while Gemini proposes flat. Its supplied street view is the other frontage (`0363100012163064_e_068m6ak`), obscured by branches; I inspected that crop for this comparison. The aerial terrace and mesh support a flat-dominated volume with steep perimeter sections, but not the claim that exactly one front pitch is present.
+- **Amsta:** GPT reports `complex` / material `other`, interpreting long grid-like features as glazed sloping roof sections. These features are genuinely visible, but their identity and contribution to the main roof volume are unresolved. They could be secondary installations or glazing on a largely flat roof. My earlier solar-panel interpretation was also too definite; the table now records that uncertainty. GPT provides a valuable disagreement trigger, not grounds to replace the flat mesh with a complex roof. Incomplete aerial coverage remains a separate problem.
+- **Nassaukade 129:** GPT repeats Gemini's `flat-with-front-pitch` despite the multi-directional mesh and apparent aerial facets. Agreement does not resolve this suspicious case. GPT's unknown material is a useful restraint, not evidence its shape is correct.
+- **Nassaukade 147:** Both models recognise the flat terrace and both call the angular facade `bell`. Shared facade-label bias or an insufficient taxonomy remains plausible. GPT appropriately leaves material unknown.
+
+This supports testing a strong model as the primary **field-proposal** stage, with material abstention and independent source/geometry checks. It does not establish GPT or Gemini as the more accurate overall extractor. Keep this small cross-model set for targeted critique; use held-out human labels before choosing a production model, and keep geometry edits out of the automatic path.

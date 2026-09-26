@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {
   basemapBuildingFilter,
   buildingColorExpression,
+  buildingLight,
   buildingOpacity,
   collectEncodedBasemapHideIds,
   coloredBuildingLayerFilter,
@@ -21,6 +22,9 @@ assert.match(clean, /#DED9D0/);
 assert.match(clean, /#AAA095/);
 assert.doesNotMatch(clean, /null/);
 assert.equal(buildingColorExpression('cyberpunk'), '#25114D');
+assert.deepEqual(buildingLight('clean'), { anchor:'map', color:'#fff7ea', intensity:.5, position:[1.25,210,42] });
+assert.deepEqual(buildingLight('not-a-theme'), buildingLight('clean'));
+assert.equal(buildingLight('cyberpunk').color, '#79dfff');
 assert.equal(buildingOpacity('cyberpunk'), 0.98);
 // Opaque: a translucent extrusion blends with whatever it overlaps instead of
 // resolving the depth tie, which is what the coplanar walls showed as stripes.

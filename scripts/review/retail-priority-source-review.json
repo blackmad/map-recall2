@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "reviewer": "agent source inspection",
+  "reviewedBeforePrediction": false,
+  "paidExtraction": false,
+  "scope": "Retail-priority source review for cases 03, 21, and 29; current preview captures were then compared for concrete residuals.",
+  "cases": [
+    {
+      "caseId": "case-03",
+      "address": "Elandsgracht 96",
+      "source": {
+        "full": {
+          "sha256": "0d9ef2fc124a0a2f403df39ef1801e091139543cb38925d4dba985ab90d56b82",
+          "captureDate": "2024-12-16T09:28:07Z",
+          "width": 188,
+          "height": 944
+        },
+        "ground": {
+          "sha256": "a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758",
+          "captureDate": "2025-07-03T10:39:46Z",
+          "width": 460,
+          "height": 539
+        }
+      },
+      "visibleRetailDetails": {
+        "signWording": [
+          "key-color",
+          "het Fotolab",
+          "voor al uw fotowerk",
+          "FUJIFILM"
+        ],
+        "signPlacement": "Two dark horizontal fascia/sign bands occupy the upper and middle part of the ground crop; the upper band carries key-color / het Fotolab and the lower band repeats key-color / het Fotolab with FUJIFILM at the right.",
+        "signPixelBoundsApprox": [
+          [
+            0,
+            0,
+            459,
+            119
+          ],
+          [
+            0,
+            181,
+            459,
+            287
+          ]
+        ],
+        "awning": "Dark charcoal/black projecting awning immediately below the lower sign, with a repeated scalloped lower edge.",
+        "awningPixelBoundsApprox": [
+          0,
+          270,
+          459,
+          326
+        ],
+        "shopDivisions": "One broad glazed retail opening below the awning; reflections and blur obscure internal divisions. A scooter occupies the foreground; no separate door is confidently visible in this crop.",
+        "fullCropLimit": "Full crop is largely blocked by a tree and parking sign; it shows upper windows and only a small, obscured lower frontage. Ground crop is the usable retail evidence."
+      },
+      "currentCaptureResiduals": [
+        "Source-space candidate contains only a generic wall and black awning, with no key-color/Fotolab wording, no FUJIFILM mark, no glazed shop opening, and no retail division.",
+        "The candidate reports door: 0 and window: 1; the visible source is dominated by a retail display opening, so this count does not describe the shop frontage adequately."
+      ],
+      "priorityCorrection": "Carry the two dated fascia bands as separate physical sign regions, preserve the exact visible wording and relative placement, and model the broad glazed shop opening below the scalloped awning. Keep the source blur/occlusion as unknown interior detail rather than inventing subdivisions."
+    },
+    {
+      "caseId": "case-21",
+      "address": "Lauriergracht 50",
+      "source": {
+        "full": {
+          "sha256": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+          "captureDate": "2023-02-13T10:59:09.853930Z",
+          "width": 266,
+          "height": 864
+        },
+        "ground": {
+          "sha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+          "captureDate": "2025-07-03T09:50:55Z",
+          "width": 650,
+          "height": 539
+        }
+      },
+      "visibleRetailDetails": {
+        "signWording": [
+          "DE FIETSENMAKER",
+          "OPEN"
+        ],
+        "signPlacement": "DE FIETSENMAKER is on a pale hanging/sign fascia centered above the recessed shop. OPEN is on a smaller yellow plaque below it, over the central entrance/display area.",
+        "signPixelBoundsApprox": [
+          [
+            205,
+            113,
+            348,
+            153
+          ],
+          [
+            248,
+            178,
+            324,
+            204
+          ]
+        ],
+        "awning": "No awning is visible in the ground crop; the retail opening is recessed below a projecting pale horizontal cornice.",
+        "shopDivisions": "Left single door/recess at approximately x75\u2013169; central dark double-door/display bay approximately x224\u2013367; right projecting bay window/display approximately x383\u2013601 with multiple vertical panes and a bicycle mounted above/right.",
+        "shopPixelBoundsApprox": [
+          74,
+          109,
+          605,
+          424
+        ],
+        "fullCropLimit": "Full crop shows an ornate yellow-brick upper frontage and a lower shop/door zone, but the transit sign and foreground obstruction reduce exact retail detail."
+      },
+      "currentCaptureResiduals": [
+        "Ground candidate has a generic dark wall with a few abstract door/window blocks and omits DE FIETSENMAKER and OPEN entirely.",
+        "It does not preserve the three-part retail arrangement: left door, central recessed entrance/display, and right projecting multi-pane bay.",
+        "The current source-space candidate's two doors and five windows do not correspond cleanly to the visible retail divisions."
+      ],
+      "priorityCorrection": "Represent the shop as three distinct ground components, retain the two observed sign texts with separate physical-sign identities, and leave the mounted bicycle as contextual/unsupported unless separately modeled. Do not add an awning."
+    },
+    {
+      "caseId": "case-29",
+      "address": "De Clercqstraat 27 / Da Costakade 51",
+      "source": {
+        "full": {
+          "sha256": "cb0f66e828b485b7ba2c3f6e6bc48457ec007b01dfe06521195e8bdbb42db346",
+          "captureDate": "2023-01-12T09:12:21.403370Z",
+          "width": 288,
+          "height": 805
+        },
+        "ground": {
+          "sha256": "788c84eae23e26305288ef67492c5095ee2f540151b4971c1b9473cd38127f49",
+          "captureDate": "2025-07-03T08:55:44Z",
+          "width": 704,
+          "height": 539
+        }
+      },
+      "visibleRetailDetails": {
+        "signWording": [
+          "DORUS"
+        ],
+        "signPlacement": "DORUS appears in blue block capitals centered on the awning valance and repeats in white/dark lettering inside the central display window.",
+        "signPixelBoundsApprox": [
+          [
+            283,
+            237,
+            420,
+            274
+          ],
+          [
+            305,
+            337,
+            423,
+            378
+          ]
+        ],
+        "awning": "Extended striped awning spanning nearly the full 704-pixel crop width: alternating pale yellow and white vertical stripes, shallow convex/sloped projection, and a pale lower valance. Approximate bounds [0,116,703,274].",
+        "awningState": "extended",
+        "shopDivisions": "Left wood-clad door roughly x0\u2013174; central glazed display roughly x228\u2013548; right dark recessed entrance roughly x579\u2013686. Tables/chairs sit outside the display; flowers occupy the far right foreground.",
+        "shopPixelBoundsApprox": [
+          0,
+          268,
+          696,
+          472
+        ],
+        "fullCropLimit": "Full crop shows upper residential windows, a gabled fa\u00e7ade, and the top of a retail frontage with a different/partly unreadable coffee-style sign; the ground crop is authoritative for the DORUS awning and shop divisions."
+      },
+      "currentCaptureResiduals": [
+        "The current source-space candidate reproduces the extended yellow/white striped awning profile and one door plus central display at a broad level.",
+        "It omits the visible DORUS wording on both the valance and window, makes the display a plain undivided rectangle, and does not preserve the left wood-clad/right recessed entrance distinction.",
+        "The candidate awning is shorter and more schematic than the source span; source awning extends almost edge to edge across the crop."
+      ],
+      "priorityCorrection": "Keep the awning state extended with its alternating stripe count/profile, add one DORUS sign identity per observed physical sign, and split the ground frontage into left door, central display, and right recessed entrance."
+    }
+  ],
+  "sampleMix": {
+    "caseCount": 28,
+    "addressStringStreetOccurrences": {
+      "Rozengracht": 9,
+      "De Clercqstraat": 7,
+      "Da Costakade": 7,
+      "Elandsgracht": 4,
+      "Lauriergracht": 4,
+      "Bloemstraat": 2,
+      "Jacob van Lennepstraat": 1,
+      "Potgieterstraat": 1
+    },
+    "multiStreetAddressCases": 6,
+    "limits": [
+      "Counts are occurrences of street names parsed from the displayed address strings; corner cases contribute to more than one street.",
+      "Street-name frequency is not a typology classification and does not establish canal-house overrepresentation.",
+      "Retail status, frontage width, and architectural typology were not inferred for the remaining 25 cases from address strings alone.",
+      "The three reviewed retail cases are source-inspected; this artifact does not certify a retail quota for all 28 cases."
+    ]
+  },
+  "reviewSequence": "Development source inspection followed by comparison against existing predictions; not a held-out reference."
+}

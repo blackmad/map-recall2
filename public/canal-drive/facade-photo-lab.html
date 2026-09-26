@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo → façade · Amsterdam</title>
+<script src="js/three.bundle.js"></script><script src="js/facade-recipe.bundle.js"></script>
+<style>
+:root{color-scheme:light;--ink:#293731;--muted:#64716a;--line:#d3d6cf;--paper:#f5f2eb;--accent:#246652}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 system-ui,sans-serif}main{max-width:1500px;margin:auto;padding:22px}header{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px}h1{margin:0;font:600 28px Georgia,serif}header p{margin:4px 0;color:var(--muted)}a{color:var(--accent)}header a{margin-left:auto}.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}label{display:flex;gap:6px;align-items:center}button,input,select{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:4px;background:#fffefa;color:var(--ink)}button{cursor:pointer}button:hover{border-color:var(--accent)}input[type=number]{width:76px}input[type=checkbox]{accent-color:var(--accent)}button.primary{background:var(--accent);color:white}.notice{background:#fff0d1;padding:10px 14px}.views{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.panel{min-width:0;border:1px solid var(--line);border-radius:6px;background:#fffefa;overflow:hidden}.panel-head{padding:10px 14px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;justify-content:space-between}.panel-head label{font-size:12px}.viewport{height:570px;display:flex;align-items:center;justify-content:center;background:#e9e6dd;position:relative}#photo-frame{height:100%;max-width:100%;position:relative}#photo-frame img{height:100%;max-width:100%;object-fit:contain;display:block}#overlay,#mask{position:absolute;inset:0;width:100%;height:100%}#mask{opacity:.42;pointer-events:none}#diagnostic{width:100%;height:100%;display:block}.body{padding:12px 14px}.small{font-size:12px;color:var(--muted)}#error{color:#a33224;min-height:22px}#feature-list{max-height:250px;overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:6px;border-bottom:1px solid var(--line)}th{font-weight:500;color:var(--muted)}code{overflow-wrap:anywhere;font-size:11px}details{margin-top:16px}summary{cursor:pointer}#provenance{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}.legend{display:flex;gap:16px;flex-wrap:wrap}.legend span:before{content:'□';font-weight:bold;margin-right:5px;color:var(--box)}.empty{padding:30px;text-align:center;max-width:440px}#photo-frame[hidden],#empty[hidden]{display:none}#stats{margin-left:auto}#comparison-note{min-height:42px}
+@media(max-width:760px){main{padding:14px}.views{grid-template-columns:1fr}.viewport{height:450px}header a{margin-left:0}.panel-head{flex-wrap:wrap}}
+</style>
+<style>
+.panel-head{min-height:54px}.appearance{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.patches{display:flex;gap:8px;flex-wrap:wrap}.patch{padding:3px;background:transparent;border:1px solid var(--line);border-radius:3px}.patch canvas{display:block;width:66px;height:74px;image-rendering:pixelated}.swatch{display:inline-block;width:22px;height:22px;vertical-align:middle;border:1px solid #888;margin-right:6px}#window-detail{width:100%;height:220px;display:block;background:#e9e6dd;image-rendering:pixelated}#appearance-status{margin:10px 0}.detail-controls{margin-bottom:10px}#wall-evidence,#window-evidence{min-height:46px}#patch-caption{min-height:22px}@media(max-width:760px){.appearance{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<header><div><h1>Photo → façade</h1><p>Trace colour, texture and window detail back to the photograph.</p></div><a href="facade-recipe-lab.html">Materials &amp; renderer workshop ↗</a><a href="facade-photo-lab.html?run=pilot-01">Original extraction ↗</a><a href="facade-photo-review/local/dino-sam-mps-03/index.html">Local DINO / SAM comparison ↗</a></header>
+<div class="bar"><label>Source strip <select id="source"></select></label><button id="saved" hidden>Load saved correction example</button><a href="facade-photo-lab.html?run=dino-fit-05">DINO + fitted render</a><a href="facade-photo-lab.html?run=dino-expansion-fit-02">Six new façades</a><a href="facade-photo-lab.html?run=appearance-03">Previous render</a><span id="stats" class="small">Loading local extraction…</span></div>
+<p class="notice">Feature proposals from real photographs. Building identity, registration and metric scale remain unreviewed. This is an isolated wall study; the crop boundary is not the building’s roof or ground.</p>
+<div class="bar"><label>Detector / reconstruction <select id="pipeline"></select></label><span id="pipeline-note" class="small"></span></div>
+<div class="views">
+  <section class="panel"><div class="panel-head"><b>Source photo + detected openings</b><label><input id="show-raw" type="checkbox">Raw boxes</label><label><input id="show-mask" type="checkbox">Semantic mask</label></div>
+    <div class="viewport"><div id="photo-frame" hidden><canvas id="mask"></canvas><svg id="overlay" xmlns="http://www.w3.org/2000/svg" aria-label="Opening proposals in source pixels"></svg></div><div id="empty" class="empty">Loading…</div></div>
+    <div class="body small"><div class="legend"><span style="--box:#39a9ff">Proposed</span><span style="--box:#edbb38">Edited / inferred layout</span><span style="--box:#9d6bff">Partial source observation</span><span style="--box:#ff7272">Omitted / needs review</span></div><div id="source-caption"></div></div>
+  </section>
+  <section class="panel"><div class="panel-head"><b>Mesh from these boxes</b><label>View <select id="view"><option value="facade">Façade</option><option value="orbit">Three-quarter</option></select></label></div>
+    <div class="viewport"><canvas id="diagnostic" aria-label="Photo-derived facade mesh"></canvas></div>
+    <div class="body small" id="comparison-note">Only proposed, in-bounds boxes become openings. Omitted boxes stay visible on the photo.</div>
+  </section>
+</div>
+<div class="appearance">
+  <section class="panel"><div class="panel-head"><b>Wall colour &amp; texture evidence</b><label>Finish <select id="finish"><option value="auto">From evidence</option><option value="flat">Flat colour</option><option value="procedural-brick">Procedural brick study</option><option value="ambientcg-Bricks057">ambientCG brick study</option></select></label></div><div class="body">
+    <div id="wall-evidence" class="small"></div><div id="patches" class="patches"></div><p id="patch-caption" class="small">Select a patch to locate its source pixels.</p><button id="use-patch" disabled>Use selected patch colour</button><p id="texture-evidence" class="small"></p>
+  </div></section>
+  <section class="panel"><div class="panel-head"><b>Selected window detail</b><label><input type="checkbox" id="details" checked>Render proposed detail</label></div><div class="body">
+    <canvas id="window-detail" aria-label="Selected opening photo and candidate glazing bars"></canvas><div id="window-evidence" class="small"></div><div id="bar-controls" class="bar small"></div>
+    <div class="bar"><label>Author a style <select id="window-style"><option value="">Choose a correction…</option><option value="plain">No internal bars</option><option value="sash-6">Six-pane layout</option><option value="sash-8">Eight-pane layout</option><option value="cross">Cross layout</option></select></label></div>
+  </div></section>
+</div>
+<p id="appearance-status" class="small"></p>
+<p class="small"><a href="facade-photo-review/local/dino-size-comparison-01/index.html">Tiny versus Base: inspect the dormer recovery and model tradeoffs ↗</a></p>
+<section class="panel"><div class="panel-head"><b>Detection → fit → feature evidence</b></div><div class="body"><p id="fit-summary" class="small"></p><p id="selected-fit" class="small"></p><details><summary>Original extracted fields for this opening and wall</summary><p class="small">Unknown parts are not inferred from renderer defaults. These are extraction records; later manual edits remain separate.</p><div style="overflow:auto"><table><thead><tr><th>Field</th><th>Value</th><th>Evidence basis / state</th></tr></thead><tbody id="ontology-fields"></tbody></table></div></details></div></section>
+<section class="panel" style="margin-top:16px"><div class="panel-head"><b>Correct the photo evidence</b><span class="small">Pixels: left / top / right / bottom</span></div><div class="body">
+  <div class="bar"><label>Visible wall: top row <input id="wall-top" type="number" step="1"></label><label>Bottom row <input id="wall-bottom" type="number" step="1"></label><button id="crop">Apply visible region</button><span class="small">Exclude foreground and water; this does not establish ground or roof height.</span></div>
+  <div class="bar"><label>Opening <select id="opening"></select></label><label>Type <select id="kind"><option value="window">Window</option><option value="door">Door</option></select></label>
+    <label>Left <input id="x0" type="number" step="1"></label><label>Top <input id="y0" type="number" step="1"></label><label>Right <input id="x1" type="number" step="1"></label><label>Bottom <input id="y1" type="number" step="1"></label>
+    <button id="apply" class="primary">Apply box</button><button id="omit">Omit opening</button><button id="add">Add as new opening</button>
+  </div>
+  <div id="error" role="status"></div>
+  <p class="small">For a merged detection, shrink its box to one window and add the other. Edits update the same recipe and mesh; they remain proposals. Mask fill measures labelled pixels, not confidence.</p>
+  <div id="feature-list"><table><thead><tr><th>Feature</th><th>Pixels</th><th>Mask fill</th><th>Render / review</th></tr></thead><tbody id="features"></tbody></table></div>
+  <div class="bar"><button id="reset">Reset to raw detections</button><button id="export">Export evidence + recipe + mesh</button><label>Import corrections <input id="import" type="file" accept="application/json" style="max-width:230px"></label></div>
+</div></section>
+<details><summary>Source, model and evidence lineage</summary><div id="provenance"></div></details>
+</main><script src="js/facade-photo-lab.js"></script></body></html>

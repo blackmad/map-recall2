@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "kind": "reviewed-floor-row-refresh",
+  "generatedAt": "2026-09-21T15:27:42.962Z",
+  "sourcePacket": {
+    "path": "public/data/facade-repair-preview/cases.json",
+    "sha256": "924bece7b6b934d97171ba2906a17ac955e846fc388dc7a3ee8482e77cb83216"
+  },
+  "caseId": "case-12",
+  "inferredRowFeatures": [
+    "full:inferred:row-1:bay-1",
+    "full:inferred:row-1:bay-2",
+    "full:inferred:row-1:bay-3"
+  ],
+  "changed": [
+    "candidateObservations",
+    "shapeFeatures",
+    "patches",
+    "counts",
+    "full"
+  ],
+  "studyTiers": [
+    "full"
+  ],
+  "note": "A measured source-bound inferred upper-floor row is added through the reviewed correction path. Metric patches, owner geometry and every other case are left byte-identical; prior packet bytes are archived by the publisher.",
+  "published": {
+    "currentSha256": "924bece7b6b934d97171ba2906a17ac955e846fc388dc7a3ee8482e77cb83216",
+    "proposedSha256": "cf5b0da474b323aa9b10a5c1684a6443e738cfda330ce37adeb0b738740f6099",
+    "currentArchived": false,
+    "proposedArchived": true,
+    "casesPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/facade-repair-preview/cases.json"
+  }
+}

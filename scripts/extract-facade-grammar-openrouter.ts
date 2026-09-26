@@ -1,4 +1,6 @@
 /** Bootstrap review-only procedural facade labels from cached municipal panorama crops. */
+import { rejectLegacyStreetInputs } from './lib/legacy-street-inputs.ts';
+rejectLegacyStreetInputs('extract-facade-grammar-openrouter.ts');
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import 'dotenv/config';

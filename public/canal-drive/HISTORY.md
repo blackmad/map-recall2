@@ -1,5 +1,1783 @@
 # Canal Recall — what is built
 
+## 2026-09-26 — model-reviewed local demo
+
+All 72 unique signage frontages (76 sample entries) have model visual reviews:
+73 sign regions, with 17 sampled sign backgrounds, explicit uncertain crops and
+reviewer provenance. The responsive signage desk loads these without owner input.
+These new labels are review evidence; their game placement is still pending.
+Sixteen visually reviewed wall colours now complete the measurement → promotion →
+publication → browser loop, labelled as model review rather than human judgement.
+
+The local district release is
+`6ee345158a1091e6c9c56dd8ac095440023492379fc534fb1bfbd7d475b228c4`:
+6,036 roof-bearing buildings, 19,973 source surfaces, 26 roof tiles and 626
+withheld slanted buildings under the NAP-corrected v3 policy. Coverage metadata
+counts measured and contextual colours separately. Evidence/release files remain
+local; source commits do not point remote users at unpublished release assets.
+An eave-cut experiment was withheld after visual review found missing gable-end
+walls, incomplete roof coverage and unsafe fallback during tile loading.
+
+Render readiness now samples MapLibre's render event: a separate animation-frame
+poll could repeatedly see a dirty map immediately before a fully ready paint.
+The loaded/painted/budget gates and existing extrusion-visibility assertions
+remain unchanged. A separate startup race allowed camera ticks to populate a
+GeoJSON source before it was replaced, leaving the new source empty until the
+next tile boundary. Streaming now waits for attachment, with a regression for
+pre-attachment camera ticks and first-load delivery to the replacement source.
+
+Validation: the complete `check:canal` gate passes, including Storybook. A fresh
+checkout with its own `npm ci` passes typechecking and the tile-source regression;
+the regression fails on the pre-fix source. The immutable local release passes
+all fourteen route cameras plus coverage-toggle checks twice each on desktop and
+iPhone emulation (eight browser tests). Named roof checks and immutable artifact
+validation pass. Browser mobile coverage is emulation, not physical-device timing.
+
+## 2026-09-26 — source-bound appearance and autonomous review
+
+The owner explicitly removed routine human-in-the-loop review. Visual model reviews retain
+model identity, exact crop hashes and uncertainty; they are never called human gold.
+The signage desk now loads published model reviews without requiring owner labelling.
+Duplicate sample IDs are reviewed once; occluded frontages abstain rather than claim absence.
+
+Accepted wall-colour publication now binds building, observation, crop and measurement hashes;
+unaccepted buildings retain explicit procedural provenance. The colour-coverage switch hides
+unreviewed building masses and optional building details while retaining streets and trees.
+OSM building/amenity/tourism/heritage survive staging, matched-footprint merging and LoD1 tiles;
+these tags do not invent architectural details. Production tag tiles need the missing staging input.
+
+DeepSeek through OpenCode audited the lattice evaluator: raw union input imputes zero boxes;
+262 of 284 rows abstain and all 40 candidate fills fail overlap checks. Windows/doors-only
+input adds 20 boxes (11 facade scope), recovering zero of 12 missing measured facade openings.
+This is not evidence that every proposal is false: the point-cloud reference undercounts windows.
+See `scripts/facade-eval/OPENING_LATTICE_UNION_R0_REPORT.md`.
+
+Driving-scale baseline, Chrome 153.0.8010.53: fixed Da Costa camera
+[4.874284, 52.371787], pitch 65°, bearing −18.12°, 3 seconds settling, 30 warm-up
+frames, 120 sampled frames per baseline/ablation. Results are frame intervals and paired
+layer-ablation deltas, **not isolated GPU timings**. Phone width uses desktop hardware.
+The refresh-rate ceiling masks small costs; negative deltas are noise. This establishes a
+16.8 ms observed baseline, not proof of spare GPU capacity, so joinery gates stay unchanged.
+
+| Viewport (DPR 1) | Zoom | Frame p50 / p95 ms | Building / facade / roof / pyramid marginal p95 ms |
+| --- | --- | --- | --- |
+| 1440 × 900 | 17.1 | 16.7 / 16.7 | 0.0 / 0.0 / 0.0 / 0.0 |
+| 1440 × 900 | 17.5 | 16.7 / 16.7 | -0.1 / -0.1 / -0.1 / -0.0 |
+| 1440 × 900 | 18 | 16.7 / 16.7 | 0.0 / -0.1 / 0.0 / -0.1 |
+| 390 × 844 | 17.1 | 16.7 / 16.7 | 0.0 / 0.0 / -0.1 / -0.1 |
+| 390 × 844 | 17.5 | 16.7 / 16.7 | -0.1 / -0.1 / 0.0 / -0.0 |
+| 390 × 844 | 18 | 16.7 / 16.7 | 0.0 / 0.0 / 0.0 / 0.0 |
+
+Reproduce with `npm run profile:driving-appearance`; images/raw measurements are local under
+`.cache/appearance-programme/profile`. Clean-checkout lint passed; clean aggregate requires
+ignored panorama evidence. Evidence-rich aggregate exposed a stale positional roof assertion,
+which must test behaviour rather than assume pyramid priority before measured eaves.
+
+## 2026-09-25 — the OCR reads every sign more than once, and that is the fix
+
+The reported failure was partial words — `Handwork Boutiqur`, `JOHNNIL`,
+`GRAMS` — blamed on shadow and occlusion, which was the right diagnosis. Two
+things followed from measuring it that were not expected.
+
+**Resolution was already spent.** `run_vision_ocr.ts` has defaulted to the
+ground tier all along: 110 px/m over a 4.9 m band, against 45 px/m for the whole
+facade. A 45-storefront A/B puts the full tier at 11 storefronts read and the
+ground tier at 33, so that win was banked long ago and the partial words occur
+*at* the higher resolution. Preparing the crops (3x Lanczos, CLAHE, sharpen)
+reaches 38 storefronts and 158 lines against 104 — but reading the output rather
+than the totals, most of the gain is more fragments, not better ones: on
+De Clercqstraat 70 `Handwork Boutiqur` became `Handwork Boutique` while a second
+reading of the same fascia degraded to `Handwork Borfiaue`.
+
+**Which is the finding.** A single crop already contains several readings of one
+sign — the fascia, a window decal, an awning valance, repeated copies along a
+hoarding — and their errors are independent, because what differs between them
+is the occlusion. One Bilderdijkstraat hoarding came back as `WONDR`, `MONDR`,
+`TONDE` and `LONDO`; one billboard was read three times, none correctly. The
+redundancy needed to correct the reader was in every crop already, and taking
+the first reading threw it away. Cross-year capture is the same signal with a
+longer baseline, which is why persistence doubles as the notability ranking.
+
+`facade/signConsensus.ts` votes across readings and recovers `CLAIM NU OP`,
+`EERLIJK ETEN.NL`, `DOUGLAS` and `MAGAZINES GIFTS BOOKS` from sets where no
+single reading was right.
+
+**It is not yet a net win on text, and is deliberately not wired to anything.**
+Over 1,980 cached reader lines it changes 24 of 1,340 strings, several for the
+worse — `Scopes fentre` beat `ScooterCentre` because that crop renders the wrong
+word larger and the glyph-height weighting believed it. The blocking fact is
+that `agreement` does not separate good changes from bad: `Licherie` and
+`Exclusive` are both wrong at 1.00 while the correct `MAGAZINES GIFTS BOOKS`
+scores 0.79, so no confidence threshold makes the rewrite safe. What ships is
+`support` / `views` / `years`, which are trustworthy now. The text rewrite waits
+on a hand-transcribed reference set, because tuning against no ground truth is
+exactly how the roofline and opening-detector lanes produced confident wrong
+verdicts.
+
+That reference set now exists — four crops transcribed by looking at them, in
+`review-data/sign-gold/v1` — and it returned a negative result: the vote ties
+the do-nothing baseline at 9 of 10 names recovered and 5 exact, fixing
+`O TEM FA C` and breaking `ScooterCentre` in the same run. Clustering by
+co-location as well as by string, so that two readings a metre apart get a
+looser test, cut inventions from 7 of 31 to 6 of 29 and moved neither recovery
+number.
+
+What the reference set shows instead is where the loss actually is. `LA BASTA`
+was read only as `DASTA` and `PASTA`, both wrong on the same letter, so no vote
+over them recovers it — redundancy pays only where the errors are independent.
+On the Freddy Fryday frontage the fascia panel crops the leading F, making
+`REDDY FRYDAY` a correct reading of what is visible and the name recoverable
+only from a different rectangle, which is a view-selection problem rather than a
+text one. And four of the ten names are on businesses OSM already names, which
+makes matching against OSM worth more than any further tuning of the vote.
+
+## 2026-09-24 — the canal-belt roofline is 3 m high because of the track-datum correction
+
+Canal-belt rooflines read a median **+3.2 m above `b3_h_dak_max`**, with the
+*shape* traced well — step gables, bell gables and cornices all correct. Four
+theories were measured and killed before the real one: it does not scale with
+building height (corr 0.02), does not track the per-panorama lens correction
+(corr −0.11), is not set-back objects (the gate would fire on 78 of 89 walls),
+and is not stale massing (`groundZ_used − b3_h_maaiveld` = 0.00 on all 89;
+corr 0.261; the "correction" made the offset worse, 3.66 m).
+
+**It is the camera pose.** `resolveLens` in
+`scripts/facade-twin/panorama-render.ts:119` sets `pose.z = lens.z − offsetM`,
+where `lens.z` is the published camera height minus the geoid separation and
+`offsetM` is the per-run/per-segment vertical datum correction from
+`solve-track-datum.ts`. An A/B test (`scripts/roofline-eval/ab-test-renderer.ts`,
+`ab-score.ts`) rendered the same wall plane and extent through both
+`rectifyWall` (with the correction) and `rectifyFacade` (without):
+
+| wall | with correction | vs 3DBAG | without | vs 3DBAG | that wall's `offsetM` |
+| --- | --- | --- | --- | --- | --- |
+| Herengracht 203 | 22.11 | +3.71 | 17.97 | −0.42 | −4.146 |
+| Singel 279 | 21.54 | +2.94 | 17.45 | −1.14 | −4.064 |
+| Keizersgracht 149 | 22.46 | +3.50 | 18.48 | −0.48 | −3.968 |
+
+The height change equals that wall's own `offsetM` to within **3 cm**. That is
+not a correlation but an identity, and it is expected: for a point on the wall
+plane, a vertical camera error transfers 1:1 into the recovered height,
+independent of standoff. Median offset across the five test walls: **+3.71 m**
+with the correction, **−0.42 m** without.
+
+**Visible without any reference data.** In the corrected render of Herengracht
+203 the frame's claimed ground row (`bottomNap` 0.001, i.e. `b3_h_maaiveld`)
+shows *the canal and a moored boat*; the uncorrected render shows the pavement
+and parked cars where street level belongs. Rays at the nominal ground line are
+about 4 m too steep, which is the same error seen from the other end.
+
+70 % of the 144 views in this set carry a run-level `offsetM` between −4.0 and
+−4.26 m, which is why the population median lands near +3.2 m. Note the
+correction is *not* uniformly wrong: on the two test walls with small positive
+offsets (Herengracht 163, Singel 273) it lands the lens at 2.7–3.0 m above
+ground — right for a survey vehicle — and removing it puts the camera at 4.4 m.
+So `solve-track-datum.ts` is right for some runs and badly wrong for the
+dominant 2021 band, and the HISTORY note claiming that campaign publishes
+heights ~4.2 m off is what is now in doubt.
+
+**Not fixed, deliberately.** Gable *shape* is unaffected — the offset is
+constant per run, so a profile normalised to its own eave and width is
+invariant — and shape is what the game needs. Absolute height is a later,
+tractable correction. Two cautions for whoever picks this up: the A5 comparison
+that made the photo method look broken was scored against scan elevations that
+are themselves unreliable (cyan reference lines sitting mid-facade), and the R1
+gold set's `spotCheck` gate was specified and never applied, so "the photo is
+wrong" was partly "the reference is wrong" — the same mistake that produced the
+2026-09-22 façade-model rejection above.
+
+## 2026-09-22 — the measured gold set says "none", and why that is not the whole answer
+
+Built the façade-model evaluation's gold set and scorer, ran the two candidate
+models against it, and applied the plan's fixed decision rule
+([FACADE_MODEL_EVALUATION_PLAN.md](../../FACADE_MODEL_EVALUATION_PLAN.md) §1).
+**Neither model clears it.** What was built:
+
+- `scripts/facade-eval/build-gold-set.ts` joins the point-cloud measured openings
+  (`public/data/pointcloud-facades/v1/*/manifest.json` `openingRects`) with the
+  Oud-Zuid crops rectified onto the same 3DBAG wall plane, and freezes **60 walls
+  / 70 measured openings** into `review-data/facade-model-gold/v1/measured.json`
+  (sha256 `2d502904…`). Two conversion traps are handled explicitly: the
+  published `along` is **centroid-relative and can be negative**, and the crop
+  axis (`plane.start → plane.end`) is **mirrored** relative to the published `+u`
+  for some walls, so opening corners are projected onto the crop axis rather than
+  assuming an orientation.
+- `src/canalRecall/facade/openingScore.ts` (+ test, 17 assertions): IoU matching
+  in wall metres, precision/recall/median centre error with explicit
+  denominators, `unknown ≠ negative` for other-class boxes, and `precision: null`
+  — not `1.0` — when nothing is predicted.
+- `scripts/facade-eval/score.ts` is the runner; `--write` appends to
+  `results.json`.
+
+Result on R0 (the cached 45 px/m strips, IoU ≥ 0.5, against 70 measured openings):
+
+| lane | precision | recall | median centre | tp/fp/fn |
+| --- | --- | --- | --- | --- |
+| rfdetr (all kinds) | 2.4 % | 15.7 % | 0.298 m | 11/456/59 |
+| rfdetr (window only) | 3.6 % | 15.7 % | 0.298 m | 11/292/59 |
+| windet | 7.7 % | 7.1 % | 0.319 m | 5/60/65 |
+
+The rule needs recall ≥ 0.80, precision ≥ 0.80 and median centre ≤ 0.30 m. Only
+the centre error passes, and only for rfdetr. **Decision: none adopted on the
+measured gold.**
+
+The overlay for `NL.IMBAG.Pand.0363100012161771` wall 23 (green = measured,
+red = rfdetr windows) shows why the precision figure is a **lower bound**, not a
+verdict on the models: the MLS measured 13 openings on that façade while the
+photo plainly shows about 20, and rfdetr's boxes land on the windows the
+measurement missed. A shallow reveal is not a measured opening, so a model is
+penalised for finding a real window. That is precisely what the plan's
+hand-labelled half (§4 part 2) exists for, and the decision cannot be finalised
+without it. Recall is the sounder reading of this run: at IoU 0.5 a
+visually-correct box offset by a few centimetres is not a match, so 15.7 %
+understates the detection. Both numbers are recorded as measured, not adjusted.
+
+## 2026-09-22 — the point-cloud geometry design became an executable task plan
+
+`AMSTERDAM_FACADE_GEOMETRY_DESIGN.md` described the pivot but no longer matched
+the code: its build steps 1–4 already existed (uncommitted), step 5 was one line,
+and its counts disagreed with this file and the v1 manifests. It is rewritten as
+ordered tasks T0–T9, each with files, steps, a proving command and a done-when,
+so a smaller model can run them without re-deriving context. Reading the code for
+the rewrite found defects, now filed as tasks rather than fixed: the spike calls
+an unimported `renderFacadeImage`; the Willemspark regression's `try/catch`
+turns assertion failures into "not cached"; `loadLazTile` decodes absolute RD
+into `Float32Array` (~3.1 cm steps at Y≈485 250, against 5 cm cells); and
+`rasteriseWall` clamps returns from the 0.30 m end margins into the edge columns,
+which is exactly how a coplanar neighbour's gable would leak in. The tooling
+survey moved to an appendix; no task depends on it.
+
+## 2026-09-21 — the municipal point cloud measures Amsterdam's rooflines and gables
+
+The canal-house gable is the recognition signature of the game, and 3DBAG does
+not carry it: measured on release `c4bebc1f…`, **0 of 895** canal-belt buildings
+(Herengracht/Keizersgracht/Prinsengracht) have any wall surface above the roof
+surface (`wallTop == roofTop` everywhere). The photo-only extraction could only
+*infer* a gable class from an oblique crop. This change adds a second, independent
+evidence channel: **the municipal puntenwolk (street-level Mobile Laser Scanning)
+measures geometry directly; photographs keep appearance.** Full design:
+[AMSTERDAM_FACADE_GEOMETRY_DESIGN.md](../../AMSTERDAM_FACADE_GEOMETRY_DESIGN.md).
+
+What is built and verified:
+
+- `src/canalRecall/facade/pointCloudGeometry.ts` — a wall's metric frame (`u`
+  along the wall, `v` NAP-up, `n` outward), a **2.5-D depth raster** of the cloud
+  returns in that frame, **geometric** classification of every cell into plane /
+  recessed reveal (a window or door) / protrusion (a cornice, band, plinth or
+  balcony), and a **roofline/gable silhouette**. `pointCloudGeometry.test.ts`
+  pins 23 assertions on synthetic façades: the frame rejects a roof, a recessed
+  window is recovered at its true `(along, up)` band, a cornice is protruding, a
+  3 m gable is measured, and an isolated spike (a wire, a bird, a stray
+  neighbour return) is **not** a roofline.
+- `scripts/pointcloud/load-laz-tile.ts` decodes LAZ/LAS to absolute RD/NAP with
+  `@loaders.gl/las` (already a dependency) plus a uniform-grid point selector.
+  **`colorDepth: 'auto'` is required** — the loader's default of 8 reads the
+  municipality's 16-bit colours as 255 (verified against `laspy`: mean red
+  21,770/65,535 = 84/255).
+- `scripts/pointcloud/measure-tile.ts` joins the cloud to 3DBAG LoD2.2
+  `WallSurface`s (RD bbox query, `next`-link paging) and measures every exterior
+  wall. `scripts/pointcloud/spike-museumkwartier.ts` writes an SVG elevation per
+  wall plus a plan view; `scripts/pointcloud/check-pointcloud-geometry.ts` is the
+  named regression.
+
+Measured on the Museumkwartier demo tile `filtered_2397_9705` (10,854,907 points,
+50 × 50 m at RD 119850–119900 / 485250–485300, NAP −5.26 → 23.45 m):
+
+- 12 buildings, 156 exterior walls, 142 eligible, **99 measured**, **21
+  well-scanned**. "Well-scanned" means the whole wall is sampled, not just
+  present: column coverage ≥50 %, **≥250 returns/m²**, and **≥30 % of the wall's
+  own cells carry returns**. Density alone was not enough — one Willemspark wall
+  passed 400 pts/m² while most of its cells were empty because the returns were
+  clustered, which the diagnostic render made obvious.
+- **7 of 21 well-scanned street façades have a *shaped* roofline** (the measured
+  profile's peak stands ≥0.5 m above **both** ends — a gable, step or dormer;
+  11 are slopes, 3 flat). The definition is deliberately strict: a slope's peak
+  sits at an end, and sensor noise on a slope must not be called a gable. An
+  earlier, looser rule reported 25 and the gallery showed it was counting noisy
+  slopes. The pinned example is `NL.IMBAG.Pand.0363100012161771` wall 23
+  (11.7 × 15.0 m, 3.62 m range): two Amsterdam bell/neck gables are legible in
+  the render, together with three window rows, the ground-floor openings and the
+  arched neighbour.
+- A second, independent tile validates the method: **Willemspark
+  `filtered_2386_9702`** (7,165,726 points) gives 8 buildings, 155 exterior
+  walls, **39 well-scanned** and **5 shaped** rooflines.
+- **Demo:** `npm run publish:point-cloud-facades` writes a versioned, served
+  extract to `public/data/pointcloud-facades/v1/` (per-tile `scene.obj` +
+  `scene-colours.json` + `points.bin` + manifest + `index.json`; 86 measured
+  walls, 6,381 vertices, 2,051 faces) and `npm run build:point-cloud-facades`
+  bundles `public/canal-drive/pointcloud-facades.html` — an interactive Three.js
+  view with a tile selector, layer toggles (source point cloud / measured mesh),
+  **click-to-inspect** (a façade's frontage, coverage, roofline shape and range,
+  storeys × bays, openings and gable rise) and a "frame selected wall" camera.
+  The source point cloud is a 200k-point downsample of the tile's 7–11 M returns,
+  encoded `PCF1` (uint32 count, Float32 xyz, Uint8 rgb); it shares one RD-space
+  container with the mesh so the measured geometry sits exactly on the points it
+  came from. Measured openings get their own dark material and the measured
+  roofline is emitted as a bright strip, so the gable reads at a glance. Opening
+  the page from `file://` shows an explicit "must be served" message rather than
+  hanging on "loading…". The per-tile `gallery.svg` (contact sheet of every
+  shaped roofline, drawn to scale) is linked from the page. Source hash, byte
+  size and licences travel in the manifest; `reconstruction-status.html` links to
+  it.
+- Only 1 of 32 rises above 3DBAG's **whole-building maximum** roof height. That
+  comparison is deliberately the strict one: a slanted roof always rises above
+  the eaves, so eaves-vs-ridge is not a gable. The honest claim is the **shaped
+  roofline**, not "above the roof".
+
+- `src/canalRecall/facade/facadeMeshCompiler.ts` turns a measured wall into
+  low-poly primitives: connected-component clustering of recessed cells into
+  **opening rectangles**, of protruding cells into **bands and blocks**, and
+  **rectangle subtraction** so the wall is emitted as a hole-free panel tiling
+  (panels + openings exactly tile the wall). A bounding box alone **merges two
+  windows separated by a thin pier** into one box — the diagnostic render showed
+  it immediately — so `refineCluster` splits each region at columns and rows
+  whose coverage is mostly wall. Coverage is measured against the **solid
+  returns**, not the box, so an occlusion gap does not break a real opening
+  (the first, box-relative version dropped a third of the windows on an occluded
+  façade). `facadeMeshCompiler.test.ts` pins 27 assertions including the
+  subtraction area invariant and a 0.4 m pier splitting two windows. The spike
+  writes `diagnostic-*.svg` — the raw returns with detected openings (cyan) and
+  protrusions (orange) outlined — so misses and false positives are visible.
+- **`npm run spike:museumkwartier`** compiles all 32 well-scanned walls: **131
+  openings, 6 gables**, median 3 storeys × 1 bay. Openings are grouped into
+  **storeys** (rows) and **bays** (columns) — the rhythm the learning mechanics
+  ask for. The scene (`scene.obj` + `scene-colours.json`) holds all 32 measured
+  façades in true RD/NAP, every other exterior wall as grey massing, and the
+  measured buildings' 3DBAG roofs; `render-facade-3d.mjs` draws a street view and
+  an aerial 3/4 view. A building's measured wall tops and its roof planes were
+  checked to coincide (e.g. `0363100012074448`: wall tops 10.8–15.0 NAP, roof
+  10.8–15.0 NAP, same footprint), so the measured eaves meet the declared roof.
+
+Residuals, all measured: the pinned wall's 11.7 m frontage carries two bell
+gables and a taller arched section inside one 12.7 m building — that is a double
+house, and the compiled gable polygon follows the whole measured roofline, so it
+is not a defect. The unverified case is **coplanar neighbouring *panden***: on the
+canal belt narrow row houses share a façade plane, and whether one 3DBAG
+`WallSurface` can then pick up a neighbour's returns has not been tested
+(Museumkwartier and Willemspark have wide blocks). The municipal LAZ host
+(`files.lidar.data.amsterdam.nl`) is currently **NXDOMAIN**, so city-scale
+geometry waits on the data team and these spikes run on the two UPCP demo tiles.
+3DBAG's own LoD2.2 error for the pinned building is 1.08 m, so the mesh it
+compiles from is looser than the cloud that measures it.
+
+## 2026-09-21 — the district street-frontage camera stands clear of the opposite block
+
+The first `street-frontage` camera scored candidate walls by raw area and stood off
+from the **whole building bbox**, so for the parallel-slab districts the camera
+landed inside the block across the street and produced a featureless wall filling
+the frame (pass 20, defect 4). The selection now lives in
+`src/canalRecall/review/districtFrontage.ts`, is picked in Node (not inside the
+page) and is exercised by `districtFrontage.test.ts`:
+
+- it keeps the substantial-wall-near-the-centroid score, then **marches outward
+  from the wall midpoint along the wall normal until another building's footprint
+  blocks the sightline** (render-space 2D point-in-multi-polygon over the compiled
+  `building.footprint`), so the camera always stands in the open;
+- it frames the **wall** (its midpoint and height) with a standoff capped so a
+  190 m row is read as a street stretch, not a distant object, and widens the
+  field of view when the street is too narrow to fit the height;
+- the ground datum is computed once in Node (median `groundNAP`) and shared by
+  the ground plane and the camera.
+
+`scripts/review/check-district-street-frontage.ts` (zero-activation, reads the
+compiled tiles only) pins each district's named selection —
+apollobuurt-v1 Anthonie van Dijckstraat (27.1×10.9 m), slotervaart-v1
+Comeniusstraat (93.3×25 m), tuindorp-nieuwendam-v1 Het Hoogt (190.3×14.4 m) — and
+asserts the camera is not inside any footprint. Rendered and looked: slotervaart
+went from a wall filling the whole frame to a facade with sky and ground visible;
+tuindorp now stands at 50 m instead of 90 m; apollobuurt keeps its street row
+context. **Residual:** all three compiled districts are still geometry-only
+(`observations: 0`), so street-scale facade identity waits on the evidence stage
+(spend). No release, no `current.json`, no `pipeline:district` run. The pass-22
+session had left the typed module, its unit test and the check uncommitted;
+pass 23 landed them (commit `a7c2427`) after re-rendering all three districts and
+re-reading the images. Residual at street scale: with no compiled observations
+every `street-frontage` render is a featureless monolith — apollobuurt reads best
+(a wall seam, roof slope, sky and ground), slotervaart reads as a slab, and
+tuindorp's 190 m Het Hoogt row fills the frame edge to edge — so no facade
+identity claim is made.
+
+## 2026-09-21 — case-12's missing roof detail is restored as a halsgevel neck
+
+The 25-case review's case-12 Rozengracht 160 was filed "mising roof detail, missing
+one whole floor of windows". The floor leg was delivered earlier (pass 16); the
+roof leg is the building's **halsgevel neck** above the first-floor cornice, which
+the stored source-shape study drew as flat brick all the way to the crop top — so
+the gable was simply absent.
+
+- `roof-coverage-corrections.json` gains a case-12 entry through the same
+  source-bound roof-coverage lane used for case-27/case-21: a pixel-inspected
+  24-point outline whose left neck edge follows the measured sky/brick boundary
+  from the 2023 crop (shoulders at y=160), plus a flat crest top where the crop
+  cuts.
+- `scripts/review/refresh-reviewed-roof-coverage.ts` republished **only** case-12
+  (packet `9ddc545c…` → `7a261e5b…`, idempotent). A deep diff of the archived
+  prior shows the only changed case is case-12 and the only changed fields are
+  `roofReview.status`/`uncertainty` and `shapeStudy.full`
+  (`owner`, `patches`, `omissions`, `sourceSilhouette`); `createdAt`,
+  `shapeFeatures` (including the pass-16 inferred upper row) and every other case
+  are byte-identical. The metric `building-placement` candidate is untouched.
+- `scripts/review/check-reviewed-roof-coverage.ts` (seventh lane of
+  `check-reviewed-cases.ts`) now pins case-12 as a fresh coverage compile,
+  its measured edges, its retained inferred row and that no roof opening was
+  invented.
+
+Rendered and looked before/after: a flat-topped beige rectangle became a halsgevel
+with the neck, shoulders and gable window matching the source's identity.
+**Residual:** a foreground tree trunk fully covers the right neck, so the right
+outline is mirrored about the gable-window axis and the crest top is closed flat
+where the crop ends — a coarse source-pixel approximation, not a measurement. No
+metric placement, depth or colour claim is made.
+
+## 2026-09-21 — the three new districts are rendered, grounded, and eyed at street scale
+
+The Zuid, Nieuw-West and Noord districts finished their geometry stages, so for the
+first time the reconstruction loop could check them **without publishing**.
+`scripts/review/render-compiled-area.mjs` reads a compiled area's z14 appearance
+tiles and renders fixed cameras in headless WebGL, touching neither `current.json`
+nor any release. Two things made it actually judgeable:
+
+- a **ground plane at the median declared `groundNAP`** — before it, every
+  building floated over the background in plan and oblique;
+- a **`street-frontage` camera** that picks a substantial wall near the district
+  centroid, stands across the street at eye height, frames the building bbox and
+  reports the chosen building id and street. The older `street-eye-*` views place
+  the camera 0.55× the district radius from the centre at 1.7 m, which produces a
+  thin skyline rather than a street.
+
+Rendered and looked at all three (apollobuurt-v1 2,343 buildings; slotervaart-v1
+3,410; tuindorp-nieuwendam-v1 3,315). Verdict: recognisable massing — Oud-Zuid
+perimeter blocks with courtyards and the Parnassusweg diagonal; the Nieuw-West
+parallel *strokenbouw* slabs; the Noord low-rise diagonal garden-village rows.
+**Residual:** every compiled index reports `observations: 0` (geometry-only,
+because the district `evidence` stage is unauthorized on spend), so street-scale
+facades are featureless monoliths and storey rhythm / colour cannot yet be
+judged. Roofline fidelity is unverified without a reference overlay. No
+publication, activation or spend.
+
+## 2026-09-21 — case-05's missing entrance is restored from its source recess
+
+The 25-case review's case-05 Lauriergracht 67/69 was filed "roof too high into
+the sky, windows opverlapping too much, no door". The roof and window legs are
+separately handled; the "no door" leg was the **full source-shape study**, which
+painted all three ground windows (`full:window-r4-b1/b2/b3`) but no entrance,
+because the 2023 full-crop extraction returned none. The dated full photograph
+shows a central recessed entrance between the two ground-window banks, and the
+building's clearer 2025 ground capture confirms that identity. The leaf itself is
+hidden by ivy and deep shadow, so only the measured recess position is declared —
+`source-geometry-corrections.json` gains a `case-05` full-tier entry adding
+`full:review:entrance-door` (bounds `[202,711,228,815]`, leaf `#38271f`, frame
+`#312d29`) with the occlusion named in its `visibility`. No metric placement,
+depth or access claim is made.
+
+- The correction flows through `stageSourceGeometryPacket`, the same
+  source-hash-validated, idempotent transform `build-facade-preview` uses, so a
+  rebuild reproduces the delivered study rather than losing a one-off edit.
+  `scripts/review/refresh-reviewed-source-geometry.ts` republished only case-05's
+  `shapeFeatures.full` and `shapeStudy.full` (packet `4181458d…` → `9ddc545c…`).
+- A deep diff of the archived prior shows the only changed case is case-05 and
+  the only changed fields are `shapeFeatures/full/features` (+1),
+  `shapeStudy/full/patches` (+10) and `shapeStudy/full/counts/door` (0 → 1);
+  `createdAt`, the metric `building-placement` candidate and every other case are
+  byte-identical.
+- `scripts/review/check-reviewed-source-geometry.ts` (fourteenth lane of
+  `check-reviewed-cases.ts`) pins the delivered door, its declaration, the
+  fresh-reproduction durability, that no other case or the ground tier moves, and
+  that a stale source fails closed.
+
+Rendered and looked before/after: the blank brick between the ground windows became
+a dark door with its frame, matching the source's entrance composition.
+**Residuals:** the door's exact width/height is a source-pixel approximation of an
+ivy-occluded recess, and the metric candidate plus the live game still use the
+uncorrected ground-crop registration. No metric or photographic acceptance is
+claimed.
+
+## 2026-09-21 — case-21's bell gable is restored from its source outline
+
+The 25-case review's case-21 Lauriergracht 50 was filed "missing roof, missing
+ground floor window, first floor is all widnows no door". Its full source-shape
+study drew a flat-topped brick rectangle while the source photograph shows a
+**bell gable** with a cream stone crest and side scrolls. `roof-coverage-
+corrections.json` now carries a pixel-inspected 16-point bell-gable outline plus
+three cream fields — the pediment/crest, the left volute and the right volute
+with its cornice — and `refresh-reviewed-roof-coverage.ts` republished only
+case-21 through the same `prepareRoofCoverageStudy` path `build-facade-preview`
+uses (packet `ad09c342…` → `4181458d…`, idempotent).
+
+- A deep diff of the archived prior shows the only changed case is case-21 and
+  the only changed fields are `roofReview`, `shapeFeatures` and `shapeStudy`; the
+  metric `building-placement` candidate, `candidateObservations`, every other
+  case and `createdAt` are byte-identical (the placement capture hashes equal
+  before and after).
+- `scripts/review/check-reviewed-roof-coverage.ts` (seventh lane of
+  `check-reviewed-cases.ts`) now pins both delivered cases: case-27's dark roof
+  field and stacks, and case-21's cream fields, 16-point outline, fresh-compile
+  durability and `source-outline-reviewed` status. No roof opening is invented.
+
+Rendered and looked before/after: the flat top became a bell gable with the
+cream crest and side scrolls, matching the source's identity. **Residuals:** the
+crop cuts the very top of the crest and a cast shadow crosses the lower bell, so
+the outline is a coarse source-pixel approximation rather than a measurement; the
+left-volute patch reads slightly detached at the silhouette step. The case's
+ground-floor portrait display glazing and its metric roof/ground remain
+separately parked. No metric or photographic acceptance is claimed.
+
+## 2026-09-21 — case-05's overlapping window frames meet at the measured pier
+
+The 25-case review's case-05 Lauriergracht 67/69 was filed "roof too high into
+the sky, windows opverlapping too much, no door". The overlap is real and
+measured, not an impression: the extraction places the narrow window `b3` and
+the wide bay `b4` **1.9 source pixels** apart (their glazing boxes leave a 1.9 px
+gap), while the compiler draws every observed opening with its own default
+`.14 m` frame border. Each frame then protrudes across its neighbour, so the pair
+reads as one overlapping blob in the source-shape study — the repair-preview's
+default view.
+
+- `frameClearancePx` is a new **opt-in, per-feature** reviewed declaration on
+  `FacadeFeature`: the measured same-row glazing gap in source pixels. When
+  present, `observedAssemblyPatches` caps the frame border to it, and never past
+  the nearest same-row opening (`sameRowOpeningGapPx`), so the two frames meet at
+  the midpoint instead of crossing. A well-spaced opening declares its large gap
+  and keeps the full border; an opening with no declaration is byte-stable, so no
+  other reviewed study or metric candidate moves.
+- `src/canalRecall/facade/openingFrameCorrections.ts` +
+  `scripts/review/opening-frame-corrections.json` declare the six measured
+  openings (`full:window-r{1,2,3}-b{3,4}`, clearance `1.9`). The applier fails
+  closed on a stale crop binding, is idempotent and never mutates its input.
+- `scripts/review/refresh-reviewed-opening-frames.ts` republished **only**
+  case-05's stored `shapeFeatures.full` (now carrying the declarations) and
+  `shapeStudy.full` (packet `cf5b0da4…` → `ad09c342…`, idempotent). A deep diff
+  of the archived prior shows the only changed case is case-05 and the only
+  changed fields are those two; `candidateObservations`/`patches`,
+  `shapeStudy.ground`, `createdAt` and the other 27 cases are byte-identical.
+- `scripts/review/check-reviewed-opening-frames.ts` (thirteenth lane of
+  `check-reviewed-cases.ts`) pins the declared clearances, the delivered packet,
+  a fresh reproducible compile, the opt-in scope (no other case carries the
+  field), the non-overlapping rows and the fail-closed applier.
+
+Rendered and looked before/after: the narrow window and the bay now draw two
+separate frames that meet at the measured pier instead of one overlapping mass,
+matching the source crop. **Residuals:** the correction is deliberately a
+source-shape-study declaration, so the metric `building-placement` candidate and
+the live game still draw the uncorrected `.14 m` frames (the game-facing overlap
+is visible there). Fixing that needs a shared compiler rule across every
+reviewed case — measured to change case-09/12/19/22/24/30 studies and their
+delivered lanes — so it belongs to a versioned regeneration, not this pass. The
+case-05 roof spike and the extraction's narrow-row column alignment remain
+separate parked items. No metric or photographic acceptance is claimed.
+
+## 2026-09-21 — case-12's missing upper-floor row is reconciled from the observed rhythm
+
+The 25-case review's missing-floor group is case-12/13/16/17. Re-reading their
+crops showed only **case-12 Rozengracht 160** is a real whole-row miss: the
+extractor reported `openingsComplete: true` and returned one of the two clear
+upper window rows below the gable (`full:window-2/3/4`, glass y164-230), so the
+second row (y279-343, directly above the Heineken shopfront) rendered as blank
+masonry in both the shape study and the metric candidate. case-13/16/17 each
+already detect every visible upper row; their blank lower band is the occluded
+ground floor, which is a separate tier/crop issue.
+
+- A **generic** gap-based inference was measured and rejected: a same-size
+  anchor-to-ground gap appears on case-08 (owner-accepted) and case-11 (a
+  delivered storefront case), so a global "insert a row" rule would over-fire.
+  The row is therefore reconciled **per case** from the observed rhythm.
+- `src/canalRecall/facade/floorRowCorrections.ts` + `floor-row-corrections.json`
+  declare the observed anchor row, the measured 80 px storey pitch, the fascia
+  top (y385.065) and three pixel-measured openings. `applyFloorRowCorrections`
+  fails closed unless the anchor-to-ground gap is larger than one storey and
+  each row sits between the anchor glass and the ground band; it is idempotent
+  by feature id and marks the rows `agent-inspected` with an explicit
+  `inference: observed-row-rhythm` provenance. Bounds were measured from the
+  crop's bright frame components and cross-checked against the left window's
+  frame outline x40-104 / y271-351.
+- `scripts/review/refresh-reviewed-floor-rows.ts` republished only case-12
+  (packet `924bece7…` → `cf5b0da4…`); a deep diff of the archived prior shows
+  the only changed case is case-12 and the only changed fields are
+  `candidateObservations`, `patches`, `counts`, `shapeFeatures` and
+  `shapeStudy` (`createdAt`, `frame` and the other 27 cases byte-identical). It
+  is idempotent.
+- `scripts/review/check-reviewed-floor-rows.ts` (twelfth lane of
+  `check-reviewed-cases.ts`) pins the declared correction, the delivered
+  packet, a fresh shared-builder reproduction, the fail-closed boundaries and
+  that no other reviewed case gained a row.
+
+Rendered and looked before/after: the blank wall between the first upper row and
+the shopfront now carries the measured second row of three framed windows,
+matching the source. **Residuals:** the detected first row (`full:window-2/3/4`)
+is narrower than the source's same row, so the two rows are not column-aligned;
+this is a pre-existing detection-extent issue and was not touched. No metric or
+photographic acceptance is claimed.
+
+## 2026-09-21 — case-18's stored render gets the near-white glazing guard
+
+The 25-case review's occlusion group is case-03/18, both filed as "need a
+different photo" / "building occluded, need to infer". Rendering case-18's
+stored packet showed a second, unreported defect: its four windows were **solid
+white arches**. The extraction had declared `colour:"#ffffff"` for both the glass
+and the frame — the near-white it sampled — so the pre-guard compiler painted
+glazing and frame white.
+
+- The pass-14 near-white guard already recolours the **glazing** to the neutral
+  glass `windowGlass` (`#526a6b`) while leaving the **frame** hex alone. That is
+  the right split here: the source photograph shows dark arched glass in white
+  frames, so the white frame patches are architecture, not a mis-sample. The
+  recolour is therefore **partial** (41 glazing patches white → neutral, 102
+  white frame patches kept), unlike case-11's wholesale swap.
+- `scripts/review/refresh-reviewed-glazing.ts` gained a `--tier` filter (default
+  both). A stored tier can carry a delivered correction that a plain
+  `compileSourceShapePreview` does not reproduce: case-18's **ground** study has a
+  raised-entrance correction (13 door patches and an `omissions` note) that the
+  plain compile drops, so the refresh was run `--tier=full` and the ground study
+  is left byte-identical. The safety assertion was generalised from "white must
+  fall to zero" to a conservation check: the observed-window patch total is
+  unchanged, every non-glazing colour is untouched, and the neutral-glass gain
+  equals the white loss.
+- Packet `168fc6d…` → `924bece7…`; a deep diff of the archived prior shows the
+  only changed case is case-18 and the only changed fields are `patches` and
+  `shapeStudy.full` (`shapeStudy.ground`, `createdAt`, `shapeFeatures` and the
+  other 27 cases are byte-identical). The refresh is idempotent.
+- `scripts/review/check-reviewed-glazing.ts` (eleventh lane of
+  `check-reviewed-cases.ts`) now pins both delivered cases: each keeps its stored
+  near-white extraction gap, renders neutral glazing, equals a fresh guarded
+  compile, and case-18's ground raised-entrance correction survives.
+
+Rendered and looked before/after: the three upper arched windows and the lower
+window were blank white and are now dark glazing with white frames, matching the
+source crop. The ground tier is unchanged. **Residual:** case-18 remains heavily
+occluded by a foreground station sign; only a better-dated source can address
+the review's inference ask. No metric or photographic acceptance is claimed.
+
+## 2026-09-21 — near-white window colours no longer paint blank white panes
+
+The 25-case review's case-11 De Clercqstraat 26 was filed as "missing shopfront
+window". Rendering its metric candidate and its source-shape study showed a
+second defect: **every upper window was a blank white pane**. The extraction had
+declared `colour:"#ffffff"` for all twelve full-tier windows — the near-white
+frame or curtain it sampled — and the facade compiler painted that observed hex
+straight into the glazing (`observedAssemblyPatches` used `f.colour` as the
+glass). case-18 is the only other case with the same extraction gap.
+
+- `src/canalRecall/cityAppearanceFacadeRecipes.ts` now treats a **near-white
+  window colour** (all three channels ≥ 235) as undeclared and falls back to the
+  neutral glass `windowGlass` (`#526a6b`). A genuine glass hex is kept, the
+  boundary is exact, and **door leaves are excluded** — a white door is real
+  architecture, and the reviewed ground tier supplies its own door colours.
+- `scripts/review/refresh-reviewed-glazing.ts` recomputes only the affected
+  case's candidate fields (through the shared `buildCaseCandidate`) and its
+  stored full source-shape study (through `compileSourceShapePreview`), then
+  publishes through the immutable `publishPreviewRevision`. It asserts that the
+  **only** change is the near-white window glazing losing its white panes, and
+  is idempotent. Packet `9258d89…` → `168fc6d…`.
+- The packet deep-diff is exact: the only changed case is case-11 and the only
+  changed fields are `patches` and `shapeStudy.full`; `createdAt`, the stored
+  `shapeFeatures` (so the extraction gap stays visible), `counts` and every
+  other case are byte-identical. `shapeStudy.ground` was already neutral.
+
+Rendered and looked before/after: the source-shapes study and the
+building-placement view now show the dark glazing the source photograph has
+(white frames stay white), instead of twelve white rectangles. Residuals: case-18
+still carries the near-white gap in its packet artifacts (the compiler guard
+already covers its next compile), and the live game only picks the guard up when
+the pre-existing-WIP viewer bundle is rebuilt by the integrating agent. No metric
+or photographic acceptance is claimed.
+`scripts/review/check-reviewed-glazing.ts` (eleventh lane of
+`check-reviewed-cases.ts`) pins the guard on synthetic features (boundary and
+door-leaf exclusion included), the delivered case-11 packet, the study's
+fresh-compile durability, and case-18's preserved gap.
+
+## 2026-09-21 — material frontage-coverage gaps now draw on the registered frontage
+
+The 25-case review flagged case-02 De Clercqstraat 20/22 as "missing business
+window". Rendering showed the metric candidate drew **only the left half** of the
+building: the release bound a single 3DBAG wall surface 5.10 m long while the
+observation's registered frontage is 8.09 m. The cached crop plane spans the
+registered frontage, so the storefront entrance and the right window column
+mapped beyond the 5.10 m frame and were clipped away by `clipTrianglesToFace`.
+The same pattern — a coplanar declared frame that does not span the frontage —
+hit case-13, case-19, case-22 and case-29.
+
+- `scripts/review/case-candidate.ts` now measures the **union coverage** of the
+  usable declared frames along the crop-plane axis and draws on the registered
+  frontage when the uncovered gap exceeds a material threshold
+  (`max(1.5 m, 15% of the crop-plane length)`), in addition to the existing
+  non-coplanar rule. Below the threshold a coplanar declared frame still owns the
+  frontage, so crop-margin rounding (case-01 0.14 m … case-05 0.93 m) does not
+  switch planes. Sub-threshold cases with a real but small gap deliberately keep
+  their declared surface (case-15 1.75 m, case-23 2.23 m, case-27 2.38 m).
+- `scripts/review/refresh-reviewed-frontage.ts` republished only the five
+  affected candidates (packet `dd1fd2e…` → `9258d89…`); every other case and
+  `createdAt` are untouched, and re-running any of them is `already-current`.
+- This is a **source-space frame** fix, not a new geometry claim: the synthetic
+  wall still runs along the registered frontage and is still validated by
+  `facadeWallFrame` against the building boundary. No metric registration or
+  photographic fidelity is asserted.
+
+Rendered and looked at each before/after: case-02 now draws the full brown-brick
+facade (both window columns, the storefront entrance, the green awning and the
+display glazing) matching its source; case-13, case-19, case-22 and case-29 each
+render their full-width facade instead of a clipped sub-segment. Residuals stay
+the same extraction/placement issues already logged for these cases (e.g. a
+striped material/awning band across case-02), and no whole-building acceptance
+is claimed. `scripts/review/check-reviewed-frontage-coverage.ts` (tenth lane of
+`check-reviewed-cases.ts`) pins the measured coverage gaps, the switch set, that
+the five stored candidates are exactly fresh shared-builder compiles, that their
+frames span the registered frontage, and that the sub-threshold cases keep their
+declared frames.
+
+## 2026-09-21 — case-30's blank candidate is recovered from its registered frontage
+
+The 25-case review's centering group is case-06/20/30; case-30 Rozengracht 212
+was the owner's explicit ask ("registration slightly off; we could have inferred
+the right fit"). Measuring it showed something worse than mis-centring: the
+metric candidate was a **blank monolith** (0 observed patches). Its 4.43 m
+registered frontage is fragmented by 3DBAG into three skewed pieces (#2 1.27 m,
+#4 2.11 m, #5 1.12 m), only #4 clears the `surfaceMatches` overlap gate, and #4
+is 0.71 m off the cached crop plane — beyond the compiler's 0.18 m
+non-coplanarity guard — so the source abstained. The registered frontage itself
+is exactly coplanar with the crop plane (0.0000 m at both ends, both tiers), the
+same fact that recovered case-09.
+
+- `scripts/review/case-candidate.ts` now draws on the registered frontage when
+  no usable declared surface is coplanar with the crop plane (declared offset >
+  the compiler's own 0.18 m guard), not only when no surface gives a frame. A
+  declared surface that is coplanar (or inside the guard) still wins, so case-06,
+  case-19 and case-20 are unchanged; case-09's path is unchanged.
+- `scripts/review/refresh-reviewed-frontage.ts` republished only case-30's
+  candidate fields (packet `4d57571…` → `dd1fd2e…`). A before/after diff shows
+  the only changed case is case-30 (`candidateObservations/frame/patches/counts/
+  omissions`); `createdAt` and every other case are byte-identical. It is
+  idempotent (`--dry-run` → `already-current`).
+
+Rendered before/after and looked: before was a beige massing monolith; after is
+the full 4.43 m facade on its registered frontage — brick wall, the central
+column of tall windows, both columns of arched upper windows, and the ground
+shopfront with its arched display glazing and two flanking doors. Residuals: the
+metric placement shows a pale band at the crop's left edge and a striped region
+above the entrance (extraction material/awning features from a crop that includes
+a slice of the pale left neighbour), and the literal "BIANCO" sign is not drawn
+(unreviewed-sign policy). No metric or photographic acceptance is claimed.
+`scripts/review/check-reviewed-frontage-fallback.ts` (ninth lane of
+`check-reviewed-cases.ts`) pins case-30's recovered counts, that its frame is the
+full registered frontage, that the crop plane is coplanar while #4 is not, that
+the stored candidate is exactly a fresh shared-builder compile, and that a
+coplanar declared surface (case-19) still wins.
+
+## 2026-09-21 — case-09's blank candidate is recovered from its registered frontage
+
+The 25-case review flagged case-09 Rozengracht 228 as "missing door". Rendering
+showed something worse: the metric candidate was a completely blank monolith.
+The release bound no wall surface, and every 3DBAG wall at that frontage is a
+sliver, skewed or non-planar, so `facadeWallFrame` had nothing usable to draw on
+and the preview abstained (`No usable published facade surface`). The
+observation's registered frontage is exactly coplanar with the cached crop plane
+(0.00 m off at both ends, both tiers), so it is the only defensible drawing
+plane.
+
+- `src/canalRecall/facade/registeredFrontage.ts` builds a synthetic rectangular
+  wall surface on that registered frontage, spanning the building's own wall
+  extent. It invents no position (the frontage is registered) and no height
+  beyond the building, and `facadeWallFrame` still validates the ring against the
+  building boundary, so a frontage that is not on the boundary abstains.
+- `scripts/review/case-candidate.ts` is the per-case candidate builder now shared
+  by `build-facade-preview.ts` and targeted refresh scripts. It uses the
+  synthetic frontage surface only when none of the declared surfaces gives a
+  usable frame, so cases with a real surface are unchanged.
+- `scripts/review/refresh-reviewed-frontage.ts` republished only case-09's
+  candidate fields through the immutable `publishPreviewRevision` helper
+  (packet `297054a…` → `4d57571…`); a before/after diff shows the only changed
+  case is case-09 (`candidateObservations/frame/patches/counts/omissions/status`)
+  and `createdAt` is untouched. It is idempotent (`--dry-run` →
+  `already-current`).
+
+Rendered before/after and looked: before was an untextured massing monolith;
+after is the source's paired arched windows, gable window, ground band and the
+recovered entrance + display glazing. The upper wall stays the neutral render
+base (the extraction supplies no colour for it), the same residual recorded for
+case-08. `scripts/review/check-reviewed-frontage-fallback.ts` is the named
+regression (ninth lane of `check-reviewed-cases.ts`): it pins the recovered
+counts, that the frame is the registered frontage, that no published surface
+covers the frontage, and that the stored candidate is exactly a fresh
+shared-builder compile. (It originally pinned that case-30 still abstained; that
+case is now delivered by the same fallback — see the entry above.)
+
+## 2026-09-21 — case-08's missing wall colour is a declared source observation
+
+The 25-case review's colour/material group is case-08/14. case-14's red brick
+and accent suppression are compiler deliveries. case-08 Rozengracht 251 is the
+other defect: it declares an `upper-wall` `brick` material with **no colour
+field**, and `compileFacadePatches` only paints a material whose `colour` is a
+valid hex. So the workbench showed the neutral render base `#d7d0c7` over a
+source that is a dark, desaturated brick wall with cream bands and a cream top
+cornice — the review's "missing building color and white cornice".
+
+Pass 4 parked this as an extraction/field gap rather than sampling a colour in
+the compiler, because a sampled value is unreliable under shadow and occlusion
+and must never become an accepted material. The delivery here is therefore a
+**declared observation**, not an extraction rewrite:
+
+- `scripts/review/wall-colour-corrections.json` declares case-08's whole-crop
+  `full:mat-brick` as `#594e48` — the masked-crop-percentile sample already
+  recorded in `review-data/case-wall-colour.json`, cross-checked by eye against
+  the 2025 source — and the extraction's thin `full:mat-accent` band at the top
+  as cream `#e8e8e8`.
+- `scripts/review/refresh-reviewed-wall-colour.ts` applies them to the review
+  packet's **source-shape study only**, through the same
+  `compileSourceShapePreview` + `applySourceAssemblies` path
+  `build-facade-preview.ts` uses, and republishes via the immutable
+  `publishPreviewRevision` helper (packet `11305a4…` → `297054a…`). A prior/new
+  diff shows only `case-08.shapeStudy` and the new `case-08.wallColourReview`
+  marker changed; every other case is byte-identical. It is idempotent
+  (`--dry-run` reports `already-current`).
+
+The stored `shapeFeatures.full` material is deliberately left colourless, so
+`check-reviewed-wall-colour.ts` still pins the extraction gap and a future
+extraction that supplies the colour is noticed. `check-reviewed-wall-colour-
+render.ts` (the eighth lane of `npx tsx scripts/review/check-reviewed-cases.ts`)
+pins the declared colour, the preserved gap, the reproducible corrected compile
+and the marker. Rendered before/after and looked: the study wall is now the
+declared dark brick with the cream top band, window surrounds and the
+`moeders` sign, matching the source; before it was the neutral beige base.
+
+Residual: this is a source-shape study observation, not a metric or production
+material. The building-placement candidate and the live game render still use
+the colourless extraction and fall back to the neutral base until a registry /
+release regeneration supplies the field.
+
+## 2026-09-21 — case-27's missing roof is a delivered source-bound silhouette
+
+The 25-case review grouped case-19/27 as "missing roof". Rendering showed the
+study's roof was simply not drawn: `case-27` De Clercqstraat 79's full
+source-shape study painted only the brick upper wall (its `upper-wall` material
+bounding box reached up into the roof), so the top read as flat brick with no
+roof. case-27 has the one legible full source of the two, so it is the case the
+roof lane can actually fix.
+
+`roof-coverage-corrections.json` now declares a pixel-inspected case-27
+correction, measured against the column sky/roof boundary of the 2023 crop:
+
+- a silhouette that follows the lower left roof slope, the ridge, both chimney
+  stacks and the facade's right edge at x=906 (the right neighbour carries a
+  roof at the same height, so the outline stops at the edge);
+- a broad dark roof field `#3f3f3d` and the two brick stacks `#4d4946`, both
+  appended after the machine wall material so they paint over it;
+- no invented roof opening: the source shows none, and the regression asserts it.
+
+`refresh-reviewed-roof-coverage.ts` republished the study through the same
+`prepareRoofCoverageStudy` / `applyRoofCoverageStudy` path
+`build-facade-preview.ts` uses, via the immutable `publishPreviewRevision`
+helper (packet `1a969c0…` → `11305a4…`); an archived prior/new diff shows
+`case-27.roofReview`, `case-27.shapeFeatures` and `case-27.shapeStudy` are the
+only changed fields. The metric building-placement candidate is untouched. The
+refresh is idempotent (`--dry-run` reports `already-current` for case-01/04/09).
+
+`scripts/review/check-reviewed-roof-coverage.ts` is the named regression: every
+declared correction must still be delivered with a silhouette and its reviewed
+features, case-27 must be exactly a fresh coverage compile painting `#3f3f3d`
+with two stacks and no invented opening, and case-19 must stay unreviewed. It is
+the seventh lane in `npx tsx scripts/review/check-reviewed-cases.ts`. The
+ground-floor shopfront in the same full study is a separate defect and remains
+open; case-19's source is too occluded (pole, wires, branches) for a defensible
+silhouette and stays parked.
+
+## 2026-09-21 — the 25-case review regressions have one command
+
+The review loop landed one named check per DEPTH lane — contextual floors
+(case-12/13/16/17), retail ground assemblies (case-02/05/11/29), roof vertical
+geometry (case-01/05/19/27), wall colour (case-08/14), framing/centering
+(case-06/20/30) and the case-14 source-shape study. They are deliberately
+separate files with separate fixtures, but they only do their job when run
+together, so `scripts/review/check-reviewed-cases.ts` runs all six in isolated
+child processes and fails the aggregate if any lane regresses:
+
+    npx tsx scripts/review/check-reviewed-cases.ts
+
+Each check still holds its own measured evidence and before/after images; the
+aggregate adds a single per-lane pass/fail + timing summary and a non-zero exit
+on regression. A child process per check (rather than one import) keeps a
+lane's module-level state and `process.exit` from leaking into the next. There
+is no `package.json` entry by design: the branch carries large pre-existing
+`package.json` WIP that must not be folded into a loop commit.
+
+## 2026-09-21 — case-14 stored shape study refreshed; the overpaint is gone from the render
+
+Pass 4 fixed the whole-facade "accent" overpaint in the compiler, but the
+delivered review packet (`public/data/facade-repair-preview/cases.json`) was
+built before that guard, so case-14 Elandsgracht 19's *source-shape* study still
+painted the entire wall white. A full `build-facade-preview` rebuild is unsafe
+(several cases carry shape-study post-processing and delivered corrections that
+live outside that builder), so `scripts/review/refresh-reviewed-shape-study.ts`
+republished a targeted revision through the existing immutable
+`publishPreviewRevision` helper: it recomputes only case-14's full study from its
+own stored `shapeFeatures` and leaves every other case byte-identical. Verified by
+diffing the archived prior packet (`f400bd…`) against the new one (`1a969c0…`):
+the only changed field is `case-14.shapeStudy.full`. The metric
+building-placement candidate was already correct and is unchanged.
+
+Rendered before/after and looked at: the study wall is now the declared red brick
+`#8b4513` with white window surrounds and the localized ground band, matching the
+source's red-brick-with-white-accents; before it was a full white wall with only
+the windows and door visible. The whole-crop `full:material-accent` feature
+remains in `shapeFeatures` by design — the guard suppresses its patch at compile
+time, so the study carries exactly one wall material. The refresh is idempotent
+(`--dry-run` now reports `already-current`). `publishPreviewRevision` never
+touches `current.json`, a release, notes or the spend journal; prior packet bytes
+are archived under `public/data/facade-repair-preview/revisions/`.
+`scripts/review/check-reviewed-shape-study.ts` is the named regression: it asserts
+the delivered study is exactly a fresh guarded compile, that the whole-crop accent
+is declared and suppressed, and that the wall paints as `#8b4513`.
+
+## 2026-09-21 — Framing/overlap group measured: three causes, not one centring defect
+
+The 25-case review's "centering-framing" group (case-06 "maybe taking in a bit of
+the next building?", case-20 "too much overlap, needs to be better centered",
+case-30 "registration slightly off; we could have inferred the right fit") was
+rendered and measured owner-by-owner. It is three distinct causes, and only one
+touches crop centring.
+
+- **case-06 Da Costakade 204** is registered correctly: one 7.41 m frontage on
+  collinear surface #2. The crop is the problem — its detected building run
+  reaches the right edge and the fourth upper window bay ends exactly at the crop
+  width, so the crop includes a slice of the next building. Fixing it is a
+  versioned crop tightening, not a compiler change.
+- **case-20 De Clercqstraat 74** registers a 6.05 m frontage that 3DBAG splits
+  across two collinear, coplanar segments (#9 3.18 m + #8 2.87 m). The release
+  already binds both ([8, 9]) and the preview compiles one observation per
+  segment, so the source is **not** squeezed onto a single 2.87 m wall — an
+  earlier read of this group assumed it was. The residuals are a review panel
+  centred on the first usable segment and a ~0.45 m offset between the
+  independently-transformed ground and upper crops.
+- **case-30 Rozengracht 212** registers a 4.43 m frontage that 3DBAG fragments
+  into three near-collinear-but-skewed pieces (#2 1.27 m, #4 2.11 m, #5 1.12 m;
+  off-plane 0.01/0.46/0.70 m, angles 0.1/12.8/12.6°). Only #4 clears the
+  `surfaceMatches` overlap gate, so the release binds 2.11 m of a 4.43 m
+  frontage; the preview's 0.18 m non-coplanarity guard then abstains and the
+  candidate is a blank monolith with zero observed patches.
+
+All three need a versioned regeneration (crop tightening; measured surface
+rebinding; shared ground/upper registration) rather than a one-pass edit, so the
+lane is parked with the evidence. `scripts/review/check-reviewed-framing.ts` is
+the named regression; it re-measures the centring runs, the frontage/surface
+geometry and the release bindings so neither the data nor the diagnosis can drift
+silently. The existing `report-case-framing.ts` / `build-framing-overlay.ts`
+diagnostics produce the supporting per-crop report and overlay image.
+
+## 2026-09-21 — Wall colour: whole-facade "accent" overpaint fixed; case-08 gap measured
+
+The 25-case review's colour/material group (case-08 "missing building color",
+case-14 "misunderstanding building color entirely — it's red brick with white
+accents") turned out to be two distinct defects, not one sampler problem.
+
+- **case-14 Elandsgracht 19** declares its upper wall correctly (`material`
+  `brick`, `colour` `#8b4513`), but the extraction also returned a whole-facade
+  `accent` (`#ffffff`, bounds equal to the entire crop). `observedAssemblyPatches`
+  painted the accent after the wall, so the candidate rendered white over a
+  red-brick source. It now skips a trim region (`accent`/`band`/`surround`/
+  `plinth`) whose bounds cover ≥60% of the source crop: a real accent is small,
+  and an unusable one must not repaint the wall. A localized band still paints.
+- **case-08 Rozengracht 251** declares `material` `brick` with **no colour** and
+  no localized trim, so the renderer falls back to the neutral base `#d7d0c7`
+  and the candidate is beige where the source is a dark, desaturated brick. That
+  is a missing extraction field. A deterministic masked sampler
+  (`src/canalRecall/facade/wallColourSample.ts`) measures the crop at `#594e48`
+  (brick family) and records it as a declared observation, but the field must be
+  supplied upstream.
+
+The sampled wall colour is deliberately a `needs-review` observation, never an
+accepted material: across the reviewed set it is unreliable under shadow and
+occlusion (case-14 carries a large tree and samples grey), so it must never
+silently override a declared material. `scripts/review/check-reviewed-wall-colour.ts`
+is the named regression — it compiles case-14 fresh and pins that the red brick
+survives the whole-facade accent, records case-08's measured colour against the
+render base in `review-data/case-wall-colour.json`, and pins the two extraction
+facts. `scripts/review/wall-colour-overpaint.test.ts` pins the trim-coverage
+rule and `src/canalRecall/facade/wallColourSample.test.ts` pins the sampler. The
+stored review render is not regenerated, so it still shows the overpaint; the
+next step is a versioned `build-facade-preview` regeneration.
+
+## 2026-09-21 — Reviewed roof verticals measured; the roof lane's three defects pinned
+
+The 25-case review's roof groups ("missing roof" case-19/27, "roof shape too
+high/asymmetric" case-01/05) were rendered and measured against the four
+reviewed owners instead of guessed at. There is no single roof defect:
+
+- **`selectCompatibleSourceRoof` mixes datums.** It publishes roof heights as
+  `up - groundNAP`, but `up` is the owner's scene-local axis (`NAP − 0.65 m`, the
+  same convention `wallVerticalExtent` and `wallTopNAP` document), while
+  `groundNAP` is NAP. Every published study-roof eave and ridge is therefore one
+  0.65 m datum low. The module's own fixture feeds `up` as NAP, so its test never
+  saw the mix-up. Correcting it flips the selected component set on 674 of the
+  7,395 released buildings, which the immutable `check-city-appearance-roofs`
+  count assertion would reject, so the study-roof tiles must be regenerated as a
+  versioned release.
+- **`case-01` Rozengracht 158** draws a flat cap because its 3DBAG roof surface
+  is near-flat (0.14 m relief, below the 0.25 m gate). The source gable is simply
+  not in the source geometry; the lane cannot invent it, only a source-bound
+  silhouette correction can add it.
+- **`case-05` Lauriergracht 67/69** carries a source vertex 2.38 m above its own
+  BAG ridge — the "roof too high into the sky" spike — which sits inside the 3 m
+  overshoot gate. The live game builds roofs from the raw 3DBAG surfaces, so this
+  function is not the renderer that produces the spike.
+
+`scripts/review/check-reviewed-roof-vertical.ts` is the named regression: it
+pins the datum offset, the selected-eave offset, `case-01`'s near-flat relief,
+`case-05`'s 2.38 m overshoot and the case-19/27 published eaves. The roof lane is
+parked in `.cache/reconstruction-loop-20260921/parked.json` with the unblock
+plan (versioned study-roof regeneration for the datum; source-bound outline
+corrections for case-01; the raw-surface path for case-05). No published data
+changed in this pass.
+
+## 2026-09-21 — Ground-floor retail band fixed; reviewed storefronts assemble
+
+The 25-case review's missing-door group (05/09/21) and missing-storefront group
+(02/11/29) were traced to the ground-floor retail lane. Feeding the real
+extracted ground features through `assembleStorefront` showed a systematic
+defect: the ground band tested the feature **centre** against 60% of the derived
+image height, but a real ground crop frames a tall door or shop window so its
+centre sits near 42% of the crop. The centre test dropped those openings and the
+whole storefront returned `null`, taking the entrance and display glazing with
+it.
+
+`storefrontAssembly.ts` now admits a feature when its vertical extent **reaches**
+the band (`bounds[3] >= bandTop`) instead of when its centre does, and a `fascia`
+or `awning` is never band-filtered because it is a shopfront component by kind.
+An upper-floor opening wholly above the band is still excluded, so it can never
+become the ground entrance. On the real reviewed crops this recovers storefront
+assemblies for case-02 (BAGELS & BEANS display + door + fascia), case-05, case-11
+(Sunny Bites display + sign) and case-29 (DORUS, unchanged high confidence).
+
+Two residuals are named, not hidden: case-21's Fietsenmaker display windows are
+portrait, so the lane's landscape-display rule still returns `null` (its doors
+are rendered by the general observed-door path); and case-09 has no ground
+proposal at all because its BAG frontage crosses a corner and `surfaceMatches`
+rejects every 3DBAG wall surface — the release render is a blank monolith. The
+lane is not yet wired into the renderer, so this is a measured extraction fix, not
+a visual-fidelity claim.
+
+`scripts/review/check-retail-ground-assembly.ts` is the named regression: it
+pins the four recovered storefronts, the case-21 portrait residual and the
+case-09 unbound-frontage blocker. `storefrontAssembly.test.ts` gained the tall-
+ground-opening case so the band rule itself is guarded.
+
+## 2026-09-21 — Inferred-floor fix refuted; contextual floor rhythm pinned
+
+The 25-case review's "missing inferred floors" group (cases 12/13/16/17) was
+triaged and the proposed contextual-rhythm round-up was **refuted with
+measurement**. The four cases compile `observed-window`/`observed-door` patches
+from their source crops, so the contextual prior is not their renderer; and on
+the contextual path `Math.ceil(height/floorHeight)` adds a row that fits **0 of
+20** reviewed 3DBAG wall surfaces because those walls are trapezoidal. A blind
+round-up would also invent a sixth storey on the five-storey `case-13`. The item
+is parked with the evidence and the real unblocking option (reconcile the grid
+with observed rows via `FacadeDescription`, or fix wall geometry) in
+`.cache/reconstruction-loop-20260921/parked.json`.
+
+`scripts/check-contextual-floors.ts` is the new named regression for the
+contextual rhythm: it pins the floor rule on synthetic rectangular walls, the
+rendered floor sets on the four reviewed buildings, and the 0/20 round-up fact.
+This keeps the "recognisability over arcade" contract honest — an inferred prior
+must not silently drop a storey, and a future floor-count change is now caught.
+
+## 2026-09-20 — Pano anchor tool, measured boresight, and the `correspondence-verified` decision
+
+The registration gate has been missing measured world↔pixel correspondences:
+`prepareRegistration` fits nothing and trusts caller-supplied alignment flags, no
+crop producer writes `registrationUncertaintyM`, and all 24 real registrations
+abstain. The new anchor tool records those correspondences from a human, and the
+first twelve already measured the camera model.
+
+- `public/canal-drive/pano-anchor.html` + `src/canalRecall/facade/panoAnchorBrowser.ts`:
+  shows predicted world→pixel markers for the two ends of the photographed
+  street-facing wall (the canonical BAG elevation the crop was made from), at
+  mid-wall height, on the raw equirectangular panorama. Press Enter to accept,
+  drag or arrow-key to correct, S to skip; a top-down mini-map shows the wall and
+  which end is wanted. Residual is shown live and saved per marker. Repeated
+  party-wall corners are deduplicated in the task.
+- `scripts/review/build-pano-anchor-task.ts` builds the task for three panos across
+  missions (one reserved `holdout`); `check-pano-anchor-task.ts` guards predictions;
+  `pano-anchor-router.ts` serves task, raw panorama bytes and saved anchors
+  (atomically, to `src/canalRecall/facade/fixtures/panorama-anchors.json`).
+- **Measurement.** Twelve anchors across three 2023/2024 captures: the published
+  heading is ~180° (irrelevant), so the world-aligned model is correct in
+  principle, but each capture has a small boresight yaw. Raw anchor residual was
+  29 px median (p95 130 px); fitting a per-pano yaw/pitch correction
+  (`solve-pano-boresight.ts`) drops it to ~8 px median on the fit panos and ~23 px
+  on the holdout — roughly 0.03–0.10 m at those standoffs. The correction is
+  persisted in `src/canalRecall/facade/panoCamera.ts` and applied by
+  `worldToEquirectangularPixel`; `check-pano-anchor-fit.ts` guards the sign. A
+  panorama without anchors keeps the uncorrected model, so scaling to the city
+  needs the automatic per-pano estimate (edge alignment), not this table.
+- Decision recorded: `correspondence-verified` becomes a distinct registration
+  status carrying a required residual metric (median + p95). Street-level delivery
+  may publish on identity + wall + independent-anchor residual + structure metrics;
+  `registered` keeps its 0.15 m meaning for measured detail; identity and wall
+  selection remain hard gates at every level. This is not a bypass: it is a
+  separately-named, separately-measured gate, which is why the workbench no longer
+  needs to live outside the release system.
+- Parallel lanes landed the same day: `src/canalRecall/facade/blockFaces.ts`
+  (street-side assignment, collinear+touching chaining, corner ids, crossing
+  splits; `test:blockfaces`) and `src/canalRecall/facade/registrationStatus.ts`
+  (`registered` / `correspondence-verified` / `preview` / `abstained`, thresholds,
+  `canPublish(level, status)`; `test:facade-registration-status`).
+- **W2 auto-boresight: built, constrained, still prior-limited.** `edgeSupport.ts`
+  (orientation-split Sobel + banded segment support) and `wallEdgeAlign.ts`
+  (coarse-to-fine yaw/pitch search where both corners of a wall must align) score
+  projected wall corners against vertical image edges; the synthetic fixture
+  recovers a known boresight. On real panoramas the raw edge objective prefers
+  spurious vertical edges, so two fixes were added: use the real **eave** from the
+  matched 3DBAG wall surface (`wallTop.ts`, not the BAG ridge `height`), and
+  constrain the search to ±2° around a **GPS track-bearing prior**
+  (`panoTrackPrior.ts`, from consecutive pano positions). That brought the
+  estimate to within ~0.2–1.2° of the measured boresight for two of three panos
+  (Rozengracht 2.56° vs 1.4°; Da Costakade 2024 0.79° vs 0.55°). The third
+  (holdout, 2 anchors on one wall) stays ~8° off because its 5 m-baseline prior
+  disagrees with the weak anchor fit. At ~16 m standoff 1° is ~0.28 m, so this is
+  a good starting point, not yet a replacement for the anchors. Nothing in W2 is
+  wired into a gate. Next: a longer-baseline track fit (±3 neighbours) to cut GPS
+  noise, and more anchors per pano for a trustworthy holdout.
+- **Ground-floor retail lane opened.** `storefrontAssembly.ts` groups extracted
+  features into display window(s) + entrance + fascia + awning, keeps awning state
+  distinct from installation, and never invents sign text; TODO item 10.4 makes
+  retail an explicit lane rather than a footnote to residential openings.
+- **`correspondence-verified` is now wired into the real gate**, not just a
+  module. `prepareRegistration` (`scripts/city-appearance/fidelity/registration.ts`)
+  falls back to the street-level status when metric flags are missing but
+  identity + wall are verified and the independent-anchor residual is bounded
+  (median ≤ 0.25 m, p95 ≤ 0.50 m, ≥ 3 anchors). The paid extraction contract
+  (`extraction-contract.mjs`) now accepts and validates it for non-analysis runs,
+  and `boundFacadeSource` (`facadeDescription.ts`) renders it with the residual as
+  the fitting tolerance. `registered` keeps its 0.15 m meaning; identity and wall
+  stay hard gates. `registration.test.ts` covers the promotion, the threshold
+  boundaries and that a metric-registered source still takes precedence.
+- More pure modules for the pipeline: `facadeFeatureScore.ts` (IoU one-to-one
+  matching, contour distance, colour confusion — the auto scorer),
+  `silhouetteCompiler.ts` (source-pixel gable contour → bounded low-poly metric
+  silhouette), and `correctionsRegistry.ts` (typed, validated consolidation of the
+  per-case correction files). `test:facade-calibration` runs all ten lane tests.
+- W2 longer-baseline note: a ±3-neighbour PCA track fit made things worse
+  (road curvature), so window 1 stays. The estimator is prior-limited, not
+  edge-limited.
+- **Loop closed from anchors to registration.** `anchorRegistration.ts` converts
+  the saved anchors into street-level evidence: the corrected residual in metres
+  at each wall's standoff, qualifying when a panorama has ≥3 anchors and median
+  ≤ 0.25 m / p95 ≤ 0.50 m. `report:anchor-registrations` shows two of the three
+  marked panoramas qualify (0.033 m and 0.10 m median; the 2-anchor holdout
+  correctly does not). The paid fidelity gate (`evaluation.ts`) now counts a
+  `correspondence-verified` prediction, so those sources are no longer dropped as
+  abstentions. Residual is fitted on the same anchors, so it is optimistic until a
+  calibration/validation split exists.
+- **Scaled the anchor tool.** `build-pano-anchor-task.ts --auto=N` auto-selects
+  high-quality multi-wall panoramas across missions; `pano-anchor-task-expanded.json`
+  holds 12 panos / 56 markers and is served at
+  `pano-anchor.html?task=expanded` (the router validates task names and rejects
+  traversal). The original three-pano task and its saved anchors are untouched.
+- `silhouetteCompiler` is adopted as an opt-in (`silhouetteSimplification`) in
+  `source-to-owner-candidate.ts`; existing cases are byte-identical because it
+  never runs unless a caller asks.
+- **Anchor evidence is now cross-validated and wired into the fidelity path.**
+  `boresightFit.ts` fits yaw/pitch from anchors and, with a deterministic
+  calibration/validation split, reports a held-out residual that is not fitted on
+  itself. `anchorRegistration.ts` now qualifies on that held-out number: the two
+  good panoramas sit at **0.073 m and 0.085 m** (down from the optimistic 0.033 m
+  and 0.10 m) and still pass 0.25 m. `prepare-registrations.ts` attaches the
+  correspondence evidence for a wall whose panorama cross-validates and whose
+  building was anchored, so the real fidelity path can reach
+  `correspondence-verified` instead of abstaining. It is latent today because the
+  active development manifest's panoramas do not overlap the anchored ones.
+- `retailPatches.ts` composes `storefrontAssembly` + `retailCompiler` into one
+  call from extracted features to renderable retail patches (opt-in, no invented
+  geometry or sign text).
+- **Crop usability measured (and the first metric was wrong).** `cropPreflight.ts`
+  classifies each crop blank/flat, featureless or mostly-sky. The first version
+  measured sky only in the top 20% of rows and reported 612/2,344 mostly sky
+  (26%); that was an artifact — a tall building crop with a little sky above the
+  roofline tripped it. The corrected metric counts sky rows across the whole
+  height: **2,259 usable, 85 unusable, 71 mostly sky (3%)**, 14 featureless, 3
+  blank. So the ridge-vs-eave crop top is a small lever, not the quarter-corpus
+  one the bad metric suggested.
+
+## 2026-09-13 — Roof-focused review and keyboard workflow
+
+
+
+The reconstruction workbench now opens directly on its current comparison and
+review editor; project statistics are collapsed below. Roof focus pairs a zoomed
+upper source view with the candidate's upper roof/gable area, while Full façade
+and Ground preserve access to the existing repairs. Five previously reviewed
+outlines, including dormer and stepped-gable corrections, remain identified;
+missing identity, missing 3D roof surfaces and occlusion remain explicit.
+
+The editor receives focus on load and after navigation. Tab → Enter or
+Ctrl/Cmd+Enter saves and advances; Ctrl/Cmd+S saves in place. Save failures keep
+the current case and draft, and normal textarea editing remains available.
+Roof note starters append to existing notes. The roof-priority queue preserves
+case identity. The review still uses the existing candidate-bound notes store.
+
+Sol supplied roof evidence summaries, Luna added explicit current-note flushing,
+and Terra added the roof camera; root integrated the layout, keyboard flow,
+source zoom and regression checks. Desktop/laptop/phone browser checks verify
+that the editor and Save & next action are above the fold, roof focus uses full
+evidence, and case 27 still renders its ground-floor door. Original candidate
+geometry, active release and spend were unchanged. The next roof correction
+pass is recorded in [ROOF_REVIEW_HANDOFF.md](../../scripts/review/ROOF_REVIEW_HANDOFF.md).
+
+
+## 2026-09-13 — Show the current repairs in the reconstruction workbench
+
+Case 27 appeared to lose its doors and finish work because the first workbench
+foregrounded an old active-release screenshot. The preview data and door,
+entrance, compiler and shape-generation code were unchanged from the source
+baseline; the current ground study still contained a door, five windows,
+awning and material details. This was a presentation regression.
+
+The main comparison now embeds the existing current-candidate renderer, bound
+to the exact preview hash and synchronized to the selected case. Historical
+release captures are collapsed under an explicit before-repairs label. Embedded
+mode keeps the existing render controls and uses the parent notes workflow.
+New case-27 checks verify actual door meshes, candidate identity, case switching
+and historical-image separation on desktop and phone; the standalone viewer's
+notes remain available. No candidate geometry or release data was regenerated.
+
+
+## 2026-09-13 — First reconstruction implementation wave
+
+Sol, Luna and Terra worked in separate worktrees; root integrated their source
+measurement, review-state and facade-policy work into a [reconstruction
+workbench](reconstruction-workbench.html). [The execution handoff](../../RECONSTRUCTION_HANDOFF.md)
+records commands, lane ownership, exact artifacts and the next correction task.
+
+The workbench exposes current coverage/costs, 28 source-photo comparisons,
+dated evidence and the existing candidate-bound review service. Transient save
+failures are retryable, concurrent revisions preserve drafts, and Ready waits
+for saved notes. Desktop and phone browser checks use isolated note stores.
+
+The new offline review command stages verified immutable reports and saved
+review snapshots, with no paid inference, repair execution or activation.
+An identical real rerun reused its report; eight archived artifacts restored
+successfully into an empty directory. Two older preview-note bindings remain
+explicitly missing. Router labels retain their matching dataset manifest.
+The global accounted cost remains $5.384791, including the settled conservative
+$0.015 charge; the recorded ceiling is $11.806544. Batch charges are not added
+a second time.
+
+Source diagnostics find 23/27 complete reference openings at IoU 0.7 across
+12 agent-inspected development photographs; 13 partial extents are excluded.
+Overall precision, held-out performance and metric acceptance remain unknown.
+The source-tier test mismatch is resolved with explicit ground-only, missing,
+failed, ambiguous, stale, revoked, overlapping and gap-interval tests; no
+compiler behavior was changed for that correction. Fidelity and repair checks
+now pass. Moeders game tile residency and full-device profiling remain open.
+
+
+## 2026-09-13 — Reconstruction project audit and delivery guide
+
+Added [CITY_RECONSTRUCTION_REVIEW.md](../../CITY_RECONSTRUCTION_REVIEW.md) as
+the current high-level guide to the implemented pipeline, active/staged assets,
+costs, review tools, local vision opportunities and next milestones. The existing
+rebuild plan remains the detailed technical design. This was a documentation
+and evidence audit; runtime code and release activation were not changed.
+
+The audit confirmed active release `c4bebc1f…`, the staged thousand-building
+candidate `0f625ffc…`, zero accepted metric registrations for that candidate,
+and a $3.578247 accounted large-preview batch cost within $5.384791 globally
+accounted spend. Those values include one $0.015 conservatively accounted
+unknown provider charge. Older $5-ceiling and zero-analysis reports describe
+earlier runs; the live ledger records the later preview authorization.
+
+Fresh TypeScript, district-coordinator, city-pipeline and thousand-building
+checks passed. `test:facade-fidelity` failed its no-window-prior assertion;
+a direct probe found the priors on unobserved upper floors above the registered
+ground door. This requires an explicit tier-policy/test reconciliation, not
+an unsupported claim that observed ground features were overwritten. Saved
+source/render examples and runtime counters also identify silhouette/balcony
+loss, incomplete game sign residency and incomplete total-memory measurement.
+
+The proposed next milestone is one representative route with durable structured
+corrections, independent extraction/placement evaluation and a bounded repair
+loop. The earlier TODO item is retained below as historical context; it should
+not be used as current release status or a new spending instruction.
+
+<details>
+<summary>Previous reconstruction TODO snapshot, superseded by this audit</summary>
+
+**10. Build a low-poly Amsterdam that players recognise by real landmarks.**
+The single forward plan is
+[`AMSTERDAM_FACADE_REBUILD_PLAN.md`](../../AMSTERDAM_FACADE_REBUILD_PLAN.md).
+It incorporates the former 8a/10/10b/10c building work. Keep complete city
+massing and useful OSM parts; prioritise correct identity, silhouette, opening
+rhythm and distinctive colour at gameplay scale.
+
+Current state (10 Sep 2026). The 2026-09-06 photo-lab wall studies are archived in
+`HISTORY.md` ("2026-09-06 photo-lab handoff and results, archived"). The live
+line of work is the **Da Costa neighbourhood → 550 m expansion** city-appearance
+pipeline: [`CITY_APPEARANCE_PLAN.md`](CITY_APPEARANCE_PLAN.md) (architecture and
+gates), [`NEIGHBOURHOOD_POC_PLAN.md`](NEIGHBOURHOOD_POC_PLAN.md) (checkpoint),
+[`EXPANSION_DEMO_2026-09-10.md`](EXPANSION_DEMO_2026-09-10.md) (what the demo
+shows), [`PANORAMA_SOURCE_AUDIT_2026-09-10.md`](PANORAMA_SOURCE_AUDIT_2026-09-10.md)
+(first 24-frontage evidence gate). Measured: 825 buildings streamed into the
+real game as the "Da Costa study" route; 24 audited frontages; 20 Gemini 3.1
+Flash-Lite routing proposals for $0.0145; cumulative paid spend $1.25 of the $5
+authorization; zero human-confirmed frontages.
+
+**Owner decision 2026-09-10 (see HISTORY.md):** machine `shopfront` and literal
+`signText` are trusted as a default-on **machine-observed (unreviewed)** tier.
+Awnings, roof shape, family and wall colour are not; they stay prior-only or
+opt-in. Coverage, not calibration, is the constraint: 24 records for 825
+buildings is why the demo has no visible shops.
+
+Plan in flight (lanes; leaf agents return results, the integrating agent owns
+publication, docs and commits):
+
+1. **Publisher wall binding (blocking).** The published expansion release
+   `9e40bcce…` has `renderSurfaceIndices: []` on all 24 records because
+   `publish-area-geometry-demo.ts` compares evidence-frame `localStart/localEnd`
+   (tranche-400m origin 4.873, 52.3722) against block-frame walls (550m origin
+   4.87355, 52.3723) — ~37 m apart, 0.8 m tolerance. So the machine colour
+   preview, coverage mode and the four machine storefronts render nothing.
+   Fix: translate into the block frame before `surfaceMatches`, assert bound
+   walls in `check-city-expansion-publication.mjs` and paint in
+   `check-city-expansion-demo.mjs`, republish.
+2. **Coverage on the guided route first.** Coverage selection mode (all
+   candidate frontages on Hugo de Grootkade, Frederik Hendrikstraat,
+   Bilderdijkstraat, Da Costakade, De Clercqstraat, Rozengracht ≈ 296 of 968),
+   automated preflight disposition instead of per-image agent review, `signText`
+   + `signTextEligible` added to the routing schema, limits raised. Paid step is
+   owner-run with an explicit cap (~$0.25 forecast). Phase 2: remaining ~670
+   frontages, ~$0.50.
+3. **Viewer tier.** "Machine-observed (unreviewed)" copy, neutral sign bands
+   from `machineRoutingProposal.signText` on machine-storefront walls, badge,
+   toggle, telemetry. Ported from `da-costa-block/machine-signs.js`.
+4. **Republish with coverage** (24-audit + route coverage together), then the
+   same sidecar/roof/facade artifacts for the game.
+5. **Spot check instead of calibration queue.** Random 30 machine positives and
+   negatives, thumbs up/down into the human ledger, ten minutes; gives a real
+   false-positive rate on this area before the route ships in the game.
+
+Still gated on the owner or hardware: physical desktop/phone profiling;
+photo-redistribution rights decision; the 100-block scale-up.
+
+</details>
+
+
+## 2026-09-10 — Owner decision: machine-observed tier; coverage before calibration
+
+The owner reviewed the Da Costa calibration queue and the expansion demo and
+decided the machine labels are good enough to build on for two fields. Basis
+(`ROUTER_BENCHMARK_RESULTS.md`, 19 facades / 76 human decisions, same Gemini 3.1
+Flash-Lite model used for routing): shopfront 15/18 with all 5 positives found
+and 3/13 residential false positives; the independent blind review
+(`BLIND_STOREFRONT_REVIEW_EXPERIMENT.md`) found 6/6 positives visually
+supported and no false positive in its sample; literal sign text differed from
+the baseline once, by a separator. Awning agreement was 18/18 on only two
+positives and flipped 8/10 once installed-vs-deployed was asked; family 1/5 on
+apartment rows; visibility missed both "mostly blocked"; wall colour never
+human-checked.
+
+Decision: `shopfront` and `signText` become a default-on **machine-observed
+(unreviewed)** tier with provenance and a per-record revoke path. Awnings never
+render from machine labels; roof, family and colour remain prior-only or
+opt-in. The twelve-case calibration queue is replaced by a ten-minute random
+spot check of machine positives and negatives once coverage exists. The reason
+is that 24 evidence records for 825 buildings, not label quality, is why the
+demo has no shops; coverage is the constraint.
+
+Found the same evening: the published expansion release `9e40bcce…` binds no
+observation to any wall (`renderSurfaceIndices: []` on all 24 records) because
+the publisher compared tranche-400m-frame coordinates against 550m-frame walls.
+The doc line "twenty routed source walls can override that prior" was untrue
+for that release; the publication and browser checks counted records and
+toggled checkboxes without asserting a painted wall. Fix and assertions are
+tracked under TODO item 10.
+
+## 2026-09-06 photo-lab handoff and results, archived 2026-09-10
+
+Moved verbatim from TODO item 10 on 2026-09-10 so the board shows only the live
+city-appearance line. The Sol 5.6 day plan below was executed (see "Day-two
+execution result"); its follow-ups (roof/cornice/window-style extraction,
+registration, held-out evaluation) are subsumed by the city-appearance gates
+rather than pursued as isolated wall studies.
+
+Next implementation slice:
+
+1. Persist the OSM↔BAG/group crosswalk, populate panorama candidates and calibrate
+   the explicit camera model with independent world↔pixel anchors.
+2. Render 3–5 corrected building recipes in the game with source/orthographic/
+   gameplay comparisons. Include the Herengracht 270 wrong-building regression.
+3. Use measured discrepancies to retry the responsible stage, with limits and
+   fallback. Evaluate on separate buildings/views before a contiguous 20–40
+   building block and a landmark route.
+
+Implemented 2026-09-05: review decisions now bind to source/wall versions and
+later rejection revokes acceptance. Review history and import/export share the
+typed gate. External discovery is integrated as advisory JSON with exact
+licenses and distinct, versioned evidence. Roof percentiles and rectangle
+extents no longer masquerade as eaves/frontage; legacy measurement/export
+readers reject unversioned inputs. The comparison starts streaming without a
+camera gesture: 16 resident tiles / 63,765 features in the repaired capture.
+The gameplay baseline also loaded, with zero page errors.
+
+Validation: `check:canal` (including Storybook), production build, focused trust
+regressions, review browser flows and the complete-city/picking browser test
+pass. The fixture export still has 16 candidates, one panorama, zero anchors
+and zero reviews. No real registration or façade extraction has been certified;
+hardware performance and certified building placement remain outstanding.
+
+The 2026-09-06 photo lab now connects local segmentation masks and editable
+pixel boxes to the recipe compiler. Three supplied strips have development
+proposals; one known bad source abstains. Keizersgracht 136 has a version-bound
+correction example for a merged window, car false positive and foreground crop.
+These are isolated wall studies, not accepted building reconstructions. Next:
+correct and label opening extents on a small development set, measure local
+grouping/occlusion failures, improve wall-colour masking, and attach certified
+wall frames when available. Roofs, cornices and window-style extraction remain
+unimplemented; the renderer can demonstrate authored variants separately.
+
+Implemented in the next 2026-09-06 slice: Grounding DINO / SAM now feed the photo
+renderer, with raw detections retained, bounded row/column/width fitting and
+appearance remeasurement. Forty of 86 attempted adjustments across nine strips
+have sufficient edge support; 104 opening proposals render and 35 remain for
+review. The named low-score Keizersgracht 136 ground-floor window is recovered
+using row + column + mask + edge evidence. An isolated construction-hoarding
+candidate is flagged by semantic disagreement; scores are not acceptance.
+Per-field ontology records cover measured colour, candidate bars, texture and
+extents, with roof/lintel/eave/door-panel shape and material fields still unknown.
+
+Tiny matches 16/16 original labelled frames and 12/13 on the two newly labelled
+buildings. Fitting preserves those counts and slightly improves the latter's box
+overlap; its small drops on original cases remain reported. Three crop retries
+miss the dormer. DINO Base finds it (13/13), but its low score still needs review
+and its boxes are less accurate on Koningsplein. Use this as development evidence
+for selective escalation, not a blanket model upgrade or held-out accuracy claim.
+
+#### Next-day handoff for Sol 5.6 — 2026-09-06
+
+User requested this plan, then an implementation pause. Execute this bounded
+day when the handoff is resumed. It implements the existing
+[reconstruction plan](../../AMSTERDAM_FACADE_REBUILD_PLAN.md); commands and run
+locations are in [the runbook](EXTRACT_PIPELINE.md#current-photo-handoff-runs).
+The day's deliverable is a source → evidence → fitted recipe → render comparison
+for the four cases below, with visible improvements and explicit remaining
+failures. Prioritise architectural structure before adding more texture detail.
+
+**Starting state.** Work in `feat/amsterdam-facade-rebuild`, currently based on
+`683d06b`, with substantial uncommitted work. Re-read status and instructions;
+preserve unrelated edits and the deliberate documentation deletions. Read the
+sibling worktree's strips/model environment without modifying Claude's branch.
+The photo lab already offers Tiny/Base and optional inferred-reconstruction
+runs; its default remains `dino-fit-05`. These are unaccepted, isolated wall
+studies with no map aliases. Existing 104-proposed/35-review counts above describe
+the earlier Tiny slice, not the newer Base/hypothesis runs.
+
+Base and SAM checkpoints are already local. Base found one extra labelled dormer
+but worsened some other boxes; the dormer still fails downstream acceptance.
+Do not spend the morning reacquiring models or comparing aggregate detection
+counts. Inspect the exact stage that loses a feature. The current
+`context_check` in `compile-dino-photo.py` also rejects the real Herengracht 219
+garage under Base: score about 0.644, baseline semantic support about 3.95%.
+Keep this counterexample alongside the construction-hoarding false positive.
+
+| Case | Required correction or diagnostic | Guard against |
+| --- | --- | --- |
+| Keizersgracht 136 | Fit the lower middle opening to the supported lower-row assembly; show measured versus inferred extent and its peers | Sampling car/occlusion pixels as newly observed window; forcing every storey to one height |
+| Bloemstraat 3 | Separate tall central glazing from smaller side-window families; recover supported occluded candidates | Stretching side windows to central glazing; accepting a lamp silhouette as the opening mask |
+| Herengracht 219 | Explain/restore the left image column, fix the garage rejection, inspect wider source coverage for the reported roof | Treating provisional wall alignment as image evidence; assuming the roof is mansard from the user's description alone |
+| Herengracht 242 | Inspect source coverage for roof and souterrain openings; retain partial observations where visible | Treating everything below a provisional ground line as foreground, or inventing features outside the source |
+
+**0–0.5 h — freeze the cases and reproduce the failures.** Save the selected
+source hashes, model/config hashes, current run names and before renders. Label
+all evaluable openings in these four images, including ground-floor assemblies,
+partial/occluded regions and explicit negatives. Record which requested roof or
+basement features are actually in the crop. Existing upper-window box labels
+are insufficient for these complaints. These are development cases, not blind
+holdouts. Confirm current tests rather than inheriting an old passing artifact.
+
+**0.5–2.5 h — fit assemblies and local window families.** Extend
+`fit_openings.py` / `layout_hypotheses.py` around façade zones, repeated families
+and parent/component relationships (door plus transom, paired glazing, shopfront).
+Use row heads/sills, bay axes, edge support and visibility together. Preserve
+different widths, heights and staggered ground floors when supported. The
+conservative fitter's five-pixel movement cap is for measured-box refinement;
+larger continuations belong in separately bounded inferred geometry. Current
+K136 preview already extends the middle bottom from pixel 396 to 422 while
+sampling only the measured extent: retain that separation and test competing
+hypotheses. Row/column agreement can corroborate an existing weak observation;
+an empty grid cell alone must not create an observed opening. Require improvement
+on K136 without collapsing Bloemstraat's distinct window families.
+
+**2.5–4 h — separate detection, visibility and ownership decisions.** Repair
+the garage/hoarding disagreement gate using explicit supporting evidence and
+abstention, rather than lowering all thresholds. A failed SAM mask can prevent
+colour sampling while geometry remains a supported hypothesis. Keep image
+truncation, occlusion, source-wall disagreement and model disagreement as distinct
+reasons. A correctly detected left column can appear in an unplaced image study
+while its BAG ownership remains unresolved. Compare raw detections, proposed
+geometry and render omissions with denominators; do not improve precision merely
+by removing difficult features. Add garage-positive and hoarding-negative tests.
+
+**4–6 h — source coverage and one roof/basement vertical slice.** Inspect full
+cached panoramas and available rectification metadata for H219/H242. Obtain a
+wider source observation only with an explicit, supported camera pose; reject
+missing-height sentinels and retain source/rectifier lineage. Wider cropping
+alone does not certify registration. New pixels/rectification require new hashes
+and regenerated dependent labels/features. Verify the reported roof type from
+visible roof geometry. Where evidence supports it, carry one roof/gable/cornice
+profile through the existing recipe compiler and diagnostic render, with uncertain
+depth/hidden surfaces marked inferred. Represent visible basement openings and
+their datum uncertainty separately from canal/vehicle masks. Time-box source
+repair: if coverage/registration cannot be resolved within this slot, deliver
+the full-source coverage diagnostic and exact missing evidence, then use another
+existing usable roof view for the compiler experiment. Keep the original targets'
+unseen roof geometry unknown; do not turn the crop edge into a building roof.
+
+**6–7 h — appearance within the corrected structure.** Separate outer frame,
+glass, door panel, wall/plinth and any visible trim. Reuse a bar-layout hypothesis
+only within a supported window family, retaining exceptions and uncertainty.
+Check reflected branches, blinds and railings before interpreting lines as
+glazing bars. Attach source masks/patches to colour and material proposals;
+inferred continuation adds no colour samples. Keep procedural brick bond,
+mortar and depth explicitly authored until measured. Work on the clearest
+failure class first; detailed roof trim and a complete Dutch-window taxonomy
+are follow-ups if this time box is exhausted.
+
+**7–8 h — compare, test and leave a reviewable demo.** Produce four named
+before/after source-overlay/render pairs with raw boxes, fitted geometry,
+inferred extents, omitted candidates and reasons. Preserve the selected source
+when switching Tiny/Base or measured/inferred views. Update
+`capture-fitted-photos.ts` to capture the chosen new runs: it currently captures
+older Tiny runs and does not cover the newest hypothesis previews. Export recipe,
+mesh and dependency hashes beside the captures, plus per-case disposition.
+
+Report matched visible openings and false positives over the newly labelled
+denominators, extent error by window family, rendered-versus-detected omissions,
+and partial/unknown coverage. Evaluate hypotheses separately from measured boxes;
+the existing upper-window IoU gate alone cannot approve this change. Test raw
+measurement preservation, sampling bounds, asymmetric families, garage/hoarding,
+partial openings and any new roof geometry. Run the Python fitting checks,
+focused façade aggregate, lint and relevant photo/appearance/fitting/recipe browser
+tests; rebuild bundles and validate the production build if compiler/UI changes
+require them. Record checks actually run. No citywide accuracy, gameplay placement
+or hardware-performance claim follows from these wall renders.
+
+**End of day:** leave a working comparison URL, captures/report, reproducible
+commands and a short remaining-failures list. Retain the previous runs and fallback.
+No new renderer, training campaign, paid service, citywide acquisition or merge is
+needed for this slice. Meshy remains optional for authored components. Any broader
+model escalation follows a measured failure on this local pipeline.
+
+#### Day-two execution result — 2026-09-06
+
+The bounded slice is implemented in `dino-base-pilot-day2-03` and
+`dino-base-expansion-day2-03`. Window fitting now keeps family-specific sill and
+width groups while allowing shared head rows. K136's lower middle opening keeps
+its measured sampling box and records the bounded inferred extension separately;
+Bloemstraat's tall central glazing no longer stretches its smaller side-window
+families. Door panel colour is represented separately from glass, and nested
+door/window observations retain assembly roles.
+
+The semantic-disagreement rule now restores H219's garage only when a nearby
+independently bounded weak observation supplies clean SAM and four-edge support.
+The construction-hoarding negative still has no qualifying peer and remains out.
+Bloemstraat's supported occluded opening can pass with three strong sides plus a
+strong mean edge score. Partial source observations remain visible in purple in
+the lab and are excluded from rendered openings rather than silently discarded.
+
+The four-case development evaluation passes all gates. Visible matches are H242
+4/4, H219 8/8, K136 8/8 and Bloemstraat 21/21. Fitted mean IoU is 0.9404,
+0.9175, 0.9074 and 0.9834 respectively. K136's occluded opening improves from
+0.7979 raw IoU to 0.9815 fitted; the explicit K136 and Bloemstraat negatives have
+zero render hits. H242's three partial openings are detected but deliberately
+not rendered. H219 renders seven of eight labelled visible openings: the garage
+is restored, while a side opening remains a weak non-rendered observation.
+
+Exact-pose coverage diagnostics were generated for H219 and H242. H219's wider
+rectification visibly includes the whole gable and garage, but horizontal wall
+ownership remains unresolved, so no metric gable profile entered the compiler.
+H242 exposes souterrain evidence but its published camera height resolves to
+6.23 m above 3DBAG ground; reject its vertical registration until a supported
+height is available. The original H242 strip also clips the roof. No unseen roof
+shape was inferred.
+
+Review the runs at
+`/canal-drive/facade-photo-lab.html?run=dino-base-pilot-day2-03` and
+`/canal-drive/facade-photo-lab.html?run=dino-base-expansion-day2-03`. The report,
+source-coverage record and four before/after capture pairs are in
+`.cache/facade-rebuild/reports/day2-four-case-evaluation-02.json`,
+`.cache/facade-rebuild/reports/source-coverage-day2-02/report.json` and
+`.cache/facade-rebuild/reports/fitted-photos-2026-09-06T18-27-14.985Z/`.
+The runbook records the reproduction commands and source hashes. These labelled
+examples are development evidence only; registration, building identity and
+citywide accuracy remain unaccepted.
+
+A second source set now addresses narrow-crop bias. `city-variety-07` contains
+12 municipal-panorama strips selected across era, roof form, frontage width,
+height and use, with ground−1.2 m to ridge+1.0 m coverage. Raw-panorama wall
+overlays establish ten as usable development sources; two compound-footprint
+cases remain ownership diagnostics. Eleven rejected predecessors, including four
+clear wrong-wall crops, are recorded in `panorama-variety-development.json`.
+The review checker pins the manifest and covers every strip, while the benchmark
+runner excludes diagnostics by default. Base DINO/SAM completed on the ten usable
+sources as `dino-base-city-variety-04`, producing 117 proposals and two cleaned
+masks that require review. The set is unlabelled, so its immediate role is
+regression discovery and choosing the next independent annotations, not an
+accuracy claim.
+
+The reviewed panorama strips now feed the photo compiler through
+`prepare-panorama-photo-run.py`. Six of ten sources produce renderable family
+studies; four abstain. The geometric registered-wall envelope is restricted to
+sampling bounds and explicitly has unknown semantic state, so it cannot confirm
+its own DINO openings. Wall colour/material from this envelope is marked
+needs-review. The labelled expansion set now mixes DINO rectangles, bounded SAM,
+the independent semantic CNN, classical rectangle edges, family fitting, dense
+grid completion and a roof-context path. `dino-base-expansion-grid-03` restores
+Herenstraat's two occluded windows and measured dormer while leaving its
+out-of-wall side door for ownership review; Bloemstraat gains one separately
+identified inferred grid cell. The comparison report shows Herenstraat labelled
+recall moving 3/4 → 3/4 → 3/4 → 4/4 across semantic CNN, family context,
+cross-detector ensemble and roof context. Bloemstraat stays 21/21 while its
+explicit car negative stays excluded. All development gates pass in
+`.cache/facade-rebuild/reports/expansion-grid-evaluation-05.json`.
+
+Review the new run at
+`/canal-drive/facade-photo-lab.html?run=dino-base-expansion-grid-03`. The focused
+before/after render sheet and pinned capture manifest are in
+`.cache/facade-rebuild/reports/expansion-inference-demos-2026-09-07T06-37-01.363Z/`;
+the detector attribution is in
+`.cache/facade-rebuild/reports/opening-approach-comparison-03/`. Local Qwen 2.5
+VL 7B and Gemma 3 4B critiques are retained as machine proposals. The validated
+Herenstraat pass agrees on the four amber/cyan windows and amber dormer while
+flagging the side door; one broad Bloemstraat critic response and one strict
+Qwen call failed or emitted invalid IDs, which the tooling records rather than
+promoting. LLM review remains advisory and never accepts geometry.
+
+Roof/RGB experiments are optional inputs, with commands retained in
+[`EXTRACT_PIPELINE.md`](EXTRACT_PIPELINE.md#building-reconstruction-workbench).
+Import useful gable geometry only when a verified recipe supplies the type;
+aggregate gable distributions do not establish per-building correctness.
+
+## 2026-09-06 — DINO → bounded fitting → appearance → rendered mesh
+
+The photo lab now defaults to the integrated DINO/SAM run. It renders nine
+development façades through the existing recipe compiler, retaining raw boxes,
+fitting attempts, individual colour/bar evidence and explicit unknown fields.
+Row widths, heads/sills and column centres are softly fitted within five pixels;
+unsupported edge changes are declined and distinct floor heights are preserved.
+Across nine strips, 40/86 attempted adjustments apply; 104 proposals render and
+35 remain for review. These are isolated wall studies, not certified map assets.
+
+Keizersgracht 136's omitted bottom-right window had score 0.241 under a 0.25
+cutoff. A secondary row/column/mask/edge check recovers it without changing its
+score or inventing a grid cell. The door's nested proposal remains omitted.
+The expanded set exposes a confident door-like construction-hoarding patch:
+isolation plus semantic disagreement flags it for review and removes it from
+the mesh. Appearance is resampled after fitting; editing a fitted box revokes
+its colour/bar measurements. Original extracted ontology fields show stale
+bindings after edits and never inherit renderer defaults for unknown parts.
+
+On labelled new cases Tiny finds 12/13 frames; fitting preserves that count.
+Three cropped retries still miss Herenstraat 40's dormer. A pinned DINO Base
+comparison finds it at low score (13/13), while slightly worsening Koningsplein
+box overlap. Both comparisons and their source images are inspectable locally;
+the model choice remains failure-specific rather than a general accuracy claim.
+
+Validation: five model-free Python regressions, focused façade aggregate and
+TypeScript lint pass. All fourteen desktop/mobile photo, appearance, fitting and
+recipe browser cases pass across the initial run and targeted rerun after fixing
+legacy appearance-fit metadata handling. Full `check:canal`, production build
+and gameplay hardware performance were not rerun for this photo-only slice.
+
+## 2026-09-06 — Local DINO and SAM measured on development strips
+
+Pinned Grounding DINO Tiny and SAM 2.1 Tiny run offline on the M4 Pro GPU.
+Three strips take about 0.29 s each for DINO and 0.135 s each for batched SAM
+after warm-up. The comparison page preserves raw detector outputs, raw masks,
+largest-component derivatives and reference-box segmentation separately.
+At a development-tuned 0.25 threshold, DINO matches 16/16 labelled outer frames
+versus 9/16 for the existing baseline; raw SAM+DINO matches 13/16 and component
+cleanup recovers 16/16. These rectangle checks neither measure pixel-mask
+accuracy nor score every unlabelled proposal. Reference-box SAM still exposes
+a connected leak, showing why model confidence cannot accept a mask alone.
+
+Completed local inference and a browser inspection of all three comparison rows
+passed; source crops remain ignored and no paid inference service is required.
+This is a proposal benchmark, not yet a replacement for rendered photo recipes.
+
+## 2026-09-06 — Appearance evidence and per-window rendering
+
+The photo lab now exposes wall-colour patches, texture-repeat candidates,
+per-window frame/glass colours and image-supported bright/dark glazing-bar
+candidates. Opening refinement separates the named merged-storey case and
+isolates the repeated-opening region from foreground sampling. The mesh uses
+merged vertex colours and per-opening bar geometry; photo/render comparisons
+share scale. Pixel box edits revoke previous appearance measurements. Patch
+selection, bar rejection and explicit style annotations remain unaccepted
+development edits with source/version lineage.
+
+The small labelled development check improves two window matches from 0/2 to
+2/2 and excludes the headlight proposal. It also exposes a false glazing-bar
+candidate; this is not a broad accuracy result. The user's comparison identified
+the next missing stage: constrained fitting of repeated window dimensions and
+floor/bay alignment before further style extraction. Focused checks, lint and
+ten desktop/mobile photo/appearance/renderer browser tests passed.
+
+## 2026-09-06 — Inspectable photo → opening proposals → mesh
+
+`facade-photo-lab.html` displays three real rectified development strips beside
+meshes compiled from local semantic masks and opening boxes. Pixel edits,
+omissions and a visible-region crop update the same recipe; raw detections are
+retained. Image/mask hashes are checked before rendering, imports bind to the
+source and extraction version, and rejected observations clear the preview.
+A pinned Keizersgracht 136 example splits a detection spanning two storeys,
+removes a car-headlight false positive and excludes the foreground. This is
+development correction, not an accuracy benchmark or accepted registration.
+
+The offline Python runner uses cached `amsterdam-facade/2` ONNX weights with
+pinned preprocessing, emits raw masks, box support and masked camera RGB, and
+refuses known missing-height/uniform strips. Images stay in an ignored local
+directory. Photo studies have no BAG replacement aliases or map placement.
+The separate recipe workshop supports procedural brick, CC0 ambientCG Bricks057,
+sash/cross windows and cornice/gable trim as explicitly authored choices.
+
+Validation: focused façade aggregate, TypeScript lint, and eight desktop/mobile
+photo/recipe browser checks passed. Source mutation, stale imports, invalid
+edits, exact fallback restoration and context loss are covered. Saved raw,
+mask and corrected renders include source/extraction/mesh lineage. No full-city
+performance or extraction-generalisation result is claimed.
+
+## 2026-09-05 — One plan for a low-poly Amsterdam gameplay map
+
+Replaced competing building/LOD/enrichment/façade plans with the root
+[`AMSTERDAM_FACADE_REBUILD_PLAN.md`](../../AMSTERDAM_FACADE_REBUILD_PLAN.md).
+The target is recognisable, correctly placed low-poly buildings. The next
+visible milestone is 3–5 complete buildings, followed by a contiguous block
+and landmark route. Independent image/geometry evidence, diagnostic rendering,
+bounded stage-specific retries, held-out evaluation and explicit fallback form
+the correction loop. Large surveys and photorealism no longer precede rendering.
+
+The audit retained BAG identities, stable elevations, raw-cache quarantine,
+OSM compositions, existing renderer/signature assets and calibration utilities.
+It found gaps hidden by passing scaffolding checks: no exported reviewed/anchored
+registration fixtures, coarse OSM joins, implicit yaw, roof median labelled as
+eaves, rectangle width labelled as frontage, stale review acceptance, and
+unfinished external-photo evidence/license matching. These are planned fixes;
+this change edits documentation, not runtime behaviour. All five pre-existing
+untracked external-identity files were preserved.
+
+Validation: lint and 14 focused suites passed. Direct probes reproduced stale
+acceptance, duplicate-photo evidence and overbroad license matching. Local browser
+inspection confirmed the single ready review task; the comparison page remained
+at zero resident tiles after 18 seconds under standalone Vite, so it did not
+establish a complete-city rendering baseline. Full integration/build/performance
+checks were not repeated for this documentation change.
+
+Removed superseded documents: `AMSTERDAM_FACADE_TWIN.md`,
+`BUILDING_RENDERER_DESIGN.md`, `BUILDING_ENRICHMENT.md`,
+`BUILDING_COLOUR_COVERAGE.md`, `FACADE_ENRICHMENT_DESIGN.md`,
+`FACADE_REBUILD_CHECKPOINT.md`, `FACADE_RECON.md`, `ROOF_ENRICHMENT.md`,
+`RGB_CITY_DEMO.md`, `LOD.md` and stale session notes `WIP.md`.
+Commands for retained tools moved to `EXTRACT_PIPELINE.md`; TODO items
+8a/10/10b/10c became one current item. Historical entries and source comments
+below still describe their own time; deleted documents are available with
+`rtk git show 683d06b:public/canal-drive/<filename>`.
+
 Finished work, newest first. The work board is `TODO.md`; nothing unfinished
 belongs here.
 
@@ -94,6 +1872,33 @@ the basemap `poi` layers get an exact-name MapLibre filter. Pinned in
 Also found: `playwright.config.ts` reuses any server on :4173, and another
 worktree's dev server was on it, so e2e silently tested that checkout. Run
 with a private port when other sessions are live.
+
+## Amsterdam façade rebuild: identity before pixels
+
+The first clean-rebuild checkpoint implements phases 0–2 of
+`AMSTERDAM_FACADE_REBUILD_PLAN.md`. The previous rectifications, measurements,
+textures, review labels, correlations, and renderer extracts are explicitly
+invalidated after the Herengracht 270 wrong-side panorama failure. A hard
+allowlist migrated 1,444 upstream/raw files into a new ignored namespace with
+per-file SHA-256, source URL, retrieval date, and licence; measured derivatives
+never entered it.
+
+BAG identity is now an explicit pand → verblijfsobject → every address join,
+not an address-point or OSM guess. Footprints normalise to stable per-pand
+elevations while retaining original survey vertices; candidate selection is a
+separate stage and returns ambiguity instead of inventing a front. The initial
+16-building gold catalog and local registration desk cover the named landmarks,
+both canal banks, cardinal contrasts, multi-address cases, and the pinned
+Herengracht 270 observation. That fixture reproduces 38.6 m standoff and 3.3°
+obliquity without choosing an image yaw. The UI deliberately has no detector
+boxes or rectification: it exposes Herengracht 270 as the one reviewable task,
+keeps the 15 geometry-only candidates in a separate waiting queue, and guides
+the reviewer through the photo, building outline, highlighted wall, and two
+plain-language verdicts. One accepted local review completes the solo-operator
+checkpoint while retaining reviewer, timestamp, and verdict provenance;
+source-pixel points remain an optional advanced control and can be removed
+individually, undone in reverse order, or cleared together with a guarded
+two-click action.
 
 ## Daylight paper replaces the cobalt chrome — 2026-09-26
 
@@ -3452,3 +5257,10 @@ Use Crazy Taxi as the primary reference for pace, readability, and session struc
 - Reserve exaggerated arrows, voice barks, combo typography, destination gates, pickups, boosts, and celebratory arrival effects for `Game-y features: On`.
 - Add a short “quick fare” mode alongside deliberate study routes. The same map, graph, facts, and recall questions should power both.
 - Keep collisions forgiving. The fun should come from flow, turns, geographic decisions, and chaining successful trips—not punishing vehicle damage.
+
+
+## 2026-09-12 — Da Costabuurt + Jordaan evaluable release
+
+Published `c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d`: 7,395 unique buildings, 598 photographed frontages, connected 2,004 m route, and 96.4% processed eligible route frontage length. Additional inference cost $0.453310605; cumulative $1.705205502; no unresolved charges. Municipal boundary membership, acquisition omissions, source pins, per-record revocation, coverage denominators and cost forecast accompany the immutable release.
+
+The resumable district coordinator preserves the offline runner and demonstrates a nonadjacent Oosterpark sample. Shared game residency, capture readiness and footprint clearance are checked at fourteen desktop/phone checkpoints; source/render comparisons remain separate from human review. Open glazing frames and a game-specific sign relief offset repair visible occlusion. Phone composition still loses detail behind foreground buildings and trees; physical-device performance and human spot-check completion remain unmeasured. See [launch commands, reports and verification](DISTRICT_PIPELINE.md).

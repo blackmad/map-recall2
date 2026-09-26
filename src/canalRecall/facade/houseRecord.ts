@@ -129,10 +129,10 @@ export interface CanalHouse {
   /** BAG identity, canonical. A building without one is a bug, not a building. */
   pandId: string;
 
-  /** Measured from the BAG footprint edge; the one dimension known exactly. */
+  /** Length of the explicitly selected elevation, in metres. */
   plotWidthM: Measured<number>;
   depthM: Measured<number>;
-  /** AHN-derived, above NAP. */
+  /** Heights above this building's local ground, not absolute NAP elevations. */
   eavesHeightM: Measured<number>;
   ridgeHeightM: Measured<number>;
   storeys: Measured<number>;
@@ -332,10 +332,8 @@ const MIN_PLAUSIBLE_RIDGE_M = 1.5;
  * stereotype: median façade width is 5.7 m and the 99th percentile is 30.6 m,
  * but 13 buildings exceed 40 m and the widest is 74 m — 20th-century office
  * and institutional blocks that are genuinely that wide. An earlier 40 m cap
- * flagged all of them, which is the validator rejecting architecture rather
- * than catching errors. The invariant that actually bites is `plotWidthM <=
- * depthM` below, which holds by construction for the short side of a
- * minimum-area rectangle.
+ * flagged all of them. A selected elevation can also be wider than the depth
+ * behind it; a bounding rectangle does not determine a façade's dimensions.
  */
 const MAX_PLAUSIBLE_PLOT_WIDTH_M = 150;
 /** Op de vlucht is deliberate but small; beyond this it is a measurement error. */
@@ -357,15 +355,8 @@ export function validateHouse(house: CanalHouse): RecordProblem[] {
     report('plotWidthM', `${width} m is not a plausible plot width`);
   }
 
-  // Holds by construction: `plotWidthM` is the short side of the footprint's
-  // minimum-area rectangle and `depthM` the long one. A violation means the two
-  // came from different footprints, or that the sides were swapped somewhere
-  // upstream — and a swapped pair silently rescales the entire façade grammar,
-  // because plot width is the dimension every other measurement derives from.
   const depth = observed<number>('depthM');
-  if (width !== null && depth !== null && width > depth) {
-    report('plotWidthM', `façade width ${width} m exceeds plot depth ${depth} m; the footprint sides look swapped`);
-  }
+  if (depth !== null && (!Number.isFinite(depth) || depth <= 0)) report('depthM', `${depth} m is not a positive depth`);
 
   const eaves = observed<number>('eavesHeightM');
   const ridge = observed<number>('ridgeHeightM');

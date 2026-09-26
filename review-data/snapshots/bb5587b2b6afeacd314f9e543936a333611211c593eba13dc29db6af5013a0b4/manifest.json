@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "snapshotSha256": "bb5587b2b6afeacd314f9e543936a333611211c593eba13dc29db6af5013a0b4",
+  "createdAt": "2026-09-13T08:33:15.430Z",
+  "entries": [
+    {
+      "path": ".cache/city-appearance/repair-preview-notes/60148829ac835a4745b50faf21b0b1b3cf08b44c13d6a6977466bc884e2a332e.json",
+      "sha256": "1b880ff615913535698f4249a8e302801b8da99db64a3e8dc3709695753de72a",
+      "bytes": 32099
+    },
+    {
+      "path": ".cache/city-appearance/repair-preview-notes/aecbcde914a6b94ca330ae533bf024c76e05415a0edab4f25ab8e1863d8fbacd.json",
+      "sha256": "74672d372beee1ec2fc0d35b04f1439301fcb90d0c4dc7fba8b9e5bcbefc0ce1",
+      "bytes": 6558
+    },
+    {
+      "path": ".cache/city-appearance/review-notes/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d.json",
+      "sha256": "e92aedf0191fb1912a5c34129e335d8bc0146a38b71401d4c036892cec59bad1",
+      "bytes": 64464
+    },
+    {
+      "path": ".cache/facade-rebuild/router-review/labels.json",
+      "sha256": "fc6deee302c36414cc62dd54d9e3542237f7062e5390137e05f81b2db16c144c",
+      "bytes": 24289
+    },
+    {
+      "path": ".cache/facade-rebuild/router-review/manifest.json",
+      "sha256": "d09c472b3b29559ef36ccb6284479d7345c633a33f1351d8732cdc9cf0d69c04",
+      "bytes": 18291
+    },
+    {
+      "path": "public/data/city-expansion/current.json",
+      "sha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9",
+      "bytes": 188344
+    },
+    {
+      "path": "public/data/city-expansion/evaluations/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/comparison-packet.json",
+      "sha256": "571c3cbf374a998b46778e1995de7ad6cfef47e5828f4b15d09d98c1539c74c6",
+      "bytes": 75491
+    },
+    {
+      "path": "scripts/review/thousand-building-candidate-report.json",
+      "sha256": "2bf44cd9a36e3bf09b1d9cf83a7dbd9030a4079da37d71e0284576d046897dad",
+      "bytes": 167355
+    }
+  ],
+  "missingBindings": [
+    ".cache/city-appearance/repair-preview-notes/60148829ac835a4745b50faf21b0b1b3cf08b44c13d6a6977466bc884e2a332e.json: preview cases hash mismatch",
+    ".cache/city-appearance/repair-preview-notes/aecbcde914a6b94ca330ae533bf024c76e05415a0edab4f25ab8e1863d8fbacd.json: preview cases hash mismatch"
+  ]
+}

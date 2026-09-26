@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "id": "da-costabuurt-v1",
+  "bbox": [4.867399795952647, 52.365145483562195, 4.87751272183099, 52.37340840552959],
+  "origin": [4.87245, 52.36928],
+  "cacheRoot": ".cache/city-appearance/areas/da-costabuurt-v1/raw",
+  "outputRoot": ".cache/city-appearance/areas/da-costabuurt-v1/staging",
+  "panorama": { "center": [4.87245, 52.36928], "radiusM": 700, "after": "2022-01-01" },
+  "concurrency": 2
+}

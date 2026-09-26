@@ -237,6 +237,10 @@ left.on('load', async () => {
 });
 
 let streamer = null;
+window.canalRecallBuildingCompare = {
+  status: () => streamer?.status() ?? null,
+  camera: () => ({ centre: right.getCenter(), zoom: right.getZoom(), bearing: right.getBearing(), pitch: right.getPitch() }),
+};
 right.on('load', async () => {
   styleBasemap(right);
   addCompleteLayers(right);
@@ -256,9 +260,14 @@ right.on('load', async () => {
     () => right.setLayoutProperty('building-3d', 'visibility', 'none'),
     (features) => { if (rightRoofs) rightRoofs.setFeatures(features); },
   );
+  // The gameplay loop calls this after choosing its spawn. This static page
+  // already has its camera, and needs an explicit first update as well.
+  streamer.followCamera();
   const tick = () => {
     const s = streamer.status();
-    note.textContent = `3DBAG footprints at AHN-measured heights · ${s.tiles} tiles, ${s.features.toLocaleString()} buildings resident`;
+    note.textContent = `3DBAG footprints at AHN-measured heights · ${s.tiles} tiles, ${s.features.toLocaleString()} features resident`;
+    note.dataset.tiles = String(s.tiles);
+    note.dataset.features = String(s.features);
   };
   tick();
   // Tiles are still in flight when `attach` returns, so poll briefly rather

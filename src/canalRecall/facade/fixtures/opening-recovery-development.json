@@ -1,0 +1,10 @@
+{
+  "split": "development",
+  "note": "Named ground-floor regression identified by the user after inspecting the initial six-upper-window benchmark. Approximate visible opening extent: the lower boundary is partly occluded, so this is candidate recovery, not a complete-frame or pixel-mask accuracy label.",
+  "sourceSha256": "86c9496387692f2f252eed562a298b33a3e384a51cd85ce9aa1b2509f2b281f7",
+  "address": "Keizersgracht 136",
+  "requiredCandidate": [175,281,232,419],
+  "name": "ground-floor-right-window",
+  "negativeCandidate": [41,438,93,482],
+  "negativeName": "car-headlight"
+}

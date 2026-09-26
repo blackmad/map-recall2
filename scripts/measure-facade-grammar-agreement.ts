@@ -9,6 +9,8 @@
  *
  * It spends nothing: every label is read from the cached proposal file.
  */
+import { rejectLegacyStreetInputs } from './lib/legacy-street-inputs.ts';
+rejectLegacyStreetInputs('measure-facade-grammar-agreement.ts');
 import { readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import {

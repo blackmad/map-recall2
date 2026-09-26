@@ -301,17 +301,14 @@ const tier = (overrides: Partial<TierInput> = {}): FidelityTier => resolveFideli
   const inverted = { ...house, ridgeHeightM: measured(11.0, 'ahn', 0.9, front) };
   assert.equal(validateHouse(inverted).some(problem => problem.field === 'ridgeHeightM'), true, 'a ridge below the eaves is impossible');
 
-  // Plot width is the short side of the footprint's minimum-area rectangle, so
-  // exceeding the depth means the two sides came from different footprints or
-  // were swapped upstream. A swapped pair silently rescales the whole façade
-  // grammar, because every other measurement derives from the width.
+  // A side elevation can be wider than the depth behind its wall.
   const swapped = {
     ...house,
     plotWidthM: measured(24.1, 'bag', 0.99, front),
     depthM: measured(5.4, 'bag', 0.99, front),
   };
-  assert.equal(validateHouse(swapped).some(problem => problem.field === 'plotWidthM'), true,
-    'a façade wider than its own plot depth must be caught');
+  assert.equal(validateHouse(swapped).some(problem => problem.field === 'plotWidthM'), false,
+    'a selected elevation may be wider than the building depth');
   // A genuinely wide building is not a swapped one: the pilot holds 13 façades
   // over 40 m and one at 74 m, all real 20th-century blocks.
   assert.deepEqual(validateHouse({
@@ -319,7 +316,7 @@ const tier = (overrides: Partial<TierInput> = {}): FidelityTier => resolveFideli
     plotWidthM: measured(53.8, 'bag', 0.99, front),
     depthM: measured(112.5, 'bag', 0.99, front),
     bayOffsetsM: measured([1.1, 2.7, 4.3], 'streetlevel-measured', 0.85, front),
-  }), [], 'width is only wrong relative to its own depth, never on size alone');
+  }), [], 'a broad façade is supported');
 
   const miscounted = { ...house, bays: measured(4, 'streetlevel-measured', 0.9, front) };
   assert.equal(validateHouse(miscounted).some(problem => problem.field === 'bayOffsetsM'), true);

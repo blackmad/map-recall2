@@ -1,0 +1,11 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {computeEvaluation} from './evaluation.js';
+const flag=(name:string)=>process.argv.find(v=>v.startsWith(`--${name}=`))?.slice(name.length+3);
+const input=flag('index'),output=flag('out');
+if(!input||!output)throw Error('Usage: tsx fidelity/evaluate.ts --index=<hashed-evidence-index.json> --out=<evaluation.json>');
+const result=await computeEvaluation(path.resolve(input));
+await fs.mkdir(path.dirname(path.resolve(output)),{recursive:true});
+await fs.writeFile(output,JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({pass:result.pass,failures:result.failures,candidate:result.candidate},null,2));
+if(!result.pass)process.exitCode=1;

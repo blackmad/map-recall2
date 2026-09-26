@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "opencode": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "opencode-mcp"
+      ],
+      "env": {
+        "OPENCODE_AUTO_SERVE": "true"
+      }
+    }
+  }
+}

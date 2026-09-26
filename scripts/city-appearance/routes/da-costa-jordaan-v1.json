@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "name": "Da Costa\u2013Jordaan observed route",
+  "source": "public/data/extracts/amsterdam/streets-routing.json",
+  "streets": [
+    "Da Costakade",
+    "De Clercqstraat",
+    "Rozengracht",
+    "Elandsgracht",
+    "Lauriergracht"
+  ],
+  "coveragePolicy": "both-sides-visible-frontage-length",
+  "targetEligibleFrontageCoverage": 0.9,
+  "waypoints": [
+    [
+      4.872295,
+      52.370038
+    ],
+    [
+      4.872473,
+      52.371373
+    ],
+    [
+      4.8785,
+      52.3728
+    ],
+    [
+      4.88006,
+      52.369488
+    ],
+    [
+      4.881449,
+      52.371475
+    ],
+    [
+      4.881,
+      52.376
+    ]
+  ],
+  "waypointPolicy": "ordered graph node snaps, connected shortest paths; coordinates WGS84 longitude latitude"
+}
