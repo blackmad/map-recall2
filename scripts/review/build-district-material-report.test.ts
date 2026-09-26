@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {loadWorkerArtifacts,workerBindingMatches} from './build-district-material-report.ts';
+import {loadWorkerArtifacts,manualBindingMatches,workerBindingMatches} from './build-district-material-report.ts';
 
 const hash=(value:string)=>createHash('sha256').update(value).digest('hex');
 
@@ -39,4 +39,20 @@ test('source rows must match both the exact manifest path and SHA',()=>{
  assert.equal(workerBindingMatches(job,row,manifest,manifestSha256),true);
  assert.equal(workerBindingMatches(job,{...row,sourceManifestSha256:hash('changed')},manifest,manifestSha256),false);
  assert.equal(workerBindingMatches(job,row,'/tmp/other/evidence/manifest.json',manifestSha256),false);
+});
+
+test('baseline reference receipt binds to current reference JSON and exact crop identity',()=>{
+ const sourcePath='/tmp/area/evidence/images/crop.jpg',manifest='/tmp/area/evidence/manifest.json';
+ const referencePath='/tmp/review/reference.json',referenceSha256=hash('current reference');
+ const referenceEntry={source:{path:sourcePath,buildingId:'building',elevationId:'building:e:1',sha256:hash('crop')}};
+ const binding={imageKind:'full',imagePath:sourcePath,sourceManifestPath:referencePath,
+  sourceManifestSha256:referenceSha256,buildingId:'building',elevationId:'building:e:1',sourceSha256:hash('crop')};
+ const matches=(candidate:any,entry:any=referenceEntry)=>manualBindingMatches(candidate,sourcePath,manifest,hash('manifest'),
+  referencePath,referenceSha256,entry);
+ assert.equal(matches(binding),true);
+ assert.equal(matches({...binding,sourceManifestSha256:hash('old reference')}),false);
+ assert.equal(matches({...binding,imagePath:'/tmp/other/crop.jpg'}),false);
+ assert.equal(matches({...binding,sourceSha256:hash('other crop')}),false);
+ assert.equal(matches(binding,{source:{...referenceEntry.source,elevationId:'other:e:1'}}),false);
+ assert.equal(matches({...binding,sourceManifestPath:manifest,sourceManifestSha256:hash('manifest')}),true);
 });
