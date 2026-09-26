@@ -22,11 +22,23 @@ import {
   recordBestTime,
   saveExploration,
   type Exploration,
+  type ExplorationGain,
 } from './progressStore';
-import { isCar } from './modes';
+import { notePlaceDay, placeStreakLabel, readPlaceStreak } from './placeStreak';
+import {
+  readPassport,
+  savePassport,
+  stampNewNeighborhoods,
+} from './neighborhoodPassport';
+import { finishStory } from './finishStory';
+import { missionBrief } from './missionBrief';
+import { COLD_OPEN_ENABLED } from './coldOpenReview';
+import { isCar, isBoat, isTransit } from './modes';
+import { travelProfile } from './travelProfile';
 import type { PresentationHost } from './host';
 import type { Landmark } from './worldTypes';
-import { canShowMiniMap, canShowPoiLabels } from './teachingSurface';
+import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
+import { bicycleRestrictionNotice } from '../routing/bikeAccess';
 
 /** One measured band of the arrival card. Each block reports its own height so
  *  the card measures itself, instead of keeping a stack of hand-tuned offsets
@@ -38,19 +50,70 @@ interface CardBlock {
   draw(top: number): void;
 }
 
-// Arrival-card type on enamel plaques (white ink / rivet / copper). Card fill
+// Arrival-card type on the daylight paper plate (ink / copper). Card fill
 // itself comes from `hud.paperCard` → `hudSurface`.
-const INK = '#ffffff';
-const MUTED = 'rgba(255,255,255,0.72)';
-const BODY = 'rgba(255,255,255,0.88)';
-const ACCENT = '#c4a35a';
-const GOOD = '#c4a35a';
-const COPPER = '#b87333';
-const RULE = 'rgba(255,255,255,0.22)';
+const INK = '#1f1c17';
+const MUTED = '#5f584d';
+const BODY = '#2e2a23';
+const ACCENT = '#8a4a18';
+const GOOD = '#8a4a18';
+// Button fill under ink text: copper-mid, 5.6:1 with INK (the darker accent was 4.0:1).
+const COPPER = '#c9844a';
+const RULE = 'rgba(31,28,23,0.16)';
 
 export interface GamePresentationRuntime extends PresentationHost {}
 
 export class GamePresentationRuntime {
+  /** True while a DOM overlay owns the screen — quiz, utility, or article. */
+  _overlayOpen(): boolean {
+    if (this._utilityOpen) return true;
+    if (this._prompt && this._prompt.style.display !== 'none' && this._prompt.style.display !== '') {
+      return true;
+    }
+    const panel = document.getElementById('landmark-panel');
+    return !!panel && getComputedStyle(panel).display !== 'none';
+  }
+
+  /** One teaching surface at a time — see `teachingSurface.ts`. */
+  _teachingGate(): TeachingGateInput {
+    const promptVisible = !!(this._prompt
+      && this._prompt.style.display !== 'none'
+      && this._prompt.style.display !== '');
+    const panel = document.getElementById('landmark-panel');
+    const landmarkPanelOpen = !!panel && getComputedStyle(panel).display !== 'none';
+    return {
+      quizOpen: !!this.quizPromptName,
+      feedbackVisible: !!this.quizFeedback,
+      promptVisible,
+      utilityOpen: !!this._utilityOpen || landmarkPanelOpen,
+    };
+  }
+
+  /** Active city catalog entry (extract path, centre, geocode bounds). */
+  _activeCity() {
+    const Prefs = window.CanalRecallPreferences;
+    const id = this.cityId || (Prefs && Prefs.DEFAULT_CITY_ID) || 'amsterdam';
+    return Prefs && Prefs.cityById ? Prefs.cityById(id) : {
+      id,
+      name: id,
+      extractPath: `../data/extracts/${id}`,
+      center: { lat: 52.372851, lng: 4.8936 },
+      geocodeSuffix: `, ${id}`,
+      geocodeViewbox: [4.72, 52.43, 5.02, 52.27] as [number, number, number, number],
+      provinceCaption: '',
+      curatedPois: [],
+    };
+  }
+
+  _curatedRoutePois() {
+    const curated = this._activeCity().curatedPois || [];
+    return curated.map(poi => ({ ...poi }));
+  }
+
+  _cityDisplayName(): string {
+    return this._activeCity().name || 'Amsterdam';
+  }
+
   // ---- The frame ----
 
   _render(): void {
@@ -86,9 +149,20 @@ export class GamePresentationRuntime {
     // Both travel modes have a real model now; the canvas glyph stays only as
     // the loading fallback, and is not painted over a mesh that is ready.
     const pitched = this.viewMode === 'chase' || this.viewMode === 'cockpit';
-    const byBoat = !isCar(this.travelMode);
-    this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && !byBoat);
+    const byBoat = isBoat(this.travelMode);
+    const byTransit = isTransit(this.travelMode);
+    const showBike = !byBoat && !byTransit;
+    this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike);
     this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
+    if (typeof this.vectorMap.setPlayerTransit === 'function') {
+      let underground = false;
+      if (byTransit && this.track && typeof this.track.getNearestRoad === 'function') {
+        const contact = this.track.getNearestRoad(player.x, player.y, player.angle);
+        const seg = contact && this.track.segments ? this.track.segments[contact.segIdx] : null;
+        underground = !!(seg && seg.type === 'metro');
+      }
+      this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground);
+    }
     this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
     if (!byBoat) {
       this.vectorMap.setStreetHighlights(
@@ -105,8 +179,12 @@ export class GamePresentationRuntime {
     this.renderer.drawSkidMarks(this.particles, this.camera);
 
     this._renderBridgeLabels();
-    const meshReady = pitched
-      && (byBoat ? this.vectorMap.isPlayerBoatReady() : this.vectorMap.isPlayerBikeReady());
+    const meshReady = pitched && (
+      byBoat ? this.vectorMap.isPlayerBoatReady()
+        : byTransit
+          ? (typeof this.vectorMap.isPlayerTransitReady === 'function' && this.vectorMap.isPlayerTransitReady())
+          : this.vectorMap.isPlayerBikeReady()
+    );
     if (!meshReady) {
       if (byBoat) this.renderer.drawCar(player, this.camera);
       else this.renderer.drawPlayerCar(player, this.camera);
@@ -131,16 +209,48 @@ export class GamePresentationRuntime {
     const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
     // Hide a new route name from the first candidate frame, not only after the
     // delayed question opens. Otherwise the HUD reveals the answer during the
-    // turn-confirmation window.
-    const routeAnswerHidden = !!this.quizPromptName
-      || (!!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName);
-    // Pass heading so a junction names the street you are driving, not the
-    // cross street whose centreline happens to be nearer.
-    const visibleRouteName = routeAnswerHidden
-      ? ''
-      : this.track.getRoadName(player.x, player.y, player.angle);
+    // turn-confirmation window. Transit keeps a sticky line plaque after the
+    // first answer — stop/street quizzes must not blank it.
+    const roadName = this.track.getRoadName(player.x, player.y, player.angle);
+    let visibleRouteName = '';
+    let routeAnswerHidden = false;
+    if (isTransit(this.travelMode) && window.CanalRecallTransit?.transitPlaqueRouteName) {
+      const plaque = window.CanalRecallTransit.transitPlaqueRouteName({
+        activeLine: this._activeTransitLine || '',
+        roadName: roadName || '',
+        quizPromptName: this.quizPromptName || '',
+        quizPromptSubject: this.quizPromptSubject || '',
+        quizCandidateName: this.quizCandidateName || '',
+        quizCurrentName: this.quizCurrentName || '',
+        transitLegIndex: this._transitLegIndex || 0,
+      });
+      visibleRouteName = plaque.routeName;
+      routeAnswerHidden = plaque.answerHidden;
+    } else {
+      routeAnswerHidden = !!this.quizPromptName
+        || (!!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName);
+      visibleRouteName = routeAnswerHidden ? '' : (roadName || '');
+    }
     // One plaque: street, neighbourhood + trip, score. Speed and odometer live
     // here on every viewport; there is no separate trip pill any more.
+    // Bike mode: when OSM forbids cycling on this corridor, say so without
+    // naming the street (the headline may still be hidden under a quiz).
+    let restrictionNote = '';
+    if (isCar(this.travelMode) && this.player) {
+      const road = this.track.getNearestRoad(player.x, player.y, player.angle);
+      const segment = road && this.track.segments?.[road.segIdx];
+      if (segment?.bicycleRestricted) {
+        restrictionNote = bicycleRestrictionNotice({
+          bicycleRestricted: 'yes',
+          bicycle: segment.bicycle || 'no',
+        }) || 'No cycling in real life';
+      }
+    }
+    const homeLearningNote = this.routePattern === 'home'
+      && Number.isFinite(this._homeLearningRadiusKm)
+      && this._homeLearningRadiusKm > 0
+      ? `Learning near home · ~${this._homeLearningRadiusKm.toFixed(1)} km`
+      : '';
     this.hud.drawPlaque(ctx, {
       routeName: visibleRouteName,
       neighborhood: this.currentNeighborhood,
@@ -151,7 +261,8 @@ export class GamePresentationRuntime {
       streak: this.quizStreak,
       gamey: this.gameyFeatures,
       trip: this.hud.tripText(player.speed, this._playerDistancePx()),
-      feedback: this.quizFeedback,
+      feedback: this.quizFeedback || homeLearningNote,
+      restrictionNote,
     });
     // The finish arrow sits inside the destination card, so the heading and
     // the distance are one readout instead of two boxes saying "955 m".
@@ -176,9 +287,9 @@ export class GamePresentationRuntime {
     if (this.state === GameState.RACING && !this._overlayOpen()) {
       // Last, so nothing can be drawn over the only way to steer — but not at
       // all while a question or panel owns the screen: the vehicle is stopped,
-      // the card covers the pad, and a pad drawn under a card is dead controls.
-      this.hud.drawDpad(ctx, this.input.padKeys);
-      if (this.input.showTouchHint) this.hud.drawTouchHint(ctx);
+      // the card covers the stick, and a stick drawn under a card is dead controls.
+      this.hud.drawStick(ctx, this.input.stickView);
+      if (this.input.showTouchHint) this.hud.drawTouchHint(ctx, this.controlMode);
     }
     if (this.state === GameState.PAUSED) this._renderPaused();
     if (this.state === GameState.FINISHED) this._renderFinish();
@@ -282,7 +393,7 @@ export class GamePresentationRuntime {
     const setup = document.getElementById('route-setup');
     const setupOpen = !!setup && setup.style.display !== 'none';
     if (setupOpen) {
-      ctx.fillStyle = '#071430';
+      ctx.fillStyle = '#f4efe5';
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       return;
     }
@@ -329,7 +440,12 @@ export class GamePresentationRuntime {
     ctx.textAlign = 'center';
     ctx.fillStyle = 'rgba(255,255,255,0.72)';
     ctx.font = '14px system-ui, sans-serif';
-    ctx.fillText('Navigate the real canal network and name each waterway after you turn', cx, 100);
+    const tagline = isTransit(this.travelMode)
+      ? 'Ride real tram corridors and name the lines and stops'
+      : isCar(this.travelMode)
+        ? 'Navigate the real street network and name each street after you turn'
+        : 'Navigate the real canal network and name each waterway after you turn';
+    ctx.fillText(tagline, cx, 100);
 
     ctx.fillStyle = 'rgba(11,58,140,0.88)';
     roundRect(ctx, cx - 320, 120, 640, 160, 10);
@@ -346,14 +462,32 @@ export class GamePresentationRuntime {
     ctx.fillText('HOW TO PLAY', rulesX, 145);
     ctx.fillStyle = 'rgba(255,255,255,0.88)';
     ctx.font = '12px system-ui, sans-serif';
-    const rules = [
-      '1. Use WASD or the arrow keys to steer the boat',
-      '2. The boat slows dramatically when it leaves mapped water',
-      '3. After entering a differently named waterway, type its name',
-      '4. Map labels are hidden: navigate from the shape of the city',
-      '5. TAB toggles the overview map; -/+ changes zoom',
-      '6. This is an early prototype — feedback is the point',
-    ];
+    const rules = isTransit(this.travelMode)
+      ? [
+        '1. Use WASD or the arrow keys to ride the tram corridor',
+        '2. Stay on the mapped line — the guard keeps you on the shape',
+        '3. Name the line while moving, and stops as you approach them',
+        '4. Line colour and labels stay hidden until you answer',
+        '5. TAB toggles the overview map; -/+ changes zoom',
+        '6. Transit: tram + metro; change lines at hubs',
+      ]
+      : isCar(this.travelMode)
+        ? [
+          '1. Use WASD or the arrow keys to steer the bike',
+          '2. Stay on mapped streets; the road guard keeps you on the network',
+          '3. After entering a differently named street, type its name',
+          '4. Map labels are hidden: navigate from the shape of the city',
+          '5. TAB toggles the overview map; -/+ changes zoom',
+          '6. This is an early prototype — feedback is the point',
+        ]
+        : [
+          '1. Use WASD or the arrow keys to steer the boat',
+          '2. The boat slows dramatically when it leaves mapped water',
+          '3. After entering a differently named waterway, type its name',
+          '4. Map labels are hidden: navigate from the shape of the city',
+          '5. TAB toggles the overview map; -/+ changes zoom',
+          '6. This is an early prototype — feedback is the point',
+        ];
     rules.forEach((line, index) => ctx.fillText(line, rulesX, 165 + index * 18));
 
     ctx.fillStyle = 'rgba(255,255,255,0.45)';
@@ -389,9 +523,10 @@ export class GamePresentationRuntime {
     const exploration = this._loadExploration();
     if (exploration.totalRoutes <= 0) return;
     const ctx = this.ctx;
-    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length;
+    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length
+      + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
     const parts: string[] = [];
-    if (known > 0) parts.push(`${known} waterways`);
+    if (known > 0) parts.push(`${known} names`);
     if (exploration.visitedNeighborhoods.length > 0) parts.push(`${exploration.visitedNeighborhoods.length} hoods`);
     if (exploration.seenLandmarks.length > 0) parts.push(`${exploration.seenLandmarks.length} landmarks`);
 
@@ -401,7 +536,7 @@ export class GamePresentationRuntime {
     ctx.fillStyle = 'rgba(255,255,255,0.85)';
     ctx.font = '11px monospace';
     ctx.textAlign = 'center';
-    ctx.fillText(`Amsterdam: ${parts.join(' · ')} · ${exploration.totalRoutes} routes`,
+    ctx.fillText(`${this._cityDisplayName()}: ${parts.join(' · ')} · ${exploration.totalRoutes} routes`,
       cx, CANVAS_H / 2 + 138);
   }
 
@@ -500,44 +635,107 @@ export class GamePresentationRuntime {
 
   _renderPaused(): void {
     const ctx = this.ctx;
-    const cx = CANVAS_W / 2, cy = CANVAS_H / 2;
-    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    const cx = CANVAS_W / 2;
+    const compact = this.viewport.mode === 'compact';
+    const cardW = Math.min(400, CANVAS_W - 24);
+    const padX = compact ? 18 : 28;
+    const cardX = cx - cardW / 2;
+
+    ctx.fillStyle = 'rgba(28,24,18,0.34)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
-    ctx.fillStyle = 'rgba(0,0,0,0.7)';
-    roundRect(ctx, cx - 200, cy - 80, 400, 185, 12);
+
+    type PauseAction = { id: 'resume' | 'route' | 'copy'; key: string; caption: string };
+    const actions: PauseAction[] = [
+      { id: 'resume', key: 'P / ESC', caption: 'Resume' },
+      { id: 'route', key: 'M', caption: 'New route' },
+    ];
+    if (this._shareUrl) {
+      actions.push({
+        id: 'copy',
+        key: 'C',
+        caption: this._copiedTimer > 0 ? 'Link copied' : 'Copy race link',
+      });
+    }
+
+    const BUTTON_H = 44;
+    const BUTTON_GAP = 8;
+    const titleH = compact ? 56 : 64;
+    const statsH = 28;
+    const actionsH = compact
+      ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP
+      : 28;
+    const cardH = 20 + titleH + actionsH + statsH + 18;
+    const cardY = (CANVAS_H - cardH) / 2;
+
+    ctx.fillStyle = 'rgba(0,0,0,0.78)';
+    roundRect(ctx, cardX, cardY, cardW, cardH, 12);
     ctx.fill();
 
     ctx.fillStyle = '#FFD700';
-    ctx.font = 'bold 48px monospace';
+    ctx.font = compact ? 'bold 32px monospace' : 'bold 40px monospace';
     ctx.textAlign = 'center';
-    ctx.fillText('PAUSED', cx, cy - 20);
+    ctx.fillText('PAUSED', cx, cardY + (compact ? 38 : 44));
 
-    ctx.fillStyle = 'rgba(255,255,255,0.7)';
-    ctx.font = '14px monospace';
-    ctx.fillText('P / ESC / SPACE to resume', cx, cy + 25);
-    ctx.fillStyle = 'rgba(255,255,255,0.4)';
-    ctx.font = '12px monospace';
-    ctx.fillText('M — back to menu', cx, cy + 45);
+    const pauseButtons: NonNullable<typeof this._pauseButtonBounds> = [];
+    this._pauseButtonBounds = pauseButtons;
+    let y = cardY + titleH;
 
-    if (this._shareUrl) {
-      if (this._copiedTimer > 0) {
-        ctx.fillStyle = '#4CAF50';
-        ctx.font = 'bold 12px monospace';
-        ctx.fillText('Copied!', cx, cy + 62);
-      } else {
-        ctx.fillStyle = 'rgba(255,255,255,0.4)';
-        ctx.font = '12px monospace';
-        ctx.fillText('C — copy race link', cx, cy + 62);
+    if (compact) {
+      for (const action of actions) {
+        const primary = action.id === 'resume';
+        const bounds = { x: cardX + padX, y, w: cardW - padX * 2, h: BUTTON_H };
+        ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
+        roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
+        ctx.fill();
+        if (!primary) {
+          ctx.strokeStyle = RULE;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+        ctx.fillStyle = primary ? '#1f1c17' : (action.caption === 'Link copied' ? GOOD : INK);
+        ctx.font = '700 14px system-ui, sans-serif';
+        ctx.fillText(action.caption, bounds.x + bounds.w / 2, y + 28);
+        pauseButtons.push({ ...bounds, id: action.id });
+        y += BUTTON_H + BUTTON_GAP;
       }
+    } else {
+      ctx.textAlign = 'left';
+      let ax = cardX + padX;
+      for (const action of actions) {
+        ctx.font = 'bold 11px monospace';
+        const keyW = ctx.measureText(action.key).width + 14;
+        ctx.fillStyle = 'rgba(31,28,23,.08)';
+        roundRect(ctx, ax, y + 2, keyW, 20, 5);
+        ctx.fill();
+        ctx.fillStyle = INK;
+        ctx.fillText(action.key, ax + 7, y + 16);
+        const captionX = ax + keyW + 8;
+        ctx.font = '12px system-ui, sans-serif';
+        ctx.fillStyle = action.caption === 'Link copied' ? GOOD : MUTED;
+        ctx.fillText(action.caption, captionX, y + 16);
+        const captionW = ctx.measureText(action.caption).width;
+        pauseButtons.push({
+          x: ax,
+          y: y - 4,
+          w: keyW + 8 + captionW + 8,
+          h: 28,
+          id: action.id,
+        });
+        ax = captionX + captionW + 22;
+      }
+      y += 28;
     }
 
+    ctx.textAlign = 'center';
     ctx.font = '12px monospace';
     ctx.fillStyle = '#AAA';
     const miles = this._playerDistancePx() / PIXELS_PER_METER / 1609.344;
     const progress = (this.player as unknown as { raceProgress?: number })?.raceProgress ?? 0;
     ctx.fillText(
-      `Time: ${this.hud.formatTime(this.raceTime)}  |  ${miles.toFixed(2)} mi  |  ${Math.round(progress * 100)}%`,
-      cx, cy + 80);
+      `Time: ${this.hud.formatTime(this.raceTime)}  ·  ${miles.toFixed(2)} mi  ·  ${Math.round(progress * 100)}%`,
+      cx,
+      y + 18,
+    );
   }
 
   // ---- The arrival card ----
@@ -552,7 +750,7 @@ export class GamePresentationRuntime {
    */
   _renderFinish(): void {
     const ctx = this.ctx;
-    ctx.fillStyle = 'rgba(7,20,48,.55)';
+    ctx.fillStyle = 'rgba(28,24,18,.34)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
     const cx = CANVAS_W / 2;
@@ -605,7 +803,7 @@ export class GamePresentationRuntime {
       const textW = cardX + cardW - padX - textX;
       ctx.font = '12px system-ui, sans-serif';
       const blurb = wrapText(ctx, landmark.longDetail || landmark.detail
-        || 'A place to remember on your Amsterdam map.', textW, hasImage ? 4 : 3);
+        || `A place to remember on your ${this._cityDisplayName()} map.`, textW, hasImage ? 4 : 3);
       const height = Math.max(photo, 20 + blurb.length * 17) + 14;
       blocks.push({ height, draw: (top) => {
         if (hasImage && image) {
@@ -628,7 +826,8 @@ export class GamePresentationRuntime {
     }
 
     // One stat row instead of four differently coloured boxes.
-    const recallNoun = isCar(this.travelMode) ? 'Streets' : 'Canals';
+    const profile = travelProfile(this.travelMode);
+    const recallNoun = profile.recallNoun;
     const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
     const stats = [
       { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
@@ -640,7 +839,7 @@ export class GamePresentationRuntime {
 
     const footerBits = [
       this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
-      isCar(this.travelMode) ? 'Bike' : 'Boat',
+      profile.label,
       this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()),
     ];
     if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
@@ -677,19 +876,35 @@ export class GamePresentationRuntime {
     }
 
     if (exploration) {
-      const known = exploration.learnedWaterways.length + exploration.learnedStreets.length;
+      const known = exploration.learnedWaterways.length + exploration.learnedStreets.length
+        + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
       const totals: string[] = [];
       if (known > 0) totals.push(`${known} names`);
       if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
       if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
+      const gain = this._explorationRouteGain;
+      const story = finishStory({
+        gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
+        destinationName: this.routeTo?.name || '',
+        cityName: this._cityDisplayName(),
+        newPassportStamps: this._finishPassportFresh || [],
+        placeStreak: { days: [], current: 0, best: 0 },
+        signedIn: !!(this.recall && this.recall.signedIn),
+        recallAvailable: !!(this.recall && this.recall.available),
+      });
+      // Prefer live streak label computed at save time.
+      if (this._finishPlaceStreakLabel) story.streak = this._finishPlaceStreakLabel;
       const fresh: string[] = [];
-      if (this.learnedNames.size > 0) fresh.push(`${this.learnedNames.size} names`);
-      if (this._visitedNeighborhoods.size > 0) fresh.push(`${this._visitedNeighborhoods.size} neighborhoods`);
-      if (this._seenLandmarkNames.size > 0) fresh.push(`${this._seenLandmarkNames.size} landmarks`);
-      // The label sits beside the totals on a wide card and above them on a
-      // phone: right-aligned totals ran straight into "CITY KNOWLEDGE".
+      if (gain && gain.newNames > 0) fresh.push(`${gain.newNames} names`);
+      if (gain && gain.newNeighborhoods > 0) fresh.push(`${gain.newNeighborhoods} neighborhoods`);
+      if (gain && gain.newLandmarks > 0) fresh.push(`${gain.newLandmarks} landmarks`);
       const knowledgeStacked = compact;
-      const knowledgeH = (knowledgeStacked ? 34 : 18) + (fresh.length ? 20 : 0) + 18;
+      const storyLines = [story.headline, story.detail, story.passport, story.streak, story.guestTease]
+        .filter(Boolean) as string[];
+      const knowledgeH = (knowledgeStacked ? 34 : 18)
+        + (fresh.length ? 18 : 0)
+        + storyLines.length * 16
+        + 10;
       blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
         ctx.textAlign = 'left';
         ctx.fillStyle = MUTED; ctx.font = 'bold 9px monospace';
@@ -701,12 +916,20 @@ export class GamePresentationRuntime {
           ctx.textAlign = 'right';
           ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + cardW - padX, top + 12);
         }
+        let y = top + (knowledgeStacked ? 48 : 30);
         if (fresh.length) {
           ctx.textAlign = 'left';
           ctx.fillStyle = ACCENT;
           ctx.font = '11px system-ui, sans-serif';
-          ctx.fillText(`+${fresh.join(', +')} this route`,
-            cardX + padX, top + (knowledgeStacked ? 50 : 32));
+          ctx.fillText(`+${fresh.join(', +')} first-time`, cardX + padX, y);
+          y += 16;
+        }
+        ctx.textAlign = 'left';
+        ctx.fillStyle = BODY;
+        ctx.font = '12px system-ui, sans-serif';
+        for (const line of storyLines) {
+          ctx.fillText(line, cardX + padX, y);
+          y += 16;
         }
       } });
     }
@@ -725,8 +948,8 @@ export class GamePresentationRuntime {
     // with 44 px targets, hit-tested against `_finishButtonBounds`.
     type FinishAction = { id: 'again' | 'route' | 'copy'; key: string; caption: string };
     const actions: FinishAction[] = [
-      { id: 'again', key: 'ENTER', caption: 'Try again' },
-      { id: 'route', key: 'ESC', caption: 'Choose route' },
+      { id: 'again', key: 'ENTER', caption: 'Continue' },
+      { id: 'route', key: 'ESC', caption: 'Finish' },
     ];
     if (this._shareUrl) {
       actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? 'Link copied' : 'Copy race link' });
@@ -743,14 +966,14 @@ export class GamePresentationRuntime {
           for (const action of actions) {
             const primary = action.id === 'again';
             const bounds = { x: cardX + padX, y: by, w: cardW - padX * 2, h: BUTTON_H };
-            ctx.fillStyle = primary ? COPPER : 'rgba(255,255,255,.08)';
+            ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
             roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
             ctx.fill();
             if (!primary) {
               ctx.strokeStyle = RULE; ctx.lineWidth = 1; ctx.stroke();
             }
             ctx.textAlign = 'center';
-            ctx.fillStyle = primary ? '#ffffff' : (action.caption === 'Link copied' ? GOOD : INK);
+            ctx.fillStyle = primary ? '#1f1c17' : (action.caption === 'Link copied' ? GOOD : INK);
             ctx.font = '700 14px system-ui, sans-serif';
             ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
             finishButtons.push({ ...bounds, id: action.id });
@@ -764,7 +987,7 @@ export class GamePresentationRuntime {
         for (const action of actions) {
           ctx.font = 'bold 11px monospace';
           const keyW = ctx.measureText(action.key).width + 14;
-          ctx.fillStyle = 'rgba(255,255,255,.14)';
+          ctx.fillStyle = 'rgba(31,28,23,.08)';
           roundRect(ctx, ax, top + 4, keyW, 20, 5);
           ctx.fill();
           ctx.fillStyle = INK;
@@ -939,20 +1162,58 @@ export class GamePresentationRuntime {
     return readExploration(localStorage);
   }
 
+  /**
+   * Punchline for race open / briefing. Names the destination only — never the
+   * start corridor under the wheels.
+   */
+  _composeMissionBrief() {
+    const due = this.recall && typeof this.recall.dueReviews === 'function'
+      ? this.recall.dueReviews()
+      : [];
+    const hasCold = due.some((place) => place.cityId === (this.cityId || 'amsterdam')
+      && place.dueAt <= Date.now());
+    return missionBrief({
+      destinationName: this.routeTo?.name || '',
+      travelMode: isBoat(this.travelMode) ? 'boat'
+        : isTransit(this.travelMode) ? 'transit' : 'car',
+      routePattern: this.routePattern === 'home' ? 'home'
+        : this.routePattern === 'here' ? 'here' : 'surprise',
+      cityName: this._cityDisplayName(),
+      homeLearningRadiusKm: this._homeLearningRadiusKm || 0,
+      hasColdOpenReview: COLD_OPEN_ENABLED && hasCold,
+    });
+  }
+
   /** Returns the merged collection so the finish card can show both the totals
    *  and what this route added. */
   _saveExploration(): Exploration | null {
     try {
       const before = readExploration(localStorage);
       const after = mergeExploration(before, {
-        byBoat: !isCar(this.travelMode),
+        learnedKind: travelProfile(this.travelMode).learnedKind,
         learnedNames: this.learnedNames,
+        learnedStopNames: this.learnedStopNames || [],
         visitedNeighborhoods: this._visitedNeighborhoods,
         seenLandmarkNames: this._seenLandmarkNames,
         correct: this.quizCorrect,
         attempts: this.quizAttempts,
       });
       saveExploration(localStorage, after);
+      const gain = explorationGain(before, after);
+      this._explorationRouteGain = gain;
+      if (gain.newNames > 0) {
+        const streak = notePlaceDay(localStorage);
+        this._finishPlaceStreakLabel = placeStreakLabel(streak);
+      } else {
+        this._finishPlaceStreakLabel = placeStreakLabel(readPlaceStreak(localStorage));
+      }
+      const stamped = stampNewNeighborhoods(
+        after,
+        this._visitedNeighborhoods,
+        readPassport(localStorage),
+      );
+      if (stamped.fresh.length) savePassport(localStorage, stamped.passport);
+      this._finishPassportFresh = stamped.fresh;
       return after;
     } catch (error) {
       console.warn('Could not save exploration:', error);
@@ -961,7 +1222,7 @@ export class GamePresentationRuntime {
   }
 
   /** What this route added, for the finish card. */
-  _explorationGain(before: Exploration, after: Exploration) {
+  _explorationGain(before: Exploration, after: Exploration): ExplorationGain {
     return explorationGain(before, after);
   }
 }

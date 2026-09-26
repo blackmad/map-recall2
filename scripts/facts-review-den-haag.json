@@ -1,810 +1,802 @@
 {
-  "reviewedAt": "2026-09-02",
-  "generatorVersion": "facts-v10-faithful-paraphrase-verifier:openrouter:qwen/qwen3.5-flash-02-23",
+  "reviewedAt": "2026-09-05",
+  "generatorVersion": "facts-v11-opening-then-trivia:openrouter:qwen/qwen3.5-flash-02-23",
   "features": {
     "extract_bridges_1236758771": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_126756135": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_1523584898": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_1672629737": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_1898138210": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_2039203492": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_2118352774": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_2146550765": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_354799793": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_424780331": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_69159461": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_833696327": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_849506397": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_8525463": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_885109973": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_bridges_977603594": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1004177223": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1015667988": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1023040070": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1031714407": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1052698913": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1053992117": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1074097231": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1077401739": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1083585340": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1111075849": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_111153637": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1122563894": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1129279624": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1139369149": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1148000134": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1178964251": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1196815868": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1201061153": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1203963567": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1219905580": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1223765423": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1241456458": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1244171252": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1268976661": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1271611570": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1280900377": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1295340698": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1313859260": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1315420732": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1316187621": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1318639861": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1343017629": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1372437608": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1389013324": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1401659806": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1411262235": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1433659346": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1438920084": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1463503598": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1474208212": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1480197844": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1492012477": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1495205347": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1509674238": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1531883758": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1566882915": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1570884964": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1578382284": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1581374817": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1585401201": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1657747134": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_166239945": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
-    },
-    "extract_landmarks_1689085712": {
-      "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1701736215": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1707939604": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1709115396": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1713503": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1714990487": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1721472545": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1731011043": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1734482407": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1738793253": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1759198310": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1770861157": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1782957460": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1818315637": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_186262375": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1872400083": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1875400017": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1875689911": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1879861373": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1900182312": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1947263578": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1975313962": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1976026930": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_197940973": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1986155587": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_1987834222": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_2001329544": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_202561886": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_2027048144": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_2047543644": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_2074035656": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_207586677": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_2080579351": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_2080997871": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_2085117069": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_2141701691": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_221450713": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_221960571": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_227969800": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_241212726": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_243976156": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_247984751": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_301484502": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_32534965": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_355967891": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_36060818": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_397697447": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_408720751": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_415182676": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_416298670": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_418867169": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_439065761": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_440411892": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_448334033": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
-    "extract_landmarks_456233865": {
+    "extract_landmarks_449859203": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_460793957": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_473564636": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_476201344": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_479825939": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_505854835": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_512203503": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_52504700": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_541601807": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_583444853": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_607613508": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_612463485": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_615400116": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_626230451": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_629485266": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_636195999": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_657286374": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_691674089": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_718508085": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_72418824": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_732189113": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_741480278": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_774363829": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_798430127": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_80523462": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_826352443": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_847766337": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_851532135": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_857599383": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_867648337": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_884704962": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_890906730": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_934707700": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_944379302": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_963427582": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_968716733": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_981534636": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_landmarks_995043554": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_111857044": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_1119068860": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_1212326914": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_1278812273": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_1357978792": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_1418589966": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_1434538089": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_1452743677": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_1525549338": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_1744164601": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_2024496212": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_2059036513": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_272244281": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_314396935": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_338902029": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_342903425": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_47979336": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_546575728": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_570868518": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_parks_915295395": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_squares_31841133": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_streets_1684674541": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_streets_2026397456": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_streets_2049366298": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_1093176919": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_1205957977": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_1443599283": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_1701651853": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_1724009439": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
-    },
-    "extract_water_1750890677": {
-      "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_1892950622": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_1927834421": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_1962673735": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_1978544480": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_668973874": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_690796707": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_819185755": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_854025069": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_855926336": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_85761265": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     },
     "extract_water_877008371": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v10 automatically grounded catalog on 2026-09-02."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
     }
   }
 }

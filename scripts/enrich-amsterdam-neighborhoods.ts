@@ -55,7 +55,7 @@ async function fetchJson(url: string | URL, init?: RequestInit, attempts = 4): P
 
 // Step 1: Bulk-fetch all Amsterdam neighborhood entities via SPARQL
 const sparql = `SELECT ?item ?itemLabel ?itemDescription ?image ?articleTitle WHERE {
-  VALUES ?type { wd:Q123705 wd:Q253019 wd:Q1529997 wd:Q3257686 wd:Q15715406 }
+  VALUES ?type { wd:Q123705 wd:Q253019 wd:Q1529997 wd:Q3257686 wd:Q15715406 wd:Q15079751 }
   ?item wdt:P31 ?type .
   ?item wdt:P131 wd:Q9899 .
   OPTIONAL { ?item wdt:P18 ?image }
@@ -101,12 +101,34 @@ console.log(`Matching ${neighborhoods.length} local neighborhoods, quarters, and
 
 const normalize = (s: string) => s.toLowerCase().replace(/-/g, ' ').replace(/buurt$/, '').replace(/eiland$/, '').trim();
 
+/** OSM district names that do not match Wikidata’s preferred label. */
+const NAME_ALIASES: Record<string, readonly string[]> = {
+  // Borough is labelled Amsterdam-Centrum (Q478282); OSM boundary is Centrum.
+  Centrum: ['Amsterdam-Centrum', 'Amsterdam Centrum'],
+  Noord: ['Amsterdam-Noord', 'Amsterdam Noord'],
+  Oost: ['Amsterdam-Oost', 'Amsterdam Oost'],
+  West: ['Amsterdam-West', 'Amsterdam West'],
+  Zuid: ['Amsterdam-Zuid', 'Amsterdam Zuid'],
+  'Nieuw-West': ['Amsterdam Nieuw-West', 'Amsterdam-Nieuw-West'],
+  Zuidoost: ['Amsterdam-Zuidoost', 'Amsterdam Zuidoost'],
+};
+
 function findMatch(name: string): WikidataNeighborhood | undefined {
-  const exact = wikidataIndex.get(name.toLowerCase());
-  if (exact) return exact;
-  const normalized = normalize(name);
-  for (const [key, value] of wikidataIndex) {
-    if (normalize(key) === normalized) return value;
+  const candidates = [
+    name,
+    ...(NAME_ALIASES[name] || []),
+    `Amsterdam-${name}`,
+    `Amsterdam ${name}`,
+  ];
+  for (const candidate of candidates) {
+    const exact = wikidataIndex.get(candidate.toLowerCase());
+    if (exact) return exact;
+  }
+  for (const candidate of candidates) {
+    const normalized = normalize(candidate);
+    for (const [key, value] of wikidataIndex) {
+      if (normalize(key) === normalized) return value;
+    }
   }
   return undefined;
 }

@@ -20,10 +20,11 @@ class GameRouteRuntime {
     this._overlay.callbacks.onStart = () => this._startConfiguredRoute();
     this._overlay.callbacks.onLiveChange = () => this._readLiveSettings();
     this._overlay.callbacks.onCloseSettings = () => this._closeUtilityPanels();
+    this._overlay.callbacks.onNewRoute = () => this._openRouteSetup();
     this._routeFrom = document.getElementById('route-from');
     this._routeTo = document.getElementById('route-to');
     this._settingsPanel = 'settings';
-    for (const poi of CANAL_ROUTE_POIS) {
+    for (const poi of this._curatedRoutePois()) {
       this._routeFrom.add(new Option(poi.name, poi.id));
       this._routeTo.add(new Option(poi.name, poi.id));
     }
@@ -56,8 +57,15 @@ class GameRouteRuntime {
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
       zoom: this.camera.zoom,
+      cameraTilt: (this.vectorMap && Number.isFinite(this.vectorMap._cameraTilt))
+        ? this.vectorMap._cameraTilt
+        : current.cameraTilt,
+      cameraBearing: Number.isFinite(this.camera.bearingOffset)
+        ? this.camera.bearingOffset * 180 / Math.PI
+        : current.cameraBearing,
       reducedMotion: !!this.camera.reducedMotion,
       travelMode: this.travelMode || current.travelMode,
+      cityId: this.cityId || current.cityId,
       controlMode: this.controlMode || current.controlMode,
       viewMode: this.viewMode || current.viewMode,
       themeMode: this.themeMode || current.themeMode,
@@ -80,6 +88,7 @@ class GameRouteRuntime {
   }
 
   _applyPrefsToRuntime(prefs, { persist = true, applySound = persist } = {}) {
+    const previousCityId = this.cityId;
     this.routeOptions = {
       answerMode: prefs.answerMode,
       line: prefs.line,
@@ -89,14 +98,37 @@ class GameRouteRuntime {
     this.gameyFeatures = prefs.gamey;
     this.camera.reducedMotion = prefs.reducedMotion;
     this.travelMode = prefs.travelMode;
+    this.cityId = prefs.cityId || (window.CanalRecallPreferences && window.CanalRecallPreferences.DEFAULT_CITY_ID) || 'amsterdam';
     this.controlMode = prefs.controlMode;
     if (this.player) this.player.controlMode = this.controlMode;
     this.viewMode = prefs.viewMode;
     this.camera.viewMode = this.viewMode;
     this.camera.northUp = this.viewMode === 'north';
+    this.camera.holdHeading = this.controlMode === 'absolute';
     this.themeMode = prefs.themeMode;
     this.vectorMap.applyTheme(this.themeMode);
+    const city = this._activeCity();
+    if (typeof this.vectorMap.setExtractRoot === 'function') {
+      this.vectorMap.setExtractRoot(city.extractPath);
+    }
+    // Briefing only: show the chosen city centre instead of Damrak defaults.
+    if (previousCityId !== this.cityId && this.state === GameState.MENU) {
+      const center = city.center;
+      if (center && this.vectorMap.map && typeof this.vectorMap.map.jumpTo === 'function') {
+        this.vectorMap.map.jumpTo({
+          center: [center.lng, center.lat],
+          zoom: 13,
+          bearing: 0,
+          pitch: 0,
+        });
+      }
+      this._loadRoutePoiCatalog();
+    }
     this.camera.zoom = prefs.zoom;
+    if (typeof this.vectorMap.setCameraTilt === 'function') {
+      this.vectorMap.setCameraTilt(prefs.cameraTilt || 0);
+    }
+    this.camera.bearingOffset = (prefs.cameraBearing || 0) * Math.PI / 180;
     this.showMiniMap = prefs.minimap;
     this.routeDifficulty = prefs.difficulty;
     this.routePattern = prefs.routePattern;
@@ -104,6 +136,18 @@ class GameRouteRuntime {
     this.vectorMap.setDetailedBuildingsVisible(prefs.detailed3d && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setGoogleTilesEnabled(!!prefs.googleTiles && !prefs.measuredColoursOnly);
     this.vectorMap.setMeasuredColoursOnly(!!prefs.measuredColoursOnly);
+    if (typeof this.vectorMap.setTransitNetwork === 'function') {
+      this.vectorMap.setTransitNetwork(
+        this.osmLoader && this.osmLoader.transitLoad,
+        prefs.travelMode === 'transit' && !!(this.osmLoader && this.osmLoader.transitLoad),
+      );
+    }
+    if (typeof this.vectorMap.setBikeSkin === 'function') {
+      this.vectorMap.setBikeSkin(prefs.bikeSkin || 'omafiets');
+    }
+    if (typeof this.vectorMap.setBikeBabySeat === 'function') {
+      this.vectorMap.setBikeBabySeat(!!prefs.bikeBabySeat);
+    }
     if (applySound) this._setSoundEnabled(prefs.sound);
     if (persist) this._savePreferences();
   }
@@ -121,13 +165,48 @@ class GameRouteRuntime {
       gamey: this.gameyFeatures,
       sound: !this.sound.muted,
       reducedMotion: !!this.camera.reducedMotion,
-      zoom: this.camera.zoom
+      zoom: this.camera.zoom,
+      cameraTilt: (this.vectorMap && this.vectorMap._cameraTilt) || current.cameraTilt || 0,
+      cameraBearing: Number.isFinite(this.camera.bearingOffset)
+        ? this.camera.bearingOffset * 180 / Math.PI
+        : current.cameraBearing,
     });
   }
 
   _readLiveSettings() {
     this._applyPrefsToRuntime(this._prefs());
     if (this.routePath) this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
+  }
+
+  /** Nudge chase/cockpit pitch. No-op in 2D views. Step is degrees. */
+  _nudgeCameraTilt(delta) {
+    if (this.viewMode !== 'chase' && this.viewMode !== 'cockpit') return;
+    if (!this.vectorMap || typeof this.vectorMap.setCameraTilt !== 'function') return;
+    const Prefs = window.CanalRecallPreferences;
+    const min = Prefs && Number.isFinite(Prefs.CAMERA_TILT_MIN) ? Prefs.CAMERA_TILT_MIN : -36;
+    const max = Prefs && Number.isFinite(Prefs.CAMERA_TILT_MAX) ? Prefs.CAMERA_TILT_MAX : 36;
+    const current = Number.isFinite(this.vectorMap._cameraTilt) ? this.vectorMap._cameraTilt : 0;
+    const next = Math.max(min, Math.min(max, current + delta));
+    if (next === current) return;
+    this.vectorMap.setCameraTilt(next);
+    if (this._overlay && this._overlay.store) {
+      this._overlay.store.patchPrefs({ cameraTilt: next }, this._overlayZoom());
+    }
+    this._savePreferences();
+  }
+
+  /** Orbit chase/cockpit around the vehicle. No-op in 2D views. */
+  _nudgeCameraBearing(delta) {
+    if (this.viewMode !== 'chase' && this.viewMode !== 'cockpit') return;
+    const current = Number.isFinite(this.camera.bearingOffset)
+      ? this.camera.bearingOffset * 180 / Math.PI
+      : 0;
+    const next = ((current + delta + 180) % 360 + 360) % 360 - 180;
+    this.camera.bearingOffset = next * Math.PI / 180;
+    if (this._overlay && this._overlay.store) {
+      this._overlay.store.patchPrefs({ cameraBearing: next }, this._overlayZoom());
+    }
+    this._savePreferences();
   }
 
   _setSoundEnabled(enabled) {
@@ -184,7 +263,8 @@ class GameRouteRuntime {
     ctx.fillText(`POI DESTINATIONS (${this.routePois.length})`, x, y); y += 14;
     ctx.fillStyle = '#E0F2FE';
     ctx.font = '10px monospace';
-    const shownPois = [...CANAL_ROUTE_POIS];
+    const curated = this._curatedRoutePois();
+    const shownPois = [...curated];
     for (const poi of [this.routeFrom, this.routeTo]) {
       if (poi && !shownPois.some(entry => entry.id === poi.id)) shownPois.push(poi);
     }
@@ -192,7 +272,7 @@ class GameRouteRuntime {
       const isCurrent = (this.routeFrom?.id === poi.id ? '> ' : this.routeTo?.id === poi.id ? '* ' : '  ');
       ctx.fillText(`${isCurrent}${poi.name}`, x, y); y += 12;
     }
-    const hidden = this.routePois.length - CANAL_ROUTE_POIS.length;
+    const hidden = this.routePois.length - curated.length;
     if (hidden > 0) {
       ctx.fillStyle = '#94A3B8';
       ctx.fillText(`  +${hidden} more from the landmark extract`, x, y); y += 12;
@@ -251,9 +331,10 @@ class GameRouteRuntime {
   _syncHomeAddressField() {}
 
   async _geocodeHomeAddress(address) {
+    const city = this._activeCity();
     const rawAddress = address.trim();
-    const query = `${rawAddress}, Amsterdam`;
-    const key = query.toLocaleLowerCase();
+    const query = `${rawAddress}${city.geocodeSuffix}`;
+    const key = `${city.id}|${query}`.toLocaleLowerCase();
     let cache = {};
     try { cache = JSON.parse(localStorage.getItem(HOME_GEOCODE_CACHE_KEY) || '{}'); } catch (_) {}
     if (cache[key]) return cache[key];
@@ -277,7 +358,8 @@ class GameRouteRuntime {
     } catch (_) { /* bounded OSM fallback below */ }
 
     if (!resolved) {
-      const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&countrycodes=nl&limit=3&bounded=1&viewbox=4.72,52.43,5.02,52.27&q=${encodeURIComponent(query)}`;
+      const [west, north, east, south] = city.geocodeViewbox;
+      const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&countrycodes=nl&limit=3&bounded=1&viewbox=${west},${north},${east},${south}&q=${encodeURIComponent(query)}`;
       const response = await fetch(url);
       if (!response.ok) throw new Error('Address search is unavailable right now');
       const results = await response.json();
@@ -285,7 +367,7 @@ class GameRouteRuntime {
       if (result) resolved = { lat: Number(result.lat), lng: Number(result.lon), label: result.display_name };
     }
     if (!resolved || !Number.isFinite(resolved.lat) || !Number.isFinite(resolved.lng)) {
-      throw new Error('Could not find that exact Amsterdam address');
+      throw new Error(`Could not find that exact ${city.name} address`);
     }
     const home = { id: 'home', name: 'Home', address: rawAddress, label: resolved.label, lat: resolved.lat, lng: resolved.lng };
     cache[key] = home;
@@ -297,6 +379,27 @@ class GameRouteRuntime {
     if (!isReroll) this._routeRerolls = 0;
     this._setRouteError('');
     const prefs = this._prefs();
+    this._applyPrefsToRuntime(prefs, { persist: true, applySound: false });
+    // City may have changed on the briefing since the last catalog fetch.
+    await this._loadRoutePoiCatalog();
+    const curated = this._curatedRoutePois();
+    if (this.travelMode === 'transit' && this.routePois.length >= 2) {
+      this.routeFrom = this.routePois[0];
+      this.routeTo = this.routePois[Math.min(1, this.routePois.length - 1)];
+    } else if (curated.length) {
+      this.routeFrom = curated[Math.min(1, curated.length - 1)];
+      this.routeTo = curated[Math.min(2, curated.length - 1)] || curated[0];
+    } else if (this.routePois.length >= 2) {
+      this.routeFrom = this.routePois[0];
+      this.routeTo = this.routePois[1];
+    } else {
+      this._setRouteError(
+        this.travelMode === 'transit'
+          ? 'Transit stop anchors failed to load for Amsterdam.'
+          : `Not enough landmarks loaded for ${this._cityDisplayName()}.`,
+      );
+      return;
+    }
     this.routePattern = prefs.routePattern;
     if (this.routePattern === 'home') {
       const address = (prefs.homeAddress || '').trim();
@@ -306,9 +409,14 @@ class GameRouteRuntime {
         this.homeBase = await this._geocodeHomeAddress(address);
         this.homeLeg = 'outbound';
       } catch (error) {
+        this._homeLearningRadiusKm = null;
         this._setRouteError(error.message || 'Could not find that address.');
         return;
       }
+    } else {
+      this.homeBase = null;
+      this._homeLearningRadiusKm = null;
+      try { localStorage.removeItem('canalRecall.homeLearningRadius.v1'); } catch (_) { /* ignore */ }
     }
     if (this.routePattern === 'study') {
       try {
@@ -322,10 +430,72 @@ class GameRouteRuntime {
       }
       return;
     }
+
+    if (this.routePattern === 'here') {
+      try {
+        if (!(isReroll && this.gpsOrigin)) {
+          this._setRouteError('Finding where you are…');
+          const city = this._activeCity();
+          const Route = window.CanalRecallRoute;
+          this.gpsOrigin = await Route.resolveGpsOrigin({
+            cityName: city.name,
+            viewbox: city.geocodeViewbox,
+            readFix: Route.browserGpsReader(navigator.geolocation, window.isSecureContext),
+          });
+        }
+      } catch (error) {
+        this.gpsOrigin = null;
+        this._setRouteError(error.message || 'Could not read your location.');
+        return;
+      }
+    } else {
+      this.gpsOrigin = null;
+    }
+
+    if (this.travelMode === 'transit' && this.routePattern === 'surprise') {
+      const pair = this._pickTeachableTransitPair();
+      if (pair) {
+        this._launchPoiRoute(pair.from, pair.to);
+        return;
+      }
+    }
+
     const pool = this.routePois;
     const choices = pool.filter(poi => poi.id !== this.routeFrom?.id || pool.length < 3);
-    const from = this.routePattern === 'home' ? this.homeBase : choices[Math.floor(Math.random() * choices.length)];
-    this._launchPoiRoute(from, this._pickDestinationNear(from));
+    const from = this.routePattern === 'home' ? this.homeBase
+      : this.routePattern === 'here' ? this.gpsOrigin
+        : choices[Math.floor(Math.random() * choices.length)];
+    const dest = this.routePattern === 'home'
+      ? this._pickHomeDestination(from)
+      : this._pickDestinationNear(from);
+    if (!from || !dest) {
+      this._setRouteError(
+        this.routePattern === 'here'
+          ? 'Could not plan a ride from your location. Try Surprise or Home.'
+          : `Not enough landmarks loaded for ${this._cityDisplayName()}.`,
+      );
+      return;
+    }
+    this._launchPoiRoute(from, dest);
+  }
+
+  /** Prefer two-leg transfers so surprise play teaches changing lines. */
+  _pickTeachableTransitPair() {
+    const Transit = window.CanalRecallTransit;
+    const load = this._transitPlayLoad
+      || (this.osmLoader && this.osmLoader.transitLoad);
+    if (!Transit || !load || typeof Transit.pickTeachableTransitPair !== 'function') return null;
+    const anchors = this.routePois && this.routePois.length
+      ? this.routePois
+      : Transit.transitRouteAnchors(load);
+    return Transit.pickTeachableTransitPair(
+      load,
+      this._transitTransfersCatalog
+        || (this.osmLoader && this.osmLoader.transitTransfers)
+        || null,
+      anchors,
+      { preferTransfer: 0.7 },
+    );
   }
 
   // A destination far enough to be a journey but inside the same fetched map
@@ -335,6 +505,29 @@ class GameRouteRuntime {
   // without generating routes until one looks wrong.
   _pickDestinationNear(from, alsoExcludeId = null) {
     return CanalRecallRoute.pickDestinationNear(this.routePois, from, undefined, alsoExcludeId);
+  }
+
+  /** Home pattern: closer + novel destinations inside an expanding learning ring. */
+  _pickHomeDestination(from, alsoExcludeId = null) {
+    const samples = this.recall && typeof this.recall.homeMasterySamples === 'function'
+      ? this.recall.homeMasterySamples(this.cityId || 'amsterdam')
+      : [];
+    const picked = CanalRecallRoute.pickHomeDestination(
+      this.routePois, from, samples, undefined, alsoExcludeId);
+    if (picked) {
+      this._homeLearningRadiusKm = picked.radiusKm;
+      try {
+        localStorage.setItem('canalRecall.homeLearningRadius.v1', JSON.stringify({
+          cityId: this.cityId || 'amsterdam',
+          address: (this._prefs().homeAddress || '').trim(),
+          radiusKm: picked.radiusKm,
+          at: Date.now(),
+        }));
+      } catch (_) { /* ignore */ }
+      return picked.poi;
+    }
+    this._homeLearningRadiusKm = null;
+    return this._pickDestinationNear(from, alsoExcludeId);
   }
 
   // Nearest POI to `target` that actually snaps onto the mapped network.
@@ -396,33 +589,195 @@ class GameRouteRuntime {
   // usable if this fetch fails or is slow.
 
   async _loadRoutePoiCatalog() {
+    const city = this._activeCity();
+    if (this.travelMode === 'transit') {
+      await this._loadTransitRoutePois(city);
+      return;
+    }
+    const curated = this._curatedRoutePois();
     try {
-      const response = await fetch(new URL(ROUTE_POI_CATALOG_URL, window.location.href));
+      const catalogUrl = `${city.extractPath}/landmarks.json`;
+      const response = await fetch(new URL(catalogUrl, window.location.href));
       if (!response.ok) throw new Error(`landmark catalog ${response.status}`);
       const features = await response.json();
-      const seen = new Set(CANAL_ROUTE_POIS.map(poi => this._normaliseCanalName(poi.name)));
+      const seen = new Set(curated.map(poi => this._normaliseCanalName(poi.name)));
       const extras = [];
       for (const feature of features) {
         const centre = feature.center;
         if (!centre || !feature.name) continue;
+        // Completing a route must reveal something worth learning. The raw
+        // extract also contains named OSM features with no article, fact or
+        // image; those remain map geometry rather than empty arrival rewards.
+        if (!CanalRecallRoute.isTeachableRouteDestination(feature)) continue;
         const key = this._normaliseCanalName(feature.name);
         if (seen.has(key)) continue;
         const poi = { id: `lm-${feature.id}`, name: feature.name, lat: centre[0], lng: centre[1],
                       prominence: feature.prominenceScore || 0, type: feature.type || 'landmark' };
-        if (Game._kmBetween(poi, AMSTERDAM_CENTRE) > ROUTE_POI_MAX_KM_FROM_CENTRE) continue;
+        if (Game._kmBetween(poi, city.center) > ROUTE_POI_MAX_KM_FROM_CENTRE) continue;
         seen.add(key);
         extras.push(poi);
       }
       extras.sort((a, b) => b.prominence - a.prominence);
-      this.routePois = [...CANAL_ROUTE_POIS, ...extras];
-      for (const poi of extras) {
-        this._routeFrom.add(new Option(poi.name, poi.id));
-        this._routeTo.add(new Option(poi.name, poi.id));
+      this.routePois = [...curated, ...extras];
+      // Rebuild destination selects from the active city's pool.
+      if (this._routeFrom && this._routeTo) {
+        this._routeFrom.innerHTML = '';
+        this._routeTo.innerHTML = '';
+        for (const poi of this.routePois) {
+          this._routeFrom.add(new Option(poi.name, poi.id));
+          this._routeTo.add(new Option(poi.name, poi.id));
+        }
+        if (this.routeFrom) this._routeFrom.value = this.routeFrom.id;
+        if (this.routeTo) this._routeTo.value = this.routeTo.id;
       }
-      console.info(`Route destinations: ${this.routePois.length} (${CANAL_ROUTE_POIS.length} curated + ${extras.length} from the extract)`);
+      console.info(`Route destinations (${city.name}): ${this.routePois.length} (${curated.length} curated + ${extras.length} from the extract)`);
     } catch (error) {
+      this.routePois = [...curated];
       console.warn('Landmark route catalog unavailable, using the curated list:', error);
     }
+  }
+
+  async _loadTransitRoutePois(city) {
+    const Transit = window.CanalRecallTransit;
+    try {
+      const dataUrl = new URL(`${city.extractPath}/transit-network.json`, window.location.href);
+      const response = await fetch(dataUrl);
+      if (!response.ok) throw new Error(`transit-network ${response.status}`);
+      const network = await response.json();
+      const load = Transit.adaptTransitNetwork(network, {
+        playableRefs: [],
+        playableModes: Transit.TRANSIT_DRIVEABLE_MODES,
+        cityId: city.id,
+      });
+      this._transitPlayLoad = load;
+      this.routePois = Transit.transitRouteAnchors(load);
+      try {
+        const transferUrl = new URL(`${city.extractPath}/transit-transfers.json`, window.location.href);
+        const transferResponse = await fetch(transferUrl);
+        this._transitTransfersCatalog = transferResponse.ok ? await transferResponse.json() : null;
+      } catch (_) {
+        this._transitTransfersCatalog = null;
+      }
+      if (this._routeFrom && this._routeTo) {
+        this._routeFrom.innerHTML = '';
+        this._routeTo.innerHTML = '';
+        for (const poi of this.routePois) {
+          this._routeFrom.add(new Option(poi.name, poi.id));
+          this._routeTo.add(new Option(poi.name, poi.id));
+        }
+      }
+      console.info(`Transit destinations (${city.name}): ${this.routePois.length} stop anchors`);
+    } catch (error) {
+      this.routePois = [];
+      this._transitPlayLoad = null;
+      this._transitTransfersCatalog = null;
+      console.warn('Transit route anchors unavailable:', error);
+    }
+  }
+
+  /** Phase E: single- or two-leg plan between the chosen stop anchors. */
+  _planTransitConnection() {
+    const Transit = window.CanalRecallTransit;
+    const load = this.osmLoader && this.osmLoader.transitLoad;
+    this._transitConnectionPlan = null;
+    this._transitLegIndex = 0;
+    this._transitFinalFinish = null;
+    if (!Transit || !load || typeof Transit.planTransitConnection !== 'function') return;
+    const fromId = Transit.resolveRouteStopId(load.stops, this.routeFrom);
+    const toId = Transit.resolveRouteStopId(load.stops, this.routeTo);
+    if (!fromId || !toId) return;
+    const plan = Transit.planTransitConnection(
+      load,
+      this.osmLoader.transitTransfers || null,
+      fromId,
+      toId,
+    );
+    this._transitConnectionPlan = plan;
+    if (plan && plan.legs.length > 1) {
+      console.info(
+        `Transit connection: ${plan.legs.map((leg) => leg.lineName).join(' → ')}`
+        + (plan.transferStopId ? ` (change at ${plan.transferStopId})` : ''),
+      );
+    }
+  }
+
+  /** Lock the road guard onto the active leg; for leg 0 of a transfer, finish at the hub. */
+  _beginTransitLeg(legIndex) {
+    const Transit = window.CanalRecallTransit;
+    const plan = this._transitConnectionPlan;
+    const load = this.osmLoader && this.osmLoader.transitLoad;
+    if (!this.track || typeof this.track.setPreferredCorridor !== 'function') return;
+
+    this._transitLegIndex = legIndex;
+    const leg = Transit && Transit.currentTransitLeg
+      ? Transit.currentTransitLeg(plan, legIndex)
+      : (plan && plan.legs && plan.legs[legIndex]) || null;
+    if (leg) this.track.setPreferredCorridor(leg.lineName);
+    else this.track.setPreferredCorridor(null);
+
+    if (!plan || !Transit || !load) return;
+
+    if (legIndex === 0 && Transit.canAdvanceTransitLeg && Transit.canAdvanceTransitLeg(plan, 0)) {
+      const hub = load.stops.find((stop) => stop.stopId === plan.transferStopId);
+      if (hub && hub.center && this.track.finishPoint) {
+        this._transitFinalFinish = {
+          x: this.track.finishPoint.x,
+          y: this.track.finishPoint.y,
+        };
+        const hubWorld = this._toWorld(hub.center[0], hub.center[1]);
+        if (hubWorld) {
+          this.track.finishPoint = hubWorld;
+          if (this.player) {
+            this._routeLearningPlan = this.track.planRoute(
+              { x: this.player.x, y: this.player.y },
+              hubWorld,
+            );
+          } else if (this.track.startPoint) {
+            this._routeLearningPlan = this.track.planRoute(this.track.startPoint, hubWorld);
+          }
+          this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : this.routePath;
+          if (typeof this._idealRouteLength === 'function') {
+            this._plannedRouteLengthPx = this._idealRouteLength();
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Board the second leg at the hub. Returns true when the race should continue
+   * instead of finishing.
+   */
+  _tryAdvanceTransitLeg() {
+    const Transit = window.CanalRecallTransit;
+    const plan = this._transitConnectionPlan;
+    if (!Transit || !plan || typeof Transit.advanceTransitLeg !== 'function') return false;
+    const advanced = Transit.advanceTransitLeg(plan, this._transitLegIndex || 0);
+    if (!advanced) return false;
+    if (!this._transitFinalFinish || !this.track || !this.player) return false;
+
+    this._transitLegIndex = advanced.legIndex;
+    this.track.setPreferredCorridor(advanced.lineName);
+    this._activeTransitLine = '';
+    this.quizCurrentName = '';
+    this.quizFeedback = `Change to ${advanced.lineName}`;
+    this.track.finishPoint = this._transitFinalFinish;
+    this._transitFinalFinish = null;
+    this._routeLearningPlan = this.track.planRoute(
+      { x: this.player.x, y: this.player.y },
+      this.track.finishPoint,
+    );
+    this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : [];
+    this._plannedRouteLengthPx = this._idealRouteLength ? this._idealRouteLength() : 0;
+    if (this.vectorMap && this.routePath) {
+      this.vectorMap.setRoute(this.routePath, this.osmLoader, this.routeOptions.line);
+    }
+    console.info(`Transit leg 2: riding ${advanced.lineName} to destination`);
+    return true;
+  }
+
+  _isGenerousSnapOrigin(poi) {
+    return !!(poi && (poi.id === 'home' || poi.id === 'here'));
   }
 
   _launchPoiRoute(from, to) {
@@ -448,13 +803,27 @@ class GameRouteRuntime {
       return;
     }
     this.homeLeg = 'outbound';
-    this._launchPoiRoute(this.homeBase, this._pickDestinationNear(this.homeBase, this.routeFrom.id));
+    this._launchPoiRoute(this.homeBase, this._pickHomeDestination(this.homeBase, this.routeFrom.id));
   }
 
   _returnToRouteSetup(message) {
-    this.state = GameState.MENU;
     this._setRouteError(message || '');
-    this._overlay.store.setSetupOpen(true);
+    this._openRouteSetup();
+  }
+
+  /** Leave the ride and show route setup (pause M, finish Esc, settings). */
+  _openRouteSetup() {
+    this._closeUtilityPanels();
+    if (this.sound && typeof this.sound.silence === 'function') this.sound.silence();
+    // Drop an in-flight quiz so it does not sit invisible under the setup rail.
+    if (this.quizPromptName && this._prompt) {
+      this.quizPromptName = '';
+      this.quizPromptKind = null;
+      this._prompt.style.display = 'none';
+    }
+    this.state = GameState.MENU;
+    if (this._overlay && this._overlay.store) this._overlay.store.setSetupOpen(true);
+    history.replaceState(null, '', window.location.pathname);
   }
 
   _checkShareLink() {
@@ -476,6 +845,33 @@ class GameRouteRuntime {
     this._seenStreetKnowledge = new Set();
     this._clearLandmarkNotice();
 
+    this._lastTransitStopQuizAt = -Infinity;
+    this._lastTransitLineQuizAt = -Infinity;
+    this._lastTransitStreetQuizAt = -Infinity;
+    this._lastTransitTransferQuizAt = -Infinity;
+    this._quizzedTransitStops = new Set();
+    this._quizzedTransitStreets = new Set();
+    this._quizzedTransitTransfers = new Set();
+    this._coldOpenDone = false;
+    this._explorationRouteGain = null;
+    this._finishPassportFresh = [];
+    this._finishPlaceStreakLabel = null;
+    this._activeTransitLine = '';
+    this._transitLineStickyAt = null;
+    this._transitConnectionPlan = null;
+    this._transitLegIndex = 0;
+    this._transitFinalFinish = null;
+    this.quizPromptSubject = '';
+
+    // Transit: plan legs and lock the corridor *before* spawn heading, so the
+    // road under the vehicle is the first leg — not a crossing metro at the hub.
+    if (this.travelMode === 'transit') {
+      this._planTransitConnection();
+      this._beginTransitLeg(0);
+    } else if (this.track && typeof this.track.setPreferredCorridor === 'function') {
+      this.track.setPreferredCorridor(null);
+    }
+
     // No heading yet: this is the call that produces one. The explicit null is
     // what `check-road-name-heading.ts` accepts in place of `player.angle`.
     const startInfo = this.track.getNearestRoad(this.track.startPoint.x, this.track.startPoint.y, null);
@@ -486,10 +882,14 @@ class GameRouteRuntime {
     // Player at start
     this.player = new PlayerCar(startX, startY, startAngle);
     this.player.controlMode = this.controlMode;
+    // Absolute steering is screen-relative, so the player reads the camera's
+    // rotation each frame.
+    this.player.camera = this.camera;
     this.player.isBoat = this.travelMode === 'boat';
     if (this.player.isBoat) {
       this.player.turnRate *= 1.18;
     } else {
+      // Bike and transit both use corridor / road physics.
       this.player.turnRate *= PLAYER_CAR_TURN_MULT;
       this.player.driftFactor = PLAYER_CAR_DRIFT_FACTOR;
       this.player.maxSpeed *= PLAYER_CAR_SPEED_MULT;
@@ -498,10 +898,33 @@ class GameRouteRuntime {
       this.player.liftOffBraking = PLAYER_CAR_LIFT_OFF_BRAKING;
     }
     this.cars.push(this.player);
+    this.learnedStopNames = new Set();
 
     // Canal Recall intentionally starts with a quiet network: the experiment
-    // is navigation and name recall, not traffic avoidance.
-    this.quizCurrentName = this.track.getRoadName(startX, startY, this.player.angle);
+    // is navigation and name recall, not traffic avoidance. Transit must not
+    // pre-reveal the line on the plaque — ask it after settle instead.
+    // Mission punchline names the *destination*, never the start corridor.
+    const brief = (typeof this._composeMissionBrief === 'function')
+      ? this._composeMissionBrief()
+      : null;
+    if (this.travelMode === 'transit') {
+      this.quizCurrentName = '';
+      this.quizFeedback = (brief && brief.line) || '';
+      // Replan from the player now that they exist (hub finish already set).
+      if (this._transitConnectionPlan && this.track.finishPoint) {
+        this._routeLearningPlan = this.track.planRoute(
+          { x: this.player.x, y: this.player.y },
+          this.track.finishPoint,
+        );
+        this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : this.routePath;
+        if (typeof this._idealRouteLength === 'function') {
+          this._plannedRouteLengthPx = this._idealRouteLength();
+        }
+      }
+    } else {
+      this.quizCurrentName = this.track.getRoadName(startX, startY, this.player.angle);
+      this.quizFeedback = (brief && brief.line) || '';
+    }
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
     this.quizPromptName = '';
@@ -512,7 +935,6 @@ class GameRouteRuntime {
     this.quizPoints = 0;
     this.quizStreak = 0;
     this.quizBestStreak = 0;
-    this.quizFeedback = this.quizCurrentName ? `Starting on ${this.quizCurrentName}` : '';
     this.quizPromptKind = 'route';
     this._quizzedCrossings = new Map();
     this._learnedBridges = new Map();
@@ -526,6 +948,21 @@ class GameRouteRuntime {
 
     this.camera.x = this.player.x;
     this.camera.y = this.player.y;
+    this.camera._lookahead = 0;
+    this.camera.resetPan();
+    // Snap the basemap onto the boat before the first paint — sync only runs
+    // once RACING draws, and without this the map can still show Damrak for a
+    // frame (or sit off-centre until camera smoothing catches up).
+    if (this.vectorMap && typeof this.vectorMap.aimAtWorld === 'function') {
+      const bearing = this.camera.northUp ? 0 : (this.player.angle + Math.PI / 2) * 180 / Math.PI;
+      const pitch = typeof this.vectorMap.pitchForViewMode === 'function'
+        ? this.vectorMap.pitchForViewMode(this.viewMode)
+        : undefined;
+      this.vectorMap.aimAtWorld(this.player.x, this.player.y, this.osmLoader, { bearing, pitch });
+      if (typeof this.vectorMap._pitchSmoothed !== 'undefined') {
+        this.vectorMap._pitchSmoothed = pitch;
+      }
+    }
     this._warmRouteNeighborhoodImages();
   }
 
@@ -546,13 +983,20 @@ class GameRouteRuntime {
     this.state = GameState.LOADING;
     this._loadingAborted = false;
     this.loadingProgress = 0.05;
-    const networkNoun = this.travelMode === 'car' ? 'streets' : 'waterways';
-    this.loadingMessage = `Loading Amsterdam ${networkNoun}...`;
+    const Prefs = window.CanalRecallPreferences;
+    const profile = Prefs && Prefs.travelProfile
+      ? Prefs.travelProfile(this.travelMode)
+      : { networkNoun: this.travelMode === 'car' ? 'streets' : 'waterways',
+          networkNounSingular: this.travelMode === 'car' ? 'street' : 'waterway' };
+    const networkNoun = profile.networkNoun;
+    this.loadingMessage = this.travelMode === 'transit'
+      ? `Mapping ${this._activeCity().name} tram lines...`
+      : `Loading ${this._activeCity().name} ${networkNoun}...`;
 
     try {
       // Step 1: Fetch from Overpass API (tries multiple servers)
       this.loadingProgress = 0.1;
-      const ways = await this.osmLoader.fetchRoads(lat, lng, OSM_FETCH_RADIUS, this.travelMode);
+      const ways = await this.osmLoader.fetchRoads(lat, lng, OSM_FETCH_RADIUS, this.travelMode, this.cityId);
       if (this._loadingAborted) return;
 
       if (ways.length === 0) {
@@ -562,7 +1006,7 @@ class GameRouteRuntime {
       }
 
       // Step 2: Build road segments
-      this.loadingMessage = `Building ${this.travelMode === 'car' ? 'street' : 'canal'} network...`;
+      this.loadingMessage = `Building ${profile.networkNounSingular} network...`;
       this.loadingProgress = 0.3;
       const segments = this.osmLoader.buildRoadSegments(ways, lat, lng);
 
@@ -580,20 +1024,20 @@ class GameRouteRuntime {
       if (this._loadingAborted) return;
 
       // Step 4: Find start/finish — use user-picked points or auto-find
-      this.loadingMessage = `Choosing a starting ${this.travelMode === 'car' ? 'street' : 'waterway'}...`;
+      this.loadingMessage = `Choosing a starting ${profile.networkNounSingular}...`;
       this.loadingProgress = 0.6;
 
       let start, finish;
       if (startLL && finishLL) {
         // Convert user-picked lat/lng to game coordinates
-        const startSnapLimit = this.routeFrom && this.routeFrom.id === 'home' ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
-        const finishSnapLimit = this.routeTo && this.routeTo.id === 'home' ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
+        const startSnapLimit = this._isGenerousSnapOrigin(this.routeFrom) ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
+        const finishSnapLimit = this._isGenerousSnapOrigin(this.routeTo) ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST;
         start = this.osmLoader.latLngToGamePoint(startLL.lat, startLL.lng, lat, lng, segments, startSnapLimit);
         finish = this.osmLoader.latLngToGamePoint(finishLL.lat, finishLL.lng, lat, lng, segments, finishSnapLimit);
         // Not every landmark in the extract sits within snapping range of a
         // mapped waterway or street. Rather than bouncing the player back to
         // the setup screen, swap in the nearest destination that does snap.
-        if (!start && this.routeFrom && this.routeFrom.id !== 'home') {
+        if (!start && this.routeFrom && !this._isGenerousSnapOrigin(this.routeFrom)) {
           const swap = this._nearestSnappableDestination(startLL, segments, lat, lng, startSnapLimit, this.routeTo?.id);
           if (swap) {
             start = swap.point;
@@ -626,7 +1070,9 @@ class GameRouteRuntime {
       if (!start || !finish) {
         this.loadingMessage = this.routePattern === 'home'
           ? 'That address is too far from a connected mapped waterway. Try a nearby bridge or canal-side address.'
-          : 'Could not place start/finish. Try different points.';
+          : this.routePattern === 'here'
+            ? 'Could not snap your location to a mapped street or waterway. Move closer to the network, or try Surprise.'
+            : 'Could not place start/finish. Try different points.';
         setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 2500);
         return;
       }
@@ -640,7 +1086,11 @@ class GameRouteRuntime {
       }
 
       // Step 5: Create the waterway network using Smokey's spatial engine.
-      this.loadingMessage = 'Rendering waterways...';
+      this.loadingMessage = this.travelMode === 'transit'
+        ? 'Rendering tram lines...'
+        : this.travelMode === 'car'
+          ? 'Rendering streets...'
+          : 'Rendering waterways...';
       this.loadingProgress = 0.8;
 
       // Use a small delay to let the loading screen render
@@ -648,9 +1098,49 @@ class GameRouteRuntime {
       if (this._loadingAborted) return;
 
       this.track = new RoadNetwork(segments, start, finish, tiles);
-      this._routeMastery = this.recall ? this.recall.routeMastery('amsterdam') : {};
+      this._routeMastery = this.recall ? this.recall.routeMastery(this.cityId || 'amsterdam') : {};
+      this._routeReviewDue = this.recall && typeof this.recall.routeReviewDue === 'function'
+        ? this.recall.routeReviewDue(this.cityId || 'amsterdam')
+        : {};
       this.track.setRouteMastery(this._routeMastery);
+      if (this.routePattern === 'home' && this.homeBase && this._homeLearningRadiusKm > 0) {
+        const homePoint = this.osmLoader.latLngToGamePoint(
+          this.homeBase.lat, this.homeBase.lng, lat, lng, segments, HOME_MAX_SNAP_DIST)
+          || (this.routeFrom && this.routeFrom.id === 'home' ? start : null)
+          || (this.routeTo && this.routeTo.id === 'home' ? finish : null);
+        if (homePoint) {
+          const ppm = (typeof PIXELS_PER_METER === 'number' && PIXELS_PER_METER > 0)
+            ? PIXELS_PER_METER
+            : 3;
+          this.track.setHomeBias({
+            x: homePoint.x,
+            y: homePoint.y,
+            radius: this._homeLearningRadiusKm * 1000 * ppm,
+            outsidePenalty: 0.25,
+          });
+        }
+      } else if (typeof this.track.setHomeBias === 'function') {
+        this.track.setHomeBias(null);
+      }
       if (this.travelMode === 'boat') this.track.waterTest = (x, y) => this.vectorMap.isWater(x, y, this.osmLoader);
+      // Aim the basemap at the start while the loading overlay is still up so
+      // LoD1 tiles download under the spawn — not on Damrak, and not as a hitch
+      // on the first racing frame.
+      if (this.vectorMap && typeof this.vectorMap.aimAtWorld === 'function') {
+        const pitch = typeof this.vectorMap.pitchForViewMode === 'function'
+          ? this.vectorMap.pitchForViewMode(this.viewMode)
+          : undefined;
+        this.vectorMap.aimAtWorld(start.x, start.y, this.osmLoader, { pitch });
+        if (typeof this.vectorMap._pitchSmoothed !== 'undefined') {
+          this.vectorMap._pitchSmoothed = pitch;
+        }
+      }
+      if (typeof this.vectorMap.setTransitNetwork === 'function') {
+        this.vectorMap.setTransitNetwork(
+          this.osmLoader.transitLoad,
+          this.travelMode === 'transit',
+        );
+      }
       this._routeLearningPlan = this.track.planRoute(start, finish);
       this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : [];
       if (!this.routePath || this.routePath.length < 2) {
@@ -669,7 +1159,7 @@ class GameRouteRuntime {
           this._routeLearningPlan = this.track.planRoute(start, finish);
           if (this._routeLearningPlan) this.routePath = this._routeLearningPlan.path;
           console.info(`Destination retargeted to ${retarget.poi.name}: the original was unreachable from the start`);
-        } else if (this.routePattern === 'surprise' && this._routeRerolls < MAX_ROUTE_REROLLS) {
+        } else if ((this.routePattern === 'surprise' || this.routePattern === 'here') && this._routeRerolls < MAX_ROUTE_REROLLS) {
           // Nothing in the pool is reachable, so the *origin* is stranded in a
           // disconnected component — most often a Noord canal cut off from the
           // centre by the IJ. Re-roll the pair rather than play a route with
@@ -688,9 +1178,17 @@ class GameRouteRuntime {
       this.renderer.preRenderTrack(this.track);
 
       // Step 5: Setup race
+      this.loadingMessage = 'Settling the map...';
+      this.loadingProgress = 0.92;
+      this._setupRace();
+
+      // Hold briefly until MapLibre finishes the first idle at the spawn so
+      // the handoff into racing is not a Damrak→neighbourhood jump mid-frame.
+      await this._waitForMapSettle(2800);
+      if (this._loadingAborted) return;
+
       this.loadingMessage = 'Ready!';
       this.loadingProgress = 1.0;
-      this._setupRace();
 
       // Generate leaderboard key from route coordinates
       this._raceKey = (startLL && finishLL)
@@ -706,7 +1204,7 @@ class GameRouteRuntime {
         this._shareUrl = null;
       }
 
-      await new Promise(r => setTimeout(r, 300));
+      await new Promise(r => setTimeout(r, 200));
 
       this.state = GameState.RACING;
 
@@ -715,6 +1213,39 @@ class GameRouteRuntime {
       this.loadingMessage = 'Error: ' + (err.message || 'Failed to load waterways');
       setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 3000);
     }
+  }
+
+  /**
+   * Wait for the basemap to finish its first idle at the aimed spawn, or until
+   * maxMs — whichever comes first. Prevents racing into a still-loading tile
+   * cascade.
+   */
+  _waitForMapSettle(maxMs = 2500) {
+    return new Promise((resolve) => {
+      const map = this.vectorMap && this.vectorMap.map;
+      if (!map || !this.vectorMap.ready) {
+        setTimeout(resolve, Math.min(900, maxMs));
+        return;
+      }
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        resolve();
+      };
+      const timer = setTimeout(finish, maxMs);
+      const onIdle = () => {
+        clearTimeout(timer);
+        // One short breath after idle so follow-on tile requests can land.
+        setTimeout(finish, 450);
+      };
+      try {
+        map.once('idle', onIdle);
+      } catch (_) {
+        clearTimeout(timer);
+        setTimeout(finish, Math.min(900, maxMs));
+      }
+    });
   }
 
   // ---- Main Loop ----

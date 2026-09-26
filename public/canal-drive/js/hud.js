@@ -69,7 +69,7 @@ class HUD {
     return `${cut.trimEnd()}…`;
   }
 
-  /** Always-on north rose. The north half is the one gold accent on the HUD;
+  /** Always-on north rose. The north half is the one copper accent on the HUD;
    *  the south half is dim so the needle has a front. */
   drawCompass(ctx, camera) {
     const ui = window.CanalRecallUi;
@@ -90,7 +90,7 @@ class HUD {
 
     ctx.save();
     ctx.translate(cx, cy);
-    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+    ctx.strokeStyle = surface.border;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.arc(0, 0, radius + 4, 0, Math.PI * 2);
@@ -105,7 +105,7 @@ class HUD {
     ctx.lineTo(-radius * 0.45, radius * 0.42);
     ctx.closePath();
     ctx.fill();
-    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.fillStyle = surface.controlKnob;
     ctx.beginPath();
     ctx.moveTo(-radius * 0.18, 0);
     ctx.lineTo(-radius * 0.45, -radius * 0.42);
@@ -114,7 +114,7 @@ class HUD {
     ctx.closePath();
     ctx.fill();
     // "N" sits on the needle, inside the chip so a round card does not clip it.
-    ctx.fillStyle = '#071430';
+    ctx.fillStyle = '#fbf8f2';
     ctx.font = this._font(800, Math.max(9, Math.round(size * 0.24)), surface.fontPlaque);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -229,7 +229,7 @@ class HUD {
   drawPlaque(ctx, {
     routeName = '', neighborhood = '', answerHidden = false,
     correct = 0, attempts = 0, points = 0, streak = 0, gamey = true,
-    trip = '', feedback = '',
+    trip = '', feedback = '', restrictionNote = '',
   } = {}) {
     const surface = window.CanalRecallUi.hudSurface;
     const anchor = this._rect('recall', { x: 15, y: 15, width: 310, height: 43 });
@@ -238,7 +238,8 @@ class HUD {
     const pad = 12;
     const nameSize = compact ? 19 : 21;
     const lineH = compact ? 15 : 16;
-    const wanted = pad + nameSize + 4 + lineH + lineH + (feedback ? lineH : 0) + pad - 2;
+    const extraLines = (feedback ? 1 : 0) + (restrictionNote ? 1 : 0);
+    const wanted = pad + nameSize + 4 + lineH + lineH + (extraLines * lineH) + pad - 2;
     const available = slot ? (slot.y + slot.height - anchor.y) : wanted;
     const rect = { x: anchor.x, y: anchor.y, width: anchor.width, height: Math.min(wanted, available) };
     this.paperCard(ctx, rect);
@@ -289,6 +290,14 @@ class HUD {
       ctx.font = this._font(700, 11, surface.fontMono);
       ctx.fillText(`${streak} streak · ${mult}×`, right, y);
       ctx.textAlign = 'left';
+    }
+
+    // Real-world bike ban on a still-playable corridor — never names the street.
+    if (restrictionNote) {
+      y += lineH;
+      ctx.font = this._font(600, 11, surface.fontUi);
+      ctx.fillStyle = surface.accent;
+      ctx.fillText(this._fit(ctx, restrictionNote, inner), left, y);
     }
 
     if (feedback) {
@@ -374,14 +383,72 @@ class HUD {
     if (!overview || !game.track) return;
     const rect = this._rect('minimap', { x: MINIMAP_X, y: CANVAS_H - MINIMAP_H - 15, width: MINIMAP_W, height: MINIMAP_H });
 
-    // The cache is keyed on the rectangle as well as the track: rotating a
-    // phone changes the overview from 260x200 to 124x96, and a cache keyed on
-    // the track alone would blit the old size into the new box.
-    const cacheKey = `${rect.width}x${rect.height}`;
+    // The cache is keyed on the rectangle, the track, and how much of the
+    // network is painted as known / due. Rotating a phone changes 260×200 → 124×96;
+    // answering more streets raises mastery without changing the track.
+    const mastery = game._routeMastery || {};
+    const reviewDue = game._routeReviewDue || {};
+    const nameKey = (name) => String(name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    const bandOf = overview.overviewMasteryBand
+      || ((value) => ((value || 0) >= 0.75 ? 'mastered' : (value || 0) >= 0.45 ? 'known' : (value || 0) >= 0.25 ? 'learning' : 'fog'));
+    const isWater = overview.isWaterSegmentType || (() => false);
+
+    let stampLearning = 0;
+    let stampKnown = 0;
+    let stampMastered = 0;
+    let stampDue = 0;
+    let stampWater = 0;
+    for (const [key, value] of Object.entries(mastery)) {
+      const band = bandOf(value || 0);
+      if (band === 'learning') stampLearning += 1;
+      else if (band === 'known') stampKnown += 1;
+      else if (band === 'mastered') stampMastered += 1;
+      void key;
+    }
+    stampDue = Object.keys(reviewDue).length;
+    for (const segment of game.track.segments || []) {
+      if (isWater(segment.type)) stampWater += 1;
+    }
+    const cacheKey = `${rect.width}x${rect.height}|L${stampLearning}|K${stampKnown}|M${stampMastered}|D${stampDue}|W${stampWater}`;
     if (this._overviewTrack !== game.track || this._overviewKey !== cacheKey || !this._overviewCache) {
+      const fog = [];
+      const fogWater = [];
+      const learning = [];
+      const learningWater = [];
+      const known = [];
+      const knownWater = [];
+      const mastered = [];
+      const masteredWater = [];
+      const due = [];
+      const dueWater = [];
+      for (const segment of game.track.segments || []) {
+        const points = segment.points || [];
+        if (points.length < 2) continue;
+        const key = nameKey(segment.name);
+        const water = isWater(segment.type);
+        if (key && reviewDue[key]) {
+          (water ? dueWater : due).push(points);
+          continue;
+        }
+        const band = key ? bandOf(mastery[key] || 0) : 'fog';
+        if (band === 'mastered') (water ? masteredWater : mastered).push(points);
+        else if (band === 'known') (water ? knownWater : known).push(points);
+        else if (band === 'learning') (water ? learningWater : learning).push(points);
+        else (water ? fogWater : fog).push(points);
+      }
       const built = overview.buildOverview({
         areaRings: (game.neighborhoods || []).flatMap(hood => hood.rings || []),
-        networkSegments: (game.track.segments || []).map(segment => segment.points || []),
+        networkSegments: fog,
+        waterNetworkSegments: fogWater,
+        learningNetworkSegments: learning,
+        learningWaterSegments: learningWater,
+        knownNetworkSegments: known,
+        knownWaterSegments: knownWater,
+        masteredNetworkSegments: mastered,
+        masteredWaterSegments: masteredWater,
+        reviewDueNetworkSegments: due,
+        reviewDueWaterSegments: dueWater,
         route: game.routePath || [],
         start: game.track.startPoint || null,
         finish: game.track.finishPoint || null,
@@ -511,19 +578,21 @@ class HUD {
 
   // The hint used to paint the whole screen in three translucent slabs
   // labelled STEER / BRAKE / GAS, because the controls were invisible and had
-  // to be explained. The pad is visible now, so this is one line that fades.
-  drawTouchHint(ctx) {
+  // to be explained. The stick is visible now, so this is one line that fades.
+  drawTouchHint(ctx, controlMode) {
     const layout = this.layout;
     if (!layout?.dpad) return;
     const theme = window.CanalRecallUi.hudSurface;
     const pad = layout.dpad;
-    const text = 'steer with the pad — it drives itself';
+    const text = controlMode === 'absolute'
+      ? 'hold here and point where you want to go'
+      : 'hold here to drive — slide to steer, pull back to brake';
     ctx.save();
     ctx.font = `500 12px ${theme.fontUi}`;
     ctx.textAlign = 'center';
     const width = Math.min(ctx.measureText(text).width + 22, CANVAS_W - 16);
-    // Clamped on screen: in landscape the pad sits at the left edge, and a hint
-    // centred on it started at x = -62.
+    // Clamped on screen: in landscape the zone sits at the left edge, and a
+    // hint centred on it started at x = -62.
     const x = Math.max(8, Math.min(pad.cx - width / 2, CANVAS_W - width - 8));
     const rect = { x, y: pad.bounds.y - 30, width, height: 22 };
     this.paperCard(ctx, rect, { radius: 9 });
@@ -532,66 +601,65 @@ class HUD {
     ctx.restore();
   }
 
-  // The d-pad. Drawn as one ring with four arrows so it reads as a control
-  // rather than four loose buttons, and kept translucent so the corridor it
-  // sits over stays visible.
-  drawDpad(ctx, pressed) {
+  // The thumbstick. Idle, it is a faint ring in the zone so it can be found;
+  // held, the base sits under the thumb's landing point and the knob follows
+  // the thumb, clamped to the rim. Translucent so the corridor stays visible.
+  drawStick(ctx, view) {
     const layout = this.layout;
     if (!layout?.dpad) return;
-    const surface = window.CanalRecallUi.hudSurface;
+    const ui = window.CanalRecallUi;
+    const surface = ui.hudSurface;
     const pad = layout.dpad;
-    const { cx, cy, cell } = pad;
-    const radius = pad.bounds.width / 2;
+    const radius = view ? view.radius : ui.stickRadius(pad);
+    const base = view ? view.origin : { x: pad.cx, y: pad.cy };
 
     ctx.save();
     ctx.shadowColor = surface.shadow;
-    ctx.shadowBlur = 16;
-    ctx.shadowOffsetY = 4;
+    ctx.shadowBlur = 14;
+    ctx.shadowOffsetY = 3;
     ctx.fillStyle = surface.control;
     ctx.beginPath();
-    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.arc(base.x, base.y, radius + 10, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
     ctx.strokeStyle = surface.border;
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.arc(base.x, base.y, radius + 10, 0, Math.PI * 2);
     ctx.stroke();
 
-    const arrows = [
-      { key: 'ArrowUp', dx: 0, dy: -1, rotation: -Math.PI / 2 },
-      { key: 'ArrowDown', dx: 0, dy: 1, rotation: Math.PI / 2 },
-      { key: 'ArrowLeft', dx: -1, dy: 0, rotation: Math.PI },
-      { key: 'ArrowRight', dx: 1, dy: 0, rotation: 0 },
-    ];
-    for (const arrow of arrows) {
-      const active = !!pressed?.[arrow.key];
-      const ax = cx + arrow.dx * cell;
-      const ay = cy + arrow.dy * cell;
-      if (active) {
-        ctx.fillStyle = surface.controlPressed;
-        ctx.beginPath();
-        ctx.arc(ax, ay, cell * 0.46, 0, Math.PI * 2);
-        ctx.fill();
-      }
+    // Four quiet ticks so the idle ring still reads as "a thing you push".
+    ctx.fillStyle = surface.controlInk;
+    ctx.globalAlpha = view ? 0.35 : 0.6;
+    for (let i = 0; i < 4; i++) {
+      const angle = i * Math.PI / 2;
       ctx.save();
-      ctx.translate(ax, ay);
-      ctx.rotate(arrow.rotation);
-      ctx.fillStyle = active ? '#fffdf8' : surface.controlInk;
-      const size = cell * 0.26;
+      ctx.translate(base.x + Math.cos(angle) * radius, base.y + Math.sin(angle) * radius);
+      ctx.rotate(angle);
       ctx.beginPath();
-      ctx.moveTo(size, 0);
-      ctx.lineTo(-size * 0.72, -size * 0.86);
-      ctx.lineTo(-size * 0.72, size * 0.86);
+      ctx.moveTo(5, 0);
+      ctx.lineTo(-3, -5);
+      ctx.lineTo(-3, 5);
       ctx.closePath();
       ctx.fill();
       ctx.restore();
     }
+    ctx.globalAlpha = 1;
 
-    // A hub, so the dead centre reads as deliberately dead.
-    ctx.fillStyle = surface.border;
+    let knobX = base.x, knobY = base.y;
+    if (view) {
+      const dx = view.point.x - base.x;
+      const dy = view.point.y - base.y;
+      const distance = Math.hypot(dx, dy);
+      const reach = Math.min(distance, radius);
+      if (distance > 0) { knobX = base.x + dx / distance * reach; knobY = base.y + dy / distance * reach; }
+    }
+    ctx.fillStyle = view?.vector ? surface.controlPressed : surface.controlKnob;
     ctx.beginPath();
-    ctx.arc(cx, cy, cell * 0.13, 0, Math.PI * 2);
+    ctx.arc(knobX, knobY, Math.max(18, radius * 0.42), 0, Math.PI * 2);
     ctx.fill();
+    ctx.strokeStyle = surface.border;
+    ctx.stroke();
   }
+
 }

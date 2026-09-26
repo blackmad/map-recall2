@@ -30,6 +30,8 @@ class RoadNetwork {
     this.numCheckpoints = 10;
     this._frameCache = new Map();
     this._routeMastery = {};
+    this._homeBias = null;
+    this._preferredCorridorName = null;
 
     this._computeSegmentGeometry();
     this._buildGrid();
@@ -136,7 +138,8 @@ class RoadNetwork {
     const qx = Math.round(x / 5) * 5;
     const qy = Math.round(y / 5) * 5;
     const headingKey = preferredAngle == null ? '' : `:${Math.round(preferredAngle * 12)}`;
-    const cacheKey = `${qx},${qy}${headingKey}`;
+    const corridorKey = this._preferredCorridorName ? `:c:${this._preferredCorridorName}` : '';
+    const cacheKey = `${qx},${qy}${headingKey}${corridorKey}`;
     const cached = this._frameCache.get(cacheKey);
     if (cached !== undefined) return cached;
 
@@ -144,7 +147,14 @@ class RoadNetwork {
     // see the *cross* street at a junction, not only the one underfoot, so the
     // heading rule has something to choose between.
     const contacts = SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
-    const best = SURFACE.pickRoadContact(contacts, preferredAngle);
+    const best = this._preferredCorridorName && SURFACE.pickRoadContactPreferName
+      ? SURFACE.pickRoadContactPreferName(
+        contacts,
+        (segIdx) => (this.segments[segIdx] && this.segments[segIdx].name) || '',
+        this._preferredCorridorName,
+        preferredAngle,
+      )
+      : SURFACE.pickRoadContact(contacts, preferredAngle);
 
     this._frameCache.set(cacheKey, best);
     return best;
@@ -155,6 +165,19 @@ class RoadNetwork {
   // cross street, and the HUD/quiz would teach the wrong name.
   getRoadName(x, y, preferredAngle = null) {
     return SURFACE.roadNameAt(this.segments, this.getNearestRoad(x, y, preferredAngle));
+  }
+
+  // Once a quiz name has settled, choose the closest span carrying that name
+  // for its overlay. Heading was important while identifying the road at a
+  // junction, but can otherwise pull a curved-road highlight onto a straighter
+  // parallel segment beside the player.
+  getNearestRoadForName(x, y, name) {
+    const contacts = SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
+    return SURFACE.pickNearestRoadContactForName(
+      contacts,
+      (segIdx) => (this.segments[segIdx] && this.segments[segIdx].name) || '',
+      name,
+    );
   }
 
   // Return the connected run of same-name OSM ways containing the triggering
@@ -276,6 +299,18 @@ class RoadNetwork {
     this._routeMastery = mastery || {};
   }
 
+  setHomeBias(bias) {
+    this._homeBias = bias && bias.radius > 0 ? bias : null;
+  }
+
+  /** Lock road-guard + learning path cost onto one named corridor (transit leg). */
+  setPreferredCorridor(name) {
+    const next = name || null;
+    if (next === this._preferredCorridorName) return;
+    this._preferredCorridorName = next;
+    this.clearFrameCache();
+  }
+
   _edgeNames(edge) {
     return edge.segmentMetadata.map(metadata => metadata && metadata.name).filter(Boolean);
   }
@@ -287,10 +322,32 @@ class RoadNetwork {
   }
 
   _learningEdgeCost() {
-    if (!Object.keys(this._routeMastery).length) return undefined;
-    return ({ edge, distance }) => {
-      const familiarity = Math.max(0, ...this._edgeNames(edge).map(name => this._masteryForName(name)));
-      return distance * (1 + 0.18 * familiarity);
+    if (!Object.keys(this._routeMastery).length && !this._homeBias && !this._preferredCorridorName) {
+      return undefined;
+    }
+    const familiarityPenalty = 0.18;
+    const homeBias = this._homeBias;
+    const outsidePenalty = homeBias?.outsidePenalty ?? 0.25;
+    const preferred = this._preferredCorridorName;
+    const offCorridorPenalty = 3.5;
+    return ({ edge, distance, from, to }) => {
+      const familiarity = Object.keys(this._routeMastery).length
+        ? Math.max(0, ...this._edgeNames(edge).map(name => this._masteryForName(name)))
+        : 0;
+      let outside = 0;
+      if (homeBias) {
+        const midX = (from.x + to.x) * 0.5;
+        const midY = (from.y + to.y) * 0.5;
+        const dist = Math.hypot(midX - homeBias.x, midY - homeBias.y);
+        outside = Math.max(0, Math.min(1, dist / homeBias.radius - 1));
+      }
+      let offCorridor = 0;
+      if (preferred) {
+        const names = this._edgeNames(edge);
+        if (!names.includes(preferred)) offCorridor = 1;
+      }
+      return distance * (1 + familiarityPenalty * familiarity + outsidePenalty * outside
+        + offCorridorPenalty * offCorridor);
     };
   }
 
@@ -300,6 +357,7 @@ class RoadNetwork {
       namesForEdge: edge => this._edgeNames(edge),
       familiarityPenalty: 0.18,
       maxDetourRatio: 0.12,
+      homeBias: this._homeBias || undefined,
     });
   }
 

@@ -5,10 +5,36 @@ new Amsterdam residents learning the city by navigating and recalling names.
 
 ## Thesis
 
-The thing you learn is the chrome. Cobalt enamel street plaques are the brand
-signal — not soft cream quiz cards, and not arcade rivet spam on every control.
+Canal Recall (2026-09-26): **daylight paper, one copper accent, one enamel
+plaque.** The earlier all-cobalt chrome over a mostly-water map read as heavy
+blue-on-blue, so the owner retired it. Surfaces are warm paper with near-black
+ink; copper marks action and selection and nothing else; cobalt enamel stays
+only where it is literal — the title plaque, echoing Amsterdam's real street
+signs — and the copper Start stamp keeps its rim and rivets.
 
-## Own-world
+Map Quest has not been migrated and still runs the cobalt world below.
+
+## Daylight (Canal Recall)
+
+| Token | Value | Role |
+| --- | --- | --- |
+| `--day-paper` | `#F4EFE5` | Ground: setup rail, knowledge screen, loading |
+| `--day-paper-raised` | `#FBF8F2` | Cards, tiles, panels, quiz card |
+| `--day-ink` | `#1F1C17` | Primary text (14.8:1 on paper) |
+| `--day-ink-muted` | `#5F584D` | Secondary text (6.1:1) |
+| `--day-line` / `-strong` | ink at 14% / 26% | Hairlines, tile borders |
+| `--day-fill` / `-hover` | ink at 4.5% / 8.5% | Sunk fields, quiet buttons |
+| `--day-accent` | `#B4682C` | Selected tile border, stick knob, progress, finish arrow |
+| `--day-accent-ink` | `#8A4A18` | Copper text on paper (6.0:1) |
+| `--day-accent-soft` | copper at 13% | Selected tile fill, focus halo |
+
+Values live in `daylightTheme` (`src/canalRecall/hudTheme.ts`) and publish as
+`--day-*`; Canal's `index.html` `:root` maps its semantic tokens (`--ink`,
+`--line`, `--surface*`, `--accent*`) onto them, overriding the shared cobalt
+tokens for Canal only. `hudSurface` (canvas HUD) uses the same values: paper
+plates at 90% over the map so the corridor stays legible.
+
+## Cobalt enamel (Map Quest; Canal title plaque)
 
 | Token | Value | Role |
 | --- | --- | --- |
@@ -41,23 +67,27 @@ plaque frames. Photographic backdrops are real CC0 (or the live map): see
 
 ## Surfaces
 
-- **Canal Recall route setup** — map-led asymmetric: left enamel rail, right
-  CC0 Reguliersgracht vista (Storybook and live setup).
+- **Canal Recall route setup** — map-led asymmetric: left paper rail (phones:
+  full-screen rail, no vista; a fade + More cue when it scrolls), right CC0
+  Reguliersgracht vista on desktop (Storybook and live setup). Primary controls stay
+  dense: City is a native enamel select; Travel / Route are one-word icon
+  strips; View is an icon-only strip on the rail (name + hint via tooltip /
+  aria). Harder difficulties and assists stay in More options.
 - **Map Quest start** — same grammar: riveted Map Recall plaque rail over the
   CC0 vista; Canals & Streets elevated; other layers demoted; mode gloss on
   the rail. Phone keeps a bottom vista strip (rail is not a full cobalt wall).
   During an active round the header collapses to brand + modes + score
   (filters live in the overflow menu); phone play uses a shorter header,
   icon-only modes, and capped quiz cards so the map stays the hero.
-- **In-drive HUD** — deep navy plates (`hudSurface`, `rgba(7,20,48,.84)`),
-  not cobalt: the basemap is mostly water, and cobalt over blue canals is
-  blue-on-blue. White type, one gold accent (distance, streak, compass north),
-  copper only for the finish arrow. Two pieces: the left plaque (street name
+- **In-drive HUD** — daylight paper plates (`hudSurface`,
+  `rgba(251,248,242,.9)`), ink type, copper-ink accent (distance, streak,
+  compass north), bright copper only for the finish arrow and the held
+  thumbstick knob. Two pieces: the left plaque (street name
   headline → neighbourhood + speed/odometer → score → feedback; no kicker
   labels) and the destination card with the finish arrow inside it. No
-  separate arrow box, no trip pill. Utility FABs use the same plate. Cobalt
-  stays on surfaces you stop at: setup, recall prompt, help/settings panels,
-  arrival card.
+  separate arrow box, no trip pill. Utility FABs use the same plate. Setup,
+  recall prompt, help/settings panels, knowledge review and arrival card are
+  paper too; only the title plaque is cobalt.
 - **Map Quest** — header, dialogs, and map reveal labels use shared enamel
   primitives plus Map Quest–only classes in `src/index.css`: `app-dialog`,
   `enamel-chip`, `enamel-segment`, `enamel-float`, `button-primary` /

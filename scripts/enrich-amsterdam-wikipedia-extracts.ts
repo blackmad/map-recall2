@@ -32,6 +32,8 @@ import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
 import { ENCYCLOPEDIA_PARTITION_FILES } from './lib/encyclopedia-extract-files.ts';
+import { cityById } from '../src/canalRecall/game/cities.ts';
+import { isDisambiguationExtract } from '../src/canalRecall/game/encyclopediaDisambiguation.ts';
 import { resolveStreetWikipedia } from '../src/canalRecall/game/streetWikipedia.ts';
 
 interface Feature {
@@ -59,6 +61,8 @@ interface PageDetail {
 
 const directoryArgument = process.argv.find((argument) => argument.startsWith('--directory='));
 const directory = path.resolve(directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
+const cityId = path.basename(directory);
+const cityName = cityById(cityId).name;
 const filesArgument = process.argv.find((argument) => argument.startsWith('--files='));
 const defaultFiles = [...ENCYCLOPEDIA_PARTITION_FILES];
 const files = filesArgument
@@ -100,9 +104,10 @@ async function fetchPages(language: string, titles: string[], withLangLinks: boo
     const url = new URL(`https://${language}.wikipedia.org/w/api.php`);
     url.search = new URLSearchParams({
       action: 'query', format: 'json', redirects: '1', titles: batch.join('|'),
-      prop: withLangLinks ? 'extracts|info|langlinks|pageimages' : 'extracts|info|pageimages', inprop: 'url',
+      prop: withLangLinks ? 'extracts|info|langlinks|pageimages|pageprops' : 'extracts|info|pageimages|pageprops', inprop: 'url',
       exintro: '1', explaintext: '1', exchars: String(EXTRACT_CHARS), exlimit: '20',
       piprop: 'thumbnail', pithumbsize: '640',
+      ppprop: 'disambiguation',
       ...(withLangLinks ? { lllang: 'en' } : {}),
     }).toString();
     const data = await fetchJson(url);
@@ -114,9 +119,16 @@ async function fetchPages(language: string, titles: string[], withLangLinks: boo
       aliases.set(item.from, item.to);
     }
     const pages = Object.values(data.query?.pages || {}) as {
-      title: string; extract?: string; fullurl?: string; thumbnail?: { source?: string }; langlinks?: { lang: string; '*': string }[];
+      title: string;
+      extract?: string;
+      fullurl?: string;
+      thumbnail?: { source?: string };
+      langlinks?: { lang: string; '*': string }[];
+      pageprops?: { disambiguation?: string };
     }[];
     for (const page of pages) {
+      if (page.pageprops && 'disambiguation' in page.pageprops) continue;
+      if (isDisambiguationExtract(page.extract)) continue;
       const detail: PageDetail = {
         extract: page.extract,
         url: page.fullurl,
@@ -157,8 +169,9 @@ for (const file of ['streets.json', 'water.json']) {
   for (const feature of partitions.get(file)!) {
     if (!pendingSet.has(feature)) continue;
     if (feature.wikipedia || feature.wikidata) continue;
-    const resolved = await resolveStreetWikipedia(feature.name, titleFetch);
+    const resolved = await resolveStreetWikipedia(feature.name, titleFetch, cityName);
     if (!resolved?.wikipediaExtract && !resolved?.wikipediaUrl) continue;
+    if (isDisambiguationExtract(resolved.wikipediaExtract)) continue;
     if (resolved.wikipedia) feature.wikipedia = resolved.wikipedia;
     if (resolved.wikidata) feature.wikidata = resolved.wikidata;
     if (resolved.wikipediaUrl) feature.wikipediaUrl = resolved.wikipediaUrl;
@@ -283,26 +296,37 @@ const viaCounts = new Map<string, number>();
 const fallbackCounts = new Map<string, number>();
 const unresolved: string[] = [];
 const needsDescription: Feature[] = [];
+const needsDisambiguationFollow: { feature: Feature; file: string }[] = [];
 for (const [file, partition] of partitions) {
   for (const feature of partition) {
     if (!pendingSet.has(feature)) continue;
     const english = englishTitleFor(feature);
     const englishExtract = english ? englishDetails.get(`en:${english.title}`) : undefined;
     const foreign = feature.wikipedia ? foreignDetails.get(feature.wikipedia) : undefined;
-    if (english && englishExtract?.extract) {
+    if (english && englishExtract?.extract && !isDisambiguationExtract(englishExtract.extract)) {
       feature.wikipediaSourceText = englishExtract.extract;
       feature.wikipediaExtract = englishExtract.extract.slice(0, DISPLAY_EXTRACT_CHARS);
       // Existing entries all point at en.wikipedia when the blurb is English.
       if (englishExtract.url) feature.wikipediaUrl = englishExtract.url;
       delete feature.wikipediaExtractLang;
       viaCounts.set(english.via, (viaCounts.get(english.via) || 0) + 1);
-    } else if (foreign?.extract && feature.wikipedia) {
+    } else if (foreign?.extract && feature.wikipedia && !isDisambiguationExtract(foreign.extract)) {
       const { language } = splitPage(feature.wikipedia);
       feature.wikipediaSourceText = foreign.extract;
       feature.wikipediaExtract = foreign.extract.slice(0, DISPLAY_EXTRACT_CHARS);
       feature.wikipediaExtractLang = language;
       if (!feature.wikipediaUrl && foreign.url) feature.wikipediaUrl = foreign.url;
       fallbackCounts.set(language, (fallbackCounts.get(language) || 0) + 1);
+    } else if (
+      (englishExtract?.extract && isDisambiguationExtract(englishExtract.extract))
+      || (foreign?.extract && isDisambiguationExtract(foreign.extract))
+      // Pageprops stripped the dab extract from the batch map, but OSM still
+      // points at the list page — try `Name (City)` / dab follow before the
+      // Wikidata "Wikimedia disambiguation page." floor.
+      || (feature.wikipedia && !englishExtract?.extract && !foreign?.extract)
+    ) {
+      needsDisambiguationFollow.push({ feature, file });
+      continue;
     } else if (feature.wikidata) {
       needsDescription.push(feature);
       continue;
@@ -318,6 +342,36 @@ for (const [file, partition] of partitions) {
     if (image) feature.wikipediaImageUrl = image;
     filled.set(file, (filled.get(file) || 0) + 1);
   }
+}
+
+let followedDisambiguation = 0;
+async function followDisambiguation(feature: Feature, file: string): Promise<boolean> {
+  const resolved = await resolveStreetWikipedia(feature.name, titleFetch, cityName);
+  if (!resolved?.wikipediaExtract || isDisambiguationExtract(resolved.wikipediaExtract)) {
+    delete feature.wikipedia;
+    delete feature.wikipediaUrl;
+    delete feature.wikipediaExtract;
+    delete feature.wikipediaExtractLang;
+    delete feature.wikipediaExtractSource;
+    delete feature.wikipediaSourceText;
+    unresolved.push(`${feature.name} [${file}] — linked article is a disambiguation page`);
+    return false;
+  }
+  if (resolved.wikipedia) feature.wikipedia = resolved.wikipedia;
+  if (resolved.wikidata) feature.wikidata = resolved.wikidata;
+  if (resolved.wikipediaUrl) feature.wikipediaUrl = resolved.wikipediaUrl;
+  feature.wikipediaSourceText = resolved.wikipediaExtract;
+  feature.wikipediaExtract = resolved.wikipediaExtract.slice(0, DISPLAY_EXTRACT_CHARS);
+  delete feature.wikipediaExtractSource;
+  if (resolved.wikipediaExtractLang === 'en') delete feature.wikipediaExtractLang;
+  else feature.wikipediaExtractLang = resolved.wikipediaExtractLang;
+  followedDisambiguation++;
+  filled.set(file, (filled.get(file) || 0) + 1);
+  return true;
+}
+
+for (const { feature, file } of needsDisambiguationFollow) {
+  await followDisambiguation(feature, file);
 }
 
 const descriptionByQid = new Map<string, string>();
@@ -342,8 +396,14 @@ for (const [file, partition] of partitions) {
   for (const feature of partition) {
     if (!needsDescription.includes(feature)) continue;
     const description = feature.wikidata ? descriptionByQid.get(feature.wikidata) : undefined;
-    if (!description) {
-      unresolved.push(`${feature.name} [${file}] — wikidata only, no English description`);
+    if (!description || isDisambiguationExtract(description)) {
+      // Wikidata sometimes describes the dab item itself as
+      // "Wikimedia disambiguation page." — try a city-qualified article.
+      if (file === 'streets.json' || file === 'water.json') {
+        await followDisambiguation(feature, file);
+      } else {
+        unresolved.push(`${feature.name} [${file}] — wikidata only, no English description`);
+      }
       continue;
     }
     feature.wikipediaExtract = description.slice(0, DISPLAY_EXTRACT_CHARS);
@@ -357,6 +417,10 @@ for (const [file, partition] of partitions) {
     described++;
   }
   if (!dryRun) await writeFile(path.join(directory, file), JSON.stringify(partition));
+}
+
+if (followedDisambiguation) {
+  process.stdout.write(`followed ${followedDisambiguation} disambiguation pages to a city-qualified article\n`);
 }
 
 process.stdout.write(`\n${dryRun ? 'DRY RUN — nothing written' : `wrote ${files.join(', ')}`}\n`);

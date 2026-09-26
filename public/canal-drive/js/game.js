@@ -4,66 +4,23 @@
 const GameState = { MENU: 0, MAP_SELECT: 1, LOADING: 2, RACING: 4, FINISHED: 5, PAUSED: 6 };
 Object.freeze(GameState);
 
-const CANAL_ROUTE_POIS = [
-  { id: 'central', name: 'Central Station', lat: 52.3784943, lng: 4.899843 },
-  { id: 'anne-frank', name: 'Anne Frank House', lat: 52.3753446, lng: 4.8840669 },
-  { id: 'rijksmuseum', name: 'Rijksmuseum', lat: 52.3598672, lng: 4.8864162 },
-  { id: 'maritime', name: 'National Maritime Museum', lat: 52.371493, lng: 4.9151332 },
-  { id: 'nemo', name: 'NEMO Science Museum', lat: 52.3738532, lng: 4.9121113 },
-  { id: 'palace', name: 'Royal Palace', lat: 52.373258, lng: 4.8918222 },
-  { id: 'red-light', name: 'Red Light District', lat: 52.3719371, lng: 4.8956406 },
-  { id: 'rembrandt', name: 'Rembrandt House', lat: 52.3693692, lng: 4.9012497 },
-  { id: 'hart', name: 'H’ART Museum', lat: 52.3656522, lng: 4.9022137 },
-  { id: 'westerkerk', name: 'Westerkerk', lat: 52.3743736, lng: 4.8837289 },
-  { id: 'mint', name: 'Mint Tower', lat: 52.3670418, lng: 4.8932804 }
-];
-
 const DIFFICULTY_PRESETS = window.CanalRecallPreferences.DIFFICULTY_PRESETS;
 const DIFFICULTY_SCORE_MULTIPLIERS = { easy: 0.5, medium: 0.75, hard: 1, expert: 1.25, custom: 0.85 };
-// Route ribbons grade the trip on what the game is trying to teach — name
-// recall, navigating without aids, and choosing an efficient route — rather
-// than on raw speed. Ordered best-first; the first tier the score clears wins.
-// `minRecall` gates each tier independently of the blended score: this is a
-// recall game, so a spotless efficient run that never named a canal correctly
-// must not out-rank a slower player who knew where they were.
-const ROUTE_RIBBON_TIERS = [
-  { id: 'gold',   label: 'GOLD RIBBON',   min: 0.85, minRecall: 0.80, color: '#FACC15', dim: 'rgba(250,204,21,.16)' },
-  { id: 'silver', label: 'SILVER RIBBON', min: 0.68, minRecall: 0.55, color: '#CBD5E1', dim: 'rgba(203,213,225,.14)' },
-  { id: 'bronze', label: 'BRONZE RIBBON', min: 0.50, minRecall: 0.25, color: '#D8964A', dim: 'rgba(216,150,74,.16)' },
-  { id: 'none',   label: 'ROUTE COMPLETE', min: -Infinity, minRecall: -Infinity, color: '#7DD3FC', dim: 'rgba(56,189,248,.12)' }
-];
-// Weight of each aid when scoring self-reliance. The route line removes the
-// navigation problem entirely, so it costs the most.
-const RIBBON_AID_COST = { line: 0.5, arrow: 0.25, minimap: 0.25 };
-// Route destinations start from the curated list below, then grow with the
-// prominence-ranked landmarks in the city extract. Both ends of a route must
-// sit inside the single OSM_FETCH_RADIUS window fetched around their midpoint,
-// so candidates are capped by distance from the city centre and from each
-// other — otherwise a Weesp fort could be paired with Westerpark and half the
-// route would fall outside the loaded network.
-const AMSTERDAM_CENTRE = { lat: 52.3676, lng: 4.9041 };
+// Ribbon tiers / aid costs live in routeRibbon.ts (bundled with presentation).
+// Pair-distance / live-reroute numbers come from the typed route module so
+// game-route.js and the unit checks cannot drift.
+const Route = window.CanalRecallRoute;
 const ROUTE_POI_MAX_KM_FROM_CENTRE = 4;
-const ROUTE_POI_MAX_PAIR_KM = 6;
-const ROUTE_POI_CATALOG_URL = '../data/extracts/amsterdam/landmarks.json';
-// Both modes require an actual traversal, never proximity. A boat crosses the
-// span's centreline. A car drives along it, so it is tested against a gate
-// drawn perpendicular through the span's midpoint: sitting at the kerb aligned
-// with a bridge no longer counts, only passing its middle does.
-const BRIDGE_GATE_HALF_WIDTH = 26; // px — gate reaches this far either side
-const BRIDGE_LABEL_RANGE = 900; // px — keep named bridges labelled while nearby
-// How far a traversal may be from a crossing's centroid and still be that
-// crossing. Crossings of one bridge are clustered at least 70 m apart, and a
-// wide multi-span deck puts its centroid a span-length from the wheels.
-const CROSSING_MATCH_RANGE = 900; // px — 300 m
-// How many nearby stand-in destinations to try before giving up on routing.
-const RETARGET_ATTEMPTS = 25;
-// A stranded origin is re-rolled at most this many times before we accept it.
+const ROUTE_POI_MAX_PAIR_KM = Route.ROUTE_POI_MAX_PAIR_KM;
+const BRIDGE_GATE_HALF_WIDTH = 26;
+const BRIDGE_LABEL_RANGE = 900;
+const CROSSING_MATCH_RANGE = 900;
+const RETARGET_ATTEMPTS = Route.RETARGET_ATTEMPTS;
 const MAX_ROUTE_REROLLS = 2;
-const CONTROLS_HINT_DURATION = 12;   // seconds the keyboard hint stays on screen
-const ZOOM_BADGE_DURATION = 1.4;     // seconds the zoom percentage lingers
-const LIVE_ROUTE_OFF_ROUTE_DIST = 140; // px off the path before a full reroute
-const LIVE_ROUTE_REROUTE_INTERVAL = 2; // seconds between reroute attempts
-
+const CONTROLS_HINT_DURATION = 12;
+const ZOOM_BADGE_DURATION = 1.4;
+const LIVE_ROUTE_OFF_ROUTE_DIST = Route.LIVE_ROUTE_OFF_ROUTE_DIST;
+const LIVE_ROUTE_REROUTE_INTERVAL = Route.LIVE_ROUTE_REROUTE_INTERVAL;
 const HOME_GEOCODE_CACHE_KEY = 'canalRecall.homeGeocodes.v2';
 
 class Game {
@@ -101,6 +58,7 @@ class Game {
     this.quizFeedback = '';
     this.routeOptions = { ...DIFFICULTY_PRESETS.medium };
     this.travelMode = 'boat';
+    this.cityId = (window.CanalRecallPreferences && window.CanalRecallPreferences.DEFAULT_CITY_ID) || 'amsterdam';
     this.controlMode = 'relative';
     this.viewMode = 'north';
     this.themeMode = 'clean';
@@ -109,10 +67,11 @@ class Game {
     this.revealedNames = new Set();
     // Route reveals plus SRS-known names — still labelled while driving past.
     this._mapLabelNames = new Set();
-    this.routeFrom = CANAL_ROUTE_POIS[1];
-    this.routeTo = CANAL_ROUTE_POIS[2];
+    const starterPois = this._curatedRoutePois();
+    this.routeFrom = starterPois[1] || starterPois[0] || { id: 'start', name: 'Start', lat: 52.37, lng: 4.89 };
+    this.routeTo = starterPois[2] || starterPois[1] || starterPois[0] || this.routeFrom;
     // Grows once the landmark extract loads; see _loadRoutePoiCatalog.
-    this.routePois = [...CANAL_ROUTE_POIS];
+    this.routePois = [...starterPois];
     this.bridges = [];
     this._routeRerolls = 0;
     this._zoomBadgeTimer = 0;
@@ -125,6 +84,7 @@ class Game {
     this._plannedRouteLengthPx = 0;
     this._routeLearningPlan = null;
     this._routeMastery = {};
+    this._routeReviewDue = {};
     this.quizPromptKind = 'route';
     // Per crossing, not per bridge (one OSM name can span several waters).
     this._quizzedCrossings = new Map();
@@ -135,6 +95,7 @@ class Game {
     this.routePattern = 'surprise';
     this.homeBase = null;
     this.homeLeg = 'outbound';
+    this._homeLearningRadiusKm = null;
 
     // OSM components
     this.osmLoader = new OSMLoader();
@@ -184,6 +145,16 @@ class Game {
     this.streetKnowledge = new Map();
     this._blockedBoatFrames = 0;
     this._blockedCarFrames = 0;
+    this._activeTransitLine = '';
+    this.quizPromptSubject = '';
+    this._lastTransitStreetQuizAt = -Infinity;
+    this._lastTransitTransferQuizAt = -Infinity;
+    this._quizzedTransitStreets = new Set();
+    this._quizzedTransitTransfers = new Set();
+    this._transitConnectionPlan = null;
+    this._transitLegIndex = 0;
+    this._transitFinalFinish = null;
+    this._corridorStreetIndex = null;
 
     this._alanLinkBounds = null;
     this._githubLinkBounds = null;
@@ -279,32 +250,6 @@ class Game {
     this._checkShareLink();
   }
 
-  /** True while a DOM overlay owns the screen: the recall question, the
-   *  settings/help panels, or the expanded article. The vehicle is stopped
-   *  behind all of them, so the d-pad is dead controls and the map gestures
-   *  belong to the overlay. */
-  _overlayOpen() {
-    if (this._utilityOpen) return true;
-    if (this._prompt && this._prompt.style.display !== 'none' && this._prompt.style.display !== '') return true;
-    const panel = document.getElementById('landmark-panel');
-    return !!panel && getComputedStyle(panel).display !== 'none';
-  }
-
-  /** One teaching surface at a time — see `teachingSurface.ts`. */
-  _teachingGate() {
-    const promptVisible = !!(this._prompt
-      && this._prompt.style.display !== 'none'
-      && this._prompt.style.display !== '');
-    const panel = document.getElementById('landmark-panel');
-    const landmarkPanelOpen = !!panel && getComputedStyle(panel).display !== 'none';
-    return {
-      quizOpen: !!this.quizPromptName,
-      feedbackVisible: !!this.quizFeedback,
-      promptVisible,
-      utilityOpen: !!this._utilityOpen || landmarkPanelOpen,
-    };
-  }
-
   /** The finish card's tappable actions, for touch. Keyboard keeps ENTER/ESC/C. */
   _runFinishAction(id) {
     if (id === 'again') {
@@ -312,12 +257,38 @@ class Game {
       this._setupRace();
       this.state = GameState.RACING;
     } else if (id === 'route') {
-      this.state = GameState.MENU;
-      this._routeSetup.style.display = 'flex';
-      history.replaceState(null, '', window.location.pathname);
+      this._openRouteSetup();
     } else if (id === 'copy' && this._shareUrl) {
       navigator.clipboard.writeText(this._shareUrl).catch(() => {});
       this._copiedTimer = 2;
+    }
+  }
+
+  /** Pause card actions — same targets for keyboard and touch. */
+  _runPauseAction(id) {
+    if (id === 'resume') {
+      this.state = GameState.RACING;
+      this.sound.resume();
+      return;
+    }
+    if (id === 'route') {
+      this._openRouteSetup();
+      return;
+    }
+    if (id === 'copy' && this._shareUrl) {
+      navigator.clipboard.writeText(this._shareUrl).catch(() => {});
+      this._copiedTimer = 2;
+    }
+  }
+
+  /** Pull keyboard focus back onto the canvas so Enter/Esc reach InputManager
+   *  instead of a leftover quiz field or utility button. */
+  _reclaimKeyboardFocus() {
+    const active = document.activeElement;
+    if (active instanceof HTMLElement && active !== this.canvas) active.blur();
+    if (this.canvas && typeof this.canvas.focus === 'function') {
+      try { this.canvas.focus({ preventScroll: true }); }
+      catch (_) { this.canvas.focus(); }
     }
   }
 
@@ -410,6 +381,15 @@ class Game {
           for (const b of this._finishButtonBounds) {
             if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
               this._runFinishAction(b.id);
+              dragging = false;
+              return;
+            }
+          }
+        }
+        if (this.state === GameState.PAUSED && this._pauseButtonBounds) {
+          for (const b of this._pauseButtonBounds) {
+            if (sx >= b.x && sx <= b.x + b.w && sy >= b.y && sy <= b.y + b.h) {
+              this._runPauseAction(b.id);
               dragging = false;
               return;
             }
@@ -508,9 +488,14 @@ class Game {
     this.input.setTapRestartEnabled(this.state !== GameState.RACING);
     if (this.input.wasPressed('Slash') && (this.input.isDown('ShiftLeft') || this.input.isDown('ShiftRight'))) this._toggleUtilityPanel(this._helpPanel);
     if (this.input.wasPressed('KeyG')) this._toggleUtilityPanel('settings');
-    if (this.input.wasPressed('Escape') && this._utilityOpen) { this._closeUtilityPanels(); return; }
-    if (this._utilityOpen) return;
-    if (this.input.wasPressed('Tab') || this.input.wasPressed('KeyM')) this.showMiniMap = !this.showMiniMap;
+    // Finish owns Esc/Enter; do not let a stale utility flag swallow them.
+    if (this.state !== GameState.FINISHED) {
+      if (this.input.wasPressed('Escape') && this._utilityOpen) { this._closeUtilityPanels(); return; }
+      if (this._utilityOpen) return;
+    }
+    if (this.state !== GameState.FINISHED && this.state !== GameState.PAUSED) {
+      if (this.input.wasPressed('Tab') || this.input.wasPressed('KeyM')) this.showMiniMap = !this.showMiniMap;
+    }
     if (this.input.wasPressed('KeyL')) {
       this.routeOptions.line = !this.routeOptions.line;
       this._overlay.store.patchPrefs({ line: this.routeOptions.line }, this._overlayZoom());
@@ -519,6 +504,21 @@ class Game {
     }
     if (this.input.wasPressed('KeyF')) this.routeOptions.arrow = !this.routeOptions.arrow;
     if (this.input.wasPressed('KeyO')) this.camera.northUp = !this.camera.northUp;
+    const shiftDown = this.input.isDown('ShiftLeft') || this.input.isDown('ShiftRight');
+    const tiltStep = Number.isFinite(window.CanalRecallPreferences?.CAMERA_TILT_KEY_STEP)
+      ? window.CanalRecallPreferences.CAMERA_TILT_KEY_STEP
+      : 6;
+    const bearingStep = Number.isFinite(window.CanalRecallPreferences?.CAMERA_BEARING_KEY_STEP)
+      ? window.CanalRecallPreferences.CAMERA_BEARING_KEY_STEP
+      : 15;
+    if (this.input.wasPressed('BracketLeft')) {
+      if (shiftDown) this._nudgeCameraBearing(-bearingStep);
+      else this._nudgeCameraTilt(-tiltStep);
+    }
+    if (this.input.wasPressed('BracketRight')) {
+      if (shiftDown) this._nudgeCameraBearing(bearingStep);
+      else this._nudgeCameraTilt(tiltStep);
+    }
     if (this.input.wasPressed('KeyN')) { this._setSoundEnabled(this.sound.muted); this._savePreferences(); }
     if (this.input.wasPressed('KeyD')) this.vectorMap.toggleLabels();
     if (this.input.wasPressed('KeyW')) this._openLandmarkArticle();
@@ -564,23 +564,25 @@ class Game {
       case GameState.PAUSED:
         if (this._copiedTimer > 0) this._copiedTimer -= dt;
         if (this.input.wasPressed('KeyP') || this.input.wasPressed('Escape') || this.input.wasPressed('Space')) {
-          this.state = GameState.RACING;
-          this.sound.resume();
+          this._runPauseAction('resume');
         }
         if (this.input.wasPressed('KeyM')) {
-          this.state = GameState.MENU;
-          this._routeSetup.style.display = 'flex';
-          this.sound.silence();
-          history.replaceState(null, '', window.location.pathname);
+          this._runPauseAction('route');
         }
         if (this.input.wasPressed('KeyC') && this._shareUrl) {
-          navigator.clipboard.writeText(this._shareUrl).catch(() => {});
-          this._copiedTimer = 2;
+          this._runPauseAction('copy');
         }
         break;
 
       case GameState.FINISHED:
         if (this._copiedTimer > 0) this._copiedTimer -= dt;
+        // If a utility somehow stayed marked open (e.g. settings opened mid-race
+        // and the finish card hid its chrome), Esc must finish the trip — not
+        // only dismiss an invisible panel and return early.
+        if (this._utilityOpen) {
+          this._closeUtilityPanels();
+          this._reclaimKeyboardFocus();
+        }
         if (this.input.wasPressed('Enter') || this.input.wasPressed('Space') || this.input.wasPressed('KeyM')) {
           this._runFinishAction('again');
         }
@@ -609,15 +611,24 @@ class Game {
     this.sound.resume();
     this.player.handleInput(this.input);
     this.player.update(dt, this.track);
-    if (this.travelMode === 'car') {
+    if (this.travelMode === 'car' || this.travelMode === 'transit') {
       const road = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
       const previousRoad = this.track.getNearestRoad(previousPlayerPosition.x, previousPlayerPosition.y, this.player.angle);
+      const guardOpts = this.travelMode === 'transit'
+        ? {
+          edgeTolerance: CAR_ROAD_EDGE_TOLERANCE,
+          softPullFactor: 0.36,
+          softPullLimit: 5.5,
+          blockedFrames: this._blockedCarFrames,
+          unwedgeAfter: 4,
+        }
+        : { edgeTolerance: CAR_ROAD_EDGE_TOLERANCE, blockedFrames: this._blockedCarFrames };
       const guard = CanalRecallCar.constrainCarToRoad(
         this.player,
         previousPlayerPosition,
         road,
         previousRoad,
-        { edgeTolerance: CAR_ROAD_EDGE_TOLERANCE, blockedFrames: this._blockedCarFrames }
+        guardOpts,
       );
       this._blockedCarFrames = guard === 'rolled-back' ? this._blockedCarFrames + 1 : 0;
     } else if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
@@ -681,8 +692,17 @@ class Game {
     this.sound.update(this.player.speed, this.player.throttle, this.player.maxSpeed);
 
     if (this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
+      if (typeof this._tryAdvanceTransitLeg === 'function' && this._tryAdvanceTransitLeg()) {
+        this.player.finished = false;
+        return;
+      }
       this.state = GameState.FINISHED;
       this.sound.silence();
+      // Settings/help may still be "open" in state even though the finish card
+      // hides their buttons; clear that so Esc chooses a route instead of only
+      // closing an invisible panel. Also reclaim focus from any quiz field.
+      if (typeof this._closeUtilityPanels === 'function') this._closeUtilityPanels();
+      this._reclaimKeyboardFocus();
       const arrived = this._finishLandmark();
       if (arrived) {
         // The arrival card belongs to the finish screen and stays until
@@ -699,7 +719,7 @@ class Game {
   }
 
   _updateBoundaryCollisions() {
-    if (this.travelMode === 'car') return;
+    if (this.travelMode === 'car' || this.travelMode === 'transit') return;
     for (const car of this.cars) {
       const surface = this.track.getSurface(car.x, car.y);
       if (surface === 'grass') {

@@ -9,7 +9,12 @@ class Camera {
     this.minZoom = CAMERA_ZOOM_MIN;
     this.maxZoom = CAMERA_ZOOM_MAX;
     this.northUp = true;
+    // Absolute steering points in screen directions. A camera that turned
+    // with the heading would move "right" every time the vehicle turned
+    // right — a feedback spin — so absolute mode holds the map still.
+    this.holdHeading = false;
     this.rotation = 0;
+    this.bearingOffset = 0;
     this.viewMode = 'north';
     this.projector = null;
     this.panX = 0;
@@ -29,7 +34,8 @@ class Camera {
     // no longer surges forward and back with the throttle.
     const wantedLookahead = this.reducedMotion ? 0 : CAMERA_LOOKAHEAD * speedRatio;
     this._lookahead += (wantedLookahead - this._lookahead) * CAMERA_LOOKAHEAD_SMOOTHING;
-    const lookahead = (this.viewMode === 'cockpit' ? 115 : 0) + this._lookahead;
+    const cockpitLead = typeof COCKPIT_LOOKAHEAD === 'number' ? COCKPIT_LOOKAHEAD : 160;
+    const lookahead = (this.viewMode === 'cockpit' ? cockpitLead : 0) + this._lookahead;
     const tx = this.detached ? this.anchorX : target.x + Math.cos(target.angle) * lookahead;
     const ty = this.detached ? this.anchorY : target.y + Math.sin(target.angle) * lookahead;
     this.x += (tx - this.x) * this.smoothing;
@@ -40,7 +46,10 @@ class Camera {
     this.panY = this.detached ? this.y - target.y : 0;
     // A panned map holds still: rotating it under the vehicle's heading while
     // the player is looking somewhere else is disorienting.
-    const wantedRotation = this.detached ? this.rotation : (this.northUp ? 0 : target.angle + Math.PI / 2);
+    const is3d = this.viewMode === 'chase' || this.viewMode === 'cockpit';
+    const wantedRotation = this.detached
+      ? this.rotation
+      : (this.northUp || this.holdHeading ? 0 : target.angle + Math.PI / 2) + (is3d ? this.bearingOffset : 0);
     const delta = Math.atan2(Math.sin(wantedRotation - this.rotation), Math.cos(wantedRotation - this.rotation));
     const rotationRate = this.reducedMotion ? CAMERA_REDUCED_ROTATION_SMOOTHING : CAMERA_ROTATION_SMOOTHING;
     this.rotation += delta * Math.min(1, this.smoothing * rotationRate);
