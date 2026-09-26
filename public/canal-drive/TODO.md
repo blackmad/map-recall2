@@ -43,6 +43,39 @@ one drive-through as mastery. Pairs naturally with item 5: the same data answers
 
 ## P2 — Weight and reach
 
+**8e. Ground-floor colour band: three passes, and the statistic is wrong.**
+*Opened 2026-09-26. See `FACADE_BANDS_REPORT.md` at the repo root.* 36 of 46
+visible bases differ from the wall above, so one wall colour per building is
+wrong for four buildings in five, and wrong exactly at eye level.
+
+| pass | commit | differs found | same correct | obscured abstained | strict |
+| --- | --- | --- | --- | --- | --- |
+| one | `cd4634a` | 1/36 | 10/10 | 0/12 | 11/46 |
+| two | `b823966` | 8/36 | 3/10 | 11/12 | 11/46 |
+| three | not merged | 0/36 | 6/10 | 11/12 | 6/46 |
+
+Pass two's real gain was occlusion abstention, 0/12 → 11/12, by reading the full
+Vistas label map instead of a binary `building == 2` mask.
+
+**Pass three is a measured negative and closes a direction.** Base-to-upper-wall
+colour distance, normalised by within-wall variation, over the 46 labels:
+`differs` median **2.12**, `same` median **2.17** — the distributions are the
+same, and the best possible threshold takes 36/36 differing bases while keeping
+0/10 matching ones. It detects "the base is not the wall above it", which is
+true of 78% of buildings, not "the base is a different material". **Do not
+re-run the raw-distance-to-wall test; it cannot separate the classes.**
+
+Two traps now pinned in the regression corpus: on a mostly-painted facade the
+"wall above" is partly the thing under test (Lauriergracht 74 is cream from 18 m
+to 3 m), and a crop whose `baseZ` is 3 m starts *inside* the 2–6.5 m search
+window, so a plinth at 5.5 m reads as a shopfront.
+
+If it gets a pass four: a local change-point *within* the metric window, wall
+reference chosen by coherence rather than a fixed height band, normalised by
+local variation. Separately, the occluder class cannot distinguish a van *in
+front of* a shopfront from a tree *beside* one — 4 of the 10 `same` abstentions
+— and that needs a tighter per-frontage crop, not another threshold.
+
 **8d. Sign text: use the vote for corroboration, not correction — and get the
 reference set.**
 *Opened 2026-09-25. Plan: `SIGN_PHOTOGRAPHY_PLAN.md` S1/S1c.* The owner reported
