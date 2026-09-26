@@ -37,21 +37,34 @@ export function selectCompatibleSourceRoof(building: SourceRoofBuilding): Compat
 
   const groundNAP = Number(building.groundNAP);
   const height = Number(building.height);
-  const components = (building.surfaces ?? [])
-    .filter(surface => surface.type === 'roof')
-    .map(surface => {
-      const geometry = surface.rings.map(ring =>
-        ring.map(([east, sceneUp, south]) => [
-          east,
-          -south,
-          Math.max(0, sourceRoofUpAboveGroundNAP(sceneUp, groundNAP)),
-        ] as Point),
-      );
-      const heights = geometry.flat().map(point => point[2]);
-      const eaves = Math.min(...heights);
-      const ridge = Math.max(...heights);
-      return { geometry, eaves, ridge };
-    })
+  const sourceSurfaces = building.surfaces ?? [];
+  if (!Array.isArray(sourceSurfaces)) return null;
+  const roofSurfaces = sourceSurfaces.filter(surface => surface?.type === 'roof');
+  const components: { geometry: Point[][]; eaves: number; ridge: number }[] = [];
+  for (const surface of roofSurfaces) {
+    // Every point is consumed by Three's triangulator later. Reject malformed
+    // source here rather than letting NaN make the numeric gates evaluate
+    // false and accidentally admitting a partial roof.
+    if (!Array.isArray(surface.rings) || !surface.rings.length) return null;
+    const geometry: Point[][] = [];
+    for (const ring of surface.rings) {
+      if (!Array.isArray(ring) || ring.length < 3) return null;
+      const converted: Point[] = [];
+      for (const point of ring) {
+        if (!Array.isArray(point) || point.length !== 3 || !point.every(Number.isFinite)) return null;
+        const [east, sceneUp, south] = point;
+        const up = Math.max(0, sourceRoofUpAboveGroundNAP(sceneUp, groundNAP));
+        if (!Number.isFinite(up)) return null;
+        converted.push([east, -south, up]);
+      }
+      geometry.push(converted);
+    }
+    const heights = geometry.flat().map(point => point[2]);
+    const eaves = Math.min(...heights);
+    const ridge = Math.max(...heights);
+    if (!Number.isFinite(eaves) || !Number.isFinite(ridge)) return null;
+    components.push({ geometry, eaves, ridge });
+  }
   // A source building may have several roof components. Publishing only the
   // individually compatible ones left their lower eaves cutting through the
   // fallback LoD1 top as grey sawtooth shards. Do not claim a partial mesh is
