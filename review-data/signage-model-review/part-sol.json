@@ -248,10 +248,10 @@
           "text": "the bowl",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#6a797c",
+          "fg": "#212a31",
           "confidence": 0.99,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (890, 53) and letter (1109, 14); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 1630,
@@ -261,10 +261,10 @@
           "text": "HARTMAN CIGARS",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#69808e",
+          "fg": "#222431",
           "confidence": 0.92,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (1780, 14) and letter (1821, 23); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 2110,
@@ -274,10 +274,10 @@
           "text": "HET ZWARTE FIETSENPLAN",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#6c7b80",
+          "fg": "#1b2429",
           "confidence": 0.94,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (2361, 46) and letter (2282, 40); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 1516,
@@ -486,7 +486,7 @@
           "top": 261,
           "width": 188,
           "height": 78,
-          "text": null,
+          "text": "",
           "type": "window",
           "readable": false,
           "bg": null,
@@ -614,10 +614,10 @@
           "text": "HAND & FOOT TREATMENT STORE",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#5f593f",
+          "fg": "#2f2714",
           "confidence": 0.95,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (375, 223) and letter (211, 202); points selected from luminance tails within the visually marked sign region."
         }
       ],
       "noSign": false,
@@ -639,10 +639,10 @@
           "text": "TENUE DE NÎMES Shoe Store",
           "type": "awning",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#1f273a",
+          "fg": "#7a909b",
           "confidence": 0.96,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (808, 235) and letter (879, 152); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 919,
@@ -687,7 +687,7 @@
           "top": 199,
           "width": 158,
           "height": 119,
-          "text": null,
+          "text": "",
           "type": "logo",
           "readable": false,
           "bg": null,
@@ -726,10 +726,10 @@
           "text": "wijnen STERK champagne",
           "type": "awning",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#8da397",
+          "fg": "#2c3039",
           "confidence": 0.92,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (622, 101) and letter (423, 90); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 823,
@@ -739,10 +739,10 @@
           "text": "7 dagen per week GEOPEND",
           "type": "awning",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#90a8a8",
+          "fg": "#212e37",
           "confidence": 0.9,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (894, 105) and letter (1117, 60); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 1250,
@@ -777,10 +777,10 @@
           "text": "Restaurant manoto",
           "type": "fascia",
           "readable": true,
-          "bg": "#313e46",
-          "fg": "#fcfdff",
+          "bg": "#30393e",
+          "fg": "#fafeff",
           "confidence": 0.97,
-          "notes": "Background and lettering sampled at native pixels (550,45) and (434,100)."
+          "notes": "Background and lettering sampled at native pixels (550,45) and (434,100). Opaque panel: sampled actual native pixels at background (278, 143) and letter (566, 126); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 1390,
@@ -790,10 +790,10 @@
           "text": "LA BASTA",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#63687c",
+          "fg": "#f3fef8",
           "confidence": 0.97,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (1413, 100) and letter (1408, 93); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 81,
@@ -955,10 +955,10 @@
           "text": "BESTSELLER MAGAZINES GIFTS BOOKS",
           "type": "awning",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#586063",
+          "fg": "#e0e9e8",
           "confidence": 0.9,
-          "notes": "Bicycle warning sign crosses sign."
+          "notes": "Bicycle warning sign crosses sign. Opaque panel: sampled actual native pixels at background (859, 154) and letter (935, 186); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 1270,
@@ -993,10 +993,10 @@
           "text": "SENER",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#635459",
+          "fg": "#d1e6e9",
           "confidence": 0.94,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (222, 123) and letter (119, 87); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 366,
@@ -1078,7 +1078,7 @@
           "top": 270,
           "width": 438,
           "height": 54,
-          "text": null,
+          "text": "",
           "type": "window",
           "readable": false,
           "bg": null,
@@ -1174,7 +1174,7 @@
           "top": 237,
           "width": 180,
           "height": 52,
-          "text": null,
+          "text": "",
           "type": "gevelsteen",
           "readable": false,
           "bg": null,
@@ -1546,10 +1546,10 @@
           "text": "the bowl",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#6a797c",
+          "fg": "#212a31",
           "confidence": 0.99,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (890, 53) and letter (1109, 14); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 1630,
@@ -1559,10 +1559,10 @@
           "text": "HARTMAN CIGARS",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#69808e",
+          "fg": "#222431",
           "confidence": 0.92,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (1780, 14) and letter (1821, 23); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 2110,
@@ -1572,10 +1572,10 @@
           "text": "HET ZWARTE FIETSENPLAN",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#6c7b80",
+          "fg": "#1b2429",
           "confidence": 0.94,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (2361, 46) and letter (2282, 40); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 1516,
@@ -1799,7 +1799,7 @@
           "top": 261,
           "width": 188,
           "height": 78,
-          "text": null,
+          "text": "",
           "type": "window",
           "readable": false,
           "bg": null,
@@ -1941,10 +1941,10 @@
           "text": "HAND & FOOT TREATMENT STORE",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#5f593f",
+          "fg": "#2f2714",
           "confidence": 0.95,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (375, 223) and letter (211, 202); points selected from luminance tails within the visually marked sign region."
         }
       ],
       "noSign": false,
@@ -1969,10 +1969,10 @@
           "text": "TENUE DE NÎMES Shoe Store",
           "type": "awning",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#1f273a",
+          "fg": "#7a909b",
           "confidence": 0.96,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (808, 235) and letter (879, 152); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 919,
@@ -2020,7 +2020,7 @@
           "top": 199,
           "width": 158,
           "height": 119,
-          "text": null,
+          "text": "",
           "type": "logo",
           "readable": false,
           "bg": null,
@@ -2065,10 +2065,10 @@
           "text": "wijnen STERK champagne",
           "type": "awning",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#8da397",
+          "fg": "#2c3039",
           "confidence": 0.92,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (622, 101) and letter (423, 90); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 823,
@@ -2078,10 +2078,10 @@
           "text": "7 dagen per week GEOPEND",
           "type": "awning",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#90a8a8",
+          "fg": "#212e37",
           "confidence": 0.9,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (894, 105) and letter (1117, 60); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 1250,
@@ -2119,10 +2119,10 @@
           "text": "Restaurant manoto",
           "type": "fascia",
           "readable": true,
-          "bg": "#313e46",
-          "fg": "#fcfdff",
+          "bg": "#30393e",
+          "fg": "#fafeff",
           "confidence": 0.97,
-          "notes": "Background and lettering sampled at native pixels (550,45) and (434,100)."
+          "notes": "Background and lettering sampled at native pixels (550,45) and (434,100). Opaque panel: sampled actual native pixels at background (278, 143) and letter (566, 126); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 1390,
@@ -2132,10 +2132,10 @@
           "text": "LA BASTA",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#63687c",
+          "fg": "#f3fef8",
           "confidence": 0.97,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (1413, 100) and letter (1408, 93); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 81,
@@ -2306,10 +2306,10 @@
           "text": "BESTSELLER MAGAZINES GIFTS BOOKS",
           "type": "awning",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#586063",
+          "fg": "#e0e9e8",
           "confidence": 0.9,
-          "notes": "Bicycle warning sign crosses sign."
+          "notes": "Bicycle warning sign crosses sign. Opaque panel: sampled actual native pixels at background (859, 154) and letter (935, 186); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 1270,
@@ -2347,10 +2347,10 @@
           "text": "SENER",
           "type": "fascia",
           "readable": true,
-          "bg": null,
-          "fg": null,
+          "bg": "#635459",
+          "fg": "#d1e6e9",
           "confidence": 0.94,
-          "notes": ""
+          "notes": "Opaque panel: sampled actual native pixels at background (222, 123) and letter (119, 87); points selected from luminance tails within the visually marked sign region."
         },
         {
           "left": 366,
@@ -2385,7 +2385,7 @@
           "top": 270,
           "width": 438,
           "height": 54,
-          "text": null,
+          "text": "",
           "type": "window",
           "readable": false,
           "bg": null,
@@ -2496,7 +2496,7 @@
           "top": 237,
           "width": 180,
           "height": 52,
-          "text": null,
+          "text": "",
           "type": "gevelsteen",
           "readable": false,
           "bg": null,
@@ -2641,5 +2641,6 @@
       ],
       "notes": "Small doorbell/address labels only; no visible storefront sign."
     }
-  }
+  },
+  "sampleSha256": "c67709bc76c5a76fe91c3cbcc31a206976ef1e25b537dd969c22e9c7d894c102"
 }
