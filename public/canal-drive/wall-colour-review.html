@@ -218,6 +218,7 @@ const grade = (verdict, correctedHex) => {
   const chosen = state.pick === 'bright' ? brighten(e.hex || '#888888') : e.hex;
   state.grades[e.observationId] = {
     observationId: e.observationId,
+    buildingId: e.buildingId,
     verdict,
     pick: state.pick,
     // What the grader actually endorsed. `accept` on the brighter swatch is an
