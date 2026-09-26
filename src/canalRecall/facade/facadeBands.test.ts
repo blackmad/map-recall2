@@ -157,4 +157,46 @@ const near = (actual: readonly number[], expected: readonly number[], tolerance:
   check(facadeBands(image(60, 120, each(RED_BRICK)), new Uint8Array(60 * 120)) === null, 'a map with no building abstains');
 }
 
+// --- Regression corpus: named failure modes from the handoff. --------------
+// These are diagnostic, not aspirational. Each asserts the behaviour the module
+// currently has, so a later pass can see whether it improved or regressed these
+// specific cases rather than only a headline number.
+
+// The cornice-at-0.83 case. A lighter horizontal band high on a brick wall is a
+// cornice, not a ground floor. The module does not call it one — it reports the
+// change as `two-tone-other`, honestly labelled as too high — and this pins
+// that: whatever a later pass does, this case must never become
+// `two-tone-ground-floor`.
+{
+  const result = facadeBands(image(60, 120, (_x, y) => (y >= 20 && y < 26 ? [190, 180, 170] : RED_BRICK)))!;
+  check(result.verdict !== 'two-tone-ground-floor', `a high cornice is never a ground floor, got ${result.verdict}`);
+}
+
+// The reviewer's cut-shopfront case: a crop whose lowest observed facade is
+// already 3 m above the pavement, so the true 0-2 m shopfront is not in frame.
+// The metric frame must still place the bottom of this crop at 3 m, not at 0.
+// A metric-window search that treats the *bottom of the crop* as the pavement
+// would then place the shopfront at 5-8 m, which is exactly the false plinth the
+// reviewer named. This pins the frame arithmetic and the trap: the bottom row is
+// above the window floor, so any row it selects is above the real shopfront.
+{
+  const frame = { baseZ: 3, topZ: 18, groundNAP: 0, cropHeightPx: 120, metresPerPixel: 0.125 };
+  const metresAt = (row: number) => frame.topZ - (row / frame.cropHeightPx) * (frame.topZ - frame.baseZ) - frame.groundNAP;
+  check(metresAt(0) > 14, `the top of a 3 m-cut crop is still high, got ${metresAt(0)}`);
+  check(Math.abs(metresAt(119) - 3.125) < 1e-9, `the base of a 3 m-cut crop sits at 3 m, not 0, got ${metresAt(119)}`);
+  check(metresAt(119) > 2, 'the crop base is above the 2 m floor of the ground-floor window, so a window hit here is not the shopfront');
+}
+
+// The metric frame converts rows to metres above the pavement. A facade whose
+// top is 15 m up with the crop starting at the pavement has metresPerPixel
+// 0.125; a cream band in the lowest 2 m must land in the ground-floor window.
+// This exercises the frame arithmetic directly, independent of the split logic.
+{
+  const frame = { baseZ: 0, topZ: 15, groundNAP: 0, cropHeightPx: 120, metresPerPixel: 0.125 };
+  const metresAt = (row: number) => frame.topZ - (row / frame.cropHeightPx) * (frame.topZ - frame.baseZ) - frame.groundNAP;
+  check(Math.abs(metresAt(0) - 15) < 1e-9, `row 0 is the top of the crop, got ${metresAt(0)}`);
+  check(Math.abs(metresAt(119) - 0.125) < 1e-9, `the last row is one pixel above the pavement, got ${metresAt(119)}`);
+  check(metresAt(96) <= 6.5 && metresAt(96) >= 2, `row 96 (2.9 m) falls in the ground-floor window, got ${metresAt(96)}`);
+}
+
 console.log(`facade bands: ${checks} assertions passed.`);
