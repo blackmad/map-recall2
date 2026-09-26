@@ -1,0 +1,2953 @@
+{
+  "version": 1,
+  "kind": "wall-colour/model-demo-grades",
+  "sampleSha256": "5711c358649d7f8d0309150bc05629f6846a65e0c617a459452bbf40b820134c",
+  "sampleFileSha256": "8285fb0c96e76749dfaab2760561e2fe44203e129133bcd81e2f03b118a0bb06",
+  "measurementsSha256": "175371b180d48cbd1be9faf76bc809c480335c3d875f6a1a4e5740526bb38591",
+  "reviewOrigin": "model-visual-review",
+  "reviewer": "gpt-6-terra",
+  "gradedAt": "2026-09-26T18:15:00.000Z",
+  "policy": "Autonomous visual review of dated source crops. Accept only a legible, representative main wall whose measurement agrees with the visible facade; abstain where trees, glare, shadow, crop framing, or mixed/neighbouring surfaces prevent that judgment. Ground-floor bands and trim are excluded.",
+  "grades": {
+    "0363100012156171_e_191dpbo": {
+      "observationId": "0363100012156171_e_191dpbo",
+      "buildingId": "0363100012156171",
+      "sourceSha256": "ee90d131a505678290603f51227c801b67f6182f3262154d51560c875f8bebb3",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 400,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012168906_e_0sln1w5": {
+      "observationId": "0363100012168906_e_0sln1w5",
+      "buildingId": "0363100012168906",
+      "sourceSha256": "c342ac69f7996c47c80002c970c05b25748feb32cc9af4d03f662dc35ccd1955",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 401,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174820_e_19mpztc": {
+      "observationId": "0363100012174820_e_19mpztc",
+      "buildingId": "0363100012174820",
+      "sourceSha256": "cffe005cfe3f5b4452364929f97b2ab0eb20cf4f0074b2c6bdc0c98703bc2021",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 402,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012077976_e_1v7y4pu": {
+      "observationId": "0363100012077976_e_1v7y4pu",
+      "buildingId": "0363100012077976",
+      "sourceSha256": "2bc474e13b02a790b9cd3cfb8850cabfa67a5a8aa4a7c834e8a5842a3b77cf96",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 403,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012165523_e_1l2zcfu": {
+      "observationId": "0363100012165523_e_1l2zcfu",
+      "buildingId": "0363100012165523",
+      "sourceSha256": "73d10fce1f16776523169a02f9d5da5095bfc4658e0b1fc595064a16aac98414",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 404,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012086076_e_070njir": {
+      "observationId": "0363100012086076_e_070njir",
+      "buildingId": "0363100012086076",
+      "sourceSha256": "5c903e0bb23483873414542f783383353d94618e9e9e4165fd8dc43f33034feb",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 405,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012236836_e_1vubnn3": {
+      "observationId": "0363100012236836_e_1vubnn3",
+      "buildingId": "0363100012236836",
+      "sourceSha256": "f9169d71e958ac4e294802e142089dc110319b5390c34cf07645d71f7aaaa40a",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 406,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012089902_e_0omhvd8": {
+      "observationId": "0363100012089902_e_0omhvd8",
+      "buildingId": "0363100012089902",
+      "sourceSha256": "655559aee956a435e56a4845483cf2c92611428a6929be7aad5f1fbcfd4638cf",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 407,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012168366_e_0ol0s4r": {
+      "observationId": "0363100012168366_e_0ol0s4r",
+      "buildingId": "0363100012168366",
+      "sourceSha256": "94a111105e64377c7a467ea1de4e48a310c8901e37f8ca2fa45d264940597082",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 408,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012186094_e_0a0a5bl": {
+      "observationId": "0363100012186094_e_0a0a5bl",
+      "buildingId": "0363100012186094",
+      "sourceSha256": "f6b4960a8149461716e2d31246f8d4fc90e0d4c4871320e20104c68458b21bf7",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 409,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012173910_e_15gaiap": {
+      "observationId": "0363100012173910_e_15gaiap",
+      "buildingId": "0363100012173910",
+      "sourceSha256": "1e2880d3179fcdbc47f59278dd2ca93fc6270ff1392954c47f5e504aaf4ab2bb",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 410,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012169605_e_1xem6r3": {
+      "observationId": "0363100012169605_e_1xem6r3",
+      "buildingId": "0363100012169605",
+      "sourceSha256": "d699a7ab6e4d7e9f01d712350bc388cb17e1dddccd5f674ac5275b7828e0cfb7",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 411,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012236397_e_0d2np4j": {
+      "observationId": "0363100012236397_e_0d2np4j",
+      "buildingId": "0363100012236397",
+      "sourceSha256": "5dc145353dfc45eb8f0f6c9a0859f8728a4052ff66ebed9a03ec0d8c4918fa3d",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 412,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012168642_e_1c4u1cb": {
+      "observationId": "0363100012168642_e_1c4u1cb",
+      "buildingId": "0363100012168642",
+      "sourceSha256": "f804e8586bafcb665f530f458b1454d3075f09f6626ffbbb5c683f3dc9ada4cf",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 413,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170090_e_0pdu7u6": {
+      "observationId": "0363100012170090_e_0pdu7u6",
+      "buildingId": "0363100012170090",
+      "sourceSha256": "570c78e108f2c2fdf9facf65e2103b7a0b64b0dfff5ed8e0714b3e0f5ffb4d07",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 414,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012081848_e_14td103": {
+      "observationId": "0363100012081848_e_14td103",
+      "buildingId": "0363100012081848",
+      "sourceSha256": "1f9611c8de10ff4a3629ee5931639206c13a6c79d6b2a76fbea54c41c9077f61",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 415,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012168933_e_10z24m6": {
+      "observationId": "0363100012168933_e_10z24m6",
+      "buildingId": "0363100012168933",
+      "sourceSha256": "2ae2bcb3f6429d27bc0a7c9c20e86934b3ab0854c579692627ca503272807e6d",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 416,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012141698_e_13h8zj6": {
+      "observationId": "0363100012141698_e_13h8zj6",
+      "buildingId": "0363100012141698",
+      "sourceSha256": "e0ae8368f387570630d395b4408ee546e782534cbf5d37f4f63be0afa594688f",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 417,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012158443_e_19uyu9t": {
+      "observationId": "0363100012158443_e_19uyu9t",
+      "buildingId": "0363100012158443",
+      "sourceSha256": "c04ace935edfc066c0857082c49a5872649907a09dd996e308e8c213a6506fbe",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 418,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012157926_e_012eimg": {
+      "observationId": "0363100012157926_e_012eimg",
+      "buildingId": "0363100012157926",
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 419,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170086_e_0vdsp7f": {
+      "observationId": "0363100012170086_e_0vdsp7f",
+      "buildingId": "0363100012170086",
+      "sourceSha256": "fb90a562c12a2acb1e564dc0af127c436b9b5b3bc0aa3fadb6390d0026c365f2",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 420,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012067309_e_1c8xhxm": {
+      "observationId": "0363100012067309_e_1c8xhxm",
+      "buildingId": "0363100012067309",
+      "sourceSha256": "e054d353e964e217957ca4926798ac5cc539c34a127e93b65507add15f19cb23",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "mixed-or-neighbouring-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 421,
+      "notes": "The crop includes multiple or materially distinct facade surfaces, so the target wall cannot be isolated for measured publication."
+    },
+    "0363100012174534_e_1efb086": {
+      "observationId": "0363100012174534_e_1efb086",
+      "buildingId": "0363100012174534",
+      "sourceSha256": "bca49052c141dcc4af1d676e9acffcc9c15b421a5c3ddab26df32eb7d598c04c",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 422,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012132271_e_09pgk76": {
+      "observationId": "0363100012132271_e_09pgk76",
+      "buildingId": "0363100012132271",
+      "sourceSha256": "a299cb91b4185c643eca0fd81830a0a8c0061323d465f79debfdddd116ddad93",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 423,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012166397_e_0t3c7pn": {
+      "observationId": "0363100012166397_e_0t3c7pn",
+      "buildingId": "0363100012166397",
+      "sourceSha256": "574e74e134aaab70c7a79929166241f7303554ec0fb9f70721cfe638a5a7faff",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 424,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012164753_e_18gac44": {
+      "observationId": "0363100012164753_e_18gac44",
+      "buildingId": "0363100012164753",
+      "sourceSha256": "87fd75fbe57229bf671ca23c5a5fde43a3355a186d9840c31503bea797d34b3d",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 425,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012167944_e_1vp6z61": {
+      "observationId": "0363100012167944_e_1vp6z61",
+      "buildingId": "0363100012167944",
+      "sourceSha256": "c0302aa23d60a24df7cabdc8d1a90053cd4238c979d7cb3380a8b7911e81adbe",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 426,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012170091_e_1leemar": {
+      "observationId": "0363100012170091_e_1leemar",
+      "buildingId": "0363100012170091",
+      "sourceSha256": "5175333fc0049c0ddda7d37eba78be9025ca29e1d2804e44205ef13e9a97376e",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 427,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012077995_e_0pmykc4": {
+      "observationId": "0363100012077995_e_0pmykc4",
+      "buildingId": "0363100012077995",
+      "sourceSha256": "7b06d986182515d5a05878348400a7b7e54a2292d1224aa34a9005d59750631c",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 428,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012109420_e_1uqwy9c": {
+      "observationId": "0363100012109420_e_1uqwy9c",
+      "buildingId": "0363100012109420",
+      "sourceSha256": "912fe7622df2b356ff8afd4c5078369dc3e9b0bf320fae915f1af497a94a1048",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 429,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012164917_e_0345gt3": {
+      "observationId": "0363100012164917_e_0345gt3",
+      "buildingId": "0363100012164917",
+      "sourceSha256": "2683304b0cbe75c04ce8cc8473487624f52c5a45a2d72e34a8d2681d82c97d50",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 430,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012160415_e_0tvlxuq": {
+      "observationId": "0363100012160415_e_0tvlxuq",
+      "buildingId": "0363100012160415",
+      "sourceSha256": "91ed0d3a99148d43e3ca0a4499aa9711328150d0e1264ebfa41ce1baf84fdffc",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 431,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170154_e_1najs9a": {
+      "observationId": "0363100012170154_e_1najs9a",
+      "buildingId": "0363100012170154",
+      "sourceSha256": "228129118dd7302bfa56f944dd06aafad93965912bbb31dacfca151b9fa95c7f",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 432,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012173916_e_1k0nq6n": {
+      "observationId": "0363100012173916_e_1k0nq6n",
+      "buildingId": "0363100012173916",
+      "sourceSha256": "f6d3f41ae144cf5944a6e4917e806e6637dca57e05f41abca12113ba7cba23a3",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 433,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012169780_e_1sqt26b": {
+      "observationId": "0363100012169780_e_1sqt26b",
+      "buildingId": "0363100012169780",
+      "sourceSha256": "2d11d5e7480b5efb713cdf28b4725151384edda649c1eac230a0f2a695d68dd4",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 434,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174296_e_0v3q5eh": {
+      "observationId": "0363100012174296_e_0v3q5eh",
+      "buildingId": "0363100012174296",
+      "sourceSha256": "75bffeb6e69291b0d4341f78328bd9b97be7a50a36e0b0307481021d0d473b46",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 435,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012150550_e_1dy2x13": {
+      "observationId": "0363100012150550_e_1dy2x13",
+      "buildingId": "0363100012150550",
+      "sourceSha256": "59b9e1f2128021780c9e90d82017bc20df09bd76189e43a03119438f28862d08",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 436,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170147_e_15pj3a8": {
+      "observationId": "0363100012170147_e_15pj3a8",
+      "buildingId": "0363100012170147",
+      "sourceSha256": "3cfeb831bffb0ed7fba3ae1e5d6c32088a0ca1ba7cd3959bc4d82215df339327",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 437,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012107485_e_1py60r0": {
+      "observationId": "0363100012107485_e_1py60r0",
+      "buildingId": "0363100012107485",
+      "sourceSha256": "8d9f53bba028ea885efa5ed8cd3b2e85184a8912bcedabf03d4067f1fa2d2fe5",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 438,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170150_e_11tsz83": {
+      "observationId": "0363100012170150_e_11tsz83",
+      "buildingId": "0363100012170150",
+      "sourceSha256": "083356b8aa3406a64d68ae35b7dd4e473b190e45c43d9b0e6b2d59677d176d02",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 439,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012125896_e_0x3o5y0": {
+      "observationId": "0363100012125896_e_0x3o5y0",
+      "buildingId": "0363100012125896",
+      "sourceSha256": "3d62d50d25e6e484ff3f9767177db07067ec043c8b4af035438cf2d54ac722b3",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 440,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012158603_e_1np4ems": {
+      "observationId": "0363100012158603_e_1np4ems",
+      "buildingId": "0363100012158603",
+      "sourceSha256": "7858319ff1d34c5cbcd4cad6c41a2db7cc106278228768e80c83605afedf05c7",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 441,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174528_e_0x3iq6m": {
+      "observationId": "0363100012174528_e_0x3iq6m",
+      "buildingId": "0363100012174528",
+      "sourceSha256": "0b96480c8bed0707087d881098e7e9b554c125bbfa6d393ced6028ec69907c5d",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 442,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012114631_e_161qed9": {
+      "observationId": "0363100012114631_e_161qed9",
+      "buildingId": "0363100012114631",
+      "sourceSha256": "6d1b41260e87c82dceb7d93ab102e008803ef48d44cea870004aea64627d37c2",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 443,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012162280_e_1cfdjoq": {
+      "observationId": "0363100012162280_e_1cfdjoq",
+      "buildingId": "0363100012162280",
+      "sourceSha256": "ab17767a6d0592b6a9cc96a41ca8f2280b7572923cd0ef93a22d96a781938fc4",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 444,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174158_e_1ejs321": {
+      "observationId": "0363100012174158_e_1ejs321",
+      "buildingId": "0363100012174158",
+      "sourceSha256": "cbe31fc958bd4d67013d1aeae618d61707512fb200693d7f9dcb9f34f6f84bf6",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 445,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012163064_e_1ckybaa": {
+      "observationId": "0363100012163064_e_1ckybaa",
+      "buildingId": "0363100012163064",
+      "sourceSha256": "03c396dd041dc7242cdae3d7ae2539a9fd545a79e4ceec5b0dd3658d7bf410f0",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 446,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012083793_e_1m3tfu8": {
+      "observationId": "0363100012083793_e_1m3tfu8",
+      "buildingId": "0363100012083793",
+      "sourceSha256": "339065f688ca3a72a7eb52ff2a74a63a218f992e9b0b540320f5a6208b364476",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 447,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012129992_e_1ejkc4i": {
+      "observationId": "0363100012129992_e_1ejkc4i",
+      "buildingId": "0363100012129992",
+      "sourceSha256": "951fa586580fba2883e666d3ac23480d2fb00b61ad00ca6652be321b6c4d0b30",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 448,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012236235_e_1njqk8h": {
+      "observationId": "0363100012236235_e_1njqk8h",
+      "buildingId": "0363100012236235",
+      "sourceSha256": "d89d47567a33252524a1a9cd59868fc808ff9861b717d4c5eb466a90c20a0563",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 449,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174519_e_0vbmo8g": {
+      "observationId": "0363100012174519_e_0vbmo8g",
+      "buildingId": "0363100012174519",
+      "sourceSha256": "ba01fc7526676de6bf2e4a2731af58e94527d0469b7f78e902dee6aba18e39d1",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 450,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012170088_e_0idr2lr": {
+      "observationId": "0363100012170088_e_0idr2lr",
+      "buildingId": "0363100012170088",
+      "sourceSha256": "3223287c23e5334519608af0c3ae7da2b6b2d22a2873e05da670d004fed5880f",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 451,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012254021_e_1oi3qvf": {
+      "observationId": "0363100012254021_e_1oi3qvf",
+      "buildingId": "0363100012254021",
+      "sourceSha256": "a64b21c32819c31ac57beaf42900e5e356d8aef91d9ab792eb93073cdce7395b",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 452,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012096066_e_07856qc": {
+      "observationId": "0363100012096066_e_07856qc",
+      "buildingId": "0363100012096066",
+      "sourceSha256": "872f21fed4de5cb4633fc800d906c3ed7492eaa4e1142f738fc75c1184f56b62",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 453,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012166934_e_0m3kh1t": {
+      "observationId": "0363100012166934_e_0m3kh1t",
+      "buildingId": "0363100012166934",
+      "sourceSha256": "87ad884a275a575023683461637a991c3e68cfd53b9d35b9e4f7b3d47d2a95ee",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 454,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174566_e_0f96m8v": {
+      "observationId": "0363100012174566_e_0f96m8v",
+      "buildingId": "0363100012174566",
+      "sourceSha256": "b72d12f24cc9eba01f2eb0efd6ff4d1e108bdda2c40f775921d8ef0c9b4ffbf5",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 455,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012157068_e_1j6rs7l": {
+      "observationId": "0363100012157068_e_1j6rs7l",
+      "buildingId": "0363100012157068",
+      "sourceSha256": "8d970c75e961b9ea134de64df311e45e06ee485ddcc91b9d7d2af0a28cd1d6e8",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 456,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174212_e_1e45knu": {
+      "observationId": "0363100012174212_e_1e45knu",
+      "buildingId": "0363100012174212",
+      "sourceSha256": "0755dde44e9e5f2b35e65d4928518408ffb1fd367ac17e4f021f6f0aad571487",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 457,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012157022_e_0ylqx8d": {
+      "observationId": "0363100012157022_e_0ylqx8d",
+      "buildingId": "0363100012157022",
+      "sourceSha256": "e4e9ae57e11d4a91126323be9b975027921ca80b93cd33dc98c3e9edf5857a84",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 458,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012173916_e_0m9hurp": {
+      "observationId": "0363100012173916_e_0m9hurp",
+      "buildingId": "0363100012173916",
+      "sourceSha256": "c335db5d4744c07dded859bf0ade7e7040101b7463524dadeb1e0bb25a2f5892",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 459,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012168438_e_1lrqzc2": {
+      "observationId": "0363100012168438_e_1lrqzc2",
+      "buildingId": "0363100012168438",
+      "sourceSha256": "422e969bb87280e2de3837fac38fd6fbc1628b23e8ec5d63304c5b462750a10d",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 460,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170091_e_1nl9nsl": {
+      "observationId": "0363100012170091_e_1nl9nsl",
+      "buildingId": "0363100012170091",
+      "sourceSha256": "d778911878b02072227aa1e5798f179da1e6873415d708b3db4288d8638ec227",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 461,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012153283_e_15ek8bl": {
+      "observationId": "0363100012153283_e_15ek8bl",
+      "buildingId": "0363100012153283",
+      "sourceSha256": "1945163b64b288f177f1ecc22d0eea22ba821e492bad1e2856182cce79a61e17",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 462,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012153066_e_1djhs5u": {
+      "observationId": "0363100012153066_e_1djhs5u",
+      "buildingId": "0363100012153066",
+      "sourceSha256": "10d215ba9fca35d846f8b8af002852d807dc818ba868bad518e9921ec6a99d87",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 463,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012157746_e_04nemym": {
+      "observationId": "0363100012157746_e_04nemym",
+      "buildingId": "0363100012157746",
+      "sourceSha256": "cb0f66e828b485b7ba2c3f6e6bc48457ec007b01dfe06521195e8bdbb42db346",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 464,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012080836_e_1hhuir5": {
+      "observationId": "0363100012080836_e_1hhuir5",
+      "buildingId": "0363100012080836",
+      "sourceSha256": "e9334db29c6374f4153462c49daf3805f2db8eb5bda928a00383b8caf2179e64",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 465,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012081167_e_1ba9k92": {
+      "observationId": "0363100012081167_e_1ba9k92",
+      "buildingId": "0363100012081167",
+      "sourceSha256": "8f91540efbcb0fa80d48fface1d138c174bc0cf8bbcfd3e324e902ac65f7365d",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 466,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012164186_e_091x9bq": {
+      "observationId": "0363100012164186_e_091x9bq",
+      "buildingId": "0363100012164186",
+      "sourceSha256": "a2e3da90156cda9fa3cf66ab4b2d12140b8b3248de39eb4a2e6be6370c289be4",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 467,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012161277_e_14zdtpr": {
+      "observationId": "0363100012161277_e_14zdtpr",
+      "buildingId": "0363100012161277",
+      "sourceSha256": "528c28c2368d1f65d61fabf2be89c0f78442b2fdd9cb5df4b5db7d3a67919246",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 468,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012185685_e_12b8j8z": {
+      "observationId": "0363100012185685_e_12b8j8z",
+      "buildingId": "0363100012185685",
+      "sourceSha256": "ff035befde9ca1ea9c90bd6a3e35495d5be239a6420744c7f2e11d03f556978c",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 469,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012169598_e_1o24d4p": {
+      "observationId": "0363100012169598_e_1o24d4p",
+      "buildingId": "0363100012169598",
+      "sourceSha256": "22fe3111942a8b56d7510bfb1e1549aa5d65c6686314f345c962e105915eefd8",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 470,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012169893_e_06vneqj": {
+      "observationId": "0363100012169893_e_06vneqj",
+      "buildingId": "0363100012169893",
+      "sourceSha256": "0c8c0ec188c1d5546e76689aeacbac222dbfc78212bc3ba5d7c5faca2f367a07",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 471,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012160115_e_0pmfd27": {
+      "observationId": "0363100012160115_e_0pmfd27",
+      "buildingId": "0363100012160115",
+      "sourceSha256": "58a0fb7439ad4c2920cbc9844270f51b0eb72c483f1424920aa02a4306066618",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 472,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012109707_e_06lf7lp": {
+      "observationId": "0363100012109707_e_06lf7lp",
+      "buildingId": "0363100012109707",
+      "sourceSha256": "9f90fba5e089e5eaec6feeb24b243207a464e5eb9bf8778e84c8fee06aa5d7f4",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 473,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174211_e_0a5dx7g": {
+      "observationId": "0363100012174211_e_0a5dx7g",
+      "buildingId": "0363100012174211",
+      "sourceSha256": "0d9a4db56f5fb1da8339a7a8c8f15d87a9af5af5e791e24fb2f4b75e7709a19e",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 474,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174169_e_1w30ns5": {
+      "observationId": "0363100012174169_e_1w30ns5",
+      "buildingId": "0363100012174169",
+      "sourceSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 475,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012169605_e_19d3w64": {
+      "observationId": "0363100012169605_e_19d3w64",
+      "buildingId": "0363100012169605",
+      "sourceSha256": "b632e642bb84927b77c5d59f22dd21058ac0072a61200d4c5c70cc6db04d274f",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 476,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012159182_e_0nqcs47": {
+      "observationId": "0363100012159182_e_0nqcs47",
+      "buildingId": "0363100012159182",
+      "sourceSha256": "3ebffa1679909575e0f469549d20366df1a91a3d9ab0b16da50bbba4e2407b57",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 477,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174999_e_0f7aj85": {
+      "observationId": "0363100012174999_e_0f7aj85",
+      "buildingId": "0363100012174999",
+      "sourceSha256": "4e03512b58c9e4affd8298382f766293b0ce1aac4933f29b3761f18002f98264",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "mixed-or-neighbouring-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 478,
+      "notes": "The crop includes multiple or materially distinct facade surfaces, so the target wall cannot be isolated for measured publication."
+    },
+    "0363100012174554_e_077rlll": {
+      "observationId": "0363100012174554_e_077rlll",
+      "buildingId": "0363100012174554",
+      "sourceSha256": "9814549cf28aa9765137e9973ee1e67f3c2615ad7aa09d14552fbb19317e1105",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 479,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012163064_e_1shunoj": {
+      "observationId": "0363100012163064_e_1shunoj",
+      "buildingId": "0363100012163064",
+      "sourceSha256": "552c929d89ece7832298a689dccf4efcd1283d6de456a8a14734003e4a09d69c",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 480,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012236121_e_0pbjzjk": {
+      "observationId": "0363100012236121_e_0pbjzjk",
+      "buildingId": "0363100012236121",
+      "sourceSha256": "b61002d76b8e7f9d68df1fdb51919aa0fe5ac061b6fe2f78bb9e1dc73a04843a",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 481,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012163083_e_1hrf56x": {
+      "observationId": "0363100012163083_e_1hrf56x",
+      "buildingId": "0363100012163083",
+      "sourceSha256": "bc5da6b6fff2aba1a39c22ea26bf400346a4c2cc4532f8320b87906f0e97eaba",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 482,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012168936_e_0friwt8": {
+      "observationId": "0363100012168936_e_0friwt8",
+      "buildingId": "0363100012168936",
+      "sourceSha256": "bfac4b50161eee1aff74bdde786568b6e57ee1e75c5876eef151df42d4ce4b0e",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 483,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012169004_e_1klya09": {
+      "observationId": "0363100012169004_e_1klya09",
+      "buildingId": "0363100012169004",
+      "sourceSha256": "35ed6497ef6b9bea8e8dd8fe99c6f656cba8436a951ebb797798b0fe98a4ea2c",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 484,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012237291_e_1yq41ov": {
+      "observationId": "0363100012237291_e_1yq41ov",
+      "buildingId": "0363100012237291",
+      "sourceSha256": "568035c81f5060a120ca7035caebef50bcbba8de2cfbfd37cf28a52ef9ecb810",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 485,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012236003_e_0k0u3th": {
+      "observationId": "0363100012236003_e_0k0u3th",
+      "buildingId": "0363100012236003",
+      "sourceSha256": "a44189e3675830975848beec23f89bfaaa2bfdeb5b378e702fe2c07f52112d99",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 486,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012157952_e_1s4qwd4": {
+      "observationId": "0363100012157952_e_1s4qwd4",
+      "buildingId": "0363100012157952",
+      "sourceSha256": "cb8c9708a1a7720623ec4583cd106cdfa004dbb72b8964c8d13c7324059dbb06",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 487,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012173914_e_1un6nri": {
+      "observationId": "0363100012173914_e_1un6nri",
+      "buildingId": "0363100012173914",
+      "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 488,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174156_e_04dr7wi": {
+      "observationId": "0363100012174156_e_04dr7wi",
+      "buildingId": "0363100012174156",
+      "sourceSha256": "7a0c7195ab910c4326b441484fa1f475f47f5d97fa9086966e6cd9b389e1cec0",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 489,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012185685_e_0d6vfng": {
+      "observationId": "0363100012185685_e_0d6vfng",
+      "buildingId": "0363100012185685",
+      "sourceSha256": "56b7f6e9ec21a4e322ed903ecaa51f95a1f59ba0547856bb8bf95c7061785f6d",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 490,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012102399_e_1jehud3": {
+      "observationId": "0363100012102399_e_1jehud3",
+      "buildingId": "0363100012102399",
+      "sourceSha256": "f769443d01ef2ab38783d9ceea1fe96a25c734e99bcfb5816b3b8ada966b6c8d",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 491,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174210_e_15cjfhe": {
+      "observationId": "0363100012174210_e_15cjfhe",
+      "buildingId": "0363100012174210",
+      "sourceSha256": "40db5d1feadabfaa26e185586532bcaadc166bb75d46cbfbc7e67b58742d2f01",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 492,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174153_e_14l6jep": {
+      "observationId": "0363100012174153_e_14l6jep",
+      "buildingId": "0363100012174153",
+      "sourceSha256": "27a1e894c4049d986b0c092313b6268be1bcf75181c7f84c55b848c7d37b62f0",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 493,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012236381_e_0v97fd9": {
+      "observationId": "0363100012236381_e_0v97fd9",
+      "buildingId": "0363100012236381",
+      "sourceSha256": "27f91a4953409ff6bed64cdf9e88157b13c26ce756a0dcf558775dedff60a2a7",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 494,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012153600_e_0k6kkgh": {
+      "observationId": "0363100012153600_e_0k6kkgh",
+      "buildingId": "0363100012153600",
+      "sourceSha256": "823540a5d0f31c98d234d4a66bc135df94e93fdc16ff8277cca0a34bc518e481",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 495,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012168646_e_1ec9ais": {
+      "observationId": "0363100012168646_e_1ec9ais",
+      "buildingId": "0363100012168646",
+      "sourceSha256": "eb77dd9f91e341da8698493ea59c6a96ae04120f70fd91bd2327ba191277e3b3",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 496,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012168613_e_18jsd29": {
+      "observationId": "0363100012168613_e_18jsd29",
+      "buildingId": "0363100012168613",
+      "sourceSha256": "1c08d38e3a4277519976357c9ad1d874bc42704fb989e7cb5ee3ebeab69b789e",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 497,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174549_e_0brqvmp": {
+      "observationId": "0363100012174549_e_0brqvmp",
+      "buildingId": "0363100012174549",
+      "sourceSha256": "44590ed277645e3df88416c5454d61fac57336ad292067b6621aeb8766c330ff",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 498,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012159131_e_0fguf7w": {
+      "observationId": "0363100012159131_e_0fguf7w",
+      "buildingId": "0363100012159131",
+      "sourceSha256": "1d087a0299ebbb41f7c01011c45817127404699addd2b1d1e5b4aa9c4a321815",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 499,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012162078_e_1kp3cga": {
+      "observationId": "0363100012162078_e_1kp3cga",
+      "buildingId": "0363100012162078",
+      "sourceSha256": "247ee554eba220ac4b5367340f2df3fae681fd28f89685c3b9ef555f0f77ae09",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 500,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012169780_e_0rbhvp2": {
+      "observationId": "0363100012169780_e_0rbhvp2",
+      "buildingId": "0363100012169780",
+      "sourceSha256": "1f2c95eb1b6eba766ca16a1dfc4411259ebfe5f3b24d13ce1f89950af2261726",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 501,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012168920_e_1wuvrh6": {
+      "observationId": "0363100012168920_e_1wuvrh6",
+      "buildingId": "0363100012168920",
+      "sourceSha256": "487eeb298a419a66497d6910f5eb0de4bf2c14992030bddfff2e2dc682bb62f9",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 502,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174552_e_11xd5yb": {
+      "observationId": "0363100012174552_e_11xd5yb",
+      "buildingId": "0363100012174552",
+      "sourceSha256": "2f00a485630348d2e101b71559deaf4827b4d1dc2059ee21ebf4edf69be1ec4b",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 503,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012138402_e_17vjjm8": {
+      "observationId": "0363100012138402_e_17vjjm8",
+      "buildingId": "0363100012138402",
+      "sourceSha256": "a7e838292afa04aa6d5a5d1736c4b9a54ac88d6d63ad5fadc3fd718664f8defb",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 504,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170129_e_1p6l4ni": {
+      "observationId": "0363100012170129_e_1p6l4ni",
+      "buildingId": "0363100012170129",
+      "sourceSha256": "c8f97a4ab54dc5bb7743f33a763c8f03db3a82b568ebc6e3e20bd6a7e33d7de2",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 505,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012236266_e_0qd9ev0": {
+      "observationId": "0363100012236266_e_0qd9ev0",
+      "buildingId": "0363100012236266",
+      "sourceSha256": "96166d032006d8ae076c173b60dfbe983db75e14893076838da45cd5eab71d87",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 506,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012156116_e_0raxmqq": {
+      "observationId": "0363100012156116_e_0raxmqq",
+      "buildingId": "0363100012156116",
+      "sourceSha256": "fb88b43dc5cfbc2c92bd39b843a7b92de2a0df76eeae9823a4674a172e5e1220",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 507,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174203_e_1xsw9l0": {
+      "observationId": "0363100012174203_e_1xsw9l0",
+      "buildingId": "0363100012174203",
+      "sourceSha256": "edc9b705a12cf8bc2bc00a79fe555b52344ffdb9cb179eae191910320ae2f7d9",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 508,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012150400_e_0i6ny76": {
+      "observationId": "0363100012150400_e_0i6ny76",
+      "buildingId": "0363100012150400",
+      "sourceSha256": "0d5a96074112cc2927269430f3eaff4b27ccbbf3dfbacc6c0d6bc6f024363f39",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 509,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012148915_e_1w53m9k": {
+      "observationId": "0363100012148915_e_1w53m9k",
+      "buildingId": "0363100012148915",
+      "sourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 510,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012159173_e_1ikilx4": {
+      "observationId": "0363100012159173_e_1ikilx4",
+      "buildingId": "0363100012159173",
+      "sourceSha256": "aa7c9e506e7d99731bf1ff3284c760afb4856677317358b47d7657a3ecd1e5bd",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 511,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012152709_e_1lkariz": {
+      "observationId": "0363100012152709_e_1lkariz",
+      "buildingId": "0363100012152709",
+      "sourceSha256": "93d0b2e0e73cb9bb15528b533bddabd4b47d5562ecac61044de9bd3d120adbcd",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 512,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174357_e_19z81cx": {
+      "observationId": "0363100012174357_e_19z81cx",
+      "buildingId": "0363100012174357",
+      "sourceSha256": "ce731ff5d2e92e473fa0d6841820deb2265fd80d20b20e7fdb9ba8537de0e324",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 513,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012062260_e_1vze6ea": {
+      "observationId": "0363100012062260_e_1vze6ea",
+      "buildingId": "0363100012062260",
+      "sourceSha256": "84b1cc9ead8877173102a7caa693dea504818589fec454a22deb26a59c138911",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 514,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012160443_e_066lker": {
+      "observationId": "0363100012160443_e_066lker",
+      "buildingId": "0363100012160443",
+      "sourceSha256": "d6c3411c7aa9ae00e99f4aaba51e1e4f1477f9fd230d4066a9b5272457f20d17",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 515,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174357_e_0mu2iav": {
+      "observationId": "0363100012174357_e_0mu2iav",
+      "buildingId": "0363100012174357",
+      "sourceSha256": "40bdf77e1a4226856d4c4564bf899e93b3af792cd39ebd57a5898424dc58f08a",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 516,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012099292_e_0jkdde1": {
+      "observationId": "0363100012099292_e_0jkdde1",
+      "buildingId": "0363100012099292",
+      "sourceSha256": "b8809993855ea06c8720a76c8bbf5be4e9ef957663574bfa774b81c7c1af3530",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 517,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012169778_e_00n44x4": {
+      "observationId": "0363100012169778_e_00n44x4",
+      "buildingId": "0363100012169778",
+      "sourceSha256": "9783e36116b99630ab1c4910cfb2ffd6d363623b27ac7a0f987522c93332dc6d",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 518,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012157926_e_0wahro7": {
+      "observationId": "0363100012157926_e_0wahro7",
+      "buildingId": "0363100012157926",
+      "sourceSha256": "2fae091b5bfafaab1db7e3cdd9be3cd004fbdbd4cdde08ad440d815c92cc2204",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 519,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012237100_e_1l4m54o": {
+      "observationId": "0363100012237100_e_1l4m54o",
+      "buildingId": "0363100012237100",
+      "sourceSha256": "d4b216dc43b07ccf78fe365cbd0ea77ffe683c8418c1db20f26af9a695ff30bb",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 520,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174278_e_1kpidna": {
+      "observationId": "0363100012174278_e_1kpidna",
+      "buildingId": "0363100012174278",
+      "sourceSha256": "5c87c3274ca8d1b65c12e87c6106afa23c69f103be342fec6e0ed65c69802b6d",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 521,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012125327_e_03pngle": {
+      "observationId": "0363100012125327_e_03pngle",
+      "buildingId": "0363100012125327",
+      "sourceSha256": "ac8924387ea8f6d928dfd57e7a2dbbf7ab9a553f02338b0f109d5a824b5be8fe",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 522,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012159032_e_13atps5": {
+      "observationId": "0363100012159032_e_13atps5",
+      "buildingId": "0363100012159032",
+      "sourceSha256": "52884b040724aa85c09b5f005813cff89d2213d32f91fd31e63d4e7fa11b3970",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 523,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012160810_e_0h02e94": {
+      "observationId": "0363100012160810_e_0h02e94",
+      "buildingId": "0363100012160810",
+      "sourceSha256": "b3d0bb0d666651ff00de3c2bea198b8e47dfc003fd7ac93614a77b6573580eca",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 524,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012163836_e_0dm7sz5": {
+      "observationId": "0363100012163836_e_0dm7sz5",
+      "buildingId": "0363100012163836",
+      "sourceSha256": "e6e26b5726cb917ceaeca466490d3e16425b00530f11c956a2ddeb13b5e6f991",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 525,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012168935_e_0xr85sx": {
+      "observationId": "0363100012168935_e_0xr85sx",
+      "buildingId": "0363100012168935",
+      "sourceSha256": "63e084dfdafcff9c462c994750fb0d61b940d5c7dda4b61f17480b8f28cb926a",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 526,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012127485_e_1w0ttzw": {
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "buildingId": "0363100012127485",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 527,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012160170_e_0og2rd7": {
+      "observationId": "0363100012160170_e_0og2rd7",
+      "buildingId": "0363100012160170",
+      "sourceSha256": "a4b4d7f65b424fa4a25d035077e310e23db74e985cbfdaebb08eef401c6cf573",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 528,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174360_e_1kpx9zh": {
+      "observationId": "0363100012174360_e_1kpx9zh",
+      "buildingId": "0363100012174360",
+      "sourceSha256": "e386aae7e4d0f31399b99db8f502dd11b4c668352cb0c75dcae296b624a7e5cc",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 529,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170149_e_1qubcpv": {
+      "observationId": "0363100012170149_e_1qubcpv",
+      "buildingId": "0363100012170149",
+      "sourceSha256": "f32476894ad79fcaa465e1f3afcdc1dab700bfc26557c13448db4e9d9b19c55c",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 530,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012163843_e_0jot5w7": {
+      "observationId": "0363100012163843_e_0jot5w7",
+      "buildingId": "0363100012163843",
+      "sourceSha256": "30a2ed88fa5350e91da145e93674ace033e7e5f8ec9320fd11ce24e7fa4a30c1",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 531,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012166311_e_1tsr40i": {
+      "observationId": "0363100012166311_e_1tsr40i",
+      "buildingId": "0363100012166311",
+      "sourceSha256": "1070ef2e9fb40ff4b2aadaad33fefeb9aa7180864a64a3e0208727464141e689",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 532,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174090_e_04vpsas": {
+      "observationId": "0363100012174090_e_04vpsas",
+      "buildingId": "0363100012174090",
+      "sourceSha256": "481f7b2e3e8119e24aadcdef0e8d5883a72828d339ff9064ce006747d3006ba0",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 533,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012168926_e_1vlfyxw": {
+      "observationId": "0363100012168926_e_1vlfyxw",
+      "buildingId": "0363100012168926",
+      "sourceSha256": "a096e0c0ddd2ddaecdb51494c58743fc8d96be9e941550330a1289f0d2bd1fb2",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 534,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012149258_e_0fwjo11": {
+      "observationId": "0363100012149258_e_0fwjo11",
+      "buildingId": "0363100012149258",
+      "sourceSha256": "4d473021fbeb741e5d86ecf1a186d549b461982a141dc6b2dfe92086ce9832dd",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 535,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012152388_e_02zsljq": {
+      "observationId": "0363100012152388_e_02zsljq",
+      "buildingId": "0363100012152388",
+      "sourceSha256": "e5a1453c73646d3e3c3c66c3e04e7034e6499e12b6d45a69fff6f706dd3116cd",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 536,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012170084_e_13tyxi0": {
+      "observationId": "0363100012170084_e_13tyxi0",
+      "buildingId": "0363100012170084",
+      "sourceSha256": "fd25edf5d0d8709d1ce9d0182e4d64c969b8d019a4c5fe1fa70db1b5946f3e26",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 537,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170126_e_04gcn7d": {
+      "observationId": "0363100012170126_e_04gcn7d",
+      "buildingId": "0363100012170126",
+      "sourceSha256": "a436c71626789f85af2375f23b992f89a22bd6cdcac1d2ba64c00662e8e3c6ce",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 538,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174278_e_1d1sd6a": {
+      "observationId": "0363100012174278_e_1d1sd6a",
+      "buildingId": "0363100012174278",
+      "sourceSha256": "9dcf580a421679e1e50047744eea8a7b2deadd781fcc454f3efdba7730ade0da",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 539,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012161223_e_17l8758": {
+      "observationId": "0363100012161223_e_17l8758",
+      "buildingId": "0363100012161223",
+      "sourceSha256": "363152fc9af294b0c1126cd1f4dad950e3cac14cf945ef0d3c0b16e3b63188e6",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 540,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012165927_e_0xxqmsr": {
+      "observationId": "0363100012165927_e_0xxqmsr",
+      "buildingId": "0363100012165927",
+      "sourceSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 541,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174281_e_1tbd3v2": {
+      "observationId": "0363100012174281_e_1tbd3v2",
+      "buildingId": "0363100012174281",
+      "sourceSha256": "690069a93939eb7c1dbb85547755ed587f3c4b65e9a65e41d9e7e907de3af276",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 542,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174359_e_0jjpsa8": {
+      "observationId": "0363100012174359_e_0jjpsa8",
+      "buildingId": "0363100012174359",
+      "sourceSha256": "06102bc1ce6b1fc2596bf0caa0d72f704c67a21e1f5f0f702ac8ce24c136d2a5",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 543,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174360_e_1bqfvl3": {
+      "observationId": "0363100012174360_e_1bqfvl3",
+      "buildingId": "0363100012174360",
+      "sourceSha256": "cd423479a71ccd6cb1e7c0ab00f4b49e60b2bfce764d8d63e2a58b20936940b8",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 544,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174145_e_1hud63g": {
+      "observationId": "0363100012174145_e_1hud63g",
+      "buildingId": "0363100012174145",
+      "sourceSha256": "41d1e9f7ba13db2edf3e3e56eb64e47b4a1bfc0c1aabfca9111f20bcce3c3d96",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 545,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174161_e_1n5ynny": {
+      "observationId": "0363100012174161_e_1n5ynny",
+      "buildingId": "0363100012174161",
+      "sourceSha256": "ed100d60e057537f68ba22e5bc47c143d7b74db718268448607bc44b9f66cc5d",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 546,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012081167_e_0c21yw2": {
+      "observationId": "0363100012081167_e_0c21yw2",
+      "buildingId": "0363100012081167",
+      "sourceSha256": "ececf49eb5818a241a841fe0bba219c045b50819598f0cf45cc90676517b51d7",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "mixed-or-neighbouring-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 547,
+      "notes": "The crop includes multiple or materially distinct facade surfaces, so the target wall cannot be isolated for measured publication."
+    },
+    "0363100012091205_e_0ijvd6s": {
+      "observationId": "0363100012091205_e_0ijvd6s",
+      "buildingId": "0363100012091205",
+      "sourceSha256": "b54119e22b97964d76274f16d0b5c49e649161d93ffaa402428caf2397fbf542",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 548,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012156172_e_1ja7ftx": {
+      "observationId": "0363100012156172_e_1ja7ftx",
+      "buildingId": "0363100012156172",
+      "sourceSha256": "c6522a2e18c857d9ed9bc9028dfb15b5558515ae8d03b96844422409800cf8d8",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 550,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174352_e_0vzdubh": {
+      "observationId": "0363100012174352_e_0vzdubh",
+      "buildingId": "0363100012174352",
+      "sourceSha256": "fba696aad30dfe3ed83068212f9bcbb9ff690a4d324a06ceda36c85ebd0e9546",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 551,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174281_e_1208fs2": {
+      "observationId": "0363100012174281_e_1208fs2",
+      "buildingId": "0363100012174281",
+      "sourceSha256": "afa76ca5ecf17dbf65d35e1aa516d2f15922d01a1afff325657a044bad9d0dfe",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 552,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012167878_e_0v31kia": {
+      "observationId": "0363100012167878_e_0v31kia",
+      "buildingId": "0363100012167878",
+      "sourceSha256": "f9cd16c53828ddef2bc6e235b6edc04e266ce6e6d751326968c63c2f1714f8fe",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 553,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174561_e_17dg2bs": {
+      "observationId": "0363100012174561_e_17dg2bs",
+      "buildingId": "0363100012174561",
+      "sourceSha256": "aa8c34949d5c3a14382084752d54513ce26163a5869f7ff934bf53cb486e2fc4",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 554,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012168951_e_0tp0g0g": {
+      "observationId": "0363100012168951_e_0tp0g0g",
+      "buildingId": "0363100012168951",
+      "sourceSha256": "e1d67b7cd7aaed3f0d9ae936832b70af72425045928c8a9b43d37787e71dab1a",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 555,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012160170_e_0ll0vf2": {
+      "observationId": "0363100012160170_e_0ll0vf2",
+      "buildingId": "0363100012160170",
+      "sourceSha256": "eca1b8a50efd6b7d9a5ce8a30ddb7a0d240244647e479088310f59708e400293",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 556,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012152562_e_17jq9cd": {
+      "observationId": "0363100012152562_e_17jq9cd",
+      "buildingId": "0363100012152562",
+      "sourceSha256": "9a7d896592d2b20354c8372fa6c28f6c7b0e0da171711607e28f2a1ae5897c71",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 557,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170125_e_0paqtzn": {
+      "observationId": "0363100012170125_e_0paqtzn",
+      "buildingId": "0363100012170125",
+      "sourceSha256": "69ea507ab72dc3e495dc8aadba1873d8dd8a554c22967268b1cea3af95555036",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 558,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174155_e_03nisvn": {
+      "observationId": "0363100012174155_e_03nisvn",
+      "buildingId": "0363100012174155",
+      "sourceSha256": "a9770c5ce68a30ece54083f2c5b8057adf227fad53a843c11eb34d470213103d",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 559,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012167334_e_0gv1ofj": {
+      "observationId": "0363100012167334_e_0gv1ofj",
+      "buildingId": "0363100012167334",
+      "sourceSha256": "d84cfe39fa2aa4fe66eedc165864959383a3964b36db0446b4a6e87ea41d1780",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 560,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170054_e_0by4u0f": {
+      "observationId": "0363100012170054_e_0by4u0f",
+      "buildingId": "0363100012170054",
+      "sourceSha256": "71e099916e4ee06101670b6cbcdd59a797f6565062337963cb7415f9a3489836",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 561,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174559_e_02r6hbf": {
+      "observationId": "0363100012174559_e_02r6hbf",
+      "buildingId": "0363100012174559",
+      "sourceSha256": "9b8f341bb1c1c94e15b6df3f178a4c3aa3e6251d57671cebdb080a56312a576e",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 562,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012132271_e_1peoiun": {
+      "observationId": "0363100012132271_e_1peoiun",
+      "buildingId": "0363100012132271",
+      "sourceSha256": "a35c6ffa113571bf6946604700fbfcf5509921e1c52615d165534a92a2abed61",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 563,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012166933_e_0whh8ln": {
+      "observationId": "0363100012166933_e_0whh8ln",
+      "buildingId": "0363100012166933",
+      "sourceSha256": "dc3c043fde5160613f7f31334e05ffaacfd28adb2bbdee19db81752dfef542b6",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 564,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174159_e_1yab8mx": {
+      "observationId": "0363100012174159_e_1yab8mx",
+      "buildingId": "0363100012174159",
+      "sourceSha256": "084a18b2fa58dee6df93d78c7d4b0458e14f7383f11fb2e4e772ff91ef5ade46",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 565,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012155382_e_0hcx9b5": {
+      "observationId": "0363100012155382_e_0hcx9b5",
+      "buildingId": "0363100012155382",
+      "sourceSha256": "7550e523321f6b5c024817fd40b9b4389aee4674e207469a9d6233c4bf063995",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 566,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012159537_e_1ebeacq": {
+      "observationId": "0363100012159537_e_1ebeacq",
+      "buildingId": "0363100012159537",
+      "sourceSha256": "f48dd8138842c94ff6f01c9ab53069362163251a9e6b4677244537c6331eecde",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 567,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012167944_e_12245ey": {
+      "observationId": "0363100012167944_e_12245ey",
+      "buildingId": "0363100012167944",
+      "sourceSha256": "fd3c48bb503e8174e10cc919d80adbe13dcadb1249622909dc93a6bad7bcdf72",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 568,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012170124_e_1xs268y": {
+      "observationId": "0363100012170124_e_1xs268y",
+      "buildingId": "0363100012170124",
+      "sourceSha256": "785d3ce1bd539e18856abffebc492977bd8f3bf9af09c16bd87877fb82a9fa5d",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 569,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012160431_e_0eaxt9m": {
+      "observationId": "0363100012160431_e_0eaxt9m",
+      "buildingId": "0363100012160431",
+      "sourceSha256": "051da7d52b9006200a9ece780d34bf0d12acfca51e626389b32bb02809d878e5",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 570,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174562_e_0id24bt": {
+      "observationId": "0363100012174562_e_0id24bt",
+      "buildingId": "0363100012174562",
+      "sourceSha256": "65a7f4c151916ed2f2f78cca91b889bce13fba0842411d4f92d101c91579dfa5",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 571,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012160912_e_16v7ts4": {
+      "observationId": "0363100012160912_e_16v7ts4",
+      "buildingId": "0363100012160912",
+      "sourceSha256": "7ad9af9edc5b321c8760edcef9dbf7209536edf16417d9eaa74c06fd5b20b73f",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 572,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012236917_e_0q8kr8n": {
+      "observationId": "0363100012236917_e_0q8kr8n",
+      "buildingId": "0363100012236917",
+      "sourceSha256": "53d52ff0b56df309b66351c974c5b8f1db9ffccf0383a45537a2db98af0749d6",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 573,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174157_e_1mpqmhu": {
+      "observationId": "0363100012174157_e_1mpqmhu",
+      "buildingId": "0363100012174157",
+      "sourceSha256": "ed7982a4b610915bba6d9335a3acbf06a314b25389cc5dd861a7778f59dda0fe",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 574,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012236432_e_1esti5p": {
+      "observationId": "0363100012236432_e_1esti5p",
+      "buildingId": "0363100012236432",
+      "sourceSha256": "bffdef301842c23d528161b86fe426ecdb8a2911dd9771928f791b67ba5830a4",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 575,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012166084_e_1badpfl": {
+      "observationId": "0363100012166084_e_1badpfl",
+      "buildingId": "0363100012166084",
+      "sourceSha256": "9b733dcb807ab5708f01a061a315f1a7d1805b1f7060ea8b7387b1a894ce8e34",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 576,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012168927_e_1uh6rnh": {
+      "observationId": "0363100012168927_e_1uh6rnh",
+      "buildingId": "0363100012168927",
+      "sourceSha256": "a78a96df6928d7d3fecc09fae1ee7ef1c8ec75b10d26edcb690cd97afe9ebae7",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 577,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012168929_e_0a506dn": {
+      "observationId": "0363100012168929_e_0a506dn",
+      "buildingId": "0363100012168929",
+      "sourceSha256": "3fbf4e5a698ef605c90a8dc4d3392e07907114d3d0585a651763add7284070c9",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 578,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012168952_e_14xqjkm": {
+      "observationId": "0363100012168952_e_14xqjkm",
+      "buildingId": "0363100012168952",
+      "sourceSha256": "bb2b229106260e7b5354ede1ea35d237effc10a6eaf01ca44ad32233feb57850",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 579,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174146_e_1xugoif": {
+      "observationId": "0363100012174146_e_1xugoif",
+      "buildingId": "0363100012174146",
+      "sourceSha256": "e678e59a4ccd95fb94e78ac0f92bfc188a3a0d74401ad9cdae85ee882826c7bf",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 580,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174161_e_19sfn4b": {
+      "observationId": "0363100012174161_e_19sfn4b",
+      "buildingId": "0363100012174161",
+      "sourceSha256": "ae06b808d63edd3b5a939fb3251c5159ec5e24458b0364d1d82597b5082b9196",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 581,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012169827_e_0dsqvgr": {
+      "observationId": "0363100012169827_e_0dsqvgr",
+      "buildingId": "0363100012169827",
+      "sourceSha256": "9585767f7360620e7439d1fcc08ddb2177635673169db28891774f8b20c3b886",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 582,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012168953_e_0ljsklq": {
+      "observationId": "0363100012168953_e_0ljsklq",
+      "buildingId": "0363100012168953",
+      "sourceSha256": "882549047d737293c8754dfd12c21cca2130e3f83a5b641bd403764d061c60e3",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 583,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012168956_e_10yhos8": {
+      "observationId": "0363100012168956_e_10yhos8",
+      "buildingId": "0363100012168956",
+      "sourceSha256": "c62fe68961af5e39f6acaac7ec21cd6d68f8d008d02ac1fb910bb3a810fac96e",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 584,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012152977_e_13evhz4": {
+      "observationId": "0363100012152977_e_13evhz4",
+      "buildingId": "0363100012152977",
+      "sourceSha256": "bbe1972b32959acdc06fe5a3199d567e3abc82560d667af672ae020ecde0975f",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 585,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012157700_e_0q44jlm": {
+      "observationId": "0363100012157700_e_0q44jlm",
+      "buildingId": "0363100012157700",
+      "sourceSha256": "c4e8666358b0c7893f5e1b3adb61382d6a1f7358ad1774bae9973a95f72a80a6",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 586,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012168949_e_0t04baz": {
+      "observationId": "0363100012168949_e_0t04baz",
+      "buildingId": "0363100012168949",
+      "sourceSha256": "4348d8cf5137b9ccb07265f67f1cf4fe925c0b5199f01b214d6fb9ac14bde3fc",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 588,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012160456_e_12vot3d": {
+      "observationId": "0363100012160456_e_12vot3d",
+      "buildingId": "0363100012160456",
+      "sourceSha256": "a06725013ecc326635b7a3ed37e14ad4a6a7857673470888621bddd857964a3f",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 589,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174820_e_007m5ol": {
+      "observationId": "0363100012174820_e_007m5ol",
+      "buildingId": "0363100012174820",
+      "sourceSha256": "da70dc3fbf3466fc2491e7d9764831401aee67e044bc3faf0897632318297cea",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "mixed-or-neighbouring-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 590,
+      "notes": "The crop includes multiple or materially distinct facade surfaces, so the target wall cannot be isolated for measured publication."
+    },
+    "0363100012153066_e_0fejqhr": {
+      "observationId": "0363100012153066_e_0fejqhr",
+      "buildingId": "0363100012153066",
+      "sourceSha256": "334fbbadaa8d549002449ec7db616f1d163afd8077a796ba15029d360b48192a",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 591,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012144845_e_1le2s9k": {
+      "observationId": "0363100012144845_e_1le2s9k",
+      "buildingId": "0363100012144845",
+      "sourceSha256": "94de67d298fa9ceabfe3f4950a1dd871fc32a2db7fc88a51eaa5424f21df571e",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 592,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012153319_e_0nqehay": {
+      "observationId": "0363100012153319_e_0nqehay",
+      "buildingId": "0363100012153319",
+      "sourceSha256": "19ebe66f15ee5f03bc247a1c495d367cc666dd2e5b6157bcdaf064fd648f7ef6",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 593,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012157926_e_0e04shs": {
+      "observationId": "0363100012157926_e_0e04shs",
+      "buildingId": "0363100012157926",
+      "sourceSha256": "740bad2de6a46bb113d43c1bfd36f144679265f156bdddd9964e172c2f05f245",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 594,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    },
+    "0363100012174555_e_0etw0xy": {
+      "observationId": "0363100012174555_e_0etw0xy",
+      "buildingId": "0363100012174555",
+      "sourceSha256": "f21a4ef031ffbfbdddcf8a0b1f72b6e9844c825731e3029f0bb107eacf64a1d3",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 595,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012174349_e_1qllxd7": {
+      "observationId": "0363100012174349_e_1qllxd7",
+      "buildingId": "0363100012174349",
+      "sourceSha256": "5f96e08d832c4d95b583e597f1bb06827f66b0d16dc44b379f8adab001b85715",
+      "verdict": "accept",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "visible-main-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 596,
+      "notes": "Main wall is legible and the measured dominant colour matches the visible facade; trim and ground frontage excluded."
+    },
+    "0363100012153319_e_0wxtnpm": {
+      "observationId": "0363100012153319_e_0wxtnpm",
+      "buildingId": "0363100012153319",
+      "sourceSha256": "014e7290ab6dde156bee4f8791c0bd74b56bc332aa22677ff055864884be0071",
+      "verdict": "unusable",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-terra",
+      "gradedAt": "2026-09-26T18:15:00.000Z",
+      "reasons": [
+        "occluded-or-mixed-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 597,
+      "notes": "The target wall is not sufficiently isolated and representative in this crop for a measured publication."
+    }
+  }
+}
