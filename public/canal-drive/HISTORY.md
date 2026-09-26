@@ -20,12 +20,18 @@ walls, incomplete roof coverage and unsafe fallback during tile loading.
 
 Render readiness now samples MapLibre's render event: a separate animation-frame
 poll could repeatedly see a dirty map immediately before a fully ready paint.
-The loaded/painted/budget gates remain intact. Waiting for the completed paint
-avoids sampling before paint; the existing extrusion-visibility assertions
+The loaded/painted/budget gates and existing extrusion-visibility assertions
 remain unchanged. A separate startup race allowed camera ticks to populate a
 GeoJSON source before it was replaced, leaving the new source empty until the
 next tile boundary. Streaming now waits for attachment, with a regression for
 pre-attachment camera ticks and first-load delivery to the replacement source.
+
+Validation: the complete `check:canal` gate passes, including Storybook. A fresh
+checkout with its own `npm ci` passes typechecking and the tile-source regression;
+the regression fails on the pre-fix source. The immutable local release passes
+all fourteen route cameras plus coverage-toggle checks twice each on desktop and
+iPhone emulation (eight browser tests). Named roof checks and immutable artifact
+validation pass. Browser mobile coverage is emulation, not physical-device timing.
 
 ## 2026-09-26 — source-bound appearance and autonomous review
 
