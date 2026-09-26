@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {isTransientRectificationError,withTransientRetries} from './run-district-rectification.mjs';
+for(const reason of ['panorama-http-503','panorama-http-429','TypeError: fetch failed','TimeoutError'])assert.equal(isTransientRectificationError(Error(reason)),true);
+for(const reason of ['disk-space-reserve: 1 byte','source hash mismatch','panorama-http-404','permission denied','config changed'])assert.equal(isTransientRectificationError(Error(reason)),false);
+let calls=0;const delays=[];
+assert.equal(await withTransientRetries(async()=>{if(++calls<3)throw Error('panorama-http-503');return 'resumed';},3,async ms=>{delays.push(ms);}),'resumed');
+assert.deepEqual(delays,[30000,60000]);
+calls=0;await assert.rejects(withTransientRetries(async()=>{calls++;throw Error('source hash mismatch');},6,async()=>assert.fail('No retry for integrity errors')),/hash mismatch/);assert.equal(calls,1);
+calls=0;await assert.rejects(withTransientRetries(async()=>{calls++;throw Error('fetch failed');},2,async()=>{}),/fetch failed/);assert.equal(calls,3);
+console.log('Rectification retries: transient failures resume; integrity/resource failures stop; retries bounded');

@@ -55,9 +55,11 @@ The colour/texture focus supersedes new roof work for this appearance batch.
 See `docs/plans/district-rectification-expansion.md` and
 `docs/plans/district-rectification-gaps.md`. The complete eligible queue is 4,339
 frontages / 3,472 owners; 683 exact-district owners need candidate recovery.
-The resumable native-4000px worker is processing both districts. Benchmark local
-Qwen3.5-9B against independent source-bound references, especially obstruction
-abstention, before trusting bulk proposals. Finish source identity, photo colour
+The resumable native-4000px worker is processing both districts. Local Qwen
+completed the 100-source speed/label comparison; independent, diverse references
+and obstruction abstention still need evaluation before trusting bulk proposals.
+The resumable material worker now combines classifier receipts, native masks and
+upper-wall photo measurements. Review these diagnostics before any publication. Finish source identity, photo colour
 sampling and rendered colour/texture review separately. Existing 100-owner source
 assessments and six broad-family renderer passes remain useful but are not an
 accepted district appearance overlay. No default-game texture rollout yet.
