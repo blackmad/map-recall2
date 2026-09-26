@@ -144,3 +144,19 @@ experiment to 85 supported source assessments. Eleven unknown cases and four
 explicitly unsupported assessments keep their original appearance. This expands
 comparison coverage, not visual acceptance; full render review is still pending.
 The default game and ten-case review scope remain unchanged.
+
+
+At 22:49 Amsterdam time, the first complete pipeline batch passed: 99 classifier
+receipts, 99 masks, 20 provisional colour measurements and 79 measurements marked
+for review. The detached watch resumed that completed batch without rerunning it
+and started batch 1. `worker.pid` / `worker.log` beside the progress file identify
+the active process. The gallery reads only verified completed jobs and refreshes
+once per minute. Over 2,000 frontages had been rectified at that checkpoint.
+
+Morning review should first inspect the measured-colour review reasons and source
+identity, then compare the supported cases under neutral rendered lighting.
+Material-family inference selects shared texture styles; it does not recover
+measured brick size, bond pattern, or exact facade detail from each photograph.
+The 683 owners without eligible sources remain a separate recovery queue; 26 of
+the address-only exclusions gained candidates in an isolated diagnostic, not in
+production coverage.
